@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -25,23 +27,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class IdentityAssociationDetails(BaseModel):
     """
     IdentityAssociationDetails
-    """
-
-  # noqa: E501
-    message: Optional[StrictStr] = Field(
-        default=None,
-        description="any additional context information of the http call result"
-    )
-    association_details: Optional[
-        List[IdentityAssociationDetailsAssociationDetailsInner]] = Field(
-            default=None,
-            description=
-            "list of all the resource associations for the identity",
-            alias="associationDetails")
+    """ # noqa: E501
+    message: Optional[StrictStr] = Field(default=None, description="any additional context information of the http call result")
+    association_details: Optional[List[IdentityAssociationDetailsAssociationDetailsInner]] = Field(default=None, description="list of all the resource associations for the identity", alias="associationDetails")
     __properties: ClassVar[List[str]] = ["message", "associationDetails"]
 
     model_config = {
@@ -49,6 +40,7 @@ class IdentityAssociationDetails(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -76,7 +68,8 @@ class IdentityAssociationDetails(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in association_details (list)
@@ -98,11 +91,9 @@ class IdentityAssociationDetails(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "message":
-            obj.get("message"),
-            "associationDetails": [
-                IdentityAssociationDetailsAssociationDetailsInner.from_dict(
-                    _item) for _item in obj.get("associationDetails")
-            ] if obj.get("associationDetails") is not None else None
+            "message": obj.get("message"),
+            "associationDetails": [IdentityAssociationDetailsAssociationDetailsInner.from_dict(_item) for _item in obj.get("associationDetails")] if obj.get("associationDetails") is not None else None
         })
         return _obj
+
+

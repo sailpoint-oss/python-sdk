@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool
@@ -25,45 +27,22 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class PasswordOrgConfig(BaseModel):
     """
     PasswordOrgConfig
-    """
-
-  # noqa: E501
-    custom_instructions_enabled: Optional[StrictBool] = Field(
-        default=False,
-        description=
-        "Indicator whether custom password instructions feature is enabled. The default value is false.",
-        alias="customInstructionsEnabled")
-    digit_token_enabled: Optional[StrictBool] = Field(
-        default=False,
-        description=
-        "Indicator whether \"digit token\" feature is enabled. The default value is false.",
-        alias="digitTokenEnabled")
-    digit_token_duration_minutes: Optional[Annotated[
-        int, Field(le=60, strict=True, ge=1)]] = Field(
-            default=5,
-            description=
-            "The duration of \"digit token\" in minutes. The default value is 5.",
-            alias="digitTokenDurationMinutes")
-    digit_token_length: Optional[Annotated[
-        int, Field(le=18, strict=True, ge=6)]] = Field(
-            default=6,
-            description=
-            "The length of \"digit token\". The default value is 6.",
-            alias="digitTokenLength")
-    __properties: ClassVar[List[str]] = [
-        "customInstructionsEnabled", "digitTokenEnabled",
-        "digitTokenDurationMinutes", "digitTokenLength"
-    ]
+    """ # noqa: E501
+    custom_instructions_enabled: Optional[StrictBool] = Field(default=False, description="Indicator whether custom password instructions feature is enabled. The default value is false.", alias="customInstructionsEnabled")
+    digit_token_enabled: Optional[StrictBool] = Field(default=False, description="Indicator whether \"digit token\" feature is enabled. The default value is false.", alias="digitTokenEnabled")
+    digit_token_duration_minutes: Optional[Annotated[int, Field(le=60, strict=True, ge=1)]] = Field(default=5, description="The duration of \"digit token\" in minutes. The default value is 5.", alias="digitTokenDurationMinutes")
+    digit_token_length: Optional[Annotated[int, Field(le=18, strict=True, ge=6)]] = Field(default=6, description="The length of \"digit token\". The default value is 6.", alias="digitTokenLength")
+    __properties: ClassVar[List[str]] = ["customInstructionsEnabled", "digitTokenEnabled", "digitTokenDurationMinutes", "digitTokenLength"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -91,7 +70,8 @@ class PasswordOrgConfig(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -106,17 +86,11 @@ class PasswordOrgConfig(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "customInstructionsEnabled":
-            obj.get("customInstructionsEnabled")
-            if obj.get("customInstructionsEnabled") is not None else False,
-            "digitTokenEnabled":
-            obj.get("digitTokenEnabled")
-            if obj.get("digitTokenEnabled") is not None else False,
-            "digitTokenDurationMinutes":
-            obj.get("digitTokenDurationMinutes")
-            if obj.get("digitTokenDurationMinutes") is not None else 5,
-            "digitTokenLength":
-            obj.get("digitTokenLength")
-            if obj.get("digitTokenLength") is not None else 6
+            "customInstructionsEnabled": obj.get("customInstructionsEnabled") if obj.get("customInstructionsEnabled") is not None else False,
+            "digitTokenEnabled": obj.get("digitTokenEnabled") if obj.get("digitTokenEnabled") is not None else False,
+            "digitTokenDurationMinutes": obj.get("digitTokenDurationMinutes") if obj.get("digitTokenDurationMinutes") is not None else 5,
+            "digitTokenLength": obj.get("digitTokenLength") if obj.get("digitTokenLength") is not None else 6
         })
         return _obj
+
+

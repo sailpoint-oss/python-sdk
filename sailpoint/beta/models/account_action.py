@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,21 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccountAction(BaseModel):
     """
     AccountAction
-    """
-
-  # noqa: E501
-    action: Optional[StrictStr] = Field(
-        default=None,
-        description="Describes if action will be enabled or disabled")
-    source_ids: Optional[List[StrictStr]] = Field(
-        default=None,
-        description=
-        "List of source IDs. The sources must have the ENABLE feature or flat file source. See \"/sources\" endpoint for source features.",
-        alias="sourceIds")
+    """ # noqa: E501
+    action: Optional[StrictStr] = Field(default=None, description="Describes if action will be enabled or disabled")
+    source_ids: Optional[List[StrictStr]] = Field(default=None, description="List of source IDs. The sources must have the ENABLE feature or flat file source. See \"/sources\" endpoint for source features.", alias="sourceIds")
     __properties: ClassVar[List[str]] = ["action", "sourceIds"]
 
     @field_validator('action')
@@ -48,8 +41,7 @@ class AccountAction(BaseModel):
             return value
 
         if value not in ('ENABLE', 'DISABLE'):
-            raise ValueError(
-                "must be one of enum values ('ENABLE', 'DISABLE')")
+            raise ValueError("must be one of enum values ('ENABLE', 'DISABLE')")
         return value
 
     model_config = {
@@ -57,6 +49,7 @@ class AccountAction(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -84,7 +77,8 @@ class AccountAction(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -103,3 +97,5 @@ class AccountAction(BaseModel):
             "sourceIds": obj.get("sourceIds")
         })
         return _obj
+
+

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.role_membership_selector import RoleMembershipSelector
-
 
 class TestRoleMembershipSelector(unittest.TestCase):
     """RoleMembershipSelector unit test stubs"""
@@ -65,7 +65,6 @@ class TestRoleMembershipSelector(unittest.TestCase):
         """Test RoleMembershipSelector"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

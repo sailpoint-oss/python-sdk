@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,26 +26,19 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ReassignmentReference(BaseModel):
     """
     ReassignmentReference
-    """
-
-  # noqa: E501
-    id: StrictStr = Field(
-        description="The ID of item or identity being reassigned.")
-    type: StrictStr = Field(
-        description="The type of item or identity being reassigned.")
+    """ # noqa: E501
+    id: StrictStr = Field(description="The ID of item or identity being reassigned.")
+    type: StrictStr = Field(description="The type of item or identity being reassigned.")
     __properties: ClassVar[List[str]] = ["id", "type"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('TARGET_SUMMARY', 'ITEM', 'IDENTITY_SUMMARY'):
-            raise ValueError(
-                "must be one of enum values ('TARGET_SUMMARY', 'ITEM', 'IDENTITY_SUMMARY')"
-            )
+            raise ValueError("must be one of enum values ('TARGET_SUMMARY', 'ITEM', 'IDENTITY_SUMMARY')")
         return value
 
     model_config = {
@@ -51,6 +46,7 @@ class ReassignmentReference(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -78,7 +74,8 @@ class ReassignmentReference(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -97,3 +94,5 @@ class ReassignmentReference(BaseModel):
             "type": obj.get("type")
         })
         return _obj
+
+

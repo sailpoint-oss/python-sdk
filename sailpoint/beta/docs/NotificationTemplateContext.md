@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | **object** | A JSON object that stores the context. | [optional] 
+**attributes** | **Dict[str, object]** | A JSON object that stores the context. | [optional] 
 **created** | **datetime** | When the global context was created | [optional] 
 **modified** | **datetime** | When the global context was last modified | [optional] 
 

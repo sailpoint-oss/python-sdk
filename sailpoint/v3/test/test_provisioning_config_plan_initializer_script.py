@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.provisioning_config_plan_initializer_script import ProvisioningConfigPlanInitializerScript
-
 
 class TestProvisioningConfigPlanInitializerScript(unittest.TestCase):
     """ProvisioningConfigPlanInitializerScript unit test stubs"""
@@ -26,8 +26,7 @@ class TestProvisioningConfigPlanInitializerScript(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(
-            self, include_optional) -> ProvisioningConfigPlanInitializerScript:
+    def make_instance(self, include_optional) -> ProvisioningConfigPlanInitializerScript:
         """Test ProvisioningConfigPlanInitializerScript
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -49,7 +48,6 @@ class TestProvisioningConfigPlanInitializerScript(unittest.TestCase):
         """Test ProvisioningConfigPlanInitializerScript"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

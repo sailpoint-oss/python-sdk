@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.identity_profile1 import IdentityProfile1
-
 
 class TestIdentityProfile1(unittest.TestCase):
     """IdentityProfile1 unit test stubs"""
@@ -80,7 +80,6 @@ class TestIdentityProfile1(unittest.TestCase):
         """Test IdentityProfile1"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

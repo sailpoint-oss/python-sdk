@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -26,34 +28,23 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccessItemRemoved(BaseModel):
     """
     AccessItemRemoved
-    """
-
-  # noqa: E501
-    access_item: Optional[AccessItemAssociatedAccessItem] = Field(
-        default=None, alias="accessItem")
-    identity_id: Optional[StrictStr] = Field(default=None,
-                                             description="the identity id",
-                                             alias="identityId")
-    event_type: Optional[StrictStr] = Field(default=None,
-                                            description="the event type",
-                                            alias="eventType")
-    dt: Optional[StrictStr] = Field(default=None,
-                                    description="the date of event")
-    governance_event: Optional[CorrelatedGovernanceEvent] = Field(
-        default=None, alias="governanceEvent")
-    __properties: ClassVar[List[str]] = [
-        "accessItem", "identityId", "eventType", "dt", "governanceEvent"
-    ]
+    """ # noqa: E501
+    access_item: Optional[AccessItemAssociatedAccessItem] = Field(default=None, alias="accessItem")
+    identity_id: Optional[StrictStr] = Field(default=None, description="the identity id", alias="identityId")
+    event_type: Optional[StrictStr] = Field(default=None, description="the event type", alias="eventType")
+    dt: Optional[StrictStr] = Field(default=None, description="the date of event")
+    governance_event: Optional[CorrelatedGovernanceEvent] = Field(default=None, alias="governanceEvent")
+    __properties: ClassVar[List[str]] = ["accessItem", "identityId", "eventType", "dt", "governanceEvent"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -81,7 +72,8 @@ class AccessItemRemoved(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of access_item
@@ -102,17 +94,12 @@ class AccessItemRemoved(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "accessItem":
-            AccessItemAssociatedAccessItem.from_dict(obj.get("accessItem"))
-            if obj.get("accessItem") is not None else None,
-            "identityId":
-            obj.get("identityId"),
-            "eventType":
-            obj.get("eventType"),
-            "dt":
-            obj.get("dt"),
-            "governanceEvent":
-            CorrelatedGovernanceEvent.from_dict(obj.get("governanceEvent"))
-            if obj.get("governanceEvent") is not None else None
+            "accessItem": AccessItemAssociatedAccessItem.from_dict(obj.get("accessItem")) if obj.get("accessItem") is not None else None,
+            "identityId": obj.get("identityId"),
+            "eventType": obj.get("eventType"),
+            "dt": obj.get("dt"),
+            "governanceEvent": CorrelatedGovernanceEvent.from_dict(obj.get("governanceEvent")) if obj.get("governanceEvent") is not None else None
         })
         return _obj
+
+

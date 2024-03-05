@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import io
 import warnings
 
@@ -48,34 +49,22 @@ class SearchApi:
             api_client = ApiClient.get_default()
         self.api_client = api_client
 
+
     @validate_call
     def search_aggregate(
         self,
         search: Search,
-        offset: Annotated[
-            Optional[Annotated[int, Field(strict=True, ge=0)]],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        limit: Annotated[
-            Optional[Annotated[int, Field(le=250, strict=True, ge=0)]],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        count: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -115,14 +104,16 @@ class SearchApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._search_aggregate_serialize(search=search,
-                                                  offset=offset,
-                                                  limit=limit,
-                                                  count=count,
-                                                  _request_auth=_request_auth,
-                                                  _content_type=_content_type,
-                                                  _headers=_headers,
-                                                  _host_index=_host_index)
+        _param = self._search_aggregate_serialize(
+            search=search,
+            offset=offset,
+            limit=limit,
+            count=count,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "AggregationResult",
@@ -133,41 +124,31 @@ class SearchApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
+
     @validate_call
     def search_aggregate_with_http_info(
         self,
         search: Search,
-        offset: Annotated[
-            Optional[Annotated[int, Field(strict=True, ge=0)]],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        limit: Annotated[
-            Optional[Annotated[int, Field(le=250, strict=True, ge=0)]],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        count: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -207,14 +188,16 @@ class SearchApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._search_aggregate_serialize(search=search,
-                                                  offset=offset,
-                                                  limit=limit,
-                                                  count=count,
-                                                  _request_auth=_request_auth,
-                                                  _content_type=_content_type,
-                                                  _headers=_headers,
-                                                  _host_index=_host_index)
+        _param = self._search_aggregate_serialize(
+            search=search,
+            offset=offset,
+            limit=limit,
+            count=count,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "AggregationResult",
@@ -225,41 +208,31 @@ class SearchApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
+
     @validate_call
     def search_aggregate_without_preload_content(
         self,
         search: Search,
-        offset: Annotated[
-            Optional[Annotated[int, Field(strict=True, ge=0)]],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        limit: Annotated[
-            Optional[Annotated[int, Field(le=250, strict=True, ge=0)]],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        count: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -299,14 +272,16 @@ class SearchApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._search_aggregate_serialize(search=search,
-                                                  offset=offset,
-                                                  limit=limit,
-                                                  count=count,
-                                                  _request_auth=_request_auth,
-                                                  _content_type=_content_type,
-                                                  _headers=_headers,
-                                                  _host_index=_host_index)
+        _param = self._search_aggregate_serialize(
+            search=search,
+            offset=offset,
+            limit=limit,
+            count=count,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "AggregationResult",
@@ -317,8 +292,11 @@ class SearchApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         return response_data.response
+
 
     def _search_aggregate_serialize(
         self,
@@ -334,7 +312,8 @@ class SearchApi:
 
         _host = None
 
-        _collection_formats: Dict[str, str] = {}
+        _collection_formats: Dict[str, str] = {
+        }
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -346,26 +325,31 @@ class SearchApi:
         # process the path parameters
         # process the query parameters
         if offset is not None:
-
+            
             _query_params.append(('offset', offset))
-
+            
         if limit is not None:
-
+            
             _query_params.append(('limit', limit))
-
+            
         if count is not None:
-
+            
             _query_params.append(('count', count))
-
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
         if search is not None:
             _body_params = search
 
+
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/csv'])
+            [
+                'application/json', 
+                'text/csv'
+            ]
+        )
 
         # set the HTTP header `Content-Type`
         if _content_type:
@@ -373,12 +357,19 @@ class SearchApi:
         else:
             _default_content_type = (
                 self.api_client.select_header_content_type(
-                    ['application/json']))
+                    [
+                        'application/json'
+                    ]
+                )
+            )
             if _default_content_type is not None:
                 _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
-        _auth_settings: List[str] = ['UserContextAuth', 'UserContextAuth']
+        _auth_settings: List[str] = [
+            'UserContextAuth', 
+            'UserContextAuth'
+        ]
 
         return self.api_client.param_serialize(
             method='POST',
@@ -392,18 +383,24 @@ class SearchApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth)
+            _request_auth=_request_auth
+        )
+
+
+
 
     @validate_call
     def search_count(
         self,
         search: Search,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -437,11 +434,13 @@ class SearchApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._search_count_serialize(search=search,
-                                              _request_auth=_request_auth,
-                                              _content_type=_content_type,
-                                              _headers=_headers,
-                                              _host_index=_host_index)
+        _param = self._search_count_serialize(
+            search=search,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
@@ -452,23 +451,28 @@ class SearchApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
+
     @validate_call
     def search_count_with_http_info(
         self,
         search: Search,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -502,11 +506,13 @@ class SearchApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._search_count_serialize(search=search,
-                                              _request_auth=_request_auth,
-                                              _content_type=_content_type,
-                                              _headers=_headers,
-                                              _host_index=_host_index)
+        _param = self._search_count_serialize(
+            search=search,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
@@ -517,23 +523,28 @@ class SearchApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
+
     @validate_call
     def search_count_without_preload_content(
         self,
         search: Search,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -567,11 +578,13 @@ class SearchApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._search_count_serialize(search=search,
-                                              _request_auth=_request_auth,
-                                              _content_type=_content_type,
-                                              _headers=_headers,
-                                              _host_index=_host_index)
+        _param = self._search_count_serialize(
+            search=search,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
@@ -582,8 +595,11 @@ class SearchApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         return response_data.response
+
 
     def _search_count_serialize(
         self,
@@ -596,7 +612,8 @@ class SearchApi:
 
         _host = None
 
-        _collection_formats: Dict[str, str] = {}
+        _collection_formats: Dict[str, str] = {
+        }
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -613,9 +630,13 @@ class SearchApi:
         if search is not None:
             _body_params = search
 
+
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])
+            [
+                'application/json'
+            ]
+        )
 
         # set the HTTP header `Content-Type`
         if _content_type:
@@ -623,12 +644,19 @@ class SearchApi:
         else:
             _default_content_type = (
                 self.api_client.select_header_content_type(
-                    ['application/json']))
+                    [
+                        'application/json'
+                    ]
+                )
+            )
             if _default_content_type is not None:
                 _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
-        _auth_settings: List[str] = ['UserContextAuth', 'UserContextAuth']
+        _auth_settings: List[str] = [
+            'UserContextAuth', 
+            'UserContextAuth'
+        ]
 
         return self.api_client.param_serialize(
             method='POST',
@@ -642,25 +670,25 @@ class SearchApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth)
+            _request_auth=_request_auth
+        )
+
+
+
 
     @validate_call
     def search_get(
         self,
-        index: Annotated[
-            StrictStr,
-            Field(
-                description=
-                "The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, and *roles*. "
-            )],
-        id: Annotated[StrictStr,
-                      Field(description="ID of the requested document.")],
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        index: Annotated[StrictStr, Field(description="The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, and *roles*. ")],
+        id: Annotated[StrictStr, Field(description="ID of the requested document.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -696,12 +724,14 @@ class SearchApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._search_get_serialize(index=index,
-                                            id=id,
-                                            _request_auth=_request_auth,
-                                            _content_type=_content_type,
-                                            _headers=_headers,
-                                            _host_index=_host_index)
+        _param = self._search_get_serialize(
+            index=index,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
@@ -713,30 +743,29 @@ class SearchApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
+
     @validate_call
     def search_get_with_http_info(
         self,
-        index: Annotated[
-            StrictStr,
-            Field(
-                description=
-                "The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, and *roles*. "
-            )],
-        id: Annotated[StrictStr,
-                      Field(description="ID of the requested document.")],
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        index: Annotated[StrictStr, Field(description="The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, and *roles*. ")],
+        id: Annotated[StrictStr, Field(description="ID of the requested document.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -772,12 +801,14 @@ class SearchApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._search_get_serialize(index=index,
-                                            id=id,
-                                            _request_auth=_request_auth,
-                                            _content_type=_content_type,
-                                            _headers=_headers,
-                                            _host_index=_host_index)
+        _param = self._search_get_serialize(
+            index=index,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
@@ -789,30 +820,29 @@ class SearchApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
+
     @validate_call
     def search_get_without_preload_content(
         self,
-        index: Annotated[
-            StrictStr,
-            Field(
-                description=
-                "The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, and *roles*. "
-            )],
-        id: Annotated[StrictStr,
-                      Field(description="ID of the requested document.")],
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        index: Annotated[StrictStr, Field(description="The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, and *roles*. ")],
+        id: Annotated[StrictStr, Field(description="ID of the requested document.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -848,12 +878,14 @@ class SearchApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._search_get_serialize(index=index,
-                                            id=id,
-                                            _request_auth=_request_auth,
-                                            _content_type=_content_type,
-                                            _headers=_headers,
-                                            _host_index=_host_index)
+        _param = self._search_get_serialize(
+            index=index,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
@@ -865,8 +897,11 @@ class SearchApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         return response_data.response
+
 
     def _search_get_serialize(
         self,
@@ -880,7 +915,8 @@ class SearchApi:
 
         _host = None
 
-        _collection_formats: Dict[str, str] = {}
+        _collection_formats: Dict[str, str] = {
+        }
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -899,12 +935,20 @@ class SearchApi:
         # process the form parameters
         # process the body parameter
 
+
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])
+            [
+                'application/json'
+            ]
+        )
+
 
         # authentication setting
-        _auth_settings: List[str] = ['UserContextAuth', 'UserContextAuth']
+        _auth_settings: List[str] = [
+            'UserContextAuth', 
+            'UserContextAuth'
+        ]
 
         return self.api_client.param_serialize(
             method='GET',
@@ -918,36 +962,27 @@ class SearchApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth)
+            _request_auth=_request_auth
+        )
+
+
+
 
     @validate_call
     def search_post(
         self,
         search: Search,
-        offset: Annotated[
-            Optional[Annotated[int, Field(strict=True, ge=0)]],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        limit: Annotated[
-            Optional[Annotated[int, Field(le=10000, strict=True, ge=0)]],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        count: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=10000, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -987,14 +1022,16 @@ class SearchApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._search_post_serialize(search=search,
-                                             offset=offset,
-                                             limit=limit,
-                                             count=count,
-                                             _request_auth=_request_auth,
-                                             _content_type=_content_type,
-                                             _headers=_headers,
-                                             _host_index=_host_index)
+        _param = self._search_post_serialize(
+            search=search,
+            offset=offset,
+            limit=limit,
+            count=count,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[object]",
@@ -1005,41 +1042,31 @@ class SearchApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
+
     @validate_call
     def search_post_with_http_info(
         self,
         search: Search,
-        offset: Annotated[
-            Optional[Annotated[int, Field(strict=True, ge=0)]],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        limit: Annotated[
-            Optional[Annotated[int, Field(le=10000, strict=True, ge=0)]],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        count: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=10000, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -1079,14 +1106,16 @@ class SearchApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._search_post_serialize(search=search,
-                                             offset=offset,
-                                             limit=limit,
-                                             count=count,
-                                             _request_auth=_request_auth,
-                                             _content_type=_content_type,
-                                             _headers=_headers,
-                                             _host_index=_host_index)
+        _param = self._search_post_serialize(
+            search=search,
+            offset=offset,
+            limit=limit,
+            count=count,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[object]",
@@ -1097,41 +1126,31 @@ class SearchApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
+
     @validate_call
     def search_post_without_preload_content(
         self,
         search: Search,
-        offset: Annotated[
-            Optional[Annotated[int, Field(strict=True, ge=0)]],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        limit: Annotated[
-            Optional[Annotated[int, Field(le=10000, strict=True, ge=0)]],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        count: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=10000, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -1171,14 +1190,16 @@ class SearchApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._search_post_serialize(search=search,
-                                             offset=offset,
-                                             limit=limit,
-                                             count=count,
-                                             _request_auth=_request_auth,
-                                             _content_type=_content_type,
-                                             _headers=_headers,
-                                             _host_index=_host_index)
+        _param = self._search_post_serialize(
+            search=search,
+            offset=offset,
+            limit=limit,
+            count=count,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[object]",
@@ -1189,8 +1210,11 @@ class SearchApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         return response_data.response
+
 
     def _search_post_serialize(
         self,
@@ -1206,7 +1230,8 @@ class SearchApi:
 
         _host = None
 
-        _collection_formats: Dict[str, str] = {}
+        _collection_formats: Dict[str, str] = {
+        }
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -1218,26 +1243,30 @@ class SearchApi:
         # process the path parameters
         # process the query parameters
         if offset is not None:
-
+            
             _query_params.append(('offset', offset))
-
+            
         if limit is not None:
-
+            
             _query_params.append(('limit', limit))
-
+            
         if count is not None:
-
+            
             _query_params.append(('count', count))
-
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
         if search is not None:
             _body_params = search
 
+
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])
+            [
+                'application/json'
+            ]
+        )
 
         # set the HTTP header `Content-Type`
         if _content_type:
@@ -1245,12 +1274,19 @@ class SearchApi:
         else:
             _default_content_type = (
                 self.api_client.select_header_content_type(
-                    ['application/json']))
+                    [
+                        'application/json'
+                    ]
+                )
+            )
             if _default_content_type is not None:
                 _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
-        _auth_settings: List[str] = ['UserContextAuth', 'UserContextAuth']
+        _auth_settings: List[str] = [
+            'UserContextAuth', 
+            'UserContextAuth'
+        ]
 
         return self.api_client.param_serialize(
             method='POST',
@@ -1264,4 +1300,7 @@ class SearchApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth)
+            _request_auth=_request_auth
+        )
+
+

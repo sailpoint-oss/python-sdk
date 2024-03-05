@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -25,36 +27,20 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class Transform(BaseModel):
     """
     The representation of an internally- or customer-defined transform.
     """ # noqa: E501
-    name: Annotated[str,
-                    Field(min_length=1, strict=True, max_length=50)] = Field(
-                        description="Unique name of this transform")
+    name: Annotated[str, Field(min_length=1, strict=True, max_length=50)] = Field(description="Unique name of this transform")
     type: StrictStr = Field(description="The type of transform operation")
-    attributes: Optional[Dict[str, Any]] = Field(
-        description=
-        "Meta-data about the transform. Values in this list are specific to the type of transform to be executed."
-    )
+    attributes: Optional[Dict[str, Any]] = Field(description="Meta-data about the transform. Values in this list are specific to the type of transform to be executed.")
     __properties: ClassVar[List[str]] = ["name", "type", "attributes"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('accountAttribute', 'base64Decode', 'base64Encode',
-                         'concat', 'conditional', 'dateCompare', 'dateFormat',
-                         'dateMath', 'decomposeDiacriticalMarks', 'e164phone',
-                         'firstValid', 'rule', 'identityAttribute', 'indexOf',
-                         'iso3166', 'lastIndexOf', 'leftPad', 'lookup',
-                         'lower', 'normalizeNames', 'randomAlphaNumeric',
-                         'randomNumeric', 'reference', 'replaceAll', 'replace',
-                         'rightPad', 'split', 'static', 'substring', 'trim',
-                         'upper', 'usernameGenerator', 'uuid'):
-            raise ValueError(
-                "must be one of enum values ('accountAttribute', 'base64Decode', 'base64Encode', 'concat', 'conditional', 'dateCompare', 'dateFormat', 'dateMath', 'decomposeDiacriticalMarks', 'e164phone', 'firstValid', 'rule', 'identityAttribute', 'indexOf', 'iso3166', 'lastIndexOf', 'leftPad', 'lookup', 'lower', 'normalizeNames', 'randomAlphaNumeric', 'randomNumeric', 'reference', 'replaceAll', 'replace', 'rightPad', 'split', 'static', 'substring', 'trim', 'upper', 'usernameGenerator', 'uuid')"
-            )
+        if value not in ('accountAttribute', 'base64Decode', 'base64Encode', 'concat', 'conditional', 'dateCompare', 'dateFormat', 'dateMath', 'decomposeDiacriticalMarks', 'e164phone', 'firstValid', 'rule', 'identityAttribute', 'indexOf', 'iso3166', 'lastIndexOf', 'leftPad', 'lookup', 'lower', 'normalizeNames', 'randomAlphaNumeric', 'randomNumeric', 'reference', 'replaceAll', 'replace', 'rightPad', 'split', 'static', 'substring', 'trim', 'upper', 'usernameGenerator', 'uuid'):
+            raise ValueError("must be one of enum values ('accountAttribute', 'base64Decode', 'base64Encode', 'concat', 'conditional', 'dateCompare', 'dateFormat', 'dateMath', 'decomposeDiacriticalMarks', 'e164phone', 'firstValid', 'rule', 'identityAttribute', 'indexOf', 'iso3166', 'lastIndexOf', 'leftPad', 'lookup', 'lower', 'normalizeNames', 'randomAlphaNumeric', 'randomNumeric', 'reference', 'replaceAll', 'replace', 'rightPad', 'split', 'static', 'substring', 'trim', 'upper', 'usernameGenerator', 'uuid')")
         return value
 
     model_config = {
@@ -62,6 +48,7 @@ class Transform(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -89,7 +76,8 @@ class Transform(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if attributes (nullable) is None
@@ -114,3 +102,5 @@ class Transform(BaseModel):
             "attributes": obj.get("attributes")
         })
         return _obj
+
+

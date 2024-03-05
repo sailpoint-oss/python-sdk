@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,34 +26,18 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class CampaignReference(BaseModel):
     """
     CampaignReference
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     id: StrictStr = Field(description="The unique ID of the campaign.")
     name: StrictStr = Field(description="The name of the campaign.")
-    type: StrictStr = Field(
-        description="The type of object that is being referenced.")
-    campaign_type: StrictStr = Field(description="The type of the campaign.",
-                                     alias="campaignType")
-    description: Optional[StrictStr] = Field(
-        description=
-        "The description of the campaign set by the admin who created it.")
-    correlated_status: Dict[str, Any] = Field(
-        description=
-        "The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns can be Uncorrelated. An Uncorrelated certification campaign only includes Uncorrelated identities (An identity is uncorrelated if it has no accounts on an authoritative source).",
-        alias="correlatedStatus")
-    mandatory_comment_requirement: StrictStr = Field(
-        description=
-        "Determines whether comments are required for decisions during certification reviews. You can require comments for all decisions, revoke-only decisions, or no decisions. By default, comments are not required for decisions.",
-        alias="mandatoryCommentRequirement")
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "type", "campaignType", "description",
-        "correlatedStatus", "mandatoryCommentRequirement"
-    ]
+    type: StrictStr = Field(description="The type of object that is being referenced.")
+    campaign_type: StrictStr = Field(description="The type of the campaign.", alias="campaignType")
+    description: Optional[StrictStr] = Field(description="The description of the campaign set by the admin who created it.")
+    correlated_status: Dict[str, Any] = Field(description="The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns can be Uncorrelated. An Uncorrelated certification campaign only includes Uncorrelated identities (An identity is uncorrelated if it has no accounts on an authoritative source).", alias="correlatedStatus")
+    mandatory_comment_requirement: StrictStr = Field(description="Determines whether comments are required for decisions during certification reviews. You can require comments for all decisions, revoke-only decisions, or no decisions. By default, comments are not required for decisions.", alias="mandatoryCommentRequirement")
+    __properties: ClassVar[List[str]] = ["id", "name", "type", "campaignType", "description", "correlatedStatus", "mandatoryCommentRequirement"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -64,27 +50,21 @@ class CampaignReference(BaseModel):
     def campaign_type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('MANAGER', 'SOURCE_OWNER', 'SEARCH'):
-            raise ValueError(
-                "must be one of enum values ('MANAGER', 'SOURCE_OWNER', 'SEARCH')"
-            )
+            raise ValueError("must be one of enum values ('MANAGER', 'SOURCE_OWNER', 'SEARCH')")
         return value
 
     @field_validator('correlated_status')
     def correlated_status_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('CORRELATED', 'UNCORRELATED'):
-            raise ValueError(
-                "must be one of enum values ('CORRELATED', 'UNCORRELATED')")
+            raise ValueError("must be one of enum values ('CORRELATED', 'UNCORRELATED')")
         return value
 
     @field_validator('mandatory_comment_requirement')
     def mandatory_comment_requirement_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('ALL_DECISIONS', 'REVOKE_ONLY_DECISIONS',
-                         'NO_DECISIONS'):
-            raise ValueError(
-                "must be one of enum values ('ALL_DECISIONS', 'REVOKE_ONLY_DECISIONS', 'NO_DECISIONS')"
-            )
+        if value not in ('ALL_DECISIONS', 'REVOKE_ONLY_DECISIONS', 'NO_DECISIONS'):
+            raise ValueError("must be one of enum values ('ALL_DECISIONS', 'REVOKE_ONLY_DECISIONS', 'NO_DECISIONS')")
         return value
 
     model_config = {
@@ -92,6 +72,7 @@ class CampaignReference(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -119,7 +100,8 @@ class CampaignReference(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if description (nullable) is None
@@ -139,19 +121,14 @@ class CampaignReference(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "type":
-            obj.get("type"),
-            "campaignType":
-            obj.get("campaignType"),
-            "description":
-            obj.get("description"),
-            "correlatedStatus":
-            obj.get("correlatedStatus"),
-            "mandatoryCommentRequirement":
-            obj.get("mandatoryCommentRequirement")
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "type": obj.get("type"),
+            "campaignType": obj.get("campaignType"),
+            "description": obj.get("description"),
+            "correlatedStatus": obj.get("correlatedStatus"),
+            "mandatoryCommentRequirement": obj.get("mandatoryCommentRequirement")
         })
         return _obj
+
+

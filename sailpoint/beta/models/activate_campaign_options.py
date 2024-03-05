@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,18 +26,11 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ActivateCampaignOptions(BaseModel):
     """
     ActivateCampaignOptions
-    """
-
-  # noqa: E501
-    time_zone: Optional[StrictStr] = Field(
-        default='Z',
-        description=
-        "The timezone must be in a valid ISO 8601 format. Timezones in ISO 8601 are represented as UTC (represented as 'Z') or as an offset from UTC. The offset format can be +/-hh:mm, +/-hhmm, or +/-hh.",
-        alias="timeZone")
+    """ # noqa: E501
+    time_zone: Optional[StrictStr] = Field(default='Z', description="The timezone must be in a valid ISO 8601 format. Timezones in ISO 8601 are represented as UTC (represented as 'Z') or as an offset from UTC. The offset format can be +/-hh:mm, +/-hhmm, or +/-hh.", alias="timeZone")
     __properties: ClassVar[List[str]] = ["timeZone"]
 
     model_config = {
@@ -43,6 +38,7 @@ class ActivateCampaignOptions(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -70,7 +66,8 @@ class ActivateCampaignOptions(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -85,7 +82,8 @@ class ActivateCampaignOptions(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "timeZone":
-            obj.get("timeZone") if obj.get("timeZone") is not None else 'Z'
+            "timeZone": obj.get("timeZone") if obj.get("timeZone") is not None else 'Z'
         })
         return _obj
+
+

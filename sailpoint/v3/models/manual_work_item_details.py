@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -29,39 +30,24 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ManualWorkItemDetails(BaseModel):
     """
     ManualWorkItemDetails
-    """
-
-  # noqa: E501
-    forwarded: Optional[StrictBool] = Field(
-        default=None,
-        description=
-        "True if the request for this item was forwarded from one owner to another."
-    )
-    original_owner: Optional[ManualWorkItemDetailsOriginalOwner] = Field(
-        default=None, alias="originalOwner")
-    current_owner: Optional[ManualWorkItemDetailsCurrentOwner] = Field(
-        default=None, alias="currentOwner")
-    modified: Optional[datetime] = Field(
-        default=None, description="Time at which item was modified.")
+    """ # noqa: E501
+    forwarded: Optional[StrictBool] = Field(default=False, description="True if the request for this item was forwarded from one owner to another.")
+    original_owner: Optional[ManualWorkItemDetailsOriginalOwner] = Field(default=None, alias="originalOwner")
+    current_owner: Optional[ManualWorkItemDetailsCurrentOwner] = Field(default=None, alias="currentOwner")
+    modified: Optional[datetime] = Field(default=None, description="Time at which item was modified.")
     status: Optional[ManualWorkItemState] = None
-    forward_history: Optional[List[ApprovalForwardHistory]] = Field(
-        default=None,
-        description="The history of approval forward action.",
-        alias="forwardHistory")
-    __properties: ClassVar[List[str]] = [
-        "forwarded", "originalOwner", "currentOwner", "modified", "status",
-        "forwardHistory"
-    ]
+    forward_history: Optional[List[ApprovalForwardHistory]] = Field(default=None, description="The history of approval forward action.", alias="forwardHistory")
+    __properties: ClassVar[List[str]] = ["forwarded", "originalOwner", "currentOwner", "modified", "status", "forwardHistory"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -89,7 +75,8 @@ class ManualWorkItemDetails(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of original_owner
@@ -105,6 +92,21 @@ class ManualWorkItemDetails(BaseModel):
                 if _item:
                     _items.append(_item.to_dict())
             _dict['forwardHistory'] = _items
+        # set to None if original_owner (nullable) is None
+        # and model_fields_set contains the field
+        if self.original_owner is None and "original_owner" in self.model_fields_set:
+            _dict['originalOwner'] = None
+
+        # set to None if current_owner (nullable) is None
+        # and model_fields_set contains the field
+        if self.current_owner is None and "current_owner" in self.model_fields_set:
+            _dict['currentOwner'] = None
+
+        # set to None if forward_history (nullable) is None
+        # and model_fields_set contains the field
+        if self.forward_history is None and "forward_history" in self.model_fields_set:
+            _dict['forwardHistory'] = None
+
         return _dict
 
     @classmethod
@@ -117,23 +119,13 @@ class ManualWorkItemDetails(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "forwarded":
-            obj.get("forwarded"),
-            "originalOwner":
-            ManualWorkItemDetailsOriginalOwner.from_dict(
-                obj.get("originalOwner"))
-            if obj.get("originalOwner") is not None else None,
-            "currentOwner":
-            ManualWorkItemDetailsCurrentOwner.from_dict(
-                obj.get("currentOwner"))
-            if obj.get("currentOwner") is not None else None,
-            "modified":
-            obj.get("modified"),
-            "status":
-            obj.get("status"),
-            "forwardHistory": [
-                ApprovalForwardHistory.from_dict(_item)
-                for _item in obj.get("forwardHistory")
-            ] if obj.get("forwardHistory") is not None else None
+            "forwarded": obj.get("forwarded") if obj.get("forwarded") is not None else False,
+            "originalOwner": ManualWorkItemDetailsOriginalOwner.from_dict(obj.get("originalOwner")) if obj.get("originalOwner") is not None else None,
+            "currentOwner": ManualWorkItemDetailsCurrentOwner.from_dict(obj.get("currentOwner")) if obj.get("currentOwner") is not None else None,
+            "modified": obj.get("modified"),
+            "status": obj.get("status"),
+            "forwardHistory": [ApprovalForwardHistory.from_dict(_item) for _item in obj.get("forwardHistory")] if obj.get("forwardHistory") is not None else None
         })
         return _obj
+
+

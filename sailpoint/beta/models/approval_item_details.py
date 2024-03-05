@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -25,36 +27,25 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ApprovalItemDetails(BaseModel):
     """
     ApprovalItemDetails
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="The approval item's ID")
-    account: Optional[StrictStr] = Field(
-        default=None,
-        description="The account referenced by the approval item")
-    application: Optional[StrictStr] = Field(
-        default=None, description="The name of the application/source")
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="The attribute's name")
-    operation: Optional[StrictStr] = Field(
-        default=None, description="The attribute's operation")
-    value: Optional[StrictStr] = Field(default=None,
-                                       description="The attribute's value")
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="The approval item's ID")
+    account: Optional[StrictStr] = Field(default=None, description="The account referenced by the approval item")
+    application: Optional[StrictStr] = Field(default=None, description="The name of the application/source")
+    name: Optional[StrictStr] = Field(default=None, description="The attribute's name")
+    operation: Optional[StrictStr] = Field(default=None, description="The attribute's operation")
+    value: Optional[StrictStr] = Field(default=None, description="The attribute's value")
     state: Optional[WorkItemState] = None
-    __properties: ClassVar[List[str]] = [
-        "id", "account", "application", "name", "operation", "value", "state"
-    ]
+    __properties: ClassVar[List[str]] = ["id", "account", "application", "name", "operation", "value", "state"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -82,7 +73,8 @@ class ApprovalItemDetails(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -106,3 +98,5 @@ class ApprovalItemDetails(BaseModel):
             "state": obj.get("state")
         })
         return _obj
+
+

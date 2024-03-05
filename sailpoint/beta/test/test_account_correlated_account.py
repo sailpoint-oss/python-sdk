@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.account_correlated_account import AccountCorrelatedAccount
-
 
 class TestAccountCorrelatedAccount(unittest.TestCase):
     """AccountCorrelatedAccount unit test stubs"""
@@ -55,7 +55,6 @@ class TestAccountCorrelatedAccount(unittest.TestCase):
         """Test AccountCorrelatedAccount"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

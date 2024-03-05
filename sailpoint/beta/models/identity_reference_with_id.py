@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -25,13 +27,10 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class IdentityReferenceWithId(BaseModel):
     """
     IdentityReferenceWithId
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     type: Optional[DtoType] = None
     id: Optional[StrictStr] = Field(default=None, description="Identity id")
     __properties: ClassVar[List[str]] = ["type", "id"]
@@ -41,6 +40,7 @@ class IdentityReferenceWithId(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -68,7 +68,8 @@ class IdentityReferenceWithId(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -87,3 +88,5 @@ class IdentityReferenceWithId(BaseModel):
             "id": obj.get("id")
         })
         return _obj
+
+

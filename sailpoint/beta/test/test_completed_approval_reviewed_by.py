@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.completed_approval_reviewed_by import CompletedApprovalReviewedBy
-
 
 class TestCompletedApprovalReviewedBy(unittest.TestCase):
     """CompletedApprovalReviewedBy unit test stubs"""
@@ -49,7 +49,6 @@ class TestCompletedApprovalReviewedBy(unittest.TestCase):
         """Test CompletedApprovalReviewedBy"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

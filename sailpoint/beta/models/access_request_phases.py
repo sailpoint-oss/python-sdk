@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -25,29 +26,17 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccessRequestPhases(BaseModel):
     """
     Provides additional details about this access request phase.
     """ # noqa: E501
-    started: Optional[datetime] = Field(
-        default=None, description="The time that this phase started.")
-    finished: Optional[datetime] = Field(
-        default=None, description="The time that this phase finished.")
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="The name of this phase.")
-    state: Optional[StrictStr] = Field(default=None,
-                                       description="The state of this phase.")
-    result: Optional[StrictStr] = Field(default=None,
-                                        description="The state of this phase.")
-    phase_reference: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "A reference to another object on the RequestedItemStatus that contains more details about the phase. Note that for the Provisioning phase, this will be empty if there are no manual work items.",
-        alias="phaseReference")
-    __properties: ClassVar[List[str]] = [
-        "started", "finished", "name", "state", "result", "phaseReference"
-    ]
+    started: Optional[datetime] = Field(default=None, description="The time that this phase started.")
+    finished: Optional[datetime] = Field(default=None, description="The time that this phase finished.")
+    name: Optional[StrictStr] = Field(default=None, description="The name of this phase.")
+    state: Optional[StrictStr] = Field(default=None, description="The state of this phase.")
+    result: Optional[StrictStr] = Field(default=None, description="The state of this phase.")
+    phase_reference: Optional[StrictStr] = Field(default=None, description="A reference to another object on the RequestedItemStatus that contains more details about the phase. Note that for the Provisioning phase, this will be empty if there are no manual work items.", alias="phaseReference")
+    __properties: ClassVar[List[str]] = ["started", "finished", "name", "state", "result", "phaseReference"]
 
     @field_validator('state')
     def state_validate_enum(cls, value):
@@ -55,10 +44,8 @@ class AccessRequestPhases(BaseModel):
         if value is None:
             return value
 
-        if value not in ('PENDING', 'EXECUTING', 'COMPLETED', 'CANCELLED'):
-            raise ValueError(
-                "must be one of enum values ('PENDING', 'EXECUTING', 'COMPLETED', 'CANCELLED')"
-            )
+        if value not in ('PENDING', 'EXECUTING', 'COMPLETED', 'CANCELLED', 'NOT_EXECUTED'):
+            raise ValueError("must be one of enum values ('PENDING', 'EXECUTING', 'COMPLETED', 'CANCELLED', 'NOT_EXECUTED')")
         return value
 
     @field_validator('result')
@@ -67,9 +54,8 @@ class AccessRequestPhases(BaseModel):
         if value is None:
             return value
 
-        if value not in ('SUCCESSFUL', 'FAILED'):
-            raise ValueError(
-                "must be one of enum values ('SUCCESSFUL', 'FAILED')")
+        if value not in ('SUCCESSFUL', 'FAILED', 'null'):
+            raise ValueError("must be one of enum values ('SUCCESSFUL', 'FAILED', 'null')")
         return value
 
     model_config = {
@@ -77,6 +63,7 @@ class AccessRequestPhases(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -104,9 +91,25 @@ class AccessRequestPhases(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
+        # set to None if finished (nullable) is None
+        # and model_fields_set contains the field
+        if self.finished is None and "finished" in self.model_fields_set:
+            _dict['finished'] = None
+
+        # set to None if result (nullable) is None
+        # and model_fields_set contains the field
+        if self.result is None and "result" in self.model_fields_set:
+            _dict['result'] = None
+
+        # set to None if phase_reference (nullable) is None
+        # and model_fields_set contains the field
+        if self.phase_reference is None and "phase_reference" in self.model_fields_set:
+            _dict['phaseReference'] = None
+
         return _dict
 
     @classmethod
@@ -127,3 +130,5 @@ class AccessRequestPhases(BaseModel):
             "phaseReference": obj.get("phaseReference")
         })
         return _obj
+
+

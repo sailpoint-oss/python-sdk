@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import io
 import warnings
 
@@ -54,47 +55,25 @@ class IdentityHistoryApi:
             api_client = ApiClient.get_default()
         self.api_client = api_client
 
+
     @validate_call
     def compare_identity_snapshots(
         self,
-        id: Annotated[StrictStr,
-                      Field(description="The identity id")],
-        snapshot1: Annotated[
-            Optional[StrictStr],
-            Field(description="The snapshot 1 of identity")] = None,
-        snapshot2: Annotated[
-            Optional[StrictStr],
-            Field(description="The snapshot 2 of identity")] = None,
-        access_item_types: Annotated[
-            Optional[List[StrictStr]],
-            Field(
-                description=
-                "An optional list of access item types (app, account, entitlement, etc...) to return.   If null or empty, all access items types are returned "
-            )] = None,
-        limit: Annotated[
-            Optional[Annotated[int, Field(le=250, strict=True, ge=0)]],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        offset: Annotated[
-            Optional[Annotated[int, Field(strict=True, ge=0)]],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        count: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        id: Annotated[StrictStr, Field(description="The identity id")],
+        snapshot1: Annotated[Optional[StrictStr], Field(description="The snapshot 1 of identity")] = None,
+        snapshot2: Annotated[Optional[StrictStr], Field(description="The snapshot 2 of identity")] = None,
+        access_item_types: Annotated[Optional[List[StrictStr]], Field(description="An optional list of access item types (app, account, entitlement, etc...) to return.   If null or empty, all access items types are returned ")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -151,7 +130,8 @@ class IdentityHistoryApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[IdentityCompareResponse]",
@@ -162,54 +142,34 @@ class IdentityHistoryApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
+
     @validate_call
     def compare_identity_snapshots_with_http_info(
         self,
-        id: Annotated[StrictStr,
-                      Field(description="The identity id")],
-        snapshot1: Annotated[
-            Optional[StrictStr],
-            Field(description="The snapshot 1 of identity")] = None,
-        snapshot2: Annotated[
-            Optional[StrictStr],
-            Field(description="The snapshot 2 of identity")] = None,
-        access_item_types: Annotated[
-            Optional[List[StrictStr]],
-            Field(
-                description=
-                "An optional list of access item types (app, account, entitlement, etc...) to return.   If null or empty, all access items types are returned "
-            )] = None,
-        limit: Annotated[
-            Optional[Annotated[int, Field(le=250, strict=True, ge=0)]],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        offset: Annotated[
-            Optional[Annotated[int, Field(strict=True, ge=0)]],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        count: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        id: Annotated[StrictStr, Field(description="The identity id")],
+        snapshot1: Annotated[Optional[StrictStr], Field(description="The snapshot 1 of identity")] = None,
+        snapshot2: Annotated[Optional[StrictStr], Field(description="The snapshot 2 of identity")] = None,
+        access_item_types: Annotated[Optional[List[StrictStr]], Field(description="An optional list of access item types (app, account, entitlement, etc...) to return.   If null or empty, all access items types are returned ")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -266,7 +226,8 @@ class IdentityHistoryApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[IdentityCompareResponse]",
@@ -277,54 +238,34 @@ class IdentityHistoryApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
+
     @validate_call
     def compare_identity_snapshots_without_preload_content(
         self,
-        id: Annotated[StrictStr,
-                      Field(description="The identity id")],
-        snapshot1: Annotated[
-            Optional[StrictStr],
-            Field(description="The snapshot 1 of identity")] = None,
-        snapshot2: Annotated[
-            Optional[StrictStr],
-            Field(description="The snapshot 2 of identity")] = None,
-        access_item_types: Annotated[
-            Optional[List[StrictStr]],
-            Field(
-                description=
-                "An optional list of access item types (app, account, entitlement, etc...) to return.   If null or empty, all access items types are returned "
-            )] = None,
-        limit: Annotated[
-            Optional[Annotated[int, Field(le=250, strict=True, ge=0)]],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        offset: Annotated[
-            Optional[Annotated[int, Field(strict=True, ge=0)]],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        count: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        id: Annotated[StrictStr, Field(description="The identity id")],
+        snapshot1: Annotated[Optional[StrictStr], Field(description="The snapshot 1 of identity")] = None,
+        snapshot2: Annotated[Optional[StrictStr], Field(description="The snapshot 2 of identity")] = None,
+        access_item_types: Annotated[Optional[List[StrictStr]], Field(description="An optional list of access item types (app, account, entitlement, etc...) to return.   If null or empty, all access items types are returned ")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -381,7 +322,8 @@ class IdentityHistoryApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[IdentityCompareResponse]",
@@ -392,8 +334,11 @@ class IdentityHistoryApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         return response_data.response
+
 
     def _compare_identity_snapshots_serialize(
         self,
@@ -428,39 +373,47 @@ class IdentityHistoryApi:
             _path_params['id'] = id
         # process the query parameters
         if snapshot1 is not None:
-
+            
             _query_params.append(('snapshot1', snapshot1))
-
+            
         if snapshot2 is not None:
-
+            
             _query_params.append(('snapshot2', snapshot2))
-
+            
         if access_item_types is not None:
-
+            
             _query_params.append(('accessItemTypes', access_item_types))
-
+            
         if limit is not None:
-
+            
             _query_params.append(('limit', limit))
-
+            
         if offset is not None:
-
+            
             _query_params.append(('offset', offset))
-
+            
         if count is not None:
-
+            
             _query_params.append(('count', count))
-
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
 
+
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])
+            [
+                'application/json'
+            ]
+        )
+
 
         # authentication setting
-        _auth_settings: List[str] = ['UserContextAuth', 'UserContextAuth']
+        _auth_settings: List[str] = [
+            'UserContextAuth', 
+            'UserContextAuth'
+        ]
 
         return self.api_client.param_serialize(
             method='GET',
@@ -474,52 +427,31 @@ class IdentityHistoryApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth)
+            _request_auth=_request_auth
+        )
+
+
+
 
     @validate_call
     def compare_identity_snapshots_access_type(
         self,
-        id: Annotated[StrictStr,
-                      Field(description="The identity id")],
-        access_type: Annotated[
-            StrictStr,
-            Field(description="The specific type which needs to be compared")],
-        access_associated: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "Indicates if added or removed access needs to be returned. true - added, false - removed, null - both added & removed"
-            )] = None,
-        snapshot1: Annotated[
-            Optional[StrictStr],
-            Field(description="The snapshot 1 of identity")] = None,
-        snapshot2: Annotated[
-            Optional[StrictStr],
-            Field(description="The snapshot 2 of identity")] = None,
-        limit: Annotated[
-            Optional[Annotated[int, Field(le=250, strict=True, ge=0)]],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        offset: Annotated[
-            Optional[Annotated[int, Field(strict=True, ge=0)]],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        count: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        id: Annotated[StrictStr, Field(description="The identity id")],
+        access_type: Annotated[StrictStr, Field(description="The specific type which needs to be compared")],
+        access_associated: Annotated[Optional[StrictBool], Field(description="Indicates if added or removed access needs to be returned. true - added, false - removed, null - both added & removed")] = None,
+        snapshot1: Annotated[Optional[StrictStr], Field(description="The snapshot 1 of identity")] = None,
+        snapshot2: Annotated[Optional[StrictStr], Field(description="The snapshot 2 of identity")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -579,7 +511,8 @@ class IdentityHistoryApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[AccessItemDiff]",
@@ -590,57 +523,35 @@ class IdentityHistoryApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
+
     @validate_call
     def compare_identity_snapshots_access_type_with_http_info(
         self,
-        id: Annotated[StrictStr,
-                      Field(description="The identity id")],
-        access_type: Annotated[
-            StrictStr,
-            Field(description="The specific type which needs to be compared")],
-        access_associated: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "Indicates if added or removed access needs to be returned. true - added, false - removed, null - both added & removed"
-            )] = None,
-        snapshot1: Annotated[
-            Optional[StrictStr],
-            Field(description="The snapshot 1 of identity")] = None,
-        snapshot2: Annotated[
-            Optional[StrictStr],
-            Field(description="The snapshot 2 of identity")] = None,
-        limit: Annotated[
-            Optional[Annotated[int, Field(le=250, strict=True, ge=0)]],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        offset: Annotated[
-            Optional[Annotated[int, Field(strict=True, ge=0)]],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        count: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        id: Annotated[StrictStr, Field(description="The identity id")],
+        access_type: Annotated[StrictStr, Field(description="The specific type which needs to be compared")],
+        access_associated: Annotated[Optional[StrictBool], Field(description="Indicates if added or removed access needs to be returned. true - added, false - removed, null - both added & removed")] = None,
+        snapshot1: Annotated[Optional[StrictStr], Field(description="The snapshot 1 of identity")] = None,
+        snapshot2: Annotated[Optional[StrictStr], Field(description="The snapshot 2 of identity")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -700,7 +611,8 @@ class IdentityHistoryApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[AccessItemDiff]",
@@ -711,57 +623,35 @@ class IdentityHistoryApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
+
     @validate_call
     def compare_identity_snapshots_access_type_without_preload_content(
         self,
-        id: Annotated[StrictStr,
-                      Field(description="The identity id")],
-        access_type: Annotated[
-            StrictStr,
-            Field(description="The specific type which needs to be compared")],
-        access_associated: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "Indicates if added or removed access needs to be returned. true - added, false - removed, null - both added & removed"
-            )] = None,
-        snapshot1: Annotated[
-            Optional[StrictStr],
-            Field(description="The snapshot 1 of identity")] = None,
-        snapshot2: Annotated[
-            Optional[StrictStr],
-            Field(description="The snapshot 2 of identity")] = None,
-        limit: Annotated[
-            Optional[Annotated[int, Field(le=250, strict=True, ge=0)]],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        offset: Annotated[
-            Optional[Annotated[int, Field(strict=True, ge=0)]],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        count: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        id: Annotated[StrictStr, Field(description="The identity id")],
+        access_type: Annotated[StrictStr, Field(description="The specific type which needs to be compared")],
+        access_associated: Annotated[Optional[StrictBool], Field(description="Indicates if added or removed access needs to be returned. true - added, false - removed, null - both added & removed")] = None,
+        snapshot1: Annotated[Optional[StrictStr], Field(description="The snapshot 1 of identity")] = None,
+        snapshot2: Annotated[Optional[StrictStr], Field(description="The snapshot 2 of identity")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -821,7 +711,8 @@ class IdentityHistoryApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[AccessItemDiff]",
@@ -832,8 +723,11 @@ class IdentityHistoryApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         return response_data.response
+
 
     def _compare_identity_snapshots_access_type_serialize(
         self,
@@ -853,7 +747,8 @@ class IdentityHistoryApi:
 
         _host = None
 
-        _collection_formats: Dict[str, str] = {}
+        _collection_formats: Dict[str, str] = {
+        }
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -869,39 +764,47 @@ class IdentityHistoryApi:
             _path_params['accessType'] = access_type
         # process the query parameters
         if access_associated is not None:
-
+            
             _query_params.append(('access-associated', access_associated))
-
+            
         if snapshot1 is not None:
-
+            
             _query_params.append(('snapshot1', snapshot1))
-
+            
         if snapshot2 is not None:
-
+            
             _query_params.append(('snapshot2', snapshot2))
-
+            
         if limit is not None:
-
+            
             _query_params.append(('limit', limit))
-
+            
         if offset is not None:
-
+            
             _query_params.append(('offset', offset))
-
+            
         if count is not None:
-
+            
             _query_params.append(('count', count))
-
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
 
+
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])
+            [
+                'application/json'
+            ]
+        )
+
 
         # authentication setting
-        _auth_settings: List[str] = ['UserContextAuth', 'UserContextAuth']
+        _auth_settings: List[str] = [
+            'UserContextAuth', 
+            'UserContextAuth'
+        ]
 
         return self.api_client.param_serialize(
             method='GET',
@@ -915,19 +818,24 @@ class IdentityHistoryApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth)
+            _request_auth=_request_auth
+        )
+
+
+
 
     @validate_call
     def get_historical_identity(
         self,
-        id: Annotated[StrictStr,
-                      Field(description="The identity id")],
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        id: Annotated[StrictStr, Field(description="The identity id")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -966,7 +874,8 @@ class IdentityHistoryApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IdentityHistoryResponse",
@@ -977,24 +886,28 @@ class IdentityHistoryApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
+
     @validate_call
     def get_historical_identity_with_http_info(
         self,
-        id: Annotated[StrictStr,
-                      Field(description="The identity id")],
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        id: Annotated[StrictStr, Field(description="The identity id")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -1033,7 +946,8 @@ class IdentityHistoryApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IdentityHistoryResponse",
@@ -1044,24 +958,28 @@ class IdentityHistoryApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
+
     @validate_call
     def get_historical_identity_without_preload_content(
         self,
-        id: Annotated[StrictStr,
-                      Field(description="The identity id")],
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        id: Annotated[StrictStr, Field(description="The identity id")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -1100,7 +1018,8 @@ class IdentityHistoryApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IdentityHistoryResponse",
@@ -1111,8 +1030,11 @@ class IdentityHistoryApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         return response_data.response
+
 
     def _get_historical_identity_serialize(
         self,
@@ -1125,7 +1047,8 @@ class IdentityHistoryApi:
 
         _host = None
 
-        _collection_formats: Dict[str, str] = {}
+        _collection_formats: Dict[str, str] = {
+        }
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -1142,12 +1065,20 @@ class IdentityHistoryApi:
         # process the form parameters
         # process the body parameter
 
+
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])
+            [
+                'application/json'
+            ]
+        )
+
 
         # authentication setting
-        _auth_settings: List[str] = ['UserContextAuth', 'UserContextAuth']
+        _auth_settings: List[str] = [
+            'UserContextAuth', 
+            'UserContextAuth'
+        ]
 
         return self.api_client.param_serialize(
             method='GET',
@@ -1161,54 +1092,30 @@ class IdentityHistoryApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth)
+            _request_auth=_request_auth
+        )
+
+
+
 
     @validate_call
     def get_historical_identity_events(
         self,
-        id: Annotated[StrictStr,
-                      Field(description="The identity id")],
-        var_from: Annotated[
-            Optional[StrictStr],
-            Field(description=
-                  "The optional instant from which to return the access events"
-                  )] = None,
-        event_types: Annotated[
-            Optional[List[StrictStr]],
-            Field(
-                description=
-                "An optional list of event types to return.  If null or empty, all events are returned"
-            )] = None,
-        access_item_types: Annotated[
-            Optional[List[StrictStr]],
-            Field(
-                description=
-                "An optional list of access item types (app, account, entitlement, etc...) to return.   If null or empty, all access items types are returned"
-            )] = None,
-        limit: Annotated[
-            Optional[Annotated[int, Field(le=250, strict=True, ge=0)]],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        offset: Annotated[
-            Optional[Annotated[int, Field(strict=True, ge=0)]],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        count: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        id: Annotated[StrictStr, Field(description="The identity id")],
+        var_from: Annotated[Optional[StrictStr], Field(description="The optional instant from which to return the access events")] = None,
+        event_types: Annotated[Optional[List[StrictStr]], Field(description="An optional list of event types to return.  If null or empty, all events are returned")] = None,
+        access_item_types: Annotated[Optional[List[StrictStr]], Field(description="An optional list of access item types (app, account, entitlement, etc...) to return.   If null or empty, all access items types are returned")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -1265,7 +1172,8 @@ class IdentityHistoryApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[GetHistoricalIdentityEvents200ResponseInner]",
@@ -1277,59 +1185,34 @@ class IdentityHistoryApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
+
     @validate_call
     def get_historical_identity_events_with_http_info(
         self,
-        id: Annotated[StrictStr,
-                      Field(description="The identity id")],
-        var_from: Annotated[
-            Optional[StrictStr],
-            Field(description=
-                  "The optional instant from which to return the access events"
-                  )] = None,
-        event_types: Annotated[
-            Optional[List[StrictStr]],
-            Field(
-                description=
-                "An optional list of event types to return.  If null or empty, all events are returned"
-            )] = None,
-        access_item_types: Annotated[
-            Optional[List[StrictStr]],
-            Field(
-                description=
-                "An optional list of access item types (app, account, entitlement, etc...) to return.   If null or empty, all access items types are returned"
-            )] = None,
-        limit: Annotated[
-            Optional[Annotated[int, Field(le=250, strict=True, ge=0)]],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        offset: Annotated[
-            Optional[Annotated[int, Field(strict=True, ge=0)]],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        count: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        id: Annotated[StrictStr, Field(description="The identity id")],
+        var_from: Annotated[Optional[StrictStr], Field(description="The optional instant from which to return the access events")] = None,
+        event_types: Annotated[Optional[List[StrictStr]], Field(description="An optional list of event types to return.  If null or empty, all events are returned")] = None,
+        access_item_types: Annotated[Optional[List[StrictStr]], Field(description="An optional list of access item types (app, account, entitlement, etc...) to return.   If null or empty, all access items types are returned")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -1386,7 +1269,8 @@ class IdentityHistoryApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[GetHistoricalIdentityEvents200ResponseInner]",
@@ -1398,59 +1282,34 @@ class IdentityHistoryApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
+
     @validate_call
     def get_historical_identity_events_without_preload_content(
         self,
-        id: Annotated[StrictStr,
-                      Field(description="The identity id")],
-        var_from: Annotated[
-            Optional[StrictStr],
-            Field(description=
-                  "The optional instant from which to return the access events"
-                  )] = None,
-        event_types: Annotated[
-            Optional[List[StrictStr]],
-            Field(
-                description=
-                "An optional list of event types to return.  If null or empty, all events are returned"
-            )] = None,
-        access_item_types: Annotated[
-            Optional[List[StrictStr]],
-            Field(
-                description=
-                "An optional list of access item types (app, account, entitlement, etc...) to return.   If null or empty, all access items types are returned"
-            )] = None,
-        limit: Annotated[
-            Optional[Annotated[int, Field(le=250, strict=True, ge=0)]],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        offset: Annotated[
-            Optional[Annotated[int, Field(strict=True, ge=0)]],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        count: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        id: Annotated[StrictStr, Field(description="The identity id")],
+        var_from: Annotated[Optional[StrictStr], Field(description="The optional instant from which to return the access events")] = None,
+        event_types: Annotated[Optional[List[StrictStr]], Field(description="An optional list of event types to return.  If null or empty, all events are returned")] = None,
+        access_item_types: Annotated[Optional[List[StrictStr]], Field(description="An optional list of access item types (app, account, entitlement, etc...) to return.   If null or empty, all access items types are returned")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -1507,7 +1366,8 @@ class IdentityHistoryApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[GetHistoricalIdentityEvents200ResponseInner]",
@@ -1519,8 +1379,11 @@ class IdentityHistoryApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         return response_data.response
+
 
     def _get_historical_identity_events_serialize(
         self,
@@ -1556,39 +1419,47 @@ class IdentityHistoryApi:
             _path_params['id'] = id
         # process the query parameters
         if var_from is not None:
-
+            
             _query_params.append(('from', var_from))
-
+            
         if event_types is not None:
-
+            
             _query_params.append(('eventTypes', event_types))
-
+            
         if access_item_types is not None:
-
+            
             _query_params.append(('accessItemTypes', access_item_types))
-
+            
         if limit is not None:
-
+            
             _query_params.append(('limit', limit))
-
+            
         if offset is not None:
-
+            
             _query_params.append(('offset', offset))
-
+            
         if count is not None:
-
+            
             _query_params.append(('count', count))
-
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
 
+
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])
+            [
+                'application/json'
+            ]
+        )
+
 
         # authentication setting
-        _auth_settings: List[str] = ['UserContextAuth', 'UserContextAuth']
+        _auth_settings: List[str] = [
+            'UserContextAuth', 
+            'UserContextAuth'
+        ]
 
         return self.api_client.param_serialize(
             method='GET',
@@ -1602,21 +1473,25 @@ class IdentityHistoryApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth)
+            _request_auth=_request_auth
+        )
+
+
+
 
     @validate_call
     def get_identity_snapshot(
         self,
-        id: Annotated[StrictStr,
-                      Field(description="The identity id")],
-        var_date: Annotated[StrictStr,
-                            Field(description="The specified date")],
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        id: Annotated[StrictStr, Field(description="The identity id")],
+        var_date: Annotated[StrictStr, Field(description="The specified date")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -1658,7 +1533,8 @@ class IdentityHistoryApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IdentityHistoryResponse",
@@ -1669,26 +1545,29 @@ class IdentityHistoryApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
+
     @validate_call
     def get_identity_snapshot_with_http_info(
         self,
-        id: Annotated[StrictStr,
-                      Field(description="The identity id")],
-        var_date: Annotated[StrictStr,
-                            Field(description="The specified date")],
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        id: Annotated[StrictStr, Field(description="The identity id")],
+        var_date: Annotated[StrictStr, Field(description="The specified date")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -1730,7 +1609,8 @@ class IdentityHistoryApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IdentityHistoryResponse",
@@ -1741,26 +1621,29 @@ class IdentityHistoryApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
+
     @validate_call
     def get_identity_snapshot_without_preload_content(
         self,
-        id: Annotated[StrictStr,
-                      Field(description="The identity id")],
-        var_date: Annotated[StrictStr,
-                            Field(description="The specified date")],
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        id: Annotated[StrictStr, Field(description="The identity id")],
+        var_date: Annotated[StrictStr, Field(description="The specified date")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -1802,7 +1685,8 @@ class IdentityHistoryApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IdentityHistoryResponse",
@@ -1813,8 +1697,11 @@ class IdentityHistoryApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         return response_data.response
+
 
     def _get_identity_snapshot_serialize(
         self,
@@ -1828,7 +1715,8 @@ class IdentityHistoryApi:
 
         _host = None
 
-        _collection_formats: Dict[str, str] = {}
+        _collection_formats: Dict[str, str] = {
+        }
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -1847,12 +1735,20 @@ class IdentityHistoryApi:
         # process the form parameters
         # process the body parameter
 
+
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])
+            [
+                'application/json'
+            ]
+        )
+
 
         # authentication setting
-        _auth_settings: List[str] = ['UserContextAuth', 'UserContextAuth']
+        _auth_settings: List[str] = [
+            'UserContextAuth', 
+            'UserContextAuth'
+        ]
 
         return self.api_client.param_serialize(
             method='GET',
@@ -1866,52 +1762,30 @@ class IdentityHistoryApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth)
+            _request_auth=_request_auth
+        )
+
+
+
 
     @validate_call
     def get_identity_snapshot_summary(
         self,
-        id: Annotated[StrictStr,
-                      Field(description="The identity id")],
-        before: Annotated[
-            Optional[StrictStr],
-            Field(
-                description="The date before which snapshot summary is required"
-            )] = None,
-        interval: Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "The interval indicating day or month. Defaults to month if not specified"
-            )] = None,
-        time_zone: Annotated[
-            Optional[StrictStr],
-            Field(description="The time zone. Defaults to UTC if not provided"
-                  )] = None,
-        limit: Annotated[
-            Optional[Annotated[int, Field(le=250, strict=True, ge=0)]],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        offset: Annotated[
-            Optional[Annotated[int, Field(strict=True, ge=0)]],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        count: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        id: Annotated[StrictStr, Field(description="The identity id")],
+        before: Annotated[Optional[StrictStr], Field(description="The date before which snapshot summary is required")] = None,
+        interval: Annotated[Optional[StrictStr], Field(description="The interval indicating day or month. Defaults to month if not specified")] = None,
+        time_zone: Annotated[Optional[StrictStr], Field(description="The time zone. Defaults to UTC if not provided")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -1968,7 +1842,8 @@ class IdentityHistoryApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[MetricResponse]",
@@ -1979,57 +1854,34 @@ class IdentityHistoryApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
+
     @validate_call
     def get_identity_snapshot_summary_with_http_info(
         self,
-        id: Annotated[StrictStr,
-                      Field(description="The identity id")],
-        before: Annotated[
-            Optional[StrictStr],
-            Field(
-                description="The date before which snapshot summary is required"
-            )] = None,
-        interval: Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "The interval indicating day or month. Defaults to month if not specified"
-            )] = None,
-        time_zone: Annotated[
-            Optional[StrictStr],
-            Field(description="The time zone. Defaults to UTC if not provided"
-                  )] = None,
-        limit: Annotated[
-            Optional[Annotated[int, Field(le=250, strict=True, ge=0)]],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        offset: Annotated[
-            Optional[Annotated[int, Field(strict=True, ge=0)]],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        count: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        id: Annotated[StrictStr, Field(description="The identity id")],
+        before: Annotated[Optional[StrictStr], Field(description="The date before which snapshot summary is required")] = None,
+        interval: Annotated[Optional[StrictStr], Field(description="The interval indicating day or month. Defaults to month if not specified")] = None,
+        time_zone: Annotated[Optional[StrictStr], Field(description="The time zone. Defaults to UTC if not provided")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -2086,7 +1938,8 @@ class IdentityHistoryApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[MetricResponse]",
@@ -2097,57 +1950,34 @@ class IdentityHistoryApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
+
     @validate_call
     def get_identity_snapshot_summary_without_preload_content(
         self,
-        id: Annotated[StrictStr,
-                      Field(description="The identity id")],
-        before: Annotated[
-            Optional[StrictStr],
-            Field(
-                description="The date before which snapshot summary is required"
-            )] = None,
-        interval: Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "The interval indicating day or month. Defaults to month if not specified"
-            )] = None,
-        time_zone: Annotated[
-            Optional[StrictStr],
-            Field(description="The time zone. Defaults to UTC if not provided"
-                  )] = None,
-        limit: Annotated[
-            Optional[Annotated[int, Field(le=250, strict=True, ge=0)]],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        offset: Annotated[
-            Optional[Annotated[int, Field(strict=True, ge=0)]],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        count: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        id: Annotated[StrictStr, Field(description="The identity id")],
+        before: Annotated[Optional[StrictStr], Field(description="The date before which snapshot summary is required")] = None,
+        interval: Annotated[Optional[StrictStr], Field(description="The interval indicating day or month. Defaults to month if not specified")] = None,
+        time_zone: Annotated[Optional[StrictStr], Field(description="The time zone. Defaults to UTC if not provided")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -2204,7 +2034,8 @@ class IdentityHistoryApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[MetricResponse]",
@@ -2215,8 +2046,11 @@ class IdentityHistoryApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         return response_data.response
+
 
     def _get_identity_snapshot_summary_serialize(
         self,
@@ -2235,7 +2069,8 @@ class IdentityHistoryApi:
 
         _host = None
 
-        _collection_formats: Dict[str, str] = {}
+        _collection_formats: Dict[str, str] = {
+        }
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -2249,39 +2084,47 @@ class IdentityHistoryApi:
             _path_params['id'] = id
         # process the query parameters
         if before is not None:
-
+            
             _query_params.append(('before', before))
-
+            
         if interval is not None:
-
+            
             _query_params.append(('interval', interval))
-
+            
         if time_zone is not None:
-
+            
             _query_params.append(('time-zone', time_zone))
-
+            
         if limit is not None:
-
+            
             _query_params.append(('limit', limit))
-
+            
         if offset is not None:
-
+            
             _query_params.append(('offset', offset))
-
+            
         if count is not None:
-
+            
             _query_params.append(('count', count))
-
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
 
+
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])
+            [
+                'application/json'
+            ]
+        )
+
 
         # authentication setting
-        _auth_settings: List[str] = ['UserContextAuth', 'UserContextAuth']
+        _auth_settings: List[str] = [
+            'UserContextAuth', 
+            'UserContextAuth'
+        ]
 
         return self.api_client.param_serialize(
             method='GET',
@@ -2295,19 +2138,24 @@ class IdentityHistoryApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth)
+            _request_auth=_request_auth
+        )
+
+
+
 
     @validate_call
     def get_identity_start_date(
         self,
-        id: Annotated[StrictStr,
-                      Field(description="The identity id")],
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        id: Annotated[StrictStr, Field(description="The identity id")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -2346,7 +2194,8 @@ class IdentityHistoryApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
@@ -2357,24 +2206,28 @@ class IdentityHistoryApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
+
     @validate_call
     def get_identity_start_date_with_http_info(
         self,
-        id: Annotated[StrictStr,
-                      Field(description="The identity id")],
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        id: Annotated[StrictStr, Field(description="The identity id")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -2413,7 +2266,8 @@ class IdentityHistoryApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
@@ -2424,24 +2278,28 @@ class IdentityHistoryApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
+
     @validate_call
     def get_identity_start_date_without_preload_content(
         self,
-        id: Annotated[StrictStr,
-                      Field(description="The identity id")],
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        id: Annotated[StrictStr, Field(description="The identity id")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -2480,7 +2338,8 @@ class IdentityHistoryApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
@@ -2491,8 +2350,11 @@ class IdentityHistoryApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         return response_data.response
+
 
     def _get_identity_start_date_serialize(
         self,
@@ -2505,7 +2367,8 @@ class IdentityHistoryApi:
 
         _host = None
 
-        _collection_formats: Dict[str, str] = {}
+        _collection_formats: Dict[str, str] = {
+        }
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -2522,12 +2385,20 @@ class IdentityHistoryApi:
         # process the form parameters
         # process the body parameter
 
+
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])
+            [
+                'application/json'
+            ]
+        )
+
 
         # authentication setting
-        _auth_settings: List[str] = ['UserContextAuth', 'UserContextAuth']
+        _auth_settings: List[str] = [
+            'UserContextAuth', 
+            'UserContextAuth'
+        ]
 
         return self.api_client.param_serialize(
             method='GET',
@@ -2541,47 +2412,28 @@ class IdentityHistoryApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth)
+            _request_auth=_request_auth
+        )
+
+
+
 
     @validate_call
     def list_historical_identities(
         self,
-        starts_with_query: Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "This param is used for starts-with search for first, last and display name of the identity"
-            )] = None,
-        is_deleted: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "Indicates if we want to only list down deleted identities or not."
-            )] = None,
-        is_active: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "Indicates if we want to only list active or inactive identities."
-            )] = None,
-        limit: Annotated[
-            Optional[Annotated[int, Field(le=250, strict=True, ge=0)]],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        offset: Annotated[
-            Optional[Annotated[int, Field(strict=True, ge=0)]],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        starts_with_query: Annotated[Optional[StrictStr], Field(description="This param is used for starts-with search for first, last and display name of the identity")] = None,
+        is_deleted: Annotated[Optional[StrictBool], Field(description="Indicates if we want to only list down deleted identities or not.")] = None,
+        is_active: Annotated[Optional[StrictBool], Field(description="Indicates if we want to only list active or inactive identities.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -2632,7 +2484,8 @@ class IdentityHistoryApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[IdentityListItem]",
@@ -2643,52 +2496,32 @@ class IdentityHistoryApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
+
     @validate_call
     def list_historical_identities_with_http_info(
         self,
-        starts_with_query: Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "This param is used for starts-with search for first, last and display name of the identity"
-            )] = None,
-        is_deleted: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "Indicates if we want to only list down deleted identities or not."
-            )] = None,
-        is_active: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "Indicates if we want to only list active or inactive identities."
-            )] = None,
-        limit: Annotated[
-            Optional[Annotated[int, Field(le=250, strict=True, ge=0)]],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        offset: Annotated[
-            Optional[Annotated[int, Field(strict=True, ge=0)]],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        starts_with_query: Annotated[Optional[StrictStr], Field(description="This param is used for starts-with search for first, last and display name of the identity")] = None,
+        is_deleted: Annotated[Optional[StrictBool], Field(description="Indicates if we want to only list down deleted identities or not.")] = None,
+        is_active: Annotated[Optional[StrictBool], Field(description="Indicates if we want to only list active or inactive identities.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -2739,7 +2572,8 @@ class IdentityHistoryApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[IdentityListItem]",
@@ -2750,52 +2584,32 @@ class IdentityHistoryApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
+
     @validate_call
     def list_historical_identities_without_preload_content(
         self,
-        starts_with_query: Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "This param is used for starts-with search for first, last and display name of the identity"
-            )] = None,
-        is_deleted: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "Indicates if we want to only list down deleted identities or not."
-            )] = None,
-        is_active: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "Indicates if we want to only list active or inactive identities."
-            )] = None,
-        limit: Annotated[
-            Optional[Annotated[int, Field(le=250, strict=True, ge=0)]],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        offset: Annotated[
-            Optional[Annotated[int, Field(strict=True, ge=0)]],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        starts_with_query: Annotated[Optional[StrictStr], Field(description="This param is used for starts-with search for first, last and display name of the identity")] = None,
+        is_deleted: Annotated[Optional[StrictBool], Field(description="Indicates if we want to only list down deleted identities or not.")] = None,
+        is_active: Annotated[Optional[StrictBool], Field(description="Indicates if we want to only list active or inactive identities.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -2846,7 +2660,8 @@ class IdentityHistoryApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[IdentityListItem]",
@@ -2857,8 +2672,11 @@ class IdentityHistoryApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         return response_data.response
+
 
     def _list_historical_identities_serialize(
         self,
@@ -2875,7 +2693,8 @@ class IdentityHistoryApi:
 
         _host = None
 
-        _collection_formats: Dict[str, str] = {}
+        _collection_formats: Dict[str, str] = {
+        }
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -2887,35 +2706,43 @@ class IdentityHistoryApi:
         # process the path parameters
         # process the query parameters
         if starts_with_query is not None:
-
+            
             _query_params.append(('starts-with-query', starts_with_query))
-
+            
         if is_deleted is not None:
-
+            
             _query_params.append(('is-deleted', is_deleted))
-
+            
         if is_active is not None:
-
+            
             _query_params.append(('is-active', is_active))
-
+            
         if limit is not None:
-
+            
             _query_params.append(('limit', limit))
-
+            
         if offset is not None:
-
+            
             _query_params.append(('offset', offset))
-
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
 
+
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])
+            [
+                'application/json'
+            ]
+        )
+
 
         # authentication setting
-        _auth_settings: List[str] = ['UserContextAuth', 'UserContextAuth']
+        _auth_settings: List[str] = [
+            'UserContextAuth', 
+            'UserContextAuth'
+        ]
 
         return self.api_client.param_serialize(
             method='GET',
@@ -2929,25 +2756,25 @@ class IdentityHistoryApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth)
+            _request_auth=_request_auth
+        )
+
+
+
 
     @validate_call
     def list_identity_access_items(
         self,
-        id: Annotated[StrictStr,
-                      Field(description="The identity id")],
-        type: Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "The type of access item for the identity. If not provided, it defaults to account"
-            )] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        id: Annotated[StrictStr, Field(description="The identity id")],
+        type: Annotated[Optional[StrictStr], Field(description="The type of access item for the identity. If not provided, it defaults to account")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -2989,7 +2816,8 @@ class IdentityHistoryApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ListIdentityAccessItems200ResponseInner]",
@@ -3000,30 +2828,29 @@ class IdentityHistoryApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
+
     @validate_call
     def list_identity_access_items_with_http_info(
         self,
-        id: Annotated[StrictStr,
-                      Field(description="The identity id")],
-        type: Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "The type of access item for the identity. If not provided, it defaults to account"
-            )] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        id: Annotated[StrictStr, Field(description="The identity id")],
+        type: Annotated[Optional[StrictStr], Field(description="The type of access item for the identity. If not provided, it defaults to account")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -3065,7 +2892,8 @@ class IdentityHistoryApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ListIdentityAccessItems200ResponseInner]",
@@ -3076,30 +2904,29 @@ class IdentityHistoryApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
+
     @validate_call
     def list_identity_access_items_without_preload_content(
         self,
-        id: Annotated[StrictStr,
-                      Field(description="The identity id")],
-        type: Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "The type of access item for the identity. If not provided, it defaults to account"
-            )] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        id: Annotated[StrictStr, Field(description="The identity id")],
+        type: Annotated[Optional[StrictStr], Field(description="The type of access item for the identity. If not provided, it defaults to account")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -3141,7 +2968,8 @@ class IdentityHistoryApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ListIdentityAccessItems200ResponseInner]",
@@ -3152,8 +2980,11 @@ class IdentityHistoryApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         return response_data.response
+
 
     def _list_identity_access_items_serialize(
         self,
@@ -3167,7 +2998,8 @@ class IdentityHistoryApi:
 
         _host = None
 
-        _collection_formats: Dict[str, str] = {}
+        _collection_formats: Dict[str, str] = {
+        }
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -3181,19 +3013,27 @@ class IdentityHistoryApi:
             _path_params['id'] = id
         # process the query parameters
         if type is not None:
-
+            
             _query_params.append(('type', type))
-
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
 
+
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])
+            [
+                'application/json'
+            ]
+        )
+
 
         # authentication setting
-        _auth_settings: List[str] = ['UserContextAuth', 'UserContextAuth']
+        _auth_settings: List[str] = [
+            'UserContextAuth', 
+            'UserContextAuth'
+        ]
 
         return self.api_client.param_serialize(
             method='GET',
@@ -3207,23 +3047,26 @@ class IdentityHistoryApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth)
+            _request_auth=_request_auth
+        )
+
+
+
 
     @validate_call
     def list_identity_snapshot_access_items(
         self,
-        id: Annotated[StrictStr,
-                      Field(description="The identity id")],
-        var_date: Annotated[StrictStr,
-                            Field(description="The specified date")],
-        type: Annotated[Optional[StrictStr],
-                        Field(description="The access item type")] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        id: Annotated[StrictStr, Field(description="The identity id")],
+        var_date: Annotated[StrictStr, Field(description="The specified date")],
+        type: Annotated[Optional[StrictStr], Field(description="The access item type")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -3268,7 +3111,8 @@ class IdentityHistoryApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ListIdentityAccessItems200ResponseInner]",
@@ -3279,28 +3123,30 @@ class IdentityHistoryApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
+
     @validate_call
     def list_identity_snapshot_access_items_with_http_info(
         self,
-        id: Annotated[StrictStr,
-                      Field(description="The identity id")],
-        var_date: Annotated[StrictStr,
-                            Field(description="The specified date")],
-        type: Annotated[Optional[StrictStr],
-                        Field(description="The access item type")] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        id: Annotated[StrictStr, Field(description="The identity id")],
+        var_date: Annotated[StrictStr, Field(description="The specified date")],
+        type: Annotated[Optional[StrictStr], Field(description="The access item type")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -3345,7 +3191,8 @@ class IdentityHistoryApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ListIdentityAccessItems200ResponseInner]",
@@ -3356,28 +3203,30 @@ class IdentityHistoryApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
+
     @validate_call
     def list_identity_snapshot_access_items_without_preload_content(
         self,
-        id: Annotated[StrictStr,
-                      Field(description="The identity id")],
-        var_date: Annotated[StrictStr,
-                            Field(description="The specified date")],
-        type: Annotated[Optional[StrictStr],
-                        Field(description="The access item type")] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        id: Annotated[StrictStr, Field(description="The identity id")],
+        var_date: Annotated[StrictStr, Field(description="The specified date")],
+        type: Annotated[Optional[StrictStr], Field(description="The access item type")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -3422,7 +3271,8 @@ class IdentityHistoryApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ListIdentityAccessItems200ResponseInner]",
@@ -3433,8 +3283,11 @@ class IdentityHistoryApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         return response_data.response
+
 
     def _list_identity_snapshot_access_items_serialize(
         self,
@@ -3449,7 +3302,8 @@ class IdentityHistoryApi:
 
         _host = None
 
-        _collection_formats: Dict[str, str] = {}
+        _collection_formats: Dict[str, str] = {
+        }
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -3465,24 +3319,31 @@ class IdentityHistoryApi:
             _path_params['date'] = var_date
         # process the query parameters
         if type is not None:
-
+            
             _query_params.append(('type', type))
-
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
 
+
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])
+            [
+                'application/json'
+            ]
+        )
+
 
         # authentication setting
-        _auth_settings: List[str] = ['UserContextAuth', 'UserContextAuth']
+        _auth_settings: List[str] = [
+            'UserContextAuth', 
+            'UserContextAuth'
+        ]
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path=
-            '/historical-identities/{id}/snapshots/{date}/access-items',
+            resource_path='/historical-identities/{id}/snapshots/{date}/access-items',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -3492,45 +3353,29 @@ class IdentityHistoryApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth)
+            _request_auth=_request_auth
+        )
+
+
+
 
     @validate_call
     def list_identity_snapshots(
         self,
-        id: Annotated[StrictStr,
-                      Field(description="The identity id")],
-        start: Annotated[Optional[StrictStr],
-                         Field(description="The specified start date")] = None,
-        interval: Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "The interval indicating the range in day or month for the specified interval-name"
-            )] = None,
-        limit: Annotated[
-            Optional[Annotated[int, Field(le=250, strict=True, ge=0)]],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        offset: Annotated[
-            Optional[Annotated[int, Field(strict=True, ge=0)]],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        count: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        id: Annotated[StrictStr, Field(description="The identity id")],
+        start: Annotated[Optional[StrictStr], Field(description="The specified start date")] = None,
+        interval: Annotated[Optional[StrictStr], Field(description="The interval indicating the range in day or month for the specified interval-name")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -3584,7 +3429,8 @@ class IdentityHistoryApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[IdentitySnapshotSummaryResponse]",
@@ -3595,50 +3441,33 @@ class IdentityHistoryApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
+
     @validate_call
     def list_identity_snapshots_with_http_info(
         self,
-        id: Annotated[StrictStr,
-                      Field(description="The identity id")],
-        start: Annotated[Optional[StrictStr],
-                         Field(description="The specified start date")] = None,
-        interval: Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "The interval indicating the range in day or month for the specified interval-name"
-            )] = None,
-        limit: Annotated[
-            Optional[Annotated[int, Field(le=250, strict=True, ge=0)]],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        offset: Annotated[
-            Optional[Annotated[int, Field(strict=True, ge=0)]],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        count: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        id: Annotated[StrictStr, Field(description="The identity id")],
+        start: Annotated[Optional[StrictStr], Field(description="The specified start date")] = None,
+        interval: Annotated[Optional[StrictStr], Field(description="The interval indicating the range in day or month for the specified interval-name")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -3692,7 +3521,8 @@ class IdentityHistoryApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[IdentitySnapshotSummaryResponse]",
@@ -3703,50 +3533,33 @@ class IdentityHistoryApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
+
     @validate_call
     def list_identity_snapshots_without_preload_content(
         self,
-        id: Annotated[StrictStr,
-                      Field(description="The identity id")],
-        start: Annotated[Optional[StrictStr],
-                         Field(description="The specified start date")] = None,
-        interval: Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "The interval indicating the range in day or month for the specified interval-name"
-            )] = None,
-        limit: Annotated[
-            Optional[Annotated[int, Field(le=250, strict=True, ge=0)]],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        offset: Annotated[
-            Optional[Annotated[int, Field(strict=True, ge=0)]],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        count: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        id: Annotated[StrictStr, Field(description="The identity id")],
+        start: Annotated[Optional[StrictStr], Field(description="The specified start date")] = None,
+        interval: Annotated[Optional[StrictStr], Field(description="The interval indicating the range in day or month for the specified interval-name")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -3800,7 +3613,8 @@ class IdentityHistoryApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[IdentitySnapshotSummaryResponse]",
@@ -3811,8 +3625,11 @@ class IdentityHistoryApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         return response_data.response
+
 
     def _list_identity_snapshots_serialize(
         self,
@@ -3830,7 +3647,8 @@ class IdentityHistoryApi:
 
         _host = None
 
-        _collection_formats: Dict[str, str] = {}
+        _collection_formats: Dict[str, str] = {
+        }
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -3844,35 +3662,43 @@ class IdentityHistoryApi:
             _path_params['id'] = id
         # process the query parameters
         if start is not None:
-
+            
             _query_params.append(('start', start))
-
+            
         if interval is not None:
-
+            
             _query_params.append(('interval', interval))
-
+            
         if limit is not None:
-
+            
             _query_params.append(('limit', limit))
-
+            
         if offset is not None:
-
+            
             _query_params.append(('offset', offset))
-
+            
         if count is not None:
-
+            
             _query_params.append(('count', count))
-
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
 
+
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])
+            [
+                'application/json'
+            ]
+        )
+
 
         # authentication setting
-        _auth_settings: List[str] = ['UserContextAuth', 'UserContextAuth']
+        _auth_settings: List[str] = [
+            'UserContextAuth', 
+            'UserContextAuth'
+        ]
 
         return self.api_client.param_serialize(
             method='GET',
@@ -3886,4 +3712,7 @@ class IdentityHistoryApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth)
+            _request_auth=_request_auth
+        )
+
+

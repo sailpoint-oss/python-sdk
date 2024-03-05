@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -27,50 +29,26 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ProvisioningCompleted(BaseModel):
     """
     ProvisioningCompleted
-    """
-
-  # noqa: E501
-    tracking_number: StrictStr = Field(
-        description=
-        "The reference number of the provisioning request. Useful for tracking status in the Account Activity search interface.",
-        alias="trackingNumber")
-    sources: StrictStr = Field(
-        description=
-        "One or more sources that the provisioning transaction(s) were done against.  Sources are comma separated."
-    )
-    action: Optional[StrictStr] = Field(
-        default=None,
-        description="Origin of where the provisioning request came from.")
-    errors: Optional[List[StrictStr]] = Field(
-        default=None,
-        description=
-        "A list of any accumulated error messages that occurred during provisioning."
-    )
-    warnings: Optional[List[StrictStr]] = Field(
-        default=None,
-        description=
-        "A list of any accumulated warning messages that occurred during provisioning."
-    )
+    """ # noqa: E501
+    tracking_number: StrictStr = Field(description="The reference number of the provisioning request. Useful for tracking status in the Account Activity search interface.", alias="trackingNumber")
+    sources: StrictStr = Field(description="One or more sources that the provisioning transaction(s) were done against.  Sources are comma separated.")
+    action: Optional[StrictStr] = Field(default=None, description="Origin of where the provisioning request came from.")
+    errors: Optional[List[StrictStr]] = Field(default=None, description="A list of any accumulated error messages that occurred during provisioning.")
+    warnings: Optional[List[StrictStr]] = Field(default=None, description="A list of any accumulated warning messages that occurred during provisioning.")
     recipient: ProvisioningCompletedRecipient
     requester: Optional[ProvisioningCompletedRequester] = None
-    account_requests: List[ProvisioningCompletedAccountRequestsInner] = Field(
-        description=
-        "A list of provisioning instructions to perform on an account-by-account basis.",
-        alias="accountRequests")
-    __properties: ClassVar[List[str]] = [
-        "trackingNumber", "sources", "action", "errors", "warnings",
-        "recipient", "requester", "accountRequests"
-    ]
+    account_requests: List[ProvisioningCompletedAccountRequestsInner] = Field(description="A list of provisioning instructions to perform on an account-by-account basis.", alias="accountRequests")
+    __properties: ClassVar[List[str]] = ["trackingNumber", "sources", "action", "errors", "warnings", "recipient", "requester", "accountRequests"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -98,7 +76,8 @@ class ProvisioningCompleted(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of recipient
@@ -146,25 +125,15 @@ class ProvisioningCompleted(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "trackingNumber":
-            obj.get("trackingNumber"),
-            "sources":
-            obj.get("sources"),
-            "action":
-            obj.get("action"),
-            "errors":
-            obj.get("errors"),
-            "warnings":
-            obj.get("warnings"),
-            "recipient":
-            ProvisioningCompletedRecipient.from_dict(obj.get("recipient"))
-            if obj.get("recipient") is not None else None,
-            "requester":
-            ProvisioningCompletedRequester.from_dict(obj.get("requester"))
-            if obj.get("requester") is not None else None,
-            "accountRequests": [
-                ProvisioningCompletedAccountRequestsInner.from_dict(_item)
-                for _item in obj.get("accountRequests")
-            ] if obj.get("accountRequests") is not None else None
+            "trackingNumber": obj.get("trackingNumber"),
+            "sources": obj.get("sources"),
+            "action": obj.get("action"),
+            "errors": obj.get("errors"),
+            "warnings": obj.get("warnings"),
+            "recipient": ProvisioningCompletedRecipient.from_dict(obj.get("recipient")) if obj.get("recipient") is not None else None,
+            "requester": ProvisioningCompletedRequester.from_dict(obj.get("requester")) if obj.get("requester") is not None else None,
+            "accountRequests": [ProvisioningCompletedAccountRequestsInner.from_dict(_item) for _item in obj.get("accountRequests")] if obj.get("accountRequests") is not None else None
         })
         return _obj
+
+

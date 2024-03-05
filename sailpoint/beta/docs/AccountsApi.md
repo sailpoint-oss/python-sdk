@@ -26,7 +26,7 @@ Method | HTTP request | Description
 
 Create Account
 
-This API submits an account creation task and returns the task ID.   The `sourceId` where this account will be created must be included in the `attributes` object. A token with ORG_ADMIN authority is required to call this API.
+This API submits an account creation task and returns the task ID.   The `sourceId` where this account will be created must be included in the `attributes` object. >**Note: This API only supports account creation for file based sources.** A token with ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -112,7 +112,7 @@ Name | Type | Description  | Notes
 
 Delete Account
 
-This API submits an account delete task and returns the task ID.   A token with ORG_ADMIN authority is required to call this API.
+Use this API to delete an account.  This endpoint submits an account delete task and returns the task ID.  This endpoint only deletes the account from IdentityNow, not the source itself, which can result in the account's returning with the next aggregation between the source and IdentityNow.  To avoid this scenario, it is recommended that you [disable accounts](https://developer.sailpoint.com/idn/api/v3/disable-account) rather than delete them. This will also allow you to reenable the accounts in the future.  A token with ORG_ADMIN authority is required to call this API. >**NOTE:** You can only delete accounts from sources of the \"DelimitedFile\" type.**
 
 ### Example
 
@@ -146,7 +146,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.AccountsApi(api_client)
-    id = 'ef38f94347e94562b5bb8424a56397d8' # str | The account ID
+    id = 'ef38f94347e94562b5bb8424a56397d8' # str | Account ID.
 
     try:
         # Delete Account
@@ -164,7 +164,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The account ID | 
+ **id** | **str**| Account ID. | 
 
 ### Return type
 
@@ -183,7 +183,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**202** | Async task details |  -  |
+**202** | Async task details. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -718,7 +718,7 @@ Name | Type | Description  | Notes
 
 Account Details
 
-This API returns the details for a single account based on the ID.   A token with ORG_ADMIN authority is required to call this API.
+Use this API to return the details for a single account by its ID.   A token with ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -752,7 +752,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.AccountsApi(api_client)
-    id = 'ef38f94347e94562b5bb8424a56397d8' # str | The account ID
+    id = 'ef38f94347e94562b5bb8424a56397d8' # str | Account ID.
 
     try:
         # Account Details
@@ -770,7 +770,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The account ID | 
+ **id** | **str**| Account ID. | 
 
 ### Return type
 
@@ -789,7 +789,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | An account object |  -  |
+**200** | Account object. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -892,7 +892,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_accounts**
-> List[ListAccounts200ResponseInner] list_accounts(detail_level=detail_level, limit=limit, offset=offset, count=count, filters=filters, sorters=sorters)
+> List[Account] list_accounts(detail_level=detail_level, limit=limit, offset=offset, count=count, filters=filters, sorters=sorters)
 
 Accounts List
 
@@ -907,7 +907,7 @@ This returns a list of accounts.   A token with ORG_ADMIN authority is required 
 import time
 import os
 import sailpoint.beta
-from sailpoint.beta.models.list_accounts200_response_inner import ListAccounts200ResponseInner
+from sailpoint.beta.models.account import Account
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
@@ -962,7 +962,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List[ListAccounts200ResponseInner]**](ListAccounts200ResponseInner.md)
+[**List[Account]**](Account.md)
 
 ### Authorization
 
@@ -991,7 +991,7 @@ Name | Type | Description  | Notes
 
 Update Account
 
-This API submits an account update task and returns the task ID.   A token with ORG_ADMIN authority is required to call this API.
+Use this API to update an account with a PUT request.  This endpoint submits an account update task and returns the task ID.   A token with ORG_ADMIN authority is required to call this API. >**NOTE: You can only use this PUT endpoint to update accounts from sources of the \"DelimitedFile\" type.**
 
 ### Example
 
@@ -1026,7 +1026,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.AccountsApi(api_client)
-    id = 'ef38f94347e94562b5bb8424a56397d8' # str | The account ID
+    id = 'ef38f94347e94562b5bb8424a56397d8' # str | Account ID.
     account_attributes = sailpoint.beta.AccountAttributes() # AccountAttributes | 
 
     try:
@@ -1045,7 +1045,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The account ID | 
+ **id** | **str**| Account ID. | 
  **account_attributes** | [**AccountAttributes**](AccountAttributes.md)|  | 
 
 ### Return type
@@ -1065,7 +1065,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**202** | Async task details |  -  |
+**202** | Async task details. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -1255,7 +1255,7 @@ Name | Type | Description  | Notes
 
 Update Account
 
-This updates account details.   A token with ORG_ADMIN authority is required to call this API.
+Use this endpoint to update an account with a PATCH request.  The request must provide a JSONPatch payload. A token with ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -1288,7 +1288,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.AccountsApi(api_client)
-    id = 'ef38f94347e94562b5bb8424a56397d8' # str | The account ID
+    id = 'ef38f94347e94562b5bb8424a56397d8' # str | Account ID.
     request_body = [{op=replace, path=/identityId, value=2c9180845d1edece015d27a975983e21}] # List[object] | A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
     try:
@@ -1307,7 +1307,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The account ID | 
+ **id** | **str**| Account ID. | 
  **request_body** | [**List[object]**](object.md)| A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. | 
 
 ### Return type

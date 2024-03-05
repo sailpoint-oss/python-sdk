@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
@@ -24,17 +26,11 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class FormDefinitionDynamicSchemaResponse(BaseModel):
     """
     FormDefinitionDynamicSchemaResponse
-    """
-
-  # noqa: E501
-    output_schema: Optional[Dict[str, Dict[str, Any]]] = Field(
-        default=None,
-        description="OutputSchema holds a JSON schema generated dynamically",
-        alias="outputSchema")
+    """ # noqa: E501
+    output_schema: Optional[Dict[str, Dict[str, Any]]] = Field(default=None, description="OutputSchema holds a JSON schema generated dynamically", alias="outputSchema")
     __properties: ClassVar[List[str]] = ["outputSchema"]
 
     model_config = {
@@ -42,6 +38,7 @@ class FormDefinitionDynamicSchemaResponse(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -69,7 +66,8 @@ class FormDefinitionDynamicSchemaResponse(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -83,5 +81,9 @@ class FormDefinitionDynamicSchemaResponse(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({"outputSchema": obj.get("outputSchema")})
+        _obj = cls.model_validate({
+            "outputSchema": obj.get("outputSchema")
+        })
         return _obj
+
+

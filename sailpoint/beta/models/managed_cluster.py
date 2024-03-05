@@ -11,11 +11,13 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
 from pydantic import Field
@@ -30,86 +32,43 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ManagedCluster(BaseModel):
     """
     Managed Cluster
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     id: StrictStr = Field(description="ManagedCluster ID")
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="ManagedCluster name")
-    pod: Optional[StrictStr] = Field(default=None,
-                                     description="ManagedCluster pod")
-    org: Optional[StrictStr] = Field(default=None,
-                                     description="ManagedCluster org")
+    name: Optional[StrictStr] = Field(default=None, description="ManagedCluster name")
+    pod: Optional[StrictStr] = Field(default=None, description="ManagedCluster pod")
+    org: Optional[StrictStr] = Field(default=None, description="ManagedCluster org")
     type: Optional[ManagedClusterTypes] = None
-    configuration: Optional[Dict[str, StrictStr]] = Field(
-        default=None, description="ManagedProcess configuration map")
-    key_pair: Optional[ManagedClusterKeyPair] = Field(default=None,
-                                                      alias="keyPair")
+    configuration: Optional[Dict[str, StrictStr]] = Field(default=None, description="ManagedProcess configuration map")
+    key_pair: Optional[ManagedClusterKeyPair] = Field(default=None, alias="keyPair")
     attributes: Optional[ManagedClusterAttributes] = None
-    description: Optional[StrictStr] = Field(
-        default=None, description="ManagedCluster description")
+    description: Optional[StrictStr] = Field(default=None, description="ManagedCluster description")
     redis: Optional[ManagedClusterRedis] = None
     client_type: Optional[ManagedClientType] = Field(alias="clientType")
-    ccg_version: StrictStr = Field(
-        description="CCG version used by the ManagedCluster",
-        alias="ccgVersion")
-    pinned_config: Optional[StrictBool] = Field(
-        default=False,
-        description=
-        "boolean flag indiacting whether or not the cluster configuration is pinned",
-        alias="pinnedConfig")
-    log_configuration: Optional[ClientLogConfiguration] = Field(
-        default=None, alias="logConfiguration")
-    operational: Optional[StrictBool] = Field(
-        default=False,
-        description="Whether or not the cluster is operational or not")
-    status: Optional[StrictStr] = Field(default=None,
-                                        description="Cluster status")
-    public_key_certificate: Optional[StrictStr] = Field(
-        default=None,
-        description="Public key certificate",
-        alias="publicKeyCertificate")
-    public_key_thumbprint: Optional[StrictStr] = Field(
-        default=None,
-        description="Public key thumbprint",
-        alias="publicKeyThumbprint")
-    public_key: Optional[StrictStr] = Field(default=None,
-                                            description="Public key",
-                                            alias="publicKey")
-    alert_key: Optional[StrictStr] = Field(
-        default=None,
-        description="Key describing any immediate cluster alerts",
-        alias="alertKey")
-    client_ids: Optional[List[StrictStr]] = Field(
-        default=None,
-        description="List of clients in a cluster",
-        alias="clientIds")
-    service_count: Optional[StrictInt] = Field(
-        default=0,
-        description="Number of services bound to a cluster",
-        alias="serviceCount")
-    cc_id: Optional[StrictStr] = Field(
-        default='0',
-        description=
-        "CC ID only used in calling CC, will be removed without notice when Migration to CEGS is finished",
-        alias="ccId")
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "pod", "org", "type", "configuration", "keyPair",
-        "attributes", "description", "redis", "clientType", "ccgVersion",
-        "pinnedConfig", "logConfiguration", "operational", "status",
-        "publicKeyCertificate", "publicKeyThumbprint", "publicKey", "alertKey",
-        "clientIds", "serviceCount", "ccId"
-    ]
+    ccg_version: StrictStr = Field(description="CCG version used by the ManagedCluster", alias="ccgVersion")
+    pinned_config: Optional[StrictBool] = Field(default=False, description="boolean flag indiacting whether or not the cluster configuration is pinned", alias="pinnedConfig")
+    log_configuration: Optional[ClientLogConfiguration] = Field(default=None, alias="logConfiguration")
+    operational: Optional[StrictBool] = Field(default=False, description="Whether or not the cluster is operational or not")
+    status: Optional[StrictStr] = Field(default=None, description="Cluster status")
+    public_key_certificate: Optional[StrictStr] = Field(default=None, description="Public key certificate", alias="publicKeyCertificate")
+    public_key_thumbprint: Optional[StrictStr] = Field(default=None, description="Public key thumbprint", alias="publicKeyThumbprint")
+    public_key: Optional[StrictStr] = Field(default=None, description="Public key", alias="publicKey")
+    alert_key: Optional[StrictStr] = Field(default=None, description="Key describing any immediate cluster alerts", alias="alertKey")
+    client_ids: Optional[List[StrictStr]] = Field(default=None, description="List of clients in a cluster", alias="clientIds")
+    service_count: Optional[StrictInt] = Field(default=0, description="Number of services bound to a cluster", alias="serviceCount")
+    cc_id: Optional[StrictStr] = Field(default='0', description="CC ID only used in calling CC, will be removed without notice when Migration to CEGS is finished", alias="ccId")
+    created_at: Optional[datetime] = Field(default=None, description="The date/time this cluster was created", alias="createdAt")
+    updated_at: Optional[datetime] = Field(default=None, description="The date/time this cluster was last updated", alias="updatedAt")
+    __properties: ClassVar[List[str]] = ["id", "name", "pod", "org", "type", "configuration", "keyPair", "attributes", "description", "redis", "clientType", "ccgVersion", "pinnedConfig", "logConfiguration", "operational", "status", "publicKeyCertificate", "publicKeyThumbprint", "publicKey", "alertKey", "clientIds", "serviceCount", "ccId", "createdAt", "updatedAt"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -137,7 +96,8 @@ class ManagedCluster(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of key_pair
@@ -177,6 +137,16 @@ class ManagedCluster(BaseModel):
         if self.public_key is None and "public_key" in self.model_fields_set:
             _dict['publicKey'] = None
 
+        # set to None if created_at (nullable) is None
+        # and model_fields_set contains the field
+        if self.created_at is None and "created_at" in self.model_fields_set:
+            _dict['createdAt'] = None
+
+        # set to None if updated_at (nullable) is None
+        # and model_fields_set contains the field
+        if self.updated_at is None and "updated_at" in self.model_fields_set:
+            _dict['updatedAt'] = None
+
         return _dict
 
     @classmethod
@@ -189,58 +159,32 @@ class ManagedCluster(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "pod":
-            obj.get("pod"),
-            "org":
-            obj.get("org"),
-            "type":
-            obj.get("type"),
-            "configuration":
-            obj.get("configuration"),
-            "keyPair":
-            ManagedClusterKeyPair.from_dict(obj.get("keyPair"))
-            if obj.get("keyPair") is not None else None,
-            "attributes":
-            ManagedClusterAttributes.from_dict(obj.get("attributes"))
-            if obj.get("attributes") is not None else None,
-            "description":
-            obj.get("description"),
-            "redis":
-            ManagedClusterRedis.from_dict(obj.get("redis"))
-            if obj.get("redis") is not None else None,
-            "clientType":
-            obj.get("clientType"),
-            "ccgVersion":
-            obj.get("ccgVersion"),
-            "pinnedConfig":
-            obj.get("pinnedConfig")
-            if obj.get("pinnedConfig") is not None else False,
-            "logConfiguration":
-            ClientLogConfiguration.from_dict(obj.get("logConfiguration"))
-            if obj.get("logConfiguration") is not None else None,
-            "operational":
-            obj.get("operational")
-            if obj.get("operational") is not None else False,
-            "status":
-            obj.get("status"),
-            "publicKeyCertificate":
-            obj.get("publicKeyCertificate"),
-            "publicKeyThumbprint":
-            obj.get("publicKeyThumbprint"),
-            "publicKey":
-            obj.get("publicKey"),
-            "alertKey":
-            obj.get("alertKey"),
-            "clientIds":
-            obj.get("clientIds"),
-            "serviceCount":
-            obj.get("serviceCount")
-            if obj.get("serviceCount") is not None else 0,
-            "ccId":
-            obj.get("ccId") if obj.get("ccId") is not None else '0'
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "pod": obj.get("pod"),
+            "org": obj.get("org"),
+            "type": obj.get("type"),
+            "configuration": obj.get("configuration"),
+            "keyPair": ManagedClusterKeyPair.from_dict(obj.get("keyPair")) if obj.get("keyPair") is not None else None,
+            "attributes": ManagedClusterAttributes.from_dict(obj.get("attributes")) if obj.get("attributes") is not None else None,
+            "description": obj.get("description"),
+            "redis": ManagedClusterRedis.from_dict(obj.get("redis")) if obj.get("redis") is not None else None,
+            "clientType": obj.get("clientType"),
+            "ccgVersion": obj.get("ccgVersion"),
+            "pinnedConfig": obj.get("pinnedConfig") if obj.get("pinnedConfig") is not None else False,
+            "logConfiguration": ClientLogConfiguration.from_dict(obj.get("logConfiguration")) if obj.get("logConfiguration") is not None else None,
+            "operational": obj.get("operational") if obj.get("operational") is not None else False,
+            "status": obj.get("status"),
+            "publicKeyCertificate": obj.get("publicKeyCertificate"),
+            "publicKeyThumbprint": obj.get("publicKeyThumbprint"),
+            "publicKey": obj.get("publicKey"),
+            "alertKey": obj.get("alertKey"),
+            "clientIds": obj.get("clientIds"),
+            "serviceCount": obj.get("serviceCount") if obj.get("serviceCount") is not None else 0,
+            "ccId": obj.get("ccId") if obj.get("ccId") is not None else '0',
+            "createdAt": obj.get("createdAt"),
+            "updatedAt": obj.get("updatedAt")
         })
         return _obj
+
+

@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -27,59 +28,25 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class TaskResultDetails(BaseModel):
     """
     Details about job or task type, state and lifecycle.
     """ # noqa: E501
-    type: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Type of the job or task underlying in the report processing. It could be a quartz task, QPOC or MENTOS jobs or a refresh/sync task."
-    )
-    id: Optional[StrictStr] = Field(
-        default=None, description="Unique task definition identifier.")
-    report_type: Optional[Dict[str, Any]] = Field(
-        default=None,
-        description=
-        "Use this property to define what report should be processed in the RDE service.",
-        alias="reportType")
-    description: Optional[StrictStr] = Field(
-        default=None,
-        description="Description of the report purpose and/or contents.")
-    parent_name: Optional[StrictStr] = Field(
-        default=None,
-        description="Name of the parent task/report if exists.",
-        alias="parentName")
-    launcher: Optional[StrictStr] = Field(
-        default=None, description="Name of the report processing initiator.")
-    created: Optional[datetime] = Field(default=None,
-                                        description="Report creation date")
-    launched: Optional[datetime] = Field(default=None,
-                                         description="Report start date")
-    completed: Optional[datetime] = Field(default=None,
-                                          description="Report completion date")
-    completion_status: Optional[StrictStr] = Field(
-        default=None,
-        description="Report completion status.",
-        alias="completionStatus")
-    messages: Optional[List[TaskResultDetailsMessagesInner]] = Field(
-        default=None,
-        description=
-        "List of the messages dedicated to the report.  From task definition perspective here usually should be warnings or errors."
-    )
-    returns: Optional[List[TaskResultDetailsReturnsInner]] = Field(
-        default=None, description="Task definition results, if necessary.")
-    attributes: Optional[Dict[str, Dict[str, Any]]] = Field(
-        default=None,
-        description="Extra attributes map(dictionary) needed for the report.")
-    progress: Optional[StrictStr] = Field(default=None,
-                                          description="Current report state.")
-    __properties: ClassVar[List[str]] = [
-        "type", "id", "reportType", "description", "parentName", "launcher",
-        "created", "launched", "completed", "completionStatus", "messages",
-        "returns", "attributes", "progress"
-    ]
+    type: Optional[StrictStr] = Field(default=None, description="Type of the job or task underlying in the report processing. It could be a quartz task, QPOC or MENTOS jobs or a refresh/sync task.")
+    id: Optional[StrictStr] = Field(default=None, description="Unique task definition identifier.")
+    report_type: Optional[Dict[str, Any]] = Field(default=None, description="Use this property to define what report should be processed in the RDE service.", alias="reportType")
+    description: Optional[StrictStr] = Field(default=None, description="Description of the report purpose and/or contents.")
+    parent_name: Optional[StrictStr] = Field(default=None, description="Name of the parent task/report if exists.", alias="parentName")
+    launcher: Optional[StrictStr] = Field(default=None, description="Name of the report processing initiator.")
+    created: Optional[datetime] = Field(default=None, description="Report creation date")
+    launched: Optional[datetime] = Field(default=None, description="Report start date")
+    completed: Optional[datetime] = Field(default=None, description="Report completion date")
+    completion_status: Optional[StrictStr] = Field(default=None, description="Report completion status.", alias="completionStatus")
+    messages: Optional[List[TaskResultDetailsMessagesInner]] = Field(default=None, description="List of the messages dedicated to the report.  From task definition perspective here usually should be warnings or errors.")
+    returns: Optional[List[TaskResultDetailsReturnsInner]] = Field(default=None, description="Task definition results, if necessary.")
+    attributes: Optional[Dict[str, Dict[str, Any]]] = Field(default=None, description="Extra attributes map(dictionary) needed for the report.")
+    progress: Optional[StrictStr] = Field(default=None, description="Current report state.")
+    __properties: ClassVar[List[str]] = ["type", "id", "reportType", "description", "parentName", "launcher", "created", "launched", "completed", "completionStatus", "messages", "returns", "attributes", "progress"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -88,9 +55,7 @@ class TaskResultDetails(BaseModel):
             return value
 
         if value not in ('QUARTZ', 'QPOC', 'MENTOS', 'QUEUED_TASK'):
-            raise ValueError(
-                "must be one of enum values ('QUARTZ', 'QPOC', 'MENTOS', 'QUEUED_TASK')"
-            )
+            raise ValueError("must be one of enum values ('QUARTZ', 'QPOC', 'MENTOS', 'QUEUED_TASK')")
         return value
 
     @field_validator('report_type')
@@ -99,13 +64,8 @@ class TaskResultDetails(BaseModel):
         if value is None:
             return value
 
-        if value not in ('ACCOUNTS', 'IDENTITIES_DETAILS', 'IDENTITIES',
-                         'IDENTITY_PROFILE_IDENTITY_ERROR',
-                         'ORPHAN_IDENTITIES', 'SEARCH_EXPORT',
-                         'UNCORRELATED_ACCOUNTS'):
-            raise ValueError(
-                "must be one of enum values ('ACCOUNTS', 'IDENTITIES_DETAILS', 'IDENTITIES', 'IDENTITY_PROFILE_IDENTITY_ERROR', 'ORPHAN_IDENTITIES', 'SEARCH_EXPORT', 'UNCORRELATED_ACCOUNTS')"
-            )
+        if value not in ('ACCOUNTS', 'IDENTITIES_DETAILS', 'IDENTITIES', 'IDENTITY_PROFILE_IDENTITY_ERROR', 'ORPHAN_IDENTITIES', 'SEARCH_EXPORT', 'UNCORRELATED_ACCOUNTS'):
+            raise ValueError("must be one of enum values ('ACCOUNTS', 'IDENTITIES_DETAILS', 'IDENTITIES', 'IDENTITY_PROFILE_IDENTITY_ERROR', 'ORPHAN_IDENTITIES', 'SEARCH_EXPORT', 'UNCORRELATED_ACCOUNTS')")
         return value
 
     @field_validator('completion_status')
@@ -114,11 +74,8 @@ class TaskResultDetails(BaseModel):
         if value is None:
             return value
 
-        if value not in ('SUCCESS', 'WARNING', 'ERROR', 'TERMINATED',
-                         'TEMP_ERROR'):
-            raise ValueError(
-                "must be one of enum values ('SUCCESS', 'WARNING', 'ERROR', 'TERMINATED', 'TEMP_ERROR')"
-            )
+        if value not in ('SUCCESS', 'WARNING', 'ERROR', 'TERMINATED', 'TEMP_ERROR'):
+            raise ValueError("must be one of enum values ('SUCCESS', 'WARNING', 'ERROR', 'TERMINATED', 'TEMP_ERROR')")
         return value
 
     model_config = {
@@ -126,6 +83,7 @@ class TaskResultDetails(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -153,7 +111,8 @@ class TaskResultDetails(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in messages (list)
@@ -207,37 +166,21 @@ class TaskResultDetails(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "type":
-            obj.get("type"),
-            "id":
-            obj.get("id"),
-            "reportType":
-            obj.get("reportType"),
-            "description":
-            obj.get("description"),
-            "parentName":
-            obj.get("parentName"),
-            "launcher":
-            obj.get("launcher"),
-            "created":
-            obj.get("created"),
-            "launched":
-            obj.get("launched"),
-            "completed":
-            obj.get("completed"),
-            "completionStatus":
-            obj.get("completionStatus"),
-            "messages": [
-                TaskResultDetailsMessagesInner.from_dict(_item)
-                for _item in obj.get("messages")
-            ] if obj.get("messages") is not None else None,
-            "returns": [
-                TaskResultDetailsReturnsInner.from_dict(_item)
-                for _item in obj.get("returns")
-            ] if obj.get("returns") is not None else None,
-            "attributes":
-            obj.get("attributes"),
-            "progress":
-            obj.get("progress")
+            "type": obj.get("type"),
+            "id": obj.get("id"),
+            "reportType": obj.get("reportType"),
+            "description": obj.get("description"),
+            "parentName": obj.get("parentName"),
+            "launcher": obj.get("launcher"),
+            "created": obj.get("created"),
+            "launched": obj.get("launched"),
+            "completed": obj.get("completed"),
+            "completionStatus": obj.get("completionStatus"),
+            "messages": [TaskResultDetailsMessagesInner.from_dict(_item) for _item in obj.get("messages")] if obj.get("messages") is not None else None,
+            "returns": [TaskResultDetailsReturnsInner.from_dict(_item) for _item in obj.get("returns")] if obj.get("returns") is not None else None,
+            "attributes": obj.get("attributes"),
+            "progress": obj.get("progress")
         })
         return _obj
+
+

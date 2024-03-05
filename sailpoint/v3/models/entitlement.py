@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -27,61 +28,32 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class Entitlement(BaseModel):
     """
     Entitlement
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="The entitlement id")
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="The entitlement name")
-    attribute: Optional[StrictStr] = Field(
-        default=None, description="The entitlement attribute name")
-    value: Optional[StrictStr] = Field(
-        default=None, description="The value of the entitlement")
-    source_schema_object_type: Optional[StrictStr] = Field(
-        default=None,
-        description="The object type of the entitlement from the source schema",
-        alias="sourceSchemaObjectType")
-    description: Optional[StrictStr] = Field(
-        default=None, description="The description of the entitlement")
-    privileged: Optional[StrictBool] = Field(
-        default=None, description="True if the entitlement is privileged")
-    cloud_governed: Optional[StrictBool] = Field(
-        default=None,
-        description="True if the entitlement is cloud governed",
-        alias="cloudGoverned")
-    created: Optional[datetime] = Field(
-        default=None, description="Time when the entitlement was created")
-    modified: Optional[datetime] = Field(
-        default=None,
-        description="Time when the entitlement was last modified")
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="The entitlement id")
+    name: Optional[StrictStr] = Field(default=None, description="The entitlement name")
+    attribute: Optional[StrictStr] = Field(default=None, description="The entitlement attribute name")
+    value: Optional[StrictStr] = Field(default=None, description="The value of the entitlement")
+    source_schema_object_type: Optional[StrictStr] = Field(default=None, description="The object type of the entitlement from the source schema", alias="sourceSchemaObjectType")
+    description: Optional[StrictStr] = Field(default=None, description="The description of the entitlement")
+    privileged: Optional[StrictBool] = Field(default=None, description="True if the entitlement is privileged")
+    cloud_governed: Optional[StrictBool] = Field(default=None, description="True if the entitlement is cloud governed", alias="cloudGoverned")
+    created: Optional[datetime] = Field(default=None, description="Time when the entitlement was created")
+    modified: Optional[datetime] = Field(default=None, description="Time when the entitlement was last modified")
     source: Optional[EntitlementSource] = None
-    attributes: Optional[Dict[str, Any]] = Field(
-        default=None,
-        description="A map of free-form key-value pairs from the source system"
-    )
-    segments: Optional[List[StrictStr]] = Field(
-        default=None,
-        description=
-        "List of IDs of segments, if any, to which this Entitlement is assigned."
-    )
-    direct_permissions: Optional[List[PermissionDto]] = Field(
-        default=None, alias="directPermissions")
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "attribute", "value", "sourceSchemaObjectType",
-        "description", "privileged", "cloudGoverned", "created", "modified",
-        "source", "attributes", "segments", "directPermissions"
-    ]
+    attributes: Optional[Dict[str, Any]] = Field(default=None, description="A map of free-form key-value pairs from the source system")
+    segments: Optional[List[StrictStr]] = Field(default=None, description="List of IDs of segments, if any, to which this Entitlement is assigned.")
+    direct_permissions: Optional[List[PermissionDto]] = Field(default=None, alias="directPermissions")
+    __properties: ClassVar[List[str]] = ["id", "name", "attribute", "value", "sourceSchemaObjectType", "description", "privileged", "cloudGoverned", "created", "modified", "source", "attributes", "segments", "directPermissions"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -109,7 +81,8 @@ class Entitlement(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of source
@@ -139,36 +112,21 @@ class Entitlement(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "attribute":
-            obj.get("attribute"),
-            "value":
-            obj.get("value"),
-            "sourceSchemaObjectType":
-            obj.get("sourceSchemaObjectType"),
-            "description":
-            obj.get("description"),
-            "privileged":
-            obj.get("privileged"),
-            "cloudGoverned":
-            obj.get("cloudGoverned"),
-            "created":
-            obj.get("created"),
-            "modified":
-            obj.get("modified"),
-            "source":
-            EntitlementSource.from_dict(obj.get("source"))
-            if obj.get("source") is not None else None,
-            "attributes":
-            obj.get("attributes"),
-            "segments":
-            obj.get("segments"),
-            "directPermissions": [
-                PermissionDto.from_dict(_item)
-                for _item in obj.get("directPermissions")
-            ] if obj.get("directPermissions") is not None else None
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "attribute": obj.get("attribute"),
+            "value": obj.get("value"),
+            "sourceSchemaObjectType": obj.get("sourceSchemaObjectType"),
+            "description": obj.get("description"),
+            "privileged": obj.get("privileged"),
+            "cloudGoverned": obj.get("cloudGoverned"),
+            "created": obj.get("created"),
+            "modified": obj.get("modified"),
+            "source": EntitlementSource.from_dict(obj.get("source")) if obj.get("source") is not None else None,
+            "attributes": obj.get("attributes"),
+            "segments": obj.get("segments"),
+            "directPermissions": [PermissionDto.from_dict(_item) for _item in obj.get("directPermissions")] if obj.get("directPermissions") is not None else None
         })
         return _obj
+
+

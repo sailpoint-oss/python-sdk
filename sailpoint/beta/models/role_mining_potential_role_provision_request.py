@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,34 +26,21 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class RoleMiningPotentialRoleProvisionRequest(BaseModel):
     """
     RoleMiningPotentialRoleProvisionRequest
-    """
-
-  # noqa: E501
-    role_name: Optional[StrictStr] = Field(
-        default=None,
-        description="Name of the new role being created",
-        alias="roleName")
-    role_description: Optional[StrictStr] = Field(
-        default=None,
-        description="Short description of the new role being created",
-        alias="roleDescription")
-    owner_id: Optional[StrictStr] = Field(
-        default=None,
-        description="ID of the identity that will own this role",
-        alias="ownerId")
-    __properties: ClassVar[List[str]] = [
-        "roleName", "roleDescription", "ownerId"
-    ]
+    """ # noqa: E501
+    role_name: Optional[StrictStr] = Field(default=None, description="Name of the new role being created", alias="roleName")
+    role_description: Optional[StrictStr] = Field(default=None, description="Short description of the new role being created", alias="roleDescription")
+    owner_id: Optional[StrictStr] = Field(default=None, description="ID of the identity that will own this role", alias="ownerId")
+    __properties: ClassVar[List[str]] = ["roleName", "roleDescription", "ownerId"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -79,7 +68,8 @@ class RoleMiningPotentialRoleProvisionRequest(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -99,3 +89,5 @@ class RoleMiningPotentialRoleProvisionRequest(BaseModel):
             "ownerId": obj.get("ownerId")
         })
         return _obj
+
+

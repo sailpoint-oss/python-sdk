@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,21 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccountStatusChangedStatusChange(BaseModel):
     """
     AccountStatusChangedStatusChange
-    """
-
-  # noqa: E501
-    previous_status: Optional[StrictStr] = Field(
-        default=None,
-        description="the previous status of the account",
-        alias="previousStatus")
-    new_status: Optional[StrictStr] = Field(
-        default=None,
-        description="the new status of the account",
-        alias="newStatus")
+    """ # noqa: E501
+    previous_status: Optional[StrictStr] = Field(default=None, description="the previous status of the account", alias="previousStatus")
+    new_status: Optional[StrictStr] = Field(default=None, description="the new status of the account", alias="newStatus")
     __properties: ClassVar[List[str]] = ["previousStatus", "newStatus"]
 
     @field_validator('previous_status')
@@ -48,8 +41,7 @@ class AccountStatusChangedStatusChange(BaseModel):
             return value
 
         if value not in ('enabled', 'disabled', 'locked'):
-            raise ValueError(
-                "must be one of enum values ('enabled', 'disabled', 'locked')")
+            raise ValueError("must be one of enum values ('enabled', 'disabled', 'locked')")
         return value
 
     @field_validator('new_status')
@@ -59,8 +51,7 @@ class AccountStatusChangedStatusChange(BaseModel):
             return value
 
         if value not in ('enabled', 'disabled', 'locked'):
-            raise ValueError(
-                "must be one of enum values ('enabled', 'disabled', 'locked')")
+            raise ValueError("must be one of enum values ('enabled', 'disabled', 'locked')")
         return value
 
     model_config = {
@@ -68,6 +59,7 @@ class AccountStatusChangedStatusChange(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -95,7 +87,8 @@ class AccountStatusChangedStatusChange(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -114,3 +107,5 @@ class AccountStatusChangedStatusChange(BaseModel):
             "newStatus": obj.get("newStatus")
         })
         return _obj
+
+

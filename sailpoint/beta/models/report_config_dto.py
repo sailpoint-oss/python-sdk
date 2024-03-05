@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
@@ -25,42 +27,22 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ReportConfigDTO(BaseModel):
     """
     ReportConfigDTO
-    """
-
-  # noqa: E501
-    column_name: Optional[StrictStr] = Field(
-        default=None,
-        description="Name of column in report",
-        alias="columnName")
-    required: Optional[StrictBool] = Field(
-        default=False,
-        description=
-        "If true, column is required in all reports, and this entry is immutable. A 400 error will result from any attempt to modify the column's definition."
-    )
-    included: Optional[StrictBool] = Field(
-        default=False,
-        description=
-        "If true, column is included in the report. A 400 error will be thrown if an attempt is made to set included=false if required==true."
-    )
-    order: Optional[Annotated[
-        int, Field(le=2147483647, strict=True, ge=0)]] = Field(
-            default=None,
-            description=
-            "Relative sort order for the column. Columns will be displayed left-to-right in nondecreasing order."
-        )
-    __properties: ClassVar[List[str]] = [
-        "columnName", "required", "included", "order"
-    ]
+    """ # noqa: E501
+    column_name: Optional[StrictStr] = Field(default=None, description="Name of column in report", alias="columnName")
+    required: Optional[StrictBool] = Field(default=False, description="If true, column is required in all reports, and this entry is immutable. A 400 error will result from any attempt to modify the column's definition.")
+    included: Optional[StrictBool] = Field(default=False, description="If true, column is included in the report. A 400 error will be thrown if an attempt is made to set included=false if required==true.")
+    order: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=0)]] = Field(default=None, description="Relative sort order for the column. Columns will be displayed left-to-right in nondecreasing order.")
+    __properties: ClassVar[List[str]] = ["columnName", "required", "included", "order"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -88,7 +70,8 @@ class ReportConfigDTO(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -103,13 +86,11 @@ class ReportConfigDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "columnName":
-            obj.get("columnName"),
-            "required":
-            obj.get("required") if obj.get("required") is not None else False,
-            "included":
-            obj.get("included") if obj.get("included") is not None else False,
-            "order":
-            obj.get("order")
+            "columnName": obj.get("columnName"),
+            "required": obj.get("required") if obj.get("required") is not None else False,
+            "included": obj.get("included") if obj.get("included") is not None else False,
+            "order": obj.get("order")
         })
         return _obj
+
+

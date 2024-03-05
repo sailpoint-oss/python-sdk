@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **alias** | **str** | Alternate unique identifier for the identity. | [optional] 
 **email** | **str** | Email address of identity. | [optional] 
 **status** | **str** | The lifecycle status for the identity | [optional] 
+**identity_state** | **str** | The current state of the identity, which determines how Identity Security Cloud interacts with the identity. An identity that is Active will be included identity picklists in Request Center, identity processing, and more. Identities that are Inactive will be excluded from these features.  | [optional] 
 **manager** | [**IdentityReference**](IdentityReference.md) |  | [optional] 
 **attributes** | [**List[IdentityAttribute]**](IdentityAttribute.md) | The public identity attributes of the identity | [optional] 
 

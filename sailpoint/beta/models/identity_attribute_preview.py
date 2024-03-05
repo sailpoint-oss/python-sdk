@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -25,33 +27,22 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class IdentityAttributePreview(BaseModel):
     """
     IdentityAttributePreview
-    """
-
-  # noqa: E501
-    name: Optional[StrictStr] = Field(
-        default=None,
-        description="Name of the attribute that is being previewed.")
-    value: Optional[Dict[str, Any]] = Field(
-        default=None, description="Value that was derived during the preview.")
-    previous_value: Optional[Dict[str, Any]] = Field(
-        default=None,
-        description="The value of the attribute before the preview.",
-        alias="previousValue")
-    error_messages: Optional[List[ErrorMessageDto]] = Field(
-        default=None, alias="errorMessages")
-    __properties: ClassVar[List[str]] = [
-        "name", "value", "previousValue", "errorMessages"
-    ]
+    """ # noqa: E501
+    name: Optional[StrictStr] = Field(default=None, description="Name of the attribute that is being previewed.")
+    value: Optional[Dict[str, Any]] = Field(default=None, description="Value that was derived during the preview.")
+    previous_value: Optional[Dict[str, Any]] = Field(default=None, description="The value of the attribute before the preview.", alias="previousValue")
+    error_messages: Optional[List[ErrorMessageDto]] = Field(default=None, alias="errorMessages")
+    __properties: ClassVar[List[str]] = ["name", "value", "previousValue", "errorMessages"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -79,7 +70,8 @@ class IdentityAttributePreview(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in error_messages (list)
@@ -101,15 +93,11 @@ class IdentityAttributePreview(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name":
-            obj.get("name"),
-            "value":
-            obj.get("value"),
-            "previousValue":
-            obj.get("previousValue"),
-            "errorMessages": [
-                ErrorMessageDto.from_dict(_item)
-                for _item in obj.get("errorMessages")
-            ] if obj.get("errorMessages") is not None else None
+            "name": obj.get("name"),
+            "value": obj.get("value"),
+            "previousValue": obj.get("previousValue"),
+            "errorMessages": [ErrorMessageDto.from_dict(_item) for _item in obj.get("errorMessages")] if obj.get("errorMessages") is not None else None
         })
         return _obj
+
+

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.managed_cluster import ManagedCluster
-
 
 class TestManagedCluster(unittest.TestCase):
     """ManagedCluster unit test stubs"""
@@ -72,7 +72,9 @@ class TestManagedCluster(unittest.TestCase):
                 alert_key = 'LIMITED_RESOURCES',
                 client_ids = [1244, 1245],
                 service_count = 6,
-                cc_id = '0'
+                cc_id = '0',
+                created_at = '2023-08-04T20:48:01.865Z',
+                updated_at = '2023-08-04T20:48:01.865Z'
             )
         else:
             return ManagedCluster(
@@ -86,7 +88,6 @@ class TestManagedCluster(unittest.TestCase):
         """Test ManagedCluster"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool
@@ -25,37 +27,21 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class EntitlementAccessRequestConfig(BaseModel):
     """
     EntitlementAccessRequestConfig
-    """
-
-  # noqa: E501
-    approval_schemes: Optional[List[EntitlementApprovalScheme]] = Field(
-        default=None,
-        description=
-        "Ordered list of approval steps for the access request. Empty when no approval is required.",
-        alias="approvalSchemes")
-    request_comment_required: Optional[StrictBool] = Field(
-        default=False,
-        description=
-        "If the requester must provide a comment during access request.",
-        alias="requestCommentRequired")
-    denial_comment_required: Optional[StrictBool] = Field(
-        default=False,
-        description=
-        "If the reviewer must provide a comment when denying the access request.",
-        alias="denialCommentRequired")
-    __properties: ClassVar[List[str]] = [
-        "approvalSchemes", "requestCommentRequired", "denialCommentRequired"
-    ]
+    """ # noqa: E501
+    approval_schemes: Optional[List[EntitlementApprovalScheme]] = Field(default=None, description="Ordered list of approval steps for the access request. Empty when no approval is required.", alias="approvalSchemes")
+    request_comment_required: Optional[StrictBool] = Field(default=False, description="If the requester must provide a comment during access request.", alias="requestCommentRequired")
+    denial_comment_required: Optional[StrictBool] = Field(default=False, description="If the reviewer must provide a comment when denying the access request.", alias="denialCommentRequired")
+    __properties: ClassVar[List[str]] = ["approvalSchemes", "requestCommentRequired", "denialCommentRequired"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -83,7 +69,8 @@ class EntitlementAccessRequestConfig(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in approval_schemes (list)
@@ -105,15 +92,10 @@ class EntitlementAccessRequestConfig(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "approvalSchemes": [
-                EntitlementApprovalScheme.from_dict(_item)
-                for _item in obj.get("approvalSchemes")
-            ] if obj.get("approvalSchemes") is not None else None,
-            "requestCommentRequired":
-            obj.get("requestCommentRequired")
-            if obj.get("requestCommentRequired") is not None else False,
-            "denialCommentRequired":
-            obj.get("denialCommentRequired")
-            if obj.get("denialCommentRequired") is not None else False
+            "approvalSchemes": [EntitlementApprovalScheme.from_dict(_item) for _item in obj.get("approvalSchemes")] if obj.get("approvalSchemes") is not None else None,
+            "requestCommentRequired": obj.get("requestCommentRequired") if obj.get("requestCommentRequired") is not None else False,
+            "denialCommentRequired": obj.get("denialCommentRequired") if obj.get("denialCommentRequired") is not None else False
         })
         return _obj
+
+

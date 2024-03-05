@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,17 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ScheduledSearchName(BaseModel):
     """
     ScheduledSearchName
-    """
-
-  # noqa: E501
-    name: Optional[StrictStr] = Field(
-        default=None, description="The name of the scheduled search. ")
-    description: Optional[StrictStr] = Field(
-        default=None, description="The description of the scheduled search. ")
+    """ # noqa: E501
+    name: Optional[StrictStr] = Field(default=None, description="The name of the scheduled search. ")
+    description: Optional[StrictStr] = Field(default=None, description="The description of the scheduled search. ")
     __properties: ClassVar[List[str]] = ["name", "description"]
 
     model_config = {
@@ -42,6 +39,7 @@ class ScheduledSearchName(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -69,7 +67,8 @@ class ScheduledSearchName(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if name (nullable) is None
@@ -98,3 +97,5 @@ class ScheduledSearchName(BaseModel):
             "description": obj.get("description")
         })
         return _obj
+
+

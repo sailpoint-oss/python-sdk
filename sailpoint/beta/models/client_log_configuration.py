@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -27,38 +28,23 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ClientLogConfiguration(BaseModel):
     """
     Client Runtime Logging Configuration
-    """
-
-  # noqa: E501
-    client_id: Optional[StrictStr] = Field(
-        default=None,
-        description="Log configuration's client ID",
-        alias="clientId")
-    duration_minutes: Annotated[int, Field(le=1440, strict=True, ge=5)] = Field(
-        description=
-        "Duration in minutes for log configuration to remain in effect before resetting to defaults",
-        alias="durationMinutes")
-    expiration: Optional[datetime] = Field(
-        default=None,
-        description="Expiration date-time of the log configuration request")
+    """ # noqa: E501
+    client_id: Optional[StrictStr] = Field(default=None, description="Log configuration's client ID", alias="clientId")
+    duration_minutes: Annotated[int, Field(le=1440, strict=True, ge=5)] = Field(description="Duration in minutes for log configuration to remain in effect before resetting to defaults", alias="durationMinutes")
+    expiration: Optional[datetime] = Field(default=None, description="Expiration date-time of the log configuration request")
     root_level: StandardLevel = Field(alias="rootLevel")
-    log_levels: Optional[Dict[str, StandardLevel]] = Field(
-        default=None,
-        description="Mapping of identifiers to Standard Log Level values",
-        alias="logLevels")
-    __properties: ClassVar[List[str]] = [
-        "clientId", "durationMinutes", "expiration", "rootLevel", "logLevels"
-    ]
+    log_levels: Optional[Dict[str, StandardLevel]] = Field(default=None, description="Mapping of identifiers to Standard Log Level values", alias="logLevels")
+    __properties: ClassVar[List[str]] = ["clientId", "durationMinutes", "expiration", "rootLevel", "logLevels"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -86,7 +72,8 @@ class ClientLogConfiguration(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -101,15 +88,12 @@ class ClientLogConfiguration(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "clientId":
-            obj.get("clientId"),
-            "durationMinutes":
-            obj.get("durationMinutes"),
-            "expiration":
-            obj.get("expiration"),
-            "rootLevel":
-            obj.get("rootLevel"),
-            "logLevels":
-            dict((_k, _v) for _k, _v in obj.get("logLevels").items())
+            "clientId": obj.get("clientId"),
+            "durationMinutes": obj.get("durationMinutes"),
+            "expiration": obj.get("expiration"),
+            "rootLevel": obj.get("rootLevel"),
+            "logLevels": dict((_k, _v) for _k, _v in obj.get("logLevels").items())
         })
         return _obj
+
+

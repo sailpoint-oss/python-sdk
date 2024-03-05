@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.exception_criteria_access import ExceptionCriteriaAccess
-
 
 class TestExceptionCriteriaAccess(unittest.TestCase):
     """ExceptionCriteriaAccess unit test stubs"""
@@ -50,7 +50,6 @@ class TestExceptionCriteriaAccess(unittest.TestCase):
         """Test ExceptionCriteriaAccess"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

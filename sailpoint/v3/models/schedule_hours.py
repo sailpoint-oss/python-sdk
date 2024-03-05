@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt, StrictStr, field_validator
@@ -24,17 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ScheduleHours(BaseModel):
     """
     Specifies which hour(s) a schedule is active for. Examples:  Every three hours starting from 8AM, inclusive: * type LIST * values \"8\" * interval 3  During business hours: * type RANGE * values \"9\", \"5\"  At 5AM, noon, and 5PM: * type LIST * values \"5\", \"12\", \"17\" 
     """ # noqa: E501
     type: StrictStr = Field(description="Enum type to specify hours value")
-    values: List[StrictStr] = Field(
-        description="Values of the days based on the enum type mentioned above"
-    )
-    interval: Optional[StrictInt] = Field(
-        default=None, description="Interval between the cert generations")
+    values: List[StrictStr] = Field(description="Values of the days based on the enum type mentioned above")
+    interval: Optional[StrictInt] = Field(default=None, description="Interval between the cert generations")
     __properties: ClassVar[List[str]] = ["type", "values", "interval"]
 
     @field_validator('type')
@@ -49,6 +47,7 @@ class ScheduleHours(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -76,7 +75,8 @@ class ScheduleHours(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -96,3 +96,5 @@ class ScheduleHours(BaseModel):
             "interval": obj.get("interval")
         })
         return _obj
+
+

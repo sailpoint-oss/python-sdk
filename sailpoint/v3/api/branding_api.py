@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import io
 import warnings
 
@@ -47,37 +48,26 @@ class BrandingApi:
             api_client = ApiClient.get_default()
         self.api_client = api_client
 
+
     @validate_call
     def create_branding_item(
         self,
-        name: Annotated[StrictStr,
-                        Field(description="name of branding item")],
-        product_name: Annotated[Optional[StrictStr],
-                                Field(description="product name")],
-        action_button_color: Annotated[
-            Optional[StrictStr],
-            Field(description="hex value of color for action button")] = None,
-        active_link_color: Annotated[
-            Optional[StrictStr],
-            Field(description="hex value of color for link")] = None,
-        navigation_color: Annotated[
-            Optional[StrictStr],
-            Field(description="hex value of color for navigation bar")] = None,
-        email_from_address: Annotated[
-            Optional[StrictStr],
-            Field(description="email from address")] = None,
-        login_informational_message: Annotated[
-            Optional[StrictStr],
-            Field(description="login information message")] = None,
-        file_standard: Annotated[Optional[Union[StrictBytes, StrictStr]],
-                                 Field(
-                                     description="png file with logo")] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        name: Annotated[StrictStr, Field(description="name of branding item")],
+        product_name: Annotated[Optional[StrictStr], Field(description="product name")],
+        action_button_color: Annotated[Optional[StrictStr], Field(description="hex value of color for action button")] = None,
+        active_link_color: Annotated[Optional[StrictStr], Field(description="hex value of color for link")] = None,
+        navigation_color: Annotated[Optional[StrictStr], Field(description="hex value of color for navigation bar")] = None,
+        email_from_address: Annotated[Optional[StrictStr], Field(description="email from address")] = None,
+        login_informational_message: Annotated[Optional[StrictStr], Field(description="login information message")] = None,
+        file_standard: Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="png file with logo")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -137,7 +127,8 @@ class BrandingApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "BrandingItem",
@@ -148,44 +139,35 @@ class BrandingApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
+
     @validate_call
     def create_branding_item_with_http_info(
         self,
-        name: Annotated[StrictStr,
-                        Field(description="name of branding item")],
-        product_name: Annotated[Optional[StrictStr],
-                                Field(description="product name")],
-        action_button_color: Annotated[
-            Optional[StrictStr],
-            Field(description="hex value of color for action button")] = None,
-        active_link_color: Annotated[
-            Optional[StrictStr],
-            Field(description="hex value of color for link")] = None,
-        navigation_color: Annotated[
-            Optional[StrictStr],
-            Field(description="hex value of color for navigation bar")] = None,
-        email_from_address: Annotated[
-            Optional[StrictStr],
-            Field(description="email from address")] = None,
-        login_informational_message: Annotated[
-            Optional[StrictStr],
-            Field(description="login information message")] = None,
-        file_standard: Annotated[Optional[Union[StrictBytes, StrictStr]],
-                                 Field(
-                                     description="png file with logo")] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        name: Annotated[StrictStr, Field(description="name of branding item")],
+        product_name: Annotated[Optional[StrictStr], Field(description="product name")],
+        action_button_color: Annotated[Optional[StrictStr], Field(description="hex value of color for action button")] = None,
+        active_link_color: Annotated[Optional[StrictStr], Field(description="hex value of color for link")] = None,
+        navigation_color: Annotated[Optional[StrictStr], Field(description="hex value of color for navigation bar")] = None,
+        email_from_address: Annotated[Optional[StrictStr], Field(description="email from address")] = None,
+        login_informational_message: Annotated[Optional[StrictStr], Field(description="login information message")] = None,
+        file_standard: Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="png file with logo")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -245,7 +227,8 @@ class BrandingApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "BrandingItem",
@@ -256,44 +239,35 @@ class BrandingApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
+
     @validate_call
     def create_branding_item_without_preload_content(
         self,
-        name: Annotated[StrictStr,
-                        Field(description="name of branding item")],
-        product_name: Annotated[Optional[StrictStr],
-                                Field(description="product name")],
-        action_button_color: Annotated[
-            Optional[StrictStr],
-            Field(description="hex value of color for action button")] = None,
-        active_link_color: Annotated[
-            Optional[StrictStr],
-            Field(description="hex value of color for link")] = None,
-        navigation_color: Annotated[
-            Optional[StrictStr],
-            Field(description="hex value of color for navigation bar")] = None,
-        email_from_address: Annotated[
-            Optional[StrictStr],
-            Field(description="email from address")] = None,
-        login_informational_message: Annotated[
-            Optional[StrictStr],
-            Field(description="login information message")] = None,
-        file_standard: Annotated[Optional[Union[StrictBytes, StrictStr]],
-                                 Field(
-                                     description="png file with logo")] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        name: Annotated[StrictStr, Field(description="name of branding item")],
+        product_name: Annotated[Optional[StrictStr], Field(description="product name")],
+        action_button_color: Annotated[Optional[StrictStr], Field(description="hex value of color for action button")] = None,
+        active_link_color: Annotated[Optional[StrictStr], Field(description="hex value of color for link")] = None,
+        navigation_color: Annotated[Optional[StrictStr], Field(description="hex value of color for navigation bar")] = None,
+        email_from_address: Annotated[Optional[StrictStr], Field(description="email from address")] = None,
+        login_informational_message: Annotated[Optional[StrictStr], Field(description="login information message")] = None,
+        file_standard: Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="png file with logo")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -353,7 +327,8 @@ class BrandingApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "BrandingItem",
@@ -364,8 +339,11 @@ class BrandingApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         return response_data.response
+
 
     def _create_branding_item_serialize(
         self,
@@ -385,7 +363,8 @@ class BrandingApi:
 
         _host = None
 
-        _collection_formats: Dict[str, str] = {}
+        _collection_formats: Dict[str, str] = {
+        }
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -411,15 +390,18 @@ class BrandingApi:
         if email_from_address is not None:
             _form_params.append(('emailFromAddress', email_from_address))
         if login_informational_message is not None:
-            _form_params.append(
-                ('loginInformationalMessage', login_informational_message))
+            _form_params.append(('loginInformationalMessage', login_informational_message))
         if file_standard is not None:
             _files['fileStandard'] = file_standard
         # process the body parameter
 
+
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])
+            [
+                'application/json'
+            ]
+        )
 
         # set the HTTP header `Content-Type`
         if _content_type:
@@ -427,12 +409,19 @@ class BrandingApi:
         else:
             _default_content_type = (
                 self.api_client.select_header_content_type(
-                    ['multipart/form-data']))
+                    [
+                        'multipart/form-data'
+                    ]
+                )
+            )
             if _default_content_type is not None:
                 _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
-        _auth_settings: List[str] = ['UserContextAuth', 'UserContextAuth']
+        _auth_settings: List[str] = [
+            'UserContextAuth', 
+            'UserContextAuth'
+        ]
 
         return self.api_client.param_serialize(
             method='POST',
@@ -446,20 +435,24 @@ class BrandingApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth)
+            _request_auth=_request_auth
+        )
+
+
+
 
     @validate_call
     def delete_branding(
         self,
-        name: Annotated[
-            StrictStr,
-            Field(description="The name of the branding item to be deleted")],
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        name: Annotated[StrictStr, Field(description="The name of the branding item to be deleted")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -493,11 +486,13 @@ class BrandingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_branding_serialize(name=name,
-                                                 _request_auth=_request_auth,
-                                                 _content_type=_content_type,
-                                                 _headers=_headers,
-                                                 _host_index=_host_index)
+        _param = self._delete_branding_serialize(
+            name=name,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
@@ -509,25 +504,28 @@ class BrandingApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
+
     @validate_call
     def delete_branding_with_http_info(
         self,
-        name: Annotated[
-            StrictStr,
-            Field(description="The name of the branding item to be deleted")],
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        name: Annotated[StrictStr, Field(description="The name of the branding item to be deleted")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -561,11 +559,13 @@ class BrandingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_branding_serialize(name=name,
-                                                 _request_auth=_request_auth,
-                                                 _content_type=_content_type,
-                                                 _headers=_headers,
-                                                 _host_index=_host_index)
+        _param = self._delete_branding_serialize(
+            name=name,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
@@ -577,25 +577,28 @@ class BrandingApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
+
     @validate_call
     def delete_branding_without_preload_content(
         self,
-        name: Annotated[
-            StrictStr,
-            Field(description="The name of the branding item to be deleted")],
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        name: Annotated[StrictStr, Field(description="The name of the branding item to be deleted")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -629,11 +632,13 @@ class BrandingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_branding_serialize(name=name,
-                                                 _request_auth=_request_auth,
-                                                 _content_type=_content_type,
-                                                 _headers=_headers,
-                                                 _host_index=_host_index)
+        _param = self._delete_branding_serialize(
+            name=name,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
@@ -645,8 +650,11 @@ class BrandingApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         return response_data.response
+
 
     def _delete_branding_serialize(
         self,
@@ -659,7 +667,8 @@ class BrandingApi:
 
         _host = None
 
-        _collection_formats: Dict[str, str] = {}
+        _collection_formats: Dict[str, str] = {
+        }
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -676,12 +685,20 @@ class BrandingApi:
         # process the form parameters
         # process the body parameter
 
+
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])
+            [
+                'application/json'
+            ]
+        )
+
 
         # authentication setting
-        _auth_settings: List[str] = ['UserContextAuth', 'UserContextAuth']
+        _auth_settings: List[str] = [
+            'UserContextAuth', 
+            'UserContextAuth'
+        ]
 
         return self.api_client.param_serialize(
             method='DELETE',
@@ -695,21 +712,24 @@ class BrandingApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth)
+            _request_auth=_request_auth
+        )
+
+
+
 
     @validate_call
     def get_branding(
         self,
-        name: Annotated[
-            StrictStr,
-            Field(
-                description="The name of the branding item to be retrieved")],
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        name: Annotated[StrictStr, Field(description="The name of the branding item to be retrieved")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -743,11 +763,13 @@ class BrandingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_branding_serialize(name=name,
-                                              _request_auth=_request_auth,
-                                              _content_type=_content_type,
-                                              _headers=_headers,
-                                              _host_index=_host_index)
+        _param = self._get_branding_serialize(
+            name=name,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BrandingItem",
@@ -759,26 +781,28 @@ class BrandingApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
+
     @validate_call
     def get_branding_with_http_info(
         self,
-        name: Annotated[
-            StrictStr,
-            Field(
-                description="The name of the branding item to be retrieved")],
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        name: Annotated[StrictStr, Field(description="The name of the branding item to be retrieved")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -812,11 +836,13 @@ class BrandingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_branding_serialize(name=name,
-                                              _request_auth=_request_auth,
-                                              _content_type=_content_type,
-                                              _headers=_headers,
-                                              _host_index=_host_index)
+        _param = self._get_branding_serialize(
+            name=name,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BrandingItem",
@@ -828,26 +854,28 @@ class BrandingApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
+
     @validate_call
     def get_branding_without_preload_content(
         self,
-        name: Annotated[
-            StrictStr,
-            Field(
-                description="The name of the branding item to be retrieved")],
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        name: Annotated[StrictStr, Field(description="The name of the branding item to be retrieved")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -881,11 +909,13 @@ class BrandingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_branding_serialize(name=name,
-                                              _request_auth=_request_auth,
-                                              _content_type=_content_type,
-                                              _headers=_headers,
-                                              _host_index=_host_index)
+        _param = self._get_branding_serialize(
+            name=name,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BrandingItem",
@@ -897,8 +927,11 @@ class BrandingApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         return response_data.response
+
 
     def _get_branding_serialize(
         self,
@@ -911,7 +944,8 @@ class BrandingApi:
 
         _host = None
 
-        _collection_formats: Dict[str, str] = {}
+        _collection_formats: Dict[str, str] = {
+        }
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -928,12 +962,20 @@ class BrandingApi:
         # process the form parameters
         # process the body parameter
 
+
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])
+            [
+                'application/json'
+            ]
+        )
+
 
         # authentication setting
-        _auth_settings: List[str] = ['UserContextAuth', 'UserContextAuth']
+        _auth_settings: List[str] = [
+            'UserContextAuth', 
+            'UserContextAuth'
+        ]
 
         return self.api_client.param_serialize(
             method='GET',
@@ -947,17 +989,23 @@ class BrandingApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth)
+            _request_auth=_request_auth
+        )
+
+
+
 
     @validate_call
     def get_branding_list(
         self,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -989,10 +1037,12 @@ class BrandingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_branding_list_serialize(_request_auth=_request_auth,
-                                                   _content_type=_content_type,
-                                                   _headers=_headers,
-                                                   _host_index=_host_index)
+        _param = self._get_branding_list_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[BrandingItem]",
@@ -1003,22 +1053,27 @@ class BrandingApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
+
     @validate_call
     def get_branding_list_with_http_info(
         self,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -1050,10 +1105,12 @@ class BrandingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_branding_list_serialize(_request_auth=_request_auth,
-                                                   _content_type=_content_type,
-                                                   _headers=_headers,
-                                                   _host_index=_host_index)
+        _param = self._get_branding_list_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[BrandingItem]",
@@ -1064,22 +1121,27 @@ class BrandingApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
+
     @validate_call
     def get_branding_list_without_preload_content(
         self,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -1111,10 +1173,12 @@ class BrandingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_branding_list_serialize(_request_auth=_request_auth,
-                                                   _content_type=_content_type,
-                                                   _headers=_headers,
-                                                   _host_index=_host_index)
+        _param = self._get_branding_list_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[BrandingItem]",
@@ -1125,8 +1189,11 @@ class BrandingApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         return response_data.response
+
 
     def _get_branding_list_serialize(
         self,
@@ -1138,7 +1205,8 @@ class BrandingApi:
 
         _host = None
 
-        _collection_formats: Dict[str, str] = {}
+        _collection_formats: Dict[str, str] = {
+        }
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -1153,12 +1221,20 @@ class BrandingApi:
         # process the form parameters
         # process the body parameter
 
+
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])
+            [
+                'application/json'
+            ]
+        )
+
 
         # authentication setting
-        _auth_settings: List[str] = ['UserContextAuth', 'UserContextAuth']
+        _auth_settings: List[str] = [
+            'UserContextAuth', 
+            'UserContextAuth'
+        ]
 
         return self.api_client.param_serialize(
             method='GET',
@@ -1172,43 +1248,32 @@ class BrandingApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth)
+            _request_auth=_request_auth
+        )
+
+
+
 
     @validate_call
     def set_branding_item(
         self,
-        name: Annotated[
-            StrictStr,
-            Field(
-                description="The name of the branding item to be retrieved")],
-        name2: Annotated[StrictStr,
-                         Field(description="name of branding item")],
-        product_name: Annotated[Optional[StrictStr],
-                                Field(description="product name")],
-        action_button_color: Annotated[
-            Optional[StrictStr],
-            Field(description="hex value of color for action button")] = None,
-        active_link_color: Annotated[
-            Optional[StrictStr],
-            Field(description="hex value of color for link")] = None,
-        navigation_color: Annotated[
-            Optional[StrictStr],
-            Field(description="hex value of color for navigation bar")] = None,
-        email_from_address: Annotated[
-            Optional[StrictStr],
-            Field(description="email from address")] = None,
-        login_informational_message: Annotated[
-            Optional[StrictStr],
-            Field(description="login information message")] = None,
-        file_standard: Annotated[Optional[Union[StrictBytes, StrictStr]],
-                                 Field(
-                                     description="png file with logo")] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        name: Annotated[StrictStr, Field(description="The name of the branding item to be retrieved")],
+        name2: Annotated[StrictStr, Field(description="name of branding item")],
+        product_name: Annotated[Optional[StrictStr], Field(description="product name")],
+        action_button_color: Annotated[Optional[StrictStr], Field(description="hex value of color for action button")] = None,
+        active_link_color: Annotated[Optional[StrictStr], Field(description="hex value of color for link")] = None,
+        navigation_color: Annotated[Optional[StrictStr], Field(description="hex value of color for navigation bar")] = None,
+        email_from_address: Annotated[Optional[StrictStr], Field(description="email from address")] = None,
+        login_informational_message: Annotated[Optional[StrictStr], Field(description="login information message")] = None,
+        file_standard: Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="png file with logo")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -1271,7 +1336,8 @@ class BrandingApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BrandingItem",
@@ -1283,48 +1349,36 @@ class BrandingApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
+
     @validate_call
     def set_branding_item_with_http_info(
         self,
-        name: Annotated[
-            StrictStr,
-            Field(
-                description="The name of the branding item to be retrieved")],
-        name2: Annotated[StrictStr,
-                         Field(description="name of branding item")],
-        product_name: Annotated[Optional[StrictStr],
-                                Field(description="product name")],
-        action_button_color: Annotated[
-            Optional[StrictStr],
-            Field(description="hex value of color for action button")] = None,
-        active_link_color: Annotated[
-            Optional[StrictStr],
-            Field(description="hex value of color for link")] = None,
-        navigation_color: Annotated[
-            Optional[StrictStr],
-            Field(description="hex value of color for navigation bar")] = None,
-        email_from_address: Annotated[
-            Optional[StrictStr],
-            Field(description="email from address")] = None,
-        login_informational_message: Annotated[
-            Optional[StrictStr],
-            Field(description="login information message")] = None,
-        file_standard: Annotated[Optional[Union[StrictBytes, StrictStr]],
-                                 Field(
-                                     description="png file with logo")] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        name: Annotated[StrictStr, Field(description="The name of the branding item to be retrieved")],
+        name2: Annotated[StrictStr, Field(description="name of branding item")],
+        product_name: Annotated[Optional[StrictStr], Field(description="product name")],
+        action_button_color: Annotated[Optional[StrictStr], Field(description="hex value of color for action button")] = None,
+        active_link_color: Annotated[Optional[StrictStr], Field(description="hex value of color for link")] = None,
+        navigation_color: Annotated[Optional[StrictStr], Field(description="hex value of color for navigation bar")] = None,
+        email_from_address: Annotated[Optional[StrictStr], Field(description="email from address")] = None,
+        login_informational_message: Annotated[Optional[StrictStr], Field(description="login information message")] = None,
+        file_standard: Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="png file with logo")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -1387,7 +1441,8 @@ class BrandingApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BrandingItem",
@@ -1399,48 +1454,36 @@ class BrandingApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
+
     @validate_call
     def set_branding_item_without_preload_content(
         self,
-        name: Annotated[
-            StrictStr,
-            Field(
-                description="The name of the branding item to be retrieved")],
-        name2: Annotated[StrictStr,
-                         Field(description="name of branding item")],
-        product_name: Annotated[Optional[StrictStr],
-                                Field(description="product name")],
-        action_button_color: Annotated[
-            Optional[StrictStr],
-            Field(description="hex value of color for action button")] = None,
-        active_link_color: Annotated[
-            Optional[StrictStr],
-            Field(description="hex value of color for link")] = None,
-        navigation_color: Annotated[
-            Optional[StrictStr],
-            Field(description="hex value of color for navigation bar")] = None,
-        email_from_address: Annotated[
-            Optional[StrictStr],
-            Field(description="email from address")] = None,
-        login_informational_message: Annotated[
-            Optional[StrictStr],
-            Field(description="login information message")] = None,
-        file_standard: Annotated[Optional[Union[StrictBytes, StrictStr]],
-                                 Field(
-                                     description="png file with logo")] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        name: Annotated[StrictStr, Field(description="The name of the branding item to be retrieved")],
+        name2: Annotated[StrictStr, Field(description="name of branding item")],
+        product_name: Annotated[Optional[StrictStr], Field(description="product name")],
+        action_button_color: Annotated[Optional[StrictStr], Field(description="hex value of color for action button")] = None,
+        active_link_color: Annotated[Optional[StrictStr], Field(description="hex value of color for link")] = None,
+        navigation_color: Annotated[Optional[StrictStr], Field(description="hex value of color for navigation bar")] = None,
+        email_from_address: Annotated[Optional[StrictStr], Field(description="email from address")] = None,
+        login_informational_message: Annotated[Optional[StrictStr], Field(description="login information message")] = None,
+        file_standard: Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="png file with logo")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -1503,7 +1546,8 @@ class BrandingApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "BrandingItem",
@@ -1515,8 +1559,11 @@ class BrandingApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         return response_data.response
+
 
     def _set_branding_item_serialize(
         self,
@@ -1537,7 +1584,8 @@ class BrandingApi:
 
         _host = None
 
-        _collection_formats: Dict[str, str] = {}
+        _collection_formats: Dict[str, str] = {
+        }
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -1565,15 +1613,18 @@ class BrandingApi:
         if email_from_address is not None:
             _form_params.append(('emailFromAddress', email_from_address))
         if login_informational_message is not None:
-            _form_params.append(
-                ('loginInformationalMessage', login_informational_message))
+            _form_params.append(('loginInformationalMessage', login_informational_message))
         if file_standard is not None:
             _files['fileStandard'] = file_standard
         # process the body parameter
 
+
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])
+            [
+                'application/json'
+            ]
+        )
 
         # set the HTTP header `Content-Type`
         if _content_type:
@@ -1581,12 +1632,19 @@ class BrandingApi:
         else:
             _default_content_type = (
                 self.api_client.select_header_content_type(
-                    ['multipart/form-data']))
+                    [
+                        'multipart/form-data'
+                    ]
+                )
+            )
             if _default_content_type is not None:
                 _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
-        _auth_settings: List[str] = ['UserContextAuth', 'UserContextAuth']
+        _auth_settings: List[str] = [
+            'UserContextAuth', 
+            'UserContextAuth'
+        ]
 
         return self.api_client.param_serialize(
             method='PUT',
@@ -1600,4 +1658,7 @@ class BrandingApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth)
+            _request_auth=_request_auth
+        )
+
+

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -25,36 +27,25 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class RoleInsightsEntitlementChanges(BaseModel):
     """
     RoleInsightsEntitlementChanges
-    """
-
-  # noqa: E501
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="Name of the entitlement")
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="Id of the entitlement")
-    description: Optional[StrictStr] = Field(
-        default=None, description="Description for the entitlement")
-    attribute: Optional[StrictStr] = Field(
-        default=None, description="Attribute for the entitlement")
-    value: Optional[StrictStr] = Field(
-        default=None, description="Attribute value for the entitlement")
-    source: Optional[StrictStr] = Field(
-        default=None,
-        description="Source or the application for the entitlement")
+    """ # noqa: E501
+    name: Optional[StrictStr] = Field(default=None, description="Name of the entitlement")
+    id: Optional[StrictStr] = Field(default=None, description="Id of the entitlement")
+    description: Optional[StrictStr] = Field(default=None, description="Description for the entitlement")
+    attribute: Optional[StrictStr] = Field(default=None, description="Attribute for the entitlement")
+    value: Optional[StrictStr] = Field(default=None, description="Attribute value for the entitlement")
+    source: Optional[StrictStr] = Field(default=None, description="Source or the application for the entitlement")
     insight: Optional[RoleInsightsInsight] = None
-    __properties: ClassVar[List[str]] = [
-        "name", "id", "description", "attribute", "value", "source", "insight"
-    ]
+    __properties: ClassVar[List[str]] = ["name", "id", "description", "attribute", "value", "source", "insight"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -82,7 +73,8 @@ class RoleInsightsEntitlementChanges(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of insight
@@ -100,20 +92,14 @@ class RoleInsightsEntitlementChanges(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name":
-            obj.get("name"),
-            "id":
-            obj.get("id"),
-            "description":
-            obj.get("description"),
-            "attribute":
-            obj.get("attribute"),
-            "value":
-            obj.get("value"),
-            "source":
-            obj.get("source"),
-            "insight":
-            RoleInsightsInsight.from_dict(obj.get("insight"))
-            if obj.get("insight") is not None else None
+            "name": obj.get("name"),
+            "id": obj.get("id"),
+            "description": obj.get("description"),
+            "attribute": obj.get("attribute"),
+            "value": obj.get("value"),
+            "source": obj.get("source"),
+            "insight": RoleInsightsInsight.from_dict(obj.get("insight")) if obj.get("insight") is not None else None
         })
         return _obj
+
+

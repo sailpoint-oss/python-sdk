@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -27,32 +29,22 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class SodViolationCheckResult1(BaseModel):
     """
     The inner object representing the completed SOD Violation check
     """ # noqa: E501
     message: Optional[ErrorMessageDto] = None
-    client_metadata: Optional[Dict[str, StrictStr]] = Field(
-        default=None,
-        description=
-        "Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on completion of the violation check.",
-        alias="clientMetadata")
-    violation_contexts: Optional[List[SodViolationContext1]] = Field(
-        default=None, alias="violationContexts")
-    violated_policies: Optional[List[SodPolicyDto]] = Field(
-        default=None,
-        description="A list of the Policies that were violated.",
-        alias="violatedPolicies")
-    __properties: ClassVar[List[str]] = [
-        "message", "clientMetadata", "violationContexts", "violatedPolicies"
-    ]
+    client_metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on completion of the violation check.", alias="clientMetadata")
+    violation_contexts: Optional[List[SodViolationContext1]] = Field(default=None, alias="violationContexts")
+    violated_policies: Optional[List[SodPolicyDto]] = Field(default=None, description="A list of the Policies that were violated.", alias="violatedPolicies")
+    __properties: ClassVar[List[str]] = ["message", "clientMetadata", "violationContexts", "violatedPolicies"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -80,7 +72,8 @@ class SodViolationCheckResult1(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of message
@@ -112,18 +105,11 @@ class SodViolationCheckResult1(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "message":
-            ErrorMessageDto.from_dict(obj.get("message"))
-            if obj.get("message") is not None else None,
-            "clientMetadata":
-            obj.get("clientMetadata"),
-            "violationContexts": [
-                SodViolationContext1.from_dict(_item)
-                for _item in obj.get("violationContexts")
-            ] if obj.get("violationContexts") is not None else None,
-            "violatedPolicies": [
-                SodPolicyDto.from_dict(_item)
-                for _item in obj.get("violatedPolicies")
-            ] if obj.get("violatedPolicies") is not None else None
+            "message": ErrorMessageDto.from_dict(obj.get("message")) if obj.get("message") is not None else None,
+            "clientMetadata": obj.get("clientMetadata"),
+            "violationContexts": [SodViolationContext1.from_dict(_item) for _item in obj.get("violationContexts")] if obj.get("violationContexts") is not None else None,
+            "violatedPolicies": [SodPolicyDto.from_dict(_item) for _item in obj.get("violatedPolicies")] if obj.get("violatedPolicies") is not None else None
         })
         return _obj
+
+

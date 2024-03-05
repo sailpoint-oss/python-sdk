@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 
 from sailpoint.v3.api.source_usages_api import SourceUsagesApi

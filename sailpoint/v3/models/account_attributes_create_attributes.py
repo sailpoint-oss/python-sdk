@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr
@@ -24,15 +26,11 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccountAttributesCreateAttributes(BaseModel):
     """
     The schema attribute values for the account
-    """
-
-  # noqa: E501
-    source_id: StrictStr = Field(
-        description="Target source to create an account", alias="sourceId")
+    """ # noqa: E501
+    source_id: StrictStr = Field(description="Target source to create an account", alias="sourceId")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["sourceId"]
 
@@ -41,6 +39,7 @@ class AccountAttributesCreateAttributes(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -90,10 +89,14 @@ class AccountAttributesCreateAttributes(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({"sourceId": obj.get("sourceId")})
+        _obj = cls.model_validate({
+            "sourceId": obj.get("sourceId")
+        })
         # store additional fields in additional_properties
         for _key in obj.keys():
             if _key not in cls.__properties:
                 _obj.additional_properties[_key] = obj.get(_key)
 
         return _obj
+
+

@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | The ID of the access item for which to retrieve the recommendation | [optional] 
-**type** | **str** | The type of the access item. | [optional] 
+**id** | **str** | ID of the access item to retrieve the recommendation for. | [optional] 
+**type** | **str** | Access item&#39;s type. | [optional] 
 
 ## Example
 

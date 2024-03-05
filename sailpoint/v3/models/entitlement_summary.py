@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
@@ -26,20 +28,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class EntitlementSummary(BaseModel):
     """
     EntitlementReference
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(
-        default=None, description="The unique ID of the referenced object.")
-    name: Optional[StrictStr] = Field(
-        default=None,
-        description="The human readable name of the referenced object.")
-    display_name: Optional[StrictStr] = Field(default=None,
-                                              alias="displayName")
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="The unique ID of the referenced object.")
+    name: Optional[StrictStr] = Field(default=None, description="The human readable name of the referenced object.")
+    display_name: Optional[StrictStr] = Field(default=None, alias="displayName")
     type: Optional[DtoType] = None
     description: Optional[StrictStr] = None
     source: Optional[Reference] = None
@@ -47,16 +42,14 @@ class EntitlementSummary(BaseModel):
     attribute: Optional[StrictStr] = None
     value: Optional[StrictStr] = None
     standalone: Optional[StrictBool] = None
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "displayName", "type", "description", "source",
-        "privileged", "attribute", "value", "standalone"
-    ]
+    __properties: ClassVar[List[str]] = ["id", "name", "displayName", "type", "description", "source", "privileged", "attribute", "value", "standalone"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -84,7 +77,8 @@ class EntitlementSummary(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of source
@@ -107,26 +101,17 @@ class EntitlementSummary(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "displayName":
-            obj.get("displayName"),
-            "type":
-            obj.get("type"),
-            "description":
-            obj.get("description"),
-            "source":
-            Reference.from_dict(obj.get("source"))
-            if obj.get("source") is not None else None,
-            "privileged":
-            obj.get("privileged"),
-            "attribute":
-            obj.get("attribute"),
-            "value":
-            obj.get("value"),
-            "standalone":
-            obj.get("standalone")
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "displayName": obj.get("displayName"),
+            "type": obj.get("type"),
+            "description": obj.get("description"),
+            "source": Reference.from_dict(obj.get("source")) if obj.get("source") is not None else None,
+            "privileged": obj.get("privileged"),
+            "attribute": obj.get("attribute"),
+            "value": obj.get("value"),
+            "standalone": obj.get("standalone")
         })
         return _obj
+
+

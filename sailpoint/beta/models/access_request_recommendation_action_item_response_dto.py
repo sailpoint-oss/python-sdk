@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -26,15 +27,11 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccessRequestRecommendationActionItemResponseDto(BaseModel):
     """
     AccessRequestRecommendationActionItemResponseDto
     """ # noqa: E501
-    identity_id: Optional[StrictStr] = Field(
-        default=None,
-        description="The identity ID taking the action.",
-        alias="identityId")
+    identity_id: Optional[StrictStr] = Field(default=None, description="The identity ID taking the action.", alias="identityId")
     access: Optional[AccessRequestRecommendationItem] = None
     timestamp: Optional[datetime] = None
     __properties: ClassVar[List[str]] = ["identityId", "access", "timestamp"]
@@ -44,6 +41,7 @@ class AccessRequestRecommendationActionItemResponseDto(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -71,7 +69,8 @@ class AccessRequestRecommendationActionItemResponseDto(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of access
@@ -89,12 +88,10 @@ class AccessRequestRecommendationActionItemResponseDto(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "identityId":
-            obj.get("identityId"),
-            "access":
-            AccessRequestRecommendationItem.from_dict(obj.get("access"))
-            if obj.get("access") is not None else None,
-            "timestamp":
-            obj.get("timestamp")
+            "identityId": obj.get("identityId"),
+            "access": AccessRequestRecommendationItem.from_dict(obj.get("access")) if obj.get("access") is not None else None,
+            "timestamp": obj.get("timestamp")
         })
         return _obj
+
+

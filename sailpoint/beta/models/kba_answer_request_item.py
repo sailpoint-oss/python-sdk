@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr
@@ -24,15 +26,11 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class KbaAnswerRequestItem(BaseModel):
     """
     KbaAnswerRequestItem
-    """
-
-  # noqa: E501
-    question_id: StrictStr = Field(description="Question Id",
-                                   alias="questionId")
+    """ # noqa: E501
+    question_id: StrictStr = Field(description="Question Id", alias="questionId")
     answer: StrictStr = Field(description="An answer for the KBA question")
     __properties: ClassVar[List[str]] = ["questionId", "answer"]
 
@@ -41,6 +39,7 @@ class KbaAnswerRequestItem(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -68,7 +67,8 @@ class KbaAnswerRequestItem(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -87,3 +87,5 @@ class KbaAnswerRequestItem(BaseModel):
             "answer": obj.get("answer")
         })
         return _obj
+
+

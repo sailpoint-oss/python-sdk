@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -31,54 +32,37 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccountActivityDocument(BaseModel):
     """
     AccountActivity
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     id: StrictStr
     name: StrictStr
     type: DocumentType = Field(alias="_type")
-    action: Optional[StrictStr] = Field(
-        default=None,
-        description="The type of action that this activity performed")
-    created: Optional[datetime] = Field(
-        default=None, description="A date-time in ISO-8601 format")
-    modified: Optional[datetime] = Field(
-        default=None, description="A date-time in ISO-8601 format")
-    stage: Optional[StrictStr] = Field(
-        default=None, description="The current stage of the activity")
-    origin: Optional[StrictStr] = None
-    status: Optional[StrictStr] = Field(
-        default=None, description="the current status of the activity")
+    action: Optional[StrictStr] = Field(default=None, description="Type of action performed in the activity.")
+    created: Optional[datetime] = Field(default=None, description="ISO-8601 date-time referring to the time when the object was created.")
+    modified: Optional[datetime] = Field(default=None, description="ISO-8601 date-time referring to the time when the object was last modified.")
+    stage: Optional[StrictStr] = Field(default=None, description="Activity's current stage.")
+    origin: Optional[StrictStr] = Field(default=None, description="Activity's origin.")
+    status: Optional[StrictStr] = Field(default=None, description="Activity's current status.")
     requester: Optional[AccountSource] = None
     recipient: Optional[AccountSource] = None
-    tracking_number: Optional[StrictStr] = Field(default=None,
-                                                 alias="trackingNumber")
-    errors: Optional[List[StrictStr]] = None
-    warnings: Optional[List[StrictStr]] = None
-    approvals: Optional[List[Approval]] = None
-    original_requests: Optional[List[OriginalRequest]] = Field(
-        default=None, alias="originalRequests")
-    expansion_items: Optional[List[ExpansionItem]] = Field(
-        default=None, alias="expansionItems")
-    account_requests: Optional[List[AccountRequest]] = Field(
-        default=None, alias="accountRequests")
-    sources: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "_type", "action", "created", "modified", "stage",
-        "origin", "status", "requester", "recipient", "trackingNumber",
-        "errors", "warnings", "approvals", "originalRequests",
-        "expansionItems", "accountRequests", "sources"
-    ]
+    tracking_number: Optional[StrictStr] = Field(default=None, description="Account activity's tracking number.", alias="trackingNumber")
+    errors: Optional[List[StrictStr]] = Field(default=None, description="Errors provided by the source while completing account actions.")
+    warnings: Optional[List[StrictStr]] = Field(default=None, description="Warnings provided by the source while completing account actions.")
+    approvals: Optional[List[Approval]] = Field(default=None, description="Approvals performed on an item during activity.")
+    original_requests: Optional[List[OriginalRequest]] = Field(default=None, description="Original actions that triggered all individual source actions related to the account action.", alias="originalRequests")
+    expansion_items: Optional[List[ExpansionItem]] = Field(default=None, description="Controls that translated the attribute requests into actual provisioning actions on the source.", alias="expansionItems")
+    account_requests: Optional[List[AccountRequest]] = Field(default=None, description="Account data for each individual source action triggered by the original requests.", alias="accountRequests")
+    sources: Optional[StrictStr] = Field(default=None, description="Sources involved in the account activity.")
+    __properties: ClassVar[List[str]] = ["id", "name", "_type", "action", "created", "modified", "stage", "origin", "status", "requester", "recipient", "trackingNumber", "errors", "warnings", "approvals", "originalRequests", "expansionItems", "accountRequests", "sources"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -106,7 +90,8 @@ class AccountActivityDocument(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of requester
@@ -180,52 +165,26 @@ class AccountActivityDocument(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "_type":
-            obj.get("_type"),
-            "action":
-            obj.get("action"),
-            "created":
-            obj.get("created"),
-            "modified":
-            obj.get("modified"),
-            "stage":
-            obj.get("stage"),
-            "origin":
-            obj.get("origin"),
-            "status":
-            obj.get("status"),
-            "requester":
-            AccountSource.from_dict(obj.get("requester"))
-            if obj.get("requester") is not None else None,
-            "recipient":
-            AccountSource.from_dict(obj.get("recipient"))
-            if obj.get("recipient") is not None else None,
-            "trackingNumber":
-            obj.get("trackingNumber"),
-            "errors":
-            obj.get("errors"),
-            "warnings":
-            obj.get("warnings"),
-            "approvals":
-            [Approval.from_dict(_item) for _item in obj.get("approvals")]
-            if obj.get("approvals") is not None else None,
-            "originalRequests": [
-                OriginalRequest.from_dict(_item)
-                for _item in obj.get("originalRequests")
-            ] if obj.get("originalRequests") is not None else None,
-            "expansionItems": [
-                ExpansionItem.from_dict(_item)
-                for _item in obj.get("expansionItems")
-            ] if obj.get("expansionItems") is not None else None,
-            "accountRequests": [
-                AccountRequest.from_dict(_item)
-                for _item in obj.get("accountRequests")
-            ] if obj.get("accountRequests") is not None else None,
-            "sources":
-            obj.get("sources")
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "_type": obj.get("_type"),
+            "action": obj.get("action"),
+            "created": obj.get("created"),
+            "modified": obj.get("modified"),
+            "stage": obj.get("stage"),
+            "origin": obj.get("origin"),
+            "status": obj.get("status"),
+            "requester": AccountSource.from_dict(obj.get("requester")) if obj.get("requester") is not None else None,
+            "recipient": AccountSource.from_dict(obj.get("recipient")) if obj.get("recipient") is not None else None,
+            "trackingNumber": obj.get("trackingNumber"),
+            "errors": obj.get("errors"),
+            "warnings": obj.get("warnings"),
+            "approvals": [Approval.from_dict(_item) for _item in obj.get("approvals")] if obj.get("approvals") is not None else None,
+            "originalRequests": [OriginalRequest.from_dict(_item) for _item in obj.get("originalRequests")] if obj.get("originalRequests") is not None else None,
+            "expansionItems": [ExpansionItem.from_dict(_item) for _item in obj.get("expansionItems")] if obj.get("expansionItems") is not None else None,
+            "accountRequests": [AccountRequest.from_dict(_item) for _item in obj.get("accountRequests")] if obj.get("accountRequests") is not None else None,
+            "sources": obj.get("sources")
         })
         return _obj
+
+

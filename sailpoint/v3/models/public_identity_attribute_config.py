@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,15 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class PublicIdentityAttributeConfig(BaseModel):
     """
     Used to map an attribute key for an Identity to its display name.
     """ # noqa: E501
-    key: Optional[StrictStr] = Field(default=None,
-                                     description="The attribute key")
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="The attribute display name")
+    key: Optional[StrictStr] = Field(default=None, description="The attribute key")
+    name: Optional[StrictStr] = Field(default=None, description="The attribute display name")
     __properties: ClassVar[List[str]] = ["key", "name"]
 
     model_config = {
@@ -40,6 +39,7 @@ class PublicIdentityAttributeConfig(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -67,7 +67,8 @@ class PublicIdentityAttributeConfig(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -86,3 +87,5 @@ class PublicIdentityAttributeConfig(BaseModel):
             "name": obj.get("name")
         })
         return _obj
+
+

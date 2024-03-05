@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,17 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class WorkflowBodyOwner(BaseModel):
     """
     The identity that owns the workflow.  The owner's permissions in IDN will determine what actions the workflow is allowed to perform.  Ownership can be changed by updating the owner in a PUT or PATCH request.
     """ # noqa: E501
-    type: Optional[StrictStr] = Field(
-        default=None, description="The type of object that is referenced")
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="The unique ID of the object")
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="The name of the object")
+    type: Optional[StrictStr] = Field(default=None, description="The type of object that is referenced")
+    id: Optional[StrictStr] = Field(default=None, description="The unique ID of the object")
+    name: Optional[StrictStr] = Field(default=None, description="The name of the object")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')
@@ -52,6 +50,7 @@ class WorkflowBodyOwner(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -79,7 +78,8 @@ class WorkflowBodyOwner(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -99,3 +99,5 @@ class WorkflowBodyOwner(BaseModel):
             "name": obj.get("name")
         })
         return _obj
+
+

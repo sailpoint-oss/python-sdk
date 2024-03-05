@@ -5,11 +5,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | The unique ID of the referenced object. | [optional] 
-**name** | **str** | The human readable name of the referenced object. | [optional] 
-**description** | **str** | A description of the entitlement | [optional] 
-**attribute** | **str** | The name of the entitlement attribute | [optional] 
-**value** | **str** | The value of the entitlement | [optional] 
+**has_permissions** | **bool** | Indicates whether the entitlement has permissions. | [optional] [default to False]
+**description** | **str** | Entitlement&#39;s description. | [optional] 
+**attribute** | **str** | Entitlement attribute&#39;s name. | [optional] 
+**value** | **str** | Entitlement&#39;s value. | [optional] 
+**var_schema** | **str** | Entitlement&#39;s schema. | [optional] 
+**privileged** | **bool** | Indicates whether the entitlement is privileged. | [optional] [default to False]
+**id** | **str** | Entitlement&#39;s ID. | [optional] 
+**name** | **str** | Entitlement&#39;s name. | [optional] 
 
 ## Example
 

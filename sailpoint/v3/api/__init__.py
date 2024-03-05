@@ -13,6 +13,7 @@ from sailpoint.v3.api.certification_campaign_filters_api import CertificationCam
 from sailpoint.v3.api.certification_campaigns_api import CertificationCampaignsApi
 from sailpoint.v3.api.certification_summaries_api import CertificationSummariesApi
 from sailpoint.v3.api.certifications_api import CertificationsApi
+from sailpoint.v3.api.connectors_api import ConnectorsApi
 from sailpoint.v3.api.global_tenant_security_settings_api import GlobalTenantSecuritySettingsApi
 from sailpoint.v3.api.identity_profiles_api import IdentityProfilesApi
 from sailpoint.v3.api.lifecycle_states_api import LifecycleStatesApi
@@ -40,3 +41,5 @@ from sailpoint.v3.api.sources_api import SourcesApi
 from sailpoint.v3.api.tagged_objects_api import TaggedObjectsApi
 from sailpoint.v3.api.transforms_api import TransformsApi
 from sailpoint.v3.api.work_items_api import WorkItemsApi
+from sailpoint.v3.api.workflows_api import WorkflowsApi
+

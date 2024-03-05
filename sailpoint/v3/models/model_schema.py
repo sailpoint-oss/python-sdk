@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -27,66 +28,30 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ModelSchema(BaseModel):
     """
     ModelSchema
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="The id of the Schema.")
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="The name of the Schema.")
-    native_object_type: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "The name of the object type on the native system that the schema represents.",
-        alias="nativeObjectType")
-    identity_attribute: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "The name of the attribute used to calculate the unique identifier for an object in the schema.",
-        alias="identityAttribute")
-    display_attribute: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "The name of the attribute used to calculate the display value for an object in the schema.",
-        alias="displayAttribute")
-    hierarchy_attribute: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "The name of the attribute whose values represent other objects in a hierarchy. Only relevant to group schemas.",
-        alias="hierarchyAttribute")
-    include_permissions: Optional[StrictBool] = Field(
-        default=None,
-        description=
-        "Flag indicating whether or not the include permissions with the object data when aggregating the schema.",
-        alias="includePermissions")
-    features: Optional[List[SourceFeature]] = Field(
-        default=None, description="The features that the schema supports.")
-    configuration: Optional[Dict[str, Any]] = Field(
-        default=None,
-        description=
-        "Holds any extra configuration data that the schema may require.")
-    attributes: Optional[List[AttributeDefinition]] = Field(
-        default=None,
-        description="The attribute definitions which form the schema.")
-    created: Optional[datetime] = Field(
-        default=None, description="The date the Schema was created.")
-    modified: Optional[datetime] = Field(
-        default=None, description="The date the Schema was last modified.")
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "nativeObjectType", "identityAttribute",
-        "displayAttribute", "hierarchyAttribute", "includePermissions",
-        "features", "configuration", "attributes", "created", "modified"
-    ]
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="The id of the Schema.")
+    name: Optional[StrictStr] = Field(default=None, description="The name of the Schema.")
+    native_object_type: Optional[StrictStr] = Field(default=None, description="The name of the object type on the native system that the schema represents.", alias="nativeObjectType")
+    identity_attribute: Optional[StrictStr] = Field(default=None, description="The name of the attribute used to calculate the unique identifier for an object in the schema.", alias="identityAttribute")
+    display_attribute: Optional[StrictStr] = Field(default=None, description="The name of the attribute used to calculate the display value for an object in the schema.", alias="displayAttribute")
+    hierarchy_attribute: Optional[StrictStr] = Field(default=None, description="The name of the attribute whose values represent other objects in a hierarchy. Only relevant to group schemas.", alias="hierarchyAttribute")
+    include_permissions: Optional[StrictBool] = Field(default=None, description="Flag indicating whether or not the include permissions with the object data when aggregating the schema.", alias="includePermissions")
+    features: Optional[List[SourceFeature]] = Field(default=None, description="The features that the schema supports.")
+    configuration: Optional[Dict[str, Any]] = Field(default=None, description="Holds any extra configuration data that the schema may require.")
+    attributes: Optional[List[AttributeDefinition]] = Field(default=None, description="The attribute definitions which form the schema.")
+    created: Optional[datetime] = Field(default=None, description="The date the Schema was created.")
+    modified: Optional[datetime] = Field(default=None, description="The date the Schema was last modified.")
+    __properties: ClassVar[List[str]] = ["id", "name", "nativeObjectType", "identityAttribute", "displayAttribute", "hierarchyAttribute", "includePermissions", "features", "configuration", "attributes", "created", "modified"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -114,7 +79,8 @@ class ModelSchema(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in attributes (list)
@@ -136,31 +102,19 @@ class ModelSchema(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "nativeObjectType":
-            obj.get("nativeObjectType"),
-            "identityAttribute":
-            obj.get("identityAttribute"),
-            "displayAttribute":
-            obj.get("displayAttribute"),
-            "hierarchyAttribute":
-            obj.get("hierarchyAttribute"),
-            "includePermissions":
-            obj.get("includePermissions"),
-            "features":
-            obj.get("features"),
-            "configuration":
-            obj.get("configuration"),
-            "attributes": [
-                AttributeDefinition.from_dict(_item)
-                for _item in obj.get("attributes")
-            ] if obj.get("attributes") is not None else None,
-            "created":
-            obj.get("created"),
-            "modified":
-            obj.get("modified")
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "nativeObjectType": obj.get("nativeObjectType"),
+            "identityAttribute": obj.get("identityAttribute"),
+            "displayAttribute": obj.get("displayAttribute"),
+            "hierarchyAttribute": obj.get("hierarchyAttribute"),
+            "includePermissions": obj.get("includePermissions"),
+            "features": obj.get("features"),
+            "configuration": obj.get("configuration"),
+            "attributes": [AttributeDefinition.from_dict(_item) for _item in obj.get("attributes")] if obj.get("attributes") is not None else None,
+            "created": obj.get("created"),
+            "modified": obj.get("modified")
         })
         return _obj
+
+

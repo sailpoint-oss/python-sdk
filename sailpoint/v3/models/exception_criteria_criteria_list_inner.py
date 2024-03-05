@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr, field_validator
@@ -25,25 +27,14 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ExceptionCriteriaCriteriaListInner(BaseModel):
     """
     The types of objects supported for SOD violations
     """ # noqa: E501
-    type: Optional[Dict[str, Any]] = Field(
-        default=None, description="The type of object that is referenced")
-    id: Optional[StrictStr] = Field(
-        default=None,
-        description="ID of the object to which this reference applies")
-    name: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Human-readable display name of the object to which this reference applies"
-    )
-    existing: Optional[StrictBool] = Field(
-        default=False,
-        description=
-        "Whether the subject identity already had that access or not")
+    type: Optional[Dict[str, Any]] = Field(default=None, description="The type of object that is referenced")
+    id: Optional[StrictStr] = Field(default=None, description="ID of the object to which this reference applies")
+    name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of the object to which this reference applies")
+    existing: Optional[StrictBool] = Field(default=False, description="Whether the subject identity already had that access or not")
     __properties: ClassVar[List[str]] = ["type", "id", "name", "existing"]
 
     @field_validator('type')
@@ -61,6 +52,7 @@ class ExceptionCriteriaCriteriaListInner(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -88,7 +80,8 @@ class ExceptionCriteriaCriteriaListInner(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -103,13 +96,11 @@ class ExceptionCriteriaCriteriaListInner(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "type":
-            obj.get("type"),
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "existing":
-            obj.get("existing") if obj.get("existing") is not None else False
+            "type": obj.get("type"),
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "existing": obj.get("existing") if obj.get("existing") is not None else False
         })
         return _obj
+
+

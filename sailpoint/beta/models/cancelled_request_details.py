@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -26,21 +27,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class CancelledRequestDetails(BaseModel):
     """
     Provides additional details for a request that has been cancelled.
     """ # noqa: E501
-    comment: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Comment made by the owner when cancelling the associated request.")
+    comment: Optional[StrictStr] = Field(default=None, description="Comment made by the owner when cancelling the associated request.")
     owner: Optional[OwnerDto] = None
-    modified: Optional[datetime] = Field(
-        default=None,
-        description=
-        "Date comment was added by the owner when cancelling the associated request."
-    )
+    modified: Optional[datetime] = Field(default=None, description="Date comment was added by the owner when cancelling the associated request.")
     __properties: ClassVar[List[str]] = ["comment", "owner", "modified"]
 
     model_config = {
@@ -48,6 +41,7 @@ class CancelledRequestDetails(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -75,7 +69,8 @@ class CancelledRequestDetails(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of owner
@@ -93,12 +88,10 @@ class CancelledRequestDetails(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "comment":
-            obj.get("comment"),
-            "owner":
-            OwnerDto.from_dict(obj.get("owner"))
-            if obj.get("owner") is not None else None,
-            "modified":
-            obj.get("modified")
+            "comment": obj.get("comment"),
+            "owner": OwnerDto.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
+            "modified": obj.get("modified")
         })
         return _obj
+
+

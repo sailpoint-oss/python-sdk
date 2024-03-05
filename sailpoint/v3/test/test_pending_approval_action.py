@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.pending_approval_action import PendingApprovalAction
-
 
 class TestPendingApprovalAction(unittest.TestCase):
     """PendingApprovalAction unit test stubs"""
@@ -29,7 +29,6 @@ class TestPendingApprovalAction(unittest.TestCase):
     def testPendingApprovalAction(self):
         """Test PendingApprovalAction"""
         # inst = PendingApprovalAction()
-
 
 if __name__ == '__main__':
     unittest.main()

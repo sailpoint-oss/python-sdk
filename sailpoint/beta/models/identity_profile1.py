@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -29,59 +30,31 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class IdentityProfile1(BaseModel):
     """
     IdentityProfile1
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(
-        default=None, description="System-generated unique ID of the Object")
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="System-generated unique ID of the Object")
     name: StrictStr = Field(description="Name of the Object")
-    created: Optional[datetime] = Field(
-        default=None, description="Creation date of the Object")
-    modified: Optional[datetime] = Field(
-        default=None, description="Last modification date of the Object")
-    description: Optional[StrictStr] = Field(
-        default=None, description="The description of the Identity Profile.")
+    created: Optional[datetime] = Field(default=None, description="Creation date of the Object")
+    modified: Optional[datetime] = Field(default=None, description="Last modification date of the Object")
+    description: Optional[StrictStr] = Field(default=None, description="The description of the Identity Profile.")
     owner: Optional[IdentityProfileAllOfOwner] = None
-    priority: Optional[StrictInt] = Field(
-        default=None, description="The priority for an Identity Profile.")
-    authoritative_source: IdentityProfile1AllOfAuthoritativeSource = Field(
-        alias="authoritativeSource")
-    identity_refresh_required: Optional[StrictBool] = Field(
-        default=False,
-        description=
-        "True if a identity refresh is needed. Typically triggered when a change on the source has been made.",
-        alias="identityRefreshRequired")
-    identity_count: Optional[StrictInt] = Field(
-        default=None,
-        description=
-        "The number of identities that belong to the Identity Profile.",
-        alias="identityCount")
-    identity_attribute_config: Optional[IdentityAttributeConfig1] = Field(
-        default=None, alias="identityAttributeConfig")
-    identity_exception_report_reference: Optional[
-        IdentityExceptionReportReference1] = Field(
-            default=None, alias="identityExceptionReportReference")
-    has_time_based_attr: Optional[StrictBool] = Field(
-        default=False,
-        description=
-        "Indicates the value of requiresPeriodicRefresh attribute for the Identity Profile.",
-        alias="hasTimeBasedAttr")
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "created", "modified", "description", "owner",
-        "priority", "authoritativeSource", "identityRefreshRequired",
-        "identityCount", "identityAttributeConfig",
-        "identityExceptionReportReference", "hasTimeBasedAttr"
-    ]
+    priority: Optional[StrictInt] = Field(default=None, description="The priority for an Identity Profile.")
+    authoritative_source: IdentityProfile1AllOfAuthoritativeSource = Field(alias="authoritativeSource")
+    identity_refresh_required: Optional[StrictBool] = Field(default=False, description="True if a identity refresh is needed. Typically triggered when a change on the source has been made.", alias="identityRefreshRequired")
+    identity_count: Optional[StrictInt] = Field(default=None, description="The number of identities that belong to the Identity Profile.", alias="identityCount")
+    identity_attribute_config: Optional[IdentityAttributeConfig1] = Field(default=None, alias="identityAttributeConfig")
+    identity_exception_report_reference: Optional[IdentityExceptionReportReference1] = Field(default=None, alias="identityExceptionReportReference")
+    has_time_based_attr: Optional[StrictBool] = Field(default=False, description="Indicates the value of requiresPeriodicRefresh attribute for the Identity Profile.", alias="hasTimeBasedAttr")
+    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "description", "owner", "priority", "authoritativeSource", "identityRefreshRequired", "identityCount", "identityAttributeConfig", "identityExceptionReportReference", "hasTimeBasedAttr"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -127,14 +100,10 @@ class IdentityProfile1(BaseModel):
             _dict['authoritativeSource'] = self.authoritative_source.to_dict()
         # override the default output from pydantic by calling `to_dict()` of identity_attribute_config
         if self.identity_attribute_config:
-            _dict[
-                'identityAttributeConfig'] = self.identity_attribute_config.to_dict(
-                )
+            _dict['identityAttributeConfig'] = self.identity_attribute_config.to_dict()
         # override the default output from pydantic by calling `to_dict()` of identity_exception_report_reference
         if self.identity_exception_report_reference:
-            _dict[
-                'identityExceptionReportReference'] = self.identity_exception_report_reference.to_dict(
-                )
+            _dict['identityExceptionReportReference'] = self.identity_exception_report_reference.to_dict()
         # set to None if description (nullable) is None
         # and model_fields_set contains the field
         if self.description is None and "description" in self.model_fields_set:
@@ -162,40 +131,20 @@ class IdentityProfile1(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "created":
-            obj.get("created"),
-            "modified":
-            obj.get("modified"),
-            "description":
-            obj.get("description"),
-            "owner":
-            IdentityProfileAllOfOwner.from_dict(obj.get("owner"))
-            if obj.get("owner") is not None else None,
-            "priority":
-            obj.get("priority"),
-            "authoritativeSource":
-            IdentityProfile1AllOfAuthoritativeSource.from_dict(
-                obj.get("authoritativeSource"))
-            if obj.get("authoritativeSource") is not None else None,
-            "identityRefreshRequired":
-            obj.get("identityRefreshRequired")
-            if obj.get("identityRefreshRequired") is not None else False,
-            "identityCount":
-            obj.get("identityCount"),
-            "identityAttributeConfig":
-            IdentityAttributeConfig1.from_dict(
-                obj.get("identityAttributeConfig"))
-            if obj.get("identityAttributeConfig") is not None else None,
-            "identityExceptionReportReference":
-            IdentityExceptionReportReference1.from_dict(
-                obj.get("identityExceptionReportReference")) if
-            obj.get("identityExceptionReportReference") is not None else None,
-            "hasTimeBasedAttr":
-            obj.get("hasTimeBasedAttr")
-            if obj.get("hasTimeBasedAttr") is not None else False
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "created": obj.get("created"),
+            "modified": obj.get("modified"),
+            "description": obj.get("description"),
+            "owner": IdentityProfileAllOfOwner.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
+            "priority": obj.get("priority"),
+            "authoritativeSource": IdentityProfile1AllOfAuthoritativeSource.from_dict(obj.get("authoritativeSource")) if obj.get("authoritativeSource") is not None else None,
+            "identityRefreshRequired": obj.get("identityRefreshRequired") if obj.get("identityRefreshRequired") is not None else False,
+            "identityCount": obj.get("identityCount"),
+            "identityAttributeConfig": IdentityAttributeConfig1.from_dict(obj.get("identityAttributeConfig")) if obj.get("identityAttributeConfig") is not None else None,
+            "identityExceptionReportReference": IdentityExceptionReportReference1.from_dict(obj.get("identityExceptionReportReference")) if obj.get("identityExceptionReportReference") is not None else None,
+            "hasTimeBasedAttr": obj.get("hasTimeBasedAttr") if obj.get("hasTimeBasedAttr") is not None else False
         })
         return _obj
+
+

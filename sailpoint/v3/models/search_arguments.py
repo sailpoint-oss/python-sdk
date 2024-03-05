@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -25,23 +27,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class SearchArguments(BaseModel):
     """
     SearchArguments
-    """
-
-  # noqa: E501
-    schedule_id: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "The ID of the scheduled search that triggered the saved search execution. ",
-        alias="scheduleId")
+    """ # noqa: E501
+    schedule_id: Optional[StrictStr] = Field(default=None, description="The ID of the scheduled search that triggered the saved search execution. ", alias="scheduleId")
     owner: Optional[TypedReference] = None
-    recipients: Optional[List[TypedReference]] = Field(
-        default=None,
-        description=
-        "The email recipients of the scheduled search being tested. ")
+    recipients: Optional[List[TypedReference]] = Field(default=None, description="The email recipients of the scheduled search being tested. ")
     __properties: ClassVar[List[str]] = ["scheduleId", "owner", "recipients"]
 
     model_config = {
@@ -49,6 +41,7 @@ class SearchArguments(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -76,7 +69,8 @@ class SearchArguments(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of owner
@@ -101,14 +95,10 @@ class SearchArguments(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "scheduleId":
-            obj.get("scheduleId"),
-            "owner":
-            TypedReference.from_dict(obj.get("owner"))
-            if obj.get("owner") is not None else None,
-            "recipients": [
-                TypedReference.from_dict(_item)
-                for _item in obj.get("recipients")
-            ] if obj.get("recipients") is not None else None
+            "scheduleId": obj.get("scheduleId"),
+            "owner": TypedReference.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
+            "recipients": [TypedReference.from_dict(_item) for _item in obj.get("recipients")] if obj.get("recipients") is not None else None
         })
         return _obj
+
+

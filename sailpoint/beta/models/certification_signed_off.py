@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel
@@ -24,13 +26,10 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class CertificationSignedOff(BaseModel):
     """
     CertificationSignedOff
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     certification: CertificationSignedOffCertification
     __properties: ClassVar[List[str]] = ["certification"]
 
@@ -39,6 +38,7 @@ class CertificationSignedOff(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -66,7 +66,8 @@ class CertificationSignedOff(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of certification
@@ -84,9 +85,8 @@ class CertificationSignedOff(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "certification":
-            CertificationSignedOffCertification.from_dict(
-                obj.get("certification"))
-            if obj.get("certification") is not None else None
+            "certification": CertificationSignedOffCertification.from_dict(obj.get("certification")) if obj.get("certification") is not None else None
         })
         return _obj
+
+

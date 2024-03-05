@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,36 +26,23 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccessRequestPreApprovalRequestedItemsInner(BaseModel):
     """
     AccessRequestPreApprovalRequestedItemsInner
-    """
-
-  # noqa: E501
-    id: StrictStr = Field(
-        description="The unique ID of the access item being requested.")
-    name: StrictStr = Field(
-        description="The human friendly name of the access item.")
-    description: Optional[StrictStr] = Field(
-        default=None, description="Detailed description of the access item.")
+    """ # noqa: E501
+    id: StrictStr = Field(description="The unique ID of the access item being requested.")
+    name: StrictStr = Field(description="The human friendly name of the access item.")
+    description: Optional[StrictStr] = Field(default=None, description="Detailed description of the access item.")
     type: Dict[str, Any] = Field(description="The type of access item.")
-    operation: Dict[str, Any] = Field(
-        description="The action to perform on the access item.")
-    comment: Optional[StrictStr] = Field(
-        default=None,
-        description="A comment from the identity requesting the access.")
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "description", "type", "operation", "comment"
-    ]
+    operation: Dict[str, Any] = Field(description="The action to perform on the access item.")
+    comment: Optional[StrictStr] = Field(default=None, description="A comment from the identity requesting the access.")
+    __properties: ClassVar[List[str]] = ["id", "name", "description", "type", "operation", "comment"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT'):
-            raise ValueError(
-                "must be one of enum values ('ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT')"
-            )
+            raise ValueError("must be one of enum values ('ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT')")
         return value
 
     @field_validator('operation')
@@ -68,6 +57,7 @@ class AccessRequestPreApprovalRequestedItemsInner(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -95,7 +85,8 @@ class AccessRequestPreApprovalRequestedItemsInner(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if description (nullable) is None
@@ -128,3 +119,5 @@ class AccessRequestPreApprovalRequestedItemsInner(BaseModel):
             "comment": obj.get("comment")
         })
         return _obj
+
+

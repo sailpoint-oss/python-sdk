@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 
 from sailpoint.beta.api.work_items_api import WorkItemsApi

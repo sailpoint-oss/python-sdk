@@ -3,11 +3,13 @@
 # import apis into api package
 from sailpoint.beta.api.access_profiles_api import AccessProfilesApi
 from sailpoint.beta.api.access_request_approvals_api import AccessRequestApprovalsApi
+from sailpoint.beta.api.access_request_identity_metrics_api import AccessRequestIdentityMetricsApi
 from sailpoint.beta.api.access_requests_api import AccessRequestsApi
 from sailpoint.beta.api.account_activities_api import AccountActivitiesApi
 from sailpoint.beta.api.account_aggregations_api import AccountAggregationsApi
 from sailpoint.beta.api.account_usages_api import AccountUsagesApi
 from sailpoint.beta.api.accounts_api import AccountsApi
+from sailpoint.beta.api.auth_profile_api import AuthProfileApi
 from sailpoint.beta.api.certification_campaigns_api import CertificationCampaignsApi
 from sailpoint.beta.api.certifications_api import CertificationsApi
 from sailpoint.beta.api.connector_rule_management_api import ConnectorRuleManagementApi
@@ -55,8 +57,10 @@ from sailpoint.beta.api.source_usages_api import SourceUsagesApi
 from sailpoint.beta.api.sources_api import SourcesApi
 from sailpoint.beta.api.tagged_objects_api import TaggedObjectsApi
 from sailpoint.beta.api.task_management_api import TaskManagementApi
+from sailpoint.beta.api.tenant_api import TenantApi
 from sailpoint.beta.api.transforms_api import TransformsApi
 from sailpoint.beta.api.triggers_api import TriggersApi
 from sailpoint.beta.api.work_items_api import WorkItemsApi
 from sailpoint.beta.api.work_reassignment_api import WorkReassignmentApi
 from sailpoint.beta.api.workflows_api import WorkflowsApi
+

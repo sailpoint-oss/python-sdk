@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -25,25 +27,20 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class IdentityPreviewRequest(BaseModel):
     """
     IdentityPreviewRequest
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     identity_id: Optional[StrictStr] = Field(default=None, alias="identityId")
-    identity_attribute_config: Optional[IdentityAttributeConfig] = Field(
-        default=None, alias="identityAttributeConfig")
-    __properties: ClassVar[List[str]] = [
-        "identityId", "identityAttributeConfig"
-    ]
+    identity_attribute_config: Optional[IdentityAttributeConfig] = Field(default=None, alias="identityAttributeConfig")
+    __properties: ClassVar[List[str]] = ["identityId", "identityAttributeConfig"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -71,14 +68,13 @@ class IdentityPreviewRequest(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of identity_attribute_config
         if self.identity_attribute_config:
-            _dict[
-                'identityAttributeConfig'] = self.identity_attribute_config.to_dict(
-                )
+            _dict['identityAttributeConfig'] = self.identity_attribute_config.to_dict()
         return _dict
 
     @classmethod
@@ -91,11 +87,9 @@ class IdentityPreviewRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "identityId":
-            obj.get("identityId"),
-            "identityAttributeConfig":
-            IdentityAttributeConfig.from_dict(
-                obj.get("identityAttributeConfig"))
-            if obj.get("identityAttributeConfig") is not None else None
+            "identityId": obj.get("identityId"),
+            "identityAttributeConfig": IdentityAttributeConfig.from_dict(obj.get("identityAttributeConfig")) if obj.get("identityAttributeConfig") is not None else None
         })
         return _obj
+
+

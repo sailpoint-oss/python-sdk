@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.identity_with_new_access_access_refs_inner import IdentityWithNewAccessAccessRefsInner
-
 
 class TestIdentityWithNewAccessAccessRefsInner(unittest.TestCase):
     """IdentityWithNewAccessAccessRefsInner unit test stubs"""
@@ -26,8 +26,7 @@ class TestIdentityWithNewAccessAccessRefsInner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(
-            self, include_optional) -> IdentityWithNewAccessAccessRefsInner:
+    def make_instance(self, include_optional) -> IdentityWithNewAccessAccessRefsInner:
         """Test IdentityWithNewAccessAccessRefsInner
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -50,7 +49,6 @@ class TestIdentityWithNewAccessAccessRefsInner(unittest.TestCase):
         """Test IdentityWithNewAccessAccessRefsInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

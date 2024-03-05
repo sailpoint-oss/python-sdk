@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,20 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccountSource(BaseModel):
     """
     AccountSource
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(
-        default=None, description="The unique ID of the referenced object.")
-    name: Optional[StrictStr] = Field(
-        default=None,
-        description="The human readable name of the referenced object.")
-    type: Optional[StrictStr] = Field(
-        default=None, description="the type of source returned")
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="The unique ID of the referenced object.")
+    name: Optional[StrictStr] = Field(default=None, description="The human readable name of the referenced object.")
+    type: Optional[StrictStr] = Field(default=None, description="Type of source returned.")
     __properties: ClassVar[List[str]] = ["id", "name", "type"]
 
     model_config = {
@@ -45,6 +40,7 @@ class AccountSource(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -72,7 +68,8 @@ class AccountSource(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -92,3 +89,5 @@ class AccountSource(BaseModel):
             "type": obj.get("type")
         })
         return _obj
+
+

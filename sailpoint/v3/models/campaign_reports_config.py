@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,17 +26,11 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class CampaignReportsConfig(BaseModel):
     """
     CampaignReportsConfig
-    """
-
-  # noqa: E501
-    identity_attribute_columns: Optional[List[StrictStr]] = Field(
-        default=None,
-        description="list of identity attribute columns",
-        alias="identityAttributeColumns")
+    """ # noqa: E501
+    identity_attribute_columns: Optional[List[StrictStr]] = Field(default=None, description="list of identity attribute columns", alias="identityAttributeColumns")
     __properties: ClassVar[List[str]] = ["identityAttributeColumns"]
 
     model_config = {
@@ -42,6 +38,7 @@ class CampaignReportsConfig(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -69,9 +66,15 @@ class CampaignReportsConfig(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
+        # set to None if identity_attribute_columns (nullable) is None
+        # and model_fields_set contains the field
+        if self.identity_attribute_columns is None and "identity_attribute_columns" in self.model_fields_set:
+            _dict['identityAttributeColumns'] = None
+
         return _dict
 
     @classmethod
@@ -83,6 +86,9 @@ class CampaignReportsConfig(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {"identityAttributeColumns": obj.get("identityAttributeColumns")})
+        _obj = cls.model_validate({
+            "identityAttributeColumns": obj.get("identityAttributeColumns")
+        })
         return _obj
+
+

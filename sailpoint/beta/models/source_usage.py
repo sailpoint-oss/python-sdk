@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -25,23 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class SourceUsage(BaseModel):
     """
     SourceUsage
-    """
-
-  # noqa: E501
-    var_date: Optional[date] = Field(
-        default=None,
-        description=
-        "The first day of the month for which activity is aggregated.",
-        alias="date")
-    count: Optional[Union[StrictFloat, StrictInt]] = Field(
-        default=None,
-        description=
-        "The average number of days that accounts were active within this source, for the month."
-    )
+    """ # noqa: E501
+    var_date: Optional[date] = Field(default=None, description="The first day of the month for which activity is aggregated.", alias="date")
+    count: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The average number of days that accounts were active within this source, for the month.")
     __properties: ClassVar[List[str]] = ["date", "count"]
 
     model_config = {
@@ -49,6 +39,7 @@ class SourceUsage(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -76,7 +67,8 @@ class SourceUsage(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -95,3 +87,5 @@ class SourceUsage(BaseModel):
             "count": obj.get("count")
         })
         return _obj
+
+

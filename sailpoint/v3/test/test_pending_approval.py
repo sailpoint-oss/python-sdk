@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.pending_approval import PendingApproval
-
 
 class TestPendingApproval(unittest.TestCase):
     """PendingApproval unit test stubs"""
@@ -46,10 +46,12 @@ class TestPendingApproval(unittest.TestCase):
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20648', 
                     name = 'William Wilson', ),
-                requested_for = sailpoint.v3.models.access_item_requested_for.AccessItemRequestedFor(
-                    type = 'IDENTITY', 
-                    id = '2c4180a46faadee4016fb4e018c20626', 
-                    name = 'Robert Robinson', ),
+                requested_for = [
+                    sailpoint.v3.models.access_item_requested_for.AccessItemRequestedFor(
+                        type = 'IDENTITY', 
+                        id = '2c4180a46faadee4016fb4e018c20626', 
+                        name = 'Robert Robinson', )
+                    ],
                 owner = sailpoint.v3.models.pending_approval_owner.PendingApproval_owner(
                     type = 'IDENTITY', 
                     id = '2c9180a46faadee4016fb4e018c20639', 
@@ -61,11 +63,19 @@ class TestPendingApproval(unittest.TestCase):
                     type = 'ROLE', ),
                 requester_comment = sailpoint.v3.models.comment_dto.CommentDto(
                     comment = 'This is a comment.', 
-                    created = '2017-07-11T18:45:37.098Z', ),
+                    created = '2017-07-11T18:45:37.098Z', 
+                    author = sailpoint.v3.models.comment_dto_author.CommentDto_author(
+                        type = 'IDENTITY', 
+                        id = '2c9180847e25f377017e2ae8cae4650b', 
+                        name = 'john.doe', ), ),
                 previous_reviewers_comments = [
                     sailpoint.v3.models.comment_dto.CommentDto(
                         comment = 'This is a comment.', 
-                        created = '2017-07-11T18:45:37.098Z', )
+                        created = '2017-07-11T18:45:37.098Z', 
+                        author = sailpoint.v3.models.comment_dto_author.CommentDto_author(
+                            type = 'IDENTITY', 
+                            id = '2c9180847e25f377017e2ae8cae4650b', 
+                            name = 'john.doe', ), )
                     ],
                 forward_history = [
                     sailpoint.v3.models.approval_forward_history.ApprovalForwardHistory(
@@ -122,7 +132,6 @@ class TestPendingApproval(unittest.TestCase):
         """Test PendingApproval"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

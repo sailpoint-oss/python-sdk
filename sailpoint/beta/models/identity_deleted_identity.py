@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,13 +26,10 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class IdentityDeletedIdentity(BaseModel):
     """
     Deleted identity.
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     type: StrictStr = Field(description="Deleted identity's DTO type.")
     id: StrictStr = Field(description="Deleted identity ID.")
     name: StrictStr = Field(description="Deleted identity's display name.")
@@ -48,6 +47,7 @@ class IdentityDeletedIdentity(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -75,7 +75,8 @@ class IdentityDeletedIdentity(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -95,3 +96,5 @@ class IdentityDeletedIdentity(BaseModel):
             "name": obj.get("name")
         })
         return _obj
+
+

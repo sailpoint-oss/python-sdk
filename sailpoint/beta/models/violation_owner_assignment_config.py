@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -25,20 +27,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ViolationOwnerAssignmentConfig(BaseModel):
     """
     ViolationOwnerAssignmentConfig
-    """
-
-  # noqa: E501
-    assignment_rule: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Details about the violations owner. MANAGER - identity's manager STATIC - Governance Group or Identity",
-        alias="assignmentRule")
-    owner_ref: Optional[ViolationOwnerAssignmentConfigOwnerRef] = Field(
-        default=None, alias="ownerRef")
+    """ # noqa: E501
+    assignment_rule: Optional[StrictStr] = Field(default=None, description="Details about the violations owner. MANAGER - identity's manager STATIC - Governance Group or Identity", alias="assignmentRule")
+    owner_ref: Optional[ViolationOwnerAssignmentConfigOwnerRef] = Field(default=None, alias="ownerRef")
     __properties: ClassVar[List[str]] = ["assignmentRule", "ownerRef"]
 
     @field_validator('assignment_rule')
@@ -48,8 +42,7 @@ class ViolationOwnerAssignmentConfig(BaseModel):
             return value
 
         if value not in ('MANAGER', 'STATIC', 'null'):
-            raise ValueError(
-                "must be one of enum values ('MANAGER', 'STATIC', 'null')")
+            raise ValueError("must be one of enum values ('MANAGER', 'STATIC', 'null')")
         return value
 
     model_config = {
@@ -57,6 +50,7 @@ class ViolationOwnerAssignmentConfig(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -84,7 +78,8 @@ class ViolationOwnerAssignmentConfig(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of owner_ref
@@ -107,11 +102,9 @@ class ViolationOwnerAssignmentConfig(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "assignmentRule":
-            obj.get("assignmentRule"),
-            "ownerRef":
-            ViolationOwnerAssignmentConfigOwnerRef.from_dict(
-                obj.get("ownerRef"))
-            if obj.get("ownerRef") is not None else None
+            "assignmentRule": obj.get("assignmentRule"),
+            "ownerRef": ViolationOwnerAssignmentConfigOwnerRef.from_dict(obj.get("ownerRef")) if obj.get("ownerRef") is not None else None
         })
         return _obj
+
+

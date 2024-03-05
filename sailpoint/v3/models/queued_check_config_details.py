@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr
@@ -24,27 +26,20 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class QueuedCheckConfigDetails(BaseModel):
     """
     Configuration of maximum number days and interval for checking Service Desk integration queue status
     """ # noqa: E501
-    provisioning_status_check_interval_minutes: StrictStr = Field(
-        description="interval in minutes between status checks",
-        alias="provisioningStatusCheckIntervalMinutes")
-    provisioning_max_status_check_days: StrictStr = Field(
-        description="maximum number of days to check",
-        alias="provisioningMaxStatusCheckDays")
-    __properties: ClassVar[List[str]] = [
-        "provisioningStatusCheckIntervalMinutes",
-        "provisioningMaxStatusCheckDays"
-    ]
+    provisioning_status_check_interval_minutes: StrictStr = Field(description="interval in minutes between status checks", alias="provisioningStatusCheckIntervalMinutes")
+    provisioning_max_status_check_days: StrictStr = Field(description="maximum number of days to check", alias="provisioningMaxStatusCheckDays")
+    __properties: ClassVar[List[str]] = ["provisioningStatusCheckIntervalMinutes", "provisioningMaxStatusCheckDays"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -72,7 +67,8 @@ class QueuedCheckConfigDetails(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -87,9 +83,9 @@ class QueuedCheckConfigDetails(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "provisioningStatusCheckIntervalMinutes":
-            obj.get("provisioningStatusCheckIntervalMinutes"),
-            "provisioningMaxStatusCheckDays":
-            obj.get("provisioningMaxStatusCheckDays")
+            "provisioningStatusCheckIntervalMinutes": obj.get("provisioningStatusCheckIntervalMinutes"),
+            "provisioningMaxStatusCheckDays": obj.get("provisioningMaxStatusCheckDays")
         })
         return _obj
+
+

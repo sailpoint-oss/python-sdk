@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,28 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class FormElementDataSourceConfigOptions(BaseModel):
     """
     FormElementDataSourceConfigOptions
-    """
-
-  # noqa: E501
-    label: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Label is the main label to display to the user when selecting this option"
-    )
-    sub_label: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "SubLabel is the sub label to display below the label in diminutive styling to help describe or identify this option",
-        alias="subLabel")
-    value: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Value is the value to save as an entry when the user selects this option"
-    )
+    """ # noqa: E501
+    label: Optional[StrictStr] = Field(default=None, description="Label is the main label to display to the user when selecting this option")
+    sub_label: Optional[StrictStr] = Field(default=None, description="SubLabel is the sub label to display below the label in diminutive styling to help describe or identify this option", alias="subLabel")
+    value: Optional[StrictStr] = Field(default=None, description="Value is the value to save as an entry when the user selects this option")
     __properties: ClassVar[List[str]] = ["label", "subLabel", "value"]
 
     model_config = {
@@ -53,6 +40,7 @@ class FormElementDataSourceConfigOptions(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -80,7 +68,8 @@ class FormElementDataSourceConfigOptions(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -100,3 +89,5 @@ class FormElementDataSourceConfigOptions(BaseModel):
             "value": obj.get("value")
         })
         return _obj
+
+

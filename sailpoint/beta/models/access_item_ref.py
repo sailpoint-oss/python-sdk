@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,19 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccessItemRef(BaseModel):
     """
     AccessItemRef
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "The ID of the access item for which to retrieve the recommendation")
-    type: Optional[StrictStr] = Field(
-        default=None, description="The type of the access item.")
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="ID of the access item to retrieve the recommendation for.")
+    type: Optional[StrictStr] = Field(default=None, description="Access item's type.")
     __properties: ClassVar[List[str]] = ["id", "type"]
 
     @field_validator('type')
@@ -46,9 +41,7 @@ class AccessItemRef(BaseModel):
             return value
 
         if value not in ('ENTITLEMENT', 'ACCESS_PROFILE', 'ROLE'):
-            raise ValueError(
-                "must be one of enum values ('ENTITLEMENT', 'ACCESS_PROFILE', 'ROLE')"
-            )
+            raise ValueError("must be one of enum values ('ENTITLEMENT', 'ACCESS_PROFILE', 'ROLE')")
         return value
 
     model_config = {
@@ -56,6 +49,7 @@ class AccessItemRef(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -83,7 +77,8 @@ class AccessItemRef(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -102,3 +97,5 @@ class AccessItemRef(BaseModel):
             "type": obj.get("type")
         })
         return _obj
+
+

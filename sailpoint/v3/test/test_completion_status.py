@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.completion_status import CompletionStatus
-
 
 class TestCompletionStatus(unittest.TestCase):
     """CompletionStatus unit test stubs"""
@@ -29,7 +29,6 @@ class TestCompletionStatus(unittest.TestCase):
     def testCompletionStatus(self):
         """Test CompletionStatus"""
         # inst = CompletionStatus()
-
 
 if __name__ == '__main__':
     unittest.main()

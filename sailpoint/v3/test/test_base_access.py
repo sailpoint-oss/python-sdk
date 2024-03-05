@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.base_access import BaseAccess
-
 
 class TestBaseAccess(unittest.TestCase):
     """BaseAccess unit test stubs"""
@@ -41,11 +41,15 @@ class TestBaseAccess(unittest.TestCase):
                 description = 'The admin role',
                 created = '2018-06-25T20:22:28.104Z',
                 modified = '2018-06-25T20:22:28.104Z',
-                synced = '2018-06-25T20:22:28.104Z',
+                synced = '2018-06-25T20:22:33.104Z',
                 enabled = True,
                 requestable = True,
                 request_comments_required = False,
-                owner = None
+                owner = sailpoint.v3.models.base_access_all_of_owner.BaseAccess_allOf_owner(
+                    type = 'IDENTITY', 
+                    id = '2c9180a46faadee4016fb4e018c20639', 
+                    name = 'Support', 
+                    email = 'cloud-support@sailpoint.com', )
             )
         else:
             return BaseAccess(
@@ -56,7 +60,6 @@ class TestBaseAccess(unittest.TestCase):
         """Test BaseAccess"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

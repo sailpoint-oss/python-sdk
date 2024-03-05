@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -25,39 +26,17 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class RoleInsightsResponse(BaseModel):
     """
     RoleInsightsResponse
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(
-        default=None,
-        description="Request Id for a role insight generation request")
-    created_date: Optional[datetime] = Field(
-        default=None,
-        description="The date-time role insights request was created.",
-        alias="createdDate")
-    last_generated: Optional[datetime] = Field(
-        default=None,
-        description="The date-time role insights request was completed.",
-        alias="lastGenerated")
-    number_of_updates: Optional[StrictInt] = Field(
-        default=None,
-        description=
-        "Total number of updates for this request. Starts with 0 and will have correct number when request is COMPLETED.",
-        alias="numberOfUpdates")
-    role_ids: Optional[List[StrictStr]] = Field(
-        default=None,
-        description="The role IDs that are in this request.",
-        alias="roleIds")
-    status: Optional[StrictStr] = Field(default=None,
-                                        description="Request status")
-    __properties: ClassVar[List[str]] = [
-        "id", "createdDate", "lastGenerated", "numberOfUpdates", "roleIds",
-        "status"
-    ]
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="Request Id for a role insight generation request")
+    created_date: Optional[datetime] = Field(default=None, description="The date-time role insights request was created.", alias="createdDate")
+    last_generated: Optional[datetime] = Field(default=None, description="The date-time role insights request was completed.", alias="lastGenerated")
+    number_of_updates: Optional[StrictInt] = Field(default=None, description="Total number of updates for this request. Starts with 0 and will have correct number when request is COMPLETED.", alias="numberOfUpdates")
+    role_ids: Optional[List[StrictStr]] = Field(default=None, description="The role IDs that are in this request.", alias="roleIds")
+    status: Optional[StrictStr] = Field(default=None, description="Request status")
+    __properties: ClassVar[List[str]] = ["id", "createdDate", "lastGenerated", "numberOfUpdates", "roleIds", "status"]
 
     @field_validator('status')
     def status_validate_enum(cls, value):
@@ -66,9 +45,7 @@ class RoleInsightsResponse(BaseModel):
             return value
 
         if value not in ('CREATED', 'IN PROGRESS', 'COMPLETED', 'FAILED'):
-            raise ValueError(
-                "must be one of enum values ('CREATED', 'IN PROGRESS', 'COMPLETED', 'FAILED')"
-            )
+            raise ValueError("must be one of enum values ('CREATED', 'IN PROGRESS', 'COMPLETED', 'FAILED')")
         return value
 
     model_config = {
@@ -76,6 +53,7 @@ class RoleInsightsResponse(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -103,7 +81,8 @@ class RoleInsightsResponse(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -126,3 +105,5 @@ class RoleInsightsResponse(BaseModel):
             "status": obj.get("status")
         })
         return _obj
+
+

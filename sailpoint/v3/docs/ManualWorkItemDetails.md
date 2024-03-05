@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**forwarded** | **bool** | True if the request for this item was forwarded from one owner to another. | [optional] 
+**forwarded** | **bool** | True if the request for this item was forwarded from one owner to another. | [optional] [default to False]
 **original_owner** | [**ManualWorkItemDetailsOriginalOwner**](ManualWorkItemDetailsOriginalOwner.md) |  | [optional] 
 **current_owner** | [**ManualWorkItemDetailsCurrentOwner**](ManualWorkItemDetailsCurrentOwner.md) |  | [optional] 
 **modified** | **datetime** | Time at which item was modified. | [optional] 

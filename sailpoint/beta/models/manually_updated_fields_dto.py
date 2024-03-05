@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool
@@ -24,23 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ManuallyUpdatedFieldsDTO(BaseModel):
     """
     ManuallyUpdatedFieldsDTO
-    """
-
-  # noqa: E501
-    display_name: Optional[StrictBool] = Field(
-        default=False,
-        description=
-        "True if the entitlements name was updated manually via entitlement import csv or patch endpoint.  False means that property value has not been change after first entitlement aggregation. Field refers to [Entitlement response schema](https://developer.sailpoint.com/idn/api/beta/get-entitlement) > `name` property.",
-        alias="DISPLAY_NAME")
-    description: Optional[StrictBool] = Field(
-        default=False,
-        description=
-        "True if the entitlement description was updated manually via entitlement import csv or patch endpoint.  False means that property value has not been change after first entitlement aggregation. Field refers to [Entitlement response schema](https://developer.sailpoint.com/idn/api/beta/get-entitlement) > `description` property.",
-        alias="DESCRIPTION")
+    """ # noqa: E501
+    display_name: Optional[StrictBool] = Field(default=False, description="True if the entitlements name was updated manually via entitlement import csv or patch endpoint.  False means that property value has not been change after first entitlement aggregation. Field refers to [Entitlement response schema](https://developer.sailpoint.com/idn/api/beta/get-entitlement) > `name` property.", alias="DISPLAY_NAME")
+    description: Optional[StrictBool] = Field(default=False, description="True if the entitlement description was updated manually via entitlement import csv or patch endpoint.  False means that property value has not been change after first entitlement aggregation. Field refers to [Entitlement response schema](https://developer.sailpoint.com/idn/api/beta/get-entitlement) > `description` property.", alias="DESCRIPTION")
     __properties: ClassVar[List[str]] = ["DISPLAY_NAME", "DESCRIPTION"]
 
     model_config = {
@@ -48,6 +39,7 @@ class ManuallyUpdatedFieldsDTO(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -75,7 +67,8 @@ class ManuallyUpdatedFieldsDTO(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -90,11 +83,9 @@ class ManuallyUpdatedFieldsDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "DISPLAY_NAME":
-            obj.get("DISPLAY_NAME")
-            if obj.get("DISPLAY_NAME") is not None else False,
-            "DESCRIPTION":
-            obj.get("DESCRIPTION")
-            if obj.get("DESCRIPTION") is not None else False
+            "DISPLAY_NAME": obj.get("DISPLAY_NAME") if obj.get("DISPLAY_NAME") is not None else False,
+            "DESCRIPTION": obj.get("DESCRIPTION") if obj.get("DESCRIPTION") is not None else False
         })
         return _obj
+
+

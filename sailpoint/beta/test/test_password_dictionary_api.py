@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 
 from sailpoint.beta.api.password_dictionary_api import PasswordDictionaryApi
@@ -32,8 +33,8 @@ class TestPasswordDictionaryApi(unittest.TestCase):
         """
         pass
 
-    def test_update_password_dictionary(self) -> None:
-        """Test case for update_password_dictionary
+    def test_put_password_dictionary(self) -> None:
+        """Test case for put_password_dictionary
 
         Update Password Dictionary
         """

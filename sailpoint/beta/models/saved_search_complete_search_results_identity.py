@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr
@@ -24,16 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class SavedSearchCompleteSearchResultsIdentity(BaseModel):
     """
     A table of identities that match the search criteria.
     """ # noqa: E501
     count: StrictStr = Field(description="The number of rows in the table.")
-    noun: StrictStr = Field(
-        description="The type of object represented in the table.")
-    preview: List[List[StrictStr]] = Field(
-        description="A sample of the data in the table.")
+    noun: StrictStr = Field(description="The type of object represented in the table.")
+    preview: List[List[StrictStr]] = Field(description="A sample of the data in the table.")
     __properties: ClassVar[List[str]] = ["count", "noun", "preview"]
 
     model_config = {
@@ -41,6 +40,7 @@ class SavedSearchCompleteSearchResultsIdentity(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -68,7 +68,8 @@ class SavedSearchCompleteSearchResultsIdentity(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -88,3 +89,5 @@ class SavedSearchCompleteSearchResultsIdentity(BaseModel):
             "preview": obj.get("preview")
         })
         return _obj
+
+

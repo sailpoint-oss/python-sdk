@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,39 +26,16 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ConditionRule(BaseModel):
     """
     ConditionRule
-    """
-
-  # noqa: E501
-    source_type: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Defines the type of object being selected. It will be either a reference to a form input (by input name) or a form element (by technical key). INPUT ConditionRuleSourceTypeInput ELEMENT ConditionRuleSourceTypeElement",
-        alias="sourceType")
-    source: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Source - if the sourceType is ConditionRuleSourceTypeInput, the source type is the name of the form input to accept. However, if the sourceType is ConditionRuleSourceTypeElement, the source is the name of a technical key of an element to retrieve its value."
-    )
-    operator: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "ConditionRuleComparisonOperatorType value. EQ ConditionRuleComparisonOperatorTypeEquals  This comparison operator compares the source and target for equality. NE ConditionRuleComparisonOperatorTypeNotEquals  This comparison operator compares the source and target for inequality. CO ConditionRuleComparisonOperatorTypeContains  This comparison operator searches the source to see whether it contains the value. NOT_CO ConditionRuleComparisonOperatorTypeNotContains IN ConditionRuleComparisonOperatorTypeIncludes  This comparison operator searches the source if it equals any of the values. NOT_IN ConditionRuleComparisonOperatorTypeNotIncludes EM ConditionRuleComparisonOperatorTypeEmpty NOT_EM ConditionRuleComparisonOperatorTypeNotEmpty SW ConditionRuleComparisonOperatorTypeStartsWith  Checks whether a string starts with another substring of the same string. This operator is case-sensitive. NOT_SW ConditionRuleComparisonOperatorTypeNotStartsWith EW ConditionRuleComparisonOperatorTypeEndsWith  Checks whether a string ends with another substring of the same string. This operator is case-sensitive. NOT_EW ConditionRuleComparisonOperatorTypeNotEndsWith"
-    )
-    value_type: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "ConditionRuleValueType type. STRING ConditionRuleValueTypeString  This value is a static string. STRING_LIST ConditionRuleValueTypeStringList  This value is an array of string values. INPUT ConditionRuleValueTypeInput  This value is a reference to a form input. ELEMENT ConditionRuleValueTypeElement  This value is a reference to a form element (by technical key). LIST ConditionRuleValueTypeList BOOLEAN ConditionRuleValueTypeBoolean",
-        alias="valueType")
-    value: Optional[Dict[str,
-                         Any]] = Field(default=None,
-                                       description="Based on the ValueType.")
-    __properties: ClassVar[List[str]] = [
-        "sourceType", "source", "operator", "valueType", "value"
-    ]
+    """ # noqa: E501
+    source_type: Optional[StrictStr] = Field(default=None, description="Defines the type of object being selected. It will be either a reference to a form input (by input name) or a form element (by technical key). INPUT ConditionRuleSourceTypeInput ELEMENT ConditionRuleSourceTypeElement", alias="sourceType")
+    source: Optional[StrictStr] = Field(default=None, description="Source - if the sourceType is ConditionRuleSourceTypeInput, the source type is the name of the form input to accept. However, if the sourceType is ConditionRuleSourceTypeElement, the source is the name of a technical key of an element to retrieve its value.")
+    operator: Optional[StrictStr] = Field(default=None, description="ConditionRuleComparisonOperatorType value. EQ ConditionRuleComparisonOperatorTypeEquals  This comparison operator compares the source and target for equality. NE ConditionRuleComparisonOperatorTypeNotEquals  This comparison operator compares the source and target for inequality. CO ConditionRuleComparisonOperatorTypeContains  This comparison operator searches the source to see whether it contains the value. NOT_CO ConditionRuleComparisonOperatorTypeNotContains IN ConditionRuleComparisonOperatorTypeIncludes  This comparison operator searches the source if it equals any of the values. NOT_IN ConditionRuleComparisonOperatorTypeNotIncludes EM ConditionRuleComparisonOperatorTypeEmpty NOT_EM ConditionRuleComparisonOperatorTypeNotEmpty SW ConditionRuleComparisonOperatorTypeStartsWith  Checks whether a string starts with another substring of the same string. This operator is case-sensitive. NOT_SW ConditionRuleComparisonOperatorTypeNotStartsWith EW ConditionRuleComparisonOperatorTypeEndsWith  Checks whether a string ends with another substring of the same string. This operator is case-sensitive. NOT_EW ConditionRuleComparisonOperatorTypeNotEndsWith")
+    value_type: Optional[StrictStr] = Field(default=None, description="ConditionRuleValueType type. STRING ConditionRuleValueTypeString  This value is a static string. STRING_LIST ConditionRuleValueTypeStringList  This value is an array of string values. INPUT ConditionRuleValueTypeInput  This value is a reference to a form input. ELEMENT ConditionRuleValueTypeElement  This value is a reference to a form element (by technical key). LIST ConditionRuleValueTypeList BOOLEAN ConditionRuleValueTypeBoolean", alias="valueType")
+    value: Optional[Dict[str, Any]] = Field(default=None, description="Based on the ValueType.")
+    __properties: ClassVar[List[str]] = ["sourceType", "source", "operator", "valueType", "value"]
 
     @field_validator('source_type')
     def source_type_validate_enum(cls, value):
@@ -74,11 +53,8 @@ class ConditionRule(BaseModel):
         if value is None:
             return value
 
-        if value not in ('EQ', 'NE', 'CO', 'NOT_CO', 'IN', 'NOT_IN', 'EM',
-                         'NOT_EM', 'SW', 'NOT_SW', 'EW', 'NOT_EW'):
-            raise ValueError(
-                "must be one of enum values ('EQ', 'NE', 'CO', 'NOT_CO', 'IN', 'NOT_IN', 'EM', 'NOT_EM', 'SW', 'NOT_SW', 'EW', 'NOT_EW')"
-            )
+        if value not in ('EQ', 'NE', 'CO', 'NOT_CO', 'IN', 'NOT_IN', 'EM', 'NOT_EM', 'SW', 'NOT_SW', 'EW', 'NOT_EW'):
+            raise ValueError("must be one of enum values ('EQ', 'NE', 'CO', 'NOT_CO', 'IN', 'NOT_IN', 'EM', 'NOT_EM', 'SW', 'NOT_SW', 'EW', 'NOT_EW')")
         return value
 
     @field_validator('value_type')
@@ -87,11 +63,8 @@ class ConditionRule(BaseModel):
         if value is None:
             return value
 
-        if value not in ('STRING', 'STRING_LIST', 'INPUT', 'ELEMENT', 'LIST',
-                         'BOOLEAN'):
-            raise ValueError(
-                "must be one of enum values ('STRING', 'STRING_LIST', 'INPUT', 'ELEMENT', 'LIST', 'BOOLEAN')"
-            )
+        if value not in ('STRING', 'STRING_LIST', 'INPUT', 'ELEMENT', 'LIST', 'BOOLEAN'):
+            raise ValueError("must be one of enum values ('STRING', 'STRING_LIST', 'INPUT', 'ELEMENT', 'LIST', 'BOOLEAN')")
         return value
 
     model_config = {
@@ -99,6 +72,7 @@ class ConditionRule(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -126,7 +100,8 @@ class ConditionRule(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -148,3 +123,5 @@ class ConditionRule(BaseModel):
             "value": obj.get("value")
         })
         return _obj
+
+

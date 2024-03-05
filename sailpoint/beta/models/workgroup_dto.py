@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt, StrictStr
@@ -25,37 +27,24 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class WorkgroupDto(BaseModel):
     """
     WorkgroupDto
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     owner: Optional[OwnerDto] = None
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="Governance group ID.")
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="Governance group name.")
-    description: Optional[StrictStr] = Field(
-        default=None, description="Governance group description.")
-    member_count: Optional[StrictInt] = Field(
-        default=None,
-        description="Number of members in the governance group.",
-        alias="memberCount")
-    connection_count: Optional[StrictInt] = Field(
-        default=None,
-        description="Number of connections in the governance group.",
-        alias="connectionCount")
-    __properties: ClassVar[List[str]] = [
-        "owner", "id", "name", "description", "memberCount", "connectionCount"
-    ]
+    id: Optional[StrictStr] = Field(default=None, description="Governance group ID.")
+    name: Optional[StrictStr] = Field(default=None, description="Governance group name.")
+    description: Optional[StrictStr] = Field(default=None, description="Governance group description.")
+    member_count: Optional[StrictInt] = Field(default=None, description="Number of members in the governance group.", alias="memberCount")
+    connection_count: Optional[StrictInt] = Field(default=None, description="Number of connections in the governance group.", alias="connectionCount")
+    __properties: ClassVar[List[str]] = ["owner", "id", "name", "description", "memberCount", "connectionCount"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -108,18 +97,13 @@ class WorkgroupDto(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "owner":
-            OwnerDto.from_dict(obj.get("owner"))
-            if obj.get("owner") is not None else None,
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "description":
-            obj.get("description"),
-            "memberCount":
-            obj.get("memberCount"),
-            "connectionCount":
-            obj.get("connectionCount")
+            "owner": OwnerDto.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "memberCount": obj.get("memberCount"),
+            "connectionCount": obj.get("connectionCount")
         })
         return _obj
+
+

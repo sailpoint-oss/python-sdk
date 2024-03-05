@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.access_type import AccessType
-
 
 class TestAccessType(unittest.TestCase):
     """AccessType unit test stubs"""
@@ -29,7 +29,6 @@ class TestAccessType(unittest.TestCase):
     def testAccessType(self):
         """Test AccessType"""
         # inst = AccessType()
-
 
 if __name__ == '__main__':
     unittest.main()

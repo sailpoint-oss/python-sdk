@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr
@@ -24,13 +26,10 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class SourceSyncPayload(BaseModel):
     """
     SourceSyncPayload
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     type: StrictStr = Field(description="Payload type.")
     data_json: StrictStr = Field(description="Payload type.", alias="dataJson")
     __properties: ClassVar[List[str]] = ["type", "dataJson"]
@@ -40,6 +39,7 @@ class SourceSyncPayload(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -67,7 +67,8 @@ class SourceSyncPayload(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -86,3 +87,5 @@ class SourceSyncPayload(BaseModel):
             "dataJson": obj.get("dataJson")
         })
         return _obj
+
+

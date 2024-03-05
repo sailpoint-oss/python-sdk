@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,53 +26,26 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class BrandingItem(BaseModel):
     """
     BrandingItem
-    """
-
-  # noqa: E501
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="name of branding item")
-    product_name: Optional[StrictStr] = Field(default=None,
-                                              description="product name",
-                                              alias="productName")
-    action_button_color: Optional[StrictStr] = Field(
-        default=None,
-        description="hex value of color for action button",
-        alias="actionButtonColor")
-    active_link_color: Optional[StrictStr] = Field(
-        default=None,
-        description="hex value of color for link",
-        alias="activeLinkColor")
-    navigation_color: Optional[StrictStr] = Field(
-        default=None,
-        description="hex value of color for navigation bar",
-        alias="navigationColor")
-    email_from_address: Optional[StrictStr] = Field(
-        default=None,
-        description="email from address",
-        alias="emailFromAddress")
-    standard_logo_url: Optional[StrictStr] = Field(
-        default=None,
-        description="url to standard logo",
-        alias="standardLogoURL")
-    login_informational_message: Optional[StrictStr] = Field(
-        default=None,
-        description="login information message",
-        alias="loginInformationalMessage")
-    __properties: ClassVar[List[str]] = [
-        "name", "productName", "actionButtonColor", "activeLinkColor",
-        "navigationColor", "emailFromAddress", "standardLogoURL",
-        "loginInformationalMessage"
-    ]
+    """ # noqa: E501
+    name: Optional[StrictStr] = Field(default=None, description="name of branding item")
+    product_name: Optional[StrictStr] = Field(default=None, description="product name", alias="productName")
+    action_button_color: Optional[StrictStr] = Field(default=None, description="hex value of color for action button", alias="actionButtonColor")
+    active_link_color: Optional[StrictStr] = Field(default=None, description="hex value of color for link", alias="activeLinkColor")
+    navigation_color: Optional[StrictStr] = Field(default=None, description="hex value of color for navigation bar", alias="navigationColor")
+    email_from_address: Optional[StrictStr] = Field(default=None, description="email from address", alias="emailFromAddress")
+    standard_logo_url: Optional[StrictStr] = Field(default=None, description="url to standard logo", alias="standardLogoURL")
+    login_informational_message: Optional[StrictStr] = Field(default=None, description="login information message", alias="loginInformationalMessage")
+    __properties: ClassVar[List[str]] = ["name", "productName", "actionButtonColor", "activeLinkColor", "navigationColor", "emailFromAddress", "standardLogoURL", "loginInformationalMessage"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -98,7 +73,8 @@ class BrandingItem(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if product_name (nullable) is None
@@ -148,21 +124,15 @@ class BrandingItem(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name":
-            obj.get("name"),
-            "productName":
-            obj.get("productName"),
-            "actionButtonColor":
-            obj.get("actionButtonColor"),
-            "activeLinkColor":
-            obj.get("activeLinkColor"),
-            "navigationColor":
-            obj.get("navigationColor"),
-            "emailFromAddress":
-            obj.get("emailFromAddress"),
-            "standardLogoURL":
-            obj.get("standardLogoURL"),
-            "loginInformationalMessage":
-            obj.get("loginInformationalMessage")
+            "name": obj.get("name"),
+            "productName": obj.get("productName"),
+            "actionButtonColor": obj.get("actionButtonColor"),
+            "activeLinkColor": obj.get("activeLinkColor"),
+            "navigationColor": obj.get("navigationColor"),
+            "emailFromAddress": obj.get("emailFromAddress"),
+            "standardLogoURL": obj.get("standardLogoURL"),
+            "loginInformationalMessage": obj.get("loginInformationalMessage")
         })
         return _obj
+
+

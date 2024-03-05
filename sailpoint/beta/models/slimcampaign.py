@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -26,78 +27,31 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class Slimcampaign(BaseModel):
     """
     Slimcampaign
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="Id of the campaign")
-    name: StrictStr = Field(
-        description=
-        "The campaign name. If this object is part of a template, special formatting applies; see the `/campaign-templates/{id}/generate` endpoint documentation for details."
-    )
-    description: StrictStr = Field(
-        description=
-        "The campaign description. If this object is part of a template, special formatting applies; see the `/campaign-templates/{id}/generate` endpoint documentation for details."
-    )
-    deadline: Optional[datetime] = Field(
-        default=None,
-        description=
-        "The campaign's completion deadline.  This date must be in the future in order to activate the campaign.  If you try to activate a campaign with a deadline of today or in the past, you will receive a 400 error response."
-    )
-    type: StrictStr = Field(
-        description="The type of campaign. Could be extended in the future.")
-    email_notification_enabled: Optional[StrictBool] = Field(
-        default=False,
-        description="Enables email notification for this campaign",
-        alias="emailNotificationEnabled")
-    auto_revoke_allowed: Optional[StrictBool] = Field(
-        default=False,
-        description="Allows auto revoke for this campaign",
-        alias="autoRevokeAllowed")
-    recommendations_enabled: Optional[StrictBool] = Field(
-        default=False,
-        description=
-        "Enables IAI for this campaign. Accepts true even if the IAI product feature is off. If IAI is turned off then campaigns generated from this template will indicate false. The real value will then be returned if IAI is ever enabled for the org in the future.",
-        alias="recommendationsEnabled")
-    status: Optional[StrictStr] = Field(
-        default=None, description="The campaign's current status.")
-    correlated_status: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns can be Uncorrelated. An Uncorrelated certification campaign only includes Uncorrelated identities (An identity is uncorrelated if it has no accounts on an authoritative source).",
-        alias="correlatedStatus")
-    created: Optional[datetime] = Field(
-        default=None, description="Created time of the campaign")
-    total_certifications: Optional[StrictInt] = Field(
-        default=None,
-        description="The total number of certifications in this campaign.",
-        alias="totalCertifications")
-    completed_certifications: Optional[StrictInt] = Field(
-        default=None,
-        description="The number of completed certifications in this campaign.",
-        alias="completedCertifications")
-    alerts: Optional[List[CampaignAlert]] = Field(
-        default=None,
-        description="A list of errors and warnings that have accumulated.")
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "description", "deadline", "type",
-        "emailNotificationEnabled", "autoRevokeAllowed",
-        "recommendationsEnabled", "status", "correlatedStatus", "created",
-        "totalCertifications", "completedCertifications", "alerts"
-    ]
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="Id of the campaign")
+    name: StrictStr = Field(description="The campaign name. If this object is part of a template, special formatting applies; see the `/campaign-templates/{id}/generate` endpoint documentation for details.")
+    description: StrictStr = Field(description="The campaign description. If this object is part of a template, special formatting applies; see the `/campaign-templates/{id}/generate` endpoint documentation for details.")
+    deadline: Optional[datetime] = Field(default=None, description="The campaign's completion deadline.  This date must be in the future in order to activate the campaign.  If you try to activate a campaign with a deadline of today or in the past, you will receive a 400 error response.")
+    type: StrictStr = Field(description="The type of campaign. Could be extended in the future.")
+    email_notification_enabled: Optional[StrictBool] = Field(default=False, description="Enables email notification for this campaign", alias="emailNotificationEnabled")
+    auto_revoke_allowed: Optional[StrictBool] = Field(default=False, description="Allows auto revoke for this campaign", alias="autoRevokeAllowed")
+    recommendations_enabled: Optional[StrictBool] = Field(default=False, description="Enables IAI for this campaign. Accepts true even if the IAI product feature is off. If IAI is turned off then campaigns generated from this template will indicate false. The real value will then be returned if IAI is ever enabled for the org in the future.", alias="recommendationsEnabled")
+    status: Optional[StrictStr] = Field(default=None, description="The campaign's current status.")
+    correlated_status: Optional[StrictStr] = Field(default=None, description="The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns can be Uncorrelated. An Uncorrelated certification campaign only includes Uncorrelated identities (An identity is uncorrelated if it has no accounts on an authoritative source).", alias="correlatedStatus")
+    created: Optional[datetime] = Field(default=None, description="Created time of the campaign")
+    total_certifications: Optional[StrictInt] = Field(default=None, description="The total number of certifications in this campaign.", alias="totalCertifications")
+    completed_certifications: Optional[StrictInt] = Field(default=None, description="The number of completed certifications in this campaign.", alias="completedCertifications")
+    alerts: Optional[List[CampaignAlert]] = Field(default=None, description="A list of errors and warnings that have accumulated.")
+    __properties: ClassVar[List[str]] = ["id", "name", "description", "deadline", "type", "emailNotificationEnabled", "autoRevokeAllowed", "recommendationsEnabled", "status", "correlatedStatus", "created", "totalCertifications", "completedCertifications", "alerts"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('MANAGER', 'SOURCE_OWNER', 'SEARCH',
-                         'ROLE_COMPOSITION'):
-            raise ValueError(
-                "must be one of enum values ('MANAGER', 'SOURCE_OWNER', 'SEARCH', 'ROLE_COMPOSITION')"
-            )
+        if value not in ('MANAGER', 'SOURCE_OWNER', 'SEARCH', 'ROLE_COMPOSITION'):
+            raise ValueError("must be one of enum values ('MANAGER', 'SOURCE_OWNER', 'SEARCH', 'ROLE_COMPOSITION')")
         return value
 
     @field_validator('status')
@@ -106,12 +60,8 @@ class Slimcampaign(BaseModel):
         if value is None:
             return value
 
-        if value not in ('PENDING', 'STAGED', 'CANCELING', 'ACTIVATING',
-                         'ACTIVE', 'COMPLETING', 'COMPLETED', 'ERROR',
-                         'ARCHIVED'):
-            raise ValueError(
-                "must be one of enum values ('PENDING', 'STAGED', 'CANCELING', 'ACTIVATING', 'ACTIVE', 'COMPLETING', 'COMPLETED', 'ERROR', 'ARCHIVED')"
-            )
+        if value not in ('PENDING', 'STAGED', 'CANCELING', 'ACTIVATING', 'ACTIVE', 'COMPLETING', 'COMPLETED', 'ERROR', 'ARCHIVED'):
+            raise ValueError("must be one of enum values ('PENDING', 'STAGED', 'CANCELING', 'ACTIVATING', 'ACTIVE', 'COMPLETING', 'COMPLETED', 'ERROR', 'ARCHIVED')")
         return value
 
     @field_validator('correlated_status')
@@ -121,8 +71,7 @@ class Slimcampaign(BaseModel):
             return value
 
         if value not in ('CORRELATED', 'UNCORRELATED'):
-            raise ValueError(
-                "must be one of enum values ('CORRELATED', 'UNCORRELATED')")
+            raise ValueError("must be one of enum values ('CORRELATED', 'UNCORRELATED')")
         return value
 
     model_config = {
@@ -130,6 +79,7 @@ class Slimcampaign(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -192,37 +142,21 @@ class Slimcampaign(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "description":
-            obj.get("description"),
-            "deadline":
-            obj.get("deadline"),
-            "type":
-            obj.get("type"),
-            "emailNotificationEnabled":
-            obj.get("emailNotificationEnabled")
-            if obj.get("emailNotificationEnabled") is not None else False,
-            "autoRevokeAllowed":
-            obj.get("autoRevokeAllowed")
-            if obj.get("autoRevokeAllowed") is not None else False,
-            "recommendationsEnabled":
-            obj.get("recommendationsEnabled")
-            if obj.get("recommendationsEnabled") is not None else False,
-            "status":
-            obj.get("status"),
-            "correlatedStatus":
-            obj.get("correlatedStatus"),
-            "created":
-            obj.get("created"),
-            "totalCertifications":
-            obj.get("totalCertifications"),
-            "completedCertifications":
-            obj.get("completedCertifications"),
-            "alerts":
-            [CampaignAlert.from_dict(_item) for _item in obj.get("alerts")]
-            if obj.get("alerts") is not None else None
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "deadline": obj.get("deadline"),
+            "type": obj.get("type"),
+            "emailNotificationEnabled": obj.get("emailNotificationEnabled") if obj.get("emailNotificationEnabled") is not None else False,
+            "autoRevokeAllowed": obj.get("autoRevokeAllowed") if obj.get("autoRevokeAllowed") is not None else False,
+            "recommendationsEnabled": obj.get("recommendationsEnabled") if obj.get("recommendationsEnabled") is not None else False,
+            "status": obj.get("status"),
+            "correlatedStatus": obj.get("correlatedStatus"),
+            "created": obj.get("created"),
+            "totalCertifications": obj.get("totalCertifications"),
+            "completedCertifications": obj.get("completedCertifications"),
+            "alerts": [CampaignAlert.from_dict(_item) for _item in obj.get("alerts")] if obj.get("alerts") is not None else None
         })
         return _obj
+
+

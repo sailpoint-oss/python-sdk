@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,19 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class PermissionDto(BaseModel):
     """
     Simplified DTO for the Permission objects stored in SailPoint's database. The data is aggregated from customer systems and is free-form, so its appearance can vary largely between different clients/customers.
     """ # noqa: E501
-    rights: Optional[List[StrictStr]] = Field(
-        default=None,
-        description=
-        "All the rights (e.g. actions) that this permission allows on the target"
-    )
-    target: Optional[StrictStr] = Field(
-        default=None,
-        description="The target the permission would grants rights on.")
+    rights: Optional[List[StrictStr]] = Field(default=None, description="All the rights (e.g. actions) that this permission allows on the target")
+    target: Optional[StrictStr] = Field(default=None, description="The target the permission would grants rights on.")
     __properties: ClassVar[List[str]] = ["rights", "target"]
 
     model_config = {
@@ -44,6 +39,7 @@ class PermissionDto(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -95,3 +91,5 @@ class PermissionDto(BaseModel):
             "target": obj.get("target")
         })
         return _obj
+
+

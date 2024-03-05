@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -25,18 +27,11 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ProcessIdentitiesRequest(BaseModel):
     """
     ProcessIdentitiesRequest
-    """
-
-  # noqa: E501
-    identity_ids: Optional[Annotated[
-        List[StrictStr], Field(min_length=1, max_length=250)]] = Field(
-            default=None,
-            description="List of up to 250 identity IDs to process.",
-            alias="identityIds")
+    """ # noqa: E501
+    identity_ids: Optional[Annotated[List[StrictStr], Field(min_length=1, max_length=250)]] = Field(default=None, description="List of up to 250 identity IDs to process.", alias="identityIds")
     __properties: ClassVar[List[str]] = ["identityIds"]
 
     model_config = {
@@ -44,6 +39,7 @@ class ProcessIdentitiesRequest(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -71,7 +67,8 @@ class ProcessIdentitiesRequest(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -85,5 +82,9 @@ class ProcessIdentitiesRequest(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({"identityIds": obj.get("identityIds")})
+        _obj = cls.model_validate({
+            "identityIds": obj.get("identityIds")
+        })
         return _obj
+
+

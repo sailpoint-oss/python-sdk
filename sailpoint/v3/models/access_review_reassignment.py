@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr
@@ -25,20 +27,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccessReviewReassignment(BaseModel):
     """
     AccessReviewReassignment
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     reassign: List[ReassignReference]
-    reassign_to: StrictStr = Field(
-        description=
-        "The ID of the identity to which the certification is reassigned",
-        alias="reassignTo")
-    reason: StrictStr = Field(
-        description="The reason comment for why the reassign was made")
+    reassign_to: StrictStr = Field(description="The ID of the identity to which the certification is reassigned", alias="reassignTo")
+    reason: StrictStr = Field(description="The reason comment for why the reassign was made")
     __properties: ClassVar[List[str]] = ["reassign", "reassignTo", "reason"]
 
     model_config = {
@@ -46,6 +41,7 @@ class AccessReviewReassignment(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -73,7 +69,8 @@ class AccessReviewReassignment(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in reassign (list)
@@ -95,13 +92,10 @@ class AccessReviewReassignment(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "reassign": [
-                ReassignReference.from_dict(_item)
-                for _item in obj.get("reassign")
-            ] if obj.get("reassign") is not None else None,
-            "reassignTo":
-            obj.get("reassignTo"),
-            "reason":
-            obj.get("reason")
+            "reassign": [ReassignReference.from_dict(_item) for _item in obj.get("reassign")] if obj.get("reassign") is not None else None,
+            "reassignTo": obj.get("reassignTo"),
+            "reason": obj.get("reason")
         })
         return _obj
+
+

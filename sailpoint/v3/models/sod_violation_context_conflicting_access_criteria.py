@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
@@ -25,17 +27,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class SodViolationContextConflictingAccessCriteria(BaseModel):
     """
     The object which contains the left and right hand side of the entitlements that got violated according to the policy.
     """ # noqa: E501
-    left_criteria: Optional[
-        SodViolationContextConflictingAccessCriteriaLeftCriteria] = Field(
-            default=None, alias="leftCriteria")
-    right_criteria: Optional[
-        SodViolationContextConflictingAccessCriteriaLeftCriteria] = Field(
-            default=None, alias="rightCriteria")
+    left_criteria: Optional[SodViolationContextConflictingAccessCriteriaLeftCriteria] = Field(default=None, alias="leftCriteria")
+    right_criteria: Optional[SodViolationContextConflictingAccessCriteriaLeftCriteria] = Field(default=None, alias="rightCriteria")
     __properties: ClassVar[List[str]] = ["leftCriteria", "rightCriteria"]
 
     model_config = {
@@ -43,6 +40,7 @@ class SodViolationContextConflictingAccessCriteria(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -70,7 +68,8 @@ class SodViolationContextConflictingAccessCriteria(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of left_criteria
@@ -91,13 +90,9 @@ class SodViolationContextConflictingAccessCriteria(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "leftCriteria":
-            SodViolationContextConflictingAccessCriteriaLeftCriteria.from_dict(
-                obj.get("leftCriteria"))
-            if obj.get("leftCriteria") is not None else None,
-            "rightCriteria":
-            SodViolationContextConflictingAccessCriteriaLeftCriteria.from_dict(
-                obj.get("rightCriteria"))
-            if obj.get("rightCriteria") is not None else None
+            "leftCriteria": SodViolationContextConflictingAccessCriteriaLeftCriteria.from_dict(obj.get("leftCriteria")) if obj.get("leftCriteria") is not None else None,
+            "rightCriteria": SodViolationContextConflictingAccessCriteriaLeftCriteria.from_dict(obj.get("rightCriteria")) if obj.get("rightCriteria") is not None else None
         })
         return _obj
+
+

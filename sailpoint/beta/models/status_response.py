@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt, StrictStr, field_validator
@@ -24,29 +26,16 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class StatusResponse(BaseModel):
     """
     Response model for connection check, configuration test and ping of source connectors.
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="ID of the source")
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="Name of the source")
-    status: Optional[StrictStr] = Field(
-        default=None, description="The status of the health check.")
-    elapsed_millis: Optional[StrictInt] = Field(
-        default=None,
-        description="The number of milliseconds spent on the entire request.",
-        alias="elapsedMillis")
-    details: Optional[Dict[str, Any]] = Field(
-        default=None,
-        description=
-        "The document contains the results of the health check. The schema of this document depends on the type of source used. "
-    )
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "status", "elapsedMillis", "details"
-    ]
+    id: Optional[StrictStr] = Field(default=None, description="ID of the source")
+    name: Optional[StrictStr] = Field(default=None, description="Name of the source")
+    status: Optional[StrictStr] = Field(default=None, description="The status of the health check.")
+    elapsed_millis: Optional[StrictInt] = Field(default=None, description="The number of milliseconds spent on the entire request.", alias="elapsedMillis")
+    details: Optional[Dict[str, Any]] = Field(default=None, description="The document contains the results of the health check. The schema of this document depends on the type of source used. ")
+    __properties: ClassVar[List[str]] = ["id", "name", "status", "elapsedMillis", "details"]
 
     @field_validator('status')
     def status_validate_enum(cls, value):
@@ -55,8 +44,7 @@ class StatusResponse(BaseModel):
             return value
 
         if value not in ('SUCCESS', 'FAILURE'):
-            raise ValueError(
-                "must be one of enum values ('SUCCESS', 'FAILURE')")
+            raise ValueError("must be one of enum values ('SUCCESS', 'FAILURE')")
         return value
 
     model_config = {
@@ -64,6 +52,7 @@ class StatusResponse(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -124,3 +113,5 @@ class StatusResponse(BaseModel):
             "details": obj.get("details")
         })
         return _obj
+
+

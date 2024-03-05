@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,32 +26,20 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ManagerCorrelationMapping(BaseModel):
     """
     ManagerCorrelationMapping
-    """
-
-  # noqa: E501
-    account_attribute: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Name of the attribute to use for manager correlation. The value found on the account attribute will be used to lookup the manager's identity.",
-        alias="accountAttribute")
-    identity_attribute: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Name of the identity attribute to search when trying to find a manager using the value from the accountAttribute.",
-        alias="identityAttribute")
-    __properties: ClassVar[List[str]] = [
-        "accountAttribute", "identityAttribute"
-    ]
+    """ # noqa: E501
+    account_attribute: Optional[StrictStr] = Field(default=None, description="Name of the attribute to use for manager correlation. The value found on the account attribute will be used to lookup the manager's identity.", alias="accountAttribute")
+    identity_attribute: Optional[StrictStr] = Field(default=None, description="Name of the identity attribute to search when trying to find a manager using the value from the accountAttribute.", alias="identityAttribute")
+    __properties: ClassVar[List[str]] = ["accountAttribute", "identityAttribute"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -77,7 +67,8 @@ class ManagerCorrelationMapping(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -92,9 +83,9 @@ class ManagerCorrelationMapping(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "accountAttribute":
-            obj.get("accountAttribute"),
-            "identityAttribute":
-            obj.get("identityAttribute")
+            "accountAttribute": obj.get("accountAttribute"),
+            "identityAttribute": obj.get("identityAttribute")
         })
         return _obj
+
+

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
@@ -24,17 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class Bound(BaseModel):
     """
     Bound
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     value: StrictStr = Field(description="The value of the range's endpoint.")
-    inclusive: Optional[StrictBool] = Field(
-        default=False,
-        description="Indicates if the endpoint is included in the range.")
+    inclusive: Optional[StrictBool] = Field(default=False, description="Indicates if the endpoint is included in the range.")
     __properties: ClassVar[List[str]] = ["value", "inclusive"]
 
     model_config = {
@@ -42,6 +39,7 @@ class Bound(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -69,7 +67,8 @@ class Bound(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -84,9 +83,9 @@ class Bound(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "value":
-            obj.get("value"),
-            "inclusive":
-            obj.get("inclusive") if obj.get("inclusive") is not None else False
+            "value": obj.get("value"),
+            "inclusive": obj.get("inclusive") if obj.get("inclusive") is not None else False
         })
         return _obj
+
+

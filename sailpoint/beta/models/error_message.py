@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,23 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ErrorMessage(BaseModel):
     """
     ErrorMessage
-    """
-
-  # noqa: E501
-    locale: Optional[StrictStr] = Field(
-        default=None, description="Locale is the current Locale")
-    locale_origin: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "LocaleOrigin holds possible values of how the locale was selected",
-        alias="localeOrigin")
-    text: Optional[StrictStr] = Field(
-        default=None,
-        description="Text is the actual text of the error message")
+    """ # noqa: E501
+    locale: Optional[StrictStr] = Field(default=None, description="Locale is the current Locale")
+    locale_origin: Optional[StrictStr] = Field(default=None, description="LocaleOrigin holds possible values of how the locale was selected", alias="localeOrigin")
+    text: Optional[StrictStr] = Field(default=None, description="Text is the actual text of the error message")
     __properties: ClassVar[List[str]] = ["locale", "localeOrigin", "text"]
 
     model_config = {
@@ -48,6 +40,7 @@ class ErrorMessage(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -75,7 +68,8 @@ class ErrorMessage(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -95,3 +89,5 @@ class ErrorMessage(BaseModel):
             "text": obj.get("text")
         })
         return _obj
+
+

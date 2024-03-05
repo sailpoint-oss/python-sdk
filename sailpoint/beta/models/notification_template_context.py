@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -25,19 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class NotificationTemplateContext(BaseModel):
     """
     NotificationTemplateContext
-    """
-
-  # noqa: E501
-    attributes: Optional[Dict[str, Any]] = Field(
-        default=None, description="A JSON object that stores the context.")
-    created: Optional[datetime] = Field(
-        default=None, description="When the global context was created")
-    modified: Optional[datetime] = Field(
-        default=None, description="When the global context was last modified")
+    """ # noqa: E501
+    attributes: Optional[Dict[str, Any]] = Field(default=None, description="A JSON object that stores the context.")
+    created: Optional[datetime] = Field(default=None, description="When the global context was created")
+    modified: Optional[datetime] = Field(default=None, description="When the global context was last modified")
     __properties: ClassVar[List[str]] = ["attributes", "created", "modified"]
 
     model_config = {
@@ -45,6 +40,7 @@ class NotificationTemplateContext(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -72,7 +68,8 @@ class NotificationTemplateContext(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -92,3 +89,5 @@ class NotificationTemplateContext(BaseModel):
             "modified": obj.get("modified")
         })
         return _obj
+
+

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -25,41 +27,23 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class CampaignFilterDetails(BaseModel):
     """
     Campaign Filter Details
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="Id of the campaign filter")
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="Id of the campaign filter")
     name: StrictStr = Field(description="This is campaign filter's name.")
-    description: StrictStr = Field(
-        description="This is campaign filter's description.")
-    owner: StrictStr = Field(
-        description=
-        "The owner of this filter. This field is automatically populated at creation time with the current user."
-    )
-    mode: Dict[str, Any] = Field(
-        description=
-        "The mode/type of Filter, where it is of INCLUSION or EXCLUSION type. INCLUSION type will include the data in generated campaign  as per specified in criteria, whereas EXCLUSION type will exclude the the data in generated campaign as per specified in criteria."
-    )
-    criteria_list: Optional[
-        List[CampaignFilterDetailsCriteriaListInner]] = Field(
-            default=None,
-            description="List of criteria.",
-            alias="criteriaList")
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "description", "owner", "mode", "criteriaList"
-    ]
+    description: StrictStr = Field(description="This is campaign filter's description.")
+    owner: Optional[StrictStr] = Field(description="The owner of this filter. This field is automatically populated at creation time with the current user.")
+    mode: Dict[str, Any] = Field(description="The mode/type of Filter, where it is of INCLUSION or EXCLUSION type. INCLUSION type will include the data in generated campaign  as per specified in criteria, whereas EXCLUSION type will exclude the the data in generated campaign as per specified in criteria.")
+    criteria_list: Optional[List[CampaignFilterDetailsCriteriaListInner]] = Field(default=None, description="List of criteria.", alias="criteriaList")
+    __properties: ClassVar[List[str]] = ["id", "name", "description", "owner", "mode", "criteriaList"]
 
     @field_validator('mode')
     def mode_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('INCLUSION', 'EXCLUSION'):
-            raise ValueError(
-                "must be one of enum values ('INCLUSION', 'EXCLUSION')")
+            raise ValueError("must be one of enum values ('INCLUSION', 'EXCLUSION')")
         return value
 
     model_config = {
@@ -67,6 +51,7 @@ class CampaignFilterDetails(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -94,7 +79,8 @@ class CampaignFilterDetails(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in criteria_list (list)
@@ -104,6 +90,11 @@ class CampaignFilterDetails(BaseModel):
                 if _item:
                     _items.append(_item.to_dict())
             _dict['criteriaList'] = _items
+        # set to None if owner (nullable) is None
+        # and model_fields_set contains the field
+        if self.owner is None and "owner" in self.model_fields_set:
+            _dict['owner'] = None
+
         return _dict
 
     @classmethod
@@ -116,19 +107,13 @@ class CampaignFilterDetails(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "description":
-            obj.get("description"),
-            "owner":
-            obj.get("owner"),
-            "mode":
-            obj.get("mode"),
-            "criteriaList": [
-                CampaignFilterDetailsCriteriaListInner.from_dict(_item)
-                for _item in obj.get("criteriaList")
-            ] if obj.get("criteriaList") is not None else None
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "owner": obj.get("owner"),
+            "mode": obj.get("mode"),
+            "criteriaList": [CampaignFilterDetailsCriteriaListInner.from_dict(_item) for _item in obj.get("criteriaList")] if obj.get("criteriaList") is not None else None
         })
         return _obj
+
+

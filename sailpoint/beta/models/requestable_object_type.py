@@ -11,11 +11,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import json
 import pprint
 import re  # noqa: F401
 from enum import Enum
+
+
 
 try:
     from typing import Self
@@ -27,13 +30,17 @@ class RequestableObjectType(str, Enum):
     """
     The currently supported requestable object types. 
     """
+
     """
     allowed enum values
     """
     ACCESS_PROFILE = 'ACCESS_PROFILE'
     ROLE = 'ROLE'
+    ENTITLEMENT = 'ENTITLEMENT'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
         """Create an instance of RequestableObjectType from a JSON string"""
         return cls(json.loads(json_str))
+
+

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.account import Account
-
 
 class TestAccount(unittest.TestCase):
     """Account unit test stubs"""
@@ -53,7 +53,14 @@ class TestAccount(unittest.TestCase):
                 uncorrelated = False,
                 uuid = 'slpt.support',
                 manually_correlated = False,
-                has_entitlements = True
+                has_entitlements = True,
+                identity = sailpoint.beta.models.base_reference_dto.BaseReferenceDto(
+                    id = 'ff8081814d977c21014da056804a0af3', 
+                    name = 'Github', ),
+                source_owner = sailpoint.beta.models.base_reference_dto.BaseReferenceDto(
+                    id = 'ff8081814d977c21014da056804a0af3', 
+                    name = 'Github', ),
+                features = 'ENABLE'
             )
         else:
             return Account(
@@ -76,7 +83,6 @@ class TestAccount(unittest.TestCase):
         """Test Account"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

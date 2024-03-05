@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -25,17 +27,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class KbaAuthResponse(BaseModel):
     """
     KbaAuthResponse
-    """
-
-  # noqa: E501
-    kba_auth_response_items: Optional[List[KbaAuthResponseItem]] = Field(
-        default=None, alias="kbaAuthResponseItems")
-    status: Optional[StrictStr] = Field(
-        default=None, description="MFA Authentication status")
+    """ # noqa: E501
+    kba_auth_response_items: Optional[List[KbaAuthResponseItem]] = Field(default=None, alias="kbaAuthResponseItems")
+    status: Optional[StrictStr] = Field(default=None, description="MFA Authentication status")
     __properties: ClassVar[List[str]] = ["kbaAuthResponseItems", "status"]
 
     @field_validator('status')
@@ -44,11 +41,8 @@ class KbaAuthResponse(BaseModel):
         if value is None:
             return value
 
-        if value not in ('PENDING', 'SUCCESS', 'FAILED', 'LOCKOUT',
-                         'NOT_ENOUGH_DATA'):
-            raise ValueError(
-                "must be one of enum values ('PENDING', 'SUCCESS', 'FAILED', 'LOCKOUT', 'NOT_ENOUGH_DATA')"
-            )
+        if value not in ('PENDING', 'SUCCESS', 'FAILED', 'LOCKOUT', 'NOT_ENOUGH_DATA'):
+            raise ValueError("must be one of enum values ('PENDING', 'SUCCESS', 'FAILED', 'LOCKOUT', 'NOT_ENOUGH_DATA')")
         return value
 
     model_config = {
@@ -56,6 +50,7 @@ class KbaAuthResponse(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -83,7 +78,8 @@ class KbaAuthResponse(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in kba_auth_response_items (list)
@@ -105,11 +101,9 @@ class KbaAuthResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "kbaAuthResponseItems": [
-                KbaAuthResponseItem.from_dict(_item)
-                for _item in obj.get("kbaAuthResponseItems")
-            ] if obj.get("kbaAuthResponseItems") is not None else None,
-            "status":
-            obj.get("status")
+            "kbaAuthResponseItems": [KbaAuthResponseItem.from_dict(_item) for _item in obj.get("kbaAuthResponseItems")] if obj.get("kbaAuthResponseItems") is not None else None,
+            "status": obj.get("status")
         })
         return _obj
+
+

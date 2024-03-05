@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,20 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccountCorrelatedSource(BaseModel):
     """
     The source the accounts are being correlated from.
     """ # noqa: E501
-    type: StrictStr = Field(
-        description=
-        "The DTO type of the source the accounts are being correlated from.")
-    id: StrictStr = Field(
-        description=
-        "The ID of the source the accounts are being correlated from.")
-    name: StrictStr = Field(
-        description=
-        "Display name of the source the accounts are being correlated from.")
+    type: StrictStr = Field(description="The DTO type of the source the accounts are being correlated from.")
+    id: StrictStr = Field(description="The ID of the source the accounts are being correlated from.")
+    name: StrictStr = Field(description="Display name of the source the accounts are being correlated from.")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')
@@ -52,6 +47,7 @@ class AccountCorrelatedSource(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -79,7 +75,8 @@ class AccountCorrelatedSource(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -99,3 +96,5 @@ class AccountCorrelatedSource(BaseModel):
             "name": obj.get("name")
         })
         return _obj
+
+

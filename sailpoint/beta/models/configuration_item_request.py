@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -26,40 +27,23 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ConfigurationItemRequest(BaseModel):
     """
     The request body for creation or update of a Reassignment Configuration for a single identity and work type
     """ # noqa: E501
-    reassigned_from_id: Optional[StrictStr] = Field(
-        default=None,
-        description="The identity id to reassign an item from",
-        alias="reassignedFromId")
-    reassigned_to_id: Optional[StrictStr] = Field(
-        default=None,
-        description="The identity id to reassign an item to",
-        alias="reassignedToId")
-    config_type: Optional[ConfigTypeEnum] = Field(default=None,
-                                                  alias="configType")
-    start_date: Optional[datetime] = Field(
-        default=None,
-        description="The date from which to start reassigning work items",
-        alias="startDate")
-    end_date: Optional[datetime] = Field(
-        default=None,
-        description=
-        "The date from which to stop reassigning work items.  If this is an null string it indicates a permanent reassignment.",
-        alias="endDate")
-    __properties: ClassVar[List[str]] = [
-        "reassignedFromId", "reassignedToId", "configType", "startDate",
-        "endDate"
-    ]
+    reassigned_from_id: Optional[StrictStr] = Field(default=None, description="The identity id to reassign an item from", alias="reassignedFromId")
+    reassigned_to_id: Optional[StrictStr] = Field(default=None, description="The identity id to reassign an item to", alias="reassignedToId")
+    config_type: Optional[ConfigTypeEnum] = Field(default=None, alias="configType")
+    start_date: Optional[datetime] = Field(default=None, description="The date from which to start reassigning work items", alias="startDate")
+    end_date: Optional[datetime] = Field(default=None, description="The date from which to stop reassigning work items.  If this is an null string it indicates a permanent reassignment.", alias="endDate")
+    __properties: ClassVar[List[str]] = ["reassignedFromId", "reassignedToId", "configType", "startDate", "endDate"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -87,7 +71,8 @@ class ConfigurationItemRequest(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if end_date (nullable) is None
@@ -107,15 +92,12 @@ class ConfigurationItemRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "reassignedFromId":
-            obj.get("reassignedFromId"),
-            "reassignedToId":
-            obj.get("reassignedToId"),
-            "configType":
-            obj.get("configType"),
-            "startDate":
-            obj.get("startDate"),
-            "endDate":
-            obj.get("endDate")
+            "reassignedFromId": obj.get("reassignedFromId"),
+            "reassignedToId": obj.get("reassignedToId"),
+            "configType": obj.get("configType"),
+            "startDate": obj.get("startDate"),
+            "endDate": obj.get("endDate")
         })
         return _obj
+
+

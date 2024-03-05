@@ -11,11 +11,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import json
 import pprint
 import re  # noqa: F401
 from enum import Enum
+
+
 
 try:
     from typing import Self
@@ -27,6 +30,7 @@ class CompletionStatus(str, Enum):
     """
     The status after completion.
     """
+
     """
     allowed enum values
     """
@@ -34,8 +38,11 @@ class CompletionStatus(str, Enum):
     FAILURE = 'FAILURE'
     INCOMPLETE = 'INCOMPLETE'
     PENDING = 'PENDING'
+    NULL = 'null'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
         """Create an instance of CompletionStatus from a JSON string"""
         return cls(json.loads(json_str))
+
+

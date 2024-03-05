@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -29,61 +30,35 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class CertificationSignedOffCertification(BaseModel):
     """
     The certification campaign that was signed off on.
     """ # noqa: E501
     id: StrictStr = Field(description="Unique ID of the certification.")
     name: StrictStr = Field(description="The name of the certification.")
-    created: datetime = Field(
-        description="The date and time the certification was created.")
-    modified: Optional[datetime] = Field(
-        default=None,
-        description="The date and time the certification was last modified.")
+    created: datetime = Field(description="The date and time the certification was created.")
+    modified: Optional[datetime] = Field(default=None, description="The date and time the certification was last modified.")
     campaign_ref: CampaignReference = Field(alias="campaignRef")
     phase: CertificationPhase
     due: datetime = Field(description="The due date of the certification.")
-    signed: datetime = Field(
-        description="The date the reviewer signed off on the certification.")
+    signed: datetime = Field(description="The date the reviewer signed off on the certification.")
     reviewer: Reviewer
     reassignment: Optional[Reassignment] = None
-    has_errors: StrictBool = Field(
-        description="Indicates it the certification has any errors.",
-        alias="hasErrors")
-    error_message: Optional[StrictStr] = Field(
-        default=None,
-        description="A message indicating what the error is.",
-        alias="errorMessage")
-    completed: StrictBool = Field(
-        description="Indicates if all certification decisions have been made.")
-    decisions_made: StrictInt = Field(
-        description=
-        "The number of approve/revoke/acknowledge decisions that have been made by the reviewer.",
-        alias="decisionsMade")
-    decisions_total: StrictInt = Field(
-        description=
-        "The total number of approve/revoke/acknowledge decisions for the certification.",
-        alias="decisionsTotal")
-    entities_completed: StrictInt = Field(
-        description=
-        "The number of entities (identities, access profiles, roles, etc.) for which all decisions have been made and are complete.",
-        alias="entitiesCompleted")
-    entities_total: StrictInt = Field(
-        description=
-        "The total number of entities (identities, access profiles, roles, etc.) in the certification, both complete and incomplete.",
-        alias="entitiesTotal")
-    __properties: ClassVar[List[str]] = [
-        "campaignRef", "phase", "due", "signed", "reviewer", "reassignment",
-        "hasErrors", "errorMessage", "completed", "decisionsMade",
-        "decisionsTotal", "entitiesCompleted", "entitiesTotal"
-    ]
+    has_errors: StrictBool = Field(description="Indicates it the certification has any errors.", alias="hasErrors")
+    error_message: Optional[StrictStr] = Field(default=None, description="A message indicating what the error is.", alias="errorMessage")
+    completed: StrictBool = Field(description="Indicates if all certification decisions have been made.")
+    decisions_made: StrictInt = Field(description="The number of approve/revoke/acknowledge decisions that have been made by the reviewer.", alias="decisionsMade")
+    decisions_total: StrictInt = Field(description="The total number of approve/revoke/acknowledge decisions for the certification.", alias="decisionsTotal")
+    entities_completed: StrictInt = Field(description="The number of entities (identities, access profiles, roles, etc.) for which all decisions have been made and are complete.", alias="entitiesCompleted")
+    entities_total: StrictInt = Field(description="The total number of entities (identities, access profiles, roles, etc.) in the certification, both complete and incomplete.", alias="entitiesTotal")
+    __properties: ClassVar[List[str]] = ["campaignRef", "phase", "due", "signed", "reviewer", "reassignment", "hasErrors", "errorMessage", "completed", "decisionsMade", "decisionsTotal", "entitiesCompleted", "entitiesTotal"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -111,7 +86,8 @@ class CertificationSignedOffCertification(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of campaign_ref
@@ -140,34 +116,20 @@ class CertificationSignedOffCertification(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "campaignRef":
-            CampaignReference.from_dict(obj.get("campaignRef"))
-            if obj.get("campaignRef") is not None else None,
-            "phase":
-            obj.get("phase"),
-            "due":
-            obj.get("due"),
-            "signed":
-            obj.get("signed"),
-            "reviewer":
-            Reviewer.from_dict(obj.get("reviewer"))
-            if obj.get("reviewer") is not None else None,
-            "reassignment":
-            Reassignment.from_dict(obj.get("reassignment"))
-            if obj.get("reassignment") is not None else None,
-            "hasErrors":
-            obj.get("hasErrors"),
-            "errorMessage":
-            obj.get("errorMessage"),
-            "completed":
-            obj.get("completed"),
-            "decisionsMade":
-            obj.get("decisionsMade"),
-            "decisionsTotal":
-            obj.get("decisionsTotal"),
-            "entitiesCompleted":
-            obj.get("entitiesCompleted"),
-            "entitiesTotal":
-            obj.get("entitiesTotal")
+            "campaignRef": CampaignReference.from_dict(obj.get("campaignRef")) if obj.get("campaignRef") is not None else None,
+            "phase": obj.get("phase"),
+            "due": obj.get("due"),
+            "signed": obj.get("signed"),
+            "reviewer": Reviewer.from_dict(obj.get("reviewer")) if obj.get("reviewer") is not None else None,
+            "reassignment": Reassignment.from_dict(obj.get("reassignment")) if obj.get("reassignment") is not None else None,
+            "hasErrors": obj.get("hasErrors"),
+            "errorMessage": obj.get("errorMessage"),
+            "completed": obj.get("completed"),
+            "decisionsMade": obj.get("decisionsMade"),
+            "decisionsTotal": obj.get("decisionsTotal"),
+            "entitiesCompleted": obj.get("entitiesCompleted"),
+            "entitiesTotal": obj.get("entitiesTotal")
         })
         return _obj
+
+

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,17 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class RoleMiningIdentity(BaseModel):
     """
     RoleMiningIdentity
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="Id of the identity")
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="Name of the identity")
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="Id of the identity")
+    name: Optional[StrictStr] = Field(default=None, description="Name of the identity")
     attributes: Optional[Dict[str, StrictStr]] = None
     __properties: ClassVar[List[str]] = ["id", "name", "attributes"]
 
@@ -43,6 +40,7 @@ class RoleMiningIdentity(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -70,7 +68,8 @@ class RoleMiningIdentity(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -90,3 +89,5 @@ class RoleMiningIdentity(BaseModel):
             "attributes": obj.get("attributes")
         })
         return _obj
+
+

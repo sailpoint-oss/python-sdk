@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt, StrictStr, field_validator
@@ -24,67 +26,28 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AuthUser(BaseModel):
     """
     AuthUser
-    """
-
-  # noqa: E501
-    tenant: Optional[StrictStr] = Field(default=None,
-                                        description="Tenant name.")
+    """ # noqa: E501
+    tenant: Optional[StrictStr] = Field(default=None, description="Tenant name.")
     id: Optional[StrictStr] = Field(default=None, description="Identity ID.")
-    uid: Optional[StrictStr] = Field(
-        default=None, description="Identity's unique identitifier.")
-    profile: Optional[StrictStr] = Field(
-        default=None,
-        description="ID of the auth profile associated with the auth user.")
-    identification_number: Optional[StrictStr] = Field(
-        default=None,
-        description="Auth user's employee number.",
-        alias="identificationNumber")
-    email: Optional[StrictStr] = Field(default=None,
-                                       description="Auth user's email.")
-    phone: Optional[StrictStr] = Field(default=None,
-                                       description="Auth user's phone number.")
-    work_phone: Optional[StrictStr] = Field(
-        default=None,
-        description="Auth user's work phone number.",
-        alias="workPhone")
-    personal_email: Optional[StrictStr] = Field(
-        default=None,
-        description="Auth user's personal email.",
-        alias="personalEmail")
-    firstname: Optional[StrictStr] = Field(
-        default=None, description="Auth user's first name.")
-    lastname: Optional[StrictStr] = Field(default=None,
-                                          description="Auth user's last name.")
-    display_name: Optional[StrictStr] = Field(
-        default=None,
-        description="Auth user's name in displayed format.",
-        alias="displayName")
-    alias: Optional[StrictStr] = Field(default=None,
-                                       description="Auth user's alias.")
-    last_password_change_date: Optional[StrictStr] = Field(
-        default=None,
-        description="Date of last password change.",
-        alias="lastPasswordChangeDate")
-    last_login_timestamp: Optional[StrictInt] = Field(
-        default=None,
-        description="Timestamp of the last login (long type value).",
-        alias="lastLoginTimestamp")
-    current_login_timestamp: Optional[StrictInt] = Field(
-        default=None,
-        description="Timestamp of the current login (long type value).",
-        alias="currentLoginTimestamp")
-    capabilities: Optional[List[StrictStr]] = Field(
-        default=None, description="Array of the auth user's capabilities.")
-    __properties: ClassVar[List[str]] = [
-        "tenant", "id", "uid", "profile", "identificationNumber", "email",
-        "phone", "workPhone", "personalEmail", "firstname", "lastname",
-        "displayName", "alias", "lastPasswordChangeDate", "lastLoginTimestamp",
-        "currentLoginTimestamp", "capabilities"
-    ]
+    uid: Optional[StrictStr] = Field(default=None, description="Identity's unique identitifier.")
+    profile: Optional[StrictStr] = Field(default=None, description="ID of the auth profile associated with the auth user.")
+    identification_number: Optional[StrictStr] = Field(default=None, description="Auth user's employee number.", alias="identificationNumber")
+    email: Optional[StrictStr] = Field(default=None, description="Auth user's email.")
+    phone: Optional[StrictStr] = Field(default=None, description="Auth user's phone number.")
+    work_phone: Optional[StrictStr] = Field(default=None, description="Auth user's work phone number.", alias="workPhone")
+    personal_email: Optional[StrictStr] = Field(default=None, description="Auth user's personal email.", alias="personalEmail")
+    firstname: Optional[StrictStr] = Field(default=None, description="Auth user's first name.")
+    lastname: Optional[StrictStr] = Field(default=None, description="Auth user's last name.")
+    display_name: Optional[StrictStr] = Field(default=None, description="Auth user's name in displayed format.", alias="displayName")
+    alias: Optional[StrictStr] = Field(default=None, description="Auth user's alias.")
+    last_password_change_date: Optional[StrictStr] = Field(default=None, description="Date of last password change.", alias="lastPasswordChangeDate")
+    last_login_timestamp: Optional[StrictInt] = Field(default=None, description="Timestamp of the last login (long type value).", alias="lastLoginTimestamp")
+    current_login_timestamp: Optional[StrictInt] = Field(default=None, description="Timestamp of the current login (long type value).", alias="currentLoginTimestamp")
+    capabilities: Optional[List[StrictStr]] = Field(default=None, description="Array of the auth user's capabilities.")
+    __properties: ClassVar[List[str]] = ["tenant", "id", "uid", "profile", "identificationNumber", "email", "phone", "workPhone", "personalEmail", "firstname", "lastname", "displayName", "alias", "lastPasswordChangeDate", "lastLoginTimestamp", "currentLoginTimestamp", "capabilities"]
 
     @field_validator('capabilities')
     def capabilities_validate_enum(cls, value):
@@ -93,17 +56,8 @@ class AuthUser(BaseModel):
             return value
 
         for i in value:
-            if i not in ('CERT_ADMIN', 'CLOUD_GOV_ADMIN', 'CLOUD_GOV_USER',
-                         'DASHBOARD', 'HELPDESK', 'ORG_ADMIN', 'REPORT_ADMIN',
-                         'ROLE_ADMIN', 'ROLE_SUBADMIN',
-                         'SAAS_MANAGEMENT_ADMIN', 'SAAS_MANAGEMENT_READER',
-                         'SOURCE_ADMIN', 'SOURCE_SUBADMIN',
-                         'das:ui-administrator', 'das:ui-compliance_manager',
-                         'das:ui-auditor', 'das:ui-data-scope',
-                         'sp:aic-dashboard-read', 'sp:aic-dashboard-write'):
-                raise ValueError(
-                    "each list item must be one of ('CERT_ADMIN', 'CLOUD_GOV_ADMIN', 'CLOUD_GOV_USER', 'DASHBOARD', 'HELPDESK', 'ORG_ADMIN', 'REPORT_ADMIN', 'ROLE_ADMIN', 'ROLE_SUBADMIN', 'SAAS_MANAGEMENT_ADMIN', 'SAAS_MANAGEMENT_READER', 'SOURCE_ADMIN', 'SOURCE_SUBADMIN', 'das:ui-administrator', 'das:ui-compliance_manager', 'das:ui-auditor', 'das:ui-data-scope', 'sp:aic-dashboard-read', 'sp:aic-dashboard-write')"
-                )
+            if i not in ('CERT_ADMIN', 'CLOUD_GOV_ADMIN', 'CLOUD_GOV_USER', 'HELPDESK', 'ORG_ADMIN', 'REPORT_ADMIN', 'ROLE_ADMIN', 'ROLE_SUBADMIN', 'SAAS_MANAGEMENT_ADMIN', 'SAAS_MANAGEMENT_READER', 'SOURCE_ADMIN', 'SOURCE_SUBADMIN', 'das:ui-administrator', 'das:ui-compliance_manager', 'das:ui-auditor', 'das:ui-data-scope', 'sp:aic-dashboard-read', 'sp:aic-dashboard-write'):
+                raise ValueError("each list item must be one of ('CERT_ADMIN', 'CLOUD_GOV_ADMIN', 'CLOUD_GOV_USER', 'HELPDESK', 'ORG_ADMIN', 'REPORT_ADMIN', 'ROLE_ADMIN', 'ROLE_SUBADMIN', 'SAAS_MANAGEMENT_ADMIN', 'SAAS_MANAGEMENT_READER', 'SOURCE_ADMIN', 'SOURCE_SUBADMIN', 'das:ui-administrator', 'das:ui-compliance_manager', 'das:ui-auditor', 'das:ui-data-scope', 'sp:aic-dashboard-read', 'sp:aic-dashboard-write')")
         return value
 
     model_config = {
@@ -111,6 +65,7 @@ class AuthUser(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -138,7 +93,8 @@ class AuthUser(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -153,39 +109,24 @@ class AuthUser(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "tenant":
-            obj.get("tenant"),
-            "id":
-            obj.get("id"),
-            "uid":
-            obj.get("uid"),
-            "profile":
-            obj.get("profile"),
-            "identificationNumber":
-            obj.get("identificationNumber"),
-            "email":
-            obj.get("email"),
-            "phone":
-            obj.get("phone"),
-            "workPhone":
-            obj.get("workPhone"),
-            "personalEmail":
-            obj.get("personalEmail"),
-            "firstname":
-            obj.get("firstname"),
-            "lastname":
-            obj.get("lastname"),
-            "displayName":
-            obj.get("displayName"),
-            "alias":
-            obj.get("alias"),
-            "lastPasswordChangeDate":
-            obj.get("lastPasswordChangeDate"),
-            "lastLoginTimestamp":
-            obj.get("lastLoginTimestamp"),
-            "currentLoginTimestamp":
-            obj.get("currentLoginTimestamp"),
-            "capabilities":
-            obj.get("capabilities")
+            "tenant": obj.get("tenant"),
+            "id": obj.get("id"),
+            "uid": obj.get("uid"),
+            "profile": obj.get("profile"),
+            "identificationNumber": obj.get("identificationNumber"),
+            "email": obj.get("email"),
+            "phone": obj.get("phone"),
+            "workPhone": obj.get("workPhone"),
+            "personalEmail": obj.get("personalEmail"),
+            "firstname": obj.get("firstname"),
+            "lastname": obj.get("lastname"),
+            "displayName": obj.get("displayName"),
+            "alias": obj.get("alias"),
+            "lastPasswordChangeDate": obj.get("lastPasswordChangeDate"),
+            "lastLoginTimestamp": obj.get("lastLoginTimestamp"),
+            "currentLoginTimestamp": obj.get("currentLoginTimestamp"),
+            "capabilities": obj.get("capabilities")
         })
         return _obj
+
+

@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -28,40 +29,23 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class Schedule(BaseModel):
     """
     Schedule
-    """
-
-  # noqa: E501
-    type: StrictStr = Field(
-        description=
-        "Determines the overall schedule cadence. In general, all time period fields smaller than the chosen type can be configured. For example, a DAILY schedule can have 'hours' set, but not 'days'; a WEEKLY schedule can have both 'hours' and 'days' set."
-    )
+    """ # noqa: E501
+    type: StrictStr = Field(description="Determines the overall schedule cadence. In general, all time period fields smaller than the chosen type can be configured. For example, a DAILY schedule can have 'hours' set, but not 'days'; a WEEKLY schedule can have both 'hours' and 'days' set.")
     months: Optional[ScheduleMonths] = None
     days: Optional[ScheduleDays] = None
     hours: ScheduleHours
-    expiration: Optional[datetime] = Field(
-        default=None,
-        description=
-        "Specifies the time after which this schedule will no longer occur.")
-    time_zone_id: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "The time zone to use when running the schedule. For instance, if the schedule is scheduled to run at 1AM, and this field is set to \"CST\", the schedule will run at 1AM CST.",
-        alias="timeZoneId")
-    __properties: ClassVar[List[str]] = [
-        "type", "months", "days", "hours", "expiration", "timeZoneId"
-    ]
+    expiration: Optional[datetime] = Field(default=None, description="Specifies the time after which this schedule will no longer occur.")
+    time_zone_id: Optional[StrictStr] = Field(default=None, description="The time zone to use when running the schedule. For instance, if the schedule is scheduled to run at 1AM, and this field is set to \"CST\", the schedule will run at 1AM CST.", alias="timeZoneId")
+    __properties: ClassVar[List[str]] = ["type", "months", "days", "hours", "expiration", "timeZoneId"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('WEEKLY', 'MONTHLY', 'ANNUALLY', 'CALENDAR'):
-            raise ValueError(
-                "must be one of enum values ('WEEKLY', 'MONTHLY', 'ANNUALLY', 'CALENDAR')"
-            )
+            raise ValueError("must be one of enum values ('WEEKLY', 'MONTHLY', 'ANNUALLY', 'CALENDAR')")
         return value
 
     model_config = {
@@ -69,6 +53,7 @@ class Schedule(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -96,7 +81,8 @@ class Schedule(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of months
@@ -120,20 +106,13 @@ class Schedule(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "type":
-            obj.get("type"),
-            "months":
-            ScheduleMonths.from_dict(obj.get("months"))
-            if obj.get("months") is not None else None,
-            "days":
-            ScheduleDays.from_dict(obj.get("days"))
-            if obj.get("days") is not None else None,
-            "hours":
-            ScheduleHours.from_dict(obj.get("hours"))
-            if obj.get("hours") is not None else None,
-            "expiration":
-            obj.get("expiration"),
-            "timeZoneId":
-            obj.get("timeZoneId")
+            "type": obj.get("type"),
+            "months": ScheduleMonths.from_dict(obj.get("months")) if obj.get("months") is not None else None,
+            "days": ScheduleDays.from_dict(obj.get("days")) if obj.get("days") is not None else None,
+            "hours": ScheduleHours.from_dict(obj.get("hours")) if obj.get("hours") is not None else None,
+            "expiration": obj.get("expiration"),
+            "timeZoneId": obj.get("timeZoneId")
         })
         return _obj
+
+

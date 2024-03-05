@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool
@@ -24,33 +26,20 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class RequestOnBehalfOfConfig(BaseModel):
     """
     RequestOnBehalfOfConfig
-    """
-
-  # noqa: E501
-    allow_request_on_behalf_of_anyone_by_anyone: Optional[StrictBool] = Field(
-        default=None,
-        description="If anyone can request access for anyone.",
-        alias="allowRequestOnBehalfOfAnyoneByAnyone")
-    allow_request_on_behalf_of_employee_by_manager: Optional[
-        StrictBool] = Field(
-            default=None,
-            description=
-            "If a manager can request access for his/her direct reports.",
-            alias="allowRequestOnBehalfOfEmployeeByManager")
-    __properties: ClassVar[List[str]] = [
-        "allowRequestOnBehalfOfAnyoneByAnyone",
-        "allowRequestOnBehalfOfEmployeeByManager"
-    ]
+    """ # noqa: E501
+    allow_request_on_behalf_of_anyone_by_anyone: Optional[StrictBool] = Field(default=None, description="If anyone can request access for anyone.", alias="allowRequestOnBehalfOfAnyoneByAnyone")
+    allow_request_on_behalf_of_employee_by_manager: Optional[StrictBool] = Field(default=None, description="If a manager can request access for his/her direct reports.", alias="allowRequestOnBehalfOfEmployeeByManager")
+    __properties: ClassVar[List[str]] = ["allowRequestOnBehalfOfAnyoneByAnyone", "allowRequestOnBehalfOfEmployeeByManager"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -78,7 +67,8 @@ class RequestOnBehalfOfConfig(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -93,9 +83,9 @@ class RequestOnBehalfOfConfig(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "allowRequestOnBehalfOfAnyoneByAnyone":
-            obj.get("allowRequestOnBehalfOfAnyoneByAnyone"),
-            "allowRequestOnBehalfOfEmployeeByManager":
-            obj.get("allowRequestOnBehalfOfEmployeeByManager")
+            "allowRequestOnBehalfOfAnyoneByAnyone": obj.get("allowRequestOnBehalfOfAnyoneByAnyone"),
+            "allowRequestOnBehalfOfEmployeeByManager": obj.get("allowRequestOnBehalfOfEmployeeByManager")
         })
         return _obj
+
+

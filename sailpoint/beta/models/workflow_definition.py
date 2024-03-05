@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,18 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class WorkflowDefinition(BaseModel):
     """
     The map of steps that the workflow will execute.
     """ # noqa: E501
-    start: Optional[StrictStr] = Field(
-        default=None, description="The name of the starting step.")
-    steps: Optional[Dict[str, Any]] = Field(
-        default=None,
-        description=
-        "One or more step objects that comprise this workflow.  Please see the Workflow documentation to see the JSON schema for each step type."
-    )
+    start: Optional[StrictStr] = Field(default=None, description="The name of the starting step.")
+    steps: Optional[Dict[str, Any]] = Field(default=None, description="One or more step objects that comprise this workflow.  Please see the Workflow documentation to see the JSON schema for each step type.")
     __properties: ClassVar[List[str]] = ["start", "steps"]
 
     model_config = {
@@ -43,6 +39,7 @@ class WorkflowDefinition(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -70,7 +67,8 @@ class WorkflowDefinition(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -89,3 +87,5 @@ class WorkflowDefinition(BaseModel):
             "steps": obj.get("steps")
         })
         return _obj
+
+

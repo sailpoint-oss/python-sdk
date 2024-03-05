@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -25,50 +26,24 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class RoleInsightsSummary(BaseModel):
     """
     RoleInsightsSummary
-    """
-
-  # noqa: E501
-    number_of_updates: Optional[StrictInt] = Field(
-        default=None,
-        description="Total number of roles with updates",
-        alias="numberOfUpdates")
-    last_generated: Optional[datetime] = Field(
-        default=None,
-        description="The date-time role insights were last found.",
-        alias="lastGenerated")
-    entitlements_included_in_roles: Optional[StrictInt] = Field(
-        default=None,
-        description=
-        "The number of entitlements included in roles (vs free radicals).",
-        alias="entitlementsIncludedInRoles")
-    total_number_of_entitlements: Optional[StrictInt] = Field(
-        default=None,
-        description="The total number of entitlements.",
-        alias="totalNumberOfEntitlements")
-    identities_with_access_via_roles: Optional[StrictInt] = Field(
-        default=None,
-        description=
-        "The number of identities in roles vs. identities with just entitlements and not in roles.",
-        alias="identitiesWithAccessViaRoles")
-    total_number_of_identities: Optional[StrictInt] = Field(
-        default=None,
-        description="The total number of identities.",
-        alias="totalNumberOfIdentities")
-    __properties: ClassVar[List[str]] = [
-        "numberOfUpdates", "lastGenerated", "entitlementsIncludedInRoles",
-        "totalNumberOfEntitlements", "identitiesWithAccessViaRoles",
-        "totalNumberOfIdentities"
-    ]
+    """ # noqa: E501
+    number_of_updates: Optional[StrictInt] = Field(default=None, description="Total number of roles with updates", alias="numberOfUpdates")
+    last_generated: Optional[datetime] = Field(default=None, description="The date-time role insights were last found.", alias="lastGenerated")
+    entitlements_included_in_roles: Optional[StrictInt] = Field(default=None, description="The number of entitlements included in roles (vs free radicals).", alias="entitlementsIncludedInRoles")
+    total_number_of_entitlements: Optional[StrictInt] = Field(default=None, description="The total number of entitlements.", alias="totalNumberOfEntitlements")
+    identities_with_access_via_roles: Optional[StrictInt] = Field(default=None, description="The number of identities in roles vs. identities with just entitlements and not in roles.", alias="identitiesWithAccessViaRoles")
+    total_number_of_identities: Optional[StrictInt] = Field(default=None, description="The total number of identities.", alias="totalNumberOfIdentities")
+    __properties: ClassVar[List[str]] = ["numberOfUpdates", "lastGenerated", "entitlementsIncludedInRoles", "totalNumberOfEntitlements", "identitiesWithAccessViaRoles", "totalNumberOfIdentities"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -96,7 +71,8 @@ class RoleInsightsSummary(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -111,17 +87,13 @@ class RoleInsightsSummary(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "numberOfUpdates":
-            obj.get("numberOfUpdates"),
-            "lastGenerated":
-            obj.get("lastGenerated"),
-            "entitlementsIncludedInRoles":
-            obj.get("entitlementsIncludedInRoles"),
-            "totalNumberOfEntitlements":
-            obj.get("totalNumberOfEntitlements"),
-            "identitiesWithAccessViaRoles":
-            obj.get("identitiesWithAccessViaRoles"),
-            "totalNumberOfIdentities":
-            obj.get("totalNumberOfIdentities")
+            "numberOfUpdates": obj.get("numberOfUpdates"),
+            "lastGenerated": obj.get("lastGenerated"),
+            "entitlementsIncludedInRoles": obj.get("entitlementsIncludedInRoles"),
+            "totalNumberOfEntitlements": obj.get("totalNumberOfEntitlements"),
+            "identitiesWithAccessViaRoles": obj.get("identitiesWithAccessViaRoles"),
+            "totalNumberOfIdentities": obj.get("totalNumberOfIdentities")
         })
         return _obj
+
+

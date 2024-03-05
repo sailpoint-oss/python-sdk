@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 
 from sailpoint.beta.api.notifications_api import NotificationsApi
@@ -126,7 +127,7 @@ class TestNotificationsApi(unittest.TestCase):
     def test_put_notification_preference(self) -> None:
         """Test case for put_notification_preference
 
-        Overwrite the preferences for the given notification key.
+        Overwrite preferences notification key.
         """
         pass
 

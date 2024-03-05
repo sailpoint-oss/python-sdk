@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt
@@ -26,15 +28,11 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class IdentityProfileExportedObject(BaseModel):
     """
     Identity Profile exported object
-    """
-
-  # noqa: E501
-    version: Optional[StrictInt] = Field(
-        default=None, description="Version or object from the target service.")
+    """ # noqa: E501
+    version: Optional[StrictInt] = Field(default=None, description="Version or object from the target service.")
     var_self: Optional[SelfImportExportDto] = Field(default=None, alias="self")
     object: Optional[IdentityProfile1] = None
     __properties: ClassVar[List[str]] = ["version", "self", "object"]
@@ -44,6 +42,7 @@ class IdentityProfileExportedObject(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -71,7 +70,8 @@ class IdentityProfileExportedObject(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of var_self
@@ -92,13 +92,10 @@ class IdentityProfileExportedObject(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "version":
-            obj.get("version"),
-            "self":
-            SelfImportExportDto.from_dict(obj.get("self"))
-            if obj.get("self") is not None else None,
-            "object":
-            IdentityProfile1.from_dict(obj.get("object"))
-            if obj.get("object") is not None else None
+            "version": obj.get("version"),
+            "self": SelfImportExportDto.from_dict(obj.get("self")) if obj.get("self") is not None else None,
+            "object": IdentityProfile1.from_dict(obj.get("object")) if obj.get("object") is not None else None
         })
         return _obj
+
+

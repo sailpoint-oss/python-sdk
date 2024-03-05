@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,23 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class SendTestNotificationRequestDto(BaseModel):
     """
     SendTestNotificationRequestDto
-    """
-
-  # noqa: E501
-    key: Optional[StrictStr] = Field(
-        default=None, description="The template notification key.")
-    medium: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "The notification medium. Has to be one of the following enum values.")
-    context: Optional[Dict[str, Any]] = Field(
-        default=None,
-        description=
-        "A Json object that denotes the context specific to the template.")
+    """ # noqa: E501
+    key: Optional[StrictStr] = Field(default=None, description="The template notification key.")
+    medium: Optional[StrictStr] = Field(default=None, description="The notification medium. Has to be one of the following enum values.")
+    context: Optional[Dict[str, Any]] = Field(default=None, description="A Json object that denotes the context specific to the template.")
     __properties: ClassVar[List[str]] = ["key", "medium", "context"]
 
     @field_validator('medium')
@@ -50,8 +42,7 @@ class SendTestNotificationRequestDto(BaseModel):
             return value
 
         if value not in ('EMAIL', 'SLACK', 'TEAMS'):
-            raise ValueError(
-                "must be one of enum values ('EMAIL', 'SLACK', 'TEAMS')")
+            raise ValueError("must be one of enum values ('EMAIL', 'SLACK', 'TEAMS')")
         return value
 
     model_config = {
@@ -59,6 +50,7 @@ class SendTestNotificationRequestDto(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -86,7 +78,8 @@ class SendTestNotificationRequestDto(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -106,3 +99,5 @@ class SendTestNotificationRequestDto(BaseModel):
             "context": obj.get("context")
         })
         return _obj
+
+

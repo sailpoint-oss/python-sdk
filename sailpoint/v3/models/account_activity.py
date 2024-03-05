@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -21,7 +22,6 @@ from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
 from pydantic import Field
 from sailpoint.v3.models.account_activity_item import AccountActivityItem
-from sailpoint.v3.models.completion_status import CompletionStatus
 from sailpoint.v3.models.execution_status import ExecutionStatus
 from sailpoint.v3.models.identity_summary import IdentitySummary
 try:
@@ -29,63 +29,32 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccountActivity(BaseModel):
     """
     AccountActivity
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="Id of the account activity")
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="The name of the activity")
-    created: Optional[datetime] = Field(
-        default=None, description="When the activity was first created")
-    modified: Optional[datetime] = Field(
-        default=None, description="When the activity was last modified")
-    completed: Optional[datetime] = Field(
-        default=None, description="When the activity was completed")
-    completion_status: Optional[CompletionStatus] = Field(
-        default=None, alias="completionStatus")
-    type: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "The type of action the activity performed.  Please see the following list of types.  This list may grow over time.  - CloudAutomated - IdentityAttributeUpdate - appRequest - LifecycleStateChange - AccountStateUpdate - AccountAttributeUpdate - CloudPasswordRequest - Attribute Synchronization Refresh - Certification - Identity Refresh - Lifecycle Change Refresh   [Learn more here](https://documentation.sailpoint.com/saas/help/search/searchable-fields.html#searching-account-activity-data). "
-    )
-    requester_identity_summary: Optional[IdentitySummary] = Field(
-        default=None, alias="requesterIdentitySummary")
-    target_identity_summary: Optional[IdentitySummary] = Field(
-        default=None, alias="targetIdentitySummary")
-    errors: Optional[List[StrictStr]] = Field(
-        default=None,
-        description="A list of error messages, if any, that were encountered.")
-    warnings: Optional[List[StrictStr]] = Field(
-        default=None,
-        description="A list of warning messages, if any, that were encountered."
-    )
-    items: Optional[List[AccountActivityItem]] = Field(
-        default=None,
-        description=
-        "Individual actions performed as part of this account activity")
-    execution_status: Optional[ExecutionStatus] = Field(
-        default=None, alias="executionStatus")
-    client_metadata: Optional[Dict[str, StrictStr]] = Field(
-        default=None,
-        description=
-        "Arbitrary key-value pairs, if any were included in the corresponding access request",
-        alias="clientMetadata")
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "created", "modified", "completed", "completionStatus",
-        "type", "requesterIdentitySummary", "targetIdentitySummary", "errors",
-        "warnings", "items", "executionStatus", "clientMetadata"
-    ]
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="Id of the account activity")
+    name: Optional[StrictStr] = Field(default=None, description="The name of the activity")
+    created: Optional[datetime] = Field(default=None, description="When the activity was first created")
+    modified: Optional[datetime] = Field(default=None, description="When the activity was last modified")
+    completed: Optional[datetime] = Field(default=None, description="When the activity was completed")
+    completion_status: Optional[Any] = Field(default=None, alias="completionStatus")
+    type: Optional[StrictStr] = Field(default=None, description="The type of action the activity performed.  Please see the following list of types.  This list may grow over time.  - CloudAutomated - IdentityAttributeUpdate - appRequest - LifecycleStateChange - AccountStateUpdate - AccountAttributeUpdate - CloudPasswordRequest - Attribute Synchronization Refresh - Certification - Identity Refresh - Lifecycle Change Refresh   [Learn more here](https://documentation.sailpoint.com/saas/help/search/searchable-fields.html#searching-account-activity-data). ")
+    requester_identity_summary: Optional[IdentitySummary] = Field(default=None, alias="requesterIdentitySummary")
+    target_identity_summary: Optional[IdentitySummary] = Field(default=None, alias="targetIdentitySummary")
+    errors: Optional[List[StrictStr]] = Field(default=None, description="A list of error messages, if any, that were encountered.")
+    warnings: Optional[List[StrictStr]] = Field(default=None, description="A list of warning messages, if any, that were encountered.")
+    items: Optional[List[AccountActivityItem]] = Field(default=None, description="Individual actions performed as part of this account activity")
+    execution_status: Optional[ExecutionStatus] = Field(default=None, alias="executionStatus")
+    client_metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Arbitrary key-value pairs, if any were included in the corresponding access request", alias="clientMetadata")
+    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "completed", "completionStatus", "type", "requesterIdentitySummary", "targetIdentitySummary", "errors", "warnings", "items", "executionStatus", "clientMetadata"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -113,19 +82,19 @@ class AccountActivity(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of completion_status
+        if self.completion_status:
+            _dict['completionStatus'] = self.completion_status.to_dict()
         # override the default output from pydantic by calling `to_dict()` of requester_identity_summary
         if self.requester_identity_summary:
-            _dict[
-                'requesterIdentitySummary'] = self.requester_identity_summary.to_dict(
-                )
+            _dict['requesterIdentitySummary'] = self.requester_identity_summary.to_dict()
         # override the default output from pydantic by calling `to_dict()` of target_identity_summary
         if self.target_identity_summary:
-            _dict[
-                'targetIdentitySummary'] = self.target_identity_summary.to_dict(
-                )
+            _dict['targetIdentitySummary'] = self.target_identity_summary.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in items (list)
         _items = []
         if self.items:
@@ -142,11 +111,6 @@ class AccountActivity(BaseModel):
         # and model_fields_set contains the field
         if self.completed is None and "completed" in self.model_fields_set:
             _dict['completed'] = None
-
-        # set to None if completion_status (nullable) is None
-        # and model_fields_set contains the field
-        if self.completion_status is None and "completion_status" in self.model_fields_set:
-            _dict['completionStatus'] = None
 
         # set to None if type (nullable) is None
         # and model_fields_set contains the field
@@ -173,6 +137,11 @@ class AccountActivity(BaseModel):
         if self.warnings is None and "warnings" in self.model_fields_set:
             _dict['warnings'] = None
 
+        # set to None if items (nullable) is None
+        # and model_fields_set contains the field
+        if self.items is None and "items" in self.model_fields_set:
+            _dict['items'] = None
+
         # set to None if client_metadata (nullable) is None
         # and model_fields_set contains the field
         if self.client_metadata is None and "client_metadata" in self.model_fields_set:
@@ -190,37 +159,21 @@ class AccountActivity(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "created":
-            obj.get("created"),
-            "modified":
-            obj.get("modified"),
-            "completed":
-            obj.get("completed"),
-            "completionStatus":
-            obj.get("completionStatus"),
-            "type":
-            obj.get("type"),
-            "requesterIdentitySummary":
-            IdentitySummary.from_dict(obj.get("requesterIdentitySummary"))
-            if obj.get("requesterIdentitySummary") is not None else None,
-            "targetIdentitySummary":
-            IdentitySummary.from_dict(obj.get("targetIdentitySummary"))
-            if obj.get("targetIdentitySummary") is not None else None,
-            "errors":
-            obj.get("errors"),
-            "warnings":
-            obj.get("warnings"),
-            "items": [
-                AccountActivityItem.from_dict(_item)
-                for _item in obj.get("items")
-            ] if obj.get("items") is not None else None,
-            "executionStatus":
-            obj.get("executionStatus"),
-            "clientMetadata":
-            obj.get("clientMetadata")
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "created": obj.get("created"),
+            "modified": obj.get("modified"),
+            "completed": obj.get("completed"),
+            "completionStatus": CompletionStatus.from_dict(obj.get("completionStatus")) if obj.get("completionStatus") is not None else None,
+            "type": obj.get("type"),
+            "requesterIdentitySummary": IdentitySummary.from_dict(obj.get("requesterIdentitySummary")) if obj.get("requesterIdentitySummary") is not None else None,
+            "targetIdentitySummary": IdentitySummary.from_dict(obj.get("targetIdentitySummary")) if obj.get("targetIdentitySummary") is not None else None,
+            "errors": obj.get("errors"),
+            "warnings": obj.get("warnings"),
+            "items": [AccountActivityItem.from_dict(_item) for _item in obj.get("items")] if obj.get("items") is not None else None,
+            "executionStatus": obj.get("executionStatus"),
+            "clientMetadata": obj.get("clientMetadata")
         })
         return _obj
+
+

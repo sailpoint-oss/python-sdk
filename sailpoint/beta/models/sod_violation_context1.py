@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
@@ -26,15 +28,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class SodViolationContext1(BaseModel):
     """
     The contextual information of the violated criteria.
     """ # noqa: E501
     policy: Optional[SodPolicyDto] = None
-    conflicting_access_criteria: Optional[
-        SodViolationContext1ConflictingAccessCriteria] = Field(
-            default=None, alias="conflictingAccessCriteria")
+    conflicting_access_criteria: Optional[SodViolationContext1ConflictingAccessCriteria] = Field(default=None, alias="conflictingAccessCriteria")
     __properties: ClassVar[List[str]] = ["policy", "conflictingAccessCriteria"]
 
     model_config = {
@@ -42,6 +41,7 @@ class SodViolationContext1(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -69,7 +69,8 @@ class SodViolationContext1(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of policy
@@ -77,9 +78,7 @@ class SodViolationContext1(BaseModel):
             _dict['policy'] = self.policy.to_dict()
         # override the default output from pydantic by calling `to_dict()` of conflicting_access_criteria
         if self.conflicting_access_criteria:
-            _dict[
-                'conflictingAccessCriteria'] = self.conflicting_access_criteria.to_dict(
-                )
+            _dict['conflictingAccessCriteria'] = self.conflicting_access_criteria.to_dict()
         return _dict
 
     @classmethod
@@ -92,12 +91,9 @@ class SodViolationContext1(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "policy":
-            SodPolicyDto.from_dict(obj.get("policy"))
-            if obj.get("policy") is not None else None,
-            "conflictingAccessCriteria":
-            SodViolationContext1ConflictingAccessCriteria.from_dict(
-                obj.get("conflictingAccessCriteria"))
-            if obj.get("conflictingAccessCriteria") is not None else None
+            "policy": SodPolicyDto.from_dict(obj.get("policy")) if obj.get("policy") is not None else None,
+            "conflictingAccessCriteria": SodViolationContext1ConflictingAccessCriteria.from_dict(obj.get("conflictingAccessCriteria")) if obj.get("conflictingAccessCriteria") is not None else None
         })
         return _obj
+
+

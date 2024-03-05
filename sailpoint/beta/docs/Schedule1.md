@@ -7,6 +7,7 @@ The schedule information.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | [**ScheduleType**](ScheduleType.md) |  | 
+**months** | [**Schedule1Months**](Schedule1Months.md) |  | [optional] 
 **days** | [**Schedule1Days**](Schedule1Days.md) |  | [optional] 
 **hours** | [**Schedule1Hours**](Schedule1Hours.md) |  | 
 **expiration** | **datetime** | A date-time in ISO-8601 format | [optional] 

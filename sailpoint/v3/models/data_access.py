@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
@@ -27,34 +29,21 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class DataAccess(BaseModel):
     """
     DAS data for the entitlement
-    """
-
-  # noqa: E501
-    policies: Optional[List[DataAccessPoliciesInner]] = Field(
-        default=None,
-        description=
-        "List of classification policies that apply to resources the entitlement \\ groups has access to"
-    )
-    categories: Optional[List[DataAccessCategoriesInner]] = Field(
-        default=None,
-        description=
-        "List of classification categories that apply to resources the entitlement \\ groups has access to"
-    )
-    impact_score: Optional[DataAccessImpactScore] = Field(default=None,
-                                                          alias="impactScore")
-    __properties: ClassVar[List[str]] = [
-        "policies", "categories", "impactScore"
-    ]
+    """ # noqa: E501
+    policies: Optional[List[DataAccessPoliciesInner]] = Field(default=None, description="List of classification policies that apply to resources the entitlement \\ groups has access to")
+    categories: Optional[List[DataAccessCategoriesInner]] = Field(default=None, description="List of classification categories that apply to resources the entitlement \\ groups has access to")
+    impact_score: Optional[DataAccessImpactScore] = Field(default=None, alias="impactScore")
+    __properties: ClassVar[List[str]] = ["policies", "categories", "impactScore"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -82,7 +71,8 @@ class DataAccess(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in policies (list)
@@ -114,16 +104,10 @@ class DataAccess(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "policies": [
-                DataAccessPoliciesInner.from_dict(_item)
-                for _item in obj.get("policies")
-            ] if obj.get("policies") is not None else None,
-            "categories": [
-                DataAccessCategoriesInner.from_dict(_item)
-                for _item in obj.get("categories")
-            ] if obj.get("categories") is not None else None,
-            "impactScore":
-            DataAccessImpactScore.from_dict(obj.get("impactScore"))
-            if obj.get("impactScore") is not None else None
+            "policies": [DataAccessPoliciesInner.from_dict(_item) for _item in obj.get("policies")] if obj.get("policies") is not None else None,
+            "categories": [DataAccessCategoriesInner.from_dict(_item) for _item in obj.get("categories")] if obj.get("categories") is not None else None,
+            "impactScore": DataAccessImpactScore.from_dict(obj.get("impactScore")) if obj.get("impactScore") is not None else None
         })
         return _obj
+
+

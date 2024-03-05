@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,22 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class VerificationResponse(BaseModel):
     """
     VerificationResponse
-    """
-
-  # noqa: E501
-    request_id: Optional[StrictStr] = Field(
-        default=None,
-        description="The verificationPollRequest request ID",
-        alias="requestId")
-    status: Optional[StrictStr] = Field(
-        default=None, description="MFA Authentication status")
-    error: Optional[StrictStr] = Field(
-        default=None,
-        description="Error messages from MFA verification request")
+    """ # noqa: E501
+    request_id: Optional[StrictStr] = Field(default=None, description="The verificationPollRequest request ID", alias="requestId")
+    status: Optional[StrictStr] = Field(default=None, description="MFA Authentication status")
+    error: Optional[StrictStr] = Field(default=None, description="Error messages from MFA verification request")
     __properties: ClassVar[List[str]] = ["requestId", "status", "error"]
 
     @field_validator('status')
@@ -48,11 +41,8 @@ class VerificationResponse(BaseModel):
         if value is None:
             return value
 
-        if value not in ('PENDING', 'SUCCESS', 'FAILED', 'LOCKOUT',
-                         'NOT_ENOUGH_DATA'):
-            raise ValueError(
-                "must be one of enum values ('PENDING', 'SUCCESS', 'FAILED', 'LOCKOUT', 'NOT_ENOUGH_DATA')"
-            )
+        if value not in ('PENDING', 'SUCCESS', 'FAILED', 'LOCKOUT', 'NOT_ENOUGH_DATA'):
+            raise ValueError("must be one of enum values ('PENDING', 'SUCCESS', 'FAILED', 'LOCKOUT', 'NOT_ENOUGH_DATA')")
         return value
 
     model_config = {
@@ -60,6 +50,7 @@ class VerificationResponse(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -87,7 +78,8 @@ class VerificationResponse(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if request_id (nullable) is None
@@ -117,3 +109,5 @@ class VerificationResponse(BaseModel):
             "error": obj.get("error")
         })
         return _obj
+
+

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
@@ -24,44 +26,25 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class V3ConnectorDto(BaseModel):
     """
     V3ConnectorDto
-    """
-
-  # noqa: E501
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="The connector name")
-    type: Optional[StrictStr] = Field(default=None,
-                                      description="The connector type")
-    script_name: Optional[StrictStr] = Field(
-        default=None,
-        description="The connector script name",
-        alias="scriptName")
-    features: Optional[List[StrictStr]] = Field(
-        default=None,
-        description="The list of features supported by the connector")
-    direct_connect: Optional[StrictBool] = Field(
-        default=False,
-        description="true if the source is a direct connect source",
-        alias="directConnect")
-    connector_metadata: Optional[Dict[str, Any]] = Field(
-        default=None,
-        description="Object containing metadata pertinent to the UI to be used",
-        alias="connectorMetadata")
-    status: Optional[StrictStr] = Field(default=None,
-                                        description="The connector status")
-    __properties: ClassVar[List[str]] = [
-        "name", "type", "scriptName", "features", "directConnect",
-        "connectorMetadata", "status"
-    ]
+    """ # noqa: E501
+    name: Optional[StrictStr] = Field(default=None, description="The connector name")
+    type: Optional[StrictStr] = Field(default=None, description="The connector type")
+    script_name: Optional[StrictStr] = Field(default=None, description="The connector script name", alias="scriptName")
+    features: Optional[List[StrictStr]] = Field(default=None, description="The list of features supported by the connector")
+    direct_connect: Optional[StrictBool] = Field(default=False, description="true if the source is a direct connect source", alias="directConnect")
+    connector_metadata: Optional[Dict[str, Any]] = Field(default=None, description="Object containing metadata pertinent to the UI to be used", alias="connectorMetadata")
+    status: Optional[StrictStr] = Field(default=None, description="The connector status")
+    __properties: ClassVar[List[str]] = ["name", "type", "scriptName", "features", "directConnect", "connectorMetadata", "status"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -89,7 +72,8 @@ class V3ConnectorDto(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if features (nullable) is None
@@ -109,20 +93,14 @@ class V3ConnectorDto(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name":
-            obj.get("name"),
-            "type":
-            obj.get("type"),
-            "scriptName":
-            obj.get("scriptName"),
-            "features":
-            obj.get("features"),
-            "directConnect":
-            obj.get("directConnect")
-            if obj.get("directConnect") is not None else False,
-            "connectorMetadata":
-            obj.get("connectorMetadata"),
-            "status":
-            obj.get("status")
+            "name": obj.get("name"),
+            "type": obj.get("type"),
+            "scriptName": obj.get("scriptName"),
+            "features": obj.get("features"),
+            "directConnect": obj.get("directConnect") if obj.get("directConnect") is not None else False,
+            "connectorMetadata": obj.get("connectorMetadata"),
+            "status": obj.get("status")
         })
         return _obj
+
+

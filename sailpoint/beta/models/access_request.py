@@ -11,14 +11,17 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
 from pydantic import Field
+from typing_extensions import Annotated
 from sailpoint.beta.models.access_request_item import AccessRequestItem
 from sailpoint.beta.models.access_request_type import AccessRequestType
 try:
@@ -26,34 +29,22 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccessRequest(BaseModel):
     """
     AccessRequest
-    """
-
-  # noqa: E501
-    requested_for: List[StrictStr] = Field(
-        description=
-        "A list of Identity IDs for whom the Access is requested. If it's a Revoke request, there can only be one Identity ID.",
-        alias="requestedFor")
-    request_type: Optional[AccessRequestType] = Field(default=None,
-                                                      alias="requestType")
-    requested_items: List[AccessRequestItem] = Field(alias="requestedItems")
-    client_metadata: Optional[Dict[str, StrictStr]] = Field(
-        default=None,
-        description=
-        "Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities.",
-        alias="clientMetadata")
-    __properties: ClassVar[List[str]] = [
-        "requestedFor", "requestType", "requestedItems", "clientMetadata"
-    ]
+    """ # noqa: E501
+    requested_for: List[StrictStr] = Field(description="A list of Identity IDs for whom the Access is requested. If it's a Revoke request, there can only be one Identity ID.", alias="requestedFor")
+    request_type: Optional[AccessRequestType] = Field(default=None, alias="requestType")
+    requested_items: Annotated[List[AccessRequestItem], Field(min_length=1, max_length=25)] = Field(alias="requestedItems")
+    client_metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities.", alias="clientMetadata")
+    __properties: ClassVar[List[str]] = ["requestedFor", "requestType", "requestedItems", "clientMetadata"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -81,7 +72,8 @@ class AccessRequest(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in requested_items (list)
@@ -91,6 +83,11 @@ class AccessRequest(BaseModel):
                 if _item:
                     _items.append(_item.to_dict())
             _dict['requestedItems'] = _items
+        # set to None if request_type (nullable) is None
+        # and model_fields_set contains the field
+        if self.request_type is None and "request_type" in self.model_fields_set:
+            _dict['requestType'] = None
+
         return _dict
 
     @classmethod
@@ -103,15 +100,11 @@ class AccessRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "requestedFor":
-            obj.get("requestedFor"),
-            "requestType":
-            obj.get("requestType"),
-            "requestedItems": [
-                AccessRequestItem.from_dict(_item)
-                for _item in obj.get("requestedItems")
-            ] if obj.get("requestedItems") is not None else None,
-            "clientMetadata":
-            obj.get("clientMetadata")
+            "requestedFor": obj.get("requestedFor"),
+            "requestType": obj.get("requestType"),
+            "requestedItems": [AccessRequestItem.from_dict(_item) for _item in obj.get("requestedItems")] if obj.get("requestedItems") is not None else None,
+            "clientMetadata": obj.get("clientMetadata")
         })
         return _obj
+
+

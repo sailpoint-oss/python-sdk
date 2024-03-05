@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
@@ -27,49 +29,25 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class SearchExportReportArguments(BaseModel):
     """
     Arguments for Search Export report (SEARCH_EXPORT)
     """ # noqa: E501
-    indices: Optional[List[Index]] = Field(
-        default=None,
-        description=
-        "The names of the Elasticsearch indices in which to search. If none are provided, then all indices will be searched."
-    )
-    filters: Optional[Dict[str, Filter]] = Field(
-        default=None,
-        description="The filters to be applied for each filtered field name.")
+    indices: Optional[List[Index]] = Field(default=None, description="The names of the Elasticsearch indices in which to search. If none are provided, then all indices will be searched.")
+    filters: Optional[Dict[str, Filter]] = Field(default=None, description="The filters to be applied for each filtered field name.")
     query: Query
-    include_nested: Optional[StrictBool] = Field(
-        default=True,
-        description=
-        "Indicates whether nested objects from returned search results should be included.",
-        alias="includeNested")
-    sort: Optional[List[StrictStr]] = Field(
-        default=None,
-        description=
-        "The fields to be used to sort the search results. Use + or - to specify the sort direction."
-    )
-    default_s3_bucket: StrictBool = Field(
-        description=
-        "Use it to set default s3 bucket where generated report will be saved.  In case this argument is false and 's3Bucket' argument is null or absent there will be default s3Bucket assigned to the report.",
-        alias="defaultS3Bucket")
-    s3_bucket: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "If you want to be specific you could use this argument with defaultS3Bucket = false.",
-        alias="s3Bucket")
-    __properties: ClassVar[List[str]] = [
-        "indices", "filters", "query", "includeNested", "sort",
-        "defaultS3Bucket", "s3Bucket"
-    ]
+    include_nested: Optional[StrictBool] = Field(default=True, description="Indicates whether nested objects from returned search results should be included.", alias="includeNested")
+    sort: Optional[List[StrictStr]] = Field(default=None, description="The fields to be used to sort the search results. Use + or - to specify the sort direction.")
+    default_s3_bucket: StrictBool = Field(description="Use it to set default s3 bucket where generated report will be saved.  In case this argument is false and 's3Bucket' argument is null or absent there will be default s3Bucket assigned to the report.", alias="defaultS3Bucket")
+    s3_bucket: Optional[StrictStr] = Field(default=None, description="If you want to be specific you could use this argument with defaultS3Bucket = false.", alias="s3Bucket")
+    __properties: ClassVar[List[str]] = ["indices", "filters", "query", "includeNested", "sort", "defaultS3Bucket", "s3Bucket"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -97,7 +75,8 @@ class SearchExportReportArguments(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each value in filters (dict)
@@ -122,23 +101,19 @@ class SearchExportReportArguments(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "indices":
-            obj.get("indices"),
-            "filters":
-            dict((_k, Filter.from_dict(_v))
-                 for _k, _v in obj.get("filters").items())
-            if obj.get("filters") is not None else None,
-            "query":
-            Query.from_dict(obj.get("query"))
-            if obj.get("query") is not None else None,
-            "includeNested":
-            obj.get("includeNested")
-            if obj.get("includeNested") is not None else True,
-            "sort":
-            obj.get("sort"),
-            "defaultS3Bucket":
-            obj.get("defaultS3Bucket"),
-            "s3Bucket":
-            obj.get("s3Bucket")
+            "indices": obj.get("indices"),
+            "filters": dict(
+                (_k, Filter.from_dict(_v))
+                for _k, _v in obj.get("filters").items()
+            )
+            if obj.get("filters") is not None
+            else None,
+            "query": Query.from_dict(obj.get("query")) if obj.get("query") is not None else None,
+            "includeNested": obj.get("includeNested") if obj.get("includeNested") is not None else True,
+            "sort": obj.get("sort"),
+            "defaultS3Bucket": obj.get("defaultS3Bucket"),
+            "s3Bucket": obj.get("s3Bucket")
         })
         return _obj
+
+

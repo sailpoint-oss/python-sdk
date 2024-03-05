@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,29 +21,27 @@ from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
 from pydantic import Field
+from sailpoint.v3.models.comment_dto_author import CommentDtoAuthor
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class CompletedApprovalReviewerComment(BaseModel):
     """
-    The approval's reviewer's comment.
-    """
-
-  # noqa: E501
-    comment: Optional[StrictStr] = Field(default=None,
-                                         description="Comment content.")
-    created: Optional[datetime] = Field(
-        default=None, description="Date and time comment was created.")
-    __properties: ClassVar[List[str]] = ["comment", "created"]
+    CompletedApprovalReviewerComment
+    """ # noqa: E501
+    comment: Optional[StrictStr] = Field(default=None, description="Comment content.")
+    created: Optional[datetime] = Field(default=None, description="Date and time comment was created.")
+    author: Optional[CommentDtoAuthor] = None
+    __properties: ClassVar[List[str]] = ["comment", "created", "author"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -70,9 +69,13 @@ class CompletedApprovalReviewerComment(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of author
+        if self.author:
+            _dict['author'] = self.author.to_dict()
         # set to None if comment (nullable) is None
         # and model_fields_set contains the field
         if self.comment is None and "comment" in self.model_fields_set:
@@ -91,6 +94,9 @@ class CompletedApprovalReviewerComment(BaseModel):
 
         _obj = cls.model_validate({
             "comment": obj.get("comment"),
-            "created": obj.get("created")
+            "created": obj.get("created"),
+            "author": CommentDtoAuthor.from_dict(obj.get("author")) if obj.get("author") is not None else None
         })
         return _obj
+
+

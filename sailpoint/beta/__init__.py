@@ -13,16 +13,19 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 __version__ = "1.0.0"
 
 # import apis into sdk package
 from sailpoint.beta.api.access_profiles_api import AccessProfilesApi
 from sailpoint.beta.api.access_request_approvals_api import AccessRequestApprovalsApi
+from sailpoint.beta.api.access_request_identity_metrics_api import AccessRequestIdentityMetricsApi
 from sailpoint.beta.api.access_requests_api import AccessRequestsApi
 from sailpoint.beta.api.account_activities_api import AccountActivitiesApi
 from sailpoint.beta.api.account_aggregations_api import AccountAggregationsApi
 from sailpoint.beta.api.account_usages_api import AccountUsagesApi
 from sailpoint.beta.api.accounts_api import AccountsApi
+from sailpoint.beta.api.auth_profile_api import AuthProfileApi
 from sailpoint.beta.api.certification_campaigns_api import CertificationCampaignsApi
 from sailpoint.beta.api.certifications_api import CertificationsApi
 from sailpoint.beta.api.connector_rule_management_api import ConnectorRuleManagementApi
@@ -70,6 +73,7 @@ from sailpoint.beta.api.source_usages_api import SourceUsagesApi
 from sailpoint.beta.api.sources_api import SourcesApi
 from sailpoint.beta.api.tagged_objects_api import TaggedObjectsApi
 from sailpoint.beta.api.task_management_api import TaskManagementApi
+from sailpoint.beta.api.tenant_api import TenantApi
 from sailpoint.beta.api.transforms_api import TransformsApi
 from sailpoint.beta.api.triggers_api import TriggersApi
 from sailpoint.beta.api.work_items_api import WorkItemsApi
@@ -112,8 +116,10 @@ from sailpoint.beta.models.access_profile import AccessProfile
 from sailpoint.beta.models.access_profile_approval_scheme import AccessProfileApprovalScheme
 from sailpoint.beta.models.access_profile_bulk_delete_request import AccessProfileBulkDeleteRequest
 from sailpoint.beta.models.access_profile_bulk_delete_response import AccessProfileBulkDeleteResponse
+from sailpoint.beta.models.access_profile_bulk_update_request_inner import AccessProfileBulkUpdateRequestInner
 from sailpoint.beta.models.access_profile_ref import AccessProfileRef
 from sailpoint.beta.models.access_profile_source_ref import AccessProfileSourceRef
+from sailpoint.beta.models.access_profile_update_item import AccessProfileUpdateItem
 from sailpoint.beta.models.access_profile_usage import AccessProfileUsage
 from sailpoint.beta.models.access_profile_usage_used_by_inner import AccessProfileUsageUsedByInner
 from sailpoint.beta.models.access_recommendation_message import AccessRecommendationMessage
@@ -192,6 +198,7 @@ from sailpoint.beta.models.approval_scheme import ApprovalScheme
 from sailpoint.beta.models.approval_scheme_for_role import ApprovalSchemeForRole
 from sailpoint.beta.models.approval_status import ApprovalStatus
 from sailpoint.beta.models.approval_status_dto import ApprovalStatusDto
+from sailpoint.beta.models.approval_status_dto_current_owner import ApprovalStatusDtoCurrentOwner
 from sailpoint.beta.models.approval_status_dto_original_owner import ApprovalStatusDtoOriginalOwner
 from sailpoint.beta.models.approval_summary import ApprovalSummary
 from sailpoint.beta.models.argument import Argument
@@ -205,8 +212,12 @@ from sailpoint.beta.models.attribute_definition_schema import AttributeDefinitio
 from sailpoint.beta.models.attribute_definition_type import AttributeDefinitionType
 from sailpoint.beta.models.attributes_changed import AttributesChanged
 from sailpoint.beta.models.audit_details import AuditDetails
+from sailpoint.beta.models.auth_profile import AuthProfile
+from sailpoint.beta.models.auth_profile_request import AuthProfileRequest
+from sailpoint.beta.models.auth_profile_summary import AuthProfileSummary
 from sailpoint.beta.models.base_common_dto import BaseCommonDto
 from sailpoint.beta.models.base_common_dto1 import BaseCommonDto1
+from sailpoint.beta.models.base_reference_dto import BaseReferenceDto
 from sailpoint.beta.models.basic_auth_config import BasicAuthConfig
 from sailpoint.beta.models.bearer_token_auth_config import BearerTokenAuthConfig
 from sailpoint.beta.models.before_provisioning_rule_dto import BeforeProvisioningRuleDto
@@ -245,6 +256,7 @@ from sailpoint.beta.models.close_access_request import CloseAccessRequest
 from sailpoint.beta.models.comment import Comment
 from sailpoint.beta.models.comment_dto import CommentDto
 from sailpoint.beta.models.comment_dto1 import CommentDto1
+from sailpoint.beta.models.comment_dto1_author import CommentDto1Author
 from sailpoint.beta.models.comment_dto_author import CommentDtoAuthor
 from sailpoint.beta.models.common_access_id_status import CommonAccessIDStatus
 from sailpoint.beta.models.common_access_item_access import CommonAccessItemAccess
@@ -257,6 +269,7 @@ from sailpoint.beta.models.complete_campaign_options import CompleteCampaignOpti
 from sailpoint.beta.models.complete_invocation import CompleteInvocation
 from sailpoint.beta.models.complete_invocation_input import CompleteInvocationInput
 from sailpoint.beta.models.completed_approval import CompletedApproval
+from sailpoint.beta.models.completed_approval_pre_approval_trigger_result import CompletedApprovalPreApprovalTriggerResult
 from sailpoint.beta.models.completed_approval_reviewed_by import CompletedApprovalReviewedBy
 from sailpoint.beta.models.completed_approval_reviewer_comment import CompletedApprovalReviewerComment
 from sailpoint.beta.models.completed_approval_state import CompletedApprovalState
@@ -267,6 +280,7 @@ from sailpoint.beta.models.condition_rule import ConditionRule
 from sailpoint.beta.models.config_object import ConfigObject
 from sailpoint.beta.models.config_type import ConfigType
 from sailpoint.beta.models.config_type_enum import ConfigTypeEnum
+from sailpoint.beta.models.config_type_enum_camel import ConfigTypeEnumCamel
 from sailpoint.beta.models.configuration_details_response import ConfigurationDetailsResponse
 from sailpoint.beta.models.configuration_item_request import ConfigurationItemRequest
 from sailpoint.beta.models.configuration_item_response import ConfigurationItemResponse
@@ -306,6 +320,8 @@ from sailpoint.beta.models.entitlement import Entitlement
 from sailpoint.beta.models.entitlement_access_request_config import EntitlementAccessRequestConfig
 from sailpoint.beta.models.entitlement_approval_scheme import EntitlementApprovalScheme
 from sailpoint.beta.models.entitlement_bulk_update_request import EntitlementBulkUpdateRequest
+from sailpoint.beta.models.entitlement_manually_updated_fields import EntitlementManuallyUpdatedFields
+from sailpoint.beta.models.entitlement_owner import EntitlementOwner
 from sailpoint.beta.models.entitlement_ref import EntitlementRef
 from sailpoint.beta.models.entitlement_request_config import EntitlementRequestConfig
 from sailpoint.beta.models.entitlement_request_config1 import EntitlementRequestConfig1
@@ -353,7 +369,6 @@ from sailpoint.beta.models.form_item_details import FormItemDetails
 from sailpoint.beta.models.form_owner import FormOwner
 from sailpoint.beta.models.form_used_by import FormUsedBy
 from sailpoint.beta.models.forward_approval_dto import ForwardApprovalDto
-from sailpoint.beta.models.full_account import FullAccount
 from sailpoint.beta.models.fullcampaign import Fullcampaign
 from sailpoint.beta.models.fullcampaign_all_of_filter import FullcampaignAllOfFilter
 from sailpoint.beta.models.fullcampaign_all_of_role_composition_campaign_info import FullcampaignAllOfRoleCompositionCampaignInfo
@@ -395,6 +410,7 @@ from sailpoint.beta.models.identity_created import IdentityCreated
 from sailpoint.beta.models.identity_created_identity import IdentityCreatedIdentity
 from sailpoint.beta.models.identity_deleted import IdentityDeleted
 from sailpoint.beta.models.identity_deleted_identity import IdentityDeletedIdentity
+from sailpoint.beta.models.identity_dto_lifecycle_state import IdentityDtoLifecycleState
 from sailpoint.beta.models.identity_dto_manager_ref import IdentityDtoManagerRef
 from sailpoint.beta.models.identity_entities import IdentityEntities
 from sailpoint.beta.models.identity_entities_identity_entity import IdentityEntitiesIdentityEntity
@@ -406,6 +422,7 @@ from sailpoint.beta.models.identity_ownership_association_details import Identit
 from sailpoint.beta.models.identity_ownership_association_details_association_details_inner import IdentityOwnershipAssociationDetailsAssociationDetailsInner
 from sailpoint.beta.models.identity_preview_request import IdentityPreviewRequest
 from sailpoint.beta.models.identity_preview_response import IdentityPreviewResponse
+from sailpoint.beta.models.identity_preview_response_identity import IdentityPreviewResponseIdentity
 from sailpoint.beta.models.identity_profile import IdentityProfile
 from sailpoint.beta.models.identity_profile1 import IdentityProfile1
 from sailpoint.beta.models.identity_profile1_all_of_authoritative_source import IdentityProfile1AllOfAuthoritativeSource
@@ -438,11 +455,11 @@ from sailpoint.beta.models.kba_answer_request_item import KbaAnswerRequestItem
 from sailpoint.beta.models.kba_auth_response import KbaAuthResponse
 from sailpoint.beta.models.kba_auth_response_item import KbaAuthResponseItem
 from sailpoint.beta.models.latest_outlier_summary import LatestOutlierSummary
+from sailpoint.beta.models.license import License
 from sailpoint.beta.models.lifecycle_state import LifecycleState
 from sailpoint.beta.models.lifecycle_state_dto import LifecycleStateDto
 from sailpoint.beta.models.list_access_profiles401_response import ListAccessProfiles401Response
 from sailpoint.beta.models.list_access_profiles429_response import ListAccessProfiles429Response
-from sailpoint.beta.models.list_accounts200_response_inner import ListAccounts200ResponseInner
 from sailpoint.beta.models.list_complete_workflow_library200_response_inner import ListCompleteWorkflowLibrary200ResponseInner
 from sailpoint.beta.models.list_form_definitions_by_tenant_response import ListFormDefinitionsByTenantResponse
 from sailpoint.beta.models.list_form_element_data_by_element_id_response import ListFormElementDataByElementIDResponse
@@ -545,6 +562,7 @@ from sailpoint.beta.models.pre_approval_trigger_details import PreApprovalTrigge
 from sailpoint.beta.models.preferences_dto import PreferencesDto
 from sailpoint.beta.models.preview_data_source_response import PreviewDataSourceResponse
 from sailpoint.beta.models.process_identities_request import ProcessIdentitiesRequest
+from sailpoint.beta.models.product import Product
 from sailpoint.beta.models.provisioning_completed import ProvisioningCompleted
 from sailpoint.beta.models.provisioning_completed_account_requests_inner import ProvisioningCompletedAccountRequestsInner
 from sailpoint.beta.models.provisioning_completed_account_requests_inner_attribute_requests_inner import ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner
@@ -589,7 +607,12 @@ from sailpoint.beta.models.requestable_object_reference import RequestableObject
 from sailpoint.beta.models.requestable_object_request_status import RequestableObjectRequestStatus
 from sailpoint.beta.models.requestable_object_type import RequestableObjectType
 from sailpoint.beta.models.requested_item_status import RequestedItemStatus
+from sailpoint.beta.models.requested_item_status_cancelled_request_details import RequestedItemStatusCancelledRequestDetails
+from sailpoint.beta.models.requested_item_status_pre_approval_trigger_details import RequestedItemStatusPreApprovalTriggerDetails
+from sailpoint.beta.models.requested_item_status_provisioning_details import RequestedItemStatusProvisioningDetails
 from sailpoint.beta.models.requested_item_status_request_state import RequestedItemStatusRequestState
+from sailpoint.beta.models.requested_item_status_requester_comment import RequestedItemStatusRequesterComment
+from sailpoint.beta.models.requested_item_status_sod_violation_context import RequestedItemStatusSodViolationContext
 from sailpoint.beta.models.resource_bundle_message import ResourceBundleMessage
 from sailpoint.beta.models.resource_object import ResourceObject
 from sailpoint.beta.models.resource_objects_request import ResourceObjectsRequest
@@ -653,6 +676,7 @@ from sailpoint.beta.models.schedule import Schedule
 from sailpoint.beta.models.schedule1 import Schedule1
 from sailpoint.beta.models.schedule1_days import Schedule1Days
 from sailpoint.beta.models.schedule1_hours import Schedule1Hours
+from sailpoint.beta.models.schedule1_months import Schedule1Months
 from sailpoint.beta.models.schedule_days import ScheduleDays
 from sailpoint.beta.models.schedule_hours import ScheduleHours
 from sailpoint.beta.models.schedule_months import ScheduleMonths
@@ -675,7 +699,6 @@ from sailpoint.beta.models.service_desk_integration_dto_all_of_owner_ref import 
 from sailpoint.beta.models.service_desk_integration_template_dto import ServiceDeskIntegrationTemplateDto
 from sailpoint.beta.models.service_desk_integration_template_type import ServiceDeskIntegrationTemplateType
 from sailpoint.beta.models.service_desk_source import ServiceDeskSource
-from sailpoint.beta.models.slim_account import SlimAccount
 from sailpoint.beta.models.slimcampaign import Slimcampaign
 from sailpoint.beta.models.sod_exempt_criteria import SodExemptCriteria
 from sailpoint.beta.models.sod_exempt_criteria1 import SodExemptCriteria1
@@ -697,9 +720,11 @@ from sailpoint.beta.models.sod_violation_context_conflicting_access_criteria imp
 from sailpoint.beta.models.sod_violation_context_conflicting_access_criteria_left_criteria import SodViolationContextConflictingAccessCriteriaLeftCriteria
 from sailpoint.beta.models.source import Source
 from sailpoint.beta.models.source1 import Source1
-from sailpoint.beta.models.source_account import SourceAccount
 from sailpoint.beta.models.source_account_correlation_config import SourceAccountCorrelationConfig
 from sailpoint.beta.models.source_account_correlation_rule import SourceAccountCorrelationRule
+from sailpoint.beta.models.source_account_created import SourceAccountCreated
+from sailpoint.beta.models.source_account_deleted import SourceAccountDeleted
+from sailpoint.beta.models.source_account_updated import SourceAccountUpdated
 from sailpoint.beta.models.source_before_provisioning_rule import SourceBeforeProvisioningRule
 from sailpoint.beta.models.source_cluster import SourceCluster
 from sailpoint.beta.models.source_cluster_dto import SourceClusterDto
@@ -752,6 +777,7 @@ from sailpoint.beta.models.task_status_message import TaskStatusMessage
 from sailpoint.beta.models.template_bulk_delete_dto import TemplateBulkDeleteDto
 from sailpoint.beta.models.template_dto import TemplateDto
 from sailpoint.beta.models.template_dto_default import TemplateDtoDefault
+from sailpoint.beta.models.tenant import Tenant
 from sailpoint.beta.models.tenant_configuration_details import TenantConfigurationDetails
 from sailpoint.beta.models.tenant_configuration_request import TenantConfigurationRequest
 from sailpoint.beta.models.tenant_configuration_response import TenantConfigurationResponse
@@ -772,6 +798,7 @@ from sailpoint.beta.models.trigger import Trigger
 from sailpoint.beta.models.trigger_example_input import TriggerExampleInput
 from sailpoint.beta.models.trigger_example_output import TriggerExampleOutput
 from sailpoint.beta.models.trigger_type import TriggerType
+from sailpoint.beta.models.update_access_profiles_in_bulk412_response import UpdateAccessProfilesInBulk412Response
 from sailpoint.beta.models.usage_type import UsageType
 from sailpoint.beta.models.v3_connector_dto import V3ConnectorDto
 from sailpoint.beta.models.va_cluster_status_change_event import VAClusterStatusChangeEvent

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr
@@ -26,17 +28,11 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class EntitlementBulkUpdateRequest(BaseModel):
     """
     EntitlementBulkUpdateRequest
-    """
-
-  # noqa: E501
-    entitlement_ids: Annotated[
-        List[StrictStr], Field(max_length=50)] = Field(
-            description="List of entitlement ids to update",
-            alias="entitlementIds")
+    """ # noqa: E501
+    entitlement_ids: Annotated[List[StrictStr], Field(max_length=50)] = Field(description="List of entitlement ids to update", alias="entitlementIds")
     json_patch: List[JsonPatchOperation] = Field(alias="jsonPatch")
     __properties: ClassVar[List[str]] = ["entitlementIds", "jsonPatch"]
 
@@ -45,6 +41,7 @@ class EntitlementBulkUpdateRequest(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -72,7 +69,8 @@ class EntitlementBulkUpdateRequest(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in json_patch (list)
@@ -94,11 +92,9 @@ class EntitlementBulkUpdateRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "entitlementIds":
-            obj.get("entitlementIds"),
-            "jsonPatch": [
-                JsonPatchOperation.from_dict(_item)
-                for _item in obj.get("jsonPatch")
-            ] if obj.get("jsonPatch") is not None else None
+            "entitlementIds": obj.get("entitlementIds"),
+            "jsonPatch": [JsonPatchOperation.from_dict(_item) for _item in obj.get("jsonPatch")] if obj.get("jsonPatch") is not None else None
         })
         return _obj
+
+

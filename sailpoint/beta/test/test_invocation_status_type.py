@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.invocation_status_type import InvocationStatusType
-
 
 class TestInvocationStatusType(unittest.TestCase):
     """InvocationStatusType unit test stubs"""
@@ -29,7 +29,6 @@ class TestInvocationStatusType(unittest.TestCase):
     def testInvocationStatusType(self):
         """Test InvocationStatusType"""
         # inst = InvocationStatusType()
-
 
 if __name__ == '__main__':
     unittest.main()

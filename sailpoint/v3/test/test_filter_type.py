@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.filter_type import FilterType
-
 
 class TestFilterType(unittest.TestCase):
     """FilterType unit test stubs"""
@@ -29,7 +29,6 @@ class TestFilterType(unittest.TestCase):
     def testFilterType(self):
         """Test FilterType"""
         # inst = FilterType()
-
 
 if __name__ == '__main__':
     unittest.main()

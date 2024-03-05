@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
@@ -24,43 +26,22 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class EmailNotificationOption(BaseModel):
     """
     EmailNotificationOption
-    """
-
-  # noqa: E501
-    notify_managers: Optional[StrictBool] = Field(
-        default=None,
-        description=
-        "If true, then the manager is notified of the lifecycle state change.",
-        alias="notifyManagers")
-    notify_all_admins: Optional[StrictBool] = Field(
-        default=None,
-        description=
-        "If true, then all the admins are notified of the lifecycle state change.",
-        alias="notifyAllAdmins")
-    notify_specific_users: Optional[StrictBool] = Field(
-        default=None,
-        description=
-        "If true, then the users specified in \"emailAddressList\" below are notified of lifecycle state change.",
-        alias="notifySpecificUsers")
-    email_address_list: Optional[List[StrictStr]] = Field(
-        default=None,
-        description=
-        "List of user email addresses. If \"notifySpecificUsers\" option is true, then these users are notified of lifecycle state change.",
-        alias="emailAddressList")
-    __properties: ClassVar[List[str]] = [
-        "notifyManagers", "notifyAllAdmins", "notifySpecificUsers",
-        "emailAddressList"
-    ]
+    """ # noqa: E501
+    notify_managers: Optional[StrictBool] = Field(default=None, description="If true, then the manager is notified of the lifecycle state change.", alias="notifyManagers")
+    notify_all_admins: Optional[StrictBool] = Field(default=None, description="If true, then all the admins are notified of the lifecycle state change.", alias="notifyAllAdmins")
+    notify_specific_users: Optional[StrictBool] = Field(default=None, description="If true, then the users specified in \"emailAddressList\" below are notified of lifecycle state change.", alias="notifySpecificUsers")
+    email_address_list: Optional[List[StrictStr]] = Field(default=None, description="List of user email addresses. If \"notifySpecificUsers\" option is true, then these users are notified of lifecycle state change.", alias="emailAddressList")
+    __properties: ClassVar[List[str]] = ["notifyManagers", "notifyAllAdmins", "notifySpecificUsers", "emailAddressList"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -88,7 +69,8 @@ class EmailNotificationOption(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -103,13 +85,11 @@ class EmailNotificationOption(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "notifyManagers":
-            obj.get("notifyManagers"),
-            "notifyAllAdmins":
-            obj.get("notifyAllAdmins"),
-            "notifySpecificUsers":
-            obj.get("notifySpecificUsers"),
-            "emailAddressList":
-            obj.get("emailAddressList")
+            "notifyManagers": obj.get("notifyManagers"),
+            "notifyAllAdmins": obj.get("notifyAllAdmins"),
+            "notifySpecificUsers": obj.get("notifySpecificUsers"),
+            "emailAddressList": obj.get("emailAddressList")
         })
         return _obj
+
+

@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**identity** | [**IdentityDtoManagerRef**](IdentityDtoManagerRef.md) |  | [optional] 
+**identity** | [**IdentityPreviewResponseIdentity**](IdentityPreviewResponseIdentity.md) |  | [optional] 
 **preview_attributes** | [**List[IdentityAttributePreview]**](IdentityAttributePreview.md) |  | [optional] 
 
 ## Example

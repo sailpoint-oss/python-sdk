@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
@@ -27,17 +29,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class SavedSearchCompleteSearchResults(BaseModel):
     """
     A preview of the search results for each object type. This includes a count as well as headers, and the first several rows of data, per object type.
     """ # noqa: E501
-    account: Optional[SavedSearchCompleteSearchResultsAccount] = Field(
-        default=None, alias="Account")
-    entitlement: Optional[SavedSearchCompleteSearchResultsEntitlement] = Field(
-        default=None, alias="Entitlement")
-    identity: Optional[SavedSearchCompleteSearchResultsIdentity] = Field(
-        default=None, alias="Identity")
+    account: Optional[SavedSearchCompleteSearchResultsAccount] = Field(default=None, alias="Account")
+    entitlement: Optional[SavedSearchCompleteSearchResultsEntitlement] = Field(default=None, alias="Entitlement")
+    identity: Optional[SavedSearchCompleteSearchResultsIdentity] = Field(default=None, alias="Identity")
     __properties: ClassVar[List[str]] = ["Account", "Entitlement", "Identity"]
 
     model_config = {
@@ -45,6 +43,7 @@ class SavedSearchCompleteSearchResults(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -72,7 +71,8 @@ class SavedSearchCompleteSearchResults(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of account
@@ -111,17 +111,10 @@ class SavedSearchCompleteSearchResults(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "Account":
-            SavedSearchCompleteSearchResultsAccount.from_dict(
-                obj.get("Account"))
-            if obj.get("Account") is not None else None,
-            "Entitlement":
-            SavedSearchCompleteSearchResultsEntitlement.from_dict(
-                obj.get("Entitlement"))
-            if obj.get("Entitlement") is not None else None,
-            "Identity":
-            SavedSearchCompleteSearchResultsIdentity.from_dict(
-                obj.get("Identity"))
-            if obj.get("Identity") is not None else None
+            "Account": SavedSearchCompleteSearchResultsAccount.from_dict(obj.get("Account")) if obj.get("Account") is not None else None,
+            "Entitlement": SavedSearchCompleteSearchResultsEntitlement.from_dict(obj.get("Entitlement")) if obj.get("Entitlement") is not None else None,
+            "Identity": SavedSearchCompleteSearchResultsIdentity.from_dict(obj.get("Identity")) if obj.get("Identity") is not None else None
         })
         return _obj
+
+

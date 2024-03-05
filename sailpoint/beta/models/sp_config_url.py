@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,16 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class SpConfigUrl(BaseModel):
     """
     Format of resolver URLs for Object Configurations
     """ # noqa: E501
-    url: Optional[StrictStr] = Field(
-        default=None, description="URL for the target object endpoint.")
-    query: Optional[Dict[str, Any]] = Field(
-        default=None,
-        description="Any query parameters that are needed for the URL.")
+    url: Optional[StrictStr] = Field(default=None, description="URL for the target object endpoint.")
+    query: Optional[Dict[str, Any]] = Field(default=None, description="Any query parameters that are needed for the URL.")
     __properties: ClassVar[List[str]] = ["url", "query"]
 
     model_config = {
@@ -41,6 +39,7 @@ class SpConfigUrl(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -68,7 +67,8 @@ class SpConfigUrl(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if query (nullable) is None
@@ -92,3 +92,5 @@ class SpConfigUrl(BaseModel):
             "query": obj.get("query")
         })
         return _obj
+
+

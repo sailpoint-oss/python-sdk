@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
@@ -27,34 +29,24 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class CreateWorkflowRequest(BaseModel):
     """
     CreateWorkflowRequest
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     name: StrictStr = Field(description="The name of the workflow")
     owner: WorkflowBodyOwner
-    description: Optional[StrictStr] = Field(
-        default=None,
-        description="Description of what the workflow accomplishes")
+    description: Optional[StrictStr] = Field(default=None, description="Description of what the workflow accomplishes")
     definition: Optional[WorkflowDefinition] = None
-    enabled: Optional[StrictBool] = Field(
-        default=False,
-        description=
-        "Enable or disable the workflow.  Workflows cannot be created in an enabled state."
-    )
+    enabled: Optional[StrictBool] = Field(default=False, description="Enable or disable the workflow.  Workflows cannot be created in an enabled state.")
     trigger: Optional[WorkflowTrigger] = None
-    __properties: ClassVar[List[str]] = [
-        "name", "owner", "description", "definition", "enabled", "trigger"
-    ]
+    __properties: ClassVar[List[str]] = ["name", "owner", "description", "definition", "enabled", "trigger"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -82,7 +74,8 @@ class CreateWorkflowRequest(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of owner
@@ -106,20 +99,13 @@ class CreateWorkflowRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name":
-            obj.get("name"),
-            "owner":
-            WorkflowBodyOwner.from_dict(obj.get("owner"))
-            if obj.get("owner") is not None else None,
-            "description":
-            obj.get("description"),
-            "definition":
-            WorkflowDefinition.from_dict(obj.get("definition"))
-            if obj.get("definition") is not None else None,
-            "enabled":
-            obj.get("enabled") if obj.get("enabled") is not None else False,
-            "trigger":
-            WorkflowTrigger.from_dict(obj.get("trigger"))
-            if obj.get("trigger") is not None else None
+            "name": obj.get("name"),
+            "owner": WorkflowBodyOwner.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
+            "description": obj.get("description"),
+            "definition": WorkflowDefinition.from_dict(obj.get("definition")) if obj.get("definition") is not None else None,
+            "enabled": obj.get("enabled") if obj.get("enabled") is not None else False,
+            "trigger": WorkflowTrigger.from_dict(obj.get("trigger")) if obj.get("trigger") is not None else None
         })
         return _obj
+
+

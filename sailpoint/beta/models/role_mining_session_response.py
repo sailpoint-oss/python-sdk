@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -28,61 +29,29 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class RoleMiningSessionResponse(BaseModel):
     """
     RoleMiningSessionResponse
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     scope: Optional[RoleMiningSessionScope] = None
-    min_num_identities_in_potential_role: Optional[StrictInt] = Field(
-        default=None,
-        description="Minimum number of identities in a potential role",
-        alias="minNumIdentitiesInPotentialRole")
-    prescribed_prune_threshold: Optional[StrictInt] = Field(
-        default=None,
-        description=
-        "The computed (or prescribed) prune threshold for this session",
-        alias="prescribedPruneThreshold")
-    prune_threshold: Optional[StrictInt] = Field(
-        default=None,
-        description=
-        "The prune threshold to be used for this role mining session",
-        alias="pruneThreshold")
-    potential_role_count: Optional[StrictInt] = Field(
-        default=None,
-        description="The number of potential roles",
-        alias="potentialRoleCount")
-    potential_roles_ready_count: Optional[StrictInt] = Field(
-        default=None,
-        description=
-        "The number of potential roles which have completed processing",
-        alias="potentialRolesReadyCount")
+    min_num_identities_in_potential_role: Optional[StrictInt] = Field(default=None, description="Minimum number of identities in a potential role", alias="minNumIdentitiesInPotentialRole")
+    prescribed_prune_threshold: Optional[StrictInt] = Field(default=None, description="The computed (or prescribed) prune threshold for this session", alias="prescribedPruneThreshold")
+    prune_threshold: Optional[StrictInt] = Field(default=None, description="The prune threshold to be used for this role mining session", alias="pruneThreshold")
+    potential_role_count: Optional[StrictInt] = Field(default=None, description="The number of potential roles", alias="potentialRoleCount")
+    potential_roles_ready_count: Optional[StrictInt] = Field(default=None, description="The number of potential roles which have completed processing", alias="potentialRolesReadyCount")
     status: Optional[RoleMiningSessionStatus] = None
-    id: Optional[StrictStr] = Field(
-        default=None, description="Session Id for this role mining session")
-    created_date: Optional[datetime] = Field(
-        default=None,
-        description="The date-time when this role mining session was created.",
-        alias="createdDate")
-    modified_date: Optional[datetime] = Field(
-        default=None,
-        description=
-        "The date-time when this role mining session was completed.",
-        alias="modifiedDate")
+    id: Optional[StrictStr] = Field(default=None, description="Session Id for this role mining session")
+    created_date: Optional[datetime] = Field(default=None, description="The date-time when this role mining session was created.", alias="createdDate")
+    modified_date: Optional[datetime] = Field(default=None, description="The date-time when this role mining session was completed.", alias="modifiedDate")
     type: Optional[RoleMiningRoleType] = None
-    __properties: ClassVar[List[str]] = [
-        "scope", "minNumIdentitiesInPotentialRole", "prescribedPruneThreshold",
-        "pruneThreshold", "potentialRoleCount", "potentialRolesReadyCount",
-        "status", "id", "createdDate", "modifiedDate", "type"
-    ]
+    __properties: ClassVar[List[str]] = ["scope", "minNumIdentitiesInPotentialRole", "prescribedPruneThreshold", "pruneThreshold", "potentialRoleCount", "potentialRolesReadyCount", "status", "id", "createdDate", "modifiedDate", "type"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -110,7 +79,8 @@ class RoleMiningSessionResponse(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of scope
@@ -131,29 +101,18 @@ class RoleMiningSessionResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "scope":
-            RoleMiningSessionScope.from_dict(obj.get("scope"))
-            if obj.get("scope") is not None else None,
-            "minNumIdentitiesInPotentialRole":
-            obj.get("minNumIdentitiesInPotentialRole"),
-            "prescribedPruneThreshold":
-            obj.get("prescribedPruneThreshold"),
-            "pruneThreshold":
-            obj.get("pruneThreshold"),
-            "potentialRoleCount":
-            obj.get("potentialRoleCount"),
-            "potentialRolesReadyCount":
-            obj.get("potentialRolesReadyCount"),
-            "status":
-            RoleMiningSessionStatus.from_dict(obj.get("status"))
-            if obj.get("status") is not None else None,
-            "id":
-            obj.get("id"),
-            "createdDate":
-            obj.get("createdDate"),
-            "modifiedDate":
-            obj.get("modifiedDate"),
-            "type":
-            obj.get("type")
+            "scope": RoleMiningSessionScope.from_dict(obj.get("scope")) if obj.get("scope") is not None else None,
+            "minNumIdentitiesInPotentialRole": obj.get("minNumIdentitiesInPotentialRole"),
+            "prescribedPruneThreshold": obj.get("prescribedPruneThreshold"),
+            "pruneThreshold": obj.get("pruneThreshold"),
+            "potentialRoleCount": obj.get("potentialRoleCount"),
+            "potentialRolesReadyCount": obj.get("potentialRolesReadyCount"),
+            "status": RoleMiningSessionStatus.from_dict(obj.get("status")) if obj.get("status") is not None else None,
+            "id": obj.get("id"),
+            "createdDate": obj.get("createdDate"),
+            "modifiedDate": obj.get("modifiedDate"),
+            "type": obj.get("type")
         })
         return _obj
+
+

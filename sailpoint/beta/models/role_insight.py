@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -27,33 +28,23 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class RoleInsight(BaseModel):
     """
     RoleInsight
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="Insight id")
-    number_of_updates: Optional[StrictInt] = Field(
-        default=None,
-        description="Total number of updates for this role",
-        alias="numberOfUpdates")
-    created_date: Optional[datetime] = Field(
-        default=None,
-        description="The date-time insights were last created for this role.",
-        alias="createdDate")
+    number_of_updates: Optional[StrictInt] = Field(default=None, description="Total number of updates for this role", alias="numberOfUpdates")
+    created_date: Optional[datetime] = Field(default=None, description="The date-time insights were last created for this role.", alias="createdDate")
     role: Optional[RoleInsightsRole] = None
     insight: Optional[RoleInsightsInsight] = None
-    __properties: ClassVar[List[str]] = [
-        "id", "numberOfUpdates", "createdDate", "role", "insight"
-    ]
+    __properties: ClassVar[List[str]] = ["id", "numberOfUpdates", "createdDate", "role", "insight"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -81,7 +72,8 @@ class RoleInsight(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of role
@@ -102,17 +94,12 @@ class RoleInsight(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "numberOfUpdates":
-            obj.get("numberOfUpdates"),
-            "createdDate":
-            obj.get("createdDate"),
-            "role":
-            RoleInsightsRole.from_dict(obj.get("role"))
-            if obj.get("role") is not None else None,
-            "insight":
-            RoleInsightsInsight.from_dict(obj.get("insight"))
-            if obj.get("insight") is not None else None
+            "id": obj.get("id"),
+            "numberOfUpdates": obj.get("numberOfUpdates"),
+            "createdDate": obj.get("createdDate"),
+            "role": RoleInsightsRole.from_dict(obj.get("role")) if obj.get("role") is not None else None,
+            "insight": RoleInsightsInsight.from_dict(obj.get("insight")) if obj.get("insight") is not None else None
         })
         return _obj
+
+

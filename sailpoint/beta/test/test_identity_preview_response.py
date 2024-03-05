@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.identity_preview_response import IdentityPreviewResponse
-
 
 class TestIdentityPreviewResponse(unittest.TestCase):
     """IdentityPreviewResponse unit test stubs"""
@@ -36,7 +36,7 @@ class TestIdentityPreviewResponse(unittest.TestCase):
         model = IdentityPreviewResponse()
         if include_optional:
             return IdentityPreviewResponse(
-                identity = sailpoint.beta.models.identity_dto_manager_ref.IdentityDto_managerRef(
+                identity = sailpoint.beta.models.identity_preview_response_identity.IdentityPreviewResponse_identity(
                     type = 'IDENTITY', 
                     id = '2c4180a46faadee4016fb4e018c20626', 
                     name = 'Robert Robinson', ),
@@ -62,7 +62,6 @@ class TestIdentityPreviewResponse(unittest.TestCase):
         """Test IdentityPreviewResponse"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

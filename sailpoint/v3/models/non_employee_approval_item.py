@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -28,42 +29,27 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class NonEmployeeApprovalItem(BaseModel):
     """
     NonEmployeeApprovalItem
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(
-        default=None, description="Non-Employee approval item id")
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="Non-Employee approval item id")
     approver: Optional[NonEmployeeIdentityReferenceWithId] = None
-    account_name: Optional[StrictStr] = Field(
-        default=None,
-        description="Requested identity account name",
-        alias="accountName")
-    approval_status: Optional[ApprovalStatus] = Field(default=None,
-                                                      alias="approvalStatus")
-    approval_order: Optional[Union[StrictFloat, StrictInt]] = Field(
-        default=None, description="Approval order", alias="approvalOrder")
-    comment: Optional[StrictStr] = Field(default=None,
-                                         description="comment of approver")
-    modified: Optional[datetime] = Field(
-        default=None, description="When the request was last modified.")
-    created: Optional[datetime] = Field(
-        default=None, description="When the request was created.")
-    non_employee_request: Optional[NonEmployeeRequestLite] = Field(
-        default=None, alias="nonEmployeeRequest")
-    __properties: ClassVar[List[str]] = [
-        "id", "approver", "accountName", "approvalStatus", "approvalOrder",
-        "comment", "modified", "created", "nonEmployeeRequest"
-    ]
+    account_name: Optional[StrictStr] = Field(default=None, description="Requested identity account name", alias="accountName")
+    approval_status: Optional[ApprovalStatus] = Field(default=None, alias="approvalStatus")
+    approval_order: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Approval order", alias="approvalOrder")
+    comment: Optional[StrictStr] = Field(default=None, description="comment of approver")
+    modified: Optional[datetime] = Field(default=None, description="When the request was last modified.")
+    created: Optional[datetime] = Field(default=None, description="When the request was created.")
+    non_employee_request: Optional[NonEmployeeRequestLite] = Field(default=None, alias="nonEmployeeRequest")
+    __properties: ClassVar[List[str]] = ["id", "approver", "accountName", "approvalStatus", "approvalOrder", "comment", "modified", "created", "nonEmployeeRequest"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -91,7 +77,8 @@ class NonEmployeeApprovalItem(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of approver
@@ -112,25 +99,16 @@ class NonEmployeeApprovalItem(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "approver":
-            NonEmployeeIdentityReferenceWithId.from_dict(obj.get("approver"))
-            if obj.get("approver") is not None else None,
-            "accountName":
-            obj.get("accountName"),
-            "approvalStatus":
-            obj.get("approvalStatus"),
-            "approvalOrder":
-            obj.get("approvalOrder"),
-            "comment":
-            obj.get("comment"),
-            "modified":
-            obj.get("modified"),
-            "created":
-            obj.get("created"),
-            "nonEmployeeRequest":
-            NonEmployeeRequestLite.from_dict(obj.get("nonEmployeeRequest"))
-            if obj.get("nonEmployeeRequest") is not None else None
+            "id": obj.get("id"),
+            "approver": NonEmployeeIdentityReferenceWithId.from_dict(obj.get("approver")) if obj.get("approver") is not None else None,
+            "accountName": obj.get("accountName"),
+            "approvalStatus": obj.get("approvalStatus"),
+            "approvalOrder": obj.get("approvalOrder"),
+            "comment": obj.get("comment"),
+            "modified": obj.get("modified"),
+            "created": obj.get("created"),
+            "nonEmployeeRequest": NonEmployeeRequestLite.from_dict(obj.get("nonEmployeeRequest")) if obj.get("nonEmployeeRequest") is not None else None
         })
         return _obj
+
+

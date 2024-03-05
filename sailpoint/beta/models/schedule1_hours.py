@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt, StrictStr
@@ -25,18 +27,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class Schedule1Hours(BaseModel):
     """
     Schedule1Hours
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     type: SelectorType
     values: List[StrictStr] = Field(description="The selected values. ")
-    interval: Optional[StrictInt] = Field(
-        default=None,
-        description="The selected interval for RANGE selectors. ")
+    interval: Optional[StrictInt] = Field(default=None, description="The selected interval for RANGE selectors. ")
     __properties: ClassVar[List[str]] = ["type", "values", "interval"]
 
     model_config = {
@@ -44,6 +41,7 @@ class Schedule1Hours(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -71,7 +69,8 @@ class Schedule1Hours(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if interval (nullable) is None
@@ -96,3 +95,5 @@ class Schedule1Hours(BaseModel):
             "interval": obj.get("interval")
         })
         return _obj
+
+

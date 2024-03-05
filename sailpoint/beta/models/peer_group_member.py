@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,33 +26,22 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class PeerGroupMember(BaseModel):
     """
     PeerGroupMember
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(
-        default=None,
-        description="A unique identifier for the peer group member.")
-    type: Optional[StrictStr] = Field(
-        default=None, description="The type of the peer group member.")
-    peer_group_id: Optional[StrictStr] = Field(
-        default=None, description="The ID of the peer group.")
-    attributes: Optional[Dict[str, Dict[str, Any]]] = Field(
-        default=None,
-        description=
-        "Arbitrary key-value pairs, belonging to the peer group member.")
-    __properties: ClassVar[List[str]] = [
-        "id", "type", "peer_group_id", "attributes"
-    ]
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="A unique identifier for the peer group member.")
+    type: Optional[StrictStr] = Field(default=None, description="The type of the peer group member.")
+    peer_group_id: Optional[StrictStr] = Field(default=None, description="The ID of the peer group.")
+    attributes: Optional[Dict[str, Dict[str, Any]]] = Field(default=None, description="Arbitrary key-value pairs, belonging to the peer group member.")
+    __properties: ClassVar[List[str]] = ["id", "type", "peer_group_id", "attributes"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -78,7 +69,8 @@ class PeerGroupMember(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -99,3 +91,5 @@ class PeerGroupMember(BaseModel):
             "attributes": obj.get("attributes")
         })
         return _obj
+
+

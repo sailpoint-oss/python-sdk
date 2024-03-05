@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictBool, StrictStr
@@ -24,21 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccessRequestPreApproval1(BaseModel):
     """
     AccessRequestPreApproval1
-    """
-
-  # noqa: E501
-    approved: StrictBool = Field(
-        description="Whether or not to approve the access request.")
-    comment: StrictStr = Field(
-        description=
-        "A comment about the decision to approve or deny the request.")
-    approver: StrictStr = Field(
-        description=
-        "The name of the entity that approved or denied the request.")
+    """ # noqa: E501
+    approved: StrictBool = Field(description="Whether or not to approve the access request.")
+    comment: StrictStr = Field(description="A comment about the decision to approve or deny the request.")
+    approver: StrictStr = Field(description="The name of the entity that approved or denied the request.")
     __properties: ClassVar[List[str]] = ["approved", "comment", "approver"]
 
     model_config = {
@@ -46,6 +40,7 @@ class AccessRequestPreApproval1(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -73,7 +68,8 @@ class AccessRequestPreApproval1(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -93,3 +89,5 @@ class AccessRequestPreApproval1(BaseModel):
             "approver": obj.get("approver")
         })
         return _obj
+
+

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
@@ -24,31 +26,21 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class WorkItemForward(BaseModel):
     """
     WorkItemForward
-    """
-
-  # noqa: E501
-    target_owner_id: StrictStr = Field(
-        description="The ID of the identity to forward this work item to.",
-        alias="targetOwnerId")
-    comment: StrictStr = Field(
-        description="Comments to send to the target owner")
-    send_notifications: Optional[StrictBool] = Field(
-        default=True,
-        description="If true, send a notification to the target owner.",
-        alias="sendNotifications")
-    __properties: ClassVar[List[str]] = [
-        "targetOwnerId", "comment", "sendNotifications"
-    ]
+    """ # noqa: E501
+    target_owner_id: StrictStr = Field(description="The ID of the identity to forward this work item to.", alias="targetOwnerId")
+    comment: StrictStr = Field(description="Comments to send to the target owner")
+    send_notifications: Optional[StrictBool] = Field(default=True, description="If true, send a notification to the target owner.", alias="sendNotifications")
+    __properties: ClassVar[List[str]] = ["targetOwnerId", "comment", "sendNotifications"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -76,7 +68,8 @@ class WorkItemForward(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -91,12 +84,10 @@ class WorkItemForward(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "targetOwnerId":
-            obj.get("targetOwnerId"),
-            "comment":
-            obj.get("comment"),
-            "sendNotifications":
-            obj.get("sendNotifications")
-            if obj.get("sendNotifications") is not None else True
+            "targetOwnerId": obj.get("targetOwnerId"),
+            "comment": obj.get("comment"),
+            "sendNotifications": obj.get("sendNotifications") if obj.get("sendNotifications") is not None else True
         })
         return _obj
+
+

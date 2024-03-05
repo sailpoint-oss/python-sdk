@@ -11,46 +11,41 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
+from pydantic import BaseModel, StrictBool, StrictStr
 from pydantic import Field
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class BaseEntitlement(BaseModel):
     """
     BaseEntitlement
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(
-        default=None, description="The unique ID of the referenced object.")
-    name: Optional[StrictStr] = Field(
-        default=None,
-        description="The human readable name of the referenced object.")
-    description: Optional[StrictStr] = Field(
-        default=None, description="A description of the entitlement")
-    attribute: Optional[StrictStr] = Field(
-        default=None, description="The name of the entitlement attribute")
-    value: Optional[StrictStr] = Field(
-        default=None, description="The value of the entitlement")
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "description", "attribute", "value"
-    ]
+    """ # noqa: E501
+    has_permissions: Optional[StrictBool] = Field(default=False, description="Indicates whether the entitlement has permissions.", alias="hasPermissions")
+    description: Optional[StrictStr] = Field(default=None, description="Entitlement's description.")
+    attribute: Optional[StrictStr] = Field(default=None, description="Entitlement attribute's name.")
+    value: Optional[StrictStr] = Field(default=None, description="Entitlement's value.")
+    var_schema: Optional[StrictStr] = Field(default=None, description="Entitlement's schema.", alias="schema")
+    privileged: Optional[StrictBool] = Field(default=False, description="Indicates whether the entitlement is privileged.")
+    id: Optional[StrictStr] = Field(default=None, description="Entitlement's ID.")
+    name: Optional[StrictStr] = Field(default=None, description="Entitlement's name.")
+    __properties: ClassVar[List[str]] = ["hasPermissions", "description", "attribute", "value", "schema", "privileged", "id", "name"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -78,7 +73,8 @@ class BaseEntitlement(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -93,10 +89,15 @@ class BaseEntitlement(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
+            "hasPermissions": obj.get("hasPermissions") if obj.get("hasPermissions") is not None else False,
             "description": obj.get("description"),
             "attribute": obj.get("attribute"),
-            "value": obj.get("value")
+            "value": obj.get("value"),
+            "schema": obj.get("schema"),
+            "privileged": obj.get("privileged") if obj.get("privileged") is not None else False,
+            "id": obj.get("id"),
+            "name": obj.get("name")
         })
         return _obj
+
+

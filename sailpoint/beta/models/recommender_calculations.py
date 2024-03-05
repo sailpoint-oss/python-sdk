@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from pydantic import BaseModel, StrictFloat, StrictInt, StrictStr
@@ -26,51 +28,26 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class RecommenderCalculations(BaseModel):
     """
     RecommenderCalculations
-    """
-
-  # noqa: E501
-    identity_id: Optional[StrictStr] = Field(
-        default=None, description="The ID of the identity", alias="identityId")
-    entitlement_id: Optional[StrictStr] = Field(
-        default=None, description="The entitlement ID", alias="entitlementId")
-    recommendation: Optional[StrictStr] = Field(
-        default=None, description="The actual recommendation")
-    overall_weighted_score: Optional[Union[StrictFloat, StrictInt]] = Field(
-        default=None,
-        description="The overall weighted score",
-        alias="overallWeightedScore")
-    feature_weighted_scores: Optional[Dict[str, Union[
-        StrictFloat, StrictInt]]] = Field(
-            default=None,
-            description="The weighted score of each individual feature",
-            alias="featureWeightedScores")
-    threshold: Optional[Union[StrictFloat, StrictInt]] = Field(
-        default=None,
-        description=
-        "The configured value against which the overallWeightedScore is compared"
-    )
-    identity_attributes: Optional[Dict[
-        str, RecommenderCalculationsIdentityAttributesValue]] = Field(
-            default=None,
-            description="The values for your configured features",
-            alias="identityAttributes")
-    feature_values: Optional[FeatureValueDto] = Field(default=None,
-                                                      alias="featureValues")
-    __properties: ClassVar[List[str]] = [
-        "identityId", "entitlementId", "recommendation",
-        "overallWeightedScore", "featureWeightedScores", "threshold",
-        "identityAttributes", "featureValues"
-    ]
+    """ # noqa: E501
+    identity_id: Optional[StrictStr] = Field(default=None, description="The ID of the identity", alias="identityId")
+    entitlement_id: Optional[StrictStr] = Field(default=None, description="The entitlement ID", alias="entitlementId")
+    recommendation: Optional[StrictStr] = Field(default=None, description="The actual recommendation")
+    overall_weighted_score: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The overall weighted score", alias="overallWeightedScore")
+    feature_weighted_scores: Optional[Dict[str, Union[StrictFloat, StrictInt]]] = Field(default=None, description="The weighted score of each individual feature", alias="featureWeightedScores")
+    threshold: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The configured value against which the overallWeightedScore is compared")
+    identity_attributes: Optional[Dict[str, RecommenderCalculationsIdentityAttributesValue]] = Field(default=None, description="The values for your configured features", alias="identityAttributes")
+    feature_values: Optional[FeatureValueDto] = Field(default=None, alias="featureValues")
+    __properties: ClassVar[List[str]] = ["identityId", "entitlementId", "recommendation", "overallWeightedScore", "featureWeightedScores", "threshold", "identityAttributes", "featureValues"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -98,7 +75,8 @@ class RecommenderCalculations(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each value in identity_attributes (dict)
@@ -106,8 +84,7 @@ class RecommenderCalculations(BaseModel):
         if self.identity_attributes:
             for _key in self.identity_attributes:
                 if self.identity_attributes[_key]:
-                    _field_dict[_key] = self.identity_attributes[_key].to_dict(
-                    )
+                    _field_dict[_key] = self.identity_attributes[_key].to_dict()
             _dict['identityAttributes'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of feature_values
         if self.feature_values:
@@ -124,25 +101,20 @@ class RecommenderCalculations(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "identityId":
-            obj.get("identityId"),
-            "entitlementId":
-            obj.get("entitlementId"),
-            "recommendation":
-            obj.get("recommendation"),
-            "overallWeightedScore":
-            obj.get("overallWeightedScore"),
-            "featureWeightedScores":
-            obj.get("featureWeightedScores"),
-            "threshold":
-            obj.get("threshold"),
-            "identityAttributes":
-            dict((_k,
-                  RecommenderCalculationsIdentityAttributesValue.from_dict(_v))
-                 for _k, _v in obj.get("identityAttributes").items())
-            if obj.get("identityAttributes") is not None else None,
-            "featureValues":
-            FeatureValueDto.from_dict(obj.get("featureValues"))
-            if obj.get("featureValues") is not None else None
+            "identityId": obj.get("identityId"),
+            "entitlementId": obj.get("entitlementId"),
+            "recommendation": obj.get("recommendation"),
+            "overallWeightedScore": obj.get("overallWeightedScore"),
+            "featureWeightedScores": obj.get("featureWeightedScores"),
+            "threshold": obj.get("threshold"),
+            "identityAttributes": dict(
+                (_k, RecommenderCalculationsIdentityAttributesValue.from_dict(_v))
+                for _k, _v in obj.get("identityAttributes").items()
+            )
+            if obj.get("identityAttributes") is not None
+            else None,
+            "featureValues": FeatureValueDto.from_dict(obj.get("featureValues")) if obj.get("featureValues") is not None else None
         })
         return _obj
+
+

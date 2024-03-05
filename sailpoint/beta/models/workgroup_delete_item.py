@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,23 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class WorkgroupDeleteItem(BaseModel):
     """
     WorkgroupDeleteItem
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     id: StrictStr = Field(description="Id of the Governance Group.")
-    status: StrictStr = Field(
-        description=
-        " The HTTP response status code returned for an individual Governance Group that is requested for deletion during a bulk delete operation.  > 204   -  Governance Group deleted successfully.  > 409   - Governance Group is in use,hence can not be deleted.  > 404   - Governance Group not found. "
-    )
-    description: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Human readable status description and containing additional context information about success or failures etc. "
-    )
+    status: StrictStr = Field(description=" The HTTP response status code returned for an individual Governance Group that is requested for deletion during a bulk delete operation.  > 204   -  Governance Group deleted successfully.  > 409   - Governance Group is in use,hence can not be deleted.  > 404   - Governance Group not found. ")
+    description: Optional[StrictStr] = Field(default=None, description="Human readable status description and containing additional context information about success or failures etc. ")
     __properties: ClassVar[List[str]] = ["id", "status", "description"]
 
     model_config = {
@@ -48,6 +40,7 @@ class WorkgroupDeleteItem(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -75,7 +68,8 @@ class WorkgroupDeleteItem(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -95,3 +89,5 @@ class WorkgroupDeleteItem(BaseModel):
             "description": obj.get("description")
         })
         return _obj
+
+

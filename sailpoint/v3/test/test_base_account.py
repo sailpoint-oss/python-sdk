@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.base_account import BaseAccount
-
 
 class TestBaseAccount(unittest.TestCase):
     """BaseAccount unit test stubs"""
@@ -38,7 +38,7 @@ class TestBaseAccount(unittest.TestCase):
             return BaseAccount(
                 id = '2c91808568c529c60168cca6f90c1313',
                 name = 'John Doe',
-                account_id = 'john.doe',
+                account_id = 'John.Doe',
                 source = None,
                 disabled = False,
                 locked = False,
@@ -57,7 +57,6 @@ class TestBaseAccount(unittest.TestCase):
         """Test BaseAccount"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,18 +26,11 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class FormDefinitionDynamicSchemaRequestAttributes(BaseModel):
     """
     FormDefinitionDynamicSchemaRequestAttributes
-    """
-
-  # noqa: E501
-    form_definition_id: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "FormDefinitionID is a unique guid identifying this form definition",
-        alias="formDefinitionId")
+    """ # noqa: E501
+    form_definition_id: Optional[StrictStr] = Field(default=None, description="FormDefinitionID is a unique guid identifying this form definition", alias="formDefinitionId")
     __properties: ClassVar[List[str]] = ["formDefinitionId"]
 
     model_config = {
@@ -43,6 +38,7 @@ class FormDefinitionDynamicSchemaRequestAttributes(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -70,7 +66,8 @@ class FormDefinitionDynamicSchemaRequestAttributes(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -84,6 +81,9 @@ class FormDefinitionDynamicSchemaRequestAttributes(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {"formDefinitionId": obj.get("formDefinitionId")})
+        _obj = cls.model_validate({
+            "formDefinitionId": obj.get("formDefinitionId")
+        })
         return _obj
+
+

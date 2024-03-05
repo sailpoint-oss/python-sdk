@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from pydantic import BaseModel, StrictBytes, StrictStr
@@ -25,15 +27,11 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ImportSpConfigRequest(BaseModel):
     """
     ImportSpConfigRequest
-    """
-
-  # noqa: E501
-    data: Union[StrictBytes, StrictStr] = Field(
-        description="JSON file containing the objects to be imported.")
+    """ # noqa: E501
+    data: Union[StrictBytes, StrictStr] = Field(description="JSON file containing the objects to be imported.")
     options: Optional[ImportOptions] = None
     __properties: ClassVar[List[str]] = ["data", "options"]
 
@@ -42,6 +40,7 @@ class ImportSpConfigRequest(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -69,7 +68,8 @@ class ImportSpConfigRequest(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of options
@@ -87,10 +87,9 @@ class ImportSpConfigRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "data":
-            obj.get("data"),
-            "options":
-            ImportOptions.from_dict(obj.get("options"))
-            if obj.get("options") is not None else None
+            "data": obj.get("data"),
+            "options": ImportOptions.from_dict(obj.get("options")) if obj.get("options") is not None else None
         })
         return _obj
+
+

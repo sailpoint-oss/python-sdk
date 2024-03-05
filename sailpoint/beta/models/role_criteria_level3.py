@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -26,20 +28,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class RoleCriteriaLevel3(BaseModel):
     """
     Defines STANDARD type Role membership
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     operation: Optional[RoleCriteriaOperation] = None
     key: Optional[RoleCriteriaKey] = None
-    string_value: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "String value to test the Identity attribute, Account attribute, or Entitlement specified in the key w/r/t the specified operation. If this criteria is a leaf node, that is, if the operation is one of EQUALS, NOT_EQUALS, CONTAINS, STARTS_WITH, or ENDS_WITH, this field is required. Otherwise, specifying it is an error.",
-        alias="stringValue")
+    string_value: Optional[StrictStr] = Field(default=None, description="String value to test the Identity attribute, Account attribute, or Entitlement specified in the key w/r/t the specified operation. If this criteria is a leaf node, that is, if the operation is one of EQUALS, NOT_EQUALS, CONTAINS, STARTS_WITH, or ENDS_WITH, this field is required. Otherwise, specifying it is an error.", alias="stringValue")
     __properties: ClassVar[List[str]] = ["operation", "key", "stringValue"]
 
     model_config = {
@@ -47,6 +42,7 @@ class RoleCriteriaLevel3(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -74,7 +70,8 @@ class RoleCriteriaLevel3(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of key
@@ -97,12 +94,10 @@ class RoleCriteriaLevel3(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "operation":
-            obj.get("operation"),
-            "key":
-            RoleCriteriaKey.from_dict(obj.get("key"))
-            if obj.get("key") is not None else None,
-            "stringValue":
-            obj.get("stringValue")
+            "operation": obj.get("operation"),
+            "key": RoleCriteriaKey.from_dict(obj.get("key")) if obj.get("key") is not None else None,
+            "stringValue": obj.get("stringValue")
         })
         return _obj
+
+

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr
@@ -24,17 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class CampaignActivatedCampaignCampaignOwner(BaseModel):
     """
     Details of the identity that owns the campaign.
     """ # noqa: E501
     id: StrictStr = Field(description="The unique ID of the identity.")
-    display_name: StrictStr = Field(
-        description="The human friendly name of the identity.",
-        alias="displayName")
-    email: StrictStr = Field(
-        description="The primary email address of the identity.")
+    display_name: StrictStr = Field(description="The human friendly name of the identity.", alias="displayName")
+    email: StrictStr = Field(description="The primary email address of the identity.")
     __properties: ClassVar[List[str]] = ["id", "displayName", "email"]
 
     model_config = {
@@ -42,6 +40,7 @@ class CampaignActivatedCampaignCampaignOwner(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -69,7 +68,8 @@ class CampaignActivatedCampaignCampaignOwner(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -89,3 +89,5 @@ class CampaignActivatedCampaignCampaignOwner(BaseModel):
             "email": obj.get("email")
         })
         return _obj
+
+

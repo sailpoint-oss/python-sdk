@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,16 +26,11 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class IdentitySnapshotSummaryResponse(BaseModel):
     """
     IdentitySnapshotSummaryResponse
-    """
-
-  # noqa: E501
-    snapshot: Optional[StrictStr] = Field(
-        default=None,
-        description="the date when the identity record was created")
+    """ # noqa: E501
+    snapshot: Optional[StrictStr] = Field(default=None, description="the date when the identity record was created")
     __properties: ClassVar[List[str]] = ["snapshot"]
 
     model_config = {
@@ -41,6 +38,7 @@ class IdentitySnapshotSummaryResponse(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -68,7 +66,8 @@ class IdentitySnapshotSummaryResponse(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -82,5 +81,9 @@ class IdentitySnapshotSummaryResponse(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({"snapshot": obj.get("snapshot")})
+        _obj = cls.model_validate({
+            "snapshot": obj.get("snapshot")
+        })
         return _obj
+
+

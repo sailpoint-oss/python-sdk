@@ -11,11 +11,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import json
 import pprint
 import re  # noqa: F401
 from enum import Enum
+
+
 
 try:
     from typing import Self
@@ -27,14 +30,18 @@ class RequestableObjectRequestStatus(str, Enum):
     """
     Status indicating the ability of an access request for the object to be made by or on behalf of the identity specified by *identity-id*. *AVAILABLE* indicates the object is available to request. *PENDING* indicates the object is unavailable because the identity has a pending request in flight. *ASSIGNED* indicates the object is unavailable because the identity already has the indicated role or access profile. If *identity-id* is not specified (allowed only for admin users), then status will be *AVAILABLE* for all results.
     """
+
     """
     allowed enum values
     """
     AVAILABLE = 'AVAILABLE'
     PENDING = 'PENDING'
     ASSIGNED = 'ASSIGNED'
+    NULL = 'null'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
         """Create an instance of RequestableObjectRequestStatus from a JSON string"""
         return cls(json.loads(json_str))
+
+

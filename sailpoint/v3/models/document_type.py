@@ -11,11 +11,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import json
 import pprint
 import re  # noqa: F401
 from enum import Enum
+
+
 
 try:
     from typing import Self
@@ -27,6 +30,7 @@ class DocumentType(str, Enum):
     """
     Enum representing the currently supported document types.  Additional values may be added in the future without notice.
     """
+
     """
     allowed enum values
     """
@@ -43,3 +47,5 @@ class DocumentType(str, Enum):
     def from_json(cls, json_str: str) -> Self:
         """Create an instance of DocumentType from a JSON string"""
         return cls(json.loads(json_str))
+
+

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
@@ -24,35 +26,22 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class TextQuery(BaseModel):
     """
     Query parameters used to construct an Elasticsearch text query object.
     """ # noqa: E501
-    terms: List[StrictStr] = Field(
-        description=
-        "Words or characters that specify a particular thing to be searched for."
-    )
+    terms: List[StrictStr] = Field(description="Words or characters that specify a particular thing to be searched for.")
     fields: List[StrictStr] = Field(description="The fields to be searched.")
-    match_any: Optional[StrictBool] = Field(
-        default=False,
-        description=
-        "Indicates that at least one of the terms must be found in the specified fields;  otherwise, all terms must be found.",
-        alias="matchAny")
-    contains: Optional[StrictBool] = Field(
-        default=False,
-        description=
-        "Indicates that the terms can be located anywhere in the specified fields;  otherwise, the fields must begin with the terms."
-    )
-    __properties: ClassVar[List[str]] = [
-        "terms", "fields", "matchAny", "contains"
-    ]
+    match_any: Optional[StrictBool] = Field(default=False, description="Indicates that at least one of the terms must be found in the specified fields;  otherwise, all terms must be found.", alias="matchAny")
+    contains: Optional[StrictBool] = Field(default=False, description="Indicates that the terms can be located anywhere in the specified fields;  otherwise, the fields must begin with the terms.")
+    __properties: ClassVar[List[str]] = ["terms", "fields", "matchAny", "contains"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -80,7 +69,8 @@ class TextQuery(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -95,13 +85,11 @@ class TextQuery(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "terms":
-            obj.get("terms"),
-            "fields":
-            obj.get("fields"),
-            "matchAny":
-            obj.get("matchAny") if obj.get("matchAny") is not None else False,
-            "contains":
-            obj.get("contains") if obj.get("contains") is not None else False
+            "terms": obj.get("terms"),
+            "fields": obj.get("fields"),
+            "matchAny": obj.get("matchAny") if obj.get("matchAny") is not None else False,
+            "contains": obj.get("contains") if obj.get("contains") is not None else False
         })
         return _obj
+
+

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,15 +26,11 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class DomainAddress(BaseModel):
     """
     DomainAddress
-    """
-
-  # noqa: E501
-    domain: Optional[StrictStr] = Field(default=None,
-                                        description="A domain address")
+    """ # noqa: E501
+    domain: Optional[StrictStr] = Field(default=None, description="A domain address")
     __properties: ClassVar[List[str]] = ["domain"]
 
     model_config = {
@@ -40,6 +38,7 @@ class DomainAddress(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -67,7 +66,8 @@ class DomainAddress(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -81,5 +81,9 @@ class DomainAddress(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({"domain": obj.get("domain")})
+        _obj = cls.model_validate({
+            "domain": obj.get("domain")
+        })
         return _obj
+
+

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -25,33 +27,23 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class WorkflowLibraryOperator(BaseModel):
     """
     WorkflowLibraryOperator
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="Operator ID.")
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="Operator friendly name")
-    type: Optional[StrictStr] = Field(default=None,
-                                      description="Operator type")
-    description: Optional[StrictStr] = Field(
-        default=None, description="Description of the operator")
-    form_fields: Optional[List[WorkflowLibraryFormFields]] = Field(
-        default=None,
-        description="One or more inputs that the operator accepts",
-        alias="formFields")
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "type", "description", "formFields"
-    ]
+    name: Optional[StrictStr] = Field(default=None, description="Operator friendly name")
+    type: Optional[StrictStr] = Field(default=None, description="Operator type")
+    description: Optional[StrictStr] = Field(default=None, description="Description of the operator")
+    form_fields: Optional[List[WorkflowLibraryFormFields]] = Field(default=None, description="One or more inputs that the operator accepts", alias="formFields")
+    __properties: ClassVar[List[str]] = ["id", "name", "type", "description", "formFields"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -79,7 +71,8 @@ class WorkflowLibraryOperator(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in form_fields (list)
@@ -101,17 +94,12 @@ class WorkflowLibraryOperator(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "type":
-            obj.get("type"),
-            "description":
-            obj.get("description"),
-            "formFields": [
-                WorkflowLibraryFormFields.from_dict(_item)
-                for _item in obj.get("formFields")
-            ] if obj.get("formFields") is not None else None
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "type": obj.get("type"),
+            "description": obj.get("description"),
+            "formFields": [WorkflowLibraryFormFields.from_dict(_item) for _item in obj.get("formFields")] if obj.get("formFields") is not None else None
         })
         return _obj
+
+

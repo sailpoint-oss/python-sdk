@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,20 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class CreatePersonalAccessTokenRequest(BaseModel):
     """
     Object for specifying the name of a personal access token to create
     """ # noqa: E501
-    name: StrictStr = Field(
-        description=
-        "The name of the personal access token (PAT) to be created. Cannot be the same as another PAT owned by the user for whom this PAT is being created."
-    )
-    scope: Optional[List[StrictStr]] = Field(
-        default=None,
-        description=
-        "Scopes of the personal access token. If no scope is specified, the token will be created with the default scope \"sp:scopes:all\". This means the personal access token will have all the rights of the owner who created it."
-    )
+    name: StrictStr = Field(description="The name of the personal access token (PAT) to be created. Cannot be the same as another PAT owned by the user for whom this PAT is being created.")
+    scope: Optional[List[StrictStr]] = Field(default=None, description="Scopes of the personal access token. If no scope is specified, the token will be created with the default scope \"sp:scopes:all\". This means the personal access token will have all the rights of the owner who created it.")
     __properties: ClassVar[List[str]] = ["name", "scope"]
 
     model_config = {
@@ -45,6 +39,7 @@ class CreatePersonalAccessTokenRequest(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -72,7 +67,8 @@ class CreatePersonalAccessTokenRequest(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if scope (nullable) is None
@@ -96,3 +92,5 @@ class CreatePersonalAccessTokenRequest(BaseModel):
             "scope": obj.get("scope")
         })
         return _obj
+
+

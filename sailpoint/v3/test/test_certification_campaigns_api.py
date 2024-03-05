@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 
 from sailpoint.v3.api.certification_campaigns_api import CertificationCampaignsApi

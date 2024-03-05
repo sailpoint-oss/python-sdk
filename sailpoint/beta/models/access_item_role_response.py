@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,36 +26,23 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccessItemRoleResponse(BaseModel):
     """
     AccessItemRoleResponse
-    """
-
-  # noqa: E501
-    access_type: Optional[StrictStr] = Field(
-        default=None,
-        description="the access item type. role in this case",
-        alias="accessType")
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="the access item id")
-    display_name: Optional[StrictStr] = Field(
-        default=None, description="the role display name", alias="displayName")
-    description: Optional[StrictStr] = Field(
-        default=None, description="the description for the role")
-    source_name: Optional[StrictStr] = Field(
-        default=None,
-        description="the associated source name if it exists",
-        alias="sourceName")
-    __properties: ClassVar[List[str]] = [
-        "accessType", "id", "displayName", "description", "sourceName"
-    ]
+    """ # noqa: E501
+    access_type: Optional[StrictStr] = Field(default=None, description="the access item type. role in this case", alias="accessType")
+    id: Optional[StrictStr] = Field(default=None, description="the access item id")
+    display_name: Optional[StrictStr] = Field(default=None, description="the role display name", alias="displayName")
+    description: Optional[StrictStr] = Field(default=None, description="the description for the role")
+    source_name: Optional[StrictStr] = Field(default=None, description="the associated source name if it exists", alias="sourceName")
+    __properties: ClassVar[List[str]] = ["accessType", "id", "displayName", "description", "sourceName"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -81,7 +70,8 @@ class AccessItemRoleResponse(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -103,3 +93,5 @@ class AccessItemRoleResponse(BaseModel):
             "sourceName": obj.get("sourceName")
         })
         return _obj
+
+

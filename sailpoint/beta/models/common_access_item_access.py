@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -25,36 +27,24 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class CommonAccessItemAccess(BaseModel):
     """
     CommonAccessItemAccess
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="Common access ID")
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="Common access ID")
     type: Optional[CommonAccessType] = None
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="Common access name")
-    description: Optional[StrictStr] = Field(
-        default=None, description="Common access description")
-    owner_name: Optional[StrictStr] = Field(
-        default=None,
-        description="Common access owner name",
-        alias="ownerName")
-    owner_id: Optional[StrictStr] = Field(default=None,
-                                          description="Common access owner ID",
-                                          alias="ownerId")
-    __properties: ClassVar[List[str]] = [
-        "id", "type", "name", "description", "ownerName", "ownerId"
-    ]
+    name: Optional[StrictStr] = Field(default=None, description="Common access name")
+    description: Optional[StrictStr] = Field(default=None, description="Common access description")
+    owner_name: Optional[StrictStr] = Field(default=None, description="Common access owner name", alias="ownerName")
+    owner_id: Optional[StrictStr] = Field(default=None, description="Common access owner ID", alias="ownerId")
+    __properties: ClassVar[List[str]] = ["id", "type", "name", "description", "ownerName", "ownerId"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -82,9 +72,15 @@ class CommonAccessItemAccess(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
+        # set to None if description (nullable) is None
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
+            _dict['description'] = None
+
         return _dict
 
     @classmethod
@@ -105,3 +101,5 @@ class CommonAccessItemAccess(BaseModel):
             "ownerId": obj.get("ownerId")
         })
         return _obj
+
+

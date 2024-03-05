@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr
@@ -25,41 +27,25 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class SavedSearchComplete(BaseModel):
     """
     SavedSearchComplete
-    """
-
-  # noqa: E501
-    file_name: StrictStr = Field(description="A name for the report file.",
-                                 alias="fileName")
-    owner_email: StrictStr = Field(
-        description=
-        "The email address of the identity that owns the saved search.",
-        alias="ownerEmail")
-    owner_name: StrictStr = Field(
-        description="The name of the identity that owns the saved search.",
-        alias="ownerName")
-    query: StrictStr = Field(
-        description="The search query that was used to generate the report.")
-    search_name: StrictStr = Field(description="The name of the saved search.",
-                                   alias="searchName")
-    search_results: SavedSearchCompleteSearchResults = Field(
-        alias="searchResults")
-    signed_s3_url: StrictStr = Field(
-        description="The Amazon S3 URL to download the report from.",
-        alias="signedS3Url")
-    __properties: ClassVar[List[str]] = [
-        "fileName", "ownerEmail", "ownerName", "query", "searchName",
-        "searchResults", "signedS3Url"
-    ]
+    """ # noqa: E501
+    file_name: StrictStr = Field(description="A name for the report file.", alias="fileName")
+    owner_email: StrictStr = Field(description="The email address of the identity that owns the saved search.", alias="ownerEmail")
+    owner_name: StrictStr = Field(description="The name of the identity that owns the saved search.", alias="ownerName")
+    query: StrictStr = Field(description="The search query that was used to generate the report.")
+    search_name: StrictStr = Field(description="The name of the saved search.", alias="searchName")
+    search_results: SavedSearchCompleteSearchResults = Field(alias="searchResults")
+    signed_s3_url: StrictStr = Field(description="The Amazon S3 URL to download the report from.", alias="signedS3Url")
+    __properties: ClassVar[List[str]] = ["fileName", "ownerEmail", "ownerName", "query", "searchName", "searchResults", "signedS3Url"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -87,7 +73,8 @@ class SavedSearchComplete(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of search_results
@@ -105,21 +92,14 @@ class SavedSearchComplete(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "fileName":
-            obj.get("fileName"),
-            "ownerEmail":
-            obj.get("ownerEmail"),
-            "ownerName":
-            obj.get("ownerName"),
-            "query":
-            obj.get("query"),
-            "searchName":
-            obj.get("searchName"),
-            "searchResults":
-            SavedSearchCompleteSearchResults.from_dict(
-                obj.get("searchResults"))
-            if obj.get("searchResults") is not None else None,
-            "signedS3Url":
-            obj.get("signedS3Url")
+            "fileName": obj.get("fileName"),
+            "ownerEmail": obj.get("ownerEmail"),
+            "ownerName": obj.get("ownerName"),
+            "query": obj.get("query"),
+            "searchName": obj.get("searchName"),
+            "searchResults": SavedSearchCompleteSearchResults.from_dict(obj.get("searchResults")) if obj.get("searchResults") is not None else None,
+            "signedS3Url": obj.get("signedS3Url")
         })
         return _obj
+
+

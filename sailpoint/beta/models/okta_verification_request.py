@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr
@@ -24,17 +26,11 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class OktaVerificationRequest(BaseModel):
     """
     OktaVerificationRequest
-    """
-
-  # noqa: E501
-    user_id: StrictStr = Field(
-        description=
-        "User identifier for Verification request. The value of the user's attribute.",
-        alias="userId")
+    """ # noqa: E501
+    user_id: StrictStr = Field(description="User identifier for Verification request. The value of the user's attribute.", alias="userId")
     __properties: ClassVar[List[str]] = ["userId"]
 
     model_config = {
@@ -42,6 +38,7 @@ class OktaVerificationRequest(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -69,7 +66,8 @@ class OktaVerificationRequest(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -83,5 +81,9 @@ class OktaVerificationRequest(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({"userId": obj.get("userId")})
+        _obj = cls.model_validate({
+            "userId": obj.get("userId")
+        })
         return _obj
+
+

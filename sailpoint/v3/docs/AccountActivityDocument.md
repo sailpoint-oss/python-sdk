@@ -9,22 +9,22 @@ Name | Type | Description | Notes
 **id** | **str** |  | 
 **name** | **str** |  | 
 **type** | [**DocumentType**](DocumentType.md) |  | 
-**action** | **str** | The type of action that this activity performed | [optional] 
-**created** | **datetime** | A date-time in ISO-8601 format | [optional] 
-**modified** | **datetime** | A date-time in ISO-8601 format | [optional] 
-**stage** | **str** | The current stage of the activity | [optional] 
-**origin** | **str** |  | [optional] 
-**status** | **str** | the current status of the activity | [optional] 
+**action** | **str** | Type of action performed in the activity. | [optional] 
+**created** | **datetime** | ISO-8601 date-time referring to the time when the object was created. | [optional] 
+**modified** | **datetime** | ISO-8601 date-time referring to the time when the object was last modified. | [optional] 
+**stage** | **str** | Activity&#39;s current stage. | [optional] 
+**origin** | **str** | Activity&#39;s origin. | [optional] 
+**status** | **str** | Activity&#39;s current status. | [optional] 
 **requester** | [**AccountSource**](AccountSource.md) |  | [optional] 
 **recipient** | [**AccountSource**](AccountSource.md) |  | [optional] 
-**tracking_number** | **str** |  | [optional] 
-**errors** | **List[str]** |  | [optional] 
-**warnings** | **List[str]** |  | [optional] 
-**approvals** | [**List[Approval]**](Approval.md) |  | [optional] 
-**original_requests** | [**List[OriginalRequest]**](OriginalRequest.md) |  | [optional] 
-**expansion_items** | [**List[ExpansionItem]**](ExpansionItem.md) |  | [optional] 
-**account_requests** | [**List[AccountRequest]**](AccountRequest.md) |  | [optional] 
-**sources** | **str** |  | [optional] 
+**tracking_number** | **str** | Account activity&#39;s tracking number. | [optional] 
+**errors** | **List[str]** | Errors provided by the source while completing account actions. | [optional] 
+**warnings** | **List[str]** | Warnings provided by the source while completing account actions. | [optional] 
+**approvals** | [**List[Approval]**](Approval.md) | Approvals performed on an item during activity. | [optional] 
+**original_requests** | [**List[OriginalRequest]**](OriginalRequest.md) | Original actions that triggered all individual source actions related to the account action. | [optional] 
+**expansion_items** | [**List[ExpansionItem]**](ExpansionItem.md) | Controls that translated the attribute requests into actual provisioning actions on the source. | [optional] 
+**account_requests** | [**List[AccountRequest]**](AccountRequest.md) | Account data for each individual source action triggered by the original requests. | [optional] 
+**sources** | **str** | Sources involved in the account activity. | [optional] 
 
 ## Example
 

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.admin_review_reassign_reassign_to import AdminReviewReassignReassignTo
-
 
 class TestAdminReviewReassignReassignTo(unittest.TestCase):
     """AdminReviewReassignReassignTo unit test stubs"""
@@ -48,7 +48,6 @@ class TestAdminReviewReassignReassignTo(unittest.TestCase):
         """Test AdminReviewReassignReassignTo"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

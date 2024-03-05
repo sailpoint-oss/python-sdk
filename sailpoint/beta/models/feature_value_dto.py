@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt, StrictStr
@@ -24,21 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class FeatureValueDto(BaseModel):
     """
     FeatureValueDto
-    """
-
-  # noqa: E501
-    feature: Optional[StrictStr] = Field(default=None,
-                                         description="The type of feature")
-    numerator: Optional[StrictInt] = Field(
-        default=None,
-        description="The number of identities that have access to the feature")
-    denominator: Optional[StrictInt] = Field(
-        default=None,
-        description="The number of identities with the corresponding feature")
+    """ # noqa: E501
+    feature: Optional[StrictStr] = Field(default=None, description="The type of feature")
+    numerator: Optional[StrictInt] = Field(default=None, description="The number of identities that have access to the feature")
+    denominator: Optional[StrictInt] = Field(default=None, description="The number of identities with the corresponding feature")
     __properties: ClassVar[List[str]] = ["feature", "numerator", "denominator"]
 
     model_config = {
@@ -46,6 +40,7 @@ class FeatureValueDto(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -73,7 +68,8 @@ class FeatureValueDto(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -93,3 +89,5 @@ class FeatureValueDto(BaseModel):
             "denominator": obj.get("denominator")
         })
         return _obj
+
+

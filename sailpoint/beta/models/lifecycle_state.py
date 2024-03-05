@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -27,55 +28,29 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class LifecycleState(BaseModel):
     """
     LifecycleState
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="lifecycle stat id.")
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="Lifecycle-state name.")
-    technical_name: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "The technical name for lifecycle state. This is for internal use.",
-        alias="technicalName")
-    description: Optional[StrictStr] = Field(
-        default=None, description="Lifecycle state description.")
-    created: Optional[datetime] = Field(
-        default=None, description="Lifecycle state created date.")
-    modified: Optional[datetime] = Field(
-        default=None, description="Lifecycle state modified date.")
-    enabled: Optional[StrictBool] = Field(
-        default=None,
-        description="Whether the lifecycle state is enabled or disabled.")
-    identity_count: Optional[StrictInt] = Field(
-        default=None,
-        description="Number of identities that have the lifecycle state.",
-        alias="identityCount")
-    email_notification_option: Optional[EmailNotificationOption] = Field(
-        default=None, alias="emailNotificationOption")
-    account_actions: Optional[List[AccountAction]] = Field(
-        default=None, alias="accountActions")
-    access_profile_ids: Optional[List[StrictStr]] = Field(
-        default=None,
-        description=
-        "List of access-profile IDs that are associated with the lifecycle state.",
-        alias="accessProfileIds")
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "technicalName", "description", "created", "modified",
-        "enabled", "identityCount", "emailNotificationOption",
-        "accountActions", "accessProfileIds"
-    ]
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="lifecycle stat id.")
+    name: Optional[StrictStr] = Field(default=None, description="Lifecycle-state name.")
+    technical_name: Optional[StrictStr] = Field(default=None, description="The technical name for lifecycle state. This is for internal use.", alias="technicalName")
+    description: Optional[StrictStr] = Field(default=None, description="Lifecycle state description.")
+    created: Optional[datetime] = Field(default=None, description="Lifecycle state created date.")
+    modified: Optional[datetime] = Field(default=None, description="Lifecycle state modified date.")
+    enabled: Optional[StrictBool] = Field(default=None, description="Whether the lifecycle state is enabled or disabled.")
+    identity_count: Optional[StrictInt] = Field(default=None, description="Number of identities that have the lifecycle state.", alias="identityCount")
+    email_notification_option: Optional[EmailNotificationOption] = Field(default=None, alias="emailNotificationOption")
+    account_actions: Optional[List[AccountAction]] = Field(default=None, alias="accountActions")
+    access_profile_ids: Optional[List[StrictStr]] = Field(default=None, description="List of access-profile IDs that are associated with the lifecycle state.", alias="accessProfileIds")
+    __properties: ClassVar[List[str]] = ["id", "name", "technicalName", "description", "created", "modified", "enabled", "identityCount", "emailNotificationOption", "accountActions", "accessProfileIds"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -121,9 +96,7 @@ class LifecycleState(BaseModel):
         )
         # override the default output from pydantic by calling `to_dict()` of email_notification_option
         if self.email_notification_option:
-            _dict[
-                'emailNotificationOption'] = self.email_notification_option.to_dict(
-                )
+            _dict['emailNotificationOption'] = self.email_notification_option.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in account_actions (list)
         _items = []
         if self.account_actions:
@@ -143,31 +116,18 @@ class LifecycleState(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "technicalName":
-            obj.get("technicalName"),
-            "description":
-            obj.get("description"),
-            "created":
-            obj.get("created"),
-            "modified":
-            obj.get("modified"),
-            "enabled":
-            obj.get("enabled"),
-            "identityCount":
-            obj.get("identityCount"),
-            "emailNotificationOption":
-            EmailNotificationOption.from_dict(
-                obj.get("emailNotificationOption"))
-            if obj.get("emailNotificationOption") is not None else None,
-            "accountActions": [
-                AccountAction.from_dict(_item)
-                for _item in obj.get("accountActions")
-            ] if obj.get("accountActions") is not None else None,
-            "accessProfileIds":
-            obj.get("accessProfileIds")
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "technicalName": obj.get("technicalName"),
+            "description": obj.get("description"),
+            "created": obj.get("created"),
+            "modified": obj.get("modified"),
+            "enabled": obj.get("enabled"),
+            "identityCount": obj.get("identityCount"),
+            "emailNotificationOption": EmailNotificationOption.from_dict(obj.get("emailNotificationOption")) if obj.get("emailNotificationOption") is not None else None,
+            "accountActions": [AccountAction.from_dict(_item) for _item in obj.get("accountActions")] if obj.get("accountActions") is not None else None,
+            "accessProfileIds": obj.get("accessProfileIds")
         })
         return _obj
+
+

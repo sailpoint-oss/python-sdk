@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -26,18 +27,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class CompletedApprovalReviewerComment(BaseModel):
     """
     The approval's reviewer's comment.
-    """
-
-  # noqa: E501
-    comment: Optional[StrictStr] = Field(default=None,
-                                         description="Comment content.")
+    """ # noqa: E501
+    comment: Optional[StrictStr] = Field(default=None, description="Comment content.")
     author: Optional[CommentDtoAuthor] = None
-    created: Optional[datetime] = Field(
-        default=None, description="Date and time comment was created.")
+    created: Optional[datetime] = Field(default=None, description="Date and time comment was created.")
     __properties: ClassVar[List[str]] = ["comment", "author", "created"]
 
     model_config = {
@@ -45,6 +41,7 @@ class CompletedApprovalReviewerComment(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -72,7 +69,8 @@ class CompletedApprovalReviewerComment(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of author
@@ -95,12 +93,10 @@ class CompletedApprovalReviewerComment(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "comment":
-            obj.get("comment"),
-            "author":
-            CommentDtoAuthor.from_dict(obj.get("author"))
-            if obj.get("author") is not None else None,
-            "created":
-            obj.get("created")
+            "comment": obj.get("comment"),
+            "author": CommentDtoAuthor.from_dict(obj.get("author")) if obj.get("author") is not None else None,
+            "created": obj.get("created")
         })
         return _obj
+
+

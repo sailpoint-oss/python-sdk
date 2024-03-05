@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -26,38 +28,23 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class CampaignAllOfRoleCompositionCampaignInfo(BaseModel):
     """
     Optional configuration options for role composition campaigns.
     """ # noqa: E501
     reviewer: Optional[CampaignAllOfSearchCampaignInfoReviewer] = None
-    role_ids: Optional[List[StrictStr]] = Field(
-        default=None,
-        description=
-        "Optional list of roles to include in this campaign. Only one of `roleIds` and `query` may be set; if neither are set, all roles are included.",
-        alias="roleIds")
-    remediator_ref: CampaignAllOfRoleCompositionCampaignInfoRemediatorRef = Field(
-        alias="remediatorRef")
-    query: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Optional search query to scope this campaign to a set of roles. Only one of `roleIds` and `query` may be set; if neither are set, all roles are included."
-    )
-    description: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Describes this role composition campaign. Intended for storing the query used, and possibly the number of roles selected/available."
-    )
-    __properties: ClassVar[List[str]] = [
-        "reviewer", "roleIds", "remediatorRef", "query", "description"
-    ]
+    role_ids: Optional[List[StrictStr]] = Field(default=None, description="Optional list of roles to include in this campaign. Only one of `roleIds` and `query` may be set; if neither are set, all roles are included.", alias="roleIds")
+    remediator_ref: CampaignAllOfRoleCompositionCampaignInfoRemediatorRef = Field(alias="remediatorRef")
+    query: Optional[StrictStr] = Field(default=None, description="Optional search query to scope this campaign to a set of roles. Only one of `roleIds` and `query` may be set; if neither are set, all roles are included.")
+    description: Optional[StrictStr] = Field(default=None, description="Describes this role composition campaign. Intended for storing the query used, and possibly the number of roles selected/available.")
+    __properties: ClassVar[List[str]] = ["reviewer", "roleIds", "remediatorRef", "query", "description"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -85,7 +72,8 @@ class CampaignAllOfRoleCompositionCampaignInfo(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of reviewer
@@ -106,19 +94,12 @@ class CampaignAllOfRoleCompositionCampaignInfo(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "reviewer":
-            CampaignAllOfSearchCampaignInfoReviewer.from_dict(
-                obj.get("reviewer"))
-            if obj.get("reviewer") is not None else None,
-            "roleIds":
-            obj.get("roleIds"),
-            "remediatorRef":
-            CampaignAllOfRoleCompositionCampaignInfoRemediatorRef.from_dict(
-                obj.get("remediatorRef"))
-            if obj.get("remediatorRef") is not None else None,
-            "query":
-            obj.get("query"),
-            "description":
-            obj.get("description")
+            "reviewer": CampaignAllOfSearchCampaignInfoReviewer.from_dict(obj.get("reviewer")) if obj.get("reviewer") is not None else None,
+            "roleIds": obj.get("roleIds"),
+            "remediatorRef": CampaignAllOfRoleCompositionCampaignInfoRemediatorRef.from_dict(obj.get("remediatorRef")) if obj.get("remediatorRef") is not None else None,
+            "query": obj.get("query"),
+            "description": obj.get("description")
         })
         return _obj
+
+

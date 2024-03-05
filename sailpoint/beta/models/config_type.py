@@ -11,47 +11,40 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
+from pydantic import BaseModel, StrictInt, StrictStr
 from pydantic import Field
 from sailpoint.beta.models.config_type_enum import ConfigTypeEnum
+from sailpoint.beta.models.config_type_enum_camel import ConfigTypeEnumCamel
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class ConfigType(BaseModel):
     """
     Type of Reassignment Configuration.
-    """
-
-  # noqa: E501
-    internal_name: Optional[ConfigTypeEnum] = Field(default=None,
-                                                    alias="internalName")
-    display_name: Optional[StrictStr] = Field(
-        default=None,
-        description="Human readable display name of the type to be shown on UI",
-        alias="displayName")
-    description: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Description of the type of work to be reassigned, displayed by the UI."
-    )
-    __properties: ClassVar[List[str]] = [
-        "internalName", "displayName", "description"
-    ]
+    """ # noqa: E501
+    priority: Optional[StrictInt] = None
+    internal_name: Optional[ConfigTypeEnumCamel] = Field(default=None, alias="internalName")
+    internal_name_camel: Optional[ConfigTypeEnum] = Field(default=None, alias="internalNameCamel")
+    display_name: Optional[StrictStr] = Field(default=None, description="Human readable display name of the type to be shown on UI", alias="displayName")
+    description: Optional[StrictStr] = Field(default=None, description="Description of the type of work to be reassigned, displayed by the UI.")
+    __properties: ClassVar[List[str]] = ["priority", "internalName", "internalNameCamel", "displayName", "description"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -79,7 +72,8 @@ class ConfigType(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -94,8 +88,12 @@ class ConfigType(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "priority": obj.get("priority"),
             "internalName": obj.get("internalName"),
+            "internalNameCamel": obj.get("internalNameCamel"),
             "displayName": obj.get("displayName"),
             "description": obj.get("description")
         })
         return _obj
+
+

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,30 +26,15 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class FormElementDynamicDataSourceConfig(BaseModel):
     """
     FormElementDynamicDataSourceConfig
-    """
-
-  # noqa: E501
-    aggregation_bucket_field: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "AggregationBucketField is the aggregation bucket field name",
-        alias="aggregationBucketField")
-    indices: Optional[List[StrictStr]] = Field(
-        default=None, description="Indices is a list of indices to use")
-    object_type: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "ObjectType is a PreDefinedSelectOption value IDENTITY PreDefinedSelectOptionIdentity ACCESS_PROFILE PreDefinedSelectOptionAccessProfile SOURCES PreDefinedSelectOptionSources ROLE PreDefinedSelectOptionRole ENTITLEMENT PreDefinedSelectOptionEntitlement",
-        alias="objectType")
-    query: Optional[StrictStr] = Field(default=None,
-                                       description="Query is a text")
-    __properties: ClassVar[List[str]] = [
-        "aggregationBucketField", "indices", "objectType", "query"
-    ]
+    """ # noqa: E501
+    aggregation_bucket_field: Optional[StrictStr] = Field(default=None, description="AggregationBucketField is the aggregation bucket field name", alias="aggregationBucketField")
+    indices: Optional[List[StrictStr]] = Field(default=None, description="Indices is a list of indices to use")
+    object_type: Optional[StrictStr] = Field(default=None, description="ObjectType is a PreDefinedSelectOption value IDENTITY PreDefinedSelectOptionIdentity ACCESS_PROFILE PreDefinedSelectOptionAccessProfile SOURCES PreDefinedSelectOptionSources ROLE PreDefinedSelectOptionRole ENTITLEMENT PreDefinedSelectOptionEntitlement", alias="objectType")
+    query: Optional[StrictStr] = Field(default=None, description="Query is a text")
+    __properties: ClassVar[List[str]] = ["aggregationBucketField", "indices", "objectType", "query"]
 
     @field_validator('indices')
     def indices_validate_enum(cls, value):
@@ -56,11 +43,8 @@ class FormElementDynamicDataSourceConfig(BaseModel):
             return value
 
         for i in value:
-            if i not in ('accessprofiles', 'accountactivities', 'entitlements',
-                         'identities', 'events', 'roles', '*'):
-                raise ValueError(
-                    "each list item must be one of ('accessprofiles', 'accountactivities', 'entitlements', 'identities', 'events', 'roles', '*')"
-                )
+            if i not in ('accessprofiles', 'accountactivities', 'entitlements', 'identities', 'events', 'roles', '*'):
+                raise ValueError("each list item must be one of ('accessprofiles', 'accountactivities', 'entitlements', 'identities', 'events', 'roles', '*')")
         return value
 
     @field_validator('object_type')
@@ -69,11 +53,8 @@ class FormElementDynamicDataSourceConfig(BaseModel):
         if value is None:
             return value
 
-        if value not in ('IDENTITY', 'ACCESS_PROFILE', 'SOURCES', 'ROLE',
-                         'ENTITLEMENT'):
-            raise ValueError(
-                "must be one of enum values ('IDENTITY', 'ACCESS_PROFILE', 'SOURCES', 'ROLE', 'ENTITLEMENT')"
-            )
+        if value not in ('IDENTITY', 'ACCESS_PROFILE', 'SOURCES', 'ROLE', 'ENTITLEMENT'):
+            raise ValueError("must be one of enum values ('IDENTITY', 'ACCESS_PROFILE', 'SOURCES', 'ROLE', 'ENTITLEMENT')")
         return value
 
     model_config = {
@@ -81,6 +62,7 @@ class FormElementDynamicDataSourceConfig(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -108,7 +90,8 @@ class FormElementDynamicDataSourceConfig(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -123,13 +106,11 @@ class FormElementDynamicDataSourceConfig(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "aggregationBucketField":
-            obj.get("aggregationBucketField"),
-            "indices":
-            obj.get("indices"),
-            "objectType":
-            obj.get("objectType"),
-            "query":
-            obj.get("query")
+            "aggregationBucketField": obj.get("aggregationBucketField"),
+            "indices": obj.get("indices"),
+            "objectType": obj.get("objectType"),
+            "query": obj.get("query")
         })
         return _obj
+
+

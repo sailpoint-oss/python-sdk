@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.completed_approval_reviewer_comment import CompletedApprovalReviewerComment
-
 
 class TestCompletedApprovalReviewerComment(unittest.TestCase):
     """CompletedApprovalReviewerComment unit test stubs"""
@@ -26,8 +26,7 @@ class TestCompletedApprovalReviewerComment(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self,
-                      include_optional) -> CompletedApprovalReviewerComment:
+    def make_instance(self, include_optional) -> CompletedApprovalReviewerComment:
         """Test CompletedApprovalReviewerComment
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -38,7 +37,11 @@ class TestCompletedApprovalReviewerComment(unittest.TestCase):
         if include_optional:
             return CompletedApprovalReviewerComment(
                 comment = 'This is a comment.',
-                created = '2017-07-11T18:45:37.098Z'
+                created = '2017-07-11T18:45:37.098Z',
+                author = sailpoint.v3.models.comment_dto_author.CommentDto_author(
+                    type = 'IDENTITY', 
+                    id = '2c9180847e25f377017e2ae8cae4650b', 
+                    name = 'john.doe', )
             )
         else:
             return CompletedApprovalReviewerComment(
@@ -49,7 +52,6 @@ class TestCompletedApprovalReviewerComment(unittest.TestCase):
         """Test CompletedApprovalReviewerComment"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

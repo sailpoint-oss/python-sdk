@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.completed_approval import CompletedApproval
-
 
 class TestCompletedApproval(unittest.TestCase):
     """CompletedApproval unit test stubs"""
@@ -46,10 +46,12 @@ class TestCompletedApproval(unittest.TestCase):
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20648', 
                     name = 'William Wilson', ),
-                requested_for = sailpoint.beta.models.access_item_requested_for_dto.AccessItemRequestedForDto(
-                    type = 'IDENTITY', 
-                    id = '2c4180a46faadee4016fb4e018c20626', 
-                    name = 'Robert Robinson', ),
+                requested_for = [
+                    sailpoint.beta.models.access_item_requested_for_dto.AccessItemRequestedForDto(
+                        type = 'IDENTITY', 
+                        id = '2c4180a46faadee4016fb4e018c20626', 
+                        name = 'Robert Robinson', )
+                    ],
                 reviewed_by = sailpoint.beta.models.completed_approval_reviewed_by.CompletedApproval_reviewedBy(
                     type = 'IDENTITY', 
                     id = '2c3780a46faadee4016fb4e018c20652', 
@@ -65,12 +67,20 @@ class TestCompletedApproval(unittest.TestCase):
                     type = 'ROLE', ),
                 requester_comment = sailpoint.beta.models.comment_dto_1.CommentDto_1(
                     comment = 'This is a comment.', 
-                    created = '2017-07-11T18:45:37.098Z', ),
+                    created = '2017-07-11T18:45:37.098Z', 
+                    author = sailpoint.beta.models.comment_dto_1_author.CommentDto_1_author(
+                        type = 'IDENTITY', 
+                        id = '2c9180847e25f377017e2ae8cae4650b', 
+                        name = 'john.doe', ), ),
                 reviewer_comment = sailpoint.beta.models.completed_approval_reviewer_comment.CompletedApproval_reviewerComment(),
                 previous_reviewers_comments = [
                     sailpoint.beta.models.comment_dto_1.CommentDto_1(
                         comment = 'This is a comment.', 
-                        created = '2017-07-11T18:45:37.098Z', )
+                        created = '2017-07-11T18:45:37.098Z', 
+                        author = sailpoint.beta.models.comment_dto_1_author.CommentDto_1_author(
+                            type = 'IDENTITY', 
+                            id = '2c9180847e25f377017e2ae8cae4650b', 
+                            name = 'john.doe', ), )
                     ],
                 forward_history = [
                     sailpoint.beta.models.approval_forward_history.ApprovalForwardHistory(
@@ -116,7 +126,14 @@ class TestCompletedApproval(unittest.TestCase):
                             sailpoint.beta.models.sod_policy_dto.SodPolicyDto(
                                 id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde', 
                                 name = 'Business SOD Policy', )
-                            ], ), )
+                            ], ), ),
+                pre_approval_trigger_result = sailpoint.beta.models.completed_approval_pre_approval_trigger_result.CompletedApproval_preApprovalTriggerResult(
+                    comment = 'This request was autoapproved by our automated ETS subscriber', 
+                    decision = 'APPROVED', 
+                    reviewer = 'Automated AR Approval', 
+                    date = '2022-06-07T19:18:40.748Z', ),
+                client_metadata = {requestedAppName=test-app, requestedAppId=2c91808f7892918f0178b78da4a305a1},
+                requested_accounts = ''
             )
         else:
             return CompletedApproval(
@@ -127,7 +144,6 @@ class TestCompletedApproval(unittest.TestCase):
         """Test CompletedApproval"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

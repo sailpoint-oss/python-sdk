@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -21,47 +22,32 @@ from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
 from pydantic import Field
 from sailpoint.v3.models.owner_reference_segments import OwnerReferenceSegments
-from sailpoint.v3.models.visibility_criteria import VisibilityCriteria
+from sailpoint.v3.models.segment_visibility_criteria import SegmentVisibilityCriteria
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class Segment(BaseModel):
     """
     Segment
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="The segment's ID.")
-    name: Optional[StrictStr] = Field(
-        default=None, description="The segment's business name.")
-    created: Optional[datetime] = Field(
-        default=None, description="The time when the segment is created.")
-    modified: Optional[datetime] = Field(
-        default=None, description="The time when the segment is modified.")
-    description: Optional[StrictStr] = Field(
-        default=None, description="The segment's optional description.")
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="The segment's ID.")
+    name: Optional[StrictStr] = Field(default=None, description="The segment's business name.")
+    created: Optional[datetime] = Field(default=None, description="The time when the segment is created.")
+    modified: Optional[datetime] = Field(default=None, description="The time when the segment is modified.")
+    description: Optional[StrictStr] = Field(default=None, description="The segment's optional description.")
     owner: Optional[OwnerReferenceSegments] = None
-    visibility_criteria: Optional[VisibilityCriteria] = Field(
-        default=None, alias="visibilityCriteria")
-    active: Optional[StrictBool] = Field(
-        default=False,
-        description=
-        "This boolean indicates whether the segment is currently active. Inactive segments have no effect."
-    )
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "created", "modified", "description", "owner",
-        "visibilityCriteria", "active"
-    ]
+    visibility_criteria: Optional[SegmentVisibilityCriteria] = Field(default=None, alias="visibilityCriteria")
+    active: Optional[StrictBool] = Field(default=False, description="This boolean indicates whether the segment is currently active. Inactive segments have no effect.")
+    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "description", "owner", "visibilityCriteria", "active"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -89,7 +75,8 @@ class Segment(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of owner
@@ -115,23 +102,15 @@ class Segment(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "created":
-            obj.get("created"),
-            "modified":
-            obj.get("modified"),
-            "description":
-            obj.get("description"),
-            "owner":
-            OwnerReferenceSegments.from_dict(obj.get("owner"))
-            if obj.get("owner") is not None else None,
-            "visibilityCriteria":
-            VisibilityCriteria.from_dict(obj.get("visibilityCriteria"))
-            if obj.get("visibilityCriteria") is not None else None,
-            "active":
-            obj.get("active") if obj.get("active") is not None else False
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "created": obj.get("created"),
+            "modified": obj.get("modified"),
+            "description": obj.get("description"),
+            "owner": OwnerReferenceSegments.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
+            "visibilityCriteria": SegmentVisibilityCriteria.from_dict(obj.get("visibilityCriteria")) if obj.get("visibilityCriteria") is not None else None,
+            "active": obj.get("active") if obj.get("active") is not None else False
         })
         return _obj
+
+

@@ -79,12 +79,14 @@ Class | Method | HTTP request | Description
 *AccessProfilesApi* | [**get_access_profile_entitlements**](sailpoint/beta/docs/AccessProfilesApi.md#get_access_profile_entitlements) | **GET** /access-profiles/{id}/entitlements | List Access Profile&#39;s Entitlements
 *AccessProfilesApi* | [**list_access_profiles**](sailpoint/beta/docs/AccessProfilesApi.md#list_access_profiles) | **GET** /access-profiles | List Access Profiles
 *AccessProfilesApi* | [**patch_access_profile**](sailpoint/beta/docs/AccessProfilesApi.md#patch_access_profile) | **PATCH** /access-profiles/{id} | Patch a specified Access Profile
+*AccessProfilesApi* | [**update_access_profiles_in_bulk**](sailpoint/beta/docs/AccessProfilesApi.md#update_access_profiles_in_bulk) | **POST** /access-profiles/bulk-update-requestable | Update Access Profile(s) requestable field.
 *AccessRequestApprovalsApi* | [**approve_access_request**](sailpoint/beta/docs/AccessRequestApprovalsApi.md#approve_access_request) | **POST** /access-request-approvals/{approvalId}/approve | Approves an access request approval.
 *AccessRequestApprovalsApi* | [**forward_access_request**](sailpoint/beta/docs/AccessRequestApprovalsApi.md#forward_access_request) | **POST** /access-request-approvals/{approvalId}/forward | Forwards an access request approval to a new owner.
 *AccessRequestApprovalsApi* | [**get_access_request_approval_summary**](sailpoint/beta/docs/AccessRequestApprovalsApi.md#get_access_request_approval_summary) | **GET** /access-request-approvals/approval-summary | Get the number of pending, approved and rejected access requests approvals
 *AccessRequestApprovalsApi* | [**list_completed_approvals**](sailpoint/beta/docs/AccessRequestApprovalsApi.md#list_completed_approvals) | **GET** /access-request-approvals/completed | Completed Access Request Approvals List
 *AccessRequestApprovalsApi* | [**list_pending_approvals**](sailpoint/beta/docs/AccessRequestApprovalsApi.md#list_pending_approvals) | **GET** /access-request-approvals/pending | Pending Access Request Approvals List
 *AccessRequestApprovalsApi* | [**reject_access_request**](sailpoint/beta/docs/AccessRequestApprovalsApi.md#reject_access_request) | **POST** /access-request-approvals/{approvalId}/reject | Rejects an access request approval.
+*AccessRequestIdentityMetricsApi* | [**get_access_request_identity_metrics**](sailpoint/beta/docs/AccessRequestIdentityMetricsApi.md#get_access_request_identity_metrics) | **GET** /access-request-identity-metrics/{identityId}/requested-objects/{requestedObjectId}/type/{type} | Return access request identity metrics
 *AccessRequestsApi* | [**cancel_access_request**](sailpoint/beta/docs/AccessRequestsApi.md#cancel_access_request) | **POST** /access-requests/cancel | Cancel Access Request
 *AccessRequestsApi* | [**close_access_request**](sailpoint/beta/docs/AccessRequestsApi.md#close_access_request) | **POST** /access-requests/close | Close Access Request
 *AccessRequestsApi* | [**create_access_request**](sailpoint/beta/docs/AccessRequestsApi.md#create_access_request) | **POST** /access-requests | Submit an Access Request
@@ -110,6 +112,11 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**reload_account**](sailpoint/beta/docs/AccountsApi.md#reload_account) | **POST** /accounts/{id}/reload | Reload Account
 *AccountsApi* | [**unlock_account**](sailpoint/beta/docs/AccountsApi.md#unlock_account) | **POST** /accounts/{id}/unlock | Unlock Account
 *AccountsApi* | [**update_account**](sailpoint/beta/docs/AccountsApi.md#update_account) | **PATCH** /accounts/{id} | Update Account
+*AuthProfileApi* | [**create_profile_config**](sailpoint/beta/docs/AuthProfileApi.md#create_profile_config) | **POST** /auth-profiles/{id} | Create Auth Profile.
+*AuthProfileApi* | [**delete_profile_config**](sailpoint/beta/docs/AuthProfileApi.md#delete_profile_config) | **DELETE** /auth-profiles/{id} | Delete the specified Auth Profile
+*AuthProfileApi* | [**get_profile_config**](sailpoint/beta/docs/AuthProfileApi.md#get_profile_config) | **GET** /auth-profiles/{id} | Get Auth Profile.
+*AuthProfileApi* | [**get_profile_config_list**](sailpoint/beta/docs/AuthProfileApi.md#get_profile_config_list) | **GET** /auth-profiles | Get list of Auth Profiles.
+*AuthProfileApi* | [**patch_profile_config**](sailpoint/beta/docs/AuthProfileApi.md#patch_profile_config) | **PATCH** /auth-profiles/{id} | Patch a specified Auth Profile
 *CertificationCampaignsApi* | [**complete_campaign**](sailpoint/beta/docs/CertificationCampaignsApi.md#complete_campaign) | **POST** /campaigns/{id}/complete | Complete a Campaign
 *CertificationCampaignsApi* | [**create_campaign**](sailpoint/beta/docs/CertificationCampaignsApi.md#create_campaign) | **POST** /campaigns | Create a campaign
 *CertificationCampaignsApi* | [**create_campaign_template**](sailpoint/beta/docs/CertificationCampaignsApi.md#create_campaign_template) | **POST** /campaign-templates | Create a Campaign Template
@@ -332,7 +339,7 @@ Class | Method | HTTP request | Description
 *NotificationsApi* | [**list_notification_template_defaults**](sailpoint/beta/docs/NotificationsApi.md#list_notification_template_defaults) | **GET** /notification-template-defaults | List Notification Template Defaults
 *NotificationsApi* | [**list_notification_templates**](sailpoint/beta/docs/NotificationsApi.md#list_notification_templates) | **GET** /notification-templates | List Notification Templates
 *NotificationsApi* | [**put_mail_from_attributes**](sailpoint/beta/docs/NotificationsApi.md#put_mail_from_attributes) | **PUT** /mail-from-attributes | Change MAIL FROM domain
-*NotificationsApi* | [**put_notification_preference**](sailpoint/beta/docs/NotificationsApi.md#put_notification_preference) | **PUT** /notification-preferences/{key} | Overwrite the preferences for the given notification key.
+*NotificationsApi* | [**put_notification_preference**](sailpoint/beta/docs/NotificationsApi.md#put_notification_preference) | **PUT** /notification-preferences/{key} | Overwrite preferences notification key.
 *NotificationsApi* | [**send_test_notification**](sailpoint/beta/docs/NotificationsApi.md#send_test_notification) | **POST** /send-test-notification | Send Test Notification
 *OAuthClientsApi* | [**create_oauth_client**](sailpoint/beta/docs/OAuthClientsApi.md#create_oauth_client) | **POST** /oauth-clients | Create OAuth Client
 *OAuthClientsApi* | [**delete_oauth_client**](sailpoint/beta/docs/OAuthClientsApi.md#delete_oauth_client) | **DELETE** /oauth-clients/{id} | Delete OAuth Client
@@ -476,6 +483,7 @@ Class | Method | HTTP request | Description
 *TaskManagementApi* | [**get_task_status**](sailpoint/beta/docs/TaskManagementApi.md#get_task_status) | **GET** /task-status/{id} | Get task status by ID.
 *TaskManagementApi* | [**get_task_status_list**](sailpoint/beta/docs/TaskManagementApi.md#get_task_status_list) | **GET** /task-status | Retrieve a task status list.
 *TaskManagementApi* | [**update_task_status**](sailpoint/beta/docs/TaskManagementApi.md#update_task_status) | **PATCH** /task-status/{id} | Update task status by ID
+*TenantApi* | [**get_tenant**](sailpoint/beta/docs/TenantApi.md#get_tenant) | **GET** /tenant | Get Tenant Information.
 *TransformsApi* | [**create_transform**](sailpoint/beta/docs/TransformsApi.md#create_transform) | **POST** /transforms | Create transform
 *TransformsApi* | [**delete_transform**](sailpoint/beta/docs/TransformsApi.md#delete_transform) | **DELETE** /transforms/{id} | Delete a transform
 *TransformsApi* | [**get_transform**](sailpoint/beta/docs/TransformsApi.md#get_transform) | **GET** /transforms/{id} | Transform by ID
@@ -559,8 +567,10 @@ Class | Method | HTTP request | Description
  - [AccessProfileApprovalScheme](sailpoint/beta/docs/AccessProfileApprovalScheme.md)
  - [AccessProfileBulkDeleteRequest](sailpoint/beta/docs/AccessProfileBulkDeleteRequest.md)
  - [AccessProfileBulkDeleteResponse](sailpoint/beta/docs/AccessProfileBulkDeleteResponse.md)
+ - [AccessProfileBulkUpdateRequestInner](sailpoint/beta/docs/AccessProfileBulkUpdateRequestInner.md)
  - [AccessProfileRef](sailpoint/beta/docs/AccessProfileRef.md)
  - [AccessProfileSourceRef](sailpoint/beta/docs/AccessProfileSourceRef.md)
+ - [AccessProfileUpdateItem](sailpoint/beta/docs/AccessProfileUpdateItem.md)
  - [AccessProfileUsage](sailpoint/beta/docs/AccessProfileUsage.md)
  - [AccessProfileUsageUsedByInner](sailpoint/beta/docs/AccessProfileUsageUsedByInner.md)
  - [AccessRecommendationMessage](sailpoint/beta/docs/AccessRecommendationMessage.md)
@@ -639,6 +649,7 @@ Class | Method | HTTP request | Description
  - [ApprovalSchemeForRole](sailpoint/beta/docs/ApprovalSchemeForRole.md)
  - [ApprovalStatus](sailpoint/beta/docs/ApprovalStatus.md)
  - [ApprovalStatusDto](sailpoint/beta/docs/ApprovalStatusDto.md)
+ - [ApprovalStatusDtoCurrentOwner](sailpoint/beta/docs/ApprovalStatusDtoCurrentOwner.md)
  - [ApprovalStatusDtoOriginalOwner](sailpoint/beta/docs/ApprovalStatusDtoOriginalOwner.md)
  - [ApprovalSummary](sailpoint/beta/docs/ApprovalSummary.md)
  - [Argument](sailpoint/beta/docs/Argument.md)
@@ -652,8 +663,12 @@ Class | Method | HTTP request | Description
  - [AttributeDefinitionType](sailpoint/beta/docs/AttributeDefinitionType.md)
  - [AttributesChanged](sailpoint/beta/docs/AttributesChanged.md)
  - [AuditDetails](sailpoint/beta/docs/AuditDetails.md)
+ - [AuthProfile](sailpoint/beta/docs/AuthProfile.md)
+ - [AuthProfileRequest](sailpoint/beta/docs/AuthProfileRequest.md)
+ - [AuthProfileSummary](sailpoint/beta/docs/AuthProfileSummary.md)
  - [BaseCommonDto](sailpoint/beta/docs/BaseCommonDto.md)
  - [BaseCommonDto1](sailpoint/beta/docs/BaseCommonDto1.md)
+ - [BaseReferenceDto](sailpoint/beta/docs/BaseReferenceDto.md)
  - [BasicAuthConfig](sailpoint/beta/docs/BasicAuthConfig.md)
  - [BearerTokenAuthConfig](sailpoint/beta/docs/BearerTokenAuthConfig.md)
  - [BeforeProvisioningRuleDto](sailpoint/beta/docs/BeforeProvisioningRuleDto.md)
@@ -692,6 +707,7 @@ Class | Method | HTTP request | Description
  - [Comment](sailpoint/beta/docs/Comment.md)
  - [CommentDto](sailpoint/beta/docs/CommentDto.md)
  - [CommentDto1](sailpoint/beta/docs/CommentDto1.md)
+ - [CommentDto1Author](sailpoint/beta/docs/CommentDto1Author.md)
  - [CommentDtoAuthor](sailpoint/beta/docs/CommentDtoAuthor.md)
  - [CommonAccessIDStatus](sailpoint/beta/docs/CommonAccessIDStatus.md)
  - [CommonAccessItemAccess](sailpoint/beta/docs/CommonAccessItemAccess.md)
@@ -704,6 +720,7 @@ Class | Method | HTTP request | Description
  - [CompleteInvocation](sailpoint/beta/docs/CompleteInvocation.md)
  - [CompleteInvocationInput](sailpoint/beta/docs/CompleteInvocationInput.md)
  - [CompletedApproval](sailpoint/beta/docs/CompletedApproval.md)
+ - [CompletedApprovalPreApprovalTriggerResult](sailpoint/beta/docs/CompletedApprovalPreApprovalTriggerResult.md)
  - [CompletedApprovalReviewedBy](sailpoint/beta/docs/CompletedApprovalReviewedBy.md)
  - [CompletedApprovalReviewerComment](sailpoint/beta/docs/CompletedApprovalReviewerComment.md)
  - [CompletedApprovalState](sailpoint/beta/docs/CompletedApprovalState.md)
@@ -714,6 +731,7 @@ Class | Method | HTTP request | Description
  - [ConfigObject](sailpoint/beta/docs/ConfigObject.md)
  - [ConfigType](sailpoint/beta/docs/ConfigType.md)
  - [ConfigTypeEnum](sailpoint/beta/docs/ConfigTypeEnum.md)
+ - [ConfigTypeEnumCamel](sailpoint/beta/docs/ConfigTypeEnumCamel.md)
  - [ConfigurationDetailsResponse](sailpoint/beta/docs/ConfigurationDetailsResponse.md)
  - [ConfigurationItemRequest](sailpoint/beta/docs/ConfigurationItemRequest.md)
  - [ConfigurationItemResponse](sailpoint/beta/docs/ConfigurationItemResponse.md)
@@ -753,6 +771,8 @@ Class | Method | HTTP request | Description
  - [EntitlementAccessRequestConfig](sailpoint/beta/docs/EntitlementAccessRequestConfig.md)
  - [EntitlementApprovalScheme](sailpoint/beta/docs/EntitlementApprovalScheme.md)
  - [EntitlementBulkUpdateRequest](sailpoint/beta/docs/EntitlementBulkUpdateRequest.md)
+ - [EntitlementManuallyUpdatedFields](sailpoint/beta/docs/EntitlementManuallyUpdatedFields.md)
+ - [EntitlementOwner](sailpoint/beta/docs/EntitlementOwner.md)
  - [EntitlementRef](sailpoint/beta/docs/EntitlementRef.md)
  - [EntitlementRequestConfig](sailpoint/beta/docs/EntitlementRequestConfig.md)
  - [EntitlementRequestConfig1](sailpoint/beta/docs/EntitlementRequestConfig1.md)
@@ -800,7 +820,6 @@ Class | Method | HTTP request | Description
  - [FormOwner](sailpoint/beta/docs/FormOwner.md)
  - [FormUsedBy](sailpoint/beta/docs/FormUsedBy.md)
  - [ForwardApprovalDto](sailpoint/beta/docs/ForwardApprovalDto.md)
- - [FullAccount](sailpoint/beta/docs/FullAccount.md)
  - [Fullcampaign](sailpoint/beta/docs/Fullcampaign.md)
  - [FullcampaignAllOfFilter](sailpoint/beta/docs/FullcampaignAllOfFilter.md)
  - [FullcampaignAllOfRoleCompositionCampaignInfo](sailpoint/beta/docs/FullcampaignAllOfRoleCompositionCampaignInfo.md)
@@ -842,6 +861,7 @@ Class | Method | HTTP request | Description
  - [IdentityCreatedIdentity](sailpoint/beta/docs/IdentityCreatedIdentity.md)
  - [IdentityDeleted](sailpoint/beta/docs/IdentityDeleted.md)
  - [IdentityDeletedIdentity](sailpoint/beta/docs/IdentityDeletedIdentity.md)
+ - [IdentityDtoLifecycleState](sailpoint/beta/docs/IdentityDtoLifecycleState.md)
  - [IdentityDtoManagerRef](sailpoint/beta/docs/IdentityDtoManagerRef.md)
  - [IdentityEntities](sailpoint/beta/docs/IdentityEntities.md)
  - [IdentityEntitiesIdentityEntity](sailpoint/beta/docs/IdentityEntitiesIdentityEntity.md)
@@ -853,6 +873,7 @@ Class | Method | HTTP request | Description
  - [IdentityOwnershipAssociationDetailsAssociationDetailsInner](sailpoint/beta/docs/IdentityOwnershipAssociationDetailsAssociationDetailsInner.md)
  - [IdentityPreviewRequest](sailpoint/beta/docs/IdentityPreviewRequest.md)
  - [IdentityPreviewResponse](sailpoint/beta/docs/IdentityPreviewResponse.md)
+ - [IdentityPreviewResponseIdentity](sailpoint/beta/docs/IdentityPreviewResponseIdentity.md)
  - [IdentityProfile](sailpoint/beta/docs/IdentityProfile.md)
  - [IdentityProfile1](sailpoint/beta/docs/IdentityProfile1.md)
  - [IdentityProfile1AllOfAuthoritativeSource](sailpoint/beta/docs/IdentityProfile1AllOfAuthoritativeSource.md)
@@ -885,11 +906,11 @@ Class | Method | HTTP request | Description
  - [KbaAuthResponse](sailpoint/beta/docs/KbaAuthResponse.md)
  - [KbaAuthResponseItem](sailpoint/beta/docs/KbaAuthResponseItem.md)
  - [LatestOutlierSummary](sailpoint/beta/docs/LatestOutlierSummary.md)
+ - [License](sailpoint/beta/docs/License.md)
  - [LifecycleState](sailpoint/beta/docs/LifecycleState.md)
  - [LifecycleStateDto](sailpoint/beta/docs/LifecycleStateDto.md)
  - [ListAccessProfiles401Response](sailpoint/beta/docs/ListAccessProfiles401Response.md)
  - [ListAccessProfiles429Response](sailpoint/beta/docs/ListAccessProfiles429Response.md)
- - [ListAccounts200ResponseInner](sailpoint/beta/docs/ListAccounts200ResponseInner.md)
  - [ListCompleteWorkflowLibrary200ResponseInner](sailpoint/beta/docs/ListCompleteWorkflowLibrary200ResponseInner.md)
  - [ListFormDefinitionsByTenantResponse](sailpoint/beta/docs/ListFormDefinitionsByTenantResponse.md)
  - [ListFormElementDataByElementIDResponse](sailpoint/beta/docs/ListFormElementDataByElementIDResponse.md)
@@ -992,6 +1013,7 @@ Class | Method | HTTP request | Description
  - [PreferencesDto](sailpoint/beta/docs/PreferencesDto.md)
  - [PreviewDataSourceResponse](sailpoint/beta/docs/PreviewDataSourceResponse.md)
  - [ProcessIdentitiesRequest](sailpoint/beta/docs/ProcessIdentitiesRequest.md)
+ - [Product](sailpoint/beta/docs/Product.md)
  - [ProvisioningCompleted](sailpoint/beta/docs/ProvisioningCompleted.md)
  - [ProvisioningCompletedAccountRequestsInner](sailpoint/beta/docs/ProvisioningCompletedAccountRequestsInner.md)
  - [ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner](sailpoint/beta/docs/ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner.md)
@@ -1036,7 +1058,12 @@ Class | Method | HTTP request | Description
  - [RequestableObjectRequestStatus](sailpoint/beta/docs/RequestableObjectRequestStatus.md)
  - [RequestableObjectType](sailpoint/beta/docs/RequestableObjectType.md)
  - [RequestedItemStatus](sailpoint/beta/docs/RequestedItemStatus.md)
+ - [RequestedItemStatusCancelledRequestDetails](sailpoint/beta/docs/RequestedItemStatusCancelledRequestDetails.md)
+ - [RequestedItemStatusPreApprovalTriggerDetails](sailpoint/beta/docs/RequestedItemStatusPreApprovalTriggerDetails.md)
+ - [RequestedItemStatusProvisioningDetails](sailpoint/beta/docs/RequestedItemStatusProvisioningDetails.md)
  - [RequestedItemStatusRequestState](sailpoint/beta/docs/RequestedItemStatusRequestState.md)
+ - [RequestedItemStatusRequesterComment](sailpoint/beta/docs/RequestedItemStatusRequesterComment.md)
+ - [RequestedItemStatusSodViolationContext](sailpoint/beta/docs/RequestedItemStatusSodViolationContext.md)
  - [ResourceBundleMessage](sailpoint/beta/docs/ResourceBundleMessage.md)
  - [ResourceObject](sailpoint/beta/docs/ResourceObject.md)
  - [ResourceObjectsRequest](sailpoint/beta/docs/ResourceObjectsRequest.md)
@@ -1100,6 +1127,7 @@ Class | Method | HTTP request | Description
  - [Schedule1](sailpoint/beta/docs/Schedule1.md)
  - [Schedule1Days](sailpoint/beta/docs/Schedule1Days.md)
  - [Schedule1Hours](sailpoint/beta/docs/Schedule1Hours.md)
+ - [Schedule1Months](sailpoint/beta/docs/Schedule1Months.md)
  - [ScheduleDays](sailpoint/beta/docs/ScheduleDays.md)
  - [ScheduleHours](sailpoint/beta/docs/ScheduleHours.md)
  - [ScheduleMonths](sailpoint/beta/docs/ScheduleMonths.md)
@@ -1122,7 +1150,6 @@ Class | Method | HTTP request | Description
  - [ServiceDeskIntegrationTemplateDto](sailpoint/beta/docs/ServiceDeskIntegrationTemplateDto.md)
  - [ServiceDeskIntegrationTemplateType](sailpoint/beta/docs/ServiceDeskIntegrationTemplateType.md)
  - [ServiceDeskSource](sailpoint/beta/docs/ServiceDeskSource.md)
- - [SlimAccount](sailpoint/beta/docs/SlimAccount.md)
  - [Slimcampaign](sailpoint/beta/docs/Slimcampaign.md)
  - [SodExemptCriteria](sailpoint/beta/docs/SodExemptCriteria.md)
  - [SodExemptCriteria1](sailpoint/beta/docs/SodExemptCriteria1.md)
@@ -1144,9 +1171,11 @@ Class | Method | HTTP request | Description
  - [SodViolationContextConflictingAccessCriteriaLeftCriteria](sailpoint/beta/docs/SodViolationContextConflictingAccessCriteriaLeftCriteria.md)
  - [Source](sailpoint/beta/docs/Source.md)
  - [Source1](sailpoint/beta/docs/Source1.md)
- - [SourceAccount](sailpoint/beta/docs/SourceAccount.md)
  - [SourceAccountCorrelationConfig](sailpoint/beta/docs/SourceAccountCorrelationConfig.md)
  - [SourceAccountCorrelationRule](sailpoint/beta/docs/SourceAccountCorrelationRule.md)
+ - [SourceAccountCreated](sailpoint/beta/docs/SourceAccountCreated.md)
+ - [SourceAccountDeleted](sailpoint/beta/docs/SourceAccountDeleted.md)
+ - [SourceAccountUpdated](sailpoint/beta/docs/SourceAccountUpdated.md)
  - [SourceBeforeProvisioningRule](sailpoint/beta/docs/SourceBeforeProvisioningRule.md)
  - [SourceCluster](sailpoint/beta/docs/SourceCluster.md)
  - [SourceClusterDto](sailpoint/beta/docs/SourceClusterDto.md)
@@ -1199,6 +1228,7 @@ Class | Method | HTTP request | Description
  - [TemplateBulkDeleteDto](sailpoint/beta/docs/TemplateBulkDeleteDto.md)
  - [TemplateDto](sailpoint/beta/docs/TemplateDto.md)
  - [TemplateDtoDefault](sailpoint/beta/docs/TemplateDtoDefault.md)
+ - [Tenant](sailpoint/beta/docs/Tenant.md)
  - [TenantConfigurationDetails](sailpoint/beta/docs/TenantConfigurationDetails.md)
  - [TenantConfigurationRequest](sailpoint/beta/docs/TenantConfigurationRequest.md)
  - [TenantConfigurationResponse](sailpoint/beta/docs/TenantConfigurationResponse.md)
@@ -1219,6 +1249,7 @@ Class | Method | HTTP request | Description
  - [TriggerExampleInput](sailpoint/beta/docs/TriggerExampleInput.md)
  - [TriggerExampleOutput](sailpoint/beta/docs/TriggerExampleOutput.md)
  - [TriggerType](sailpoint/beta/docs/TriggerType.md)
+ - [UpdateAccessProfilesInBulk412Response](sailpoint/beta/docs/UpdateAccessProfilesInBulk412Response.md)
  - [UsageType](sailpoint/beta/docs/UsageType.md)
  - [V3ConnectorDto](sailpoint/beta/docs/V3ConnectorDto.md)
  - [VAClusterStatusChangeEvent](sailpoint/beta/docs/VAClusterStatusChangeEvent.md)

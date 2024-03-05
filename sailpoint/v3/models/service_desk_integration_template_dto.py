@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -26,39 +27,25 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ServiceDeskIntegrationTemplateDto(BaseModel):
     """
     ServiceDeskIntegrationTemplateDto
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(
-        default=None, description="System-generated unique ID of the Object")
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="System-generated unique ID of the Object")
     name: StrictStr = Field(description="Name of the Object")
-    created: Optional[datetime] = Field(
-        default=None, description="Creation date of the Object")
-    modified: Optional[datetime] = Field(
-        default=None, description="Last modification date of the Object")
-    type: StrictStr = Field(
-        description=
-        "The 'type' property specifies the type of the Service Desk integration template."
-    )
-    attributes: Dict[str, Any] = Field(
-        description=
-        "The 'attributes' property value is a map of attributes available for integrations using this Service Desk integration template."
-    )
+    created: Optional[datetime] = Field(default=None, description="Creation date of the Object")
+    modified: Optional[datetime] = Field(default=None, description="Last modification date of the Object")
+    type: StrictStr = Field(description="The 'type' property specifies the type of the Service Desk integration template.")
+    attributes: Dict[str, Any] = Field(description="The 'attributes' property value is a map of attributes available for integrations using this Service Desk integration template.")
     provisioning_config: ProvisioningConfig = Field(alias="provisioningConfig")
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "created", "modified", "type", "attributes",
-        "provisioningConfig"
-    ]
+    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "type", "attributes", "provisioningConfig"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -111,21 +98,14 @@ class ServiceDeskIntegrationTemplateDto(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "created":
-            obj.get("created"),
-            "modified":
-            obj.get("modified"),
-            "type":
-            obj.get("type")
-            if obj.get("type") is not None else 'Web Service SDIM',
-            "attributes":
-            obj.get("attributes"),
-            "provisioningConfig":
-            ProvisioningConfig.from_dict(obj.get("provisioningConfig"))
-            if obj.get("provisioningConfig") is not None else None
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "created": obj.get("created"),
+            "modified": obj.get("modified"),
+            "type": obj.get("type") if obj.get("type") is not None else 'Web Service SDIM',
+            "attributes": obj.get("attributes"),
+            "provisioningConfig": ProvisioningConfig.from_dict(obj.get("provisioningConfig")) if obj.get("provisioningConfig") is not None else None
         })
         return _obj
+
+

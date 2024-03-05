@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **owner** | [**PatOwner**](PatOwner.md) |  | 
 **created** | **datetime** | The date and time, down to the millisecond, when this personal access token was created. | 
 **last_used** | **datetime** | The date and time, down to the millisecond, when this personal access token was last used to generate an access token. This timestamp does not get updated on every PAT usage, but only once a day. This property can be useful for identifying which PATs are no longer actively used and can be removed. | [optional] 
+**managed** | **bool** | If true, this token is managed by the SailPoint platform, and is not visible in the user interface. For example, Workflows will create managed personal access tokens for users who create workflows. | [optional] [default to False]
 
 ## Example
 

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.identity_reference import IdentityReference
-
 
 class TestIdentityReference(unittest.TestCase):
     """IdentityReference unit test stubs"""
@@ -49,7 +49,6 @@ class TestIdentityReference(unittest.TestCase):
         """Test IdentityReference"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

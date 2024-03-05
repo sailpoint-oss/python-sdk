@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr, field_validator
@@ -24,28 +26,14 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class OrphanUncorrelatedReportArguments(BaseModel):
     """
     Arguments for Orphan Identities report (ORPHAN_IDENTITIES) and Uncorrelated Accounts report (UNCORRELATED_ACCOUNTS)
     """ # noqa: E501
-    selected_formats: Optional[List[StrictStr]] = Field(
-        default=None,
-        description=
-        "Output report file formats. This are formats for calling get endpoint as a query parameter 'fileFormat'.  In case report won't have this argument there will be ['CSV', 'PDF'] as default.",
-        alias="selectedFormats")
-    default_s3_bucket: StrictBool = Field(
-        description=
-        "Use it to set default s3 bucket where generated report will be saved.  In case this argument is false and 's3Bucket' argument is null or absent there will be default s3Bucket assigned to the report.",
-        alias="defaultS3Bucket")
-    s3_bucket: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "If you want to be specific you could use this argument with defaultS3Bucket = false.",
-        alias="s3Bucket")
-    __properties: ClassVar[List[str]] = [
-        "selectedFormats", "defaultS3Bucket", "s3Bucket"
-    ]
+    selected_formats: Optional[List[StrictStr]] = Field(default=None, description="Output report file formats. This are formats for calling get endpoint as a query parameter 'fileFormat'.  In case report won't have this argument there will be ['CSV', 'PDF'] as default.", alias="selectedFormats")
+    default_s3_bucket: StrictBool = Field(description="Use it to set default s3 bucket where generated report will be saved.  In case this argument is false and 's3Bucket' argument is null or absent there will be default s3Bucket assigned to the report.", alias="defaultS3Bucket")
+    s3_bucket: Optional[StrictStr] = Field(default=None, description="If you want to be specific you could use this argument with defaultS3Bucket = false.", alias="s3Bucket")
+    __properties: ClassVar[List[str]] = ["selectedFormats", "defaultS3Bucket", "s3Bucket"]
 
     @field_validator('selected_formats')
     def selected_formats_validate_enum(cls, value):
@@ -55,8 +43,7 @@ class OrphanUncorrelatedReportArguments(BaseModel):
 
         for i in value:
             if i not in ('CSV', 'PDF'):
-                raise ValueError(
-                    "each list item must be one of ('CSV', 'PDF')")
+                raise ValueError("each list item must be one of ('CSV', 'PDF')")
         return value
 
     model_config = {
@@ -64,6 +51,7 @@ class OrphanUncorrelatedReportArguments(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -91,7 +79,8 @@ class OrphanUncorrelatedReportArguments(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -111,3 +100,5 @@ class OrphanUncorrelatedReportArguments(BaseModel):
             "s3Bucket": obj.get("s3Bucket")
         })
         return _obj
+
+

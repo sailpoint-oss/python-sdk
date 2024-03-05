@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,19 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class PasswordChangeResponse(BaseModel):
     """
     PasswordChangeResponse
-    """
-
-  # noqa: E501
-    request_id: Optional[StrictStr] = Field(
-        default=None,
-        description="The password change request ID",
-        alias="requestId")
-    state: Optional[StrictStr] = Field(default=None,
-                                       description="Password change state")
+    """ # noqa: E501
+    request_id: Optional[StrictStr] = Field(default=None, description="The password change request ID", alias="requestId")
+    state: Optional[StrictStr] = Field(default=None, description="Password change state")
     __properties: ClassVar[List[str]] = ["requestId", "state"]
 
     @field_validator('state')
@@ -46,9 +41,7 @@ class PasswordChangeResponse(BaseModel):
             return value
 
         if value not in ('IN_PROGRESS', 'FINISHED', 'FAILED'):
-            raise ValueError(
-                "must be one of enum values ('IN_PROGRESS', 'FINISHED', 'FAILED')"
-            )
+            raise ValueError("must be one of enum values ('IN_PROGRESS', 'FINISHED', 'FAILED')")
         return value
 
     model_config = {
@@ -56,6 +49,7 @@ class PasswordChangeResponse(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -83,7 +77,8 @@ class PasswordChangeResponse(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if request_id (nullable) is None
@@ -107,3 +102,5 @@ class PasswordChangeResponse(BaseModel):
             "state": obj.get("state")
         })
         return _obj
+
+

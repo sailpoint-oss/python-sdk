@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
@@ -25,15 +27,11 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ViolationPrediction(BaseModel):
     """
     An object containing a listing of the SOD violation reasons detected by this check.
     """ # noqa: E501
-    violation_contexts: Optional[List[ViolationContext]] = Field(
-        default=None,
-        description="List of Violation Contexts",
-        alias="violationContexts")
+    violation_contexts: Optional[List[ViolationContext]] = Field(default=None, description="List of Violation Contexts", alias="violationContexts")
     __properties: ClassVar[List[str]] = ["violationContexts"]
 
     model_config = {
@@ -41,6 +39,7 @@ class ViolationPrediction(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -68,7 +67,8 @@ class ViolationPrediction(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in violation_contexts (list)
@@ -90,9 +90,8 @@ class ViolationPrediction(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "violationContexts": [
-                ViolationContext.from_dict(_item)
-                for _item in obj.get("violationContexts")
-            ] if obj.get("violationContexts") is not None else None
+            "violationContexts": [ViolationContext.from_dict(_item) for _item in obj.get("violationContexts")] if obj.get("violationContexts") is not None else None
         })
         return _obj
+
+

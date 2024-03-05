@@ -11,11 +11,13 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
 from pydantic import Field
@@ -24,34 +26,24 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class PasswordSyncGroup(BaseModel):
     """
     PasswordSyncGroup
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="ID of the sync group")
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="Name of the sync group")
-    password_policy_id: Optional[StrictStr] = Field(
-        default=None,
-        description="ID of the password policy",
-        alias="passwordPolicyId")
-    source_ids: Optional[List[StrictStr]] = Field(
-        default=None,
-        description="List of password managed sources IDs",
-        alias="sourceIds")
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "passwordPolicyId", "sourceIds"
-    ]
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="ID of the sync group")
+    name: Optional[StrictStr] = Field(default=None, description="Name of the sync group")
+    password_policy_id: Optional[StrictStr] = Field(default=None, description="ID of the password policy", alias="passwordPolicyId")
+    source_ids: Optional[List[StrictStr]] = Field(default=None, description="List of password managed sources IDs", alias="sourceIds")
+    created: Optional[datetime] = Field(default=None, description="The date and time this sync group was created")
+    modified: Optional[datetime] = Field(default=None, description="The date and time this sync group was last modified")
+    __properties: ClassVar[List[str]] = ["id", "name", "passwordPolicyId", "sourceIds", "created", "modified"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -79,9 +71,20 @@ class PasswordSyncGroup(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
+        # set to None if created (nullable) is None
+        # and model_fields_set contains the field
+        if self.created is None and "created" in self.model_fields_set:
+            _dict['created'] = None
+
+        # set to None if modified (nullable) is None
+        # and model_fields_set contains the field
+        if self.modified is None and "modified" in self.model_fields_set:
+            _dict['modified'] = None
+
         return _dict
 
     @classmethod
@@ -94,13 +97,13 @@ class PasswordSyncGroup(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "passwordPolicyId":
-            obj.get("passwordPolicyId"),
-            "sourceIds":
-            obj.get("sourceIds")
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "passwordPolicyId": obj.get("passwordPolicyId"),
+            "sourceIds": obj.get("sourceIds"),
+            "created": obj.get("created"),
+            "modified": obj.get("modified")
         })
         return _obj
+
+

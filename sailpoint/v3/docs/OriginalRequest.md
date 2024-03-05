@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**account_id** | **str** | the account id | [optional] 
-**attribute_requests** | [**List[AttributeRequest]**](AttributeRequest.md) |  | [optional] 
-**op** | **str** | the operation that was used | [optional] 
+**account_id** | **str** | Account ID. | [optional] 
+**attribute_requests** | [**List[AttributeRequest]**](AttributeRequest.md) | Attribute changes requested for account. | [optional] 
+**op** | **str** | Operation used. | [optional] 
 **source** | [**AccountSource**](AccountSource.md) |  | [optional] 
 
 ## Example

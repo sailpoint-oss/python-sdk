@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -27,19 +28,14 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ManagedClientStatusAggResponse(BaseModel):
     """
     Managed Client Status
-    """
-
-  # noqa: E501
-    body: Dict[str,
-               Any] = Field(description="ManagedClientStatus body information")
+    """ # noqa: E501
+    body: Dict[str, Any] = Field(description="ManagedClientStatus body information")
     status: ManagedClientStatusEnum
     type: Optional[ManagedClientType]
-    timestamp: datetime = Field(
-        description="timestamp on the Client Status update")
+    timestamp: datetime = Field(description="timestamp on the Client Status update")
     __properties: ClassVar[List[str]] = ["body", "status", "type", "timestamp"]
 
     model_config = {
@@ -47,6 +43,7 @@ class ManagedClientStatusAggResponse(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -74,7 +71,8 @@ class ManagedClientStatusAggResponse(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if type (nullable) is None
@@ -100,3 +98,5 @@ class ManagedClientStatusAggResponse(BaseModel):
             "timestamp": obj.get("timestamp")
         })
         return _obj
+
+

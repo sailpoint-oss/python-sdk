@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,18 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class Argument(BaseModel):
     """
     Argument
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     name: StrictStr = Field(description="the name of the argument")
-    description: Optional[StrictStr] = Field(
-        default=None, description="the description of the argument")
-    type: Optional[StrictStr] = Field(
-        default=None, description="the programmatic type of the argument")
+    description: Optional[StrictStr] = Field(default=None, description="the description of the argument")
+    type: Optional[StrictStr] = Field(default=None, description="the programmatic type of the argument")
     __properties: ClassVar[List[str]] = ["name", "description", "type"]
 
     model_config = {
@@ -43,6 +40,7 @@ class Argument(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -70,7 +68,8 @@ class Argument(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if type (nullable) is None
@@ -95,3 +94,5 @@ class Argument(BaseModel):
             "type": obj.get("type")
         })
         return _obj
+
+

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,22 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class BasicAuthConfig(BaseModel):
     """
     Config required if BASIC_AUTH is used.
-    """
-
-  # noqa: E501
-    user_name: Optional[StrictStr] = Field(
-        default=None,
-        description="The username to authenticate.",
-        alias="userName")
-    password: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "The password to authenticate. On response, this field is set to null as to not return secrets."
-    )
+    """ # noqa: E501
+    user_name: Optional[StrictStr] = Field(default=None, description="The username to authenticate.", alias="userName")
+    password: Optional[StrictStr] = Field(default=None, description="The password to authenticate. On response, this field is set to null as to not return secrets.")
     __properties: ClassVar[List[str]] = ["userName", "password"]
 
     model_config = {
@@ -47,6 +39,7 @@ class BasicAuthConfig(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -74,7 +67,8 @@ class BasicAuthConfig(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if password (nullable) is None
@@ -98,3 +92,5 @@ class BasicAuthConfig(BaseModel):
             "password": obj.get("password")
         })
         return _obj
+
+

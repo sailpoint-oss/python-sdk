@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,34 +26,21 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class FormDefinitionFileUploadResponse(BaseModel):
     """
     FormDefinitionFileUploadResponse
-    """
-
-  # noqa: E501
-    created: Optional[StrictStr] = Field(
-        default=None, description="Created is the date the file was uploaded")
-    file_id: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "fileId is a unique ULID that serves as an identifier for the form definition file",
-        alias="fileId")
-    form_definition_id: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "FormDefinitionID is a unique guid identifying this form definition",
-        alias="formDefinitionId")
-    __properties: ClassVar[List[str]] = [
-        "created", "fileId", "formDefinitionId"
-    ]
+    """ # noqa: E501
+    created: Optional[StrictStr] = Field(default=None, description="Created is the date the file was uploaded")
+    file_id: Optional[StrictStr] = Field(default=None, description="fileId is a unique ULID that serves as an identifier for the form definition file", alias="fileId")
+    form_definition_id: Optional[StrictStr] = Field(default=None, description="FormDefinitionID is a unique guid identifying this form definition", alias="formDefinitionId")
+    __properties: ClassVar[List[str]] = ["created", "fileId", "formDefinitionId"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -79,7 +68,8 @@ class FormDefinitionFileUploadResponse(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -94,11 +84,10 @@ class FormDefinitionFileUploadResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "created":
-            obj.get("created"),
-            "fileId":
-            obj.get("fileId"),
-            "formDefinitionId":
-            obj.get("formDefinitionId")
+            "created": obj.get("created"),
+            "fileId": obj.get("fileId"),
+            "formDefinitionId": obj.get("formDefinitionId")
         })
         return _obj
+
+

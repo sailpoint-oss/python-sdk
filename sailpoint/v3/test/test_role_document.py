@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.role_document import RoleDocument
-
 
 class TestRoleDocument(unittest.TestCase):
     """RoleDocument unit test stubs"""
@@ -42,26 +42,38 @@ class TestRoleDocument(unittest.TestCase):
                 description = 'The admin role',
                 created = '2018-06-25T20:22:28.104Z',
                 modified = '2018-06-25T20:22:28.104Z',
-                synced = '2018-06-25T20:22:28.104Z',
+                synced = '2018-06-25T20:22:33.104Z',
                 enabled = True,
                 requestable = True,
                 request_comments_required = False,
-                owner = None,
+                owner = sailpoint.v3.models.base_access_all_of_owner.BaseAccess_allOf_owner(
+                    type = 'IDENTITY', 
+                    id = '2c9180a46faadee4016fb4e018c20639', 
+                    name = 'Support', 
+                    email = 'cloud-support@sailpoint.com', ),
                 access_profiles = [
-                    sailpoint.v3.models.reference.Reference(
-                        id = '2c91808568c529c60168cca6f90c1313', 
-                        name = 'John Doe', )
+                    sailpoint.v3.models.base_access_profile.BaseAccessProfile(
+                        id = '2c91809c6faade77016fb4f0b63407ae', 
+                        name = 'Admin Access', )
                     ],
-                access_profile_count = 56,
+                access_profile_count = 1,
                 tags = [TAG_1, TAG_2],
                 segments = [
-                    sailpoint.v3.models.reference.Reference(
-                        id = '2c91808568c529c60168cca6f90c1313', 
-                        name = 'John Doe', )
+                    sailpoint.v3.models.base_segment.BaseSegment(
+                        id = 'b009b6e3-b56d-41d9-8735-cb532ea0b017', 
+                        name = 'Test Segment', )
                     ],
                 segment_count = 1,
                 entitlements = [
-                    null
+                    sailpoint.v3.models.base_entitlement.BaseEntitlement(
+                        has_permissions = False, 
+                        description = 'Cloud engineering', 
+                        attribute = 'memberOf', 
+                        value = 'CN=Cloud Engineering,DC=sailpoint,DC=COM', 
+                        schema = 'group', 
+                        privileged = False, 
+                        id = '2c918084575812550157589064f33b89', 
+                        name = 'CN=Cloud Engineering,DC=sailpoint,DC=COM', )
                     ],
                 entitlement_count = 3
             )
@@ -77,7 +89,6 @@ class TestRoleDocument(unittest.TestCase):
         """Test RoleDocument"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

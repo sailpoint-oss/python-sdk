@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,28 +26,19 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class SendTokenRequest(BaseModel):
     """
     SendTokenRequest
-    """
-
-  # noqa: E501
-    user_alias: StrictStr = Field(
-        description="User alias from table spt_identity field named 'name'",
-        alias="userAlias")
-    delivery_type: StrictStr = Field(description="Token delivery type",
-                                     alias="deliveryType")
+    """ # noqa: E501
+    user_alias: StrictStr = Field(description="User alias from table spt_identity field named 'name'", alias="userAlias")
+    delivery_type: StrictStr = Field(description="Token delivery type", alias="deliveryType")
     __properties: ClassVar[List[str]] = ["userAlias", "deliveryType"]
 
     @field_validator('delivery_type')
     def delivery_type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('SMS_PERSONAL', 'VOICE_PERSONAL', 'SMS_WORK',
-                         'VOICE_WORK', 'EMAIL_WORK', 'EMAIL_PERSONAL'):
-            raise ValueError(
-                "must be one of enum values ('SMS_PERSONAL', 'VOICE_PERSONAL', 'SMS_WORK', 'VOICE_WORK', 'EMAIL_WORK', 'EMAIL_PERSONAL')"
-            )
+        if value not in ('SMS_PERSONAL', 'VOICE_PERSONAL', 'SMS_WORK', 'VOICE_WORK', 'EMAIL_WORK', 'EMAIL_PERSONAL'):
+            raise ValueError("must be one of enum values ('SMS_PERSONAL', 'VOICE_PERSONAL', 'SMS_WORK', 'VOICE_WORK', 'EMAIL_WORK', 'EMAIL_PERSONAL')")
         return value
 
     model_config = {
@@ -53,6 +46,7 @@ class SendTokenRequest(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -80,7 +74,8 @@ class SendTokenRequest(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -99,3 +94,5 @@ class SendTokenRequest(BaseModel):
             "deliveryType": obj.get("deliveryType")
         })
         return _obj
+
+

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -25,56 +27,26 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class OutlierFeatureSummary(BaseModel):
     """
     OutlierFeatureSummary
-    """
-
-  # noqa: E501
-    contributing_feature_name: Optional[StrictStr] = Field(
-        default=None,
-        description="Contributing feature name",
-        alias="contributingFeatureName")
-    identity_outlier_display_name: Optional[StrictStr] = Field(
-        default=None,
-        description="Identity display name",
-        alias="identityOutlierDisplayName")
-    outlier_feature_display_values: Optional[
-        List[OutlierFeatureSummaryOutlierFeatureDisplayValuesInner]] = Field(
-            default=None, alias="outlierFeatureDisplayValues")
-    feature_definition: Optional[StrictStr] = Field(
-        default=None,
-        description="Definition of the feature",
-        alias="featureDefinition")
-    feature_explanation: Optional[StrictStr] = Field(
-        default=None,
-        description="Detailed explanation of the feature",
-        alias="featureExplanation")
-    peer_display_name: Optional[StrictStr] = Field(
-        default=None,
-        description="outlier's peer identity display name",
-        alias="peerDisplayName")
-    peer_identity_id: Optional[StrictStr] = Field(
-        default=None,
-        description="outlier's peer identity id",
-        alias="peerIdentityId")
-    access_item_reference: Optional[Dict[str, Any]] = Field(
-        default=None,
-        description="Access Item reference",
-        alias="accessItemReference")
-    __properties: ClassVar[List[str]] = [
-        "contributingFeatureName", "identityOutlierDisplayName",
-        "outlierFeatureDisplayValues", "featureDefinition",
-        "featureExplanation", "peerDisplayName", "peerIdentityId",
-        "accessItemReference"
-    ]
+    """ # noqa: E501
+    contributing_feature_name: Optional[StrictStr] = Field(default=None, description="Contributing feature name", alias="contributingFeatureName")
+    identity_outlier_display_name: Optional[StrictStr] = Field(default=None, description="Identity display name", alias="identityOutlierDisplayName")
+    outlier_feature_display_values: Optional[List[OutlierFeatureSummaryOutlierFeatureDisplayValuesInner]] = Field(default=None, alias="outlierFeatureDisplayValues")
+    feature_definition: Optional[StrictStr] = Field(default=None, description="Definition of the feature", alias="featureDefinition")
+    feature_explanation: Optional[StrictStr] = Field(default=None, description="Detailed explanation of the feature", alias="featureExplanation")
+    peer_display_name: Optional[StrictStr] = Field(default=None, description="outlier's peer identity display name", alias="peerDisplayName")
+    peer_identity_id: Optional[StrictStr] = Field(default=None, description="outlier's peer identity id", alias="peerIdentityId")
+    access_item_reference: Optional[Dict[str, Any]] = Field(default=None, description="Access Item reference", alias="accessItemReference")
+    __properties: ClassVar[List[str]] = ["contributingFeatureName", "identityOutlierDisplayName", "outlierFeatureDisplayValues", "featureDefinition", "featureExplanation", "peerDisplayName", "peerIdentityId", "accessItemReference"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -102,7 +74,8 @@ class OutlierFeatureSummary(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in outlier_feature_display_values (list)
@@ -124,24 +97,15 @@ class OutlierFeatureSummary(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "contributingFeatureName":
-            obj.get("contributingFeatureName"),
-            "identityOutlierDisplayName":
-            obj.get("identityOutlierDisplayName"),
-            "outlierFeatureDisplayValues": [
-                OutlierFeatureSummaryOutlierFeatureDisplayValuesInner.
-                from_dict(_item)
-                for _item in obj.get("outlierFeatureDisplayValues")
-            ] if obj.get("outlierFeatureDisplayValues") is not None else None,
-            "featureDefinition":
-            obj.get("featureDefinition"),
-            "featureExplanation":
-            obj.get("featureExplanation"),
-            "peerDisplayName":
-            obj.get("peerDisplayName"),
-            "peerIdentityId":
-            obj.get("peerIdentityId"),
-            "accessItemReference":
-            obj.get("accessItemReference")
+            "contributingFeatureName": obj.get("contributingFeatureName"),
+            "identityOutlierDisplayName": obj.get("identityOutlierDisplayName"),
+            "outlierFeatureDisplayValues": [OutlierFeatureSummaryOutlierFeatureDisplayValuesInner.from_dict(_item) for _item in obj.get("outlierFeatureDisplayValues")] if obj.get("outlierFeatureDisplayValues") is not None else None,
+            "featureDefinition": obj.get("featureDefinition"),
+            "featureExplanation": obj.get("featureExplanation"),
+            "peerDisplayName": obj.get("peerDisplayName"),
+            "peerIdentityId": obj.get("peerIdentityId"),
+            "accessItemReference": obj.get("accessItemReference")
         })
         return _obj
+
+

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.import_options import ImportOptions
-
 
 class TestImportOptions(unittest.TestCase):
     """ImportOptions unit test stubs"""
@@ -57,7 +57,6 @@ class TestImportOptions(unittest.TestCase):
         """Test ImportOptions"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

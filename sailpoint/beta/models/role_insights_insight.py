@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt, StrictStr
@@ -24,41 +26,22 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class RoleInsightsInsight(BaseModel):
     """
     RoleInsightsInsight
-    """
-
-  # noqa: E501
-    type: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "The number of identities in this role with the entitlement.")
-    identities_with_access: Optional[StrictInt] = Field(
-        default=None,
-        description=
-        "The number of identities in this role with the entitlement.",
-        alias="identitiesWithAccess")
-    identities_impacted: Optional[StrictInt] = Field(
-        default=None,
-        description=
-        "The number of identities in this role that do not have the specified entitlement.",
-        alias="identitiesImpacted")
-    total_number_of_identities: Optional[StrictInt] = Field(
-        default=None,
-        description="The total number of identities.",
-        alias="totalNumberOfIdentities")
-    __properties: ClassVar[List[str]] = [
-        "type", "identitiesWithAccess", "identitiesImpacted",
-        "totalNumberOfIdentities"
-    ]
+    """ # noqa: E501
+    type: Optional[StrictStr] = Field(default=None, description="The number of identities in this role with the entitlement.")
+    identities_with_access: Optional[StrictInt] = Field(default=None, description="The number of identities in this role with the entitlement.", alias="identitiesWithAccess")
+    identities_impacted: Optional[StrictInt] = Field(default=None, description="The number of identities in this role that do not have the specified entitlement.", alias="identitiesImpacted")
+    total_number_of_identities: Optional[StrictInt] = Field(default=None, description="The total number of identities.", alias="totalNumberOfIdentities")
+    __properties: ClassVar[List[str]] = ["type", "identitiesWithAccess", "identitiesImpacted", "totalNumberOfIdentities"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -86,7 +69,8 @@ class RoleInsightsInsight(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -101,13 +85,11 @@ class RoleInsightsInsight(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "type":
-            obj.get("type"),
-            "identitiesWithAccess":
-            obj.get("identitiesWithAccess"),
-            "identitiesImpacted":
-            obj.get("identitiesImpacted"),
-            "totalNumberOfIdentities":
-            obj.get("totalNumberOfIdentities")
+            "type": obj.get("type"),
+            "identitiesWithAccess": obj.get("identitiesWithAccess"),
+            "identitiesImpacted": obj.get("identitiesImpacted"),
+            "totalNumberOfIdentities": obj.get("totalNumberOfIdentities")
         })
         return _obj
+
+

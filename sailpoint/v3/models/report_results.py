@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -25,42 +26,19 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ReportResults(BaseModel):
     """
     Details about report result or current state.
-    """
-
-  # noqa: E501
-    report_type: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Use this property to define what report should be processed in the RDE service.",
-        alias="reportType")
-    task_def_name: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Name of the task definition which is started to process requesting report. Usually the same as report name",
-        alias="taskDefName")
-    id: Optional[StrictStr] = Field(
-        default=None, description="Unique task definition identifier.")
-    created: Optional[datetime] = Field(
-        default=None, description="Report processing start date")
-    status: Optional[StrictStr] = Field(
-        default=None, description="Report current state or result status.")
-    duration: Optional[StrictInt] = Field(
-        default=None, description="Report processing time in ms.")
-    rows: Optional[StrictInt] = Field(default=None,
-                                      description="Report size in rows.")
-    available_formats: Optional[List[StrictStr]] = Field(
-        default=None,
-        description=
-        "Output report file formats. This are formats for calling get endpoint as a query parameter 'fileFormat'.  In case report won't have this argument there will be ['CSV', 'PDF'] as default.",
-        alias="availableFormats")
-    __properties: ClassVar[List[str]] = [
-        "reportType", "taskDefName", "id", "created", "status", "duration",
-        "rows", "availableFormats"
-    ]
+    """ # noqa: E501
+    report_type: Optional[StrictStr] = Field(default=None, description="Use this property to define what report should be processed in the RDE service.", alias="reportType")
+    task_def_name: Optional[StrictStr] = Field(default=None, description="Name of the task definition which is started to process requesting report. Usually the same as report name", alias="taskDefName")
+    id: Optional[StrictStr] = Field(default=None, description="Unique task definition identifier.")
+    created: Optional[datetime] = Field(default=None, description="Report processing start date")
+    status: Optional[StrictStr] = Field(default=None, description="Report current state or result status.")
+    duration: Optional[StrictInt] = Field(default=None, description="Report processing time in ms.")
+    rows: Optional[StrictInt] = Field(default=None, description="Report size in rows.")
+    available_formats: Optional[List[StrictStr]] = Field(default=None, description="Output report file formats. This are formats for calling get endpoint as a query parameter 'fileFormat'.  In case report won't have this argument there will be ['CSV', 'PDF'] as default.", alias="availableFormats")
+    __properties: ClassVar[List[str]] = ["reportType", "taskDefName", "id", "created", "status", "duration", "rows", "availableFormats"]
 
     @field_validator('report_type')
     def report_type_validate_enum(cls, value):
@@ -68,13 +46,8 @@ class ReportResults(BaseModel):
         if value is None:
             return value
 
-        if value not in ('ACCOUNTS', 'IDENTITIES_DETAILS', 'IDENTITIES',
-                         'IDENTITY_PROFILE_IDENTITY_ERROR',
-                         'ORPHAN_IDENTITIES', 'SEARCH_EXPORT',
-                         'UNCORRELATED_ACCOUNTS'):
-            raise ValueError(
-                "must be one of enum values ('ACCOUNTS', 'IDENTITIES_DETAILS', 'IDENTITIES', 'IDENTITY_PROFILE_IDENTITY_ERROR', 'ORPHAN_IDENTITIES', 'SEARCH_EXPORT', 'UNCORRELATED_ACCOUNTS')"
-            )
+        if value not in ('ACCOUNTS', 'IDENTITIES_DETAILS', 'IDENTITIES', 'IDENTITY_PROFILE_IDENTITY_ERROR', 'ORPHAN_IDENTITIES', 'SEARCH_EXPORT', 'UNCORRELATED_ACCOUNTS'):
+            raise ValueError("must be one of enum values ('ACCOUNTS', 'IDENTITIES_DETAILS', 'IDENTITIES', 'IDENTITY_PROFILE_IDENTITY_ERROR', 'ORPHAN_IDENTITIES', 'SEARCH_EXPORT', 'UNCORRELATED_ACCOUNTS')")
         return value
 
     @field_validator('status')
@@ -84,9 +57,7 @@ class ReportResults(BaseModel):
             return value
 
         if value not in ('SUCCESS', 'FAILURE', 'WARNING', 'TERMINATED'):
-            raise ValueError(
-                "must be one of enum values ('SUCCESS', 'FAILURE', 'WARNING', 'TERMINATED')"
-            )
+            raise ValueError("must be one of enum values ('SUCCESS', 'FAILURE', 'WARNING', 'TERMINATED')")
         return value
 
     @field_validator('available_formats')
@@ -97,8 +68,7 @@ class ReportResults(BaseModel):
 
         for i in value:
             if i not in ('CSV', 'PDF'):
-                raise ValueError(
-                    "each list item must be one of ('CSV', 'PDF')")
+                raise ValueError("each list item must be one of ('CSV', 'PDF')")
         return value
 
     model_config = {
@@ -106,6 +76,7 @@ class ReportResults(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -133,7 +104,8 @@ class ReportResults(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -148,21 +120,15 @@ class ReportResults(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "reportType":
-            obj.get("reportType"),
-            "taskDefName":
-            obj.get("taskDefName"),
-            "id":
-            obj.get("id"),
-            "created":
-            obj.get("created"),
-            "status":
-            obj.get("status"),
-            "duration":
-            obj.get("duration"),
-            "rows":
-            obj.get("rows"),
-            "availableFormats":
-            obj.get("availableFormats")
+            "reportType": obj.get("reportType"),
+            "taskDefName": obj.get("taskDefName"),
+            "id": obj.get("id"),
+            "created": obj.get("created"),
+            "status": obj.get("status"),
+            "duration": obj.get("duration"),
+            "rows": obj.get("rows"),
+            "availableFormats": obj.get("availableFormats")
         })
         return _obj
+
+

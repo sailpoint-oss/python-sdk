@@ -9,21 +9,21 @@ Name | Type | Description | Notes
 **id** | **str** | The unique ID of the referenced object. | 
 **name** | **str** | The human readable name of the referenced object. | 
 **type** | [**DocumentType**](DocumentType.md) |  | 
-**description** | **str** | The description of the access item | [optional] 
-**created** | **datetime** | A date-time in ISO-8601 format | [optional] 
-**modified** | **datetime** | A date-time in ISO-8601 format | [optional] 
-**synced** | **datetime** | A date-time in ISO-8601 format | [optional] 
-**enabled** | **bool** |  | [optional] 
-**requestable** | **bool** | Indicates if the access can be requested | [optional] 
-**request_comments_required** | **bool** | Indicates if comments are required when requesting access | [optional] 
-**owner** | [**Owner**](Owner.md) |  | [optional] 
-**access_profiles** | [**List[Reference]**](Reference.md) |  | [optional] 
-**access_profile_count** | **int** |  | [optional] 
-**tags** | **List[str]** |  | [optional] 
-**segments** | [**List[Reference]**](Reference.md) |  | [optional] 
-**segment_count** | **int** |  | [optional] 
-**entitlements** | [**List[AccessProfileRole]**](AccessProfileRole.md) |  | [optional] 
-**entitlement_count** | **int** |  | [optional] 
+**description** | **str** | Access item&#39;s description. | [optional] 
+**created** | **datetime** | ISO-8601 date-time referring to the time when the object was created. | [optional] 
+**modified** | **datetime** | ISO-8601 date-time referring to the time when the object was last modified. | [optional] 
+**synced** | **datetime** | ISO-8601 date-time referring to the date-time when object was queued to be synced into search database for use in the search API.   This date-time changes anytime there is an update to the object, which triggers a synchronization event being sent to the search database.  There may be some delay between the &#x60;synced&#x60; time and the time when the updated data is actually available in the search API.  | [optional] 
+**enabled** | **bool** | Indicates whether the access item is currently enabled. | [optional] [default to False]
+**requestable** | **bool** | Indicates whether the access item can be requested. | [optional] [default to True]
+**request_comments_required** | **bool** | Indicates whether comments are required for requests to access the item. | [optional] [default to False]
+**owner** | [**BaseAccessAllOfOwner**](BaseAccessAllOfOwner.md) |  | [optional] 
+**access_profiles** | [**List[BaseAccessProfile]**](BaseAccessProfile.md) | Access profiles included with the role. | [optional] 
+**access_profile_count** | **int** | Number of access profiles included with the role. | [optional] 
+**tags** | **List[str]** | Tags that have been applied to the object. | [optional] 
+**segments** | [**List[BaseSegment]**](BaseSegment.md) | Segments with the role. | [optional] 
+**segment_count** | **int** | Number of segments with the role. | [optional] 
+**entitlements** | [**List[BaseEntitlement]**](BaseEntitlement.md) | Entitlements included with the role. | [optional] 
+**entitlement_count** | **int** | Number of entitlements included with the role. | [optional] 
 
 ## Example
 

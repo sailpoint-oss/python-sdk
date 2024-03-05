@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,20 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class FormInstanceRecipient(BaseModel):
     """
     FormInstanceRecipient
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="ID is a unique identifier")
-    type: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Type is a FormInstanceRecipientType value IDENTITY FormInstanceRecipientIdentity"
-    )
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="ID is a unique identifier")
+    type: Optional[StrictStr] = Field(default=None, description="Type is a FormInstanceRecipientType value IDENTITY FormInstanceRecipientIdentity")
     __properties: ClassVar[List[str]] = ["id", "type"]
 
     @field_validator('type')
@@ -55,6 +49,7 @@ class FormInstanceRecipient(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -82,7 +77,8 @@ class FormInstanceRecipient(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -101,3 +97,5 @@ class FormInstanceRecipient(BaseModel):
             "type": obj.get("type")
         })
         return _obj
+
+

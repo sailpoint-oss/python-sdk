@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
@@ -26,35 +28,25 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class CommonAccessItemResponse(BaseModel):
     """
     CommonAccessItemResponse
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="Common Access Item ID")
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="Common Access Item ID")
     access: Optional[CommonAccessItemAccess] = None
     status: Optional[CommonAccessItemState] = None
-    last_updated: Optional[StrictStr] = Field(default=None,
-                                              alias="lastUpdated")
-    reviewed_by_user: Optional[StrictBool] = Field(default=None,
-                                                   alias="reviewedByUser")
-    last_reviewed: Optional[StrictStr] = Field(default=None,
-                                               alias="lastReviewed")
-    created_by_user: Optional[StrictStr] = Field(default=None,
-                                                 alias="createdByUser")
-    __properties: ClassVar[List[str]] = [
-        "id", "access", "status", "lastUpdated", "reviewedByUser",
-        "lastReviewed", "createdByUser"
-    ]
+    last_updated: Optional[StrictStr] = Field(default=None, alias="lastUpdated")
+    reviewed_by_user: Optional[StrictBool] = Field(default=None, alias="reviewedByUser")
+    last_reviewed: Optional[StrictStr] = Field(default=None, alias="lastReviewed")
+    created_by_user: Optional[StrictStr] = Field(default=None, alias="createdByUser")
+    __properties: ClassVar[List[str]] = ["id", "access", "status", "lastUpdated", "reviewedByUser", "lastReviewed", "createdByUser"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -82,7 +74,8 @@ class CommonAccessItemResponse(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of access
@@ -100,20 +93,14 @@ class CommonAccessItemResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "access":
-            CommonAccessItemAccess.from_dict(obj.get("access"))
-            if obj.get("access") is not None else None,
-            "status":
-            obj.get("status"),
-            "lastUpdated":
-            obj.get("lastUpdated"),
-            "reviewedByUser":
-            obj.get("reviewedByUser"),
-            "lastReviewed":
-            obj.get("lastReviewed"),
-            "createdByUser":
-            obj.get("createdByUser")
+            "id": obj.get("id"),
+            "access": CommonAccessItemAccess.from_dict(obj.get("access")) if obj.get("access") is not None else None,
+            "status": obj.get("status"),
+            "lastUpdated": obj.get("lastUpdated"),
+            "reviewedByUser": obj.get("reviewedByUser"),
+            "lastReviewed": obj.get("lastReviewed"),
+            "createdByUser": obj.get("createdByUser")
         })
         return _obj
+
+

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.common_access_item_state import CommonAccessItemState
-
 
 class TestCommonAccessItemState(unittest.TestCase):
     """CommonAccessItemState unit test stubs"""
@@ -29,7 +29,6 @@ class TestCommonAccessItemState(unittest.TestCase):
     def testCommonAccessItemState(self):
         """Test CommonAccessItemState"""
         # inst = CommonAccessItemState()
-
 
 if __name__ == '__main__':
     unittest.main()

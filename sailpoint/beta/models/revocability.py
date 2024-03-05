@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
@@ -25,18 +27,11 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class Revocability(BaseModel):
     """
     Revocability
-    """
-
-  # noqa: E501
-    approval_schemes: Optional[List[AccessProfileApprovalScheme]] = Field(
-        default=None,
-        description=
-        "List describing the steps in approving the revocation request",
-        alias="approvalSchemes")
+    """ # noqa: E501
+    approval_schemes: Optional[List[AccessProfileApprovalScheme]] = Field(default=None, description="List describing the steps in approving the revocation request", alias="approvalSchemes")
     __properties: ClassVar[List[str]] = ["approvalSchemes"]
 
     model_config = {
@@ -44,6 +39,7 @@ class Revocability(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -71,7 +67,8 @@ class Revocability(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in approval_schemes (list)
@@ -98,9 +95,8 @@ class Revocability(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "approvalSchemes": [
-                AccessProfileApprovalScheme.from_dict(_item)
-                for _item in obj.get("approvalSchemes")
-            ] if obj.get("approvalSchemes") is not None else None
+            "approvalSchemes": [AccessProfileApprovalScheme.from_dict(_item) for _item in obj.get("approvalSchemes")] if obj.get("approvalSchemes") is not None else None
         })
         return _obj
+
+

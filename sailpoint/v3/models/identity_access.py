@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 from inspect import getfullargspec
 import json
@@ -30,10 +31,7 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-IDENTITYACCESS_ONE_OF_SCHEMAS = [
-    "AccessProfileEntitlement", "AccessProfileRole", "AccessProfileSummary"
-]
-
+IDENTITYACCESS_ONE_OF_SCHEMAS = ["AccessProfileEntitlement", "AccessProfileRole", "AccessProfileSummary"]
 
 class IdentityAccess(BaseModel):
     """
@@ -45,30 +43,24 @@ class IdentityAccess(BaseModel):
     oneof_schema_2_validator: Optional[AccessProfileEntitlement] = None
     # data type: AccessProfileRole
     oneof_schema_3_validator: Optional[AccessProfileRole] = None
-    actual_instance: Optional[Union[AccessProfileEntitlement,
-                                    AccessProfileRole,
-                                    AccessProfileSummary]] = None
-    one_of_schemas: List[str] = Literal["AccessProfileEntitlement",
-                                        "AccessProfileRole",
-                                        "AccessProfileSummary"]
+    actual_instance: Optional[Union[AccessProfileEntitlement, AccessProfileRole, AccessProfileSummary]] = None
+    one_of_schemas: List[str] = Literal["AccessProfileEntitlement", "AccessProfileRole", "AccessProfileSummary"]
 
     model_config = {
         "validate_assignment": True,
         "protected_namespaces": (),
     }
 
-    discriminator_value_class_map: Dict[str, str] = {}
+
+    discriminator_value_class_map: Dict[str, str] = {
+    }
 
     def __init__(self, *args, **kwargs) -> None:
         if args:
             if len(args) > 1:
-                raise ValueError(
-                    "If a position argument is used, only 1 is allowed to set `actual_instance`"
-                )
+                raise ValueError("If a position argument is used, only 1 is allowed to set `actual_instance`")
             if kwargs:
-                raise ValueError(
-                    "If a position argument is used, keyword arguments cannot be used."
-                )
+                raise ValueError("If a position argument is used, keyword arguments cannot be used.")
             super().__init__(actual_instance=args[0])
         else:
             super().__init__(**kwargs)
@@ -80,33 +72,25 @@ class IdentityAccess(BaseModel):
         match = 0
         # validate data type: AccessProfileSummary
         if not isinstance(v, AccessProfileSummary):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `AccessProfileSummary`")
+            error_messages.append(f"Error! Input type `{type(v)}` is not `AccessProfileSummary`")
         else:
             match += 1
         # validate data type: AccessProfileEntitlement
         if not isinstance(v, AccessProfileEntitlement):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `AccessProfileEntitlement`"
-            )
+            error_messages.append(f"Error! Input type `{type(v)}` is not `AccessProfileEntitlement`")
         else:
             match += 1
         # validate data type: AccessProfileRole
         if not isinstance(v, AccessProfileRole):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `AccessProfileRole`")
+            error_messages.append(f"Error! Input type `{type(v)}` is not `AccessProfileRole`")
         else:
             match += 1
         if match > 1:
             # more than 1 match
-            raise ValueError(
-                "Multiple matches found when setting `actual_instance` in IdentityAccess with oneOf schemas: AccessProfileEntitlement, AccessProfileRole, AccessProfileSummary. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when setting `actual_instance` in IdentityAccess with oneOf schemas: AccessProfileEntitlement, AccessProfileRole, AccessProfileSummary. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError(
-                "No match found when setting `actual_instance` in IdentityAccess with oneOf schemas: AccessProfileEntitlement, AccessProfileRole, AccessProfileSummary. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in IdentityAccess with oneOf schemas: AccessProfileEntitlement, AccessProfileRole, AccessProfileSummary. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -129,8 +113,7 @@ class IdentityAccess(BaseModel):
             error_messages.append(str(e))
         # deserialize data into AccessProfileEntitlement
         try:
-            instance.actual_instance = AccessProfileEntitlement.from_json(
-                json_str)
+            instance.actual_instance = AccessProfileEntitlement.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
@@ -143,14 +126,10 @@ class IdentityAccess(BaseModel):
 
         if match > 1:
             # more than 1 match
-            raise ValueError(
-                "Multiple matches found when deserializing the JSON string into IdentityAccess with oneOf schemas: AccessProfileEntitlement, AccessProfileRole, AccessProfileSummary. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when deserializing the JSON string into IdentityAccess with oneOf schemas: AccessProfileEntitlement, AccessProfileRole, AccessProfileSummary. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError(
-                "No match found when deserializing the JSON string into IdentityAccess with oneOf schemas: AccessProfileEntitlement, AccessProfileRole, AccessProfileSummary. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into IdentityAccess with oneOf schemas: AccessProfileEntitlement, AccessProfileRole, AccessProfileSummary. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -180,3 +159,5 @@ class IdentityAccess(BaseModel):
     def to_str(self) -> str:
         """Returns the string representation of the actual instance"""
         return pprint.pformat(self.model_dump())
+
+

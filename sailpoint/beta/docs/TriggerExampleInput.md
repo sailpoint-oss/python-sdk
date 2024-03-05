@@ -7,7 +7,7 @@ An example of the JSON payload that will be sent by the trigger to the subscribe
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **access_request_id** | **str** | The unique ID of the access request. | 
-**requested_for** | [**AccessItemRequestedForDto**](AccessItemRequestedForDto.md) |  | 
+**requested_for** | [**List[AccessItemRequestedForDto]**](AccessItemRequestedForDto.md) | Identities access was requested for. | 
 **requested_items** | [**List[AccessRequestPreApprovalRequestedItemsInner]**](AccessRequestPreApprovalRequestedItemsInner.md) | Details of the access items being requested. | 
 **requested_by** | [**AccessItemRequesterDto**](AccessItemRequesterDto.md) |  | 
 **requested_items_status** | [**List[AccessRequestPostApprovalRequestedItemsStatusInner]**](AccessRequestPostApprovalRequestedItemsStatusInner.md) | Details on the outcome of each access item. | 

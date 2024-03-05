@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr
@@ -24,19 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ValidateFilterInputDto(BaseModel):
     """
     ValidateFilterInputDto
-    """
-
-  # noqa: E501
-    input: Dict[str, Any] = Field(
-        description="Mock input to evaluate filter expression against.")
-    filter: StrictStr = Field(
-        description=
-        "JSONPath filter to conditionally invoke trigger when expression evaluates to true."
-    )
+    """ # noqa: E501
+    input: Dict[str, Any] = Field(description="Mock input to evaluate filter expression against.")
+    filter: StrictStr = Field(description="JSONPath filter to conditionally invoke trigger when expression evaluates to true.")
     __properties: ClassVar[List[str]] = ["input", "filter"]
 
     model_config = {
@@ -44,6 +39,7 @@ class ValidateFilterInputDto(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -71,7 +67,8 @@ class ValidateFilterInputDto(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -90,3 +87,5 @@ class ValidateFilterInputDto(BaseModel):
             "filter": obj.get("filter")
         })
         return _obj
+
+

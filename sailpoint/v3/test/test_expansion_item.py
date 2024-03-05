@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.expansion_item import ExpansionItem
-
 
 class TestExpansionItem(unittest.TestCase):
     """ExpansionItem unit test stubs"""
@@ -56,7 +56,6 @@ class TestExpansionItem(unittest.TestCase):
         """Test ExpansionItem"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

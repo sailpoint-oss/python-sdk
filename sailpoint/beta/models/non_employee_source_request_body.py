@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -26,41 +28,24 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class NonEmployeeSourceRequestBody(BaseModel):
     """
     NonEmployeeSourceRequestBody
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     name: StrictStr = Field(description="Name of non-employee source.")
-    description: StrictStr = Field(
-        description="Description of non-employee source.")
+    description: StrictStr = Field(description="Description of non-employee source.")
     owner: NonEmployeeIdnUserRequest
-    management_workgroup: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "The ID for the management workgroup that contains source sub-admins",
-        alias="managementWorkgroup")
-    approvers: Optional[Annotated[List[NonEmployeeIdnUserRequest],
-                                  Field(max_length=3)]] = Field(
-                                      default=None,
-                                      description="List of approvers.")
-    account_managers: Optional[Annotated[
-        List[NonEmployeeIdnUserRequest],
-        Field(max_length=10)]] = Field(default=None,
-                                       description="List of account managers.",
-                                       alias="accountManagers")
-    __properties: ClassVar[List[str]] = [
-        "name", "description", "owner", "managementWorkgroup", "approvers",
-        "accountManagers"
-    ]
+    management_workgroup: Optional[StrictStr] = Field(default=None, description="The ID for the management workgroup that contains source sub-admins", alias="managementWorkgroup")
+    approvers: Optional[Annotated[List[NonEmployeeIdnUserRequest], Field(max_length=3)]] = Field(default=None, description="List of approvers.")
+    account_managers: Optional[Annotated[List[NonEmployeeIdnUserRequest], Field(max_length=10)]] = Field(default=None, description="List of account managers.", alias="accountManagers")
+    __properties: ClassVar[List[str]] = ["name", "description", "owner", "managementWorkgroup", "approvers", "accountManagers"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -88,7 +73,8 @@ class NonEmployeeSourceRequestBody(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of owner
@@ -120,22 +106,13 @@ class NonEmployeeSourceRequestBody(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name":
-            obj.get("name"),
-            "description":
-            obj.get("description"),
-            "owner":
-            NonEmployeeIdnUserRequest.from_dict(obj.get("owner"))
-            if obj.get("owner") is not None else None,
-            "managementWorkgroup":
-            obj.get("managementWorkgroup"),
-            "approvers": [
-                NonEmployeeIdnUserRequest.from_dict(_item)
-                for _item in obj.get("approvers")
-            ] if obj.get("approvers") is not None else None,
-            "accountManagers": [
-                NonEmployeeIdnUserRequest.from_dict(_item)
-                for _item in obj.get("accountManagers")
-            ] if obj.get("accountManagers") is not None else None
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "owner": NonEmployeeIdnUserRequest.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
+            "managementWorkgroup": obj.get("managementWorkgroup"),
+            "approvers": [NonEmployeeIdnUserRequest.from_dict(_item) for _item in obj.get("approvers")] if obj.get("approvers") is not None else None,
+            "accountManagers": [NonEmployeeIdnUserRequest.from_dict(_item) for _item in obj.get("accountManagers")] if obj.get("accountManagers") is not None else None
         })
         return _obj
+
+

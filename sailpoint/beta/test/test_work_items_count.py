@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.work_items_count import WorkItemsCount
-
 
 class TestWorkItemsCount(unittest.TestCase):
     """WorkItemsCount unit test stubs"""
@@ -47,7 +47,6 @@ class TestWorkItemsCount(unittest.TestCase):
         """Test WorkItemsCount"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.reassignment_type_enum import ReassignmentTypeEnum
-
 
 class TestReassignmentTypeEnum(unittest.TestCase):
     """ReassignmentTypeEnum unit test stubs"""
@@ -29,7 +29,6 @@ class TestReassignmentTypeEnum(unittest.TestCase):
     def testReassignmentTypeEnum(self):
         """Test ReassignmentTypeEnum"""
         # inst = ReassignmentTypeEnum()
-
 
 if __name__ == '__main__':
     unittest.main()

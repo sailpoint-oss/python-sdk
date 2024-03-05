@@ -1,6 +1,5 @@
 # CompletedApprovalReviewerComment
 
-The approval's reviewer's comment.
 
 ## Properties
 
@@ -8,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **comment** | **str** | Comment content. | [optional] 
 **created** | **datetime** | Date and time comment was created. | [optional] 
+**author** | [**CommentDtoAuthor**](CommentDtoAuthor.md) |  | [optional] 
 
 ## Example
 

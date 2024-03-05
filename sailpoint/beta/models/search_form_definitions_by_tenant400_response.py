@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt, StrictStr
@@ -25,26 +27,22 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class SearchFormDefinitionsByTenant400Response(BaseModel):
     """
     SearchFormDefinitionsByTenant400Response
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     detail_code: Optional[StrictStr] = Field(default=None, alias="detailCode")
     messages: Optional[List[ErrorMessage]] = None
     status_code: Optional[StrictInt] = Field(default=None, alias="statusCode")
     tracking_id: Optional[StrictStr] = Field(default=None, alias="trackingId")
-    __properties: ClassVar[List[str]] = [
-        "detailCode", "messages", "statusCode", "trackingId"
-    ]
+    __properties: ClassVar[List[str]] = ["detailCode", "messages", "statusCode", "trackingId"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -72,7 +70,8 @@ class SearchFormDefinitionsByTenant400Response(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in messages (list)
@@ -94,14 +93,11 @@ class SearchFormDefinitionsByTenant400Response(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "detailCode":
-            obj.get("detailCode"),
-            "messages":
-            [ErrorMessage.from_dict(_item) for _item in obj.get("messages")]
-            if obj.get("messages") is not None else None,
-            "statusCode":
-            obj.get("statusCode"),
-            "trackingId":
-            obj.get("trackingId")
+            "detailCode": obj.get("detailCode"),
+            "messages": [ErrorMessage.from_dict(_item) for _item in obj.get("messages")] if obj.get("messages") is not None else None,
+            "statusCode": obj.get("statusCode"),
+            "trackingId": obj.get("trackingId")
         })
         return _obj
+
+

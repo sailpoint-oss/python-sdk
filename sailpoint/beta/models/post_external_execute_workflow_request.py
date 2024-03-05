@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
@@ -24,15 +26,11 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class PostExternalExecuteWorkflowRequest(BaseModel):
     """
     PostExternalExecuteWorkflowRequest
-    """
-
-  # noqa: E501
-    input: Optional[Dict[str, Any]] = Field(
-        default=None, description="The input for the workflow")
+    """ # noqa: E501
+    input: Optional[Dict[str, Any]] = Field(default=None, description="The input for the workflow")
     __properties: ClassVar[List[str]] = ["input"]
 
     model_config = {
@@ -40,6 +38,7 @@ class PostExternalExecuteWorkflowRequest(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -67,7 +66,8 @@ class PostExternalExecuteWorkflowRequest(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -81,5 +81,9 @@ class PostExternalExecuteWorkflowRequest(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({"input": obj.get("input")})
+        _obj = cls.model_validate({
+            "input": obj.get("input")
+        })
         return _obj
+
+

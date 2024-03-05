@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,19 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class TaskResultDto(BaseModel):
     """
     Task result.
-    """
-
-  # noqa: E501
-    type: Optional[StrictStr] = Field(default=None,
-                                      description="Task result DTO type.")
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="Task result ID.")
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="Task result display name.")
+    """ # noqa: E501
+    type: Optional[StrictStr] = Field(default=None, description="Task result DTO type.")
+    id: Optional[StrictStr] = Field(default=None, description="Task result ID.")
+    name: Optional[StrictStr] = Field(default=None, description="Task result display name.")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')
@@ -54,6 +50,7 @@ class TaskResultDto(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -81,7 +78,8 @@ class TaskResultDto(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if name (nullable) is None
@@ -106,3 +104,5 @@ class TaskResultDto(BaseModel):
             "name": obj.get("name")
         })
         return _obj
+
+

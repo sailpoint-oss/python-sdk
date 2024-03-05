@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr
@@ -24,18 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class TaskReturnDetails(BaseModel):
     """
     Task return details
-    """
-
-  # noqa: E501
-    name: StrictStr = Field(
-        description="Display name of the TaskReturnDetails")
-    attribute_name: StrictStr = Field(
-        description="Attribute the TaskReturnDetails is for",
-        alias="attributeName")
+    """ # noqa: E501
+    name: StrictStr = Field(description="Display name of the TaskReturnDetails")
+    attribute_name: StrictStr = Field(description="Attribute the TaskReturnDetails is for", alias="attributeName")
     __properties: ClassVar[List[str]] = ["name", "attributeName"]
 
     model_config = {
@@ -43,6 +39,7 @@ class TaskReturnDetails(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -70,7 +67,8 @@ class TaskReturnDetails(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -89,3 +87,5 @@ class TaskReturnDetails(BaseModel):
             "attributeName": obj.get("attributeName")
         })
         return _obj
+
+

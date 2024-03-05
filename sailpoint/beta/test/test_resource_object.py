@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.resource_object import ResourceObject
-
 
 class TestResourceObject(unittest.TestCase):
     """ResourceObject unit test stubs"""
@@ -59,7 +59,6 @@ class TestResourceObject(unittest.TestCase):
         """Test ResourceObject"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

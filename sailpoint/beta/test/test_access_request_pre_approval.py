@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.access_request_pre_approval import AccessRequestPreApproval
-
 
 class TestAccessRequestPreApproval(unittest.TestCase):
     """AccessRequestPreApproval unit test stubs"""
@@ -37,10 +37,12 @@ class TestAccessRequestPreApproval(unittest.TestCase):
         if include_optional:
             return AccessRequestPreApproval(
                 access_request_id = '2c91808b6ef1d43e016efba0ce470904',
-                requested_for = sailpoint.beta.models.access_item_requested_for_dto.AccessItemRequestedForDto(
-                    type = 'IDENTITY', 
-                    id = '2c4180a46faadee4016fb4e018c20626', 
-                    name = 'Robert Robinson', ),
+                requested_for = [
+                    sailpoint.beta.models.access_item_requested_for_dto.AccessItemRequestedForDto(
+                        type = 'IDENTITY', 
+                        id = '2c4180a46faadee4016fb4e018c20626', 
+                        name = 'Robert Robinson', )
+                    ],
                 requested_items = [
                     sailpoint.beta.models.access_request_pre_approval_requested_items_inner.AccessRequestPreApproval_requestedItems_inner(
                         id = '2c91808b6ef1d43e016efba0ce470904', 
@@ -58,10 +60,12 @@ class TestAccessRequestPreApproval(unittest.TestCase):
         else:
             return AccessRequestPreApproval(
                 access_request_id = '2c91808b6ef1d43e016efba0ce470904',
-                requested_for = sailpoint.beta.models.access_item_requested_for_dto.AccessItemRequestedForDto(
-                    type = 'IDENTITY', 
-                    id = '2c4180a46faadee4016fb4e018c20626', 
-                    name = 'Robert Robinson', ),
+                requested_for = [
+                    sailpoint.beta.models.access_item_requested_for_dto.AccessItemRequestedForDto(
+                        type = 'IDENTITY', 
+                        id = '2c4180a46faadee4016fb4e018c20626', 
+                        name = 'Robert Robinson', )
+                    ],
                 requested_items = [
                     sailpoint.beta.models.access_request_pre_approval_requested_items_inner.AccessRequestPreApproval_requestedItems_inner(
                         id = '2c91808b6ef1d43e016efba0ce470904', 
@@ -82,7 +86,6 @@ class TestAccessRequestPreApproval(unittest.TestCase):
         """Test AccessRequestPreApproval"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

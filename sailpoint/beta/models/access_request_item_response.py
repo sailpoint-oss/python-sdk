@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -25,37 +27,19 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccessRequestItemResponse(BaseModel):
     """
     AccessRequestItemResponse
-    """
-
-  # noqa: E501
-    operation: Optional[StrictStr] = Field(
-        default=None, description="the access request item operation")
-    access_item_type: Optional[StrictStr] = Field(
-        default=None,
-        description="the access item type",
-        alias="accessItemType")
-    name: Optional[StrictStr] = Field(
-        default=None, description="the name of access request item")
-    decision: Optional[StrictStr] = Field(
-        default=None, description="the final decision for the access request")
-    description: Optional[StrictStr] = Field(
-        default=None, description="the description of access request item")
-    source_id: Optional[StrictStr] = Field(default=None,
-                                           description="the source id",
-                                           alias="sourceId")
-    source_name: Optional[StrictStr] = Field(default=None,
-                                             description="the source Name",
-                                             alias="sourceName")
-    approval_infos: Optional[List[ApprovalInfoResponse]] = Field(
-        default=None, alias="approvalInfos")
-    __properties: ClassVar[List[str]] = [
-        "operation", "accessItemType", "name", "decision", "description",
-        "sourceId", "sourceName", "approvalInfos"
-    ]
+    """ # noqa: E501
+    operation: Optional[StrictStr] = Field(default=None, description="the access request item operation")
+    access_item_type: Optional[StrictStr] = Field(default=None, description="the access item type", alias="accessItemType")
+    name: Optional[StrictStr] = Field(default=None, description="the name of access request item")
+    decision: Optional[StrictStr] = Field(default=None, description="the final decision for the access request")
+    description: Optional[StrictStr] = Field(default=None, description="the description of access request item")
+    source_id: Optional[StrictStr] = Field(default=None, description="the source id", alias="sourceId")
+    source_name: Optional[StrictStr] = Field(default=None, description="the source Name", alias="sourceName")
+    approval_infos: Optional[List[ApprovalInfoResponse]] = Field(default=None, alias="approvalInfos")
+    __properties: ClassVar[List[str]] = ["operation", "accessItemType", "name", "decision", "description", "sourceId", "sourceName", "approvalInfos"]
 
     @field_validator('decision')
     def decision_validate_enum(cls, value):
@@ -64,8 +48,7 @@ class AccessRequestItemResponse(BaseModel):
             return value
 
         if value not in ('APPROVED', 'REJECTED'):
-            raise ValueError(
-                "must be one of enum values ('APPROVED', 'REJECTED')")
+            raise ValueError("must be one of enum values ('APPROVED', 'REJECTED')")
         return value
 
     model_config = {
@@ -73,6 +56,7 @@ class AccessRequestItemResponse(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -100,7 +84,8 @@ class AccessRequestItemResponse(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in approval_infos (list)
@@ -122,23 +107,15 @@ class AccessRequestItemResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "operation":
-            obj.get("operation"),
-            "accessItemType":
-            obj.get("accessItemType"),
-            "name":
-            obj.get("name"),
-            "decision":
-            obj.get("decision"),
-            "description":
-            obj.get("description"),
-            "sourceId":
-            obj.get("sourceId"),
-            "sourceName":
-            obj.get("sourceName"),
-            "approvalInfos": [
-                ApprovalInfoResponse.from_dict(_item)
-                for _item in obj.get("approvalInfos")
-            ] if obj.get("approvalInfos") is not None else None
+            "operation": obj.get("operation"),
+            "accessItemType": obj.get("accessItemType"),
+            "name": obj.get("name"),
+            "decision": obj.get("decision"),
+            "description": obj.get("description"),
+            "sourceId": obj.get("sourceId"),
+            "sourceName": obj.get("sourceName"),
+            "approvalInfos": [ApprovalInfoResponse.from_dict(_item) for _item in obj.get("approvalInfos")] if obj.get("approvalInfos") is not None else None
         })
         return _obj
+
+

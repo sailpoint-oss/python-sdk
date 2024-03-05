@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -25,21 +27,14 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ConnectedObject(BaseModel):
     """
     ConnectedObject
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     type: Optional[ConnectedObjectType] = None
-    id: Optional[StrictStr] = Field(
-        default=None,
-        description="ID of the object to which this reference applies")
-    name: Optional[StrictStr] = Field(
-        default=None, description="Human-readable name of Connected object")
-    description: Optional[StrictStr] = Field(
-        default=None, description="Description of the Connected object.")
+    id: Optional[StrictStr] = Field(default=None, description="ID of the object to which this reference applies")
+    name: Optional[StrictStr] = Field(default=None, description="Human-readable name of Connected object")
+    description: Optional[StrictStr] = Field(default=None, description="Description of the Connected object.")
     __properties: ClassVar[List[str]] = ["type", "id", "name", "description"]
 
     model_config = {
@@ -47,6 +42,7 @@ class ConnectedObject(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -74,7 +70,8 @@ class ConnectedObject(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -95,3 +92,5 @@ class ConnectedObject(BaseModel):
             "description": obj.get("description")
         })
         return _obj
+
+

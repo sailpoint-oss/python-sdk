@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,18 +26,11 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class CampaignCompleteOptions(BaseModel):
     """
     CampaignCompleteOptions
-    """
-
-  # noqa: E501
-    auto_complete_action: Optional[StrictStr] = Field(
-        default='APPROVE',
-        description=
-        "Determines whether to auto-approve(APPROVE) or auto-revoke(REVOKE) upon campaign completion.",
-        alias="autoCompleteAction")
+    """ # noqa: E501
+    auto_complete_action: Optional[StrictStr] = Field(default='APPROVE', description="Determines whether to auto-approve(APPROVE) or auto-revoke(REVOKE) upon campaign completion.", alias="autoCompleteAction")
     __properties: ClassVar[List[str]] = ["autoCompleteAction"]
 
     @field_validator('auto_complete_action')
@@ -45,8 +40,7 @@ class CampaignCompleteOptions(BaseModel):
             return value
 
         if value not in ('APPROVE', 'REVOKE'):
-            raise ValueError(
-                "must be one of enum values ('APPROVE', 'REVOKE')")
+            raise ValueError("must be one of enum values ('APPROVE', 'REVOKE')")
         return value
 
     model_config = {
@@ -54,6 +48,7 @@ class CampaignCompleteOptions(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -81,7 +76,8 @@ class CampaignCompleteOptions(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -96,8 +92,8 @@ class CampaignCompleteOptions(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "autoCompleteAction":
-            obj.get("autoCompleteAction")
-            if obj.get("autoCompleteAction") is not None else 'APPROVE'
+            "autoCompleteAction": obj.get("autoCompleteAction") if obj.get("autoCompleteAction") is not None else 'APPROVE'
         })
         return _obj
+
+

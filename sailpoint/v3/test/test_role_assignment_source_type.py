@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.role_assignment_source_type import RoleAssignmentSourceType
-
 
 class TestRoleAssignmentSourceType(unittest.TestCase):
     """RoleAssignmentSourceType unit test stubs"""
@@ -29,7 +29,6 @@ class TestRoleAssignmentSourceType(unittest.TestCase):
     def testRoleAssignmentSourceType(self):
         """Test RoleAssignmentSourceType"""
         # inst = RoleAssignmentSourceType()
-
 
 if __name__ == '__main__':
     unittest.main()

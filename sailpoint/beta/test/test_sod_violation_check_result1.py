@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.sod_violation_check_result1 import SodViolationCheckResult1
-
 
 class TestSodViolationCheckResult1(unittest.TestCase):
     """SodViolationCheckResult1 unit test stubs"""
@@ -74,7 +74,6 @@ class TestSodViolationCheckResult1(unittest.TestCase):
         """Test SodViolationCheckResult1"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

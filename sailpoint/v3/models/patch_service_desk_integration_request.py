@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
@@ -25,13 +27,11 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class PatchServiceDeskIntegrationRequest(BaseModel):
     """
     A JSONPatch document as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902).  Only `replace` operations are accepted by this endpoint.
     """ # noqa: E501
-    operations: Optional[List[JsonPatchOperation]] = Field(
-        default=None, description="Operations to be applied")
+    operations: Optional[List[JsonPatchOperation]] = Field(default=None, description="Operations to be applied")
     __properties: ClassVar[List[str]] = ["operations"]
 
     model_config = {
@@ -39,6 +39,7 @@ class PatchServiceDeskIntegrationRequest(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -66,7 +67,8 @@ class PatchServiceDeskIntegrationRequest(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in operations (list)
@@ -88,9 +90,8 @@ class PatchServiceDeskIntegrationRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "operations": [
-                JsonPatchOperation.from_dict(_item)
-                for _item in obj.get("operations")
-            ] if obj.get("operations") is not None else None
+            "operations": [JsonPatchOperation.from_dict(_item) for _item in obj.get("operations")] if obj.get("operations") is not None else None
         })
         return _obj
+
+

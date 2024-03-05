@@ -11,11 +11,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import json
 import pprint
 import re  # noqa: F401
 from enum import Enum
+
+
 
 try:
     from typing import Self
@@ -27,6 +30,7 @@ class RequestedItemStatusRequestState(str, Enum):
     """
     Indicates the state of an access request: * EXECUTING: The request is executing, which indicates the system is doing some processing. * REQUEST_COMPLETED: Indicates the request  has been completed. * CANCELLED: The request was cancelled with no user input. * TERMINATED: The request has been terminated before it was able to complete. * PROVISIONING_VERIFICATION_PENDING: The request has finished any approval steps and provisioning is waiting to be verified. * REJECTED: The request was rejected. * PROVISIONING_FAILED: The request has failed to complete. * NOT_ALL_ITEMS_PROVISIONED: One or more of the requested items failed to complete, but there were one or more  successes. * ERROR: An error occurred during request processing.
     """
+
     """
     allowed enum values
     """
@@ -44,3 +48,5 @@ class RequestedItemStatusRequestState(str, Enum):
     def from_json(cls, json_str: str) -> Self:
         """Create an instance of RequestedItemStatusRequestState from a JSON string"""
         return cls(json.loads(json_str))
+
+

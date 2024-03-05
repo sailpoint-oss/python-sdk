@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -25,21 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ApprovalComment(BaseModel):
     """
     ApprovalComment
-    """
-
-  # noqa: E501
-    comment: Optional[StrictStr] = Field(default=None,
-                                         description="The comment text")
-    commenter: Optional[StrictStr] = Field(
-        default=None, description="The name of the commenter")
-    var_date: Optional[datetime] = Field(
-        default=None,
-        description="A date-time in ISO-8601 format",
-        alias="date")
+    """ # noqa: E501
+    comment: Optional[StrictStr] = Field(default=None, description="The comment text")
+    commenter: Optional[StrictStr] = Field(default=None, description="The name of the commenter")
+    var_date: Optional[datetime] = Field(default=None, description="A date-time in ISO-8601 format", alias="date")
     __properties: ClassVar[List[str]] = ["comment", "commenter", "date"]
 
     model_config = {
@@ -47,6 +40,7 @@ class ApprovalComment(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -74,7 +68,8 @@ class ApprovalComment(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if var_date (nullable) is None
@@ -99,3 +94,5 @@ class ApprovalComment(BaseModel):
             "date": obj.get("date")
         })
         return _obj
+
+

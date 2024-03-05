@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -21,59 +22,34 @@ from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
 from pydantic import Field
 from sailpoint.beta.models.identity_reference_with_name_and_email import IdentityReferenceWithNameAndEmail
-from sailpoint.beta.models.requestable_object_request_status import RequestableObjectRequestStatus
 from sailpoint.beta.models.requestable_object_type import RequestableObjectType
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class RequestableObject(BaseModel):
     """
     RequestableObject
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(
-        default=None, description="Id of the requestable object itself")
-    name: Optional[StrictStr] = Field(
-        default=None,
-        description="Human-readable display name of the requestable object")
-    created: Optional[datetime] = Field(
-        default=None,
-        description="The time when the requestable object was created")
-    modified: Optional[datetime] = Field(
-        default=None,
-        description="The time when the requestable object was last modified")
-    description: Optional[StrictStr] = Field(
-        default=None, description="Description of the requestable object.")
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="Id of the requestable object itself")
+    name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of the requestable object")
+    created: Optional[datetime] = Field(default=None, description="The time when the requestable object was created")
+    modified: Optional[datetime] = Field(default=None, description="The time when the requestable object was last modified")
+    description: Optional[StrictStr] = Field(default=None, description="Description of the requestable object.")
     type: Optional[RequestableObjectType] = None
-    request_status: Optional[RequestableObjectRequestStatus] = Field(
-        default=None, alias="requestStatus")
-    identity_request_id: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "If *requestStatus* is *PENDING*, indicates the id of the associated account activity.",
-        alias="identityRequestId")
-    owner_ref: Optional[IdentityReferenceWithNameAndEmail] = Field(
-        default=None, alias="ownerRef")
-    request_comments_required: Optional[StrictBool] = Field(
-        default=None,
-        description=
-        "Whether the requester must provide comments when requesting the object.",
-        alias="requestCommentsRequired")
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "created", "modified", "description", "type",
-        "requestStatus", "identityRequestId", "ownerRef",
-        "requestCommentsRequired"
-    ]
+    request_status: Optional[Any] = Field(default=None, alias="requestStatus")
+    identity_request_id: Optional[StrictStr] = Field(default=None, description="If *requestStatus* is *PENDING*, indicates the id of the associated account activity.", alias="identityRequestId")
+    owner_ref: Optional[IdentityReferenceWithNameAndEmail] = Field(default=None, alias="ownerRef")
+    request_comments_required: Optional[StrictBool] = Field(default=None, description="Whether the requester must provide comments when requesting the object.", alias="requestCommentsRequired")
+    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "description", "type", "requestStatus", "identityRequestId", "ownerRef", "requestCommentsRequired"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -101,9 +77,13 @@ class RequestableObject(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of request_status
+        if self.request_status:
+            _dict['requestStatus'] = self.request_status.to_dict()
         # override the default output from pydantic by calling `to_dict()` of owner_ref
         if self.owner_ref:
             _dict['ownerRef'] = self.owner_ref.to_dict()
@@ -111,6 +91,11 @@ class RequestableObject(BaseModel):
         # and model_fields_set contains the field
         if self.modified is None and "modified" in self.model_fields_set:
             _dict['modified'] = None
+
+        # set to None if description (nullable) is None
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
+            _dict['description'] = None
 
         # set to None if identity_request_id (nullable) is None
         # and model_fields_set contains the field
@@ -134,26 +119,17 @@ class RequestableObject(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "created":
-            obj.get("created"),
-            "modified":
-            obj.get("modified"),
-            "description":
-            obj.get("description"),
-            "type":
-            obj.get("type"),
-            "requestStatus":
-            obj.get("requestStatus"),
-            "identityRequestId":
-            obj.get("identityRequestId"),
-            "ownerRef":
-            IdentityReferenceWithNameAndEmail.from_dict(obj.get("ownerRef"))
-            if obj.get("ownerRef") is not None else None,
-            "requestCommentsRequired":
-            obj.get("requestCommentsRequired")
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "created": obj.get("created"),
+            "modified": obj.get("modified"),
+            "description": obj.get("description"),
+            "type": obj.get("type"),
+            "requestStatus": RequestableObjectRequestStatus.from_dict(obj.get("requestStatus")) if obj.get("requestStatus") is not None else None,
+            "identityRequestId": obj.get("identityRequestId"),
+            "ownerRef": IdentityReferenceWithNameAndEmail.from_dict(obj.get("ownerRef")) if obj.get("ownerRef") is not None else None,
+            "requestCommentsRequired": obj.get("requestCommentsRequired")
         })
         return _obj
+
+

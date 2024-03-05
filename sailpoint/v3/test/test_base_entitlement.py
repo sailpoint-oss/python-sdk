@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.base_entitlement import BaseEntitlement
-
 
 class TestBaseEntitlement(unittest.TestCase):
     """BaseEntitlement unit test stubs"""
@@ -36,11 +36,14 @@ class TestBaseEntitlement(unittest.TestCase):
         model = BaseEntitlement()
         if include_optional:
             return BaseEntitlement(
-                id = '2c91808568c529c60168cca6f90c1313',
-                name = 'John Doe',
-                description = 'The admin privilege',
-                attribute = 'admin',
-                value = 'true'
+                has_permissions = False,
+                description = 'Cloud engineering',
+                attribute = 'memberOf',
+                value = 'CN=Cloud Engineering,DC=sailpoint,DC=COM',
+                var_schema = 'group',
+                privileged = False,
+                id = '2c918084575812550157589064f33b89',
+                name = 'CN=Cloud Engineering,DC=sailpoint,DC=COM'
             )
         else:
             return BaseEntitlement(
@@ -51,7 +54,6 @@ class TestBaseEntitlement(unittest.TestCase):
         """Test BaseEntitlement"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

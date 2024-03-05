@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel
@@ -25,18 +27,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class IdentityCreated(BaseModel):
     """
     IdentityCreated
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     identity: IdentityCreatedIdentity
-    attributes: Dict[str, Any] = Field(
-        description=
-        "The attributes assigned to the identity. Attributes are determined by the identity profile."
-    )
+    attributes: Dict[str, Any] = Field(description="The attributes assigned to the identity. Attributes are determined by the identity profile.")
     __properties: ClassVar[List[str]] = ["identity", "attributes"]
 
     model_config = {
@@ -44,6 +40,7 @@ class IdentityCreated(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -71,7 +68,8 @@ class IdentityCreated(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of identity
@@ -89,10 +87,9 @@ class IdentityCreated(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "identity":
-            IdentityCreatedIdentity.from_dict(obj.get("identity"))
-            if obj.get("identity") is not None else None,
-            "attributes":
-            obj.get("attributes")
+            "identity": IdentityCreatedIdentity.from_dict(obj.get("identity")) if obj.get("identity") is not None else None,
+            "attributes": obj.get("attributes")
         })
         return _obj
+
+

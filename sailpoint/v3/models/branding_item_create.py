@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from pydantic import BaseModel, StrictBytes, StrictStr
@@ -24,49 +26,26 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class BrandingItemCreate(BaseModel):
     """
     BrandingItemCreate
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     name: StrictStr = Field(description="name of branding item")
-    product_name: Optional[StrictStr] = Field(description="product name",
-                                              alias="productName")
-    action_button_color: Optional[StrictStr] = Field(
-        default=None,
-        description="hex value of color for action button",
-        alias="actionButtonColor")
-    active_link_color: Optional[StrictStr] = Field(
-        default=None,
-        description="hex value of color for link",
-        alias="activeLinkColor")
-    navigation_color: Optional[StrictStr] = Field(
-        default=None,
-        description="hex value of color for navigation bar",
-        alias="navigationColor")
-    email_from_address: Optional[StrictStr] = Field(
-        default=None,
-        description="email from address",
-        alias="emailFromAddress")
-    login_informational_message: Optional[StrictStr] = Field(
-        default=None,
-        description="login information message",
-        alias="loginInformationalMessage")
-    file_standard: Optional[Union[StrictBytes, StrictStr]] = Field(
-        default=None, description="png file with logo", alias="fileStandard")
-    __properties: ClassVar[List[str]] = [
-        "name", "productName", "actionButtonColor", "activeLinkColor",
-        "navigationColor", "emailFromAddress", "loginInformationalMessage",
-        "fileStandard"
-    ]
+    product_name: Optional[StrictStr] = Field(description="product name", alias="productName")
+    action_button_color: Optional[StrictStr] = Field(default=None, description="hex value of color for action button", alias="actionButtonColor")
+    active_link_color: Optional[StrictStr] = Field(default=None, description="hex value of color for link", alias="activeLinkColor")
+    navigation_color: Optional[StrictStr] = Field(default=None, description="hex value of color for navigation bar", alias="navigationColor")
+    email_from_address: Optional[StrictStr] = Field(default=None, description="email from address", alias="emailFromAddress")
+    login_informational_message: Optional[StrictStr] = Field(default=None, description="login information message", alias="loginInformationalMessage")
+    file_standard: Optional[Union[StrictBytes, StrictStr]] = Field(default=None, description="png file with logo", alias="fileStandard")
+    __properties: ClassVar[List[str]] = ["name", "productName", "actionButtonColor", "activeLinkColor", "navigationColor", "emailFromAddress", "loginInformationalMessage", "fileStandard"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -94,7 +73,8 @@ class BrandingItemCreate(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if product_name (nullable) is None
@@ -114,21 +94,15 @@ class BrandingItemCreate(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name":
-            obj.get("name"),
-            "productName":
-            obj.get("productName"),
-            "actionButtonColor":
-            obj.get("actionButtonColor"),
-            "activeLinkColor":
-            obj.get("activeLinkColor"),
-            "navigationColor":
-            obj.get("navigationColor"),
-            "emailFromAddress":
-            obj.get("emailFromAddress"),
-            "loginInformationalMessage":
-            obj.get("loginInformationalMessage"),
-            "fileStandard":
-            obj.get("fileStandard")
+            "name": obj.get("name"),
+            "productName": obj.get("productName"),
+            "actionButtonColor": obj.get("actionButtonColor"),
+            "activeLinkColor": obj.get("activeLinkColor"),
+            "navigationColor": obj.get("navigationColor"),
+            "emailFromAddress": obj.get("emailFromAddress"),
+            "loginInformationalMessage": obj.get("loginInformationalMessage"),
+            "fileStandard": obj.get("fileStandard")
         })
         return _obj
+
+

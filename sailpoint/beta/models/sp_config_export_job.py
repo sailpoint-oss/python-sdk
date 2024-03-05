@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -25,39 +26,24 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class SpConfigExportJob(BaseModel):
     """
     SpConfigExportJob
-    """
-
-  # noqa: E501
-    job_id: StrictStr = Field(description="Unique id assigned to this job.",
-                              alias="jobId")
+    """ # noqa: E501
+    job_id: StrictStr = Field(description="Unique id assigned to this job.", alias="jobId")
     status: StrictStr = Field(description="Status of the job.")
-    type: StrictStr = Field(
-        description="Type of the job, either export or import.")
-    expiration: datetime = Field(
-        description=
-        "The time until which the artifacts will be available for download.")
+    type: StrictStr = Field(description="Type of the job, either export or import.")
+    expiration: datetime = Field(description="The time until which the artifacts will be available for download.")
     created: datetime = Field(description="The time the job was started.")
-    modified: datetime = Field(
-        description="The time of the last update to the job.")
-    description: StrictStr = Field(
-        description="Optional user defined description/name for export job.")
-    __properties: ClassVar[List[str]] = [
-        "jobId", "status", "type", "expiration", "created", "modified",
-        "description"
-    ]
+    modified: datetime = Field(description="The time of the last update to the job.")
+    description: StrictStr = Field(description="Optional user defined description/name for export job.")
+    __properties: ClassVar[List[str]] = ["jobId", "status", "type", "expiration", "created", "modified", "description"]
 
     @field_validator('status')
     def status_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('NOT_STARTED', 'IN_PROGRESS', 'COMPLETE', 'CANCELLED',
-                         'FAILED'):
-            raise ValueError(
-                "must be one of enum values ('NOT_STARTED', 'IN_PROGRESS', 'COMPLETE', 'CANCELLED', 'FAILED')"
-            )
+        if value not in ('NOT_STARTED', 'IN_PROGRESS', 'COMPLETE', 'CANCELLED', 'FAILED'):
+            raise ValueError("must be one of enum values ('NOT_STARTED', 'IN_PROGRESS', 'COMPLETE', 'CANCELLED', 'FAILED')")
         return value
 
     @field_validator('type')
@@ -72,6 +58,7 @@ class SpConfigExportJob(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -99,7 +86,8 @@ class SpConfigExportJob(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -123,3 +111,5 @@ class SpConfigExportJob(BaseModel):
             "description": obj.get("description")
         })
         return _obj
+
+

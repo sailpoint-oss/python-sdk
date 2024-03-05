@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -25,21 +27,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class EvaluateResponse(BaseModel):
     """
     The response body for Evaluate Reassignment Configuration
     """ # noqa: E501
-    reassign_to_id: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "The Identity ID which should be the recipient of any work items sent to a specific identity & work type",
-        alias="reassignToId")
-    lookup_trail: Optional[List[LookupStep]] = Field(
-        default=None,
-        description=
-        "List of Reassignments found by looking up the next `TargetIdentity` in a ReassignmentConfiguration",
-        alias="lookupTrail")
+    reassign_to_id: Optional[StrictStr] = Field(default=None, description="The Identity ID which should be the recipient of any work items sent to a specific identity & work type", alias="reassignToId")
+    lookup_trail: Optional[List[LookupStep]] = Field(default=None, description="List of Reassignments found by looking up the next `TargetIdentity` in a ReassignmentConfiguration", alias="lookupTrail")
     __properties: ClassVar[List[str]] = ["reassignToId", "lookupTrail"]
 
     model_config = {
@@ -47,6 +40,7 @@ class EvaluateResponse(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -74,7 +68,8 @@ class EvaluateResponse(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in lookup_trail (list)
@@ -96,10 +91,9 @@ class EvaluateResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "reassignToId":
-            obj.get("reassignToId"),
-            "lookupTrail":
-            [LookupStep.from_dict(_item) for _item in obj.get("lookupTrail")]
-            if obj.get("lookupTrail") is not None else None
+            "reassignToId": obj.get("reassignToId"),
+            "lookupTrail": [LookupStep.from_dict(_item) for _item in obj.get("lookupTrail")] if obj.get("lookupTrail") is not None else None
         })
         return _obj
+
+

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.account_usage import AccountUsage
-
 
 class TestAccountUsage(unittest.TestCase):
     """AccountUsage unit test stubs"""
@@ -36,7 +36,7 @@ class TestAccountUsage(unittest.TestCase):
         model = AccountUsage()
         if include_optional:
             return AccountUsage(
-                var_date = 'Thu Apr 20 20:00:00 EDT 2023',
+                var_date = 'Fri Apr 21 00:00:00 UTC 2023',
                 count = 10
             )
         else:
@@ -48,7 +48,6 @@ class TestAccountUsage(unittest.TestCase):
         """Test AccountUsage"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

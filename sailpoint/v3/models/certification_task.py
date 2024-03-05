@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -27,44 +28,19 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class CertificationTask(BaseModel):
     """
     CertificationTask
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(
-        default=None, description="The ID of the certification task.")
-    type: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "The type of the certification task. More values may be added in the future."
-    )
-    target_type: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "The type of item that is being operated on by this task whose ID is stored in the targetId field.",
-        alias="targetType")
-    target_id: Optional[StrictStr] = Field(
-        default=None,
-        description="The ID of the item being operated on by this task.",
-        alias="targetId")
-    status: Optional[StrictStr] = Field(default=None,
-                                        description="The status of the task.")
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="The ID of the certification task.")
+    type: Optional[StrictStr] = Field(default=None, description="The type of the certification task. More values may be added in the future.")
+    target_type: Optional[StrictStr] = Field(default=None, description="The type of item that is being operated on by this task whose ID is stored in the targetId field.", alias="targetType")
+    target_id: Optional[StrictStr] = Field(default=None, description="The ID of the item being operated on by this task.", alias="targetId")
+    status: Optional[StrictStr] = Field(default=None, description="The status of the task.")
     errors: Optional[List[ErrorMessageDto]] = None
-    reassignment_trail_dtos: Optional[List[ReassignmentTrailDTO]] = Field(
-        default=None,
-        description=
-        "Reassignment trails that lead to self certification identity",
-        alias="reassignmentTrailDTOs")
-    created: Optional[datetime] = Field(
-        default=None,
-        description="The date and time on which this task was created.")
-    __properties: ClassVar[List[str]] = [
-        "id", "type", "targetType", "targetId", "status", "errors",
-        "reassignmentTrailDTOs", "created"
-    ]
+    reassignment_trail_dtos: Optional[List[ReassignmentTrailDTO]] = Field(default=None, description="Reassignment trails that lead to self certification identity", alias="reassignmentTrailDTOs")
+    created: Optional[datetime] = Field(default=None, description="The date and time on which this task was created.")
+    __properties: ClassVar[List[str]] = ["id", "type", "targetType", "targetId", "status", "errors", "reassignmentTrailDTOs", "created"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -72,13 +48,8 @@ class CertificationTask(BaseModel):
         if value is None:
             return value
 
-        if value not in ('REASSIGN', 'ADMIN_REASSIGN',
-                         'COMPLETE_CERTIFICATION', 'FINISH_CERTIFICATION',
-                         'COMPLETE_CAMPAIGN', 'ACTIVATE_CAMPAIGN',
-                         'CAMPAIGN_CREATE', 'CAMPAIGN_DELETE'):
-            raise ValueError(
-                "must be one of enum values ('REASSIGN', 'ADMIN_REASSIGN', 'COMPLETE_CERTIFICATION', 'FINISH_CERTIFICATION', 'COMPLETE_CAMPAIGN', 'ACTIVATE_CAMPAIGN', 'CAMPAIGN_CREATE', 'CAMPAIGN_DELETE')"
-            )
+        if value not in ('REASSIGN', 'ADMIN_REASSIGN', 'COMPLETE_CERTIFICATION', 'FINISH_CERTIFICATION', 'COMPLETE_CAMPAIGN', 'ACTIVATE_CAMPAIGN', 'CAMPAIGN_CREATE', 'CAMPAIGN_DELETE'):
+            raise ValueError("must be one of enum values ('REASSIGN', 'ADMIN_REASSIGN', 'COMPLETE_CERTIFICATION', 'FINISH_CERTIFICATION', 'COMPLETE_CAMPAIGN', 'ACTIVATE_CAMPAIGN', 'CAMPAIGN_CREATE', 'CAMPAIGN_DELETE')")
         return value
 
     @field_validator('target_type')
@@ -88,8 +59,7 @@ class CertificationTask(BaseModel):
             return value
 
         if value not in ('CERTIFICATION', 'CAMPAIGN'):
-            raise ValueError(
-                "must be one of enum values ('CERTIFICATION', 'CAMPAIGN')")
+            raise ValueError("must be one of enum values ('CERTIFICATION', 'CAMPAIGN')")
         return value
 
     @field_validator('status')
@@ -99,9 +69,7 @@ class CertificationTask(BaseModel):
             return value
 
         if value not in ('QUEUED', 'IN_PROGRESS', 'SUCCESS', 'ERROR'):
-            raise ValueError(
-                "must be one of enum values ('QUEUED', 'IN_PROGRESS', 'SUCCESS', 'ERROR')"
-            )
+            raise ValueError("must be one of enum values ('QUEUED', 'IN_PROGRESS', 'SUCCESS', 'ERROR')")
         return value
 
     model_config = {
@@ -109,6 +77,7 @@ class CertificationTask(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -136,7 +105,8 @@ class CertificationTask(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in errors (list)
@@ -165,24 +135,15 @@ class CertificationTask(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "type":
-            obj.get("type"),
-            "targetType":
-            obj.get("targetType"),
-            "targetId":
-            obj.get("targetId"),
-            "status":
-            obj.get("status"),
-            "errors":
-            [ErrorMessageDto.from_dict(_item) for _item in obj.get("errors")]
-            if obj.get("errors") is not None else None,
-            "reassignmentTrailDTOs": [
-                ReassignmentTrailDTO.from_dict(_item)
-                for _item in obj.get("reassignmentTrailDTOs")
-            ] if obj.get("reassignmentTrailDTOs") is not None else None,
-            "created":
-            obj.get("created")
+            "id": obj.get("id"),
+            "type": obj.get("type"),
+            "targetType": obj.get("targetType"),
+            "targetId": obj.get("targetId"),
+            "status": obj.get("status"),
+            "errors": [ErrorMessageDto.from_dict(_item) for _item in obj.get("errors")] if obj.get("errors") is not None else None,
+            "reassignmentTrailDTOs": [ReassignmentTrailDTO.from_dict(_item) for _item in obj.get("reassignmentTrailDTOs")] if obj.get("reassignmentTrailDTOs") is not None else None,
+            "created": obj.get("created")
         })
         return _obj
+
+

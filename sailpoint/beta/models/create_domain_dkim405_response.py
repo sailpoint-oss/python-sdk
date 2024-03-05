@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,34 +26,21 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class CreateDomainDkim405Response(BaseModel):
     """
     CreateDomainDkim405Response
-    """
-
-  # noqa: E501
-    error_name: Optional[Dict[str, Any]] = Field(
-        default=None,
-        description="A message describing the error",
-        alias="errorName")
-    error_message: Optional[Dict[str, Any]] = Field(
-        default=None,
-        description="Description of the error",
-        alias="errorMessage")
-    tracking_id: Optional[StrictStr] = Field(
-        default=None,
-        description="Unique tracking id for the error.",
-        alias="trackingId")
-    __properties: ClassVar[List[str]] = [
-        "errorName", "errorMessage", "trackingId"
-    ]
+    """ # noqa: E501
+    error_name: Optional[Dict[str, Any]] = Field(default=None, description="A message describing the error", alias="errorName")
+    error_message: Optional[Dict[str, Any]] = Field(default=None, description="Description of the error", alias="errorMessage")
+    tracking_id: Optional[StrictStr] = Field(default=None, description="Unique tracking id for the error.", alias="trackingId")
+    __properties: ClassVar[List[str]] = ["errorName", "errorMessage", "trackingId"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -79,7 +68,8 @@ class CreateDomainDkim405Response(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -99,3 +89,5 @@ class CreateDomainDkim405Response(BaseModel):
             "trackingId": obj.get("trackingId")
         })
         return _obj
+
+

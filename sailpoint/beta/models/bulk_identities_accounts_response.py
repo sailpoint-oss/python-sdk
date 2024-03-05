@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt, StrictStr
@@ -24,21 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class BulkIdentitiesAccountsResponse(BaseModel):
     """
     Bulk response object.
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(
-        default=None, description="Identifier of bulk request item.")
-    status_code: Optional[StrictInt] = Field(
-        default=None, description="Response status value.", alias="statusCode")
-    message: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Status containing additional context information about failures.")
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="Identifier of bulk request item.")
+    status_code: Optional[StrictInt] = Field(default=None, description="Response status value.", alias="statusCode")
+    message: Optional[StrictStr] = Field(default=None, description="Status containing additional context information about failures.")
     __properties: ClassVar[List[str]] = ["id", "statusCode", "message"]
 
     model_config = {
@@ -46,6 +40,7 @@ class BulkIdentitiesAccountsResponse(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -73,7 +68,8 @@ class BulkIdentitiesAccountsResponse(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -93,3 +89,5 @@ class BulkIdentitiesAccountsResponse(BaseModel):
             "message": obj.get("message")
         })
         return _obj
+
+

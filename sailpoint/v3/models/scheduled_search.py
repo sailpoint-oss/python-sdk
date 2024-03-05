@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -28,59 +29,31 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ScheduledSearch(BaseModel):
     """
     ScheduledSearch
-    """
-
-  # noqa: E501
-    name: Optional[StrictStr] = Field(
-        default=None, description="The name of the scheduled search. ")
-    description: Optional[StrictStr] = Field(
-        default=None, description="The description of the scheduled search. ")
-    saved_search_id: StrictStr = Field(
-        description="The ID of the saved search that will be executed.",
-        alias="savedSearchId")
-    created: Optional[datetime] = Field(
-        default=None, description="A date-time in ISO-8601 format")
-    modified: Optional[datetime] = Field(
-        default=None, description="A date-time in ISO-8601 format")
+    """ # noqa: E501
+    name: Optional[StrictStr] = Field(default=None, description="The name of the scheduled search. ")
+    description: Optional[StrictStr] = Field(default=None, description="The description of the scheduled search. ")
+    saved_search_id: StrictStr = Field(description="The ID of the saved search that will be executed.", alias="savedSearchId")
+    created: Optional[datetime] = Field(default=None, description="A date-time in ISO-8601 format")
+    modified: Optional[datetime] = Field(default=None, description="A date-time in ISO-8601 format")
     schedule: Schedule1
-    recipients: List[SearchScheduleRecipientsInner] = Field(
-        description=
-        "A list of identities that should receive the scheduled search report via email."
-    )
-    enabled: Optional[StrictBool] = Field(
-        default=False,
-        description="Indicates if the scheduled search is enabled. ")
-    email_empty_results: Optional[StrictBool] = Field(
-        default=False,
-        description=
-        "Indicates if email generation should occur when search returns no results. ",
-        alias="emailEmptyResults")
-    display_query_details: Optional[StrictBool] = Field(
-        default=False,
-        description=
-        "Indicates if the generated email should include the query and search results preview (which could include PII). ",
-        alias="displayQueryDetails")
+    recipients: List[SearchScheduleRecipientsInner] = Field(description="A list of identities that should receive the scheduled search report via email.")
+    enabled: Optional[StrictBool] = Field(default=False, description="Indicates if the scheduled search is enabled. ")
+    email_empty_results: Optional[StrictBool] = Field(default=False, description="Indicates if email generation should occur when search returns no results. ", alias="emailEmptyResults")
+    display_query_details: Optional[StrictBool] = Field(default=False, description="Indicates if the generated email should include the query and search results preview (which could include PII). ", alias="displayQueryDetails")
     id: StrictStr = Field(description="The scheduled search ID.")
     owner: ScheduledSearchAllOfOwner
-    owner_id: StrictStr = Field(
-        description=
-        "The ID of the scheduled search owner.  Please use the `id` in the `owner` object instead. ",
-        alias="ownerId")
-    __properties: ClassVar[List[str]] = [
-        "name", "description", "savedSearchId", "created", "modified",
-        "schedule", "recipients", "enabled", "emailEmptyResults",
-        "displayQueryDetails", "id", "owner", "ownerId"
-    ]
+    owner_id: StrictStr = Field(description="The ID of the scheduled search owner.  Please use the `id` in the `owner` object instead. ", alias="ownerId")
+    __properties: ClassVar[List[str]] = ["name", "description", "savedSearchId", "created", "modified", "schedule", "recipients", "enabled", "emailEmptyResults", "displayQueryDetails", "id", "owner", "ownerId"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -165,37 +138,20 @@ class ScheduledSearch(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name":
-            obj.get("name"),
-            "description":
-            obj.get("description"),
-            "savedSearchId":
-            obj.get("savedSearchId"),
-            "created":
-            obj.get("created"),
-            "modified":
-            obj.get("modified"),
-            "schedule":
-            Schedule1.from_dict(obj.get("schedule"))
-            if obj.get("schedule") is not None else None,
-            "recipients": [
-                SearchScheduleRecipientsInner.from_dict(_item)
-                for _item in obj.get("recipients")
-            ] if obj.get("recipients") is not None else None,
-            "enabled":
-            obj.get("enabled") if obj.get("enabled") is not None else False,
-            "emailEmptyResults":
-            obj.get("emailEmptyResults")
-            if obj.get("emailEmptyResults") is not None else False,
-            "displayQueryDetails":
-            obj.get("displayQueryDetails")
-            if obj.get("displayQueryDetails") is not None else False,
-            "id":
-            obj.get("id"),
-            "owner":
-            ScheduledSearchAllOfOwner.from_dict(obj.get("owner"))
-            if obj.get("owner") is not None else None,
-            "ownerId":
-            obj.get("ownerId")
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "savedSearchId": obj.get("savedSearchId"),
+            "created": obj.get("created"),
+            "modified": obj.get("modified"),
+            "schedule": Schedule1.from_dict(obj.get("schedule")) if obj.get("schedule") is not None else None,
+            "recipients": [SearchScheduleRecipientsInner.from_dict(_item) for _item in obj.get("recipients")] if obj.get("recipients") is not None else None,
+            "enabled": obj.get("enabled") if obj.get("enabled") is not None else False,
+            "emailEmptyResults": obj.get("emailEmptyResults") if obj.get("emailEmptyResults") is not None else False,
+            "displayQueryDetails": obj.get("displayQueryDetails") if obj.get("displayQueryDetails") is not None else False,
+            "id": obj.get("id"),
+            "owner": ScheduledSearchAllOfOwner.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
+            "ownerId": obj.get("ownerId")
         })
         return _obj
+
+

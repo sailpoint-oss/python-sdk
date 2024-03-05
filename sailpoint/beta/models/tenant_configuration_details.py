@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool
@@ -24,16 +26,11 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class TenantConfigurationDetails(BaseModel):
     """
     Details of any tenant-wide Reassignment Configurations (eg. enabled/disabled)
     """ # noqa: E501
-    disabled: Optional[StrictBool] = Field(
-        default=False,
-        description=
-        "Flag to determine if Reassignment Configuration is enabled or disabled for a tenant.  When this flag is set to true, Reassignment Configuration is disabled."
-    )
+    disabled: Optional[StrictBool] = Field(default=False, description="Flag to determine if Reassignment Configuration is enabled or disabled for a tenant.  When this flag is set to true, Reassignment Configuration is disabled.")
     __properties: ClassVar[List[str]] = ["disabled"]
 
     model_config = {
@@ -41,6 +38,7 @@ class TenantConfigurationDetails(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -68,7 +66,8 @@ class TenantConfigurationDetails(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if disabled (nullable) is None
@@ -88,7 +87,8 @@ class TenantConfigurationDetails(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "disabled":
-            obj.get("disabled") if obj.get("disabled") is not None else False
+            "disabled": obj.get("disabled") if obj.get("disabled") is not None else False
         })
         return _obj
+
+

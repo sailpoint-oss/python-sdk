@@ -6,19 +6,21 @@ Entitlement
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | The unique ID of the referenced object. | 
-**name** | **str** | The human readable name of the referenced object. | 
+**id** | **str** |  | 
+**name** | **str** |  | 
 **type** | [**DocumentType**](DocumentType.md) |  | 
-**description** | **str** | A description of the entitlement | [optional] 
-**attribute** | **str** | The name of the entitlement attribute | [optional] 
-**value** | **str** | The value of the entitlement | [optional] 
-**modified** | **datetime** | A date-time in ISO-8601 format | [optional] 
-**synced** | **datetime** | A date-time in ISO-8601 format | [optional] 
-**display_name** | **str** | The display name of the entitlement | [optional] 
-**source** | [**Reference**](Reference.md) |  | [optional] 
-**privileged** | **bool** |  | [optional] 
-**identity_count** | **int** |  | [optional] 
-**tags** | **List[str]** |  | [optional] 
+**modified** | **datetime** | ISO-8601 date-time referring to the time when the object was last modified. | [optional] 
+**synced** | **str** | ISO-8601 date-time referring to the date-time when object was queued to be synced into search database for use in the search API.   This date-time changes anytime there is an update to the object, which triggers a synchronization event being sent to the search database.  There may be some delay between the &#x60;synced&#x60; time and the time when the updated data is actually available in the search API.  | [optional] 
+**display_name** | **str** | Entitlement&#39;s display name. | [optional] 
+**source** | [**EntitlementDocumentAllOfSource**](EntitlementDocumentAllOfSource.md) |  | [optional] 
+**segments** | [**List[BaseSegment]**](BaseSegment.md) | Segments with the role. | [optional] 
+**segment_count** | **int** | Number of segments with the role. | [optional] 
+**requestable** | **bool** | Indicates whether the entitlement is requestable. | [optional] [default to False]
+**cloud_governed** | **bool** | Indicates whether the entitlement is cloud governed. | [optional] [default to False]
+**created** | **datetime** | ISO-8601 date-time referring to the time when the object was created. | [optional] 
+**privileged** | **bool** | Indicates whether the entitlement is privileged. | [optional] [default to False]
+**identity_count** | **int** | Number of identities who have access to the entitlement. | [optional] 
+**tags** | **List[str]** | Tags that have been applied to the object. | [optional] 
 
 ## Example
 

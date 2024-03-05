@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -18,7 +19,7 @@ import json
 
 from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
+from pydantic import BaseModel, StrictBool, StrictStr
 from pydantic import Field
 from sailpoint.v3.models.column import Column
 from sailpoint.v3.models.index import Index
@@ -29,54 +30,33 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class SavedSearch(BaseModel):
     """
     SavedSearch
-    """
-
-  # noqa: E501
-    name: Optional[StrictStr] = Field(
-        default=None, description="The name of the saved search. ")
-    description: Optional[StrictStr] = Field(
-        default=None, description="The description of the saved search. ")
-    created: Optional[datetime] = Field(
-        default=None, description="A date-time in ISO-8601 format")
-    modified: Optional[datetime] = Field(
-        default=None, description="A date-time in ISO-8601 format")
-    indices: List[Index] = Field(
-        description=
-        "The names of the Elasticsearch indices in which to search. ")
-    columns: Optional[Dict[str, List[Column]]] = Field(
-        default=None,
-        description=
-        "The columns to be returned (specifies the order in which they will be presented) for each document type.  The currently supported document types are: _accessprofile_, _accountactivity_, _account_, _aggregation_, _entitlement_, _event_, _identity_, and _role_. "
-    )
-    query: StrictStr = Field(
-        description=
-        "The search query using Elasticsearch [Query String Query](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-query-string-query.html#query-string) syntax from the Query DSL. "
-    )
-    fields: Optional[List[StrictStr]] = Field(
-        default=None,
-        description="The fields to be searched against in a multi-field query. "
-    )
-    sort: Optional[List[StrictStr]] = Field(
-        default=None,
-        description="The fields to be used to sort the search results. ")
+    """ # noqa: E501
+    name: Optional[StrictStr] = Field(default=None, description="The name of the saved search. ")
+    description: Optional[StrictStr] = Field(default=None, description="The description of the saved search. ")
+    created: Optional[datetime] = Field(default=None, description="A date-time in ISO-8601 format")
+    modified: Optional[datetime] = Field(default=None, description="A date-time in ISO-8601 format")
+    indices: List[Index] = Field(description="The names of the Elasticsearch indices in which to search. ")
+    columns: Optional[Dict[str, List[Column]]] = Field(default=None, description="The columns to be returned (specifies the order in which they will be presented) for each document type.  The currently supported document types are: _accessprofile_, _accountactivity_, _account_, _aggregation_, _entitlement_, _event_, _identity_, and _role_. ")
+    query: StrictStr = Field(description="The search query using Elasticsearch [Query String Query](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-query-string-query.html#query-string) syntax from the Query DSL. ")
+    fields: Optional[List[StrictStr]] = Field(default=None, description="The fields to be searched against in a multi-field query. ")
+    order_by: Optional[Dict[str, List[StrictStr]]] = Field(default=None, description="Sort by index. This takes precedence over the `sort` property. ", alias="orderBy")
+    sort: Optional[List[StrictStr]] = Field(default=None, description="The fields to be used to sort the search results. ")
     filters: Optional[SavedSearchDetailFilters] = None
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="The saved search ID. ")
+    id: Optional[StrictStr] = Field(default=None, description="The saved search ID. ")
     owner: Optional[TypedReference] = None
-    __properties: ClassVar[List[str]] = [
-        "name", "description", "created", "modified", "indices", "columns",
-        "query", "fields", "sort", "filters", "id", "owner"
-    ]
+    owner_id: Optional[StrictStr] = Field(default=None, description="The ID of the identity that owns this saved search.", alias="ownerId")
+    public: Optional[StrictBool] = Field(default=False, description="Whether this saved search is visible to anyone but the owner. This field will always be false as there is no way to set a saved search as public at this time.")
+    __properties: ClassVar[List[str]] = ["name", "description", "created", "modified", "indices", "columns", "query", "fields", "orderBy", "sort", "filters", "id", "owner", "ownerId", "public"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -104,7 +84,8 @@ class SavedSearch(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each value in columns (dict of array)
@@ -142,6 +123,16 @@ class SavedSearch(BaseModel):
         if self.fields is None and "fields" in self.model_fields_set:
             _dict['fields'] = None
 
+        # set to None if order_by (nullable) is None
+        # and model_fields_set contains the field
+        if self.order_by is None and "order_by" in self.model_fields_set:
+            _dict['orderBy'] = None
+
+        # set to None if sort (nullable) is None
+        # and model_fields_set contains the field
+        if self.sort is None and "sort" in self.model_fields_set:
+            _dict['sort'] = None
+
         # set to None if filters (nullable) is None
         # and model_fields_set contains the field
         if self.filters is None and "filters" in self.model_fields_set:
@@ -159,33 +150,29 @@ class SavedSearch(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name":
-            obj.get("name"),
-            "description":
-            obj.get("description"),
-            "created":
-            obj.get("created"),
-            "modified":
-            obj.get("modified"),
-            "indices":
-            obj.get("indices"),
-            "columns":
-            dict((_k, [Column.from_dict(_item)
-                       for _item in _v] if _v is not None else None)
-                 for _k, _v in obj.get("columns").items()),
-            "query":
-            obj.get("query"),
-            "fields":
-            obj.get("fields"),
-            "sort":
-            obj.get("sort"),
-            "filters":
-            SavedSearchDetailFilters.from_dict(obj.get("filters"))
-            if obj.get("filters") is not None else None,
-            "id":
-            obj.get("id"),
-            "owner":
-            TypedReference.from_dict(obj.get("owner"))
-            if obj.get("owner") is not None else None
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "created": obj.get("created"),
+            "modified": obj.get("modified"),
+            "indices": obj.get("indices"),
+            "columns": dict(
+                (_k,
+                        [Column.from_dict(_item) for _item in _v]
+                        if _v is not None
+                        else None
+                )
+                for _k, _v in obj.get("columns").items()
+            ),
+            "query": obj.get("query"),
+            "fields": obj.get("fields"),
+            "orderBy": obj.get("orderBy"),
+            "sort": obj.get("sort"),
+            "filters": SavedSearchDetailFilters.from_dict(obj.get("filters")) if obj.get("filters") is not None else None,
+            "id": obj.get("id"),
+            "owner": TypedReference.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
+            "ownerId": obj.get("ownerId"),
+            "public": obj.get("public") if obj.get("public") is not None else False
         })
         return _obj
+
+

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -25,26 +27,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccessProfileBulkDeleteResponse(BaseModel):
     """
     AccessProfileBulkDeleteResponse
-    """
-
-  # noqa: E501
-    task_id: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "ID of the task which is executing the bulk deletion. This can be passed to the **/task-status** API to track status.",
-        alias="taskId")
-    pending: Optional[List[StrictStr]] = Field(
-        default=None,
-        description="List of IDs of Access Profiles which are pending deletion."
-    )
-    in_use: Optional[List[AccessProfileUsage]] = Field(
-        default=None,
-        description="List of usages of Access Profiles targeted for deletion.",
-        alias="inUse")
+    """ # noqa: E501
+    task_id: Optional[StrictStr] = Field(default=None, description="ID of the task which is executing the bulk deletion. This can be passed to the **/task-status** API to track status.", alias="taskId")
+    pending: Optional[List[StrictStr]] = Field(default=None, description="List of IDs of Access Profiles which are pending deletion.")
+    in_use: Optional[List[AccessProfileUsage]] = Field(default=None, description="List of usages of Access Profiles targeted for deletion.", alias="inUse")
     __properties: ClassVar[List[str]] = ["taskId", "pending", "inUse"]
 
     model_config = {
@@ -52,6 +41,7 @@ class AccessProfileBulkDeleteResponse(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -79,7 +69,8 @@ class AccessProfileBulkDeleteResponse(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in in_use (list)
@@ -101,13 +92,10 @@ class AccessProfileBulkDeleteResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "taskId":
-            obj.get("taskId"),
-            "pending":
-            obj.get("pending"),
-            "inUse": [
-                AccessProfileUsage.from_dict(_item)
-                for _item in obj.get("inUse")
-            ] if obj.get("inUse") is not None else None
+            "taskId": obj.get("taskId"),
+            "pending": obj.get("pending"),
+            "inUse": [AccessProfileUsage.from_dict(_item) for _item in obj.get("inUse")] if obj.get("inUse") is not None else None
         })
         return _obj
+
+

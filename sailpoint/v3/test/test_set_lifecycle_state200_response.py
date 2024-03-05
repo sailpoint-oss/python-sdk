@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.set_lifecycle_state200_response import SetLifecycleState200Response
-
 
 class TestSetLifecycleState200Response(unittest.TestCase):
     """SetLifecycleState200Response unit test stubs"""
@@ -47,7 +47,6 @@ class TestSetLifecycleState200Response(unittest.TestCase):
         """Test SetLifecycleState200Response"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

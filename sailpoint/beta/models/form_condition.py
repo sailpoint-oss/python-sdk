@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -26,22 +28,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class FormCondition(BaseModel):
     """
     Represent a form conditional.
-    """
-
-  # noqa: E501
-    rule_operator: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "ConditionRuleLogicalOperatorType value. AND ConditionRuleLogicalOperatorTypeAnd OR ConditionRuleLogicalOperatorTypeOr",
-        alias="ruleOperator")
-    rules: Optional[List[ConditionRule]] = Field(default=None,
-                                                 description="List of rules.")
-    effects: Optional[List[ConditionEffect]] = Field(
-        default=None, description="List of effects.")
+    """ # noqa: E501
+    rule_operator: Optional[StrictStr] = Field(default=None, description="ConditionRuleLogicalOperatorType value. AND ConditionRuleLogicalOperatorTypeAnd OR ConditionRuleLogicalOperatorTypeOr", alias="ruleOperator")
+    rules: Optional[List[ConditionRule]] = Field(default=None, description="List of rules.")
+    effects: Optional[List[ConditionEffect]] = Field(default=None, description="List of effects.")
     __properties: ClassVar[List[str]] = ["ruleOperator", "rules", "effects"]
 
     @field_validator('rule_operator')
@@ -59,6 +52,7 @@ class FormCondition(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -86,7 +80,8 @@ class FormCondition(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in rules (list)
@@ -115,13 +110,10 @@ class FormCondition(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "ruleOperator":
-            obj.get("ruleOperator"),
-            "rules":
-            [ConditionRule.from_dict(_item) for _item in obj.get("rules")]
-            if obj.get("rules") is not None else None,
-            "effects":
-            [ConditionEffect.from_dict(_item) for _item in obj.get("effects")]
-            if obj.get("effects") is not None else None
+            "ruleOperator": obj.get("ruleOperator"),
+            "rules": [ConditionRule.from_dict(_item) for _item in obj.get("rules")] if obj.get("rules") is not None else None,
+            "effects": [ConditionEffect.from_dict(_item) for _item in obj.get("effects")] if obj.get("effects") is not None else None
         })
         return _obj
+
+

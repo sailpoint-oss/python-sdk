@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.test_external_execute_workflow_request import TestExternalExecuteWorkflowRequest
-
 
 class TestTestExternalExecuteWorkflowRequest(unittest.TestCase):
     """TestExternalExecuteWorkflowRequest unit test stubs"""
@@ -26,8 +26,7 @@ class TestTestExternalExecuteWorkflowRequest(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self,
-                      include_optional) -> TestExternalExecuteWorkflowRequest:
+    def make_instance(self, include_optional) -> TestExternalExecuteWorkflowRequest:
         """Test TestExternalExecuteWorkflowRequest
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -48,7 +47,6 @@ class TestTestExternalExecuteWorkflowRequest(unittest.TestCase):
         """Test TestExternalExecuteWorkflowRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

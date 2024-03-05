@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -25,36 +27,22 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class Query(BaseModel):
     """
     Query parameters used to construct an Elasticsearch query object.
     """ # noqa: E501
-    query: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "The query using the Elasticsearch [Query String Query](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-query-string-query.html#query-string) syntax from the Query DSL extended by SailPoint to support Nested queries."
-    )
-    fields: Optional[List[StrictStr]] = Field(
-        default=None,
-        description=
-        "The fields the query will be applied to.  Fields provide you with a simple way to add additional fields to search, without making the query too complicated.  For example, you can use the fields to specify that you want your query of \"a*\" to be applied to \"name\", \"firstName\", and the \"source.name\".  The response will include all results matching the \"a*\" query found in those three fields.  A field's availability depends on the indices being searched.  For example, if you are searching \"identities\", you can apply your search to the \"firstName\" field, but you couldn't use \"firstName\" with a search on \"access profiles\".  Refer to the response schema for the respective lists of available fields. "
-    )
-    time_zone: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "The time zone to be applied to any range query related to dates.",
-        alias="timeZone")
+    query: Optional[StrictStr] = Field(default=None, description="The query using the Elasticsearch [Query String Query](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-query-string-query.html#query-string) syntax from the Query DSL extended by SailPoint to support Nested queries.")
+    fields: Optional[List[StrictStr]] = Field(default=None, description="The fields the query will be applied to.  Fields provide you with a simple way to add additional fields to search, without making the query too complicated.  For example, you can use the fields to specify that you want your query of \"a*\" to be applied to \"name\", \"firstName\", and the \"source.name\".  The response will include all results matching the \"a*\" query found in those three fields.  A field's availability depends on the indices being searched.  For example, if you are searching \"identities\", you can apply your search to the \"firstName\" field, but you couldn't use \"firstName\" with a search on \"access profiles\".  Refer to the response schema for the respective lists of available fields. ")
+    time_zone: Optional[StrictStr] = Field(default=None, description="The time zone to be applied to any range query related to dates.", alias="timeZone")
     inner_hit: Optional[InnerHit] = Field(default=None, alias="innerHit")
-    __properties: ClassVar[List[str]] = [
-        "query", "fields", "timeZone", "innerHit"
-    ]
+    __properties: ClassVar[List[str]] = ["query", "fields", "timeZone", "innerHit"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -82,7 +70,8 @@ class Query(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of inner_hit
@@ -100,14 +89,11 @@ class Query(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "query":
-            obj.get("query"),
-            "fields":
-            obj.get("fields"),
-            "timeZone":
-            obj.get("timeZone"),
-            "innerHit":
-            InnerHit.from_dict(obj.get("innerHit"))
-            if obj.get("innerHit") is not None else None
+            "query": obj.get("query"),
+            "fields": obj.get("fields"),
+            "timeZone": obj.get("timeZone"),
+            "innerHit": InnerHit.from_dict(obj.get("innerHit")) if obj.get("innerHit") is not None else None
         })
         return _obj
+
+

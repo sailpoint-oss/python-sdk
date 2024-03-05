@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt
@@ -27,33 +29,23 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccountCorrelated(BaseModel):
     """
     AccountCorrelated
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     identity: AccountCorrelatedIdentity
     source: AccountCorrelatedSource
     account: AccountCorrelatedAccount
-    attributes: Dict[str, Any] = Field(
-        description=
-        "The attributes associated with the account.  Attributes are unique per source."
-    )
-    entitlement_count: Optional[StrictInt] = Field(
-        default=None,
-        description="The number of entitlements associated with this account.",
-        alias="entitlementCount")
-    __properties: ClassVar[List[str]] = [
-        "identity", "source", "account", "attributes", "entitlementCount"
-    ]
+    attributes: Dict[str, Any] = Field(description="The attributes associated with the account.  Attributes are unique per source.")
+    entitlement_count: Optional[StrictInt] = Field(default=None, description="The number of entitlements associated with this account.", alias="entitlementCount")
+    __properties: ClassVar[List[str]] = ["identity", "source", "account", "attributes", "entitlementCount"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -81,7 +73,8 @@ class AccountCorrelated(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of identity
@@ -105,18 +98,12 @@ class AccountCorrelated(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "identity":
-            AccountCorrelatedIdentity.from_dict(obj.get("identity"))
-            if obj.get("identity") is not None else None,
-            "source":
-            AccountCorrelatedSource.from_dict(obj.get("source"))
-            if obj.get("source") is not None else None,
-            "account":
-            AccountCorrelatedAccount.from_dict(obj.get("account"))
-            if obj.get("account") is not None else None,
-            "attributes":
-            obj.get("attributes"),
-            "entitlementCount":
-            obj.get("entitlementCount")
+            "identity": AccountCorrelatedIdentity.from_dict(obj.get("identity")) if obj.get("identity") is not None else None,
+            "source": AccountCorrelatedSource.from_dict(obj.get("source")) if obj.get("source") is not None else None,
+            "account": AccountCorrelatedAccount.from_dict(obj.get("account")) if obj.get("account") is not None else None,
+            "attributes": obj.get("attributes"),
+            "entitlementCount": obj.get("entitlementCount")
         })
         return _obj
+
+

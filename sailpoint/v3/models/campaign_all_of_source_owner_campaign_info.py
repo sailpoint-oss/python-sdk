@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,15 +26,11 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class CampaignAllOfSourceOwnerCampaignInfo(BaseModel):
     """
     Must be set only if the campaign type is SOURCE_OWNER.
     """ # noqa: E501
-    source_ids: Optional[List[StrictStr]] = Field(
-        default=None,
-        description="The list of sources to be included in the campaign.",
-        alias="sourceIds")
+    source_ids: Optional[List[StrictStr]] = Field(default=None, description="The list of sources to be included in the campaign.", alias="sourceIds")
     __properties: ClassVar[List[str]] = ["sourceIds"]
 
     model_config = {
@@ -40,6 +38,7 @@ class CampaignAllOfSourceOwnerCampaignInfo(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -67,7 +66,8 @@ class CampaignAllOfSourceOwnerCampaignInfo(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -81,5 +81,9 @@ class CampaignAllOfSourceOwnerCampaignInfo(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({"sourceIds": obj.get("sourceIds")})
+        _obj = cls.model_validate({
+            "sourceIds": obj.get("sourceIds")
+        })
         return _obj
+
+

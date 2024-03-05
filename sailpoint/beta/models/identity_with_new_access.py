@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr
@@ -25,19 +27,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class IdentityWithNewAccess(BaseModel):
     """
     An identity with a set of access to be added
-    """
-
-  # noqa: E501
-    identity_id: StrictStr = Field(description="Identity id to be checked.",
-                                   alias="identityId")
-    access_refs: List[IdentityWithNewAccessAccessRefsInner] = Field(
-        description=
-        "The list of entitlements to consider for possible violations in a preventive check.",
-        alias="accessRefs")
+    """ # noqa: E501
+    identity_id: StrictStr = Field(description="Identity id to be checked.", alias="identityId")
+    access_refs: List[IdentityWithNewAccessAccessRefsInner] = Field(description="The list of entitlements to consider for possible violations in a preventive check.", alias="accessRefs")
     __properties: ClassVar[List[str]] = ["identityId", "accessRefs"]
 
     model_config = {
@@ -45,6 +40,7 @@ class IdentityWithNewAccess(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -72,7 +68,8 @@ class IdentityWithNewAccess(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in access_refs (list)
@@ -94,11 +91,9 @@ class IdentityWithNewAccess(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "identityId":
-            obj.get("identityId"),
-            "accessRefs": [
-                IdentityWithNewAccessAccessRefsInner.from_dict(_item)
-                for _item in obj.get("accessRefs")
-            ] if obj.get("accessRefs") is not None else None
+            "identityId": obj.get("identityId"),
+            "accessRefs": [IdentityWithNewAccessAccessRefsInner.from_dict(_item) for _item in obj.get("accessRefs")] if obj.get("accessRefs") is not None else None
         })
         return _obj
+
+

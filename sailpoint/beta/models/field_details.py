@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
@@ -24,41 +26,24 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class FieldDetails(BaseModel):
     """
     FieldDetails
-    """
-
-  # noqa: E501
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="Name of the FormItem")
-    display_name: Optional[StrictStr] = Field(
-        default=None,
-        description="Display name of the field",
-        alias="displayName")
-    display_type: Optional[StrictStr] = Field(
-        default=None,
-        description="Type of the field to display",
-        alias="displayType")
-    required: Optional[StrictBool] = Field(
-        default=None, description="True if the field is required")
-    allowed_values_list: Optional[List[Dict[str, Any]]] = Field(
-        default=None,
-        description="List of allowed values for the field",
-        alias="allowedValuesList")
-    value: Optional[Dict[str, Any]] = Field(default=None,
-                                            description="Value of the field")
-    __properties: ClassVar[List[str]] = [
-        "name", "displayName", "displayType", "required", "allowedValuesList",
-        "value"
-    ]
+    """ # noqa: E501
+    name: Optional[StrictStr] = Field(default=None, description="Name of the FormItem")
+    display_name: Optional[StrictStr] = Field(default=None, description="Display name of the field", alias="displayName")
+    display_type: Optional[StrictStr] = Field(default=None, description="Type of the field to display", alias="displayType")
+    required: Optional[StrictBool] = Field(default=None, description="True if the field is required")
+    allowed_values_list: Optional[List[Dict[str, Any]]] = Field(default=None, description="List of allowed values for the field", alias="allowedValuesList")
+    value: Optional[Dict[str, Any]] = Field(default=None, description="Value of the field")
+    __properties: ClassVar[List[str]] = ["name", "displayName", "displayType", "required", "allowedValuesList", "value"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -86,7 +71,8 @@ class FieldDetails(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -101,17 +87,13 @@ class FieldDetails(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name":
-            obj.get("name"),
-            "displayName":
-            obj.get("displayName"),
-            "displayType":
-            obj.get("displayType"),
-            "required":
-            obj.get("required"),
-            "allowedValuesList":
-            obj.get("allowedValuesList"),
-            "value":
-            obj.get("value")
+            "name": obj.get("name"),
+            "displayName": obj.get("displayName"),
+            "displayType": obj.get("displayType"),
+            "required": obj.get("required"),
+            "allowedValuesList": obj.get("allowedValuesList"),
+            "value": obj.get("value")
         })
         return _obj
+
+

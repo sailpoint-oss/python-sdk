@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.access_request_recommendation_action_item_response_dto import AccessRequestRecommendationActionItemResponseDto
-
 
 class TestAccessRequestRecommendationActionItemResponseDto(unittest.TestCase):
     """AccessRequestRecommendationActionItemResponseDto unit test stubs"""
@@ -26,9 +26,7 @@ class TestAccessRequestRecommendationActionItemResponseDto(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(
-            self, include_optional
-    ) -> AccessRequestRecommendationActionItemResponseDto:
+    def make_instance(self, include_optional) -> AccessRequestRecommendationActionItemResponseDto:
         """Test AccessRequestRecommendationActionItemResponseDto
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -53,7 +51,6 @@ class TestAccessRequestRecommendationActionItemResponseDto(unittest.TestCase):
         """Test AccessRequestRecommendationActionItemResponseDto"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

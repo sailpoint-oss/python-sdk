@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** | The attribute name | [optional] 
-**op** | **str** | The operation to perform | [optional] 
-**value** | **str** | The value of the attribute | [optional] 
+**name** | **str** | Attribute name. | [optional] 
+**op** | **str** | Operation to perform on attribute. | [optional] 
+**value** | **str** | Value of attribute. | [optional] 
 
 ## Example
 

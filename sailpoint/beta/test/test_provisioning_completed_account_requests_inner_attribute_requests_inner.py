@@ -11,14 +11,13 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.provisioning_completed_account_requests_inner_attribute_requests_inner import ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner
 
-
-class TestProvisioningCompletedAccountRequestsInnerAttributeRequestsInner(
-        unittest.TestCase):
+class TestProvisioningCompletedAccountRequestsInnerAttributeRequestsInner(unittest.TestCase):
     """ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner unit test stubs"""
 
     def setUp(self):
@@ -27,9 +26,7 @@ class TestProvisioningCompletedAccountRequestsInnerAttributeRequestsInner(
     def tearDown(self):
         pass
 
-    def make_instance(
-        self, include_optional
-    ) -> ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner:
+    def make_instance(self, include_optional) -> ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner:
         """Test ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -50,12 +47,10 @@ class TestProvisioningCompletedAccountRequestsInnerAttributeRequestsInner(
         )
         """
 
-    def testProvisioningCompletedAccountRequestsInnerAttributeRequestsInner(
-            self):
+    def testProvisioningCompletedAccountRequestsInnerAttributeRequestsInner(self):
         """Test ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

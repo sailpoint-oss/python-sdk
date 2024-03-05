@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.schedule import Schedule
-
 
 class TestSchedule(unittest.TestCase):
     """Schedule unit test stubs"""
@@ -66,7 +66,6 @@ class TestSchedule(unittest.TestCase):
         """Test Schedule"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

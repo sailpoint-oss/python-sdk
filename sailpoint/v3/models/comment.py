@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -25,37 +26,22 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class Comment(BaseModel):
     """
     Comment
-    """
-
-  # noqa: E501
-    commenter_id: Optional[StrictStr] = Field(
-        default=None,
-        description="Id of the identity making the comment",
-        alias="commenterId")
-    commenter_name: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Human-readable display name of the identity making the comment",
-        alias="commenterName")
-    body: Optional[StrictStr] = Field(default=None,
-                                      description="Content of the comment")
-    var_date: Optional[datetime] = Field(
-        default=None,
-        description="Date and time comment was made",
-        alias="date")
-    __properties: ClassVar[List[str]] = [
-        "commenterId", "commenterName", "body", "date"
-    ]
+    """ # noqa: E501
+    commenter_id: Optional[StrictStr] = Field(default=None, description="Id of the identity making the comment", alias="commenterId")
+    commenter_name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of the identity making the comment", alias="commenterName")
+    body: Optional[StrictStr] = Field(default=None, description="Content of the comment")
+    var_date: Optional[datetime] = Field(default=None, description="Date and time comment was made", alias="date")
+    __properties: ClassVar[List[str]] = ["commenterId", "commenterName", "body", "date"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -83,7 +69,8 @@ class Comment(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -104,3 +91,5 @@ class Comment(BaseModel):
             "date": obj.get("date")
         })
         return _obj
+
+

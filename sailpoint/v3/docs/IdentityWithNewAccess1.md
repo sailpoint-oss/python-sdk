@@ -7,7 +7,7 @@ An identity with a set of access to be added
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **identity_id** | **str** | Set of identity IDs to be checked. | 
-**access_refs** | [**List[EntitlementRef]**](EntitlementRef.md) | The bundle of access profiles to be added to the identities specified. All references must be ENTITLEMENT type. | 
+**access_refs** | [**List[EntitlementRef1]**](EntitlementRef1.md) | The bundle of access profiles to be added to the identities specified. All references must be ENTITLEMENT type. | 
 **client_metadata** | **Dict[str, str]** | Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on completion of the violation check. | [optional] 
 
 ## Example

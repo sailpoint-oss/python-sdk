@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr
@@ -25,15 +27,11 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccessRequestRecommendationActionItemDto(BaseModel):
     """
     AccessRequestRecommendationActionItemDto
-    """
-
-  # noqa: E501
-    identity_id: StrictStr = Field(
-        description="The identity ID taking the action.", alias="identityId")
+    """ # noqa: E501
+    identity_id: StrictStr = Field(description="The identity ID taking the action.", alias="identityId")
     access: AccessRequestRecommendationItem
     __properties: ClassVar[List[str]] = ["identityId", "access"]
 
@@ -42,6 +40,7 @@ class AccessRequestRecommendationActionItemDto(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -69,7 +68,8 @@ class AccessRequestRecommendationActionItemDto(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of access
@@ -87,10 +87,9 @@ class AccessRequestRecommendationActionItemDto(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "identityId":
-            obj.get("identityId"),
-            "access":
-            AccessRequestRecommendationItem.from_dict(obj.get("access"))
-            if obj.get("access") is not None else None
+            "identityId": obj.get("identityId"),
+            "access": AccessRequestRecommendationItem.from_dict(obj.get("access")) if obj.get("access") is not None else None
         })
         return _obj
+
+

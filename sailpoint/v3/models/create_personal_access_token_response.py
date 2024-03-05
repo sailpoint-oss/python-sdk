@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -26,41 +27,24 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class CreatePersonalAccessTokenResponse(BaseModel):
     """
     CreatePersonalAccessTokenResponse
-    """
-
-  # noqa: E501
-    id: StrictStr = Field(
-        description=
-        "The ID of the personal access token (to be used as the username for Basic Auth)."
-    )
-    secret: StrictStr = Field(
-        description=
-        "The secret of the personal access token (to be used as the password for Basic Auth)."
-    )
-    scope: Optional[List[StrictStr]] = Field(
-        description="Scopes of the personal  access token.")
-    name: StrictStr = Field(
-        description=
-        "The name of the personal access token. Cannot be the same as other personal access tokens owned by a user."
-    )
+    """ # noqa: E501
+    id: StrictStr = Field(description="The ID of the personal access token (to be used as the username for Basic Auth).")
+    secret: StrictStr = Field(description="The secret of the personal access token (to be used as the password for Basic Auth).")
+    scope: Optional[List[StrictStr]] = Field(description="Scopes of the personal  access token.")
+    name: StrictStr = Field(description="The name of the personal access token. Cannot be the same as other personal access tokens owned by a user.")
     owner: PatOwner
-    created: datetime = Field(
-        description=
-        "The date and time, down to the millisecond, when this personal access token was created."
-    )
-    __properties: ClassVar[List[str]] = [
-        "id", "secret", "scope", "name", "owner", "created"
-    ]
+    created: datetime = Field(description="The date and time, down to the millisecond, when this personal access token was created.")
+    __properties: ClassVar[List[str]] = ["id", "secret", "scope", "name", "owner", "created"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -88,7 +72,8 @@ class CreatePersonalAccessTokenResponse(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of owner
@@ -111,18 +96,13 @@ class CreatePersonalAccessTokenResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "secret":
-            obj.get("secret"),
-            "scope":
-            obj.get("scope"),
-            "name":
-            obj.get("name"),
-            "owner":
-            PatOwner.from_dict(obj.get("owner"))
-            if obj.get("owner") is not None else None,
-            "created":
-            obj.get("created")
+            "id": obj.get("id"),
+            "secret": obj.get("secret"),
+            "scope": obj.get("scope"),
+            "name": obj.get("name"),
+            "owner": PatOwner.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
+            "created": obj.get("created")
         })
         return _obj
+
+

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,23 +26,14 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class FormDefinitionInput(BaseModel):
     """
     FormDefinitionInput
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(
-        default=None, description="Unique identifier for the form input.")
-    type: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "FormDefinitionInputType value. STRING FormDefinitionInputTypeString")
-    label: Optional[StrictStr] = Field(default=None,
-                                       description="Name for the form input.")
-    description: Optional[StrictStr] = Field(
-        default=None, description="Form input's description.")
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="Unique identifier for the form input.")
+    type: Optional[StrictStr] = Field(default=None, description="FormDefinitionInputType value. STRING FormDefinitionInputTypeString")
+    label: Optional[StrictStr] = Field(default=None, description="Name for the form input.")
+    description: Optional[StrictStr] = Field(default=None, description="Form input's description.")
     __properties: ClassVar[List[str]] = ["id", "type", "label", "description"]
 
     @field_validator('type')
@@ -58,6 +51,7 @@ class FormDefinitionInput(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -85,7 +79,8 @@ class FormDefinitionInput(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -106,3 +101,5 @@ class FormDefinitionInput(BaseModel):
             "description": obj.get("description")
         })
         return _obj
+
+

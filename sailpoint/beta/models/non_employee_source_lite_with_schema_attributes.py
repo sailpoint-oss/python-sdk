@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -25,40 +27,23 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class NonEmployeeSourceLiteWithSchemaAttributes(BaseModel):
     """
     NonEmployeeSourceLiteWithSchemaAttributes
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="Non-Employee source id.")
-    source_id: Optional[StrictStr] = Field(
-        default=None,
-        description="Source Id associated with this non-employee source.",
-        alias="sourceId")
-    name: Optional[StrictStr] = Field(
-        default=None,
-        description="Source name associated with this non-employee source.")
-    description: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Source description associated with this non-employee source.")
-    schema_attributes: Optional[List[NonEmployeeSchemaAttribute]] = Field(
-        default=None,
-        description=
-        "List of schema attributes associated with this non-employee source.",
-        alias="schemaAttributes")
-    __properties: ClassVar[List[str]] = [
-        "id", "sourceId", "name", "description", "schemaAttributes"
-    ]
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="Non-Employee source id.")
+    source_id: Optional[StrictStr] = Field(default=None, description="Source Id associated with this non-employee source.", alias="sourceId")
+    name: Optional[StrictStr] = Field(default=None, description="Source name associated with this non-employee source.")
+    description: Optional[StrictStr] = Field(default=None, description="Source description associated with this non-employee source.")
+    schema_attributes: Optional[List[NonEmployeeSchemaAttribute]] = Field(default=None, description="List of schema attributes associated with this non-employee source.", alias="schemaAttributes")
+    __properties: ClassVar[List[str]] = ["id", "sourceId", "name", "description", "schemaAttributes"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -86,7 +71,8 @@ class NonEmployeeSourceLiteWithSchemaAttributes(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in schema_attributes (list)
@@ -108,17 +94,12 @@ class NonEmployeeSourceLiteWithSchemaAttributes(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "sourceId":
-            obj.get("sourceId"),
-            "name":
-            obj.get("name"),
-            "description":
-            obj.get("description"),
-            "schemaAttributes": [
-                NonEmployeeSchemaAttribute.from_dict(_item)
-                for _item in obj.get("schemaAttributes")
-            ] if obj.get("schemaAttributes") is not None else None
+            "id": obj.get("id"),
+            "sourceId": obj.get("sourceId"),
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "schemaAttributes": [NonEmployeeSchemaAttribute.from_dict(_item) for _item in obj.get("schemaAttributes")] if obj.get("schemaAttributes") is not None else None
         })
         return _obj
+
+

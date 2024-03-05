@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
@@ -25,24 +27,14 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ExceptionCriteriaAccess(BaseModel):
     """
     Access reference with addition of boolean existing flag to indicate whether the access was extant
     """ # noqa: E501
     type: Optional[DtoType] = None
-    id: Optional[StrictStr] = Field(
-        default=None,
-        description="ID of the object to which this reference applies")
-    name: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Human-readable display name of the object to which this reference applies"
-    )
-    existing: Optional[StrictBool] = Field(
-        default=None,
-        description=
-        "Whether the subject identity already had that access or not")
+    id: Optional[StrictStr] = Field(default=None, description="ID of the object to which this reference applies")
+    name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of the object to which this reference applies")
+    existing: Optional[StrictBool] = Field(default=None, description="Whether the subject identity already had that access or not")
     __properties: ClassVar[List[str]] = ["type", "id", "name", "existing"]
 
     model_config = {
@@ -50,6 +42,7 @@ class ExceptionCriteriaAccess(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -77,7 +70,8 @@ class ExceptionCriteriaAccess(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -98,3 +92,5 @@ class ExceptionCriteriaAccess(BaseModel):
             "existing": obj.get("existing")
         })
         return _obj
+
+

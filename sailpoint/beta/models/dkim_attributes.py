@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
@@ -24,40 +26,23 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class DkimAttributes(BaseModel):
     """
     DKIM attributes for a domain or identity
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(
-        default=None, description="UUID associated with domain to be verified")
-    address: Optional[StrictStr] = Field(
-        default=None, description="The identity or domain address")
-    dkim_enabled: Optional[StrictBool] = Field(
-        default=False,
-        description=
-        "Whether or not DKIM has been enabled for this domain / identity",
-        alias="dkimEnabled")
-    dkim_tokens: Optional[List[StrictStr]] = Field(
-        default=None,
-        description="The tokens to be added to a DNS for verification",
-        alias="dkimTokens")
-    dkim_verification_status: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "The current status if the domain /identity has been verified. Ie Success, Failed, Pending",
-        alias="dkimVerificationStatus")
-    __properties: ClassVar[List[str]] = [
-        "id", "address", "dkimEnabled", "dkimTokens", "dkimVerificationStatus"
-    ]
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="UUID associated with domain to be verified")
+    address: Optional[StrictStr] = Field(default=None, description="The identity or domain address")
+    dkim_enabled: Optional[StrictBool] = Field(default=False, description="Whether or not DKIM has been enabled for this domain / identity", alias="dkimEnabled")
+    dkim_tokens: Optional[List[StrictStr]] = Field(default=None, description="The tokens to be added to a DNS for verification", alias="dkimTokens")
+    dkim_verification_status: Optional[StrictStr] = Field(default=None, description="The current status if the domain /identity has been verified. Ie Success, Failed, Pending", alias="dkimVerificationStatus")
+    __properties: ClassVar[List[str]] = ["id", "address", "dkimEnabled", "dkimTokens", "dkimVerificationStatus"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -85,7 +70,8 @@ class DkimAttributes(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -100,16 +86,12 @@ class DkimAttributes(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "address":
-            obj.get("address"),
-            "dkimEnabled":
-            obj.get("dkimEnabled")
-            if obj.get("dkimEnabled") is not None else False,
-            "dkimTokens":
-            obj.get("dkimTokens"),
-            "dkimVerificationStatus":
-            obj.get("dkimVerificationStatus")
+            "id": obj.get("id"),
+            "address": obj.get("address"),
+            "dkimEnabled": obj.get("dkimEnabled") if obj.get("dkimEnabled") is not None else False,
+            "dkimTokens": obj.get("dkimTokens"),
+            "dkimVerificationStatus": obj.get("dkimVerificationStatus")
         })
         return _obj
+
+

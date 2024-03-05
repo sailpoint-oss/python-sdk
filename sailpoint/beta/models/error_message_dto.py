@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -25,22 +27,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ErrorMessageDto(BaseModel):
     """
     ErrorMessageDto
-    """
-
-  # noqa: E501
-    locale: Optional[StrictStr] = Field(
-        default=None,
-        description="The locale for the message text, a BCP 47 language tag.")
-    locale_origin: Optional[LocaleOrigin] = Field(default=None,
-                                                  alias="localeOrigin")
-    text: Optional[StrictStr] = Field(
-        default=None,
-        description="Actual text of the error message in the indicated locale."
-    )
+    """ # noqa: E501
+    locale: Optional[StrictStr] = Field(default=None, description="The locale for the message text, a BCP 47 language tag.")
+    locale_origin: Optional[LocaleOrigin] = Field(default=None, alias="localeOrigin")
+    text: Optional[StrictStr] = Field(default=None, description="Actual text of the error message in the indicated locale.")
     __properties: ClassVar[List[str]] = ["locale", "localeOrigin", "text"]
 
     model_config = {
@@ -48,6 +41,7 @@ class ErrorMessageDto(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -75,9 +69,20 @@ class ErrorMessageDto(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
+        # set to None if locale (nullable) is None
+        # and model_fields_set contains the field
+        if self.locale is None and "locale" in self.model_fields_set:
+            _dict['locale'] = None
+
+        # set to None if locale_origin (nullable) is None
+        # and model_fields_set contains the field
+        if self.locale_origin is None and "locale_origin" in self.model_fields_set:
+            _dict['localeOrigin'] = None
+
         return _dict
 
     @classmethod
@@ -95,3 +100,5 @@ class ErrorMessageDto(BaseModel):
             "text": obj.get("text")
         })
         return _obj
+
+

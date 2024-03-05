@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,23 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccessProfileApprovalScheme(BaseModel):
     """
     AccessProfileApprovalScheme
-    """
-
-  # noqa: E501
-    approver_type: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Describes the individual or group that is responsible for an approval step. Values are as follows. **APP_OWNER**: The owner of the Application  **OWNER**: Owner of the associated Access Profile or Role  **SOURCE_OWNER**: Owner of the Source associated with an Access Profile  **MANAGER**: Manager of the Identity making the request  **GOVERNANCE_GROUP**: A Governance Group, the ID of which is specified by the **approverId** field",
-        alias="approverType")
-    approver_id: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Id of the specific approver, used only when approverType is GOVERNANCE_GROUP",
-        alias="approverId")
+    """ # noqa: E501
+    approver_type: Optional[StrictStr] = Field(default=None, description="Describes the individual or group that is responsible for an approval step. Values are as follows. **APP_OWNER**: The owner of the Application  **OWNER**: Owner of the associated Access Profile or Role  **SOURCE_OWNER**: Owner of the Source associated with an Access Profile  **MANAGER**: Manager of the Identity making the request  **GOVERNANCE_GROUP**: A Governance Group, the ID of which is specified by the **approverId** field", alias="approverType")
+    approver_id: Optional[StrictStr] = Field(default=None, description="Id of the specific approver, used only when approverType is GOVERNANCE_GROUP", alias="approverId")
     __properties: ClassVar[List[str]] = ["approverType", "approverId"]
 
     @field_validator('approver_type')
@@ -49,11 +40,8 @@ class AccessProfileApprovalScheme(BaseModel):
         if value is None:
             return value
 
-        if value not in ('APP_OWNER', 'OWNER', 'SOURCE_OWNER', 'MANAGER',
-                         'GOVERNANCE_GROUP'):
-            raise ValueError(
-                "must be one of enum values ('APP_OWNER', 'OWNER', 'SOURCE_OWNER', 'MANAGER', 'GOVERNANCE_GROUP')"
-            )
+        if value not in ('APP_OWNER', 'OWNER', 'SOURCE_OWNER', 'MANAGER', 'GOVERNANCE_GROUP'):
+            raise ValueError("must be one of enum values ('APP_OWNER', 'OWNER', 'SOURCE_OWNER', 'MANAGER', 'GOVERNANCE_GROUP')")
         return value
 
     model_config = {
@@ -61,6 +49,7 @@ class AccessProfileApprovalScheme(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -88,7 +77,8 @@ class AccessProfileApprovalScheme(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if approver_id (nullable) is None
@@ -112,3 +102,5 @@ class AccessProfileApprovalScheme(BaseModel):
             "approverId": obj.get("approverId")
         })
         return _obj
+
+

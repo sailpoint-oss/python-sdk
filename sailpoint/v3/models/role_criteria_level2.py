@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -27,34 +29,22 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class RoleCriteriaLevel2(BaseModel):
     """
     Defines STANDARD type Role membership
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     operation: Optional[RoleCriteriaOperation] = None
     key: Optional[RoleCriteriaKey] = None
-    string_value: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "String value to test the Identity attribute, Account attribute, or Entitlement specified in the key w/r/t the specified operation. If this criteria is a leaf node, that is, if the operation is one of EQUALS, NOT_EQUALS, CONTAINS, STARTS_WITH, or ENDS_WITH, this field is required. Otherwise, specifying it is an error.",
-        alias="stringValue")
-    children: Optional[List[RoleCriteriaLevel3]] = Field(
-        default=None,
-        description=
-        "Array of child criteria. Required if the operation is AND or OR, otherwise it must be left null. A maximum of three levels of criteria are supported, including leaf nodes. Additionally, AND nodes can only be children or OR nodes and vice-versa."
-    )
-    __properties: ClassVar[List[str]] = [
-        "operation", "key", "stringValue", "children"
-    ]
+    string_value: Optional[StrictStr] = Field(default=None, description="String value to test the Identity attribute, Account attribute, or Entitlement specified in the key w/r/t the specified operation. If this criteria is a leaf node, that is, if the operation is one of EQUALS, NOT_EQUALS, CONTAINS, STARTS_WITH, or ENDS_WITH, this field is required. Otherwise, specifying it is an error.", alias="stringValue")
+    children: Optional[List[RoleCriteriaLevel3]] = Field(default=None, description="Array of child criteria. Required if the operation is AND or OR, otherwise it must be left null. A maximum of three levels of criteria are supported, including leaf nodes. Additionally, AND nodes can only be children or OR nodes and vice-versa.")
+    __properties: ClassVar[List[str]] = ["operation", "key", "stringValue", "children"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -82,7 +72,8 @@ class RoleCriteriaLevel2(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of key
@@ -122,16 +113,11 @@ class RoleCriteriaLevel2(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "operation":
-            obj.get("operation"),
-            "key":
-            RoleCriteriaKey.from_dict(obj.get("key"))
-            if obj.get("key") is not None else None,
-            "stringValue":
-            obj.get("stringValue"),
-            "children": [
-                RoleCriteriaLevel3.from_dict(_item)
-                for _item in obj.get("children")
-            ] if obj.get("children") is not None else None
+            "operation": obj.get("operation"),
+            "key": RoleCriteriaKey.from_dict(obj.get("key")) if obj.get("key") is not None else None,
+            "stringValue": obj.get("stringValue"),
+            "children": [RoleCriteriaLevel3.from_dict(_item) for _item in obj.get("children")] if obj.get("children") is not None else None
         })
         return _obj
+
+

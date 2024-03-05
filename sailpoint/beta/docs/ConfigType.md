@@ -6,7 +6,9 @@ Type of Reassignment Configuration.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**internal_name** | [**ConfigTypeEnum**](ConfigTypeEnum.md) |  | [optional] 
+**priority** | **int** |  | [optional] 
+**internal_name** | [**ConfigTypeEnumCamel**](ConfigTypeEnumCamel.md) |  | [optional] 
+**internal_name_camel** | [**ConfigTypeEnum**](ConfigTypeEnum.md) |  | [optional] 
 **display_name** | **str** | Human readable display name of the type to be shown on UI | [optional] 
 **description** | **str** | Description of the type of work to be reassigned, displayed by the UI. | [optional] 
 

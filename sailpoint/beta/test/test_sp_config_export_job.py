@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.sp_config_export_job import SpConfigExportJob
-
 
 class TestSpConfigExportJob(unittest.TestCase):
     """SpConfigExportJob unit test stubs"""
@@ -60,7 +60,6 @@ class TestSpConfigExportJob(unittest.TestCase):
         """Test SpConfigExportJob"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

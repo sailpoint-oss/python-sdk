@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.role_mining_session_scope import RoleMiningSessionScope
-
 
 class TestRoleMiningSessionScope(unittest.TestCase):
     """RoleMiningSessionScope unit test stubs"""
@@ -49,7 +49,6 @@ class TestRoleMiningSessionScope(unittest.TestCase):
         """Test RoleMiningSessionScope"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

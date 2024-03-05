@@ -11,37 +11,32 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
 from pydantic import Field
+from sailpoint.v3.models.expression_children_inner import ExpressionChildrenInner
 from sailpoint.v3.models.value import Value
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class Expression(BaseModel):
     """
     Expression
-    """
-
-  # noqa: E501
-    operator: Optional[StrictStr] = Field(
-        default=None, description="Operator for the expression")
-    attribute: Optional[StrictStr] = Field(
-        default=None, description="Name for the attribute")
+    """ # noqa: E501
+    operator: Optional[StrictStr] = Field(default=None, description="Operator for the expression")
+    attribute: Optional[StrictStr] = Field(default=None, description="Name for the attribute")
     value: Optional[Value] = None
-    children: Optional[List[Value]] = Field(default=None,
-                                            description="List of expressions")
-    __properties: ClassVar[List[str]] = [
-        "operator", "attribute", "value", "children"
-    ]
+    children: Optional[List[ExpressionChildrenInner]] = Field(default=None, description="List of expressions")
+    __properties: ClassVar[List[str]] = ["operator", "attribute", "value", "children"]
 
     @field_validator('operator')
     def operator_validate_enum(cls, value):
@@ -58,6 +53,7 @@ class Expression(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -85,7 +81,8 @@ class Expression(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of value
@@ -98,6 +95,16 @@ class Expression(BaseModel):
                 if _item:
                     _items.append(_item.to_dict())
             _dict['children'] = _items
+        # set to None if attribute (nullable) is None
+        # and model_fields_set contains the field
+        if self.attribute is None and "attribute" in self.model_fields_set:
+            _dict['attribute'] = None
+
+        # set to None if value (nullable) is None
+        # and model_fields_set contains the field
+        if self.value is None and "value" in self.model_fields_set:
+            _dict['value'] = None
+
         # set to None if children (nullable) is None
         # and model_fields_set contains the field
         if self.children is None and "children" in self.model_fields_set:
@@ -115,15 +122,11 @@ class Expression(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "operator":
-            obj.get("operator"),
-            "attribute":
-            obj.get("attribute"),
-            "value":
-            Value.from_dict(obj.get("value"))
-            if obj.get("value") is not None else None,
-            "children":
-            [Value.from_dict(_item) for _item in obj.get("children")]
-            if obj.get("children") is not None else None
+            "operator": obj.get("operator"),
+            "attribute": obj.get("attribute"),
+            "value": Value.from_dict(obj.get("value")) if obj.get("value") is not None else None,
+            "children": [ExpressionChildrenInner.from_dict(_item) for _item in obj.get("children")] if obj.get("children") is not None else None
         })
         return _obj
+
+

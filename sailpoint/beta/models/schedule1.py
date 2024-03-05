@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -22,38 +23,31 @@ from pydantic import BaseModel, StrictStr
 from pydantic import Field
 from sailpoint.beta.models.schedule1_days import Schedule1Days
 from sailpoint.beta.models.schedule1_hours import Schedule1Hours
+from sailpoint.beta.models.schedule1_months import Schedule1Months
 from sailpoint.beta.models.schedule_type import ScheduleType
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class Schedule1(BaseModel):
     """
     The schedule information.
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     type: ScheduleType
+    months: Optional[Schedule1Months] = None
     days: Optional[Schedule1Days] = None
     hours: Schedule1Hours
-    expiration: Optional[datetime] = Field(
-        default=None, description="A date-time in ISO-8601 format")
-    time_zone_id: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "The canonical TZ identifier the schedule will run in (ex. America/New_York).  If no timezone is specified, the org's default timezone is used.",
-        alias="timeZoneId")
-    __properties: ClassVar[List[str]] = [
-        "type", "days", "hours", "expiration", "timeZoneId"
-    ]
+    expiration: Optional[datetime] = Field(default=None, description="A date-time in ISO-8601 format")
+    time_zone_id: Optional[StrictStr] = Field(default=None, description="The canonical TZ identifier the schedule will run in (ex. America/New_York).  If no timezone is specified, the org's default timezone is used.", alias="timeZoneId")
+    __properties: ClassVar[List[str]] = ["type", "months", "days", "hours", "expiration", "timeZoneId"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -81,9 +75,13 @@ class Schedule1(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of months
+        if self.months:
+            _dict['months'] = self.months.to_dict()
         # override the default output from pydantic by calling `to_dict()` of days
         if self.days:
             _dict['days'] = self.days.to_dict()
@@ -112,17 +110,13 @@ class Schedule1(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "type":
-            obj.get("type"),
-            "days":
-            Schedule1Days.from_dict(obj.get("days"))
-            if obj.get("days") is not None else None,
-            "hours":
-            Schedule1Hours.from_dict(obj.get("hours"))
-            if obj.get("hours") is not None else None,
-            "expiration":
-            obj.get("expiration"),
-            "timeZoneId":
-            obj.get("timeZoneId")
+            "type": obj.get("type"),
+            "months": Schedule1Months.from_dict(obj.get("months")) if obj.get("months") is not None else None,
+            "days": Schedule1Days.from_dict(obj.get("days")) if obj.get("days") is not None else None,
+            "hours": Schedule1Hours.from_dict(obj.get("hours")) if obj.get("hours") is not None else None,
+            "expiration": obj.get("expiration"),
+            "timeZoneId": obj.get("timeZoneId")
         })
         return _obj
+
+

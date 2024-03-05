@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.bucket_type import BucketType
-
 
 class TestBucketType(unittest.TestCase):
     """BucketType unit test stubs"""
@@ -29,7 +29,6 @@ class TestBucketType(unittest.TestCase):
     def testBucketType(self):
         """Test BucketType"""
         # inst = BucketType()
-
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import io
 import warnings
 
@@ -49,17 +50,19 @@ class ReportsDataExtractionApi:
             api_client = ApiClient.get_default()
         self.api_client = api_client
 
+
     @validate_call
     def cancel_report(
         self,
-        id: Annotated[StrictStr,
-                      Field(description="ID of the running Report to cancel")],
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        id: Annotated[StrictStr, Field(description="ID of the running Report to cancel")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -93,11 +96,13 @@ class ReportsDataExtractionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._cancel_report_serialize(id=id,
-                                               _request_auth=_request_auth,
-                                               _content_type=_content_type,
-                                               _headers=_headers,
-                                               _host_index=_host_index)
+        _param = self._cancel_report_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
@@ -108,24 +113,28 @@ class ReportsDataExtractionApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
+
     @validate_call
     def cancel_report_with_http_info(
         self,
-        id: Annotated[StrictStr,
-                      Field(description="ID of the running Report to cancel")],
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        id: Annotated[StrictStr, Field(description="ID of the running Report to cancel")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -159,11 +168,13 @@ class ReportsDataExtractionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._cancel_report_serialize(id=id,
-                                               _request_auth=_request_auth,
-                                               _content_type=_content_type,
-                                               _headers=_headers,
-                                               _host_index=_host_index)
+        _param = self._cancel_report_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
@@ -174,24 +185,28 @@ class ReportsDataExtractionApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
+
     @validate_call
     def cancel_report_without_preload_content(
         self,
-        id: Annotated[StrictStr,
-                      Field(description="ID of the running Report to cancel")],
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        id: Annotated[StrictStr, Field(description="ID of the running Report to cancel")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -225,11 +240,13 @@ class ReportsDataExtractionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._cancel_report_serialize(id=id,
-                                               _request_auth=_request_auth,
-                                               _content_type=_content_type,
-                                               _headers=_headers,
-                                               _host_index=_host_index)
+        _param = self._cancel_report_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
@@ -240,8 +257,11 @@ class ReportsDataExtractionApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         return response_data.response
+
 
     def _cancel_report_serialize(
         self,
@@ -254,7 +274,8 @@ class ReportsDataExtractionApi:
 
         _host = None
 
-        _collection_formats: Dict[str, str] = {}
+        _collection_formats: Dict[str, str] = {
+        }
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -271,12 +292,20 @@ class ReportsDataExtractionApi:
         # process the form parameters
         # process the body parameter
 
+
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])
+            [
+                'application/json'
+            ]
+        )
+
 
         # authentication setting
-        _auth_settings: List[str] = ['UserContextAuth', 'UserContextAuth']
+        _auth_settings: List[str] = [
+            'UserContextAuth', 
+            'UserContextAuth'
+        ]
 
         return self.api_client.param_serialize(
             method='POST',
@@ -290,37 +319,27 @@ class ReportsDataExtractionApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth)
+            _request_auth=_request_auth
+        )
+
+
+
 
     @validate_call
     def get_report(
         self,
-        task_result_id: Annotated[
-            StrictStr,
-            Field(
-                description=
-                "Unique identifier of the task result which handled report")],
-        file_format: Annotated[
-            StrictStr,
-            Field(description="Output format of the requested report file")],
-        name: Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "preferred Report file name, by default will be used report name from task result."
-            )] = None,
-        auditable: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "Enables auditing for current report download. Will create an audit event and sent it to the REPORT cloud-audit kafka topic.  Event will be created if there is any result present by requested taskResultId."
-            )] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        task_result_id: Annotated[StrictStr, Field(description="Unique identifier of the task result which handled report")],
+        file_format: Annotated[StrictStr, Field(description="Output format of the requested report file")],
+        name: Annotated[Optional[StrictStr], Field(description="preferred Report file name, by default will be used report name from task result.")] = None,
+        auditable: Annotated[Optional[StrictBool], Field(description="Enables auditing for current report download. Will create an audit event and sent it to the REPORT cloud-audit kafka topic.  Event will be created if there is any result present by requested taskResultId.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -360,14 +379,16 @@ class ReportsDataExtractionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_report_serialize(task_result_id=task_result_id,
-                                            file_format=file_format,
-                                            name=name,
-                                            auditable=auditable,
-                                            _request_auth=_request_auth,
-                                            _content_type=_content_type,
-                                            _headers=_headers,
-                                            _host_index=_host_index)
+        _param = self._get_report_serialize(
+            task_result_id=task_result_id,
+            file_format=file_format,
+            name=name,
+            auditable=auditable,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
@@ -379,42 +400,31 @@ class ReportsDataExtractionApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
+
     @validate_call
     def get_report_with_http_info(
         self,
-        task_result_id: Annotated[
-            StrictStr,
-            Field(
-                description=
-                "Unique identifier of the task result which handled report")],
-        file_format: Annotated[
-            StrictStr,
-            Field(description="Output format of the requested report file")],
-        name: Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "preferred Report file name, by default will be used report name from task result."
-            )] = None,
-        auditable: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "Enables auditing for current report download. Will create an audit event and sent it to the REPORT cloud-audit kafka topic.  Event will be created if there is any result present by requested taskResultId."
-            )] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        task_result_id: Annotated[StrictStr, Field(description="Unique identifier of the task result which handled report")],
+        file_format: Annotated[StrictStr, Field(description="Output format of the requested report file")],
+        name: Annotated[Optional[StrictStr], Field(description="preferred Report file name, by default will be used report name from task result.")] = None,
+        auditable: Annotated[Optional[StrictBool], Field(description="Enables auditing for current report download. Will create an audit event and sent it to the REPORT cloud-audit kafka topic.  Event will be created if there is any result present by requested taskResultId.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -454,14 +464,16 @@ class ReportsDataExtractionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_report_serialize(task_result_id=task_result_id,
-                                            file_format=file_format,
-                                            name=name,
-                                            auditable=auditable,
-                                            _request_auth=_request_auth,
-                                            _content_type=_content_type,
-                                            _headers=_headers,
-                                            _host_index=_host_index)
+        _param = self._get_report_serialize(
+            task_result_id=task_result_id,
+            file_format=file_format,
+            name=name,
+            auditable=auditable,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
@@ -473,42 +485,31 @@ class ReportsDataExtractionApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
+
     @validate_call
     def get_report_without_preload_content(
         self,
-        task_result_id: Annotated[
-            StrictStr,
-            Field(
-                description=
-                "Unique identifier of the task result which handled report")],
-        file_format: Annotated[
-            StrictStr,
-            Field(description="Output format of the requested report file")],
-        name: Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "preferred Report file name, by default will be used report name from task result."
-            )] = None,
-        auditable: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "Enables auditing for current report download. Will create an audit event and sent it to the REPORT cloud-audit kafka topic.  Event will be created if there is any result present by requested taskResultId."
-            )] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        task_result_id: Annotated[StrictStr, Field(description="Unique identifier of the task result which handled report")],
+        file_format: Annotated[StrictStr, Field(description="Output format of the requested report file")],
+        name: Annotated[Optional[StrictStr], Field(description="preferred Report file name, by default will be used report name from task result.")] = None,
+        auditable: Annotated[Optional[StrictBool], Field(description="Enables auditing for current report download. Will create an audit event and sent it to the REPORT cloud-audit kafka topic.  Event will be created if there is any result present by requested taskResultId.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -548,14 +549,16 @@ class ReportsDataExtractionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_report_serialize(task_result_id=task_result_id,
-                                            file_format=file_format,
-                                            name=name,
-                                            auditable=auditable,
-                                            _request_auth=_request_auth,
-                                            _content_type=_content_type,
-                                            _headers=_headers,
-                                            _host_index=_host_index)
+        _param = self._get_report_serialize(
+            task_result_id=task_result_id,
+            file_format=file_format,
+            name=name,
+            auditable=auditable,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
@@ -567,8 +570,11 @@ class ReportsDataExtractionApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         return response_data.response
+
 
     def _get_report_serialize(
         self,
@@ -584,7 +590,8 @@ class ReportsDataExtractionApi:
 
         _host = None
 
-        _collection_formats: Dict[str, str] = {}
+        _collection_formats: Dict[str, str] = {
+        }
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -598,27 +605,37 @@ class ReportsDataExtractionApi:
             _path_params['taskResultId'] = task_result_id
         # process the query parameters
         if file_format is not None:
-
+            
             _query_params.append(('fileFormat', file_format))
-
+            
         if name is not None:
-
+            
             _query_params.append(('name', name))
-
+            
         if auditable is not None:
-
+            
             _query_params.append(('auditable', auditable))
-
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
 
+
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/csv', 'application/pdf', 'application/json'])
+            [
+                'application/csv', 
+                'application/pdf', 
+                'application/json'
+            ]
+        )
+
 
         # authentication setting
-        _auth_settings: List[str] = ['UserContextAuth', 'UserContextAuth']
+        _auth_settings: List[str] = [
+            'UserContextAuth', 
+            'UserContextAuth'
+        ]
 
         return self.api_client.param_serialize(
             method='GET',
@@ -632,28 +649,25 @@ class ReportsDataExtractionApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth)
+            _request_auth=_request_auth
+        )
+
+
+
 
     @validate_call
     def get_report_result(
         self,
-        task_result_id: Annotated[
-            StrictStr,
-            Field(
-                description=
-                "Unique identifier of the task result which handled report")],
-        completed: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "state of task result to apply ordering when results are fetching from the DB"
-            )] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        task_result_id: Annotated[StrictStr, Field(description="Unique identifier of the task result which handled report")],
+        completed: Annotated[Optional[StrictBool], Field(description="state of task result to apply ordering when results are fetching from the DB")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -695,7 +709,8 @@ class ReportsDataExtractionApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ReportResults",
@@ -706,33 +721,29 @@ class ReportsDataExtractionApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
+
     @validate_call
     def get_report_result_with_http_info(
         self,
-        task_result_id: Annotated[
-            StrictStr,
-            Field(
-                description=
-                "Unique identifier of the task result which handled report")],
-        completed: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "state of task result to apply ordering when results are fetching from the DB"
-            )] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        task_result_id: Annotated[StrictStr, Field(description="Unique identifier of the task result which handled report")],
+        completed: Annotated[Optional[StrictBool], Field(description="state of task result to apply ordering when results are fetching from the DB")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -774,7 +785,8 @@ class ReportsDataExtractionApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ReportResults",
@@ -785,33 +797,29 @@ class ReportsDataExtractionApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
+
     @validate_call
     def get_report_result_without_preload_content(
         self,
-        task_result_id: Annotated[
-            StrictStr,
-            Field(
-                description=
-                "Unique identifier of the task result which handled report")],
-        completed: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "state of task result to apply ordering when results are fetching from the DB"
-            )] = None,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        task_result_id: Annotated[StrictStr, Field(description="Unique identifier of the task result which handled report")],
+        completed: Annotated[Optional[StrictBool], Field(description="state of task result to apply ordering when results are fetching from the DB")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -853,7 +861,8 @@ class ReportsDataExtractionApi:
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
-            _host_index=_host_index)
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ReportResults",
@@ -864,8 +873,11 @@ class ReportsDataExtractionApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         return response_data.response
+
 
     def _get_report_result_serialize(
         self,
@@ -879,7 +891,8 @@ class ReportsDataExtractionApi:
 
         _host = None
 
-        _collection_formats: Dict[str, str] = {}
+        _collection_formats: Dict[str, str] = {
+        }
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -893,19 +906,27 @@ class ReportsDataExtractionApi:
             _path_params['taskResultId'] = task_result_id
         # process the query parameters
         if completed is not None:
-
+            
             _query_params.append(('completed', completed))
-
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
 
+
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])
+            [
+                'application/json'
+            ]
+        )
+
 
         # authentication setting
-        _auth_settings: List[str] = ['UserContextAuth', 'UserContextAuth']
+        _auth_settings: List[str] = [
+            'UserContextAuth', 
+            'UserContextAuth'
+        ]
 
         return self.api_client.param_serialize(
             method='GET',
@@ -919,18 +940,24 @@ class ReportsDataExtractionApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth)
+            _request_auth=_request_auth
+        )
+
+
+
 
     @validate_call
     def start_report(
         self,
         report_details: ReportDetails,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -964,11 +991,13 @@ class ReportsDataExtractionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._start_report_serialize(report_details=report_details,
-                                              _request_auth=_request_auth,
-                                              _content_type=_content_type,
-                                              _headers=_headers,
-                                              _host_index=_host_index)
+        _param = self._start_report_serialize(
+            report_details=report_details,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "TaskResultDetails",
@@ -979,23 +1008,28 @@ class ReportsDataExtractionApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
+
     @validate_call
     def start_report_with_http_info(
         self,
         report_details: ReportDetails,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -1029,11 +1063,13 @@ class ReportsDataExtractionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._start_report_serialize(report_details=report_details,
-                                              _request_auth=_request_auth,
-                                              _content_type=_content_type,
-                                              _headers=_headers,
-                                              _host_index=_host_index)
+        _param = self._start_report_serialize(
+            report_details=report_details,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "TaskResultDetails",
@@ -1044,23 +1080,28 @@ class ReportsDataExtractionApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
+
     @validate_call
     def start_report_without_preload_content(
         self,
         report_details: ReportDetails,
-        _request_timeout: Union[None, Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                Tuple[Annotated[StrictFloat,
-                                                Field(gt=0)],
-                                      Annotated[StrictFloat,
-                                                Field(gt=0)]]] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -1094,11 +1135,13 @@ class ReportsDataExtractionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._start_report_serialize(report_details=report_details,
-                                              _request_auth=_request_auth,
-                                              _content_type=_content_type,
-                                              _headers=_headers,
-                                              _host_index=_host_index)
+        _param = self._start_report_serialize(
+            report_details=report_details,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "TaskResultDetails",
@@ -1109,8 +1152,11 @@ class ReportsDataExtractionApi:
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
-            *_param, _request_timeout=_request_timeout)
+            *_param,
+            _request_timeout=_request_timeout
+        )
         return response_data.response
+
 
     def _start_report_serialize(
         self,
@@ -1123,7 +1169,8 @@ class ReportsDataExtractionApi:
 
         _host = None
 
-        _collection_formats: Dict[str, str] = {}
+        _collection_formats: Dict[str, str] = {
+        }
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
@@ -1140,9 +1187,13 @@ class ReportsDataExtractionApi:
         if report_details is not None:
             _body_params = report_details
 
+
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])
+            [
+                'application/json'
+            ]
+        )
 
         # set the HTTP header `Content-Type`
         if _content_type:
@@ -1150,12 +1201,19 @@ class ReportsDataExtractionApi:
         else:
             _default_content_type = (
                 self.api_client.select_header_content_type(
-                    ['application/json']))
+                    [
+                        'application/json'
+                    ]
+                )
+            )
             if _default_content_type is not None:
                 _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
-        _auth_settings: List[str] = ['UserContextAuth', 'UserContextAuth']
+        _auth_settings: List[str] = [
+            'UserContextAuth', 
+            'UserContextAuth'
+        ]
 
         return self.api_client.param_serialize(
             method='POST',
@@ -1169,4 +1227,7 @@ class ReportsDataExtractionApi:
             auth_settings=_auth_settings,
             collection_formats=_collection_formats,
             _host=_host,
-            _request_auth=_request_auth)
+            _request_auth=_request_auth
+        )
+
+

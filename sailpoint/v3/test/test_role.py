@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.role import Role
-
 
 class TestRole(unittest.TestCase):
     """Role unit test stubs"""
@@ -50,6 +50,12 @@ class TestRole(unittest.TestCase):
                         id = 'ff808081751e6e129f1518161919ecca', 
                         type = 'ACCESS_PROFILE', 
                         name = 'Access Profile 2567', )
+                    ],
+                entitlements = [
+                    sailpoint.v3.models.entitlement_ref.EntitlementRef(
+                        type = 'ENTITLEMENT', 
+                        id = '2c91809773dee32014e13e122092014e', 
+                        name = 'CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local', )
                     ],
                 membership = sailpoint.v3.models.role_membership_selector.RoleMembershipSelector(
                     type = 'IDENTITY_LIST', 
@@ -105,7 +111,6 @@ class TestRole(unittest.TestCase):
         """Test Role"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

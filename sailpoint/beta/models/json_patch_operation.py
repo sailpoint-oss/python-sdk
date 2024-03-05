@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -25,16 +27,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class JsonPatchOperation(BaseModel):
     """
     A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)
     """ # noqa: E501
     op: StrictStr = Field(description="The operation to be performed")
-    path: StrictStr = Field(
-        description=
-        "A string JSON Pointer representing the target path to an element to be affected by the operation"
-    )
+    path: StrictStr = Field(description="A string JSON Pointer representing the target path to an element to be affected by the operation")
     value: Optional[JsonPatchOperationValue] = None
     __properties: ClassVar[List[str]] = ["op", "path", "value"]
 
@@ -42,9 +40,7 @@ class JsonPatchOperation(BaseModel):
     def op_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('add', 'remove', 'replace', 'move', 'copy', 'test'):
-            raise ValueError(
-                "must be one of enum values ('add', 'remove', 'replace', 'move', 'copy', 'test')"
-            )
+            raise ValueError("must be one of enum values ('add', 'remove', 'replace', 'move', 'copy', 'test')")
         return value
 
     model_config = {
@@ -52,6 +48,7 @@ class JsonPatchOperation(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -79,7 +76,8 @@ class JsonPatchOperation(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of value
@@ -97,12 +95,10 @@ class JsonPatchOperation(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "op":
-            obj.get("op"),
-            "path":
-            obj.get("path"),
-            "value":
-            JsonPatchOperationValue.from_dict(obj.get("value"))
-            if obj.get("value") is not None else None
+            "op": obj.get("op"),
+            "path": obj.get("path"),
+            "value": JsonPatchOperationValue.from_dict(obj.get("value")) if obj.get("value") is not None else None
         })
         return _obj
+
+

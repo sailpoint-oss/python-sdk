@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr, field_validator
@@ -25,39 +27,18 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class WorkflowLibraryTrigger(BaseModel):
     """
     WorkflowLibraryTrigger
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Trigger ID. This is a static namespaced ID for the trigger.")
-    type: Optional[Dict[str, Any]] = Field(default=None,
-                                           description="Trigger type")
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="Trigger ID. This is a static namespaced ID for the trigger.")
+    type: Optional[Dict[str, Any]] = Field(default=None, description="Trigger type")
     name: Optional[StrictStr] = Field(default=None, description="Trigger Name")
-    description: Optional[StrictStr] = Field(default=None,
-                                             description="Trigger Description")
-    is_dynamic_schema: Optional[StrictBool] = Field(
-        default=None,
-        description=
-        "Determines whether the dynamic output schema is returned in place of the action's output schema. The dynamic schema lists non-static properties, like properties of a workflow form where each form has different fields. These will be provided dynamically based on available form fields.",
-        alias="isDynamicSchema")
-    input_example: Optional[Dict[str, Any]] = Field(
-        default=None,
-        description="Example trigger payload if applicable",
-        alias="inputExample")
-    form_fields: Optional[List[WorkflowLibraryFormFields]] = Field(
-        default=None,
-        description="One or more inputs that the trigger accepts",
-        alias="formFields")
-    __properties: ClassVar[List[str]] = [
-        "id", "type", "name", "description", "isDynamicSchema", "inputExample",
-        "formFields"
-    ]
+    description: Optional[StrictStr] = Field(default=None, description="Trigger Description")
+    is_dynamic_schema: Optional[StrictBool] = Field(default=None, description="Determines whether the dynamic output schema is returned in place of the action's output schema. The dynamic schema lists non-static properties, like properties of a workflow form where each form has different fields. These will be provided dynamically based on available form fields.", alias="isDynamicSchema")
+    input_example: Optional[Dict[str, Any]] = Field(default=None, description="Example trigger payload if applicable", alias="inputExample")
+    form_fields: Optional[List[WorkflowLibraryFormFields]] = Field(default=None, description="One or more inputs that the trigger accepts", alias="formFields")
+    __properties: ClassVar[List[str]] = ["id", "type", "name", "description", "isDynamicSchema", "inputExample", "formFields"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -66,9 +47,7 @@ class WorkflowLibraryTrigger(BaseModel):
             return value
 
         if value not in ('EVENT', 'SCHEDULED', 'EXTERNAL'):
-            raise ValueError(
-                "must be one of enum values ('EVENT', 'SCHEDULED', 'EXTERNAL')"
-            )
+            raise ValueError("must be one of enum values ('EVENT', 'SCHEDULED', 'EXTERNAL')")
         return value
 
     model_config = {
@@ -76,6 +55,7 @@ class WorkflowLibraryTrigger(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -103,7 +83,8 @@ class WorkflowLibraryTrigger(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in form_fields (list)
@@ -135,21 +116,14 @@ class WorkflowLibraryTrigger(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "type":
-            obj.get("type"),
-            "name":
-            obj.get("name"),
-            "description":
-            obj.get("description"),
-            "isDynamicSchema":
-            obj.get("isDynamicSchema"),
-            "inputExample":
-            obj.get("inputExample"),
-            "formFields": [
-                WorkflowLibraryFormFields.from_dict(_item)
-                for _item in obj.get("formFields")
-            ] if obj.get("formFields") is not None else None
+            "id": obj.get("id"),
+            "type": obj.get("type"),
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "isDynamicSchema": obj.get("isDynamicSchema"),
+            "inputExample": obj.get("inputExample"),
+            "formFields": [WorkflowLibraryFormFields.from_dict(_item) for _item in obj.get("formFields")] if obj.get("formFields") is not None else None
         })
         return _obj
+
+

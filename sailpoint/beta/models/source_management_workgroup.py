@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,18 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class SourceManagementWorkgroup(BaseModel):
     """
     Reference to Management Workgroup for this Source
     """ # noqa: E501
-    type: Optional[StrictStr] = Field(
-        default=None, description="The type of object being referenced")
-    id: Optional[StrictStr] = Field(
-        default=None, description="ID of the management workgroup")
-    name: Optional[StrictStr] = Field(
-        default=None,
-        description="Human-readable display name of the management workgroup")
+    type: Optional[StrictStr] = Field(default=None, description="The type of object being referenced")
+    id: Optional[StrictStr] = Field(default=None, description="ID of the management workgroup")
+    name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of the management workgroup")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')
@@ -53,6 +50,7 @@ class SourceManagementWorkgroup(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -80,7 +78,8 @@ class SourceManagementWorkgroup(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -100,3 +99,5 @@ class SourceManagementWorkgroup(BaseModel):
             "name": obj.get("name")
         })
         return _obj
+
+

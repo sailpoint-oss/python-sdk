@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.connected_object_type import ConnectedObjectType
-
 
 class TestConnectedObjectType(unittest.TestCase):
     """ConnectedObjectType unit test stubs"""
@@ -29,7 +29,6 @@ class TestConnectedObjectType(unittest.TestCase):
     def testConnectedObjectType(self):
         """Test ConnectedObjectType"""
         # inst = ConnectedObjectType()
-
 
 if __name__ == '__main__':
     unittest.main()

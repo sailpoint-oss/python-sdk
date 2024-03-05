@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.provisioning_criteria_level1 import ProvisioningCriteriaLevel1
-
 
 class TestProvisioningCriteriaLevel1(unittest.TestCase):
     """ProvisioningCriteriaLevel1 unit test stubs"""
@@ -55,7 +55,6 @@ class TestProvisioningCriteriaLevel1(unittest.TestCase):
         """Test ProvisioningCriteriaLevel1"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

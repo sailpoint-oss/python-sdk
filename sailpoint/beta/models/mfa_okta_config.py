@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
@@ -24,40 +26,23 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class MfaOktaConfig(BaseModel):
     """
     MfaOktaConfig
-    """
-
-  # noqa: E501
-    mfa_method: Optional[StrictStr] = Field(default=None,
-                                            description="Mfa method name",
-                                            alias="mfaMethod")
-    enabled: Optional[StrictBool] = Field(
-        default=False, description="If MFA method is enabled.")
-    host: Optional[StrictStr] = Field(
-        default=None,
-        description="The server host name or IP address of the MFA provider.")
-    access_key: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "The secret key for authenticating requests to the MFA provider.",
-        alias="accessKey")
-    identity_attribute: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Optional. The name of the attribute for mapping IdentityNow identity to the MFA provider.",
-        alias="identityAttribute")
-    __properties: ClassVar[List[str]] = [
-        "mfaMethod", "enabled", "host", "accessKey", "identityAttribute"
-    ]
+    """ # noqa: E501
+    mfa_method: Optional[StrictStr] = Field(default=None, description="Mfa method name", alias="mfaMethod")
+    enabled: Optional[StrictBool] = Field(default=False, description="If MFA method is enabled.")
+    host: Optional[StrictStr] = Field(default=None, description="The server host name or IP address of the MFA provider.")
+    access_key: Optional[StrictStr] = Field(default=None, description="The secret key for authenticating requests to the MFA provider.", alias="accessKey")
+    identity_attribute: Optional[StrictStr] = Field(default=None, description="Optional. The name of the attribute for mapping IdentityNow identity to the MFA provider.", alias="identityAttribute")
+    __properties: ClassVar[List[str]] = ["mfaMethod", "enabled", "host", "accessKey", "identityAttribute"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -85,7 +70,8 @@ class MfaOktaConfig(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if mfa_method (nullable) is None
@@ -120,15 +106,12 @@ class MfaOktaConfig(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "mfaMethod":
-            obj.get("mfaMethod"),
-            "enabled":
-            obj.get("enabled") if obj.get("enabled") is not None else False,
-            "host":
-            obj.get("host"),
-            "accessKey":
-            obj.get("accessKey"),
-            "identityAttribute":
-            obj.get("identityAttribute")
+            "mfaMethod": obj.get("mfaMethod"),
+            "enabled": obj.get("enabled") if obj.get("enabled") is not None else False,
+            "host": obj.get("host"),
+            "accessKey": obj.get("accessKey"),
+            "identityAttribute": obj.get("identityAttribute")
         })
         return _obj
+
+

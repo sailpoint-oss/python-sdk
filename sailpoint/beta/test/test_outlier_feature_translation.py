@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.outlier_feature_translation import OutlierFeatureTranslation
-
 
 class TestOutlierFeatureTranslation(unittest.TestCase):
     """OutlierFeatureTranslation unit test stubs"""
@@ -52,7 +52,6 @@ class TestOutlierFeatureTranslation(unittest.TestCase):
         """Test OutlierFeatureTranslation"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

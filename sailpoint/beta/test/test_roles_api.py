@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 
 from sailpoint.beta.api.roles_api import RolesApi
@@ -57,6 +58,13 @@ class TestRolesApi(unittest.TestCase):
         """Test case for get_role_assigned_identities
 
         Identities assigned a Role
+        """
+        pass
+
+    def test_get_role_entitlements(self) -> None:
+        """Test case for get_role_entitlements
+
+        List role's Entitlements
         """
         pass
 

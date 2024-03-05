@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,17 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class EmailStatusDto(BaseModel):
     """
     EmailStatusDto
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     id: Optional[StrictStr] = None
     email: Optional[StrictStr] = None
-    verification_status: Optional[StrictStr] = Field(
-        default=None, alias="verificationStatus")
+    verification_status: Optional[StrictStr] = Field(default=None, alias="verificationStatus")
     __properties: ClassVar[List[str]] = ["id", "email", "verificationStatus"]
 
     @field_validator('verification_status')
@@ -44,8 +42,7 @@ class EmailStatusDto(BaseModel):
             return value
 
         if value not in ('PENDING', 'SUCCESS', 'FAILED'):
-            raise ValueError(
-                "must be one of enum values ('PENDING', 'SUCCESS', 'FAILED')")
+            raise ValueError("must be one of enum values ('PENDING', 'SUCCESS', 'FAILED')")
         return value
 
     model_config = {
@@ -53,6 +50,7 @@ class EmailStatusDto(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -80,7 +78,8 @@ class EmailStatusDto(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -95,11 +94,10 @@ class EmailStatusDto(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "email":
-            obj.get("email"),
-            "verificationStatus":
-            obj.get("verificationStatus")
+            "id": obj.get("id"),
+            "email": obj.get("email"),
+            "verificationStatus": obj.get("verificationStatus")
         })
         return _obj
+
+

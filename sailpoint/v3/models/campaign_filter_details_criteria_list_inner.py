@@ -11,45 +11,38 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List
+
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
 from pydantic import Field
 from sailpoint.v3.models.criteria_type import CriteriaType
-from sailpoint.v3.models.operation import Operation
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class CampaignFilterDetailsCriteriaListInner(BaseModel):
     """
     CampaignFilterDetailsCriteriaListInner
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     type: CriteriaType
-    operation: Operation
-    var_property: StrictStr = Field(
-        description="The specified key from the Type of criteria.",
-        alias="property")
-    value: StrictStr = Field(
-        description="The value for the specified key from the Type of Criteria"
-    )
-    __properties: ClassVar[List[str]] = [
-        "type", "operation", "property", "value"
-    ]
+    operation: Any
+    var_property: Optional[StrictStr] = Field(description="The specified key from the Type of criteria.", alias="property")
+    value: Optional[StrictStr] = Field(description="The value for the specified key from the Type of Criteria")
+    __properties: ClassVar[List[str]] = ["type", "operation", "property", "value"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -77,9 +70,23 @@ class CampaignFilterDetailsCriteriaListInner(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of operation
+        if self.operation:
+            _dict['operation'] = self.operation.to_dict()
+        # set to None if var_property (nullable) is None
+        # and model_fields_set contains the field
+        if self.var_property is None and "var_property" in self.model_fields_set:
+            _dict['property'] = None
+
+        # set to None if value (nullable) is None
+        # and model_fields_set contains the field
+        if self.value is None and "value" in self.model_fields_set:
+            _dict['value'] = None
+
         return _dict
 
     @classmethod
@@ -93,8 +100,10 @@ class CampaignFilterDetailsCriteriaListInner(BaseModel):
 
         _obj = cls.model_validate({
             "type": obj.get("type"),
-            "operation": obj.get("operation"),
+            "operation": Operation.from_dict(obj.get("operation")) if obj.get("operation") is not None else None,
             "property": obj.get("property"),
             "value": obj.get("value")
         })
         return _obj
+
+

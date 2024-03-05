@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -25,46 +26,28 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class NonEmployeeRequestBody(BaseModel):
     """
     NonEmployeeRequestBody
-    """
-
-  # noqa: E501
-    account_name: StrictStr = Field(
-        description="Requested identity account name.", alias="accountName")
-    first_name: StrictStr = Field(description="Non-Employee's first name.",
-                                  alias="firstName")
-    last_name: StrictStr = Field(description="Non-Employee's last name.",
-                                 alias="lastName")
+    """ # noqa: E501
+    account_name: StrictStr = Field(description="Requested identity account name.", alias="accountName")
+    first_name: StrictStr = Field(description="Non-Employee's first name.", alias="firstName")
+    last_name: StrictStr = Field(description="Non-Employee's last name.", alias="lastName")
     email: StrictStr = Field(description="Non-Employee's email.")
     phone: StrictStr = Field(description="Non-Employee's phone.")
-    manager: StrictStr = Field(
-        description=
-        "The account ID of a valid identity to serve as this non-employee's manager."
-    )
-    source_id: StrictStr = Field(description="Non-Employee's source id.",
-                                 alias="sourceId")
-    data: Optional[Dict[str, StrictStr]] = Field(
-        default=None,
-        description=
-        "Attribute blob/bag for a non-employee, 10 attributes is the maximum size supported."
-    )
-    start_date: datetime = Field(
-        description="Non-Employee employment start date.", alias="startDate")
-    end_date: datetime = Field(description="Non-Employee employment end date.",
-                               alias="endDate")
-    __properties: ClassVar[List[str]] = [
-        "accountName", "firstName", "lastName", "email", "phone", "manager",
-        "sourceId", "data", "startDate", "endDate"
-    ]
+    manager: StrictStr = Field(description="The account ID of a valid identity to serve as this non-employee's manager.")
+    source_id: StrictStr = Field(description="Non-Employee's source id.", alias="sourceId")
+    data: Optional[Dict[str, StrictStr]] = Field(default=None, description="Attribute blob/bag for a non-employee, 10 attributes is the maximum size supported.")
+    start_date: datetime = Field(description="Non-Employee employment start date.", alias="startDate")
+    end_date: datetime = Field(description="Non-Employee employment end date.", alias="endDate")
+    __properties: ClassVar[List[str]] = ["accountName", "firstName", "lastName", "email", "phone", "manager", "sourceId", "data", "startDate", "endDate"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -92,7 +75,8 @@ class NonEmployeeRequestBody(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -119,3 +103,5 @@ class NonEmployeeRequestBody(BaseModel):
             "endDate": obj.get("endDate")
         })
         return _obj
+
+

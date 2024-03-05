@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.requested_item_status import RequestedItemStatus
-
 
 class TestRequestedItemStatus(unittest.TestCase):
     """RequestedItemStatus unit test stubs"""
@@ -38,13 +38,7 @@ class TestRequestedItemStatus(unittest.TestCase):
             return RequestedItemStatus(
                 name = 'AccessProfile1',
                 type = 'ACCESS_PROFILE',
-                cancelled_request_details = sailpoint.v3.models.cancelled_request_details.CancelledRequestDetails(
-                    comment = 'This request must be cancelled.', 
-                    owner = sailpoint.v3.models.owner_dto.OwnerDto(
-                        type = 'IDENTITY', 
-                        id = '2c9180a46faadee4016fb4e018c20639', 
-                        name = 'Support', ), 
-                    modified = '2019-12-20T09:17:12.192Z', ),
+                cancelled_request_details = None,
                 error_messages = [
                     [
                         sailpoint.v3.models.error_message_dto.ErrorMessageDto(
@@ -61,10 +55,7 @@ class TestRequestedItemStatus(unittest.TestCase):
                             type = 'IDENTITY', 
                             id = '2c7180a46faadee4016fb4e018c20642', 
                             name = 'Michael Michaels', ), 
-                        current_owner = sailpoint.v3.models.access_item_reviewed_by.AccessItemReviewedBy(
-                            type = 'IDENTITY', 
-                            id = '2c3780a46faadee4016fb4e018c20652', 
-                            name = 'Allen Albertson', ), 
+                        current_owner = null, 
                         modified = '2019-08-23T18:52:57.398Z', 
                         status = 'PENDING', 
                         scheme = 'MANAGER', 
@@ -108,50 +99,16 @@ class TestRequestedItemStatus(unittest.TestCase):
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20648', 
                     name = 'William Wilson', ),
-                requested_for = sailpoint.v3.models.access_item_requested_for.AccessItemRequestedFor(
-                    type = 'IDENTITY', 
-                    id = '2c4180a46faadee4016fb4e018c20626', 
-                    name = 'Robert Robinson', ),
-                requester_comment = sailpoint.v3.models.comment_dto.CommentDto(
-                    comment = 'This is a comment.', 
-                    created = '2017-07-11T18:45:37.098Z', ),
-                sod_violation_context = sailpoint.v3.models.sod_violation_context_check_completed.SodViolationContextCheckCompleted(
-                    state = 'SUCCESS', 
-                    uuid = 'f73d16e9-a038-46c5-b217-1246e15fdbdd', 
-                    violation_check_result = sailpoint.v3.models.sod_violation_check_result.SodViolationCheckResult(
-                        message = sailpoint.v3.models.error_message_dto.ErrorMessageDto(
-                            locale = 'en-US', 
-                            locale_origin = 'DEFAULT', 
-                            text = 'The request was syntactically correct but its content is semantically invalid.', ), 
-                        client_metadata = {requestedAppName=test-app, requestedAppId=2c91808f7892918f0178b78da4a305a1}, 
-                        violation_contexts = [
-                            sailpoint.v3.models.sod_violation_context.SodViolationContext(
-                                policy = sailpoint.v3.models.sod_policy_dto.SodPolicyDto(
-                                    type = 'SOD_POLICY', 
-                                    id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde', 
-                                    name = 'Business SOD Policy', ), 
-                                conflicting_access_criteria = sailpoint.v3.models.sod_violation_context_conflicting_access_criteria.SodViolationContext_conflictingAccessCriteria(
-                                    left_criteria = sailpoint.v3.models.sod_violation_context_conflicting_access_criteria_left_criteria.SodViolationContext_conflictingAccessCriteria_leftCriteria(
-                                        criteria_list = [
-                                            sailpoint.v3.models.sod_exempt_criteria.SodExemptCriteria(
-                                                existing = True, 
-                                                type = 'IDENTITY', 
-                                                id = '2c918085771e9d3301773b3cb66f6398', 
-                                                name = 'My HR Entitlement', )
-                                            ], ), 
-                                    right_criteria = sailpoint.v3.models.sod_violation_context_conflicting_access_criteria_left_criteria.SodViolationContext_conflictingAccessCriteria_leftCriteria(), ), )
-                            ], 
-                        violated_policies = [
-                            sailpoint.v3.models.sod_policy_dto.SodPolicyDto(
-                                id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde', 
-                                name = 'Business SOD Policy', )
-                            ], ), ),
-                provisioning_details = sailpoint.v3.models.provisioning_details.ProvisioningDetails(
-                    ordered_sub_phase_references = 'manualWorkItemDetails', ),
-                pre_approval_trigger_details = sailpoint.v3.models.pre_approval_trigger_details.PreApprovalTriggerDetails(
-                    comment = 'Access is Approved', 
-                    reviewer = 'John Doe', 
-                    decision = 'APPROVED', ),
+                requested_for = [
+                    sailpoint.v3.models.access_item_requested_for.AccessItemRequestedFor(
+                        type = 'IDENTITY', 
+                        id = '2c4180a46faadee4016fb4e018c20626', 
+                        name = 'Robert Robinson', )
+                    ],
+                requester_comment = None,
+                sod_violation_context = None,
+                provisioning_details = None,
+                pre_approval_trigger_details = None,
                 access_request_phases = [
                     sailpoint.v3.models.access_request_phases.AccessRequestPhases(
                         started = '2020-07-11T00:00Z', 
@@ -176,7 +133,6 @@ class TestRequestedItemStatus(unittest.TestCase):
         """Test RequestedItemStatus"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

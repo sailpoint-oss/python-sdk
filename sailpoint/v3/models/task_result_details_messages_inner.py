@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr, field_validator
@@ -24,28 +26,16 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class TaskResultDetailsMessagesInner(BaseModel):
     """
     TaskResultDetailsMessagesInner
-    """
-
-  # noqa: E501
-    type: Optional[StrictStr] = Field(default=None,
-                                      description="Type of the message.")
-    error: Optional[StrictBool] = Field(
-        default=False, description="Flag whether message is an error.")
-    warning: Optional[StrictBool] = Field(
-        default=False, description="Flag whether message is a warning.")
-    key: Optional[StrictStr] = Field(default=None,
-                                     description="Message string identifier.")
-    localized_text: Optional[StrictStr] = Field(
-        default=None,
-        description="Message context with the locale based language.",
-        alias="localizedText")
-    __properties: ClassVar[List[str]] = [
-        "type", "error", "warning", "key", "localizedText"
-    ]
+    """ # noqa: E501
+    type: Optional[StrictStr] = Field(default=None, description="Type of the message.")
+    error: Optional[StrictBool] = Field(default=False, description="Flag whether message is an error.")
+    warning: Optional[StrictBool] = Field(default=False, description="Flag whether message is a warning.")
+    key: Optional[StrictStr] = Field(default=None, description="Message string identifier.")
+    localized_text: Optional[StrictStr] = Field(default=None, description="Message context with the locale based language.", alias="localizedText")
+    __properties: ClassVar[List[str]] = ["type", "error", "warning", "key", "localizedText"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -54,8 +44,7 @@ class TaskResultDetailsMessagesInner(BaseModel):
             return value
 
         if value not in ('INFO', 'WARN', 'ERROR'):
-            raise ValueError(
-                "must be one of enum values ('INFO', 'WARN', 'ERROR')")
+            raise ValueError("must be one of enum values ('INFO', 'WARN', 'ERROR')")
         return value
 
     model_config = {
@@ -63,6 +52,7 @@ class TaskResultDetailsMessagesInner(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -90,7 +80,8 @@ class TaskResultDetailsMessagesInner(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -105,15 +96,12 @@ class TaskResultDetailsMessagesInner(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "type":
-            obj.get("type"),
-            "error":
-            obj.get("error") if obj.get("error") is not None else False,
-            "warning":
-            obj.get("warning") if obj.get("warning") is not None else False,
-            "key":
-            obj.get("key"),
-            "localizedText":
-            obj.get("localizedText")
+            "type": obj.get("type"),
+            "error": obj.get("error") if obj.get("error") is not None else False,
+            "warning": obj.get("warning") if obj.get("warning") is not None else False,
+            "key": obj.get("key"),
+            "localizedText": obj.get("localizedText")
         })
         return _obj
+
+

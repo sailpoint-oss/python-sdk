@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr, field_validator
@@ -25,42 +27,16 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ImportOptions(BaseModel):
     """
     ImportOptions
-    """
-
-  # noqa: E501
-    exclude_types: Optional[List[StrictStr]] = Field(
-        default=None,
-        description=
-        "Object type names to be excluded from an sp-config export command.",
-        alias="excludeTypes")
-    include_types: Optional[List[StrictStr]] = Field(
-        default=None,
-        description=
-        "Object type names to be included in an sp-config export command. IncludeTypes takes precedence over excludeTypes.",
-        alias="includeTypes")
-    object_options: Optional[Dict[str, ObjectExportImportOptions]] = Field(
-        default=None,
-        description=
-        "Additional options targeting specific objects related to each item in the includeTypes field",
-        alias="objectOptions")
-    default_references: Optional[List[StrictStr]] = Field(
-        default=None,
-        description=
-        "List of object types that can be used to resolve references on import.",
-        alias="defaultReferences")
-    exclude_backup: Optional[StrictBool] = Field(
-        default=False,
-        description=
-        "By default, every import will first export all existing objects supported by sp-config as a backup before the import is attempted. If excludeBackup is true, the backup will not be performed.",
-        alias="excludeBackup")
-    __properties: ClassVar[List[str]] = [
-        "excludeTypes", "includeTypes", "objectOptions", "defaultReferences",
-        "excludeBackup"
-    ]
+    """ # noqa: E501
+    exclude_types: Optional[List[StrictStr]] = Field(default=None, description="Object type names to be excluded from an sp-config export command.", alias="excludeTypes")
+    include_types: Optional[List[StrictStr]] = Field(default=None, description="Object type names to be included in an sp-config export command. IncludeTypes takes precedence over excludeTypes.", alias="includeTypes")
+    object_options: Optional[Dict[str, ObjectExportImportOptions]] = Field(default=None, description="Additional options targeting specific objects related to each item in the includeTypes field", alias="objectOptions")
+    default_references: Optional[List[StrictStr]] = Field(default=None, description="List of object types that can be used to resolve references on import.", alias="defaultReferences")
+    exclude_backup: Optional[StrictBool] = Field(default=False, description="By default, every import will first export all existing objects supported by sp-config as a backup before the import is attempted. If excludeBackup is true, the backup will not be performed.", alias="excludeBackup")
+    __properties: ClassVar[List[str]] = ["excludeTypes", "includeTypes", "objectOptions", "defaultReferences", "excludeBackup"]
 
     @field_validator('exclude_types')
     def exclude_types_validate_enum(cls, value):
@@ -69,11 +45,8 @@ class ImportOptions(BaseModel):
             return value
 
         for i in value:
-            if i not in ('IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE',
-                         'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION'):
-                raise ValueError(
-                    "each list item must be one of ('IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION')"
-                )
+            if i not in ('IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION'):
+                raise ValueError("each list item must be one of ('IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION')")
         return value
 
     @field_validator('include_types')
@@ -83,11 +56,8 @@ class ImportOptions(BaseModel):
             return value
 
         for i in value:
-            if i not in ('IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE',
-                         'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION'):
-                raise ValueError(
-                    "each list item must be one of ('IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION')"
-                )
+            if i not in ('IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION'):
+                raise ValueError("each list item must be one of ('IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION')")
         return value
 
     @field_validator('default_references')
@@ -97,11 +67,8 @@ class ImportOptions(BaseModel):
             return value
 
         for i in value:
-            if i not in ('IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE',
-                         'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION'):
-                raise ValueError(
-                    "each list item must be one of ('IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION')"
-                )
+            if i not in ('IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION'):
+                raise ValueError("each list item must be one of ('IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION')")
         return value
 
     model_config = {
@@ -109,6 +76,7 @@ class ImportOptions(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -136,7 +104,8 @@ class ImportOptions(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each value in object_options (dict)
@@ -158,18 +127,17 @@ class ImportOptions(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "excludeTypes":
-            obj.get("excludeTypes"),
-            "includeTypes":
-            obj.get("includeTypes"),
-            "objectOptions":
-            dict((_k, ObjectExportImportOptions.from_dict(_v))
-                 for _k, _v in obj.get("objectOptions").items())
-            if obj.get("objectOptions") is not None else None,
-            "defaultReferences":
-            obj.get("defaultReferences"),
-            "excludeBackup":
-            obj.get("excludeBackup")
-            if obj.get("excludeBackup") is not None else False
+            "excludeTypes": obj.get("excludeTypes"),
+            "includeTypes": obj.get("includeTypes"),
+            "objectOptions": dict(
+                (_k, ObjectExportImportOptions.from_dict(_v))
+                for _k, _v in obj.get("objectOptions").items()
+            )
+            if obj.get("objectOptions") is not None
+            else None,
+            "defaultReferences": obj.get("defaultReferences"),
+            "excludeBackup": obj.get("excludeBackup") if obj.get("excludeBackup") is not None else False
         })
         return _obj
+
+

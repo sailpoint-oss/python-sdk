@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **name** | **str** | Name of the sync group | [optional] 
 **password_policy_id** | **str** | ID of the password policy | [optional] 
 **source_ids** | **List[str]** | List of password managed sources IDs | [optional] 
+**created** | **datetime** | The date and time this sync group was created | [optional] 
+**modified** | **datetime** | The date and time this sync group was last modified | [optional] 
 
 ## Example
 

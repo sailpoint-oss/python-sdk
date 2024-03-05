@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt, StrictStr
@@ -25,34 +27,23 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class BucketAggregation(BaseModel):
     """
     The bucket to group the results of the aggregation query by.
     """ # noqa: E501
-    name: StrictStr = Field(
-        description=
-        "The name of the bucket aggregate to be included in the result.")
+    name: StrictStr = Field(description="The name of the bucket aggregate to be included in the result.")
     type: Optional[BucketType] = None
-    field: StrictStr = Field(
-        description=
-        "The field to bucket on. Prefix the field name with '@' to reference a nested object."
-    )
-    size: Optional[StrictInt] = Field(
-        default=None, description="Maximum number of buckets to include.")
-    min_doc_count: Optional[StrictInt] = Field(
-        default=None,
-        description="Minimum number of documents a bucket should have.",
-        alias="minDocCount")
-    __properties: ClassVar[List[str]] = [
-        "name", "type", "field", "size", "minDocCount"
-    ]
+    field: StrictStr = Field(description="The field to bucket on. Prefix the field name with '@' to reference a nested object.")
+    size: Optional[StrictInt] = Field(default=None, description="Maximum number of buckets to include.")
+    min_doc_count: Optional[StrictInt] = Field(default=None, description="Minimum number of documents a bucket should have.", alias="minDocCount")
+    __properties: ClassVar[List[str]] = ["name", "type", "field", "size", "minDocCount"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -80,7 +71,8 @@ class BucketAggregation(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -102,3 +94,5 @@ class BucketAggregation(BaseModel):
             "minDocCount": obj.get("minDocCount")
         })
         return _obj
+
+

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.sod_policy_schedule import SodPolicySchedule
-
 
 class TestSodPolicySchedule(unittest.TestCase):
     """SodPolicySchedule unit test stubs"""
@@ -42,6 +42,7 @@ class TestSodPolicySchedule(unittest.TestCase):
                 description = 'Schedule for policy xyz',
                 schedule = sailpoint.v3.models.schedule_1.Schedule_1(
                     type = 'WEEKLY', 
+                    months = null, 
                     days = null, 
                     hours = null, 
                     expiration = '2018-06-25T20:22:28.104Z', 
@@ -65,7 +66,6 @@ class TestSodPolicySchedule(unittest.TestCase):
         """Test SodPolicySchedule"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

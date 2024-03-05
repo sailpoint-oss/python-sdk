@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,25 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class CompleteInvocation(BaseModel):
     """
     CompleteInvocation
-    """
-
-  # noqa: E501
-    secret: StrictStr = Field(
-        description=
-        "Unique invocation secret that was generated when the invocation was created. Required to authenticate to the endpoint."
-    )
-    error: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "The error message to indicate a failed invocation or error if any.")
-    output: Dict[str, Any] = Field(
-        description=
-        "Trigger output to complete the invocation. Its schema is defined in the trigger definition."
-    )
+    """ # noqa: E501
+    secret: StrictStr = Field(description="Unique invocation secret that was generated when the invocation was created. Required to authenticate to the endpoint.")
+    error: Optional[StrictStr] = Field(default=None, description="The error message to indicate a failed invocation or error if any.")
+    output: Dict[str, Any] = Field(description="Trigger output to complete the invocation. Its schema is defined in the trigger definition.")
     __properties: ClassVar[List[str]] = ["secret", "error", "output"]
 
     model_config = {
@@ -50,6 +40,7 @@ class CompleteInvocation(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -77,7 +68,8 @@ class CompleteInvocation(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -97,3 +89,5 @@ class CompleteInvocation(BaseModel):
             "output": obj.get("output")
         })
         return _obj
+
+

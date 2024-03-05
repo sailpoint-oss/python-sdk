@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.source import Source
-
 
 class TestSource(unittest.TestCase):
     """Source unit test stubs"""
@@ -55,9 +55,7 @@ class TestSource(unittest.TestCase):
                     type = 'RULE', 
                     id = '2c918085708c274401708c2a8a760001', 
                     name = 'Example Rule', ),
-                manager_correlation_mapping = sailpoint.v3.models.manager_correlation_mapping.ManagerCorrelationMapping(
-                    account_attribute = 'manager', 
-                    identity_attribute = 'manager', ),
+                manager_correlation_mapping = None,
                 manager_correlation_rule = sailpoint.v3.models.source_manager_correlation_rule.Source_managerCorrelationRule(
                     type = 'RULE', 
                     id = '2c918085708c274401708c2a8a760001', 
@@ -104,7 +102,6 @@ class TestSource(unittest.TestCase):
         """Test Source"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

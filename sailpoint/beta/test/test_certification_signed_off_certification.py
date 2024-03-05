@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.certification_signed_off_certification import CertificationSignedOffCertification
-
 
 class TestCertificationSignedOffCertification(unittest.TestCase):
     """CertificationSignedOffCertification unit test stubs"""
@@ -26,8 +26,7 @@ class TestCertificationSignedOffCertification(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self,
-                      include_optional) -> CertificationSignedOffCertification:
+    def make_instance(self, include_optional) -> CertificationSignedOffCertification:
         """Test CertificationSignedOffCertification
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -102,7 +101,6 @@ class TestCertificationSignedOffCertification(unittest.TestCase):
         """Test CertificationSignedOffCertification"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

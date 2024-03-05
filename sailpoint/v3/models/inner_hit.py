@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr
@@ -24,19 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class InnerHit(BaseModel):
     """
     Inner Hit query object that will cause the specified nested type to be returned as the result matching the supplied query.
     """ # noqa: E501
-    query: StrictStr = Field(
-        description=
-        "The search query using the Elasticsearch [Query String Query](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-query-string-query.html#query-string) syntax from the Query DSL extended by SailPoint to support Nested queries."
-    )
-    type: StrictStr = Field(
-        description=
-        "The nested type to use in the inner hits query.  The nested type [Nested Type](https://www.elastic.co/guide/en/elasticsearch/reference/current/nested.html) refers to a document \"nested\" within another document. For example, an identity can have nested documents for access, accounts, and apps."
-    )
+    query: StrictStr = Field(description="The search query using the Elasticsearch [Query String Query](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-query-string-query.html#query-string) syntax from the Query DSL extended by SailPoint to support Nested queries.")
+    type: StrictStr = Field(description="The nested type to use in the inner hits query.  The nested type [Nested Type](https://www.elastic.co/guide/en/elasticsearch/reference/current/nested.html) refers to a document \"nested\" within another document. For example, an identity can have nested documents for access, accounts, and apps.")
     __properties: ClassVar[List[str]] = ["query", "type"]
 
     model_config = {
@@ -44,6 +39,7 @@ class InnerHit(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -71,7 +67,8 @@ class InnerHit(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -90,3 +87,5 @@ class InnerHit(BaseModel):
             "type": obj.get("type")
         })
         return _obj
+
+

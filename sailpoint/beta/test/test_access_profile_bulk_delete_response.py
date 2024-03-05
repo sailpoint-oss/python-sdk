@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.access_profile_bulk_delete_response import AccessProfileBulkDeleteResponse
-
 
 class TestAccessProfileBulkDeleteResponse(unittest.TestCase):
     """AccessProfileBulkDeleteResponse unit test stubs"""
@@ -26,8 +26,7 @@ class TestAccessProfileBulkDeleteResponse(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self,
-                      include_optional) -> AccessProfileBulkDeleteResponse:
+    def make_instance(self, include_optional) -> AccessProfileBulkDeleteResponse:
         """Test AccessProfileBulkDeleteResponse
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -59,7 +58,6 @@ class TestAccessProfileBulkDeleteResponse(unittest.TestCase):
         """Test AccessProfileBulkDeleteResponse"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
@@ -24,13 +26,10 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class RoleMiningSessionStatus(BaseModel):
     """
     RoleMiningSessionStatus
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     state: Optional[RoleMiningSessionState] = None
     __properties: ClassVar[List[str]] = ["state"]
 
@@ -39,6 +38,7 @@ class RoleMiningSessionStatus(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -66,7 +66,8 @@ class RoleMiningSessionStatus(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -80,5 +81,9 @@ class RoleMiningSessionStatus(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({"state": obj.get("state")})
+        _obj = cls.model_validate({
+            "state": obj.get("state")
+        })
         return _obj
+
+

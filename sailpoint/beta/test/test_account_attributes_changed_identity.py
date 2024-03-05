@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.account_attributes_changed_identity import AccountAttributesChangedIdentity
-
 
 class TestAccountAttributesChangedIdentity(unittest.TestCase):
     """AccountAttributesChangedIdentity unit test stubs"""
@@ -26,8 +26,7 @@ class TestAccountAttributesChangedIdentity(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self,
-                      include_optional) -> AccountAttributesChangedIdentity:
+    def make_instance(self, include_optional) -> AccountAttributesChangedIdentity:
         """Test AccountAttributesChangedIdentity
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -53,7 +52,6 @@ class TestAccountAttributesChangedIdentity(unittest.TestCase):
         """Test AccountAttributesChangedIdentity"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

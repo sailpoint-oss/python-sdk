@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel
@@ -25,36 +27,23 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccountAggregationCompletedStats(BaseModel):
     """
     Overall statistics about the account aggregation.
     """ # noqa: E501
-    scanned: Annotated[int, Field(le=2147483647, strict=True, ge=0)] = Field(
-        description="The number of accounts which were scanned / iterated over."
-    )
-    unchanged: Annotated[int, Field(le=2147483647, strict=True, ge=0)] = Field(
-        description=
-        "The number of accounts which existed before, but had no changes.")
-    changed: Annotated[int, Field(le=2147483647, strict=True, ge=0)] = Field(
-        description=
-        "The number of accounts which existed before, but had changes.")
-    added: Annotated[int, Field(le=2147483647, strict=True, ge=0)] = Field(
-        description=
-        "The number of accounts which are new - have not existed before.")
-    removed: Annotated[int, Field(le=2147483647, strict=True, ge=0)] = Field(
-        description=
-        "The number accounts which existed before, but no longer exist (thus getting removed)."
-    )
-    __properties: ClassVar[List[str]] = [
-        "scanned", "unchanged", "changed", "added", "removed"
-    ]
+    scanned: Annotated[int, Field(le=2147483647, strict=True, ge=0)] = Field(description="The number of accounts which were scanned / iterated over.")
+    unchanged: Annotated[int, Field(le=2147483647, strict=True, ge=0)] = Field(description="The number of accounts which existed before, but had no changes.")
+    changed: Annotated[int, Field(le=2147483647, strict=True, ge=0)] = Field(description="The number of accounts which existed before, but had changes.")
+    added: Annotated[int, Field(le=2147483647, strict=True, ge=0)] = Field(description="The number of accounts which are new - have not existed before.")
+    removed: Annotated[int, Field(le=2147483647, strict=True, ge=0)] = Field(description="The number accounts which existed before, but no longer exist (thus getting removed).")
+    __properties: ClassVar[List[str]] = ["scanned", "unchanged", "changed", "added", "removed"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -82,7 +71,8 @@ class AccountAggregationCompletedStats(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -104,3 +94,5 @@ class AccountAggregationCompletedStats(BaseModel):
             "removed": obj.get("removed")
         })
         return _obj
+
+

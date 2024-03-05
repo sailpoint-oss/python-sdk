@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **access_request_id** | **str** | The unique ID of the access request object. Can be used with the [access request status endpoint](https://developer.sailpoint.com/idn/api/beta/list-access-request-status) to get the status of the request.  | 
-**requested_for** | [**AccessItemRequestedForDto**](AccessItemRequestedForDto.md) |  | 
+**requested_for** | [**List[AccessItemRequestedForDto]**](AccessItemRequestedForDto.md) | Identities access was requested for. | 
 **requested_items** | [**List[AccessRequestDynamicApproverRequestedItemsInner]**](AccessRequestDynamicApproverRequestedItemsInner.md) | The access items that are being requested. | 
 **requested_by** | [**AccessItemRequesterDto**](AccessItemRequesterDto.md) |  | 
 

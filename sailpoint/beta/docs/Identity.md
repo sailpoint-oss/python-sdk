@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **is_manager** | **bool** | Whether this identity is a manager of another identity | [optional] [default to False]
 **last_refresh** | **datetime** | The last time the identity was refreshed by the system | [optional] 
 **attributes** | **object** | A map with the identity attributes for the identity | [optional] 
-**lifecycle_state** | [**LifecycleStateDto**](LifecycleStateDto.md) |  | [optional] 
+**lifecycle_state** | [**IdentityDtoLifecycleState**](IdentityDtoLifecycleState.md) |  | [optional] 
 
 ## Example
 

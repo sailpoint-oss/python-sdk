@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -25,20 +26,14 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class BaseCommonDto1(BaseModel):
     """
     BaseCommonDto1
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(
-        default=None, description="System-generated unique ID of the Object")
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="System-generated unique ID of the Object")
     name: StrictStr = Field(description="Name of the Object")
-    created: Optional[datetime] = Field(
-        default=None, description="Creation date of the Object")
-    modified: Optional[datetime] = Field(
-        default=None, description="Last modification date of the Object")
+    created: Optional[datetime] = Field(default=None, description="Creation date of the Object")
+    modified: Optional[datetime] = Field(default=None, description="Last modification date of the Object")
     __properties: ClassVar[List[str]] = ["id", "name", "created", "modified"]
 
     model_config = {
@@ -46,6 +41,7 @@ class BaseCommonDto1(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -101,3 +97,5 @@ class BaseCommonDto1(BaseModel):
             "modified": obj.get("modified")
         })
         return _obj
+
+

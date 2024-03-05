@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,35 +26,22 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class NonEmployeeSourceLite(BaseModel):
     """
     NonEmployeeSourceLite
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="Non-Employee source id.")
-    source_id: Optional[StrictStr] = Field(
-        default=None,
-        description="Source Id associated with this non-employee source.",
-        alias="sourceId")
-    name: Optional[StrictStr] = Field(
-        default=None,
-        description="Source name associated with this non-employee source.")
-    description: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Source description associated with this non-employee source.")
-    __properties: ClassVar[List[str]] = [
-        "id", "sourceId", "name", "description"
-    ]
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="Non-Employee source id.")
+    source_id: Optional[StrictStr] = Field(default=None, description="Source Id associated with this non-employee source.", alias="sourceId")
+    name: Optional[StrictStr] = Field(default=None, description="Source name associated with this non-employee source.")
+    description: Optional[StrictStr] = Field(default=None, description="Source description associated with this non-employee source.")
+    __properties: ClassVar[List[str]] = ["id", "sourceId", "name", "description"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -80,7 +69,8 @@ class NonEmployeeSourceLite(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -101,3 +91,5 @@ class NonEmployeeSourceLite(BaseModel):
             "description": obj.get("description")
         })
         return _obj
+
+

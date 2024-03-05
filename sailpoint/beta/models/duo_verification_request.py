@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr
@@ -24,18 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class DuoVerificationRequest(BaseModel):
     """
     DuoVerificationRequest
-    """
-
-  # noqa: E501
-    user_id: StrictStr = Field(description="User id for Verification request.",
-                               alias="userId")
-    signed_response: StrictStr = Field(
-        description="User id for Verification request.",
-        alias="signedResponse")
+    """ # noqa: E501
+    user_id: StrictStr = Field(description="User id for Verification request.", alias="userId")
+    signed_response: StrictStr = Field(description="User id for Verification request.", alias="signedResponse")
     __properties: ClassVar[List[str]] = ["userId", "signedResponse"]
 
     model_config = {
@@ -43,6 +39,7 @@ class DuoVerificationRequest(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -70,7 +67,8 @@ class DuoVerificationRequest(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -89,3 +87,5 @@ class DuoVerificationRequest(BaseModel):
             "signedResponse": obj.get("signedResponse")
         })
         return _obj
+
+

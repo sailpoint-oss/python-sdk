@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,23 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class PasswordInfoAccount(BaseModel):
     """
     PasswordInfoAccount
-    """
-
-  # noqa: E501
-    account_id: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Account ID of the account. This is specified per account schema in the source configuration. It is used to distinguish accounts. More info can be found here https://community.sailpoint.com/t5/IdentityNow-Connectors/How-do-I-designate-an-account-attribute-as-the-Account-ID-for-a/ta-p/80350",
-        alias="accountId")
-    account_name: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Display name of the account. This is specified per account schema in the source configuration. It is used to display name of the account. More info can be found here https://community.sailpoint.com/t5/IdentityNow-Connectors/How-do-I-designate-an-account-attribute-as-the-Account-Name-for/ta-p/74008",
-        alias="accountName")
+    """ # noqa: E501
+    account_id: Optional[StrictStr] = Field(default=None, description="Account ID of the account. This is specified per account schema in the source configuration. It is used to distinguish accounts. More info can be found here https://community.sailpoint.com/t5/IdentityNow-Connectors/How-do-I-designate-an-account-attribute-as-the-Account-ID-for-a/ta-p/80350", alias="accountId")
+    account_name: Optional[StrictStr] = Field(default=None, description="Display name of the account. This is specified per account schema in the source configuration. It is used to display name of the account. More info can be found here https://community.sailpoint.com/t5/IdentityNow-Connectors/How-do-I-designate-an-account-attribute-as-the-Account-Name-for/ta-p/74008", alias="accountName")
     __properties: ClassVar[List[str]] = ["accountId", "accountName"]
 
     model_config = {
@@ -48,6 +39,7 @@ class PasswordInfoAccount(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -75,7 +67,8 @@ class PasswordInfoAccount(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -94,3 +87,5 @@ class PasswordInfoAccount(BaseModel):
             "accountName": obj.get("accountName")
         })
         return _obj
+
+

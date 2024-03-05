@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictInt
@@ -24,32 +26,20 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class RoleMiningPotentialRoleExportRequest(BaseModel):
     """
     RoleMiningPotentialRoleExportRequest
-    """
-
-  # noqa: E501
-    min_entitlement_popularity: Optional[StrictInt] = Field(
-        default=None,
-        description=
-        "The minimum popularity among identities in the role which an entitlement must have to be included in the report",
-        alias="minEntitlementPopularity")
-    include_common_access: Optional[StrictBool] = Field(
-        default=None,
-        description=
-        "If false, do not include entitlements that are highly popular among the entire orginization",
-        alias="includeCommonAccess")
-    __properties: ClassVar[List[str]] = [
-        "minEntitlementPopularity", "includeCommonAccess"
-    ]
+    """ # noqa: E501
+    min_entitlement_popularity: Optional[StrictInt] = Field(default=None, description="The minimum popularity among identities in the role which an entitlement must have to be included in the report", alias="minEntitlementPopularity")
+    include_common_access: Optional[StrictBool] = Field(default=None, description="If false, do not include entitlements that are highly popular among the entire orginization", alias="includeCommonAccess")
+    __properties: ClassVar[List[str]] = ["minEntitlementPopularity", "includeCommonAccess"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -77,7 +67,8 @@ class RoleMiningPotentialRoleExportRequest(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -92,9 +83,9 @@ class RoleMiningPotentialRoleExportRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "minEntitlementPopularity":
-            obj.get("minEntitlementPopularity"),
-            "includeCommonAccess":
-            obj.get("includeCommonAccess")
+            "minEntitlementPopularity": obj.get("minEntitlementPopularity"),
+            "includeCommonAccess": obj.get("includeCommonAccess")
         })
         return _obj
+
+

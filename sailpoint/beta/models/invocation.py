@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,32 +26,22 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class Invocation(BaseModel):
     """
     Invocation
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="Invocation ID")
-    trigger_id: Optional[StrictStr] = Field(default=None,
-                                            description="Trigger ID",
-                                            alias="triggerId")
-    secret: Optional[StrictStr] = Field(
-        default=None, description="Unique invocation secret.")
-    content_json: Optional[Dict[str, Any]] = Field(
-        default=None,
-        description="JSON map of invocation metadata.",
-        alias="contentJson")
-    __properties: ClassVar[List[str]] = [
-        "id", "triggerId", "secret", "contentJson"
-    ]
+    trigger_id: Optional[StrictStr] = Field(default=None, description="Trigger ID", alias="triggerId")
+    secret: Optional[StrictStr] = Field(default=None, description="Unique invocation secret.")
+    content_json: Optional[Dict[str, Any]] = Field(default=None, description="JSON map of invocation metadata.", alias="contentJson")
+    __properties: ClassVar[List[str]] = ["id", "triggerId", "secret", "contentJson"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -77,7 +69,8 @@ class Invocation(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -98,3 +91,5 @@ class Invocation(BaseModel):
             "contentJson": obj.get("contentJson")
         })
         return _obj
+
+

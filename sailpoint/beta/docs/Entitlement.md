@@ -18,10 +18,10 @@ Name | Type | Description | Notes
 **requestable** | **bool** | True if the entitlement is requestable | [optional] [default to False]
 **attributes** | **Dict[str, object]** | A map of free-form key-value pairs from the source system | [optional] 
 **source** | [**EntitlementSource**](EntitlementSource.md) |  | [optional] 
-**owner** | [**OwnerReferenceDto**](OwnerReferenceDto.md) |  | [optional] 
+**owner** | [**EntitlementOwner**](EntitlementOwner.md) |  | [optional] 
 **direct_permissions** | [**List[PermissionDto]**](PermissionDto.md) |  | [optional] 
 **segments** | **List[str]** | List of IDs of segments, if any, to which this Entitlement is assigned. | [optional] 
-**manually_updated_fields** | [**ManuallyUpdatedFieldsDTO**](ManuallyUpdatedFieldsDTO.md) |  | [optional] 
+**manually_updated_fields** | [**EntitlementManuallyUpdatedFields**](EntitlementManuallyUpdatedFields.md) |  | [optional] 
 
 ## Example
 

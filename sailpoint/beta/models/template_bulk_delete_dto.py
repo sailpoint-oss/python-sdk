@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,18 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class TemplateBulkDeleteDto(BaseModel):
     """
     TemplateBulkDeleteDto
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     key: StrictStr
     medium: Optional[StrictStr] = None
-    locale: Optional[StrictStr] = Field(
-        default=None,
-        description="The locale for the message text, a BCP 47 language tag.")
+    locale: Optional[StrictStr] = Field(default=None, description="The locale for the message text, a BCP 47 language tag.")
     __properties: ClassVar[List[str]] = ["key", "medium", "locale"]
 
     @field_validator('medium')
@@ -45,8 +42,7 @@ class TemplateBulkDeleteDto(BaseModel):
             return value
 
         if value not in ('EMAIL', 'PHONE', 'SMS'):
-            raise ValueError(
-                "must be one of enum values ('EMAIL', 'PHONE', 'SMS')")
+            raise ValueError("must be one of enum values ('EMAIL', 'PHONE', 'SMS')")
         return value
 
     model_config = {
@@ -54,6 +50,7 @@ class TemplateBulkDeleteDto(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -81,7 +78,8 @@ class TemplateBulkDeleteDto(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -101,3 +99,5 @@ class TemplateBulkDeleteDto(BaseModel):
             "locale": obj.get("locale")
         })
         return _obj
+
+

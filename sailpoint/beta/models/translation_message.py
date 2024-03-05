@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,18 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class TranslationMessage(BaseModel):
     """
     TranslationMessage
-    """
-
-  # noqa: E501
-    key: Optional[StrictStr] = Field(
-        default=None, description="The key of the translation message")
-    values: Optional[List[StrictStr]] = Field(
-        default=None,
-        description="The values corresponding to the translation messages")
+    """ # noqa: E501
+    key: Optional[StrictStr] = Field(default=None, description="The key of the translation message")
+    values: Optional[List[StrictStr]] = Field(default=None, description="The values corresponding to the translation messages")
     __properties: ClassVar[List[str]] = ["key", "values"]
 
     model_config = {
@@ -43,6 +39,7 @@ class TranslationMessage(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -70,7 +67,8 @@ class TranslationMessage(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -89,3 +87,5 @@ class TranslationMessage(BaseModel):
             "values": obj.get("values")
         })
         return _obj
+
+

@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**forwarded** | **bool** | True if the request for this item was forwarded from one owner to another. | [optional] 
+**forwarded** | **bool** | True if the request for this item was forwarded from one owner to another. | [optional] [default to False]
 **original_owner** | [**ApprovalStatusDtoOriginalOwner**](ApprovalStatusDtoOriginalOwner.md) |  | [optional] 
-**current_owner** | [**AccessItemReviewedBy**](AccessItemReviewedBy.md) |  | [optional] 
+**current_owner** | [**ApprovalStatusDtoCurrentOwner**](ApprovalStatusDtoCurrentOwner.md) |  | [optional] 
 **modified** | **datetime** | Time at which item was modified. | [optional] 
 **status** | [**ManualWorkItemState**](ManualWorkItemState.md) |  | [optional] 
 **scheme** | [**ApprovalScheme**](ApprovalScheme.md) |  | [optional] 

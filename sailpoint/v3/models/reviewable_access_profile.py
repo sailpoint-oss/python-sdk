@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -27,49 +28,28 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ReviewableAccessProfile(BaseModel):
     """
     ReviewableAccessProfile
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="The id of the Access Profile")
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="Name of the Access Profile")
-    description: Optional[StrictStr] = Field(
-        default=None, description="Information about the Access Profile")
-    privileged: Optional[StrictBool] = Field(
-        default=None,
-        description="Indicates if the entitlement is a privileged entitlement")
-    cloud_governed: Optional[StrictBool] = Field(
-        default=None,
-        description="True if the entitlement is cloud governed",
-        alias="cloudGoverned")
-    end_date: Optional[datetime] = Field(
-        default=None,
-        description="The date at which a user's access expires",
-        alias="endDate")
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="The id of the Access Profile")
+    name: Optional[StrictStr] = Field(default=None, description="Name of the Access Profile")
+    description: Optional[StrictStr] = Field(default=None, description="Information about the Access Profile")
+    privileged: Optional[StrictBool] = Field(default=None, description="Indicates if the entitlement is a privileged entitlement")
+    cloud_governed: Optional[StrictBool] = Field(default=None, description="True if the entitlement is cloud governed", alias="cloudGoverned")
+    end_date: Optional[datetime] = Field(default=None, description="The date at which a user's access expires", alias="endDate")
     owner: Optional[IdentityReferenceWithNameAndEmail] = None
-    entitlements: Optional[List[ReviewableEntitlement]] = Field(
-        default=None,
-        description="A list of entitlements associated with this Access Profile"
-    )
-    created: Optional[datetime] = Field(
-        default=None, description="Date the Access Profile was created.")
-    modified: Optional[datetime] = Field(
-        default=None, description="Date the Access Profile was last modified.")
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "description", "privileged", "cloudGoverned", "endDate",
-        "owner", "entitlements", "created", "modified"
-    ]
+    entitlements: Optional[List[ReviewableEntitlement]] = Field(default=None, description="A list of entitlements associated with this Access Profile")
+    created: Optional[datetime] = Field(default=None, description="Date the Access Profile was created.")
+    modified: Optional[datetime] = Field(default=None, description="Date the Access Profile was last modified.")
+    __properties: ClassVar[List[str]] = ["id", "name", "description", "privileged", "cloudGoverned", "endDate", "owner", "entitlements", "created", "modified"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -97,7 +77,8 @@ class ReviewableAccessProfile(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of owner
@@ -132,28 +113,17 @@ class ReviewableAccessProfile(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "description":
-            obj.get("description"),
-            "privileged":
-            obj.get("privileged"),
-            "cloudGoverned":
-            obj.get("cloudGoverned"),
-            "endDate":
-            obj.get("endDate"),
-            "owner":
-            IdentityReferenceWithNameAndEmail.from_dict(obj.get("owner"))
-            if obj.get("owner") is not None else None,
-            "entitlements": [
-                ReviewableEntitlement.from_dict(_item)
-                for _item in obj.get("entitlements")
-            ] if obj.get("entitlements") is not None else None,
-            "created":
-            obj.get("created"),
-            "modified":
-            obj.get("modified")
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "privileged": obj.get("privileged"),
+            "cloudGoverned": obj.get("cloudGoverned"),
+            "endDate": obj.get("endDate"),
+            "owner": IdentityReferenceWithNameAndEmail.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
+            "entitlements": [ReviewableEntitlement.from_dict(_item) for _item in obj.get("entitlements")] if obj.get("entitlements") is not None else None,
+            "created": obj.get("created"),
+            "modified": obj.get("modified")
         })
         return _obj
+
+

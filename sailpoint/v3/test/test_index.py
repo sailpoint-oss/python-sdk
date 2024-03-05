@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.index import Index
-
 
 class TestIndex(unittest.TestCase):
     """Index unit test stubs"""
@@ -29,7 +29,6 @@ class TestIndex(unittest.TestCase):
     def testIndex(self):
         """Test Index"""
         # inst = Index()
-
 
 if __name__ == '__main__':
     unittest.main()

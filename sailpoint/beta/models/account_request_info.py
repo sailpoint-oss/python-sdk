@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -25,30 +27,21 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccountRequestInfo(BaseModel):
     """
     If an account activity item is associated with an access request, captures details of that request.
     """ # noqa: E501
-    requested_object_id: Optional[StrictStr] = Field(
-        default=None,
-        description="Id of requested object",
-        alias="requestedObjectId")
-    requested_object_name: Optional[StrictStr] = Field(
-        default=None,
-        description="Human-readable name of requested object",
-        alias="requestedObjectName")
-    requested_object_type: Optional[RequestableObjectType] = Field(
-        default=None, alias="requestedObjectType")
-    __properties: ClassVar[List[str]] = [
-        "requestedObjectId", "requestedObjectName", "requestedObjectType"
-    ]
+    requested_object_id: Optional[StrictStr] = Field(default=None, description="Id of requested object", alias="requestedObjectId")
+    requested_object_name: Optional[StrictStr] = Field(default=None, description="Human-readable name of requested object", alias="requestedObjectName")
+    requested_object_type: Optional[RequestableObjectType] = Field(default=None, alias="requestedObjectType")
+    __properties: ClassVar[List[str]] = ["requestedObjectId", "requestedObjectName", "requestedObjectType"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -76,7 +69,8 @@ class AccountRequestInfo(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -91,11 +85,10 @@ class AccountRequestInfo(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "requestedObjectId":
-            obj.get("requestedObjectId"),
-            "requestedObjectName":
-            obj.get("requestedObjectName"),
-            "requestedObjectType":
-            obj.get("requestedObjectType")
+            "requestedObjectId": obj.get("requestedObjectId"),
+            "requestedObjectName": obj.get("requestedObjectName"),
+            "requestedObjectType": obj.get("requestedObjectType")
         })
         return _obj
+
+

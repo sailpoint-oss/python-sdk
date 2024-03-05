@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr, field_validator
@@ -25,28 +27,21 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class TaskStatusMessage(BaseModel):
     """
     TaskStatus Message
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     type: StrictStr = Field(description="Type of the message")
     localized_text: LocalizedMessage = Field(alias="localizedText")
     key: StrictStr = Field(description="Key of the message")
-    parameters: List[Dict[str, Any]] = Field(
-        description="Message parameters for internationalization")
-    __properties: ClassVar[List[str]] = [
-        "type", "localizedText", "key", "parameters"
-    ]
+    parameters: List[Dict[str, Any]] = Field(description="Message parameters for internationalization")
+    __properties: ClassVar[List[str]] = ["type", "localizedText", "key", "parameters"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('INFO', 'WARN', 'ERROR'):
-            raise ValueError(
-                "must be one of enum values ('INFO', 'WARN', 'ERROR')")
+            raise ValueError("must be one of enum values ('INFO', 'WARN', 'ERROR')")
         return value
 
     model_config = {
@@ -54,6 +49,7 @@ class TaskStatusMessage(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -81,7 +77,8 @@ class TaskStatusMessage(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of localized_text
@@ -99,14 +96,11 @@ class TaskStatusMessage(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "type":
-            obj.get("type"),
-            "localizedText":
-            LocalizedMessage.from_dict(obj.get("localizedText"))
-            if obj.get("localizedText") is not None else None,
-            "key":
-            obj.get("key"),
-            "parameters":
-            obj.get("parameters")
+            "type": obj.get("type"),
+            "localizedText": LocalizedMessage.from_dict(obj.get("localizedText")) if obj.get("localizedText") is not None else None,
+            "key": obj.get("key"),
+            "parameters": obj.get("parameters")
         })
         return _obj
+
+

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.service_desk_integration_dto_all_of_cluster_ref import ServiceDeskIntegrationDtoAllOfClusterRef
-
 
 class TestServiceDeskIntegrationDtoAllOfClusterRef(unittest.TestCase):
     """ServiceDeskIntegrationDtoAllOfClusterRef unit test stubs"""
@@ -26,9 +26,7 @@ class TestServiceDeskIntegrationDtoAllOfClusterRef(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(
-            self,
-            include_optional) -> ServiceDeskIntegrationDtoAllOfClusterRef:
+    def make_instance(self, include_optional) -> ServiceDeskIntegrationDtoAllOfClusterRef:
         """Test ServiceDeskIntegrationDtoAllOfClusterRef
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -51,7 +49,6 @@ class TestServiceDeskIntegrationDtoAllOfClusterRef(unittest.TestCase):
         """Test ServiceDeskIntegrationDtoAllOfClusterRef"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -26,33 +28,23 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccountStatusChanged(BaseModel):
     """
     AccountStatusChanged
-    """
-
-  # noqa: E501
-    event_type: Optional[StrictStr] = Field(default=None,
-                                            description="the event type",
-                                            alias="eventType")
-    identity_id: Optional[StrictStr] = Field(default=None,
-                                             description="the identity id",
-                                             alias="identityId")
-    dt: Optional[StrictStr] = Field(default=None,
-                                    description="the date of event")
+    """ # noqa: E501
+    event_type: Optional[StrictStr] = Field(default=None, description="the event type", alias="eventType")
+    identity_id: Optional[StrictStr] = Field(default=None, description="the identity id", alias="identityId")
+    dt: Optional[StrictStr] = Field(default=None, description="the date of event")
     account: Optional[AccountStatusChangedAccount] = None
-    status_change: Optional[AccountStatusChangedStatusChange] = Field(
-        default=None, alias="statusChange")
-    __properties: ClassVar[List[str]] = [
-        "eventType", "identityId", "dt", "account", "statusChange"
-    ]
+    status_change: Optional[AccountStatusChangedStatusChange] = Field(default=None, alias="statusChange")
+    __properties: ClassVar[List[str]] = ["eventType", "identityId", "dt", "account", "statusChange"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -80,7 +72,8 @@ class AccountStatusChanged(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of account
@@ -101,17 +94,12 @@ class AccountStatusChanged(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "eventType":
-            obj.get("eventType"),
-            "identityId":
-            obj.get("identityId"),
-            "dt":
-            obj.get("dt"),
-            "account":
-            AccountStatusChangedAccount.from_dict(obj.get("account"))
-            if obj.get("account") is not None else None,
-            "statusChange":
-            AccountStatusChangedStatusChange.from_dict(obj.get("statusChange"))
-            if obj.get("statusChange") is not None else None
+            "eventType": obj.get("eventType"),
+            "identityId": obj.get("identityId"),
+            "dt": obj.get("dt"),
+            "account": AccountStatusChangedAccount.from_dict(obj.get("account")) if obj.get("account") is not None else None,
+            "statusChange": AccountStatusChangedStatusChange.from_dict(obj.get("statusChange")) if obj.get("statusChange") is not None else None
         })
         return _obj
+
+

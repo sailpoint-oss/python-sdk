@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt
@@ -24,19 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class WorkItemsSummary(BaseModel):
     """
     WorkItemsSummary
-    """
-
-  # noqa: E501
-    open: Optional[StrictInt] = Field(
-        default=None, description="The count of open work items")
-    completed: Optional[StrictInt] = Field(
-        default=None, description="The count of completed work items")
-    total: Optional[StrictInt] = Field(
-        default=None, description="The count of total work items")
+    """ # noqa: E501
+    open: Optional[StrictInt] = Field(default=None, description="The count of open work items")
+    completed: Optional[StrictInt] = Field(default=None, description="The count of completed work items")
+    total: Optional[StrictInt] = Field(default=None, description="The count of total work items")
     __properties: ClassVar[List[str]] = ["open", "completed", "total"]
 
     model_config = {
@@ -44,6 +40,7 @@ class WorkItemsSummary(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -71,7 +68,8 @@ class WorkItemsSummary(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -91,3 +89,5 @@ class WorkItemsSummary(BaseModel):
             "total": obj.get("total")
         })
         return _obj
+
+

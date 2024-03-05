@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -27,40 +29,26 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class Trigger(BaseModel):
     """
     Trigger
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     id: StrictStr = Field(description="Unique identifier of the trigger.")
     name: StrictStr = Field(description="Trigger Name.")
     type: TriggerType
-    description: Optional[StrictStr] = Field(
-        default=None, description="Trigger Description.")
-    input_schema: StrictStr = Field(
-        description=
-        "The JSON schema of the payload that will be sent by the trigger to the subscribed service.",
-        alias="inputSchema")
+    description: Optional[StrictStr] = Field(default=None, description="Trigger Description.")
+    input_schema: StrictStr = Field(description="The JSON schema of the payload that will be sent by the trigger to the subscribed service.", alias="inputSchema")
     example_input: TriggerExampleInput = Field(alias="exampleInput")
-    output_schema: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "The JSON schema of the response that will be sent by the subscribed service to the trigger in response to an event.  This only applies to a trigger type of `REQUEST_RESPONSE`.",
-        alias="outputSchema")
-    example_output: Optional[TriggerExampleOutput] = Field(
-        default=None, alias="exampleOutput")
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "type", "description", "inputSchema", "exampleInput",
-        "outputSchema", "exampleOutput"
-    ]
+    output_schema: Optional[StrictStr] = Field(default=None, description="The JSON schema of the response that will be sent by the subscribed service to the trigger in response to an event.  This only applies to a trigger type of `REQUEST_RESPONSE`.", alias="outputSchema")
+    example_output: Optional[TriggerExampleOutput] = Field(default=None, alias="exampleOutput")
+    __properties: ClassVar[List[str]] = ["id", "name", "type", "description", "inputSchema", "exampleInput", "outputSchema", "exampleOutput"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -88,7 +76,8 @@ class Trigger(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of example_input
@@ -119,23 +108,15 @@ class Trigger(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "type":
-            obj.get("type"),
-            "description":
-            obj.get("description"),
-            "inputSchema":
-            obj.get("inputSchema"),
-            "exampleInput":
-            TriggerExampleInput.from_dict(obj.get("exampleInput"))
-            if obj.get("exampleInput") is not None else None,
-            "outputSchema":
-            obj.get("outputSchema"),
-            "exampleOutput":
-            TriggerExampleOutput.from_dict(obj.get("exampleOutput"))
-            if obj.get("exampleOutput") is not None else None
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "type": obj.get("type"),
+            "description": obj.get("description"),
+            "inputSchema": obj.get("inputSchema"),
+            "exampleInput": TriggerExampleInput.from_dict(obj.get("exampleInput")) if obj.get("exampleInput") is not None else None,
+            "outputSchema": obj.get("outputSchema"),
+            "exampleOutput": TriggerExampleOutput.from_dict(obj.get("exampleOutput")) if obj.get("exampleOutput") is not None else None
         })
         return _obj
+
+

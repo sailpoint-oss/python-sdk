@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -26,43 +27,24 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ApprovalForwardHistory(BaseModel):
     """
     ApprovalForwardHistory
-    """
-
-  # noqa: E501
-    old_approver_name: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Display name of approver from whom the approval was forwarded.",
-        alias="oldApproverName")
-    new_approver_name: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Display name of approver to whom the approval was forwarded.",
-        alias="newApproverName")
-    comment: Optional[StrictStr] = Field(
-        default=None, description="Comment made while forwarding.")
-    modified: Optional[datetime] = Field(
-        default=None, description="Time at which approval was forwarded.")
-    forwarder_name: Optional[StrictStr] = Field(
-        default=None,
-        description="Display name of forwarder who forwarded the approval.",
-        alias="forwarderName")
-    reassignment_type: Optional[ReassignmentType] = Field(
-        default=None, alias="reassignmentType")
-    __properties: ClassVar[List[str]] = [
-        "oldApproverName", "newApproverName", "comment", "modified",
-        "forwarderName", "reassignmentType"
-    ]
+    """ # noqa: E501
+    old_approver_name: Optional[StrictStr] = Field(default=None, description="Display name of approver from whom the approval was forwarded.", alias="oldApproverName")
+    new_approver_name: Optional[StrictStr] = Field(default=None, description="Display name of approver to whom the approval was forwarded.", alias="newApproverName")
+    comment: Optional[StrictStr] = Field(default=None, description="Comment made while forwarding.")
+    modified: Optional[datetime] = Field(default=None, description="Time at which approval was forwarded.")
+    forwarder_name: Optional[StrictStr] = Field(default=None, description="Display name of forwarder who forwarded the approval.", alias="forwarderName")
+    reassignment_type: Optional[ReassignmentType] = Field(default=None, alias="reassignmentType")
+    __properties: ClassVar[List[str]] = ["oldApproverName", "newApproverName", "comment", "modified", "forwarderName", "reassignmentType"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -90,7 +72,8 @@ class ApprovalForwardHistory(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if comment (nullable) is None
@@ -115,17 +98,13 @@ class ApprovalForwardHistory(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "oldApproverName":
-            obj.get("oldApproverName"),
-            "newApproverName":
-            obj.get("newApproverName"),
-            "comment":
-            obj.get("comment"),
-            "modified":
-            obj.get("modified"),
-            "forwarderName":
-            obj.get("forwarderName"),
-            "reassignmentType":
-            obj.get("reassignmentType")
+            "oldApproverName": obj.get("oldApproverName"),
+            "newApproverName": obj.get("newApproverName"),
+            "comment": obj.get("comment"),
+            "modified": obj.get("modified"),
+            "forwarderName": obj.get("forwarderName"),
+            "reassignmentType": obj.get("reassignmentType")
         })
         return _obj
+
+

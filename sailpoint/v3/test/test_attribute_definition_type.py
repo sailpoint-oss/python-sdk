@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.attribute_definition_type import AttributeDefinitionType
-
 
 class TestAttributeDefinitionType(unittest.TestCase):
     """AttributeDefinitionType unit test stubs"""
@@ -29,7 +29,6 @@ class TestAttributeDefinitionType(unittest.TestCase):
     def testAttributeDefinitionType(self):
         """Test AttributeDefinitionType"""
         # inst = AttributeDefinitionType()
-
 
 if __name__ == '__main__':
     unittest.main()

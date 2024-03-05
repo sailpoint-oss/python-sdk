@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
@@ -24,50 +26,25 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ConnectorDetail(BaseModel):
     """
     ConnectorDetail
-    """
-
-  # noqa: E501
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="The connector name")
-    source_config_xml: Optional[StrictStr] = Field(
-        default=None,
-        description="XML representation of the source config data",
-        alias="sourceConfigXml")
-    source_config: Optional[StrictStr] = Field(
-        default=None,
-        description="JSON representation of the source config data",
-        alias="sourceConfig")
-    direct_connect: Optional[StrictBool] = Field(
-        default=None,
-        description="true if the source is a direct connect source",
-        alias="directConnect")
-    file_upload: Optional[StrictBool] = Field(
-        default=None,
-        description=
-        "Connector config's file upload attribute, false if not there",
-        alias="fileUpload")
-    uploaded_files: Optional[StrictStr] = Field(
-        default=None,
-        description="List of uploaded file strings for the connector",
-        alias="uploadedFiles")
-    connector_metadata: Optional[Dict[str, Any]] = Field(
-        default=None,
-        description="Object containing metadata pertinent to the UI to be used",
-        alias="connectorMetadata")
-    __properties: ClassVar[List[str]] = [
-        "name", "sourceConfigXml", "sourceConfig", "directConnect",
-        "fileUpload", "uploadedFiles", "connectorMetadata"
-    ]
+    """ # noqa: E501
+    name: Optional[StrictStr] = Field(default=None, description="The connector name")
+    source_config_xml: Optional[StrictStr] = Field(default=None, description="XML representation of the source config data", alias="sourceConfigXml")
+    source_config: Optional[StrictStr] = Field(default=None, description="JSON representation of the source config data", alias="sourceConfig")
+    direct_connect: Optional[StrictBool] = Field(default=None, description="true if the source is a direct connect source", alias="directConnect")
+    file_upload: Optional[StrictBool] = Field(default=None, description="Connector config's file upload attribute, false if not there", alias="fileUpload")
+    uploaded_files: Optional[StrictStr] = Field(default=None, description="List of uploaded file strings for the connector", alias="uploadedFiles")
+    connector_metadata: Optional[Dict[str, Any]] = Field(default=None, description="Object containing metadata pertinent to the UI to be used", alias="connectorMetadata")
+    __properties: ClassVar[List[str]] = ["name", "sourceConfigXml", "sourceConfig", "directConnect", "fileUpload", "uploadedFiles", "connectorMetadata"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -95,7 +72,8 @@ class ConnectorDetail(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -110,19 +88,14 @@ class ConnectorDetail(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name":
-            obj.get("name"),
-            "sourceConfigXml":
-            obj.get("sourceConfigXml"),
-            "sourceConfig":
-            obj.get("sourceConfig"),
-            "directConnect":
-            obj.get("directConnect"),
-            "fileUpload":
-            obj.get("fileUpload"),
-            "uploadedFiles":
-            obj.get("uploadedFiles"),
-            "connectorMetadata":
-            obj.get("connectorMetadata")
+            "name": obj.get("name"),
+            "sourceConfigXml": obj.get("sourceConfigXml"),
+            "sourceConfig": obj.get("sourceConfig"),
+            "directConnect": obj.get("directConnect"),
+            "fileUpload": obj.get("fileUpload"),
+            "uploadedFiles": obj.get("uploadedFiles"),
+            "connectorMetadata": obj.get("connectorMetadata")
         })
         return _obj
+
+

@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -27,42 +28,27 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ReviewableEntitlementAccount(BaseModel):
     """
     Information about the status of the entitlement
     """ # noqa: E501
-    native_identity: Optional[StrictStr] = Field(
-        default=None,
-        description="The native identity for this account",
-        alias="nativeIdentity")
-    disabled: Optional[StrictBool] = Field(
-        default=False,
-        description="Indicates whether this account is currently disabled")
-    locked: Optional[StrictBool] = Field(
-        default=False,
-        description="Indicates whether this account is currently locked")
+    native_identity: Optional[StrictStr] = Field(default=None, description="The native identity for this account", alias="nativeIdentity")
+    disabled: Optional[StrictBool] = Field(default=False, description="Indicates whether this account is currently disabled")
+    locked: Optional[StrictBool] = Field(default=False, description="Indicates whether this account is currently locked")
     type: Optional[DtoType] = None
-    id: Optional[StrictStr] = Field(
-        default=None, description="The id associated with the account")
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="The account name")
-    created: Optional[datetime] = Field(
-        default=None, description="When the account was created")
-    modified: Optional[datetime] = Field(
-        default=None, description="When the account was last modified")
-    activity_insights: Optional[ActivityInsights] = Field(
-        default=None, alias="activityInsights")
-    __properties: ClassVar[List[str]] = [
-        "nativeIdentity", "disabled", "locked", "type", "id", "name",
-        "created", "modified", "activityInsights"
-    ]
+    id: Optional[StrictStr] = Field(default=None, description="The id associated with the account")
+    name: Optional[StrictStr] = Field(default=None, description="The account name")
+    created: Optional[datetime] = Field(default=None, description="When the account was created")
+    modified: Optional[datetime] = Field(default=None, description="When the account was last modified")
+    activity_insights: Optional[ActivityInsights] = Field(default=None, alias="activityInsights")
+    __properties: ClassVar[List[str]] = ["nativeIdentity", "disabled", "locked", "type", "id", "name", "created", "modified", "activityInsights"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -90,7 +76,8 @@ class ReviewableEntitlementAccount(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of activity_insights
@@ -128,24 +115,16 @@ class ReviewableEntitlementAccount(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "nativeIdentity":
-            obj.get("nativeIdentity"),
-            "disabled":
-            obj.get("disabled") if obj.get("disabled") is not None else False,
-            "locked":
-            obj.get("locked") if obj.get("locked") is not None else False,
-            "type":
-            obj.get("type"),
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "created":
-            obj.get("created"),
-            "modified":
-            obj.get("modified"),
-            "activityInsights":
-            ActivityInsights.from_dict(obj.get("activityInsights"))
-            if obj.get("activityInsights") is not None else None
+            "nativeIdentity": obj.get("nativeIdentity"),
+            "disabled": obj.get("disabled") if obj.get("disabled") is not None else False,
+            "locked": obj.get("locked") if obj.get("locked") is not None else False,
+            "type": obj.get("type"),
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "created": obj.get("created"),
+            "modified": obj.get("modified"),
+            "activityInsights": ActivityInsights.from_dict(obj.get("activityInsights")) if obj.get("activityInsights") is not None else None
         })
         return _obj
+
+

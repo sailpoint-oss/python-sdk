@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,24 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class OwnerReferenceSegments(BaseModel):
     """
     The owner of this object.
-    """
-
-  # noqa: E501
-    type: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Owner type. This field must be either left null or set to 'IDENTITY' on input, otherwise a 400 Bad Request error will result."
-    )
+    """ # noqa: E501
+    type: Optional[StrictStr] = Field(default=None, description="Owner type. This field must be either left null or set to 'IDENTITY' on input, otherwise a 400 Bad Request error will result.")
     id: Optional[StrictStr] = Field(default=None, description="Identity id")
-    name: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Human-readable display name of the owner. It may be left null or omitted in a POST or PATCH. If set, it must match the current value of the owner's display name, otherwise a 400 Bad Request error will result."
-    )
+    name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of the owner. It may be left null or omitted in a POST or PATCH. If set, it must match the current value of the owner's display name, otherwise a 400 Bad Request error will result.")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')
@@ -59,6 +50,7 @@ class OwnerReferenceSegments(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -86,7 +78,8 @@ class OwnerReferenceSegments(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -106,3 +99,5 @@ class OwnerReferenceSegments(BaseModel):
             "name": obj.get("name")
         })
         return _obj
+
+

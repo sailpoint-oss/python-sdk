@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.entitlement_document import EntitlementDocument
-
 
 class TestEntitlementDocument(unittest.TestCase):
     """EntitlementDocument unit test stubs"""
@@ -36,26 +36,32 @@ class TestEntitlementDocument(unittest.TestCase):
         model = EntitlementDocument()
         if include_optional:
             return EntitlementDocument(
-                id = '2c91808568c529c60168cca6f90c1313',
-                name = 'John Doe',
+                id = '2c91808375d8e80a0175e1f88a575222',
+                name = 'john.doe',
                 type = 'identity',
-                description = 'The admin privilege',
-                attribute = 'admin',
-                value = 'true',
                 modified = '2018-06-25T20:22:28.104Z',
-                synced = '2018-06-25T20:22:28.104Z',
+                synced = '',
                 display_name = 'Admin',
-                source = sailpoint.v3.models.reference.Reference(
-                    id = '2c91808568c529c60168cca6f90c1313', 
-                    name = 'John Doe', ),
+                source = sailpoint.v3.models.entitlement_document_all_of_source.EntitlementDocument_allOf_source(
+                    id = '2c91808b6e9e6fb8016eec1a2b6f7b5f', 
+                    name = 'ODS-HR-Employees', ),
+                segments = [
+                    sailpoint.v3.models.base_segment.BaseSegment(
+                        id = 'b009b6e3-b56d-41d9-8735-cb532ea0b017', 
+                        name = 'Test Segment', )
+                    ],
+                segment_count = 1,
+                requestable = False,
+                cloud_governed = False,
+                created = '2018-06-25T20:22:28.104Z',
                 privileged = False,
                 identity_count = 3,
                 tags = [TAG_1, TAG_2]
             )
         else:
             return EntitlementDocument(
-                id = '2c91808568c529c60168cca6f90c1313',
-                name = 'John Doe',
+                id = '2c91808375d8e80a0175e1f88a575222',
+                name = 'john.doe',
                 type = 'identity',
         )
         """
@@ -64,7 +70,6 @@ class TestEntitlementDocument(unittest.TestCase):
         """Test EntitlementDocument"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

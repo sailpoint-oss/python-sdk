@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
@@ -25,13 +27,10 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class CommonAccessItemRequest(BaseModel):
     """
     CommonAccessItemRequest
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     access: Optional[CommonAccessItemAccess] = None
     status: Optional[CommonAccessItemState] = None
     __properties: ClassVar[List[str]] = ["access", "status"]
@@ -41,6 +40,7 @@ class CommonAccessItemRequest(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -68,7 +68,8 @@ class CommonAccessItemRequest(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of access
@@ -86,10 +87,9 @@ class CommonAccessItemRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "access":
-            CommonAccessItemAccess.from_dict(obj.get("access"))
-            if obj.get("access") is not None else None,
-            "status":
-            obj.get("status")
+            "access": CommonAccessItemAccess.from_dict(obj.get("access")) if obj.get("access") is not None else None,
+            "status": obj.get("status")
         })
         return _obj
+
+

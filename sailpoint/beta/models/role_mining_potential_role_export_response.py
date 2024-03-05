@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
@@ -25,37 +27,22 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class RoleMiningPotentialRoleExportResponse(BaseModel):
     """
     RoleMiningPotentialRoleExportResponse
-    """
-
-  # noqa: E501
-    min_entitlement_popularity: Optional[StrictInt] = Field(
-        default=None,
-        description=
-        "The minimum popularity among identities in the role which an entitlement must have to be included in the report",
-        alias="minEntitlementPopularity")
-    include_common_access: Optional[StrictBool] = Field(
-        default=None,
-        description=
-        "If false, do not include entitlements that are highly popular among the entire orginization",
-        alias="includeCommonAccess")
-    export_id: Optional[StrictStr] = Field(
-        default=None,
-        description="ID used to reference this export",
-        alias="exportId")
+    """ # noqa: E501
+    min_entitlement_popularity: Optional[StrictInt] = Field(default=None, description="The minimum popularity among identities in the role which an entitlement must have to be included in the report", alias="minEntitlementPopularity")
+    include_common_access: Optional[StrictBool] = Field(default=None, description="If false, do not include entitlements that are highly popular among the entire orginization", alias="includeCommonAccess")
+    export_id: Optional[StrictStr] = Field(default=None, description="ID used to reference this export", alias="exportId")
     status: Optional[RoleMiningPotentialRoleExportState] = None
-    __properties: ClassVar[List[str]] = [
-        "minEntitlementPopularity", "includeCommonAccess", "exportId", "status"
-    ]
+    __properties: ClassVar[List[str]] = ["minEntitlementPopularity", "includeCommonAccess", "exportId", "status"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -83,7 +70,8 @@ class RoleMiningPotentialRoleExportResponse(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -98,13 +86,11 @@ class RoleMiningPotentialRoleExportResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "minEntitlementPopularity":
-            obj.get("minEntitlementPopularity"),
-            "includeCommonAccess":
-            obj.get("includeCommonAccess"),
-            "exportId":
-            obj.get("exportId"),
-            "status":
-            obj.get("status")
+            "minEntitlementPopularity": obj.get("minEntitlementPopularity"),
+            "includeCommonAccess": obj.get("includeCommonAccess"),
+            "exportId": obj.get("exportId"),
+            "status": obj.get("status")
         })
         return _obj
+
+

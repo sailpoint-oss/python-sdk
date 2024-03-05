@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,17 +26,11 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class SetLifecycleStateRequest(BaseModel):
     """
     SetLifecycleStateRequest
-    """
-
-  # noqa: E501
-    lifecycle_state_id: Optional[StrictStr] = Field(
-        default=None,
-        description="The ID of the lifecycle state to set",
-        alias="lifecycleStateId")
+    """ # noqa: E501
+    lifecycle_state_id: Optional[StrictStr] = Field(default=None, description="The ID of the lifecycle state to set", alias="lifecycleStateId")
     __properties: ClassVar[List[str]] = ["lifecycleStateId"]
 
     model_config = {
@@ -42,6 +38,7 @@ class SetLifecycleStateRequest(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -69,7 +66,8 @@ class SetLifecycleStateRequest(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -83,6 +81,9 @@ class SetLifecycleStateRequest(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {"lifecycleStateId": obj.get("lifecycleStateId")})
+        _obj = cls.model_validate({
+            "lifecycleStateId": obj.get("lifecycleStateId")
+        })
         return _obj
+
+

@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 from inspect import getfullargspec
 import json
@@ -28,11 +29,7 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-SUBSCRIPTIONPATCHREQUESTINNERVALUE_ANY_OF_SCHEMAS = [
-    "List[SubscriptionPatchRequestInnerValueAnyOfInner]", "int", "object",
-    "str"
-]
-
+SUBSCRIPTIONPATCHREQUESTINNERVALUE_ANY_OF_SCHEMAS = ["List[SubscriptionPatchRequestInnerValueAnyOfInner]", "int", "object", "str"]
 
 class SubscriptionPatchRequestInnerValue(BaseModel):
     """
@@ -46,16 +43,12 @@ class SubscriptionPatchRequestInnerValue(BaseModel):
     # data type: object
     anyof_schema_3_validator: Optional[Dict[str, Any]] = None
     # data type: List[SubscriptionPatchRequestInnerValueAnyOfInner]
-    anyof_schema_4_validator: Optional[
-        List[SubscriptionPatchRequestInnerValueAnyOfInner]] = None
+    anyof_schema_4_validator: Optional[List[SubscriptionPatchRequestInnerValueAnyOfInner]] = None
     if TYPE_CHECKING:
-        actual_instance: Optional[
-            Union[List[SubscriptionPatchRequestInnerValueAnyOfInner], int,
-                  object, str]] = None
+        actual_instance: Optional[Union[List[SubscriptionPatchRequestInnerValueAnyOfInner], int, object, str]] = None
     else:
         actual_instance: Any = None
-    any_of_schemas: List[str] = Literal[
-        SUBSCRIPTIONPATCHREQUESTINNERVALUE_ANY_OF_SCHEMAS]
+    any_of_schemas: List[str] = Literal[SUBSCRIPTIONPATCHREQUESTINNERVALUE_ANY_OF_SCHEMAS]
 
     model_config = {
         "validate_assignment": True,
@@ -65,13 +58,9 @@ class SubscriptionPatchRequestInnerValue(BaseModel):
     def __init__(self, *args, **kwargs) -> None:
         if args:
             if len(args) > 1:
-                raise ValueError(
-                    "If a position argument is used, only 1 is allowed to set `actual_instance`"
-                )
+                raise ValueError("If a position argument is used, only 1 is allowed to set `actual_instance`")
             if kwargs:
-                raise ValueError(
-                    "If a position argument is used, keyword arguments cannot be used."
-                )
+                raise ValueError("If a position argument is used, keyword arguments cannot be used.")
             super().__init__(actual_instance=args[0])
         else:
             super().__init__(**kwargs)
@@ -106,9 +95,7 @@ class SubscriptionPatchRequestInnerValue(BaseModel):
             error_messages.append(str(e))
         if error_messages:
             # no match
-            raise ValueError(
-                "No match found when setting the actual_instance in SubscriptionPatchRequestInnerValue with anyOf schemas: List[SubscriptionPatchRequestInnerValueAnyOfInner], int, object, str. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("No match found when setting the actual_instance in SubscriptionPatchRequestInnerValue with anyOf schemas: List[SubscriptionPatchRequestInnerValueAnyOfInner], int, object, str. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -160,9 +147,7 @@ class SubscriptionPatchRequestInnerValue(BaseModel):
 
         if error_messages:
             # no match
-            raise ValueError(
-                "No match found when deserializing the JSON string into SubscriptionPatchRequestInnerValue with anyOf schemas: List[SubscriptionPatchRequestInnerValueAnyOfInner], int, object, str. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into SubscriptionPatchRequestInnerValue with anyOf schemas: List[SubscriptionPatchRequestInnerValueAnyOfInner], int, object, str. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -191,3 +176,5 @@ class SubscriptionPatchRequestInnerValue(BaseModel):
     def to_str(self) -> str:
         """Returns the string representation of the actual instance"""
         return pprint.pformat(self.model_dump())
+
+

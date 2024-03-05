@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,25 +26,19 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class WorkflowTrigger(BaseModel):
     """
     The trigger that starts the workflow
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     type: StrictStr = Field(description="The trigger type")
-    attributes: Dict[str,
-                     Any] = Field(description="Workflow Trigger Attributes.")
+    attributes: Dict[str, Any] = Field(description="Workflow Trigger Attributes.")
     __properties: ClassVar[List[str]] = ["type", "attributes"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('EVENT', 'EXTERNAL', 'SCHEDULED'):
-            raise ValueError(
-                "must be one of enum values ('EVENT', 'EXTERNAL', 'SCHEDULED')"
-            )
+            raise ValueError("must be one of enum values ('EVENT', 'EXTERNAL', 'SCHEDULED')")
         return value
 
     model_config = {
@@ -50,6 +46,7 @@ class WorkflowTrigger(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -77,7 +74,8 @@ class WorkflowTrigger(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -96,3 +94,5 @@ class WorkflowTrigger(BaseModel):
             "attributes": obj.get("attributes")
         })
         return _obj
+
+

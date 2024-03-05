@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -26,42 +27,25 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class RoleMiningSessionDraftRoleDto(BaseModel):
     """
     RoleMiningSessionDraftRoleDto
-    """
-
-  # noqa: E501
-    description: Optional[StrictStr] = Field(
-        default=None, description="Draft role description")
-    identity_ids: Optional[List[StrictStr]] = Field(
-        default=None,
-        description="The list of identities for this role mining session.",
-        alias="identityIds")
-    entitlement_ids: Optional[List[StrictStr]] = Field(
-        default=None,
-        description="The list of entitlement ids for this role mining session.",
-        alias="entitlementIds")
-    excluded_entitlements: Optional[List[StrictStr]] = Field(
-        default=None,
-        description="The list of excluded entitlement ids.",
-        alias="excludedEntitlements")
-    modified: Optional[datetime] = Field(default=None,
-                                         description="Last modified date")
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="Name of the draft role")
+    """ # noqa: E501
+    description: Optional[StrictStr] = Field(default=None, description="Draft role description")
+    identity_ids: Optional[List[StrictStr]] = Field(default=None, description="The list of identities for this role mining session.", alias="identityIds")
+    entitlement_ids: Optional[List[StrictStr]] = Field(default=None, description="The list of entitlement ids for this role mining session.", alias="entitlementIds")
+    excluded_entitlements: Optional[List[StrictStr]] = Field(default=None, description="The list of excluded entitlement ids.", alias="excludedEntitlements")
+    modified: Optional[datetime] = Field(default=None, description="Last modified date")
+    name: Optional[StrictStr] = Field(default=None, description="Name of the draft role")
     type: Optional[RoleMiningRoleType] = None
-    __properties: ClassVar[List[str]] = [
-        "description", "identityIds", "entitlementIds", "excludedEntitlements",
-        "modified", "name", "type"
-    ]
+    __properties: ClassVar[List[str]] = ["description", "identityIds", "entitlementIds", "excludedEntitlements", "modified", "name", "type"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -89,7 +73,8 @@ class RoleMiningSessionDraftRoleDto(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -104,19 +89,14 @@ class RoleMiningSessionDraftRoleDto(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "description":
-            obj.get("description"),
-            "identityIds":
-            obj.get("identityIds"),
-            "entitlementIds":
-            obj.get("entitlementIds"),
-            "excludedEntitlements":
-            obj.get("excludedEntitlements"),
-            "modified":
-            obj.get("modified"),
-            "name":
-            obj.get("name"),
-            "type":
-            obj.get("type")
+            "description": obj.get("description"),
+            "identityIds": obj.get("identityIds"),
+            "entitlementIds": obj.get("entitlementIds"),
+            "excludedEntitlements": obj.get("excludedEntitlements"),
+            "modified": obj.get("modified"),
+            "name": obj.get("name"),
+            "type": obj.get("type")
         })
         return _obj
+
+

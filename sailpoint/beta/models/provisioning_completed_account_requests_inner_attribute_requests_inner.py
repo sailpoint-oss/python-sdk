@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,31 +26,20 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
-class ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner(
-        BaseModel):
+class ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner(BaseModel):
     """
     ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner
     """ # noqa: E501
-    attribute_name: StrictStr = Field(
-        description="The name of the attribute being provisioned.",
-        alias="attributeName")
-    attribute_value: Optional[StrictStr] = Field(
-        default=None,
-        description="The value of the attribute being provisioned.",
-        alias="attributeValue")
-    operation: Dict[str, Any] = Field(
-        description="The operation to handle the attribute.")
-    __properties: ClassVar[List[str]] = [
-        "attributeName", "attributeValue", "operation"
-    ]
+    attribute_name: StrictStr = Field(description="The name of the attribute being provisioned.", alias="attributeName")
+    attribute_value: Optional[StrictStr] = Field(default=None, description="The value of the attribute being provisioned.", alias="attributeValue")
+    operation: Dict[str, Any] = Field(description="The operation to handle the attribute.")
+    __properties: ClassVar[List[str]] = ["attributeName", "attributeValue", "operation"]
 
     @field_validator('operation')
     def operation_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('Add', 'Set', 'Remove'):
-            raise ValueError(
-                "must be one of enum values ('Add', 'Set', 'Remove')")
+            raise ValueError("must be one of enum values ('Add', 'Set', 'Remove')")
         return value
 
     model_config = {
@@ -56,6 +47,7 @@ class ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner(
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -83,7 +75,8 @@ class ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner(
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if attribute_value (nullable) is None
@@ -108,3 +101,5 @@ class ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner(
             "operation": obj.get("operation")
         })
         return _obj
+
+

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **operator** | **str** | Operator for the expression | [optional] 
 **attribute** | **str** | Name for the attribute | [optional] 
 **value** | [**Value**](Value.md) |  | [optional] 
-**children** | [**List[Value]**](Value.md) | List of expressions | [optional] 
+**children** | [**List[ExpressionChildrenInner]**](ExpressionChildrenInner.md) | List of expressions | [optional] 
 
 ## Example
 

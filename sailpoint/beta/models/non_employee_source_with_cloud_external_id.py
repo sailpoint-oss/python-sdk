@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -26,57 +27,28 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class NonEmployeeSourceWithCloudExternalId(BaseModel):
     """
     NonEmployeeSourceWithCloudExternalId
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="Non-Employee source id.")
-    source_id: Optional[StrictStr] = Field(
-        default=None,
-        description="Source Id associated with this non-employee source.",
-        alias="sourceId")
-    name: Optional[StrictStr] = Field(
-        default=None,
-        description="Source name associated with this non-employee source.")
-    description: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Source description associated with this non-employee source.")
-    approvers: Optional[List[IdentityReferenceWithId]] = Field(
-        default=None, description="List of approvers")
-    account_managers: Optional[List[IdentityReferenceWithId]] = Field(
-        default=None,
-        description="List of account managers",
-        alias="accountManagers")
-    modified: Optional[datetime] = Field(
-        default=None, description="When the request was last modified.")
-    created: Optional[datetime] = Field(
-        default=None, description="When the request was created.")
-    non_employee_count: Optional[StrictInt] = Field(
-        default=None,
-        description=
-        "The number of non-employee records on all sources that *requested-for* user manages.",
-        alias="nonEmployeeCount")
-    cloud_external_id: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Legacy ID used for sources from the V1 API. This attribute will be removed from a future version of the API and will not be considered a breaking change. No clients should rely on this ID always being present.",
-        alias="cloudExternalId")
-    __properties: ClassVar[List[str]] = [
-        "id", "sourceId", "name", "description", "approvers",
-        "accountManagers", "modified", "created", "nonEmployeeCount",
-        "cloudExternalId"
-    ]
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="Non-Employee source id.")
+    source_id: Optional[StrictStr] = Field(default=None, description="Source Id associated with this non-employee source.", alias="sourceId")
+    name: Optional[StrictStr] = Field(default=None, description="Source name associated with this non-employee source.")
+    description: Optional[StrictStr] = Field(default=None, description="Source description associated with this non-employee source.")
+    approvers: Optional[List[IdentityReferenceWithId]] = Field(default=None, description="List of approvers")
+    account_managers: Optional[List[IdentityReferenceWithId]] = Field(default=None, description="List of account managers", alias="accountManagers")
+    modified: Optional[datetime] = Field(default=None, description="When the request was last modified.")
+    created: Optional[datetime] = Field(default=None, description="When the request was created.")
+    non_employee_count: Optional[StrictInt] = Field(default=None, description="The number of non-employee records on all sources that *requested-for* user manages.", alias="nonEmployeeCount")
+    cloud_external_id: Optional[StrictStr] = Field(default=None, description="Legacy ID used for sources from the V1 API. This attribute will be removed from a future version of the API and will not be considered a breaking change. No clients should rely on this ID always being present.", alias="cloudExternalId")
+    __properties: ClassVar[List[str]] = ["id", "sourceId", "name", "description", "approvers", "accountManagers", "modified", "created", "nonEmployeeCount", "cloudExternalId"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -104,7 +76,8 @@ class NonEmployeeSourceWithCloudExternalId(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in approvers (list)
@@ -138,29 +111,17 @@ class NonEmployeeSourceWithCloudExternalId(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "sourceId":
-            obj.get("sourceId"),
-            "name":
-            obj.get("name"),
-            "description":
-            obj.get("description"),
-            "approvers": [
-                IdentityReferenceWithId.from_dict(_item)
-                for _item in obj.get("approvers")
-            ] if obj.get("approvers") is not None else None,
-            "accountManagers": [
-                IdentityReferenceWithId.from_dict(_item)
-                for _item in obj.get("accountManagers")
-            ] if obj.get("accountManagers") is not None else None,
-            "modified":
-            obj.get("modified"),
-            "created":
-            obj.get("created"),
-            "nonEmployeeCount":
-            obj.get("nonEmployeeCount"),
-            "cloudExternalId":
-            obj.get("cloudExternalId")
+            "id": obj.get("id"),
+            "sourceId": obj.get("sourceId"),
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "approvers": [IdentityReferenceWithId.from_dict(_item) for _item in obj.get("approvers")] if obj.get("approvers") is not None else None,
+            "accountManagers": [IdentityReferenceWithId.from_dict(_item) for _item in obj.get("accountManagers")] if obj.get("accountManagers") is not None else None,
+            "modified": obj.get("modified"),
+            "created": obj.get("created"),
+            "nonEmployeeCount": obj.get("nonEmployeeCount"),
+            "cloudExternalId": obj.get("cloudExternalId")
         })
         return _obj
+
+

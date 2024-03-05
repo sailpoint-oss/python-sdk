@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -25,34 +27,24 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class FormDetails(BaseModel):
     """
     FormDetails
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="ID of the form")
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="Name of the form")
-    title: Optional[StrictStr] = Field(default=None,
-                                       description="The form title")
-    subtitle: Optional[StrictStr] = Field(default=None,
-                                          description="The form subtitle.")
-    target_user: Optional[StrictStr] = Field(
-        default=None,
-        description="The name of the user that should be shown this form",
-        alias="targetUser")
-    sections: Optional[SectionDetails] = None
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "title", "subtitle", "targetUser", "sections"
-    ]
+    name: Optional[StrictStr] = Field(default=None, description="Name of the form")
+    title: Optional[StrictStr] = Field(default=None, description="The form title")
+    subtitle: Optional[StrictStr] = Field(default=None, description="The form subtitle.")
+    target_user: Optional[StrictStr] = Field(default=None, description="The name of the user that should be shown this form", alias="targetUser")
+    sections: Optional[List[SectionDetails]] = Field(default=None, description="Sections of the form")
+    __properties: ClassVar[List[str]] = ["id", "name", "title", "subtitle", "targetUser", "sections"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -80,12 +72,27 @@ class FormDetails(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of sections
+        # override the default output from pydantic by calling `to_dict()` of each item in sections (list)
+        _items = []
         if self.sections:
-            _dict['sections'] = self.sections.to_dict()
+            for _item in self.sections:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['sections'] = _items
+        # set to None if id (nullable) is None
+        # and model_fields_set contains the field
+        if self.id is None and "id" in self.model_fields_set:
+            _dict['id'] = None
+
+        # set to None if name (nullable) is None
+        # and model_fields_set contains the field
+        if self.name is None and "name" in self.model_fields_set:
+            _dict['name'] = None
+
         return _dict
 
     @classmethod
@@ -98,18 +105,13 @@ class FormDetails(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "title":
-            obj.get("title"),
-            "subtitle":
-            obj.get("subtitle"),
-            "targetUser":
-            obj.get("targetUser"),
-            "sections":
-            SectionDetails.from_dict(obj.get("sections"))
-            if obj.get("sections") is not None else None
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "title": obj.get("title"),
+            "subtitle": obj.get("subtitle"),
+            "targetUser": obj.get("targetUser"),
+            "sections": [SectionDetails.from_dict(_item) for _item in obj.get("sections")] if obj.get("sections") is not None else None
         })
         return _obj
+
+

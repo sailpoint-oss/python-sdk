@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,21 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class FormUsedBy(BaseModel):
     """
     FormUsedBy
-    """
-
-  # noqa: E501
-    type: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "FormUsedByType value.  WORKFLOW FormUsedByTypeWorkflow SOURCE FormUsedByTypeSource"
-    )
-    id: Optional[StrictStr] = Field(
-        default=None,
-        description="Unique identifier of the system using the form.")
+    """ # noqa: E501
+    type: Optional[StrictStr] = Field(default=None, description="FormUsedByType value.  WORKFLOW FormUsedByTypeWorkflow SOURCE FormUsedByTypeSource")
+    id: Optional[StrictStr] = Field(default=None, description="Unique identifier of the system using the form.")
     __properties: ClassVar[List[str]] = ["type", "id"]
 
     @field_validator('type')
@@ -48,8 +41,7 @@ class FormUsedBy(BaseModel):
             return value
 
         if value not in ('WORKFLOW', 'SOURCE'):
-            raise ValueError(
-                "must be one of enum values ('WORKFLOW', 'SOURCE')")
+            raise ValueError("must be one of enum values ('WORKFLOW', 'SOURCE')")
         return value
 
     model_config = {
@@ -57,6 +49,7 @@ class FormUsedBy(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -84,7 +77,8 @@ class FormUsedBy(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -103,3 +97,5 @@ class FormUsedBy(BaseModel):
             "id": obj.get("id")
         })
         return _obj
+
+

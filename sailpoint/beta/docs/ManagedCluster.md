@@ -29,6 +29,8 @@ Name | Type | Description | Notes
 **client_ids** | **List[str]** | List of clients in a cluster | [optional] 
 **service_count** | **int** | Number of services bound to a cluster | [optional] [default to 0]
 **cc_id** | **str** | CC ID only used in calling CC, will be removed without notice when Migration to CEGS is finished | [optional] [default to '0']
+**created_at** | **datetime** | The date/time this cluster was created | [optional] 
+**updated_at** | **datetime** | The date/time this cluster was last updated | [optional] 
 
 ## Example
 

@@ -11,47 +11,37 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
 from pydantic import Field
-from sailpoint.v3.models.entitlement_ref import EntitlementRef
+from sailpoint.v3.models.entitlement_ref1 import EntitlementRef1
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class IdentityWithNewAccess1(BaseModel):
     """
     An identity with a set of access to be added
-    """
-
-  # noqa: E501
-    identity_id: StrictStr = Field(
-        description="Set of identity IDs to be checked.", alias="identityId")
-    access_refs: List[EntitlementRef] = Field(
-        description=
-        "The bundle of access profiles to be added to the identities specified. All references must be ENTITLEMENT type.",
-        alias="accessRefs")
-    client_metadata: Optional[Dict[str, StrictStr]] = Field(
-        default=None,
-        description=
-        "Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on completion of the violation check.",
-        alias="clientMetadata")
-    __properties: ClassVar[List[str]] = [
-        "identityId", "accessRefs", "clientMetadata"
-    ]
+    """ # noqa: E501
+    identity_id: StrictStr = Field(description="Set of identity IDs to be checked.", alias="identityId")
+    access_refs: List[EntitlementRef1] = Field(description="The bundle of access profiles to be added to the identities specified. All references must be ENTITLEMENT type.", alias="accessRefs")
+    client_metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on completion of the violation check.", alias="clientMetadata")
+    __properties: ClassVar[List[str]] = ["identityId", "accessRefs", "clientMetadata"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -79,7 +69,8 @@ class IdentityWithNewAccess1(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in access_refs (list)
@@ -101,13 +92,10 @@ class IdentityWithNewAccess1(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "identityId":
-            obj.get("identityId"),
-            "accessRefs": [
-                EntitlementRef.from_dict(_item)
-                for _item in obj.get("accessRefs")
-            ] if obj.get("accessRefs") is not None else None,
-            "clientMetadata":
-            obj.get("clientMetadata")
+            "identityId": obj.get("identityId"),
+            "accessRefs": [EntitlementRef1.from_dict(_item) for _item in obj.get("accessRefs")] if obj.get("accessRefs") is not None else None,
+            "clientMetadata": obj.get("clientMetadata")
         })
         return _obj
+
+

@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **description** | **str** | A human-readable description of the Role | [optional] 
 **owner** | [**OwnerReference**](OwnerReference.md) |  | 
 **access_profiles** | [**List[AccessProfileRef]**](AccessProfileRef.md) |  | [optional] 
+**entitlements** | [**List[EntitlementRef]**](EntitlementRef.md) |  | [optional] 
 **membership** | [**RoleMembershipSelector**](RoleMembershipSelector.md) |  | [optional] 
 **legacy_membership_info** | **Dict[str, object]** | This field is not directly modifiable and is generally expected to be *null*. In very rare instances, some Roles may have been created using membership selection criteria that are no longer fully supported. While these Roles will still work, they should be migrated to STANDARD or IDENTITY_LIST selection criteria. This field exists for informational purposes as an aid to such migration. | [optional] 
 **enabled** | **bool** | Whether the Role is enabled or not. | [optional] [default to False]

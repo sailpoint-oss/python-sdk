@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictBool, StrictStr
@@ -24,32 +26,22 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AttrSyncSourceAttributeConfig(BaseModel):
     """
     Specification of source attribute sync mapping configuration for an identity attribute
     """ # noqa: E501
     name: StrictStr = Field(description="Name of the identity attribute")
-    display_name: StrictStr = Field(
-        description="Display name of the identity attribute",
-        alias="displayName")
-    enabled: StrictBool = Field(
-        description=
-        "Determines whether or not the attribute is enabled for synchronization"
-    )
-    target: StrictStr = Field(
-        description=
-        "Name of the source account attribute to which the identity attribute value will be synchronized if enabled"
-    )
-    __properties: ClassVar[List[str]] = [
-        "name", "displayName", "enabled", "target"
-    ]
+    display_name: StrictStr = Field(description="Display name of the identity attribute", alias="displayName")
+    enabled: StrictBool = Field(description="Determines whether or not the attribute is enabled for synchronization")
+    target: StrictStr = Field(description="Name of the source account attribute to which the identity attribute value will be synchronized if enabled")
+    __properties: ClassVar[List[str]] = ["name", "displayName", "enabled", "target"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -77,7 +69,8 @@ class AttrSyncSourceAttributeConfig(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -98,3 +91,5 @@ class AttrSyncSourceAttributeConfig(BaseModel):
             "target": obj.get("target")
         })
         return _obj
+
+

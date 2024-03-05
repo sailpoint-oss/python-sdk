@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -27,38 +28,24 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ReviewDecision(BaseModel):
     """
     ReviewDecision
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     id: StrictStr = Field(description="The id of the review decision")
     decision: CertificationDecision
-    proposed_end_date: Optional[datetime] = Field(
-        default=None,
-        description=
-        "The date at which a user's access should be taken away. Should only be set for `REVOKE` decisions.",
-        alias="proposedEndDate")
-    bulk: StrictBool = Field(
-        description=
-        "Indicates whether decision should be marked as part of a larger bulk decision"
-    )
+    proposed_end_date: Optional[datetime] = Field(default=None, description="The date at which a user's access should be taken away. Should only be set for `REVOKE` decisions.", alias="proposedEndDate")
+    bulk: StrictBool = Field(description="Indicates whether decision should be marked as part of a larger bulk decision")
     recommendation: Optional[ReviewRecommendation] = None
-    comments: Optional[StrictStr] = Field(
-        default=None,
-        description="Comments recorded when the decision was made")
-    __properties: ClassVar[List[str]] = [
-        "id", "decision", "proposedEndDate", "bulk", "recommendation",
-        "comments"
-    ]
+    comments: Optional[StrictStr] = Field(default=None, description="Comments recorded when the decision was made")
+    __properties: ClassVar[List[str]] = ["id", "decision", "proposedEndDate", "bulk", "recommendation", "comments"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -86,7 +73,8 @@ class ReviewDecision(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of recommendation
@@ -104,18 +92,13 @@ class ReviewDecision(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "decision":
-            obj.get("decision"),
-            "proposedEndDate":
-            obj.get("proposedEndDate"),
-            "bulk":
-            obj.get("bulk"),
-            "recommendation":
-            ReviewRecommendation.from_dict(obj.get("recommendation"))
-            if obj.get("recommendation") is not None else None,
-            "comments":
-            obj.get("comments")
+            "id": obj.get("id"),
+            "decision": obj.get("decision"),
+            "proposedEndDate": obj.get("proposedEndDate"),
+            "bulk": obj.get("bulk"),
+            "recommendation": ReviewRecommendation.from_dict(obj.get("recommendation")) if obj.get("recommendation") is not None else None,
+            "comments": obj.get("comments")
         })
         return _obj
+
+

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,27 +26,20 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class VAClusterStatusChangeEventHealthCheckResult(BaseModel):
     """
     The results of the most recent health check.
-    """
-
-  # noqa: E501
-    message: StrictStr = Field(
-        description="Detailed message of the result of the health check.")
-    result_type: StrictStr = Field(
-        description="The type of the health check result.", alias="resultType")
-    status: Dict[str,
-                 Any] = Field(description="The status of the health check.")
+    """ # noqa: E501
+    message: StrictStr = Field(description="Detailed message of the result of the health check.")
+    result_type: StrictStr = Field(description="The type of the health check result.", alias="resultType")
+    status: Dict[str, Any] = Field(description="The status of the health check.")
     __properties: ClassVar[List[str]] = ["message", "resultType", "status"]
 
     @field_validator('status')
     def status_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('Succeeded', 'Failed'):
-            raise ValueError(
-                "must be one of enum values ('Succeeded', 'Failed')")
+            raise ValueError("must be one of enum values ('Succeeded', 'Failed')")
         return value
 
     model_config = {
@@ -52,6 +47,7 @@ class VAClusterStatusChangeEventHealthCheckResult(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -79,7 +75,8 @@ class VAClusterStatusChangeEventHealthCheckResult(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -99,3 +96,5 @@ class VAClusterStatusChangeEventHealthCheckResult(BaseModel):
             "status": obj.get("status")
         })
         return _obj
+
+

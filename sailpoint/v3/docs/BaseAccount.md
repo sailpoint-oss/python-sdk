@@ -7,15 +7,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | The unique ID of the referenced object. | [optional] 
 **name** | **str** | The human readable name of the referenced object. | [optional] 
-**account_id** | **str** | The ID of the account | [optional] 
+**account_id** | **str** | Account ID. | [optional] 
 **source** | [**AccountSource**](AccountSource.md) |  | [optional] 
-**disabled** | **bool** | Indicates if the account is disabled | [optional] 
-**locked** | **bool** | Indicates if the account is locked | [optional] 
-**privileged** | **bool** |  | [optional] 
-**manually_correlated** | **bool** | Indicates if the account has been manually correlated to an identity | [optional] 
+**disabled** | **bool** | Indicates whether the account is disabled. | [optional] [default to False]
+**locked** | **bool** | Indicates whether the account is locked. | [optional] [default to False]
+**privileged** | **bool** | Indicates whether the account is privileged. | [optional] [default to False]
+**manually_correlated** | **bool** | Indicates whether the account has been manually correlated to an identity. | [optional] [default to False]
 **password_last_set** | **datetime** | A date-time in ISO-8601 format | [optional] 
-**entitlement_attributes** | **Dict[str, object]** | a map or dictionary of key/value pairs | [optional] 
-**created** | **datetime** | A date-time in ISO-8601 format | [optional] 
+**entitlement_attributes** | **Dict[str, object]** | Map or dictionary of key/value pairs. | [optional] 
+**created** | **datetime** | ISO-8601 date-time referring to the time when the object was created. | [optional] 
 
 ## Example
 

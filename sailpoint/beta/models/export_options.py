@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -25,31 +27,14 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ExportOptions(BaseModel):
     """
     ExportOptions
-    """
-
-  # noqa: E501
-    exclude_types: Optional[List[StrictStr]] = Field(
-        default=None,
-        description=
-        "Object type names to be excluded from an sp-config export command.",
-        alias="excludeTypes")
-    include_types: Optional[List[StrictStr]] = Field(
-        default=None,
-        description=
-        "Object type names to be included in an sp-config export command. IncludeTypes takes precedence over excludeTypes.",
-        alias="includeTypes")
-    object_options: Optional[Dict[str, ObjectExportImportOptions]] = Field(
-        default=None,
-        description=
-        "Additional options targeting specific objects related to each item in the includeTypes field",
-        alias="objectOptions")
-    __properties: ClassVar[List[str]] = [
-        "excludeTypes", "includeTypes", "objectOptions"
-    ]
+    """ # noqa: E501
+    exclude_types: Optional[List[StrictStr]] = Field(default=None, description="Object type names to be excluded from an sp-config export command.", alias="excludeTypes")
+    include_types: Optional[List[StrictStr]] = Field(default=None, description="Object type names to be included in an sp-config export command. IncludeTypes takes precedence over excludeTypes.", alias="includeTypes")
+    object_options: Optional[Dict[str, ObjectExportImportOptions]] = Field(default=None, description="Additional options targeting specific objects related to each item in the includeTypes field", alias="objectOptions")
+    __properties: ClassVar[List[str]] = ["excludeTypes", "includeTypes", "objectOptions"]
 
     @field_validator('exclude_types')
     def exclude_types_validate_enum(cls, value):
@@ -58,19 +43,8 @@ class ExportOptions(BaseModel):
             return value
 
         for i in value:
-            if i not in ('ACCESS_PROFILE', 'ACCESS_REQUEST_CONFIG',
-                         'ATTR_SYNC_SOURCE_CONFIG', 'AUTH_ORG',
-                         'CAMPAIGN_FILTER', 'FORM_DEFINITION',
-                         'GOVERNANCE_GROUP', 'IDENTITY_OBJECT_CONFIG',
-                         'IDENTITY_PROFILE', 'LIFECYCLE_STATE',
-                         'NOTIFICATION_TEMPLATE', 'PASSWORD_POLICY',
-                         'PASSWORD_SYNC_GROUP', 'PUBLIC_IDENTITIES_CONFIG',
-                         'ROLE', 'RULE', 'SEGMENT', 'SERVICE_DESK_INTEGRATION',
-                         'SOD_POLICY', 'SOURCE', 'TAG', 'TRANSFORM',
-                         'TRIGGER_SUBSCRIPTION', 'WORKFLOW'):
-                raise ValueError(
-                    "each list item must be one of ('ACCESS_PROFILE', 'ACCESS_REQUEST_CONFIG', 'ATTR_SYNC_SOURCE_CONFIG', 'AUTH_ORG', 'CAMPAIGN_FILTER', 'FORM_DEFINITION', 'GOVERNANCE_GROUP', 'IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'LIFECYCLE_STATE', 'NOTIFICATION_TEMPLATE', 'PASSWORD_POLICY', 'PASSWORD_SYNC_GROUP', 'PUBLIC_IDENTITIES_CONFIG', 'ROLE', 'RULE', 'SEGMENT', 'SERVICE_DESK_INTEGRATION', 'SOD_POLICY', 'SOURCE', 'TAG', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION', 'WORKFLOW')"
-                )
+            if i not in ('ACCESS_PROFILE', 'ACCESS_REQUEST_CONFIG', 'ATTR_SYNC_SOURCE_CONFIG', 'AUTH_ORG', 'CAMPAIGN_FILTER', 'FORM_DEFINITION', 'GOVERNANCE_GROUP', 'IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'LIFECYCLE_STATE', 'NOTIFICATION_TEMPLATE', 'PASSWORD_POLICY', 'PASSWORD_SYNC_GROUP', 'PUBLIC_IDENTITIES_CONFIG', 'ROLE', 'RULE', 'SEGMENT', 'SERVICE_DESK_INTEGRATION', 'SOD_POLICY', 'SOURCE', 'TAG', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION', 'WORKFLOW'):
+                raise ValueError("each list item must be one of ('ACCESS_PROFILE', 'ACCESS_REQUEST_CONFIG', 'ATTR_SYNC_SOURCE_CONFIG', 'AUTH_ORG', 'CAMPAIGN_FILTER', 'FORM_DEFINITION', 'GOVERNANCE_GROUP', 'IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'LIFECYCLE_STATE', 'NOTIFICATION_TEMPLATE', 'PASSWORD_POLICY', 'PASSWORD_SYNC_GROUP', 'PUBLIC_IDENTITIES_CONFIG', 'ROLE', 'RULE', 'SEGMENT', 'SERVICE_DESK_INTEGRATION', 'SOD_POLICY', 'SOURCE', 'TAG', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION', 'WORKFLOW')")
         return value
 
     @field_validator('include_types')
@@ -80,19 +54,8 @@ class ExportOptions(BaseModel):
             return value
 
         for i in value:
-            if i not in ('ACCESS_PROFILE', 'ACCESS_REQUEST_CONFIG',
-                         'ATTR_SYNC_SOURCE_CONFIG', 'AUTH_ORG',
-                         'CAMPAIGN_FILTER', 'FORM_DEFINITION',
-                         'GOVERNANCE_GROUP', 'IDENTITY_OBJECT_CONFIG',
-                         'IDENTITY_PROFILE', 'LIFECYCLE_STATE',
-                         'NOTIFICATION_TEMPLATE', 'PASSWORD_POLICY',
-                         'PASSWORD_SYNC_GROUP', 'PUBLIC_IDENTITIES_CONFIG',
-                         'ROLE', 'RULE', 'SEGMENT', 'SERVICE_DESK_INTEGRATION',
-                         'SOD_POLICY', 'SOURCE', 'TAG', 'TRANSFORM',
-                         'TRIGGER_SUBSCRIPTION', 'WORKFLOW'):
-                raise ValueError(
-                    "each list item must be one of ('ACCESS_PROFILE', 'ACCESS_REQUEST_CONFIG', 'ATTR_SYNC_SOURCE_CONFIG', 'AUTH_ORG', 'CAMPAIGN_FILTER', 'FORM_DEFINITION', 'GOVERNANCE_GROUP', 'IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'LIFECYCLE_STATE', 'NOTIFICATION_TEMPLATE', 'PASSWORD_POLICY', 'PASSWORD_SYNC_GROUP', 'PUBLIC_IDENTITIES_CONFIG', 'ROLE', 'RULE', 'SEGMENT', 'SERVICE_DESK_INTEGRATION', 'SOD_POLICY', 'SOURCE', 'TAG', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION', 'WORKFLOW')"
-                )
+            if i not in ('ACCESS_PROFILE', 'ACCESS_REQUEST_CONFIG', 'ATTR_SYNC_SOURCE_CONFIG', 'AUTH_ORG', 'CAMPAIGN_FILTER', 'FORM_DEFINITION', 'GOVERNANCE_GROUP', 'IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'LIFECYCLE_STATE', 'NOTIFICATION_TEMPLATE', 'PASSWORD_POLICY', 'PASSWORD_SYNC_GROUP', 'PUBLIC_IDENTITIES_CONFIG', 'ROLE', 'RULE', 'SEGMENT', 'SERVICE_DESK_INTEGRATION', 'SOD_POLICY', 'SOURCE', 'TAG', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION', 'WORKFLOW'):
+                raise ValueError("each list item must be one of ('ACCESS_PROFILE', 'ACCESS_REQUEST_CONFIG', 'ATTR_SYNC_SOURCE_CONFIG', 'AUTH_ORG', 'CAMPAIGN_FILTER', 'FORM_DEFINITION', 'GOVERNANCE_GROUP', 'IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'LIFECYCLE_STATE', 'NOTIFICATION_TEMPLATE', 'PASSWORD_POLICY', 'PASSWORD_SYNC_GROUP', 'PUBLIC_IDENTITIES_CONFIG', 'ROLE', 'RULE', 'SEGMENT', 'SERVICE_DESK_INTEGRATION', 'SOD_POLICY', 'SOURCE', 'TAG', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION', 'WORKFLOW')")
         return value
 
     model_config = {
@@ -100,6 +63,7 @@ class ExportOptions(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -127,7 +91,8 @@ class ExportOptions(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each value in object_options (dict)
@@ -149,13 +114,15 @@ class ExportOptions(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "excludeTypes":
-            obj.get("excludeTypes"),
-            "includeTypes":
-            obj.get("includeTypes"),
-            "objectOptions":
-            dict((_k, ObjectExportImportOptions.from_dict(_v))
-                 for _k, _v in obj.get("objectOptions").items())
-            if obj.get("objectOptions") is not None else None
+            "excludeTypes": obj.get("excludeTypes"),
+            "includeTypes": obj.get("includeTypes"),
+            "objectOptions": dict(
+                (_k, ObjectExportImportOptions.from_dict(_v))
+                for _k, _v in obj.get("objectOptions").items()
+            )
+            if obj.get("objectOptions") is not None
+            else None
         })
         return _obj
+
+

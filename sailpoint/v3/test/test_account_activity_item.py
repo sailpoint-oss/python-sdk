@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.account_activity_item import AccountActivityItem
-
 
 class TestAccountActivityItem(unittest.TestCase):
     """AccountActivityItem unit test stubs"""
@@ -39,7 +39,7 @@ class TestAccountActivityItem(unittest.TestCase):
                 id = '48c545831b264409a81befcabb0e3c5a',
                 name = '48c545831b264409a81befcabb0e3c5a',
                 requested = '2017-07-11T18:45:37.098Z',
-                approval_status = 'FINISHED',
+                approval_status = None,
                 provisioning_status = 'PENDING',
                 requester_comment = sailpoint.v3.models.comment.Comment(
                     commenter_id = '2c918084660f45d6016617daa9210584', 
@@ -56,7 +56,7 @@ class TestAccountActivityItem(unittest.TestCase):
                     commenter_name = 'Adam Kennedy', 
                     body = 'Et quam massa maximus vivamus nisi ut urna tincidunt metus elementum erat.', 
                     date = '2017-07-11T18:45:37.098Z', ),
-                operation = 'ADD',
+                operation = None,
                 attribute = 'detectedRoles',
                 value = 'Treasury Analyst [AccessProfile-1529010191212]',
                 native_identity = 'Sandie.Camero',
@@ -77,7 +77,6 @@ class TestAccountActivityItem(unittest.TestCase):
         """Test AccountActivityItem"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

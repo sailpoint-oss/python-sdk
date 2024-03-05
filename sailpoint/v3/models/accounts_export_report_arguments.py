@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
@@ -24,38 +26,22 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccountsExportReportArguments(BaseModel):
     """
     Arguments for Account Export (ACCOUNTS)
-    """
-
-  # noqa: E501
-    application: StrictStr = Field(
-        description=
-        "Id of the authoritative source to export related accounts e.g. identities"
-    )
-    source_name: StrictStr = Field(
-        description="Name of the authoritative source for accounts export",
-        alias="sourceName")
-    default_s3_bucket: StrictBool = Field(
-        description=
-        "Use it to set default s3 bucket where generated report will be saved.  In case this argument is false and 's3Bucket' argument is null or absent there will be default s3Bucket assigned to the report.",
-        alias="defaultS3Bucket")
-    s3_bucket: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "If you want to be specific you could use this argument with defaultS3Bucket = false.",
-        alias="s3Bucket")
-    __properties: ClassVar[List[str]] = [
-        "application", "sourceName", "defaultS3Bucket", "s3Bucket"
-    ]
+    """ # noqa: E501
+    application: StrictStr = Field(description="Id of the authoritative source to export related accounts e.g. identities")
+    source_name: StrictStr = Field(description="Name of the authoritative source for accounts export", alias="sourceName")
+    default_s3_bucket: StrictBool = Field(description="Use it to set default s3 bucket where generated report will be saved.  In case this argument is false and 's3Bucket' argument is null or absent there will be default s3Bucket assigned to the report.", alias="defaultS3Bucket")
+    s3_bucket: Optional[StrictStr] = Field(default=None, description="If you want to be specific you could use this argument with defaultS3Bucket = false.", alias="s3Bucket")
+    __properties: ClassVar[List[str]] = ["application", "sourceName", "defaultS3Bucket", "s3Bucket"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -83,7 +69,8 @@ class AccountsExportReportArguments(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -104,3 +91,5 @@ class AccountsExportReportArguments(BaseModel):
             "s3Bucket": obj.get("s3Bucket")
         })
         return _obj
+
+

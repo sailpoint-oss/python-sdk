@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
@@ -24,20 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class KbaAuthResponseItem(BaseModel):
     """
     KbaAuthResponseItem
-    """
-
-  # noqa: E501
-    question_id: Optional[StrictStr] = Field(default=None,
-                                             description="The KBA question id",
-                                             alias="questionId")
-    is_verified: Optional[StrictBool] = Field(
-        default=None,
-        description="Return true if verified",
-        alias="isVerified")
+    """ # noqa: E501
+    question_id: Optional[StrictStr] = Field(default=None, description="The KBA question id", alias="questionId")
+    is_verified: Optional[StrictBool] = Field(default=None, description="Return true if verified", alias="isVerified")
     __properties: ClassVar[List[str]] = ["questionId", "isVerified"]
 
     model_config = {
@@ -45,6 +39,7 @@ class KbaAuthResponseItem(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -72,7 +67,8 @@ class KbaAuthResponseItem(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if question_id (nullable) is None
@@ -101,3 +97,5 @@ class KbaAuthResponseItem(BaseModel):
             "isVerified": obj.get("isVerified")
         })
         return _obj
+
+

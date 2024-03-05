@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -26,32 +27,25 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class CommonAccessResponse(BaseModel):
     """
     CommonAccessResponse
-    """
-
-  # noqa: E501
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="Unique ID of the common access item")
     access: Optional[CommonAccessItemAccess] = None
-    status: Optional[StrictStr] = Field(default=None,
-                                        description="CONFIRMED or DENIED")
+    status: Optional[StrictStr] = Field(default=None, description="CONFIRMED or DENIED")
     last_updated: Optional[datetime] = Field(default=None, alias="lastUpdated")
-    reviewed_by_user: Optional[StrictBool] = Field(
-        default=None,
-        description="true if user has confirmed or denied status",
-        alias="reviewedByUser")
-    last_reviewed: Optional[datetime] = Field(default=None,
-                                              alias="lastReviewed")
-    __properties: ClassVar[List[str]] = [
-        "access", "status", "lastUpdated", "reviewedByUser", "lastReviewed"
-    ]
+    reviewed_by_user: Optional[StrictBool] = Field(default=None, description="true if user has confirmed or denied status", alias="reviewedByUser")
+    last_reviewed: Optional[datetime] = Field(default=None, alias="lastReviewed")
+    created_by_user: Optional[StrictBool] = Field(default=False, alias="createdByUser")
+    __properties: ClassVar[List[str]] = ["id", "access", "status", "lastUpdated", "reviewedByUser", "lastReviewed", "createdByUser"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -90,6 +84,11 @@ class CommonAccessResponse(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of access
         if self.access:
             _dict['access'] = self.access.to_dict()
+        # set to None if last_reviewed (nullable) is None
+        # and model_fields_set contains the field
+        if self.last_reviewed is None and "last_reviewed" in self.model_fields_set:
+            _dict['lastReviewed'] = None
+
         return _dict
 
     @classmethod
@@ -102,16 +101,14 @@ class CommonAccessResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "access":
-            CommonAccessItemAccess.from_dict(obj.get("access"))
-            if obj.get("access") is not None else None,
-            "status":
-            obj.get("status"),
-            "lastUpdated":
-            obj.get("lastUpdated"),
-            "reviewedByUser":
-            obj.get("reviewedByUser"),
-            "lastReviewed":
-            obj.get("lastReviewed")
+            "id": obj.get("id"),
+            "access": CommonAccessItemAccess.from_dict(obj.get("access")) if obj.get("access") is not None else None,
+            "status": obj.get("status"),
+            "lastUpdated": obj.get("lastUpdated"),
+            "reviewedByUser": obj.get("reviewedByUser"),
+            "lastReviewed": obj.get("lastReviewed"),
+            "createdByUser": obj.get("createdByUser") if obj.get("createdByUser") is not None else False
         })
         return _obj
+
+

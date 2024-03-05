@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -25,32 +27,22 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccessRequested(BaseModel):
     """
     AccessRequested
-    """
-
-  # noqa: E501
-    access_request: Optional[AccessRequestResponse] = Field(
-        default=None, alias="accessRequest")
-    identity_id: Optional[StrictStr] = Field(default=None,
-                                             description="the identity id",
-                                             alias="identityId")
-    event_type: Optional[StrictStr] = Field(default=None,
-                                            description="the event type",
-                                            alias="eventType")
-    dt: Optional[StrictStr] = Field(default=None,
-                                    description="the date of event")
-    __properties: ClassVar[List[str]] = [
-        "accessRequest", "identityId", "eventType", "dt"
-    ]
+    """ # noqa: E501
+    access_request: Optional[AccessRequestResponse] = Field(default=None, alias="accessRequest")
+    identity_id: Optional[StrictStr] = Field(default=None, description="the identity id", alias="identityId")
+    event_type: Optional[StrictStr] = Field(default=None, description="the event type", alias="eventType")
+    dt: Optional[StrictStr] = Field(default=None, description="the date of event")
+    __properties: ClassVar[List[str]] = ["accessRequest", "identityId", "eventType", "dt"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -78,7 +70,8 @@ class AccessRequested(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of access_request
@@ -96,14 +89,11 @@ class AccessRequested(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "accessRequest":
-            AccessRequestResponse.from_dict(obj.get("accessRequest"))
-            if obj.get("accessRequest") is not None else None,
-            "identityId":
-            obj.get("identityId"),
-            "eventType":
-            obj.get("eventType"),
-            "dt":
-            obj.get("dt")
+            "accessRequest": AccessRequestResponse.from_dict(obj.get("accessRequest")) if obj.get("accessRequest") is not None else None,
+            "identityId": obj.get("identityId"),
+            "eventType": obj.get("eventType"),
+            "dt": obj.get("dt")
         })
         return _obj
+
+

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from pydantic import BaseModel, StrictStr, field_validator
@@ -27,43 +29,19 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class OutlierContributingFeature(BaseModel):
     """
     OutlierContributingFeature
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="Contributing feature id")
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="The name of the feature")
-    value_type: Optional[StrictStr] = Field(
-        default=None,
-        description="The data type of the value field",
-        alias="valueType")
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="Contributing feature id")
+    name: Optional[StrictStr] = Field(default=None, description="The name of the feature")
+    value_type: Optional[StrictStr] = Field(default=None, description="The data type of the value field", alias="valueType")
     value: Optional[OutlierContributingFeatureValue] = None
-    importance: Optional[Union[
-        Annotated[float, Field(le=1.0, strict=True, ge=-1.0)],
-        Annotated[int, Field(le=1, strict=True, ge=-1)]]] = Field(
-            default=None,
-            description=
-            "The importance of the feature. This can also be a negative value")
-    display_name: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "The (translated if header is passed) displayName for the feature",
-        alias="displayName")
-    description: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "The (translated if header is passed) description for the feature")
-    translation_messages: Optional[OutlierFeatureTranslation] = Field(
-        default=None, alias="translationMessages")
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "valueType", "value", "importance", "displayName",
-        "description", "translationMessages"
-    ]
+    importance: Optional[Union[Annotated[float, Field(le=1.0, strict=True, ge=-1.0)], Annotated[int, Field(le=1, strict=True, ge=-1)]]] = Field(default=None, description="The importance of the feature. This can also be a negative value")
+    display_name: Optional[StrictStr] = Field(default=None, description="The (translated if header is passed) displayName for the feature", alias="displayName")
+    description: Optional[StrictStr] = Field(default=None, description="The (translated if header is passed) description for the feature")
+    translation_messages: Optional[OutlierFeatureTranslation] = Field(default=None, alias="translationMessages")
+    __properties: ClassVar[List[str]] = ["id", "name", "valueType", "value", "importance", "displayName", "description", "translationMessages"]
 
     @field_validator('value_type')
     def value_type_validate_enum(cls, value):
@@ -80,6 +58,7 @@ class OutlierContributingFeature(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -107,7 +86,8 @@ class OutlierContributingFeature(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of value
@@ -128,23 +108,15 @@ class OutlierContributingFeature(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "valueType":
-            obj.get("valueType"),
-            "value":
-            OutlierContributingFeatureValue.from_dict(obj.get("value"))
-            if obj.get("value") is not None else None,
-            "importance":
-            obj.get("importance"),
-            "displayName":
-            obj.get("displayName"),
-            "description":
-            obj.get("description"),
-            "translationMessages":
-            OutlierFeatureTranslation.from_dict(obj.get("translationMessages"))
-            if obj.get("translationMessages") is not None else None
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "valueType": obj.get("valueType"),
+            "value": OutlierContributingFeatureValue.from_dict(obj.get("value")) if obj.get("value") is not None else None,
+            "importance": obj.get("importance"),
+            "displayName": obj.get("displayName"),
+            "description": obj.get("description"),
+            "translationMessages": OutlierFeatureTranslation.from_dict(obj.get("translationMessages")) if obj.get("translationMessages") is not None else None
         })
         return _obj
+
+

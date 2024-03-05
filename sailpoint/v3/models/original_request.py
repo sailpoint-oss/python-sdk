@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -26,30 +28,22 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class OriginalRequest(BaseModel):
     """
     OriginalRequest
-    """
-
-  # noqa: E501
-    account_id: Optional[StrictStr] = Field(default=None,
-                                            description="the account id",
-                                            alias="accountId")
-    attribute_requests: Optional[List[AttributeRequest]] = Field(
-        default=None, alias="attributeRequests")
-    op: Optional[StrictStr] = Field(default=None,
-                                    description="the operation that was used")
+    """ # noqa: E501
+    account_id: Optional[StrictStr] = Field(default=None, description="Account ID.", alias="accountId")
+    attribute_requests: Optional[List[AttributeRequest]] = Field(default=None, description="Attribute changes requested for account.", alias="attributeRequests")
+    op: Optional[StrictStr] = Field(default=None, description="Operation used.")
     source: Optional[AccountSource] = None
-    __properties: ClassVar[List[str]] = [
-        "accountId", "attributeRequests", "op", "source"
-    ]
+    __properties: ClassVar[List[str]] = ["accountId", "attributeRequests", "op", "source"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -77,7 +71,8 @@ class OriginalRequest(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in attribute_requests (list)
@@ -102,16 +97,11 @@ class OriginalRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "accountId":
-            obj.get("accountId"),
-            "attributeRequests": [
-                AttributeRequest.from_dict(_item)
-                for _item in obj.get("attributeRequests")
-            ] if obj.get("attributeRequests") is not None else None,
-            "op":
-            obj.get("op"),
-            "source":
-            AccountSource.from_dict(obj.get("source"))
-            if obj.get("source") is not None else None
+            "accountId": obj.get("accountId"),
+            "attributeRequests": [AttributeRequest.from_dict(_item) for _item in obj.get("attributeRequests")] if obj.get("attributeRequests") is not None else None,
+            "op": obj.get("op"),
+            "source": AccountSource.from_dict(obj.get("source")) if obj.get("source") is not None else None
         })
         return _obj
+
+

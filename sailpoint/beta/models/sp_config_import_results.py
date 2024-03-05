@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -25,20 +27,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class SpConfigImportResults(BaseModel):
     """
     Response Body for Config Import command.
-    """
-
-  # noqa: E501
-    results: Dict[str, ObjectImportResult] = Field(
-        description="The results of an object configuration import job.")
-    export_job_id: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "If a backup was performed before the import, this will contain the jobId of the backup job. This id can be used to retrieve the json file of the backup export.",
-        alias="exportJobId")
+    """ # noqa: E501
+    results: Dict[str, ObjectImportResult] = Field(description="The results of an object configuration import job.")
+    export_job_id: Optional[StrictStr] = Field(default=None, description="If a backup was performed before the import, this will contain the jobId of the backup job. This id can be used to retrieve the json file of the backup export.", alias="exportJobId")
     __properties: ClassVar[List[str]] = ["results", "exportJobId"]
 
     model_config = {
@@ -46,6 +40,7 @@ class SpConfigImportResults(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -73,7 +68,8 @@ class SpConfigImportResults(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each value in results (dict)
@@ -95,11 +91,14 @@ class SpConfigImportResults(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "results":
-            dict((_k, ObjectImportResult.from_dict(_v))
-                 for _k, _v in obj.get("results").items())
-            if obj.get("results") is not None else None,
-            "exportJobId":
-            obj.get("exportJobId")
+            "results": dict(
+                (_k, ObjectImportResult.from_dict(_v))
+                for _k, _v in obj.get("results").items()
+            )
+            if obj.get("results") is not None
+            else None,
+            "exportJobId": obj.get("exportJobId")
         })
         return _obj
+
+

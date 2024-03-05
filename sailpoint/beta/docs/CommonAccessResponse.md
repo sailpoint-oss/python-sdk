@@ -5,11 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **str** | Unique ID of the common access item | [optional] 
 **access** | [**CommonAccessItemAccess**](CommonAccessItemAccess.md) |  | [optional] 
 **status** | **str** | CONFIRMED or DENIED | [optional] 
 **last_updated** | **datetime** |  | [optional] [readonly] 
 **reviewed_by_user** | **bool** | true if user has confirmed or denied status | [optional] 
 **last_reviewed** | **datetime** |  | [optional] [readonly] 
+**created_by_user** | **bool** |  | [optional] [default to False]
 
 ## Example
 

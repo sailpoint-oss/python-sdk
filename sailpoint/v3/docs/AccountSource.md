@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | The unique ID of the referenced object. | [optional] 
 **name** | **str** | The human readable name of the referenced object. | [optional] 
-**type** | **str** | the type of source returned | [optional] 
+**type** | **str** | Type of source returned. | [optional] 
 
 ## Example
 

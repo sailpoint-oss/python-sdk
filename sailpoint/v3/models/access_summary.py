@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
@@ -28,25 +30,22 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccessSummary(BaseModel):
     """
     An object holding the access that is being reviewed
     """ # noqa: E501
     access: Optional[AccessSummaryAccess] = None
     entitlement: Optional[ReviewableEntitlement] = None
-    access_profile: Optional[ReviewableAccessProfile] = Field(
-        default=None, alias="accessProfile")
+    access_profile: Optional[ReviewableAccessProfile] = Field(default=None, alias="accessProfile")
     role: Optional[ReviewableRole] = None
-    __properties: ClassVar[List[str]] = [
-        "access", "entitlement", "accessProfile", "role"
-    ]
+    __properties: ClassVar[List[str]] = ["access", "entitlement", "accessProfile", "role"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -74,7 +73,8 @@ class AccessSummary(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of access
@@ -111,17 +111,11 @@ class AccessSummary(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "access":
-            AccessSummaryAccess.from_dict(obj.get("access"))
-            if obj.get("access") is not None else None,
-            "entitlement":
-            ReviewableEntitlement.from_dict(obj.get("entitlement"))
-            if obj.get("entitlement") is not None else None,
-            "accessProfile":
-            ReviewableAccessProfile.from_dict(obj.get("accessProfile"))
-            if obj.get("accessProfile") is not None else None,
-            "role":
-            ReviewableRole.from_dict(obj.get("role"))
-            if obj.get("role") is not None else None
+            "access": AccessSummaryAccess.from_dict(obj.get("access")) if obj.get("access") is not None else None,
+            "entitlement": ReviewableEntitlement.from_dict(obj.get("entitlement")) if obj.get("entitlement") is not None else None,
+            "accessProfile": ReviewableAccessProfile.from_dict(obj.get("accessProfile")) if obj.get("accessProfile") is not None else None,
+            "role": ReviewableRole.from_dict(obj.get("role")) if obj.get("role") is not None else None
         })
         return _obj
+
+

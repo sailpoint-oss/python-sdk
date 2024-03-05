@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,76 +21,44 @@ from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
 from pydantic import Field
+from sailpoint.beta.models.entitlement_manually_updated_fields import EntitlementManuallyUpdatedFields
+from sailpoint.beta.models.entitlement_owner import EntitlementOwner
 from sailpoint.beta.models.entitlement_source import EntitlementSource
-from sailpoint.beta.models.manually_updated_fields_dto import ManuallyUpdatedFieldsDTO
-from sailpoint.beta.models.owner_reference_dto import OwnerReferenceDto
 from sailpoint.beta.models.permission_dto import PermissionDto
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class Entitlement(BaseModel):
     """
     Entitlement
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="The entitlement id")
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="The entitlement name")
-    created: Optional[datetime] = Field(
-        default=None, description="Time when the entitlement was created")
-    modified: Optional[datetime] = Field(
-        default=None,
-        description="Time when the entitlement was last modified")
-    attribute: Optional[StrictStr] = Field(
-        default=None, description="The entitlement attribute name")
-    value: Optional[StrictStr] = Field(
-        default=None, description="The value of the entitlement")
-    source_schema_object_type: Optional[StrictStr] = Field(
-        default=None,
-        description="The object type of the entitlement from the source schema",
-        alias="sourceSchemaObjectType")
-    privileged: Optional[StrictBool] = Field(
-        default=False, description="True if the entitlement is privileged")
-    cloud_governed: Optional[StrictBool] = Field(
-        default=False,
-        description="True if the entitlement is cloud governed",
-        alias="cloudGoverned")
-    description: Optional[StrictStr] = Field(
-        default=None, description="The description of the entitlement")
-    requestable: Optional[StrictBool] = Field(
-        default=False, description="True if the entitlement is requestable")
-    attributes: Optional[Dict[str, Any]] = Field(
-        default=None,
-        description="A map of free-form key-value pairs from the source system"
-    )
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="The entitlement id")
+    name: Optional[StrictStr] = Field(default=None, description="The entitlement name")
+    created: Optional[datetime] = Field(default=None, description="Time when the entitlement was created")
+    modified: Optional[datetime] = Field(default=None, description="Time when the entitlement was last modified")
+    attribute: Optional[StrictStr] = Field(default=None, description="The entitlement attribute name")
+    value: Optional[StrictStr] = Field(default=None, description="The value of the entitlement")
+    source_schema_object_type: Optional[StrictStr] = Field(default=None, description="The object type of the entitlement from the source schema", alias="sourceSchemaObjectType")
+    privileged: Optional[StrictBool] = Field(default=False, description="True if the entitlement is privileged")
+    cloud_governed: Optional[StrictBool] = Field(default=False, description="True if the entitlement is cloud governed", alias="cloudGoverned")
+    description: Optional[StrictStr] = Field(default=None, description="The description of the entitlement")
+    requestable: Optional[StrictBool] = Field(default=False, description="True if the entitlement is requestable")
+    attributes: Optional[Dict[str, Any]] = Field(default=None, description="A map of free-form key-value pairs from the source system")
     source: Optional[EntitlementSource] = None
-    owner: Optional[OwnerReferenceDto] = None
-    direct_permissions: Optional[List[PermissionDto]] = Field(
-        default=None, alias="directPermissions")
-    segments: Optional[List[StrictStr]] = Field(
-        default=None,
-        description=
-        "List of IDs of segments, if any, to which this Entitlement is assigned."
-    )
-    manually_updated_fields: Optional[ManuallyUpdatedFieldsDTO] = Field(
-        default=None, alias="manuallyUpdatedFields")
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "created", "modified", "attribute", "value",
-        "sourceSchemaObjectType", "privileged", "cloudGoverned", "description",
-        "requestable", "attributes", "source", "owner", "directPermissions",
-        "segments", "manuallyUpdatedFields"
-    ]
+    owner: Optional[EntitlementOwner] = None
+    direct_permissions: Optional[List[PermissionDto]] = Field(default=None, alias="directPermissions")
+    segments: Optional[List[StrictStr]] = Field(default=None, description="List of IDs of segments, if any, to which this Entitlement is assigned.")
+    manually_updated_fields: Optional[EntitlementManuallyUpdatedFields] = Field(default=None, alias="manuallyUpdatedFields")
+    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "attribute", "value", "sourceSchemaObjectType", "privileged", "cloudGoverned", "description", "requestable", "attributes", "source", "owner", "directPermissions", "segments", "manuallyUpdatedFields"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -117,7 +86,8 @@ class Entitlement(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of source
@@ -135,9 +105,17 @@ class Entitlement(BaseModel):
             _dict['directPermissions'] = _items
         # override the default output from pydantic by calling `to_dict()` of manually_updated_fields
         if self.manually_updated_fields:
-            _dict[
-                'manuallyUpdatedFields'] = self.manually_updated_fields.to_dict(
-                )
+            _dict['manuallyUpdatedFields'] = self.manually_updated_fields.to_dict()
+        # set to None if attribute (nullable) is None
+        # and model_fields_set contains the field
+        if self.attribute is None and "attribute" in self.model_fields_set:
+            _dict['attribute'] = None
+
+        # set to None if description (nullable) is None
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
+            _dict['description'] = None
+
         # set to None if segments (nullable) is None
         # and model_fields_set contains the field
         if self.segments is None and "segments" in self.model_fields_set:
@@ -155,48 +133,24 @@ class Entitlement(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "created":
-            obj.get("created"),
-            "modified":
-            obj.get("modified"),
-            "attribute":
-            obj.get("attribute"),
-            "value":
-            obj.get("value"),
-            "sourceSchemaObjectType":
-            obj.get("sourceSchemaObjectType"),
-            "privileged":
-            obj.get("privileged")
-            if obj.get("privileged") is not None else False,
-            "cloudGoverned":
-            obj.get("cloudGoverned")
-            if obj.get("cloudGoverned") is not None else False,
-            "description":
-            obj.get("description"),
-            "requestable":
-            obj.get("requestable")
-            if obj.get("requestable") is not None else False,
-            "attributes":
-            obj.get("attributes"),
-            "source":
-            EntitlementSource.from_dict(obj.get("source"))
-            if obj.get("source") is not None else None,
-            "owner":
-            OwnerReferenceDto.from_dict(obj.get("owner"))
-            if obj.get("owner") is not None else None,
-            "directPermissions": [
-                PermissionDto.from_dict(_item)
-                for _item in obj.get("directPermissions")
-            ] if obj.get("directPermissions") is not None else None,
-            "segments":
-            obj.get("segments"),
-            "manuallyUpdatedFields":
-            ManuallyUpdatedFieldsDTO.from_dict(
-                obj.get("manuallyUpdatedFields"))
-            if obj.get("manuallyUpdatedFields") is not None else None
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "created": obj.get("created"),
+            "modified": obj.get("modified"),
+            "attribute": obj.get("attribute"),
+            "value": obj.get("value"),
+            "sourceSchemaObjectType": obj.get("sourceSchemaObjectType"),
+            "privileged": obj.get("privileged") if obj.get("privileged") is not None else False,
+            "cloudGoverned": obj.get("cloudGoverned") if obj.get("cloudGoverned") is not None else False,
+            "description": obj.get("description"),
+            "requestable": obj.get("requestable") if obj.get("requestable") is not None else False,
+            "attributes": obj.get("attributes"),
+            "source": EntitlementSource.from_dict(obj.get("source")) if obj.get("source") is not None else None,
+            "owner": EntitlementOwner.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
+            "directPermissions": [PermissionDto.from_dict(_item) for _item in obj.get("directPermissions")] if obj.get("directPermissions") is not None else None,
+            "segments": obj.get("segments"),
+            "manuallyUpdatedFields": EntitlementManuallyUpdatedFields.from_dict(obj.get("manuallyUpdatedFields")) if obj.get("manuallyUpdatedFields") is not None else None
         })
         return _obj
+
+

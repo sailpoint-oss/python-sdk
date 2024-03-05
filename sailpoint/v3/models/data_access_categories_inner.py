@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt, StrictStr
@@ -24,19 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class DataAccessCategoriesInner(BaseModel):
     """
     DataAccessCategoriesInner
-    """
-
-  # noqa: E501
-    value: Optional[StrictStr] = Field(default=None,
-                                       description="Value of the category")
-    match_count: Optional[StrictInt] = Field(
-        default=None,
-        description="Number of matched for each category",
-        alias="matchCount")
+    """ # noqa: E501
+    value: Optional[StrictStr] = Field(default=None, description="Value of the category")
+    match_count: Optional[StrictInt] = Field(default=None, description="Number of matched for each category", alias="matchCount")
     __properties: ClassVar[List[str]] = ["value", "matchCount"]
 
     model_config = {
@@ -44,6 +39,7 @@ class DataAccessCategoriesInner(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -71,7 +67,8 @@ class DataAccessCategoriesInner(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -90,3 +87,5 @@ class DataAccessCategoriesInner(BaseModel):
             "matchCount": obj.get("matchCount")
         })
         return _obj
+
+

@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -26,53 +27,28 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class NonEmployeeSchemaAttribute(BaseModel):
     """
     NonEmployeeSchemaAttribute
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="Schema Attribute Id")
-    system: Optional[StrictBool] = Field(
-        default=None,
-        description=
-        "True if this schema attribute is mandatory on all non-employees sources."
-    )
-    modified: Optional[datetime] = Field(
-        default=None,
-        description="When the schema attribute was last modified.")
-    created: Optional[datetime] = Field(
-        default=None, description="When the schema attribute was created.")
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="Schema Attribute Id")
+    system: Optional[StrictBool] = Field(default=None, description="True if this schema attribute is mandatory on all non-employees sources.")
+    modified: Optional[datetime] = Field(default=None, description="When the schema attribute was last modified.")
+    created: Optional[datetime] = Field(default=None, description="When the schema attribute was created.")
     type: NonEmployeeSchemaAttributeType
-    label: StrictStr = Field(
-        description="Label displayed on the UI for this schema attribute.")
-    technical_name: StrictStr = Field(
-        description=
-        "The technical name of the attribute. Must be unique per source.",
-        alias="technicalName")
-    help_text: Optional[StrictStr] = Field(
-        default=None,
-        description="help text displayed by UI.",
-        alias="helpText")
-    placeholder: Optional[StrictStr] = Field(
-        default=None, description="Hint text that fills UI box.")
-    required: Optional[StrictBool] = Field(
-        default=None,
-        description=
-        "If true, the schema attribute is required for all non-employees in the source"
-    )
-    __properties: ClassVar[List[str]] = [
-        "id", "system", "modified", "created", "type", "label",
-        "technicalName", "helpText", "placeholder", "required"
-    ]
+    label: StrictStr = Field(description="Label displayed on the UI for this schema attribute.")
+    technical_name: StrictStr = Field(description="The technical name of the attribute. Must be unique per source.", alias="technicalName")
+    help_text: Optional[StrictStr] = Field(default=None, description="help text displayed by UI.", alias="helpText")
+    placeholder: Optional[StrictStr] = Field(default=None, description="Hint text that fills UI box.")
+    required: Optional[StrictBool] = Field(default=None, description="If true, the schema attribute is required for all non-employees in the source")
+    __properties: ClassVar[List[str]] = ["id", "system", "modified", "created", "type", "label", "technicalName", "helpText", "placeholder", "required"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -100,7 +76,8 @@ class NonEmployeeSchemaAttribute(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -127,3 +104,5 @@ class NonEmployeeSchemaAttribute(BaseModel):
             "required": obj.get("required")
         })
         return _obj
+
+

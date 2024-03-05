@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,18 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class SourceCreatedActor(BaseModel):
     """
     Identity who created the source.
-    """
-
-  # noqa: E501
-    type: StrictStr = Field(
-        description="DTO type of identity who created the source.")
+    """ # noqa: E501
+    type: StrictStr = Field(description="DTO type of identity who created the source.")
     id: StrictStr = Field(description="ID of identity who created the source.")
-    name: StrictStr = Field(
-        description="Display name of identity who created the source.")
+    name: StrictStr = Field(description="Display name of identity who created the source.")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')
@@ -50,6 +47,7 @@ class SourceCreatedActor(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -77,7 +75,8 @@ class SourceCreatedActor(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -97,3 +96,5 @@ class SourceCreatedActor(BaseModel):
             "name": obj.get("name")
         })
         return _obj
+
+

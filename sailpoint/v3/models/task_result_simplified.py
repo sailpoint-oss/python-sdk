@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -25,32 +26,18 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class TaskResultSimplified(BaseModel):
     """
     TaskResultSimplified
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="Task identifier")
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="Task identifier")
     name: Optional[StrictStr] = Field(default=None, description="Task name")
-    description: Optional[StrictStr] = Field(default=None,
-                                             description="Task description")
-    launcher: Optional[StrictStr] = Field(
-        default=None, description="User or process who launched the task")
-    completed: Optional[datetime] = Field(
-        default=None, description="Date time of completion")
-    launched: Optional[datetime] = Field(
-        default=None, description="Date time when the task was launched")
-    completion_status: Optional[StrictStr] = Field(
-        default=None,
-        description="Task result status",
-        alias="completionStatus")
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "description", "launcher", "completed", "launched",
-        "completionStatus"
-    ]
+    description: Optional[StrictStr] = Field(default=None, description="Task description")
+    launcher: Optional[StrictStr] = Field(default=None, description="User or process who launched the task")
+    completed: Optional[datetime] = Field(default=None, description="Date time of completion")
+    launched: Optional[datetime] = Field(default=None, description="Date time when the task was launched")
+    completion_status: Optional[StrictStr] = Field(default=None, description="Task result status", alias="completionStatus")
+    __properties: ClassVar[List[str]] = ["id", "name", "description", "launcher", "completed", "launched", "completionStatus"]
 
     @field_validator('completion_status')
     def completion_status_validate_enum(cls, value):
@@ -58,11 +45,8 @@ class TaskResultSimplified(BaseModel):
         if value is None:
             return value
 
-        if value not in ('Success', 'Warning', 'Error', 'Terminated',
-                         'TempError'):
-            raise ValueError(
-                "must be one of enum values ('Success', 'Warning', 'Error', 'Terminated', 'TempError')"
-            )
+        if value not in ('Success', 'Warning', 'Error', 'Terminated', 'TempError'):
+            raise ValueError("must be one of enum values ('Success', 'Warning', 'Error', 'Terminated', 'TempError')")
         return value
 
     model_config = {
@@ -70,6 +54,7 @@ class TaskResultSimplified(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -97,7 +82,8 @@ class TaskResultSimplified(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -112,19 +98,14 @@ class TaskResultSimplified(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "description":
-            obj.get("description"),
-            "launcher":
-            obj.get("launcher"),
-            "completed":
-            obj.get("completed"),
-            "launched":
-            obj.get("launched"),
-            "completionStatus":
-            obj.get("completionStatus")
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "launcher": obj.get("launcher"),
+            "completed": obj.get("completed"),
+            "launched": obj.get("launched"),
+            "completionStatus": obj.get("completionStatus")
         })
         return _obj
+
+

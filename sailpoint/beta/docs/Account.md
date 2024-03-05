@@ -23,6 +23,9 @@ Name | Type | Description | Notes
 **uuid** | **str** | The unique ID of the account as determined by the account schema | [optional] 
 **manually_correlated** | **bool** | Indicates if the account has been manually correlated to an identity | 
 **has_entitlements** | **bool** | Indicates if the account has entitlements | 
+**identity** | [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
+**source_owner** | [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
+**features** | **str** | A string list containing the owning source&#39;s features | [optional] 
 
 ## Example
 

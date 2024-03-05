@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel
@@ -26,35 +28,22 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ObjectImportResult(BaseModel):
     """
     Response model for import of a single object.
-    """
-
-  # noqa: E501
-    infos: List[SpConfigMessage] = Field(
-        description=
-        "Informational messages returned from the target service on import.")
-    warnings: List[SpConfigMessage] = Field(
-        description=
-        "Warning messages returned from the target service on import.")
-    errors: List[SpConfigMessage] = Field(
-        description="Error messages returned from the target service on import."
-    )
-    imported_objects: List[ImportObject] = Field(
-        description=
-        "References to objects that were created or updated by the import.",
-        alias="importedObjects")
-    __properties: ClassVar[List[str]] = [
-        "infos", "warnings", "errors", "importedObjects"
-    ]
+    """ # noqa: E501
+    infos: List[SpConfigMessage] = Field(description="Informational messages returned from the target service on import.")
+    warnings: List[SpConfigMessage] = Field(description="Warning messages returned from the target service on import.")
+    errors: List[SpConfigMessage] = Field(description="Error messages returned from the target service on import.")
+    imported_objects: List[ImportObject] = Field(description="References to objects that were created or updated by the import.", alias="importedObjects")
+    __properties: ClassVar[List[str]] = ["infos", "warnings", "errors", "importedObjects"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -82,7 +71,8 @@ class ObjectImportResult(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in infos (list)
@@ -125,19 +115,11 @@ class ObjectImportResult(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "infos":
-            [SpConfigMessage.from_dict(_item) for _item in obj.get("infos")]
-            if obj.get("infos") is not None else None,
-            "warnings": [
-                SpConfigMessage.from_dict(_item)
-                for _item in obj.get("warnings")
-            ] if obj.get("warnings") is not None else None,
-            "errors":
-            [SpConfigMessage.from_dict(_item) for _item in obj.get("errors")]
-            if obj.get("errors") is not None else None,
-            "importedObjects": [
-                ImportObject.from_dict(_item)
-                for _item in obj.get("importedObjects")
-            ] if obj.get("importedObjects") is not None else None
+            "infos": [SpConfigMessage.from_dict(_item) for _item in obj.get("infos")] if obj.get("infos") is not None else None,
+            "warnings": [SpConfigMessage.from_dict(_item) for _item in obj.get("warnings")] if obj.get("warnings") is not None else None,
+            "errors": [SpConfigMessage.from_dict(_item) for _item in obj.get("errors")] if obj.get("errors") is not None else None,
+            "importedObjects": [ImportObject.from_dict(_item) for _item in obj.get("importedObjects")] if obj.get("importedObjects") is not None else None
         })
         return _obj
+
+

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool
@@ -24,37 +26,21 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ValidateFilterOutputDto(BaseModel):
     """
     ValidateFilterOutputDto
-    """
-
-  # noqa: E501
-    is_valid: Optional[StrictBool] = Field(
-        default=False,
-        description=
-        "When this field is true, the filter expression is valid against the input.",
-        alias="isValid")
-    is_valid_json_path: Optional[StrictBool] = Field(
-        default=False,
-        description=
-        "When this field is true, the filter expression is using a valid JSON path.",
-        alias="isValidJSONPath")
-    is_path_exist: Optional[StrictBool] = Field(
-        default=False,
-        description=
-        "When this field is true, the filter expression is using an existing path.",
-        alias="isPathExist")
-    __properties: ClassVar[List[str]] = [
-        "isValid", "isValidJSONPath", "isPathExist"
-    ]
+    """ # noqa: E501
+    is_valid: Optional[StrictBool] = Field(default=False, description="When this field is true, the filter expression is valid against the input.", alias="isValid")
+    is_valid_json_path: Optional[StrictBool] = Field(default=False, description="When this field is true, the filter expression is using a valid JSON path.", alias="isValidJSONPath")
+    is_path_exist: Optional[StrictBool] = Field(default=False, description="When this field is true, the filter expression is using an existing path.", alias="isPathExist")
+    __properties: ClassVar[List[str]] = ["isValid", "isValidJSONPath", "isPathExist"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -82,7 +68,8 @@ class ValidateFilterOutputDto(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -97,13 +84,10 @@ class ValidateFilterOutputDto(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "isValid":
-            obj.get("isValid") if obj.get("isValid") is not None else False,
-            "isValidJSONPath":
-            obj.get("isValidJSONPath")
-            if obj.get("isValidJSONPath") is not None else False,
-            "isPathExist":
-            obj.get("isPathExist")
-            if obj.get("isPathExist") is not None else False
+            "isValid": obj.get("isValid") if obj.get("isValid") is not None else False,
+            "isValidJSONPath": obj.get("isValidJSONPath") if obj.get("isValidJSONPath") is not None else False,
+            "isPathExist": obj.get("isPathExist") if obj.get("isPathExist") is not None else False
         })
         return _obj
+
+

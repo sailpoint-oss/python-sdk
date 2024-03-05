@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,20 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class MailFromAttributesDto(BaseModel):
     """
     MAIL FROM attributes for a domain / identity
-    """
-
-  # noqa: E501
-    identity: Optional[StrictStr] = Field(
-        default=None, description="The identity or domain address")
-    mail_from_domain: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "The new MAIL FROM domain of the identity. Must be a subdomain of the identity.",
-        alias="mailFromDomain")
+    """ # noqa: E501
+    identity: Optional[StrictStr] = Field(default=None, description="The identity or domain address")
+    mail_from_domain: Optional[StrictStr] = Field(default=None, description="The new MAIL FROM domain of the identity. Must be a subdomain of the identity.", alias="mailFromDomain")
     __properties: ClassVar[List[str]] = ["identity", "mailFromDomain"]
 
     model_config = {
@@ -45,6 +39,7 @@ class MailFromAttributesDto(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -72,7 +67,8 @@ class MailFromAttributesDto(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -91,3 +87,5 @@ class MailFromAttributesDto(BaseModel):
             "mailFromDomain": obj.get("mailFromDomain")
         })
         return _obj
+
+

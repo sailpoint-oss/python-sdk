@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.cancelable_account_activity import CancelableAccountActivity
-
 
 class TestCancelableAccountActivity(unittest.TestCase):
     """CancelableAccountActivity unit test stubs"""
@@ -62,7 +62,7 @@ class TestCancelableAccountActivity(unittest.TestCase):
                         id = '48c545831b264409a81befcabb0e3c5a', 
                         name = '48c545831b264409a81befcabb0e3c5a', 
                         requested = '2017-07-11T18:45:37.098Z', 
-                        approval_status = 'FINISHED', 
+                        approval_status = null, 
                         provisioning_status = 'PENDING', 
                         requester_comment = sailpoint.beta.models.comment.Comment(
                             commenter_id = '2c918084660f45d6016617daa9210584', 
@@ -79,7 +79,7 @@ class TestCancelableAccountActivity(unittest.TestCase):
                             commenter_name = 'Adam Kennedy', 
                             body = 'Et quam massa maximus vivamus nisi ut urna tincidunt metus elementum erat.', 
                             date = '2017-07-11T18:45:37.098Z', ), 
-                        operation = 'ADD', 
+                        operation = null, 
                         attribute = 'detectedRoles', 
                         value = 'Treasury Analyst [AccessProfile-1529010191212]', 
                         native_identity = 'Sandie.Camero', 
@@ -111,7 +111,6 @@ class TestCancelableAccountActivity(unittest.TestCase):
         """Test CancelableAccountActivity"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

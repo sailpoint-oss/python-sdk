@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -25,32 +26,21 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ReviewRecommendation(BaseModel):
     """
     ReviewRecommendation
-    """
-
-  # noqa: E501
-    recommendation: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "The recommendation from IAI at the time of the decision. This field will be null if no recommendation was made."
-    )
-    reasons: Optional[List[StrictStr]] = Field(
-        default=None, description="A list of reasons for the recommendation.")
-    timestamp: Optional[datetime] = Field(
-        default=None,
-        description="The time at which the recommendation was recorded.")
-    __properties: ClassVar[List[str]] = [
-        "recommendation", "reasons", "timestamp"
-    ]
+    """ # noqa: E501
+    recommendation: Optional[StrictStr] = Field(default=None, description="The recommendation from IAI at the time of the decision. This field will be null if no recommendation was made.")
+    reasons: Optional[List[StrictStr]] = Field(default=None, description="A list of reasons for the recommendation.")
+    timestamp: Optional[datetime] = Field(default=None, description="The time at which the recommendation was recorded.")
+    __properties: ClassVar[List[str]] = ["recommendation", "reasons", "timestamp"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -78,7 +68,8 @@ class ReviewRecommendation(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if recommendation (nullable) is None
@@ -103,3 +94,5 @@ class ReviewRecommendation(BaseModel):
             "timestamp": obj.get("timestamp")
         })
         return _obj
+
+

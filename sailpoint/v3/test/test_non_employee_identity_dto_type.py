@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.non_employee_identity_dto_type import NonEmployeeIdentityDtoType
-
 
 class TestNonEmployeeIdentityDtoType(unittest.TestCase):
     """NonEmployeeIdentityDtoType unit test stubs"""
@@ -29,7 +29,6 @@ class TestNonEmployeeIdentityDtoType(unittest.TestCase):
     def testNonEmployeeIdentityDtoType(self):
         """Test NonEmployeeIdentityDtoType"""
         # inst = NonEmployeeIdentityDtoType()
-
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,16 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccountRequestResult(BaseModel):
     """
     AccountRequestResult
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     errors: Optional[List[StrictStr]] = None
-    status: Optional[StrictStr] = Field(
-        default=None, description="The status of the account request")
+    status: Optional[StrictStr] = Field(default=None, description="The status of the account request")
     ticket_id: Optional[StrictStr] = Field(default=None, alias="ticketId")
     __properties: ClassVar[List[str]] = ["errors", "status", "ticketId"]
 
@@ -42,6 +40,7 @@ class AccountRequestResult(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -69,7 +68,8 @@ class AccountRequestResult(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if ticket_id (nullable) is None
@@ -94,3 +94,5 @@ class AccountRequestResult(BaseModel):
             "ticketId": obj.get("ticketId")
         })
         return _obj
+
+

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr, field_validator
@@ -24,46 +26,17 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class NativeChangeDetectionConfig(BaseModel):
     """
     Source configuration information for Native Change Detection that is read and used by account aggregation process.
     """ # noqa: E501
-    enabled: Optional[StrictBool] = Field(
-        default=False,
-        description=
-        "A flag indicating if Native Change Detection is enabled for a source."
-    )
-    operations: Optional[List[StrictStr]] = Field(
-        default=None,
-        description=
-        "Operation types for which Native Change Detection is enabled for a source."
-    )
-    all_entitlements: Optional[StrictBool] = Field(
-        default=False,
-        description=
-        "A flag indicating that all entitlements participate in Native Change Detection.",
-        alias="allEntitlements")
-    all_non_entitlement_attributes: Optional[StrictBool] = Field(
-        default=False,
-        description=
-        "A flag indicating that all non-entitlement account attributes participate in Native Change Detection.",
-        alias="allNonEntitlementAttributes")
-    selected_entitlements: Optional[List[StrictStr]] = Field(
-        default=None,
-        description=
-        "If allEntitlements flag is off this field lists entitlements that participate in Native Change Detection.",
-        alias="selectedEntitlements")
-    selected_non_entitlement_attributes: Optional[List[StrictStr]] = Field(
-        default=None,
-        description=
-        "If allNonEntitlementAttributes flag is off this field lists non-entitlement account attributes that participate in Native Change Detection.",
-        alias="selectedNonEntitlementAttributes")
-    __properties: ClassVar[List[str]] = [
-        "enabled", "operations", "allEntitlements",
-        "allNonEntitlementAttributes", "selectedEntitlements",
-        "selectedNonEntitlementAttributes"
-    ]
+    enabled: Optional[StrictBool] = Field(default=False, description="A flag indicating if Native Change Detection is enabled for a source.")
+    operations: Optional[List[StrictStr]] = Field(default=None, description="Operation types for which Native Change Detection is enabled for a source.")
+    all_entitlements: Optional[StrictBool] = Field(default=False, description="A flag indicating that all entitlements participate in Native Change Detection.", alias="allEntitlements")
+    all_non_entitlement_attributes: Optional[StrictBool] = Field(default=False, description="A flag indicating that all non-entitlement account attributes participate in Native Change Detection.", alias="allNonEntitlementAttributes")
+    selected_entitlements: Optional[List[StrictStr]] = Field(default=None, description="If allEntitlements flag is off this field lists entitlements that participate in Native Change Detection.", alias="selectedEntitlements")
+    selected_non_entitlement_attributes: Optional[List[StrictStr]] = Field(default=None, description="If allNonEntitlementAttributes flag is off this field lists non-entitlement account attributes that participate in Native Change Detection.", alias="selectedNonEntitlementAttributes")
+    __properties: ClassVar[List[str]] = ["enabled", "operations", "allEntitlements", "allNonEntitlementAttributes", "selectedEntitlements", "selectedNonEntitlementAttributes"]
 
     @field_validator('operations')
     def operations_validate_enum(cls, value):
@@ -72,11 +45,8 @@ class NativeChangeDetectionConfig(BaseModel):
             return value
 
         for i in value:
-            if i not in ('ACCOUNT_UPDATED', 'ACCOUNT_CREATED',
-                         'ACCOUNT_DELETED'):
-                raise ValueError(
-                    "each list item must be one of ('ACCOUNT_UPDATED', 'ACCOUNT_CREATED', 'ACCOUNT_DELETED')"
-                )
+            if i not in ('ACCOUNT_UPDATED', 'ACCOUNT_CREATED', 'ACCOUNT_DELETED'):
+                raise ValueError("each list item must be one of ('ACCOUNT_UPDATED', 'ACCOUNT_CREATED', 'ACCOUNT_DELETED')")
         return value
 
     model_config = {
@@ -84,6 +54,7 @@ class NativeChangeDetectionConfig(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -111,7 +82,8 @@ class NativeChangeDetectionConfig(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -126,19 +98,13 @@ class NativeChangeDetectionConfig(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "enabled":
-            obj.get("enabled") if obj.get("enabled") is not None else False,
-            "operations":
-            obj.get("operations"),
-            "allEntitlements":
-            obj.get("allEntitlements")
-            if obj.get("allEntitlements") is not None else False,
-            "allNonEntitlementAttributes":
-            obj.get("allNonEntitlementAttributes")
-            if obj.get("allNonEntitlementAttributes") is not None else False,
-            "selectedEntitlements":
-            obj.get("selectedEntitlements"),
-            "selectedNonEntitlementAttributes":
-            obj.get("selectedNonEntitlementAttributes")
+            "enabled": obj.get("enabled") if obj.get("enabled") is not None else False,
+            "operations": obj.get("operations"),
+            "allEntitlements": obj.get("allEntitlements") if obj.get("allEntitlements") is not None else False,
+            "allNonEntitlementAttributes": obj.get("allNonEntitlementAttributes") if obj.get("allNonEntitlementAttributes") is not None else False,
+            "selectedEntitlements": obj.get("selectedEntitlements"),
+            "selectedNonEntitlementAttributes": obj.get("selectedNonEntitlementAttributes")
         })
         return _obj
+
+

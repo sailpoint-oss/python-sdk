@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.segment import Segment
-
 
 class TestSegment(unittest.TestCase):
     """Segment unit test stubs"""
@@ -45,13 +45,7 @@ class TestSegment(unittest.TestCase):
                     type = 'IDENTITY', 
                     id = '2c9180a46faadee4016fb4e018c20639', 
                     name = 'support', ),
-                visibility_criteria = sailpoint.v3.models.visibility_criteria.VisibilityCriteria(
-                    expression = sailpoint.v3.models.expression.Expression(
-                        operator = 'EQUALS', 
-                        attribute = 'location', 
-                        value = sailpoint.v3.models.value.Value(
-                            type = 'STRING', ), 
-                        children = [], ), ),
+                visibility_criteria = None,
                 active = True
             )
         else:
@@ -63,7 +57,6 @@ class TestSegment(unittest.TestCase):
         """Test Segment"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

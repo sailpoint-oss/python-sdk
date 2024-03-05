@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -25,41 +27,24 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class PasswordInfo(BaseModel):
     """
     PasswordInfo
-    """
-
-  # noqa: E501
-    identity_id: Optional[StrictStr] = Field(default=None,
-                                             description="Identity ID",
-                                             alias="identityId")
-    source_id: Optional[StrictStr] = Field(default=None,
-                                           description="source ID",
-                                           alias="sourceId")
-    public_key_id: Optional[StrictStr] = Field(default=None,
-                                               description="public key ID",
-                                               alias="publicKeyId")
-    public_key: Optional[StrictStr] = Field(
-        default=None,
-        description="User's public key with Base64 encoding",
-        alias="publicKey")
-    accounts: Optional[List[PasswordInfoAccount]] = Field(
-        default=None,
-        description="Account info related to queried identity and source")
-    policies: Optional[List[StrictStr]] = Field(
-        default=None, description="Password constraints")
-    __properties: ClassVar[List[str]] = [
-        "identityId", "sourceId", "publicKeyId", "publicKey", "accounts",
-        "policies"
-    ]
+    """ # noqa: E501
+    identity_id: Optional[StrictStr] = Field(default=None, description="Identity ID", alias="identityId")
+    source_id: Optional[StrictStr] = Field(default=None, description="source ID", alias="sourceId")
+    public_key_id: Optional[StrictStr] = Field(default=None, description="public key ID", alias="publicKeyId")
+    public_key: Optional[StrictStr] = Field(default=None, description="User's public key with Base64 encoding", alias="publicKey")
+    accounts: Optional[List[PasswordInfoAccount]] = Field(default=None, description="Account info related to queried identity and source")
+    policies: Optional[List[StrictStr]] = Field(default=None, description="Password constraints")
+    __properties: ClassVar[List[str]] = ["identityId", "sourceId", "publicKeyId", "publicKey", "accounts", "policies"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -87,7 +72,8 @@ class PasswordInfo(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in accounts (list)
@@ -109,19 +95,13 @@ class PasswordInfo(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "identityId":
-            obj.get("identityId"),
-            "sourceId":
-            obj.get("sourceId"),
-            "publicKeyId":
-            obj.get("publicKeyId"),
-            "publicKey":
-            obj.get("publicKey"),
-            "accounts": [
-                PasswordInfoAccount.from_dict(_item)
-                for _item in obj.get("accounts")
-            ] if obj.get("accounts") is not None else None,
-            "policies":
-            obj.get("policies")
+            "identityId": obj.get("identityId"),
+            "sourceId": obj.get("sourceId"),
+            "publicKeyId": obj.get("publicKeyId"),
+            "publicKey": obj.get("publicKey"),
+            "accounts": [PasswordInfoAccount.from_dict(_item) for _item in obj.get("accounts")] if obj.get("accounts") is not None else None,
+            "policies": obj.get("policies")
         })
         return _obj
+
+

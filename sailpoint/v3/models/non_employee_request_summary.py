@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt
@@ -24,42 +26,22 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class NonEmployeeRequestSummary(BaseModel):
     """
     NonEmployeeRequestSummary
-    """
-
-  # noqa: E501
-    approved: Optional[StrictInt] = Field(
-        default=None,
-        description=
-        "The number of approved non-employee requests on all sources that *requested-for* user manages."
-    )
-    rejected: Optional[StrictInt] = Field(
-        default=None,
-        description=
-        "The number of rejected non-employee requests on all sources that *requested-for* user manages."
-    )
-    pending: Optional[StrictInt] = Field(
-        default=None,
-        description=
-        "The number of pending non-employee requests on all sources that *requested-for* user manages."
-    )
-    non_employee_count: Optional[StrictInt] = Field(
-        default=None,
-        description=
-        "The number of non-employee records on all sources that *requested-for* user manages.",
-        alias="nonEmployeeCount")
-    __properties: ClassVar[List[str]] = [
-        "approved", "rejected", "pending", "nonEmployeeCount"
-    ]
+    """ # noqa: E501
+    approved: Optional[StrictInt] = Field(default=None, description="The number of approved non-employee requests on all sources that *requested-for* user manages.")
+    rejected: Optional[StrictInt] = Field(default=None, description="The number of rejected non-employee requests on all sources that *requested-for* user manages.")
+    pending: Optional[StrictInt] = Field(default=None, description="The number of pending non-employee requests on all sources that *requested-for* user manages.")
+    non_employee_count: Optional[StrictInt] = Field(default=None, description="The number of non-employee records on all sources that *requested-for* user manages.", alias="nonEmployeeCount")
+    __properties: ClassVar[List[str]] = ["approved", "rejected", "pending", "nonEmployeeCount"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -87,7 +69,8 @@ class NonEmployeeRequestSummary(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -102,13 +85,11 @@ class NonEmployeeRequestSummary(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "approved":
-            obj.get("approved"),
-            "rejected":
-            obj.get("rejected"),
-            "pending":
-            obj.get("pending"),
-            "nonEmployeeCount":
-            obj.get("nonEmployeeCount")
+            "approved": obj.get("approved"),
+            "rejected": obj.get("rejected"),
+            "pending": obj.get("pending"),
+            "nonEmployeeCount": obj.get("nonEmployeeCount")
         })
         return _obj
+
+

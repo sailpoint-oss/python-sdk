@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,15 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class Identity1(BaseModel):
     """
     The definition of an Identity according to the Reassignment Configuration service
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="The ID of the object")
-    name: Optional[StrictStr] = Field(
-        default=None, description="Human-readable display name of the object")
+    id: Optional[StrictStr] = Field(default=None, description="The ID of the object")
+    name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of the object")
     __properties: ClassVar[List[str]] = ["id", "name"]
 
     model_config = {
@@ -40,6 +39,7 @@ class Identity1(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -67,7 +67,8 @@ class Identity1(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -86,3 +87,5 @@ class Identity1(BaseModel):
             "name": obj.get("name")
         })
         return _obj
+
+

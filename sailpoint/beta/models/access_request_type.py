@@ -11,11 +11,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import json
 import pprint
 import re  # noqa: F401
 from enum import Enum
+
+
 
 try:
     from typing import Self
@@ -27,13 +30,17 @@ class AccessRequestType(str, Enum):
     """
     Access request type. Defaults to GRANT_ACCESS. REVOKE_ACCESS type can only have a single Identity ID in the requestedFor field.
     """
+
     """
     allowed enum values
     """
     GRANT_ACCESS = 'GRANT_ACCESS'
     REVOKE_ACCESS = 'REVOKE_ACCESS'
+    NULL = 'null'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
         """Create an instance of AccessRequestType from a JSON string"""
         return cls(json.loads(json_str))
+
+

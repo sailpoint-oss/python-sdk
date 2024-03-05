@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **cluster** | [**SourceCluster**](SourceCluster.md) |  | [optional] 
 **account_correlation_config** | [**SourceAccountCorrelationConfig**](SourceAccountCorrelationConfig.md) |  | [optional] 
 **account_correlation_rule** | [**SourceAccountCorrelationRule**](SourceAccountCorrelationRule.md) |  | [optional] 
-**manager_correlation_mapping** | [**ManagerCorrelationMapping**](ManagerCorrelationMapping.md) |  | [optional] 
+**manager_correlation_mapping** | [**SourceManagerCorrelationMapping**](SourceManagerCorrelationMapping.md) |  | [optional] 
 **manager_correlation_rule** | [**SourceManagerCorrelationRule**](SourceManagerCorrelationRule.md) |  | [optional] 
 **before_provisioning_rule** | [**SourceBeforeProvisioningRule**](SourceBeforeProvisioningRule.md) |  | [optional] 
 **schemas** | [**List[SourceSchemasInner]**](SourceSchemasInner.md) | List of references to Schema objects | [optional] 

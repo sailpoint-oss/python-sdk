@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr, field_validator
@@ -24,31 +26,16 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class WorkflowLibraryFormFields(BaseModel):
     """
     WorkflowLibraryFormFields
-    """
-
-  # noqa: E501
-    help_text: Optional[StrictStr] = Field(
-        default=None,
-        description="Describes the form field in the UI",
-        alias="helpText")
-    label: Optional[StrictStr] = Field(
-        default=None,
-        description="A human readable name for this form field in the UI")
-    name: Optional[StrictStr] = Field(
-        default=None, description="The name of the input attribute")
-    required: Optional[StrictBool] = Field(
-        default=None,
-        description="Denotes if this field is a required attribute")
-    type: Optional[Dict[str,
-                        Any]] = Field(default=None,
-                                      description="The type of the form field")
-    __properties: ClassVar[List[str]] = [
-        "helpText", "label", "name", "required", "type"
-    ]
+    """ # noqa: E501
+    help_text: Optional[StrictStr] = Field(default=None, description="Describes the form field in the UI", alias="helpText")
+    label: Optional[StrictStr] = Field(default=None, description="A human readable name for this form field in the UI")
+    name: Optional[StrictStr] = Field(default=None, description="The name of the input attribute")
+    required: Optional[StrictBool] = Field(default=None, description="Denotes if this field is a required attribute")
+    type: Optional[Dict[str, Any]] = Field(default=None, description="The type of the form field")
+    __properties: ClassVar[List[str]] = ["helpText", "label", "name", "required", "type"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -56,15 +43,8 @@ class WorkflowLibraryFormFields(BaseModel):
         if value is None:
             return value
 
-        if value not in ('text', 'textarea', 'boolean', 'email', 'url',
-                         'number', 'json', 'checkbox', 'jsonpath', 'select',
-                         'multiType', 'duration', 'toggle', 'identityPicker',
-                         'governanceGroupPicker', 'string', 'object', 'array',
-                         'secret', 'keyValuePairs', 'emailPicker',
-                         'advancedToggle'):
-            raise ValueError(
-                "must be one of enum values ('text', 'textarea', 'boolean', 'email', 'url', 'number', 'json', 'checkbox', 'jsonpath', 'select', 'multiType', 'duration', 'toggle', 'identityPicker', 'governanceGroupPicker', 'string', 'object', 'array', 'secret', 'keyValuePairs', 'emailPicker', 'advancedToggle')"
-            )
+        if value not in ('text', 'textarea', 'boolean', 'email', 'url', 'number', 'json', 'checkbox', 'jsonpath', 'select', 'multiType', 'duration', 'toggle', 'identityPicker', 'governanceGroupPicker', 'string', 'object', 'array', 'secret', 'keyValuePairs', 'emailPicker', 'advancedToggle'):
+            raise ValueError("must be one of enum values ('text', 'textarea', 'boolean', 'email', 'url', 'number', 'json', 'checkbox', 'jsonpath', 'select', 'multiType', 'duration', 'toggle', 'identityPicker', 'governanceGroupPicker', 'string', 'object', 'array', 'secret', 'keyValuePairs', 'emailPicker', 'advancedToggle')")
         return value
 
     model_config = {
@@ -72,6 +52,7 @@ class WorkflowLibraryFormFields(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -99,7 +80,8 @@ class WorkflowLibraryFormFields(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if type (nullable) is None
@@ -126,3 +108,5 @@ class WorkflowLibraryFormFields(BaseModel):
             "type": obj.get("type")
         })
         return _obj
+
+

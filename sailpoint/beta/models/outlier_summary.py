@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -25,33 +26,16 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class OutlierSummary(BaseModel):
     """
     OutlierSummary
-    """
-
-  # noqa: E501
-    type: Optional[StrictStr] = Field(
-        default=None, description="The type of outlier summary")
-    snapshot_date: Optional[datetime] = Field(
-        default=None,
-        description=
-        "The date the bulk outlier detection ran/snapshot was created",
-        alias="snapshotDate")
-    total_outliers: Optional[StrictInt] = Field(
-        default=None,
-        description=
-        "Total number of outliers for the customer making the request",
-        alias="totalOutliers")
-    total_identities: Optional[StrictInt] = Field(
-        default=None,
-        description=
-        "Total number of identities for the customer making the request",
-        alias="totalIdentities")
-    __properties: ClassVar[List[str]] = [
-        "type", "snapshotDate", "totalOutliers", "totalIdentities"
-    ]
+    """ # noqa: E501
+    type: Optional[StrictStr] = Field(default=None, description="The type of outlier summary")
+    snapshot_date: Optional[datetime] = Field(default=None, description="The date the bulk outlier detection ran/snapshot was created", alias="snapshotDate")
+    total_outliers: Optional[StrictInt] = Field(default=None, description="Total number of outliers for the customer making the request", alias="totalOutliers")
+    total_identities: Optional[StrictInt] = Field(default=None, description="Total number of identities for the customer making the request", alias="totalIdentities")
+    total_ignored: Optional[StrictInt] = Field(default=0, alias="totalIgnored")
+    __properties: ClassVar[List[str]] = ["type", "snapshotDate", "totalOutliers", "totalIdentities", "totalIgnored"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -60,8 +44,7 @@ class OutlierSummary(BaseModel):
             return value
 
         if value not in ('LOW_SIMILARITY', 'STRUCTURAL'):
-            raise ValueError(
-                "must be one of enum values ('LOW_SIMILARITY', 'STRUCTURAL')")
+            raise ValueError("must be one of enum values ('LOW_SIMILARITY', 'STRUCTURAL')")
         return value
 
     model_config = {
@@ -69,6 +52,7 @@ class OutlierSummary(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -96,7 +80,8 @@ class OutlierSummary(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -114,6 +99,9 @@ class OutlierSummary(BaseModel):
             "type": obj.get("type"),
             "snapshotDate": obj.get("snapshotDate"),
             "totalOutliers": obj.get("totalOutliers"),
-            "totalIdentities": obj.get("totalIdentities")
+            "totalIdentities": obj.get("totalIdentities"),
+            "totalIgnored": obj.get("totalIgnored") if obj.get("totalIgnored") is not None else 0
         })
         return _obj
+
+

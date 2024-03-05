@@ -5,7 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **str** | Unique identifier for the Service Desk integration | [optional] 
 **name** | **str** | Service Desk integration&#39;s name. The name must be unique. | 
+**created** | **datetime** | The date and time the Service Desk integration was created | [optional] 
+**modified** | **datetime** | The date and time the Service Desk integration was last modified | [optional] 
 **description** | **str** | Service Desk integration&#39;s description. | 
 **type** | **str** | Service Desk integration types:  - ServiceNowSDIM - ServiceNow  | [default to 'ServiceNowSDIM']
 **owner_ref** | [**ServiceDeskIntegrationDtoAllOfOwnerRef**](ServiceDeskIntegrationDtoAllOfOwnerRef.md) |  | [optional] 

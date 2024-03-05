@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool
@@ -25,36 +27,21 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class Requestability(BaseModel):
     """
     Requestability
-    """
-
-  # noqa: E501
-    comments_required: Optional[StrictBool] = Field(
-        default=False,
-        description=
-        "Whether the requester of the containing object must provide comments justifying the request",
-        alias="commentsRequired")
-    denial_comments_required: Optional[StrictBool] = Field(
-        default=False,
-        description=
-        "Whether an approver must provide comments when denying the request",
-        alias="denialCommentsRequired")
-    approval_schemes: Optional[List[AccessProfileApprovalScheme]] = Field(
-        default=None,
-        description="List describing the steps in approving the request",
-        alias="approvalSchemes")
-    __properties: ClassVar[List[str]] = [
-        "commentsRequired", "denialCommentsRequired", "approvalSchemes"
-    ]
+    """ # noqa: E501
+    comments_required: Optional[StrictBool] = Field(default=False, description="Whether the requester of the containing object must provide comments justifying the request", alias="commentsRequired")
+    denial_comments_required: Optional[StrictBool] = Field(default=False, description="Whether an approver must provide comments when denying the request", alias="denialCommentsRequired")
+    approval_schemes: Optional[List[AccessProfileApprovalScheme]] = Field(default=None, description="List describing the steps in approving the request", alias="approvalSchemes")
+    __properties: ClassVar[List[str]] = ["commentsRequired", "denialCommentsRequired", "approvalSchemes"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -82,7 +69,8 @@ class Requestability(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in approval_schemes (list)
@@ -119,15 +107,10 @@ class Requestability(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "commentsRequired":
-            obj.get("commentsRequired")
-            if obj.get("commentsRequired") is not None else False,
-            "denialCommentsRequired":
-            obj.get("denialCommentsRequired")
-            if obj.get("denialCommentsRequired") is not None else False,
-            "approvalSchemes": [
-                AccessProfileApprovalScheme.from_dict(_item)
-                for _item in obj.get("approvalSchemes")
-            ] if obj.get("approvalSchemes") is not None else None
+            "commentsRequired": obj.get("commentsRequired") if obj.get("commentsRequired") is not None else False,
+            "denialCommentsRequired": obj.get("denialCommentsRequired") if obj.get("denialCommentsRequired") is not None else False,
+            "approvalSchemes": [AccessProfileApprovalScheme.from_dict(_item) for _item in obj.get("approvalSchemes")] if obj.get("approvalSchemes") is not None else None
         })
         return _obj
+
+

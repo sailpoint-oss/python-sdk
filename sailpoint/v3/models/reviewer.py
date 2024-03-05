@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -25,30 +26,17 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class Reviewer(BaseModel):
     """
     Reviewer
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="The id of the reviewer.")
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="The name of the reviewer.")
-    email: Optional[StrictStr] = Field(
-        default=None, description="The email of the reviewing identity.")
-    type: Optional[StrictStr] = Field(
-        default=None, description="The type of the reviewing identity.")
-    created: Optional[datetime] = Field(
-        default=None,
-        description="The created date of the reviewing identity.")
-    modified: Optional[datetime] = Field(
-        default=None,
-        description="The modified date of the reviewing identity.")
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "email", "type", "created", "modified"
-    ]
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="The id of the reviewer.")
+    name: Optional[StrictStr] = Field(default=None, description="The name of the reviewer.")
+    email: Optional[StrictStr] = Field(default=None, description="The email of the reviewing identity.")
+    type: Optional[StrictStr] = Field(default=None, description="The type of the reviewing identity.")
+    created: Optional[datetime] = Field(default=None, description="The created date of the reviewing identity.")
+    modified: Optional[datetime] = Field(default=None, description="The modified date of the reviewing identity.")
+    __properties: ClassVar[List[str]] = ["id", "name", "email", "type", "created", "modified"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -65,6 +53,7 @@ class Reviewer(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -92,7 +81,8 @@ class Reviewer(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if created (nullable) is None
@@ -125,3 +115,5 @@ class Reviewer(BaseModel):
             "modified": obj.get("modified")
         })
         return _obj
+
+

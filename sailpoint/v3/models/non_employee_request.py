@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -28,87 +29,38 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class NonEmployeeRequest(BaseModel):
     """
     NonEmployeeRequest
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="Non-Employee source id.")
-    source_id: Optional[StrictStr] = Field(
-        default=None,
-        description="Source Id associated with this non-employee source.",
-        alias="sourceId")
-    name: Optional[StrictStr] = Field(
-        default=None,
-        description="Source name associated with this non-employee source.")
-    description: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Source description associated with this non-employee source.")
-    account_name: Optional[StrictStr] = Field(
-        default=None,
-        description="Requested identity account name.",
-        alias="accountName")
-    first_name: Optional[StrictStr] = Field(
-        default=None,
-        description="Non-Employee's first name.",
-        alias="firstName")
-    last_name: Optional[StrictStr] = Field(
-        default=None,
-        description="Non-Employee's last name.",
-        alias="lastName")
-    email: Optional[StrictStr] = Field(default=None,
-                                       description="Non-Employee's email.")
-    phone: Optional[StrictStr] = Field(default=None,
-                                       description="Non-Employee's phone.")
-    manager: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "The account ID of a valid identity to serve as this non-employee's manager."
-    )
-    non_employee_source: Optional[NonEmployeeSourceLite] = Field(
-        default=None, alias="nonEmployeeSource")
-    data: Optional[Dict[str, StrictStr]] = Field(
-        default=None, description="Attribute blob/bag for a non-employee.")
-    approval_items: Optional[List[NonEmployeeApprovalItemBase]] = Field(
-        default=None,
-        description="List of approval item for the request",
-        alias="approvalItems")
-    approval_status: Optional[ApprovalStatus] = Field(default=None,
-                                                      alias="approvalStatus")
-    comment: Optional[StrictStr] = Field(default=None,
-                                         description="comment of requester")
-    completion_date: Optional[datetime] = Field(
-        default=None,
-        description="When the request was completely approved.",
-        alias="completionDate")
-    start_date: Optional[datetime] = Field(
-        default=None,
-        description="Non-Employee employment start date.",
-        alias="startDate")
-    end_date: Optional[datetime] = Field(
-        default=None,
-        description="Non-Employee employment end date.",
-        alias="endDate")
-    modified: Optional[datetime] = Field(
-        default=None, description="When the request was last modified.")
-    created: Optional[datetime] = Field(
-        default=None, description="When the request was created.")
-    __properties: ClassVar[List[str]] = [
-        "id", "sourceId", "name", "description", "accountName", "firstName",
-        "lastName", "email", "phone", "manager", "nonEmployeeSource", "data",
-        "approvalItems", "approvalStatus", "comment", "completionDate",
-        "startDate", "endDate", "modified", "created"
-    ]
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="Non-Employee source id.")
+    source_id: Optional[StrictStr] = Field(default=None, description="Source Id associated with this non-employee source.", alias="sourceId")
+    name: Optional[StrictStr] = Field(default=None, description="Source name associated with this non-employee source.")
+    description: Optional[StrictStr] = Field(default=None, description="Source description associated with this non-employee source.")
+    account_name: Optional[StrictStr] = Field(default=None, description="Requested identity account name.", alias="accountName")
+    first_name: Optional[StrictStr] = Field(default=None, description="Non-Employee's first name.", alias="firstName")
+    last_name: Optional[StrictStr] = Field(default=None, description="Non-Employee's last name.", alias="lastName")
+    email: Optional[StrictStr] = Field(default=None, description="Non-Employee's email.")
+    phone: Optional[StrictStr] = Field(default=None, description="Non-Employee's phone.")
+    manager: Optional[StrictStr] = Field(default=None, description="The account ID of a valid identity to serve as this non-employee's manager.")
+    non_employee_source: Optional[NonEmployeeSourceLite] = Field(default=None, alias="nonEmployeeSource")
+    data: Optional[Dict[str, StrictStr]] = Field(default=None, description="Attribute blob/bag for a non-employee.")
+    approval_items: Optional[List[NonEmployeeApprovalItemBase]] = Field(default=None, description="List of approval item for the request", alias="approvalItems")
+    approval_status: Optional[ApprovalStatus] = Field(default=None, alias="approvalStatus")
+    comment: Optional[StrictStr] = Field(default=None, description="comment of requester")
+    completion_date: Optional[datetime] = Field(default=None, description="When the request was completely approved.", alias="completionDate")
+    start_date: Optional[datetime] = Field(default=None, description="Non-Employee employment start date.", alias="startDate")
+    end_date: Optional[datetime] = Field(default=None, description="Non-Employee employment end date.", alias="endDate")
+    modified: Optional[datetime] = Field(default=None, description="When the request was last modified.")
+    created: Optional[datetime] = Field(default=None, description="When the request was created.")
+    __properties: ClassVar[List[str]] = ["id", "sourceId", "name", "description", "accountName", "firstName", "lastName", "email", "phone", "manager", "nonEmployeeSource", "data", "approvalItems", "approvalStatus", "comment", "completionDate", "startDate", "endDate", "modified", "created"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -136,7 +88,8 @@ class NonEmployeeRequest(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of non_employee_source
@@ -161,48 +114,27 @@ class NonEmployeeRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "sourceId":
-            obj.get("sourceId"),
-            "name":
-            obj.get("name"),
-            "description":
-            obj.get("description"),
-            "accountName":
-            obj.get("accountName"),
-            "firstName":
-            obj.get("firstName"),
-            "lastName":
-            obj.get("lastName"),
-            "email":
-            obj.get("email"),
-            "phone":
-            obj.get("phone"),
-            "manager":
-            obj.get("manager"),
-            "nonEmployeeSource":
-            NonEmployeeSourceLite.from_dict(obj.get("nonEmployeeSource"))
-            if obj.get("nonEmployeeSource") is not None else None,
-            "data":
-            obj.get("data"),
-            "approvalItems": [
-                NonEmployeeApprovalItemBase.from_dict(_item)
-                for _item in obj.get("approvalItems")
-            ] if obj.get("approvalItems") is not None else None,
-            "approvalStatus":
-            obj.get("approvalStatus"),
-            "comment":
-            obj.get("comment"),
-            "completionDate":
-            obj.get("completionDate"),
-            "startDate":
-            obj.get("startDate"),
-            "endDate":
-            obj.get("endDate"),
-            "modified":
-            obj.get("modified"),
-            "created":
-            obj.get("created")
+            "id": obj.get("id"),
+            "sourceId": obj.get("sourceId"),
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "accountName": obj.get("accountName"),
+            "firstName": obj.get("firstName"),
+            "lastName": obj.get("lastName"),
+            "email": obj.get("email"),
+            "phone": obj.get("phone"),
+            "manager": obj.get("manager"),
+            "nonEmployeeSource": NonEmployeeSourceLite.from_dict(obj.get("nonEmployeeSource")) if obj.get("nonEmployeeSource") is not None else None,
+            "data": obj.get("data"),
+            "approvalItems": [NonEmployeeApprovalItemBase.from_dict(_item) for _item in obj.get("approvalItems")] if obj.get("approvalItems") is not None else None,
+            "approvalStatus": obj.get("approvalStatus"),
+            "comment": obj.get("comment"),
+            "completionDate": obj.get("completionDate"),
+            "startDate": obj.get("startDate"),
+            "endDate": obj.get("endDate"),
+            "modified": obj.get("modified"),
+            "created": obj.get("created")
         })
         return _obj
+
+

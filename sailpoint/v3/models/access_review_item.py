@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
@@ -27,39 +29,25 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccessReviewItem(BaseModel):
     """
     AccessReviewItem
-    """
-
-  # noqa: E501
-    access_summary: Optional[AccessSummary] = Field(default=None,
-                                                    alias="accessSummary")
-    identity_summary: Optional[CertificationIdentitySummary] = Field(
-        default=None, alias="identitySummary")
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="The review item's id")
-    completed: Optional[StrictBool] = Field(
-        default=None, description="Whether the review item is complete")
-    new_access: Optional[StrictBool] = Field(
-        default=None,
-        description=
-        "Indicates whether the review item is for new access to a source",
-        alias="newAccess")
+    """ # noqa: E501
+    access_summary: Optional[AccessSummary] = Field(default=None, alias="accessSummary")
+    identity_summary: Optional[CertificationIdentitySummary] = Field(default=None, alias="identitySummary")
+    id: Optional[StrictStr] = Field(default=None, description="The review item's id")
+    completed: Optional[StrictBool] = Field(default=None, description="Whether the review item is complete")
+    new_access: Optional[StrictBool] = Field(default=None, description="Indicates whether the review item is for new access to a source", alias="newAccess")
     decision: Optional[CertificationDecision] = None
-    comments: Optional[StrictStr] = Field(
-        default=None, description="Comments for this review item")
-    __properties: ClassVar[List[str]] = [
-        "accessSummary", "identitySummary", "id", "completed", "newAccess",
-        "decision", "comments"
-    ]
+    comments: Optional[StrictStr] = Field(default=None, description="Comments for this review item")
+    __properties: ClassVar[List[str]] = ["accessSummary", "identitySummary", "id", "completed", "newAccess", "decision", "comments"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -87,7 +75,8 @@ class AccessReviewItem(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of access_summary
@@ -113,21 +102,14 @@ class AccessReviewItem(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "accessSummary":
-            AccessSummary.from_dict(obj.get("accessSummary"))
-            if obj.get("accessSummary") is not None else None,
-            "identitySummary":
-            CertificationIdentitySummary.from_dict(obj.get("identitySummary"))
-            if obj.get("identitySummary") is not None else None,
-            "id":
-            obj.get("id"),
-            "completed":
-            obj.get("completed"),
-            "newAccess":
-            obj.get("newAccess"),
-            "decision":
-            obj.get("decision"),
-            "comments":
-            obj.get("comments")
+            "accessSummary": AccessSummary.from_dict(obj.get("accessSummary")) if obj.get("accessSummary") is not None else None,
+            "identitySummary": CertificationIdentitySummary.from_dict(obj.get("identitySummary")) if obj.get("identitySummary") is not None else None,
+            "id": obj.get("id"),
+            "completed": obj.get("completed"),
+            "newAccess": obj.get("newAccess"),
+            "decision": obj.get("decision"),
+            "comments": obj.get("comments")
         })
         return _obj
+
+

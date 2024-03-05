@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,35 +26,22 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class TestInvocation(BaseModel):
     """
     TestInvocation
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     trigger_id: StrictStr = Field(description="Trigger ID", alias="triggerId")
-    input: Optional[Dict[str, Any]] = Field(
-        default=None,
-        description=
-        "Mock input to use for test invocation.  This must adhere to the input schema defined in the trigger being invoked.  If this property is omitted, then the default trigger sample payload will be sent."
-    )
-    content_json: Dict[str, Any] = Field(
-        description="JSON map of invocation metadata.", alias="contentJson")
-    subscription_ids: Optional[List[StrictStr]] = Field(
-        default=None,
-        description=
-        "Only send the test event to the subscription IDs listed.  If omitted, the test event will be sent to all subscribers.",
-        alias="subscriptionIds")
-    __properties: ClassVar[List[str]] = [
-        "triggerId", "input", "contentJson", "subscriptionIds"
-    ]
+    input: Optional[Dict[str, Any]] = Field(default=None, description="Mock input to use for test invocation.  This must adhere to the input schema defined in the trigger being invoked.  If this property is omitted, then the default trigger sample payload will be sent.")
+    content_json: Dict[str, Any] = Field(description="JSON map of invocation metadata.", alias="contentJson")
+    subscription_ids: Optional[List[StrictStr]] = Field(default=None, description="Only send the test event to the subscription IDs listed.  If omitted, the test event will be sent to all subscribers.", alias="subscriptionIds")
+    __properties: ClassVar[List[str]] = ["triggerId", "input", "contentJson", "subscriptionIds"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -80,7 +69,8 @@ class TestInvocation(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -101,3 +91,5 @@ class TestInvocation(BaseModel):
             "subscriptionIds": obj.get("subscriptionIds")
         })
         return _obj
+
+

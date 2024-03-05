@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.access_profile_document import AccessProfileDocument
-
 
 class TestAccessProfileDocument(unittest.TestCase):
     """AccessProfileDocument unit test stubs"""
@@ -36,31 +36,43 @@ class TestAccessProfileDocument(unittest.TestCase):
         model = AccessProfileDocument()
         if include_optional:
             return AccessProfileDocument(
-                id = '2c91808568c529c60168cca6f90c1313',
-                name = 'John Doe',
-                type = 'identity',
+                id = '2c9180825a6c1adc015a71c9023f0818',
+                name = 'Cloud Eng',
                 description = 'The admin role',
                 created = '2018-06-25T20:22:28.104Z',
                 modified = '2018-06-25T20:22:28.104Z',
-                synced = '2018-06-25T20:22:28.104Z',
+                synced = '2018-06-25T20:22:33.104Z',
                 enabled = True,
                 requestable = True,
                 request_comments_required = False,
-                owner = None,
-                source = sailpoint.v3.models.reference.Reference(
-                    id = '2c91808568c529c60168cca6f90c1313', 
-                    name = 'John Doe', ),
+                owner = sailpoint.v3.models.base_access_all_of_owner.BaseAccess_allOf_owner(
+                    type = 'IDENTITY', 
+                    id = '2c9180a46faadee4016fb4e018c20639', 
+                    name = 'Support', 
+                    email = 'cloud-support@sailpoint.com', ),
+                type = 'accessprofile',
+                source = sailpoint.v3.models.access_profile_document_all_of_source.AccessProfileDocument_allOf_source(
+                    id = 'ff8081815757d4fb0157588f3d9d008f', 
+                    name = 'Employees', ),
                 entitlements = [
-                    null
+                    sailpoint.v3.models.base_entitlement.BaseEntitlement(
+                        has_permissions = False, 
+                        description = 'Cloud engineering', 
+                        attribute = 'memberOf', 
+                        value = 'CN=Cloud Engineering,DC=sailpoint,DC=COM', 
+                        schema = 'group', 
+                        privileged = False, 
+                        id = '2c918084575812550157589064f33b89', 
+                        name = 'CN=Cloud Engineering,DC=sailpoint,DC=COM', )
                     ],
                 entitlement_count = 5,
                 tags = [TAG_1, TAG_2]
             )
         else:
             return AccessProfileDocument(
-                id = '2c91808568c529c60168cca6f90c1313',
-                name = 'John Doe',
-                type = 'identity',
+                id = '2c9180825a6c1adc015a71c9023f0818',
+                name = 'Cloud Eng',
+                type = 'accessprofile',
         )
         """
 
@@ -68,7 +80,6 @@ class TestAccessProfileDocument(unittest.TestCase):
         """Test AccessProfileDocument"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

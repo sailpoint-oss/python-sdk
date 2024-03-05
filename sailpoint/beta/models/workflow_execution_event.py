@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -25,20 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class WorkflowExecutionEvent(BaseModel):
     """
     WorkflowExecutionEvent
-    """
-
-  # noqa: E501
-    type: Optional[Dict[str, Any]] = Field(default=None,
-                                           description="The type of event")
-    timestamp: Optional[datetime] = Field(
-        default=None, description="The date-time when the event occurred")
-    attributes: Optional[Dict[str, Any]] = Field(
-        default=None,
-        description="Additional attributes associated with the event")
+    """ # noqa: E501
+    type: Optional[Dict[str, Any]] = Field(default=None, description="The type of event")
+    timestamp: Optional[datetime] = Field(default=None, description="The date-time when the event occurred")
+    attributes: Optional[Dict[str, Any]] = Field(default=None, description="Additional attributes associated with the event")
     __properties: ClassVar[List[str]] = ["type", "timestamp", "attributes"]
 
     @field_validator('type')
@@ -47,17 +41,8 @@ class WorkflowExecutionEvent(BaseModel):
         if value is None:
             return value
 
-        if value not in ('WorkflowExecutionScheduled',
-                         'WorkflowExecutionStarted',
-                         'WorkflowExecutionCompleted',
-                         'WorkflowExecutionFailed', 'WorkflowTaskScheduled',
-                         'WorkflowTaskStarted', 'WorkflowTaskCompleted',
-                         'WorkflowTaskFailed', 'ActivityTaskScheduled',
-                         'ActivityTaskStarted', 'ActivityTaskCompleted',
-                         'ActivityTaskFailed'):
-            raise ValueError(
-                "must be one of enum values ('WorkflowExecutionScheduled', 'WorkflowExecutionStarted', 'WorkflowExecutionCompleted', 'WorkflowExecutionFailed', 'WorkflowTaskScheduled', 'WorkflowTaskStarted', 'WorkflowTaskCompleted', 'WorkflowTaskFailed', 'ActivityTaskScheduled', 'ActivityTaskStarted', 'ActivityTaskCompleted', 'ActivityTaskFailed')"
-            )
+        if value not in ('WorkflowExecutionScheduled', 'WorkflowExecutionStarted', 'WorkflowExecutionCompleted', 'WorkflowExecutionFailed', 'WorkflowTaskScheduled', 'WorkflowTaskStarted', 'WorkflowTaskCompleted', 'WorkflowTaskFailed', 'ActivityTaskScheduled', 'ActivityTaskStarted', 'ActivityTaskCompleted', 'ActivityTaskFailed'):
+            raise ValueError("must be one of enum values ('WorkflowExecutionScheduled', 'WorkflowExecutionStarted', 'WorkflowExecutionCompleted', 'WorkflowExecutionFailed', 'WorkflowTaskScheduled', 'WorkflowTaskStarted', 'WorkflowTaskCompleted', 'WorkflowTaskFailed', 'ActivityTaskScheduled', 'ActivityTaskStarted', 'ActivityTaskCompleted', 'ActivityTaskFailed')")
         return value
 
     model_config = {
@@ -65,6 +50,7 @@ class WorkflowExecutionEvent(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -92,7 +78,8 @@ class WorkflowExecutionEvent(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -112,3 +99,5 @@ class WorkflowExecutionEvent(BaseModel):
             "attributes": obj.get("attributes")
         })
         return _obj
+
+

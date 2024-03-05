@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr
@@ -24,16 +26,11 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class NestedAggregation(BaseModel):
     """
     The nested aggregation object.
-    """
-
-  # noqa: E501
-    name: StrictStr = Field(
-        description=
-        "The name of the nested aggregate to be included in the result.")
+    """ # noqa: E501
+    name: StrictStr = Field(description="The name of the nested aggregate to be included in the result.")
     type: StrictStr = Field(description="The type of the nested object.")
     __properties: ClassVar[List[str]] = ["name", "type"]
 
@@ -42,6 +39,7 @@ class NestedAggregation(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -69,7 +67,8 @@ class NestedAggregation(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -88,3 +87,5 @@ class NestedAggregation(BaseModel):
             "type": obj.get("type")
         })
         return _obj
+
+

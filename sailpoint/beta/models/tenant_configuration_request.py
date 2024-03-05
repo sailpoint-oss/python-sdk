@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
@@ -25,13 +27,11 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class TenantConfigurationRequest(BaseModel):
     """
     Tenant-wide Reassignment Configuration settings
     """ # noqa: E501
-    config_details: Optional[TenantConfigurationDetails] = Field(
-        default=None, alias="configDetails")
+    config_details: Optional[TenantConfigurationDetails] = Field(default=None, alias="configDetails")
     __properties: ClassVar[List[str]] = ["configDetails"]
 
     model_config = {
@@ -39,6 +39,7 @@ class TenantConfigurationRequest(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -66,7 +67,8 @@ class TenantConfigurationRequest(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of config_details
@@ -84,8 +86,8 @@ class TenantConfigurationRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "configDetails":
-            TenantConfigurationDetails.from_dict(obj.get("configDetails"))
-            if obj.get("configDetails") is not None else None
+            "configDetails": TenantConfigurationDetails.from_dict(obj.get("configDetails")) if obj.get("configDetails") is not None else None
         })
         return _obj
+
+

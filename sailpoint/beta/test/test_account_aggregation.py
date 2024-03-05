@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.account_aggregation import AccountAggregation
-
 
 class TestAccountAggregation(unittest.TestCase):
     """AccountAggregation unit test stubs"""
@@ -50,7 +50,6 @@ class TestAccountAggregation(unittest.TestCase):
         """Test AccountAggregation"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

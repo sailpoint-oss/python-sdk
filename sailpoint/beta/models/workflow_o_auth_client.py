@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,22 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class WorkflowOAuthClient(BaseModel):
     """
     WorkflowOAuthClient
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "OAuth client ID for the trigger. This is a UUID generated upon creation."
-    )
-    secret: Optional[StrictStr] = Field(default=None,
-                                        description="OAuthClient secret.")
-    url: Optional[StrictStr] = Field(
-        default=None, description="URL for the external trigger to invoke")
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="OAuth client ID for the trigger. This is a UUID generated upon creation.")
+    secret: Optional[StrictStr] = Field(default=None, description="OAuthClient secret.")
+    url: Optional[StrictStr] = Field(default=None, description="URL for the external trigger to invoke")
     __properties: ClassVar[List[str]] = ["id", "secret", "url"]
 
     model_config = {
@@ -47,6 +40,7 @@ class WorkflowOAuthClient(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -74,7 +68,8 @@ class WorkflowOAuthClient(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -94,3 +89,5 @@ class WorkflowOAuthClient(BaseModel):
             "url": obj.get("url")
         })
         return _obj
+
+

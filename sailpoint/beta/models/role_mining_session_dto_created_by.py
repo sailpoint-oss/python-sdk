@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 from inspect import getfullargspec
 import json
@@ -31,7 +32,6 @@ except ImportError:
 
 ROLEMININGSESSIONDTOCREATEDBY_ONE_OF_SCHEMAS = ["EntityCreatedByDTO", "str"]
 
-
 class RoleMiningSessionDtoCreatedBy(BaseModel):
     """
     The session created by details
@@ -39,8 +39,7 @@ class RoleMiningSessionDtoCreatedBy(BaseModel):
     # data type: EntityCreatedByDTO
     oneof_schema_1_validator: Optional[EntityCreatedByDTO] = None
     # data type: str
-    oneof_schema_2_validator: Optional[StrictStr] = Field(
-        default=None, description="Workaround to support null")
+    oneof_schema_2_validator: Optional[StrictStr] = Field(default=None, description="Workaround to support null")
     actual_instance: Optional[Union[EntityCreatedByDTO, str]] = None
     one_of_schemas: List[str] = Literal["EntityCreatedByDTO", "str"]
 
@@ -49,16 +48,13 @@ class RoleMiningSessionDtoCreatedBy(BaseModel):
         "protected_namespaces": (),
     }
 
+
     def __init__(self, *args, **kwargs) -> None:
         if args:
             if len(args) > 1:
-                raise ValueError(
-                    "If a position argument is used, only 1 is allowed to set `actual_instance`"
-                )
+                raise ValueError("If a position argument is used, only 1 is allowed to set `actual_instance`")
             if kwargs:
-                raise ValueError(
-                    "If a position argument is used, keyword arguments cannot be used."
-                )
+                raise ValueError("If a position argument is used, keyword arguments cannot be used.")
             super().__init__(actual_instance=args[0])
         else:
             super().__init__(**kwargs)
@@ -70,8 +66,7 @@ class RoleMiningSessionDtoCreatedBy(BaseModel):
         match = 0
         # validate data type: EntityCreatedByDTO
         if not isinstance(v, EntityCreatedByDTO):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `EntityCreatedByDTO`")
+            error_messages.append(f"Error! Input type `{type(v)}` is not `EntityCreatedByDTO`")
         else:
             match += 1
         # validate data type: str
@@ -82,14 +77,10 @@ class RoleMiningSessionDtoCreatedBy(BaseModel):
             error_messages.append(str(e))
         if match > 1:
             # more than 1 match
-            raise ValueError(
-                "Multiple matches found when setting `actual_instance` in RoleMiningSessionDtoCreatedBy with oneOf schemas: EntityCreatedByDTO, str. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when setting `actual_instance` in RoleMiningSessionDtoCreatedBy with oneOf schemas: EntityCreatedByDTO, str. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError(
-                "No match found when setting `actual_instance` in RoleMiningSessionDtoCreatedBy with oneOf schemas: EntityCreatedByDTO, str. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in RoleMiningSessionDtoCreatedBy with oneOf schemas: EntityCreatedByDTO, str. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -122,14 +113,10 @@ class RoleMiningSessionDtoCreatedBy(BaseModel):
 
         if match > 1:
             # more than 1 match
-            raise ValueError(
-                "Multiple matches found when deserializing the JSON string into RoleMiningSessionDtoCreatedBy with oneOf schemas: EntityCreatedByDTO, str. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when deserializing the JSON string into RoleMiningSessionDtoCreatedBy with oneOf schemas: EntityCreatedByDTO, str. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError(
-                "No match found when deserializing the JSON string into RoleMiningSessionDtoCreatedBy with oneOf schemas: EntityCreatedByDTO, str. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into RoleMiningSessionDtoCreatedBy with oneOf schemas: EntityCreatedByDTO, str. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -159,3 +146,5 @@ class RoleMiningSessionDtoCreatedBy(BaseModel):
     def to_str(self) -> str:
         """Returns the string representation of the actual instance"""
         return pprint.pformat(self.model_dump())
+
+

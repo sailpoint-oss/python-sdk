@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -25,22 +27,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccessProfileUsage(BaseModel):
     """
     AccessProfileUsage
-    """
-
-  # noqa: E501
-    access_profile_id: Optional[StrictStr] = Field(
-        default=None,
-        description="ID of the Access Profile that is in use",
-        alias="accessProfileId")
-    used_by: Optional[List[AccessProfileUsageUsedByInner]] = Field(
-        default=None,
-        description=
-        "List of references to objects which are using the indicated Access Profile",
-        alias="usedBy")
+    """ # noqa: E501
+    access_profile_id: Optional[StrictStr] = Field(default=None, description="ID of the Access Profile that is in use", alias="accessProfileId")
+    used_by: Optional[List[AccessProfileUsageUsedByInner]] = Field(default=None, description="List of references to objects which are using the indicated Access Profile", alias="usedBy")
     __properties: ClassVar[List[str]] = ["accessProfileId", "usedBy"]
 
     model_config = {
@@ -48,6 +40,7 @@ class AccessProfileUsage(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -75,7 +68,8 @@ class AccessProfileUsage(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in used_by (list)
@@ -97,11 +91,9 @@ class AccessProfileUsage(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "accessProfileId":
-            obj.get("accessProfileId"),
-            "usedBy": [
-                AccessProfileUsageUsedByInner.from_dict(_item)
-                for _item in obj.get("usedBy")
-            ] if obj.get("usedBy") is not None else None
+            "accessProfileId": obj.get("accessProfileId"),
+            "usedBy": [AccessProfileUsageUsedByInner.from_dict(_item) for _item in obj.get("usedBy")] if obj.get("usedBy") is not None else None
         })
         return _obj
+
+

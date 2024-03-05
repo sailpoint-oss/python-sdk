@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.password_sync_group import PasswordSyncGroup
-
 
 class TestPasswordSyncGroup(unittest.TestCase):
     """PasswordSyncGroup unit test stubs"""
@@ -39,7 +39,9 @@ class TestPasswordSyncGroup(unittest.TestCase):
                 id = '6881f631-3bd5-4213-9c75-8e05cc3e35dd',
                 name = 'Password Sync Group 1',
                 password_policy_id = '2c91808d744ba0ce01746f93b6204501',
-                source_ids = [2c918084660f45d6016617daa9210584, 2c918084660f45d6016617daa9210500]
+                source_ids = [2c918084660f45d6016617daa9210584, 2c918084660f45d6016617daa9210500],
+                created = '2023-03-16T04:00Z',
+                modified = '2023-03-16T04:00Z'
             )
         else:
             return PasswordSyncGroup(
@@ -50,7 +52,6 @@ class TestPasswordSyncGroup(unittest.TestCase):
         """Test PasswordSyncGroup"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

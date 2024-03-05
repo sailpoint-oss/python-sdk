@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
@@ -24,22 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class NetworkConfiguration(BaseModel):
     """
     NetworkConfiguration
-    """
-
-  # noqa: E501
-    range: Optional[List[StrictStr]] = Field(
-        default=None, description="The collection of ip ranges.")
-    geolocation: Optional[List[StrictStr]] = Field(
-        default=None, description="The collection of country codes.")
-    whitelisted: Optional[StrictBool] = Field(
-        default=False,
-        description=
-        "Denotes whether the provided lists are whitelisted or blacklisted for geo location."
-    )
+    """ # noqa: E501
+    range: Optional[List[StrictStr]] = Field(default=None, description="The collection of ip ranges.")
+    geolocation: Optional[List[StrictStr]] = Field(default=None, description="The collection of country codes.")
+    whitelisted: Optional[StrictBool] = Field(default=False, description="Denotes whether the provided lists are whitelisted or blacklisted for geo location.")
     __properties: ClassVar[List[str]] = ["range", "geolocation", "whitelisted"]
 
     model_config = {
@@ -47,6 +40,7 @@ class NetworkConfiguration(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -74,9 +68,20 @@ class NetworkConfiguration(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
+        # set to None if range (nullable) is None
+        # and model_fields_set contains the field
+        if self.range is None and "range" in self.model_fields_set:
+            _dict['range'] = None
+
+        # set to None if geolocation (nullable) is None
+        # and model_fields_set contains the field
+        if self.geolocation is None and "geolocation" in self.model_fields_set:
+            _dict['geolocation'] = None
+
         return _dict
 
     @classmethod
@@ -89,12 +94,10 @@ class NetworkConfiguration(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "range":
-            obj.get("range"),
-            "geolocation":
-            obj.get("geolocation"),
-            "whitelisted":
-            obj.get("whitelisted")
-            if obj.get("whitelisted") is not None else False
+            "range": obj.get("range"),
+            "geolocation": obj.get("geolocation"),
+            "whitelisted": obj.get("whitelisted") if obj.get("whitelisted") is not None else False
         })
         return _obj
+
+

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,18 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AdminReviewReassignReassignTo(BaseModel):
     """
     AdminReviewReassignReassignTo
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(
-        default=None,
-        description="The identity ID to which the review is being assigned.")
-    type: Optional[StrictStr] = Field(
-        default=None, description="The type of the ID provided.")
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="The identity ID to which the review is being assigned.")
+    type: Optional[StrictStr] = Field(default=None, description="The type of the ID provided.")
     __properties: ClassVar[List[str]] = ["id", "type"]
 
     @field_validator('type')
@@ -53,6 +49,7 @@ class AdminReviewReassignReassignTo(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -80,7 +77,8 @@ class AdminReviewReassignReassignTo(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -99,3 +97,5 @@ class AdminReviewReassignReassignTo(BaseModel):
             "type": obj.get("type")
         })
         return _obj
+
+

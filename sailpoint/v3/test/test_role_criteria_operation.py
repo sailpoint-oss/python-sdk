@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.role_criteria_operation import RoleCriteriaOperation
-
 
 class TestRoleCriteriaOperation(unittest.TestCase):
     """RoleCriteriaOperation unit test stubs"""
@@ -29,7 +29,6 @@ class TestRoleCriteriaOperation(unittest.TestCase):
     def testRoleCriteriaOperation(self):
         """Test RoleCriteriaOperation"""
         # inst = RoleCriteriaOperation()
-
 
 if __name__ == '__main__':
     unittest.main()

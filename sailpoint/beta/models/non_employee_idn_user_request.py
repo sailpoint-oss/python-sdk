@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr
@@ -24,13 +26,10 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class NonEmployeeIdnUserRequest(BaseModel):
     """
     NonEmployeeIdnUserRequest
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     id: StrictStr = Field(description="Identity id.")
     __properties: ClassVar[List[str]] = ["id"]
 
@@ -39,6 +38,7 @@ class NonEmployeeIdnUserRequest(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -66,7 +66,8 @@ class NonEmployeeIdnUserRequest(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -80,5 +81,9 @@ class NonEmployeeIdnUserRequest(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({"id": obj.get("id")})
+        _obj = cls.model_validate({
+            "id": obj.get("id")
+        })
         return _obj
+
+

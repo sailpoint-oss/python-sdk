@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.approval_status_dto import ApprovalStatusDto
-
 
 class TestApprovalStatusDto(unittest.TestCase):
     """ApprovalStatusDto unit test stubs"""
@@ -41,10 +41,7 @@ class TestApprovalStatusDto(unittest.TestCase):
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20642', 
                     name = 'Michael Michaels', ),
-                current_owner = sailpoint.v3.models.access_item_reviewed_by.AccessItemReviewedBy(
-                    type = 'IDENTITY', 
-                    id = '2c3780a46faadee4016fb4e018c20652', 
-                    name = 'Allen Albertson', ),
+                current_owner = None,
                 modified = '2019-08-23T18:52:57.398Z',
                 status = 'PENDING',
                 scheme = 'MANAGER',
@@ -66,7 +63,6 @@ class TestApprovalStatusDto(unittest.TestCase):
         """Test ApprovalStatusDto"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

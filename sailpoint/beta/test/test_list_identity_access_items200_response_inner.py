@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.list_identity_access_items200_response_inner import ListIdentityAccessItems200ResponseInner
-
 
 class TestListIdentityAccessItems200ResponseInner(unittest.TestCase):
     """ListIdentityAccessItems200ResponseInner unit test stubs"""
@@ -26,8 +26,7 @@ class TestListIdentityAccessItems200ResponseInner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(
-            self, include_optional) -> ListIdentityAccessItems200ResponseInner:
+    def make_instance(self, include_optional) -> ListIdentityAccessItems200ResponseInner:
         """Test ListIdentityAccessItems200ResponseInner
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -60,7 +59,6 @@ class TestListIdentityAccessItems200ResponseInner(unittest.TestCase):
         """Test ListIdentityAccessItems200ResponseInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

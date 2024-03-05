@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,50 +21,34 @@ from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
 from pydantic import Field
-from sailpoint.v3.models.owner import Owner
+from sailpoint.v3.models.base_access_all_of_owner import BaseAccessAllOfOwner
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class BaseAccess(BaseModel):
     """
     BaseAccess
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(
-        default=None, description="The unique ID of the referenced object.")
-    name: Optional[StrictStr] = Field(
-        default=None,
-        description="The human readable name of the referenced object.")
-    description: Optional[StrictStr] = Field(
-        default=None, description="The description of the access item")
-    created: Optional[datetime] = Field(
-        default=None, description="A date-time in ISO-8601 format")
-    modified: Optional[datetime] = Field(
-        default=None, description="A date-time in ISO-8601 format")
-    synced: Optional[datetime] = Field(
-        default=None, description="A date-time in ISO-8601 format")
-    enabled: Optional[StrictBool] = None
-    requestable: Optional[StrictBool] = Field(
-        default=None, description="Indicates if the access can be requested")
-    request_comments_required: Optional[StrictBool] = Field(
-        default=None,
-        description="Indicates if comments are required when requesting access",
-        alias="requestCommentsRequired")
-    owner: Optional[Owner] = None
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "description", "created", "modified", "synced",
-        "enabled", "requestable", "requestCommentsRequired", "owner"
-    ]
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="The unique ID of the referenced object.")
+    name: Optional[StrictStr] = Field(default=None, description="The human readable name of the referenced object.")
+    description: Optional[StrictStr] = Field(default=None, description="Access item's description.")
+    created: Optional[datetime] = Field(default=None, description="ISO-8601 date-time referring to the time when the object was created.")
+    modified: Optional[datetime] = Field(default=None, description="ISO-8601 date-time referring to the time when the object was last modified.")
+    synced: Optional[datetime] = Field(default=None, description="ISO-8601 date-time referring to the date-time when object was queued to be synced into search database for use in the search API.   This date-time changes anytime there is an update to the object, which triggers a synchronization event being sent to the search database.  There may be some delay between the `synced` time and the time when the updated data is actually available in the search API. ")
+    enabled: Optional[StrictBool] = Field(default=False, description="Indicates whether the access item is currently enabled.")
+    requestable: Optional[StrictBool] = Field(default=True, description="Indicates whether the access item can be requested.")
+    request_comments_required: Optional[StrictBool] = Field(default=False, description="Indicates whether comments are required for requests to access the item.", alias="requestCommentsRequired")
+    owner: Optional[BaseAccessAllOfOwner] = None
+    __properties: ClassVar[List[str]] = ["id", "name", "description", "created", "modified", "synced", "enabled", "requestable", "requestCommentsRequired", "owner"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -91,7 +76,8 @@ class BaseAccess(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of owner
@@ -124,26 +110,17 @@ class BaseAccess(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "description":
-            obj.get("description"),
-            "created":
-            obj.get("created"),
-            "modified":
-            obj.get("modified"),
-            "synced":
-            obj.get("synced"),
-            "enabled":
-            obj.get("enabled"),
-            "requestable":
-            obj.get("requestable"),
-            "requestCommentsRequired":
-            obj.get("requestCommentsRequired"),
-            "owner":
-            Owner.from_dict(obj.get("owner"))
-            if obj.get("owner") is not None else None
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "created": obj.get("created"),
+            "modified": obj.get("modified"),
+            "synced": obj.get("synced"),
+            "enabled": obj.get("enabled") if obj.get("enabled") is not None else False,
+            "requestable": obj.get("requestable") if obj.get("requestable") is not None else True,
+            "requestCommentsRequired": obj.get("requestCommentsRequired") if obj.get("requestCommentsRequired") is not None else False,
+            "owner": BaseAccessAllOfOwner.from_dict(obj.get("owner")) if obj.get("owner") is not None else None
         })
         return _obj
+
+

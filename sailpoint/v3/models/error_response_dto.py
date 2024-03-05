@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -25,38 +27,22 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ErrorResponseDto(BaseModel):
     """
     ErrorResponseDto
-    """
-
-  # noqa: E501
-    detail_code: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Fine-grained error code providing more detail of the error.",
-        alias="detailCode")
-    tracking_id: Optional[StrictStr] = Field(
-        default=None,
-        description="Unique tracking id for the error.",
-        alias="trackingId")
-    messages: Optional[List[ErrorMessageDto]] = Field(
-        default=None, description="Generic localized reason for error")
-    causes: Optional[List[ErrorMessageDto]] = Field(
-        default=None,
-        description=
-        "Plain-text descriptive reasons to provide additional detail to the text provided in the messages field"
-    )
-    __properties: ClassVar[List[str]] = [
-        "detailCode", "trackingId", "messages", "causes"
-    ]
+    """ # noqa: E501
+    detail_code: Optional[StrictStr] = Field(default=None, description="Fine-grained error code providing more detail of the error.", alias="detailCode")
+    tracking_id: Optional[StrictStr] = Field(default=None, description="Unique tracking id for the error.", alias="trackingId")
+    messages: Optional[List[ErrorMessageDto]] = Field(default=None, description="Generic localized reason for error")
+    causes: Optional[List[ErrorMessageDto]] = Field(default=None, description="Plain-text descriptive reasons to provide additional detail to the text provided in the messages field")
+    __properties: ClassVar[List[str]] = ["detailCode", "trackingId", "messages", "causes"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -84,7 +70,8 @@ class ErrorResponseDto(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in messages (list)
@@ -113,16 +100,11 @@ class ErrorResponseDto(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "detailCode":
-            obj.get("detailCode"),
-            "trackingId":
-            obj.get("trackingId"),
-            "messages": [
-                ErrorMessageDto.from_dict(_item)
-                for _item in obj.get("messages")
-            ] if obj.get("messages") is not None else None,
-            "causes":
-            [ErrorMessageDto.from_dict(_item) for _item in obj.get("causes")]
-            if obj.get("causes") is not None else None
+            "detailCode": obj.get("detailCode"),
+            "trackingId": obj.get("trackingId"),
+            "messages": [ErrorMessageDto.from_dict(_item) for _item in obj.get("messages")] if obj.get("messages") is not None else None,
+            "causes": [ErrorMessageDto.from_dict(_item) for _item in obj.get("causes")] if obj.get("causes") is not None else None
         })
         return _obj
+
+

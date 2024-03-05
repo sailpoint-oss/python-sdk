@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
@@ -27,18 +29,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class RoleMembershipSelector(BaseModel):
     """
     When present, specifies that the Role is to be granted to Identities which either satisfy specific criteria or which are members of a given list of Identities.
     """ # noqa: E501
     type: Optional[RoleMembershipSelectorType] = None
     criteria: Optional[RoleCriteriaLevel1] = None
-    identities: Optional[List[RoleMembershipIdentity]] = Field(
-        default=None,
-        description=
-        "Defines role membership as being exclusive to the specified Identities, when type is IDENTITY_LIST."
-    )
+    identities: Optional[List[RoleMembershipIdentity]] = Field(default=None, description="Defines role membership as being exclusive to the specified Identities, when type is IDENTITY_LIST.")
     __properties: ClassVar[List[str]] = ["type", "criteria", "identities"]
 
     model_config = {
@@ -46,6 +43,7 @@ class RoleMembershipSelector(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -73,7 +71,8 @@ class RoleMembershipSelector(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of criteria
@@ -108,14 +107,10 @@ class RoleMembershipSelector(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "type":
-            obj.get("type"),
-            "criteria":
-            RoleCriteriaLevel1.from_dict(obj.get("criteria"))
-            if obj.get("criteria") is not None else None,
-            "identities": [
-                RoleMembershipIdentity.from_dict(_item)
-                for _item in obj.get("identities")
-            ] if obj.get("identities") is not None else None
+            "type": obj.get("type"),
+            "criteria": RoleCriteriaLevel1.from_dict(obj.get("criteria")) if obj.get("criteria") is not None else None,
+            "identities": [RoleMembershipIdentity.from_dict(_item) for _item in obj.get("identities")] if obj.get("identities") is not None else None
         })
         return _obj
+
+

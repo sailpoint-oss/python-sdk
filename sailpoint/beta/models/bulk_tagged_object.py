@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -25,22 +27,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class BulkTaggedObject(BaseModel):
     """
     BulkTaggedObject
-    """
-
-  # noqa: E501
-    object_refs: Optional[List[TaggedObjectDto]] = Field(default=None,
-                                                         alias="objectRefs")
-    tags: Optional[List[StrictStr]] = Field(
-        default=None, description="Label to be applied to object.")
-    operation: Optional[StrictStr] = Field(
-        default='APPEND',
-        description=
-        "If APPEND, tags are appended to the list of tags for the object. A 400 error is returned if this would add duplicate tags to the object.  If MERGE, tags are merged with the existing tags. Duplicate tags are silently ignored."
-    )
+    """ # noqa: E501
+    object_refs: Optional[List[TaggedObjectDto]] = Field(default=None, alias="objectRefs")
+    tags: Optional[List[StrictStr]] = Field(default=None, description="Label to be applied to object.")
+    operation: Optional[StrictStr] = Field(default='APPEND', description="If APPEND, tags are appended to the list of tags for the object. A 400 error is returned if this would add duplicate tags to the object.  If MERGE, tags are merged with the existing tags. Duplicate tags are silently ignored.")
     __properties: ClassVar[List[str]] = ["objectRefs", "tags", "operation"]
 
     @field_validator('operation')
@@ -58,6 +51,7 @@ class BulkTaggedObject(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -85,7 +79,8 @@ class BulkTaggedObject(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in object_refs (list)
@@ -107,14 +102,10 @@ class BulkTaggedObject(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "objectRefs": [
-                TaggedObjectDto.from_dict(_item)
-                for _item in obj.get("objectRefs")
-            ] if obj.get("objectRefs") is not None else None,
-            "tags":
-            obj.get("tags"),
-            "operation":
-            obj.get("operation")
-            if obj.get("operation") is not None else 'APPEND'
+            "objectRefs": [TaggedObjectDto.from_dict(_item) for _item in obj.get("objectRefs")] if obj.get("objectRefs") is not None else None,
+            "tags": obj.get("tags"),
+            "operation": obj.get("operation") if obj.get("operation") is not None else 'APPEND'
         })
         return _obj
+
+

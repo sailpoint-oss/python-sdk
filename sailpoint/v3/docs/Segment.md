@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **modified** | **datetime** | The time when the segment is modified. | [optional] 
 **description** | **str** | The segment&#39;s optional description. | [optional] 
 **owner** | [**OwnerReferenceSegments**](OwnerReferenceSegments.md) |  | [optional] 
-**visibility_criteria** | [**VisibilityCriteria**](VisibilityCriteria.md) |  | [optional] 
+**visibility_criteria** | [**SegmentVisibilityCriteria**](SegmentVisibilityCriteria.md) |  | [optional] 
 **active** | **bool** | This boolean indicates whether the segment is currently active. Inactive segments have no effect. | [optional] [default to False]
 
 ## Example

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,14 +26,11 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class BearerTokenAuthConfig(BaseModel):
     """
     Config required if BEARER_TOKEN authentication is used. On response, this field is set to null as to not return secrets.
     """ # noqa: E501
-    bearer_token: Optional[StrictStr] = Field(default=None,
-                                              description="Bearer token",
-                                              alias="bearerToken")
+    bearer_token: Optional[StrictStr] = Field(default=None, description="Bearer token", alias="bearerToken")
     __properties: ClassVar[List[str]] = ["bearerToken"]
 
     model_config = {
@@ -39,6 +38,7 @@ class BearerTokenAuthConfig(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -66,7 +66,8 @@ class BearerTokenAuthConfig(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if bearer_token (nullable) is None
@@ -85,5 +86,9 @@ class BearerTokenAuthConfig(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({"bearerToken": obj.get("bearerToken")})
+        _obj = cls.model_validate({
+            "bearerToken": obj.get("bearerToken")
+        })
         return _obj
+
+

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictBool, StrictStr
@@ -24,19 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class LifecycleStateDto(BaseModel):
     """
     LifecycleStateDto
-    """
-
-  # noqa: E501
-    state_name: StrictStr = Field(
-        description="The name of the lifecycle state", alias="stateName")
-    manually_updated: StrictBool = Field(
-        description=
-        "Whether the lifecycle state has been manually or automatically set",
-        alias="manuallyUpdated")
+    """ # noqa: E501
+    state_name: StrictStr = Field(description="The name of the lifecycle state", alias="stateName")
+    manually_updated: StrictBool = Field(description="Whether the lifecycle state has been manually or automatically set", alias="manuallyUpdated")
     __properties: ClassVar[List[str]] = ["stateName", "manuallyUpdated"]
 
     model_config = {
@@ -44,6 +39,7 @@ class LifecycleStateDto(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -71,7 +67,8 @@ class LifecycleStateDto(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -90,3 +87,5 @@ class LifecycleStateDto(BaseModel):
             "manuallyUpdated": obj.get("manuallyUpdated")
         })
         return _obj
+
+

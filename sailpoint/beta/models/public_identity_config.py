@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -27,25 +28,21 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class PublicIdentityConfig(BaseModel):
     """
     Details of up to 5 Identity attributes that will be publicly accessible for all Identities to anyone in the org
     """ # noqa: E501
     attributes: Optional[List[PublicIdentityAttributeConfig]] = None
-    modified_by: Optional[IdentityReference] = Field(default=None,
-                                                     alias="modifiedBy")
-    modified: Optional[datetime] = Field(
-        default=None, description="the date/time of the modification")
-    __properties: ClassVar[List[str]] = [
-        "attributes", "modifiedBy", "modified"
-    ]
+    modified_by: Optional[IdentityReference] = Field(default=None, alias="modifiedBy")
+    modified: Optional[datetime] = Field(default=None, description="the date/time of the modification")
+    __properties: ClassVar[List[str]] = ["attributes", "modifiedBy", "modified"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -73,7 +70,8 @@ class PublicIdentityConfig(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in attributes (list)
@@ -91,6 +89,11 @@ class PublicIdentityConfig(BaseModel):
         if self.modified_by is None and "modified_by" in self.model_fields_set:
             _dict['modifiedBy'] = None
 
+        # set to None if modified (nullable) is None
+        # and model_fields_set contains the field
+        if self.modified is None and "modified" in self.model_fields_set:
+            _dict['modified'] = None
+
         return _dict
 
     @classmethod
@@ -103,14 +106,10 @@ class PublicIdentityConfig(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "attributes": [
-                PublicIdentityAttributeConfig.from_dict(_item)
-                for _item in obj.get("attributes")
-            ] if obj.get("attributes") is not None else None,
-            "modifiedBy":
-            IdentityReference.from_dict(obj.get("modifiedBy"))
-            if obj.get("modifiedBy") is not None else None,
-            "modified":
-            obj.get("modified")
+            "attributes": [PublicIdentityAttributeConfig.from_dict(_item) for _item in obj.get("attributes")] if obj.get("attributes") is not None else None,
+            "modifiedBy": IdentityReference.from_dict(obj.get("modifiedBy")) if obj.get("modifiedBy") is not None else None,
+            "modified": obj.get("modified")
         })
         return _obj
+
+

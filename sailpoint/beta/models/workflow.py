@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -29,52 +30,29 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class Workflow(BaseModel):
     """
     Workflow
-    """
-
-  # noqa: E501
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="The name of the workflow")
+    """ # noqa: E501
+    name: Optional[StrictStr] = Field(default=None, description="The name of the workflow")
     owner: Optional[WorkflowBodyOwner] = None
-    description: Optional[StrictStr] = Field(
-        default=None,
-        description="Description of what the workflow accomplishes")
+    description: Optional[StrictStr] = Field(default=None, description="Description of what the workflow accomplishes")
     definition: Optional[WorkflowDefinition] = None
-    enabled: Optional[StrictBool] = Field(
-        default=False,
-        description=
-        "Enable or disable the workflow.  Workflows cannot be created in an enabled state."
-    )
+    enabled: Optional[StrictBool] = Field(default=False, description="Enable or disable the workflow.  Workflows cannot be created in an enabled state.")
     trigger: Optional[WorkflowTrigger] = None
-    id: Optional[StrictStr] = Field(
-        default=None,
-        description="Workflow ID. This is a UUID generated upon creation.")
-    execution_count: Optional[StrictInt] = Field(
-        default=None,
-        description="The number of times this workflow has been executed.",
-        alias="executionCount")
-    failure_count: Optional[StrictInt] = Field(
-        default=None,
-        description=
-        "The number of times this workflow has failed during execution.",
-        alias="failureCount")
-    created: Optional[datetime] = Field(
-        default=None,
-        description="The date and time the workflow was created.")
+    id: Optional[StrictStr] = Field(default=None, description="Workflow ID. This is a UUID generated upon creation.")
+    execution_count: Optional[StrictInt] = Field(default=None, description="The number of times this workflow has been executed.", alias="executionCount")
+    failure_count: Optional[StrictInt] = Field(default=None, description="The number of times this workflow has failed during execution.", alias="failureCount")
+    created: Optional[datetime] = Field(default=None, description="The date and time the workflow was created.")
     creator: Optional[WorkflowAllOfCreator] = None
-    __properties: ClassVar[List[str]] = [
-        "name", "owner", "description", "definition", "enabled", "trigger",
-        "id", "executionCount", "failureCount", "created", "creator"
-    ]
+    __properties: ClassVar[List[str]] = ["name", "owner", "description", "definition", "enabled", "trigger", "id", "executionCount", "failureCount", "created", "creator"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -102,7 +80,8 @@ class Workflow(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of owner
@@ -129,31 +108,18 @@ class Workflow(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name":
-            obj.get("name"),
-            "owner":
-            WorkflowBodyOwner.from_dict(obj.get("owner"))
-            if obj.get("owner") is not None else None,
-            "description":
-            obj.get("description"),
-            "definition":
-            WorkflowDefinition.from_dict(obj.get("definition"))
-            if obj.get("definition") is not None else None,
-            "enabled":
-            obj.get("enabled") if obj.get("enabled") is not None else False,
-            "trigger":
-            WorkflowTrigger.from_dict(obj.get("trigger"))
-            if obj.get("trigger") is not None else None,
-            "id":
-            obj.get("id"),
-            "executionCount":
-            obj.get("executionCount"),
-            "failureCount":
-            obj.get("failureCount"),
-            "created":
-            obj.get("created"),
-            "creator":
-            WorkflowAllOfCreator.from_dict(obj.get("creator"))
-            if obj.get("creator") is not None else None
+            "name": obj.get("name"),
+            "owner": WorkflowBodyOwner.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
+            "description": obj.get("description"),
+            "definition": WorkflowDefinition.from_dict(obj.get("definition")) if obj.get("definition") is not None else None,
+            "enabled": obj.get("enabled") if obj.get("enabled") is not None else False,
+            "trigger": WorkflowTrigger.from_dict(obj.get("trigger")) if obj.get("trigger") is not None else None,
+            "id": obj.get("id"),
+            "executionCount": obj.get("executionCount"),
+            "failureCount": obj.get("failureCount"),
+            "created": obj.get("created"),
+            "creator": WorkflowAllOfCreator.from_dict(obj.get("creator")) if obj.get("creator") is not None else None
         })
         return _obj
+
+

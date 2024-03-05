@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -29,71 +30,35 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class IdentityCertificationDto(BaseModel):
     """
     IdentityCertificationDto
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="id of the certification")
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="name of the certification")
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="id of the certification")
+    name: Optional[StrictStr] = Field(default=None, description="name of the certification")
     campaign: Optional[CampaignReference] = None
-    completed: Optional[StrictBool] = Field(
-        default=None, description="Have all decisions been made?")
-    identities_completed: Optional[StrictInt] = Field(
-        default=None,
-        description=
-        "The number of identities for whom all decisions have been made and are complete.",
-        alias="identitiesCompleted")
-    identities_total: Optional[StrictInt] = Field(
-        default=None,
-        description=
-        "The total number of identities in the Certification, both complete and incomplete.",
-        alias="identitiesTotal")
-    created: Optional[datetime] = Field(default=None,
-                                        description="created date")
-    modified: Optional[datetime] = Field(default=None,
-                                         description="modified date")
-    decisions_made: Optional[StrictInt] = Field(
-        default=None,
-        description=
-        "The number of approve/revoke/acknowledge decisions that have been made.",
-        alias="decisionsMade")
-    decisions_total: Optional[StrictInt] = Field(
-        default=None,
-        description="The total number of approve/revoke/acknowledge decisions.",
-        alias="decisionsTotal")
-    due: Optional[datetime] = Field(
-        default=None, description="The due date of the certification.")
-    signed: Optional[datetime] = Field(
-        default=None,
-        description="The date the reviewer signed off on the Certification.")
+    completed: Optional[StrictBool] = Field(default=None, description="Have all decisions been made?")
+    identities_completed: Optional[StrictInt] = Field(default=None, description="The number of identities for whom all decisions have been made and are complete.", alias="identitiesCompleted")
+    identities_total: Optional[StrictInt] = Field(default=None, description="The total number of identities in the Certification, both complete and incomplete.", alias="identitiesTotal")
+    created: Optional[datetime] = Field(default=None, description="created date")
+    modified: Optional[datetime] = Field(default=None, description="modified date")
+    decisions_made: Optional[StrictInt] = Field(default=None, description="The number of approve/revoke/acknowledge decisions that have been made.", alias="decisionsMade")
+    decisions_total: Optional[StrictInt] = Field(default=None, description="The total number of approve/revoke/acknowledge decisions.", alias="decisionsTotal")
+    due: Optional[datetime] = Field(default=None, description="The due date of the certification.")
+    signed: Optional[datetime] = Field(default=None, description="The date the reviewer signed off on the Certification.")
     reviewer: Optional[Reviewer] = None
     reassignment: Optional[Reassignment] = None
-    has_errors: Optional[StrictBool] = Field(
-        default=None,
-        description="Identifies if the certification has an error",
-        alias="hasErrors")
-    error_message: Optional[StrictStr] = Field(
-        default=None,
-        description="Description of the certification error",
-        alias="errorMessage")
+    has_errors: Optional[StrictBool] = Field(default=None, description="Identifies if the certification has an error", alias="hasErrors")
+    error_message: Optional[StrictStr] = Field(default=None, description="Description of the certification error", alias="errorMessage")
     phase: Optional[CertificationPhase] = None
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "campaign", "completed", "identitiesCompleted",
-        "identitiesTotal", "created", "modified", "decisionsMade",
-        "decisionsTotal", "due", "signed", "reviewer", "reassignment",
-        "hasErrors", "errorMessage", "phase"
-    ]
+    __properties: ClassVar[List[str]] = ["id", "name", "campaign", "completed", "identitiesCompleted", "identitiesTotal", "created", "modified", "decisionsMade", "decisionsTotal", "due", "signed", "reviewer", "reassignment", "hasErrors", "errorMessage", "phase"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -121,7 +86,8 @@ class IdentityCertificationDto(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of campaign
@@ -160,42 +126,24 @@ class IdentityCertificationDto(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "campaign":
-            CampaignReference.from_dict(obj.get("campaign"))
-            if obj.get("campaign") is not None else None,
-            "completed":
-            obj.get("completed"),
-            "identitiesCompleted":
-            obj.get("identitiesCompleted"),
-            "identitiesTotal":
-            obj.get("identitiesTotal"),
-            "created":
-            obj.get("created"),
-            "modified":
-            obj.get("modified"),
-            "decisionsMade":
-            obj.get("decisionsMade"),
-            "decisionsTotal":
-            obj.get("decisionsTotal"),
-            "due":
-            obj.get("due"),
-            "signed":
-            obj.get("signed"),
-            "reviewer":
-            Reviewer.from_dict(obj.get("reviewer"))
-            if obj.get("reviewer") is not None else None,
-            "reassignment":
-            Reassignment.from_dict(obj.get("reassignment"))
-            if obj.get("reassignment") is not None else None,
-            "hasErrors":
-            obj.get("hasErrors"),
-            "errorMessage":
-            obj.get("errorMessage"),
-            "phase":
-            obj.get("phase")
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "campaign": CampaignReference.from_dict(obj.get("campaign")) if obj.get("campaign") is not None else None,
+            "completed": obj.get("completed"),
+            "identitiesCompleted": obj.get("identitiesCompleted"),
+            "identitiesTotal": obj.get("identitiesTotal"),
+            "created": obj.get("created"),
+            "modified": obj.get("modified"),
+            "decisionsMade": obj.get("decisionsMade"),
+            "decisionsTotal": obj.get("decisionsTotal"),
+            "due": obj.get("due"),
+            "signed": obj.get("signed"),
+            "reviewer": Reviewer.from_dict(obj.get("reviewer")) if obj.get("reviewer") is not None else None,
+            "reassignment": Reassignment.from_dict(obj.get("reassignment")) if obj.get("reassignment") is not None else None,
+            "hasErrors": obj.get("hasErrors"),
+            "errorMessage": obj.get("errorMessage"),
+            "phase": obj.get("phase")
         })
         return _obj
+
+

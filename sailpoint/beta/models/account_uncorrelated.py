@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt
@@ -27,29 +29,22 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccountUncorrelated(BaseModel):
     """
     AccountUncorrelated
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     identity: AccountUncorrelatedIdentity
     source: AccountUncorrelatedSource
     account: AccountUncorrelatedAccount
-    entitlement_count: Optional[StrictInt] = Field(
-        default=None,
-        description="The number of entitlements associated with this account.",
-        alias="entitlementCount")
-    __properties: ClassVar[List[str]] = [
-        "identity", "source", "account", "entitlementCount"
-    ]
+    entitlement_count: Optional[StrictInt] = Field(default=None, description="The number of entitlements associated with this account.", alias="entitlementCount")
+    __properties: ClassVar[List[str]] = ["identity", "source", "account", "entitlementCount"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -77,7 +72,8 @@ class AccountUncorrelated(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of identity
@@ -101,16 +97,11 @@ class AccountUncorrelated(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "identity":
-            AccountUncorrelatedIdentity.from_dict(obj.get("identity"))
-            if obj.get("identity") is not None else None,
-            "source":
-            AccountUncorrelatedSource.from_dict(obj.get("source"))
-            if obj.get("source") is not None else None,
-            "account":
-            AccountUncorrelatedAccount.from_dict(obj.get("account"))
-            if obj.get("account") is not None else None,
-            "entitlementCount":
-            obj.get("entitlementCount")
+            "identity": AccountUncorrelatedIdentity.from_dict(obj.get("identity")) if obj.get("identity") is not None else None,
+            "source": AccountUncorrelatedSource.from_dict(obj.get("source")) if obj.get("source") is not None else None,
+            "account": AccountUncorrelatedAccount.from_dict(obj.get("account")) if obj.get("account") is not None else None,
+            "entitlementCount": obj.get("entitlementCount")
         })
         return _obj
+
+

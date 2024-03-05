@@ -11,13 +11,15 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
+from pydantic import BaseModel, StrictStr, field_validator
 from pydantic import Field
 from sailpoint.v3.models.identity_attribute import IdentityAttribute
 from sailpoint.v3.models.identity_reference import IdentityReference
@@ -26,36 +28,36 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class PublicIdentity(BaseModel):
     """
     Details about a public identity
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="Identity id")
-    name: Optional[StrictStr] = Field(
-        default=None, description="Human-readable display name of identity.")
-    alias: Optional[StrictStr] = Field(
-        default=None,
-        description="Alternate unique identifier for the identity.")
-    email: Optional[StrictStr] = Field(
-        default=None, description="Email address of identity.")
-    status: Optional[StrictStr] = Field(
-        default=None, description="The lifecycle status for the identity")
+    name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of identity.")
+    alias: Optional[StrictStr] = Field(default=None, description="Alternate unique identifier for the identity.")
+    email: Optional[StrictStr] = Field(default=None, description="Email address of identity.")
+    status: Optional[StrictStr] = Field(default=None, description="The lifecycle status for the identity")
+    identity_state: Optional[StrictStr] = Field(default=None, description="The current state of the identity, which determines how Identity Security Cloud interacts with the identity. An identity that is Active will be included identity picklists in Request Center, identity processing, and more. Identities that are Inactive will be excluded from these features. ", alias="identityState")
     manager: Optional[IdentityReference] = None
-    attributes: Optional[List[IdentityAttribute]] = Field(
-        default=None,
-        description="The public identity attributes of the identity")
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "alias", "email", "status", "manager", "attributes"
-    ]
+    attributes: Optional[List[IdentityAttribute]] = Field(default=None, description="The public identity attributes of the identity")
+    __properties: ClassVar[List[str]] = ["id", "name", "alias", "email", "status", "identityState", "manager", "attributes"]
+
+    @field_validator('identity_state')
+    def identity_state_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in ('ACTIVE', 'INACTIVE_SHORT_TERM', 'INACTIVE_LONG_TERM', 'null'):
+            raise ValueError("must be one of enum values ('ACTIVE', 'INACTIVE_SHORT_TERM', 'INACTIVE_LONG_TERM', 'null')")
+        return value
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -83,7 +85,8 @@ class PublicIdentity(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of manager
@@ -106,6 +109,11 @@ class PublicIdentity(BaseModel):
         if self.status is None and "status" in self.model_fields_set:
             _dict['status'] = None
 
+        # set to None if identity_state (nullable) is None
+        # and model_fields_set contains the field
+        if self.identity_state is None and "identity_state" in self.model_fields_set:
+            _dict['identityState'] = None
+
         # set to None if manager (nullable) is None
         # and model_fields_set contains the field
         if self.manager is None and "manager" in self.model_fields_set:
@@ -123,22 +131,15 @@ class PublicIdentity(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "alias":
-            obj.get("alias"),
-            "email":
-            obj.get("email"),
-            "status":
-            obj.get("status"),
-            "manager":
-            IdentityReference.from_dict(obj.get("manager"))
-            if obj.get("manager") is not None else None,
-            "attributes": [
-                IdentityAttribute.from_dict(_item)
-                for _item in obj.get("attributes")
-            ] if obj.get("attributes") is not None else None
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "alias": obj.get("alias"),
+            "email": obj.get("email"),
+            "status": obj.get("status"),
+            "identityState": obj.get("identityState"),
+            "manager": IdentityReference.from_dict(obj.get("manager")) if obj.get("manager") is not None else None,
+            "attributes": [IdentityAttribute.from_dict(_item) for _item in obj.get("attributes")] if obj.get("attributes") is not None else None
         })
         return _obj
+
+

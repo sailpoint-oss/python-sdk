@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt
@@ -24,22 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ApprovalSummary(BaseModel):
     """
     ApprovalSummary
-    """
-
-  # noqa: E501
-    pending: Optional[StrictInt] = Field(
-        default=None,
-        description="The number of pending access requests approvals.")
-    approved: Optional[StrictInt] = Field(
-        default=None,
-        description="The number of approved access requests approvals.")
-    rejected: Optional[StrictInt] = Field(
-        default=None,
-        description="The number of rejected access requests approvals.")
+    """ # noqa: E501
+    pending: Optional[StrictInt] = Field(default=None, description="The number of pending access requests approvals.")
+    approved: Optional[StrictInt] = Field(default=None, description="The number of approved access requests approvals.")
+    rejected: Optional[StrictInt] = Field(default=None, description="The number of rejected access requests approvals.")
     __properties: ClassVar[List[str]] = ["pending", "approved", "rejected"]
 
     model_config = {
@@ -47,6 +40,7 @@ class ApprovalSummary(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -74,7 +68,8 @@ class ApprovalSummary(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -94,3 +89,5 @@ class ApprovalSummary(BaseModel):
             "rejected": obj.get("rejected")
         })
         return _obj
+
+

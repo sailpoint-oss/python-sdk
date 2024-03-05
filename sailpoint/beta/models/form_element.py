@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,31 +26,16 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class FormElement(BaseModel):
     """
     FormElement
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="Form element identifier.")
-    element_type: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "FormElementType value.  TEXT FormElementTypeText TOGGLE FormElementTypeToggle TEXTAREA FormElementTypeTextArea HIDDEN FormElementTypeHidden PHONE FormElementTypePhone EMAIL FormElementTypeEmail SELECT FormElementTypeSelect DATE FormElementTypeDate SECTION FormElementTypeSection COLUMNS FormElementTypeColumns",
-        alias="elementType")
-    config: Optional[Dict[str,
-                          Dict[str,
-                               Any]]] = Field(default=None,
-                                              description="Config object.")
-    key: Optional[StrictStr] = Field(default=None,
-                                     description="Technical key.")
-    validations: Optional[Dict[str, Any]] = Field(
-        default=None, description="Set of FormElementValidation items.")
-    __properties: ClassVar[List[str]] = [
-        "id", "elementType", "config", "key", "validations"
-    ]
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="Form element identifier.")
+    element_type: Optional[StrictStr] = Field(default=None, description="FormElementType value.  TEXT FormElementTypeText TOGGLE FormElementTypeToggle TEXTAREA FormElementTypeTextArea HIDDEN FormElementTypeHidden PHONE FormElementTypePhone EMAIL FormElementTypeEmail SELECT FormElementTypeSelect DATE FormElementTypeDate SECTION FormElementTypeSection COLUMNS FormElementTypeColumns", alias="elementType")
+    config: Optional[Dict[str, Dict[str, Any]]] = Field(default=None, description="Config object.")
+    key: Optional[StrictStr] = Field(default=None, description="Technical key.")
+    validations: Optional[Dict[str, Any]] = Field(default=None, description="Set of FormElementValidation items.")
+    __properties: ClassVar[List[str]] = ["id", "elementType", "config", "key", "validations"]
 
     @field_validator('element_type')
     def element_type_validate_enum(cls, value):
@@ -56,11 +43,8 @@ class FormElement(BaseModel):
         if value is None:
             return value
 
-        if value not in ('TEXT', 'TOGGLE', 'TEXTAREA', 'HIDDEN', 'PHONE',
-                         'EMAIL', 'SELECT', 'DATE', 'SECTION', 'COLUMNS'):
-            raise ValueError(
-                "must be one of enum values ('TEXT', 'TOGGLE', 'TEXTAREA', 'HIDDEN', 'PHONE', 'EMAIL', 'SELECT', 'DATE', 'SECTION', 'COLUMNS')"
-            )
+        if value not in ('TEXT', 'TOGGLE', 'TEXTAREA', 'HIDDEN', 'PHONE', 'EMAIL', 'SELECT', 'DATE', 'SECTION', 'COLUMNS'):
+            raise ValueError("must be one of enum values ('TEXT', 'TOGGLE', 'TEXTAREA', 'HIDDEN', 'PHONE', 'EMAIL', 'SELECT', 'DATE', 'SECTION', 'COLUMNS')")
         return value
 
     model_config = {
@@ -68,6 +52,7 @@ class FormElement(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -95,7 +80,8 @@ class FormElement(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -117,3 +103,5 @@ class FormElement(BaseModel):
             "validations": obj.get("validations")
         })
         return _obj
+
+

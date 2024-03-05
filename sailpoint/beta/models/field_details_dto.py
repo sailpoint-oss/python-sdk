@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
@@ -24,40 +26,24 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class FieldDetailsDto(BaseModel):
     """
     FieldDetailsDto
-    """
-
-  # noqa: E501
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="The name of the attribute.")
-    transform: Optional[Dict[str, Any]] = Field(
-        default=None, description="The transform to apply to the field")
-    attributes: Optional[Dict[str, Any]] = Field(
-        default=None, description="Attributes required for the transform")
-    is_required: Optional[StrictBool] = Field(
-        default=False,
-        description="Flag indicating whether or not the attribute is required.",
-        alias="isRequired")
-    type: Optional[StrictStr] = Field(default=None,
-                                      description="The type of the attribute.")
-    is_multi_valued: Optional[StrictBool] = Field(
-        default=False,
-        description=
-        "Flag indicating whether or not the attribute is multi-valued.",
-        alias="isMultiValued")
-    __properties: ClassVar[List[str]] = [
-        "name", "transform", "attributes", "isRequired", "type",
-        "isMultiValued"
-    ]
+    """ # noqa: E501
+    name: Optional[StrictStr] = Field(default=None, description="The name of the attribute.")
+    transform: Optional[Dict[str, Any]] = Field(default=None, description="The transform to apply to the field")
+    attributes: Optional[Dict[str, Any]] = Field(default=None, description="Attributes required for the transform")
+    is_required: Optional[StrictBool] = Field(default=False, description="Flag indicating whether or not the attribute is required.", alias="isRequired")
+    type: Optional[StrictStr] = Field(default=None, description="The type of the attribute.")
+    is_multi_valued: Optional[StrictBool] = Field(default=False, description="Flag indicating whether or not the attribute is multi-valued.", alias="isMultiValued")
+    __properties: ClassVar[List[str]] = ["name", "transform", "attributes", "isRequired", "type", "isMultiValued"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -103,19 +89,13 @@ class FieldDetailsDto(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name":
-            obj.get("name"),
-            "transform":
-            obj.get("transform"),
-            "attributes":
-            obj.get("attributes"),
-            "isRequired":
-            obj.get("isRequired")
-            if obj.get("isRequired") is not None else False,
-            "type":
-            obj.get("type"),
-            "isMultiValued":
-            obj.get("isMultiValued")
-            if obj.get("isMultiValued") is not None else False
+            "name": obj.get("name"),
+            "transform": obj.get("transform"),
+            "attributes": obj.get("attributes"),
+            "isRequired": obj.get("isRequired") if obj.get("isRequired") is not None else False,
+            "type": obj.get("type"),
+            "isMultiValued": obj.get("isMultiValued") if obj.get("isMultiValued") is not None else False
         })
         return _obj
+
+

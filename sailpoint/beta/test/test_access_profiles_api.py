@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 
 from sailpoint.beta.api.access_profiles_api import AccessProfilesApi
@@ -71,6 +72,13 @@ class TestAccessProfilesApi(unittest.TestCase):
         """Test case for patch_access_profile
 
         Patch a specified Access Profile
+        """
+        pass
+
+    def test_update_access_profiles_in_bulk(self) -> None:
+        """Test case for update_access_profiles_in_bulk
+
+        Update Access Profile(s) requestable field.
         """
         pass
 

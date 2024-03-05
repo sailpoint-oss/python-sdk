@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -26,52 +28,24 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ProvisioningCompletedAccountRequestsInner(BaseModel):
     """
     ProvisioningCompletedAccountRequestsInner
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     source: ProvisioningCompletedAccountRequestsInnerSource
-    account_id: Optional[StrictStr] = Field(
-        default=None,
-        description="The unique idenfier of the account being provisioned.",
-        alias="accountId")
-    account_operation: StrictStr = Field(
-        description=
-        "The provisioning operation; typically Create, Modify, Enable, Disable, Unlock, or Delete.",
-        alias="accountOperation")
-    provisioning_result: Dict[str, Any] = Field(
-        description=
-        "The overall result of the provisioning transaction; this could be success, pending, failed, etc.",
-        alias="provisioningResult")
-    provisioning_target: StrictStr = Field(
-        description=
-        "The name of the provisioning channel selected; this could be the same as the source, or could be a Service Desk Integration Module (SDIM).",
-        alias="provisioningTarget")
-    ticket_id: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "A reference to a tracking number, if this is sent to a Service Desk Integration Module (SDIM).",
-        alias="ticketId")
-    attribute_requests: Optional[List[
-        ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner]] = Field(
-            default=None,
-            description=
-            "A list of attributes as part of the provisioning transaction.",
-            alias="attributeRequests")
-    __properties: ClassVar[List[str]] = [
-        "source", "accountId", "accountOperation", "provisioningResult",
-        "provisioningTarget", "ticketId", "attributeRequests"
-    ]
+    account_id: Optional[StrictStr] = Field(default=None, description="The unique idenfier of the account being provisioned.", alias="accountId")
+    account_operation: StrictStr = Field(description="The provisioning operation; typically Create, Modify, Enable, Disable, Unlock, or Delete.", alias="accountOperation")
+    provisioning_result: Dict[str, Any] = Field(description="The overall result of the provisioning transaction; this could be success, pending, failed, etc.", alias="provisioningResult")
+    provisioning_target: StrictStr = Field(description="The name of the provisioning channel selected; this could be the same as the source, or could be a Service Desk Integration Module (SDIM).", alias="provisioningTarget")
+    ticket_id: Optional[StrictStr] = Field(default=None, description="A reference to a tracking number, if this is sent to a Service Desk Integration Module (SDIM).", alias="ticketId")
+    attribute_requests: Optional[List[ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner]] = Field(default=None, description="A list of attributes as part of the provisioning transaction.", alias="attributeRequests")
+    __properties: ClassVar[List[str]] = ["source", "accountId", "accountOperation", "provisioningResult", "provisioningTarget", "ticketId", "attributeRequests"]
 
     @field_validator('provisioning_result')
     def provisioning_result_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('SUCCESS', 'PENDING', 'FAILED'):
-            raise ValueError(
-                "must be one of enum values ('SUCCESS', 'PENDING', 'FAILED')")
+            raise ValueError("must be one of enum values ('SUCCESS', 'PENDING', 'FAILED')")
         return value
 
     model_config = {
@@ -79,6 +53,7 @@ class ProvisioningCompletedAccountRequestsInner(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -106,7 +81,8 @@ class ProvisioningCompletedAccountRequestsInner(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of source
@@ -141,22 +117,14 @@ class ProvisioningCompletedAccountRequestsInner(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "source":
-            ProvisioningCompletedAccountRequestsInnerSource.from_dict(
-                obj.get("source")) if obj.get("source") is not None else None,
-            "accountId":
-            obj.get("accountId"),
-            "accountOperation":
-            obj.get("accountOperation"),
-            "provisioningResult":
-            obj.get("provisioningResult"),
-            "provisioningTarget":
-            obj.get("provisioningTarget"),
-            "ticketId":
-            obj.get("ticketId"),
-            "attributeRequests": [
-                ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner
-                .from_dict(_item) for _item in obj.get("attributeRequests")
-            ] if obj.get("attributeRequests") is not None else None
+            "source": ProvisioningCompletedAccountRequestsInnerSource.from_dict(obj.get("source")) if obj.get("source") is not None else None,
+            "accountId": obj.get("accountId"),
+            "accountOperation": obj.get("accountOperation"),
+            "provisioningResult": obj.get("provisioningResult"),
+            "provisioningTarget": obj.get("provisioningTarget"),
+            "ticketId": obj.get("ticketId"),
+            "attributeRequests": [ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner.from_dict(_item) for _item in obj.get("attributeRequests")] if obj.get("attributeRequests") is not None else None
         })
         return _obj
+
+

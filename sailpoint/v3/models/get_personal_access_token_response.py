@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -18,7 +19,7 @@ import json
 
 from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
+from pydantic import BaseModel, StrictBool, StrictStr
 from pydantic import Field
 from sailpoint.v3.models.pat_owner import PatOwner
 try:
@@ -26,42 +27,25 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class GetPersonalAccessTokenResponse(BaseModel):
     """
     GetPersonalAccessTokenResponse
-    """
-
-  # noqa: E501
-    id: StrictStr = Field(
-        description=
-        "The ID of the personal access token (to be used as the username for Basic Auth)."
-    )
-    name: StrictStr = Field(
-        description=
-        "The name of the personal access token. Cannot be the same as other personal access tokens owned by a user."
-    )
-    scope: Optional[List[StrictStr]] = Field(
-        description="Scopes of the personal  access token.")
+    """ # noqa: E501
+    id: StrictStr = Field(description="The ID of the personal access token (to be used as the username for Basic Auth).")
+    name: StrictStr = Field(description="The name of the personal access token. Cannot be the same as other personal access tokens owned by a user.")
+    scope: Optional[List[StrictStr]] = Field(description="Scopes of the personal  access token.")
     owner: PatOwner
-    created: datetime = Field(
-        description=
-        "The date and time, down to the millisecond, when this personal access token was created."
-    )
-    last_used: Optional[datetime] = Field(
-        default=None,
-        description=
-        "The date and time, down to the millisecond, when this personal access token was last used to generate an access token. This timestamp does not get updated on every PAT usage, but only once a day. This property can be useful for identifying which PATs are no longer actively used and can be removed.",
-        alias="lastUsed")
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "scope", "owner", "created", "lastUsed"
-    ]
+    created: datetime = Field(description="The date and time, down to the millisecond, when this personal access token was created.")
+    last_used: Optional[datetime] = Field(default=None, description="The date and time, down to the millisecond, when this personal access token was last used to generate an access token. This timestamp does not get updated on every PAT usage, but only once a day. This property can be useful for identifying which PATs are no longer actively used and can be removed.", alias="lastUsed")
+    managed: Optional[StrictBool] = Field(default=False, description="If true, this token is managed by the SailPoint platform, and is not visible in the user interface. For example, Workflows will create managed personal access tokens for users who create workflows.")
+    __properties: ClassVar[List[str]] = ["id", "name", "scope", "owner", "created", "lastUsed", "managed"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -89,7 +73,8 @@ class GetPersonalAccessTokenResponse(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of owner
@@ -117,18 +102,14 @@ class GetPersonalAccessTokenResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "scope":
-            obj.get("scope"),
-            "owner":
-            PatOwner.from_dict(obj.get("owner"))
-            if obj.get("owner") is not None else None,
-            "created":
-            obj.get("created"),
-            "lastUsed":
-            obj.get("lastUsed")
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "scope": obj.get("scope"),
+            "owner": PatOwner.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
+            "created": obj.get("created"),
+            "lastUsed": obj.get("lastUsed"),
+            "managed": obj.get("managed") if obj.get("managed") is not None else False
         })
         return _obj
+
+

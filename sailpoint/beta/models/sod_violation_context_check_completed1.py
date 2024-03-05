@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -25,20 +27,14 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class SodViolationContextCheckCompleted1(BaseModel):
     """
     An object referencing a completed SOD violation check
     """ # noqa: E501
-    state: Optional[StrictStr] = Field(
-        default=None, description="The status of SOD violation check")
-    uuid: Optional[StrictStr] = Field(
-        default=None, description="The id of the Violation check event")
-    violation_check_result: Optional[SodViolationCheckResult1] = Field(
-        default=None, alias="violationCheckResult")
-    __properties: ClassVar[List[str]] = [
-        "state", "uuid", "violationCheckResult"
-    ]
+    state: Optional[StrictStr] = Field(default=None, description="The status of SOD violation check")
+    uuid: Optional[StrictStr] = Field(default=None, description="The id of the Violation check event")
+    violation_check_result: Optional[SodViolationCheckResult1] = Field(default=None, alias="violationCheckResult")
+    __properties: ClassVar[List[str]] = ["state", "uuid", "violationCheckResult"]
 
     @field_validator('state')
     def state_validate_enum(cls, value):
@@ -55,6 +51,7 @@ class SodViolationContextCheckCompleted1(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -82,14 +79,13 @@ class SodViolationContextCheckCompleted1(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of violation_check_result
         if self.violation_check_result:
-            _dict[
-                'violationCheckResult'] = self.violation_check_result.to_dict(
-                )
+            _dict['violationCheckResult'] = self.violation_check_result.to_dict()
         return _dict
 
     @classmethod
@@ -102,12 +98,10 @@ class SodViolationContextCheckCompleted1(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "state":
-            obj.get("state"),
-            "uuid":
-            obj.get("uuid"),
-            "violationCheckResult":
-            SodViolationCheckResult1.from_dict(obj.get("violationCheckResult"))
-            if obj.get("violationCheckResult") is not None else None
+            "state": obj.get("state"),
+            "uuid": obj.get("uuid"),
+            "violationCheckResult": SodViolationCheckResult1.from_dict(obj.get("violationCheckResult")) if obj.get("violationCheckResult") is not None else None
         })
         return _obj
+
+

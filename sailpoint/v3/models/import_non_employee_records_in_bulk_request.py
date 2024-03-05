@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Union
 from pydantic import BaseModel, StrictBytes, StrictStr
@@ -23,13 +25,10 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ImportNonEmployeeRecordsInBulkRequest(BaseModel):
     """
     ImportNonEmployeeRecordsInBulkRequest
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     data: Union[StrictBytes, StrictStr]
     __properties: ClassVar[List[str]] = ["data"]
 
@@ -38,6 +37,7 @@ class ImportNonEmployeeRecordsInBulkRequest(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -65,7 +65,8 @@ class ImportNonEmployeeRecordsInBulkRequest(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -79,5 +80,9 @@ class ImportNonEmployeeRecordsInBulkRequest(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({"data": obj.get("data")})
+        _obj = cls.model_validate({
+            "data": obj.get("data")
+        })
         return _obj
+
+

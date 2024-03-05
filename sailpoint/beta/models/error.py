@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -25,31 +27,21 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class Error(BaseModel):
     """
     Error
-    """
-
-  # noqa: E501
-    detail_code: Optional[StrictStr] = Field(
-        default=None,
-        description="DetailCode is the text of the status code returned",
-        alias="detailCode")
+    """ # noqa: E501
+    detail_code: Optional[StrictStr] = Field(default=None, description="DetailCode is the text of the status code returned", alias="detailCode")
     messages: Optional[List[ErrorMessage]] = None
-    tracking_id: Optional[StrictStr] = Field(
-        default=None,
-        description="TrackingID is the request tracking unique identifier",
-        alias="trackingId")
-    __properties: ClassVar[List[str]] = [
-        "detailCode", "messages", "trackingId"
-    ]
+    tracking_id: Optional[StrictStr] = Field(default=None, description="TrackingID is the request tracking unique identifier", alias="trackingId")
+    __properties: ClassVar[List[str]] = ["detailCode", "messages", "trackingId"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -77,7 +69,8 @@ class Error(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in messages (list)
@@ -99,12 +92,10 @@ class Error(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "detailCode":
-            obj.get("detailCode"),
-            "messages":
-            [ErrorMessage.from_dict(_item) for _item in obj.get("messages")]
-            if obj.get("messages") is not None else None,
-            "trackingId":
-            obj.get("trackingId")
+            "detailCode": obj.get("detailCode"),
+            "messages": [ErrorMessage.from_dict(_item) for _item in obj.get("messages")] if obj.get("messages") is not None else None,
+            "trackingId": obj.get("trackingId")
         })
         return _obj
+
+

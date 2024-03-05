@@ -11,14 +11,13 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.access_request_post_approval_requested_items_status_inner_approval_info_inner import AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner
 
-
-class TestAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner(
-        unittest.TestCase):
+class TestAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner(unittest.TestCase):
     """AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner unit test stubs"""
 
     def setUp(self):
@@ -27,9 +26,7 @@ class TestAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner(
     def tearDown(self):
         pass
 
-    def make_instance(
-        self, include_optional
-    ) -> AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner:
+    def make_instance(self, include_optional) -> AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner:
         """Test AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -54,12 +51,10 @@ class TestAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner(
         )
         """
 
-    def testAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner(
-            self):
+    def testAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner(self):
         """Test AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,31 +26,20 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccessRequestDynamicApprover1(BaseModel):
     """
     AccessRequestDynamicApprover1
-    """
-
-  # noqa: E501
-    id: StrictStr = Field(
-        description=
-        "The unique ID of the identity to add to the approver list for the access request."
-    )
-    name: StrictStr = Field(
-        description=
-        "The name of the identity to add to the approver list for the access request."
-    )
-    type: Dict[str,
-               Any] = Field(description="The type of object being referenced.")
+    """ # noqa: E501
+    id: StrictStr = Field(description="The unique ID of the identity to add to the approver list for the access request.")
+    name: StrictStr = Field(description="The name of the identity to add to the approver list for the access request.")
+    type: Dict[str, Any] = Field(description="The type of object being referenced.")
     __properties: ClassVar[List[str]] = ["id", "name", "type"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('IDENTITY', 'GOVERNANCE_GROUP'):
-            raise ValueError(
-                "must be one of enum values ('IDENTITY', 'GOVERNANCE_GROUP')")
+            raise ValueError("must be one of enum values ('IDENTITY', 'GOVERNANCE_GROUP')")
         return value
 
     model_config = {
@@ -56,6 +47,7 @@ class AccessRequestDynamicApprover1(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -83,7 +75,8 @@ class AccessRequestDynamicApprover1(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -103,3 +96,5 @@ class AccessRequestDynamicApprover1(BaseModel):
             "type": obj.get("type")
         })
         return _obj
+
+

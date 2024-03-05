@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -25,34 +27,24 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class Form(BaseModel):
     """
     Form
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="ID of the form")
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="Name of the form")
-    title: Optional[StrictStr] = Field(default=None,
-                                       description="The form title")
-    subtitle: Optional[StrictStr] = Field(default=None,
-                                          description="The form subtitle.")
-    target_user: Optional[StrictStr] = Field(
-        default=None,
-        description="The name of the user that should be shown this form",
-        alias="targetUser")
+    name: Optional[StrictStr] = Field(default=None, description="Name of the form")
+    title: Optional[StrictStr] = Field(default=None, description="The form title")
+    subtitle: Optional[StrictStr] = Field(default=None, description="The form subtitle.")
+    target_user: Optional[StrictStr] = Field(default=None, description="The name of the user that should be shown this form", alias="targetUser")
     sections: Optional[SectionDetails] = None
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "title", "subtitle", "targetUser", "sections"
-    ]
+    __properties: ClassVar[List[str]] = ["id", "name", "title", "subtitle", "targetUser", "sections"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -80,7 +72,8 @@ class Form(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of sections
@@ -98,18 +91,13 @@ class Form(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "title":
-            obj.get("title"),
-            "subtitle":
-            obj.get("subtitle"),
-            "targetUser":
-            obj.get("targetUser"),
-            "sections":
-            SectionDetails.from_dict(obj.get("sections"))
-            if obj.get("sections") is not None else None
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "title": obj.get("title"),
+            "subtitle": obj.get("subtitle"),
+            "targetUser": obj.get("targetUser"),
+            "sections": SectionDetails.from_dict(obj.get("sections")) if obj.get("sections") is not None else None
         })
         return _obj
+
+

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -25,15 +27,11 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class CampaignAlert(BaseModel):
     """
     CampaignAlert
-    """
-
-  # noqa: E501
-    level: Optional[StrictStr] = Field(
-        default=None, description="Denotes the level of the message")
+    """ # noqa: E501
+    level: Optional[StrictStr] = Field(default=None, description="Denotes the level of the message")
     localizations: Optional[List[ErrorMessageDto]] = None
     __properties: ClassVar[List[str]] = ["level", "localizations"]
 
@@ -44,8 +42,7 @@ class CampaignAlert(BaseModel):
             return value
 
         if value not in ('ERROR', 'WARN', 'INFO'):
-            raise ValueError(
-                "must be one of enum values ('ERROR', 'WARN', 'INFO')")
+            raise ValueError("must be one of enum values ('ERROR', 'WARN', 'INFO')")
         return value
 
     model_config = {
@@ -53,6 +50,7 @@ class CampaignAlert(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -80,7 +78,8 @@ class CampaignAlert(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in localizations (list)
@@ -102,11 +101,9 @@ class CampaignAlert(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "level":
-            obj.get("level"),
-            "localizations": [
-                ErrorMessageDto.from_dict(_item)
-                for _item in obj.get("localizations")
-            ] if obj.get("localizations") is not None else None
+            "level": obj.get("level"),
+            "localizations": [ErrorMessageDto.from_dict(_item) for _item in obj.get("localizations")] if obj.get("localizations") is not None else None
         })
         return _obj
+
+

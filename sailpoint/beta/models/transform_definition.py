@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,19 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class TransformDefinition(BaseModel):
     """
     TransformDefinition
-    """
-
-  # noqa: E501
-    type: Optional[StrictStr] = Field(
-        default=None, description="The type of the transform definition.")
-    attributes: Optional[Dict[str, Any]] = Field(
-        default=None,
-        description=
-        "Arbitrary key-value pairs to store any metadata for the object")
+    """ # noqa: E501
+    type: Optional[StrictStr] = Field(default=None, description="The type of the transform definition.")
+    attributes: Optional[Dict[str, Any]] = Field(default=None, description="Arbitrary key-value pairs to store any metadata for the object")
     __properties: ClassVar[List[str]] = ["type", "attributes"]
 
     model_config = {
@@ -44,6 +39,7 @@ class TransformDefinition(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -71,7 +67,8 @@ class TransformDefinition(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if attributes (nullable) is None
@@ -95,3 +92,5 @@ class TransformDefinition(BaseModel):
             "attributes": obj.get("attributes")
         })
         return _obj
+
+

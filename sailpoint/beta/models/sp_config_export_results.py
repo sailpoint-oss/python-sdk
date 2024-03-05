@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -27,33 +28,24 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class SpConfigExportResults(BaseModel):
     """
     Response model for config export download response.
     """ # noqa: E501
-    version: Optional[StrictInt] = Field(
-        default=None,
-        description="Current version of the export results object.")
-    timestamp: Optional[datetime] = Field(
-        default=None, description="Time the export was completed.")
-    tenant: Optional[StrictStr] = Field(
-        default=None,
-        description="Name of the tenant where this export originated.")
-    description: Optional[StrictStr] = Field(
-        default=None,
-        description="Optional user defined description/name for export job.")
+    version: Optional[StrictInt] = Field(default=None, description="Current version of the export results object.")
+    timestamp: Optional[datetime] = Field(default=None, description="Time the export was completed.")
+    tenant: Optional[StrictStr] = Field(default=None, description="Name of the tenant where this export originated.")
+    description: Optional[StrictStr] = Field(default=None, description="Optional user defined description/name for export job.")
     options: Optional[ExportOptions] = None
     objects: Optional[List[ConfigObject]] = None
-    __properties: ClassVar[List[str]] = [
-        "version", "timestamp", "tenant", "description", "options", "objects"
-    ]
+    __properties: ClassVar[List[str]] = ["version", "timestamp", "tenant", "description", "options", "objects"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -81,7 +73,8 @@ class SpConfigExportResults(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of options
@@ -106,19 +99,13 @@ class SpConfigExportResults(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "version":
-            obj.get("version"),
-            "timestamp":
-            obj.get("timestamp"),
-            "tenant":
-            obj.get("tenant"),
-            "description":
-            obj.get("description"),
-            "options":
-            ExportOptions.from_dict(obj.get("options"))
-            if obj.get("options") is not None else None,
-            "objects":
-            [ConfigObject.from_dict(_item) for _item in obj.get("objects")]
-            if obj.get("objects") is not None else None
+            "version": obj.get("version"),
+            "timestamp": obj.get("timestamp"),
+            "tenant": obj.get("tenant"),
+            "description": obj.get("description"),
+            "options": ExportOptions.from_dict(obj.get("options")) if obj.get("options") is not None else None,
+            "objects": [ConfigObject.from_dict(_item) for _item in obj.get("objects")] if obj.get("objects") is not None else None
         })
         return _obj
+
+

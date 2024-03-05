@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,25 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class WorkgroupMemberDeleteItem(BaseModel):
     """
     WorkgroupMemberDeleteItem
-    """
-
-  # noqa: E501
-    id: StrictStr = Field(
-        description="Identifier of identity in bulk member add /remove request."
-    )
-    status: StrictStr = Field(
-        description=
-        " The HTTP response status code returned for an individual  member that is requested for deletion during a bulk delete operation.  > 204   - Identity is removed from Governance Group members list.  > 404   - Identity is not member of Governance Group. "
-    )
-    description: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Human readable status description and containing additional context information about success or failures etc. "
-    )
+    """ # noqa: E501
+    id: StrictStr = Field(description="Identifier of identity in bulk member add /remove request.")
+    status: StrictStr = Field(description=" The HTTP response status code returned for an individual  member that is requested for deletion during a bulk delete operation.  > 204   - Identity is removed from Governance Group members list.  > 404   - Identity is not member of Governance Group. ")
+    description: Optional[StrictStr] = Field(default=None, description="Human readable status description and containing additional context information about success or failures etc. ")
     __properties: ClassVar[List[str]] = ["id", "status", "description"]
 
     model_config = {
@@ -50,6 +40,7 @@ class WorkgroupMemberDeleteItem(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -77,7 +68,8 @@ class WorkgroupMemberDeleteItem(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -97,3 +89,5 @@ class WorkgroupMemberDeleteItem(BaseModel):
             "description": obj.get("description")
         })
         return _obj
+
+

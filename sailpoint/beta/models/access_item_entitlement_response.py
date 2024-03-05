@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,48 +26,27 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccessItemEntitlementResponse(BaseModel):
     """
     AccessItemEntitlementResponse
-    """
-
-  # noqa: E501
-    access_type: Optional[StrictStr] = Field(
-        default=None,
-        description="the access item type. entitlement in this case",
-        alias="accessType")
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="the access item id")
-    attribute: Optional[StrictStr] = Field(
-        default=None, description="the entitlement attribute")
-    value: Optional[StrictStr] = Field(default=None,
-                                       description="the associated value")
-    entitlement_type: Optional[StrictStr] = Field(
-        default=None,
-        description="the type of entitlement",
-        alias="entitlementType")
-    source_name: Optional[StrictStr] = Field(
-        default=None, description="the name of the source", alias="sourceName")
-    source_id: Optional[StrictStr] = Field(default=None,
-                                           description="the id of the source",
-                                           alias="sourceId")
-    description: Optional[StrictStr] = Field(
-        default=None, description="the description for the entitlment")
-    display_name: Optional[StrictStr] = Field(
-        default=None,
-        description="the display name of the identity",
-        alias="displayName")
-    __properties: ClassVar[List[str]] = [
-        "accessType", "id", "attribute", "value", "entitlementType",
-        "sourceName", "sourceId", "description", "displayName"
-    ]
+    """ # noqa: E501
+    access_type: Optional[StrictStr] = Field(default=None, description="the access item type. entitlement in this case", alias="accessType")
+    id: Optional[StrictStr] = Field(default=None, description="the access item id")
+    attribute: Optional[StrictStr] = Field(default=None, description="the entitlement attribute")
+    value: Optional[StrictStr] = Field(default=None, description="the associated value")
+    entitlement_type: Optional[StrictStr] = Field(default=None, description="the type of entitlement", alias="entitlementType")
+    source_name: Optional[StrictStr] = Field(default=None, description="the name of the source", alias="sourceName")
+    source_id: Optional[StrictStr] = Field(default=None, description="the id of the source", alias="sourceId")
+    description: Optional[StrictStr] = Field(default=None, description="the description for the entitlment")
+    display_name: Optional[StrictStr] = Field(default=None, description="the display name of the identity", alias="displayName")
+    __properties: ClassVar[List[str]] = ["accessType", "id", "attribute", "value", "entitlementType", "sourceName", "sourceId", "description", "displayName"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -93,7 +74,8 @@ class AccessItemEntitlementResponse(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -119,3 +101,5 @@ class AccessItemEntitlementResponse(BaseModel):
             "displayName": obj.get("displayName")
         })
         return _obj
+
+

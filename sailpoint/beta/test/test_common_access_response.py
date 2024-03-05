@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.common_access_response import CommonAccessResponse
-
 
 class TestCommonAccessResponse(unittest.TestCase):
     """CommonAccessResponse unit test stubs"""
@@ -36,6 +36,7 @@ class TestCommonAccessResponse(unittest.TestCase):
         model = CommonAccessResponse()
         if include_optional:
             return CommonAccessResponse(
+                id = '555ab47a-0d32-4813-906f-adf3567de6a4',
                 access = sailpoint.beta.models.common_access_item_access.CommonAccessItemAccess(
                     id = '', 
                     type = 'ACCESS_PROFILE', 
@@ -46,7 +47,8 @@ class TestCommonAccessResponse(unittest.TestCase):
                 status = '',
                 last_updated = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 reviewed_by_user = True,
-                last_reviewed = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
+                last_reviewed = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                created_by_user = False
             )
         else:
             return CommonAccessResponse(
@@ -57,7 +59,6 @@ class TestCommonAccessResponse(unittest.TestCase):
         """Test CommonAccessResponse"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

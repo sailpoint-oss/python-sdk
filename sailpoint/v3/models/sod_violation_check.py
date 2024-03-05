@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -25,18 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class SodViolationCheck(BaseModel):
     """
     An object referencing an SOD violation check
-    """
-
-  # noqa: E501
-    request_id: StrictStr = Field(description="The id of the original request",
-                                  alias="requestId")
-    created: Optional[datetime] = Field(
-        default=None,
-        description="The date-time when this request was created.")
+    """ # noqa: E501
+    request_id: StrictStr = Field(description="The id of the original request", alias="requestId")
+    created: Optional[datetime] = Field(default=None, description="The date-time when this request was created.")
     __properties: ClassVar[List[str]] = ["requestId", "created"]
 
     model_config = {
@@ -44,6 +39,7 @@ class SodViolationCheck(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -93,3 +89,5 @@ class SodViolationCheck(BaseModel):
             "created": obj.get("created")
         })
         return _obj
+
+

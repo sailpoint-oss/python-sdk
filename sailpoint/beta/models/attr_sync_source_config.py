@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel
@@ -26,16 +28,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AttrSyncSourceConfig(BaseModel):
     """
     Specification of attribute sync configuration for a source
     """ # noqa: E501
     source: AttrSyncSource
-    attributes: List[AttrSyncSourceAttributeConfig] = Field(
-        description=
-        "Attribute synchronization configuration for specific identity attributes in the context of a source"
-    )
+    attributes: List[AttrSyncSourceAttributeConfig] = Field(description="Attribute synchronization configuration for specific identity attributes in the context of a source")
     __properties: ClassVar[List[str]] = ["source", "attributes"]
 
     model_config = {
@@ -43,6 +41,7 @@ class AttrSyncSourceConfig(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -70,7 +69,8 @@ class AttrSyncSourceConfig(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of source
@@ -95,12 +95,9 @@ class AttrSyncSourceConfig(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "source":
-            AttrSyncSource.from_dict(obj.get("source"))
-            if obj.get("source") is not None else None,
-            "attributes": [
-                AttrSyncSourceAttributeConfig.from_dict(_item)
-                for _item in obj.get("attributes")
-            ] if obj.get("attributes") is not None else None
+            "source": AttrSyncSource.from_dict(obj.get("source")) if obj.get("source") is not None else None,
+            "attributes": [AttrSyncSourceAttributeConfig.from_dict(_item) for _item in obj.get("attributes")] if obj.get("attributes") is not None else None
         })
         return _obj
+
+

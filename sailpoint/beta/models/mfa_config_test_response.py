@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,17 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class MfaConfigTestResponse(BaseModel):
     """
     Response model for configuration test of a given MFA method
     """ # noqa: E501
-    state: Optional[StrictStr] = Field(
-        default=None, description="The configuration test result.")
-    error: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "The error message to indicate the failure of configuration test.")
+    state: Optional[StrictStr] = Field(default=None, description="The configuration test result.")
+    error: Optional[StrictStr] = Field(default=None, description="The error message to indicate the failure of configuration test.")
     __properties: ClassVar[List[str]] = ["state", "error"]
 
     @field_validator('state')
@@ -44,8 +41,7 @@ class MfaConfigTestResponse(BaseModel):
             return value
 
         if value not in ('SUCCESS', 'FAILED'):
-            raise ValueError(
-                "must be one of enum values ('SUCCESS', 'FAILED')")
+            raise ValueError("must be one of enum values ('SUCCESS', 'FAILED')")
         return value
 
     model_config = {
@@ -53,6 +49,7 @@ class MfaConfigTestResponse(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -104,3 +101,5 @@ class MfaConfigTestResponse(BaseModel):
             "error": obj.get("error")
         })
         return _obj
+
+

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,47 +26,25 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccessItemAccountResponse(BaseModel):
     """
     AccessItemAccountResponse
-    """
-
-  # noqa: E501
-    access_type: Optional[StrictStr] = Field(
-        default=None,
-        description="the access item type. account in this case",
-        alias="accessType")
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="the access item id")
-    native_identity: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "the native identifier used to uniquely identify an acccount",
-        alias="nativeIdentity")
-    source_name: Optional[StrictStr] = Field(
-        default=None, description="the name of the source", alias="sourceName")
-    source_id: Optional[StrictStr] = Field(default=None,
-                                           description="the id of the source",
-                                           alias="sourceId")
-    entitlement_count: Optional[StrictStr] = Field(
-        default=None,
-        description="the number of entitlements the account will create",
-        alias="entitlementCount")
-    display_name: Optional[StrictStr] = Field(
-        default=None,
-        description="the display name of the identity",
-        alias="displayName")
-    __properties: ClassVar[List[str]] = [
-        "accessType", "id", "nativeIdentity", "sourceName", "sourceId",
-        "entitlementCount", "displayName"
-    ]
+    """ # noqa: E501
+    access_type: Optional[StrictStr] = Field(default=None, description="the access item type. account in this case", alias="accessType")
+    id: Optional[StrictStr] = Field(default=None, description="the access item id")
+    native_identity: Optional[StrictStr] = Field(default=None, description="the native identifier used to uniquely identify an acccount", alias="nativeIdentity")
+    source_name: Optional[StrictStr] = Field(default=None, description="the name of the source", alias="sourceName")
+    source_id: Optional[StrictStr] = Field(default=None, description="the id of the source", alias="sourceId")
+    entitlement_count: Optional[StrictStr] = Field(default=None, description="the number of entitlements the account will create", alias="entitlementCount")
+    display_name: Optional[StrictStr] = Field(default=None, description="the display name of the identity", alias="displayName")
+    __properties: ClassVar[List[str]] = ["accessType", "id", "nativeIdentity", "sourceName", "sourceId", "entitlementCount", "displayName"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -92,7 +72,8 @@ class AccessItemAccountResponse(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -107,19 +88,14 @@ class AccessItemAccountResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "accessType":
-            obj.get("accessType"),
-            "id":
-            obj.get("id"),
-            "nativeIdentity":
-            obj.get("nativeIdentity"),
-            "sourceName":
-            obj.get("sourceName"),
-            "sourceId":
-            obj.get("sourceId"),
-            "entitlementCount":
-            obj.get("entitlementCount"),
-            "displayName":
-            obj.get("displayName")
+            "accessType": obj.get("accessType"),
+            "id": obj.get("id"),
+            "nativeIdentity": obj.get("nativeIdentity"),
+            "sourceName": obj.get("sourceName"),
+            "sourceId": obj.get("sourceId"),
+            "entitlementCount": obj.get("entitlementCount"),
+            "displayName": obj.get("displayName")
         })
         return _obj
+
+

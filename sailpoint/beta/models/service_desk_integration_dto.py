@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -28,55 +30,28 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ServiceDeskIntegrationDto(BaseModel):
     """
     ServiceDeskIntegrationDto
-    """
-
-  # noqa: E501
-    name: StrictStr = Field(
-        description="Service Desk integration's name. The name must be unique."
-    )
-    description: StrictStr = Field(
-        description="Service Desk integration's description.")
-    type: StrictStr = Field(
-        description=
-        "Service Desk integration types:  - ServiceNowSDIM - ServiceNow ")
-    owner_ref: Optional[ServiceDeskIntegrationDtoAllOfOwnerRef] = Field(
-        default=None, alias="ownerRef")
-    cluster_ref: Optional[ServiceDeskIntegrationDtoAllOfClusterRef] = Field(
-        default=None, alias="clusterRef")
-    cluster: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Cluster ID for the Service Desk integration (replaced by clusterRef, retained for backward compatibility)."
-    )
-    managed_sources: Optional[List[StrictStr]] = Field(
-        default=None,
-        description=
-        "Source IDs for the Service Desk integration (replaced by provisioningConfig.managedSResourceRefs, but retained here for backward compatibility).",
-        alias="managedSources")
-    provisioning_config: Optional[ProvisioningConfig] = Field(
-        default=None, alias="provisioningConfig")
-    attributes: Dict[str, Any] = Field(
-        description=
-        "Service Desk integration's attributes. Validation constraints enforced by the implementation."
-    )
-    before_provisioning_rule: Optional[
-        ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule] = Field(
-            default=None, alias="beforeProvisioningRule")
-    __properties: ClassVar[List[str]] = [
-        "name", "description", "type", "ownerRef", "clusterRef", "cluster",
-        "managedSources", "provisioningConfig", "attributes",
-        "beforeProvisioningRule"
-    ]
+    """ # noqa: E501
+    name: StrictStr = Field(description="Service Desk integration's name. The name must be unique.")
+    description: StrictStr = Field(description="Service Desk integration's description.")
+    type: StrictStr = Field(description="Service Desk integration types:  - ServiceNowSDIM - ServiceNow ")
+    owner_ref: Optional[ServiceDeskIntegrationDtoAllOfOwnerRef] = Field(default=None, alias="ownerRef")
+    cluster_ref: Optional[ServiceDeskIntegrationDtoAllOfClusterRef] = Field(default=None, alias="clusterRef")
+    cluster: Optional[StrictStr] = Field(default=None, description="Cluster ID for the Service Desk integration (replaced by clusterRef, retained for backward compatibility).")
+    managed_sources: Optional[List[StrictStr]] = Field(default=None, description="Source IDs for the Service Desk integration (replaced by provisioningConfig.managedSResourceRefs, but retained here for backward compatibility).", alias="managedSources")
+    provisioning_config: Optional[ProvisioningConfig] = Field(default=None, alias="provisioningConfig")
+    attributes: Dict[str, Any] = Field(description="Service Desk integration's attributes. Validation constraints enforced by the implementation.")
+    before_provisioning_rule: Optional[ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule] = Field(default=None, alias="beforeProvisioningRule")
+    __properties: ClassVar[List[str]] = ["name", "description", "type", "ownerRef", "clusterRef", "cluster", "managedSources", "provisioningConfig", "attributes", "beforeProvisioningRule"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -104,7 +79,8 @@ class ServiceDeskIntegrationDto(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of owner_ref
@@ -118,9 +94,7 @@ class ServiceDeskIntegrationDto(BaseModel):
             _dict['provisioningConfig'] = self.provisioning_config.to_dict()
         # override the default output from pydantic by calling `to_dict()` of before_provisioning_rule
         if self.before_provisioning_rule:
-            _dict[
-                'beforeProvisioningRule'] = self.before_provisioning_rule.to_dict(
-                )
+            _dict['beforeProvisioningRule'] = self.before_provisioning_rule.to_dict()
         return _dict
 
     @classmethod
@@ -133,33 +107,17 @@ class ServiceDeskIntegrationDto(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name":
-            obj.get("name"),
-            "description":
-            obj.get("description"),
-            "type":
-            obj.get("type")
-            if obj.get("type") is not None else 'ServiceNowSDIM',
-            "ownerRef":
-            ServiceDeskIntegrationDtoAllOfOwnerRef.from_dict(
-                obj.get("ownerRef"))
-            if obj.get("ownerRef") is not None else None,
-            "clusterRef":
-            ServiceDeskIntegrationDtoAllOfClusterRef.from_dict(
-                obj.get("clusterRef"))
-            if obj.get("clusterRef") is not None else None,
-            "cluster":
-            obj.get("cluster"),
-            "managedSources":
-            obj.get("managedSources"),
-            "provisioningConfig":
-            ProvisioningConfig.from_dict(obj.get("provisioningConfig"))
-            if obj.get("provisioningConfig") is not None else None,
-            "attributes":
-            obj.get("attributes"),
-            "beforeProvisioningRule":
-            ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule.from_dict(
-                obj.get("beforeProvisioningRule"))
-            if obj.get("beforeProvisioningRule") is not None else None
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "type": obj.get("type") if obj.get("type") is not None else 'ServiceNowSDIM',
+            "ownerRef": ServiceDeskIntegrationDtoAllOfOwnerRef.from_dict(obj.get("ownerRef")) if obj.get("ownerRef") is not None else None,
+            "clusterRef": ServiceDeskIntegrationDtoAllOfClusterRef.from_dict(obj.get("clusterRef")) if obj.get("clusterRef") is not None else None,
+            "cluster": obj.get("cluster"),
+            "managedSources": obj.get("managedSources"),
+            "provisioningConfig": ProvisioningConfig.from_dict(obj.get("provisioningConfig")) if obj.get("provisioningConfig") is not None else None,
+            "attributes": obj.get("attributes"),
+            "beforeProvisioningRule": ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule.from_dict(obj.get("beforeProvisioningRule")) if obj.get("beforeProvisioningRule") is not None else None
         })
         return _obj
+
+

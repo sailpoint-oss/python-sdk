@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,55 +21,41 @@ from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
 from pydantic import Field
+from sailpoint.v3.models.base_segment import BaseSegment
 from sailpoint.v3.models.document_type import DocumentType
-from sailpoint.v3.models.reference import Reference
+from sailpoint.v3.models.entitlement_document_all_of_source import EntitlementDocumentAllOfSource
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class EntitlementDocument(BaseModel):
     """
     Entitlement
-    """
-
-  # noqa: E501
-    id: StrictStr = Field(
-        description="The unique ID of the referenced object.")
-    name: StrictStr = Field(
-        description="The human readable name of the referenced object.")
+    """ # noqa: E501
+    id: StrictStr
+    name: StrictStr
     type: DocumentType = Field(alias="_type")
-    description: Optional[StrictStr] = Field(
-        default=None, description="A description of the entitlement")
-    attribute: Optional[StrictStr] = Field(
-        default=None, description="The name of the entitlement attribute")
-    value: Optional[StrictStr] = Field(
-        default=None, description="The value of the entitlement")
-    modified: Optional[datetime] = Field(
-        default=None, description="A date-time in ISO-8601 format")
-    synced: Optional[datetime] = Field(
-        default=None, description="A date-time in ISO-8601 format")
-    display_name: Optional[StrictStr] = Field(
-        default=None,
-        description="The display name of the entitlement",
-        alias="displayName")
-    source: Optional[Reference] = None
-    privileged: Optional[StrictBool] = None
-    identity_count: Optional[StrictInt] = Field(default=None,
-                                                alias="identityCount")
-    tags: Optional[List[StrictStr]] = None
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "_type", "description", "attribute", "value", "modified",
-        "synced", "displayName", "source", "privileged", "identityCount",
-        "tags"
-    ]
+    modified: Optional[datetime] = Field(default=None, description="ISO-8601 date-time referring to the time when the object was last modified.")
+    synced: Optional[StrictStr] = Field(default=None, description="ISO-8601 date-time referring to the date-time when object was queued to be synced into search database for use in the search API.   This date-time changes anytime there is an update to the object, which triggers a synchronization event being sent to the search database.  There may be some delay between the `synced` time and the time when the updated data is actually available in the search API. ")
+    display_name: Optional[StrictStr] = Field(default=None, description="Entitlement's display name.", alias="displayName")
+    source: Optional[EntitlementDocumentAllOfSource] = None
+    segments: Optional[List[BaseSegment]] = Field(default=None, description="Segments with the role.")
+    segment_count: Optional[StrictInt] = Field(default=None, description="Number of segments with the role.", alias="segmentCount")
+    requestable: Optional[StrictBool] = Field(default=False, description="Indicates whether the entitlement is requestable.")
+    cloud_governed: Optional[StrictBool] = Field(default=False, description="Indicates whether the entitlement is cloud governed.", alias="cloudGoverned")
+    created: Optional[datetime] = Field(default=None, description="ISO-8601 date-time referring to the time when the object was created.")
+    privileged: Optional[StrictBool] = Field(default=False, description="Indicates whether the entitlement is privileged.")
+    identity_count: Optional[StrictInt] = Field(default=None, description="Number of identities who have access to the entitlement.", alias="identityCount")
+    tags: Optional[List[StrictStr]] = Field(default=None, description="Tags that have been applied to the object.")
+    __properties: ClassVar[List[str]] = ["id", "name", "_type", "modified", "synced", "displayName", "source", "segments", "segmentCount", "requestable", "cloudGoverned", "created", "privileged", "identityCount", "tags"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -96,21 +83,29 @@ class EntitlementDocument(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of source
         if self.source:
             _dict['source'] = self.source.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in segments (list)
+        _items = []
+        if self.segments:
+            for _item in self.segments:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['segments'] = _items
         # set to None if modified (nullable) is None
         # and model_fields_set contains the field
         if self.modified is None and "modified" in self.model_fields_set:
             _dict['modified'] = None
 
-        # set to None if synced (nullable) is None
+        # set to None if created (nullable) is None
         # and model_fields_set contains the field
-        if self.synced is None and "synced" in self.model_fields_set:
-            _dict['synced'] = None
+        if self.created is None and "created" in self.model_fields_set:
+            _dict['created'] = None
 
         return _dict
 
@@ -124,32 +119,22 @@ class EntitlementDocument(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "_type":
-            obj.get("_type"),
-            "description":
-            obj.get("description"),
-            "attribute":
-            obj.get("attribute"),
-            "value":
-            obj.get("value"),
-            "modified":
-            obj.get("modified"),
-            "synced":
-            obj.get("synced"),
-            "displayName":
-            obj.get("displayName"),
-            "source":
-            Reference.from_dict(obj.get("source"))
-            if obj.get("source") is not None else None,
-            "privileged":
-            obj.get("privileged"),
-            "identityCount":
-            obj.get("identityCount"),
-            "tags":
-            obj.get("tags")
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "_type": obj.get("_type"),
+            "modified": obj.get("modified"),
+            "synced": obj.get("synced"),
+            "displayName": obj.get("displayName"),
+            "source": EntitlementDocumentAllOfSource.from_dict(obj.get("source")) if obj.get("source") is not None else None,
+            "segments": [BaseSegment.from_dict(_item) for _item in obj.get("segments")] if obj.get("segments") is not None else None,
+            "segmentCount": obj.get("segmentCount"),
+            "requestable": obj.get("requestable") if obj.get("requestable") is not None else False,
+            "cloudGoverned": obj.get("cloudGoverned") if obj.get("cloudGoverned") is not None else False,
+            "created": obj.get("created"),
+            "privileged": obj.get("privileged") if obj.get("privileged") is not None else False,
+            "identityCount": obj.get("identityCount"),
+            "tags": obj.get("tags")
         })
         return _obj
+
+

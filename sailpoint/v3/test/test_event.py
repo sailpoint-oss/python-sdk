@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.event import Event
-
 
 class TestEvent(unittest.TestCase):
     """Event unit test stubs"""
@@ -40,15 +40,11 @@ class TestEvent(unittest.TestCase):
                 name = 'john.doe',
                 type = 'identity',
                 created = '2018-06-25T20:22:28.104Z',
-                synced = '2018-06-25T20:22:28.104Z',
+                synced = '',
                 action = 'update',
                 type = 'SYSTEM_CONFIG',
-                actor = sailpoint.v3.models.name_type.NameType(
-                    name = 'John Doe', 
-                    type = 'IDENTITY', ),
-                target = sailpoint.v3.models.name_type.NameType(
-                    name = 'John Doe', 
-                    type = 'IDENTITY', ),
+                actor = 'System',
+                target = 'Carol.Adams',
                 stack = 'tpe',
                 tracking_number = '63f891e0735f4cc8bf1968144a1e7440',
                 ip_address = '52.52.97.85',
@@ -73,7 +69,6 @@ class TestEvent(unittest.TestCase):
         """Test Event"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

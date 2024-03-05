@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.workgroup_member_add_item import WorkgroupMemberAddItem
-
 
 class TestWorkgroupMemberAddItem(unittest.TestCase):
     """WorkgroupMemberAddItem unit test stubs"""
@@ -55,7 +55,6 @@ class TestWorkgroupMemberAddItem(unittest.TestCase):
         """Test WorkgroupMemberAddItem"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

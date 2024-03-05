@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.dto_type import DtoType
-
 
 class TestDtoType(unittest.TestCase):
     """DtoType unit test stubs"""
@@ -29,7 +29,6 @@ class TestDtoType(unittest.TestCase):
     def testDtoType(self):
         """Test DtoType"""
         # inst = DtoType()
-
 
 if __name__ == '__main__':
     unittest.main()

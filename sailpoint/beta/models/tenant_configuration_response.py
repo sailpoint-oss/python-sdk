@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
@@ -26,15 +28,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class TenantConfigurationResponse(BaseModel):
     """
     Tenant-wide Reassignment Configuration settings
     """ # noqa: E501
-    audit_details: Optional[AuditDetails] = Field(default=None,
-                                                  alias="auditDetails")
-    config_details: Optional[TenantConfigurationDetails] = Field(
-        default=None, alias="configDetails")
+    audit_details: Optional[AuditDetails] = Field(default=None, alias="auditDetails")
+    config_details: Optional[TenantConfigurationDetails] = Field(default=None, alias="configDetails")
     __properties: ClassVar[List[str]] = ["auditDetails", "configDetails"]
 
     model_config = {
@@ -42,6 +41,7 @@ class TenantConfigurationResponse(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -69,7 +69,8 @@ class TenantConfigurationResponse(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of audit_details
@@ -90,11 +91,9 @@ class TenantConfigurationResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "auditDetails":
-            AuditDetails.from_dict(obj.get("auditDetails"))
-            if obj.get("auditDetails") is not None else None,
-            "configDetails":
-            TenantConfigurationDetails.from_dict(obj.get("configDetails"))
-            if obj.get("configDetails") is not None else None
+            "auditDetails": AuditDetails.from_dict(obj.get("auditDetails")) if obj.get("auditDetails") is not None else None,
+            "configDetails": TenantConfigurationDetails.from_dict(obj.get("configDetails")) if obj.get("configDetails") is not None else None
         })
         return _obj
+
+

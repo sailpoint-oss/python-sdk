@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.identity import Identity
-
 
 class TestIdentity(unittest.TestCase):
     """Identity unit test stubs"""
@@ -51,9 +51,7 @@ class TestIdentity(unittest.TestCase):
                 is_manager = True,
                 last_refresh = '2020-11-22T15:42:31.123Z',
                 attributes = {"uid":"Walter White","firstname":"walter","cloudStatus":"UNREGISTERED","displayName":"Walter White","identificationNumber":"942","lastSyncDate":1470348809380,"email":"walter@gmail.com","lastname":"white"},
-                lifecycle_state = sailpoint.beta.models.lifecycle_state_dto.LifecycleStateDto(
-                    state_name = 'active', 
-                    manually_updated = True, )
+                lifecycle_state = None
             )
         else:
             return Identity(
@@ -65,7 +63,6 @@ class TestIdentity(unittest.TestCase):
         """Test Identity"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

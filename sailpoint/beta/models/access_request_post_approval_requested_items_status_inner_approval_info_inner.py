@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -25,32 +27,21 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
-class AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner(
-        BaseModel):
+class AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner(BaseModel):
     """
     AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner
     """ # noqa: E501
-    approval_comment: Optional[StrictStr] = Field(
-        default=None,
-        description="A comment left by the approver.",
-        alias="approvalComment")
-    approval_decision: Dict[str, Any] = Field(
-        description="The final decision of the approver.",
-        alias="approvalDecision")
-    approver_name: StrictStr = Field(description="The name of the approver",
-                                     alias="approverName")
+    approval_comment: Optional[StrictStr] = Field(default=None, description="A comment left by the approver.", alias="approvalComment")
+    approval_decision: Dict[str, Any] = Field(description="The final decision of the approver.", alias="approvalDecision")
+    approver_name: StrictStr = Field(description="The name of the approver", alias="approverName")
     approver: AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover
-    __properties: ClassVar[List[str]] = [
-        "approvalComment", "approvalDecision", "approverName", "approver"
-    ]
+    __properties: ClassVar[List[str]] = ["approvalComment", "approvalDecision", "approverName", "approver"]
 
     @field_validator('approval_decision')
     def approval_decision_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('APPROVED', 'DENIED'):
-            raise ValueError(
-                "must be one of enum values ('APPROVED', 'DENIED')")
+            raise ValueError("must be one of enum values ('APPROVED', 'DENIED')")
         return value
 
     model_config = {
@@ -58,6 +49,7 @@ class AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner(
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -85,7 +77,8 @@ class AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner(
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of approver
@@ -108,15 +101,11 @@ class AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner(
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "approvalComment":
-            obj.get("approvalComment"),
-            "approvalDecision":
-            obj.get("approvalDecision"),
-            "approverName":
-            obj.get("approverName"),
-            "approver":
-            AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover
-            .from_dict(obj.get("approver"))
-            if obj.get("approver") is not None else None
+            "approvalComment": obj.get("approvalComment"),
+            "approvalDecision": obj.get("approvalDecision"),
+            "approverName": obj.get("approverName"),
+            "approver": AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover.from_dict(obj.get("approver")) if obj.get("approver") is not None else None
         })
         return _obj
+
+

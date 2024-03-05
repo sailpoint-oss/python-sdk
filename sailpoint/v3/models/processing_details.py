@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -25,30 +26,23 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ProcessingDetails(BaseModel):
     """
     ProcessingDetails
-    """
-
-  # noqa: E501
-    var_date: Optional[datetime] = Field(
-        default=None,
-        description="A date-time in ISO-8601 format",
-        alias="date")
+    """ # noqa: E501
+    var_date: Optional[datetime] = Field(default=None, description="A date-time in ISO-8601 format", alias="date")
     stage: Optional[StrictStr] = None
     retry_count: Optional[StrictInt] = Field(default=None, alias="retryCount")
     stack_trace: Optional[StrictStr] = Field(default=None, alias="stackTrace")
     message: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = [
-        "date", "stage", "retryCount", "stackTrace", "message"
-    ]
+    __properties: ClassVar[List[str]] = ["date", "stage", "retryCount", "stackTrace", "message"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -76,7 +70,8 @@ class ProcessingDetails(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if var_date (nullable) is None
@@ -103,3 +98,5 @@ class ProcessingDetails(BaseModel):
             "message": obj.get("message")
         })
         return _obj
+
+

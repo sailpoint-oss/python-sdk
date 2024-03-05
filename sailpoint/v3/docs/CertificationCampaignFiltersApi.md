@@ -266,7 +266,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_campaign_filters**
-> List[CampaignFilterDetails] list_campaign_filters(limit=limit, start=start, include_system_filters=include_system_filters)
+> ListCampaignFilters200Response list_campaign_filters(limit=limit, start=start, include_system_filters=include_system_filters)
 
 List Campaign Filters
 
@@ -281,7 +281,7 @@ Lists all Campaign Filters. Scope can be reduced via standard V3 query params.  
 import time
 import os
 import sailpoint.v3
-from sailpoint.v3.models.campaign_filter_details import CampaignFilterDetails
+from sailpoint.v3.models.list_campaign_filters200_response import ListCampaignFilters200Response
 from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
@@ -330,7 +330,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List[CampaignFilterDetails]**](CampaignFilterDetails.md)
+[**ListCampaignFilters200Response**](ListCampaignFilters200Response.md)
 
 ### Authorization
 

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,21 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class TaskResultDetailsReturnsInner(BaseModel):
     """
     TaskResultDetailsReturnsInner
-    """
-
-  # noqa: E501
-    display_label: Optional[StrictStr] = Field(
-        default=None,
-        description="Attribute description.",
-        alias="displayLabel")
-    attribute_name: Optional[StrictStr] = Field(
-        default=None,
-        description="System or database attribute name.",
-        alias="attributeName")
+    """ # noqa: E501
+    display_label: Optional[StrictStr] = Field(default=None, description="Attribute description.", alias="displayLabel")
+    attribute_name: Optional[StrictStr] = Field(default=None, description="System or database attribute name.", alias="attributeName")
     __properties: ClassVar[List[str]] = ["displayLabel", "attributeName"]
 
     model_config = {
@@ -46,6 +39,7 @@ class TaskResultDetailsReturnsInner(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -73,7 +67,8 @@ class TaskResultDetailsReturnsInner(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -92,3 +87,5 @@ class TaskResultDetailsReturnsInner(BaseModel):
             "attributeName": obj.get("attributeName")
         })
         return _obj
+
+

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
@@ -24,18 +26,11 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class IdentityCompareResponse(BaseModel):
     """
     IdentityCompareResponse
-    """
-
-  # noqa: E501
-    access_item_diff: Optional[Dict[str, Dict[str, Any]]] = Field(
-        default=None,
-        description=
-        "Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on completion of the violation check.",
-        alias="accessItemDiff")
+    """ # noqa: E501
+    access_item_diff: Optional[Dict[str, Dict[str, Any]]] = Field(default=None, description="Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on completion of the violation check.", alias="accessItemDiff")
     __properties: ClassVar[List[str]] = ["accessItemDiff"]
 
     model_config = {
@@ -43,6 +38,7 @@ class IdentityCompareResponse(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -70,7 +66,8 @@ class IdentityCompareResponse(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -84,6 +81,9 @@ class IdentityCompareResponse(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {"accessItemDiff": obj.get("accessItemDiff")})
+        _obj = cls.model_validate({
+            "accessItemDiff": obj.get("accessItemDiff")
+        })
         return _obj
+
+

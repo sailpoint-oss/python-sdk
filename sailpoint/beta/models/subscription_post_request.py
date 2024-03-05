@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
@@ -27,47 +29,27 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class SubscriptionPostRequest(BaseModel):
     """
     SubscriptionPostRequest
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     name: StrictStr = Field(description="Subscription name.")
-    description: Optional[StrictStr] = Field(
-        default=None, description="Subscription description.")
-    trigger_id: StrictStr = Field(description="ID of trigger subscribed to.",
-                                  alias="triggerId")
+    description: Optional[StrictStr] = Field(default=None, description="Subscription description.")
+    trigger_id: StrictStr = Field(description="ID of trigger subscribed to.", alias="triggerId")
     type: SubscriptionType
-    response_deadline: Optional[StrictStr] = Field(
-        default='PT1H',
-        description=
-        "Deadline for completing REQUEST_RESPONSE trigger invocation, represented in ISO-8601 duration format.",
-        alias="responseDeadline")
+    response_deadline: Optional[StrictStr] = Field(default='PT1H', description="Deadline for completing REQUEST_RESPONSE trigger invocation, represented in ISO-8601 duration format.", alias="responseDeadline")
     http_config: Optional[HttpConfig] = Field(default=None, alias="httpConfig")
-    event_bridge_config: Optional[EventBridgeConfig] = Field(
-        default=None, alias="eventBridgeConfig")
-    enabled: Optional[StrictBool] = Field(
-        default=True,
-        description=
-        "Whether subscription should receive real-time trigger invocations or not.  Test trigger invocations are always enabled regardless of this option."
-    )
-    filter: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "JSONPath filter to conditionally invoke trigger when expression evaluates to true."
-    )
-    __properties: ClassVar[List[str]] = [
-        "name", "description", "triggerId", "type", "responseDeadline",
-        "httpConfig", "eventBridgeConfig", "enabled", "filter"
-    ]
+    event_bridge_config: Optional[EventBridgeConfig] = Field(default=None, alias="eventBridgeConfig")
+    enabled: Optional[StrictBool] = Field(default=True, description="Whether subscription should receive real-time trigger invocations or not.  Test trigger invocations are always enabled regardless of this option.")
+    filter: Optional[StrictStr] = Field(default=None, description="JSONPath filter to conditionally invoke trigger when expression evaluates to true.")
+    __properties: ClassVar[List[str]] = ["name", "description", "triggerId", "type", "responseDeadline", "httpConfig", "eventBridgeConfig", "enabled", "filter"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -95,7 +77,8 @@ class SubscriptionPostRequest(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of http_config
@@ -116,26 +99,16 @@ class SubscriptionPostRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name":
-            obj.get("name"),
-            "description":
-            obj.get("description"),
-            "triggerId":
-            obj.get("triggerId"),
-            "type":
-            obj.get("type"),
-            "responseDeadline":
-            obj.get("responseDeadline")
-            if obj.get("responseDeadline") is not None else 'PT1H',
-            "httpConfig":
-            HttpConfig.from_dict(obj.get("httpConfig"))
-            if obj.get("httpConfig") is not None else None,
-            "eventBridgeConfig":
-            EventBridgeConfig.from_dict(obj.get("eventBridgeConfig"))
-            if obj.get("eventBridgeConfig") is not None else None,
-            "enabled":
-            obj.get("enabled") if obj.get("enabled") is not None else True,
-            "filter":
-            obj.get("filter")
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "triggerId": obj.get("triggerId"),
+            "type": obj.get("type"),
+            "responseDeadline": obj.get("responseDeadline") if obj.get("responseDeadline") is not None else 'PT1H',
+            "httpConfig": HttpConfig.from_dict(obj.get("httpConfig")) if obj.get("httpConfig") is not None else None,
+            "eventBridgeConfig": EventBridgeConfig.from_dict(obj.get("eventBridgeConfig")) if obj.get("eventBridgeConfig") is not None else None,
+            "enabled": obj.get("enabled") if obj.get("enabled") is not None else True,
+            "filter": obj.get("filter")
         })
         return _obj
+
+

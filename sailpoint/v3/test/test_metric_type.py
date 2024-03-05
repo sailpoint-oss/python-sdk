@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.metric_type import MetricType
-
 
 class TestMetricType(unittest.TestCase):
     """MetricType unit test stubs"""
@@ -29,7 +29,6 @@ class TestMetricType(unittest.TestCase):
     def testMetricType(self):
         """Test MetricType"""
         # inst = MetricType()
-
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,14 +11,13 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.outlier_feature_summary_outlier_feature_display_values_inner import OutlierFeatureSummaryOutlierFeatureDisplayValuesInner
 
-
-class TestOutlierFeatureSummaryOutlierFeatureDisplayValuesInner(
-        unittest.TestCase):
+class TestOutlierFeatureSummaryOutlierFeatureDisplayValuesInner(unittest.TestCase):
     """OutlierFeatureSummaryOutlierFeatureDisplayValuesInner unit test stubs"""
 
     def setUp(self):
@@ -27,9 +26,7 @@ class TestOutlierFeatureSummaryOutlierFeatureDisplayValuesInner(
     def tearDown(self):
         pass
 
-    def make_instance(
-        self, include_optional
-    ) -> OutlierFeatureSummaryOutlierFeatureDisplayValuesInner:
+    def make_instance(self, include_optional) -> OutlierFeatureSummaryOutlierFeatureDisplayValuesInner:
         """Test OutlierFeatureSummaryOutlierFeatureDisplayValuesInner
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -52,7 +49,6 @@ class TestOutlierFeatureSummaryOutlierFeatureDisplayValuesInner(
         """Test OutlierFeatureSummaryOutlierFeatureDisplayValuesInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

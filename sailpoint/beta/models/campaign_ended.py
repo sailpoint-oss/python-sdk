@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel
@@ -24,13 +26,10 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class CampaignEnded(BaseModel):
     """
     CampaignEnded
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     campaign: CampaignEndedCampaign
     __properties: ClassVar[List[str]] = ["campaign"]
 
@@ -39,6 +38,7 @@ class CampaignEnded(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -66,7 +66,8 @@ class CampaignEnded(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of campaign
@@ -84,8 +85,8 @@ class CampaignEnded(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "campaign":
-            CampaignEndedCampaign.from_dict(obj.get("campaign"))
-            if obj.get("campaign") is not None else None
+            "campaign": CampaignEndedCampaign.from_dict(obj.get("campaign")) if obj.get("campaign") is not None else None
         })
         return _obj
+
+

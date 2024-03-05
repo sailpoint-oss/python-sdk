@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,21 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class CommonAccessIDStatus(BaseModel):
     """
     CommonAccessIDStatus
-    """
-
-  # noqa: E501
-    confirmed_ids: Optional[List[StrictStr]] = Field(
-        default=None,
-        description="List of confirmed common access ids.",
-        alias="confirmedIds")
-    denied_ids: Optional[List[StrictStr]] = Field(
-        default=None,
-        description="List of denied common access ids.",
-        alias="deniedIds")
+    """ # noqa: E501
+    confirmed_ids: Optional[List[StrictStr]] = Field(default=None, description="List of confirmed common access ids.", alias="confirmedIds")
+    denied_ids: Optional[List[StrictStr]] = Field(default=None, description="List of denied common access ids.", alias="deniedIds")
     __properties: ClassVar[List[str]] = ["confirmedIds", "deniedIds"]
 
     model_config = {
@@ -46,6 +39,7 @@ class CommonAccessIDStatus(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -73,7 +67,8 @@ class CommonAccessIDStatus(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -92,3 +87,5 @@ class CommonAccessIDStatus(BaseModel):
             "deniedIds": obj.get("deniedIds")
         })
         return _obj
+
+

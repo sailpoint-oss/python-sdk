@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
@@ -24,35 +26,22 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class CertificationIdentitySummary(BaseModel):
     """
     CertificationIdentitySummary
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(
-        default=None, description="The ID of the identity summary")
-    name: Optional[StrictStr] = Field(
-        default=None, description="Name of the linked identity")
-    identity_id: Optional[StrictStr] = Field(
-        default=None,
-        description="The ID of the identity being certified",
-        alias="identityId")
-    completed: Optional[StrictBool] = Field(
-        default=None,
-        description=
-        "Indicates whether the review items for the linked identity's certification have been completed"
-    )
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "identityId", "completed"
-    ]
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="The ID of the identity summary")
+    name: Optional[StrictStr] = Field(default=None, description="Name of the linked identity")
+    identity_id: Optional[StrictStr] = Field(default=None, description="The ID of the identity being certified", alias="identityId")
+    completed: Optional[StrictBool] = Field(default=None, description="Indicates whether the review items for the linked identity's certification have been completed")
+    __properties: ClassVar[List[str]] = ["id", "name", "identityId", "completed"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -80,7 +69,8 @@ class CertificationIdentitySummary(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -101,3 +91,5 @@ class CertificationIdentitySummary(BaseModel):
             "completed": obj.get("completed")
         })
         return _obj
+
+

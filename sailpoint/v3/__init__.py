@@ -13,6 +13,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 __version__ = "1.0.0"
 
 # import apis into sdk package
@@ -28,6 +29,7 @@ from sailpoint.v3.api.certification_campaign_filters_api import CertificationCam
 from sailpoint.v3.api.certification_campaigns_api import CertificationCampaignsApi
 from sailpoint.v3.api.certification_summaries_api import CertificationSummariesApi
 from sailpoint.v3.api.certifications_api import CertificationsApi
+from sailpoint.v3.api.connectors_api import ConnectorsApi
 from sailpoint.v3.api.global_tenant_security_settings_api import GlobalTenantSecuritySettingsApi
 from sailpoint.v3.api.identity_profiles_api import IdentityProfilesApi
 from sailpoint.v3.api.lifecycle_states_api import LifecycleStatesApi
@@ -55,6 +57,7 @@ from sailpoint.v3.api.sources_api import SourcesApi
 from sailpoint.v3.api.tagged_objects_api import TaggedObjectsApi
 from sailpoint.v3.api.transforms_api import TransformsApi
 from sailpoint.v3.api.work_items_api import WorkItemsApi
+from sailpoint.v3.api.workflows_api import WorkflowsApi
 
 # import ApiClient
 from sailpoint.v3.api_response import ApiResponse
@@ -80,6 +83,7 @@ from sailpoint.v3.models.access_profile_approval_scheme import AccessProfileAppr
 from sailpoint.v3.models.access_profile_bulk_delete_request import AccessProfileBulkDeleteRequest
 from sailpoint.v3.models.access_profile_bulk_delete_response import AccessProfileBulkDeleteResponse
 from sailpoint.v3.models.access_profile_document import AccessProfileDocument
+from sailpoint.v3.models.access_profile_document_all_of_source import AccessProfileDocumentAllOfSource
 from sailpoint.v3.models.access_profile_entitlement import AccessProfileEntitlement
 from sailpoint.v3.models.access_profile_ref import AccessProfileRef
 from sailpoint.v3.models.access_profile_role import AccessProfileRole
@@ -135,6 +139,7 @@ from sailpoint.v3.models.approval_scheme import ApprovalScheme
 from sailpoint.v3.models.approval_scheme_for_role import ApprovalSchemeForRole
 from sailpoint.v3.models.approval_status import ApprovalStatus
 from sailpoint.v3.models.approval_status_dto import ApprovalStatusDto
+from sailpoint.v3.models.approval_status_dto_current_owner import ApprovalStatusDtoCurrentOwner
 from sailpoint.v3.models.approval_status_dto_original_owner import ApprovalStatusDtoOriginalOwner
 from sailpoint.v3.models.approval_summary import ApprovalSummary
 from sailpoint.v3.models.array_inner import ArrayInner
@@ -144,11 +149,14 @@ from sailpoint.v3.models.attribute_definition_type import AttributeDefinitionTyp
 from sailpoint.v3.models.attribute_request import AttributeRequest
 from sailpoint.v3.models.auth_user import AuthUser
 from sailpoint.v3.models.base_access import BaseAccess
+from sailpoint.v3.models.base_access_all_of_owner import BaseAccessAllOfOwner
+from sailpoint.v3.models.base_access_profile import BaseAccessProfile
 from sailpoint.v3.models.base_account import BaseAccount
 from sailpoint.v3.models.base_common_dto import BaseCommonDto
 from sailpoint.v3.models.base_document import BaseDocument
 from sailpoint.v3.models.base_entitlement import BaseEntitlement
 from sailpoint.v3.models.base_reference_dto import BaseReferenceDto
+from sailpoint.v3.models.base_segment import BaseSegment
 from sailpoint.v3.models.before_provisioning_rule_dto import BeforeProvisioningRuleDto
 from sailpoint.v3.models.bound import Bound
 from sailpoint.v3.models.branding_item import BrandingItem
@@ -186,17 +194,24 @@ from sailpoint.v3.models.client_type import ClientType
 from sailpoint.v3.models.column import Column
 from sailpoint.v3.models.comment import Comment
 from sailpoint.v3.models.comment_dto import CommentDto
+from sailpoint.v3.models.comment_dto_author import CommentDtoAuthor
 from sailpoint.v3.models.completed_approval import CompletedApproval
+from sailpoint.v3.models.completed_approval_pre_approval_trigger_result import CompletedApprovalPreApprovalTriggerResult
+from sailpoint.v3.models.completed_approval_requester_comment import CompletedApprovalRequesterComment
 from sailpoint.v3.models.completed_approval_reviewer_comment import CompletedApprovalReviewerComment
 from sailpoint.v3.models.completed_approval_state import CompletedApprovalState
 from sailpoint.v3.models.completion_status import CompletionStatus
 from sailpoint.v3.models.conflicting_access_criteria import ConflictingAccessCriteria
+from sailpoint.v3.models.connector_detail import ConnectorDetail
+from sailpoint.v3.models.create_external_execute_workflow200_response import CreateExternalExecuteWorkflow200Response
+from sailpoint.v3.models.create_external_execute_workflow_request import CreateExternalExecuteWorkflowRequest
 from sailpoint.v3.models.create_o_auth_client_request import CreateOAuthClientRequest
 from sailpoint.v3.models.create_o_auth_client_response import CreateOAuthClientResponse
 from sailpoint.v3.models.create_personal_access_token_request import CreatePersonalAccessTokenRequest
 from sailpoint.v3.models.create_personal_access_token_response import CreatePersonalAccessTokenResponse
 from sailpoint.v3.models.create_saved_search_request import CreateSavedSearchRequest
 from sailpoint.v3.models.create_scheduled_search_request import CreateScheduledSearchRequest
+from sailpoint.v3.models.create_workflow_request import CreateWorkflowRequest
 from sailpoint.v3.models.criteria_type import CriteriaType
 from sailpoint.v3.models.data_access import DataAccess
 from sailpoint.v3.models.data_access_categories_inner import DataAccessCategoriesInner
@@ -210,14 +225,17 @@ from sailpoint.v3.models.dto_type import DtoType
 from sailpoint.v3.models.email_notification_option import EmailNotificationOption
 from sailpoint.v3.models.entitlement import Entitlement
 from sailpoint.v3.models.entitlement_document import EntitlementDocument
+from sailpoint.v3.models.entitlement_document_all_of_source import EntitlementDocumentAllOfSource
 from sailpoint.v3.models.entitlement_dto import EntitlementDto
 from sailpoint.v3.models.entitlement_ref import EntitlementRef
+from sailpoint.v3.models.entitlement_ref1 import EntitlementRef1
 from sailpoint.v3.models.entitlement_request_config import EntitlementRequestConfig
 from sailpoint.v3.models.entitlement_source import EntitlementSource
 from sailpoint.v3.models.entitlement_summary import EntitlementSummary
 from sailpoint.v3.models.error_message_dto import ErrorMessageDto
 from sailpoint.v3.models.error_response_dto import ErrorResponseDto
 from sailpoint.v3.models.event import Event
+from sailpoint.v3.models.event_attributes import EventAttributes
 from sailpoint.v3.models.event_document import EventDocument
 from sailpoint.v3.models.exception_access_criteria import ExceptionAccessCriteria
 from sailpoint.v3.models.exception_criteria import ExceptionCriteria
@@ -226,6 +244,8 @@ from sailpoint.v3.models.exception_criteria_criteria_list_inner import Exception
 from sailpoint.v3.models.execution_status import ExecutionStatus
 from sailpoint.v3.models.expansion_item import ExpansionItem
 from sailpoint.v3.models.expression import Expression
+from sailpoint.v3.models.expression_children_inner import ExpressionChildrenInner
+from sailpoint.v3.models.external_attributes import ExternalAttributes
 from sailpoint.v3.models.field_details_dto import FieldDetailsDto
 from sailpoint.v3.models.filter import Filter
 from sailpoint.v3.models.filter_aggregation import FilterAggregation
@@ -246,6 +266,9 @@ from sailpoint.v3.models.identity_attribute_transform import IdentityAttributeTr
 from sailpoint.v3.models.identity_cert_decision_summary import IdentityCertDecisionSummary
 from sailpoint.v3.models.identity_certification_dto import IdentityCertificationDto
 from sailpoint.v3.models.identity_document import IdentityDocument
+from sailpoint.v3.models.identity_document_all_of_identity_profile import IdentityDocumentAllOfIdentityProfile
+from sailpoint.v3.models.identity_document_all_of_manager import IdentityDocumentAllOfManager
+from sailpoint.v3.models.identity_document_all_of_source import IdentityDocumentAllOfSource
 from sailpoint.v3.models.identity_exception_report_reference import IdentityExceptionReportReference
 from sailpoint.v3.models.identity_profile import IdentityProfile
 from sailpoint.v3.models.identity_profile_all_of_authoritative_source import IdentityProfileAllOfAuthoritativeSource
@@ -269,6 +292,8 @@ from sailpoint.v3.models.lifecycle_state import LifecycleState
 from sailpoint.v3.models.lifecyclestate_deleted import LifecyclestateDeleted
 from sailpoint.v3.models.list_access_profiles401_response import ListAccessProfiles401Response
 from sailpoint.v3.models.list_access_profiles429_response import ListAccessProfiles429Response
+from sailpoint.v3.models.list_campaign_filters200_response import ListCampaignFilters200Response
+from sailpoint.v3.models.list_complete_workflow_library200_response_inner import ListCompleteWorkflowLibrary200ResponseInner
 from sailpoint.v3.models.locale_origin import LocaleOrigin
 from sailpoint.v3.models.manager_correlation_mapping import ManagerCorrelationMapping
 from sailpoint.v3.models.manual_work_item_details import ManualWorkItemDetails
@@ -279,7 +304,6 @@ from sailpoint.v3.models.metric_aggregation import MetricAggregation
 from sailpoint.v3.models.metric_type import MetricType
 from sailpoint.v3.models.model_schema import ModelSchema
 from sailpoint.v3.models.multi_policy_request import MultiPolicyRequest
-from sailpoint.v3.models.name_type import NameType
 from sailpoint.v3.models.nested_aggregation import NestedAggregation
 from sailpoint.v3.models.network_configuration import NetworkConfiguration
 from sailpoint.v3.models.non_employee_approval_decision import NonEmployeeApprovalDecision
@@ -312,7 +336,6 @@ from sailpoint.v3.models.object_import_result import ObjectImportResult
 from sailpoint.v3.models.operation import Operation
 from sailpoint.v3.models.original_request import OriginalRequest
 from sailpoint.v3.models.orphan_uncorrelated_report_arguments import OrphanUncorrelatedReportArguments
-from sailpoint.v3.models.owner import Owner
 from sailpoint.v3.models.owner_dto import OwnerDto
 from sailpoint.v3.models.owner_reference import OwnerReference
 from sailpoint.v3.models.owner_reference_segments import OwnerReferenceSegments
@@ -346,7 +369,10 @@ from sailpoint.v3.models.provisioning_state import ProvisioningState
 from sailpoint.v3.models.public_identity import PublicIdentity
 from sailpoint.v3.models.public_identity_attribute_config import PublicIdentityAttributeConfig
 from sailpoint.v3.models.public_identity_config import PublicIdentityConfig
+from sailpoint.v3.models.put_correlation_config_request import PutCorrelationConfigRequest
 from sailpoint.v3.models.put_password_dictionary_request import PutPasswordDictionaryRequest
+from sailpoint.v3.models.put_source_config_request import PutSourceConfigRequest
+from sailpoint.v3.models.put_source_template_request import PutSourceTemplateRequest
 from sailpoint.v3.models.query import Query
 from sailpoint.v3.models.query_result_filter import QueryResultFilter
 from sailpoint.v3.models.query_type import QueryType
@@ -373,7 +399,12 @@ from sailpoint.v3.models.requestable_object_reference import RequestableObjectRe
 from sailpoint.v3.models.requestable_object_request_status import RequestableObjectRequestStatus
 from sailpoint.v3.models.requestable_object_type import RequestableObjectType
 from sailpoint.v3.models.requested_item_status import RequestedItemStatus
+from sailpoint.v3.models.requested_item_status_cancelled_request_details import RequestedItemStatusCancelledRequestDetails
+from sailpoint.v3.models.requested_item_status_pre_approval_trigger_details import RequestedItemStatusPreApprovalTriggerDetails
+from sailpoint.v3.models.requested_item_status_provisioning_details import RequestedItemStatusProvisioningDetails
 from sailpoint.v3.models.requested_item_status_request_state import RequestedItemStatusRequestState
+from sailpoint.v3.models.requested_item_status_requester_comment import RequestedItemStatusRequesterComment
+from sailpoint.v3.models.requested_item_status_sod_violation_context import RequestedItemStatusSodViolationContext
 from sailpoint.v3.models.review_decision import ReviewDecision
 from sailpoint.v3.models.review_reassign import ReviewReassign
 from sailpoint.v3.models.review_recommendation import ReviewRecommendation
@@ -407,10 +438,12 @@ from sailpoint.v3.models.schedule import Schedule
 from sailpoint.v3.models.schedule1 import Schedule1
 from sailpoint.v3.models.schedule1_days import Schedule1Days
 from sailpoint.v3.models.schedule1_hours import Schedule1Hours
+from sailpoint.v3.models.schedule1_months import Schedule1Months
 from sailpoint.v3.models.schedule_days import ScheduleDays
 from sailpoint.v3.models.schedule_hours import ScheduleHours
 from sailpoint.v3.models.schedule_months import ScheduleMonths
 from sailpoint.v3.models.schedule_type import ScheduleType
+from sailpoint.v3.models.scheduled_attributes import ScheduledAttributes
 from sailpoint.v3.models.scheduled_search import ScheduledSearch
 from sailpoint.v3.models.scheduled_search_all_of_owner import ScheduledSearchAllOfOwner
 from sailpoint.v3.models.scheduled_search_name import ScheduledSearchName
@@ -419,11 +452,11 @@ from sailpoint.v3.models.search_aggregation_specification import SearchAggregati
 from sailpoint.v3.models.search_arguments import SearchArguments
 from sailpoint.v3.models.search_export_report_arguments import SearchExportReportArguments
 from sailpoint.v3.models.search_filter_type import SearchFilterType
-from sailpoint.v3.models.search_identity_reference import SearchIdentityReference
 from sailpoint.v3.models.search_schedule import SearchSchedule
 from sailpoint.v3.models.search_schedule_recipients_inner import SearchScheduleRecipientsInner
 from sailpoint.v3.models.section_details import SectionDetails
 from sailpoint.v3.models.segment import Segment
+from sailpoint.v3.models.segment_visibility_criteria import SegmentVisibilityCriteria
 from sailpoint.v3.models.selector import Selector
 from sailpoint.v3.models.selector_type import SelectorType
 from sailpoint.v3.models.service_desk_integration_dto import ServiceDeskIntegrationDto
@@ -458,6 +491,7 @@ from sailpoint.v3.models.source_cluster_dto import SourceClusterDto
 from sailpoint.v3.models.source_feature import SourceFeature
 from sailpoint.v3.models.source_health_dto import SourceHealthDto
 from sailpoint.v3.models.source_management_workgroup import SourceManagementWorkgroup
+from sailpoint.v3.models.source_manager_correlation_mapping import SourceManagerCorrelationMapping
 from sailpoint.v3.models.source_manager_correlation_rule import SourceManagerCorrelationRule
 from sailpoint.v3.models.source_owner import SourceOwner
 from sailpoint.v3.models.source_password_policies_inner import SourcePasswordPoliciesInner
@@ -473,6 +507,10 @@ from sailpoint.v3.models.task_result_details_messages_inner import TaskResultDet
 from sailpoint.v3.models.task_result_details_returns_inner import TaskResultDetailsReturnsInner
 from sailpoint.v3.models.task_result_dto import TaskResultDto
 from sailpoint.v3.models.task_result_simplified import TaskResultSimplified
+from sailpoint.v3.models.test_external_execute_workflow200_response import TestExternalExecuteWorkflow200Response
+from sailpoint.v3.models.test_external_execute_workflow_request import TestExternalExecuteWorkflowRequest
+from sailpoint.v3.models.test_workflow200_response import TestWorkflow200Response
+from sailpoint.v3.models.test_workflow_request import TestWorkflowRequest
 from sailpoint.v3.models.text_query import TextQuery
 from sailpoint.v3.models.transform import Transform
 from sailpoint.v3.models.transform_definition import TransformDefinition
@@ -480,7 +518,10 @@ from sailpoint.v3.models.transform_definition_attributes_value import TransformD
 from sailpoint.v3.models.transform_read import TransformRead
 from sailpoint.v3.models.type_ahead_query import TypeAheadQuery
 from sailpoint.v3.models.typed_reference import TypedReference
+from sailpoint.v3.models.update_detail import UpdateDetail
 from sailpoint.v3.models.usage_type import UsageType
+from sailpoint.v3.models.v3_connector_dto import V3ConnectorDto
+from sailpoint.v3.models.v3_create_connector_dto import V3CreateConnectorDto
 from sailpoint.v3.models.value import Value
 from sailpoint.v3.models.violation_context import ViolationContext
 from sailpoint.v3.models.violation_context_policy import ViolationContextPolicy
@@ -489,7 +530,23 @@ from sailpoint.v3.models.violation_owner_assignment_config_owner_ref import Viol
 from sailpoint.v3.models.violation_prediction import ViolationPrediction
 from sailpoint.v3.models.visibility_criteria import VisibilityCriteria
 from sailpoint.v3.models.work_item_state import WorkItemState
-from sailpoint.v3.models.work_item_type import WorkItemType
+from sailpoint.v3.models.work_item_state_manual_work_items import WorkItemStateManualWorkItems
+from sailpoint.v3.models.work_item_type_manual_work_items import WorkItemTypeManualWorkItems
 from sailpoint.v3.models.work_items import WorkItems
 from sailpoint.v3.models.work_items_count import WorkItemsCount
+from sailpoint.v3.models.work_items_form import WorkItemsForm
 from sailpoint.v3.models.work_items_summary import WorkItemsSummary
+from sailpoint.v3.models.workflow import Workflow
+from sailpoint.v3.models.workflow_all_of_creator import WorkflowAllOfCreator
+from sailpoint.v3.models.workflow_body import WorkflowBody
+from sailpoint.v3.models.workflow_body_owner import WorkflowBodyOwner
+from sailpoint.v3.models.workflow_definition import WorkflowDefinition
+from sailpoint.v3.models.workflow_execution import WorkflowExecution
+from sailpoint.v3.models.workflow_execution_event import WorkflowExecutionEvent
+from sailpoint.v3.models.workflow_library_action import WorkflowLibraryAction
+from sailpoint.v3.models.workflow_library_form_fields import WorkflowLibraryFormFields
+from sailpoint.v3.models.workflow_library_operator import WorkflowLibraryOperator
+from sailpoint.v3.models.workflow_library_trigger import WorkflowLibraryTrigger
+from sailpoint.v3.models.workflow_o_auth_client import WorkflowOAuthClient
+from sailpoint.v3.models.workflow_trigger import WorkflowTrigger
+from sailpoint.v3.models.workflow_trigger_attributes import WorkflowTriggerAttributes

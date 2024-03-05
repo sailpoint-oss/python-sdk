@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 from inspect import getfullargspec
 import json
@@ -28,7 +29,6 @@ except ImportError:
     from typing_extensions import Self
 
 ARRAYINNER_ANY_OF_SCHEMAS = ["int", "object", "str"]
-
 
 class ArrayInner(BaseModel):
     """
@@ -55,13 +55,9 @@ class ArrayInner(BaseModel):
     def __init__(self, *args, **kwargs) -> None:
         if args:
             if len(args) > 1:
-                raise ValueError(
-                    "If a position argument is used, only 1 is allowed to set `actual_instance`"
-                )
+                raise ValueError("If a position argument is used, only 1 is allowed to set `actual_instance`")
             if kwargs:
-                raise ValueError(
-                    "If a position argument is used, keyword arguments cannot be used."
-                )
+                raise ValueError("If a position argument is used, keyword arguments cannot be used.")
             super().__init__(actual_instance=args[0])
         else:
             super().__init__(**kwargs)
@@ -90,9 +86,7 @@ class ArrayInner(BaseModel):
             error_messages.append(str(e))
         if error_messages:
             # no match
-            raise ValueError(
-                "No match found when setting the actual_instance in ArrayInner with anyOf schemas: int, object, str. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("No match found when setting the actual_instance in ArrayInner with anyOf schemas: int, object, str. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -135,9 +129,7 @@ class ArrayInner(BaseModel):
 
         if error_messages:
             # no match
-            raise ValueError(
-                "No match found when deserializing the JSON string into ArrayInner with anyOf schemas: int, object, str. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into ArrayInner with anyOf schemas: int, object, str. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -166,3 +158,5 @@ class ArrayInner(BaseModel):
     def to_str(self) -> str:
         """Returns the string representation of the actual instance"""
         return pprint.pformat(self.model_dump())
+
+

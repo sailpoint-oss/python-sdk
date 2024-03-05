@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,19 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class SourceUpdatedActor(BaseModel):
     """
     Identity who updated the source.
-    """
-
-  # noqa: E501
-    type: StrictStr = Field(
-        description="DTO type of identity who updated the source.")
-    id: Optional[StrictStr] = Field(
-        default=None, description="ID of identity who updated the source.")
-    name: StrictStr = Field(
-        description="Display name of identity who updated the source.")
+    """ # noqa: E501
+    type: StrictStr = Field(description="DTO type of identity who updated the source.")
+    id: Optional[StrictStr] = Field(default=None, description="ID of identity who updated the source.")
+    name: StrictStr = Field(description="Display name of identity who updated the source.")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')
@@ -51,6 +47,7 @@ class SourceUpdatedActor(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -78,7 +75,8 @@ class SourceUpdatedActor(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -98,3 +96,5 @@ class SourceUpdatedActor(BaseModel):
             "name": obj.get("name")
         })
         return _obj
+
+

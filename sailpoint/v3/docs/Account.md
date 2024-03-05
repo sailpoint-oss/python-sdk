@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **has_entitlements** | **bool** | Indicates if the account has entitlements | 
 **identity** | [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
 **source_owner** | [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
+**features** | **str** | A string list containing the owning source&#39;s features | [optional] 
 
 ## Example
 

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.transform_definition_attributes_value import TransformDefinitionAttributesValue
-
 
 class TestTransformDefinitionAttributesValue(unittest.TestCase):
     """TransformDefinitionAttributesValue unit test stubs"""
@@ -26,8 +26,7 @@ class TestTransformDefinitionAttributesValue(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self,
-                      include_optional) -> TransformDefinitionAttributesValue:
+    def make_instance(self, include_optional) -> TransformDefinitionAttributesValue:
         """Test TransformDefinitionAttributesValue
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -47,7 +46,6 @@ class TestTransformDefinitionAttributesValue(unittest.TestCase):
         """Test TransformDefinitionAttributesValue"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

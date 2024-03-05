@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.service_desk_integration_dto import ServiceDeskIntegrationDto
-
 
 class TestServiceDeskIntegrationDto(unittest.TestCase):
     """ServiceDeskIntegrationDto unit test stubs"""
@@ -36,7 +36,10 @@ class TestServiceDeskIntegrationDto(unittest.TestCase):
         model = ServiceDeskIntegrationDto()
         if include_optional:
             return ServiceDeskIntegrationDto(
+                id = '62945a496ef440189b1f03e3623411c8',
                 name = 'Service Desk Integration Name',
+                created = '2024-01-17T18:45:25.994Z',
+                modified = '2024-02-18T18:45:25.994Z',
                 description = 'A very nice Service Desk integration',
                 type = 'ServiceNowSDIM',
                 owner_ref = None,
@@ -67,7 +70,6 @@ class TestServiceDeskIntegrationDto(unittest.TestCase):
         """Test ServiceDeskIntegrationDto"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

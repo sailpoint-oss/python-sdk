@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
@@ -24,13 +26,10 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class RecommendationResponseDto(BaseModel):
     """
     RecommendationResponseDto
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     response: Optional[List[RecommendationResponse]] = None
     __properties: ClassVar[List[str]] = ["response"]
 
@@ -39,6 +38,7 @@ class RecommendationResponseDto(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -66,7 +66,8 @@ class RecommendationResponseDto(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in response (list)
@@ -88,9 +89,8 @@ class RecommendationResponseDto(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "response": [
-                RecommendationResponse.from_dict(_item)
-                for _item in obj.get("response")
-            ] if obj.get("response") is not None else None
+            "response": [RecommendationResponse.from_dict(_item) for _item in obj.get("response")] if obj.get("response") is not None else None
         })
         return _obj
+
+

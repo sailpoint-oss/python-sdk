@@ -11,50 +11,40 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
 from pydantic import Field
-from sailpoint.v3.models.work_item_state import WorkItemState
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class ApprovalItems(BaseModel):
     """
     ApprovalItems
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="The approval item's ID")
-    account: Optional[StrictStr] = Field(
-        default=None,
-        description="The account referenced by the approval item")
-    application: Optional[StrictStr] = Field(
-        default=None, description="The name of the application/source")
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="The attribute's name")
-    operation: Optional[StrictStr] = Field(
-        default=None, description="The attribute's operation")
-    value: Optional[StrictStr] = Field(default=None,
-                                       description="The attribute's value")
-    state: Optional[WorkItemState] = None
-    __properties: ClassVar[List[str]] = [
-        "id", "account", "application", "name", "operation", "value", "state"
-    ]
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="The approval item's ID")
+    account: Optional[StrictStr] = Field(default=None, description="The account referenced by the approval item")
+    application: Optional[StrictStr] = Field(default=None, description="The name of the application/source")
+    name: Optional[StrictStr] = Field(default=None, description="The attribute's name")
+    operation: Optional[StrictStr] = Field(default=None, description="The attribute's operation")
+    value: Optional[StrictStr] = Field(default=None, description="The attribute's value")
+    state: Optional[Any] = None
+    __properties: ClassVar[List[str]] = ["id", "account", "application", "name", "operation", "value", "state"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -82,9 +72,28 @@ class ApprovalItems(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of state
+        if self.state:
+            _dict['state'] = self.state.to_dict()
+        # set to None if account (nullable) is None
+        # and model_fields_set contains the field
+        if self.account is None and "account" in self.model_fields_set:
+            _dict['account'] = None
+
+        # set to None if name (nullable) is None
+        # and model_fields_set contains the field
+        if self.name is None and "name" in self.model_fields_set:
+            _dict['name'] = None
+
+        # set to None if value (nullable) is None
+        # and model_fields_set contains the field
+        if self.value is None and "value" in self.model_fields_set:
+            _dict['value'] = None
+
         return _dict
 
     @classmethod
@@ -103,6 +112,8 @@ class ApprovalItems(BaseModel):
             "name": obj.get("name"),
             "operation": obj.get("operation"),
             "value": obj.get("value"),
-            "state": obj.get("state")
+            "state": WorkItemState.from_dict(obj.get("state")) if obj.get("state") is not None else None
         })
         return _obj
+
+

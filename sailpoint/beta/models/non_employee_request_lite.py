@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -25,15 +27,11 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class NonEmployeeRequestLite(BaseModel):
     """
     NonEmployeeRequestLite
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="Non-Employee request id.")
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="Non-Employee request id.")
     requester: Optional[IdentityReferenceWithId] = None
     __properties: ClassVar[List[str]] = ["id", "requester"]
 
@@ -42,6 +40,7 @@ class NonEmployeeRequestLite(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -69,7 +68,8 @@ class NonEmployeeRequestLite(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of requester
@@ -87,10 +87,9 @@ class NonEmployeeRequestLite(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "requester":
-            IdentityReferenceWithId.from_dict(obj.get("requester"))
-            if obj.get("requester") is not None else None
+            "id": obj.get("id"),
+            "requester": IdentityReferenceWithId.from_dict(obj.get("requester")) if obj.get("requester") is not None else None
         })
         return _obj
+
+

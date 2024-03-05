@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,17 +26,11 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class MultiPolicyRequest(BaseModel):
     """
     MultiPolicyRequest
-    """
-
-  # noqa: E501
-    filtered_policy_list: Optional[List[StrictStr]] = Field(
-        default=None,
-        description="Multi-policy report will be run for this list of ids",
-        alias="filteredPolicyList")
+    """ # noqa: E501
+    filtered_policy_list: Optional[List[StrictStr]] = Field(default=None, description="Multi-policy report will be run for this list of ids", alias="filteredPolicyList")
     __properties: ClassVar[List[str]] = ["filteredPolicyList"]
 
     model_config = {
@@ -42,6 +38,7 @@ class MultiPolicyRequest(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -69,7 +66,8 @@ class MultiPolicyRequest(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -83,6 +81,9 @@ class MultiPolicyRequest(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {"filteredPolicyList": obj.get("filteredPolicyList")})
+        _obj = cls.model_validate({
+            "filteredPolicyList": obj.get("filteredPolicyList")
+        })
         return _obj
+
+

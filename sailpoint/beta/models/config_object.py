@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt
@@ -25,17 +27,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ConfigObject(BaseModel):
     """
     Config export and import format for individual object configurations.
     """ # noqa: E501
-    version: Optional[StrictInt] = Field(
-        default=None, description="Current version of configuration object.")
+    version: Optional[StrictInt] = Field(default=None, description="Current version of configuration object.")
     var_self: Optional[SelfImportExportDto] = Field(default=None, alias="self")
-    object: Optional[Dict[str, Any]] = Field(
-        default=None,
-        description="Object details. Format dependant on the object type.")
+    object: Optional[Dict[str, Any]] = Field(default=None, description="Object details. Format dependant on the object type.")
     __properties: ClassVar[List[str]] = ["version", "self", "object"]
 
     model_config = {
@@ -43,6 +41,7 @@ class ConfigObject(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -70,7 +69,8 @@ class ConfigObject(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of var_self
@@ -88,12 +88,10 @@ class ConfigObject(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "version":
-            obj.get("version"),
-            "self":
-            SelfImportExportDto.from_dict(obj.get("self"))
-            if obj.get("self") is not None else None,
-            "object":
-            obj.get("object")
+            "version": obj.get("version"),
+            "self": SelfImportExportDto.from_dict(obj.get("self")) if obj.get("self") is not None else None,
+            "object": obj.get("object")
         })
         return _obj
+
+

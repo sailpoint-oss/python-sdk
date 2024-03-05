@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,18 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class CampaignAllOfFilter(BaseModel):
     """
     Determines which items will be included in this campaign. The default campaign filter is used if this field is left blank.
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(
-        default=None,
-        description="The ID of whatever type of filter is being used.")
-    type: Optional[StrictStr] = Field(default=None,
-                                      description="Type of the filter")
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="Name of the filter")
+    id: Optional[StrictStr] = Field(default=None, description="The ID of whatever type of filter is being used.")
+    type: Optional[StrictStr] = Field(default=None, description="Type of the filter")
+    name: Optional[StrictStr] = Field(default=None, description="Name of the filter")
     __properties: ClassVar[List[str]] = ["id", "type", "name"]
 
     @field_validator('type')
@@ -45,8 +42,7 @@ class CampaignAllOfFilter(BaseModel):
             return value
 
         if value not in ('CAMPAIGN_FILTER', 'RULE'):
-            raise ValueError(
-                "must be one of enum values ('CAMPAIGN_FILTER', 'RULE')")
+            raise ValueError("must be one of enum values ('CAMPAIGN_FILTER', 'RULE')")
         return value
 
     model_config = {
@@ -54,6 +50,7 @@ class CampaignAllOfFilter(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -81,7 +78,8 @@ class CampaignAllOfFilter(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -101,3 +99,5 @@ class CampaignAllOfFilter(BaseModel):
             "name": obj.get("name")
         })
         return _obj
+
+

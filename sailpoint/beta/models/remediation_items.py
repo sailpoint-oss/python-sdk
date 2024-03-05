@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,58 +26,27 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class RemediationItems(BaseModel):
     """
     RemediationItems
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="The ID of the certification")
-    target_id: Optional[StrictStr] = Field(
-        default=None,
-        description="The ID of the certification target",
-        alias="targetId")
-    target_name: Optional[StrictStr] = Field(
-        default=None,
-        description="The name of the certification target",
-        alias="targetName")
-    target_display_name: Optional[StrictStr] = Field(
-        default=None,
-        description="The display name of the certification target",
-        alias="targetDisplayName")
-    application_name: Optional[StrictStr] = Field(
-        default=None,
-        description="The name of the application/source",
-        alias="applicationName")
-    attribute_name: Optional[StrictStr] = Field(
-        default=None,
-        description="The name of the attribute being certified",
-        alias="attributeName")
-    attribute_operation: Optional[StrictStr] = Field(
-        default=None,
-        description="The operation of the certification on the attribute",
-        alias="attributeOperation")
-    attribute_value: Optional[StrictStr] = Field(
-        default=None,
-        description="The value of the attribute being certified",
-        alias="attributeValue")
-    native_identity: Optional[StrictStr] = Field(
-        default=None,
-        description="The native identity of the target",
-        alias="nativeIdentity")
-    __properties: ClassVar[List[str]] = [
-        "id", "targetId", "targetName", "targetDisplayName", "applicationName",
-        "attributeName", "attributeOperation", "attributeValue",
-        "nativeIdentity"
-    ]
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="The ID of the certification")
+    target_id: Optional[StrictStr] = Field(default=None, description="The ID of the certification target", alias="targetId")
+    target_name: Optional[StrictStr] = Field(default=None, description="The name of the certification target", alias="targetName")
+    target_display_name: Optional[StrictStr] = Field(default=None, description="The display name of the certification target", alias="targetDisplayName")
+    application_name: Optional[StrictStr] = Field(default=None, description="The name of the application/source", alias="applicationName")
+    attribute_name: Optional[StrictStr] = Field(default=None, description="The name of the attribute being certified", alias="attributeName")
+    attribute_operation: Optional[StrictStr] = Field(default=None, description="The operation of the certification on the attribute", alias="attributeOperation")
+    attribute_value: Optional[StrictStr] = Field(default=None, description="The value of the attribute being certified", alias="attributeValue")
+    native_identity: Optional[StrictStr] = Field(default=None, description="The native identity of the target", alias="nativeIdentity")
+    __properties: ClassVar[List[str]] = ["id", "targetId", "targetName", "targetDisplayName", "applicationName", "attributeName", "attributeOperation", "attributeValue", "nativeIdentity"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -103,7 +74,8 @@ class RemediationItems(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -118,23 +90,16 @@ class RemediationItems(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "targetId":
-            obj.get("targetId"),
-            "targetName":
-            obj.get("targetName"),
-            "targetDisplayName":
-            obj.get("targetDisplayName"),
-            "applicationName":
-            obj.get("applicationName"),
-            "attributeName":
-            obj.get("attributeName"),
-            "attributeOperation":
-            obj.get("attributeOperation"),
-            "attributeValue":
-            obj.get("attributeValue"),
-            "nativeIdentity":
-            obj.get("nativeIdentity")
+            "id": obj.get("id"),
+            "targetId": obj.get("targetId"),
+            "targetName": obj.get("targetName"),
+            "targetDisplayName": obj.get("targetDisplayName"),
+            "applicationName": obj.get("applicationName"),
+            "attributeName": obj.get("attributeName"),
+            "attributeOperation": obj.get("attributeOperation"),
+            "attributeValue": obj.get("attributeValue"),
+            "nativeIdentity": obj.get("nativeIdentity")
         })
         return _obj
+
+

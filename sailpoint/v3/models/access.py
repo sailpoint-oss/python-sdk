@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -25,31 +27,23 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class Access(BaseModel):
     """
     Access
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(
-        default=None, description="The unique ID of the referenced object.")
-    name: Optional[StrictStr] = Field(
-        default=None,
-        description="The human readable name of the referenced object.")
-    display_name: Optional[StrictStr] = Field(default=None,
-                                              alias="displayName")
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="The unique ID of the referenced object.")
+    name: Optional[StrictStr] = Field(default=None, description="The human readable name of the referenced object.")
+    display_name: Optional[StrictStr] = Field(default=None, alias="displayName")
     type: Optional[DtoType] = None
     description: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "displayName", "type", "description"
-    ]
+    __properties: ClassVar[List[str]] = ["id", "name", "displayName", "type", "description"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -77,7 +71,8 @@ class Access(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if description (nullable) is None
@@ -104,3 +99,5 @@ class Access(BaseModel):
             "description": obj.get("description")
         })
         return _obj
+
+

@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 from inspect import getfullargspec
 import json
@@ -29,10 +30,7 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-TRIGGEREXAMPLEOUTPUT_ONE_OF_SCHEMAS = [
-    "AccessRequestDynamicApprover1", "AccessRequestPreApproval1"
-]
-
+TRIGGEREXAMPLEOUTPUT_ONE_OF_SCHEMAS = ["AccessRequestDynamicApprover1", "AccessRequestPreApproval1"]
 
 class TriggerExampleOutput(BaseModel):
     """
@@ -42,26 +40,21 @@ class TriggerExampleOutput(BaseModel):
     oneof_schema_1_validator: Optional[AccessRequestDynamicApprover1] = None
     # data type: AccessRequestPreApproval1
     oneof_schema_2_validator: Optional[AccessRequestPreApproval1] = None
-    actual_instance: Optional[Union[AccessRequestDynamicApprover1,
-                                    AccessRequestPreApproval1]] = None
-    one_of_schemas: List[str] = Literal["AccessRequestDynamicApprover1",
-                                        "AccessRequestPreApproval1"]
+    actual_instance: Optional[Union[AccessRequestDynamicApprover1, AccessRequestPreApproval1]] = None
+    one_of_schemas: List[str] = Literal["AccessRequestDynamicApprover1", "AccessRequestPreApproval1"]
 
     model_config = {
         "validate_assignment": True,
         "protected_namespaces": (),
     }
 
+
     def __init__(self, *args, **kwargs) -> None:
         if args:
             if len(args) > 1:
-                raise ValueError(
-                    "If a position argument is used, only 1 is allowed to set `actual_instance`"
-                )
+                raise ValueError("If a position argument is used, only 1 is allowed to set `actual_instance`")
             if kwargs:
-                raise ValueError(
-                    "If a position argument is used, keyword arguments cannot be used."
-                )
+                raise ValueError("If a position argument is used, keyword arguments cannot be used.")
             super().__init__(actual_instance=args[0])
         else:
             super().__init__(**kwargs)
@@ -76,28 +69,20 @@ class TriggerExampleOutput(BaseModel):
         match = 0
         # validate data type: AccessRequestDynamicApprover1
         if not isinstance(v, AccessRequestDynamicApprover1):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `AccessRequestDynamicApprover1`"
-            )
+            error_messages.append(f"Error! Input type `{type(v)}` is not `AccessRequestDynamicApprover1`")
         else:
             match += 1
         # validate data type: AccessRequestPreApproval1
         if not isinstance(v, AccessRequestPreApproval1):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `AccessRequestPreApproval1`"
-            )
+            error_messages.append(f"Error! Input type `{type(v)}` is not `AccessRequestPreApproval1`")
         else:
             match += 1
         if match > 1:
             # more than 1 match
-            raise ValueError(
-                "Multiple matches found when setting `actual_instance` in TriggerExampleOutput with oneOf schemas: AccessRequestDynamicApprover1, AccessRequestPreApproval1. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when setting `actual_instance` in TriggerExampleOutput with oneOf schemas: AccessRequestDynamicApprover1, AccessRequestPreApproval1. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError(
-                "No match found when setting `actual_instance` in TriggerExampleOutput with oneOf schemas: AccessRequestDynamicApprover1, AccessRequestPreApproval1. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in TriggerExampleOutput with oneOf schemas: AccessRequestDynamicApprover1, AccessRequestPreApproval1. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -117,29 +102,23 @@ class TriggerExampleOutput(BaseModel):
 
         # deserialize data into AccessRequestDynamicApprover1
         try:
-            instance.actual_instance = AccessRequestDynamicApprover1.from_json(
-                json_str)
+            instance.actual_instance = AccessRequestDynamicApprover1.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
         # deserialize data into AccessRequestPreApproval1
         try:
-            instance.actual_instance = AccessRequestPreApproval1.from_json(
-                json_str)
+            instance.actual_instance = AccessRequestPreApproval1.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
 
         if match > 1:
             # more than 1 match
-            raise ValueError(
-                "Multiple matches found when deserializing the JSON string into TriggerExampleOutput with oneOf schemas: AccessRequestDynamicApprover1, AccessRequestPreApproval1. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when deserializing the JSON string into TriggerExampleOutput with oneOf schemas: AccessRequestDynamicApprover1, AccessRequestPreApproval1. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError(
-                "No match found when deserializing the JSON string into TriggerExampleOutput with oneOf schemas: AccessRequestDynamicApprover1, AccessRequestPreApproval1. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into TriggerExampleOutput with oneOf schemas: AccessRequestDynamicApprover1, AccessRequestPreApproval1. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -169,3 +148,5 @@ class TriggerExampleOutput(BaseModel):
     def to_str(self) -> str:
         """Returns the string representation of the actual instance"""
         return pprint.pformat(self.model_dump())
+
+

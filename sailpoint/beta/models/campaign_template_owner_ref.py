@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,19 +26,14 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class CampaignTemplateOwnerRef(BaseModel):
     """
     The owner of this template, and the owner of campaigns generated from this template via a schedule. This field is automatically populated at creation time with the current user.
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="Id of the owner")
-    type: Optional[StrictStr] = Field(default=None,
-                                      description="Type of the owner")
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="Name of the owner")
-    email: Optional[StrictStr] = Field(default=None,
-                                       description="Email of the owner")
+    id: Optional[StrictStr] = Field(default=None, description="Id of the owner")
+    type: Optional[StrictStr] = Field(default=None, description="Type of the owner")
+    name: Optional[StrictStr] = Field(default=None, description="Name of the owner")
+    email: Optional[StrictStr] = Field(default=None, description="Email of the owner")
     __properties: ClassVar[List[str]] = ["id", "type", "name", "email"]
 
     @field_validator('type')
@@ -54,6 +51,7 @@ class CampaignTemplateOwnerRef(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -81,7 +79,8 @@ class CampaignTemplateOwnerRef(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -102,3 +101,5 @@ class CampaignTemplateOwnerRef(BaseModel):
             "email": obj.get("email")
         })
         return _obj
+
+

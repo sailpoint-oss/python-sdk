@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -25,44 +26,22 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccessRequestItem(BaseModel):
     """
     AccessRequestItem
-    """
-
-  # noqa: E501
-    type: StrictStr = Field(
-        description="The type of the item being requested.")
-    id: StrictStr = Field(
-        description="ID of Role, Access Profile or Entitlement being requested."
-    )
-    comment: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Comment provided by requester. * Comment is required when the request is of type Revoke Access. "
-    )
-    client_metadata: Optional[Dict[str, StrictStr]] = Field(
-        default=None,
-        description=
-        "Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities and /access-request-status.",
-        alias="clientMetadata")
-    remove_date: Optional[datetime] = Field(
-        default=None,
-        description=
-        "The date the role or access profile is no longer assigned to the specified identity. * Specify a date in the future. * The current SLA for the deprovisioning is 24 hours. * This date can be modified to either extend or decrease the duration of access item assignments for the specified identity. * Currently it is not supported for entitlements. ",
-        alias="removeDate")
-    __properties: ClassVar[List[str]] = [
-        "type", "id", "comment", "clientMetadata", "removeDate"
-    ]
+    """ # noqa: E501
+    type: StrictStr = Field(description="The type of the item being requested.")
+    id: StrictStr = Field(description="ID of Role, Access Profile or Entitlement being requested.")
+    comment: Optional[StrictStr] = Field(default=None, description="Comment provided by requester. * Comment is required when the request is of type Revoke Access. ")
+    client_metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities and /access-request-status.", alias="clientMetadata")
+    remove_date: Optional[datetime] = Field(default=None, description="The date the role or access profile is no longer assigned to the specified identity. Also known as the expiration date. * Specify a date in the future. * The current SLA for the deprovisioning is 24 hours. * This date can be modified to either extend or decrease the duration of access item assignments for the specified identity. You can change the expiration date for requests for yourself or direct reports, but you cannot remove an expiration date on an already approved item. If the access request has not been approved, you can cancel it and submit a new one without the expiration. If it has already been approved, then you have to revoke the access and then re-request without the expiration. * Currently it is not supported for entitlements. ", alias="removeDate")
+    __properties: ClassVar[List[str]] = ["type", "id", "comment", "clientMetadata", "removeDate"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT'):
-            raise ValueError(
-                "must be one of enum values ('ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT')"
-            )
+            raise ValueError("must be one of enum values ('ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT')")
         return value
 
     model_config = {
@@ -70,6 +49,7 @@ class AccessRequestItem(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -97,7 +77,8 @@ class AccessRequestItem(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -119,3 +100,5 @@ class AccessRequestItem(BaseModel):
             "removeDate": obj.get("removeDate")
         })
         return _obj
+
+

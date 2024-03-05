@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -25,28 +27,21 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccessRequestResponse(BaseModel):
     """
     AccessRequestResponse
-    """
-
-  # noqa: E501
-    requester_id: Optional[StrictStr] = Field(default=None,
-                                              description="the requester Id",
-                                              alias="requesterId")
-    requester_name: Optional[StrictStr] = Field(
-        default=None, description="the requesterName", alias="requesterName")
+    """ # noqa: E501
+    requester_id: Optional[StrictStr] = Field(default=None, description="the requester Id", alias="requesterId")
+    requester_name: Optional[StrictStr] = Field(default=None, description="the requesterName", alias="requesterName")
     items: Optional[List[AccessRequestItemResponse]] = None
-    __properties: ClassVar[List[str]] = [
-        "requesterId", "requesterName", "items"
-    ]
+    __properties: ClassVar[List[str]] = ["requesterId", "requesterName", "items"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -74,7 +69,8 @@ class AccessRequestResponse(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in items (list)
@@ -96,13 +92,10 @@ class AccessRequestResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "requesterId":
-            obj.get("requesterId"),
-            "requesterName":
-            obj.get("requesterName"),
-            "items": [
-                AccessRequestItemResponse.from_dict(_item)
-                for _item in obj.get("items")
-            ] if obj.get("items") is not None else None
+            "requesterId": obj.get("requesterId"),
+            "requesterName": obj.get("requesterName"),
+            "items": [AccessRequestItemResponse.from_dict(_item) for _item in obj.get("items")] if obj.get("items") is not None else None
         })
         return _obj
+
+

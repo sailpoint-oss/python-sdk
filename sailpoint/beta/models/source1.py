@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,17 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class Source1(BaseModel):
     """
     Source1
-    """
-
-  # noqa: E501
-    type: Optional[StrictStr] = Field(default=None,
-                                      description="The type of the source")
-    properties: Optional[Dict[str, Any]] = Field(
-        default=None, description="The source properties")
+    """ # noqa: E501
+    type: Optional[StrictStr] = Field(default=None, description="The type of the source")
+    properties: Optional[Dict[str, Any]] = Field(default=None, description="The source properties")
     __properties: ClassVar[List[str]] = ["type", "properties"]
 
     model_config = {
@@ -42,6 +39,7 @@ class Source1(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -69,7 +67,8 @@ class Source1(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -88,3 +87,5 @@ class Source1(BaseModel):
             "properties": obj.get("properties")
         })
         return _obj
+
+

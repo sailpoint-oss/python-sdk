@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -25,15 +27,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ManagedClusterAttributes(BaseModel):
     """
     Managed Cluster Attributes for Cluster Configuration. Supported Cluster Types [sqsCluster, spConnectCluster]
     """ # noqa: E501
     queue: Optional[ManagedClusterQueue] = None
-    keystore: Optional[StrictStr] = Field(
-        default=None,
-        description="ManagedCluster keystore for spConnectCluster type")
+    keystore: Optional[StrictStr] = Field(default=None, description="ManagedCluster keystore for spConnectCluster type")
     __properties: ClassVar[List[str]] = ["queue", "keystore"]
 
     model_config = {
@@ -41,6 +40,7 @@ class ManagedClusterAttributes(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -68,7 +68,8 @@ class ManagedClusterAttributes(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of queue
@@ -91,10 +92,9 @@ class ManagedClusterAttributes(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "queue":
-            ManagedClusterQueue.from_dict(obj.get("queue"))
-            if obj.get("queue") is not None else None,
-            "keystore":
-            obj.get("keystore")
+            "queue": ManagedClusterQueue.from_dict(obj.get("queue")) if obj.get("queue") is not None else None,
+            "keystore": obj.get("keystore")
         })
         return _obj
+
+

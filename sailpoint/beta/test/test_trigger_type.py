@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.trigger_type import TriggerType
-
 
 class TestTriggerType(unittest.TestCase):
     """TriggerType unit test stubs"""
@@ -29,7 +29,6 @@ class TestTriggerType(unittest.TestCase):
     def testTriggerType(self):
         """Test TriggerType"""
         # inst = TriggerType()
-
 
 if __name__ == '__main__':
     unittest.main()

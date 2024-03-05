@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,21 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class IdentityExceptionReportReference(BaseModel):
     """
     IdentityExceptionReportReference
-    """
-
-  # noqa: E501
-    task_result_id: Optional[StrictStr] = Field(
-        default=None,
-        description="The id of the task result.",
-        alias="taskResultId")
-    report_name: Optional[StrictStr] = Field(
-        default=None,
-        description="The name of the report.",
-        alias="reportName")
+    """ # noqa: E501
+    task_result_id: Optional[StrictStr] = Field(default=None, description="The id of the task result.", alias="taskResultId")
+    report_name: Optional[StrictStr] = Field(default=None, description="The name of the report.", alias="reportName")
     __properties: ClassVar[List[str]] = ["taskResultId", "reportName"]
 
     model_config = {
@@ -46,6 +39,7 @@ class IdentityExceptionReportReference(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -73,7 +67,8 @@ class IdentityExceptionReportReference(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -92,3 +87,5 @@ class IdentityExceptionReportReference(BaseModel):
             "reportName": obj.get("reportName")
         })
         return _obj
+
+

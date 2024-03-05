@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,17 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class PreApprovalTriggerDetails(BaseModel):
     """
     Provides additional details about the pre-approval trigger for this request.
     """ # noqa: E501
-    comment: Optional[StrictStr] = Field(
-        default=None, description="Comment left for the pre-approval decision")
-    reviewer: Optional[StrictStr] = Field(
-        default=None, description="The reviewer of the pre-approval decision")
-    decision: Optional[StrictStr] = Field(
-        default=None, description="The decision of the pre-approval trigger")
+    comment: Optional[StrictStr] = Field(default=None, description="Comment left for the pre-approval decision")
+    reviewer: Optional[StrictStr] = Field(default=None, description="The reviewer of the pre-approval decision")
+    decision: Optional[StrictStr] = Field(default=None, description="The decision of the pre-approval trigger")
     __properties: ClassVar[List[str]] = ["comment", "reviewer", "decision"]
 
     @field_validator('decision')
@@ -44,8 +42,7 @@ class PreApprovalTriggerDetails(BaseModel):
             return value
 
         if value not in ('APPROVED', 'REJECTED'):
-            raise ValueError(
-                "must be one of enum values ('APPROVED', 'REJECTED')")
+            raise ValueError("must be one of enum values ('APPROVED', 'REJECTED')")
         return value
 
     model_config = {
@@ -53,6 +50,7 @@ class PreApprovalTriggerDetails(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -80,7 +78,8 @@ class PreApprovalTriggerDetails(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -100,3 +99,5 @@ class PreApprovalTriggerDetails(BaseModel):
             "decision": obj.get("decision")
         })
         return _obj
+
+

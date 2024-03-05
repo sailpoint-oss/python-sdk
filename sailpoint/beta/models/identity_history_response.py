@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,42 +26,24 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class IdentityHistoryResponse(BaseModel):
     """
     IdentityHistoryResponse
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="the identity ID")
-    display_name: Optional[StrictStr] = Field(
-        default=None,
-        description="the display name of the identity",
-        alias="displayName")
-    snapshot: Optional[StrictStr] = Field(
-        default=None,
-        description="the date when the identity record was created")
-    deleted_date: Optional[StrictStr] = Field(
-        default=None,
-        description="the date when the identity was deleted",
-        alias="deletedDate")
-    access_item_count: Optional[Dict[str, StrictStr]] = Field(
-        default=None,
-        description="A map containing the count of each access item",
-        alias="accessItemCount")
-    attributes: Optional[Dict[str, StrictStr]] = Field(
-        default=None, description="A map containing the identity attributes")
-    __properties: ClassVar[List[str]] = [
-        "id", "displayName", "snapshot", "deletedDate", "accessItemCount",
-        "attributes"
-    ]
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="the identity ID")
+    display_name: Optional[StrictStr] = Field(default=None, description="the display name of the identity", alias="displayName")
+    snapshot: Optional[StrictStr] = Field(default=None, description="the date when the identity record was created")
+    deleted_date: Optional[StrictStr] = Field(default=None, description="the date when the identity was deleted", alias="deletedDate")
+    access_item_count: Optional[Dict[str, StrictStr]] = Field(default=None, description="A map containing the count of each access item", alias="accessItemCount")
+    attributes: Optional[Dict[str, StrictStr]] = Field(default=None, description="A map containing the identity attributes")
+    __properties: ClassVar[List[str]] = ["id", "displayName", "snapshot", "deletedDate", "accessItemCount", "attributes"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -87,7 +71,8 @@ class IdentityHistoryResponse(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -110,3 +95,5 @@ class IdentityHistoryResponse(BaseModel):
             "attributes": obj.get("attributes")
         })
         return _obj
+
+

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -27,55 +29,26 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ConnectorRuleResponse(BaseModel):
     """
     ConnectorRuleResponse
-    """
-
-  # noqa: E501
-    name: Annotated[str,
-                    Field(min_length=1, strict=True, max_length=128)] = Field(
-                        description="the name of the rule")
-    description: Optional[StrictStr] = Field(
-        default=None, description="a description of the rule's purpose")
+    """ # noqa: E501
+    name: Annotated[str, Field(min_length=1, strict=True, max_length=128)] = Field(description="the name of the rule")
+    description: Optional[StrictStr] = Field(default=None, description="a description of the rule's purpose")
     type: StrictStr = Field(description="the type of rule")
     signature: Optional[ConnectorRuleCreateRequestSignature] = None
     source_code: SourceCode = Field(alias="sourceCode")
-    attributes: Optional[Dict[str, Any]] = Field(
-        default=None, description="a map of string to objects")
+    attributes: Optional[Dict[str, Any]] = Field(default=None, description="a map of string to objects")
     id: StrictStr = Field(description="the ID of the rule")
-    created: StrictStr = Field(
-        description="an ISO 8601 UTC timestamp when this rule was created")
-    modified: Optional[StrictStr] = Field(
-        default=None,
-        description="an ISO 8601 UTC timestamp when this rule was last modified"
-    )
-    __properties: ClassVar[List[str]] = [
-        "name", "description", "type", "signature", "sourceCode", "attributes",
-        "id", "created", "modified"
-    ]
+    created: StrictStr = Field(description="an ISO 8601 UTC timestamp when this rule was created")
+    modified: Optional[StrictStr] = Field(default=None, description="an ISO 8601 UTC timestamp when this rule was last modified")
+    __properties: ClassVar[List[str]] = ["name", "description", "type", "signature", "sourceCode", "attributes", "id", "created", "modified"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('BuildMap', 'ConnectorAfterCreate',
-                         'ConnectorAfterDelete', 'ConnectorAfterModify',
-                         'ConnectorBeforeCreate', 'ConnectorBeforeDelete',
-                         'ConnectorBeforeModify', 'JDBCBuildMap',
-                         'JDBCOperationProvisioning', 'JDBCProvision',
-                         'PeopleSoftHRMSBuildMap',
-                         'PeopleSoftHRMSOperationProvisioning',
-                         'PeopleSoftHRMSProvision',
-                         'RACFPermissionCustomization', 'SAPBuildMap',
-                         'SapHrManagerRule', 'SapHrOperationProvisioning',
-                         'SapHrProvision',
-                         'SuccessFactorsOperationProvisioning',
-                         'WebServiceAfterOperationRule',
-                         'WebServiceBeforeOperationRule'):
-            raise ValueError(
-                "must be one of enum values ('BuildMap', 'ConnectorAfterCreate', 'ConnectorAfterDelete', 'ConnectorAfterModify', 'ConnectorBeforeCreate', 'ConnectorBeforeDelete', 'ConnectorBeforeModify', 'JDBCBuildMap', 'JDBCOperationProvisioning', 'JDBCProvision', 'PeopleSoftHRMSBuildMap', 'PeopleSoftHRMSOperationProvisioning', 'PeopleSoftHRMSProvision', 'RACFPermissionCustomization', 'SAPBuildMap', 'SapHrManagerRule', 'SapHrOperationProvisioning', 'SapHrProvision', 'SuccessFactorsOperationProvisioning', 'WebServiceAfterOperationRule', 'WebServiceBeforeOperationRule')"
-            )
+        if value not in ('BuildMap', 'ConnectorAfterCreate', 'ConnectorAfterDelete', 'ConnectorAfterModify', 'ConnectorBeforeCreate', 'ConnectorBeforeDelete', 'ConnectorBeforeModify', 'JDBCBuildMap', 'JDBCOperationProvisioning', 'JDBCProvision', 'PeopleSoftHRMSBuildMap', 'PeopleSoftHRMSOperationProvisioning', 'PeopleSoftHRMSProvision', 'RACFPermissionCustomization', 'SAPBuildMap', 'SapHrManagerRule', 'SapHrOperationProvisioning', 'SapHrProvision', 'SuccessFactorsOperationProvisioning', 'WebServiceAfterOperationRule', 'WebServiceBeforeOperationRule'):
+            raise ValueError("must be one of enum values ('BuildMap', 'ConnectorAfterCreate', 'ConnectorAfterDelete', 'ConnectorAfterModify', 'ConnectorBeforeCreate', 'ConnectorBeforeDelete', 'ConnectorBeforeModify', 'JDBCBuildMap', 'JDBCOperationProvisioning', 'JDBCProvision', 'PeopleSoftHRMSBuildMap', 'PeopleSoftHRMSOperationProvisioning', 'PeopleSoftHRMSProvision', 'RACFPermissionCustomization', 'SAPBuildMap', 'SapHrManagerRule', 'SapHrOperationProvisioning', 'SapHrProvision', 'SuccessFactorsOperationProvisioning', 'WebServiceAfterOperationRule', 'WebServiceBeforeOperationRule')")
         return value
 
     model_config = {
@@ -83,6 +56,7 @@ class ConnectorRuleResponse(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -110,7 +84,8 @@ class ConnectorRuleResponse(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of signature
@@ -141,25 +116,16 @@ class ConnectorRuleResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name":
-            obj.get("name"),
-            "description":
-            obj.get("description"),
-            "type":
-            obj.get("type"),
-            "signature":
-            ConnectorRuleCreateRequestSignature.from_dict(obj.get("signature"))
-            if obj.get("signature") is not None else None,
-            "sourceCode":
-            SourceCode.from_dict(obj.get("sourceCode"))
-            if obj.get("sourceCode") is not None else None,
-            "attributes":
-            obj.get("attributes"),
-            "id":
-            obj.get("id"),
-            "created":
-            obj.get("created"),
-            "modified":
-            obj.get("modified")
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "type": obj.get("type"),
+            "signature": ConnectorRuleCreateRequestSignature.from_dict(obj.get("signature")) if obj.get("signature") is not None else None,
+            "sourceCode": SourceCode.from_dict(obj.get("sourceCode")) if obj.get("sourceCode") is not None else None,
+            "attributes": obj.get("attributes"),
+            "id": obj.get("id"),
+            "created": obj.get("created"),
+            "modified": obj.get("modified")
         })
         return _obj
+
+

@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -25,65 +26,31 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class NonEmployeeRecord(BaseModel):
     """
     NonEmployeeRecord
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="Non-Employee record id.")
-    account_name: Optional[StrictStr] = Field(
-        default=None,
-        description="Requested identity account name.",
-        alias="accountName")
-    first_name: Optional[StrictStr] = Field(
-        default=None,
-        description="Non-Employee's first name.",
-        alias="firstName")
-    last_name: Optional[StrictStr] = Field(
-        default=None,
-        description="Non-Employee's last name.",
-        alias="lastName")
-    email: Optional[StrictStr] = Field(default=None,
-                                       description="Non-Employee's email.")
-    phone: Optional[StrictStr] = Field(default=None,
-                                       description="Non-Employee's phone.")
-    manager: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "The account ID of a valid identity to serve as this non-employee's manager."
-    )
-    source_id: Optional[StrictStr] = Field(
-        default=None,
-        description="Non-Employee's source id.",
-        alias="sourceId")
-    data: Optional[Dict[str, StrictStr]] = Field(
-        default=None, description="Attribute blob/bag for a non-employee.")
-    start_date: Optional[datetime] = Field(
-        default=None,
-        description="Non-Employee employment start date.",
-        alias="startDate")
-    end_date: Optional[datetime] = Field(
-        default=None,
-        description="Non-Employee employment end date.",
-        alias="endDate")
-    modified: Optional[datetime] = Field(
-        default=None, description="When the request was last modified.")
-    created: Optional[datetime] = Field(
-        default=None, description="When the request was created.")
-    __properties: ClassVar[List[str]] = [
-        "id", "accountName", "firstName", "lastName", "email", "phone",
-        "manager", "sourceId", "data", "startDate", "endDate", "modified",
-        "created"
-    ]
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="Non-Employee record id.")
+    account_name: Optional[StrictStr] = Field(default=None, description="Requested identity account name.", alias="accountName")
+    first_name: Optional[StrictStr] = Field(default=None, description="Non-Employee's first name.", alias="firstName")
+    last_name: Optional[StrictStr] = Field(default=None, description="Non-Employee's last name.", alias="lastName")
+    email: Optional[StrictStr] = Field(default=None, description="Non-Employee's email.")
+    phone: Optional[StrictStr] = Field(default=None, description="Non-Employee's phone.")
+    manager: Optional[StrictStr] = Field(default=None, description="The account ID of a valid identity to serve as this non-employee's manager.")
+    source_id: Optional[StrictStr] = Field(default=None, description="Non-Employee's source id.", alias="sourceId")
+    data: Optional[Dict[str, StrictStr]] = Field(default=None, description="Attribute blob/bag for a non-employee.")
+    start_date: Optional[datetime] = Field(default=None, description="Non-Employee employment start date.", alias="startDate")
+    end_date: Optional[datetime] = Field(default=None, description="Non-Employee employment end date.", alias="endDate")
+    modified: Optional[datetime] = Field(default=None, description="When the request was last modified.")
+    created: Optional[datetime] = Field(default=None, description="When the request was created.")
+    __properties: ClassVar[List[str]] = ["id", "accountName", "firstName", "lastName", "email", "phone", "manager", "sourceId", "data", "startDate", "endDate", "modified", "created"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -111,7 +78,8 @@ class NonEmployeeRecord(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -141,3 +109,5 @@ class NonEmployeeRecord(BaseModel):
             "created": obj.get("created")
         })
         return _obj
+
+

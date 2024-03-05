@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 from inspect import getfullargspec
 import json
@@ -27,10 +28,7 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-ACCOUNTATTRIBUTESCHANGEDCHANGESINNERNEWVALUE_ONE_OF_SCHEMAS = [
-    "List[str]", "bool", "str"
-]
-
+ACCOUNTATTRIBUTESCHANGEDCHANGESINNERNEWVALUE_ONE_OF_SCHEMAS = ["List[str]", "bool", "str"]
 
 class AccountAttributesChangedChangesInnerNewValue(BaseModel):
     """
@@ -50,16 +48,13 @@ class AccountAttributesChangedChangesInnerNewValue(BaseModel):
         "protected_namespaces": (),
     }
 
+
     def __init__(self, *args, **kwargs) -> None:
         if args:
             if len(args) > 1:
-                raise ValueError(
-                    "If a position argument is used, only 1 is allowed to set `actual_instance`"
-                )
+                raise ValueError("If a position argument is used, only 1 is allowed to set `actual_instance`")
             if kwargs:
-                raise ValueError(
-                    "If a position argument is used, keyword arguments cannot be used."
-                )
+                raise ValueError("If a position argument is used, keyword arguments cannot be used.")
             super().__init__(actual_instance=args[0])
         else:
             super().__init__(**kwargs)
@@ -69,8 +64,7 @@ class AccountAttributesChangedChangesInnerNewValue(BaseModel):
         if v is None:
             return v
 
-        instance = AccountAttributesChangedChangesInnerNewValue.model_construct(
-        )
+        instance = AccountAttributesChangedChangesInnerNewValue.model_construct()
         error_messages = []
         match = 0
         # validate data type: str
@@ -93,14 +87,10 @@ class AccountAttributesChangedChangesInnerNewValue(BaseModel):
             error_messages.append(str(e))
         if match > 1:
             # more than 1 match
-            raise ValueError(
-                "Multiple matches found when setting `actual_instance` in AccountAttributesChangedChangesInnerNewValue with oneOf schemas: List[str], bool, str. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when setting `actual_instance` in AccountAttributesChangedChangesInnerNewValue with oneOf schemas: List[str], bool, str. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError(
-                "No match found when setting `actual_instance` in AccountAttributesChangedChangesInnerNewValue with oneOf schemas: List[str], bool, str. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in AccountAttributesChangedChangesInnerNewValue with oneOf schemas: List[str], bool, str. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -148,14 +138,10 @@ class AccountAttributesChangedChangesInnerNewValue(BaseModel):
 
         if match > 1:
             # more than 1 match
-            raise ValueError(
-                "Multiple matches found when deserializing the JSON string into AccountAttributesChangedChangesInnerNewValue with oneOf schemas: List[str], bool, str. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when deserializing the JSON string into AccountAttributesChangedChangesInnerNewValue with oneOf schemas: List[str], bool, str. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError(
-                "No match found when deserializing the JSON string into AccountAttributesChangedChangesInnerNewValue with oneOf schemas: List[str], bool, str. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into AccountAttributesChangedChangesInnerNewValue with oneOf schemas: List[str], bool, str. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -185,3 +171,5 @@ class AccountAttributesChangedChangesInnerNewValue(BaseModel):
     def to_str(self) -> str:
         """Returns the string representation of the actual instance"""
         return pprint.pformat(self.model_dump())
+
+

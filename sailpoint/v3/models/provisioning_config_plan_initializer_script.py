@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,15 +26,11 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ProvisioningConfigPlanInitializerScript(BaseModel):
     """
     This is a reference to a plan initializer script.
     """ # noqa: E501
-    source: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "This is a Rule that allows provisioning instruction changes.")
+    source: Optional[StrictStr] = Field(default=None, description="This is a Rule that allows provisioning instruction changes.")
     __properties: ClassVar[List[str]] = ["source"]
 
     model_config = {
@@ -40,6 +38,7 @@ class ProvisioningConfigPlanInitializerScript(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -67,7 +66,8 @@ class ProvisioningConfigPlanInitializerScript(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -81,5 +81,9 @@ class ProvisioningConfigPlanInitializerScript(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({"source": obj.get("source")})
+        _obj = cls.model_validate({
+            "source": obj.get("source")
+        })
         return _obj
+
+

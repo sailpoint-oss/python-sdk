@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -28,39 +29,26 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class InvocationStatus(BaseModel):
     """
     InvocationStatus
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     id: StrictStr = Field(description="Invocation ID")
     trigger_id: StrictStr = Field(description="Trigger ID", alias="triggerId")
-    subscription_id: StrictStr = Field(description="Subscription ID",
-                                       alias="subscriptionId")
+    subscription_id: StrictStr = Field(description="Subscription ID", alias="subscriptionId")
     type: InvocationStatusType
-    created: datetime = Field(
-        description="Invocation created timestamp. ISO-8601 in UTC.")
-    completed: Optional[datetime] = Field(
-        default=None,
-        description=
-        "Invocation completed timestamp; empty fields imply invocation is in-flight or not completed. ISO-8601 in UTC."
-    )
-    start_invocation_input: StartInvocationInput = Field(
-        alias="startInvocationInput")
-    complete_invocation_input: Optional[CompleteInvocationInput] = Field(
-        default=None, alias="completeInvocationInput")
-    __properties: ClassVar[List[str]] = [
-        "id", "triggerId", "subscriptionId", "type", "created", "completed",
-        "startInvocationInput", "completeInvocationInput"
-    ]
+    created: datetime = Field(description="Invocation created timestamp. ISO-8601 in UTC.")
+    completed: Optional[datetime] = Field(default=None, description="Invocation completed timestamp; empty fields imply invocation is in-flight or not completed. ISO-8601 in UTC.")
+    start_invocation_input: StartInvocationInput = Field(alias="startInvocationInput")
+    complete_invocation_input: Optional[CompleteInvocationInput] = Field(default=None, alias="completeInvocationInput")
+    __properties: ClassVar[List[str]] = ["id", "triggerId", "subscriptionId", "type", "created", "completed", "startInvocationInput", "completeInvocationInput"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -88,19 +76,16 @@ class InvocationStatus(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of start_invocation_input
         if self.start_invocation_input:
-            _dict[
-                'startInvocationInput'] = self.start_invocation_input.to_dict(
-                )
+            _dict['startInvocationInput'] = self.start_invocation_input.to_dict()
         # override the default output from pydantic by calling `to_dict()` of complete_invocation_input
         if self.complete_invocation_input:
-            _dict[
-                'completeInvocationInput'] = self.complete_invocation_input.to_dict(
-                )
+            _dict['completeInvocationInput'] = self.complete_invocation_input.to_dict()
         return _dict
 
     @classmethod
@@ -113,24 +98,15 @@ class InvocationStatus(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "triggerId":
-            obj.get("triggerId"),
-            "subscriptionId":
-            obj.get("subscriptionId"),
-            "type":
-            obj.get("type"),
-            "created":
-            obj.get("created"),
-            "completed":
-            obj.get("completed"),
-            "startInvocationInput":
-            StartInvocationInput.from_dict(obj.get("startInvocationInput"))
-            if obj.get("startInvocationInput") is not None else None,
-            "completeInvocationInput":
-            CompleteInvocationInput.from_dict(
-                obj.get("completeInvocationInput"))
-            if obj.get("completeInvocationInput") is not None else None
+            "id": obj.get("id"),
+            "triggerId": obj.get("triggerId"),
+            "subscriptionId": obj.get("subscriptionId"),
+            "type": obj.get("type"),
+            "created": obj.get("created"),
+            "completed": obj.get("completed"),
+            "startInvocationInput": StartInvocationInput.from_dict(obj.get("startInvocationInput")) if obj.get("startInvocationInput") is not None else None,
+            "completeInvocationInput": CompleteInvocationInput.from_dict(obj.get("completeInvocationInput")) if obj.get("completeInvocationInput") is not None else None
         })
         return _obj
+
+

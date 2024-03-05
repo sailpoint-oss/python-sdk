@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,21 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ObjectExportImportOptions(BaseModel):
     """
     ObjectExportImportOptions
-    """
-
-  # noqa: E501
-    included_ids: Optional[List[StrictStr]] = Field(
-        default=None,
-        description="Object ids to be included in an import or export.",
-        alias="includedIds")
-    included_names: Optional[List[StrictStr]] = Field(
-        default=None,
-        description="Object names to be included in an import or export.",
-        alias="includedNames")
+    """ # noqa: E501
+    included_ids: Optional[List[StrictStr]] = Field(default=None, description="Object ids to be included in an import or export.", alias="includedIds")
+    included_names: Optional[List[StrictStr]] = Field(default=None, description="Object names to be included in an import or export.", alias="includedNames")
     __properties: ClassVar[List[str]] = ["includedIds", "includedNames"]
 
     model_config = {
@@ -46,6 +39,7 @@ class ObjectExportImportOptions(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -73,7 +67,8 @@ class ObjectExportImportOptions(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -92,3 +87,5 @@ class ObjectExportImportOptions(BaseModel):
             "includedNames": obj.get("includedNames")
         })
         return _obj
+
+

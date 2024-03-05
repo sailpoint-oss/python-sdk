@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr
@@ -24,13 +26,10 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class SourceCode(BaseModel):
     """
     SourceCode
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     version: StrictStr = Field(description="the version of the code")
     script: StrictStr = Field(description="The code")
     __properties: ClassVar[List[str]] = ["version", "script"]
@@ -40,6 +39,7 @@ class SourceCode(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -67,7 +67,8 @@ class SourceCode(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -86,3 +87,5 @@ class SourceCode(BaseModel):
             "script": obj.get("script")
         })
         return _obj
+
+

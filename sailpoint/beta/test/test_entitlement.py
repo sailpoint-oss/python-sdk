@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.entitlement import Entitlement
-
 
 class TestEntitlement(unittest.TestCase):
     """Entitlement unit test stubs"""
@@ -52,10 +52,7 @@ class TestEntitlement(unittest.TestCase):
                     id = '2c9180827ca885d7017ca8ce28a000eb', 
                     type = 'SOURCE', 
                     name = 'ODS-AD-Source', ),
-                owner = sailpoint.beta.models.owner_reference_dto.OwnerReferenceDto(
-                    id = '2a2fdacca5e345f18bf7970cfbb8fec2', 
-                    name = 'identity 1', 
-                    type = 'IDENTITY', ),
+                owner = None,
                 direct_permissions = [
                     sailpoint.beta.models.permission_dto.PermissionDto(
                         rights = [
@@ -64,9 +61,7 @@ class TestEntitlement(unittest.TestCase):
                         target = 'SYS.GV_$TRANSACTION', )
                     ],
                 segments = [f7b1b8a3-5fed-4fd4-ad29-82014e137e19, 29cb6c06-1da8-43ea-8be4-b3125f248f2a],
-                manually_updated_fields = sailpoint.beta.models.manually_updated_fields_dto.ManuallyUpdatedFieldsDTO(
-                    display_name = True, 
-                    description = True, )
+                manually_updated_fields = None
             )
         else:
             return Entitlement(
@@ -77,7 +72,6 @@ class TestEntitlement(unittest.TestCase):
         """Test Entitlement"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

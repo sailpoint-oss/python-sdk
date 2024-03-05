@@ -11,14 +11,17 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr
 from pydantic import Field
+from typing_extensions import Annotated
 from sailpoint.beta.models.access_item_requested_for_dto import AccessItemRequestedForDto
 from sailpoint.beta.models.access_item_requester_dto import AccessItemRequesterDto
 from sailpoint.beta.models.access_request_post_approval_requested_items_status_inner import AccessRequestPostApprovalRequestedItemsStatusInner
@@ -27,32 +30,22 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccessRequestPostApproval(BaseModel):
     """
     AccessRequestPostApproval
-    """
-
-  # noqa: E501
-    access_request_id: StrictStr = Field(
-        description="The unique ID of the access request.",
-        alias="accessRequestId")
-    requested_for: AccessItemRequestedForDto = Field(alias="requestedFor")
-    requested_items_status: List[
-        AccessRequestPostApprovalRequestedItemsStatusInner] = Field(
-            description="Details on the outcome of each access item.",
-            alias="requestedItemsStatus")
+    """ # noqa: E501
+    access_request_id: StrictStr = Field(description="The unique ID of the access request.", alias="accessRequestId")
+    requested_for: Annotated[List[AccessItemRequestedForDto], Field(min_length=1, max_length=10)] = Field(description="Identities access was requested for.", alias="requestedFor")
+    requested_items_status: List[AccessRequestPostApprovalRequestedItemsStatusInner] = Field(description="Details on the outcome of each access item.", alias="requestedItemsStatus")
     requested_by: AccessItemRequesterDto = Field(alias="requestedBy")
-    __properties: ClassVar[List[str]] = [
-        "accessRequestId", "requestedFor", "requestedItemsStatus",
-        "requestedBy"
-    ]
+    __properties: ClassVar[List[str]] = ["accessRequestId", "requestedFor", "requestedItemsStatus", "requestedBy"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -80,12 +73,17 @@ class AccessRequestPostApproval(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of requested_for
+        # override the default output from pydantic by calling `to_dict()` of each item in requested_for (list)
+        _items = []
         if self.requested_for:
-            _dict['requestedFor'] = self.requested_for.to_dict()
+            for _item in self.requested_for:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['requestedFor'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in requested_items_status (list)
         _items = []
         if self.requested_items_status:
@@ -108,17 +106,11 @@ class AccessRequestPostApproval(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "accessRequestId":
-            obj.get("accessRequestId"),
-            "requestedFor":
-            AccessItemRequestedForDto.from_dict(obj.get("requestedFor"))
-            if obj.get("requestedFor") is not None else None,
-            "requestedItemsStatus": [
-                AccessRequestPostApprovalRequestedItemsStatusInner.from_dict(
-                    _item) for _item in obj.get("requestedItemsStatus")
-            ] if obj.get("requestedItemsStatus") is not None else None,
-            "requestedBy":
-            AccessItemRequesterDto.from_dict(obj.get("requestedBy"))
-            if obj.get("requestedBy") is not None else None
+            "accessRequestId": obj.get("accessRequestId"),
+            "requestedFor": [AccessItemRequestedForDto.from_dict(_item) for _item in obj.get("requestedFor")] if obj.get("requestedFor") is not None else None,
+            "requestedItemsStatus": [AccessRequestPostApprovalRequestedItemsStatusInner.from_dict(_item) for _item in obj.get("requestedItemsStatus")] if obj.get("requestedItemsStatus") is not None else None,
+            "requestedBy": AccessItemRequesterDto.from_dict(obj.get("requestedBy")) if obj.get("requestedBy") is not None else None
         })
         return _obj
+
+

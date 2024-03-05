@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -28,32 +30,23 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class HttpConfig(BaseModel):
     """
     HttpConfig
-    """
-
-  # noqa: E501
-    url: StrictStr = Field(
-        description="URL of the external/custom integration.")
+    """ # noqa: E501
+    url: StrictStr = Field(description="URL of the external/custom integration.")
     http_dispatch_mode: HttpDispatchMode = Field(alias="httpDispatchMode")
-    http_authentication_type: Optional[HttpAuthenticationType] = Field(
-        default=None, alias="httpAuthenticationType")
-    basic_auth_config: Optional[BasicAuthConfig] = Field(
-        default=None, alias="basicAuthConfig")
-    bearer_token_auth_config: Optional[BearerTokenAuthConfig] = Field(
-        default=None, alias="bearerTokenAuthConfig")
-    __properties: ClassVar[List[str]] = [
-        "url", "httpDispatchMode", "httpAuthenticationType", "basicAuthConfig",
-        "bearerTokenAuthConfig"
-    ]
+    http_authentication_type: Optional[HttpAuthenticationType] = Field(default=None, alias="httpAuthenticationType")
+    basic_auth_config: Optional[BasicAuthConfig] = Field(default=None, alias="basicAuthConfig")
+    bearer_token_auth_config: Optional[BearerTokenAuthConfig] = Field(default=None, alias="bearerTokenAuthConfig")
+    __properties: ClassVar[List[str]] = ["url", "httpDispatchMode", "httpAuthenticationType", "basicAuthConfig", "bearerTokenAuthConfig"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -81,7 +74,8 @@ class HttpConfig(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of basic_auth_config
@@ -89,9 +83,7 @@ class HttpConfig(BaseModel):
             _dict['basicAuthConfig'] = self.basic_auth_config.to_dict()
         # override the default output from pydantic by calling `to_dict()` of bearer_token_auth_config
         if self.bearer_token_auth_config:
-            _dict[
-                'bearerTokenAuthConfig'] = self.bearer_token_auth_config.to_dict(
-                )
+            _dict['bearerTokenAuthConfig'] = self.bearer_token_auth_config.to_dict()
         # set to None if basic_auth_config (nullable) is None
         # and model_fields_set contains the field
         if self.basic_auth_config is None and "basic_auth_config" in self.model_fields_set:
@@ -114,17 +106,12 @@ class HttpConfig(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "url":
-            obj.get("url"),
-            "httpDispatchMode":
-            obj.get("httpDispatchMode"),
-            "httpAuthenticationType":
-            obj.get("httpAuthenticationType"),
-            "basicAuthConfig":
-            BasicAuthConfig.from_dict(obj.get("basicAuthConfig"))
-            if obj.get("basicAuthConfig") is not None else None,
-            "bearerTokenAuthConfig":
-            BearerTokenAuthConfig.from_dict(obj.get("bearerTokenAuthConfig"))
-            if obj.get("bearerTokenAuthConfig") is not None else None
+            "url": obj.get("url"),
+            "httpDispatchMode": obj.get("httpDispatchMode"),
+            "httpAuthenticationType": obj.get("httpAuthenticationType"),
+            "basicAuthConfig": BasicAuthConfig.from_dict(obj.get("basicAuthConfig")) if obj.get("basicAuthConfig") is not None else None,
+            "bearerTokenAuthConfig": BearerTokenAuthConfig.from_dict(obj.get("bearerTokenAuthConfig")) if obj.get("bearerTokenAuthConfig") is not None else None
         })
         return _obj
+
+

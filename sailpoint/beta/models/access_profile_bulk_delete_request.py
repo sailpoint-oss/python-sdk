@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
@@ -24,22 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccessProfileBulkDeleteRequest(BaseModel):
     """
     AccessProfileBulkDeleteRequest
-    """
-
-  # noqa: E501
-    access_profile_ids: Optional[List[StrictStr]] = Field(
-        default=None,
-        description="List of IDs of Access Profiles to be deleted.",
-        alias="accessProfileIds")
-    best_effort_only: Optional[StrictBool] = Field(
-        default=None,
-        description=
-        "If **true**, silently skip over any of the specified Access Profiles if they cannot be deleted because they are in use. If **false**, no deletions will be attempted if any of the Access Profiles are in use.",
-        alias="bestEffortOnly")
+    """ # noqa: E501
+    access_profile_ids: Optional[List[StrictStr]] = Field(default=None, description="List of IDs of Access Profiles to be deleted.", alias="accessProfileIds")
+    best_effort_only: Optional[StrictBool] = Field(default=None, description="If **true**, silently skip over any of the specified Access Profiles if they cannot be deleted because they are in use. If **false**, no deletions will be attempted if any of the Access Profiles are in use.", alias="bestEffortOnly")
     __properties: ClassVar[List[str]] = ["accessProfileIds", "bestEffortOnly"]
 
     model_config = {
@@ -47,6 +39,7 @@ class AccessProfileBulkDeleteRequest(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -74,7 +67,8 @@ class AccessProfileBulkDeleteRequest(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -89,9 +83,9 @@ class AccessProfileBulkDeleteRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "accessProfileIds":
-            obj.get("accessProfileIds"),
-            "bestEffortOnly":
-            obj.get("bestEffortOnly")
+            "accessProfileIds": obj.get("accessProfileIds"),
+            "bestEffortOnly": obj.get("bestEffortOnly")
         })
         return _obj
+
+

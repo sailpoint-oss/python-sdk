@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,17 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class VAClusterStatusChangeEventApplication(BaseModel):
     """
     Details about the `CLUSTER` or `SOURCE` that initiated this event.
     """ # noqa: E501
     id: StrictStr = Field(description="The GUID of the application")
     name: StrictStr = Field(description="The name of the application")
-    attributes: Optional[Dict[str, Any]] = Field(
-        description=
-        "Custom map of attributes for a source.  This will only be populated if type is `SOURCE` and the source has a proxy."
-    )
+    attributes: Optional[Dict[str, Any]] = Field(description="Custom map of attributes for a source.  This will only be populated if type is `SOURCE` and the source has a proxy.")
     __properties: ClassVar[List[str]] = ["id", "name", "attributes"]
 
     model_config = {
@@ -42,6 +40,7 @@ class VAClusterStatusChangeEventApplication(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -69,7 +68,8 @@ class VAClusterStatusChangeEventApplication(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if attributes (nullable) is None
@@ -94,3 +94,5 @@ class VAClusterStatusChangeEventApplication(BaseModel):
             "attributes": obj.get("attributes")
         })
         return _obj
+
+

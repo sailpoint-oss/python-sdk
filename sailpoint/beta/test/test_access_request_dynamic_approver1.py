@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.access_request_dynamic_approver1 import AccessRequestDynamicApprover1
-
 
 class TestAccessRequestDynamicApprover1(unittest.TestCase):
     """AccessRequestDynamicApprover1 unit test stubs"""
@@ -52,7 +52,6 @@ class TestAccessRequestDynamicApprover1(unittest.TestCase):
         """Test AccessRequestDynamicApprover1"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

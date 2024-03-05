@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,32 +26,23 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class RoleInsightsRole(BaseModel):
     """
     RoleInsightsRole
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     name: Optional[StrictStr] = Field(default=None, description="Role name")
     id: Optional[StrictStr] = Field(default=None, description="Role id")
-    description: Optional[StrictStr] = Field(default=None,
-                                             description="Role description")
-    owner_name: Optional[StrictStr] = Field(default=None,
-                                            description="Role owner name",
-                                            alias="ownerName")
-    owner_id: Optional[StrictStr] = Field(default=None,
-                                          description="Role owner id",
-                                          alias="ownerId")
-    __properties: ClassVar[List[str]] = [
-        "name", "id", "description", "ownerName", "ownerId"
-    ]
+    description: Optional[StrictStr] = Field(default=None, description="Role description")
+    owner_name: Optional[StrictStr] = Field(default=None, description="Role owner name", alias="ownerName")
+    owner_id: Optional[StrictStr] = Field(default=None, description="Role owner id", alias="ownerId")
+    __properties: ClassVar[List[str]] = ["name", "id", "description", "ownerName", "ownerId"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -77,7 +70,8 @@ class RoleInsightsRole(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -99,3 +93,5 @@ class RoleInsightsRole(BaseModel):
             "ownerId": obj.get("ownerId")
         })
         return _obj
+
+

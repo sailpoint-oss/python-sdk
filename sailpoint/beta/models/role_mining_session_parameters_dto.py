@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
@@ -28,43 +30,27 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class RoleMiningSessionParametersDto(BaseModel):
     """
     RoleMiningSessionParametersDto
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(
-        default=None, description="The ID of the role mining session")
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="The session's saved name")
-    min_num_identities_in_potential_role: Optional[StrictInt] = Field(
-        default=None,
-        description="Minimum number of identities in a potential role",
-        alias="minNumIdentitiesInPotentialRole")
-    prune_threshold: Optional[StrictInt] = Field(
-        default=None,
-        description=
-        "The prune threshold to be used or null to calculate prescribedPruneThreshold",
-        alias="pruneThreshold")
-    saved: Optional[StrictBool] = Field(
-        default=True, description="The session's saved status")
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="The ID of the role mining session")
+    name: Optional[StrictStr] = Field(default=None, description="The session's saved name")
+    min_num_identities_in_potential_role: Optional[StrictInt] = Field(default=None, description="Minimum number of identities in a potential role", alias="minNumIdentitiesInPotentialRole")
+    prune_threshold: Optional[StrictInt] = Field(default=None, description="The prune threshold to be used or null to calculate prescribedPruneThreshold", alias="pruneThreshold")
+    saved: Optional[StrictBool] = Field(default=True, description="The session's saved status")
     scope: Optional[RoleMiningSessionScope] = None
     type: Optional[RoleMiningRoleType] = None
     state: Optional[RoleMiningSessionState] = None
-    scoping_method: Optional[RoleMiningSessionScopingMethod] = Field(
-        default=None, alias="scopingMethod")
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "minNumIdentitiesInPotentialRole", "pruneThreshold",
-        "saved", "scope", "type", "state", "scopingMethod"
-    ]
+    scoping_method: Optional[RoleMiningSessionScopingMethod] = Field(default=None, alias="scopingMethod")
+    __properties: ClassVar[List[str]] = ["id", "name", "minNumIdentitiesInPotentialRole", "pruneThreshold", "saved", "scope", "type", "state", "scopingMethod"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -92,7 +78,8 @@ class RoleMiningSessionParametersDto(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of scope
@@ -125,24 +112,16 @@ class RoleMiningSessionParametersDto(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "minNumIdentitiesInPotentialRole":
-            obj.get("minNumIdentitiesInPotentialRole"),
-            "pruneThreshold":
-            obj.get("pruneThreshold"),
-            "saved":
-            obj.get("saved") if obj.get("saved") is not None else True,
-            "scope":
-            RoleMiningSessionScope.from_dict(obj.get("scope"))
-            if obj.get("scope") is not None else None,
-            "type":
-            obj.get("type"),
-            "state":
-            obj.get("state"),
-            "scopingMethod":
-            obj.get("scopingMethod")
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "minNumIdentitiesInPotentialRole": obj.get("minNumIdentitiesInPotentialRole"),
+            "pruneThreshold": obj.get("pruneThreshold"),
+            "saved": obj.get("saved") if obj.get("saved") is not None else True,
+            "scope": RoleMiningSessionScope.from_dict(obj.get("scope")) if obj.get("scope") is not None else None,
+            "type": obj.get("type"),
+            "state": obj.get("state"),
+            "scopingMethod": obj.get("scopingMethod")
         })
         return _obj
+
+

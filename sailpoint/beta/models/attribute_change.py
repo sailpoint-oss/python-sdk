@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,23 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AttributeChange(BaseModel):
     """
     AttributeChange
-    """
-
-  # noqa: E501
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="the attribute name")
-    previous_value: Optional[StrictStr] = Field(
-        default=None,
-        description="the old value of attribute",
-        alias="previousValue")
-    new_value: Optional[StrictStr] = Field(
-        default=None,
-        description="the new value of attribute",
-        alias="newValue")
+    """ # noqa: E501
+    name: Optional[StrictStr] = Field(default=None, description="the attribute name")
+    previous_value: Optional[StrictStr] = Field(default=None, description="the old value of attribute", alias="previousValue")
+    new_value: Optional[StrictStr] = Field(default=None, description="the new value of attribute", alias="newValue")
     __properties: ClassVar[List[str]] = ["name", "previousValue", "newValue"]
 
     model_config = {
@@ -48,6 +40,7 @@ class AttributeChange(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -75,7 +68,8 @@ class AttributeChange(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -95,3 +89,5 @@ class AttributeChange(BaseModel):
             "newValue": obj.get("newValue")
         })
         return _obj
+
+

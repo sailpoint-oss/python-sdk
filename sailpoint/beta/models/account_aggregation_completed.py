@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -27,37 +28,24 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccountAggregationCompleted(BaseModel):
     """
     AccountAggregationCompleted
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     source: AccountAggregationCompletedSource
-    status: Dict[str, Any] = Field(
-        description="The overall status of the aggregation.")
-    started: datetime = Field(
-        description="The date and time when the account aggregation started.")
-    completed: datetime = Field(
-        description="The date and time when the account aggregation finished.")
-    errors: Optional[List[StrictStr]] = Field(
-        description="A list of errors that occurred during the aggregation.")
-    warnings: Optional[List[StrictStr]] = Field(
-        description="A list of warnings that occurred during the aggregation.")
+    status: Dict[str, Any] = Field(description="The overall status of the aggregation.")
+    started: datetime = Field(description="The date and time when the account aggregation started.")
+    completed: datetime = Field(description="The date and time when the account aggregation finished.")
+    errors: Optional[List[StrictStr]] = Field(description="A list of errors that occurred during the aggregation.")
+    warnings: Optional[List[StrictStr]] = Field(description="A list of warnings that occurred during the aggregation.")
     stats: AccountAggregationCompletedStats
-    __properties: ClassVar[List[str]] = [
-        "source", "status", "started", "completed", "errors", "warnings",
-        "stats"
-    ]
+    __properties: ClassVar[List[str]] = ["source", "status", "started", "completed", "errors", "warnings", "stats"]
 
     @field_validator('status')
     def status_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('Success', 'Failed', 'Terminated'):
-            raise ValueError(
-                "must be one of enum values ('Success', 'Failed', 'Terminated')"
-            )
+            raise ValueError("must be one of enum values ('Success', 'Failed', 'Terminated')")
         return value
 
     model_config = {
@@ -65,6 +53,7 @@ class AccountAggregationCompleted(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -92,7 +81,8 @@ class AccountAggregationCompleted(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of source
@@ -123,21 +113,14 @@ class AccountAggregationCompleted(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "source":
-            AccountAggregationCompletedSource.from_dict(obj.get("source"))
-            if obj.get("source") is not None else None,
-            "status":
-            obj.get("status"),
-            "started":
-            obj.get("started"),
-            "completed":
-            obj.get("completed"),
-            "errors":
-            obj.get("errors"),
-            "warnings":
-            obj.get("warnings"),
-            "stats":
-            AccountAggregationCompletedStats.from_dict(obj.get("stats"))
-            if obj.get("stats") is not None else None
+            "source": AccountAggregationCompletedSource.from_dict(obj.get("source")) if obj.get("source") is not None else None,
+            "status": obj.get("status"),
+            "started": obj.get("started"),
+            "completed": obj.get("completed"),
+            "errors": obj.get("errors"),
+            "warnings": obj.get("warnings"),
+            "stats": AccountAggregationCompletedStats.from_dict(obj.get("stats")) if obj.get("stats") is not None else None
         })
         return _obj
+
+

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.operation import Operation
-
 
 class TestOperation(unittest.TestCase):
     """Operation unit test stubs"""
@@ -29,7 +29,6 @@ class TestOperation(unittest.TestCase):
     def testOperation(self):
         """Test Operation"""
         # inst = Operation()
-
 
 if __name__ == '__main__':
     unittest.main()

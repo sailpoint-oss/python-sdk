@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,19 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class CertifierResponse(BaseModel):
     """
     CertifierResponse
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="the id of the certifier")
-    display_name: Optional[StrictStr] = Field(
-        default=None,
-        description="the name of the certifier",
-        alias="displayName")
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="the id of the certifier")
+    display_name: Optional[StrictStr] = Field(default=None, description="the name of the certifier", alias="displayName")
     __properties: ClassVar[List[str]] = ["id", "displayName"]
 
     model_config = {
@@ -44,6 +39,7 @@ class CertifierResponse(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -71,7 +67,8 @@ class CertifierResponse(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -90,3 +87,5 @@ class CertifierResponse(BaseModel):
             "displayName": obj.get("displayName")
         })
         return _obj
+
+

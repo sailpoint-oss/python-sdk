@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,16 +26,11 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ProvisioningDetails(BaseModel):
     """
     Provides additional details about provisioning for this request.
     """ # noqa: E501
-    ordered_sub_phase_references: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Ordered CSV of sub phase references to objects that contain more information about provisioning. For example, this can contain \"manualWorkItemDetails\" which indicate that there is further information in that object for this phase.",
-        alias="orderedSubPhaseReferences")
+    ordered_sub_phase_references: Optional[StrictStr] = Field(default=None, description="Ordered CSV of sub phase references to objects that contain more information about provisioning. For example, this can contain \"manualWorkItemDetails\" which indicate that there is further information in that object for this phase.", alias="orderedSubPhaseReferences")
     __properties: ClassVar[List[str]] = ["orderedSubPhaseReferences"]
 
     model_config = {
@@ -41,6 +38,7 @@ class ProvisioningDetails(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -68,7 +66,8 @@ class ProvisioningDetails(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -83,7 +82,8 @@ class ProvisioningDetails(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "orderedSubPhaseReferences":
-            obj.get("orderedSubPhaseReferences")
+            "orderedSubPhaseReferences": obj.get("orderedSubPhaseReferences")
         })
         return _obj
+
+

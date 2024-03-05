@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**get_access_profile_entitlements**](AccessProfilesApi.md#get_access_profile_entitlements) | **GET** /access-profiles/{id}/entitlements | List Access Profile&#39;s Entitlements
 [**list_access_profiles**](AccessProfilesApi.md#list_access_profiles) | **GET** /access-profiles | List Access Profiles
 [**patch_access_profile**](AccessProfilesApi.md#patch_access_profile) | **PATCH** /access-profiles/{id} | Patch a specified Access Profile
+[**update_access_profiles_in_bulk**](AccessProfilesApi.md#update_access_profiles_in_bulk) | **POST** /access-profiles/bulk-update-requestable | Update Access Profile(s) requestable field.
 
 
 # **create_access_profile**
@@ -629,6 +630,93 @@ Name | Type | Description  | Notes
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_access_profiles_in_bulk**
+> List[AccessProfileUpdateItem] update_access_profiles_in_bulk(access_profile_bulk_update_request_inner)
+
+Update Access Profile(s) requestable field.
+
+This API initiates a bulk update of field requestable for one or more Access Profiles.  >  If any of the indicated Access Profiles is exists in Organization,then those Access Profiles will be added in **updated**     list of the response.Requestable field of these Access Profiles marked as **true** or **false**.  >  If any of the indicated Access Profiles is not does not exists in Organization,then those Access Profiles will be added in **notFound** list of the response. Access Profiles marked as **notFound** will not be updated. >  A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. In addition, a SOURCE_SUBADMIN may only use this API to update Access Profiles which are associated with Sources they are able to administer.
+
+### Example
+
+* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (UserContextAuth):
+
+```python
+import time
+import os
+import sailpoint.beta
+from sailpoint.beta.models.access_profile_bulk_update_request_inner import AccessProfileBulkUpdateRequestInner
+from sailpoint.beta.models.access_profile_update_item import AccessProfileUpdateItem
+from sailpoint.beta.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sailpoint.beta.Configuration(
+    host = "https://sailpoint.api.identitynow.com/beta"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with sailpoint.beta.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sailpoint.beta.AccessProfilesApi(api_client)
+    access_profile_bulk_update_request_inner = [{id=464ae7bf-791e-49fd-b746-06a2e4a89635, requestable=false}] # List[AccessProfileBulkUpdateRequestInner] | 
+
+    try:
+        # Update Access Profile(s) requestable field.
+        api_response = api_instance.update_access_profiles_in_bulk(access_profile_bulk_update_request_inner)
+        print("The response of AccessProfilesApi->update_access_profiles_in_bulk:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AccessProfilesApi->update_access_profiles_in_bulk: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **access_profile_bulk_update_request_inner** | [**List[AccessProfileBulkUpdateRequestInner]**](AccessProfileBulkUpdateRequestInner.md)|  | 
+
+### Return type
+
+[**List[AccessProfileUpdateItem]**](AccessProfileUpdateItem.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**207** | List of updated and not updated Access Profiles. |  -  |
+**400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
+**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**412** | Precondition Failed - Returned in response if API/Feature not enabled for an organization. |  -  |
 **429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
 **500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
 

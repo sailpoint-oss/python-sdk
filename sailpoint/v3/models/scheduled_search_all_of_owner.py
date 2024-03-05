@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,13 +26,10 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ScheduledSearchAllOfOwner(BaseModel):
     """
     The owner of the scheduled search
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     type: StrictStr = Field(description="The type of object being referenced")
     id: StrictStr = Field(description="The ID of the referenced object")
     __properties: ClassVar[List[str]] = ["type", "id"]
@@ -47,6 +46,7 @@ class ScheduledSearchAllOfOwner(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -74,7 +74,8 @@ class ScheduledSearchAllOfOwner(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -93,3 +94,5 @@ class ScheduledSearchAllOfOwner(BaseModel):
             "id": obj.get("id")
         })
         return _obj
+
+

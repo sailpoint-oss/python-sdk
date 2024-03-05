@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,16 +26,11 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class IdentityAttributeNames(BaseModel):
     """
     Identity Attribute IDs
-    """
-
-  # noqa: E501
-    ids: Optional[List[StrictStr]] = Field(
-        default=None,
-        description="List of identity attributes' technical names")
+    """ # noqa: E501
+    ids: Optional[List[StrictStr]] = Field(default=None, description="List of identity attributes' technical names")
     __properties: ClassVar[List[str]] = ["ids"]
 
     model_config = {
@@ -41,6 +38,7 @@ class IdentityAttributeNames(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -68,7 +66,8 @@ class IdentityAttributeNames(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -82,5 +81,9 @@ class IdentityAttributeNames(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({"ids": obj.get("ids")})
+        _obj = cls.model_validate({
+            "ids": obj.get("ids")
+        })
         return _obj
+
+

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr
@@ -24,17 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class SpConfigMessage(BaseModel):
     """
     Message model for Config Import/Export.
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     key: StrictStr = Field(description="Message key.")
     text: StrictStr = Field(description="Message text.")
-    details: Dict[str, Any] = Field(
-        description="Message details if any, in key:value pairs.")
+    details: Dict[str, Any] = Field(description="Message details if any, in key:value pairs.")
     __properties: ClassVar[List[str]] = ["key", "text", "details"]
 
     model_config = {
@@ -42,6 +40,7 @@ class SpConfigMessage(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -69,7 +68,8 @@ class SpConfigMessage(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -89,3 +89,5 @@ class SpConfigMessage(BaseModel):
             "details": obj.get("details")
         })
         return _obj
+
+

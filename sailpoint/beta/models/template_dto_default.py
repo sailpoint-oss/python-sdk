@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,52 +26,22 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class TemplateDtoDefault(BaseModel):
     """
     TemplateDtoDefault
-    """
-
-  # noqa: E501
-    key: Optional[StrictStr] = Field(
-        default=None, description="The key of the default template")
-    name: Optional[StrictStr] = Field(
-        default=None, description="The name of the default template")
-    medium: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "The message medium. More mediums may be added in the future.")
-    locale: Optional[StrictStr] = Field(
-        default=None,
-        description="The locale for the message text, a BCP 47 language tag.")
-    subject: Optional[StrictStr] = Field(
-        default=None, description="The subject of the default template")
-    header: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "The header value is now located within the body field. If included with non-null values, will result in a 400."
-    )
-    body: Optional[StrictStr] = Field(
-        default=None, description="The body of the default template")
-    footer: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "The footer value is now located within the body field. If included with non-null values, will result in a 400."
-    )
-    var_from: Optional[StrictStr] = Field(
-        default=None,
-        description="The \"From:\" address of the default template",
-        alias="from")
-    reply_to: Optional[StrictStr] = Field(
-        default=None,
-        description="The \"Reply To\" field of the default template",
-        alias="replyTo")
-    description: Optional[StrictStr] = Field(
-        default=None, description="The description of the default template")
-    __properties: ClassVar[List[str]] = [
-        "key", "name", "medium", "locale", "subject", "header", "body",
-        "footer", "from", "replyTo", "description"
-    ]
+    """ # noqa: E501
+    key: Optional[StrictStr] = Field(default=None, description="The key of the default template")
+    name: Optional[StrictStr] = Field(default=None, description="The name of the default template")
+    medium: Optional[StrictStr] = Field(default=None, description="The message medium. More mediums may be added in the future.")
+    locale: Optional[StrictStr] = Field(default=None, description="The locale for the message text, a BCP 47 language tag.")
+    subject: Optional[StrictStr] = Field(default=None, description="The subject of the default template")
+    header: Optional[StrictStr] = Field(default=None, description="The header value is now located within the body field. If included with non-null values, will result in a 400.")
+    body: Optional[StrictStr] = Field(default=None, description="The body of the default template")
+    footer: Optional[StrictStr] = Field(default=None, description="The footer value is now located within the body field. If included with non-null values, will result in a 400.")
+    var_from: Optional[StrictStr] = Field(default=None, description="The \"From:\" address of the default template", alias="from")
+    reply_to: Optional[StrictStr] = Field(default=None, description="The \"Reply To\" field of the default template", alias="replyTo")
+    description: Optional[StrictStr] = Field(default=None, description="The description of the default template")
+    __properties: ClassVar[List[str]] = ["key", "name", "medium", "locale", "subject", "header", "body", "footer", "from", "replyTo", "description"]
 
     @field_validator('medium')
     def medium_validate_enum(cls, value):
@@ -78,9 +50,7 @@ class TemplateDtoDefault(BaseModel):
             return value
 
         if value not in ('EMAIL', 'PHONE', 'SMS', 'SLACK', 'TEAMS'):
-            raise ValueError(
-                "must be one of enum values ('EMAIL', 'PHONE', 'SMS', 'SLACK', 'TEAMS')"
-            )
+            raise ValueError("must be one of enum values ('EMAIL', 'PHONE', 'SMS', 'SLACK', 'TEAMS')")
         return value
 
     model_config = {
@@ -88,6 +58,7 @@ class TemplateDtoDefault(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -115,9 +86,15 @@ class TemplateDtoDefault(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
+        # set to None if subject (nullable) is None
+        # and model_fields_set contains the field
+        if self.subject is None and "subject" in self.model_fields_set:
+            _dict['subject'] = None
+
         # set to None if header (nullable) is None
         # and model_fields_set contains the field
         if self.header is None and "header" in self.model_fields_set:
@@ -127,6 +104,21 @@ class TemplateDtoDefault(BaseModel):
         # and model_fields_set contains the field
         if self.footer is None and "footer" in self.model_fields_set:
             _dict['footer'] = None
+
+        # set to None if var_from (nullable) is None
+        # and model_fields_set contains the field
+        if self.var_from is None and "var_from" in self.model_fields_set:
+            _dict['from'] = None
+
+        # set to None if reply_to (nullable) is None
+        # and model_fields_set contains the field
+        if self.reply_to is None and "reply_to" in self.model_fields_set:
+            _dict['replyTo'] = None
+
+        # set to None if description (nullable) is None
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
+            _dict['description'] = None
 
         return _dict
 
@@ -153,3 +145,5 @@ class TemplateDtoDefault(BaseModel):
             "description": obj.get("description")
         })
         return _obj
+
+

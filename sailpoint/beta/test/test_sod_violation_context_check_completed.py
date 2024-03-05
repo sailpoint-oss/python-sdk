@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.sod_violation_context_check_completed import SodViolationContextCheckCompleted
-
 
 class TestSodViolationContextCheckCompleted(unittest.TestCase):
     """SodViolationContextCheckCompleted unit test stubs"""
@@ -26,8 +26,7 @@ class TestSodViolationContextCheckCompleted(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self,
-                      include_optional) -> SodViolationContextCheckCompleted:
+    def make_instance(self, include_optional) -> SodViolationContextCheckCompleted:
         """Test SodViolationContextCheckCompleted
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -77,7 +76,6 @@ class TestSodViolationContextCheckCompleted(unittest.TestCase):
         """Test SodViolationContextCheckCompleted"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

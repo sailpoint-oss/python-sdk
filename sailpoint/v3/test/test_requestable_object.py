@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.requestable_object import RequestableObject
-
 
 class TestRequestableObject(unittest.TestCase):
     """RequestableObject unit test stubs"""
@@ -42,7 +42,7 @@ class TestRequestableObject(unittest.TestCase):
                 modified = '2018-06-25T20:22:28.104Z',
                 description = 'Access to research information, lab results, and schematics.',
                 type = 'ACCESS_PROFILE',
-                request_status = 'AVAILABLE',
+                request_status = None,
                 identity_request_id = '',
                 owner_ref = sailpoint.v3.models.identity_reference_with_name_and_email.IdentityReferenceWithNameAndEmail(
                     type = 'IDENTITY', 
@@ -60,7 +60,6 @@ class TestRequestableObject(unittest.TestCase):
         """Test RequestableObject"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

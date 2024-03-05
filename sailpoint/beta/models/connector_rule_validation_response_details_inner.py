@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt, StrictStr
@@ -24,19 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ConnectorRuleValidationResponseDetailsInner(BaseModel):
     """
     CodeErrorDetail
-    """
-
-  # noqa: E501
-    line: StrictInt = Field(
-        description="The line number where the issue occurred")
-    column: StrictInt = Field(
-        description="the column number where the issue occurred")
-    messsage: Optional[StrictStr] = Field(
-        default=None, description="a description of the issue in the code")
+    """ # noqa: E501
+    line: StrictInt = Field(description="The line number where the issue occurred")
+    column: StrictInt = Field(description="the column number where the issue occurred")
+    messsage: Optional[StrictStr] = Field(default=None, description="a description of the issue in the code")
     __properties: ClassVar[List[str]] = ["line", "column", "messsage"]
 
     model_config = {
@@ -44,6 +40,7 @@ class ConnectorRuleValidationResponseDetailsInner(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -71,7 +68,8 @@ class ConnectorRuleValidationResponseDetailsInner(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -91,3 +89,5 @@ class ConnectorRuleValidationResponseDetailsInner(BaseModel):
             "messsage": obj.get("messsage")
         })
         return _obj
+
+

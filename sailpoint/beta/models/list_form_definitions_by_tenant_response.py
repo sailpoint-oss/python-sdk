@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt
@@ -25,17 +27,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ListFormDefinitionsByTenantResponse(BaseModel):
     """
     ListFormDefinitionsByTenantResponse
-    """
-
-  # noqa: E501
-    count: Optional[StrictInt] = Field(default=None,
-                                       description="Count number of results.")
-    results: Optional[List[FormDefinitionResponse]] = Field(
-        default=None, description="List of FormDefinitionResponse items.")
+    """ # noqa: E501
+    count: Optional[StrictInt] = Field(default=None, description="Count number of results.")
+    results: Optional[List[FormDefinitionResponse]] = Field(default=None, description="List of FormDefinitionResponse items.")
     __properties: ClassVar[List[str]] = ["count", "results"]
 
     model_config = {
@@ -43,6 +40,7 @@ class ListFormDefinitionsByTenantResponse(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -70,7 +68,8 @@ class ListFormDefinitionsByTenantResponse(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in results (list)
@@ -92,11 +91,9 @@ class ListFormDefinitionsByTenantResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "count":
-            obj.get("count"),
-            "results": [
-                FormDefinitionResponse.from_dict(_item)
-                for _item in obj.get("results")
-            ] if obj.get("results") is not None else None
+            "count": obj.get("count"),
+            "results": [FormDefinitionResponse.from_dict(_item) for _item in obj.get("results")] if obj.get("results") is not None else None
         })
         return _obj
+
+

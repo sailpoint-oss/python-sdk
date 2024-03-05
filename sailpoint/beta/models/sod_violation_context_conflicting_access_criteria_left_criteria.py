@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
@@ -25,13 +27,11 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class SodViolationContextConflictingAccessCriteriaLeftCriteria(BaseModel):
     """
     SodViolationContextConflictingAccessCriteriaLeftCriteria
     """ # noqa: E501
-    criteria_list: Optional[List[SodExemptCriteria]] = Field(
-        default=None, alias="criteriaList")
+    criteria_list: Optional[List[SodExemptCriteria]] = Field(default=None, alias="criteriaList")
     __properties: ClassVar[List[str]] = ["criteriaList"]
 
     model_config = {
@@ -39,6 +39,7 @@ class SodViolationContextConflictingAccessCriteriaLeftCriteria(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -66,7 +67,8 @@ class SodViolationContextConflictingAccessCriteriaLeftCriteria(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in criteria_list (list)
@@ -88,9 +90,8 @@ class SodViolationContextConflictingAccessCriteriaLeftCriteria(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "criteriaList": [
-                SodExemptCriteria.from_dict(_item)
-                for _item in obj.get("criteriaList")
-            ] if obj.get("criteriaList") is not None else None
+            "criteriaList": [SodExemptCriteria.from_dict(_item) for _item in obj.get("criteriaList")] if obj.get("criteriaList") is not None else None
         })
         return _obj
+
+

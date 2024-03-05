@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt, StrictStr
@@ -24,26 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class PasswordDigitTokenReset(BaseModel):
     """
     PasswordDigitTokenReset
-    """
-
-  # noqa: E501
-    user_id: StrictStr = Field(
-        description="The uid of the user requested for digit token",
-        alias="userId")
-    length: Optional[StrictInt] = Field(
-        default=None,
-        description=
-        "The length of digit token. It should be from 6 to 18, inclusive. The default value is 6."
-    )
-    duration_minutes: Optional[StrictInt] = Field(
-        default=None,
-        description=
-        "The time to live for the digit token in minutes. The default value is 5 minutes.",
-        alias="durationMinutes")
+    """ # noqa: E501
+    user_id: StrictStr = Field(description="The uid of the user requested for digit token", alias="userId")
+    length: Optional[StrictInt] = Field(default=None, description="The length of digit token. It should be from 6 to 18, inclusive. The default value is 6.")
+    duration_minutes: Optional[StrictInt] = Field(default=None, description="The time to live for the digit token in minutes. The default value is 5 minutes.", alias="durationMinutes")
     __properties: ClassVar[List[str]] = ["userId", "length", "durationMinutes"]
 
     model_config = {
@@ -51,6 +40,7 @@ class PasswordDigitTokenReset(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -78,7 +68,8 @@ class PasswordDigitTokenReset(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -98,3 +89,5 @@ class PasswordDigitTokenReset(BaseModel):
             "durationMinutes": obj.get("durationMinutes")
         })
         return _obj
+
+

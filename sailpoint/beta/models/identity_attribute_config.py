@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool
@@ -25,17 +27,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class IdentityAttributeConfig(BaseModel):
     """
     IdentityAttributeConfig
-    """
-
-  # noqa: E501
-    enabled: Optional[StrictBool] = Field(
-        default=True, description="If the profile or mapping is enabled")
-    attribute_transforms: Optional[List[IdentityAttributeTransform]] = Field(
-        default=None, alias="attributeTransforms")
+    """ # noqa: E501
+    enabled: Optional[StrictBool] = Field(default=True, description="If the profile or mapping is enabled")
+    attribute_transforms: Optional[List[IdentityAttributeTransform]] = Field(default=None, alias="attributeTransforms")
     __properties: ClassVar[List[str]] = ["enabled", "attributeTransforms"]
 
     model_config = {
@@ -43,6 +40,7 @@ class IdentityAttributeConfig(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -70,7 +68,8 @@ class IdentityAttributeConfig(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in attribute_transforms (list)
@@ -92,11 +91,9 @@ class IdentityAttributeConfig(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "enabled":
-            obj.get("enabled") if obj.get("enabled") is not None else True,
-            "attributeTransforms": [
-                IdentityAttributeTransform.from_dict(_item)
-                for _item in obj.get("attributeTransforms")
-            ] if obj.get("attributeTransforms") is not None else None
+            "enabled": obj.get("enabled") if obj.get("enabled") is not None else True,
+            "attributeTransforms": [IdentityAttributeTransform.from_dict(_item) for _item in obj.get("attributeTransforms")] if obj.get("attributeTransforms") is not None else None
         })
         return _obj
+
+

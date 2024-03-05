@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,8 +21,8 @@ from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
 from pydantic import Field
-from sailpoint.beta.models.access_item_reviewed_by import AccessItemReviewedBy
 from sailpoint.beta.models.approval_scheme import ApprovalScheme
+from sailpoint.beta.models.approval_status_dto_current_owner import ApprovalStatusDtoCurrentOwner
 from sailpoint.beta.models.approval_status_dto_original_owner import ApprovalStatusDtoOriginalOwner
 from sailpoint.beta.models.error_message_dto import ErrorMessageDto
 from sailpoint.beta.models.manual_work_item_state import ManualWorkItemState
@@ -30,48 +31,27 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ApprovalStatusDto(BaseModel):
     """
     ApprovalStatusDto
-    """
-
-  # noqa: E501
-    forwarded: Optional[StrictBool] = Field(
-        default=None,
-        description=
-        "True if the request for this item was forwarded from one owner to another."
-    )
-    original_owner: Optional[ApprovalStatusDtoOriginalOwner] = Field(
-        default=None, alias="originalOwner")
-    current_owner: Optional[AccessItemReviewedBy] = Field(default=None,
-                                                          alias="currentOwner")
-    modified: Optional[datetime] = Field(
-        default=None, description="Time at which item was modified.")
+    """ # noqa: E501
+    forwarded: Optional[StrictBool] = Field(default=False, description="True if the request for this item was forwarded from one owner to another.")
+    original_owner: Optional[ApprovalStatusDtoOriginalOwner] = Field(default=None, alias="originalOwner")
+    current_owner: Optional[ApprovalStatusDtoCurrentOwner] = Field(default=None, alias="currentOwner")
+    modified: Optional[datetime] = Field(default=None, description="Time at which item was modified.")
     status: Optional[ManualWorkItemState] = None
     scheme: Optional[ApprovalScheme] = None
-    error_messages: Optional[List[ErrorMessageDto]] = Field(
-        default=None,
-        description=
-        "If the request failed, includes any error messages that were generated.",
-        alias="errorMessages")
-    comment: Optional[StrictStr] = Field(
-        default=None, description="Comment, if any, provided by the approver.")
-    remove_date: Optional[datetime] = Field(
-        default=None,
-        description=
-        "The date the role or access profile is no longer assigned to the specified identity.",
-        alias="removeDate")
-    __properties: ClassVar[List[str]] = [
-        "forwarded", "originalOwner", "currentOwner", "modified", "status",
-        "scheme", "errorMessages", "comment", "removeDate"
-    ]
+    error_messages: Optional[List[ErrorMessageDto]] = Field(default=None, description="If the request failed, includes any error messages that were generated.", alias="errorMessages")
+    comment: Optional[StrictStr] = Field(default=None, description="Comment, if any, provided by the approver.")
+    remove_date: Optional[datetime] = Field(default=None, description="The date the role or access profile is no longer assigned to the specified identity.", alias="removeDate")
+    __properties: ClassVar[List[str]] = ["forwarded", "originalOwner", "currentOwner", "modified", "status", "scheme", "errorMessages", "comment", "removeDate"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -99,7 +79,8 @@ class ApprovalStatusDto(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of original_owner
@@ -115,6 +96,26 @@ class ApprovalStatusDto(BaseModel):
                 if _item:
                     _items.append(_item.to_dict())
             _dict['errorMessages'] = _items
+        # set to None if modified (nullable) is None
+        # and model_fields_set contains the field
+        if self.modified is None and "modified" in self.model_fields_set:
+            _dict['modified'] = None
+
+        # set to None if error_messages (nullable) is None
+        # and model_fields_set contains the field
+        if self.error_messages is None and "error_messages" in self.model_fields_set:
+            _dict['errorMessages'] = None
+
+        # set to None if comment (nullable) is None
+        # and model_fields_set contains the field
+        if self.comment is None and "comment" in self.model_fields_set:
+            _dict['comment'] = None
+
+        # set to None if remove_date (nullable) is None
+        # and model_fields_set contains the field
+        if self.remove_date is None and "remove_date" in self.model_fields_set:
+            _dict['removeDate'] = None
+
         return _dict
 
     @classmethod
@@ -127,27 +128,16 @@ class ApprovalStatusDto(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "forwarded":
-            obj.get("forwarded"),
-            "originalOwner":
-            ApprovalStatusDtoOriginalOwner.from_dict(obj.get("originalOwner"))
-            if obj.get("originalOwner") is not None else None,
-            "currentOwner":
-            AccessItemReviewedBy.from_dict(obj.get("currentOwner"))
-            if obj.get("currentOwner") is not None else None,
-            "modified":
-            obj.get("modified"),
-            "status":
-            obj.get("status"),
-            "scheme":
-            obj.get("scheme"),
-            "errorMessages": [
-                ErrorMessageDto.from_dict(_item)
-                for _item in obj.get("errorMessages")
-            ] if obj.get("errorMessages") is not None else None,
-            "comment":
-            obj.get("comment"),
-            "removeDate":
-            obj.get("removeDate")
+            "forwarded": obj.get("forwarded") if obj.get("forwarded") is not None else False,
+            "originalOwner": ApprovalStatusDtoOriginalOwner.from_dict(obj.get("originalOwner")) if obj.get("originalOwner") is not None else None,
+            "currentOwner": ApprovalStatusDtoCurrentOwner.from_dict(obj.get("currentOwner")) if obj.get("currentOwner") is not None else None,
+            "modified": obj.get("modified"),
+            "status": obj.get("status"),
+            "scheme": obj.get("scheme"),
+            "errorMessages": [ErrorMessageDto.from_dict(_item) for _item in obj.get("errorMessages")] if obj.get("errorMessages") is not None else None,
+            "comment": obj.get("comment"),
+            "removeDate": obj.get("removeDate")
         })
         return _obj
+
+

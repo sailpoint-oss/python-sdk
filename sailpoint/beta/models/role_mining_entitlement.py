@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from pydantic import BaseModel, StrictFloat, StrictInt, StrictStr
@@ -25,57 +27,27 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class RoleMiningEntitlement(BaseModel):
     """
     RoleMiningEntitlement
-    """
-
-  # noqa: E501
-    entitlement_ref: Optional[RoleMiningEntitlementRef] = Field(
-        default=None, alias="entitlementRef")
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="Name of the entitlement")
-    application_name: Optional[StrictStr] = Field(
-        default=None,
-        description="Application name of the entitlement",
-        alias="applicationName")
-    identity_count: Optional[StrictInt] = Field(
-        default=None,
-        description="The number of identities with this entitlement in a role.",
-        alias="identityCount")
-    popularity: Optional[Union[StrictFloat, StrictInt]] = Field(
-        default=None,
-        description="The % popularity of this entitlement in a role.")
-    popularity_in_org: Optional[Union[StrictFloat, StrictInt]] = Field(
-        default=None,
-        description="The % popularity of this entitlement in the org.",
-        alias="popularityInOrg")
-    source_id: Optional[StrictStr] = Field(
-        default=None,
-        description="The ID of the source/application.",
-        alias="sourceId")
-    activity_source_state: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "The status of activity data for the source.   Value is complete or notComplete.",
-        alias="activitySourceState")
-    source_usage_percent: Optional[Union[StrictFloat, StrictInt]] = Field(
-        default=None,
-        description=
-        "The percentage of identities in the potential role that have usage of the source/application of this entitlement.",
-        alias="sourceUsagePercent")
-    __properties: ClassVar[List[str]] = [
-        "entitlementRef", "name", "applicationName", "identityCount",
-        "popularity", "popularityInOrg", "sourceId", "activitySourceState",
-        "sourceUsagePercent"
-    ]
+    """ # noqa: E501
+    entitlement_ref: Optional[RoleMiningEntitlementRef] = Field(default=None, alias="entitlementRef")
+    name: Optional[StrictStr] = Field(default=None, description="Name of the entitlement")
+    application_name: Optional[StrictStr] = Field(default=None, description="Application name of the entitlement", alias="applicationName")
+    identity_count: Optional[StrictInt] = Field(default=None, description="The number of identities with this entitlement in a role.", alias="identityCount")
+    popularity: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The % popularity of this entitlement in a role.")
+    popularity_in_org: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The % popularity of this entitlement in the org.", alias="popularityInOrg")
+    source_id: Optional[StrictStr] = Field(default=None, description="The ID of the source/application.", alias="sourceId")
+    activity_source_state: Optional[StrictStr] = Field(default=None, description="The status of activity data for the source.   Value is complete or notComplete.", alias="activitySourceState")
+    source_usage_percent: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The percentage of identities in the potential role that have usage of the source/application of this entitlement.", alias="sourceUsagePercent")
+    __properties: ClassVar[List[str]] = ["entitlementRef", "name", "applicationName", "identityCount", "popularity", "popularityInOrg", "sourceId", "activitySourceState", "sourceUsagePercent"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -103,7 +75,8 @@ class RoleMiningEntitlement(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of entitlement_ref
@@ -131,24 +104,16 @@ class RoleMiningEntitlement(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "entitlementRef":
-            RoleMiningEntitlementRef.from_dict(obj.get("entitlementRef"))
-            if obj.get("entitlementRef") is not None else None,
-            "name":
-            obj.get("name"),
-            "applicationName":
-            obj.get("applicationName"),
-            "identityCount":
-            obj.get("identityCount"),
-            "popularity":
-            obj.get("popularity"),
-            "popularityInOrg":
-            obj.get("popularityInOrg"),
-            "sourceId":
-            obj.get("sourceId"),
-            "activitySourceState":
-            obj.get("activitySourceState"),
-            "sourceUsagePercent":
-            obj.get("sourceUsagePercent")
+            "entitlementRef": RoleMiningEntitlementRef.from_dict(obj.get("entitlementRef")) if obj.get("entitlementRef") is not None else None,
+            "name": obj.get("name"),
+            "applicationName": obj.get("applicationName"),
+            "identityCount": obj.get("identityCount"),
+            "popularity": obj.get("popularity"),
+            "popularityInOrg": obj.get("popularityInOrg"),
+            "sourceId": obj.get("sourceId"),
+            "activitySourceState": obj.get("activitySourceState"),
+            "sourceUsagePercent": obj.get("sourceUsagePercent")
         })
         return _obj
+
+

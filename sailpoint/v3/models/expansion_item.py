@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -26,30 +28,23 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ExpansionItem(BaseModel):
     """
     ExpansionItem
-    """
-
-  # noqa: E501
-    account_id: Optional[StrictStr] = Field(
-        default=None, description="The ID of the account", alias="accountId")
+    """ # noqa: E501
+    account_id: Optional[StrictStr] = Field(default=None, description="The ID of the account", alias="accountId")
     cause: Optional[StrictStr] = None
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="The name of the item")
-    attribute_requests: Optional[List[AttributeRequest]] = Field(
-        default=None, alias="attributeRequests")
+    name: Optional[StrictStr] = Field(default=None, description="The name of the item")
+    attribute_requests: Optional[List[AttributeRequest]] = Field(default=None, alias="attributeRequests")
     source: Optional[AccountSource] = None
-    __properties: ClassVar[List[str]] = [
-        "accountId", "cause", "name", "attributeRequests", "source"
-    ]
+    __properties: ClassVar[List[str]] = ["accountId", "cause", "name", "attributeRequests", "source"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -77,7 +72,8 @@ class ExpansionItem(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in attribute_requests (list)
@@ -102,18 +98,12 @@ class ExpansionItem(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "accountId":
-            obj.get("accountId"),
-            "cause":
-            obj.get("cause"),
-            "name":
-            obj.get("name"),
-            "attributeRequests": [
-                AttributeRequest.from_dict(_item)
-                for _item in obj.get("attributeRequests")
-            ] if obj.get("attributeRequests") is not None else None,
-            "source":
-            AccountSource.from_dict(obj.get("source"))
-            if obj.get("source") is not None else None
+            "accountId": obj.get("accountId"),
+            "cause": obj.get("cause"),
+            "name": obj.get("name"),
+            "attributeRequests": [AttributeRequest.from_dict(_item) for _item in obj.get("attributeRequests")] if obj.get("attributeRequests") is not None else None,
+            "source": AccountSource.from_dict(obj.get("source")) if obj.get("source") is not None else None
         })
         return _obj
+
+

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -25,29 +27,22 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ProvisioningCriteriaLevel3(BaseModel):
     """
     Defines matching criteria for an Account to be provisioned with a specific Access Profile
     """ # noqa: E501
     operation: Optional[ProvisioningCriteriaOperation] = None
-    attribute: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Name of the Account attribute to be tested. If **operation** is one of EQUALS, NOT_EQUALS, CONTAINS, or HAS, this field is required. Otherwise, specifying it is an error."
-    )
-    value: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "String value to test the Account attribute w/r/t the specified operation. If the operation is one of EQUALS, NOT_EQUALS, or CONTAINS, this field is required. Otherwise, specifying it is an error. If the Attribute is not String-typed, it will be converted to the appropriate type."
-    )
-    __properties: ClassVar[List[str]] = ["operation", "attribute", "value"]
+    attribute: Optional[StrictStr] = Field(default=None, description="Name of the Account attribute to be tested. If **operation** is one of EQUALS, NOT_EQUALS, CONTAINS, or HAS, this field is required. Otherwise, specifying it is an error.")
+    value: Optional[StrictStr] = Field(default=None, description="String value to test the Account attribute w/r/t the specified operation. If the operation is one of EQUALS, NOT_EQUALS, or CONTAINS, this field is required. Otherwise, specifying it is an error. If the Attribute is not String-typed, it will be converted to the appropriate type.")
+    children: Optional[StrictStr] = Field(default=None, description="Array of child criteria. Required if the operation is AND or OR, otherwise it must be left null. A maximum of three levels of criteria are supported, including leaf nodes.")
+    __properties: ClassVar[List[str]] = ["operation", "attribute", "value", "children"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -75,13 +70,19 @@ class ProvisioningCriteriaLevel3(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if attribute (nullable) is None
         # and model_fields_set contains the field
         if self.attribute is None and "attribute" in self.model_fields_set:
             _dict['attribute'] = None
+
+        # set to None if children (nullable) is None
+        # and model_fields_set contains the field
+        if self.children is None and "children" in self.model_fields_set:
+            _dict['children'] = None
 
         return _dict
 
@@ -97,6 +98,9 @@ class ProvisioningCriteriaLevel3(BaseModel):
         _obj = cls.model_validate({
             "operation": obj.get("operation"),
             "attribute": obj.get("attribute"),
-            "value": obj.get("value")
+            "value": obj.get("value"),
+            "children": obj.get("children")
         })
         return _obj
+
+

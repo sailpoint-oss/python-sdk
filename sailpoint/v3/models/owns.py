@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool
@@ -25,33 +27,25 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class Owns(BaseModel):
     """
     Owns
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     sources: Optional[List[Reference]] = None
     entitlements: Optional[List[Reference]] = None
-    access_profiles: Optional[List[Reference]] = Field(default=None,
-                                                       alias="accessProfiles")
+    access_profiles: Optional[List[Reference]] = Field(default=None, alias="accessProfiles")
     roles: Optional[List[Reference]] = None
     apps: Optional[List[Reference]] = None
-    governance_groups: Optional[List[Reference]] = Field(
-        default=None, alias="governanceGroups")
-    fallback_approver: Optional[StrictBool] = Field(default=None,
-                                                    alias="fallbackApprover")
-    __properties: ClassVar[List[str]] = [
-        "sources", "entitlements", "accessProfiles", "roles", "apps",
-        "governanceGroups", "fallbackApprover"
-    ]
+    governance_groups: Optional[List[Reference]] = Field(default=None, alias="governanceGroups")
+    fallback_approver: Optional[StrictBool] = Field(default=None, alias="fallbackApprover")
+    __properties: ClassVar[List[str]] = ["sources", "entitlements", "accessProfiles", "roles", "apps", "governanceGroups", "fallbackApprover"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -79,7 +73,8 @@ class Owns(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in sources (list)
@@ -136,26 +131,14 @@ class Owns(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "sources":
-            [Reference.from_dict(_item) for _item in obj.get("sources")]
-            if obj.get("sources") is not None else None,
-            "entitlements":
-            [Reference.from_dict(_item) for _item in obj.get("entitlements")]
-            if obj.get("entitlements") is not None else None,
-            "accessProfiles": [
-                Reference.from_dict(_item)
-                for _item in obj.get("accessProfiles")
-            ] if obj.get("accessProfiles") is not None else None,
-            "roles":
-            [Reference.from_dict(_item) for _item in obj.get("roles")]
-            if obj.get("roles") is not None else None,
-            "apps": [Reference.from_dict(_item) for _item in obj.get("apps")]
-            if obj.get("apps") is not None else None,
-            "governanceGroups": [
-                Reference.from_dict(_item)
-                for _item in obj.get("governanceGroups")
-            ] if obj.get("governanceGroups") is not None else None,
-            "fallbackApprover":
-            obj.get("fallbackApprover")
+            "sources": [Reference.from_dict(_item) for _item in obj.get("sources")] if obj.get("sources") is not None else None,
+            "entitlements": [Reference.from_dict(_item) for _item in obj.get("entitlements")] if obj.get("entitlements") is not None else None,
+            "accessProfiles": [Reference.from_dict(_item) for _item in obj.get("accessProfiles")] if obj.get("accessProfiles") is not None else None,
+            "roles": [Reference.from_dict(_item) for _item in obj.get("roles")] if obj.get("roles") is not None else None,
+            "apps": [Reference.from_dict(_item) for _item in obj.get("apps")] if obj.get("apps") is not None else None,
+            "governanceGroups": [Reference.from_dict(_item) for _item in obj.get("governanceGroups")] if obj.get("governanceGroups") is not None else None,
+            "fallbackApprover": obj.get("fallbackApprover")
         })
         return _obj
+
+

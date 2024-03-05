@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,66 +21,46 @@ from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
 from pydantic import Field
-from sailpoint.v3.models.access_profile_role import AccessProfileRole
+from sailpoint.v3.models.base_access_all_of_owner import BaseAccessAllOfOwner
+from sailpoint.v3.models.base_access_profile import BaseAccessProfile
+from sailpoint.v3.models.base_entitlement import BaseEntitlement
+from sailpoint.v3.models.base_segment import BaseSegment
 from sailpoint.v3.models.document_type import DocumentType
-from sailpoint.v3.models.owner import Owner
-from sailpoint.v3.models.reference import Reference
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class RoleDocument(BaseModel):
     """
     Role
-    """
-
-  # noqa: E501
-    id: StrictStr = Field(
-        description="The unique ID of the referenced object.")
-    name: StrictStr = Field(
-        description="The human readable name of the referenced object.")
+    """ # noqa: E501
+    id: StrictStr = Field(description="The unique ID of the referenced object.")
+    name: StrictStr = Field(description="The human readable name of the referenced object.")
     type: DocumentType = Field(alias="_type")
-    description: Optional[StrictStr] = Field(
-        default=None, description="The description of the access item")
-    created: Optional[datetime] = Field(
-        default=None, description="A date-time in ISO-8601 format")
-    modified: Optional[datetime] = Field(
-        default=None, description="A date-time in ISO-8601 format")
-    synced: Optional[datetime] = Field(
-        default=None, description="A date-time in ISO-8601 format")
-    enabled: Optional[StrictBool] = None
-    requestable: Optional[StrictBool] = Field(
-        default=None, description="Indicates if the access can be requested")
-    request_comments_required: Optional[StrictBool] = Field(
-        default=None,
-        description="Indicates if comments are required when requesting access",
-        alias="requestCommentsRequired")
-    owner: Optional[Owner] = None
-    access_profiles: Optional[List[Reference]] = Field(default=None,
-                                                       alias="accessProfiles")
-    access_profile_count: Optional[StrictInt] = Field(
-        default=None, alias="accessProfileCount")
-    tags: Optional[List[StrictStr]] = None
-    segments: Optional[List[Reference]] = None
-    segment_count: Optional[StrictInt] = Field(default=None,
-                                               alias="segmentCount")
-    entitlements: Optional[List[AccessProfileRole]] = None
-    entitlement_count: Optional[StrictInt] = Field(default=None,
-                                                   alias="entitlementCount")
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "_type", "description", "created", "modified", "synced",
-        "enabled", "requestable", "requestCommentsRequired", "owner",
-        "accessProfiles", "accessProfileCount", "tags", "segments",
-        "segmentCount", "entitlements", "entitlementCount"
-    ]
+    description: Optional[StrictStr] = Field(default=None, description="Access item's description.")
+    created: Optional[datetime] = Field(default=None, description="ISO-8601 date-time referring to the time when the object was created.")
+    modified: Optional[datetime] = Field(default=None, description="ISO-8601 date-time referring to the time when the object was last modified.")
+    synced: Optional[datetime] = Field(default=None, description="ISO-8601 date-time referring to the date-time when object was queued to be synced into search database for use in the search API.   This date-time changes anytime there is an update to the object, which triggers a synchronization event being sent to the search database.  There may be some delay between the `synced` time and the time when the updated data is actually available in the search API. ")
+    enabled: Optional[StrictBool] = Field(default=False, description="Indicates whether the access item is currently enabled.")
+    requestable: Optional[StrictBool] = Field(default=True, description="Indicates whether the access item can be requested.")
+    request_comments_required: Optional[StrictBool] = Field(default=False, description="Indicates whether comments are required for requests to access the item.", alias="requestCommentsRequired")
+    owner: Optional[BaseAccessAllOfOwner] = None
+    access_profiles: Optional[List[BaseAccessProfile]] = Field(default=None, description="Access profiles included with the role.", alias="accessProfiles")
+    access_profile_count: Optional[StrictInt] = Field(default=None, description="Number of access profiles included with the role.", alias="accessProfileCount")
+    tags: Optional[List[StrictStr]] = Field(default=None, description="Tags that have been applied to the object.")
+    segments: Optional[List[BaseSegment]] = Field(default=None, description="Segments with the role.")
+    segment_count: Optional[StrictInt] = Field(default=None, description="Number of segments with the role.", alias="segmentCount")
+    entitlements: Optional[List[BaseEntitlement]] = Field(default=None, description="Entitlements included with the role.")
+    entitlement_count: Optional[StrictInt] = Field(default=None, description="Number of entitlements included with the role.", alias="entitlementCount")
+    __properties: ClassVar[List[str]] = ["id", "name", "_type", "description", "created", "modified", "synced", "enabled", "requestable", "requestCommentsRequired", "owner", "accessProfiles", "accessProfileCount", "tags", "segments", "segmentCount", "entitlements", "entitlementCount"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -107,7 +88,8 @@ class RoleDocument(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of owner
@@ -161,47 +143,25 @@ class RoleDocument(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "_type":
-            obj.get("_type"),
-            "description":
-            obj.get("description"),
-            "created":
-            obj.get("created"),
-            "modified":
-            obj.get("modified"),
-            "synced":
-            obj.get("synced"),
-            "enabled":
-            obj.get("enabled"),
-            "requestable":
-            obj.get("requestable"),
-            "requestCommentsRequired":
-            obj.get("requestCommentsRequired"),
-            "owner":
-            Owner.from_dict(obj.get("owner"))
-            if obj.get("owner") is not None else None,
-            "accessProfiles": [
-                Reference.from_dict(_item)
-                for _item in obj.get("accessProfiles")
-            ] if obj.get("accessProfiles") is not None else None,
-            "accessProfileCount":
-            obj.get("accessProfileCount"),
-            "tags":
-            obj.get("tags"),
-            "segments":
-            [Reference.from_dict(_item) for _item in obj.get("segments")]
-            if obj.get("segments") is not None else None,
-            "segmentCount":
-            obj.get("segmentCount"),
-            "entitlements": [
-                AccessProfileRole.from_dict(_item)
-                for _item in obj.get("entitlements")
-            ] if obj.get("entitlements") is not None else None,
-            "entitlementCount":
-            obj.get("entitlementCount")
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "_type": obj.get("_type"),
+            "description": obj.get("description"),
+            "created": obj.get("created"),
+            "modified": obj.get("modified"),
+            "synced": obj.get("synced"),
+            "enabled": obj.get("enabled") if obj.get("enabled") is not None else False,
+            "requestable": obj.get("requestable") if obj.get("requestable") is not None else True,
+            "requestCommentsRequired": obj.get("requestCommentsRequired") if obj.get("requestCommentsRequired") is not None else False,
+            "owner": BaseAccessAllOfOwner.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
+            "accessProfiles": [BaseAccessProfile.from_dict(_item) for _item in obj.get("accessProfiles")] if obj.get("accessProfiles") is not None else None,
+            "accessProfileCount": obj.get("accessProfileCount"),
+            "tags": obj.get("tags"),
+            "segments": [BaseSegment.from_dict(_item) for _item in obj.get("segments")] if obj.get("segments") is not None else None,
+            "segmentCount": obj.get("segmentCount"),
+            "entitlements": [BaseEntitlement.from_dict(_item) for _item in obj.get("entitlements")] if obj.get("entitlements") is not None else None,
+            "entitlementCount": obj.get("entitlementCount")
         })
         return _obj
+
+

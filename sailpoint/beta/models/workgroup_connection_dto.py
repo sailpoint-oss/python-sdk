@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -25,16 +27,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class WorkgroupConnectionDto(BaseModel):
     """
     WorkgroupConnectionDto
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     object: Optional[ConnectedObject] = None
-    connection_type: Optional[StrictStr] = Field(
-        default=None, description="Connection Type.", alias="connectionType")
+    connection_type: Optional[StrictStr] = Field(default=None, description="Connection Type.", alias="connectionType")
     __properties: ClassVar[List[str]] = ["object", "connectionType"]
 
     @field_validator('connection_type')
@@ -43,11 +41,8 @@ class WorkgroupConnectionDto(BaseModel):
         if value is None:
             return value
 
-        if value not in ('AccessRequestReviewer', 'Owner',
-                         'ManagementWorkgroup'):
-            raise ValueError(
-                "must be one of enum values ('AccessRequestReviewer', 'Owner', 'ManagementWorkgroup')"
-            )
+        if value not in ('AccessRequestReviewer', 'Owner', 'ManagementWorkgroup'):
+            raise ValueError("must be one of enum values ('AccessRequestReviewer', 'Owner', 'ManagementWorkgroup')")
         return value
 
     model_config = {
@@ -55,6 +50,7 @@ class WorkgroupConnectionDto(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -82,7 +78,8 @@ class WorkgroupConnectionDto(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of object
@@ -100,10 +97,9 @@ class WorkgroupConnectionDto(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "object":
-            ConnectedObject.from_dict(obj.get("object"))
-            if obj.get("object") is not None else None,
-            "connectionType":
-            obj.get("connectionType")
+            "object": ConnectedObject.from_dict(obj.get("object")) if obj.get("object") is not None else None,
+            "connectionType": obj.get("connectionType")
         })
         return _obj
+
+

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel
@@ -25,13 +27,10 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class KbaAnswerRequest(BaseModel):
     """
     KbaAnswerRequest
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     answers: List[KbaAnswerRequestItem] = Field(description="Kba answers")
     __properties: ClassVar[List[str]] = ["answers"]
 
@@ -40,6 +39,7 @@ class KbaAnswerRequest(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -67,7 +67,8 @@ class KbaAnswerRequest(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in answers (list)
@@ -89,9 +90,8 @@ class KbaAnswerRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "answers": [
-                KbaAnswerRequestItem.from_dict(_item)
-                for _item in obj.get("answers")
-            ] if obj.get("answers") is not None else None
+            "answers": [KbaAnswerRequestItem.from_dict(_item) for _item in obj.get("answers")] if obj.get("answers") is not None else None
         })
         return _obj
+
+

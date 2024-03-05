@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.pat_owner import PatOwner
-
 
 class TestPatOwner(unittest.TestCase):
     """PatOwner unit test stubs"""
@@ -49,7 +49,6 @@ class TestPatOwner(unittest.TestCase):
         """Test PatOwner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

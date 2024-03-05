@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
@@ -24,37 +26,21 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccountUnlockRequest(BaseModel):
     """
     Request used for account unlock
-    """
-
-  # noqa: E501
-    external_verification_id: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "If set, an external process validates that the user wants to proceed with this request.",
-        alias="externalVerificationId")
-    unlock_idn_account: Optional[StrictBool] = Field(
-        default=None,
-        description=
-        "If set, the IDN account is unlocked after the workflow completes.",
-        alias="unlockIDNAccount")
-    force_provisioning: Optional[StrictBool] = Field(
-        default=None,
-        description=
-        "If set, provisioning updates the account attribute at the source.   This option is used when the account is not synced to ensure the attribute is updated.",
-        alias="forceProvisioning")
-    __properties: ClassVar[List[str]] = [
-        "externalVerificationId", "unlockIDNAccount", "forceProvisioning"
-    ]
+    """ # noqa: E501
+    external_verification_id: Optional[StrictStr] = Field(default=None, description="If set, an external process validates that the user wants to proceed with this request.", alias="externalVerificationId")
+    unlock_idn_account: Optional[StrictBool] = Field(default=None, description="If set, the IDN account is unlocked after the workflow completes.", alias="unlockIDNAccount")
+    force_provisioning: Optional[StrictBool] = Field(default=None, description="If set, provisioning updates the account attribute at the source.   This option is used when the account is not synced to ensure the attribute is updated.", alias="forceProvisioning")
+    __properties: ClassVar[List[str]] = ["externalVerificationId", "unlockIDNAccount", "forceProvisioning"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -82,7 +68,8 @@ class AccountUnlockRequest(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -97,11 +84,10 @@ class AccountUnlockRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "externalVerificationId":
-            obj.get("externalVerificationId"),
-            "unlockIDNAccount":
-            obj.get("unlockIDNAccount"),
-            "forceProvisioning":
-            obj.get("forceProvisioning")
+            "externalVerificationId": obj.get("externalVerificationId"),
+            "unlockIDNAccount": obj.get("unlockIDNAccount"),
+            "forceProvisioning": obj.get("forceProvisioning")
         })
         return _obj
+
+

@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -25,59 +26,22 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class Outlier(BaseModel):
     """
     Outlier
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(
-        default=None,
-        description="The identity's unique identifier for the outlier record")
-    identity_id: Optional[StrictStr] = Field(
-        default=None,
-        description="The ID of the identity that is detected as an outlier",
-        alias="identityId")
-    type: Optional[StrictStr] = Field(
-        default=None, description="The type of outlier summary")
-    first_detection_date: Optional[datetime] = Field(
-        default=None,
-        description="The first date the outlier was detected",
-        alias="firstDetectionDate")
-    latest_detection_date: Optional[datetime] = Field(
-        default=None,
-        description="The most recent date the outlier was detected",
-        alias="latestDetectionDate")
-    ignored: Optional[StrictBool] = Field(
-        default=None,
-        description="Flag whether or not the outlier has been ignored")
-    attributes: Optional[Dict[str, Any]] = Field(
-        default=None,
-        description="Object containing mapped identity attributes")
-    score: Optional[Union[StrictFloat, StrictInt]] = Field(
-        default=None,
-        description=
-        "The outlier score determined by the detection engine ranging from 0..1"
-    )
-    unignore_type: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Enum value of if the outlier manually or automatically un-ignored. Will be NULL if outlier is not ignored",
-        alias="unignoreType")
-    unignore_date: Optional[datetime] = Field(
-        default=None,
-        description="shows date when last time has been unignored outlier",
-        alias="unignoreDate")
-    ignore_date: Optional[datetime] = Field(
-        default=None,
-        description="shows date when last time has been ignored outlier",
-        alias="ignoreDate")
-    __properties: ClassVar[List[str]] = [
-        "id", "identityId", "type", "firstDetectionDate",
-        "latestDetectionDate", "ignored", "attributes", "score",
-        "unignoreType", "unignoreDate", "ignoreDate"
-    ]
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="The identity's unique identifier for the outlier record")
+    identity_id: Optional[StrictStr] = Field(default=None, description="The ID of the identity that is detected as an outlier", alias="identityId")
+    type: Optional[StrictStr] = Field(default=None, description="The type of outlier summary")
+    first_detection_date: Optional[datetime] = Field(default=None, description="The first date the outlier was detected", alias="firstDetectionDate")
+    latest_detection_date: Optional[datetime] = Field(default=None, description="The most recent date the outlier was detected", alias="latestDetectionDate")
+    ignored: Optional[StrictBool] = Field(default=None, description="Flag whether or not the outlier has been ignored")
+    attributes: Optional[Dict[str, Any]] = Field(default=None, description="Object containing mapped identity attributes")
+    score: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The outlier score determined by the detection engine ranging from 0..1")
+    unignore_type: Optional[StrictStr] = Field(default=None, description="Enum value of if the outlier manually or automatically un-ignored. Will be NULL if outlier is not ignored", alias="unignoreType")
+    unignore_date: Optional[datetime] = Field(default=None, description="shows date when last time has been unignored outlier", alias="unignoreDate")
+    ignore_date: Optional[datetime] = Field(default=None, description="shows date when last time has been ignored outlier", alias="ignoreDate")
+    __properties: ClassVar[List[str]] = ["id", "identityId", "type", "firstDetectionDate", "latestDetectionDate", "ignored", "attributes", "score", "unignoreType", "unignoreDate", "ignoreDate"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -86,8 +50,7 @@ class Outlier(BaseModel):
             return value
 
         if value not in ('LOW_SIMILARITY', 'STRUCTURAL'):
-            raise ValueError(
-                "must be one of enum values ('LOW_SIMILARITY', 'STRUCTURAL')")
+            raise ValueError("must be one of enum values ('LOW_SIMILARITY', 'STRUCTURAL')")
         return value
 
     @field_validator('unignore_type')
@@ -96,9 +59,8 @@ class Outlier(BaseModel):
         if value is None:
             return value
 
-        if value not in ('MANUAL', 'AUTOMATIC'):
-            raise ValueError(
-                "must be one of enum values ('MANUAL', 'AUTOMATIC')")
+        if value not in ('MANUAL', 'AUTOMATIC', 'null'):
+            raise ValueError("must be one of enum values ('MANUAL', 'AUTOMATIC', 'null')")
         return value
 
     model_config = {
@@ -106,6 +68,7 @@ class Outlier(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -133,9 +96,25 @@ class Outlier(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
+        # set to None if unignore_type (nullable) is None
+        # and model_fields_set contains the field
+        if self.unignore_type is None and "unignore_type" in self.model_fields_set:
+            _dict['unignoreType'] = None
+
+        # set to None if unignore_date (nullable) is None
+        # and model_fields_set contains the field
+        if self.unignore_date is None and "unignore_date" in self.model_fields_set:
+            _dict['unignoreDate'] = None
+
+        # set to None if ignore_date (nullable) is None
+        # and model_fields_set contains the field
+        if self.ignore_date is None and "ignore_date" in self.model_fields_set:
+            _dict['ignoreDate'] = None
+
         return _dict
 
     @classmethod
@@ -148,27 +127,18 @@ class Outlier(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "identityId":
-            obj.get("identityId"),
-            "type":
-            obj.get("type"),
-            "firstDetectionDate":
-            obj.get("firstDetectionDate"),
-            "latestDetectionDate":
-            obj.get("latestDetectionDate"),
-            "ignored":
-            obj.get("ignored"),
-            "attributes":
-            obj.get("attributes"),
-            "score":
-            obj.get("score"),
-            "unignoreType":
-            obj.get("unignoreType"),
-            "unignoreDate":
-            obj.get("unignoreDate"),
-            "ignoreDate":
-            obj.get("ignoreDate")
+            "id": obj.get("id"),
+            "identityId": obj.get("identityId"),
+            "type": obj.get("type"),
+            "firstDetectionDate": obj.get("firstDetectionDate"),
+            "latestDetectionDate": obj.get("latestDetectionDate"),
+            "ignored": obj.get("ignored"),
+            "attributes": obj.get("attributes"),
+            "score": obj.get("score"),
+            "unignoreType": obj.get("unignoreType"),
+            "unignoreDate": obj.get("unignoreDate"),
+            "ignoreDate": obj.get("ignoreDate")
         })
         return _obj
+
+

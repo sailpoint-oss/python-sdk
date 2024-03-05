@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -26,20 +27,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class PreferencesDto(BaseModel):
     """
     Maps an Identity's attribute key to a list of preferred notification mediums.
     """ # noqa: E501
-    key: Optional[StrictStr] = Field(
-        default=None, description="The template notification key.")
-    mediums: Optional[List[Medium]] = Field(
-        default=None,
-        description=
-        "List of preferred notification mediums, i.e., the mediums (or method) for which notifications are enabled. More mediums may be added in the future."
-    )
-    modified: Optional[datetime] = Field(
-        default=None, description="Modified date of preference")
+    key: Optional[StrictStr] = Field(default=None, description="The template notification key.")
+    mediums: Optional[List[Medium]] = Field(default=None, description="List of preferred notification mediums, i.e., the mediums (or method) for which notifications are enabled. More mediums may be added in the future.")
+    modified: Optional[datetime] = Field(default=None, description="Modified date of preference")
     __properties: ClassVar[List[str]] = ["key", "mediums", "modified"]
 
     model_config = {
@@ -47,6 +41,7 @@ class PreferencesDto(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -74,7 +69,8 @@ class PreferencesDto(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -94,3 +90,5 @@ class PreferencesDto(BaseModel):
             "modified": obj.get("modified")
         })
         return _obj
+
+

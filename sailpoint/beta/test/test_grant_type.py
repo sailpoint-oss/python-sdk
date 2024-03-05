@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.grant_type import GrantType
-
 
 class TestGrantType(unittest.TestCase):
     """GrantType unit test stubs"""
@@ -29,7 +29,6 @@ class TestGrantType(unittest.TestCase):
     def testGrantType(self):
         """Test GrantType"""
         # inst = GrantType()
-
 
 if __name__ == '__main__':
     unittest.main()

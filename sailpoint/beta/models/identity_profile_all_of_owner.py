@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,24 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class IdentityProfileAllOfOwner(BaseModel):
     """
     The owner of the Identity Profile.
-    """
-
-  # noqa: E501
-    type: Optional[StrictStr] = Field(
-        default=None,
-        description="Type of the object to which this reference applies")
-    id: Optional[StrictStr] = Field(
-        default=None,
-        description="ID of the object to which this reference applies")
-    name: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Human-readable display name of the object to which this reference applies"
-    )
+    """ # noqa: E501
+    type: Optional[StrictStr] = Field(default=None, description="Type of the object to which this reference applies")
+    id: Optional[StrictStr] = Field(default=None, description="ID of the object to which this reference applies")
+    name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of the object to which this reference applies")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')
@@ -59,6 +50,7 @@ class IdentityProfileAllOfOwner(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -86,7 +78,8 @@ class IdentityProfileAllOfOwner(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -106,3 +99,5 @@ class IdentityProfileAllOfOwner(BaseModel):
             "name": obj.get("name")
         })
         return _obj
+
+

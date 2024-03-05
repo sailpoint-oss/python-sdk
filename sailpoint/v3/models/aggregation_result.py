@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
@@ -24,21 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AggregationResult(BaseModel):
     """
     AggregationResult
-    """
-
-  # noqa: E501
-    aggregations: Optional[Dict[str, Any]] = Field(
-        default=None,
-        description=
-        "The document containing the results of the aggregation. This document is controlled by Elasticsearch and depends on the type of aggregation query that is run.  See Elasticsearch [Aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/search-aggregations.html) documentation for information. "
-    )
-    hits: Optional[List[Dict[str, Any]]] = Field(
-        default=None,
-        description="The results of the aggregation search query. ")
+    """ # noqa: E501
+    aggregations: Optional[Dict[str, Any]] = Field(default=None, description="The document containing the results of the aggregation. This document is controlled by Elasticsearch and depends on the type of aggregation query that is run.  See Elasticsearch [Aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/search-aggregations.html) documentation for information. ")
+    hits: Optional[List[Dict[str, Any]]] = Field(default=None, description="The results of the aggregation search query. ")
     __properties: ClassVar[List[str]] = ["aggregations", "hits"]
 
     model_config = {
@@ -46,6 +39,7 @@ class AggregationResult(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -73,7 +67,8 @@ class AggregationResult(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -92,3 +87,5 @@ class AggregationResult(BaseModel):
             "hits": obj.get("hits")
         })
         return _obj
+
+

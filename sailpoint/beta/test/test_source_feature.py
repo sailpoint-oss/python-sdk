@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.source_feature import SourceFeature
-
 
 class TestSourceFeature(unittest.TestCase):
     """SourceFeature unit test stubs"""
@@ -29,7 +29,6 @@ class TestSourceFeature(unittest.TestCase):
     def testSourceFeature(self):
         """Test SourceFeature"""
         # inst = SourceFeature()
-
 
 if __name__ == '__main__':
     unittest.main()

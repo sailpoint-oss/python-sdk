@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.create_scheduled_search_request import CreateScheduledSearchRequest
-
 
 class TestCreateScheduledSearchRequest(unittest.TestCase):
     """CreateScheduledSearchRequest unit test stubs"""
@@ -43,6 +43,7 @@ class TestCreateScheduledSearchRequest(unittest.TestCase):
                 modified = '2018-06-25T20:22:28.104Z',
                 schedule = sailpoint.v3.models.schedule_1.Schedule_1(
                     type = 'WEEKLY', 
+                    months = null, 
                     days = null, 
                     hours = null, 
                     expiration = '2018-06-25T20:22:28.104Z', 
@@ -61,6 +62,7 @@ class TestCreateScheduledSearchRequest(unittest.TestCase):
                 saved_search_id = '554f1511-f0a1-4744-ab14-599514d3e57c',
                 schedule = sailpoint.v3.models.schedule_1.Schedule_1(
                     type = 'WEEKLY', 
+                    months = null, 
                     days = null, 
                     hours = null, 
                     expiration = '2018-06-25T20:22:28.104Z', 
@@ -77,7 +79,6 @@ class TestCreateScheduledSearchRequest(unittest.TestCase):
         """Test CreateScheduledSearchRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

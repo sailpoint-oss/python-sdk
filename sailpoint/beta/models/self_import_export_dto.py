@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,22 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class SelfImportExportDto(BaseModel):
     """
     Self block for imported/exported object.
-    """
-
-  # noqa: E501
-    type: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Imported/exported object's DTO type. Import is currently only possible with the IDENTITY_OBJECT_CONFIG, IDENTITY_PROFILE, RULE, SOURCE, TRANSFORM, and TRIGGER_SUBSCRIPTION object types."
-    )
-    id: Optional[StrictStr] = Field(
-        default=None, description="Imported/exported object's ID.")
-    name: Optional[StrictStr] = Field(
-        default=None, description="Imported/exported object's display name.")
+    """ # noqa: E501
+    type: Optional[StrictStr] = Field(default=None, description="Imported/exported object's DTO type. Import is currently only possible with the IDENTITY_OBJECT_CONFIG, IDENTITY_PROFILE, RULE, SOURCE, TRANSFORM, and TRIGGER_SUBSCRIPTION object types.")
+    id: Optional[StrictStr] = Field(default=None, description="Imported/exported object's ID.")
+    name: Optional[StrictStr] = Field(default=None, description="Imported/exported object's display name.")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')
@@ -48,19 +41,8 @@ class SelfImportExportDto(BaseModel):
         if value is None:
             return value
 
-        if value not in ('ACCESS_PROFILE', 'ACCESS_REQUEST_CONFIG',
-                         'ATTR_SYNC_SOURCE_CONFIG', 'AUTH_ORG',
-                         'CAMPAIGN_FILTER', 'FORM_DEFINITION',
-                         'GOVERNANCE_GROUP', 'IDENTITY_OBJECT_CONFIG',
-                         'IDENTITY_PROFILE', 'LIFECYCLE_STATE',
-                         'NOTIFICATION_TEMPLATE', 'PASSWORD_POLICY',
-                         'PASSWORD_SYNC_GROUP', 'PUBLIC_IDENTITIES_CONFIG',
-                         'ROLE', 'RULE', 'SEGMENT', 'SERVICE_DESK_INTEGRATION',
-                         'SOD_POLICY', 'SOURCE', 'TAG', 'TRANSFORM',
-                         'TRIGGER_SUBSCRIPTION', 'WORKFLOW'):
-            raise ValueError(
-                "must be one of enum values ('ACCESS_PROFILE', 'ACCESS_REQUEST_CONFIG', 'ATTR_SYNC_SOURCE_CONFIG', 'AUTH_ORG', 'CAMPAIGN_FILTER', 'FORM_DEFINITION', 'GOVERNANCE_GROUP', 'IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'LIFECYCLE_STATE', 'NOTIFICATION_TEMPLATE', 'PASSWORD_POLICY', 'PASSWORD_SYNC_GROUP', 'PUBLIC_IDENTITIES_CONFIG', 'ROLE', 'RULE', 'SEGMENT', 'SERVICE_DESK_INTEGRATION', 'SOD_POLICY', 'SOURCE', 'TAG', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION', 'WORKFLOW')"
-            )
+        if value not in ('ACCESS_PROFILE', 'ACCESS_REQUEST_CONFIG', 'ATTR_SYNC_SOURCE_CONFIG', 'AUTH_ORG', 'CAMPAIGN_FILTER', 'FORM_DEFINITION', 'GOVERNANCE_GROUP', 'IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'LIFECYCLE_STATE', 'NOTIFICATION_TEMPLATE', 'PASSWORD_POLICY', 'PASSWORD_SYNC_GROUP', 'PUBLIC_IDENTITIES_CONFIG', 'ROLE', 'RULE', 'SEGMENT', 'SERVICE_DESK_INTEGRATION', 'SOD_POLICY', 'SOURCE', 'TAG', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION', 'WORKFLOW'):
+            raise ValueError("must be one of enum values ('ACCESS_PROFILE', 'ACCESS_REQUEST_CONFIG', 'ATTR_SYNC_SOURCE_CONFIG', 'AUTH_ORG', 'CAMPAIGN_FILTER', 'FORM_DEFINITION', 'GOVERNANCE_GROUP', 'IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'LIFECYCLE_STATE', 'NOTIFICATION_TEMPLATE', 'PASSWORD_POLICY', 'PASSWORD_SYNC_GROUP', 'PUBLIC_IDENTITIES_CONFIG', 'ROLE', 'RULE', 'SEGMENT', 'SERVICE_DESK_INTEGRATION', 'SOD_POLICY', 'SOURCE', 'TAG', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION', 'WORKFLOW')")
         return value
 
     model_config = {
@@ -68,6 +50,7 @@ class SelfImportExportDto(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -95,7 +78,8 @@ class SelfImportExportDto(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -115,3 +99,5 @@ class SelfImportExportDto(BaseModel):
             "name": obj.get("name")
         })
         return _obj
+
+

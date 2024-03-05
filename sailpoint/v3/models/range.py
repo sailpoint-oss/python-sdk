@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
@@ -24,13 +26,10 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class Range(BaseModel):
     """
     The range of values to be filtered.
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     lower: Optional[Bound] = None
     upper: Optional[Bound] = None
     __properties: ClassVar[List[str]] = ["lower", "upper"]
@@ -40,6 +39,7 @@ class Range(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -67,7 +67,8 @@ class Range(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of lower
@@ -88,11 +89,9 @@ class Range(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "lower":
-            Bound.from_dict(obj.get("lower"))
-            if obj.get("lower") is not None else None,
-            "upper":
-            Bound.from_dict(obj.get("upper"))
-            if obj.get("upper") is not None else None
+            "lower": Bound.from_dict(obj.get("lower")) if obj.get("lower") is not None else None,
+            "upper": Bound.from_dict(obj.get("upper")) if obj.get("upper") is not None else None
         })
         return _obj
+
+

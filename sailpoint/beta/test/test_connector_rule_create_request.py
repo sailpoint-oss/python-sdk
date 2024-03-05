@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.connector_rule_create_request import ConnectorRuleCreateRequest
-
 
 class TestConnectorRuleCreateRequest(unittest.TestCase):
     """ConnectorRuleCreateRequest unit test stubs"""
@@ -69,7 +69,6 @@ class TestConnectorRuleCreateRequest(unittest.TestCase):
         """Test ConnectorRuleCreateRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

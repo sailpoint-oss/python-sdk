@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.role_mining_session_state import RoleMiningSessionState
-
 
 class TestRoleMiningSessionState(unittest.TestCase):
     """RoleMiningSessionState unit test stubs"""
@@ -29,7 +29,6 @@ class TestRoleMiningSessionState(unittest.TestCase):
     def testRoleMiningSessionState(self):
         """Test RoleMiningSessionState"""
         # inst = RoleMiningSessionState()
-
 
 if __name__ == '__main__':
     unittest.main()

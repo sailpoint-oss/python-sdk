@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt, StrictStr
@@ -25,36 +27,23 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ResourceObjectsResponse(BaseModel):
     """
     Response model for peek resource objects from source connectors.
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="ID of the source")
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="Name of the source")
-    object_count: Optional[StrictInt] = Field(
-        default=None,
-        description="The number of objects that were fetched by the connector.",
-        alias="objectCount")
-    elapsed_millis: Optional[StrictInt] = Field(
-        default=None,
-        description="The number of milliseconds spent on the entire request.",
-        alias="elapsedMillis")
-    resource_objects: Optional[List[ResourceObject]] = Field(
-        default=None,
-        description="Fetched objects from the source connector.",
-        alias="resourceObjects")
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "objectCount", "elapsedMillis", "resourceObjects"
-    ]
+    id: Optional[StrictStr] = Field(default=None, description="ID of the source")
+    name: Optional[StrictStr] = Field(default=None, description="Name of the source")
+    object_count: Optional[StrictInt] = Field(default=None, description="The number of objects that were fetched by the connector.", alias="objectCount")
+    elapsed_millis: Optional[StrictInt] = Field(default=None, description="The number of milliseconds spent on the entire request.", alias="elapsedMillis")
+    resource_objects: Optional[List[ResourceObject]] = Field(default=None, description="Fetched objects from the source connector.", alias="resourceObjects")
+    __properties: ClassVar[List[str]] = ["id", "name", "objectCount", "elapsedMillis", "resourceObjects"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -115,17 +104,12 @@ class ResourceObjectsResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "objectCount":
-            obj.get("objectCount"),
-            "elapsedMillis":
-            obj.get("elapsedMillis"),
-            "resourceObjects": [
-                ResourceObject.from_dict(_item)
-                for _item in obj.get("resourceObjects")
-            ] if obj.get("resourceObjects") is not None else None
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "objectCount": obj.get("objectCount"),
+            "elapsedMillis": obj.get("elapsedMillis"),
+            "resourceObjects": [ResourceObject.from_dict(_item) for _item in obj.get("resourceObjects")] if obj.get("resourceObjects") is not None else None
         })
         return _obj
+
+

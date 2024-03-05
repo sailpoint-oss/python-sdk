@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -28,86 +29,37 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class GetOAuthClientResponse(BaseModel):
     """
     GetOAuthClientResponse
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     id: StrictStr = Field(description="ID of the OAuth client")
-    business_name: Optional[StrictStr] = Field(
-        description="The name of the business the API Client should belong to",
-        alias="businessName")
-    homepage_url: Optional[StrictStr] = Field(
-        description=
-        "The homepage URL associated with the owner of the API Client",
-        alias="homepageUrl")
-    name: StrictStr = Field(
-        description="A human-readable name for the API Client")
-    description: Optional[StrictStr] = Field(
-        description="A description of the API Client")
-    access_token_validity_seconds: StrictInt = Field(
-        description=
-        "The number of seconds an access token generated for this API Client is valid for",
-        alias="accessTokenValiditySeconds")
-    refresh_token_validity_seconds: StrictInt = Field(
-        description=
-        "The number of seconds a refresh token generated for this API Client is valid for",
-        alias="refreshTokenValiditySeconds")
-    redirect_uris: Optional[List[StrictStr]] = Field(
-        description=
-        "A list of the approved redirect URIs used with the authorization_code flow",
-        alias="redirectUris")
-    grant_types: List[GrantType] = Field(
-        description=
-        "A list of OAuth 2.0 grant types this API Client can be used with",
-        alias="grantTypes")
+    business_name: Optional[StrictStr] = Field(description="The name of the business the API Client should belong to", alias="businessName")
+    homepage_url: Optional[StrictStr] = Field(description="The homepage URL associated with the owner of the API Client", alias="homepageUrl")
+    name: StrictStr = Field(description="A human-readable name for the API Client")
+    description: Optional[StrictStr] = Field(description="A description of the API Client")
+    access_token_validity_seconds: StrictInt = Field(description="The number of seconds an access token generated for this API Client is valid for", alias="accessTokenValiditySeconds")
+    refresh_token_validity_seconds: StrictInt = Field(description="The number of seconds a refresh token generated for this API Client is valid for", alias="refreshTokenValiditySeconds")
+    redirect_uris: Optional[List[StrictStr]] = Field(description="A list of the approved redirect URIs used with the authorization_code flow", alias="redirectUris")
+    grant_types: List[GrantType] = Field(description="A list of OAuth 2.0 grant types this API Client can be used with", alias="grantTypes")
     access_type: AccessType = Field(alias="accessType")
     type: ClientType
-    internal: StrictBool = Field(
-        description=
-        "An indicator of whether the API Client can be used for requests internal to IDN"
-    )
-    enabled: StrictBool = Field(
-        description="An indicator of whether the API Client is enabled for use"
-    )
-    strong_auth_supported: StrictBool = Field(
-        description=
-        "An indicator of whether the API Client supports strong authentication",
-        alias="strongAuthSupported")
-    claims_supported: StrictBool = Field(
-        description=
-        "An indicator of whether the API Client supports the serialization of SAML claims when used with the authorization_code flow",
-        alias="claimsSupported")
-    created: datetime = Field(
-        description=
-        "The date and time, down to the millisecond, when the API Client was created"
-    )
-    modified: datetime = Field(
-        description=
-        "The date and time, down to the millisecond, when the API Client was last updated"
-    )
-    last_used: Optional[datetime] = Field(
-        default=None,
-        description=
-        "The date and time, down to the millisecond, when this API Client was last used to generate an access token. This timestamp does not get updated on every API Client usage, but only once a day. This property can be useful for identifying which API Clients are no longer actively used and can be removed.",
-        alias="lastUsed")
-    scope: Optional[List[StrictStr]] = Field(
-        description="Scopes of the API Client.")
-    __properties: ClassVar[List[str]] = [
-        "id", "businessName", "homepageUrl", "name", "description",
-        "accessTokenValiditySeconds", "refreshTokenValiditySeconds",
-        "redirectUris", "grantTypes", "accessType", "type", "internal",
-        "enabled", "strongAuthSupported", "claimsSupported", "created",
-        "modified", "lastUsed", "scope"
-    ]
+    internal: StrictBool = Field(description="An indicator of whether the API Client can be used for requests internal to IDN")
+    enabled: StrictBool = Field(description="An indicator of whether the API Client is enabled for use")
+    strong_auth_supported: StrictBool = Field(description="An indicator of whether the API Client supports strong authentication", alias="strongAuthSupported")
+    claims_supported: StrictBool = Field(description="An indicator of whether the API Client supports the serialization of SAML claims when used with the authorization_code flow", alias="claimsSupported")
+    created: datetime = Field(description="The date and time, down to the millisecond, when the API Client was created")
+    modified: datetime = Field(description="The date and time, down to the millisecond, when the API Client was last updated")
+    last_used: Optional[datetime] = Field(default=None, description="The date and time, down to the millisecond, when this API Client was last used to generate an access token. This timestamp does not get updated on every API Client usage, but only once a day. This property can be useful for identifying which API Clients are no longer actively used and can be removed.", alias="lastUsed")
+    scope: Optional[List[StrictStr]] = Field(description="Scopes of the API Client.")
+    __properties: ClassVar[List[str]] = ["id", "businessName", "homepageUrl", "name", "description", "accessTokenValiditySeconds", "refreshTokenValiditySeconds", "redirectUris", "grantTypes", "accessType", "type", "internal", "enabled", "strongAuthSupported", "claimsSupported", "created", "modified", "lastUsed", "scope"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -135,7 +87,8 @@ class GetOAuthClientResponse(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if business_name (nullable) is None
@@ -180,43 +133,26 @@ class GetOAuthClientResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "businessName":
-            obj.get("businessName"),
-            "homepageUrl":
-            obj.get("homepageUrl"),
-            "name":
-            obj.get("name"),
-            "description":
-            obj.get("description"),
-            "accessTokenValiditySeconds":
-            obj.get("accessTokenValiditySeconds"),
-            "refreshTokenValiditySeconds":
-            obj.get("refreshTokenValiditySeconds"),
-            "redirectUris":
-            obj.get("redirectUris"),
-            "grantTypes":
-            obj.get("grantTypes"),
-            "accessType":
-            obj.get("accessType"),
-            "type":
-            obj.get("type"),
-            "internal":
-            obj.get("internal"),
-            "enabled":
-            obj.get("enabled"),
-            "strongAuthSupported":
-            obj.get("strongAuthSupported"),
-            "claimsSupported":
-            obj.get("claimsSupported"),
-            "created":
-            obj.get("created"),
-            "modified":
-            obj.get("modified"),
-            "lastUsed":
-            obj.get("lastUsed"),
-            "scope":
-            obj.get("scope")
+            "id": obj.get("id"),
+            "businessName": obj.get("businessName"),
+            "homepageUrl": obj.get("homepageUrl"),
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "accessTokenValiditySeconds": obj.get("accessTokenValiditySeconds"),
+            "refreshTokenValiditySeconds": obj.get("refreshTokenValiditySeconds"),
+            "redirectUris": obj.get("redirectUris"),
+            "grantTypes": obj.get("grantTypes"),
+            "accessType": obj.get("accessType"),
+            "type": obj.get("type"),
+            "internal": obj.get("internal"),
+            "enabled": obj.get("enabled"),
+            "strongAuthSupported": obj.get("strongAuthSupported"),
+            "claimsSupported": obj.get("claimsSupported"),
+            "created": obj.get("created"),
+            "modified": obj.get("modified"),
+            "lastUsed": obj.get("lastUsed"),
+            "scope": obj.get("scope")
         })
         return _obj
+
+

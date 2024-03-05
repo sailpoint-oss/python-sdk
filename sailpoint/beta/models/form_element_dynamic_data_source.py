@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -25,19 +27,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class FormElementDynamicDataSource(BaseModel):
     """
     FormElementDynamicDataSource
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     config: Optional[FormElementDynamicDataSourceConfig] = None
-    data_source_type: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "DataSourceType is a FormElementDataSourceType value STATIC FormElementDataSourceTypeStatic INTERNAL FormElementDataSourceTypeInternal SEARCH FormElementDataSourceTypeSearch",
-        alias="dataSourceType")
+    data_source_type: Optional[StrictStr] = Field(default=None, description="DataSourceType is a FormElementDataSourceType value STATIC FormElementDataSourceTypeStatic INTERNAL FormElementDataSourceTypeInternal SEARCH FormElementDataSourceTypeSearch", alias="dataSourceType")
     __properties: ClassVar[List[str]] = ["config", "dataSourceType"]
 
     @field_validator('data_source_type')
@@ -47,8 +42,7 @@ class FormElementDynamicDataSource(BaseModel):
             return value
 
         if value not in ('STATIC', 'INTERNAL', 'SEARCH'):
-            raise ValueError(
-                "must be one of enum values ('STATIC', 'INTERNAL', 'SEARCH')")
+            raise ValueError("must be one of enum values ('STATIC', 'INTERNAL', 'SEARCH')")
         return value
 
     model_config = {
@@ -56,6 +50,7 @@ class FormElementDynamicDataSource(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -83,7 +78,8 @@ class FormElementDynamicDataSource(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of config
@@ -101,10 +97,9 @@ class FormElementDynamicDataSource(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "config":
-            FormElementDynamicDataSourceConfig.from_dict(obj.get("config"))
-            if obj.get("config") is not None else None,
-            "dataSourceType":
-            obj.get("dataSourceType")
+            "config": FormElementDynamicDataSourceConfig.from_dict(obj.get("config")) if obj.get("config") is not None else None,
+            "dataSourceType": obj.get("dataSourceType")
         })
         return _obj
+
+

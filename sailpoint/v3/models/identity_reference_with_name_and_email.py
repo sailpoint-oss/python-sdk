@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,24 +26,14 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class IdentityReferenceWithNameAndEmail(BaseModel):
     """
     IdentityReferenceWithNameAndEmail
-    """
-
-  # noqa: E501
-    type: Optional[StrictStr] = Field(
-        default=None,
-        description="The type can only be IDENTITY. This is read-only")
+    """ # noqa: E501
+    type: Optional[StrictStr] = Field(default=None, description="The type can only be IDENTITY. This is read-only")
     id: Optional[StrictStr] = Field(default=None, description="Identity id.")
-    name: Optional[StrictStr] = Field(
-        default=None,
-        description="Human-readable display name of identity. This is read-only"
-    )
-    email: Optional[StrictStr] = Field(
-        default=None,
-        description="Email address of identity. This is read-only")
+    name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of identity. This is read-only")
+    email: Optional[StrictStr] = Field(default=None, description="Email address of identity. This is read-only")
     __properties: ClassVar[List[str]] = ["type", "id", "name", "email"]
 
     model_config = {
@@ -49,6 +41,7 @@ class IdentityReferenceWithNameAndEmail(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -76,7 +69,8 @@ class IdentityReferenceWithNameAndEmail(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -97,3 +91,5 @@ class IdentityReferenceWithNameAndEmail(BaseModel):
             "email": obj.get("email")
         })
         return _obj
+
+

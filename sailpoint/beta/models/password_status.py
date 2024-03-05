@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,29 +26,15 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class PasswordStatus(BaseModel):
     """
     PasswordStatus
-    """
-
-  # noqa: E501
-    request_id: Optional[StrictStr] = Field(
-        default=None,
-        description="The password change request ID",
-        alias="requestId")
-    state: Optional[StrictStr] = Field(default=None,
-                                       description="Password change state")
-    errors: Optional[List[StrictStr]] = Field(
-        default=None,
-        description="The errors during the password change request")
-    source_ids: Optional[List[StrictStr]] = Field(
-        default=None,
-        description="List of source IDs in the password change request",
-        alias="sourceIds")
-    __properties: ClassVar[List[str]] = [
-        "requestId", "state", "errors", "sourceIds"
-    ]
+    """ # noqa: E501
+    request_id: Optional[StrictStr] = Field(default=None, description="The password change request ID", alias="requestId")
+    state: Optional[StrictStr] = Field(default=None, description="Password change state")
+    errors: Optional[List[StrictStr]] = Field(default=None, description="The errors during the password change request")
+    source_ids: Optional[List[StrictStr]] = Field(default=None, description="List of source IDs in the password change request", alias="sourceIds")
+    __properties: ClassVar[List[str]] = ["requestId", "state", "errors", "sourceIds"]
 
     @field_validator('state')
     def state_validate_enum(cls, value):
@@ -55,9 +43,7 @@ class PasswordStatus(BaseModel):
             return value
 
         if value not in ('IN_PROGRESS', 'FINISHED', 'FAILED'):
-            raise ValueError(
-                "must be one of enum values ('IN_PROGRESS', 'FINISHED', 'FAILED')"
-            )
+            raise ValueError("must be one of enum values ('IN_PROGRESS', 'FINISHED', 'FAILED')")
         return value
 
     model_config = {
@@ -65,6 +51,7 @@ class PasswordStatus(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -92,7 +79,8 @@ class PasswordStatus(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if request_id (nullable) is None
@@ -118,3 +106,5 @@ class PasswordStatus(BaseModel):
             "sourceIds": obj.get("sourceIds")
         })
         return _obj
+
+

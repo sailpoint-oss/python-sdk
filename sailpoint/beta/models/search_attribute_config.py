@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,32 +26,21 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class SearchAttributeConfig(BaseModel):
     """
     SearchAttributeConfig
-    """
-
-  # noqa: E501
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="Name of the new attribute")
-    display_name: Optional[StrictStr] = Field(
-        default=None,
-        description="The display name of the new attribute",
-        alias="displayName")
-    application_attributes: Optional[Dict[str, Any]] = Field(
-        default=None,
-        description="Map of application id and their associated attribute.",
-        alias="applicationAttributes")
-    __properties: ClassVar[List[str]] = [
-        "name", "displayName", "applicationAttributes"
-    ]
+    """ # noqa: E501
+    name: Optional[StrictStr] = Field(default=None, description="Name of the new attribute")
+    display_name: Optional[StrictStr] = Field(default=None, description="The display name of the new attribute", alias="displayName")
+    application_attributes: Optional[Dict[str, Any]] = Field(default=None, description="Map of application id and their associated attribute.", alias="applicationAttributes")
+    __properties: ClassVar[List[str]] = ["name", "displayName", "applicationAttributes"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -77,7 +68,8 @@ class SearchAttributeConfig(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -92,11 +84,10 @@ class SearchAttributeConfig(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name":
-            obj.get("name"),
-            "displayName":
-            obj.get("displayName"),
-            "applicationAttributes":
-            obj.get("applicationAttributes")
+            "name": obj.get("name"),
+            "displayName": obj.get("displayName"),
+            "applicationAttributes": obj.get("applicationAttributes")
         })
         return _obj
+
+

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt, StrictStr
@@ -24,35 +26,22 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class RoleMiningPotentialRoleSourceUsage(BaseModel):
     """
     RoleMiningPotentialRoleSourceUsage
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="The identity ID")
-    display_name: Optional[StrictStr] = Field(
-        default=None,
-        description="Display name for the identity",
-        alias="displayName")
-    email: Optional[StrictStr] = Field(
-        default=None, description="Email address for the identity")
-    usage_count: Optional[StrictInt] = Field(
-        default=None,
-        description=
-        "The number of days there has been usage of the source by the identity.",
-        alias="usageCount")
-    __properties: ClassVar[List[str]] = [
-        "id", "displayName", "email", "usageCount"
-    ]
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="The identity ID")
+    display_name: Optional[StrictStr] = Field(default=None, description="Display name for the identity", alias="displayName")
+    email: Optional[StrictStr] = Field(default=None, description="Email address for the identity")
+    usage_count: Optional[StrictInt] = Field(default=None, description="The number of days there has been usage of the source by the identity.", alias="usageCount")
+    __properties: ClassVar[List[str]] = ["id", "displayName", "email", "usageCount"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -80,7 +69,8 @@ class RoleMiningPotentialRoleSourceUsage(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -101,3 +91,5 @@ class RoleMiningPotentialRoleSourceUsage(BaseModel):
             "usageCount": obj.get("usageCount")
         })
         return _obj
+
+

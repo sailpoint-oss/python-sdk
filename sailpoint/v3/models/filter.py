@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
@@ -26,19 +28,14 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class Filter(BaseModel):
     """
     Filter
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     type: Optional[FilterType] = None
     range: Optional[Range] = None
-    terms: Optional[List[StrictStr]] = Field(
-        default=None, description="The terms to be filtered.")
-    exclude: Optional[StrictBool] = Field(
-        default=False, description="Indicates if the filter excludes results.")
+    terms: Optional[List[StrictStr]] = Field(default=None, description="The terms to be filtered.")
+    exclude: Optional[StrictBool] = Field(default=False, description="Indicates if the filter excludes results.")
     __properties: ClassVar[List[str]] = ["type", "range", "terms", "exclude"]
 
     model_config = {
@@ -46,6 +43,7 @@ class Filter(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -73,7 +71,8 @@ class Filter(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of range
@@ -91,14 +90,11 @@ class Filter(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "type":
-            obj.get("type"),
-            "range":
-            Range.from_dict(obj.get("range"))
-            if obj.get("range") is not None else None,
-            "terms":
-            obj.get("terms"),
-            "exclude":
-            obj.get("exclude") if obj.get("exclude") is not None else False
+            "type": obj.get("type"),
+            "range": Range.from_dict(obj.get("range")) if obj.get("range") is not None else None,
+            "terms": obj.get("terms"),
+            "exclude": obj.get("exclude") if obj.get("exclude") is not None else False
         })
         return _obj
+
+

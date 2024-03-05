@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -28,35 +29,23 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ConfigurationDetailsResponse(BaseModel):
     """
     The request body of Reassignment Configuration Details for a specific identity and config type
     """ # noqa: E501
-    config_type: Optional[ConfigTypeEnum] = Field(default=None,
-                                                  alias="configType")
-    target_identity: Optional[Identity1] = Field(default=None,
-                                                 alias="targetIdentity")
-    start_date: Optional[datetime] = Field(
-        default=None,
-        description="The date from which to start reassigning work items",
-        alias="startDate")
-    end_date: Optional[datetime] = Field(
-        default=None,
-        description=
-        "The date from which to stop reassigning work items.  If this is an empty string it indicates a permanent reassignment.",
-        alias="endDate")
-    audit_details: Optional[AuditDetails] = Field(default=None,
-                                                  alias="auditDetails")
-    __properties: ClassVar[List[str]] = [
-        "configType", "targetIdentity", "startDate", "endDate", "auditDetails"
-    ]
+    config_type: Optional[ConfigTypeEnum] = Field(default=None, alias="configType")
+    target_identity: Optional[Identity1] = Field(default=None, alias="targetIdentity")
+    start_date: Optional[datetime] = Field(default=None, description="The date from which to start reassigning work items", alias="startDate")
+    end_date: Optional[datetime] = Field(default=None, description="The date from which to stop reassigning work items.  If this is an empty string it indicates a permanent reassignment.", alias="endDate")
+    audit_details: Optional[AuditDetails] = Field(default=None, alias="auditDetails")
+    __properties: ClassVar[List[str]] = ["configType", "targetIdentity", "startDate", "endDate", "auditDetails"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -84,7 +73,8 @@ class ConfigurationDetailsResponse(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of target_identity
@@ -105,17 +95,12 @@ class ConfigurationDetailsResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "configType":
-            obj.get("configType"),
-            "targetIdentity":
-            Identity1.from_dict(obj.get("targetIdentity"))
-            if obj.get("targetIdentity") is not None else None,
-            "startDate":
-            obj.get("startDate"),
-            "endDate":
-            obj.get("endDate"),
-            "auditDetails":
-            AuditDetails.from_dict(obj.get("auditDetails"))
-            if obj.get("auditDetails") is not None else None
+            "configType": obj.get("configType"),
+            "targetIdentity": Identity1.from_dict(obj.get("targetIdentity")) if obj.get("targetIdentity") is not None else None,
+            "startDate": obj.get("startDate"),
+            "endDate": obj.get("endDate"),
+            "auditDetails": AuditDetails.from_dict(obj.get("auditDetails")) if obj.get("auditDetails") is not None else None
         })
         return _obj
+
+

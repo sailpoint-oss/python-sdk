@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **comment** | **str** | Comment content. | [optional] 
 **created** | **datetime** | Date and time comment was created. | [optional] 
+**author** | [**CommentDto1Author**](CommentDto1Author.md) |  | [optional] 
 
 ## Example
 

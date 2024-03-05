@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -26,41 +27,26 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class CampaignActivatedCampaign(BaseModel):
     """
     Details about the certification campaign that was activated.
     """ # noqa: E501
     id: StrictStr = Field(description="Unique ID for the campaign.")
-    name: StrictStr = Field(
-        description="The human friendly name of the campaign.")
-    description: StrictStr = Field(
-        description="Extended description of the campaign.")
-    created: datetime = Field(
-        description="The date and time the campaign was created.")
-    modified: Optional[datetime] = Field(
-        default=None,
-        description="The date and time the campaign was last modified.")
-    deadline: datetime = Field(
-        description="The date and time the campaign is due.")
+    name: StrictStr = Field(description="The human friendly name of the campaign.")
+    description: StrictStr = Field(description="Extended description of the campaign.")
+    created: datetime = Field(description="The date and time the campaign was created.")
+    modified: Optional[datetime] = Field(default=None, description="The date and time the campaign was last modified.")
+    deadline: datetime = Field(description="The date and time the campaign is due.")
     type: Dict[str, Any] = Field(description="The type of campaign.")
-    campaign_owner: CampaignActivatedCampaignCampaignOwner = Field(
-        alias="campaignOwner")
-    status: Dict[str, Any] = Field(
-        description="The current status of the campaign.")
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "description", "created", "modified", "deadline", "type",
-        "campaignOwner", "status"
-    ]
+    campaign_owner: CampaignActivatedCampaignCampaignOwner = Field(alias="campaignOwner")
+    status: Dict[str, Any] = Field(description="The current status of the campaign.")
+    __properties: ClassVar[List[str]] = ["id", "name", "description", "created", "modified", "deadline", "type", "campaignOwner", "status"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('MANAGER', 'SOURCE_OWNER', 'SEARCH',
-                         'ROLE_COMPOSITION'):
-            raise ValueError(
-                "must be one of enum values ('MANAGER', 'SOURCE_OWNER', 'SEARCH', 'ROLE_COMPOSITION')"
-            )
+        if value not in ('MANAGER', 'SOURCE_OWNER', 'SEARCH', 'ROLE_COMPOSITION'):
+            raise ValueError("must be one of enum values ('MANAGER', 'SOURCE_OWNER', 'SEARCH', 'ROLE_COMPOSITION')")
         return value
 
     @field_validator('status')
@@ -75,6 +61,7 @@ class CampaignActivatedCampaign(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -102,7 +89,8 @@ class CampaignActivatedCampaign(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of campaign_owner
@@ -125,25 +113,16 @@ class CampaignActivatedCampaign(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "description":
-            obj.get("description"),
-            "created":
-            obj.get("created"),
-            "modified":
-            obj.get("modified"),
-            "deadline":
-            obj.get("deadline"),
-            "type":
-            obj.get("type"),
-            "campaignOwner":
-            CampaignActivatedCampaignCampaignOwner.from_dict(
-                obj.get("campaignOwner"))
-            if obj.get("campaignOwner") is not None else None,
-            "status":
-            obj.get("status")
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "created": obj.get("created"),
+            "modified": obj.get("modified"),
+            "deadline": obj.get("deadline"),
+            "type": obj.get("type"),
+            "campaignOwner": CampaignActivatedCampaignCampaignOwner.from_dict(obj.get("campaignOwner")) if obj.get("campaignOwner") is not None else None,
+            "status": obj.get("status")
         })
         return _obj
+
+

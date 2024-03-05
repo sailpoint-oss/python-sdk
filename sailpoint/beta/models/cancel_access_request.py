@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr
@@ -24,17 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class CancelAccessRequest(BaseModel):
     """
     Request body payload for cancel access request endpoint.
     """ # noqa: E501
-    account_activity_id: StrictStr = Field(
-        description=
-        "This refers to the identityRequestId. To successfully cancel an access request, you must provide the identityRequestId.",
-        alias="accountActivityId")
-    comment: StrictStr = Field(
-        description="Reason for cancelling the pending access request.")
+    account_activity_id: StrictStr = Field(description="This refers to the identityRequestId. To successfully cancel an access request, you must provide the identityRequestId.", alias="accountActivityId")
+    comment: StrictStr = Field(description="Reason for cancelling the pending access request.")
     __properties: ClassVar[List[str]] = ["accountActivityId", "comment"]
 
     model_config = {
@@ -42,6 +39,7 @@ class CancelAccessRequest(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -69,7 +67,8 @@ class CancelAccessRequest(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -84,9 +83,9 @@ class CancelAccessRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "accountActivityId":
-            obj.get("accountActivityId"),
-            "comment":
-            obj.get("comment")
+            "accountActivityId": obj.get("accountActivityId"),
+            "comment": obj.get("comment")
         })
         return _obj
+
+

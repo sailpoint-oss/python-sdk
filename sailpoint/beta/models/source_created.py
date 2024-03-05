@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -26,30 +27,24 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class SourceCreated(BaseModel):
     """
     SourceCreated
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     id: StrictStr = Field(description="The unique ID of the source.")
     name: StrictStr = Field(description="Human friendly name of the source.")
     type: StrictStr = Field(description="The connection type.")
-    created: datetime = Field(
-        description="The date and time the source was created.")
-    connector: StrictStr = Field(
-        description="The connector type used to connect to the source.")
+    created: datetime = Field(description="The date and time the source was created.")
+    connector: StrictStr = Field(description="The connector type used to connect to the source.")
     actor: SourceCreatedActor
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "type", "created", "connector", "actor"
-    ]
+    __properties: ClassVar[List[str]] = ["id", "name", "type", "created", "connector", "actor"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -77,7 +72,8 @@ class SourceCreated(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of actor
@@ -95,18 +91,13 @@ class SourceCreated(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "type":
-            obj.get("type"),
-            "created":
-            obj.get("created"),
-            "connector":
-            obj.get("connector"),
-            "actor":
-            SourceCreatedActor.from_dict(obj.get("actor"))
-            if obj.get("actor") is not None else None
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "type": obj.get("type"),
+            "created": obj.get("created"),
+            "connector": obj.get("connector"),
+            "actor": SourceCreatedActor.from_dict(obj.get("actor")) if obj.get("actor") is not None else None
         })
         return _obj
+
+

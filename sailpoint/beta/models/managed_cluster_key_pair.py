@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -24,34 +26,21 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ManagedClusterKeyPair(BaseModel):
     """
     Managed Cluster key pair for Cluster
-    """
-
-  # noqa: E501
-    public_key: Optional[StrictStr] = Field(
-        default=None,
-        description="ManagedCluster publicKey",
-        alias="publicKey")
-    public_key_thumbprint: Optional[StrictStr] = Field(
-        default=None,
-        description="ManagedCluster publicKeyThumbprint",
-        alias="publicKeyThumbprint")
-    public_key_certificate: Optional[StrictStr] = Field(
-        default=None,
-        description="ManagedCluster publicKeyCertificate",
-        alias="publicKeyCertificate")
-    __properties: ClassVar[List[str]] = [
-        "publicKey", "publicKeyThumbprint", "publicKeyCertificate"
-    ]
+    """ # noqa: E501
+    public_key: Optional[StrictStr] = Field(default=None, description="ManagedCluster publicKey", alias="publicKey")
+    public_key_thumbprint: Optional[StrictStr] = Field(default=None, description="ManagedCluster publicKeyThumbprint", alias="publicKeyThumbprint")
+    public_key_certificate: Optional[StrictStr] = Field(default=None, description="ManagedCluster publicKeyCertificate", alias="publicKeyCertificate")
+    __properties: ClassVar[List[str]] = ["publicKey", "publicKeyThumbprint", "publicKeyCertificate"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -79,7 +68,8 @@ class ManagedClusterKeyPair(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if public_key (nullable) is None
@@ -109,11 +99,10 @@ class ManagedClusterKeyPair(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "publicKey":
-            obj.get("publicKey"),
-            "publicKeyThumbprint":
-            obj.get("publicKeyThumbprint"),
-            "publicKeyCertificate":
-            obj.get("publicKeyCertificate")
+            "publicKey": obj.get("publicKey"),
+            "publicKeyThumbprint": obj.get("publicKeyThumbprint"),
+            "publicKeyCertificate": obj.get("publicKeyCertificate")
         })
         return _obj
+
+

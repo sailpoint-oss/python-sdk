@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -25,33 +27,23 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class RoleIdentity(BaseModel):
     """
     A subset of the fields of an Identity which is a member of a Role.
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="The ID of the Identity")
-    alias_name: Optional[StrictStr] = Field(
-        default=None,
-        description="The alias / username of the Identity",
-        alias="aliasName")
-    name: Optional[StrictStr] = Field(
-        default=None,
-        description="The human-readable display name of the Identity")
-    email: Optional[StrictStr] = Field(
-        default=None, description="Email address of the Identity")
-    role_assignment_source: Optional[RoleAssignmentSourceType] = Field(
-        default=None, alias="roleAssignmentSource")
-    __properties: ClassVar[List[str]] = [
-        "id", "aliasName", "name", "email", "roleAssignmentSource"
-    ]
+    id: Optional[StrictStr] = Field(default=None, description="The ID of the Identity")
+    alias_name: Optional[StrictStr] = Field(default=None, description="The alias / username of the Identity", alias="aliasName")
+    name: Optional[StrictStr] = Field(default=None, description="The human-readable display name of the Identity")
+    email: Optional[StrictStr] = Field(default=None, description="Email address of the Identity")
+    role_assignment_source: Optional[RoleAssignmentSourceType] = Field(default=None, alias="roleAssignmentSource")
+    __properties: ClassVar[List[str]] = ["id", "aliasName", "name", "email", "roleAssignmentSource"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -79,7 +71,8 @@ class RoleIdentity(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -94,15 +87,12 @@ class RoleIdentity(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "aliasName":
-            obj.get("aliasName"),
-            "name":
-            obj.get("name"),
-            "email":
-            obj.get("email"),
-            "roleAssignmentSource":
-            obj.get("roleAssignmentSource")
+            "id": obj.get("id"),
+            "aliasName": obj.get("aliasName"),
+            "name": obj.get("name"),
+            "email": obj.get("email"),
+            "roleAssignmentSource": obj.get("roleAssignmentSource")
         })
         return _obj
+
+

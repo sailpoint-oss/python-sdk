@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -25,36 +26,17 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class WorkflowExecution(BaseModel):
     """
     WorkflowExecution
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="The workflow execution ID")
-    workflow_id: Optional[StrictStr] = Field(default=None,
-                                             description="The workflow ID",
-                                             alias="workflowId")
-    request_id: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "This backend ID tracks a workflow request in the system. You can provide this ID in a customer support ticket for debugging purposes.",
-        alias="requestId")
-    start_time: Optional[datetime] = Field(
-        default=None,
-        description="The date/time the workflow started",
-        alias="startTime")
-    close_time: Optional[datetime] = Field(
-        default=None,
-        description="The date/time the workflow ended",
-        alias="closeTime")
-    status: Optional[StrictStr] = Field(
-        default=None, description="The workflow execution status")
-    __properties: ClassVar[List[str]] = [
-        "id", "workflowId", "requestId", "startTime", "closeTime", "status"
-    ]
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="The workflow execution ID")
+    workflow_id: Optional[StrictStr] = Field(default=None, description="The workflow ID", alias="workflowId")
+    request_id: Optional[StrictStr] = Field(default=None, description="This backend ID tracks a workflow request in the system. You can provide this ID in a customer support ticket for debugging purposes.", alias="requestId")
+    start_time: Optional[datetime] = Field(default=None, description="The date/time the workflow started", alias="startTime")
+    close_time: Optional[datetime] = Field(default=None, description="The date/time the workflow ended", alias="closeTime")
+    status: Optional[StrictStr] = Field(default=None, description="The workflow execution status")
+    __properties: ClassVar[List[str]] = ["id", "workflowId", "requestId", "startTime", "closeTime", "status"]
 
     @field_validator('status')
     def status_validate_enum(cls, value):
@@ -63,9 +45,7 @@ class WorkflowExecution(BaseModel):
             return value
 
         if value not in ('Completed', 'Failed', 'Canceled', 'Running'):
-            raise ValueError(
-                "must be one of enum values ('Completed', 'Failed', 'Canceled', 'Running')"
-            )
+            raise ValueError("must be one of enum values ('Completed', 'Failed', 'Canceled', 'Running')")
         return value
 
     model_config = {
@@ -73,6 +53,7 @@ class WorkflowExecution(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -100,7 +81,8 @@ class WorkflowExecution(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -123,3 +105,5 @@ class WorkflowExecution(BaseModel):
             "status": obj.get("status")
         })
         return _obj
+
+

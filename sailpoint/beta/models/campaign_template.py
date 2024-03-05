@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -26,49 +27,27 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class CampaignTemplate(BaseModel):
     """
     Campaign Template
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="Id of the campaign template")
-    name: StrictStr = Field(
-        description=
-        "This template's name. Has no bearing on generated campaigns' names.")
-    description: StrictStr = Field(
-        description=
-        "This template's description. Has no bearing on generated campaigns' descriptions."
-    )
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="Id of the campaign template")
+    name: StrictStr = Field(description="This template's name. Has no bearing on generated campaigns' names.")
+    description: StrictStr = Field(description="This template's description. Has no bearing on generated campaigns' descriptions.")
     created: datetime = Field(description="Creation date of Campaign Template")
-    modified: datetime = Field(
-        description="Modification date of Campaign Template")
-    scheduled: Optional[StrictBool] = Field(
-        default=False,
-        description="Indicates if this campaign template has been scheduled.")
-    owner_ref: Optional[CampaignTemplateOwnerRef] = Field(default=None,
-                                                          alias="ownerRef")
-    deadline_duration: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "The time period during which the campaign should be completed, formatted as an ISO-8601 Duration. When this template generates a campaign, the campaign's deadline will be the current date plus this duration. For example, if generation occurred on 2020-01-01 and this field was \"P2W\" (two weeks), the resulting campaign's deadline would be 2020-01-15 (the current date plus 14 days).",
-        alias="deadlineDuration")
-    campaign: Dict[str, Any] = Field(
-        description=
-        "This will hold campaign related information like name, description etc."
-    )
-    __properties: ClassVar[List[str]] = [
-        "id", "name", "description", "created", "modified", "scheduled",
-        "ownerRef", "deadlineDuration", "campaign"
-    ]
+    modified: datetime = Field(description="Modification date of Campaign Template")
+    scheduled: Optional[StrictBool] = Field(default=False, description="Indicates if this campaign template has been scheduled.")
+    owner_ref: Optional[CampaignTemplateOwnerRef] = Field(default=None, alias="ownerRef")
+    deadline_duration: Optional[StrictStr] = Field(default=None, description="The time period during which the campaign should be completed, formatted as an ISO-8601 Duration. When this template generates a campaign, the campaign's deadline will be the current date plus this duration. For example, if generation occurred on 2020-01-01 and this field was \"P2W\" (two weeks), the resulting campaign's deadline would be 2020-01-15 (the current date plus 14 days).", alias="deadlineDuration")
+    campaign: Dict[str, Any] = Field(description="This will hold campaign related information like name, description etc.")
+    __properties: ClassVar[List[str]] = ["id", "name", "description", "created", "modified", "scheduled", "ownerRef", "deadlineDuration", "campaign"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -124,26 +103,16 @@ class CampaignTemplate(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "description":
-            obj.get("description"),
-            "created":
-            obj.get("created"),
-            "modified":
-            obj.get("modified"),
-            "scheduled":
-            obj.get("scheduled")
-            if obj.get("scheduled") is not None else False,
-            "ownerRef":
-            CampaignTemplateOwnerRef.from_dict(obj.get("ownerRef"))
-            if obj.get("ownerRef") is not None else None,
-            "deadlineDuration":
-            obj.get("deadlineDuration"),
-            "campaign":
-            Campaign.from_dict(obj.get("campaign"))
-            if obj.get("campaign") is not None else None
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "created": obj.get("created"),
+            "modified": obj.get("modified"),
+            "scheduled": obj.get("scheduled") if obj.get("scheduled") is not None else False,
+            "ownerRef": CampaignTemplateOwnerRef.from_dict(obj.get("ownerRef")) if obj.get("ownerRef") is not None else None,
+            "deadlineDuration": obj.get("deadlineDuration"),
+            "campaign": Campaign.from_dict(obj.get("campaign")) if obj.get("campaign") is not None else None
         })
         return _obj
+
+

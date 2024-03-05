@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,19 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class OutlierFeatureSummaryOutlierFeatureDisplayValuesInner(BaseModel):
     """
     OutlierFeatureSummaryOutlierFeatureDisplayValuesInner
     """ # noqa: E501
-    display_name: Optional[StrictStr] = Field(default=None,
-                                              description="display name",
-                                              alias="displayName")
+    display_name: Optional[StrictStr] = Field(default=None, description="display name", alias="displayName")
     value: Optional[StrictStr] = Field(default=None, description="value")
-    value_type: Optional[StrictStr] = Field(
-        default=None,
-        description="The data type of the value field",
-        alias="valueType")
+    value_type: Optional[StrictStr] = Field(default=None, description="The data type of the value field", alias="valueType")
     __properties: ClassVar[List[str]] = ["displayName", "value", "valueType"]
 
     @field_validator('value_type')
@@ -54,6 +50,7 @@ class OutlierFeatureSummaryOutlierFeatureDisplayValuesInner(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -81,7 +78,8 @@ class OutlierFeatureSummaryOutlierFeatureDisplayValuesInner(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -101,3 +99,5 @@ class OutlierFeatureSummaryOutlierFeatureDisplayValuesInner(BaseModel):
             "valueType": obj.get("valueType")
         })
         return _obj
+
+

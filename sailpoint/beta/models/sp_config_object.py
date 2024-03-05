@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
@@ -25,67 +27,29 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class SpConfigObject(BaseModel):
     """
     Response model for get object configuration.
-    """
-
-  # noqa: E501
-    object_type: Optional[StrictStr] = Field(
-        default=None,
-        description="The object type this configuration is for.",
-        alias="objectType")
-    resolve_by_id_url: Optional[SpConfigUrl] = Field(default=None,
-                                                     alias="resolveByIdUrl")
-    resolve_by_name_url: Optional[List[SpConfigUrl]] = Field(
-        default=None,
-        description=
-        "Url and query parameters to be used to resolve this type of object by name.",
-        alias="resolveByNameUrl")
+    """ # noqa: E501
+    object_type: Optional[StrictStr] = Field(default=None, description="The object type this configuration is for.", alias="objectType")
+    resolve_by_id_url: Optional[SpConfigUrl] = Field(default=None, alias="resolveByIdUrl")
+    resolve_by_name_url: Optional[List[SpConfigUrl]] = Field(default=None, description="Url and query parameters to be used to resolve this type of object by name.", alias="resolveByNameUrl")
     export_url: Optional[SpConfigUrl] = Field(default=None, alias="exportUrl")
-    export_right: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Rights needed by the invoker of sp-config/export in order to export this type of object.",
-        alias="exportRight")
-    export_limit: Optional[StrictInt] = Field(
-        default=None,
-        description=
-        "Pagination limit imposed by the target service for this object type.",
-        alias="exportLimit")
+    export_right: Optional[StrictStr] = Field(default=None, description="Rights needed by the invoker of sp-config/export in order to export this type of object.", alias="exportRight")
+    export_limit: Optional[StrictInt] = Field(default=None, description="Pagination limit imposed by the target service for this object type.", alias="exportLimit")
     import_url: Optional[SpConfigUrl] = Field(default=None, alias="importUrl")
-    import_right: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Rights needed by the invoker of sp-config/import in order to import this type of object.",
-        alias="importRight")
-    import_limit: Optional[StrictInt] = Field(
-        default=None,
-        description=
-        "Pagination limit imposed by the target service for this object type.",
-        alias="importLimit")
-    reference_extractors: Optional[List[StrictStr]] = Field(
-        default=None,
-        description=
-        "List of json paths within an exported object of this type that represent references that need to be resolved.",
-        alias="referenceExtractors")
-    signature_required: Optional[StrictBool] = Field(
-        default=False,
-        description=
-        "If true, this type of object will be JWS signed and cannot be modified before import.",
-        alias="signatureRequired")
-    __properties: ClassVar[List[str]] = [
-        "objectType", "resolveByIdUrl", "resolveByNameUrl", "exportUrl",
-        "exportRight", "exportLimit", "importUrl", "importRight",
-        "importLimit", "referenceExtractors", "signatureRequired"
-    ]
+    import_right: Optional[StrictStr] = Field(default=None, description="Rights needed by the invoker of sp-config/import in order to import this type of object.", alias="importRight")
+    import_limit: Optional[StrictInt] = Field(default=None, description="Pagination limit imposed by the target service for this object type.", alias="importLimit")
+    reference_extractors: Optional[List[StrictStr]] = Field(default=None, description="List of json paths within an exported object of this type that represent references that need to be resolved.", alias="referenceExtractors")
+    signature_required: Optional[StrictBool] = Field(default=False, description="If true, this type of object will be JWS signed and cannot be modified before import.", alias="signatureRequired")
+    __properties: ClassVar[List[str]] = ["objectType", "resolveByIdUrl", "resolveByNameUrl", "exportUrl", "exportRight", "exportLimit", "importUrl", "importRight", "importLimit", "referenceExtractors", "signatureRequired"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -113,7 +77,8 @@ class SpConfigObject(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of resolve_by_id_url
@@ -149,33 +114,18 @@ class SpConfigObject(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "objectType":
-            obj.get("objectType"),
-            "resolveByIdUrl":
-            SpConfigUrl.from_dict(obj.get("resolveByIdUrl"))
-            if obj.get("resolveByIdUrl") is not None else None,
-            "resolveByNameUrl": [
-                SpConfigUrl.from_dict(_item)
-                for _item in obj.get("resolveByNameUrl")
-            ] if obj.get("resolveByNameUrl") is not None else None,
-            "exportUrl":
-            SpConfigUrl.from_dict(obj.get("exportUrl"))
-            if obj.get("exportUrl") is not None else None,
-            "exportRight":
-            obj.get("exportRight"),
-            "exportLimit":
-            obj.get("exportLimit"),
-            "importUrl":
-            SpConfigUrl.from_dict(obj.get("importUrl"))
-            if obj.get("importUrl") is not None else None,
-            "importRight":
-            obj.get("importRight"),
-            "importLimit":
-            obj.get("importLimit"),
-            "referenceExtractors":
-            obj.get("referenceExtractors"),
-            "signatureRequired":
-            obj.get("signatureRequired")
-            if obj.get("signatureRequired") is not None else False
+            "objectType": obj.get("objectType"),
+            "resolveByIdUrl": SpConfigUrl.from_dict(obj.get("resolveByIdUrl")) if obj.get("resolveByIdUrl") is not None else None,
+            "resolveByNameUrl": [SpConfigUrl.from_dict(_item) for _item in obj.get("resolveByNameUrl")] if obj.get("resolveByNameUrl") is not None else None,
+            "exportUrl": SpConfigUrl.from_dict(obj.get("exportUrl")) if obj.get("exportUrl") is not None else None,
+            "exportRight": obj.get("exportRight"),
+            "exportLimit": obj.get("exportLimit"),
+            "importUrl": SpConfigUrl.from_dict(obj.get("importUrl")) if obj.get("importUrl") is not None else None,
+            "importRight": obj.get("importRight"),
+            "importLimit": obj.get("importLimit"),
+            "referenceExtractors": obj.get("referenceExtractors"),
+            "signatureRequired": obj.get("signatureRequired") if obj.get("signatureRequired") is not None else False
         })
         return _obj
+
+

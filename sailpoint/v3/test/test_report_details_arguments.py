@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.report_details_arguments import ReportDetailsArguments
-
 
 class TestReportDetailsArguments(unittest.TestCase):
     """ReportDetailsArguments unit test stubs"""
@@ -76,7 +76,6 @@ class TestReportDetailsArguments(unittest.TestCase):
         """Test ReportDetailsArguments"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

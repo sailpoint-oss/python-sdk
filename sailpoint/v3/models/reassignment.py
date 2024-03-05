@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
@@ -25,19 +27,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class Reassignment(BaseModel):
     """
     Reassignment
-    """
-
-  # noqa: E501
-    var_from: Optional[CertificationReference] = Field(default=None,
-                                                       alias="from")
-    comment: Optional[StrictStr] = Field(
-        default=None,
-        description="The comment entered when the Certification was reassigned"
-    )
+    """ # noqa: E501
+    var_from: Optional[CertificationReference] = Field(default=None, alias="from")
+    comment: Optional[StrictStr] = Field(default=None, description="The comment entered when the Certification was reassigned")
     __properties: ClassVar[List[str]] = ["from", "comment"]
 
     model_config = {
@@ -45,6 +40,7 @@ class Reassignment(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -72,7 +68,8 @@ class Reassignment(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of var_from
@@ -90,10 +87,9 @@ class Reassignment(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "from":
-            CertificationReference.from_dict(obj.get("from"))
-            if obj.get("from") is not None else None,
-            "comment":
-            obj.get("comment")
+            "from": CertificationReference.from_dict(obj.get("from")) if obj.get("from") is not None else None,
+            "comment": obj.get("comment")
         })
         return _obj
+
+

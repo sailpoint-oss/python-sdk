@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.kba_auth_response_item import KbaAuthResponseItem
-
 
 class TestKbaAuthResponseItem(unittest.TestCase):
     """KbaAuthResponseItem unit test stubs"""
@@ -48,7 +48,6 @@ class TestKbaAuthResponseItem(unittest.TestCase):
         """Test KbaAuthResponseItem"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

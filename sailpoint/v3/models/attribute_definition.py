@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
@@ -26,46 +28,25 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AttributeDefinition(BaseModel):
     """
     AttributeDefinition
-    """
-
-  # noqa: E501
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="The name of the attribute.")
+    """ # noqa: E501
+    name: Optional[StrictStr] = Field(default=None, description="The name of the attribute.")
     type: Optional[AttributeDefinitionType] = None
-    var_schema: Optional[AttributeDefinitionSchema] = Field(default=None,
-                                                            alias="schema")
-    description: Optional[StrictStr] = Field(
-        default=None,
-        description="A human-readable description of the attribute.")
-    is_multi: Optional[StrictBool] = Field(
-        default=False,
-        description=
-        "Flag indicating whether or not the attribute is multi-valued.",
-        alias="isMulti")
-    is_entitlement: Optional[StrictBool] = Field(
-        default=False,
-        description=
-        "Flag indicating whether or not the attribute is an entitlement.",
-        alias="isEntitlement")
-    is_group: Optional[StrictBool] = Field(
-        default=False,
-        description=
-        "Flag indicating whether or not the attribute represents a group. This can only be `true` if `isEntitlement` is also `true` **and** there is a schema defined for the attribute.. ",
-        alias="isGroup")
-    __properties: ClassVar[List[str]] = [
-        "name", "type", "schema", "description", "isMulti", "isEntitlement",
-        "isGroup"
-    ]
+    var_schema: Optional[AttributeDefinitionSchema] = Field(default=None, alias="schema")
+    description: Optional[StrictStr] = Field(default=None, description="A human-readable description of the attribute.")
+    is_multi: Optional[StrictBool] = Field(default=False, description="Flag indicating whether or not the attribute is multi-valued.", alias="isMulti")
+    is_entitlement: Optional[StrictBool] = Field(default=False, description="Flag indicating whether or not the attribute is an entitlement.", alias="isEntitlement")
+    is_group: Optional[StrictBool] = Field(default=False, description="Flag indicating whether or not the attribute represents a group. This can only be `true` if `isEntitlement` is also `true` **and** there is a schema defined for the attribute.. ", alias="isGroup")
+    __properties: ClassVar[List[str]] = ["name", "type", "schema", "description", "isMulti", "isEntitlement", "isGroup"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -93,7 +74,8 @@ class AttributeDefinition(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of var_schema
@@ -111,21 +93,14 @@ class AttributeDefinition(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name":
-            obj.get("name"),
-            "type":
-            obj.get("type"),
-            "schema":
-            AttributeDefinitionSchema.from_dict(obj.get("schema"))
-            if obj.get("schema") is not None else None,
-            "description":
-            obj.get("description"),
-            "isMulti":
-            obj.get("isMulti") if obj.get("isMulti") is not None else False,
-            "isEntitlement":
-            obj.get("isEntitlement")
-            if obj.get("isEntitlement") is not None else False,
-            "isGroup":
-            obj.get("isGroup") if obj.get("isGroup") is not None else False
+            "name": obj.get("name"),
+            "type": obj.get("type"),
+            "schema": AttributeDefinitionSchema.from_dict(obj.get("schema")) if obj.get("schema") is not None else None,
+            "description": obj.get("description"),
+            "isMulti": obj.get("isMulti") if obj.get("isMulti") is not None else False,
+            "isEntitlement": obj.get("isEntitlement") if obj.get("isEntitlement") is not None else False,
+            "isGroup": obj.get("isGroup") if obj.get("isGroup") is not None else False
         })
         return _obj
+
+

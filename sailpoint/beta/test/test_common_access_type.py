@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.common_access_type import CommonAccessType
-
 
 class TestCommonAccessType(unittest.TestCase):
     """CommonAccessType unit test stubs"""
@@ -29,7 +29,6 @@ class TestCommonAccessType(unittest.TestCase):
     def testCommonAccessType(self):
         """Test CommonAccessType"""
         # inst = CommonAccessType()
-
 
 if __name__ == '__main__':
     unittest.main()

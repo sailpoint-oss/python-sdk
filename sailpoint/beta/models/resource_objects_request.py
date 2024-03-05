@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt, StrictStr
@@ -24,20 +26,12 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ResourceObjectsRequest(BaseModel):
     """
     Request model for peek resource objects from source connectors.
     """ # noqa: E501
-    object_type: Optional[StrictStr] = Field(
-        default='account',
-        description="The type of resource objects to iterate over.",
-        alias="objectType")
-    max_count: Optional[StrictInt] = Field(
-        default=25,
-        description=
-        "The maximum number of resource objects to iterate over and return.",
-        alias="maxCount")
+    object_type: Optional[StrictStr] = Field(default='account', description="The type of resource objects to iterate over.", alias="objectType")
+    max_count: Optional[StrictInt] = Field(default=25, description="The maximum number of resource objects to iterate over and return.", alias="maxCount")
     __properties: ClassVar[List[str]] = ["objectType", "maxCount"]
 
     model_config = {
@@ -45,6 +39,7 @@ class ResourceObjectsRequest(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -72,7 +67,8 @@ class ResourceObjectsRequest(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -87,10 +83,9 @@ class ResourceObjectsRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "objectType":
-            obj.get("objectType")
-            if obj.get("objectType") is not None else 'account',
-            "maxCount":
-            obj.get("maxCount") if obj.get("maxCount") is not None else 25
+            "objectType": obj.get("objectType") if obj.get("objectType") is not None else 'account',
+            "maxCount": obj.get("maxCount") if obj.get("maxCount") is not None else 25
         })
         return _obj
+
+

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,18 +26,11 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class NonEmployeeBulkUploadStatus(BaseModel):
     """
     NonEmployeeBulkUploadStatus
-    """
-
-  # noqa: E501
-    status: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Returns the following values indicating the progress or result of the bulk upload job. \"PENDING\" means the job is queued and waiting to be processed. \"IN_PROGRESS\" means the job is currently being processed. \"COMPLETED\" means the job has been completed without any errors. \"ERROR\" means the job failed to process with errors. null means job has been submitted to the source. "
-    )
+    """ # noqa: E501
+    status: Optional[StrictStr] = Field(default=None, description="Returns the following values indicating the progress or result of the bulk upload job. \"PENDING\" means the job is queued and waiting to be processed. \"IN_PROGRESS\" means the job is currently being processed. \"COMPLETED\" means the job has been completed without any errors. \"ERROR\" means the job failed to process with errors. null means job has been submitted to the source. ")
     __properties: ClassVar[List[str]] = ["status"]
 
     @field_validator('status')
@@ -45,9 +40,7 @@ class NonEmployeeBulkUploadStatus(BaseModel):
             return value
 
         if value not in ('PENDING', 'IN_PROGRESS', 'COMPLETED', 'ERROR'):
-            raise ValueError(
-                "must be one of enum values ('PENDING', 'IN_PROGRESS', 'COMPLETED', 'ERROR')"
-            )
+            raise ValueError("must be one of enum values ('PENDING', 'IN_PROGRESS', 'COMPLETED', 'ERROR')")
         return value
 
     model_config = {
@@ -55,6 +48,7 @@ class NonEmployeeBulkUploadStatus(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -82,7 +76,8 @@ class NonEmployeeBulkUploadStatus(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -96,5 +91,9 @@ class NonEmployeeBulkUploadStatus(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({"status": obj.get("status")})
+        _obj = cls.model_validate({
+            "status": obj.get("status")
+        })
         return _obj
+
+

@@ -11,14 +11,13 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.v3.models.service_desk_integration_dto_all_of_before_provisioning_rule import ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule
 
-
-class TestServiceDeskIntegrationDtoAllOfBeforeProvisioningRule(
-        unittest.TestCase):
+class TestServiceDeskIntegrationDtoAllOfBeforeProvisioningRule(unittest.TestCase):
     """ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule unit test stubs"""
 
     def setUp(self):
@@ -27,9 +26,7 @@ class TestServiceDeskIntegrationDtoAllOfBeforeProvisioningRule(
     def tearDown(self):
         pass
 
-    def make_instance(
-        self, include_optional
-    ) -> ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule:
+    def make_instance(self, include_optional) -> ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule:
         """Test ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -52,7 +49,6 @@ class TestServiceDeskIntegrationDtoAllOfBeforeProvisioningRule(
         """Test ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

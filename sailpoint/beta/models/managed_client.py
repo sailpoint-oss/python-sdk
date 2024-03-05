@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -26,73 +27,35 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ManagedClient(BaseModel):
     """
     Managed Client
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="ManagedClient ID")
-    alert_key: Optional[StrictStr] = Field(
-        default=None, description="ManagedClient alert key", alias="alertKey")
-    api_gateway_base_url: Optional[StrictStr] = Field(
-        default=None,
-        description="ManagedClient gateway base url",
-        alias="apiGatewayBaseUrl")
-    cc_id: Optional[StrictInt] = Field(
-        default=None,
-        description=
-        "Previous CC ID to be used in data migration. (This field will be deleted after CC migration!)",
-        alias="ccId")
-    client_id: StrictStr = Field(
-        description="The client ID used in API management", alias="clientId")
-    cluster_id: StrictStr = Field(
-        description="Cluster ID that the ManagedClient is linked to",
-        alias="clusterId")
-    cookbook: Optional[StrictStr] = Field(default=None,
-                                          description="VA cookbook")
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="ManagedClient ID")
+    alert_key: Optional[StrictStr] = Field(default=None, description="ManagedClient alert key", alias="alertKey")
+    api_gateway_base_url: Optional[StrictStr] = Field(default=None, description="ManagedClient gateway base url", alias="apiGatewayBaseUrl")
+    cc_id: Optional[StrictInt] = Field(default=None, description="Previous CC ID to be used in data migration. (This field will be deleted after CC migration!)", alias="ccId")
+    client_id: StrictStr = Field(description="The client ID used in API management", alias="clientId")
+    cluster_id: StrictStr = Field(description="Cluster ID that the ManagedClient is linked to", alias="clusterId")
+    cookbook: Optional[StrictStr] = Field(default=None, description="VA cookbook")
     description: StrictStr = Field(description="ManagedClient description")
-    ip_address: Optional[StrictStr] = Field(
-        default=None,
-        description="The public IP address of the ManagedClient",
-        alias="ipAddress")
-    last_seen: Optional[datetime] = Field(
-        default=None,
-        description="When the ManagedClient was last seen by the server",
-        alias="lastSeen")
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="ManagedClient name")
-    since_last_seen: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Milliseconds since the ManagedClient has polled the server",
-        alias="sinceLastSeen")
+    ip_address: Optional[StrictStr] = Field(default=None, description="The public IP address of the ManagedClient", alias="ipAddress")
+    last_seen: Optional[datetime] = Field(default=None, description="When the ManagedClient was last seen by the server", alias="lastSeen")
+    name: Optional[StrictStr] = Field(default=None, description="ManagedClient name")
+    since_last_seen: Optional[StrictStr] = Field(default=None, description="Milliseconds since the ManagedClient has polled the server", alias="sinceLastSeen")
     status: Optional[ManagedClientStatusEnum] = None
     type: StrictStr = Field(description="Type of the ManagedClient (VA, CCG)")
-    va_download_url: Optional[StrictStr] = Field(
-        default=None,
-        description="ManagedClient VA download URL",
-        alias="vaDownloadUrl")
-    va_version: Optional[StrictStr] = Field(
-        default=None,
-        description="Version that the ManagedClient's VA is running",
-        alias="vaVersion")
-    secret: Optional[StrictStr] = Field(default=None,
-                                        description="Client's apiKey")
-    __properties: ClassVar[List[str]] = [
-        "id", "alertKey", "apiGatewayBaseUrl", "ccId", "clientId", "clusterId",
-        "cookbook", "description", "ipAddress", "lastSeen", "name",
-        "sinceLastSeen", "status", "type", "vaDownloadUrl", "vaVersion",
-        "secret"
-    ]
+    va_download_url: Optional[StrictStr] = Field(default=None, description="ManagedClient VA download URL", alias="vaDownloadUrl")
+    va_version: Optional[StrictStr] = Field(default=None, description="Version that the ManagedClient's VA is running", alias="vaVersion")
+    secret: Optional[StrictStr] = Field(default=None, description="Client's apiKey")
+    __properties: ClassVar[List[str]] = ["id", "alertKey", "apiGatewayBaseUrl", "ccId", "clientId", "clusterId", "cookbook", "description", "ipAddress", "lastSeen", "name", "sinceLastSeen", "status", "type", "vaDownloadUrl", "vaVersion", "secret"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -156,39 +119,24 @@ class ManagedClient(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "alertKey":
-            obj.get("alertKey"),
-            "apiGatewayBaseUrl":
-            obj.get("apiGatewayBaseUrl"),
-            "ccId":
-            obj.get("ccId"),
-            "clientId":
-            obj.get("clientId"),
-            "clusterId":
-            obj.get("clusterId"),
-            "cookbook":
-            obj.get("cookbook"),
-            "description":
-            obj.get("description"),
-            "ipAddress":
-            obj.get("ipAddress"),
-            "lastSeen":
-            obj.get("lastSeen"),
-            "name":
-            obj.get("name"),
-            "sinceLastSeen":
-            obj.get("sinceLastSeen"),
-            "status":
-            obj.get("status"),
-            "type":
-            obj.get("type"),
-            "vaDownloadUrl":
-            obj.get("vaDownloadUrl"),
-            "vaVersion":
-            obj.get("vaVersion"),
-            "secret":
-            obj.get("secret")
+            "id": obj.get("id"),
+            "alertKey": obj.get("alertKey"),
+            "apiGatewayBaseUrl": obj.get("apiGatewayBaseUrl"),
+            "ccId": obj.get("ccId"),
+            "clientId": obj.get("clientId"),
+            "clusterId": obj.get("clusterId"),
+            "cookbook": obj.get("cookbook"),
+            "description": obj.get("description"),
+            "ipAddress": obj.get("ipAddress"),
+            "lastSeen": obj.get("lastSeen"),
+            "name": obj.get("name"),
+            "sinceLastSeen": obj.get("sinceLastSeen"),
+            "status": obj.get("status"),
+            "type": obj.get("type"),
+            "vaDownloadUrl": obj.get("vaDownloadUrl"),
+            "vaVersion": obj.get("vaVersion"),
+            "secret": obj.get("secret")
         })
         return _obj
+
+

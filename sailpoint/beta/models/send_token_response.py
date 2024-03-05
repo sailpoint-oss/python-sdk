@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,22 +26,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class SendTokenResponse(BaseModel):
     """
     SendTokenResponse
-    """
-
-  # noqa: E501
-    request_id: Optional[StrictStr] = Field(default=None,
-                                            description="The token request ID",
-                                            alias="requestId")
-    status: Optional[StrictStr] = Field(default=None,
-                                        description="Status of sending token")
-    error_message: Optional[StrictStr] = Field(
-        default=None,
-        description="Error messages from token send request",
-        alias="errorMessage")
+    """ # noqa: E501
+    request_id: Optional[StrictStr] = Field(default=None, description="The token request ID", alias="requestId")
+    status: Optional[StrictStr] = Field(default=None, description="Status of sending token")
+    error_message: Optional[StrictStr] = Field(default=None, description="Error messages from token send request", alias="errorMessage")
     __properties: ClassVar[List[str]] = ["requestId", "status", "errorMessage"]
 
     @field_validator('status')
@@ -49,8 +42,7 @@ class SendTokenResponse(BaseModel):
             return value
 
         if value not in ('SUCCESS', 'FAILED'):
-            raise ValueError(
-                "must be one of enum values ('SUCCESS', 'FAILED')")
+            raise ValueError("must be one of enum values ('SUCCESS', 'FAILED')")
         return value
 
     model_config = {
@@ -58,6 +50,7 @@ class SendTokenResponse(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -85,7 +78,8 @@ class SendTokenResponse(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if request_id (nullable) is None
@@ -115,3 +109,5 @@ class SendTokenResponse(BaseModel):
             "errorMessage": obj.get("errorMessage")
         })
         return _obj
+
+

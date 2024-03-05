@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
@@ -26,29 +28,22 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class ImportFormDefinitions202Response(BaseModel):
     """
     ImportFormDefinitions202Response
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     errors: Optional[List[ImportFormDefinitions202ResponseErrorsInner]] = None
-    imported_objects: Optional[
-        List[ExportFormDefinitionsByTenant200ResponseInner]] = Field(
-            default=None, alias="importedObjects")
+    imported_objects: Optional[List[ExportFormDefinitionsByTenant200ResponseInner]] = Field(default=None, alias="importedObjects")
     infos: Optional[List[ImportFormDefinitions202ResponseErrorsInner]] = None
-    warnings: Optional[
-        List[ImportFormDefinitions202ResponseErrorsInner]] = None
-    __properties: ClassVar[List[str]] = [
-        "errors", "importedObjects", "infos", "warnings"
-    ]
+    warnings: Optional[List[ImportFormDefinitions202ResponseErrorsInner]] = None
+    __properties: ClassVar[List[str]] = ["errors", "importedObjects", "infos", "warnings"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -76,7 +71,8 @@ class ImportFormDefinitions202Response(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in errors (list)
@@ -119,21 +115,11 @@ class ImportFormDefinitions202Response(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "errors": [
-                ImportFormDefinitions202ResponseErrorsInner.from_dict(_item)
-                for _item in obj.get("errors")
-            ] if obj.get("errors") is not None else None,
-            "importedObjects": [
-                ExportFormDefinitionsByTenant200ResponseInner.from_dict(_item)
-                for _item in obj.get("importedObjects")
-            ] if obj.get("importedObjects") is not None else None,
-            "infos": [
-                ImportFormDefinitions202ResponseErrorsInner.from_dict(_item)
-                for _item in obj.get("infos")
-            ] if obj.get("infos") is not None else None,
-            "warnings": [
-                ImportFormDefinitions202ResponseErrorsInner.from_dict(_item)
-                for _item in obj.get("warnings")
-            ] if obj.get("warnings") is not None else None
+            "errors": [ImportFormDefinitions202ResponseErrorsInner.from_dict(_item) for _item in obj.get("errors")] if obj.get("errors") is not None else None,
+            "importedObjects": [ExportFormDefinitionsByTenant200ResponseInner.from_dict(_item) for _item in obj.get("importedObjects")] if obj.get("importedObjects") is not None else None,
+            "infos": [ImportFormDefinitions202ResponseErrorsInner.from_dict(_item) for _item in obj.get("infos")] if obj.get("infos") is not None else None,
+            "warnings": [ImportFormDefinitions202ResponseErrorsInner.from_dict(_item) for _item in obj.get("warnings")] if obj.get("warnings") is not None else None
         })
         return _obj
+
+

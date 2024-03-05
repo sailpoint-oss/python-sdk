@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt, StrictStr
@@ -25,37 +27,23 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class FormDefinitionDynamicSchemaRequest(BaseModel):
     """
     FormDefinitionDynamicSchemaRequest
-    """
-
-  # noqa: E501
+    """ # noqa: E501
     attributes: Optional[FormDefinitionDynamicSchemaRequestAttributes] = None
-    description: Optional[StrictStr] = Field(
-        default=None,
-        description=
-        "Description is the form definition dynamic schema description text")
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="ID is a unique identifier")
-    type: Optional[StrictStr] = Field(
-        default=None,
-        description="Type is the form definition dynamic schema type")
-    version_number: Optional[StrictInt] = Field(
-        default=None,
-        description=
-        "VersionNumber is the form definition dynamic schema version number",
-        alias="versionNumber")
-    __properties: ClassVar[List[str]] = [
-        "attributes", "description", "id", "type", "versionNumber"
-    ]
+    description: Optional[StrictStr] = Field(default=None, description="Description is the form definition dynamic schema description text")
+    id: Optional[StrictStr] = Field(default=None, description="ID is a unique identifier")
+    type: Optional[StrictStr] = Field(default=None, description="Type is the form definition dynamic schema type")
+    version_number: Optional[StrictInt] = Field(default=None, description="VersionNumber is the form definition dynamic schema version number", alias="versionNumber")
+    __properties: ClassVar[List[str]] = ["attributes", "description", "id", "type", "versionNumber"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -83,7 +71,8 @@ class FormDefinitionDynamicSchemaRequest(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of attributes
@@ -101,17 +90,12 @@ class FormDefinitionDynamicSchemaRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "attributes":
-            FormDefinitionDynamicSchemaRequestAttributes.from_dict(
-                obj.get("attributes"))
-            if obj.get("attributes") is not None else None,
-            "description":
-            obj.get("description"),
-            "id":
-            obj.get("id"),
-            "type":
-            obj.get("type"),
-            "versionNumber":
-            obj.get("versionNumber")
+            "attributes": FormDefinitionDynamicSchemaRequestAttributes.from_dict(obj.get("attributes")) if obj.get("attributes") is not None else None,
+            "description": obj.get("description"),
+            "id": obj.get("id"),
+            "type": obj.get("type"),
+            "versionNumber": obj.get("versionNumber")
         })
         return _obj
+
+

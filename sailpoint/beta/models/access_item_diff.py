@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
@@ -24,27 +26,15 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class AccessItemDiff(BaseModel):
     """
     AccessItemDiff
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="the id of the access item")
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="the id of the access item")
     event_type: Optional[StrictStr] = Field(default=None, alias="eventType")
-    display_name: Optional[StrictStr] = Field(
-        default=None,
-        description="the display name of the access item",
-        alias="displayName")
-    source_name: Optional[StrictStr] = Field(
-        default=None,
-        description="the source name of the access item",
-        alias="sourceName")
-    __properties: ClassVar[List[str]] = [
-        "id", "eventType", "displayName", "sourceName"
-    ]
+    display_name: Optional[StrictStr] = Field(default=None, description="the display name of the access item", alias="displayName")
+    source_name: Optional[StrictStr] = Field(default=None, description="the source name of the access item", alias="sourceName")
+    __properties: ClassVar[List[str]] = ["id", "eventType", "displayName", "sourceName"]
 
     @field_validator('event_type')
     def event_type_validate_enum(cls, value):
@@ -61,6 +51,7 @@ class AccessItemDiff(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -88,7 +79,8 @@ class AccessItemDiff(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -109,3 +101,5 @@ class AccessItemDiff(BaseModel):
             "sourceName": obj.get("sourceName")
         })
         return _obj
+
+

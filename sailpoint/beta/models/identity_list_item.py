@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
@@ -24,42 +26,24 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class IdentityListItem(BaseModel):
     """
     IdentityListItem
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="the identity ID")
-    display_name: Optional[StrictStr] = Field(
-        default=None,
-        description="the display name of the identity",
-        alias="displayName")
-    first_name: Optional[StrictStr] = Field(
-        default=None,
-        description="the first name of the identity",
-        alias="firstName")
-    last_name: Optional[StrictStr] = Field(
-        default=None,
-        description="the last name of the identity",
-        alias="lastName")
-    active: Optional[StrictBool] = Field(
-        default=True, description="indicates if an identity is active or not")
-    deleted_date: Optional[StrictStr] = Field(
-        default=None,
-        description="the date when the identity was deleted",
-        alias="deletedDate")
-    __properties: ClassVar[List[str]] = [
-        "id", "displayName", "firstName", "lastName", "active", "deletedDate"
-    ]
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="the identity ID")
+    display_name: Optional[StrictStr] = Field(default=None, description="the display name of the identity", alias="displayName")
+    first_name: Optional[StrictStr] = Field(default=None, description="the first name of the identity", alias="firstName")
+    last_name: Optional[StrictStr] = Field(default=None, description="the last name of the identity", alias="lastName")
+    active: Optional[StrictBool] = Field(default=True, description="indicates if an identity is active or not")
+    deleted_date: Optional[StrictStr] = Field(default=None, description="the date when the identity was deleted", alias="deletedDate")
+    __properties: ClassVar[List[str]] = ["id", "displayName", "firstName", "lastName", "active", "deletedDate"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -87,7 +71,8 @@ class IdentityListItem(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         # set to None if deleted_date (nullable) is None
@@ -107,17 +92,13 @@ class IdentityListItem(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "displayName":
-            obj.get("displayName"),
-            "firstName":
-            obj.get("firstName"),
-            "lastName":
-            obj.get("lastName"),
-            "active":
-            obj.get("active") if obj.get("active") is not None else True,
-            "deletedDate":
-            obj.get("deletedDate")
+            "id": obj.get("id"),
+            "displayName": obj.get("displayName"),
+            "firstName": obj.get("firstName"),
+            "lastName": obj.get("lastName"),
+            "active": obj.get("active") if obj.get("active") is not None else True,
+            "deletedDate": obj.get("deletedDate")
         })
         return _obj
+
+

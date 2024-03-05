@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
@@ -25,20 +27,14 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-
 class SodExemptCriteria(BaseModel):
     """
     Details of the Entitlement criteria
-    """
-
-  # noqa: E501
-    existing: Optional[StrictBool] = Field(
-        default=None,
-        description="If the entitlement already belonged to the user or not.")
+    """ # noqa: E501
+    existing: Optional[StrictBool] = Field(default=False, description="If the entitlement already belonged to the user or not.")
     type: Optional[DtoType] = None
     id: Optional[StrictStr] = Field(default=None, description="Entitlement ID")
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="Entitlement name")
+    name: Optional[StrictStr] = Field(default=None, description="Entitlement name")
     __properties: ClassVar[List[str]] = ["existing", "type", "id", "name"]
 
     model_config = {
@@ -46,6 +42,7 @@ class SodExemptCriteria(BaseModel):
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -73,7 +70,8 @@ class SodExemptCriteria(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
         return _dict
@@ -88,9 +86,11 @@ class SodExemptCriteria(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "existing": obj.get("existing"),
+            "existing": obj.get("existing") if obj.get("existing") is not None else False,
             "type": obj.get("type"),
             "id": obj.get("id"),
             "name": obj.get("name")
         })
         return _obj
+
+

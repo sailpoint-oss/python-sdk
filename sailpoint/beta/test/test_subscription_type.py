@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from sailpoint.beta.models.subscription_type import SubscriptionType
-
 
 class TestSubscriptionType(unittest.TestCase):
     """SubscriptionType unit test stubs"""
@@ -29,7 +29,6 @@ class TestSubscriptionType(unittest.TestCase):
     def testSubscriptionType(self):
         """Test SubscriptionType"""
         # inst = SubscriptionType()
-
 
 if __name__ == '__main__':
     unittest.main()

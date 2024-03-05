@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **snapshot_date** | **datetime** | The date the bulk outlier detection ran/snapshot was created | [optional] 
 **total_outliers** | **int** | Total number of outliers for the customer making the request | [optional] 
 **total_identities** | **int** | Total number of identities for the customer making the request | [optional] 
+**total_ignored** | **int** |  | [optional] [default to 0]
 
 ## Example
 

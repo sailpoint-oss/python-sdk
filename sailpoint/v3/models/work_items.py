@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -21,71 +22,44 @@ from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt, StrictStr
 from pydantic import Field
 from sailpoint.v3.models.approval_item_details import ApprovalItemDetails
-from sailpoint.v3.models.form_details import FormDetails
 from sailpoint.v3.models.remediation_item_details import RemediationItemDetails
-from sailpoint.v3.models.work_item_state import WorkItemState
-from sailpoint.v3.models.work_item_type import WorkItemType
+from sailpoint.v3.models.work_item_state_manual_work_items import WorkItemStateManualWorkItems
+from sailpoint.v3.models.work_item_type_manual_work_items import WorkItemTypeManualWorkItems
+from sailpoint.v3.models.work_items_form import WorkItemsForm
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-
 class WorkItems(BaseModel):
     """
     WorkItems
-    """
-
-  # noqa: E501
-    id: Optional[StrictStr] = Field(default=None,
-                                    description="ID of the work item")
-    requester_id: Optional[StrictStr] = Field(
-        default=None, description="ID of the requester", alias="requesterId")
-    requester_display_name: Optional[StrictStr] = Field(
-        default=None,
-        description="The displayname of the requester",
-        alias="requesterDisplayName")
-    owner_id: Optional[StrictStr] = Field(default=None,
-                                          description="The ID of the owner",
-                                          alias="ownerId")
-    owner_name: Optional[StrictStr] = Field(
-        default=None, description="The name of the owner", alias="ownerName")
-    created: Optional[datetime] = Field(
-        default=None, description="Time when the work item was created")
-    modified: Optional[datetime] = Field(
-        default=None, description="Time when the work item was last updated")
-    description: Optional[StrictStr] = Field(
-        default=None, description="The description of the work item")
-    state: Optional[WorkItemState] = None
-    type: Optional[WorkItemType] = None
-    remediation_items: Optional[RemediationItemDetails] = Field(
-        default=None, alias="remediationItems")
-    approval_items: Optional[ApprovalItemDetails] = Field(
-        default=None, alias="approvalItems")
-    name: Optional[StrictStr] = Field(default=None,
-                                      description="The work item name")
-    completed: Optional[datetime] = Field(
-        default=None, description="The time at which the work item completed")
-    num_items: Optional[StrictInt] = Field(
-        default=None,
-        description="The number of items in the work item",
-        alias="numItems")
-    form: Optional[FormDetails] = None
-    errors: Optional[List[StrictStr]] = Field(
-        default=None,
-        description="An array of errors that ocurred during the work item")
-    __properties: ClassVar[List[str]] = [
-        "id", "requesterId", "requesterDisplayName", "ownerId", "ownerName",
-        "created", "modified", "description", "state", "type",
-        "remediationItems", "approvalItems", "name", "completed", "numItems",
-        "form", "errors"
-    ]
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="ID of the work item")
+    requester_id: Optional[StrictStr] = Field(default=None, description="ID of the requester", alias="requesterId")
+    requester_display_name: Optional[StrictStr] = Field(default=None, description="The displayname of the requester", alias="requesterDisplayName")
+    owner_id: Optional[StrictStr] = Field(default=None, description="The ID of the owner", alias="ownerId")
+    owner_name: Optional[StrictStr] = Field(default=None, description="The name of the owner", alias="ownerName")
+    created: Optional[datetime] = Field(default=None, description="Time when the work item was created")
+    modified: Optional[datetime] = Field(default=None, description="Time when the work item was last updated")
+    description: Optional[StrictStr] = Field(default=None, description="The description of the work item")
+    state: Optional[WorkItemStateManualWorkItems] = None
+    type: Optional[WorkItemTypeManualWorkItems] = None
+    remediation_items: Optional[List[RemediationItemDetails]] = Field(default=None, description="A list of remediation items", alias="remediationItems")
+    approval_items: Optional[List[ApprovalItemDetails]] = Field(default=None, description="A list of items that need to be approved", alias="approvalItems")
+    name: Optional[StrictStr] = Field(default=None, description="The work item name")
+    completed: Optional[datetime] = Field(default=None, description="The time at which the work item completed")
+    num_items: Optional[StrictInt] = Field(default=None, description="The number of items in the work item", alias="numItems")
+    form: Optional[WorkItemsForm] = None
+    errors: Optional[List[StrictStr]] = Field(default=None, description="An array of errors that ocurred during the work item")
+    __properties: ClassVar[List[str]] = ["id", "requesterId", "requesterDisplayName", "ownerId", "ownerName", "created", "modified", "description", "state", "type", "remediationItems", "approvalItems", "name", "completed", "numItems", "form", "errors"]
 
     model_config = {
         "populate_by_name": True,
         "validate_assignment": True,
         "protected_namespaces": (),
     }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -113,18 +87,72 @@ class WorkItems(BaseModel):
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude={
+            },
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of remediation_items
+        # override the default output from pydantic by calling `to_dict()` of each item in remediation_items (list)
+        _items = []
         if self.remediation_items:
-            _dict['remediationItems'] = self.remediation_items.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of approval_items
+            for _item in self.remediation_items:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['remediationItems'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in approval_items (list)
+        _items = []
         if self.approval_items:
-            _dict['approvalItems'] = self.approval_items.to_dict()
+            for _item in self.approval_items:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['approvalItems'] = _items
         # override the default output from pydantic by calling `to_dict()` of form
         if self.form:
             _dict['form'] = self.form.to_dict()
+        # set to None if requester_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.requester_id is None and "requester_id" in self.model_fields_set:
+            _dict['requesterId'] = None
+
+        # set to None if requester_display_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.requester_display_name is None and "requester_display_name" in self.model_fields_set:
+            _dict['requesterDisplayName'] = None
+
+        # set to None if owner_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.owner_id is None and "owner_id" in self.model_fields_set:
+            _dict['ownerId'] = None
+
+        # set to None if modified (nullable) is None
+        # and model_fields_set contains the field
+        if self.modified is None and "modified" in self.model_fields_set:
+            _dict['modified'] = None
+
+        # set to None if remediation_items (nullable) is None
+        # and model_fields_set contains the field
+        if self.remediation_items is None and "remediation_items" in self.model_fields_set:
+            _dict['remediationItems'] = None
+
+        # set to None if approval_items (nullable) is None
+        # and model_fields_set contains the field
+        if self.approval_items is None and "approval_items" in self.model_fields_set:
+            _dict['approvalItems'] = None
+
+        # set to None if name (nullable) is None
+        # and model_fields_set contains the field
+        if self.name is None and "name" in self.model_fields_set:
+            _dict['name'] = None
+
+        # set to None if completed (nullable) is None
+        # and model_fields_set contains the field
+        if self.completed is None and "completed" in self.model_fields_set:
+            _dict['completed'] = None
+
+        # set to None if num_items (nullable) is None
+        # and model_fields_set contains the field
+        if self.num_items is None and "num_items" in self.model_fields_set:
+            _dict['numItems'] = None
+
         return _dict
 
     @classmethod
@@ -137,42 +165,24 @@ class WorkItems(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
-            "requesterId":
-            obj.get("requesterId"),
-            "requesterDisplayName":
-            obj.get("requesterDisplayName"),
-            "ownerId":
-            obj.get("ownerId"),
-            "ownerName":
-            obj.get("ownerName"),
-            "created":
-            obj.get("created"),
-            "modified":
-            obj.get("modified"),
-            "description":
-            obj.get("description"),
-            "state":
-            obj.get("state"),
-            "type":
-            obj.get("type"),
-            "remediationItems":
-            RemediationItemDetails.from_dict(obj.get("remediationItems"))
-            if obj.get("remediationItems") is not None else None,
-            "approvalItems":
-            ApprovalItemDetails.from_dict(obj.get("approvalItems"))
-            if obj.get("approvalItems") is not None else None,
-            "name":
-            obj.get("name"),
-            "completed":
-            obj.get("completed"),
-            "numItems":
-            obj.get("numItems"),
-            "form":
-            FormDetails.from_dict(obj.get("form"))
-            if obj.get("form") is not None else None,
-            "errors":
-            obj.get("errors")
+            "id": obj.get("id"),
+            "requesterId": obj.get("requesterId"),
+            "requesterDisplayName": obj.get("requesterDisplayName"),
+            "ownerId": obj.get("ownerId"),
+            "ownerName": obj.get("ownerName"),
+            "created": obj.get("created"),
+            "modified": obj.get("modified"),
+            "description": obj.get("description"),
+            "state": obj.get("state"),
+            "type": obj.get("type"),
+            "remediationItems": [RemediationItemDetails.from_dict(_item) for _item in obj.get("remediationItems")] if obj.get("remediationItems") is not None else None,
+            "approvalItems": [ApprovalItemDetails.from_dict(_item) for _item in obj.get("approvalItems")] if obj.get("approvalItems") is not None else None,
+            "name": obj.get("name"),
+            "completed": obj.get("completed"),
+            "numItems": obj.get("numItems"),
+            "form": WorkItemsForm.from_dict(obj.get("form")) if obj.get("form") is not None else None,
+            "errors": obj.get("errors")
         })
         return _obj
+
+

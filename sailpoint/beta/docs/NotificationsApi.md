@@ -18,7 +18,7 @@ Method | HTTP request | Description
 [**list_notification_template_defaults**](NotificationsApi.md#list_notification_template_defaults) | **GET** /notification-template-defaults | List Notification Template Defaults
 [**list_notification_templates**](NotificationsApi.md#list_notification_templates) | **GET** /notification-templates | List Notification Templates
 [**put_mail_from_attributes**](NotificationsApi.md#put_mail_from_attributes) | **PUT** /mail-from-attributes | Change MAIL FROM domain
-[**put_notification_preference**](NotificationsApi.md#put_notification_preference) | **PUT** /notification-preferences/{key} | Overwrite the preferences for the given notification key.
+[**put_notification_preference**](NotificationsApi.md#put_notification_preference) | **PUT** /notification-preferences/{key} | Overwrite preferences notification key.
 [**send_test_notification**](NotificationsApi.md#send_test_notification) | **POST** /send-test-notification | Send Test Notification
 
 
@@ -284,7 +284,7 @@ Name | Type | Description  | Notes
 
 Bulk Delete Notification Templates
 
-This lets you bulk delete templates that you previously created for your site. Since this is a beta feature, you can only delete a subset of your notifications, i.e. ones that show up in the list call.
+This lets you bulk delete templates that you previously created for your site. Since this is a beta feature, please contact support to enable usage.
 
 ### Example
 
@@ -616,7 +616,7 @@ Name | Type | Description  | Notes
 
 Get Notification Preferences for tenant.
 
-Returns the notification preferences for tenant.  Note that if the key doesn't exist, then a 404 will be returned. Request will require the following legacy roles:  ORG_ADMIN and API
+Returns the notification preferences for tenant.  Note that if the key doesn't exist, then a 404 will be returned.
 
 ### Example
 
@@ -650,7 +650,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.NotificationsApi(api_client)
-    key = 'key_example' # str | The notification key.
+    key = 'cloud_manual_work_item_summary' # str | The notification key.
 
     try:
         # Get Notification Preferences for tenant.
@@ -693,6 +693,7 @@ Name | Type | Description  | Notes
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
 **404** | Not Found - returned if the request URL refers to a resource or object that does not exist |  -  |
 **429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -782,11 +783,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_notifications_template_context**
-> List[NotificationTemplateContext] get_notifications_template_context()
+> NotificationTemplateContext get_notifications_template_context()
 
 Get Notification Template Context
 
-The notification service (Hermes) maintains metadata to construct the notification templates or supply any information during the event propagation.  The data-store where this information is retrieved is  called \"Global Context\" (a.k.a. notification template context). It defines a set of attributes  that will be available per tenant (organization).  Regarding authorization, the access token contains the tenant and will grant access to the one requested. Requires the following security scope:  idn:notification-templates:read
+The notification service maintains metadata to construct the notification templates or supply any information during the event propagation. The data-store where this information is retrieved is called \"Global Context\" (a.k.a. notification template context). It defines a set of attributes  that will be available per tenant (organization).
 
 ### Example
 
@@ -838,7 +839,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List[NotificationTemplateContext]**](NotificationTemplateContext.md)
+[**NotificationTemplateContext**](NotificationTemplateContext.md)
 
 ### Authorization
 
@@ -959,7 +960,7 @@ Name | Type | Description  | Notes
 
 List Notification Template Defaults
 
-This lists the default templates used for notifications, such as emails from IdentityNow. Since this is a beta feature, it doesn't include all the templates.
+This lists the default templates used for notifications, such as emails from IdentityNow.
 
 ### Example
 
@@ -995,7 +996,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
     api_instance = sailpoint.beta.NotificationsApi(api_client)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
-    filters = 'filters_example' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, in, sw*  **medium**: *eq, sw*  **locale**: *eq, sw* (optional)
+    filters = 'key eq \"cloud_manual_work_item_summary\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, in, sw*  **medium**: *eq, sw*  **locale**: *eq, sw* (optional)
 
     try:
         # List Notification Template Defaults
@@ -1048,7 +1049,7 @@ Name | Type | Description  | Notes
 
 List Notification Templates
 
-This lists the templates that you have modified for your site. Since this is a beta feature, it doesn't include all your modified templates.
+This lists the templates that you have modified for your site.
 
 ### Example
 
@@ -1221,9 +1222,9 @@ Name | Type | Description  | Notes
 # **put_notification_preference**
 > PreferencesDto put_notification_preference(key, preferences_dto)
 
-Overwrite the preferences for the given notification key.
+Overwrite preferences notification key.
 
-In the notification world, a notification flows through these salient stages -   1. Interest matching,   2. Preferences   3. Template Rendering.   The default notification preferences make up a part of the second stage, along with user preferences (which is a future goal). The expectation is for  admins to be able to set default preferences for their org, like opting in to or out of certain notifications, and configuring future preferences as  we tack on more features. The key in the Dto is not necessary but if it is provided and doesn't match the key in the URI, then a 400 will be thrown.  Request will require the following legacy roles:  ORG_ADMIN and API
+Allows admins to opt in to or out of certain notifications for their org. The default state is opted in. `key` is optional but if it is provided and doesn't match the key in the URI, then a 400 will be thrown.
 
 ### Example
 
@@ -1257,11 +1258,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.NotificationsApi(api_client)
-    key = 'key_example' # str | The notification key.
+    key = 'cloud_manual_work_item_summary' # str | The notification key.
     preferences_dto = sailpoint.beta.PreferencesDto() # PreferencesDto | 
 
     try:
-        # Overwrite the preferences for the given notification key.
+        # Overwrite preferences notification key.
         api_response = api_instance.put_notification_preference(key, preferences_dto)
         print("The response of NotificationsApi->put_notification_preference:\n")
         pprint(api_response)
@@ -1302,6 +1303,7 @@ Name | Type | Description  | Notes
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
 **404** | Not Found - returned if the request URL refers to a resource or object that does not exist |  -  |
 **429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
