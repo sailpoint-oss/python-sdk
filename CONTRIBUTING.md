@@ -67,7 +67,7 @@ Many of our most valuable resources originate in ideas suggested by the communit
 You may have an idea that will improve the site. 
 We would love to hear it and possibly implement it! 
 
-We use GitHub issues to track feature requests. Please use [this template](https://github.com/sailpoint-oss/typescript-sdk/issues/new?assignees=&labels=&template=feature-request.md&title=%5BFeature%5D+Your+Feature+Request+Here) when you request a new feature.
+We use GitHub issues to track feature requests. Please use [this template](https://github.com/sailpoint-oss/python-sdk/issues/new?assignees=&labels=&template=feature-request.md&title=%5BFeature%5D+Your+Feature+Request+Here) when you request a new feature.
 
 We love thorough feature requests. 
 The more details you include, the faster we can implement your request. 

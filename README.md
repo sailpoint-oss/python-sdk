@@ -15,7 +15,7 @@
 
 ## About the project
 
-The Python SDK allows you to use TypeScript to interact with the SailPoint APIs and other resources to customize and extend your SailPoint platform.
+The Python SDK allows you to use Python to interact with the SailPoint APIs and other resources to customize and extend your SailPoint platform.
 
 ## Documentation
 
@@ -23,10 +23,10 @@ To get started with the Python SDK and learn about its various functionalities, 
 
 ## Contributing
 
-The SailPoint Developer Relations Team is always actively working to improve the SailPoint TypeScript SDK to make it as useful as possible to the SailPoint Developer Community.
+The SailPoint Developer Relations Team is always actively working to improve the SailPoint Python SDK to make it as useful as possible to the SailPoint Developer Community.
 This means adding and maintaining new resources and functionalities for the SDK.
 The most valuable resource of all, however, is the community itself!
-We greatly appreciate any input, feedback, and direct contributions you can provide to the TypeScript SDK, big or small.
+We greatly appreciate any input, feedback, and direct contributions you can provide to the Python SDK, big or small.
 
 Refer to our [contribution guidelines](./CONTRIBUTING.md) to learn more about the different ways you can contribute to the SDK.
 
