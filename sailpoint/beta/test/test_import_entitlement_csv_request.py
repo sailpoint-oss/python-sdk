@@ -15,10 +15,10 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.import_non_employee_records_in_bulk_request import ImportNonEmployeeRecordsInBulkRequest
+from sailpoint.beta.models.import_entitlement_csv_request import ImportEntitlementCsvRequest
 
-class TestImportNonEmployeeRecordsInBulkRequest(unittest.TestCase):
-    """ImportNonEmployeeRecordsInBulkRequest unit test stubs"""
+class TestImportEntitlementCsvRequest(unittest.TestCase):
+    """ImportEntitlementCsvRequest unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,26 +26,26 @@ class TestImportNonEmployeeRecordsInBulkRequest(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ImportNonEmployeeRecordsInBulkRequest:
-        """Test ImportNonEmployeeRecordsInBulkRequest
+    def make_instance(self, include_optional) -> ImportEntitlementCsvRequest:
+        """Test ImportEntitlementCsvRequest
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ImportNonEmployeeRecordsInBulkRequest`
+        # uncomment below to create an instance of `ImportEntitlementCsvRequest`
         """
-        model = ImportNonEmployeeRecordsInBulkRequest()
+        model = ImportEntitlementCsvRequest()
         if include_optional:
-            return ImportNonEmployeeRecordsInBulkRequest(
+            return ImportEntitlementCsvRequest(
                 data = bytes(b'blah')
             )
         else:
-            return ImportNonEmployeeRecordsInBulkRequest(
+            return ImportEntitlementCsvRequest(
                 data = bytes(b'blah'),
         )
         """
 
-    def testImportNonEmployeeRecordsInBulkRequest(self):
-        """Test ImportNonEmployeeRecordsInBulkRequest"""
+    def testImportEntitlementCsvRequest(self):
+        """Test ImportEntitlementCsvRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

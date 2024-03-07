@@ -438,9 +438,9 @@ from sailpoint.beta.models.identity_sync_job import IdentitySyncJob
 from sailpoint.beta.models.identity_sync_payload import IdentitySyncPayload
 from sailpoint.beta.models.identity_with_new_access import IdentityWithNewAccess
 from sailpoint.beta.models.identity_with_new_access_access_refs_inner import IdentityWithNewAccessAccessRefsInner
+from sailpoint.beta.models.import_entitlement_csv_request import ImportEntitlementCsvRequest
 from sailpoint.beta.models.import_form_definitions202_response import ImportFormDefinitions202Response
 from sailpoint.beta.models.import_form_definitions202_response_errors_inner import ImportFormDefinitions202ResponseErrorsInner
-from sailpoint.beta.models.import_non_employee_records_in_bulk_request import ImportNonEmployeeRecordsInBulkRequest
 from sailpoint.beta.models.import_object import ImportObject
 from sailpoint.beta.models.import_options import ImportOptions
 from sailpoint.beta.models.import_sp_config_request import ImportSpConfigRequest
@@ -467,6 +467,7 @@ from sailpoint.beta.models.list_form_instances_by_tenant_response import ListFor
 from sailpoint.beta.models.list_identity_access_items200_response_inner import ListIdentityAccessItems200ResponseInner
 from sailpoint.beta.models.list_predefined_select_options_response import ListPredefinedSelectOptionsResponse
 from sailpoint.beta.models.list_workgroup_members200_response_inner import ListWorkgroupMembers200ResponseInner
+from sailpoint.beta.models.load_entitlement_task import LoadEntitlementTask
 from sailpoint.beta.models.locale_origin import LocaleOrigin
 from sailpoint.beta.models.localized_message import LocalizedMessage
 from sailpoint.beta.models.lookup_step import LookupStep

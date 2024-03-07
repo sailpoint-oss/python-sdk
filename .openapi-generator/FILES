@@ -440,9 +440,9 @@ sailpoint/beta/docs/IdentitySyncJob.md
 sailpoint/beta/docs/IdentitySyncPayload.md
 sailpoint/beta/docs/IdentityWithNewAccess.md
 sailpoint/beta/docs/IdentityWithNewAccessAccessRefsInner.md
+sailpoint/beta/docs/ImportEntitlementCsvRequest.md
 sailpoint/beta/docs/ImportFormDefinitions202Response.md
 sailpoint/beta/docs/ImportFormDefinitions202ResponseErrorsInner.md
-sailpoint/beta/docs/ImportNonEmployeeRecordsInBulkRequest.md
 sailpoint/beta/docs/ImportObject.md
 sailpoint/beta/docs/ImportOptions.md
 sailpoint/beta/docs/ImportSpConfigRequest.md
@@ -470,6 +470,7 @@ sailpoint/beta/docs/ListFormInstancesByTenantResponse.md
 sailpoint/beta/docs/ListIdentityAccessItems200ResponseInner.md
 sailpoint/beta/docs/ListPredefinedSelectOptionsResponse.md
 sailpoint/beta/docs/ListWorkgroupMembers200ResponseInner.md
+sailpoint/beta/docs/LoadEntitlementTask.md
 sailpoint/beta/docs/LocaleOrigin.md
 sailpoint/beta/docs/LocalizedMessage.md
 sailpoint/beta/docs/LookupStep.md
@@ -1225,9 +1226,9 @@ sailpoint/beta/models/identity_sync_job.py
 sailpoint/beta/models/identity_sync_payload.py
 sailpoint/beta/models/identity_with_new_access.py
 sailpoint/beta/models/identity_with_new_access_access_refs_inner.py
+sailpoint/beta/models/import_entitlement_csv_request.py
 sailpoint/beta/models/import_form_definitions202_response.py
 sailpoint/beta/models/import_form_definitions202_response_errors_inner.py
-sailpoint/beta/models/import_non_employee_records_in_bulk_request.py
 sailpoint/beta/models/import_object.py
 sailpoint/beta/models/import_options.py
 sailpoint/beta/models/import_sp_config_request.py
@@ -1254,6 +1255,7 @@ sailpoint/beta/models/list_form_instances_by_tenant_response.py
 sailpoint/beta/models/list_identity_access_items200_response_inner.py
 sailpoint/beta/models/list_predefined_select_options_response.py
 sailpoint/beta/models/list_workgroup_members200_response_inner.py
+sailpoint/beta/models/load_entitlement_task.py
 sailpoint/beta/models/locale_origin.py
 sailpoint/beta/models/localized_message.py
 sailpoint/beta/models/lookup_step.py
@@ -2004,9 +2006,9 @@ sailpoint/beta/test/test_identity_sync_job.py
 sailpoint/beta/test/test_identity_sync_payload.py
 sailpoint/beta/test/test_identity_with_new_access.py
 sailpoint/beta/test/test_identity_with_new_access_access_refs_inner.py
+sailpoint/beta/test/test_import_entitlement_csv_request.py
 sailpoint/beta/test/test_import_form_definitions202_response.py
 sailpoint/beta/test/test_import_form_definitions202_response_errors_inner.py
-sailpoint/beta/test/test_import_non_employee_records_in_bulk_request.py
 sailpoint/beta/test/test_import_object.py
 sailpoint/beta/test/test_import_options.py
 sailpoint/beta/test/test_import_sp_config_request.py
@@ -2034,6 +2036,7 @@ sailpoint/beta/test/test_list_form_instances_by_tenant_response.py
 sailpoint/beta/test/test_list_identity_access_items200_response_inner.py
 sailpoint/beta/test/test_list_predefined_select_options_response.py
 sailpoint/beta/test/test_list_workgroup_members200_response_inner.py
+sailpoint/beta/test/test_load_entitlement_task.py
 sailpoint/beta/test/test_locale_origin.py
 sailpoint/beta/test/test_localized_message.py
 sailpoint/beta/test/test_lookup_step.py

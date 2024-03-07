@@ -174,6 +174,7 @@ Class | Method | HTTP request | Description
 *CustomPasswordInstructionsApi* | [**get_custom_password_instructions**](sailpoint/beta/docs/CustomPasswordInstructionsApi.md#get_custom_password_instructions) | **GET** /custom-password-instructions/{pageId} | Get Custom Password Instructions by Page ID
 *EntitlementsApi* | [**get_entitlement**](sailpoint/beta/docs/EntitlementsApi.md#get_entitlement) | **GET** /entitlements/{id} | Get an entitlement
 *EntitlementsApi* | [**get_entitlement_request_config**](sailpoint/beta/docs/EntitlementsApi.md#get_entitlement_request_config) | **GET** /entitlements/{id}/entitlement-request-config | Get Entitlement Request Config
+*EntitlementsApi* | [**import_entitlement_csv**](sailpoint/beta/docs/EntitlementsApi.md#import_entitlement_csv) | **POST** /entitlements/aggregate/sources/{id} | Import Entitlement CSV File
 *EntitlementsApi* | [**list_entitlement_children**](sailpoint/beta/docs/EntitlementsApi.md#list_entitlement_children) | **GET** /entitlements/{id}/children | List of entitlements children
 *EntitlementsApi* | [**list_entitlement_parents**](sailpoint/beta/docs/EntitlementsApi.md#list_entitlement_parents) | **GET** /entitlements/{id}/parents | List of entitlements parents
 *EntitlementsApi* | [**list_entitlements**](sailpoint/beta/docs/EntitlementsApi.md#list_entitlements) | **GET** /entitlements | Gets a list of entitlements.
@@ -889,9 +890,9 @@ Class | Method | HTTP request | Description
  - [IdentitySyncPayload](sailpoint/beta/docs/IdentitySyncPayload.md)
  - [IdentityWithNewAccess](sailpoint/beta/docs/IdentityWithNewAccess.md)
  - [IdentityWithNewAccessAccessRefsInner](sailpoint/beta/docs/IdentityWithNewAccessAccessRefsInner.md)
+ - [ImportEntitlementCsvRequest](sailpoint/beta/docs/ImportEntitlementCsvRequest.md)
  - [ImportFormDefinitions202Response](sailpoint/beta/docs/ImportFormDefinitions202Response.md)
  - [ImportFormDefinitions202ResponseErrorsInner](sailpoint/beta/docs/ImportFormDefinitions202ResponseErrorsInner.md)
- - [ImportNonEmployeeRecordsInBulkRequest](sailpoint/beta/docs/ImportNonEmployeeRecordsInBulkRequest.md)
  - [ImportObject](sailpoint/beta/docs/ImportObject.md)
  - [ImportOptions](sailpoint/beta/docs/ImportOptions.md)
  - [ImportSpConfigRequest](sailpoint/beta/docs/ImportSpConfigRequest.md)
@@ -918,6 +919,7 @@ Class | Method | HTTP request | Description
  - [ListIdentityAccessItems200ResponseInner](sailpoint/beta/docs/ListIdentityAccessItems200ResponseInner.md)
  - [ListPredefinedSelectOptionsResponse](sailpoint/beta/docs/ListPredefinedSelectOptionsResponse.md)
  - [ListWorkgroupMembers200ResponseInner](sailpoint/beta/docs/ListWorkgroupMembers200ResponseInner.md)
+ - [LoadEntitlementTask](sailpoint/beta/docs/LoadEntitlementTask.md)
  - [LocaleOrigin](sailpoint/beta/docs/LocaleOrigin.md)
  - [LocalizedMessage](sailpoint/beta/docs/LocalizedMessage.md)
  - [LookupStep](sailpoint/beta/docs/LookupStep.md)

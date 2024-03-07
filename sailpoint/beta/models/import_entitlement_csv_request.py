@@ -25,9 +25,9 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-class ImportNonEmployeeRecordsInBulkRequest(BaseModel):
+class ImportEntitlementCsvRequest(BaseModel):
     """
-    ImportNonEmployeeRecordsInBulkRequest
+    ImportEntitlementCsvRequest
     """ # noqa: E501
     data: Union[StrictBytes, StrictStr]
     __properties: ClassVar[List[str]] = ["data"]
@@ -50,7 +50,7 @@ class ImportNonEmployeeRecordsInBulkRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
-        """Create an instance of ImportNonEmployeeRecordsInBulkRequest from a JSON string"""
+        """Create an instance of ImportEntitlementCsvRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,7 +73,7 @@ class ImportNonEmployeeRecordsInBulkRequest(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Dict) -> Self:
-        """Create an instance of ImportNonEmployeeRecordsInBulkRequest from a dict"""
+        """Create an instance of ImportEntitlementCsvRequest from a dict"""
         if obj is None:
             return None
 

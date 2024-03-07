@@ -40,6 +40,13 @@ class TestEntitlementsApi(unittest.TestCase):
         """
         pass
 
+    def test_import_entitlement_csv(self) -> None:
+        """Test case for import_entitlement_csv
+
+        Import Entitlement CSV File
+        """
+        pass
+
     def test_list_entitlement_children(self) -> None:
         """Test case for list_entitlement_children
 
