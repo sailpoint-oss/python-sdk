@@ -84,7 +84,7 @@ jobs:
         if: steps.updateVersion.outcome == 'success'
         run: |
           LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
-          sed -e "s/VERSION = '${LATEST_TAG:1}'/VERSION = '${{ github.event.inputs.version }}'/g" setup.py > setup.py.tmp && mv setup.py.tmp setup.py
+          sed -e "s/VERSION = \"${LATEST_TAG:1}\"/VERSION = \"${{ github.event.inputs.version }}\"/g" setup.py > setup.py.tmp && mv setup.py.tmp setup.py
 
       - name: Build V3 SDK
         id: buildV3
