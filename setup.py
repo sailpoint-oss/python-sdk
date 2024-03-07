@@ -30,7 +30,7 @@ setup(
     license="MIT",
     long_description_content_type='text/markdown',
     long_description="""\
-    Use this SDK to interact with the IdentityNow platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
+    Use this SDK to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
     """,  # noqa: E501
     package_data={"sailpoint": ["py.typed"]},
     classifiers=[
