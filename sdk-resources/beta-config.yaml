@@ -1,5 +1,5 @@
 templateDir: ./sdk-resources/resources
 packageName: sailpoint.beta
-packageVersion: 1.0.1
+packageVersion: 1.0.2
 apiVersion: beta
 generateSourceCodeOnly: true
