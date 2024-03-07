@@ -19,7 +19,7 @@ The Python SDK allows you to use TypeScript to interact with the SailPoint APIs 
 
 ## Documentation
 
-To get started with the Python SDK and learn about its various functionalities, refer to the [documentation](https://developer.sailpoint.com/idn/tools/sdk/python) on <https://developer.sailpoint.com>.
+To get started with the Python SDK and learn about its various functionalities, refer to the [documentation](https://developer.sailpoint.com/docs/tools/sdk/python) on <https://developer.sailpoint.com>.
 
 ## Contributing
 
