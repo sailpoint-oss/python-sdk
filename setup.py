@@ -2,6 +2,11 @@
 
 from setuptools import setup, find_packages  # noqa: H301
 
+# read the contents of your README file
+from pathlib import Path
+this_directory = Path(__file__).parent
+long_description = (this_directory / "README.md").read_text()
+
 # To install the library, run the following
 #
 # python setup.py install
@@ -29,9 +34,7 @@ setup(
     include_package_data=True,
     license="MIT",
     long_description_content_type='text/markdown',
-    long_description="""\
-    Use this SDK to interact with the Identity Security Cloud platform to achieve repeatable, automated processes with greater scalability. We encourage you to join the SailPoint Developer Community forum at https://developer.sailpoint.com/discuss to connect with other developers using our APIs.
-    """,  # noqa: E501
+    long_description=long_description,
     package_data={"sailpoint": ["py.typed"]},
     classifiers=[
         "Development Status :: 4 - Beta",
