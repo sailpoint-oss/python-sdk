@@ -1,5 +1,10 @@
 name: "Update Python SDK Version"
 
+env:
+  SAIL_CLIENT_ID: ${{ secrets.SDK_TEST_TENANT_CLIENT_ID }}
+  SAIL_CLIENT_SECRET: ${{ secrets.SDK_TEST_TENANT_CLIENT_SECRET }}
+  SAIL_BASE_URL: ${{ secrets.SDK_TEST_TENANT_BASE_URL }}
+
 run-name: Update Python SDK Version to ${{ github.event.inputs.version }}
 
 on:
