@@ -611,7 +611,7 @@ class EntitlementsApi:
     def import_entitlement_csv(
         self,
         id: Annotated[StrictStr, Field(description="Source Id")],
-        data: Union[StrictBytes, StrictStr],
+        data: Optional[Union[StrictBytes, StrictStr]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -631,7 +631,7 @@ class EntitlementsApi:
 
         :param id: Source Id (required)
         :type id: str
-        :param data: (required)
+        :param data:
         :type data: bytearray
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -687,7 +687,7 @@ class EntitlementsApi:
     def import_entitlement_csv_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Source Id")],
-        data: Union[StrictBytes, StrictStr],
+        data: Optional[Union[StrictBytes, StrictStr]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -707,7 +707,7 @@ class EntitlementsApi:
 
         :param id: Source Id (required)
         :type id: str
-        :param data: (required)
+        :param data:
         :type data: bytearray
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -763,7 +763,7 @@ class EntitlementsApi:
     def import_entitlement_csv_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Source Id")],
-        data: Union[StrictBytes, StrictStr],
+        data: Optional[Union[StrictBytes, StrictStr]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -783,7 +783,7 @@ class EntitlementsApi:
 
         :param id: Source Id (required)
         :type id: str
-        :param data: (required)
+        :param data:
         :type data: bytearray
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

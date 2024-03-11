@@ -893,6 +893,7 @@ Class | Method | HTTP request | Description
  - [ImportEntitlementCsvRequest](sailpoint/beta/docs/ImportEntitlementCsvRequest.md)
  - [ImportFormDefinitions202Response](sailpoint/beta/docs/ImportFormDefinitions202Response.md)
  - [ImportFormDefinitions202ResponseErrorsInner](sailpoint/beta/docs/ImportFormDefinitions202ResponseErrorsInner.md)
+ - [ImportNonEmployeeRecordsInBulkRequest](sailpoint/beta/docs/ImportNonEmployeeRecordsInBulkRequest.md)
  - [ImportObject](sailpoint/beta/docs/ImportObject.md)
  - [ImportOptions](sailpoint/beta/docs/ImportOptions.md)
  - [ImportSpConfigRequest](sailpoint/beta/docs/ImportSpConfigRequest.md)

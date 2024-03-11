@@ -18,18 +18,18 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Union
 from pydantic import BaseModel, StrictBytes, StrictStr
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-class ImportEntitlementCsvRequest(BaseModel):
+class ImportNonEmployeeRecordsInBulkRequest(BaseModel):
     """
-    ImportEntitlementCsvRequest
+    ImportNonEmployeeRecordsInBulkRequest
     """ # noqa: E501
-    data: Optional[Union[StrictBytes, StrictStr]] = None
+    data: Union[StrictBytes, StrictStr]
     __properties: ClassVar[List[str]] = ["data"]
 
     model_config = {
@@ -50,7 +50,7 @@ class ImportEntitlementCsvRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
-        """Create an instance of ImportEntitlementCsvRequest from a JSON string"""
+        """Create an instance of ImportNonEmployeeRecordsInBulkRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,7 +73,7 @@ class ImportEntitlementCsvRequest(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Dict) -> Self:
-        """Create an instance of ImportEntitlementCsvRequest from a dict"""
+        """Create an instance of ImportNonEmployeeRecordsInBulkRequest from a dict"""
         if obj is None:
             return None
 

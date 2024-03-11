@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | **bytearray** |  | 
+**data** | **bytearray** |  | [optional] 
 
 ## Example
 
