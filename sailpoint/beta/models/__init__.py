@@ -47,6 +47,7 @@ from sailpoint.beta.models.access_profile_usage_used_by_inner import AccessProfi
 from sailpoint.beta.models.access_recommendation_message import AccessRecommendationMessage
 from sailpoint.beta.models.access_request import AccessRequest
 from sailpoint.beta.models.access_request_config import AccessRequestConfig
+from sailpoint.beta.models.access_request_context import AccessRequestContext
 from sailpoint.beta.models.access_request_dynamic_approver import AccessRequestDynamicApprover
 from sailpoint.beta.models.access_request_dynamic_approver1 import AccessRequestDynamicApprover1
 from sailpoint.beta.models.access_request_dynamic_approver_requested_items_inner import AccessRequestDynamicApproverRequestedItemsInner
@@ -93,6 +94,7 @@ from sailpoint.beta.models.account_correlated import AccountCorrelated
 from sailpoint.beta.models.account_correlated_account import AccountCorrelatedAccount
 from sailpoint.beta.models.account_correlated_identity import AccountCorrelatedIdentity
 from sailpoint.beta.models.account_correlated_source import AccountCorrelatedSource
+from sailpoint.beta.models.account_info_dto import AccountInfoDto
 from sailpoint.beta.models.account_request_info import AccountRequestInfo
 from sailpoint.beta.models.account_status_changed import AccountStatusChanged
 from sailpoint.beta.models.account_status_changed_account import AccountStatusChangedAccount
@@ -217,6 +219,8 @@ from sailpoint.beta.models.connector_rule_response import ConnectorRuleResponse
 from sailpoint.beta.models.connector_rule_update_request import ConnectorRuleUpdateRequest
 from sailpoint.beta.models.connector_rule_validation_response import ConnectorRuleValidationResponse
 from sailpoint.beta.models.connector_rule_validation_response_details_inner import ConnectorRuleValidationResponseDetailsInner
+from sailpoint.beta.models.context_attribute_dto import ContextAttributeDto
+from sailpoint.beta.models.context_attribute_dto_value import ContextAttributeDtoValue
 from sailpoint.beta.models.correlated_governance_event import CorrelatedGovernanceEvent
 from sailpoint.beta.models.create_domain_dkim405_response import CreateDomainDkim405Response
 from sailpoint.beta.models.create_form_definition_file_request_request import CreateFormDefinitionFileRequestRequest
@@ -303,6 +307,7 @@ from sailpoint.beta.models.get_active_campaigns200_response_inner import GetActi
 from sailpoint.beta.models.get_historical_identity_events200_response_inner import GetHistoricalIdentityEvents200ResponseInner
 from sailpoint.beta.models.get_o_auth_client_response import GetOAuthClientResponse
 from sailpoint.beta.models.get_personal_access_token_response import GetPersonalAccessTokenResponse
+from sailpoint.beta.models.get_role_assignments200_response_inner import GetRoleAssignments200ResponseInner
 from sailpoint.beta.models.grant_type import GrantType
 from sailpoint.beta.models.http_authentication_type import HttpAuthenticationType
 from sailpoint.beta.models.http_config import HttpConfig
@@ -546,6 +551,8 @@ from sailpoint.beta.models.reviewer import Reviewer
 from sailpoint.beta.models.revocability import Revocability
 from sailpoint.beta.models.revocability_for_role import RevocabilityForRole
 from sailpoint.beta.models.role import Role
+from sailpoint.beta.models.role_assignment_dto import RoleAssignmentDto
+from sailpoint.beta.models.role_assignment_ref import RoleAssignmentRef
 from sailpoint.beta.models.role_assignment_source_type import RoleAssignmentSourceType
 from sailpoint.beta.models.role_bulk_delete_request import RoleBulkDeleteRequest
 from sailpoint.beta.models.role_criteria_key import RoleCriteriaKey
@@ -563,6 +570,7 @@ from sailpoint.beta.models.role_insights_insight import RoleInsightsInsight
 from sailpoint.beta.models.role_insights_response import RoleInsightsResponse
 from sailpoint.beta.models.role_insights_role import RoleInsightsRole
 from sailpoint.beta.models.role_insights_summary import RoleInsightsSummary
+from sailpoint.beta.models.role_match_dto import RoleMatchDto
 from sailpoint.beta.models.role_membership_identity import RoleMembershipIdentity
 from sailpoint.beta.models.role_membership_selector import RoleMembershipSelector
 from sailpoint.beta.models.role_membership_selector_type import RoleMembershipSelectorType
@@ -591,6 +599,7 @@ from sailpoint.beta.models.role_mining_session_scope import RoleMiningSessionSco
 from sailpoint.beta.models.role_mining_session_scoping_method import RoleMiningSessionScopingMethod
 from sailpoint.beta.models.role_mining_session_state import RoleMiningSessionState
 from sailpoint.beta.models.role_mining_session_status import RoleMiningSessionStatus
+from sailpoint.beta.models.role_target_dto import RoleTargetDto
 from sailpoint.beta.models.saved_search_complete import SavedSearchComplete
 from sailpoint.beta.models.saved_search_complete_search_results import SavedSearchCompleteSearchResults
 from sailpoint.beta.models.saved_search_complete_search_results_account import SavedSearchCompleteSearchResultsAccount

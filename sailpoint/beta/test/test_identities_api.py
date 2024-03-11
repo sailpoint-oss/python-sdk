@@ -47,6 +47,20 @@ class TestIdentitiesApi(unittest.TestCase):
         """
         pass
 
+    def test_get_role_assignment(self) -> None:
+        """Test case for get_role_assignment
+
+        Get role assignment
+        """
+        pass
+
+    def test_get_role_assignments(self) -> None:
+        """Test case for get_role_assignments
+
+        Get role assignments
+        """
+        pass
+
     def test_list_identities(self) -> None:
         """Test case for list_identities
 

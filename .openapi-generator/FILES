@@ -101,6 +101,7 @@ sailpoint/beta/docs/AccessRecommendationMessage.md
 sailpoint/beta/docs/AccessRequest.md
 sailpoint/beta/docs/AccessRequestApprovalsApi.md
 sailpoint/beta/docs/AccessRequestConfig.md
+sailpoint/beta/docs/AccessRequestContext.md
 sailpoint/beta/docs/AccessRequestDynamicApprover.md
 sailpoint/beta/docs/AccessRequestDynamicApprover1.md
 sailpoint/beta/docs/AccessRequestDynamicApproverRequestedItemsInner.md
@@ -151,6 +152,7 @@ sailpoint/beta/docs/AccountCorrelated.md
 sailpoint/beta/docs/AccountCorrelatedAccount.md
 sailpoint/beta/docs/AccountCorrelatedIdentity.md
 sailpoint/beta/docs/AccountCorrelatedSource.md
+sailpoint/beta/docs/AccountInfoDto.md
 sailpoint/beta/docs/AccountRequestInfo.md
 sailpoint/beta/docs/AccountStatusChanged.md
 sailpoint/beta/docs/AccountStatusChangedAccount.md
@@ -282,6 +284,8 @@ sailpoint/beta/docs/ConnectorRuleUpdateRequest.md
 sailpoint/beta/docs/ConnectorRuleValidationResponse.md
 sailpoint/beta/docs/ConnectorRuleValidationResponseDetailsInner.md
 sailpoint/beta/docs/ConnectorsApi.md
+sailpoint/beta/docs/ContextAttributeDto.md
+sailpoint/beta/docs/ContextAttributeDtoValue.md
 sailpoint/beta/docs/CorrelatedGovernanceEvent.md
 sailpoint/beta/docs/CreateDomainDkim405Response.md
 sailpoint/beta/docs/CreateFormDefinitionFileRequestRequest.md
@@ -371,6 +375,7 @@ sailpoint/beta/docs/GetActiveCampaigns200ResponseInner.md
 sailpoint/beta/docs/GetHistoricalIdentityEvents200ResponseInner.md
 sailpoint/beta/docs/GetOAuthClientResponse.md
 sailpoint/beta/docs/GetPersonalAccessTokenResponse.md
+sailpoint/beta/docs/GetRoleAssignments200ResponseInner.md
 sailpoint/beta/docs/GovernanceGroupsApi.md
 sailpoint/beta/docs/GrantType.md
 sailpoint/beta/docs/HttpAuthenticationType.md
@@ -642,6 +647,8 @@ sailpoint/beta/docs/Reviewer.md
 sailpoint/beta/docs/Revocability.md
 sailpoint/beta/docs/RevocabilityForRole.md
 sailpoint/beta/docs/Role.md
+sailpoint/beta/docs/RoleAssignmentDto.md
+sailpoint/beta/docs/RoleAssignmentRef.md
 sailpoint/beta/docs/RoleAssignmentSourceType.md
 sailpoint/beta/docs/RoleBulkDeleteRequest.md
 sailpoint/beta/docs/RoleCriteriaKey.md
@@ -660,6 +667,7 @@ sailpoint/beta/docs/RoleInsightsInsight.md
 sailpoint/beta/docs/RoleInsightsResponse.md
 sailpoint/beta/docs/RoleInsightsRole.md
 sailpoint/beta/docs/RoleInsightsSummary.md
+sailpoint/beta/docs/RoleMatchDto.md
 sailpoint/beta/docs/RoleMembershipIdentity.md
 sailpoint/beta/docs/RoleMembershipSelector.md
 sailpoint/beta/docs/RoleMembershipSelectorType.md
@@ -688,6 +696,7 @@ sailpoint/beta/docs/RoleMiningSessionScope.md
 sailpoint/beta/docs/RoleMiningSessionScopingMethod.md
 sailpoint/beta/docs/RoleMiningSessionState.md
 sailpoint/beta/docs/RoleMiningSessionStatus.md
+sailpoint/beta/docs/RoleTargetDto.md
 sailpoint/beta/docs/RolesApi.md
 sailpoint/beta/docs/SODPolicyApi.md
 sailpoint/beta/docs/SODViolationsApi.md
@@ -914,6 +923,7 @@ sailpoint/beta/models/access_profile_usage_used_by_inner.py
 sailpoint/beta/models/access_recommendation_message.py
 sailpoint/beta/models/access_request.py
 sailpoint/beta/models/access_request_config.py
+sailpoint/beta/models/access_request_context.py
 sailpoint/beta/models/access_request_dynamic_approver.py
 sailpoint/beta/models/access_request_dynamic_approver1.py
 sailpoint/beta/models/access_request_dynamic_approver_requested_items_inner.py
@@ -960,6 +970,7 @@ sailpoint/beta/models/account_correlated.py
 sailpoint/beta/models/account_correlated_account.py
 sailpoint/beta/models/account_correlated_identity.py
 sailpoint/beta/models/account_correlated_source.py
+sailpoint/beta/models/account_info_dto.py
 sailpoint/beta/models/account_request_info.py
 sailpoint/beta/models/account_status_changed.py
 sailpoint/beta/models/account_status_changed_account.py
@@ -1084,6 +1095,8 @@ sailpoint/beta/models/connector_rule_response.py
 sailpoint/beta/models/connector_rule_update_request.py
 sailpoint/beta/models/connector_rule_validation_response.py
 sailpoint/beta/models/connector_rule_validation_response_details_inner.py
+sailpoint/beta/models/context_attribute_dto.py
+sailpoint/beta/models/context_attribute_dto_value.py
 sailpoint/beta/models/correlated_governance_event.py
 sailpoint/beta/models/create_domain_dkim405_response.py
 sailpoint/beta/models/create_form_definition_file_request_request.py
@@ -1170,6 +1183,7 @@ sailpoint/beta/models/get_active_campaigns200_response_inner.py
 sailpoint/beta/models/get_historical_identity_events200_response_inner.py
 sailpoint/beta/models/get_o_auth_client_response.py
 sailpoint/beta/models/get_personal_access_token_response.py
+sailpoint/beta/models/get_role_assignments200_response_inner.py
 sailpoint/beta/models/grant_type.py
 sailpoint/beta/models/http_authentication_type.py
 sailpoint/beta/models/http_config.py
@@ -1413,6 +1427,8 @@ sailpoint/beta/models/reviewer.py
 sailpoint/beta/models/revocability.py
 sailpoint/beta/models/revocability_for_role.py
 sailpoint/beta/models/role.py
+sailpoint/beta/models/role_assignment_dto.py
+sailpoint/beta/models/role_assignment_ref.py
 sailpoint/beta/models/role_assignment_source_type.py
 sailpoint/beta/models/role_bulk_delete_request.py
 sailpoint/beta/models/role_criteria_key.py
@@ -1430,6 +1446,7 @@ sailpoint/beta/models/role_insights_insight.py
 sailpoint/beta/models/role_insights_response.py
 sailpoint/beta/models/role_insights_role.py
 sailpoint/beta/models/role_insights_summary.py
+sailpoint/beta/models/role_match_dto.py
 sailpoint/beta/models/role_membership_identity.py
 sailpoint/beta/models/role_membership_selector.py
 sailpoint/beta/models/role_membership_selector_type.py
@@ -1458,6 +1475,7 @@ sailpoint/beta/models/role_mining_session_scope.py
 sailpoint/beta/models/role_mining_session_scoping_method.py
 sailpoint/beta/models/role_mining_session_state.py
 sailpoint/beta/models/role_mining_session_status.py
+sailpoint/beta/models/role_target_dto.py
 sailpoint/beta/models/saved_search_complete.py
 sailpoint/beta/models/saved_search_complete_search_results.py
 sailpoint/beta/models/saved_search_complete_search_results_account.py
@@ -1669,6 +1687,7 @@ sailpoint/beta/test/test_access_recommendation_message.py
 sailpoint/beta/test/test_access_request.py
 sailpoint/beta/test/test_access_request_approvals_api.py
 sailpoint/beta/test/test_access_request_config.py
+sailpoint/beta/test/test_access_request_context.py
 sailpoint/beta/test/test_access_request_dynamic_approver.py
 sailpoint/beta/test/test_access_request_dynamic_approver1.py
 sailpoint/beta/test/test_access_request_dynamic_approver_requested_items_inner.py
@@ -1719,6 +1738,7 @@ sailpoint/beta/test/test_account_correlated.py
 sailpoint/beta/test/test_account_correlated_account.py
 sailpoint/beta/test/test_account_correlated_identity.py
 sailpoint/beta/test/test_account_correlated_source.py
+sailpoint/beta/test/test_account_info_dto.py
 sailpoint/beta/test/test_account_request_info.py
 sailpoint/beta/test/test_account_status_changed.py
 sailpoint/beta/test/test_account_status_changed_account.py
@@ -1850,6 +1870,8 @@ sailpoint/beta/test/test_connector_rule_update_request.py
 sailpoint/beta/test/test_connector_rule_validation_response.py
 sailpoint/beta/test/test_connector_rule_validation_response_details_inner.py
 sailpoint/beta/test/test_connectors_api.py
+sailpoint/beta/test/test_context_attribute_dto.py
+sailpoint/beta/test/test_context_attribute_dto_value.py
 sailpoint/beta/test/test_correlated_governance_event.py
 sailpoint/beta/test/test_create_domain_dkim405_response.py
 sailpoint/beta/test/test_create_form_definition_file_request_request.py
@@ -1939,6 +1961,7 @@ sailpoint/beta/test/test_get_active_campaigns200_response_inner.py
 sailpoint/beta/test/test_get_historical_identity_events200_response_inner.py
 sailpoint/beta/test/test_get_o_auth_client_response.py
 sailpoint/beta/test/test_get_personal_access_token_response.py
+sailpoint/beta/test/test_get_role_assignments200_response_inner.py
 sailpoint/beta/test/test_governance_groups_api.py
 sailpoint/beta/test/test_grant_type.py
 sailpoint/beta/test/test_http_authentication_type.py
@@ -2210,6 +2233,8 @@ sailpoint/beta/test/test_reviewer.py
 sailpoint/beta/test/test_revocability.py
 sailpoint/beta/test/test_revocability_for_role.py
 sailpoint/beta/test/test_role.py
+sailpoint/beta/test/test_role_assignment_dto.py
+sailpoint/beta/test/test_role_assignment_ref.py
 sailpoint/beta/test/test_role_assignment_source_type.py
 sailpoint/beta/test/test_role_bulk_delete_request.py
 sailpoint/beta/test/test_role_criteria_key.py
@@ -2228,6 +2253,7 @@ sailpoint/beta/test/test_role_insights_insight.py
 sailpoint/beta/test/test_role_insights_response.py
 sailpoint/beta/test/test_role_insights_role.py
 sailpoint/beta/test/test_role_insights_summary.py
+sailpoint/beta/test/test_role_match_dto.py
 sailpoint/beta/test/test_role_membership_identity.py
 sailpoint/beta/test/test_role_membership_selector.py
 sailpoint/beta/test/test_role_membership_selector_type.py
@@ -2256,6 +2282,7 @@ sailpoint/beta/test/test_role_mining_session_scope.py
 sailpoint/beta/test/test_role_mining_session_scoping_method.py
 sailpoint/beta/test/test_role_mining_session_state.py
 sailpoint/beta/test/test_role_mining_session_status.py
+sailpoint/beta/test/test_role_target_dto.py
 sailpoint/beta/test/test_roles_api.py
 sailpoint/beta/test/test_saved_search_complete.py
 sailpoint/beta/test/test_saved_search_complete_search_results.py

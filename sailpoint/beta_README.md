@@ -243,6 +243,8 @@ Class | Method | HTTP request | Description
 *IdentitiesApi* | [**delete_identity**](sailpoint/beta/docs/IdentitiesApi.md#delete_identity) | **DELETE** /identities/{id} | Deletes an identity.
 *IdentitiesApi* | [**get_identity**](sailpoint/beta/docs/IdentitiesApi.md#get_identity) | **GET** /identities/{id} | Identity Details
 *IdentitiesApi* | [**get_identity_ownership_details**](sailpoint/beta/docs/IdentitiesApi.md#get_identity_ownership_details) | **GET** /identities/{identityId}/ownership | Get ownership details
+*IdentitiesApi* | [**get_role_assignment**](sailpoint/beta/docs/IdentitiesApi.md#get_role_assignment) | **GET** /identities/{identityId}/role-assignments/{assignmentId} | Get role assignment
+*IdentitiesApi* | [**get_role_assignments**](sailpoint/beta/docs/IdentitiesApi.md#get_role_assignments) | **GET** /identities/{identityId}/role-assignments | Get role assignments
 *IdentitiesApi* | [**list_identities**](sailpoint/beta/docs/IdentitiesApi.md#list_identities) | **GET** /identities | List Identities
 *IdentitiesApi* | [**start_identity_processing**](sailpoint/beta/docs/IdentitiesApi.md#start_identity_processing) | **POST** /identities/process | Process a list of identityIds
 *IdentitiesApi* | [**synchronize_attributes_for_identity**](sailpoint/beta/docs/IdentitiesApi.md#synchronize_attributes_for_identity) | **POST** /identities/{identityId}/synchronize-attributes | Attribute synchronization for single identity.
@@ -577,6 +579,7 @@ Class | Method | HTTP request | Description
  - [AccessRecommendationMessage](sailpoint/beta/docs/AccessRecommendationMessage.md)
  - [AccessRequest](sailpoint/beta/docs/AccessRequest.md)
  - [AccessRequestConfig](sailpoint/beta/docs/AccessRequestConfig.md)
+ - [AccessRequestContext](sailpoint/beta/docs/AccessRequestContext.md)
  - [AccessRequestDynamicApprover](sailpoint/beta/docs/AccessRequestDynamicApprover.md)
  - [AccessRequestDynamicApprover1](sailpoint/beta/docs/AccessRequestDynamicApprover1.md)
  - [AccessRequestDynamicApproverRequestedItemsInner](sailpoint/beta/docs/AccessRequestDynamicApproverRequestedItemsInner.md)
@@ -623,6 +626,7 @@ Class | Method | HTTP request | Description
  - [AccountCorrelatedAccount](sailpoint/beta/docs/AccountCorrelatedAccount.md)
  - [AccountCorrelatedIdentity](sailpoint/beta/docs/AccountCorrelatedIdentity.md)
  - [AccountCorrelatedSource](sailpoint/beta/docs/AccountCorrelatedSource.md)
+ - [AccountInfoDto](sailpoint/beta/docs/AccountInfoDto.md)
  - [AccountRequestInfo](sailpoint/beta/docs/AccountRequestInfo.md)
  - [AccountStatusChanged](sailpoint/beta/docs/AccountStatusChanged.md)
  - [AccountStatusChangedAccount](sailpoint/beta/docs/AccountStatusChangedAccount.md)
@@ -747,6 +751,8 @@ Class | Method | HTTP request | Description
  - [ConnectorRuleUpdateRequest](sailpoint/beta/docs/ConnectorRuleUpdateRequest.md)
  - [ConnectorRuleValidationResponse](sailpoint/beta/docs/ConnectorRuleValidationResponse.md)
  - [ConnectorRuleValidationResponseDetailsInner](sailpoint/beta/docs/ConnectorRuleValidationResponseDetailsInner.md)
+ - [ContextAttributeDto](sailpoint/beta/docs/ContextAttributeDto.md)
+ - [ContextAttributeDtoValue](sailpoint/beta/docs/ContextAttributeDtoValue.md)
  - [CorrelatedGovernanceEvent](sailpoint/beta/docs/CorrelatedGovernanceEvent.md)
  - [CreateDomainDkim405Response](sailpoint/beta/docs/CreateDomainDkim405Response.md)
  - [CreateFormDefinitionFileRequestRequest](sailpoint/beta/docs/CreateFormDefinitionFileRequestRequest.md)
@@ -833,6 +839,7 @@ Class | Method | HTTP request | Description
  - [GetHistoricalIdentityEvents200ResponseInner](sailpoint/beta/docs/GetHistoricalIdentityEvents200ResponseInner.md)
  - [GetOAuthClientResponse](sailpoint/beta/docs/GetOAuthClientResponse.md)
  - [GetPersonalAccessTokenResponse](sailpoint/beta/docs/GetPersonalAccessTokenResponse.md)
+ - [GetRoleAssignments200ResponseInner](sailpoint/beta/docs/GetRoleAssignments200ResponseInner.md)
  - [GrantType](sailpoint/beta/docs/GrantType.md)
  - [HttpAuthenticationType](sailpoint/beta/docs/HttpAuthenticationType.md)
  - [HttpConfig](sailpoint/beta/docs/HttpConfig.md)
@@ -1076,6 +1083,8 @@ Class | Method | HTTP request | Description
  - [Revocability](sailpoint/beta/docs/Revocability.md)
  - [RevocabilityForRole](sailpoint/beta/docs/RevocabilityForRole.md)
  - [Role](sailpoint/beta/docs/Role.md)
+ - [RoleAssignmentDto](sailpoint/beta/docs/RoleAssignmentDto.md)
+ - [RoleAssignmentRef](sailpoint/beta/docs/RoleAssignmentRef.md)
  - [RoleAssignmentSourceType](sailpoint/beta/docs/RoleAssignmentSourceType.md)
  - [RoleBulkDeleteRequest](sailpoint/beta/docs/RoleBulkDeleteRequest.md)
  - [RoleCriteriaKey](sailpoint/beta/docs/RoleCriteriaKey.md)
@@ -1093,6 +1102,7 @@ Class | Method | HTTP request | Description
  - [RoleInsightsResponse](sailpoint/beta/docs/RoleInsightsResponse.md)
  - [RoleInsightsRole](sailpoint/beta/docs/RoleInsightsRole.md)
  - [RoleInsightsSummary](sailpoint/beta/docs/RoleInsightsSummary.md)
+ - [RoleMatchDto](sailpoint/beta/docs/RoleMatchDto.md)
  - [RoleMembershipIdentity](sailpoint/beta/docs/RoleMembershipIdentity.md)
  - [RoleMembershipSelector](sailpoint/beta/docs/RoleMembershipSelector.md)
  - [RoleMembershipSelectorType](sailpoint/beta/docs/RoleMembershipSelectorType.md)
@@ -1121,6 +1131,7 @@ Class | Method | HTTP request | Description
  - [RoleMiningSessionScopingMethod](sailpoint/beta/docs/RoleMiningSessionScopingMethod.md)
  - [RoleMiningSessionState](sailpoint/beta/docs/RoleMiningSessionState.md)
  - [RoleMiningSessionStatus](sailpoint/beta/docs/RoleMiningSessionStatus.md)
+ - [RoleTargetDto](sailpoint/beta/docs/RoleTargetDto.md)
  - [SavedSearchComplete](sailpoint/beta/docs/SavedSearchComplete.md)
  - [SavedSearchCompleteSearchResults](sailpoint/beta/docs/SavedSearchCompleteSearchResults.md)
  - [SavedSearchCompleteSearchResultsAccount](sailpoint/beta/docs/SavedSearchCompleteSearchResultsAccount.md)

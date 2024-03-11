@@ -7,6 +7,8 @@ Method | HTTP request | Description
 [**delete_identity**](IdentitiesApi.md#delete_identity) | **DELETE** /identities/{id} | Deletes an identity.
 [**get_identity**](IdentitiesApi.md#get_identity) | **GET** /identities/{id} | Identity Details
 [**get_identity_ownership_details**](IdentitiesApi.md#get_identity_ownership_details) | **GET** /identities/{identityId}/ownership | Get ownership details
+[**get_role_assignment**](IdentitiesApi.md#get_role_assignment) | **GET** /identities/{identityId}/role-assignments/{assignmentId} | Get role assignment
+[**get_role_assignments**](IdentitiesApi.md#get_role_assignments) | **GET** /identities/{identityId}/role-assignments | Get role assignments
 [**list_identities**](IdentitiesApi.md#list_identities) | **GET** /identities | List Identities
 [**start_identity_processing**](IdentitiesApi.md#start_identity_processing) | **POST** /identities/process | Process a list of identityIds
 [**synchronize_attributes_for_identity**](IdentitiesApi.md#synchronize_attributes_for_identity) | **POST** /identities/{identityId}/synchronize-attributes | Attribute synchronization for single identity.
@@ -258,6 +260,182 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ownership association details of an Identity. |  -  |
+**400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
+**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**404** | Not Found - returned if the request URL refers to a resource or object that does not exist |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_role_assignment**
+> RoleAssignmentDto get_role_assignment(identity_id, assignment_id)
+
+Get role assignment
+
+### Example
+
+* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (UserContextAuth):
+
+```python
+import time
+import os
+import sailpoint.beta
+from sailpoint.beta.models.role_assignment_dto import RoleAssignmentDto
+from sailpoint.beta.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sailpoint.beta.Configuration(
+    host = "https://sailpoint.api.identitynow.com/beta"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with sailpoint.beta.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sailpoint.beta.IdentitiesApi(api_client)
+    identity_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Identity Id
+    assignment_id = '1cbb0705b38c4226b1334eadd8874086' # str | Assignment Id
+
+    try:
+        # Get role assignment
+        api_response = api_instance.get_role_assignment(identity_id, assignment_id)
+        print("The response of IdentitiesApi->get_role_assignment:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling IdentitiesApi->get_role_assignment: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identity_id** | **str**| Identity Id | 
+ **assignment_id** | **str**| Assignment Id | 
+
+### Return type
+
+[**RoleAssignmentDto**](RoleAssignmentDto.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A role assignment object |  -  |
+**400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
+**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**404** | Not Found - returned if the request URL refers to a resource or object that does not exist |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_role_assignments**
+> List[GetRoleAssignments200ResponseInner] get_role_assignments(identity_id, role_id=role_id, role_name=role_name)
+
+Get role assignments
+
+This returns either a list of Role Assignments when querying with either a Role Id or Role Name, or a list of Role Assignment References if querying with only identity Id.
+
+### Example
+
+* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (UserContextAuth):
+
+```python
+import time
+import os
+import sailpoint.beta
+from sailpoint.beta.models.get_role_assignments200_response_inner import GetRoleAssignments200ResponseInner
+from sailpoint.beta.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sailpoint.beta.Configuration(
+    host = "https://sailpoint.api.identitynow.com/beta"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with sailpoint.beta.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sailpoint.beta.IdentitiesApi(api_client)
+    identity_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Identity Id to get the role assignments for
+    role_id = 'e7697a1e96d04db1ac7b0f4544915d2c' # str | Role Id to filter the role assignments with (optional)
+    role_name = 'Engineer' # str | Role name to filter the role assignments with (optional)
+
+    try:
+        # Get role assignments
+        api_response = api_instance.get_role_assignments(identity_id, role_id=role_id, role_name=role_name)
+        print("The response of IdentitiesApi->get_role_assignments:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling IdentitiesApi->get_role_assignments: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identity_id** | **str**| Identity Id to get the role assignments for | 
+ **role_id** | **str**| Role Id to filter the role assignments with | [optional] 
+ **role_name** | **str**| Role name to filter the role assignments with | [optional] 
+
+### Return type
+
+[**List[GetRoleAssignments200ResponseInner]**](GetRoleAssignments200ResponseInner.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A role assignment object |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
