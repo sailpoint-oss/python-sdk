@@ -56,8 +56,8 @@ class AuthUser(BaseModel):
             return value
 
         for i in value:
-            if i not in ('CERT_ADMIN', 'CLOUD_GOV_ADMIN', 'CLOUD_GOV_USER', 'HELPDESK', 'ORG_ADMIN', 'REPORT_ADMIN', 'ROLE_ADMIN', 'ROLE_SUBADMIN', 'SAAS_MANAGEMENT_ADMIN', 'SAAS_MANAGEMENT_READER', 'SOURCE_ADMIN', 'SOURCE_SUBADMIN', 'das:ui-administrator', 'das:ui-compliance_manager', 'das:ui-auditor', 'das:ui-data-scope', 'sp:aic-dashboard-read', 'sp:aic-dashboard-write'):
-                raise ValueError("each list item must be one of ('CERT_ADMIN', 'CLOUD_GOV_ADMIN', 'CLOUD_GOV_USER', 'HELPDESK', 'ORG_ADMIN', 'REPORT_ADMIN', 'ROLE_ADMIN', 'ROLE_SUBADMIN', 'SAAS_MANAGEMENT_ADMIN', 'SAAS_MANAGEMENT_READER', 'SOURCE_ADMIN', 'SOURCE_SUBADMIN', 'das:ui-administrator', 'das:ui-compliance_manager', 'das:ui-auditor', 'das:ui-data-scope', 'sp:aic-dashboard-read', 'sp:aic-dashboard-write')")
+            if i not in ('CERT_ADMIN', 'CLOUD_GOV_ADMIN', 'CLOUD_GOV_USER', 'HELPDESK', 'ORG_ADMIN', 'REPORT_ADMIN', 'ROLE_ADMIN', 'ROLE_SUBADMIN', 'SAAS_MANAGEMENT_ADMIN', 'SAAS_MANAGEMENT_READER', 'SOURCE_ADMIN', 'SOURCE_SUBADMIN', 'das:ui-administrator', 'das:ui-compliance_manager', 'das:ui-auditor', 'das:ui-data-scope', 'sp:aic-dashboard-read', 'sp:aic-dashboard-write', 'sp:ui-config-hub-admin', 'sp:ui-config-hub-backup-admin', 'sp:ui-config-hub-read'):
+                raise ValueError("each list item must be one of ('CERT_ADMIN', 'CLOUD_GOV_ADMIN', 'CLOUD_GOV_USER', 'HELPDESK', 'ORG_ADMIN', 'REPORT_ADMIN', 'ROLE_ADMIN', 'ROLE_SUBADMIN', 'SAAS_MANAGEMENT_ADMIN', 'SAAS_MANAGEMENT_READER', 'SOURCE_ADMIN', 'SOURCE_SUBADMIN', 'das:ui-administrator', 'das:ui-compliance_manager', 'das:ui-auditor', 'das:ui-data-scope', 'sp:aic-dashboard-read', 'sp:aic-dashboard-write', 'sp:ui-config-hub-admin', 'sp:ui-config-hub-backup-admin', 'sp:ui-config-hub-read')")
         return value
 
     model_config = {
