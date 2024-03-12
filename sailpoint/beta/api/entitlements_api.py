@@ -611,7 +611,7 @@ class EntitlementsApi:
     def import_entitlement_csv(
         self,
         id: Annotated[StrictStr, Field(description="Source Id")],
-        data: Optional[Union[StrictBytes, StrictStr]] = None,
+        csv_file: Union[StrictBytes, StrictStr],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -631,8 +631,8 @@ class EntitlementsApi:
 
         :param id: Source Id (required)
         :type id: str
-        :param data:
-        :type data: bytearray
+        :param csv_file: (required)
+        :type csv_file: bytearray
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -657,7 +657,7 @@ class EntitlementsApi:
 
         _param = self._import_entitlement_csv_serialize(
             id=id,
-            data=data,
+            csv_file=csv_file,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -687,7 +687,7 @@ class EntitlementsApi:
     def import_entitlement_csv_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Source Id")],
-        data: Optional[Union[StrictBytes, StrictStr]] = None,
+        csv_file: Union[StrictBytes, StrictStr],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -707,8 +707,8 @@ class EntitlementsApi:
 
         :param id: Source Id (required)
         :type id: str
-        :param data:
-        :type data: bytearray
+        :param csv_file: (required)
+        :type csv_file: bytearray
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -733,7 +733,7 @@ class EntitlementsApi:
 
         _param = self._import_entitlement_csv_serialize(
             id=id,
-            data=data,
+            csv_file=csv_file,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -763,7 +763,7 @@ class EntitlementsApi:
     def import_entitlement_csv_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Source Id")],
-        data: Optional[Union[StrictBytes, StrictStr]] = None,
+        csv_file: Union[StrictBytes, StrictStr],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -783,8 +783,8 @@ class EntitlementsApi:
 
         :param id: Source Id (required)
         :type id: str
-        :param data:
-        :type data: bytearray
+        :param csv_file: (required)
+        :type csv_file: bytearray
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -809,7 +809,7 @@ class EntitlementsApi:
 
         _param = self._import_entitlement_csv_serialize(
             id=id,
-            data=data,
+            csv_file=csv_file,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -834,7 +834,7 @@ class EntitlementsApi:
     def _import_entitlement_csv_serialize(
         self,
         id,
-        data,
+        csv_file,
         _request_auth,
         _content_type,
         _headers,
@@ -859,8 +859,8 @@ class EntitlementsApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if data is not None:
-            _files['data'] = data
+        if csv_file is not None:
+            _files['csvFile'] = csv_file
         # process the body parameter
 
 

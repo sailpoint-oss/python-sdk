@@ -18,8 +18,9 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Union
 from pydantic import BaseModel, StrictBytes, StrictStr
+from pydantic import Field
 try:
     from typing import Self
 except ImportError:
@@ -29,8 +30,8 @@ class ImportEntitlementCsvRequest(BaseModel):
     """
     ImportEntitlementCsvRequest
     """ # noqa: E501
-    data: Optional[Union[StrictBytes, StrictStr]] = None
-    __properties: ClassVar[List[str]] = ["data"]
+    csv_file: Union[StrictBytes, StrictStr] = Field(alias="csvFile")
+    __properties: ClassVar[List[str]] = ["csvFile"]
 
     model_config = {
         "populate_by_name": True,
@@ -81,7 +82,7 @@ class ImportEntitlementCsvRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "data": obj.get("data")
+            "csvFile": obj.get("csvFile")
         })
         return _obj
 

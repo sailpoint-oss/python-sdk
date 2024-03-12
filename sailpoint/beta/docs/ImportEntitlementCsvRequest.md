@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | **bytearray** |  | [optional] 
+**csv_file** | **bytearray** |  | 
 
 ## Example
 

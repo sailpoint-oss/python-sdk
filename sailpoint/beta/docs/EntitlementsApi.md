@@ -188,7 +188,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **import_entitlement_csv**
-> LoadEntitlementTask import_entitlement_csv(id, data=data)
+> LoadEntitlementTask import_entitlement_csv(id, csv_file)
 
 Import Entitlement CSV File
 
@@ -227,11 +227,11 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.EntitlementsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source Id
-    data = None # bytearray |  (optional)
+    csv_file = None # bytearray | 
 
     try:
         # Import Entitlement CSV File
-        api_response = api_instance.import_entitlement_csv(id, data=data)
+        api_response = api_instance.import_entitlement_csv(id, csv_file)
         print("The response of EntitlementsApi->import_entitlement_csv:\n")
         pprint(api_response)
     except Exception as e:
@@ -246,7 +246,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| Source Id | 
- **data** | **bytearray**|  | [optional] 
+ **csv_file** | **bytearray**|  | 
 
 ### Return type
 
