@@ -180,6 +180,7 @@ Class | Method | HTTP request | Description
 *EntitlementsApi* | [**list_entitlements**](sailpoint/beta/docs/EntitlementsApi.md#list_entitlements) | **GET** /entitlements | Gets a list of entitlements.
 *EntitlementsApi* | [**patch_entitlement**](sailpoint/beta/docs/EntitlementsApi.md#patch_entitlement) | **PATCH** /entitlements/{id} | Patch an entitlement
 *EntitlementsApi* | [**put_entitlement_request_config**](sailpoint/beta/docs/EntitlementsApi.md#put_entitlement_request_config) | **PUT** /entitlements/{id}/entitlement-request-config | Replace Entitlement Request Config
+*EntitlementsApi* | [**reset_source_entitlements**](sailpoint/beta/docs/EntitlementsApi.md#reset_source_entitlements) | **POST** /entitlements/reset/sources/{id} | Reset Source Entitlements
 *EntitlementsApi* | [**update_entitlements_in_bulk**](sailpoint/beta/docs/EntitlementsApi.md#update_entitlements_in_bulk) | **POST** /entitlements/bulk-update | Bulk update an entitlement list
 *GovernanceGroupsApi* | [**create_workgroup**](sailpoint/beta/docs/GovernanceGroupsApi.md#create_workgroup) | **POST** /workgroups | Create a new Governance Group.
 *GovernanceGroupsApi* | [**delete_workgroup**](sailpoint/beta/docs/GovernanceGroupsApi.md#delete_workgroup) | **DELETE** /workgroups/{id} | Delete a Governance Group
@@ -784,6 +785,7 @@ Class | Method | HTTP request | Description
  - [EntitlementRequestConfig](sailpoint/beta/docs/EntitlementRequestConfig.md)
  - [EntitlementRequestConfig1](sailpoint/beta/docs/EntitlementRequestConfig1.md)
  - [EntitlementSource](sailpoint/beta/docs/EntitlementSource.md)
+ - [EntitlementSourceResetBaseReferenceDto](sailpoint/beta/docs/EntitlementSourceResetBaseReferenceDto.md)
  - [EntityCreatedByDTO](sailpoint/beta/docs/EntityCreatedByDTO.md)
  - [Error](sailpoint/beta/docs/Error.md)
  - [ErrorMessage](sailpoint/beta/docs/ErrorMessage.md)

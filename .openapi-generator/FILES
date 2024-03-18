@@ -319,6 +319,7 @@ sailpoint/beta/docs/EntitlementRef.md
 sailpoint/beta/docs/EntitlementRequestConfig.md
 sailpoint/beta/docs/EntitlementRequestConfig1.md
 sailpoint/beta/docs/EntitlementSource.md
+sailpoint/beta/docs/EntitlementSourceResetBaseReferenceDto.md
 sailpoint/beta/docs/EntitlementsApi.md
 sailpoint/beta/docs/EntityCreatedByDTO.md
 sailpoint/beta/docs/Error.md
@@ -1128,6 +1129,7 @@ sailpoint/beta/models/entitlement_ref.py
 sailpoint/beta/models/entitlement_request_config.py
 sailpoint/beta/models/entitlement_request_config1.py
 sailpoint/beta/models/entitlement_source.py
+sailpoint/beta/models/entitlement_source_reset_base_reference_dto.py
 sailpoint/beta/models/entity_created_by_dto.py
 sailpoint/beta/models/error.py
 sailpoint/beta/models/error_message.py
@@ -1905,6 +1907,7 @@ sailpoint/beta/test/test_entitlement_ref.py
 sailpoint/beta/test/test_entitlement_request_config.py
 sailpoint/beta/test/test_entitlement_request_config1.py
 sailpoint/beta/test/test_entitlement_source.py
+sailpoint/beta/test/test_entitlement_source_reset_base_reference_dto.py
 sailpoint/beta/test/test_entitlements_api.py
 sailpoint/beta/test/test_entity_created_by_dto.py
 sailpoint/beta/test/test_error.py

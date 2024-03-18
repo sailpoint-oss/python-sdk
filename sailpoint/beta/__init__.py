@@ -330,6 +330,7 @@ from sailpoint.beta.models.entitlement_ref import EntitlementRef
 from sailpoint.beta.models.entitlement_request_config import EntitlementRequestConfig
 from sailpoint.beta.models.entitlement_request_config1 import EntitlementRequestConfig1
 from sailpoint.beta.models.entitlement_source import EntitlementSource
+from sailpoint.beta.models.entitlement_source_reset_base_reference_dto import EntitlementSourceResetBaseReferenceDto
 from sailpoint.beta.models.entity_created_by_dto import EntityCreatedByDTO
 from sailpoint.beta.models.error import Error
 from sailpoint.beta.models.error_message import ErrorMessage

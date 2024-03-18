@@ -82,6 +82,13 @@ class TestEntitlementsApi(unittest.TestCase):
         """
         pass
 
+    def test_reset_source_entitlements(self) -> None:
+        """Test case for reset_source_entitlements
+
+        Reset Source Entitlements
+        """
+        pass
+
     def test_update_entitlements_in_bulk(self) -> None:
         """Test case for update_entitlements_in_bulk
 
