@@ -247,6 +247,7 @@ Class | Method | HTTP request | Description
 *IdentitiesApi* | [**get_role_assignment**](sailpoint/beta/docs/IdentitiesApi.md#get_role_assignment) | **GET** /identities/{identityId}/role-assignments/{assignmentId} | Get role assignment
 *IdentitiesApi* | [**get_role_assignments**](sailpoint/beta/docs/IdentitiesApi.md#get_role_assignments) | **GET** /identities/{identityId}/role-assignments | Get role assignments
 *IdentitiesApi* | [**list_identities**](sailpoint/beta/docs/IdentitiesApi.md#list_identities) | **GET** /identities | List Identities
+*IdentitiesApi* | [**reset_identity**](sailpoint/beta/docs/IdentitiesApi.md#reset_identity) | **POST** /identities/{id}/reset | Reset an identity
 *IdentitiesApi* | [**start_identity_processing**](sailpoint/beta/docs/IdentitiesApi.md#start_identity_processing) | **POST** /identities/process | Process a list of identityIds
 *IdentitiesApi* | [**synchronize_attributes_for_identity**](sailpoint/beta/docs/IdentitiesApi.md#synchronize_attributes_for_identity) | **POST** /identities/{identityId}/synchronize-attributes | Attribute synchronization for single identity.
 *IdentityAttributesApi* | [**create_identity_attribute**](sailpoint/beta/docs/IdentityAttributesApi.md#create_identity_attribute) | **POST** /identity-attributes | Create Identity Attribute

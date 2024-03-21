@@ -68,6 +68,13 @@ class TestIdentitiesApi(unittest.TestCase):
         """
         pass
 
+    def test_reset_identity(self) -> None:
+        """Test case for reset_identity
+
+        Reset an identity
+        """
+        pass
+
     def test_start_identity_processing(self) -> None:
         """Test case for start_identity_processing
 
