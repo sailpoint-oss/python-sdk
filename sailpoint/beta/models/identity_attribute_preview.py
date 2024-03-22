@@ -32,8 +32,8 @@ class IdentityAttributePreview(BaseModel):
     IdentityAttributePreview
     """ # noqa: E501
     name: Optional[StrictStr] = Field(default=None, description="Name of the attribute that is being previewed.")
-    value: Optional[Dict[str, Any]] = Field(default=None, description="Value that was derived during the preview.")
-    previous_value: Optional[Dict[str, Any]] = Field(default=None, description="The value of the attribute before the preview.", alias="previousValue")
+    value: Optional[StrictStr] = Field(default=None, description="Value that was derived during the preview.")
+    previous_value: Optional[StrictStr] = Field(default=None, description="The value of the attribute before the preview.", alias="previousValue")
     error_messages: Optional[List[ErrorMessageDto]] = Field(default=None, alias="errorMessages")
     __properties: ClassVar[List[str]] = ["name", "value", "previousValue", "errorMessages"]
 

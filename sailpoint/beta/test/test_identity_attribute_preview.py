@@ -37,8 +37,8 @@ class TestIdentityAttributePreview(unittest.TestCase):
         if include_optional:
             return IdentityAttributePreview(
                 name = 'email',
-                value = email@mail.com,
-                previous_value = oldEmail@mail.com,
+                value = 'email@mail.com',
+                previous_value = 'oldEmail@mail.com',
                 error_messages = [
                     sailpoint.beta.models.error_message_dto.ErrorMessageDto(
                         locale = 'en-US', 
