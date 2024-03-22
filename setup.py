@@ -14,7 +14,7 @@ long_description = (this_directory / "README.md").read_text()
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 NAME = "sailpoint"
-VERSION = "1.0.2"
+VERSION = "1.0.3"
 PYTHON_REQUIRES = ">=3.7"
 REQUIRES = [
     "urllib3 >= 1.25.3, < 2.1.0", "python-dateutil", "pydantic >= 2",
