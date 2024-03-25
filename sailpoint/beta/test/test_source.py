@@ -87,7 +87,9 @@ class TestSource(unittest.TestCase):
                 connection_type = 'file',
                 connector_implementation_id = 'delimited-file',
                 created = '2022-02-08T14:50:03.827Z',
-                modified = '2024-01-23T18:08:50.897Z'
+                modified = '2024-01-23T18:08:50.897Z',
+                credential_provider_enabled = False,
+                category = 'CredentialProvider'
             )
         else:
             return Source(

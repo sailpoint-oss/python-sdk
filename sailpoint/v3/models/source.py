@@ -70,7 +70,9 @@ class Source(BaseModel):
     connector_implementation_id: Optional[StrictStr] = Field(default=None, description="The connector implementation id", alias="connectorImplementationId")
     created: Optional[datetime] = Field(default=None, description="The date-time when the source was created")
     modified: Optional[datetime] = Field(default=None, description="The date-time when the source was last modified")
-    __properties: ClassVar[List[str]] = ["id", "name", "description", "owner", "cluster", "accountCorrelationConfig", "accountCorrelationRule", "managerCorrelationMapping", "managerCorrelationRule", "beforeProvisioningRule", "schemas", "passwordPolicies", "features", "type", "connector", "connectorClass", "connectorAttributes", "deleteThreshold", "authoritative", "managementWorkgroup", "healthy", "status", "since", "connectorId", "connectorName", "connectionType", "connectorImplementationId", "created", "modified"]
+    credential_provider_enabled: Optional[StrictBool] = Field(default=False, description="Enables credential provider for this source. If credentialProvider is turned on  then source can use credential provider(s) to fetch credentials.", alias="credentialProviderEnabled")
+    category: Optional[StrictStr] = Field(default=None, description="The category of source (e.g. null, CredentialProvider)")
+    __properties: ClassVar[List[str]] = ["id", "name", "description", "owner", "cluster", "accountCorrelationConfig", "accountCorrelationRule", "managerCorrelationMapping", "managerCorrelationRule", "beforeProvisioningRule", "schemas", "passwordPolicies", "features", "type", "connector", "connectorClass", "connectorAttributes", "deleteThreshold", "authoritative", "managementWorkgroup", "healthy", "status", "since", "connectorId", "connectorName", "connectionType", "connectorImplementationId", "created", "modified", "credentialProviderEnabled", "category"]
 
     model_config = {
         "populate_by_name": True,
@@ -184,6 +186,11 @@ class Source(BaseModel):
         if self.management_workgroup is None and "management_workgroup" in self.model_fields_set:
             _dict['managementWorkgroup'] = None
 
+        # set to None if category (nullable) is None
+        # and model_fields_set contains the field
+        if self.category is None and "category" in self.model_fields_set:
+            _dict['category'] = None
+
         return _dict
 
     @classmethod
@@ -224,7 +231,9 @@ class Source(BaseModel):
             "connectionType": obj.get("connectionType"),
             "connectorImplementationId": obj.get("connectorImplementationId"),
             "created": obj.get("created"),
-            "modified": obj.get("modified")
+            "modified": obj.get("modified"),
+            "credentialProviderEnabled": obj.get("credentialProviderEnabled") if obj.get("credentialProviderEnabled") is not None else False,
+            "category": obj.get("category")
         })
         return _obj
 

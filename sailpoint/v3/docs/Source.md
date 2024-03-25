@@ -34,6 +34,8 @@ Name | Type | Description | Notes
 **connector_implementation_id** | **str** | The connector implementation id | [optional] 
 **created** | **datetime** | The date-time when the source was created | [optional] 
 **modified** | **datetime** | The date-time when the source was last modified | [optional] 
+**credential_provider_enabled** | **bool** | Enables credential provider for this source. If credentialProvider is turned on  then source can use credential provider(s) to fetch credentials. | [optional] [default to False]
+**category** | **str** | The category of source (e.g. null, CredentialProvider) | [optional] 
 
 ## Example
 
