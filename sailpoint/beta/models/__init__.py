@@ -633,6 +633,8 @@ from sailpoint.beta.models.service_desk_integration_dto_all_of_owner_ref import 
 from sailpoint.beta.models.service_desk_integration_template_dto import ServiceDeskIntegrationTemplateDto
 from sailpoint.beta.models.service_desk_integration_template_type import ServiceDeskIntegrationTemplateType
 from sailpoint.beta.models.service_desk_source import ServiceDeskSource
+from sailpoint.beta.models.set_icon200_response import SetIcon200Response
+from sailpoint.beta.models.set_icon_request import SetIconRequest
 from sailpoint.beta.models.slimcampaign import Slimcampaign
 from sailpoint.beta.models.sod_exempt_criteria import SodExemptCriteria
 from sailpoint.beta.models.sod_exempt_criteria1 import SodExemptCriteria1

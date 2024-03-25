@@ -41,6 +41,7 @@ from sailpoint.beta.api.iai_outliers_api import IAIOutliersApi
 from sailpoint.beta.api.iai_peer_group_strategies_api import IAIPeerGroupStrategiesApi
 from sailpoint.beta.api.iai_recommendations_api import IAIRecommendationsApi
 from sailpoint.beta.api.iai_role_mining_api import IAIRoleMiningApi
+from sailpoint.beta.api.icons_api import IconsApi
 from sailpoint.beta.api.identities_api import IdentitiesApi
 from sailpoint.beta.api.identity_attributes_api import IdentityAttributesApi
 from sailpoint.beta.api.identity_history_api import IdentityHistoryApi
@@ -711,6 +712,8 @@ from sailpoint.beta.models.service_desk_integration_dto_all_of_owner_ref import 
 from sailpoint.beta.models.service_desk_integration_template_dto import ServiceDeskIntegrationTemplateDto
 from sailpoint.beta.models.service_desk_integration_template_type import ServiceDeskIntegrationTemplateType
 from sailpoint.beta.models.service_desk_source import ServiceDeskSource
+from sailpoint.beta.models.set_icon200_response import SetIcon200Response
+from sailpoint.beta.models.set_icon_request import SetIconRequest
 from sailpoint.beta.models.slimcampaign import Slimcampaign
 from sailpoint.beta.models.sod_exempt_criteria import SodExemptCriteria
 from sailpoint.beta.models.sod_exempt_criteria1 import SodExemptCriteria1

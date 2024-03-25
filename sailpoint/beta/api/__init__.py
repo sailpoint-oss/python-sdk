@@ -25,6 +25,7 @@ from sailpoint.beta.api.iai_outliers_api import IAIOutliersApi
 from sailpoint.beta.api.iai_peer_group_strategies_api import IAIPeerGroupStrategiesApi
 from sailpoint.beta.api.iai_recommendations_api import IAIRecommendationsApi
 from sailpoint.beta.api.iai_role_mining_api import IAIRoleMiningApi
+from sailpoint.beta.api.icons_api import IconsApi
 from sailpoint.beta.api.identities_api import IdentitiesApi
 from sailpoint.beta.api.identity_attributes_api import IdentityAttributesApi
 from sailpoint.beta.api.identity_history_api import IdentityHistoryApi

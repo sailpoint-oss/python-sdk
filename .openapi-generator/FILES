@@ -25,6 +25,7 @@ sailpoint/beta/api/iai_outliers_api.py
 sailpoint/beta/api/iai_peer_group_strategies_api.py
 sailpoint/beta/api/iai_recommendations_api.py
 sailpoint/beta/api/iai_role_mining_api.py
+sailpoint/beta/api/icons_api.py
 sailpoint/beta/api/identities_api.py
 sailpoint/beta/api/identity_attributes_api.py
 sailpoint/beta/api/identity_history_api.py
@@ -389,6 +390,7 @@ sailpoint/beta/docs/IAIOutliersApi.md
 sailpoint/beta/docs/IAIPeerGroupStrategiesApi.md
 sailpoint/beta/docs/IAIRecommendationsApi.md
 sailpoint/beta/docs/IAIRoleMiningApi.md
+sailpoint/beta/docs/IconsApi.md
 sailpoint/beta/docs/IdentitiesAccountsBulkRequest.md
 sailpoint/beta/docs/IdentitiesApi.md
 sailpoint/beta/docs/Identity.md
@@ -737,6 +739,8 @@ sailpoint/beta/docs/ServiceDeskIntegrationDtoAllOfOwnerRef.md
 sailpoint/beta/docs/ServiceDeskIntegrationTemplateDto.md
 sailpoint/beta/docs/ServiceDeskIntegrationTemplateType.md
 sailpoint/beta/docs/ServiceDeskSource.md
+sailpoint/beta/docs/SetIcon200Response.md
+sailpoint/beta/docs/SetIconRequest.md
 sailpoint/beta/docs/Slimcampaign.md
 sailpoint/beta/docs/SodExemptCriteria.md
 sailpoint/beta/docs/SodExemptCriteria1.md
@@ -1510,6 +1514,8 @@ sailpoint/beta/models/service_desk_integration_dto_all_of_owner_ref.py
 sailpoint/beta/models/service_desk_integration_template_dto.py
 sailpoint/beta/models/service_desk_integration_template_type.py
 sailpoint/beta/models/service_desk_source.py
+sailpoint/beta/models/set_icon200_response.py
+sailpoint/beta/models/set_icon_request.py
 sailpoint/beta/models/slimcampaign.py
 sailpoint/beta/models/sod_exempt_criteria.py
 sailpoint/beta/models/sod_exempt_criteria1.py
@@ -1977,6 +1983,7 @@ sailpoint/beta/test/test_iai_outliers_api.py
 sailpoint/beta/test/test_iai_peer_group_strategies_api.py
 sailpoint/beta/test/test_iai_recommendations_api.py
 sailpoint/beta/test/test_iai_role_mining_api.py
+sailpoint/beta/test/test_icons_api.py
 sailpoint/beta/test/test_identities_accounts_bulk_request.py
 sailpoint/beta/test/test_identities_api.py
 sailpoint/beta/test/test_identity.py
@@ -2322,6 +2329,8 @@ sailpoint/beta/test/test_service_desk_integration_dto_all_of_owner_ref.py
 sailpoint/beta/test/test_service_desk_integration_template_dto.py
 sailpoint/beta/test/test_service_desk_integration_template_type.py
 sailpoint/beta/test/test_service_desk_source.py
+sailpoint/beta/test/test_set_icon200_response.py
+sailpoint/beta/test/test_set_icon_request.py
 sailpoint/beta/test/test_slimcampaign.py
 sailpoint/beta/test/test_sod_exempt_criteria.py
 sailpoint/beta/test/test_sod_exempt_criteria1.py

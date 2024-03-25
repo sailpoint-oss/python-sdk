@@ -241,6 +241,8 @@ Class | Method | HTTP request | Description
 *IAIRoleMiningApi* | [**patch_potential_role_0**](sailpoint/beta/docs/IAIRoleMiningApi.md#patch_potential_role_0) | **PATCH** /role-mining-potential-roles/{potentialRoleId} | Update a potential role
 *IAIRoleMiningApi* | [**patch_role_mining_session**](sailpoint/beta/docs/IAIRoleMiningApi.md#patch_role_mining_session) | **PATCH** /role-mining-sessions/{sessionId} | Patch a role mining session
 *IAIRoleMiningApi* | [**update_entitlements_potential_role**](sailpoint/beta/docs/IAIRoleMiningApi.md#update_entitlements_potential_role) | **POST** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/edit-entitlements | Edit entitlements for a potential role to exclude some entitlements
+*IconsApi* | [**delete_icon**](sailpoint/beta/docs/IconsApi.md#delete_icon) | **DELETE** /icons/{objectType}/{objectId} | Delete an icon
+*IconsApi* | [**set_icon**](sailpoint/beta/docs/IconsApi.md#set_icon) | **PUT** /icons/{objectType}/{objectId} | Update an icon
 *IdentitiesApi* | [**delete_identity**](sailpoint/beta/docs/IdentitiesApi.md#delete_identity) | **DELETE** /identities/{id} | Deletes an identity.
 *IdentitiesApi* | [**get_identity**](sailpoint/beta/docs/IdentitiesApi.md#get_identity) | **GET** /identities/{id} | Identity Details
 *IdentitiesApi* | [**get_identity_ownership_details**](sailpoint/beta/docs/IdentitiesApi.md#get_identity_ownership_details) | **GET** /identities/{identityId}/ownership | Get ownership details
@@ -1167,6 +1169,8 @@ Class | Method | HTTP request | Description
  - [ServiceDeskIntegrationTemplateDto](sailpoint/beta/docs/ServiceDeskIntegrationTemplateDto.md)
  - [ServiceDeskIntegrationTemplateType](sailpoint/beta/docs/ServiceDeskIntegrationTemplateType.md)
  - [ServiceDeskSource](sailpoint/beta/docs/ServiceDeskSource.md)
+ - [SetIcon200Response](sailpoint/beta/docs/SetIcon200Response.md)
+ - [SetIconRequest](sailpoint/beta/docs/SetIconRequest.md)
  - [Slimcampaign](sailpoint/beta/docs/Slimcampaign.md)
  - [SodExemptCriteria](sailpoint/beta/docs/SodExemptCriteria.md)
  - [SodExemptCriteria1](sailpoint/beta/docs/SodExemptCriteria1.md)
