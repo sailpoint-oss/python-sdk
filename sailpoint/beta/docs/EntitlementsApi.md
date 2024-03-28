@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_entitlement**](EntitlementsApi.md#get_entitlement) | **GET** /entitlements/{id} | Get an entitlement
 [**get_entitlement_request_config**](EntitlementsApi.md#get_entitlement_request_config) | **GET** /entitlements/{id}/entitlement-request-config | Get Entitlement Request Config
-[**import_entitlement_csv**](EntitlementsApi.md#import_entitlement_csv) | **POST** /entitlements/aggregate/sources/{id} | Import Entitlement CSV File
+[**import_entitlements**](EntitlementsApi.md#import_entitlements) | **POST** /entitlements/aggregate/sources/{id} | Aggregate Entitlements
 [**list_entitlement_children**](EntitlementsApi.md#list_entitlement_children) | **GET** /entitlements/{id}/children | List of entitlements children
 [**list_entitlement_parents**](EntitlementsApi.md#list_entitlement_parents) | **GET** /entitlements/{id}/parents | List of entitlements parents
 [**list_entitlements**](EntitlementsApi.md#list_entitlements) | **GET** /entitlements | Gets a list of entitlements.
@@ -188,12 +188,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **import_entitlement_csv**
-> LoadEntitlementTask import_entitlement_csv(id, csv_file)
+# **import_entitlements**
+> LoadEntitlementTask import_entitlements(id, csv_file)
 
-Import Entitlement CSV File
+Aggregate Entitlements
 
-Uploads a comma separated file (CSV) to a delimited file source and starts an entitlement aggregation on the source.   
+Starts an entitlement aggregation on the specified source.  If the target source is a direct connection, then a request body is not needed. If the target source is a delimited file source, then the CSV file needs to be included in the request body.   
 
 ### Example
 
@@ -231,12 +231,12 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
     csv_file = None # bytearray | 
 
     try:
-        # Import Entitlement CSV File
-        api_response = api_instance.import_entitlement_csv(id, csv_file)
-        print("The response of EntitlementsApi->import_entitlement_csv:\n")
+        # Aggregate Entitlements
+        api_response = api_instance.import_entitlements(id, csv_file)
+        print("The response of EntitlementsApi->import_entitlements:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling EntitlementsApi->import_entitlement_csv: %s\n" % e)
+        print("Exception when calling EntitlementsApi->import_entitlements: %s\n" % e)
 ```
 
 
@@ -266,7 +266,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**202** | Load Entitlements Task |  -  |
+**202** | Aggregate Entitlements Task |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |

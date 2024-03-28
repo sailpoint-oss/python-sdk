@@ -448,7 +448,7 @@ sailpoint/beta/docs/IdentitySyncJob.md
 sailpoint/beta/docs/IdentitySyncPayload.md
 sailpoint/beta/docs/IdentityWithNewAccess.md
 sailpoint/beta/docs/IdentityWithNewAccessAccessRefsInner.md
-sailpoint/beta/docs/ImportEntitlementCsvRequest.md
+sailpoint/beta/docs/ImportEntitlementsRequest.md
 sailpoint/beta/docs/ImportFormDefinitions202Response.md
 sailpoint/beta/docs/ImportFormDefinitions202ResponseErrorsInner.md
 sailpoint/beta/docs/ImportNonEmployeeRecordsInBulkRequest.md
@@ -1247,7 +1247,7 @@ sailpoint/beta/models/identity_sync_job.py
 sailpoint/beta/models/identity_sync_payload.py
 sailpoint/beta/models/identity_with_new_access.py
 sailpoint/beta/models/identity_with_new_access_access_refs_inner.py
-sailpoint/beta/models/import_entitlement_csv_request.py
+sailpoint/beta/models/import_entitlements_request.py
 sailpoint/beta/models/import_form_definitions202_response.py
 sailpoint/beta/models/import_form_definitions202_response_errors_inner.py
 sailpoint/beta/models/import_non_employee_records_in_bulk_request.py
@@ -2041,7 +2041,7 @@ sailpoint/beta/test/test_identity_sync_job.py
 sailpoint/beta/test/test_identity_sync_payload.py
 sailpoint/beta/test/test_identity_with_new_access.py
 sailpoint/beta/test/test_identity_with_new_access_access_refs_inner.py
-sailpoint/beta/test/test_import_entitlement_csv_request.py
+sailpoint/beta/test/test_import_entitlements_request.py
 sailpoint/beta/test/test_import_form_definitions202_response.py
 sailpoint/beta/test/test_import_form_definitions202_response_errors_inner.py
 sailpoint/beta/test/test_import_non_employee_records_in_bulk_request.py

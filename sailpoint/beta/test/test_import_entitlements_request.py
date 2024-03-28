@@ -15,10 +15,10 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.import_entitlement_csv_request import ImportEntitlementCsvRequest
+from sailpoint.beta.models.import_entitlements_request import ImportEntitlementsRequest
 
-class TestImportEntitlementCsvRequest(unittest.TestCase):
-    """ImportEntitlementCsvRequest unit test stubs"""
+class TestImportEntitlementsRequest(unittest.TestCase):
+    """ImportEntitlementsRequest unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,26 +26,26 @@ class TestImportEntitlementCsvRequest(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ImportEntitlementCsvRequest:
-        """Test ImportEntitlementCsvRequest
+    def make_instance(self, include_optional) -> ImportEntitlementsRequest:
+        """Test ImportEntitlementsRequest
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ImportEntitlementCsvRequest`
+        # uncomment below to create an instance of `ImportEntitlementsRequest`
         """
-        model = ImportEntitlementCsvRequest()
+        model = ImportEntitlementsRequest()
         if include_optional:
-            return ImportEntitlementCsvRequest(
+            return ImportEntitlementsRequest(
                 csv_file = bytes(b'blah')
             )
         else:
-            return ImportEntitlementCsvRequest(
+            return ImportEntitlementsRequest(
                 csv_file = bytes(b'blah'),
         )
         """
 
-    def testImportEntitlementCsvRequest(self):
-        """Test ImportEntitlementCsvRequest"""
+    def testImportEntitlementsRequest(self):
+        """Test ImportEntitlementsRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

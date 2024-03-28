@@ -609,7 +609,7 @@ class EntitlementsApi:
 
 
     @validate_call
-    def import_entitlement_csv(
+    def import_entitlements(
         self,
         id: Annotated[StrictStr, Field(description="Source Id")],
         csv_file: Union[StrictBytes, StrictStr],
@@ -626,9 +626,9 @@ class EntitlementsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> LoadEntitlementTask:
-        """Import Entitlement CSV File
+        """Aggregate Entitlements
 
-        Uploads a comma separated file (CSV) to a delimited file source and starts an entitlement aggregation on the source.   
+        Starts an entitlement aggregation on the specified source.  If the target source is a direct connection, then a request body is not needed. If the target source is a delimited file source, then the CSV file needs to be included in the request body.   
 
         :param id: Source Id (required)
         :type id: str
@@ -656,7 +656,7 @@ class EntitlementsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._import_entitlement_csv_serialize(
+        _param = self._import_entitlements_serialize(
             id=id,
             csv_file=csv_file,
             _request_auth=_request_auth,
@@ -685,7 +685,7 @@ class EntitlementsApi:
 
 
     @validate_call
-    def import_entitlement_csv_with_http_info(
+    def import_entitlements_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Source Id")],
         csv_file: Union[StrictBytes, StrictStr],
@@ -702,9 +702,9 @@ class EntitlementsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[LoadEntitlementTask]:
-        """Import Entitlement CSV File
+        """Aggregate Entitlements
 
-        Uploads a comma separated file (CSV) to a delimited file source and starts an entitlement aggregation on the source.   
+        Starts an entitlement aggregation on the specified source.  If the target source is a direct connection, then a request body is not needed. If the target source is a delimited file source, then the CSV file needs to be included in the request body.   
 
         :param id: Source Id (required)
         :type id: str
@@ -732,7 +732,7 @@ class EntitlementsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._import_entitlement_csv_serialize(
+        _param = self._import_entitlements_serialize(
             id=id,
             csv_file=csv_file,
             _request_auth=_request_auth,
@@ -761,7 +761,7 @@ class EntitlementsApi:
 
 
     @validate_call
-    def import_entitlement_csv_without_preload_content(
+    def import_entitlements_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Source Id")],
         csv_file: Union[StrictBytes, StrictStr],
@@ -778,9 +778,9 @@ class EntitlementsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Import Entitlement CSV File
+        """Aggregate Entitlements
 
-        Uploads a comma separated file (CSV) to a delimited file source and starts an entitlement aggregation on the source.   
+        Starts an entitlement aggregation on the specified source.  If the target source is a direct connection, then a request body is not needed. If the target source is a delimited file source, then the CSV file needs to be included in the request body.   
 
         :param id: Source Id (required)
         :type id: str
@@ -808,7 +808,7 @@ class EntitlementsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._import_entitlement_csv_serialize(
+        _param = self._import_entitlements_serialize(
             id=id,
             csv_file=csv_file,
             _request_auth=_request_auth,
@@ -832,7 +832,7 @@ class EntitlementsApi:
         return response_data.response
 
 
-    def _import_entitlement_csv_serialize(
+    def _import_entitlements_serialize(
         self,
         id,
         csv_file,

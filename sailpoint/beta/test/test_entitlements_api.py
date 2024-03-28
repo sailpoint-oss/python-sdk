@@ -40,10 +40,10 @@ class TestEntitlementsApi(unittest.TestCase):
         """
         pass
 
-    def test_import_entitlement_csv(self) -> None:
-        """Test case for import_entitlement_csv
+    def test_import_entitlements(self) -> None:
+        """Test case for import_entitlements
 
-        Import Entitlement CSV File
+        Aggregate Entitlements
         """
         pass
 

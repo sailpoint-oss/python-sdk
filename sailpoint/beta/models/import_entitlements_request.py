@@ -26,9 +26,9 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-class ImportEntitlementCsvRequest(BaseModel):
+class ImportEntitlementsRequest(BaseModel):
     """
-    ImportEntitlementCsvRequest
+    ImportEntitlementsRequest
     """ # noqa: E501
     csv_file: Union[StrictBytes, StrictStr] = Field(alias="csvFile")
     __properties: ClassVar[List[str]] = ["csvFile"]
@@ -51,7 +51,7 @@ class ImportEntitlementCsvRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
-        """Create an instance of ImportEntitlementCsvRequest from a JSON string"""
+        """Create an instance of ImportEntitlementsRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -74,7 +74,7 @@ class ImportEntitlementCsvRequest(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Dict) -> Self:
-        """Create an instance of ImportEntitlementCsvRequest from a dict"""
+        """Create an instance of ImportEntitlementsRequest from a dict"""
         if obj is None:
             return None
 
