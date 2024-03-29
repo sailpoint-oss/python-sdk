@@ -337,14 +337,13 @@ Class | Method | HTTP request | Description
 *NotificationsApi* | [**delete_verified_from_address**](sailpoint/beta/docs/NotificationsApi.md#delete_verified_from_address) | **DELETE** /verified-from-addresses/{id} | Delete Verified From Address
 *NotificationsApi* | [**get_dkim_attributes**](sailpoint/beta/docs/NotificationsApi.md#get_dkim_attributes) | **GET** /verified-domains | Get DKIM Attributes
 *NotificationsApi* | [**get_mail_from_attributes**](sailpoint/beta/docs/NotificationsApi.md#get_mail_from_attributes) | **GET** /mail-from-attributes/{identity} | Get MAIL FROM Attributes
-*NotificationsApi* | [**get_notification_preference**](sailpoint/beta/docs/NotificationsApi.md#get_notification_preference) | **GET** /notification-preferences/{key} | Get Notification Preferences for tenant.
 *NotificationsApi* | [**get_notification_template**](sailpoint/beta/docs/NotificationsApi.md#get_notification_template) | **GET** /notification-templates/{id} | Get Notification Template By Id
 *NotificationsApi* | [**get_notifications_template_context**](sailpoint/beta/docs/NotificationsApi.md#get_notifications_template_context) | **GET** /notification-template-context | Get Notification Template Context
 *NotificationsApi* | [**list_from_addresses**](sailpoint/beta/docs/NotificationsApi.md#list_from_addresses) | **GET** /verified-from-addresses | List From Addresses
+*NotificationsApi* | [**list_notification_preferences**](sailpoint/beta/docs/NotificationsApi.md#list_notification_preferences) | **GET** /notification-preferences/{key} | List Notification Preferences for tenant.
 *NotificationsApi* | [**list_notification_template_defaults**](sailpoint/beta/docs/NotificationsApi.md#list_notification_template_defaults) | **GET** /notification-template-defaults | List Notification Template Defaults
 *NotificationsApi* | [**list_notification_templates**](sailpoint/beta/docs/NotificationsApi.md#list_notification_templates) | **GET** /notification-templates | List Notification Templates
 *NotificationsApi* | [**put_mail_from_attributes**](sailpoint/beta/docs/NotificationsApi.md#put_mail_from_attributes) | **PUT** /mail-from-attributes | Change MAIL FROM domain
-*NotificationsApi* | [**put_notification_preference**](sailpoint/beta/docs/NotificationsApi.md#put_notification_preference) | **PUT** /notification-preferences/{key} | Overwrite preferences notification key.
 *NotificationsApi* | [**send_test_notification**](sailpoint/beta/docs/NotificationsApi.md#send_test_notification) | **POST** /send-test-notification | Send Test Notification
 *OAuthClientsApi* | [**create_oauth_client**](sailpoint/beta/docs/OAuthClientsApi.md#create_oauth_client) | **POST** /oauth-clients | Create OAuth Client
 *OAuthClientsApi* | [**delete_oauth_client**](sailpoint/beta/docs/OAuthClientsApi.md#delete_oauth_client) | **DELETE** /oauth-clients/{id} | Delete OAuth Client
