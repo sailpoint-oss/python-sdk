@@ -112,8 +112,6 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**reload_account**](sailpoint/beta/docs/AccountsApi.md#reload_account) | **POST** /accounts/{id}/reload | Reload Account
 *AccountsApi* | [**unlock_account**](sailpoint/beta/docs/AccountsApi.md#unlock_account) | **POST** /accounts/{id}/unlock | Unlock Account
 *AccountsApi* | [**update_account**](sailpoint/beta/docs/AccountsApi.md#update_account) | **PATCH** /accounts/{id} | Update Account
-*AuthProfileApi* | [**create_profile_config**](sailpoint/beta/docs/AuthProfileApi.md#create_profile_config) | **POST** /auth-profiles/{id} | Create Auth Profile.
-*AuthProfileApi* | [**delete_profile_config**](sailpoint/beta/docs/AuthProfileApi.md#delete_profile_config) | **DELETE** /auth-profiles/{id} | Delete the specified Auth Profile
 *AuthProfileApi* | [**get_profile_config**](sailpoint/beta/docs/AuthProfileApi.md#get_profile_config) | **GET** /auth-profiles/{id} | Get Auth Profile.
 *AuthProfileApi* | [**get_profile_config_list**](sailpoint/beta/docs/AuthProfileApi.md#get_profile_config_list) | **GET** /auth-profiles | Get list of Auth Profiles.
 *AuthProfileApi* | [**patch_profile_config**](sailpoint/beta/docs/AuthProfileApi.md#patch_profile_config) | **PATCH** /auth-profiles/{id} | Patch a specified Auth Profile
@@ -673,7 +671,6 @@ Class | Method | HTTP request | Description
  - [AttributesChanged](sailpoint/beta/docs/AttributesChanged.md)
  - [AuditDetails](sailpoint/beta/docs/AuditDetails.md)
  - [AuthProfile](sailpoint/beta/docs/AuthProfile.md)
- - [AuthProfileRequest](sailpoint/beta/docs/AuthProfileRequest.md)
  - [AuthProfileSummary](sailpoint/beta/docs/AuthProfileSummary.md)
  - [BaseCommonDto](sailpoint/beta/docs/BaseCommonDto.md)
  - [BaseCommonDto1](sailpoint/beta/docs/BaseCommonDto1.md)

@@ -199,7 +199,6 @@ sailpoint/beta/docs/AttributesChanged.md
 sailpoint/beta/docs/AuditDetails.md
 sailpoint/beta/docs/AuthProfile.md
 sailpoint/beta/docs/AuthProfileApi.md
-sailpoint/beta/docs/AuthProfileRequest.md
 sailpoint/beta/docs/AuthProfileSummary.md
 sailpoint/beta/docs/BaseCommonDto.md
 sailpoint/beta/docs/BaseCommonDto1.md
@@ -1018,7 +1017,6 @@ sailpoint/beta/models/attribute_definition_type.py
 sailpoint/beta/models/attributes_changed.py
 sailpoint/beta/models/audit_details.py
 sailpoint/beta/models/auth_profile.py
-sailpoint/beta/models/auth_profile_request.py
 sailpoint/beta/models/auth_profile_summary.py
 sailpoint/beta/models/base_common_dto.py
 sailpoint/beta/models/base_common_dto1.py
@@ -1792,7 +1790,6 @@ sailpoint/beta/test/test_attributes_changed.py
 sailpoint/beta/test/test_audit_details.py
 sailpoint/beta/test/test_auth_profile.py
 sailpoint/beta/test/test_auth_profile_api.py
-sailpoint/beta/test/test_auth_profile_request.py
 sailpoint/beta/test/test_auth_profile_summary.py
 sailpoint/beta/test/test_base_common_dto.py
 sailpoint/beta/test/test_base_common_dto1.py

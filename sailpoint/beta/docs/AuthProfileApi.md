@@ -4,180 +4,10 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_profile_config**](AuthProfileApi.md#create_profile_config) | **POST** /auth-profiles/{id} | Create Auth Profile.
-[**delete_profile_config**](AuthProfileApi.md#delete_profile_config) | **DELETE** /auth-profiles/{id} | Delete the specified Auth Profile
 [**get_profile_config**](AuthProfileApi.md#get_profile_config) | **GET** /auth-profiles/{id} | Get Auth Profile.
 [**get_profile_config_list**](AuthProfileApi.md#get_profile_config_list) | **GET** /auth-profiles | Get list of Auth Profiles.
 [**patch_profile_config**](AuthProfileApi.md#patch_profile_config) | **PATCH** /auth-profiles/{id} | Patch a specified Auth Profile
 
-
-# **create_profile_config**
-> AuthProfile create_profile_config(auth_profile_request)
-
-Create Auth Profile.
-
-This API creates an auth profile.
-
-### Example
-
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
-
-```python
-import time
-import os
-import sailpoint.beta
-from sailpoint.beta.models.auth_profile import AuthProfile
-from sailpoint.beta.models.auth_profile_request import AuthProfileRequest
-from sailpoint.beta.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
-# See configuration.py for a list of all supported configuration parameters.
-configuration = sailpoint.beta.Configuration(
-    host = "https://sailpoint.api.identitynow.com/beta"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with sailpoint.beta.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = sailpoint.beta.AuthProfileApi(api_client)
-    auth_profile_request = sailpoint.beta.AuthProfileRequest() # AuthProfileRequest | 
-
-    try:
-        # Create Auth Profile.
-        api_response = api_instance.create_profile_config(auth_profile_request)
-        print("The response of AuthProfileApi->create_profile_config:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling AuthProfileApi->create_profile_config: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **auth_profile_request** | [**AuthProfileRequest**](AuthProfileRequest.md)|  | 
-
-### Return type
-
-[**AuthProfile**](AuthProfile.md)
-
-### Authorization
-
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**202** | Auth Profile details |  -  |
-**400** | Client Error - Returned if the request body is invalid. |  -  |
-**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
-**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
-**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
-**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **delete_profile_config**
-> delete_profile_config(id)
-
-Delete the specified Auth Profile
-
-This API deletes an existing Auth Profile.
-
-### Example
-
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
-
-```python
-import time
-import os
-import sailpoint.beta
-from sailpoint.beta.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
-# See configuration.py for a list of all supported configuration parameters.
-configuration = sailpoint.beta.Configuration(
-    host = "https://sailpoint.api.identitynow.com/beta"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with sailpoint.beta.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = sailpoint.beta.AuthProfileApi(api_client)
-    id = '2c91808a7813090a017814121919ecca' # str | ID of the Access Profile to delete
-
-    try:
-        # Delete the specified Auth Profile
-        api_instance.delete_profile_config(id)
-    except Exception as e:
-        print("Exception when calling AuthProfileApi->delete_profile_config: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **str**| ID of the Access Profile to delete | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** | No content - indicates the request was successful but there is no content to be returned in the response. |  -  |
-**400** | Client Error - Returned if the request body is invalid. |  -  |
-**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
-**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
-**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
-**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_profile_config**
 > AuthProfile get_profile_config()
@@ -382,7 +212,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.AuthProfileApi(api_client)
-    id = '2c91808a7813090a017814121919ecca' # str | ID of the Auth Profile to patch
+    id = '2c91808a7813090a017814121919ecca' # str | ID of the Auth Profile to patch.
     json_patch_operation = [sailpoint.beta.JsonPatchOperation()] # List[JsonPatchOperation] | 
 
     try:
@@ -401,7 +231,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| ID of the Auth Profile to patch | 
+ **id** | **str**| ID of the Auth Profile to patch. | 
  **json_patch_operation** | [**List[JsonPatchOperation]**](JsonPatchOperation.md)|  | 
 
 ### Return type
@@ -421,7 +251,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Responds with the Access Profile as updated. |  -  |
+**200** | Responds with the Auth Profile as updated. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |

@@ -137,7 +137,6 @@ from sailpoint.beta.models.attribute_definition_type import AttributeDefinitionT
 from sailpoint.beta.models.attributes_changed import AttributesChanged
 from sailpoint.beta.models.audit_details import AuditDetails
 from sailpoint.beta.models.auth_profile import AuthProfile
-from sailpoint.beta.models.auth_profile_request import AuthProfileRequest
 from sailpoint.beta.models.auth_profile_summary import AuthProfileSummary
 from sailpoint.beta.models.base_common_dto import BaseCommonDto
 from sailpoint.beta.models.base_common_dto1 import BaseCommonDto1

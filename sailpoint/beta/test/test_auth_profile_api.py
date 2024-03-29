@@ -26,20 +26,6 @@ class TestAuthProfileApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_create_profile_config(self) -> None:
-        """Test case for create_profile_config
-
-        Create Auth Profile.
-        """
-        pass
-
-    def test_delete_profile_config(self) -> None:
-        """Test case for delete_profile_config
-
-        Delete the specified Auth Profile
-        """
-        pass
-
     def test_get_profile_config(self) -> None:
         """Test case for get_profile_config
 
