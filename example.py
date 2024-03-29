@@ -7,7 +7,7 @@ from sailpoint.v3.models.search import Search
 from pprint import pprint
 
 configuration = Configuration()
-    
+
 # Enter a context with an instance of the API client
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -35,22 +35,24 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
         print(
             "Exception when calling AccessProfilesApi->list_access_profiles: %s\n" % e
         )
-    
+
     # Use the paginator with search
 
     search = Search()
-    search.indices = ['identities']
-    search.query = { 'query': '*' }
-    search.sort = ['-name']
+    search.indices = ["identities"]
+    search.query = {"query": "*"}
+    search.sort = ["-name"]
 
-    identities = Paginator.paginate_search(sailpoint.v3.SearchApi(api_client),search, 250, 1000)
+    identities = Paginator.paginate_search(
+        sailpoint.v3.SearchApi(api_client), search, 250, 1000
+    )
     for identity in identities:
-        print(identity['name'])
-    
-
+        print(identity["name"])
 
     # Use the paginator to paginate 1000 accounts 100 at a time
-    accounts = Paginator.paginate(sailpoint.v3.AccountsApi(api_client).list_accounts, 1000, limit=100)
+    accounts = Paginator.paginate(
+        sailpoint.v3.AccountsApi(api_client).list_accounts, 1000, limit=100
+    )
     print(len(accounts))
     for account in accounts:
         print(account.name)
