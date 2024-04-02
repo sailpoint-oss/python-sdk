@@ -32,6 +32,7 @@ from sailpoint.beta.api.connector_rule_management_api import ConnectorRuleManage
 from sailpoint.beta.api.connectors_api import ConnectorsApi
 from sailpoint.beta.api.custom_forms_api import CustomFormsApi
 from sailpoint.beta.api.custom_password_instructions_api import CustomPasswordInstructionsApi
+from sailpoint.beta.api.discovered_applications_api import DiscoveredApplicationsApi
 from sailpoint.beta.api.entitlements_api import EntitlementsApi
 from sailpoint.beta.api.governance_groups_api import GovernanceGroupsApi
 from sailpoint.beta.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi
@@ -51,6 +52,8 @@ from sailpoint.beta.api.mfa_configuration_api import MFAConfigurationApi
 from sailpoint.beta.api.mfa_controller_api import MFAControllerApi
 from sailpoint.beta.api.managed_clients_api import ManagedClientsApi
 from sailpoint.beta.api.managed_clusters_api import ManagedClustersApi
+from sailpoint.beta.api.manual_discover_applications_api import ManualDiscoverApplicationsApi
+from sailpoint.beta.api.manual_discover_applications_template_api import ManualDiscoverApplicationsTemplateApi
 from sailpoint.beta.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi
 from sailpoint.beta.api.notifications_api import NotificationsApi
 from sailpoint.beta.api.o_auth_clients_api import OAuthClientsApi
@@ -77,6 +80,7 @@ from sailpoint.beta.api.task_management_api import TaskManagementApi
 from sailpoint.beta.api.tenant_api import TenantApi
 from sailpoint.beta.api.transforms_api import TransformsApi
 from sailpoint.beta.api.triggers_api import TriggersApi
+from sailpoint.beta.api.vendor_connector_mappings_api import VendorConnectorMappingsApi
 from sailpoint.beta.api.work_items_api import WorkItemsApi
 from sailpoint.beta.api.work_reassignment_api import WorkReassignmentApi
 from sailpoint.beta.api.workflows_api import WorkflowsApi
@@ -313,6 +317,8 @@ from sailpoint.beta.models.custom_password_instruction import CustomPasswordInst
 from sailpoint.beta.models.delete202_response import Delete202Response
 from sailpoint.beta.models.delete_campaigns_request import DeleteCampaignsRequest
 from sailpoint.beta.models.delete_non_employee_record_in_bulk_request import DeleteNonEmployeeRecordInBulkRequest
+from sailpoint.beta.models.delete_vendor_connector_mapping200_response import DeleteVendorConnectorMapping200Response
+from sailpoint.beta.models.discovered_applications_inner import DiscoveredApplicationsInner
 from sailpoint.beta.models.dkim_attributes import DkimAttributes
 from sailpoint.beta.models.domain_address import DomainAddress
 from sailpoint.beta.models.domain_status_dto import DomainStatusDto
@@ -492,6 +498,8 @@ from sailpoint.beta.models.managed_cluster_queue import ManagedClusterQueue
 from sailpoint.beta.models.managed_cluster_redis import ManagedClusterRedis
 from sailpoint.beta.models.managed_cluster_types import ManagedClusterTypes
 from sailpoint.beta.models.manager_correlation_mapping import ManagerCorrelationMapping
+from sailpoint.beta.models.manual_discover_applications import ManualDiscoverApplications
+from sailpoint.beta.models.manual_discover_applications_template import ManualDiscoverApplicationsTemplate
 from sailpoint.beta.models.manual_work_item_details import ManualWorkItemDetails
 from sailpoint.beta.models.manual_work_item_details_current_owner import ManualWorkItemDetailsCurrentOwner
 from sailpoint.beta.models.manual_work_item_details_original_owner import ManualWorkItemDetailsOriginalOwner
@@ -822,6 +830,11 @@ from sailpoint.beta.models.va_cluster_status_change_event_previous_health_check_
 from sailpoint.beta.models.validate_filter_input_dto import ValidateFilterInputDto
 from sailpoint.beta.models.validate_filter_output_dto import ValidateFilterOutputDto
 from sailpoint.beta.models.value import Value
+from sailpoint.beta.models.vendor_connector_mapping import VendorConnectorMapping
+from sailpoint.beta.models.vendor_connector_mapping_deleted_at import VendorConnectorMappingDeletedAt
+from sailpoint.beta.models.vendor_connector_mapping_deleted_by import VendorConnectorMappingDeletedBy
+from sailpoint.beta.models.vendor_connector_mapping_updated_at import VendorConnectorMappingUpdatedAt
+from sailpoint.beta.models.vendor_connector_mapping_updated_by import VendorConnectorMappingUpdatedBy
 from sailpoint.beta.models.verification_poll_request import VerificationPollRequest
 from sailpoint.beta.models.verification_response import VerificationResponse
 from sailpoint.beta.models.violation_context import ViolationContext

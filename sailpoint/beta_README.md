@@ -172,6 +172,7 @@ Class | Method | HTTP request | Description
 *CustomPasswordInstructionsApi* | [**create_custom_password_instructions**](sailpoint/beta/docs/CustomPasswordInstructionsApi.md#create_custom_password_instructions) | **POST** /custom-password-instructions | Create Custom Password Instructions
 *CustomPasswordInstructionsApi* | [**delete_custom_password_instructions**](sailpoint/beta/docs/CustomPasswordInstructionsApi.md#delete_custom_password_instructions) | **DELETE** /custom-password-instructions/{pageId} | Delete Custom Password Instructions by page ID
 *CustomPasswordInstructionsApi* | [**get_custom_password_instructions**](sailpoint/beta/docs/CustomPasswordInstructionsApi.md#get_custom_password_instructions) | **GET** /custom-password-instructions/{pageId} | Get Custom Password Instructions by Page ID
+*DiscoveredApplicationsApi* | [**get_discovered_applications**](sailpoint/beta/docs/DiscoveredApplicationsApi.md#get_discovered_applications) | **GET** /discovered-applications | Retrieve discovered applications for tenant
 *EntitlementsApi* | [**get_entitlement**](sailpoint/beta/docs/EntitlementsApi.md#get_entitlement) | **GET** /entitlements/{id} | Get an entitlement
 *EntitlementsApi* | [**get_entitlement_request_config**](sailpoint/beta/docs/EntitlementsApi.md#get_entitlement_request_config) | **GET** /entitlements/{id}/entitlement-request-config | Get Entitlement Request Config
 *EntitlementsApi* | [**import_entitlements**](sailpoint/beta/docs/EntitlementsApi.md#import_entitlements) | **POST** /entitlements/aggregate/sources/{id} | Aggregate Entitlements
@@ -300,6 +301,8 @@ Class | Method | HTTP request | Description
 *ManagedClustersApi* | [**get_managed_cluster**](sailpoint/beta/docs/ManagedClustersApi.md#get_managed_cluster) | **GET** /managed-clusters/{id} | Get a specified ManagedCluster.
 *ManagedClustersApi* | [**get_managed_clusters**](sailpoint/beta/docs/ManagedClustersApi.md#get_managed_clusters) | **GET** /managed-clusters | Retrieve all Managed Clusters.
 *ManagedClustersApi* | [**put_client_log_configuration**](sailpoint/beta/docs/ManagedClustersApi.md#put_client_log_configuration) | **PUT** /managed-clusters/{id}/log-config | Update managed cluster&#39;s log configuration
+*ManualDiscoverApplicationsApi* | [**send_manual_discover_applications_csv_template**](sailpoint/beta/docs/ManualDiscoverApplicationsApi.md#send_manual_discover_applications_csv_template) | **POST** /manual-discover-applications | CSV Upload to discover applications
+*ManualDiscoverApplicationsTemplateApi* | [**get_manual_discover_applications_csv_template**](sailpoint/beta/docs/ManualDiscoverApplicationsTemplateApi.md#get_manual_discover_applications_csv_template) | **GET** /manual-discover-applications-template | CSV template download for discovery
 *NonEmployeeLifecycleManagementApi* | [**approve_non_employee_request**](sailpoint/beta/docs/NonEmployeeLifecycleManagementApi.md#approve_non_employee_request) | **POST** /non-employee-approvals/{id}/approve | Approve a Non-Employee Request
 *NonEmployeeLifecycleManagementApi* | [**create_non_employee_record**](sailpoint/beta/docs/NonEmployeeLifecycleManagementApi.md#create_non_employee_record) | **POST** /non-employee-records | Create Non-Employee Record
 *NonEmployeeLifecycleManagementApi* | [**create_non_employee_request**](sailpoint/beta/docs/NonEmployeeLifecycleManagementApi.md#create_non_employee_request) | **POST** /non-employee-requests | Create Non-Employee Request
@@ -505,6 +508,9 @@ Class | Method | HTTP request | Description
 *TriggersApi* | [**start_test_trigger_invocation**](sailpoint/beta/docs/TriggersApi.md#start_test_trigger_invocation) | **POST** /trigger-invocations/test | Start a Test Invocation
 *TriggersApi* | [**test_subscription_filter**](sailpoint/beta/docs/TriggersApi.md#test_subscription_filter) | **POST** /trigger-subscriptions/validate-filter | Validate a Subscription Filter
 *TriggersApi* | [**update_subscription**](sailpoint/beta/docs/TriggersApi.md#update_subscription) | **PUT** /trigger-subscriptions/{id} | Update a Subscription
+*VendorConnectorMappingsApi* | [**create_vendor_connector_mapping**](sailpoint/beta/docs/VendorConnectorMappingsApi.md#create_vendor_connector_mapping) | **POST** /vendor-connector-mappings | Create a vendor connector mapping
+*VendorConnectorMappingsApi* | [**delete_vendor_connector_mapping**](sailpoint/beta/docs/VendorConnectorMappingsApi.md#delete_vendor_connector_mapping) | **DELETE** /vendor-connector-mappings | Delete a vendor connector mapping
+*VendorConnectorMappingsApi* | [**get_vendor_connector_mappings**](sailpoint/beta/docs/VendorConnectorMappingsApi.md#get_vendor_connector_mappings) | **GET** /vendor-connector-mappings | List vendor connector mappings
 *WorkItemsApi* | [**approve_approval_item**](sailpoint/beta/docs/WorkItemsApi.md#approve_approval_item) | **POST** /work-items/{id}/approve/{approvalItemId} | Approve an Approval Item
 *WorkItemsApi* | [**approve_approval_items_in_bulk**](sailpoint/beta/docs/WorkItemsApi.md#approve_approval_items_in_bulk) | **POST** /work-items/bulk-approve/{id} | Bulk approve Approval Items
 *WorkItemsApi* | [**complete_work_item**](sailpoint/beta/docs/WorkItemsApi.md#complete_work_item) | **POST** /work-items/{id} | Complete a Work Item
@@ -769,6 +775,8 @@ Class | Method | HTTP request | Description
  - [Delete202Response](sailpoint/beta/docs/Delete202Response.md)
  - [DeleteCampaignsRequest](sailpoint/beta/docs/DeleteCampaignsRequest.md)
  - [DeleteNonEmployeeRecordInBulkRequest](sailpoint/beta/docs/DeleteNonEmployeeRecordInBulkRequest.md)
+ - [DeleteVendorConnectorMapping200Response](sailpoint/beta/docs/DeleteVendorConnectorMapping200Response.md)
+ - [DiscoveredApplicationsInner](sailpoint/beta/docs/DiscoveredApplicationsInner.md)
  - [DkimAttributes](sailpoint/beta/docs/DkimAttributes.md)
  - [DomainAddress](sailpoint/beta/docs/DomainAddress.md)
  - [DomainStatusDto](sailpoint/beta/docs/DomainStatusDto.md)
@@ -948,6 +956,8 @@ Class | Method | HTTP request | Description
  - [ManagedClusterRedis](sailpoint/beta/docs/ManagedClusterRedis.md)
  - [ManagedClusterTypes](sailpoint/beta/docs/ManagedClusterTypes.md)
  - [ManagerCorrelationMapping](sailpoint/beta/docs/ManagerCorrelationMapping.md)
+ - [ManualDiscoverApplications](sailpoint/beta/docs/ManualDiscoverApplications.md)
+ - [ManualDiscoverApplicationsTemplate](sailpoint/beta/docs/ManualDiscoverApplicationsTemplate.md)
  - [ManualWorkItemDetails](sailpoint/beta/docs/ManualWorkItemDetails.md)
  - [ManualWorkItemDetailsCurrentOwner](sailpoint/beta/docs/ManualWorkItemDetailsCurrentOwner.md)
  - [ManualWorkItemDetailsOriginalOwner](sailpoint/beta/docs/ManualWorkItemDetailsOriginalOwner.md)
@@ -1278,6 +1288,11 @@ Class | Method | HTTP request | Description
  - [ValidateFilterInputDto](sailpoint/beta/docs/ValidateFilterInputDto.md)
  - [ValidateFilterOutputDto](sailpoint/beta/docs/ValidateFilterOutputDto.md)
  - [Value](sailpoint/beta/docs/Value.md)
+ - [VendorConnectorMapping](sailpoint/beta/docs/VendorConnectorMapping.md)
+ - [VendorConnectorMappingDeletedAt](sailpoint/beta/docs/VendorConnectorMappingDeletedAt.md)
+ - [VendorConnectorMappingDeletedBy](sailpoint/beta/docs/VendorConnectorMappingDeletedBy.md)
+ - [VendorConnectorMappingUpdatedAt](sailpoint/beta/docs/VendorConnectorMappingUpdatedAt.md)
+ - [VendorConnectorMappingUpdatedBy](sailpoint/beta/docs/VendorConnectorMappingUpdatedBy.md)
  - [VerificationPollRequest](sailpoint/beta/docs/VerificationPollRequest.md)
  - [VerificationResponse](sailpoint/beta/docs/VerificationResponse.md)
  - [ViolationContext](sailpoint/beta/docs/ViolationContext.md)

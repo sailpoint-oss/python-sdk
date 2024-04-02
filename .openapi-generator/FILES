@@ -16,6 +16,7 @@ sailpoint/beta/api/connector_rule_management_api.py
 sailpoint/beta/api/connectors_api.py
 sailpoint/beta/api/custom_forms_api.py
 sailpoint/beta/api/custom_password_instructions_api.py
+sailpoint/beta/api/discovered_applications_api.py
 sailpoint/beta/api/entitlements_api.py
 sailpoint/beta/api/governance_groups_api.py
 sailpoint/beta/api/iai_access_request_recommendations_api.py
@@ -33,6 +34,8 @@ sailpoint/beta/api/identity_profiles_api.py
 sailpoint/beta/api/lifecycle_states_api.py
 sailpoint/beta/api/managed_clients_api.py
 sailpoint/beta/api/managed_clusters_api.py
+sailpoint/beta/api/manual_discover_applications_api.py
+sailpoint/beta/api/manual_discover_applications_template_api.py
 sailpoint/beta/api/mfa_configuration_api.py
 sailpoint/beta/api/mfa_controller_api.py
 sailpoint/beta/api/non_employee_lifecycle_management_api.py
@@ -61,6 +64,7 @@ sailpoint/beta/api/task_management_api.py
 sailpoint/beta/api/tenant_api.py
 sailpoint/beta/api/transforms_api.py
 sailpoint/beta/api/triggers_api.py
+sailpoint/beta/api/vendor_connector_mappings_api.py
 sailpoint/beta/api/work_items_api.py
 sailpoint/beta/api/work_reassignment_api.py
 sailpoint/beta/api/workflows_api.py
@@ -302,6 +306,9 @@ sailpoint/beta/docs/CustomPasswordInstructionsApi.md
 sailpoint/beta/docs/Delete202Response.md
 sailpoint/beta/docs/DeleteCampaignsRequest.md
 sailpoint/beta/docs/DeleteNonEmployeeRecordInBulkRequest.md
+sailpoint/beta/docs/DeleteVendorConnectorMapping200Response.md
+sailpoint/beta/docs/DiscoveredApplicationsApi.md
+sailpoint/beta/docs/DiscoveredApplicationsInner.md
 sailpoint/beta/docs/DkimAttributes.md
 sailpoint/beta/docs/DomainAddress.md
 sailpoint/beta/docs/DomainStatusDto.md
@@ -500,6 +507,10 @@ sailpoint/beta/docs/ManagedClusterRedis.md
 sailpoint/beta/docs/ManagedClusterTypes.md
 sailpoint/beta/docs/ManagedClustersApi.md
 sailpoint/beta/docs/ManagerCorrelationMapping.md
+sailpoint/beta/docs/ManualDiscoverApplications.md
+sailpoint/beta/docs/ManualDiscoverApplicationsApi.md
+sailpoint/beta/docs/ManualDiscoverApplicationsTemplate.md
+sailpoint/beta/docs/ManualDiscoverApplicationsTemplateApi.md
 sailpoint/beta/docs/ManualWorkItemDetails.md
 sailpoint/beta/docs/ManualWorkItemDetailsCurrentOwner.md
 sailpoint/beta/docs/ManualWorkItemDetailsOriginalOwner.md
@@ -856,6 +867,12 @@ sailpoint/beta/docs/VAClusterStatusChangeEventPreviousHealthCheckResult.md
 sailpoint/beta/docs/ValidateFilterInputDto.md
 sailpoint/beta/docs/ValidateFilterOutputDto.md
 sailpoint/beta/docs/Value.md
+sailpoint/beta/docs/VendorConnectorMapping.md
+sailpoint/beta/docs/VendorConnectorMappingDeletedAt.md
+sailpoint/beta/docs/VendorConnectorMappingDeletedBy.md
+sailpoint/beta/docs/VendorConnectorMappingUpdatedAt.md
+sailpoint/beta/docs/VendorConnectorMappingUpdatedBy.md
+sailpoint/beta/docs/VendorConnectorMappingsApi.md
 sailpoint/beta/docs/VerificationPollRequest.md
 sailpoint/beta/docs/VerificationResponse.md
 sailpoint/beta/docs/ViolationContext.md
@@ -1114,6 +1131,8 @@ sailpoint/beta/models/custom_password_instruction.py
 sailpoint/beta/models/delete202_response.py
 sailpoint/beta/models/delete_campaigns_request.py
 sailpoint/beta/models/delete_non_employee_record_in_bulk_request.py
+sailpoint/beta/models/delete_vendor_connector_mapping200_response.py
+sailpoint/beta/models/discovered_applications_inner.py
 sailpoint/beta/models/dkim_attributes.py
 sailpoint/beta/models/domain_address.py
 sailpoint/beta/models/domain_status_dto.py
@@ -1293,6 +1312,8 @@ sailpoint/beta/models/managed_cluster_queue.py
 sailpoint/beta/models/managed_cluster_redis.py
 sailpoint/beta/models/managed_cluster_types.py
 sailpoint/beta/models/manager_correlation_mapping.py
+sailpoint/beta/models/manual_discover_applications.py
+sailpoint/beta/models/manual_discover_applications_template.py
 sailpoint/beta/models/manual_work_item_details.py
 sailpoint/beta/models/manual_work_item_details_current_owner.py
 sailpoint/beta/models/manual_work_item_details_original_owner.py
@@ -1623,6 +1644,11 @@ sailpoint/beta/models/va_cluster_status_change_event_previous_health_check_resul
 sailpoint/beta/models/validate_filter_input_dto.py
 sailpoint/beta/models/validate_filter_output_dto.py
 sailpoint/beta/models/value.py
+sailpoint/beta/models/vendor_connector_mapping.py
+sailpoint/beta/models/vendor_connector_mapping_deleted_at.py
+sailpoint/beta/models/vendor_connector_mapping_deleted_by.py
+sailpoint/beta/models/vendor_connector_mapping_updated_at.py
+sailpoint/beta/models/vendor_connector_mapping_updated_by.py
 sailpoint/beta/models/verification_poll_request.py
 sailpoint/beta/models/verification_response.py
 sailpoint/beta/models/violation_context.py
@@ -1893,6 +1919,9 @@ sailpoint/beta/test/test_custom_password_instructions_api.py
 sailpoint/beta/test/test_delete202_response.py
 sailpoint/beta/test/test_delete_campaigns_request.py
 sailpoint/beta/test/test_delete_non_employee_record_in_bulk_request.py
+sailpoint/beta/test/test_delete_vendor_connector_mapping200_response.py
+sailpoint/beta/test/test_discovered_applications_api.py
+sailpoint/beta/test/test_discovered_applications_inner.py
 sailpoint/beta/test/test_dkim_attributes.py
 sailpoint/beta/test/test_domain_address.py
 sailpoint/beta/test/test_domain_status_dto.py
@@ -2089,6 +2118,10 @@ sailpoint/beta/test/test_managed_cluster_redis.py
 sailpoint/beta/test/test_managed_cluster_types.py
 sailpoint/beta/test/test_managed_clusters_api.py
 sailpoint/beta/test/test_manager_correlation_mapping.py
+sailpoint/beta/test/test_manual_discover_applications.py
+sailpoint/beta/test/test_manual_discover_applications_api.py
+sailpoint/beta/test/test_manual_discover_applications_template.py
+sailpoint/beta/test/test_manual_discover_applications_template_api.py
 sailpoint/beta/test/test_manual_work_item_details.py
 sailpoint/beta/test/test_manual_work_item_details_current_owner.py
 sailpoint/beta/test/test_manual_work_item_details_original_owner.py
@@ -2447,6 +2480,12 @@ sailpoint/beta/test/test_va_cluster_status_change_event_previous_health_check_re
 sailpoint/beta/test/test_validate_filter_input_dto.py
 sailpoint/beta/test/test_validate_filter_output_dto.py
 sailpoint/beta/test/test_value.py
+sailpoint/beta/test/test_vendor_connector_mapping.py
+sailpoint/beta/test/test_vendor_connector_mapping_deleted_at.py
+sailpoint/beta/test/test_vendor_connector_mapping_deleted_by.py
+sailpoint/beta/test/test_vendor_connector_mapping_updated_at.py
+sailpoint/beta/test/test_vendor_connector_mapping_updated_by.py
+sailpoint/beta/test/test_vendor_connector_mappings_api.py
 sailpoint/beta/test/test_verification_poll_request.py
 sailpoint/beta/test/test_verification_response.py
 sailpoint/beta/test/test_violation_context.py

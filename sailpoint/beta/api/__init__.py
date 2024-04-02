@@ -16,6 +16,7 @@ from sailpoint.beta.api.connector_rule_management_api import ConnectorRuleManage
 from sailpoint.beta.api.connectors_api import ConnectorsApi
 from sailpoint.beta.api.custom_forms_api import CustomFormsApi
 from sailpoint.beta.api.custom_password_instructions_api import CustomPasswordInstructionsApi
+from sailpoint.beta.api.discovered_applications_api import DiscoveredApplicationsApi
 from sailpoint.beta.api.entitlements_api import EntitlementsApi
 from sailpoint.beta.api.governance_groups_api import GovernanceGroupsApi
 from sailpoint.beta.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi
@@ -35,6 +36,8 @@ from sailpoint.beta.api.mfa_configuration_api import MFAConfigurationApi
 from sailpoint.beta.api.mfa_controller_api import MFAControllerApi
 from sailpoint.beta.api.managed_clients_api import ManagedClientsApi
 from sailpoint.beta.api.managed_clusters_api import ManagedClustersApi
+from sailpoint.beta.api.manual_discover_applications_api import ManualDiscoverApplicationsApi
+from sailpoint.beta.api.manual_discover_applications_template_api import ManualDiscoverApplicationsTemplateApi
 from sailpoint.beta.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi
 from sailpoint.beta.api.notifications_api import NotificationsApi
 from sailpoint.beta.api.o_auth_clients_api import OAuthClientsApi
@@ -61,6 +64,7 @@ from sailpoint.beta.api.task_management_api import TaskManagementApi
 from sailpoint.beta.api.tenant_api import TenantApi
 from sailpoint.beta.api.transforms_api import TransformsApi
 from sailpoint.beta.api.triggers_api import TriggersApi
+from sailpoint.beta.api.vendor_connector_mappings_api import VendorConnectorMappingsApi
 from sailpoint.beta.api.work_items_api import WorkItemsApi
 from sailpoint.beta.api.work_reassignment_api import WorkReassignmentApi
 from sailpoint.beta.api.workflows_api import WorkflowsApi
