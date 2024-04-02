@@ -99,6 +99,8 @@ Class | Method | HTTP request | Description
 *AccountUsagesApi* | [**get_usages_by_account_id**](sailpoint/beta/docs/AccountUsagesApi.md#get_usages_by_account_id) | **GET** /account-usages/{accountId}/summaries | Returns account usage insights
 *AccountsApi* | [**create_account**](sailpoint/beta/docs/AccountsApi.md#create_account) | **POST** /accounts | Create Account
 *AccountsApi* | [**delete_account**](sailpoint/beta/docs/AccountsApi.md#delete_account) | **DELETE** /accounts/{id} | Delete Account
+*AccountsApi* | [**delete_account_async**](sailpoint/beta/docs/AccountsApi.md#delete_account_async) | **POST** /accounts/{id}/remove | Remove Account
+*AccountsApi* | [**delete_accounts_async**](sailpoint/beta/docs/AccountsApi.md#delete_accounts_async) | **POST** /sources/{id}/remove-accounts | Remove All Accounts
 *AccountsApi* | [**disable_account**](sailpoint/beta/docs/AccountsApi.md#disable_account) | **POST** /accounts/{id}/disable | Disable Account
 *AccountsApi* | [**disable_account_for_identity**](sailpoint/beta/docs/AccountsApi.md#disable_account_for_identity) | **POST** /identities-accounts/{id}/disable | Disable IDN Account for Identity
 *AccountsApi* | [**disable_accounts_for_identities**](sailpoint/beta/docs/AccountsApi.md#disable_accounts_for_identities) | **POST** /identities-accounts/disable | Disable IDN Accounts for Identities

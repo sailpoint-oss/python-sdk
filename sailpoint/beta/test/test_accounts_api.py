@@ -40,6 +40,20 @@ class TestAccountsApi(unittest.TestCase):
         """
         pass
 
+    def test_delete_account_async(self) -> None:
+        """Test case for delete_account_async
+
+        Remove Account
+        """
+        pass
+
+    def test_delete_accounts_async(self) -> None:
+        """Test case for delete_accounts_async
+
+        Remove All Accounts
+        """
+        pass
+
     def test_disable_account(self) -> None:
         """Test case for disable_account
 
