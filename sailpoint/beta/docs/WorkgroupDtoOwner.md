@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | Owner&#39;s DTO type. | [optional] 
 **id** | **str** | Owner&#39;s identity ID. | [optional] 
-**name** | **str** | Owner&#39;s display name. | [optional] 
+**name** | **str** | Owner&#39;s name. | [optional] 
 **display_name** | **str** | The display name of the identity | [optional] [readonly] 
 **email_address** | **str** | The primary email address of the identity | [optional] [readonly] 
 

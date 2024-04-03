@@ -32,7 +32,7 @@ class ServiceDeskIntegrationDtoAllOfOwnerRef(BaseModel):
     """ # noqa: E501
     type: Optional[StrictStr] = Field(default=None, description="Owner's DTO type.")
     id: Optional[StrictStr] = Field(default=None, description="Owner's identity ID.")
-    name: Optional[StrictStr] = Field(default=None, description="Owner's display name.")
+    name: Optional[StrictStr] = Field(default=None, description="Owner's name.")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')

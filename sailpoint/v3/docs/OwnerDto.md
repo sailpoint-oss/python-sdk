@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | Owner&#39;s DTO type. | [optional] 
 **id** | **str** | Owner&#39;s identity ID. | [optional] 
-**name** | **str** | Owner&#39;s display name. | [optional] 
+**name** | **str** | Owner&#39;s name. | [optional] 
 
 ## Example
 
