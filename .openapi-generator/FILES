@@ -907,6 +907,7 @@ sailpoint/beta/docs/WorkgroupBulkDeleteRequest.md
 sailpoint/beta/docs/WorkgroupConnectionDto.md
 sailpoint/beta/docs/WorkgroupDeleteItem.md
 sailpoint/beta/docs/WorkgroupDto.md
+sailpoint/beta/docs/WorkgroupDtoOwner.md
 sailpoint/beta/docs/WorkgroupMemberAddItem.md
 sailpoint/beta/docs/WorkgroupMemberDeleteItem.md
 sailpoint/beta/exceptions.py
@@ -1680,6 +1681,7 @@ sailpoint/beta/models/workgroup_bulk_delete_request.py
 sailpoint/beta/models/workgroup_connection_dto.py
 sailpoint/beta/models/workgroup_delete_item.py
 sailpoint/beta/models/workgroup_dto.py
+sailpoint/beta/models/workgroup_dto_owner.py
 sailpoint/beta/models/workgroup_member_add_item.py
 sailpoint/beta/models/workgroup_member_delete_item.py
 sailpoint/beta/rest.py
@@ -2520,6 +2522,7 @@ sailpoint/beta/test/test_workgroup_bulk_delete_request.py
 sailpoint/beta/test/test_workgroup_connection_dto.py
 sailpoint/beta/test/test_workgroup_delete_item.py
 sailpoint/beta/test/test_workgroup_dto.py
+sailpoint/beta/test/test_workgroup_dto_owner.py
 sailpoint/beta/test/test_workgroup_member_add_item.py
 sailpoint/beta/test/test_workgroup_member_delete_item.py
 sailpoint/beta_README.md

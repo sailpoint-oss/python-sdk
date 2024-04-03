@@ -1324,6 +1324,7 @@ Class | Method | HTTP request | Description
  - [WorkgroupConnectionDto](sailpoint/beta/docs/WorkgroupConnectionDto.md)
  - [WorkgroupDeleteItem](sailpoint/beta/docs/WorkgroupDeleteItem.md)
  - [WorkgroupDto](sailpoint/beta/docs/WorkgroupDto.md)
+ - [WorkgroupDtoOwner](sailpoint/beta/docs/WorkgroupDtoOwner.md)
  - [WorkgroupMemberAddItem](sailpoint/beta/docs/WorkgroupMemberAddItem.md)
  - [WorkgroupMemberDeleteItem](sailpoint/beta/docs/WorkgroupMemberDeleteItem.md)
 

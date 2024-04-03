@@ -783,5 +783,6 @@ from sailpoint.beta.models.workgroup_bulk_delete_request import WorkgroupBulkDel
 from sailpoint.beta.models.workgroup_connection_dto import WorkgroupConnectionDto
 from sailpoint.beta.models.workgroup_delete_item import WorkgroupDeleteItem
 from sailpoint.beta.models.workgroup_dto import WorkgroupDto
+from sailpoint.beta.models.workgroup_dto_owner import WorkgroupDtoOwner
 from sailpoint.beta.models.workgroup_member_add_item import WorkgroupMemberAddItem
 from sailpoint.beta.models.workgroup_member_delete_item import WorkgroupMemberDeleteItem

@@ -19,25 +19,33 @@ import json
 
 
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictInt, StrictStr
+from pydantic import BaseModel, StrictStr, field_validator
 from pydantic import Field
-from sailpoint.beta.models.workgroup_dto_owner import WorkgroupDtoOwner
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-class WorkgroupDto(BaseModel):
+class WorkgroupDtoOwner(BaseModel):
     """
-    WorkgroupDto
+    WorkgroupDtoOwner
     """ # noqa: E501
-    owner: Optional[WorkgroupDtoOwner] = None
-    id: Optional[StrictStr] = Field(default=None, description="Governance group ID.")
-    name: Optional[StrictStr] = Field(default=None, description="Governance group name.")
-    description: Optional[StrictStr] = Field(default=None, description="Governance group description.")
-    member_count: Optional[StrictInt] = Field(default=None, description="Number of members in the governance group.", alias="memberCount")
-    connection_count: Optional[StrictInt] = Field(default=None, description="Number of connections in the governance group.", alias="connectionCount")
-    __properties: ClassVar[List[str]] = ["owner", "id", "name", "description", "memberCount", "connectionCount"]
+    type: Optional[StrictStr] = Field(default=None, description="Owner's DTO type.")
+    id: Optional[StrictStr] = Field(default=None, description="Owner's identity ID.")
+    name: Optional[StrictStr] = Field(default=None, description="Owner's display name.")
+    display_name: Optional[StrictStr] = Field(default=None, description="The display name of the identity", alias="displayName")
+    email_address: Optional[StrictStr] = Field(default=None, description="The primary email address of the identity", alias="emailAddress")
+    __properties: ClassVar[List[str]] = ["type", "id", "name", "displayName", "emailAddress"]
+
+    @field_validator('type')
+    def type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in ('IDENTITY'):
+            raise ValueError("must be one of enum values ('IDENTITY')")
+        return value
 
     model_config = {
         "populate_by_name": True,
@@ -57,7 +65,7 @@ class WorkgroupDto(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
-        """Create an instance of WorkgroupDto from a JSON string"""
+        """Create an instance of WorkgroupDtoOwner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -71,25 +79,20 @@ class WorkgroupDto(BaseModel):
           are ignored.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         _dict = self.model_dump(
             by_alias=True,
             exclude={
-                "id",
-                "member_count",
-                "connection_count",
+                "display_name",
+                "email_address",
             },
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of owner
-        if self.owner:
-            _dict['owner'] = self.owner.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Dict) -> Self:
-        """Create an instance of WorkgroupDto from a dict"""
+        """Create an instance of WorkgroupDtoOwner from a dict"""
         if obj is None:
             return None
 
@@ -97,12 +100,11 @@ class WorkgroupDto(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "owner": WorkgroupDtoOwner.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
+            "type": obj.get("type"),
             "id": obj.get("id"),
             "name": obj.get("name"),
-            "description": obj.get("description"),
-            "memberCount": obj.get("memberCount"),
-            "connectionCount": obj.get("connectionCount")
+            "displayName": obj.get("displayName"),
+            "emailAddress": obj.get("emailAddress")
         })
         return _obj
 

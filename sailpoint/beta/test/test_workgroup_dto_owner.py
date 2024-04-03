@@ -15,10 +15,10 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.workgroup_dto import WorkgroupDto
+from sailpoint.beta.models.workgroup_dto_owner import WorkgroupDtoOwner
 
-class TestWorkgroupDto(unittest.TestCase):
-    """WorkgroupDto unit test stubs"""
+class TestWorkgroupDtoOwner(unittest.TestCase):
+    """WorkgroupDtoOwner unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,30 +26,29 @@ class TestWorkgroupDto(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> WorkgroupDto:
-        """Test WorkgroupDto
+    def make_instance(self, include_optional) -> WorkgroupDtoOwner:
+        """Test WorkgroupDtoOwner
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `WorkgroupDto`
+        # uncomment below to create an instance of `WorkgroupDtoOwner`
         """
-        model = WorkgroupDto()
+        model = WorkgroupDtoOwner()
         if include_optional:
-            return WorkgroupDto(
-                owner = None,
-                id = '2c91808568c529c60168cca6f90c1313',
-                name = 'DB Access Governance Group',
-                description = 'Description of the Governance Group',
-                member_count = 1641498673000,
-                connection_count = 1641498673000
+            return WorkgroupDtoOwner(
+                type = 'IDENTITY',
+                id = '2c9180a46faadee4016fb4e018c20639',
+                name = 'Support',
+                display_name = 'Support',
+                email_address = 'support@sailpoint.com'
             )
         else:
-            return WorkgroupDto(
+            return WorkgroupDtoOwner(
         )
         """
 
-    def testWorkgroupDto(self):
-        """Test WorkgroupDto"""
+    def testWorkgroupDtoOwner(self):
+        """Test WorkgroupDtoOwner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

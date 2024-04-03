@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**owner** | [**OwnerDto**](OwnerDto.md) |  | [optional] 
+**owner** | [**WorkgroupDtoOwner**](WorkgroupDtoOwner.md) |  | [optional] 
 **id** | **str** | Governance group ID. | [optional] [readonly] 
 **name** | **str** | Governance group name. | [optional] 
 **description** | **str** | Governance group description. | [optional] 
