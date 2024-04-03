@@ -36,8 +36,8 @@ class TestManagerCorrelationMapping(unittest.TestCase):
         model = ManagerCorrelationMapping()
         if include_optional:
             return ManagerCorrelationMapping(
-                account_attribute = 'manager',
-                identity_attribute = 'manager'
+                account_attribute_name = 'manager',
+                identity_attribute_name = 'manager'
             )
         else:
             return ManagerCorrelationMapping(

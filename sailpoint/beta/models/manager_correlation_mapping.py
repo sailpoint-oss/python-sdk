@@ -30,9 +30,9 @@ class ManagerCorrelationMapping(BaseModel):
     """
     ManagerCorrelationMapping
     """ # noqa: E501
-    account_attribute: Optional[StrictStr] = Field(default=None, description="Name of the attribute to use for manager correlation. The value found on the account attribute will be used to lookup the manager's identity.", alias="accountAttribute")
-    identity_attribute: Optional[StrictStr] = Field(default=None, description="Name of the identity attribute to search when trying to find a manager using the value from the accountAttribute.", alias="identityAttribute")
-    __properties: ClassVar[List[str]] = ["accountAttribute", "identityAttribute"]
+    account_attribute_name: Optional[StrictStr] = Field(default=None, description="Name of the attribute to use for manager correlation. The value found on the account attribute will be used to lookup the manager's identity.", alias="accountAttributeName")
+    identity_attribute_name: Optional[StrictStr] = Field(default=None, description="Name of the identity attribute to search when trying to find a manager using the value from the accountAttribute.", alias="identityAttributeName")
+    __properties: ClassVar[List[str]] = ["accountAttributeName", "identityAttributeName"]
 
     model_config = {
         "populate_by_name": True,
@@ -83,8 +83,8 @@ class ManagerCorrelationMapping(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "accountAttribute": obj.get("accountAttribute"),
-            "identityAttribute": obj.get("identityAttribute")
+            "accountAttributeName": obj.get("accountAttributeName"),
+            "identityAttributeName": obj.get("identityAttributeName")
         })
         return _obj
 

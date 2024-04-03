@@ -56,8 +56,8 @@ class TestSource(unittest.TestCase):
                     id = '2c918085708c274401708c2a8a760001', 
                     name = 'Example Rule', ),
                 manager_correlation_mapping = sailpoint.beta.models.manager_correlation_mapping.ManagerCorrelationMapping(
-                    account_attribute = 'manager', 
-                    identity_attribute = 'manager', ),
+                    account_attribute_name = 'manager', 
+                    identity_attribute_name = 'manager', ),
                 manager_correlation_rule = sailpoint.beta.models.source_manager_correlation_rule.Source_managerCorrelationRule(
                     type = 'RULE', 
                     id = '2c918085708c274401708c2a8a760001', 
