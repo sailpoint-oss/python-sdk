@@ -67,7 +67,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ClientLogConfiguration:
-        """Get managed cluster's log configuration
+        """(Deprecated) Get managed cluster's log configuration
 
         Get managed cluster's log configuration.
 
@@ -94,6 +94,7 @@ class ManagedClustersApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /managed-clusters/{id}/log-config is deprecated.", DeprecationWarning)
 
         _param = self._get_client_log_configuration_serialize(
             id=id,
@@ -140,7 +141,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ClientLogConfiguration]:
-        """Get managed cluster's log configuration
+        """(Deprecated) Get managed cluster's log configuration
 
         Get managed cluster's log configuration.
 
@@ -167,6 +168,7 @@ class ManagedClustersApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /managed-clusters/{id}/log-config is deprecated.", DeprecationWarning)
 
         _param = self._get_client_log_configuration_serialize(
             id=id,
@@ -213,7 +215,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get managed cluster's log configuration
+        """(Deprecated) Get managed cluster's log configuration
 
         Get managed cluster's log configuration.
 
@@ -240,6 +242,7 @@ class ManagedClustersApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /managed-clusters/{id}/log-config is deprecated.", DeprecationWarning)
 
         _param = self._get_client_log_configuration_serialize(
             id=id,
@@ -344,7 +347,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ManagedCluster:
-        """Get a specified ManagedCluster.
+        """(Deprecated) Get a specified ManagedCluster.
 
         Retrieve a ManagedCluster by ID.
 
@@ -371,6 +374,7 @@ class ManagedClustersApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /managed-clusters/{id} is deprecated.", DeprecationWarning)
 
         _param = self._get_managed_cluster_serialize(
             id=id,
@@ -417,7 +421,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ManagedCluster]:
-        """Get a specified ManagedCluster.
+        """(Deprecated) Get a specified ManagedCluster.
 
         Retrieve a ManagedCluster by ID.
 
@@ -444,6 +448,7 @@ class ManagedClustersApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /managed-clusters/{id} is deprecated.", DeprecationWarning)
 
         _param = self._get_managed_cluster_serialize(
             id=id,
@@ -490,7 +495,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get a specified ManagedCluster.
+        """(Deprecated) Get a specified ManagedCluster.
 
         Retrieve a ManagedCluster by ID.
 
@@ -517,6 +522,7 @@ class ManagedClustersApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /managed-clusters/{id} is deprecated.", DeprecationWarning)
 
         _param = self._get_managed_cluster_serialize(
             id=id,
@@ -624,7 +630,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[ManagedCluster]:
-        """Retrieve all Managed Clusters.
+        """(Deprecated) Retrieve all Managed Clusters.
 
         Retrieve all Managed Clusters for the current Org, based on request context.
 
@@ -657,6 +663,7 @@ class ManagedClustersApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /managed-clusters is deprecated.", DeprecationWarning)
 
         _param = self._get_managed_clusters_serialize(
             offset=offset,
@@ -708,7 +715,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[ManagedCluster]]:
-        """Retrieve all Managed Clusters.
+        """(Deprecated) Retrieve all Managed Clusters.
 
         Retrieve all Managed Clusters for the current Org, based on request context.
 
@@ -741,6 +748,7 @@ class ManagedClustersApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /managed-clusters is deprecated.", DeprecationWarning)
 
         _param = self._get_managed_clusters_serialize(
             offset=offset,
@@ -792,7 +800,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Retrieve all Managed Clusters.
+        """(Deprecated) Retrieve all Managed Clusters.
 
         Retrieve all Managed Clusters for the current Org, based on request context.
 
@@ -825,6 +833,7 @@ class ManagedClustersApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /managed-clusters is deprecated.", DeprecationWarning)
 
         _param = self._get_managed_clusters_serialize(
             offset=offset,
@@ -949,7 +958,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ClientLogConfiguration:
-        """Update managed cluster's log configuration
+        """(Deprecated) Update managed cluster's log configuration
 
         Update managed cluster's log configuration
 
@@ -978,6 +987,7 @@ class ManagedClustersApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PUT /managed-clusters/{id}/log-config is deprecated.", DeprecationWarning)
 
         _param = self._put_client_log_configuration_serialize(
             id=id,
@@ -1026,7 +1036,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ClientLogConfiguration]:
-        """Update managed cluster's log configuration
+        """(Deprecated) Update managed cluster's log configuration
 
         Update managed cluster's log configuration
 
@@ -1055,6 +1065,7 @@ class ManagedClustersApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PUT /managed-clusters/{id}/log-config is deprecated.", DeprecationWarning)
 
         _param = self._put_client_log_configuration_serialize(
             id=id,
@@ -1103,7 +1114,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update managed cluster's log configuration
+        """(Deprecated) Update managed cluster's log configuration
 
         Update managed cluster's log configuration
 
@@ -1132,6 +1143,7 @@ class ManagedClustersApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PUT /managed-clusters/{id}/log-config is deprecated.", DeprecationWarning)
 
         _param = self._put_client_log_configuration_serialize(
             id=id,

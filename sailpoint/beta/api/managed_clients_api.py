@@ -67,7 +67,7 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ManagedClientStatus:
-        """Specified Managed Client Status.
+        """(Deprecated) Specified Managed Client Status.
 
         Retrieve Managed Client Status by ID.
 
@@ -96,6 +96,7 @@ class ManagedClientsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /managed-clients/{id}/status is deprecated.", DeprecationWarning)
 
         _param = self._get_managed_client_status_serialize(
             id=id,
@@ -144,7 +145,7 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ManagedClientStatus]:
-        """Specified Managed Client Status.
+        """(Deprecated) Specified Managed Client Status.
 
         Retrieve Managed Client Status by ID.
 
@@ -173,6 +174,7 @@ class ManagedClientsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /managed-clients/{id}/status is deprecated.", DeprecationWarning)
 
         _param = self._get_managed_client_status_serialize(
             id=id,
@@ -221,7 +223,7 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Specified Managed Client Status.
+        """(Deprecated) Specified Managed Client Status.
 
         Retrieve Managed Client Status by ID.
 
@@ -250,6 +252,7 @@ class ManagedClientsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /managed-clients/{id}/status is deprecated.", DeprecationWarning)
 
         _param = self._get_managed_client_status_serialize(
             id=id,
@@ -361,7 +364,7 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ManagedClientStatusAggResponse:
-        """Handle status request from client
+        """(Deprecated) Handle status request from client
 
         Update a status detail passed in from the client
 
@@ -390,6 +393,7 @@ class ManagedClientsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /managed-clients/{id}/status is deprecated.", DeprecationWarning)
 
         _param = self._update_managed_client_status_serialize(
             id=id,
@@ -438,7 +442,7 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ManagedClientStatusAggResponse]:
-        """Handle status request from client
+        """(Deprecated) Handle status request from client
 
         Update a status detail passed in from the client
 
@@ -467,6 +471,7 @@ class ManagedClientsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /managed-clients/{id}/status is deprecated.", DeprecationWarning)
 
         _param = self._update_managed_client_status_serialize(
             id=id,
@@ -515,7 +520,7 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Handle status request from client
+        """(Deprecated) Handle status request from client
 
         Update a status detail passed in from the client
 
@@ -544,6 +549,7 @@ class ManagedClientsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /managed-clients/{id}/status is deprecated.", DeprecationWarning)
 
         _param = self._update_managed_client_status_serialize(
             id=id,
