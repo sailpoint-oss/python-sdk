@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **type** | **str** | Workgroup member identity DTO type. | [optional] 
 **id** | **str** | Workgroup member identity ID. | [optional] 
 **name** | **str** | Workgroup member identity display name. | [optional] 
+**email** | **str** | Workgroup member identity email. | [optional] 
 
 ## Example
 

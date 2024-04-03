@@ -38,7 +38,8 @@ class TestListWorkgroupMembers200ResponseInner(unittest.TestCase):
             return ListWorkgroupMembers200ResponseInner(
                 type = 'IDENTITY',
                 id = '2c7180a46faadee4016fb4e018c20642',
-                name = 'Michael Michaels'
+                name = 'Michael Michaels',
+                email = 'michael.michaels@sailpoint.com'
             )
         else:
             return ListWorkgroupMembers200ResponseInner(

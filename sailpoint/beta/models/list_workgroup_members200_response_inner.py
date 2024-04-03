@@ -33,7 +33,8 @@ class ListWorkgroupMembers200ResponseInner(BaseModel):
     type: Optional[StrictStr] = Field(default=None, description="Workgroup member identity DTO type.")
     id: Optional[StrictStr] = Field(default=None, description="Workgroup member identity ID.")
     name: Optional[StrictStr] = Field(default=None, description="Workgroup member identity display name.")
-    __properties: ClassVar[List[str]] = ["type", "id", "name"]
+    email: Optional[StrictStr] = Field(default=None, description="Workgroup member identity email.")
+    __properties: ClassVar[List[str]] = ["type", "id", "name", "email"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -96,7 +97,8 @@ class ListWorkgroupMembers200ResponseInner(BaseModel):
         _obj = cls.model_validate({
             "type": obj.get("type"),
             "id": obj.get("id"),
-            "name": obj.get("name")
+            "name": obj.get("name"),
+            "email": obj.get("email")
         })
         return _obj
 
