@@ -29,6 +29,7 @@ from sailpoint.v3.api.certification_campaign_filters_api import CertificationCam
 from sailpoint.v3.api.certification_campaigns_api import CertificationCampaignsApi
 from sailpoint.v3.api.certification_summaries_api import CertificationSummariesApi
 from sailpoint.v3.api.certifications_api import CertificationsApi
+from sailpoint.v3.api.configuration_hub_api import ConfigurationHubApi
 from sailpoint.v3.api.connectors_api import ConnectorsApi
 from sailpoint.v3.api.global_tenant_security_settings_api import GlobalTenantSecuritySettingsApi
 from sailpoint.v3.api.identity_profiles_api import IdentityProfilesApi
@@ -333,6 +334,12 @@ from sailpoint.v3.models.non_employee_source_request_body import NonEmployeeSour
 from sailpoint.v3.models.non_employee_source_with_cloud_external_id import NonEmployeeSourceWithCloudExternalId
 from sailpoint.v3.models.non_employee_source_with_ne_count import NonEmployeeSourceWithNECount
 from sailpoint.v3.models.object_import_result import ObjectImportResult
+from sailpoint.v3.models.object_mapping_bulk_create_request import ObjectMappingBulkCreateRequest
+from sailpoint.v3.models.object_mapping_bulk_create_response import ObjectMappingBulkCreateResponse
+from sailpoint.v3.models.object_mapping_bulk_patch_request import ObjectMappingBulkPatchRequest
+from sailpoint.v3.models.object_mapping_bulk_patch_response import ObjectMappingBulkPatchResponse
+from sailpoint.v3.models.object_mapping_request import ObjectMappingRequest
+from sailpoint.v3.models.object_mapping_response import ObjectMappingResponse
 from sailpoint.v3.models.operation import Operation
 from sailpoint.v3.models.original_request import OriginalRequest
 from sailpoint.v3.models.orphan_uncorrelated_report_arguments import OrphanUncorrelatedReportArguments

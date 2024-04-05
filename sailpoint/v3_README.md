@@ -153,6 +153,11 @@ Class | Method | HTTP request | Description
 *CertificationsApi* | [**reassign_identity_certifications**](sailpoint/v3/docs/CertificationsApi.md#reassign_identity_certifications) | **POST** /certifications/{id}/reassign | Reassign Identities or Items
 *CertificationsApi* | [**sign_off_identity_certification**](sailpoint/v3/docs/CertificationsApi.md#sign_off_identity_certification) | **POST** /certifications/{id}/sign-off | Finalize Identity Certification Decisions
 *CertificationsApi* | [**submit_reassign_certs_async**](sailpoint/v3/docs/CertificationsApi.md#submit_reassign_certs_async) | **POST** /certifications/{id}/reassign-async | Reassign Certifications Asynchronously
+*ConfigurationHubApi* | [**create_object_mapping**](sailpoint/v3/docs/ConfigurationHubApi.md#create_object_mapping) | **POST** /configuration-hub/object-mappings/{sourceOrg} | Creates an object mapping
+*ConfigurationHubApi* | [**create_object_mappings**](sailpoint/v3/docs/ConfigurationHubApi.md#create_object_mappings) | **POST** /configuration-hub/object-mappings/{sourceOrg}/bulk-create | Bulk creates object mappings
+*ConfigurationHubApi* | [**delete_object_mapping**](sailpoint/v3/docs/ConfigurationHubApi.md#delete_object_mapping) | **DELETE** /configuration-hub/object-mappings/{sourceOrg}/{objectMappingId} | Deletes an object mapping
+*ConfigurationHubApi* | [**get_object_mappings**](sailpoint/v3/docs/ConfigurationHubApi.md#get_object_mappings) | **GET** /configuration-hub/object-mappings/{sourceOrg} | Gets list of object mappings
+*ConfigurationHubApi* | [**update_object_mappings**](sailpoint/v3/docs/ConfigurationHubApi.md#update_object_mappings) | **POST** /configuration-hub/object-mappings/{sourceOrg}/bulk-patch | Bulk updates object mappings
 *ConnectorsApi* | [**create_custom_connector**](sailpoint/v3/docs/ConnectorsApi.md#create_custom_connector) | **POST** /connectors | Create custom connector
 *ConnectorsApi* | [**delete_custom_connector**](sailpoint/v3/docs/ConnectorsApi.md#delete_custom_connector) | **DELETE** /connectors/{scriptName} | 
 *ConnectorsApi* | [**get_connector**](sailpoint/v3/docs/ConnectorsApi.md#get_connector) | **GET** /connectors/{scriptName} | 
@@ -637,6 +642,12 @@ Class | Method | HTTP request | Description
  - [NonEmployeeSourceWithCloudExternalId](sailpoint/v3/docs/NonEmployeeSourceWithCloudExternalId.md)
  - [NonEmployeeSourceWithNECount](sailpoint/v3/docs/NonEmployeeSourceWithNECount.md)
  - [ObjectImportResult](sailpoint/v3/docs/ObjectImportResult.md)
+ - [ObjectMappingBulkCreateRequest](sailpoint/v3/docs/ObjectMappingBulkCreateRequest.md)
+ - [ObjectMappingBulkCreateResponse](sailpoint/v3/docs/ObjectMappingBulkCreateResponse.md)
+ - [ObjectMappingBulkPatchRequest](sailpoint/v3/docs/ObjectMappingBulkPatchRequest.md)
+ - [ObjectMappingBulkPatchResponse](sailpoint/v3/docs/ObjectMappingBulkPatchResponse.md)
+ - [ObjectMappingRequest](sailpoint/v3/docs/ObjectMappingRequest.md)
+ - [ObjectMappingResponse](sailpoint/v3/docs/ObjectMappingResponse.md)
  - [Operation](sailpoint/v3/docs/Operation.md)
  - [OriginalRequest](sailpoint/v3/docs/OriginalRequest.md)
  - [OrphanUncorrelatedReportArguments](sailpoint/v3/docs/OrphanUncorrelatedReportArguments.md)
