@@ -37,7 +37,7 @@ class TestIdentityAttribute(unittest.TestCase):
         if include_optional:
             return IdentityAttribute(
                 name = 'uid',
-                display_name = 'IdentityNow Username',
+                display_name = 'Identity Security Cloud Username',
                 standard = True,
                 type = 'string',
                 multi = False,
@@ -51,6 +51,7 @@ class TestIdentityAttribute(unittest.TestCase):
             )
         else:
             return IdentityAttribute(
+                name = 'uid',
         )
         """
 

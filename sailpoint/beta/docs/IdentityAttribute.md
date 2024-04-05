@@ -5,14 +5,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** | The technical name of the identity attribute | [optional] 
-**display_name** | **str** | The business-friendly name of the identity attribute | [optional] 
-**standard** | **bool** | Shows if the attribute is &#39;standard&#39; or default | [optional] [default to False]
-**type** | **str** | The type of the identity attribute | [optional] 
-**multi** | **bool** | Shows if the identity attribute is multi-valued | [optional] [default to False]
-**searchable** | **bool** | Shows if the identity attribute is searchable | [optional] [default to False]
-**system** | **bool** | Shows this is &#39;system&#39; identity attribute that does not have a source and is not configurable. | [optional] [default to False]
-**sources** | [**List[Source1]**](Source1.md) | List of sources for an attribute, this specifies how the value of the rule is derived | [optional] 
+**name** | **str** | Identity attribute&#39;s technical name. | 
+**display_name** | **str** | Identity attribute&#39;s business-friendly name. | [optional] 
+**standard** | **bool** | Indicates whether the attribute is &#39;standard&#39; or &#39;default&#39;. | [optional] [default to False]
+**type** | **str** | Identity attribute&#39;s type. | [optional] 
+**multi** | **bool** | Indicates whether the identity attribute is multi-valued. | [optional] [default to False]
+**searchable** | **bool** | Indicates whether the identity attribute is searchable. | [optional] [default to False]
+**system** | **bool** | Indicates whether the identity attribute is &#39;system&#39;, meaning that it doesn&#39;t have a source and isn&#39;t configurable. | [optional] [default to False]
+**sources** | [**List[Source1]**](Source1.md) | Identity attribute&#39;s list of sources - this specifies how the rule&#39;s value is derived. | [optional] 
 
 ## Example
 

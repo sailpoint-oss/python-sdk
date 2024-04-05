@@ -373,7 +373,7 @@ Name | Type | Description  | Notes
 
 Set Lifecycle State
 
-This endpoint will set/update an identity's lifecycle state to the one provided and updates the corresponding Identity Profile. A token with ORG_ADMIN or API authority is required to call this API.
+This endpoint will set/update an identity's lifecycle state to the one provided and updates the corresponding identity profile. A token with ORG_ADMIN or API authority is required to call this API.
 
 ### Example
 
@@ -408,7 +408,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.LifecycleStatesApi(api_client)
-    identity_id = '2c9180857893f1290178944561990364' # str | The ID of the identity to update
+    identity_id = '2c9180857893f1290178944561990364' # str | The ID of the identity to update.
     set_lifecycle_state_request = sailpoint.v3.SetLifecycleStateRequest() # SetLifecycleStateRequest | 
 
     try:
@@ -427,7 +427,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identity_id** | **str**| The ID of the identity to update | 
+ **identity_id** | **str**| The ID of the identity to update. | 
  **set_lifecycle_state_request** | [**SetLifecycleStateRequest**](SetLifecycleStateRequest.md)|  | 
 
 ### Return type

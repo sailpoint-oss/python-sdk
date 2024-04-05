@@ -30,7 +30,7 @@ class SetLifecycleStateRequest(BaseModel):
     """
     SetLifecycleStateRequest
     """ # noqa: E501
-    lifecycle_state_id: Optional[StrictStr] = Field(default=None, description="The ID of the lifecycle state to set", alias="lifecycleStateId")
+    lifecycle_state_id: Optional[StrictStr] = Field(default=None, description="The ID of the lifecycle state to set.", alias="lifecycleStateId")
     __properties: ClassVar[List[str]] = ["lifecycleStateId"]
 
     model_config = {

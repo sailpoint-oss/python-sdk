@@ -31,14 +31,14 @@ class IdentityAttribute(BaseModel):
     """
     IdentityAttribute
     """ # noqa: E501
-    name: Optional[StrictStr] = Field(default=None, description="The technical name of the identity attribute")
-    display_name: Optional[StrictStr] = Field(default=None, description="The business-friendly name of the identity attribute", alias="displayName")
-    standard: Optional[StrictBool] = Field(default=False, description="Shows if the attribute is 'standard' or default")
-    type: Optional[StrictStr] = Field(default=None, description="The type of the identity attribute")
-    multi: Optional[StrictBool] = Field(default=False, description="Shows if the identity attribute is multi-valued")
-    searchable: Optional[StrictBool] = Field(default=False, description="Shows if the identity attribute is searchable")
-    system: Optional[StrictBool] = Field(default=False, description="Shows this is 'system' identity attribute that does not have a source and is not configurable.")
-    sources: Optional[List[Source1]] = Field(default=None, description="List of sources for an attribute, this specifies how the value of the rule is derived")
+    name: StrictStr = Field(description="Identity attribute's technical name.")
+    display_name: Optional[StrictStr] = Field(default=None, description="Identity attribute's business-friendly name.", alias="displayName")
+    standard: Optional[StrictBool] = Field(default=False, description="Indicates whether the attribute is 'standard' or 'default'.")
+    type: Optional[StrictStr] = Field(default=None, description="Identity attribute's type.")
+    multi: Optional[StrictBool] = Field(default=False, description="Indicates whether the identity attribute is multi-valued.")
+    searchable: Optional[StrictBool] = Field(default=False, description="Indicates whether the identity attribute is searchable.")
+    system: Optional[StrictBool] = Field(default=False, description="Indicates whether the identity attribute is 'system', meaning that it doesn't have a source and isn't configurable.")
+    sources: Optional[List[Source1]] = Field(default=None, description="Identity attribute's list of sources - this specifies how the rule's value is derived.")
     __properties: ClassVar[List[str]] = ["name", "displayName", "standard", "type", "multi", "searchable", "system", "sources"]
 
     model_config = {

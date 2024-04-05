@@ -30,8 +30,8 @@ class Source1(BaseModel):
     """
     Source1
     """ # noqa: E501
-    type: Optional[StrictStr] = Field(default=None, description="The type of the source")
-    properties: Optional[Dict[str, Any]] = Field(default=None, description="The source properties")
+    type: Optional[StrictStr] = Field(default=None, description="Source type.")
+    properties: Optional[Dict[str, Any]] = Field(default=None, description="Source properties.")
     __properties: ClassVar[List[str]] = ["type", "properties"]
 
     model_config = {

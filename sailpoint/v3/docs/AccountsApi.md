@@ -818,7 +818,7 @@ Name | Type | Description  | Notes
 
 Unlock Account
 
-This API submits a task to unlock an account and returns the task ID.   A token with ORG_ADMIN authority is required to call this API.
+This API submits a task to unlock an account and returns the task ID.   To use this endpoint to unlock an account that has the `forceProvisioning` option set to true, the `idn:accounts-provisioning:manage` scope is required.  A token with ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -853,7 +853,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.AccountsApi(api_client)
-    id = 'ef38f94347e94562b5bb8424a56397d8' # str | The account id
+    id = 'ef38f94347e94562b5bb8424a56397d8' # str | The account ID.
     account_unlock_request = sailpoint.v3.AccountUnlockRequest() # AccountUnlockRequest | 
 
     try:
@@ -872,7 +872,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The account id | 
+ **id** | **str**| The account ID. | 
  **account_unlock_request** | [**AccountUnlockRequest**](AccountUnlockRequest.md)|  | 
 
 ### Return type

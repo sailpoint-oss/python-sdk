@@ -2764,7 +2764,7 @@ class AccountsApi:
     @validate_call
     def unlock_account(
         self,
-        id: Annotated[StrictStr, Field(description="The account id")],
+        id: Annotated[StrictStr, Field(description="The account ID.")],
         account_unlock_request: AccountUnlockRequest,
         _request_timeout: Union[
             None,
@@ -2781,9 +2781,9 @@ class AccountsApi:
     ) -> AccountsAsyncResult:
         """Unlock Account
 
-        This API submits a task to unlock an account and returns the task ID.   A token with ORG_ADMIN authority is required to call this API.
+        This API submits a task to unlock an account and returns the task ID.   To use this endpoint to unlock an account that has the `forceProvisioning` option set to true, the `idn:accounts-provisioning:manage` scope is required.  A token with ORG_ADMIN authority is required to call this API.
 
-        :param id: The account id (required)
+        :param id: The account ID. (required)
         :type id: str
         :param account_unlock_request: (required)
         :type account_unlock_request: AccountUnlockRequest
@@ -2841,7 +2841,7 @@ class AccountsApi:
     @validate_call
     def unlock_account_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The account id")],
+        id: Annotated[StrictStr, Field(description="The account ID.")],
         account_unlock_request: AccountUnlockRequest,
         _request_timeout: Union[
             None,
@@ -2858,9 +2858,9 @@ class AccountsApi:
     ) -> ApiResponse[AccountsAsyncResult]:
         """Unlock Account
 
-        This API submits a task to unlock an account and returns the task ID.   A token with ORG_ADMIN authority is required to call this API.
+        This API submits a task to unlock an account and returns the task ID.   To use this endpoint to unlock an account that has the `forceProvisioning` option set to true, the `idn:accounts-provisioning:manage` scope is required.  A token with ORG_ADMIN authority is required to call this API.
 
-        :param id: The account id (required)
+        :param id: The account ID. (required)
         :type id: str
         :param account_unlock_request: (required)
         :type account_unlock_request: AccountUnlockRequest
@@ -2918,7 +2918,7 @@ class AccountsApi:
     @validate_call
     def unlock_account_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The account id")],
+        id: Annotated[StrictStr, Field(description="The account ID.")],
         account_unlock_request: AccountUnlockRequest,
         _request_timeout: Union[
             None,
@@ -2935,9 +2935,9 @@ class AccountsApi:
     ) -> RESTResponseType:
         """Unlock Account
 
-        This API submits a task to unlock an account and returns the task ID.   A token with ORG_ADMIN authority is required to call this API.
+        This API submits a task to unlock an account and returns the task ID.   To use this endpoint to unlock an account that has the `forceProvisioning` option set to true, the `idn:accounts-provisioning:manage` scope is required.  A token with ORG_ADMIN authority is required to call this API.
 
-        :param id: The account id (required)
+        :param id: The account ID. (required)
         :type id: str
         :param account_unlock_request: (required)
         :type account_unlock_request: AccountUnlockRequest

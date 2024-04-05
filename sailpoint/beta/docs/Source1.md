@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **str** | The type of the source | [optional] 
-**properties** | **object** | The source properties | [optional] 
+**type** | **str** | Source type. | [optional] 
+**properties** | **object** | Source properties. | [optional] 
 
 ## Example
 

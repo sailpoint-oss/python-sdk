@@ -1284,7 +1284,7 @@ class LifecycleStatesApi:
     @validate_call
     def set_lifecycle_state(
         self,
-        identity_id: Annotated[StrictStr, Field(description="The ID of the identity to update")],
+        identity_id: Annotated[StrictStr, Field(description="The ID of the identity to update.")],
         set_lifecycle_state_request: SetLifecycleStateRequest,
         _request_timeout: Union[
             None,
@@ -1301,9 +1301,9 @@ class LifecycleStatesApi:
     ) -> SetLifecycleState200Response:
         """Set Lifecycle State
 
-        This endpoint will set/update an identity's lifecycle state to the one provided and updates the corresponding Identity Profile. A token with ORG_ADMIN or API authority is required to call this API.
+        This endpoint will set/update an identity's lifecycle state to the one provided and updates the corresponding identity profile. A token with ORG_ADMIN or API authority is required to call this API.
 
-        :param identity_id: The ID of the identity to update (required)
+        :param identity_id: The ID of the identity to update. (required)
         :type identity_id: str
         :param set_lifecycle_state_request: (required)
         :type set_lifecycle_state_request: SetLifecycleStateRequest
@@ -1361,7 +1361,7 @@ class LifecycleStatesApi:
     @validate_call
     def set_lifecycle_state_with_http_info(
         self,
-        identity_id: Annotated[StrictStr, Field(description="The ID of the identity to update")],
+        identity_id: Annotated[StrictStr, Field(description="The ID of the identity to update.")],
         set_lifecycle_state_request: SetLifecycleStateRequest,
         _request_timeout: Union[
             None,
@@ -1378,9 +1378,9 @@ class LifecycleStatesApi:
     ) -> ApiResponse[SetLifecycleState200Response]:
         """Set Lifecycle State
 
-        This endpoint will set/update an identity's lifecycle state to the one provided and updates the corresponding Identity Profile. A token with ORG_ADMIN or API authority is required to call this API.
+        This endpoint will set/update an identity's lifecycle state to the one provided and updates the corresponding identity profile. A token with ORG_ADMIN or API authority is required to call this API.
 
-        :param identity_id: The ID of the identity to update (required)
+        :param identity_id: The ID of the identity to update. (required)
         :type identity_id: str
         :param set_lifecycle_state_request: (required)
         :type set_lifecycle_state_request: SetLifecycleStateRequest
@@ -1438,7 +1438,7 @@ class LifecycleStatesApi:
     @validate_call
     def set_lifecycle_state_without_preload_content(
         self,
-        identity_id: Annotated[StrictStr, Field(description="The ID of the identity to update")],
+        identity_id: Annotated[StrictStr, Field(description="The ID of the identity to update.")],
         set_lifecycle_state_request: SetLifecycleStateRequest,
         _request_timeout: Union[
             None,
@@ -1455,9 +1455,9 @@ class LifecycleStatesApi:
     ) -> RESTResponseType:
         """Set Lifecycle State
 
-        This endpoint will set/update an identity's lifecycle state to the one provided and updates the corresponding Identity Profile. A token with ORG_ADMIN or API authority is required to call this API.
+        This endpoint will set/update an identity's lifecycle state to the one provided and updates the corresponding identity profile. A token with ORG_ADMIN or API authority is required to call this API.
 
-        :param identity_id: The ID of the identity to update (required)
+        :param identity_id: The ID of the identity to update. (required)
         :type identity_id: str
         :param set_lifecycle_state_request: (required)
         :type set_lifecycle_state_request: SetLifecycleStateRequest
