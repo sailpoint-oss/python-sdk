@@ -479,6 +479,13 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**update_source**](sailpoint/beta/docs/SourcesApi.md#update_source) | **PATCH** /sources/{id} | Update Source (Partial)
 *SourcesApi* | [**update_source_entitlement_request_config**](sailpoint/beta/docs/SourcesApi.md#update_source_entitlement_request_config) | **PUT** /sources/{id}/entitlement-request-config | Update Source Entitlement Request Configuration
 *SourcesApi* | [**update_source_schema**](sailpoint/beta/docs/SourcesApi.md#update_source_schema) | **PATCH** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Partial)
+*SuggestedEntitlementDescriptionApi* | [**get_sed_batch_stats**](sailpoint/beta/docs/SuggestedEntitlementDescriptionApi.md#get_sed_batch_stats) | **GET** /suggested-entitlement-description-batches/{batchId}/stats | Submit Sed Batch Stats Request
+*SuggestedEntitlementDescriptionApi* | [**get_sed_batches**](sailpoint/beta/docs/SuggestedEntitlementDescriptionApi.md#get_sed_batches) | **GET** /suggested-entitlement-description-batches | List Sed Batch Request
+*SuggestedEntitlementDescriptionApi* | [**list_seds**](sailpoint/beta/docs/SuggestedEntitlementDescriptionApi.md#list_seds) | **GET** /suggested-entitlement-descriptions | List Suggested Entitlement Description
+*SuggestedEntitlementDescriptionApi* | [**patch_sed**](sailpoint/beta/docs/SuggestedEntitlementDescriptionApi.md#patch_sed) | **PATCH** /suggested-entitlement-descriptions | Patch Suggested Entitlement Description
+*SuggestedEntitlementDescriptionApi* | [**submit_sed_approval**](sailpoint/beta/docs/SuggestedEntitlementDescriptionApi.md#submit_sed_approval) | **POST** /suggested-entitlement-description-approvals | Submit Bulk Approval Request
+*SuggestedEntitlementDescriptionApi* | [**submit_sed_assignment**](sailpoint/beta/docs/SuggestedEntitlementDescriptionApi.md#submit_sed_assignment) | **POST** /suggested-entitlement-description-assignments | Submit Sed Assignment Request
+*SuggestedEntitlementDescriptionApi* | [**submit_sed_batch_request**](sailpoint/beta/docs/SuggestedEntitlementDescriptionApi.md#submit_sed_batch_request) | **POST** /suggested-entitlement-description-batches | Submit Sed Batch Request
 *TaggedObjectsApi* | [**delete_tagged_object**](sailpoint/beta/docs/TaggedObjectsApi.md#delete_tagged_object) | **DELETE** /tagged-objects/{type}/{id} | Delete Tagged Object
 *TaggedObjectsApi* | [**delete_tags_to_many_object**](sailpoint/beta/docs/TaggedObjectsApi.md#delete_tags_to_many_object) | **POST** /tagged-objects/bulk-remove | Remove Tags from Multiple Objects
 *TaggedObjectsApi* | [**get_tagged_object**](sailpoint/beta/docs/TaggedObjectsApi.md#get_tagged_object) | **GET** /tagged-objects/{type}/{id} | Get Tagged Object
@@ -1163,6 +1170,17 @@ Class | Method | HTTP request | Description
  - [SearchFormDefinitionsByTenant400Response](sailpoint/beta/docs/SearchFormDefinitionsByTenant400Response.md)
  - [Section](sailpoint/beta/docs/Section.md)
  - [SectionDetails](sailpoint/beta/docs/SectionDetails.md)
+ - [Sed](sailpoint/beta/docs/Sed.md)
+ - [SedApproval](sailpoint/beta/docs/SedApproval.md)
+ - [SedApprovalStatus](sailpoint/beta/docs/SedApprovalStatus.md)
+ - [SedAssignee](sailpoint/beta/docs/SedAssignee.md)
+ - [SedAssignment](sailpoint/beta/docs/SedAssignment.md)
+ - [SedAssignmentResponse](sailpoint/beta/docs/SedAssignmentResponse.md)
+ - [SedBatchRequest](sailpoint/beta/docs/SedBatchRequest.md)
+ - [SedBatchResponse](sailpoint/beta/docs/SedBatchResponse.md)
+ - [SedBatchStats](sailpoint/beta/docs/SedBatchStats.md)
+ - [SedBatchStatus](sailpoint/beta/docs/SedBatchStatus.md)
+ - [SedPatch](sailpoint/beta/docs/SedPatch.md)
  - [Segment](sailpoint/beta/docs/Segment.md)
  - [Selector](sailpoint/beta/docs/Selector.md)
  - [SelectorType](sailpoint/beta/docs/SelectorType.md)

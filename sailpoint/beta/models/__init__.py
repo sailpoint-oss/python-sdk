@@ -622,6 +622,17 @@ from sailpoint.beta.models.search_attribute_config import SearchAttributeConfig
 from sailpoint.beta.models.search_form_definitions_by_tenant400_response import SearchFormDefinitionsByTenant400Response
 from sailpoint.beta.models.section import Section
 from sailpoint.beta.models.section_details import SectionDetails
+from sailpoint.beta.models.sed import Sed
+from sailpoint.beta.models.sed_approval import SedApproval
+from sailpoint.beta.models.sed_approval_status import SedApprovalStatus
+from sailpoint.beta.models.sed_assignee import SedAssignee
+from sailpoint.beta.models.sed_assignment import SedAssignment
+from sailpoint.beta.models.sed_assignment_response import SedAssignmentResponse
+from sailpoint.beta.models.sed_batch_request import SedBatchRequest
+from sailpoint.beta.models.sed_batch_response import SedBatchResponse
+from sailpoint.beta.models.sed_batch_stats import SedBatchStats
+from sailpoint.beta.models.sed_batch_status import SedBatchStatus
+from sailpoint.beta.models.sed_patch import SedPatch
 from sailpoint.beta.models.segment import Segment
 from sailpoint.beta.models.selector import Selector
 from sailpoint.beta.models.selector_type import SelectorType
