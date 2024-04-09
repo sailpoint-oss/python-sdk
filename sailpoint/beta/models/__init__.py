@@ -113,10 +113,17 @@ from sailpoint.beta.models.accounts_collected_for_aggregation_stats import Accou
 from sailpoint.beta.models.activate_campaign_options import ActivateCampaignOptions
 from sailpoint.beta.models.admin_review_reassign import AdminReviewReassign
 from sailpoint.beta.models.admin_review_reassign_reassign_to import AdminReviewReassignReassignTo
+from sailpoint.beta.models.approval import Approval
+from sailpoint.beta.models.approval_comment import ApprovalComment
+from sailpoint.beta.models.approval_description import ApprovalDescription
+from sailpoint.beta.models.approval_dto import ApprovalDto
 from sailpoint.beta.models.approval_forward_history import ApprovalForwardHistory
+from sailpoint.beta.models.approval_identity import ApprovalIdentity
 from sailpoint.beta.models.approval_info_response import ApprovalInfoResponse
 from sailpoint.beta.models.approval_item_details import ApprovalItemDetails
 from sailpoint.beta.models.approval_items import ApprovalItems
+from sailpoint.beta.models.approval_name import ApprovalName
+from sailpoint.beta.models.approval_reference import ApprovalReference
 from sailpoint.beta.models.approval_reminder_and_escalation_config import ApprovalReminderAndEscalationConfig
 from sailpoint.beta.models.approval_scheme import ApprovalScheme
 from sailpoint.beta.models.approval_scheme_for_role import ApprovalSchemeForRole

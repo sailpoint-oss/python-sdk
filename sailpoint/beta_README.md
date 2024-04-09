@@ -114,6 +114,9 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**reload_account**](sailpoint/beta/docs/AccountsApi.md#reload_account) | **POST** /accounts/{id}/reload | Reload Account
 *AccountsApi* | [**unlock_account**](sailpoint/beta/docs/AccountsApi.md#unlock_account) | **POST** /accounts/{id}/unlock | Unlock Account
 *AccountsApi* | [**update_account**](sailpoint/beta/docs/AccountsApi.md#update_account) | **PATCH** /accounts/{id} | Update Account
+*ApprovalsApi* | [**get_approval**](sailpoint/beta/docs/ApprovalsApi.md#get_approval) | **GET** /approvals/{id} | Get an approval
+*ApprovalsApi* | [**get_approvals**](sailpoint/beta/docs/ApprovalsApi.md#get_approvals) | **GET** /approvals | Get Approvals
+*ApprovalsApi* | [**patch_approval**](sailpoint/beta/docs/ApprovalsApi.md#patch_approval) | **PATCH** /approvals/{id} | Change an approval
 *AuthProfileApi* | [**get_profile_config**](sailpoint/beta/docs/AuthProfileApi.md#get_profile_config) | **GET** /auth-profiles/{id} | Get Auth Profile.
 *AuthProfileApi* | [**get_profile_config_list**](sailpoint/beta/docs/AuthProfileApi.md#get_profile_config_list) | **GET** /auth-profiles | Get list of Auth Profiles.
 *AuthProfileApi* | [**patch_profile_config**](sailpoint/beta/docs/AuthProfileApi.md#patch_profile_config) | **PATCH** /auth-profiles/{id} | Patch a specified Auth Profile
@@ -661,10 +664,17 @@ Class | Method | HTTP request | Description
  - [ActivateCampaignOptions](sailpoint/beta/docs/ActivateCampaignOptions.md)
  - [AdminReviewReassign](sailpoint/beta/docs/AdminReviewReassign.md)
  - [AdminReviewReassignReassignTo](sailpoint/beta/docs/AdminReviewReassignReassignTo.md)
+ - [Approval](sailpoint/beta/docs/Approval.md)
+ - [ApprovalComment](sailpoint/beta/docs/ApprovalComment.md)
+ - [ApprovalDescription](sailpoint/beta/docs/ApprovalDescription.md)
+ - [ApprovalDto](sailpoint/beta/docs/ApprovalDto.md)
  - [ApprovalForwardHistory](sailpoint/beta/docs/ApprovalForwardHistory.md)
+ - [ApprovalIdentity](sailpoint/beta/docs/ApprovalIdentity.md)
  - [ApprovalInfoResponse](sailpoint/beta/docs/ApprovalInfoResponse.md)
  - [ApprovalItemDetails](sailpoint/beta/docs/ApprovalItemDetails.md)
  - [ApprovalItems](sailpoint/beta/docs/ApprovalItems.md)
+ - [ApprovalName](sailpoint/beta/docs/ApprovalName.md)
+ - [ApprovalReference](sailpoint/beta/docs/ApprovalReference.md)
  - [ApprovalReminderAndEscalationConfig](sailpoint/beta/docs/ApprovalReminderAndEscalationConfig.md)
  - [ApprovalScheme](sailpoint/beta/docs/ApprovalScheme.md)
  - [ApprovalSchemeForRole](sailpoint/beta/docs/ApprovalSchemeForRole.md)
