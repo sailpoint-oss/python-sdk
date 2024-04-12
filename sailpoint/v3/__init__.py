@@ -23,7 +23,7 @@ from sailpoint.v3.api.access_requests_api import AccessRequestsApi
 from sailpoint.v3.api.account_activities_api import AccountActivitiesApi
 from sailpoint.v3.api.account_usages_api import AccountUsagesApi
 from sailpoint.v3.api.accounts_api import AccountsApi
-from sailpoint.v3.api.auth_user_api import AuthUserApi
+from sailpoint.v3.api.auth_users_api import AuthUsersApi
 from sailpoint.v3.api.branding_api import BrandingApi
 from sailpoint.v3.api.certification_campaign_filters_api import CertificationCampaignFiltersApi
 from sailpoint.v3.api.certification_campaigns_api import CertificationCampaignsApi
@@ -46,6 +46,7 @@ from sailpoint.v3.api.public_identities_config_api import PublicIdentitiesConfig
 from sailpoint.v3.api.reports_data_extraction_api import ReportsDataExtractionApi
 from sailpoint.v3.api.requestable_objects_api import RequestableObjectsApi
 from sailpoint.v3.api.roles_api import RolesApi
+from sailpoint.v3.api.sod_policies_api import SODPoliciesApi
 from sailpoint.v3.api.sod_policy_api import SODPolicyApi
 from sailpoint.v3.api.sod_violations_api import SODViolationsApi
 from sailpoint.v3.api.saved_search_api import SavedSearchApi

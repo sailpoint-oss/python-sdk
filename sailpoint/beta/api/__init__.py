@@ -52,6 +52,7 @@ from sailpoint.beta.api.public_identities_config_api import PublicIdentitiesConf
 from sailpoint.beta.api.requestable_objects_api import RequestableObjectsApi
 from sailpoint.beta.api.role_insights_api import RoleInsightsApi
 from sailpoint.beta.api.roles_api import RolesApi
+from sailpoint.beta.api.sod_policies_api import SODPoliciesApi
 from sailpoint.beta.api.sod_policy_api import SODPolicyApi
 from sailpoint.beta.api.sod_violations_api import SODViolationsApi
 from sailpoint.beta.api.sp_config_api import SPConfigApi

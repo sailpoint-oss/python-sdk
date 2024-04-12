@@ -26,17 +26,17 @@ class TestRolesApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_bulk_delete_roles(self) -> None:
-        """Test case for bulk_delete_roles
-
-        Delete Role(s)
-        """
-        pass
-
     def test_create_role(self) -> None:
         """Test case for create_role
 
         Create a Role
+        """
+        pass
+
+    def test_delete_bulk_roles(self) -> None:
+        """Test case for delete_bulk_roles
+
+        Delete Role(s)
         """
         pass
 

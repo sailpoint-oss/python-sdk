@@ -4,8 +4,8 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**bulk_delete_roles**](RolesApi.md#bulk_delete_roles) | **POST** /roles/bulk-delete | Delete Role(s)
 [**create_role**](RolesApi.md#create_role) | **POST** /roles | Create a Role
+[**delete_bulk_roles**](RolesApi.md#delete_bulk_roles) | **POST** /roles/bulk-delete | Delete Role(s)
 [**delete_role**](RolesApi.md#delete_role) | **DELETE** /roles/{id} | Delete a Role
 [**get_role**](RolesApi.md#get_role) | **GET** /roles/{id} | Get a Role
 [**get_role_assigned_identities**](RolesApi.md#get_role_assigned_identities) | **GET** /roles/{id}/assigned-identities | Identities assigned a Role
@@ -13,92 +13,6 @@ Method | HTTP request | Description
 [**list_roles**](RolesApi.md#list_roles) | **GET** /roles | List Roles
 [**patch_role**](RolesApi.md#patch_role) | **PATCH** /roles/{id} | Patch a specified Role
 
-
-# **bulk_delete_roles**
-> TaskResultDto bulk_delete_roles(role_bulk_delete_request)
-
-Delete Role(s)
-
-This API initiates a bulk deletion of one or more Roles.  A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a token with ROLE_SUBADMIN authority may only call this API if all Roles included in the request are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.
-
-### Example
-
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
-
-```python
-import time
-import os
-import sailpoint.beta
-from sailpoint.beta.models.role_bulk_delete_request import RoleBulkDeleteRequest
-from sailpoint.beta.models.task_result_dto import TaskResultDto
-from sailpoint.beta.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
-# See configuration.py for a list of all supported configuration parameters.
-configuration = sailpoint.beta.Configuration(
-    host = "https://sailpoint.api.identitynow.com/beta"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with sailpoint.beta.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = sailpoint.beta.RolesApi(api_client)
-    role_bulk_delete_request = {roleIds=[2c91808876438bb2017668b91919ecca, 2c91808876438ba801766e129f151816]} # RoleBulkDeleteRequest | 
-
-    try:
-        # Delete Role(s)
-        api_response = api_instance.bulk_delete_roles(role_bulk_delete_request)
-        print("The response of RolesApi->bulk_delete_roles:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling RolesApi->bulk_delete_roles: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **role_bulk_delete_request** | [**RoleBulkDeleteRequest**](RoleBulkDeleteRequest.md)|  | 
-
-### Return type
-
-[**TaskResultDto**](TaskResultDto.md)
-
-### Authorization
-
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**202** | Returns an object with the id of the task performing the delete operation. |  -  |
-**400** | Client Error - Returned if the request body is invalid. |  -  |
-**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
-**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
-**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
-**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_role**
 > Role create_role(role)
@@ -177,6 +91,92 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Role created |  -  |
+**400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
+**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_bulk_roles**
+> TaskResultDto delete_bulk_roles(role_bulk_delete_request)
+
+Delete Role(s)
+
+This endpoint initiates a bulk deletion of one or more roles. When the request is successful, the endpoint returns the bulk delete's task result ID.  To follow the task, you can use [Get Task Status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status), which will return the task result's status and information.  This endpoint can only bulk delete up to a limit of 50 roles per request.  A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this endpoint. In addition, a token with ROLE_SUBADMIN authority can only call this endpoint if all roles included in the request are associated with sources with management workgroups the ROLE_SUBADMIN is a member of.
+
+### Example
+
+* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (UserContextAuth):
+
+```python
+import time
+import os
+import sailpoint.beta
+from sailpoint.beta.models.role_bulk_delete_request import RoleBulkDeleteRequest
+from sailpoint.beta.models.task_result_dto import TaskResultDto
+from sailpoint.beta.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sailpoint.beta.Configuration(
+    host = "https://sailpoint.api.identitynow.com/beta"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with sailpoint.beta.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sailpoint.beta.RolesApi(api_client)
+    role_bulk_delete_request = {roleIds=[2c91808876438bb2017668b91919ecca, 2c91808876438ba801766e129f151816]} # RoleBulkDeleteRequest | 
+
+    try:
+        # Delete Role(s)
+        api_response = api_instance.delete_bulk_roles(role_bulk_delete_request)
+        print("The response of RolesApi->delete_bulk_roles:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling RolesApi->delete_bulk_roles: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **role_bulk_delete_request** | [**RoleBulkDeleteRequest**](RoleBulkDeleteRequest.md)|  | 
+
+### Return type
+
+[**TaskResultDto**](TaskResultDto.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Returns an object with the id of the task performing the delete operation. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |

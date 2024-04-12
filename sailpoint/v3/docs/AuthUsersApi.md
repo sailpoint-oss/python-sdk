@@ -1,11 +1,11 @@
-# sailpoint.v3.AuthUserApi
+# sailpoint.v3.AuthUsersApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_auth_user**](AuthUserApi.md#get_auth_user) | **GET** /auth-users/{id} | Auth User Details
-[**patch_auth_user**](AuthUserApi.md#patch_auth_user) | **PATCH** /auth-users/{id} | Auth User Update
+[**get_auth_user**](AuthUsersApi.md#get_auth_user) | **GET** /auth-users/{id} | Auth User Details
+[**patch_auth_user**](AuthUsersApi.md#patch_auth_user) | **PATCH** /auth-users/{id} | Auth User Update
 
 
 # **get_auth_user**
@@ -46,16 +46,16 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = sailpoint.v3.AuthUserApi(api_client)
+    api_instance = sailpoint.v3.AuthUsersApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | Identity ID
 
     try:
         # Auth User Details
         api_response = api_instance.get_auth_user(id)
-        print("The response of AuthUserApi->get_auth_user:\n")
+        print("The response of AuthUsersApi->get_auth_user:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling AuthUserApi->get_auth_user: %s\n" % e)
+        print("Exception when calling AuthUsersApi->get_auth_user: %s\n" % e)
 ```
 
 
@@ -133,17 +133,17 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = sailpoint.v3.AuthUserApi(api_client)
+    api_instance = sailpoint.v3.AuthUsersApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | Identity ID
     json_patch_operation = [{op=replace, path=/capabilities, value=[ORG_ADMIN]}] # List[JsonPatchOperation] | A list of auth user update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
     try:
         # Auth User Update
         api_response = api_instance.patch_auth_user(id, json_patch_operation)
-        print("The response of AuthUserApi->patch_auth_user:\n")
+        print("The response of AuthUsersApi->patch_auth_user:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling AuthUserApi->patch_auth_user: %s\n" % e)
+        print("Exception when calling AuthUsersApi->patch_auth_user: %s\n" % e)
 ```
 
 

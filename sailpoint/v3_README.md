@@ -104,8 +104,8 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**reload_account**](sailpoint/v3/docs/AccountsApi.md#reload_account) | **POST** /accounts/{id}/reload | Reload Account
 *AccountsApi* | [**unlock_account**](sailpoint/v3/docs/AccountsApi.md#unlock_account) | **POST** /accounts/{id}/unlock | Unlock Account
 *AccountsApi* | [**update_account**](sailpoint/v3/docs/AccountsApi.md#update_account) | **PATCH** /accounts/{id} | Update Account
-*AuthUserApi* | [**get_auth_user**](sailpoint/v3/docs/AuthUserApi.md#get_auth_user) | **GET** /auth-users/{id} | Auth User Details
-*AuthUserApi* | [**patch_auth_user**](sailpoint/v3/docs/AuthUserApi.md#patch_auth_user) | **PATCH** /auth-users/{id} | Auth User Update
+*AuthUsersApi* | [**get_auth_user**](sailpoint/v3/docs/AuthUsersApi.md#get_auth_user) | **GET** /auth-users/{id} | Auth User Details
+*AuthUsersApi* | [**patch_auth_user**](sailpoint/v3/docs/AuthUsersApi.md#patch_auth_user) | **PATCH** /auth-users/{id} | Auth User Update
 *BrandingApi* | [**create_branding_item**](sailpoint/v3/docs/BrandingApi.md#create_branding_item) | **POST** /brandings | Create a branding item
 *BrandingApi* | [**delete_branding**](sailpoint/v3/docs/BrandingApi.md#delete_branding) | **DELETE** /brandings/{name} | Delete a branding item
 *BrandingApi* | [**get_branding**](sailpoint/v3/docs/BrandingApi.md#get_branding) | **GET** /brandings/{name} | Get a branding item
@@ -256,23 +256,23 @@ Class | Method | HTTP request | Description
 *RolesApi* | [**get_role_assigned_identities**](sailpoint/v3/docs/RolesApi.md#get_role_assigned_identities) | **GET** /roles/{id}/assigned-identities | List Identities assigned a Role
 *RolesApi* | [**list_roles**](sailpoint/v3/docs/RolesApi.md#list_roles) | **GET** /roles | List Roles
 *RolesApi* | [**patch_role**](sailpoint/v3/docs/RolesApi.md#patch_role) | **PATCH** /roles/{id} | Patch a specified Role
-*SODPolicyApi* | [**create_sod_policy**](sailpoint/v3/docs/SODPolicyApi.md#create_sod_policy) | **POST** /sod-policies | Create SOD policy
-*SODPolicyApi* | [**delete_sod_policy**](sailpoint/v3/docs/SODPolicyApi.md#delete_sod_policy) | **DELETE** /sod-policies/{id} | Delete SOD policy by ID
-*SODPolicyApi* | [**delete_sod_policy_schedule**](sailpoint/v3/docs/SODPolicyApi.md#delete_sod_policy_schedule) | **DELETE** /sod-policies/{id}/schedule | Delete SOD policy schedule
+*SODPoliciesApi* | [**create_sod_policy**](sailpoint/v3/docs/SODPoliciesApi.md#create_sod_policy) | **POST** /sod-policies | Create SOD policy
+*SODPoliciesApi* | [**delete_sod_policy**](sailpoint/v3/docs/SODPoliciesApi.md#delete_sod_policy) | **DELETE** /sod-policies/{id} | Delete SOD policy by ID
+*SODPoliciesApi* | [**delete_sod_policy_schedule**](sailpoint/v3/docs/SODPoliciesApi.md#delete_sod_policy_schedule) | **DELETE** /sod-policies/{id}/schedule | Delete SOD policy schedule
+*SODPoliciesApi* | [**get_sod_policy**](sailpoint/v3/docs/SODPoliciesApi.md#get_sod_policy) | **GET** /sod-policies/{id} | Get SOD policy by ID
+*SODPoliciesApi* | [**get_sod_policy_schedule**](sailpoint/v3/docs/SODPoliciesApi.md#get_sod_policy_schedule) | **GET** /sod-policies/{id}/schedule | Get SOD policy schedule
+*SODPoliciesApi* | [**get_sod_violation_report_run_status**](sailpoint/v3/docs/SODPoliciesApi.md#get_sod_violation_report_run_status) | **GET** /sod-policies/sod-violation-report-status/{reportResultId} | Get violation report run status
+*SODPoliciesApi* | [**get_sod_violation_report_status**](sailpoint/v3/docs/SODPoliciesApi.md#get_sod_violation_report_status) | **GET** /sod-policies/{id}/violation-report | Get SOD violation report status
+*SODPoliciesApi* | [**list_sod_policies**](sailpoint/v3/docs/SODPoliciesApi.md#list_sod_policies) | **GET** /sod-policies | List SOD policies
+*SODPoliciesApi* | [**patch_sod_policy**](sailpoint/v3/docs/SODPoliciesApi.md#patch_sod_policy) | **PATCH** /sod-policies/{id} | Patch SOD policy by ID
+*SODPoliciesApi* | [**put_policy_schedule**](sailpoint/v3/docs/SODPoliciesApi.md#put_policy_schedule) | **PUT** /sod-policies/{id}/schedule | Update SOD Policy schedule
+*SODPoliciesApi* | [**put_sod_policy**](sailpoint/v3/docs/SODPoliciesApi.md#put_sod_policy) | **PUT** /sod-policies/{id} | Update SOD policy by ID
+*SODPoliciesApi* | [**start_evaluate_sod_policy**](sailpoint/v3/docs/SODPoliciesApi.md#start_evaluate_sod_policy) | **POST** /sod-policies/{id}/evaluate | Evaluate one policy by ID
+*SODPoliciesApi* | [**start_sod_policy**](sailpoint/v3/docs/SODPoliciesApi.md#start_sod_policy) | **POST** /sod-policies/{id}/violation-report/run | Runs SOD policy violation report
 *SODPolicyApi* | [**get_custom_violation_report**](sailpoint/v3/docs/SODPolicyApi.md#get_custom_violation_report) | **GET** /sod-violation-report/{reportResultId}/download/{fileName} | Download custom violation report
 *SODPolicyApi* | [**get_default_violation_report**](sailpoint/v3/docs/SODPolicyApi.md#get_default_violation_report) | **GET** /sod-violation-report/{reportResultId}/download | Download violation report
 *SODPolicyApi* | [**get_sod_all_report_run_status**](sailpoint/v3/docs/SODPolicyApi.md#get_sod_all_report_run_status) | **GET** /sod-violation-report | Get multi-report run task status
-*SODPolicyApi* | [**get_sod_policy**](sailpoint/v3/docs/SODPolicyApi.md#get_sod_policy) | **GET** /sod-policies/{id} | Get SOD policy by ID
-*SODPolicyApi* | [**get_sod_policy_schedule**](sailpoint/v3/docs/SODPolicyApi.md#get_sod_policy_schedule) | **GET** /sod-policies/{id}/schedule | Get SOD policy schedule
-*SODPolicyApi* | [**get_sod_violation_report_run_status**](sailpoint/v3/docs/SODPolicyApi.md#get_sod_violation_report_run_status) | **GET** /sod-policies/sod-violation-report-status/{reportResultId} | Get violation report run status
-*SODPolicyApi* | [**get_sod_violation_report_status**](sailpoint/v3/docs/SODPolicyApi.md#get_sod_violation_report_status) | **GET** /sod-policies/{id}/violation-report | Get SOD violation report status
-*SODPolicyApi* | [**list_sod_policies**](sailpoint/v3/docs/SODPolicyApi.md#list_sod_policies) | **GET** /sod-policies | List SOD policies
-*SODPolicyApi* | [**patch_sod_policy**](sailpoint/v3/docs/SODPolicyApi.md#patch_sod_policy) | **PATCH** /sod-policies/{id} | Patch SOD policy by ID
-*SODPolicyApi* | [**put_policy_schedule**](sailpoint/v3/docs/SODPolicyApi.md#put_policy_schedule) | **PUT** /sod-policies/{id}/schedule | Update SOD Policy schedule
-*SODPolicyApi* | [**put_sod_policy**](sailpoint/v3/docs/SODPolicyApi.md#put_sod_policy) | **PUT** /sod-policies/{id} | Update SOD policy by ID
-*SODPolicyApi* | [**start_evaluate_sod_policy**](sailpoint/v3/docs/SODPolicyApi.md#start_evaluate_sod_policy) | **POST** /sod-policies/{id}/evaluate | Evaluate one policy by ID
 *SODPolicyApi* | [**start_sod_all_policies_for_org**](sailpoint/v3/docs/SODPolicyApi.md#start_sod_all_policies_for_org) | **POST** /sod-violation-report/run | Runs all policies for org
-*SODPolicyApi* | [**start_sod_policy**](sailpoint/v3/docs/SODPolicyApi.md#start_sod_policy) | **POST** /sod-policies/{id}/violation-report/run | Runs SOD policy violation report
 *SODViolationsApi* | [**start_predict_sod_violations**](sailpoint/v3/docs/SODViolationsApi.md#start_predict_sod_violations) | **POST** /sod-violations/predict | Predict SOD violations for identity.
 *SODViolationsApi* | [**start_violation_check**](sailpoint/v3/docs/SODViolationsApi.md#start_violation_check) | **POST** /sod-violations/check | Check SOD violations
 *SavedSearchApi* | [**create_saved_search**](sailpoint/v3/docs/SavedSearchApi.md#create_saved_search) | **POST** /saved-searches | Create a saved search

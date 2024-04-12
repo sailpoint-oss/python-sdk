@@ -26,27 +26,6 @@ class TestSODPolicyApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_create_sod_policy(self) -> None:
-        """Test case for create_sod_policy
-
-        Create SOD policy
-        """
-        pass
-
-    def test_delete_sod_policy(self) -> None:
-        """Test case for delete_sod_policy
-
-        Delete SOD policy by ID
-        """
-        pass
-
-    def test_delete_sod_policy_schedule(self) -> None:
-        """Test case for delete_sod_policy_schedule
-
-        Delete SOD policy schedule
-        """
-        pass
-
     def test_get_custom_violation_report(self) -> None:
         """Test case for get_custom_violation_report
 
@@ -68,20 +47,6 @@ class TestSODPolicyApi(unittest.TestCase):
         """
         pass
 
-    def test_get_sod_policy(self) -> None:
-        """Test case for get_sod_policy
-
-        Get SOD policy by ID
-        """
-        pass
-
-    def test_get_sod_policy_schedule(self) -> None:
-        """Test case for get_sod_policy_schedule
-
-        Get SOD policy schedule
-        """
-        pass
-
     def test_get_sod_violation_report_run_status(self) -> None:
         """Test case for get_sod_violation_report_run_status
 
@@ -89,52 +54,10 @@ class TestSODPolicyApi(unittest.TestCase):
         """
         pass
 
-    def test_get_sod_violation_report_status(self) -> None:
-        """Test case for get_sod_violation_report_status
-
-        Get SOD violation report status
-        """
-        pass
-
-    def test_list_sod_policies(self) -> None:
-        """Test case for list_sod_policies
-
-        List SOD policies
-        """
-        pass
-
-    def test_patch_sod_policy(self) -> None:
-        """Test case for patch_sod_policy
-
-        Patch a SOD policy
-        """
-        pass
-
-    def test_put_policy_schedule(self) -> None:
-        """Test case for put_policy_schedule
-
-        Update SOD Policy schedule
-        """
-        pass
-
-    def test_put_sod_policy(self) -> None:
-        """Test case for put_sod_policy
-
-        Update SOD policy by ID
-        """
-        pass
-
     def test_start_sod_all_policies_for_org(self) -> None:
         """Test case for start_sod_all_policies_for_org
 
         Runs all policies for org
-        """
-        pass
-
-    def test_start_sod_policy(self) -> None:
-        """Test case for start_sod_policy
-
-        Runs SOD policy violation report
         """
         pass
 

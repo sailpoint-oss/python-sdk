@@ -14,14 +14,14 @@
 
 import unittest
 
-from sailpoint.v3.api.auth_user_api import AuthUserApi
+from sailpoint.v3.api.auth_users_api import AuthUsersApi
 
 
-class TestAuthUserApi(unittest.TestCase):
-    """AuthUserApi unit test stubs"""
+class TestAuthUsersApi(unittest.TestCase):
+    """AuthUsersApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = AuthUserApi()
+        self.api = AuthUsersApi()
 
     def tearDown(self) -> None:
         pass

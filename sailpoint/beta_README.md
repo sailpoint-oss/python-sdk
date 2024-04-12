@@ -391,30 +391,30 @@ Class | Method | HTTP request | Description
 *RoleInsightsApi* | [**get_role_insights_entitlements_changes**](sailpoint/beta/docs/RoleInsightsApi.md#get_role_insights_entitlements_changes) | **GET** /role-insights/{insightId}/entitlement-changes | Get entitlement insights for a role
 *RoleInsightsApi* | [**get_role_insights_requests**](sailpoint/beta/docs/RoleInsightsApi.md#get_role_insights_requests) | **GET** /role-insights/requests/{id} | Returns metadata from prior request.
 *RoleInsightsApi* | [**get_role_insights_summary**](sailpoint/beta/docs/RoleInsightsApi.md#get_role_insights_summary) | **GET** /role-insights/summary | Get role insights summary information
-*RolesApi* | [**bulk_delete_roles**](sailpoint/beta/docs/RolesApi.md#bulk_delete_roles) | **POST** /roles/bulk-delete | Delete Role(s)
 *RolesApi* | [**create_role**](sailpoint/beta/docs/RolesApi.md#create_role) | **POST** /roles | Create a Role
+*RolesApi* | [**delete_bulk_roles**](sailpoint/beta/docs/RolesApi.md#delete_bulk_roles) | **POST** /roles/bulk-delete | Delete Role(s)
 *RolesApi* | [**delete_role**](sailpoint/beta/docs/RolesApi.md#delete_role) | **DELETE** /roles/{id} | Delete a Role
 *RolesApi* | [**get_role**](sailpoint/beta/docs/RolesApi.md#get_role) | **GET** /roles/{id} | Get a Role
 *RolesApi* | [**get_role_assigned_identities**](sailpoint/beta/docs/RolesApi.md#get_role_assigned_identities) | **GET** /roles/{id}/assigned-identities | Identities assigned a Role
 *RolesApi* | [**get_role_entitlements**](sailpoint/beta/docs/RolesApi.md#get_role_entitlements) | **GET** /roles/{id}/entitlements | List role&#39;s Entitlements
 *RolesApi* | [**list_roles**](sailpoint/beta/docs/RolesApi.md#list_roles) | **GET** /roles | List Roles
 *RolesApi* | [**patch_role**](sailpoint/beta/docs/RolesApi.md#patch_role) | **PATCH** /roles/{id} | Patch a specified Role
-*SODPolicyApi* | [**create_sod_policy**](sailpoint/beta/docs/SODPolicyApi.md#create_sod_policy) | **POST** /sod-policies | Create SOD policy
-*SODPolicyApi* | [**delete_sod_policy**](sailpoint/beta/docs/SODPolicyApi.md#delete_sod_policy) | **DELETE** /sod-policies/{id} | Delete SOD policy by ID
-*SODPolicyApi* | [**delete_sod_policy_schedule**](sailpoint/beta/docs/SODPolicyApi.md#delete_sod_policy_schedule) | **DELETE** /sod-policies/{id}/schedule | Delete SOD policy schedule
+*SODPoliciesApi* | [**create_sod_policy**](sailpoint/beta/docs/SODPoliciesApi.md#create_sod_policy) | **POST** /sod-policies | Create SOD policy
+*SODPoliciesApi* | [**delete_sod_policy**](sailpoint/beta/docs/SODPoliciesApi.md#delete_sod_policy) | **DELETE** /sod-policies/{id} | Delete SOD policy by ID
+*SODPoliciesApi* | [**delete_sod_policy_schedule**](sailpoint/beta/docs/SODPoliciesApi.md#delete_sod_policy_schedule) | **DELETE** /sod-policies/{id}/schedule | Delete SOD policy schedule
+*SODPoliciesApi* | [**get_sod_policy**](sailpoint/beta/docs/SODPoliciesApi.md#get_sod_policy) | **GET** /sod-policies/{id} | Get SOD policy by ID
+*SODPoliciesApi* | [**get_sod_policy_schedule**](sailpoint/beta/docs/SODPoliciesApi.md#get_sod_policy_schedule) | **GET** /sod-policies/{id}/schedule | Get SOD policy schedule
+*SODPoliciesApi* | [**get_sod_violation_report_status**](sailpoint/beta/docs/SODPoliciesApi.md#get_sod_violation_report_status) | **GET** /sod-policies/{id}/violation-report | Get SOD violation report status
+*SODPoliciesApi* | [**list_sod_policies**](sailpoint/beta/docs/SODPoliciesApi.md#list_sod_policies) | **GET** /sod-policies | List SOD policies
+*SODPoliciesApi* | [**patch_sod_policy**](sailpoint/beta/docs/SODPoliciesApi.md#patch_sod_policy) | **PATCH** /sod-policies/{id} | Patch a SOD policy
+*SODPoliciesApi* | [**put_policy_schedule**](sailpoint/beta/docs/SODPoliciesApi.md#put_policy_schedule) | **PUT** /sod-policies/{id}/schedule | Update SOD Policy schedule
+*SODPoliciesApi* | [**put_sod_policy**](sailpoint/beta/docs/SODPoliciesApi.md#put_sod_policy) | **PUT** /sod-policies/{id} | Update SOD policy by ID
+*SODPoliciesApi* | [**start_sod_policy**](sailpoint/beta/docs/SODPoliciesApi.md#start_sod_policy) | **POST** /sod-policies/{id}/violation-report/run | Runs SOD policy violation report
 *SODPolicyApi* | [**get_custom_violation_report**](sailpoint/beta/docs/SODPolicyApi.md#get_custom_violation_report) | **GET** /sod-violation-report/{reportResultId}/download/{fileName} | Download custom violation report
 *SODPolicyApi* | [**get_default_violation_report**](sailpoint/beta/docs/SODPolicyApi.md#get_default_violation_report) | **GET** /sod-violation-report/{reportResultId}/download | Download violation report
 *SODPolicyApi* | [**get_sod_all_report_run_status**](sailpoint/beta/docs/SODPolicyApi.md#get_sod_all_report_run_status) | **GET** /sod-violation-report | Get multi-report run task status
-*SODPolicyApi* | [**get_sod_policy**](sailpoint/beta/docs/SODPolicyApi.md#get_sod_policy) | **GET** /sod-policies/{id} | Get SOD policy by ID
-*SODPolicyApi* | [**get_sod_policy_schedule**](sailpoint/beta/docs/SODPolicyApi.md#get_sod_policy_schedule) | **GET** /sod-policies/{id}/schedule | Get SOD policy schedule
 *SODPolicyApi* | [**get_sod_violation_report_run_status**](sailpoint/beta/docs/SODPolicyApi.md#get_sod_violation_report_run_status) | **GET** /sod-policies/sod-violation-report-status/{reportResultId} | Get violation report run status
-*SODPolicyApi* | [**get_sod_violation_report_status**](sailpoint/beta/docs/SODPolicyApi.md#get_sod_violation_report_status) | **GET** /sod-policies/{id}/violation-report | Get SOD violation report status
-*SODPolicyApi* | [**list_sod_policies**](sailpoint/beta/docs/SODPolicyApi.md#list_sod_policies) | **GET** /sod-policies | List SOD policies
-*SODPolicyApi* | [**patch_sod_policy**](sailpoint/beta/docs/SODPolicyApi.md#patch_sod_policy) | **PATCH** /sod-policies/{id} | Patch a SOD policy
-*SODPolicyApi* | [**put_policy_schedule**](sailpoint/beta/docs/SODPolicyApi.md#put_policy_schedule) | **PUT** /sod-policies/{id}/schedule | Update SOD Policy schedule
-*SODPolicyApi* | [**put_sod_policy**](sailpoint/beta/docs/SODPolicyApi.md#put_sod_policy) | **PUT** /sod-policies/{id} | Update SOD policy by ID
 *SODPolicyApi* | [**start_sod_all_policies_for_org**](sailpoint/beta/docs/SODPolicyApi.md#start_sod_all_policies_for_org) | **POST** /sod-violation-report/run | Runs all policies for org
-*SODPolicyApi* | [**start_sod_policy**](sailpoint/beta/docs/SODPolicyApi.md#start_sod_policy) | **POST** /sod-policies/{id}/violation-report/run | Runs SOD policy violation report
 *SODViolationsApi* | [**start_predict_sod_violations**](sailpoint/beta/docs/SODViolationsApi.md#start_predict_sod_violations) | **POST** /sod-violations/predict | Predict SOD violations for identity.
 *SPConfigApi* | [**export_sp_config**](sailpoint/beta/docs/SPConfigApi.md#export_sp_config) | **POST** /sp-config/export | Initiates configuration objects export job
 *SPConfigApi* | [**get_sp_config_export**](sailpoint/beta/docs/SPConfigApi.md#get_sp_config_export) | **GET** /sp-config/export/{id}/download | Download export job result.

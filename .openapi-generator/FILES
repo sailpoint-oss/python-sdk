@@ -55,6 +55,7 @@ sailpoint/beta/api/roles_api.py
 sailpoint/beta/api/search_attribute_configuration_api.py
 sailpoint/beta/api/segments_api.py
 sailpoint/beta/api/service_desk_integration_api.py
+sailpoint/beta/api/sod_policies_api.py
 sailpoint/beta/api/sod_policy_api.py
 sailpoint/beta/api/sod_violations_api.py
 sailpoint/beta/api/source_usages_api.py
@@ -721,6 +722,7 @@ sailpoint/beta/docs/RoleMiningSessionState.md
 sailpoint/beta/docs/RoleMiningSessionStatus.md
 sailpoint/beta/docs/RoleTargetDto.md
 sailpoint/beta/docs/RolesApi.md
+sailpoint/beta/docs/SODPoliciesApi.md
 sailpoint/beta/docs/SODPolicyApi.md
 sailpoint/beta/docs/SODViolationsApi.md
 sailpoint/beta/docs/SPConfigApi.md
@@ -2425,6 +2427,7 @@ sailpoint/beta/test/test_set_icon_request.py
 sailpoint/beta/test/test_slimcampaign.py
 sailpoint/beta/test/test_sod_exempt_criteria.py
 sailpoint/beta/test/test_sod_exempt_criteria1.py
+sailpoint/beta/test/test_sod_policies_api.py
 sailpoint/beta/test/test_sod_policy.py
 sailpoint/beta/test/test_sod_policy_api.py
 sailpoint/beta/test/test_sod_policy_conflicting_access_criteria.py
