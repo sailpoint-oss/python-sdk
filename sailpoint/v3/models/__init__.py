@@ -227,6 +227,7 @@ from sailpoint.v3.models.identity_with_new_access1 import IdentityWithNewAccess1
 from sailpoint.v3.models.identity_with_new_access_access_refs_inner import IdentityWithNewAccessAccessRefsInner
 from sailpoint.v3.models.import_non_employee_records_in_bulk_request import ImportNonEmployeeRecordsInBulkRequest
 from sailpoint.v3.models.import_object import ImportObject
+from sailpoint.v3.models.import_uploaded_backup_request import ImportUploadedBackupRequest
 from sailpoint.v3.models.index import Index
 from sailpoint.v3.models.inner_hit import InnerHit
 from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
@@ -468,6 +469,8 @@ from sailpoint.v3.models.transform_read import TransformRead
 from sailpoint.v3.models.type_ahead_query import TypeAheadQuery
 from sailpoint.v3.models.typed_reference import TypedReference
 from sailpoint.v3.models.update_detail import UpdateDetail
+from sailpoint.v3.models.uploads_request import UploadsRequest
+from sailpoint.v3.models.uploads_response import UploadsResponse
 from sailpoint.v3.models.usage_type import UsageType
 from sailpoint.v3.models.v3_connector_dto import V3ConnectorDto
 from sailpoint.v3.models.v3_create_connector_dto import V3CreateConnectorDto

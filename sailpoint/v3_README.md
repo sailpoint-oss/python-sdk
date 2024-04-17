@@ -156,7 +156,11 @@ Class | Method | HTTP request | Description
 *ConfigurationHubApi* | [**create_object_mapping**](sailpoint/v3/docs/ConfigurationHubApi.md#create_object_mapping) | **POST** /configuration-hub/object-mappings/{sourceOrg} | Creates an object mapping
 *ConfigurationHubApi* | [**create_object_mappings**](sailpoint/v3/docs/ConfigurationHubApi.md#create_object_mappings) | **POST** /configuration-hub/object-mappings/{sourceOrg}/bulk-create | Bulk creates object mappings
 *ConfigurationHubApi* | [**delete_object_mapping**](sailpoint/v3/docs/ConfigurationHubApi.md#delete_object_mapping) | **DELETE** /configuration-hub/object-mappings/{sourceOrg}/{objectMappingId} | Deletes an object mapping
+*ConfigurationHubApi* | [**delete_uploaded_backup**](sailpoint/v3/docs/ConfigurationHubApi.md#delete_uploaded_backup) | **DELETE** /configuration-hub/backups/uploads/{id} | Deletes an uploaded backup file
 *ConfigurationHubApi* | [**get_object_mappings**](sailpoint/v3/docs/ConfigurationHubApi.md#get_object_mappings) | **GET** /configuration-hub/object-mappings/{sourceOrg} | Gets list of object mappings
+*ConfigurationHubApi* | [**get_uploaded_backup**](sailpoint/v3/docs/ConfigurationHubApi.md#get_uploaded_backup) | **GET** /configuration-hub/backups/uploads/{id} | Get an uploaded backup&#39;s information
+*ConfigurationHubApi* | [**get_uploaded_backups**](sailpoint/v3/docs/ConfigurationHubApi.md#get_uploaded_backups) | **GET** /configuration-hub/backups/uploads | Gets list of Uploaded backups
+*ConfigurationHubApi* | [**import_uploaded_backup**](sailpoint/v3/docs/ConfigurationHubApi.md#import_uploaded_backup) | **POST** /configuration-hub/backups/uploads | Uploads a backup file
 *ConfigurationHubApi* | [**update_object_mappings**](sailpoint/v3/docs/ConfigurationHubApi.md#update_object_mappings) | **POST** /configuration-hub/object-mappings/{sourceOrg}/bulk-patch | Bulk updates object mappings
 *ConnectorsApi* | [**create_custom_connector**](sailpoint/v3/docs/ConnectorsApi.md#create_custom_connector) | **POST** /connectors | Create custom connector
 *ConnectorsApi* | [**delete_custom_connector**](sailpoint/v3/docs/ConnectorsApi.md#delete_custom_connector) | **DELETE** /connectors/{scriptName} | 
@@ -593,6 +597,7 @@ Class | Method | HTTP request | Description
  - [IdentityWithNewAccessAccessRefsInner](sailpoint/v3/docs/IdentityWithNewAccessAccessRefsInner.md)
  - [ImportNonEmployeeRecordsInBulkRequest](sailpoint/v3/docs/ImportNonEmployeeRecordsInBulkRequest.md)
  - [ImportObject](sailpoint/v3/docs/ImportObject.md)
+ - [ImportUploadedBackupRequest](sailpoint/v3/docs/ImportUploadedBackupRequest.md)
  - [Index](sailpoint/v3/docs/Index.md)
  - [InnerHit](sailpoint/v3/docs/InnerHit.md)
  - [JsonPatchOperation](sailpoint/v3/docs/JsonPatchOperation.md)
@@ -834,6 +839,8 @@ Class | Method | HTTP request | Description
  - [TypeAheadQuery](sailpoint/v3/docs/TypeAheadQuery.md)
  - [TypedReference](sailpoint/v3/docs/TypedReference.md)
  - [UpdateDetail](sailpoint/v3/docs/UpdateDetail.md)
+ - [UploadsRequest](sailpoint/v3/docs/UploadsRequest.md)
+ - [UploadsResponse](sailpoint/v3/docs/UploadsResponse.md)
  - [UsageType](sailpoint/v3/docs/UsageType.md)
  - [V3ConnectorDto](sailpoint/v3/docs/V3ConnectorDto.md)
  - [V3CreateConnectorDto](sailpoint/v3/docs/V3CreateConnectorDto.md)

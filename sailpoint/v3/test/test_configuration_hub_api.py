@@ -47,10 +47,38 @@ class TestConfigurationHubApi(unittest.TestCase):
         """
         pass
 
+    def test_delete_uploaded_backup(self) -> None:
+        """Test case for delete_uploaded_backup
+
+        Deletes an uploaded backup file
+        """
+        pass
+
     def test_get_object_mappings(self) -> None:
         """Test case for get_object_mappings
 
         Gets list of object mappings
+        """
+        pass
+
+    def test_get_uploaded_backup(self) -> None:
+        """Test case for get_uploaded_backup
+
+        Get an uploaded backup's information
+        """
+        pass
+
+    def test_get_uploaded_backups(self) -> None:
+        """Test case for get_uploaded_backups
+
+        Gets list of Uploaded backups
+        """
+        pass
+
+    def test_import_uploaded_backup(self) -> None:
+        """Test case for import_uploaded_backup
+
+        Uploads a backup file
         """
         pass
 
