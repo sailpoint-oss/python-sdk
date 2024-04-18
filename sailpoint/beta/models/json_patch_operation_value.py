@@ -19,7 +19,7 @@ import pprint
 import re  # noqa: F401
 
 from typing import Any, Dict, List, Optional
-from pydantic import BaseModel, Field, StrictInt, StrictStr, ValidationError, field_validator
+from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, ValidationError, field_validator
 from sailpoint.beta.models.array_inner import ArrayInner
 from typing import Union, Any, List, TYPE_CHECKING, Optional, Dict
 from typing_extensions import Literal
@@ -29,7 +29,7 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-JSONPATCHOPERATIONVALUE_ONE_OF_SCHEMAS = ["List[ArrayInner]", "int", "object", "str"]
+JSONPATCHOPERATIONVALUE_ONE_OF_SCHEMAS = ["List[ArrayInner]", "bool", "int", "object", "str"]
 
 class JsonPatchOperationValue(BaseModel):
     """
@@ -37,14 +37,16 @@ class JsonPatchOperationValue(BaseModel):
     """
     # data type: str
     oneof_schema_1_validator: Optional[StrictStr] = None
+    # data type: bool
+    oneof_schema_2_validator: Optional[StrictBool] = None
     # data type: int
-    oneof_schema_2_validator: Optional[StrictInt] = None
+    oneof_schema_3_validator: Optional[StrictInt] = None
     # data type: object
-    oneof_schema_3_validator: Optional[Dict[str, Any]] = None
+    oneof_schema_4_validator: Optional[Dict[str, Any]] = None
     # data type: List[ArrayInner]
-    oneof_schema_4_validator: Optional[List[ArrayInner]] = None
-    actual_instance: Optional[Union[List[ArrayInner], int, object, str]] = None
-    one_of_schemas: List[str] = Literal["List[ArrayInner]", "int", "object", "str"]
+    oneof_schema_5_validator: Optional[List[ArrayInner]] = None
+    actual_instance: Optional[Union[List[ArrayInner], bool, int, object, str]] = None
+    one_of_schemas: List[str] = Literal["List[ArrayInner]", "bool", "int", "object", "str"]
 
     model_config = {
         "validate_assignment": True,
@@ -73,30 +75,36 @@ class JsonPatchOperationValue(BaseModel):
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
-        # validate data type: int
+        # validate data type: bool
         try:
             instance.oneof_schema_2_validator = v
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
-        # validate data type: object
+        # validate data type: int
         try:
             instance.oneof_schema_3_validator = v
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
-        # validate data type: List[ArrayInner]
+        # validate data type: object
         try:
             instance.oneof_schema_4_validator = v
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
+        # validate data type: List[ArrayInner]
+        try:
+            instance.oneof_schema_5_validator = v
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when setting `actual_instance` in JsonPatchOperationValue with oneOf schemas: List[ArrayInner], int, object, str. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when setting `actual_instance` in JsonPatchOperationValue with oneOf schemas: List[ArrayInner], bool, int, object, str. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when setting `actual_instance` in JsonPatchOperationValue with oneOf schemas: List[ArrayInner], int, object, str. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in JsonPatchOperationValue with oneOf schemas: List[ArrayInner], bool, int, object, str. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -120,7 +128,7 @@ class JsonPatchOperationValue(BaseModel):
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
-        # deserialize data into int
+        # deserialize data into bool
         try:
             # validation
             instance.oneof_schema_2_validator = json.loads(json_str)
@@ -129,7 +137,7 @@ class JsonPatchOperationValue(BaseModel):
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
-        # deserialize data into object
+        # deserialize data into int
         try:
             # validation
             instance.oneof_schema_3_validator = json.loads(json_str)
@@ -138,7 +146,7 @@ class JsonPatchOperationValue(BaseModel):
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
-        # deserialize data into List[ArrayInner]
+        # deserialize data into object
         try:
             # validation
             instance.oneof_schema_4_validator = json.loads(json_str)
@@ -147,13 +155,22 @@ class JsonPatchOperationValue(BaseModel):
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
+        # deserialize data into List[ArrayInner]
+        try:
+            # validation
+            instance.oneof_schema_5_validator = json.loads(json_str)
+            # assign value to actual_instance
+            instance.actual_instance = instance.oneof_schema_5_validator
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
 
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when deserializing the JSON string into JsonPatchOperationValue with oneOf schemas: List[ArrayInner], int, object, str. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when deserializing the JSON string into JsonPatchOperationValue with oneOf schemas: List[ArrayInner], bool, int, object, str. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into JsonPatchOperationValue with oneOf schemas: List[ArrayInner], int, object, str. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into JsonPatchOperationValue with oneOf schemas: List[ArrayInner], bool, int, object, str. Details: " + ", ".join(error_messages))
         else:
             return instance
 
