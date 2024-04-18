@@ -77,6 +77,7 @@ from sailpoint.beta.api.segments_api import SegmentsApi
 from sailpoint.beta.api.service_desk_integration_api import ServiceDeskIntegrationApi
 from sailpoint.beta.api.source_usages_api import SourceUsagesApi
 from sailpoint.beta.api.sources_api import SourcesApi
+from sailpoint.beta.api.sources_aggregation_api import SourcesAggregationApi
 from sailpoint.beta.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
 from sailpoint.beta.api.tagged_objects_api import TaggedObjectsApi
 from sailpoint.beta.api.task_management_api import TaskManagementApi
@@ -460,6 +461,7 @@ from sailpoint.beta.models.identity_sync_job import IdentitySyncJob
 from sailpoint.beta.models.identity_sync_payload import IdentitySyncPayload
 from sailpoint.beta.models.identity_with_new_access import IdentityWithNewAccess
 from sailpoint.beta.models.identity_with_new_access_access_refs_inner import IdentityWithNewAccessAccessRefsInner
+from sailpoint.beta.models.import_accounts_request import ImportAccountsRequest
 from sailpoint.beta.models.import_entitlements_request import ImportEntitlementsRequest
 from sailpoint.beta.models.import_form_definitions202_response import ImportFormDefinitions202Response
 from sailpoint.beta.models.import_form_definitions202_response_errors_inner import ImportFormDefinitions202ResponseErrorsInner
@@ -490,6 +492,10 @@ from sailpoint.beta.models.list_form_instances_by_tenant_response import ListFor
 from sailpoint.beta.models.list_identity_access_items200_response_inner import ListIdentityAccessItems200ResponseInner
 from sailpoint.beta.models.list_predefined_select_options_response import ListPredefinedSelectOptionsResponse
 from sailpoint.beta.models.list_workgroup_members200_response_inner import ListWorkgroupMembers200ResponseInner
+from sailpoint.beta.models.load_accounts_task import LoadAccountsTask
+from sailpoint.beta.models.load_accounts_task_task import LoadAccountsTaskTask
+from sailpoint.beta.models.load_accounts_task_task_attributes import LoadAccountsTaskTaskAttributes
+from sailpoint.beta.models.load_accounts_task_task_messages_inner import LoadAccountsTaskTaskMessagesInner
 from sailpoint.beta.models.load_entitlement_task import LoadEntitlementTask
 from sailpoint.beta.models.locale_origin import LocaleOrigin
 from sailpoint.beta.models.localized_message import LocalizedMessage

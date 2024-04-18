@@ -482,6 +482,7 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**update_source**](sailpoint/beta/docs/SourcesApi.md#update_source) | **PATCH** /sources/{id} | Update Source (Partial)
 *SourcesApi* | [**update_source_entitlement_request_config**](sailpoint/beta/docs/SourcesApi.md#update_source_entitlement_request_config) | **PUT** /sources/{id}/entitlement-request-config | Update Source Entitlement Request Configuration
 *SourcesApi* | [**update_source_schema**](sailpoint/beta/docs/SourcesApi.md#update_source_schema) | **PATCH** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Partial)
+*SourcesAggregationApi* | [**import_accounts**](sailpoint/beta/docs/SourcesAggregationApi.md#import_accounts) | **POST** /sources/{id}/load-accounts | Account Aggregation
 *SuggestedEntitlementDescriptionApi* | [**get_sed_batch_stats**](sailpoint/beta/docs/SuggestedEntitlementDescriptionApi.md#get_sed_batch_stats) | **GET** /suggested-entitlement-description-batches/{batchId}/stats | Submit Sed Batch Stats Request
 *SuggestedEntitlementDescriptionApi* | [**get_sed_batches**](sailpoint/beta/docs/SuggestedEntitlementDescriptionApi.md#get_sed_batches) | **GET** /suggested-entitlement-description-batches | List Sed Batch Request
 *SuggestedEntitlementDescriptionApi* | [**list_seds**](sailpoint/beta/docs/SuggestedEntitlementDescriptionApi.md#list_seds) | **GET** /suggested-entitlement-descriptions | List Suggested Entitlement Description
@@ -925,6 +926,7 @@ Class | Method | HTTP request | Description
  - [IdentitySyncPayload](sailpoint/beta/docs/IdentitySyncPayload.md)
  - [IdentityWithNewAccess](sailpoint/beta/docs/IdentityWithNewAccess.md)
  - [IdentityWithNewAccessAccessRefsInner](sailpoint/beta/docs/IdentityWithNewAccessAccessRefsInner.md)
+ - [ImportAccountsRequest](sailpoint/beta/docs/ImportAccountsRequest.md)
  - [ImportEntitlementsRequest](sailpoint/beta/docs/ImportEntitlementsRequest.md)
  - [ImportFormDefinitions202Response](sailpoint/beta/docs/ImportFormDefinitions202Response.md)
  - [ImportFormDefinitions202ResponseErrorsInner](sailpoint/beta/docs/ImportFormDefinitions202ResponseErrorsInner.md)
@@ -955,6 +957,10 @@ Class | Method | HTTP request | Description
  - [ListIdentityAccessItems200ResponseInner](sailpoint/beta/docs/ListIdentityAccessItems200ResponseInner.md)
  - [ListPredefinedSelectOptionsResponse](sailpoint/beta/docs/ListPredefinedSelectOptionsResponse.md)
  - [ListWorkgroupMembers200ResponseInner](sailpoint/beta/docs/ListWorkgroupMembers200ResponseInner.md)
+ - [LoadAccountsTask](sailpoint/beta/docs/LoadAccountsTask.md)
+ - [LoadAccountsTaskTask](sailpoint/beta/docs/LoadAccountsTaskTask.md)
+ - [LoadAccountsTaskTaskAttributes](sailpoint/beta/docs/LoadAccountsTaskTaskAttributes.md)
+ - [LoadAccountsTaskTaskMessagesInner](sailpoint/beta/docs/LoadAccountsTaskTaskMessagesInner.md)
  - [LoadEntitlementTask](sailpoint/beta/docs/LoadEntitlementTask.md)
  - [LocaleOrigin](sailpoint/beta/docs/LocaleOrigin.md)
  - [LocalizedMessage](sailpoint/beta/docs/LocalizedMessage.md)

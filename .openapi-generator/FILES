@@ -59,6 +59,7 @@ sailpoint/beta/api/sod_policies_api.py
 sailpoint/beta/api/sod_policy_api.py
 sailpoint/beta/api/sod_violations_api.py
 sailpoint/beta/api/source_usages_api.py
+sailpoint/beta/api/sources_aggregation_api.py
 sailpoint/beta/api/sources_api.py
 sailpoint/beta/api/sp_config_api.py
 sailpoint/beta/api/suggested_entitlement_description_api.py
@@ -465,6 +466,7 @@ sailpoint/beta/docs/IdentitySyncJob.md
 sailpoint/beta/docs/IdentitySyncPayload.md
 sailpoint/beta/docs/IdentityWithNewAccess.md
 sailpoint/beta/docs/IdentityWithNewAccessAccessRefsInner.md
+sailpoint/beta/docs/ImportAccountsRequest.md
 sailpoint/beta/docs/ImportEntitlementsRequest.md
 sailpoint/beta/docs/ImportFormDefinitions202Response.md
 sailpoint/beta/docs/ImportFormDefinitions202ResponseErrorsInner.md
@@ -496,6 +498,10 @@ sailpoint/beta/docs/ListFormInstancesByTenantResponse.md
 sailpoint/beta/docs/ListIdentityAccessItems200ResponseInner.md
 sailpoint/beta/docs/ListPredefinedSelectOptionsResponse.md
 sailpoint/beta/docs/ListWorkgroupMembers200ResponseInner.md
+sailpoint/beta/docs/LoadAccountsTask.md
+sailpoint/beta/docs/LoadAccountsTaskTask.md
+sailpoint/beta/docs/LoadAccountsTaskTaskAttributes.md
+sailpoint/beta/docs/LoadAccountsTaskTaskMessagesInner.md
 sailpoint/beta/docs/LoadEntitlementTask.md
 sailpoint/beta/docs/LocaleOrigin.md
 sailpoint/beta/docs/LocalizedMessage.md
@@ -822,6 +828,7 @@ sailpoint/beta/docs/SourceUpdatedActor.md
 sailpoint/beta/docs/SourceUsage.md
 sailpoint/beta/docs/SourceUsageStatus.md
 sailpoint/beta/docs/SourceUsagesApi.md
+sailpoint/beta/docs/SourcesAggregationApi.md
 sailpoint/beta/docs/SourcesApi.md
 sailpoint/beta/docs/SpConfigExportJob.md
 sailpoint/beta/docs/SpConfigExportJobStatus.md
@@ -1296,6 +1303,7 @@ sailpoint/beta/models/identity_sync_job.py
 sailpoint/beta/models/identity_sync_payload.py
 sailpoint/beta/models/identity_with_new_access.py
 sailpoint/beta/models/identity_with_new_access_access_refs_inner.py
+sailpoint/beta/models/import_accounts_request.py
 sailpoint/beta/models/import_entitlements_request.py
 sailpoint/beta/models/import_form_definitions202_response.py
 sailpoint/beta/models/import_form_definitions202_response_errors_inner.py
@@ -1326,6 +1334,10 @@ sailpoint/beta/models/list_form_instances_by_tenant_response.py
 sailpoint/beta/models/list_identity_access_items200_response_inner.py
 sailpoint/beta/models/list_predefined_select_options_response.py
 sailpoint/beta/models/list_workgroup_members200_response_inner.py
+sailpoint/beta/models/load_accounts_task.py
+sailpoint/beta/models/load_accounts_task_task.py
+sailpoint/beta/models/load_accounts_task_task_attributes.py
+sailpoint/beta/models/load_accounts_task_task_messages_inner.py
 sailpoint/beta/models/load_entitlement_task.py
 sailpoint/beta/models/locale_origin.py
 sailpoint/beta/models/localized_message.py
@@ -2119,6 +2131,7 @@ sailpoint/beta/test/test_identity_sync_job.py
 sailpoint/beta/test/test_identity_sync_payload.py
 sailpoint/beta/test/test_identity_with_new_access.py
 sailpoint/beta/test/test_identity_with_new_access_access_refs_inner.py
+sailpoint/beta/test/test_import_accounts_request.py
 sailpoint/beta/test/test_import_entitlements_request.py
 sailpoint/beta/test/test_import_form_definitions202_response.py
 sailpoint/beta/test/test_import_form_definitions202_response_errors_inner.py
@@ -2150,6 +2163,10 @@ sailpoint/beta/test/test_list_form_instances_by_tenant_response.py
 sailpoint/beta/test/test_list_identity_access_items200_response_inner.py
 sailpoint/beta/test/test_list_predefined_select_options_response.py
 sailpoint/beta/test/test_list_workgroup_members200_response_inner.py
+sailpoint/beta/test/test_load_accounts_task.py
+sailpoint/beta/test/test_load_accounts_task_task.py
+sailpoint/beta/test/test_load_accounts_task_task_attributes.py
+sailpoint/beta/test/test_load_accounts_task_task_messages_inner.py
 sailpoint/beta/test/test_load_entitlement_task.py
 sailpoint/beta/test/test_locale_origin.py
 sailpoint/beta/test/test_localized_message.py
@@ -2475,6 +2492,7 @@ sailpoint/beta/test/test_source_updated_actor.py
 sailpoint/beta/test/test_source_usage.py
 sailpoint/beta/test/test_source_usage_status.py
 sailpoint/beta/test/test_source_usages_api.py
+sailpoint/beta/test/test_sources_aggregation_api.py
 sailpoint/beta/test/test_sources_api.py
 sailpoint/beta/test/test_sp_config_api.py
 sailpoint/beta/test/test_sp_config_export_job.py
