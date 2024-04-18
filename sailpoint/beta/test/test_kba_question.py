@@ -15,10 +15,10 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.kba_answer_request_item import KbaAnswerRequestItem
+from sailpoint.beta.models.kba_question import KbaQuestion
 
-class TestKbaAnswerRequestItem(unittest.TestCase):
-    """KbaAnswerRequestItem unit test stubs"""
+class TestKbaQuestion(unittest.TestCase):
+    """KbaQuestion unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,28 +26,32 @@ class TestKbaAnswerRequestItem(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> KbaAnswerRequestItem:
-        """Test KbaAnswerRequestItem
+    def make_instance(self, include_optional) -> KbaQuestion:
+        """Test KbaQuestion
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `KbaAnswerRequestItem`
+        # uncomment below to create an instance of `KbaQuestion`
         """
-        model = KbaAnswerRequestItem()
+        model = KbaQuestion()
         if include_optional:
-            return KbaAnswerRequestItem(
-                id = 'c54fee53-2d63-4fc5-9259-3e93b9994135',
-                answer = 'Your answer'
+            return KbaQuestion(
+                id = '143cfd3b-c23f-426b-ae5f-d3db06fa5919',
+                text = '[{"text":"Nouvelle question MFA -1 ?","locale":"fr"},{"text":"MFA new question -1 ?","locale":""}]',
+                has_answer = True,
+                num_answers = 5
             )
         else:
-            return KbaAnswerRequestItem(
-                id = 'c54fee53-2d63-4fc5-9259-3e93b9994135',
-                answer = 'Your answer',
+            return KbaQuestion(
+                id = '143cfd3b-c23f-426b-ae5f-d3db06fa5919',
+                text = '[{"text":"Nouvelle question MFA -1 ?","locale":"fr"},{"text":"MFA new question -1 ?","locale":""}]',
+                has_answer = True,
+                num_answers = 5,
         )
         """
 
-    def testKbaAnswerRequestItem(self):
-        """Test KbaAnswerRequestItem"""
+    def testKbaQuestion(self):
+        """Test KbaQuestion"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

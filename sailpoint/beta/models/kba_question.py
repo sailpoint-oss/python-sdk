@@ -19,20 +19,22 @@ import json
 
 
 from typing import Any, ClassVar, Dict, List
-from pydantic import BaseModel
+from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
 from pydantic import Field
-from sailpoint.beta.models.kba_answer_request_item import KbaAnswerRequestItem
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-class KbaAnswerRequest(BaseModel):
+class KbaQuestion(BaseModel):
     """
-    KbaAnswerRequest
+    KBA Configuration
     """ # noqa: E501
-    answers: List[KbaAnswerRequestItem] = Field(description="Kba answers")
-    __properties: ClassVar[List[str]] = ["answers"]
+    id: StrictStr = Field(description="KBA Question Id")
+    text: StrictStr = Field(description="KBA Question description")
+    has_answer: StrictBool = Field(description="Denotes whether the KBA question has an answer configured for any user in the tenant", alias="hasAnswer")
+    num_answers: StrictInt = Field(description="Denotes the number of KBA configurations for this question", alias="numAnswers")
+    __properties: ClassVar[List[str]] = ["id", "text", "hasAnswer", "numAnswers"]
 
     model_config = {
         "populate_by_name": True,
@@ -52,7 +54,7 @@ class KbaAnswerRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
-        """Create an instance of KbaAnswerRequest from a JSON string"""
+        """Create an instance of KbaQuestion from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -71,18 +73,11 @@ class KbaAnswerRequest(BaseModel):
             },
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in answers (list)
-        _items = []
-        if self.answers:
-            for _item in self.answers:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['answers'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Dict) -> Self:
-        """Create an instance of KbaAnswerRequest from a dict"""
+        """Create an instance of KbaQuestion from a dict"""
         if obj is None:
             return None
 
@@ -90,7 +85,10 @@ class KbaAnswerRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "answers": [KbaAnswerRequestItem.from_dict(_item) for _item in obj.get("answers")] if obj.get("answers") is not None else None
+            "id": obj.get("id"),
+            "text": obj.get("text"),
+            "hasAnswer": obj.get("hasAnswer"),
+            "numAnswers": obj.get("numAnswers")
         })
         return _obj
 

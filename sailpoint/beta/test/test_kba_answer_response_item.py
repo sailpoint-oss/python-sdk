@@ -15,10 +15,10 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.kba_answer_request import KbaAnswerRequest
+from sailpoint.beta.models.kba_answer_response_item import KbaAnswerResponseItem
 
-class TestKbaAnswerRequest(unittest.TestCase):
-    """KbaAnswerRequest unit test stubs"""
+class TestKbaAnswerResponseItem(unittest.TestCase):
+    """KbaAnswerResponseItem unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,26 +26,30 @@ class TestKbaAnswerRequest(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> KbaAnswerRequest:
-        """Test KbaAnswerRequest
+    def make_instance(self, include_optional) -> KbaAnswerResponseItem:
+        """Test KbaAnswerResponseItem
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `KbaAnswerRequest`
+        # uncomment below to create an instance of `KbaAnswerResponseItem`
         """
-        model = KbaAnswerRequest()
+        model = KbaAnswerResponseItem()
         if include_optional:
-            return KbaAnswerRequest(
-                answers = [{questionId=089899f13a8f4da7824996191587bab9, answer=Your answer}, {questionId=067899f13a8f4da7824996191587bab9, answer=Your answer1}]
+            return KbaAnswerResponseItem(
+                id = 'c54fee53-2d63-4fc5-9259-3e93b9994135',
+                question = '[{"text":"Nouvelle question MFA -1 ?","locale":"fr"},{"text":"MFA new question -1 ?","locale":""}]',
+                has_answer = True
             )
         else:
-            return KbaAnswerRequest(
-                answers = [{questionId=089899f13a8f4da7824996191587bab9, answer=Your answer}, {questionId=067899f13a8f4da7824996191587bab9, answer=Your answer1}],
+            return KbaAnswerResponseItem(
+                id = 'c54fee53-2d63-4fc5-9259-3e93b9994135',
+                question = '[{"text":"Nouvelle question MFA -1 ?","locale":"fr"},{"text":"MFA new question -1 ?","locale":""}]',
+                has_answer = True,
         )
         """
 
-    def testKbaAnswerRequest(self):
-        """Test KbaAnswerRequest"""
+    def testKbaAnswerResponseItem(self):
+        """Test KbaAnswerResponseItem"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

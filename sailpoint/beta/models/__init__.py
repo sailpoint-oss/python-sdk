@@ -388,10 +388,11 @@ from sailpoint.beta.models.invocation_status_type import InvocationStatusType
 from sailpoint.beta.models.json_patch import JsonPatch
 from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
 from sailpoint.beta.models.json_patch_operation_value import JsonPatchOperationValue
-from sailpoint.beta.models.kba_answer_request import KbaAnswerRequest
 from sailpoint.beta.models.kba_answer_request_item import KbaAnswerRequestItem
+from sailpoint.beta.models.kba_answer_response_item import KbaAnswerResponseItem
 from sailpoint.beta.models.kba_auth_response import KbaAuthResponse
 from sailpoint.beta.models.kba_auth_response_item import KbaAuthResponseItem
+from sailpoint.beta.models.kba_question import KbaQuestion
 from sailpoint.beta.models.latest_outlier_summary import LatestOutlierSummary
 from sailpoint.beta.models.license import License
 from sailpoint.beta.models.lifecycle_state import LifecycleState

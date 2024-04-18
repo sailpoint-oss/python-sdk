@@ -40,6 +40,13 @@ class TestMFAConfigurationApi(unittest.TestCase):
         """
         pass
 
+    def test_get_mfa_kba_config(self) -> None:
+        """Test case for get_mfa_kba_config
+
+        Configuration of KBA MFA method
+        """
+        pass
+
     def test_get_mfa_okta_config(self) -> None:
         """Test case for get_mfa_okta_config
 
@@ -58,6 +65,13 @@ class TestMFAConfigurationApi(unittest.TestCase):
         """Test case for set_mfa_okta_config
 
         Set Okta MFA configuration
+        """
+        pass
+
+    def test_set_mfakba_config(self) -> None:
+        """Test case for set_mfakba_config
+
+        Set MFA KBA configuration
         """
         pass
 

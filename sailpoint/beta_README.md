@@ -288,9 +288,11 @@ Class | Method | HTTP request | Description
 *LifecycleStatesApi* | [**update_lifecycle_states**](sailpoint/beta/docs/LifecycleStatesApi.md#update_lifecycle_states) | **PATCH** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Update Lifecycle State
 *MFAConfigurationApi* | [**delete_mfa_config**](sailpoint/beta/docs/MFAConfigurationApi.md#delete_mfa_config) | **DELETE** /mfa/{method}/delete | Delete MFA method configuration
 *MFAConfigurationApi* | [**get_mfa_duo_config**](sailpoint/beta/docs/MFAConfigurationApi.md#get_mfa_duo_config) | **GET** /mfa/duo-web/config | Configuration of Duo MFA method
+*MFAConfigurationApi* | [**get_mfa_kba_config**](sailpoint/beta/docs/MFAConfigurationApi.md#get_mfa_kba_config) | **GET** /mfa/kba/config | Configuration of KBA MFA method
 *MFAConfigurationApi* | [**get_mfa_okta_config**](sailpoint/beta/docs/MFAConfigurationApi.md#get_mfa_okta_config) | **GET** /mfa/okta-verify/config | Configuration of Okta MFA method
 *MFAConfigurationApi* | [**set_mfa_duo_config**](sailpoint/beta/docs/MFAConfigurationApi.md#set_mfa_duo_config) | **PUT** /mfa/duo-web/config | Set Duo MFA configuration
 *MFAConfigurationApi* | [**set_mfa_okta_config**](sailpoint/beta/docs/MFAConfigurationApi.md#set_mfa_okta_config) | **PUT** /mfa/okta-verify/config | Set Okta MFA configuration
+*MFAConfigurationApi* | [**set_mfakba_config**](sailpoint/beta/docs/MFAConfigurationApi.md#set_mfakba_config) | **POST** /mfa/kba/config/answers | Set MFA KBA configuration
 *MFAConfigurationApi* | [**test_mfa_config**](sailpoint/beta/docs/MFAConfigurationApi.md#test_mfa_config) | **GET** /mfa/{method}/test | MFA method&#39;s test configuration
 *MFAControllerApi* | [**create_send_token**](sailpoint/beta/docs/MFAControllerApi.md#create_send_token) | **POST** /mfa/token/send | Create and send user token
 *MFAControllerApi* | [**ping_verification_status**](sailpoint/beta/docs/MFAControllerApi.md#ping_verification_status) | **POST** /mfa/{method}/poll | Polling MFA method by VerificationPollRequest
@@ -940,10 +942,11 @@ Class | Method | HTTP request | Description
  - [JsonPatch](sailpoint/beta/docs/JsonPatch.md)
  - [JsonPatchOperation](sailpoint/beta/docs/JsonPatchOperation.md)
  - [JsonPatchOperationValue](sailpoint/beta/docs/JsonPatchOperationValue.md)
- - [KbaAnswerRequest](sailpoint/beta/docs/KbaAnswerRequest.md)
  - [KbaAnswerRequestItem](sailpoint/beta/docs/KbaAnswerRequestItem.md)
+ - [KbaAnswerResponseItem](sailpoint/beta/docs/KbaAnswerResponseItem.md)
  - [KbaAuthResponse](sailpoint/beta/docs/KbaAuthResponse.md)
  - [KbaAuthResponseItem](sailpoint/beta/docs/KbaAuthResponseItem.md)
+ - [KbaQuestion](sailpoint/beta/docs/KbaQuestion.md)
  - [LatestOutlierSummary](sailpoint/beta/docs/LatestOutlierSummary.md)
  - [License](sailpoint/beta/docs/License.md)
  - [LifecycleState](sailpoint/beta/docs/LifecycleState.md)

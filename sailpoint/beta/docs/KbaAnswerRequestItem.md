@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**question_id** | **str** | Question Id | 
+**id** | **str** | Question Id | 
 **answer** | **str** | An answer for the KBA question | 
 
 ## Example

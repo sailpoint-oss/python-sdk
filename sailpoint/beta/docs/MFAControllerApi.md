@@ -273,7 +273,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **send_kba_answers**
-> KbaAuthResponse send_kba_answers(kba_answer_request)
+> KbaAuthResponse send_kba_answers(kba_answer_request_item)
 
 Authenticate KBA provided MFA method
 
@@ -288,7 +288,7 @@ This API Authenticate user in KBA MFA method.
 import time
 import os
 import sailpoint.beta
-from sailpoint.beta.models.kba_answer_request import KbaAnswerRequest
+from sailpoint.beta.models.kba_answer_request_item import KbaAnswerRequestItem
 from sailpoint.beta.models.kba_auth_response import KbaAuthResponse
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
@@ -312,11 +312,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.MFAControllerApi(api_client)
-    kba_answer_request = {answers=[{questionId=089899f13a8f4da7824996191587bab9, answer=Your answer}, {questionId=067899f13a8f4da7824996191587bab9, answer=Your answer1}]} # KbaAnswerRequest | 
+    kba_answer_request_item = [{id=173423, answer=822cd15d6c15aa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a0859a2fea34}, {id=c54fee53-2d63-4fc5-9259-3e93b9994135, answer=9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08}] # List[KbaAnswerRequestItem] | 
 
     try:
         # Authenticate KBA provided MFA method
-        api_response = api_instance.send_kba_answers(kba_answer_request)
+        api_response = api_instance.send_kba_answers(kba_answer_request_item)
         print("The response of MFAControllerApi->send_kba_answers:\n")
         pprint(api_response)
     except Exception as e:
@@ -330,7 +330,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **kba_answer_request** | [**KbaAnswerRequest**](KbaAnswerRequest.md)|  | 
+ **kba_answer_request_item** | [**List[KbaAnswerRequestItem]**](KbaAnswerRequestItem.md)|  | 
 
 ### Return type
 

@@ -27,8 +27,10 @@ from pydantic import Field
 from typing_extensions import Annotated
 from pydantic import StrictStr
 
+from typing import List
+
 from sailpoint.beta.models.duo_verification_request import DuoVerificationRequest
-from sailpoint.beta.models.kba_answer_request import KbaAnswerRequest
+from sailpoint.beta.models.kba_answer_request_item import KbaAnswerRequestItem
 from sailpoint.beta.models.kba_auth_response import KbaAuthResponse
 from sailpoint.beta.models.okta_verification_request import OktaVerificationRequest
 from sailpoint.beta.models.send_token_request import SendTokenRequest
@@ -935,7 +937,7 @@ class MFAControllerApi:
     @validate_call
     def send_kba_answers(
         self,
-        kba_answer_request: KbaAnswerRequest,
+        kba_answer_request_item: List[KbaAnswerRequestItem],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -953,8 +955,8 @@ class MFAControllerApi:
 
         This API Authenticate user in KBA MFA method.
 
-        :param kba_answer_request: (required)
-        :type kba_answer_request: KbaAnswerRequest
+        :param kba_answer_request_item: (required)
+        :type kba_answer_request_item: List[KbaAnswerRequestItem]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -978,7 +980,7 @@ class MFAControllerApi:
         """ # noqa: E501
 
         _param = self._send_kba_answers_serialize(
-            kba_answer_request=kba_answer_request,
+            kba_answer_request_item=kba_answer_request_item,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1007,7 +1009,7 @@ class MFAControllerApi:
     @validate_call
     def send_kba_answers_with_http_info(
         self,
-        kba_answer_request: KbaAnswerRequest,
+        kba_answer_request_item: List[KbaAnswerRequestItem],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1025,8 +1027,8 @@ class MFAControllerApi:
 
         This API Authenticate user in KBA MFA method.
 
-        :param kba_answer_request: (required)
-        :type kba_answer_request: KbaAnswerRequest
+        :param kba_answer_request_item: (required)
+        :type kba_answer_request_item: List[KbaAnswerRequestItem]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1050,7 +1052,7 @@ class MFAControllerApi:
         """ # noqa: E501
 
         _param = self._send_kba_answers_serialize(
-            kba_answer_request=kba_answer_request,
+            kba_answer_request_item=kba_answer_request_item,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1079,7 +1081,7 @@ class MFAControllerApi:
     @validate_call
     def send_kba_answers_without_preload_content(
         self,
-        kba_answer_request: KbaAnswerRequest,
+        kba_answer_request_item: List[KbaAnswerRequestItem],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1097,8 +1099,8 @@ class MFAControllerApi:
 
         This API Authenticate user in KBA MFA method.
 
-        :param kba_answer_request: (required)
-        :type kba_answer_request: KbaAnswerRequest
+        :param kba_answer_request_item: (required)
+        :type kba_answer_request_item: List[KbaAnswerRequestItem]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1122,7 +1124,7 @@ class MFAControllerApi:
         """ # noqa: E501
 
         _param = self._send_kba_answers_serialize(
-            kba_answer_request=kba_answer_request,
+            kba_answer_request_item=kba_answer_request_item,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1146,7 +1148,7 @@ class MFAControllerApi:
 
     def _send_kba_answers_serialize(
         self,
-        kba_answer_request,
+        kba_answer_request_item,
         _request_auth,
         _content_type,
         _headers,
@@ -1156,6 +1158,7 @@ class MFAControllerApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'KbaAnswerRequestItem': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -1170,8 +1173,8 @@ class MFAControllerApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if kba_answer_request is not None:
-            _body_params = kba_answer_request
+        if kba_answer_request_item is not None:
+            _body_params = kba_answer_request_item
 
 
         # set the HTTP header `Accept`
