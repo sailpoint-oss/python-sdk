@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **role_name** | **str** | Name of the new role being created | [optional] 
 **role_description** | **str** | Short description of the new role being created | [optional] 
 **owner_id** | **str** | ID of the identity that will own this role | [optional] 
+**include_identities** | **bool** | When true, create access requests for the identities associated with the potential role | [optional] [default to False]
+**directly_assigned_entitlements** | **bool** | When true, assign entitlements directly to the role; otherwise, create access profiles containing the entitlements | [optional] [default to False]
 
 ## Example
 

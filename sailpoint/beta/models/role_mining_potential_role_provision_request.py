@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
+from pydantic import BaseModel, StrictBool, StrictStr
 from pydantic import Field
 try:
     from typing import Self
@@ -33,7 +33,9 @@ class RoleMiningPotentialRoleProvisionRequest(BaseModel):
     role_name: Optional[StrictStr] = Field(default=None, description="Name of the new role being created", alias="roleName")
     role_description: Optional[StrictStr] = Field(default=None, description="Short description of the new role being created", alias="roleDescription")
     owner_id: Optional[StrictStr] = Field(default=None, description="ID of the identity that will own this role", alias="ownerId")
-    __properties: ClassVar[List[str]] = ["roleName", "roleDescription", "ownerId"]
+    include_identities: Optional[StrictBool] = Field(default=False, description="When true, create access requests for the identities associated with the potential role", alias="includeIdentities")
+    directly_assigned_entitlements: Optional[StrictBool] = Field(default=False, description="When true, assign entitlements directly to the role; otherwise, create access profiles containing the entitlements", alias="directlyAssignedEntitlements")
+    __properties: ClassVar[List[str]] = ["roleName", "roleDescription", "ownerId", "includeIdentities", "directlyAssignedEntitlements"]
 
     model_config = {
         "populate_by_name": True,
@@ -86,7 +88,9 @@ class RoleMiningPotentialRoleProvisionRequest(BaseModel):
         _obj = cls.model_validate({
             "roleName": obj.get("roleName"),
             "roleDescription": obj.get("roleDescription"),
-            "ownerId": obj.get("ownerId")
+            "ownerId": obj.get("ownerId"),
+            "includeIdentities": obj.get("includeIdentities") if obj.get("includeIdentities") is not None else False,
+            "directlyAssignedEntitlements": obj.get("directlyAssignedEntitlements") if obj.get("directlyAssignedEntitlements") is not None else False
         })
         return _obj
 

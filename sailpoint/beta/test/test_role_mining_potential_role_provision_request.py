@@ -38,7 +38,9 @@ class TestRoleMiningPotentialRoleProvisionRequest(unittest.TestCase):
             return RoleMiningPotentialRoleProvisionRequest(
                 role_name = 'Finance - Accounting',
                 role_description = 'General access for accounting department',
-                owner_id = '2b568c65bc3c4c57a43bd97e3a8e41'
+                owner_id = '2b568c65bc3c4c57a43bd97e3a8e41',
+                include_identities = True,
+                directly_assigned_entitlements = False
             )
         else:
             return RoleMiningPotentialRoleProvisionRequest(
