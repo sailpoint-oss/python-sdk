@@ -191,6 +191,17 @@ Class | Method | HTTP request | Description
 *LifecycleStatesApi* | [**list_lifecycle_states**](sailpoint/v3/docs/LifecycleStatesApi.md#list_lifecycle_states) | **GET** /identity-profiles/{identity-profile-id}/lifecycle-states | Lists LifecycleStates
 *LifecycleStatesApi* | [**set_lifecycle_state**](sailpoint/v3/docs/LifecycleStatesApi.md#set_lifecycle_state) | **POST** /identities/{identity-id}/set-lifecycle-state | Set Lifecycle State
 *LifecycleStatesApi* | [**update_lifecycle_states**](sailpoint/v3/docs/LifecycleStatesApi.md#update_lifecycle_states) | **PATCH** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Update Lifecycle State
+*ManagedClientsApi* | [**create_managed_client**](sailpoint/v3/docs/ManagedClientsApi.md#create_managed_client) | **POST** /managed-clients | Create a new Managed Client
+*ManagedClientsApi* | [**delete_managed_client**](sailpoint/v3/docs/ManagedClientsApi.md#delete_managed_client) | **DELETE** /managed-clients/{id} | Delete a Managed Client
+*ManagedClientsApi* | [**get_managed_client**](sailpoint/v3/docs/ManagedClientsApi.md#get_managed_client) | **GET** /managed-clients/{id} | Get a Managed Client
+*ManagedClientsApi* | [**get_managed_client_status**](sailpoint/v3/docs/ManagedClientsApi.md#get_managed_client_status) | **GET** /managed-clients/{id}/status | Get Managed Client Status.
+*ManagedClientsApi* | [**get_managed_clients**](sailpoint/v3/docs/ManagedClientsApi.md#get_managed_clients) | **GET** /managed-clients | Get Managed Clients
+*ManagedClientsApi* | [**update_managed_client**](sailpoint/v3/docs/ManagedClientsApi.md#update_managed_client) | **PATCH** /managed-clients/{id} | Update a Managed Client
+*ManagedClustersApi* | [**create_managed_cluster**](sailpoint/v3/docs/ManagedClustersApi.md#create_managed_cluster) | **POST** /managed-clusters | Create a new Managed Cluster
+*ManagedClustersApi* | [**delete_managed_cluster**](sailpoint/v3/docs/ManagedClustersApi.md#delete_managed_cluster) | **DELETE** /managed-clusters/{id} | Delete a Managed Cluster
+*ManagedClustersApi* | [**get_managed_cluster**](sailpoint/v3/docs/ManagedClustersApi.md#get_managed_cluster) | **GET** /managed-clusters/{id} | Get a specified Managed Cluster.
+*ManagedClustersApi* | [**get_managed_clusters**](sailpoint/v3/docs/ManagedClustersApi.md#get_managed_clusters) | **GET** /managed-clusters | Retrieve all Managed Clusters.
+*ManagedClustersApi* | [**update_managed_cluster**](sailpoint/v3/docs/ManagedClustersApi.md#update_managed_cluster) | **PATCH** /managed-clusters/{id} | Update a Managed Cluster
 *NonEmployeeLifecycleManagementApi* | [**approve_non_employee_request**](sailpoint/v3/docs/NonEmployeeLifecycleManagementApi.md#approve_non_employee_request) | **POST** /non-employee-approvals/{id}/approve | Approve a Non-Employee Request
 *NonEmployeeLifecycleManagementApi* | [**create_non_employee_record**](sailpoint/v3/docs/NonEmployeeLifecycleManagementApi.md#create_non_employee_record) | **POST** /non-employee-records | Create Non-Employee Record
 *NonEmployeeLifecycleManagementApi* | [**create_non_employee_request**](sailpoint/v3/docs/NonEmployeeLifecycleManagementApi.md#create_non_employee_request) | **POST** /non-employee-requests | Create Non-Employee Request
@@ -503,6 +514,7 @@ Class | Method | HTTP request | Description
  - [CertificationPhase](sailpoint/v3/docs/CertificationPhase.md)
  - [CertificationReference](sailpoint/v3/docs/CertificationReference.md)
  - [CertificationTask](sailpoint/v3/docs/CertificationTask.md)
+ - [ClientLogConfiguration](sailpoint/v3/docs/ClientLogConfiguration.md)
  - [ClientType](sailpoint/v3/docs/ClientType.md)
  - [Column](sailpoint/v3/docs/Column.md)
  - [Comment](sailpoint/v3/docs/Comment.md)
@@ -600,6 +612,7 @@ Class | Method | HTTP request | Description
  - [ImportUploadedBackupRequest](sailpoint/v3/docs/ImportUploadedBackupRequest.md)
  - [Index](sailpoint/v3/docs/Index.md)
  - [InnerHit](sailpoint/v3/docs/InnerHit.md)
+ - [JsonPatch](sailpoint/v3/docs/JsonPatch.md)
  - [JsonPatchOperation](sailpoint/v3/docs/JsonPatchOperation.md)
  - [JsonPatchOperationValue](sailpoint/v3/docs/JsonPatchOperationValue.md)
  - [LifecycleState](sailpoint/v3/docs/LifecycleState.md)
@@ -609,6 +622,18 @@ Class | Method | HTTP request | Description
  - [ListCampaignFilters200Response](sailpoint/v3/docs/ListCampaignFilters200Response.md)
  - [ListCompleteWorkflowLibrary200ResponseInner](sailpoint/v3/docs/ListCompleteWorkflowLibrary200ResponseInner.md)
  - [LocaleOrigin](sailpoint/v3/docs/LocaleOrigin.md)
+ - [ManagedClient](sailpoint/v3/docs/ManagedClient.md)
+ - [ManagedClientRequest](sailpoint/v3/docs/ManagedClientRequest.md)
+ - [ManagedClientStatus](sailpoint/v3/docs/ManagedClientStatus.md)
+ - [ManagedClientStatusCode](sailpoint/v3/docs/ManagedClientStatusCode.md)
+ - [ManagedClientType](sailpoint/v3/docs/ManagedClientType.md)
+ - [ManagedCluster](sailpoint/v3/docs/ManagedCluster.md)
+ - [ManagedClusterAttributes](sailpoint/v3/docs/ManagedClusterAttributes.md)
+ - [ManagedClusterKeyPair](sailpoint/v3/docs/ManagedClusterKeyPair.md)
+ - [ManagedClusterQueue](sailpoint/v3/docs/ManagedClusterQueue.md)
+ - [ManagedClusterRedis](sailpoint/v3/docs/ManagedClusterRedis.md)
+ - [ManagedClusterRequest](sailpoint/v3/docs/ManagedClusterRequest.md)
+ - [ManagedClusterTypes](sailpoint/v3/docs/ManagedClusterTypes.md)
  - [ManagerCorrelationMapping](sailpoint/v3/docs/ManagerCorrelationMapping.md)
  - [ManualWorkItemDetails](sailpoint/v3/docs/ManualWorkItemDetails.md)
  - [ManualWorkItemDetailsCurrentOwner](sailpoint/v3/docs/ManualWorkItemDetailsCurrentOwner.md)
@@ -819,6 +844,7 @@ Class | Method | HTTP request | Description
  - [SourceUsage](sailpoint/v3/docs/SourceUsage.md)
  - [SourceUsageStatus](sailpoint/v3/docs/SourceUsageStatus.md)
  - [SpConfigMessage](sailpoint/v3/docs/SpConfigMessage.md)
+ - [StandardLevel](sailpoint/v3/docs/StandardLevel.md)
  - [SubSearchAggregationSpecification](sailpoint/v3/docs/SubSearchAggregationSpecification.md)
  - [TaggedObject](sailpoint/v3/docs/TaggedObject.md)
  - [TaggedObjectDto](sailpoint/v3/docs/TaggedObjectDto.md)

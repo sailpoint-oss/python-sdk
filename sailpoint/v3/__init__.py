@@ -34,6 +34,8 @@ from sailpoint.v3.api.connectors_api import ConnectorsApi
 from sailpoint.v3.api.global_tenant_security_settings_api import GlobalTenantSecuritySettingsApi
 from sailpoint.v3.api.identity_profiles_api import IdentityProfilesApi
 from sailpoint.v3.api.lifecycle_states_api import LifecycleStatesApi
+from sailpoint.v3.api.managed_clients_api import ManagedClientsApi
+from sailpoint.v3.api.managed_clusters_api import ManagedClustersApi
 from sailpoint.v3.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi
 from sailpoint.v3.api.o_auth_clients_api import OAuthClientsApi
 from sailpoint.v3.api.password_configuration_api import PasswordConfigurationApi
@@ -192,6 +194,7 @@ from sailpoint.v3.models.certification_identity_summary import CertificationIden
 from sailpoint.v3.models.certification_phase import CertificationPhase
 from sailpoint.v3.models.certification_reference import CertificationReference
 from sailpoint.v3.models.certification_task import CertificationTask
+from sailpoint.v3.models.client_log_configuration import ClientLogConfiguration
 from sailpoint.v3.models.client_type import ClientType
 from sailpoint.v3.models.column import Column
 from sailpoint.v3.models.comment import Comment
@@ -289,6 +292,7 @@ from sailpoint.v3.models.import_object import ImportObject
 from sailpoint.v3.models.import_uploaded_backup_request import ImportUploadedBackupRequest
 from sailpoint.v3.models.index import Index
 from sailpoint.v3.models.inner_hit import InnerHit
+from sailpoint.v3.models.json_patch import JsonPatch
 from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v3.models.json_patch_operation_value import JsonPatchOperationValue
 from sailpoint.v3.models.lifecycle_state import LifecycleState
@@ -298,6 +302,18 @@ from sailpoint.v3.models.list_access_profiles429_response import ListAccessProfi
 from sailpoint.v3.models.list_campaign_filters200_response import ListCampaignFilters200Response
 from sailpoint.v3.models.list_complete_workflow_library200_response_inner import ListCompleteWorkflowLibrary200ResponseInner
 from sailpoint.v3.models.locale_origin import LocaleOrigin
+from sailpoint.v3.models.managed_client import ManagedClient
+from sailpoint.v3.models.managed_client_request import ManagedClientRequest
+from sailpoint.v3.models.managed_client_status import ManagedClientStatus
+from sailpoint.v3.models.managed_client_status_code import ManagedClientStatusCode
+from sailpoint.v3.models.managed_client_type import ManagedClientType
+from sailpoint.v3.models.managed_cluster import ManagedCluster
+from sailpoint.v3.models.managed_cluster_attributes import ManagedClusterAttributes
+from sailpoint.v3.models.managed_cluster_key_pair import ManagedClusterKeyPair
+from sailpoint.v3.models.managed_cluster_queue import ManagedClusterQueue
+from sailpoint.v3.models.managed_cluster_redis import ManagedClusterRedis
+from sailpoint.v3.models.managed_cluster_request import ManagedClusterRequest
+from sailpoint.v3.models.managed_cluster_types import ManagedClusterTypes
 from sailpoint.v3.models.manager_correlation_mapping import ManagerCorrelationMapping
 from sailpoint.v3.models.manual_work_item_details import ManualWorkItemDetails
 from sailpoint.v3.models.manual_work_item_details_current_owner import ManualWorkItemDetailsCurrentOwner
@@ -508,6 +524,7 @@ from sailpoint.v3.models.source_schemas_inner import SourceSchemasInner
 from sailpoint.v3.models.source_usage import SourceUsage
 from sailpoint.v3.models.source_usage_status import SourceUsageStatus
 from sailpoint.v3.models.sp_config_message import SpConfigMessage
+from sailpoint.v3.models.standard_level import StandardLevel
 from sailpoint.v3.models.sub_search_aggregation_specification import SubSearchAggregationSpecification
 from sailpoint.v3.models.tagged_object import TaggedObject
 from sailpoint.v3.models.tagged_object_dto import TaggedObjectDto
