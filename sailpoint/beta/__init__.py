@@ -784,7 +784,6 @@ from sailpoint.beta.models.source_created_actor import SourceCreatedActor
 from sailpoint.beta.models.source_deleted import SourceDeleted
 from sailpoint.beta.models.source_deleted_actor import SourceDeletedActor
 from sailpoint.beta.models.source_entitlement_request_config import SourceEntitlementRequestConfig
-from sailpoint.beta.models.source_feature import SourceFeature
 from sailpoint.beta.models.source_management_workgroup import SourceManagementWorkgroup
 from sailpoint.beta.models.source_manager_correlation_rule import SourceManagerCorrelationRule
 from sailpoint.beta.models.source_owner import SourceOwner

@@ -513,7 +513,6 @@ from sailpoint.v3.models.source_account_correlation_rule import SourceAccountCor
 from sailpoint.v3.models.source_before_provisioning_rule import SourceBeforeProvisioningRule
 from sailpoint.v3.models.source_cluster import SourceCluster
 from sailpoint.v3.models.source_cluster_dto import SourceClusterDto
-from sailpoint.v3.models.source_feature import SourceFeature
 from sailpoint.v3.models.source_health_dto import SourceHealthDto
 from sailpoint.v3.models.source_management_workgroup import SourceManagementWorkgroup
 from sailpoint.v3.models.source_manager_correlation_mapping import SourceManagerCorrelationMapping

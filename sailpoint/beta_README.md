@@ -1251,7 +1251,6 @@ Class | Method | HTTP request | Description
  - [SourceDeleted](sailpoint/beta/docs/SourceDeleted.md)
  - [SourceDeletedActor](sailpoint/beta/docs/SourceDeletedActor.md)
  - [SourceEntitlementRequestConfig](sailpoint/beta/docs/SourceEntitlementRequestConfig.md)
- - [SourceFeature](sailpoint/beta/docs/SourceFeature.md)
  - [SourceManagementWorkgroup](sailpoint/beta/docs/SourceManagementWorkgroup.md)
  - [SourceManagerCorrelationRule](sailpoint/beta/docs/SourceManagerCorrelationRule.md)
  - [SourceOwner](sailpoint/beta/docs/SourceOwner.md)

@@ -833,7 +833,6 @@ Class | Method | HTTP request | Description
  - [SourceBeforeProvisioningRule](sailpoint/v3/docs/SourceBeforeProvisioningRule.md)
  - [SourceCluster](sailpoint/v3/docs/SourceCluster.md)
  - [SourceClusterDto](sailpoint/v3/docs/SourceClusterDto.md)
- - [SourceFeature](sailpoint/v3/docs/SourceFeature.md)
  - [SourceHealthDto](sailpoint/v3/docs/SourceHealthDto.md)
  - [SourceManagementWorkgroup](sailpoint/v3/docs/SourceManagementWorkgroup.md)
  - [SourceManagerCorrelationMapping](sailpoint/v3/docs/SourceManagerCorrelationMapping.md)

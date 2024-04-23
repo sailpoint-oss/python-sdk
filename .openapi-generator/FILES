@@ -816,7 +816,6 @@ sailpoint/beta/docs/SourceCreatedActor.md
 sailpoint/beta/docs/SourceDeleted.md
 sailpoint/beta/docs/SourceDeletedActor.md
 sailpoint/beta/docs/SourceEntitlementRequestConfig.md
-sailpoint/beta/docs/SourceFeature.md
 sailpoint/beta/docs/SourceManagementWorkgroup.md
 sailpoint/beta/docs/SourceManagerCorrelationRule.md
 sailpoint/beta/docs/SourceOwner.md
@@ -1627,7 +1626,6 @@ sailpoint/beta/models/source_created_actor.py
 sailpoint/beta/models/source_deleted.py
 sailpoint/beta/models/source_deleted_actor.py
 sailpoint/beta/models/source_entitlement_request_config.py
-sailpoint/beta/models/source_feature.py
 sailpoint/beta/models/source_management_workgroup.py
 sailpoint/beta/models/source_manager_correlation_rule.py
 sailpoint/beta/models/source_owner.py
@@ -2482,7 +2480,6 @@ sailpoint/beta/test/test_source_created_actor.py
 sailpoint/beta/test/test_source_deleted.py
 sailpoint/beta/test/test_source_deleted_actor.py
 sailpoint/beta/test/test_source_entitlement_request_config.py
-sailpoint/beta/test/test_source_feature.py
 sailpoint/beta/test/test_source_management_workgroup.py
 sailpoint/beta/test/test_source_manager_correlation_rule.py
 sailpoint/beta/test/test_source_owner.py
