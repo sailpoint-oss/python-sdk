@@ -38,7 +38,7 @@ class Account(BaseModel):
     source_id: StrictStr = Field(description="The unique ID of the source this account belongs to", alias="sourceId")
     source_name: StrictStr = Field(description="The display name of the source this account belongs to", alias="sourceName")
     identity_id: Optional[StrictStr] = Field(default=None, description="The unique ID of the identity this account is correlated to", alias="identityId")
-    attributes: Dict[str, Any] = Field(description="The account attributes that are aggregated")
+    attributes: Optional[Dict[str, Any]] = Field(description="The account attributes that are aggregated")
     authoritative: StrictBool = Field(description="Indicates if this account is from an authoritative source")
     description: Optional[StrictStr] = Field(default=None, description="A description of the account")
     disabled: StrictBool = Field(description="Indicates if the account is currently disabled")
@@ -103,6 +103,11 @@ class Account(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of source_owner
         if self.source_owner:
             _dict['sourceOwner'] = self.source_owner.to_dict()
+        # set to None if attributes (nullable) is None
+        # and model_fields_set contains the field
+        if self.attributes is None and "attributes" in self.model_fields_set:
+            _dict['attributes'] = None
+
         # set to None if description (nullable) is None
         # and model_fields_set contains the field
         if self.description is None and "description" in self.model_fields_set:
