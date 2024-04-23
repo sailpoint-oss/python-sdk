@@ -612,7 +612,7 @@ class EntitlementsApi:
     def import_entitlements(
         self,
         id: Annotated[StrictStr, Field(description="Source Id")],
-        csv_file: Union[StrictBytes, StrictStr],
+        csv_file: Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="The CSV file containing the source entitlements to aggregate.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -628,11 +628,11 @@ class EntitlementsApi:
     ) -> LoadEntitlementTask:
         """Aggregate Entitlements
 
-        Starts an entitlement aggregation on the specified source.  If the target source is a direct connection, then the request body must be empty. You will also need to make sure the Content-Type header is not set. If you set the Content-Type header without specifying a body, then you will receive a 500 error. If the target source is a delimited file source, then the CSV file needs to be included in the request body. You will also need to set the Content-Type header to `multipart/form-data`.
+        Starts an entitlement aggregation on the specified source.   If the target source is a direct connection, then the request body must be empty. You will also need to make sure the Content-Type header is not set. If you set the Content-Type header without specifying a body, then you will receive a 500 error.  If the target source is a delimited file source, then the CSV file needs to be included in the request body. You will also need to set the Content-Type header to `multipart/form-data`.
 
         :param id: Source Id (required)
         :type id: str
-        :param csv_file: (required)
+        :param csv_file: The CSV file containing the source entitlements to aggregate.
         :type csv_file: bytearray
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -688,7 +688,7 @@ class EntitlementsApi:
     def import_entitlements_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Source Id")],
-        csv_file: Union[StrictBytes, StrictStr],
+        csv_file: Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="The CSV file containing the source entitlements to aggregate.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -704,11 +704,11 @@ class EntitlementsApi:
     ) -> ApiResponse[LoadEntitlementTask]:
         """Aggregate Entitlements
 
-        Starts an entitlement aggregation on the specified source.  If the target source is a direct connection, then the request body must be empty. You will also need to make sure the Content-Type header is not set. If you set the Content-Type header without specifying a body, then you will receive a 500 error. If the target source is a delimited file source, then the CSV file needs to be included in the request body. You will also need to set the Content-Type header to `multipart/form-data`.
+        Starts an entitlement aggregation on the specified source.   If the target source is a direct connection, then the request body must be empty. You will also need to make sure the Content-Type header is not set. If you set the Content-Type header without specifying a body, then you will receive a 500 error.  If the target source is a delimited file source, then the CSV file needs to be included in the request body. You will also need to set the Content-Type header to `multipart/form-data`.
 
         :param id: Source Id (required)
         :type id: str
-        :param csv_file: (required)
+        :param csv_file: The CSV file containing the source entitlements to aggregate.
         :type csv_file: bytearray
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -764,7 +764,7 @@ class EntitlementsApi:
     def import_entitlements_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Source Id")],
-        csv_file: Union[StrictBytes, StrictStr],
+        csv_file: Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="The CSV file containing the source entitlements to aggregate.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -780,11 +780,11 @@ class EntitlementsApi:
     ) -> RESTResponseType:
         """Aggregate Entitlements
 
-        Starts an entitlement aggregation on the specified source.  If the target source is a direct connection, then the request body must be empty. You will also need to make sure the Content-Type header is not set. If you set the Content-Type header without specifying a body, then you will receive a 500 error. If the target source is a delimited file source, then the CSV file needs to be included in the request body. You will also need to set the Content-Type header to `multipart/form-data`.
+        Starts an entitlement aggregation on the specified source.   If the target source is a direct connection, then the request body must be empty. You will also need to make sure the Content-Type header is not set. If you set the Content-Type header without specifying a body, then you will receive a 500 error.  If the target source is a delimited file source, then the CSV file needs to be included in the request body. You will also need to set the Content-Type header to `multipart/form-data`.
 
         :param id: Source Id (required)
         :type id: str
-        :param csv_file: (required)
+        :param csv_file: The CSV file containing the source entitlements to aggregate.
         :type csv_file: bytearray
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

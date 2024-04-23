@@ -59,7 +59,6 @@ sailpoint/beta/api/sod_policies_api.py
 sailpoint/beta/api/sod_policy_api.py
 sailpoint/beta/api/sod_violations_api.py
 sailpoint/beta/api/source_usages_api.py
-sailpoint/beta/api/sources_aggregation_api.py
 sailpoint/beta/api/sources_api.py
 sailpoint/beta/api/sp_config_api.py
 sailpoint/beta/api/suggested_entitlement_description_api.py
@@ -503,7 +502,9 @@ sailpoint/beta/docs/LoadAccountsTask.md
 sailpoint/beta/docs/LoadAccountsTaskTask.md
 sailpoint/beta/docs/LoadAccountsTaskTaskAttributes.md
 sailpoint/beta/docs/LoadAccountsTaskTaskMessagesInner.md
+sailpoint/beta/docs/LoadAccountsTaskTaskReturnsInner.md
 sailpoint/beta/docs/LoadEntitlementTask.md
+sailpoint/beta/docs/LoadEntitlementTaskReturnsInner.md
 sailpoint/beta/docs/LocaleOrigin.md
 sailpoint/beta/docs/LocalizedMessage.md
 sailpoint/beta/docs/LookupStep.md
@@ -768,6 +769,7 @@ sailpoint/beta/docs/SegmentsApi.md
 sailpoint/beta/docs/Selector.md
 sailpoint/beta/docs/SelectorType.md
 sailpoint/beta/docs/SelfImportExportDto.md
+sailpoint/beta/docs/SendManualDiscoverApplicationsCsvTemplateRequest.md
 sailpoint/beta/docs/SendTestNotificationRequestDto.md
 sailpoint/beta/docs/SendTokenRequest.md
 sailpoint/beta/docs/SendTokenResponse.md
@@ -828,7 +830,6 @@ sailpoint/beta/docs/SourceUpdatedActor.md
 sailpoint/beta/docs/SourceUsage.md
 sailpoint/beta/docs/SourceUsageStatus.md
 sailpoint/beta/docs/SourceUsagesApi.md
-sailpoint/beta/docs/SourcesAggregationApi.md
 sailpoint/beta/docs/SourcesApi.md
 sailpoint/beta/docs/SpConfigExportJob.md
 sailpoint/beta/docs/SpConfigExportJobStatus.md
@@ -1339,7 +1340,9 @@ sailpoint/beta/models/load_accounts_task.py
 sailpoint/beta/models/load_accounts_task_task.py
 sailpoint/beta/models/load_accounts_task_task_attributes.py
 sailpoint/beta/models/load_accounts_task_task_messages_inner.py
+sailpoint/beta/models/load_accounts_task_task_returns_inner.py
 sailpoint/beta/models/load_entitlement_task.py
+sailpoint/beta/models/load_entitlement_task_returns_inner.py
 sailpoint/beta/models/locale_origin.py
 sailpoint/beta/models/localized_message.py
 sailpoint/beta/models/lookup_step.py
@@ -1579,6 +1582,7 @@ sailpoint/beta/models/segment.py
 sailpoint/beta/models/selector.py
 sailpoint/beta/models/selector_type.py
 sailpoint/beta/models/self_import_export_dto.py
+sailpoint/beta/models/send_manual_discover_applications_csv_template_request.py
 sailpoint/beta/models/send_test_notification_request_dto.py
 sailpoint/beta/models/send_token_request.py
 sailpoint/beta/models/send_token_response.py
@@ -2168,7 +2172,9 @@ sailpoint/beta/test/test_load_accounts_task.py
 sailpoint/beta/test/test_load_accounts_task_task.py
 sailpoint/beta/test/test_load_accounts_task_task_attributes.py
 sailpoint/beta/test/test_load_accounts_task_task_messages_inner.py
+sailpoint/beta/test/test_load_accounts_task_task_returns_inner.py
 sailpoint/beta/test/test_load_entitlement_task.py
+sailpoint/beta/test/test_load_entitlement_task_returns_inner.py
 sailpoint/beta/test/test_locale_origin.py
 sailpoint/beta/test/test_localized_message.py
 sailpoint/beta/test/test_lookup_step.py
@@ -2429,6 +2435,7 @@ sailpoint/beta/test/test_segments_api.py
 sailpoint/beta/test/test_selector.py
 sailpoint/beta/test/test_selector_type.py
 sailpoint/beta/test/test_self_import_export_dto.py
+sailpoint/beta/test/test_send_manual_discover_applications_csv_template_request.py
 sailpoint/beta/test/test_send_test_notification_request_dto.py
 sailpoint/beta/test/test_send_token_request.py
 sailpoint/beta/test/test_send_token_response.py
@@ -2492,7 +2499,6 @@ sailpoint/beta/test/test_source_updated_actor.py
 sailpoint/beta/test/test_source_usage.py
 sailpoint/beta/test/test_source_usage_status.py
 sailpoint/beta/test/test_source_usages_api.py
-sailpoint/beta/test/test_sources_aggregation_api.py
 sailpoint/beta/test/test_sources_api.py
 sailpoint/beta/test/test_sp_config_api.py
 sailpoint/beta/test/test_sp_config_export_job.py

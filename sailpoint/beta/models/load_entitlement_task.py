@@ -21,6 +21,7 @@ from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
 from pydantic import Field
+from sailpoint.beta.models.load_entitlement_task_returns_inner import LoadEntitlementTaskReturnsInner
 try:
     from typing import Self
 except ImportError:
@@ -36,7 +37,7 @@ class LoadEntitlementTask(BaseModel):
     description: Optional[StrictStr] = Field(default=None, description="The description of the task")
     launcher: Optional[StrictStr] = Field(default=None, description="The user who initiated the task")
     created: Optional[datetime] = Field(default=None, description="The creation date of the task")
-    returns: Optional[Dict[str, Any]] = Field(default=None, description="Return values from the task")
+    returns: Optional[List[LoadEntitlementTaskReturnsInner]] = Field(default=None, description="Return values from the task")
     __properties: ClassVar[List[str]] = ["id", "type", "uniqueName", "description", "launcher", "created", "returns"]
 
     model_config = {
@@ -76,6 +77,13 @@ class LoadEntitlementTask(BaseModel):
             },
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in returns (list)
+        _items = []
+        if self.returns:
+            for _item in self.returns:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['returns'] = _items
         return _dict
 
     @classmethod
@@ -94,7 +102,7 @@ class LoadEntitlementTask(BaseModel):
             "description": obj.get("description"),
             "launcher": obj.get("launcher"),
             "created": obj.get("created"),
-            "returns": obj.get("returns")
+            "returns": [LoadEntitlementTaskReturnsInner.from_dict(_item) for _item in obj.get("returns")] if obj.get("returns") is not None else None
         })
         return _obj
 

@@ -18,20 +18,21 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
-from pydantic import BaseModel, StrictBytes, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictStr
 from pydantic import Field
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-class ImportEntitlementsRequest(BaseModel):
+class LoadEntitlementTaskReturnsInner(BaseModel):
     """
-    ImportEntitlementsRequest
+    LoadEntitlementTaskReturnsInner
     """ # noqa: E501
-    csv_file: Optional[Union[StrictBytes, StrictStr]] = Field(default=None, description="The CSV file containing the source entitlements to aggregate.", alias="csvFile")
-    __properties: ClassVar[List[str]] = ["csvFile"]
+    display_label: Optional[StrictStr] = Field(default=None, description="The display label for the return value", alias="displayLabel")
+    attribute_name: Optional[StrictStr] = Field(default=None, description="The attribute name for the return value", alias="attributeName")
+    __properties: ClassVar[List[str]] = ["displayLabel", "attributeName"]
 
     model_config = {
         "populate_by_name": True,
@@ -51,7 +52,7 @@ class ImportEntitlementsRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
-        """Create an instance of ImportEntitlementsRequest from a JSON string"""
+        """Create an instance of LoadEntitlementTaskReturnsInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -74,7 +75,7 @@ class ImportEntitlementsRequest(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Dict) -> Self:
-        """Create an instance of ImportEntitlementsRequest from a dict"""
+        """Create an instance of LoadEntitlementTaskReturnsInner from a dict"""
         if obj is None:
             return None
 
@@ -82,7 +83,8 @@ class ImportEntitlementsRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "csvFile": obj.get("csvFile")
+            "displayLabel": obj.get("displayLabel"),
+            "attributeName": obj.get("attributeName")
         })
         return _obj
 

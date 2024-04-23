@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Union
 from pydantic import BaseModel, StrictBytes, StrictStr
 from pydantic import Field
 try:
@@ -26,11 +26,11 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-class ImportEntitlementsRequest(BaseModel):
+class SendManualDiscoverApplicationsCsvTemplateRequest(BaseModel):
     """
-    ImportEntitlementsRequest
+    SendManualDiscoverApplicationsCsvTemplateRequest
     """ # noqa: E501
-    csv_file: Optional[Union[StrictBytes, StrictStr]] = Field(default=None, description="The CSV file containing the source entitlements to aggregate.", alias="csvFile")
+    csv_file: Union[StrictBytes, StrictStr] = Field(alias="csvFile")
     __properties: ClassVar[List[str]] = ["csvFile"]
 
     model_config = {
@@ -51,7 +51,7 @@ class ImportEntitlementsRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
-        """Create an instance of ImportEntitlementsRequest from a JSON string"""
+        """Create an instance of SendManualDiscoverApplicationsCsvTemplateRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -74,7 +74,7 @@ class ImportEntitlementsRequest(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Dict) -> Self:
-        """Create an instance of ImportEntitlementsRequest from a dict"""
+        """Create an instance of SendManualDiscoverApplicationsCsvTemplateRequest from a dict"""
         if obj is None:
             return None
 

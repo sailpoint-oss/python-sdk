@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **messages** | [**List[LoadAccountsTaskTaskMessagesInner]**](LoadAccountsTaskTaskMessagesInner.md) | List of the messages dedicated to the report.  From task definition perspective here usually should be warnings or errors. | [optional] 
 **progress** | **str** | Current task state. | [optional] 
 **attributes** | [**LoadAccountsTaskTaskAttributes**](LoadAccountsTaskTaskAttributes.md) |  | [optional] 
-**returns** | **object** | Return values from the task | [optional] 
+**returns** | [**List[LoadAccountsTaskTaskReturnsInner]**](LoadAccountsTaskTaskReturnsInner.md) | Return values from the task | [optional] 
 
 ## Example
 

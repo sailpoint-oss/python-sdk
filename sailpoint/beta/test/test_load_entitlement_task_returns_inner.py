@@ -15,10 +15,10 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.load_accounts_task_task_attributes import LoadAccountsTaskTaskAttributes
+from sailpoint.beta.models.load_entitlement_task_returns_inner import LoadEntitlementTaskReturnsInner
 
-class TestLoadAccountsTaskTaskAttributes(unittest.TestCase):
-    """LoadAccountsTaskTaskAttributes unit test stubs"""
+class TestLoadEntitlementTaskReturnsInner(unittest.TestCase):
+    """LoadEntitlementTaskReturnsInner unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,26 +26,26 @@ class TestLoadAccountsTaskTaskAttributes(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> LoadAccountsTaskTaskAttributes:
-        """Test LoadAccountsTaskTaskAttributes
+    def make_instance(self, include_optional) -> LoadEntitlementTaskReturnsInner:
+        """Test LoadEntitlementTaskReturnsInner
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `LoadAccountsTaskTaskAttributes`
+        # uncomment below to create an instance of `LoadEntitlementTaskReturnsInner`
         """
-        model = LoadAccountsTaskTaskAttributes()
+        model = LoadEntitlementTaskReturnsInner()
         if include_optional:
-            return LoadAccountsTaskTaskAttributes(
-                app_id = 'c31386cb18bb403cbb6df4c86294ff82',
-                optimized_aggregation = 'enabled'
+            return LoadEntitlementTaskReturnsInner(
+                display_label = 'TASK_OUT_ACCOUNT_GROUP_AGGREGATION_APPLICATIONS',
+                attribute_name = 'applications'
             )
         else:
-            return LoadAccountsTaskTaskAttributes(
+            return LoadEntitlementTaskReturnsInner(
         )
         """
 
-    def testLoadAccountsTaskTaskAttributes(self):
-        """Test LoadAccountsTaskTaskAttributes"""
+    def testLoadEntitlementTaskReturnsInner(self):
+        """Test LoadEntitlementTaskReturnsInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

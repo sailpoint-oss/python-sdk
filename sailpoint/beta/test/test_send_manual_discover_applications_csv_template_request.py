@@ -15,10 +15,10 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.load_accounts_task_task_attributes import LoadAccountsTaskTaskAttributes
+from sailpoint.beta.models.send_manual_discover_applications_csv_template_request import SendManualDiscoverApplicationsCsvTemplateRequest
 
-class TestLoadAccountsTaskTaskAttributes(unittest.TestCase):
-    """LoadAccountsTaskTaskAttributes unit test stubs"""
+class TestSendManualDiscoverApplicationsCsvTemplateRequest(unittest.TestCase):
+    """SendManualDiscoverApplicationsCsvTemplateRequest unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,26 +26,26 @@ class TestLoadAccountsTaskTaskAttributes(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> LoadAccountsTaskTaskAttributes:
-        """Test LoadAccountsTaskTaskAttributes
+    def make_instance(self, include_optional) -> SendManualDiscoverApplicationsCsvTemplateRequest:
+        """Test SendManualDiscoverApplicationsCsvTemplateRequest
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `LoadAccountsTaskTaskAttributes`
+        # uncomment below to create an instance of `SendManualDiscoverApplicationsCsvTemplateRequest`
         """
-        model = LoadAccountsTaskTaskAttributes()
+        model = SendManualDiscoverApplicationsCsvTemplateRequest()
         if include_optional:
-            return LoadAccountsTaskTaskAttributes(
-                app_id = 'c31386cb18bb403cbb6df4c86294ff82',
-                optimized_aggregation = 'enabled'
+            return SendManualDiscoverApplicationsCsvTemplateRequest(
+                csv_file = bytes(b'blah')
             )
         else:
-            return LoadAccountsTaskTaskAttributes(
+            return SendManualDiscoverApplicationsCsvTemplateRequest(
+                csv_file = bytes(b'blah'),
         )
         """
 
-    def testLoadAccountsTaskTaskAttributes(self):
-        """Test LoadAccountsTaskTaskAttributes"""
+    def testSendManualDiscoverApplicationsCsvTemplateRequest(self):
+        """Test SendManualDiscoverApplicationsCsvTemplateRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

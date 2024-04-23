@@ -410,7 +410,9 @@ from sailpoint.beta.models.load_accounts_task import LoadAccountsTask
 from sailpoint.beta.models.load_accounts_task_task import LoadAccountsTaskTask
 from sailpoint.beta.models.load_accounts_task_task_attributes import LoadAccountsTaskTaskAttributes
 from sailpoint.beta.models.load_accounts_task_task_messages_inner import LoadAccountsTaskTaskMessagesInner
+from sailpoint.beta.models.load_accounts_task_task_returns_inner import LoadAccountsTaskTaskReturnsInner
 from sailpoint.beta.models.load_entitlement_task import LoadEntitlementTask
+from sailpoint.beta.models.load_entitlement_task_returns_inner import LoadEntitlementTaskReturnsInner
 from sailpoint.beta.models.locale_origin import LocaleOrigin
 from sailpoint.beta.models.localized_message import LocalizedMessage
 from sailpoint.beta.models.lookup_step import LookupStep
@@ -650,6 +652,7 @@ from sailpoint.beta.models.segment import Segment
 from sailpoint.beta.models.selector import Selector
 from sailpoint.beta.models.selector_type import SelectorType
 from sailpoint.beta.models.self_import_export_dto import SelfImportExportDto
+from sailpoint.beta.models.send_manual_discover_applications_csv_template_request import SendManualDiscoverApplicationsCsvTemplateRequest
 from sailpoint.beta.models.send_test_notification_request_dto import SendTestNotificationRequestDto
 from sailpoint.beta.models.send_token_request import SendTokenRequest
 from sailpoint.beta.models.send_token_response import SendTokenResponse

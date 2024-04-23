@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**csv_file** | **bytearray** |  | 
+**csv_file** | **bytearray** | The CSV file containing the source entitlements to aggregate. | [optional] 
 
 ## Example
 

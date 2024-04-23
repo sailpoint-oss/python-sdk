@@ -138,6 +138,13 @@ class TestSourcesApi(unittest.TestCase):
         """
         pass
 
+    def test_import_accounts(self) -> None:
+        """Test case for import_accounts
+
+        Account Aggregation
+        """
+        pass
+
     def test_import_source_accounts_schema(self) -> None:
         """Test case for import_source_accounts_schema
 

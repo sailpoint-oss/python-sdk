@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**file** | **bytearray** |  | [optional] 
-**disable_optimization** | **bool** |  | [optional] 
+**file** | **bytearray** | The CSV file containing the source accounts to aggregate. | [optional] 
+**disable_optimization** | **bool** | Use this flag to reprocess every account whether or not the data has changed. | [optional] [default to False]
 
 ## Example
 

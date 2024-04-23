@@ -40,7 +40,6 @@ class TestImportEntitlementsRequest(unittest.TestCase):
             )
         else:
             return ImportEntitlementsRequest(
-                csv_file = bytes(b'blah'),
         )
         """
 

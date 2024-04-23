@@ -23,6 +23,7 @@ from pydantic import BaseModel, StrictStr, field_validator
 from pydantic import Field
 from sailpoint.beta.models.load_accounts_task_task_attributes import LoadAccountsTaskTaskAttributes
 from sailpoint.beta.models.load_accounts_task_task_messages_inner import LoadAccountsTaskTaskMessagesInner
+from sailpoint.beta.models.load_accounts_task_task_returns_inner import LoadAccountsTaskTaskReturnsInner
 try:
     from typing import Self
 except ImportError:
@@ -45,7 +46,7 @@ class LoadAccountsTaskTask(BaseModel):
     messages: Optional[List[LoadAccountsTaskTaskMessagesInner]] = Field(default=None, description="List of the messages dedicated to the report.  From task definition perspective here usually should be warnings or errors.")
     progress: Optional[StrictStr] = Field(default=None, description="Current task state.")
     attributes: Optional[LoadAccountsTaskTaskAttributes] = None
-    returns: Optional[Dict[str, Any]] = Field(default=None, description="Return values from the task")
+    returns: Optional[List[LoadAccountsTaskTaskReturnsInner]] = Field(default=None, description="Return values from the task")
     __properties: ClassVar[List[str]] = ["id", "type", "name", "description", "launcher", "created", "launched", "completed", "completionStatus", "parentName", "messages", "progress", "attributes", "returns"]
 
     @field_validator('completion_status')
@@ -105,6 +106,13 @@ class LoadAccountsTaskTask(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of attributes
         if self.attributes:
             _dict['attributes'] = self.attributes.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in returns (list)
+        _items = []
+        if self.returns:
+            for _item in self.returns:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['returns'] = _items
         # set to None if launched (nullable) is None
         # and model_fields_set contains the field
         if self.launched is None and "launched" in self.model_fields_set:
@@ -155,7 +163,7 @@ class LoadAccountsTaskTask(BaseModel):
             "messages": [LoadAccountsTaskTaskMessagesInner.from_dict(_item) for _item in obj.get("messages")] if obj.get("messages") is not None else None,
             "progress": obj.get("progress"),
             "attributes": LoadAccountsTaskTaskAttributes.from_dict(obj.get("attributes")) if obj.get("attributes") is not None else None,
-            "returns": obj.get("returns")
+            "returns": [LoadAccountsTaskTaskReturnsInner.from_dict(_item) for _item in obj.get("returns")] if obj.get("returns") is not None else None
         })
         return _obj
 

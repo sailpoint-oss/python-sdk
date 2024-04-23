@@ -7,7 +7,7 @@ Extra attributes map(dictionary) for the task.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **app_id** | **str** | The id of the source | [optional] 
-**optimized_aggregation** | **object** | The indicator if the aggregation process was enabled/disabled for the aggregation job | [optional] 
+**optimized_aggregation** | **str** | The indicator if the aggregation process was enabled/disabled for the aggregation job | [optional] 
 
 ## Example
 

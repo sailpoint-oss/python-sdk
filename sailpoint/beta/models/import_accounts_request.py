@@ -30,8 +30,8 @@ class ImportAccountsRequest(BaseModel):
     """
     ImportAccountsRequest
     """ # noqa: E501
-    file: Optional[Union[StrictBytes, StrictStr]] = None
-    disable_optimization: Optional[StrictBool] = Field(default=None, alias="disableOptimization")
+    file: Optional[Union[StrictBytes, StrictStr]] = Field(default=None, description="The CSV file containing the source accounts to aggregate.")
+    disable_optimization: Optional[StrictBool] = Field(default=False, description="Use this flag to reprocess every account whether or not the data has changed.", alias="disableOptimization")
     __properties: ClassVar[List[str]] = ["file", "disableOptimization"]
 
     model_config = {
@@ -84,7 +84,7 @@ class ImportAccountsRequest(BaseModel):
 
         _obj = cls.model_validate({
             "file": obj.get("file"),
-            "disableOptimization": obj.get("disableOptimization")
+            "disableOptimization": obj.get("disableOptimization") if obj.get("disableOptimization") is not None else False
         })
         return _obj
 

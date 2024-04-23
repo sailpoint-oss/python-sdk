@@ -31,7 +31,7 @@ class LoadAccountsTaskTaskAttributes(BaseModel):
     Extra attributes map(dictionary) for the task.
     """ # noqa: E501
     app_id: Optional[StrictStr] = Field(default=None, description="The id of the source", alias="appId")
-    optimized_aggregation: Optional[Dict[str, Any]] = Field(default=None, description="The indicator if the aggregation process was enabled/disabled for the aggregation job", alias="optimizedAggregation")
+    optimized_aggregation: Optional[StrictStr] = Field(default=None, description="The indicator if the aggregation process was enabled/disabled for the aggregation job", alias="optimizedAggregation")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["appId", "optimizedAggregation"]
 

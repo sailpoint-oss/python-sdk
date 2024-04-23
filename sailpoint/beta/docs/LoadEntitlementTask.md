@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **description** | **str** | The description of the task | [optional] 
 **launcher** | **str** | The user who initiated the task | [optional] 
 **created** | **datetime** | The creation date of the task | [optional] 
-**returns** | **object** | Return values from the task | [optional] 
+**returns** | [**List[LoadEntitlementTaskReturnsInner]**](LoadEntitlementTaskReturnsInner.md) | Return values from the task | [optional] 
 
 ## Example
 

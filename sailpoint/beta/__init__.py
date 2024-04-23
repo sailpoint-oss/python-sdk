@@ -77,7 +77,6 @@ from sailpoint.beta.api.segments_api import SegmentsApi
 from sailpoint.beta.api.service_desk_integration_api import ServiceDeskIntegrationApi
 from sailpoint.beta.api.source_usages_api import SourceUsagesApi
 from sailpoint.beta.api.sources_api import SourcesApi
-from sailpoint.beta.api.sources_aggregation_api import SourcesAggregationApi
 from sailpoint.beta.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
 from sailpoint.beta.api.tagged_objects_api import TaggedObjectsApi
 from sailpoint.beta.api.task_management_api import TaskManagementApi
@@ -497,7 +496,9 @@ from sailpoint.beta.models.load_accounts_task import LoadAccountsTask
 from sailpoint.beta.models.load_accounts_task_task import LoadAccountsTaskTask
 from sailpoint.beta.models.load_accounts_task_task_attributes import LoadAccountsTaskTaskAttributes
 from sailpoint.beta.models.load_accounts_task_task_messages_inner import LoadAccountsTaskTaskMessagesInner
+from sailpoint.beta.models.load_accounts_task_task_returns_inner import LoadAccountsTaskTaskReturnsInner
 from sailpoint.beta.models.load_entitlement_task import LoadEntitlementTask
+from sailpoint.beta.models.load_entitlement_task_returns_inner import LoadEntitlementTaskReturnsInner
 from sailpoint.beta.models.locale_origin import LocaleOrigin
 from sailpoint.beta.models.localized_message import LocalizedMessage
 from sailpoint.beta.models.lookup_step import LookupStep
@@ -737,6 +738,7 @@ from sailpoint.beta.models.segment import Segment
 from sailpoint.beta.models.selector import Selector
 from sailpoint.beta.models.selector_type import SelectorType
 from sailpoint.beta.models.self_import_export_dto import SelfImportExportDto
+from sailpoint.beta.models.send_manual_discover_applications_csv_template_request import SendManualDiscoverApplicationsCsvTemplateRequest
 from sailpoint.beta.models.send_test_notification_request_dto import SendTestNotificationRequestDto
 from sailpoint.beta.models.send_token_request import SendTokenRequest
 from sailpoint.beta.models.send_token_response import SendTokenResponse
