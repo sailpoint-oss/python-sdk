@@ -64,7 +64,7 @@ class Paginator:
             results = search_api.search_post(search, None, increment)
             modified = modified + results
             
-            print(f'Recieved {len(results)} results')
+            print(f'Received {len(results)} results')
 
             if len(results) < increment or (len(modified) >= max_limit and max_limit > 0):
                 results = modified
