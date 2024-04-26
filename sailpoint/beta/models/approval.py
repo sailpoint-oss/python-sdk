@@ -135,6 +135,9 @@ class Approval(BaseModel):
                 if _item:
                     _items.append(_item.to_dict())
             _dict['name'] = _items
+        # override the default output from pydantic by calling `to_dict()` of batch_request
+        if self.batch_request:
+            _dict['batchRequest'] = self.batch_request.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in description (list)
         _items = []
         if self.description:
@@ -142,6 +145,9 @@ class Approval(BaseModel):
                 if _item:
                     _items.append(_item.to_dict())
             _dict['description'] = _items
+        # override the default output from pydantic by calling `to_dict()` of requester
+        if self.requester:
+            _dict['requester'] = self.requester.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in comments (list)
         _items = []
         if self.comments:
@@ -187,10 +193,10 @@ class Approval(BaseModel):
             "createdDate": obj.get("createdDate"),
             "type": obj.get("type"),
             "name": [ApprovalName.from_dict(_item) for _item in obj.get("name")] if obj.get("name") is not None else None,
-            "batchRequest": obj.get("batchRequest"),
+            "batchRequest": ApprovalBatch.from_dict(obj.get("batchRequest")) if obj.get("batchRequest") is not None else None,
             "description": [ApprovalDescription.from_dict(_item) for _item in obj.get("description")] if obj.get("description") is not None else None,
             "priority": obj.get("priority"),
-            "requester": obj.get("requester"),
+            "requester": ApprovalIdentity.from_dict(obj.get("requester")) if obj.get("requester") is not None else None,
             "comments": [ApprovalComment.from_dict(_item) for _item in obj.get("comments")] if obj.get("comments") is not None else None,
             "approvedBy": [ApprovalIdentity.from_dict(_item) for _item in obj.get("approvedBy")] if obj.get("approvedBy") is not None else None,
             "rejectedBy": [ApprovalIdentity.from_dict(_item) for _item in obj.get("rejectedBy")] if obj.get("rejectedBy") is not None else None,

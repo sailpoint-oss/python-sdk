@@ -69,7 +69,7 @@ class ApprovalsApi:
     ) -> Approval:
         """Get an approval
 
-        Retrieve a single approval for a given approval ID
+        Retrieve a single approval for a given approval ID. This endpoint is for generic approvals, different than the access-request-approval endpoint and does not include access-request-approvals.
 
         :param id: ID of the approval that is to be returned (required)
         :type id: str
@@ -141,7 +141,7 @@ class ApprovalsApi:
     ) -> ApiResponse[Approval]:
         """Get an approval
 
-        Retrieve a single approval for a given approval ID
+        Retrieve a single approval for a given approval ID. This endpoint is for generic approvals, different than the access-request-approval endpoint and does not include access-request-approvals.
 
         :param id: ID of the approval that is to be returned (required)
         :type id: str
@@ -213,7 +213,7 @@ class ApprovalsApi:
     ) -> RESTResponseType:
         """Get an approval
 
-        Retrieve a single approval for a given approval ID
+        Retrieve a single approval for a given approval ID. This endpoint is for generic approvals, different than the access-request-approval endpoint and does not include access-request-approvals.
 
         :param id: ID of the approval that is to be returned (required)
         :type id: str
@@ -308,7 +308,7 @@ class ApprovalsApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/approvals/{id}',
+            resource_path='/generic-approvals/{id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -345,7 +345,7 @@ class ApprovalsApi:
     ) -> List[Approval]:
         """Get Approvals
 
-        Retrieve a list of approvals, which can be filtered by requester ID, status, or reference type. \"Mine\" query parameter can be used and it will return all approvals for the current approver.  Absence of all query parameters will will default to mine=true.
+        Retrieve a list of approvals, which can be filtered by requester ID, status, or reference type. \"Mine\" query parameter can be used and it will return all approvals for the current approver. This endpoint is for generic approvals, different than the access-request-approval endpoint and does not include access-request-approvals.  Absence of all query parameters will will default to mine=true.
 
         :param mine: Returns the list of approvals for the current caller
         :type mine: bool
@@ -425,7 +425,7 @@ class ApprovalsApi:
     ) -> ApiResponse[List[Approval]]:
         """Get Approvals
 
-        Retrieve a list of approvals, which can be filtered by requester ID, status, or reference type. \"Mine\" query parameter can be used and it will return all approvals for the current approver.  Absence of all query parameters will will default to mine=true.
+        Retrieve a list of approvals, which can be filtered by requester ID, status, or reference type. \"Mine\" query parameter can be used and it will return all approvals for the current approver. This endpoint is for generic approvals, different than the access-request-approval endpoint and does not include access-request-approvals.  Absence of all query parameters will will default to mine=true.
 
         :param mine: Returns the list of approvals for the current caller
         :type mine: bool
@@ -505,7 +505,7 @@ class ApprovalsApi:
     ) -> RESTResponseType:
         """Get Approvals
 
-        Retrieve a list of approvals, which can be filtered by requester ID, status, or reference type. \"Mine\" query parameter can be used and it will return all approvals for the current approver.  Absence of all query parameters will will default to mine=true.
+        Retrieve a list of approvals, which can be filtered by requester ID, status, or reference type. \"Mine\" query parameter can be used and it will return all approvals for the current approver. This endpoint is for generic approvals, different than the access-request-approval endpoint and does not include access-request-approvals.  Absence of all query parameters will will default to mine=true.
 
         :param mine: Returns the list of approvals for the current caller
         :type mine: bool
@@ -618,7 +618,7 @@ class ApprovalsApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/approvals',
+            resource_path='/generic-approvals',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -905,7 +905,7 @@ class ApprovalsApi:
 
         return self.api_client.param_serialize(
             method='PATCH',
-            resource_path='/approvals/{id}',
+            resource_path='/generic-approvals/{id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

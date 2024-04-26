@@ -4,9 +4,9 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_approval**](ApprovalsApi.md#get_approval) | **GET** /approvals/{id} | Get an approval
-[**get_approvals**](ApprovalsApi.md#get_approvals) | **GET** /approvals | Get Approvals
-[**patch_approval**](ApprovalsApi.md#patch_approval) | **PATCH** /approvals/{id} | Change an approval
+[**get_approval**](ApprovalsApi.md#get_approval) | **GET** /generic-approvals/{id} | Get an approval
+[**get_approvals**](ApprovalsApi.md#get_approvals) | **GET** /generic-approvals | Get Approvals
+[**patch_approval**](ApprovalsApi.md#patch_approval) | **PATCH** /generic-approvals/{id} | Change an approval
 
 
 # **get_approval**
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 Get an approval
 
-Retrieve a single approval for a given approval ID
+Retrieve a single approval for a given approval ID. This endpoint is for generic approvals, different than the access-request-approval endpoint and does not include access-request-approvals.
 
 ### Example
 
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 
 Get Approvals
 
-Retrieve a list of approvals, which can be filtered by requester ID, status, or reference type. \"Mine\" query parameter can be used and it will return all approvals for the current approver.  Absence of all query parameters will will default to mine=true.
+Retrieve a list of approvals, which can be filtered by requester ID, status, or reference type. \"Mine\" query parameter can be used and it will return all approvals for the current approver. This endpoint is for generic approvals, different than the access-request-approval endpoint and does not include access-request-approvals.  Absence of all query parameters will will default to mine=true.
 
 ### Example
 

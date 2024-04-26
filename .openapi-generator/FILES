@@ -182,6 +182,7 @@ sailpoint/beta/docs/ActivateCampaignOptions.md
 sailpoint/beta/docs/AdminReviewReassign.md
 sailpoint/beta/docs/AdminReviewReassignReassignTo.md
 sailpoint/beta/docs/Approval.md
+sailpoint/beta/docs/ApprovalBatch.md
 sailpoint/beta/docs/ApprovalComment.md
 sailpoint/beta/docs/ApprovalDescription.md
 sailpoint/beta/docs/ApprovalDto.md
@@ -1044,6 +1045,7 @@ sailpoint/beta/models/activate_campaign_options.py
 sailpoint/beta/models/admin_review_reassign.py
 sailpoint/beta/models/admin_review_reassign_reassign_to.py
 sailpoint/beta/models/approval.py
+sailpoint/beta/models/approval_batch.py
 sailpoint/beta/models/approval_comment.py
 sailpoint/beta/models/approval_description.py
 sailpoint/beta/models/approval_dto.py
@@ -1852,6 +1854,7 @@ sailpoint/beta/test/test_activate_campaign_options.py
 sailpoint/beta/test/test_admin_review_reassign.py
 sailpoint/beta/test/test_admin_review_reassign_reassign_to.py
 sailpoint/beta/test/test_approval.py
+sailpoint/beta/test/test_approval_batch.py
 sailpoint/beta/test/test_approval_comment.py
 sailpoint/beta/test/test_approval_description.py
 sailpoint/beta/test/test_approval_dto.py

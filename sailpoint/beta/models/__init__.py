@@ -114,6 +114,7 @@ from sailpoint.beta.models.activate_campaign_options import ActivateCampaignOpti
 from sailpoint.beta.models.admin_review_reassign import AdminReviewReassign
 from sailpoint.beta.models.admin_review_reassign_reassign_to import AdminReviewReassignReassignTo
 from sailpoint.beta.models.approval import Approval
+from sailpoint.beta.models.approval_batch import ApprovalBatch
 from sailpoint.beta.models.approval_comment import ApprovalComment
 from sailpoint.beta.models.approval_description import ApprovalDescription
 from sailpoint.beta.models.approval_dto import ApprovalDto
