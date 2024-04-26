@@ -101,7 +101,7 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**get_account_entitlements**](sailpoint/v3/docs/AccountsApi.md#get_account_entitlements) | **GET** /accounts/{id}/entitlements | Account Entitlements
 *AccountsApi* | [**list_accounts**](sailpoint/v3/docs/AccountsApi.md#list_accounts) | **GET** /accounts | Accounts List
 *AccountsApi* | [**put_account**](sailpoint/v3/docs/AccountsApi.md#put_account) | **PUT** /accounts/{id} | Update Account
-*AccountsApi* | [**reload_account**](sailpoint/v3/docs/AccountsApi.md#reload_account) | **POST** /accounts/{id}/reload | Reload Account
+*AccountsApi* | [**submit_reload_account**](sailpoint/v3/docs/AccountsApi.md#submit_reload_account) | **POST** /accounts/{id}/reload | Reload Account
 *AccountsApi* | [**unlock_account**](sailpoint/v3/docs/AccountsApi.md#unlock_account) | **POST** /accounts/{id}/unlock | Unlock Account
 *AccountsApi* | [**update_account**](sailpoint/v3/docs/AccountsApi.md#update_account) | **PATCH** /accounts/{id} | Update Account
 *AuthUsersApi* | [**get_auth_user**](sailpoint/v3/docs/AuthUsersApi.md#get_auth_user) | **GET** /auth-users/{id} | Auth User Details

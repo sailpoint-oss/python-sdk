@@ -77,7 +77,7 @@ class AccountsApi:
     ) -> AccountsAsyncResult:
         """Create Account
 
-        This API submits an account creation task and returns the task ID.   The `sourceId` where this account will be created must be included in the `attributes` object. This endpoint creates an account on the source record in your ISC tenant. This is useful for Flat File (`DelimitedFile`) type sources because it allows you to aggregate new accounts without needing to import a new CSV file every time.  However, if you use this endpoint to create an account for a Direct Connection type source, you must ensure that the account also exists on the target source.  The endpoint doesn't actually provision the account on the target source, which means that if the account doesn't also exist on the target source, an aggregation between the source and your tenant will remove it from your tenant.  A token with ORG_ADMIN authority is required to call this API.
+        This API submits an account creation task and returns the task ID.   The `sourceId` where this account will be created must be included in the `attributes` object. This endpoint creates an account on the source record in your ISC tenant. This is useful for Flat File (`DelimitedFile`) type sources because it allows you to aggregate new accounts without needing to import a new CSV file every time.  However, if you use this endpoint to create an account for a Direct Connection type source, you must ensure that the account also exists on the target source.  The endpoint doesn't actually provision the account on the target source, which means that if the account doesn't also exist on the target source, an aggregation between the source and your tenant will remove it from your tenant.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
         :param account_attributes_create: (required)
         :type account_attributes_create: AccountAttributesCreate
@@ -149,7 +149,7 @@ class AccountsApi:
     ) -> ApiResponse[AccountsAsyncResult]:
         """Create Account
 
-        This API submits an account creation task and returns the task ID.   The `sourceId` where this account will be created must be included in the `attributes` object. This endpoint creates an account on the source record in your ISC tenant. This is useful for Flat File (`DelimitedFile`) type sources because it allows you to aggregate new accounts without needing to import a new CSV file every time.  However, if you use this endpoint to create an account for a Direct Connection type source, you must ensure that the account also exists on the target source.  The endpoint doesn't actually provision the account on the target source, which means that if the account doesn't also exist on the target source, an aggregation between the source and your tenant will remove it from your tenant.  A token with ORG_ADMIN authority is required to call this API.
+        This API submits an account creation task and returns the task ID.   The `sourceId` where this account will be created must be included in the `attributes` object. This endpoint creates an account on the source record in your ISC tenant. This is useful for Flat File (`DelimitedFile`) type sources because it allows you to aggregate new accounts without needing to import a new CSV file every time.  However, if you use this endpoint to create an account for a Direct Connection type source, you must ensure that the account also exists on the target source.  The endpoint doesn't actually provision the account on the target source, which means that if the account doesn't also exist on the target source, an aggregation between the source and your tenant will remove it from your tenant.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
         :param account_attributes_create: (required)
         :type account_attributes_create: AccountAttributesCreate
@@ -221,7 +221,7 @@ class AccountsApi:
     ) -> RESTResponseType:
         """Create Account
 
-        This API submits an account creation task and returns the task ID.   The `sourceId` where this account will be created must be included in the `attributes` object. This endpoint creates an account on the source record in your ISC tenant. This is useful for Flat File (`DelimitedFile`) type sources because it allows you to aggregate new accounts without needing to import a new CSV file every time.  However, if you use this endpoint to create an account for a Direct Connection type source, you must ensure that the account also exists on the target source.  The endpoint doesn't actually provision the account on the target source, which means that if the account doesn't also exist on the target source, an aggregation between the source and your tenant will remove it from your tenant.  A token with ORG_ADMIN authority is required to call this API.
+        This API submits an account creation task and returns the task ID.   The `sourceId` where this account will be created must be included in the `attributes` object. This endpoint creates an account on the source record in your ISC tenant. This is useful for Flat File (`DelimitedFile`) type sources because it allows you to aggregate new accounts without needing to import a new CSV file every time.  However, if you use this endpoint to create an account for a Direct Connection type source, you must ensure that the account also exists on the target source.  The endpoint doesn't actually provision the account on the target source, which means that if the account doesn't also exist on the target source, an aggregation between the source and your tenant will remove it from your tenant.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
         :param account_attributes_create: (required)
         :type account_attributes_create: AccountAttributesCreate
@@ -364,7 +364,7 @@ class AccountsApi:
     ) -> AccountsAsyncResult:
         """Delete Account
 
-        Use this API to delete an account.  This endpoint submits an account delete task and returns the task ID.  This endpoint only deletes the account from IdentityNow, not the source itself, which can result in the account's returning with the next aggregation between the source and IdentityNow.  To avoid this scenario, it is recommended that you [disable accounts](https://developer.sailpoint.com/idn/api/v3/disable-account) rather than delete them. This will also allow you to reenable the accounts in the future.  A token with ORG_ADMIN authority is required to call this API. >**NOTE:** You can only delete accounts from sources of the \"DelimitedFile\" type.**
+        Use this API to delete an account.  This endpoint submits an account delete task and returns the task ID.  This endpoint only deletes the account from IdentityNow, not the source itself, which can result in the account's returning with the next aggregation between the source and IdentityNow.  To avoid this scenario, it is recommended that you [disable accounts](https://developer.sailpoint.com/idn/api/v3/disable-account) rather than delete them. This will also allow you to reenable the accounts in the future.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. >**NOTE:** You can only delete accounts from sources of the \"DelimitedFile\" type.**
 
         :param id: Account ID. (required)
         :type id: str
@@ -437,7 +437,7 @@ class AccountsApi:
     ) -> ApiResponse[AccountsAsyncResult]:
         """Delete Account
 
-        Use this API to delete an account.  This endpoint submits an account delete task and returns the task ID.  This endpoint only deletes the account from IdentityNow, not the source itself, which can result in the account's returning with the next aggregation between the source and IdentityNow.  To avoid this scenario, it is recommended that you [disable accounts](https://developer.sailpoint.com/idn/api/v3/disable-account) rather than delete them. This will also allow you to reenable the accounts in the future.  A token with ORG_ADMIN authority is required to call this API. >**NOTE:** You can only delete accounts from sources of the \"DelimitedFile\" type.**
+        Use this API to delete an account.  This endpoint submits an account delete task and returns the task ID.  This endpoint only deletes the account from IdentityNow, not the source itself, which can result in the account's returning with the next aggregation between the source and IdentityNow.  To avoid this scenario, it is recommended that you [disable accounts](https://developer.sailpoint.com/idn/api/v3/disable-account) rather than delete them. This will also allow you to reenable the accounts in the future.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. >**NOTE:** You can only delete accounts from sources of the \"DelimitedFile\" type.**
 
         :param id: Account ID. (required)
         :type id: str
@@ -510,7 +510,7 @@ class AccountsApi:
     ) -> RESTResponseType:
         """Delete Account
 
-        Use this API to delete an account.  This endpoint submits an account delete task and returns the task ID.  This endpoint only deletes the account from IdentityNow, not the source itself, which can result in the account's returning with the next aggregation between the source and IdentityNow.  To avoid this scenario, it is recommended that you [disable accounts](https://developer.sailpoint.com/idn/api/v3/disable-account) rather than delete them. This will also allow you to reenable the accounts in the future.  A token with ORG_ADMIN authority is required to call this API. >**NOTE:** You can only delete accounts from sources of the \"DelimitedFile\" type.**
+        Use this API to delete an account.  This endpoint submits an account delete task and returns the task ID.  This endpoint only deletes the account from IdentityNow, not the source itself, which can result in the account's returning with the next aggregation between the source and IdentityNow.  To avoid this scenario, it is recommended that you [disable accounts](https://developer.sailpoint.com/idn/api/v3/disable-account) rather than delete them. This will also allow you to reenable the accounts in the future.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. >**NOTE:** You can only delete accounts from sources of the \"DelimitedFile\" type.**
 
         :param id: Account ID. (required)
         :type id: str
@@ -1190,7 +1190,7 @@ class AccountsApi:
     ) -> AccountsAsyncResult:
         """Disable Account
 
-        This API submits a task to disable the account and returns the task ID.   A token with ORG_ADMIN authority is required to call this API.
+        This API submits a task to disable the account and returns the task ID.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
         :param id: The account id (required)
         :type id: str
@@ -1267,7 +1267,7 @@ class AccountsApi:
     ) -> ApiResponse[AccountsAsyncResult]:
         """Disable Account
 
-        This API submits a task to disable the account and returns the task ID.   A token with ORG_ADMIN authority is required to call this API.
+        This API submits a task to disable the account and returns the task ID.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
         :param id: The account id (required)
         :type id: str
@@ -1344,7 +1344,7 @@ class AccountsApi:
     ) -> RESTResponseType:
         """Disable Account
 
-        This API submits a task to disable the account and returns the task ID.   A token with ORG_ADMIN authority is required to call this API.
+        This API submits a task to disable the account and returns the task ID.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
         :param id: The account id (required)
         :type id: str
@@ -2059,7 +2059,7 @@ class AccountsApi:
     ) -> AccountsAsyncResult:
         """Enable Account
 
-        This API submits a task to enable account and returns the task ID.   A token with ORG_ADMIN authority is required to call this API.
+        This API submits a task to enable account and returns the task ID.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
         :param id: The account id (required)
         :type id: str
@@ -2136,7 +2136,7 @@ class AccountsApi:
     ) -> ApiResponse[AccountsAsyncResult]:
         """Enable Account
 
-        This API submits a task to enable account and returns the task ID.   A token with ORG_ADMIN authority is required to call this API.
+        This API submits a task to enable account and returns the task ID.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
         :param id: The account id (required)
         :type id: str
@@ -2213,7 +2213,7 @@ class AccountsApi:
     ) -> RESTResponseType:
         """Enable Account
 
-        This API submits a task to enable account and returns the task ID.   A token with ORG_ADMIN authority is required to call this API.
+        This API submits a task to enable account and returns the task ID.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
         :param id: The account id (required)
         :type id: str
@@ -2927,7 +2927,7 @@ class AccountsApi:
     ) -> Account:
         """Account Details
 
-        Use this API to return the details for a single account by its ID.   A token with ORG_ADMIN authority is required to call this API.
+        Use this API to return the details for a single account by its ID.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
         :param id: Account ID. (required)
         :type id: str
@@ -3000,7 +3000,7 @@ class AccountsApi:
     ) -> ApiResponse[Account]:
         """Account Details
 
-        Use this API to return the details for a single account by its ID.   A token with ORG_ADMIN authority is required to call this API.
+        Use this API to return the details for a single account by its ID.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
         :param id: Account ID. (required)
         :type id: str
@@ -3073,7 +3073,7 @@ class AccountsApi:
     ) -> RESTResponseType:
         """Account Details
 
-        Use this API to return the details for a single account by its ID.   A token with ORG_ADMIN authority is required to call this API.
+        Use this API to return the details for a single account by its ID.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
         :param id: Account ID. (required)
         :type id: str
@@ -3207,7 +3207,7 @@ class AccountsApi:
     ) -> List[Entitlement]:
         """Account Entitlements
 
-        This API returns entitlements of the account.   A token with ORG_ADMIN authority is required to call this API.
+        This API returns entitlements of the account.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
         :param id: The account id (required)
         :type id: str
@@ -3292,7 +3292,7 @@ class AccountsApi:
     ) -> ApiResponse[List[Entitlement]]:
         """Account Entitlements
 
-        This API returns entitlements of the account.   A token with ORG_ADMIN authority is required to call this API.
+        This API returns entitlements of the account.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
         :param id: The account id (required)
         :type id: str
@@ -3377,7 +3377,7 @@ class AccountsApi:
     ) -> RESTResponseType:
         """Account Entitlements
 
-        This API returns entitlements of the account.   A token with ORG_ADMIN authority is required to call this API.
+        This API returns entitlements of the account.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
         :param id: The account id (required)
         :type id: str
@@ -3537,7 +3537,7 @@ class AccountsApi:
     ) -> List[Account]:
         """Accounts List
 
-        This returns a list of accounts.   A token with ORG_ADMIN authority is required to call this API.
+        This returns a list of accounts.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
         :param detail_level: Determines whether Slim, or increased level of detail is provided for each account in the returned list. FULL is the default behavior.
         :type detail_level: str
@@ -3629,7 +3629,7 @@ class AccountsApi:
     ) -> ApiResponse[List[Account]]:
         """Accounts List
 
-        This returns a list of accounts.   A token with ORG_ADMIN authority is required to call this API.
+        This returns a list of accounts.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
         :param detail_level: Determines whether Slim, or increased level of detail is provided for each account in the returned list. FULL is the default behavior.
         :type detail_level: str
@@ -3721,7 +3721,7 @@ class AccountsApi:
     ) -> RESTResponseType:
         """Accounts List
 
-        This returns a list of accounts.   A token with ORG_ADMIN authority is required to call this API.
+        This returns a list of accounts.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
         :param detail_level: Determines whether Slim, or increased level of detail is provided for each account in the returned list. FULL is the default behavior.
         :type detail_level: str
@@ -3894,7 +3894,7 @@ class AccountsApi:
     ) -> AccountsAsyncResult:
         """Update Account
 
-        Use this API to update an account with a PUT request.  This endpoint submits an account update task and returns the task ID.   A token with ORG_ADMIN authority is required to call this API. >**NOTE: You can only use this PUT endpoint to update accounts from sources of the \"DelimitedFile\" type.**
+        Use this API to update an account with a PUT request.  This endpoint submits an account update task and returns the task ID.   A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. >**NOTE: You can only use this PUT endpoint to update accounts from sources of the \"DelimitedFile\" type.**
 
         :param id: Account ID. (required)
         :type id: str
@@ -3971,7 +3971,7 @@ class AccountsApi:
     ) -> ApiResponse[AccountsAsyncResult]:
         """Update Account
 
-        Use this API to update an account with a PUT request.  This endpoint submits an account update task and returns the task ID.   A token with ORG_ADMIN authority is required to call this API. >**NOTE: You can only use this PUT endpoint to update accounts from sources of the \"DelimitedFile\" type.**
+        Use this API to update an account with a PUT request.  This endpoint submits an account update task and returns the task ID.   A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. >**NOTE: You can only use this PUT endpoint to update accounts from sources of the \"DelimitedFile\" type.**
 
         :param id: Account ID. (required)
         :type id: str
@@ -4048,7 +4048,7 @@ class AccountsApi:
     ) -> RESTResponseType:
         """Update Account
 
-        Use this API to update an account with a PUT request.  This endpoint submits an account update task and returns the task ID.   A token with ORG_ADMIN authority is required to call this API. >**NOTE: You can only use this PUT endpoint to update accounts from sources of the \"DelimitedFile\" type.**
+        Use this API to update an account with a PUT request.  This endpoint submits an account update task and returns the task ID.   A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. >**NOTE: You can only use this PUT endpoint to update accounts from sources of the \"DelimitedFile\" type.**
 
         :param id: Account ID. (required)
         :type id: str
@@ -4180,7 +4180,7 @@ class AccountsApi:
 
 
     @validate_call
-    def reload_account(
+    def submit_reload_account(
         self,
         id: Annotated[StrictStr, Field(description="The account id")],
         _request_timeout: Union[
@@ -4198,7 +4198,7 @@ class AccountsApi:
     ) -> AccountsAsyncResult:
         """Reload Account
 
-        This API asynchronously reloads the account directly from the connector and performs a one-time aggregation process.   A token with ORG_ADMIN authority is required to call this API.
+        This API asynchronously reloads the account directly from the connector and performs a one-time aggregation process.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
         :param id: The account id (required)
         :type id: str
@@ -4224,7 +4224,7 @@ class AccountsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._reload_account_serialize(
+        _param = self._submit_reload_account_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4253,7 +4253,7 @@ class AccountsApi:
 
 
     @validate_call
-    def reload_account_with_http_info(
+    def submit_reload_account_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The account id")],
         _request_timeout: Union[
@@ -4271,7 +4271,7 @@ class AccountsApi:
     ) -> ApiResponse[AccountsAsyncResult]:
         """Reload Account
 
-        This API asynchronously reloads the account directly from the connector and performs a one-time aggregation process.   A token with ORG_ADMIN authority is required to call this API.
+        This API asynchronously reloads the account directly from the connector and performs a one-time aggregation process.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
         :param id: The account id (required)
         :type id: str
@@ -4297,7 +4297,7 @@ class AccountsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._reload_account_serialize(
+        _param = self._submit_reload_account_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4326,7 +4326,7 @@ class AccountsApi:
 
 
     @validate_call
-    def reload_account_without_preload_content(
+    def submit_reload_account_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The account id")],
         _request_timeout: Union[
@@ -4344,7 +4344,7 @@ class AccountsApi:
     ) -> RESTResponseType:
         """Reload Account
 
-        This API asynchronously reloads the account directly from the connector and performs a one-time aggregation process.   A token with ORG_ADMIN authority is required to call this API.
+        This API asynchronously reloads the account directly from the connector and performs a one-time aggregation process.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
         :param id: The account id (required)
         :type id: str
@@ -4370,7 +4370,7 @@ class AccountsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._reload_account_serialize(
+        _param = self._submit_reload_account_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4394,7 +4394,7 @@ class AccountsApi:
         return response_data.response
 
 
-    def _reload_account_serialize(
+    def _submit_reload_account_serialize(
         self,
         id,
         _request_auth,
@@ -4476,7 +4476,7 @@ class AccountsApi:
     ) -> AccountsAsyncResult:
         """Unlock Account
 
-        This API submits a task to unlock an account and returns the task ID.   To use this endpoint to unlock an account that has the `forceProvisioning` option set to true, the `idn:accounts-provisioning:manage` scope is required.  A token with ORG_ADMIN authority is required to call this API.
+        This API submits a task to unlock an account and returns the task ID.   To use this endpoint to unlock an account that has the `forceProvisioning` option set to true, the `idn:accounts-provisioning:manage` scope is required.  A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
         :param id: The account ID. (required)
         :type id: str
@@ -4553,7 +4553,7 @@ class AccountsApi:
     ) -> ApiResponse[AccountsAsyncResult]:
         """Unlock Account
 
-        This API submits a task to unlock an account and returns the task ID.   To use this endpoint to unlock an account that has the `forceProvisioning` option set to true, the `idn:accounts-provisioning:manage` scope is required.  A token with ORG_ADMIN authority is required to call this API.
+        This API submits a task to unlock an account and returns the task ID.   To use this endpoint to unlock an account that has the `forceProvisioning` option set to true, the `idn:accounts-provisioning:manage` scope is required.  A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
         :param id: The account ID. (required)
         :type id: str
@@ -4630,7 +4630,7 @@ class AccountsApi:
     ) -> RESTResponseType:
         """Unlock Account
 
-        This API submits a task to unlock an account and returns the task ID.   To use this endpoint to unlock an account that has the `forceProvisioning` option set to true, the `idn:accounts-provisioning:manage` scope is required.  A token with ORG_ADMIN authority is required to call this API.
+        This API submits a task to unlock an account and returns the task ID.   To use this endpoint to unlock an account that has the `forceProvisioning` option set to true, the `idn:accounts-provisioning:manage` scope is required.  A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
         :param id: The account ID. (required)
         :type id: str

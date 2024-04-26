@@ -82,8 +82,8 @@ class TestAccountsApi(unittest.TestCase):
         """
         pass
 
-    def test_reload_account(self) -> None:
-        """Test case for reload_account
+    def test_submit_reload_account(self) -> None:
+        """Test case for submit_reload_account
 
         Reload Account
         """

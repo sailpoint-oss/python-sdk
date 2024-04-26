@@ -18,7 +18,7 @@ Method | HTTP request | Description
 [**get_account_entitlements**](AccountsApi.md#get_account_entitlements) | **GET** /accounts/{id}/entitlements | Account Entitlements
 [**list_accounts**](AccountsApi.md#list_accounts) | **GET** /accounts | Accounts List
 [**put_account**](AccountsApi.md#put_account) | **PUT** /accounts/{id} | Update Account
-[**reload_account**](AccountsApi.md#reload_account) | **POST** /accounts/{id}/reload | Reload Account
+[**submit_reload_account**](AccountsApi.md#submit_reload_account) | **POST** /accounts/{id}/reload | Reload Account
 [**unlock_account**](AccountsApi.md#unlock_account) | **POST** /accounts/{id}/unlock | Unlock Account
 [**update_account**](AccountsApi.md#update_account) | **PATCH** /accounts/{id} | Update Account
 
@@ -28,7 +28,7 @@ Method | HTTP request | Description
 
 Create Account
 
-This API submits an account creation task and returns the task ID.   The `sourceId` where this account will be created must be included in the `attributes` object. This endpoint creates an account on the source record in your ISC tenant. This is useful for Flat File (`DelimitedFile`) type sources because it allows you to aggregate new accounts without needing to import a new CSV file every time.  However, if you use this endpoint to create an account for a Direct Connection type source, you must ensure that the account also exists on the target source.  The endpoint doesn't actually provision the account on the target source, which means that if the account doesn't also exist on the target source, an aggregation between the source and your tenant will remove it from your tenant.  A token with ORG_ADMIN authority is required to call this API.
+This API submits an account creation task and returns the task ID.   The `sourceId` where this account will be created must be included in the `attributes` object. This endpoint creates an account on the source record in your ISC tenant. This is useful for Flat File (`DelimitedFile`) type sources because it allows you to aggregate new accounts without needing to import a new CSV file every time.  However, if you use this endpoint to create an account for a Direct Connection type source, you must ensure that the account also exists on the target source.  The endpoint doesn't actually provision the account on the target source, which means that if the account doesn't also exist on the target source, an aggregation between the source and your tenant will remove it from your tenant.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
 ### Example
 
@@ -114,7 +114,7 @@ Name | Type | Description  | Notes
 
 Delete Account
 
-Use this API to delete an account.  This endpoint submits an account delete task and returns the task ID.  This endpoint only deletes the account from IdentityNow, not the source itself, which can result in the account's returning with the next aggregation between the source and IdentityNow.  To avoid this scenario, it is recommended that you [disable accounts](https://developer.sailpoint.com/idn/api/v3/disable-account) rather than delete them. This will also allow you to reenable the accounts in the future.  A token with ORG_ADMIN authority is required to call this API. >**NOTE:** You can only delete accounts from sources of the \"DelimitedFile\" type.**
+Use this API to delete an account.  This endpoint submits an account delete task and returns the task ID.  This endpoint only deletes the account from IdentityNow, not the source itself, which can result in the account's returning with the next aggregation between the source and IdentityNow.  To avoid this scenario, it is recommended that you [disable accounts](https://developer.sailpoint.com/idn/api/v3/disable-account) rather than delete them. This will also allow you to reenable the accounts in the future.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. >**NOTE:** You can only delete accounts from sources of the \"DelimitedFile\" type.**
 
 ### Example
 
@@ -370,7 +370,7 @@ Name | Type | Description  | Notes
 
 Disable Account
 
-This API submits a task to disable the account and returns the task ID.   A token with ORG_ADMIN authority is required to call this API.
+This API submits a task to disable the account and returns the task ID.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
 ### Example
 
@@ -630,7 +630,7 @@ Name | Type | Description  | Notes
 
 Enable Account
 
-This API submits a task to enable account and returns the task ID.   A token with ORG_ADMIN authority is required to call this API.
+This API submits a task to enable account and returns the task ID.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
 ### Example
 
@@ -890,7 +890,7 @@ Name | Type | Description  | Notes
 
 Account Details
 
-Use this API to return the details for a single account by its ID.   A token with ORG_ADMIN authority is required to call this API.
+Use this API to return the details for a single account by its ID.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
 ### Example
 
@@ -976,7 +976,7 @@ Name | Type | Description  | Notes
 
 Account Entitlements
 
-This API returns entitlements of the account.   A token with ORG_ADMIN authority is required to call this API.
+This API returns entitlements of the account.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
 ### Example
 
@@ -1068,7 +1068,7 @@ Name | Type | Description  | Notes
 
 Accounts List
 
-This returns a list of accounts.   A token with ORG_ADMIN authority is required to call this API.
+This returns a list of accounts.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
 ### Example
 
@@ -1163,7 +1163,7 @@ Name | Type | Description  | Notes
 
 Update Account
 
-Use this API to update an account with a PUT request.  This endpoint submits an account update task and returns the task ID.   A token with ORG_ADMIN authority is required to call this API. >**NOTE: You can only use this PUT endpoint to update accounts from sources of the \"DelimitedFile\" type.**
+Use this API to update an account with a PUT request.  This endpoint submits an account update task and returns the task ID.   A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. >**NOTE: You can only use this PUT endpoint to update accounts from sources of the \"DelimitedFile\" type.**
 
 ### Example
 
@@ -1247,12 +1247,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **reload_account**
-> AccountsAsyncResult reload_account(id)
+# **submit_reload_account**
+> AccountsAsyncResult submit_reload_account(id)
 
 Reload Account
 
-This API asynchronously reloads the account directly from the connector and performs a one-time aggregation process.   A token with ORG_ADMIN authority is required to call this API.
+This API asynchronously reloads the account directly from the connector and performs a one-time aggregation process.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
 ### Example
 
@@ -1290,11 +1290,11 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
     try:
         # Reload Account
-        api_response = api_instance.reload_account(id)
-        print("The response of AccountsApi->reload_account:\n")
+        api_response = api_instance.submit_reload_account(id)
+        print("The response of AccountsApi->submit_reload_account:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling AccountsApi->reload_account: %s\n" % e)
+        print("Exception when calling AccountsApi->submit_reload_account: %s\n" % e)
 ```
 
 
@@ -1338,7 +1338,7 @@ Name | Type | Description  | Notes
 
 Unlock Account
 
-This API submits a task to unlock an account and returns the task ID.   To use this endpoint to unlock an account that has the `forceProvisioning` option set to true, the `idn:accounts-provisioning:manage` scope is required.  A token with ORG_ADMIN authority is required to call this API.
+This API submits a task to unlock an account and returns the task ID.   To use this endpoint to unlock an account that has the `forceProvisioning` option set to true, the `idn:accounts-provisioning:manage` scope is required.  A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
 ### Example
 
