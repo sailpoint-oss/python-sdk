@@ -166,6 +166,7 @@ Class | Method | HTTP request | Description
 *ConnectorsApi* | [**delete_custom_connector**](sailpoint/v3/docs/ConnectorsApi.md#delete_custom_connector) | **DELETE** /connectors/{scriptName} | 
 *ConnectorsApi* | [**get_connector**](sailpoint/v3/docs/ConnectorsApi.md#get_connector) | **GET** /connectors/{scriptName} | 
 *ConnectorsApi* | [**get_connector_correlation_config**](sailpoint/v3/docs/ConnectorsApi.md#get_connector_correlation_config) | **GET** /connectors/{scriptName}/correlation-config | 
+*ConnectorsApi* | [**get_connector_list**](sailpoint/v3/docs/ConnectorsApi.md#get_connector_list) | **GET** /connectors/{scriptName}/list | Gets connector list
 *ConnectorsApi* | [**get_connector_source_config**](sailpoint/v3/docs/ConnectorsApi.md#get_connector_source_config) | **GET** /connectors/{scriptName}/source-config | 
 *ConnectorsApi* | [**get_connector_source_template**](sailpoint/v3/docs/ConnectorsApi.md#get_connector_source_template) | **GET** /connectors/{scriptName}/source-template | 
 *ConnectorsApi* | [**get_connector_translations**](sailpoint/v3/docs/ConnectorsApi.md#get_connector_translations) | **GET** /connectors/{scriptName}/translations/{locale} | 

@@ -51,6 +51,13 @@ class TestConnectorsApi(unittest.TestCase):
         """
         pass
 
+    def test_get_connector_list(self) -> None:
+        """Test case for get_connector_list
+
+        Gets connector list
+        """
+        pass
+
     def test_get_connector_source_config(self) -> None:
         """Test case for get_connector_source_config
 
