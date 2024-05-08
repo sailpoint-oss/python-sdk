@@ -76,7 +76,7 @@ class ConfigurationHubApi:
     ) -> ObjectMappingResponse:
         """Creates an object mapping
 
-        This creates an object mapping between current org and source org. The request will need the following security scope: - sp:config-object-mapping:manage
+        This creates an object mapping between current org and source org. Source org should be \"default\" when creating an object mapping that is not to be associated to any particular org. The request will need the following security scope: - sp:config-object-mapping:manage
 
         :param source_org: The name of the source org. (required)
         :type source_org: str
@@ -153,7 +153,7 @@ class ConfigurationHubApi:
     ) -> ApiResponse[ObjectMappingResponse]:
         """Creates an object mapping
 
-        This creates an object mapping between current org and source org. The request will need the following security scope: - sp:config-object-mapping:manage
+        This creates an object mapping between current org and source org. Source org should be \"default\" when creating an object mapping that is not to be associated to any particular org. The request will need the following security scope: - sp:config-object-mapping:manage
 
         :param source_org: The name of the source org. (required)
         :type source_org: str
@@ -230,7 +230,7 @@ class ConfigurationHubApi:
     ) -> RESTResponseType:
         """Creates an object mapping
 
-        This creates an object mapping between current org and source org. The request will need the following security scope: - sp:config-object-mapping:manage
+        This creates an object mapping between current org and source org. Source org should be \"default\" when creating an object mapping that is not to be associated to any particular org. The request will need the following security scope: - sp:config-object-mapping:manage
 
         :param source_org: The name of the source org. (required)
         :type source_org: str
@@ -381,7 +381,7 @@ class ConfigurationHubApi:
     ) -> ObjectMappingBulkCreateResponse:
         """Bulk creates object mappings
 
-        This creates a set of object mappings (Max 25) between current org and source org. The request will need the following security scope: - sp:config-object-mapping:manage
+        This creates a set of object mappings (Max 25) between current org and source org. Source org should be \"default\" when creating object mappings that are not to be associated to any particular org. The request will need the following security scope: - sp:config-object-mapping:manage
 
         :param source_org: The name of the source org. (required)
         :type source_org: str
@@ -458,7 +458,7 @@ class ConfigurationHubApi:
     ) -> ApiResponse[ObjectMappingBulkCreateResponse]:
         """Bulk creates object mappings
 
-        This creates a set of object mappings (Max 25) between current org and source org. The request will need the following security scope: - sp:config-object-mapping:manage
+        This creates a set of object mappings (Max 25) between current org and source org. Source org should be \"default\" when creating object mappings that are not to be associated to any particular org. The request will need the following security scope: - sp:config-object-mapping:manage
 
         :param source_org: The name of the source org. (required)
         :type source_org: str
@@ -535,7 +535,7 @@ class ConfigurationHubApi:
     ) -> RESTResponseType:
         """Bulk creates object mappings
 
-        This creates a set of object mappings (Max 25) between current org and source org. The request will need the following security scope: - sp:config-object-mapping:manage
+        This creates a set of object mappings (Max 25) between current org and source org. Source org should be \"default\" when creating object mappings that are not to be associated to any particular org. The request will need the following security scope: - sp:config-object-mapping:manage
 
         :param source_org: The name of the source org. (required)
         :type source_org: str
@@ -686,7 +686,7 @@ class ConfigurationHubApi:
     ) -> None:
         """Deletes an object mapping
 
-        This deletes an existing object mapping. The request will need the following security scope: - sp:config-object-mapping:manage
+        This deletes an existing object mapping. Source org should be \"default\" when deleting an object mapping that is not associated to any particular org. The request will need the following security scope: - sp:config-object-mapping:manage
 
         :param source_org: The name of the source org. (required)
         :type source_org: str
@@ -763,7 +763,7 @@ class ConfigurationHubApi:
     ) -> ApiResponse[None]:
         """Deletes an object mapping
 
-        This deletes an existing object mapping. The request will need the following security scope: - sp:config-object-mapping:manage
+        This deletes an existing object mapping. Source org should be \"default\" when deleting an object mapping that is not associated to any particular org. The request will need the following security scope: - sp:config-object-mapping:manage
 
         :param source_org: The name of the source org. (required)
         :type source_org: str
@@ -840,7 +840,7 @@ class ConfigurationHubApi:
     ) -> RESTResponseType:
         """Deletes an object mapping
 
-        This deletes an existing object mapping. The request will need the following security scope: - sp:config-object-mapping:manage
+        This deletes an existing object mapping. Source org should be \"default\" when deleting an object mapping that is not associated to any particular org. The request will need the following security scope: - sp:config-object-mapping:manage
 
         :param source_org: The name of the source org. (required)
         :type source_org: str
@@ -1251,7 +1251,7 @@ class ConfigurationHubApi:
     ) -> List[ObjectMappingResponse]:
         """Gets list of object mappings
 
-        This gets a list of existing object mappings between current org and source org. The request will need the following security scope: - sp:config-object-mapping:read
+        This gets a list of existing object mappings between current org and source org. Source org should be \"default\" when getting object mappings that are not associated to any particular org. The request will need the following security scope: - sp:config-object-mapping:read
 
         :param source_org: The name of the source org. (required)
         :type source_org: str
@@ -1324,7 +1324,7 @@ class ConfigurationHubApi:
     ) -> ApiResponse[List[ObjectMappingResponse]]:
         """Gets list of object mappings
 
-        This gets a list of existing object mappings between current org and source org. The request will need the following security scope: - sp:config-object-mapping:read
+        This gets a list of existing object mappings between current org and source org. Source org should be \"default\" when getting object mappings that are not associated to any particular org. The request will need the following security scope: - sp:config-object-mapping:read
 
         :param source_org: The name of the source org. (required)
         :type source_org: str
@@ -1397,7 +1397,7 @@ class ConfigurationHubApi:
     ) -> RESTResponseType:
         """Gets list of object mappings
 
-        This gets a list of existing object mappings between current org and source org. The request will need the following security scope: - sp:config-object-mapping:read
+        This gets a list of existing object mappings between current org and source org. Source org should be \"default\" when getting object mappings that are not associated to any particular org. The request will need the following security scope: - sp:config-object-mapping:read
 
         :param source_org: The name of the source org. (required)
         :type source_org: str
@@ -2387,7 +2387,7 @@ class ConfigurationHubApi:
     ) -> ObjectMappingBulkPatchResponse:
         """Bulk updates object mappings
 
-        This updates a set of object mappings, only enabled and targetValue fields can be updated. The request will need the following security scope: - sp:config-object-mapping:manage
+        This updates a set of object mappings, only enabled and targetValue fields can be updated. Source org should be \"default\" when updating object mappings that are not associated to any particular org. The request will need the following security scope: - sp:config-object-mapping:manage
 
         :param source_org: The name of the source org. (required)
         :type source_org: str
@@ -2464,7 +2464,7 @@ class ConfigurationHubApi:
     ) -> ApiResponse[ObjectMappingBulkPatchResponse]:
         """Bulk updates object mappings
 
-        This updates a set of object mappings, only enabled and targetValue fields can be updated. The request will need the following security scope: - sp:config-object-mapping:manage
+        This updates a set of object mappings, only enabled and targetValue fields can be updated. Source org should be \"default\" when updating object mappings that are not associated to any particular org. The request will need the following security scope: - sp:config-object-mapping:manage
 
         :param source_org: The name of the source org. (required)
         :type source_org: str
@@ -2541,7 +2541,7 @@ class ConfigurationHubApi:
     ) -> RESTResponseType:
         """Bulk updates object mappings
 
-        This updates a set of object mappings, only enabled and targetValue fields can be updated. The request will need the following security scope: - sp:config-object-mapping:manage
+        This updates a set of object mappings, only enabled and targetValue fields can be updated. Source org should be \"default\" when updating object mappings that are not associated to any particular org. The request will need the following security scope: - sp:config-object-mapping:manage
 
         :param source_org: The name of the source org. (required)
         :type source_org: str
