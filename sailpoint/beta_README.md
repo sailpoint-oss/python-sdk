@@ -526,6 +526,8 @@ Class | Method | HTTP request | Description
 *TriggersApi* | [**start_test_trigger_invocation**](sailpoint/beta/docs/TriggersApi.md#start_test_trigger_invocation) | **POST** /trigger-invocations/test | Start a Test Invocation
 *TriggersApi* | [**test_subscription_filter**](sailpoint/beta/docs/TriggersApi.md#test_subscription_filter) | **POST** /trigger-subscriptions/validate-filter | Validate a Subscription Filter
 *TriggersApi* | [**update_subscription**](sailpoint/beta/docs/TriggersApi.md#update_subscription) | **PUT** /trigger-subscriptions/{id} | Update a Subscription
+*UIMetadataApi* | [**get_tenant_ui_metadata**](sailpoint/beta/docs/UIMetadataApi.md#get_tenant_ui_metadata) | **GET** /ui-metadata/tenant | Get a tenant UI metadata
+*UIMetadataApi* | [**set_tenant_ui_metadata**](sailpoint/beta/docs/UIMetadataApi.md#set_tenant_ui_metadata) | **PUT** /ui-metadata/tenant | Update tenant UI metadata
 *VendorConnectorMappingsApi* | [**create_vendor_connector_mapping**](sailpoint/beta/docs/VendorConnectorMappingsApi.md#create_vendor_connector_mapping) | **POST** /vendor-connector-mappings | Create a vendor connector mapping
 *VendorConnectorMappingsApi* | [**delete_vendor_connector_mapping**](sailpoint/beta/docs/VendorConnectorMappingsApi.md#delete_vendor_connector_mapping) | **DELETE** /vendor-connector-mappings | Delete a vendor connector mapping
 *VendorConnectorMappingsApi* | [**get_vendor_connector_mappings**](sailpoint/beta/docs/VendorConnectorMappingsApi.md#get_vendor_connector_mappings) | **GET** /vendor-connector-mappings | List vendor connector mappings
@@ -1307,6 +1309,8 @@ Class | Method | HTTP request | Description
  - [TenantConfigurationDetails](sailpoint/beta/docs/TenantConfigurationDetails.md)
  - [TenantConfigurationRequest](sailpoint/beta/docs/TenantConfigurationRequest.md)
  - [TenantConfigurationResponse](sailpoint/beta/docs/TenantConfigurationResponse.md)
+ - [TenantUiMetadataItemResponse](sailpoint/beta/docs/TenantUiMetadataItemResponse.md)
+ - [TenantUiMetadataItemUpdateRequest](sailpoint/beta/docs/TenantUiMetadataItemUpdateRequest.md)
  - [TestExternalExecuteWorkflow200Response](sailpoint/beta/docs/TestExternalExecuteWorkflow200Response.md)
  - [TestExternalExecuteWorkflowRequest](sailpoint/beta/docs/TestExternalExecuteWorkflowRequest.md)
  - [TestInvocation](sailpoint/beta/docs/TestInvocation.md)

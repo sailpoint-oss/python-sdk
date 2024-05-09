@@ -68,6 +68,7 @@ from sailpoint.beta.api.task_management_api import TaskManagementApi
 from sailpoint.beta.api.tenant_api import TenantApi
 from sailpoint.beta.api.transforms_api import TransformsApi
 from sailpoint.beta.api.triggers_api import TriggersApi
+from sailpoint.beta.api.ui_metadata_api import UIMetadataApi
 from sailpoint.beta.api.vendor_connector_mappings_api import VendorConnectorMappingsApi
 from sailpoint.beta.api.work_items_api import WorkItemsApi
 from sailpoint.beta.api.work_reassignment_api import WorkReassignmentApi

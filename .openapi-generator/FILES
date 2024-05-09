@@ -68,6 +68,7 @@ sailpoint/beta/api/task_management_api.py
 sailpoint/beta/api/tenant_api.py
 sailpoint/beta/api/transforms_api.py
 sailpoint/beta/api/triggers_api.py
+sailpoint/beta/api/ui_metadata_api.py
 sailpoint/beta/api/vendor_connector_mappings_api.py
 sailpoint/beta/api/work_items_api.py
 sailpoint/beta/api/work_reassignment_api.py
@@ -874,6 +875,8 @@ sailpoint/beta/docs/TenantApi.md
 sailpoint/beta/docs/TenantConfigurationDetails.md
 sailpoint/beta/docs/TenantConfigurationRequest.md
 sailpoint/beta/docs/TenantConfigurationResponse.md
+sailpoint/beta/docs/TenantUiMetadataItemResponse.md
+sailpoint/beta/docs/TenantUiMetadataItemUpdateRequest.md
 sailpoint/beta/docs/TestExternalExecuteWorkflow200Response.md
 sailpoint/beta/docs/TestExternalExecuteWorkflowRequest.md
 sailpoint/beta/docs/TestInvocation.md
@@ -893,6 +896,7 @@ sailpoint/beta/docs/TriggerExampleInput.md
 sailpoint/beta/docs/TriggerExampleOutput.md
 sailpoint/beta/docs/TriggerType.md
 sailpoint/beta/docs/TriggersApi.md
+sailpoint/beta/docs/UIMetadataApi.md
 sailpoint/beta/docs/UpdateAccessProfilesInBulk412Response.md
 sailpoint/beta/docs/UsageType.md
 sailpoint/beta/docs/V3ConnectorDto.md
@@ -1682,6 +1686,8 @@ sailpoint/beta/models/tenant.py
 sailpoint/beta/models/tenant_configuration_details.py
 sailpoint/beta/models/tenant_configuration_request.py
 sailpoint/beta/models/tenant_configuration_response.py
+sailpoint/beta/models/tenant_ui_metadata_item_response.py
+sailpoint/beta/models/tenant_ui_metadata_item_update_request.py
 sailpoint/beta/models/test_external_execute_workflow200_response.py
 sailpoint/beta/models/test_external_execute_workflow_request.py
 sailpoint/beta/models/test_invocation.py
@@ -2549,6 +2555,8 @@ sailpoint/beta/test/test_tenant_api.py
 sailpoint/beta/test/test_tenant_configuration_details.py
 sailpoint/beta/test/test_tenant_configuration_request.py
 sailpoint/beta/test/test_tenant_configuration_response.py
+sailpoint/beta/test/test_tenant_ui_metadata_item_response.py
+sailpoint/beta/test/test_tenant_ui_metadata_item_update_request.py
 sailpoint/beta/test/test_test_external_execute_workflow200_response.py
 sailpoint/beta/test/test_test_external_execute_workflow_request.py
 sailpoint/beta/test/test_test_invocation.py
@@ -2568,6 +2576,7 @@ sailpoint/beta/test/test_trigger_example_input.py
 sailpoint/beta/test/test_trigger_example_output.py
 sailpoint/beta/test/test_trigger_type.py
 sailpoint/beta/test/test_triggers_api.py
+sailpoint/beta/test/test_ui_metadata_api.py
 sailpoint/beta/test/test_update_access_profiles_in_bulk412_response.py
 sailpoint/beta/test/test_usage_type.py
 sailpoint/beta/test/test_v3_connector_dto.py
