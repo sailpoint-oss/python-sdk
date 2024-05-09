@@ -46,6 +46,7 @@ sailpoint/beta/api/org_config_api.py
 sailpoint/beta/api/password_configuration_api.py
 sailpoint/beta/api/password_dictionary_api.py
 sailpoint/beta/api/password_management_api.py
+sailpoint/beta/api/password_policies_api.py
 sailpoint/beta/api/password_sync_groups_api.py
 sailpoint/beta/api/personal_access_tokens_api.py
 sailpoint/beta/api/public_identities_config_api.py
@@ -601,6 +602,8 @@ sailpoint/beta/docs/PasswordInfoAccount.md
 sailpoint/beta/docs/PasswordInfoQueryDTO.md
 sailpoint/beta/docs/PasswordManagementApi.md
 sailpoint/beta/docs/PasswordOrgConfig.md
+sailpoint/beta/docs/PasswordPoliciesApi.md
+sailpoint/beta/docs/PasswordPolicyV3Dto.md
 sailpoint/beta/docs/PasswordStatus.md
 sailpoint/beta/docs/PasswordSyncGroup.md
 sailpoint/beta/docs/PasswordSyncGroupsApi.md
@@ -1427,6 +1430,7 @@ sailpoint/beta/models/password_info.py
 sailpoint/beta/models/password_info_account.py
 sailpoint/beta/models/password_info_query_dto.py
 sailpoint/beta/models/password_org_config.py
+sailpoint/beta/models/password_policy_v3_dto.py
 sailpoint/beta/models/password_status.py
 sailpoint/beta/models/password_sync_group.py
 sailpoint/beta/models/pat_owner.py
@@ -2273,6 +2277,8 @@ sailpoint/beta/test/test_password_info_account.py
 sailpoint/beta/test/test_password_info_query_dto.py
 sailpoint/beta/test/test_password_management_api.py
 sailpoint/beta/test/test_password_org_config.py
+sailpoint/beta/test/test_password_policies_api.py
+sailpoint/beta/test/test_password_policy_v3_dto.py
 sailpoint/beta/test/test_password_status.py
 sailpoint/beta/test/test_password_sync_group.py
 sailpoint/beta/test/test_password_sync_groups_api.py

@@ -62,6 +62,7 @@ from sailpoint.beta.api.org_config_api import OrgConfigApi
 from sailpoint.beta.api.password_configuration_api import PasswordConfigurationApi
 from sailpoint.beta.api.password_dictionary_api import PasswordDictionaryApi
 from sailpoint.beta.api.password_management_api import PasswordManagementApi
+from sailpoint.beta.api.password_policies_api import PasswordPoliciesApi
 from sailpoint.beta.api.password_sync_groups_api import PasswordSyncGroupsApi
 from sailpoint.beta.api.personal_access_tokens_api import PersonalAccessTokensApi
 from sailpoint.beta.api.public_identities_config_api import PublicIdentitiesConfigApi
@@ -582,6 +583,7 @@ from sailpoint.beta.models.password_info import PasswordInfo
 from sailpoint.beta.models.password_info_account import PasswordInfoAccount
 from sailpoint.beta.models.password_info_query_dto import PasswordInfoQueryDTO
 from sailpoint.beta.models.password_org_config import PasswordOrgConfig
+from sailpoint.beta.models.password_policy_v3_dto import PasswordPolicyV3Dto
 from sailpoint.beta.models.password_status import PasswordStatus
 from sailpoint.beta.models.password_sync_group import PasswordSyncGroup
 from sailpoint.beta.models.pat_owner import PatOwner

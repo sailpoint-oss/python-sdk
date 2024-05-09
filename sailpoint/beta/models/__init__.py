@@ -496,6 +496,7 @@ from sailpoint.beta.models.password_info import PasswordInfo
 from sailpoint.beta.models.password_info_account import PasswordInfoAccount
 from sailpoint.beta.models.password_info_query_dto import PasswordInfoQueryDTO
 from sailpoint.beta.models.password_org_config import PasswordOrgConfig
+from sailpoint.beta.models.password_policy_v3_dto import PasswordPolicyV3Dto
 from sailpoint.beta.models.password_status import PasswordStatus
 from sailpoint.beta.models.password_sync_group import PasswordSyncGroup
 from sailpoint.beta.models.pat_owner import PatOwner

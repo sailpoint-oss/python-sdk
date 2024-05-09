@@ -310,6 +310,7 @@ from sailpoint.v3.models.password_info import PasswordInfo
 from sailpoint.v3.models.password_info_account import PasswordInfoAccount
 from sailpoint.v3.models.password_info_query_dto import PasswordInfoQueryDTO
 from sailpoint.v3.models.password_org_config import PasswordOrgConfig
+from sailpoint.v3.models.password_policy_v3_dto import PasswordPolicyV3Dto
 from sailpoint.v3.models.password_status import PasswordStatus
 from sailpoint.v3.models.password_sync_group import PasswordSyncGroup
 from sailpoint.v3.models.pat_owner import PatOwner

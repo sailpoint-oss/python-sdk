@@ -41,6 +41,7 @@ from sailpoint.v3.api.o_auth_clients_api import OAuthClientsApi
 from sailpoint.v3.api.password_configuration_api import PasswordConfigurationApi
 from sailpoint.v3.api.password_dictionary_api import PasswordDictionaryApi
 from sailpoint.v3.api.password_management_api import PasswordManagementApi
+from sailpoint.v3.api.password_policies_api import PasswordPoliciesApi
 from sailpoint.v3.api.password_sync_groups_api import PasswordSyncGroupsApi
 from sailpoint.v3.api.personal_access_tokens_api import PersonalAccessTokensApi
 from sailpoint.v3.api.public_identities_api import PublicIdentitiesApi
@@ -371,6 +372,7 @@ from sailpoint.v3.models.password_info import PasswordInfo
 from sailpoint.v3.models.password_info_account import PasswordInfoAccount
 from sailpoint.v3.models.password_info_query_dto import PasswordInfoQueryDTO
 from sailpoint.v3.models.password_org_config import PasswordOrgConfig
+from sailpoint.v3.models.password_policy_v3_dto import PasswordPolicyV3Dto
 from sailpoint.v3.models.password_status import PasswordStatus
 from sailpoint.v3.models.password_sync_group import PasswordSyncGroup
 from sailpoint.v3.models.pat_owner import PatOwner

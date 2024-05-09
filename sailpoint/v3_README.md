@@ -248,6 +248,11 @@ Class | Method | HTTP request | Description
 *PasswordManagementApi* | [**get_password_change_status**](sailpoint/v3/docs/PasswordManagementApi.md#get_password_change_status) | **GET** /password-change-status/{id} | Get Password Change Request Status
 *PasswordManagementApi* | [**query_password_info**](sailpoint/v3/docs/PasswordManagementApi.md#query_password_info) | **POST** /query-password-info | Query Password Info
 *PasswordManagementApi* | [**set_password**](sailpoint/v3/docs/PasswordManagementApi.md#set_password) | **POST** /set-password | Set Identity&#39;s Password
+*PasswordPoliciesApi* | [**create_password_policy**](sailpoint/v3/docs/PasswordPoliciesApi.md#create_password_policy) | **POST** /password-policies | Create Password Policy
+*PasswordPoliciesApi* | [**delete_password_policy**](sailpoint/v3/docs/PasswordPoliciesApi.md#delete_password_policy) | **DELETE** /password-policies/{id} | Delete Password Policy by ID
+*PasswordPoliciesApi* | [**get_password_policy_by_id**](sailpoint/v3/docs/PasswordPoliciesApi.md#get_password_policy_by_id) | **GET** /password-policies/{id} | Get Password Policy by ID
+*PasswordPoliciesApi* | [**list_password_policies**](sailpoint/v3/docs/PasswordPoliciesApi.md#list_password_policies) | **GET** /password-policies | List Password Policies
+*PasswordPoliciesApi* | [**set_password_policy**](sailpoint/v3/docs/PasswordPoliciesApi.md#set_password_policy) | **PUT** /password-policies/{id} | Update Password Policy by ID
 *PasswordSyncGroupsApi* | [**create_password_sync_group**](sailpoint/v3/docs/PasswordSyncGroupsApi.md#create_password_sync_group) | **POST** /password-sync-groups | Create Password Sync Group
 *PasswordSyncGroupsApi* | [**delete_password_sync_group**](sailpoint/v3/docs/PasswordSyncGroupsApi.md#delete_password_sync_group) | **DELETE** /password-sync-groups/{id} | Delete Password Sync Group by ID
 *PasswordSyncGroupsApi* | [**get_password_sync_group**](sailpoint/v3/docs/PasswordSyncGroupsApi.md#get_password_sync_group) | **GET** /password-sync-groups/{id} | Get Password Sync Group by ID
@@ -692,6 +697,7 @@ Class | Method | HTTP request | Description
  - [PasswordInfoAccount](sailpoint/v3/docs/PasswordInfoAccount.md)
  - [PasswordInfoQueryDTO](sailpoint/v3/docs/PasswordInfoQueryDTO.md)
  - [PasswordOrgConfig](sailpoint/v3/docs/PasswordOrgConfig.md)
+ - [PasswordPolicyV3Dto](sailpoint/v3/docs/PasswordPolicyV3Dto.md)
  - [PasswordStatus](sailpoint/v3/docs/PasswordStatus.md)
  - [PasswordSyncGroup](sailpoint/v3/docs/PasswordSyncGroup.md)
  - [PatOwner](sailpoint/v3/docs/PatOwner.md)
