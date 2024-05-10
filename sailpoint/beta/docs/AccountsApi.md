@@ -1423,11 +1423,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_account**
-> object update_account(id, request_body)
+> object update_account(id, json_patch_operation)
 
 Update Account
 
-This updates account details. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. This endpoint supports updating an account's correlation. It can only modify the identityId and manuallyCorrelated  attributes. To re-assign an account from one identity to another, replace the current identityId with a new value.  If the account you're assigning was provisioned by IdentityNow, it's possible IdentityNow could create a new account  for the previous identity as soon as the account is moved. If the account you're assigning is authoritative,  this will cause the previous identity to become uncorrelated and could even result in its deletion. All accounts  that are are reassigned will be set to manuallyCorrelated: true.
+This updates account details. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. This endpoint supports updating an account's correlation. The identityId and manuallyCorrelated fields can be modified for any account. The attributes fields can be modified just for flat file accounts.  To re-assign an account from one identity to another, replace the current identityId with a new value.  If the account you're assigning was provisioned by IdentityNow, it's possible IdentityNow could create a new account  for the previous identity as soon as the account is moved. If the account you're assigning is authoritative,  this will cause the previous identity to become uncorrelated and could even result in its deletion. All accounts that are reassigned will be set to manuallyCorrelated: true unless otherwise specified
 
 ### Example
 
@@ -1438,6 +1438,7 @@ This updates account details. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SU
 import time
 import os
 import sailpoint.beta
+from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
@@ -1461,11 +1462,11 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.AccountsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | Account ID.
-    request_body = [{op=replace, path=/identityId, value=2c9180845d1edece015d27a975983e21}] # List[object] | A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+    json_patch_operation = {Uncorrelate account={description=Remove account from Identity, value=[{op=remove, path=/identityId}]}, Reassign account={description=Move account from one Identity to another Identity, value=[{op=replace, path=/identityId, value=2c9180857725c14301772a93bb77242d}]}, Add account attribute={description=Add flat file account's attribute, value=[{op=add, path=/attributes/familyName, value=Smith}]}, Replace account attribute={description=Replace flat file account's attribute, value=[{op=replace, path=/attributes/familyName, value=Smith}]}, Remove account attribute={description=Remove flat file account's attribute, value=[{op=remove, path=/attributes/familyName}]}} # List[JsonPatchOperation] | A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
     try:
         # Update Account
-        api_response = api_instance.update_account(id, request_body)
+        api_response = api_instance.update_account(id, json_patch_operation)
         print("The response of AccountsApi->update_account:\n")
         pprint(api_response)
     except Exception as e:
@@ -1480,7 +1481,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| Account ID. | 
- **request_body** | [**List[object]**](object.md)| A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. | 
+ **json_patch_operation** | [**List[JsonPatchOperation]**](JsonPatchOperation.md)| A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. | 
 
 ### Return type
 
