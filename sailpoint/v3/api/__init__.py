@@ -18,6 +18,8 @@ from sailpoint.v3.api.connectors_api import ConnectorsApi
 from sailpoint.v3.api.global_tenant_security_settings_api import GlobalTenantSecuritySettingsApi
 from sailpoint.v3.api.identity_profiles_api import IdentityProfilesApi
 from sailpoint.v3.api.lifecycle_states_api import LifecycleStatesApi
+from sailpoint.v3.api.mfa_configuration_api import MFAConfigurationApi
+from sailpoint.v3.api.mfa_controller_api import MFAControllerApi
 from sailpoint.v3.api.managed_clients_api import ManagedClientsApi
 from sailpoint.v3.api.managed_clusters_api import ManagedClustersApi
 from sailpoint.v3.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi

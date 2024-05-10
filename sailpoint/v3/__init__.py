@@ -34,6 +34,8 @@ from sailpoint.v3.api.connectors_api import ConnectorsApi
 from sailpoint.v3.api.global_tenant_security_settings_api import GlobalTenantSecuritySettingsApi
 from sailpoint.v3.api.identity_profiles_api import IdentityProfilesApi
 from sailpoint.v3.api.lifecycle_states_api import LifecycleStatesApi
+from sailpoint.v3.api.mfa_configuration_api import MFAConfigurationApi
+from sailpoint.v3.api.mfa_controller_api import MFAControllerApi
 from sailpoint.v3.api.managed_clients_api import ManagedClientsApi
 from sailpoint.v3.api.managed_clusters_api import ManagedClustersApi
 from sailpoint.v3.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi
@@ -228,6 +230,7 @@ from sailpoint.v3.models.delete_source202_response import DeleteSource202Respons
 from sailpoint.v3.models.display_reference import DisplayReference
 from sailpoint.v3.models.document_type import DocumentType
 from sailpoint.v3.models.dto_type import DtoType
+from sailpoint.v3.models.duo_verification_request import DuoVerificationRequest
 from sailpoint.v3.models.email_notification_option import EmailNotificationOption
 from sailpoint.v3.models.entitlement import Entitlement
 from sailpoint.v3.models.entitlement_document import EntitlementDocument
@@ -296,6 +299,11 @@ from sailpoint.v3.models.inner_hit import InnerHit
 from sailpoint.v3.models.json_patch import JsonPatch
 from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v3.models.json_patch_operation_value import JsonPatchOperationValue
+from sailpoint.v3.models.kba_answer_request_item import KbaAnswerRequestItem
+from sailpoint.v3.models.kba_answer_response_item import KbaAnswerResponseItem
+from sailpoint.v3.models.kba_auth_response import KbaAuthResponse
+from sailpoint.v3.models.kba_auth_response_item import KbaAuthResponseItem
+from sailpoint.v3.models.kba_question import KbaQuestion
 from sailpoint.v3.models.lifecycle_state import LifecycleState
 from sailpoint.v3.models.lifecyclestate_deleted import LifecyclestateDeleted
 from sailpoint.v3.models.list_access_profiles401_response import ListAccessProfiles401Response
@@ -322,6 +330,9 @@ from sailpoint.v3.models.manual_work_item_details_original_owner import ManualWo
 from sailpoint.v3.models.manual_work_item_state import ManualWorkItemState
 from sailpoint.v3.models.metric_aggregation import MetricAggregation
 from sailpoint.v3.models.metric_type import MetricType
+from sailpoint.v3.models.mfa_config_test_response import MfaConfigTestResponse
+from sailpoint.v3.models.mfa_duo_config import MfaDuoConfig
+from sailpoint.v3.models.mfa_okta_config import MfaOktaConfig
 from sailpoint.v3.models.model_schema import ModelSchema
 from sailpoint.v3.models.multi_policy_request import MultiPolicyRequest
 from sailpoint.v3.models.nested_aggregation import NestedAggregation
@@ -359,6 +370,7 @@ from sailpoint.v3.models.object_mapping_bulk_patch_request import ObjectMappingB
 from sailpoint.v3.models.object_mapping_bulk_patch_response import ObjectMappingBulkPatchResponse
 from sailpoint.v3.models.object_mapping_request import ObjectMappingRequest
 from sailpoint.v3.models.object_mapping_response import ObjectMappingResponse
+from sailpoint.v3.models.okta_verification_request import OktaVerificationRequest
 from sailpoint.v3.models.operation import Operation
 from sailpoint.v3.models.original_request import OriginalRequest
 from sailpoint.v3.models.orphan_uncorrelated_report_arguments import OrphanUncorrelatedReportArguments
@@ -486,6 +498,8 @@ from sailpoint.v3.models.segment import Segment
 from sailpoint.v3.models.segment_visibility_criteria import SegmentVisibilityCriteria
 from sailpoint.v3.models.selector import Selector
 from sailpoint.v3.models.selector_type import SelectorType
+from sailpoint.v3.models.send_token_request import SendTokenRequest
+from sailpoint.v3.models.send_token_response import SendTokenResponse
 from sailpoint.v3.models.service_desk_integration_dto import ServiceDeskIntegrationDto
 from sailpoint.v3.models.service_desk_integration_dto_all_of_before_provisioning_rule import ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule
 from sailpoint.v3.models.service_desk_integration_dto_all_of_cluster_ref import ServiceDeskIntegrationDtoAllOfClusterRef
@@ -539,6 +553,8 @@ from sailpoint.v3.models.test_external_execute_workflow_request import TestExter
 from sailpoint.v3.models.test_workflow200_response import TestWorkflow200Response
 from sailpoint.v3.models.test_workflow_request import TestWorkflowRequest
 from sailpoint.v3.models.text_query import TextQuery
+from sailpoint.v3.models.token_auth_request import TokenAuthRequest
+from sailpoint.v3.models.token_auth_response import TokenAuthResponse
 from sailpoint.v3.models.transform import Transform
 from sailpoint.v3.models.transform_definition import TransformDefinition
 from sailpoint.v3.models.transform_definition_attributes_value import TransformDefinitionAttributesValue
@@ -552,6 +568,8 @@ from sailpoint.v3.models.usage_type import UsageType
 from sailpoint.v3.models.v3_connector_dto import V3ConnectorDto
 from sailpoint.v3.models.v3_create_connector_dto import V3CreateConnectorDto
 from sailpoint.v3.models.value import Value
+from sailpoint.v3.models.verification_poll_request import VerificationPollRequest
+from sailpoint.v3.models.verification_response import VerificationResponse
 from sailpoint.v3.models.violation_context import ViolationContext
 from sailpoint.v3.models.violation_context_policy import ViolationContextPolicy
 from sailpoint.v3.models.violation_owner_assignment_config import ViolationOwnerAssignmentConfig

@@ -192,6 +192,20 @@ Class | Method | HTTP request | Description
 *LifecycleStatesApi* | [**list_lifecycle_states**](sailpoint/v3/docs/LifecycleStatesApi.md#list_lifecycle_states) | **GET** /identity-profiles/{identity-profile-id}/lifecycle-states | Lists LifecycleStates
 *LifecycleStatesApi* | [**set_lifecycle_state**](sailpoint/v3/docs/LifecycleStatesApi.md#set_lifecycle_state) | **POST** /identities/{identity-id}/set-lifecycle-state | Set Lifecycle State
 *LifecycleStatesApi* | [**update_lifecycle_states**](sailpoint/v3/docs/LifecycleStatesApi.md#update_lifecycle_states) | **PATCH** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Update Lifecycle State
+*MFAConfigurationApi* | [**delete_mfa_config**](sailpoint/v3/docs/MFAConfigurationApi.md#delete_mfa_config) | **DELETE** /mfa/{method}/delete | Delete MFA method configuration
+*MFAConfigurationApi* | [**get_mfa_duo_config**](sailpoint/v3/docs/MFAConfigurationApi.md#get_mfa_duo_config) | **GET** /mfa/duo-web/config | Configuration of Duo MFA method
+*MFAConfigurationApi* | [**get_mfa_kba_config**](sailpoint/v3/docs/MFAConfigurationApi.md#get_mfa_kba_config) | **GET** /mfa/kba/config | Configuration of KBA MFA method
+*MFAConfigurationApi* | [**get_mfa_okta_config**](sailpoint/v3/docs/MFAConfigurationApi.md#get_mfa_okta_config) | **GET** /mfa/okta-verify/config | Configuration of Okta MFA method
+*MFAConfigurationApi* | [**set_mfa_duo_config**](sailpoint/v3/docs/MFAConfigurationApi.md#set_mfa_duo_config) | **PUT** /mfa/duo-web/config | Set Duo MFA configuration
+*MFAConfigurationApi* | [**set_mfa_okta_config**](sailpoint/v3/docs/MFAConfigurationApi.md#set_mfa_okta_config) | **PUT** /mfa/okta-verify/config | Set Okta MFA configuration
+*MFAConfigurationApi* | [**set_mfakba_config**](sailpoint/v3/docs/MFAConfigurationApi.md#set_mfakba_config) | **POST** /mfa/kba/config/answers | Set MFA KBA configuration
+*MFAConfigurationApi* | [**test_mfa_config**](sailpoint/v3/docs/MFAConfigurationApi.md#test_mfa_config) | **GET** /mfa/{method}/test | MFA method&#39;s test configuration
+*MFAControllerApi* | [**create_send_token**](sailpoint/v3/docs/MFAControllerApi.md#create_send_token) | **POST** /mfa/token/send | Create and send user token
+*MFAControllerApi* | [**ping_verification_status**](sailpoint/v3/docs/MFAControllerApi.md#ping_verification_status) | **POST** /mfa/{method}/poll | Polling MFA method by VerificationPollRequest
+*MFAControllerApi* | [**send_duo_verify_request**](sailpoint/v3/docs/MFAControllerApi.md#send_duo_verify_request) | **POST** /mfa/duo-web/verify | Verifying authentication via Duo method
+*MFAControllerApi* | [**send_kba_answers**](sailpoint/v3/docs/MFAControllerApi.md#send_kba_answers) | **POST** /mfa/kba/authenticate | Authenticate KBA provided MFA method
+*MFAControllerApi* | [**send_okta_verify_request**](sailpoint/v3/docs/MFAControllerApi.md#send_okta_verify_request) | **POST** /mfa/okta-verify/verify | Verifying authentication via Okta method
+*MFAControllerApi* | [**send_token_auth_request**](sailpoint/v3/docs/MFAControllerApi.md#send_token_auth_request) | **POST** /mfa/token/authenticate | Authenticate Token provided MFA method
 *ManagedClientsApi* | [**create_managed_client**](sailpoint/v3/docs/ManagedClientsApi.md#create_managed_client) | **POST** /managed-clients | Create a new Managed Client
 *ManagedClientsApi* | [**delete_managed_client**](sailpoint/v3/docs/ManagedClientsApi.md#delete_managed_client) | **DELETE** /managed-clients/{id} | Delete a Managed Client
 *ManagedClientsApi* | [**get_managed_client**](sailpoint/v3/docs/ManagedClientsApi.md#get_managed_client) | **GET** /managed-clients/{id} | Get a Managed Client
@@ -553,6 +567,7 @@ Class | Method | HTTP request | Description
  - [DisplayReference](sailpoint/v3/docs/DisplayReference.md)
  - [DocumentType](sailpoint/v3/docs/DocumentType.md)
  - [DtoType](sailpoint/v3/docs/DtoType.md)
+ - [DuoVerificationRequest](sailpoint/v3/docs/DuoVerificationRequest.md)
  - [EmailNotificationOption](sailpoint/v3/docs/EmailNotificationOption.md)
  - [Entitlement](sailpoint/v3/docs/Entitlement.md)
  - [EntitlementDocument](sailpoint/v3/docs/EntitlementDocument.md)
@@ -621,6 +636,11 @@ Class | Method | HTTP request | Description
  - [JsonPatch](sailpoint/v3/docs/JsonPatch.md)
  - [JsonPatchOperation](sailpoint/v3/docs/JsonPatchOperation.md)
  - [JsonPatchOperationValue](sailpoint/v3/docs/JsonPatchOperationValue.md)
+ - [KbaAnswerRequestItem](sailpoint/v3/docs/KbaAnswerRequestItem.md)
+ - [KbaAnswerResponseItem](sailpoint/v3/docs/KbaAnswerResponseItem.md)
+ - [KbaAuthResponse](sailpoint/v3/docs/KbaAuthResponse.md)
+ - [KbaAuthResponseItem](sailpoint/v3/docs/KbaAuthResponseItem.md)
+ - [KbaQuestion](sailpoint/v3/docs/KbaQuestion.md)
  - [LifecycleState](sailpoint/v3/docs/LifecycleState.md)
  - [LifecyclestateDeleted](sailpoint/v3/docs/LifecyclestateDeleted.md)
  - [ListAccessProfiles401Response](sailpoint/v3/docs/ListAccessProfiles401Response.md)
@@ -647,6 +667,9 @@ Class | Method | HTTP request | Description
  - [ManualWorkItemState](sailpoint/v3/docs/ManualWorkItemState.md)
  - [MetricAggregation](sailpoint/v3/docs/MetricAggregation.md)
  - [MetricType](sailpoint/v3/docs/MetricType.md)
+ - [MfaConfigTestResponse](sailpoint/v3/docs/MfaConfigTestResponse.md)
+ - [MfaDuoConfig](sailpoint/v3/docs/MfaDuoConfig.md)
+ - [MfaOktaConfig](sailpoint/v3/docs/MfaOktaConfig.md)
  - [ModelSchema](sailpoint/v3/docs/ModelSchema.md)
  - [MultiPolicyRequest](sailpoint/v3/docs/MultiPolicyRequest.md)
  - [NestedAggregation](sailpoint/v3/docs/NestedAggregation.md)
@@ -684,6 +707,7 @@ Class | Method | HTTP request | Description
  - [ObjectMappingBulkPatchResponse](sailpoint/v3/docs/ObjectMappingBulkPatchResponse.md)
  - [ObjectMappingRequest](sailpoint/v3/docs/ObjectMappingRequest.md)
  - [ObjectMappingResponse](sailpoint/v3/docs/ObjectMappingResponse.md)
+ - [OktaVerificationRequest](sailpoint/v3/docs/OktaVerificationRequest.md)
  - [Operation](sailpoint/v3/docs/Operation.md)
  - [OriginalRequest](sailpoint/v3/docs/OriginalRequest.md)
  - [OrphanUncorrelatedReportArguments](sailpoint/v3/docs/OrphanUncorrelatedReportArguments.md)
@@ -811,6 +835,8 @@ Class | Method | HTTP request | Description
  - [SegmentVisibilityCriteria](sailpoint/v3/docs/SegmentVisibilityCriteria.md)
  - [Selector](sailpoint/v3/docs/Selector.md)
  - [SelectorType](sailpoint/v3/docs/SelectorType.md)
+ - [SendTokenRequest](sailpoint/v3/docs/SendTokenRequest.md)
+ - [SendTokenResponse](sailpoint/v3/docs/SendTokenResponse.md)
  - [ServiceDeskIntegrationDto](sailpoint/v3/docs/ServiceDeskIntegrationDto.md)
  - [ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule](sailpoint/v3/docs/ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule.md)
  - [ServiceDeskIntegrationDtoAllOfClusterRef](sailpoint/v3/docs/ServiceDeskIntegrationDtoAllOfClusterRef.md)
@@ -864,6 +890,8 @@ Class | Method | HTTP request | Description
  - [TestWorkflow200Response](sailpoint/v3/docs/TestWorkflow200Response.md)
  - [TestWorkflowRequest](sailpoint/v3/docs/TestWorkflowRequest.md)
  - [TextQuery](sailpoint/v3/docs/TextQuery.md)
+ - [TokenAuthRequest](sailpoint/v3/docs/TokenAuthRequest.md)
+ - [TokenAuthResponse](sailpoint/v3/docs/TokenAuthResponse.md)
  - [Transform](sailpoint/v3/docs/Transform.md)
  - [TransformDefinition](sailpoint/v3/docs/TransformDefinition.md)
  - [TransformDefinitionAttributesValue](sailpoint/v3/docs/TransformDefinitionAttributesValue.md)
@@ -877,6 +905,8 @@ Class | Method | HTTP request | Description
  - [V3ConnectorDto](sailpoint/v3/docs/V3ConnectorDto.md)
  - [V3CreateConnectorDto](sailpoint/v3/docs/V3CreateConnectorDto.md)
  - [Value](sailpoint/v3/docs/Value.md)
+ - [VerificationPollRequest](sailpoint/v3/docs/VerificationPollRequest.md)
+ - [VerificationResponse](sailpoint/v3/docs/VerificationResponse.md)
  - [ViolationContext](sailpoint/v3/docs/ViolationContext.md)
  - [ViolationContextPolicy](sailpoint/v3/docs/ViolationContextPolicy.md)
  - [ViolationOwnerAssignmentConfig](sailpoint/v3/docs/ViolationOwnerAssignmentConfig.md)
