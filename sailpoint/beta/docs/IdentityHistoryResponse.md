@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **display_name** | **str** | the display name of the identity | [optional] 
 **snapshot** | **str** | the date when the identity record was created | [optional] 
 **deleted_date** | **str** | the date when the identity was deleted | [optional] 
-**access_item_count** | **Dict[str, str]** | A map containing the count of each access item | [optional] 
-**attributes** | **Dict[str, str]** | A map containing the identity attributes | [optional] 
+**access_item_count** | **Dict[str, int]** | A map containing the count of each access item | [optional] 
+**attributes** | **Dict[str, object]** | A map containing the identity attributes | [optional] 
 
 ## Example
 

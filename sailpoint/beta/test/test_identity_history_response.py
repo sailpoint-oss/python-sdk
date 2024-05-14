@@ -40,12 +40,8 @@ class TestIdentityHistoryResponse(unittest.TestCase):
                 display_name = 'Adam Zampa',
                 snapshot = '2007-03-01T13:00:00.000Z',
                 deleted_date = '2007-03-01T13:00:00.000Z',
-                access_item_count = {
-                    'key' : ''
-                    },
-                attributes = {
-                    'key' : ''
-                    }
+                access_item_count = {app=0, role=2, entitlement=4, accessProfile=3, account=1},
+                attributes = {jobTitle=HR Manager, location=NYC, firstname=Adam, lastname=Zampa, department=HR}
             )
         else:
             return IdentityHistoryResponse(

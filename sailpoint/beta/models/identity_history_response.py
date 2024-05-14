@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
+from pydantic import BaseModel, StrictInt, StrictStr
 from pydantic import Field
 try:
     from typing import Self
@@ -34,8 +34,8 @@ class IdentityHistoryResponse(BaseModel):
     display_name: Optional[StrictStr] = Field(default=None, description="the display name of the identity", alias="displayName")
     snapshot: Optional[StrictStr] = Field(default=None, description="the date when the identity record was created")
     deleted_date: Optional[StrictStr] = Field(default=None, description="the date when the identity was deleted", alias="deletedDate")
-    access_item_count: Optional[Dict[str, StrictStr]] = Field(default=None, description="A map containing the count of each access item", alias="accessItemCount")
-    attributes: Optional[Dict[str, StrictStr]] = Field(default=None, description="A map containing the identity attributes")
+    access_item_count: Optional[Dict[str, StrictInt]] = Field(default=None, description="A map containing the count of each access item", alias="accessItemCount")
+    attributes: Optional[Dict[str, Any]] = Field(default=None, description="A map containing the identity attributes")
     __properties: ClassVar[List[str]] = ["id", "displayName", "snapshot", "deletedDate", "accessItemCount", "attributes"]
 
     model_config = {
