@@ -107,9 +107,9 @@ class RoleInsightsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "RoleInsightsResponse",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -176,9 +176,9 @@ class RoleInsightsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "RoleInsightsResponse",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -245,9 +245,9 @@ class RoleInsightsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "RoleInsightsResponse",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -380,7 +380,7 @@ class RoleInsightsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -459,7 +459,7 @@ class RoleInsightsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -538,7 +538,7 @@ class RoleInsightsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -706,7 +706,7 @@ class RoleInsightsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleInsightsIdentities]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -805,7 +805,7 @@ class RoleInsightsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleInsightsIdentities]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -904,7 +904,7 @@ class RoleInsightsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleInsightsIdentities]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -1066,7 +1066,7 @@ class RoleInsightsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "RoleInsight",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -1137,7 +1137,7 @@ class RoleInsightsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "RoleInsight",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -1208,7 +1208,7 @@ class RoleInsightsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "RoleInsight",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -1353,7 +1353,7 @@ class RoleInsightsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleInsight]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -1440,7 +1440,7 @@ class RoleInsightsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleInsight]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -1527,7 +1527,7 @@ class RoleInsightsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleInsight]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -1682,7 +1682,7 @@ class RoleInsightsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleInsightsEntitlement]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -1757,7 +1757,7 @@ class RoleInsightsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleInsightsEntitlement]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -1832,7 +1832,7 @@ class RoleInsightsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleInsightsEntitlement]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -1974,7 +1974,7 @@ class RoleInsightsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleInsightsEntitlementChanges]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -2053,7 +2053,7 @@ class RoleInsightsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleInsightsEntitlementChanges]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -2132,7 +2132,7 @@ class RoleInsightsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleInsightsEntitlementChanges]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -2272,9 +2272,9 @@ class RoleInsightsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "RoleInsightsResponse",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2345,9 +2345,9 @@ class RoleInsightsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "RoleInsightsResponse",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2418,9 +2418,9 @@ class RoleInsightsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "RoleInsightsResponse",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2544,7 +2544,7 @@ class RoleInsightsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "RoleInsightsSummary",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -2611,7 +2611,7 @@ class RoleInsightsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "RoleInsightsSummary",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -2678,7 +2678,7 @@ class RoleInsightsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "RoleInsightsSummary",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }

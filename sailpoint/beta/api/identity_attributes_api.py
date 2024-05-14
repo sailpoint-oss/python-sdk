@@ -106,10 +106,10 @@ class IdentityAttributesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "IdentityAttribute",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -179,10 +179,10 @@ class IdentityAttributesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "IdentityAttribute",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -252,10 +252,10 @@ class IdentityAttributesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "IdentityAttribute",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -396,10 +396,10 @@ class IdentityAttributesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -469,10 +469,10 @@ class IdentityAttributesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -542,10 +542,10 @@ class IdentityAttributesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -673,10 +673,10 @@ class IdentityAttributesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -746,10 +746,10 @@ class IdentityAttributesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -819,10 +819,10 @@ class IdentityAttributesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -963,10 +963,10 @@ class IdentityAttributesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IdentityAttribute",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1036,10 +1036,10 @@ class IdentityAttributesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IdentityAttribute",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1109,10 +1109,10 @@ class IdentityAttributesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IdentityAttribute",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1252,9 +1252,9 @@ class IdentityAttributesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[IdentityAttribute]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1336,9 +1336,9 @@ class IdentityAttributesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[IdentityAttribute]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1420,9 +1420,9 @@ class IdentityAttributesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[IdentityAttribute]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1571,10 +1571,10 @@ class IdentityAttributesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IdentityAttribute",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1648,10 +1648,10 @@ class IdentityAttributesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IdentityAttribute",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1725,10 +1725,10 @@ class IdentityAttributesApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IdentityAttribute",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(

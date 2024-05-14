@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **direct_permissions** | [**List[PermissionDto]**](PermissionDto.md) |  | [optional] 
 **segments** | **List[str]** | List of IDs of segments, if any, to which this Entitlement is assigned. | [optional] 
 **manually_updated_fields** | [**EntitlementManuallyUpdatedFields**](EntitlementManuallyUpdatedFields.md) |  | [optional] 
+**access_model_metadata** | [**EntitlementAccessModelMetadata**](EntitlementAccessModelMetadata.md) |  | [optional] 
 
 ## Example
 

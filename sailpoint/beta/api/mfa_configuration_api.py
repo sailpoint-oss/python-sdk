@@ -110,9 +110,9 @@ class MFAConfigurationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "MfaOktaConfig",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -182,9 +182,9 @@ class MFAConfigurationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "MfaOktaConfig",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -254,9 +254,9 @@ class MFAConfigurationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "MfaOktaConfig",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -380,9 +380,9 @@ class MFAConfigurationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "MfaDuoConfig",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -448,9 +448,9 @@ class MFAConfigurationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "MfaDuoConfig",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -516,9 +516,9 @@ class MFAConfigurationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "MfaDuoConfig",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -643,9 +643,9 @@ class MFAConfigurationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[KbaQuestion]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -715,9 +715,9 @@ class MFAConfigurationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[KbaQuestion]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -787,9 +787,9 @@ class MFAConfigurationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[KbaQuestion]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -915,9 +915,9 @@ class MFAConfigurationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "MfaOktaConfig",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -983,9 +983,9 @@ class MFAConfigurationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "MfaOktaConfig",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1051,9 +1051,9 @@ class MFAConfigurationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "MfaOktaConfig",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1178,9 +1178,9 @@ class MFAConfigurationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "MfaDuoConfig",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1250,9 +1250,9 @@ class MFAConfigurationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "MfaDuoConfig",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1322,9 +1322,9 @@ class MFAConfigurationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "MfaDuoConfig",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1465,9 +1465,9 @@ class MFAConfigurationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "MfaOktaConfig",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1537,9 +1537,9 @@ class MFAConfigurationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "MfaOktaConfig",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1609,9 +1609,9 @@ class MFAConfigurationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "MfaOktaConfig",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1752,9 +1752,9 @@ class MFAConfigurationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[KbaAnswerResponseItem]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1824,9 +1824,9 @@ class MFAConfigurationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[KbaAnswerResponseItem]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1896,9 +1896,9 @@ class MFAConfigurationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[KbaAnswerResponseItem]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2040,9 +2040,9 @@ class MFAConfigurationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "MfaConfigTestResponse",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2112,9 +2112,9 @@ class MFAConfigurationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "MfaConfigTestResponse",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2184,9 +2184,9 @@ class MFAConfigurationApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "MfaConfigTestResponse",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(

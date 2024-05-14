@@ -26,6 +26,20 @@ class TestEntitlementsApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_create_access_model_metadata_for_entitlement(self) -> None:
+        """Test case for create_access_model_metadata_for_entitlement
+
+        Add metadata to an entitlement.
+        """
+        pass
+
+    def test_delete_access_model_metadata_from_entitlement(self) -> None:
+        """Test case for delete_access_model_metadata_from_entitlement
+
+        Remove metadata from an entitlement.
+        """
+        pass
+
     def test_get_entitlement(self) -> None:
         """Test case for get_entitlement
 

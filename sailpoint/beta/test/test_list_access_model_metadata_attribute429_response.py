@@ -15,10 +15,10 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.list_access_profiles429_response import ListAccessProfiles429Response
+from sailpoint.beta.models.list_access_model_metadata_attribute429_response import ListAccessModelMetadataAttribute429Response
 
-class TestListAccessProfiles429Response(unittest.TestCase):
-    """ListAccessProfiles429Response unit test stubs"""
+class TestListAccessModelMetadataAttribute429Response(unittest.TestCase):
+    """ListAccessModelMetadataAttribute429Response unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,25 +26,25 @@ class TestListAccessProfiles429Response(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ListAccessProfiles429Response:
-        """Test ListAccessProfiles429Response
+    def make_instance(self, include_optional) -> ListAccessModelMetadataAttribute429Response:
+        """Test ListAccessModelMetadataAttribute429Response
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ListAccessProfiles429Response`
+        # uncomment below to create an instance of `ListAccessModelMetadataAttribute429Response`
         """
-        model = ListAccessProfiles429Response()
+        model = ListAccessModelMetadataAttribute429Response()
         if include_optional:
-            return ListAccessProfiles429Response(
+            return ListAccessModelMetadataAttribute429Response(
                 message =  Rate Limit Exceeded 
             )
         else:
-            return ListAccessProfiles429Response(
+            return ListAccessModelMetadataAttribute429Response(
         )
         """
 
-    def testListAccessProfiles429Response(self):
-        """Test ListAccessProfiles429Response"""
+    def testListAccessModelMetadataAttribute429Response(self):
+        """Test ListAccessModelMetadataAttribute429Response"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

@@ -15,10 +15,10 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.list_access_profiles401_response import ListAccessProfiles401Response
+from sailpoint.beta.models.entitlement_access_model_metadata import EntitlementAccessModelMetadata
 
-class TestListAccessProfiles401Response(unittest.TestCase):
-    """ListAccessProfiles401Response unit test stubs"""
+class TestEntitlementAccessModelMetadata(unittest.TestCase):
+    """EntitlementAccessModelMetadata unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,25 +26,25 @@ class TestListAccessProfiles401Response(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ListAccessProfiles401Response:
-        """Test ListAccessProfiles401Response
+    def make_instance(self, include_optional) -> EntitlementAccessModelMetadata:
+        """Test EntitlementAccessModelMetadata
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ListAccessProfiles401Response`
+        # uncomment below to create an instance of `EntitlementAccessModelMetadata`
         """
-        model = ListAccessProfiles401Response()
+        model = EntitlementAccessModelMetadata()
         if include_optional:
-            return ListAccessProfiles401Response(
-                error = JWT validation failed: JWT is expired
+            return EntitlementAccessModelMetadata(
+                attributes = [{key=iscPrivacy, name=Privacy, multiselect=false, status=active, type=governance, objectTypes=[all], description=Specifies the level of privacy associated with an access item., values=[{value=public, name=Public, status=active}]}]
             )
         else:
-            return ListAccessProfiles401Response(
+            return EntitlementAccessModelMetadata(
         )
         """
 
-    def testListAccessProfiles401Response(self):
-        """Test ListAccessProfiles401Response"""
+    def testEntitlementAccessModelMetadata(self):
+        """Test EntitlementAccessModelMetadata"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

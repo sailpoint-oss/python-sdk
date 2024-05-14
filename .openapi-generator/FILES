@@ -1,6 +1,7 @@
 sailpoint/__init__.py
 sailpoint/beta/__init__.py
 sailpoint/beta/api/__init__.py
+sailpoint/beta/api/access_model_metadata_api.py
 sailpoint/beta/api/access_profiles_api.py
 sailpoint/beta/api/access_request_approvals_api.py
 sailpoint/beta/api/access_request_identity_metrics_api.py
@@ -96,6 +97,7 @@ sailpoint/beta/docs/AccessItemRequester.md
 sailpoint/beta/docs/AccessItemRequesterDto.md
 sailpoint/beta/docs/AccessItemReviewedBy.md
 sailpoint/beta/docs/AccessItemRoleResponse.md
+sailpoint/beta/docs/AccessModelMetadataApi.md
 sailpoint/beta/docs/AccessProfile.md
 sailpoint/beta/docs/AccessProfileApprovalScheme.md
 sailpoint/beta/docs/AccessProfileBulkDeleteRequest.md
@@ -210,9 +212,12 @@ sailpoint/beta/docs/AttrSyncSource.md
 sailpoint/beta/docs/AttrSyncSourceAttributeConfig.md
 sailpoint/beta/docs/AttrSyncSourceConfig.md
 sailpoint/beta/docs/AttributeChange.md
+sailpoint/beta/docs/AttributeDTO.md
+sailpoint/beta/docs/AttributeDTOList.md
 sailpoint/beta/docs/AttributeDefinition.md
 sailpoint/beta/docs/AttributeDefinitionSchema.md
 sailpoint/beta/docs/AttributeDefinitionType.md
+sailpoint/beta/docs/AttributeValueDTO.md
 sailpoint/beta/docs/AttributesChanged.md
 sailpoint/beta/docs/AuditDetails.md
 sailpoint/beta/docs/AuthProfile.md
@@ -331,6 +336,7 @@ sailpoint/beta/docs/DuoVerificationRequest.md
 sailpoint/beta/docs/EmailNotificationOption.md
 sailpoint/beta/docs/EmailStatusDto.md
 sailpoint/beta/docs/Entitlement.md
+sailpoint/beta/docs/EntitlementAccessModelMetadata.md
 sailpoint/beta/docs/EntitlementAccessRequestConfig.md
 sailpoint/beta/docs/EntitlementApprovalScheme.md
 sailpoint/beta/docs/EntitlementBulkUpdateRequest.md
@@ -492,8 +498,8 @@ sailpoint/beta/docs/License.md
 sailpoint/beta/docs/LifecycleState.md
 sailpoint/beta/docs/LifecycleStateDto.md
 sailpoint/beta/docs/LifecycleStatesApi.md
-sailpoint/beta/docs/ListAccessProfiles401Response.md
-sailpoint/beta/docs/ListAccessProfiles429Response.md
+sailpoint/beta/docs/ListAccessModelMetadataAttribute401Response.md
+sailpoint/beta/docs/ListAccessModelMetadataAttribute429Response.md
 sailpoint/beta/docs/ListCompleteWorkflowLibrary200ResponseInner.md
 sailpoint/beta/docs/ListFormDefinitionsByTenantResponse.md
 sailpoint/beta/docs/ListFormElementDataByElementIDResponse.md
@@ -1080,6 +1086,9 @@ sailpoint/beta/models/attribute_change.py
 sailpoint/beta/models/attribute_definition.py
 sailpoint/beta/models/attribute_definition_schema.py
 sailpoint/beta/models/attribute_definition_type.py
+sailpoint/beta/models/attribute_dto.py
+sailpoint/beta/models/attribute_dto_list.py
+sailpoint/beta/models/attribute_value_dto.py
 sailpoint/beta/models/attributes_changed.py
 sailpoint/beta/models/audit_details.py
 sailpoint/beta/models/auth_profile.py
@@ -1190,6 +1199,7 @@ sailpoint/beta/models/duo_verification_request.py
 sailpoint/beta/models/email_notification_option.py
 sailpoint/beta/models/email_status_dto.py
 sailpoint/beta/models/entitlement.py
+sailpoint/beta/models/entitlement_access_model_metadata.py
 sailpoint/beta/models/entitlement_access_request_config.py
 sailpoint/beta/models/entitlement_approval_scheme.py
 sailpoint/beta/models/entitlement_bulk_update_request.py
@@ -1336,8 +1346,8 @@ sailpoint/beta/models/latest_outlier_summary.py
 sailpoint/beta/models/license.py
 sailpoint/beta/models/lifecycle_state.py
 sailpoint/beta/models/lifecycle_state_dto.py
-sailpoint/beta/models/list_access_profiles401_response.py
-sailpoint/beta/models/list_access_profiles429_response.py
+sailpoint/beta/models/list_access_model_metadata_attribute401_response.py
+sailpoint/beta/models/list_access_model_metadata_attribute429_response.py
 sailpoint/beta/models/list_complete_workflow_library200_response_inner.py
 sailpoint/beta/models/list_form_definitions_by_tenant_response.py
 sailpoint/beta/models/list_form_element_data_by_element_id_response.py
@@ -1776,6 +1786,7 @@ sailpoint/beta/test/test_access_item_requester.py
 sailpoint/beta/test/test_access_item_requester_dto.py
 sailpoint/beta/test/test_access_item_reviewed_by.py
 sailpoint/beta/test/test_access_item_role_response.py
+sailpoint/beta/test/test_access_model_metadata_api.py
 sailpoint/beta/test/test_access_profile.py
 sailpoint/beta/test/test_access_profile_approval_scheme.py
 sailpoint/beta/test/test_access_profile_bulk_delete_request.py
@@ -1893,6 +1904,9 @@ sailpoint/beta/test/test_attribute_change.py
 sailpoint/beta/test/test_attribute_definition.py
 sailpoint/beta/test/test_attribute_definition_schema.py
 sailpoint/beta/test/test_attribute_definition_type.py
+sailpoint/beta/test/test_attribute_dto.py
+sailpoint/beta/test/test_attribute_dto_list.py
+sailpoint/beta/test/test_attribute_value_dto.py
 sailpoint/beta/test/test_attributes_changed.py
 sailpoint/beta/test/test_audit_details.py
 sailpoint/beta/test/test_auth_profile.py
@@ -2011,6 +2025,7 @@ sailpoint/beta/test/test_duo_verification_request.py
 sailpoint/beta/test/test_email_notification_option.py
 sailpoint/beta/test/test_email_status_dto.py
 sailpoint/beta/test/test_entitlement.py
+sailpoint/beta/test/test_entitlement_access_model_metadata.py
 sailpoint/beta/test/test_entitlement_access_request_config.py
 sailpoint/beta/test/test_entitlement_approval_scheme.py
 sailpoint/beta/test/test_entitlement_bulk_update_request.py
@@ -2172,8 +2187,8 @@ sailpoint/beta/test/test_license.py
 sailpoint/beta/test/test_lifecycle_state.py
 sailpoint/beta/test/test_lifecycle_state_dto.py
 sailpoint/beta/test/test_lifecycle_states_api.py
-sailpoint/beta/test/test_list_access_profiles401_response.py
-sailpoint/beta/test/test_list_access_profiles429_response.py
+sailpoint/beta/test/test_list_access_model_metadata_attribute401_response.py
+sailpoint/beta/test/test_list_access_model_metadata_attribute429_response.py
 sailpoint/beta/test/test_list_complete_workflow_library200_response_inner.py
 sailpoint/beta/test/test_list_form_definitions_by_tenant_response.py
 sailpoint/beta/test/test_list_form_element_data_by_element_id_response.py

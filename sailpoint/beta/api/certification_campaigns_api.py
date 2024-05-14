@@ -124,10 +124,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -202,10 +202,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -280,10 +280,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -428,9 +428,9 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Campaign",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -501,9 +501,9 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Campaign",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -574,9 +574,9 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Campaign",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -718,9 +718,9 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CampaignTemplate",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -791,9 +791,9 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CampaignTemplate",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -864,9 +864,9 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CampaignTemplate",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1009,9 +1009,9 @@ class CertificationCampaignsApi:
             '204': None,
             '400': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1083,9 +1083,9 @@ class CertificationCampaignsApi:
             '204': None,
             '400': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1157,9 +1157,9 @@ class CertificationCampaignsApi:
             '204': None,
             '400': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1288,10 +1288,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1362,10 +1362,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1436,10 +1436,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1568,10 +1568,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1642,10 +1642,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1716,10 +1716,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1881,9 +1881,9 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[GetActiveCampaigns200ResponseInner]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1974,9 +1974,9 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[GetActiveCampaigns200ResponseInner]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2067,9 +2067,9 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[GetActiveCampaigns200ResponseInner]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2225,10 +2225,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Slimcampaign",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2299,10 +2299,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Slimcampaign",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2373,10 +2373,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Slimcampaign",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2505,10 +2505,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[CampaignReport]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2579,10 +2579,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[CampaignReport]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2653,10 +2653,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[CampaignReport]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2781,9 +2781,9 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CampaignReportsConfig",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2850,9 +2850,9 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CampaignReportsConfig",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2919,9 +2919,9 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CampaignReportsConfig",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -3047,10 +3047,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CampaignTemplate",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -3121,10 +3121,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CampaignTemplate",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -3195,10 +3195,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CampaignTemplate",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -3327,10 +3327,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Schedule",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -3401,10 +3401,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Schedule",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -3475,10 +3475,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Schedule",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -3623,9 +3623,9 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[CampaignTemplate]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -3712,9 +3712,9 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[CampaignTemplate]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -3801,9 +3801,9 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[CampaignTemplate]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -3958,10 +3958,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "CertificationTask",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -4036,10 +4036,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "CertificationTask",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -4114,10 +4114,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "CertificationTask",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -4266,10 +4266,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CampaignTemplate",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -4344,10 +4344,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CampaignTemplate",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -4422,10 +4422,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CampaignTemplate",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -4571,9 +4571,9 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CampaignReportsConfig",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -4644,9 +4644,9 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CampaignReportsConfig",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -4717,9 +4717,9 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CampaignReportsConfig",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -4864,11 +4864,11 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '400': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -4942,11 +4942,11 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '400': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -5020,11 +5020,11 @@ class CertificationCampaignsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '400': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -5173,10 +5173,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -5251,10 +5251,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -5329,10 +5329,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -5477,10 +5477,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -5551,10 +5551,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -5625,10 +5625,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -5761,10 +5761,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -5839,10 +5839,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -5917,10 +5917,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -6052,9 +6052,9 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CampaignReference",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -6125,9 +6125,9 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CampaignReference",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -6198,9 +6198,9 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "CampaignReference",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -6333,10 +6333,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Slimcampaign",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -6411,10 +6411,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Slimcampaign",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -6489,10 +6489,10 @@ class CertificationCampaignsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Slimcampaign",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(

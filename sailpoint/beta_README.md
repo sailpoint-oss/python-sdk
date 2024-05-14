@@ -53,16 +53,16 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = sailpoint.beta.AccessProfilesApi(api_client)
-    access_profile = sailpoint.beta.AccessProfile() # AccessProfile | 
+    api_instance = sailpoint.beta.AccessModelMetadataApi(api_client)
+    key = 'iscPrivacy' # str | Technical name of the Attribute.
 
     try:
-        # Create an Access Profile
-        api_response = api_instance.create_access_profile(access_profile)
-        print("The response of AccessProfilesApi->create_access_profile:\n")
+        # Get Access Model Metadata Attribute
+        api_response = api_instance.get_access_model_metadata_attribute(key)
+        print("The response of AccessModelMetadataApi->get_access_model_metadata_attribute:\n")
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling AccessProfilesApi->create_access_profile: %s\n" % e)
+        print("Exception when calling AccessModelMetadataApi->get_access_model_metadata_attribute: %s\n" % e)
 
 ```
 
@@ -72,6 +72,10 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AccessModelMetadataApi* | [**get_access_model_metadata_attribute**](sailpoint/beta/docs/AccessModelMetadataApi.md#get_access_model_metadata_attribute) | **GET** /access-model-metadata/attributes/{key} | Get Access Model Metadata Attribute
+*AccessModelMetadataApi* | [**get_access_model_metadata_attribute_value**](sailpoint/beta/docs/AccessModelMetadataApi.md#get_access_model_metadata_attribute_value) | **GET** /access-model-metadata/attributes/{key}/values/{value} | Get Access Model Metadata Value
+*AccessModelMetadataApi* | [**list_access_model_metadata_attribute**](sailpoint/beta/docs/AccessModelMetadataApi.md#list_access_model_metadata_attribute) | **GET** /access-model-metadata/attributes | List Access Model Metadata Attributes
+*AccessModelMetadataApi* | [**list_access_model_metadata_attribute_value**](sailpoint/beta/docs/AccessModelMetadataApi.md#list_access_model_metadata_attribute_value) | **GET** /access-model-metadata/attributes/{key}/values | List Access Model Metadata Values
 *AccessProfilesApi* | [**create_access_profile**](sailpoint/beta/docs/AccessProfilesApi.md#create_access_profile) | **POST** /access-profiles | Create an Access Profile
 *AccessProfilesApi* | [**delete_access_profile**](sailpoint/beta/docs/AccessProfilesApi.md#delete_access_profile) | **DELETE** /access-profiles/{id} | Delete the specified Access Profile
 *AccessProfilesApi* | [**delete_access_profiles_in_bulk**](sailpoint/beta/docs/AccessProfilesApi.md#delete_access_profiles_in_bulk) | **POST** /access-profiles/bulk-delete | Delete Access Profile(s)
@@ -176,6 +180,8 @@ Class | Method | HTTP request | Description
 *CustomPasswordInstructionsApi* | [**delete_custom_password_instructions**](sailpoint/beta/docs/CustomPasswordInstructionsApi.md#delete_custom_password_instructions) | **DELETE** /custom-password-instructions/{pageId} | Delete Custom Password Instructions by page ID
 *CustomPasswordInstructionsApi* | [**get_custom_password_instructions**](sailpoint/beta/docs/CustomPasswordInstructionsApi.md#get_custom_password_instructions) | **GET** /custom-password-instructions/{pageId} | Get Custom Password Instructions by Page ID
 *DiscoveredApplicationsApi* | [**get_discovered_applications**](sailpoint/beta/docs/DiscoveredApplicationsApi.md#get_discovered_applications) | **GET** /discovered-applications | Retrieve discovered applications for tenant
+*EntitlementsApi* | [**create_access_model_metadata_for_entitlement**](sailpoint/beta/docs/EntitlementsApi.md#create_access_model_metadata_for_entitlement) | **POST** /entitlements/{id}/access-model-metadata/{attributeKey}/values/{attributeValue} | Add metadata to an entitlement.
+*EntitlementsApi* | [**delete_access_model_metadata_from_entitlement**](sailpoint/beta/docs/EntitlementsApi.md#delete_access_model_metadata_from_entitlement) | **DELETE** /entitlements/{id}/access-model-metadata/{attributeKey}/values/{attributeValue} | Remove metadata from an entitlement.
 *EntitlementsApi* | [**get_entitlement**](sailpoint/beta/docs/EntitlementsApi.md#get_entitlement) | **GET** /entitlements/{id} | Get an entitlement
 *EntitlementsApi* | [**get_entitlement_request_config**](sailpoint/beta/docs/EntitlementsApi.md#get_entitlement_request_config) | **GET** /entitlements/{id}/entitlement-request-config | Get Entitlement Request Config
 *EntitlementsApi* | [**import_entitlements**](sailpoint/beta/docs/EntitlementsApi.md#import_entitlements) | **POST** /entitlements/aggregate/sources/{id} | Aggregate Entitlements
@@ -700,9 +706,12 @@ Class | Method | HTTP request | Description
  - [AttrSyncSourceAttributeConfig](sailpoint/beta/docs/AttrSyncSourceAttributeConfig.md)
  - [AttrSyncSourceConfig](sailpoint/beta/docs/AttrSyncSourceConfig.md)
  - [AttributeChange](sailpoint/beta/docs/AttributeChange.md)
+ - [AttributeDTO](sailpoint/beta/docs/AttributeDTO.md)
+ - [AttributeDTOList](sailpoint/beta/docs/AttributeDTOList.md)
  - [AttributeDefinition](sailpoint/beta/docs/AttributeDefinition.md)
  - [AttributeDefinitionSchema](sailpoint/beta/docs/AttributeDefinitionSchema.md)
  - [AttributeDefinitionType](sailpoint/beta/docs/AttributeDefinitionType.md)
+ - [AttributeValueDTO](sailpoint/beta/docs/AttributeValueDTO.md)
  - [AttributesChanged](sailpoint/beta/docs/AttributesChanged.md)
  - [AuditDetails](sailpoint/beta/docs/AuditDetails.md)
  - [AuthProfile](sailpoint/beta/docs/AuthProfile.md)
@@ -813,6 +822,7 @@ Class | Method | HTTP request | Description
  - [EmailNotificationOption](sailpoint/beta/docs/EmailNotificationOption.md)
  - [EmailStatusDto](sailpoint/beta/docs/EmailStatusDto.md)
  - [Entitlement](sailpoint/beta/docs/Entitlement.md)
+ - [EntitlementAccessModelMetadata](sailpoint/beta/docs/EntitlementAccessModelMetadata.md)
  - [EntitlementAccessRequestConfig](sailpoint/beta/docs/EntitlementAccessRequestConfig.md)
  - [EntitlementApprovalScheme](sailpoint/beta/docs/EntitlementApprovalScheme.md)
  - [EntitlementBulkUpdateRequest](sailpoint/beta/docs/EntitlementBulkUpdateRequest.md)
@@ -959,8 +969,8 @@ Class | Method | HTTP request | Description
  - [License](sailpoint/beta/docs/License.md)
  - [LifecycleState](sailpoint/beta/docs/LifecycleState.md)
  - [LifecycleStateDto](sailpoint/beta/docs/LifecycleStateDto.md)
- - [ListAccessProfiles401Response](sailpoint/beta/docs/ListAccessProfiles401Response.md)
- - [ListAccessProfiles429Response](sailpoint/beta/docs/ListAccessProfiles429Response.md)
+ - [ListAccessModelMetadataAttribute401Response](sailpoint/beta/docs/ListAccessModelMetadataAttribute401Response.md)
+ - [ListAccessModelMetadataAttribute429Response](sailpoint/beta/docs/ListAccessModelMetadataAttribute429Response.md)
  - [ListCompleteWorkflowLibrary200ResponseInner](sailpoint/beta/docs/ListCompleteWorkflowLibrary200ResponseInner.md)
  - [ListFormDefinitionsByTenantResponse](sailpoint/beta/docs/ListFormDefinitionsByTenantResponse.md)
  - [ListFormElementDataByElementIDResponse](sailpoint/beta/docs/ListFormElementDataByElementIDResponse.md)

@@ -61,7 +61,8 @@ class TestEntitlement(unittest.TestCase):
                         target = 'SYS.GV_$TRANSACTION', )
                     ],
                 segments = [f7b1b8a3-5fed-4fd4-ad29-82014e137e19, 29cb6c06-1da8-43ea-8be4-b3125f248f2a],
-                manually_updated_fields = None
+                manually_updated_fields = None,
+                access_model_metadata = None
             )
         else:
             return Entitlement(

@@ -112,9 +112,9 @@ class WorkReassignmentApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "ConfigurationItemResponse",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -184,9 +184,9 @@ class WorkReassignmentApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "ConfigurationItemResponse",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -256,9 +256,9 @@ class WorkReassignmentApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "ConfigurationItemResponse",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -399,9 +399,9 @@ class WorkReassignmentApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -471,9 +471,9 @@ class WorkReassignmentApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -543,9 +543,9 @@ class WorkReassignmentApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -681,9 +681,9 @@ class WorkReassignmentApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[EvaluateResponse]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -761,9 +761,9 @@ class WorkReassignmentApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[EvaluateResponse]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -841,9 +841,9 @@ class WorkReassignmentApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[EvaluateResponse]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -976,9 +976,9 @@ class WorkReassignmentApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ConfigType]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1044,9 +1044,9 @@ class WorkReassignmentApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ConfigType]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1112,9 +1112,9 @@ class WorkReassignmentApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ConfigType]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1239,10 +1239,10 @@ class WorkReassignmentApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ConfigurationResponse",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1312,10 +1312,10 @@ class WorkReassignmentApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ConfigurationResponse",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1385,10 +1385,10 @@ class WorkReassignmentApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ConfigurationResponse",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1512,10 +1512,10 @@ class WorkReassignmentApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "TenantConfigurationResponse",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1581,10 +1581,10 @@ class WorkReassignmentApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "TenantConfigurationResponse",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1650,10 +1650,10 @@ class WorkReassignmentApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "TenantConfigurationResponse",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1774,10 +1774,10 @@ class WorkReassignmentApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ConfigurationResponse]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1843,10 +1843,10 @@ class WorkReassignmentApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ConfigurationResponse]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1912,10 +1912,10 @@ class WorkReassignmentApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ConfigurationResponse]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2044,9 +2044,9 @@ class WorkReassignmentApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ConfigurationItemResponse",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2120,9 +2120,9 @@ class WorkReassignmentApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ConfigurationItemResponse",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2196,9 +2196,9 @@ class WorkReassignmentApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ConfigurationItemResponse",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2342,9 +2342,9 @@ class WorkReassignmentApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "TenantConfigurationResponse",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2414,9 +2414,9 @@ class WorkReassignmentApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "TenantConfigurationResponse",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2486,9 +2486,9 @@ class WorkReassignmentApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "TenantConfigurationResponse",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(

@@ -17,6 +17,7 @@
 __version__ = "1.0.4"
 
 # import apis into sdk package
+from sailpoint.beta.api.access_model_metadata_api import AccessModelMetadataApi
 from sailpoint.beta.api.access_profiles_api import AccessProfilesApi
 from sailpoint.beta.api.access_request_approvals_api import AccessRequestApprovalsApi
 from sailpoint.beta.api.access_request_identity_metrics_api import AccessRequestIdentityMetricsApi
@@ -227,9 +228,12 @@ from sailpoint.beta.models.attr_sync_source import AttrSyncSource
 from sailpoint.beta.models.attr_sync_source_attribute_config import AttrSyncSourceAttributeConfig
 from sailpoint.beta.models.attr_sync_source_config import AttrSyncSourceConfig
 from sailpoint.beta.models.attribute_change import AttributeChange
+from sailpoint.beta.models.attribute_dto import AttributeDTO
+from sailpoint.beta.models.attribute_dto_list import AttributeDTOList
 from sailpoint.beta.models.attribute_definition import AttributeDefinition
 from sailpoint.beta.models.attribute_definition_schema import AttributeDefinitionSchema
 from sailpoint.beta.models.attribute_definition_type import AttributeDefinitionType
+from sailpoint.beta.models.attribute_value_dto import AttributeValueDTO
 from sailpoint.beta.models.attributes_changed import AttributesChanged
 from sailpoint.beta.models.audit_details import AuditDetails
 from sailpoint.beta.models.auth_profile import AuthProfile
@@ -340,6 +344,7 @@ from sailpoint.beta.models.duo_verification_request import DuoVerificationReques
 from sailpoint.beta.models.email_notification_option import EmailNotificationOption
 from sailpoint.beta.models.email_status_dto import EmailStatusDto
 from sailpoint.beta.models.entitlement import Entitlement
+from sailpoint.beta.models.entitlement_access_model_metadata import EntitlementAccessModelMetadata
 from sailpoint.beta.models.entitlement_access_request_config import EntitlementAccessRequestConfig
 from sailpoint.beta.models.entitlement_approval_scheme import EntitlementApprovalScheme
 from sailpoint.beta.models.entitlement_bulk_update_request import EntitlementBulkUpdateRequest
@@ -486,8 +491,8 @@ from sailpoint.beta.models.latest_outlier_summary import LatestOutlierSummary
 from sailpoint.beta.models.license import License
 from sailpoint.beta.models.lifecycle_state import LifecycleState
 from sailpoint.beta.models.lifecycle_state_dto import LifecycleStateDto
-from sailpoint.beta.models.list_access_profiles401_response import ListAccessProfiles401Response
-from sailpoint.beta.models.list_access_profiles429_response import ListAccessProfiles429Response
+from sailpoint.beta.models.list_access_model_metadata_attribute401_response import ListAccessModelMetadataAttribute401Response
+from sailpoint.beta.models.list_access_model_metadata_attribute429_response import ListAccessModelMetadataAttribute429Response
 from sailpoint.beta.models.list_complete_workflow_library200_response_inner import ListCompleteWorkflowLibrary200ResponseInner
 from sailpoint.beta.models.list_form_definitions_by_tenant_response import ListFormDefinitionsByTenantResponse
 from sailpoint.beta.models.list_form_element_data_by_element_id_response import ListFormElementDataByElementIDResponse

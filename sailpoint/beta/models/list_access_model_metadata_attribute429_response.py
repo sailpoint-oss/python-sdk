@@ -26,9 +26,9 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-class ListAccessProfiles429Response(BaseModel):
+class ListAccessModelMetadataAttribute429Response(BaseModel):
     """
-    ListAccessProfiles429Response
+    ListAccessModelMetadataAttribute429Response
     """ # noqa: E501
     message: Optional[Dict[str, Any]] = Field(default=None, description="A message describing the error")
     __properties: ClassVar[List[str]] = ["message"]
@@ -51,7 +51,7 @@ class ListAccessProfiles429Response(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
-        """Create an instance of ListAccessProfiles429Response from a JSON string"""
+        """Create an instance of ListAccessModelMetadataAttribute429Response from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -74,7 +74,7 @@ class ListAccessProfiles429Response(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Dict) -> Self:
-        """Create an instance of ListAccessProfiles429Response from a dict"""
+        """Create an instance of ListAccessModelMetadataAttribute429Response from a dict"""
         if obj is None:
             return None
 

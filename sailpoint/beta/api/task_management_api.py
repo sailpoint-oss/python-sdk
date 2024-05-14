@@ -716,8 +716,8 @@ class TaskManagementApi:
             '403': None,
             '404': None,
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
-            '429': "ListAccessProfiles429Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -789,8 +789,8 @@ class TaskManagementApi:
             '403': None,
             '404': None,
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
-            '429': "ListAccessProfiles429Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -862,8 +862,8 @@ class TaskManagementApi:
             '403': None,
             '404': None,
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
-            '429': "ListAccessProfiles429Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1007,10 +1007,10 @@ class TaskManagementApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[TaskStatus]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1096,10 +1096,10 @@ class TaskManagementApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[TaskStatus]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1185,10 +1185,10 @@ class TaskManagementApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[TaskStatus]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1344,8 +1344,8 @@ class TaskManagementApi:
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
-            '429': "ListAccessProfiles429Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1421,8 +1421,8 @@ class TaskManagementApi:
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
-            '429': "ListAccessProfiles429Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1498,8 +1498,8 @@ class TaskManagementApi:
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
-            '429': "ListAccessProfiles429Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(

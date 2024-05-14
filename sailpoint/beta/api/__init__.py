@@ -1,6 +1,7 @@
 # flake8: noqa
 
 # import apis into api package
+from sailpoint.beta.api.access_model_metadata_api import AccessModelMetadataApi
 from sailpoint.beta.api.access_profiles_api import AccessProfilesApi
 from sailpoint.beta.api.access_request_approvals_api import AccessRequestApprovalsApi
 from sailpoint.beta.api.access_request_identity_metrics_api import AccessRequestIdentityMetricsApi

@@ -136,7 +136,7 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "RoleMiningPotentialRoleSummary",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '500': "ErrorResponseDto",
@@ -224,7 +224,7 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "RoleMiningPotentialRoleSummary",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '500': "ErrorResponseDto",
@@ -312,7 +312,7 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "RoleMiningPotentialRoleSummary",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '500': "ErrorResponseDto",
@@ -471,9 +471,9 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "RoleMiningSessionResponse",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -543,9 +543,9 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "RoleMiningSessionResponse",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -615,9 +615,9 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "RoleMiningSessionResponse",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -766,7 +766,7 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -845,7 +845,7 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -924,7 +924,7 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -1064,7 +1064,7 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -1139,7 +1139,7 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -1214,7 +1214,7 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -1355,7 +1355,7 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "RoleMiningPotentialRoleExportResponse",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -1434,7 +1434,7 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "RoleMiningPotentialRoleExportResponse",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -1513,7 +1513,7 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "RoleMiningPotentialRoleExportResponse",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -1669,7 +1669,7 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "RoleMiningPotentialRoleExportResponse",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -1748,7 +1748,7 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "RoleMiningPotentialRoleExportResponse",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -1827,7 +1827,7 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "RoleMiningPotentialRoleExportResponse",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -1978,9 +1978,9 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleMiningPotentialRoleSummary]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2066,9 +2066,9 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleMiningPotentialRoleSummary]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2154,9 +2154,9 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleMiningPotentialRoleSummary]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2314,7 +2314,7 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Dict[str, int]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -2393,7 +2393,7 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Dict[str, int]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -2472,7 +2472,7 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Dict[str, int]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -2637,9 +2637,9 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleMiningEntitlement]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2737,9 +2737,9 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleMiningEntitlement]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2837,9 +2837,9 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleMiningEntitlement]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -3024,7 +3024,7 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleMiningEntitlement]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -3119,7 +3119,7 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleMiningEntitlement]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -3214,7 +3214,7 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleMiningEntitlement]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -3395,7 +3395,7 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleMiningIdentity]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -3490,7 +3490,7 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleMiningIdentity]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -3585,7 +3585,7 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleMiningIdentity]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -3746,9 +3746,9 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "RoleMiningPotentialRole",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -3822,9 +3822,9 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "RoleMiningPotentialRole",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -3898,9 +3898,9 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "RoleMiningPotentialRole",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -4047,7 +4047,7 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleMiningPotentialRoleApplication]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -4134,7 +4134,7 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleMiningPotentialRoleApplication]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -4221,7 +4221,7 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleMiningPotentialRoleApplication]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -4388,9 +4388,9 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleMiningPotentialRoleSourceUsage]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -4480,9 +4480,9 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleMiningPotentialRoleSourceUsage]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -4572,9 +4572,9 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleMiningPotentialRoleSourceUsage]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -4745,9 +4745,9 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleMiningPotentialRoleSummary]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -4837,9 +4837,9 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleMiningPotentialRoleSummary]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -4929,9 +4929,9 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleMiningPotentialRoleSummary]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -5084,9 +5084,9 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "RoleMiningPotentialRole",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -5156,9 +5156,9 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "RoleMiningPotentialRole",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -5228,9 +5228,9 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "RoleMiningPotentialRole",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -5361,7 +5361,7 @@ class IAIRoleMiningApi:
             '401': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -5434,7 +5434,7 @@ class IAIRoleMiningApi:
             '401': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -5507,7 +5507,7 @@ class IAIRoleMiningApi:
             '401': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -5635,7 +5635,7 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "RoleMiningSessionStatus",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -5706,7 +5706,7 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "RoleMiningSessionStatus",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -5777,7 +5777,7 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "RoleMiningSessionStatus",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -5922,9 +5922,9 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleMiningSessionDto]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -6010,9 +6010,9 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleMiningSessionDto]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -6098,9 +6098,9 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleMiningSessionDto]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -6262,9 +6262,9 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleMiningSessionDraftRoleDto]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -6346,9 +6346,9 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleMiningSessionDraftRoleDto]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -6430,9 +6430,9 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[RoleMiningSessionDraftRoleDto]",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -6585,10 +6585,10 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -6666,10 +6666,10 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -6747,10 +6747,10 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -6906,10 +6906,10 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -6987,10 +6987,10 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -7068,10 +7068,10 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -7223,10 +7223,10 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -7300,10 +7300,10 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -7377,10 +7377,10 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -7533,7 +7533,7 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "RoleMiningPotentialRole",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -7612,7 +7612,7 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "RoleMiningPotentialRole",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }
@@ -7691,7 +7691,7 @@ class IAIRoleMiningApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "RoleMiningPotentialRole",
             '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '500': "ErrorResponseDto",
         }

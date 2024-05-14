@@ -21,6 +21,7 @@ from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
 from pydantic import Field
+from sailpoint.beta.models.entitlement_access_model_metadata import EntitlementAccessModelMetadata
 from sailpoint.beta.models.entitlement_manually_updated_fields import EntitlementManuallyUpdatedFields
 from sailpoint.beta.models.entitlement_owner import EntitlementOwner
 from sailpoint.beta.models.entitlement_source import EntitlementSource
@@ -51,7 +52,8 @@ class Entitlement(BaseModel):
     direct_permissions: Optional[List[PermissionDto]] = Field(default=None, alias="directPermissions")
     segments: Optional[List[StrictStr]] = Field(default=None, description="List of IDs of segments, if any, to which this Entitlement is assigned.")
     manually_updated_fields: Optional[EntitlementManuallyUpdatedFields] = Field(default=None, alias="manuallyUpdatedFields")
-    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "attribute", "value", "sourceSchemaObjectType", "privileged", "cloudGoverned", "description", "requestable", "attributes", "source", "owner", "directPermissions", "segments", "manuallyUpdatedFields"]
+    access_model_metadata: Optional[EntitlementAccessModelMetadata] = Field(default=None, alias="accessModelMetadata")
+    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "attribute", "value", "sourceSchemaObjectType", "privileged", "cloudGoverned", "description", "requestable", "attributes", "source", "owner", "directPermissions", "segments", "manuallyUpdatedFields", "accessModelMetadata"]
 
     model_config = {
         "populate_by_name": True,
@@ -106,6 +108,9 @@ class Entitlement(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of manually_updated_fields
         if self.manually_updated_fields:
             _dict['manuallyUpdatedFields'] = self.manually_updated_fields.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of access_model_metadata
+        if self.access_model_metadata:
+            _dict['accessModelMetadata'] = self.access_model_metadata.to_dict()
         # set to None if attribute (nullable) is None
         # and model_fields_set contains the field
         if self.attribute is None and "attribute" in self.model_fields_set:
@@ -149,7 +154,8 @@ class Entitlement(BaseModel):
             "owner": EntitlementOwner.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
             "directPermissions": [PermissionDto.from_dict(_item) for _item in obj.get("directPermissions")] if obj.get("directPermissions") is not None else None,
             "segments": obj.get("segments"),
-            "manuallyUpdatedFields": EntitlementManuallyUpdatedFields.from_dict(obj.get("manuallyUpdatedFields")) if obj.get("manuallyUpdatedFields") is not None else None
+            "manuallyUpdatedFields": EntitlementManuallyUpdatedFields.from_dict(obj.get("manuallyUpdatedFields")) if obj.get("manuallyUpdatedFields") is not None else None,
+            "accessModelMetadata": EntitlementAccessModelMetadata.from_dict(obj.get("accessModelMetadata")) if obj.get("accessModelMetadata") is not None else None
         })
         return _obj
 
