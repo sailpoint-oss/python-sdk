@@ -1102,7 +1102,7 @@ class IdentityHistoryApi:
     def get_historical_identity_events(
         self,
         id: Annotated[StrictStr, Field(description="The identity id")],
-        var_from: Annotated[Optional[StrictStr], Field(description="The optional instant from which to return the access events")] = None,
+        var_from: Annotated[Optional[StrictStr], Field(description="The optional instant until which access events are returned")] = None,
         event_types: Annotated[Optional[List[StrictStr]], Field(description="An optional list of event types to return.  If null or empty, all events are returned")] = None,
         access_item_types: Annotated[Optional[List[StrictStr]], Field(description="An optional list of access item types (app, account, entitlement, etc...) to return.   If null or empty, all access items types are returned")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
@@ -1127,7 +1127,7 @@ class IdentityHistoryApi:
 
         :param id: The identity id (required)
         :type id: str
-        :param var_from: The optional instant from which to return the access events
+        :param var_from: The optional instant until which access events are returned
         :type var_from: str
         :param event_types: An optional list of event types to return.  If null or empty, all events are returned
         :type event_types: List[str]
@@ -1199,7 +1199,7 @@ class IdentityHistoryApi:
     def get_historical_identity_events_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The identity id")],
-        var_from: Annotated[Optional[StrictStr], Field(description="The optional instant from which to return the access events")] = None,
+        var_from: Annotated[Optional[StrictStr], Field(description="The optional instant until which access events are returned")] = None,
         event_types: Annotated[Optional[List[StrictStr]], Field(description="An optional list of event types to return.  If null or empty, all events are returned")] = None,
         access_item_types: Annotated[Optional[List[StrictStr]], Field(description="An optional list of access item types (app, account, entitlement, etc...) to return.   If null or empty, all access items types are returned")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
@@ -1224,7 +1224,7 @@ class IdentityHistoryApi:
 
         :param id: The identity id (required)
         :type id: str
-        :param var_from: The optional instant from which to return the access events
+        :param var_from: The optional instant until which access events are returned
         :type var_from: str
         :param event_types: An optional list of event types to return.  If null or empty, all events are returned
         :type event_types: List[str]
@@ -1296,7 +1296,7 @@ class IdentityHistoryApi:
     def get_historical_identity_events_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The identity id")],
-        var_from: Annotated[Optional[StrictStr], Field(description="The optional instant from which to return the access events")] = None,
+        var_from: Annotated[Optional[StrictStr], Field(description="The optional instant until which access events are returned")] = None,
         event_types: Annotated[Optional[List[StrictStr]], Field(description="An optional list of event types to return.  If null or empty, all events are returned")] = None,
         access_item_types: Annotated[Optional[List[StrictStr]], Field(description="An optional list of access item types (app, account, entitlement, etc...) to return.   If null or empty, all access items types are returned")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
@@ -1321,7 +1321,7 @@ class IdentityHistoryApi:
 
         :param id: The identity id (required)
         :type id: str
-        :param var_from: The optional instant from which to return the access events
+        :param var_from: The optional instant until which access events are returned
         :type var_from: str
         :param event_types: An optional list of event types to return.  If null or empty, all events are returned
         :type event_types: List[str]

@@ -338,7 +338,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.IdentityHistoryApi(api_client)
     id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The identity id
-    var_from = '2007-03-01T13:00:00Z' # str | The optional instant from which to return the access events (optional)
+    var_from = '2024-03-01T13:00:00Z' # str | The optional instant until which access events are returned (optional)
     event_types = ['[AccessAddedEvent, AccessRemovedEvent]'] # List[str] | An optional list of event types to return.  If null or empty, all events are returned (optional)
     access_item_types = ['[entitlement, account]'] # List[str] | An optional list of access item types (app, account, entitlement, etc...) to return.   If null or empty, all access items types are returned (optional)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
@@ -362,7 +362,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| The identity id | 
- **var_from** | **str**| The optional instant from which to return the access events | [optional] 
+ **var_from** | **str**| The optional instant until which access events are returned | [optional] 
  **event_types** | [**List[str]**](str.md)| An optional list of event types to return.  If null or empty, all events are returned | [optional] 
  **access_item_types** | [**List[str]**](str.md)| An optional list of access item types (app, account, entitlement, etc...) to return.   If null or empty, all access items types are returned | [optional] 
  **limit** | **int**| Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 250]
