@@ -36,11 +36,14 @@ class TestRoleMatchDto(unittest.TestCase):
         model = RoleMatchDto()
         if include_optional:
             return RoleMatchDto(
-                role_name = 'Engineer',
+                role_ref = sailpoint.beta.models.base_reference_dto.BaseReferenceDto(
+                    id = 'ff8081814d977c21014da056804a0af3', 
+                    name = 'Github', ),
                 matched_attributes = [
                     sailpoint.beta.models.context_attribute_dto.ContextAttributeDto(
                         attribute = 'location', 
-                        value = Austin, )
+                        value = Austin, 
+                        derived = False, )
                     ]
             )
         else:

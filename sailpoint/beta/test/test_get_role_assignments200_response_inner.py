@@ -46,20 +46,26 @@ class TestGetRoleAssignments200ResponseInner(unittest.TestCase):
                     id = 'ff8081814d977c21014da056804a0af3', 
                     name = 'Github', ),
                 assigned_dimensions = [{id=1acc8ffe5fcf457090de28bee2af36ee, type=DIMENSION, name=Northeast region}],
-                access_request_context = sailpoint.beta.models.access_request_context.AccessRequestContext(
-                    requested_context = [
-                        sailpoint.beta.models.context_attribute_dto.ContextAttributeDto(
-                            attribute = 'location', 
-                            value = Austin, )
-                        ], 
-                    assigned_context = [
+                assignment_context = sailpoint.beta.models.assignment_context_dto.AssignmentContextDto(
+                    requested = sailpoint.beta.models.access_request_context.AccessRequestContext(
+                        context_attributes = [
+                            sailpoint.beta.models.context_attribute_dto.ContextAttributeDto(
+                                attribute = 'location', 
+                                value = Austin, 
+                                derived = False, )
+                            ], ), 
+                    matched = [
                         sailpoint.beta.models.role_match_dto.RoleMatchDto(
-                            role_name = 'Engineer', 
+                            role_ref = sailpoint.beta.models.base_reference_dto.BaseReferenceDto(
+                                id = 'ff8081814d977c21014da056804a0af3', 
+                                name = 'Github', ), 
                             matched_attributes = [
                                 sailpoint.beta.models.context_attribute_dto.ContextAttributeDto(
-                                    attribute = 'location', )
+                                    attribute = 'location', 
+                                    derived = False, )
                                 ], )
-                        ], ),
+                        ], 
+                    computed_date = 'Wed Feb 14 10:58:42', ),
                 account_targets = [
                     sailpoint.beta.models.role_target_dto.RoleTargetDto(
                         source = sailpoint.beta.models.base_reference_dto.BaseReferenceDto(

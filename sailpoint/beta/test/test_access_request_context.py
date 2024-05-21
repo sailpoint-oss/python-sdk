@@ -36,19 +36,11 @@ class TestAccessRequestContext(unittest.TestCase):
         model = AccessRequestContext()
         if include_optional:
             return AccessRequestContext(
-                requested_context = [
+                context_attributes = [
                     sailpoint.beta.models.context_attribute_dto.ContextAttributeDto(
                         attribute = 'location', 
-                        value = Austin, )
-                    ],
-                assigned_context = [
-                    sailpoint.beta.models.role_match_dto.RoleMatchDto(
-                        role_name = 'Engineer', 
-                        matched_attributes = [
-                            sailpoint.beta.models.context_attribute_dto.ContextAttributeDto(
-                                attribute = 'location', 
-                                value = Austin, )
-                            ], )
+                        value = Austin, 
+                        derived = False, )
                     ]
             )
         else:

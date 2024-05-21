@@ -224,6 +224,7 @@ from sailpoint.beta.models.approval_status_dto_original_owner import ApprovalSta
 from sailpoint.beta.models.approval_summary import ApprovalSummary
 from sailpoint.beta.models.argument import Argument
 from sailpoint.beta.models.array_inner import ArrayInner
+from sailpoint.beta.models.assignment_context_dto import AssignmentContextDto
 from sailpoint.beta.models.attr_sync_source import AttrSyncSource
 from sailpoint.beta.models.attr_sync_source_attribute_config import AttrSyncSourceAttributeConfig
 from sailpoint.beta.models.attr_sync_source_config import AttrSyncSourceConfig

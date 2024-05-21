@@ -253,11 +253,11 @@ Class | Method | HTTP request | Description
 *IAIRoleMiningApi* | [**update_entitlements_potential_role**](sailpoint/beta/docs/IAIRoleMiningApi.md#update_entitlements_potential_role) | **POST** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/edit-entitlements | Edit entitlements for a potential role to exclude some entitlements
 *IconsApi* | [**delete_icon**](sailpoint/beta/docs/IconsApi.md#delete_icon) | **DELETE** /icons/{objectType}/{objectId} | Delete an icon
 *IconsApi* | [**set_icon**](sailpoint/beta/docs/IconsApi.md#set_icon) | **PUT** /icons/{objectType}/{objectId} | Update an icon
-*IdentitiesApi* | [**delete_identity**](sailpoint/beta/docs/IdentitiesApi.md#delete_identity) | **DELETE** /identities/{id} | Deletes an identity.
+*IdentitiesApi* | [**delete_identity**](sailpoint/beta/docs/IdentitiesApi.md#delete_identity) | **DELETE** /identities/{id} | Delete identity
 *IdentitiesApi* | [**get_identity**](sailpoint/beta/docs/IdentitiesApi.md#get_identity) | **GET** /identities/{id} | Identity Details
 *IdentitiesApi* | [**get_identity_ownership_details**](sailpoint/beta/docs/IdentitiesApi.md#get_identity_ownership_details) | **GET** /identities/{identityId}/ownership | Get ownership details
-*IdentitiesApi* | [**get_role_assignment**](sailpoint/beta/docs/IdentitiesApi.md#get_role_assignment) | **GET** /identities/{identityId}/role-assignments/{assignmentId} | Get role assignment
-*IdentitiesApi* | [**get_role_assignments**](sailpoint/beta/docs/IdentitiesApi.md#get_role_assignments) | **GET** /identities/{identityId}/role-assignments | Get role assignments
+*IdentitiesApi* | [**get_role_assignment**](sailpoint/beta/docs/IdentitiesApi.md#get_role_assignment) | **GET** /identities/{identityId}/role-assignments/{assignmentId} | Role assignment details
+*IdentitiesApi* | [**get_role_assignments**](sailpoint/beta/docs/IdentitiesApi.md#get_role_assignments) | **GET** /identities/{identityId}/role-assignments | List role assignments
 *IdentitiesApi* | [**list_identities**](sailpoint/beta/docs/IdentitiesApi.md#list_identities) | **GET** /identities | List Identities
 *IdentitiesApi* | [**reset_identity**](sailpoint/beta/docs/IdentitiesApi.md#reset_identity) | **POST** /identities/{id}/reset | Reset an identity
 *IdentitiesApi* | [**start_identity_processing**](sailpoint/beta/docs/IdentitiesApi.md#start_identity_processing) | **POST** /identities/process | Process a list of identityIds
@@ -702,6 +702,7 @@ Class | Method | HTTP request | Description
  - [ApprovalSummary](sailpoint/beta/docs/ApprovalSummary.md)
  - [Argument](sailpoint/beta/docs/Argument.md)
  - [ArrayInner](sailpoint/beta/docs/ArrayInner.md)
+ - [AssignmentContextDto](sailpoint/beta/docs/AssignmentContextDto.md)
  - [AttrSyncSource](sailpoint/beta/docs/AttrSyncSource.md)
  - [AttrSyncSourceAttributeConfig](sailpoint/beta/docs/AttrSyncSourceAttributeConfig.md)
  - [AttrSyncSourceConfig](sailpoint/beta/docs/AttrSyncSourceConfig.md)

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **assignment_source** | **str** | Source describing how this assignment was made | [optional] 
 **assigner** | [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
 **assigned_dimensions** | [**List[BaseReferenceDto]**](BaseReferenceDto.md) | Dimensions assigned related to this role | [optional] 
-**access_request_context** | [**AccessRequestContext**](AccessRequestContext.md) |  | [optional] 
+**assignment_context** | [**AssignmentContextDto**](AssignmentContextDto.md) |  | [optional] 
 **account_targets** | [**List[RoleTargetDto]**](RoleTargetDto.md) |  | [optional] 
 **remove_date** | **str** | Date that the assignment will be removed | [optional] 
 

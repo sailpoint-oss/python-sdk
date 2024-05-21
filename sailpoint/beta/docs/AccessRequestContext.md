@@ -5,8 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**requested_context** | [**List[ContextAttributeDto]**](ContextAttributeDto.md) |  | [optional] 
-**assigned_context** | [**List[RoleMatchDto]**](RoleMatchDto.md) |  | [optional] 
+**context_attributes** | [**List[ContextAttributeDto]**](ContextAttributeDto.md) |  | [optional] 
 
 ## Example
 

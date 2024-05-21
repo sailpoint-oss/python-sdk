@@ -21,7 +21,7 @@ import json
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
 from pydantic import Field
-from sailpoint.beta.models.access_request_context import AccessRequestContext
+from sailpoint.beta.models.assignment_context_dto import AssignmentContextDto
 from sailpoint.beta.models.base_reference_dto import BaseReferenceDto
 from sailpoint.beta.models.role_target_dto import RoleTargetDto
 try:
@@ -39,10 +39,10 @@ class RoleAssignmentDto(BaseModel):
     assignment_source: Optional[StrictStr] = Field(default=None, description="Source describing how this assignment was made", alias="assignmentSource")
     assigner: Optional[BaseReferenceDto] = None
     assigned_dimensions: Optional[List[BaseReferenceDto]] = Field(default=None, description="Dimensions assigned related to this role", alias="assignedDimensions")
-    access_request_context: Optional[AccessRequestContext] = Field(default=None, alias="accessRequestContext")
+    assignment_context: Optional[AssignmentContextDto] = Field(default=None, alias="assignmentContext")
     account_targets: Optional[List[RoleTargetDto]] = Field(default=None, alias="accountTargets")
     remove_date: Optional[StrictStr] = Field(default=None, description="Date that the assignment will be removed", alias="removeDate")
-    __properties: ClassVar[List[str]] = ["id", "role", "comments", "assignmentSource", "assigner", "assignedDimensions", "accessRequestContext", "accountTargets", "removeDate"]
+    __properties: ClassVar[List[str]] = ["id", "role", "comments", "assignmentSource", "assigner", "assignedDimensions", "assignmentContext", "accountTargets", "removeDate"]
 
     model_config = {
         "populate_by_name": True,
@@ -94,9 +94,9 @@ class RoleAssignmentDto(BaseModel):
                 if _item:
                     _items.append(_item.to_dict())
             _dict['assignedDimensions'] = _items
-        # override the default output from pydantic by calling `to_dict()` of access_request_context
-        if self.access_request_context:
-            _dict['accessRequestContext'] = self.access_request_context.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of assignment_context
+        if self.assignment_context:
+            _dict['assignmentContext'] = self.assignment_context.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in account_targets (list)
         _items = []
         if self.account_targets:
@@ -122,7 +122,7 @@ class RoleAssignmentDto(BaseModel):
             "assignmentSource": obj.get("assignmentSource"),
             "assigner": BaseReferenceDto.from_dict(obj.get("assigner")) if obj.get("assigner") is not None else None,
             "assignedDimensions": [BaseReferenceDto.from_dict(_item) for _item in obj.get("assignedDimensions")] if obj.get("assignedDimensions") is not None else None,
-            "accessRequestContext": AccessRequestContext.from_dict(obj.get("accessRequestContext")) if obj.get("accessRequestContext") is not None else None,
+            "assignmentContext": AssignmentContextDto.from_dict(obj.get("assignmentContext")) if obj.get("assignmentContext") is not None else None,
             "accountTargets": [RoleTargetDto.from_dict(_item) for _item in obj.get("accountTargets")] if obj.get("accountTargets") is not None else None,
             "removeDate": obj.get("removeDate")
         })

@@ -37,7 +37,8 @@ class TestContextAttributeDto(unittest.TestCase):
         if include_optional:
             return ContextAttributeDto(
                 attribute = 'location',
-                value = Austin
+                value = Austin,
+                derived = False
             )
         else:
             return ContextAttributeDto(

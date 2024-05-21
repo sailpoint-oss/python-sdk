@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **attribute** | **str** | The name of the attribute | [optional] 
 **value** | [**ContextAttributeDtoValue**](ContextAttributeDtoValue.md) |  | [optional] 
+**derived** | **bool** | True if the attribute was derived. | [optional] [default to False]
 
 ## Example
 

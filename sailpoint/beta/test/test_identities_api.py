@@ -29,7 +29,7 @@ class TestIdentitiesApi(unittest.TestCase):
     def test_delete_identity(self) -> None:
         """Test case for delete_identity
 
-        Deletes an identity.
+        Delete identity
         """
         pass
 
@@ -50,14 +50,14 @@ class TestIdentitiesApi(unittest.TestCase):
     def test_get_role_assignment(self) -> None:
         """Test case for get_role_assignment
 
-        Get role assignment
+        Role assignment details
         """
         pass
 
     def test_get_role_assignments(self) -> None:
         """Test case for get_role_assignments
 
-        Get role assignments
+        List role assignments
         """
         pass
 

@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
+from pydantic import BaseModel, StrictBool, StrictStr
 from pydantic import Field
 from sailpoint.beta.models.context_attribute_dto_value import ContextAttributeDtoValue
 try:
@@ -33,7 +33,8 @@ class ContextAttributeDto(BaseModel):
     """ # noqa: E501
     attribute: Optional[StrictStr] = Field(default=None, description="The name of the attribute")
     value: Optional[ContextAttributeDtoValue] = None
-    __properties: ClassVar[List[str]] = ["attribute", "value"]
+    derived: Optional[StrictBool] = Field(default=False, description="True if the attribute was derived.")
+    __properties: ClassVar[List[str]] = ["attribute", "value", "derived"]
 
     model_config = {
         "populate_by_name": True,
@@ -88,7 +89,8 @@ class ContextAttributeDto(BaseModel):
 
         _obj = cls.model_validate({
             "attribute": obj.get("attribute"),
-            "value": ContextAttributeDtoValue.from_dict(obj.get("value")) if obj.get("value") is not None else None
+            "value": ContextAttributeDtoValue.from_dict(obj.get("value")) if obj.get("value") is not None else None,
+            "derived": obj.get("derived") if obj.get("derived") is not None else False
         })
         return _obj
 

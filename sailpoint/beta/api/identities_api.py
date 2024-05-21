@@ -72,7 +72,7 @@ class IdentitiesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Deletes an identity.
+        """Delete identity
 
         The API returns successful response if the requested identity was deleted.
 
@@ -145,7 +145,7 @@ class IdentitiesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Deletes an identity.
+        """Delete identity
 
         The API returns successful response if the requested identity was deleted.
 
@@ -218,7 +218,7 @@ class IdentitiesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Deletes an identity.
+        """Delete identity
 
         The API returns successful response if the requested identity was deleted.
 
@@ -904,7 +904,7 @@ class IdentitiesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RoleAssignmentDto:
-        """Get role assignment
+        """Role assignment details
 
 
         :param identity_id: Identity Id (required)
@@ -980,7 +980,7 @@ class IdentitiesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[RoleAssignmentDto]:
-        """Get role assignment
+        """Role assignment details
 
 
         :param identity_id: Identity Id (required)
@@ -1056,7 +1056,7 @@ class IdentitiesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get role assignment
+        """Role assignment details
 
 
         :param identity_id: Identity Id (required)
@@ -1194,7 +1194,7 @@ class IdentitiesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[GetRoleAssignments200ResponseInner]:
-        """Get role assignments
+        """List role assignments
 
         This returns either a list of Role Assignments when querying with either a Role Id or Role Name, or a list of Role Assignment References if querying with only identity Id.
 
@@ -1275,7 +1275,7 @@ class IdentitiesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[GetRoleAssignments200ResponseInner]]:
-        """Get role assignments
+        """List role assignments
 
         This returns either a list of Role Assignments when querying with either a Role Id or Role Name, or a list of Role Assignment References if querying with only identity Id.
 
@@ -1356,7 +1356,7 @@ class IdentitiesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get role assignments
+        """List role assignments
 
         This returns either a list of Role Assignments when querying with either a Role Id or Role Name, or a list of Role Assignment References if querying with only identity Id.
 

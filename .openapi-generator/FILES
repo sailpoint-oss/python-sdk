@@ -208,6 +208,7 @@ sailpoint/beta/docs/ApprovalSummary.md
 sailpoint/beta/docs/ApprovalsApi.md
 sailpoint/beta/docs/Argument.md
 sailpoint/beta/docs/ArrayInner.md
+sailpoint/beta/docs/AssignmentContextDto.md
 sailpoint/beta/docs/AttrSyncSource.md
 sailpoint/beta/docs/AttrSyncSourceAttributeConfig.md
 sailpoint/beta/docs/AttrSyncSourceConfig.md
@@ -1079,6 +1080,7 @@ sailpoint/beta/models/approval_status_dto_original_owner.py
 sailpoint/beta/models/approval_summary.py
 sailpoint/beta/models/argument.py
 sailpoint/beta/models/array_inner.py
+sailpoint/beta/models/assignment_context_dto.py
 sailpoint/beta/models/attr_sync_source.py
 sailpoint/beta/models/attr_sync_source_attribute_config.py
 sailpoint/beta/models/attr_sync_source_config.py
@@ -1897,6 +1899,7 @@ sailpoint/beta/test/test_approval_summary.py
 sailpoint/beta/test/test_approvals_api.py
 sailpoint/beta/test/test_argument.py
 sailpoint/beta/test/test_array_inner.py
+sailpoint/beta/test/test_assignment_context_dto.py
 sailpoint/beta/test/test_attr_sync_source.py
 sailpoint/beta/test/test_attr_sync_source_attribute_config.py
 sailpoint/beta/test/test_attr_sync_source_config.py

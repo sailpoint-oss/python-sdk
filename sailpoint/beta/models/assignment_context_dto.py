@@ -19,20 +19,23 @@ import json
 
 
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel
+from pydantic import BaseModel, StrictStr
 from pydantic import Field
-from sailpoint.beta.models.context_attribute_dto import ContextAttributeDto
+from sailpoint.beta.models.access_request_context import AccessRequestContext
+from sailpoint.beta.models.role_match_dto import RoleMatchDto
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-class AccessRequestContext(BaseModel):
+class AssignmentContextDto(BaseModel):
     """
-    AccessRequestContext
+    AssignmentContextDto
     """ # noqa: E501
-    context_attributes: Optional[List[ContextAttributeDto]] = Field(default=None, alias="contextAttributes")
-    __properties: ClassVar[List[str]] = ["contextAttributes"]
+    requested: Optional[AccessRequestContext] = None
+    matched: Optional[List[RoleMatchDto]] = None
+    computed_date: Optional[StrictStr] = Field(default=None, description="Date that the assignment will was evaluated", alias="computedDate")
+    __properties: ClassVar[List[str]] = ["requested", "matched", "computedDate"]
 
     model_config = {
         "populate_by_name": True,
@@ -52,7 +55,7 @@ class AccessRequestContext(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
-        """Create an instance of AccessRequestContext from a JSON string"""
+        """Create an instance of AssignmentContextDto from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -71,18 +74,21 @@ class AccessRequestContext(BaseModel):
             },
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in context_attributes (list)
+        # override the default output from pydantic by calling `to_dict()` of requested
+        if self.requested:
+            _dict['requested'] = self.requested.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in matched (list)
         _items = []
-        if self.context_attributes:
-            for _item in self.context_attributes:
+        if self.matched:
+            for _item in self.matched:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict['contextAttributes'] = _items
+            _dict['matched'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Dict) -> Self:
-        """Create an instance of AccessRequestContext from a dict"""
+        """Create an instance of AssignmentContextDto from a dict"""
         if obj is None:
             return None
 
@@ -90,7 +96,9 @@ class AccessRequestContext(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "contextAttributes": [ContextAttributeDto.from_dict(_item) for _item in obj.get("contextAttributes")] if obj.get("contextAttributes") is not None else None
+            "requested": AccessRequestContext.from_dict(obj.get("requested")) if obj.get("requested") is not None else None,
+            "matched": [RoleMatchDto.from_dict(_item) for _item in obj.get("matched")] if obj.get("matched") is not None else None,
+            "computedDate": obj.get("computedDate")
         })
         return _obj
 

@@ -4,11 +4,11 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete_identity**](IdentitiesApi.md#delete_identity) | **DELETE** /identities/{id} | Deletes an identity.
+[**delete_identity**](IdentitiesApi.md#delete_identity) | **DELETE** /identities/{id} | Delete identity
 [**get_identity**](IdentitiesApi.md#get_identity) | **GET** /identities/{id} | Identity Details
 [**get_identity_ownership_details**](IdentitiesApi.md#get_identity_ownership_details) | **GET** /identities/{identityId}/ownership | Get ownership details
-[**get_role_assignment**](IdentitiesApi.md#get_role_assignment) | **GET** /identities/{identityId}/role-assignments/{assignmentId} | Get role assignment
-[**get_role_assignments**](IdentitiesApi.md#get_role_assignments) | **GET** /identities/{identityId}/role-assignments | Get role assignments
+[**get_role_assignment**](IdentitiesApi.md#get_role_assignment) | **GET** /identities/{identityId}/role-assignments/{assignmentId} | Role assignment details
+[**get_role_assignments**](IdentitiesApi.md#get_role_assignments) | **GET** /identities/{identityId}/role-assignments | List role assignments
 [**list_identities**](IdentitiesApi.md#list_identities) | **GET** /identities | List Identities
 [**reset_identity**](IdentitiesApi.md#reset_identity) | **POST** /identities/{id}/reset | Reset an identity
 [**start_identity_processing**](IdentitiesApi.md#start_identity_processing) | **POST** /identities/process | Process a list of identityIds
@@ -18,7 +18,7 @@ Method | HTTP request | Description
 # **delete_identity**
 > delete_identity(id)
 
-Deletes an identity.
+Delete identity
 
 The API returns successful response if the requested identity was deleted.
 
@@ -56,7 +56,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | Identity Id
 
     try:
-        # Deletes an identity.
+        # Delete identity
         api_instance.delete_identity(id)
     except Exception as e:
         print("Exception when calling IdentitiesApi->delete_identity: %s\n" % e)
@@ -273,7 +273,7 @@ Name | Type | Description  | Notes
 # **get_role_assignment**
 > RoleAssignmentDto get_role_assignment(identity_id, assignment_id)
 
-Get role assignment
+Role assignment details
 
 ### Example
 
@@ -311,7 +311,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
     assignment_id = '1cbb0705b38c4226b1334eadd8874086' # str | Assignment Id
 
     try:
-        # Get role assignment
+        # Role assignment details
         api_response = api_instance.get_role_assignment(identity_id, assignment_id)
         print("The response of IdentitiesApi->get_role_assignment:\n")
         pprint(api_response)
@@ -359,7 +359,7 @@ Name | Type | Description  | Notes
 # **get_role_assignments**
 > List[GetRoleAssignments200ResponseInner] get_role_assignments(identity_id, role_id=role_id, role_name=role_name)
 
-Get role assignments
+List role assignments
 
 This returns either a list of Role Assignments when querying with either a Role Id or Role Name, or a list of Role Assignment References if querying with only identity Id.
 
@@ -400,7 +400,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
     role_name = 'Engineer' # str | Role name to filter the role assignments with (optional)
 
     try:
-        # Get role assignments
+        # List role assignments
         api_response = api_instance.get_role_assignments(identity_id, role_id=role_id, role_name=role_name)
         print("The response of IdentitiesApi->get_role_assignments:\n")
         pprint(api_response)
