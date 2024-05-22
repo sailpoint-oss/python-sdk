@@ -79,6 +79,7 @@ from sailpoint.beta.api.segments_api import SegmentsApi
 from sailpoint.beta.api.service_desk_integration_api import ServiceDeskIntegrationApi
 from sailpoint.beta.api.source_usages_api import SourceUsagesApi
 from sailpoint.beta.api.sources_api import SourcesApi
+from sailpoint.beta.api.sources_uncorrelated_accounts_api import SourcesUncorrelatedAccountsApi
 from sailpoint.beta.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
 from sailpoint.beta.api.tagged_objects_api import TaggedObjectsApi
 from sailpoint.beta.api.task_management_api import TaskManagementApi
@@ -508,6 +509,10 @@ from sailpoint.beta.models.load_accounts_task_task_messages_inner import LoadAcc
 from sailpoint.beta.models.load_accounts_task_task_returns_inner import LoadAccountsTaskTaskReturnsInner
 from sailpoint.beta.models.load_entitlement_task import LoadEntitlementTask
 from sailpoint.beta.models.load_entitlement_task_returns_inner import LoadEntitlementTaskReturnsInner
+from sailpoint.beta.models.load_uncorrelated_accounts_task import LoadUncorrelatedAccountsTask
+from sailpoint.beta.models.load_uncorrelated_accounts_task_task import LoadUncorrelatedAccountsTaskTask
+from sailpoint.beta.models.load_uncorrelated_accounts_task_task_attributes import LoadUncorrelatedAccountsTaskTaskAttributes
+from sailpoint.beta.models.load_uncorrelated_accounts_task_task_messages_inner import LoadUncorrelatedAccountsTaskTaskMessagesInner
 from sailpoint.beta.models.locale_origin import LocaleOrigin
 from sailpoint.beta.models.localized_message import LocalizedMessage
 from sailpoint.beta.models.lookup_step import LookupStep

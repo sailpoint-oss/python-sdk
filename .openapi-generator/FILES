@@ -62,6 +62,7 @@ sailpoint/beta/api/sod_policy_api.py
 sailpoint/beta/api/sod_violations_api.py
 sailpoint/beta/api/source_usages_api.py
 sailpoint/beta/api/sources_api.py
+sailpoint/beta/api/sources_uncorrelated_accounts_api.py
 sailpoint/beta/api/sp_config_api.py
 sailpoint/beta/api/suggested_entitlement_description_api.py
 sailpoint/beta/api/tagged_objects_api.py
@@ -515,6 +516,10 @@ sailpoint/beta/docs/LoadAccountsTaskTaskMessagesInner.md
 sailpoint/beta/docs/LoadAccountsTaskTaskReturnsInner.md
 sailpoint/beta/docs/LoadEntitlementTask.md
 sailpoint/beta/docs/LoadEntitlementTaskReturnsInner.md
+sailpoint/beta/docs/LoadUncorrelatedAccountsTask.md
+sailpoint/beta/docs/LoadUncorrelatedAccountsTaskTask.md
+sailpoint/beta/docs/LoadUncorrelatedAccountsTaskTaskAttributes.md
+sailpoint/beta/docs/LoadUncorrelatedAccountsTaskTaskMessagesInner.md
 sailpoint/beta/docs/LocaleOrigin.md
 sailpoint/beta/docs/LocalizedMessage.md
 sailpoint/beta/docs/LookupStep.md
@@ -843,6 +848,7 @@ sailpoint/beta/docs/SourceUsage.md
 sailpoint/beta/docs/SourceUsageStatus.md
 sailpoint/beta/docs/SourceUsagesApi.md
 sailpoint/beta/docs/SourcesApi.md
+sailpoint/beta/docs/SourcesUncorrelatedAccountsApi.md
 sailpoint/beta/docs/SpConfigExportJob.md
 sailpoint/beta/docs/SpConfigExportJobStatus.md
 sailpoint/beta/docs/SpConfigExportResults.md
@@ -1364,6 +1370,10 @@ sailpoint/beta/models/load_accounts_task_task_messages_inner.py
 sailpoint/beta/models/load_accounts_task_task_returns_inner.py
 sailpoint/beta/models/load_entitlement_task.py
 sailpoint/beta/models/load_entitlement_task_returns_inner.py
+sailpoint/beta/models/load_uncorrelated_accounts_task.py
+sailpoint/beta/models/load_uncorrelated_accounts_task_task.py
+sailpoint/beta/models/load_uncorrelated_accounts_task_task_attributes.py
+sailpoint/beta/models/load_uncorrelated_accounts_task_task_messages_inner.py
 sailpoint/beta/models/locale_origin.py
 sailpoint/beta/models/localized_message.py
 sailpoint/beta/models/lookup_step.py
@@ -2206,6 +2216,10 @@ sailpoint/beta/test/test_load_accounts_task_task_messages_inner.py
 sailpoint/beta/test/test_load_accounts_task_task_returns_inner.py
 sailpoint/beta/test/test_load_entitlement_task.py
 sailpoint/beta/test/test_load_entitlement_task_returns_inner.py
+sailpoint/beta/test/test_load_uncorrelated_accounts_task.py
+sailpoint/beta/test/test_load_uncorrelated_accounts_task_task.py
+sailpoint/beta/test/test_load_uncorrelated_accounts_task_task_attributes.py
+sailpoint/beta/test/test_load_uncorrelated_accounts_task_task_messages_inner.py
 sailpoint/beta/test/test_locale_origin.py
 sailpoint/beta/test/test_localized_message.py
 sailpoint/beta/test/test_lookup_step.py
@@ -2533,6 +2547,7 @@ sailpoint/beta/test/test_source_usage.py
 sailpoint/beta/test/test_source_usage_status.py
 sailpoint/beta/test/test_source_usages_api.py
 sailpoint/beta/test/test_sources_api.py
+sailpoint/beta/test/test_sources_uncorrelated_accounts_api.py
 sailpoint/beta/test/test_sp_config_api.py
 sailpoint/beta/test/test_sp_config_export_job.py
 sailpoint/beta/test/test_sp_config_export_job_status.py
