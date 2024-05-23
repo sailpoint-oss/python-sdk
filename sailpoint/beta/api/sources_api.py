@@ -4644,7 +4644,7 @@ class SourcesApi:
         self,
         id: Annotated[StrictStr, Field(description="Source Id")],
         file: Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="The CSV file containing the source accounts to aggregate.")] = None,
-        disable_optimization: Annotated[Optional[StrictBool], Field(description="Use this flag to reprocess every account whether or not the data has changed.")] = None,
+        disable_optimization: Annotated[Optional[StrictStr], Field(description="Use this flag to reprocess every account whether or not the data has changed.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4667,7 +4667,7 @@ class SourcesApi:
         :param file: The CSV file containing the source accounts to aggregate.
         :type file: bytearray
         :param disable_optimization: Use this flag to reprocess every account whether or not the data has changed.
-        :type disable_optimization: bool
+        :type disable_optimization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4724,7 +4724,7 @@ class SourcesApi:
         self,
         id: Annotated[StrictStr, Field(description="Source Id")],
         file: Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="The CSV file containing the source accounts to aggregate.")] = None,
-        disable_optimization: Annotated[Optional[StrictBool], Field(description="Use this flag to reprocess every account whether or not the data has changed.")] = None,
+        disable_optimization: Annotated[Optional[StrictStr], Field(description="Use this flag to reprocess every account whether or not the data has changed.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4747,7 +4747,7 @@ class SourcesApi:
         :param file: The CSV file containing the source accounts to aggregate.
         :type file: bytearray
         :param disable_optimization: Use this flag to reprocess every account whether or not the data has changed.
-        :type disable_optimization: bool
+        :type disable_optimization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4804,7 +4804,7 @@ class SourcesApi:
         self,
         id: Annotated[StrictStr, Field(description="Source Id")],
         file: Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="The CSV file containing the source accounts to aggregate.")] = None,
-        disable_optimization: Annotated[Optional[StrictBool], Field(description="Use this flag to reprocess every account whether or not the data has changed.")] = None,
+        disable_optimization: Annotated[Optional[StrictStr], Field(description="Use this flag to reprocess every account whether or not the data has changed.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4827,7 +4827,7 @@ class SourcesApi:
         :param file: The CSV file containing the source accounts to aggregate.
         :type file: bytearray
         :param disable_optimization: Use this flag to reprocess every account whether or not the data has changed.
-        :type disable_optimization: bool
+        :type disable_optimization: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of

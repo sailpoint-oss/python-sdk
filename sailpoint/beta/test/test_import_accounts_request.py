@@ -37,7 +37,7 @@ class TestImportAccountsRequest(unittest.TestCase):
         if include_optional:
             return ImportAccountsRequest(
                 file = bytes(b'blah'),
-                disable_optimization = True
+                disable_optimization = 'true'
             )
         else:
             return ImportAccountsRequest(

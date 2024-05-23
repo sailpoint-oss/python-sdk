@@ -1451,7 +1451,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
     api_instance = sailpoint.beta.SourcesApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source Id
     file = None # bytearray | The CSV file containing the source accounts to aggregate. (optional)
-    disable_optimization = False # bool | Use this flag to reprocess every account whether or not the data has changed. (optional) (default to False)
+    disable_optimization = 'disable_optimization_example' # str | Use this flag to reprocess every account whether or not the data has changed. (optional)
 
     try:
         # Account Aggregation
@@ -1471,7 +1471,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| Source Id | 
  **file** | **bytearray**| The CSV file containing the source accounts to aggregate. | [optional] 
- **disable_optimization** | **bool**| Use this flag to reprocess every account whether or not the data has changed. | [optional] [default to False]
+ **disable_optimization** | **str**| Use this flag to reprocess every account whether or not the data has changed. | [optional] 
 
 ### Return type
 

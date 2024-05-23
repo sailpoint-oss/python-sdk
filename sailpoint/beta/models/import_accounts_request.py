@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, ClassVar, Dict, List, Optional, Union
-from pydantic import BaseModel, StrictBool, StrictBytes, StrictStr
+from pydantic import BaseModel, StrictBytes, StrictStr
 from pydantic import Field
 try:
     from typing import Self
@@ -31,7 +31,7 @@ class ImportAccountsRequest(BaseModel):
     ImportAccountsRequest
     """ # noqa: E501
     file: Optional[Union[StrictBytes, StrictStr]] = Field(default=None, description="The CSV file containing the source accounts to aggregate.")
-    disable_optimization: Optional[StrictBool] = Field(default=False, description="Use this flag to reprocess every account whether or not the data has changed.", alias="disableOptimization")
+    disable_optimization: Optional[StrictStr] = Field(default=None, description="Use this flag to reprocess every account whether or not the data has changed.", alias="disableOptimization")
     __properties: ClassVar[List[str]] = ["file", "disableOptimization"]
 
     model_config = {
@@ -84,7 +84,7 @@ class ImportAccountsRequest(BaseModel):
 
         _obj = cls.model_validate({
             "file": obj.get("file"),
-            "disableOptimization": obj.get("disableOptimization") if obj.get("disableOptimization") is not None else False
+            "disableOptimization": obj.get("disableOptimization")
         })
         return _obj
 
