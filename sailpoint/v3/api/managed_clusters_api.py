@@ -29,7 +29,7 @@ from pydantic import StrictBool, StrictStr
 
 from typing import List, Optional
 
-from sailpoint.v3.models.json_patch import JsonPatch
+from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v3.models.managed_cluster import ManagedCluster
 from sailpoint.v3.models.managed_cluster_request import ManagedClusterRequest
 
@@ -341,7 +341,7 @@ class ManagedClustersApi:
     @validate_call
     def delete_managed_cluster(
         self,
-        id: Annotated[StrictStr, Field(description="The Managed Cluster ID")],
+        id: Annotated[StrictStr, Field(description="Managed Cluster ID.")],
         remove_clients: Annotated[Optional[StrictBool], Field(description="Flag to determine the need to delete a cluster with clients")] = None,
         _request_timeout: Union[
             None,
@@ -360,7 +360,7 @@ class ManagedClustersApi:
 
         Delete an existing Managed Cluster.
 
-        :param id: The Managed Cluster ID (required)
+        :param id: Managed Cluster ID. (required)
         :type id: str
         :param remove_clients: Flag to determine the need to delete a cluster with clients
         :type remove_clients: bool
@@ -417,7 +417,7 @@ class ManagedClustersApi:
     @validate_call
     def delete_managed_cluster_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The Managed Cluster ID")],
+        id: Annotated[StrictStr, Field(description="Managed Cluster ID.")],
         remove_clients: Annotated[Optional[StrictBool], Field(description="Flag to determine the need to delete a cluster with clients")] = None,
         _request_timeout: Union[
             None,
@@ -436,7 +436,7 @@ class ManagedClustersApi:
 
         Delete an existing Managed Cluster.
 
-        :param id: The Managed Cluster ID (required)
+        :param id: Managed Cluster ID. (required)
         :type id: str
         :param remove_clients: Flag to determine the need to delete a cluster with clients
         :type remove_clients: bool
@@ -493,7 +493,7 @@ class ManagedClustersApi:
     @validate_call
     def delete_managed_cluster_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The Managed Cluster ID")],
+        id: Annotated[StrictStr, Field(description="Managed Cluster ID.")],
         remove_clients: Annotated[Optional[StrictBool], Field(description="Flag to determine the need to delete a cluster with clients")] = None,
         _request_timeout: Union[
             None,
@@ -512,7 +512,7 @@ class ManagedClustersApi:
 
         Delete an existing Managed Cluster.
 
-        :param id: The Managed Cluster ID (required)
+        :param id: Managed Cluster ID. (required)
         :type id: str
         :param remove_clients: Flag to determine the need to delete a cluster with clients
         :type remove_clients: bool
@@ -632,7 +632,7 @@ class ManagedClustersApi:
     @validate_call
     def get_managed_cluster(
         self,
-        id: Annotated[StrictStr, Field(description="ID of the ManagedCluster to get")],
+        id: Annotated[StrictStr, Field(description="ManagedCluster ID.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -650,7 +650,7 @@ class ManagedClustersApi:
 
         Retrieve a ManagedCluster by ID.
 
-        :param id: ID of the ManagedCluster to get (required)
+        :param id: ManagedCluster ID. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -705,7 +705,7 @@ class ManagedClustersApi:
     @validate_call
     def get_managed_cluster_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="ID of the ManagedCluster to get")],
+        id: Annotated[StrictStr, Field(description="ManagedCluster ID.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -723,7 +723,7 @@ class ManagedClustersApi:
 
         Retrieve a ManagedCluster by ID.
 
-        :param id: ID of the ManagedCluster to get (required)
+        :param id: ManagedCluster ID. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -778,7 +778,7 @@ class ManagedClustersApi:
     @validate_call
     def get_managed_cluster_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="ID of the ManagedCluster to get")],
+        id: Annotated[StrictStr, Field(description="ManagedCluster ID.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -796,7 +796,7 @@ class ManagedClustersApi:
 
         Retrieve a ManagedCluster by ID.
 
-        :param id: ID of the ManagedCluster to get (required)
+        :param id: ManagedCluster ID. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1236,8 +1236,8 @@ class ManagedClustersApi:
     @validate_call
     def update_managed_cluster(
         self,
-        id: Annotated[StrictStr, Field(description="The Managed Cluster ID")],
-        json_patch: Annotated[JsonPatch, Field(description="The JSONPatch payload used to update the schema.")],
+        id: Annotated[StrictStr, Field(description="Managed Cluster ID.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1255,10 +1255,10 @@ class ManagedClustersApi:
 
         Update an existing Managed Cluster.
 
-        :param id: The Managed Cluster ID (required)
+        :param id: Managed Cluster ID. (required)
         :type id: str
-        :param json_patch: The JSONPatch payload used to update the schema. (required)
-        :type json_patch: JsonPatch
+        :param json_patch_operation: The JSONPatch payload used to update the object. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1283,7 +1283,7 @@ class ManagedClustersApi:
 
         _param = self._update_managed_cluster_serialize(
             id=id,
-            json_patch=json_patch,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1313,8 +1313,8 @@ class ManagedClustersApi:
     @validate_call
     def update_managed_cluster_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The Managed Cluster ID")],
-        json_patch: Annotated[JsonPatch, Field(description="The JSONPatch payload used to update the schema.")],
+        id: Annotated[StrictStr, Field(description="Managed Cluster ID.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1332,10 +1332,10 @@ class ManagedClustersApi:
 
         Update an existing Managed Cluster.
 
-        :param id: The Managed Cluster ID (required)
+        :param id: Managed Cluster ID. (required)
         :type id: str
-        :param json_patch: The JSONPatch payload used to update the schema. (required)
-        :type json_patch: JsonPatch
+        :param json_patch_operation: The JSONPatch payload used to update the object. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1360,7 +1360,7 @@ class ManagedClustersApi:
 
         _param = self._update_managed_cluster_serialize(
             id=id,
-            json_patch=json_patch,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1390,8 +1390,8 @@ class ManagedClustersApi:
     @validate_call
     def update_managed_cluster_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The Managed Cluster ID")],
-        json_patch: Annotated[JsonPatch, Field(description="The JSONPatch payload used to update the schema.")],
+        id: Annotated[StrictStr, Field(description="Managed Cluster ID.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1409,10 +1409,10 @@ class ManagedClustersApi:
 
         Update an existing Managed Cluster.
 
-        :param id: The Managed Cluster ID (required)
+        :param id: Managed Cluster ID. (required)
         :type id: str
-        :param json_patch: The JSONPatch payload used to update the schema. (required)
-        :type json_patch: JsonPatch
+        :param json_patch_operation: The JSONPatch payload used to update the object. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1437,7 +1437,7 @@ class ManagedClustersApi:
 
         _param = self._update_managed_cluster_serialize(
             id=id,
-            json_patch=json_patch,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1463,7 +1463,7 @@ class ManagedClustersApi:
     def _update_managed_cluster_serialize(
         self,
         id,
-        json_patch,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -1473,6 +1473,7 @@ class ManagedClustersApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -1489,8 +1490,8 @@ class ManagedClustersApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if json_patch is not None:
-            _body_params = json_patch
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`

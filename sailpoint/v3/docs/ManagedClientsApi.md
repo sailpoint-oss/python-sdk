@@ -136,7 +136,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.ManagedClientsApi(api_client)
-    id = 'aClientId' # str | The Managed Client ID
+    id = '4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7' # str | Managed Client ID.
 
     try:
         # Delete a Managed Client
@@ -152,7 +152,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The Managed Client ID | 
+ **id** | **str**| Managed Client ID. | 
 
 ### Return type
 
@@ -219,7 +219,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.ManagedClientsApi(api_client)
-    id = 'aClientId' # str | The Managed Client ID
+    id = '4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7' # str | Managed Client ID.
 
     try:
         # Get a Managed Client
@@ -237,7 +237,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The Managed Client ID | 
+ **id** | **str**| Managed Client ID. | 
 
 ### Return type
 
@@ -447,7 +447,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_managed_client**
-> ManagedClient update_managed_client(id, json_patch)
+> ManagedClient update_managed_client(id, json_patch_operation)
 
 Update a Managed Client
 
@@ -462,7 +462,7 @@ Update an existing Managed Client.
 import time
 import os
 import sailpoint.v3
-from sailpoint.v3.models.json_patch import JsonPatch
+from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v3.models.managed_client import ManagedClient
 from sailpoint.v3.rest import ApiException
 from pprint import pprint
@@ -486,12 +486,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.ManagedClientsApi(api_client)
-    id = 'aClientId' # str | The Managed Client ID
-    json_patch = sailpoint.v3.JsonPatch() # JsonPatch | The JSONPatch payload used to update the schema.
+    id = '4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7' # str | Managed Client ID.
+    json_patch_operation = [sailpoint.v3.JsonPatchOperation()] # List[JsonPatchOperation] | The JSONPatch payload used to update the object.
 
     try:
         # Update a Managed Client
-        api_response = api_instance.update_managed_client(id, json_patch)
+        api_response = api_instance.update_managed_client(id, json_patch_operation)
         print("The response of ManagedClientsApi->update_managed_client:\n")
         pprint(api_response)
     except Exception as e:
@@ -505,8 +505,8 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The Managed Client ID | 
- **json_patch** | [**JsonPatch**](JsonPatch.md)| The JSONPatch payload used to update the schema. | 
+ **id** | **str**| Managed Client ID. | 
+ **json_patch_operation** | [**List[JsonPatchOperation]**](JsonPatchOperation.md)| The JSONPatch payload used to update the object. | 
 
 ### Return type
 

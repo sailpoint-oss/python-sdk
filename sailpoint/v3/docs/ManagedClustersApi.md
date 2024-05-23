@@ -135,7 +135,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.ManagedClustersApi(api_client)
-    id = 'aClusterId' # str | The Managed Cluster ID
+    id = '2c9180897de347a2017de8859e8c5039' # str | Managed Cluster ID.
     remove_clients = False # bool | Flag to determine the need to delete a cluster with clients (optional) (default to False)
 
     try:
@@ -152,7 +152,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The Managed Cluster ID | 
+ **id** | **str**| Managed Cluster ID. | 
  **remove_clients** | **bool**| Flag to determine the need to delete a cluster with clients | [optional] [default to False]
 
 ### Return type
@@ -220,7 +220,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.ManagedClustersApi(api_client)
-    id = 'aClusterId' # str | ID of the ManagedCluster to get
+    id = '2c9180897de347a2017de8859e8c5039' # str | ManagedCluster ID.
 
     try:
         # Get a specified Managed Cluster.
@@ -238,7 +238,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| ID of the ManagedCluster to get | 
+ **id** | **str**| ManagedCluster ID. | 
 
 ### Return type
 
@@ -359,7 +359,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_managed_cluster**
-> ManagedCluster update_managed_cluster(id, json_patch)
+> ManagedCluster update_managed_cluster(id, json_patch_operation)
 
 Update a Managed Cluster
 
@@ -374,7 +374,7 @@ Update an existing Managed Cluster.
 import time
 import os
 import sailpoint.v3
-from sailpoint.v3.models.json_patch import JsonPatch
+from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v3.models.managed_cluster import ManagedCluster
 from sailpoint.v3.rest import ApiException
 from pprint import pprint
@@ -398,12 +398,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.ManagedClustersApi(api_client)
-    id = 'aClusterId' # str | The Managed Cluster ID
-    json_patch = sailpoint.v3.JsonPatch() # JsonPatch | The JSONPatch payload used to update the schema.
+    id = '2c9180897de347a2017de8859e8c5039' # str | Managed Cluster ID.
+    json_patch_operation = [sailpoint.v3.JsonPatchOperation()] # List[JsonPatchOperation] | The JSONPatch payload used to update the object.
 
     try:
         # Update a Managed Cluster
-        api_response = api_instance.update_managed_cluster(id, json_patch)
+        api_response = api_instance.update_managed_cluster(id, json_patch_operation)
         print("The response of ManagedClustersApi->update_managed_cluster:\n")
         pprint(api_response)
     except Exception as e:
@@ -417,8 +417,8 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The Managed Cluster ID | 
- **json_patch** | [**JsonPatch**](JsonPatch.md)| The JSONPatch payload used to update the schema. | 
+ **id** | **str**| Managed Cluster ID. | 
+ **json_patch_operation** | [**List[JsonPatchOperation]**](JsonPatchOperation.md)| The JSONPatch payload used to update the object. | 
 
 ### Return type
 

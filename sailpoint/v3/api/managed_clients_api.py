@@ -29,7 +29,7 @@ from pydantic import StrictBool, StrictStr
 
 from typing import List, Optional
 
-from sailpoint.v3.models.json_patch import JsonPatch
+from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v3.models.managed_client import ManagedClient
 from sailpoint.v3.models.managed_client_request import ManagedClientRequest
 from sailpoint.v3.models.managed_client_status import ManagedClientStatus
@@ -343,7 +343,7 @@ class ManagedClientsApi:
     @validate_call
     def delete_managed_client(
         self,
-        id: Annotated[StrictStr, Field(description="The Managed Client ID")],
+        id: Annotated[StrictStr, Field(description="Managed Client ID.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -361,7 +361,7 @@ class ManagedClientsApi:
 
         Delete an existing Managed Client.
 
-        :param id: The Managed Client ID (required)
+        :param id: Managed Client ID. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -415,7 +415,7 @@ class ManagedClientsApi:
     @validate_call
     def delete_managed_client_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The Managed Client ID")],
+        id: Annotated[StrictStr, Field(description="Managed Client ID.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -433,7 +433,7 @@ class ManagedClientsApi:
 
         Delete an existing Managed Client.
 
-        :param id: The Managed Client ID (required)
+        :param id: Managed Client ID. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -487,7 +487,7 @@ class ManagedClientsApi:
     @validate_call
     def delete_managed_client_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The Managed Client ID")],
+        id: Annotated[StrictStr, Field(description="Managed Client ID.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -505,7 +505,7 @@ class ManagedClientsApi:
 
         Delete an existing Managed Client.
 
-        :param id: The Managed Client ID (required)
+        :param id: Managed Client ID. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -617,7 +617,7 @@ class ManagedClientsApi:
     @validate_call
     def get_managed_client(
         self,
-        id: Annotated[StrictStr, Field(description="The Managed Client ID")],
+        id: Annotated[StrictStr, Field(description="Managed Client ID.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -635,7 +635,7 @@ class ManagedClientsApi:
 
         Get a Managed Client.
 
-        :param id: The Managed Client ID (required)
+        :param id: Managed Client ID. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -690,7 +690,7 @@ class ManagedClientsApi:
     @validate_call
     def get_managed_client_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The Managed Client ID")],
+        id: Annotated[StrictStr, Field(description="Managed Client ID.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -708,7 +708,7 @@ class ManagedClientsApi:
 
         Get a Managed Client.
 
-        :param id: The Managed Client ID (required)
+        :param id: Managed Client ID. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -763,7 +763,7 @@ class ManagedClientsApi:
     @validate_call
     def get_managed_client_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The Managed Client ID")],
+        id: Annotated[StrictStr, Field(description="Managed Client ID.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -781,7 +781,7 @@ class ManagedClientsApi:
 
         Get a Managed Client.
 
-        :param id: The Managed Client ID (required)
+        :param id: Managed Client ID. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1515,8 +1515,8 @@ class ManagedClientsApi:
     @validate_call
     def update_managed_client(
         self,
-        id: Annotated[StrictStr, Field(description="The Managed Client ID")],
-        json_patch: Annotated[JsonPatch, Field(description="The JSONPatch payload used to update the schema.")],
+        id: Annotated[StrictStr, Field(description="Managed Client ID.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1534,10 +1534,10 @@ class ManagedClientsApi:
 
         Update an existing Managed Client.
 
-        :param id: The Managed Client ID (required)
+        :param id: Managed Client ID. (required)
         :type id: str
-        :param json_patch: The JSONPatch payload used to update the schema. (required)
-        :type json_patch: JsonPatch
+        :param json_patch_operation: The JSONPatch payload used to update the object. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1562,7 +1562,7 @@ class ManagedClientsApi:
 
         _param = self._update_managed_client_serialize(
             id=id,
-            json_patch=json_patch,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1592,8 +1592,8 @@ class ManagedClientsApi:
     @validate_call
     def update_managed_client_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The Managed Client ID")],
-        json_patch: Annotated[JsonPatch, Field(description="The JSONPatch payload used to update the schema.")],
+        id: Annotated[StrictStr, Field(description="Managed Client ID.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1611,10 +1611,10 @@ class ManagedClientsApi:
 
         Update an existing Managed Client.
 
-        :param id: The Managed Client ID (required)
+        :param id: Managed Client ID. (required)
         :type id: str
-        :param json_patch: The JSONPatch payload used to update the schema. (required)
-        :type json_patch: JsonPatch
+        :param json_patch_operation: The JSONPatch payload used to update the object. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1639,7 +1639,7 @@ class ManagedClientsApi:
 
         _param = self._update_managed_client_serialize(
             id=id,
-            json_patch=json_patch,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1669,8 +1669,8 @@ class ManagedClientsApi:
     @validate_call
     def update_managed_client_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The Managed Client ID")],
-        json_patch: Annotated[JsonPatch, Field(description="The JSONPatch payload used to update the schema.")],
+        id: Annotated[StrictStr, Field(description="Managed Client ID.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1688,10 +1688,10 @@ class ManagedClientsApi:
 
         Update an existing Managed Client.
 
-        :param id: The Managed Client ID (required)
+        :param id: Managed Client ID. (required)
         :type id: str
-        :param json_patch: The JSONPatch payload used to update the schema. (required)
-        :type json_patch: JsonPatch
+        :param json_patch_operation: The JSONPatch payload used to update the object. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1716,7 +1716,7 @@ class ManagedClientsApi:
 
         _param = self._update_managed_client_serialize(
             id=id,
-            json_patch=json_patch,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1742,7 +1742,7 @@ class ManagedClientsApi:
     def _update_managed_client_serialize(
         self,
         id,
-        json_patch,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -1752,6 +1752,7 @@ class ManagedClientsApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -1768,8 +1769,8 @@ class ManagedClientsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if json_patch is not None:
-            _body_params = json_patch
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`

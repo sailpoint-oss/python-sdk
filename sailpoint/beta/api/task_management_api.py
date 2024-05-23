@@ -29,7 +29,7 @@ from pydantic import StrictBool, StrictStr
 
 from typing import List, Optional
 
-from sailpoint.beta.models.json_patch import JsonPatch
+from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
 from sailpoint.beta.models.task_status import TaskStatus
 
 from sailpoint.beta.api_client import ApiClient
@@ -661,7 +661,7 @@ class TaskManagementApi:
     @validate_call
     def get_task_status(
         self,
-        id: Annotated[StrictStr, Field(description="Task ID of the TaskStatus to get")],
+        id: Annotated[StrictStr, Field(description="Task ID.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -679,7 +679,7 @@ class TaskManagementApi:
 
         Get a TaskStatus for a task by task ID.
 
-        :param id: Task ID of the TaskStatus to get (required)
+        :param id: Task ID. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -734,7 +734,7 @@ class TaskManagementApi:
     @validate_call
     def get_task_status_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="Task ID of the TaskStatus to get")],
+        id: Annotated[StrictStr, Field(description="Task ID.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -752,7 +752,7 @@ class TaskManagementApi:
 
         Get a TaskStatus for a task by task ID.
 
-        :param id: Task ID of the TaskStatus to get (required)
+        :param id: Task ID. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -807,7 +807,7 @@ class TaskManagementApi:
     @validate_call
     def get_task_status_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="Task ID of the TaskStatus to get")],
+        id: Annotated[StrictStr, Field(description="Task ID.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -825,7 +825,7 @@ class TaskManagementApi:
 
         Get a TaskStatus for a task by task ID.
 
-        :param id: Task ID of the TaskStatus to get (required)
+        :param id: Task ID. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1285,8 +1285,8 @@ class TaskManagementApi:
     @validate_call
     def update_task_status(
         self,
-        id: Annotated[StrictStr, Field(description="Task ID of the task whose TaskStatus to update")],
-        json_patch: JsonPatch,
+        id: Annotated[StrictStr, Field(description="Task ID.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1302,12 +1302,12 @@ class TaskManagementApi:
     ) -> TaskStatus:
         """Update task status by ID
 
-        Update a current TaskStatus for a task by task ID.
+        Update a current task status by task ID. Use this API to clear a pending task by updating the completionStatus and completed attributes.
 
-        :param id: Task ID of the task whose TaskStatus to update (required)
+        :param id: Task ID. (required)
         :type id: str
-        :param json_patch: (required)
-        :type json_patch: JsonPatch
+        :param json_patch_operation: The JSONPatch payload used to update the object. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1332,7 +1332,7 @@ class TaskManagementApi:
 
         _param = self._update_task_status_serialize(
             id=id,
-            json_patch=json_patch,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1362,8 +1362,8 @@ class TaskManagementApi:
     @validate_call
     def update_task_status_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="Task ID of the task whose TaskStatus to update")],
-        json_patch: JsonPatch,
+        id: Annotated[StrictStr, Field(description="Task ID.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1379,12 +1379,12 @@ class TaskManagementApi:
     ) -> ApiResponse[TaskStatus]:
         """Update task status by ID
 
-        Update a current TaskStatus for a task by task ID.
+        Update a current task status by task ID. Use this API to clear a pending task by updating the completionStatus and completed attributes.
 
-        :param id: Task ID of the task whose TaskStatus to update (required)
+        :param id: Task ID. (required)
         :type id: str
-        :param json_patch: (required)
-        :type json_patch: JsonPatch
+        :param json_patch_operation: The JSONPatch payload used to update the object. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1409,7 +1409,7 @@ class TaskManagementApi:
 
         _param = self._update_task_status_serialize(
             id=id,
-            json_patch=json_patch,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1439,8 +1439,8 @@ class TaskManagementApi:
     @validate_call
     def update_task_status_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="Task ID of the task whose TaskStatus to update")],
-        json_patch: JsonPatch,
+        id: Annotated[StrictStr, Field(description="Task ID.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1456,12 +1456,12 @@ class TaskManagementApi:
     ) -> RESTResponseType:
         """Update task status by ID
 
-        Update a current TaskStatus for a task by task ID.
+        Update a current task status by task ID. Use this API to clear a pending task by updating the completionStatus and completed attributes.
 
-        :param id: Task ID of the task whose TaskStatus to update (required)
+        :param id: Task ID. (required)
         :type id: str
-        :param json_patch: (required)
-        :type json_patch: JsonPatch
+        :param json_patch_operation: The JSONPatch payload used to update the object. (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1486,7 +1486,7 @@ class TaskManagementApi:
 
         _param = self._update_task_status_serialize(
             id=id,
-            json_patch=json_patch,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1512,7 +1512,7 @@ class TaskManagementApi:
     def _update_task_status_serialize(
         self,
         id,
-        json_patch,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -1522,6 +1522,7 @@ class TaskManagementApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -1538,8 +1539,8 @@ class TaskManagementApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if json_patch is not None:
-            _body_params = json_patch
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`

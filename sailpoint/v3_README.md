@@ -633,7 +633,6 @@ Class | Method | HTTP request | Description
  - [ImportUploadedBackupRequest](sailpoint/v3/docs/ImportUploadedBackupRequest.md)
  - [Index](sailpoint/v3/docs/Index.md)
  - [InnerHit](sailpoint/v3/docs/InnerHit.md)
- - [JsonPatch](sailpoint/v3/docs/JsonPatch.md)
  - [JsonPatchOperation](sailpoint/v3/docs/JsonPatchOperation.md)
  - [JsonPatchOperationValue](sailpoint/v3/docs/JsonPatchOperationValue.md)
  - [KbaAnswerRequestItem](sailpoint/v3/docs/KbaAnswerRequestItem.md)

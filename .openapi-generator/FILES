@@ -486,7 +486,6 @@ sailpoint/beta/docs/ImportSpConfigRequest.md
 sailpoint/beta/docs/Invocation.md
 sailpoint/beta/docs/InvocationStatus.md
 sailpoint/beta/docs/InvocationStatusType.md
-sailpoint/beta/docs/JsonPatch.md
 sailpoint/beta/docs/JsonPatchOperation.md
 sailpoint/beta/docs/JsonPatchOperationValue.md
 sailpoint/beta/docs/KbaAnswerRequestItem.md
@@ -1340,7 +1339,6 @@ sailpoint/beta/models/import_sp_config_request.py
 sailpoint/beta/models/invocation.py
 sailpoint/beta/models/invocation_status.py
 sailpoint/beta/models/invocation_status_type.py
-sailpoint/beta/models/json_patch.py
 sailpoint/beta/models/json_patch_operation.py
 sailpoint/beta/models/json_patch_operation_value.py
 sailpoint/beta/models/kba_answer_request_item.py
@@ -2185,7 +2183,6 @@ sailpoint/beta/test/test_import_sp_config_request.py
 sailpoint/beta/test/test_invocation.py
 sailpoint/beta/test/test_invocation_status.py
 sailpoint/beta/test/test_invocation_status_type.py
-sailpoint/beta/test/test_json_patch.py
 sailpoint/beta/test/test_json_patch_operation.py
 sailpoint/beta/test/test_json_patch_operation_value.py
 sailpoint/beta/test/test_kba_answer_request_item.py

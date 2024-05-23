@@ -221,7 +221,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.TaskManagementApi(api_client)
-    id = 'anId' # str | Task ID of the TaskStatus to get
+    id = '00eebcf881994e419d72e757fd30dc0e' # str | Task ID.
 
     try:
         # Get task status by ID.
@@ -239,7 +239,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| Task ID of the TaskStatus to get | 
+ **id** | **str**| Task ID. | 
 
 ### Return type
 
@@ -363,11 +363,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_task_status**
-> TaskStatus update_task_status(id, json_patch)
+> TaskStatus update_task_status(id, json_patch_operation)
 
 Update task status by ID
 
-Update a current TaskStatus for a task by task ID.
+Update a current task status by task ID. Use this API to clear a pending task by updating the completionStatus and completed attributes.
 
 ### Example
 
@@ -378,7 +378,7 @@ Update a current TaskStatus for a task by task ID.
 import time
 import os
 import sailpoint.beta
-from sailpoint.beta.models.json_patch import JsonPatch
+from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
 from sailpoint.beta.models.task_status import TaskStatus
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
@@ -402,12 +402,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.TaskManagementApi(api_client)
-    id = 'anId' # str | Task ID of the task whose TaskStatus to update
-    json_patch = sailpoint.beta.JsonPatch() # JsonPatch | 
+    id = '00eebcf881994e419d72e757fd30dc0e' # str | Task ID.
+    json_patch_operation = [sailpoint.beta.JsonPatchOperation()] # List[JsonPatchOperation] | The JSONPatch payload used to update the object.
 
     try:
         # Update task status by ID
-        api_response = api_instance.update_task_status(id, json_patch)
+        api_response = api_instance.update_task_status(id, json_patch_operation)
         print("The response of TaskManagementApi->update_task_status:\n")
         pprint(api_response)
     except Exception as e:
@@ -421,8 +421,8 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| Task ID of the task whose TaskStatus to update | 
- **json_patch** | [**JsonPatch**](JsonPatch.md)|  | 
+ **id** | **str**| Task ID. | 
+ **json_patch_operation** | [**List[JsonPatchOperation]**](JsonPatchOperation.md)| The JSONPatch payload used to update the object. | 
 
 ### Return type
 
@@ -441,7 +441,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Responds with the updated TaskStatus for the task with the given task ID. |  -  |
+**200** | This response indicates the PATCH operation succeeded, and the API returns the updated task object. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
 **404** | Not Found - returned if the request URL refers to a resource or object that does not exist |  -  |

@@ -296,7 +296,6 @@ from sailpoint.v3.models.import_object import ImportObject
 from sailpoint.v3.models.import_uploaded_backup_request import ImportUploadedBackupRequest
 from sailpoint.v3.models.index import Index
 from sailpoint.v3.models.inner_hit import InnerHit
-from sailpoint.v3.models.json_patch import JsonPatch
 from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v3.models.json_patch_operation_value import JsonPatchOperationValue
 from sailpoint.v3.models.kba_answer_request_item import KbaAnswerRequestItem

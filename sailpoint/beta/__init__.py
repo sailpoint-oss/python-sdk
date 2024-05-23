@@ -480,7 +480,6 @@ from sailpoint.beta.models.import_sp_config_request import ImportSpConfigRequest
 from sailpoint.beta.models.invocation import Invocation
 from sailpoint.beta.models.invocation_status import InvocationStatus
 from sailpoint.beta.models.invocation_status_type import InvocationStatusType
-from sailpoint.beta.models.json_patch import JsonPatch
 from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
 from sailpoint.beta.models.json_patch_operation_value import JsonPatchOperationValue
 from sailpoint.beta.models.kba_answer_request_item import KbaAnswerRequestItem

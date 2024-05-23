@@ -959,7 +959,6 @@ Class | Method | HTTP request | Description
  - [Invocation](sailpoint/beta/docs/Invocation.md)
  - [InvocationStatus](sailpoint/beta/docs/InvocationStatus.md)
  - [InvocationStatusType](sailpoint/beta/docs/InvocationStatusType.md)
- - [JsonPatch](sailpoint/beta/docs/JsonPatch.md)
  - [JsonPatchOperation](sailpoint/beta/docs/JsonPatchOperation.md)
  - [JsonPatchOperationValue](sailpoint/beta/docs/JsonPatchOperationValue.md)
  - [KbaAnswerRequestItem](sailpoint/beta/docs/KbaAnswerRequestItem.md)
