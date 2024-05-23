@@ -79,7 +79,6 @@ from sailpoint.beta.api.segments_api import SegmentsApi
 from sailpoint.beta.api.service_desk_integration_api import ServiceDeskIntegrationApi
 from sailpoint.beta.api.source_usages_api import SourceUsagesApi
 from sailpoint.beta.api.sources_api import SourcesApi
-from sailpoint.beta.api.sources_uncorrelated_accounts_api import SourcesUncorrelatedAccountsApi
 from sailpoint.beta.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
 from sailpoint.beta.api.tagged_objects_api import TaggedObjectsApi
 from sailpoint.beta.api.task_management_api import TaskManagementApi

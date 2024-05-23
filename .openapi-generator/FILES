@@ -62,7 +62,6 @@ sailpoint/beta/api/sod_policy_api.py
 sailpoint/beta/api/sod_violations_api.py
 sailpoint/beta/api/source_usages_api.py
 sailpoint/beta/api/sources_api.py
-sailpoint/beta/api/sources_uncorrelated_accounts_api.py
 sailpoint/beta/api/sp_config_api.py
 sailpoint/beta/api/suggested_entitlement_description_api.py
 sailpoint/beta/api/tagged_objects_api.py
@@ -848,7 +847,6 @@ sailpoint/beta/docs/SourceUsage.md
 sailpoint/beta/docs/SourceUsageStatus.md
 sailpoint/beta/docs/SourceUsagesApi.md
 sailpoint/beta/docs/SourcesApi.md
-sailpoint/beta/docs/SourcesUncorrelatedAccountsApi.md
 sailpoint/beta/docs/SpConfigExportJob.md
 sailpoint/beta/docs/SpConfigExportJobStatus.md
 sailpoint/beta/docs/SpConfigExportResults.md
@@ -2547,7 +2545,6 @@ sailpoint/beta/test/test_source_usage.py
 sailpoint/beta/test/test_source_usage_status.py
 sailpoint/beta/test/test_source_usages_api.py
 sailpoint/beta/test/test_sources_api.py
-sailpoint/beta/test/test_sources_uncorrelated_accounts_api.py
 sailpoint/beta/test/test_sp_config_api.py
 sailpoint/beta/test/test_sp_config_export_job.py
 sailpoint/beta/test/test_sp_config_export_job_status.py

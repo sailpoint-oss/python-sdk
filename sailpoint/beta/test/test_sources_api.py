@@ -166,6 +166,13 @@ class TestSourcesApi(unittest.TestCase):
         """
         pass
 
+    def test_import_uncorrelated_accounts(self) -> None:
+        """Test case for import_uncorrelated_accounts
+
+        Process Uncorrelated Accounts
+        """
+        pass
+
     def test_list_provisioning_policies(self) -> None:
         """Test case for list_provisioning_policies
 
