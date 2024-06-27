@@ -30,9 +30,10 @@ class FormUsedBy(BaseModel):
     """
     FormUsedBy
     """ # noqa: E501
-    type: Optional[StrictStr] = Field(default=None, description="FormUsedByType value.  WORKFLOW FormUsedByTypeWorkflow SOURCE FormUsedByTypeSource")
+    type: Optional[StrictStr] = Field(default=None, description="FormUsedByType value.  WORKFLOW FormUsedByTypeWorkflow SOURCE FormUsedByTypeSource MySailPoint FormUsedByType")
     id: Optional[StrictStr] = Field(default=None, description="Unique identifier of the system using the form.")
-    __properties: ClassVar[List[str]] = ["type", "id"]
+    name: Optional[StrictStr] = Field(default=None, description="Name of the system using the form.")
+    __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -40,8 +41,8 @@ class FormUsedBy(BaseModel):
         if value is None:
             return value
 
-        if value not in ('WORKFLOW', 'SOURCE'):
-            raise ValueError("must be one of enum values ('WORKFLOW', 'SOURCE')")
+        if value not in ('WORKFLOW', 'SOURCE', 'MySailPoint'):
+            raise ValueError("must be one of enum values ('WORKFLOW', 'SOURCE', 'MySailPoint')")
         return value
 
     model_config = {
@@ -94,7 +95,8 @@ class FormUsedBy(BaseModel):
 
         _obj = cls.model_validate({
             "type": obj.get("type"),
-            "id": obj.get("id")
+            "id": obj.get("id"),
+            "name": obj.get("name")
         })
         return _obj
 

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **scheme** | [**ApprovalScheme**](ApprovalScheme.md) |  | [optional] 
 **error_messages** | [**List[ErrorMessageDto]**](ErrorMessageDto.md) | If the request failed, includes any error messages that were generated. | [optional] 
 **comment** | **str** | Comment, if any, provided by the approver. | [optional] 
-**remove_date** | **datetime** | The date the role or access profile is no longer assigned to the specified identity. | [optional] 
+**remove_date** | **datetime** | The date the role or access profile or entitlement is no longer assigned to the specified identity. | [optional] 
 
 ## Example
 

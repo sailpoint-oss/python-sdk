@@ -7,8 +7,6 @@ Arguments for Identity Profile Identity Error report (IDENTITY_PROFILE_IDENTITY_
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **authoritative_source** | **str** | Source Id to be checked on errors of identity profiles aggregation | 
-**default_s3_bucket** | **bool** | Use it to set default s3 bucket where generated report will be saved.  In case this argument is false and &#39;s3Bucket&#39; argument is null or absent there will be default s3Bucket assigned to the report. | 
-**s3_bucket** | **str** | If you want to be specific you could use this argument with defaultS3Bucket &#x3D; false. | [optional] 
 
 ## Example
 

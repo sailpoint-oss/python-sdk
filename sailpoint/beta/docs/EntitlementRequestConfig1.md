@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**allow_entitlement_request** | **bool** | Flag for allowing entitlement request. | [optional] 
-**request_comments_required** | **bool** | Flag for requiring comments while submitting an entitlement request. | [optional] [default to False]
-**denied_comments_required** | **bool** | Flag for requiring comments while rejecting an entitlement request. | [optional] [default to False]
-**grant_request_approval_schemes** | **str** | Approval schemes for granting entitlement request. This can be empty if no approval is needed. Multiple schemes must be comma-separated. The valid schemes are \&quot;entitlementOwner\&quot;, \&quot;sourceOwner\&quot;, \&quot;manager\&quot; and \&quot;workgroup:{id}\&quot;. Multiple workgroups (governance groups) can be used.  | [optional] [default to 'sourceOwner']
+**allow_entitlement_request** | **bool** | If this is true, entitlement requests are allowed. | [optional] [default to False]
+**request_comments_required** | **bool** | If this is true, comments are required to submit entitlement requests. | [optional] [default to False]
+**denied_comments_required** | **bool** | If this is true, comments are required to reject entitlement requests. | [optional] [default to False]
+**grant_request_approval_schemes** | **str** | Approval schemes for granting entitlement request. This can be empty if no approval is needed. Multiple schemes must be comma-separated. The valid schemes are \&quot;entitlementOwner\&quot;, \&quot;sourceOwner\&quot;, \&quot;manager\&quot; and \&quot;workgroup:{id}\&quot;. You can use multiple governance groups (workgroups).  | [optional] [default to 'sourceOwner']
 
 ## Example
 

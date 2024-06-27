@@ -34,21 +34,21 @@ class WorkItemType(str, Enum):
     """
     allowed enum values
     """
-    UNKNOWN = 'UNKNOWN'
-    GENERIC = 'GENERIC'
-    CERTIFICATION = 'CERTIFICATION'
-    REMEDIATION = 'REMEDIATION'
-    DELEGATION = 'DELEGATION'
-    APPROVAL = 'APPROVAL'
-    VIOLATIONREVIEW = 'VIOLATIONREVIEW'
-    FORM = 'FORM'
-    POLICYVIOLATION = 'POLICYVIOLATION'
-    CHALLENGE = 'CHALLENGE'
-    IMPACTANALYSIS = 'IMPACTANALYSIS'
-    SIGNOFF = 'SIGNOFF'
-    EVENT = 'EVENT'
-    MANUALACTION = 'MANUALACTION'
-    TEST = 'TEST'
+    UNKNOWN = 'Unknown'
+    GENERIC = 'Generic'
+    CERTIFICATION = 'Certification'
+    REMEDIATION = 'Remediation'
+    DELEGATION = 'Delegation'
+    APPROVAL = 'Approval'
+    VIOLATIONREVIEW = 'ViolationReview'
+    FORM = 'Form'
+    POLICYVIOLATION = 'PolicyViolation'
+    CHALLENGE = 'Challenge'
+    IMPACTANALYSIS = 'ImpactAnalysis'
+    SIGNOFF = 'Signoff'
+    EVENT = 'Event'
+    MANUALACTION = 'ManualAction'
+    TEST = 'Test'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

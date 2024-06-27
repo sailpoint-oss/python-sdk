@@ -39,6 +39,7 @@ class TestV3ConnectorDto(unittest.TestCase):
                 name = 'name',
                 type = 'ServiceNow',
                 script_name = 'servicenow',
+                class_name = 'sailpoint.connector.OpenConnectorAdapter',
                 features = [PROVISIONING, SYNC_PROVISIONING, SEARCH, UNSTRUCTURED_TARGETS],
                 direct_connect = True,
                 connector_metadata = {supportedUI=EXTJS, platform=ccg, shortDesc=connector description},

@@ -1,12 +1,12 @@
 # IdentityAttributeNames
 
-Identity Attribute IDs
+Identity attribute IDs.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ids** | **List[str]** | List of identity attributes&#39; technical names | [optional] 
+**ids** | **List[str]** | List of identity attributes&#39; technical names. | [optional] 
 
 ## Example
 

@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **str** | The type of object being referenced | [optional] 
-**id** | **str** | ID of the policy | [optional] 
-**name** | **str** | Human-readable display name of the policy | [optional] 
+**type** | **str** | Type of object being referenced. | [optional] 
+**id** | **str** | Policy ID. | [optional] 
+**name** | **str** | Policy&#39;s human-readable display name. | [optional] 
 
 ## Example
 

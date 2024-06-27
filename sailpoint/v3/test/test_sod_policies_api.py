@@ -47,6 +47,27 @@ class TestSODPoliciesApi(unittest.TestCase):
         """
         pass
 
+    def test_get_custom_violation_report(self) -> None:
+        """Test case for get_custom_violation_report
+
+        Download custom violation report
+        """
+        pass
+
+    def test_get_default_violation_report(self) -> None:
+        """Test case for get_default_violation_report
+
+        Download violation report
+        """
+        pass
+
+    def test_get_sod_all_report_run_status(self) -> None:
+        """Test case for get_sod_all_report_run_status
+
+        Get multi-report run task status
+        """
+        pass
+
     def test_get_sod_policy(self) -> None:
         """Test case for get_sod_policy
 
@@ -107,6 +128,13 @@ class TestSODPoliciesApi(unittest.TestCase):
         """Test case for start_evaluate_sod_policy
 
         Evaluate one policy by ID
+        """
+        pass
+
+    def test_start_sod_all_policies_for_org(self) -> None:
+        """Test case for start_sod_all_policies_for_org
+
+        Runs all policies for org
         """
         pass
 

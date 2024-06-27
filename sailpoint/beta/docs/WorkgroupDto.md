@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **description** | **str** | Governance group description. | [optional] 
 **member_count** | **int** | Number of members in the governance group. | [optional] [readonly] 
 **connection_count** | **int** | Number of connections in the governance group. | [optional] [readonly] 
+**created** | **datetime** |  | [optional] 
+**modified** | **datetime** |  | [optional] 
 
 ## Example
 

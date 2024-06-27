@@ -18,8 +18,8 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
+from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, StrictStr
 from pydantic import Field
 try:
     from typing import Self
@@ -31,9 +31,7 @@ class IdentityProfileIdentityErrorReportArguments(BaseModel):
     Arguments for Identity Profile Identity Error report (IDENTITY_PROFILE_IDENTITY_ERROR)
     """ # noqa: E501
     authoritative_source: StrictStr = Field(description="Source Id to be checked on errors of identity profiles aggregation", alias="authoritativeSource")
-    default_s3_bucket: StrictBool = Field(description="Use it to set default s3 bucket where generated report will be saved.  In case this argument is false and 's3Bucket' argument is null or absent there will be default s3Bucket assigned to the report.", alias="defaultS3Bucket")
-    s3_bucket: Optional[StrictStr] = Field(default=None, description="If you want to be specific you could use this argument with defaultS3Bucket = false.", alias="s3Bucket")
-    __properties: ClassVar[List[str]] = ["authoritativeSource", "defaultS3Bucket", "s3Bucket"]
+    __properties: ClassVar[List[str]] = ["authoritativeSource"]
 
     model_config = {
         "populate_by_name": True,
@@ -84,9 +82,7 @@ class IdentityProfileIdentityErrorReportArguments(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "authoritativeSource": obj.get("authoritativeSource"),
-            "defaultS3Bucket": obj.get("defaultS3Bucket"),
-            "s3Bucket": obj.get("s3Bucket")
+            "authoritativeSource": obj.get("authoritativeSource")
         })
         return _obj
 

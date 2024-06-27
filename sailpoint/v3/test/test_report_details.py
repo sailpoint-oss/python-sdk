@@ -37,7 +37,7 @@ class TestReportDetails(unittest.TestCase):
         if include_optional:
             return ReportDetails(
                 report_type = 'IDENTITIES_DETAILS',
-                arguments = {application=2c9180897e7742b2017e781782f705b9, sourceName=DataScienceWorkday, defaultS3Bucket=true}
+                arguments = {application=2c9180897e7742b2017e781782f705b9, sourceName=DataScienceWorkday}
             )
         else:
             return ReportDetails(

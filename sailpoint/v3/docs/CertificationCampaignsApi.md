@@ -8,19 +8,19 @@ Method | HTTP request | Description
 [**create_campaign**](CertificationCampaignsApi.md#create_campaign) | **POST** /campaigns | Create a campaign
 [**create_campaign_template**](CertificationCampaignsApi.md#create_campaign_template) | **POST** /campaign-templates | Create a Campaign Template
 [**delete_campaign_template**](CertificationCampaignsApi.md#delete_campaign_template) | **DELETE** /campaign-templates/{id} | Delete a Campaign Template
-[**delete_campaign_template_schedule**](CertificationCampaignsApi.md#delete_campaign_template_schedule) | **DELETE** /campaign-templates/{id}/schedule | Deletes a Campaign Template&#39;s Schedule
-[**delete_campaigns**](CertificationCampaignsApi.md#delete_campaigns) | **POST** /campaigns/delete | Deletes Campaigns
+[**delete_campaign_template_schedule**](CertificationCampaignsApi.md#delete_campaign_template_schedule) | **DELETE** /campaign-templates/{id}/schedule | Delete Campaign Template Schedule
+[**delete_campaigns**](CertificationCampaignsApi.md#delete_campaigns) | **POST** /campaigns/delete | Delete Campaigns
 [**get_active_campaigns**](CertificationCampaignsApi.md#get_active_campaigns) | **GET** /campaigns | List Campaigns
-[**get_campaign**](CertificationCampaignsApi.md#get_campaign) | **GET** /campaigns/{id} | Get a campaign
+[**get_campaign**](CertificationCampaignsApi.md#get_campaign) | **GET** /campaigns/{id} | Get Campaign
 [**get_campaign_reports**](CertificationCampaignsApi.md#get_campaign_reports) | **GET** /campaigns/{id}/reports | Get Campaign Reports
 [**get_campaign_reports_config**](CertificationCampaignsApi.md#get_campaign_reports_config) | **GET** /campaigns/reports-configuration | Get Campaign Reports Configuration
 [**get_campaign_template**](CertificationCampaignsApi.md#get_campaign_template) | **GET** /campaign-templates/{id} | Get a Campaign Template
-[**get_campaign_template_schedule**](CertificationCampaignsApi.md#get_campaign_template_schedule) | **GET** /campaign-templates/{id}/schedule | Gets a Campaign Template&#39;s Schedule
-[**list_campaign_templates**](CertificationCampaignsApi.md#list_campaign_templates) | **GET** /campaign-templates | List Campaign Templates
+[**get_campaign_template_schedule**](CertificationCampaignsApi.md#get_campaign_template_schedule) | **GET** /campaign-templates/{id}/schedule | Get Campaign Template Schedule
+[**get_campaign_templates**](CertificationCampaignsApi.md#get_campaign_templates) | **GET** /campaign-templates | List Campaign Templates
 [**move**](CertificationCampaignsApi.md#move) | **POST** /campaigns/{id}/reassign | Reassign Certifications
 [**patch_campaign_template**](CertificationCampaignsApi.md#patch_campaign_template) | **PATCH** /campaign-templates/{id} | Update a Campaign Template
 [**set_campaign_reports_config**](CertificationCampaignsApi.md#set_campaign_reports_config) | **PUT** /campaigns/reports-configuration | Set Campaign Reports Configuration
-[**set_campaign_template_schedule**](CertificationCampaignsApi.md#set_campaign_template_schedule) | **PUT** /campaign-templates/{id}/schedule | Sets a Campaign Template&#39;s Schedule
+[**set_campaign_template_schedule**](CertificationCampaignsApi.md#set_campaign_template_schedule) | **PUT** /campaign-templates/{id}/schedule | Set Campaign Template Schedule
 [**start_campaign**](CertificationCampaignsApi.md#start_campaign) | **POST** /campaigns/{id}/activate | Activate a Campaign
 [**start_campaign_remediation_scan**](CertificationCampaignsApi.md#start_campaign_remediation_scan) | **POST** /campaigns/{id}/run-remediation-scan | Run Campaign Remediation Scan
 [**start_campaign_report**](CertificationCampaignsApi.md#start_campaign_report) | **POST** /campaigns/{id}/run-report/{type} | Run Campaign Report
@@ -33,7 +33,7 @@ Method | HTTP request | Description
 
 Complete a Campaign
 
-:::caution  This endpoint will run successfully for any campaigns that are **past due**.  This endpoint will return a content error if the campaign is **not past due**.  :::  Completes a certification campaign. This is provided to admins so that they can complete a certification even if all items have not been completed.  Requires roles of CERT_ADMIN and ORG_ADMIN 
+:::caution  This endpoint will run successfully for any campaigns that are **past due**.  This endpoint will return a content error if the campaign is **not past due**.  :::  Use this API to complete a certification campaign. This functionality is provided to admins so that they can complete a certification even if all items have not been completed.  Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN. 
 
 ### Example
 
@@ -67,7 +67,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.CertificationCampaignsApi(api_client)
-    id = 'ef38f94347e94562b5bb8424a56397d8' # str | The campaign id
+    id = 'ef38f94347e94562b5bb8424a56397d8' # str | Campaign ID.
     campaign_complete_options = sailpoint.v3.CampaignCompleteOptions() # CampaignCompleteOptions | Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE (optional)
 
     try:
@@ -86,7 +86,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The campaign id | 
+ **id** | **str**| Campaign ID. | 
  **campaign_complete_options** | [**CampaignCompleteOptions**](CampaignCompleteOptions.md)| Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction&#x3D;REVOKE | [optional] 
 
 ### Return type
@@ -121,7 +121,7 @@ Name | Type | Description  | Notes
 
 Create a campaign
 
-Creates a new Certification Campaign with the information provided in the request body.
+Use this API to create a certification campaign with the information provided in the request body.
 
 ### Example
 
@@ -192,7 +192,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Indicates that the campaign requested was successfully created and returns its representation. |  -  |
+**200** | This response indicates that the requested campaign was successfully created, and the API returns its representation. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -206,7 +206,7 @@ Name | Type | Description  | Notes
 
 Create a Campaign Template
 
-Create a campaign Template based on campaign.
+Use this API to create a certification campaign template based on campaign.
 
 ### Example
 
@@ -291,7 +291,7 @@ Name | Type | Description  | Notes
 
 Delete a Campaign Template
 
-Deletes a campaign template by ID.
+Use this API to delete a certification campaign template by ID.
 
 ### Example
 
@@ -324,7 +324,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.CertificationCampaignsApi(api_client)
-    id = '2c9180835d191a86015d28455b4a2329' # str | The ID of the campaign template being deleted.
+    id = '2c9180835d191a86015d28455b4a2329' # str | ID of the campaign template being deleted.
 
     try:
         # Delete a Campaign Template
@@ -340,7 +340,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The ID of the campaign template being deleted. | 
+ **id** | **str**| ID of the campaign template being deleted. | 
 
 ### Return type
 
@@ -372,9 +372,9 @@ void (empty response body)
 # **delete_campaign_template_schedule**
 > delete_campaign_template_schedule(id)
 
-Deletes a Campaign Template's Schedule
+Delete Campaign Template Schedule
 
-Deletes the schedule for a campaign template. Returns a 404 if there is no schedule set.
+Use this API to delete the schedule for a certification campaign template. The API returns a 404 if there is no schedule set.
 
 ### Example
 
@@ -407,10 +407,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.CertificationCampaignsApi(api_client)
-    id = '04bedce387bd47b2ae1f86eb0bb36dee' # str | The ID of the campaign template whose schedule is being deleted.
+    id = '04bedce387bd47b2ae1f86eb0bb36dee' # str | ID of the campaign template whose schedule is being deleted.
 
     try:
-        # Deletes a Campaign Template's Schedule
+        # Delete Campaign Template Schedule
         api_instance.delete_campaign_template_schedule(id)
     except Exception as e:
         print("Exception when calling CertificationCampaignsApi->delete_campaign_template_schedule: %s\n" % e)
@@ -423,7 +423,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The ID of the campaign template whose schedule is being deleted. | 
+ **id** | **str**| ID of the campaign template whose schedule is being deleted. | 
 
 ### Return type
 
@@ -455,9 +455,9 @@ void (empty response body)
 # **delete_campaigns**
 > object delete_campaigns(campaigns_delete_request)
 
-Deletes Campaigns
+Delete Campaigns
 
-Deletes campaigns whose Ids are specified in the provided list of campaign Ids. Authorized callers must be an ORG_ADMIN or a CERT_ADMIN.
+Use this API to delete certification campaigns whose IDs are specified in the provided list of campaign IDs.  Authorized callers must be ORG_ADMINs or CERT_ADMINs.
 
 ### Example
 
@@ -491,10 +491,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.CertificationCampaignsApi(api_client)
-    campaigns_delete_request = sailpoint.v3.CampaignsDeleteRequest() # CampaignsDeleteRequest | The ids of the campaigns to delete.
+    campaigns_delete_request = sailpoint.v3.CampaignsDeleteRequest() # CampaignsDeleteRequest | IDs of the campaigns to delete.
 
     try:
-        # Deletes Campaigns
+        # Delete Campaigns
         api_response = api_instance.delete_campaigns(campaigns_delete_request)
         print("The response of CertificationCampaignsApi->delete_campaigns:\n")
         pprint(api_response)
@@ -509,7 +509,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaigns_delete_request** | [**CampaignsDeleteRequest**](CampaignsDeleteRequest.md)| The ids of the campaigns to delete. | 
+ **campaigns_delete_request** | [**CampaignsDeleteRequest**](CampaignsDeleteRequest.md)| IDs of the campaigns to delete. | 
 
 ### Return type
 
@@ -543,7 +543,7 @@ Name | Type | Description  | Notes
 
 List Campaigns
 
-Gets campaigns and returns them in a list. Can provide increased level of detail for each campaign if provided the correct query.
+Use this API to get a list of campaigns. This API can provide increased level of detail for each campaign for the correct provided query. 
 
 ### Example
 
@@ -636,9 +636,9 @@ Name | Type | Description  | Notes
 # **get_campaign**
 > SlimCampaign get_campaign(id)
 
-Get a campaign
+Get Campaign
 
-Retrieves information for an existing campaign using the campaign's ID. Authorized callers must be a reviewer for this campaign, an ORG_ADMIN, or a CERT_ADMIN.
+Use this API to get information for an existing certification campaign by the campaign's ID.  Authorized callers must be reviewers for this campaign, ORG_ADMINs, or a CERT_ADMINs.
 
 ### Example
 
@@ -672,10 +672,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.CertificationCampaignsApi(api_client)
-    id = '2c91808571bcfcf80171c23e4b4221fc' # str | The ID of the campaign to be retrieved
+    id = '2c91808571bcfcf80171c23e4b4221fc' # str | ID of the campaign to be retrieved.
 
     try:
-        # Get a campaign
+        # Get Campaign
         api_response = api_instance.get_campaign(id)
         print("The response of CertificationCampaignsApi->get_campaign:\n")
         pprint(api_response)
@@ -690,7 +690,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The ID of the campaign to be retrieved | 
+ **id** | **str**| ID of the campaign to be retrieved. | 
 
 ### Return type
 
@@ -709,7 +709,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | A campaign object |  -  |
+**200** | Requested campaign object. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -724,7 +724,7 @@ Name | Type | Description  | Notes
 
 Get Campaign Reports
 
-Fetches all reports for a certification campaign by campaign ID. Requires roles of CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN
+Use this API to fetch all reports for a certification campaign by campaign ID. Calling this endpoint requires roles of CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.
 
 ### Example
 
@@ -758,7 +758,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.CertificationCampaignsApi(api_client)
-    id = '2c91808571bcfcf80171c23e4b4221fc' # str | The ID of the campaign for which reports are being fetched.
+    id = '2c91808571bcfcf80171c23e4b4221fc' # str | ID of the campaign whose reports are being fetched.
 
     try:
         # Get Campaign Reports
@@ -776,7 +776,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The ID of the campaign for which reports are being fetched. | 
+ **id** | **str**| ID of the campaign whose reports are being fetched. | 
 
 ### Return type
 
@@ -810,7 +810,7 @@ Name | Type | Description  | Notes
 
 Get Campaign Reports Configuration
 
-Fetches configuration for campaign reports. Currently it includes only one element - identity attributes defined as custom report columns. Requires roles of CERT_ADMIN and ORG_ADMIN.
+Use this API to fetch the configuration for certification campaign reports. The configuration includes only one element - identity attributes defined as custom report columns.  Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
 
 ### Example
 
@@ -877,7 +877,7 @@ This endpoint does not need any parameter.
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Campaign Report Configuration |  -  |
+**200** | Campaign report configuration. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -891,7 +891,7 @@ This endpoint does not need any parameter.
 
 Get a Campaign Template
 
-Fetches a campaign template by ID.
+Use this API to fetch a certification campaign template by ID.
 
 ### Example
 
@@ -925,7 +925,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.CertificationCampaignsApi(api_client)
-    id = '2c9180835d191a86015d28455b4a2329' # str | The desired campaign template's ID.
+    id = '2c9180835d191a86015d28455b4a2329' # str | Requested campaign template's ID.
 
     try:
         # Get a Campaign Template
@@ -943,7 +943,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The desired campaign template&#39;s ID. | 
+ **id** | **str**| Requested campaign template&#39;s ID. | 
 
 ### Return type
 
@@ -962,7 +962,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The data for the campaign matching the given ID. |  -  |
+**200** | Data for the campaign matching the given ID. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -975,9 +975,9 @@ Name | Type | Description  | Notes
 # **get_campaign_template_schedule**
 > Schedule get_campaign_template_schedule(id)
 
-Gets a Campaign Template's Schedule
+Get Campaign Template Schedule
 
-Gets the schedule for a campaign template. Returns a 404 if there is no schedule set.
+Use this API to get the schedule for a certification campaign template. The API returns a 404 if there is no schedule set.
 
 ### Example
 
@@ -1011,10 +1011,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.CertificationCampaignsApi(api_client)
-    id = '04bedce387bd47b2ae1f86eb0bb36dee' # str | The ID of the campaign template whose schedule is being fetched.
+    id = '04bedce387bd47b2ae1f86eb0bb36dee' # str | ID of the campaign template whose schedule is being fetched.
 
     try:
-        # Gets a Campaign Template's Schedule
+        # Get Campaign Template Schedule
         api_response = api_instance.get_campaign_template_schedule(id)
         print("The response of CertificationCampaignsApi->get_campaign_template_schedule:\n")
         pprint(api_response)
@@ -1029,7 +1029,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The ID of the campaign template whose schedule is being fetched. | 
+ **id** | **str**| ID of the campaign template whose schedule is being fetched. | 
 
 ### Return type
 
@@ -1048,7 +1048,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The current schedule for the campaign template. See the PUT endpoint documentation for more examples. |  -  |
+**200** | Current schedule for the campaign template. See the [Set Campaign Template Schedule endpoint documentation](https://developer.sailpoint.com/docs/api/v3/set-campaign-template-schedule) for more examples. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -1058,12 +1058,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_campaign_templates**
-> List[CampaignTemplate] list_campaign_templates(limit=limit, offset=offset, count=count, sorters=sorters, filters=filters)
+# **get_campaign_templates**
+> List[CampaignTemplate] get_campaign_templates(limit=limit, offset=offset, count=count, sorters=sorters, filters=filters)
 
 List Campaign Templates
 
-Lists all CampaignTemplates. Scope can be reduced via standard V3 query params.  All CampaignTemplates matching the query params
+Use this API to get a list of all campaign templates. Scope can be reduced through standard V3 query params. The API returns all campaign templates matching the query parameters. 
 
 ### Example
 
@@ -1105,11 +1105,11 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
     try:
         # List Campaign Templates
-        api_response = api_instance.list_campaign_templates(limit=limit, offset=offset, count=count, sorters=sorters, filters=filters)
-        print("The response of CertificationCampaignsApi->list_campaign_templates:\n")
+        api_response = api_instance.get_campaign_templates(limit=limit, offset=offset, count=count, sorters=sorters, filters=filters)
+        print("The response of CertificationCampaignsApi->get_campaign_templates:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling CertificationCampaignsApi->list_campaign_templates: %s\n" % e)
+        print("Exception when calling CertificationCampaignsApi->get_campaign_templates: %s\n" % e)
 ```
 
 
@@ -1142,7 +1142,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | List of campaign template objects |  -  |
+**200** | List of campaign template objects. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -1245,7 +1245,7 @@ Name | Type | Description  | Notes
 
 Update a Campaign Template
 
-Allows updating individual fields on a campaign template using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+Use this API to update individual fields on a certification campaign template, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
 ### Example
 
@@ -1280,7 +1280,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.CertificationCampaignsApi(api_client)
-    id = '2c9180835d191a86015d28455b4a2329' # str | The ID of the campaign template being modified.
+    id = '2c9180835d191a86015d28455b4a2329' # str | ID of the campaign template being modified.
     json_patch_operation = [{op=replace, path=/description, value=Updated description!}, {op=replace, path=/campaign/filter/id, value=ff80818155fe8c080155fe8d925b0316}] # List[JsonPatchOperation] | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create) 
 
     try:
@@ -1299,7 +1299,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The ID of the campaign template being modified. | 
+ **id** | **str**| ID of the campaign template being modified. | 
  **json_patch_operation** | [**List[JsonPatchOperation]**](JsonPatchOperation.md)| A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create)  | 
 
 ### Return type
@@ -1319,7 +1319,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Indicates the PATCH operation succeeded, and returns the template&#39;s new representation. |  -  |
+**200** | This response indicates that the PATCH operation succeeded, and the API returns the template&#39;s new representation. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -1334,7 +1334,7 @@ Name | Type | Description  | Notes
 
 Set Campaign Reports Configuration
 
-Overwrites configuration for campaign reports. Requires roles CERT_ADMIN and ORG_ADMIN.
+Use this API to overwrite the configuration for campaign reports.  Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
 
 ### Example
 
@@ -1368,7 +1368,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.CertificationCampaignsApi(api_client)
-    campaign_reports_config = sailpoint.v3.CampaignReportsConfig() # CampaignReportsConfig | Campaign Report Configuration
+    campaign_reports_config = sailpoint.v3.CampaignReportsConfig() # CampaignReportsConfig | Campaign report configuration.
 
     try:
         # Set Campaign Reports Configuration
@@ -1386,7 +1386,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaign_reports_config** | [**CampaignReportsConfig**](CampaignReportsConfig.md)| Campaign Report Configuration | 
+ **campaign_reports_config** | [**CampaignReportsConfig**](CampaignReportsConfig.md)| Campaign report configuration. | 
 
 ### Return type
 
@@ -1405,7 +1405,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The persisted Campaign Report Configuration |  -  |
+**200** | The persisted campaign report configuration. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -1417,9 +1417,9 @@ Name | Type | Description  | Notes
 # **set_campaign_template_schedule**
 > set_campaign_template_schedule(id, schedule=schedule)
 
-Sets a Campaign Template's Schedule
+Set Campaign Template Schedule
 
-Sets the schedule for a campaign template. If a schedule already exists, it will be overwritten with the new one.
+Use this API to set the schedule for a certification campaign template. If a schedule already exists, the API overwrites it with the new one. 
 
 ### Example
 
@@ -1453,11 +1453,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.CertificationCampaignsApi(api_client)
-    id = '04bedce387bd47b2ae1f86eb0bb36dee' # str | The ID of the campaign template being scheduled.
+    id = '04bedce387bd47b2ae1f86eb0bb36dee' # str | ID of the campaign template being scheduled.
     schedule = {type=MONTHLY, hours={type=LIST, values=[17]}, days={type=LIST, values=[15]}} # Schedule |  (optional)
 
     try:
-        # Sets a Campaign Template's Schedule
+        # Set Campaign Template Schedule
         api_instance.set_campaign_template_schedule(id, schedule=schedule)
     except Exception as e:
         print("Exception when calling CertificationCampaignsApi->set_campaign_template_schedule: %s\n" % e)
@@ -1470,7 +1470,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The ID of the campaign template being scheduled. | 
+ **id** | **str**| ID of the campaign template being scheduled. | 
  **schedule** | [**Schedule**](Schedule.md)|  | [optional] 
 
 ### Return type
@@ -1505,7 +1505,7 @@ void (empty response body)
 
 Activate a Campaign
 
-Submits a job to activate the campaign with the given Id. The campaign must be staged. Requires roles of CERT_ADMIN and ORG_ADMIN
+Use this API to submit a job to activate the certified campaign with the specified ID. The campaign must be staged. Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
 
 ### Example
 
@@ -1539,7 +1539,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.CertificationCampaignsApi(api_client)
-    id = 'ef38f94347e94562b5bb8424a56397d8' # str | The campaign id
+    id = 'ef38f94347e94562b5bb8424a56397d8' # str | Campaign ID.
     activate_campaign_options = sailpoint.v3.ActivateCampaignOptions() # ActivateCampaignOptions | Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format. (optional)
 
     try:
@@ -1558,7 +1558,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The campaign id | 
+ **id** | **str**| Campaign ID. | 
  **activate_campaign_options** | [**ActivateCampaignOptions**](ActivateCampaignOptions.md)| Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller&#39;s timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format. | [optional] 
 
 ### Return type
@@ -1593,7 +1593,7 @@ Name | Type | Description  | Notes
 
 Run Campaign Remediation Scan
 
-Kicks off remediation scan task for a certification campaign. Requires roles of CERT_ADMIN and ORG_ADMIN
+Use this API to run a remediation scan task for a certification campaign. Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
 
 ### Example
 
@@ -1626,7 +1626,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.CertificationCampaignsApi(api_client)
-    id = '2c91808571bcfcf80171c23e4b4221fc' # str | The ID of the campaign for which remediation scan is being run.
+    id = '2c91808571bcfcf80171c23e4b4221fc' # str | ID of the campaign the remediation scan is being run for.
 
     try:
         # Run Campaign Remediation Scan
@@ -1644,7 +1644,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The ID of the campaign for which remediation scan is being run. | 
+ **id** | **str**| ID of the campaign the remediation scan is being run for. | 
 
 ### Return type
 
@@ -1678,7 +1678,7 @@ Name | Type | Description  | Notes
 
 Run Campaign Report
 
-Runs a report for a certification campaign. Requires the following roles: CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.
+Use this API to run a report for a certification campaign. Calling this endpoint requires the following roles: CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.
 
 ### Example
 
@@ -1712,8 +1712,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.CertificationCampaignsApi(api_client)
-    id = '2c91808571bcfcf80171c23e4b4221fc' # str | The ID of the campaign for which report is being run.
-    type = sailpoint.v3.ReportType() # ReportType | The type of the report to run.
+    id = '2c91808571bcfcf80171c23e4b4221fc' # str | ID of the campaign the report is being run for.
+    type = sailpoint.v3.ReportType() # ReportType | Type of the report to run.
 
     try:
         # Run Campaign Report
@@ -1731,8 +1731,8 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The ID of the campaign for which report is being run. | 
- **type** | [**ReportType**](.md)| The type of the report to run. | 
+ **id** | **str**| ID of the campaign the report is being run for. | 
+ **type** | [**ReportType**](.md)| Type of the report to run. | 
 
 ### Return type
 
@@ -1766,7 +1766,7 @@ Name | Type | Description  | Notes
 
 Generate a Campaign from Template
 
-Generates a new campaign from a campaign template. The campaign object contained in the template has special formatting applied to its name and description fields in order to determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation. Placeholders consist of a percent sign followed by a letter indicating what should be inserted; for example, \"%Y\" will insert the current year; a campaign template named \"Campaign for %y\" would generate a campaign called \"Campaign for 2020\" (assuming the year at generation time is 2020). Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html). Requires roles ORG_ADMIN.
+Use this API to generate a new certification campaign from a campaign template. The campaign object contained in the template has special formatting applied to its name and description fields that determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation. Placeholders consist of a percent sign followed by a letter indicating what should be inserted. For example, \"%Y\" inserts the current year, and a campaign template named \"Campaign for %y\" generates a campaign called \"Campaign for 2020\" (assuming the year at generation time is 2020). Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html). Calling this endpoint requires the ORG_ADMIN role.
 
 ### Example
 
@@ -1800,7 +1800,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.CertificationCampaignsApi(api_client)
-    id = '2c9180835d191a86015d28455b4a2329' # str | The ID of the campaign template to use for generation.
+    id = '2c9180835d191a86015d28455b4a2329' # str | ID of the campaign template to use for generation.
 
     try:
         # Generate a Campaign from Template
@@ -1818,7 +1818,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The ID of the campaign template to use for generation. | 
+ **id** | **str**| ID of the campaign template to use for generation. | 
 
 ### Return type
 
@@ -1837,7 +1837,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Indicates a campaign was successfully generated from this template, and returns a reference to the new campaign. |  -  |
+**200** | This response indicates that a campaign was successfully generated from this template, and the API returns a reference to the new campaign. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -1851,7 +1851,7 @@ Name | Type | Description  | Notes
 
 Update a Campaign
 
-Allows updating individual fields on a campaign using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+Use this API to update individual fields on a certification campaign, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
 ### Example
 
@@ -1886,8 +1886,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.CertificationCampaignsApi(api_client)
-    id = '2c91808571bcfcf80171c23e4b4221fc' # str | The ID of the campaign template being modified.
-    json_patch_operation = [{op=replace, path=/name, value=This field has been updated!}, {op=copy, from=/name, path=/description}] # List[JsonPatchOperation] | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  In the *STAGED* status, the following fields can be patched: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  In the *ACTIVE* status, the following fields can be patched: * deadline 
+    id = '2c91808571bcfcf80171c23e4b4221fc' # str | ID of the campaign template being modified.
+    json_patch_operation = [{op=replace, path=/name, value=This field has been updated!}, {op=copy, from=/name, path=/description}] # List[JsonPatchOperation] | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline 
 
     try:
         # Update a Campaign
@@ -1905,8 +1905,8 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The ID of the campaign template being modified. | 
- **json_patch_operation** | [**List[JsonPatchOperation]**](JsonPatchOperation.md)| A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  In the *STAGED* status, the following fields can be patched: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  In the *ACTIVE* status, the following fields can be patched: * deadline  | 
+ **id** | **str**| ID of the campaign template being modified. | 
+ **json_patch_operation** | [**List[JsonPatchOperation]**](JsonPatchOperation.md)| A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline  | 
 
 ### Return type
 
@@ -1925,7 +1925,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Indicates the PATCH operation succeeded, and returns the campaign&#39;s new representation. |  -  |
+**200** | This response indicates that the PATCH operation succeeded, and the API returns the campaign&#39;s new representation. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |

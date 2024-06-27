@@ -46,12 +46,10 @@ class TestCompletedApproval(unittest.TestCase):
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20648', 
                     name = 'William Wilson', ),
-                requested_for = [
-                    sailpoint.beta.models.access_item_requested_for_dto.AccessItemRequestedForDto(
-                        type = 'IDENTITY', 
-                        id = '2c4180a46faadee4016fb4e018c20626', 
-                        name = 'Robert Robinson', )
-                    ],
+                requested_for = sailpoint.beta.models.requested_item_status_requested_for.RequestedItemStatus_requestedFor(
+                    type = 'IDENTITY', 
+                    id = '2c9180835d191a86015d28455b4b232a', 
+                    name = 'William Wilson', ),
                 reviewed_by = sailpoint.beta.models.completed_approval_reviewed_by.CompletedApproval_reviewedBy(
                     type = 'IDENTITY', 
                     id = '2c3780a46faadee4016fb4e018c20652', 

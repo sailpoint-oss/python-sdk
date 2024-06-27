@@ -37,7 +37,7 @@ class TestQuery(unittest.TestCase):
         if include_optional:
             return Query(
                 query = 'name:a*',
-                fields = [name],
+                fields = '[firstName,lastName,email]',
                 time_zone = 'America/Chicago',
                 inner_hit = sailpoint.v3.models.inner_hit.InnerHit(
                     query = 'source.name:\"Active Directory\"', 

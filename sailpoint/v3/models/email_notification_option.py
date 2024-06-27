@@ -30,9 +30,9 @@ class EmailNotificationOption(BaseModel):
     """
     This is used for representing email configuration for a lifecycle state
     """ # noqa: E501
-    notify_managers: Optional[StrictBool] = Field(default=None, description="If true, then the manager is notified of the lifecycle state change.", alias="notifyManagers")
-    notify_all_admins: Optional[StrictBool] = Field(default=None, description="If true, then all the admins are notified of the lifecycle state change.", alias="notifyAllAdmins")
-    notify_specific_users: Optional[StrictBool] = Field(default=None, description="If true, then the users specified in \"emailAddressList\" below are notified of lifecycle state change.", alias="notifySpecificUsers")
+    notify_managers: Optional[StrictBool] = Field(default=False, description="If true, then the manager is notified of the lifecycle state change.", alias="notifyManagers")
+    notify_all_admins: Optional[StrictBool] = Field(default=False, description="If true, then all the admins are notified of the lifecycle state change.", alias="notifyAllAdmins")
+    notify_specific_users: Optional[StrictBool] = Field(default=False, description="If true, then the users specified in \"emailAddressList\" below are notified of lifecycle state change.", alias="notifySpecificUsers")
     email_address_list: Optional[List[StrictStr]] = Field(default=None, description="List of user email addresses. If \"notifySpecificUsers\" option is true, then these users are notified of lifecycle state change.", alias="emailAddressList")
     __properties: ClassVar[List[str]] = ["notifyManagers", "notifyAllAdmins", "notifySpecificUsers", "emailAddressList"]
 
@@ -85,9 +85,9 @@ class EmailNotificationOption(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "notifyManagers": obj.get("notifyManagers"),
-            "notifyAllAdmins": obj.get("notifyAllAdmins"),
-            "notifySpecificUsers": obj.get("notifySpecificUsers"),
+            "notifyManagers": obj.get("notifyManagers") if obj.get("notifyManagers") is not None else False,
+            "notifyAllAdmins": obj.get("notifyAllAdmins") if obj.get("notifyAllAdmins") is not None else False,
+            "notifySpecificUsers": obj.get("notifySpecificUsers") if obj.get("notifySpecificUsers") is not None else False,
             "emailAddressList": obj.get("emailAddressList")
         })
         return _obj

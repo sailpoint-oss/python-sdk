@@ -50,6 +50,10 @@ class TestRoleMiningPotentialRoleSummary(unittest.TestCase):
                 freshness = 70,
                 quality = 80,
                 type = 'SPECIALIZED',
+                created_by = None,
+                created_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                saved = True,
+                description = '',
                 session = sailpoint.beta.models.role_mining_session_parameters_dto.RoleMiningSessionParametersDto(
                     id = '9f36f5e5-1e81-4eca-b087-548959d91c71', 
                     name = 'Saved RM Session - 07/10', 

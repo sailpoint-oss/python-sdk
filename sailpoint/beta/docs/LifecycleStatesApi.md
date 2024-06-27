@@ -4,16 +4,16 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**list_lifecycle_states**](LifecycleStatesApi.md#list_lifecycle_states) | **GET** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Lifecycle State
+[**get_lifecycle_states**](LifecycleStatesApi.md#get_lifecycle_states) | **GET** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Get Lifecycle State
 [**update_lifecycle_states**](LifecycleStatesApi.md#update_lifecycle_states) | **PATCH** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Update Lifecycle State
 
 
-# **list_lifecycle_states**
-> LifecycleState list_lifecycle_states(identity_profile_id, lifecycle_state_id)
+# **get_lifecycle_states**
+> LifecycleState get_lifecycle_states(identity_profile_id, lifecycle_state_id)
 
-Lifecycle State
+Get Lifecycle State
 
-This endpoint returns a lifecycle state.  A token with ORG_ADMIN or API authority is required to call this API. 
+Use this endpoint to get a lifecycle state by its ID and its associated identity profile ID.   A token with ORG_ADMIN or API authority is required to call this API. 
 
 ### Example
 
@@ -47,16 +47,16 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.LifecycleStatesApi(api_client)
-    identity_profile_id = 'identity_profile_id_example' # str | Identity Profile ID
-    lifecycle_state_id = 'lifecycle_state_id_example' # str | Lifecycle State ID
+    identity_profile_id = '2b838de9-db9b-abcf-e646-d4f274ad4238' # str | Identity Profile ID.
+    lifecycle_state_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Lifecycle State ID.
 
     try:
-        # Lifecycle State
-        api_response = api_instance.list_lifecycle_states(identity_profile_id, lifecycle_state_id)
-        print("The response of LifecycleStatesApi->list_lifecycle_states:\n")
+        # Get Lifecycle State
+        api_response = api_instance.get_lifecycle_states(identity_profile_id, lifecycle_state_id)
+        print("The response of LifecycleStatesApi->get_lifecycle_states:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LifecycleStatesApi->list_lifecycle_states: %s\n" % e)
+        print("Exception when calling LifecycleStatesApi->get_lifecycle_states: %s\n" % e)
 ```
 
 
@@ -66,8 +66,8 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identity_profile_id** | **str**| Identity Profile ID | 
- **lifecycle_state_id** | **str**| Lifecycle State ID | 
+ **identity_profile_id** | **str**| Identity Profile ID. | 
+ **lifecycle_state_id** | **str**| Lifecycle State ID. | 
 
 ### Return type
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | lifecycle-state |  -  |
+**200** | Requested lifecycle state. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 
 Update Lifecycle State
 
-This API updates individual lifecycle state fields using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  A token with ORG_ADMIN or API authority is required to call this API. 
+Use this endpoint to update individual lifecycle state fields, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  A token with ORG_ADMIN or API authority is required to call this API. 
 
 ### Example
 
@@ -135,8 +135,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.LifecycleStatesApi(api_client)
-    identity_profile_id = 'identity_profile_id_example' # str | Identity Profile ID
-    lifecycle_state_id = 'lifecycle_state_id_example' # str | Lifecycle State ID
+    identity_profile_id = '2b838de9-db9b-abcf-e646-d4f274ad4238' # str | Identity Profile ID.
+    lifecycle_state_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Lifecycle State ID.
     json_patch_operation = [{op=replace, path=/description, value=Updated description!}, {op=replace, path=/accessProfileIds, value=[2c918087742bab150174407a80f3125e, 2c918087742bab150174407a80f3124f]}, {op=replace, path=/accountActions, value=[{action=ENABLE, sourceIds=[2c9180846a2f82fb016a481c1b1560c5, 2c9180846a2f82fb016a481c1b1560cc]}, {action=DISABLE, sourceIds=[2c91808869a0c9980169a207258513fb]}]}, {op=replace, path=/emailNotificationOption, value={notifyManagers=true, notifyAllAdmins=false, notifySpecificUsers=false, emailAddressList=[]}}] # List[JsonPatchOperation] | A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption 
 
     try:
@@ -155,8 +155,8 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identity_profile_id** | **str**| Identity Profile ID | 
- **lifecycle_state_id** | **str**| Lifecycle State ID | 
+ **identity_profile_id** | **str**| Identity Profile ID. | 
+ **lifecycle_state_id** | **str**| Lifecycle State ID. | 
  **json_patch_operation** | [**List[JsonPatchOperation]**](JsonPatchOperation.md)| A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption  | 
 
 ### Return type
@@ -176,7 +176,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Updated lifecycle-state. |  -  |
+**200** | Updated lifecycle state. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |

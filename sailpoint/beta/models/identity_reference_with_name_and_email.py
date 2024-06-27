@@ -30,10 +30,10 @@ class IdentityReferenceWithNameAndEmail(BaseModel):
     """
     IdentityReferenceWithNameAndEmail
     """ # noqa: E501
-    type: Optional[StrictStr] = Field(default=None, description="The type can only be IDENTITY. This is read-only")
-    id: Optional[StrictStr] = Field(default=None, description="Identity id.")
-    name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of identity. This is read-only")
-    email: Optional[StrictStr] = Field(default=None, description="Email address of identity. This is read-only")
+    type: Optional[StrictStr] = Field(default=None, description="The type can only be IDENTITY. This is read-only.")
+    id: Optional[StrictStr] = Field(default=None, description="Identity ID.")
+    name: Optional[StrictStr] = Field(default=None, description="Identity's human-readable display name. This is read-only.")
+    email: Optional[StrictStr] = Field(default=None, description="Identity's email address. This is read-only.")
     __properties: ClassVar[List[str]] = ["type", "id", "name", "email"]
 
     model_config = {

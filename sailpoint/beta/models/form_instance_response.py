@@ -44,7 +44,7 @@ class FormInstanceResponse(BaseModel):
     form_elements: Optional[List[FormElement]] = Field(default=None, description="FormElements is the configuration of the form, this would be a repeat of the fields from the form-config", alias="formElements")
     form_errors: Optional[List[FormError]] = Field(default=None, description="FormErrors is an array of form validation errors from the last time the form instance was transitioned to the SUBMITTED state. If the form instance had validation errors then it would be moved to the IN PROGRESS state where the client can retrieve these errors", alias="formErrors")
     form_input: Optional[Dict[str, Dict[str, Any]]] = Field(default=None, description="FormInput is an object of form input labels to value", alias="formInput")
-    id: Optional[StrictStr] = Field(default=None, description="FormInstanceID is a unique guid identifying this form instance")
+    id: Optional[StrictStr] = Field(default=None, description="Unique guid identifying this form instance")
     modified: Optional[datetime] = Field(default=None, description="Modified is the last date the form instance was modified")
     recipients: Optional[List[FormInstanceRecipient]] = Field(default=None, description="Recipients references to the recipient of a form. The recipients are those who are responsible for filling out a form and completing it")
     stand_alone_form: Optional[StrictBool] = Field(default=False, description="StandAloneForm is a boolean flag to indicate if this form should be available for users to complete via the standalone form UI or should this only be available to be completed by as an embedded form", alias="standAloneForm")
@@ -130,6 +130,11 @@ class FormInstanceResponse(BaseModel):
                 if _item:
                     _items.append(_item.to_dict())
             _dict['recipients'] = _items
+        # set to None if form_input (nullable) is None
+        # and model_fields_set contains the field
+        if self.form_input is None and "form_input" in self.model_fields_set:
+            _dict['formInput'] = None
+
         return _dict
 
     @classmethod

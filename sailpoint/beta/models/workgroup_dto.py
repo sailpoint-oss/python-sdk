@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt, StrictStr
 from pydantic import Field
@@ -37,7 +37,9 @@ class WorkgroupDto(BaseModel):
     description: Optional[StrictStr] = Field(default=None, description="Governance group description.")
     member_count: Optional[StrictInt] = Field(default=None, description="Number of members in the governance group.", alias="memberCount")
     connection_count: Optional[StrictInt] = Field(default=None, description="Number of connections in the governance group.", alias="connectionCount")
-    __properties: ClassVar[List[str]] = ["owner", "id", "name", "description", "memberCount", "connectionCount"]
+    created: Optional[datetime] = None
+    modified: Optional[datetime] = None
+    __properties: ClassVar[List[str]] = ["owner", "id", "name", "description", "memberCount", "connectionCount", "created", "modified"]
 
     model_config = {
         "populate_by_name": True,
@@ -102,7 +104,9 @@ class WorkgroupDto(BaseModel):
             "name": obj.get("name"),
             "description": obj.get("description"),
             "memberCount": obj.get("memberCount"),
-            "connectionCount": obj.get("connectionCount")
+            "connectionCount": obj.get("connectionCount"),
+            "created": obj.get("created"),
+            "modified": obj.get("modified")
         })
         return _obj
 

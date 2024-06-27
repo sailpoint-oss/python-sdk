@@ -51,10 +51,10 @@ class LifecycleStatesApi:
 
 
     @validate_call
-    def list_lifecycle_states(
+    def get_lifecycle_states(
         self,
-        identity_profile_id: Annotated[StrictStr, Field(description="Identity Profile ID")],
-        lifecycle_state_id: Annotated[StrictStr, Field(description="Lifecycle State ID")],
+        identity_profile_id: Annotated[StrictStr, Field(description="Identity Profile ID.")],
+        lifecycle_state_id: Annotated[StrictStr, Field(description="Lifecycle State ID.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -68,13 +68,13 @@ class LifecycleStatesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> LifecycleState:
-        """Lifecycle State
+        """Get Lifecycle State
 
-        This endpoint returns a lifecycle state.  A token with ORG_ADMIN or API authority is required to call this API. 
+        Use this endpoint to get a lifecycle state by its ID and its associated identity profile ID.   A token with ORG_ADMIN or API authority is required to call this API. 
 
-        :param identity_profile_id: Identity Profile ID (required)
+        :param identity_profile_id: Identity Profile ID. (required)
         :type identity_profile_id: str
-        :param lifecycle_state_id: Lifecycle State ID (required)
+        :param lifecycle_state_id: Lifecycle State ID. (required)
         :type lifecycle_state_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -98,7 +98,7 @@ class LifecycleStatesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_lifecycle_states_serialize(
+        _param = self._get_lifecycle_states_serialize(
             identity_profile_id=identity_profile_id,
             lifecycle_state_id=lifecycle_state_id,
             _request_auth=_request_auth,
@@ -127,10 +127,10 @@ class LifecycleStatesApi:
 
 
     @validate_call
-    def list_lifecycle_states_with_http_info(
+    def get_lifecycle_states_with_http_info(
         self,
-        identity_profile_id: Annotated[StrictStr, Field(description="Identity Profile ID")],
-        lifecycle_state_id: Annotated[StrictStr, Field(description="Lifecycle State ID")],
+        identity_profile_id: Annotated[StrictStr, Field(description="Identity Profile ID.")],
+        lifecycle_state_id: Annotated[StrictStr, Field(description="Lifecycle State ID.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -144,13 +144,13 @@ class LifecycleStatesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[LifecycleState]:
-        """Lifecycle State
+        """Get Lifecycle State
 
-        This endpoint returns a lifecycle state.  A token with ORG_ADMIN or API authority is required to call this API. 
+        Use this endpoint to get a lifecycle state by its ID and its associated identity profile ID.   A token with ORG_ADMIN or API authority is required to call this API. 
 
-        :param identity_profile_id: Identity Profile ID (required)
+        :param identity_profile_id: Identity Profile ID. (required)
         :type identity_profile_id: str
-        :param lifecycle_state_id: Lifecycle State ID (required)
+        :param lifecycle_state_id: Lifecycle State ID. (required)
         :type lifecycle_state_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -174,7 +174,7 @@ class LifecycleStatesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_lifecycle_states_serialize(
+        _param = self._get_lifecycle_states_serialize(
             identity_profile_id=identity_profile_id,
             lifecycle_state_id=lifecycle_state_id,
             _request_auth=_request_auth,
@@ -203,10 +203,10 @@ class LifecycleStatesApi:
 
 
     @validate_call
-    def list_lifecycle_states_without_preload_content(
+    def get_lifecycle_states_without_preload_content(
         self,
-        identity_profile_id: Annotated[StrictStr, Field(description="Identity Profile ID")],
-        lifecycle_state_id: Annotated[StrictStr, Field(description="Lifecycle State ID")],
+        identity_profile_id: Annotated[StrictStr, Field(description="Identity Profile ID.")],
+        lifecycle_state_id: Annotated[StrictStr, Field(description="Lifecycle State ID.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -220,13 +220,13 @@ class LifecycleStatesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Lifecycle State
+        """Get Lifecycle State
 
-        This endpoint returns a lifecycle state.  A token with ORG_ADMIN or API authority is required to call this API. 
+        Use this endpoint to get a lifecycle state by its ID and its associated identity profile ID.   A token with ORG_ADMIN or API authority is required to call this API. 
 
-        :param identity_profile_id: Identity Profile ID (required)
+        :param identity_profile_id: Identity Profile ID. (required)
         :type identity_profile_id: str
-        :param lifecycle_state_id: Lifecycle State ID (required)
+        :param lifecycle_state_id: Lifecycle State ID. (required)
         :type lifecycle_state_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -250,7 +250,7 @@ class LifecycleStatesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_lifecycle_states_serialize(
+        _param = self._get_lifecycle_states_serialize(
             identity_profile_id=identity_profile_id,
             lifecycle_state_id=lifecycle_state_id,
             _request_auth=_request_auth,
@@ -274,7 +274,7 @@ class LifecycleStatesApi:
         return response_data.response
 
 
-    def _list_lifecycle_states_serialize(
+    def _get_lifecycle_states_serialize(
         self,
         identity_profile_id,
         lifecycle_state_id,
@@ -342,8 +342,8 @@ class LifecycleStatesApi:
     @validate_call
     def update_lifecycle_states(
         self,
-        identity_profile_id: Annotated[StrictStr, Field(description="Identity Profile ID")],
-        lifecycle_state_id: Annotated[StrictStr, Field(description="Lifecycle State ID")],
+        identity_profile_id: Annotated[StrictStr, Field(description="Identity Profile ID.")],
+        lifecycle_state_id: Annotated[StrictStr, Field(description="Lifecycle State ID.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption ")],
         _request_timeout: Union[
             None,
@@ -360,11 +360,11 @@ class LifecycleStatesApi:
     ) -> LifecycleState:
         """Update Lifecycle State
 
-        This API updates individual lifecycle state fields using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  A token with ORG_ADMIN or API authority is required to call this API. 
+        Use this endpoint to update individual lifecycle state fields, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  A token with ORG_ADMIN or API authority is required to call this API. 
 
-        :param identity_profile_id: Identity Profile ID (required)
+        :param identity_profile_id: Identity Profile ID. (required)
         :type identity_profile_id: str
-        :param lifecycle_state_id: Lifecycle State ID (required)
+        :param lifecycle_state_id: Lifecycle State ID. (required)
         :type lifecycle_state_id: str
         :param json_patch_operation: A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption  (required)
         :type json_patch_operation: List[JsonPatchOperation]
@@ -422,8 +422,8 @@ class LifecycleStatesApi:
     @validate_call
     def update_lifecycle_states_with_http_info(
         self,
-        identity_profile_id: Annotated[StrictStr, Field(description="Identity Profile ID")],
-        lifecycle_state_id: Annotated[StrictStr, Field(description="Lifecycle State ID")],
+        identity_profile_id: Annotated[StrictStr, Field(description="Identity Profile ID.")],
+        lifecycle_state_id: Annotated[StrictStr, Field(description="Lifecycle State ID.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption ")],
         _request_timeout: Union[
             None,
@@ -440,11 +440,11 @@ class LifecycleStatesApi:
     ) -> ApiResponse[LifecycleState]:
         """Update Lifecycle State
 
-        This API updates individual lifecycle state fields using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  A token with ORG_ADMIN or API authority is required to call this API. 
+        Use this endpoint to update individual lifecycle state fields, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  A token with ORG_ADMIN or API authority is required to call this API. 
 
-        :param identity_profile_id: Identity Profile ID (required)
+        :param identity_profile_id: Identity Profile ID. (required)
         :type identity_profile_id: str
-        :param lifecycle_state_id: Lifecycle State ID (required)
+        :param lifecycle_state_id: Lifecycle State ID. (required)
         :type lifecycle_state_id: str
         :param json_patch_operation: A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption  (required)
         :type json_patch_operation: List[JsonPatchOperation]
@@ -502,8 +502,8 @@ class LifecycleStatesApi:
     @validate_call
     def update_lifecycle_states_without_preload_content(
         self,
-        identity_profile_id: Annotated[StrictStr, Field(description="Identity Profile ID")],
-        lifecycle_state_id: Annotated[StrictStr, Field(description="Lifecycle State ID")],
+        identity_profile_id: Annotated[StrictStr, Field(description="Identity Profile ID.")],
+        lifecycle_state_id: Annotated[StrictStr, Field(description="Lifecycle State ID.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption ")],
         _request_timeout: Union[
             None,
@@ -520,11 +520,11 @@ class LifecycleStatesApi:
     ) -> RESTResponseType:
         """Update Lifecycle State
 
-        This API updates individual lifecycle state fields using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  A token with ORG_ADMIN or API authority is required to call this API. 
+        Use this endpoint to update individual lifecycle state fields, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  A token with ORG_ADMIN or API authority is required to call this API. 
 
-        :param identity_profile_id: Identity Profile ID (required)
+        :param identity_profile_id: Identity Profile ID. (required)
         :type identity_profile_id: str
-        :param lifecycle_state_id: Lifecycle State ID (required)
+        :param lifecycle_state_id: Lifecycle State ID. (required)
         :type lifecycle_state_id: str
         :param json_patch_operation: A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption  (required)
         :type json_patch_operation: List[JsonPatchOperation]

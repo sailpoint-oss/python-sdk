@@ -4,20 +4,20 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**approve_access_request**](AccessRequestApprovalsApi.md#approve_access_request) | **POST** /access-request-approvals/{approvalId}/approve | Approves an access request approval.
-[**forward_access_request**](AccessRequestApprovalsApi.md#forward_access_request) | **POST** /access-request-approvals/{approvalId}/forward | Forwards an access request approval.
-[**get_access_request_approval_summary**](AccessRequestApprovalsApi.md#get_access_request_approval_summary) | **GET** /access-request-approvals/approval-summary | Get the number of access-requests-approvals
+[**approve_access_request**](AccessRequestApprovalsApi.md#approve_access_request) | **POST** /access-request-approvals/{approvalId}/approve | Approve Access Request Approval
+[**forward_access_request**](AccessRequestApprovalsApi.md#forward_access_request) | **POST** /access-request-approvals/{approvalId}/forward | Forward Access Request Approval
+[**get_access_request_approval_summary**](AccessRequestApprovalsApi.md#get_access_request_approval_summary) | **GET** /access-request-approvals/approval-summary | Get Access Requests Approvals Number
 [**list_completed_approvals**](AccessRequestApprovalsApi.md#list_completed_approvals) | **GET** /access-request-approvals/completed | Completed Access Request Approvals List
 [**list_pending_approvals**](AccessRequestApprovalsApi.md#list_pending_approvals) | **GET** /access-request-approvals/pending | Pending Access Request Approvals List
-[**reject_access_request**](AccessRequestApprovalsApi.md#reject_access_request) | **POST** /access-request-approvals/{approvalId}/reject | Rejects an access request approval.
+[**reject_access_request**](AccessRequestApprovalsApi.md#reject_access_request) | **POST** /access-request-approvals/{approvalId}/reject | Reject Access Request Approval
 
 
 # **approve_access_request**
-> object approve_access_request(approval_id, comment_dto=comment_dto)
+> object approve_access_request(approval_id, comment_dto)
 
-Approves an access request approval.
+Approve Access Request Approval
 
-This endpoint approves an access request approval. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action.
+Use this endpoint to approve an access request approval. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action.
 
 ### Example
 
@@ -51,12 +51,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.AccessRequestApprovalsApi(api_client)
-    approval_id = '2c91808b7294bea301729568c68c002e' # str | The id of the approval.
-    comment_dto = sailpoint.v3.CommentDto() # CommentDto | Reviewer's comment. (optional)
+    approval_id = '2c91808b7294bea301729568c68c002e' # str | Approval ID.
+    comment_dto = sailpoint.v3.CommentDto() # CommentDto | Reviewer's comment.
 
     try:
-        # Approves an access request approval.
-        api_response = api_instance.approve_access_request(approval_id, comment_dto=comment_dto)
+        # Approve Access Request Approval
+        api_response = api_instance.approve_access_request(approval_id, comment_dto)
         print("The response of AccessRequestApprovalsApi->approve_access_request:\n")
         pprint(api_response)
     except Exception as e:
@@ -70,8 +70,8 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **approval_id** | **str**| The id of the approval. | 
- **comment_dto** | [**CommentDto**](CommentDto.md)| Reviewer&#39;s comment. | [optional] 
+ **approval_id** | **str**| Approval ID. | 
+ **comment_dto** | [**CommentDto**](CommentDto.md)| Reviewer&#39;s comment. | 
 
 ### Return type
 
@@ -103,9 +103,9 @@ Name | Type | Description  | Notes
 # **forward_access_request**
 > object forward_access_request(approval_id, forward_approval_dto)
 
-Forwards an access request approval.
+Forward Access Request Approval
 
-This endpoint forwards an access request approval to a new owner. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action.
+Use this API to forward an access request approval to a new owner. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action.
 
 ### Example
 
@@ -139,11 +139,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.AccessRequestApprovalsApi(api_client)
-    approval_id = '2c91808b7294bea301729568c68c002e' # str | The id of the approval.
+    approval_id = '2c91808b7294bea301729568c68c002e' # str | Approval ID.
     forward_approval_dto = sailpoint.v3.ForwardApprovalDto() # ForwardApprovalDto | Information about the forwarded approval.
 
     try:
-        # Forwards an access request approval.
+        # Forward Access Request Approval
         api_response = api_instance.forward_access_request(approval_id, forward_approval_dto)
         print("The response of AccessRequestApprovalsApi->forward_access_request:\n")
         pprint(api_response)
@@ -158,7 +158,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **approval_id** | **str**| The id of the approval. | 
+ **approval_id** | **str**| Approval ID. | 
  **forward_approval_dto** | [**ForwardApprovalDto**](ForwardApprovalDto.md)| Information about the forwarded approval. | 
 
 ### Return type
@@ -191,9 +191,9 @@ Name | Type | Description  | Notes
 # **get_access_request_approval_summary**
 > ApprovalSummary get_access_request_approval_summary(owner_id=owner_id, from_date=from_date)
 
-Get the number of access-requests-approvals
+Get Access Requests Approvals Number
 
-This endpoint returns the number of pending, approved and rejected access requests approvals. See \"owner-id\" query parameter below for authorization info.
+Use this API to return the number of pending, approved and rejected access requests approvals. See the \"owner-id\" query parameter for authorization information. info.
 
 ### Example
 
@@ -227,11 +227,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.AccessRequestApprovalsApi(api_client)
-    owner_id = '2c91808568c529c60168cca6f90c1313' # str | The id of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value. (optional)
-    from_date = 'from-date=2020-03-19T19:59:11Z' # str | From date is the date and time from which the results will be shown. It should be in a valid ISO-8601 format (optional)
+    owner_id = '2c91808568c529c60168cca6f90c1313' # str | The ID of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value. (optional)
+    from_date = 'from-date=2020-03-19T19:59:11Z' # str | This is the date and time the results will be shown from. It must be in a valid ISO-8601 format. (optional)
 
     try:
-        # Get the number of access-requests-approvals
+        # Get Access Requests Approvals Number
         api_response = api_instance.get_access_request_approval_summary(owner_id=owner_id, from_date=from_date)
         print("The response of AccessRequestApprovalsApi->get_access_request_approval_summary:\n")
         pprint(api_response)
@@ -246,8 +246,8 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner_id** | **str**| The id of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value. | [optional] 
- **from_date** | **str**| From date is the date and time from which the results will be shown. It should be in a valid ISO-8601 format | [optional] 
+ **owner_id** | **str**| The ID of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value. | [optional] 
+ **from_date** | **str**| This is the date and time the results will be shown from. It must be in a valid ISO-8601 format. | [optional] 
 
 ### Return type
 
@@ -466,11 +466,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **reject_access_request**
-> object reject_access_request(approval_id, comment_dto=comment_dto)
+> object reject_access_request(approval_id, comment_dto)
 
-Rejects an access request approval.
+Reject Access Request Approval
 
-This endpoint rejects an access request approval. Only the owner of the approval and admin users are allowed to perform this action.
+Use this API to reject an access request approval. Only the owner of the approval and admin users are allowed to perform this action.
 
 ### Example
 
@@ -504,12 +504,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.AccessRequestApprovalsApi(api_client)
-    approval_id = '2c91808b7294bea301729568c68c002e' # str | The id of the approval.
-    comment_dto = sailpoint.v3.CommentDto() # CommentDto | Reviewer's comment. (optional)
+    approval_id = '2c91808b7294bea301729568c68c002e' # str | Approval ID.
+    comment_dto = sailpoint.v3.CommentDto() # CommentDto | Reviewer's comment.
 
     try:
-        # Rejects an access request approval.
-        api_response = api_instance.reject_access_request(approval_id, comment_dto=comment_dto)
+        # Reject Access Request Approval
+        api_response = api_instance.reject_access_request(approval_id, comment_dto)
         print("The response of AccessRequestApprovalsApi->reject_access_request:\n")
         pprint(api_response)
     except Exception as e:
@@ -523,8 +523,8 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **approval_id** | **str**| The id of the approval. | 
- **comment_dto** | [**CommentDto**](CommentDto.md)| Reviewer&#39;s comment. | [optional] 
+ **approval_id** | **str**| Approval ID. | 
+ **comment_dto** | [**CommentDto**](CommentDto.md)| Reviewer&#39;s comment. | 
 
 ### Return type
 

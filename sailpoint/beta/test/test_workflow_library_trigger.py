@@ -37,7 +37,11 @@ class TestWorkflowLibraryTrigger(unittest.TestCase):
         if include_optional:
             return WorkflowLibraryTrigger(
                 id = 'idn:identity-attributes-changed',
-                type = EVENT,
+                type = 'EVENT',
+                deprecated = True,
+                deprecated_by = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                is_simulation_enabled = True,
+                output_schema = None,
                 name = 'Identity Attributes Changed',
                 description = 'One or more identity attributes changed.',
                 is_dynamic_schema = False,

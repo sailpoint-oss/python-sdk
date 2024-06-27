@@ -42,11 +42,15 @@ class TestTaskStatus(unittest.TestCase):
                 description = 'A Really Big Task',
                 parent_name = 'Parent Task',
                 launcher = 'sweep',
+                target = sailpoint.beta.models.target.Target(
+                    id = 'c6dc37bf508149b28ce5b7d90ca4bbf9', 
+                    type = 'APPLICATION', 
+                    name = 'Active Directory [source]', ),
                 created = '2020-07-11T21:23:15Z',
                 modified = '2020-07-11T21:23:15Z',
                 launched = '2020-07-11T21:23:15Z',
                 completed = '2020-07-11T21:23:15Z',
-                completion_status = 'Success',
+                completion_status = 'SUCCESS',
                 messages = [
                     sailpoint.beta.models.task_status_message.TaskStatusMessage(
                         type = 'INFO', 
@@ -63,7 +67,14 @@ class TestTaskStatus(unittest.TestCase):
                     ],
                 attributes = {identityCount=0},
                 progress = 'Started',
-                percent_complete = 100
+                percent_complete = 100,
+                task_definition_summary = sailpoint.beta.models.task_definition_summary.TaskDefinitionSummary(
+                    id = '2c91808475b4334b0175e1dff64b63c5', 
+                    unique_name = 'Cloud Account Aggregation', 
+                    description = 'Aggregates from the specified application.', 
+                    parent_name = 'Cloud Account Aggregation', 
+                    executor = 'sailpoint.task.ServiceTaskExecutor', 
+                    arguments = { }, )
             )
         else:
             return TaskStatus(
@@ -77,7 +88,7 @@ class TestTaskStatus(unittest.TestCase):
                 modified = '2020-07-11T21:23:15Z',
                 launched = '2020-07-11T21:23:15Z',
                 completed = '2020-07-11T21:23:15Z',
-                completion_status = 'Success',
+                completion_status = 'SUCCESS',
                 messages = [
                     sailpoint.beta.models.task_status_message.TaskStatusMessage(
                         type = 'INFO', 

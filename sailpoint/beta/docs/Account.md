@@ -12,6 +12,10 @@ Name | Type | Description | Notes
 **source_id** | **str** | The unique ID of the source this account belongs to | 
 **source_name** | **str** | The display name of the source this account belongs to | 
 **identity_id** | **str** | The unique ID of the identity this account is correlated to | [optional] 
+**cloud_lifecycle_state** | **str** | The lifecycle state of the identity this account is correlated to | [optional] 
+**identity_state** | **str** | The identity state of the identity this account is correlated to | [optional] 
+**connection_type** | **str** | The connection type of the source this account is from | [optional] 
+**type** | **str** | The type of the account | [optional] 
 **attributes** | **Dict[str, object]** | The account attributes that are aggregated | 
 **authoritative** | **bool** | Indicates if this account is from an authoritative source | 
 **description** | **str** | A description of the account | [optional] 
@@ -23,9 +27,12 @@ Name | Type | Description | Notes
 **uuid** | **str** | The unique ID of the account as determined by the account schema | [optional] 
 **manually_correlated** | **bool** | Indicates if the account has been manually correlated to an identity | 
 **has_entitlements** | **bool** | Indicates if the account has entitlements | 
-**identity** | [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
-**source_owner** | [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
+**identity** | [**AccountAllOfIdentity**](AccountAllOfIdentity.md) |  | [optional] 
+**source_owner** | [**AccountAllOfSourceOwner**](AccountAllOfSourceOwner.md) |  | [optional] 
 **features** | **str** | A string list containing the owning source&#39;s features | [optional] 
+**origin** | **str** | The origin of the account either aggregated or provisioned | [optional] 
+**owner_identity** | [**AccountAllOfOwnerIdentity**](AccountAllOfOwnerIdentity.md) |  | [optional] 
+**owner_group** | [**AccountAllOfOwnerGroup**](AccountAllOfOwnerGroup.md) |  | [optional] 
 
 ## Example
 

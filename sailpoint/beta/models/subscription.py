@@ -39,7 +39,7 @@ class Subscription(BaseModel):
     trigger_id: StrictStr = Field(description="ID of trigger subscribed to.", alias="triggerId")
     trigger_name: StrictStr = Field(description="Trigger name of trigger subscribed to.", alias="triggerName")
     type: SubscriptionType
-    response_deadline: StrictStr = Field(description="Deadline for completing REQUEST_RESPONSE trigger invocation, represented in ISO-8601 duration format.", alias="responseDeadline")
+    response_deadline: Optional[StrictStr] = Field(default='PT1H', description="Deadline for completing REQUEST_RESPONSE trigger invocation, represented in ISO-8601 duration format.", alias="responseDeadline")
     http_config: Optional[HttpConfig] = Field(default=None, alias="httpConfig")
     event_bridge_config: Optional[EventBridgeConfig] = Field(default=None, alias="eventBridgeConfig")
     enabled: StrictBool = Field(description="Whether subscription should receive real-time trigger invocations or not. Test trigger invocations are always enabled regardless of this option.")

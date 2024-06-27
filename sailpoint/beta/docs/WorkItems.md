@@ -15,12 +15,13 @@ Name | Type | Description | Notes
 **description** | **str** | The description of the work item | [optional] 
 **state** | [**WorkItemState**](WorkItemState.md) |  | [optional] 
 **type** | [**WorkItemType**](WorkItemType.md) |  | [optional] 
-**remediation_items** | [**RemediationItemDetails**](RemediationItemDetails.md) |  | [optional] 
-**approval_items** | [**ApprovalItemDetails**](ApprovalItemDetails.md) |  | [optional] 
+**remediation_items** | [**List[RemediationItemDetails]**](RemediationItemDetails.md) |  | [optional] 
+**approval_items** | [**List[ApprovalItemDetails]**](ApprovalItemDetails.md) |  | [optional] 
 **name** | **str** | The work item name | [optional] 
 **completed** | **datetime** |  | [optional] 
 **num_items** | **int** | The number of items in the work item | [optional] 
 **errors** | **List[str]** |  | [optional] 
+**form** | [**FormDetails**](FormDetails.md) |  | [optional] 
 
 ## Example
 

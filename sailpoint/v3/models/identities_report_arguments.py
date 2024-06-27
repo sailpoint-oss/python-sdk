@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
+from pydantic import BaseModel, StrictBool
 from pydantic import Field
 try:
     from typing import Self
@@ -31,9 +31,7 @@ class IdentitiesReportArguments(BaseModel):
     Arguments for Identities report (IDENTITIES)
     """ # noqa: E501
     correlated_only: Optional[StrictBool] = Field(default=False, description="Boolean FLAG to specify if only correlated identities should be used in report processing", alias="correlatedOnly")
-    default_s3_bucket: StrictBool = Field(description="Use it to set default s3 bucket where generated report will be saved.  In case this argument is false and 's3Bucket' argument is null or absent there will be default s3Bucket assigned to the report.", alias="defaultS3Bucket")
-    s3_bucket: Optional[StrictStr] = Field(default=None, description="If you want to be specific you could use this argument with defaultS3Bucket = false.", alias="s3Bucket")
-    __properties: ClassVar[List[str]] = ["correlatedOnly", "defaultS3Bucket", "s3Bucket"]
+    __properties: ClassVar[List[str]] = ["correlatedOnly"]
 
     model_config = {
         "populate_by_name": True,
@@ -84,9 +82,7 @@ class IdentitiesReportArguments(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "correlatedOnly": obj.get("correlatedOnly") if obj.get("correlatedOnly") is not None else False,
-            "defaultS3Bucket": obj.get("defaultS3Bucket"),
-            "s3Bucket": obj.get("s3Bucket")
+            "correlatedOnly": obj.get("correlatedOnly") if obj.get("correlatedOnly") is not None else False
         })
         return _obj
 

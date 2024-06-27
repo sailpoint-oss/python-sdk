@@ -1780,7 +1780,7 @@ class WorkItemsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[WorkItemsCount]:
+    ) -> WorkItemsCount:
         """Count Work Items
 
         This gets a count of work items belonging to either the specified user(admin required), or the current user.
@@ -1818,7 +1818,7 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[WorkItemsCount]",
+            '200': "WorkItemsCount",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
@@ -1850,7 +1850,7 @@ class WorkItemsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[WorkItemsCount]]:
+    ) -> ApiResponse[WorkItemsCount]:
         """Count Work Items
 
         This gets a count of work items belonging to either the specified user(admin required), or the current user.
@@ -1888,7 +1888,7 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[WorkItemsCount]",
+            '200': "WorkItemsCount",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
@@ -1958,7 +1958,7 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[WorkItemsCount]",
+            '200': "WorkItemsCount",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
@@ -2335,7 +2335,7 @@ class WorkItemsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[WorkItemsSummary]:
+    ) -> WorkItemsSummary:
         """Work Items Summary
 
         This gets a summary of work items belonging to either the specified user(admin required), or the current user.
@@ -2373,7 +2373,7 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[WorkItemsSummary]",
+            '200': "WorkItemsSummary",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
@@ -2405,7 +2405,7 @@ class WorkItemsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[WorkItemsSummary]]:
+    ) -> ApiResponse[WorkItemsSummary]:
         """Work Items Summary
 
         This gets a summary of work items belonging to either the specified user(admin required), or the current user.
@@ -2443,7 +2443,7 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[WorkItemsSummary]",
+            '200': "WorkItemsSummary",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
@@ -2513,7 +2513,7 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[WorkItemsSummary]",
+            '200': "WorkItemsSummary",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",

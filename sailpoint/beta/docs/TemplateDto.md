@@ -19,6 +19,8 @@ Name | Type | Description | Notes
 **id** | **str** | This is auto-generated. | [optional] 
 **created** | **datetime** | The time when this template is created. This is auto-generated. | [optional] 
 **modified** | **datetime** | The time when this template was last modified. This is auto-generated. | [optional] 
+**slack_template** | **str** |  | [optional] 
+**teams_template** | **str** |  | [optional] 
 
 ## Example
 

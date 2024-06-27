@@ -71,7 +71,7 @@ class TestWorkflowsApi(unittest.TestCase):
     def test_get_workflow_execution(self) -> None:
         """Test case for get_workflow_execution
 
-        Get a Workflow Execution
+        Get Workflow Execution
         """
         pass
 
@@ -82,17 +82,17 @@ class TestWorkflowsApi(unittest.TestCase):
         """
         pass
 
+    def test_get_workflow_executions(self) -> None:
+        """Test case for get_workflow_executions
+
+        List Workflow Executions
+        """
+        pass
+
     def test_list_complete_workflow_library(self) -> None:
         """Test case for list_complete_workflow_library
 
         List Complete Workflow Library
-        """
-        pass
-
-    def test_list_workflow_executions(self) -> None:
-        """Test case for list_workflow_executions
-
-        List Workflow Executions
         """
         pass
 

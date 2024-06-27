@@ -39,7 +39,7 @@ class TestPasswordPolicyV3Dto(unittest.TestCase):
                 id = '2c91808e7d976f3b017d9f5ceae440c8',
                 description = 'Information about the Password Policy',
                 name = 'PasswordPolicy Example',
-                date_crated = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                date_created = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 last_updated = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 first_expiration_reminder = 45,
                 account_id_min_word_length = 4,
@@ -64,6 +64,8 @@ class TestPasswordPolicyV3Dto(unittest.TestCase):
                 use_identity_attributes = False,
                 validate_against_account_id = False,
                 validate_against_account_name = True,
+                created = '',
+                modified = '',
                 source_ids = [2c91808382ffee0b01830de154f14034, 2f98808382ffee0b01830de154f12134]
             )
         else:

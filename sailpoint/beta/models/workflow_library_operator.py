@@ -17,9 +17,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
+from pydantic import BaseModel, StrictBool, StrictStr
 from pydantic import Field
 from sailpoint.beta.models.workflow_library_form_fields import WorkflowLibraryFormFields
 try:
@@ -35,8 +35,12 @@ class WorkflowLibraryOperator(BaseModel):
     name: Optional[StrictStr] = Field(default=None, description="Operator friendly name")
     type: Optional[StrictStr] = Field(default=None, description="Operator type")
     description: Optional[StrictStr] = Field(default=None, description="Description of the operator")
+    is_dynamic_schema: Optional[StrictBool] = Field(default=None, description="Determines whether the dynamic output schema is returned in place of the action's output schema. The dynamic schema lists non-static properties, like properties of a workflow form where each form has different fields. These will be provided dynamically based on available form fields.", alias="isDynamicSchema")
+    deprecated: Optional[StrictBool] = None
+    deprecated_by: Optional[datetime] = Field(default=None, alias="deprecatedBy")
+    is_simulation_enabled: Optional[StrictBool] = Field(default=None, alias="isSimulationEnabled")
     form_fields: Optional[List[WorkflowLibraryFormFields]] = Field(default=None, description="One or more inputs that the operator accepts", alias="formFields")
-    __properties: ClassVar[List[str]] = ["id", "name", "type", "description", "formFields"]
+    __properties: ClassVar[List[str]] = ["id", "name", "type", "description", "isDynamicSchema", "deprecated", "deprecatedBy", "isSimulationEnabled", "formFields"]
 
     model_config = {
         "populate_by_name": True,
@@ -82,6 +86,11 @@ class WorkflowLibraryOperator(BaseModel):
                 if _item:
                     _items.append(_item.to_dict())
             _dict['formFields'] = _items
+        # set to None if form_fields (nullable) is None
+        # and model_fields_set contains the field
+        if self.form_fields is None and "form_fields" in self.model_fields_set:
+            _dict['formFields'] = None
+
         return _dict
 
     @classmethod
@@ -98,6 +107,10 @@ class WorkflowLibraryOperator(BaseModel):
             "name": obj.get("name"),
             "type": obj.get("type"),
             "description": obj.get("description"),
+            "isDynamicSchema": obj.get("isDynamicSchema"),
+            "deprecated": obj.get("deprecated"),
+            "deprecatedBy": obj.get("deprecatedBy"),
+            "isSimulationEnabled": obj.get("isSimulationEnabled"),
             "formFields": [WorkflowLibraryFormFields.from_dict(_item) for _item in obj.get("formFields")] if obj.get("formFields") is not None else None
         })
         return _obj

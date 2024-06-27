@@ -41,7 +41,9 @@ class TestFormDetails(unittest.TestCase):
                 title = 'Account Selection for John.Doe',
                 subtitle = 'Please select from the following',
                 target_user = 'Jane.Doe',
-                sections = sailpoint.beta.models.section_details.SectionDetails()
+                sections = [
+                    sailpoint.beta.models.section_details.SectionDetails()
+                    ]
             )
         else:
             return FormDetails(

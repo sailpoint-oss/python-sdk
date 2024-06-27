@@ -32,13 +32,13 @@ class LifecycleState(BaseModel):
     """
     LifecycleState
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(default=None, description="lifecycle stat id.")
-    name: Optional[StrictStr] = Field(default=None, description="Lifecycle-state name.")
-    technical_name: Optional[StrictStr] = Field(default=None, description="The technical name for lifecycle state. This is for internal use.", alias="technicalName")
+    id: Optional[StrictStr] = Field(default=None, description="Lifecycle state ID.")
+    name: Optional[StrictStr] = Field(default=None, description="Lifecycle state name.")
+    technical_name: Optional[StrictStr] = Field(default=None, description="Lifecycle state technical name. This is for internal use.", alias="technicalName")
     description: Optional[StrictStr] = Field(default=None, description="Lifecycle state description.")
     created: Optional[datetime] = Field(default=None, description="Lifecycle state created date.")
     modified: Optional[datetime] = Field(default=None, description="Lifecycle state modified date.")
-    enabled: Optional[StrictBool] = Field(default=None, description="Whether the lifecycle state is enabled or disabled.")
+    enabled: Optional[StrictBool] = Field(default=False, description="Indicates whether the lifecycle state is enabled or disabled.")
     identity_count: Optional[StrictInt] = Field(default=None, description="Number of identities that have the lifecycle state.", alias="identityCount")
     email_notification_option: Optional[EmailNotificationOption] = Field(default=None, alias="emailNotificationOption")
     account_actions: Optional[List[AccountAction]] = Field(default=None, alias="accountActions")
@@ -122,7 +122,7 @@ class LifecycleState(BaseModel):
             "description": obj.get("description"),
             "created": obj.get("created"),
             "modified": obj.get("modified"),
-            "enabled": obj.get("enabled"),
+            "enabled": obj.get("enabled") if obj.get("enabled") is not None else False,
             "identityCount": obj.get("identityCount"),
             "emailNotificationOption": EmailNotificationOption.from_dict(obj.get("emailNotificationOption")) if obj.get("emailNotificationOption") is not None else None,
             "accountActions": [AccountAction.from_dict(_item) for _item in obj.get("accountActions")] if obj.get("accountActions") is not None else None,

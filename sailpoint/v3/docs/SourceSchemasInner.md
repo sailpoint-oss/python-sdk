@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **str** | The type of object being referenced | [optional] 
-**id** | **str** | ID of the schema | [optional] 
-**name** | **str** | Human-readable display name of the schema | [optional] 
+**type** | **str** | Type of object being referenced. | [optional] 
+**id** | **str** | Schema ID. | [optional] 
+**name** | **str** | Schema&#39;s human-readable display name. | [optional] 
 
 ## Example
 

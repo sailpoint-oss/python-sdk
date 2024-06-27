@@ -17,15 +17,15 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
 from pydantic import Field
-from sailpoint.beta.models.entity_created_by_dto import EntityCreatedByDTO
 from sailpoint.beta.models.role_mining_identity_distribution import RoleMiningIdentityDistribution
 from sailpoint.beta.models.role_mining_potential_role_provision_state import RoleMiningPotentialRoleProvisionState
 from sailpoint.beta.models.role_mining_role_type import RoleMiningRoleType
 from sailpoint.beta.models.role_mining_session_parameters_dto import RoleMiningSessionParametersDto
+from sailpoint.beta.models.role_mining_session_response_created_by import RoleMiningSessionResponseCreatedBy
 try:
     from typing import Self
 except ImportError:
@@ -35,7 +35,7 @@ class RoleMiningPotentialRole(BaseModel):
     """
     RoleMiningPotentialRole
     """ # noqa: E501
-    created_by: Optional[EntityCreatedByDTO] = Field(default=None, alias="createdBy")
+    created_by: Optional[RoleMiningSessionResponseCreatedBy] = Field(default=None, alias="createdBy")
     density: Optional[StrictInt] = Field(default=None, description="The density of a potential role.")
     description: Optional[StrictStr] = Field(default=None, description="The description of a potential role.")
     entitlement_count: Optional[StrictInt] = Field(default=None, description="The number of entitlements in a potential role.", alias="entitlementCount")
@@ -51,7 +51,10 @@ class RoleMiningPotentialRole(BaseModel):
     saved: Optional[StrictBool] = Field(default=None, description="The potential role's saved status.")
     session: Optional[RoleMiningSessionParametersDto] = None
     type: Optional[RoleMiningRoleType] = None
-    __properties: ClassVar[List[str]] = ["createdBy", "density", "description", "entitlementCount", "excludedEntitlements", "freshness", "identityCount", "identityDistribution", "identityIds", "name", "provisionState", "quality", "roleId", "saved", "session", "type"]
+    id: Optional[StrictStr] = Field(default=None, description="Id of the potential role")
+    created_date: Optional[datetime] = Field(default=None, description="The date-time when this potential role was created.", alias="createdDate")
+    modified_date: Optional[datetime] = Field(default=None, description="The date-time when this potential role was modified.", alias="modifiedDate")
+    __properties: ClassVar[List[str]] = ["createdBy", "density", "description", "entitlementCount", "excludedEntitlements", "freshness", "identityCount", "identityDistribution", "identityIds", "name", "provisionState", "quality", "roleId", "saved", "session", "type", "id", "createdDate", "modifiedDate"]
 
     model_config = {
         "populate_by_name": True,
@@ -103,6 +106,26 @@ class RoleMiningPotentialRole(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of session
         if self.session:
             _dict['session'] = self.session.to_dict()
+        # set to None if description (nullable) is None
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
+            _dict['description'] = None
+
+        # set to None if excluded_entitlements (nullable) is None
+        # and model_fields_set contains the field
+        if self.excluded_entitlements is None and "excluded_entitlements" in self.model_fields_set:
+            _dict['excludedEntitlements'] = None
+
+        # set to None if identity_distribution (nullable) is None
+        # and model_fields_set contains the field
+        if self.identity_distribution is None and "identity_distribution" in self.model_fields_set:
+            _dict['identityDistribution'] = None
+
+        # set to None if role_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.role_id is None and "role_id" in self.model_fields_set:
+            _dict['roleId'] = None
+
         return _dict
 
     @classmethod
@@ -115,7 +138,7 @@ class RoleMiningPotentialRole(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "createdBy": EntityCreatedByDTO.from_dict(obj.get("createdBy")) if obj.get("createdBy") is not None else None,
+            "createdBy": RoleMiningSessionResponseCreatedBy.from_dict(obj.get("createdBy")) if obj.get("createdBy") is not None else None,
             "density": obj.get("density"),
             "description": obj.get("description"),
             "entitlementCount": obj.get("entitlementCount"),
@@ -130,7 +153,10 @@ class RoleMiningPotentialRole(BaseModel):
             "roleId": obj.get("roleId"),
             "saved": obj.get("saved"),
             "session": RoleMiningSessionParametersDto.from_dict(obj.get("session")) if obj.get("session") is not None else None,
-            "type": obj.get("type")
+            "type": obj.get("type"),
+            "id": obj.get("id"),
+            "createdDate": obj.get("createdDate"),
+            "modifiedDate": obj.get("modifiedDate")
         })
         return _obj
 

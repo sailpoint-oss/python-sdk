@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **description** | **str** | Description of the task this TaskStatus represents | 
 **parent_name** | **str** | Name of the parent of the task this TaskStatus represents | 
 **launcher** | **str** | Service to execute the task this TaskStatus represents | 
+**target** | [**Target**](Target.md) |  | [optional] 
 **created** | **datetime** | Creation date of the task this TaskStatus represents | 
 **modified** | **datetime** | Last modification date of the task this TaskStatus represents | 
 **launched** | **datetime** | Launch date of the task this TaskStatus represents | 
@@ -22,6 +23,7 @@ Name | Type | Description | Notes
 **attributes** | **Dict[str, object]** | Attributes of the task this TaskStatus represents | 
 **progress** | **str** | Current progress of the task this TaskStatus represents | 
 **percent_complete** | **int** | Current percentage completion of the task this TaskStatus represents | 
+**task_definition_summary** | [**TaskDefinitionSummary**](TaskDefinitionSummary.md) |  | [optional] 
 
 ## Example
 

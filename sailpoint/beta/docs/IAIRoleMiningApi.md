@@ -1655,7 +1655,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_role_mining_sessions**
-> List[RoleMiningSessionDto] get_role_mining_sessions(filters=filters, sorters=sorters, offset=offset, limit=limit, count=count)
+> List[RoleMiningSessionResponse] get_role_mining_sessions(filters=filters, sorters=sorters, offset=offset, limit=limit, count=count)
 
 Retrieves all role mining sessions
 
@@ -1670,7 +1670,7 @@ Returns all role mining sessions that match the query parameters
 import time
 import os
 import sailpoint.beta
-from sailpoint.beta.models.role_mining_session_dto import RoleMiningSessionDto
+from sailpoint.beta.models.role_mining_session_response import RoleMiningSessionResponse
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
@@ -1723,7 +1723,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List[RoleMiningSessionDto]**](RoleMiningSessionDto.md)
+[**List[RoleMiningSessionResponse]**](RoleMiningSessionResponse.md)
 
 ### Authorization
 

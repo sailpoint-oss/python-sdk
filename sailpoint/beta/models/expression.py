@@ -21,6 +21,7 @@ import json
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
 from pydantic import Field
+from sailpoint.beta.models.children import Children
 from sailpoint.beta.models.value import Value
 try:
     from typing import Self
@@ -34,7 +35,7 @@ class Expression(BaseModel):
     operator: Optional[StrictStr] = Field(default=None, description="Operator for the expression")
     attribute: Optional[StrictStr] = Field(default=None, description="Name for the attribute")
     value: Optional[Value] = None
-    children: Optional[List[Value]] = Field(default=None, description="List of expressions")
+    children: Optional[List[Children]] = Field(default=None, description="List of expressions")
     __properties: ClassVar[List[str]] = ["operator", "attribute", "value", "children"]
 
     @field_validator('operator')
@@ -94,6 +95,21 @@ class Expression(BaseModel):
                 if _item:
                     _items.append(_item.to_dict())
             _dict['children'] = _items
+        # set to None if attribute (nullable) is None
+        # and model_fields_set contains the field
+        if self.attribute is None and "attribute" in self.model_fields_set:
+            _dict['attribute'] = None
+
+        # set to None if value (nullable) is None
+        # and model_fields_set contains the field
+        if self.value is None and "value" in self.model_fields_set:
+            _dict['value'] = None
+
+        # set to None if children (nullable) is None
+        # and model_fields_set contains the field
+        if self.children is None and "children" in self.model_fields_set:
+            _dict['children'] = None
+
         return _dict
 
     @classmethod
@@ -109,7 +125,7 @@ class Expression(BaseModel):
             "operator": obj.get("operator"),
             "attribute": obj.get("attribute"),
             "value": Value.from_dict(obj.get("value")) if obj.get("value") is not None else None,
-            "children": [Value.from_dict(_item) for _item in obj.get("children")] if obj.get("children") is not None else None
+            "children": [Children.from_dict(_item) for _item in obj.get("children")] if obj.get("children") is not None else None
         })
         return _obj
 

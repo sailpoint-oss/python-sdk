@@ -9,13 +9,14 @@ Name | Type | Description | Notes
 **name** | **str** | Name of the Object | 
 **created** | **datetime** | Creation date of the Object | [optional] [readonly] 
 **modified** | **datetime** | Last modification date of the Object | [optional] [readonly] 
-**enabled** | **bool** | Whether the lifecycle state is enabled or disabled. | [optional] 
-**technical_name** | **str** | The technical name for lifecycle state. This is for internal use. | 
-**description** | **str** | Lifecycle state description. | [optional] 
+**enabled** | **bool** | Indicates whether the lifecycle state is enabled or disabled. | [optional] [default to False]
+**technical_name** | **str** | The lifecycle state&#39;s technical name. This is for internal use. | 
+**description** | **str** | Lifecycle state&#39;s description. | [optional] 
 **identity_count** | **int** | Number of identities that have the lifecycle state. | [optional] [readonly] 
 **email_notification_option** | [**EmailNotificationOption**](EmailNotificationOption.md) |  | [optional] 
 **account_actions** | [**List[AccountAction]**](AccountAction.md) |  | [optional] 
 **access_profile_ids** | **List[str]** | List of unique access-profile IDs that are associated with the lifecycle state. | [optional] 
+**identity_state** | **str** | The lifecycle state&#39;s associated identity state. This field is generally &#39;null&#39;. | [optional] 
 
 ## Example
 

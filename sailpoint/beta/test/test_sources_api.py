@@ -43,7 +43,7 @@ class TestSourcesApi(unittest.TestCase):
     def test_create_source_schema(self) -> None:
         """Test case for create_source_schema
 
-        Creates a new Schema on the specified Source in IdentityNow.
+        Create Schema on Source
         """
         pass
 
@@ -51,6 +51,13 @@ class TestSourcesApi(unittest.TestCase):
         """Test case for delete
 
         Delete Source by ID
+        """
+        pass
+
+    def test_delete_accounts_async(self) -> None:
+        """Test case for delete_accounts_async
+
+        Remove All Accounts in a Source
         """
         pass
 
@@ -72,6 +79,13 @@ class TestSourcesApi(unittest.TestCase):
         """Test case for delete_source_schema
 
         Delete Source Schema by ID
+        """
+        pass
+
+    def test_get_correlation_config(self) -> None:
+        """Test case for get_correlation_config
+
+        Get Source Correlation Configuration
         """
         pass
 
@@ -138,10 +152,24 @@ class TestSourcesApi(unittest.TestCase):
         """
         pass
 
+    def test_get_source_schemas(self) -> None:
+        """Test case for get_source_schemas
+
+        List Schemas on Source
+        """
+        pass
+
     def test_import_accounts(self) -> None:
         """Test case for import_accounts
 
         Account Aggregation
+        """
+        pass
+
+    def test_import_entitlements(self) -> None:
+        """Test case for import_entitlements
+
+        Entitlement Aggregation
         """
         pass
 
@@ -180,13 +208,6 @@ class TestSourcesApi(unittest.TestCase):
         """
         pass
 
-    def test_list_source_schemas(self) -> None:
-        """Test case for list_source_schemas
-
-        Lists the Schemas that exist on the specified Source in IdentityNow.
-        """
-        pass
-
     def test_list_sources(self) -> None:
         """Test case for list_sources
 
@@ -205,6 +226,13 @@ class TestSourcesApi(unittest.TestCase):
         """Test case for ping_cluster
 
         Ping cluster for source connector
+        """
+        pass
+
+    def test_put_correlation_config(self) -> None:
+        """Test case for put_correlation_config
+
+        Update Source Correlation Configuration
         """
         pass
 

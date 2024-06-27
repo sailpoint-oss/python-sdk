@@ -40,26 +40,23 @@ class TestSearchExportReportArguments(unittest.TestCase):
                 filters = {source.id={type=TERMS, terms=[2c9180897termsId780bd2920576]}, source.name.exact={type=TERMS, terms=[IdentityNow], exclude=true}},
                 query = sailpoint.v3.models.query.Query(
                     query = 'name:a*', 
-                    fields = [name], 
+                    fields = '[firstName,lastName,email]', 
                     time_zone = 'America/Chicago', 
                     inner_hit = sailpoint.v3.models.inner_hit.InnerHit(
                         query = 'source.name:\"Active Directory\"', 
                         type = 'access', ), ),
                 include_nested = True,
-                sort = [displayName, +id],
-                default_s3_bucket = True,
-                s3_bucket = 'the-dev-bucket'
+                sort = [displayName, +id]
             )
         else:
             return SearchExportReportArguments(
                 query = sailpoint.v3.models.query.Query(
                     query = 'name:a*', 
-                    fields = [name], 
+                    fields = '[firstName,lastName,email]', 
                     time_zone = 'America/Chicago', 
                     inner_hit = sailpoint.v3.models.inner_hit.InnerHit(
                         query = 'source.name:\"Active Directory\"', 
                         type = 'access', ), ),
-                default_s3_bucket = True,
         )
         """
 

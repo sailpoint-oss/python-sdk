@@ -36,13 +36,10 @@ class TestOrphanUncorrelatedReportArguments(unittest.TestCase):
         model = OrphanUncorrelatedReportArguments()
         if include_optional:
             return OrphanUncorrelatedReportArguments(
-                selected_formats = [CSV],
-                default_s3_bucket = True,
-                s3_bucket = 'the-dev-bucket'
+                selected_formats = [CSV]
             )
         else:
             return OrphanUncorrelatedReportArguments(
-                default_s3_bucket = True,
         )
         """
 

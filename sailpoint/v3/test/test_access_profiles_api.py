@@ -29,7 +29,7 @@ class TestAccessProfilesApi(unittest.TestCase):
     def test_create_access_profile(self) -> None:
         """Test case for create_access_profile
 
-        Create an Access Profile
+        Create Access Profile
         """
         pass
 

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **identities_with_access** | **int** | The number of identities in this role with the entitlement. | [optional] 
 **identities_impacted** | **int** | The number of identities in this role that do not have the specified entitlement. | [optional] 
 **total_number_of_identities** | **int** | The total number of identities. | [optional] 
+**impacted_identity_names** | **str** |  | [optional] 
 
 ## Example
 

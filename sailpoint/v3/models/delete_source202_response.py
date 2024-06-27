@@ -30,9 +30,9 @@ class DeleteSource202Response(BaseModel):
     """
     DeleteSource202Response
     """ # noqa: E501
-    type: Optional[StrictStr] = Field(default=None, description="The type of object being referenced")
-    id: Optional[StrictStr] = Field(default=None, description="ID of the task result")
-    name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of the task result (should be null/empty)")
+    type: Optional[StrictStr] = Field(default=None, description="Type of object being referenced.")
+    id: Optional[StrictStr] = Field(default=None, description="Task result ID.")
+    name: Optional[StrictStr] = Field(default=None, description="Task result's human-readable display name (this should be null/empty).")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')

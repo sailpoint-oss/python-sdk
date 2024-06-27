@@ -5870,7 +5870,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[RoleMiningSessionDto]:
+    ) -> List[RoleMiningSessionResponse]:
         """Retrieves all role mining sessions
 
         Returns all role mining sessions that match the query parameters
@@ -5920,7 +5920,7 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[RoleMiningSessionDto]",
+            '200': "List[RoleMiningSessionResponse]",
             '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
@@ -5958,7 +5958,7 @@ class IAIRoleMiningApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[RoleMiningSessionDto]]:
+    ) -> ApiResponse[List[RoleMiningSessionResponse]]:
         """Retrieves all role mining sessions
 
         Returns all role mining sessions that match the query parameters
@@ -6008,7 +6008,7 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[RoleMiningSessionDto]",
+            '200': "List[RoleMiningSessionResponse]",
             '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
@@ -6096,7 +6096,7 @@ class IAIRoleMiningApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[RoleMiningSessionDto]",
+            '200': "List[RoleMiningSessionResponse]",
             '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",

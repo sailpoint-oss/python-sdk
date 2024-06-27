@@ -38,6 +38,7 @@ class TestEmailStatusDto(unittest.TestCase):
             return EmailStatusDto(
                 id = '',
                 email = 'sender@example.com',
+                is_verified_by_domain = False,
                 verification_status = 'PENDING'
             )
         else:

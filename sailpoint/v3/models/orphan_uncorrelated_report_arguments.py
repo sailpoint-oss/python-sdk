@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr, field_validator
+from pydantic import BaseModel, StrictStr, field_validator
 from pydantic import Field
 try:
     from typing import Self
@@ -31,9 +31,7 @@ class OrphanUncorrelatedReportArguments(BaseModel):
     Arguments for Orphan Identities report (ORPHAN_IDENTITIES) and Uncorrelated Accounts report (UNCORRELATED_ACCOUNTS)
     """ # noqa: E501
     selected_formats: Optional[List[StrictStr]] = Field(default=None, description="Output report file formats. This are formats for calling get endpoint as a query parameter 'fileFormat'.  In case report won't have this argument there will be ['CSV', 'PDF'] as default.", alias="selectedFormats")
-    default_s3_bucket: StrictBool = Field(description="Use it to set default s3 bucket where generated report will be saved.  In case this argument is false and 's3Bucket' argument is null or absent there will be default s3Bucket assigned to the report.", alias="defaultS3Bucket")
-    s3_bucket: Optional[StrictStr] = Field(default=None, description="If you want to be specific you could use this argument with defaultS3Bucket = false.", alias="s3Bucket")
-    __properties: ClassVar[List[str]] = ["selectedFormats", "defaultS3Bucket", "s3Bucket"]
+    __properties: ClassVar[List[str]] = ["selectedFormats"]
 
     @field_validator('selected_formats')
     def selected_formats_validate_enum(cls, value):
@@ -95,9 +93,7 @@ class OrphanUncorrelatedReportArguments(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "selectedFormats": obj.get("selectedFormats"),
-            "defaultS3Bucket": obj.get("defaultS3Bucket"),
-            "s3Bucket": obj.get("s3Bucket")
+            "selectedFormats": obj.get("selectedFormats")
         })
         return _obj
 

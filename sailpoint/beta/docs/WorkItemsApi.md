@@ -528,7 +528,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_count_work_items**
-> List[WorkItemsCount] get_count_work_items(owner_id=owner_id)
+> WorkItemsCount get_count_work_items(owner_id=owner_id)
 
 Count Work Items
 
@@ -588,7 +588,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List[WorkItemsCount]**](WorkItemsCount.md)
+[**WorkItemsCount**](WorkItemsCount.md)
 
 ### Authorization
 
@@ -696,7 +696,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_work_items_summary**
-> List[WorkItemsSummary] get_work_items_summary(owner_id=owner_id)
+> WorkItemsSummary get_work_items_summary(owner_id=owner_id)
 
 Work Items Summary
 
@@ -756,7 +756,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List[WorkItemsSummary]**](WorkItemsSummary.md)
+[**WorkItemsSummary**](WorkItemsSummary.md)
 
 ### Authorization
 

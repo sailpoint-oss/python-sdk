@@ -21,8 +21,6 @@ from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr, field_validator
 from pydantic import Field
-from typing_extensions import Annotated
-from sailpoint.v3.models.access_item_requested_for import AccessItemRequestedFor
 from sailpoint.v3.models.access_item_requester import AccessItemRequester
 from sailpoint.v3.models.access_request_phases import AccessRequestPhases
 from sailpoint.v3.models.access_request_type import AccessRequestType
@@ -33,6 +31,7 @@ from sailpoint.v3.models.requested_item_status_cancelled_request_details import 
 from sailpoint.v3.models.requested_item_status_pre_approval_trigger_details import RequestedItemStatusPreApprovalTriggerDetails
 from sailpoint.v3.models.requested_item_status_provisioning_details import RequestedItemStatusProvisioningDetails
 from sailpoint.v3.models.requested_item_status_request_state import RequestedItemStatusRequestState
+from sailpoint.v3.models.requested_item_status_requested_for import RequestedItemStatusRequestedFor
 from sailpoint.v3.models.requested_item_status_requester_comment import RequestedItemStatusRequesterComment
 from sailpoint.v3.models.requested_item_status_sod_violation_context import RequestedItemStatusSodViolationContext
 try:
@@ -56,7 +55,7 @@ class RequestedItemStatus(BaseModel):
     modified: Optional[datetime] = Field(default=None, description="When the request was last modified.")
     created: Optional[datetime] = Field(default=None, description="When the request was created.")
     requester: Optional[AccessItemRequester] = None
-    requested_for: Optional[Annotated[List[AccessItemRequestedFor], Field(min_length=1, max_length=10)]] = Field(default=None, description="Identities access was requested for.", alias="requestedFor")
+    requested_for: Optional[RequestedItemStatusRequestedFor] = Field(default=None, alias="requestedFor")
     requester_comment: Optional[RequestedItemStatusRequesterComment] = Field(default=None, alias="requesterComment")
     sod_violation_context: Optional[RequestedItemStatusSodViolationContext] = Field(default=None, alias="sodViolationContext")
     provisioning_details: Optional[RequestedItemStatusProvisioningDetails] = Field(default=None, alias="provisioningDetails")
@@ -145,13 +144,9 @@ class RequestedItemStatus(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of requester
         if self.requester:
             _dict['requester'] = self.requester.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of each item in requested_for (list)
-        _items = []
+        # override the default output from pydantic by calling `to_dict()` of requested_for
         if self.requested_for:
-            for _item in self.requested_for:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['requestedFor'] = _items
+            _dict['requestedFor'] = self.requested_for.to_dict()
         # override the default output from pydantic by calling `to_dict()` of requester_comment
         if self.requester_comment:
             _dict['requesterComment'] = self.requester_comment.to_dict()
@@ -248,7 +243,7 @@ class RequestedItemStatus(BaseModel):
             "modified": obj.get("modified"),
             "created": obj.get("created"),
             "requester": AccessItemRequester.from_dict(obj.get("requester")) if obj.get("requester") is not None else None,
-            "requestedFor": [AccessItemRequestedFor.from_dict(_item) for _item in obj.get("requestedFor")] if obj.get("requestedFor") is not None else None,
+            "requestedFor": RequestedItemStatusRequestedFor.from_dict(obj.get("requestedFor")) if obj.get("requestedFor") is not None else None,
             "requesterComment": RequestedItemStatusRequesterComment.from_dict(obj.get("requesterComment")) if obj.get("requesterComment") is not None else None,
             "sodViolationContext": RequestedItemStatusSodViolationContext.from_dict(obj.get("sodViolationContext")) if obj.get("sodViolationContext") is not None else None,
             "provisioningDetails": RequestedItemStatusProvisioningDetails.from_dict(obj.get("provisioningDetails")) if obj.get("provisioningDetails") is not None else None,

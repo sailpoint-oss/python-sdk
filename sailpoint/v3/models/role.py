@@ -52,7 +52,9 @@ class Role(BaseModel):
     access_request_config: Optional[RequestabilityForRole] = Field(default=None, alias="accessRequestConfig")
     revocation_request_config: Optional[RevocabilityForRole] = Field(default=None, alias="revocationRequestConfig")
     segments: Optional[List[StrictStr]] = Field(default=None, description="List of IDs of segments, if any, to which this Role is assigned.")
-    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "description", "owner", "accessProfiles", "entitlements", "membership", "legacyMembershipInfo", "enabled", "requestable", "accessRequestConfig", "revocationRequestConfig", "segments"]
+    dimensional: Optional[StrictBool] = None
+    dimension_refs: Optional[StrictStr] = Field(default=None, alias="dimensionRefs")
+    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "description", "owner", "accessProfiles", "entitlements", "membership", "legacyMembershipInfo", "enabled", "requestable", "accessRequestConfig", "revocationRequestConfig", "segments", "dimensional", "dimensionRefs"]
 
     model_config = {
         "populate_by_name": True,
@@ -146,6 +148,16 @@ class Role(BaseModel):
         if self.segments is None and "segments" in self.model_fields_set:
             _dict['segments'] = None
 
+        # set to None if dimensional (nullable) is None
+        # and model_fields_set contains the field
+        if self.dimensional is None and "dimensional" in self.model_fields_set:
+            _dict['dimensional'] = None
+
+        # set to None if dimension_refs (nullable) is None
+        # and model_fields_set contains the field
+        if self.dimension_refs is None and "dimension_refs" in self.model_fields_set:
+            _dict['dimensionRefs'] = None
+
         return _dict
 
     @classmethod
@@ -172,7 +184,9 @@ class Role(BaseModel):
             "requestable": obj.get("requestable") if obj.get("requestable") is not None else False,
             "accessRequestConfig": RequestabilityForRole.from_dict(obj.get("accessRequestConfig")) if obj.get("accessRequestConfig") is not None else None,
             "revocationRequestConfig": RevocabilityForRole.from_dict(obj.get("revocationRequestConfig")) if obj.get("revocationRequestConfig") is not None else None,
-            "segments": obj.get("segments")
+            "segments": obj.get("segments"),
+            "dimensional": obj.get("dimensional"),
+            "dimensionRefs": obj.get("dimensionRefs")
         })
         return _obj
 

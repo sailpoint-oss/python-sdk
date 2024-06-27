@@ -44,7 +44,9 @@ class TemplateDto(BaseModel):
     id: Optional[StrictStr] = Field(default=None, description="This is auto-generated.")
     created: Optional[datetime] = Field(default=None, description="The time when this template is created. This is auto-generated.")
     modified: Optional[datetime] = Field(default=None, description="The time when this template was last modified. This is auto-generated.")
-    __properties: ClassVar[List[str]] = ["key", "name", "medium", "locale", "subject", "header", "body", "footer", "from", "replyTo", "description", "id", "created", "modified"]
+    slack_template: Optional[StrictStr] = Field(default=None, alias="slackTemplate")
+    teams_template: Optional[StrictStr] = Field(default=None, alias="teamsTemplate")
+    __properties: ClassVar[List[str]] = ["key", "name", "medium", "locale", "subject", "header", "body", "footer", "from", "replyTo", "description", "id", "created", "modified", "slackTemplate", "teamsTemplate"]
 
     @field_validator('medium')
     def medium_validate_enum(cls, value):
@@ -100,6 +102,16 @@ class TemplateDto(BaseModel):
         if self.footer is None and "footer" in self.model_fields_set:
             _dict['footer'] = None
 
+        # set to None if slack_template (nullable) is None
+        # and model_fields_set contains the field
+        if self.slack_template is None and "slack_template" in self.model_fields_set:
+            _dict['slackTemplate'] = None
+
+        # set to None if teams_template (nullable) is None
+        # and model_fields_set contains the field
+        if self.teams_template is None and "teams_template" in self.model_fields_set:
+            _dict['teamsTemplate'] = None
+
         return _dict
 
     @classmethod
@@ -125,7 +137,9 @@ class TemplateDto(BaseModel):
             "description": obj.get("description"),
             "id": obj.get("id"),
             "created": obj.get("created"),
-            "modified": obj.get("modified")
+            "modified": obj.get("modified"),
+            "slackTemplate": obj.get("slackTemplate"),
+            "teamsTemplate": obj.get("teamsTemplate")
         })
         return _obj
 

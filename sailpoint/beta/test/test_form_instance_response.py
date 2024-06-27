@@ -61,14 +61,16 @@ class TestFormInstanceResponse(unittest.TestCase):
                             ], )
                     ],
                 form_data = {department=Engineering},
-                form_definition_id = '00000000-0000-0000-0000-000000000000',
+                form_definition_id = '49841cb8-00a5-4fbd-9888-8bbb28d48331',
                 form_elements = [
                     sailpoint.beta.models.form_element.FormElement(
                         id = '00000000-0000-0000-0000-000000000000', 
                         element_type = 'TEXT', 
                         config = {label=Department}, 
                         key = 'department', 
-                        validations = [{validationType=REQUIRED}], )
+                        validations = [
+                            [{validationType=REQUIRED}]
+                            ], )
                     ],
                 form_errors = [
                     sailpoint.beta.models.form_error.FormError(
@@ -82,7 +84,7 @@ class TestFormInstanceResponse(unittest.TestCase):
                         value = Engineering, )
                     ],
                 form_input = {input1=Sales},
-                id = '00000000-0000-0000-0000-000000000000',
+                id = '06a2d961-07fa-44d1-8d0a-2f6470e30fd2',
                 modified = '2023-07-12T20:14:57.744860Z',
                 recipients = [
                     sailpoint.beta.models.form_instance_recipient.FormInstanceRecipient(

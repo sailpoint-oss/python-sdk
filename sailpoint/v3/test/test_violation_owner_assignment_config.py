@@ -37,7 +37,10 @@ class TestViolationOwnerAssignmentConfig(unittest.TestCase):
         if include_optional:
             return ViolationOwnerAssignmentConfig(
                 assignment_rule = 'MANAGER',
-                owner_ref = None
+                owner_ref = sailpoint.v3.models.violation_owner_assignment_config_owner_ref.ViolationOwnerAssignmentConfig_ownerRef(
+                    type = 'IDENTITY', 
+                    id = '2c9180a46faadee4016fb4e018c20639', 
+                    name = 'Support', )
             )
         else:
             return ViolationOwnerAssignmentConfig(

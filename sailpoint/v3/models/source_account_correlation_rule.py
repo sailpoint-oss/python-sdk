@@ -28,11 +28,11 @@ except ImportError:
 
 class SourceAccountCorrelationRule(BaseModel):
     """
-    Reference to a Rule that can do COMPLEX correlation, should only be used when accountCorrelationConfig can't be used.
+    Reference to a rule that can do COMPLEX correlation. Only use this rule when you can't use accountCorrelationConfig.
     """ # noqa: E501
-    type: Optional[StrictStr] = Field(default=None, description="The type of object being referenced")
-    id: Optional[StrictStr] = Field(default=None, description="ID of the rule")
-    name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of the rule")
+    type: Optional[StrictStr] = Field(default=None, description="Type of object being referenced.")
+    id: Optional[StrictStr] = Field(default=None, description="Rule ID.")
+    name: Optional[StrictStr] = Field(default=None, description="Rule's human-readable display name.")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')

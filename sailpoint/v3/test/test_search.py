@@ -41,7 +41,7 @@ class TestSearch(unittest.TestCase):
                 query_version = None,
                 query = sailpoint.v3.models.query.Query(
                     query = 'name:a*', 
-                    fields = [name], 
+                    fields = '[firstName,lastName,email]', 
                     time_zone = 'America/Chicago', 
                     inner_hit = sailpoint.v3.models.inner_hit.InnerHit(
                         query = 'source.name:\"Active Directory\"', 

@@ -55,7 +55,7 @@ class PendingApproval(BaseModel):
     forward_history: Optional[List[ApprovalForwardHistory]] = Field(default=None, description="The history of approval forward action.", alias="forwardHistory")
     comment_required_when_rejected: Optional[StrictBool] = Field(default=False, description="When true the rejector has to provide comments when rejecting", alias="commentRequiredWhenRejected")
     action_in_process: Optional[PendingApprovalAction] = Field(default=None, alias="actionInProcess")
-    remove_date: Optional[datetime] = Field(default=None, description="The date the role or access profile is no longer assigned to the specified identity.", alias="removeDate")
+    remove_date: Optional[datetime] = Field(default=None, description="The date the role or access profile or entitlement is no longer assigned to the specified identity.", alias="removeDate")
     remove_date_update_requested: Optional[StrictBool] = Field(default=False, description="If true, then the request is to change the remove date or sunset date.", alias="removeDateUpdateRequested")
     current_remove_date: Optional[datetime] = Field(default=None, description="The remove date or sunset date that was assigned at the time of the request.", alias="currentRemoveDate")
     sod_violation_context: Optional[SodViolationContextCheckCompleted1] = Field(default=None, alias="sodViolationContext")
@@ -138,6 +138,11 @@ class PendingApproval(BaseModel):
         # and model_fields_set contains the field
         if self.request_type is None and "request_type" in self.model_fields_set:
             _dict['requestType'] = None
+
+        # set to None if sod_violation_context (nullable) is None
+        # and model_fields_set contains the field
+        if self.sod_violation_context is None and "sod_violation_context" in self.model_fields_set:
+            _dict['sodViolationContext'] = None
 
         return _dict
 

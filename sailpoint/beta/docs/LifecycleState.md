@@ -5,13 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | lifecycle stat id. | [optional] [readonly] 
-**name** | **str** | Lifecycle-state name. | [optional] [readonly] 
-**technical_name** | **str** | The technical name for lifecycle state. This is for internal use. | [optional] [readonly] 
+**id** | **str** | Lifecycle state ID. | [optional] [readonly] 
+**name** | **str** | Lifecycle state name. | [optional] [readonly] 
+**technical_name** | **str** | Lifecycle state technical name. This is for internal use. | [optional] [readonly] 
 **description** | **str** | Lifecycle state description. | [optional] 
 **created** | **datetime** | Lifecycle state created date. | [optional] [readonly] 
 **modified** | **datetime** | Lifecycle state modified date. | [optional] [readonly] 
-**enabled** | **bool** | Whether the lifecycle state is enabled or disabled. | [optional] 
+**enabled** | **bool** | Indicates whether the lifecycle state is enabled or disabled. | [optional] [default to False]
 **identity_count** | **int** | Number of identities that have the lifecycle state. | [optional] [readonly] 
 **email_notification_option** | [**EmailNotificationOption**](EmailNotificationOption.md) |  | [optional] 
 **account_actions** | [**List[AccountAction]**](AccountAction.md) |  | [optional] 

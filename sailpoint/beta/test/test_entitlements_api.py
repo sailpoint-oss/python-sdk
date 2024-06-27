@@ -54,8 +54,8 @@ class TestEntitlementsApi(unittest.TestCase):
         """
         pass
 
-    def test_import_entitlements(self) -> None:
-        """Test case for import_entitlements
+    def test_import_entitlements_by_source(self) -> None:
+        """Test case for import_entitlements_by_source
 
         Aggregate Entitlements
         """

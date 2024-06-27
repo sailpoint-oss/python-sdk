@@ -37,7 +37,8 @@ class TestInvocationStatus(unittest.TestCase):
         if include_optional:
             return InvocationStatus(
                 id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde',
-                trigger_id = 'idn:access-requested',
+                trigger_id = 'idn:access-request-post-approval',
+                subscription_name = 'Access request subscription',
                 subscription_id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde',
                 type = 'TEST',
                 created = '2020-03-27T20:40:10.738Z',
@@ -55,7 +56,8 @@ class TestInvocationStatus(unittest.TestCase):
         else:
             return InvocationStatus(
                 id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde',
-                trigger_id = 'idn:access-requested',
+                trigger_id = 'idn:access-request-post-approval',
+                subscription_name = 'Access request subscription',
                 subscription_id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde',
                 type = 'TEST',
                 created = '2020-03-27T20:40:10.738Z',

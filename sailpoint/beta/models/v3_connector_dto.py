@@ -33,11 +33,12 @@ class V3ConnectorDto(BaseModel):
     name: Optional[StrictStr] = Field(default=None, description="The connector name")
     type: Optional[StrictStr] = Field(default=None, description="The connector type")
     script_name: Optional[StrictStr] = Field(default=None, description="The connector script name", alias="scriptName")
+    class_name: Optional[StrictStr] = Field(default=None, description="The connector class name.", alias="className")
     features: Optional[List[StrictStr]] = Field(default=None, description="The list of features supported by the connector")
     direct_connect: Optional[StrictBool] = Field(default=False, description="true if the source is a direct connect source", alias="directConnect")
     connector_metadata: Optional[Dict[str, Any]] = Field(default=None, description="Object containing metadata pertinent to the UI to be used", alias="connectorMetadata")
     status: Optional[StrictStr] = Field(default=None, description="The connector status")
-    __properties: ClassVar[List[str]] = ["name", "type", "scriptName", "features", "directConnect", "connectorMetadata", "status"]
+    __properties: ClassVar[List[str]] = ["name", "type", "scriptName", "className", "features", "directConnect", "connectorMetadata", "status"]
 
     model_config = {
         "populate_by_name": True,
@@ -76,6 +77,11 @@ class V3ConnectorDto(BaseModel):
             },
             exclude_none=True,
         )
+        # set to None if class_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.class_name is None and "class_name" in self.model_fields_set:
+            _dict['className'] = None
+
         # set to None if features (nullable) is None
         # and model_fields_set contains the field
         if self.features is None and "features" in self.model_fields_set:
@@ -96,6 +102,7 @@ class V3ConnectorDto(BaseModel):
             "name": obj.get("name"),
             "type": obj.get("type"),
             "scriptName": obj.get("scriptName"),
+            "className": obj.get("className"),
             "features": obj.get("features"),
             "directConnect": obj.get("directConnect") if obj.get("directConnect") is not None else False,
             "connectorMetadata": obj.get("connectorMetadata"),

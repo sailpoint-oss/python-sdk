@@ -5,13 +5,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**name** | **str** | Name of the draft role | [optional] 
 **description** | **str** | Draft role description | [optional] 
 **identity_ids** | **List[str]** | The list of identities for this role mining session. | [optional] 
 **entitlement_ids** | **List[str]** | The list of entitlement ids for this role mining session. | [optional] 
 **excluded_entitlements** | **List[str]** | The list of excluded entitlement ids. | [optional] 
 **modified** | **datetime** | Last modified date | [optional] 
-**name** | **str** | Name of the draft role | [optional] 
 **type** | [**RoleMiningRoleType**](RoleMiningRoleType.md) |  | [optional] 
+**id** | **str** | Id of the potential draft role | [optional] 
+**created_date** | **datetime** | The date-time when this potential draft role was created. | [optional] 
+**modified_date** | **datetime** | The date-time when this potential draft role was modified. | [optional] 
 
 ## Example
 

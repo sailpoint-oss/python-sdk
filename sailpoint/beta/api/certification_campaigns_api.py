@@ -66,7 +66,7 @@ class CertificationCampaignsApi:
     @validate_call
     def complete_campaign(
         self,
-        id: Annotated[StrictStr, Field(description="The campaign id")],
+        id: Annotated[StrictStr, Field(description="Campaign ID.")],
         complete_campaign_options: Annotated[Optional[CompleteCampaignOptions], Field(description="Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE")] = None,
         _request_timeout: Union[
             None,
@@ -83,9 +83,9 @@ class CertificationCampaignsApi:
     ) -> object:
         """(Deprecated) Complete a Campaign
 
-        :::caution  This endpoint will run successfully for any campaigns that are **past due**.  This endpoint will return a content error if the campaign is **not past due**.  :::  Completes a certification campaign. This is provided to admins so that they can complete a certification even if all items have not been completed.  Requires roles of CERT_ADMIN and ORG_ADMIN 
+        :::caution  This endpoint will run successfully for any campaigns that are **past due**.  This endpoint will return a content error if the campaign is **not past due**.  :::  Use this API to complete a certification campaign. This functionality is provided to admins so that they can complete a certification even if all items have not been completed. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/complete-campaign).  Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN. 
 
-        :param id: The campaign id (required)
+        :param id: Campaign ID. (required)
         :type id: str
         :param complete_campaign_options: Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE
         :type complete_campaign_options: CompleteCampaignOptions
@@ -144,7 +144,7 @@ class CertificationCampaignsApi:
     @validate_call
     def complete_campaign_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The campaign id")],
+        id: Annotated[StrictStr, Field(description="Campaign ID.")],
         complete_campaign_options: Annotated[Optional[CompleteCampaignOptions], Field(description="Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE")] = None,
         _request_timeout: Union[
             None,
@@ -161,9 +161,9 @@ class CertificationCampaignsApi:
     ) -> ApiResponse[object]:
         """(Deprecated) Complete a Campaign
 
-        :::caution  This endpoint will run successfully for any campaigns that are **past due**.  This endpoint will return a content error if the campaign is **not past due**.  :::  Completes a certification campaign. This is provided to admins so that they can complete a certification even if all items have not been completed.  Requires roles of CERT_ADMIN and ORG_ADMIN 
+        :::caution  This endpoint will run successfully for any campaigns that are **past due**.  This endpoint will return a content error if the campaign is **not past due**.  :::  Use this API to complete a certification campaign. This functionality is provided to admins so that they can complete a certification even if all items have not been completed. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/complete-campaign).  Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN. 
 
-        :param id: The campaign id (required)
+        :param id: Campaign ID. (required)
         :type id: str
         :param complete_campaign_options: Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE
         :type complete_campaign_options: CompleteCampaignOptions
@@ -222,7 +222,7 @@ class CertificationCampaignsApi:
     @validate_call
     def complete_campaign_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The campaign id")],
+        id: Annotated[StrictStr, Field(description="Campaign ID.")],
         complete_campaign_options: Annotated[Optional[CompleteCampaignOptions], Field(description="Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE")] = None,
         _request_timeout: Union[
             None,
@@ -239,9 +239,9 @@ class CertificationCampaignsApi:
     ) -> RESTResponseType:
         """(Deprecated) Complete a Campaign
 
-        :::caution  This endpoint will run successfully for any campaigns that are **past due**.  This endpoint will return a content error if the campaign is **not past due**.  :::  Completes a certification campaign. This is provided to admins so that they can complete a certification even if all items have not been completed.  Requires roles of CERT_ADMIN and ORG_ADMIN 
+        :::caution  This endpoint will run successfully for any campaigns that are **past due**.  This endpoint will return a content error if the campaign is **not past due**.  :::  Use this API to complete a certification campaign. This functionality is provided to admins so that they can complete a certification even if all items have not been completed. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/complete-campaign).  Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN. 
 
-        :param id: The campaign id (required)
+        :param id: Campaign ID. (required)
         :type id: str
         :param complete_campaign_options: Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE
         :type complete_campaign_options: CompleteCampaignOptions
@@ -388,9 +388,9 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Campaign:
-        """(Deprecated) Create a campaign
+        """(Deprecated) Create Campaign
 
-        Creates a new Certification Campaign with the information provided in the request body.
+        Use this API to create a certification campaign with the information provided in the request body. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/create-campaign).
 
         :param campaign: (required)
         :type campaign: Campaign
@@ -461,9 +461,9 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Campaign]:
-        """(Deprecated) Create a campaign
+        """(Deprecated) Create Campaign
 
-        Creates a new Certification Campaign with the information provided in the request body.
+        Use this API to create a certification campaign with the information provided in the request body. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/create-campaign).
 
         :param campaign: (required)
         :type campaign: Campaign
@@ -534,9 +534,9 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Create a campaign
+        """(Deprecated) Create Campaign
 
-        Creates a new Certification Campaign with the information provided in the request body.
+        Use this API to create a certification campaign with the information provided in the request body. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/create-campaign).
 
         :param campaign: (required)
         :type campaign: Campaign
@@ -680,7 +680,7 @@ class CertificationCampaignsApi:
     ) -> CampaignTemplate:
         """(Deprecated) Create a Campaign Template
 
-        Create a campaign Template based on campaign.
+        Use this API to create a campaign template based on campaign. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/create-campaign-template).
 
         :param campaign_template: (required)
         :type campaign_template: CampaignTemplate
@@ -753,7 +753,7 @@ class CertificationCampaignsApi:
     ) -> ApiResponse[CampaignTemplate]:
         """(Deprecated) Create a Campaign Template
 
-        Create a campaign Template based on campaign.
+        Use this API to create a campaign template based on campaign. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/create-campaign-template).
 
         :param campaign_template: (required)
         :type campaign_template: CampaignTemplate
@@ -826,7 +826,7 @@ class CertificationCampaignsApi:
     ) -> RESTResponseType:
         """(Deprecated) Create a Campaign Template
 
-        Create a campaign Template based on campaign.
+        Use this API to create a campaign template based on campaign. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/create-campaign-template).
 
         :param campaign_template: (required)
         :type campaign_template: CampaignTemplate
@@ -954,7 +954,7 @@ class CertificationCampaignsApi:
     @validate_call
     def delete_campaign_template(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template being deleted.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template being deleted.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -970,9 +970,9 @@ class CertificationCampaignsApi:
     ) -> None:
         """(Deprecated) Delete a Campaign Template
 
-        Deletes a campaign template by ID.
+        Use this API to delete a certification campaign template by ID. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/delete-campaign-template).
 
-        :param id: The ID of the campaign template being deleted. (required)
+        :param id: ID of the campaign template being deleted. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1028,7 +1028,7 @@ class CertificationCampaignsApi:
     @validate_call
     def delete_campaign_template_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template being deleted.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template being deleted.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1044,9 +1044,9 @@ class CertificationCampaignsApi:
     ) -> ApiResponse[None]:
         """(Deprecated) Delete a Campaign Template
 
-        Deletes a campaign template by ID.
+        Use this API to delete a certification campaign template by ID. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/delete-campaign-template).
 
-        :param id: The ID of the campaign template being deleted. (required)
+        :param id: ID of the campaign template being deleted. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1102,7 +1102,7 @@ class CertificationCampaignsApi:
     @validate_call
     def delete_campaign_template_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template being deleted.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template being deleted.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1118,9 +1118,9 @@ class CertificationCampaignsApi:
     ) -> RESTResponseType:
         """(Deprecated) Delete a Campaign Template
 
-        Deletes a campaign template by ID.
+        Use this API to delete a certification campaign template by ID. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/delete-campaign-template).
 
-        :param id: The ID of the campaign template being deleted. (required)
+        :param id: ID of the campaign template being deleted. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1234,7 +1234,7 @@ class CertificationCampaignsApi:
     @validate_call
     def delete_campaign_template_schedule(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template whose schedule is being deleted.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template whose schedule is being deleted.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1248,11 +1248,11 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """(Deprecated) Deletes a Campaign Template's Schedule
+        """(Deprecated) Delete Campaign Template Schedule
 
-        Deletes the schedule for a campaign template. Returns a 404 if there is no schedule set.
+        Use this API to delete the schedule for a certification campaign template. The API returns a 404 if there is no schedule set. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/delete-campaign-template-schedule).
 
-        :param id: The ID of the campaign template whose schedule is being deleted. (required)
+        :param id: ID of the campaign template whose schedule is being deleted. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1308,7 +1308,7 @@ class CertificationCampaignsApi:
     @validate_call
     def delete_campaign_template_schedule_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template whose schedule is being deleted.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template whose schedule is being deleted.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1322,11 +1322,11 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """(Deprecated) Deletes a Campaign Template's Schedule
+        """(Deprecated) Delete Campaign Template Schedule
 
-        Deletes the schedule for a campaign template. Returns a 404 if there is no schedule set.
+        Use this API to delete the schedule for a certification campaign template. The API returns a 404 if there is no schedule set. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/delete-campaign-template-schedule).
 
-        :param id: The ID of the campaign template whose schedule is being deleted. (required)
+        :param id: ID of the campaign template whose schedule is being deleted. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1382,7 +1382,7 @@ class CertificationCampaignsApi:
     @validate_call
     def delete_campaign_template_schedule_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template whose schedule is being deleted.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template whose schedule is being deleted.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1396,11 +1396,11 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Deletes a Campaign Template's Schedule
+        """(Deprecated) Delete Campaign Template Schedule
 
-        Deletes the schedule for a campaign template. Returns a 404 if there is no schedule set.
+        Use this API to delete the schedule for a certification campaign template. The API returns a 404 if there is no schedule set. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/delete-campaign-template-schedule).
 
-        :param id: The ID of the campaign template whose schedule is being deleted. (required)
+        :param id: ID of the campaign template whose schedule is being deleted. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1514,7 +1514,7 @@ class CertificationCampaignsApi:
     @validate_call
     def delete_campaigns(
         self,
-        delete_campaigns_request: Annotated[DeleteCampaignsRequest, Field(description="The ids of the campaigns to delete.")],
+        delete_campaigns_request: Annotated[DeleteCampaignsRequest, Field(description="IDs of the campaigns to delete.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1528,11 +1528,11 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> object:
-        """(Deprecated) Deletes Campaigns
+        """(Deprecated) Delete Campaigns
 
-        Deletes campaigns whose Ids are specified in the provided list of campaign Ids. Authorized callers must be an ORG_ADMIN or a CERT_ADMIN.
+        Use this API to delete certification campaigns whose IDs are specified in the provided list of campaign IDs. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/delete-campaigns). Authorized callers must be ORG_ADMINs or CERT_ADMINs.
 
-        :param delete_campaigns_request: The ids of the campaigns to delete. (required)
+        :param delete_campaigns_request: IDs of the campaigns to delete. (required)
         :type delete_campaigns_request: DeleteCampaignsRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1588,7 +1588,7 @@ class CertificationCampaignsApi:
     @validate_call
     def delete_campaigns_with_http_info(
         self,
-        delete_campaigns_request: Annotated[DeleteCampaignsRequest, Field(description="The ids of the campaigns to delete.")],
+        delete_campaigns_request: Annotated[DeleteCampaignsRequest, Field(description="IDs of the campaigns to delete.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1602,11 +1602,11 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[object]:
-        """(Deprecated) Deletes Campaigns
+        """(Deprecated) Delete Campaigns
 
-        Deletes campaigns whose Ids are specified in the provided list of campaign Ids. Authorized callers must be an ORG_ADMIN or a CERT_ADMIN.
+        Use this API to delete certification campaigns whose IDs are specified in the provided list of campaign IDs. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/delete-campaigns). Authorized callers must be ORG_ADMINs or CERT_ADMINs.
 
-        :param delete_campaigns_request: The ids of the campaigns to delete. (required)
+        :param delete_campaigns_request: IDs of the campaigns to delete. (required)
         :type delete_campaigns_request: DeleteCampaignsRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1662,7 +1662,7 @@ class CertificationCampaignsApi:
     @validate_call
     def delete_campaigns_without_preload_content(
         self,
-        delete_campaigns_request: Annotated[DeleteCampaignsRequest, Field(description="The ids of the campaigns to delete.")],
+        delete_campaigns_request: Annotated[DeleteCampaignsRequest, Field(description="IDs of the campaigns to delete.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1676,11 +1676,11 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Deletes Campaigns
+        """(Deprecated) Delete Campaigns
 
-        Deletes campaigns whose Ids are specified in the provided list of campaign Ids. Authorized callers must be an ORG_ADMIN or a CERT_ADMIN.
+        Use this API to delete certification campaigns whose IDs are specified in the provided list of campaign IDs. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/delete-campaigns). Authorized callers must be ORG_ADMINs or CERT_ADMINs.
 
-        :param delete_campaigns_request: The ids of the campaigns to delete. (required)
+        :param delete_campaigns_request: IDs of the campaigns to delete. (required)
         :type delete_campaigns_request: DeleteCampaignsRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1828,7 +1828,7 @@ class CertificationCampaignsApi:
     ) -> List[GetActiveCampaigns200ResponseInner]:
         """(Deprecated) List Campaigns
 
-        Gets campaigns and returns them in a list. Can provide increased level of detail for each campaign if provided the correct query.
+        Use this API to get a list of campaigns. The API can provide increased level of detail for each campaign for the correct provided query. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-active-campaigns). - UserContextAuth: []
 
         :param detail: Determines whether slim, or increased level of detail is provided for each campaign in the returned list. Slim is the default behavior.
         :type detail: str
@@ -1921,7 +1921,7 @@ class CertificationCampaignsApi:
     ) -> ApiResponse[List[GetActiveCampaigns200ResponseInner]]:
         """(Deprecated) List Campaigns
 
-        Gets campaigns and returns them in a list. Can provide increased level of detail for each campaign if provided the correct query.
+        Use this API to get a list of campaigns. The API can provide increased level of detail for each campaign for the correct provided query. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-active-campaigns). - UserContextAuth: []
 
         :param detail: Determines whether slim, or increased level of detail is provided for each campaign in the returned list. Slim is the default behavior.
         :type detail: str
@@ -2014,7 +2014,7 @@ class CertificationCampaignsApi:
     ) -> RESTResponseType:
         """(Deprecated) List Campaigns
 
-        Gets campaigns and returns them in a list. Can provide increased level of detail for each campaign if provided the correct query.
+        Use this API to get a list of campaigns. The API can provide increased level of detail for each campaign for the correct provided query. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-active-campaigns). - UserContextAuth: []
 
         :param detail: Determines whether slim, or increased level of detail is provided for each campaign in the returned list. Slim is the default behavior.
         :type detail: str
@@ -2171,7 +2171,7 @@ class CertificationCampaignsApi:
     @validate_call
     def get_campaign(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign to be retrieved")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign to be retrieved.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2185,11 +2185,11 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Slimcampaign:
-        """(Deprecated) Get a campaign
+        """(Deprecated) Get Campaign
 
-        Retrieves information for an existing campaign using the campaign's ID. Authorized callers must be a reviewer for this campaign, an ORG_ADMIN, or a CERT_ADMIN.
+        Use this API to get information for an existing certification campaign by the campaign's ID. Though this endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign). Authorized callers must be reviewers for this campaign, ORG_ADMINs, or a CERT_ADMINs.
 
-        :param id: The ID of the campaign to be retrieved (required)
+        :param id: ID of the campaign to be retrieved. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2245,7 +2245,7 @@ class CertificationCampaignsApi:
     @validate_call
     def get_campaign_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign to be retrieved")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign to be retrieved.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2259,11 +2259,11 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Slimcampaign]:
-        """(Deprecated) Get a campaign
+        """(Deprecated) Get Campaign
 
-        Retrieves information for an existing campaign using the campaign's ID. Authorized callers must be a reviewer for this campaign, an ORG_ADMIN, or a CERT_ADMIN.
+        Use this API to get information for an existing certification campaign by the campaign's ID. Though this endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign). Authorized callers must be reviewers for this campaign, ORG_ADMINs, or a CERT_ADMINs.
 
-        :param id: The ID of the campaign to be retrieved (required)
+        :param id: ID of the campaign to be retrieved. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2319,7 +2319,7 @@ class CertificationCampaignsApi:
     @validate_call
     def get_campaign_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign to be retrieved")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign to be retrieved.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2333,11 +2333,11 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Get a campaign
+        """(Deprecated) Get Campaign
 
-        Retrieves information for an existing campaign using the campaign's ID. Authorized callers must be a reviewer for this campaign, an ORG_ADMIN, or a CERT_ADMIN.
+        Use this API to get information for an existing certification campaign by the campaign's ID. Though this endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign). Authorized callers must be reviewers for this campaign, ORG_ADMINs, or a CERT_ADMINs.
 
-        :param id: The ID of the campaign to be retrieved (required)
+        :param id: ID of the campaign to be retrieved. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2451,7 +2451,7 @@ class CertificationCampaignsApi:
     @validate_call
     def get_campaign_reports(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign for which reports are being fetched.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign whose reports are being fetched.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2467,9 +2467,9 @@ class CertificationCampaignsApi:
     ) -> List[CampaignReport]:
         """(Deprecated) Get Campaign Reports
 
-        Fetches all reports for a certification campaign by campaign ID. Requires roles of CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN
+        Use this API to fetch all reports for a certification campaign by campaign ID. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-reports). Calling this endpoint requires roles of CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.
 
-        :param id: The ID of the campaign for which reports are being fetched. (required)
+        :param id: ID of the campaign whose reports are being fetched. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2525,7 +2525,7 @@ class CertificationCampaignsApi:
     @validate_call
     def get_campaign_reports_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign for which reports are being fetched.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign whose reports are being fetched.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2541,9 +2541,9 @@ class CertificationCampaignsApi:
     ) -> ApiResponse[List[CampaignReport]]:
         """(Deprecated) Get Campaign Reports
 
-        Fetches all reports for a certification campaign by campaign ID. Requires roles of CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN
+        Use this API to fetch all reports for a certification campaign by campaign ID. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-reports). Calling this endpoint requires roles of CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.
 
-        :param id: The ID of the campaign for which reports are being fetched. (required)
+        :param id: ID of the campaign whose reports are being fetched. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2599,7 +2599,7 @@ class CertificationCampaignsApi:
     @validate_call
     def get_campaign_reports_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign for which reports are being fetched.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign whose reports are being fetched.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2615,9 +2615,9 @@ class CertificationCampaignsApi:
     ) -> RESTResponseType:
         """(Deprecated) Get Campaign Reports
 
-        Fetches all reports for a certification campaign by campaign ID. Requires roles of CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN
+        Use this API to fetch all reports for a certification campaign by campaign ID. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-reports). Calling this endpoint requires roles of CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.
 
-        :param id: The ID of the campaign for which reports are being fetched. (required)
+        :param id: ID of the campaign whose reports are being fetched. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2746,7 +2746,7 @@ class CertificationCampaignsApi:
     ) -> CampaignReportsConfig:
         """(Deprecated) Get Campaign Reports Configuration
 
-        Fetches configuration for campaign reports. Currently it includes only one element - identity attributes defined as custom report columns. Requires roles of CERT_ADMIN and ORG_ADMIN.
+        Use this API to fetch the configuration for certification campaign reports. The configuration includes only one element - identity attributes defined as custom report columns. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-reports-config). Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2815,7 +2815,7 @@ class CertificationCampaignsApi:
     ) -> ApiResponse[CampaignReportsConfig]:
         """(Deprecated) Get Campaign Reports Configuration
 
-        Fetches configuration for campaign reports. Currently it includes only one element - identity attributes defined as custom report columns. Requires roles of CERT_ADMIN and ORG_ADMIN.
+        Use this API to fetch the configuration for certification campaign reports. The configuration includes only one element - identity attributes defined as custom report columns. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-reports-config). Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2884,7 +2884,7 @@ class CertificationCampaignsApi:
     ) -> RESTResponseType:
         """(Deprecated) Get Campaign Reports Configuration
 
-        Fetches configuration for campaign reports. Currently it includes only one element - identity attributes defined as custom report columns. Requires roles of CERT_ADMIN and ORG_ADMIN.
+        Use this API to fetch the configuration for certification campaign reports. The configuration includes only one element - identity attributes defined as custom report columns. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-reports-config). Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2993,7 +2993,7 @@ class CertificationCampaignsApi:
     @validate_call
     def get_campaign_template(
         self,
-        id: Annotated[StrictStr, Field(description="The desired campaign template's ID.")],
+        id: Annotated[StrictStr, Field(description="Requested campaign template's ID.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3009,9 +3009,9 @@ class CertificationCampaignsApi:
     ) -> CampaignTemplate:
         """(Deprecated) Get a Campaign Template
 
-        Fetches a campaign template by ID.
+        Use this API to fetch a certification campaign template by ID. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-template).
 
-        :param id: The desired campaign template's ID. (required)
+        :param id: Requested campaign template's ID. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3067,7 +3067,7 @@ class CertificationCampaignsApi:
     @validate_call
     def get_campaign_template_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The desired campaign template's ID.")],
+        id: Annotated[StrictStr, Field(description="Requested campaign template's ID.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3083,9 +3083,9 @@ class CertificationCampaignsApi:
     ) -> ApiResponse[CampaignTemplate]:
         """(Deprecated) Get a Campaign Template
 
-        Fetches a campaign template by ID.
+        Use this API to fetch a certification campaign template by ID. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-template).
 
-        :param id: The desired campaign template's ID. (required)
+        :param id: Requested campaign template's ID. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3141,7 +3141,7 @@ class CertificationCampaignsApi:
     @validate_call
     def get_campaign_template_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The desired campaign template's ID.")],
+        id: Annotated[StrictStr, Field(description="Requested campaign template's ID.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3157,9 +3157,9 @@ class CertificationCampaignsApi:
     ) -> RESTResponseType:
         """(Deprecated) Get a Campaign Template
 
-        Fetches a campaign template by ID.
+        Use this API to fetch a certification campaign template by ID. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-template).
 
-        :param id: The desired campaign template's ID. (required)
+        :param id: Requested campaign template's ID. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3273,7 +3273,7 @@ class CertificationCampaignsApi:
     @validate_call
     def get_campaign_template_schedule(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template whose schedule is being fetched.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template whose schedule is being fetched.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3287,11 +3287,11 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Schedule:
-        """(Deprecated) Gets a Campaign Template's Schedule
+        """(Deprecated) Get Campaign Template Schedule
 
-        Gets the schedule for a campaign template. Returns a 404 if there is no schedule set.
+        Use this API to get the schedule for a certification campaign template. The API returns a 404 if there is no schedule set. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-template-schedule).
 
-        :param id: The ID of the campaign template whose schedule is being fetched. (required)
+        :param id: ID of the campaign template whose schedule is being fetched. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3347,7 +3347,7 @@ class CertificationCampaignsApi:
     @validate_call
     def get_campaign_template_schedule_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template whose schedule is being fetched.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template whose schedule is being fetched.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3361,11 +3361,11 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Schedule]:
-        """(Deprecated) Gets a Campaign Template's Schedule
+        """(Deprecated) Get Campaign Template Schedule
 
-        Gets the schedule for a campaign template. Returns a 404 if there is no schedule set.
+        Use this API to get the schedule for a certification campaign template. The API returns a 404 if there is no schedule set. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-template-schedule).
 
-        :param id: The ID of the campaign template whose schedule is being fetched. (required)
+        :param id: ID of the campaign template whose schedule is being fetched. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3421,7 +3421,7 @@ class CertificationCampaignsApi:
     @validate_call
     def get_campaign_template_schedule_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template whose schedule is being fetched.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template whose schedule is being fetched.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3435,11 +3435,11 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Gets a Campaign Template's Schedule
+        """(Deprecated) Get Campaign Template Schedule
 
-        Gets the schedule for a campaign template. Returns a 404 if there is no schedule set.
+        Use this API to get the schedule for a certification campaign template. The API returns a 404 if there is no schedule set. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-template-schedule).
 
-        :param id: The ID of the campaign template whose schedule is being fetched. (required)
+        :param id: ID of the campaign template whose schedule is being fetched. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3551,7 +3551,7 @@ class CertificationCampaignsApi:
 
 
     @validate_call
-    def list_campaign_templates(
+    def get_campaign_templates(
         self,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
@@ -3573,7 +3573,7 @@ class CertificationCampaignsApi:
     ) -> List[CampaignTemplate]:
         """(Deprecated) List Campaign Templates
 
-        Lists all CampaignTemplates. Scope can be reduced via standard V3 query params.  All CampaignTemplates matching the query params
+        Use this API to get a list of all campaign templates. Scope can be reduced through standard V3 query params. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/list-campaign-templates). The endpoint returns all campaign templates matching the query parameters. 
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -3608,7 +3608,7 @@ class CertificationCampaignsApi:
         """ # noqa: E501
         warnings.warn("GET /campaign-templates is deprecated.", DeprecationWarning)
 
-        _param = self._list_campaign_templates_serialize(
+        _param = self._get_campaign_templates_serialize(
             limit=limit,
             offset=offset,
             count=count,
@@ -3640,7 +3640,7 @@ class CertificationCampaignsApi:
 
 
     @validate_call
-    def list_campaign_templates_with_http_info(
+    def get_campaign_templates_with_http_info(
         self,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
@@ -3662,7 +3662,7 @@ class CertificationCampaignsApi:
     ) -> ApiResponse[List[CampaignTemplate]]:
         """(Deprecated) List Campaign Templates
 
-        Lists all CampaignTemplates. Scope can be reduced via standard V3 query params.  All CampaignTemplates matching the query params
+        Use this API to get a list of all campaign templates. Scope can be reduced through standard V3 query params. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/list-campaign-templates). The endpoint returns all campaign templates matching the query parameters. 
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -3697,7 +3697,7 @@ class CertificationCampaignsApi:
         """ # noqa: E501
         warnings.warn("GET /campaign-templates is deprecated.", DeprecationWarning)
 
-        _param = self._list_campaign_templates_serialize(
+        _param = self._get_campaign_templates_serialize(
             limit=limit,
             offset=offset,
             count=count,
@@ -3729,7 +3729,7 @@ class CertificationCampaignsApi:
 
 
     @validate_call
-    def list_campaign_templates_without_preload_content(
+    def get_campaign_templates_without_preload_content(
         self,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
@@ -3751,7 +3751,7 @@ class CertificationCampaignsApi:
     ) -> RESTResponseType:
         """(Deprecated) List Campaign Templates
 
-        Lists all CampaignTemplates. Scope can be reduced via standard V3 query params.  All CampaignTemplates matching the query params
+        Use this API to get a list of all campaign templates. Scope can be reduced through standard V3 query params. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/list-campaign-templates). The endpoint returns all campaign templates matching the query parameters. 
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -3786,7 +3786,7 @@ class CertificationCampaignsApi:
         """ # noqa: E501
         warnings.warn("GET /campaign-templates is deprecated.", DeprecationWarning)
 
-        _param = self._list_campaign_templates_serialize(
+        _param = self._get_campaign_templates_serialize(
             limit=limit,
             offset=offset,
             count=count,
@@ -3813,7 +3813,7 @@ class CertificationCampaignsApi:
         return response_data.response
 
 
-    def _list_campaign_templates_serialize(
+    def _get_campaign_templates_serialize(
         self,
         limit,
         offset,
@@ -4208,7 +4208,7 @@ class CertificationCampaignsApi:
     @validate_call
     def patch_campaign_template(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template being modified.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template being modified.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create) ")],
         _request_timeout: Union[
             None,
@@ -4225,9 +4225,9 @@ class CertificationCampaignsApi:
     ) -> CampaignTemplate:
         """(Deprecated) Update a Campaign Template
 
-        Allows updating individual fields on a campaign template using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+        Use this API to update individual fields on a certification campaign template, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/patch-campaign-template).
 
-        :param id: The ID of the campaign template being modified. (required)
+        :param id: ID of the campaign template being modified. (required)
         :type id: str
         :param json_patch_operation: A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create)  (required)
         :type json_patch_operation: List[JsonPatchOperation]
@@ -4286,7 +4286,7 @@ class CertificationCampaignsApi:
     @validate_call
     def patch_campaign_template_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template being modified.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template being modified.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create) ")],
         _request_timeout: Union[
             None,
@@ -4303,9 +4303,9 @@ class CertificationCampaignsApi:
     ) -> ApiResponse[CampaignTemplate]:
         """(Deprecated) Update a Campaign Template
 
-        Allows updating individual fields on a campaign template using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+        Use this API to update individual fields on a certification campaign template, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/patch-campaign-template).
 
-        :param id: The ID of the campaign template being modified. (required)
+        :param id: ID of the campaign template being modified. (required)
         :type id: str
         :param json_patch_operation: A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create)  (required)
         :type json_patch_operation: List[JsonPatchOperation]
@@ -4364,7 +4364,7 @@ class CertificationCampaignsApi:
     @validate_call
     def patch_campaign_template_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template being modified.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template being modified.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create) ")],
         _request_timeout: Union[
             None,
@@ -4381,9 +4381,9 @@ class CertificationCampaignsApi:
     ) -> RESTResponseType:
         """(Deprecated) Update a Campaign Template
 
-        Allows updating individual fields on a campaign template using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+        Use this API to update individual fields on a certification campaign template, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/patch-campaign-template).
 
-        :param id: The ID of the campaign template being modified. (required)
+        :param id: ID of the campaign template being modified. (required)
         :type id: str
         :param json_patch_operation: A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create)  (required)
         :type json_patch_operation: List[JsonPatchOperation]
@@ -4517,7 +4517,7 @@ class CertificationCampaignsApi:
     @validate_call
     def set_campaign_reports_config(
         self,
-        campaign_reports_config: Annotated[CampaignReportsConfig, Field(description="Campaign Report Configuration")],
+        campaign_reports_config: Annotated[CampaignReportsConfig, Field(description="Campaign report configuration.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4533,9 +4533,9 @@ class CertificationCampaignsApi:
     ) -> CampaignReportsConfig:
         """(Deprecated) Set Campaign Reports Configuration
 
-        Overwrites configuration for campaign reports. Requires roles CERT_ADMIN and ORG_ADMIN.
+        Use this API to overwrite the configuration for campaign reports. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/set-campaign-reports-config). Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
 
-        :param campaign_reports_config: Campaign Report Configuration (required)
+        :param campaign_reports_config: Campaign report configuration. (required)
         :type campaign_reports_config: CampaignReportsConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4590,7 +4590,7 @@ class CertificationCampaignsApi:
     @validate_call
     def set_campaign_reports_config_with_http_info(
         self,
-        campaign_reports_config: Annotated[CampaignReportsConfig, Field(description="Campaign Report Configuration")],
+        campaign_reports_config: Annotated[CampaignReportsConfig, Field(description="Campaign report configuration.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4606,9 +4606,9 @@ class CertificationCampaignsApi:
     ) -> ApiResponse[CampaignReportsConfig]:
         """(Deprecated) Set Campaign Reports Configuration
 
-        Overwrites configuration for campaign reports. Requires roles CERT_ADMIN and ORG_ADMIN.
+        Use this API to overwrite the configuration for campaign reports. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/set-campaign-reports-config). Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
 
-        :param campaign_reports_config: Campaign Report Configuration (required)
+        :param campaign_reports_config: Campaign report configuration. (required)
         :type campaign_reports_config: CampaignReportsConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4663,7 +4663,7 @@ class CertificationCampaignsApi:
     @validate_call
     def set_campaign_reports_config_without_preload_content(
         self,
-        campaign_reports_config: Annotated[CampaignReportsConfig, Field(description="Campaign Report Configuration")],
+        campaign_reports_config: Annotated[CampaignReportsConfig, Field(description="Campaign report configuration.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4679,9 +4679,9 @@ class CertificationCampaignsApi:
     ) -> RESTResponseType:
         """(Deprecated) Set Campaign Reports Configuration
 
-        Overwrites configuration for campaign reports. Requires roles CERT_ADMIN and ORG_ADMIN.
+        Use this API to overwrite the configuration for campaign reports. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/set-campaign-reports-config). Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
 
-        :param campaign_reports_config: Campaign Report Configuration (required)
+        :param campaign_reports_config: Campaign report configuration. (required)
         :type campaign_reports_config: CampaignReportsConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4807,7 +4807,7 @@ class CertificationCampaignsApi:
     @validate_call
     def set_campaign_template_schedule(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template being scheduled.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template being scheduled.")],
         schedule: Optional[Schedule] = None,
         _request_timeout: Union[
             None,
@@ -4822,11 +4822,11 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """(Deprecated) Sets a Campaign Template's Schedule
+        """(Deprecated) Set Campaign Template Schedule
 
-        Sets the schedule for a campaign template. If a schedule already exists, it will be overwritten with the new one.
+        Use this API to set the schedule for a certification campaign template. If a schedule already exists, the API overwrites it with the new one.  Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/set-campaign-template-schedule).
 
-        :param id: The ID of the campaign template being scheduled. (required)
+        :param id: ID of the campaign template being scheduled. (required)
         :type id: str
         :param schedule:
         :type schedule: Schedule
@@ -4885,7 +4885,7 @@ class CertificationCampaignsApi:
     @validate_call
     def set_campaign_template_schedule_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template being scheduled.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template being scheduled.")],
         schedule: Optional[Schedule] = None,
         _request_timeout: Union[
             None,
@@ -4900,11 +4900,11 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """(Deprecated) Sets a Campaign Template's Schedule
+        """(Deprecated) Set Campaign Template Schedule
 
-        Sets the schedule for a campaign template. If a schedule already exists, it will be overwritten with the new one.
+        Use this API to set the schedule for a certification campaign template. If a schedule already exists, the API overwrites it with the new one.  Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/set-campaign-template-schedule).
 
-        :param id: The ID of the campaign template being scheduled. (required)
+        :param id: ID of the campaign template being scheduled. (required)
         :type id: str
         :param schedule:
         :type schedule: Schedule
@@ -4963,7 +4963,7 @@ class CertificationCampaignsApi:
     @validate_call
     def set_campaign_template_schedule_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template being scheduled.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template being scheduled.")],
         schedule: Optional[Schedule] = None,
         _request_timeout: Union[
             None,
@@ -4978,11 +4978,11 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Sets a Campaign Template's Schedule
+        """(Deprecated) Set Campaign Template Schedule
 
-        Sets the schedule for a campaign template. If a schedule already exists, it will be overwritten with the new one.
+        Use this API to set the schedule for a certification campaign template. If a schedule already exists, the API overwrites it with the new one.  Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/set-campaign-template-schedule).
 
-        :param id: The ID of the campaign template being scheduled. (required)
+        :param id: ID of the campaign template being scheduled. (required)
         :type id: str
         :param schedule:
         :type schedule: Schedule
@@ -5115,7 +5115,7 @@ class CertificationCampaignsApi:
     @validate_call
     def start_campaign(
         self,
-        id: Annotated[StrictStr, Field(description="The campaign id")],
+        id: Annotated[StrictStr, Field(description="Campaign ID.")],
         activate_campaign_options: Annotated[Optional[ActivateCampaignOptions], Field(description="Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format.")] = None,
         _request_timeout: Union[
             None,
@@ -5132,9 +5132,9 @@ class CertificationCampaignsApi:
     ) -> object:
         """(Deprecated) Activate a Campaign
 
-        Submits a job to activate the campaign with the given Id. The campaign must be staged. Requires roles of CERT_ADMIN and ORG_ADMIN
+        Use this API to submit a job to activate the certified campaign with the specified ID. The campaign must be staged. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-campaign). Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
 
-        :param id: The campaign id (required)
+        :param id: Campaign ID. (required)
         :type id: str
         :param activate_campaign_options: Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format.
         :type activate_campaign_options: ActivateCampaignOptions
@@ -5193,7 +5193,7 @@ class CertificationCampaignsApi:
     @validate_call
     def start_campaign_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The campaign id")],
+        id: Annotated[StrictStr, Field(description="Campaign ID.")],
         activate_campaign_options: Annotated[Optional[ActivateCampaignOptions], Field(description="Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format.")] = None,
         _request_timeout: Union[
             None,
@@ -5210,9 +5210,9 @@ class CertificationCampaignsApi:
     ) -> ApiResponse[object]:
         """(Deprecated) Activate a Campaign
 
-        Submits a job to activate the campaign with the given Id. The campaign must be staged. Requires roles of CERT_ADMIN and ORG_ADMIN
+        Use this API to submit a job to activate the certified campaign with the specified ID. The campaign must be staged. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-campaign). Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
 
-        :param id: The campaign id (required)
+        :param id: Campaign ID. (required)
         :type id: str
         :param activate_campaign_options: Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format.
         :type activate_campaign_options: ActivateCampaignOptions
@@ -5271,7 +5271,7 @@ class CertificationCampaignsApi:
     @validate_call
     def start_campaign_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The campaign id")],
+        id: Annotated[StrictStr, Field(description="Campaign ID.")],
         activate_campaign_options: Annotated[Optional[ActivateCampaignOptions], Field(description="Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format.")] = None,
         _request_timeout: Union[
             None,
@@ -5288,9 +5288,9 @@ class CertificationCampaignsApi:
     ) -> RESTResponseType:
         """(Deprecated) Activate a Campaign
 
-        Submits a job to activate the campaign with the given Id. The campaign must be staged. Requires roles of CERT_ADMIN and ORG_ADMIN
+        Use this API to submit a job to activate the certified campaign with the specified ID. The campaign must be staged. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-campaign). Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
 
-        :param id: The campaign id (required)
+        :param id: Campaign ID. (required)
         :type id: str
         :param activate_campaign_options: Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format.
         :type activate_campaign_options: ActivateCampaignOptions
@@ -5423,7 +5423,7 @@ class CertificationCampaignsApi:
     @validate_call
     def start_campaign_remediation_scan(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign for which remediation scan is being run.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign the remediation scan is being run for.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5439,9 +5439,9 @@ class CertificationCampaignsApi:
     ) -> object:
         """(Deprecated) Run Campaign Remediation Scan
 
-        Kicks off remediation scan task for a certification campaign. Requires roles of CERT_ADMIN and ORG_ADMIN
+        Use this API to run a remediation scan task for a certification campaign. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-campaign-remediation-scan). Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
 
-        :param id: The ID of the campaign for which remediation scan is being run. (required)
+        :param id: ID of the campaign the remediation scan is being run for. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5497,7 +5497,7 @@ class CertificationCampaignsApi:
     @validate_call
     def start_campaign_remediation_scan_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign for which remediation scan is being run.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign the remediation scan is being run for.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5513,9 +5513,9 @@ class CertificationCampaignsApi:
     ) -> ApiResponse[object]:
         """(Deprecated) Run Campaign Remediation Scan
 
-        Kicks off remediation scan task for a certification campaign. Requires roles of CERT_ADMIN and ORG_ADMIN
+        Use this API to run a remediation scan task for a certification campaign. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-campaign-remediation-scan). Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
 
-        :param id: The ID of the campaign for which remediation scan is being run. (required)
+        :param id: ID of the campaign the remediation scan is being run for. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5571,7 +5571,7 @@ class CertificationCampaignsApi:
     @validate_call
     def start_campaign_remediation_scan_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign for which remediation scan is being run.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign the remediation scan is being run for.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5587,9 +5587,9 @@ class CertificationCampaignsApi:
     ) -> RESTResponseType:
         """(Deprecated) Run Campaign Remediation Scan
 
-        Kicks off remediation scan task for a certification campaign. Requires roles of CERT_ADMIN and ORG_ADMIN
+        Use this API to run a remediation scan task for a certification campaign. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-campaign-remediation-scan). Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
 
-        :param id: The ID of the campaign for which remediation scan is being run. (required)
+        :param id: ID of the campaign the remediation scan is being run for. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5703,8 +5703,8 @@ class CertificationCampaignsApi:
     @validate_call
     def start_campaign_report(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign for which report is being run.")],
-        type: Annotated[ReportType, Field(description="The type of the report to run.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign the report is being run for.")],
+        type: Annotated[ReportType, Field(description="Type of report to run.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5720,11 +5720,11 @@ class CertificationCampaignsApi:
     ) -> object:
         """(Deprecated) Run Campaign Report
 
-        Runs a report for a certification campaign. Requires the following roles: CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.
+        Use this API to run a report for a certification campaign. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-campaign-report). Calling this endpoint requires the following roles: CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.
 
-        :param id: The ID of the campaign for which report is being run. (required)
+        :param id: ID of the campaign the report is being run for. (required)
         :type id: str
-        :param type: The type of the report to run. (required)
+        :param type: Type of report to run. (required)
         :type type: ReportType
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5781,8 +5781,8 @@ class CertificationCampaignsApi:
     @validate_call
     def start_campaign_report_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign for which report is being run.")],
-        type: Annotated[ReportType, Field(description="The type of the report to run.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign the report is being run for.")],
+        type: Annotated[ReportType, Field(description="Type of report to run.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5798,11 +5798,11 @@ class CertificationCampaignsApi:
     ) -> ApiResponse[object]:
         """(Deprecated) Run Campaign Report
 
-        Runs a report for a certification campaign. Requires the following roles: CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.
+        Use this API to run a report for a certification campaign. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-campaign-report). Calling this endpoint requires the following roles: CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.
 
-        :param id: The ID of the campaign for which report is being run. (required)
+        :param id: ID of the campaign the report is being run for. (required)
         :type id: str
-        :param type: The type of the report to run. (required)
+        :param type: Type of report to run. (required)
         :type type: ReportType
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5859,8 +5859,8 @@ class CertificationCampaignsApi:
     @validate_call
     def start_campaign_report_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign for which report is being run.")],
-        type: Annotated[ReportType, Field(description="The type of the report to run.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign the report is being run for.")],
+        type: Annotated[ReportType, Field(description="Type of report to run.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5876,11 +5876,11 @@ class CertificationCampaignsApi:
     ) -> RESTResponseType:
         """(Deprecated) Run Campaign Report
 
-        Runs a report for a certification campaign. Requires the following roles: CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.
+        Use this API to run a report for a certification campaign. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-campaign-report). Calling this endpoint requires the following roles: CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.
 
-        :param id: The ID of the campaign for which report is being run. (required)
+        :param id: ID of the campaign the report is being run for. (required)
         :type id: str
-        :param type: The type of the report to run. (required)
+        :param type: Type of report to run. (required)
         :type type: ReportType
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5998,7 +5998,7 @@ class CertificationCampaignsApi:
     @validate_call
     def start_generate_campaign_template(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template to use for generation.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template to use for generation.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6014,9 +6014,9 @@ class CertificationCampaignsApi:
     ) -> CampaignReference:
         """(Deprecated) Generate a Campaign from Template
 
-        Generates a new campaign from a campaign template. The campaign object contained in the template has special formatting applied to its name and description fields in order to determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation. Placeholders consist of a percent sign followed by a letter indicating what should be inserted; for example, \"%Y\" will insert the current year; a campaign template named \"Campaign for %y\" would generate a campaign called \"Campaign for 2020\" (assuming the year at generation time is 2020). Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html). Requires roles ORG_ADMIN.
+        Use this API to generate a new certification campaign from a campaign template. The campaign object contained in the template has special formatting applied to its name and description fields that determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation. Placeholders consist of a percent sign followed by a letter indicating what should be inserted. For example, \"%Y\" inserts the current year, and a campaign template named \"Campaign for %y\" generates a campaign called \"Campaign for 2020\" (assuming the year at generation time is 2020). Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html). Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-generate-campaign-template). Calling this endpoint requires the ORG_ADMIN role.
 
-        :param id: The ID of the campaign template to use for generation. (required)
+        :param id: ID of the campaign template to use for generation. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -6071,7 +6071,7 @@ class CertificationCampaignsApi:
     @validate_call
     def start_generate_campaign_template_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template to use for generation.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template to use for generation.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6087,9 +6087,9 @@ class CertificationCampaignsApi:
     ) -> ApiResponse[CampaignReference]:
         """(Deprecated) Generate a Campaign from Template
 
-        Generates a new campaign from a campaign template. The campaign object contained in the template has special formatting applied to its name and description fields in order to determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation. Placeholders consist of a percent sign followed by a letter indicating what should be inserted; for example, \"%Y\" will insert the current year; a campaign template named \"Campaign for %y\" would generate a campaign called \"Campaign for 2020\" (assuming the year at generation time is 2020). Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html). Requires roles ORG_ADMIN.
+        Use this API to generate a new certification campaign from a campaign template. The campaign object contained in the template has special formatting applied to its name and description fields that determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation. Placeholders consist of a percent sign followed by a letter indicating what should be inserted. For example, \"%Y\" inserts the current year, and a campaign template named \"Campaign for %y\" generates a campaign called \"Campaign for 2020\" (assuming the year at generation time is 2020). Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html). Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-generate-campaign-template). Calling this endpoint requires the ORG_ADMIN role.
 
-        :param id: The ID of the campaign template to use for generation. (required)
+        :param id: ID of the campaign template to use for generation. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -6144,7 +6144,7 @@ class CertificationCampaignsApi:
     @validate_call
     def start_generate_campaign_template_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template to use for generation.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template to use for generation.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6160,9 +6160,9 @@ class CertificationCampaignsApi:
     ) -> RESTResponseType:
         """(Deprecated) Generate a Campaign from Template
 
-        Generates a new campaign from a campaign template. The campaign object contained in the template has special formatting applied to its name and description fields in order to determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation. Placeholders consist of a percent sign followed by a letter indicating what should be inserted; for example, \"%Y\" will insert the current year; a campaign template named \"Campaign for %y\" would generate a campaign called \"Campaign for 2020\" (assuming the year at generation time is 2020). Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html). Requires roles ORG_ADMIN.
+        Use this API to generate a new certification campaign from a campaign template. The campaign object contained in the template has special formatting applied to its name and description fields that determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation. Placeholders consist of a percent sign followed by a letter indicating what should be inserted. For example, \"%Y\" inserts the current year, and a campaign template named \"Campaign for %y\" generates a campaign called \"Campaign for 2020\" (assuming the year at generation time is 2020). Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html). Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-generate-campaign-template). Calling this endpoint requires the ORG_ADMIN role.
 
-        :param id: The ID of the campaign template to use for generation. (required)
+        :param id: ID of the campaign template to use for generation. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -6275,8 +6275,8 @@ class CertificationCampaignsApi:
     @validate_call
     def update_campaign(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template being modified.")],
-        request_body: Annotated[List[Dict[str, Any]], Field(description="A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  In the *STAGED* status, the following fields can be patched: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  In the *ACTIVE* status, the following fields can be patched: * deadline ")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template being modified.")],
+        request_body: Annotated[List[Dict[str, Any]], Field(description="A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6292,11 +6292,11 @@ class CertificationCampaignsApi:
     ) -> Slimcampaign:
         """(Deprecated) Update a Campaign
 
-        Allows updating individual fields on a campaign using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+        Use this API to update individual fields on a certification campaign, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Though this endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/beta/update-campaign).
 
-        :param id: The ID of the campaign template being modified. (required)
+        :param id: ID of the campaign template being modified. (required)
         :type id: str
-        :param request_body: A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  In the *STAGED* status, the following fields can be patched: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  In the *ACTIVE* status, the following fields can be patched: * deadline  (required)
+        :param request_body: A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline  (required)
         :type request_body: List[object]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -6353,8 +6353,8 @@ class CertificationCampaignsApi:
     @validate_call
     def update_campaign_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template being modified.")],
-        request_body: Annotated[List[Dict[str, Any]], Field(description="A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  In the *STAGED* status, the following fields can be patched: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  In the *ACTIVE* status, the following fields can be patched: * deadline ")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template being modified.")],
+        request_body: Annotated[List[Dict[str, Any]], Field(description="A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6370,11 +6370,11 @@ class CertificationCampaignsApi:
     ) -> ApiResponse[Slimcampaign]:
         """(Deprecated) Update a Campaign
 
-        Allows updating individual fields on a campaign using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+        Use this API to update individual fields on a certification campaign, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Though this endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/beta/update-campaign).
 
-        :param id: The ID of the campaign template being modified. (required)
+        :param id: ID of the campaign template being modified. (required)
         :type id: str
-        :param request_body: A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  In the *STAGED* status, the following fields can be patched: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  In the *ACTIVE* status, the following fields can be patched: * deadline  (required)
+        :param request_body: A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline  (required)
         :type request_body: List[object]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -6431,8 +6431,8 @@ class CertificationCampaignsApi:
     @validate_call
     def update_campaign_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template being modified.")],
-        request_body: Annotated[List[Dict[str, Any]], Field(description="A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  In the *STAGED* status, the following fields can be patched: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  In the *ACTIVE* status, the following fields can be patched: * deadline ")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template being modified.")],
+        request_body: Annotated[List[Dict[str, Any]], Field(description="A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6448,11 +6448,11 @@ class CertificationCampaignsApi:
     ) -> RESTResponseType:
         """(Deprecated) Update a Campaign
 
-        Allows updating individual fields on a campaign using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+        Use this API to update individual fields on a certification campaign, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Though this endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/beta/update-campaign).
 
-        :param id: The ID of the campaign template being modified. (required)
+        :param id: ID of the campaign template being modified. (required)
         :type id: str
-        :param request_body: A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  In the *STAGED* status, the following fields can be patched: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  In the *ACTIVE* status, the following fields can be patched: * deadline  (required)
+        :param request_body: A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline  (required)
         :type request_body: List[object]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

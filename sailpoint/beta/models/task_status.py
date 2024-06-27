@@ -18,9 +18,11 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt, StrictStr, field_validator
 from pydantic import Field
+from sailpoint.beta.models.target import Target
+from sailpoint.beta.models.task_definition_summary import TaskDefinitionSummary
 from sailpoint.beta.models.task_return_details import TaskReturnDetails
 from sailpoint.beta.models.task_status_message import TaskStatusMessage
 try:
@@ -36,19 +38,21 @@ class TaskStatus(BaseModel):
     type: StrictStr = Field(description="Type of task this TaskStatus represents")
     unique_name: StrictStr = Field(description="Name of the task this TaskStatus represents", alias="uniqueName")
     description: StrictStr = Field(description="Description of the task this TaskStatus represents")
-    parent_name: StrictStr = Field(description="Name of the parent of the task this TaskStatus represents", alias="parentName")
+    parent_name: Optional[StrictStr] = Field(description="Name of the parent of the task this TaskStatus represents", alias="parentName")
     launcher: StrictStr = Field(description="Service to execute the task this TaskStatus represents")
+    target: Optional[Target] = None
     created: datetime = Field(description="Creation date of the task this TaskStatus represents")
     modified: datetime = Field(description="Last modification date of the task this TaskStatus represents")
-    launched: datetime = Field(description="Launch date of the task this TaskStatus represents")
-    completed: datetime = Field(description="Completion date of the task this TaskStatus represents")
-    completion_status: StrictStr = Field(description="Completion status of the task this TaskStatus represents", alias="completionStatus")
+    launched: Optional[datetime] = Field(description="Launch date of the task this TaskStatus represents")
+    completed: Optional[datetime] = Field(description="Completion date of the task this TaskStatus represents")
+    completion_status: Optional[StrictStr] = Field(description="Completion status of the task this TaskStatus represents", alias="completionStatus")
     messages: List[TaskStatusMessage] = Field(description="Messages associated with the task this TaskStatus represents")
     returns: List[TaskReturnDetails] = Field(description="Return values from the task this TaskStatus represents")
     attributes: Dict[str, Any] = Field(description="Attributes of the task this TaskStatus represents")
-    progress: StrictStr = Field(description="Current progress of the task this TaskStatus represents")
+    progress: Optional[StrictStr] = Field(description="Current progress of the task this TaskStatus represents")
     percent_complete: StrictInt = Field(description="Current percentage completion of the task this TaskStatus represents", alias="percentComplete")
-    __properties: ClassVar[List[str]] = ["id", "type", "uniqueName", "description", "parentName", "launcher", "created", "modified", "launched", "completed", "completionStatus", "messages", "returns", "attributes", "progress", "percentComplete"]
+    task_definition_summary: Optional[TaskDefinitionSummary] = Field(default=None, alias="taskDefinitionSummary")
+    __properties: ClassVar[List[str]] = ["id", "type", "uniqueName", "description", "parentName", "launcher", "target", "created", "modified", "launched", "completed", "completionStatus", "messages", "returns", "attributes", "progress", "percentComplete", "taskDefinitionSummary"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -60,8 +64,11 @@ class TaskStatus(BaseModel):
     @field_validator('completion_status')
     def completion_status_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('Success', 'Warning', 'Error', 'Terminated', 'TempError'):
-            raise ValueError("must be one of enum values ('Success', 'Warning', 'Error', 'Terminated', 'TempError')")
+        if value is None:
+            return value
+
+        if value not in ('SUCCESS', 'WARNING', 'ERROR', 'TERMINATED', 'TEMPERROR', 'null'):
+            raise ValueError("must be one of enum values ('SUCCESS', 'WARNING', 'ERROR', 'TERMINATED', 'TEMPERROR', 'null')")
         return value
 
     model_config = {
@@ -101,6 +108,9 @@ class TaskStatus(BaseModel):
             },
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of target
+        if self.target:
+            _dict['target'] = self.target.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in messages (list)
         _items = []
         if self.messages:
@@ -115,6 +125,39 @@ class TaskStatus(BaseModel):
                 if _item:
                     _items.append(_item.to_dict())
             _dict['returns'] = _items
+        # override the default output from pydantic by calling `to_dict()` of task_definition_summary
+        if self.task_definition_summary:
+            _dict['taskDefinitionSummary'] = self.task_definition_summary.to_dict()
+        # set to None if parent_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.parent_name is None and "parent_name" in self.model_fields_set:
+            _dict['parentName'] = None
+
+        # set to None if target (nullable) is None
+        # and model_fields_set contains the field
+        if self.target is None and "target" in self.model_fields_set:
+            _dict['target'] = None
+
+        # set to None if launched (nullable) is None
+        # and model_fields_set contains the field
+        if self.launched is None and "launched" in self.model_fields_set:
+            _dict['launched'] = None
+
+        # set to None if completed (nullable) is None
+        # and model_fields_set contains the field
+        if self.completed is None and "completed" in self.model_fields_set:
+            _dict['completed'] = None
+
+        # set to None if completion_status (nullable) is None
+        # and model_fields_set contains the field
+        if self.completion_status is None and "completion_status" in self.model_fields_set:
+            _dict['completionStatus'] = None
+
+        # set to None if progress (nullable) is None
+        # and model_fields_set contains the field
+        if self.progress is None and "progress" in self.model_fields_set:
+            _dict['progress'] = None
+
         return _dict
 
     @classmethod
@@ -133,6 +176,7 @@ class TaskStatus(BaseModel):
             "description": obj.get("description"),
             "parentName": obj.get("parentName"),
             "launcher": obj.get("launcher"),
+            "target": Target.from_dict(obj.get("target")) if obj.get("target") is not None else None,
             "created": obj.get("created"),
             "modified": obj.get("modified"),
             "launched": obj.get("launched"),
@@ -142,7 +186,8 @@ class TaskStatus(BaseModel):
             "returns": [TaskReturnDetails.from_dict(_item) for _item in obj.get("returns")] if obj.get("returns") is not None else None,
             "attributes": obj.get("attributes"),
             "progress": obj.get("progress"),
-            "percentComplete": obj.get("percentComplete")
+            "percentComplete": obj.get("percentComplete"),
+            "taskDefinitionSummary": TaskDefinitionSummary.from_dict(obj.get("taskDefinitionSummary")) if obj.get("taskDefinitionSummary") is not None else None
         })
         return _obj
 

@@ -56,7 +56,9 @@ class TestSpConfigObject(unittest.TestCase):
                 import_right = 'idn:trigger-service-subscriptions:create',
                 import_limit = 10,
                 reference_extractors = [$.owner],
-                signature_required = False
+                signature_required = False,
+                legacy_object = False,
+                one_per_tenant = False
             )
         else:
             return SpConfigObject(

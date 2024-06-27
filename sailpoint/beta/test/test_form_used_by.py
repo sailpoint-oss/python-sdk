@@ -37,7 +37,8 @@ class TestFormUsedBy(unittest.TestCase):
         if include_optional:
             return FormUsedBy(
                 type = 'WORKFLOW',
-                id = '00000000-0000-0000-0000-000000000000'
+                id = '61940a92-5484-42bc-bc10-b9982b218cdf',
+                name = 'Access Request Form'
             )
         else:
             return FormUsedBy(

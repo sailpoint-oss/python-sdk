@@ -43,7 +43,7 @@ class TestSourcesApi(unittest.TestCase):
     def test_create_source_schema(self) -> None:
         """Test case for create_source_schema
 
-        Create Schema on a Source
+        Create Schema on Source
         """
         pass
 
@@ -110,6 +110,13 @@ class TestSourcesApi(unittest.TestCase):
         """
         pass
 
+    def test_get_source_schemas(self) -> None:
+        """Test case for get_source_schemas
+
+        List Schemas on Source
+        """
+        pass
+
     def test_import_accounts_schema(self) -> None:
         """Test case for import_accounts_schema
 
@@ -135,13 +142,6 @@ class TestSourcesApi(unittest.TestCase):
         """Test case for list_provisioning_policies
 
         Lists ProvisioningPolicies
-        """
-        pass
-
-    def test_list_source_schemas(self) -> None:
-        """Test case for list_source_schemas
-
-        List Schemas on a Source
         """
         pass
 

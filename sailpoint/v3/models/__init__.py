@@ -47,6 +47,7 @@ from sailpoint.v3.models.access_type import AccessType
 from sailpoint.v3.models.account import Account
 from sailpoint.v3.models.account_action import AccountAction
 from sailpoint.v3.models.account_activity import AccountActivity
+from sailpoint.v3.models.account_activity_approval_status import AccountActivityApprovalStatus
 from sailpoint.v3.models.account_activity_document import AccountActivityDocument
 from sailpoint.v3.models.account_activity_item import AccountActivityItem
 from sailpoint.v3.models.account_activity_item_operation import AccountActivityItemOperation
@@ -377,6 +378,7 @@ from sailpoint.v3.models.requested_item_status_cancelled_request_details import 
 from sailpoint.v3.models.requested_item_status_pre_approval_trigger_details import RequestedItemStatusPreApprovalTriggerDetails
 from sailpoint.v3.models.requested_item_status_provisioning_details import RequestedItemStatusProvisioningDetails
 from sailpoint.v3.models.requested_item_status_request_state import RequestedItemStatusRequestState
+from sailpoint.v3.models.requested_item_status_requested_for import RequestedItemStatusRequestedFor
 from sailpoint.v3.models.requested_item_status_requester_comment import RequestedItemStatusRequesterComment
 from sailpoint.v3.models.requested_item_status_sod_violation_context import RequestedItemStatusSodViolationContext
 from sailpoint.v3.models.review_decision import ReviewDecision
@@ -449,6 +451,7 @@ from sailpoint.v3.models.sod_exempt_criteria import SodExemptCriteria
 from sailpoint.v3.models.sod_policy import SodPolicy
 from sailpoint.v3.models.sod_policy_conflicting_access_criteria import SodPolicyConflictingAccessCriteria
 from sailpoint.v3.models.sod_policy_dto import SodPolicyDto
+from sailpoint.v3.models.sod_policy_owner_ref import SodPolicyOwnerRef
 from sailpoint.v3.models.sod_policy_schedule import SodPolicySchedule
 from sailpoint.v3.models.sod_recipient import SodRecipient
 from sailpoint.v3.models.sod_report_result_dto import SodReportResultDto

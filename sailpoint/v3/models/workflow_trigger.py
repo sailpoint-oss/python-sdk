@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
 from pydantic import Field
 from sailpoint.v3.models.workflow_trigger_attributes import WorkflowTriggerAttributes
@@ -32,8 +32,9 @@ class WorkflowTrigger(BaseModel):
     The trigger that starts the workflow
     """ # noqa: E501
     type: StrictStr = Field(description="The trigger type")
+    display_name: Optional[StrictStr] = Field(default=None, alias="displayName")
     attributes: WorkflowTriggerAttributes
-    __properties: ClassVar[List[str]] = ["type", "attributes"]
+    __properties: ClassVar[List[str]] = ["type", "displayName", "attributes"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -82,6 +83,11 @@ class WorkflowTrigger(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of attributes
         if self.attributes:
             _dict['attributes'] = self.attributes.to_dict()
+        # set to None if display_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.display_name is None and "display_name" in self.model_fields_set:
+            _dict['displayName'] = None
+
         return _dict
 
     @classmethod
@@ -95,6 +101,7 @@ class WorkflowTrigger(BaseModel):
 
         _obj = cls.model_validate({
             "type": obj.get("type"),
+            "displayName": obj.get("displayName"),
             "attributes": WorkflowTriggerAttributes.from_dict(obj.get("attributes")) if obj.get("attributes") is not None else None
         })
         return _obj

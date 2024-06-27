@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **forward_history** | [**List[ApprovalForwardHistory]**](ApprovalForwardHistory.md) | The history of approval forward action. | [optional] 
 **comment_required_when_rejected** | **bool** | When true the rejector has to provide comments when rejecting | [optional] [default to False]
 **action_in_process** | [**PendingApprovalAction**](PendingApprovalAction.md) |  | [optional] 
-**remove_date** | **datetime** | The date the role or access profile is no longer assigned to the specified identity. | [optional] 
+**remove_date** | **datetime** | The date the role or access profile or entitlement is no longer assigned to the specified identity. | [optional] 
 **remove_date_update_requested** | **bool** | If true, then the request is to change the remove date or sunset date. | [optional] [default to False]
 **current_remove_date** | **datetime** | The remove date or sunset date that was assigned at the time of the request. | [optional] 
 **sod_violation_context** | [**SodViolationContextCheckCompleted1**](SodViolationContextCheckCompleted1.md) |  | [optional] 

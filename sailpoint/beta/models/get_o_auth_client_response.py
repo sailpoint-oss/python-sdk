@@ -50,9 +50,11 @@ class GetOAuthClientResponse(BaseModel):
     claims_supported: StrictBool = Field(description="An indicator of whether the API Client supports the serialization of SAML claims when used with the authorization_code flow", alias="claimsSupported")
     created: datetime = Field(description="The date and time, down to the millisecond, when the API Client was created")
     modified: datetime = Field(description="The date and time, down to the millisecond, when the API Client was last updated")
+    secret: Optional[StrictStr] = None
+    metadata: Optional[StrictStr] = None
     last_used: Optional[datetime] = Field(default=None, description="The date and time, down to the millisecond, when this API Client was last used to generate an access token. This timestamp does not get updated on every API Client usage, but only once a day. This property can be useful for identifying which API Clients are no longer actively used and can be removed.", alias="lastUsed")
     scope: Optional[List[StrictStr]] = Field(description="Scopes of the API Client.")
-    __properties: ClassVar[List[str]] = ["id", "businessName", "homepageUrl", "name", "description", "accessTokenValiditySeconds", "refreshTokenValiditySeconds", "redirectUris", "grantTypes", "accessType", "type", "internal", "enabled", "strongAuthSupported", "claimsSupported", "created", "modified", "lastUsed", "scope"]
+    __properties: ClassVar[List[str]] = ["id", "businessName", "homepageUrl", "name", "description", "accessTokenValiditySeconds", "refreshTokenValiditySeconds", "redirectUris", "grantTypes", "accessType", "type", "internal", "enabled", "strongAuthSupported", "claimsSupported", "created", "modified", "secret", "metadata", "lastUsed", "scope"]
 
     model_config = {
         "populate_by_name": True,
@@ -111,6 +113,16 @@ class GetOAuthClientResponse(BaseModel):
         if self.redirect_uris is None and "redirect_uris" in self.model_fields_set:
             _dict['redirectUris'] = None
 
+        # set to None if secret (nullable) is None
+        # and model_fields_set contains the field
+        if self.secret is None and "secret" in self.model_fields_set:
+            _dict['secret'] = None
+
+        # set to None if metadata (nullable) is None
+        # and model_fields_set contains the field
+        if self.metadata is None and "metadata" in self.model_fields_set:
+            _dict['metadata'] = None
+
         # set to None if last_used (nullable) is None
         # and model_fields_set contains the field
         if self.last_used is None and "last_used" in self.model_fields_set:
@@ -150,6 +162,8 @@ class GetOAuthClientResponse(BaseModel):
             "claimsSupported": obj.get("claimsSupported"),
             "created": obj.get("created"),
             "modified": obj.get("modified"),
+            "secret": obj.get("secret"),
+            "metadata": obj.get("metadata"),
             "lastUsed": obj.get("lastUsed"),
             "scope": obj.get("scope")
         })

@@ -28,11 +28,11 @@ except ImportError:
 
 class SourceManagerCorrelationRule(BaseModel):
     """
-    Reference to the ManagerCorrelationRule, only used when a simple filter isn't sufficient.
+    Reference to the ManagerCorrelationRule. Only use this rule when a simple filter isn't sufficient.
     """ # noqa: E501
-    type: Optional[StrictStr] = Field(default=None, description="The type of object being referenced")
-    id: Optional[StrictStr] = Field(default=None, description="ID of the rule")
-    name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of the rule")
+    type: Optional[StrictStr] = Field(default=None, description="Type of object being referenced.")
+    id: Optional[StrictStr] = Field(default=None, description="Rule ID.")
+    name: Optional[StrictStr] = Field(default=None, description="Rule's human-readable display name.")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')

@@ -39,7 +39,8 @@ class TestRoleInsightsInsight(unittest.TestCase):
                 type = 'ADD',
                 identities_with_access = 850,
                 identities_impacted = 150,
-                total_number_of_identities = 1000
+                total_number_of_identities = 1000,
+                impacted_identity_names = ''
             )
         else:
             return RoleInsightsInsight(

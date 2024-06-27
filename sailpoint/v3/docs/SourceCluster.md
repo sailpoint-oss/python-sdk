@@ -1,14 +1,14 @@
 # SourceCluster
 
-Reference to the associated Cluster
+Reference to the source's associated cluster.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **str** | The type of object being referenced | 
-**id** | **str** | ID of the cluster | 
-**name** | **str** | Human-readable display name of the cluster | 
+**type** | **str** | Type of object being referenced. | 
+**id** | **str** | Cluster ID. | 
+**name** | **str** | Cluster&#39;s human-readable display name. | 
 
 ## Example
 

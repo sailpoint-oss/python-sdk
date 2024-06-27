@@ -33,7 +33,7 @@ class PasswordPolicyV3Dto(BaseModel):
     id: Optional[StrictStr] = Field(default=None, description="The password policy Id.")
     description: Optional[StrictStr] = Field(default=None, description="Description for current password policy.")
     name: Optional[StrictStr] = Field(default=None, description="The name of the password policy.")
-    date_crated: Optional[datetime] = Field(default=None, description="Date the Password Policy was created.", alias="dateCrated")
+    date_created: Optional[datetime] = Field(default=None, description="Date the Password Policy was created.", alias="dateCreated")
     last_updated: Optional[datetime] = Field(default=None, description="Date the Password Policy was updated.", alias="lastUpdated")
     first_expiration_reminder: Optional[StrictInt] = Field(default=None, description="The number of days before expiration remaninder.", alias="firstExpirationReminder")
     account_id_min_word_length: Optional[StrictInt] = Field(default=None, description="The minimun length of account Id. By default is equals to -1.", alias="accountIdMinWordLength")
@@ -58,8 +58,10 @@ class PasswordPolicyV3Dto(BaseModel):
     use_identity_attributes: Optional[StrictBool] = Field(default=False, description="Defines whether this policy uses identity attributes or not. This field is false by default.", alias="useIdentityAttributes")
     validate_against_account_id: Optional[StrictBool] = Field(default=False, description="Defines whether this policy validate against account id or not. This field is false by default.", alias="validateAgainstAccountId")
     validate_against_account_name: Optional[StrictBool] = Field(default=False, description="Defines whether this policy validate against account name or not. This field is false by default.", alias="validateAgainstAccountName")
+    created: Optional[StrictStr] = None
+    modified: Optional[StrictStr] = None
     source_ids: Optional[List[StrictStr]] = Field(default=None, description="List of sources IDs managed by this password policy.", alias="sourceIds")
-    __properties: ClassVar[List[str]] = ["id", "description", "name", "dateCrated", "lastUpdated", "firstExpirationReminder", "accountIdMinWordLength", "accountNameMinWordLength", "minAlpha", "minCharacterTypes", "maxLength", "minLength", "maxRepeatedChars", "minLower", "minNumeric", "minSpecial", "minUpper", "passwordExpiration", "defaultPolicy", "enablePasswdExpiration", "requireStrongAuthn", "requireStrongAuthOffNetwork", "requireStrongAuthUntrustedGeographies", "useAccountAttributes", "useDictionary", "useIdentityAttributes", "validateAgainstAccountId", "validateAgainstAccountName", "sourceIds"]
+    __properties: ClassVar[List[str]] = ["id", "description", "name", "dateCreated", "lastUpdated", "firstExpirationReminder", "accountIdMinWordLength", "accountNameMinWordLength", "minAlpha", "minCharacterTypes", "maxLength", "minLength", "maxRepeatedChars", "minLower", "minNumeric", "minSpecial", "minUpper", "passwordExpiration", "defaultPolicy", "enablePasswdExpiration", "requireStrongAuthn", "requireStrongAuthOffNetwork", "requireStrongAuthUntrustedGeographies", "useAccountAttributes", "useDictionary", "useIdentityAttributes", "validateAgainstAccountId", "validateAgainstAccountName", "created", "modified", "sourceIds"]
 
     model_config = {
         "populate_by_name": True,
@@ -98,6 +100,26 @@ class PasswordPolicyV3Dto(BaseModel):
             },
             exclude_none=True,
         )
+        # set to None if description (nullable) is None
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
+            _dict['description'] = None
+
+        # set to None if last_updated (nullable) is None
+        # and model_fields_set contains the field
+        if self.last_updated is None and "last_updated" in self.model_fields_set:
+            _dict['lastUpdated'] = None
+
+        # set to None if created (nullable) is None
+        # and model_fields_set contains the field
+        if self.created is None and "created" in self.model_fields_set:
+            _dict['created'] = None
+
+        # set to None if modified (nullable) is None
+        # and model_fields_set contains the field
+        if self.modified is None and "modified" in self.model_fields_set:
+            _dict['modified'] = None
+
         return _dict
 
     @classmethod
@@ -113,7 +135,7 @@ class PasswordPolicyV3Dto(BaseModel):
             "id": obj.get("id"),
             "description": obj.get("description"),
             "name": obj.get("name"),
-            "dateCrated": obj.get("dateCrated"),
+            "dateCreated": obj.get("dateCreated"),
             "lastUpdated": obj.get("lastUpdated"),
             "firstExpirationReminder": obj.get("firstExpirationReminder"),
             "accountIdMinWordLength": obj.get("accountIdMinWordLength"),
@@ -138,6 +160,8 @@ class PasswordPolicyV3Dto(BaseModel):
             "useIdentityAttributes": obj.get("useIdentityAttributes") if obj.get("useIdentityAttributes") is not None else False,
             "validateAgainstAccountId": obj.get("validateAgainstAccountId") if obj.get("validateAgainstAccountId") is not None else False,
             "validateAgainstAccountName": obj.get("validateAgainstAccountName") if obj.get("validateAgainstAccountName") is not None else False,
+            "created": obj.get("created"),
+            "modified": obj.get("modified"),
             "sourceIds": obj.get("sourceIds")
         })
         return _obj

@@ -44,8 +44,9 @@ class Workflow(BaseModel):
     execution_count: Optional[StrictInt] = Field(default=None, description="The number of times this workflow has been executed.", alias="executionCount")
     failure_count: Optional[StrictInt] = Field(default=None, description="The number of times this workflow has failed during execution.", alias="failureCount")
     created: Optional[datetime] = Field(default=None, description="The date and time the workflow was created.")
+    modified: Optional[datetime] = Field(default=None, description="The date and time the workflow was modified.")
     creator: Optional[WorkflowAllOfCreator] = None
-    __properties: ClassVar[List[str]] = ["name", "owner", "description", "definition", "enabled", "trigger", "id", "executionCount", "failureCount", "created", "creator"]
+    __properties: ClassVar[List[str]] = ["name", "owner", "description", "definition", "enabled", "trigger", "id", "executionCount", "failureCount", "created", "modified", "creator"]
 
     model_config = {
         "populate_by_name": True,
@@ -118,6 +119,7 @@ class Workflow(BaseModel):
             "executionCount": obj.get("executionCount"),
             "failureCount": obj.get("failureCount"),
             "created": obj.get("created"),
+            "modified": obj.get("modified"),
             "creator": WorkflowAllOfCreator.from_dict(obj.get("creator")) if obj.get("creator") is not None else None
         })
         return _obj

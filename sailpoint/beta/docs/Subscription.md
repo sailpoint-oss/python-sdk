@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **trigger_id** | **str** | ID of trigger subscribed to. | 
 **trigger_name** | **str** | Trigger name of trigger subscribed to. | 
 **type** | [**SubscriptionType**](SubscriptionType.md) |  | 
-**response_deadline** | **str** | Deadline for completing REQUEST_RESPONSE trigger invocation, represented in ISO-8601 duration format. | [default to 'PT1H']
+**response_deadline** | **str** | Deadline for completing REQUEST_RESPONSE trigger invocation, represented in ISO-8601 duration format. | [optional] [default to 'PT1H']
 **http_config** | [**HttpConfig**](HttpConfig.md) |  | [optional] 
 **event_bridge_config** | [**EventBridgeConfig**](EventBridgeConfig.md) |  | [optional] 
 **enabled** | **bool** | Whether subscription should receive real-time trigger invocations or not. Test trigger invocations are always enabled regardless of this option. | [default to True]

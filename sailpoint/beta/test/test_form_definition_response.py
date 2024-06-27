@@ -41,11 +41,13 @@ class TestFormDefinitionResponse(unittest.TestCase):
                 description = 'My form description',
                 owner = sailpoint.beta.models.form_owner.FormOwner(
                     type = 'IDENTITY', 
-                    id = '00000000-0000-0000-0000-000000000000', ),
+                    id = '2c9180867624cbd7017642d8c8c81f67', 
+                    name = 'Grant Smith', ),
                 used_by = [
                     sailpoint.beta.models.form_used_by.FormUsedBy(
                         type = 'WORKFLOW', 
-                        id = '00000000-0000-0000-0000-000000000000', )
+                        id = '61940a92-5484-42bc-bc10-b9982b218cdf', 
+                        name = 'Access Request Form', )
                     ],
                 form_input = [
                     sailpoint.beta.models.form_definition_input.FormDefinitionInput(
@@ -60,7 +62,9 @@ class TestFormDefinitionResponse(unittest.TestCase):
                         element_type = 'TEXT', 
                         config = {label=Department}, 
                         key = 'department', 
-                        validations = [{validationType=REQUIRED}], )
+                        validations = [
+                            [{validationType=REQUIRED}]
+                            ], )
                     ],
                 form_conditions = [
                     sailpoint.beta.models.form_condition.FormCondition(

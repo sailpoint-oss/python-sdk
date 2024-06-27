@@ -36,19 +36,19 @@ class TestLifecycleStatesApi(unittest.TestCase):
     def test_delete_lifecycle_state(self) -> None:
         """Test case for delete_lifecycle_state
 
-        Delete Lifecycle State by ID
+        Delete Lifecycle State
         """
         pass
 
     def test_get_lifecycle_state(self) -> None:
         """Test case for get_lifecycle_state
 
-        Retrieves Lifecycle State
+        Get Lifecycle State
         """
         pass
 
-    def test_list_lifecycle_states(self) -> None:
-        """Test case for list_lifecycle_states
+    def test_get_lifecycle_states(self) -> None:
+        """Test case for get_lifecycle_states
 
         Lists LifecycleStates
         """

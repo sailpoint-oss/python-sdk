@@ -36,14 +36,15 @@ class LifecycleState(BaseModel):
     name: StrictStr = Field(description="Name of the Object")
     created: Optional[datetime] = Field(default=None, description="Creation date of the Object")
     modified: Optional[datetime] = Field(default=None, description="Last modification date of the Object")
-    enabled: Optional[StrictBool] = Field(default=None, description="Whether the lifecycle state is enabled or disabled.")
-    technical_name: StrictStr = Field(description="The technical name for lifecycle state. This is for internal use.", alias="technicalName")
-    description: Optional[StrictStr] = Field(default=None, description="Lifecycle state description.")
+    enabled: Optional[StrictBool] = Field(default=False, description="Indicates whether the lifecycle state is enabled or disabled.")
+    technical_name: StrictStr = Field(description="The lifecycle state's technical name. This is for internal use.", alias="technicalName")
+    description: Optional[StrictStr] = Field(default=None, description="Lifecycle state's description.")
     identity_count: Optional[StrictInt] = Field(default=None, description="Number of identities that have the lifecycle state.", alias="identityCount")
     email_notification_option: Optional[EmailNotificationOption] = Field(default=None, alias="emailNotificationOption")
     account_actions: Optional[List[AccountAction]] = Field(default=None, alias="accountActions")
     access_profile_ids: Optional[List[StrictStr]] = Field(default=None, description="List of unique access-profile IDs that are associated with the lifecycle state.", alias="accessProfileIds")
-    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "enabled", "technicalName", "description", "identityCount", "emailNotificationOption", "accountActions", "accessProfileIds"]
+    identity_state: Optional[StrictStr] = Field(default=None, description="The lifecycle state's associated identity state. This field is generally 'null'.", alias="identityState")
+    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "enabled", "technicalName", "description", "identityCount", "emailNotificationOption", "accountActions", "accessProfileIds", "identityState"]
 
     model_config = {
         "populate_by_name": True,
@@ -100,6 +101,11 @@ class LifecycleState(BaseModel):
                 if _item:
                     _items.append(_item.to_dict())
             _dict['accountActions'] = _items
+        # set to None if identity_state (nullable) is None
+        # and model_fields_set contains the field
+        if self.identity_state is None and "identity_state" in self.model_fields_set:
+            _dict['identityState'] = None
+
         return _dict
 
     @classmethod
@@ -116,13 +122,14 @@ class LifecycleState(BaseModel):
             "name": obj.get("name"),
             "created": obj.get("created"),
             "modified": obj.get("modified"),
-            "enabled": obj.get("enabled"),
+            "enabled": obj.get("enabled") if obj.get("enabled") is not None else False,
             "technicalName": obj.get("technicalName"),
             "description": obj.get("description"),
             "identityCount": obj.get("identityCount"),
             "emailNotificationOption": EmailNotificationOption.from_dict(obj.get("emailNotificationOption")) if obj.get("emailNotificationOption") is not None else None,
             "accountActions": [AccountAction.from_dict(_item) for _item in obj.get("accountActions")] if obj.get("accountActions") is not None else None,
-            "accessProfileIds": obj.get("accessProfileIds")
+            "accessProfileIds": obj.get("accessProfileIds"),
+            "identityState": obj.get("identityState")
         })
         return _obj
 

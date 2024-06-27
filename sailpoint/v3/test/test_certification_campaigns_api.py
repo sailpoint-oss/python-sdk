@@ -57,14 +57,14 @@ class TestCertificationCampaignsApi(unittest.TestCase):
     def test_delete_campaign_template_schedule(self) -> None:
         """Test case for delete_campaign_template_schedule
 
-        Deletes a Campaign Template's Schedule
+        Delete Campaign Template Schedule
         """
         pass
 
     def test_delete_campaigns(self) -> None:
         """Test case for delete_campaigns
 
-        Deletes Campaigns
+        Delete Campaigns
         """
         pass
 
@@ -78,7 +78,7 @@ class TestCertificationCampaignsApi(unittest.TestCase):
     def test_get_campaign(self) -> None:
         """Test case for get_campaign
 
-        Get a campaign
+        Get Campaign
         """
         pass
 
@@ -106,12 +106,12 @@ class TestCertificationCampaignsApi(unittest.TestCase):
     def test_get_campaign_template_schedule(self) -> None:
         """Test case for get_campaign_template_schedule
 
-        Gets a Campaign Template's Schedule
+        Get Campaign Template Schedule
         """
         pass
 
-    def test_list_campaign_templates(self) -> None:
-        """Test case for list_campaign_templates
+    def test_get_campaign_templates(self) -> None:
+        """Test case for get_campaign_templates
 
         List Campaign Templates
         """
@@ -141,7 +141,7 @@ class TestCertificationCampaignsApi(unittest.TestCase):
     def test_set_campaign_template_schedule(self) -> None:
         """Test case for set_campaign_template_schedule
 
-        Sets a Campaign Template's Schedule
+        Set Campaign Template Schedule
         """
         pass
 

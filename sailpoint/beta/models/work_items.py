@@ -22,6 +22,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt, StrictStr
 from pydantic import Field
 from sailpoint.beta.models.approval_item_details import ApprovalItemDetails
+from sailpoint.beta.models.form_details import FormDetails
 from sailpoint.beta.models.remediation_item_details import RemediationItemDetails
 from sailpoint.beta.models.work_item_state import WorkItemState
 from sailpoint.beta.models.work_item_type import WorkItemType
@@ -44,13 +45,14 @@ class WorkItems(BaseModel):
     description: Optional[StrictStr] = Field(default=None, description="The description of the work item")
     state: Optional[WorkItemState] = None
     type: Optional[WorkItemType] = None
-    remediation_items: Optional[RemediationItemDetails] = Field(default=None, alias="remediationItems")
-    approval_items: Optional[ApprovalItemDetails] = Field(default=None, alias="approvalItems")
+    remediation_items: Optional[List[RemediationItemDetails]] = Field(default=None, alias="remediationItems")
+    approval_items: Optional[List[ApprovalItemDetails]] = Field(default=None, alias="approvalItems")
     name: Optional[StrictStr] = Field(default=None, description="The work item name")
     completed: Optional[datetime] = None
     num_items: Optional[StrictInt] = Field(default=None, description="The number of items in the work item", alias="numItems")
     errors: Optional[List[StrictStr]] = None
-    __properties: ClassVar[List[str]] = ["id", "requesterId", "requesterDisplayName", "ownerId", "ownerName", "created", "modified", "description", "state", "type", "remediationItems", "approvalItems", "name", "completed", "numItems", "errors"]
+    form: Optional[FormDetails] = None
+    __properties: ClassVar[List[str]] = ["id", "requesterId", "requesterDisplayName", "ownerId", "ownerName", "created", "modified", "description", "state", "type", "remediationItems", "approvalItems", "name", "completed", "numItems", "errors", "form"]
 
     model_config = {
         "populate_by_name": True,
@@ -89,12 +91,78 @@ class WorkItems(BaseModel):
             },
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of remediation_items
+        # override the default output from pydantic by calling `to_dict()` of each item in remediation_items (list)
+        _items = []
         if self.remediation_items:
-            _dict['remediationItems'] = self.remediation_items.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of approval_items
+            for _item in self.remediation_items:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['remediationItems'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in approval_items (list)
+        _items = []
         if self.approval_items:
-            _dict['approvalItems'] = self.approval_items.to_dict()
+            for _item in self.approval_items:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['approvalItems'] = _items
+        # override the default output from pydantic by calling `to_dict()` of form
+        if self.form:
+            _dict['form'] = self.form.to_dict()
+        # set to None if requester_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.requester_id is None and "requester_id" in self.model_fields_set:
+            _dict['requesterId'] = None
+
+        # set to None if requester_display_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.requester_display_name is None and "requester_display_name" in self.model_fields_set:
+            _dict['requesterDisplayName'] = None
+
+        # set to None if owner_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.owner_id is None and "owner_id" in self.model_fields_set:
+            _dict['ownerId'] = None
+
+        # set to None if modified (nullable) is None
+        # and model_fields_set contains the field
+        if self.modified is None and "modified" in self.model_fields_set:
+            _dict['modified'] = None
+
+        # set to None if state (nullable) is None
+        # and model_fields_set contains the field
+        if self.state is None and "state" in self.model_fields_set:
+            _dict['state'] = None
+
+        # set to None if remediation_items (nullable) is None
+        # and model_fields_set contains the field
+        if self.remediation_items is None and "remediation_items" in self.model_fields_set:
+            _dict['remediationItems'] = None
+
+        # set to None if approval_items (nullable) is None
+        # and model_fields_set contains the field
+        if self.approval_items is None and "approval_items" in self.model_fields_set:
+            _dict['approvalItems'] = None
+
+        # set to None if name (nullable) is None
+        # and model_fields_set contains the field
+        if self.name is None and "name" in self.model_fields_set:
+            _dict['name'] = None
+
+        # set to None if completed (nullable) is None
+        # and model_fields_set contains the field
+        if self.completed is None and "completed" in self.model_fields_set:
+            _dict['completed'] = None
+
+        # set to None if num_items (nullable) is None
+        # and model_fields_set contains the field
+        if self.num_items is None and "num_items" in self.model_fields_set:
+            _dict['numItems'] = None
+
+        # set to None if form (nullable) is None
+        # and model_fields_set contains the field
+        if self.form is None and "form" in self.model_fields_set:
+            _dict['form'] = None
+
         return _dict
 
     @classmethod
@@ -117,12 +185,13 @@ class WorkItems(BaseModel):
             "description": obj.get("description"),
             "state": obj.get("state"),
             "type": obj.get("type"),
-            "remediationItems": RemediationItemDetails.from_dict(obj.get("remediationItems")) if obj.get("remediationItems") is not None else None,
-            "approvalItems": ApprovalItemDetails.from_dict(obj.get("approvalItems")) if obj.get("approvalItems") is not None else None,
+            "remediationItems": [RemediationItemDetails.from_dict(_item) for _item in obj.get("remediationItems")] if obj.get("remediationItems") is not None else None,
+            "approvalItems": [ApprovalItemDetails.from_dict(_item) for _item in obj.get("approvalItems")] if obj.get("approvalItems") is not None else None,
             "name": obj.get("name"),
             "completed": obj.get("completed"),
             "numItems": obj.get("numItems"),
-            "errors": obj.get("errors")
+            "errors": obj.get("errors"),
+            "form": FormDetails.from_dict(obj.get("form")) if obj.get("form") is not None else None
         })
         return _obj
 

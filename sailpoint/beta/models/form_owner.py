@@ -32,7 +32,8 @@ class FormOwner(BaseModel):
     """ # noqa: E501
     type: Optional[StrictStr] = Field(default=None, description="FormOwnerType value. IDENTITY FormOwnerTypeIdentity")
     id: Optional[StrictStr] = Field(default=None, description="Unique identifier of the form's owner.")
-    __properties: ClassVar[List[str]] = ["type", "id"]
+    name: Optional[StrictStr] = Field(default=None, description="Name of the form's owner.")
+    __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -94,7 +95,8 @@ class FormOwner(BaseModel):
 
         _obj = cls.model_validate({
             "type": obj.get("type"),
-            "id": obj.get("id")
+            "id": obj.get("id"),
+            "name": obj.get("name")
         })
         return _obj
 

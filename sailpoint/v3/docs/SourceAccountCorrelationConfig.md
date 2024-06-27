@@ -1,14 +1,14 @@
 # SourceAccountCorrelationConfig
 
-Reference to an Account Correlation Config object
+Reference to account correlation config object.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **str** | The type of object being referenced | [optional] 
-**id** | **str** | ID of the account correlation config | [optional] 
-**name** | **str** | Human-readable display name of the account correlation config | [optional] 
+**type** | **str** | Type of object being referenced. | [optional] 
+**id** | **str** | Account correlation config ID. | [optional] 
+**name** | **str** | Account correlation config&#39;s human-readable display name. | [optional] 
 
 ## Example
 

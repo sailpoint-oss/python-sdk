@@ -35,13 +35,14 @@ class InvocationStatus(BaseModel):
     """ # noqa: E501
     id: StrictStr = Field(description="Invocation ID")
     trigger_id: StrictStr = Field(description="Trigger ID", alias="triggerId")
+    subscription_name: StrictStr = Field(description="Subscription name", alias="subscriptionName")
     subscription_id: StrictStr = Field(description="Subscription ID", alias="subscriptionId")
     type: InvocationStatusType
     created: datetime = Field(description="Invocation created timestamp. ISO-8601 in UTC.")
     completed: Optional[datetime] = Field(default=None, description="Invocation completed timestamp; empty fields imply invocation is in-flight or not completed. ISO-8601 in UTC.")
     start_invocation_input: StartInvocationInput = Field(alias="startInvocationInput")
     complete_invocation_input: Optional[CompleteInvocationInput] = Field(default=None, alias="completeInvocationInput")
-    __properties: ClassVar[List[str]] = ["id", "triggerId", "subscriptionId", "type", "created", "completed", "startInvocationInput", "completeInvocationInput"]
+    __properties: ClassVar[List[str]] = ["id", "triggerId", "subscriptionName", "subscriptionId", "type", "created", "completed", "startInvocationInput", "completeInvocationInput"]
 
     model_config = {
         "populate_by_name": True,
@@ -100,6 +101,7 @@ class InvocationStatus(BaseModel):
         _obj = cls.model_validate({
             "id": obj.get("id"),
             "triggerId": obj.get("triggerId"),
+            "subscriptionName": obj.get("subscriptionName"),
             "subscriptionId": obj.get("subscriptionId"),
             "type": obj.get("type"),
             "created": obj.get("created"),

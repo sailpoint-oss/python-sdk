@@ -328,7 +328,7 @@ class AuthProfileApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AuthProfileSummary:
+    ) -> List[AuthProfileSummary]:
         """Get list of Auth Profiles.
 
         This API returns a list of auth profiles.
@@ -363,7 +363,7 @@ class AuthProfileApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AuthProfileSummary",
+            '200': "List[AuthProfileSummary]",
             '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
@@ -396,7 +396,7 @@ class AuthProfileApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AuthProfileSummary]:
+    ) -> ApiResponse[List[AuthProfileSummary]]:
         """Get list of Auth Profiles.
 
         This API returns a list of auth profiles.
@@ -431,7 +431,7 @@ class AuthProfileApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AuthProfileSummary",
+            '200': "List[AuthProfileSummary]",
             '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
@@ -499,7 +499,7 @@ class AuthProfileApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AuthProfileSummary",
+            '200': "List[AuthProfileSummary]",
             '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
