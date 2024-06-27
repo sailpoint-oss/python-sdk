@@ -191,6 +191,14 @@ class ApiClient:
         # Add Authentication header to request
         header_params['Authorization'] = self.configuration.access_token
 
+        if self.configuration.experimental and 'X-SailPoint-Experimental' in header_params:
+            print("TESTING")
+            print(f"{bcolors.WARNING}Warning: No active frommets remain. Continue?{bcolors.ENDC}")
+            pass
+        elif self.configuration.experimental == True:
+            print(f"{bcolors.WARNING}Warning: No active frommets remain. Continue?{bcolors.ENDC}")
+            #del header_params['X-SailPoint-Experimental']
+
         # path parameters
         if path_params:
             path_params = self.sanitize_for_serialization(path_params)
