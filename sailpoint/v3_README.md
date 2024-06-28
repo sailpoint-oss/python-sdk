@@ -176,8 +176,14 @@ Class | Method | HTTP request | Description
 *ConnectorsApi* | [**put_translations**](sailpoint/v3/docs/ConnectorsApi.md#put_translations) | **PUT** /connectors/{scriptName}/translations/{locale} | 
 *ConnectorsApi* | [**update_connector**](sailpoint/v3/docs/ConnectorsApi.md#update_connector) | **PATCH** /connectors/{scriptName} | Update connector by script name
 *GlobalTenantSecuritySettingsApi* | [**create_auth_org_network_config**](sailpoint/v3/docs/GlobalTenantSecuritySettingsApi.md#create_auth_org_network_config) | **POST** /auth-org/network-config | Create security network configuration.
+*GlobalTenantSecuritySettingsApi* | [**get_auth_org_lockout_config**](sailpoint/v3/docs/GlobalTenantSecuritySettingsApi.md#get_auth_org_lockout_config) | **GET** /auth-org/lockout-config | Get Auth Org Lockout Configuration.
 *GlobalTenantSecuritySettingsApi* | [**get_auth_org_network_config**](sailpoint/v3/docs/GlobalTenantSecuritySettingsApi.md#get_auth_org_network_config) | **GET** /auth-org/network-config | Get security network configuration.
+*GlobalTenantSecuritySettingsApi* | [**get_auth_org_service_provider_config**](sailpoint/v3/docs/GlobalTenantSecuritySettingsApi.md#get_auth_org_service_provider_config) | **GET** /auth-org/service-provider-config | Get Service Provider Configuration.
+*GlobalTenantSecuritySettingsApi* | [**get_auth_org_session_config**](sailpoint/v3/docs/GlobalTenantSecuritySettingsApi.md#get_auth_org_session_config) | **GET** /auth-org/session-config | Get Auth Org Session Configuration.
+*GlobalTenantSecuritySettingsApi* | [**patch_auth_org_lockout_config**](sailpoint/v3/docs/GlobalTenantSecuritySettingsApi.md#patch_auth_org_lockout_config) | **PATCH** /auth-org/lockout-config | Update Auth Org Lockout Configuration
 *GlobalTenantSecuritySettingsApi* | [**patch_auth_org_network_config**](sailpoint/v3/docs/GlobalTenantSecuritySettingsApi.md#patch_auth_org_network_config) | **PATCH** /auth-org/network-config | Update security network configuration.
+*GlobalTenantSecuritySettingsApi* | [**patch_auth_org_service_provider_config**](sailpoint/v3/docs/GlobalTenantSecuritySettingsApi.md#patch_auth_org_service_provider_config) | **PATCH** /auth-org/service-provider-config | Update Service Provider Configuration
+*GlobalTenantSecuritySettingsApi* | [**patch_auth_org_session_config**](sailpoint/v3/docs/GlobalTenantSecuritySettingsApi.md#patch_auth_org_session_config) | **PATCH** /auth-org/session-config | Update Auth Org Session Configuration
 *IdentityProfilesApi* | [**delete_identity_profile**](sailpoint/v3/docs/IdentityProfilesApi.md#delete_identity_profile) | **DELETE** /identity-profiles/{identity-profile-id} | Delete an Identity Profile
 *IdentityProfilesApi* | [**delete_identity_profiles**](sailpoint/v3/docs/IdentityProfilesApi.md#delete_identity_profiles) | **POST** /identity-profiles/bulk-delete | Delete Identity Profiles
 *IdentityProfilesApi* | [**export_identity_profiles**](sailpoint/v3/docs/IdentityProfilesApi.md#export_identity_profiles) | **GET** /identity-profiles/export | Export Identity Profiles
@@ -593,6 +599,7 @@ Class | Method | HTTP request | Description
  - [Expression](sailpoint/v3/docs/Expression.md)
  - [ExpressionChildrenInner](sailpoint/v3/docs/ExpressionChildrenInner.md)
  - [ExternalAttributes](sailpoint/v3/docs/ExternalAttributes.md)
+ - [FederationProtocolDetails](sailpoint/v3/docs/FederationProtocolDetails.md)
  - [FieldDetailsDto](sailpoint/v3/docs/FieldDetailsDto.md)
  - [Filter](sailpoint/v3/docs/Filter.md)
  - [FilterAggregation](sailpoint/v3/docs/FilterAggregation.md)
@@ -629,11 +636,13 @@ Class | Method | HTTP request | Description
  - [IdentityWithNewAccess](sailpoint/v3/docs/IdentityWithNewAccess.md)
  - [IdentityWithNewAccess1](sailpoint/v3/docs/IdentityWithNewAccess1.md)
  - [IdentityWithNewAccessAccessRefsInner](sailpoint/v3/docs/IdentityWithNewAccessAccessRefsInner.md)
+ - [IdpDetails](sailpoint/v3/docs/IdpDetails.md)
  - [ImportNonEmployeeRecordsInBulkRequest](sailpoint/v3/docs/ImportNonEmployeeRecordsInBulkRequest.md)
  - [ImportObject](sailpoint/v3/docs/ImportObject.md)
  - [ImportUploadedBackupRequest](sailpoint/v3/docs/ImportUploadedBackupRequest.md)
  - [Index](sailpoint/v3/docs/Index.md)
  - [InnerHit](sailpoint/v3/docs/InnerHit.md)
+ - [JITConfiguration](sailpoint/v3/docs/JITConfiguration.md)
  - [JsonPatchOperation](sailpoint/v3/docs/JsonPatchOperation.md)
  - [JsonPatchOperationValue](sailpoint/v3/docs/JsonPatchOperationValue.md)
  - [KbaAnswerRequestItem](sailpoint/v3/docs/KbaAnswerRequestItem.md)
@@ -648,6 +657,7 @@ Class | Method | HTTP request | Description
  - [ListCampaignFilters200Response](sailpoint/v3/docs/ListCampaignFilters200Response.md)
  - [ListCompleteWorkflowLibrary200ResponseInner](sailpoint/v3/docs/ListCompleteWorkflowLibrary200ResponseInner.md)
  - [LocaleOrigin](sailpoint/v3/docs/LocaleOrigin.md)
+ - [LockoutConfiguration](sailpoint/v3/docs/LockoutConfiguration.md)
  - [ManagedClient](sailpoint/v3/docs/ManagedClient.md)
  - [ManagedClientRequest](sailpoint/v3/docs/ManagedClientRequest.md)
  - [ManagedClientStatus](sailpoint/v3/docs/ManagedClientStatus.md)
@@ -845,6 +855,9 @@ Class | Method | HTTP request | Description
  - [ServiceDeskIntegrationTemplateDto](sailpoint/v3/docs/ServiceDeskIntegrationTemplateDto.md)
  - [ServiceDeskIntegrationTemplateType](sailpoint/v3/docs/ServiceDeskIntegrationTemplateType.md)
  - [ServiceDeskSource](sailpoint/v3/docs/ServiceDeskSource.md)
+ - [ServiceProviderConfiguration](sailpoint/v3/docs/ServiceProviderConfiguration.md)
+ - [ServiceProviderConfigurationFederationProtocolDetailsInner](sailpoint/v3/docs/ServiceProviderConfigurationFederationProtocolDetailsInner.md)
+ - [SessionConfiguration](sailpoint/v3/docs/SessionConfiguration.md)
  - [SetLifecycleState200Response](sailpoint/v3/docs/SetLifecycleState200Response.md)
  - [SetLifecycleStateRequest](sailpoint/v3/docs/SetLifecycleStateRequest.md)
  - [SlimCampaign](sailpoint/v3/docs/SlimCampaign.md)
@@ -878,6 +891,7 @@ Class | Method | HTTP request | Description
  - [SourceUsage](sailpoint/v3/docs/SourceUsage.md)
  - [SourceUsageStatus](sailpoint/v3/docs/SourceUsageStatus.md)
  - [SpConfigMessage](sailpoint/v3/docs/SpConfigMessage.md)
+ - [SpDetails](sailpoint/v3/docs/SpDetails.md)
  - [StandardLevel](sailpoint/v3/docs/StandardLevel.md)
  - [SubSearchAggregationSpecification](sailpoint/v3/docs/SubSearchAggregationSpecification.md)
  - [TaggedObject](sailpoint/v3/docs/TaggedObject.md)

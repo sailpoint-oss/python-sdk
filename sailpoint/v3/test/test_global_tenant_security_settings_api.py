@@ -33,6 +33,13 @@ class TestGlobalTenantSecuritySettingsApi(unittest.TestCase):
         """
         pass
 
+    def test_get_auth_org_lockout_config(self) -> None:
+        """Test case for get_auth_org_lockout_config
+
+        Get Auth Org Lockout Configuration.
+        """
+        pass
+
     def test_get_auth_org_network_config(self) -> None:
         """Test case for get_auth_org_network_config
 
@@ -40,10 +47,45 @@ class TestGlobalTenantSecuritySettingsApi(unittest.TestCase):
         """
         pass
 
+    def test_get_auth_org_service_provider_config(self) -> None:
+        """Test case for get_auth_org_service_provider_config
+
+        Get Service Provider Configuration.
+        """
+        pass
+
+    def test_get_auth_org_session_config(self) -> None:
+        """Test case for get_auth_org_session_config
+
+        Get Auth Org Session Configuration.
+        """
+        pass
+
+    def test_patch_auth_org_lockout_config(self) -> None:
+        """Test case for patch_auth_org_lockout_config
+
+        Update Auth Org Lockout Configuration
+        """
+        pass
+
     def test_patch_auth_org_network_config(self) -> None:
         """Test case for patch_auth_org_network_config
 
         Update security network configuration.
+        """
+        pass
+
+    def test_patch_auth_org_service_provider_config(self) -> None:
+        """Test case for patch_auth_org_service_provider_config
+
+        Update Service Provider Configuration
+        """
+        pass
+
+    def test_patch_auth_org_session_config(self) -> None:
+        """Test case for patch_auth_org_session_config
+
+        Update Auth Org Session Configuration
         """
         pass
 
