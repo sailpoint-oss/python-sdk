@@ -31,13 +31,12 @@ class CampaignFilterDetails(BaseModel):
     """
     Campaign Filter Details
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(default=None, description="Id of the campaign filter")
-    name: StrictStr = Field(description="This is campaign filter's name.")
-    description: StrictStr = Field(description="This is campaign filter's description.")
-    owner: Optional[StrictStr] = Field(description="The owner of this filter. This field is automatically populated at creation time with the current user.")
-    mode: Dict[str, Any] = Field(description="The mode/type of Filter, where it is of INCLUSION or EXCLUSION type. INCLUSION type will include the data in generated campaign  as per specified in criteria, whereas EXCLUSION type will exclude the the data in generated campaign as per specified in criteria.")
+    name: StrictStr = Field(description="Campaign filter name.")
+    description: Optional[StrictStr] = Field(default=None, description="Campaign filter description.")
+    owner: Optional[StrictStr] = Field(description="Owner of the filter. This field automatically populates at creation time with the current user.")
+    mode: Dict[str, Any] = Field(description="Mode/type of filter, either the INCLUSION or EXCLUSION type. The INCLUSION type includes the data in generated campaigns  as per specified in the criteria, whereas the EXCLUSION type excludes the data in generated campaigns as per specified in criteria.")
     criteria_list: Optional[List[CampaignFilterDetailsCriteriaListInner]] = Field(default=None, description="List of criteria.", alias="criteriaList")
-    __properties: ClassVar[List[str]] = ["id", "name", "description", "owner", "mode", "criteriaList"]
+    __properties: ClassVar[List[str]] = ["name", "description", "owner", "mode", "criteriaList"]
 
     @field_validator('mode')
     def mode_validate_enum(cls, value):
@@ -107,7 +106,6 @@ class CampaignFilterDetails(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
             "name": obj.get("name"),
             "description": obj.get("description"),
             "owner": obj.get("owner"),

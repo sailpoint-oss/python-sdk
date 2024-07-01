@@ -4,7 +4,7 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_campaign_filter**](CertificationCampaignFiltersApi.md#create_campaign_filter) | **POST** /campaign-filters | Create a Campaign Filter
+[**create_campaign_filter**](CertificationCampaignFiltersApi.md#create_campaign_filter) | **POST** /campaign-filters | Create Campaign Filter
 [**delete_campaign_filters**](CertificationCampaignFiltersApi.md#delete_campaign_filters) | **POST** /campaign-filters/delete | Deletes Campaign Filters
 [**get_campaign_filter_by_id**](CertificationCampaignFiltersApi.md#get_campaign_filter_by_id) | **GET** /campaign-filters/{id} | Get Campaign Filter by ID
 [**list_campaign_filters**](CertificationCampaignFiltersApi.md#list_campaign_filters) | **GET** /campaign-filters | List Campaign Filters
@@ -14,9 +14,9 @@ Method | HTTP request | Description
 # **create_campaign_filter**
 > CampaignFilterDetails create_campaign_filter(campaign_filter_details)
 
-Create a Campaign Filter
+Create Campaign Filter
 
-Create a campaign Filter based on filter details and criteria.
+Use this API to create a campaign filter based on filter details and criteria.
 
 ### Example
 
@@ -53,7 +53,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
     campaign_filter_details = sailpoint.v3.CampaignFilterDetails() # CampaignFilterDetails | 
 
     try:
-        # Create a Campaign Filter
+        # Create Campaign Filter
         api_response = api_instance.create_campaign_filter(campaign_filter_details)
         print("The response of CertificationCampaignFiltersApi->create_campaign_filter:\n")
         pprint(api_response)
@@ -270,7 +270,7 @@ Name | Type | Description  | Notes
 
 List Campaign Filters
 
-Lists all Campaign Filters. Scope can be reduced via standard V3 query params.  All Campaign Filters matching the query params
+Use this API to list all campaign filters. You can reduce scope with standard V3 query parameters.
 
 ### Example
 
@@ -306,7 +306,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
     api_instance = sailpoint.v3.CertificationCampaignFiltersApi(api_client)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     start = 0 # int | Start/Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
-    include_system_filters = True # bool | If true, include system filters in the count and results, exclude them otherwise. If not provided any value for it then by default it is true. (optional) (default to True)
+    include_system_filters = True # bool | If this is true, the API includes system filters in the count and results. Otherwise it excludes them. If no value is provided, the default is true.  (optional) (default to True)
 
     try:
         # List Campaign Filters
@@ -326,7 +326,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **int**| Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 250]
  **start** | **int**| Start/Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 0]
- **include_system_filters** | **bool**| If true, include system filters in the count and results, exclude them otherwise. If not provided any value for it then by default it is true. | [optional] [default to True]
+ **include_system_filters** | **bool**| If this is true, the API includes system filters in the count and results. Otherwise it excludes them. If no value is provided, the default is true.  | [optional] [default to True]
 
 ### Return type
 
@@ -345,7 +345,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | List of campaign filter objects |  -  |
+**200** | List of campaign filter objects. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |

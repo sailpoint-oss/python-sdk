@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**List[CampaignFilterDetails]**](CampaignFilterDetails.md) | The list of campaign filters | [optional] 
-**count** | **int** | The number of filters returned | [optional] 
+**items** | [**List[CampaignFilterDetails]**](CampaignFilterDetails.md) | List of campaign filters. | [optional] 
+**count** | **int** | Number of filters returned. | [optional] 
 
 ## Example
 

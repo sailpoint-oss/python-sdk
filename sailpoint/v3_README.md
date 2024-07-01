@@ -111,7 +111,7 @@ Class | Method | HTTP request | Description
 *BrandingApi* | [**get_branding**](sailpoint/v3/docs/BrandingApi.md#get_branding) | **GET** /brandings/{name} | Get a branding item
 *BrandingApi* | [**get_branding_list**](sailpoint/v3/docs/BrandingApi.md#get_branding_list) | **GET** /brandings | List of branding items
 *BrandingApi* | [**set_branding_item**](sailpoint/v3/docs/BrandingApi.md#set_branding_item) | **PUT** /brandings/{name} | Update a branding item
-*CertificationCampaignFiltersApi* | [**create_campaign_filter**](sailpoint/v3/docs/CertificationCampaignFiltersApi.md#create_campaign_filter) | **POST** /campaign-filters | Create a Campaign Filter
+*CertificationCampaignFiltersApi* | [**create_campaign_filter**](sailpoint/v3/docs/CertificationCampaignFiltersApi.md#create_campaign_filter) | **POST** /campaign-filters | Create Campaign Filter
 *CertificationCampaignFiltersApi* | [**delete_campaign_filters**](sailpoint/v3/docs/CertificationCampaignFiltersApi.md#delete_campaign_filters) | **POST** /campaign-filters/delete | Deletes Campaign Filters
 *CertificationCampaignFiltersApi* | [**get_campaign_filter_by_id**](sailpoint/v3/docs/CertificationCampaignFiltersApi.md#get_campaign_filter_by_id) | **GET** /campaign-filters/{id} | Get Campaign Filter by ID
 *CertificationCampaignFiltersApi* | [**list_campaign_filters**](sailpoint/v3/docs/CertificationCampaignFiltersApi.md#list_campaign_filters) | **GET** /campaign-filters | List Campaign Filters

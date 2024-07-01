@@ -67,9 +67,9 @@ class CertificationCampaignFiltersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> CampaignFilterDetails:
-        """Create a Campaign Filter
+        """Create Campaign Filter
 
-        Create a campaign Filter based on filter details and criteria.
+        Use this API to create a campaign filter based on filter details and criteria.
 
         :param campaign_filter_details: (required)
         :type campaign_filter_details: CampaignFilterDetails
@@ -139,9 +139,9 @@ class CertificationCampaignFiltersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[CampaignFilterDetails]:
-        """Create a Campaign Filter
+        """Create Campaign Filter
 
-        Create a campaign Filter based on filter details and criteria.
+        Use this API to create a campaign filter based on filter details and criteria.
 
         :param campaign_filter_details: (required)
         :type campaign_filter_details: CampaignFilterDetails
@@ -211,9 +211,9 @@ class CertificationCampaignFiltersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create a Campaign Filter
+        """Create Campaign Filter
 
-        Create a campaign Filter based on filter details and criteria.
+        Use this API to create a campaign filter based on filter details and criteria.
 
         :param campaign_filter_details: (required)
         :type campaign_filter_details: CampaignFilterDetails
@@ -910,7 +910,7 @@ class CertificationCampaignFiltersApi:
         self,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         start: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Start/Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        include_system_filters: Annotated[Optional[StrictBool], Field(description="If true, include system filters in the count and results, exclude them otherwise. If not provided any value for it then by default it is true.")] = None,
+        include_system_filters: Annotated[Optional[StrictBool], Field(description="If this is true, the API includes system filters in the count and results. Otherwise it excludes them. If no value is provided, the default is true. ")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -926,13 +926,13 @@ class CertificationCampaignFiltersApi:
     ) -> ListCampaignFilters200Response:
         """List Campaign Filters
 
-        Lists all Campaign Filters. Scope can be reduced via standard V3 query params.  All Campaign Filters matching the query params
+        Use this API to list all campaign filters. You can reduce scope with standard V3 query parameters.
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param start: Start/Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type start: int
-        :param include_system_filters: If true, include system filters in the count and results, exclude them otherwise. If not provided any value for it then by default it is true.
+        :param include_system_filters: If this is true, the API includes system filters in the count and results. Otherwise it excludes them. If no value is provided, the default is true. 
         :type include_system_filters: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -990,7 +990,7 @@ class CertificationCampaignFiltersApi:
         self,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         start: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Start/Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        include_system_filters: Annotated[Optional[StrictBool], Field(description="If true, include system filters in the count and results, exclude them otherwise. If not provided any value for it then by default it is true.")] = None,
+        include_system_filters: Annotated[Optional[StrictBool], Field(description="If this is true, the API includes system filters in the count and results. Otherwise it excludes them. If no value is provided, the default is true. ")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1006,13 +1006,13 @@ class CertificationCampaignFiltersApi:
     ) -> ApiResponse[ListCampaignFilters200Response]:
         """List Campaign Filters
 
-        Lists all Campaign Filters. Scope can be reduced via standard V3 query params.  All Campaign Filters matching the query params
+        Use this API to list all campaign filters. You can reduce scope with standard V3 query parameters.
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param start: Start/Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type start: int
-        :param include_system_filters: If true, include system filters in the count and results, exclude them otherwise. If not provided any value for it then by default it is true.
+        :param include_system_filters: If this is true, the API includes system filters in the count and results. Otherwise it excludes them. If no value is provided, the default is true. 
         :type include_system_filters: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1070,7 +1070,7 @@ class CertificationCampaignFiltersApi:
         self,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         start: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Start/Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        include_system_filters: Annotated[Optional[StrictBool], Field(description="If true, include system filters in the count and results, exclude them otherwise. If not provided any value for it then by default it is true.")] = None,
+        include_system_filters: Annotated[Optional[StrictBool], Field(description="If this is true, the API includes system filters in the count and results. Otherwise it excludes them. If no value is provided, the default is true. ")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1086,13 +1086,13 @@ class CertificationCampaignFiltersApi:
     ) -> RESTResponseType:
         """List Campaign Filters
 
-        Lists all Campaign Filters. Scope can be reduced via standard V3 query params.  All Campaign Filters matching the query params
+        Use this API to list all campaign filters. You can reduce scope with standard V3 query parameters.
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param start: Start/Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type start: int
-        :param include_system_filters: If true, include system filters in the count and results, exclude them otherwise. If not provided any value for it then by default it is true.
+        :param include_system_filters: If this is true, the API includes system filters in the count and results. Otherwise it excludes them. If no value is provided, the default is true. 
         :type include_system_filters: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

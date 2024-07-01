@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | [**CriteriaType**](CriteriaType.md) |  | 
 **operation** | [**Operation**](Operation.md) |  | 
-**var_property** | **str** | The specified key from the Type of criteria. | 
-**value** | **str** | The value for the specified key from the Type of Criteria | 
+**var_property** | **str** | Specified key from the type of criteria. | 
+**value** | **str** | Value for the specified key from the type of criteria. | 
 
 ## Example
 

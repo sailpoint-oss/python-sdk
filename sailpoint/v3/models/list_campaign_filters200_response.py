@@ -31,8 +31,8 @@ class ListCampaignFilters200Response(BaseModel):
     """
     ListCampaignFilters200Response
     """ # noqa: E501
-    items: Optional[List[CampaignFilterDetails]] = Field(default=None, description="The list of campaign filters")
-    count: Optional[StrictInt] = Field(default=None, description="The number of filters returned")
+    items: Optional[List[CampaignFilterDetails]] = Field(default=None, description="List of campaign filters.")
+    count: Optional[StrictInt] = Field(default=None, description="Number of filters returned.")
     __properties: ClassVar[List[str]] = ["items", "count"]
 
     model_config = {

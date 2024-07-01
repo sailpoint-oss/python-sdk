@@ -29,7 +29,7 @@ class TestCertificationCampaignFiltersApi(unittest.TestCase):
     def test_create_campaign_filter(self) -> None:
         """Test case for create_campaign_filter
 
-        Create a Campaign Filter
+        Create Campaign Filter
         """
         pass
 
