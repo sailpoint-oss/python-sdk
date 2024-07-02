@@ -69,7 +69,7 @@ class IdentityAttributesApi:
     ) -> IdentityAttribute:
         """Create Identity Attribute
 
-        Use this API to create a new identity attribute.
+        Use this API to create a new identity attribute.   A token with ORG_ADMIN authority is required to call this API.
 
         :param identity_attribute: (required)
         :type identity_attribute: IdentityAttribute
@@ -142,7 +142,7 @@ class IdentityAttributesApi:
     ) -> ApiResponse[IdentityAttribute]:
         """Create Identity Attribute
 
-        Use this API to create a new identity attribute.
+        Use this API to create a new identity attribute.   A token with ORG_ADMIN authority is required to call this API.
 
         :param identity_attribute: (required)
         :type identity_attribute: IdentityAttribute
@@ -215,7 +215,7 @@ class IdentityAttributesApi:
     ) -> RESTResponseType:
         """Create Identity Attribute
 
-        Use this API to create a new identity attribute.
+        Use this API to create a new identity attribute.   A token with ORG_ADMIN authority is required to call this API.
 
         :param identity_attribute: (required)
         :type identity_attribute: IdentityAttribute
@@ -359,7 +359,7 @@ class IdentityAttributesApi:
     ) -> None:
         """Delete Identity Attribute
 
-        This deletes an identity attribute with the given name.  The `system` and `standard` properties must be set to false before you can delete an identity attribute.
+        This deletes an identity attribute with the given name.  The `system` and `standard` properties must be set to false before you can delete an identity attribute.   A token with ORG_ADMIN authority is required to call this API.
 
         :param name: The attribute's technical name. (required)
         :type name: str
@@ -432,7 +432,7 @@ class IdentityAttributesApi:
     ) -> ApiResponse[None]:
         """Delete Identity Attribute
 
-        This deletes an identity attribute with the given name.  The `system` and `standard` properties must be set to false before you can delete an identity attribute.
+        This deletes an identity attribute with the given name.  The `system` and `standard` properties must be set to false before you can delete an identity attribute.   A token with ORG_ADMIN authority is required to call this API.
 
         :param name: The attribute's technical name. (required)
         :type name: str
@@ -505,7 +505,7 @@ class IdentityAttributesApi:
     ) -> RESTResponseType:
         """Delete Identity Attribute
 
-        This deletes an identity attribute with the given name.  The `system` and `standard` properties must be set to false before you can delete an identity attribute.
+        This deletes an identity attribute with the given name.  The `system` and `standard` properties must be set to false before you can delete an identity attribute.   A token with ORG_ADMIN authority is required to call this API.
 
         :param name: The attribute's technical name. (required)
         :type name: str
@@ -636,7 +636,7 @@ class IdentityAttributesApi:
     ) -> None:
         """Bulk delete Identity Attributes
 
-        Use this API to bulk delete identity attributes for a given set of names. Attributes that are currently mapped in an identity profile cannot be deleted.  The `system` and `standard` properties must be set to 'false' before you can delete an identity attribute.
+        Use this API to bulk delete identity attributes for a given set of names. Attributes that are currently mapped in an identity profile cannot be deleted.  The `system` and `standard` properties must be set to 'false' before you can delete an identity attribute.   A token with ORG_ADMIN authority is required to call this API.
 
         :param identity_attribute_names: (required)
         :type identity_attribute_names: IdentityAttributeNames
@@ -709,7 +709,7 @@ class IdentityAttributesApi:
     ) -> ApiResponse[None]:
         """Bulk delete Identity Attributes
 
-        Use this API to bulk delete identity attributes for a given set of names. Attributes that are currently mapped in an identity profile cannot be deleted.  The `system` and `standard` properties must be set to 'false' before you can delete an identity attribute.
+        Use this API to bulk delete identity attributes for a given set of names. Attributes that are currently mapped in an identity profile cannot be deleted.  The `system` and `standard` properties must be set to 'false' before you can delete an identity attribute.   A token with ORG_ADMIN authority is required to call this API.
 
         :param identity_attribute_names: (required)
         :type identity_attribute_names: IdentityAttributeNames
@@ -782,7 +782,7 @@ class IdentityAttributesApi:
     ) -> RESTResponseType:
         """Bulk delete Identity Attributes
 
-        Use this API to bulk delete identity attributes for a given set of names. Attributes that are currently mapped in an identity profile cannot be deleted.  The `system` and `standard` properties must be set to 'false' before you can delete an identity attribute.
+        Use this API to bulk delete identity attributes for a given set of names. Attributes that are currently mapped in an identity profile cannot be deleted.  The `system` and `standard` properties must be set to 'false' before you can delete an identity attribute.   A token with ORG_ADMIN authority is required to call this API.
 
         :param identity_attribute_names: (required)
         :type identity_attribute_names: IdentityAttributeNames
@@ -1531,7 +1531,7 @@ class IdentityAttributesApi:
     ) -> IdentityAttribute:
         """Update Identity Attribute
 
-        This updates an existing identity attribute.  Making an attribute searchable requires that the `system`, `standard`, and `multi` properties be set to false.
+        This updates an existing identity attribute.  Making an attribute searchable requires that the `system`, `standard`, and `multi` properties be set to false.   A token with ORG_ADMIN authority is required to call this API.
 
         :param name: The attribute's technical name. (required)
         :type name: str
@@ -1608,7 +1608,7 @@ class IdentityAttributesApi:
     ) -> ApiResponse[IdentityAttribute]:
         """Update Identity Attribute
 
-        This updates an existing identity attribute.  Making an attribute searchable requires that the `system`, `standard`, and `multi` properties be set to false.
+        This updates an existing identity attribute.  Making an attribute searchable requires that the `system`, `standard`, and `multi` properties be set to false.   A token with ORG_ADMIN authority is required to call this API.
 
         :param name: The attribute's technical name. (required)
         :type name: str
@@ -1685,7 +1685,7 @@ class IdentityAttributesApi:
     ) -> RESTResponseType:
         """Update Identity Attribute
 
-        This updates an existing identity attribute.  Making an attribute searchable requires that the `system`, `standard`, and `multi` properties be set to false.
+        This updates an existing identity attribute.  Making an attribute searchable requires that the `system`, `standard`, and `multi` properties be set to false.   A token with ORG_ADMIN authority is required to call this API.
 
         :param name: The attribute's technical name. (required)
         :type name: str

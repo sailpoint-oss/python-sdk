@@ -36,22 +36,22 @@ class TestIdentityAttribute(unittest.TestCase):
         model = IdentityAttribute()
         if include_optional:
             return IdentityAttribute(
-                name = 'uid',
-                display_name = 'Identity Security Cloud Username',
-                standard = True,
+                name = 'costCenter',
+                display_name = 'Cost Center',
+                standard = False,
                 type = 'string',
                 multi = False,
-                searchable = True,
+                searchable = False,
                 system = False,
                 sources = [
                     sailpoint.beta.models.source_1.Source_1(
                         type = 'rule', 
-                        properties = {attribute=null, sourceName=Employees}, )
+                        properties = {ruleType=IdentityAttribute, ruleName=Cloud Promote Identity Attribute}, )
                     ]
             )
         else:
             return IdentityAttribute(
-                name = 'uid',
+                name = 'costCenter',
         )
         """
 

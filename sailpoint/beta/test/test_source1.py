@@ -37,7 +37,7 @@ class TestSource1(unittest.TestCase):
         if include_optional:
             return Source1(
                 type = 'rule',
-                properties = {attribute=null, sourceName=Employees}
+                properties = {ruleType=IdentityAttribute, ruleName=Cloud Promote Identity Attribute}
             )
         else:
             return Source1(
