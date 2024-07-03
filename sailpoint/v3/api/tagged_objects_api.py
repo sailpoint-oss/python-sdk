@@ -30,6 +30,7 @@ from pydantic import StrictBool, StrictStr, field_validator
 from typing import List, Optional
 
 from sailpoint.v3.models.bulk_tagged_object import BulkTaggedObject
+from sailpoint.v3.models.bulk_tagged_object_response import BulkTaggedObjectResponse
 from sailpoint.v3.models.tagged_object import TaggedObject
 
 from sailpoint.v3.api_client import ApiClient
@@ -2204,7 +2205,7 @@ class TaggedObjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> BulkTaggedObject:
+    ) -> List[BulkTaggedObjectResponse]:
         """Tag Multiple Objects
 
         This API adds tags to multiple objects.  A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
@@ -2242,7 +2243,7 @@ class TaggedObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BulkTaggedObject",
+            '200': "List[BulkTaggedObjectResponse]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -2276,7 +2277,7 @@ class TaggedObjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[BulkTaggedObject]:
+    ) -> ApiResponse[List[BulkTaggedObjectResponse]]:
         """Tag Multiple Objects
 
         This API adds tags to multiple objects.  A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
@@ -2314,7 +2315,7 @@ class TaggedObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BulkTaggedObject",
+            '200': "List[BulkTaggedObjectResponse]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -2386,7 +2387,7 @@ class TaggedObjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "BulkTaggedObject",
+            '200': "List[BulkTaggedObjectResponse]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",

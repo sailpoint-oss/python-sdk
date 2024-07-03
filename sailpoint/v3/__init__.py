@@ -171,6 +171,7 @@ from sailpoint.v3.models.branding_item_create import BrandingItemCreate
 from sailpoint.v3.models.bucket_aggregation import BucketAggregation
 from sailpoint.v3.models.bucket_type import BucketType
 from sailpoint.v3.models.bulk_tagged_object import BulkTaggedObject
+from sailpoint.v3.models.bulk_tagged_object_response import BulkTaggedObjectResponse
 from sailpoint.v3.models.campaign import Campaign
 from sailpoint.v3.models.campaign_alert import CampaignAlert
 from sailpoint.v3.models.campaign_all_of_filter import CampaignAllOfFilter

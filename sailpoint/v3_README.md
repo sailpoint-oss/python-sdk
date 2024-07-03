@@ -515,6 +515,7 @@ Class | Method | HTTP request | Description
  - [BucketAggregation](sailpoint/v3/docs/BucketAggregation.md)
  - [BucketType](sailpoint/v3/docs/BucketType.md)
  - [BulkTaggedObject](sailpoint/v3/docs/BulkTaggedObject.md)
+ - [BulkTaggedObjectResponse](sailpoint/v3/docs/BulkTaggedObjectResponse.md)
  - [Campaign](sailpoint/v3/docs/Campaign.md)
  - [CampaignAlert](sailpoint/v3/docs/CampaignAlert.md)
  - [CampaignAllOfFilter](sailpoint/v3/docs/CampaignAllOfFilter.md)

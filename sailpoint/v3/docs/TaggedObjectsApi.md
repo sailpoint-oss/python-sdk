@@ -625,7 +625,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **set_tags_to_many_objects**
-> BulkTaggedObject set_tags_to_many_objects(bulk_tagged_object)
+> List[BulkTaggedObjectResponse] set_tags_to_many_objects(bulk_tagged_object)
 
 Tag Multiple Objects
 
@@ -641,6 +641,7 @@ import time
 import os
 import sailpoint.v3
 from sailpoint.v3.models.bulk_tagged_object import BulkTaggedObject
+from sailpoint.v3.models.bulk_tagged_object_response import BulkTaggedObjectResponse
 from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
@@ -685,7 +686,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BulkTaggedObject**](BulkTaggedObject.md)
+[**List[BulkTaggedObjectResponse]**](BulkTaggedObjectResponse.md)
 
 ### Authorization
 
