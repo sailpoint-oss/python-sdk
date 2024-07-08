@@ -10,8 +10,13 @@ Name | Type | Description | Notes
 **type** | **str** | Operator type | [optional] 
 **description** | **str** | Description of the operator | [optional] 
 **form_fields** | [**List[WorkflowLibraryFormFields]**](WorkflowLibraryFormFields.md) | One or more inputs that the operator accepts | [optional] 
+**example_output** | [**WorkflowLibraryActionExampleOutput**](WorkflowLibraryActionExampleOutput.md) |  | [optional] 
+**deprecated** | **bool** |  | [optional] 
+**deprecated_by** | **datetime** |  | [optional] 
+**version_number** | **int** | Version number | [optional] 
+**is_simulation_enabled** | **bool** |  | [optional] 
 **is_dynamic_schema** | **bool** | Determines whether the dynamic output schema is returned in place of the action&#39;s output schema. The dynamic schema lists non-static properties, like properties of a workflow form where each form has different fields. These will be provided dynamically based on available form fields. | [optional] 
-**output_schema** | **object** | Defines the output schema, if any, that this action produces. | [optional] 
+**output_schema** | **object** | Example output schema | [optional] 
 **input_example** | **object** | Example trigger payload if applicable | [optional] 
 
 ## Example

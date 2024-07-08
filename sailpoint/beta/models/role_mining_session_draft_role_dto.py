@@ -31,14 +31,17 @@ class RoleMiningSessionDraftRoleDto(BaseModel):
     """
     RoleMiningSessionDraftRoleDto
     """ # noqa: E501
+    name: Optional[StrictStr] = Field(default=None, description="Name of the draft role")
     description: Optional[StrictStr] = Field(default=None, description="Draft role description")
     identity_ids: Optional[List[StrictStr]] = Field(default=None, description="The list of identities for this role mining session.", alias="identityIds")
     entitlement_ids: Optional[List[StrictStr]] = Field(default=None, description="The list of entitlement ids for this role mining session.", alias="entitlementIds")
     excluded_entitlements: Optional[List[StrictStr]] = Field(default=None, description="The list of excluded entitlement ids.", alias="excludedEntitlements")
     modified: Optional[datetime] = Field(default=None, description="Last modified date")
-    name: Optional[StrictStr] = Field(default=None, description="Name of the draft role")
     type: Optional[RoleMiningRoleType] = None
-    __properties: ClassVar[List[str]] = ["description", "identityIds", "entitlementIds", "excludedEntitlements", "modified", "name", "type"]
+    id: Optional[StrictStr] = Field(default=None, description="Id of the potential draft role")
+    created_date: Optional[datetime] = Field(default=None, description="The date-time when this potential draft role was created.", alias="createdDate")
+    modified_date: Optional[datetime] = Field(default=None, description="The date-time when this potential draft role was modified.", alias="modifiedDate")
+    __properties: ClassVar[List[str]] = ["name", "description", "identityIds", "entitlementIds", "excludedEntitlements", "modified", "type", "id", "createdDate", "modifiedDate"]
 
     model_config = {
         "populate_by_name": True,
@@ -89,13 +92,16 @@ class RoleMiningSessionDraftRoleDto(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "name": obj.get("name"),
             "description": obj.get("description"),
             "identityIds": obj.get("identityIds"),
             "entitlementIds": obj.get("entitlementIds"),
             "excludedEntitlements": obj.get("excludedEntitlements"),
             "modified": obj.get("modified"),
-            "name": obj.get("name"),
-            "type": obj.get("type")
+            "type": obj.get("type"),
+            "id": obj.get("id"),
+            "createdDate": obj.get("createdDate"),
+            "modifiedDate": obj.get("modifiedDate")
         })
         return _obj
 

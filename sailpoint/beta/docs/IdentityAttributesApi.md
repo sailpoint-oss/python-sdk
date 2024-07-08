@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_identity_attribute**](IdentityAttributesApi.md#create_identity_attribute) | **POST** /identity-attributes | Create Identity Attribute
 [**delete_identity_attribute**](IdentityAttributesApi.md#delete_identity_attribute) | **DELETE** /identity-attributes/{name} | Delete Identity Attribute
-[**delete_identity_attributes_in_bulk**](IdentityAttributesApi.md#delete_identity_attributes_in_bulk) | **POST** /identity-attributes/bulk-delete | Bulk delete Identity Attributes
+[**delete_identity_attributes_in_bulk**](IdentityAttributesApi.md#delete_identity_attributes_in_bulk) | **DELETE** /identity-attributes/bulk-delete | Bulk delete Identity Attributes
 [**get_identity_attribute**](IdentityAttributesApi.md#get_identity_attribute) | **GET** /identity-attributes/{name} | Get Identity Attribute
 [**list_identity_attributes**](IdentityAttributesApi.md#list_identity_attributes) | **GET** /identity-attributes | List Identity Attributes
 [**put_identity_attribute**](IdentityAttributesApi.md#put_identity_attribute) | **PUT** /identity-attributes/{name} | Update Identity Attribute
@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 Create Identity Attribute
 
-This creates a new identity attribute.
+Use this API to create a new identity attribute.   A token with ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | The identity attribute was created successfully |  -  |
+**201** | The identity attribute was created successfully. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -103,7 +103,7 @@ Name | Type | Description  | Notes
 
 Delete Identity Attribute
 
-This deletes an identity attribute with the given name.  The `system` and `standard` properties must be set to false before you can delete an identity attribute.
+This deletes an identity attribute with the given name.  The `system` and `standard` properties must be set to false before you can delete an identity attribute.   A token with ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -186,7 +186,7 @@ void (empty response body)
 
 Bulk delete Identity Attributes
 
-This deletes identity attributes for a given set of names. Attributes that are currently mapped in an Identity Profile cannot be deleted.  The `system` and `standard` properties must be set to false before you can delete an identity attribute.
+Use this API to bulk delete identity attributes for a given set of names. Attributes that are currently mapped in an identity profile cannot be deleted.  The `system` and `standard` properties must be set to 'false' before you can delete an identity attribute.   A token with ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -356,7 +356,7 @@ Name | Type | Description  | Notes
 
 List Identity Attributes
 
-This gets a collection of identity attributes.
+Use this API to get a collection of identity attributes.
 
 ### Example
 
@@ -390,9 +390,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.IdentityAttributesApi(api_client)
-    include_system = False # bool | Include \"system\" attributes in the response. (optional) (default to False)
-    include_silent = False # bool | Include \"silent\" attributes in the response. (optional) (default to False)
-    searchable_only = False # bool | Include only \"searchable\" attributes in the response. (optional) (default to False)
+    include_system = False # bool | Include 'system' attributes in the response. (optional) (default to False)
+    include_silent = False # bool | Include 'silent' attributes in the response. (optional) (default to False)
+    searchable_only = False # bool | Include only 'searchable' attributes in the response. (optional) (default to False)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
 
     try:
@@ -411,9 +411,9 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **include_system** | **bool**| Include \&quot;system\&quot; attributes in the response. | [optional] [default to False]
- **include_silent** | **bool**| Include \&quot;silent\&quot; attributes in the response. | [optional] [default to False]
- **searchable_only** | **bool**| Include only \&quot;searchable\&quot; attributes in the response. | [optional] [default to False]
+ **include_system** | **bool**| Include &#39;system&#39; attributes in the response. | [optional] [default to False]
+ **include_silent** | **bool**| Include &#39;silent&#39; attributes in the response. | [optional] [default to False]
+ **searchable_only** | **bool**| Include only &#39;searchable&#39; attributes in the response. | [optional] [default to False]
  **count** | **bool**| If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to False]
 
 ### Return type
@@ -433,7 +433,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | List of identity attributes |  -  |
+**200** | List of identity attributes. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -447,7 +447,7 @@ Name | Type | Description  | Notes
 
 Update Identity Attribute
 
-This updates an existing identity attribute.  Making an attribute searchable requires that the `system`, `standard`, and `multi` properties be set to false.
+This updates an existing identity attribute.  Making an attribute searchable requires that the `system`, `standard`, and `multi` properties be set to false.   A token with ORG_ADMIN authority is required to call this API.
 
 ### Example
 

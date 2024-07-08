@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 **var_from** | **str** | The \&quot;From:\&quot; address of the default template | [optional] 
 **reply_to** | **str** | The \&quot;Reply To\&quot; field of the default template | [optional] 
 **description** | **str** | The description of the default template | [optional] 
+**slack_template** | [**TemplateSlack**](TemplateSlack.md) |  | [optional] 
+**teams_template** | [**TemplateTeams**](TemplateTeams.md) |  | [optional] 
 
 ## Example
 

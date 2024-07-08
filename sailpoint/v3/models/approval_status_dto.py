@@ -43,7 +43,7 @@ class ApprovalStatusDto(BaseModel):
     scheme: Optional[ApprovalScheme] = None
     error_messages: Optional[List[ErrorMessageDto]] = Field(default=None, description="If the request failed, includes any error messages that were generated.", alias="errorMessages")
     comment: Optional[StrictStr] = Field(default=None, description="Comment, if any, provided by the approver.")
-    remove_date: Optional[datetime] = Field(default=None, description="The date the role or access profile is no longer assigned to the specified identity.", alias="removeDate")
+    remove_date: Optional[datetime] = Field(default=None, description="The date the role or access profile or entitlement is no longer assigned to the specified identity.", alias="removeDate")
     __properties: ClassVar[List[str]] = ["forwarded", "originalOwner", "currentOwner", "modified", "status", "scheme", "errorMessages", "comment", "removeDate"]
 
     model_config = {

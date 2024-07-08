@@ -17,10 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
+from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
 from pydantic import Field
+from sailpoint.beta.models.workflow_library_action_example_output import WorkflowLibraryActionExampleOutput
 from sailpoint.beta.models.workflow_library_form_fields import WorkflowLibraryFormFields
 try:
     from typing import Self
@@ -36,9 +37,14 @@ class WorkflowLibraryAction(BaseModel):
     type: Optional[StrictStr] = Field(default=None, description="Action type")
     description: Optional[StrictStr] = Field(default=None, description="Action Description")
     form_fields: Optional[List[WorkflowLibraryFormFields]] = Field(default=None, description="One or more inputs that the action accepts", alias="formFields")
+    example_output: Optional[WorkflowLibraryActionExampleOutput] = Field(default=None, alias="exampleOutput")
+    deprecated: Optional[StrictBool] = None
+    deprecated_by: Optional[datetime] = Field(default=None, alias="deprecatedBy")
+    version_number: Optional[StrictInt] = Field(default=None, description="Version number", alias="versionNumber")
+    is_simulation_enabled: Optional[StrictBool] = Field(default=None, alias="isSimulationEnabled")
     is_dynamic_schema: Optional[StrictBool] = Field(default=None, description="Determines whether the dynamic output schema is returned in place of the action's output schema. The dynamic schema lists non-static properties, like properties of a workflow form where each form has different fields. These will be provided dynamically based on available form fields.", alias="isDynamicSchema")
     output_schema: Optional[Dict[str, Any]] = Field(default=None, description="Defines the output schema, if any, that this action produces.", alias="outputSchema")
-    __properties: ClassVar[List[str]] = ["id", "name", "type", "description", "formFields", "isDynamicSchema", "outputSchema"]
+    __properties: ClassVar[List[str]] = ["id", "name", "type", "description", "formFields", "exampleOutput", "deprecated", "deprecatedBy", "versionNumber", "isSimulationEnabled", "isDynamicSchema", "outputSchema"]
 
     model_config = {
         "populate_by_name": True,
@@ -84,6 +90,14 @@ class WorkflowLibraryAction(BaseModel):
                 if _item:
                     _items.append(_item.to_dict())
             _dict['formFields'] = _items
+        # override the default output from pydantic by calling `to_dict()` of example_output
+        if self.example_output:
+            _dict['exampleOutput'] = self.example_output.to_dict()
+        # set to None if form_fields (nullable) is None
+        # and model_fields_set contains the field
+        if self.form_fields is None and "form_fields" in self.model_fields_set:
+            _dict['formFields'] = None
+
         return _dict
 
     @classmethod
@@ -101,6 +115,11 @@ class WorkflowLibraryAction(BaseModel):
             "type": obj.get("type"),
             "description": obj.get("description"),
             "formFields": [WorkflowLibraryFormFields.from_dict(_item) for _item in obj.get("formFields")] if obj.get("formFields") is not None else None,
+            "exampleOutput": WorkflowLibraryActionExampleOutput.from_dict(obj.get("exampleOutput")) if obj.get("exampleOutput") is not None else None,
+            "deprecated": obj.get("deprecated"),
+            "deprecatedBy": obj.get("deprecatedBy"),
+            "versionNumber": obj.get("versionNumber"),
+            "isSimulationEnabled": obj.get("isSimulationEnabled"),
             "isDynamicSchema": obj.get("isDynamicSchema"),
             "outputSchema": obj.get("outputSchema")
         })

@@ -25,7 +25,7 @@ Method | HTTP request | Description
 
 
 # **create_form_definition**
-> FormDefinitionResponse create_form_definition(body=body)
+> FormDefinitionResponse create_form_definition(create_form_definition_request=create_form_definition_request)
 
 Creates a form definition.
 
@@ -62,11 +62,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.CustomFormsApi(api_client)
-    body = {name=my form, description=my form description, owner={type=IDENTITY, id=00000000-0000-0000-0000-000000000000}} # CreateFormDefinitionRequest | Body is the request payload to create form definition request (optional)
+    create_form_definition_request = {name=my form, description=my form description, owner={type=IDENTITY, id=00000000-0000-0000-0000-000000000000}} # CreateFormDefinitionRequest | Body is the request payload to create form definition request (optional)
 
     try:
         # Creates a form definition.
-        api_response = api_instance.create_form_definition(body=body)
+        api_response = api_instance.create_form_definition(create_form_definition_request=create_form_definition_request)
         print("The response of CustomFormsApi->create_form_definition:\n")
         pprint(api_response)
     except Exception as e:
@@ -80,7 +80,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**CreateFormDefinitionRequest**](CreateFormDefinitionRequest.md)| Body is the request payload to create form definition request | [optional] 
+ **create_form_definition_request** | [**CreateFormDefinitionRequest**](CreateFormDefinitionRequest.md)| Body is the request payload to create form definition request | [optional] 
 
 ### Return type
 
@@ -902,8 +902,8 @@ Import form definitions from export.
 import time
 import os
 import sailpoint.beta
-from sailpoint.beta.models.export_form_definitions_by_tenant200_response_inner import ExportFormDefinitionsByTenant200ResponseInner
 from sailpoint.beta.models.import_form_definitions202_response import ImportFormDefinitions202Response
+from sailpoint.beta.models.import_form_definitions_request_inner import ImportFormDefinitionsRequestInner
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
@@ -926,7 +926,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.CustomFormsApi(api_client)
-    body = [{version=1, self={name=All fields not required, id=05ed4edb-d0a9-41d9-ad0c-2f6e486ec4aa, type=FORM_DEFINITION}, object={id=05ed4edb-d0a9-41d9-ad0c-2f6e486ec4aa, name=All fields not required, description=description, owner={type=IDENTITY, id=3447d8ec2602455ab6f1e8408a0f0150}, usedBy=[{type=WORKFLOW, id=5008594c-dacc-4295-8fee-41df60477304}, {type=WORKFLOW, id=97e75a75-c179-4fbc-a2da-b5fa4aaa8743}], formInput=[{type=STRING, label=input1, description=A single dynamic scalar value (i.e. number, string, date, etc) that can be passed into the form for use in conditional logic}], formElements=[{id=3069272797630701, elementType=SECTION, config={label=First Section, formElements=[{id=3069272797630700, elementType=TEXT, key=firstName, config={label=First Name}}, {id=3498415402897539, elementType=TEXT, key=lastName, config={label=Last Name}}]}}], formConditions=[{ruleOperator=AND, rules=[{sourceType=INPUT, source=Department, operator=EQ, valueType=STRING, value=Sales}], effects=[{effectType=HIDE, config={element=2614088730489570}}]}], created=2022-10-04T19:27:04.456Z, modified=2022-11-16T20:45:02.172Z}}] # List[ExportFormDefinitionsByTenant200ResponseInner] | Body is the request payload to import form definitions (optional)
+    body = [{version=1, self={name=All fields not required, id=05ed4edb-d0a9-41d9-ad0c-2f6e486ec4aa, type=FORM_DEFINITION}, object={id=05ed4edb-d0a9-41d9-ad0c-2f6e486ec4aa, name=All fields not required, description=description, owner={type=IDENTITY, id=3447d8ec2602455ab6f1e8408a0f0150}, usedBy=[{type=WORKFLOW, id=5008594c-dacc-4295-8fee-41df60477304}, {type=WORKFLOW, id=97e75a75-c179-4fbc-a2da-b5fa4aaa8743}], formInput=[{type=STRING, label=input1, description=A single dynamic scalar value (i.e. number, string, date, etc) that can be passed into the form for use in conditional logic}], formElements=[{id=3069272797630701, elementType=SECTION, config={label=First Section, formElements=[{id=3069272797630700, elementType=TEXT, key=firstName, config={label=First Name}}, {id=3498415402897539, elementType=TEXT, key=lastName, config={label=Last Name}}]}}], formConditions=[{ruleOperator=AND, rules=[{sourceType=INPUT, source=Department, operator=EQ, valueType=STRING, value=Sales}], effects=[{effectType=HIDE, config={element=2614088730489570}}]}], created=2022-10-04T19:27:04.456Z, modified=2022-11-16T20:45:02.172Z}}] # List[ImportFormDefinitionsRequestInner] | Body is the request payload to import form definitions (optional)
 
     try:
         # Import form definitions from export.
@@ -944,7 +944,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**List[ExportFormDefinitionsByTenant200ResponseInner]**](ExportFormDefinitionsByTenant200ResponseInner.md)| Body is the request payload to import form definitions | [optional] 
+ **body** | [**List[ImportFormDefinitionsRequestInner]**](ImportFormDefinitionsRequestInner.md)| Body is the request payload to import form definitions | [optional] 
 
 ### Return type
 
@@ -1335,7 +1335,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_form_instances_by_tenant**
-> ListFormInstancesByTenantResponse search_form_instances_by_tenant()
+> List[FormInstanceResponse] search_form_instances_by_tenant()
 
 List form instances by tenant.
 
@@ -1350,7 +1350,7 @@ No parameters required.
 import time
 import os
 import sailpoint.beta
-from sailpoint.beta.models.list_form_instances_by_tenant_response import ListFormInstancesByTenantResponse
+from sailpoint.beta.models.form_instance_response import FormInstanceResponse
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
@@ -1391,7 +1391,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**ListFormInstancesByTenantResponse**](ListFormInstancesByTenantResponse.md)
+[**List[FormInstanceResponse]**](FormInstanceResponse.md)
 
 ### Authorization
 

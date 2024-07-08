@@ -17,12 +17,13 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictInt, StrictStr
+from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
 from pydantic import Field
 from sailpoint.beta.models.role_mining_potential_role_provision_state import RoleMiningPotentialRoleProvisionState
 from sailpoint.beta.models.role_mining_potential_role_ref import RoleMiningPotentialRoleRef
+from sailpoint.beta.models.role_mining_potential_role_summary_created_by import RoleMiningPotentialRoleSummaryCreatedBy
 from sailpoint.beta.models.role_mining_role_type import RoleMiningRoleType
 from sailpoint.beta.models.role_mining_session_parameters_dto import RoleMiningSessionParametersDto
 try:
@@ -46,8 +47,12 @@ class RoleMiningPotentialRoleSummary(BaseModel):
     freshness: Optional[StrictInt] = Field(default=None, description="The freshness metric (0-100) of this potential role. Higher freshness values indicate this potential role is more distinctive compared to existing roles.")
     quality: Optional[StrictInt] = Field(default=None, description="The quality metric (0-100) of this potential role. Higher quality values indicate this potential role has high density and freshness.")
     type: Optional[RoleMiningRoleType] = None
+    created_by: Optional[RoleMiningPotentialRoleSummaryCreatedBy] = Field(default=None, alias="createdBy")
+    created_date: Optional[datetime] = Field(default=None, description="The date-time when this potential role was created.", alias="createdDate")
+    saved: Optional[StrictBool] = Field(default=False, description="The potential role's saved status")
+    description: Optional[StrictStr] = Field(default=None, description="Description of the potential role")
     session: Optional[RoleMiningSessionParametersDto] = None
-    __properties: ClassVar[List[str]] = ["id", "name", "potentialRoleRef", "identityCount", "entitlementCount", "identityGroupStatus", "provisionState", "roleId", "density", "freshness", "quality", "type", "session"]
+    __properties: ClassVar[List[str]] = ["id", "name", "potentialRoleRef", "identityCount", "entitlementCount", "identityGroupStatus", "provisionState", "roleId", "density", "freshness", "quality", "type", "createdBy", "createdDate", "saved", "description", "session"]
 
     model_config = {
         "populate_by_name": True,
@@ -89,6 +94,9 @@ class RoleMiningPotentialRoleSummary(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of potential_role_ref
         if self.potential_role_ref:
             _dict['potentialRoleRef'] = self.potential_role_ref.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of created_by
+        if self.created_by:
+            _dict['createdBy'] = self.created_by.to_dict()
         # override the default output from pydantic by calling `to_dict()` of session
         if self.session:
             _dict['session'] = self.session.to_dict()
@@ -96,6 +104,11 @@ class RoleMiningPotentialRoleSummary(BaseModel):
         # and model_fields_set contains the field
         if self.role_id is None and "role_id" in self.model_fields_set:
             _dict['roleId'] = None
+
+        # set to None if description (nullable) is None
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
+            _dict['description'] = None
 
         return _dict
 
@@ -121,6 +134,10 @@ class RoleMiningPotentialRoleSummary(BaseModel):
             "freshness": obj.get("freshness"),
             "quality": obj.get("quality"),
             "type": obj.get("type"),
+            "createdBy": RoleMiningPotentialRoleSummaryCreatedBy.from_dict(obj.get("createdBy")) if obj.get("createdBy") is not None else None,
+            "createdDate": obj.get("createdDate"),
+            "saved": obj.get("saved") if obj.get("saved") is not None else False,
+            "description": obj.get("description"),
             "session": RoleMiningSessionParametersDto.from_dict(obj.get("session")) if obj.get("session") is not None else None
         })
         return _obj

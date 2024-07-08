@@ -21,6 +21,8 @@ import json
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
 from pydantic import Field
+from sailpoint.beta.models.template_slack import TemplateSlack
+from sailpoint.beta.models.template_teams import TemplateTeams
 try:
     from typing import Self
 except ImportError:
@@ -41,7 +43,9 @@ class TemplateDtoDefault(BaseModel):
     var_from: Optional[StrictStr] = Field(default=None, description="The \"From:\" address of the default template", alias="from")
     reply_to: Optional[StrictStr] = Field(default=None, description="The \"Reply To\" field of the default template", alias="replyTo")
     description: Optional[StrictStr] = Field(default=None, description="The description of the default template")
-    __properties: ClassVar[List[str]] = ["key", "name", "medium", "locale", "subject", "header", "body", "footer", "from", "replyTo", "description"]
+    slack_template: Optional[TemplateSlack] = Field(default=None, alias="slackTemplate")
+    teams_template: Optional[TemplateTeams] = Field(default=None, alias="teamsTemplate")
+    __properties: ClassVar[List[str]] = ["key", "name", "medium", "locale", "subject", "header", "body", "footer", "from", "replyTo", "description", "slackTemplate", "teamsTemplate"]
 
     @field_validator('medium')
     def medium_validate_enum(cls, value):
@@ -90,6 +94,12 @@ class TemplateDtoDefault(BaseModel):
             },
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of slack_template
+        if self.slack_template:
+            _dict['slackTemplate'] = self.slack_template.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of teams_template
+        if self.teams_template:
+            _dict['teamsTemplate'] = self.teams_template.to_dict()
         # set to None if subject (nullable) is None
         # and model_fields_set contains the field
         if self.subject is None and "subject" in self.model_fields_set:
@@ -120,6 +130,16 @@ class TemplateDtoDefault(BaseModel):
         if self.description is None and "description" in self.model_fields_set:
             _dict['description'] = None
 
+        # set to None if slack_template (nullable) is None
+        # and model_fields_set contains the field
+        if self.slack_template is None and "slack_template" in self.model_fields_set:
+            _dict['slackTemplate'] = None
+
+        # set to None if teams_template (nullable) is None
+        # and model_fields_set contains the field
+        if self.teams_template is None and "teams_template" in self.model_fields_set:
+            _dict['teamsTemplate'] = None
+
         return _dict
 
     @classmethod
@@ -142,7 +162,9 @@ class TemplateDtoDefault(BaseModel):
             "footer": obj.get("footer"),
             "from": obj.get("from"),
             "replyTo": obj.get("replyTo"),
-            "description": obj.get("description")
+            "description": obj.get("description"),
+            "slackTemplate": TemplateSlack.from_dict(obj.get("slackTemplate")) if obj.get("slackTemplate") is not None else None,
+            "teamsTemplate": TemplateTeams.from_dict(obj.get("teamsTemplate")) if obj.get("teamsTemplate") is not None else None
         })
         return _obj
 

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **created** | **datetime** | The time when this SOD policy is created. | [optional] [readonly] 
 **modified** | **datetime** | The time when this SOD policy is modified. | [optional] [readonly] 
 **description** | **str** | Optional description of the SOD policy. | [optional] 
-**owner_ref** | [**OwnerDto**](OwnerDto.md) |  | [optional] 
+**owner_ref** | [**SodPolicyOwnerRef**](SodPolicyOwnerRef.md) |  | [optional] 
 **external_policy_reference** | **str** | Optional external policy reference. | [optional] 
 **policy_query** | **str** | Search query of the SOD policy. | [optional] 
 **compensating_controls** | **str** | Optional compensating controls (Mitigating Controls). | [optional] 

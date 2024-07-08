@@ -36,7 +36,6 @@ from sailpoint.v3.api.reports_data_extraction_api import ReportsDataExtractionAp
 from sailpoint.v3.api.requestable_objects_api import RequestableObjectsApi
 from sailpoint.v3.api.roles_api import RolesApi
 from sailpoint.v3.api.sod_policies_api import SODPoliciesApi
-from sailpoint.v3.api.sod_policy_api import SODPolicyApi
 from sailpoint.v3.api.sod_violations_api import SODViolationsApi
 from sailpoint.v3.api.saved_search_api import SavedSearchApi
 from sailpoint.v3.api.scheduled_search_api import ScheduledSearchApi

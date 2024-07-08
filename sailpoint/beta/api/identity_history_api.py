@@ -3056,9 +3056,9 @@ class IdentityHistoryApi:
     @validate_call
     def list_identity_snapshot_access_items(
         self,
-        id: Annotated[StrictStr, Field(description="The identity id")],
-        var_date: Annotated[StrictStr, Field(description="The specified date")],
-        type: Annotated[Optional[StrictStr], Field(description="The access item type")] = None,
+        id: Annotated[StrictStr, Field(description="Identity ID.")],
+        var_date: Annotated[StrictStr, Field(description="Specified date.")],
+        type: Annotated[Optional[StrictStr], Field(description="Access item type.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3072,15 +3072,15 @@ class IdentityHistoryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[ListIdentityAccessItems200ResponseInner]:
-        """Gets the list of identity access items at a given date filterd by item type
+        """Get Identity Access Items Snapshot
 
-        This method retrieves the list of identity access items at a given date filterd by item type Requires authorization scope of 'idn:identity-history:read' 
+        Use this API to get a list of identity access items at a specified date, filtered by item type.
 
-        :param id: The identity id (required)
+        :param id: Identity ID. (required)
         :type id: str
-        :param var_date: The specified date (required)
+        :param var_date: Specified date. (required)
         :type var_date: str
-        :param type: The access item type
+        :param type: Access item type.
         :type type: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3120,6 +3120,7 @@ class IdentityHistoryApi:
             '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -3136,9 +3137,9 @@ class IdentityHistoryApi:
     @validate_call
     def list_identity_snapshot_access_items_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The identity id")],
-        var_date: Annotated[StrictStr, Field(description="The specified date")],
-        type: Annotated[Optional[StrictStr], Field(description="The access item type")] = None,
+        id: Annotated[StrictStr, Field(description="Identity ID.")],
+        var_date: Annotated[StrictStr, Field(description="Specified date.")],
+        type: Annotated[Optional[StrictStr], Field(description="Access item type.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3152,15 +3153,15 @@ class IdentityHistoryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[ListIdentityAccessItems200ResponseInner]]:
-        """Gets the list of identity access items at a given date filterd by item type
+        """Get Identity Access Items Snapshot
 
-        This method retrieves the list of identity access items at a given date filterd by item type Requires authorization scope of 'idn:identity-history:read' 
+        Use this API to get a list of identity access items at a specified date, filtered by item type.
 
-        :param id: The identity id (required)
+        :param id: Identity ID. (required)
         :type id: str
-        :param var_date: The specified date (required)
+        :param var_date: Specified date. (required)
         :type var_date: str
-        :param type: The access item type
+        :param type: Access item type.
         :type type: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3200,6 +3201,7 @@ class IdentityHistoryApi:
             '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -3216,9 +3218,9 @@ class IdentityHistoryApi:
     @validate_call
     def list_identity_snapshot_access_items_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The identity id")],
-        var_date: Annotated[StrictStr, Field(description="The specified date")],
-        type: Annotated[Optional[StrictStr], Field(description="The access item type")] = None,
+        id: Annotated[StrictStr, Field(description="Identity ID.")],
+        var_date: Annotated[StrictStr, Field(description="Specified date.")],
+        type: Annotated[Optional[StrictStr], Field(description="Access item type.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3232,15 +3234,15 @@ class IdentityHistoryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Gets the list of identity access items at a given date filterd by item type
+        """Get Identity Access Items Snapshot
 
-        This method retrieves the list of identity access items at a given date filterd by item type Requires authorization scope of 'idn:identity-history:read' 
+        Use this API to get a list of identity access items at a specified date, filtered by item type.
 
-        :param id: The identity id (required)
+        :param id: Identity ID. (required)
         :type id: str
-        :param var_date: The specified date (required)
+        :param var_date: Specified date. (required)
         :type var_date: str
-        :param type: The access item type
+        :param type: Access item type.
         :type type: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3280,6 +3282,7 @@ class IdentityHistoryApi:
             '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(

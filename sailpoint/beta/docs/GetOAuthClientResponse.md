@@ -22,6 +22,8 @@ Name | Type | Description | Notes
 **claims_supported** | **bool** | An indicator of whether the API Client supports the serialization of SAML claims when used with the authorization_code flow | 
 **created** | **datetime** | The date and time, down to the millisecond, when the API Client was created | 
 **modified** | **datetime** | The date and time, down to the millisecond, when the API Client was last updated | 
+**secret** | **str** |  | [optional] 
+**metadata** | **str** |  | [optional] 
 **last_used** | **datetime** | The date and time, down to the millisecond, when this API Client was last used to generate an access token. This timestamp does not get updated on every API Client usage, but only once a day. This property can be useful for identifying which API Clients are no longer actively used and can be removed. | [optional] 
 **scope** | **List[str]** | Scopes of the API Client. | 
 

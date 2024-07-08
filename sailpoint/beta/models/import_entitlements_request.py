@@ -30,8 +30,8 @@ class ImportEntitlementsRequest(BaseModel):
     """
     ImportEntitlementsRequest
     """ # noqa: E501
-    csv_file: Optional[Union[StrictBytes, StrictStr]] = Field(default=None, description="The CSV file containing the source entitlements to aggregate.", alias="csvFile")
-    __properties: ClassVar[List[str]] = ["csvFile"]
+    file: Optional[Union[StrictBytes, StrictStr]] = Field(default=None, description="The CSV file containing the source entitlements to aggregate.")
+    __properties: ClassVar[List[str]] = ["file"]
 
     model_config = {
         "populate_by_name": True,
@@ -82,7 +82,7 @@ class ImportEntitlementsRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "csvFile": obj.get("csvFile")
+            "file": obj.get("file")
         })
         return _obj
 

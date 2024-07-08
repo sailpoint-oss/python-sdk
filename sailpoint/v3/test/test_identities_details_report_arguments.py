@@ -36,14 +36,11 @@ class TestIdentitiesDetailsReportArguments(unittest.TestCase):
         model = IdentitiesDetailsReportArguments()
         if include_optional:
             return IdentitiesDetailsReportArguments(
-                correlated_only = True,
-                default_s3_bucket = True,
-                s3_bucket = 'the-dev-bucket'
+                correlated_only = True
             )
         else:
             return IdentitiesDetailsReportArguments(
                 correlated_only = True,
-                default_s3_bucket = True,
         )
         """
 

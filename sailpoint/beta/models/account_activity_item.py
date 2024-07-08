@@ -49,7 +49,7 @@ class AccountActivityItem(BaseModel):
     source_id: Optional[StrictStr] = Field(default=None, description="Id of Source to which account activity applies", alias="sourceId")
     account_request_info: Optional[AccountRequestInfo] = Field(default=None, alias="accountRequestInfo")
     client_metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Arbitrary key-value pairs, if any were included in the corresponding access request item", alias="clientMetadata")
-    remove_date: Optional[datetime] = Field(default=None, description="The date the role or access profile is no longer assigned to the specified identity.", alias="removeDate")
+    remove_date: Optional[datetime] = Field(default=None, description="The date the role or access profile or entitlement is no longer assigned to the specified identity.", alias="removeDate")
     __properties: ClassVar[List[str]] = ["id", "name", "requested", "approvalStatus", "provisioningStatus", "requesterComment", "reviewerIdentitySummary", "reviewerComment", "operation", "attribute", "value", "nativeIdentity", "sourceId", "accountRequestInfo", "clientMetadata", "removeDate"]
 
     model_config = {
@@ -167,7 +167,7 @@ class AccountActivityItem(BaseModel):
             "id": obj.get("id"),
             "name": obj.get("name"),
             "requested": obj.get("requested"),
-            "approvalStatus": WorkItemState.from_dict(obj.get("approvalStatus")) if obj.get("approvalStatus") is not None else None,
+            "approvalStatus": AccountActivityApprovalStatus.from_dict(obj.get("approvalStatus")) if obj.get("approvalStatus") is not None else None,
             "provisioningStatus": obj.get("provisioningStatus"),
             "requesterComment": Comment.from_dict(obj.get("requesterComment")) if obj.get("requesterComment") is not None else None,
             "reviewerIdentitySummary": IdentitySummary.from_dict(obj.get("reviewerIdentitySummary")) if obj.get("reviewerIdentitySummary") is not None else None,

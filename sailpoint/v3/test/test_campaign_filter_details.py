@@ -36,9 +36,8 @@ class TestCampaignFilterDetails(unittest.TestCase):
         model = CampaignFilterDetails()
         if include_optional:
             return CampaignFilterDetails(
-                id = 'e9f9a1397b842fd5a65842087040d3ac',
                 name = 'Identity Attribute Campaign Filter',
-                description = 'Campaign filter to certify data based on specified property of Identity Attribute.',
+                description = 'Campaign filter to certify data based on an identity attribute's specified property.',
                 owner = 'SailPoint Support',
                 mode = INCLUSION,
                 criteria_list = [{type=IDENTITY_ATTRIBUTE, property=displayName, value=support, operation=CONTAINS, negateResult=false, shortCircuit=false, recordChildMatches=false, id=null, suppressMatchedItems=false, children=null}]
@@ -46,7 +45,6 @@ class TestCampaignFilterDetails(unittest.TestCase):
         else:
             return CampaignFilterDetails(
                 name = 'Identity Attribute Campaign Filter',
-                description = 'Campaign filter to certify data based on specified property of Identity Attribute.',
                 owner = 'SailPoint Support',
                 mode = INCLUSION,
         )

@@ -28,11 +28,11 @@ except ImportError:
 
 class SourceCluster(BaseModel):
     """
-    Reference to the associated Cluster
+    Reference to the source's associated cluster.
     """ # noqa: E501
-    type: StrictStr = Field(description="The type of object being referenced")
-    id: StrictStr = Field(description="ID of the cluster")
-    name: StrictStr = Field(description="Human-readable display name of the cluster")
+    type: StrictStr = Field(description="Type of object being referenced.")
+    id: StrictStr = Field(description="Cluster ID.")
+    name: StrictStr = Field(description="Cluster's human-readable display name.")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')

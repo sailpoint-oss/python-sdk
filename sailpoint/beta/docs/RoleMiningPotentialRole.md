@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**created_by** | [**EntityCreatedByDTO**](EntityCreatedByDTO.md) |  | [optional] 
+**created_by** | [**RoleMiningSessionResponseCreatedBy**](RoleMiningSessionResponseCreatedBy.md) |  | [optional] 
 **density** | **int** | The density of a potential role. | [optional] 
 **description** | **str** | The description of a potential role. | [optional] 
 **entitlement_count** | **int** | The number of entitlements in a potential role. | [optional] 
@@ -21,6 +21,9 @@ Name | Type | Description | Notes
 **saved** | **bool** | The potential role&#39;s saved status. | [optional] 
 **session** | [**RoleMiningSessionParametersDto**](RoleMiningSessionParametersDto.md) |  | [optional] 
 **type** | [**RoleMiningRoleType**](RoleMiningRoleType.md) |  | [optional] 
+**id** | **str** | Id of the potential role | [optional] 
+**created_date** | **datetime** | The date-time when this potential role was created. | [optional] 
+**modified_date** | **datetime** | The date-time when this potential role was modified. | [optional] 
 
 ## Example
 

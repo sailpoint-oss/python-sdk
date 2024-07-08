@@ -19,9 +19,10 @@ import json
 
 
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictInt, StrictStr
+from pydantic import BaseModel, StrictInt
 from pydantic import Field
 from sailpoint.beta.models.form_definition_response import FormDefinitionResponse
+from sailpoint.beta.models.form_definition_self_import_export_dto import FormDefinitionSelfImportExportDto
 try:
     from typing import Self
 except ImportError:
@@ -32,7 +33,7 @@ class ExportFormDefinitionsByTenant200ResponseInner(BaseModel):
     ExportFormDefinitionsByTenant200ResponseInner
     """ # noqa: E501
     object: Optional[FormDefinitionResponse] = None
-    var_self: Optional[StrictStr] = Field(default=None, alias="self")
+    var_self: Optional[FormDefinitionSelfImportExportDto] = Field(default=None, alias="self")
     version: Optional[StrictInt] = None
     __properties: ClassVar[List[str]] = ["object", "self", "version"]
 
@@ -76,6 +77,9 @@ class ExportFormDefinitionsByTenant200ResponseInner(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of object
         if self.object:
             _dict['object'] = self.object.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of var_self
+        if self.var_self:
+            _dict['self'] = self.var_self.to_dict()
         return _dict
 
     @classmethod
@@ -89,7 +93,7 @@ class ExportFormDefinitionsByTenant200ResponseInner(BaseModel):
 
         _obj = cls.model_validate({
             "object": FormDefinitionResponse.from_dict(obj.get("object")) if obj.get("object") is not None else None,
-            "self": obj.get("self"),
+            "self": FormDefinitionSelfImportExportDto.from_dict(obj.get("self")) if obj.get("self") is not None else None,
             "version": obj.get("version")
         })
         return _obj

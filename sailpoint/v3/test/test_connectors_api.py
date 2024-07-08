@@ -36,12 +36,14 @@ class TestConnectorsApi(unittest.TestCase):
     def test_delete_custom_connector(self) -> None:
         """Test case for delete_custom_connector
 
+        Deletes connector by script name
         """
         pass
 
     def test_get_connector(self) -> None:
         """Test case for get_connector
 
+        Gets connector by script name
         """
         pass
 
@@ -103,6 +105,7 @@ class TestConnectorsApi(unittest.TestCase):
     def test_update_connector(self) -> None:
         """Test case for update_connector
 
+        Update connector by script name
         """
         pass
 

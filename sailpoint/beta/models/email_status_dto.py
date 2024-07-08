@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr, field_validator
+from pydantic import BaseModel, StrictBool, StrictStr, field_validator
 from pydantic import Field
 try:
     from typing import Self
@@ -32,8 +32,9 @@ class EmailStatusDto(BaseModel):
     """ # noqa: E501
     id: Optional[StrictStr] = None
     email: Optional[StrictStr] = None
+    is_verified_by_domain: Optional[StrictBool] = Field(default=None, alias="isVerifiedByDomain")
     verification_status: Optional[StrictStr] = Field(default=None, alias="verificationStatus")
-    __properties: ClassVar[List[str]] = ["id", "email", "verificationStatus"]
+    __properties: ClassVar[List[str]] = ["id", "email", "isVerifiedByDomain", "verificationStatus"]
 
     @field_validator('verification_status')
     def verification_status_validate_enum(cls, value):
@@ -82,6 +83,11 @@ class EmailStatusDto(BaseModel):
             },
             exclude_none=True,
         )
+        # set to None if id (nullable) is None
+        # and model_fields_set contains the field
+        if self.id is None and "id" in self.model_fields_set:
+            _dict['id'] = None
+
         return _dict
 
     @classmethod
@@ -96,6 +102,7 @@ class EmailStatusDto(BaseModel):
         _obj = cls.model_validate({
             "id": obj.get("id"),
             "email": obj.get("email"),
+            "isVerifiedByDomain": obj.get("isVerifiedByDomain"),
             "verificationStatus": obj.get("verificationStatus")
         })
         return _obj

@@ -1,14 +1,14 @@
 # SourceOwner
 
-Reference to an owning Identity Object
+Reference to identity object who owns the source.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **str** | The type of object being referenced | [optional] 
-**id** | **str** | ID of the identity | [optional] 
-**name** | **str** | Human-readable display name of the identity | [optional] 
+**type** | **str** | Type of object being referenced. | [optional] 
+**id** | **str** | Owner identity&#39;s ID. | [optional] 
+**name** | **str** | Owner identity&#39;s human-readable display name. | [optional] 
 
 ## Example
 

@@ -360,7 +360,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """delete_custom_connector
+        """Deletes connector by script name
 
         Delete a custom connector that using its script name. A token with ORG_ADMIN authority is required to call this API.
 
@@ -433,7 +433,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """delete_custom_connector
+        """Deletes connector by script name
 
         Delete a custom connector that using its script name. A token with ORG_ADMIN authority is required to call this API.
 
@@ -506,7 +506,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """delete_custom_connector
+        """Deletes connector by script name
 
         Delete a custom connector that using its script name. A token with ORG_ADMIN authority is required to call this API.
 
@@ -638,7 +638,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ConnectorDetail:
-        """get_connector
+        """Gets connector by script name
 
         Fetches a connector that using its script name. A token with ORG_ADMIN authority is required to call this API.
 
@@ -715,7 +715,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ConnectorDetail]:
-        """get_connector
+        """Gets connector by script name
 
         Fetches a connector that using its script name. A token with ORG_ADMIN authority is required to call this API.
 
@@ -792,7 +792,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_connector
+        """Gets connector by script name
 
         Fetches a connector that using its script name. A token with ORG_ADMIN authority is required to call this API.
 
@@ -1523,7 +1523,7 @@ class ConnectorsApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/connectors/{scriptName}/list',
+            resource_path='/connectors',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -3626,7 +3626,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ConnectorDetail:
-        """update_connector
+        """Update connector by script name
 
         Patch a custom connector that using its script name. A token with ORG_ADMIN authority is required to call this API. The following fields are patchable: * connectorMetadata * applicationXml * correlationConfigXml * sourceConfigXml
 
@@ -3703,7 +3703,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ConnectorDetail]:
-        """update_connector
+        """Update connector by script name
 
         Patch a custom connector that using its script name. A token with ORG_ADMIN authority is required to call this API. The following fields are patchable: * connectorMetadata * applicationXml * correlationConfigXml * sourceConfigXml
 
@@ -3780,7 +3780,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """update_connector
+        """Update connector by script name
 
         Patch a custom connector that using its script name. A token with ORG_ADMIN authority is required to call this API. The following fields are patchable: * connectorMetadata * applicationXml * correlationConfigXml * sourceConfigXml
 

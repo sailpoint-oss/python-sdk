@@ -5,10 +5,10 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_custom_connector**](ConnectorsApi.md#create_custom_connector) | **POST** /connectors | Create custom connector
-[**delete_custom_connector**](ConnectorsApi.md#delete_custom_connector) | **DELETE** /connectors/{scriptName} | 
-[**get_connector**](ConnectorsApi.md#get_connector) | **GET** /connectors/{scriptName} | 
+[**delete_custom_connector**](ConnectorsApi.md#delete_custom_connector) | **DELETE** /connectors/{scriptName} | Deletes connector by script name
+[**get_connector**](ConnectorsApi.md#get_connector) | **GET** /connectors/{scriptName} | Gets connector by script name
 [**get_connector_correlation_config**](ConnectorsApi.md#get_connector_correlation_config) | **GET** /connectors/{scriptName}/correlation-config | 
-[**get_connector_list**](ConnectorsApi.md#get_connector_list) | **GET** /connectors/{scriptName}/list | Gets connector list
+[**get_connector_list**](ConnectorsApi.md#get_connector_list) | **GET** /connectors | Gets connector list
 [**get_connector_source_config**](ConnectorsApi.md#get_connector_source_config) | **GET** /connectors/{scriptName}/source-config | 
 [**get_connector_source_template**](ConnectorsApi.md#get_connector_source_template) | **GET** /connectors/{scriptName}/source-template | 
 [**get_connector_translations**](ConnectorsApi.md#get_connector_translations) | **GET** /connectors/{scriptName}/translations/{locale} | 
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 [**put_source_config**](ConnectorsApi.md#put_source_config) | **PUT** /connectors/{scriptName}/source-config | 
 [**put_source_template**](ConnectorsApi.md#put_source_template) | **PUT** /connectors/{scriptName}/source-template | 
 [**put_translations**](ConnectorsApi.md#put_translations) | **PUT** /connectors/{scriptName}/translations/{locale} | 
-[**update_connector**](ConnectorsApi.md#update_connector) | **PATCH** /connectors/{scriptName} | 
+[**update_connector**](ConnectorsApi.md#update_connector) | **PATCH** /connectors/{scriptName} | Update connector by script name
 
 
 # **create_custom_connector**
@@ -109,7 +109,7 @@ Name | Type | Description  | Notes
 # **delete_custom_connector**
 > delete_custom_connector(script_name)
 
-
+Deletes connector by script name
 
 Delete a custom connector that using its script name. A token with ORG_ADMIN authority is required to call this API.
 
@@ -147,6 +147,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
     script_name = 'aScriptName' # str | The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
 
     try:
+        # Deletes connector by script name
         api_instance.delete_custom_connector(script_name)
     except Exception as e:
         print("Exception when calling ConnectorsApi->delete_custom_connector: %s\n" % e)
@@ -191,7 +192,7 @@ void (empty response body)
 # **get_connector**
 > ConnectorDetail get_connector(script_name, locale=locale)
 
-
+Gets connector by script name
 
 Fetches a connector that using its script name. A token with ORG_ADMIN authority is required to call this API.
 
@@ -231,6 +232,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
     locale = 'de' # str | The locale to apply to the config. If no viable locale is given, it will default to \"en\" (optional)
 
     try:
+        # Gets connector by script name
         api_response = api_instance.get_connector(script_name, locale=locale)
         print("The response of ConnectorsApi->get_connector:\n")
         pprint(api_response)
@@ -1058,7 +1060,7 @@ Name | Type | Description  | Notes
 # **update_connector**
 > ConnectorDetail update_connector(script_name, json_patch_operation)
 
-
+Update connector by script name
 
 Patch a custom connector that using its script name. A token with ORG_ADMIN authority is required to call this API. The following fields are patchable: * connectorMetadata * applicationXml * correlationConfigXml * sourceConfigXml
 
@@ -1099,6 +1101,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
     json_patch_operation = [sailpoint.v3.JsonPatchOperation()] # List[JsonPatchOperation] | A list of connector detail update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
     try:
+        # Update connector by script name
         api_response = api_instance.update_connector(script_name, json_patch_operation)
         print("The response of ConnectorsApi->update_connector:\n")
         pprint(api_response)

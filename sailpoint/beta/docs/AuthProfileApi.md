@@ -92,7 +92,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_profile_config_list**
-> AuthProfileSummary get_profile_config_list()
+> List[AuthProfileSummary] get_profile_config_list()
 
 Get list of Auth Profiles.
 
@@ -148,7 +148,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**AuthProfileSummary**](AuthProfileSummary.md)
+[**List[AuthProfileSummary]**](AuthProfileSummary.md)
 
 ### Authorization
 

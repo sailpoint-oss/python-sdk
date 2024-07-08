@@ -24,6 +24,7 @@ from pydantic import Field
 from sailpoint.beta.models.workflow_all_of_creator import WorkflowAllOfCreator
 from sailpoint.beta.models.workflow_body_owner import WorkflowBodyOwner
 from sailpoint.beta.models.workflow_definition import WorkflowDefinition
+from sailpoint.beta.models.workflow_modified_by import WorkflowModifiedBy
 from sailpoint.beta.models.workflow_trigger import WorkflowTrigger
 try:
     from typing import Self
@@ -41,11 +42,13 @@ class Workflow(BaseModel):
     enabled: Optional[StrictBool] = Field(default=False, description="Enable or disable the workflow.  Workflows cannot be created in an enabled state.")
     trigger: Optional[WorkflowTrigger] = None
     id: Optional[StrictStr] = Field(default=None, description="Workflow ID. This is a UUID generated upon creation.")
+    modified: Optional[datetime] = Field(default=None, description="The date and time the workflow was modified.")
+    modified_by: Optional[WorkflowModifiedBy] = Field(default=None, alias="modifiedBy")
     execution_count: Optional[StrictInt] = Field(default=None, description="The number of times this workflow has been executed.", alias="executionCount")
     failure_count: Optional[StrictInt] = Field(default=None, description="The number of times this workflow has failed during execution.", alias="failureCount")
     created: Optional[datetime] = Field(default=None, description="The date and time the workflow was created.")
     creator: Optional[WorkflowAllOfCreator] = None
-    __properties: ClassVar[List[str]] = ["name", "owner", "description", "definition", "enabled", "trigger", "id", "executionCount", "failureCount", "created", "creator"]
+    __properties: ClassVar[List[str]] = ["name", "owner", "description", "definition", "enabled", "trigger", "id", "modified", "modifiedBy", "executionCount", "failureCount", "created", "creator"]
 
     model_config = {
         "populate_by_name": True,
@@ -93,6 +96,9 @@ class Workflow(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of trigger
         if self.trigger:
             _dict['trigger'] = self.trigger.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of modified_by
+        if self.modified_by:
+            _dict['modifiedBy'] = self.modified_by.to_dict()
         # override the default output from pydantic by calling `to_dict()` of creator
         if self.creator:
             _dict['creator'] = self.creator.to_dict()
@@ -115,6 +121,8 @@ class Workflow(BaseModel):
             "enabled": obj.get("enabled") if obj.get("enabled") is not None else False,
             "trigger": WorkflowTrigger.from_dict(obj.get("trigger")) if obj.get("trigger") is not None else None,
             "id": obj.get("id"),
+            "modified": obj.get("modified"),
+            "modifiedBy": WorkflowModifiedBy.from_dict(obj.get("modifiedBy")) if obj.get("modifiedBy") is not None else None,
             "executionCount": obj.get("executionCount"),
             "failureCount": obj.get("failureCount"),
             "created": obj.get("created"),

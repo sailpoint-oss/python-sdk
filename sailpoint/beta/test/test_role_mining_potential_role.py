@@ -36,9 +36,7 @@ class TestRoleMiningPotentialRole(unittest.TestCase):
         model = RoleMiningPotentialRole()
         if include_optional:
             return RoleMiningPotentialRole(
-                created_by = sailpoint.beta.models.entity_created_by_dto.EntityCreatedByDTO(
-                    id = '2c918090761a5aac0176215c46a62d58', 
-                    display_name = 'Ashley.Pierce', ),
+                created_by = None,
                 density = 75,
                 description = 'Potential Role for Accounting dept',
                 entitlement_count = 25,
@@ -69,7 +67,10 @@ class TestRoleMiningPotentialRole(unittest.TestCase):
                     type = 'SPECIALIZED', 
                     state = 'CREATED', 
                     scoping_method = 'MANUAL', ),
-                type = 'SPECIALIZED'
+                type = 'SPECIALIZED',
+                id = 'e0cc5d7d-bf7f-4f81-b2af-8885b09d9923',
+                created_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                modified_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
             )
         else:
             return RoleMiningPotentialRole(

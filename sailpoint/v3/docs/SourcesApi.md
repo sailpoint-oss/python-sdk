@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_provisioning_policy**](SourcesApi.md#create_provisioning_policy) | **POST** /sources/{sourceId}/provisioning-policies | Create Provisioning Policy
 [**create_source**](SourcesApi.md#create_source) | **POST** /sources | Creates a source in IdentityNow.
-[**create_source_schema**](SourcesApi.md#create_source_schema) | **POST** /sources/{sourceId}/schemas | Create Schema on a Source
+[**create_source_schema**](SourcesApi.md#create_source_schema) | **POST** /sources/{sourceId}/schemas | Create Schema on Source
 [**delete_provisioning_policy**](SourcesApi.md#delete_provisioning_policy) | **DELETE** /sources/{sourceId}/provisioning-policies/{usageType} | Delete Provisioning Policy by UsageType
 [**delete_source**](SourcesApi.md#delete_source) | **DELETE** /sources/{id} | Delete Source by ID
 [**delete_source_schema**](SourcesApi.md#delete_source_schema) | **DELETE** /sources/{sourceId}/schemas/{schemaId} | Delete Source Schema by ID
@@ -16,11 +16,11 @@ Method | HTTP request | Description
 [**get_source**](SourcesApi.md#get_source) | **GET** /sources/{id} | Get Source by ID
 [**get_source_health**](SourcesApi.md#get_source_health) | **GET** /sources/{sourceId}/source-health | Fetches source health by id
 [**get_source_schema**](SourcesApi.md#get_source_schema) | **GET** /sources/{sourceId}/schemas/{schemaId} | Get Source Schema by ID
+[**get_source_schemas**](SourcesApi.md#get_source_schemas) | **GET** /sources/{sourceId}/schemas | List Schemas on Source
 [**import_accounts_schema**](SourcesApi.md#import_accounts_schema) | **POST** /sources/{id}/schemas/accounts | Uploads source accounts schema template
 [**import_connector_file**](SourcesApi.md#import_connector_file) | **POST** /sources/{sourceId}/upload-connector-file | Upload connector file to source
 [**import_entitlements_schema**](SourcesApi.md#import_entitlements_schema) | **POST** /sources/{id}/schemas/entitlements | Uploads source entitlements schema template
 [**list_provisioning_policies**](SourcesApi.md#list_provisioning_policies) | **GET** /sources/{sourceId}/provisioning-policies | Lists ProvisioningPolicies
-[**list_source_schemas**](SourcesApi.md#list_source_schemas) | **GET** /sources/{sourceId}/schemas | List Schemas on a Source
 [**list_sources**](SourcesApi.md#list_sources) | **GET** /sources | Lists all sources in IdentityNow.
 [**put_provisioning_policy**](SourcesApi.md#put_provisioning_policy) | **PUT** /sources/{sourceId}/provisioning-policies/{usageType} | Update Provisioning Policy by UsageType
 [**put_source**](SourcesApi.md#put_source) | **PUT** /sources/{id} | Update Source (Full)
@@ -209,9 +209,9 @@ Name | Type | Description  | Notes
 # **create_source_schema**
 > ModelSchema create_source_schema(source_id, model_schema)
 
-Create Schema on a Source
+Create Schema on Source
 
-Creates a new Schema on the specified Source in IdentityNow. 
+Use this API to create a new schema on the specified source in Identity Security Cloud (ISC). 
 
 ### Example
 
@@ -245,11 +245,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.SourcesApi(api_client)
-    source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id.
+    source_id = '2c9180835d191a86015d28455b4a2329' # str | Source ID.
     model_schema = sailpoint.v3.ModelSchema() # ModelSchema | 
 
     try:
-        # Create Schema on a Source
+        # Create Schema on Source
         api_response = api_instance.create_source_schema(source_id, model_schema)
         print("The response of SourcesApi->create_source_schema:\n")
         pprint(api_response)
@@ -264,7 +264,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **source_id** | **str**| The Source id. | 
+ **source_id** | **str**| Source ID. | 
  **model_schema** | [**ModelSchema**](ModelSchema.md)|  | 
 
 ### Return type
@@ -284,7 +284,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | The Schema was successfully created on the specified Source. |  -  |
+**201** | The schema was successfully created on the specified source. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -384,7 +384,7 @@ void (empty response body)
 
 Delete Source by ID
 
-This end-point deletes a specific source in IdentityNow. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. All of accounts on the source will be removed first, then the source will be deleted. Actual status of task execution can be retrieved via method GET `/task-status/{id}`
+Use this API to delete a specific source in Identity Security Cloud (ISC). The API removes all the accounts on the source first, and then it deletes the source. You can retrieve the actual task execution status with this method: GET `/task-status/{id}` A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
 ### Example
 
@@ -418,7 +418,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.SourcesApi(api_client)
-    id = '2c9180835d191a86015d28455b4a2329' # str | The Source id
+    id = '2c9180835d191a86015d28455b4a2329' # str | Source ID.
 
     try:
         # Delete Source by ID
@@ -436,7 +436,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The Source id | 
+ **id** | **str**| Source ID. | 
 
 ### Return type
 
@@ -810,7 +810,7 @@ Name | Type | Description  | Notes
 
 Get Source by ID
 
-This end-point gets a specific source in IdentityNow. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+Use this API to get a source by a specified ID in Identity Security Cloud (ISC). A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
 ### Example
 
@@ -844,7 +844,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.SourcesApi(api_client)
-    id = '2c9180835d191a86015d28455b4a2329' # str | The Source id
+    id = '2c9180835d191a86015d28455b4a2329' # str | Source ID.
 
     try:
         # Get Source by ID
@@ -862,7 +862,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The Source id | 
+ **id** | **str**| Source ID. | 
 
 ### Return type
 
@@ -881,7 +881,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | A Source object |  -  |
+**200** | Source object. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -1056,6 +1056,94 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | The requested Schema was successfully retrieved. |  -  |
+**400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
+**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**404** | Not Found - returned if the request URL refers to a resource or object that does not exist |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_source_schemas**
+> List[ModelSchema] get_source_schemas(source_id, include_types=include_types)
+
+List Schemas on Source
+
+Use this API to list the schemas that exist on the specified source in Identity Security Cloud (ISC). 
+
+### Example
+
+* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (UserContextAuth):
+
+```python
+import time
+import os
+import sailpoint.v3
+from sailpoint.v3.models.model_schema import ModelSchema
+from sailpoint.v3.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sailpoint.v3.Configuration(
+    host = "https://sailpoint.api.identitynow.com/v3"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with sailpoint.v3.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sailpoint.v3.SourcesApi(api_client)
+    source_id = '2c9180835d191a86015d28455b4a2329' # str | Source ID.
+    include_types = 'group' # str | If this is set to `group`, the API filters the account schema and only returns only group schemas. If this is set to `user`, the API returns the account schema for the source.  (optional)
+
+    try:
+        # List Schemas on Source
+        api_response = api_instance.get_source_schemas(source_id, include_types=include_types)
+        print("The response of SourcesApi->get_source_schemas:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SourcesApi->get_source_schemas: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **source_id** | **str**| Source ID. | 
+ **include_types** | **str**| If this is set to &#x60;group&#x60;, the API filters the account schema and only returns only group schemas. If this is set to &#x60;user&#x60;, the API returns the account schema for the source.  | [optional] 
+
+### Return type
+
+[**List[ModelSchema]**](ModelSchema.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The schemas were successfully retrieved. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -1414,94 +1502,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_source_schemas**
-> List[ModelSchema] list_source_schemas(source_id, include_types=include_types)
-
-List Schemas on a Source
-
-Lists the Schemas that exist on the specified Source in IdentityNow. 
-
-### Example
-
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
-
-```python
-import time
-import os
-import sailpoint.v3
-from sailpoint.v3.models.model_schema import ModelSchema
-from sailpoint.v3.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
-# See configuration.py for a list of all supported configuration parameters.
-configuration = sailpoint.v3.Configuration(
-    host = "https://sailpoint.api.identitynow.com/v3"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with sailpoint.v3.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = sailpoint.v3.SourcesApi(api_client)
-    source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source ID.
-    include_types = 'group' # str | If set to 'group', then the account schema is filtered and only group schemas are returned. Only a value of 'group' is recognized. (optional)
-
-    try:
-        # List Schemas on a Source
-        api_response = api_instance.list_source_schemas(source_id, include_types=include_types)
-        print("The response of SourcesApi->list_source_schemas:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling SourcesApi->list_source_schemas: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **source_id** | **str**| The Source ID. | 
- **include_types** | **str**| If set to &#39;group&#39;, then the account schema is filtered and only group schemas are returned. Only a value of &#39;group&#39; is recognized. | [optional] 
-
-### Return type
-
-[**List[ModelSchema]**](ModelSchema.md)
-
-### Authorization
-
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | The Schemas were successfully retrieved. |  -  |
-**400** | Client Error - Returned if the request body is invalid. |  -  |
-**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
-**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
-**404** | Not Found - returned if the request URL refers to a resource or object that does not exist |  -  |
-**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
-**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **list_sources**
 > List[Source] list_sources(limit=limit, offset=offset, count=count, filters=filters, sorters=sorters, for_subadmin=for_subadmin)
 
@@ -1694,7 +1694,7 @@ Name | Type | Description  | Notes
 
 Update Source (Full)
 
-This API updates a source in IdentityNow, using a full object representation. In other words, the existing Source configuration is completely replaced.  Some fields are immutable and cannot be changed, such as:  * id * type * authoritative * connector * connectorClass * passwordPolicies  Attempts to modify these fields will result in a 400 error.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. 
+Use this API to update a source in Identity Security Cloud (ISC), using a full object representation. This means that when you use this API, it completely replaces the existing source configuration.  These fields are immutable, so they cannot be changed:  * id * type * authoritative * connector * connectorClass * passwordPolicies  Attempts to modify these fields will result in a 400 error.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. 
 
 ### Example
 
@@ -1728,7 +1728,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.SourcesApi(api_client)
-    id = '2c9180835d191a86015d28455b4a2329' # str | The Source id
+    id = '2c9180835d191a86015d28455b4a2329' # str | Source ID.
     source = sailpoint.v3.Source() # Source | 
 
     try:
@@ -1747,7 +1747,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The Source id | 
+ **id** | **str**| Source ID. | 
  **source** | [**Source**](Source.md)|  | 
 
 ### Return type
@@ -1767,7 +1767,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Updated Source object. Any passwords will only show the the encrypted cipher-text, as they are not decrypt-able in IdentityNow cloud-based services, per IdentityNow security design. |  -  |
+**200** | Updated Source object. Any passwords will only show the the encrypted cipher-text so that they aren&#39;t decryptable in Identity Security Cloud (ISC) cloud-based services, per ISC security design. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -2052,7 +2052,7 @@ Name | Type | Description  | Notes
 
 Update Source (Partial)
 
-This API partially updates a source in IdentityNow, using a list of patch operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Some fields are immutable and cannot be changed, such as:  * id * type * authoritative * created * modified * connector * connectorClass * passwordPolicies  Attempts to modify these fields will result in a 400 error.  A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or API authority is required to call this API. 
+Use this API to partially update a source in Identity Security Cloud (ISC), using a list of patch operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  These fields are immutable, so they cannot be changed:  * id * type * authoritative * created * modified * connector * connectorClass * passwordPolicies  Attempts to modify these fields will result in a 400 error.  A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or API authority is required to call this API. 
 
 ### Example
 
@@ -2087,8 +2087,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.SourcesApi(api_client)
-    id = '2c9180835d191a86015d28455b4a2329' # str | The Source id
-    json_patch_operation = [{op=replace, path=/description, value=new description}] # List[JsonPatchOperation] | A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in IdentityNow.
+    id = '2c9180835d191a86015d28455b4a2329' # str | Source ID.
+    json_patch_operation = [{op=replace, path=/description, value=new description}] # List[JsonPatchOperation] | A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in Identity Security Cloud (ISC).
 
     try:
         # Update Source (Partial)
@@ -2106,8 +2106,8 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The Source id | 
- **json_patch_operation** | [**List[JsonPatchOperation]**](JsonPatchOperation.md)| A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in IdentityNow. | 
+ **id** | **str**| Source ID. | 
+ **json_patch_operation** | [**List[JsonPatchOperation]**](JsonPatchOperation.md)| A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in Identity Security Cloud (ISC). | 
 
 ### Return type
 
@@ -2126,7 +2126,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Updated Source object. Any passwords will only show the the encrypted cipher-text, as they are not decrypt-able in IdentityNow cloud-based services, per IdentityNow security design. |  -  |
+**200** | Updated Source object. Any passwords will only show the the encrypted cipher-text so that they aren&#39;t decryptable in Identity Security Cloud (ISC) cloud-based services, per ISC security design. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |

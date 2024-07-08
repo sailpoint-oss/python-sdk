@@ -36,7 +36,7 @@ class TestImportEntitlementsRequest(unittest.TestCase):
         model = ImportEntitlementsRequest()
         if include_optional:
             return ImportEntitlementsRequest(
-                csv_file = bytes(b'blah')
+                file = bytes(b'blah')
             )
         else:
             return ImportEntitlementsRequest(

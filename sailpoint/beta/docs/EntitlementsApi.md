@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**delete_access_model_metadata_from_entitlement**](EntitlementsApi.md#delete_access_model_metadata_from_entitlement) | **DELETE** /entitlements/{id}/access-model-metadata/{attributeKey}/values/{attributeValue} | Remove metadata from an entitlement.
 [**get_entitlement**](EntitlementsApi.md#get_entitlement) | **GET** /entitlements/{id} | Get an entitlement
 [**get_entitlement_request_config**](EntitlementsApi.md#get_entitlement_request_config) | **GET** /entitlements/{id}/entitlement-request-config | Get Entitlement Request Config
-[**import_entitlements**](EntitlementsApi.md#import_entitlements) | **POST** /entitlements/aggregate/sources/{id} | Aggregate Entitlements
+[**import_entitlements_by_source**](EntitlementsApi.md#import_entitlements_by_source) | **POST** /entitlements/aggregate/sources/{id} | Aggregate Entitlements
 [**list_entitlement_children**](EntitlementsApi.md#list_entitlement_children) | **GET** /entitlements/{id}/children | List of entitlements children
 [**list_entitlement_parents**](EntitlementsApi.md#list_entitlement_parents) | **GET** /entitlements/{id}/parents | List of entitlements parents
 [**list_entitlements**](EntitlementsApi.md#list_entitlements) | **GET** /entitlements | Gets a list of entitlements.
@@ -365,12 +365,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **import_entitlements**
-> LoadEntitlementTask import_entitlements(id, csv_file=csv_file)
+# **import_entitlements_by_source**
+> LoadEntitlementTask import_entitlements_by_source(id, csv_file=csv_file)
 
 Aggregate Entitlements
 
-Starts an entitlement aggregation on the specified source.   If the target source is a direct connection, then the request body must be empty. You will also need to make sure the Content-Type header is not set. If you set the Content-Type header without specifying a body, then you will receive a 500 error.  If the target source is a delimited file source, then the CSV file needs to be included in the request body. You will also need to set the Content-Type header to `multipart/form-data`.
+Starts an entitlement aggregation on the specified source. Though this endpoint has been deprecated, you can find its Beta equivalent [here](https://developer.sailpoint.com/docs/api/beta/import-entitlements).  If the target source is a direct connection, then the request body must be empty. You will also need to make sure the Content-Type header is not set. If you set the Content-Type header without specifying a body, then you will receive a 500 error.  If the target source is a delimited file source, then the CSV file needs to be included in the request body. You will also need to set the Content-Type header to `multipart/form-data`.
 
 ### Example
 
@@ -409,11 +409,11 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
     try:
         # Aggregate Entitlements
-        api_response = api_instance.import_entitlements(id, csv_file=csv_file)
-        print("The response of EntitlementsApi->import_entitlements:\n")
+        api_response = api_instance.import_entitlements_by_source(id, csv_file=csv_file)
+        print("The response of EntitlementsApi->import_entitlements_by_source:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling EntitlementsApi->import_entitlements: %s\n" % e)
+        print("Exception when calling EntitlementsApi->import_entitlements_by_source: %s\n" % e)
 ```
 
 

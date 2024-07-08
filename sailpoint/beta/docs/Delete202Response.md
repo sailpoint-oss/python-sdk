@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **str** | The type of object being referenced | [optional] 
-**id** | **str** | ID of the task result | [optional] 
-**name** | **str** | Human-readable display name of the task result (should be null/empty) | [optional] 
+**type** | **str** | Type of object being referenced. | [optional] 
+**id** | **str** | Task result ID. | [optional] 
+**name** | **str** | Task result&#39;s human-readable display name (this should be null/empty). | [optional] 
 
 ## Example
 

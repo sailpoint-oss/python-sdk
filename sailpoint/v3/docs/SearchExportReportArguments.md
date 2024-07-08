@@ -11,8 +11,6 @@ Name | Type | Description | Notes
 **query** | [**Query**](Query.md) |  | 
 **include_nested** | **bool** | Indicates whether nested objects from returned search results should be included. | [optional] [default to True]
 **sort** | **List[str]** | The fields to be used to sort the search results. Use + or - to specify the sort direction. | [optional] 
-**default_s3_bucket** | **bool** | Use it to set default s3 bucket where generated report will be saved.  In case this argument is false and &#39;s3Bucket&#39; argument is null or absent there will be default s3Bucket assigned to the report. | 
-**s3_bucket** | **str** | If you want to be specific you could use this argument with defaultS3Bucket &#x3D; false. | [optional] 
 
 ## Example
 

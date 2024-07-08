@@ -13,7 +13,7 @@ Method | HTTP request | Description
 [**get_identity_start_date**](IdentityHistoryApi.md#get_identity_start_date) | **GET** /historical-identities/{id}/start-date | Gets the start date of the identity
 [**list_historical_identities**](IdentityHistoryApi.md#list_historical_identities) | **GET** /historical-identities | Lists all the identities
 [**list_identity_access_items**](IdentityHistoryApi.md#list_identity_access_items) | **GET** /historical-identities/{id}/access-items | Gets a list of access items for the identity filtered by item type
-[**list_identity_snapshot_access_items**](IdentityHistoryApi.md#list_identity_snapshot_access_items) | **GET** /historical-identities/{id}/snapshots/{date}/access-items | Gets the list of identity access items at a given date filterd by item type
+[**list_identity_snapshot_access_items**](IdentityHistoryApi.md#list_identity_snapshot_access_items) | **GET** /historical-identities/{id}/snapshots/{date}/access-items | Get Identity Access Items Snapshot
 [**list_identity_snapshots**](IdentityHistoryApi.md#list_identity_snapshots) | **GET** /historical-identities/{id}/snapshots | Lists all the snapshots for the identity
 
 
@@ -847,9 +847,9 @@ Name | Type | Description  | Notes
 # **list_identity_snapshot_access_items**
 > List[ListIdentityAccessItems200ResponseInner] list_identity_snapshot_access_items(id, var_date, type=type)
 
-Gets the list of identity access items at a given date filterd by item type
+Get Identity Access Items Snapshot
 
-This method retrieves the list of identity access items at a given date filterd by item type Requires authorization scope of 'idn:identity-history:read' 
+Use this API to get a list of identity access items at a specified date, filtered by item type.
 
 ### Example
 
@@ -883,12 +883,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.IdentityHistoryApi(api_client)
-    id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The identity id
-    var_date = '2007-03-01T13:00:00Z' # str | The specified date
-    type = 'account' # str | The access item type (optional)
+    id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | Identity ID.
+    var_date = '2007-03-01T13:00:00Z' # str | Specified date.
+    type = 'account' # str | Access item type. (optional)
 
     try:
-        # Gets the list of identity access items at a given date filterd by item type
+        # Get Identity Access Items Snapshot
         api_response = api_instance.list_identity_snapshot_access_items(id, var_date, type=type)
         print("The response of IdentityHistoryApi->list_identity_snapshot_access_items:\n")
         pprint(api_response)
@@ -903,9 +903,9 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The identity id | 
- **var_date** | **str**| The specified date | 
- **type** | **str**| The access item type | [optional] 
+ **id** | **str**| Identity ID. | 
+ **var_date** | **str**| Specified date. | 
+ **type** | **str**| Access item type. | [optional] 
 
 ### Return type
 
@@ -924,11 +924,12 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The identity object. |  -  |
+**200** | Identity object. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
 **404** | Not Found - returned if the request URL refers to a resource or object that does not exist |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
 **500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

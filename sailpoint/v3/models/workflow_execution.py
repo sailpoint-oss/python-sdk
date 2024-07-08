@@ -30,12 +30,12 @@ class WorkflowExecution(BaseModel):
     """
     WorkflowExecution
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(default=None, description="The workflow execution ID")
-    workflow_id: Optional[StrictStr] = Field(default=None, description="The workflow ID", alias="workflowId")
-    request_id: Optional[StrictStr] = Field(default=None, description="This backend ID tracks a workflow request in the system. You can provide this ID in a customer support ticket for debugging purposes.", alias="requestId")
-    start_time: Optional[datetime] = Field(default=None, description="The date/time the workflow started", alias="startTime")
-    close_time: Optional[datetime] = Field(default=None, description="The date/time the workflow ended", alias="closeTime")
-    status: Optional[StrictStr] = Field(default=None, description="The workflow execution status")
+    id: Optional[StrictStr] = Field(default=None, description="Workflow execution ID.")
+    workflow_id: Optional[StrictStr] = Field(default=None, description="Workflow ID.", alias="workflowId")
+    request_id: Optional[StrictStr] = Field(default=None, description="Backend ID that tracks a workflow request in the system. Provide this ID in a customer support ticket for debugging purposes.", alias="requestId")
+    start_time: Optional[datetime] = Field(default=None, description="Date/time when the workflow started.", alias="startTime")
+    close_time: Optional[datetime] = Field(default=None, description="Date/time when the workflow ended.", alias="closeTime")
+    status: Optional[StrictStr] = Field(default=None, description="Workflow execution status.")
     __properties: ClassVar[List[str]] = ["id", "workflowId", "requestId", "startTime", "closeTime", "status"]
 
     @field_validator('status')
@@ -44,8 +44,8 @@ class WorkflowExecution(BaseModel):
         if value is None:
             return value
 
-        if value not in ('Completed', 'Failed', 'Canceled', 'Running'):
-            raise ValueError("must be one of enum values ('Completed', 'Failed', 'Canceled', 'Running')")
+        if value not in ('Completed', 'Failed', 'Canceled', 'Executing'):
+            raise ValueError("must be one of enum values ('Completed', 'Failed', 'Canceled', 'Executing')")
         return value
 
     model_config = {

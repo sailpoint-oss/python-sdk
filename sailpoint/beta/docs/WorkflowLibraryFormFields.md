@@ -5,11 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**description** | **str** | Description of the form field | [optional] 
 **help_text** | **str** | Describes the form field in the UI | [optional] 
 **label** | **str** | A human readable name for this form field in the UI | [optional] 
 **name** | **str** | The name of the input attribute | [optional] 
 **required** | **bool** | Denotes if this field is a required attribute | [optional] 
-**type** | **object** | The type of the form field | [optional] 
+**type** | **str** | The type of the form field | [optional] 
 
 ## Example
 

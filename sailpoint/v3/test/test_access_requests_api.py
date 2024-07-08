@@ -36,7 +36,7 @@ class TestAccessRequestsApi(unittest.TestCase):
     def test_create_access_request(self) -> None:
         """Test case for create_access_request
 
-        Submit an Access Request
+        Submit Access Request
         """
         pass
 

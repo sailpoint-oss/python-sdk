@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | FormOwnerType value. IDENTITY FormOwnerTypeIdentity | [optional] 
 **id** | **str** | Unique identifier of the form&#39;s owner. | [optional] 
+**name** | **str** | Name of the form&#39;s owner. | [optional] 
 
 ## Example
 

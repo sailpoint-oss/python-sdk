@@ -35,9 +35,10 @@ class RoleInsight(BaseModel):
     id: Optional[StrictStr] = Field(default=None, description="Insight id")
     number_of_updates: Optional[StrictInt] = Field(default=None, description="Total number of updates for this role", alias="numberOfUpdates")
     created_date: Optional[datetime] = Field(default=None, description="The date-time insights were last created for this role.", alias="createdDate")
+    modified_date: Optional[datetime] = Field(default=None, description="The date-time insights were last modified for this role.", alias="modifiedDate")
     role: Optional[RoleInsightsRole] = None
     insight: Optional[RoleInsightsInsight] = None
-    __properties: ClassVar[List[str]] = ["id", "numberOfUpdates", "createdDate", "role", "insight"]
+    __properties: ClassVar[List[str]] = ["id", "numberOfUpdates", "createdDate", "modifiedDate", "role", "insight"]
 
     model_config = {
         "populate_by_name": True,
@@ -82,6 +83,11 @@ class RoleInsight(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of insight
         if self.insight:
             _dict['insight'] = self.insight.to_dict()
+        # set to None if modified_date (nullable) is None
+        # and model_fields_set contains the field
+        if self.modified_date is None and "modified_date" in self.model_fields_set:
+            _dict['modifiedDate'] = None
+
         return _dict
 
     @classmethod
@@ -97,6 +103,7 @@ class RoleInsight(BaseModel):
             "id": obj.get("id"),
             "numberOfUpdates": obj.get("numberOfUpdates"),
             "createdDate": obj.get("createdDate"),
+            "modifiedDate": obj.get("modifiedDate"),
             "role": RoleInsightsRole.from_dict(obj.get("role")) if obj.get("role") is not None else None,
             "insight": RoleInsightsInsight.from_dict(obj.get("insight")) if obj.get("insight") is not None else None
         })

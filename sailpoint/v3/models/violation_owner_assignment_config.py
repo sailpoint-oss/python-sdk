@@ -90,6 +90,11 @@ class ViolationOwnerAssignmentConfig(BaseModel):
         if self.assignment_rule is None and "assignment_rule" in self.model_fields_set:
             _dict['assignmentRule'] = None
 
+        # set to None if owner_ref (nullable) is None
+        # and model_fields_set contains the field
+        if self.owner_ref is None and "owner_ref" in self.model_fields_set:
+            _dict['ownerRef'] = None
+
         return _dict
 
     @classmethod

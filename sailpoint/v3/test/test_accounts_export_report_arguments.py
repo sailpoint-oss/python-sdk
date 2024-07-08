@@ -37,15 +37,12 @@ class TestAccountsExportReportArguments(unittest.TestCase):
         if include_optional:
             return AccountsExportReportArguments(
                 application = '2c9180897eSourceIde781782f705b9',
-                source_name = 'DataScienceSourceName',
-                default_s3_bucket = True,
-                s3_bucket = 'the-dev-bucket'
+                source_name = 'DataScienceSourceName'
             )
         else:
             return AccountsExportReportArguments(
                 application = '2c9180897eSourceIde781782f705b9',
                 source_name = 'DataScienceSourceName',
-                default_s3_bucket = True,
         )
         """
 

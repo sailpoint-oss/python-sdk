@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **str** | Source type. | [optional] 
-**properties** | **object** | Source properties. | [optional] 
+**type** | **str** | Attribute mapping type. | [optional] 
+**properties** | **object** | Attribute mapping properties. | [optional] 
 
 ## Example
 

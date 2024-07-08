@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **modified** | **datetime** | When the request was last modified. | [optional] 
 **created** | **datetime** | When the request was created. | [optional] 
 **requester** | [**AccessItemRequester**](AccessItemRequester.md) |  | [optional] 
-**requested_for** | [**List[AccessItemRequestedFor]**](AccessItemRequestedFor.md) | Identities access was requested for. | [optional] 
+**requested_for** | [**RequestedItemStatusRequestedFor**](RequestedItemStatusRequestedFor.md) |  | [optional] 
 **requester_comment** | [**RequestedItemStatusRequesterComment**](RequestedItemStatusRequesterComment.md) |  | [optional] 
 **sod_violation_context** | [**RequestedItemStatusSodViolationContext**](RequestedItemStatusSodViolationContext.md) |  | [optional] 
 **provisioning_details** | [**RequestedItemStatusProvisioningDetails**](RequestedItemStatusProvisioningDetails.md) |  | [optional] 

@@ -36,13 +36,16 @@ class TestRoleMiningSessionDraftRoleDto(unittest.TestCase):
         model = RoleMiningSessionDraftRoleDto()
         if include_optional:
             return RoleMiningSessionDraftRoleDto(
+                name = 'Saved RM Session - 07/10',
                 description = 'Person who develops software',
                 identity_ids = [2c918090761a5aac0176215c46a62d58, 2c918090761a5aac01722015c46a62d42],
                 entitlement_ids = [2c91808a7624751a01762f19d665220d, 2c91808a7624751a01762f19d67c220e],
                 excluded_entitlements = [07a0b4e2, 13b4e2a0],
                 modified = '2020-09-16T18:49:32.150Z',
-                name = 'Saved RM Session - 07/10',
-                type = 'SPECIALIZED'
+                type = 'SPECIALIZED',
+                id = 'e0cc5d7d-bf7f-4f81-b2af-8885b09d9923',
+                created_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                modified_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
             )
         else:
             return RoleMiningSessionDraftRoleDto(

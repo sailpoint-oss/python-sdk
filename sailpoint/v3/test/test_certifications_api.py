@@ -71,7 +71,7 @@ class TestCertificationsApi(unittest.TestCase):
     def test_list_identity_certifications(self) -> None:
         """Test case for list_identity_certifications
 
-        Identity Campaign Certifications by IDs
+        List Identity Campaign Certifications
         """
         pass
 

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
 **email** | **str** |  | [optional] 
+**is_verified_by_domain** | **bool** |  | [optional] 
 **verification_status** | **str** |  | [optional] 
 
 ## Example

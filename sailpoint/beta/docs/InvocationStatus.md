@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Invocation ID | 
 **trigger_id** | **str** | Trigger ID | 
+**subscription_name** | **str** | Subscription name | 
 **subscription_id** | **str** | Subscription ID | 
 **type** | [**InvocationStatusType**](InvocationStatusType.md) |  | 
 **created** | **datetime** | Invocation created timestamp. ISO-8601 in UTC. | 

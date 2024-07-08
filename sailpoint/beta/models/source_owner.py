@@ -28,11 +28,11 @@ except ImportError:
 
 class SourceOwner(BaseModel):
     """
-    Reference to an owning Identity Object
+    Reference to identity object who owns the source.
     """ # noqa: E501
-    type: Optional[StrictStr] = Field(default=None, description="The type of object being referenced")
-    id: Optional[StrictStr] = Field(default=None, description="ID of the identity")
-    name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of the identity")
+    type: Optional[StrictStr] = Field(default=None, description="Type of object being referenced.")
+    id: Optional[StrictStr] = Field(default=None, description="Owner identity's ID.")
+    name: Optional[StrictStr] = Field(default=None, description="Owner identity's human-readable display name.")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')

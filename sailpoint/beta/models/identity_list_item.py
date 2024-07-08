@@ -75,6 +75,16 @@ class IdentityListItem(BaseModel):
             },
             exclude_none=True,
         )
+        # set to None if first_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.first_name is None and "first_name" in self.model_fields_set:
+            _dict['firstName'] = None
+
+        # set to None if last_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.last_name is None and "last_name" in self.model_fields_set:
+            _dict['lastName'] = None
+
         # set to None if deleted_date (nullable) is None
         # and model_fields_set contains the field
         if self.deleted_date is None and "deleted_date" in self.model_fields_set:

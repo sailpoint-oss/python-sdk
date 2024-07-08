@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **name** | **str** | The connector name | [optional] 
 **type** | **str** | The connector type | [optional] 
 **script_name** | **str** | The connector script name | [optional] 
+**class_name** | **str** | The connector class name. | [optional] 
 **features** | **List[str]** | The list of features supported by the connector | [optional] 
 **direct_connect** | **bool** | true if the source is a direct connect source | [optional] [default to False]
 **connector_metadata** | **object** | Object containing metadata pertinent to the UI to be used | [optional] 

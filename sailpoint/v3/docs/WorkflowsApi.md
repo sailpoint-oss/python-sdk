@@ -10,10 +10,10 @@ Method | HTTP request | Description
 [**create_workflow_external_trigger**](WorkflowsApi.md#create_workflow_external_trigger) | **POST** /workflows/{id}/external/oauth-clients | Generate External Trigger OAuth Client
 [**delete_workflow**](WorkflowsApi.md#delete_workflow) | **DELETE** /workflows/{id} | Delete Workflow By Id
 [**get_workflow**](WorkflowsApi.md#get_workflow) | **GET** /workflows/{id} | Get Workflow By Id
-[**get_workflow_execution**](WorkflowsApi.md#get_workflow_execution) | **GET** /workflow-executions/{id} | Get a Workflow Execution
+[**get_workflow_execution**](WorkflowsApi.md#get_workflow_execution) | **GET** /workflow-executions/{id} | Get Workflow Execution
 [**get_workflow_execution_history**](WorkflowsApi.md#get_workflow_execution_history) | **GET** /workflow-executions/{id}/history | Get Workflow Execution History
+[**get_workflow_executions**](WorkflowsApi.md#get_workflow_executions) | **GET** /workflows/{id}/executions | List Workflow Executions
 [**list_complete_workflow_library**](WorkflowsApi.md#list_complete_workflow_library) | **GET** /workflow-library | List Complete Workflow Library
-[**list_workflow_executions**](WorkflowsApi.md#list_workflow_executions) | **GET** /workflows/{id}/executions | List Workflow Executions
 [**list_workflow_library_actions**](WorkflowsApi.md#list_workflow_library_actions) | **GET** /workflow-library/actions | List Workflow Library Actions
 [**list_workflow_library_operators**](WorkflowsApi.md#list_workflow_library_operators) | **GET** /workflow-library/operators | List Workflow Library Operators
 [**list_workflow_library_triggers**](WorkflowsApi.md#list_workflow_library_triggers) | **GET** /workflow-library/triggers | List Workflow Library Triggers
@@ -536,9 +536,9 @@ Name | Type | Description  | Notes
 # **get_workflow_execution**
 > object get_workflow_execution(id)
 
-Get a Workflow Execution
+Get Workflow Execution
 
-Get a single workflow execution.  Workflow executions are available for up to 90 days before being archived.  If you attempt to access a workflow execution that has been archived, you will receive a 404 Not Found.
+Use this API to get a single workflow execution. Workflow executions are available for up to 90 days before being archived. If you attempt to access a workflow execution that has been archived, you will receive a \"404 Not Found\" response.
 
 ### Example
 
@@ -571,10 +571,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.WorkflowsApi(api_client)
-    id = 'c17bea3a-574d-453c-9e04-4365fbf5af0b' # str | Id of the workflow execution
+    id = 'c17bea3a-574d-453c-9e04-4365fbf5af0b' # str | Workflow execution ID.
 
     try:
-        # Get a Workflow Execution
+        # Get Workflow Execution
         api_response = api_instance.get_workflow_execution(id)
         print("The response of WorkflowsApi->get_workflow_execution:\n")
         pprint(api_response)
@@ -589,7 +589,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| Id of the workflow execution | 
+ **id** | **str**| Workflow execution ID. | 
 
 ### Return type
 
@@ -608,7 +608,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The workflow execution |  -  |
+**200** | Workflow execution. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -704,6 +704,100 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_workflow_executions**
+> List[WorkflowExecution] get_workflow_executions(id, limit=limit, offset=offset, count=count, filters=filters)
+
+List Workflow Executions
+
+Use this API to list a specified workflow's executions. Workflow executions are available for up to 90 days before being archived. By default, you can get a maximum of 250 executions. To get executions past the first 250 records, you can do the following: 1. Use the [Get Workflows](https://developer.sailpoint.com/idn/api/beta/list-workflows) endpoint to get your workflows. 2. Get your workflow ID from the response. 3. You can then do either of the following:    - Filter to find relevant workflow executions.   For example, you can filter for failed workflow executions: `GET /workflows/:workflowID/executions?filters=status eq \"Failed\"`    - Paginate through results with the `offset` parameter.   For example, you can page through 50 executions per page and use that as a way to get to the records past the first 250.   Refer to [Paginating Results](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results) for more information about the query parameters you can use to achieve pagination.
+
+### Example
+
+* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (UserContextAuth):
+
+```python
+import time
+import os
+import sailpoint.v3
+from sailpoint.v3.models.workflow_execution import WorkflowExecution
+from sailpoint.v3.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sailpoint.v3.Configuration(
+    host = "https://sailpoint.api.identitynow.com/v3"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with sailpoint.v3.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sailpoint.v3.WorkflowsApi(api_client)
+    id = 'c17bea3a-574d-453c-9e04-4365fbf5af0b' # str | Workflow ID.
+    limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+    offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+    count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+    filters = 'status eq \"Failed\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **startTime**: *eq, lt, le, gt, ge*  **status**: *eq* (optional)
+
+    try:
+        # List Workflow Executions
+        api_response = api_instance.get_workflow_executions(id, limit=limit, offset=offset, count=count, filters=filters)
+        print("The response of WorkflowsApi->get_workflow_executions:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling WorkflowsApi->get_workflow_executions: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**| Workflow ID. | 
+ **limit** | **int**| Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 250]
+ **offset** | **int**| Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 0]
+ **count** | **bool**| If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to False]
+ **filters** | **str**| Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **startTime**: *eq, lt, le, gt, ge*  **status**: *eq* | [optional] 
+
+### Return type
+
+[**List[WorkflowExecution]**](WorkflowExecution.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of workflow executions for the specified workflow. |  -  |
+**400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
+**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**404** | Not Found - returned if the request URL refers to a resource or object that does not exist |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **list_complete_workflow_library**
 > List[ListCompleteWorkflowLibrary200ResponseInner] list_complete_workflow_library(limit=limit, offset=offset)
 
@@ -786,100 +880,6 @@ Name | Type | Description  | Notes
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
-**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
-**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **list_workflow_executions**
-> List[WorkflowExecution] list_workflow_executions(id, limit=limit, offset=offset, count=count, filters=filters)
-
-List Workflow Executions
-
-This lists the executions for a given workflow. Workflow executions are available for up to 90 days before being archived. By default, you can get a maximum of 250 executions. To get executions past the first 250 records, you can do the following: 1. Use the [Get Workflows](https://developer.sailpoint.com/idn/api/beta/list-workflows) endpoint to get your workflows. 2. Get your workflow ID from the response. 3. You can then do either of the following:    - Filter to find relevant workflow executions.   For example, you can filter for failed workflow executions: `GET /workflows/:workflowID/executions?filters=status eq \"Failed\"`    - You can paginate through results with the `offset` parameter.   For example, you can page through 50 executions per page and use that as a way to get to the records past the first 250.   Refer to [Paginating Results](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results) for more information about the query parameters you can use to achieve pagination.
-
-### Example
-
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
-
-```python
-import time
-import os
-import sailpoint.v3
-from sailpoint.v3.models.workflow_execution import WorkflowExecution
-from sailpoint.v3.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
-# See configuration.py for a list of all supported configuration parameters.
-configuration = sailpoint.v3.Configuration(
-    host = "https://sailpoint.api.identitynow.com/v3"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with sailpoint.v3.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = sailpoint.v3.WorkflowsApi(api_client)
-    id = 'c17bea3a-574d-453c-9e04-4365fbf5af0b' # str | Id of the workflow
-    limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
-    offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
-    count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
-    filters = 'status eq \"Failed\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **startTime**: *eq, lt, le, gt, ge*  **status**: *eq* (optional)
-
-    try:
-        # List Workflow Executions
-        api_response = api_instance.list_workflow_executions(id, limit=limit, offset=offset, count=count, filters=filters)
-        print("The response of WorkflowsApi->list_workflow_executions:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling WorkflowsApi->list_workflow_executions: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **str**| Id of the workflow | 
- **limit** | **int**| Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 250]
- **offset** | **int**| Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 0]
- **count** | **bool**| If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to False]
- **filters** | **str**| Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **startTime**: *eq, lt, le, gt, ge*  **status**: *eq* | [optional] 
-
-### Return type
-
-[**List[WorkflowExecution]**](WorkflowExecution.md)
-
-### Authorization
-
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | List of workflow executions for the given workflow |  -  |
-**400** | Client Error - Returned if the request body is invalid. |  -  |
-**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
-**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
-**404** | Not Found - returned if the request URL refers to a resource or object that does not exist |  -  |
 **429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
 **500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
 

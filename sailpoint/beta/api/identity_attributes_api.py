@@ -69,7 +69,7 @@ class IdentityAttributesApi:
     ) -> IdentityAttribute:
         """Create Identity Attribute
 
-        This creates a new identity attribute.
+        Use this API to create a new identity attribute.   A token with ORG_ADMIN authority is required to call this API.
 
         :param identity_attribute: (required)
         :type identity_attribute: IdentityAttribute
@@ -142,7 +142,7 @@ class IdentityAttributesApi:
     ) -> ApiResponse[IdentityAttribute]:
         """Create Identity Attribute
 
-        This creates a new identity attribute.
+        Use this API to create a new identity attribute.   A token with ORG_ADMIN authority is required to call this API.
 
         :param identity_attribute: (required)
         :type identity_attribute: IdentityAttribute
@@ -215,7 +215,7 @@ class IdentityAttributesApi:
     ) -> RESTResponseType:
         """Create Identity Attribute
 
-        This creates a new identity attribute.
+        Use this API to create a new identity attribute.   A token with ORG_ADMIN authority is required to call this API.
 
         :param identity_attribute: (required)
         :type identity_attribute: IdentityAttribute
@@ -359,7 +359,7 @@ class IdentityAttributesApi:
     ) -> None:
         """Delete Identity Attribute
 
-        This deletes an identity attribute with the given name.  The `system` and `standard` properties must be set to false before you can delete an identity attribute.
+        This deletes an identity attribute with the given name.  The `system` and `standard` properties must be set to false before you can delete an identity attribute.   A token with ORG_ADMIN authority is required to call this API.
 
         :param name: The attribute's technical name. (required)
         :type name: str
@@ -432,7 +432,7 @@ class IdentityAttributesApi:
     ) -> ApiResponse[None]:
         """Delete Identity Attribute
 
-        This deletes an identity attribute with the given name.  The `system` and `standard` properties must be set to false before you can delete an identity attribute.
+        This deletes an identity attribute with the given name.  The `system` and `standard` properties must be set to false before you can delete an identity attribute.   A token with ORG_ADMIN authority is required to call this API.
 
         :param name: The attribute's technical name. (required)
         :type name: str
@@ -505,7 +505,7 @@ class IdentityAttributesApi:
     ) -> RESTResponseType:
         """Delete Identity Attribute
 
-        This deletes an identity attribute with the given name.  The `system` and `standard` properties must be set to false before you can delete an identity attribute.
+        This deletes an identity attribute with the given name.  The `system` and `standard` properties must be set to false before you can delete an identity attribute.   A token with ORG_ADMIN authority is required to call this API.
 
         :param name: The attribute's technical name. (required)
         :type name: str
@@ -636,7 +636,7 @@ class IdentityAttributesApi:
     ) -> None:
         """Bulk delete Identity Attributes
 
-        This deletes identity attributes for a given set of names. Attributes that are currently mapped in an Identity Profile cannot be deleted.  The `system` and `standard` properties must be set to false before you can delete an identity attribute.
+        Use this API to bulk delete identity attributes for a given set of names. Attributes that are currently mapped in an identity profile cannot be deleted.  The `system` and `standard` properties must be set to 'false' before you can delete an identity attribute.   A token with ORG_ADMIN authority is required to call this API.
 
         :param identity_attribute_names: (required)
         :type identity_attribute_names: IdentityAttributeNames
@@ -709,7 +709,7 @@ class IdentityAttributesApi:
     ) -> ApiResponse[None]:
         """Bulk delete Identity Attributes
 
-        This deletes identity attributes for a given set of names. Attributes that are currently mapped in an Identity Profile cannot be deleted.  The `system` and `standard` properties must be set to false before you can delete an identity attribute.
+        Use this API to bulk delete identity attributes for a given set of names. Attributes that are currently mapped in an identity profile cannot be deleted.  The `system` and `standard` properties must be set to 'false' before you can delete an identity attribute.   A token with ORG_ADMIN authority is required to call this API.
 
         :param identity_attribute_names: (required)
         :type identity_attribute_names: IdentityAttributeNames
@@ -782,7 +782,7 @@ class IdentityAttributesApi:
     ) -> RESTResponseType:
         """Bulk delete Identity Attributes
 
-        This deletes identity attributes for a given set of names. Attributes that are currently mapped in an Identity Profile cannot be deleted.  The `system` and `standard` properties must be set to false before you can delete an identity attribute.
+        Use this API to bulk delete identity attributes for a given set of names. Attributes that are currently mapped in an identity profile cannot be deleted.  The `system` and `standard` properties must be set to 'false' before you can delete an identity attribute.   A token with ORG_ADMIN authority is required to call this API.
 
         :param identity_attribute_names: (required)
         :type identity_attribute_names: IdentityAttributeNames
@@ -890,7 +890,7 @@ class IdentityAttributesApi:
         ]
 
         return self.api_client.param_serialize(
-            method='POST',
+            method='DELETE',
             resource_path='/identity-attributes/bulk-delete',
             path_params=_path_params,
             query_params=_query_params,
@@ -1187,9 +1187,9 @@ class IdentityAttributesApi:
     @validate_call
     def list_identity_attributes(
         self,
-        include_system: Annotated[Optional[StrictBool], Field(description="Include \"system\" attributes in the response.")] = None,
-        include_silent: Annotated[Optional[StrictBool], Field(description="Include \"silent\" attributes in the response.")] = None,
-        searchable_only: Annotated[Optional[StrictBool], Field(description="Include only \"searchable\" attributes in the response.")] = None,
+        include_system: Annotated[Optional[StrictBool], Field(description="Include 'system' attributes in the response.")] = None,
+        include_silent: Annotated[Optional[StrictBool], Field(description="Include 'silent' attributes in the response.")] = None,
+        searchable_only: Annotated[Optional[StrictBool], Field(description="Include only 'searchable' attributes in the response.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
@@ -1206,13 +1206,13 @@ class IdentityAttributesApi:
     ) -> List[IdentityAttribute]:
         """List Identity Attributes
 
-        This gets a collection of identity attributes.
+        Use this API to get a collection of identity attributes.
 
-        :param include_system: Include \"system\" attributes in the response.
+        :param include_system: Include 'system' attributes in the response.
         :type include_system: bool
-        :param include_silent: Include \"silent\" attributes in the response.
+        :param include_silent: Include 'silent' attributes in the response.
         :type include_silent: bool
-        :param searchable_only: Include only \"searchable\" attributes in the response.
+        :param searchable_only: Include only 'searchable' attributes in the response.
         :type searchable_only: bool
         :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type count: bool
@@ -1271,9 +1271,9 @@ class IdentityAttributesApi:
     @validate_call
     def list_identity_attributes_with_http_info(
         self,
-        include_system: Annotated[Optional[StrictBool], Field(description="Include \"system\" attributes in the response.")] = None,
-        include_silent: Annotated[Optional[StrictBool], Field(description="Include \"silent\" attributes in the response.")] = None,
-        searchable_only: Annotated[Optional[StrictBool], Field(description="Include only \"searchable\" attributes in the response.")] = None,
+        include_system: Annotated[Optional[StrictBool], Field(description="Include 'system' attributes in the response.")] = None,
+        include_silent: Annotated[Optional[StrictBool], Field(description="Include 'silent' attributes in the response.")] = None,
+        searchable_only: Annotated[Optional[StrictBool], Field(description="Include only 'searchable' attributes in the response.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
@@ -1290,13 +1290,13 @@ class IdentityAttributesApi:
     ) -> ApiResponse[List[IdentityAttribute]]:
         """List Identity Attributes
 
-        This gets a collection of identity attributes.
+        Use this API to get a collection of identity attributes.
 
-        :param include_system: Include \"system\" attributes in the response.
+        :param include_system: Include 'system' attributes in the response.
         :type include_system: bool
-        :param include_silent: Include \"silent\" attributes in the response.
+        :param include_silent: Include 'silent' attributes in the response.
         :type include_silent: bool
-        :param searchable_only: Include only \"searchable\" attributes in the response.
+        :param searchable_only: Include only 'searchable' attributes in the response.
         :type searchable_only: bool
         :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type count: bool
@@ -1355,9 +1355,9 @@ class IdentityAttributesApi:
     @validate_call
     def list_identity_attributes_without_preload_content(
         self,
-        include_system: Annotated[Optional[StrictBool], Field(description="Include \"system\" attributes in the response.")] = None,
-        include_silent: Annotated[Optional[StrictBool], Field(description="Include \"silent\" attributes in the response.")] = None,
-        searchable_only: Annotated[Optional[StrictBool], Field(description="Include only \"searchable\" attributes in the response.")] = None,
+        include_system: Annotated[Optional[StrictBool], Field(description="Include 'system' attributes in the response.")] = None,
+        include_silent: Annotated[Optional[StrictBool], Field(description="Include 'silent' attributes in the response.")] = None,
+        searchable_only: Annotated[Optional[StrictBool], Field(description="Include only 'searchable' attributes in the response.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
@@ -1374,13 +1374,13 @@ class IdentityAttributesApi:
     ) -> RESTResponseType:
         """List Identity Attributes
 
-        This gets a collection of identity attributes.
+        Use this API to get a collection of identity attributes.
 
-        :param include_system: Include \"system\" attributes in the response.
+        :param include_system: Include 'system' attributes in the response.
         :type include_system: bool
-        :param include_silent: Include \"silent\" attributes in the response.
+        :param include_silent: Include 'silent' attributes in the response.
         :type include_silent: bool
-        :param searchable_only: Include only \"searchable\" attributes in the response.
+        :param searchable_only: Include only 'searchable' attributes in the response.
         :type searchable_only: bool
         :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type count: bool
@@ -1531,7 +1531,7 @@ class IdentityAttributesApi:
     ) -> IdentityAttribute:
         """Update Identity Attribute
 
-        This updates an existing identity attribute.  Making an attribute searchable requires that the `system`, `standard`, and `multi` properties be set to false.
+        This updates an existing identity attribute.  Making an attribute searchable requires that the `system`, `standard`, and `multi` properties be set to false.   A token with ORG_ADMIN authority is required to call this API.
 
         :param name: The attribute's technical name. (required)
         :type name: str
@@ -1608,7 +1608,7 @@ class IdentityAttributesApi:
     ) -> ApiResponse[IdentityAttribute]:
         """Update Identity Attribute
 
-        This updates an existing identity attribute.  Making an attribute searchable requires that the `system`, `standard`, and `multi` properties be set to false.
+        This updates an existing identity attribute.  Making an attribute searchable requires that the `system`, `standard`, and `multi` properties be set to false.   A token with ORG_ADMIN authority is required to call this API.
 
         :param name: The attribute's technical name. (required)
         :type name: str
@@ -1685,7 +1685,7 @@ class IdentityAttributesApi:
     ) -> RESTResponseType:
         """Update Identity Attribute
 
-        This updates an existing identity attribute.  Making an attribute searchable requires that the `system`, `standard`, and `multi` properties be set to false.
+        This updates an existing identity attribute.  Making an attribute searchable requires that the `system`, `standard`, and `multi` properties be set to false.   A token with ORG_ADMIN authority is required to call this API.
 
         :param name: The attribute's technical name. (required)
         :type name: str

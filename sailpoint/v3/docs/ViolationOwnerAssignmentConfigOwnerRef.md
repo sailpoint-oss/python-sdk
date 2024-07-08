@@ -1,12 +1,13 @@
 # ViolationOwnerAssignmentConfigOwnerRef
 
+The owner of the violation assignment config.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **str** | Owner&#39;s DTO type. | [optional] 
-**id** | **str** | Owner&#39;s identity ID. | [optional] 
+**type** | **str** | Owner type. | [optional] 
+**id** | **str** | Owner&#39;s ID. | [optional] 
 **name** | **str** | Owner&#39;s name. | [optional] 
 
 ## Example

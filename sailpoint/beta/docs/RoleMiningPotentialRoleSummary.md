@@ -17,6 +17,10 @@ Name | Type | Description | Notes
 **freshness** | **int** | The freshness metric (0-100) of this potential role. Higher freshness values indicate this potential role is more distinctive compared to existing roles. | [optional] 
 **quality** | **int** | The quality metric (0-100) of this potential role. Higher quality values indicate this potential role has high density and freshness. | [optional] 
 **type** | [**RoleMiningRoleType**](RoleMiningRoleType.md) |  | [optional] 
+**created_by** | [**RoleMiningPotentialRoleSummaryCreatedBy**](RoleMiningPotentialRoleSummaryCreatedBy.md) |  | [optional] 
+**created_date** | **datetime** | The date-time when this potential role was created. | [optional] 
+**saved** | **bool** | The potential role&#39;s saved status | [optional] [default to False]
+**description** | **str** | Description of the potential role | [optional] 
 **session** | [**RoleMiningSessionParametersDto**](RoleMiningSessionParametersDto.md) |  | [optional] 
 
 ## Example

@@ -42,7 +42,7 @@ class TestApprovalItems(unittest.TestCase):
                 name = 'emailAddress',
                 operation = 'update',
                 value = 'a@b.com',
-                state = 'FINISHED'
+                state = 'Pending'
             )
         else:
             return ApprovalItems(

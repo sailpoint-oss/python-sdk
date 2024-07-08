@@ -1,14 +1,14 @@
 # SourceBeforeProvisioningRule
 
-Rule that runs on the CCG and allows for customization of provisioning plans before the connector is called.
+Rule that runs on the CCG and allows for customization of provisioning plans before the API calls the connector. 
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **str** | The type of object being referenced | [optional] 
-**id** | **str** | ID of the rule | [optional] 
-**name** | **str** | Human-readable display name of the rule | [optional] 
+**type** | **str** | Type of object being referenced. | [optional] 
+**id** | **str** | Rule ID. | [optional] 
+**name** | **str** | Rule&#39;s human-readable display name. | [optional] 
 
 ## Example
 

@@ -39,9 +39,9 @@ from sailpoint.beta.models.form_definition_response import FormDefinitionRespons
 from sailpoint.beta.models.form_element_preview_request import FormElementPreviewRequest
 from sailpoint.beta.models.form_instance_response import FormInstanceResponse
 from sailpoint.beta.models.import_form_definitions202_response import ImportFormDefinitions202Response
+from sailpoint.beta.models.import_form_definitions_request_inner import ImportFormDefinitionsRequestInner
 from sailpoint.beta.models.list_form_definitions_by_tenant_response import ListFormDefinitionsByTenantResponse
 from sailpoint.beta.models.list_form_element_data_by_element_id_response import ListFormElementDataByElementIDResponse
-from sailpoint.beta.models.list_form_instances_by_tenant_response import ListFormInstancesByTenantResponse
 from sailpoint.beta.models.list_predefined_select_options_response import ListPredefinedSelectOptionsResponse
 from sailpoint.beta.models.preview_data_source_response import PreviewDataSourceResponse
 
@@ -66,7 +66,7 @@ class CustomFormsApi:
     @validate_call
     def create_form_definition(
         self,
-        body: Annotated[Optional[CreateFormDefinitionRequest], Field(description="Body is the request payload to create form definition request")] = None,
+        create_form_definition_request: Annotated[Optional[CreateFormDefinitionRequest], Field(description="Body is the request payload to create form definition request")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -83,8 +83,8 @@ class CustomFormsApi:
         """Creates a form definition.
 
 
-        :param body: Body is the request payload to create form definition request
-        :type body: CreateFormDefinitionRequest
+        :param create_form_definition_request: Body is the request payload to create form definition request
+        :type create_form_definition_request: CreateFormDefinitionRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -108,7 +108,7 @@ class CustomFormsApi:
         """ # noqa: E501
 
         _param = self._create_form_definition_serialize(
-            body=body,
+            create_form_definition_request=create_form_definition_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -137,7 +137,7 @@ class CustomFormsApi:
     @validate_call
     def create_form_definition_with_http_info(
         self,
-        body: Annotated[Optional[CreateFormDefinitionRequest], Field(description="Body is the request payload to create form definition request")] = None,
+        create_form_definition_request: Annotated[Optional[CreateFormDefinitionRequest], Field(description="Body is the request payload to create form definition request")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -154,8 +154,8 @@ class CustomFormsApi:
         """Creates a form definition.
 
 
-        :param body: Body is the request payload to create form definition request
-        :type body: CreateFormDefinitionRequest
+        :param create_form_definition_request: Body is the request payload to create form definition request
+        :type create_form_definition_request: CreateFormDefinitionRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -179,7 +179,7 @@ class CustomFormsApi:
         """ # noqa: E501
 
         _param = self._create_form_definition_serialize(
-            body=body,
+            create_form_definition_request=create_form_definition_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -208,7 +208,7 @@ class CustomFormsApi:
     @validate_call
     def create_form_definition_without_preload_content(
         self,
-        body: Annotated[Optional[CreateFormDefinitionRequest], Field(description="Body is the request payload to create form definition request")] = None,
+        create_form_definition_request: Annotated[Optional[CreateFormDefinitionRequest], Field(description="Body is the request payload to create form definition request")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -225,8 +225,8 @@ class CustomFormsApi:
         """Creates a form definition.
 
 
-        :param body: Body is the request payload to create form definition request
-        :type body: CreateFormDefinitionRequest
+        :param create_form_definition_request: Body is the request payload to create form definition request
+        :type create_form_definition_request: CreateFormDefinitionRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -250,7 +250,7 @@ class CustomFormsApi:
         """ # noqa: E501
 
         _param = self._create_form_definition_serialize(
-            body=body,
+            create_form_definition_request=create_form_definition_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -274,7 +274,7 @@ class CustomFormsApi:
 
     def _create_form_definition_serialize(
         self,
-        body,
+        create_form_definition_request,
         _request_auth,
         _content_type,
         _headers,
@@ -298,8 +298,8 @@ class CustomFormsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if body is not None:
-            _body_params = body
+        if create_form_definition_request is not None:
+            _body_params = create_form_definition_request
 
 
         # set the HTTP header `Accept`
@@ -401,12 +401,12 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "FormDefinitionDynamicSchemaResponse",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
-            '404': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
+            '404': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -473,12 +473,12 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "FormDefinitionDynamicSchemaResponse",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
-            '404': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
+            '404': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -545,12 +545,12 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "FormDefinitionDynamicSchemaResponse",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
-            '404': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
+            '404': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -693,15 +693,15 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "FormDefinitionFileUploadResponse",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
-            '404': "SearchFormDefinitionsByTenant400Response",
-            '413': "SearchFormDefinitionsByTenant400Response",
-            '415': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
+            '404': "GetFormDefinitionByKey400Response",
+            '413': "GetFormDefinitionByKey400Response",
+            '415': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
-            '503': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
+            '503': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -773,15 +773,15 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "FormDefinitionFileUploadResponse",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
-            '404': "SearchFormDefinitionsByTenant400Response",
-            '413': "SearchFormDefinitionsByTenant400Response",
-            '415': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
+            '404': "GetFormDefinitionByKey400Response",
+            '413': "GetFormDefinitionByKey400Response",
+            '415': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
-            '503': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
+            '503': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -853,15 +853,15 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "FormDefinitionFileUploadResponse",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
-            '404': "SearchFormDefinitionsByTenant400Response",
-            '413': "SearchFormDefinitionsByTenant400Response",
-            '415': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
+            '404': "GetFormDefinitionByKey400Response",
+            '413': "GetFormDefinitionByKey400Response",
+            '415': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
-            '503': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
+            '503': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1002,11 +1002,11 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "FormInstanceResponse",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1073,11 +1073,11 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "FormInstanceResponse",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1144,11 +1144,11 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "FormInstanceResponse",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1287,12 +1287,12 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': "object",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
-            '404': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
+            '404': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1360,12 +1360,12 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': "object",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
-            '404': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
+            '404': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1433,12 +1433,12 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '204': "object",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
-            '404': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
+            '404': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1576,11 +1576,11 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ExportFormDefinitionsByTenant200ResponseInner]",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1660,11 +1660,11 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ExportFormDefinitionsByTenant200ResponseInner]",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1744,11 +1744,11 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ExportFormDefinitionsByTenant200ResponseInner]",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1894,13 +1894,13 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
-            '404': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
+            '404': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
-            '503': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
+            '503': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1971,13 +1971,13 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
-            '404': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
+            '404': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
-            '503': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
+            '503': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2048,13 +2048,13 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
-            '404': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
+            '404': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
-            '503': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
+            '503': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2186,12 +2186,12 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "FormDefinitionResponse",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
-            '404': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
+            '404': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2259,12 +2259,12 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "FormDefinitionResponse",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
-            '404': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
+            '404': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2332,12 +2332,12 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "FormDefinitionResponse",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
-            '404': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
+            '404': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2463,12 +2463,12 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "FormInstanceResponse",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
-            '404': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
+            '404': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2536,12 +2536,12 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "FormInstanceResponse",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
-            '404': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
+            '404': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2609,12 +2609,12 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "FormInstanceResponse",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
-            '404': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
+            '404': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2743,13 +2743,13 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
-            '404': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
+            '404': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
-            '503': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
+            '503': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2820,13 +2820,13 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
-            '404': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
+            '404': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
-            '503': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
+            '503': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2897,13 +2897,13 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
-            '404': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
+            '404': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
-            '503': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
+            '503': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2983,7 +2983,7 @@ class CustomFormsApi:
     @validate_call
     def import_form_definitions(
         self,
-        body: Annotated[Optional[List[ExportFormDefinitionsByTenant200ResponseInner]], Field(description="Body is the request payload to import form definitions")] = None,
+        body: Annotated[Optional[List[ImportFormDefinitionsRequestInner]], Field(description="Body is the request payload to import form definitions")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3001,7 +3001,7 @@ class CustomFormsApi:
 
 
         :param body: Body is the request payload to import form definitions
-        :type body: List[ExportFormDefinitionsByTenant200ResponseInner]
+        :type body: List[ImportFormDefinitionsRequestInner]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3034,11 +3034,11 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "ImportFormDefinitions202Response",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3054,7 +3054,7 @@ class CustomFormsApi:
     @validate_call
     def import_form_definitions_with_http_info(
         self,
-        body: Annotated[Optional[List[ExportFormDefinitionsByTenant200ResponseInner]], Field(description="Body is the request payload to import form definitions")] = None,
+        body: Annotated[Optional[List[ImportFormDefinitionsRequestInner]], Field(description="Body is the request payload to import form definitions")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3072,7 +3072,7 @@ class CustomFormsApi:
 
 
         :param body: Body is the request payload to import form definitions
-        :type body: List[ExportFormDefinitionsByTenant200ResponseInner]
+        :type body: List[ImportFormDefinitionsRequestInner]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3105,11 +3105,11 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "ImportFormDefinitions202Response",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3125,7 +3125,7 @@ class CustomFormsApi:
     @validate_call
     def import_form_definitions_without_preload_content(
         self,
-        body: Annotated[Optional[List[ExportFormDefinitionsByTenant200ResponseInner]], Field(description="Body is the request payload to import form definitions")] = None,
+        body: Annotated[Optional[List[ImportFormDefinitionsRequestInner]], Field(description="Body is the request payload to import form definitions")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3143,7 +3143,7 @@ class CustomFormsApi:
 
 
         :param body: Body is the request payload to import form definitions
-        :type body: List[ExportFormDefinitionsByTenant200ResponseInner]
+        :type body: List[ImportFormDefinitionsRequestInner]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3176,11 +3176,11 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "ImportFormDefinitions202Response",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3324,12 +3324,12 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "FormDefinitionResponse",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
-            '404': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
+            '404': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3401,12 +3401,12 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "FormDefinitionResponse",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
-            '404': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
+            '404': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3478,12 +3478,12 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "FormDefinitionResponse",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
-            '404': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
+            '404': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3630,13 +3630,13 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "FormInstanceResponse",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
-            '404': "SearchFormDefinitionsByTenant400Response",
-            '409': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
+            '404': "GetFormDefinitionByKey400Response",
+            '409': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3708,13 +3708,13 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "FormInstanceResponse",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
-            '404': "SearchFormDefinitionsByTenant400Response",
-            '409': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
+            '404': "GetFormDefinitionByKey400Response",
+            '409': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3786,13 +3786,13 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "FormInstanceResponse",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
-            '404': "SearchFormDefinitionsByTenant400Response",
-            '409': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
+            '404': "GetFormDefinitionByKey400Response",
+            '409': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4278,12 +4278,12 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ListFormElementDataByElementIDResponse",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
-            '404': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
+            '404': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4367,12 +4367,12 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ListFormElementDataByElementIDResponse",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
-            '404': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
+            '404': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4456,12 +4456,12 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ListFormElementDataByElementIDResponse",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
-            '404': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
+            '404': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4565,7 +4565,7 @@ class CustomFormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ListFormInstancesByTenantResponse:
+    ) -> List[FormInstanceResponse]:
         """List form instances by tenant.
 
         No parameters required.
@@ -4600,12 +4600,12 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ListFormInstancesByTenantResponse",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
+            '200': "List[FormInstanceResponse]",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4633,7 +4633,7 @@ class CustomFormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ListFormInstancesByTenantResponse]:
+    ) -> ApiResponse[List[FormInstanceResponse]]:
         """List form instances by tenant.
 
         No parameters required.
@@ -4668,12 +4668,12 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ListFormInstancesByTenantResponse",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
+            '200': "List[FormInstanceResponse]",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4736,12 +4736,12 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ListFormInstancesByTenantResponse",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
+            '200': "List[FormInstanceResponse]",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4860,11 +4860,11 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ListPredefinedSelectOptionsResponse",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4928,11 +4928,11 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ListPredefinedSelectOptionsResponse",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4996,11 +4996,11 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ListPredefinedSelectOptionsResponse",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5138,12 +5138,12 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "PreviewDataSourceResponse",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
-            '404': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
+            '404': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5226,12 +5226,12 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "PreviewDataSourceResponse",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
-            '404': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
+            '404': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5314,12 +5314,12 @@ class CustomFormsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "PreviewDataSourceResponse",
-            '400': "SearchFormDefinitionsByTenant400Response",
-            '401': "SearchFormDefinitionsByTenant400Response",
-            '403': "SearchFormDefinitionsByTenant400Response",
-            '404': "SearchFormDefinitionsByTenant400Response",
+            '400': "GetFormDefinitionByKey400Response",
+            '401': "GetFormDefinitionByKey400Response",
+            '403': "GetFormDefinitionByKey400Response",
+            '404': "GetFormDefinitionByKey400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response",
+            '500': "GetFormDefinitionByKey400Response",
         }
         response_data = self.api_client.call_api(
             *_param,

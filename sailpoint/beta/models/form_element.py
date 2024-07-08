@@ -21,6 +21,7 @@ import json
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
 from pydantic import Field
+from sailpoint.beta.models.form_element_validations_set import FormElementValidationsSet
 try:
     from typing import Self
 except ImportError:
@@ -31,10 +32,10 @@ class FormElement(BaseModel):
     FormElement
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="Form element identifier.")
-    element_type: Optional[StrictStr] = Field(default=None, description="FormElementType value.  TEXT FormElementTypeText TOGGLE FormElementTypeToggle TEXTAREA FormElementTypeTextArea HIDDEN FormElementTypeHidden PHONE FormElementTypePhone EMAIL FormElementTypeEmail SELECT FormElementTypeSelect DATE FormElementTypeDate SECTION FormElementTypeSection COLUMNS FormElementTypeColumns", alias="elementType")
+    element_type: Optional[StrictStr] = Field(default=None, description="FormElementType value.  TEXT FormElementTypeText TOGGLE FormElementTypeToggle TEXTAREA FormElementTypeTextArea HIDDEN FormElementTypeHidden PHONE FormElementTypePhone EMAIL FormElementTypeEmail SELECT FormElementTypeSelect DATE FormElementTypeDate SECTION FormElementTypeSection COLUMN_SET FormElementTypeColumns IMAGE FormElementTypeImage DESCRIPTION FormElementTypeDescription", alias="elementType")
     config: Optional[Dict[str, Dict[str, Any]]] = Field(default=None, description="Config object.")
     key: Optional[StrictStr] = Field(default=None, description="Technical key.")
-    validations: Optional[Dict[str, Any]] = Field(default=None, description="Set of FormElementValidation items.")
+    validations: Optional[List[FormElementValidationsSet]] = None
     __properties: ClassVar[List[str]] = ["id", "elementType", "config", "key", "validations"]
 
     @field_validator('element_type')
@@ -43,8 +44,8 @@ class FormElement(BaseModel):
         if value is None:
             return value
 
-        if value not in ('TEXT', 'TOGGLE', 'TEXTAREA', 'HIDDEN', 'PHONE', 'EMAIL', 'SELECT', 'DATE', 'SECTION', 'COLUMNS'):
-            raise ValueError("must be one of enum values ('TEXT', 'TOGGLE', 'TEXTAREA', 'HIDDEN', 'PHONE', 'EMAIL', 'SELECT', 'DATE', 'SECTION', 'COLUMNS')")
+        if value not in ('TEXT', 'TOGGLE', 'TEXTAREA', 'HIDDEN', 'PHONE', 'EMAIL', 'SELECT', 'DATE', 'SECTION', 'COLUMN_SET', 'IMAGE', 'DESCRIPTION'):
+            raise ValueError("must be one of enum values ('TEXT', 'TOGGLE', 'TEXTAREA', 'HIDDEN', 'PHONE', 'EMAIL', 'SELECT', 'DATE', 'SECTION', 'COLUMN_SET', 'IMAGE', 'DESCRIPTION')")
         return value
 
     model_config = {
@@ -84,6 +85,18 @@ class FormElement(BaseModel):
             },
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in validations (list)
+        _items = []
+        if self.validations:
+            for _item in self.validations:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['validations'] = _items
+        # set to None if validations (nullable) is None
+        # and model_fields_set contains the field
+        if self.validations is None and "validations" in self.model_fields_set:
+            _dict['validations'] = None
+
         return _dict
 
     @classmethod
@@ -100,7 +113,7 @@ class FormElement(BaseModel):
             "elementType": obj.get("elementType"),
             "config": obj.get("config"),
             "key": obj.get("key"),
-            "validations": obj.get("validations")
+            "validations": [FormElementValidationsSet.from_dict(_item) for _item in obj.get("validations")] if obj.get("validations") is not None else None
         })
         return _obj
 

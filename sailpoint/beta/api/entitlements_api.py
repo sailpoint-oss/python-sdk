@@ -1217,7 +1217,7 @@ class EntitlementsApi:
 
 
     @validate_call
-    def import_entitlements(
+    def import_entitlements_by_source(
         self,
         id: Annotated[StrictStr, Field(description="Source Id")],
         csv_file: Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="The CSV file containing the source entitlements to aggregate.")] = None,
@@ -1234,9 +1234,9 @@ class EntitlementsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> LoadEntitlementTask:
-        """Aggregate Entitlements
+        """(Deprecated) Aggregate Entitlements
 
-        Starts an entitlement aggregation on the specified source.   If the target source is a direct connection, then the request body must be empty. You will also need to make sure the Content-Type header is not set. If you set the Content-Type header without specifying a body, then you will receive a 500 error.  If the target source is a delimited file source, then the CSV file needs to be included in the request body. You will also need to set the Content-Type header to `multipart/form-data`.
+        Starts an entitlement aggregation on the specified source. Though this endpoint has been deprecated, you can find its Beta equivalent [here](https://developer.sailpoint.com/docs/api/beta/import-entitlements).  If the target source is a direct connection, then the request body must be empty. You will also need to make sure the Content-Type header is not set. If you set the Content-Type header without specifying a body, then you will receive a 500 error.  If the target source is a delimited file source, then the CSV file needs to be included in the request body. You will also need to set the Content-Type header to `multipart/form-data`.
 
         :param id: Source Id (required)
         :type id: str
@@ -1263,8 +1263,9 @@ class EntitlementsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /entitlements/aggregate/sources/{id} is deprecated.", DeprecationWarning)
 
-        _param = self._import_entitlements_serialize(
+        _param = self._import_entitlements_by_source_serialize(
             id=id,
             csv_file=csv_file,
             _request_auth=_request_auth,
@@ -1293,7 +1294,7 @@ class EntitlementsApi:
 
 
     @validate_call
-    def import_entitlements_with_http_info(
+    def import_entitlements_by_source_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Source Id")],
         csv_file: Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="The CSV file containing the source entitlements to aggregate.")] = None,
@@ -1310,9 +1311,9 @@ class EntitlementsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[LoadEntitlementTask]:
-        """Aggregate Entitlements
+        """(Deprecated) Aggregate Entitlements
 
-        Starts an entitlement aggregation on the specified source.   If the target source is a direct connection, then the request body must be empty. You will also need to make sure the Content-Type header is not set. If you set the Content-Type header without specifying a body, then you will receive a 500 error.  If the target source is a delimited file source, then the CSV file needs to be included in the request body. You will also need to set the Content-Type header to `multipart/form-data`.
+        Starts an entitlement aggregation on the specified source. Though this endpoint has been deprecated, you can find its Beta equivalent [here](https://developer.sailpoint.com/docs/api/beta/import-entitlements).  If the target source is a direct connection, then the request body must be empty. You will also need to make sure the Content-Type header is not set. If you set the Content-Type header without specifying a body, then you will receive a 500 error.  If the target source is a delimited file source, then the CSV file needs to be included in the request body. You will also need to set the Content-Type header to `multipart/form-data`.
 
         :param id: Source Id (required)
         :type id: str
@@ -1339,8 +1340,9 @@ class EntitlementsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /entitlements/aggregate/sources/{id} is deprecated.", DeprecationWarning)
 
-        _param = self._import_entitlements_serialize(
+        _param = self._import_entitlements_by_source_serialize(
             id=id,
             csv_file=csv_file,
             _request_auth=_request_auth,
@@ -1369,7 +1371,7 @@ class EntitlementsApi:
 
 
     @validate_call
-    def import_entitlements_without_preload_content(
+    def import_entitlements_by_source_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Source Id")],
         csv_file: Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="The CSV file containing the source entitlements to aggregate.")] = None,
@@ -1386,9 +1388,9 @@ class EntitlementsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Aggregate Entitlements
+        """(Deprecated) Aggregate Entitlements
 
-        Starts an entitlement aggregation on the specified source.   If the target source is a direct connection, then the request body must be empty. You will also need to make sure the Content-Type header is not set. If you set the Content-Type header without specifying a body, then you will receive a 500 error.  If the target source is a delimited file source, then the CSV file needs to be included in the request body. You will also need to set the Content-Type header to `multipart/form-data`.
+        Starts an entitlement aggregation on the specified source. Though this endpoint has been deprecated, you can find its Beta equivalent [here](https://developer.sailpoint.com/docs/api/beta/import-entitlements).  If the target source is a direct connection, then the request body must be empty. You will also need to make sure the Content-Type header is not set. If you set the Content-Type header without specifying a body, then you will receive a 500 error.  If the target source is a delimited file source, then the CSV file needs to be included in the request body. You will also need to set the Content-Type header to `multipart/form-data`.
 
         :param id: Source Id (required)
         :type id: str
@@ -1415,8 +1417,9 @@ class EntitlementsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /entitlements/aggregate/sources/{id} is deprecated.", DeprecationWarning)
 
-        _param = self._import_entitlements_serialize(
+        _param = self._import_entitlements_by_source_serialize(
             id=id,
             csv_file=csv_file,
             _request_auth=_request_auth,
@@ -1440,7 +1443,7 @@ class EntitlementsApi:
         return response_data.response
 
 
-    def _import_entitlements_serialize(
+    def _import_entitlements_by_source_serialize(
         self,
         id,
         csv_file,

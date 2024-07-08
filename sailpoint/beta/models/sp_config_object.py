@@ -42,7 +42,9 @@ class SpConfigObject(BaseModel):
     import_limit: Optional[StrictInt] = Field(default=None, description="Pagination limit imposed by the target service for this object type.", alias="importLimit")
     reference_extractors: Optional[List[StrictStr]] = Field(default=None, description="List of json paths within an exported object of this type that represent references that need to be resolved.", alias="referenceExtractors")
     signature_required: Optional[StrictBool] = Field(default=False, description="If true, this type of object will be JWS signed and cannot be modified before import.", alias="signatureRequired")
-    __properties: ClassVar[List[str]] = ["objectType", "resolveByIdUrl", "resolveByNameUrl", "exportUrl", "exportRight", "exportLimit", "importUrl", "importRight", "importLimit", "referenceExtractors", "signatureRequired"]
+    legacy_object: Optional[StrictBool] = Field(default=False, alias="legacyObject")
+    one_per_tenant: Optional[StrictBool] = Field(default=False, alias="onePerTenant")
+    __properties: ClassVar[List[str]] = ["objectType", "resolveByIdUrl", "resolveByNameUrl", "exportUrl", "exportRight", "exportLimit", "importUrl", "importRight", "importLimit", "referenceExtractors", "signatureRequired", "legacyObject", "onePerTenant"]
 
     model_config = {
         "populate_by_name": True,
@@ -124,7 +126,9 @@ class SpConfigObject(BaseModel):
             "importRight": obj.get("importRight"),
             "importLimit": obj.get("importLimit"),
             "referenceExtractors": obj.get("referenceExtractors"),
-            "signatureRequired": obj.get("signatureRequired") if obj.get("signatureRequired") is not None else False
+            "signatureRequired": obj.get("signatureRequired") if obj.get("signatureRequired") is not None else False,
+            "legacyObject": obj.get("legacyObject") if obj.get("legacyObject") is not None else False,
+            "onePerTenant": obj.get("onePerTenant") if obj.get("onePerTenant") is not None else False
         })
         return _obj
 

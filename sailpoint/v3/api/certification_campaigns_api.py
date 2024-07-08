@@ -66,7 +66,7 @@ class CertificationCampaignsApi:
     @validate_call
     def complete_campaign(
         self,
-        id: Annotated[StrictStr, Field(description="The campaign id")],
+        id: Annotated[StrictStr, Field(description="Campaign ID.")],
         campaign_complete_options: Annotated[Optional[CampaignCompleteOptions], Field(description="Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE")] = None,
         _request_timeout: Union[
             None,
@@ -83,9 +83,9 @@ class CertificationCampaignsApi:
     ) -> object:
         """Complete a Campaign
 
-        :::caution  This endpoint will run successfully for any campaigns that are **past due**.  This endpoint will return a content error if the campaign is **not past due**.  :::  Completes a certification campaign. This is provided to admins so that they can complete a certification even if all items have not been completed.  Requires roles of CERT_ADMIN and ORG_ADMIN 
+        :::caution  This endpoint will run successfully for any campaigns that are **past due**.  This endpoint will return a content error if the campaign is **not past due**.  :::  Use this API to complete a certification campaign. This functionality is provided to admins so that they can complete a certification even if all items have not been completed.  Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN. 
 
-        :param id: The campaign id (required)
+        :param id: Campaign ID. (required)
         :type id: str
         :param campaign_complete_options: Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE
         :type campaign_complete_options: CampaignCompleteOptions
@@ -143,7 +143,7 @@ class CertificationCampaignsApi:
     @validate_call
     def complete_campaign_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The campaign id")],
+        id: Annotated[StrictStr, Field(description="Campaign ID.")],
         campaign_complete_options: Annotated[Optional[CampaignCompleteOptions], Field(description="Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE")] = None,
         _request_timeout: Union[
             None,
@@ -160,9 +160,9 @@ class CertificationCampaignsApi:
     ) -> ApiResponse[object]:
         """Complete a Campaign
 
-        :::caution  This endpoint will run successfully for any campaigns that are **past due**.  This endpoint will return a content error if the campaign is **not past due**.  :::  Completes a certification campaign. This is provided to admins so that they can complete a certification even if all items have not been completed.  Requires roles of CERT_ADMIN and ORG_ADMIN 
+        :::caution  This endpoint will run successfully for any campaigns that are **past due**.  This endpoint will return a content error if the campaign is **not past due**.  :::  Use this API to complete a certification campaign. This functionality is provided to admins so that they can complete a certification even if all items have not been completed.  Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN. 
 
-        :param id: The campaign id (required)
+        :param id: Campaign ID. (required)
         :type id: str
         :param campaign_complete_options: Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE
         :type campaign_complete_options: CampaignCompleteOptions
@@ -220,7 +220,7 @@ class CertificationCampaignsApi:
     @validate_call
     def complete_campaign_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The campaign id")],
+        id: Annotated[StrictStr, Field(description="Campaign ID.")],
         campaign_complete_options: Annotated[Optional[CampaignCompleteOptions], Field(description="Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE")] = None,
         _request_timeout: Union[
             None,
@@ -237,9 +237,9 @@ class CertificationCampaignsApi:
     ) -> RESTResponseType:
         """Complete a Campaign
 
-        :::caution  This endpoint will run successfully for any campaigns that are **past due**.  This endpoint will return a content error if the campaign is **not past due**.  :::  Completes a certification campaign. This is provided to admins so that they can complete a certification even if all items have not been completed.  Requires roles of CERT_ADMIN and ORG_ADMIN 
+        :::caution  This endpoint will run successfully for any campaigns that are **past due**.  This endpoint will return a content error if the campaign is **not past due**.  :::  Use this API to complete a certification campaign. This functionality is provided to admins so that they can complete a certification even if all items have not been completed.  Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN. 
 
-        :param id: The campaign id (required)
+        :param id: Campaign ID. (required)
         :type id: str
         :param campaign_complete_options: Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE
         :type campaign_complete_options: CampaignCompleteOptions
@@ -387,7 +387,7 @@ class CertificationCampaignsApi:
     ) -> Campaign:
         """Create a campaign
 
-        Creates a new Certification Campaign with the information provided in the request body.
+        Use this API to create a certification campaign with the information provided in the request body.
 
         :param campaign: (required)
         :type campaign: Campaign
@@ -459,7 +459,7 @@ class CertificationCampaignsApi:
     ) -> ApiResponse[Campaign]:
         """Create a campaign
 
-        Creates a new Certification Campaign with the information provided in the request body.
+        Use this API to create a certification campaign with the information provided in the request body.
 
         :param campaign: (required)
         :type campaign: Campaign
@@ -531,7 +531,7 @@ class CertificationCampaignsApi:
     ) -> RESTResponseType:
         """Create a campaign
 
-        Creates a new Certification Campaign with the information provided in the request body.
+        Use this API to create a certification campaign with the information provided in the request body.
 
         :param campaign: (required)
         :type campaign: Campaign
@@ -674,7 +674,7 @@ class CertificationCampaignsApi:
     ) -> CampaignTemplate:
         """Create a Campaign Template
 
-        Create a campaign Template based on campaign.
+        Use this API to create a certification campaign template based on campaign.
 
         :param campaign_template: (required)
         :type campaign_template: CampaignTemplate
@@ -746,7 +746,7 @@ class CertificationCampaignsApi:
     ) -> ApiResponse[CampaignTemplate]:
         """Create a Campaign Template
 
-        Create a campaign Template based on campaign.
+        Use this API to create a certification campaign template based on campaign.
 
         :param campaign_template: (required)
         :type campaign_template: CampaignTemplate
@@ -818,7 +818,7 @@ class CertificationCampaignsApi:
     ) -> RESTResponseType:
         """Create a Campaign Template
 
-        Create a campaign Template based on campaign.
+        Use this API to create a certification campaign template based on campaign.
 
         :param campaign_template: (required)
         :type campaign_template: CampaignTemplate
@@ -945,7 +945,7 @@ class CertificationCampaignsApi:
     @validate_call
     def delete_campaign_template(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template being deleted.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template being deleted.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -961,9 +961,9 @@ class CertificationCampaignsApi:
     ) -> None:
         """Delete a Campaign Template
 
-        Deletes a campaign template by ID.
+        Use this API to delete a certification campaign template by ID.
 
-        :param id: The ID of the campaign template being deleted. (required)
+        :param id: ID of the campaign template being deleted. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1018,7 +1018,7 @@ class CertificationCampaignsApi:
     @validate_call
     def delete_campaign_template_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template being deleted.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template being deleted.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1034,9 +1034,9 @@ class CertificationCampaignsApi:
     ) -> ApiResponse[None]:
         """Delete a Campaign Template
 
-        Deletes a campaign template by ID.
+        Use this API to delete a certification campaign template by ID.
 
-        :param id: The ID of the campaign template being deleted. (required)
+        :param id: ID of the campaign template being deleted. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1091,7 +1091,7 @@ class CertificationCampaignsApi:
     @validate_call
     def delete_campaign_template_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template being deleted.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template being deleted.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1107,9 +1107,9 @@ class CertificationCampaignsApi:
     ) -> RESTResponseType:
         """Delete a Campaign Template
 
-        Deletes a campaign template by ID.
+        Use this API to delete a certification campaign template by ID.
 
-        :param id: The ID of the campaign template being deleted. (required)
+        :param id: ID of the campaign template being deleted. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1222,7 +1222,7 @@ class CertificationCampaignsApi:
     @validate_call
     def delete_campaign_template_schedule(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template whose schedule is being deleted.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template whose schedule is being deleted.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1236,11 +1236,11 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Deletes a Campaign Template's Schedule
+        """Delete Campaign Template Schedule
 
-        Deletes the schedule for a campaign template. Returns a 404 if there is no schedule set.
+        Use this API to delete the schedule for a certification campaign template. The API returns a 404 if there is no schedule set.
 
-        :param id: The ID of the campaign template whose schedule is being deleted. (required)
+        :param id: ID of the campaign template whose schedule is being deleted. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1295,7 +1295,7 @@ class CertificationCampaignsApi:
     @validate_call
     def delete_campaign_template_schedule_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template whose schedule is being deleted.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template whose schedule is being deleted.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1309,11 +1309,11 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Deletes a Campaign Template's Schedule
+        """Delete Campaign Template Schedule
 
-        Deletes the schedule for a campaign template. Returns a 404 if there is no schedule set.
+        Use this API to delete the schedule for a certification campaign template. The API returns a 404 if there is no schedule set.
 
-        :param id: The ID of the campaign template whose schedule is being deleted. (required)
+        :param id: ID of the campaign template whose schedule is being deleted. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1368,7 +1368,7 @@ class CertificationCampaignsApi:
     @validate_call
     def delete_campaign_template_schedule_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template whose schedule is being deleted.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template whose schedule is being deleted.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1382,11 +1382,11 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Deletes a Campaign Template's Schedule
+        """Delete Campaign Template Schedule
 
-        Deletes the schedule for a campaign template. Returns a 404 if there is no schedule set.
+        Use this API to delete the schedule for a certification campaign template. The API returns a 404 if there is no schedule set.
 
-        :param id: The ID of the campaign template whose schedule is being deleted. (required)
+        :param id: ID of the campaign template whose schedule is being deleted. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1499,7 +1499,7 @@ class CertificationCampaignsApi:
     @validate_call
     def delete_campaigns(
         self,
-        campaigns_delete_request: Annotated[CampaignsDeleteRequest, Field(description="The ids of the campaigns to delete.")],
+        campaigns_delete_request: Annotated[CampaignsDeleteRequest, Field(description="IDs of the campaigns to delete.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1513,11 +1513,11 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> object:
-        """Deletes Campaigns
+        """Delete Campaigns
 
-        Deletes campaigns whose Ids are specified in the provided list of campaign Ids. Authorized callers must be an ORG_ADMIN or a CERT_ADMIN.
+        Use this API to delete certification campaigns whose IDs are specified in the provided list of campaign IDs.  Authorized callers must be ORG_ADMINs or CERT_ADMINs.
 
-        :param campaigns_delete_request: The ids of the campaigns to delete. (required)
+        :param campaigns_delete_request: IDs of the campaigns to delete. (required)
         :type campaigns_delete_request: CampaignsDeleteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1572,7 +1572,7 @@ class CertificationCampaignsApi:
     @validate_call
     def delete_campaigns_with_http_info(
         self,
-        campaigns_delete_request: Annotated[CampaignsDeleteRequest, Field(description="The ids of the campaigns to delete.")],
+        campaigns_delete_request: Annotated[CampaignsDeleteRequest, Field(description="IDs of the campaigns to delete.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1586,11 +1586,11 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[object]:
-        """Deletes Campaigns
+        """Delete Campaigns
 
-        Deletes campaigns whose Ids are specified in the provided list of campaign Ids. Authorized callers must be an ORG_ADMIN or a CERT_ADMIN.
+        Use this API to delete certification campaigns whose IDs are specified in the provided list of campaign IDs.  Authorized callers must be ORG_ADMINs or CERT_ADMINs.
 
-        :param campaigns_delete_request: The ids of the campaigns to delete. (required)
+        :param campaigns_delete_request: IDs of the campaigns to delete. (required)
         :type campaigns_delete_request: CampaignsDeleteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1645,7 +1645,7 @@ class CertificationCampaignsApi:
     @validate_call
     def delete_campaigns_without_preload_content(
         self,
-        campaigns_delete_request: Annotated[CampaignsDeleteRequest, Field(description="The ids of the campaigns to delete.")],
+        campaigns_delete_request: Annotated[CampaignsDeleteRequest, Field(description="IDs of the campaigns to delete.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1659,11 +1659,11 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Deletes Campaigns
+        """Delete Campaigns
 
-        Deletes campaigns whose Ids are specified in the provided list of campaign Ids. Authorized callers must be an ORG_ADMIN or a CERT_ADMIN.
+        Use this API to delete certification campaigns whose IDs are specified in the provided list of campaign IDs.  Authorized callers must be ORG_ADMINs or CERT_ADMINs.
 
-        :param campaigns_delete_request: The ids of the campaigns to delete. (required)
+        :param campaigns_delete_request: IDs of the campaigns to delete. (required)
         :type campaigns_delete_request: CampaignsDeleteRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1810,7 +1810,7 @@ class CertificationCampaignsApi:
     ) -> List[GetActiveCampaigns200ResponseInner]:
         """List Campaigns
 
-        Gets campaigns and returns them in a list. Can provide increased level of detail for each campaign if provided the correct query.
+        Use this API to get a list of campaigns. This API can provide increased level of detail for each campaign for the correct provided query. 
 
         :param detail: Determines whether slim, or increased level of detail is provided for each campaign in the returned list. Slim is the default behavior.
         :type detail: str
@@ -1902,7 +1902,7 @@ class CertificationCampaignsApi:
     ) -> ApiResponse[List[GetActiveCampaigns200ResponseInner]]:
         """List Campaigns
 
-        Gets campaigns and returns them in a list. Can provide increased level of detail for each campaign if provided the correct query.
+        Use this API to get a list of campaigns. This API can provide increased level of detail for each campaign for the correct provided query. 
 
         :param detail: Determines whether slim, or increased level of detail is provided for each campaign in the returned list. Slim is the default behavior.
         :type detail: str
@@ -1994,7 +1994,7 @@ class CertificationCampaignsApi:
     ) -> RESTResponseType:
         """List Campaigns
 
-        Gets campaigns and returns them in a list. Can provide increased level of detail for each campaign if provided the correct query.
+        Use this API to get a list of campaigns. This API can provide increased level of detail for each campaign for the correct provided query. 
 
         :param detail: Determines whether slim, or increased level of detail is provided for each campaign in the returned list. Slim is the default behavior.
         :type detail: str
@@ -2150,7 +2150,7 @@ class CertificationCampaignsApi:
     @validate_call
     def get_campaign(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign to be retrieved")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign to be retrieved.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2164,11 +2164,11 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SlimCampaign:
-        """Get a campaign
+        """Get Campaign
 
-        Retrieves information for an existing campaign using the campaign's ID. Authorized callers must be a reviewer for this campaign, an ORG_ADMIN, or a CERT_ADMIN.
+        Use this API to get information for an existing certification campaign by the campaign's ID.  Authorized callers must be reviewers for this campaign, ORG_ADMINs, or a CERT_ADMINs.
 
-        :param id: The ID of the campaign to be retrieved (required)
+        :param id: ID of the campaign to be retrieved. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2223,7 +2223,7 @@ class CertificationCampaignsApi:
     @validate_call
     def get_campaign_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign to be retrieved")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign to be retrieved.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2237,11 +2237,11 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SlimCampaign]:
-        """Get a campaign
+        """Get Campaign
 
-        Retrieves information for an existing campaign using the campaign's ID. Authorized callers must be a reviewer for this campaign, an ORG_ADMIN, or a CERT_ADMIN.
+        Use this API to get information for an existing certification campaign by the campaign's ID.  Authorized callers must be reviewers for this campaign, ORG_ADMINs, or a CERT_ADMINs.
 
-        :param id: The ID of the campaign to be retrieved (required)
+        :param id: ID of the campaign to be retrieved. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2296,7 +2296,7 @@ class CertificationCampaignsApi:
     @validate_call
     def get_campaign_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign to be retrieved")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign to be retrieved.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2310,11 +2310,11 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get a campaign
+        """Get Campaign
 
-        Retrieves information for an existing campaign using the campaign's ID. Authorized callers must be a reviewer for this campaign, an ORG_ADMIN, or a CERT_ADMIN.
+        Use this API to get information for an existing certification campaign by the campaign's ID.  Authorized callers must be reviewers for this campaign, ORG_ADMINs, or a CERT_ADMINs.
 
-        :param id: The ID of the campaign to be retrieved (required)
+        :param id: ID of the campaign to be retrieved. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2427,7 +2427,7 @@ class CertificationCampaignsApi:
     @validate_call
     def get_campaign_reports(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign for which reports are being fetched.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign whose reports are being fetched.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2443,9 +2443,9 @@ class CertificationCampaignsApi:
     ) -> List[CampaignReport]:
         """Get Campaign Reports
 
-        Fetches all reports for a certification campaign by campaign ID. Requires roles of CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN
+        Use this API to fetch all reports for a certification campaign by campaign ID. Calling this endpoint requires roles of CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.
 
-        :param id: The ID of the campaign for which reports are being fetched. (required)
+        :param id: ID of the campaign whose reports are being fetched. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2500,7 +2500,7 @@ class CertificationCampaignsApi:
     @validate_call
     def get_campaign_reports_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign for which reports are being fetched.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign whose reports are being fetched.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2516,9 +2516,9 @@ class CertificationCampaignsApi:
     ) -> ApiResponse[List[CampaignReport]]:
         """Get Campaign Reports
 
-        Fetches all reports for a certification campaign by campaign ID. Requires roles of CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN
+        Use this API to fetch all reports for a certification campaign by campaign ID. Calling this endpoint requires roles of CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.
 
-        :param id: The ID of the campaign for which reports are being fetched. (required)
+        :param id: ID of the campaign whose reports are being fetched. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2573,7 +2573,7 @@ class CertificationCampaignsApi:
     @validate_call
     def get_campaign_reports_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign for which reports are being fetched.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign whose reports are being fetched.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2589,9 +2589,9 @@ class CertificationCampaignsApi:
     ) -> RESTResponseType:
         """Get Campaign Reports
 
-        Fetches all reports for a certification campaign by campaign ID. Requires roles of CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN
+        Use this API to fetch all reports for a certification campaign by campaign ID. Calling this endpoint requires roles of CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.
 
-        :param id: The ID of the campaign for which reports are being fetched. (required)
+        :param id: ID of the campaign whose reports are being fetched. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2719,7 +2719,7 @@ class CertificationCampaignsApi:
     ) -> CampaignReportsConfig:
         """Get Campaign Reports Configuration
 
-        Fetches configuration for campaign reports. Currently it includes only one element - identity attributes defined as custom report columns. Requires roles of CERT_ADMIN and ORG_ADMIN.
+        Use this API to fetch the configuration for certification campaign reports. The configuration includes only one element - identity attributes defined as custom report columns.  Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2787,7 +2787,7 @@ class CertificationCampaignsApi:
     ) -> ApiResponse[CampaignReportsConfig]:
         """Get Campaign Reports Configuration
 
-        Fetches configuration for campaign reports. Currently it includes only one element - identity attributes defined as custom report columns. Requires roles of CERT_ADMIN and ORG_ADMIN.
+        Use this API to fetch the configuration for certification campaign reports. The configuration includes only one element - identity attributes defined as custom report columns.  Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2855,7 +2855,7 @@ class CertificationCampaignsApi:
     ) -> RESTResponseType:
         """Get Campaign Reports Configuration
 
-        Fetches configuration for campaign reports. Currently it includes only one element - identity attributes defined as custom report columns. Requires roles of CERT_ADMIN and ORG_ADMIN.
+        Use this API to fetch the configuration for certification campaign reports. The configuration includes only one element - identity attributes defined as custom report columns.  Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2963,7 +2963,7 @@ class CertificationCampaignsApi:
     @validate_call
     def get_campaign_template(
         self,
-        id: Annotated[StrictStr, Field(description="The desired campaign template's ID.")],
+        id: Annotated[StrictStr, Field(description="Requested campaign template's ID.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2979,9 +2979,9 @@ class CertificationCampaignsApi:
     ) -> CampaignTemplate:
         """Get a Campaign Template
 
-        Fetches a campaign template by ID.
+        Use this API to fetch a certification campaign template by ID.
 
-        :param id: The desired campaign template's ID. (required)
+        :param id: Requested campaign template's ID. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3036,7 +3036,7 @@ class CertificationCampaignsApi:
     @validate_call
     def get_campaign_template_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The desired campaign template's ID.")],
+        id: Annotated[StrictStr, Field(description="Requested campaign template's ID.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3052,9 +3052,9 @@ class CertificationCampaignsApi:
     ) -> ApiResponse[CampaignTemplate]:
         """Get a Campaign Template
 
-        Fetches a campaign template by ID.
+        Use this API to fetch a certification campaign template by ID.
 
-        :param id: The desired campaign template's ID. (required)
+        :param id: Requested campaign template's ID. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3109,7 +3109,7 @@ class CertificationCampaignsApi:
     @validate_call
     def get_campaign_template_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The desired campaign template's ID.")],
+        id: Annotated[StrictStr, Field(description="Requested campaign template's ID.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3125,9 +3125,9 @@ class CertificationCampaignsApi:
     ) -> RESTResponseType:
         """Get a Campaign Template
 
-        Fetches a campaign template by ID.
+        Use this API to fetch a certification campaign template by ID.
 
-        :param id: The desired campaign template's ID. (required)
+        :param id: Requested campaign template's ID. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3240,7 +3240,7 @@ class CertificationCampaignsApi:
     @validate_call
     def get_campaign_template_schedule(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template whose schedule is being fetched.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template whose schedule is being fetched.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3254,11 +3254,11 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Schedule:
-        """Gets a Campaign Template's Schedule
+        """Get Campaign Template Schedule
 
-        Gets the schedule for a campaign template. Returns a 404 if there is no schedule set.
+        Use this API to get the schedule for a certification campaign template. The API returns a 404 if there is no schedule set.
 
-        :param id: The ID of the campaign template whose schedule is being fetched. (required)
+        :param id: ID of the campaign template whose schedule is being fetched. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3313,7 +3313,7 @@ class CertificationCampaignsApi:
     @validate_call
     def get_campaign_template_schedule_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template whose schedule is being fetched.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template whose schedule is being fetched.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3327,11 +3327,11 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Schedule]:
-        """Gets a Campaign Template's Schedule
+        """Get Campaign Template Schedule
 
-        Gets the schedule for a campaign template. Returns a 404 if there is no schedule set.
+        Use this API to get the schedule for a certification campaign template. The API returns a 404 if there is no schedule set.
 
-        :param id: The ID of the campaign template whose schedule is being fetched. (required)
+        :param id: ID of the campaign template whose schedule is being fetched. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3386,7 +3386,7 @@ class CertificationCampaignsApi:
     @validate_call
     def get_campaign_template_schedule_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template whose schedule is being fetched.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template whose schedule is being fetched.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3400,11 +3400,11 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Gets a Campaign Template's Schedule
+        """Get Campaign Template Schedule
 
-        Gets the schedule for a campaign template. Returns a 404 if there is no schedule set.
+        Use this API to get the schedule for a certification campaign template. The API returns a 404 if there is no schedule set.
 
-        :param id: The ID of the campaign template whose schedule is being fetched. (required)
+        :param id: ID of the campaign template whose schedule is being fetched. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3515,7 +3515,7 @@ class CertificationCampaignsApi:
 
 
     @validate_call
-    def list_campaign_templates(
+    def get_campaign_templates(
         self,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
@@ -3537,7 +3537,7 @@ class CertificationCampaignsApi:
     ) -> List[CampaignTemplate]:
         """List Campaign Templates
 
-        Lists all CampaignTemplates. Scope can be reduced via standard V3 query params.  All CampaignTemplates matching the query params
+        Use this API to get a list of all campaign templates. Scope can be reduced through standard V3 query params. The API returns all campaign templates matching the query parameters. 
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -3571,7 +3571,7 @@ class CertificationCampaignsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_campaign_templates_serialize(
+        _param = self._get_campaign_templates_serialize(
             limit=limit,
             offset=offset,
             count=count,
@@ -3603,7 +3603,7 @@ class CertificationCampaignsApi:
 
 
     @validate_call
-    def list_campaign_templates_with_http_info(
+    def get_campaign_templates_with_http_info(
         self,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
@@ -3625,7 +3625,7 @@ class CertificationCampaignsApi:
     ) -> ApiResponse[List[CampaignTemplate]]:
         """List Campaign Templates
 
-        Lists all CampaignTemplates. Scope can be reduced via standard V3 query params.  All CampaignTemplates matching the query params
+        Use this API to get a list of all campaign templates. Scope can be reduced through standard V3 query params. The API returns all campaign templates matching the query parameters. 
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -3659,7 +3659,7 @@ class CertificationCampaignsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_campaign_templates_serialize(
+        _param = self._get_campaign_templates_serialize(
             limit=limit,
             offset=offset,
             count=count,
@@ -3691,7 +3691,7 @@ class CertificationCampaignsApi:
 
 
     @validate_call
-    def list_campaign_templates_without_preload_content(
+    def get_campaign_templates_without_preload_content(
         self,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
@@ -3713,7 +3713,7 @@ class CertificationCampaignsApi:
     ) -> RESTResponseType:
         """List Campaign Templates
 
-        Lists all CampaignTemplates. Scope can be reduced via standard V3 query params.  All CampaignTemplates matching the query params
+        Use this API to get a list of all campaign templates. Scope can be reduced through standard V3 query params. The API returns all campaign templates matching the query parameters. 
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -3747,7 +3747,7 @@ class CertificationCampaignsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_campaign_templates_serialize(
+        _param = self._get_campaign_templates_serialize(
             limit=limit,
             offset=offset,
             count=count,
@@ -3774,7 +3774,7 @@ class CertificationCampaignsApi:
         return response_data.response
 
 
-    def _list_campaign_templates_serialize(
+    def _get_campaign_templates_serialize(
         self,
         limit,
         offset,
@@ -4166,7 +4166,7 @@ class CertificationCampaignsApi:
     @validate_call
     def patch_campaign_template(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template being modified.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template being modified.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create) ")],
         _request_timeout: Union[
             None,
@@ -4183,9 +4183,9 @@ class CertificationCampaignsApi:
     ) -> CampaignTemplate:
         """Update a Campaign Template
 
-        Allows updating individual fields on a campaign template using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+        Use this API to update individual fields on a certification campaign template, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
-        :param id: The ID of the campaign template being modified. (required)
+        :param id: ID of the campaign template being modified. (required)
         :type id: str
         :param json_patch_operation: A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create)  (required)
         :type json_patch_operation: List[JsonPatchOperation]
@@ -4243,7 +4243,7 @@ class CertificationCampaignsApi:
     @validate_call
     def patch_campaign_template_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template being modified.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template being modified.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create) ")],
         _request_timeout: Union[
             None,
@@ -4260,9 +4260,9 @@ class CertificationCampaignsApi:
     ) -> ApiResponse[CampaignTemplate]:
         """Update a Campaign Template
 
-        Allows updating individual fields on a campaign template using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+        Use this API to update individual fields on a certification campaign template, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
-        :param id: The ID of the campaign template being modified. (required)
+        :param id: ID of the campaign template being modified. (required)
         :type id: str
         :param json_patch_operation: A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create)  (required)
         :type json_patch_operation: List[JsonPatchOperation]
@@ -4320,7 +4320,7 @@ class CertificationCampaignsApi:
     @validate_call
     def patch_campaign_template_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template being modified.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template being modified.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create) ")],
         _request_timeout: Union[
             None,
@@ -4337,9 +4337,9 @@ class CertificationCampaignsApi:
     ) -> RESTResponseType:
         """Update a Campaign Template
 
-        Allows updating individual fields on a campaign template using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+        Use this API to update individual fields on a certification campaign template, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
-        :param id: The ID of the campaign template being modified. (required)
+        :param id: ID of the campaign template being modified. (required)
         :type id: str
         :param json_patch_operation: A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create)  (required)
         :type json_patch_operation: List[JsonPatchOperation]
@@ -4472,7 +4472,7 @@ class CertificationCampaignsApi:
     @validate_call
     def set_campaign_reports_config(
         self,
-        campaign_reports_config: Annotated[CampaignReportsConfig, Field(description="Campaign Report Configuration")],
+        campaign_reports_config: Annotated[CampaignReportsConfig, Field(description="Campaign report configuration.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4488,9 +4488,9 @@ class CertificationCampaignsApi:
     ) -> CampaignReportsConfig:
         """Set Campaign Reports Configuration
 
-        Overwrites configuration for campaign reports. Requires roles CERT_ADMIN and ORG_ADMIN.
+        Use this API to overwrite the configuration for campaign reports.  Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
 
-        :param campaign_reports_config: Campaign Report Configuration (required)
+        :param campaign_reports_config: Campaign report configuration. (required)
         :type campaign_reports_config: CampaignReportsConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4544,7 +4544,7 @@ class CertificationCampaignsApi:
     @validate_call
     def set_campaign_reports_config_with_http_info(
         self,
-        campaign_reports_config: Annotated[CampaignReportsConfig, Field(description="Campaign Report Configuration")],
+        campaign_reports_config: Annotated[CampaignReportsConfig, Field(description="Campaign report configuration.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4560,9 +4560,9 @@ class CertificationCampaignsApi:
     ) -> ApiResponse[CampaignReportsConfig]:
         """Set Campaign Reports Configuration
 
-        Overwrites configuration for campaign reports. Requires roles CERT_ADMIN and ORG_ADMIN.
+        Use this API to overwrite the configuration for campaign reports.  Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
 
-        :param campaign_reports_config: Campaign Report Configuration (required)
+        :param campaign_reports_config: Campaign report configuration. (required)
         :type campaign_reports_config: CampaignReportsConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4616,7 +4616,7 @@ class CertificationCampaignsApi:
     @validate_call
     def set_campaign_reports_config_without_preload_content(
         self,
-        campaign_reports_config: Annotated[CampaignReportsConfig, Field(description="Campaign Report Configuration")],
+        campaign_reports_config: Annotated[CampaignReportsConfig, Field(description="Campaign report configuration.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4632,9 +4632,9 @@ class CertificationCampaignsApi:
     ) -> RESTResponseType:
         """Set Campaign Reports Configuration
 
-        Overwrites configuration for campaign reports. Requires roles CERT_ADMIN and ORG_ADMIN.
+        Use this API to overwrite the configuration for campaign reports.  Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
 
-        :param campaign_reports_config: Campaign Report Configuration (required)
+        :param campaign_reports_config: Campaign report configuration. (required)
         :type campaign_reports_config: CampaignReportsConfig
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4759,7 +4759,7 @@ class CertificationCampaignsApi:
     @validate_call
     def set_campaign_template_schedule(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template being scheduled.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template being scheduled.")],
         schedule: Optional[Schedule] = None,
         _request_timeout: Union[
             None,
@@ -4774,11 +4774,11 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Sets a Campaign Template's Schedule
+        """Set Campaign Template Schedule
 
-        Sets the schedule for a campaign template. If a schedule already exists, it will be overwritten with the new one.
+        Use this API to set the schedule for a certification campaign template. If a schedule already exists, the API overwrites it with the new one. 
 
-        :param id: The ID of the campaign template being scheduled. (required)
+        :param id: ID of the campaign template being scheduled. (required)
         :type id: str
         :param schedule:
         :type schedule: Schedule
@@ -4836,7 +4836,7 @@ class CertificationCampaignsApi:
     @validate_call
     def set_campaign_template_schedule_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template being scheduled.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template being scheduled.")],
         schedule: Optional[Schedule] = None,
         _request_timeout: Union[
             None,
@@ -4851,11 +4851,11 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Sets a Campaign Template's Schedule
+        """Set Campaign Template Schedule
 
-        Sets the schedule for a campaign template. If a schedule already exists, it will be overwritten with the new one.
+        Use this API to set the schedule for a certification campaign template. If a schedule already exists, the API overwrites it with the new one. 
 
-        :param id: The ID of the campaign template being scheduled. (required)
+        :param id: ID of the campaign template being scheduled. (required)
         :type id: str
         :param schedule:
         :type schedule: Schedule
@@ -4913,7 +4913,7 @@ class CertificationCampaignsApi:
     @validate_call
     def set_campaign_template_schedule_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template being scheduled.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template being scheduled.")],
         schedule: Optional[Schedule] = None,
         _request_timeout: Union[
             None,
@@ -4928,11 +4928,11 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Sets a Campaign Template's Schedule
+        """Set Campaign Template Schedule
 
-        Sets the schedule for a campaign template. If a schedule already exists, it will be overwritten with the new one.
+        Use this API to set the schedule for a certification campaign template. If a schedule already exists, the API overwrites it with the new one. 
 
-        :param id: The ID of the campaign template being scheduled. (required)
+        :param id: ID of the campaign template being scheduled. (required)
         :type id: str
         :param schedule:
         :type schedule: Schedule
@@ -5064,7 +5064,7 @@ class CertificationCampaignsApi:
     @validate_call
     def start_campaign(
         self,
-        id: Annotated[StrictStr, Field(description="The campaign id")],
+        id: Annotated[StrictStr, Field(description="Campaign ID.")],
         activate_campaign_options: Annotated[Optional[ActivateCampaignOptions], Field(description="Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format.")] = None,
         _request_timeout: Union[
             None,
@@ -5081,9 +5081,9 @@ class CertificationCampaignsApi:
     ) -> object:
         """Activate a Campaign
 
-        Submits a job to activate the campaign with the given Id. The campaign must be staged. Requires roles of CERT_ADMIN and ORG_ADMIN
+        Use this API to submit a job to activate the certified campaign with the specified ID. The campaign must be staged. Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
 
-        :param id: The campaign id (required)
+        :param id: Campaign ID. (required)
         :type id: str
         :param activate_campaign_options: Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format.
         :type activate_campaign_options: ActivateCampaignOptions
@@ -5141,7 +5141,7 @@ class CertificationCampaignsApi:
     @validate_call
     def start_campaign_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The campaign id")],
+        id: Annotated[StrictStr, Field(description="Campaign ID.")],
         activate_campaign_options: Annotated[Optional[ActivateCampaignOptions], Field(description="Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format.")] = None,
         _request_timeout: Union[
             None,
@@ -5158,9 +5158,9 @@ class CertificationCampaignsApi:
     ) -> ApiResponse[object]:
         """Activate a Campaign
 
-        Submits a job to activate the campaign with the given Id. The campaign must be staged. Requires roles of CERT_ADMIN and ORG_ADMIN
+        Use this API to submit a job to activate the certified campaign with the specified ID. The campaign must be staged. Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
 
-        :param id: The campaign id (required)
+        :param id: Campaign ID. (required)
         :type id: str
         :param activate_campaign_options: Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format.
         :type activate_campaign_options: ActivateCampaignOptions
@@ -5218,7 +5218,7 @@ class CertificationCampaignsApi:
     @validate_call
     def start_campaign_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The campaign id")],
+        id: Annotated[StrictStr, Field(description="Campaign ID.")],
         activate_campaign_options: Annotated[Optional[ActivateCampaignOptions], Field(description="Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format.")] = None,
         _request_timeout: Union[
             None,
@@ -5235,9 +5235,9 @@ class CertificationCampaignsApi:
     ) -> RESTResponseType:
         """Activate a Campaign
 
-        Submits a job to activate the campaign with the given Id. The campaign must be staged. Requires roles of CERT_ADMIN and ORG_ADMIN
+        Use this API to submit a job to activate the certified campaign with the specified ID. The campaign must be staged. Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
 
-        :param id: The campaign id (required)
+        :param id: Campaign ID. (required)
         :type id: str
         :param activate_campaign_options: Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format.
         :type activate_campaign_options: ActivateCampaignOptions
@@ -5369,7 +5369,7 @@ class CertificationCampaignsApi:
     @validate_call
     def start_campaign_remediation_scan(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign for which remediation scan is being run.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign the remediation scan is being run for.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5385,9 +5385,9 @@ class CertificationCampaignsApi:
     ) -> object:
         """Run Campaign Remediation Scan
 
-        Kicks off remediation scan task for a certification campaign. Requires roles of CERT_ADMIN and ORG_ADMIN
+        Use this API to run a remediation scan task for a certification campaign. Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
 
-        :param id: The ID of the campaign for which remediation scan is being run. (required)
+        :param id: ID of the campaign the remediation scan is being run for. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5442,7 +5442,7 @@ class CertificationCampaignsApi:
     @validate_call
     def start_campaign_remediation_scan_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign for which remediation scan is being run.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign the remediation scan is being run for.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5458,9 +5458,9 @@ class CertificationCampaignsApi:
     ) -> ApiResponse[object]:
         """Run Campaign Remediation Scan
 
-        Kicks off remediation scan task for a certification campaign. Requires roles of CERT_ADMIN and ORG_ADMIN
+        Use this API to run a remediation scan task for a certification campaign. Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
 
-        :param id: The ID of the campaign for which remediation scan is being run. (required)
+        :param id: ID of the campaign the remediation scan is being run for. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5515,7 +5515,7 @@ class CertificationCampaignsApi:
     @validate_call
     def start_campaign_remediation_scan_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign for which remediation scan is being run.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign the remediation scan is being run for.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5531,9 +5531,9 @@ class CertificationCampaignsApi:
     ) -> RESTResponseType:
         """Run Campaign Remediation Scan
 
-        Kicks off remediation scan task for a certification campaign. Requires roles of CERT_ADMIN and ORG_ADMIN
+        Use this API to run a remediation scan task for a certification campaign. Calling this endpoint requires roles of CERT_ADMIN and ORG_ADMIN.
 
-        :param id: The ID of the campaign for which remediation scan is being run. (required)
+        :param id: ID of the campaign the remediation scan is being run for. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5646,8 +5646,8 @@ class CertificationCampaignsApi:
     @validate_call
     def start_campaign_report(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign for which report is being run.")],
-        type: Annotated[ReportType, Field(description="The type of the report to run.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign the report is being run for.")],
+        type: Annotated[ReportType, Field(description="Type of the report to run.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5663,11 +5663,11 @@ class CertificationCampaignsApi:
     ) -> object:
         """Run Campaign Report
 
-        Runs a report for a certification campaign. Requires the following roles: CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.
+        Use this API to run a report for a certification campaign. Calling this endpoint requires the following roles: CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.
 
-        :param id: The ID of the campaign for which report is being run. (required)
+        :param id: ID of the campaign the report is being run for. (required)
         :type id: str
-        :param type: The type of the report to run. (required)
+        :param type: Type of the report to run. (required)
         :type type: ReportType
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5723,8 +5723,8 @@ class CertificationCampaignsApi:
     @validate_call
     def start_campaign_report_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign for which report is being run.")],
-        type: Annotated[ReportType, Field(description="The type of the report to run.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign the report is being run for.")],
+        type: Annotated[ReportType, Field(description="Type of the report to run.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5740,11 +5740,11 @@ class CertificationCampaignsApi:
     ) -> ApiResponse[object]:
         """Run Campaign Report
 
-        Runs a report for a certification campaign. Requires the following roles: CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.
+        Use this API to run a report for a certification campaign. Calling this endpoint requires the following roles: CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.
 
-        :param id: The ID of the campaign for which report is being run. (required)
+        :param id: ID of the campaign the report is being run for. (required)
         :type id: str
-        :param type: The type of the report to run. (required)
+        :param type: Type of the report to run. (required)
         :type type: ReportType
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5800,8 +5800,8 @@ class CertificationCampaignsApi:
     @validate_call
     def start_campaign_report_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign for which report is being run.")],
-        type: Annotated[ReportType, Field(description="The type of the report to run.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign the report is being run for.")],
+        type: Annotated[ReportType, Field(description="Type of the report to run.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5817,11 +5817,11 @@ class CertificationCampaignsApi:
     ) -> RESTResponseType:
         """Run Campaign Report
 
-        Runs a report for a certification campaign. Requires the following roles: CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.
+        Use this API to run a report for a certification campaign. Calling this endpoint requires the following roles: CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.
 
-        :param id: The ID of the campaign for which report is being run. (required)
+        :param id: ID of the campaign the report is being run for. (required)
         :type id: str
-        :param type: The type of the report to run. (required)
+        :param type: Type of the report to run. (required)
         :type type: ReportType
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5938,7 +5938,7 @@ class CertificationCampaignsApi:
     @validate_call
     def start_generate_campaign_template(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template to use for generation.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template to use for generation.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5954,9 +5954,9 @@ class CertificationCampaignsApi:
     ) -> CampaignReference:
         """Generate a Campaign from Template
 
-        Generates a new campaign from a campaign template. The campaign object contained in the template has special formatting applied to its name and description fields in order to determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation. Placeholders consist of a percent sign followed by a letter indicating what should be inserted; for example, \"%Y\" will insert the current year; a campaign template named \"Campaign for %y\" would generate a campaign called \"Campaign for 2020\" (assuming the year at generation time is 2020). Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html). Requires roles ORG_ADMIN.
+        Use this API to generate a new certification campaign from a campaign template. The campaign object contained in the template has special formatting applied to its name and description fields that determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation. Placeholders consist of a percent sign followed by a letter indicating what should be inserted. For example, \"%Y\" inserts the current year, and a campaign template named \"Campaign for %y\" generates a campaign called \"Campaign for 2020\" (assuming the year at generation time is 2020). Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html). Calling this endpoint requires the ORG_ADMIN role.
 
-        :param id: The ID of the campaign template to use for generation. (required)
+        :param id: ID of the campaign template to use for generation. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -6010,7 +6010,7 @@ class CertificationCampaignsApi:
     @validate_call
     def start_generate_campaign_template_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template to use for generation.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template to use for generation.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6026,9 +6026,9 @@ class CertificationCampaignsApi:
     ) -> ApiResponse[CampaignReference]:
         """Generate a Campaign from Template
 
-        Generates a new campaign from a campaign template. The campaign object contained in the template has special formatting applied to its name and description fields in order to determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation. Placeholders consist of a percent sign followed by a letter indicating what should be inserted; for example, \"%Y\" will insert the current year; a campaign template named \"Campaign for %y\" would generate a campaign called \"Campaign for 2020\" (assuming the year at generation time is 2020). Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html). Requires roles ORG_ADMIN.
+        Use this API to generate a new certification campaign from a campaign template. The campaign object contained in the template has special formatting applied to its name and description fields that determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation. Placeholders consist of a percent sign followed by a letter indicating what should be inserted. For example, \"%Y\" inserts the current year, and a campaign template named \"Campaign for %y\" generates a campaign called \"Campaign for 2020\" (assuming the year at generation time is 2020). Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html). Calling this endpoint requires the ORG_ADMIN role.
 
-        :param id: The ID of the campaign template to use for generation. (required)
+        :param id: ID of the campaign template to use for generation. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -6082,7 +6082,7 @@ class CertificationCampaignsApi:
     @validate_call
     def start_generate_campaign_template_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template to use for generation.")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template to use for generation.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6098,9 +6098,9 @@ class CertificationCampaignsApi:
     ) -> RESTResponseType:
         """Generate a Campaign from Template
 
-        Generates a new campaign from a campaign template. The campaign object contained in the template has special formatting applied to its name and description fields in order to determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation. Placeholders consist of a percent sign followed by a letter indicating what should be inserted; for example, \"%Y\" will insert the current year; a campaign template named \"Campaign for %y\" would generate a campaign called \"Campaign for 2020\" (assuming the year at generation time is 2020). Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html). Requires roles ORG_ADMIN.
+        Use this API to generate a new certification campaign from a campaign template. The campaign object contained in the template has special formatting applied to its name and description fields that determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation. Placeholders consist of a percent sign followed by a letter indicating what should be inserted. For example, \"%Y\" inserts the current year, and a campaign template named \"Campaign for %y\" generates a campaign called \"Campaign for 2020\" (assuming the year at generation time is 2020). Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html). Calling this endpoint requires the ORG_ADMIN role.
 
-        :param id: The ID of the campaign template to use for generation. (required)
+        :param id: ID of the campaign template to use for generation. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -6212,8 +6212,8 @@ class CertificationCampaignsApi:
     @validate_call
     def update_campaign(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template being modified.")],
-        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  In the *STAGED* status, the following fields can be patched: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  In the *ACTIVE* status, the following fields can be patched: * deadline ")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template being modified.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6229,11 +6229,11 @@ class CertificationCampaignsApi:
     ) -> SlimCampaign:
         """Update a Campaign
 
-        Allows updating individual fields on a campaign using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+        Use this API to update individual fields on a certification campaign, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
-        :param id: The ID of the campaign template being modified. (required)
+        :param id: ID of the campaign template being modified. (required)
         :type id: str
-        :param json_patch_operation: A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  In the *STAGED* status, the following fields can be patched: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  In the *ACTIVE* status, the following fields can be patched: * deadline  (required)
+        :param json_patch_operation: A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline  (required)
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -6289,8 +6289,8 @@ class CertificationCampaignsApi:
     @validate_call
     def update_campaign_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template being modified.")],
-        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  In the *STAGED* status, the following fields can be patched: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  In the *ACTIVE* status, the following fields can be patched: * deadline ")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template being modified.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6306,11 +6306,11 @@ class CertificationCampaignsApi:
     ) -> ApiResponse[SlimCampaign]:
         """Update a Campaign
 
-        Allows updating individual fields on a campaign using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+        Use this API to update individual fields on a certification campaign, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
-        :param id: The ID of the campaign template being modified. (required)
+        :param id: ID of the campaign template being modified. (required)
         :type id: str
-        :param json_patch_operation: A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  In the *STAGED* status, the following fields can be patched: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  In the *ACTIVE* status, the following fields can be patched: * deadline  (required)
+        :param json_patch_operation: A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline  (required)
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -6366,8 +6366,8 @@ class CertificationCampaignsApi:
     @validate_call
     def update_campaign_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The ID of the campaign template being modified.")],
-        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  In the *STAGED* status, the following fields can be patched: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  In the *ACTIVE* status, the following fields can be patched: * deadline ")],
+        id: Annotated[StrictStr, Field(description="ID of the campaign template being modified.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6383,11 +6383,11 @@ class CertificationCampaignsApi:
     ) -> RESTResponseType:
         """Update a Campaign
 
-        Allows updating individual fields on a campaign using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+        Use this API to update individual fields on a certification campaign, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
-        :param id: The ID of the campaign template being modified. (required)
+        :param id: ID of the campaign template being modified. (required)
         :type id: str
-        :param json_patch_operation: A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  In the *STAGED* status, the following fields can be patched: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  In the *ACTIVE* status, the following fields can be patched: * deadline  (required)
+        :param json_patch_operation: A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline  (required)
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

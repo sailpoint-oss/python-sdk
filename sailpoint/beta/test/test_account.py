@@ -43,6 +43,10 @@ class TestAccount(unittest.TestCase):
                 source_id = '2c9180835d2e5168015d32f890ca1581',
                 source_name = 'Employees',
                 identity_id = '2c9180835d2e5168015d32f890ca1581',
+                cloud_lifecycle_state = 'active',
+                identity_state = 'ACTIVE',
+                connection_type = 'direct',
+                type = 'NON_HUMAN',
                 attributes = {firstName=SailPoint, lastName=Support, displayName=SailPoint Support},
                 authoritative = False,
                 description = '',
@@ -54,13 +58,24 @@ class TestAccount(unittest.TestCase):
                 uuid = 'slpt.support',
                 manually_correlated = False,
                 has_entitlements = True,
-                identity = sailpoint.beta.models.base_reference_dto.BaseReferenceDto(
-                    id = 'ff8081814d977c21014da056804a0af3', 
-                    name = 'Github', ),
-                source_owner = sailpoint.beta.models.base_reference_dto.BaseReferenceDto(
-                    id = 'ff8081814d977c21014da056804a0af3', 
-                    name = 'Github', ),
-                features = 'ENABLE'
+                identity = sailpoint.beta.models.account_all_of_identity.Account_allOf_identity(
+                    type = 'IDENTITY', 
+                    id = '2c918084660f45d6016617daa9210584', 
+                    name = 'Adam Kennedy', ),
+                source_owner = sailpoint.beta.models.account_all_of_source_owner.Account_allOf_sourceOwner(
+                    type = 'IDENTITY', 
+                    id = '4c5c8534e99445de98eef6c75e25eb01', 
+                    name = 'SailPoint Support', ),
+                features = 'ENABLE',
+                origin = 'AGGREGATED',
+                owner_identity = sailpoint.beta.models.account_all_of_owner_identity.Account_allOf_ownerIdentity(
+                    type = 'IDENTITY', 
+                    id = '2c918084660f45d6016617daa9210584', 
+                    name = 'Adam Kennedy', ),
+                owner_group = sailpoint.beta.models.account_all_of_owner_group.Account_allOf_ownerGroup(
+                    type = 'GOVERNANCE_GROUP', 
+                    id = '8d3e0094e99445de98eef6c75e25jc04', 
+                    name = 'GovGroup AX17Z', )
             )
         else:
             return Account(

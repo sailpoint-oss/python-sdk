@@ -17,6 +17,8 @@ Name | Type | Description | Notes
 **import_limit** | **int** | Pagination limit imposed by the target service for this object type. | [optional] 
 **reference_extractors** | **List[str]** | List of json paths within an exported object of this type that represent references that need to be resolved. | [optional] 
 **signature_required** | **bool** | If true, this type of object will be JWS signed and cannot be modified before import. | [optional] [default to False]
+**legacy_object** | **bool** |  | [optional] [default to False]
+**one_per_tenant** | **bool** |  | [optional] [default to False]
 
 ## Example
 

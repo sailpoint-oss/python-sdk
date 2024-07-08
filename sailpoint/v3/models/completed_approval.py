@@ -61,13 +61,13 @@ class CompletedApproval(BaseModel):
     forward_history: Optional[List[ApprovalForwardHistory]] = Field(default=None, description="The history of approval forward action.", alias="forwardHistory")
     comment_required_when_rejected: Optional[StrictBool] = Field(default=False, description="When true the rejector has to provide comments when rejecting", alias="commentRequiredWhenRejected")
     state: Optional[CompletedApprovalState] = None
-    remove_date: Optional[datetime] = Field(default=None, description="The date the role or access profile is no longer assigned to the specified identity.", alias="removeDate")
+    remove_date: Optional[datetime] = Field(default=None, description="The date the role or access profile or entitlement is no longer assigned to the specified identity.", alias="removeDate")
     remove_date_update_requested: Optional[StrictBool] = Field(default=False, description="If true, then the request was to change the remove date or sunset date.", alias="removeDateUpdateRequested")
     current_remove_date: Optional[datetime] = Field(default=None, description="The remove date or sunset date that was assigned at the time of the request.", alias="currentRemoveDate")
     sod_violation_context: Optional[SodViolationContextCheckCompleted] = Field(default=None, alias="sodViolationContext")
     pre_approval_trigger_result: Optional[CompletedApprovalPreApprovalTriggerResult] = Field(default=None, alias="preApprovalTriggerResult")
     client_metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Arbitrary key-value pairs provided during the request.", alias="clientMetadata")
-    requested_accounts: Optional[StrictStr] = Field(default=None, alias="requestedAccounts")
+    requested_accounts: Optional[StrictStr] = Field(default=None, description="Information about the requested accounts", alias="requestedAccounts")
     __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "requestCreated", "requestType", "requester", "requestedFor", "reviewedBy", "owner", "requestedObject", "requesterComment", "reviewerComment", "previousReviewersComments", "forwardHistory", "commentRequiredWhenRejected", "state", "removeDate", "removeDateUpdateRequested", "currentRemoveDate", "sodViolationContext", "preApprovalTriggerResult", "clientMetadata", "requestedAccounts"]
 
     model_config = {

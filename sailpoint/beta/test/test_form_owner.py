@@ -37,7 +37,8 @@ class TestFormOwner(unittest.TestCase):
         if include_optional:
             return FormOwner(
                 type = 'IDENTITY',
-                id = '00000000-0000-0000-0000-000000000000'
+                id = '2c9180867624cbd7017642d8c8c81f67',
+                name = 'Grant Smith'
             )
         else:
             return FormOwner(

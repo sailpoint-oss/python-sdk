@@ -958,7 +958,7 @@ class TaskManagementApi:
     ) -> List[TaskStatus]:
         """Retrieve a task status list.
 
-        Get a TaskStatus list.
+        Use this endpoint to get a list of **completed** tasks. To get a list of tasks **in-progress**, please use the [get pending tasks](https://developer.sailpoint.com/docs/api/beta/get-pending-tasks) endpoint. 
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -1047,7 +1047,7 @@ class TaskManagementApi:
     ) -> ApiResponse[List[TaskStatus]]:
         """Retrieve a task status list.
 
-        Get a TaskStatus list.
+        Use this endpoint to get a list of **completed** tasks. To get a list of tasks **in-progress**, please use the [get pending tasks](https://developer.sailpoint.com/docs/api/beta/get-pending-tasks) endpoint. 
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -1136,7 +1136,7 @@ class TaskManagementApi:
     ) -> RESTResponseType:
         """Retrieve a task status list.
 
-        Get a TaskStatus list.
+        Use this endpoint to get a list of **completed** tasks. To get a list of tasks **in-progress**, please use the [get pending tasks](https://developer.sailpoint.com/docs/api/beta/get-pending-tasks) endpoint. 
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int

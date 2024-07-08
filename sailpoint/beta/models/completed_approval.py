@@ -21,9 +21,7 @@ from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
 from pydantic import Field
-from typing_extensions import Annotated
 from sailpoint.beta.models.access_item_owner_dto import AccessItemOwnerDto
-from sailpoint.beta.models.access_item_requested_for_dto import AccessItemRequestedForDto
 from sailpoint.beta.models.access_item_requester_dto import AccessItemRequesterDto
 from sailpoint.beta.models.access_request_type import AccessRequestType
 from sailpoint.beta.models.approval_forward_history import ApprovalForwardHistory
@@ -33,6 +31,7 @@ from sailpoint.beta.models.completed_approval_reviewed_by import CompletedApprov
 from sailpoint.beta.models.completed_approval_reviewer_comment import CompletedApprovalReviewerComment
 from sailpoint.beta.models.completed_approval_state import CompletedApprovalState
 from sailpoint.beta.models.requestable_object_reference import RequestableObjectReference
+from sailpoint.beta.models.requested_item_status_requested_for import RequestedItemStatusRequestedFor
 from sailpoint.beta.models.sod_violation_context_check_completed1 import SodViolationContextCheckCompleted1
 try:
     from typing import Self
@@ -50,7 +49,7 @@ class CompletedApproval(BaseModel):
     request_created: Optional[datetime] = Field(default=None, description="When the access-request was created.", alias="requestCreated")
     request_type: Optional[AccessRequestType] = Field(default=None, alias="requestType")
     requester: Optional[AccessItemRequesterDto] = None
-    requested_for: Optional[Annotated[List[AccessItemRequestedForDto], Field(min_length=1, max_length=10)]] = Field(default=None, description="Identities access was requested for.", alias="requestedFor")
+    requested_for: Optional[RequestedItemStatusRequestedFor] = Field(default=None, alias="requestedFor")
     reviewed_by: Optional[CompletedApprovalReviewedBy] = Field(default=None, alias="reviewedBy")
     owner: Optional[AccessItemOwnerDto] = None
     requested_object: Optional[RequestableObjectReference] = Field(default=None, alias="requestedObject")
@@ -60,13 +59,13 @@ class CompletedApproval(BaseModel):
     forward_history: Optional[List[ApprovalForwardHistory]] = Field(default=None, description="The history of approval forward action.", alias="forwardHistory")
     comment_required_when_rejected: Optional[StrictBool] = Field(default=False, description="When true the rejector has to provide comments when rejecting", alias="commentRequiredWhenRejected")
     state: Optional[CompletedApprovalState] = None
-    remove_date: Optional[datetime] = Field(default=None, description="The date the role or access profile is no longer assigned to the specified identity.", alias="removeDate")
+    remove_date: Optional[datetime] = Field(default=None, description="The date the role or access profile or entitlement is no longer assigned to the specified identity.", alias="removeDate")
     remove_date_update_requested: Optional[StrictBool] = Field(default=False, description="If true, then the request was to change the remove date or sunset date.", alias="removeDateUpdateRequested")
     current_remove_date: Optional[datetime] = Field(default=None, description="The remove date or sunset date that was assigned at the time of the request.", alias="currentRemoveDate")
     sod_violation_context: Optional[SodViolationContextCheckCompleted1] = Field(default=None, alias="sodViolationContext")
     pre_approval_trigger_result: Optional[CompletedApprovalPreApprovalTriggerResult] = Field(default=None, alias="preApprovalTriggerResult")
     client_metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Arbitrary key-value pairs provided during the request.", alias="clientMetadata")
-    requested_accounts: Optional[StrictStr] = Field(default=None, alias="requestedAccounts")
+    requested_accounts: Optional[StrictStr] = Field(default=None, description="Information about the requested accounts", alias="requestedAccounts")
     __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "requestCreated", "requestType", "requester", "requestedFor", "reviewedBy", "owner", "requestedObject", "requesterComment", "reviewerComment", "previousReviewersComments", "forwardHistory", "commentRequiredWhenRejected", "state", "removeDate", "removeDateUpdateRequested", "currentRemoveDate", "sodViolationContext", "preApprovalTriggerResult", "clientMetadata", "requestedAccounts"]
 
     model_config = {
@@ -109,13 +108,9 @@ class CompletedApproval(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of requester
         if self.requester:
             _dict['requester'] = self.requester.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of each item in requested_for (list)
-        _items = []
+        # override the default output from pydantic by calling `to_dict()` of requested_for
         if self.requested_for:
-            for _item in self.requested_for:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['requestedFor'] = _items
+            _dict['requestedFor'] = self.requested_for.to_dict()
         # override the default output from pydantic by calling `to_dict()` of reviewed_by
         if self.reviewed_by:
             _dict['reviewedBy'] = self.reviewed_by.to_dict()
@@ -171,6 +166,11 @@ class CompletedApproval(BaseModel):
         if self.current_remove_date is None and "current_remove_date" in self.model_fields_set:
             _dict['currentRemoveDate'] = None
 
+        # set to None if sod_violation_context (nullable) is None
+        # and model_fields_set contains the field
+        if self.sod_violation_context is None and "sod_violation_context" in self.model_fields_set:
+            _dict['sodViolationContext'] = None
+
         # set to None if pre_approval_trigger_result (nullable) is None
         # and model_fields_set contains the field
         if self.pre_approval_trigger_result is None and "pre_approval_trigger_result" in self.model_fields_set:
@@ -200,7 +200,7 @@ class CompletedApproval(BaseModel):
             "requestCreated": obj.get("requestCreated"),
             "requestType": obj.get("requestType"),
             "requester": AccessItemRequesterDto.from_dict(obj.get("requester")) if obj.get("requester") is not None else None,
-            "requestedFor": [AccessItemRequestedForDto.from_dict(_item) for _item in obj.get("requestedFor")] if obj.get("requestedFor") is not None else None,
+            "requestedFor": RequestedItemStatusRequestedFor.from_dict(obj.get("requestedFor")) if obj.get("requestedFor") is not None else None,
             "reviewedBy": CompletedApprovalReviewedBy.from_dict(obj.get("reviewedBy")) if obj.get("reviewedBy") is not None else None,
             "owner": AccessItemOwnerDto.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
             "requestedObject": RequestableObjectReference.from_dict(obj.get("requestedObject")) if obj.get("requestedObject") is not None else None,

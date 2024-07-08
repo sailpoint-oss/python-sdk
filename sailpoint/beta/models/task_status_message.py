@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
 from pydantic import Field
 from sailpoint.beta.models.localized_message import LocalizedMessage
@@ -32,9 +32,9 @@ class TaskStatusMessage(BaseModel):
     TaskStatus Message
     """ # noqa: E501
     type: StrictStr = Field(description="Type of the message")
-    localized_text: LocalizedMessage = Field(alias="localizedText")
+    localized_text: Optional[LocalizedMessage] = Field(alias="localizedText")
     key: StrictStr = Field(description="Key of the message")
-    parameters: List[Dict[str, Any]] = Field(description="Message parameters for internationalization")
+    parameters: Optional[List[Dict[str, Any]]] = Field(description="Message parameters for internationalization")
     __properties: ClassVar[List[str]] = ["type", "localizedText", "key", "parameters"]
 
     @field_validator('type')
@@ -84,6 +84,16 @@ class TaskStatusMessage(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of localized_text
         if self.localized_text:
             _dict['localizedText'] = self.localized_text.to_dict()
+        # set to None if localized_text (nullable) is None
+        # and model_fields_set contains the field
+        if self.localized_text is None and "localized_text" in self.model_fields_set:
+            _dict['localizedText'] = None
+
+        # set to None if parameters (nullable) is None
+        # and model_fields_set contains the field
+        if self.parameters is None and "parameters" in self.model_fields_set:
+            _dict['parameters'] = None
+
         return _dict
 
     @classmethod

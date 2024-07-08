@@ -7,6 +7,7 @@ The trigger that starts the workflow
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | The trigger type | 
+**display_name** | **str** |  | [optional] 
 **attributes** | **object** | Workflow Trigger Attributes. | 
 
 ## Example

@@ -41,7 +41,9 @@ class TestWorkgroupDto(unittest.TestCase):
                 name = 'DB Access Governance Group',
                 description = 'Description of the Governance Group',
                 member_count = 1641498673000,
-                connection_count = 1641498673000
+                connection_count = 1641498673000,
+                created = '2022-01-06T19:51:13Z',
+                modified = '2022-01-06T19:51:13Z'
             )
         else:
             return WorkgroupDto(

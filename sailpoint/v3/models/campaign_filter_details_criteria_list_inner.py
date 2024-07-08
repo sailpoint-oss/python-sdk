@@ -33,8 +33,8 @@ class CampaignFilterDetailsCriteriaListInner(BaseModel):
     """ # noqa: E501
     type: CriteriaType
     operation: Any
-    var_property: Optional[StrictStr] = Field(description="The specified key from the Type of criteria.", alias="property")
-    value: Optional[StrictStr] = Field(description="The value for the specified key from the Type of Criteria")
+    var_property: Optional[StrictStr] = Field(description="Specified key from the type of criteria.", alias="property")
+    value: Optional[StrictStr] = Field(description="Value for the specified key from the type of criteria.")
     __properties: ClassVar[List[str]] = ["type", "operation", "property", "value"]
 
     model_config = {

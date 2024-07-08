@@ -38,8 +38,6 @@ class TestReportDetailsArguments(unittest.TestCase):
             return ReportDetailsArguments(
                 application = '2c9180897eSourceIde781782f705b9',
                 source_name = 'DataScienceSourceName',
-                default_s3_bucket = True,
-                s3_bucket = 'the-dev-bucket',
                 correlated_only = True,
                 authoritative_source = '1234sourceId5678902',
                 selected_formats = [CSV],
@@ -47,7 +45,7 @@ class TestReportDetailsArguments(unittest.TestCase):
                 filters = {source.id={type=TERMS, terms=[2c9180897termsId780bd2920576]}, source.name.exact={type=TERMS, terms=[IdentityNow], exclude=true}},
                 query = sailpoint.v3.models.query.Query(
                     query = 'name:a*', 
-                    fields = [name], 
+                    fields = '[firstName,lastName,email]', 
                     time_zone = 'America/Chicago', 
                     inner_hit = sailpoint.v3.models.inner_hit.InnerHit(
                         query = 'source.name:\"Active Directory\"', 
@@ -59,12 +57,11 @@ class TestReportDetailsArguments(unittest.TestCase):
             return ReportDetailsArguments(
                 application = '2c9180897eSourceIde781782f705b9',
                 source_name = 'DataScienceSourceName',
-                default_s3_bucket = True,
                 correlated_only = True,
                 authoritative_source = '1234sourceId5678902',
                 query = sailpoint.v3.models.query.Query(
                     query = 'name:a*', 
-                    fields = [name], 
+                    fields = '[firstName,lastName,email]', 
                     time_zone = 'America/Chicago', 
                     inner_hit = sailpoint.v3.models.inner_hit.InnerHit(
                         query = 'source.name:\"Active Directory\"', 

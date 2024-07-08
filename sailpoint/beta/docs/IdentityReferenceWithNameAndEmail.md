@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **str** | The type can only be IDENTITY. This is read-only | [optional] 
-**id** | **str** | Identity id. | [optional] 
-**name** | **str** | Human-readable display name of identity. This is read-only | [optional] 
-**email** | **str** | Email address of identity. This is read-only | [optional] 
+**type** | **str** | The type can only be IDENTITY. This is read-only. | [optional] 
+**id** | **str** | Identity ID. | [optional] 
+**name** | **str** | Identity&#39;s human-readable display name. This is read-only. | [optional] 
+**email** | **str** | Identity&#39;s email address. This is read-only. | [optional] 
 
 ## Example
 

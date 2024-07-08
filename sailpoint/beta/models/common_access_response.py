@@ -34,11 +34,12 @@ class CommonAccessResponse(BaseModel):
     id: Optional[StrictStr] = Field(default=None, description="Unique ID of the common access item")
     access: Optional[CommonAccessItemAccess] = None
     status: Optional[StrictStr] = Field(default=None, description="CONFIRMED or DENIED")
+    common_access_type: Optional[StrictStr] = Field(default=None, alias="commonAccessType")
     last_updated: Optional[datetime] = Field(default=None, alias="lastUpdated")
     reviewed_by_user: Optional[StrictBool] = Field(default=None, description="true if user has confirmed or denied status", alias="reviewedByUser")
     last_reviewed: Optional[datetime] = Field(default=None, alias="lastReviewed")
     created_by_user: Optional[StrictBool] = Field(default=False, alias="createdByUser")
-    __properties: ClassVar[List[str]] = ["id", "access", "status", "lastUpdated", "reviewedByUser", "lastReviewed", "createdByUser"]
+    __properties: ClassVar[List[str]] = ["id", "access", "status", "commonAccessType", "lastUpdated", "reviewedByUser", "lastReviewed", "createdByUser"]
 
     model_config = {
         "populate_by_name": True,
@@ -104,6 +105,7 @@ class CommonAccessResponse(BaseModel):
             "id": obj.get("id"),
             "access": CommonAccessItemAccess.from_dict(obj.get("access")) if obj.get("access") is not None else None,
             "status": obj.get("status"),
+            "commonAccessType": obj.get("commonAccessType"),
             "lastUpdated": obj.get("lastUpdated"),
             "reviewedByUser": obj.get("reviewedByUser"),
             "lastReviewed": obj.get("lastReviewed"),

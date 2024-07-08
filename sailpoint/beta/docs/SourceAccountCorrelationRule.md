@@ -1,14 +1,14 @@
 # SourceAccountCorrelationRule
 
-Reference to a Rule that can do COMPLEX correlation, should only be used when accountCorrelationConfig can't be used.
+Reference to a rule that can do COMPLEX correlation. Only use this rule when you can't use accountCorrelationConfig.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **str** | The type of object being referenced | [optional] 
-**id** | **str** | ID of the rule | [optional] 
-**name** | **str** | Human-readable display name of the rule | [optional] 
+**type** | **str** | Type of object being referenced. | [optional] 
+**id** | **str** | Rule ID. | [optional] 
+**name** | **str** | Rule&#39;s human-readable display name. | [optional] 
 
 ## Example
 

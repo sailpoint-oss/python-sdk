@@ -30,8 +30,8 @@ class RequestOnBehalfOfConfig(BaseModel):
     """
     RequestOnBehalfOfConfig
     """ # noqa: E501
-    allow_request_on_behalf_of_anyone_by_anyone: Optional[StrictBool] = Field(default=None, description="If anyone can request access for anyone.", alias="allowRequestOnBehalfOfAnyoneByAnyone")
-    allow_request_on_behalf_of_employee_by_manager: Optional[StrictBool] = Field(default=None, description="If a manager can request access for his/her direct reports.", alias="allowRequestOnBehalfOfEmployeeByManager")
+    allow_request_on_behalf_of_anyone_by_anyone: Optional[StrictBool] = Field(default=False, description="If this is true, anyone can request access for anyone.", alias="allowRequestOnBehalfOfAnyoneByAnyone")
+    allow_request_on_behalf_of_employee_by_manager: Optional[StrictBool] = Field(default=False, description="If this is true, a manager can request access for his or her direct reports.", alias="allowRequestOnBehalfOfEmployeeByManager")
     __properties: ClassVar[List[str]] = ["allowRequestOnBehalfOfAnyoneByAnyone", "allowRequestOnBehalfOfEmployeeByManager"]
 
     model_config = {
@@ -83,8 +83,8 @@ class RequestOnBehalfOfConfig(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "allowRequestOnBehalfOfAnyoneByAnyone": obj.get("allowRequestOnBehalfOfAnyoneByAnyone"),
-            "allowRequestOnBehalfOfEmployeeByManager": obj.get("allowRequestOnBehalfOfEmployeeByManager")
+            "allowRequestOnBehalfOfAnyoneByAnyone": obj.get("allowRequestOnBehalfOfAnyoneByAnyone") if obj.get("allowRequestOnBehalfOfAnyoneByAnyone") is not None else False,
+            "allowRequestOnBehalfOfEmployeeByManager": obj.get("allowRequestOnBehalfOfEmployeeByManager") if obj.get("allowRequestOnBehalfOfEmployeeByManager") is not None else False
         })
         return _obj
 

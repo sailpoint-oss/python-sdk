@@ -75,6 +75,16 @@ class CompleteInvocationInput(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of localized_error
         if self.localized_error:
             _dict['localizedError'] = self.localized_error.to_dict()
+        # set to None if localized_error (nullable) is None
+        # and model_fields_set contains the field
+        if self.localized_error is None and "localized_error" in self.model_fields_set:
+            _dict['localizedError'] = None
+
+        # set to None if output (nullable) is None
+        # and model_fields_set contains the field
+        if self.output is None and "output" in self.model_fields_set:
+            _dict['output'] = None
+
         return _dict
 
     @classmethod

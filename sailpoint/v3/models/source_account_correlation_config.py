@@ -28,11 +28,11 @@ except ImportError:
 
 class SourceAccountCorrelationConfig(BaseModel):
     """
-    Reference to an Account Correlation Config object
+    Reference to account correlation config object.
     """ # noqa: E501
-    type: Optional[StrictStr] = Field(default=None, description="The type of object being referenced")
-    id: Optional[StrictStr] = Field(default=None, description="ID of the account correlation config")
-    name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of the account correlation config")
+    type: Optional[StrictStr] = Field(default=None, description="Type of object being referenced.")
+    id: Optional[StrictStr] = Field(default=None, description="Account correlation config ID.")
+    name: Optional[StrictStr] = Field(default=None, description="Account correlation config's human-readable display name.")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')

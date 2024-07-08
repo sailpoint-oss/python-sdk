@@ -36,14 +36,11 @@ class TestIdentityProfileIdentityErrorReportArguments(unittest.TestCase):
         model = IdentityProfileIdentityErrorReportArguments()
         if include_optional:
             return IdentityProfileIdentityErrorReportArguments(
-                authoritative_source = '1234sourceId5678902',
-                default_s3_bucket = True,
-                s3_bucket = 'the-dev-bucket'
+                authoritative_source = '1234sourceId5678902'
             )
         else:
             return IdentityProfileIdentityErrorReportArguments(
                 authoritative_source = '1234sourceId5678902',
-                default_s3_bucket = True,
         )
         """
 

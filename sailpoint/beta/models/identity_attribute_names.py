@@ -28,9 +28,9 @@ except ImportError:
 
 class IdentityAttributeNames(BaseModel):
     """
-    Identity Attribute IDs
+    Identity attribute IDs.
     """ # noqa: E501
-    ids: Optional[List[StrictStr]] = Field(default=None, description="List of identity attributes' technical names")
+    ids: Optional[List[StrictStr]] = Field(default=None, description="List of identity attributes' technical names.")
     __properties: ClassVar[List[str]] = ["ids"]
 
     model_config = {

@@ -36,7 +36,7 @@ class FormDetails(BaseModel):
     title: Optional[StrictStr] = Field(default=None, description="The form title")
     subtitle: Optional[StrictStr] = Field(default=None, description="The form subtitle.")
     target_user: Optional[StrictStr] = Field(default=None, description="The name of the user that should be shown this form", alias="targetUser")
-    sections: Optional[SectionDetails] = None
+    sections: Optional[List[SectionDetails]] = None
     __properties: ClassVar[List[str]] = ["id", "name", "title", "subtitle", "targetUser", "sections"]
 
     model_config = {
@@ -76,9 +76,23 @@ class FormDetails(BaseModel):
             },
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of sections
+        # override the default output from pydantic by calling `to_dict()` of each item in sections (list)
+        _items = []
         if self.sections:
-            _dict['sections'] = self.sections.to_dict()
+            for _item in self.sections:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['sections'] = _items
+        # set to None if id (nullable) is None
+        # and model_fields_set contains the field
+        if self.id is None and "id" in self.model_fields_set:
+            _dict['id'] = None
+
+        # set to None if name (nullable) is None
+        # and model_fields_set contains the field
+        if self.name is None and "name" in self.model_fields_set:
+            _dict['name'] = None
+
         return _dict
 
     @classmethod
@@ -96,7 +110,7 @@ class FormDetails(BaseModel):
             "title": obj.get("title"),
             "subtitle": obj.get("subtitle"),
             "targetUser": obj.get("targetUser"),
-            "sections": SectionDetails.from_dict(obj.get("sections")) if obj.get("sections") is not None else None
+            "sections": [SectionDetails.from_dict(_item) for _item in obj.get("sections")] if obj.get("sections") is not None else None
         })
         return _obj
 

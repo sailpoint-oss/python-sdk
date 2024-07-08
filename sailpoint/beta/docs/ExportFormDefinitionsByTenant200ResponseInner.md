@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **object** | [**FormDefinitionResponse**](FormDefinitionResponse.md) |  | [optional] 
-**var_self** | **str** |  | [optional] 
+**var_self** | [**FormDefinitionSelfImportExportDto**](FormDefinitionSelfImportExportDto.md) |  | [optional] 
 **version** | **int** |  | [optional] 
 
 ## Example

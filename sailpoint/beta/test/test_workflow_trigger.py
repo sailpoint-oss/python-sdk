@@ -37,6 +37,7 @@ class TestWorkflowTrigger(unittest.TestCase):
         if include_optional:
             return WorkflowTrigger(
                 type = 'EVENT',
+                display_name = '',
                 attributes = sailpoint.beta.models.attributes.attributes()
             )
         else:

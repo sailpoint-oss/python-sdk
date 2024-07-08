@@ -34,7 +34,8 @@ class RoleInsightsInsight(BaseModel):
     identities_with_access: Optional[StrictInt] = Field(default=None, description="The number of identities in this role with the entitlement.", alias="identitiesWithAccess")
     identities_impacted: Optional[StrictInt] = Field(default=None, description="The number of identities in this role that do not have the specified entitlement.", alias="identitiesImpacted")
     total_number_of_identities: Optional[StrictInt] = Field(default=None, description="The total number of identities.", alias="totalNumberOfIdentities")
-    __properties: ClassVar[List[str]] = ["type", "identitiesWithAccess", "identitiesImpacted", "totalNumberOfIdentities"]
+    impacted_identity_names: Optional[StrictStr] = Field(default=None, alias="impactedIdentityNames")
+    __properties: ClassVar[List[str]] = ["type", "identitiesWithAccess", "identitiesImpacted", "totalNumberOfIdentities", "impactedIdentityNames"]
 
     model_config = {
         "populate_by_name": True,
@@ -73,6 +74,11 @@ class RoleInsightsInsight(BaseModel):
             },
             exclude_none=True,
         )
+        # set to None if impacted_identity_names (nullable) is None
+        # and model_fields_set contains the field
+        if self.impacted_identity_names is None and "impacted_identity_names" in self.model_fields_set:
+            _dict['impactedIdentityNames'] = None
+
         return _dict
 
     @classmethod
@@ -88,7 +94,8 @@ class RoleInsightsInsight(BaseModel):
             "type": obj.get("type"),
             "identitiesWithAccess": obj.get("identitiesWithAccess"),
             "identitiesImpacted": obj.get("identitiesImpacted"),
-            "totalNumberOfIdentities": obj.get("totalNumberOfIdentities")
+            "totalNumberOfIdentities": obj.get("totalNumberOfIdentities"),
+            "impactedIdentityNames": obj.get("impactedIdentityNames")
         })
         return _obj
 

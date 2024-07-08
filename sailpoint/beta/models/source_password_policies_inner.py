@@ -30,9 +30,9 @@ class SourcePasswordPoliciesInner(BaseModel):
     """
     SourcePasswordPoliciesInner
     """ # noqa: E501
-    type: Optional[StrictStr] = Field(default=None, description="The type of object being referenced")
-    id: Optional[StrictStr] = Field(default=None, description="ID of the policy")
-    name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of the policy")
+    type: Optional[StrictStr] = Field(default=None, description="Type of object being referenced.")
+    id: Optional[StrictStr] = Field(default=None, description="Policy ID.")
+    name: Optional[StrictStr] = Field(default=None, description="Policy's human-readable display name.")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')

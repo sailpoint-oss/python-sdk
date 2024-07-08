@@ -92,7 +92,7 @@ class TestIdentityHistoryApi(unittest.TestCase):
     def test_list_identity_snapshot_access_items(self) -> None:
         """Test case for list_identity_snapshot_access_items
 
-        Gets the list of identity access items at a given date filterd by item type
+        Get Identity Access Items Snapshot
         """
         pass
 

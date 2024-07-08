@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **id** | **str** | Insight id | [optional] 
 **number_of_updates** | **int** | Total number of updates for this role | [optional] 
 **created_date** | **datetime** | The date-time insights were last created for this role. | [optional] 
+**modified_date** | **datetime** | The date-time insights were last modified for this role. | [optional] 
 **role** | [**RoleInsightsRole**](RoleInsightsRole.md) |  | [optional] 
 **insight** | [**RoleInsightsInsight**](RoleInsightsInsight.md) |  | [optional] 
 

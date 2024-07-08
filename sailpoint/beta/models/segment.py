@@ -90,6 +90,11 @@ class Segment(BaseModel):
         if self.owner is None and "owner" in self.model_fields_set:
             _dict['owner'] = None
 
+        # set to None if visibility_criteria (nullable) is None
+        # and model_fields_set contains the field
+        if self.visibility_criteria is None and "visibility_criteria" in self.model_fields_set:
+            _dict['visibilityCriteria'] = None
+
         return _dict
 
     @classmethod

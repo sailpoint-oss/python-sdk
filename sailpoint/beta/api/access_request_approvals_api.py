@@ -56,8 +56,8 @@ class AccessRequestApprovalsApi:
     @validate_call
     def approve_access_request(
         self,
-        approval_id: Annotated[StrictStr, Field(description="The id of the approval.")],
-        comment_dto: Annotated[Optional[CommentDto], Field(description="Reviewer's comment.")] = None,
+        approval_id: Annotated[StrictStr, Field(description="Approval ID.")],
+        comment_dto: Annotated[CommentDto, Field(description="Reviewer's comment.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -71,13 +71,13 @@ class AccessRequestApprovalsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> object:
-        """Approves an access request approval.
+        """Approve Access Request Approval
 
-        This endpoint approves an access request approval. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action.
+        Use this endpoint to approve an access request approval. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action.
 
-        :param approval_id: The id of the approval. (required)
+        :param approval_id: Approval ID. (required)
         :type approval_id: str
-        :param comment_dto: Reviewer's comment.
+        :param comment_dto: Reviewer's comment. (required)
         :type comment_dto: CommentDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -112,6 +112,7 @@ class AccessRequestApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
+            '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
@@ -132,8 +133,8 @@ class AccessRequestApprovalsApi:
     @validate_call
     def approve_access_request_with_http_info(
         self,
-        approval_id: Annotated[StrictStr, Field(description="The id of the approval.")],
-        comment_dto: Annotated[Optional[CommentDto], Field(description="Reviewer's comment.")] = None,
+        approval_id: Annotated[StrictStr, Field(description="Approval ID.")],
+        comment_dto: Annotated[CommentDto, Field(description="Reviewer's comment.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -147,13 +148,13 @@ class AccessRequestApprovalsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[object]:
-        """Approves an access request approval.
+        """Approve Access Request Approval
 
-        This endpoint approves an access request approval. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action.
+        Use this endpoint to approve an access request approval. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action.
 
-        :param approval_id: The id of the approval. (required)
+        :param approval_id: Approval ID. (required)
         :type approval_id: str
-        :param comment_dto: Reviewer's comment.
+        :param comment_dto: Reviewer's comment. (required)
         :type comment_dto: CommentDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -188,6 +189,7 @@ class AccessRequestApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
+            '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
@@ -208,8 +210,8 @@ class AccessRequestApprovalsApi:
     @validate_call
     def approve_access_request_without_preload_content(
         self,
-        approval_id: Annotated[StrictStr, Field(description="The id of the approval.")],
-        comment_dto: Annotated[Optional[CommentDto], Field(description="Reviewer's comment.")] = None,
+        approval_id: Annotated[StrictStr, Field(description="Approval ID.")],
+        comment_dto: Annotated[CommentDto, Field(description="Reviewer's comment.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -223,13 +225,13 @@ class AccessRequestApprovalsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Approves an access request approval.
+        """Approve Access Request Approval
 
-        This endpoint approves an access request approval. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action.
+        Use this endpoint to approve an access request approval. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action.
 
-        :param approval_id: The id of the approval. (required)
+        :param approval_id: Approval ID. (required)
         :type approval_id: str
-        :param comment_dto: Reviewer's comment.
+        :param comment_dto: Reviewer's comment. (required)
         :type comment_dto: CommentDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -264,6 +266,7 @@ class AccessRequestApprovalsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "object",
+            '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
@@ -358,7 +361,7 @@ class AccessRequestApprovalsApi:
     @validate_call
     def forward_access_request(
         self,
-        approval_id: Annotated[StrictStr, Field(description="The id of the approval.")],
+        approval_id: Annotated[StrictStr, Field(description="Approval ID.")],
         forward_approval_dto: Annotated[ForwardApprovalDto, Field(description="Information about the forwarded approval.")],
         _request_timeout: Union[
             None,
@@ -373,11 +376,11 @@ class AccessRequestApprovalsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> object:
-        """Forwards an access request approval to a new owner.
+        """Forward Access Request Approval
 
-        This endpoint forwards an access request approval. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action.
+        Use this API to forward an access request approval to a new owner. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action.
 
-        :param approval_id: The id of the approval. (required)
+        :param approval_id: Approval ID. (required)
         :type approval_id: str
         :param forward_approval_dto: Information about the forwarded approval. (required)
         :type forward_approval_dto: ForwardApprovalDto
@@ -435,7 +438,7 @@ class AccessRequestApprovalsApi:
     @validate_call
     def forward_access_request_with_http_info(
         self,
-        approval_id: Annotated[StrictStr, Field(description="The id of the approval.")],
+        approval_id: Annotated[StrictStr, Field(description="Approval ID.")],
         forward_approval_dto: Annotated[ForwardApprovalDto, Field(description="Information about the forwarded approval.")],
         _request_timeout: Union[
             None,
@@ -450,11 +453,11 @@ class AccessRequestApprovalsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[object]:
-        """Forwards an access request approval to a new owner.
+        """Forward Access Request Approval
 
-        This endpoint forwards an access request approval. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action.
+        Use this API to forward an access request approval to a new owner. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action.
 
-        :param approval_id: The id of the approval. (required)
+        :param approval_id: Approval ID. (required)
         :type approval_id: str
         :param forward_approval_dto: Information about the forwarded approval. (required)
         :type forward_approval_dto: ForwardApprovalDto
@@ -512,7 +515,7 @@ class AccessRequestApprovalsApi:
     @validate_call
     def forward_access_request_without_preload_content(
         self,
-        approval_id: Annotated[StrictStr, Field(description="The id of the approval.")],
+        approval_id: Annotated[StrictStr, Field(description="Approval ID.")],
         forward_approval_dto: Annotated[ForwardApprovalDto, Field(description="Information about the forwarded approval.")],
         _request_timeout: Union[
             None,
@@ -527,11 +530,11 @@ class AccessRequestApprovalsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Forwards an access request approval to a new owner.
+        """Forward Access Request Approval
 
-        This endpoint forwards an access request approval. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action.
+        Use this API to forward an access request approval to a new owner. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action.
 
-        :param approval_id: The id of the approval. (required)
+        :param approval_id: Approval ID. (required)
         :type approval_id: str
         :param forward_approval_dto: Information about the forwarded approval. (required)
         :type forward_approval_dto: ForwardApprovalDto
@@ -663,8 +666,8 @@ class AccessRequestApprovalsApi:
     @validate_call
     def get_access_request_approval_summary(
         self,
-        owner_id: Annotated[Optional[StrictStr], Field(description="The id of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value.")] = None,
-        from_date: Annotated[Optional[StrictStr], Field(description="From date is the date and time from which the results will be shown. It should be in a valid ISO-8601 format  example: from-date=2020-03-19T19:59:11Z")] = None,
+        owner_id: Annotated[Optional[StrictStr], Field(description="The ID of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value.")] = None,
+        from_date: Annotated[Optional[StrictStr], Field(description="This is the date and time the results will be shown from. It must be in a valid ISO-8601 format.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -678,13 +681,13 @@ class AccessRequestApprovalsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApprovalSummary:
-        """Get the number of pending, approved and rejected access requests approvals
+        """Get Access Requests Approvals Number
 
-        This endpoint returns the number of pending, approved and rejected access requests approvals. See \"owner-id\" query parameter below for authorization info.
+        Use this API to return the number of pending, approved and rejected access requests approvals. See the \"owner-id\" query parameter for authorization information.
 
-        :param owner_id: The id of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value.
+        :param owner_id: The ID of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value.
         :type owner_id: str
-        :param from_date: From date is the date and time from which the results will be shown. It should be in a valid ISO-8601 format  example: from-date=2020-03-19T19:59:11Z
+        :param from_date: This is the date and time the results will be shown from. It must be in a valid ISO-8601 format.
         :type from_date: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -739,8 +742,8 @@ class AccessRequestApprovalsApi:
     @validate_call
     def get_access_request_approval_summary_with_http_info(
         self,
-        owner_id: Annotated[Optional[StrictStr], Field(description="The id of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value.")] = None,
-        from_date: Annotated[Optional[StrictStr], Field(description="From date is the date and time from which the results will be shown. It should be in a valid ISO-8601 format  example: from-date=2020-03-19T19:59:11Z")] = None,
+        owner_id: Annotated[Optional[StrictStr], Field(description="The ID of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value.")] = None,
+        from_date: Annotated[Optional[StrictStr], Field(description="This is the date and time the results will be shown from. It must be in a valid ISO-8601 format.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -754,13 +757,13 @@ class AccessRequestApprovalsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ApprovalSummary]:
-        """Get the number of pending, approved and rejected access requests approvals
+        """Get Access Requests Approvals Number
 
-        This endpoint returns the number of pending, approved and rejected access requests approvals. See \"owner-id\" query parameter below for authorization info.
+        Use this API to return the number of pending, approved and rejected access requests approvals. See the \"owner-id\" query parameter for authorization information.
 
-        :param owner_id: The id of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value.
+        :param owner_id: The ID of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value.
         :type owner_id: str
-        :param from_date: From date is the date and time from which the results will be shown. It should be in a valid ISO-8601 format  example: from-date=2020-03-19T19:59:11Z
+        :param from_date: This is the date and time the results will be shown from. It must be in a valid ISO-8601 format.
         :type from_date: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -815,8 +818,8 @@ class AccessRequestApprovalsApi:
     @validate_call
     def get_access_request_approval_summary_without_preload_content(
         self,
-        owner_id: Annotated[Optional[StrictStr], Field(description="The id of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value.")] = None,
-        from_date: Annotated[Optional[StrictStr], Field(description="From date is the date and time from which the results will be shown. It should be in a valid ISO-8601 format  example: from-date=2020-03-19T19:59:11Z")] = None,
+        owner_id: Annotated[Optional[StrictStr], Field(description="The ID of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value.")] = None,
+        from_date: Annotated[Optional[StrictStr], Field(description="This is the date and time the results will be shown from. It must be in a valid ISO-8601 format.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -830,13 +833,13 @@ class AccessRequestApprovalsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get the number of pending, approved and rejected access requests approvals
+        """Get Access Requests Approvals Number
 
-        This endpoint returns the number of pending, approved and rejected access requests approvals. See \"owner-id\" query parameter below for authorization info.
+        Use this API to return the number of pending, approved and rejected access requests approvals. See the \"owner-id\" query parameter for authorization information.
 
-        :param owner_id: The id of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value.
+        :param owner_id: The ID of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value.
         :type owner_id: str
-        :param from_date: From date is the date and time from which the results will be shown. It should be in a valid ISO-8601 format  example: from-date=2020-03-19T19:59:11Z
+        :param from_date: This is the date and time the results will be shown from. It must be in a valid ISO-8601 format.
         :type from_date: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1672,8 +1675,8 @@ class AccessRequestApprovalsApi:
     @validate_call
     def reject_access_request(
         self,
-        approval_id: Annotated[StrictStr, Field(description="The id of the approval.")],
-        comment_dto: Annotated[Optional[CommentDto], Field(description="Reviewer's comment.")] = None,
+        approval_id: Annotated[StrictStr, Field(description="Approval ID.")],
+        comment_dto: Annotated[CommentDto, Field(description="Reviewer's comment.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1687,13 +1690,13 @@ class AccessRequestApprovalsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> object:
-        """Rejects an access request approval.
+        """Reject Access Request Approval
 
-        This endpoint rejects an access request approval. Only the owner of the approval and admin users are allowed to perform this action.
+        Use this API to reject an access request approval. Only the owner of the approval and admin users are allowed to perform this action.
 
-        :param approval_id: The id of the approval. (required)
+        :param approval_id: Approval ID. (required)
         :type approval_id: str
-        :param comment_dto: Reviewer's comment.
+        :param comment_dto: Reviewer's comment. (required)
         :type comment_dto: CommentDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1749,8 +1752,8 @@ class AccessRequestApprovalsApi:
     @validate_call
     def reject_access_request_with_http_info(
         self,
-        approval_id: Annotated[StrictStr, Field(description="The id of the approval.")],
-        comment_dto: Annotated[Optional[CommentDto], Field(description="Reviewer's comment.")] = None,
+        approval_id: Annotated[StrictStr, Field(description="Approval ID.")],
+        comment_dto: Annotated[CommentDto, Field(description="Reviewer's comment.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1764,13 +1767,13 @@ class AccessRequestApprovalsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[object]:
-        """Rejects an access request approval.
+        """Reject Access Request Approval
 
-        This endpoint rejects an access request approval. Only the owner of the approval and admin users are allowed to perform this action.
+        Use this API to reject an access request approval. Only the owner of the approval and admin users are allowed to perform this action.
 
-        :param approval_id: The id of the approval. (required)
+        :param approval_id: Approval ID. (required)
         :type approval_id: str
-        :param comment_dto: Reviewer's comment.
+        :param comment_dto: Reviewer's comment. (required)
         :type comment_dto: CommentDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1826,8 +1829,8 @@ class AccessRequestApprovalsApi:
     @validate_call
     def reject_access_request_without_preload_content(
         self,
-        approval_id: Annotated[StrictStr, Field(description="The id of the approval.")],
-        comment_dto: Annotated[Optional[CommentDto], Field(description="Reviewer's comment.")] = None,
+        approval_id: Annotated[StrictStr, Field(description="Approval ID.")],
+        comment_dto: Annotated[CommentDto, Field(description="Reviewer's comment.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1841,13 +1844,13 @@ class AccessRequestApprovalsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Rejects an access request approval.
+        """Reject Access Request Approval
 
-        This endpoint rejects an access request approval. Only the owner of the approval and admin users are allowed to perform this action.
+        Use this API to reject an access request approval. Only the owner of the approval and admin users are allowed to perform this action.
 
-        :param approval_id: The id of the approval. (required)
+        :param approval_id: Approval ID. (required)
         :type approval_id: str
-        :param comment_dto: Reviewer's comment.
+        :param comment_dto: Reviewer's comment. (required)
         :type comment_dto: CommentDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

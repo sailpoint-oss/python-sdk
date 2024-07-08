@@ -1,14 +1,14 @@
 # SourceManagerCorrelationRule
 
-Reference to the ManagerCorrelationRule, only used when a simple filter isn't sufficient.
+Reference to the ManagerCorrelationRule. Only use this rule when a simple filter isn't sufficient.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **str** | The type of object being referenced | [optional] 
-**id** | **str** | ID of the rule | [optional] 
-**name** | **str** | Human-readable display name of the rule | [optional] 
+**type** | **str** | Type of object being referenced. | [optional] 
+**id** | **str** | Rule ID. | [optional] 
+**name** | **str** | Rule&#39;s human-readable display name. | [optional] 
 
 ## Example
 

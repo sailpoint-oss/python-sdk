@@ -28,10 +28,10 @@ except ImportError:
 
 class ViolationOwnerAssignmentConfigOwnerRef(BaseModel):
     """
-    ViolationOwnerAssignmentConfigOwnerRef
+    The owner of the violation assignment config.
     """ # noqa: E501
-    type: Optional[StrictStr] = Field(default=None, description="Owner's DTO type.")
-    id: Optional[StrictStr] = Field(default=None, description="Owner's identity ID.")
+    type: Optional[StrictStr] = Field(default=None, description="Owner type.")
+    id: Optional[StrictStr] = Field(default=None, description="Owner's ID.")
     name: Optional[StrictStr] = Field(default=None, description="Owner's name.")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
@@ -41,8 +41,8 @@ class ViolationOwnerAssignmentConfigOwnerRef(BaseModel):
         if value is None:
             return value
 
-        if value not in ('IDENTITY'):
-            raise ValueError("must be one of enum values ('IDENTITY')")
+        if value not in ('IDENTITY', 'GOVERNANCE_GROUP', 'MANAGER', 'null'):
+            raise ValueError("must be one of enum values ('IDENTITY', 'GOVERNANCE_GROUP', 'MANAGER', 'null')")
         return value
 
     model_config = {

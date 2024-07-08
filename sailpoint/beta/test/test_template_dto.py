@@ -49,7 +49,9 @@ class TestTemplateDto(unittest.TestCase):
                 description = 'Daily digest - sent if number of outstanding tasks for task owner > 0',
                 id = 'c17bea3a-574d-453c-9e04-4365fbf5af0b',
                 created = '2020-01-01T00:00Z',
-                modified = '2020-01-01T00:00Z'
+                modified = '2020-01-01T00:00Z',
+                slack_template = '',
+                teams_template = ''
             )
         else:
             return TemplateDto(

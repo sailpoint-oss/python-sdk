@@ -10,7 +10,7 @@ Method | HTTP request | Description
 [**get_pending_certification_tasks**](CertificationsApi.md#get_pending_certification_tasks) | **GET** /certification-tasks | List of Pending Certification Tasks
 [**list_certification_reviewers**](CertificationsApi.md#list_certification_reviewers) | **GET** /certifications/{id}/reviewers | List of Reviewers for certification
 [**list_identity_access_review_items**](CertificationsApi.md#list_identity_access_review_items) | **GET** /certifications/{id}/access-review-items | List of Access Review Items
-[**list_identity_certifications**](CertificationsApi.md#list_identity_certifications) | **GET** /certifications | Identity Campaign Certifications by IDs
+[**list_identity_certifications**](CertificationsApi.md#list_identity_certifications) | **GET** /certifications | List Identity Campaign Certifications
 [**make_identity_decision**](CertificationsApi.md#make_identity_decision) | **POST** /certifications/{id}/decide | Decide on a Certification Item
 [**reassign_identity_certifications**](CertificationsApi.md#reassign_identity_certifications) | **POST** /certifications/{id}/reassign | Reassign Identities or Items
 [**sign_off_identity_certification**](CertificationsApi.md#sign_off_identity_certification) | **POST** /certifications/{id}/sign-off | Finalize Identity Certification Decisions
@@ -580,9 +580,9 @@ Name | Type | Description  | Notes
 # **list_identity_certifications**
 > List[IdentityCertificationDto] list_identity_certifications(reviewer_identity=reviewer_identity, limit=limit, offset=offset, count=count, filters=filters, sorters=sorters)
 
-Identity Campaign Certifications by IDs
+List Identity Campaign Certifications
 
-This API returns a list of identity campaign certifications that satisfy the given query parameters. Any authenticated token can call this API, but only certifications you are authorized to review will be returned. This API does not support requests for certifications assigned to Governance Groups.
+Use this API to get a list of identity campaign certifications for the specified query parameters. Any authenticated token can call this API, but only certifications you are authorized to review will be returned. This API does not support requests for certifications assigned to governance groups.
 
 ### Example
 
@@ -616,7 +616,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.CertificationsApi(api_client)
-    reviewer_identity = 'me' # str | The ID of reviewer identity. *me* indicates the current user. (optional)
+    reviewer_identity = 'me' # str | Reviewer's identity. *me* indicates the current user. (optional)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -624,7 +624,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
     sorters = 'name,due' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, due, signed** (optional)
 
     try:
-        # Identity Campaign Certifications by IDs
+        # List Identity Campaign Certifications
         api_response = api_instance.list_identity_certifications(reviewer_identity=reviewer_identity, limit=limit, offset=offset, count=count, filters=filters, sorters=sorters)
         print("The response of CertificationsApi->list_identity_certifications:\n")
         pprint(api_response)
@@ -639,7 +639,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **reviewer_identity** | **str**| The ID of reviewer identity. *me* indicates the current user. | [optional] 
+ **reviewer_identity** | **str**| Reviewer&#39;s identity. *me* indicates the current user. | [optional] 
  **limit** | **int**| Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 250]
  **offset** | **int**| Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 0]
  **count** | **bool**| If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to False]
@@ -663,7 +663,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | List of identity campaign certifications |  -  |
+**200** | List of identity campaign certifications. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |

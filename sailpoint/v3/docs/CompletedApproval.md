@@ -22,13 +22,13 @@ Name | Type | Description | Notes
 **forward_history** | [**List[ApprovalForwardHistory]**](ApprovalForwardHistory.md) | The history of approval forward action. | [optional] 
 **comment_required_when_rejected** | **bool** | When true the rejector has to provide comments when rejecting | [optional] [default to False]
 **state** | [**CompletedApprovalState**](CompletedApprovalState.md) |  | [optional] 
-**remove_date** | **datetime** | The date the role or access profile is no longer assigned to the specified identity. | [optional] 
+**remove_date** | **datetime** | The date the role or access profile or entitlement is no longer assigned to the specified identity. | [optional] 
 **remove_date_update_requested** | **bool** | If true, then the request was to change the remove date or sunset date. | [optional] [default to False]
 **current_remove_date** | **datetime** | The remove date or sunset date that was assigned at the time of the request. | [optional] 
 **sod_violation_context** | [**SodViolationContextCheckCompleted**](SodViolationContextCheckCompleted.md) |  | [optional] 
 **pre_approval_trigger_result** | [**CompletedApprovalPreApprovalTriggerResult**](CompletedApprovalPreApprovalTriggerResult.md) |  | [optional] 
 **client_metadata** | **Dict[str, str]** | Arbitrary key-value pairs provided during the request. | [optional] 
-**requested_accounts** | **str** |  | [optional] 
+**requested_accounts** | **str** | Information about the requested accounts | [optional] 
 
 ## Example
 

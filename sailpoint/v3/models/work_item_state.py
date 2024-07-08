@@ -34,12 +34,12 @@ class WorkItemState(str, Enum):
     """
     allowed enum values
     """
-    FINISHED = 'FINISHED'
-    REJECTED = 'REJECTED'
-    RETURNED = 'RETURNED'
-    EXPIRED = 'EXPIRED'
-    PENDING = 'PENDING'
-    CANCELED = 'CANCELED'
+    FINISHED = 'Finished'
+    REJECTED = 'Rejected'
+    RETURNED = 'Returned'
+    EXPIRED = 'Expired'
+    PENDING = 'Pending'
+    CANCELED = 'Canceled'
     NULL = 'null'
 
     @classmethod

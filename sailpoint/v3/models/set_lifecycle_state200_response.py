@@ -30,7 +30,7 @@ class SetLifecycleState200Response(BaseModel):
     """
     SetLifecycleState200Response
     """ # noqa: E501
-    account_activity_id: Optional[StrictStr] = Field(default=None, description="The ID of the IdentityRequest object that is generated when the workflow launches. To follow the IdentityRequest, you can provide this ID with a [Get Account Activity request](https://developer.sailpoint.com/docs/api/v3/get-account-activity/). The response will contain relevant information about the IdentityRequest, such as its status.", alias="accountActivityId")
+    account_activity_id: Optional[StrictStr] = Field(default=None, description="ID of the IdentityRequest object that is generated when the workflow launches. To follow the IdentityRequest, you can provide this ID with a [Get Account Activity request](https://developer.sailpoint.com/docs/api/v3/get-account-activity/). The response will contain relevant information about the IdentityRequest, such as its status.", alias="accountActivityId")
     __properties: ClassVar[List[str]] = ["accountActivityId"]
 
     model_config = {

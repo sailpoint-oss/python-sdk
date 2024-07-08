@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **title** | **str** | The form title | [optional] 
 **subtitle** | **str** | The form subtitle. | [optional] 
 **target_user** | **str** | The name of the user that should be shown this form | [optional] 
-**sections** | [**SectionDetails**](SectionDetails.md) |  | [optional] 
+**sections** | [**List[SectionDetails]**](SectionDetails.md) |  | [optional] 
 
 ## Example
 

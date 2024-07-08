@@ -77,6 +77,26 @@ class ApprovalItems(BaseModel):
             },
             exclude_none=True,
         )
+        # set to None if account (nullable) is None
+        # and model_fields_set contains the field
+        if self.account is None and "account" in self.model_fields_set:
+            _dict['account'] = None
+
+        # set to None if name (nullable) is None
+        # and model_fields_set contains the field
+        if self.name is None and "name" in self.model_fields_set:
+            _dict['name'] = None
+
+        # set to None if value (nullable) is None
+        # and model_fields_set contains the field
+        if self.value is None and "value" in self.model_fields_set:
+            _dict['value'] = None
+
+        # set to None if state (nullable) is None
+        # and model_fields_set contains the field
+        if self.state is None and "state" in self.model_fields_set:
+            _dict['state'] = None
+
         return _dict
 
     @classmethod

@@ -39,7 +39,7 @@ class TestSubscription(unittest.TestCase):
                 id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde',
                 name = 'Access request subscription',
                 description = 'Access requested to site xyz',
-                trigger_id = 'idn:access-requested',
+                trigger_id = 'idn:access-request-post-approval',
                 trigger_name = 'Access Requested',
                 type = 'HTTP',
                 response_deadline = 'PT1H',
@@ -62,10 +62,9 @@ class TestSubscription(unittest.TestCase):
             return Subscription(
                 id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde',
                 name = 'Access request subscription',
-                trigger_id = 'idn:access-requested',
+                trigger_id = 'idn:access-request-post-approval',
                 trigger_name = 'Access Requested',
                 type = 'HTTP',
-                response_deadline = 'PT1H',
                 enabled = True,
         )
         """

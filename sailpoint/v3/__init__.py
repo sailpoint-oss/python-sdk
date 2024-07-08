@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.0.4"
+__version__ = "1.0.5"
 
 # import apis into sdk package
 from sailpoint.v3.api.access_profiles_api import AccessProfilesApi
@@ -52,7 +52,6 @@ from sailpoint.v3.api.reports_data_extraction_api import ReportsDataExtractionAp
 from sailpoint.v3.api.requestable_objects_api import RequestableObjectsApi
 from sailpoint.v3.api.roles_api import RolesApi
 from sailpoint.v3.api.sod_policies_api import SODPoliciesApi
-from sailpoint.v3.api.sod_policy_api import SODPolicyApi
 from sailpoint.v3.api.sod_violations_api import SODViolationsApi
 from sailpoint.v3.api.saved_search_api import SavedSearchApi
 from sailpoint.v3.api.scheduled_search_api import ScheduledSearchApi
@@ -111,6 +110,7 @@ from sailpoint.v3.models.access_type import AccessType
 from sailpoint.v3.models.account import Account
 from sailpoint.v3.models.account_action import AccountAction
 from sailpoint.v3.models.account_activity import AccountActivity
+from sailpoint.v3.models.account_activity_approval_status import AccountActivityApprovalStatus
 from sailpoint.v3.models.account_activity_document import AccountActivityDocument
 from sailpoint.v3.models.account_activity_item import AccountActivityItem
 from sailpoint.v3.models.account_activity_item_operation import AccountActivityItemOperation
@@ -171,6 +171,7 @@ from sailpoint.v3.models.branding_item_create import BrandingItemCreate
 from sailpoint.v3.models.bucket_aggregation import BucketAggregation
 from sailpoint.v3.models.bucket_type import BucketType
 from sailpoint.v3.models.bulk_tagged_object import BulkTaggedObject
+from sailpoint.v3.models.bulk_tagged_object_response import BulkTaggedObjectResponse
 from sailpoint.v3.models.campaign import Campaign
 from sailpoint.v3.models.campaign_alert import CampaignAlert
 from sailpoint.v3.models.campaign_all_of_filter import CampaignAllOfFilter
@@ -255,6 +256,7 @@ from sailpoint.v3.models.expansion_item import ExpansionItem
 from sailpoint.v3.models.expression import Expression
 from sailpoint.v3.models.expression_children_inner import ExpressionChildrenInner
 from sailpoint.v3.models.external_attributes import ExternalAttributes
+from sailpoint.v3.models.federation_protocol_details import FederationProtocolDetails
 from sailpoint.v3.models.field_details_dto import FieldDetailsDto
 from sailpoint.v3.models.filter import Filter
 from sailpoint.v3.models.filter_aggregation import FilterAggregation
@@ -291,11 +293,13 @@ from sailpoint.v3.models.identity_summary import IdentitySummary
 from sailpoint.v3.models.identity_with_new_access import IdentityWithNewAccess
 from sailpoint.v3.models.identity_with_new_access1 import IdentityWithNewAccess1
 from sailpoint.v3.models.identity_with_new_access_access_refs_inner import IdentityWithNewAccessAccessRefsInner
+from sailpoint.v3.models.idp_details import IdpDetails
 from sailpoint.v3.models.import_non_employee_records_in_bulk_request import ImportNonEmployeeRecordsInBulkRequest
 from sailpoint.v3.models.import_object import ImportObject
 from sailpoint.v3.models.import_uploaded_backup_request import ImportUploadedBackupRequest
 from sailpoint.v3.models.index import Index
 from sailpoint.v3.models.inner_hit import InnerHit
+from sailpoint.v3.models.jit_configuration import JITConfiguration
 from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v3.models.json_patch_operation_value import JsonPatchOperationValue
 from sailpoint.v3.models.kba_answer_request_item import KbaAnswerRequestItem
@@ -310,6 +314,7 @@ from sailpoint.v3.models.list_access_profiles429_response import ListAccessProfi
 from sailpoint.v3.models.list_campaign_filters200_response import ListCampaignFilters200Response
 from sailpoint.v3.models.list_complete_workflow_library200_response_inner import ListCompleteWorkflowLibrary200ResponseInner
 from sailpoint.v3.models.locale_origin import LocaleOrigin
+from sailpoint.v3.models.lockout_configuration import LockoutConfiguration
 from sailpoint.v3.models.managed_client import ManagedClient
 from sailpoint.v3.models.managed_client_request import ManagedClientRequest
 from sailpoint.v3.models.managed_client_status import ManagedClientStatus
@@ -441,6 +446,7 @@ from sailpoint.v3.models.requested_item_status_cancelled_request_details import 
 from sailpoint.v3.models.requested_item_status_pre_approval_trigger_details import RequestedItemStatusPreApprovalTriggerDetails
 from sailpoint.v3.models.requested_item_status_provisioning_details import RequestedItemStatusProvisioningDetails
 from sailpoint.v3.models.requested_item_status_request_state import RequestedItemStatusRequestState
+from sailpoint.v3.models.requested_item_status_requested_for import RequestedItemStatusRequestedFor
 from sailpoint.v3.models.requested_item_status_requester_comment import RequestedItemStatusRequesterComment
 from sailpoint.v3.models.requested_item_status_sod_violation_context import RequestedItemStatusSodViolationContext
 from sailpoint.v3.models.review_decision import ReviewDecision
@@ -506,6 +512,9 @@ from sailpoint.v3.models.service_desk_integration_dto_all_of_owner_ref import Se
 from sailpoint.v3.models.service_desk_integration_template_dto import ServiceDeskIntegrationTemplateDto
 from sailpoint.v3.models.service_desk_integration_template_type import ServiceDeskIntegrationTemplateType
 from sailpoint.v3.models.service_desk_source import ServiceDeskSource
+from sailpoint.v3.models.service_provider_configuration import ServiceProviderConfiguration
+from sailpoint.v3.models.service_provider_configuration_federation_protocol_details_inner import ServiceProviderConfigurationFederationProtocolDetailsInner
+from sailpoint.v3.models.session_configuration import SessionConfiguration
 from sailpoint.v3.models.set_lifecycle_state200_response import SetLifecycleState200Response
 from sailpoint.v3.models.set_lifecycle_state_request import SetLifecycleStateRequest
 from sailpoint.v3.models.slim_campaign import SlimCampaign
@@ -513,6 +522,7 @@ from sailpoint.v3.models.sod_exempt_criteria import SodExemptCriteria
 from sailpoint.v3.models.sod_policy import SodPolicy
 from sailpoint.v3.models.sod_policy_conflicting_access_criteria import SodPolicyConflictingAccessCriteria
 from sailpoint.v3.models.sod_policy_dto import SodPolicyDto
+from sailpoint.v3.models.sod_policy_owner_ref import SodPolicyOwnerRef
 from sailpoint.v3.models.sod_policy_schedule import SodPolicySchedule
 from sailpoint.v3.models.sod_recipient import SodRecipient
 from sailpoint.v3.models.sod_report_result_dto import SodReportResultDto
@@ -538,6 +548,7 @@ from sailpoint.v3.models.source_schemas_inner import SourceSchemasInner
 from sailpoint.v3.models.source_usage import SourceUsage
 from sailpoint.v3.models.source_usage_status import SourceUsageStatus
 from sailpoint.v3.models.sp_config_message import SpConfigMessage
+from sailpoint.v3.models.sp_details import SpDetails
 from sailpoint.v3.models.standard_level import StandardLevel
 from sailpoint.v3.models.sub_search_aggregation_specification import SubSearchAggregationSpecification
 from sailpoint.v3.models.tagged_object import TaggedObject

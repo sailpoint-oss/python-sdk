@@ -22,9 +22,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
 from pydantic import Field
 from sailpoint.beta.models.role_mining_role_type import RoleMiningRoleType
-from sailpoint.beta.models.role_mining_session_dto_created_by import RoleMiningSessionDtoCreatedBy
 from sailpoint.beta.models.role_mining_session_scope import RoleMiningSessionScope
-from sailpoint.beta.models.role_mining_session_status import RoleMiningSessionStatus
 try:
     from typing import Self
 except ImportError:
@@ -40,14 +38,12 @@ class RoleMiningSessionDto(BaseModel):
     min_num_identities_in_potential_role: Optional[StrictInt] = Field(default=None, description="Minimum number of identities in a potential role", alias="minNumIdentitiesInPotentialRole")
     potential_role_count: Optional[StrictInt] = Field(default=None, description="Number of potential roles", alias="potentialRoleCount")
     potential_roles_ready_count: Optional[StrictInt] = Field(default=None, description="Number of potential roles ready", alias="potentialRolesReadyCount")
-    status: Optional[RoleMiningSessionStatus] = None
     type: Optional[RoleMiningRoleType] = None
     email_recipient_id: Optional[StrictStr] = Field(default=None, description="The id of the user who will receive an email about the role mining session", alias="emailRecipientId")
-    created_by: Optional[RoleMiningSessionDtoCreatedBy] = Field(default=None, alias="createdBy")
     identity_count: Optional[StrictInt] = Field(default=None, description="Number of identities in the population which meet the search criteria or identity list provided", alias="identityCount")
     saved: Optional[StrictBool] = Field(default=False, description="The session's saved status")
     name: Optional[StrictStr] = Field(default=None, description="The session's saved name")
-    __properties: ClassVar[List[str]] = ["scope", "pruneThreshold", "prescribedPruneThreshold", "minNumIdentitiesInPotentialRole", "potentialRoleCount", "potentialRolesReadyCount", "status", "type", "emailRecipientId", "createdBy", "identityCount", "saved", "name"]
+    __properties: ClassVar[List[str]] = ["scope", "pruneThreshold", "prescribedPruneThreshold", "minNumIdentitiesInPotentialRole", "potentialRoleCount", "potentialRolesReadyCount", "type", "emailRecipientId", "identityCount", "saved", "name"]
 
     model_config = {
         "populate_by_name": True,
@@ -89,12 +85,6 @@ class RoleMiningSessionDto(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of scope
         if self.scope:
             _dict['scope'] = self.scope.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of status
-        if self.status:
-            _dict['status'] = self.status.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of created_by
-        if self.created_by:
-            _dict['createdBy'] = self.created_by.to_dict()
         # set to None if prune_threshold (nullable) is None
         # and model_fields_set contains the field
         if self.prune_threshold is None and "prune_threshold" in self.model_fields_set:
@@ -138,10 +128,8 @@ class RoleMiningSessionDto(BaseModel):
             "minNumIdentitiesInPotentialRole": obj.get("minNumIdentitiesInPotentialRole"),
             "potentialRoleCount": obj.get("potentialRoleCount"),
             "potentialRolesReadyCount": obj.get("potentialRolesReadyCount"),
-            "status": RoleMiningSessionStatus.from_dict(obj.get("status")) if obj.get("status") is not None else None,
             "type": obj.get("type"),
             "emailRecipientId": obj.get("emailRecipientId"),
-            "createdBy": RoleMiningSessionDtoCreatedBy.from_dict(obj.get("createdBy")) if obj.get("createdBy") is not None else None,
             "identityCount": obj.get("identityCount"),
             "saved": obj.get("saved") if obj.get("saved") is not None else False,
             "name": obj.get("name")

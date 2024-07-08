@@ -53,6 +53,8 @@ class TestGetOAuthClientResponse(unittest.TestCase):
                 claims_supported = False,
                 created = '2017-07-11T18:45:37.098Z',
                 modified = '2018-06-25T20:22:28.104Z',
+                secret = '',
+                metadata = '',
                 last_used = '2017-07-11T18:45:37.098Z',
                 scope = [demo:api-client-scope:first, demo:api-client-scope:second]
             )

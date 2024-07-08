@@ -85,6 +85,11 @@ class IdentityAttribute(BaseModel):
                 if _item:
                     _items.append(_item.to_dict())
             _dict['sources'] = _items
+        # set to None if type (nullable) is None
+        # and model_fields_set contains the field
+        if self.type is None and "type" in self.model_fields_set:
+            _dict['type'] = None
+
         return _dict
 
     @classmethod

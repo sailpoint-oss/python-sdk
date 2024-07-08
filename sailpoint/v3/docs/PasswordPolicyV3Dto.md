@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **id** | **str** | The password policy Id. | [optional] 
 **description** | **str** | Description for current password policy. | [optional] 
 **name** | **str** | The name of the password policy. | [optional] 
-**date_crated** | **datetime** | Date the Password Policy was created. | [optional] 
+**date_created** | **datetime** | Date the Password Policy was created. | [optional] 
 **last_updated** | **datetime** | Date the Password Policy was updated. | [optional] 
 **first_expiration_reminder** | **int** | The number of days before expiration remaninder. | [optional] 
 **account_id_min_word_length** | **int** | The minimun length of account Id. By default is equals to -1. | [optional] 
@@ -33,6 +33,8 @@ Name | Type | Description | Notes
 **use_identity_attributes** | **bool** | Defines whether this policy uses identity attributes or not. This field is false by default. | [optional] [default to False]
 **validate_against_account_id** | **bool** | Defines whether this policy validate against account id or not. This field is false by default. | [optional] [default to False]
 **validate_against_account_name** | **bool** | Defines whether this policy validate against account name or not. This field is false by default. | [optional] [default to False]
+**created** | **str** |  | [optional] 
+**modified** | **str** |  | [optional] 
 **source_ids** | **List[str]** | List of sources IDs managed by this password policy. | [optional] 
 
 ## Example

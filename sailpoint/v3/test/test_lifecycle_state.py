@@ -54,7 +54,8 @@ class TestLifecycleState(unittest.TestCase):
                         action = 'ENABLE', 
                         source_ids = [2c918084660f45d6016617daa9210584, 2c918084660f45d6016617daa9210500], )
                     ],
-                access_profile_ids = [2c918084660f45d6016617daa9210584, 2c918084660f45d6016617daa9210500]
+                access_profile_ids = [2c918084660f45d6016617daa9210584, 2c918084660f45d6016617daa9210500],
+                identity_state = ''
             )
         else:
             return LifecycleState(

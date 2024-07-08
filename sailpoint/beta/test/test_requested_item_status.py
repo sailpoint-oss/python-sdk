@@ -99,12 +99,10 @@ class TestRequestedItemStatus(unittest.TestCase):
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20648', 
                     name = 'William Wilson', ),
-                requested_for = [
-                    sailpoint.beta.models.access_item_requested_for.AccessItemRequestedFor(
-                        type = 'IDENTITY', 
-                        id = '2c4180a46faadee4016fb4e018c20626', 
-                        name = 'Robert Robinson', )
-                    ],
+                requested_for = sailpoint.beta.models.requested_item_status_requested_for.RequestedItemStatus_requestedFor(
+                    type = 'IDENTITY', 
+                    id = '2c9180835d191a86015d28455b4b232a', 
+                    name = 'William Wilson', ),
                 requester_comment = None,
                 sod_violation_context = None,
                 provisioning_details = None,

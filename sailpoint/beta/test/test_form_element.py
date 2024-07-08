@@ -40,7 +40,9 @@ class TestFormElement(unittest.TestCase):
                 element_type = 'TEXT',
                 config = {label=Department},
                 key = 'department',
-                validations = [{validationType=REQUIRED}]
+                validations = [
+                    [{validationType=REQUIRED}]
+                    ]
             )
         else:
             return FormElement(

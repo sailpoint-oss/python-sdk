@@ -33,7 +33,7 @@ class IdentitySummary(BaseModel):
     id: Optional[StrictStr] = Field(default=None, description="ID of this identity summary")
     name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of identity")
     identity_id: Optional[StrictStr] = Field(default=None, description="ID of the identity that this summary represents", alias="identityId")
-    completed: Optional[StrictBool] = Field(default=None, description="Indicates if all access items for this summary have been decided on")
+    completed: Optional[StrictBool] = Field(default=False, description="Indicates if all access items for this summary have been decided on")
     __properties: ClassVar[List[str]] = ["id", "name", "identityId", "completed"]
 
     model_config = {
@@ -88,7 +88,7 @@ class IdentitySummary(BaseModel):
             "id": obj.get("id"),
             "name": obj.get("name"),
             "identityId": obj.get("identityId"),
-            "completed": obj.get("completed")
+            "completed": obj.get("completed") if obj.get("completed") is not None else False
         })
         return _obj
 

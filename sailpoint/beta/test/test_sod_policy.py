@@ -41,7 +41,7 @@ class TestSodPolicy(unittest.TestCase):
                 created = '2020-01-01T00:00Z',
                 modified = '2020-01-01T00:00Z',
                 description = 'This policy ensures compliance of xyz',
-                owner_ref = sailpoint.beta.models.owner_dto.OwnerDto(
+                owner_ref = sailpoint.beta.models.sod_policy_owner_ref.SodPolicy_ownerRef(
                     type = 'IDENTITY', 
                     id = '2c9180a46faadee4016fb4e018c20639', 
                     name = 'Support', ),
@@ -55,7 +55,10 @@ class TestSodPolicy(unittest.TestCase):
                 modifier_id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde',
                 violation_owner_assignment_config = sailpoint.beta.models.violation_owner_assignment_config.ViolationOwnerAssignmentConfig(
                     assignment_rule = 'MANAGER', 
-                    owner_ref = null, ),
+                    owner_ref = sailpoint.beta.models.violation_owner_assignment_config_owner_ref.ViolationOwnerAssignmentConfig_ownerRef(
+                        type = 'IDENTITY', 
+                        id = '2c9180a46faadee4016fb4e018c20639', 
+                        name = 'Support', ), ),
                 scheduled = True,
                 type = 'GENERAL',
                 conflicting_access_criteria = None

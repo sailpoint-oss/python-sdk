@@ -38,7 +38,8 @@ class TestRoleInsight(unittest.TestCase):
             return RoleInsight(
                 id = '1467e61e-f284-439c-ba2d-c6cc11cf0941',
                 number_of_updates = 5,
-                created_date = '2020-05-19T13:49:37.385Z',
+                created_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                modified_date = '2020-05-19T13:49:37.385Z',
                 role = sailpoint.beta.models.role_insights_role.RoleInsightsRole(
                     name = 'Software Engineer', 
                     id = '1467e61e-f284-439c-ba2d-c6cc11cf0941', 
@@ -49,7 +50,8 @@ class TestRoleInsight(unittest.TestCase):
                     type = 'ADD', 
                     identities_with_access = 850, 
                     identities_impacted = 150, 
-                    total_number_of_identities = 1000, )
+                    total_number_of_identities = 1000, 
+                    impacted_identity_names = '', )
             )
         else:
             return RoleInsight(

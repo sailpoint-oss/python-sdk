@@ -18,8 +18,8 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
+from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, StrictStr
 from pydantic import Field
 try:
     from typing import Self
@@ -32,9 +32,7 @@ class AccountsExportReportArguments(BaseModel):
     """ # noqa: E501
     application: StrictStr = Field(description="Id of the authoritative source to export related accounts e.g. identities")
     source_name: StrictStr = Field(description="Name of the authoritative source for accounts export", alias="sourceName")
-    default_s3_bucket: StrictBool = Field(description="Use it to set default s3 bucket where generated report will be saved.  In case this argument is false and 's3Bucket' argument is null or absent there will be default s3Bucket assigned to the report.", alias="defaultS3Bucket")
-    s3_bucket: Optional[StrictStr] = Field(default=None, description="If you want to be specific you could use this argument with defaultS3Bucket = false.", alias="s3Bucket")
-    __properties: ClassVar[List[str]] = ["application", "sourceName", "defaultS3Bucket", "s3Bucket"]
+    __properties: ClassVar[List[str]] = ["application", "sourceName"]
 
     model_config = {
         "populate_by_name": True,
@@ -86,9 +84,7 @@ class AccountsExportReportArguments(BaseModel):
 
         _obj = cls.model_validate({
             "application": obj.get("application"),
-            "sourceName": obj.get("sourceName"),
-            "defaultS3Bucket": obj.get("defaultS3Bucket"),
-            "s3Bucket": obj.get("s3Bucket")
+            "sourceName": obj.get("sourceName")
         })
         return _obj
 

@@ -26,10 +26,10 @@ class TestLifecycleStatesApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_list_lifecycle_states(self) -> None:
-        """Test case for list_lifecycle_states
+    def test_get_lifecycle_states(self) -> None:
+        """Test case for get_lifecycle_states
 
-        Lifecycle State
+        Get Lifecycle State
         """
         pass
 

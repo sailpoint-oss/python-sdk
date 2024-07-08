@@ -1,14 +1,14 @@
 # SourceManagementWorkgroup
 
-Reference to Management Workgroup for this Source
+Reference to management workgroup for the source.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **str** | The type of object being referenced | [optional] 
-**id** | **str** | ID of the management workgroup | [optional] 
-**name** | **str** | Human-readable display name of the management workgroup | [optional] 
+**type** | **str** | Type of object being referenced. | [optional] 
+**id** | **str** | Management workgroup ID. | [optional] 
+**name** | **str** | Management workgroup&#39;s human-readable display name. | [optional] 
 
 ## Example
 

@@ -21,8 +21,8 @@ from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr, field_validator
 from pydantic import Field
-from sailpoint.beta.models.owner_dto import OwnerDto
 from sailpoint.beta.models.sod_policy_conflicting_access_criteria import SodPolicyConflictingAccessCriteria
+from sailpoint.beta.models.sod_policy_owner_ref import SodPolicyOwnerRef
 from sailpoint.beta.models.violation_owner_assignment_config import ViolationOwnerAssignmentConfig
 try:
     from typing import Self
@@ -38,7 +38,7 @@ class SodPolicy(BaseModel):
     created: Optional[datetime] = Field(default=None, description="The time when this SOD policy is created.")
     modified: Optional[datetime] = Field(default=None, description="The time when this SOD policy is modified.")
     description: Optional[StrictStr] = Field(default=None, description="Optional description of the SOD policy.")
-    owner_ref: Optional[OwnerDto] = Field(default=None, alias="ownerRef")
+    owner_ref: Optional[SodPolicyOwnerRef] = Field(default=None, alias="ownerRef")
     external_policy_reference: Optional[StrictStr] = Field(default=None, description="Optional external policy reference.", alias="externalPolicyReference")
     policy_query: Optional[StrictStr] = Field(default=None, description="Search query of the SOD policy.", alias="policyQuery")
     compensating_controls: Optional[StrictStr] = Field(default=None, description="Optional compensating controls (Mitigating Controls).", alias="compensatingControls")
@@ -171,7 +171,7 @@ class SodPolicy(BaseModel):
             "created": obj.get("created"),
             "modified": obj.get("modified"),
             "description": obj.get("description"),
-            "ownerRef": OwnerDto.from_dict(obj.get("ownerRef")) if obj.get("ownerRef") is not None else None,
+            "ownerRef": SodPolicyOwnerRef.from_dict(obj.get("ownerRef")) if obj.get("ownerRef") is not None else None,
             "externalPolicyReference": obj.get("externalPolicyReference"),
             "policyQuery": obj.get("policyQuery"),
             "compensatingControls": obj.get("compensatingControls"),

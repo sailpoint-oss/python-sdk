@@ -40,9 +40,9 @@ class Source(BaseModel):
     """
     Source
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(default=None, description="the id of the Source")
-    name: StrictStr = Field(description="Human-readable name of the source")
-    description: Optional[StrictStr] = Field(default=None, description="Human-readable description of the source")
+    id: Optional[StrictStr] = Field(default=None, description="Source ID.")
+    name: StrictStr = Field(description="Source's human-readable name.")
+    description: Optional[StrictStr] = Field(default=None, description="Source's human-readable description.")
     owner: SourceOwner
     cluster: Optional[SourceCluster] = None
     account_correlation_config: Optional[SourceAccountCorrelationConfig] = Field(default=None, alias="accountCorrelationConfig")
@@ -50,27 +50,27 @@ class Source(BaseModel):
     manager_correlation_mapping: Optional[SourceManagerCorrelationMapping] = Field(default=None, alias="managerCorrelationMapping")
     manager_correlation_rule: Optional[SourceManagerCorrelationRule] = Field(default=None, alias="managerCorrelationRule")
     before_provisioning_rule: Optional[SourceBeforeProvisioningRule] = Field(default=None, alias="beforeProvisioningRule")
-    schemas: Optional[List[SourceSchemasInner]] = Field(default=None, description="List of references to Schema objects")
+    schemas: Optional[List[SourceSchemasInner]] = Field(default=None, description="List of references to schema objects.")
     password_policies: Optional[List[SourcePasswordPoliciesInner]] = Field(default=None, description="List of references to the associated PasswordPolicy objects.", alias="passwordPolicies")
     features: Optional[List[StrictStr]] = Field(default=None, description="Optional features that can be supported by a source. Modifying the features array may cause source configuration errors that are unsupportable. It is recommended to not modify this array for SailPoint supported connectors. * AUTHENTICATE: The source supports pass-through authentication. * COMPOSITE: The source supports composite source creation. * DIRECT_PERMISSIONS: The source supports returning DirectPermissions. * DISCOVER_SCHEMA: The source supports discovering schemas for users and groups. * ENABLE The source supports reading if an account is enabled or disabled. * MANAGER_LOOKUP: The source supports looking up managers as they are encountered in a feed. This is the opposite of NO_RANDOM_ACCESS. * NO_RANDOM_ACCESS: The source does not support random access and the getObject() methods should not be called and expected to perform. * PROXY: The source can serve as a proxy for another source. When an source has a proxy, all connector calls made with that source are redirected through the connector for the proxy source. * SEARCH * TEMPLATE * UNLOCK: The source supports reading if an account is locked or unlocked. * UNSTRUCTURED_TARGETS: The source supports returning unstructured Targets. * SHAREPOINT_TARGET: The source supports returning unstructured Target data for SharePoint. It will be typically used by AD, LDAP sources. * PROVISIONING: The source can both read and write accounts. Having this feature implies that the provision() method is implemented. It also means that direct and target permissions can also be provisioned if they can be returned by aggregation. * GROUP_PROVISIONING: The source can both read and write groups. Having this feature implies that the provision() method is implemented. * SYNC_PROVISIONING: The source can provision accounts synchronously. * PASSWORD: The source can provision password changes. Since sources can never read passwords, this is should only be used in conjunction with the PROVISIONING feature. * CURRENT_PASSWORD: Some source types support verification of the current password * ACCOUNT_ONLY_REQUEST: The source supports requesting accounts without entitlements. * ADDITIONAL_ACCOUNT_REQUEST: The source supports requesting additional accounts. * NO_AGGREGATION: A source that does not support aggregation. * GROUPS_HAVE_MEMBERS: The source models group memberships with a member attribute on the group object rather than a groups attribute on the account object. This effects the implementation of delta account aggregation. * NO_PERMISSIONS_PROVISIONING: Indicates that the connector cannot provision direct or target permissions for accounts. When DIRECT_PERMISSIONS and PROVISIONING features are present, it is assumed that the connector can also provision direct permissions. This feature disables that assumption and causes permission request to be converted to work items for accounts. * NO_GROUP_PERMISSIONS_PROVISIONING: Indicates that the connector cannot provision direct or target permissions for groups. When DIRECT_PERMISSIONS and PROVISIONING features are present, it is assumed that the connector can also provision direct permissions. This feature disables that assumption and causes permission request to be converted to work items for groups. * NO_UNSTRUCTURED_TARGETS_PROVISIONING: This string will be replaced by NO_GROUP_PERMISSIONS_PROVISIONING and NO_PERMISSIONS_PROVISIONING. * NO_DIRECT_PERMISSIONS_PROVISIONING: This string will be replaced by NO_GROUP_PERMISSIONS_PROVISIONING and NO_PERMISSIONS_PROVISIONING. * USES_UUID: Connectivity 2.0 flag used to indicate that the connector supports a compound naming structure. * PREFER_UUID: Used in ISC Provisioning AND Aggregation to decide if it should prefer account.uuid to account.nativeIdentity when data is read in through aggregation OR pushed out through provisioning. * ARM_SECURITY_EXTRACT: Indicates the application supports Security extracts for ARM * ARM_UTILIZATION_EXTRACT: Indicates the application supports Utilization extracts for ARM * ARM_CHANGELOG_EXTRACT: Indicates the application supports Change-log extracts for ARM")
-    type: Optional[StrictStr] = Field(default=None, description="Specifies the type of system being managed e.g. Active Directory, Workday, etc.. If you are creating a Delimited File source, you must set the `provisionasCsv` query parameter to `true`. ")
+    type: Optional[StrictStr] = Field(default=None, description="Specifies the type of system being managed e.g. Active Directory, Workday, etc.. If you are creating a delimited file source, you must set the `provisionasCsv` query parameter to `true`. ")
     connector: StrictStr = Field(description="Connector script name.")
-    connector_class: Optional[StrictStr] = Field(default=None, description="The fully qualified name of the Java class that implements the connector interface.", alias="connectorClass")
-    connector_attributes: Optional[Dict[str, Any]] = Field(default=None, description="Connector specific configuration; will differ from type to type.", alias="connectorAttributes")
+    connector_class: Optional[StrictStr] = Field(default=None, description="Fully qualified name of the Java class that implements the connector interface.", alias="connectorClass")
+    connector_attributes: Optional[Dict[str, Any]] = Field(default=None, description="Connector specific configuration. This configuration will differ from type to type.", alias="connectorAttributes")
     delete_threshold: Optional[StrictInt] = Field(default=None, description="Number from 0 to 100 that specifies when to skip the delete phase.", alias="deleteThreshold")
-    authoritative: Optional[StrictBool] = Field(default=False, description="When true indicates the source is referenced by an IdentityProfile.")
+    authoritative: Optional[StrictBool] = Field(default=False, description="When this is true, it indicates that the source is referenced by an identity profile.")
     management_workgroup: Optional[SourceManagementWorkgroup] = Field(default=None, alias="managementWorkgroup")
-    healthy: Optional[StrictBool] = Field(default=False, description="When true indicates a healthy source")
-    status: Optional[StrictStr] = Field(default=None, description="A status identifier, giving specific information on why a source is healthy or not")
-    since: Optional[StrictStr] = Field(default=None, description="Timestamp showing when a source health check was last performed")
-    connector_id: Optional[StrictStr] = Field(default=None, description="The id of connector", alias="connectorId")
-    connector_name: Optional[StrictStr] = Field(default=None, description="The name of the connector that was chosen on source creation", alias="connectorName")
-    connection_type: Optional[StrictStr] = Field(default=None, description="The type of connection (direct or file)", alias="connectionType")
-    connector_implementation_id: Optional[StrictStr] = Field(default=None, description="The connector implementation id", alias="connectorImplementationId")
-    created: Optional[datetime] = Field(default=None, description="The date-time when the source was created")
-    modified: Optional[datetime] = Field(default=None, description="The date-time when the source was last modified")
-    credential_provider_enabled: Optional[StrictBool] = Field(default=False, description="Enables credential provider for this source. If credentialProvider is turned on  then source can use credential provider(s) to fetch credentials.", alias="credentialProviderEnabled")
-    category: Optional[StrictStr] = Field(default=None, description="The category of source (e.g. null, CredentialProvider)")
+    healthy: Optional[StrictBool] = Field(default=False, description="When this is true, it indicates that the source is healthy.")
+    status: Optional[StrictStr] = Field(default=None, description="Status identifier that gives specific information about why a source is or isn't healthy. ")
+    since: Optional[StrictStr] = Field(default=None, description="Timestamp that shows when a source health check was last performed.")
+    connector_id: Optional[StrictStr] = Field(default=None, description="Connector ID", alias="connectorId")
+    connector_name: Optional[StrictStr] = Field(default=None, description="Name of the connector that was chosen during source creation.", alias="connectorName")
+    connection_type: Optional[StrictStr] = Field(default=None, description="Type of connection (direct or file).", alias="connectionType")
+    connector_implementation_id: Optional[StrictStr] = Field(default=None, description="Connector implementation ID.", alias="connectorImplementationId")
+    created: Optional[datetime] = Field(default=None, description="Date-time when the source was created")
+    modified: Optional[datetime] = Field(default=None, description="Date-time when the source was last modified.")
+    credential_provider_enabled: Optional[StrictBool] = Field(default=False, description="If this is true, it enables a credential provider for the source. If credentialProvider is turned on,  then the source can use credential provider(s) to fetch credentials.", alias="credentialProviderEnabled")
+    category: Optional[StrictStr] = Field(default=None, description="Source category (e.g. null, CredentialProvider).")
     __properties: ClassVar[List[str]] = ["id", "name", "description", "owner", "cluster", "accountCorrelationConfig", "accountCorrelationRule", "managerCorrelationMapping", "managerCorrelationRule", "beforeProvisioningRule", "schemas", "passwordPolicies", "features", "type", "connector", "connectorClass", "connectorAttributes", "deleteThreshold", "authoritative", "managementWorkgroup", "healthy", "status", "since", "connectorId", "connectorName", "connectionType", "connectorImplementationId", "created", "modified", "credentialProviderEnabled", "category"]
 
     @field_validator('features')
@@ -82,6 +82,16 @@ class Source(BaseModel):
         for i in value:
             if i not in ('AUTHENTICATE', 'COMPOSITE', 'DIRECT_PERMISSIONS', 'DISCOVER_SCHEMA', 'ENABLE', 'MANAGER_LOOKUP', 'NO_RANDOM_ACCESS', 'PROXY', 'SEARCH', 'TEMPLATE', 'UNLOCK', 'UNSTRUCTURED_TARGETS', 'SHAREPOINT_TARGET', 'PROVISIONING', 'GROUP_PROVISIONING', 'SYNC_PROVISIONING', 'PASSWORD', 'CURRENT_PASSWORD', 'ACCOUNT_ONLY_REQUEST', 'ADDITIONAL_ACCOUNT_REQUEST', 'NO_AGGREGATION', 'GROUPS_HAVE_MEMBERS', 'NO_PERMISSIONS_PROVISIONING', 'NO_GROUP_PERMISSIONS_PROVISIONING', 'NO_UNSTRUCTURED_TARGETS_PROVISIONING', 'NO_DIRECT_PERMISSIONS_PROVISIONING', 'PREFER_UUID', 'ARM_SECURITY_EXTRACT', 'ARM_UTILIZATION_EXTRACT', 'ARM_CHANGELOG_EXTRACT', 'USES_UUID'):
                 raise ValueError("each list item must be one of ('AUTHENTICATE', 'COMPOSITE', 'DIRECT_PERMISSIONS', 'DISCOVER_SCHEMA', 'ENABLE', 'MANAGER_LOOKUP', 'NO_RANDOM_ACCESS', 'PROXY', 'SEARCH', 'TEMPLATE', 'UNLOCK', 'UNSTRUCTURED_TARGETS', 'SHAREPOINT_TARGET', 'PROVISIONING', 'GROUP_PROVISIONING', 'SYNC_PROVISIONING', 'PASSWORD', 'CURRENT_PASSWORD', 'ACCOUNT_ONLY_REQUEST', 'ADDITIONAL_ACCOUNT_REQUEST', 'NO_AGGREGATION', 'GROUPS_HAVE_MEMBERS', 'NO_PERMISSIONS_PROVISIONING', 'NO_GROUP_PERMISSIONS_PROVISIONING', 'NO_UNSTRUCTURED_TARGETS_PROVISIONING', 'NO_DIRECT_PERMISSIONS_PROVISIONING', 'PREFER_UUID', 'ARM_SECURITY_EXTRACT', 'ARM_UTILIZATION_EXTRACT', 'ARM_CHANGELOG_EXTRACT', 'USES_UUID')")
+        return value
+
+    @field_validator('status')
+    def status_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in ('SOURCE_STATE_ERROR_CLUSTER', 'SOURCE_STATE_ERROR_SOURCE', 'SOURCE_STATE_ERROR_VA', 'SOURCE_STATE_FAILURE_CLUSTER', 'SOURCE_STATE_FAILURE_SOURCE', 'SOURCE_STATE_HEALTHY', 'SOURCE_STATE_UNCHECKED_CLUSTER', 'SOURCE_STATE_UNCHECKED_CLUSTER_NO_SOURCES', 'SOURCE_STATE_UNCHECKED_SOURCE', 'SOURCE_STATE_UNCHECKED_SOURCE_NO_ACCOUNTS'):
+            raise ValueError("must be one of enum values ('SOURCE_STATE_ERROR_CLUSTER', 'SOURCE_STATE_ERROR_SOURCE', 'SOURCE_STATE_ERROR_VA', 'SOURCE_STATE_FAILURE_CLUSTER', 'SOURCE_STATE_FAILURE_SOURCE', 'SOURCE_STATE_HEALTHY', 'SOURCE_STATE_UNCHECKED_CLUSTER', 'SOURCE_STATE_UNCHECKED_CLUSTER_NO_SOURCES', 'SOURCE_STATE_UNCHECKED_SOURCE', 'SOURCE_STATE_UNCHECKED_SOURCE_NO_ACCOUNTS')")
         return value
 
     model_config = {
