@@ -13,11 +13,17 @@ Name | Type | Description | Notes
 **description** | **str** | the description for the role | [optional] 
 **display_name** | **str** | the role display name | [optional] 
 **entitlement_count** | **str** | the number of entitlements the account will create | [optional] 
-**app_display_name** | **str** | the name of app | [optional] 
+**app_display_name** | **str** | the name of | [optional] 
+**remove_date** | **str** | the date the role is no longer assigned to the specified identity | [optional] 
+**standalone** | **bool** | indicates whether the entitlement is standalone | 
+**revocable** | **bool** | indicates whether the role is revocable | 
 **native_identity** | **str** | the native identifier used to uniquely identify an acccount | [optional] 
+**app_role_id** | **str** | the app role id | [optional] 
 **attribute** | **str** | the entitlement attribute | [optional] 
 **value** | **str** | the associated value | [optional] 
 **entitlement_type** | **str** | the type of entitlement | [optional] 
+**privileged** | **bool** | indicates whether the entitlement is privileged | 
+**cloud_governed** | **bool** | indicates whether the entitlement is cloud governed | 
 
 ## Example
 

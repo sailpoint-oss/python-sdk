@@ -32,9 +32,10 @@ class AccessItemAppResponse(BaseModel):
     """ # noqa: E501
     access_type: Optional[StrictStr] = Field(default=None, description="the access item type. entitlement in this case", alias="accessType")
     id: Optional[StrictStr] = Field(default=None, description="the access item id")
-    display_name: Optional[StrictStr] = Field(default=None, description="the access profile display name", alias="displayName")
+    display_name: Optional[StrictStr] = Field(default=None, description="the access item display name", alias="displayName")
     source_name: Optional[StrictStr] = Field(default=None, description="the associated source name if it exists", alias="sourceName")
-    __properties: ClassVar[List[str]] = ["accessType", "id", "displayName", "sourceName"]
+    app_role_id: Optional[StrictStr] = Field(default=None, description="the app role id", alias="appRoleId")
+    __properties: ClassVar[List[str]] = ["accessType", "id", "displayName", "sourceName", "appRoleId"]
 
     model_config = {
         "populate_by_name": True,
@@ -88,7 +89,8 @@ class AccessItemAppResponse(BaseModel):
             "accessType": obj.get("accessType"),
             "id": obj.get("id"),
             "displayName": obj.get("displayName"),
-            "sourceName": obj.get("sourceName")
+            "sourceName": obj.get("sourceName"),
+            "appRoleId": obj.get("appRoleId")
         })
         return _obj
 

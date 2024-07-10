@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **display_name** | **str** | the role display name | [optional] 
 **description** | **str** | the description for the role | [optional] 
 **source_name** | **str** | the associated source name if it exists | [optional] 
+**remove_date** | **str** | the date the role is no longer assigned to the specified identity | [optional] 
+**revocable** | **bool** | indicates whether the role is revocable | 
 
 ## Example
 

@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
+from pydantic import BaseModel, StrictBool, StrictStr
 from pydantic import Field
 try:
     from typing import Self
@@ -39,7 +39,10 @@ class AccessItemEntitlementResponse(BaseModel):
     source_id: Optional[StrictStr] = Field(default=None, description="the id of the source", alias="sourceId")
     description: Optional[StrictStr] = Field(default=None, description="the description for the entitlment")
     display_name: Optional[StrictStr] = Field(default=None, description="the display name of the identity", alias="displayName")
-    __properties: ClassVar[List[str]] = ["accessType", "id", "attribute", "value", "entitlementType", "sourceName", "sourceId", "description", "displayName"]
+    standalone: StrictBool = Field(description="indicates whether the entitlement is standalone")
+    privileged: StrictBool = Field(description="indicates whether the entitlement is privileged")
+    cloud_governed: StrictBool = Field(description="indicates whether the entitlement is cloud governed", alias="cloudGoverned")
+    __properties: ClassVar[List[str]] = ["accessType", "id", "attribute", "value", "entitlementType", "sourceName", "sourceId", "description", "displayName", "standalone", "privileged", "cloudGoverned"]
 
     model_config = {
         "populate_by_name": True,
@@ -98,7 +101,10 @@ class AccessItemEntitlementResponse(BaseModel):
             "sourceName": obj.get("sourceName"),
             "sourceId": obj.get("sourceId"),
             "description": obj.get("description"),
-            "displayName": obj.get("displayName")
+            "displayName": obj.get("displayName"),
+            "standalone": obj.get("standalone"),
+            "privileged": obj.get("privileged"),
+            "cloudGoverned": obj.get("cloudGoverned")
         })
         return _obj
 

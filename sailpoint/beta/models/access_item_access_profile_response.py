@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
+from pydantic import BaseModel, StrictBool, StrictStr
 from pydantic import Field
 try:
     from typing import Self
@@ -38,8 +38,11 @@ class AccessItemAccessProfileResponse(BaseModel):
     description: Optional[StrictStr] = Field(default=None, description="the description for the access profile")
     display_name: Optional[StrictStr] = Field(default=None, description="the display name of the identity", alias="displayName")
     entitlement_count: Optional[StrictStr] = Field(default=None, description="the number of entitlements the access profile will create", alias="entitlementCount")
-    app_display_name: Optional[StrictStr] = Field(default=None, description="the name of app", alias="appDisplayName")
-    __properties: ClassVar[List[str]] = ["accessType", "id", "name", "sourceName", "sourceId", "description", "displayName", "entitlementCount", "appDisplayName"]
+    app_display_name: Optional[StrictStr] = Field(default=None, description="the name of", alias="appDisplayName")
+    remove_date: Optional[StrictStr] = Field(default=None, description="the date the access profile is no longer assigned to the specified identity", alias="removeDate")
+    standalone: StrictBool = Field(description="indicates whether the access profile is standalone")
+    revocable: StrictBool = Field(description="indicates whether the access profile is")
+    __properties: ClassVar[List[str]] = ["accessType", "id", "name", "sourceName", "sourceId", "description", "displayName", "entitlementCount", "appDisplayName", "removeDate", "standalone", "revocable"]
 
     model_config = {
         "populate_by_name": True,
@@ -98,7 +101,10 @@ class AccessItemAccessProfileResponse(BaseModel):
             "description": obj.get("description"),
             "displayName": obj.get("displayName"),
             "entitlementCount": obj.get("entitlementCount"),
-            "appDisplayName": obj.get("appDisplayName")
+            "appDisplayName": obj.get("appDisplayName"),
+            "removeDate": obj.get("removeDate"),
+            "standalone": obj.get("standalone"),
+            "revocable": obj.get("revocable")
         })
         return _obj
 

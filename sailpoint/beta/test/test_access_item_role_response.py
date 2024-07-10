@@ -40,10 +40,13 @@ class TestAccessItemRoleResponse(unittest.TestCase):
                 id = '2c918087763e69d901763e72e97f006f',
                 display_name = 'sample',
                 description = 'Role - Workday/Citizenship access',
-                source_name = 'Source Name'
+                source_name = 'Source Name',
+                remove_date = '2024-07-01T06:00:00.00Z',
+                revocable = True
             )
         else:
             return AccessItemRoleResponse(
+                revocable = True,
         )
         """
 

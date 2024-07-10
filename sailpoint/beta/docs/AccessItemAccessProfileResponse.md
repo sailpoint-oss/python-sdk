@@ -13,7 +13,10 @@ Name | Type | Description | Notes
 **description** | **str** | the description for the access profile | [optional] 
 **display_name** | **str** | the display name of the identity | [optional] 
 **entitlement_count** | **str** | the number of entitlements the access profile will create | [optional] 
-**app_display_name** | **str** | the name of app | [optional] 
+**app_display_name** | **str** | the name of | [optional] 
+**remove_date** | **str** | the date the access profile is no longer assigned to the specified identity | [optional] 
+**standalone** | **bool** | indicates whether the access profile is standalone | 
+**revocable** | **bool** | indicates whether the access profile is | 
 
 ## Example
 

@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
+from pydantic import BaseModel, StrictBool, StrictStr
 from pydantic import Field
 try:
     from typing import Self
@@ -35,7 +35,9 @@ class AccessItemRoleResponse(BaseModel):
     display_name: Optional[StrictStr] = Field(default=None, description="the role display name", alias="displayName")
     description: Optional[StrictStr] = Field(default=None, description="the description for the role")
     source_name: Optional[StrictStr] = Field(default=None, description="the associated source name if it exists", alias="sourceName")
-    __properties: ClassVar[List[str]] = ["accessType", "id", "displayName", "description", "sourceName"]
+    remove_date: Optional[StrictStr] = Field(default=None, description="the date the role is no longer assigned to the specified identity", alias="removeDate")
+    revocable: StrictBool = Field(description="indicates whether the role is revocable")
+    __properties: ClassVar[List[str]] = ["accessType", "id", "displayName", "description", "sourceName", "removeDate", "revocable"]
 
     model_config = {
         "populate_by_name": True,
@@ -90,7 +92,9 @@ class AccessItemRoleResponse(BaseModel):
             "id": obj.get("id"),
             "displayName": obj.get("displayName"),
             "description": obj.get("description"),
-            "sourceName": obj.get("sourceName")
+            "sourceName": obj.get("sourceName"),
+            "removeDate": obj.get("removeDate"),
+            "revocable": obj.get("revocable")
         })
         return _obj
 

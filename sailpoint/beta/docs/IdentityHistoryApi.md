@@ -758,7 +758,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_identity_access_items**
-> List[ListIdentityAccessItems200ResponseInner] list_identity_access_items(id, type=type)
+> List[ListIdentityAccessItems200ResponseInner] list_identity_access_items(id, type=type, filters=filters, sorters=sorters, query=query)
 
 Gets a list of access items for the identity filtered by item type
 
@@ -797,11 +797,14 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.IdentityHistoryApi(api_client)
     id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The identity id
-    type = 'account' # str | The type of access item for the identity. If not provided, it defaults to account (optional)
+    type = 'account' # str | The type of access item for the identity. If not provided, it defaults to account.  Types of access items: **accessProfile, account, app, entitlement, role** (optional)
+    filters = 'source eq \"DataScienceDataset\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **source**: *eq*  **standalone**: *eq*  **privileged**: *eq*  **attribute**: *eq*  **cloudGoverned**: *eq* (optional)
+    sorters = 'name' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, value, standalone, privileged, attribute, source, cloudGoverned, removeDate, nativeIdentity, entitlementCount** (optional)
+    query = 'Dr. Arden' # str | This param is used to search if certain fields of the access item contain the string provided.  Searching is supported for the following fields depending on the type:  Access Profiles: **name, description**  Accounts: **name, nativeIdentity**  Apps: **name**  Entitlements: **name, value, description**  Roles: **name, description** (optional)
 
     try:
         # Gets a list of access items for the identity filtered by item type
-        api_response = api_instance.list_identity_access_items(id, type=type)
+        api_response = api_instance.list_identity_access_items(id, type=type, filters=filters, sorters=sorters, query=query)
         print("The response of IdentityHistoryApi->list_identity_access_items:\n")
         pprint(api_response)
     except Exception as e:
@@ -816,7 +819,10 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| The identity id | 
- **type** | **str**| The type of access item for the identity. If not provided, it defaults to account | [optional] 
+ **type** | **str**| The type of access item for the identity. If not provided, it defaults to account.  Types of access items: **accessProfile, account, app, entitlement, role** | [optional] 
+ **filters** | **str**| Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **source**: *eq*  **standalone**: *eq*  **privileged**: *eq*  **attribute**: *eq*  **cloudGoverned**: *eq* | [optional] 
+ **sorters** | **str**| Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, value, standalone, privileged, attribute, source, cloudGoverned, removeDate, nativeIdentity, entitlementCount** | [optional] 
+ **query** | **str**| This param is used to search if certain fields of the access item contain the string provided.  Searching is supported for the following fields depending on the type:  Access Profiles: **name, description**  Accounts: **name, nativeIdentity**  Apps: **name**  Entitlements: **name, value, description**  Roles: **name, description** | [optional] 
 
 ### Return type
 
@@ -840,6 +846,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
 **404** | Not Found - returned if the request URL refers to a resource or object that does not exist |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
 **500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
