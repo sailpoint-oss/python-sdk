@@ -104,6 +104,10 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**submit_reload_account**](sailpoint/v3/docs/AccountsApi.md#submit_reload_account) | **POST** /accounts/{id}/reload | Reload Account
 *AccountsApi* | [**unlock_account**](sailpoint/v3/docs/AccountsApi.md#unlock_account) | **POST** /accounts/{id}/unlock | Unlock Account
 *AccountsApi* | [**update_account**](sailpoint/v3/docs/AccountsApi.md#update_account) | **PATCH** /accounts/{id} | Update Account
+*ApplicationDiscoveryApi* | [**get_discovered_applications**](sailpoint/v3/docs/ApplicationDiscoveryApi.md#get_discovered_applications) | **GET** /discovered-applications | Retrieve discovered applications for tenant
+*ApplicationDiscoveryApi* | [**get_manual_discover_applications_csv_template**](sailpoint/v3/docs/ApplicationDiscoveryApi.md#get_manual_discover_applications_csv_template) | **GET** /manual-discover-applications-template | CSV template download for discovery
+*ApplicationDiscoveryApi* | [**get_vendor_connector_mappings**](sailpoint/v3/docs/ApplicationDiscoveryApi.md#get_vendor_connector_mappings) | **GET** /vendor-connector-mappings | List vendor connector mappings
+*ApplicationDiscoveryApi* | [**send_manual_discover_applications_csv_template**](sailpoint/v3/docs/ApplicationDiscoveryApi.md#send_manual_discover_applications_csv_template) | **POST** /manual-discover-applications | CSV Upload to discover applications
 *AuthUsersApi* | [**get_auth_user**](sailpoint/v3/docs/AuthUsersApi.md#get_auth_user) | **GET** /auth-users/{id} | Auth User Details
 *AuthUsersApi* | [**patch_auth_user**](sailpoint/v3/docs/AuthUsersApi.md#patch_auth_user) | **PATCH** /auth-users/{id} | Auth User Update
 *BrandingApi* | [**create_branding_item**](sailpoint/v3/docs/BrandingApi.md#create_branding_item) | **POST** /brandings | Create a branding item
@@ -387,6 +391,8 @@ Class | Method | HTTP request | Description
 *TransformsApi* | [**get_transform**](sailpoint/v3/docs/TransformsApi.md#get_transform) | **GET** /transforms/{id} | Transform by ID
 *TransformsApi* | [**list_transforms**](sailpoint/v3/docs/TransformsApi.md#list_transforms) | **GET** /transforms | List transforms
 *TransformsApi* | [**update_transform**](sailpoint/v3/docs/TransformsApi.md#update_transform) | **PUT** /transforms/{id} | Update a transform
+*VendorConnectorMappingsApi* | [**create_vendor_connector_mapping**](sailpoint/v3/docs/VendorConnectorMappingsApi.md#create_vendor_connector_mapping) | **POST** /vendor-connector-mappings | Create a vendor connector mapping
+*VendorConnectorMappingsApi* | [**delete_vendor_connector_mapping**](sailpoint/v3/docs/VendorConnectorMappingsApi.md#delete_vendor_connector_mapping) | **DELETE** /vendor-connector-mappings | Delete a vendor connector mapping
 *WorkItemsApi* | [**approve_approval_item**](sailpoint/v3/docs/WorkItemsApi.md#approve_approval_item) | **POST** /work-items/{id}/approve/{approvalItemId} | Approve an Approval Item
 *WorkItemsApi* | [**approve_approval_items_in_bulk**](sailpoint/v3/docs/WorkItemsApi.md#approve_approval_items_in_bulk) | **POST** /work-items/bulk-approve/{id} | Bulk approve Approval Items
 *WorkItemsApi* | [**complete_work_item**](sailpoint/v3/docs/WorkItemsApi.md#complete_work_item) | **POST** /work-items/{id} | Complete a Work Item
@@ -572,6 +578,8 @@ Class | Method | HTTP request | Description
  - [DataAccessPoliciesInner](sailpoint/v3/docs/DataAccessPoliciesInner.md)
  - [DeleteNonEmployeeRecordsInBulkRequest](sailpoint/v3/docs/DeleteNonEmployeeRecordsInBulkRequest.md)
  - [DeleteSource202Response](sailpoint/v3/docs/DeleteSource202Response.md)
+ - [DeleteVendorConnectorMapping200Response](sailpoint/v3/docs/DeleteVendorConnectorMapping200Response.md)
+ - [DiscoveredApplicationsInner](sailpoint/v3/docs/DiscoveredApplicationsInner.md)
  - [DisplayReference](sailpoint/v3/docs/DisplayReference.md)
  - [DocumentType](sailpoint/v3/docs/DocumentType.md)
  - [DtoType](sailpoint/v3/docs/DtoType.md)
@@ -611,6 +619,7 @@ Class | Method | HTTP request | Description
  - [GetActiveCampaigns200ResponseInner](sailpoint/v3/docs/GetActiveCampaigns200ResponseInner.md)
  - [GetOAuthClientResponse](sailpoint/v3/docs/GetOAuthClientResponse.md)
  - [GetPersonalAccessTokenResponse](sailpoint/v3/docs/GetPersonalAccessTokenResponse.md)
+ - [GetVendorConnectorMappings405Response](sailpoint/v3/docs/GetVendorConnectorMappings405Response.md)
  - [GrantType](sailpoint/v3/docs/GrantType.md)
  - [IdentitiesDetailsReportArguments](sailpoint/v3/docs/IdentitiesDetailsReportArguments.md)
  - [IdentitiesReportArguments](sailpoint/v3/docs/IdentitiesReportArguments.md)
@@ -672,6 +681,8 @@ Class | Method | HTTP request | Description
  - [ManagedClusterRequest](sailpoint/v3/docs/ManagedClusterRequest.md)
  - [ManagedClusterTypes](sailpoint/v3/docs/ManagedClusterTypes.md)
  - [ManagerCorrelationMapping](sailpoint/v3/docs/ManagerCorrelationMapping.md)
+ - [ManualDiscoverApplications](sailpoint/v3/docs/ManualDiscoverApplications.md)
+ - [ManualDiscoverApplicationsTemplate](sailpoint/v3/docs/ManualDiscoverApplicationsTemplate.md)
  - [ManualWorkItemDetails](sailpoint/v3/docs/ManualWorkItemDetails.md)
  - [ManualWorkItemDetailsCurrentOwner](sailpoint/v3/docs/ManualWorkItemDetailsCurrentOwner.md)
  - [ManualWorkItemDetailsOriginalOwner](sailpoint/v3/docs/ManualWorkItemDetailsOriginalOwner.md)
@@ -922,6 +933,11 @@ Class | Method | HTTP request | Description
  - [V3ConnectorDto](sailpoint/v3/docs/V3ConnectorDto.md)
  - [V3CreateConnectorDto](sailpoint/v3/docs/V3CreateConnectorDto.md)
  - [Value](sailpoint/v3/docs/Value.md)
+ - [VendorConnectorMapping](sailpoint/v3/docs/VendorConnectorMapping.md)
+ - [VendorConnectorMappingDeletedAt](sailpoint/v3/docs/VendorConnectorMappingDeletedAt.md)
+ - [VendorConnectorMappingDeletedBy](sailpoint/v3/docs/VendorConnectorMappingDeletedBy.md)
+ - [VendorConnectorMappingUpdatedAt](sailpoint/v3/docs/VendorConnectorMappingUpdatedAt.md)
+ - [VendorConnectorMappingUpdatedBy](sailpoint/v3/docs/VendorConnectorMappingUpdatedBy.md)
  - [VerificationPollRequest](sailpoint/v3/docs/VerificationPollRequest.md)
  - [VerificationResponse](sailpoint/v3/docs/VerificationResponse.md)
  - [ViolationContext](sailpoint/v3/docs/ViolationContext.md)

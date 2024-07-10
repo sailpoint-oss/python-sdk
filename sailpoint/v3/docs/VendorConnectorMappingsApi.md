@@ -1,6 +1,6 @@
-# sailpoint.beta.VendorConnectorMappingsApi
+# sailpoint.v3.VendorConnectorMappingsApi
 
-All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
+All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -23,15 +23,15 @@ Creates a new mapping between a SaaS vendor and an IDN connector to establish co
 ```python
 import time
 import os
-import sailpoint.beta
-from sailpoint.beta.models.vendor_connector_mapping import VendorConnectorMapping
-from sailpoint.beta.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.vendor_connector_mapping import VendorConnectorMapping
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = sailpoint.beta.Configuration(
-    host = "https://sailpoint.api.identitynow.com/beta"
+configuration = sailpoint.v3.Configuration(
+    host = "https://sailpoint.api.identitynow.com/v3"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -44,10 +44,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with sailpoint.beta.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = sailpoint.beta.VendorConnectorMappingsApi(api_client)
-    vendor_connector_mapping = sailpoint.beta.VendorConnectorMapping() # VendorConnectorMapping | 
+    api_instance = sailpoint.v3.VendorConnectorMappingsApi(api_client)
+    vendor_connector_mapping = sailpoint.v3.VendorConnectorMapping() # VendorConnectorMapping | 
 
     try:
         # Create a vendor connector mapping
@@ -109,16 +109,16 @@ Soft deletes a mapping between a SaaS vendor and an IDN connector, removing the 
 ```python
 import time
 import os
-import sailpoint.beta
-from sailpoint.beta.models.delete_vendor_connector_mapping200_response import DeleteVendorConnectorMapping200Response
-from sailpoint.beta.models.vendor_connector_mapping import VendorConnectorMapping
-from sailpoint.beta.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.delete_vendor_connector_mapping200_response import DeleteVendorConnectorMapping200Response
+from sailpoint.v3.models.vendor_connector_mapping import VendorConnectorMapping
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = sailpoint.beta.Configuration(
-    host = "https://sailpoint.api.identitynow.com/beta"
+configuration = sailpoint.v3.Configuration(
+    host = "https://sailpoint.api.identitynow.com/v3"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -131,10 +131,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with sailpoint.beta.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = sailpoint.beta.VendorConnectorMappingsApi(api_client)
-    vendor_connector_mapping = sailpoint.beta.VendorConnectorMapping() # VendorConnectorMapping | 
+    api_instance = sailpoint.v3.VendorConnectorMappingsApi(api_client)
+    vendor_connector_mapping = sailpoint.v3.VendorConnectorMapping() # VendorConnectorMapping | 
 
     try:
         # Delete a vendor connector mapping

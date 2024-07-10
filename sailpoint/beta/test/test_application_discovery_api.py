@@ -14,14 +14,14 @@
 
 import unittest
 
-from sailpoint.beta.api.discovered_applications_api import DiscoveredApplicationsApi
+from sailpoint.beta.api.application_discovery_api import ApplicationDiscoveryApi
 
 
-class TestDiscoveredApplicationsApi(unittest.TestCase):
-    """DiscoveredApplicationsApi unit test stubs"""
+class TestApplicationDiscoveryApi(unittest.TestCase):
+    """ApplicationDiscoveryApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = DiscoveredApplicationsApi()
+        self.api = ApplicationDiscoveryApi()
 
     def tearDown(self) -> None:
         pass
@@ -30,6 +30,27 @@ class TestDiscoveredApplicationsApi(unittest.TestCase):
         """Test case for get_discovered_applications
 
         Retrieve discovered applications for tenant
+        """
+        pass
+
+    def test_get_manual_discover_applications_csv_template(self) -> None:
+        """Test case for get_manual_discover_applications_csv_template
+
+        CSV template download for discovery
+        """
+        pass
+
+    def test_get_vendor_connector_mappings(self) -> None:
+        """Test case for get_vendor_connector_mappings
+
+        List vendor connector mappings
+        """
+        pass
+
+    def test_send_manual_discover_applications_csv_template(self) -> None:
+        """Test case for send_manual_discover_applications_csv_template
+
+        CSV Upload to discover applications
         """
         pass
 

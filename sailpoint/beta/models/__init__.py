@@ -678,7 +678,6 @@ from sailpoint.beta.models.selector import Selector
 from sailpoint.beta.models.selector_type import SelectorType
 from sailpoint.beta.models.self_import_export_dto import SelfImportExportDto
 from sailpoint.beta.models.send_account_verification_request import SendAccountVerificationRequest
-from sailpoint.beta.models.send_manual_discover_applications_csv_template_request import SendManualDiscoverApplicationsCsvTemplateRequest
 from sailpoint.beta.models.send_test_notification_request_dto import SendTestNotificationRequestDto
 from sailpoint.beta.models.send_token_request import SendTokenRequest
 from sailpoint.beta.models.send_token_response import SendTokenResponse

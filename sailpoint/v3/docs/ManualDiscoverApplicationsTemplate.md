@@ -5,13 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**application_name** | **str** | Name of the example application. | [optional] 
-**description** | **str** | Description of the example application. | [optional] 
+**application_name** | **str** | Name of the application. | [optional] 
+**description** | **str** | Description of the application. | [optional] 
 
 ## Example
 
 ```python
-from sailpoint.beta.models.manual_discover_applications_template import ManualDiscoverApplicationsTemplate
+from sailpoint.v3.models.manual_discover_applications_template import ManualDiscoverApplicationsTemplate
 
 # TODO update the JSON string below
 json = "{}"

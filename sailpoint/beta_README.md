@@ -117,6 +117,10 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**submit_reload_account**](sailpoint/beta/docs/AccountsApi.md#submit_reload_account) | **POST** /accounts/{id}/reload | Reload Account
 *AccountsApi* | [**unlock_account**](sailpoint/beta/docs/AccountsApi.md#unlock_account) | **POST** /accounts/{id}/unlock | Unlock Account
 *AccountsApi* | [**update_account**](sailpoint/beta/docs/AccountsApi.md#update_account) | **PATCH** /accounts/{id} | Update Account
+*ApplicationDiscoveryApi* | [**get_discovered_applications**](sailpoint/beta/docs/ApplicationDiscoveryApi.md#get_discovered_applications) | **GET** /discovered-applications | Retrieve discovered applications for tenant
+*ApplicationDiscoveryApi* | [**get_manual_discover_applications_csv_template**](sailpoint/beta/docs/ApplicationDiscoveryApi.md#get_manual_discover_applications_csv_template) | **GET** /manual-discover-applications-template | CSV template download for discovery
+*ApplicationDiscoveryApi* | [**get_vendor_connector_mappings**](sailpoint/beta/docs/ApplicationDiscoveryApi.md#get_vendor_connector_mappings) | **GET** /vendor-connector-mappings | List vendor connector mappings
+*ApplicationDiscoveryApi* | [**send_manual_discover_applications_csv_template**](sailpoint/beta/docs/ApplicationDiscoveryApi.md#send_manual_discover_applications_csv_template) | **POST** /manual-discover-applications | CSV Upload to discover applications
 *ApprovalsApi* | [**get_approval**](sailpoint/beta/docs/ApprovalsApi.md#get_approval) | **GET** /generic-approvals/{id} | Get an approval
 *ApprovalsApi* | [**get_approvals**](sailpoint/beta/docs/ApprovalsApi.md#get_approvals) | **GET** /generic-approvals | Get Approvals
 *ApprovalsApi* | [**patch_approval**](sailpoint/beta/docs/ApprovalsApi.md#patch_approval) | **PATCH** /generic-approvals/{id} | Change an approval
@@ -178,7 +182,6 @@ Class | Method | HTTP request | Description
 *CustomPasswordInstructionsApi* | [**create_custom_password_instructions**](sailpoint/beta/docs/CustomPasswordInstructionsApi.md#create_custom_password_instructions) | **POST** /custom-password-instructions | Create Custom Password Instructions
 *CustomPasswordInstructionsApi* | [**delete_custom_password_instructions**](sailpoint/beta/docs/CustomPasswordInstructionsApi.md#delete_custom_password_instructions) | **DELETE** /custom-password-instructions/{pageId} | Delete Custom Password Instructions by page ID
 *CustomPasswordInstructionsApi* | [**get_custom_password_instructions**](sailpoint/beta/docs/CustomPasswordInstructionsApi.md#get_custom_password_instructions) | **GET** /custom-password-instructions/{pageId} | Get Custom Password Instructions by Page ID
-*DiscoveredApplicationsApi* | [**get_discovered_applications**](sailpoint/beta/docs/DiscoveredApplicationsApi.md#get_discovered_applications) | **GET** /discovered-applications | Retrieve discovered applications for tenant
 *EntitlementsApi* | [**create_access_model_metadata_for_entitlement**](sailpoint/beta/docs/EntitlementsApi.md#create_access_model_metadata_for_entitlement) | **POST** /entitlements/{id}/access-model-metadata/{attributeKey}/values/{attributeValue} | Add metadata to an entitlement.
 *EntitlementsApi* | [**delete_access_model_metadata_from_entitlement**](sailpoint/beta/docs/EntitlementsApi.md#delete_access_model_metadata_from_entitlement) | **DELETE** /entitlements/{id}/access-model-metadata/{attributeKey}/values/{attributeValue} | Remove metadata from an entitlement.
 *EntitlementsApi* | [**get_entitlement**](sailpoint/beta/docs/EntitlementsApi.md#get_entitlement) | **GET** /entitlements/{id} | Get an entitlement
@@ -313,8 +316,6 @@ Class | Method | HTTP request | Description
 *ManagedClustersApi* | [**get_managed_cluster**](sailpoint/beta/docs/ManagedClustersApi.md#get_managed_cluster) | **GET** /managed-clusters/{id} | Get a specified ManagedCluster.
 *ManagedClustersApi* | [**get_managed_clusters**](sailpoint/beta/docs/ManagedClustersApi.md#get_managed_clusters) | **GET** /managed-clusters | Retrieve all Managed Clusters.
 *ManagedClustersApi* | [**put_client_log_configuration**](sailpoint/beta/docs/ManagedClustersApi.md#put_client_log_configuration) | **PUT** /managed-clusters/{id}/log-config | Update managed cluster&#39;s log configuration
-*ManualDiscoverApplicationsApi* | [**send_manual_discover_applications_csv_template**](sailpoint/beta/docs/ManualDiscoverApplicationsApi.md#send_manual_discover_applications_csv_template) | **POST** /manual-discover-applications | CSV Upload to discover applications
-*ManualDiscoverApplicationsTemplateApi* | [**get_manual_discover_applications_csv_template**](sailpoint/beta/docs/ManualDiscoverApplicationsTemplateApi.md#get_manual_discover_applications_csv_template) | **GET** /manual-discover-applications-template | CSV template download for discovery
 *NonEmployeeLifecycleManagementApi* | [**approve_non_employee_request**](sailpoint/beta/docs/NonEmployeeLifecycleManagementApi.md#approve_non_employee_request) | **POST** /non-employee-approvals/{id}/approve | Approve a Non-Employee Request
 *NonEmployeeLifecycleManagementApi* | [**create_non_employee_record**](sailpoint/beta/docs/NonEmployeeLifecycleManagementApi.md#create_non_employee_record) | **POST** /non-employee-records | Create Non-Employee Record
 *NonEmployeeLifecycleManagementApi* | [**create_non_employee_request**](sailpoint/beta/docs/NonEmployeeLifecycleManagementApi.md#create_non_employee_request) | **POST** /non-employee-requests | Create Non-Employee Request
@@ -549,7 +550,6 @@ Class | Method | HTTP request | Description
 *UIMetadataApi* | [**set_tenant_ui_metadata**](sailpoint/beta/docs/UIMetadataApi.md#set_tenant_ui_metadata) | **PUT** /ui-metadata/tenant | Update tenant UI metadata
 *VendorConnectorMappingsApi* | [**create_vendor_connector_mapping**](sailpoint/beta/docs/VendorConnectorMappingsApi.md#create_vendor_connector_mapping) | **POST** /vendor-connector-mappings | Create a vendor connector mapping
 *VendorConnectorMappingsApi* | [**delete_vendor_connector_mapping**](sailpoint/beta/docs/VendorConnectorMappingsApi.md#delete_vendor_connector_mapping) | **DELETE** /vendor-connector-mappings | Delete a vendor connector mapping
-*VendorConnectorMappingsApi* | [**get_vendor_connector_mappings**](sailpoint/beta/docs/VendorConnectorMappingsApi.md#get_vendor_connector_mappings) | **GET** /vendor-connector-mappings | List vendor connector mappings
 *WorkItemsApi* | [**approve_approval_item**](sailpoint/beta/docs/WorkItemsApi.md#approve_approval_item) | **POST** /work-items/{id}/approve/{approvalItemId} | Approve an Approval Item
 *WorkItemsApi* | [**approve_approval_items_in_bulk**](sailpoint/beta/docs/WorkItemsApi.md#approve_approval_items_in_bulk) | **POST** /work-items/bulk-approve/{id} | Bulk approve Approval Items
 *WorkItemsApi* | [**complete_work_item**](sailpoint/beta/docs/WorkItemsApi.md#complete_work_item) | **POST** /work-items/{id} | Complete a Work Item
@@ -1258,7 +1258,6 @@ Class | Method | HTTP request | Description
  - [SelectorType](sailpoint/beta/docs/SelectorType.md)
  - [SelfImportExportDto](sailpoint/beta/docs/SelfImportExportDto.md)
  - [SendAccountVerificationRequest](sailpoint/beta/docs/SendAccountVerificationRequest.md)
- - [SendManualDiscoverApplicationsCsvTemplateRequest](sailpoint/beta/docs/SendManualDiscoverApplicationsCsvTemplateRequest.md)
  - [SendTestNotificationRequestDto](sailpoint/beta/docs/SendTestNotificationRequestDto.md)
  - [SendTokenRequest](sailpoint/beta/docs/SendTokenRequest.md)
  - [SendTokenResponse](sailpoint/beta/docs/SendTokenResponse.md)
