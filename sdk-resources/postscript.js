@@ -29,6 +29,9 @@ const fixFiles = function (myArray) {
         if (line.includes("from sailpoint.beta.models.dict[str,_object_export_import_options] import Dict[str, ObjectExportImportOptions]")) {
           fileOut.push(line.replaceAll("from sailpoint.beta.models.dict[str,_object_export_import_options] import Dict[str, ObjectExportImportOptions]", ""));
           madeChange = true;
+        } else if (line.includes("from sailpoint.v2024.models.dict[str,_object_export_import_options] import Dict[str, ObjectExportImportOptions]")) {
+          fileOut.push(line.replaceAll("from sailpoint.v2024.models.dict[str,_object_export_import_options] import Dict[str, ObjectExportImportOptions]", ""));
+          madeChange = true;
         } else {
           fileOut.push(line);
         }

@@ -33,6 +33,9 @@ class Configuration:
             if self.access_token == None:
                 self.access_token = self.get_access_token(url, self.client_id, self.client_secret)
 
+
+        self.experimental = False
+
         self.temp_folder_path = None
         """Temp file folder for downloading files
         """
