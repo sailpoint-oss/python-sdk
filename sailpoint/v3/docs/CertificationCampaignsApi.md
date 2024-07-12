@@ -634,7 +634,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_campaign**
-> SlimCampaign get_campaign(id)
+> GetActiveCampaigns200ResponseInner get_campaign(id, detail=detail)
 
 Get Campaign
 
@@ -649,7 +649,7 @@ Use this API to get information for an existing certification campaign by the ca
 import time
 import os
 import sailpoint.v3
-from sailpoint.v3.models.slim_campaign import SlimCampaign
+from sailpoint.v3.models.get_active_campaigns200_response_inner import GetActiveCampaigns200ResponseInner
 from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
@@ -673,10 +673,11 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.CertificationCampaignsApi(api_client)
     id = '2c91808571bcfcf80171c23e4b4221fc' # str | ID of the campaign to be retrieved.
+    detail = 'FULL' # str | Determines whether slim, or increased level of detail is provided for each campaign in the returned list. Slim is the default behavior. (optional)
 
     try:
         # Get Campaign
-        api_response = api_instance.get_campaign(id)
+        api_response = api_instance.get_campaign(id, detail=detail)
         print("The response of CertificationCampaignsApi->get_campaign:\n")
         pprint(api_response)
     except Exception as e:
@@ -691,10 +692,11 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| ID of the campaign to be retrieved. | 
+ **detail** | **str**| Determines whether slim, or increased level of detail is provided for each campaign in the returned list. Slim is the default behavior. | [optional] 
 
 ### Return type
 
-[**SlimCampaign**](SlimCampaign.md)
+[**GetActiveCampaigns200ResponseInner**](GetActiveCampaigns200ResponseInner.md)
 
 ### Authorization
 
