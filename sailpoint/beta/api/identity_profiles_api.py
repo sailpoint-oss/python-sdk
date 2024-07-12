@@ -1274,7 +1274,7 @@ class IdentityProfilesApi:
     ) -> IdentityPreviewResponse:
         """Generate Identity Profile Preview
 
-        This generates a non-persisted IdentityDetails object that will represent as the preview of the identities attribute when the given policy's attribute config is applied. A token with ORG_ADMIN authority is required to call this API to generate an identity preview.
+        Use this API to generate a non-persisted `IdentityDetails` object that represents a preview of the identity attributes with a specified policy's attribute config applied. This API supports the `accountAttribute`, `rule`, and `reference` transform types.  A token with ORG_ADMIN authority is required to call this API to generate an identity preview.
 
         :param identity_preview_request: Identity Preview request body. (required)
         :type identity_preview_request: IdentityPreviewRequest
@@ -1346,7 +1346,7 @@ class IdentityProfilesApi:
     ) -> ApiResponse[IdentityPreviewResponse]:
         """Generate Identity Profile Preview
 
-        This generates a non-persisted IdentityDetails object that will represent as the preview of the identities attribute when the given policy's attribute config is applied. A token with ORG_ADMIN authority is required to call this API to generate an identity preview.
+        Use this API to generate a non-persisted `IdentityDetails` object that represents a preview of the identity attributes with a specified policy's attribute config applied. This API supports the `accountAttribute`, `rule`, and `reference` transform types.  A token with ORG_ADMIN authority is required to call this API to generate an identity preview.
 
         :param identity_preview_request: Identity Preview request body. (required)
         :type identity_preview_request: IdentityPreviewRequest
@@ -1418,7 +1418,7 @@ class IdentityProfilesApi:
     ) -> RESTResponseType:
         """Generate Identity Profile Preview
 
-        This generates a non-persisted IdentityDetails object that will represent as the preview of the identities attribute when the given policy's attribute config is applied. A token with ORG_ADMIN authority is required to call this API to generate an identity preview.
+        Use this API to generate a non-persisted `IdentityDetails` object that represents a preview of the identity attributes with a specified policy's attribute config applied. This API supports the `accountAttribute`, `rule`, and `reference` transform types.  A token with ORG_ADMIN authority is required to call this API to generate an identity preview.
 
         :param identity_preview_request: Identity Preview request body. (required)
         :type identity_preview_request: IdentityPreviewRequest

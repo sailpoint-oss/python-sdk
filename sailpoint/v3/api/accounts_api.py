@@ -36,7 +36,6 @@ from sailpoint.v3.models.account_toggle_request import AccountToggleRequest
 from sailpoint.v3.models.account_unlock_request import AccountUnlockRequest
 from sailpoint.v3.models.accounts_async_result import AccountsAsyncResult
 from sailpoint.v3.models.entitlement_dto import EntitlementDto
-from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
 
 from sailpoint.v3.api_client import ApiClient
 from sailpoint.v3.api_response import ApiResponse
@@ -3070,7 +3069,7 @@ class AccountsApi:
     def update_account(
         self,
         id: Annotated[StrictStr, Field(description="Account ID.")],
-        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
+        request_body: Annotated[List[Dict[str, Any]], Field(description="A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3086,12 +3085,12 @@ class AccountsApi:
     ) -> object:
         """Update Account
 
-        This updates account details. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. This endpoint supports updating an account's correlation. The identityId and manuallyCorrelated fields can be modified for any account. The attributes fields can be modified just for flat file accounts.  To re-assign an account from one identity to another, replace the current identityId with a new value.  If the account you're assigning was provisioned by IdentityNow, it's possible IdentityNow could create a new account  for the previous identity as soon as the account is moved. If the account you're assigning is authoritative,  this will cause the previous identity to become uncorrelated and could even result in its deletion. All accounts that are reassigned will be set to manuallyCorrelated: true unless otherwise specified
+        Use this API to update account details.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. This API supports updating an account's correlation. You can modify only the `identityId` and `manuallyCorrelated` fields for any flat file account.  To reassign an account from one identity to another, replace the current `identityId` with a new value.  If the account you're assigning was provisioned by Identity Security Cloud (ISC), it's possible for ISC to create a new account  for the previous identity as soon as the account is moved. If the account you're assigning is authoritative,  this causes the previous identity to become uncorrelated and can even result in its deletion. All accounts that are reassigned will be set to `manuallyCorrelated: true` unless you specify otherwise. >**Note:** The `attributes` field can only be modified for flat file accounts. 
 
         :param id: Account ID. (required)
         :type id: str
-        :param json_patch_operation: A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
-        :type json_patch_operation: List[JsonPatchOperation]
+        :param request_body: A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
+        :type request_body: List[object]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3116,7 +3115,7 @@ class AccountsApi:
 
         _param = self._update_account_serialize(
             id=id,
-            json_patch_operation=json_patch_operation,
+            request_body=request_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3147,7 +3146,7 @@ class AccountsApi:
     def update_account_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Account ID.")],
-        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
+        request_body: Annotated[List[Dict[str, Any]], Field(description="A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3163,12 +3162,12 @@ class AccountsApi:
     ) -> ApiResponse[object]:
         """Update Account
 
-        This updates account details. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. This endpoint supports updating an account's correlation. The identityId and manuallyCorrelated fields can be modified for any account. The attributes fields can be modified just for flat file accounts.  To re-assign an account from one identity to another, replace the current identityId with a new value.  If the account you're assigning was provisioned by IdentityNow, it's possible IdentityNow could create a new account  for the previous identity as soon as the account is moved. If the account you're assigning is authoritative,  this will cause the previous identity to become uncorrelated and could even result in its deletion. All accounts that are reassigned will be set to manuallyCorrelated: true unless otherwise specified
+        Use this API to update account details.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. This API supports updating an account's correlation. You can modify only the `identityId` and `manuallyCorrelated` fields for any flat file account.  To reassign an account from one identity to another, replace the current `identityId` with a new value.  If the account you're assigning was provisioned by Identity Security Cloud (ISC), it's possible for ISC to create a new account  for the previous identity as soon as the account is moved. If the account you're assigning is authoritative,  this causes the previous identity to become uncorrelated and can even result in its deletion. All accounts that are reassigned will be set to `manuallyCorrelated: true` unless you specify otherwise. >**Note:** The `attributes` field can only be modified for flat file accounts. 
 
         :param id: Account ID. (required)
         :type id: str
-        :param json_patch_operation: A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
-        :type json_patch_operation: List[JsonPatchOperation]
+        :param request_body: A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
+        :type request_body: List[object]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3193,7 +3192,7 @@ class AccountsApi:
 
         _param = self._update_account_serialize(
             id=id,
-            json_patch_operation=json_patch_operation,
+            request_body=request_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3224,7 +3223,7 @@ class AccountsApi:
     def update_account_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Account ID.")],
-        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
+        request_body: Annotated[List[Dict[str, Any]], Field(description="A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3240,12 +3239,12 @@ class AccountsApi:
     ) -> RESTResponseType:
         """Update Account
 
-        This updates account details. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. This endpoint supports updating an account's correlation. The identityId and manuallyCorrelated fields can be modified for any account. The attributes fields can be modified just for flat file accounts.  To re-assign an account from one identity to another, replace the current identityId with a new value.  If the account you're assigning was provisioned by IdentityNow, it's possible IdentityNow could create a new account  for the previous identity as soon as the account is moved. If the account you're assigning is authoritative,  this will cause the previous identity to become uncorrelated and could even result in its deletion. All accounts that are reassigned will be set to manuallyCorrelated: true unless otherwise specified
+        Use this API to update account details.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. This API supports updating an account's correlation. You can modify only the `identityId` and `manuallyCorrelated` fields for any flat file account.  To reassign an account from one identity to another, replace the current `identityId` with a new value.  If the account you're assigning was provisioned by Identity Security Cloud (ISC), it's possible for ISC to create a new account  for the previous identity as soon as the account is moved. If the account you're assigning is authoritative,  this causes the previous identity to become uncorrelated and can even result in its deletion. All accounts that are reassigned will be set to `manuallyCorrelated: true` unless you specify otherwise. >**Note:** The `attributes` field can only be modified for flat file accounts. 
 
         :param id: Account ID. (required)
         :type id: str
-        :param json_patch_operation: A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
-        :type json_patch_operation: List[JsonPatchOperation]
+        :param request_body: A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
+        :type request_body: List[object]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3270,7 +3269,7 @@ class AccountsApi:
 
         _param = self._update_account_serialize(
             id=id,
-            json_patch_operation=json_patch_operation,
+            request_body=request_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3296,7 +3295,7 @@ class AccountsApi:
     def _update_account_serialize(
         self,
         id,
-        json_patch_operation,
+        request_body,
         _request_auth,
         _content_type,
         _headers,
@@ -3306,7 +3305,7 @@ class AccountsApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'JsonPatchOperation': '',
+            'request_body': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -3323,8 +3322,8 @@ class AccountsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if json_patch_operation is not None:
-            _body_params = json_patch_operation
+        if request_body is not None:
+            _body_params = request_body
 
 
         # set the HTTP header `Accept`
