@@ -101,10 +101,18 @@ jobs:
           rm -rf ./sailpoint/beta
           java -jar openapi-generator-cli.jar generate -i api-specs/idn/sailpoint-api.beta.yaml -g python -o . --global-property skipFormModel=false --config sdk-resources/beta-config.yaml --enable-post-process-file
           node sdk-resources/postscript.js ./sailpoint/beta
+      
+      - name: Build V2024 SDK
+        id: buildV2024
+        if: steps.buildBeta.outcome == 'success'
+        run: |
+          rm -rf ./sailpoint/v2024
+          java -jar openapi-generator-cli.jar generate -i api-specs/idn/sailpoint-api.v2024.yaml -g python -o . --global-property skipFormModel=false --config sdk-resources/v2024-config.yaml --enable-post-process-file
+          node sdk-resources/postscript.js ./sailpoint/v2024
 
       - name: After SDK Build
         id: buildSDK
-        if: steps.buildBeta.outcome == 'success'
+        if: steps.buildV2024.outcome == 'success'
         shell: pwsh
         run: |
           pip install -r requirements.txt
