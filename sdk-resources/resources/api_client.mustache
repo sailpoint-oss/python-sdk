@@ -203,10 +203,8 @@ class ApiClient:
         header_params['Authorization'] = self.configuration.access_token
 
         if not self.configuration.experimental and 'X-SailPoint-Experimental' in header_params:
-            del header_params['X-SailPoint-Experimental']
-            print(f"{bcolors.WARNING}Warning: You are using Experimental APIs. Set configuration.experimental = True to enable these APIs in the SDK.{bcolors.ENDC}")
-            pass
-        elif self.configuration.experimental == True:
+            raise Exception(f"{bcolors.WARNING}You are using Experimental APIs. Set configuration.experimental = True to enable these APIs in the SDK.{bcolors.ENDC}")
+        elif self.configuration.experimental == True and 'X-SailPoint-Experimental' in header_params:
             print(f"{bcolors.WARNING}Warning: You are using Experimental APIs{bcolors.ENDC}")
 
         # path parameters
