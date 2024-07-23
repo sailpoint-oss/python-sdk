@@ -555,7 +555,7 @@ Class | Method | HTTP request | Description
 *WorkItemsApi* | [**complete_work_item**](sailpoint/beta/docs/WorkItemsApi.md#complete_work_item) | **POST** /work-items/{id} | Complete a Work Item
 *WorkItemsApi* | [**forward_work_item**](sailpoint/beta/docs/WorkItemsApi.md#forward_work_item) | **POST** /work-items/{id}/forward | Forward a Work Item
 *WorkItemsApi* | [**get_completed_work_items**](sailpoint/beta/docs/WorkItemsApi.md#get_completed_work_items) | **GET** /work-items/completed | Completed Work Items
-*WorkItemsApi* | [**get_count_completed_work_items**](sailpoint/beta/docs/WorkItemsApi.md#get_count_completed_work_items) | **GET** /work-items/count/completed | Count Completed Work Items
+*WorkItemsApi* | [**get_count_completed_work_items**](sailpoint/beta/docs/WorkItemsApi.md#get_count_completed_work_items) | **GET** /work-items/completed/count | Count Completed Work Items
 *WorkItemsApi* | [**get_count_work_items**](sailpoint/beta/docs/WorkItemsApi.md#get_count_work_items) | **GET** /work-items/count | Count Work Items
 *WorkItemsApi* | [**get_work_item**](sailpoint/beta/docs/WorkItemsApi.md#get_work_item) | **GET** /work-items/{id} | Get a Work Item
 *WorkItemsApi* | [**get_work_items_summary**](sailpoint/beta/docs/WorkItemsApi.md#get_work_items_summary) | **GET** /work-items/summary | Work Items Summary
