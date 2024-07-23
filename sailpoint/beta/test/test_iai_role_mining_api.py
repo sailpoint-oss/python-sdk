@@ -106,7 +106,7 @@ class TestIAIRoleMiningApi(unittest.TestCase):
     def test_get_potential_role(self) -> None:
         """Test case for get_potential_role
 
-        Retrieves a specific potential role
+        Retrieve potential role in session
         """
         pass
 
@@ -127,7 +127,7 @@ class TestIAIRoleMiningApi(unittest.TestCase):
     def test_get_potential_role_summaries(self) -> None:
         """Test case for get_potential_role_summaries
 
-        Retrieves all potential role summaries
+        Retrieve session's potential role summaries
         """
         pass
 
@@ -169,12 +169,12 @@ class TestIAIRoleMiningApi(unittest.TestCase):
     def test_patch_potential_role(self) -> None:
         """Test case for patch_potential_role
 
-        Update a potential role
+        Update a potential role in session
         """
         pass
 
-    def test_patch_potential_role_0(self) -> None:
-        """Test case for patch_potential_role_0
+    def test_patch_role_mining_potential_role(self) -> None:
+        """Test case for patch_role_mining_potential_role
 
         Update a potential role
         """
