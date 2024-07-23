@@ -57,6 +57,7 @@ from sailpoint.v3.api.sod_violations_api import SODViolationsApi
 from sailpoint.v3.api.saved_search_api import SavedSearchApi
 from sailpoint.v3.api.scheduled_search_api import ScheduledSearchApi
 from sailpoint.v3.api.search_api import SearchApi
+from sailpoint.v3.api.search_attribute_configuration_api import SearchAttributeConfigurationApi
 from sailpoint.v3.api.segments_api import SegmentsApi
 from sailpoint.v3.api.service_desk_integration_api import ServiceDeskIntegrationApi
 from sailpoint.v3.api.source_usages_api import SourceUsagesApi
@@ -501,6 +502,7 @@ from sailpoint.v3.models.scheduled_search_name import ScheduledSearchName
 from sailpoint.v3.models.search import Search
 from sailpoint.v3.models.search_aggregation_specification import SearchAggregationSpecification
 from sailpoint.v3.models.search_arguments import SearchArguments
+from sailpoint.v3.models.search_attribute_config import SearchAttributeConfig
 from sailpoint.v3.models.search_export_report_arguments import SearchExportReportArguments
 from sailpoint.v3.models.search_filter_type import SearchFilterType
 from sailpoint.v3.models.search_schedule import SearchSchedule

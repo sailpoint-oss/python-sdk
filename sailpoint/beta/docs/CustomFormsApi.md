@@ -62,7 +62,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.CustomFormsApi(api_client)
-    create_form_definition_request = {name=my form, description=my form description, owner={type=IDENTITY, id=00000000-0000-0000-0000-000000000000}} # CreateFormDefinitionRequest | Body is the request payload to create form definition request (optional)
+    create_form_definition_request = {name=my form, description=my form description, owner={type=IDENTITY, id=00000000-0000-0000-0000-000000000000}, formElements=[{id=000000000000, elementType=SECTION, config={alignment=LEFT, description=elementType must be 'SECTION' for the root formElements,  child formElements must be within the 'config' attribute, label=Section, labelStyle=h2, showLabel=true, formElements=[{id=0000000000000, key=textField, elementType=TEXT, config={default=, description=, helpText=form element type text, label=Text Field, placeholder=, required=false}, validations=[]}]}}]} # CreateFormDefinitionRequest | Body is the request payload to create form definition request (optional)
 
     try:
         # Creates a form definition.

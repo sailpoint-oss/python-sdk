@@ -336,6 +336,11 @@ Class | Method | HTTP request | Description
 *SearchApi* | [**search_count**](sailpoint/v3/docs/SearchApi.md#search_count) | **POST** /search/count | Count Documents Satisfying a Query
 *SearchApi* | [**search_get**](sailpoint/v3/docs/SearchApi.md#search_get) | **GET** /search/{index}/{id} | Get a Document by ID
 *SearchApi* | [**search_post**](sailpoint/v3/docs/SearchApi.md#search_post) | **POST** /search | Perform Search
+*SearchAttributeConfigurationApi* | [**create_search_attribute_config**](sailpoint/v3/docs/SearchAttributeConfigurationApi.md#create_search_attribute_config) | **POST** /accounts/search-attribute-config | Configure/create search attributes in IdentityNow.
+*SearchAttributeConfigurationApi* | [**delete_search_attribute_config**](sailpoint/v3/docs/SearchAttributeConfigurationApi.md#delete_search_attribute_config) | **DELETE** /accounts/search-attribute-config/{name} | Delete search attribute in IdentityNow.
+*SearchAttributeConfigurationApi* | [**get_search_attribute_config**](sailpoint/v3/docs/SearchAttributeConfigurationApi.md#get_search_attribute_config) | **GET** /accounts/search-attribute-config | Retrieve attribute list in IdentityNow.
+*SearchAttributeConfigurationApi* | [**get_single_search_attribute_config**](sailpoint/v3/docs/SearchAttributeConfigurationApi.md#get_single_search_attribute_config) | **GET** /accounts/search-attribute-config/{name} | Get specific attribute in IdentityNow.
+*SearchAttributeConfigurationApi* | [**patch_search_attribute_config**](sailpoint/v3/docs/SearchAttributeConfigurationApi.md#patch_search_attribute_config) | **PATCH** /accounts/search-attribute-config/{name} | Update search attribute in IdentityNow.
 *SegmentsApi* | [**create_segment**](sailpoint/v3/docs/SegmentsApi.md#create_segment) | **POST** /segments | Create Segment
 *SegmentsApi* | [**delete_segment**](sailpoint/v3/docs/SegmentsApi.md#delete_segment) | **DELETE** /segments/{id} | Delete Segment by ID
 *SegmentsApi* | [**get_segment**](sailpoint/v3/docs/SegmentsApi.md#get_segment) | **GET** /segments/{id} | Get Segment by ID
@@ -849,6 +854,7 @@ Class | Method | HTTP request | Description
  - [Search](sailpoint/v3/docs/Search.md)
  - [SearchAggregationSpecification](sailpoint/v3/docs/SearchAggregationSpecification.md)
  - [SearchArguments](sailpoint/v3/docs/SearchArguments.md)
+ - [SearchAttributeConfig](sailpoint/v3/docs/SearchAttributeConfig.md)
  - [SearchExportReportArguments](sailpoint/v3/docs/SearchExportReportArguments.md)
  - [SearchFilterType](sailpoint/v3/docs/SearchFilterType.md)
  - [SearchSchedule](sailpoint/v3/docs/SearchSchedule.md)

@@ -436,6 +436,7 @@ from sailpoint.v3.models.scheduled_search_name import ScheduledSearchName
 from sailpoint.v3.models.search import Search
 from sailpoint.v3.models.search_aggregation_specification import SearchAggregationSpecification
 from sailpoint.v3.models.search_arguments import SearchArguments
+from sailpoint.v3.models.search_attribute_config import SearchAttributeConfig
 from sailpoint.v3.models.search_export_report_arguments import SearchExportReportArguments
 from sailpoint.v3.models.search_filter_type import SearchFilterType
 from sailpoint.v3.models.search_schedule import SearchSchedule
