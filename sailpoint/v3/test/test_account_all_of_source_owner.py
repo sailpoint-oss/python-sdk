@@ -15,10 +15,10 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.event_attributes import EventAttributes
+from sailpoint.v3.models.account_all_of_source_owner import AccountAllOfSourceOwner
 
-class TestEventAttributes(unittest.TestCase):
-    """EventAttributes unit test stubs"""
+class TestAccountAllOfSourceOwner(unittest.TestCase):
+    """AccountAllOfSourceOwner unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,28 +26,27 @@ class TestEventAttributes(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> EventAttributes:
-        """Test EventAttributes
+    def make_instance(self, include_optional) -> AccountAllOfSourceOwner:
+        """Test AccountAllOfSourceOwner
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `EventAttributes`
+        # uncomment below to create an instance of `AccountAllOfSourceOwner`
         """
-        model = EventAttributes()
+        model = AccountAllOfSourceOwner()
         if include_optional:
-            return EventAttributes(
-                id = 'idn:identity-attributes-changed',
-                filter_ = '$.changes[?(@.attribute == 'manager')]',
-                description = ''
+            return AccountAllOfSourceOwner(
+                type = 'IDENTITY',
+                id = '4c5c8534e99445de98eef6c75e25eb01',
+                name = 'John Cavender'
             )
         else:
-            return EventAttributes(
-                id = 'idn:identity-attributes-changed',
+            return AccountAllOfSourceOwner(
         )
         """
 
-    def testEventAttributes(self):
-        """Test EventAttributes"""
+    def testAccountAllOfSourceOwner(self):
+        """Test AccountAllOfSourceOwner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

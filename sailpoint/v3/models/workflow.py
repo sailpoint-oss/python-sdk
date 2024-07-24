@@ -24,6 +24,7 @@ from pydantic import Field
 from sailpoint.v3.models.workflow_all_of_creator import WorkflowAllOfCreator
 from sailpoint.v3.models.workflow_body_owner import WorkflowBodyOwner
 from sailpoint.v3.models.workflow_definition import WorkflowDefinition
+from sailpoint.v3.models.workflow_modified_by import WorkflowModifiedBy
 from sailpoint.v3.models.workflow_trigger import WorkflowTrigger
 try:
     from typing import Self
@@ -45,8 +46,9 @@ class Workflow(BaseModel):
     failure_count: Optional[StrictInt] = Field(default=None, description="The number of times this workflow has failed during execution.", alias="failureCount")
     created: Optional[datetime] = Field(default=None, description="The date and time the workflow was created.")
     modified: Optional[datetime] = Field(default=None, description="The date and time the workflow was modified.")
+    modified_by: Optional[WorkflowModifiedBy] = Field(default=None, alias="modifiedBy")
     creator: Optional[WorkflowAllOfCreator] = None
-    __properties: ClassVar[List[str]] = ["name", "owner", "description", "definition", "enabled", "trigger", "id", "executionCount", "failureCount", "created", "modified", "creator"]
+    __properties: ClassVar[List[str]] = ["name", "owner", "description", "definition", "enabled", "trigger", "id", "executionCount", "failureCount", "created", "modified", "modifiedBy", "creator"]
 
     model_config = {
         "populate_by_name": True,
@@ -94,6 +96,9 @@ class Workflow(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of trigger
         if self.trigger:
             _dict['trigger'] = self.trigger.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of modified_by
+        if self.modified_by:
+            _dict['modifiedBy'] = self.modified_by.to_dict()
         # override the default output from pydantic by calling `to_dict()` of creator
         if self.creator:
             _dict['creator'] = self.creator.to_dict()
@@ -120,6 +125,7 @@ class Workflow(BaseModel):
             "failureCount": obj.get("failureCount"),
             "created": obj.get("created"),
             "modified": obj.get("modified"),
+            "modifiedBy": WorkflowModifiedBy.from_dict(obj.get("modifiedBy")) if obj.get("modifiedBy") is not None else None,
             "creator": WorkflowAllOfCreator.from_dict(obj.get("creator")) if obj.get("creator") is not None else None
         })
         return _obj

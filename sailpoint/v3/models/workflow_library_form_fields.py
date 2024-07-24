@@ -30,12 +30,13 @@ class WorkflowLibraryFormFields(BaseModel):
     """
     WorkflowLibraryFormFields
     """ # noqa: E501
+    description: Optional[StrictStr] = Field(default=None, description="Description of the form field")
     help_text: Optional[StrictStr] = Field(default=None, description="Describes the form field in the UI", alias="helpText")
     label: Optional[StrictStr] = Field(default=None, description="A human readable name for this form field in the UI")
     name: Optional[StrictStr] = Field(default=None, description="The name of the input attribute")
     required: Optional[StrictBool] = Field(default=False, description="Denotes if this field is a required attribute")
-    type: Optional[Dict[str, Any]] = Field(default=None, description="The type of the form field")
-    __properties: ClassVar[List[str]] = ["helpText", "label", "name", "required", "type"]
+    type: Optional[StrictStr] = Field(default=None, description="The type of the form field")
+    __properties: ClassVar[List[str]] = ["description", "helpText", "label", "name", "required", "type"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -43,8 +44,8 @@ class WorkflowLibraryFormFields(BaseModel):
         if value is None:
             return value
 
-        if value not in ('text', 'textarea', 'boolean', 'email', 'url', 'number', 'json', 'checkbox', 'jsonpath', 'select', 'multiType', 'duration', 'toggle', 'identityPicker', 'governanceGroupPicker', 'string', 'object', 'array', 'secret', 'keyValuePairs', 'emailPicker', 'advancedToggle'):
-            raise ValueError("must be one of enum values ('text', 'textarea', 'boolean', 'email', 'url', 'number', 'json', 'checkbox', 'jsonpath', 'select', 'multiType', 'duration', 'toggle', 'identityPicker', 'governanceGroupPicker', 'string', 'object', 'array', 'secret', 'keyValuePairs', 'emailPicker', 'advancedToggle')")
+        if value not in ('text', 'textarea', 'boolean', 'email', 'url', 'number', 'json', 'checkbox', 'jsonpath', 'select', 'multiType', 'duration', 'toggle', 'formPicker', 'identityPicker', 'governanceGroupPicker', 'string', 'object', 'array', 'secret', 'keyValuePairs', 'emailPicker', 'advancedToggle', 'variableCreator', 'htmlEditor'):
+            raise ValueError("must be one of enum values ('text', 'textarea', 'boolean', 'email', 'url', 'number', 'json', 'checkbox', 'jsonpath', 'select', 'multiType', 'duration', 'toggle', 'formPicker', 'identityPicker', 'governanceGroupPicker', 'string', 'object', 'array', 'secret', 'keyValuePairs', 'emailPicker', 'advancedToggle', 'variableCreator', 'htmlEditor')")
         return value
 
     model_config = {
@@ -101,6 +102,7 @@ class WorkflowLibraryFormFields(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "description": obj.get("description"),
             "helpText": obj.get("helpText"),
             "label": obj.get("label"),
             "name": obj.get("name"),

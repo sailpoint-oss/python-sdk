@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **failure_count** | **int** | The number of times this workflow has failed during execution. | [optional] 
 **created** | **datetime** | The date and time the workflow was created. | [optional] 
 **modified** | **datetime** | The date and time the workflow was modified. | [optional] 
+**modified_by** | [**WorkflowModifiedBy**](WorkflowModifiedBy.md) |  | [optional] 
 **creator** | [**WorkflowAllOfCreator**](WorkflowAllOfCreator.md) |  | [optional] 
 
 ## Example

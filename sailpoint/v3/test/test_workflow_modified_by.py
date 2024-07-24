@@ -15,10 +15,10 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.event_attributes import EventAttributes
+from sailpoint.v3.models.workflow_modified_by import WorkflowModifiedBy
 
-class TestEventAttributes(unittest.TestCase):
-    """EventAttributes unit test stubs"""
+class TestWorkflowModifiedBy(unittest.TestCase):
+    """WorkflowModifiedBy unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,28 +26,27 @@ class TestEventAttributes(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> EventAttributes:
-        """Test EventAttributes
+    def make_instance(self, include_optional) -> WorkflowModifiedBy:
+        """Test WorkflowModifiedBy
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `EventAttributes`
+        # uncomment below to create an instance of `WorkflowModifiedBy`
         """
-        model = EventAttributes()
+        model = WorkflowModifiedBy()
         if include_optional:
-            return EventAttributes(
-                id = 'idn:identity-attributes-changed',
-                filter_ = '$.changes[?(@.attribute == 'manager')]',
-                description = ''
+            return WorkflowModifiedBy(
+                type = 'IDENTITY',
+                id = '2c9180a46faadee4016fb4e018c20639',
+                name = 'Thomas Edison'
             )
         else:
-            return EventAttributes(
-                id = 'idn:identity-attributes-changed',
+            return WorkflowModifiedBy(
         )
         """
 
-    def testEventAttributes(self):
-        """Test EventAttributes"""
+    def testWorkflowModifiedBy(self):
+        """Test WorkflowModifiedBy"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

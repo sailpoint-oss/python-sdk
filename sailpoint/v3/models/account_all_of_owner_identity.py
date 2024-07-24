@@ -19,21 +19,31 @@ import json
 
 
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
+from pydantic import BaseModel, StrictStr, field_validator
 from pydantic import Field
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-class EventAttributes(BaseModel):
+class AccountAllOfOwnerIdentity(BaseModel):
     """
-    Attributes related to an IdentityNow ETS event
+    The identity who owns this account, typically used for non-human accounts
     """ # noqa: E501
-    id: StrictStr = Field(description="The unique ID of the trigger")
-    filter_: Optional[StrictStr] = Field(default=None, description="JSON path expression that will limit which events the trigger will fire on", alias="filter.$")
-    description: Optional[StrictStr] = Field(default=None, description="Description of the event trigger")
-    __properties: ClassVar[List[str]] = ["id", "filter.$", "description"]
+    type: Optional[StrictStr] = Field(default=None, description="The type of object being referenced")
+    id: Optional[StrictStr] = Field(default=None, description="ID of the identity")
+    name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of the identity")
+    __properties: ClassVar[List[str]] = ["type", "id", "name"]
+
+    @field_validator('type')
+    def type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in ('IDENTITY'):
+            raise ValueError("must be one of enum values ('IDENTITY')")
+        return value
 
     model_config = {
         "populate_by_name": True,
@@ -53,7 +63,7 @@ class EventAttributes(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
-        """Create an instance of EventAttributes from a JSON string"""
+        """Create an instance of AccountAllOfOwnerIdentity from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -76,7 +86,7 @@ class EventAttributes(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Dict) -> Self:
-        """Create an instance of EventAttributes from a dict"""
+        """Create an instance of AccountAllOfOwnerIdentity from a dict"""
         if obj is None:
             return None
 
@@ -84,9 +94,9 @@ class EventAttributes(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "type": obj.get("type"),
             "id": obj.get("id"),
-            "filter.$": obj.get("filter.$"),
-            "description": obj.get("description")
+            "name": obj.get("name")
         })
         return _obj
 

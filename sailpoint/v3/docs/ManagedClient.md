@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | ManagedClient ID | [optional] [readonly] 
 **alert_key** | **str** | ManagedClient alert key | [optional] [readonly] 
+**api_gateway_base_url** | **str** |  | [optional] 
+**cookbook** | **str** |  | [optional] 
 **cc_id** | **int** | Previous CC ID to be used in data migration. (This field will be deleted after CC migration!) | [optional] 
 **client_id** | **str** | The client ID used in API management | 
 **cluster_id** | **str** | Cluster ID that the ManagedClient is linked to | 

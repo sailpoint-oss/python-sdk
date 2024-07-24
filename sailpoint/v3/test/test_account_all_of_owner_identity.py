@@ -15,10 +15,10 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.event_attributes import EventAttributes
+from sailpoint.v3.models.account_all_of_owner_identity import AccountAllOfOwnerIdentity
 
-class TestEventAttributes(unittest.TestCase):
-    """EventAttributes unit test stubs"""
+class TestAccountAllOfOwnerIdentity(unittest.TestCase):
+    """AccountAllOfOwnerIdentity unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,28 +26,27 @@ class TestEventAttributes(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> EventAttributes:
-        """Test EventAttributes
+    def make_instance(self, include_optional) -> AccountAllOfOwnerIdentity:
+        """Test AccountAllOfOwnerIdentity
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `EventAttributes`
+        # uncomment below to create an instance of `AccountAllOfOwnerIdentity`
         """
-        model = EventAttributes()
+        model = AccountAllOfOwnerIdentity()
         if include_optional:
-            return EventAttributes(
-                id = 'idn:identity-attributes-changed',
-                filter_ = '$.changes[?(@.attribute == 'manager')]',
-                description = ''
+            return AccountAllOfOwnerIdentity(
+                type = 'IDENTITY',
+                id = '2c918084660f45d6016617daa9210584',
+                name = 'Adam Kennedy'
             )
         else:
-            return EventAttributes(
-                id = 'idn:identity-attributes-changed',
+            return AccountAllOfOwnerIdentity(
         )
         """
 
-    def testEventAttributes(self):
-        """Test EventAttributes"""
+    def testAccountAllOfOwnerIdentity(self):
+        """Test AccountAllOfOwnerIdentity"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

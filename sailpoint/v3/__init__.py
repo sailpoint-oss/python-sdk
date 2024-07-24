@@ -118,6 +118,9 @@ from sailpoint.v3.models.account_activity_document import AccountActivityDocumen
 from sailpoint.v3.models.account_activity_item import AccountActivityItem
 from sailpoint.v3.models.account_activity_item_operation import AccountActivityItemOperation
 from sailpoint.v3.models.account_activity_searched_item import AccountActivitySearchedItem
+from sailpoint.v3.models.account_all_of_owner_group import AccountAllOfOwnerGroup
+from sailpoint.v3.models.account_all_of_owner_identity import AccountAllOfOwnerIdentity
+from sailpoint.v3.models.account_all_of_source_owner import AccountAllOfSourceOwner
 from sailpoint.v3.models.account_attributes import AccountAttributes
 from sailpoint.v3.models.account_attributes_create import AccountAttributesCreate
 from sailpoint.v3.models.account_attributes_create_attributes import AccountAttributesCreateAttributes
@@ -615,9 +618,11 @@ from sailpoint.v3.models.workflow_definition import WorkflowDefinition
 from sailpoint.v3.models.workflow_execution import WorkflowExecution
 from sailpoint.v3.models.workflow_execution_event import WorkflowExecutionEvent
 from sailpoint.v3.models.workflow_library_action import WorkflowLibraryAction
+from sailpoint.v3.models.workflow_library_action_example_output import WorkflowLibraryActionExampleOutput
 from sailpoint.v3.models.workflow_library_form_fields import WorkflowLibraryFormFields
 from sailpoint.v3.models.workflow_library_operator import WorkflowLibraryOperator
 from sailpoint.v3.models.workflow_library_trigger import WorkflowLibraryTrigger
+from sailpoint.v3.models.workflow_modified_by import WorkflowModifiedBy
 from sailpoint.v3.models.workflow_o_auth_client import WorkflowOAuthClient
 from sailpoint.v3.models.workflow_trigger import WorkflowTrigger
 from sailpoint.v3.models.workflow_trigger_attributes import WorkflowTriggerAttributes

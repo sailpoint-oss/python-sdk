@@ -38,6 +38,8 @@ class TestManagedClient(unittest.TestCase):
             return ManagedClient(
                 id = '2c9180878eaf4204018eb019c3570003',
                 alert_key = 'CLIENT_STATUS_NOT_CONFIGURED',
+                api_gateway_base_url = '',
+                cookbook = '',
                 cc_id = 2248,
                 client_id = '00be54a2-bb6d-402f-9159-beb2d5319347',
                 cluster_id = 'e1ff7bb24c934240bbf55e1aa39e41c5',

@@ -15,10 +15,10 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.event_attributes import EventAttributes
+from sailpoint.v3.models.workflow_library_action_example_output import WorkflowLibraryActionExampleOutput
 
-class TestEventAttributes(unittest.TestCase):
-    """EventAttributes unit test stubs"""
+class TestWorkflowLibraryActionExampleOutput(unittest.TestCase):
+    """WorkflowLibraryActionExampleOutput unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,28 +26,24 @@ class TestEventAttributes(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> EventAttributes:
-        """Test EventAttributes
+    def make_instance(self, include_optional) -> WorkflowLibraryActionExampleOutput:
+        """Test WorkflowLibraryActionExampleOutput
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `EventAttributes`
+        # uncomment below to create an instance of `WorkflowLibraryActionExampleOutput`
         """
-        model = EventAttributes()
+        model = WorkflowLibraryActionExampleOutput()
         if include_optional:
-            return EventAttributes(
-                id = 'idn:identity-attributes-changed',
-                filter_ = '$.changes[?(@.attribute == 'manager')]',
-                description = ''
+            return WorkflowLibraryActionExampleOutput(
             )
         else:
-            return EventAttributes(
-                id = 'idn:identity-attributes-changed',
+            return WorkflowLibraryActionExampleOutput(
         )
         """
 
-    def testEventAttributes(self):
-        """Test EventAttributes"""
+    def testWorkflowLibraryActionExampleOutput(self):
+        """Test WorkflowLibraryActionExampleOutput"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

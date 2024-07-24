@@ -66,7 +66,8 @@ class CompletedApproval(BaseModel):
     pre_approval_trigger_result: Optional[CompletedApprovalPreApprovalTriggerResult] = Field(default=None, alias="preApprovalTriggerResult")
     client_metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Arbitrary key-value pairs provided during the request.", alias="clientMetadata")
     requested_accounts: Optional[StrictStr] = Field(default=None, description="Information about the requested accounts", alias="requestedAccounts")
-    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "requestCreated", "requestType", "requester", "requestedFor", "reviewedBy", "owner", "requestedObject", "requesterComment", "reviewerComment", "previousReviewersComments", "forwardHistory", "commentRequiredWhenRejected", "state", "removeDate", "removeDateUpdateRequested", "currentRemoveDate", "sodViolationContext", "preApprovalTriggerResult", "clientMetadata", "requestedAccounts"]
+    assignment_context: Optional[Dict[str, Any]] = Field(default=None, alias="assignmentContext")
+    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "requestCreated", "requestType", "requester", "requestedFor", "reviewedBy", "owner", "requestedObject", "requesterComment", "reviewerComment", "previousReviewersComments", "forwardHistory", "commentRequiredWhenRejected", "state", "removeDate", "removeDateUpdateRequested", "currentRemoveDate", "sodViolationContext", "preApprovalTriggerResult", "clientMetadata", "requestedAccounts", "assignmentContext"]
 
     model_config = {
         "populate_by_name": True,
@@ -181,6 +182,11 @@ class CompletedApproval(BaseModel):
         if self.requested_accounts is None and "requested_accounts" in self.model_fields_set:
             _dict['requestedAccounts'] = None
 
+        # set to None if assignment_context (nullable) is None
+        # and model_fields_set contains the field
+        if self.assignment_context is None and "assignment_context" in self.model_fields_set:
+            _dict['assignmentContext'] = None
+
         return _dict
 
     @classmethod
@@ -216,7 +222,8 @@ class CompletedApproval(BaseModel):
             "sodViolationContext": SodViolationContextCheckCompleted1.from_dict(obj.get("sodViolationContext")) if obj.get("sodViolationContext") is not None else None,
             "preApprovalTriggerResult": CompletedApprovalPreApprovalTriggerResult.from_dict(obj.get("preApprovalTriggerResult")) if obj.get("preApprovalTriggerResult") is not None else None,
             "clientMetadata": obj.get("clientMetadata"),
-            "requestedAccounts": obj.get("requestedAccounts")
+            "requestedAccounts": obj.get("requestedAccounts"),
+            "assignmentContext": obj.get("assignmentContext")
         })
         return _obj
 

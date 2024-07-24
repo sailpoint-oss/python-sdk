@@ -36,11 +36,12 @@ class TestWorkflowLibraryFormFields(unittest.TestCase):
         model = WorkflowLibraryFormFields()
         if include_optional:
             return WorkflowLibraryFormFields(
+                description = 'First value to compare',
                 help_text = 'The name to give to this certification campaign.',
                 label = 'Campaign Name',
                 name = 'name',
                 required = False,
-                type = text
+                type = 'text'
             )
         else:
             return WorkflowLibraryFormFields(

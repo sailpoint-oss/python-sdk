@@ -32,6 +32,8 @@ class ManagedClient(BaseModel):
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="ManagedClient ID")
     alert_key: Optional[StrictStr] = Field(default=None, description="ManagedClient alert key", alias="alertKey")
+    api_gateway_base_url: Optional[StrictStr] = Field(default=None, alias="apiGatewayBaseUrl")
+    cookbook: Optional[StrictStr] = None
     cc_id: Optional[StrictInt] = Field(default=None, description="Previous CC ID to be used in data migration. (This field will be deleted after CC migration!)", alias="ccId")
     client_id: StrictStr = Field(description="The client ID used in API management", alias="clientId")
     cluster_id: StrictStr = Field(description="Cluster ID that the ManagedClient is linked to", alias="clusterId")
@@ -49,7 +51,7 @@ class ManagedClient(BaseModel):
     created_at: Optional[datetime] = Field(default=None, description="The date/time this ManagedClient was created", alias="createdAt")
     updated_at: Optional[datetime] = Field(default=None, description="The date/time this ManagedClient was last updated", alias="updatedAt")
     provision_status: Optional[StrictStr] = Field(default=None, description="The provisioning status of the ManagedClient", alias="provisionStatus")
-    __properties: ClassVar[List[str]] = ["id", "alertKey", "ccId", "clientId", "clusterId", "description", "ipAddress", "lastSeen", "name", "sinceLastSeen", "status", "type", "clusterType", "vaDownloadUrl", "vaVersion", "secret", "createdAt", "updatedAt", "provisionStatus"]
+    __properties: ClassVar[List[str]] = ["id", "alertKey", "apiGatewayBaseUrl", "cookbook", "ccId", "clientId", "clusterId", "description", "ipAddress", "lastSeen", "name", "sinceLastSeen", "status", "type", "clusterType", "vaDownloadUrl", "vaVersion", "secret", "createdAt", "updatedAt", "provisionStatus"]
 
     @field_validator('status')
     def status_validate_enum(cls, value):
@@ -148,6 +150,16 @@ class ManagedClient(BaseModel):
         if self.alert_key is None and "alert_key" in self.model_fields_set:
             _dict['alertKey'] = None
 
+        # set to None if api_gateway_base_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.api_gateway_base_url is None and "api_gateway_base_url" in self.model_fields_set:
+            _dict['apiGatewayBaseUrl'] = None
+
+        # set to None if cookbook (nullable) is None
+        # and model_fields_set contains the field
+        if self.cookbook is None and "cookbook" in self.model_fields_set:
+            _dict['cookbook'] = None
+
         # set to None if cc_id (nullable) is None
         # and model_fields_set contains the field
         if self.cc_id is None and "cc_id" in self.model_fields_set:
@@ -227,6 +239,8 @@ class ManagedClient(BaseModel):
         _obj = cls.model_validate({
             "id": obj.get("id"),
             "alertKey": obj.get("alertKey"),
+            "apiGatewayBaseUrl": obj.get("apiGatewayBaseUrl"),
+            "cookbook": obj.get("cookbook"),
             "ccId": obj.get("ccId"),
             "clientId": obj.get("clientId"),
             "clusterId": obj.get("clusterId"),

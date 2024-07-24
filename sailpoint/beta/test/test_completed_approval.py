@@ -131,7 +131,8 @@ class TestCompletedApproval(unittest.TestCase):
                     reviewer = 'Automated AR Approval', 
                     date = '2022-06-07T19:18:40.748Z', ),
                 client_metadata = {requestedAppName=test-app, requestedAppId=2c91808f7892918f0178b78da4a305a1},
-                requested_accounts = ''
+                requested_accounts = '',
+                assignment_context = None
             )
         else:
             return CompletedApproval(

@@ -55,6 +55,10 @@ class TestWorkflow(unittest.TestCase):
                 failure_count = 0,
                 created = '2022-01-10T16:06:16.636381447Z',
                 modified = '2023-12-05T15:18:27.699132301Z',
+                modified_by = sailpoint.v3.models.workflow_modified_by.WorkflowModifiedBy(
+                    type = 'IDENTITY', 
+                    id = '2c9180a46faadee4016fb4e018c20639', 
+                    name = 'Thomas Edison', ),
                 creator = sailpoint.v3.models.workflow_all_of_creator.Workflow_allOf_creator(
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20642', 
