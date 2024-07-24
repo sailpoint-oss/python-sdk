@@ -18,21 +18,20 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
-from pydantic import BaseModel, StrictBytes, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictStr, field_validator
 from pydantic import Field
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-class ImportAccountsRequest(BaseModel):
+class ImportAccountsRequest1(BaseModel):
     """
-    ImportAccountsRequest
+    This content type is provided for compatibility with services that don't support multipart/form-data, such as SailPoint Workflows. This content type does not support files, so it can only be used for direct connect sources.
     """ # noqa: E501
-    file: Optional[Union[StrictBytes, StrictStr]] = Field(default=None, description="The CSV file containing the source accounts to aggregate.")
     disable_optimization: Optional[StrictStr] = Field(default=None, description="Use this flag to reprocess every account whether or not the data has changed.", alias="disableOptimization")
-    __properties: ClassVar[List[str]] = ["file", "disableOptimization"]
+    __properties: ClassVar[List[str]] = ["disableOptimization"]
 
     @field_validator('disable_optimization')
     def disable_optimization_validate_enum(cls, value):
@@ -62,7 +61,7 @@ class ImportAccountsRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
-        """Create an instance of ImportAccountsRequest from a JSON string"""
+        """Create an instance of ImportAccountsRequest1 from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -85,7 +84,7 @@ class ImportAccountsRequest(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Dict) -> Self:
-        """Create an instance of ImportAccountsRequest from a dict"""
+        """Create an instance of ImportAccountsRequest1 from a dict"""
         if obj is None:
             return None
 
@@ -93,7 +92,6 @@ class ImportAccountsRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "file": obj.get("file"),
             "disableOptimization": obj.get("disableOptimization")
         })
         return _obj

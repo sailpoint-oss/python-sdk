@@ -971,6 +971,7 @@ Class | Method | HTTP request | Description
  - [IdentityWithNewAccess](sailpoint/beta/docs/IdentityWithNewAccess.md)
  - [IdentityWithNewAccessAccessRefsInner](sailpoint/beta/docs/IdentityWithNewAccessAccessRefsInner.md)
  - [ImportAccountsRequest](sailpoint/beta/docs/ImportAccountsRequest.md)
+ - [ImportAccountsRequest1](sailpoint/beta/docs/ImportAccountsRequest1.md)
  - [ImportEntitlementsBySourceRequest](sailpoint/beta/docs/ImportEntitlementsBySourceRequest.md)
  - [ImportEntitlementsRequest](sailpoint/beta/docs/ImportEntitlementsRequest.md)
  - [ImportFormDefinitions202Response](sailpoint/beta/docs/ImportFormDefinitions202Response.md)

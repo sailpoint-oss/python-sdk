@@ -484,6 +484,7 @@ sailpoint/beta/docs/IdentitySyncPayload.md
 sailpoint/beta/docs/IdentityWithNewAccess.md
 sailpoint/beta/docs/IdentityWithNewAccessAccessRefsInner.md
 sailpoint/beta/docs/ImportAccountsRequest.md
+sailpoint/beta/docs/ImportAccountsRequest1.md
 sailpoint/beta/docs/ImportEntitlementsBySourceRequest.md
 sailpoint/beta/docs/ImportEntitlementsRequest.md
 sailpoint/beta/docs/ImportFormDefinitions202Response.md
@@ -1361,6 +1362,7 @@ sailpoint/beta/models/identity_sync_payload.py
 sailpoint/beta/models/identity_with_new_access.py
 sailpoint/beta/models/identity_with_new_access_access_refs_inner.py
 sailpoint/beta/models/import_accounts_request.py
+sailpoint/beta/models/import_accounts_request1.py
 sailpoint/beta/models/import_entitlements_by_source_request.py
 sailpoint/beta/models/import_entitlements_request.py
 sailpoint/beta/models/import_form_definitions202_response.py
@@ -2231,6 +2233,7 @@ sailpoint/beta/test/test_identity_sync_payload.py
 sailpoint/beta/test/test_identity_with_new_access.py
 sailpoint/beta/test/test_identity_with_new_access_access_refs_inner.py
 sailpoint/beta/test/test_import_accounts_request.py
+sailpoint/beta/test/test_import_accounts_request1.py
 sailpoint/beta/test/test_import_entitlements_by_source_request.py
 sailpoint/beta/test/test_import_entitlements_request.py
 sailpoint/beta/test/test_import_form_definitions202_response.py

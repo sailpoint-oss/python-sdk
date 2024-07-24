@@ -5776,7 +5776,8 @@ class SourcesApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'multipart/form-data'
+                        'multipart/form-data', 
+                        'application/x-www-form-urlencoded'
                     ]
                 )
             )
