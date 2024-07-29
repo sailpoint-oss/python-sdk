@@ -162,6 +162,7 @@ Class | Method | HTTP request | Description
 *ConnectorRuleManagementApi* | [**validate_connector_rule**](sailpoint/beta/docs/ConnectorRuleManagementApi.md#validate_connector_rule) | **POST** /connector-rules/validate | Validate Connector Rule
 *ConnectorsApi* | [**get_connector_list**](sailpoint/beta/docs/ConnectorsApi.md#get_connector_list) | **GET** /connectors | Gets connector list
 *CustomFormsApi* | [**create_form_definition**](sailpoint/beta/docs/CustomFormsApi.md#create_form_definition) | **POST** /form-definitions | Creates a form definition.
+*CustomFormsApi* | [**create_form_definition_by_template**](sailpoint/beta/docs/CustomFormsApi.md#create_form_definition_by_template) | **POST** /form-definitions/template | Create a form definition by template.
 *CustomFormsApi* | [**create_form_definition_dynamic_schema**](sailpoint/beta/docs/CustomFormsApi.md#create_form_definition_dynamic_schema) | **POST** /form-definitions/forms-action-dynamic-schema | Generate JSON Schema dynamically.
 *CustomFormsApi* | [**create_form_definition_file_request**](sailpoint/beta/docs/CustomFormsApi.md#create_form_definition_file_request) | **POST** /form-definitions/{formDefinitionID}/upload | Upload new form definition file.
 *CustomFormsApi* | [**create_form_instance**](sailpoint/beta/docs/CustomFormsApi.md#create_form_instance) | **POST** /form-instances | Creates a form instance.
