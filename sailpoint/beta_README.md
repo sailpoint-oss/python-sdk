@@ -287,11 +287,11 @@ Class | Method | HTTP request | Description
 *IdentityProfilesApi* | [**delete_identity_profile**](sailpoint/beta/docs/IdentityProfilesApi.md#delete_identity_profile) | **DELETE** /identity-profiles/{identity-profile-id} | Delete an Identity Profile
 *IdentityProfilesApi* | [**delete_identity_profiles**](sailpoint/beta/docs/IdentityProfilesApi.md#delete_identity_profiles) | **POST** /identity-profiles/bulk-delete | Delete Identity Profiles
 *IdentityProfilesApi* | [**export_identity_profiles**](sailpoint/beta/docs/IdentityProfilesApi.md#export_identity_profiles) | **GET** /identity-profiles/export | Export Identity Profiles
-*IdentityProfilesApi* | [**generate_identity_preview**](sailpoint/beta/docs/IdentityProfilesApi.md#generate_identity_preview) | **POST** /identity-profiles/identity-preview | Generate Identity Profile Preview
 *IdentityProfilesApi* | [**get_default_identity_attribute_config**](sailpoint/beta/docs/IdentityProfilesApi.md#get_default_identity_attribute_config) | **GET** /identity-profiles/{identity-profile-id}/default-identity-attribute-config | Default identity attribute config
 *IdentityProfilesApi* | [**get_identity_profile**](sailpoint/beta/docs/IdentityProfilesApi.md#get_identity_profile) | **GET** /identity-profiles/{identity-profile-id} | Gets a single Identity Profile
 *IdentityProfilesApi* | [**import_identity_profiles**](sailpoint/beta/docs/IdentityProfilesApi.md#import_identity_profiles) | **POST** /identity-profiles/import | Import Identity Profiles
-*IdentityProfilesApi* | [**list_identity_profiles**](sailpoint/beta/docs/IdentityProfilesApi.md#list_identity_profiles) | **GET** /identity-profiles | Identity Profiles list
+*IdentityProfilesApi* | [**list_identity_profiles**](sailpoint/beta/docs/IdentityProfilesApi.md#list_identity_profiles) | **GET** /identity-profiles | Identity Profiles List
+*IdentityProfilesApi* | [**show_generate_identity_preview**](sailpoint/beta/docs/IdentityProfilesApi.md#show_generate_identity_preview) | **POST** /identity-profiles/identity-preview | Generate Identity Profile Preview
 *IdentityProfilesApi* | [**sync_identity_profile**](sailpoint/beta/docs/IdentityProfilesApi.md#sync_identity_profile) | **POST** /identity-profiles/{identity-profile-id}/process-identities | Process identities under profile
 *IdentityProfilesApi* | [**update_identity_profile**](sailpoint/beta/docs/IdentityProfilesApi.md#update_identity_profile) | **PATCH** /identity-profiles/{identity-profile-id} | Update the Identity Profile
 *LifecycleStatesApi* | [**get_lifecycle_states**](sailpoint/beta/docs/LifecycleStatesApi.md#get_lifecycle_states) | **GET** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Get Lifecycle State

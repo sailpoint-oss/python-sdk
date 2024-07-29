@@ -26,6 +26,13 @@ class TestIdentityProfilesApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_create_identity_profile(self) -> None:
+        """Test case for create_identity_profile
+
+        Create an Identity Profile
+        """
+        pass
+
     def test_delete_identity_profile(self) -> None:
         """Test case for delete_identity_profile
 
@@ -75,10 +82,24 @@ class TestIdentityProfilesApi(unittest.TestCase):
         """
         pass
 
+    def test_show_identity_preview(self) -> None:
+        """Test case for show_identity_preview
+
+        Generate Identity Profile Preview
+        """
+        pass
+
     def test_sync_identity_profile(self) -> None:
         """Test case for sync_identity_profile
 
         Process identities under profile
+        """
+        pass
+
+    def test_update_identity_profile(self) -> None:
+        """Test case for update_identity_profile
+
+        Update the Identity Profile
         """
         pass
 

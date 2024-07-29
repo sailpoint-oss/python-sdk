@@ -188,6 +188,7 @@ Class | Method | HTTP request | Description
 *GlobalTenantSecuritySettingsApi* | [**patch_auth_org_network_config**](sailpoint/v3/docs/GlobalTenantSecuritySettingsApi.md#patch_auth_org_network_config) | **PATCH** /auth-org/network-config | Update security network configuration.
 *GlobalTenantSecuritySettingsApi* | [**patch_auth_org_service_provider_config**](sailpoint/v3/docs/GlobalTenantSecuritySettingsApi.md#patch_auth_org_service_provider_config) | **PATCH** /auth-org/service-provider-config | Update Service Provider Configuration
 *GlobalTenantSecuritySettingsApi* | [**patch_auth_org_session_config**](sailpoint/v3/docs/GlobalTenantSecuritySettingsApi.md#patch_auth_org_session_config) | **PATCH** /auth-org/session-config | Update Auth Org Session Configuration
+*IdentityProfilesApi* | [**create_identity_profile**](sailpoint/v3/docs/IdentityProfilesApi.md#create_identity_profile) | **POST** /identity-profiles | Create an Identity Profile
 *IdentityProfilesApi* | [**delete_identity_profile**](sailpoint/v3/docs/IdentityProfilesApi.md#delete_identity_profile) | **DELETE** /identity-profiles/{identity-profile-id} | Delete an Identity Profile
 *IdentityProfilesApi* | [**delete_identity_profiles**](sailpoint/v3/docs/IdentityProfilesApi.md#delete_identity_profiles) | **POST** /identity-profiles/bulk-delete | Delete Identity Profiles
 *IdentityProfilesApi* | [**export_identity_profiles**](sailpoint/v3/docs/IdentityProfilesApi.md#export_identity_profiles) | **GET** /identity-profiles/export | Export Identity Profiles
@@ -195,7 +196,9 @@ Class | Method | HTTP request | Description
 *IdentityProfilesApi* | [**get_identity_profile**](sailpoint/v3/docs/IdentityProfilesApi.md#get_identity_profile) | **GET** /identity-profiles/{identity-profile-id} | Get single Identity Profile
 *IdentityProfilesApi* | [**import_identity_profiles**](sailpoint/v3/docs/IdentityProfilesApi.md#import_identity_profiles) | **POST** /identity-profiles/import | Import Identity Profiles
 *IdentityProfilesApi* | [**list_identity_profiles**](sailpoint/v3/docs/IdentityProfilesApi.md#list_identity_profiles) | **GET** /identity-profiles | Identity Profiles List
+*IdentityProfilesApi* | [**show_identity_preview**](sailpoint/v3/docs/IdentityProfilesApi.md#show_identity_preview) | **POST** /identity-profiles/identity-preview | Generate Identity Profile Preview
 *IdentityProfilesApi* | [**sync_identity_profile**](sailpoint/v3/docs/IdentityProfilesApi.md#sync_identity_profile) | **POST** /identity-profiles/{identity-profile-id}/process-identities | Process identities under profile
+*IdentityProfilesApi* | [**update_identity_profile**](sailpoint/v3/docs/IdentityProfilesApi.md#update_identity_profile) | **PATCH** /identity-profiles/{identity-profile-id} | Update the Identity Profile
 *LifecycleStatesApi* | [**create_lifecycle_state**](sailpoint/v3/docs/LifecycleStatesApi.md#create_lifecycle_state) | **POST** /identity-profiles/{identity-profile-id}/lifecycle-states | Create Lifecycle State
 *LifecycleStatesApi* | [**delete_lifecycle_state**](sailpoint/v3/docs/LifecycleStatesApi.md#delete_lifecycle_state) | **DELETE** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Delete Lifecycle State
 *LifecycleStatesApi* | [**get_lifecycle_state**](sailpoint/v3/docs/LifecycleStatesApi.md#get_lifecycle_state) | **GET** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Get Lifecycle State
@@ -634,6 +637,7 @@ Class | Method | HTTP request | Description
  - [IdentityAccess](sailpoint/v3/docs/IdentityAccess.md)
  - [IdentityAttribute](sailpoint/v3/docs/IdentityAttribute.md)
  - [IdentityAttributeConfig](sailpoint/v3/docs/IdentityAttributeConfig.md)
+ - [IdentityAttributePreview](sailpoint/v3/docs/IdentityAttributePreview.md)
  - [IdentityAttributeTransform](sailpoint/v3/docs/IdentityAttributeTransform.md)
  - [IdentityCertDecisionSummary](sailpoint/v3/docs/IdentityCertDecisionSummary.md)
  - [IdentityCertificationDto](sailpoint/v3/docs/IdentityCertificationDto.md)
@@ -642,6 +646,9 @@ Class | Method | HTTP request | Description
  - [IdentityDocumentAllOfManager](sailpoint/v3/docs/IdentityDocumentAllOfManager.md)
  - [IdentityDocumentAllOfSource](sailpoint/v3/docs/IdentityDocumentAllOfSource.md)
  - [IdentityExceptionReportReference](sailpoint/v3/docs/IdentityExceptionReportReference.md)
+ - [IdentityPreviewRequest](sailpoint/v3/docs/IdentityPreviewRequest.md)
+ - [IdentityPreviewResponse](sailpoint/v3/docs/IdentityPreviewResponse.md)
+ - [IdentityPreviewResponseIdentity](sailpoint/v3/docs/IdentityPreviewResponseIdentity.md)
  - [IdentityProfile](sailpoint/v3/docs/IdentityProfile.md)
  - [IdentityProfileAllOfAuthoritativeSource](sailpoint/v3/docs/IdentityProfileAllOfAuthoritativeSource.md)
  - [IdentityProfileAllOfOwner](sailpoint/v3/docs/IdentityProfileAllOfOwner.md)

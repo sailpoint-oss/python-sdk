@@ -216,6 +216,7 @@ from sailpoint.v3.models.identities_report_arguments import IdentitiesReportArgu
 from sailpoint.v3.models.identity_access import IdentityAccess
 from sailpoint.v3.models.identity_attribute import IdentityAttribute
 from sailpoint.v3.models.identity_attribute_config import IdentityAttributeConfig
+from sailpoint.v3.models.identity_attribute_preview import IdentityAttributePreview
 from sailpoint.v3.models.identity_attribute_transform import IdentityAttributeTransform
 from sailpoint.v3.models.identity_cert_decision_summary import IdentityCertDecisionSummary
 from sailpoint.v3.models.identity_certification_dto import IdentityCertificationDto
@@ -224,6 +225,9 @@ from sailpoint.v3.models.identity_document_all_of_identity_profile import Identi
 from sailpoint.v3.models.identity_document_all_of_manager import IdentityDocumentAllOfManager
 from sailpoint.v3.models.identity_document_all_of_source import IdentityDocumentAllOfSource
 from sailpoint.v3.models.identity_exception_report_reference import IdentityExceptionReportReference
+from sailpoint.v3.models.identity_preview_request import IdentityPreviewRequest
+from sailpoint.v3.models.identity_preview_response import IdentityPreviewResponse
+from sailpoint.v3.models.identity_preview_response_identity import IdentityPreviewResponseIdentity
 from sailpoint.v3.models.identity_profile import IdentityProfile
 from sailpoint.v3.models.identity_profile_all_of_authoritative_source import IdentityProfileAllOfAuthoritativeSource
 from sailpoint.v3.models.identity_profile_all_of_owner import IdentityProfileAllOfOwner
