@@ -103,6 +103,13 @@ class TestWorkItemsApi(unittest.TestCase):
         """
         pass
 
+    def test_send_work_item_forward(self) -> None:
+        """Test case for send_work_item_forward
+
+        Forward a Work Item
+        """
+        pass
+
     def test_submit_account_selection(self) -> None:
         """Test case for submit_account_selection
 

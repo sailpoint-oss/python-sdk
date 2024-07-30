@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**list_work_items**](WorkItemsApi.md#list_work_items) | **GET** /work-items | List Work Items
 [**reject_approval_item**](WorkItemsApi.md#reject_approval_item) | **POST** /work-items/{id}/reject/{approvalItemId} | Reject an Approval Item
 [**reject_approval_items_in_bulk**](WorkItemsApi.md#reject_approval_items_in_bulk) | **POST** /work-items/bulk-reject/{id} | Bulk reject Approval Items
+[**send_work_item_forward**](WorkItemsApi.md#send_work_item_forward) | **POST** /work-items/{id}/forward | Forward a Work Item
 [**submit_account_selection**](WorkItemsApi.md#submit_account_selection) | **POST** /work-items/{id}/submit-account-selection | Submit Account Selections
 
 
@@ -969,6 +970,91 @@ Name | Type | Description  | Notes
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
 **404** | Not Found - returned if the request URL refers to a resource or object that does not exist |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **send_work_item_forward**
+> send_work_item_forward(id, work_item_forward)
+
+Forward a Work Item
+
+This API forwards a work item to a new owner. Either an admin, or the owning/current user must make this request. Accessible to work-item Owner, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN.
+
+### Example
+
+* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (UserContextAuth):
+
+```python
+import time
+import os
+import sailpoint.v3
+from sailpoint.v3.models.work_item_forward import WorkItemForward
+from sailpoint.v3.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sailpoint.v3.Configuration(
+    host = "https://sailpoint.api.identitynow.com/v3"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with sailpoint.v3.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sailpoint.v3.WorkItemsApi(api_client)
+    id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the work item
+    work_item_forward = sailpoint.v3.WorkItemForward() # WorkItemForward | 
+
+    try:
+        # Forward a Work Item
+        api_instance.send_work_item_forward(id, work_item_forward)
+    except Exception as e:
+        print("Exception when calling WorkItemsApi->send_work_item_forward: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**| The ID of the work item | 
+ **work_item_forward** | [**WorkItemForward**](WorkItemForward.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success, but no data is returned. |  -  |
+**400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
+**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
 **429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
 **500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
 

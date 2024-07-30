@@ -607,6 +607,7 @@ from sailpoint.v3.models.violation_owner_assignment_config import ViolationOwner
 from sailpoint.v3.models.violation_owner_assignment_config_owner_ref import ViolationOwnerAssignmentConfigOwnerRef
 from sailpoint.v3.models.violation_prediction import ViolationPrediction
 from sailpoint.v3.models.visibility_criteria import VisibilityCriteria
+from sailpoint.v3.models.work_item_forward import WorkItemForward
 from sailpoint.v3.models.work_item_state import WorkItemState
 from sailpoint.v3.models.work_item_state_manual_work_items import WorkItemStateManualWorkItems
 from sailpoint.v3.models.work_item_type_manual_work_items import WorkItemTypeManualWorkItems

@@ -412,6 +412,7 @@ Class | Method | HTTP request | Description
 *WorkItemsApi* | [**list_work_items**](sailpoint/v3/docs/WorkItemsApi.md#list_work_items) | **GET** /work-items | List Work Items
 *WorkItemsApi* | [**reject_approval_item**](sailpoint/v3/docs/WorkItemsApi.md#reject_approval_item) | **POST** /work-items/{id}/reject/{approvalItemId} | Reject an Approval Item
 *WorkItemsApi* | [**reject_approval_items_in_bulk**](sailpoint/v3/docs/WorkItemsApi.md#reject_approval_items_in_bulk) | **POST** /work-items/bulk-reject/{id} | Bulk reject Approval Items
+*WorkItemsApi* | [**send_work_item_forward**](sailpoint/v3/docs/WorkItemsApi.md#send_work_item_forward) | **POST** /work-items/{id}/forward | Forward a Work Item
 *WorkItemsApi* | [**submit_account_selection**](sailpoint/v3/docs/WorkItemsApi.md#submit_account_selection) | **POST** /work-items/{id}/submit-account-selection | Submit Account Selections
 *WorkflowsApi* | [**cancel_workflow_execution**](sailpoint/v3/docs/WorkflowsApi.md#cancel_workflow_execution) | **POST** /workflow-executions/{id}/cancel | Cancel Workflow Execution by ID
 *WorkflowsApi* | [**create_external_execute_workflow**](sailpoint/v3/docs/WorkflowsApi.md#create_external_execute_workflow) | **POST** /workflows/execute/external/{id} | Execute Workflow via External Trigger
@@ -962,6 +963,7 @@ Class | Method | HTTP request | Description
  - [ViolationOwnerAssignmentConfigOwnerRef](sailpoint/v3/docs/ViolationOwnerAssignmentConfigOwnerRef.md)
  - [ViolationPrediction](sailpoint/v3/docs/ViolationPrediction.md)
  - [VisibilityCriteria](sailpoint/v3/docs/VisibilityCriteria.md)
+ - [WorkItemForward](sailpoint/v3/docs/WorkItemForward.md)
  - [WorkItemState](sailpoint/v3/docs/WorkItemState.md)
  - [WorkItemStateManualWorkItems](sailpoint/v3/docs/WorkItemStateManualWorkItems.md)
  - [WorkItemTypeManualWorkItems](sailpoint/v3/docs/WorkItemTypeManualWorkItems.md)
