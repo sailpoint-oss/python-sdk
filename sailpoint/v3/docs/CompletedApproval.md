@@ -28,8 +28,6 @@ Name | Type | Description | Notes
 **sod_violation_context** | [**SodViolationContextCheckCompleted**](SodViolationContextCheckCompleted.md) |  | [optional] 
 **pre_approval_trigger_result** | [**CompletedApprovalPreApprovalTriggerResult**](CompletedApprovalPreApprovalTriggerResult.md) |  | [optional] 
 **client_metadata** | **Dict[str, str]** | Arbitrary key-value pairs provided during the request. | [optional] 
-**requested_accounts** | **str** | Information about the requested accounts | [optional] 
-**assignment_context** | **object** |  | [optional] 
 
 ## Example
 
