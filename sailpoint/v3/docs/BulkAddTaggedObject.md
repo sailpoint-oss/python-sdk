@@ -1,4 +1,4 @@
-# BulkTaggedObject
+# BulkAddTaggedObject
 
 
 ## Properties
@@ -12,19 +12,19 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from sailpoint.v3.models.bulk_tagged_object import BulkTaggedObject
+from sailpoint.v3.models.bulk_add_tagged_object import BulkAddTaggedObject
 
 # TODO update the JSON string below
 json = "{}"
-# create an instance of BulkTaggedObject from a JSON string
-bulk_tagged_object_instance = BulkTaggedObject.from_json(json)
+# create an instance of BulkAddTaggedObject from a JSON string
+bulk_add_tagged_object_instance = BulkAddTaggedObject.from_json(json)
 # print the JSON string representation of the object
-print BulkTaggedObject.to_json()
+print BulkAddTaggedObject.to_json()
 
 # convert the object into a dict
-bulk_tagged_object_dict = bulk_tagged_object_instance.to_dict()
-# create an instance of BulkTaggedObject from a dict
-bulk_tagged_object_form_dict = bulk_tagged_object.from_dict(bulk_tagged_object_dict)
+bulk_add_tagged_object_dict = bulk_add_tagged_object_instance.to_dict()
+# create an instance of BulkAddTaggedObject from a dict
+bulk_add_tagged_object_form_dict = bulk_add_tagged_object.from_dict(bulk_add_tagged_object_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

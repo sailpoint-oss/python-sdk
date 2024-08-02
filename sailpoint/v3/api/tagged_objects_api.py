@@ -29,7 +29,8 @@ from pydantic import StrictBool, StrictStr, field_validator
 
 from typing import List, Optional
 
-from sailpoint.v3.models.bulk_tagged_object import BulkTaggedObject
+from sailpoint.v3.models.bulk_add_tagged_object import BulkAddTaggedObject
+from sailpoint.v3.models.bulk_remove_tagged_object import BulkRemoveTaggedObject
 from sailpoint.v3.models.bulk_tagged_object_response import BulkTaggedObjectResponse
 from sailpoint.v3.models.tagged_object import TaggedObject
 
@@ -343,7 +344,7 @@ class TaggedObjectsApi:
     @validate_call
     def delete_tags_to_many_object(
         self,
-        bulk_tagged_object: Annotated[BulkTaggedObject, Field(description="Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.")],
+        bulk_remove_tagged_object: Annotated[BulkRemoveTaggedObject, Field(description="Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -361,8 +362,8 @@ class TaggedObjectsApi:
 
         This API removes tags from multiple objects.  A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
-        :param bulk_tagged_object: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
-        :type bulk_tagged_object: BulkTaggedObject
+        :param bulk_remove_tagged_object: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
+        :type bulk_remove_tagged_object: BulkRemoveTaggedObject
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -386,7 +387,7 @@ class TaggedObjectsApi:
         """ # noqa: E501
 
         _param = self._delete_tags_to_many_object_serialize(
-            bulk_tagged_object=bulk_tagged_object,
+            bulk_remove_tagged_object=bulk_remove_tagged_object,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -415,7 +416,7 @@ class TaggedObjectsApi:
     @validate_call
     def delete_tags_to_many_object_with_http_info(
         self,
-        bulk_tagged_object: Annotated[BulkTaggedObject, Field(description="Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.")],
+        bulk_remove_tagged_object: Annotated[BulkRemoveTaggedObject, Field(description="Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -433,8 +434,8 @@ class TaggedObjectsApi:
 
         This API removes tags from multiple objects.  A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
-        :param bulk_tagged_object: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
-        :type bulk_tagged_object: BulkTaggedObject
+        :param bulk_remove_tagged_object: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
+        :type bulk_remove_tagged_object: BulkRemoveTaggedObject
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -458,7 +459,7 @@ class TaggedObjectsApi:
         """ # noqa: E501
 
         _param = self._delete_tags_to_many_object_serialize(
-            bulk_tagged_object=bulk_tagged_object,
+            bulk_remove_tagged_object=bulk_remove_tagged_object,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -487,7 +488,7 @@ class TaggedObjectsApi:
     @validate_call
     def delete_tags_to_many_object_without_preload_content(
         self,
-        bulk_tagged_object: Annotated[BulkTaggedObject, Field(description="Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.")],
+        bulk_remove_tagged_object: Annotated[BulkRemoveTaggedObject, Field(description="Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -505,8 +506,8 @@ class TaggedObjectsApi:
 
         This API removes tags from multiple objects.  A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
-        :param bulk_tagged_object: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
-        :type bulk_tagged_object: BulkTaggedObject
+        :param bulk_remove_tagged_object: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
+        :type bulk_remove_tagged_object: BulkRemoveTaggedObject
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -530,7 +531,7 @@ class TaggedObjectsApi:
         """ # noqa: E501
 
         _param = self._delete_tags_to_many_object_serialize(
-            bulk_tagged_object=bulk_tagged_object,
+            bulk_remove_tagged_object=bulk_remove_tagged_object,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -554,7 +555,7 @@ class TaggedObjectsApi:
 
     def _delete_tags_to_many_object_serialize(
         self,
-        bulk_tagged_object,
+        bulk_remove_tagged_object,
         _request_auth,
         _content_type,
         _headers,
@@ -578,8 +579,8 @@ class TaggedObjectsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if bulk_tagged_object is not None:
-            _body_params = bulk_tagged_object
+        if bulk_remove_tagged_object is not None:
+            _body_params = bulk_remove_tagged_object
 
 
         # set the HTTP header `Accept`
@@ -2192,7 +2193,7 @@ class TaggedObjectsApi:
     @validate_call
     def set_tags_to_many_objects(
         self,
-        bulk_tagged_object: Annotated[BulkTaggedObject, Field(description="Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.")],
+        bulk_add_tagged_object: Annotated[BulkAddTaggedObject, Field(description="Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2210,8 +2211,8 @@ class TaggedObjectsApi:
 
         This API adds tags to multiple objects.  A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
-        :param bulk_tagged_object: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
-        :type bulk_tagged_object: BulkTaggedObject
+        :param bulk_add_tagged_object: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
+        :type bulk_add_tagged_object: BulkAddTaggedObject
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2235,7 +2236,7 @@ class TaggedObjectsApi:
         """ # noqa: E501
 
         _param = self._set_tags_to_many_objects_serialize(
-            bulk_tagged_object=bulk_tagged_object,
+            bulk_add_tagged_object=bulk_add_tagged_object,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2264,7 +2265,7 @@ class TaggedObjectsApi:
     @validate_call
     def set_tags_to_many_objects_with_http_info(
         self,
-        bulk_tagged_object: Annotated[BulkTaggedObject, Field(description="Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.")],
+        bulk_add_tagged_object: Annotated[BulkAddTaggedObject, Field(description="Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2282,8 +2283,8 @@ class TaggedObjectsApi:
 
         This API adds tags to multiple objects.  A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
-        :param bulk_tagged_object: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
-        :type bulk_tagged_object: BulkTaggedObject
+        :param bulk_add_tagged_object: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
+        :type bulk_add_tagged_object: BulkAddTaggedObject
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2307,7 +2308,7 @@ class TaggedObjectsApi:
         """ # noqa: E501
 
         _param = self._set_tags_to_many_objects_serialize(
-            bulk_tagged_object=bulk_tagged_object,
+            bulk_add_tagged_object=bulk_add_tagged_object,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2336,7 +2337,7 @@ class TaggedObjectsApi:
     @validate_call
     def set_tags_to_many_objects_without_preload_content(
         self,
-        bulk_tagged_object: Annotated[BulkTaggedObject, Field(description="Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.")],
+        bulk_add_tagged_object: Annotated[BulkAddTaggedObject, Field(description="Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2354,8 +2355,8 @@ class TaggedObjectsApi:
 
         This API adds tags to multiple objects.  A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
-        :param bulk_tagged_object: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
-        :type bulk_tagged_object: BulkTaggedObject
+        :param bulk_add_tagged_object: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
+        :type bulk_add_tagged_object: BulkAddTaggedObject
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2379,7 +2380,7 @@ class TaggedObjectsApi:
         """ # noqa: E501
 
         _param = self._set_tags_to_many_objects_serialize(
-            bulk_tagged_object=bulk_tagged_object,
+            bulk_add_tagged_object=bulk_add_tagged_object,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2403,7 +2404,7 @@ class TaggedObjectsApi:
 
     def _set_tags_to_many_objects_serialize(
         self,
-        bulk_tagged_object,
+        bulk_add_tagged_object,
         _request_auth,
         _content_type,
         _headers,
@@ -2427,8 +2428,8 @@ class TaggedObjectsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if bulk_tagged_object is not None:
-            _body_params = bulk_tagged_object
+        if bulk_add_tagged_object is not None:
+            _body_params = bulk_add_tagged_object
 
 
         # set the HTTP header `Accept`

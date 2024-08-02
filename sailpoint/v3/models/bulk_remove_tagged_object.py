@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr, field_validator
+from pydantic import BaseModel, StrictStr
 from pydantic import Field
 from sailpoint.v3.models.tagged_object_dto import TaggedObjectDto
 try:
@@ -27,24 +27,13 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-class BulkTaggedObject(BaseModel):
+class BulkRemoveTaggedObject(BaseModel):
     """
-    BulkTaggedObject
+    BulkRemoveTaggedObject
     """ # noqa: E501
     object_refs: Optional[List[TaggedObjectDto]] = Field(default=None, alias="objectRefs")
     tags: Optional[List[StrictStr]] = Field(default=None, description="Label to be applied to an Object")
-    operation: Optional[StrictStr] = Field(default='APPEND', description="If APPEND, tags are appended to the list of tags for the object. A 400 error is returned if this would add duplicate tags to the object.  If MERGE, tags are merged with the existing tags. Duplicate tags are silently ignored.")
-    __properties: ClassVar[List[str]] = ["objectRefs", "tags", "operation"]
-
-    @field_validator('operation')
-    def operation_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in ('APPEND', 'MERGE'):
-            raise ValueError("must be one of enum values ('APPEND', 'MERGE')")
-        return value
+    __properties: ClassVar[List[str]] = ["objectRefs", "tags"]
 
     model_config = {
         "populate_by_name": True,
@@ -64,7 +53,7 @@ class BulkTaggedObject(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
-        """Create an instance of BulkTaggedObject from a JSON string"""
+        """Create an instance of BulkRemoveTaggedObject from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -94,7 +83,7 @@ class BulkTaggedObject(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Dict) -> Self:
-        """Create an instance of BulkTaggedObject from a dict"""
+        """Create an instance of BulkRemoveTaggedObject from a dict"""
         if obj is None:
             return None
 
@@ -103,8 +92,7 @@ class BulkTaggedObject(BaseModel):
 
         _obj = cls.model_validate({
             "objectRefs": [TaggedObjectDto.from_dict(_item) for _item in obj.get("objectRefs")] if obj.get("objectRefs") is not None else None,
-            "tags": obj.get("tags"),
-            "operation": obj.get("operation") if obj.get("operation") is not None else 'APPEND'
+            "tags": obj.get("tags")
         })
         return _obj
 

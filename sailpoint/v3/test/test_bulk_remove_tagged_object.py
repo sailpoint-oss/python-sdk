@@ -15,10 +15,10 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.bulk_tagged_object import BulkTaggedObject
+from sailpoint.v3.models.bulk_remove_tagged_object import BulkRemoveTaggedObject
 
-class TestBulkTaggedObject(unittest.TestCase):
-    """BulkTaggedObject unit test stubs"""
+class TestBulkRemoveTaggedObject(unittest.TestCase):
+    """BulkRemoveTaggedObject unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,32 +26,31 @@ class TestBulkTaggedObject(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> BulkTaggedObject:
-        """Test BulkTaggedObject
+    def make_instance(self, include_optional) -> BulkRemoveTaggedObject:
+        """Test BulkRemoveTaggedObject
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `BulkTaggedObject`
+        # uncomment below to create an instance of `BulkRemoveTaggedObject`
         """
-        model = BulkTaggedObject()
+        model = BulkRemoveTaggedObject()
         if include_optional:
-            return BulkTaggedObject(
+            return BulkRemoveTaggedObject(
                 object_refs = [
                     sailpoint.v3.models.tagged_object_dto.TaggedObjectDto(
                         type = 'IDENTITY', 
                         id = '2c91808568c529c60168cca6f90c1313', 
                         name = 'William Wilson', )
                     ],
-                tags = [BU_FINANCE, PCI],
-                operation = 'APPEND'
+                tags = [BU_FINANCE, PCI]
             )
         else:
-            return BulkTaggedObject(
+            return BulkRemoveTaggedObject(
         )
         """
 
-    def testBulkTaggedObject(self):
-        """Test BulkTaggedObject"""
+    def testBulkRemoveTaggedObject(self):
+        """Test BulkRemoveTaggedObject"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
