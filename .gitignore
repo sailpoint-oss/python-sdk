@@ -67,3 +67,4 @@ target/
 
 config.json
 api-specs/
+test.py

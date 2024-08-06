@@ -49,7 +49,6 @@ jobs:
         run: |
           rm -rf ./sailpoint/v3
           java -jar openapi-generator-cli.jar generate -i api-specs/idn/sailpoint-api.v3.yaml -g python -o . --global-property skipFormModel=false --config sdk-resources/v3-config.yaml --enable-post-process-file
-
       - name: Build Beta SDK
         id: buildBeta
         if: steps.buildV3.outcome == 'success'
@@ -58,8 +57,16 @@ jobs:
           java -jar openapi-generator-cli.jar generate -i api-specs/idn/sailpoint-api.beta.yaml -g python -o . --global-property skipFormModel=false --config sdk-resources/beta-config.yaml --enable-post-process-file
           node sdk-resources/postscript.js ./sailpoint/beta
 
-      - name: After SDK Build
+      - name: Build V2024 SDK
+        id: buildV2024
         if: steps.buildBeta.outcome == 'success'
+        run: |
+          rm -rf ./sailpoint/v2024
+          java -jar openapi-generator-cli.jar generate -i api-specs/idn/sailpoint-api.v2024.yaml -g python -o . --global-property skipFormModel=false --config sdk-resources/v2024-config.yaml --enable-post-process-file
+          node sdk-resources/postscript.js ./sailpoint/v2024
+
+      - name: After SDK Build
+        if: steps.buildV2024.outcome == 'success'
         run: |
           pip install -r requirements.txt
           pip install -e .

@@ -1,7 +1,14 @@
 (
         self,
         {{#allParams}}
+        {{^isHeaderParam}}
         {{paramName}}: {{{vendorExtensions.x-py-typing}}}{{^required}} = None{{/required}},
+        {{/isHeaderParam}}
+        {{/allParams}}
+        {{#allParams}}
+        {{#isHeaderParam}}
+        {{paramName}}: {{{vendorExtensions.x-py-typing}}}{{#required}}{{#isHeaderParam}} = {{{defaultValue}}}{{/isHeaderParam}}{{/required}}{{^required}} = None{{/required}},
+        {{/isHeaderParam}}
         {{/allParams}}
         _request_timeout: Union[
             None,

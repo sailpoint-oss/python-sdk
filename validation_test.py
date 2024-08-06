@@ -1,4 +1,5 @@
 import unittest
+import sailpoint.v2024
 import sailpoint.v3
 import sailpoint.beta
 from sailpoint.v3.models.search import Search
@@ -10,6 +11,8 @@ class TestPythonSDK(unittest.TestCase):
     configuration = Configuration()
     v3_api_client = sailpoint.v3.ApiClient(configuration)
     beta_api_client = sailpoint.beta.ApiClient(configuration)
+    configuration.experimental = True
+    v2024_api_client = sailpoint.v2024.ApiClient(configuration)
 
 
     def test_v3_accounts(self):
@@ -60,6 +63,11 @@ class TestPythonSDK(unittest.TestCase):
         self.assertIsNotNone(identity_profiles.data)
         self.assertEqual(200, identity_profiles.status_code)
         self.assertEqual(2, len(identity_profiles.data))
+    
+    def test_list_identities_with_v2024_endpoint(self):
+        identities = sailpoint.v2024.IdentitiesApi(self.v2024_api_client).list_identities_with_http_info()
+        self.assertIsNotNone(identities.data)
+        self.assertEqual(200, identities.status_code)
 
 if __name__ == '__main__':
     unittest.main()
