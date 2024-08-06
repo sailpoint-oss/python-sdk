@@ -38,6 +38,17 @@ from sailpoint.beta.exceptions import (
     ServiceException
 )
 
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKCYAN = '\033[96m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+
 
 class ApiClient:
     """Generic API client for OpenAPI client library builds.
@@ -185,6 +196,11 @@ class ApiClient:
             )
         # Add Authentication header to request
         header_params['Authorization'] = self.configuration.access_token
+
+        if not self.configuration.experimental and 'X-SailPoint-Experimental' in header_params:
+            raise Exception(f"{bcolors.WARNING}You are using Experimental APIs. Set configuration.experimental = True to enable these APIs in the SDK.{bcolors.ENDC}")
+        elif self.configuration.experimental == True and 'X-SailPoint-Experimental' in header_params:
+            print(f"{bcolors.WARNING}Warning: You are using Experimental APIs{bcolors.ENDC}")
 
         # path parameters
         if path_params:
