@@ -75,7 +75,7 @@ class IdentityProfilesApi:
     ) -> IdentityProfile:
         """Create an Identity Profile
 
-        This creates an Identity Profile A token with ORG_ADMIN authority is required to call this API to create an Identity Profile.
+        This creates an Identity Profile.  A token with ORG_ADMIN authority is required to call this API to create an Identity Profile.
 
         :param identity_profile: (required)
         :type identity_profile: IdentityProfile
@@ -147,7 +147,7 @@ class IdentityProfilesApi:
     ) -> ApiResponse[IdentityProfile]:
         """Create an Identity Profile
 
-        This creates an Identity Profile A token with ORG_ADMIN authority is required to call this API to create an Identity Profile.
+        This creates an Identity Profile.  A token with ORG_ADMIN authority is required to call this API to create an Identity Profile.
 
         :param identity_profile: (required)
         :type identity_profile: IdentityProfile
@@ -219,7 +219,7 @@ class IdentityProfilesApi:
     ) -> RESTResponseType:
         """Create an Identity Profile
 
-        This creates an Identity Profile A token with ORG_ADMIN authority is required to call this API to create an Identity Profile.
+        This creates an Identity Profile.  A token with ORG_ADMIN authority is required to call this API to create an Identity Profile.
 
         :param identity_profile: (required)
         :type identity_profile: IdentityProfile
@@ -1256,293 +1256,6 @@ class IdentityProfilesApi:
 
 
     @validate_call
-    def generate_identity_preview(
-        self,
-        identity_preview_request: Annotated[IdentityPreviewRequest, Field(description="Identity Preview request body.")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> IdentityPreviewResponse:
-        """Generate Identity Profile Preview
-
-        This generates a non-persisted IdentityDetails object that will represent as the preview of the identities attribute when the given policy's attribute config is applied. A token with ORG_ADMIN authority is required to call this API to generate an identity preview.
-
-        :param identity_preview_request: Identity Preview request body. (required)
-        :type identity_preview_request: IdentityPreviewRequest
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._generate_identity_preview_serialize(
-            identity_preview_request=identity_preview_request,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "IdentityPreviewResponse",
-            '400': "ErrorResponseDto",
-            '401': "ListAccessModelMetadataAttribute401Response",
-            '403': "ErrorResponseDto",
-            '429': "ListAccessModelMetadataAttribute429Response",
-            '500': "ErrorResponseDto",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def generate_identity_preview_with_http_info(
-        self,
-        identity_preview_request: Annotated[IdentityPreviewRequest, Field(description="Identity Preview request body.")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[IdentityPreviewResponse]:
-        """Generate Identity Profile Preview
-
-        This generates a non-persisted IdentityDetails object that will represent as the preview of the identities attribute when the given policy's attribute config is applied. A token with ORG_ADMIN authority is required to call this API to generate an identity preview.
-
-        :param identity_preview_request: Identity Preview request body. (required)
-        :type identity_preview_request: IdentityPreviewRequest
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._generate_identity_preview_serialize(
-            identity_preview_request=identity_preview_request,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "IdentityPreviewResponse",
-            '400': "ErrorResponseDto",
-            '401': "ListAccessModelMetadataAttribute401Response",
-            '403': "ErrorResponseDto",
-            '429': "ListAccessModelMetadataAttribute429Response",
-            '500': "ErrorResponseDto",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def generate_identity_preview_without_preload_content(
-        self,
-        identity_preview_request: Annotated[IdentityPreviewRequest, Field(description="Identity Preview request body.")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Generate Identity Profile Preview
-
-        This generates a non-persisted IdentityDetails object that will represent as the preview of the identities attribute when the given policy's attribute config is applied. A token with ORG_ADMIN authority is required to call this API to generate an identity preview.
-
-        :param identity_preview_request: Identity Preview request body. (required)
-        :type identity_preview_request: IdentityPreviewRequest
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._generate_identity_preview_serialize(
-            identity_preview_request=identity_preview_request,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "IdentityPreviewResponse",
-            '400': "ErrorResponseDto",
-            '401': "ListAccessModelMetadataAttribute401Response",
-            '403': "ErrorResponseDto",
-            '429': "ListAccessModelMetadataAttribute429Response",
-            '500': "ErrorResponseDto",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _generate_identity_preview_serialize(
-        self,
-        identity_preview_request,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> Tuple:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-        if identity_preview_request is not None:
-            _body_params = identity_preview_request
-
-
-        # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            [
-                'application/json'
-            ]
-        )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'UserContextAuth', 
-            'UserContextAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/identity-profiles/identity-preview',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
     def get_default_identity_attribute_config(
         self,
         identity_profile_id: Annotated[StrictStr, Field(description="The Identity Profile ID")],
@@ -1838,7 +1551,7 @@ class IdentityProfilesApi:
     ) -> IdentityProfile:
         """Gets a single Identity Profile
 
-        This returns a single Identity Profile based on ID. A token with ORG_ADMIN or API authority is required to call this API.
+        This returns a single Identity Profile based on ID.  A token with ORG_ADMIN or API authority is required to call this API.
 
         :param identity_profile_id: The Identity Profile ID (required)
         :type identity_profile_id: str
@@ -1911,7 +1624,7 @@ class IdentityProfilesApi:
     ) -> ApiResponse[IdentityProfile]:
         """Gets a single Identity Profile
 
-        This returns a single Identity Profile based on ID. A token with ORG_ADMIN or API authority is required to call this API.
+        This returns a single Identity Profile based on ID.  A token with ORG_ADMIN or API authority is required to call this API.
 
         :param identity_profile_id: The Identity Profile ID (required)
         :type identity_profile_id: str
@@ -1984,7 +1697,7 @@ class IdentityProfilesApi:
     ) -> RESTResponseType:
         """Gets a single Identity Profile
 
-        This returns a single Identity Profile based on ID. A token with ORG_ADMIN or API authority is required to call this API.
+        This returns a single Identity Profile based on ID.  A token with ORG_ADMIN or API authority is required to call this API.
 
         :param identity_profile_id: The Identity Profile ID (required)
         :type identity_profile_id: str
@@ -2405,7 +2118,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[IdentityProfile]:
-        """Identity Profiles list
+        """Identity Profiles List
 
         This returns a list of Identity Profiles based on the specified query parameters. A token with ORG_ADMIN or API authority is required to call this API to get a list of Identity Profiles.
 
@@ -2493,7 +2206,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[IdentityProfile]]:
-        """Identity Profiles list
+        """Identity Profiles List
 
         This returns a list of Identity Profiles based on the specified query parameters. A token with ORG_ADMIN or API authority is required to call this API to get a list of Identity Profiles.
 
@@ -2581,7 +2294,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Identity Profiles list
+        """Identity Profiles List
 
         This returns a list of Identity Profiles based on the specified query parameters. A token with ORG_ADMIN or API authority is required to call this API to get a list of Identity Profiles.
 
@@ -2713,6 +2426,293 @@ class IdentityProfilesApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/identity-profiles',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def show_generate_identity_preview(
+        self,
+        identity_preview_request: Annotated[IdentityPreviewRequest, Field(description="Identity Preview request body.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> IdentityPreviewResponse:
+        """Generate Identity Profile Preview
+
+        Use this API to generate a non-persisted preview of the identity object after applying `IdentityAttributeConfig` sent in request body. This API only allows `accountAttribute`, `reference` and `rule` transform types in the `IdentityAttributeConfig` sent in the request body. A token with ORG_ADMIN authority is required to call this API to generate an identity preview.
+
+        :param identity_preview_request: Identity Preview request body. (required)
+        :type identity_preview_request: IdentityPreviewRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._show_generate_identity_preview_serialize(
+            identity_preview_request=identity_preview_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "IdentityPreviewResponse",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttribute401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def show_generate_identity_preview_with_http_info(
+        self,
+        identity_preview_request: Annotated[IdentityPreviewRequest, Field(description="Identity Preview request body.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[IdentityPreviewResponse]:
+        """Generate Identity Profile Preview
+
+        Use this API to generate a non-persisted preview of the identity object after applying `IdentityAttributeConfig` sent in request body. This API only allows `accountAttribute`, `reference` and `rule` transform types in the `IdentityAttributeConfig` sent in the request body. A token with ORG_ADMIN authority is required to call this API to generate an identity preview.
+
+        :param identity_preview_request: Identity Preview request body. (required)
+        :type identity_preview_request: IdentityPreviewRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._show_generate_identity_preview_serialize(
+            identity_preview_request=identity_preview_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "IdentityPreviewResponse",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttribute401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def show_generate_identity_preview_without_preload_content(
+        self,
+        identity_preview_request: Annotated[IdentityPreviewRequest, Field(description="Identity Preview request body.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Generate Identity Profile Preview
+
+        Use this API to generate a non-persisted preview of the identity object after applying `IdentityAttributeConfig` sent in request body. This API only allows `accountAttribute`, `reference` and `rule` transform types in the `IdentityAttributeConfig` sent in the request body. A token with ORG_ADMIN authority is required to call this API to generate an identity preview.
+
+        :param identity_preview_request: Identity Preview request body. (required)
+        :type identity_preview_request: IdentityPreviewRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._show_generate_identity_preview_serialize(
+            identity_preview_request=identity_preview_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "IdentityPreviewResponse",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttribute401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _show_generate_identity_preview_serialize(
+        self,
+        identity_preview_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> Tuple:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, str] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if identity_preview_request is not None:
+            _body_params = identity_preview_request
+
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            [
+                'application/json'
+            ]
+        )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'UserContextAuth', 
+            'UserContextAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/identity-profiles/identity-preview',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -3025,7 +3025,7 @@ class IdentityProfilesApi:
     ) -> IdentityProfile:
         """Update the Identity Profile
 
-        This updates the specified Identity Profile. A token with ORG_ADMIN authority is required to call this API to update the Identity Profile. Some fields of the Schema cannot be updated. These fields are listed below. * id * name * created * modified
+        This updates the specified Identity Profile.  A token with ORG_ADMIN authority is required to call this API to update the Identity Profile.  Some fields of the Schema cannot be updated. These fields are listed below: * id * name * created * modified * identityCount * identityRefreshRequired * Authoritative Source and Identity Attribute Configuration cannot be modified at once.
 
         :param identity_profile_id: The Identity Profile ID (required)
         :type identity_profile_id: str
@@ -3102,7 +3102,7 @@ class IdentityProfilesApi:
     ) -> ApiResponse[IdentityProfile]:
         """Update the Identity Profile
 
-        This updates the specified Identity Profile. A token with ORG_ADMIN authority is required to call this API to update the Identity Profile. Some fields of the Schema cannot be updated. These fields are listed below. * id * name * created * modified
+        This updates the specified Identity Profile.  A token with ORG_ADMIN authority is required to call this API to update the Identity Profile.  Some fields of the Schema cannot be updated. These fields are listed below: * id * name * created * modified * identityCount * identityRefreshRequired * Authoritative Source and Identity Attribute Configuration cannot be modified at once.
 
         :param identity_profile_id: The Identity Profile ID (required)
         :type identity_profile_id: str
@@ -3179,7 +3179,7 @@ class IdentityProfilesApi:
     ) -> RESTResponseType:
         """Update the Identity Profile
 
-        This updates the specified Identity Profile. A token with ORG_ADMIN authority is required to call this API to update the Identity Profile. Some fields of the Schema cannot be updated. These fields are listed below. * id * name * created * modified
+        This updates the specified Identity Profile.  A token with ORG_ADMIN authority is required to call this API to update the Identity Profile.  Some fields of the Schema cannot be updated. These fields are listed below: * id * name * created * modified * identityCount * identityRefreshRequired * Authoritative Source and Identity Attribute Configuration cannot be modified at once.
 
         :param identity_profile_id: The Identity Profile ID (required)
         :type identity_profile_id: str

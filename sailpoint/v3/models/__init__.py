@@ -52,6 +52,9 @@ from sailpoint.v3.models.account_activity_document import AccountActivityDocumen
 from sailpoint.v3.models.account_activity_item import AccountActivityItem
 from sailpoint.v3.models.account_activity_item_operation import AccountActivityItemOperation
 from sailpoint.v3.models.account_activity_searched_item import AccountActivitySearchedItem
+from sailpoint.v3.models.account_all_of_owner_group import AccountAllOfOwnerGroup
+from sailpoint.v3.models.account_all_of_owner_identity import AccountAllOfOwnerIdentity
+from sailpoint.v3.models.account_all_of_source_owner import AccountAllOfSourceOwner
 from sailpoint.v3.models.account_attributes import AccountAttributes
 from sailpoint.v3.models.account_attributes_create import AccountAttributesCreate
 from sailpoint.v3.models.account_attributes_create_attributes import AccountAttributesCreateAttributes
@@ -107,7 +110,8 @@ from sailpoint.v3.models.branding_item import BrandingItem
 from sailpoint.v3.models.branding_item_create import BrandingItemCreate
 from sailpoint.v3.models.bucket_aggregation import BucketAggregation
 from sailpoint.v3.models.bucket_type import BucketType
-from sailpoint.v3.models.bulk_tagged_object import BulkTaggedObject
+from sailpoint.v3.models.bulk_add_tagged_object import BulkAddTaggedObject
+from sailpoint.v3.models.bulk_remove_tagged_object import BulkRemoveTaggedObject
 from sailpoint.v3.models.bulk_tagged_object_response import BulkTaggedObjectResponse
 from sailpoint.v3.models.campaign import Campaign
 from sailpoint.v3.models.campaign_alert import CampaignAlert
@@ -165,6 +169,8 @@ from sailpoint.v3.models.data_access_impact_score import DataAccessImpactScore
 from sailpoint.v3.models.data_access_policies_inner import DataAccessPoliciesInner
 from sailpoint.v3.models.delete_non_employee_records_in_bulk_request import DeleteNonEmployeeRecordsInBulkRequest
 from sailpoint.v3.models.delete_source202_response import DeleteSource202Response
+from sailpoint.v3.models.delete_vendor_connector_mapping200_response import DeleteVendorConnectorMapping200Response
+from sailpoint.v3.models.discovered_applications_inner import DiscoveredApplicationsInner
 from sailpoint.v3.models.display_reference import DisplayReference
 from sailpoint.v3.models.document_type import DocumentType
 from sailpoint.v3.models.dto_type import DtoType
@@ -204,12 +210,14 @@ from sailpoint.v3.models.forward_approval_dto import ForwardApprovalDto
 from sailpoint.v3.models.get_active_campaigns200_response_inner import GetActiveCampaigns200ResponseInner
 from sailpoint.v3.models.get_o_auth_client_response import GetOAuthClientResponse
 from sailpoint.v3.models.get_personal_access_token_response import GetPersonalAccessTokenResponse
+from sailpoint.v3.models.get_vendor_connector_mappings405_response import GetVendorConnectorMappings405Response
 from sailpoint.v3.models.grant_type import GrantType
 from sailpoint.v3.models.identities_details_report_arguments import IdentitiesDetailsReportArguments
 from sailpoint.v3.models.identities_report_arguments import IdentitiesReportArguments
 from sailpoint.v3.models.identity_access import IdentityAccess
 from sailpoint.v3.models.identity_attribute import IdentityAttribute
 from sailpoint.v3.models.identity_attribute_config import IdentityAttributeConfig
+from sailpoint.v3.models.identity_attribute_preview import IdentityAttributePreview
 from sailpoint.v3.models.identity_attribute_transform import IdentityAttributeTransform
 from sailpoint.v3.models.identity_cert_decision_summary import IdentityCertDecisionSummary
 from sailpoint.v3.models.identity_certification_dto import IdentityCertificationDto
@@ -218,6 +226,9 @@ from sailpoint.v3.models.identity_document_all_of_identity_profile import Identi
 from sailpoint.v3.models.identity_document_all_of_manager import IdentityDocumentAllOfManager
 from sailpoint.v3.models.identity_document_all_of_source import IdentityDocumentAllOfSource
 from sailpoint.v3.models.identity_exception_report_reference import IdentityExceptionReportReference
+from sailpoint.v3.models.identity_preview_request import IdentityPreviewRequest
+from sailpoint.v3.models.identity_preview_response import IdentityPreviewResponse
+from sailpoint.v3.models.identity_preview_response_identity import IdentityPreviewResponseIdentity
 from sailpoint.v3.models.identity_profile import IdentityProfile
 from sailpoint.v3.models.identity_profile_all_of_authoritative_source import IdentityProfileAllOfAuthoritativeSource
 from sailpoint.v3.models.identity_profile_all_of_owner import IdentityProfileAllOfOwner
@@ -265,6 +276,8 @@ from sailpoint.v3.models.managed_cluster_redis import ManagedClusterRedis
 from sailpoint.v3.models.managed_cluster_request import ManagedClusterRequest
 from sailpoint.v3.models.managed_cluster_types import ManagedClusterTypes
 from sailpoint.v3.models.manager_correlation_mapping import ManagerCorrelationMapping
+from sailpoint.v3.models.manual_discover_applications import ManualDiscoverApplications
+from sailpoint.v3.models.manual_discover_applications_template import ManualDiscoverApplicationsTemplate
 from sailpoint.v3.models.manual_work_item_details import ManualWorkItemDetails
 from sailpoint.v3.models.manual_work_item_details_current_owner import ManualWorkItemDetailsCurrentOwner
 from sailpoint.v3.models.manual_work_item_details_original_owner import ManualWorkItemDetailsOriginalOwner
@@ -431,6 +444,7 @@ from sailpoint.v3.models.scheduled_search_name import ScheduledSearchName
 from sailpoint.v3.models.search import Search
 from sailpoint.v3.models.search_aggregation_specification import SearchAggregationSpecification
 from sailpoint.v3.models.search_arguments import SearchArguments
+from sailpoint.v3.models.search_attribute_config import SearchAttributeConfig
 from sailpoint.v3.models.search_export_report_arguments import SearchExportReportArguments
 from sailpoint.v3.models.search_filter_type import SearchFilterType
 from sailpoint.v3.models.search_schedule import SearchSchedule
@@ -515,6 +529,11 @@ from sailpoint.v3.models.usage_type import UsageType
 from sailpoint.v3.models.v3_connector_dto import V3ConnectorDto
 from sailpoint.v3.models.v3_create_connector_dto import V3CreateConnectorDto
 from sailpoint.v3.models.value import Value
+from sailpoint.v3.models.vendor_connector_mapping import VendorConnectorMapping
+from sailpoint.v3.models.vendor_connector_mapping_deleted_at import VendorConnectorMappingDeletedAt
+from sailpoint.v3.models.vendor_connector_mapping_deleted_by import VendorConnectorMappingDeletedBy
+from sailpoint.v3.models.vendor_connector_mapping_updated_at import VendorConnectorMappingUpdatedAt
+from sailpoint.v3.models.vendor_connector_mapping_updated_by import VendorConnectorMappingUpdatedBy
 from sailpoint.v3.models.verification_poll_request import VerificationPollRequest
 from sailpoint.v3.models.verification_response import VerificationResponse
 from sailpoint.v3.models.violation_context import ViolationContext
@@ -523,6 +542,7 @@ from sailpoint.v3.models.violation_owner_assignment_config import ViolationOwner
 from sailpoint.v3.models.violation_owner_assignment_config_owner_ref import ViolationOwnerAssignmentConfigOwnerRef
 from sailpoint.v3.models.violation_prediction import ViolationPrediction
 from sailpoint.v3.models.visibility_criteria import VisibilityCriteria
+from sailpoint.v3.models.work_item_forward import WorkItemForward
 from sailpoint.v3.models.work_item_state import WorkItemState
 from sailpoint.v3.models.work_item_state_manual_work_items import WorkItemStateManualWorkItems
 from sailpoint.v3.models.work_item_type_manual_work_items import WorkItemTypeManualWorkItems
@@ -538,9 +558,11 @@ from sailpoint.v3.models.workflow_definition import WorkflowDefinition
 from sailpoint.v3.models.workflow_execution import WorkflowExecution
 from sailpoint.v3.models.workflow_execution_event import WorkflowExecutionEvent
 from sailpoint.v3.models.workflow_library_action import WorkflowLibraryAction
+from sailpoint.v3.models.workflow_library_action_example_output import WorkflowLibraryActionExampleOutput
 from sailpoint.v3.models.workflow_library_form_fields import WorkflowLibraryFormFields
 from sailpoint.v3.models.workflow_library_operator import WorkflowLibraryOperator
 from sailpoint.v3.models.workflow_library_trigger import WorkflowLibraryTrigger
+from sailpoint.v3.models.workflow_modified_by import WorkflowModifiedBy
 from sailpoint.v3.models.workflow_o_auth_client import WorkflowOAuthClient
 from sailpoint.v3.models.workflow_trigger import WorkflowTrigger
 from sailpoint.v3.models.workflow_trigger_attributes import WorkflowTriggerAttributes

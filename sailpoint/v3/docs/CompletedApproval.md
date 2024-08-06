@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **request_created** | **datetime** | When the access-request was created. | [optional] 
 **request_type** | [**AccessRequestType**](AccessRequestType.md) |  | [optional] 
 **requester** | [**AccessItemRequester**](AccessItemRequester.md) |  | [optional] 
-**requested_for** | [**List[AccessItemRequestedFor]**](AccessItemRequestedFor.md) | Identities access was requested for. | [optional] 
+**requested_for** | [**RequestedItemStatusRequestedFor**](RequestedItemStatusRequestedFor.md) |  | [optional] 
 **reviewed_by** | [**AccessItemReviewedBy**](AccessItemReviewedBy.md) |  | [optional] 
 **owner** | [**OwnerDto**](OwnerDto.md) |  | [optional] 
 **requested_object** | [**RequestableObjectReference**](RequestableObjectReference.md) |  | [optional] 
@@ -28,7 +28,6 @@ Name | Type | Description | Notes
 **sod_violation_context** | [**SodViolationContextCheckCompleted**](SodViolationContextCheckCompleted.md) |  | [optional] 
 **pre_approval_trigger_result** | [**CompletedApprovalPreApprovalTriggerResult**](CompletedApprovalPreApprovalTriggerResult.md) |  | [optional] 
 **client_metadata** | **Dict[str, str]** | Arbitrary key-value pairs provided during the request. | [optional] 
-**requested_accounts** | **str** | Information about the requested accounts | [optional] 
 
 ## Example
 

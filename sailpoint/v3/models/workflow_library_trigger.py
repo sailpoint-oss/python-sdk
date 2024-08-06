@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr, field_validator
 from pydantic import Field
@@ -32,13 +32,17 @@ class WorkflowLibraryTrigger(BaseModel):
     WorkflowLibraryTrigger
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="Trigger ID. This is a static namespaced ID for the trigger.")
-    type: Optional[Dict[str, Any]] = Field(default=None, description="Trigger type")
+    type: Optional[StrictStr] = Field(default=None, description="Trigger type")
+    deprecated: Optional[StrictBool] = None
+    deprecated_by: Optional[datetime] = Field(default=None, alias="deprecatedBy")
+    is_simulation_enabled: Optional[StrictBool] = Field(default=None, alias="isSimulationEnabled")
+    output_schema: Optional[Dict[str, Any]] = Field(default=None, description="Example output schema", alias="outputSchema")
     name: Optional[StrictStr] = Field(default=None, description="Trigger Name")
     description: Optional[StrictStr] = Field(default=None, description="Trigger Description")
     is_dynamic_schema: Optional[StrictBool] = Field(default=False, description="Determines whether the dynamic output schema is returned in place of the action's output schema. The dynamic schema lists non-static properties, like properties of a workflow form where each form has different fields. These will be provided dynamically based on available form fields.", alias="isDynamicSchema")
     input_example: Optional[Dict[str, Any]] = Field(default=None, description="Example trigger payload if applicable", alias="inputExample")
     form_fields: Optional[List[WorkflowLibraryFormFields]] = Field(default=None, description="One or more inputs that the trigger accepts", alias="formFields")
-    __properties: ClassVar[List[str]] = ["id", "type", "name", "description", "isDynamicSchema", "inputExample", "formFields"]
+    __properties: ClassVar[List[str]] = ["id", "type", "deprecated", "deprecatedBy", "isSimulationEnabled", "outputSchema", "name", "description", "isDynamicSchema", "inputExample", "formFields"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -118,6 +122,10 @@ class WorkflowLibraryTrigger(BaseModel):
         _obj = cls.model_validate({
             "id": obj.get("id"),
             "type": obj.get("type"),
+            "deprecated": obj.get("deprecated"),
+            "deprecatedBy": obj.get("deprecatedBy"),
+            "isSimulationEnabled": obj.get("isSimulationEnabled"),
+            "outputSchema": obj.get("outputSchema"),
             "name": obj.get("name"),
             "description": obj.get("description"),
             "isDynamicSchema": obj.get("isDynamicSchema") if obj.get("isDynamicSchema") is not None else False,

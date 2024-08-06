@@ -14,6 +14,9 @@ Name | Type | Description | Notes
 **source_id** | **str** | the id of the source | [optional] 
 **description** | **str** | the description for the entitlment | [optional] 
 **display_name** | **str** | the display name of the identity | [optional] 
+**standalone** | **bool** | indicates whether the entitlement is standalone | 
+**privileged** | **bool** | indicates whether the entitlement is privileged | 
+**cloud_governed** | **bool** | indicates whether the entitlement is cloud governed | 
 
 ## Example
 

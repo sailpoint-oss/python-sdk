@@ -44,10 +44,15 @@ class TestAccessItemAccessProfileResponse(unittest.TestCase):
                 description = 'AccessProfile - Workday/Citizenship access',
                 display_name = 'Dr. Arden Rogahn MD',
                 entitlement_count = '12',
-                app_display_name = 'AppName'
+                app_display_name = 'AppName',
+                remove_date = '2024-07-01T06:00:00.00Z',
+                standalone = False,
+                revocable = True
             )
         else:
             return AccessItemAccessProfileResponse(
+                standalone = False,
+                revocable = True,
         )
         """
 

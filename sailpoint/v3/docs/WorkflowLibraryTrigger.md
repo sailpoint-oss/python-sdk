@@ -6,7 +6,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Trigger ID. This is a static namespaced ID for the trigger. | [optional] 
-**type** | **object** | Trigger type | [optional] 
+**type** | **str** | Trigger type | [optional] 
+**deprecated** | **bool** |  | [optional] 
+**deprecated_by** | **datetime** |  | [optional] 
+**is_simulation_enabled** | **bool** |  | [optional] 
+**output_schema** | **object** | Example output schema | [optional] 
 **name** | **str** | Trigger Name | [optional] 
 **description** | **str** | Trigger Description | [optional] 
 **is_dynamic_schema** | **bool** | Determines whether the dynamic output schema is returned in place of the action&#39;s output schema. The dynamic schema lists non-static properties, like properties of a workflow form where each form has different fields. These will be provided dynamically based on available form fields. | [optional] [default to False]

@@ -3704,7 +3704,7 @@ class IAIRoleMiningApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RoleMiningPotentialRole:
-        """Retrieves a specific potential role
+        """Retrieve potential role in session
 
         This method returns a specific potential role for a role mining session.
 
@@ -3780,7 +3780,7 @@ class IAIRoleMiningApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[RoleMiningPotentialRole]:
-        """Retrieves a specific potential role
+        """Retrieve potential role in session
 
         This method returns a specific potential role for a role mining session.
 
@@ -3856,7 +3856,7 @@ class IAIRoleMiningApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Retrieves a specific potential role
+        """Retrieve potential role in session
 
         This method returns a specific potential role for a role mining session.
 
@@ -4691,7 +4691,7 @@ class IAIRoleMiningApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[RoleMiningPotentialRoleSummary]:
-        """Retrieves all potential role summaries
+        """Retrieve session's potential role summaries
 
         This method returns the potential role summaries for a role mining session.
 
@@ -4783,7 +4783,7 @@ class IAIRoleMiningApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[RoleMiningPotentialRoleSummary]]:
-        """Retrieves all potential role summaries
+        """Retrieve session's potential role summaries
 
         This method returns the potential role summaries for a role mining session.
 
@@ -4875,7 +4875,7 @@ class IAIRoleMiningApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Retrieves all potential role summaries
+        """Retrieve session's potential role summaries
 
         This method returns the potential role summaries for a role mining session.
 
@@ -6540,9 +6540,9 @@ class IAIRoleMiningApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> object:
-        """Update a potential role
+        """Update a potential role in session
 
-        The method updates an existing potential role using.  The following fields can be modified:  * `description`  * `name`  * `saved`   >**NOTE: All other fields cannot be modified.** 
+        This method updates an existing potential role using the role mining session id and the potential role summary id.  The following fields can be modified:  * `description`  * `name`  * `saved`   >**NOTE: All other fields cannot be modified.** 
 
         :param session_id: The role mining session id (required)
         :type session_id: str
@@ -6621,9 +6621,9 @@ class IAIRoleMiningApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[object]:
-        """Update a potential role
+        """Update a potential role in session
 
-        The method updates an existing potential role using.  The following fields can be modified:  * `description`  * `name`  * `saved`   >**NOTE: All other fields cannot be modified.** 
+        This method updates an existing potential role using the role mining session id and the potential role summary id.  The following fields can be modified:  * `description`  * `name`  * `saved`   >**NOTE: All other fields cannot be modified.** 
 
         :param session_id: The role mining session id (required)
         :type session_id: str
@@ -6702,9 +6702,9 @@ class IAIRoleMiningApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update a potential role
+        """Update a potential role in session
 
-        The method updates an existing potential role using.  The following fields can be modified:  * `description`  * `name`  * `saved`   >**NOTE: All other fields cannot be modified.** 
+        This method updates an existing potential role using the role mining session id and the potential role summary id.  The following fields can be modified:  * `description`  * `name`  * `saved`   >**NOTE: All other fields cannot be modified.** 
 
         :param session_id: The role mining session id (required)
         :type session_id: str
@@ -6843,9 +6843,8 @@ class IAIRoleMiningApi:
 
 
     @validate_call
-    def patch_potential_role_0(
+    def patch_role_mining_potential_role(
         self,
-        session_id: Annotated[StrictStr, Field(description="The role mining session id")],
         potential_role_id: Annotated[StrictStr, Field(description="The potential role summary id")],
         patch_potential_role_request_inner: List[PatchPotentialRoleRequestInner],
         _request_timeout: Union[
@@ -6863,10 +6862,8 @@ class IAIRoleMiningApi:
     ) -> object:
         """Update a potential role
 
-        The method updates an existing potential role using.  The following fields can be modified:  * `description`  * `name`  * `saved`   >**NOTE: All other fields cannot be modified.** 
+        This method updates an existing potential role.  The following fields can be modified:  * `description`  * `name`  * `saved`   >**NOTE: All other fields cannot be modified.** 
 
-        :param session_id: The role mining session id (required)
-        :type session_id: str
         :param potential_role_id: The potential role summary id (required)
         :type potential_role_id: str
         :param patch_potential_role_request_inner: (required)
@@ -6893,8 +6890,7 @@ class IAIRoleMiningApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._patch_potential_role_0_serialize(
-            session_id=session_id,
+        _param = self._patch_role_mining_potential_role_serialize(
             potential_role_id=potential_role_id,
             patch_potential_role_request_inner=patch_potential_role_request_inner,
             _request_auth=_request_auth,
@@ -6924,9 +6920,8 @@ class IAIRoleMiningApi:
 
 
     @validate_call
-    def patch_potential_role_0_with_http_info(
+    def patch_role_mining_potential_role_with_http_info(
         self,
-        session_id: Annotated[StrictStr, Field(description="The role mining session id")],
         potential_role_id: Annotated[StrictStr, Field(description="The potential role summary id")],
         patch_potential_role_request_inner: List[PatchPotentialRoleRequestInner],
         _request_timeout: Union[
@@ -6944,10 +6939,8 @@ class IAIRoleMiningApi:
     ) -> ApiResponse[object]:
         """Update a potential role
 
-        The method updates an existing potential role using.  The following fields can be modified:  * `description`  * `name`  * `saved`   >**NOTE: All other fields cannot be modified.** 
+        This method updates an existing potential role.  The following fields can be modified:  * `description`  * `name`  * `saved`   >**NOTE: All other fields cannot be modified.** 
 
-        :param session_id: The role mining session id (required)
-        :type session_id: str
         :param potential_role_id: The potential role summary id (required)
         :type potential_role_id: str
         :param patch_potential_role_request_inner: (required)
@@ -6974,8 +6967,7 @@ class IAIRoleMiningApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._patch_potential_role_0_serialize(
-            session_id=session_id,
+        _param = self._patch_role_mining_potential_role_serialize(
             potential_role_id=potential_role_id,
             patch_potential_role_request_inner=patch_potential_role_request_inner,
             _request_auth=_request_auth,
@@ -7005,9 +6997,8 @@ class IAIRoleMiningApi:
 
 
     @validate_call
-    def patch_potential_role_0_without_preload_content(
+    def patch_role_mining_potential_role_without_preload_content(
         self,
-        session_id: Annotated[StrictStr, Field(description="The role mining session id")],
         potential_role_id: Annotated[StrictStr, Field(description="The potential role summary id")],
         patch_potential_role_request_inner: List[PatchPotentialRoleRequestInner],
         _request_timeout: Union[
@@ -7025,10 +7016,8 @@ class IAIRoleMiningApi:
     ) -> RESTResponseType:
         """Update a potential role
 
-        The method updates an existing potential role using.  The following fields can be modified:  * `description`  * `name`  * `saved`   >**NOTE: All other fields cannot be modified.** 
+        This method updates an existing potential role.  The following fields can be modified:  * `description`  * `name`  * `saved`   >**NOTE: All other fields cannot be modified.** 
 
-        :param session_id: The role mining session id (required)
-        :type session_id: str
         :param potential_role_id: The potential role summary id (required)
         :type potential_role_id: str
         :param patch_potential_role_request_inner: (required)
@@ -7055,8 +7044,7 @@ class IAIRoleMiningApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._patch_potential_role_0_serialize(
-            session_id=session_id,
+        _param = self._patch_role_mining_potential_role_serialize(
             potential_role_id=potential_role_id,
             patch_potential_role_request_inner=patch_potential_role_request_inner,
             _request_auth=_request_auth,
@@ -7081,9 +7069,8 @@ class IAIRoleMiningApi:
         return response_data.response
 
 
-    def _patch_potential_role_0_serialize(
+    def _patch_role_mining_potential_role_serialize(
         self,
-        session_id,
         potential_role_id,
         patch_potential_role_request_inner,
         _request_auth,
@@ -7106,8 +7093,6 @@ class IAIRoleMiningApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if session_id is not None:
-            _path_params['sessionId'] = session_id
         if potential_role_id is not None:
             _path_params['potentialRoleId'] = potential_role_id
         # process the query parameters

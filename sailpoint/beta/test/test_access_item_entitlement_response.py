@@ -44,10 +44,16 @@ class TestAccessItemEntitlementResponse(unittest.TestCase):
                 source_name = 'DataScienceDataset',
                 source_id = '2793o32dwd',
                 description = 'Entitlement - Workday/Citizenship access',
-                display_name = 'Dr. Arden Rogahn MD'
+                display_name = 'Dr. Arden Rogahn MD',
+                standalone = True,
+                privileged = False,
+                cloud_governed = True
             )
         else:
             return AccessItemEntitlementResponse(
+                standalone = True,
+                privileged = False,
+                cloud_governed = True,
         )
         """
 

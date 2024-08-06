@@ -46,12 +46,10 @@ class TestCompletedApproval(unittest.TestCase):
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20648', 
                     name = 'William Wilson', ),
-                requested_for = [
-                    sailpoint.v3.models.access_item_requested_for.AccessItemRequestedFor(
-                        type = 'IDENTITY', 
-                        id = '2c4180a46faadee4016fb4e018c20626', 
-                        name = 'Robert Robinson', )
-                    ],
+                requested_for = sailpoint.v3.models.requested_item_status_requested_for.RequestedItemStatus_requestedFor(
+                    type = 'IDENTITY', 
+                    id = '2c9180835d191a86015d28455b4b232a', 
+                    name = 'William Wilson', ),
                 reviewed_by = sailpoint.v3.models.access_item_reviewed_by.AccessItemReviewedBy(
                     type = 'IDENTITY', 
                     id = '2c3780a46faadee4016fb4e018c20652', 
@@ -126,8 +124,7 @@ class TestCompletedApproval(unittest.TestCase):
                     decision = 'APPROVED', 
                     reviewer = 'Automated AR Approval', 
                     date = '2022-06-07T19:18:40.748Z', ),
-                client_metadata = {requestedAppName=test-app, requestedAppId=2c91808f7892918f0178b78da4a305a1},
-                requested_accounts = ''
+                client_metadata = {requestedAppName=test-app, requestedAppId=2c91808f7892918f0178b78da4a305a1}
             )
         else:
             return CompletedApproval(

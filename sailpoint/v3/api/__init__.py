@@ -7,6 +7,7 @@ from sailpoint.v3.api.access_requests_api import AccessRequestsApi
 from sailpoint.v3.api.account_activities_api import AccountActivitiesApi
 from sailpoint.v3.api.account_usages_api import AccountUsagesApi
 from sailpoint.v3.api.accounts_api import AccountsApi
+from sailpoint.v3.api.application_discovery_api import ApplicationDiscoveryApi
 from sailpoint.v3.api.auth_users_api import AuthUsersApi
 from sailpoint.v3.api.branding_api import BrandingApi
 from sailpoint.v3.api.certification_campaign_filters_api import CertificationCampaignFiltersApi
@@ -40,12 +41,14 @@ from sailpoint.v3.api.sod_violations_api import SODViolationsApi
 from sailpoint.v3.api.saved_search_api import SavedSearchApi
 from sailpoint.v3.api.scheduled_search_api import ScheduledSearchApi
 from sailpoint.v3.api.search_api import SearchApi
+from sailpoint.v3.api.search_attribute_configuration_api import SearchAttributeConfigurationApi
 from sailpoint.v3.api.segments_api import SegmentsApi
 from sailpoint.v3.api.service_desk_integration_api import ServiceDeskIntegrationApi
 from sailpoint.v3.api.source_usages_api import SourceUsagesApi
 from sailpoint.v3.api.sources_api import SourcesApi
 from sailpoint.v3.api.tagged_objects_api import TaggedObjectsApi
 from sailpoint.v3.api.transforms_api import TransformsApi
+from sailpoint.v3.api.vendor_connector_mappings_api import VendorConnectorMappingsApi
 from sailpoint.v3.api.work_items_api import WorkItemsApi
 from sailpoint.v3.api.workflows_api import WorkflowsApi
 

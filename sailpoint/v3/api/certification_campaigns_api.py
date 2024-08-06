@@ -2151,6 +2151,7 @@ class CertificationCampaignsApi:
     def get_campaign(
         self,
         id: Annotated[StrictStr, Field(description="ID of the campaign to be retrieved.")],
+        detail: Annotated[Optional[StrictStr], Field(description="Determines whether slim, or increased level of detail is provided for each campaign in the returned list. Slim is the default behavior.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2163,13 +2164,15 @@ class CertificationCampaignsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SlimCampaign:
+    ) -> GetActiveCampaigns200ResponseInner:
         """Get Campaign
 
         Use this API to get information for an existing certification campaign by the campaign's ID.  Authorized callers must be reviewers for this campaign, ORG_ADMINs, or a CERT_ADMINs.
 
         :param id: ID of the campaign to be retrieved. (required)
         :type id: str
+        :param detail: Determines whether slim, or increased level of detail is provided for each campaign in the returned list. Slim is the default behavior.
+        :type detail: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2194,6 +2197,7 @@ class CertificationCampaignsApi:
 
         _param = self._get_campaign_serialize(
             id=id,
+            detail=detail,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2201,7 +2205,7 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SlimCampaign",
+            '200': "GetActiveCampaigns200ResponseInner",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -2224,6 +2228,7 @@ class CertificationCampaignsApi:
     def get_campaign_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="ID of the campaign to be retrieved.")],
+        detail: Annotated[Optional[StrictStr], Field(description="Determines whether slim, or increased level of detail is provided for each campaign in the returned list. Slim is the default behavior.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2236,13 +2241,15 @@ class CertificationCampaignsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SlimCampaign]:
+    ) -> ApiResponse[GetActiveCampaigns200ResponseInner]:
         """Get Campaign
 
         Use this API to get information for an existing certification campaign by the campaign's ID.  Authorized callers must be reviewers for this campaign, ORG_ADMINs, or a CERT_ADMINs.
 
         :param id: ID of the campaign to be retrieved. (required)
         :type id: str
+        :param detail: Determines whether slim, or increased level of detail is provided for each campaign in the returned list. Slim is the default behavior.
+        :type detail: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2267,6 +2274,7 @@ class CertificationCampaignsApi:
 
         _param = self._get_campaign_serialize(
             id=id,
+            detail=detail,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2274,7 +2282,7 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SlimCampaign",
+            '200': "GetActiveCampaigns200ResponseInner",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -2297,6 +2305,7 @@ class CertificationCampaignsApi:
     def get_campaign_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="ID of the campaign to be retrieved.")],
+        detail: Annotated[Optional[StrictStr], Field(description="Determines whether slim, or increased level of detail is provided for each campaign in the returned list. Slim is the default behavior.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2316,6 +2325,8 @@ class CertificationCampaignsApi:
 
         :param id: ID of the campaign to be retrieved. (required)
         :type id: str
+        :param detail: Determines whether slim, or increased level of detail is provided for each campaign in the returned list. Slim is the default behavior.
+        :type detail: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2340,6 +2351,7 @@ class CertificationCampaignsApi:
 
         _param = self._get_campaign_serialize(
             id=id,
+            detail=detail,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2347,7 +2359,7 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SlimCampaign",
+            '200': "GetActiveCampaigns200ResponseInner",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -2365,6 +2377,7 @@ class CertificationCampaignsApi:
     def _get_campaign_serialize(
         self,
         id,
+        detail,
         _request_auth,
         _content_type,
         _headers,
@@ -2387,6 +2400,10 @@ class CertificationCampaignsApi:
         if id is not None:
             _path_params['id'] = id
         # process the query parameters
+        if detail is not None:
+            
+            _query_params.append(('detail', detail))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter

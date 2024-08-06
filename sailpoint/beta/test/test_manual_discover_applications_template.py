@@ -37,7 +37,7 @@ class TestManualDiscoverApplicationsTemplate(unittest.TestCase):
         if include_optional:
             return ManualDiscoverApplicationsTemplate(
                 application_name = 'Example Application',
-                domain = 'Example Description'
+                description = 'Example Description'
             )
         else:
             return ManualDiscoverApplicationsTemplate(

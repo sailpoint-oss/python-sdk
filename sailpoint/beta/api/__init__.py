@@ -10,6 +10,7 @@ from sailpoint.beta.api.account_activities_api import AccountActivitiesApi
 from sailpoint.beta.api.account_aggregations_api import AccountAggregationsApi
 from sailpoint.beta.api.account_usages_api import AccountUsagesApi
 from sailpoint.beta.api.accounts_api import AccountsApi
+from sailpoint.beta.api.application_discovery_api import ApplicationDiscoveryApi
 from sailpoint.beta.api.approvals_api import ApprovalsApi
 from sailpoint.beta.api.auth_profile_api import AuthProfileApi
 from sailpoint.beta.api.certification_campaigns_api import CertificationCampaignsApi
@@ -18,7 +19,6 @@ from sailpoint.beta.api.connector_rule_management_api import ConnectorRuleManage
 from sailpoint.beta.api.connectors_api import ConnectorsApi
 from sailpoint.beta.api.custom_forms_api import CustomFormsApi
 from sailpoint.beta.api.custom_password_instructions_api import CustomPasswordInstructionsApi
-from sailpoint.beta.api.discovered_applications_api import DiscoveredApplicationsApi
 from sailpoint.beta.api.entitlements_api import EntitlementsApi
 from sailpoint.beta.api.governance_groups_api import GovernanceGroupsApi
 from sailpoint.beta.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi
@@ -38,8 +38,6 @@ from sailpoint.beta.api.mfa_configuration_api import MFAConfigurationApi
 from sailpoint.beta.api.mfa_controller_api import MFAControllerApi
 from sailpoint.beta.api.managed_clients_api import ManagedClientsApi
 from sailpoint.beta.api.managed_clusters_api import ManagedClustersApi
-from sailpoint.beta.api.manual_discover_applications_api import ManualDiscoverApplicationsApi
-from sailpoint.beta.api.manual_discover_applications_template_api import ManualDiscoverApplicationsTemplateApi
 from sailpoint.beta.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi
 from sailpoint.beta.api.notifications_api import NotificationsApi
 from sailpoint.beta.api.o_auth_clients_api import OAuthClientsApi

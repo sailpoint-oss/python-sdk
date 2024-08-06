@@ -15,17 +15,17 @@ Method | HTTP request | Description
 [**get_entitlements_potential_role**](IAIRoleMiningApi.md#get_entitlements_potential_role) | **GET** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/entitlement-popularities | Retrieves entitlements for a potential role in a role mining session
 [**get_excluded_entitlements_potential_role**](IAIRoleMiningApi.md#get_excluded_entitlements_potential_role) | **GET** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/excluded-entitlements | Retrieves excluded entitlements for a potential role in a role mining session
 [**get_identities_potential_role**](IAIRoleMiningApi.md#get_identities_potential_role) | **GET** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/identities | Retrieves identities for a potential role in a role mining session
-[**get_potential_role**](IAIRoleMiningApi.md#get_potential_role) | **GET** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Retrieves a specific potential role
+[**get_potential_role**](IAIRoleMiningApi.md#get_potential_role) | **GET** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Retrieve potential role in session
 [**get_potential_role_applications**](IAIRoleMiningApi.md#get_potential_role_applications) | **GET** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}/applications | Retrieves the applications of a potential role for a role mining session
 [**get_potential_role_source_identity_usage**](IAIRoleMiningApi.md#get_potential_role_source_identity_usage) | **GET** /role-mining-potential-roles/{potentialRoleId}/sources/{sourceId}/identityUsage | Retrieves potential role source usage
-[**get_potential_role_summaries**](IAIRoleMiningApi.md#get_potential_role_summaries) | **GET** /role-mining-sessions/{sessionId}/potential-role-summaries | Retrieves all potential role summaries
+[**get_potential_role_summaries**](IAIRoleMiningApi.md#get_potential_role_summaries) | **GET** /role-mining-sessions/{sessionId}/potential-role-summaries | Retrieve session&#39;s potential role summaries
 [**get_role_mining_potential_role**](IAIRoleMiningApi.md#get_role_mining_potential_role) | **GET** /role-mining-potential-roles/{potentialRoleId} | Retrieves a specific potential role
 [**get_role_mining_session**](IAIRoleMiningApi.md#get_role_mining_session) | **GET** /role-mining-sessions/{sessionId} | Get a role mining session
 [**get_role_mining_session_status**](IAIRoleMiningApi.md#get_role_mining_session_status) | **GET** /role-mining-sessions/{sessionId}/status | Get role mining session status state
 [**get_role_mining_sessions**](IAIRoleMiningApi.md#get_role_mining_sessions) | **GET** /role-mining-sessions | Retrieves all role mining sessions
 [**get_saved_potential_roles**](IAIRoleMiningApi.md#get_saved_potential_roles) | **GET** /role-mining-potential-roles/saved | Retrieves all saved potential roles
-[**patch_potential_role**](IAIRoleMiningApi.md#patch_potential_role) | **PATCH** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Update a potential role
-[**patch_potential_role_0**](IAIRoleMiningApi.md#patch_potential_role_0) | **PATCH** /role-mining-potential-roles/{potentialRoleId} | Update a potential role
+[**patch_potential_role**](IAIRoleMiningApi.md#patch_potential_role) | **PATCH** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Update a potential role in session
+[**patch_role_mining_potential_role**](IAIRoleMiningApi.md#patch_role_mining_potential_role) | **PATCH** /role-mining-potential-roles/{potentialRoleId} | Update a potential role
 [**patch_role_mining_session**](IAIRoleMiningApi.md#patch_role_mining_session) | **PATCH** /role-mining-sessions/{sessionId} | Patch a role mining session
 [**update_entitlements_potential_role**](IAIRoleMiningApi.md#update_entitlements_potential_role) | **POST** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/edit-entitlements | Edit entitlements for a potential role to exclude some entitlements
 
@@ -1033,7 +1033,7 @@ Name | Type | Description  | Notes
 # **get_potential_role**
 > RoleMiningPotentialRole get_potential_role(session_id, potential_role_id)
 
-Retrieves a specific potential role
+Retrieve potential role in session
 
 This method returns a specific potential role for a role mining session.
 
@@ -1073,7 +1073,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
     potential_role_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | A potential role id in a role mining session
 
     try:
-        # Retrieves a specific potential role
+        # Retrieve potential role in session
         api_response = api_instance.get_potential_role(session_id, potential_role_id)
         print("The response of IAIRoleMiningApi->get_potential_role:\n")
         pprint(api_response)
@@ -1307,7 +1307,7 @@ Name | Type | Description  | Notes
 # **get_potential_role_summaries**
 > List[RoleMiningPotentialRoleSummary] get_potential_role_summaries(session_id, sorters=sorters, filters=filters, offset=offset, limit=limit, count=count)
 
-Retrieves all potential role summaries
+Retrieve session's potential role summaries
 
 This method returns the potential role summaries for a role mining session.
 
@@ -1351,7 +1351,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
 
     try:
-        # Retrieves all potential role summaries
+        # Retrieve session's potential role summaries
         api_response = api_instance.get_potential_role_summaries(session_id, sorters=sorters, filters=filters, offset=offset, limit=limit, count=count)
         print("The response of IAIRoleMiningApi->get_potential_role_summaries:\n")
         pprint(api_response)
@@ -1841,9 +1841,9 @@ Name | Type | Description  | Notes
 # **patch_potential_role**
 > object patch_potential_role(session_id, potential_role_id, patch_potential_role_request_inner)
 
-Update a potential role
+Update a potential role in session
 
-The method updates an existing potential role using.  The following fields can be modified:  * `description`  * `name`  * `saved`   >**NOTE: All other fields cannot be modified.** 
+This method updates an existing potential role using the role mining session id and the potential role summary id.  The following fields can be modified:  * `description`  * `name`  * `saved`   >**NOTE: All other fields cannot be modified.** 
 
 ### Example
 
@@ -1882,7 +1882,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
     patch_potential_role_request_inner = [{op=remove, path=/description}, {op=replace, path=/description, value=Acct I - Potential Role}, {op=remove, path=/saved}, {op=replace, path=/saved, value=false}, {op=remove, path=/name}, {op=replace, path=/name, value=Potential Role Accounting}] # List[PatchPotentialRoleRequestInner] | 
 
     try:
-        # Update a potential role
+        # Update a potential role in session
         api_response = api_instance.patch_potential_role(session_id, potential_role_id, patch_potential_role_request_inner)
         print("The response of IAIRoleMiningApi->patch_potential_role:\n")
         pprint(api_response)
@@ -1928,12 +1928,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **patch_potential_role_0**
-> object patch_potential_role_0(session_id, potential_role_id, patch_potential_role_request_inner)
+# **patch_role_mining_potential_role**
+> object patch_role_mining_potential_role(potential_role_id, patch_potential_role_request_inner)
 
 Update a potential role
 
-The method updates an existing potential role using.  The following fields can be modified:  * `description`  * `name`  * `saved`   >**NOTE: All other fields cannot be modified.** 
+This method updates an existing potential role.  The following fields can be modified:  * `description`  * `name`  * `saved`   >**NOTE: All other fields cannot be modified.** 
 
 ### Example
 
@@ -1967,17 +1967,16 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.IAIRoleMiningApi(api_client)
-    session_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role mining session id
     potential_role_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The potential role summary id
     patch_potential_role_request_inner = [{op=remove, path=/description}, {op=replace, path=/description, value=Acct I - Potential Role}, {op=remove, path=/saved}, {op=replace, path=/saved, value=false}, {op=remove, path=/name}, {op=replace, path=/name, value=Potential Role Accounting}] # List[PatchPotentialRoleRequestInner] | 
 
     try:
         # Update a potential role
-        api_response = api_instance.patch_potential_role_0(session_id, potential_role_id, patch_potential_role_request_inner)
-        print("The response of IAIRoleMiningApi->patch_potential_role_0:\n")
+        api_response = api_instance.patch_role_mining_potential_role(potential_role_id, patch_potential_role_request_inner)
+        print("The response of IAIRoleMiningApi->patch_role_mining_potential_role:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling IAIRoleMiningApi->patch_potential_role_0: %s\n" % e)
+        print("Exception when calling IAIRoleMiningApi->patch_role_mining_potential_role: %s\n" % e)
 ```
 
 
@@ -1987,7 +1986,6 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **session_id** | **str**| The role mining session id | 
  **potential_role_id** | **str**| The potential role summary id | 
  **patch_potential_role_request_inner** | [**List[PatchPotentialRoleRequestInner]**](PatchPotentialRoleRequestInner.md)|  | 
 

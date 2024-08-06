@@ -2766,7 +2766,10 @@ class IdentityHistoryApi:
     def list_identity_access_items(
         self,
         id: Annotated[StrictStr, Field(description="The identity id")],
-        type: Annotated[Optional[StrictStr], Field(description="The type of access item for the identity. If not provided, it defaults to account")] = None,
+        type: Annotated[Optional[StrictStr], Field(description="The type of access item for the identity. If not provided, it defaults to account.  Types of access items: **accessProfile, account, app, entitlement, role**")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **source**: *eq*  **standalone**: *eq*  **privileged**: *eq*  **attribute**: *eq*  **cloudGoverned**: *eq*")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, value, standalone, privileged, attribute, source, cloudGoverned, removeDate, nativeIdentity, entitlementCount**")] = None,
+        query: Annotated[Optional[StrictStr], Field(description="This param is used to search if certain fields of the access item contain the string provided.  Searching is supported for the following fields depending on the type:  Access Profiles: **name, description**  Accounts: **name, nativeIdentity**  Apps: **name**  Entitlements: **name, value, description**  Roles: **name, description**")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2786,8 +2789,14 @@ class IdentityHistoryApi:
 
         :param id: The identity id (required)
         :type id: str
-        :param type: The type of access item for the identity. If not provided, it defaults to account
+        :param type: The type of access item for the identity. If not provided, it defaults to account.  Types of access items: **accessProfile, account, app, entitlement, role**
         :type type: str
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **source**: *eq*  **standalone**: *eq*  **privileged**: *eq*  **attribute**: *eq*  **cloudGoverned**: *eq*
+        :type filters: str
+        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, value, standalone, privileged, attribute, source, cloudGoverned, removeDate, nativeIdentity, entitlementCount**
+        :type sorters: str
+        :param query: This param is used to search if certain fields of the access item contain the string provided.  Searching is supported for the following fields depending on the type:  Access Profiles: **name, description**  Accounts: **name, nativeIdentity**  Apps: **name**  Entitlements: **name, value, description**  Roles: **name, description**
+        :type query: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2813,6 +2822,9 @@ class IdentityHistoryApi:
         _param = self._list_identity_access_items_serialize(
             id=id,
             type=type,
+            filters=filters,
+            sorters=sorters,
+            query=query,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2825,6 +2837,7 @@ class IdentityHistoryApi:
             '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2842,7 +2855,10 @@ class IdentityHistoryApi:
     def list_identity_access_items_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The identity id")],
-        type: Annotated[Optional[StrictStr], Field(description="The type of access item for the identity. If not provided, it defaults to account")] = None,
+        type: Annotated[Optional[StrictStr], Field(description="The type of access item for the identity. If not provided, it defaults to account.  Types of access items: **accessProfile, account, app, entitlement, role**")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **source**: *eq*  **standalone**: *eq*  **privileged**: *eq*  **attribute**: *eq*  **cloudGoverned**: *eq*")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, value, standalone, privileged, attribute, source, cloudGoverned, removeDate, nativeIdentity, entitlementCount**")] = None,
+        query: Annotated[Optional[StrictStr], Field(description="This param is used to search if certain fields of the access item contain the string provided.  Searching is supported for the following fields depending on the type:  Access Profiles: **name, description**  Accounts: **name, nativeIdentity**  Apps: **name**  Entitlements: **name, value, description**  Roles: **name, description**")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2862,8 +2878,14 @@ class IdentityHistoryApi:
 
         :param id: The identity id (required)
         :type id: str
-        :param type: The type of access item for the identity. If not provided, it defaults to account
+        :param type: The type of access item for the identity. If not provided, it defaults to account.  Types of access items: **accessProfile, account, app, entitlement, role**
         :type type: str
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **source**: *eq*  **standalone**: *eq*  **privileged**: *eq*  **attribute**: *eq*  **cloudGoverned**: *eq*
+        :type filters: str
+        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, value, standalone, privileged, attribute, source, cloudGoverned, removeDate, nativeIdentity, entitlementCount**
+        :type sorters: str
+        :param query: This param is used to search if certain fields of the access item contain the string provided.  Searching is supported for the following fields depending on the type:  Access Profiles: **name, description**  Accounts: **name, nativeIdentity**  Apps: **name**  Entitlements: **name, value, description**  Roles: **name, description**
+        :type query: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2889,6 +2911,9 @@ class IdentityHistoryApi:
         _param = self._list_identity_access_items_serialize(
             id=id,
             type=type,
+            filters=filters,
+            sorters=sorters,
+            query=query,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2901,6 +2926,7 @@ class IdentityHistoryApi:
             '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2918,7 +2944,10 @@ class IdentityHistoryApi:
     def list_identity_access_items_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The identity id")],
-        type: Annotated[Optional[StrictStr], Field(description="The type of access item for the identity. If not provided, it defaults to account")] = None,
+        type: Annotated[Optional[StrictStr], Field(description="The type of access item for the identity. If not provided, it defaults to account.  Types of access items: **accessProfile, account, app, entitlement, role**")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **source**: *eq*  **standalone**: *eq*  **privileged**: *eq*  **attribute**: *eq*  **cloudGoverned**: *eq*")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, value, standalone, privileged, attribute, source, cloudGoverned, removeDate, nativeIdentity, entitlementCount**")] = None,
+        query: Annotated[Optional[StrictStr], Field(description="This param is used to search if certain fields of the access item contain the string provided.  Searching is supported for the following fields depending on the type:  Access Profiles: **name, description**  Accounts: **name, nativeIdentity**  Apps: **name**  Entitlements: **name, value, description**  Roles: **name, description**")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2938,8 +2967,14 @@ class IdentityHistoryApi:
 
         :param id: The identity id (required)
         :type id: str
-        :param type: The type of access item for the identity. If not provided, it defaults to account
+        :param type: The type of access item for the identity. If not provided, it defaults to account.  Types of access items: **accessProfile, account, app, entitlement, role**
         :type type: str
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **source**: *eq*  **standalone**: *eq*  **privileged**: *eq*  **attribute**: *eq*  **cloudGoverned**: *eq*
+        :type filters: str
+        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, value, standalone, privileged, attribute, source, cloudGoverned, removeDate, nativeIdentity, entitlementCount**
+        :type sorters: str
+        :param query: This param is used to search if certain fields of the access item contain the string provided.  Searching is supported for the following fields depending on the type:  Access Profiles: **name, description**  Accounts: **name, nativeIdentity**  Apps: **name**  Entitlements: **name, value, description**  Roles: **name, description**
+        :type query: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2965,6 +3000,9 @@ class IdentityHistoryApi:
         _param = self._list_identity_access_items_serialize(
             id=id,
             type=type,
+            filters=filters,
+            sorters=sorters,
+            query=query,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2977,6 +3015,7 @@ class IdentityHistoryApi:
             '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2990,6 +3029,9 @@ class IdentityHistoryApi:
         self,
         id,
         type,
+        filters,
+        sorters,
+        query,
         _request_auth,
         _content_type,
         _headers,
@@ -3015,6 +3057,18 @@ class IdentityHistoryApi:
         if type is not None:
             
             _query_params.append(('type', type))
+            
+        if filters is not None:
+            
+            _query_params.append(('filters', filters))
+            
+        if sorters is not None:
+            
+            _query_params.append(('sorters', sorters))
+            
+        if query is not None:
+            
+            _query_params.append(('query', query))
             
         # process the header parameters
         # process the form parameters

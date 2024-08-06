@@ -33,6 +33,13 @@ class TestCustomFormsApi(unittest.TestCase):
         """
         pass
 
+    def test_create_form_definition_by_template(self) -> None:
+        """Test case for create_form_definition_by_template
+
+        Create a form definition by template.
+        """
+        pass
+
     def test_create_form_definition_dynamic_schema(self) -> None:
         """Test case for create_form_definition_dynamic_schema
 

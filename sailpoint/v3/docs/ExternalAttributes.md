@@ -6,8 +6,10 @@ Attributes related to an external trigger
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** | A unique name for the external trigger | 
+**name** | **str** | A unique name for the external trigger | [optional] 
 **description** | **str** | Additonal context about the external trigger | [optional] 
+**client_id** | **str** | OAuth Client ID to authenticate with this trigger | [optional] 
+**url** | **str** | URL to invoke this workflow | [optional] 
 
 ## Example
 

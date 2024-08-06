@@ -139,6 +139,11 @@ class PendingApproval(BaseModel):
         if self.request_type is None and "request_type" in self.model_fields_set:
             _dict['requestType'] = None
 
+        # set to None if sod_violation_context (nullable) is None
+        # and model_fields_set contains the field
+        if self.sod_violation_context is None and "sod_violation_context" in self.model_fields_set:
+            _dict['sodViolationContext'] = None
+
         return _dict
 
     @classmethod

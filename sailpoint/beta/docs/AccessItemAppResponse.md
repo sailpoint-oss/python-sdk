@@ -7,8 +7,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **access_type** | **str** | the access item type. entitlement in this case | [optional] 
 **id** | **str** | the access item id | [optional] 
-**display_name** | **str** | the access profile display name | [optional] 
+**display_name** | **str** | the access item display name | [optional] 
 **source_name** | **str** | the associated source name if it exists | [optional] 
+**app_role_id** | **str** | the app role id | [optional] 
 
 ## Example
 

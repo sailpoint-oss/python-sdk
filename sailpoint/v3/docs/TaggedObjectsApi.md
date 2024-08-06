@@ -99,7 +99,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_tags_to_many_object**
-> delete_tags_to_many_object(bulk_tagged_object)
+> delete_tags_to_many_object(bulk_remove_tagged_object)
 
 Remove Tags from Multiple Objects
 
@@ -114,7 +114,7 @@ This API removes tags from multiple objects.  A token with API, CERT_ADMIN, ORG_
 import time
 import os
 import sailpoint.v3
-from sailpoint.v3.models.bulk_tagged_object import BulkTaggedObject
+from sailpoint.v3.models.bulk_remove_tagged_object import BulkRemoveTaggedObject
 from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
@@ -137,11 +137,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.TaggedObjectsApi(api_client)
-    bulk_tagged_object = sailpoint.v3.BulkTaggedObject() # BulkTaggedObject | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
+    bulk_remove_tagged_object = sailpoint.v3.BulkRemoveTaggedObject() # BulkRemoveTaggedObject | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
 
     try:
         # Remove Tags from Multiple Objects
-        api_instance.delete_tags_to_many_object(bulk_tagged_object)
+        api_instance.delete_tags_to_many_object(bulk_remove_tagged_object)
     except Exception as e:
         print("Exception when calling TaggedObjectsApi->delete_tags_to_many_object: %s\n" % e)
 ```
@@ -153,7 +153,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bulk_tagged_object** | [**BulkTaggedObject**](BulkTaggedObject.md)| Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. | 
+ **bulk_remove_tagged_object** | [**BulkRemoveTaggedObject**](BulkRemoveTaggedObject.md)| Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. | 
 
 ### Return type
 
@@ -625,7 +625,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **set_tags_to_many_objects**
-> List[BulkTaggedObjectResponse] set_tags_to_many_objects(bulk_tagged_object)
+> List[BulkTaggedObjectResponse] set_tags_to_many_objects(bulk_add_tagged_object)
 
 Tag Multiple Objects
 
@@ -640,7 +640,7 @@ This API adds tags to multiple objects.  A token with API, CERT_ADMIN, ORG_ADMIN
 import time
 import os
 import sailpoint.v3
-from sailpoint.v3.models.bulk_tagged_object import BulkTaggedObject
+from sailpoint.v3.models.bulk_add_tagged_object import BulkAddTaggedObject
 from sailpoint.v3.models.bulk_tagged_object_response import BulkTaggedObjectResponse
 from sailpoint.v3.rest import ApiException
 from pprint import pprint
@@ -664,11 +664,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.TaggedObjectsApi(api_client)
-    bulk_tagged_object = sailpoint.v3.BulkTaggedObject() # BulkTaggedObject | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
+    bulk_add_tagged_object = sailpoint.v3.BulkAddTaggedObject() # BulkAddTaggedObject | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
 
     try:
         # Tag Multiple Objects
-        api_response = api_instance.set_tags_to_many_objects(bulk_tagged_object)
+        api_response = api_instance.set_tags_to_many_objects(bulk_add_tagged_object)
         print("The response of TaggedObjectsApi->set_tags_to_many_objects:\n")
         pprint(api_response)
     except Exception as e:
@@ -682,7 +682,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bulk_tagged_object** | [**BulkTaggedObject**](BulkTaggedObject.md)| Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. | 
+ **bulk_add_tagged_object** | [**BulkAddTaggedObject**](BulkAddTaggedObject.md)| Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. | 
 
 ### Return type
 

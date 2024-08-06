@@ -32,7 +32,8 @@ class EventAttributes(BaseModel):
     """ # noqa: E501
     id: StrictStr = Field(description="The unique ID of the trigger")
     filter_: Optional[StrictStr] = Field(default=None, description="JSON path expression that will limit which events the trigger will fire on", alias="filter.$")
-    __properties: ClassVar[List[str]] = ["id", "filter.$"]
+    description: Optional[StrictStr] = Field(default=None, description="Description of the event trigger")
+    __properties: ClassVar[List[str]] = ["id", "filter.$", "description"]
 
     model_config = {
         "populate_by_name": True,
@@ -84,7 +85,8 @@ class EventAttributes(BaseModel):
 
         _obj = cls.model_validate({
             "id": obj.get("id"),
-            "filter.$": obj.get("filter.$")
+            "filter.$": obj.get("filter.$"),
+            "description": obj.get("description")
         })
         return _obj
 

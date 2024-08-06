@@ -37,7 +37,8 @@ class TestEventAttributes(unittest.TestCase):
         if include_optional:
             return EventAttributes(
                 id = 'idn:identity-attributes-changed',
-                filter_ = '$.changes[?(@.attribute == 'manager')]'
+                filter_ = '$.changes[?(@.attribute == 'manager')]',
+                description = ''
             )
         else:
             return EventAttributes(

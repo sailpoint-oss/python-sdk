@@ -391,6 +391,7 @@ from sailpoint.beta.models.identity_sync_payload import IdentitySyncPayload
 from sailpoint.beta.models.identity_with_new_access import IdentityWithNewAccess
 from sailpoint.beta.models.identity_with_new_access_access_refs_inner import IdentityWithNewAccessAccessRefsInner
 from sailpoint.beta.models.import_accounts_request import ImportAccountsRequest
+from sailpoint.beta.models.import_accounts_request1 import ImportAccountsRequest1
 from sailpoint.beta.models.import_entitlements_by_source_request import ImportEntitlementsBySourceRequest
 from sailpoint.beta.models.import_entitlements_request import ImportEntitlementsRequest
 from sailpoint.beta.models.import_form_definitions202_response import ImportFormDefinitions202Response
@@ -678,7 +679,6 @@ from sailpoint.beta.models.selector import Selector
 from sailpoint.beta.models.selector_type import SelectorType
 from sailpoint.beta.models.self_import_export_dto import SelfImportExportDto
 from sailpoint.beta.models.send_account_verification_request import SendAccountVerificationRequest
-from sailpoint.beta.models.send_manual_discover_applications_csv_template_request import SendManualDiscoverApplicationsCsvTemplateRequest
 from sailpoint.beta.models.send_test_notification_request_dto import SendTestNotificationRequestDto
 from sailpoint.beta.models.send_token_request import SendTokenRequest
 from sailpoint.beta.models.send_token_response import SendTokenResponse

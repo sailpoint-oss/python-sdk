@@ -36,11 +36,15 @@ class TestScheduledAttributes(unittest.TestCase):
         model = ScheduledAttributes()
         if include_optional:
             return ScheduledAttributes(
-                cron_string = '0 * */3 */5 *'
+                cron_string = '0 9 * * 1',
+                frequency = 'daily',
+                time_zone = 'America/Chicago',
+                weekly_days = Monday,
+                weekly_times = Monday
             )
         else:
             return ScheduledAttributes(
-                cron_string = '0 * */3 */5 *',
+                frequency = 'daily',
         )
         """
 

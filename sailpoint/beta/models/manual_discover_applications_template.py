@@ -31,8 +31,8 @@ class ManualDiscoverApplicationsTemplate(BaseModel):
     ManualDiscoverApplicationsTemplate
     """ # noqa: E501
     application_name: Optional[StrictStr] = Field(default=None, description="Name of the example application.")
-    domain: Optional[StrictStr] = Field(default=None, description="Description of the example application's domain.")
-    __properties: ClassVar[List[str]] = ["application_name", "domain"]
+    description: Optional[StrictStr] = Field(default=None, description="Description of the example application.")
+    __properties: ClassVar[List[str]] = ["application_name", "description"]
 
     model_config = {
         "populate_by_name": True,
@@ -84,7 +84,7 @@ class ManualDiscoverApplicationsTemplate(BaseModel):
 
         _obj = cls.model_validate({
             "application_name": obj.get("application_name"),
-            "domain": obj.get("domain")
+            "description": obj.get("description")
         })
         return _obj
 

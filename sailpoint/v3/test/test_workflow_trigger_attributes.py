@@ -38,15 +38,20 @@ class TestWorkflowTriggerAttributes(unittest.TestCase):
             return WorkflowTriggerAttributes(
                 id = 'idn:identity-attributes-changed',
                 filter_ = '$.changes[?(@.attribute == 'manager')]',
-                name = 'search-and-notify',
                 description = 'Run a search and notify the results',
-                cron_string = '0 * */3 */5 *'
+                name = 'search-and-notify',
+                client_id = '87e239b2-b85b-4bde-b9a7-55bf304ddcdc',
+                url = 'https://tenant.api.identitynow.com/beta/workflows/execute/external/c79e0079-562c-4df5-aa73-60a9e25c916d',
+                cron_string = '0 9 * * 1',
+                frequency = 'daily',
+                time_zone = 'America/Chicago',
+                weekly_days = Monday,
+                weekly_times = Monday
             )
         else:
             return WorkflowTriggerAttributes(
                 id = 'idn:identity-attributes-changed',
-                name = 'search-and-notify',
-                cron_string = '0 * */3 */5 *',
+                frequency = 'daily',
         )
         """
 

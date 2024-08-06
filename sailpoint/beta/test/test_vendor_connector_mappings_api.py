@@ -40,13 +40,6 @@ class TestVendorConnectorMappingsApi(unittest.TestCase):
         """
         pass
 
-    def test_get_vendor_connector_mappings(self) -> None:
-        """Test case for get_vendor_connector_mappings
-
-        List vendor connector mappings
-        """
-        pass
-
 
 if __name__ == '__main__':
     unittest.main()

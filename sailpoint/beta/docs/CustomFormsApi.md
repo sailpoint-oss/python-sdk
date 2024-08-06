@@ -5,6 +5,7 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_form_definition**](CustomFormsApi.md#create_form_definition) | **POST** /form-definitions | Creates a form definition.
+[**create_form_definition_by_template**](CustomFormsApi.md#create_form_definition_by_template) | **POST** /form-definitions/template | Create a form definition by template.
 [**create_form_definition_dynamic_schema**](CustomFormsApi.md#create_form_definition_dynamic_schema) | **POST** /form-definitions/forms-action-dynamic-schema | Generate JSON Schema dynamically.
 [**create_form_definition_file_request**](CustomFormsApi.md#create_form_definition_file_request) | **POST** /form-definitions/{formDefinitionID}/upload | Upload new form definition file.
 [**create_form_instance**](CustomFormsApi.md#create_form_instance) | **POST** /form-instances | Creates a form instance.
@@ -62,7 +63,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.CustomFormsApi(api_client)
-    create_form_definition_request = {name=my form, description=my form description, owner={type=IDENTITY, id=00000000-0000-0000-0000-000000000000}} # CreateFormDefinitionRequest | Body is the request payload to create form definition request (optional)
+    create_form_definition_request = {name=my form, description=my form description, owner={type=IDENTITY, id=00000000-0000-0000-0000-000000000000}, formElements=[{id=000000000000, elementType=SECTION, config={alignment=LEFT, description=elementType must be 'SECTION' for the root formElements,  child formElements must be within the 'config' attribute, label=Section, labelStyle=h2, showLabel=true, formElements=[{id=0000000000000, key=textField, elementType=TEXT, config={default=, description=, helpText=form element type text, label=Text Field, placeholder=, required=false}, validations=[]}]}}]} # CreateFormDefinitionRequest | Body is the request payload to create form definition request (optional)
 
     try:
         # Creates a form definition.
@@ -71,6 +72,90 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
         pprint(api_response)
     except Exception as e:
         print("Exception when calling CustomFormsApi->create_form_definition: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_form_definition_request** | [**CreateFormDefinitionRequest**](CreateFormDefinitionRequest.md)| Body is the request payload to create form definition request | [optional] 
+
+### Return type
+
+[**FormDefinitionResponse**](FormDefinitionResponse.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Returns a new form definition |  -  |
+**400** | An error with the request occurred |  -  |
+**401** | An error with the authorization occurred |  -  |
+**403** | An error with the user permissions occurred |  -  |
+**429** | Too many requests |  -  |
+**500** | An internal server error occurred |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_form_definition_by_template**
+> FormDefinitionResponse create_form_definition_by_template(create_form_definition_request=create_form_definition_request)
+
+Create a form definition by template.
+
+### Example
+
+* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (UserContextAuth):
+
+```python
+import time
+import os
+import sailpoint.beta
+from sailpoint.beta.models.create_form_definition_request import CreateFormDefinitionRequest
+from sailpoint.beta.models.form_definition_response import FormDefinitionResponse
+from sailpoint.beta.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sailpoint.beta.Configuration(
+    host = "https://sailpoint.api.identitynow.com/beta"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with sailpoint.beta.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sailpoint.beta.CustomFormsApi(api_client)
+    create_form_definition_request = {name=my form, description=my form description, owner={type=IDENTITY, id=00000000-0000-0000-0000-000000000000}, formElements=[{id=000000000000, elementType=SECTION, config={alignment=LEFT, description=elementType must be 'SECTION' for the root formElements,  child formElements must be within the 'config' attribute, label=Section, labelStyle=h2, showLabel=true, formElements=[{id=0000000000000, key=textField, elementType=TEXT, config={default=, description=, helpText=form element type text, label=Text Field, placeholder=, required=false}, validations=[]}]}}]} # CreateFormDefinitionRequest | Body is the request payload to create form definition request (optional)
+
+    try:
+        # Create a form definition by template.
+        api_response = api_instance.create_form_definition_by_template(create_form_definition_request=create_form_definition_request)
+        print("The response of CustomFormsApi->create_form_definition_by_template:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CustomFormsApi->create_form_definition_by_template: %s\n" % e)
 ```
 
 

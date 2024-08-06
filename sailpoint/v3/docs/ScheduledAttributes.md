@@ -6,7 +6,11 @@ Attributes related to a scheduled trigger
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cron_string** | **str** | A valid CRON expression | 
+**cron_string** | **str** | A valid CRON expression | [optional] 
+**frequency** | **str** | Frequency of execution | 
+**time_zone** | **str** | Time zone identifier | [optional] 
+**weekly_days** | **List[str]** | Scheduled days of the week for execution | [optional] 
+**weekly_times** | **List[str]** | Scheduled execution times | [optional] 
 
 ## Example
 

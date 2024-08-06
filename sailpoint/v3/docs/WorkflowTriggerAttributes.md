@@ -8,9 +8,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | The unique ID of the trigger | 
 **filter_** | **str** | JSON path expression that will limit which events the trigger will fire on | [optional] 
-**name** | **str** | A unique name for the external trigger | 
 **description** | **str** | Additonal context about the external trigger | [optional] 
-**cron_string** | **str** | A valid CRON expression | 
+**name** | **str** | A unique name for the external trigger | [optional] 
+**client_id** | **str** | OAuth Client ID to authenticate with this trigger | [optional] 
+**url** | **str** | URL to invoke this workflow | [optional] 
+**cron_string** | **str** | A valid CRON expression | [optional] 
+**frequency** | **str** | Frequency of execution | 
+**time_zone** | **str** | Time zone identifier | [optional] 
+**weekly_days** | **List[str]** | Scheduled days of the week for execution | [optional] 
+**weekly_times** | **List[str]** | Scheduled execution times | [optional] 
 
 ## Example
 

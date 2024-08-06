@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **application_name** | **str** | Name of the example application. | [optional] 
-**domain** | **str** | Description of the example application&#39;s domain. | [optional] 
+**description** | **str** | Description of the example application. | [optional] 
 
 ## Example
 

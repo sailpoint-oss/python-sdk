@@ -30,9 +30,11 @@ class ExternalAttributes(BaseModel):
     """
     Attributes related to an external trigger
     """ # noqa: E501
-    name: StrictStr = Field(description="A unique name for the external trigger")
+    name: Optional[StrictStr] = Field(default=None, description="A unique name for the external trigger")
     description: Optional[StrictStr] = Field(default=None, description="Additonal context about the external trigger")
-    __properties: ClassVar[List[str]] = ["name", "description"]
+    client_id: Optional[StrictStr] = Field(default=None, description="OAuth Client ID to authenticate with this trigger", alias="clientId")
+    url: Optional[StrictStr] = Field(default=None, description="URL to invoke this workflow")
+    __properties: ClassVar[List[str]] = ["name", "description", "clientId", "url"]
 
     model_config = {
         "populate_by_name": True,
@@ -84,7 +86,9 @@ class ExternalAttributes(BaseModel):
 
         _obj = cls.model_validate({
             "name": obj.get("name"),
-            "description": obj.get("description")
+            "description": obj.get("description"),
+            "clientId": obj.get("clientId"),
+            "url": obj.get("url")
         })
         return _obj
 

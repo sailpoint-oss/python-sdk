@@ -10,6 +10,7 @@ sailpoint/beta/api/account_activities_api.py
 sailpoint/beta/api/account_aggregations_api.py
 sailpoint/beta/api/account_usages_api.py
 sailpoint/beta/api/accounts_api.py
+sailpoint/beta/api/application_discovery_api.py
 sailpoint/beta/api/approvals_api.py
 sailpoint/beta/api/auth_profile_api.py
 sailpoint/beta/api/certification_campaigns_api.py
@@ -18,7 +19,6 @@ sailpoint/beta/api/connector_rule_management_api.py
 sailpoint/beta/api/connectors_api.py
 sailpoint/beta/api/custom_forms_api.py
 sailpoint/beta/api/custom_password_instructions_api.py
-sailpoint/beta/api/discovered_applications_api.py
 sailpoint/beta/api/entitlements_api.py
 sailpoint/beta/api/governance_groups_api.py
 sailpoint/beta/api/iai_access_request_recommendations_api.py
@@ -36,8 +36,6 @@ sailpoint/beta/api/identity_profiles_api.py
 sailpoint/beta/api/lifecycle_states_api.py
 sailpoint/beta/api/managed_clients_api.py
 sailpoint/beta/api/managed_clusters_api.py
-sailpoint/beta/api/manual_discover_applications_api.py
-sailpoint/beta/api/manual_discover_applications_template_api.py
 sailpoint/beta/api/mfa_configuration_api.py
 sailpoint/beta/api/mfa_controller_api.py
 sailpoint/beta/api/non_employee_lifecycle_management_api.py
@@ -189,6 +187,7 @@ sailpoint/beta/docs/AccountsCollectedForAggregationStats.md
 sailpoint/beta/docs/ActivateCampaignOptions.md
 sailpoint/beta/docs/AdminReviewReassign.md
 sailpoint/beta/docs/AdminReviewReassignReassignTo.md
+sailpoint/beta/docs/ApplicationDiscoveryApi.md
 sailpoint/beta/docs/Approval.md
 sailpoint/beta/docs/ApprovalBatch.md
 sailpoint/beta/docs/ApprovalComment.md
@@ -334,7 +333,6 @@ sailpoint/beta/docs/Delete202Response.md
 sailpoint/beta/docs/DeleteCampaignsRequest.md
 sailpoint/beta/docs/DeleteNonEmployeeRecordInBulkRequest.md
 sailpoint/beta/docs/DeleteVendorConnectorMapping200Response.md
-sailpoint/beta/docs/DiscoveredApplicationsApi.md
 sailpoint/beta/docs/DiscoveredApplicationsInner.md
 sailpoint/beta/docs/DkimAttributes.md
 sailpoint/beta/docs/DomainAddress.md
@@ -486,6 +484,7 @@ sailpoint/beta/docs/IdentitySyncPayload.md
 sailpoint/beta/docs/IdentityWithNewAccess.md
 sailpoint/beta/docs/IdentityWithNewAccessAccessRefsInner.md
 sailpoint/beta/docs/ImportAccountsRequest.md
+sailpoint/beta/docs/ImportAccountsRequest1.md
 sailpoint/beta/docs/ImportEntitlementsBySourceRequest.md
 sailpoint/beta/docs/ImportEntitlementsRequest.md
 sailpoint/beta/docs/ImportFormDefinitions202Response.md
@@ -553,9 +552,7 @@ sailpoint/beta/docs/ManagedClusterTypes.md
 sailpoint/beta/docs/ManagedClustersApi.md
 sailpoint/beta/docs/ManagerCorrelationMapping.md
 sailpoint/beta/docs/ManualDiscoverApplications.md
-sailpoint/beta/docs/ManualDiscoverApplicationsApi.md
 sailpoint/beta/docs/ManualDiscoverApplicationsTemplate.md
-sailpoint/beta/docs/ManualDiscoverApplicationsTemplateApi.md
 sailpoint/beta/docs/ManualWorkItemDetails.md
 sailpoint/beta/docs/ManualWorkItemDetailsCurrentOwner.md
 sailpoint/beta/docs/ManualWorkItemDetailsOriginalOwner.md
@@ -800,7 +797,6 @@ sailpoint/beta/docs/Selector.md
 sailpoint/beta/docs/SelectorType.md
 sailpoint/beta/docs/SelfImportExportDto.md
 sailpoint/beta/docs/SendAccountVerificationRequest.md
-sailpoint/beta/docs/SendManualDiscoverApplicationsCsvTemplateRequest.md
 sailpoint/beta/docs/SendTestNotificationRequestDto.md
 sailpoint/beta/docs/SendTokenRequest.md
 sailpoint/beta/docs/SendTokenResponse.md
@@ -1366,6 +1362,7 @@ sailpoint/beta/models/identity_sync_payload.py
 sailpoint/beta/models/identity_with_new_access.py
 sailpoint/beta/models/identity_with_new_access_access_refs_inner.py
 sailpoint/beta/models/import_accounts_request.py
+sailpoint/beta/models/import_accounts_request1.py
 sailpoint/beta/models/import_entitlements_by_source_request.py
 sailpoint/beta/models/import_entitlements_request.py
 sailpoint/beta/models/import_form_definitions202_response.py
@@ -1653,7 +1650,6 @@ sailpoint/beta/models/selector.py
 sailpoint/beta/models/selector_type.py
 sailpoint/beta/models/self_import_export_dto.py
 sailpoint/beta/models/send_account_verification_request.py
-sailpoint/beta/models/send_manual_discover_applications_csv_template_request.py
 sailpoint/beta/models/send_test_notification_request_dto.py
 sailpoint/beta/models/send_token_request.py
 sailpoint/beta/models/send_token_response.py
@@ -1940,6 +1936,7 @@ sailpoint/beta/test/test_accounts_collected_for_aggregation_stats.py
 sailpoint/beta/test/test_activate_campaign_options.py
 sailpoint/beta/test/test_admin_review_reassign.py
 sailpoint/beta/test/test_admin_review_reassign_reassign_to.py
+sailpoint/beta/test/test_application_discovery_api.py
 sailpoint/beta/test/test_approval.py
 sailpoint/beta/test/test_approval_batch.py
 sailpoint/beta/test/test_approval_comment.py
@@ -2085,7 +2082,6 @@ sailpoint/beta/test/test_delete202_response.py
 sailpoint/beta/test/test_delete_campaigns_request.py
 sailpoint/beta/test/test_delete_non_employee_record_in_bulk_request.py
 sailpoint/beta/test/test_delete_vendor_connector_mapping200_response.py
-sailpoint/beta/test/test_discovered_applications_api.py
 sailpoint/beta/test/test_discovered_applications_inner.py
 sailpoint/beta/test/test_dkim_attributes.py
 sailpoint/beta/test/test_domain_address.py
@@ -2237,6 +2233,7 @@ sailpoint/beta/test/test_identity_sync_payload.py
 sailpoint/beta/test/test_identity_with_new_access.py
 sailpoint/beta/test/test_identity_with_new_access_access_refs_inner.py
 sailpoint/beta/test/test_import_accounts_request.py
+sailpoint/beta/test/test_import_accounts_request1.py
 sailpoint/beta/test/test_import_entitlements_by_source_request.py
 sailpoint/beta/test/test_import_entitlements_request.py
 sailpoint/beta/test/test_import_form_definitions202_response.py
@@ -2302,9 +2299,7 @@ sailpoint/beta/test/test_managed_cluster_types.py
 sailpoint/beta/test/test_managed_clusters_api.py
 sailpoint/beta/test/test_manager_correlation_mapping.py
 sailpoint/beta/test/test_manual_discover_applications.py
-sailpoint/beta/test/test_manual_discover_applications_api.py
 sailpoint/beta/test/test_manual_discover_applications_template.py
-sailpoint/beta/test/test_manual_discover_applications_template_api.py
 sailpoint/beta/test/test_manual_work_item_details.py
 sailpoint/beta/test/test_manual_work_item_details_current_owner.py
 sailpoint/beta/test/test_manual_work_item_details_original_owner.py
@@ -2547,7 +2542,6 @@ sailpoint/beta/test/test_selector.py
 sailpoint/beta/test/test_selector_type.py
 sailpoint/beta/test/test_self_import_export_dto.py
 sailpoint/beta/test/test_send_account_verification_request.py
-sailpoint/beta/test/test_send_manual_discover_applications_csv_template_request.py
 sailpoint/beta/test/test_send_test_notification_request_dto.py
 sailpoint/beta/test/test_send_token_request.py
 sailpoint/beta/test/test_send_token_response.py

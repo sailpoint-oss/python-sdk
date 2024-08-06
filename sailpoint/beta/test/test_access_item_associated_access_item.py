@@ -45,13 +45,23 @@ class TestAccessItemAssociatedAccessItem(unittest.TestCase):
                 display_name = 'sample',
                 entitlement_count = '12',
                 app_display_name = 'AppName',
+                remove_date = '2024-07-01T06:00:00.00Z',
+                standalone = True,
+                revocable = True,
                 native_identity = 'dr.arden.ogahn.d',
+                app_role_id = '2c918087763e69d901763e72e97f006f',
                 attribute = 'groups',
                 value = 'Upward mobility access',
-                entitlement_type = 'entitlement'
+                entitlement_type = 'entitlement',
+                privileged = False,
+                cloud_governed = True
             )
         else:
             return AccessItemAssociatedAccessItem(
+                standalone = True,
+                revocable = True,
+                privileged = False,
+                cloud_governed = True,
         )
         """
 

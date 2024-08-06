@@ -39,7 +39,8 @@ class TestAccessItemAppResponse(unittest.TestCase):
                 access_type = 'app',
                 id = '2c918087763e69d901763e72e97f006f',
                 display_name = 'Display Name',
-                source_name = 'appName'
+                source_name = 'appName',
+                app_role_id = '2c918087763e69d901763e72e97f006f'
             )
         else:
             return AccessItemAppResponse(

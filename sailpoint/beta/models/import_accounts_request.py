@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, ClassVar, Dict, List, Optional, Union
-from pydantic import BaseModel, StrictBytes, StrictStr
+from pydantic import BaseModel, StrictBytes, StrictStr, field_validator
 from pydantic import Field
 try:
     from typing import Self
@@ -33,6 +33,16 @@ class ImportAccountsRequest(BaseModel):
     file: Optional[Union[StrictBytes, StrictStr]] = Field(default=None, description="The CSV file containing the source accounts to aggregate.")
     disable_optimization: Optional[StrictStr] = Field(default=None, description="Use this flag to reprocess every account whether or not the data has changed.", alias="disableOptimization")
     __properties: ClassVar[List[str]] = ["file", "disableOptimization"]
+
+    @field_validator('disable_optimization')
+    def disable_optimization_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in ('true', 'false'):
+            raise ValueError("must be one of enum values ('true', 'false')")
+        return value
 
     model_config = {
         "populate_by_name": True,

@@ -32,7 +32,7 @@ class FormElementDynamicDataSource(BaseModel):
     FormElementDynamicDataSource
     """ # noqa: E501
     config: Optional[FormElementDynamicDataSourceConfig] = None
-    data_source_type: Optional[StrictStr] = Field(default=None, description="DataSourceType is a FormElementDataSourceType value STATIC FormElementDataSourceTypeStatic INTERNAL FormElementDataSourceTypeInternal SEARCH FormElementDataSourceTypeSearch", alias="dataSourceType")
+    data_source_type: Optional[StrictStr] = Field(default=None, description="DataSourceType is a FormElementDataSourceType value STATIC FormElementDataSourceTypeStatic INTERNAL FormElementDataSourceTypeInternal SEARCH FormElementDataSourceTypeSearch FORM_INPUT FormElementDataSourceTypeFormInput", alias="dataSourceType")
     __properties: ClassVar[List[str]] = ["config", "dataSourceType"]
 
     @field_validator('data_source_type')
@@ -41,8 +41,8 @@ class FormElementDynamicDataSource(BaseModel):
         if value is None:
             return value
 
-        if value not in ('STATIC', 'INTERNAL', 'SEARCH'):
-            raise ValueError("must be one of enum values ('STATIC', 'INTERNAL', 'SEARCH')")
+        if value not in ('STATIC', 'INTERNAL', 'SEARCH', 'FORM_INPUT'):
+            raise ValueError("must be one of enum values ('STATIC', 'INTERNAL', 'SEARCH', 'FORM_INPUT')")
         return value
 
     model_config = {
