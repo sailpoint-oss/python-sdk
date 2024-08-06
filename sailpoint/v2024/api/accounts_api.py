@@ -3678,7 +3678,7 @@ class AccountsApi:
     ) -> AccountsAsyncResult:
         """Update Account
 
-        Use this API to update an account with a PUT request.  This endpoint submits an account update task and returns the task ID.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. >**NOTE: You can only use this PUT endpoint to update accounts from sources of the \"DelimitedFile\" type.**
+        Use this API to update an account with a PUT request.   This endpoint submits an account update task and returns the task ID.   A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  >**Note: You can only use this PUT endpoint to update accounts from flat file sources.** 
 
         :param id: Account ID. (required)
         :type id: str
@@ -3755,7 +3755,7 @@ class AccountsApi:
     ) -> ApiResponse[AccountsAsyncResult]:
         """Update Account
 
-        Use this API to update an account with a PUT request.  This endpoint submits an account update task and returns the task ID.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. >**NOTE: You can only use this PUT endpoint to update accounts from sources of the \"DelimitedFile\" type.**
+        Use this API to update an account with a PUT request.   This endpoint submits an account update task and returns the task ID.   A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  >**Note: You can only use this PUT endpoint to update accounts from flat file sources.** 
 
         :param id: Account ID. (required)
         :type id: str
@@ -3832,7 +3832,7 @@ class AccountsApi:
     ) -> RESTResponseType:
         """Update Account
 
-        Use this API to update an account with a PUT request.  This endpoint submits an account update task and returns the task ID.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. >**NOTE: You can only use this PUT endpoint to update accounts from sources of the \"DelimitedFile\" type.**
+        Use this API to update an account with a PUT request.   This endpoint submits an account update task and returns the task ID.   A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  >**Note: You can only use this PUT endpoint to update accounts from flat file sources.** 
 
         :param id: Account ID. (required)
         :type id: str
@@ -4565,7 +4565,7 @@ class AccountsApi:
     ) -> object:
         """Update Account
 
-        Use this API to update account details.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. This API supports updating an account's correlation. You can modify only the `identityId` and `manuallyCorrelated` fields for any flat file account.  To reassign an account from one identity to another, replace the current `identityId` with a new value.  If the account you're assigning was provisioned by Identity Security Cloud (ISC), it's possible for ISC to create a new account  for the previous identity as soon as the account is moved. If the account you're assigning is authoritative,  this causes the previous identity to become uncorrelated and can even result in its deletion. All accounts that are reassigned will be set to `manuallyCorrelated: true` unless you specify otherwise. >**Note:** The `attributes` field can only be modified for flat file accounts. 
+        Use this API to update account details.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  This API supports updating an account's correlation by modifying the `identityId` and `manuallyCorrelated` fields.  To reassign an account from one identity to another, replace the current `identityId` with a new value.  If the account you're assigning was provisioned by Identity Security Cloud (ISC), it's possible for ISC to create a new account  for the previous identity as soon as the account is moved. If the account you're assigning is authoritative,  this causes the previous identity to become uncorrelated and can even result in its deletion. All accounts that are reassigned will be set to `manuallyCorrelated: true` unless you specify otherwise.  >**Note:** The `attributes` field can only be modified for flat file accounts.  
 
         :param id: Account ID. (required)
         :type id: str
@@ -4642,7 +4642,7 @@ class AccountsApi:
     ) -> ApiResponse[object]:
         """Update Account
 
-        Use this API to update account details.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. This API supports updating an account's correlation. You can modify only the `identityId` and `manuallyCorrelated` fields for any flat file account.  To reassign an account from one identity to another, replace the current `identityId` with a new value.  If the account you're assigning was provisioned by Identity Security Cloud (ISC), it's possible for ISC to create a new account  for the previous identity as soon as the account is moved. If the account you're assigning is authoritative,  this causes the previous identity to become uncorrelated and can even result in its deletion. All accounts that are reassigned will be set to `manuallyCorrelated: true` unless you specify otherwise. >**Note:** The `attributes` field can only be modified for flat file accounts. 
+        Use this API to update account details.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  This API supports updating an account's correlation by modifying the `identityId` and `manuallyCorrelated` fields.  To reassign an account from one identity to another, replace the current `identityId` with a new value.  If the account you're assigning was provisioned by Identity Security Cloud (ISC), it's possible for ISC to create a new account  for the previous identity as soon as the account is moved. If the account you're assigning is authoritative,  this causes the previous identity to become uncorrelated and can even result in its deletion. All accounts that are reassigned will be set to `manuallyCorrelated: true` unless you specify otherwise.  >**Note:** The `attributes` field can only be modified for flat file accounts.  
 
         :param id: Account ID. (required)
         :type id: str
@@ -4719,7 +4719,7 @@ class AccountsApi:
     ) -> RESTResponseType:
         """Update Account
 
-        Use this API to update account details.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. This API supports updating an account's correlation. You can modify only the `identityId` and `manuallyCorrelated` fields for any flat file account.  To reassign an account from one identity to another, replace the current `identityId` with a new value.  If the account you're assigning was provisioned by Identity Security Cloud (ISC), it's possible for ISC to create a new account  for the previous identity as soon as the account is moved. If the account you're assigning is authoritative,  this causes the previous identity to become uncorrelated and can even result in its deletion. All accounts that are reassigned will be set to `manuallyCorrelated: true` unless you specify otherwise. >**Note:** The `attributes` field can only be modified for flat file accounts. 
+        Use this API to update account details.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  This API supports updating an account's correlation by modifying the `identityId` and `manuallyCorrelated` fields.  To reassign an account from one identity to another, replace the current `identityId` with a new value.  If the account you're assigning was provisioned by Identity Security Cloud (ISC), it's possible for ISC to create a new account  for the previous identity as soon as the account is moved. If the account you're assigning is authoritative,  this causes the previous identity to become uncorrelated and can even result in its deletion. All accounts that are reassigned will be set to `manuallyCorrelated: true` unless you specify otherwise.  >**Note:** The `attributes` field can only be modified for flat file accounts.  
 
         :param id: Account ID. (required)
         :type id: str
