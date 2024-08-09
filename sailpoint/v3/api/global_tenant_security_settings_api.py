@@ -70,7 +70,7 @@ class GlobalTenantSecuritySettingsApi:
     ) -> NetworkConfiguration:
         """Create security network configuration.
 
-        This API returns the details of an org's network auth configuration. Requires security scope of: 'sp:auth-org:create'
+        This API returns the details of an org's network auth configuration. Requires security scope of: 'sp:auth-org:manage'
 
         :param network_configuration: Network configuration creation request body.   The following constraints ensure the request body conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters. (required)
         :type network_configuration: NetworkConfiguration
@@ -143,7 +143,7 @@ class GlobalTenantSecuritySettingsApi:
     ) -> ApiResponse[NetworkConfiguration]:
         """Create security network configuration.
 
-        This API returns the details of an org's network auth configuration. Requires security scope of: 'sp:auth-org:create'
+        This API returns the details of an org's network auth configuration. Requires security scope of: 'sp:auth-org:manage'
 
         :param network_configuration: Network configuration creation request body.   The following constraints ensure the request body conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters. (required)
         :type network_configuration: NetworkConfiguration
@@ -216,7 +216,7 @@ class GlobalTenantSecuritySettingsApi:
     ) -> RESTResponseType:
         """Create security network configuration.
 
-        This API returns the details of an org's network auth configuration. Requires security scope of: 'sp:auth-org:create'
+        This API returns the details of an org's network auth configuration. Requires security scope of: 'sp:auth-org:manage'
 
         :param network_configuration: Network configuration creation request body.   The following constraints ensure the request body conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters. (required)
         :type network_configuration: NetworkConfiguration
@@ -1699,7 +1699,7 @@ class GlobalTenantSecuritySettingsApi:
     ) -> NetworkConfiguration:
         """Update security network configuration.
 
-        This API updates an existing network configuration for an org using PATCH  Requires security scope of:  'sp:auth-org:update'
+        This API updates an existing network configuration for an org using PATCH  Requires security scope of:  'sp:auth-org:manage'
 
         :param json_patch_operation: A list of auth org network configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Network Config conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters. (required)
         :type json_patch_operation: List[JsonPatchOperation]
@@ -1772,7 +1772,7 @@ class GlobalTenantSecuritySettingsApi:
     ) -> ApiResponse[NetworkConfiguration]:
         """Update security network configuration.
 
-        This API updates an existing network configuration for an org using PATCH  Requires security scope of:  'sp:auth-org:update'
+        This API updates an existing network configuration for an org using PATCH  Requires security scope of:  'sp:auth-org:manage'
 
         :param json_patch_operation: A list of auth org network configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Network Config conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters. (required)
         :type json_patch_operation: List[JsonPatchOperation]
@@ -1845,7 +1845,7 @@ class GlobalTenantSecuritySettingsApi:
     ) -> RESTResponseType:
         """Update security network configuration.
 
-        This API updates an existing network configuration for an org using PATCH  Requires security scope of:  'sp:auth-org:update'
+        This API updates an existing network configuration for an org using PATCH  Requires security scope of:  'sp:auth-org:manage'
 
         :param json_patch_operation: A list of auth org network configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Network Config conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters. (required)
         :type json_patch_operation: List[JsonPatchOperation]
