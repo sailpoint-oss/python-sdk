@@ -170,7 +170,6 @@ from sailpoint.v3.models.data_access_policies_inner import DataAccessPoliciesInn
 from sailpoint.v3.models.delete_non_employee_records_in_bulk_request import DeleteNonEmployeeRecordsInBulkRequest
 from sailpoint.v3.models.delete_source202_response import DeleteSource202Response
 from sailpoint.v3.models.delete_vendor_connector_mapping200_response import DeleteVendorConnectorMapping200Response
-from sailpoint.v3.models.discovered_applications_inner import DiscoveredApplicationsInner
 from sailpoint.v3.models.display_reference import DisplayReference
 from sailpoint.v3.models.document_type import DocumentType
 from sailpoint.v3.models.dto_type import DtoType
@@ -207,7 +206,9 @@ from sailpoint.v3.models.filter_type import FilterType
 from sailpoint.v3.models.form_details import FormDetails
 from sailpoint.v3.models.form_item_details import FormItemDetails
 from sailpoint.v3.models.forward_approval_dto import ForwardApprovalDto
+from sailpoint.v3.models.full_discovered_applications_inner import FullDiscoveredApplicationsInner
 from sailpoint.v3.models.get_active_campaigns200_response_inner import GetActiveCampaigns200ResponseInner
+from sailpoint.v3.models.get_discovered_applications200_response_inner import GetDiscoveredApplications200ResponseInner
 from sailpoint.v3.models.get_o_auth_client_response import GetOAuthClientResponse
 from sailpoint.v3.models.get_personal_access_token_response import GetPersonalAccessTokenResponse
 from sailpoint.v3.models.get_vendor_connector_mappings405_response import GetVendorConnectorMappings405Response
@@ -469,6 +470,7 @@ from sailpoint.v3.models.session_configuration import SessionConfiguration
 from sailpoint.v3.models.set_lifecycle_state200_response import SetLifecycleState200Response
 from sailpoint.v3.models.set_lifecycle_state_request import SetLifecycleStateRequest
 from sailpoint.v3.models.slim_campaign import SlimCampaign
+from sailpoint.v3.models.slim_discovered_applications_inner import SlimDiscoveredApplicationsInner
 from sailpoint.v3.models.sod_exempt_criteria import SodExemptCriteria
 from sailpoint.v3.models.sod_policy import SodPolicy
 from sailpoint.v3.models.sod_policy_conflicting_access_criteria import SodPolicyConflictingAccessCriteria

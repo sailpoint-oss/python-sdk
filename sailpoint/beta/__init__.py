@@ -341,7 +341,6 @@ from sailpoint.beta.models.delete202_response import Delete202Response
 from sailpoint.beta.models.delete_campaigns_request import DeleteCampaignsRequest
 from sailpoint.beta.models.delete_non_employee_record_in_bulk_request import DeleteNonEmployeeRecordInBulkRequest
 from sailpoint.beta.models.delete_vendor_connector_mapping200_response import DeleteVendorConnectorMapping200Response
-from sailpoint.beta.models.discovered_applications_inner import DiscoveredApplicationsInner
 from sailpoint.beta.models.dkim_attributes import DkimAttributes
 from sailpoint.beta.models.domain_address import DomainAddress
 from sailpoint.beta.models.domain_status_dto import DomainStatusDto
@@ -406,6 +405,7 @@ from sailpoint.beta.models.form_item_details import FormItemDetails
 from sailpoint.beta.models.form_owner import FormOwner
 from sailpoint.beta.models.form_used_by import FormUsedBy
 from sailpoint.beta.models.forward_approval_dto import ForwardApprovalDto
+from sailpoint.beta.models.full_discovered_applications_inner import FullDiscoveredApplicationsInner
 from sailpoint.beta.models.fullcampaign import Fullcampaign
 from sailpoint.beta.models.fullcampaign_all_of_filter import FullcampaignAllOfFilter
 from sailpoint.beta.models.fullcampaign_all_of_role_composition_campaign_info import FullcampaignAllOfRoleCompositionCampaignInfo
@@ -415,6 +415,7 @@ from sailpoint.beta.models.fullcampaign_all_of_search_campaign_info_reviewer imp
 from sailpoint.beta.models.fullcampaign_all_of_source_owner_campaign_info import FullcampaignAllOfSourceOwnerCampaignInfo
 from sailpoint.beta.models.fullcampaign_all_of_sources_with_orphan_entitlements import FullcampaignAllOfSourcesWithOrphanEntitlements
 from sailpoint.beta.models.get_active_campaigns200_response_inner import GetActiveCampaigns200ResponseInner
+from sailpoint.beta.models.get_discovered_applications200_response_inner import GetDiscoveredApplications200ResponseInner
 from sailpoint.beta.models.get_form_definition_by_key400_response import GetFormDefinitionByKey400Response
 from sailpoint.beta.models.get_historical_identity_events200_response_inner import GetHistoricalIdentityEvents200ResponseInner
 from sailpoint.beta.models.get_o_auth_client_response import GetOAuthClientResponse
@@ -780,6 +781,7 @@ from sailpoint.beta.models.set_icon200_response import SetIcon200Response
 from sailpoint.beta.models.set_icon_request import SetIconRequest
 from sailpoint.beta.models.sim_integration_details import SimIntegrationDetails
 from sailpoint.beta.models.sim_integration_details_all_of_before_provisioning_rule import SimIntegrationDetailsAllOfBeforeProvisioningRule
+from sailpoint.beta.models.slim_discovered_applications_inner import SlimDiscoveredApplicationsInner
 from sailpoint.beta.models.slimcampaign import Slimcampaign
 from sailpoint.beta.models.sod_exempt_criteria import SodExemptCriteria
 from sailpoint.beta.models.sod_exempt_criteria1 import SodExemptCriteria1

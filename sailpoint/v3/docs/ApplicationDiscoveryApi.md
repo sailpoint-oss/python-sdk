@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **get_discovered_applications**
-> List[List[DiscoveredApplicationsInner]] get_discovered_applications(limit=limit, offset=offset, filter=filter, sorters=sorters)
+> List[GetDiscoveredApplications200ResponseInner] get_discovered_applications(limit=limit, offset=offset, detail=detail, filter=filter, sorters=sorters)
 
 Retrieve discovered applications for tenant
 
@@ -26,7 +26,7 @@ Fetches a list of applications that have been identified within the environment.
 import time
 import os
 import sailpoint.v3
-from sailpoint.v3.models.discovered_applications_inner import DiscoveredApplicationsInner
+from sailpoint.v3.models.get_discovered_applications200_response_inner import GetDiscoveredApplications200ResponseInner
 from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
@@ -51,12 +51,13 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
     api_instance = sailpoint.v3.ApplicationDiscoveryApi(api_client)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
-    filter = 'name eq \"Okta\" and description co \"Okta\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)       Filtering is supported for the following fields and operators:  **name**: *eq, sw, co*  **description**: *eq, sw, co*  (optional)
+    detail = 'FULL' # str | Determines whether slim, or increased level of detail is provided for each discovered application in the returned list. SLIM is the default behavior. (optional)
+    filter = 'name eq \"Okta\" and description co \"Okta\" and discoverySource in (\"csv\", \"Okta Saas\")' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)       Filtering is supported for the following fields and operators:  **name**: *eq, sw, co*  **description**: *eq, sw, co*  **createdAtStart**: *eq, le, ge*  **createdAtEnd**: *eq, le, ge*  **discoveredAtStart**: *eq, le, ge*  **discoveredAtEnd**: *eq, le, ge*  **discoverySource**: *eq, in*  (optional)
     sorters = 'name' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, discoveredAt, discoverySource** (optional)
 
     try:
         # Retrieve discovered applications for tenant
-        api_response = api_instance.get_discovered_applications(limit=limit, offset=offset, filter=filter, sorters=sorters)
+        api_response = api_instance.get_discovered_applications(limit=limit, offset=offset, detail=detail, filter=filter, sorters=sorters)
         print("The response of ApplicationDiscoveryApi->get_discovered_applications:\n")
         pprint(api_response)
     except Exception as e:
@@ -72,12 +73,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **int**| Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 250]
  **offset** | **int**| Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 0]
- **filter** | **str**| Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)       Filtering is supported for the following fields and operators:  **name**: *eq, sw, co*  **description**: *eq, sw, co*  | [optional] 
+ **detail** | **str**| Determines whether slim, or increased level of detail is provided for each discovered application in the returned list. SLIM is the default behavior. | [optional] 
+ **filter** | **str**| Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)       Filtering is supported for the following fields and operators:  **name**: *eq, sw, co*  **description**: *eq, sw, co*  **createdAtStart**: *eq, le, ge*  **createdAtEnd**: *eq, le, ge*  **discoveredAtStart**: *eq, le, ge*  **discoveredAtEnd**: *eq, le, ge*  **discoverySource**: *eq, in*  | [optional] 
  **sorters** | **str**| Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, discoveredAt, discoverySource** | [optional] 
 
 ### Return type
 
-**List[List[DiscoveredApplicationsInner]]**
+[**List[GetDiscoveredApplications200ResponseInner]**](GetDiscoveredApplications200ResponseInner.md)
 
 ### Authorization
 
@@ -92,7 +94,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Successfully retrieved list of discovered applications. |  -  |
+**200** | List of discovered applications. By default, the API returns a list of SLIM discovered applications. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |

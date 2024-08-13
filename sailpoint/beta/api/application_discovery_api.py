@@ -25,11 +25,11 @@ except ImportError:
 
 from pydantic import Field
 from typing_extensions import Annotated
-from pydantic import StrictBytes, StrictStr
+from pydantic import StrictBytes, StrictStr, field_validator
 
 from typing import List, Optional, Union
 
-from sailpoint.beta.models.discovered_applications_inner import DiscoveredApplicationsInner
+from sailpoint.beta.models.get_discovered_applications200_response_inner import GetDiscoveredApplications200ResponseInner
 from sailpoint.beta.models.manual_discover_applications_template import ManualDiscoverApplicationsTemplate
 from sailpoint.beta.models.vendor_connector_mapping import VendorConnectorMapping
 
@@ -56,7 +56,8 @@ class ApplicationDiscoveryApi:
         self,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        filter: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)       Filtering is supported for the following fields and operators:  **name**: *eq, sw, co*  **description**: *eq, sw, co* ")] = None,
+        detail: Annotated[Optional[StrictStr], Field(description="Determines whether slim, or increased level of detail is provided for each discovered application in the returned list. SLIM is the default behavior.")] = None,
+        filter: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)       Filtering is supported for the following fields and operators:  **name**: *eq, sw, co*  **description**: *eq, sw, co*  **createdAtStart**: *eq, le, ge*  **createdAtEnd**: *eq, le, ge*  **discoveredAtStart**: *eq, le, ge*  **discoveredAtEnd**: *eq, le, ge*  **discoverySource**: *eq, in* ")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, discoveredAt, discoverySource**")] = None,
         _request_timeout: Union[
             None,
@@ -70,7 +71,7 @@ class ApplicationDiscoveryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[List[DiscoveredApplicationsInner]]:
+    ) -> List[GetDiscoveredApplications200ResponseInner]:
         """Retrieve discovered applications for tenant
 
         Fetches a list of applications that have been identified within the environment. This includes details such as application names, discovery dates, potential correlated saas_vendors and related suggested connectors. 
@@ -79,7 +80,9 @@ class ApplicationDiscoveryApi:
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
-        :param filter: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)       Filtering is supported for the following fields and operators:  **name**: *eq, sw, co*  **description**: *eq, sw, co* 
+        :param detail: Determines whether slim, or increased level of detail is provided for each discovered application in the returned list. SLIM is the default behavior.
+        :type detail: str
+        :param filter: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)       Filtering is supported for the following fields and operators:  **name**: *eq, sw, co*  **description**: *eq, sw, co*  **createdAtStart**: *eq, le, ge*  **createdAtEnd**: *eq, le, ge*  **discoveredAtStart**: *eq, le, ge*  **discoveredAtEnd**: *eq, le, ge*  **discoverySource**: *eq, in* 
         :type filter: str
         :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, discoveredAt, discoverySource**
         :type sorters: str
@@ -108,6 +111,7 @@ class ApplicationDiscoveryApi:
         _param = self._get_discovered_applications_serialize(
             limit=limit,
             offset=offset,
+            detail=detail,
             filter=filter,
             sorters=sorters,
             _request_auth=_request_auth,
@@ -117,7 +121,7 @@ class ApplicationDiscoveryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[List[DiscoveredApplicationsInner]]",
+            '200': "List[GetDiscoveredApplications200ResponseInner]",
             '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
@@ -140,7 +144,8 @@ class ApplicationDiscoveryApi:
         self,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        filter: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)       Filtering is supported for the following fields and operators:  **name**: *eq, sw, co*  **description**: *eq, sw, co* ")] = None,
+        detail: Annotated[Optional[StrictStr], Field(description="Determines whether slim, or increased level of detail is provided for each discovered application in the returned list. SLIM is the default behavior.")] = None,
+        filter: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)       Filtering is supported for the following fields and operators:  **name**: *eq, sw, co*  **description**: *eq, sw, co*  **createdAtStart**: *eq, le, ge*  **createdAtEnd**: *eq, le, ge*  **discoveredAtStart**: *eq, le, ge*  **discoveredAtEnd**: *eq, le, ge*  **discoverySource**: *eq, in* ")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, discoveredAt, discoverySource**")] = None,
         _request_timeout: Union[
             None,
@@ -154,7 +159,7 @@ class ApplicationDiscoveryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[List[DiscoveredApplicationsInner]]]:
+    ) -> ApiResponse[List[GetDiscoveredApplications200ResponseInner]]:
         """Retrieve discovered applications for tenant
 
         Fetches a list of applications that have been identified within the environment. This includes details such as application names, discovery dates, potential correlated saas_vendors and related suggested connectors. 
@@ -163,7 +168,9 @@ class ApplicationDiscoveryApi:
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
-        :param filter: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)       Filtering is supported for the following fields and operators:  **name**: *eq, sw, co*  **description**: *eq, sw, co* 
+        :param detail: Determines whether slim, or increased level of detail is provided for each discovered application in the returned list. SLIM is the default behavior.
+        :type detail: str
+        :param filter: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)       Filtering is supported for the following fields and operators:  **name**: *eq, sw, co*  **description**: *eq, sw, co*  **createdAtStart**: *eq, le, ge*  **createdAtEnd**: *eq, le, ge*  **discoveredAtStart**: *eq, le, ge*  **discoveredAtEnd**: *eq, le, ge*  **discoverySource**: *eq, in* 
         :type filter: str
         :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, discoveredAt, discoverySource**
         :type sorters: str
@@ -192,6 +199,7 @@ class ApplicationDiscoveryApi:
         _param = self._get_discovered_applications_serialize(
             limit=limit,
             offset=offset,
+            detail=detail,
             filter=filter,
             sorters=sorters,
             _request_auth=_request_auth,
@@ -201,7 +209,7 @@ class ApplicationDiscoveryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[List[DiscoveredApplicationsInner]]",
+            '200': "List[GetDiscoveredApplications200ResponseInner]",
             '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
@@ -224,7 +232,8 @@ class ApplicationDiscoveryApi:
         self,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        filter: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)       Filtering is supported for the following fields and operators:  **name**: *eq, sw, co*  **description**: *eq, sw, co* ")] = None,
+        detail: Annotated[Optional[StrictStr], Field(description="Determines whether slim, or increased level of detail is provided for each discovered application in the returned list. SLIM is the default behavior.")] = None,
+        filter: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)       Filtering is supported for the following fields and operators:  **name**: *eq, sw, co*  **description**: *eq, sw, co*  **createdAtStart**: *eq, le, ge*  **createdAtEnd**: *eq, le, ge*  **discoveredAtStart**: *eq, le, ge*  **discoveredAtEnd**: *eq, le, ge*  **discoverySource**: *eq, in* ")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, discoveredAt, discoverySource**")] = None,
         _request_timeout: Union[
             None,
@@ -247,7 +256,9 @@ class ApplicationDiscoveryApi:
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
-        :param filter: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)       Filtering is supported for the following fields and operators:  **name**: *eq, sw, co*  **description**: *eq, sw, co* 
+        :param detail: Determines whether slim, or increased level of detail is provided for each discovered application in the returned list. SLIM is the default behavior.
+        :type detail: str
+        :param filter: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)       Filtering is supported for the following fields and operators:  **name**: *eq, sw, co*  **description**: *eq, sw, co*  **createdAtStart**: *eq, le, ge*  **createdAtEnd**: *eq, le, ge*  **discoveredAtStart**: *eq, le, ge*  **discoveredAtEnd**: *eq, le, ge*  **discoverySource**: *eq, in* 
         :type filter: str
         :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, discoveredAt, discoverySource**
         :type sorters: str
@@ -276,6 +287,7 @@ class ApplicationDiscoveryApi:
         _param = self._get_discovered_applications_serialize(
             limit=limit,
             offset=offset,
+            detail=detail,
             filter=filter,
             sorters=sorters,
             _request_auth=_request_auth,
@@ -285,7 +297,7 @@ class ApplicationDiscoveryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[List[DiscoveredApplicationsInner]]",
+            '200': "List[GetDiscoveredApplications200ResponseInner]",
             '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
@@ -303,6 +315,7 @@ class ApplicationDiscoveryApi:
         self,
         limit,
         offset,
+        detail,
         filter,
         sorters,
         _request_auth,
@@ -332,6 +345,10 @@ class ApplicationDiscoveryApi:
         if offset is not None:
             
             _query_params.append(('offset', offset))
+            
+        if detail is not None:
+            
+            _query_params.append(('detail', detail))
             
         if filter is not None:
             

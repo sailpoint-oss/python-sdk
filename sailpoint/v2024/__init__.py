@@ -407,7 +407,6 @@ from sailpoint.v2024.models.data_access_policies_inner import DataAccessPolicies
 from sailpoint.v2024.models.delete_non_employee_records_in_bulk_request import DeleteNonEmployeeRecordsInBulkRequest
 from sailpoint.v2024.models.delete_source202_response import DeleteSource202Response
 from sailpoint.v2024.models.delete_vendor_connector_mapping200_response import DeleteVendorConnectorMapping200Response
-from sailpoint.v2024.models.discovered_applications_inner import DiscoveredApplicationsInner
 from sailpoint.v2024.models.display_reference import DisplayReference
 from sailpoint.v2024.models.dkim_attributes import DkimAttributes
 from sailpoint.v2024.models.document_type import DocumentType
@@ -484,7 +483,9 @@ from sailpoint.v2024.models.form_item_details import FormItemDetails
 from sailpoint.v2024.models.form_owner import FormOwner
 from sailpoint.v2024.models.form_used_by import FormUsedBy
 from sailpoint.v2024.models.forward_approval_dto import ForwardApprovalDto
+from sailpoint.v2024.models.full_discovered_applications_inner import FullDiscoveredApplicationsInner
 from sailpoint.v2024.models.get_active_campaigns200_response_inner import GetActiveCampaigns200ResponseInner
+from sailpoint.v2024.models.get_discovered_applications200_response_inner import GetDiscoveredApplications200ResponseInner
 from sailpoint.v2024.models.get_historical_identity_events200_response_inner import GetHistoricalIdentityEvents200ResponseInner
 from sailpoint.v2024.models.get_o_auth_client_response import GetOAuthClientResponse
 from sailpoint.v2024.models.get_personal_access_token_response import GetPersonalAccessTokenResponse
@@ -916,6 +917,7 @@ from sailpoint.v2024.models.set_lifecycle_state_request import SetLifecycleState
 from sailpoint.v2024.models.sim_integration_details import SimIntegrationDetails
 from sailpoint.v2024.models.sim_integration_details_all_of_before_provisioning_rule import SimIntegrationDetailsAllOfBeforeProvisioningRule
 from sailpoint.v2024.models.slim_campaign import SlimCampaign
+from sailpoint.v2024.models.slim_discovered_applications_inner import SlimDiscoveredApplicationsInner
 from sailpoint.v2024.models.sod_exempt_criteria import SodExemptCriteria
 from sailpoint.v2024.models.sod_policy import SodPolicy
 from sailpoint.v2024.models.sod_policy_conflicting_access_criteria import SodPolicyConflictingAccessCriteria

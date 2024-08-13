@@ -15,10 +15,10 @@
 import unittest
 import datetime
 
-from sailpoint.v2024.models.discovered_applications_inner import DiscoveredApplicationsInner
+from sailpoint.v2024.models.get_discovered_applications200_response_inner import GetDiscoveredApplications200ResponseInner
 
-class TestDiscoveredApplicationsInner(unittest.TestCase):
-    """DiscoveredApplicationsInner unit test stubs"""
+class TestGetDiscoveredApplications200ResponseInner(unittest.TestCase):
+    """GetDiscoveredApplications200ResponseInner unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,31 +26,24 @@ class TestDiscoveredApplicationsInner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> DiscoveredApplicationsInner:
-        """Test DiscoveredApplicationsInner
+    def make_instance(self, include_optional) -> GetDiscoveredApplications200ResponseInner:
+        """Test GetDiscoveredApplications200ResponseInner
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `DiscoveredApplicationsInner`
+        # uncomment below to create an instance of `GetDiscoveredApplications200ResponseInner`
         """
-        model = DiscoveredApplicationsInner()
+        model = GetDiscoveredApplications200ResponseInner()
         if include_optional:
-            return DiscoveredApplicationsInner(
-                id = '',
-                name = 'ExampleApp',
-                discovery_source = 'CSV',
-                discovered_vendor = 'ExampleVendor',
-                description = 'An application for managing examples.',
-                recommended_connectors = [ConnectorA, ConnectorB],
-                discovered_timestamp = '2023-01-01T12:00Z'
+            return GetDiscoveredApplications200ResponseInner(
             )
         else:
-            return DiscoveredApplicationsInner(
+            return GetDiscoveredApplications200ResponseInner(
         )
         """
 
-    def testDiscoveredApplicationsInner(self):
-        """Test DiscoveredApplicationsInner"""
+    def testGetDiscoveredApplications200ResponseInner(self):
+        """Test GetDiscoveredApplications200ResponseInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
