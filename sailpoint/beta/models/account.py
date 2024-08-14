@@ -139,6 +139,11 @@ class Account(BaseModel):
         if self.identity_state is None and "identity_state" in self.model_fields_set:
             _dict['identityState'] = None
 
+        # set to None if connection_type (nullable) is None
+        # and model_fields_set contains the field
+        if self.connection_type is None and "connection_type" in self.model_fields_set:
+            _dict['connectionType'] = None
+
         # set to None if type (nullable) is None
         # and model_fields_set contains the field
         if self.type is None and "type" in self.model_fields_set:
@@ -158,6 +163,11 @@ class Account(BaseModel):
         # and model_fields_set contains the field
         if self.uuid is None and "uuid" in self.model_fields_set:
             _dict['uuid'] = None
+
+        # set to None if source_owner (nullable) is None
+        # and model_fields_set contains the field
+        if self.source_owner is None and "source_owner" in self.model_fields_set:
+            _dict['sourceOwner'] = None
 
         # set to None if features (nullable) is None
         # and model_fields_set contains the field
