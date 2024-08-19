@@ -481,7 +481,7 @@ sailpoint/v2024/docs/FormItemDetails.md
 sailpoint/v2024/docs/FormOwner.md
 sailpoint/v2024/docs/FormUsedBy.md
 sailpoint/v2024/docs/ForwardApprovalDto.md
-sailpoint/v2024/docs/FullDiscoveredApplicationsInner.md
+sailpoint/v2024/docs/FullDiscoveredApplications.md
 sailpoint/v2024/docs/GetActiveCampaigns200ResponseInner.md
 sailpoint/v2024/docs/GetDiscoveredApplications200ResponseInner.md
 sailpoint/v2024/docs/GetHistoricalIdentityEvents200ResponseInner.md
@@ -958,7 +958,7 @@ sailpoint/v2024/docs/SetLifecycleStateRequest.md
 sailpoint/v2024/docs/SimIntegrationDetails.md
 sailpoint/v2024/docs/SimIntegrationDetailsAllOfBeforeProvisioningRule.md
 sailpoint/v2024/docs/SlimCampaign.md
-sailpoint/v2024/docs/SlimDiscoveredApplicationsInner.md
+sailpoint/v2024/docs/SlimDiscoveredApplications.md
 sailpoint/v2024/docs/SodExemptCriteria.md
 sailpoint/v2024/docs/SodPolicy.md
 sailpoint/v2024/docs/SodPolicyConflictingAccessCriteria.md
@@ -1510,7 +1510,7 @@ sailpoint/v2024/models/form_item_details.py
 sailpoint/v2024/models/form_owner.py
 sailpoint/v2024/models/form_used_by.py
 sailpoint/v2024/models/forward_approval_dto.py
-sailpoint/v2024/models/full_discovered_applications_inner.py
+sailpoint/v2024/models/full_discovered_applications.py
 sailpoint/v2024/models/get_active_campaigns200_response_inner.py
 sailpoint/v2024/models/get_discovered_applications200_response_inner.py
 sailpoint/v2024/models/get_historical_identity_events200_response_inner.py
@@ -1944,7 +1944,7 @@ sailpoint/v2024/models/set_lifecycle_state_request.py
 sailpoint/v2024/models/sim_integration_details.py
 sailpoint/v2024/models/sim_integration_details_all_of_before_provisioning_rule.py
 sailpoint/v2024/models/slim_campaign.py
-sailpoint/v2024/models/slim_discovered_applications_inner.py
+sailpoint/v2024/models/slim_discovered_applications.py
 sailpoint/v2024/models/sod_exempt_criteria.py
 sailpoint/v2024/models/sod_policy.py
 sailpoint/v2024/models/sod_policy_conflicting_access_criteria.py
@@ -2507,7 +2507,7 @@ sailpoint/v2024/test/test_form_item_details.py
 sailpoint/v2024/test/test_form_owner.py
 sailpoint/v2024/test/test_form_used_by.py
 sailpoint/v2024/test/test_forward_approval_dto.py
-sailpoint/v2024/test/test_full_discovered_applications_inner.py
+sailpoint/v2024/test/test_full_discovered_applications.py
 sailpoint/v2024/test/test_get_active_campaigns200_response_inner.py
 sailpoint/v2024/test/test_get_discovered_applications200_response_inner.py
 sailpoint/v2024/test/test_get_historical_identity_events200_response_inner.py
@@ -2981,7 +2981,7 @@ sailpoint/v2024/test/test_sim_integration_details.py
 sailpoint/v2024/test/test_sim_integration_details_all_of_before_provisioning_rule.py
 sailpoint/v2024/test/test_sim_integrations_api.py
 sailpoint/v2024/test/test_slim_campaign.py
-sailpoint/v2024/test/test_slim_discovered_applications_inner.py
+sailpoint/v2024/test/test_slim_discovered_applications.py
 sailpoint/v2024/test/test_sod_exempt_criteria.py
 sailpoint/v2024/test/test_sod_policies_api.py
 sailpoint/v2024/test/test_sod_policy.py

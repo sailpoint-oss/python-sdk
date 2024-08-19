@@ -1,5 +1,6 @@
-# SlimDiscoveredApplicationsInner
+# SlimDiscoveredApplications
 
+Discovered applications
 
 ## Properties
 
@@ -18,19 +19,19 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from sailpoint.v2024.models.slim_discovered_applications_inner import SlimDiscoveredApplicationsInner
+from sailpoint.v2024.models.slim_discovered_applications import SlimDiscoveredApplications
 
 # TODO update the JSON string below
 json = "{}"
-# create an instance of SlimDiscoveredApplicationsInner from a JSON string
-slim_discovered_applications_inner_instance = SlimDiscoveredApplicationsInner.from_json(json)
+# create an instance of SlimDiscoveredApplications from a JSON string
+slim_discovered_applications_instance = SlimDiscoveredApplications.from_json(json)
 # print the JSON string representation of the object
-print SlimDiscoveredApplicationsInner.to_json()
+print SlimDiscoveredApplications.to_json()
 
 # convert the object into a dict
-slim_discovered_applications_inner_dict = slim_discovered_applications_inner_instance.to_dict()
-# create an instance of SlimDiscoveredApplicationsInner from a dict
-slim_discovered_applications_inner_form_dict = slim_discovered_applications_inner.from_dict(slim_discovered_applications_inner_dict)
+slim_discovered_applications_dict = slim_discovered_applications_instance.to_dict()
+# create an instance of SlimDiscoveredApplications from a dict
+slim_discovered_applications_form_dict = slim_discovered_applications.from_dict(slim_discovered_applications_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

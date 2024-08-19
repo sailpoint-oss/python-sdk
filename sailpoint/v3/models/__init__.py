@@ -206,7 +206,7 @@ from sailpoint.v3.models.filter_type import FilterType
 from sailpoint.v3.models.form_details import FormDetails
 from sailpoint.v3.models.form_item_details import FormItemDetails
 from sailpoint.v3.models.forward_approval_dto import ForwardApprovalDto
-from sailpoint.v3.models.full_discovered_applications_inner import FullDiscoveredApplicationsInner
+from sailpoint.v3.models.full_discovered_applications import FullDiscoveredApplications
 from sailpoint.v3.models.get_active_campaigns200_response_inner import GetActiveCampaigns200ResponseInner
 from sailpoint.v3.models.get_discovered_applications200_response_inner import GetDiscoveredApplications200ResponseInner
 from sailpoint.v3.models.get_o_auth_client_response import GetOAuthClientResponse
@@ -470,7 +470,7 @@ from sailpoint.v3.models.session_configuration import SessionConfiguration
 from sailpoint.v3.models.set_lifecycle_state200_response import SetLifecycleState200Response
 from sailpoint.v3.models.set_lifecycle_state_request import SetLifecycleStateRequest
 from sailpoint.v3.models.slim_campaign import SlimCampaign
-from sailpoint.v3.models.slim_discovered_applications_inner import SlimDiscoveredApplicationsInner
+from sailpoint.v3.models.slim_discovered_applications import SlimDiscoveredApplications
 from sailpoint.v3.models.sod_exempt_criteria import SodExemptCriteria
 from sailpoint.v3.models.sod_policy import SodPolicy
 from sailpoint.v3.models.sod_policy_conflicting_access_criteria import SodPolicyConflictingAccessCriteria

@@ -1,5 +1,6 @@
-# FullDiscoveredApplicationsInner
+# FullDiscoveredApplications
 
+Discovered applications with their respective associated sources
 
 ## Properties
 
@@ -19,19 +20,19 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from sailpoint.v3.models.full_discovered_applications_inner import FullDiscoveredApplicationsInner
+from sailpoint.v2024.models.full_discovered_applications import FullDiscoveredApplications
 
 # TODO update the JSON string below
 json = "{}"
-# create an instance of FullDiscoveredApplicationsInner from a JSON string
-full_discovered_applications_inner_instance = FullDiscoveredApplicationsInner.from_json(json)
+# create an instance of FullDiscoveredApplications from a JSON string
+full_discovered_applications_instance = FullDiscoveredApplications.from_json(json)
 # print the JSON string representation of the object
-print FullDiscoveredApplicationsInner.to_json()
+print FullDiscoveredApplications.to_json()
 
 # convert the object into a dict
-full_discovered_applications_inner_dict = full_discovered_applications_inner_instance.to_dict()
-# create an instance of FullDiscoveredApplicationsInner from a dict
-full_discovered_applications_inner_form_dict = full_discovered_applications_inner.from_dict(full_discovered_applications_inner_dict)
+full_discovered_applications_dict = full_discovered_applications_instance.to_dict()
+# create an instance of FullDiscoveredApplications from a dict
+full_discovered_applications_form_dict = full_discovered_applications.from_dict(full_discovered_applications_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

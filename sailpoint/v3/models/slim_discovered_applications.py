@@ -26,9 +26,9 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-class SlimDiscoveredApplicationsInner(BaseModel):
+class SlimDiscoveredApplications(BaseModel):
     """
-    SlimDiscoveredApplicationsInner
+    Discovered applications
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="Unique identifier for the discovered application.")
     name: Optional[StrictStr] = Field(default=None, description="Name of the discovered application.")
@@ -59,7 +59,7 @@ class SlimDiscoveredApplicationsInner(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
-        """Create an instance of SlimDiscoveredApplicationsInner from a JSON string"""
+        """Create an instance of SlimDiscoveredApplications from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -82,7 +82,7 @@ class SlimDiscoveredApplicationsInner(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Dict) -> Self:
-        """Create an instance of SlimDiscoveredApplicationsInner from a dict"""
+        """Create an instance of SlimDiscoveredApplications from a dict"""
         if obj is None:
             return None
 

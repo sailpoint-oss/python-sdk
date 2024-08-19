@@ -405,7 +405,7 @@ from sailpoint.beta.models.form_item_details import FormItemDetails
 from sailpoint.beta.models.form_owner import FormOwner
 from sailpoint.beta.models.form_used_by import FormUsedBy
 from sailpoint.beta.models.forward_approval_dto import ForwardApprovalDto
-from sailpoint.beta.models.full_discovered_applications_inner import FullDiscoveredApplicationsInner
+from sailpoint.beta.models.full_discovered_applications import FullDiscoveredApplications
 from sailpoint.beta.models.fullcampaign import Fullcampaign
 from sailpoint.beta.models.fullcampaign_all_of_filter import FullcampaignAllOfFilter
 from sailpoint.beta.models.fullcampaign_all_of_role_composition_campaign_info import FullcampaignAllOfRoleCompositionCampaignInfo
@@ -781,7 +781,7 @@ from sailpoint.beta.models.set_icon200_response import SetIcon200Response
 from sailpoint.beta.models.set_icon_request import SetIconRequest
 from sailpoint.beta.models.sim_integration_details import SimIntegrationDetails
 from sailpoint.beta.models.sim_integration_details_all_of_before_provisioning_rule import SimIntegrationDetailsAllOfBeforeProvisioningRule
-from sailpoint.beta.models.slim_discovered_applications_inner import SlimDiscoveredApplicationsInner
+from sailpoint.beta.models.slim_discovered_applications import SlimDiscoveredApplications
 from sailpoint.beta.models.slimcampaign import Slimcampaign
 from sailpoint.beta.models.sod_exempt_criteria import SodExemptCriteria
 from sailpoint.beta.models.sod_exempt_criteria1 import SodExemptCriteria1

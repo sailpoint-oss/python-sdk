@@ -26,9 +26,9 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-class FullDiscoveredApplicationsInner(BaseModel):
+class FullDiscoveredApplications(BaseModel):
     """
-    FullDiscoveredApplicationsInner
+    Discovered applications with their respective associated sources
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="Unique identifier for the discovered application.")
     name: Optional[StrictStr] = Field(default=None, description="Name of the discovered application.")
@@ -60,7 +60,7 @@ class FullDiscoveredApplicationsInner(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
-        """Create an instance of FullDiscoveredApplicationsInner from a JSON string"""
+        """Create an instance of FullDiscoveredApplications from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -83,7 +83,7 @@ class FullDiscoveredApplicationsInner(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Dict) -> Self:
-        """Create an instance of FullDiscoveredApplicationsInner from a dict"""
+        """Create an instance of FullDiscoveredApplications from a dict"""
         if obj is None:
             return None
 

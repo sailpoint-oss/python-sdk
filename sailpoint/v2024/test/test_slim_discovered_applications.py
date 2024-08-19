@@ -15,10 +15,10 @@
 import unittest
 import datetime
 
-from sailpoint.v2024.models.full_discovered_applications_inner import FullDiscoveredApplicationsInner
+from sailpoint.v2024.models.slim_discovered_applications import SlimDiscoveredApplications
 
-class TestFullDiscoveredApplicationsInner(unittest.TestCase):
-    """FullDiscoveredApplicationsInner unit test stubs"""
+class TestSlimDiscoveredApplications(unittest.TestCase):
+    """SlimDiscoveredApplications unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,16 +26,16 @@ class TestFullDiscoveredApplicationsInner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> FullDiscoveredApplicationsInner:
-        """Test FullDiscoveredApplicationsInner
+    def make_instance(self, include_optional) -> SlimDiscoveredApplications:
+        """Test SlimDiscoveredApplications
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `FullDiscoveredApplicationsInner`
+        # uncomment below to create an instance of `SlimDiscoveredApplications`
         """
-        model = FullDiscoveredApplicationsInner()
+        model = SlimDiscoveredApplications()
         if include_optional:
-            return FullDiscoveredApplicationsInner(
+            return SlimDiscoveredApplications(
                 id = '',
                 name = 'ExampleApp',
                 discovery_source = 'csv',
@@ -44,16 +44,15 @@ class TestFullDiscoveredApplicationsInner(unittest.TestCase):
                 recommended_connectors = [ConnectorA, ConnectorB],
                 discovered_at = '2023-01-01T12:00Z',
                 created_at = '2023-01-01T12:00Z',
-                status = 'ACTIVE',
-                associated_sources = [e0cc5d7d-bf7f-4f81-b2af-8885b09d9923, a0303682-5e4a-44f7-bdc2-6ce6112549c1]
+                status = 'ACTIVE'
             )
         else:
-            return FullDiscoveredApplicationsInner(
+            return SlimDiscoveredApplications(
         )
         """
 
-    def testFullDiscoveredApplicationsInner(self):
-        """Test FullDiscoveredApplicationsInner"""
+    def testSlimDiscoveredApplications(self):
+        """Test SlimDiscoveredApplications"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

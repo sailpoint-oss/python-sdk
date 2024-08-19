@@ -20,9 +20,8 @@ import re  # noqa: F401
 
 from typing import Any, List, Optional
 from pydantic import BaseModel, Field, StrictStr, ValidationError, field_validator
-from pydantic import Field
-from sailpoint.beta.models.full_discovered_applications_inner import FullDiscoveredApplicationsInner
-from sailpoint.beta.models.slim_discovered_applications_inner import SlimDiscoveredApplicationsInner
+from sailpoint.beta.models.full_discovered_applications import FullDiscoveredApplications
+from sailpoint.beta.models.slim_discovered_applications import SlimDiscoveredApplications
 from typing import Union, Any, List, TYPE_CHECKING, Optional, Dict
 from typing_extensions import Literal
 from pydantic import StrictStr, Field
@@ -31,18 +30,18 @@ try:
 except ImportError:
     from typing_extensions import Self
 
-GETDISCOVEREDAPPLICATIONS200RESPONSEINNER_ONE_OF_SCHEMAS = ["List[FullDiscoveredApplicationsInner]", "List[SlimDiscoveredApplicationsInner]"]
+GETDISCOVEREDAPPLICATIONS200RESPONSEINNER_ONE_OF_SCHEMAS = ["FullDiscoveredApplications", "SlimDiscoveredApplications"]
 
 class GetDiscoveredApplications200ResponseInner(BaseModel):
     """
     GetDiscoveredApplications200ResponseInner
     """
-    # data type: List[SlimDiscoveredApplicationsInner]
-    oneof_schema_1_validator: Optional[List[SlimDiscoveredApplicationsInner]] = Field(default=None, description="List of discovered applications")
-    # data type: List[FullDiscoveredApplicationsInner]
-    oneof_schema_2_validator: Optional[List[FullDiscoveredApplicationsInner]] = Field(default=None, description="List of discovered applications with their respective associated sources")
-    actual_instance: Optional[Union[List[FullDiscoveredApplicationsInner], List[SlimDiscoveredApplicationsInner]]] = None
-    one_of_schemas: List[str] = Literal["List[FullDiscoveredApplicationsInner]", "List[SlimDiscoveredApplicationsInner]"]
+    # data type: SlimDiscoveredApplications
+    oneof_schema_1_validator: Optional[SlimDiscoveredApplications] = None
+    # data type: FullDiscoveredApplications
+    oneof_schema_2_validator: Optional[FullDiscoveredApplications] = None
+    actual_instance: Optional[Union[FullDiscoveredApplications, SlimDiscoveredApplications]] = None
+    one_of_schemas: List[str] = Literal["FullDiscoveredApplications", "SlimDiscoveredApplications"]
 
     model_config = {
         "validate_assignment": True,
@@ -65,24 +64,22 @@ class GetDiscoveredApplications200ResponseInner(BaseModel):
         instance = GetDiscoveredApplications200ResponseInner.model_construct()
         error_messages = []
         match = 0
-        # validate data type: List[SlimDiscoveredApplicationsInner]
-        try:
-            instance.oneof_schema_1_validator = v
+        # validate data type: SlimDiscoveredApplications
+        if not isinstance(v, SlimDiscoveredApplications):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `SlimDiscoveredApplications`")
+        else:
             match += 1
-        except (ValidationError, ValueError) as e:
-            error_messages.append(str(e))
-        # validate data type: List[FullDiscoveredApplicationsInner]
-        try:
-            instance.oneof_schema_2_validator = v
+        # validate data type: FullDiscoveredApplications
+        if not isinstance(v, FullDiscoveredApplications):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `FullDiscoveredApplications`")
+        else:
             match += 1
-        except (ValidationError, ValueError) as e:
-            error_messages.append(str(e))
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when setting `actual_instance` in GetDiscoveredApplications200ResponseInner with oneOf schemas: List[FullDiscoveredApplicationsInner], List[SlimDiscoveredApplicationsInner]. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when setting `actual_instance` in GetDiscoveredApplications200ResponseInner with oneOf schemas: FullDiscoveredApplications, SlimDiscoveredApplications. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when setting `actual_instance` in GetDiscoveredApplications200ResponseInner with oneOf schemas: List[FullDiscoveredApplicationsInner], List[SlimDiscoveredApplicationsInner]. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in GetDiscoveredApplications200ResponseInner with oneOf schemas: FullDiscoveredApplications, SlimDiscoveredApplications. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -97,31 +94,25 @@ class GetDiscoveredApplications200ResponseInner(BaseModel):
         error_messages = []
         match = 0
 
-        # deserialize data into List[SlimDiscoveredApplicationsInner]
+        # deserialize data into SlimDiscoveredApplications
         try:
-            # validation
-            instance.oneof_schema_1_validator = json.loads(json_str)
-            # assign value to actual_instance
-            instance.actual_instance = instance.oneof_schema_1_validator
+            instance.actual_instance = SlimDiscoveredApplications.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
-        # deserialize data into List[FullDiscoveredApplicationsInner]
+        # deserialize data into FullDiscoveredApplications
         try:
-            # validation
-            instance.oneof_schema_2_validator = json.loads(json_str)
-            # assign value to actual_instance
-            instance.actual_instance = instance.oneof_schema_2_validator
+            instance.actual_instance = FullDiscoveredApplications.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
 
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when deserializing the JSON string into GetDiscoveredApplications200ResponseInner with oneOf schemas: List[FullDiscoveredApplicationsInner], List[SlimDiscoveredApplicationsInner]. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when deserializing the JSON string into GetDiscoveredApplications200ResponseInner with oneOf schemas: FullDiscoveredApplications, SlimDiscoveredApplications. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into GetDiscoveredApplications200ResponseInner with oneOf schemas: List[FullDiscoveredApplicationsInner], List[SlimDiscoveredApplicationsInner]. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into GetDiscoveredApplications200ResponseInner with oneOf schemas: FullDiscoveredApplications, SlimDiscoveredApplications. Details: " + ", ".join(error_messages))
         else:
             return instance
 
