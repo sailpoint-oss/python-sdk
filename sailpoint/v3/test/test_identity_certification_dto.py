@@ -44,7 +44,7 @@ class TestIdentityCertificationDto(unittest.TestCase):
                     type = 'CAMPAIGN', 
                     campaign_type = 'MANAGER', 
                     description = 'A description of the campaign', 
-                    correlated_status = CORRELATED, 
+                    correlated_status = 'CORRELATED', 
                     mandatory_comment_requirement = 'NO_DECISIONS', ),
                 completed = True,
                 identities_completed = 5,

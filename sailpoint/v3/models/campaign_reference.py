@@ -35,7 +35,7 @@ class CampaignReference(BaseModel):
     type: StrictStr = Field(description="The type of object that is being referenced.")
     campaign_type: StrictStr = Field(description="The type of the campaign.", alias="campaignType")
     description: Optional[StrictStr] = Field(description="The description of the campaign set by the admin who created it.")
-    correlated_status: Dict[str, Any] = Field(description="The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns can be Uncorrelated. An Uncorrelated certification campaign only includes Uncorrelated identities (An identity is uncorrelated if it has no accounts on an authoritative source).", alias="correlatedStatus")
+    correlated_status: StrictStr = Field(description="The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns can be Uncorrelated. An Uncorrelated certification campaign only includes Uncorrelated identities (An identity is uncorrelated if it has no accounts on an authoritative source).", alias="correlatedStatus")
     mandatory_comment_requirement: StrictStr = Field(description="Determines whether comments are required for decisions during certification reviews. You can require comments for all decisions, revoke-only decisions, or no decisions. By default, comments are not required for decisions.", alias="mandatoryCommentRequirement")
     __properties: ClassVar[List[str]] = ["id", "name", "type", "campaignType", "description", "correlatedStatus", "mandatoryCommentRequirement"]
 

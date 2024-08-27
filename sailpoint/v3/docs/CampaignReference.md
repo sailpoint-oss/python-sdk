@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **type** | **str** | The type of object that is being referenced. | 
 **campaign_type** | **str** | The type of the campaign. | 
 **description** | **str** | The description of the campaign set by the admin who created it. | 
-**correlated_status** | **object** | The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns can be Uncorrelated. An Uncorrelated certification campaign only includes Uncorrelated identities (An identity is uncorrelated if it has no accounts on an authoritative source). | 
+**correlated_status** | **str** | The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns can be Uncorrelated. An Uncorrelated certification campaign only includes Uncorrelated identities (An identity is uncorrelated if it has no accounts on an authoritative source). | 
 **mandatory_comment_requirement** | **str** | Determines whether comments are required for decisions during certification reviews. You can require comments for all decisions, revoke-only decisions, or no decisions. By default, comments are not required for decisions. | 
 
 ## Example
