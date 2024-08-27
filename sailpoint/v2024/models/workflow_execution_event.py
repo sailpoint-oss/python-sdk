@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,7 +27,7 @@ class WorkflowExecutionEvent(BaseModel):
     """
     WorkflowExecutionEvent
     """ # noqa: E501
-    type: Optional[Dict[str, Any]] = Field(default=None, description="The type of event")
+    type: Optional[StrictStr] = Field(default=None, description="The type of event")
     timestamp: Optional[datetime] = Field(default=None, description="The date-time when the event occurred")
     attributes: Optional[Dict[str, Any]] = Field(default=None, description="Additional attributes associated with the event")
     __properties: ClassVar[List[str]] = ["type", "timestamp", "attributes"]
@@ -38,8 +38,8 @@ class WorkflowExecutionEvent(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['WorkflowExecutionScheduled', 'WorkflowExecutionStarted', 'WorkflowExecutionCompleted', 'WorkflowExecutionFailed', 'WorkflowTaskScheduled', 'WorkflowTaskStarted', 'WorkflowTaskCompleted', 'WorkflowTaskFailed', 'ActivityTaskScheduled', 'ActivityTaskStarted', 'ActivityTaskCompleted', 'ActivityTaskFailed']):
-            raise ValueError("must be one of enum values ('WorkflowExecutionScheduled', 'WorkflowExecutionStarted', 'WorkflowExecutionCompleted', 'WorkflowExecutionFailed', 'WorkflowTaskScheduled', 'WorkflowTaskStarted', 'WorkflowTaskCompleted', 'WorkflowTaskFailed', 'ActivityTaskScheduled', 'ActivityTaskStarted', 'ActivityTaskCompleted', 'ActivityTaskFailed')")
+        if value not in set(['WorkflowExecutionScheduled', 'WorkflowExecutionStarted', 'WorkflowExecutionCompleted', 'WorkflowExecutionFailed', 'WorkflowTaskScheduled', 'WorkflowTaskStarted', 'WorkflowTaskCompleted', 'WorkflowTaskFailed', 'ActivityTaskScheduled', 'ActivityTaskStarted', 'ActivityTaskCompleted', 'ActivityTaskFailed', 'StartChildWorkflowExecutionInitiated', 'ChildWorkflowExecutionStarted', 'ChildWorkflowExecutionCompleted', 'ChildWorkflowExecutionFailed']):
+            raise ValueError("must be one of enum values ('WorkflowExecutionScheduled', 'WorkflowExecutionStarted', 'WorkflowExecutionCompleted', 'WorkflowExecutionFailed', 'WorkflowTaskScheduled', 'WorkflowTaskStarted', 'WorkflowTaskCompleted', 'WorkflowTaskFailed', 'ActivityTaskScheduled', 'ActivityTaskStarted', 'ActivityTaskCompleted', 'ActivityTaskFailed', 'StartChildWorkflowExecutionInitiated', 'ChildWorkflowExecutionStarted', 'ChildWorkflowExecutionCompleted', 'ChildWorkflowExecutionFailed')")
         return value
 
     model_config = ConfigDict(

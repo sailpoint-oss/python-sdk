@@ -35,7 +35,7 @@ class TestWorkflowExecutionEvent(unittest.TestCase):
         model = WorkflowExecutionEvent()
         if include_optional:
             return WorkflowExecutionEvent(
-                type = WorkflowTaskScheduled,
+                type = 'WorkflowTaskScheduled',
                 timestamp = '2022-02-07T20:13:31.640618296Z',
                 attributes = {}
             )

@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **object** | The type of event | [optional] 
+**type** | **str** | The type of event | [optional] 
 **timestamp** | **datetime** | The date-time when the event occurred | [optional] 
 **attributes** | **object** | Additional attributes associated with the event | [optional] 
 
