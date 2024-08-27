@@ -29,8 +29,6 @@ Create a new Service Desk Integrations.  A token with Org Admin or Service Desk 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.service_desk_integration_dto import ServiceDeskIntegrationDto
 from sailpoint.beta.rest import ApiException
@@ -115,8 +113,6 @@ Delete an existing Service Desk integration by ID.  A token with Org Admin or Se
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
@@ -198,8 +194,6 @@ Get an existing Service Desk integration by ID.  A token with Org Admin or Servi
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.service_desk_integration_dto import ServiceDeskIntegrationDto
 from sailpoint.beta.rest import ApiException
@@ -284,8 +278,6 @@ Get a list of ServiceDeskIntegrationDto for existing Service Desk Integrations. 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.service_desk_integration_dto import ServiceDeskIntegrationDto
 from sailpoint.beta.rest import ApiException
@@ -378,8 +370,6 @@ This API endpoint returns an existing Service Desk integration template by scrip
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.service_desk_integration_template_dto import ServiceDeskIntegrationTemplateDto
 from sailpoint.beta.rest import ApiException
@@ -464,8 +454,6 @@ This API endpoint returns the current list of supported Service Desk integration
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.service_desk_integration_template_type import ServiceDeskIntegrationTemplateType
 from sailpoint.beta.rest import ApiException
@@ -546,8 +534,6 @@ Get the time check configuration of queued SDIM tickets.  A token with Org Admin
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.queued_check_config_details import QueuedCheckConfigDetails
 from sailpoint.beta.rest import ApiException
@@ -628,8 +614,6 @@ Update an existing ServiceDeskIntegration by ID with a PATCH request.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.patch_service_desk_integration_request import PatchServiceDeskIntegrationRequest
 from sailpoint.beta.models.service_desk_integration_dto import ServiceDeskIntegrationDto
@@ -727,8 +711,6 @@ Update an existing Service Desk integration by ID with updated value in JSON for
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.service_desk_integration_dto import ServiceDeskIntegrationDto
 from sailpoint.beta.rest import ApiException
@@ -815,8 +797,6 @@ Update the time check configuration of queued SDIM tickets.  A token with Org Ad
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.queued_check_config_details import QueuedCheckConfigDetails
 from sailpoint.beta.rest import ApiException

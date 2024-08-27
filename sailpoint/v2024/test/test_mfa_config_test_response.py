@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v2024.models.mfa_config_test_response import MfaConfigTestResponse
 
@@ -28,7 +27,7 @@ class TestMfaConfigTestResponse(unittest.TestCase):
 
     def make_instance(self, include_optional) -> MfaConfigTestResponse:
         """Test MfaConfigTestResponse
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `MfaConfigTestResponse`

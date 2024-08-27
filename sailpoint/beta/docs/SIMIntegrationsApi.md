@@ -26,8 +26,6 @@ Create a new SIM Integrations.  A token with Org Admin or Service Desk Admin aut
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.service_desk_integration_dto import ServiceDeskIntegrationDto
 from sailpoint.beta.models.sim_integration_details import SimIntegrationDetails
@@ -113,8 +111,6 @@ Get the details of a SIM integration. A token with Org Admin or Service Desk Adm
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
@@ -196,8 +192,6 @@ Get the details of a SIM integration. A token with Org Admin or Service Desk Adm
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.service_desk_integration_dto import ServiceDeskIntegrationDto
 from sailpoint.beta.rest import ApiException
@@ -282,8 +276,6 @@ List the existing SIM integrations. A token with Org Admin or Service Desk Admin
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.service_desk_integration_dto import ServiceDeskIntegrationDto
 from sailpoint.beta.rest import ApiException
@@ -364,8 +356,6 @@ Patch a SIM beforeProvisioningRule attribute given a JsonPatch object. A token w
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.json_patch import JsonPatch
 from sailpoint.beta.models.service_desk_integration_dto import ServiceDeskIntegrationDto
@@ -453,8 +443,6 @@ Patch a SIM attribute given a JsonPatch object. A token with Org Admin or Servic
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.json_patch import JsonPatch
 from sailpoint.beta.models.service_desk_integration_dto import ServiceDeskIntegrationDto
@@ -542,8 +530,6 @@ Update an existing SIM integration.  A token with Org Admin or Service Desk Admi
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.service_desk_integration_dto import ServiceDeskIntegrationDto
 from sailpoint.beta.models.sim_integration_details import SimIntegrationDetails

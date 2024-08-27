@@ -66,12 +66,12 @@ json = "{}"
 # create an instance of TriggerExampleInput from a JSON string
 trigger_example_input_instance = TriggerExampleInput.from_json(json)
 # print the JSON string representation of the object
-print TriggerExampleInput.to_json()
+print(TriggerExampleInput.to_json())
 
 # convert the object into a dict
 trigger_example_input_dict = trigger_example_input_instance.to_dict()
 # create an instance of TriggerExampleInput from a dict
-trigger_example_input_form_dict = trigger_example_input.from_dict(trigger_example_input_dict)
+trigger_example_input_from_dict = TriggerExampleInput.from_dict(trigger_example_input_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

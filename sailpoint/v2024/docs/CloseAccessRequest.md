@@ -21,12 +21,12 @@ json = "{}"
 # create an instance of CloseAccessRequest from a JSON string
 close_access_request_instance = CloseAccessRequest.from_json(json)
 # print the JSON string representation of the object
-print CloseAccessRequest.to_json()
+print(CloseAccessRequest.to_json())
 
 # convert the object into a dict
 close_access_request_dict = close_access_request_instance.to_dict()
 # create an instance of CloseAccessRequest from a dict
-close_access_request_form_dict = close_access_request.from_dict(close_access_request_dict)
+close_access_request_from_dict = CloseAccessRequest.from_dict(close_access_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

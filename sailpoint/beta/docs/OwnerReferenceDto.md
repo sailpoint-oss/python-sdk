@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of OwnerReferenceDto from a JSON string
 owner_reference_dto_instance = OwnerReferenceDto.from_json(json)
 # print the JSON string representation of the object
-print OwnerReferenceDto.to_json()
+print(OwnerReferenceDto.to_json())
 
 # convert the object into a dict
 owner_reference_dto_dict = owner_reference_dto_instance.to_dict()
 # create an instance of OwnerReferenceDto from a dict
-owner_reference_dto_form_dict = owner_reference_dto.from_dict(owner_reference_dto_dict)
+owner_reference_dto_from_dict = OwnerReferenceDto.from_dict(owner_reference_dto_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

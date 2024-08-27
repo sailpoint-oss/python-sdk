@@ -291,6 +291,7 @@ sailpoint/v2024/docs/CampaignActivated.md
 sailpoint/v2024/docs/CampaignActivatedCampaign.md
 sailpoint/v2024/docs/CampaignActivatedCampaignCampaignOwner.md
 sailpoint/v2024/docs/CampaignAlert.md
+sailpoint/v2024/docs/CampaignAllOfCorrelatedStatus.md
 sailpoint/v2024/docs/CampaignAllOfFilter.md
 sailpoint/v2024/docs/CampaignAllOfRoleCompositionCampaignInfo.md
 sailpoint/v2024/docs/CampaignAllOfRoleCompositionCampaignInfoRemediatorRef.md
@@ -942,12 +943,6 @@ sailpoint/v2024/docs/SendTestNotificationRequestDto.md
 sailpoint/v2024/docs/ServiceDeskIntegrationApi.md
 sailpoint/v2024/docs/ServiceDeskIntegrationDto.md
 sailpoint/v2024/docs/ServiceDeskIntegrationDto1.md
-sailpoint/v2024/docs/ServiceDeskIntegrationDto1AllOfBeforeProvisioningRule.md
-sailpoint/v2024/docs/ServiceDeskIntegrationDto1AllOfClusterRef.md
-sailpoint/v2024/docs/ServiceDeskIntegrationDto1AllOfOwnerRef.md
-sailpoint/v2024/docs/ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule.md
-sailpoint/v2024/docs/ServiceDeskIntegrationDtoAllOfClusterRef.md
-sailpoint/v2024/docs/ServiceDeskIntegrationDtoAllOfOwnerRef.md
 sailpoint/v2024/docs/ServiceDeskIntegrationTemplateDto.md
 sailpoint/v2024/docs/ServiceDeskIntegrationTemplateType.md
 sailpoint/v2024/docs/ServiceDeskSource.md
@@ -1330,6 +1325,7 @@ sailpoint/v2024/models/campaign_activated.py
 sailpoint/v2024/models/campaign_activated_campaign.py
 sailpoint/v2024/models/campaign_activated_campaign_campaign_owner.py
 sailpoint/v2024/models/campaign_alert.py
+sailpoint/v2024/models/campaign_all_of_correlated_status.py
 sailpoint/v2024/models/campaign_all_of_filter.py
 sailpoint/v2024/models/campaign_all_of_role_composition_campaign_info.py
 sailpoint/v2024/models/campaign_all_of_role_composition_campaign_info_remediator_ref.py
@@ -1928,12 +1924,6 @@ sailpoint/v2024/models/self_import_export_dto.py
 sailpoint/v2024/models/send_test_notification_request_dto.py
 sailpoint/v2024/models/service_desk_integration_dto.py
 sailpoint/v2024/models/service_desk_integration_dto1.py
-sailpoint/v2024/models/service_desk_integration_dto1_all_of_before_provisioning_rule.py
-sailpoint/v2024/models/service_desk_integration_dto1_all_of_cluster_ref.py
-sailpoint/v2024/models/service_desk_integration_dto1_all_of_owner_ref.py
-sailpoint/v2024/models/service_desk_integration_dto_all_of_before_provisioning_rule.py
-sailpoint/v2024/models/service_desk_integration_dto_all_of_cluster_ref.py
-sailpoint/v2024/models/service_desk_integration_dto_all_of_owner_ref.py
 sailpoint/v2024/models/service_desk_integration_template_dto.py
 sailpoint/v2024/models/service_desk_integration_template_type.py
 sailpoint/v2024/models/service_desk_source.py
@@ -2317,6 +2307,7 @@ sailpoint/v2024/test/test_campaign_activated.py
 sailpoint/v2024/test/test_campaign_activated_campaign.py
 sailpoint/v2024/test/test_campaign_activated_campaign_campaign_owner.py
 sailpoint/v2024/test/test_campaign_alert.py
+sailpoint/v2024/test/test_campaign_all_of_correlated_status.py
 sailpoint/v2024/test/test_campaign_all_of_filter.py
 sailpoint/v2024/test/test_campaign_all_of_role_composition_campaign_info.py
 sailpoint/v2024/test/test_campaign_all_of_role_composition_campaign_info_remediator_ref.py
@@ -2964,12 +2955,6 @@ sailpoint/v2024/test/test_send_test_notification_request_dto.py
 sailpoint/v2024/test/test_service_desk_integration_api.py
 sailpoint/v2024/test/test_service_desk_integration_dto.py
 sailpoint/v2024/test/test_service_desk_integration_dto1.py
-sailpoint/v2024/test/test_service_desk_integration_dto1_all_of_before_provisioning_rule.py
-sailpoint/v2024/test/test_service_desk_integration_dto1_all_of_cluster_ref.py
-sailpoint/v2024/test/test_service_desk_integration_dto1_all_of_owner_ref.py
-sailpoint/v2024/test/test_service_desk_integration_dto_all_of_before_provisioning_rule.py
-sailpoint/v2024/test/test_service_desk_integration_dto_all_of_cluster_ref.py
-sailpoint/v2024/test/test_service_desk_integration_dto_all_of_owner_ref.py
 sailpoint/v2024/test/test_service_desk_integration_template_dto.py
 sailpoint/v2024/test/test_service_desk_integration_template_type.py
 sailpoint/v2024/test/test_service_desk_source.py

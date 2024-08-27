@@ -17,14 +17,10 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr, field_validator
-from pydantic import Field
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class IdentityProfileExportedObjectSelf(BaseModel):
     """
@@ -41,15 +37,15 @@ class IdentityProfileExportedObjectSelf(BaseModel):
         if value is None:
             return value
 
-        if value not in ('ACCESS_PROFILE', 'ACCESS_REQUEST_CONFIG', 'ATTR_SYNC_SOURCE_CONFIG', 'AUTH_ORG', 'CAMPAIGN_FILTER', 'FORM_DEFINITION', 'GOVERNANCE_GROUP', 'IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'LIFECYCLE_STATE', 'NOTIFICATION_TEMPLATE', 'PASSWORD_POLICY', 'PASSWORD_SYNC_GROUP', 'PUBLIC_IDENTITIES_CONFIG', 'ROLE', 'RULE', 'SEGMENT', 'SERVICE_DESK_INTEGRATION', 'SOD_POLICY', 'SOURCE', 'TAG', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION', 'WORKFLOW'):
+        if value not in set(['ACCESS_PROFILE', 'ACCESS_REQUEST_CONFIG', 'ATTR_SYNC_SOURCE_CONFIG', 'AUTH_ORG', 'CAMPAIGN_FILTER', 'FORM_DEFINITION', 'GOVERNANCE_GROUP', 'IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'LIFECYCLE_STATE', 'NOTIFICATION_TEMPLATE', 'PASSWORD_POLICY', 'PASSWORD_SYNC_GROUP', 'PUBLIC_IDENTITIES_CONFIG', 'ROLE', 'RULE', 'SEGMENT', 'SERVICE_DESK_INTEGRATION', 'SOD_POLICY', 'SOURCE', 'TAG', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION', 'WORKFLOW']):
             raise ValueError("must be one of enum values ('ACCESS_PROFILE', 'ACCESS_REQUEST_CONFIG', 'ATTR_SYNC_SOURCE_CONFIG', 'AUTH_ORG', 'CAMPAIGN_FILTER', 'FORM_DEFINITION', 'GOVERNANCE_GROUP', 'IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'LIFECYCLE_STATE', 'NOTIFICATION_TEMPLATE', 'PASSWORD_POLICY', 'PASSWORD_SYNC_GROUP', 'PUBLIC_IDENTITIES_CONFIG', 'ROLE', 'RULE', 'SEGMENT', 'SERVICE_DESK_INTEGRATION', 'SOD_POLICY', 'SOURCE', 'TAG', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION', 'WORKFLOW')")
         return value
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -62,7 +58,7 @@ class IdentityProfileExportedObjectSelf(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of IdentityProfileExportedObjectSelf from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -76,16 +72,18 @@ class IdentityProfileExportedObjectSelf(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of IdentityProfileExportedObjectSelf from a dict"""
         if obj is None:
             return None

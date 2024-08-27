@@ -17,16 +17,12 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel
-from pydantic import Field
 from sailpoint.v2024.models.configuration_details_response import ConfigurationDetailsResponse
 from sailpoint.v2024.models.identity1 import Identity1
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class ConfigurationResponse(BaseModel):
     """
@@ -36,11 +32,11 @@ class ConfigurationResponse(BaseModel):
     config_details: Optional[List[ConfigurationDetailsResponse]] = Field(default=None, description="Details of how work should be reassigned for an Identity", alias="configDetails")
     __properties: ClassVar[List[str]] = ["identity", "configDetails"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -53,7 +49,7 @@ class ConfigurationResponse(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of ConfigurationResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -67,10 +63,12 @@ class ConfigurationResponse(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of identity
@@ -79,14 +77,14 @@ class ConfigurationResponse(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in config_details (list)
         _items = []
         if self.config_details:
-            for _item in self.config_details:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_config_details in self.config_details:
+                if _item_config_details:
+                    _items.append(_item_config_details.to_dict())
             _dict['configDetails'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of ConfigurationResponse from a dict"""
         if obj is None:
             return None
@@ -95,8 +93,8 @@ class ConfigurationResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "identity": Identity1.from_dict(obj.get("identity")) if obj.get("identity") is not None else None,
-            "configDetails": [ConfigurationDetailsResponse.from_dict(_item) for _item in obj.get("configDetails")] if obj.get("configDetails") is not None else None
+            "identity": Identity1.from_dict(obj["identity"]) if obj.get("identity") is not None else None,
+            "configDetails": [ConfigurationDetailsResponse.from_dict(_item) for _item in obj["configDetails"]] if obj.get("configDetails") is not None else None
         })
         return _obj
 

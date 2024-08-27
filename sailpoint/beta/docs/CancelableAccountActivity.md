@@ -32,12 +32,12 @@ json = "{}"
 # create an instance of CancelableAccountActivity from a JSON string
 cancelable_account_activity_instance = CancelableAccountActivity.from_json(json)
 # print the JSON string representation of the object
-print CancelableAccountActivity.to_json()
+print(CancelableAccountActivity.to_json())
 
 # convert the object into a dict
 cancelable_account_activity_dict = cancelable_account_activity_instance.to_dict()
 # create an instance of CancelableAccountActivity from a dict
-cancelable_account_activity_form_dict = cancelable_account_activity.from_dict(cancelable_account_activity_dict)
+cancelable_account_activity_from_dict = CancelableAccountActivity.from_dict(cancelable_account_activity_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

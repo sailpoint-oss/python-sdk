@@ -17,14 +17,10 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr, field_validator
-from pydantic import Field
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class CampaignAllOfRoleCompositionCampaignInfoRemediatorRef(BaseModel):
     """
@@ -38,15 +34,15 @@ class CampaignAllOfRoleCompositionCampaignInfoRemediatorRef(BaseModel):
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('IDENTITY'):
+        if value not in set(['IDENTITY']):
             raise ValueError("must be one of enum values ('IDENTITY')")
         return value
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -59,7 +55,7 @@ class CampaignAllOfRoleCompositionCampaignInfoRemediatorRef(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of CampaignAllOfRoleCompositionCampaignInfoRemediatorRef from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -74,17 +70,19 @@ class CampaignAllOfRoleCompositionCampaignInfoRemediatorRef(BaseModel):
           are ignored.
         * OpenAPI `readOnly` fields are excluded.
         """
+        excluded_fields: Set[str] = set([
+            "name",
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-                "name",
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of CampaignAllOfRoleCompositionCampaignInfoRemediatorRef from a dict"""
         if obj is None:
             return None

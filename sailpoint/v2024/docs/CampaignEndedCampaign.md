@@ -26,12 +26,12 @@ json = "{}"
 # create an instance of CampaignEndedCampaign from a JSON string
 campaign_ended_campaign_instance = CampaignEndedCampaign.from_json(json)
 # print the JSON string representation of the object
-print CampaignEndedCampaign.to_json()
+print(CampaignEndedCampaign.to_json())
 
 # convert the object into a dict
 campaign_ended_campaign_dict = campaign_ended_campaign_instance.to_dict()
 # create an instance of CampaignEndedCampaign from a dict
-campaign_ended_campaign_form_dict = campaign_ended_campaign.from_dict(campaign_ended_campaign_dict)
+campaign_ended_campaign_from_dict = CampaignEndedCampaign.from_dict(campaign_ended_campaign_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -18,18 +18,15 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
-from pydantic import Field
 from sailpoint.v3.models.base_access_all_of_owner import BaseAccessAllOfOwner
 from sailpoint.v3.models.base_access_profile import BaseAccessProfile
 from sailpoint.v3.models.base_entitlement import BaseEntitlement
 from sailpoint.v3.models.base_segment import BaseSegment
 from sailpoint.v3.models.document_type import DocumentType
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class RoleDocument(BaseModel):
     """
@@ -55,11 +52,11 @@ class RoleDocument(BaseModel):
     entitlement_count: Optional[StrictInt] = Field(default=None, description="Number of entitlements included with the role.", alias="entitlementCount")
     __properties: ClassVar[List[str]] = ["id", "name", "_type", "description", "created", "modified", "synced", "enabled", "requestable", "requestCommentsRequired", "owner", "accessProfiles", "accessProfileCount", "tags", "segments", "segmentCount", "entitlements", "entitlementCount"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -72,7 +69,7 @@ class RoleDocument(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of RoleDocument from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -86,10 +83,12 @@ class RoleDocument(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of owner
@@ -98,23 +97,23 @@ class RoleDocument(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in access_profiles (list)
         _items = []
         if self.access_profiles:
-            for _item in self.access_profiles:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_access_profiles in self.access_profiles:
+                if _item_access_profiles:
+                    _items.append(_item_access_profiles.to_dict())
             _dict['accessProfiles'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in segments (list)
         _items = []
         if self.segments:
-            for _item in self.segments:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_segments in self.segments:
+                if _item_segments:
+                    _items.append(_item_segments.to_dict())
             _dict['segments'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in entitlements (list)
         _items = []
         if self.entitlements:
-            for _item in self.entitlements:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_entitlements in self.entitlements:
+                if _item_entitlements:
+                    _items.append(_item_entitlements.to_dict())
             _dict['entitlements'] = _items
         # set to None if created (nullable) is None
         # and model_fields_set contains the field
@@ -134,7 +133,7 @@ class RoleDocument(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of RoleDocument from a dict"""
         if obj is None:
             return None
@@ -153,13 +152,13 @@ class RoleDocument(BaseModel):
             "enabled": obj.get("enabled") if obj.get("enabled") is not None else False,
             "requestable": obj.get("requestable") if obj.get("requestable") is not None else True,
             "requestCommentsRequired": obj.get("requestCommentsRequired") if obj.get("requestCommentsRequired") is not None else False,
-            "owner": BaseAccessAllOfOwner.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
-            "accessProfiles": [BaseAccessProfile.from_dict(_item) for _item in obj.get("accessProfiles")] if obj.get("accessProfiles") is not None else None,
+            "owner": BaseAccessAllOfOwner.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
+            "accessProfiles": [BaseAccessProfile.from_dict(_item) for _item in obj["accessProfiles"]] if obj.get("accessProfiles") is not None else None,
             "accessProfileCount": obj.get("accessProfileCount"),
             "tags": obj.get("tags"),
-            "segments": [BaseSegment.from_dict(_item) for _item in obj.get("segments")] if obj.get("segments") is not None else None,
+            "segments": [BaseSegment.from_dict(_item) for _item in obj["segments"]] if obj.get("segments") is not None else None,
             "segmentCount": obj.get("segmentCount"),
-            "entitlements": [BaseEntitlement.from_dict(_item) for _item in obj.get("entitlements")] if obj.get("entitlements") is not None else None,
+            "entitlements": [BaseEntitlement.from_dict(_item) for _item in obj["entitlements"]] if obj.get("entitlements") is not None else None,
             "entitlementCount": obj.get("entitlementCount")
         })
         return _obj

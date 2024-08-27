@@ -17,15 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
-from pydantic import Field
 from sailpoint.beta.models.context_attribute_dto_value import ContextAttributeDtoValue
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class ContextAttributeDto(BaseModel):
     """
@@ -36,11 +32,11 @@ class ContextAttributeDto(BaseModel):
     derived: Optional[StrictBool] = Field(default=False, description="True if the attribute was derived.")
     __properties: ClassVar[List[str]] = ["attribute", "value", "derived"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -53,7 +49,7 @@ class ContextAttributeDto(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of ContextAttributeDto from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -67,10 +63,12 @@ class ContextAttributeDto(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of value
@@ -79,7 +77,7 @@ class ContextAttributeDto(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of ContextAttributeDto from a dict"""
         if obj is None:
             return None
@@ -89,7 +87,7 @@ class ContextAttributeDto(BaseModel):
 
         _obj = cls.model_validate({
             "attribute": obj.get("attribute"),
-            "value": ContextAttributeDtoValue.from_dict(obj.get("value")) if obj.get("value") is not None else None,
+            "value": ContextAttributeDtoValue.from_dict(obj["value"]) if obj.get("value") is not None else None,
             "derived": obj.get("derived") if obj.get("derived") is not None else False
         })
         return _obj

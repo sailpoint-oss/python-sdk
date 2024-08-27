@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v3.models.create_personal_access_token_response import CreatePersonalAccessTokenResponse
 
@@ -28,7 +27,7 @@ class TestCreatePersonalAccessTokenResponse(unittest.TestCase):
 
     def make_instance(self, include_optional) -> CreatePersonalAccessTokenResponse:
         """Test CreatePersonalAccessTokenResponse
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `CreatePersonalAccessTokenResponse`

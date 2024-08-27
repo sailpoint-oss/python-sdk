@@ -18,17 +18,14 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
-from pydantic import Field
 from sailpoint.v3.models.column import Column
 from sailpoint.v3.models.index import Index
 from sailpoint.v3.models.saved_search_detail_filters import SavedSearchDetailFilters
 from sailpoint.v3.models.typed_reference import TypedReference
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class SavedSearch(BaseModel):
     """
@@ -51,11 +48,11 @@ class SavedSearch(BaseModel):
     public: Optional[StrictBool] = Field(default=False, description="Whether this saved search is visible to anyone but the owner. This field will always be false as there is no way to set a saved search as public at this time.")
     __properties: ClassVar[List[str]] = ["name", "description", "created", "modified", "indices", "columns", "query", "fields", "orderBy", "sort", "filters", "id", "owner", "ownerId", "public"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -68,7 +65,7 @@ class SavedSearch(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of SavedSearch from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -82,19 +79,21 @@ class SavedSearch(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each value in columns (dict of array)
         _field_dict_of_array = {}
         if self.columns:
-            for _key in self.columns:
-                if self.columns[_key] is not None:
-                    _field_dict_of_array[_key] = [
-                        _item.to_dict() for _item in self.columns[_key]
+            for _key_columns in self.columns:
+                if self.columns[_key_columns] is not None:
+                    _field_dict_of_array[_key_columns] = [
+                        _item.to_dict() for _item in self.columns[_key_columns]
                     ]
             _dict['columns'] = _field_dict_of_array
         # override the default output from pydantic by calling `to_dict()` of filters
@@ -141,7 +140,7 @@ class SavedSearch(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of SavedSearch from a dict"""
         if obj is None:
             return None
@@ -161,15 +160,15 @@ class SavedSearch(BaseModel):
                         if _v is not None
                         else None
                 )
-                for _k, _v in obj.get("columns").items()
+                for _k, _v in obj.get("columns", {}).items()
             ),
             "query": obj.get("query"),
             "fields": obj.get("fields"),
             "orderBy": obj.get("orderBy"),
             "sort": obj.get("sort"),
-            "filters": SavedSearchDetailFilters.from_dict(obj.get("filters")) if obj.get("filters") is not None else None,
+            "filters": SavedSearchDetailFilters.from_dict(obj["filters"]) if obj.get("filters") is not None else None,
             "id": obj.get("id"),
-            "owner": TypedReference.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
+            "owner": TypedReference.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
             "ownerId": obj.get("ownerId"),
             "public": obj.get("public") if obj.get("public") is not None else False
         })

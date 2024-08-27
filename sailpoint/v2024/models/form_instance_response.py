@@ -18,18 +18,15 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr, field_validator
-from pydantic import Field
 from sailpoint.v2024.models.form_condition import FormCondition
 from sailpoint.v2024.models.form_element import FormElement
 from sailpoint.v2024.models.form_error import FormError
 from sailpoint.v2024.models.form_instance_created_by import FormInstanceCreatedBy
 from sailpoint.v2024.models.form_instance_recipient import FormInstanceRecipient
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class FormInstanceResponse(BaseModel):
     """
@@ -58,15 +55,15 @@ class FormInstanceResponse(BaseModel):
         if value is None:
             return value
 
-        if value not in ('ASSIGNED', 'IN_PROGRESS', 'SUBMITTED', 'COMPLETED', 'CANCELLED'):
+        if value not in set(['ASSIGNED', 'IN_PROGRESS', 'SUBMITTED', 'COMPLETED', 'CANCELLED']):
             raise ValueError("must be one of enum values ('ASSIGNED', 'IN_PROGRESS', 'SUBMITTED', 'COMPLETED', 'CANCELLED')")
         return value
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -79,7 +76,7 @@ class FormInstanceResponse(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of FormInstanceResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -93,10 +90,12 @@ class FormInstanceResponse(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of created_by
@@ -105,30 +104,30 @@ class FormInstanceResponse(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in form_conditions (list)
         _items = []
         if self.form_conditions:
-            for _item in self.form_conditions:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_form_conditions in self.form_conditions:
+                if _item_form_conditions:
+                    _items.append(_item_form_conditions.to_dict())
             _dict['formConditions'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in form_elements (list)
         _items = []
         if self.form_elements:
-            for _item in self.form_elements:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_form_elements in self.form_elements:
+                if _item_form_elements:
+                    _items.append(_item_form_elements.to_dict())
             _dict['formElements'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in form_errors (list)
         _items = []
         if self.form_errors:
-            for _item in self.form_errors:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_form_errors in self.form_errors:
+                if _item_form_errors:
+                    _items.append(_item_form_errors.to_dict())
             _dict['formErrors'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in recipients (list)
         _items = []
         if self.recipients:
-            for _item in self.recipients:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_recipients in self.recipients:
+                if _item_recipients:
+                    _items.append(_item_recipients.to_dict())
             _dict['recipients'] = _items
         # set to None if form_input (nullable) is None
         # and model_fields_set contains the field
@@ -138,7 +137,7 @@ class FormInstanceResponse(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of FormInstanceResponse from a dict"""
         if obj is None:
             return None
@@ -148,17 +147,17 @@ class FormInstanceResponse(BaseModel):
 
         _obj = cls.model_validate({
             "created": obj.get("created"),
-            "createdBy": FormInstanceCreatedBy.from_dict(obj.get("createdBy")) if obj.get("createdBy") is not None else None,
+            "createdBy": FormInstanceCreatedBy.from_dict(obj["createdBy"]) if obj.get("createdBy") is not None else None,
             "expire": obj.get("expire"),
-            "formConditions": [FormCondition.from_dict(_item) for _item in obj.get("formConditions")] if obj.get("formConditions") is not None else None,
+            "formConditions": [FormCondition.from_dict(_item) for _item in obj["formConditions"]] if obj.get("formConditions") is not None else None,
             "formData": obj.get("formData"),
             "formDefinitionId": obj.get("formDefinitionId"),
-            "formElements": [FormElement.from_dict(_item) for _item in obj.get("formElements")] if obj.get("formElements") is not None else None,
-            "formErrors": [FormError.from_dict(_item) for _item in obj.get("formErrors")] if obj.get("formErrors") is not None else None,
+            "formElements": [FormElement.from_dict(_item) for _item in obj["formElements"]] if obj.get("formElements") is not None else None,
+            "formErrors": [FormError.from_dict(_item) for _item in obj["formErrors"]] if obj.get("formErrors") is not None else None,
             "formInput": obj.get("formInput"),
             "id": obj.get("id"),
             "modified": obj.get("modified"),
-            "recipients": [FormInstanceRecipient.from_dict(_item) for _item in obj.get("recipients")] if obj.get("recipients") is not None else None,
+            "recipients": [FormInstanceRecipient.from_dict(_item) for _item in obj["recipients"]] if obj.get("recipients") is not None else None,
             "standAloneForm": obj.get("standAloneForm") if obj.get("standAloneForm") is not None else False,
             "standAloneFormUrl": obj.get("standAloneFormUrl"),
             "state": obj.get("state")

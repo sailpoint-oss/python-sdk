@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.locale_origin import LocaleOrigin
 

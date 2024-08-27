@@ -23,8 +23,6 @@ This API is used to generate a digit token for password management. Requires aut
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.password_digit_token import PasswordDigitToken
 from sailpoint.beta.models.password_digit_token_reset import PasswordDigitTokenReset
@@ -107,8 +105,6 @@ This API returns the status of a password change request. A token with identity 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.password_status import PasswordStatus
 from sailpoint.beta.rest import ApiException
@@ -192,8 +188,6 @@ This API is used to query password related information.   A token with [API auth
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.password_info import PasswordInfo
 from sailpoint.beta.models.password_info_query_dto import PasswordInfoQueryDTO
@@ -278,8 +272,6 @@ This API is used to set a password for an identity.   An identity can change the
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.password_change_request import PasswordChangeRequest
 from sailpoint.beta.models.password_change_response import PasswordChangeResponse

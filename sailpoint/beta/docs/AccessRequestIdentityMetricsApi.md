@@ -20,8 +20,6 @@ Use this API to return information access metrics.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.rest import ApiException
 from pprint import pprint

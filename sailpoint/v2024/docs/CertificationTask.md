@@ -24,12 +24,12 @@ json = "{}"
 # create an instance of CertificationTask from a JSON string
 certification_task_instance = CertificationTask.from_json(json)
 # print the JSON string representation of the object
-print CertificationTask.to_json()
+print(CertificationTask.to_json())
 
 # convert the object into a dict
 certification_task_dict = certification_task_instance.to_dict()
 # create an instance of CertificationTask from a dict
-certification_task_form_dict = certification_task.from_dict(certification_task_dict)
+certification_task_from_dict = CertificationTask.from_dict(certification_task_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

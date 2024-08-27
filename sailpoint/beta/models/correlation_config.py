@@ -17,15 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
 from sailpoint.beta.models.correlation_config_attribute_assignments_inner import CorrelationConfigAttributeAssignmentsInner
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class CorrelationConfig(BaseModel):
     """
@@ -36,11 +32,11 @@ class CorrelationConfig(BaseModel):
     attribute_assignments: Optional[List[CorrelationConfigAttributeAssignmentsInner]] = Field(default=None, description="The list of attribute assignments of the correlation configuration.", alias="attributeAssignments")
     __properties: ClassVar[List[str]] = ["id", "name", "attributeAssignments"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -53,7 +49,7 @@ class CorrelationConfig(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of CorrelationConfig from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -67,23 +63,25 @@ class CorrelationConfig(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in attribute_assignments (list)
         _items = []
         if self.attribute_assignments:
-            for _item in self.attribute_assignments:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_attribute_assignments in self.attribute_assignments:
+                if _item_attribute_assignments:
+                    _items.append(_item_attribute_assignments.to_dict())
             _dict['attributeAssignments'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of CorrelationConfig from a dict"""
         if obj is None:
             return None
@@ -94,7 +92,7 @@ class CorrelationConfig(BaseModel):
         _obj = cls.model_validate({
             "id": obj.get("id"),
             "name": obj.get("name"),
-            "attributeAssignments": [CorrelationConfigAttributeAssignmentsInner.from_dict(_item) for _item in obj.get("attributeAssignments")] if obj.get("attributeAssignments") is not None else None
+            "attributeAssignments": [CorrelationConfigAttributeAssignmentsInner.from_dict(_item) for _item in obj["attributeAssignments"]] if obj.get("attributeAssignments") is not None else None
         })
         return _obj
 

@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v2024.models.form_definition_dynamic_schema_request_attributes import FormDefinitionDynamicSchemaRequestAttributes
 
@@ -28,7 +27,7 @@ class TestFormDefinitionDynamicSchemaRequestAttributes(unittest.TestCase):
 
     def make_instance(self, include_optional) -> FormDefinitionDynamicSchemaRequestAttributes:
         """Test FormDefinitionDynamicSchemaRequestAttributes
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `FormDefinitionDynamicSchemaRequestAttributes`

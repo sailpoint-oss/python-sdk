@@ -23,8 +23,6 @@ Performs a search query aggregation and returns the aggregation result. By defau
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.aggregation_result import AggregationResult
 from sailpoint.v3.models.search import Search
@@ -115,8 +113,6 @@ Performs a search with a provided query and returns the count of results in the 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.search import Search
 from sailpoint.v3.rest import ApiException
@@ -198,8 +194,6 @@ Fetches a single document from the specified index, using the specified document
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.rest import ApiException
 from pprint import pprint
@@ -285,8 +279,6 @@ Performs a search with the provided query and returns a matching result collecti
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.search import Search
 from sailpoint.v3.rest import ApiException

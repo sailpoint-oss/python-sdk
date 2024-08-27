@@ -21,12 +21,12 @@ json = "{}"
 # create an instance of ManagedClientRequest from a JSON string
 managed_client_request_instance = ManagedClientRequest.from_json(json)
 # print the JSON string representation of the object
-print ManagedClientRequest.to_json()
+print(ManagedClientRequest.to_json())
 
 # convert the object into a dict
 managed_client_request_dict = managed_client_request_instance.to_dict()
 # create an instance of ManagedClientRequest from a dict
-managed_client_request_form_dict = managed_client_request.from_dict(managed_client_request_dict)
+managed_client_request_from_dict = ManagedClientRequest.from_dict(managed_client_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

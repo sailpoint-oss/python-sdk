@@ -29,12 +29,12 @@ json = "{}"
 # create an instance of TemplateDtoDefault from a JSON string
 template_dto_default_instance = TemplateDtoDefault.from_json(json)
 # print the JSON string representation of the object
-print TemplateDtoDefault.to_json()
+print(TemplateDtoDefault.to_json())
 
 # convert the object into a dict
 template_dto_default_dict = template_dto_default_instance.to_dict()
 # create an instance of TemplateDtoDefault from a dict
-template_dto_default_form_dict = template_dto_default.from_dict(template_dto_default_dict)
+template_dto_default_from_dict = TemplateDtoDefault.from_dict(template_dto_default_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

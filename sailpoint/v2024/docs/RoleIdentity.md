@@ -22,12 +22,12 @@ json = "{}"
 # create an instance of RoleIdentity from a JSON string
 role_identity_instance = RoleIdentity.from_json(json)
 # print the JSON string representation of the object
-print RoleIdentity.to_json()
+print(RoleIdentity.to_json())
 
 # convert the object into a dict
 role_identity_dict = role_identity_instance.to_dict()
 # create an instance of RoleIdentity from a dict
-role_identity_form_dict = role_identity.from_dict(role_identity_dict)
+role_identity_from_dict = RoleIdentity.from_dict(role_identity_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

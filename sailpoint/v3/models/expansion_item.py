@@ -17,16 +17,12 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
 from sailpoint.v3.models.account_source import AccountSource
 from sailpoint.v3.models.attribute_request import AttributeRequest
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class ExpansionItem(BaseModel):
     """
@@ -39,11 +35,11 @@ class ExpansionItem(BaseModel):
     source: Optional[AccountSource] = None
     __properties: ClassVar[List[str]] = ["accountId", "cause", "name", "attributeRequests", "source"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -56,7 +52,7 @@ class ExpansionItem(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of ExpansionItem from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -70,18 +66,20 @@ class ExpansionItem(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in attribute_requests (list)
         _items = []
         if self.attribute_requests:
-            for _item in self.attribute_requests:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_attribute_requests in self.attribute_requests:
+                if _item_attribute_requests:
+                    _items.append(_item_attribute_requests.to_dict())
             _dict['attributeRequests'] = _items
         # override the default output from pydantic by calling `to_dict()` of source
         if self.source:
@@ -89,7 +87,7 @@ class ExpansionItem(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of ExpansionItem from a dict"""
         if obj is None:
             return None
@@ -101,8 +99,8 @@ class ExpansionItem(BaseModel):
             "accountId": obj.get("accountId"),
             "cause": obj.get("cause"),
             "name": obj.get("name"),
-            "attributeRequests": [AttributeRequest.from_dict(_item) for _item in obj.get("attributeRequests")] if obj.get("attributeRequests") is not None else None,
-            "source": AccountSource.from_dict(obj.get("source")) if obj.get("source") is not None else None
+            "attributeRequests": [AttributeRequest.from_dict(_item) for _item in obj["attributeRequests"]] if obj.get("attributeRequests") is not None else None,
+            "source": AccountSource.from_dict(obj["source"]) if obj.get("source") is not None else None
         })
         return _obj
 

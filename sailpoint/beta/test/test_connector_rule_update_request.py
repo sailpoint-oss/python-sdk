@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.connector_rule_update_request import ConnectorRuleUpdateRequest
 
@@ -28,7 +27,7 @@ class TestConnectorRuleUpdateRequest(unittest.TestCase):
 
     def make_instance(self, include_optional) -> ConnectorRuleUpdateRequest:
         """Test ConnectorRuleUpdateRequest
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `ConnectorRuleUpdateRequest`

@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of AccountUnlockRequest from a JSON string
 account_unlock_request_instance = AccountUnlockRequest.from_json(json)
 # print the JSON string representation of the object
-print AccountUnlockRequest.to_json()
+print(AccountUnlockRequest.to_json())
 
 # convert the object into a dict
 account_unlock_request_dict = account_unlock_request_instance.to_dict()
 # create an instance of AccountUnlockRequest from a dict
-account_unlock_request_form_dict = account_unlock_request.from_dict(account_unlock_request_dict)
+account_unlock_request_from_dict = AccountUnlockRequest.from_dict(account_unlock_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

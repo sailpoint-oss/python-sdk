@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of RevocabilityForRole from a JSON string
 revocability_for_role_instance = RevocabilityForRole.from_json(json)
 # print the JSON string representation of the object
-print RevocabilityForRole.to_json()
+print(RevocabilityForRole.to_json())
 
 # convert the object into a dict
 revocability_for_role_dict = revocability_for_role_instance.to_dict()
 # create an instance of RevocabilityForRole from a dict
-revocability_for_role_form_dict = revocability_for_role.from_dict(revocability_for_role_dict)
+revocability_for_role_from_dict = RevocabilityForRole.from_dict(revocability_for_role_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

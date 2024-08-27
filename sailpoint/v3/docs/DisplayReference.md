@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of DisplayReference from a JSON string
 display_reference_instance = DisplayReference.from_json(json)
 # print the JSON string representation of the object
-print DisplayReference.to_json()
+print(DisplayReference.to_json())
 
 # convert the object into a dict
 display_reference_dict = display_reference_instance.to_dict()
 # create an instance of DisplayReference from a dict
-display_reference_form_dict = display_reference.from_dict(display_reference_dict)
+display_reference_from_dict = DisplayReference.from_dict(display_reference_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

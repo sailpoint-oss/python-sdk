@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of AccountAggregationCompletedSource from a JSON string
 account_aggregation_completed_source_instance = AccountAggregationCompletedSource.from_json(json)
 # print the JSON string representation of the object
-print AccountAggregationCompletedSource.to_json()
+print(AccountAggregationCompletedSource.to_json())
 
 # convert the object into a dict
 account_aggregation_completed_source_dict = account_aggregation_completed_source_instance.to_dict()
 # create an instance of AccountAggregationCompletedSource from a dict
-account_aggregation_completed_source_form_dict = account_aggregation_completed_source.from_dict(account_aggregation_completed_source_dict)
+account_aggregation_completed_source_from_dict = AccountAggregationCompletedSource.from_dict(account_aggregation_completed_source_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

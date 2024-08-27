@@ -28,8 +28,6 @@ This creates an object mapping between current org and source org. Source org sh
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.object_mapping_request import ObjectMappingRequest
 from sailpoint.v2024.models.object_mapping_response import ObjectMappingResponse
@@ -117,8 +115,6 @@ This creates a set of object mappings (Max 25) between current org and source or
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.object_mapping_bulk_create_request import ObjectMappingBulkCreateRequest
 from sailpoint.v2024.models.object_mapping_bulk_create_response import ObjectMappingBulkCreateResponse
@@ -206,8 +202,6 @@ This deletes an existing object mapping. Source org should be \"default\" when d
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
@@ -291,8 +285,6 @@ This deletes an Uploaded backup based on job ID. On success, this endpoint will 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
@@ -373,8 +365,6 @@ This gets a list of existing object mappings between current org and source org.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.object_mapping_response import ObjectMappingResponse
 from sailpoint.v2024.rest import ApiException
@@ -459,8 +449,6 @@ Returns all the information and status of an upload job. - sp:config-backups:rea
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
@@ -544,8 +532,6 @@ Returns a list of the current uploaded backups associated with the current tenan
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.uploads_response import UploadsResponse
 from sailpoint.v2024.rest import ApiException
@@ -630,8 +616,6 @@ This post will upload a JSON backup file into a tenant. Configuration files can 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.uploads_request import UploadsRequest
 from sailpoint.v2024.rest import ApiException
@@ -717,8 +701,6 @@ This updates a set of object mappings, only enabled and targetValue fields can b
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.object_mapping_bulk_patch_request import ObjectMappingBulkPatchRequest
 from sailpoint.v2024.models.object_mapping_bulk_patch_response import ObjectMappingBulkPatchResponse

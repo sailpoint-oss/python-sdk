@@ -17,16 +17,12 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
 from sailpoint.beta.models.account_status_changed_account import AccountStatusChangedAccount
 from sailpoint.beta.models.account_status_changed_status_change import AccountStatusChangedStatusChange
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class AccountStatusChanged(BaseModel):
     """
@@ -39,11 +35,11 @@ class AccountStatusChanged(BaseModel):
     status_change: Optional[AccountStatusChangedStatusChange] = Field(default=None, alias="statusChange")
     __properties: ClassVar[List[str]] = ["eventType", "identityId", "dt", "account", "statusChange"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -56,7 +52,7 @@ class AccountStatusChanged(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of AccountStatusChanged from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -70,10 +66,12 @@ class AccountStatusChanged(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of account
@@ -85,7 +83,7 @@ class AccountStatusChanged(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of AccountStatusChanged from a dict"""
         if obj is None:
             return None
@@ -97,8 +95,8 @@ class AccountStatusChanged(BaseModel):
             "eventType": obj.get("eventType"),
             "identityId": obj.get("identityId"),
             "dt": obj.get("dt"),
-            "account": AccountStatusChangedAccount.from_dict(obj.get("account")) if obj.get("account") is not None else None,
-            "statusChange": AccountStatusChangedStatusChange.from_dict(obj.get("statusChange")) if obj.get("statusChange") is not None else None
+            "account": AccountStatusChangedAccount.from_dict(obj["account"]) if obj.get("account") is not None else None,
+            "statusChange": AccountStatusChangedStatusChange.from_dict(obj["statusChange"]) if obj.get("statusChange") is not None else None
         })
         return _obj
 

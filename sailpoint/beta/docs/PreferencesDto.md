@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of PreferencesDto from a JSON string
 preferences_dto_instance = PreferencesDto.from_json(json)
 # print the JSON string representation of the object
-print PreferencesDto.to_json()
+print(PreferencesDto.to_json())
 
 # convert the object into a dict
 preferences_dto_dict = preferences_dto_instance.to_dict()
 # create an instance of PreferencesDto from a dict
-preferences_dto_form_dict = preferences_dto.from_dict(preferences_dto_dict)
+preferences_dto_from_dict = PreferencesDto.from_dict(preferences_dto_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

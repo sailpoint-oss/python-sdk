@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of SavedSearchDetailFilters from a JSON string
 saved_search_detail_filters_instance = SavedSearchDetailFilters.from_json(json)
 # print the JSON string representation of the object
-print SavedSearchDetailFilters.to_json()
+print(SavedSearchDetailFilters.to_json())
 
 # convert the object into a dict
 saved_search_detail_filters_dict = saved_search_detail_filters_instance.to_dict()
 # create an instance of SavedSearchDetailFilters from a dict
-saved_search_detail_filters_form_dict = saved_search_detail_filters.from_dict(saved_search_detail_filters_dict)
+saved_search_detail_filters_from_dict = SavedSearchDetailFilters.from_dict(saved_search_detail_filters_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

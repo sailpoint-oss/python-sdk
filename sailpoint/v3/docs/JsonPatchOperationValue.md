@@ -17,12 +17,12 @@ json = "{}"
 # create an instance of JsonPatchOperationValue from a JSON string
 json_patch_operation_value_instance = JsonPatchOperationValue.from_json(json)
 # print the JSON string representation of the object
-print JsonPatchOperationValue.to_json()
+print(JsonPatchOperationValue.to_json())
 
 # convert the object into a dict
 json_patch_operation_value_dict = json_patch_operation_value_instance.to_dict()
 # create an instance of JsonPatchOperationValue from a dict
-json_patch_operation_value_form_dict = json_patch_operation_value.from_dict(json_patch_operation_value_dict)
+json_patch_operation_value_from_dict = JsonPatchOperationValue.from_dict(json_patch_operation_value_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

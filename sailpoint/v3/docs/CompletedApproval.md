@@ -39,12 +39,12 @@ json = "{}"
 # create an instance of CompletedApproval from a JSON string
 completed_approval_instance = CompletedApproval.from_json(json)
 # print the JSON string representation of the object
-print CompletedApproval.to_json()
+print(CompletedApproval.to_json())
 
 # convert the object into a dict
 completed_approval_dict = completed_approval_instance.to_dict()
 # create an instance of CompletedApproval from a dict
-completed_approval_form_dict = completed_approval.from_dict(completed_approval_dict)
+completed_approval_from_dict = CompletedApproval.from_dict(completed_approval_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

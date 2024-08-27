@@ -20,8 +20,6 @@ This API returns a summary of account usage insights for past 12 months.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.account_usage import AccountUsage
 from sailpoint.v2024.rest import ApiException

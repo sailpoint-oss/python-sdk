@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of BulkWorkgroupMembersRequestInner from a JSON string
 bulk_workgroup_members_request_inner_instance = BulkWorkgroupMembersRequestInner.from_json(json)
 # print the JSON string representation of the object
-print BulkWorkgroupMembersRequestInner.to_json()
+print(BulkWorkgroupMembersRequestInner.to_json())
 
 # convert the object into a dict
 bulk_workgroup_members_request_inner_dict = bulk_workgroup_members_request_inner_instance.to_dict()
 # create an instance of BulkWorkgroupMembersRequestInner from a dict
-bulk_workgroup_members_request_inner_form_dict = bulk_workgroup_members_request_inner.from_dict(bulk_workgroup_members_request_inner_dict)
+bulk_workgroup_members_request_inner_from_dict = BulkWorkgroupMembersRequestInner.from_dict(bulk_workgroup_members_request_inner_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

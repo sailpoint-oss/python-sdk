@@ -21,12 +21,12 @@ json = "{}"
 # create an instance of TextQuery from a JSON string
 text_query_instance = TextQuery.from_json(json)
 # print the JSON string representation of the object
-print TextQuery.to_json()
+print(TextQuery.to_json())
 
 # convert the object into a dict
 text_query_dict = text_query_instance.to_dict()
 # create an instance of TextQuery from a dict
-text_query_form_dict = text_query.from_dict(text_query_dict)
+text_query_from_dict = TextQuery.from_dict(text_query_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

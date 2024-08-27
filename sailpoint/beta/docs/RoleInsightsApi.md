@@ -28,8 +28,6 @@ Submits a create role insights request to the role insights application. At this
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.role_insights_response import RoleInsightsResponse
 from sailpoint.beta.rest import ApiException
@@ -109,8 +107,6 @@ This endpoint returns the entitlement insights for a role.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
@@ -196,8 +192,6 @@ Role insights suggests entitlements to be added for a role. This endpoint return
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.role_insights_identities import RoleInsightsIdentities
 from sailpoint.beta.rest import ApiException
@@ -294,8 +288,6 @@ This endpoint gets role insights information for a role.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.role_insight import RoleInsight
 from sailpoint.beta.rest import ApiException
@@ -378,8 +370,6 @@ This method returns detailed role insights for each role.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.role_insight import RoleInsight
 from sailpoint.beta.rest import ApiException
@@ -470,8 +460,6 @@ This endpoint gets the entitlements for a role. The term \"current\" is to disti
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.role_insights_entitlement import RoleInsightsEntitlement
 from sailpoint.beta.rest import ApiException
@@ -556,8 +544,6 @@ This endpoint returns entitlement insights for a role.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.role_insights_entitlement_changes import RoleInsightsEntitlementChanges
 from sailpoint.beta.rest import ApiException
@@ -644,8 +630,6 @@ This endpoint returns details of a prior role insights request.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.role_insights_response import RoleInsightsResponse
 from sailpoint.beta.rest import ApiException
@@ -729,8 +713,6 @@ This method returns high level summary information for role insights for a custo
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.role_insights_summary import RoleInsightsSummary
 from sailpoint.beta.rest import ApiException

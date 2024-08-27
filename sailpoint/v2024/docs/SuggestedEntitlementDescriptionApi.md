@@ -26,8 +26,6 @@ Submit Sed Batch Stats Request. Submits batchId in the path param (e.g. {batchId
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.sed_batch_stats import SedBatchStats
 from sailpoint.v2024.rest import ApiException
@@ -114,8 +112,6 @@ List Sed Batches. API responses with Sed Batch Status
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.sed_batch_status import SedBatchStatus
 from sailpoint.v2024.rest import ApiException
@@ -200,8 +196,6 @@ List of Suggested Entitlement Description
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.sed import Sed
 from sailpoint.v2024.rest import ApiException
@@ -298,8 +292,6 @@ Patch Suggested Entitlement Description
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.sed import Sed
 from sailpoint.v2024.models.sed_patch import SedPatch
@@ -389,8 +381,6 @@ Submit Bulk Approval Request for SED. Request body takes list of SED Ids. API re
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.sed_approval import SedApproval
 from sailpoint.v2024.models.sed_approval_status import SedApprovalStatus
@@ -478,8 +468,6 @@ Submit Assignment Request. Request body has an assignee, and list of SED Ids tha
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.sed_assignment import SedAssignment
 from sailpoint.v2024.models.sed_assignment_response import SedAssignmentResponse
@@ -567,8 +555,6 @@ Submit Sed Batch Request. Request body has a list of entitlement Ids that user w
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.sed_batch_request import SedBatchRequest
 from sailpoint.v2024.models.sed_batch_response import SedBatchResponse

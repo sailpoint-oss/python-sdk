@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of VendorConnectorMappingUpdatedBy from a JSON string
 vendor_connector_mapping_updated_by_instance = VendorConnectorMappingUpdatedBy.from_json(json)
 # print the JSON string representation of the object
-print VendorConnectorMappingUpdatedBy.to_json()
+print(VendorConnectorMappingUpdatedBy.to_json())
 
 # convert the object into a dict
 vendor_connector_mapping_updated_by_dict = vendor_connector_mapping_updated_by_instance.to_dict()
 # create an instance of VendorConnectorMappingUpdatedBy from a dict
-vendor_connector_mapping_updated_by_form_dict = vendor_connector_mapping_updated_by.from_dict(vendor_connector_mapping_updated_by_dict)
+vendor_connector_mapping_updated_by_from_dict = VendorConnectorMappingUpdatedBy.from_dict(vendor_connector_mapping_updated_by_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

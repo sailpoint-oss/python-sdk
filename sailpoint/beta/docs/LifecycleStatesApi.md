@@ -21,8 +21,6 @@ Use this endpoint to get a lifecycle state by its ID and its associated identity
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.lifecycle_state import LifecycleState
 from sailpoint.beta.rest import ApiException
@@ -108,8 +106,6 @@ Use this endpoint to update individual lifecycle state fields, using the [JSON P
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
 from sailpoint.beta.models.lifecycle_state import LifecycleState

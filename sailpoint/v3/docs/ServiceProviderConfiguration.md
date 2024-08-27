@@ -21,12 +21,12 @@ json = "{}"
 # create an instance of ServiceProviderConfiguration from a JSON string
 service_provider_configuration_instance = ServiceProviderConfiguration.from_json(json)
 # print the JSON string representation of the object
-print ServiceProviderConfiguration.to_json()
+print(ServiceProviderConfiguration.to_json())
 
 # convert the object into a dict
 service_provider_configuration_dict = service_provider_configuration_instance.to_dict()
 # create an instance of ServiceProviderConfiguration from a dict
-service_provider_configuration_form_dict = service_provider_configuration.from_dict(service_provider_configuration_dict)
+service_provider_configuration_from_dict = ServiceProviderConfiguration.from_dict(service_provider_configuration_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

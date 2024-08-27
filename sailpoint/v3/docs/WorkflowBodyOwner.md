@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of WorkflowBodyOwner from a JSON string
 workflow_body_owner_instance = WorkflowBodyOwner.from_json(json)
 # print the JSON string representation of the object
-print WorkflowBodyOwner.to_json()
+print(WorkflowBodyOwner.to_json())
 
 # convert the object into a dict
 workflow_body_owner_dict = workflow_body_owner_instance.to_dict()
 # create an instance of WorkflowBodyOwner from a dict
-workflow_body_owner_form_dict = workflow_body_owner.from_dict(workflow_body_owner_dict)
+workflow_body_owner_from_dict = WorkflowBodyOwner.from_dict(workflow_body_owner_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

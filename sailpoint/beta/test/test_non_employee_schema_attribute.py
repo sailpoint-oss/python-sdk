@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.non_employee_schema_attribute import NonEmployeeSchemaAttribute
 
@@ -28,7 +27,7 @@ class TestNonEmployeeSchemaAttribute(unittest.TestCase):
 
     def make_instance(self, include_optional) -> NonEmployeeSchemaAttribute:
         """Test NonEmployeeSchemaAttribute
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `NonEmployeeSchemaAttribute`

@@ -17,16 +17,12 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
 from sailpoint.beta.models.access_item_associated_access_item import AccessItemAssociatedAccessItem
 from sailpoint.beta.models.correlated_governance_event import CorrelatedGovernanceEvent
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class AccessItemAssociated(BaseModel):
     """
@@ -39,11 +35,11 @@ class AccessItemAssociated(BaseModel):
     governance_event: Optional[CorrelatedGovernanceEvent] = Field(default=None, alias="governanceEvent")
     __properties: ClassVar[List[str]] = ["accessItem", "identityId", "eventType", "dt", "governanceEvent"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -56,7 +52,7 @@ class AccessItemAssociated(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of AccessItemAssociated from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -70,10 +66,12 @@ class AccessItemAssociated(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of access_item
@@ -85,7 +83,7 @@ class AccessItemAssociated(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of AccessItemAssociated from a dict"""
         if obj is None:
             return None
@@ -94,11 +92,11 @@ class AccessItemAssociated(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "accessItem": AccessItemAssociatedAccessItem.from_dict(obj.get("accessItem")) if obj.get("accessItem") is not None else None,
+            "accessItem": AccessItemAssociatedAccessItem.from_dict(obj["accessItem"]) if obj.get("accessItem") is not None else None,
             "identityId": obj.get("identityId"),
             "eventType": obj.get("eventType"),
             "dt": obj.get("dt"),
-            "governanceEvent": CorrelatedGovernanceEvent.from_dict(obj.get("governanceEvent")) if obj.get("governanceEvent") is not None else None
+            "governanceEvent": CorrelatedGovernanceEvent.from_dict(obj["governanceEvent"]) if obj.get("governanceEvent") is not None else None
         })
         return _obj
 

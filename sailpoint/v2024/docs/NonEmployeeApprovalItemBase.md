@@ -24,12 +24,12 @@ json = "{}"
 # create an instance of NonEmployeeApprovalItemBase from a JSON string
 non_employee_approval_item_base_instance = NonEmployeeApprovalItemBase.from_json(json)
 # print the JSON string representation of the object
-print NonEmployeeApprovalItemBase.to_json()
+print(NonEmployeeApprovalItemBase.to_json())
 
 # convert the object into a dict
 non_employee_approval_item_base_dict = non_employee_approval_item_base_instance.to_dict()
 # create an instance of NonEmployeeApprovalItemBase from a dict
-non_employee_approval_item_base_form_dict = non_employee_approval_item_base.from_dict(non_employee_approval_item_base_dict)
+non_employee_approval_item_base_from_dict = NonEmployeeApprovalItemBase.from_dict(non_employee_approval_item_base_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

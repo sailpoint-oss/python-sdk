@@ -18,15 +18,12 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr, field_validator
-from pydantic import Field
 from sailpoint.beta.models.load_uncorrelated_accounts_task_task_attributes import LoadUncorrelatedAccountsTaskTaskAttributes
 from sailpoint.beta.models.load_uncorrelated_accounts_task_task_messages_inner import LoadUncorrelatedAccountsTaskTaskMessagesInner
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class LoadUncorrelatedAccountsTaskTask(BaseModel):
     """
@@ -54,15 +51,15 @@ class LoadUncorrelatedAccountsTaskTask(BaseModel):
         if value is None:
             return value
 
-        if value not in ('SUCCESS', 'WARNING', 'ERROR', 'TERMINATED', 'TEMP_ERROR'):
+        if value not in set(['SUCCESS', 'WARNING', 'ERROR', 'TERMINATED', 'TEMP_ERROR']):
             raise ValueError("must be one of enum values ('SUCCESS', 'WARNING', 'ERROR', 'TERMINATED', 'TEMP_ERROR')")
         return value
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -75,7 +72,7 @@ class LoadUncorrelatedAccountsTaskTask(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of LoadUncorrelatedAccountsTaskTask from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -89,18 +86,20 @@ class LoadUncorrelatedAccountsTaskTask(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in messages (list)
         _items = []
         if self.messages:
-            for _item in self.messages:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_messages in self.messages:
+                if _item_messages:
+                    _items.append(_item_messages.to_dict())
             _dict['messages'] = _items
         # override the default output from pydantic by calling `to_dict()` of attributes
         if self.attributes:
@@ -133,7 +132,7 @@ class LoadUncorrelatedAccountsTaskTask(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of LoadUncorrelatedAccountsTaskTask from a dict"""
         if obj is None:
             return None
@@ -152,9 +151,9 @@ class LoadUncorrelatedAccountsTaskTask(BaseModel):
             "completed": obj.get("completed"),
             "completionStatus": obj.get("completionStatus"),
             "parentName": obj.get("parentName"),
-            "messages": [LoadUncorrelatedAccountsTaskTaskMessagesInner.from_dict(_item) for _item in obj.get("messages")] if obj.get("messages") is not None else None,
+            "messages": [LoadUncorrelatedAccountsTaskTaskMessagesInner.from_dict(_item) for _item in obj["messages"]] if obj.get("messages") is not None else None,
             "progress": obj.get("progress"),
-            "attributes": LoadUncorrelatedAccountsTaskTaskAttributes.from_dict(obj.get("attributes")) if obj.get("attributes") is not None else None,
+            "attributes": LoadUncorrelatedAccountsTaskTaskAttributes.from_dict(obj["attributes"]) if obj.get("attributes") is not None else None,
             "returns": obj.get("returns")
         })
         return _obj

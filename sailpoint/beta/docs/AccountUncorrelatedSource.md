@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of AccountUncorrelatedSource from a JSON string
 account_uncorrelated_source_instance = AccountUncorrelatedSource.from_json(json)
 # print the JSON string representation of the object
-print AccountUncorrelatedSource.to_json()
+print(AccountUncorrelatedSource.to_json())
 
 # convert the object into a dict
 account_uncorrelated_source_dict = account_uncorrelated_source_instance.to_dict()
 # create an instance of AccountUncorrelatedSource from a dict
-account_uncorrelated_source_form_dict = account_uncorrelated_source.from_dict(account_uncorrelated_source_dict)
+account_uncorrelated_source_from_dict = AccountUncorrelatedSource.from_dict(account_uncorrelated_source_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

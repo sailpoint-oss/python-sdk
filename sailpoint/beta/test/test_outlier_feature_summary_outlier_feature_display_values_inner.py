@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.outlier_feature_summary_outlier_feature_display_values_inner import OutlierFeatureSummaryOutlierFeatureDisplayValuesInner
 
@@ -28,7 +27,7 @@ class TestOutlierFeatureSummaryOutlierFeatureDisplayValuesInner(unittest.TestCas
 
     def make_instance(self, include_optional) -> OutlierFeatureSummaryOutlierFeatureDisplayValuesInner:
         """Test OutlierFeatureSummaryOutlierFeatureDisplayValuesInner
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `OutlierFeatureSummaryOutlierFeatureDisplayValuesInner`

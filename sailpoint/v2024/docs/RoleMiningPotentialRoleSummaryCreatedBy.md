@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of RoleMiningPotentialRoleSummaryCreatedBy from a JSON string
 role_mining_potential_role_summary_created_by_instance = RoleMiningPotentialRoleSummaryCreatedBy.from_json(json)
 # print the JSON string representation of the object
-print RoleMiningPotentialRoleSummaryCreatedBy.to_json()
+print(RoleMiningPotentialRoleSummaryCreatedBy.to_json())
 
 # convert the object into a dict
 role_mining_potential_role_summary_created_by_dict = role_mining_potential_role_summary_created_by_instance.to_dict()
 # create an instance of RoleMiningPotentialRoleSummaryCreatedBy from a dict
-role_mining_potential_role_summary_created_by_form_dict = role_mining_potential_role_summary_created_by.from_dict(role_mining_potential_role_summary_created_by_dict)
+role_mining_potential_role_summary_created_by_from_dict = RoleMiningPotentialRoleSummaryCreatedBy.from_dict(role_mining_potential_role_summary_created_by_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

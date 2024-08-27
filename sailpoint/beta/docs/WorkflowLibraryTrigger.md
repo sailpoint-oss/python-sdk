@@ -27,12 +27,12 @@ json = "{}"
 # create an instance of WorkflowLibraryTrigger from a JSON string
 workflow_library_trigger_instance = WorkflowLibraryTrigger.from_json(json)
 # print the JSON string representation of the object
-print WorkflowLibraryTrigger.to_json()
+print(WorkflowLibraryTrigger.to_json())
 
 # convert the object into a dict
 workflow_library_trigger_dict = workflow_library_trigger_instance.to_dict()
 # create an instance of WorkflowLibraryTrigger from a dict
-workflow_library_trigger_form_dict = workflow_library_trigger.from_dict(workflow_library_trigger_dict)
+workflow_library_trigger_from_dict = WorkflowLibraryTrigger.from_dict(workflow_library_trigger_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

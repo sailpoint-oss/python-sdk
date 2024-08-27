@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **indices** | [**List[Index]**](Index.md) | The names of the Elasticsearch indices in which to search. If none are provided, then all indices will be searched. | [optional] 
-**query_type** | [**QueryType**](QueryType.md) |  | [optional] 
+**query_type** | [**QueryType**](QueryType.md) |  | [optional] [default to QueryType.SAILPOINT]
 **query_version** | **str** |  | [optional] 
 **query** | [**Query**](Query.md) |  | [optional] 
 **query_dsl** | **object** | The search query using the Elasticsearch [Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/7.10/query-dsl.html) syntax. | [optional] 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **type_ahead_query** | [**TypeAheadQuery**](TypeAheadQuery.md) |  | [optional] 
 **include_nested** | **bool** | Indicates whether nested objects from returned search results should be included. | [optional] [default to True]
 **query_result_filter** | [**QueryResultFilter**](QueryResultFilter.md) |  | [optional] 
-**aggregation_type** | [**AggregationType**](AggregationType.md) |  | [optional] 
+**aggregation_type** | [**AggregationType**](AggregationType.md) |  | [optional] [default to AggregationType.DSL]
 **aggregations_version** | **str** |  | [optional] 
 **aggregations_dsl** | **object** | The aggregation search query using Elasticsearch [Aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/search-aggregations.html) syntax. | [optional] 
 **aggregations** | [**SearchAggregationSpecification**](SearchAggregationSpecification.md) |  | [optional] 
@@ -32,12 +32,12 @@ json = "{}"
 # create an instance of Search from a JSON string
 search_instance = Search.from_json(json)
 # print the JSON string representation of the object
-print Search.to_json()
+print(Search.to_json())
 
 # convert the object into a dict
 search_dict = search_instance.to_dict()
 # create an instance of Search from a dict
-search_form_dict = search.from_dict(search_dict)
+search_from_dict = Search.from_dict(search_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of WorkflowAllOfCreator from a JSON string
 workflow_all_of_creator_instance = WorkflowAllOfCreator.from_json(json)
 # print the JSON string representation of the object
-print WorkflowAllOfCreator.to_json()
+print(WorkflowAllOfCreator.to_json())
 
 # convert the object into a dict
 workflow_all_of_creator_dict = workflow_all_of_creator_instance.to_dict()
 # create an instance of WorkflowAllOfCreator from a dict
-workflow_all_of_creator_form_dict = workflow_all_of_creator.from_dict(workflow_all_of_creator_dict)
+workflow_all_of_creator_from_dict = WorkflowAllOfCreator.from_dict(workflow_all_of_creator_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

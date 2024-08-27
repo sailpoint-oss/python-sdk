@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v2024.models.campaign_filter_details_criteria_list_inner import CampaignFilterDetailsCriteriaListInner
 
@@ -28,7 +27,7 @@ class TestCampaignFilterDetailsCriteriaListInner(unittest.TestCase):
 
     def make_instance(self, include_optional) -> CampaignFilterDetailsCriteriaListInner:
         """Test CampaignFilterDetailsCriteriaListInner
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `CampaignFilterDetailsCriteriaListInner`

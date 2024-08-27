@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v3.models.non_employee_idn_user_request import NonEmployeeIdnUserRequest
 
@@ -28,7 +27,7 @@ class TestNonEmployeeIdnUserRequest(unittest.TestCase):
 
     def make_instance(self, include_optional) -> NonEmployeeIdnUserRequest:
         """Test NonEmployeeIdnUserRequest
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `NonEmployeeIdnUserRequest`

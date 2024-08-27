@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of ExportOptions from a JSON string
 export_options_instance = ExportOptions.from_json(json)
 # print the JSON string representation of the object
-print ExportOptions.to_json()
+print(ExportOptions.to_json())
 
 # convert the object into a dict
 export_options_dict = export_options_instance.to_dict()
 # create an instance of ExportOptions from a dict
-export_options_form_dict = export_options.from_dict(export_options_dict)
+export_options_from_dict = ExportOptions.from_dict(export_options_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

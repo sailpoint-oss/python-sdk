@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v3.models.selector_type import SelectorType
 

@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v2024.models.access_request_pre_approval1 import AccessRequestPreApproval1
 
@@ -28,7 +27,7 @@ class TestAccessRequestPreApproval1(unittest.TestCase):
 
     def make_instance(self, include_optional) -> AccessRequestPreApproval1:
         """Test AccessRequestPreApproval1
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `AccessRequestPreApproval1`

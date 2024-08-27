@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of SourceCluster from a JSON string
 source_cluster_instance = SourceCluster.from_json(json)
 # print the JSON string representation of the object
-print SourceCluster.to_json()
+print(SourceCluster.to_json())
 
 # convert the object into a dict
 source_cluster_dict = source_cluster_instance.to_dict()
 # create an instance of SourceCluster from a dict
-source_cluster_form_dict = source_cluster.from_dict(source_cluster_dict)
+source_cluster_from_dict = SourceCluster.from_dict(source_cluster_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

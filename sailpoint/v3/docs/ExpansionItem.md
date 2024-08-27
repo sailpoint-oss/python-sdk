@@ -21,12 +21,12 @@ json = "{}"
 # create an instance of ExpansionItem from a JSON string
 expansion_item_instance = ExpansionItem.from_json(json)
 # print the JSON string representation of the object
-print ExpansionItem.to_json()
+print(ExpansionItem.to_json())
 
 # convert the object into a dict
 expansion_item_dict = expansion_item_instance.to_dict()
 # create an instance of ExpansionItem from a dict
-expansion_item_form_dict = expansion_item.from_dict(expansion_item_dict)
+expansion_item_from_dict = ExpansionItem.from_dict(expansion_item_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

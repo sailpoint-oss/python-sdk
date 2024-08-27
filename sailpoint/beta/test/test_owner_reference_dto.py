@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.owner_reference_dto import OwnerReferenceDto
 
@@ -28,7 +27,7 @@ class TestOwnerReferenceDto(unittest.TestCase):
 
     def make_instance(self, include_optional) -> OwnerReferenceDto:
         """Test OwnerReferenceDto
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `OwnerReferenceDto`

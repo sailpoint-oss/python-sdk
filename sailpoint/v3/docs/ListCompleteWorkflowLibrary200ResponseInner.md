@@ -29,12 +29,12 @@ json = "{}"
 # create an instance of ListCompleteWorkflowLibrary200ResponseInner from a JSON string
 list_complete_workflow_library200_response_inner_instance = ListCompleteWorkflowLibrary200ResponseInner.from_json(json)
 # print the JSON string representation of the object
-print ListCompleteWorkflowLibrary200ResponseInner.to_json()
+print(ListCompleteWorkflowLibrary200ResponseInner.to_json())
 
 # convert the object into a dict
 list_complete_workflow_library200_response_inner_dict = list_complete_workflow_library200_response_inner_instance.to_dict()
 # create an instance of ListCompleteWorkflowLibrary200ResponseInner from a dict
-list_complete_workflow_library200_response_inner_form_dict = list_complete_workflow_library200_response_inner.from_dict(list_complete_workflow_library200_response_inner_dict)
+list_complete_workflow_library200_response_inner_from_dict = ListCompleteWorkflowLibrary200ResponseInner.from_dict(list_complete_workflow_library200_response_inner_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

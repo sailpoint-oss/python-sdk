@@ -25,8 +25,6 @@ This API send token request.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.send_token_request import SendTokenRequest
 from sailpoint.v3.models.send_token_response import SendTokenResponse
@@ -111,8 +109,6 @@ This API poll the VerificationPollRequest for the specified MFA method. A token 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.verification_poll_request import VerificationPollRequest
 from sailpoint.v3.models.verification_response import VerificationResponse
@@ -199,8 +195,6 @@ This API Authenticates the user via Duo-Web MFA method.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.duo_verification_request import DuoVerificationRequest
 from sailpoint.v3.models.verification_response import VerificationResponse
@@ -285,8 +279,6 @@ This API Authenticate user in KBA MFA method.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.kba_answer_request_item import KbaAnswerRequestItem
 from sailpoint.v3.models.kba_auth_response import KbaAuthResponse
@@ -371,8 +363,6 @@ This API Authenticates the user via Okta-Verify MFA method. Request requires a h
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.okta_verification_request import OktaVerificationRequest
 from sailpoint.v3.models.verification_response import VerificationResponse
@@ -457,8 +447,6 @@ This API Authenticate user in Token MFA method.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.token_auth_request import TokenAuthRequest
 from sailpoint.v3.models.token_auth_response import TokenAuthResponse

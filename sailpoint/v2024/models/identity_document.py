@@ -18,9 +18,8 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
-from pydantic import Field
 from sailpoint.v2024.models.app import App
 from sailpoint.v2024.models.base_account import BaseAccount
 from sailpoint.v2024.models.document_type import DocumentType
@@ -30,10 +29,8 @@ from sailpoint.v2024.models.identity_document_all_of_manager import IdentityDocu
 from sailpoint.v2024.models.identity_document_all_of_source import IdentityDocumentAllOfSource
 from sailpoint.v2024.models.owns import Owns
 from sailpoint.v2024.models.processing_details import ProcessingDetails
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class IdentityDocument(BaseModel):
     """
@@ -75,11 +72,11 @@ class IdentityDocument(BaseModel):
     tags: Optional[List[StrictStr]] = Field(default=None, description="Tags that have been applied to the object.")
     __properties: ClassVar[List[str]] = ["id", "name", "_type", "displayName", "firstName", "lastName", "email", "created", "modified", "phone", "synced", "inactive", "protected", "status", "employeeNumber", "manager", "isManager", "identityProfile", "source", "attributes", "processingState", "processingDetails", "accounts", "accountCount", "apps", "appCount", "access", "accessCount", "entitlementCount", "roleCount", "accessProfileCount", "owns", "ownsCount", "tags"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -92,7 +89,7 @@ class IdentityDocument(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of IdentityDocument from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -106,10 +103,12 @@ class IdentityDocument(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of manager
@@ -127,30 +126,30 @@ class IdentityDocument(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in accounts (list)
         _items = []
         if self.accounts:
-            for _item in self.accounts:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_accounts in self.accounts:
+                if _item_accounts:
+                    _items.append(_item_accounts.to_dict())
             _dict['accounts'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in apps (list)
         _items = []
         if self.apps:
-            for _item in self.apps:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_apps in self.apps:
+                if _item_apps:
+                    _items.append(_item_apps.to_dict())
             _dict['apps'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in access (list)
         _items = []
         if self.access:
-            for _item in self.access:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_access in self.access:
+                if _item_access:
+                    _items.append(_item_access.to_dict())
             _dict['access'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in owns (list)
         _items = []
         if self.owns:
-            for _item in self.owns:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_owns in self.owns:
+                if _item_owns:
+                    _items.append(_item_owns.to_dict())
             _dict['owns'] = _items
         # set to None if created (nullable) is None
         # and model_fields_set contains the field
@@ -175,7 +174,7 @@ class IdentityDocument(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of IdentityDocument from a dict"""
         if obj is None:
             return None
@@ -199,23 +198,23 @@ class IdentityDocument(BaseModel):
             "protected": obj.get("protected") if obj.get("protected") is not None else False,
             "status": obj.get("status"),
             "employeeNumber": obj.get("employeeNumber"),
-            "manager": IdentityDocumentAllOfManager.from_dict(obj.get("manager")) if obj.get("manager") is not None else None,
+            "manager": IdentityDocumentAllOfManager.from_dict(obj["manager"]) if obj.get("manager") is not None else None,
             "isManager": obj.get("isManager"),
-            "identityProfile": IdentityDocumentAllOfIdentityProfile.from_dict(obj.get("identityProfile")) if obj.get("identityProfile") is not None else None,
-            "source": IdentityDocumentAllOfSource.from_dict(obj.get("source")) if obj.get("source") is not None else None,
+            "identityProfile": IdentityDocumentAllOfIdentityProfile.from_dict(obj["identityProfile"]) if obj.get("identityProfile") is not None else None,
+            "source": IdentityDocumentAllOfSource.from_dict(obj["source"]) if obj.get("source") is not None else None,
             "attributes": obj.get("attributes"),
             "processingState": obj.get("processingState"),
-            "processingDetails": ProcessingDetails.from_dict(obj.get("processingDetails")) if obj.get("processingDetails") is not None else None,
-            "accounts": [BaseAccount.from_dict(_item) for _item in obj.get("accounts")] if obj.get("accounts") is not None else None,
+            "processingDetails": ProcessingDetails.from_dict(obj["processingDetails"]) if obj.get("processingDetails") is not None else None,
+            "accounts": [BaseAccount.from_dict(_item) for _item in obj["accounts"]] if obj.get("accounts") is not None else None,
             "accountCount": obj.get("accountCount"),
-            "apps": [App.from_dict(_item) for _item in obj.get("apps")] if obj.get("apps") is not None else None,
+            "apps": [App.from_dict(_item) for _item in obj["apps"]] if obj.get("apps") is not None else None,
             "appCount": obj.get("appCount"),
-            "access": [IdentityAccess.from_dict(_item) for _item in obj.get("access")] if obj.get("access") is not None else None,
+            "access": [IdentityAccess.from_dict(_item) for _item in obj["access"]] if obj.get("access") is not None else None,
             "accessCount": obj.get("accessCount"),
             "entitlementCount": obj.get("entitlementCount"),
             "roleCount": obj.get("roleCount"),
             "accessProfileCount": obj.get("accessProfileCount"),
-            "owns": [Owns.from_dict(_item) for _item in obj.get("owns")] if obj.get("owns") is not None else None,
+            "owns": [Owns.from_dict(_item) for _item in obj["owns"]] if obj.get("owns") is not None else None,
             "ownsCount": obj.get("ownsCount"),
             "tags": obj.get("tags")
         })

@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of OriginalRequest from a JSON string
 original_request_instance = OriginalRequest.from_json(json)
 # print the JSON string representation of the object
-print OriginalRequest.to_json()
+print(OriginalRequest.to_json())
 
 # convert the object into a dict
 original_request_dict = original_request_instance.to_dict()
 # create an instance of OriginalRequest from a dict
-original_request_form_dict = original_request.from_dict(original_request_dict)
+original_request_from_dict = OriginalRequest.from_dict(original_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of EventBridgeConfig from a JSON string
 event_bridge_config_instance = EventBridgeConfig.from_json(json)
 # print the JSON string representation of the object
-print EventBridgeConfig.to_json()
+print(EventBridgeConfig.to_json())
 
 # convert the object into a dict
 event_bridge_config_dict = event_bridge_config_instance.to_dict()
 # create an instance of EventBridgeConfig from a dict
-event_bridge_config_form_dict = event_bridge_config.from_dict(event_bridge_config_dict)
+event_bridge_config_from_dict = EventBridgeConfig.from_dict(event_bridge_config_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of ScheduleMonths from a JSON string
 schedule_months_instance = ScheduleMonths.from_json(json)
 # print the JSON string representation of the object
-print ScheduleMonths.to_json()
+print(ScheduleMonths.to_json())
 
 # convert the object into a dict
 schedule_months_dict = schedule_months_instance.to_dict()
 # create an instance of ScheduleMonths from a dict
-schedule_months_form_dict = schedule_months.from_dict(schedule_months_dict)
+schedule_months_from_dict = ScheduleMonths.from_dict(schedule_months_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

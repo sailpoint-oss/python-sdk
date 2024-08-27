@@ -23,12 +23,12 @@ json = "{}"
 # create an instance of TriggerExampleOutput from a JSON string
 trigger_example_output_instance = TriggerExampleOutput.from_json(json)
 # print the JSON string representation of the object
-print TriggerExampleOutput.to_json()
+print(TriggerExampleOutput.to_json())
 
 # convert the object into a dict
 trigger_example_output_dict = trigger_example_output_instance.to_dict()
 # create an instance of TriggerExampleOutput from a dict
-trigger_example_output_form_dict = trigger_example_output.from_dict(trigger_example_output_dict)
+trigger_example_output_from_dict = TriggerExampleOutput.from_dict(trigger_example_output_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

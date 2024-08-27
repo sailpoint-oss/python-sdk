@@ -22,12 +22,12 @@ json = "{}"
 # create an instance of WorkflowBody from a JSON string
 workflow_body_instance = WorkflowBody.from_json(json)
 # print the JSON string representation of the object
-print WorkflowBody.to_json()
+print(WorkflowBody.to_json())
 
 # convert the object into a dict
 workflow_body_dict = workflow_body_instance.to_dict()
 # create an instance of WorkflowBody from a dict
-workflow_body_form_dict = workflow_body.from_dict(workflow_body_dict)
+workflow_body_from_dict = WorkflowBody.from_dict(workflow_body_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

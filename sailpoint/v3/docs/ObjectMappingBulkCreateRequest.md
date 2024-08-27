@@ -17,12 +17,12 @@ json = "{}"
 # create an instance of ObjectMappingBulkCreateRequest from a JSON string
 object_mapping_bulk_create_request_instance = ObjectMappingBulkCreateRequest.from_json(json)
 # print the JSON string representation of the object
-print ObjectMappingBulkCreateRequest.to_json()
+print(ObjectMappingBulkCreateRequest.to_json())
 
 # convert the object into a dict
 object_mapping_bulk_create_request_dict = object_mapping_bulk_create_request_instance.to_dict()
 # create an instance of ObjectMappingBulkCreateRequest from a dict
-object_mapping_bulk_create_request_form_dict = object_mapping_bulk_create_request.from_dict(object_mapping_bulk_create_request_dict)
+object_mapping_bulk_create_request_from_dict = ObjectMappingBulkCreateRequest.from_dict(object_mapping_bulk_create_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

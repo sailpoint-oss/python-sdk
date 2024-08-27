@@ -211,7 +211,6 @@ from sailpoint.beta.models.complete_invocation_input import CompleteInvocationIn
 from sailpoint.beta.models.completed_approval import CompletedApproval
 from sailpoint.beta.models.completed_approval_pre_approval_trigger_result import CompletedApprovalPreApprovalTriggerResult
 from sailpoint.beta.models.completed_approval_reviewed_by import CompletedApprovalReviewedBy
-from sailpoint.beta.models.completed_approval_reviewer_comment import CompletedApprovalReviewerComment
 from sailpoint.beta.models.completed_approval_state import CompletedApprovalState
 from sailpoint.beta.models.completion_status import CompletionStatus
 from sailpoint.beta.models.condition_effect import ConditionEffect
@@ -290,7 +289,6 @@ from sailpoint.beta.models.export_options import ExportOptions
 from sailpoint.beta.models.export_payload import ExportPayload
 from sailpoint.beta.models.expression import Expression
 from sailpoint.beta.models.feature_value_dto import FeatureValueDto
-from sailpoint.beta.models.field import Field
 from sailpoint.beta.models.field_details import FieldDetails
 from sailpoint.beta.models.field_details_dto import FieldDetailsDto
 from sailpoint.beta.models.form import Form
@@ -467,6 +465,7 @@ from sailpoint.beta.models.metric_response import MetricResponse
 from sailpoint.beta.models.mfa_config_test_response import MfaConfigTestResponse
 from sailpoint.beta.models.mfa_duo_config import MfaDuoConfig
 from sailpoint.beta.models.mfa_okta_config import MfaOktaConfig
+from sailpoint.beta.models.model_field import ModelField
 from sailpoint.beta.models.model_schema import ModelSchema
 from sailpoint.beta.models.multi_policy_request import MultiPolicyRequest
 from sailpoint.beta.models.native_change_detection_config import NativeChangeDetectionConfig
@@ -684,9 +683,6 @@ from sailpoint.beta.models.send_test_notification_request_dto import SendTestNot
 from sailpoint.beta.models.send_token_request import SendTokenRequest
 from sailpoint.beta.models.send_token_response import SendTokenResponse
 from sailpoint.beta.models.service_desk_integration_dto import ServiceDeskIntegrationDto
-from sailpoint.beta.models.service_desk_integration_dto_all_of_before_provisioning_rule import ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule
-from sailpoint.beta.models.service_desk_integration_dto_all_of_cluster_ref import ServiceDeskIntegrationDtoAllOfClusterRef
-from sailpoint.beta.models.service_desk_integration_dto_all_of_owner_ref import ServiceDeskIntegrationDtoAllOfOwnerRef
 from sailpoint.beta.models.service_desk_integration_template_dto import ServiceDeskIntegrationTemplateDto
 from sailpoint.beta.models.service_desk_integration_template_type import ServiceDeskIntegrationTemplateType
 from sailpoint.beta.models.service_desk_source import ServiceDeskSource

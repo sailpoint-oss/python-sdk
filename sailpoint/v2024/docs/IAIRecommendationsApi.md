@@ -22,8 +22,6 @@ The getRecommendations API returns recommendations based on the requested object
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.recommendation_request_dto import RecommendationRequestDto
 from sailpoint.v2024.models.recommendation_response_dto import RecommendationResponseDto
@@ -110,8 +108,6 @@ Retrieves configuration attributes used by certification recommendations.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.recommendation_config_dto import RecommendationConfigDto
 from sailpoint.v2024.rest import ApiException
@@ -194,8 +190,6 @@ Updates configuration attributes used by certification recommendations.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.recommendation_config_dto import RecommendationConfigDto
 from sailpoint.v2024.rest import ApiException

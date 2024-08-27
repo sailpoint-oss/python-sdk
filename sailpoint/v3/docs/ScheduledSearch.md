@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **name** | **str** | The name of the scheduled search.  | [optional] 
 **description** | **str** | The description of the scheduled search.  | [optional] 
 **saved_search_id** | **str** | The ID of the saved search that will be executed. | 
-**created** | **datetime** | A date-time in ISO-8601 format | [optional] [readonly] 
-**modified** | **datetime** | A date-time in ISO-8601 format | [optional] [readonly] 
+**created** | **datetime** | The date the scheduled search was initially created. | [optional] [readonly] 
+**modified** | **datetime** | The last date the scheduled search was modified. | [optional] [readonly] 
 **schedule** | [**Schedule1**](Schedule1.md) |  | 
 **recipients** | [**List[SearchScheduleRecipientsInner]**](SearchScheduleRecipientsInner.md) | A list of identities that should receive the scheduled search report via email. | 
 **enabled** | **bool** | Indicates if the scheduled search is enabled.  | [optional] [default to False]
@@ -29,12 +29,12 @@ json = "{}"
 # create an instance of ScheduledSearch from a JSON string
 scheduled_search_instance = ScheduledSearch.from_json(json)
 # print the JSON string representation of the object
-print ScheduledSearch.to_json()
+print(ScheduledSearch.to_json())
 
 # convert the object into a dict
 scheduled_search_dict = scheduled_search_instance.to_dict()
 # create an instance of ScheduledSearch from a dict
-scheduled_search_form_dict = scheduled_search.from_dict(scheduled_search_dict)
+scheduled_search_from_dict = ScheduledSearch.from_dict(scheduled_search_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of ProvisioningCompletedRequester from a JSON string
 provisioning_completed_requester_instance = ProvisioningCompletedRequester.from_json(json)
 # print the JSON string representation of the object
-print ProvisioningCompletedRequester.to_json()
+print(ProvisioningCompletedRequester.to_json())
 
 # convert the object into a dict
 provisioning_completed_requester_dict = provisioning_completed_requester_instance.to_dict()
 # create an instance of ProvisioningCompletedRequester from a dict
-provisioning_completed_requester_form_dict = provisioning_completed_requester.from_dict(provisioning_completed_requester_dict)
+provisioning_completed_requester_from_dict = ProvisioningCompletedRequester.from_dict(provisioning_completed_requester_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -17,15 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
 from sailpoint.v2024.models.entitlement_ref1 import EntitlementRef1
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class IdentityWithNewAccess1(BaseModel):
     """
@@ -36,11 +32,11 @@ class IdentityWithNewAccess1(BaseModel):
     client_metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on completion of the violation check.", alias="clientMetadata")
     __properties: ClassVar[List[str]] = ["identityId", "accessRefs", "clientMetadata"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -53,7 +49,7 @@ class IdentityWithNewAccess1(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of IdentityWithNewAccess1 from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -67,23 +63,25 @@ class IdentityWithNewAccess1(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in access_refs (list)
         _items = []
         if self.access_refs:
-            for _item in self.access_refs:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_access_refs in self.access_refs:
+                if _item_access_refs:
+                    _items.append(_item_access_refs.to_dict())
             _dict['accessRefs'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of IdentityWithNewAccess1 from a dict"""
         if obj is None:
             return None
@@ -93,7 +91,7 @@ class IdentityWithNewAccess1(BaseModel):
 
         _obj = cls.model_validate({
             "identityId": obj.get("identityId"),
-            "accessRefs": [EntitlementRef1.from_dict(_item) for _item in obj.get("accessRefs")] if obj.get("accessRefs") is not None else None,
+            "accessRefs": [EntitlementRef1.from_dict(_item) for _item in obj["accessRefs"]] if obj.get("accessRefs") is not None else None,
             "clientMetadata": obj.get("clientMetadata")
         })
         return _obj

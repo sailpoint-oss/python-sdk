@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.delete202_response import Delete202Response
 
@@ -28,7 +27,7 @@ class TestDelete202Response(unittest.TestCase):
 
     def make_instance(self, include_optional) -> Delete202Response:
         """Test Delete202Response
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `Delete202Response`

@@ -17,16 +17,12 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictInt
-from pydantic import Field
 from sailpoint.v2024.models.identity_profile import IdentityProfile
 from sailpoint.v2024.models.identity_profile_exported_object_self import IdentityProfileExportedObjectSelf
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class IdentityProfileExportedObject(BaseModel):
     """
@@ -37,11 +33,11 @@ class IdentityProfileExportedObject(BaseModel):
     object: Optional[IdentityProfile] = None
     __properties: ClassVar[List[str]] = ["version", "self", "object"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -54,7 +50,7 @@ class IdentityProfileExportedObject(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of IdentityProfileExportedObject from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -68,10 +64,12 @@ class IdentityProfileExportedObject(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of var_self
@@ -83,7 +81,7 @@ class IdentityProfileExportedObject(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of IdentityProfileExportedObject from a dict"""
         if obj is None:
             return None
@@ -93,8 +91,8 @@ class IdentityProfileExportedObject(BaseModel):
 
         _obj = cls.model_validate({
             "version": obj.get("version"),
-            "self": IdentityProfileExportedObjectSelf.from_dict(obj.get("self")) if obj.get("self") is not None else None,
-            "object": IdentityProfile.from_dict(obj.get("object")) if obj.get("object") is not None else None
+            "self": IdentityProfileExportedObjectSelf.from_dict(obj["self"]) if obj.get("self") is not None else None,
+            "object": IdentityProfile.from_dict(obj["object"]) if obj.get("object") is not None else None
         })
         return _obj
 

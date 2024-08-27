@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of ReportConfigDTO from a JSON string
 report_config_dto_instance = ReportConfigDTO.from_json(json)
 # print the JSON string representation of the object
-print ReportConfigDTO.to_json()
+print(ReportConfigDTO.to_json())
 
 # convert the object into a dict
 report_config_dto_dict = report_config_dto_instance.to_dict()
 # create an instance of ReportConfigDTO from a dict
-report_config_dto_form_dict = report_config_dto.from_dict(report_config_dto_dict)
+report_config_dto_from_dict = ReportConfigDTO.from_dict(report_config_dto_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

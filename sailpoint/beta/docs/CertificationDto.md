@@ -29,12 +29,12 @@ json = "{}"
 # create an instance of CertificationDto from a JSON string
 certification_dto_instance = CertificationDto.from_json(json)
 # print the JSON string representation of the object
-print CertificationDto.to_json()
+print(CertificationDto.to_json())
 
 # convert the object into a dict
 certification_dto_dict = certification_dto_instance.to_dict()
 # create an instance of CertificationDto from a dict
-certification_dto_form_dict = certification_dto.from_dict(certification_dto_dict)
+certification_dto_from_dict = CertificationDto.from_dict(certification_dto_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

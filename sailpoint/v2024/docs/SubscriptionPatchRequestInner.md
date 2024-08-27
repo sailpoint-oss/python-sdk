@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of SubscriptionPatchRequestInner from a JSON string
 subscription_patch_request_inner_instance = SubscriptionPatchRequestInner.from_json(json)
 # print the JSON string representation of the object
-print SubscriptionPatchRequestInner.to_json()
+print(SubscriptionPatchRequestInner.to_json())
 
 # convert the object into a dict
 subscription_patch_request_inner_dict = subscription_patch_request_inner_instance.to_dict()
 # create an instance of SubscriptionPatchRequestInner from a dict
-subscription_patch_request_inner_form_dict = subscription_patch_request_inner.from_dict(subscription_patch_request_inner_dict)
+subscription_patch_request_inner_from_dict = SubscriptionPatchRequestInner.from_dict(subscription_patch_request_inner_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

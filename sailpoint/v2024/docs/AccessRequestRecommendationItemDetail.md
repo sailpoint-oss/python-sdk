@@ -23,12 +23,12 @@ json = "{}"
 # create an instance of AccessRequestRecommendationItemDetail from a JSON string
 access_request_recommendation_item_detail_instance = AccessRequestRecommendationItemDetail.from_json(json)
 # print the JSON string representation of the object
-print AccessRequestRecommendationItemDetail.to_json()
+print(AccessRequestRecommendationItemDetail.to_json())
 
 # convert the object into a dict
 access_request_recommendation_item_detail_dict = access_request_recommendation_item_detail_instance.to_dict()
 # create an instance of AccessRequestRecommendationItemDetail from a dict
-access_request_recommendation_item_detail_form_dict = access_request_recommendation_item_detail.from_dict(access_request_recommendation_item_detail_dict)
+access_request_recommendation_item_detail_from_dict = AccessRequestRecommendationItemDetail.from_dict(access_request_recommendation_item_detail_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -22,8 +22,6 @@ This API returns auth profile information.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.auth_profile import AuthProfile
 from sailpoint.beta.rest import ApiException
@@ -104,8 +102,6 @@ This API returns a list of auth profiles.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.auth_profile_summary import AuthProfileSummary
 from sailpoint.beta.rest import ApiException
@@ -185,8 +181,6 @@ This API updates an existing Auth Profile. The following fields are patchable: *
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.auth_profile import AuthProfile
 from sailpoint.beta.models.json_patch_operation import JsonPatchOperation

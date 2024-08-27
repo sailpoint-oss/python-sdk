@@ -18,19 +18,16 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictInt, StrictStr, field_validator
-from pydantic import Field
 from sailpoint.beta.models.campaign_alert import CampaignAlert
 from sailpoint.beta.models.fullcampaign_all_of_filter import FullcampaignAllOfFilter
 from sailpoint.beta.models.fullcampaign_all_of_role_composition_campaign_info import FullcampaignAllOfRoleCompositionCampaignInfo
 from sailpoint.beta.models.fullcampaign_all_of_search_campaign_info import FullcampaignAllOfSearchCampaignInfo
 from sailpoint.beta.models.fullcampaign_all_of_source_owner_campaign_info import FullcampaignAllOfSourceOwnerCampaignInfo
 from sailpoint.beta.models.fullcampaign_all_of_sources_with_orphan_entitlements import FullcampaignAllOfSourcesWithOrphanEntitlements
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class Campaign(BaseModel):
     """
@@ -63,7 +60,7 @@ class Campaign(BaseModel):
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('MANAGER', 'SOURCE_OWNER', 'SEARCH', 'ROLE_COMPOSITION'):
+        if value not in set(['MANAGER', 'SOURCE_OWNER', 'SEARCH', 'ROLE_COMPOSITION']):
             raise ValueError("must be one of enum values ('MANAGER', 'SOURCE_OWNER', 'SEARCH', 'ROLE_COMPOSITION')")
         return value
 
@@ -73,7 +70,7 @@ class Campaign(BaseModel):
         if value is None:
             return value
 
-        if value not in ('PENDING', 'STAGED', 'CANCELING', 'ACTIVATING', 'ACTIVE', 'COMPLETING', 'COMPLETED', 'ERROR', 'ARCHIVED'):
+        if value not in set(['PENDING', 'STAGED', 'CANCELING', 'ACTIVATING', 'ACTIVE', 'COMPLETING', 'COMPLETED', 'ERROR', 'ARCHIVED']):
             raise ValueError("must be one of enum values ('PENDING', 'STAGED', 'CANCELING', 'ACTIVATING', 'ACTIVE', 'COMPLETING', 'COMPLETED', 'ERROR', 'ARCHIVED')")
         return value
 
@@ -83,7 +80,7 @@ class Campaign(BaseModel):
         if value is None:
             return value
 
-        if value not in ('CORRELATED', 'UNCORRELATED'):
+        if value not in set(['CORRELATED', 'UNCORRELATED']):
             raise ValueError("must be one of enum values ('CORRELATED', 'UNCORRELATED')")
         return value
 
@@ -93,15 +90,15 @@ class Campaign(BaseModel):
         if value is None:
             return value
 
-        if value not in ('ALL_DECISIONS', 'REVOKE_ONLY_DECISIONS', 'NO_DECISIONS'):
+        if value not in set(['ALL_DECISIONS', 'REVOKE_ONLY_DECISIONS', 'NO_DECISIONS']):
             raise ValueError("must be one of enum values ('ALL_DECISIONS', 'REVOKE_ONLY_DECISIONS', 'NO_DECISIONS')")
         return value
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -114,7 +111,7 @@ class Campaign(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of Campaign from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -136,26 +133,28 @@ class Campaign(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         """
+        excluded_fields: Set[str] = set([
+            "id",
+            "status",
+            "created",
+            "total_certifications",
+            "completed_certifications",
+            "alerts",
+            "modified",
+            "sources_with_orphan_entitlements",
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-                "id",
-                "status",
-                "created",
-                "total_certifications",
-                "completed_certifications",
-                "alerts",
-                "modified",
-                "sources_with_orphan_entitlements",
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in alerts (list)
         _items = []
         if self.alerts:
-            for _item in self.alerts:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_alerts in self.alerts:
+                if _item_alerts:
+                    _items.append(_item_alerts.to_dict())
             _dict['alerts'] = _items
         # override the default output from pydantic by calling `to_dict()` of filter
         if self.filter:
@@ -172,14 +171,14 @@ class Campaign(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in sources_with_orphan_entitlements (list)
         _items = []
         if self.sources_with_orphan_entitlements:
-            for _item in self.sources_with_orphan_entitlements:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_sources_with_orphan_entitlements in self.sources_with_orphan_entitlements:
+                if _item_sources_with_orphan_entitlements:
+                    _items.append(_item_sources_with_orphan_entitlements.to_dict())
             _dict['sourcesWithOrphanEntitlements'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of Campaign from a dict"""
         if obj is None:
             return None
@@ -201,14 +200,14 @@ class Campaign(BaseModel):
             "created": obj.get("created"),
             "totalCertifications": obj.get("totalCertifications"),
             "completedCertifications": obj.get("completedCertifications"),
-            "alerts": [CampaignAlert.from_dict(_item) for _item in obj.get("alerts")] if obj.get("alerts") is not None else None,
+            "alerts": [CampaignAlert.from_dict(_item) for _item in obj["alerts"]] if obj.get("alerts") is not None else None,
             "modified": obj.get("modified"),
-            "filter": FullcampaignAllOfFilter.from_dict(obj.get("filter")) if obj.get("filter") is not None else None,
+            "filter": FullcampaignAllOfFilter.from_dict(obj["filter"]) if obj.get("filter") is not None else None,
             "sunsetCommentsRequired": obj.get("sunsetCommentsRequired") if obj.get("sunsetCommentsRequired") is not None else True,
-            "sourceOwnerCampaignInfo": FullcampaignAllOfSourceOwnerCampaignInfo.from_dict(obj.get("sourceOwnerCampaignInfo")) if obj.get("sourceOwnerCampaignInfo") is not None else None,
-            "searchCampaignInfo": FullcampaignAllOfSearchCampaignInfo.from_dict(obj.get("searchCampaignInfo")) if obj.get("searchCampaignInfo") is not None else None,
-            "roleCompositionCampaignInfo": FullcampaignAllOfRoleCompositionCampaignInfo.from_dict(obj.get("roleCompositionCampaignInfo")) if obj.get("roleCompositionCampaignInfo") is not None else None,
-            "sourcesWithOrphanEntitlements": [FullcampaignAllOfSourcesWithOrphanEntitlements.from_dict(_item) for _item in obj.get("sourcesWithOrphanEntitlements")] if obj.get("sourcesWithOrphanEntitlements") is not None else None,
+            "sourceOwnerCampaignInfo": FullcampaignAllOfSourceOwnerCampaignInfo.from_dict(obj["sourceOwnerCampaignInfo"]) if obj.get("sourceOwnerCampaignInfo") is not None else None,
+            "searchCampaignInfo": FullcampaignAllOfSearchCampaignInfo.from_dict(obj["searchCampaignInfo"]) if obj.get("searchCampaignInfo") is not None else None,
+            "roleCompositionCampaignInfo": FullcampaignAllOfRoleCompositionCampaignInfo.from_dict(obj["roleCompositionCampaignInfo"]) if obj.get("roleCompositionCampaignInfo") is not None else None,
+            "sourcesWithOrphanEntitlements": [FullcampaignAllOfSourcesWithOrphanEntitlements.from_dict(_item) for _item in obj["sourcesWithOrphanEntitlements"]] if obj.get("sourcesWithOrphanEntitlements") is not None else None,
             "mandatoryCommentRequirement": obj.get("mandatoryCommentRequirement")
         })
         return _obj

@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of SpConfigImportResults from a JSON string
 sp_config_import_results_instance = SpConfigImportResults.from_json(json)
 # print the JSON string representation of the object
-print SpConfigImportResults.to_json()
+print(SpConfigImportResults.to_json())
 
 # convert the object into a dict
 sp_config_import_results_dict = sp_config_import_results_instance.to_dict()
 # create an instance of SpConfigImportResults from a dict
-sp_config_import_results_form_dict = sp_config_import_results.from_dict(sp_config_import_results_dict)
+sp_config_import_results_from_dict = SpConfigImportResults.from_dict(sp_config_import_results_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

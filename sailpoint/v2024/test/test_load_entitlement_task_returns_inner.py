@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v2024.models.load_entitlement_task_returns_inner import LoadEntitlementTaskReturnsInner
 
@@ -28,7 +27,7 @@ class TestLoadEntitlementTaskReturnsInner(unittest.TestCase):
 
     def make_instance(self, include_optional) -> LoadEntitlementTaskReturnsInner:
         """Test LoadEntitlementTaskReturnsInner
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `LoadEntitlementTaskReturnsInner`

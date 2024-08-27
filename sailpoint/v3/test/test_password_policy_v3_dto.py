@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v3.models.password_policy_v3_dto import PasswordPolicyV3Dto
 
@@ -28,7 +27,7 @@ class TestPasswordPolicyV3Dto(unittest.TestCase):
 
     def make_instance(self, include_optional) -> PasswordPolicyV3Dto:
         """Test PasswordPolicyV3Dto
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `PasswordPolicyV3Dto`

@@ -24,12 +24,12 @@ json = "{}"
 # create an instance of OutlierContributingFeature from a JSON string
 outlier_contributing_feature_instance = OutlierContributingFeature.from_json(json)
 # print the JSON string representation of the object
-print OutlierContributingFeature.to_json()
+print(OutlierContributingFeature.to_json())
 
 # convert the object into a dict
 outlier_contributing_feature_dict = outlier_contributing_feature_instance.to_dict()
 # create an instance of OutlierContributingFeature from a dict
-outlier_contributing_feature_form_dict = outlier_contributing_feature.from_dict(outlier_contributing_feature_dict)
+outlier_contributing_feature_from_dict = OutlierContributingFeature.from_dict(outlier_contributing_feature_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

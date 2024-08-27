@@ -17,12 +17,12 @@ json = "{}"
 # create an instance of RequestedItemStatusProvisioningDetails from a JSON string
 requested_item_status_provisioning_details_instance = RequestedItemStatusProvisioningDetails.from_json(json)
 # print the JSON string representation of the object
-print RequestedItemStatusProvisioningDetails.to_json()
+print(RequestedItemStatusProvisioningDetails.to_json())
 
 # convert the object into a dict
 requested_item_status_provisioning_details_dict = requested_item_status_provisioning_details_instance.to_dict()
 # create an instance of RequestedItemStatusProvisioningDetails from a dict
-requested_item_status_provisioning_details_form_dict = requested_item_status_provisioning_details.from_dict(requested_item_status_provisioning_details_dict)
+requested_item_status_provisioning_details_from_dict = RequestedItemStatusProvisioningDetails.from_dict(requested_item_status_provisioning_details_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

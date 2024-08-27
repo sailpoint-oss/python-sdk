@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v3.models.object_mapping_bulk_create_request import ObjectMappingBulkCreateRequest
 
@@ -28,7 +27,7 @@ class TestObjectMappingBulkCreateRequest(unittest.TestCase):
 
     def make_instance(self, include_optional) -> ObjectMappingBulkCreateRequest:
         """Test ObjectMappingBulkCreateRequest
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `ObjectMappingBulkCreateRequest`

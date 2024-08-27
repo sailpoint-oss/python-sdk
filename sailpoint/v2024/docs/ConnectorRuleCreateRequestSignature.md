@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of ConnectorRuleCreateRequestSignature from a JSON string
 connector_rule_create_request_signature_instance = ConnectorRuleCreateRequestSignature.from_json(json)
 # print the JSON string representation of the object
-print ConnectorRuleCreateRequestSignature.to_json()
+print(ConnectorRuleCreateRequestSignature.to_json())
 
 # convert the object into a dict
 connector_rule_create_request_signature_dict = connector_rule_create_request_signature_instance.to_dict()
 # create an instance of ConnectorRuleCreateRequestSignature from a dict
-connector_rule_create_request_signature_form_dict = connector_rule_create_request_signature.from_dict(connector_rule_create_request_signature_dict)
+connector_rule_create_request_signature_from_dict = ConnectorRuleCreateRequestSignature.from_dict(connector_rule_create_request_signature_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

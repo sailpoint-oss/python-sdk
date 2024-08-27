@@ -17,16 +17,12 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
 from sailpoint.v3.models.role_criteria_key import RoleCriteriaKey
 from sailpoint.v3.models.role_criteria_operation import RoleCriteriaOperation
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class RoleCriteriaLevel3(BaseModel):
     """
@@ -37,11 +33,11 @@ class RoleCriteriaLevel3(BaseModel):
     string_value: Optional[StrictStr] = Field(default=None, description="String value to test the Identity attribute, Account attribute, or Entitlement specified in the key w/r/t the specified operation. If this criteria is a leaf node, that is, if the operation is one of EQUALS, NOT_EQUALS, CONTAINS, STARTS_WITH, or ENDS_WITH, this field is required. Otherwise, specifying it is an error.", alias="stringValue")
     __properties: ClassVar[List[str]] = ["operation", "key", "stringValue"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -54,7 +50,7 @@ class RoleCriteriaLevel3(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of RoleCriteriaLevel3 from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -68,10 +64,12 @@ class RoleCriteriaLevel3(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of key
@@ -85,7 +83,7 @@ class RoleCriteriaLevel3(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of RoleCriteriaLevel3 from a dict"""
         if obj is None:
             return None
@@ -95,7 +93,7 @@ class RoleCriteriaLevel3(BaseModel):
 
         _obj = cls.model_validate({
             "operation": obj.get("operation"),
-            "key": RoleCriteriaKey.from_dict(obj.get("key")) if obj.get("key") is not None else None,
+            "key": RoleCriteriaKey.from_dict(obj["key"]) if obj.get("key") is not None else None,
             "stringValue": obj.get("stringValue")
         })
         return _obj

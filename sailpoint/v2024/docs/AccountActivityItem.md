@@ -32,12 +32,12 @@ json = "{}"
 # create an instance of AccountActivityItem from a JSON string
 account_activity_item_instance = AccountActivityItem.from_json(json)
 # print the JSON string representation of the object
-print AccountActivityItem.to_json()
+print(AccountActivityItem.to_json())
 
 # convert the object into a dict
 account_activity_item_dict = account_activity_item_instance.to_dict()
 # create an instance of AccountActivityItem from a dict
-account_activity_item_form_dict = account_activity_item.from_dict(account_activity_item_dict)
+account_activity_item_from_dict = AccountActivityItem.from_dict(account_activity_item_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

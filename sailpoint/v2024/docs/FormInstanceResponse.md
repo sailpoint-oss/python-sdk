@@ -31,12 +31,12 @@ json = "{}"
 # create an instance of FormInstanceResponse from a JSON string
 form_instance_response_instance = FormInstanceResponse.from_json(json)
 # print the JSON string representation of the object
-print FormInstanceResponse.to_json()
+print(FormInstanceResponse.to_json())
 
 # convert the object into a dict
 form_instance_response_dict = form_instance_response_instance.to_dict()
 # create an instance of FormInstanceResponse from a dict
-form_instance_response_form_dict = form_instance_response.from_dict(form_instance_response_dict)
+form_instance_response_from_dict = FormInstanceResponse.from_dict(form_instance_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

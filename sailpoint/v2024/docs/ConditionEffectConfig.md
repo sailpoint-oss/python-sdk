@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of ConditionEffectConfig from a JSON string
 condition_effect_config_instance = ConditionEffectConfig.from_json(json)
 # print the JSON string representation of the object
-print ConditionEffectConfig.to_json()
+print(ConditionEffectConfig.to_json())
 
 # convert the object into a dict
 condition_effect_config_dict = condition_effect_config_instance.to_dict()
 # create an instance of ConditionEffectConfig from a dict
-condition_effect_config_form_dict = condition_effect_config.from_dict(condition_effect_config_dict)
+condition_effect_config_from_dict = ConditionEffectConfig.from_dict(condition_effect_config_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

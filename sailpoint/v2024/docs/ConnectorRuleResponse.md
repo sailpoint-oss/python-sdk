@@ -26,12 +26,12 @@ json = "{}"
 # create an instance of ConnectorRuleResponse from a JSON string
 connector_rule_response_instance = ConnectorRuleResponse.from_json(json)
 # print the JSON string representation of the object
-print ConnectorRuleResponse.to_json()
+print(ConnectorRuleResponse.to_json())
 
 # convert the object into a dict
 connector_rule_response_dict = connector_rule_response_instance.to_dict()
 # create an instance of ConnectorRuleResponse from a dict
-connector_rule_response_form_dict = connector_rule_response.from_dict(connector_rule_response_dict)
+connector_rule_response_from_dict = ConnectorRuleResponse.from_dict(connector_rule_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

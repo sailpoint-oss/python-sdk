@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of RequestableObjectReference from a JSON string
 requestable_object_reference_instance = RequestableObjectReference.from_json(json)
 # print the JSON string representation of the object
-print RequestableObjectReference.to_json()
+print(RequestableObjectReference.to_json())
 
 # convert the object into a dict
 requestable_object_reference_dict = requestable_object_reference_instance.to_dict()
 # create an instance of RequestableObjectReference from a dict
-requestable_object_reference_form_dict = requestable_object_reference.from_dict(requestable_object_reference_dict)
+requestable_object_reference_from_dict = RequestableObjectReference.from_dict(requestable_object_reference_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -17,16 +17,12 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
-from pydantic import Field
 from sailpoint.beta.models.attribute_definition_schema import AttributeDefinitionSchema
 from sailpoint.beta.models.attribute_definition_type import AttributeDefinitionType
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class AttributeDefinition(BaseModel):
     """
@@ -41,11 +37,11 @@ class AttributeDefinition(BaseModel):
     is_group: Optional[StrictBool] = Field(default=False, description="Flag indicating whether or not the attribute represents a group. This can only be `true` if `isEntitlement` is also `true` **and** there is a schema defined for the attribute. ", alias="isGroup")
     __properties: ClassVar[List[str]] = ["name", "type", "schema", "description", "isMulti", "isEntitlement", "isGroup"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -58,7 +54,7 @@ class AttributeDefinition(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of AttributeDefinition from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -72,10 +68,12 @@ class AttributeDefinition(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of var_schema
@@ -84,7 +82,7 @@ class AttributeDefinition(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of AttributeDefinition from a dict"""
         if obj is None:
             return None
@@ -95,7 +93,7 @@ class AttributeDefinition(BaseModel):
         _obj = cls.model_validate({
             "name": obj.get("name"),
             "type": obj.get("type"),
-            "schema": AttributeDefinitionSchema.from_dict(obj.get("schema")) if obj.get("schema") is not None else None,
+            "schema": AttributeDefinitionSchema.from_dict(obj["schema"]) if obj.get("schema") is not None else None,
             "description": obj.get("description"),
             "isMulti": obj.get("isMulti") if obj.get("isMulti") is not None else False,
             "isEntitlement": obj.get("isEntitlement") if obj.get("isEntitlement") is not None else False,

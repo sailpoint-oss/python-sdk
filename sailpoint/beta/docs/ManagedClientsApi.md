@@ -21,8 +21,6 @@ Retrieve Managed Client Status by ID.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.managed_client_status import ManagedClientStatus
 from sailpoint.beta.models.managed_client_type import ManagedClientType
@@ -110,8 +108,6 @@ Update a status detail passed in from the client
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.managed_client_status import ManagedClientStatus
 from sailpoint.beta.models.managed_client_status_agg_response import ManagedClientStatusAggResponse

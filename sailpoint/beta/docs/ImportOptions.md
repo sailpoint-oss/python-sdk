@@ -21,12 +21,12 @@ json = "{}"
 # create an instance of ImportOptions from a JSON string
 import_options_instance = ImportOptions.from_json(json)
 # print the JSON string representation of the object
-print ImportOptions.to_json()
+print(ImportOptions.to_json())
 
 # convert the object into a dict
 import_options_dict = import_options_instance.to_dict()
 # create an instance of ImportOptions from a dict
-import_options_form_dict = import_options.from_dict(import_options_dict)
+import_options_from_dict = ImportOptions.from_dict(import_options_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -31,8 +31,6 @@ Add single Access Model Metadata to an entitlement.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.entitlement1 import Entitlement1
 from sailpoint.v2024.rest import ApiException
@@ -122,8 +120,6 @@ Remove single Access Model Metadata from an entitlement.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
@@ -210,8 +206,6 @@ This API returns an entitlement by its ID.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.entitlement1 import Entitlement1
 from sailpoint.v2024.rest import ApiException
@@ -298,8 +292,6 @@ This API returns the entitlement request config for a specified entitlement.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.entitlement_request_config import EntitlementRequestConfig
 from sailpoint.v2024.rest import ApiException
@@ -386,8 +378,6 @@ Starts an entitlement aggregation on the specified source. Though this endpoint 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.load_entitlement_task import LoadEntitlementTask
 from sailpoint.v2024.rest import ApiException
@@ -475,8 +465,6 @@ This API returns a list of all child entitlements of a given entitlement.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.entitlement1 import Entitlement1
 from sailpoint.v2024.rest import ApiException
@@ -573,8 +561,6 @@ This API returns a list of all parent entitlements of a given entitlement.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.entitlement1 import Entitlement1
 from sailpoint.v2024.rest import ApiException
@@ -671,8 +657,6 @@ This API returns a list of entitlements.  This API can be used in one of the two
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.entitlement1 import Entitlement1
 from sailpoint.v2024.rest import ApiException
@@ -774,8 +758,6 @@ This API updates an existing entitlement using [JSON Patch](https://tools.ietf.o
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.entitlement1 import Entitlement1
 from sailpoint.v2024.models.json_patch_operation import JsonPatchOperation
@@ -865,8 +847,6 @@ This API replaces the entitlement request config for a specified entitlement.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.entitlement_request_config import EntitlementRequestConfig
 from sailpoint.v2024.rest import ApiException
@@ -955,8 +935,6 @@ Removes all entitlements on a specific source.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.entitlement_source_reset_base_reference_dto import EntitlementSourceResetBaseReferenceDto
 from sailpoint.v2024.rest import ApiException
@@ -1042,8 +1020,6 @@ This API applies an update to every entitlement of the list.  The number of enti
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.entitlement_bulk_update_request import EntitlementBulkUpdateRequest
 from sailpoint.v2024.rest import ApiException

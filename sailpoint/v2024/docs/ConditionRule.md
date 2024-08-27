@@ -21,12 +21,12 @@ json = "{}"
 # create an instance of ConditionRule from a JSON string
 condition_rule_instance = ConditionRule.from_json(json)
 # print the JSON string representation of the object
-print ConditionRule.to_json()
+print(ConditionRule.to_json())
 
 # convert the object into a dict
 condition_rule_dict = condition_rule_instance.to_dict()
 # create an instance of ConditionRule from a dict
-condition_rule_form_dict = condition_rule.from_dict(condition_rule_dict)
+condition_rule_from_dict = ConditionRule.from_dict(condition_rule_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

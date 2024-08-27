@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of BulkRemoveTaggedObject from a JSON string
 bulk_remove_tagged_object_instance = BulkRemoveTaggedObject.from_json(json)
 # print the JSON string representation of the object
-print BulkRemoveTaggedObject.to_json()
+print(BulkRemoveTaggedObject.to_json())
 
 # convert the object into a dict
 bulk_remove_tagged_object_dict = bulk_remove_tagged_object_instance.to_dict()
 # create an instance of BulkRemoveTaggedObject from a dict
-bulk_remove_tagged_object_form_dict = bulk_remove_tagged_object.from_dict(bulk_remove_tagged_object_dict)
+bulk_remove_tagged_object_from_dict = BulkRemoveTaggedObject.from_dict(bulk_remove_tagged_object_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

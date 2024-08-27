@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of SourceAccountCorrelationRule from a JSON string
 source_account_correlation_rule_instance = SourceAccountCorrelationRule.from_json(json)
 # print the JSON string representation of the object
-print SourceAccountCorrelationRule.to_json()
+print(SourceAccountCorrelationRule.to_json())
 
 # convert the object into a dict
 source_account_correlation_rule_dict = source_account_correlation_rule_instance.to_dict()
 # create an instance of SourceAccountCorrelationRule from a dict
-source_account_correlation_rule_form_dict = source_account_correlation_rule.from_dict(source_account_correlation_rule_dict)
+source_account_correlation_rule_from_dict = SourceAccountCorrelationRule.from_dict(source_account_correlation_rule_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

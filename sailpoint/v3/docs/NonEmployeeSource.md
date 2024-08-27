@@ -24,12 +24,12 @@ json = "{}"
 # create an instance of NonEmployeeSource from a JSON string
 non_employee_source_instance = NonEmployeeSource.from_json(json)
 # print the JSON string representation of the object
-print NonEmployeeSource.to_json()
+print(NonEmployeeSource.to_json())
 
 # convert the object into a dict
 non_employee_source_dict = non_employee_source_instance.to_dict()
 # create an instance of NonEmployeeSource from a dict
-non_employee_source_form_dict = non_employee_source.from_dict(non_employee_source_dict)
+non_employee_source_from_dict = NonEmployeeSource.from_dict(non_employee_source_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

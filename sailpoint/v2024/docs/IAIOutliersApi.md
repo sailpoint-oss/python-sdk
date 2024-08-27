@@ -28,8 +28,6 @@ This API exports a list of ignored outliers to a CSV as well as list of non-igno
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
@@ -114,8 +112,6 @@ This API receives a summary containing: the number of identities that customer h
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.outlier_summary import OutlierSummary
 from sailpoint.v2024.rest import ApiException
@@ -210,8 +206,6 @@ This API receives a list of outliers, containing data such as: identityId, outli
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.outlier import Outlier
 from sailpoint.v2024.rest import ApiException
@@ -307,8 +301,6 @@ This API returns a most recent snapshot of each outlier type, each containing: t
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.latest_outlier_summary import LatestOutlierSummary
 from sailpoint.v2024.rest import ApiException
@@ -395,8 +387,6 @@ This API returns a summary of a contributing feature for an identity outlier. Th
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.outlier_feature_summary import OutlierFeatureSummary
 from sailpoint.v2024.rest import ApiException
@@ -483,8 +473,6 @@ This API returns a list of contributing feature objects for a single outlier. Th
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.outlier_contributing_feature import OutlierContributingFeature
 from sailpoint.v2024.rest import ApiException
@@ -581,8 +569,6 @@ This API receives a list of IdentityIDs in the request, changes the outliers to 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
@@ -665,8 +651,6 @@ This API returns a list of the enriched access items associated with each featur
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.outliers_contributing_feature_access_items import OutliersContributingFeatureAccessItems
 from sailpoint.v2024.rest import ApiException
@@ -765,8 +749,6 @@ This API receives a list of IdentityIDs in the request, changes the outliers to 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint

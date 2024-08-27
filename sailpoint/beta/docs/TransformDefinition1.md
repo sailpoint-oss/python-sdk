@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of TransformDefinition1 from a JSON string
 transform_definition1_instance = TransformDefinition1.from_json(json)
 # print the JSON string representation of the object
-print TransformDefinition1.to_json()
+print(TransformDefinition1.to_json())
 
 # convert the object into a dict
 transform_definition1_dict = transform_definition1_instance.to_dict()
 # create an instance of TransformDefinition1 from a dict
-transform_definition1_form_dict = transform_definition1.from_dict(transform_definition1_dict)
+transform_definition1_from_dict = TransformDefinition1.from_dict(transform_definition1_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

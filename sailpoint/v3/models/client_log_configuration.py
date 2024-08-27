@@ -18,15 +18,12 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
 from typing_extensions import Annotated
 from sailpoint.v3.models.standard_level import StandardLevel
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class ClientLogConfiguration(BaseModel):
     """
@@ -39,11 +36,11 @@ class ClientLogConfiguration(BaseModel):
     log_levels: Optional[Dict[str, StandardLevel]] = Field(default=None, description="Mapping of identifiers to Standard Log Level values", alias="logLevels")
     __properties: ClassVar[List[str]] = ["clientId", "durationMinutes", "expiration", "rootLevel", "logLevels"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -56,7 +53,7 @@ class ClientLogConfiguration(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of ClientLogConfiguration from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -70,16 +67,18 @@ class ClientLogConfiguration(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of ClientLogConfiguration from a dict"""
         if obj is None:
             return None

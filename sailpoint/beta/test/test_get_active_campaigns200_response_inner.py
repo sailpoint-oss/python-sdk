@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.get_active_campaigns200_response_inner import GetActiveCampaigns200ResponseInner
 
@@ -28,7 +27,7 @@ class TestGetActiveCampaigns200ResponseInner(unittest.TestCase):
 
     def make_instance(self, include_optional) -> GetActiveCampaigns200ResponseInner:
         """Test GetActiveCampaigns200ResponseInner
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `GetActiveCampaigns200ResponseInner`

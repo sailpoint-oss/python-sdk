@@ -18,16 +18,13 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel
-from pydantic import Field
 from sailpoint.v2024.models.audit_details import AuditDetails
 from sailpoint.v2024.models.config_type_enum import ConfigTypeEnum
 from sailpoint.v2024.models.identity1 import Identity1
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class ConfigurationDetailsResponse(BaseModel):
     """
@@ -40,11 +37,11 @@ class ConfigurationDetailsResponse(BaseModel):
     audit_details: Optional[AuditDetails] = Field(default=None, alias="auditDetails")
     __properties: ClassVar[List[str]] = ["configType", "targetIdentity", "startDate", "endDate", "auditDetails"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -57,7 +54,7 @@ class ConfigurationDetailsResponse(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of ConfigurationDetailsResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -71,10 +68,12 @@ class ConfigurationDetailsResponse(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of target_identity
@@ -86,7 +85,7 @@ class ConfigurationDetailsResponse(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of ConfigurationDetailsResponse from a dict"""
         if obj is None:
             return None
@@ -96,10 +95,10 @@ class ConfigurationDetailsResponse(BaseModel):
 
         _obj = cls.model_validate({
             "configType": obj.get("configType"),
-            "targetIdentity": Identity1.from_dict(obj.get("targetIdentity")) if obj.get("targetIdentity") is not None else None,
+            "targetIdentity": Identity1.from_dict(obj["targetIdentity"]) if obj.get("targetIdentity") is not None else None,
             "startDate": obj.get("startDate"),
             "endDate": obj.get("endDate"),
-            "auditDetails": AuditDetails.from_dict(obj.get("auditDetails")) if obj.get("auditDetails") is not None else None
+            "auditDetails": AuditDetails.from_dict(obj["auditDetails"]) if obj.get("auditDetails") is not None else None
         })
         return _obj
 

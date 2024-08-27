@@ -22,12 +22,12 @@ json = "{}"
 # create an instance of AccountsCollectedForAggregationStats from a JSON string
 accounts_collected_for_aggregation_stats_instance = AccountsCollectedForAggregationStats.from_json(json)
 # print the JSON string representation of the object
-print AccountsCollectedForAggregationStats.to_json()
+print(AccountsCollectedForAggregationStats.to_json())
 
 # convert the object into a dict
 accounts_collected_for_aggregation_stats_dict = accounts_collected_for_aggregation_stats_instance.to_dict()
 # create an instance of AccountsCollectedForAggregationStats from a dict
-accounts_collected_for_aggregation_stats_form_dict = accounts_collected_for_aggregation_stats.from_dict(accounts_collected_for_aggregation_stats_dict)
+accounts_collected_for_aggregation_stats_from_dict = AccountsCollectedForAggregationStats.from_dict(accounts_collected_for_aggregation_stats_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

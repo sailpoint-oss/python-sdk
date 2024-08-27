@@ -18,15 +18,12 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional, Union
-from pydantic import BaseModel, StrictFloat, StrictInt, StrictStr
-from pydantic import Field
 from sailpoint.v3.models.approval_status import ApprovalStatus
 from sailpoint.v3.models.non_employee_identity_reference_with_id import NonEmployeeIdentityReferenceWithId
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class NonEmployeeApprovalItemBase(BaseModel):
     """
@@ -42,11 +39,11 @@ class NonEmployeeApprovalItemBase(BaseModel):
     created: Optional[datetime] = Field(default=None, description="When the request was created.")
     __properties: ClassVar[List[str]] = ["id", "approver", "accountName", "approvalStatus", "approvalOrder", "comment", "modified", "created"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -59,7 +56,7 @@ class NonEmployeeApprovalItemBase(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of NonEmployeeApprovalItemBase from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -73,10 +70,12 @@ class NonEmployeeApprovalItemBase(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of approver
@@ -85,7 +84,7 @@ class NonEmployeeApprovalItemBase(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of NonEmployeeApprovalItemBase from a dict"""
         if obj is None:
             return None
@@ -95,7 +94,7 @@ class NonEmployeeApprovalItemBase(BaseModel):
 
         _obj = cls.model_validate({
             "id": obj.get("id"),
-            "approver": NonEmployeeIdentityReferenceWithId.from_dict(obj.get("approver")) if obj.get("approver") is not None else None,
+            "approver": NonEmployeeIdentityReferenceWithId.from_dict(obj["approver"]) if obj.get("approver") is not None else None,
             "accountName": obj.get("accountName"),
             "approvalStatus": obj.get("approvalStatus"),
             "approvalOrder": obj.get("approvalOrder"),

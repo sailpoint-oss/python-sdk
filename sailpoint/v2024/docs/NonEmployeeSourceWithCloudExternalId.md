@@ -25,12 +25,12 @@ json = "{}"
 # create an instance of NonEmployeeSourceWithCloudExternalId from a JSON string
 non_employee_source_with_cloud_external_id_instance = NonEmployeeSourceWithCloudExternalId.from_json(json)
 # print the JSON string representation of the object
-print NonEmployeeSourceWithCloudExternalId.to_json()
+print(NonEmployeeSourceWithCloudExternalId.to_json())
 
 # convert the object into a dict
 non_employee_source_with_cloud_external_id_dict = non_employee_source_with_cloud_external_id_instance.to_dict()
 # create an instance of NonEmployeeSourceWithCloudExternalId from a dict
-non_employee_source_with_cloud_external_id_form_dict = non_employee_source_with_cloud_external_id.from_dict(non_employee_source_with_cloud_external_id_dict)
+non_employee_source_with_cloud_external_id_from_dict = NonEmployeeSourceWithCloudExternalId.from_dict(non_employee_source_with_cloud_external_id_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

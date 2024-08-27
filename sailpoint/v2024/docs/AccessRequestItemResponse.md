@@ -24,12 +24,12 @@ json = "{}"
 # create an instance of AccessRequestItemResponse from a JSON string
 access_request_item_response_instance = AccessRequestItemResponse.from_json(json)
 # print the JSON string representation of the object
-print AccessRequestItemResponse.to_json()
+print(AccessRequestItemResponse.to_json())
 
 # convert the object into a dict
 access_request_item_response_dict = access_request_item_response_instance.to_dict()
 # create an instance of AccessRequestItemResponse from a dict
-access_request_item_response_form_dict = access_request_item_response.from_dict(access_request_item_response_dict)
+access_request_item_response_from_dict = AccessRequestItemResponse.from_dict(access_request_item_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

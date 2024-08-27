@@ -21,8 +21,6 @@ This API endpoint retrieves UI metadata configured for your tenant. A token with
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.tenant_ui_metadata_item_response import TenantUiMetadataItemResponse
 from sailpoint.beta.rest import ApiException
@@ -103,8 +101,6 @@ This API endpoint updates UI metadata for your tenant. These changes may require
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.tenant_ui_metadata_item_response import TenantUiMetadataItemResponse
 from sailpoint.beta.models.tenant_ui_metadata_item_update_request import TenantUiMetadataItemUpdateRequest

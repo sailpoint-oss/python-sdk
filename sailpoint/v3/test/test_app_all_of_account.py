@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v3.models.app_all_of_account import AppAllOfAccount
 
@@ -28,7 +27,7 @@ class TestAppAllOfAccount(unittest.TestCase):
 
     def make_instance(self, include_optional) -> AppAllOfAccount:
         """Test AppAllOfAccount
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `AppAllOfAccount`

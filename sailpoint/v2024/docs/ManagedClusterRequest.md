@@ -21,12 +21,12 @@ json = "{}"
 # create an instance of ManagedClusterRequest from a JSON string
 managed_cluster_request_instance = ManagedClusterRequest.from_json(json)
 # print the JSON string representation of the object
-print ManagedClusterRequest.to_json()
+print(ManagedClusterRequest.to_json())
 
 # convert the object into a dict
 managed_cluster_request_dict = managed_cluster_request_instance.to_dict()
 # create an instance of ManagedClusterRequest from a dict
-managed_cluster_request_form_dict = managed_cluster_request.from_dict(managed_cluster_request_dict)
+managed_cluster_request_from_dict = ManagedClusterRequest.from_dict(managed_cluster_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -24,8 +24,6 @@ Retrieve headers for a list of TaskStatus for pending tasks.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
@@ -110,8 +108,6 @@ Retrieve a list of TaskStatus for pending tasks.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.task_status import TaskStatus
 from sailpoint.v2024.rest import ApiException
@@ -199,8 +195,6 @@ Get a TaskStatus for a task by task ID.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.task_status import TaskStatus
 from sailpoint.v2024.rest import ApiException
@@ -287,8 +281,6 @@ Use this endpoint to get a list of **completed** tasks. To get a list of tasks *
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.task_status import TaskStatus
 from sailpoint.v2024.rest import ApiException
@@ -383,8 +375,6 @@ Update a current task status by task ID. Use this API to clear a pending task by
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v2024.models.task_status import TaskStatus

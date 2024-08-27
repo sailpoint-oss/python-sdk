@@ -18,17 +18,14 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
 from sailpoint.v2024.models.vendor_connector_mapping_deleted_at import VendorConnectorMappingDeletedAt
 from sailpoint.v2024.models.vendor_connector_mapping_deleted_by import VendorConnectorMappingDeletedBy
 from sailpoint.v2024.models.vendor_connector_mapping_updated_at import VendorConnectorMappingUpdatedAt
 from sailpoint.v2024.models.vendor_connector_mapping_updated_by import VendorConnectorMappingUpdatedBy
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class VendorConnectorMapping(BaseModel):
     """
@@ -45,11 +42,11 @@ class VendorConnectorMapping(BaseModel):
     deleted_by: Optional[VendorConnectorMappingDeletedBy] = Field(default=None, alias="deletedBy")
     __properties: ClassVar[List[str]] = ["id", "vendor", "connector", "createdAt", "createdBy", "updatedAt", "updatedBy", "deletedAt", "deletedBy"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -62,7 +59,7 @@ class VendorConnectorMapping(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of VendorConnectorMapping from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -76,10 +73,12 @@ class VendorConnectorMapping(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of updated_at
@@ -117,7 +116,7 @@ class VendorConnectorMapping(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of VendorConnectorMapping from a dict"""
         if obj is None:
             return None
@@ -131,10 +130,10 @@ class VendorConnectorMapping(BaseModel):
             "connector": obj.get("connector"),
             "createdAt": obj.get("createdAt"),
             "createdBy": obj.get("createdBy"),
-            "updatedAt": VendorConnectorMappingUpdatedAt.from_dict(obj.get("updatedAt")) if obj.get("updatedAt") is not None else None,
-            "updatedBy": VendorConnectorMappingUpdatedBy.from_dict(obj.get("updatedBy")) if obj.get("updatedBy") is not None else None,
-            "deletedAt": VendorConnectorMappingDeletedAt.from_dict(obj.get("deletedAt")) if obj.get("deletedAt") is not None else None,
-            "deletedBy": VendorConnectorMappingDeletedBy.from_dict(obj.get("deletedBy")) if obj.get("deletedBy") is not None else None
+            "updatedAt": VendorConnectorMappingUpdatedAt.from_dict(obj["updatedAt"]) if obj.get("updatedAt") is not None else None,
+            "updatedBy": VendorConnectorMappingUpdatedBy.from_dict(obj["updatedBy"]) if obj.get("updatedBy") is not None else None,
+            "deletedAt": VendorConnectorMappingDeletedAt.from_dict(obj["deletedAt"]) if obj.get("deletedAt") is not None else None,
+            "deletedBy": VendorConnectorMappingDeletedBy.from_dict(obj["deletedBy"]) if obj.get("deletedBy") is not None else None
         })
         return _obj
 

@@ -24,12 +24,12 @@ json = "{}"
 # create an instance of CorrelationConfigAttributeAssignmentsInner from a JSON string
 correlation_config_attribute_assignments_inner_instance = CorrelationConfigAttributeAssignmentsInner.from_json(json)
 # print the JSON string representation of the object
-print CorrelationConfigAttributeAssignmentsInner.to_json()
+print(CorrelationConfigAttributeAssignmentsInner.to_json())
 
 # convert the object into a dict
 correlation_config_attribute_assignments_inner_dict = correlation_config_attribute_assignments_inner_instance.to_dict()
 # create an instance of CorrelationConfigAttributeAssignmentsInner from a dict
-correlation_config_attribute_assignments_inner_form_dict = correlation_config_attribute_assignments_inner.from_dict(correlation_config_attribute_assignments_inner_dict)
+correlation_config_attribute_assignments_inner_from_dict = CorrelationConfigAttributeAssignmentsInner.from_dict(correlation_config_attribute_assignments_inner_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -18,17 +18,14 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
-from pydantic import Field
 from sailpoint.v3.models.campaign_reference import CampaignReference
 from sailpoint.v3.models.certification_phase import CertificationPhase
 from sailpoint.v3.models.reassignment import Reassignment
 from sailpoint.v3.models.reviewer import Reviewer
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class IdentityCertificationDto(BaseModel):
     """
@@ -53,11 +50,11 @@ class IdentityCertificationDto(BaseModel):
     phase: Optional[CertificationPhase] = None
     __properties: ClassVar[List[str]] = ["id", "name", "campaign", "completed", "identitiesCompleted", "identitiesTotal", "created", "modified", "decisionsMade", "decisionsTotal", "due", "signed", "reviewer", "reassignment", "hasErrors", "errorMessage", "phase"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -70,7 +67,7 @@ class IdentityCertificationDto(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of IdentityCertificationDto from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -84,10 +81,12 @@ class IdentityCertificationDto(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of campaign
@@ -117,7 +116,7 @@ class IdentityCertificationDto(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of IdentityCertificationDto from a dict"""
         if obj is None:
             return None
@@ -128,7 +127,7 @@ class IdentityCertificationDto(BaseModel):
         _obj = cls.model_validate({
             "id": obj.get("id"),
             "name": obj.get("name"),
-            "campaign": CampaignReference.from_dict(obj.get("campaign")) if obj.get("campaign") is not None else None,
+            "campaign": CampaignReference.from_dict(obj["campaign"]) if obj.get("campaign") is not None else None,
             "completed": obj.get("completed"),
             "identitiesCompleted": obj.get("identitiesCompleted"),
             "identitiesTotal": obj.get("identitiesTotal"),
@@ -138,8 +137,8 @@ class IdentityCertificationDto(BaseModel):
             "decisionsTotal": obj.get("decisionsTotal"),
             "due": obj.get("due"),
             "signed": obj.get("signed"),
-            "reviewer": Reviewer.from_dict(obj.get("reviewer")) if obj.get("reviewer") is not None else None,
-            "reassignment": Reassignment.from_dict(obj.get("reassignment")) if obj.get("reassignment") is not None else None,
+            "reviewer": Reviewer.from_dict(obj["reviewer"]) if obj.get("reviewer") is not None else None,
+            "reassignment": Reassignment.from_dict(obj["reassignment"]) if obj.get("reassignment") is not None else None,
             "hasErrors": obj.get("hasErrors"),
             "errorMessage": obj.get("errorMessage"),
             "phase": obj.get("phase")

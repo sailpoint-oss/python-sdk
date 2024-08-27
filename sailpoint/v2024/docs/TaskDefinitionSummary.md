@@ -23,12 +23,12 @@ json = "{}"
 # create an instance of TaskDefinitionSummary from a JSON string
 task_definition_summary_instance = TaskDefinitionSummary.from_json(json)
 # print the JSON string representation of the object
-print TaskDefinitionSummary.to_json()
+print(TaskDefinitionSummary.to_json())
 
 # convert the object into a dict
 task_definition_summary_dict = task_definition_summary_instance.to_dict()
 # create an instance of TaskDefinitionSummary from a dict
-task_definition_summary_form_dict = task_definition_summary.from_dict(task_definition_summary_dict)
+task_definition_summary_from_dict = TaskDefinitionSummary.from_dict(task_definition_summary_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -18,13 +18,10 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr, field_validator
-from pydantic import Field
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class AccessRequestPhases(BaseModel):
     """
@@ -44,7 +41,7 @@ class AccessRequestPhases(BaseModel):
         if value is None:
             return value
 
-        if value not in ('PENDING', 'EXECUTING', 'COMPLETED', 'CANCELLED', 'NOT_EXECUTED'):
+        if value not in set(['PENDING', 'EXECUTING', 'COMPLETED', 'CANCELLED', 'NOT_EXECUTED']):
             raise ValueError("must be one of enum values ('PENDING', 'EXECUTING', 'COMPLETED', 'CANCELLED', 'NOT_EXECUTED')")
         return value
 
@@ -54,15 +51,15 @@ class AccessRequestPhases(BaseModel):
         if value is None:
             return value
 
-        if value not in ('SUCCESSFUL', 'FAILED', 'null'):
+        if value not in set(['SUCCESSFUL', 'FAILED', 'null']):
             raise ValueError("must be one of enum values ('SUCCESSFUL', 'FAILED', 'null')")
         return value
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -75,7 +72,7 @@ class AccessRequestPhases(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of AccessRequestPhases from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -89,10 +86,12 @@ class AccessRequestPhases(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # set to None if finished (nullable) is None
@@ -113,7 +112,7 @@ class AccessRequestPhases(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of AccessRequestPhases from a dict"""
         if obj is None:
             return None

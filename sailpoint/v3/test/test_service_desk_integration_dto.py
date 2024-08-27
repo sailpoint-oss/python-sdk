@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v3.models.service_desk_integration_dto import ServiceDeskIntegrationDto
 
@@ -28,7 +27,7 @@ class TestServiceDeskIntegrationDto(unittest.TestCase):
 
     def make_instance(self, include_optional) -> ServiceDeskIntegrationDto:
         """Test ServiceDeskIntegrationDto
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `ServiceDeskIntegrationDto`
@@ -42,8 +41,14 @@ class TestServiceDeskIntegrationDto(unittest.TestCase):
                 modified = '2024-02-18T18:45:25.994Z',
                 description = 'A very nice Service Desk integration',
                 type = 'ServiceNowSDIM',
-                owner_ref = None,
-                cluster_ref = None,
+                owner_ref = sailpoint.v3.models.owner_dto.OwnerDto(
+                    type = 'IDENTITY', 
+                    id = '2c9180a46faadee4016fb4e018c20639', 
+                    name = 'Support', ),
+                cluster_ref = sailpoint.v3.models.source_cluster_dto.SourceClusterDto(
+                    type = 'CLUSTER', 
+                    id = '2c9180847a7fccdd017aa5896f9f4f6f', 
+                    name = 'Training VA', ),
                 cluster = 'xyzzy999',
                 managed_sources = [2c9180835d191a86015d28455b4a2329, 2c5680835d191a85765d28455b4a9823],
                 provisioning_config = sailpoint.v3.models.provisioning_config.ProvisioningConfig(
@@ -55,7 +60,10 @@ class TestServiceDeskIntegrationDto(unittest.TestCase):
                     no_provisioning_requests = True, 
                     provisioning_request_expiration = 7, ),
                 attributes = {property=value, key=value},
-                before_provisioning_rule = None
+                before_provisioning_rule = sailpoint.v3.models.before_provisioning_rule_dto.BeforeProvisioningRuleDto(
+                    type = 'RULE', 
+                    id = '048eb3d55c5a4758bd07dccb87741c78', 
+                    name = 'Before Provisioning Airtable Rule', )
             )
         else:
             return ServiceDeskIntegrationDto(

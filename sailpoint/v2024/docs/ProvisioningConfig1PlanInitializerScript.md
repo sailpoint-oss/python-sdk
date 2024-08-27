@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of ProvisioningConfig1PlanInitializerScript from a JSON string
 provisioning_config1_plan_initializer_script_instance = ProvisioningConfig1PlanInitializerScript.from_json(json)
 # print the JSON string representation of the object
-print ProvisioningConfig1PlanInitializerScript.to_json()
+print(ProvisioningConfig1PlanInitializerScript.to_json())
 
 # convert the object into a dict
 provisioning_config1_plan_initializer_script_dict = provisioning_config1_plan_initializer_script_instance.to_dict()
 # create an instance of ProvisioningConfig1PlanInitializerScript from a dict
-provisioning_config1_plan_initializer_script_form_dict = provisioning_config1_plan_initializer_script.from_dict(provisioning_config1_plan_initializer_script_dict)
+provisioning_config1_plan_initializer_script_from_dict = ProvisioningConfig1PlanInitializerScript.from_dict(provisioning_config1_plan_initializer_script_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

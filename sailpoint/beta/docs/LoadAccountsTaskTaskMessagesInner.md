@@ -21,12 +21,12 @@ json = "{}"
 # create an instance of LoadAccountsTaskTaskMessagesInner from a JSON string
 load_accounts_task_task_messages_inner_instance = LoadAccountsTaskTaskMessagesInner.from_json(json)
 # print the JSON string representation of the object
-print LoadAccountsTaskTaskMessagesInner.to_json()
+print(LoadAccountsTaskTaskMessagesInner.to_json())
 
 # convert the object into a dict
 load_accounts_task_task_messages_inner_dict = load_accounts_task_task_messages_inner_instance.to_dict()
 # create an instance of LoadAccountsTaskTaskMessagesInner from a dict
-load_accounts_task_task_messages_inner_form_dict = load_accounts_task_task_messages_inner.from_dict(load_accounts_task_task_messages_inner_dict)
+load_accounts_task_task_messages_inner_from_dict = LoadAccountsTaskTaskMessagesInner.from_dict(load_accounts_task_task_messages_inner_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

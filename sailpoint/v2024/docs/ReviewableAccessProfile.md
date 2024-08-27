@@ -26,12 +26,12 @@ json = "{}"
 # create an instance of ReviewableAccessProfile from a JSON string
 reviewable_access_profile_instance = ReviewableAccessProfile.from_json(json)
 # print the JSON string representation of the object
-print ReviewableAccessProfile.to_json()
+print(ReviewableAccessProfile.to_json())
 
 # convert the object into a dict
 reviewable_access_profile_dict = reviewable_access_profile_instance.to_dict()
 # create an instance of ReviewableAccessProfile from a dict
-reviewable_access_profile_form_dict = reviewable_access_profile.from_dict(reviewable_access_profile_dict)
+reviewable_access_profile_from_dict = ReviewableAccessProfile.from_dict(reviewable_access_profile_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of ConnectedObject from a JSON string
 connected_object_instance = ConnectedObject.from_json(json)
 # print the JSON string representation of the object
-print ConnectedObject.to_json()
+print(ConnectedObject.to_json())
 
 # convert the object into a dict
 connected_object_dict = connected_object_instance.to_dict()
 # create an instance of ConnectedObject from a dict
-connected_object_form_dict = connected_object.from_dict(connected_object_dict)
+connected_object_from_dict = ConnectedObject.from_dict(connected_object_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.task_result_simplified import TaskResultSimplified
 
@@ -28,7 +27,7 @@ class TestTaskResultSimplified(unittest.TestCase):
 
     def make_instance(self, include_optional) -> TaskResultSimplified:
         """Test TaskResultSimplified
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `TaskResultSimplified`

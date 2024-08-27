@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of RoleMembershipSelector from a JSON string
 role_membership_selector_instance = RoleMembershipSelector.from_json(json)
 # print the JSON string representation of the object
-print RoleMembershipSelector.to_json()
+print(RoleMembershipSelector.to_json())
 
 # convert the object into a dict
 role_membership_selector_dict = role_membership_selector_instance.to_dict()
 # create an instance of RoleMembershipSelector from a dict
-role_membership_selector_form_dict = role_membership_selector.from_dict(role_membership_selector_dict)
+role_membership_selector_from_dict = RoleMembershipSelector.from_dict(role_membership_selector_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

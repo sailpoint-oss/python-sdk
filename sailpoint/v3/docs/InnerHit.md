@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of InnerHit from a JSON string
 inner_hit_instance = InnerHit.from_json(json)
 # print the JSON string representation of the object
-print InnerHit.to_json()
+print(InnerHit.to_json())
 
 # convert the object into a dict
 inner_hit_dict = inner_hit_instance.to_dict()
 # create an instance of InnerHit from a dict
-inner_hit_form_dict = inner_hit.from_dict(inner_hit_dict)
+inner_hit_from_dict = InnerHit.from_dict(inner_hit_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -13,12 +13,11 @@
 
 
 import unittest
-import datetime
 
-from sailpoint.v3.models.service_desk_integration_dto_all_of_cluster_ref import ServiceDeskIntegrationDtoAllOfClusterRef
+from sailpoint.v3.models.campaign_all_of_correlated_status import CampaignAllOfCorrelatedStatus
 
-class TestServiceDeskIntegrationDtoAllOfClusterRef(unittest.TestCase):
-    """ServiceDeskIntegrationDtoAllOfClusterRef unit test stubs"""
+class TestCampaignAllOfCorrelatedStatus(unittest.TestCase):
+    """CampaignAllOfCorrelatedStatus unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,27 +25,24 @@ class TestServiceDeskIntegrationDtoAllOfClusterRef(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ServiceDeskIntegrationDtoAllOfClusterRef:
-        """Test ServiceDeskIntegrationDtoAllOfClusterRef
-            include_option is a boolean, when False only required
+    def make_instance(self, include_optional) -> CampaignAllOfCorrelatedStatus:
+        """Test CampaignAllOfCorrelatedStatus
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ServiceDeskIntegrationDtoAllOfClusterRef`
+        # uncomment below to create an instance of `CampaignAllOfCorrelatedStatus`
         """
-        model = ServiceDeskIntegrationDtoAllOfClusterRef()
+        model = CampaignAllOfCorrelatedStatus()
         if include_optional:
-            return ServiceDeskIntegrationDtoAllOfClusterRef(
-                type = 'CLUSTER',
-                id = '2c9180847a7fccdd017aa5896f9f4f6f',
-                name = 'Training VA'
+            return CampaignAllOfCorrelatedStatus(
             )
         else:
-            return ServiceDeskIntegrationDtoAllOfClusterRef(
+            return CampaignAllOfCorrelatedStatus(
         )
         """
 
-    def testServiceDeskIntegrationDtoAllOfClusterRef(self):
-        """Test ServiceDeskIntegrationDtoAllOfClusterRef"""
+    def testCampaignAllOfCorrelatedStatus(self):
+        """Test CampaignAllOfCorrelatedStatus"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

@@ -21,12 +21,12 @@ json = "{}"
 # create an instance of AccountCorrelated from a JSON string
 account_correlated_instance = AccountCorrelated.from_json(json)
 # print the JSON string representation of the object
-print AccountCorrelated.to_json()
+print(AccountCorrelated.to_json())
 
 # convert the object into a dict
 account_correlated_dict = account_correlated_instance.to_dict()
 # create an instance of AccountCorrelated from a dict
-account_correlated_form_dict = account_correlated.from_dict(account_correlated_dict)
+account_correlated_from_dict = AccountCorrelated.from_dict(account_correlated_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

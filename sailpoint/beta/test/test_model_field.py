@@ -13,12 +13,11 @@
 
 
 import unittest
-import datetime
 
-from sailpoint.beta.models.service_desk_integration_dto_all_of_owner_ref import ServiceDeskIntegrationDtoAllOfOwnerRef
+from sailpoint.beta.models.model_field import ModelField
 
-class TestServiceDeskIntegrationDtoAllOfOwnerRef(unittest.TestCase):
-    """ServiceDeskIntegrationDtoAllOfOwnerRef unit test stubs"""
+class TestModelField(unittest.TestCase):
+    """ModelField unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,27 +25,30 @@ class TestServiceDeskIntegrationDtoAllOfOwnerRef(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ServiceDeskIntegrationDtoAllOfOwnerRef:
-        """Test ServiceDeskIntegrationDtoAllOfOwnerRef
-            include_option is a boolean, when False only required
+    def make_instance(self, include_optional) -> ModelField:
+        """Test ModelField
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ServiceDeskIntegrationDtoAllOfOwnerRef`
+        # uncomment below to create an instance of `ModelField`
         """
-        model = ServiceDeskIntegrationDtoAllOfOwnerRef()
+        model = ModelField()
         if include_optional:
-            return ServiceDeskIntegrationDtoAllOfOwnerRef(
-                type = 'IDENTITY',
-                id = '2c9180a46faadee4016fb4e018c20639',
-                name = 'Support'
+            return ModelField(
+                name = 'Field1',
+                display_name = 'Field 1',
+                display_type = 'checkbox',
+                required = True,
+                allowed_values_list = [{Val1Display=null, Val1Value=null}, {Val2Display=null, Val2Value=null}],
+                value = None
             )
         else:
-            return ServiceDeskIntegrationDtoAllOfOwnerRef(
+            return ModelField(
         )
         """
 
-    def testServiceDeskIntegrationDtoAllOfOwnerRef(self):
-        """Test ServiceDeskIntegrationDtoAllOfOwnerRef"""
+    def testModelField(self):
+        """Test ModelField"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

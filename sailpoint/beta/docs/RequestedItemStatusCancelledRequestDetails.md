@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of RequestedItemStatusCancelledRequestDetails from a JSON string
 requested_item_status_cancelled_request_details_instance = RequestedItemStatusCancelledRequestDetails.from_json(json)
 # print the JSON string representation of the object
-print RequestedItemStatusCancelledRequestDetails.to_json()
+print(RequestedItemStatusCancelledRequestDetails.to_json())
 
 # convert the object into a dict
 requested_item_status_cancelled_request_details_dict = requested_item_status_cancelled_request_details_instance.to_dict()
 # create an instance of RequestedItemStatusCancelledRequestDetails from a dict
-requested_item_status_cancelled_request_details_form_dict = requested_item_status_cancelled_request_details.from_dict(requested_item_status_cancelled_request_details_dict)
+requested_item_status_cancelled_request_details_from_dict = RequestedItemStatusCancelledRequestDetails.from_dict(requested_item_status_cancelled_request_details_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -24,8 +24,6 @@ Creates a new transform object immediately. By default, the internal flag is set
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.transform import Transform
 from sailpoint.beta.models.transform_read import TransformRead
@@ -111,8 +109,6 @@ Deletes the transform specified by the given ID. Attempting to delete a transfor
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
@@ -194,8 +190,6 @@ This API returns the transform specified by the given ID. A token with transform
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.transform_read import TransformRead
 from sailpoint.beta.rest import ApiException
@@ -280,8 +274,6 @@ Gets a list of all saved transform objects. A token with transforms-list read au
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.transform_read import TransformRead
 from sailpoint.beta.rest import ApiException
@@ -374,8 +366,6 @@ Replaces the transform specified by the given ID with the transform provided in 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.transform import Transform
 from sailpoint.beta.models.transform_read import TransformRead

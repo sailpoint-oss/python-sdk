@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v2024.models.entitlement_source_reset_base_reference_dto import EntitlementSourceResetBaseReferenceDto
 
@@ -28,7 +27,7 @@ class TestEntitlementSourceResetBaseReferenceDto(unittest.TestCase):
 
     def make_instance(self, include_optional) -> EntitlementSourceResetBaseReferenceDto:
         """Test EntitlementSourceResetBaseReferenceDto
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `EntitlementSourceResetBaseReferenceDto`

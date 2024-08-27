@@ -35,12 +35,12 @@ json = "{}"
 # create an instance of RoleDocument from a JSON string
 role_document_instance = RoleDocument.from_json(json)
 # print the JSON string representation of the object
-print RoleDocument.to_json()
+print(RoleDocument.to_json())
 
 # convert the object into a dict
 role_document_dict = role_document_instance.to_dict()
 # create an instance of RoleDocument from a dict
-role_document_form_dict = role_document.from_dict(role_document_dict)
+role_document_from_dict = RoleDocument.from_dict(role_document_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

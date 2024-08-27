@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.http_authentication_type import HttpAuthenticationType
 

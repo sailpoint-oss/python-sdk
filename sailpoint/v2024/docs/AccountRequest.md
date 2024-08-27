@@ -22,12 +22,12 @@ json = "{}"
 # create an instance of AccountRequest from a JSON string
 account_request_instance = AccountRequest.from_json(json)
 # print the JSON string representation of the object
-print AccountRequest.to_json()
+print(AccountRequest.to_json())
 
 # convert the object into a dict
 account_request_dict = account_request_instance.to_dict()
 # create an instance of AccountRequest from a dict
-account_request_form_dict = account_request.from_dict(account_request_dict)
+account_request_from_dict = AccountRequest.from_dict(account_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -23,12 +23,12 @@ json = "{}"
 # create an instance of AccessItemRoleResponse from a JSON string
 access_item_role_response_instance = AccessItemRoleResponse.from_json(json)
 # print the JSON string representation of the object
-print AccessItemRoleResponse.to_json()
+print(AccessItemRoleResponse.to_json())
 
 # convert the object into a dict
 access_item_role_response_dict = access_item_role_response_instance.to_dict()
 # create an instance of AccessItemRoleResponse from a dict
-access_item_role_response_form_dict = access_item_role_response.from_dict(access_item_role_response_dict)
+access_item_role_response_from_dict = AccessItemRoleResponse.from_dict(access_item_role_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

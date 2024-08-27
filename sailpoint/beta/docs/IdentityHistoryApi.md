@@ -30,8 +30,6 @@ This method gets a difference of count for each access item types for the given 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.identity_compare_response import IdentityCompareResponse
 from sailpoint.beta.rest import ApiException
@@ -127,8 +125,6 @@ This method gets a list of differences of specific accessType for the given iden
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.access_item_diff import AccessItemDiff
 from sailpoint.beta.rest import ApiException
@@ -226,8 +222,6 @@ This method retrieves a specified identity Requires authorization scope of 'idn:
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.identity_history_response import IdentityHistoryResponse
 from sailpoint.beta.rest import ApiException
@@ -311,8 +305,6 @@ This method retrieves all access events for the identity Requires authorization 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.get_historical_identity_events200_response_inner import GetHistoricalIdentityEvents200ResponseInner
 from sailpoint.beta.rest import ApiException
@@ -409,8 +401,6 @@ This method retrieves a specified identity snapshot at a given date Requires aut
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.identity_history_response import IdentityHistoryResponse
 from sailpoint.beta.rest import ApiException
@@ -496,8 +486,6 @@ This method gets the summary for the event count for a specific identity by mont
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.metric_response import MetricResponse
 from sailpoint.beta.rest import ApiException
@@ -593,8 +581,6 @@ This method retrieves start date of the identity Requires authorization scope of
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
@@ -677,8 +663,6 @@ This gets the list of identities for the customer. This list end point does not 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.identity_list_item import IdentityListItem
 from sailpoint.beta.rest import ApiException
@@ -770,8 +754,6 @@ This method retrieves a list of access item for the identity filtered by the acc
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.list_identity_access_items200_response_inner import ListIdentityAccessItems200ResponseInner
 from sailpoint.beta.rest import ApiException
@@ -864,8 +846,6 @@ Use this API to get a list of identity access items at a specified date, filtere
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.list_identity_access_items200_response_inner import ListIdentityAccessItems200ResponseInner
 from sailpoint.beta.rest import ApiException
@@ -954,8 +934,6 @@ This method retrieves all the snapshots for the identity Requires authorization 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.identity_snapshot_summary_response import IdentitySnapshotSummaryResponse
 from sailpoint.beta.rest import ApiException

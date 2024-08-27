@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.role_mining_session_scoping_method import RoleMiningSessionScopingMethod
 

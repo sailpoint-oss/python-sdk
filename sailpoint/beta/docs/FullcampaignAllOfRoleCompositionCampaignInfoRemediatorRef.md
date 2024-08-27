@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef from a JSON string
 fullcampaign_all_of_role_composition_campaign_info_remediator_ref_instance = FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef.from_json(json)
 # print the JSON string representation of the object
-print FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef.to_json()
+print(FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef.to_json())
 
 # convert the object into a dict
 fullcampaign_all_of_role_composition_campaign_info_remediator_ref_dict = fullcampaign_all_of_role_composition_campaign_info_remediator_ref_instance.to_dict()
 # create an instance of FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef from a dict
-fullcampaign_all_of_role_composition_campaign_info_remediator_ref_form_dict = fullcampaign_all_of_role_composition_campaign_info_remediator_ref.from_dict(fullcampaign_all_of_role_composition_campaign_info_remediator_ref_dict)
+fullcampaign_all_of_role_composition_campaign_info_remediator_ref_from_dict = FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef.from_dict(fullcampaign_all_of_role_composition_campaign_info_remediator_ref_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -21,8 +21,6 @@ This gets password dictionary for the organization. A token with ORG_ADMIN autho
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.rest import ApiException
 from pprint import pprint
@@ -102,8 +100,6 @@ This updates password dictionary for the organization. A token with ORG_ADMIN au
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.rest import ApiException
 from pprint import pprint

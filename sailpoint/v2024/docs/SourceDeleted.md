@@ -22,12 +22,12 @@ json = "{}"
 # create an instance of SourceDeleted from a JSON string
 source_deleted_instance = SourceDeleted.from_json(json)
 # print the JSON string representation of the object
-print SourceDeleted.to_json()
+print(SourceDeleted.to_json())
 
 # convert the object into a dict
 source_deleted_dict = source_deleted_instance.to_dict()
 # create an instance of SourceDeleted from a dict
-source_deleted_form_dict = source_deleted.from_dict(source_deleted_dict)
+source_deleted_from_dict = SourceDeleted.from_dict(source_deleted_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

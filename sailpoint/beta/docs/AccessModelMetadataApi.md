@@ -23,8 +23,6 @@ Get single Access Model Metadata Attribute
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.attribute_dto import AttributeDTO
 from sailpoint.beta.rest import ApiException
@@ -108,8 +106,6 @@ Get single Access Model Metadata Attribute Value
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.attribute_value_dto import AttributeValueDTO
 from sailpoint.beta.rest import ApiException
@@ -195,8 +191,6 @@ Get a list of Access Model Metadata Attributes
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.attribute_dto import AttributeDTO
 from sailpoint.beta.rest import ApiException
@@ -280,8 +274,6 @@ Get a list of Access Model Metadata Attribute Values
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.attribute_value_dto import AttributeValueDTO
 from sailpoint.beta.rest import ApiException

@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of RequestedItemStatusPreApprovalTriggerDetails from a JSON string
 requested_item_status_pre_approval_trigger_details_instance = RequestedItemStatusPreApprovalTriggerDetails.from_json(json)
 # print the JSON string representation of the object
-print RequestedItemStatusPreApprovalTriggerDetails.to_json()
+print(RequestedItemStatusPreApprovalTriggerDetails.to_json())
 
 # convert the object into a dict
 requested_item_status_pre_approval_trigger_details_dict = requested_item_status_pre_approval_trigger_details_instance.to_dict()
 # create an instance of RequestedItemStatusPreApprovalTriggerDetails from a dict
-requested_item_status_pre_approval_trigger_details_form_dict = requested_item_status_pre_approval_trigger_details.from_dict(requested_item_status_pre_approval_trigger_details_dict)
+requested_item_status_pre_approval_trigger_details_from_dict = RequestedItemStatusPreApprovalTriggerDetails.from_dict(requested_item_status_pre_approval_trigger_details_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

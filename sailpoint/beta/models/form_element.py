@@ -17,15 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr, field_validator
-from pydantic import Field
 from sailpoint.beta.models.form_element_validations_set import FormElementValidationsSet
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class FormElement(BaseModel):
     """
@@ -44,15 +40,15 @@ class FormElement(BaseModel):
         if value is None:
             return value
 
-        if value not in ('TEXT', 'TOGGLE', 'TEXTAREA', 'HIDDEN', 'PHONE', 'EMAIL', 'SELECT', 'DATE', 'SECTION', 'COLUMN_SET', 'IMAGE', 'DESCRIPTION'):
+        if value not in set(['TEXT', 'TOGGLE', 'TEXTAREA', 'HIDDEN', 'PHONE', 'EMAIL', 'SELECT', 'DATE', 'SECTION', 'COLUMN_SET', 'IMAGE', 'DESCRIPTION']):
             raise ValueError("must be one of enum values ('TEXT', 'TOGGLE', 'TEXTAREA', 'HIDDEN', 'PHONE', 'EMAIL', 'SELECT', 'DATE', 'SECTION', 'COLUMN_SET', 'IMAGE', 'DESCRIPTION')")
         return value
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -65,7 +61,7 @@ class FormElement(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of FormElement from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -79,18 +75,20 @@ class FormElement(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in validations (list)
         _items = []
         if self.validations:
-            for _item in self.validations:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_validations in self.validations:
+                if _item_validations:
+                    _items.append(_item_validations.to_dict())
             _dict['validations'] = _items
         # set to None if validations (nullable) is None
         # and model_fields_set contains the field
@@ -100,7 +98,7 @@ class FormElement(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of FormElement from a dict"""
         if obj is None:
             return None
@@ -113,7 +111,7 @@ class FormElement(BaseModel):
             "elementType": obj.get("elementType"),
             "config": obj.get("config"),
             "key": obj.get("key"),
-            "validations": [FormElementValidationsSet.from_dict(_item) for _item in obj.get("validations")] if obj.get("validations") is not None else None
+            "validations": [FormElementValidationsSet.from_dict(_item) for _item in obj["validations"]] if obj.get("validations") is not None else None
         })
         return _obj
 

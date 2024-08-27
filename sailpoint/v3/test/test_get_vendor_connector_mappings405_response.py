@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v3.models.get_vendor_connector_mappings405_response import GetVendorConnectorMappings405Response
 
@@ -28,7 +27,7 @@ class TestGetVendorConnectorMappings405Response(unittest.TestCase):
 
     def make_instance(self, include_optional) -> GetVendorConnectorMappings405Response:
         """Test GetVendorConnectorMappings405Response
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `GetVendorConnectorMappings405Response`

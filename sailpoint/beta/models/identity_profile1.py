@@ -18,17 +18,14 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
-from pydantic import Field
 from sailpoint.beta.models.identity_attribute_config1 import IdentityAttributeConfig1
 from sailpoint.beta.models.identity_exception_report_reference1 import IdentityExceptionReportReference1
 from sailpoint.beta.models.identity_profile1_all_of_authoritative_source import IdentityProfile1AllOfAuthoritativeSource
 from sailpoint.beta.models.identity_profile_all_of_owner import IdentityProfileAllOfOwner
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class IdentityProfile1(BaseModel):
     """
@@ -49,11 +46,11 @@ class IdentityProfile1(BaseModel):
     has_time_based_attr: Optional[StrictBool] = Field(default=False, description="Indicates the value of requiresPeriodicRefresh attribute for the Identity Profile.", alias="hasTimeBasedAttr")
     __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "description", "owner", "priority", "authoritativeSource", "identityRefreshRequired", "identityCount", "identityAttributeConfig", "identityExceptionReportReference", "hasTimeBasedAttr"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -66,7 +63,7 @@ class IdentityProfile1(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of IdentityProfile1 from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -83,13 +80,15 @@ class IdentityProfile1(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         """
+        excluded_fields: Set[str] = set([
+            "id",
+            "created",
+            "modified",
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-                "id",
-                "created",
-                "modified",
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of owner
@@ -122,7 +121,7 @@ class IdentityProfile1(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of IdentityProfile1 from a dict"""
         if obj is None:
             return None
@@ -136,13 +135,13 @@ class IdentityProfile1(BaseModel):
             "created": obj.get("created"),
             "modified": obj.get("modified"),
             "description": obj.get("description"),
-            "owner": IdentityProfileAllOfOwner.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
+            "owner": IdentityProfileAllOfOwner.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
             "priority": obj.get("priority"),
-            "authoritativeSource": IdentityProfile1AllOfAuthoritativeSource.from_dict(obj.get("authoritativeSource")) if obj.get("authoritativeSource") is not None else None,
+            "authoritativeSource": IdentityProfile1AllOfAuthoritativeSource.from_dict(obj["authoritativeSource"]) if obj.get("authoritativeSource") is not None else None,
             "identityRefreshRequired": obj.get("identityRefreshRequired") if obj.get("identityRefreshRequired") is not None else False,
             "identityCount": obj.get("identityCount"),
-            "identityAttributeConfig": IdentityAttributeConfig1.from_dict(obj.get("identityAttributeConfig")) if obj.get("identityAttributeConfig") is not None else None,
-            "identityExceptionReportReference": IdentityExceptionReportReference1.from_dict(obj.get("identityExceptionReportReference")) if obj.get("identityExceptionReportReference") is not None else None,
+            "identityAttributeConfig": IdentityAttributeConfig1.from_dict(obj["identityAttributeConfig"]) if obj.get("identityAttributeConfig") is not None else None,
+            "identityExceptionReportReference": IdentityExceptionReportReference1.from_dict(obj["identityExceptionReportReference"]) if obj.get("identityExceptionReportReference") is not None else None,
             "hasTimeBasedAttr": obj.get("hasTimeBasedAttr") if obj.get("hasTimeBasedAttr") is not None else False
         })
         return _obj

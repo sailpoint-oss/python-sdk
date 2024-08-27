@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of TemplateBulkDeleteDto from a JSON string
 template_bulk_delete_dto_instance = TemplateBulkDeleteDto.from_json(json)
 # print the JSON string representation of the object
-print TemplateBulkDeleteDto.to_json()
+print(TemplateBulkDeleteDto.to_json())
 
 # convert the object into a dict
 template_bulk_delete_dto_dict = template_bulk_delete_dto_instance.to_dict()
 # create an instance of TemplateBulkDeleteDto from a dict
-template_bulk_delete_dto_form_dict = template_bulk_delete_dto.from_dict(template_bulk_delete_dto_dict)
+template_bulk_delete_dto_from_dict = TemplateBulkDeleteDto.from_dict(template_bulk_delete_dto_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

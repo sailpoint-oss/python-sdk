@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of ResourceObjectsRequest from a JSON string
 resource_objects_request_instance = ResourceObjectsRequest.from_json(json)
 # print the JSON string representation of the object
-print ResourceObjectsRequest.to_json()
+print(ResourceObjectsRequest.to_json())
 
 # convert the object into a dict
 resource_objects_request_dict = resource_objects_request_instance.to_dict()
 # create an instance of ResourceObjectsRequest from a dict
-resource_objects_request_form_dict = resource_objects_request.from_dict(resource_objects_request_dict)
+resource_objects_request_from_dict = ResourceObjectsRequest.from_dict(resource_objects_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

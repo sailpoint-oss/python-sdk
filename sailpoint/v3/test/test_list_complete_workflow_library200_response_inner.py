@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v3.models.list_complete_workflow_library200_response_inner import ListCompleteWorkflowLibrary200ResponseInner
 
@@ -28,7 +27,7 @@ class TestListCompleteWorkflowLibrary200ResponseInner(unittest.TestCase):
 
     def make_instance(self, include_optional) -> ListCompleteWorkflowLibrary200ResponseInner:
         """Test ListCompleteWorkflowLibrary200ResponseInner
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `ListCompleteWorkflowLibrary200ResponseInner`

@@ -24,12 +24,12 @@ json = "{}"
 # create an instance of RecommenderCalculations from a JSON string
 recommender_calculations_instance = RecommenderCalculations.from_json(json)
 # print the JSON string representation of the object
-print RecommenderCalculations.to_json()
+print(RecommenderCalculations.to_json())
 
 # convert the object into a dict
 recommender_calculations_dict = recommender_calculations_instance.to_dict()
 # create an instance of RecommenderCalculations from a dict
-recommender_calculations_form_dict = recommender_calculations.from_dict(recommender_calculations_dict)
+recommender_calculations_from_dict = RecommenderCalculations.from_dict(recommender_calculations_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

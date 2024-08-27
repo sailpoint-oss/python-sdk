@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of BulkTaggedObject from a JSON string
 bulk_tagged_object_instance = BulkTaggedObject.from_json(json)
 # print the JSON string representation of the object
-print BulkTaggedObject.to_json()
+print(BulkTaggedObject.to_json())
 
 # convert the object into a dict
 bulk_tagged_object_dict = bulk_tagged_object_instance.to_dict()
 # create an instance of BulkTaggedObject from a dict
-bulk_tagged_object_form_dict = bulk_tagged_object.from_dict(bulk_tagged_object_dict)
+bulk_tagged_object_from_dict = BulkTaggedObject.from_dict(bulk_tagged_object_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

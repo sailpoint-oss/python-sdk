@@ -23,12 +23,12 @@ json = "{}"
 # create an instance of ConnectorDetail1 from a JSON string
 connector_detail1_instance = ConnectorDetail1.from_json(json)
 # print the JSON string representation of the object
-print ConnectorDetail1.to_json()
+print(ConnectorDetail1.to_json())
 
 # convert the object into a dict
 connector_detail1_dict = connector_detail1_instance.to_dict()
 # create an instance of ConnectorDetail1 from a dict
-connector_detail1_form_dict = connector_detail1.from_dict(connector_detail1_dict)
+connector_detail1_from_dict = ConnectorDetail1.from_dict(connector_detail1_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

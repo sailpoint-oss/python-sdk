@@ -34,8 +34,6 @@ Create a domain to be verified via DKIM (DomainKeys Identified Mail)
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.domain_address import DomainAddress
 from sailpoint.beta.models.domain_status_dto import DomainStatusDto
@@ -121,8 +119,6 @@ This creates a template for your site.   You can also use this endpoint to updat
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.template_dto import TemplateDto
 from sailpoint.beta.rest import ApiException
@@ -206,8 +202,6 @@ Create a new sender email address and initiate verification process.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.email_status_dto import EmailStatusDto
 from sailpoint.beta.rest import ApiException
@@ -291,8 +285,6 @@ This lets you bulk delete templates that you previously created for your site. S
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.template_bulk_delete_dto import TemplateBulkDeleteDto
 from sailpoint.beta.rest import ApiException
@@ -374,8 +366,6 @@ Delete a verified sender email address
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
@@ -457,8 +447,6 @@ Retrieve DKIM (DomainKeys Identified Mail) attributes for all your tenants' AWS 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.dkim_attributes import DkimAttributes
 from sailpoint.beta.rest import ApiException
@@ -538,8 +526,6 @@ Retrieve MAIL FROM attributes for a given AWS SES identity.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.mail_from_attributes import MailFromAttributes
 from sailpoint.beta.rest import ApiException
@@ -623,8 +609,6 @@ This gets a template that you have modified for your site by Id.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.template_dto import TemplateDto
 from sailpoint.beta.rest import ApiException
@@ -708,8 +692,6 @@ The notification service maintains metadata to construct the notification templa
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.notification_template_context import NotificationTemplateContext
 from sailpoint.beta.rest import ApiException
@@ -789,8 +771,6 @@ Retrieve a list of sender email addresses and their verification statuses
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.email_status_dto import EmailStatusDto
 from sailpoint.beta.rest import ApiException
@@ -881,8 +861,6 @@ Returns a list of notification preferences for tenant.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.preferences_dto import PreferencesDto
 from sailpoint.beta.rest import ApiException
@@ -963,8 +941,6 @@ This lists the default templates used for notifications, such as emails from Ide
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.template_dto_default import TemplateDtoDefault
 from sailpoint.beta.rest import ApiException
@@ -1052,8 +1028,6 @@ This lists the templates that you have modified for your site.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.template_dto import TemplateDto
 from sailpoint.beta.rest import ApiException
@@ -1141,8 +1115,6 @@ Change the MAIL FROM domain of an AWS SES email identity and provide the MX and 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.mail_from_attributes import MailFromAttributes
 from sailpoint.beta.models.mail_from_attributes_dto import MailFromAttributesDto
@@ -1227,8 +1199,6 @@ Send a Test Notification
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.send_test_notification_request_dto import SendTestNotificationRequestDto
 from sailpoint.beta.rest import ApiException

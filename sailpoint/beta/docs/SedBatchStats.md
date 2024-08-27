@@ -22,12 +22,12 @@ json = "{}"
 # create an instance of SedBatchStats from a JSON string
 sed_batch_stats_instance = SedBatchStats.from_json(json)
 # print the JSON string representation of the object
-print SedBatchStats.to_json()
+print(SedBatchStats.to_json())
 
 # convert the object into a dict
 sed_batch_stats_dict = sed_batch_stats_instance.to_dict()
 # create an instance of SedBatchStats from a dict
-sed_batch_stats_form_dict = sed_batch_stats.from_dict(sed_batch_stats_dict)
+sed_batch_stats_from_dict = SedBatchStats.from_dict(sed_batch_stats_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

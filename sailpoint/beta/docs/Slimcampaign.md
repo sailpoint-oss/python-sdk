@@ -30,12 +30,12 @@ json = "{}"
 # create an instance of Slimcampaign from a JSON string
 slimcampaign_instance = Slimcampaign.from_json(json)
 # print the JSON string representation of the object
-print Slimcampaign.to_json()
+print(Slimcampaign.to_json())
 
 # convert the object into a dict
 slimcampaign_dict = slimcampaign_instance.to_dict()
 # create an instance of Slimcampaign from a dict
-slimcampaign_form_dict = slimcampaign.from_dict(slimcampaign_dict)
+slimcampaign_from_dict = Slimcampaign.from_dict(slimcampaign_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

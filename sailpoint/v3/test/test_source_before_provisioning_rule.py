@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v3.models.source_before_provisioning_rule import SourceBeforeProvisioningRule
 
@@ -28,7 +27,7 @@ class TestSourceBeforeProvisioningRule(unittest.TestCase):
 
     def make_instance(self, include_optional) -> SourceBeforeProvisioningRule:
         """Test SourceBeforeProvisioningRule
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `SourceBeforeProvisioningRule`

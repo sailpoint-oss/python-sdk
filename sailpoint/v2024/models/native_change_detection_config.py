@@ -17,14 +17,10 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr, field_validator
-from pydantic import Field
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class NativeChangeDetectionConfig(BaseModel):
     """
@@ -45,15 +41,15 @@ class NativeChangeDetectionConfig(BaseModel):
             return value
 
         for i in value:
-            if i not in ('ACCOUNT_UPDATED', 'ACCOUNT_CREATED', 'ACCOUNT_DELETED'):
+            if i not in set(['ACCOUNT_UPDATED', 'ACCOUNT_CREATED', 'ACCOUNT_DELETED']):
                 raise ValueError("each list item must be one of ('ACCOUNT_UPDATED', 'ACCOUNT_CREATED', 'ACCOUNT_DELETED')")
         return value
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -66,7 +62,7 @@ class NativeChangeDetectionConfig(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of NativeChangeDetectionConfig from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -80,16 +76,18 @@ class NativeChangeDetectionConfig(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of NativeChangeDetectionConfig from a dict"""
         if obj is None:
             return None

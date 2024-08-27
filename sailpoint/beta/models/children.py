@@ -17,14 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
 from sailpoint.beta.models.value import Value
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class Children(BaseModel):
     """
@@ -36,11 +33,11 @@ class Children(BaseModel):
     children: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["operator", "attribute", "value", "children"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -53,7 +50,7 @@ class Children(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of Children from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -67,10 +64,12 @@ class Children(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of value
@@ -89,7 +88,7 @@ class Children(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of Children from a dict"""
         if obj is None:
             return None
@@ -100,7 +99,7 @@ class Children(BaseModel):
         _obj = cls.model_validate({
             "operator": obj.get("operator"),
             "attribute": obj.get("attribute"),
-            "value": Value.from_dict(obj.get("value")) if obj.get("value") is not None else None,
+            "value": Value.from_dict(obj["value"]) if obj.get("value") is not None else None,
             "children": obj.get("children")
         })
         return _obj

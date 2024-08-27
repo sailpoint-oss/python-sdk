@@ -32,12 +32,12 @@ json = "{}"
 # create an instance of AccessProfileDocument from a JSON string
 access_profile_document_instance = AccessProfileDocument.from_json(json)
 # print the JSON string representation of the object
-print AccessProfileDocument.to_json()
+print(AccessProfileDocument.to_json())
 
 # convert the object into a dict
 access_profile_document_dict = access_profile_document_instance.to_dict()
 # create an instance of AccessProfileDocument from a dict
-access_profile_document_form_dict = access_profile_document.from_dict(access_profile_document_dict)
+access_profile_document_from_dict = AccessProfileDocument.from_dict(access_profile_document_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

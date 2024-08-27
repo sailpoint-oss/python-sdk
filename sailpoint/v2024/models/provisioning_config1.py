@@ -17,16 +17,12 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictInt
-from pydantic import Field
 from sailpoint.v2024.models.provisioning_config1_managed_resource_refs_inner import ProvisioningConfig1ManagedResourceRefsInner
 from sailpoint.v2024.models.provisioning_config1_plan_initializer_script import ProvisioningConfig1PlanInitializerScript
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class ProvisioningConfig1(BaseModel):
     """
@@ -39,11 +35,11 @@ class ProvisioningConfig1(BaseModel):
     provisioning_request_expiration: Optional[StrictInt] = Field(default=None, description="When saving pending requests is enabled, this defines the number of hours the request is allowed to live before it is considered expired and no longer affects plan compilation.", alias="provisioningRequestExpiration")
     __properties: ClassVar[List[str]] = ["universalManager", "managedResourceRefs", "planInitializerScript", "noProvisioningRequests", "provisioningRequestExpiration"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -56,7 +52,7 @@ class ProvisioningConfig1(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of ProvisioningConfig1 from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -71,19 +67,21 @@ class ProvisioningConfig1(BaseModel):
           are ignored.
         * OpenAPI `readOnly` fields are excluded.
         """
+        excluded_fields: Set[str] = set([
+            "universal_manager",
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-                "universal_manager",
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in managed_resource_refs (list)
         _items = []
         if self.managed_resource_refs:
-            for _item in self.managed_resource_refs:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_managed_resource_refs in self.managed_resource_refs:
+                if _item_managed_resource_refs:
+                    _items.append(_item_managed_resource_refs.to_dict())
             _dict['managedResourceRefs'] = _items
         # override the default output from pydantic by calling `to_dict()` of plan_initializer_script
         if self.plan_initializer_script:
@@ -91,7 +89,7 @@ class ProvisioningConfig1(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of ProvisioningConfig1 from a dict"""
         if obj is None:
             return None
@@ -101,8 +99,8 @@ class ProvisioningConfig1(BaseModel):
 
         _obj = cls.model_validate({
             "universalManager": obj.get("universalManager") if obj.get("universalManager") is not None else False,
-            "managedResourceRefs": [ProvisioningConfig1ManagedResourceRefsInner.from_dict(_item) for _item in obj.get("managedResourceRefs")] if obj.get("managedResourceRefs") is not None else None,
-            "planInitializerScript": ProvisioningConfig1PlanInitializerScript.from_dict(obj.get("planInitializerScript")) if obj.get("planInitializerScript") is not None else None,
+            "managedResourceRefs": [ProvisioningConfig1ManagedResourceRefsInner.from_dict(_item) for _item in obj["managedResourceRefs"]] if obj.get("managedResourceRefs") is not None else None,
+            "planInitializerScript": ProvisioningConfig1PlanInitializerScript.from_dict(obj["planInitializerScript"]) if obj.get("planInitializerScript") is not None else None,
             "noProvisioningRequests": obj.get("noProvisioningRequests") if obj.get("noProvisioningRequests") is not None else False,
             "provisioningRequestExpiration": obj.get("provisioningRequestExpiration")
         })

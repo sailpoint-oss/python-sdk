@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of EntitlementManuallyUpdatedFields from a JSON string
 entitlement_manually_updated_fields_instance = EntitlementManuallyUpdatedFields.from_json(json)
 # print the JSON string representation of the object
-print EntitlementManuallyUpdatedFields.to_json()
+print(EntitlementManuallyUpdatedFields.to_json())
 
 # convert the object into a dict
 entitlement_manually_updated_fields_dict = entitlement_manually_updated_fields_instance.to_dict()
 # create an instance of EntitlementManuallyUpdatedFields from a dict
-entitlement_manually_updated_fields_form_dict = entitlement_manually_updated_fields.from_dict(entitlement_manually_updated_fields_dict)
+entitlement_manually_updated_fields_from_dict = EntitlementManuallyUpdatedFields.from_dict(entitlement_manually_updated_fields_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

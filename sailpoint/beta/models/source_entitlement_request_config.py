@@ -17,15 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel
-from pydantic import Field
 from sailpoint.beta.models.entitlement_access_request_config import EntitlementAccessRequestConfig
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class SourceEntitlementRequestConfig(BaseModel):
     """
@@ -34,11 +30,11 @@ class SourceEntitlementRequestConfig(BaseModel):
     access_request_config: Optional[EntitlementAccessRequestConfig] = Field(default=None, alias="accessRequestConfig")
     __properties: ClassVar[List[str]] = ["accessRequestConfig"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -51,7 +47,7 @@ class SourceEntitlementRequestConfig(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of SourceEntitlementRequestConfig from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -65,10 +61,12 @@ class SourceEntitlementRequestConfig(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of access_request_config
@@ -77,7 +75,7 @@ class SourceEntitlementRequestConfig(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of SourceEntitlementRequestConfig from a dict"""
         if obj is None:
             return None
@@ -86,7 +84,7 @@ class SourceEntitlementRequestConfig(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "accessRequestConfig": EntitlementAccessRequestConfig.from_dict(obj.get("accessRequestConfig")) if obj.get("accessRequestConfig") is not None else None
+            "accessRequestConfig": EntitlementAccessRequestConfig.from_dict(obj["accessRequestConfig"]) if obj.get("accessRequestConfig") is not None else None
         })
         return _obj
 

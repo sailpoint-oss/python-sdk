@@ -17,12 +17,12 @@ json = "{}"
 # create an instance of CampaignReportsConfig from a JSON string
 campaign_reports_config_instance = CampaignReportsConfig.from_json(json)
 # print the JSON string representation of the object
-print CampaignReportsConfig.to_json()
+print(CampaignReportsConfig.to_json())
 
 # convert the object into a dict
 campaign_reports_config_dict = campaign_reports_config_instance.to_dict()
 # create an instance of CampaignReportsConfig from a dict
-campaign_reports_config_form_dict = campaign_reports_config.from_dict(campaign_reports_config_dict)
+campaign_reports_config_from_dict = CampaignReportsConfig.from_dict(campaign_reports_config_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

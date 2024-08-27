@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v2024.models.role_mining_role_type import RoleMiningRoleType
 

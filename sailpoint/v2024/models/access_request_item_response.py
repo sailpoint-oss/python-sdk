@@ -17,15 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr, field_validator
-from pydantic import Field
 from sailpoint.v2024.models.approval_info_response import ApprovalInfoResponse
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class AccessRequestItemResponse(BaseModel):
     """
@@ -47,15 +43,15 @@ class AccessRequestItemResponse(BaseModel):
         if value is None:
             return value
 
-        if value not in ('APPROVED', 'REJECTED'):
+        if value not in set(['APPROVED', 'REJECTED']):
             raise ValueError("must be one of enum values ('APPROVED', 'REJECTED')")
         return value
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -68,7 +64,7 @@ class AccessRequestItemResponse(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of AccessRequestItemResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -82,23 +78,25 @@ class AccessRequestItemResponse(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in approval_infos (list)
         _items = []
         if self.approval_infos:
-            for _item in self.approval_infos:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_approval_infos in self.approval_infos:
+                if _item_approval_infos:
+                    _items.append(_item_approval_infos.to_dict())
             _dict['approvalInfos'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of AccessRequestItemResponse from a dict"""
         if obj is None:
             return None
@@ -114,7 +112,7 @@ class AccessRequestItemResponse(BaseModel):
             "description": obj.get("description"),
             "sourceId": obj.get("sourceId"),
             "sourceName": obj.get("sourceName"),
-            "approvalInfos": [ApprovalInfoResponse.from_dict(_item) for _item in obj.get("approvalInfos")] if obj.get("approvalInfos") is not None else None
+            "approvalInfos": [ApprovalInfoResponse.from_dict(_item) for _item in obj["approvalInfos"]] if obj.get("approvalInfos") is not None else None
         })
         return _obj
 

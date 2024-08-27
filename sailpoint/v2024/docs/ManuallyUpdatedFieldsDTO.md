@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of ManuallyUpdatedFieldsDTO from a JSON string
 manually_updated_fields_dto_instance = ManuallyUpdatedFieldsDTO.from_json(json)
 # print the JSON string representation of the object
-print ManuallyUpdatedFieldsDTO.to_json()
+print(ManuallyUpdatedFieldsDTO.to_json())
 
 # convert the object into a dict
 manually_updated_fields_dto_dict = manually_updated_fields_dto_instance.to_dict()
 # create an instance of ManuallyUpdatedFieldsDTO from a dict
-manually_updated_fields_dto_form_dict = manually_updated_fields_dto.from_dict(manually_updated_fields_dto_dict)
+manually_updated_fields_dto_from_dict = ManuallyUpdatedFieldsDTO.from_dict(manually_updated_fields_dto_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

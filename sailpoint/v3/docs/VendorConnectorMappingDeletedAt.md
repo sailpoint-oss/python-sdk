@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of VendorConnectorMappingDeletedAt from a JSON string
 vendor_connector_mapping_deleted_at_instance = VendorConnectorMappingDeletedAt.from_json(json)
 # print the JSON string representation of the object
-print VendorConnectorMappingDeletedAt.to_json()
+print(VendorConnectorMappingDeletedAt.to_json())
 
 # convert the object into a dict
 vendor_connector_mapping_deleted_at_dict = vendor_connector_mapping_deleted_at_instance.to_dict()
 # create an instance of VendorConnectorMappingDeletedAt from a dict
-vendor_connector_mapping_deleted_at_form_dict = vendor_connector_mapping_deleted_at.from_dict(vendor_connector_mapping_deleted_at_dict)
+vendor_connector_mapping_deleted_at_from_dict = VendorConnectorMappingDeletedAt.from_dict(vendor_connector_mapping_deleted_at_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

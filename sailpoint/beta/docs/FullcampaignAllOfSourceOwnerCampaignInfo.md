@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of FullcampaignAllOfSourceOwnerCampaignInfo from a JSON string
 fullcampaign_all_of_source_owner_campaign_info_instance = FullcampaignAllOfSourceOwnerCampaignInfo.from_json(json)
 # print the JSON string representation of the object
-print FullcampaignAllOfSourceOwnerCampaignInfo.to_json()
+print(FullcampaignAllOfSourceOwnerCampaignInfo.to_json())
 
 # convert the object into a dict
 fullcampaign_all_of_source_owner_campaign_info_dict = fullcampaign_all_of_source_owner_campaign_info_instance.to_dict()
 # create an instance of FullcampaignAllOfSourceOwnerCampaignInfo from a dict
-fullcampaign_all_of_source_owner_campaign_info_form_dict = fullcampaign_all_of_source_owner_campaign_info.from_dict(fullcampaign_all_of_source_owner_campaign_info_dict)
+fullcampaign_all_of_source_owner_campaign_info_from_dict = FullcampaignAllOfSourceOwnerCampaignInfo.from_dict(fullcampaign_all_of_source_owner_campaign_info_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

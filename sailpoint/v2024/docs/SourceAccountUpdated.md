@@ -24,12 +24,12 @@ json = "{}"
 # create an instance of SourceAccountUpdated from a JSON string
 source_account_updated_instance = SourceAccountUpdated.from_json(json)
 # print the JSON string representation of the object
-print SourceAccountUpdated.to_json()
+print(SourceAccountUpdated.to_json())
 
 # convert the object into a dict
 source_account_updated_dict = source_account_updated_instance.to_dict()
 # create an instance of SourceAccountUpdated from a dict
-source_account_updated_form_dict = source_account_updated.from_dict(source_account_updated_dict)
+source_account_updated_from_dict = SourceAccountUpdated.from_dict(source_account_updated_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

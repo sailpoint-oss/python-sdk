@@ -18,14 +18,11 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
-from pydantic import Field
 from sailpoint.v3.models.pat_owner import PatOwner
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class GetPersonalAccessTokenResponse(BaseModel):
     """
@@ -40,11 +37,11 @@ class GetPersonalAccessTokenResponse(BaseModel):
     managed: Optional[StrictBool] = Field(default=False, description="If true, this token is managed by the SailPoint platform, and is not visible in the user interface. For example, Workflows will create managed personal access tokens for users who create workflows.")
     __properties: ClassVar[List[str]] = ["id", "name", "scope", "owner", "created", "lastUsed", "managed"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -57,7 +54,7 @@ class GetPersonalAccessTokenResponse(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of GetPersonalAccessTokenResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -71,10 +68,12 @@ class GetPersonalAccessTokenResponse(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of owner
@@ -93,7 +92,7 @@ class GetPersonalAccessTokenResponse(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of GetPersonalAccessTokenResponse from a dict"""
         if obj is None:
             return None
@@ -105,7 +104,7 @@ class GetPersonalAccessTokenResponse(BaseModel):
             "id": obj.get("id"),
             "name": obj.get("name"),
             "scope": obj.get("scope"),
-            "owner": PatOwner.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
+            "owner": PatOwner.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
             "created": obj.get("created"),
             "lastUsed": obj.get("lastUsed"),
             "managed": obj.get("managed") if obj.get("managed") is not None else False

@@ -34,12 +34,12 @@ json = "{}"
 # create an instance of CertificationSignedOffCertification from a JSON string
 certification_signed_off_certification_instance = CertificationSignedOffCertification.from_json(json)
 # print the JSON string representation of the object
-print CertificationSignedOffCertification.to_json()
+print(CertificationSignedOffCertification.to_json())
 
 # convert the object into a dict
 certification_signed_off_certification_dict = certification_signed_off_certification_instance.to_dict()
 # create an instance of CertificationSignedOffCertification from a dict
-certification_signed_off_certification_form_dict = certification_signed_off_certification.from_dict(certification_signed_off_certification_dict)
+certification_signed_off_certification_from_dict = CertificationSignedOffCertification.from_dict(certification_signed_off_certification_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

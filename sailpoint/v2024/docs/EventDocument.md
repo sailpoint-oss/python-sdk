@@ -35,12 +35,12 @@ json = "{}"
 # create an instance of EventDocument from a JSON string
 event_document_instance = EventDocument.from_json(json)
 # print the JSON string representation of the object
-print EventDocument.to_json()
+print(EventDocument.to_json())
 
 # convert the object into a dict
 event_document_dict = event_document_instance.to_dict()
 # create an instance of EventDocument from a dict
-event_document_form_dict = event_document.from_dict(event_document_dict)
+event_document_from_dict = EventDocument.from_dict(event_document_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

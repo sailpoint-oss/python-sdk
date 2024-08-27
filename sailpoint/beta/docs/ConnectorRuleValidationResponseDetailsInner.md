@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of ConnectorRuleValidationResponseDetailsInner from a JSON string
 connector_rule_validation_response_details_inner_instance = ConnectorRuleValidationResponseDetailsInner.from_json(json)
 # print the JSON string representation of the object
-print ConnectorRuleValidationResponseDetailsInner.to_json()
+print(ConnectorRuleValidationResponseDetailsInner.to_json())
 
 # convert the object into a dict
 connector_rule_validation_response_details_inner_dict = connector_rule_validation_response_details_inner_instance.to_dict()
 # create an instance of ConnectorRuleValidationResponseDetailsInner from a dict
-connector_rule_validation_response_details_inner_form_dict = connector_rule_validation_response_details_inner.from_dict(connector_rule_validation_response_details_inner_dict)
+connector_rule_validation_response_details_inner_from_dict = ConnectorRuleValidationResponseDetailsInner.from_dict(connector_rule_validation_response_details_inner_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

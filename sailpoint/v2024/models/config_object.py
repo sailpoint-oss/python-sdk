@@ -17,15 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictInt
-from pydantic import Field
 from sailpoint.v2024.models.self_import_export_dto import SelfImportExportDto
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class ConfigObject(BaseModel):
     """
@@ -36,11 +32,11 @@ class ConfigObject(BaseModel):
     object: Optional[Dict[str, Any]] = Field(default=None, description="Object details. Format dependant on the object type.")
     __properties: ClassVar[List[str]] = ["version", "self", "object"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -53,7 +49,7 @@ class ConfigObject(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of ConfigObject from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -67,10 +63,12 @@ class ConfigObject(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of var_self
@@ -79,7 +77,7 @@ class ConfigObject(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of ConfigObject from a dict"""
         if obj is None:
             return None
@@ -89,7 +87,7 @@ class ConfigObject(BaseModel):
 
         _obj = cls.model_validate({
             "version": obj.get("version"),
-            "self": SelfImportExportDto.from_dict(obj.get("self")) if obj.get("self") is not None else None,
+            "self": SelfImportExportDto.from_dict(obj["self"]) if obj.get("self") is not None else None,
             "object": obj.get("object")
         })
         return _obj

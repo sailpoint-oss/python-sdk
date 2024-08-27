@@ -17,18 +17,14 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
+from sailpoint.beta.models.before_provisioning_rule_dto import BeforeProvisioningRuleDto
+from sailpoint.beta.models.owner_dto import OwnerDto
 from sailpoint.beta.models.provisioning_config import ProvisioningConfig
-from sailpoint.beta.models.service_desk_integration_dto_all_of_before_provisioning_rule import ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule
-from sailpoint.beta.models.service_desk_integration_dto_all_of_cluster_ref import ServiceDeskIntegrationDtoAllOfClusterRef
-from sailpoint.beta.models.service_desk_integration_dto_all_of_owner_ref import ServiceDeskIntegrationDtoAllOfOwnerRef
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from sailpoint.beta.models.source_cluster_dto import SourceClusterDto
+from typing import Optional, Set
+from typing_extensions import Self
 
 class ServiceDeskIntegrationDto(BaseModel):
     """
@@ -37,20 +33,20 @@ class ServiceDeskIntegrationDto(BaseModel):
     name: StrictStr = Field(description="Service Desk integration's name. The name must be unique.")
     description: StrictStr = Field(description="Service Desk integration's description.")
     type: StrictStr = Field(description="Service Desk integration types:  - ServiceNowSDIM - ServiceNow ")
-    owner_ref: Optional[ServiceDeskIntegrationDtoAllOfOwnerRef] = Field(default=None, alias="ownerRef")
-    cluster_ref: Optional[ServiceDeskIntegrationDtoAllOfClusterRef] = Field(default=None, alias="clusterRef")
+    owner_ref: Optional[OwnerDto] = Field(default=None, alias="ownerRef")
+    cluster_ref: Optional[SourceClusterDto] = Field(default=None, alias="clusterRef")
     cluster: Optional[StrictStr] = Field(default=None, description="Cluster ID for the Service Desk integration (replaced by clusterRef, retained for backward compatibility).")
     managed_sources: Optional[List[StrictStr]] = Field(default=None, description="Source IDs for the Service Desk integration (replaced by provisioningConfig.managedSResourceRefs, but retained here for backward compatibility).", alias="managedSources")
     provisioning_config: Optional[ProvisioningConfig] = Field(default=None, alias="provisioningConfig")
     attributes: Dict[str, Any] = Field(description="Service Desk integration's attributes. Validation constraints enforced by the implementation.")
-    before_provisioning_rule: Optional[ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule] = Field(default=None, alias="beforeProvisioningRule")
+    before_provisioning_rule: Optional[BeforeProvisioningRuleDto] = Field(default=None, alias="beforeProvisioningRule")
     __properties: ClassVar[List[str]] = ["name", "description", "type", "ownerRef", "clusterRef", "cluster", "managedSources", "provisioningConfig", "attributes", "beforeProvisioningRule"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -63,7 +59,7 @@ class ServiceDeskIntegrationDto(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of ServiceDeskIntegrationDto from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -77,10 +73,12 @@ class ServiceDeskIntegrationDto(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of owner_ref
@@ -98,7 +96,7 @@ class ServiceDeskIntegrationDto(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of ServiceDeskIntegrationDto from a dict"""
         if obj is None:
             return None
@@ -110,13 +108,13 @@ class ServiceDeskIntegrationDto(BaseModel):
             "name": obj.get("name"),
             "description": obj.get("description"),
             "type": obj.get("type") if obj.get("type") is not None else 'ServiceNowSDIM',
-            "ownerRef": ServiceDeskIntegrationDtoAllOfOwnerRef.from_dict(obj.get("ownerRef")) if obj.get("ownerRef") is not None else None,
-            "clusterRef": ServiceDeskIntegrationDtoAllOfClusterRef.from_dict(obj.get("clusterRef")) if obj.get("clusterRef") is not None else None,
+            "ownerRef": OwnerDto.from_dict(obj["ownerRef"]) if obj.get("ownerRef") is not None else None,
+            "clusterRef": SourceClusterDto.from_dict(obj["clusterRef"]) if obj.get("clusterRef") is not None else None,
             "cluster": obj.get("cluster"),
             "managedSources": obj.get("managedSources"),
-            "provisioningConfig": ProvisioningConfig.from_dict(obj.get("provisioningConfig")) if obj.get("provisioningConfig") is not None else None,
+            "provisioningConfig": ProvisioningConfig.from_dict(obj["provisioningConfig"]) if obj.get("provisioningConfig") is not None else None,
             "attributes": obj.get("attributes"),
-            "beforeProvisioningRule": ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule.from_dict(obj.get("beforeProvisioningRule")) if obj.get("beforeProvisioningRule") is not None else None
+            "beforeProvisioningRule": BeforeProvisioningRuleDto.from_dict(obj["beforeProvisioningRule"]) if obj.get("beforeProvisioningRule") is not None else None
         })
         return _obj
 

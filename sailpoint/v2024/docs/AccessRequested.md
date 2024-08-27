@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of AccessRequested from a JSON string
 access_requested_instance = AccessRequested.from_json(json)
 # print the JSON string representation of the object
-print AccessRequested.to_json()
+print(AccessRequested.to_json())
 
 # convert the object into a dict
 access_requested_dict = access_requested_instance.to_dict()
 # create an instance of AccessRequested from a dict
-access_requested_form_dict = access_requested.from_dict(access_requested_dict)
+access_requested_from_dict = AccessRequested.from_dict(access_requested_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

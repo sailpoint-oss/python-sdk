@@ -17,12 +17,12 @@ json = "{}"
 # create an instance of TestWorkflowRequest from a JSON string
 test_workflow_request_instance = TestWorkflowRequest.from_json(json)
 # print the JSON string representation of the object
-print TestWorkflowRequest.to_json()
+print(TestWorkflowRequest.to_json())
 
 # convert the object into a dict
 test_workflow_request_dict = test_workflow_request_instance.to_dict()
 # create an instance of TestWorkflowRequest from a dict
-test_workflow_request_form_dict = test_workflow_request.from_dict(test_workflow_request_dict)
+test_workflow_request_from_dict = TestWorkflowRequest.from_dict(test_workflow_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

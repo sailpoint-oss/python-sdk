@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of SendAccountVerificationRequest from a JSON string
 send_account_verification_request_instance = SendAccountVerificationRequest.from_json(json)
 # print the JSON string representation of the object
-print SendAccountVerificationRequest.to_json()
+print(SendAccountVerificationRequest.to_json())
 
 # convert the object into a dict
 send_account_verification_request_dict = send_account_verification_request_instance.to_dict()
 # create an instance of SendAccountVerificationRequest from a dict
-send_account_verification_request_form_dict = send_account_verification_request.from_dict(send_account_verification_request_dict)
+send_account_verification_request_from_dict = SendAccountVerificationRequest.from_dict(send_account_verification_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

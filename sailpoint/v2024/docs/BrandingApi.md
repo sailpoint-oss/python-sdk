@@ -24,8 +24,6 @@ This API endpoint creates a branding item. A token with API, ORG_ADMIN authority
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.branding_item import BrandingItem
 from sailpoint.v2024.rest import ApiException
@@ -123,8 +121,6 @@ This API endpoint delete information for an existing branding item by name. A to
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
@@ -206,8 +202,6 @@ This API endpoint retrieves information for an existing branding item by name. A
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.branding_item import BrandingItem
 from sailpoint.v2024.rest import ApiException
@@ -292,8 +286,6 @@ This API endpoint returns a list of branding items.  A token with API, ORG_ADMIN
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.branding_item import BrandingItem
 from sailpoint.v2024.rest import ApiException
@@ -373,8 +365,6 @@ This API endpoint updates information for an existing branding item. A token wit
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.branding_item import BrandingItem
 from sailpoint.v2024.rest import ApiException

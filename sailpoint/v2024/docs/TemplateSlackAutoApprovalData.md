@@ -21,12 +21,12 @@ json = "{}"
 # create an instance of TemplateSlackAutoApprovalData from a JSON string
 template_slack_auto_approval_data_instance = TemplateSlackAutoApprovalData.from_json(json)
 # print the JSON string representation of the object
-print TemplateSlackAutoApprovalData.to_json()
+print(TemplateSlackAutoApprovalData.to_json())
 
 # convert the object into a dict
 template_slack_auto_approval_data_dict = template_slack_auto_approval_data_instance.to_dict()
 # create an instance of TemplateSlackAutoApprovalData from a dict
-template_slack_auto_approval_data_form_dict = template_slack_auto_approval_data.from_dict(template_slack_auto_approval_data_dict)
+template_slack_auto_approval_data_from_dict = TemplateSlackAutoApprovalData.from_dict(template_slack_auto_approval_data_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

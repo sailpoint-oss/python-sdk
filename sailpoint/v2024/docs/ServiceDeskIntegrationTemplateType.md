@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of ServiceDeskIntegrationTemplateType from a JSON string
 service_desk_integration_template_type_instance = ServiceDeskIntegrationTemplateType.from_json(json)
 # print the JSON string representation of the object
-print ServiceDeskIntegrationTemplateType.to_json()
+print(ServiceDeskIntegrationTemplateType.to_json())
 
 # convert the object into a dict
 service_desk_integration_template_type_dict = service_desk_integration_template_type_instance.to_dict()
 # create an instance of ServiceDeskIntegrationTemplateType from a dict
-service_desk_integration_template_type_form_dict = service_desk_integration_template_type.from_dict(service_desk_integration_template_type_dict)
+service_desk_integration_template_type_from_dict = ServiceDeskIntegrationTemplateType.from_dict(service_desk_integration_template_type_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

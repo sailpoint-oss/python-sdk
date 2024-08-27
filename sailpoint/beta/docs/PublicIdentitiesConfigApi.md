@@ -21,8 +21,6 @@ This gets details of public identity config.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.public_identity_config import PublicIdentityConfig
 from sailpoint.beta.rest import ApiException
@@ -102,8 +100,6 @@ This updates the details of public identity config.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.public_identity_config import PublicIdentityConfig
 from sailpoint.beta.rest import ApiException

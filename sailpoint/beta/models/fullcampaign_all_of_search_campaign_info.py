@@ -17,17 +17,13 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr, field_validator
-from pydantic import Field
 from typing_extensions import Annotated
 from sailpoint.beta.models.access_constraint import AccessConstraint
 from sailpoint.beta.models.fullcampaign_all_of_search_campaign_info_reviewer import FullcampaignAllOfSearchCampaignInfoReviewer
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class FullcampaignAllOfSearchCampaignInfo(BaseModel):
     """
@@ -44,15 +40,15 @@ class FullcampaignAllOfSearchCampaignInfo(BaseModel):
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('IDENTITY', 'ACCESS'):
+        if value not in set(['IDENTITY', 'ACCESS']):
             raise ValueError("must be one of enum values ('IDENTITY', 'ACCESS')")
         return value
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -65,7 +61,7 @@ class FullcampaignAllOfSearchCampaignInfo(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of FullcampaignAllOfSearchCampaignInfo from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -79,10 +75,12 @@ class FullcampaignAllOfSearchCampaignInfo(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of reviewer
@@ -91,14 +89,14 @@ class FullcampaignAllOfSearchCampaignInfo(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in access_constraints (list)
         _items = []
         if self.access_constraints:
-            for _item in self.access_constraints:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_access_constraints in self.access_constraints:
+                if _item_access_constraints:
+                    _items.append(_item_access_constraints.to_dict())
             _dict['accessConstraints'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of FullcampaignAllOfSearchCampaignInfo from a dict"""
         if obj is None:
             return None
@@ -109,10 +107,10 @@ class FullcampaignAllOfSearchCampaignInfo(BaseModel):
         _obj = cls.model_validate({
             "type": obj.get("type"),
             "description": obj.get("description"),
-            "reviewer": FullcampaignAllOfSearchCampaignInfoReviewer.from_dict(obj.get("reviewer")) if obj.get("reviewer") is not None else None,
+            "reviewer": FullcampaignAllOfSearchCampaignInfoReviewer.from_dict(obj["reviewer"]) if obj.get("reviewer") is not None else None,
             "query": obj.get("query"),
             "identityIds": obj.get("identityIds"),
-            "accessConstraints": [AccessConstraint.from_dict(_item) for _item in obj.get("accessConstraints")] if obj.get("accessConstraints") is not None else None
+            "accessConstraints": [AccessConstraint.from_dict(_item) for _item in obj["accessConstraints"]] if obj.get("accessConstraints") is not None else None
         })
         return _obj
 

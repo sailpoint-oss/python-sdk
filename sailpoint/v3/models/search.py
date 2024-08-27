@@ -17,10 +17,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
-from pydantic import Field
 from sailpoint.v3.models.aggregation_type import AggregationType
 from sailpoint.v3.models.filter import Filter
 from sailpoint.v3.models.index import Index
@@ -30,17 +28,15 @@ from sailpoint.v3.models.query_type import QueryType
 from sailpoint.v3.models.search_aggregation_specification import SearchAggregationSpecification
 from sailpoint.v3.models.text_query import TextQuery
 from sailpoint.v3.models.type_ahead_query import TypeAheadQuery
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class Search(BaseModel):
     """
     Search
     """ # noqa: E501
     indices: Optional[List[Index]] = Field(default=None, description="The names of the Elasticsearch indices in which to search. If none are provided, then all indices will be searched.")
-    query_type: Optional[QueryType] = Field(default=None, alias="queryType")
+    query_type: Optional[QueryType] = Field(default=QueryType.SAILPOINT, alias="queryType")
     query_version: Optional[Any] = Field(default=None, alias="queryVersion")
     query: Optional[Query] = None
     query_dsl: Optional[Dict[str, Any]] = Field(default=None, description="The search query using the Elasticsearch [Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/7.10/query-dsl.html) syntax.", alias="queryDsl")
@@ -48,7 +44,7 @@ class Search(BaseModel):
     type_ahead_query: Optional[TypeAheadQuery] = Field(default=None, alias="typeAheadQuery")
     include_nested: Optional[StrictBool] = Field(default=True, description="Indicates whether nested objects from returned search results should be included.", alias="includeNested")
     query_result_filter: Optional[QueryResultFilter] = Field(default=None, alias="queryResultFilter")
-    aggregation_type: Optional[AggregationType] = Field(default=None, alias="aggregationType")
+    aggregation_type: Optional[AggregationType] = Field(default=AggregationType.DSL, alias="aggregationType")
     aggregations_version: Optional[Any] = Field(default=None, alias="aggregationsVersion")
     aggregations_dsl: Optional[Dict[str, Any]] = Field(default=None, description="The aggregation search query using Elasticsearch [Aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/search-aggregations.html) syntax.", alias="aggregationsDsl")
     aggregations: Optional[SearchAggregationSpecification] = None
@@ -57,11 +53,11 @@ class Search(BaseModel):
     filters: Optional[Dict[str, Filter]] = Field(default=None, description="The filters to be applied for each filtered field name.")
     __properties: ClassVar[List[str]] = ["indices", "queryType", "queryVersion", "query", "queryDsl", "textQuery", "typeAheadQuery", "includeNested", "queryResultFilter", "aggregationType", "aggregationsVersion", "aggregationsDsl", "aggregations", "sort", "searchAfter", "filters"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -74,7 +70,7 @@ class Search(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of Search from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -88,10 +84,12 @@ class Search(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of query
@@ -112,14 +110,14 @@ class Search(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each value in filters (dict)
         _field_dict = {}
         if self.filters:
-            for _key in self.filters:
-                if self.filters[_key]:
-                    _field_dict[_key] = self.filters[_key].to_dict()
+            for _key_filters in self.filters:
+                if self.filters[_key_filters]:
+                    _field_dict[_key_filters] = self.filters[_key_filters].to_dict()
             _dict['filters'] = _field_dict
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of Search from a dict"""
         if obj is None:
             return None
@@ -129,23 +127,23 @@ class Search(BaseModel):
 
         _obj = cls.model_validate({
             "indices": obj.get("indices"),
-            "queryType": obj.get("queryType"),
+            "queryType": obj.get("queryType") if obj.get("queryType") is not None else QueryType.SAILPOINT,
             "queryVersion": obj.get("queryVersion"),
-            "query": Query.from_dict(obj.get("query")) if obj.get("query") is not None else None,
+            "query": Query.from_dict(obj["query"]) if obj.get("query") is not None else None,
             "queryDsl": obj.get("queryDsl"),
-            "textQuery": TextQuery.from_dict(obj.get("textQuery")) if obj.get("textQuery") is not None else None,
-            "typeAheadQuery": TypeAheadQuery.from_dict(obj.get("typeAheadQuery")) if obj.get("typeAheadQuery") is not None else None,
+            "textQuery": TextQuery.from_dict(obj["textQuery"]) if obj.get("textQuery") is not None else None,
+            "typeAheadQuery": TypeAheadQuery.from_dict(obj["typeAheadQuery"]) if obj.get("typeAheadQuery") is not None else None,
             "includeNested": obj.get("includeNested") if obj.get("includeNested") is not None else True,
-            "queryResultFilter": QueryResultFilter.from_dict(obj.get("queryResultFilter")) if obj.get("queryResultFilter") is not None else None,
-            "aggregationType": obj.get("aggregationType"),
+            "queryResultFilter": QueryResultFilter.from_dict(obj["queryResultFilter"]) if obj.get("queryResultFilter") is not None else None,
+            "aggregationType": obj.get("aggregationType") if obj.get("aggregationType") is not None else AggregationType.DSL,
             "aggregationsVersion": obj.get("aggregationsVersion"),
             "aggregationsDsl": obj.get("aggregationsDsl"),
-            "aggregations": SearchAggregationSpecification.from_dict(obj.get("aggregations")) if obj.get("aggregations") is not None else None,
+            "aggregations": SearchAggregationSpecification.from_dict(obj["aggregations"]) if obj.get("aggregations") is not None else None,
             "sort": obj.get("sort"),
             "searchAfter": obj.get("searchAfter"),
             "filters": dict(
                 (_k, Filter.from_dict(_v))
-                for _k, _v in obj.get("filters").items()
+                for _k, _v in obj["filters"].items()
             )
             if obj.get("filters") is not None
             else None

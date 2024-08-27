@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of TenantUiMetadataItemUpdateRequest from a JSON string
 tenant_ui_metadata_item_update_request_instance = TenantUiMetadataItemUpdateRequest.from_json(json)
 # print the JSON string representation of the object
-print TenantUiMetadataItemUpdateRequest.to_json()
+print(TenantUiMetadataItemUpdateRequest.to_json())
 
 # convert the object into a dict
 tenant_ui_metadata_item_update_request_dict = tenant_ui_metadata_item_update_request_instance.to_dict()
 # create an instance of TenantUiMetadataItemUpdateRequest from a dict
-tenant_ui_metadata_item_update_request_form_dict = tenant_ui_metadata_item_update_request.from_dict(tenant_ui_metadata_item_update_request_dict)
+tenant_ui_metadata_item_update_request_from_dict = TenantUiMetadataItemUpdateRequest.from_dict(tenant_ui_metadata_item_update_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

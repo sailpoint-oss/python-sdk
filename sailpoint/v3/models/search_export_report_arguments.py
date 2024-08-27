@@ -17,17 +17,13 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
-from pydantic import Field
 from sailpoint.v3.models.filter import Filter
 from sailpoint.v3.models.index import Index
 from sailpoint.v3.models.query import Query
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class SearchExportReportArguments(BaseModel):
     """
@@ -40,11 +36,11 @@ class SearchExportReportArguments(BaseModel):
     sort: Optional[List[StrictStr]] = Field(default=None, description="The fields to be used to sort the search results. Use + or - to specify the sort direction.")
     __properties: ClassVar[List[str]] = ["indices", "filters", "query", "includeNested", "sort"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -57,7 +53,7 @@ class SearchExportReportArguments(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of SearchExportReportArguments from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -71,18 +67,20 @@ class SearchExportReportArguments(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each value in filters (dict)
         _field_dict = {}
         if self.filters:
-            for _key in self.filters:
-                if self.filters[_key]:
-                    _field_dict[_key] = self.filters[_key].to_dict()
+            for _key_filters in self.filters:
+                if self.filters[_key_filters]:
+                    _field_dict[_key_filters] = self.filters[_key_filters].to_dict()
             _dict['filters'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of query
         if self.query:
@@ -90,7 +88,7 @@ class SearchExportReportArguments(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of SearchExportReportArguments from a dict"""
         if obj is None:
             return None
@@ -102,11 +100,11 @@ class SearchExportReportArguments(BaseModel):
             "indices": obj.get("indices"),
             "filters": dict(
                 (_k, Filter.from_dict(_v))
-                for _k, _v in obj.get("filters").items()
+                for _k, _v in obj["filters"].items()
             )
             if obj.get("filters") is not None
             else None,
-            "query": Query.from_dict(obj.get("query")) if obj.get("query") is not None else None,
+            "query": Query.from_dict(obj["query"]) if obj.get("query") is not None else None,
             "includeNested": obj.get("includeNested") if obj.get("includeNested") is not None else True,
             "sort": obj.get("sort")
         })

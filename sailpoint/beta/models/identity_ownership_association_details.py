@@ -17,15 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel
-from pydantic import Field
 from sailpoint.beta.models.identity_ownership_association_details_association_details_inner import IdentityOwnershipAssociationDetailsAssociationDetailsInner
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class IdentityOwnershipAssociationDetails(BaseModel):
     """
@@ -34,11 +30,11 @@ class IdentityOwnershipAssociationDetails(BaseModel):
     association_details: Optional[List[IdentityOwnershipAssociationDetailsAssociationDetailsInner]] = Field(default=None, description="list of all the resource associations for the identity", alias="associationDetails")
     __properties: ClassVar[List[str]] = ["associationDetails"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -51,7 +47,7 @@ class IdentityOwnershipAssociationDetails(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of IdentityOwnershipAssociationDetails from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -65,23 +61,25 @@ class IdentityOwnershipAssociationDetails(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in association_details (list)
         _items = []
         if self.association_details:
-            for _item in self.association_details:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_association_details in self.association_details:
+                if _item_association_details:
+                    _items.append(_item_association_details.to_dict())
             _dict['associationDetails'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of IdentityOwnershipAssociationDetails from a dict"""
         if obj is None:
             return None
@@ -90,7 +88,7 @@ class IdentityOwnershipAssociationDetails(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "associationDetails": [IdentityOwnershipAssociationDetailsAssociationDetailsInner.from_dict(_item) for _item in obj.get("associationDetails")] if obj.get("associationDetails") is not None else None
+            "associationDetails": [IdentityOwnershipAssociationDetailsAssociationDetailsInner.from_dict(_item) for _item in obj["associationDetails"]] if obj.get("associationDetails") is not None else None
         })
         return _obj
 

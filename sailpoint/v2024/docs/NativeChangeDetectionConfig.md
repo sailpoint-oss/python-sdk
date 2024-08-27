@@ -23,12 +23,12 @@ json = "{}"
 # create an instance of NativeChangeDetectionConfig from a JSON string
 native_change_detection_config_instance = NativeChangeDetectionConfig.from_json(json)
 # print the JSON string representation of the object
-print NativeChangeDetectionConfig.to_json()
+print(NativeChangeDetectionConfig.to_json())
 
 # convert the object into a dict
 native_change_detection_config_dict = native_change_detection_config_instance.to_dict()
 # create an instance of NativeChangeDetectionConfig from a dict
-native_change_detection_config_form_dict = native_change_detection_config.from_dict(native_change_detection_config_dict)
+native_change_detection_config_from_dict = NativeChangeDetectionConfig.from_dict(native_change_detection_config_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

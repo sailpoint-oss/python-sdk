@@ -18,15 +18,12 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
-from pydantic import Field
 from sailpoint.v3.models.entitlement_source import EntitlementSource
 from sailpoint.v3.models.permission_dto import PermissionDto
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class Entitlement(BaseModel):
     """
@@ -48,11 +45,11 @@ class Entitlement(BaseModel):
     direct_permissions: Optional[List[PermissionDto]] = Field(default=None, alias="directPermissions")
     __properties: ClassVar[List[str]] = ["id", "name", "attribute", "value", "sourceSchemaObjectType", "description", "privileged", "cloudGoverned", "created", "modified", "source", "attributes", "segments", "directPermissions"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -65,7 +62,7 @@ class Entitlement(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of Entitlement from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -79,10 +76,12 @@ class Entitlement(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of source
@@ -91,9 +90,9 @@ class Entitlement(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in direct_permissions (list)
         _items = []
         if self.direct_permissions:
-            for _item in self.direct_permissions:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_direct_permissions in self.direct_permissions:
+                if _item_direct_permissions:
+                    _items.append(_item_direct_permissions.to_dict())
             _dict['directPermissions'] = _items
         # set to None if segments (nullable) is None
         # and model_fields_set contains the field
@@ -103,7 +102,7 @@ class Entitlement(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of Entitlement from a dict"""
         if obj is None:
             return None
@@ -122,10 +121,10 @@ class Entitlement(BaseModel):
             "cloudGoverned": obj.get("cloudGoverned"),
             "created": obj.get("created"),
             "modified": obj.get("modified"),
-            "source": EntitlementSource.from_dict(obj.get("source")) if obj.get("source") is not None else None,
+            "source": EntitlementSource.from_dict(obj["source"]) if obj.get("source") is not None else None,
             "attributes": obj.get("attributes"),
             "segments": obj.get("segments"),
-            "directPermissions": [PermissionDto.from_dict(_item) for _item in obj.get("directPermissions")] if obj.get("directPermissions") is not None else None
+            "directPermissions": [PermissionDto.from_dict(_item) for _item in obj["directPermissions"]] if obj.get("directPermissions") is not None else None
         })
         return _obj
 

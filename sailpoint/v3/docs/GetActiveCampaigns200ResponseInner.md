@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **auto_revoke_allowed** | **bool** | Allows auto revoke for this campaign | [optional] [default to False]
 **recommendations_enabled** | **bool** | Enables IAI for this campaign. Accepts true even if the IAI product feature is off. If IAI is turned off then campaigns generated from this template will indicate false. The real value will then be returned if IAI is ever enabled for the org in the future. | [optional] [default to False]
 **status** | **str** | The campaign&#39;s current status. | [optional] [readonly] 
-**correlated_status** | **object** | The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns can be Uncorrelated. An Uncorrelated certification campaign only includes Uncorrelated identities (An identity is uncorrelated if it has no accounts on an authoritative source). | [optional] 
+**correlated_status** | [**CampaignAllOfCorrelatedStatus**](CampaignAllOfCorrelatedStatus.md) |  | [optional] 
 **created** | **datetime** | Created time of the campaign | [optional] [readonly] 
 **total_certifications** | **int** | The total number of certifications in this campaign. | [optional] [readonly] 
 **completed_certifications** | **int** | The number of completed certifications in this campaign. | [optional] [readonly] 
@@ -38,12 +38,12 @@ json = "{}"
 # create an instance of GetActiveCampaigns200ResponseInner from a JSON string
 get_active_campaigns200_response_inner_instance = GetActiveCampaigns200ResponseInner.from_json(json)
 # print the JSON string representation of the object
-print GetActiveCampaigns200ResponseInner.to_json()
+print(GetActiveCampaigns200ResponseInner.to_json())
 
 # convert the object into a dict
 get_active_campaigns200_response_inner_dict = get_active_campaigns200_response_inner_instance.to_dict()
 # create an instance of GetActiveCampaigns200ResponseInner from a dict
-get_active_campaigns200_response_inner_form_dict = get_active_campaigns200_response_inner.from_dict(get_active_campaigns200_response_inner_dict)
+get_active_campaigns200_response_inner_from_dict = GetActiveCampaigns200ResponseInner.from_dict(get_active_campaigns200_response_inner_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

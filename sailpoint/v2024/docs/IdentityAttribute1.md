@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of IdentityAttribute1 from a JSON string
 identity_attribute1_instance = IdentityAttribute1.from_json(json)
 # print the JSON string representation of the object
-print IdentityAttribute1.to_json()
+print(IdentityAttribute1.to_json())
 
 # convert the object into a dict
 identity_attribute1_dict = identity_attribute1_instance.to_dict()
 # create an instance of IdentityAttribute1 from a dict
-identity_attribute1_form_dict = identity_attribute1.from_dict(identity_attribute1_dict)
+identity_attribute1_from_dict = IdentityAttribute1.from_dict(identity_attribute1_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

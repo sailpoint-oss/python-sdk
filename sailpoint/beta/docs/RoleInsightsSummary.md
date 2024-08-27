@@ -22,12 +22,12 @@ json = "{}"
 # create an instance of RoleInsightsSummary from a JSON string
 role_insights_summary_instance = RoleInsightsSummary.from_json(json)
 # print the JSON string representation of the object
-print RoleInsightsSummary.to_json()
+print(RoleInsightsSummary.to_json())
 
 # convert the object into a dict
 role_insights_summary_dict = role_insights_summary_instance.to_dict()
 # create an instance of RoleInsightsSummary from a dict
-role_insights_summary_form_dict = role_insights_summary.from_dict(role_insights_summary_dict)
+role_insights_summary_from_dict = RoleInsightsSummary.from_dict(role_insights_summary_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

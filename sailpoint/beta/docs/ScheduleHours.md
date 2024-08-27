@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of ScheduleHours from a JSON string
 schedule_hours_instance = ScheduleHours.from_json(json)
 # print the JSON string representation of the object
-print ScheduleHours.to_json()
+print(ScheduleHours.to_json())
 
 # convert the object into a dict
 schedule_hours_dict = schedule_hours_instance.to_dict()
 # create an instance of ScheduleHours from a dict
-schedule_hours_form_dict = schedule_hours.from_dict(schedule_hours_dict)
+schedule_hours_from_dict = ScheduleHours.from_dict(schedule_hours_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

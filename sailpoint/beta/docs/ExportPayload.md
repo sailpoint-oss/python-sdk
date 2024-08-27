@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of ExportPayload from a JSON string
 export_payload_instance = ExportPayload.from_json(json)
 # print the JSON string representation of the object
-print ExportPayload.to_json()
+print(ExportPayload.to_json())
 
 # convert the object into a dict
 export_payload_dict = export_payload_instance.to_dict()
 # create an instance of ExportPayload from a dict
-export_payload_form_dict = export_payload.from_dict(export_payload_dict)
+export_payload_from_dict = ExportPayload.from_dict(export_payload_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

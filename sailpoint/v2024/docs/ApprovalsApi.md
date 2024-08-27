@@ -22,8 +22,6 @@ Retrieve a single approval for a given approval ID. This endpoint is for generic
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.approval import Approval
 from sailpoint.v2024.rest import ApiException
@@ -109,8 +107,6 @@ Retrieve a list of approvals, which can be filtered by requester ID, status, or 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.approval import Approval
 from sailpoint.v2024.rest import ApiException
@@ -200,8 +196,6 @@ Change the values of a given approval
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.approval import Approval
 from sailpoint.v2024.models.approval_dto import ApprovalDto

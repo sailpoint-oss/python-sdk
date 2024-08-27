@@ -17,15 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
 from sailpoint.v2024.models.outlier_feature_summary_outlier_feature_display_values_inner import OutlierFeatureSummaryOutlierFeatureDisplayValuesInner
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class OutlierFeatureSummary(BaseModel):
     """
@@ -41,11 +37,11 @@ class OutlierFeatureSummary(BaseModel):
     access_item_reference: Optional[Dict[str, Any]] = Field(default=None, description="Access Item reference", alias="accessItemReference")
     __properties: ClassVar[List[str]] = ["contributingFeatureName", "identityOutlierDisplayName", "outlierFeatureDisplayValues", "featureDefinition", "featureExplanation", "peerDisplayName", "peerIdentityId", "accessItemReference"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -58,7 +54,7 @@ class OutlierFeatureSummary(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of OutlierFeatureSummary from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -72,23 +68,25 @@ class OutlierFeatureSummary(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in outlier_feature_display_values (list)
         _items = []
         if self.outlier_feature_display_values:
-            for _item in self.outlier_feature_display_values:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_outlier_feature_display_values in self.outlier_feature_display_values:
+                if _item_outlier_feature_display_values:
+                    _items.append(_item_outlier_feature_display_values.to_dict())
             _dict['outlierFeatureDisplayValues'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of OutlierFeatureSummary from a dict"""
         if obj is None:
             return None
@@ -99,7 +97,7 @@ class OutlierFeatureSummary(BaseModel):
         _obj = cls.model_validate({
             "contributingFeatureName": obj.get("contributingFeatureName"),
             "identityOutlierDisplayName": obj.get("identityOutlierDisplayName"),
-            "outlierFeatureDisplayValues": [OutlierFeatureSummaryOutlierFeatureDisplayValuesInner.from_dict(_item) for _item in obj.get("outlierFeatureDisplayValues")] if obj.get("outlierFeatureDisplayValues") is not None else None,
+            "outlierFeatureDisplayValues": [OutlierFeatureSummaryOutlierFeatureDisplayValuesInner.from_dict(_item) for _item in obj["outlierFeatureDisplayValues"]] if obj.get("outlierFeatureDisplayValues") is not None else None,
             "featureDefinition": obj.get("featureDefinition"),
             "featureExplanation": obj.get("featureExplanation"),
             "peerDisplayName": obj.get("peerDisplayName"),

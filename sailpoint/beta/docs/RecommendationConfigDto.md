@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of RecommendationConfigDto from a JSON string
 recommendation_config_dto_instance = RecommendationConfigDto.from_json(json)
 # print the JSON string representation of the object
-print RecommendationConfigDto.to_json()
+print(RecommendationConfigDto.to_json())
 
 # convert the object into a dict
 recommendation_config_dto_dict = recommendation_config_dto_instance.to_dict()
 # create an instance of RecommendationConfigDto from a dict
-recommendation_config_dto_form_dict = recommendation_config_dto.from_dict(recommendation_config_dto_dict)
+recommendation_config_dto_from_dict = RecommendationConfigDto.from_dict(recommendation_config_dto_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

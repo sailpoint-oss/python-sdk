@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v2024.models.type_ahead_query import TypeAheadQuery
 
@@ -28,7 +27,7 @@ class TestTypeAheadQuery(unittest.TestCase):
 
     def make_instance(self, include_optional) -> TypeAheadQuery:
         """Test TypeAheadQuery
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `TypeAheadQuery`
@@ -37,7 +36,7 @@ class TestTypeAheadQuery(unittest.TestCase):
         if include_optional:
             return TypeAheadQuery(
                 query = 'Work',
-                field = 'source.name',
+                var_field = 'source.name',
                 nested_type = 'access',
                 max_expansions = 10,
                 size = 100,
@@ -47,7 +46,7 @@ class TestTypeAheadQuery(unittest.TestCase):
         else:
             return TypeAheadQuery(
                 query = 'Work',
-                field = 'source.name',
+                var_field = 'source.name',
         )
         """
 

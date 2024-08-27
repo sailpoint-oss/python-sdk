@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of RequestOnBehalfOfConfig from a JSON string
 request_on_behalf_of_config_instance = RequestOnBehalfOfConfig.from_json(json)
 # print the JSON string representation of the object
-print RequestOnBehalfOfConfig.to_json()
+print(RequestOnBehalfOfConfig.to_json())
 
 # convert the object into a dict
 request_on_behalf_of_config_dict = request_on_behalf_of_config_instance.to_dict()
 # create an instance of RequestOnBehalfOfConfig from a dict
-request_on_behalf_of_config_form_dict = request_on_behalf_of_config.from_dict(request_on_behalf_of_config_dict)
+request_on_behalf_of_config_from_dict = RequestOnBehalfOfConfig.from_dict(request_on_behalf_of_config_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -30,12 +30,12 @@ json = "{}"
 # create an instance of LoadUncorrelatedAccountsTaskTask from a JSON string
 load_uncorrelated_accounts_task_task_instance = LoadUncorrelatedAccountsTaskTask.from_json(json)
 # print the JSON string representation of the object
-print LoadUncorrelatedAccountsTaskTask.to_json()
+print(LoadUncorrelatedAccountsTaskTask.to_json())
 
 # convert the object into a dict
 load_uncorrelated_accounts_task_task_dict = load_uncorrelated_accounts_task_task_instance.to_dict()
 # create an instance of LoadUncorrelatedAccountsTaskTask from a dict
-load_uncorrelated_accounts_task_task_form_dict = load_uncorrelated_accounts_task_task.from_dict(load_uncorrelated_accounts_task_task_dict)
+load_uncorrelated_accounts_task_task_from_dict = LoadUncorrelatedAccountsTaskTask.from_dict(load_uncorrelated_accounts_task_task_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

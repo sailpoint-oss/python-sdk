@@ -21,12 +21,12 @@ json = "{}"
 # create an instance of SodExemptCriteria1 from a JSON string
 sod_exempt_criteria1_instance = SodExemptCriteria1.from_json(json)
 # print the JSON string representation of the object
-print SodExemptCriteria1.to_json()
+print(SodExemptCriteria1.to_json())
 
 # convert the object into a dict
 sod_exempt_criteria1_dict = sod_exempt_criteria1_instance.to_dict()
 # create an instance of SodExemptCriteria1 from a dict
-sod_exempt_criteria1_form_dict = sod_exempt_criteria1.from_dict(sod_exempt_criteria1_dict)
+sod_exempt_criteria1_from_dict = SodExemptCriteria1.from_dict(sod_exempt_criteria1_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

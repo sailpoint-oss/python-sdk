@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of QueryResultFilter from a JSON string
 query_result_filter_instance = QueryResultFilter.from_json(json)
 # print the JSON string representation of the object
-print QueryResultFilter.to_json()
+print(QueryResultFilter.to_json())
 
 # convert the object into a dict
 query_result_filter_dict = query_result_filter_instance.to_dict()
 # create an instance of QueryResultFilter from a dict
-query_result_filter_form_dict = query_result_filter.from_dict(query_result_filter_dict)
+query_result_filter_from_dict = QueryResultFilter.from_dict(query_result_filter_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

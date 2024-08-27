@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.comment_dto1_author import CommentDto1Author
 
@@ -28,7 +27,7 @@ class TestCommentDto1Author(unittest.TestCase):
 
     def make_instance(self, include_optional) -> CommentDto1Author:
         """Test CommentDto1Author
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `CommentDto1Author`

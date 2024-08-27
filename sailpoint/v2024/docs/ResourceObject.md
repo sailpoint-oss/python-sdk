@@ -30,12 +30,12 @@ json = "{}"
 # create an instance of ResourceObject from a JSON string
 resource_object_instance = ResourceObject.from_json(json)
 # print the JSON string representation of the object
-print ResourceObject.to_json()
+print(ResourceObject.to_json())
 
 # convert the object into a dict
 resource_object_dict = resource_object_instance.to_dict()
 # create an instance of ResourceObject from a dict
-resource_object_form_dict = resource_object.from_dict(resource_object_dict)
+resource_object_from_dict = ResourceObject.from_dict(resource_object_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

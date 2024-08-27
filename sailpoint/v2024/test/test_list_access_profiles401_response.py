@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v2024.models.list_access_profiles401_response import ListAccessProfiles401Response
 
@@ -28,7 +27,7 @@ class TestListAccessProfiles401Response(unittest.TestCase):
 
     def make_instance(self, include_optional) -> ListAccessProfiles401Response:
         """Test ListAccessProfiles401Response
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `ListAccessProfiles401Response`

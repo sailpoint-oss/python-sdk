@@ -23,8 +23,6 @@ Cancels a running report.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.rest import ApiException
 from pprint import pprint
@@ -105,8 +103,6 @@ Gets a report in file format.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.rest import ApiException
 from pprint import pprint
@@ -196,8 +192,6 @@ Get the report results for a report that was run or is running. Returns empty re
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.report_results import ReportResults
 from sailpoint.v3.rest import ApiException
@@ -283,8 +277,6 @@ Runs a report according to input report details. If non-concurrent task is alrea
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.report_details import ReportDetails
 from sailpoint.v3.models.task_result_details import TaskResultDetails

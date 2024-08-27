@@ -18,13 +18,10 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class SodViolationCheck(BaseModel):
     """
@@ -34,11 +31,11 @@ class SodViolationCheck(BaseModel):
     created: Optional[datetime] = Field(default=None, description="The date-time when this request was created.")
     __properties: ClassVar[List[str]] = ["requestId", "created"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -51,7 +48,7 @@ class SodViolationCheck(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of SodViolationCheck from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -66,17 +63,19 @@ class SodViolationCheck(BaseModel):
           are ignored.
         * OpenAPI `readOnly` fields are excluded.
         """
+        excluded_fields: Set[str] = set([
+            "created",
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-                "created",
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of SodViolationCheck from a dict"""
         if obj is None:
             return None

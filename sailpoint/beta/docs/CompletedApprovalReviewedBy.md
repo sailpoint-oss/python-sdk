@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of CompletedApprovalReviewedBy from a JSON string
 completed_approval_reviewed_by_instance = CompletedApprovalReviewedBy.from_json(json)
 # print the JSON string representation of the object
-print CompletedApprovalReviewedBy.to_json()
+print(CompletedApprovalReviewedBy.to_json())
 
 # convert the object into a dict
 completed_approval_reviewed_by_dict = completed_approval_reviewed_by_instance.to_dict()
 # create an instance of CompletedApprovalReviewedBy from a dict
-completed_approval_reviewed_by_form_dict = completed_approval_reviewed_by.from_dict(completed_approval_reviewed_by_dict)
+completed_approval_reviewed_by_from_dict = CompletedApprovalReviewedBy.from_dict(completed_approval_reviewed_by_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

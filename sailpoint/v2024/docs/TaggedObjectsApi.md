@@ -27,8 +27,6 @@ This deletes a tagged object for the specified type.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
@@ -111,8 +109,6 @@ This API removes tags from multiple objects.  A token with API, CERT_ADMIN, ORG_
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.bulk_remove_tagged_object import BulkRemoveTaggedObject
 from sailpoint.v2024.rest import ApiException
@@ -194,8 +190,6 @@ This gets a tagged object for the specified type.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.tagged_object import TaggedObject
 from sailpoint.v2024.rest import ApiException
@@ -281,8 +275,6 @@ This API returns a list of all tagged objects.  Any authenticated token may be u
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.tagged_object import TaggedObject
 from sailpoint.v2024.rest import ApiException
@@ -372,8 +364,6 @@ This API returns a list of all tagged objects by type.  Any authenticated token 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.tagged_object import TaggedObject
 from sailpoint.v2024.rest import ApiException
@@ -465,8 +455,6 @@ This updates a tagged object for the specified type.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.tagged_object import TaggedObject
 from sailpoint.v2024.rest import ApiException
@@ -554,8 +542,6 @@ This adds a tag to an object.  Any authenticated token may be used to call this 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.tagged_object import TaggedObject
 from sailpoint.v2024.rest import ApiException
@@ -637,8 +623,6 @@ This API adds tags to multiple objects.  A token with API, CERT_ADMIN, ORG_ADMIN
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.bulk_add_tagged_object import BulkAddTaggedObject
 from sailpoint.v2024.models.bulk_tagged_object_response import BulkTaggedObjectResponse

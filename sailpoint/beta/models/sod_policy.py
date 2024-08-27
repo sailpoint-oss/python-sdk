@@ -18,16 +18,13 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr, field_validator
-from pydantic import Field
 from sailpoint.beta.models.sod_policy_conflicting_access_criteria import SodPolicyConflictingAccessCriteria
 from sailpoint.beta.models.sod_policy_owner_ref import SodPolicyOwnerRef
 from sailpoint.beta.models.violation_owner_assignment_config import ViolationOwnerAssignmentConfig
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class SodPolicy(BaseModel):
     """
@@ -59,7 +56,7 @@ class SodPolicy(BaseModel):
         if value is None:
             return value
 
-        if value not in ('ENFORCED', 'NOT_ENFORCED'):
+        if value not in set(['ENFORCED', 'NOT_ENFORCED']):
             raise ValueError("must be one of enum values ('ENFORCED', 'NOT_ENFORCED')")
         return value
 
@@ -69,15 +66,15 @@ class SodPolicy(BaseModel):
         if value is None:
             return value
 
-        if value not in ('GENERAL', 'CONFLICTING_ACCESS_BASED'):
+        if value not in set(['GENERAL', 'CONFLICTING_ACCESS_BASED']):
             raise ValueError("must be one of enum values ('GENERAL', 'CONFLICTING_ACCESS_BASED')")
         return value
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -90,7 +87,7 @@ class SodPolicy(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of SodPolicy from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -109,15 +106,17 @@ class SodPolicy(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         """
+        excluded_fields: Set[str] = set([
+            "id",
+            "created",
+            "modified",
+            "creator_id",
+            "modifier_id",
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-                "id",
-                "created",
-                "modified",
-                "creator_id",
-                "modifier_id",
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of owner_ref
@@ -157,7 +156,7 @@ class SodPolicy(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of SodPolicy from a dict"""
         if obj is None:
             return None
@@ -171,7 +170,7 @@ class SodPolicy(BaseModel):
             "created": obj.get("created"),
             "modified": obj.get("modified"),
             "description": obj.get("description"),
-            "ownerRef": SodPolicyOwnerRef.from_dict(obj.get("ownerRef")) if obj.get("ownerRef") is not None else None,
+            "ownerRef": SodPolicyOwnerRef.from_dict(obj["ownerRef"]) if obj.get("ownerRef") is not None else None,
             "externalPolicyReference": obj.get("externalPolicyReference"),
             "policyQuery": obj.get("policyQuery"),
             "compensatingControls": obj.get("compensatingControls"),
@@ -180,10 +179,10 @@ class SodPolicy(BaseModel):
             "tags": obj.get("tags"),
             "creatorId": obj.get("creatorId"),
             "modifierId": obj.get("modifierId"),
-            "violationOwnerAssignmentConfig": ViolationOwnerAssignmentConfig.from_dict(obj.get("violationOwnerAssignmentConfig")) if obj.get("violationOwnerAssignmentConfig") is not None else None,
+            "violationOwnerAssignmentConfig": ViolationOwnerAssignmentConfig.from_dict(obj["violationOwnerAssignmentConfig"]) if obj.get("violationOwnerAssignmentConfig") is not None else None,
             "scheduled": obj.get("scheduled") if obj.get("scheduled") is not None else False,
             "type": obj.get("type") if obj.get("type") is not None else 'GENERAL',
-            "conflictingAccessCriteria": SodPolicyConflictingAccessCriteria.from_dict(obj.get("conflictingAccessCriteria")) if obj.get("conflictingAccessCriteria") is not None else None
+            "conflictingAccessCriteria": SodPolicyConflictingAccessCriteria.from_dict(obj["conflictingAccessCriteria"]) if obj.get("conflictingAccessCriteria") is not None else None
         })
         return _obj
 

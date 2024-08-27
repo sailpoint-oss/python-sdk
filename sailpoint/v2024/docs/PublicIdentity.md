@@ -25,12 +25,12 @@ json = "{}"
 # create an instance of PublicIdentity from a JSON string
 public_identity_instance = PublicIdentity.from_json(json)
 # print the JSON string representation of the object
-print PublicIdentity.to_json()
+print(PublicIdentity.to_json())
 
 # convert the object into a dict
 public_identity_dict = public_identity_instance.to_dict()
 # create an instance of PublicIdentity from a dict
-public_identity_form_dict = public_identity.from_dict(public_identity_dict)
+public_identity_from_dict = PublicIdentity.from_dict(public_identity_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

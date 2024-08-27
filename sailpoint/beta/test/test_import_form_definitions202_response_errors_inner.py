@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.import_form_definitions202_response_errors_inner import ImportFormDefinitions202ResponseErrorsInner
 
@@ -28,7 +27,7 @@ class TestImportFormDefinitions202ResponseErrorsInner(unittest.TestCase):
 
     def make_instance(self, include_optional) -> ImportFormDefinitions202ResponseErrorsInner:
         """Test ImportFormDefinitions202ResponseErrorsInner
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `ImportFormDefinitions202ResponseErrorsInner`

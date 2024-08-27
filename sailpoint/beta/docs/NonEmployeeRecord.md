@@ -29,12 +29,12 @@ json = "{}"
 # create an instance of NonEmployeeRecord from a JSON string
 non_employee_record_instance = NonEmployeeRecord.from_json(json)
 # print the JSON string representation of the object
-print NonEmployeeRecord.to_json()
+print(NonEmployeeRecord.to_json())
 
 # convert the object into a dict
 non_employee_record_dict = non_employee_record_instance.to_dict()
 # create an instance of NonEmployeeRecord from a dict
-non_employee_record_form_dict = non_employee_record.from_dict(non_employee_record_dict)
+non_employee_record_from_dict = NonEmployeeRecord.from_dict(non_employee_record_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

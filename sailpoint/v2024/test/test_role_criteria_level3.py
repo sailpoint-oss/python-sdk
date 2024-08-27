@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v2024.models.role_criteria_level3 import RoleCriteriaLevel3
 
@@ -28,7 +27,7 @@ class TestRoleCriteriaLevel3(unittest.TestCase):
 
     def make_instance(self, include_optional) -> RoleCriteriaLevel3:
         """Test RoleCriteriaLevel3
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `RoleCriteriaLevel3`

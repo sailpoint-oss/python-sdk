@@ -25,12 +25,12 @@ json = "{}"
 # create an instance of SodPolicySchedule from a JSON string
 sod_policy_schedule_instance = SodPolicySchedule.from_json(json)
 # print the JSON string representation of the object
-print SodPolicySchedule.to_json()
+print(SodPolicySchedule.to_json())
 
 # convert the object into a dict
 sod_policy_schedule_dict = sod_policy_schedule_instance.to_dict()
 # create an instance of SodPolicySchedule from a dict
-sod_policy_schedule_form_dict = sod_policy_schedule.from_dict(sod_policy_schedule_dict)
+sod_policy_schedule_from_dict = SodPolicySchedule.from_dict(sod_policy_schedule_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

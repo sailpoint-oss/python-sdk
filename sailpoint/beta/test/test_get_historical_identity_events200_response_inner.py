@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.get_historical_identity_events200_response_inner import GetHistoricalIdentityEvents200ResponseInner
 
@@ -28,7 +27,7 @@ class TestGetHistoricalIdentityEvents200ResponseInner(unittest.TestCase):
 
     def make_instance(self, include_optional) -> GetHistoricalIdentityEvents200ResponseInner:
         """Test GetHistoricalIdentityEvents200ResponseInner
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `GetHistoricalIdentityEvents200ResponseInner`

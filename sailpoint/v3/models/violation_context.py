@@ -17,16 +17,12 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel
-from pydantic import Field
 from sailpoint.v3.models.exception_access_criteria import ExceptionAccessCriteria
 from sailpoint.v3.models.violation_context_policy import ViolationContextPolicy
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class ViolationContext(BaseModel):
     """
@@ -36,11 +32,11 @@ class ViolationContext(BaseModel):
     conflicting_access_criteria: Optional[ExceptionAccessCriteria] = Field(default=None, alias="conflictingAccessCriteria")
     __properties: ClassVar[List[str]] = ["policy", "conflictingAccessCriteria"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -53,7 +49,7 @@ class ViolationContext(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of ViolationContext from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -67,10 +63,12 @@ class ViolationContext(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of policy
@@ -82,7 +80,7 @@ class ViolationContext(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of ViolationContext from a dict"""
         if obj is None:
             return None
@@ -91,8 +89,8 @@ class ViolationContext(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "policy": ViolationContextPolicy.from_dict(obj.get("policy")) if obj.get("policy") is not None else None,
-            "conflictingAccessCriteria": ExceptionAccessCriteria.from_dict(obj.get("conflictingAccessCriteria")) if obj.get("conflictingAccessCriteria") is not None else None
+            "policy": ViolationContextPolicy.from_dict(obj["policy"]) if obj.get("policy") is not None else None,
+            "conflictingAccessCriteria": ExceptionAccessCriteria.from_dict(obj["conflictingAccessCriteria"]) if obj.get("conflictingAccessCriteria") is not None else None
         })
         return _obj
 

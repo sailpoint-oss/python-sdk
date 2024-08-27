@@ -27,12 +27,12 @@ json = "{}"
 # create an instance of TemplateTeams from a JSON string
 template_teams_instance = TemplateTeams.from_json(json)
 # print the JSON string representation of the object
-print TemplateTeams.to_json()
+print(TemplateTeams.to_json())
 
 # convert the object into a dict
 template_teams_dict = template_teams_instance.to_dict()
 # create an instance of TemplateTeams from a dict
-template_teams_form_dict = template_teams.from_dict(template_teams_dict)
+template_teams_from_dict = TemplateTeams.from_dict(template_teams_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -18,8 +18,6 @@ Get a list of public identities
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.public_identity import PublicIdentity
 from sailpoint.v3.rest import ApiException

@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v3.models.duo_verification_request import DuoVerificationRequest
 
@@ -28,7 +27,7 @@ class TestDuoVerificationRequest(unittest.TestCase):
 
     def make_instance(self, include_optional) -> DuoVerificationRequest:
         """Test DuoVerificationRequest
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `DuoVerificationRequest`

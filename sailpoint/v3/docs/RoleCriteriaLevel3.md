@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of RoleCriteriaLevel3 from a JSON string
 role_criteria_level3_instance = RoleCriteriaLevel3.from_json(json)
 # print the JSON string representation of the object
-print RoleCriteriaLevel3.to_json()
+print(RoleCriteriaLevel3.to_json())
 
 # convert the object into a dict
 role_criteria_level3_dict = role_criteria_level3_instance.to_dict()
 # create an instance of RoleCriteriaLevel3 from a dict
-role_criteria_level3_form_dict = role_criteria_level3.from_dict(role_criteria_level3_dict)
+role_criteria_level3_from_dict = RoleCriteriaLevel3.from_dict(role_criteria_level3_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -36,8 +36,6 @@ Creates a form definition.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.create_form_definition_request import CreateFormDefinitionRequest
 from sailpoint.beta.models.form_definition_response import FormDefinitionResponse
@@ -120,8 +118,6 @@ Create a form definition by template.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.create_form_definition_request import CreateFormDefinitionRequest
 from sailpoint.beta.models.form_definition_response import FormDefinitionResponse
@@ -204,8 +200,6 @@ Generate JSON Schema dynamically.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.form_definition_dynamic_schema_request import FormDefinitionDynamicSchemaRequest
 from sailpoint.beta.models.form_definition_dynamic_schema_response import FormDefinitionDynamicSchemaResponse
@@ -291,8 +285,6 @@ Parameter `{formDefinitionID}` should match a form definition ID.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.form_definition_file_upload_response import FormDefinitionFileUploadResponse
 from sailpoint.beta.rest import ApiException
@@ -380,8 +372,6 @@ Creates a form instance.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.create_form_instance_request import CreateFormInstanceRequest
 from sailpoint.beta.models.form_instance_response import FormInstanceResponse
@@ -466,8 +456,6 @@ Parameter `{formDefinitionID}` should match a form definition ID.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
@@ -551,8 +539,6 @@ No parameters required.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.export_form_definitions_by_tenant200_response_inner import ExportFormDefinitionsByTenant200ResponseInner
 from sailpoint.beta.rest import ApiException
@@ -640,8 +626,6 @@ Download definition file by fileId.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
@@ -728,8 +712,6 @@ Parameter `{formDefinitionID}` should match a form definition ID.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.form_definition_response import FormDefinitionResponse
 from sailpoint.beta.rest import ApiException
@@ -814,8 +796,6 @@ Parameter `{formInstanceID}` should match a form instance ID.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.form_instance_response import FormInstanceResponse
 from sailpoint.beta.rest import ApiException
@@ -898,8 +878,6 @@ Download instance file by fileId.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
@@ -984,8 +962,6 @@ Import form definitions from export.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.import_form_definitions202_response import ImportFormDefinitions202Response
 from sailpoint.beta.models.import_form_definitions_request_inner import ImportFormDefinitionsRequestInner
@@ -1070,8 +1046,6 @@ Parameter `{formDefinitionID}` should match a form definition ID.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.form_definition_response import FormDefinitionResponse
 from sailpoint.beta.rest import ApiException
@@ -1158,8 +1132,6 @@ Parameter `{formInstanceID}` should match a form instance ID.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.form_instance_response import FormInstanceResponse
 from sailpoint.beta.rest import ApiException
@@ -1247,8 +1219,6 @@ No parameters required.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.list_form_definitions_by_tenant_response import ListFormDefinitionsByTenantResponse
 from sailpoint.beta.rest import ApiException
@@ -1338,8 +1308,6 @@ Parameter `{formInstanceID}` should match a form instance ID. Parameter `{formEl
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.list_form_element_data_by_element_id_response import ListFormElementDataByElementIDResponse
 from sailpoint.beta.rest import ApiException
@@ -1432,8 +1400,6 @@ No parameters required.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.form_instance_response import FormInstanceResponse
 from sailpoint.beta.rest import ApiException
@@ -1513,8 +1479,6 @@ No parameters required.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.list_predefined_select_options_response import ListPredefinedSelectOptionsResponse
 from sailpoint.beta.rest import ApiException
@@ -1592,8 +1556,6 @@ Preview form definition data source.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.form_element_preview_request import FormElementPreviewRequest
 from sailpoint.beta.models.preview_data_source_response import PreviewDataSourceResponse

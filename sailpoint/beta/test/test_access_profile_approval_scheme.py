@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.access_profile_approval_scheme import AccessProfileApprovalScheme
 
@@ -28,7 +27,7 @@ class TestAccessProfileApprovalScheme(unittest.TestCase):
 
     def make_instance(self, include_optional) -> AccessProfileApprovalScheme:
         """Test AccessProfileApprovalScheme
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `AccessProfileApprovalScheme`

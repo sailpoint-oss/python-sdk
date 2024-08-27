@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of CampaignAllOfFilter from a JSON string
 campaign_all_of_filter_instance = CampaignAllOfFilter.from_json(json)
 # print the JSON string representation of the object
-print CampaignAllOfFilter.to_json()
+print(CampaignAllOfFilter.to_json())
 
 # convert the object into a dict
 campaign_all_of_filter_dict = campaign_all_of_filter_instance.to_dict()
 # create an instance of CampaignAllOfFilter from a dict
-campaign_all_of_filter_form_dict = campaign_all_of_filter.from_dict(campaign_all_of_filter_dict)
+campaign_all_of_filter_from_dict = CampaignAllOfFilter.from_dict(campaign_all_of_filter_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

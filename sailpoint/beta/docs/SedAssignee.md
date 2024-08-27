@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of SedAssignee from a JSON string
 sed_assignee_instance = SedAssignee.from_json(json)
 # print the JSON string representation of the object
-print SedAssignee.to_json()
+print(SedAssignee.to_json())
 
 # convert the object into a dict
 sed_assignee_dict = sed_assignee_instance.to_dict()
 # create an instance of SedAssignee from a dict
-sed_assignee_form_dict = sed_assignee.from_dict(sed_assignee_dict)
+sed_assignee_from_dict = SedAssignee.from_dict(sed_assignee_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -24,12 +24,12 @@ json = "{}"
 # create an instance of BrandingItemCreate from a JSON string
 branding_item_create_instance = BrandingItemCreate.from_json(json)
 # print the JSON string representation of the object
-print BrandingItemCreate.to_json()
+print(BrandingItemCreate.to_json())
 
 # convert the object into a dict
 branding_item_create_dict = branding_item_create_instance.to_dict()
 # create an instance of BrandingItemCreate from a dict
-branding_item_create_form_dict = branding_item_create.from_dict(branding_item_create_dict)
+branding_item_create_from_dict = BrandingItemCreate.from_dict(branding_item_create_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

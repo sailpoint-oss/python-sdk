@@ -30,8 +30,6 @@ This creates an Identity Profile.  A token with ORG_ADMIN authority is required 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.identity_profile import IdentityProfile
 from sailpoint.beta.rest import ApiException
@@ -115,8 +113,6 @@ This deletes an Identity Profile based on ID.  On success, this endpoint will re
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.task_result_simplified import TaskResultSimplified
 from sailpoint.beta.rest import ApiException
@@ -201,8 +197,6 @@ This deletes multiple Identity Profiles via a list of supplied IDs.  On success,
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.task_result_simplified import TaskResultSimplified
 from sailpoint.beta.rest import ApiException
@@ -286,8 +280,6 @@ This exports existing identity profiles in the format specified by the sp-config
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.identity_profile_exported_object import IdentityProfileExportedObject
 from sailpoint.beta.rest import ApiException
@@ -380,8 +372,6 @@ This returns the default identity attribute config A token with ORG_ADMIN author
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.identity_attribute_config import IdentityAttributeConfig
 from sailpoint.beta.rest import ApiException
@@ -466,8 +456,6 @@ This returns a single Identity Profile based on ID.  A token with ORG_ADMIN or A
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.identity_profile import IdentityProfile
 from sailpoint.beta.rest import ApiException
@@ -552,8 +540,6 @@ This imports previously exported identity profiles.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.identity_profile_exported_object import IdentityProfileExportedObject
 from sailpoint.beta.models.object_import_result import ObjectImportResult
@@ -638,8 +624,6 @@ This returns a list of Identity Profiles based on the specified query parameters
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.identity_profile import IdentityProfile
 from sailpoint.beta.rest import ApiException
@@ -731,8 +715,6 @@ Use this API to generate a non-persisted preview of the identity object after ap
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.identity_preview_request import IdentityPreviewRequest
 from sailpoint.beta.models.identity_preview_response import IdentityPreviewResponse
@@ -817,8 +799,6 @@ Process identities under the profile This operation should not be used to schedu
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
@@ -902,8 +882,6 @@ This updates the specified Identity Profile.  A token with ORG_ADMIN authority i
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.identity_profile import IdentityProfile
 from sailpoint.beta.models.json_patch_operation import JsonPatchOperation

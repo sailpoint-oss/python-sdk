@@ -22,12 +22,12 @@ json = "{}"
 # create an instance of AccessRequestDynamicApproverRequestedItemsInner from a JSON string
 access_request_dynamic_approver_requested_items_inner_instance = AccessRequestDynamicApproverRequestedItemsInner.from_json(json)
 # print the JSON string representation of the object
-print AccessRequestDynamicApproverRequestedItemsInner.to_json()
+print(AccessRequestDynamicApproverRequestedItemsInner.to_json())
 
 # convert the object into a dict
 access_request_dynamic_approver_requested_items_inner_dict = access_request_dynamic_approver_requested_items_inner_instance.to_dict()
 # create an instance of AccessRequestDynamicApproverRequestedItemsInner from a dict
-access_request_dynamic_approver_requested_items_inner_form_dict = access_request_dynamic_approver_requested_items_inner.from_dict(access_request_dynamic_approver_requested_items_inner_dict)
+access_request_dynamic_approver_requested_items_inner_from_dict = AccessRequestDynamicApproverRequestedItemsInner.from_dict(access_request_dynamic_approver_requested_items_inner_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

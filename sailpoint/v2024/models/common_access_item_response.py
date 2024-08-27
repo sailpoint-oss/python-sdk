@@ -17,16 +17,12 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
-from pydantic import Field
 from sailpoint.v2024.models.common_access_item_access import CommonAccessItemAccess
 from sailpoint.v2024.models.common_access_item_state import CommonAccessItemState
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class CommonAccessItemResponse(BaseModel):
     """
@@ -41,11 +37,11 @@ class CommonAccessItemResponse(BaseModel):
     created_by_user: Optional[StrictStr] = Field(default=None, alias="createdByUser")
     __properties: ClassVar[List[str]] = ["id", "access", "status", "lastUpdated", "reviewedByUser", "lastReviewed", "createdByUser"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -58,7 +54,7 @@ class CommonAccessItemResponse(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of CommonAccessItemResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -72,10 +68,12 @@ class CommonAccessItemResponse(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of access
@@ -84,7 +82,7 @@ class CommonAccessItemResponse(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of CommonAccessItemResponse from a dict"""
         if obj is None:
             return None
@@ -94,7 +92,7 @@ class CommonAccessItemResponse(BaseModel):
 
         _obj = cls.model_validate({
             "id": obj.get("id"),
-            "access": CommonAccessItemAccess.from_dict(obj.get("access")) if obj.get("access") is not None else None,
+            "access": CommonAccessItemAccess.from_dict(obj["access"]) if obj.get("access") is not None else None,
             "status": obj.get("status"),
             "lastUpdated": obj.get("lastUpdated"),
             "reviewedByUser": obj.get("reviewedByUser"),

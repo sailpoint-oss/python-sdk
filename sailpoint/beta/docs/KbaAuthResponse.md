@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of KbaAuthResponse from a JSON string
 kba_auth_response_instance = KbaAuthResponse.from_json(json)
 # print the JSON string representation of the object
-print KbaAuthResponse.to_json()
+print(KbaAuthResponse.to_json())
 
 # convert the object into a dict
 kba_auth_response_dict = kba_auth_response_instance.to_dict()
 # create an instance of KbaAuthResponse from a dict
-kba_auth_response_form_dict = kba_auth_response.from_dict(kba_auth_response_dict)
+kba_auth_response_from_dict = KbaAuthResponse.from_dict(kba_auth_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

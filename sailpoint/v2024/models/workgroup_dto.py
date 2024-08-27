@@ -18,14 +18,11 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictInt, StrictStr
-from pydantic import Field
 from sailpoint.v2024.models.workgroup_dto_owner import WorkgroupDtoOwner
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class WorkgroupDto(BaseModel):
     """
@@ -41,11 +38,11 @@ class WorkgroupDto(BaseModel):
     modified: Optional[datetime] = None
     __properties: ClassVar[List[str]] = ["owner", "id", "name", "description", "memberCount", "connectionCount", "created", "modified"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -58,7 +55,7 @@ class WorkgroupDto(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of WorkgroupDto from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -75,13 +72,15 @@ class WorkgroupDto(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         """
+        excluded_fields: Set[str] = set([
+            "id",
+            "member_count",
+            "connection_count",
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-                "id",
-                "member_count",
-                "connection_count",
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of owner
@@ -90,7 +89,7 @@ class WorkgroupDto(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of WorkgroupDto from a dict"""
         if obj is None:
             return None
@@ -99,7 +98,7 @@ class WorkgroupDto(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "owner": WorkgroupDtoOwner.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
+            "owner": WorkgroupDtoOwner.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
             "id": obj.get("id"),
             "name": obj.get("name"),
             "description": obj.get("description"),

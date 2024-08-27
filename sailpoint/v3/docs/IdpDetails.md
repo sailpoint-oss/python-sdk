@@ -30,12 +30,12 @@ json = "{}"
 # create an instance of IdpDetails from a JSON string
 idp_details_instance = IdpDetails.from_json(json)
 # print the JSON string representation of the object
-print IdpDetails.to_json()
+print(IdpDetails.to_json())
 
 # convert the object into a dict
 idp_details_dict = idp_details_instance.to_dict()
 # create an instance of IdpDetails from a dict
-idp_details_form_dict = idp_details.from_dict(idp_details_dict)
+idp_details_from_dict = IdpDetails.from_dict(idp_details_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

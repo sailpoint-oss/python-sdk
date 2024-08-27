@@ -35,12 +35,12 @@ json = "{}"
 # create an instance of AccessItemAssociatedAccessItem from a JSON string
 access_item_associated_access_item_instance = AccessItemAssociatedAccessItem.from_json(json)
 # print the JSON string representation of the object
-print AccessItemAssociatedAccessItem.to_json()
+print(AccessItemAssociatedAccessItem.to_json())
 
 # convert the object into a dict
 access_item_associated_access_item_dict = access_item_associated_access_item_instance.to_dict()
 # create an instance of AccessItemAssociatedAccessItem from a dict
-access_item_associated_access_item_form_dict = access_item_associated_access_item.from_dict(access_item_associated_access_item_dict)
+access_item_associated_access_item_from_dict = AccessItemAssociatedAccessItem.from_dict(access_item_associated_access_item_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

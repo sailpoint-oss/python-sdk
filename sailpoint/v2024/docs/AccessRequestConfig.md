@@ -21,12 +21,12 @@ json = "{}"
 # create an instance of AccessRequestConfig from a JSON string
 access_request_config_instance = AccessRequestConfig.from_json(json)
 # print the JSON string representation of the object
-print AccessRequestConfig.to_json()
+print(AccessRequestConfig.to_json())
 
 # convert the object into a dict
 access_request_config_dict = access_request_config_instance.to_dict()
 # create an instance of AccessRequestConfig from a dict
-access_request_config_form_dict = access_request_config.from_dict(access_request_config_dict)
+access_request_config_from_dict = AccessRequestConfig.from_dict(access_request_config_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

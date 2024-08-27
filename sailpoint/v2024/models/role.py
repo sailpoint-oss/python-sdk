@@ -18,9 +18,8 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
-from pydantic import Field
 from typing_extensions import Annotated
 from sailpoint.v2024.models.access_profile_ref import AccessProfileRef
 from sailpoint.v2024.models.entitlement_ref import EntitlementRef
@@ -28,10 +27,8 @@ from sailpoint.v2024.models.owner_reference import OwnerReference
 from sailpoint.v2024.models.requestability_for_role import RequestabilityForRole
 from sailpoint.v2024.models.revocability_for_role import RevocabilityForRole
 from sailpoint.v2024.models.role_membership_selector import RoleMembershipSelector
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class Role(BaseModel):
     """
@@ -56,11 +53,11 @@ class Role(BaseModel):
     dimension_refs: Optional[StrictStr] = Field(default=None, alias="dimensionRefs")
     __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "description", "owner", "accessProfiles", "entitlements", "membership", "legacyMembershipInfo", "enabled", "requestable", "accessRequestConfig", "revocationRequestConfig", "segments", "dimensional", "dimensionRefs"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -73,7 +70,7 @@ class Role(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of Role from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -89,12 +86,14 @@ class Role(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         """
+        excluded_fields: Set[str] = set([
+            "created",
+            "modified",
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-                "created",
-                "modified",
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of owner
@@ -103,16 +102,16 @@ class Role(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in access_profiles (list)
         _items = []
         if self.access_profiles:
-            for _item in self.access_profiles:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_access_profiles in self.access_profiles:
+                if _item_access_profiles:
+                    _items.append(_item_access_profiles.to_dict())
             _dict['accessProfiles'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in entitlements (list)
         _items = []
         if self.entitlements:
-            for _item in self.entitlements:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_entitlements in self.entitlements:
+                if _item_entitlements:
+                    _items.append(_item_entitlements.to_dict())
             _dict['entitlements'] = _items
         # override the default output from pydantic by calling `to_dict()` of membership
         if self.membership:
@@ -161,7 +160,7 @@ class Role(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of Role from a dict"""
         if obj is None:
             return None
@@ -175,15 +174,15 @@ class Role(BaseModel):
             "created": obj.get("created"),
             "modified": obj.get("modified"),
             "description": obj.get("description"),
-            "owner": OwnerReference.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
-            "accessProfiles": [AccessProfileRef.from_dict(_item) for _item in obj.get("accessProfiles")] if obj.get("accessProfiles") is not None else None,
-            "entitlements": [EntitlementRef.from_dict(_item) for _item in obj.get("entitlements")] if obj.get("entitlements") is not None else None,
-            "membership": RoleMembershipSelector.from_dict(obj.get("membership")) if obj.get("membership") is not None else None,
+            "owner": OwnerReference.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
+            "accessProfiles": [AccessProfileRef.from_dict(_item) for _item in obj["accessProfiles"]] if obj.get("accessProfiles") is not None else None,
+            "entitlements": [EntitlementRef.from_dict(_item) for _item in obj["entitlements"]] if obj.get("entitlements") is not None else None,
+            "membership": RoleMembershipSelector.from_dict(obj["membership"]) if obj.get("membership") is not None else None,
             "legacyMembershipInfo": obj.get("legacyMembershipInfo"),
             "enabled": obj.get("enabled") if obj.get("enabled") is not None else False,
             "requestable": obj.get("requestable") if obj.get("requestable") is not None else False,
-            "accessRequestConfig": RequestabilityForRole.from_dict(obj.get("accessRequestConfig")) if obj.get("accessRequestConfig") is not None else None,
-            "revocationRequestConfig": RevocabilityForRole.from_dict(obj.get("revocationRequestConfig")) if obj.get("revocationRequestConfig") is not None else None,
+            "accessRequestConfig": RequestabilityForRole.from_dict(obj["accessRequestConfig"]) if obj.get("accessRequestConfig") is not None else None,
+            "revocationRequestConfig": RevocabilityForRole.from_dict(obj["revocationRequestConfig"]) if obj.get("revocationRequestConfig") is not None else None,
             "segments": obj.get("segments"),
             "dimensional": obj.get("dimensional"),
             "dimensionRefs": obj.get("dimensionRefs")

@@ -17,12 +17,12 @@ json = "{}"
 # create an instance of SetLifecycleStateRequest from a JSON string
 set_lifecycle_state_request_instance = SetLifecycleStateRequest.from_json(json)
 # print the JSON string representation of the object
-print SetLifecycleStateRequest.to_json()
+print(SetLifecycleStateRequest.to_json())
 
 # convert the object into a dict
 set_lifecycle_state_request_dict = set_lifecycle_state_request_instance.to_dict()
 # create an instance of SetLifecycleStateRequest from a dict
-set_lifecycle_state_request_form_dict = set_lifecycle_state_request.from_dict(set_lifecycle_state_request_dict)
+set_lifecycle_state_request_from_dict = SetLifecycleStateRequest.from_dict(set_lifecycle_state_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

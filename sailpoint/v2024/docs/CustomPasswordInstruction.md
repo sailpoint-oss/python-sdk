@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of CustomPasswordInstruction from a JSON string
 custom_password_instruction_instance = CustomPasswordInstruction.from_json(json)
 # print the JSON string representation of the object
-print CustomPasswordInstruction.to_json()
+print(CustomPasswordInstruction.to_json())
 
 # convert the object into a dict
 custom_password_instruction_dict = custom_password_instruction_instance.to_dict()
 # create an instance of CustomPasswordInstruction from a dict
-custom_password_instruction_form_dict = custom_password_instruction.from_dict(custom_password_instruction_dict)
+custom_password_instruction_from_dict = CustomPasswordInstruction.from_dict(custom_password_instruction_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of ApprovalSchemeForRole from a JSON string
 approval_scheme_for_role_instance = ApprovalSchemeForRole.from_json(json)
 # print the JSON string representation of the object
-print ApprovalSchemeForRole.to_json()
+print(ApprovalSchemeForRole.to_json())
 
 # convert the object into a dict
 approval_scheme_for_role_dict = approval_scheme_for_role_instance.to_dict()
 # create an instance of ApprovalSchemeForRole from a dict
-approval_scheme_for_role_form_dict = approval_scheme_for_role.from_dict(approval_scheme_for_role_dict)
+approval_scheme_for_role_from_dict = ApprovalSchemeForRole.from_dict(approval_scheme_for_role_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

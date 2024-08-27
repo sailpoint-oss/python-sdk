@@ -17,12 +17,12 @@ json = "{}"
 # create an instance of ImportEntitlementsRequest from a JSON string
 import_entitlements_request_instance = ImportEntitlementsRequest.from_json(json)
 # print the JSON string representation of the object
-print ImportEntitlementsRequest.to_json()
+print(ImportEntitlementsRequest.to_json())
 
 # convert the object into a dict
 import_entitlements_request_dict = import_entitlements_request_instance.to_dict()
 # create an instance of ImportEntitlementsRequest from a dict
-import_entitlements_request_form_dict = import_entitlements_request.from_dict(import_entitlements_request_dict)
+import_entitlements_request_from_dict = ImportEntitlementsRequest.from_dict(import_entitlements_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of FormDefinitionSelfImportExportDto from a JSON string
 form_definition_self_import_export_dto_instance = FormDefinitionSelfImportExportDto.from_json(json)
 # print the JSON string representation of the object
-print FormDefinitionSelfImportExportDto.to_json()
+print(FormDefinitionSelfImportExportDto.to_json())
 
 # convert the object into a dict
 form_definition_self_import_export_dto_dict = form_definition_self_import_export_dto_instance.to_dict()
 # create an instance of FormDefinitionSelfImportExportDto from a dict
-form_definition_self_import_export_dto_form_dict = form_definition_self_import_export_dto.from_dict(form_definition_self_import_export_dto_dict)
+form_definition_self_import_export_dto_from_dict = FormDefinitionSelfImportExportDto.from_dict(form_definition_self_import_export_dto_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

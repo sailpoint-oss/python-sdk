@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.identity_attributes_changed import IdentityAttributesChanged
 
@@ -28,7 +27,7 @@ class TestIdentityAttributesChanged(unittest.TestCase):
 
     def make_instance(self, include_optional) -> IdentityAttributesChanged:
         """Test IdentityAttributesChanged
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `IdentityAttributesChanged`

@@ -18,15 +18,12 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr, field_validator
-from pydantic import Field
 from sailpoint.v2024.models.identity_dto_lifecycle_state import IdentityDtoLifecycleState
 from sailpoint.v2024.models.identity_dto_manager_ref import IdentityDtoManagerRef
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class Identity(BaseModel):
     """
@@ -53,7 +50,7 @@ class Identity(BaseModel):
         if value is None:
             return value
 
-        if value not in ('ERROR', 'OK', 'null'):
+        if value not in set(['ERROR', 'OK', 'null']):
             raise ValueError("must be one of enum values ('ERROR', 'OK', 'null')")
         return value
 
@@ -63,15 +60,15 @@ class Identity(BaseModel):
         if value is None:
             return value
 
-        if value not in ('UNREGISTERED', 'REGISTERED', 'PENDING', 'WARNING', 'DISABLED', 'ACTIVE', 'DEACTIVATED', 'TERMINATED', 'ERROR', 'LOCKED'):
+        if value not in set(['UNREGISTERED', 'REGISTERED', 'PENDING', 'WARNING', 'DISABLED', 'ACTIVE', 'DEACTIVATED', 'TERMINATED', 'ERROR', 'LOCKED']):
             raise ValueError("must be one of enum values ('UNREGISTERED', 'REGISTERED', 'PENDING', 'WARNING', 'DISABLED', 'ACTIVE', 'DEACTIVATED', 'TERMINATED', 'ERROR', 'LOCKED')")
         return value
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -84,7 +81,7 @@ class Identity(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of Identity from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -101,13 +98,15 @@ class Identity(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         """
+        excluded_fields: Set[str] = set([
+            "id",
+            "created",
+            "modified",
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-                "id",
-                "created",
-                "modified",
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of manager_ref
@@ -134,7 +133,7 @@ class Identity(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of Identity from a dict"""
         if obj is None:
             return None
@@ -151,11 +150,11 @@ class Identity(BaseModel):
             "emailAddress": obj.get("emailAddress"),
             "processingState": obj.get("processingState"),
             "identityStatus": obj.get("identityStatus"),
-            "managerRef": IdentityDtoManagerRef.from_dict(obj.get("managerRef")) if obj.get("managerRef") is not None else None,
+            "managerRef": IdentityDtoManagerRef.from_dict(obj["managerRef"]) if obj.get("managerRef") is not None else None,
             "isManager": obj.get("isManager") if obj.get("isManager") is not None else False,
             "lastRefresh": obj.get("lastRefresh"),
             "attributes": obj.get("attributes"),
-            "lifecycleState": IdentityDtoLifecycleState.from_dict(obj.get("lifecycleState")) if obj.get("lifecycleState") is not None else None
+            "lifecycleState": IdentityDtoLifecycleState.from_dict(obj["lifecycleState"]) if obj.get("lifecycleState") is not None else None
         })
         return _obj
 

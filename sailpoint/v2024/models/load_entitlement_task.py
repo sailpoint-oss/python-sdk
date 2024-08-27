@@ -18,14 +18,11 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
 from sailpoint.v2024.models.load_entitlement_task_returns_inner import LoadEntitlementTaskReturnsInner
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class LoadEntitlementTask(BaseModel):
     """
@@ -40,11 +37,11 @@ class LoadEntitlementTask(BaseModel):
     returns: Optional[List[LoadEntitlementTaskReturnsInner]] = Field(default=None, description="Return values from the task")
     __properties: ClassVar[List[str]] = ["id", "type", "uniqueName", "description", "launcher", "created", "returns"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -57,7 +54,7 @@ class LoadEntitlementTask(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of LoadEntitlementTask from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -71,23 +68,25 @@ class LoadEntitlementTask(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in returns (list)
         _items = []
         if self.returns:
-            for _item in self.returns:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_returns in self.returns:
+                if _item_returns:
+                    _items.append(_item_returns.to_dict())
             _dict['returns'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of LoadEntitlementTask from a dict"""
         if obj is None:
             return None
@@ -102,7 +101,7 @@ class LoadEntitlementTask(BaseModel):
             "description": obj.get("description"),
             "launcher": obj.get("launcher"),
             "created": obj.get("created"),
-            "returns": [LoadEntitlementTaskReturnsInner.from_dict(_item) for _item in obj.get("returns")] if obj.get("returns") is not None else None
+            "returns": [LoadEntitlementTaskReturnsInner.from_dict(_item) for _item in obj["returns"]] if obj.get("returns") is not None else None
         })
         return _obj
 

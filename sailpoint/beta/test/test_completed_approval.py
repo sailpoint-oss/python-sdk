@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.completed_approval import CompletedApproval
 
@@ -28,7 +27,7 @@ class TestCompletedApproval(unittest.TestCase):
 
     def make_instance(self, include_optional) -> CompletedApproval:
         """Test CompletedApproval
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `CompletedApproval`
@@ -70,7 +69,13 @@ class TestCompletedApproval(unittest.TestCase):
                         type = 'IDENTITY', 
                         id = '2c9180847e25f377017e2ae8cae4650b', 
                         name = 'john.doe', ), ),
-                reviewer_comment = sailpoint.beta.models.completed_approval_reviewer_comment.CompletedApproval_reviewerComment(),
+                reviewer_comment = sailpoint.beta.models.comment_dto.CommentDto(
+                    comment = 'This is a comment.', 
+                    author = sailpoint.beta.models.comment_dto_author.CommentDto_author(
+                        type = 'IDENTITY', 
+                        id = '2c91808568c529c60168cca6f90c1313', 
+                        name = 'Adam Kennedy', ), 
+                    created = '2017-07-11T18:45:37.098Z', ),
                 previous_reviewers_comments = [
                     sailpoint.beta.models.comment_dto_1.CommentDto_1(
                         comment = 'This is a comment.', 

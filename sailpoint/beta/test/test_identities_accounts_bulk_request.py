@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.identities_accounts_bulk_request import IdentitiesAccountsBulkRequest
 
@@ -28,7 +27,7 @@ class TestIdentitiesAccountsBulkRequest(unittest.TestCase):
 
     def make_instance(self, include_optional) -> IdentitiesAccountsBulkRequest:
         """Test IdentitiesAccountsBulkRequest
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `IdentitiesAccountsBulkRequest`

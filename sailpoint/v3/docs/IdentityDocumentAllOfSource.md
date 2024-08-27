@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of IdentityDocumentAllOfSource from a JSON string
 identity_document_all_of_source_instance = IdentityDocumentAllOfSource.from_json(json)
 # print the JSON string representation of the object
-print IdentityDocumentAllOfSource.to_json()
+print(IdentityDocumentAllOfSource.to_json())
 
 # convert the object into a dict
 identity_document_all_of_source_dict = identity_document_all_of_source_instance.to_dict()
 # create an instance of IdentityDocumentAllOfSource from a dict
-identity_document_all_of_source_form_dict = identity_document_all_of_source.from_dict(identity_document_all_of_source_dict)
+identity_document_all_of_source_from_dict = IdentityDocumentAllOfSource.from_dict(identity_document_all_of_source_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

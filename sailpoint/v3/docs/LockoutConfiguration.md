@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of LockoutConfiguration from a JSON string
 lockout_configuration_instance = LockoutConfiguration.from_json(json)
 # print the JSON string representation of the object
-print LockoutConfiguration.to_json()
+print(LockoutConfiguration.to_json())
 
 # convert the object into a dict
 lockout_configuration_dict = lockout_configuration_instance.to_dict()
 # create an instance of LockoutConfiguration from a dict
-lockout_configuration_form_dict = lockout_configuration.from_dict(lockout_configuration_dict)
+lockout_configuration_from_dict = LockoutConfiguration.from_dict(lockout_configuration_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

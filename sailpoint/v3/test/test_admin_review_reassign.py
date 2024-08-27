@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v3.models.admin_review_reassign import AdminReviewReassign
 
@@ -28,7 +27,7 @@ class TestAdminReviewReassign(unittest.TestCase):
 
     def make_instance(self, include_optional) -> AdminReviewReassign:
         """Test AdminReviewReassign
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `AdminReviewReassign`

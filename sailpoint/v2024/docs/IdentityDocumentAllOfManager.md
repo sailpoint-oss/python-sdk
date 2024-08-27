@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of IdentityDocumentAllOfManager from a JSON string
 identity_document_all_of_manager_instance = IdentityDocumentAllOfManager.from_json(json)
 # print the JSON string representation of the object
-print IdentityDocumentAllOfManager.to_json()
+print(IdentityDocumentAllOfManager.to_json())
 
 # convert the object into a dict
 identity_document_all_of_manager_dict = identity_document_all_of_manager_instance.to_dict()
 # create an instance of IdentityDocumentAllOfManager from a dict
-identity_document_all_of_manager_form_dict = identity_document_all_of_manager.from_dict(identity_document_all_of_manager_dict)
+identity_document_all_of_manager_from_dict = IdentityDocumentAllOfManager.from_dict(identity_document_all_of_manager_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

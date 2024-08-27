@@ -18,18 +18,15 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
-from pydantic import Field
 from sailpoint.v2024.models.approval_scheme import ApprovalScheme
 from sailpoint.v2024.models.approval_status_dto_current_owner import ApprovalStatusDtoCurrentOwner
 from sailpoint.v2024.models.approval_status_dto_original_owner import ApprovalStatusDtoOriginalOwner
 from sailpoint.v2024.models.error_message_dto import ErrorMessageDto
 from sailpoint.v2024.models.manual_work_item_state import ManualWorkItemState
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class ApprovalStatusDto(BaseModel):
     """
@@ -46,11 +43,11 @@ class ApprovalStatusDto(BaseModel):
     remove_date: Optional[datetime] = Field(default=None, description="The date the role or access profile or entitlement is no longer assigned to the specified identity.", alias="removeDate")
     __properties: ClassVar[List[str]] = ["forwarded", "originalOwner", "currentOwner", "modified", "status", "scheme", "errorMessages", "comment", "removeDate"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -63,7 +60,7 @@ class ApprovalStatusDto(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of ApprovalStatusDto from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -77,10 +74,12 @@ class ApprovalStatusDto(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of original_owner
@@ -92,9 +91,9 @@ class ApprovalStatusDto(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in error_messages (list)
         _items = []
         if self.error_messages:
-            for _item in self.error_messages:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_error_messages in self.error_messages:
+                if _item_error_messages:
+                    _items.append(_item_error_messages.to_dict())
             _dict['errorMessages'] = _items
         # set to None if modified (nullable) is None
         # and model_fields_set contains the field
@@ -119,7 +118,7 @@ class ApprovalStatusDto(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of ApprovalStatusDto from a dict"""
         if obj is None:
             return None
@@ -129,12 +128,12 @@ class ApprovalStatusDto(BaseModel):
 
         _obj = cls.model_validate({
             "forwarded": obj.get("forwarded") if obj.get("forwarded") is not None else False,
-            "originalOwner": ApprovalStatusDtoOriginalOwner.from_dict(obj.get("originalOwner")) if obj.get("originalOwner") is not None else None,
-            "currentOwner": ApprovalStatusDtoCurrentOwner.from_dict(obj.get("currentOwner")) if obj.get("currentOwner") is not None else None,
+            "originalOwner": ApprovalStatusDtoOriginalOwner.from_dict(obj["originalOwner"]) if obj.get("originalOwner") is not None else None,
+            "currentOwner": ApprovalStatusDtoCurrentOwner.from_dict(obj["currentOwner"]) if obj.get("currentOwner") is not None else None,
             "modified": obj.get("modified"),
             "status": obj.get("status"),
             "scheme": obj.get("scheme"),
-            "errorMessages": [ErrorMessageDto.from_dict(_item) for _item in obj.get("errorMessages")] if obj.get("errorMessages") is not None else None,
+            "errorMessages": [ErrorMessageDto.from_dict(_item) for _item in obj["errorMessages"]] if obj.get("errorMessages") is not None else None,
             "comment": obj.get("comment"),
             "removeDate": obj.get("removeDate")
         })

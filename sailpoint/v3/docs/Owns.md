@@ -23,12 +23,12 @@ json = "{}"
 # create an instance of Owns from a JSON string
 owns_instance = Owns.from_json(json)
 # print the JSON string representation of the object
-print Owns.to_json()
+print(Owns.to_json())
 
 # convert the object into a dict
 owns_dict = owns_instance.to_dict()
 # create an instance of Owns from a dict
-owns_form_dict = owns.from_dict(owns_dict)
+owns_from_dict = Owns.from_dict(owns_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

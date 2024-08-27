@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of AccessItemRequestedForDto from a JSON string
 access_item_requested_for_dto_instance = AccessItemRequestedForDto.from_json(json)
 # print the JSON string representation of the object
-print AccessItemRequestedForDto.to_json()
+print(AccessItemRequestedForDto.to_json())
 
 # convert the object into a dict
 access_item_requested_for_dto_dict = access_item_requested_for_dto_instance.to_dict()
 # create an instance of AccessItemRequestedForDto from a dict
-access_item_requested_for_dto_form_dict = access_item_requested_for_dto.from_dict(access_item_requested_for_dto_dict)
+access_item_requested_for_dto_from_dict = AccessItemRequestedForDto.from_dict(access_item_requested_for_dto_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

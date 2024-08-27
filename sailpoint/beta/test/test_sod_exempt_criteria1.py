@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.sod_exempt_criteria1 import SodExemptCriteria1
 
@@ -28,7 +27,7 @@ class TestSodExemptCriteria1(unittest.TestCase):
 
     def make_instance(self, include_optional) -> SodExemptCriteria1:
         """Test SodExemptCriteria1
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `SodExemptCriteria1`

@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of CompletedApprovalReviewerComment from a JSON string
 completed_approval_reviewer_comment_instance = CompletedApprovalReviewerComment.from_json(json)
 # print the JSON string representation of the object
-print CompletedApprovalReviewerComment.to_json()
+print(CompletedApprovalReviewerComment.to_json())
 
 # convert the object into a dict
 completed_approval_reviewer_comment_dict = completed_approval_reviewer_comment_instance.to_dict()
 # create an instance of CompletedApprovalReviewerComment from a dict
-completed_approval_reviewer_comment_form_dict = completed_approval_reviewer_comment.from_dict(completed_approval_reviewer_comment_dict)
+completed_approval_reviewer_comment_from_dict = CompletedApprovalReviewerComment.from_dict(completed_approval_reviewer_comment_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -25,12 +25,12 @@ json = "{}"
 # create an instance of RemediationItemDetails from a JSON string
 remediation_item_details_instance = RemediationItemDetails.from_json(json)
 # print the JSON string representation of the object
-print RemediationItemDetails.to_json()
+print(RemediationItemDetails.to_json())
 
 # convert the object into a dict
 remediation_item_details_dict = remediation_item_details_instance.to_dict()
 # create an instance of RemediationItemDetails from a dict
-remediation_item_details_form_dict = remediation_item_details.from_dict(remediation_item_details_dict)
+remediation_item_details_from_dict = RemediationItemDetails.from_dict(remediation_item_details_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

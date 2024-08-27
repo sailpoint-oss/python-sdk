@@ -17,15 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictBool
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool
-from pydantic import Field
 from sailpoint.beta.models.recommendation_request import RecommendationRequest
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class RecommendationRequestDto(BaseModel):
     """
@@ -38,11 +34,11 @@ class RecommendationRequestDto(BaseModel):
     prescribe_mode: Optional[StrictBool] = Field(default=False, description="When set to true, uses prescribedRulesRecommenderConfig to get identity attributes and peer group threshold instead of standard config.", alias="prescribeMode")
     __properties: ClassVar[List[str]] = ["requests", "excludeInterpretations", "includeTranslationMessages", "includeDebugInformation", "prescribeMode"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -55,7 +51,7 @@ class RecommendationRequestDto(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of RecommendationRequestDto from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -69,23 +65,25 @@ class RecommendationRequestDto(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in requests (list)
         _items = []
         if self.requests:
-            for _item in self.requests:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_requests in self.requests:
+                if _item_requests:
+                    _items.append(_item_requests.to_dict())
             _dict['requests'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of RecommendationRequestDto from a dict"""
         if obj is None:
             return None
@@ -94,7 +92,7 @@ class RecommendationRequestDto(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "requests": [RecommendationRequest.from_dict(_item) for _item in obj.get("requests")] if obj.get("requests") is not None else None,
+            "requests": [RecommendationRequest.from_dict(_item) for _item in obj["requests"]] if obj.get("requests") is not None else None,
             "excludeInterpretations": obj.get("excludeInterpretations") if obj.get("excludeInterpretations") is not None else False,
             "includeTranslationMessages": obj.get("includeTranslationMessages") if obj.get("includeTranslationMessages") is not None else False,
             "includeDebugInformation": obj.get("includeDebugInformation") if obj.get("includeDebugInformation") is not None else False,

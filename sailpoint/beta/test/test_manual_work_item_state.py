@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.manual_work_item_state import ManualWorkItemState
 

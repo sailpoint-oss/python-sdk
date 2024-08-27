@@ -18,17 +18,14 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
 from sailpoint.v2024.models.schedule1_days import Schedule1Days
 from sailpoint.v2024.models.schedule1_hours import Schedule1Hours
 from sailpoint.v2024.models.schedule1_months import Schedule1Months
 from sailpoint.v2024.models.schedule_type import ScheduleType
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class Schedule1(BaseModel):
     """
@@ -42,11 +39,11 @@ class Schedule1(BaseModel):
     time_zone_id: Optional[StrictStr] = Field(default=None, description="The canonical TZ identifier the schedule will run in (ex. America/New_York).  If no timezone is specified, the org's default timezone is used.", alias="timeZoneId")
     __properties: ClassVar[List[str]] = ["type", "months", "days", "hours", "expiration", "timeZoneId"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -59,7 +56,7 @@ class Schedule1(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of Schedule1 from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -73,10 +70,12 @@ class Schedule1(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of months
@@ -101,7 +100,7 @@ class Schedule1(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of Schedule1 from a dict"""
         if obj is None:
             return None
@@ -111,9 +110,9 @@ class Schedule1(BaseModel):
 
         _obj = cls.model_validate({
             "type": obj.get("type"),
-            "months": Schedule1Months.from_dict(obj.get("months")) if obj.get("months") is not None else None,
-            "days": Schedule1Days.from_dict(obj.get("days")) if obj.get("days") is not None else None,
-            "hours": Schedule1Hours.from_dict(obj.get("hours")) if obj.get("hours") is not None else None,
+            "months": Schedule1Months.from_dict(obj["months"]) if obj.get("months") is not None else None,
+            "days": Schedule1Days.from_dict(obj["days"]) if obj.get("days") is not None else None,
+            "hours": Schedule1Hours.from_dict(obj["hours"]) if obj.get("hours") is not None else None,
             "expiration": obj.get("expiration"),
             "timeZoneId": obj.get("timeZoneId")
         })

@@ -21,12 +21,12 @@ json = "{}"
 # create an instance of ProvisioningCriteriaLevel2 from a JSON string
 provisioning_criteria_level2_instance = ProvisioningCriteriaLevel2.from_json(json)
 # print the JSON string representation of the object
-print ProvisioningCriteriaLevel2.to_json()
+print(ProvisioningCriteriaLevel2.to_json())
 
 # convert the object into a dict
 provisioning_criteria_level2_dict = provisioning_criteria_level2_instance.to_dict()
 # create an instance of ProvisioningCriteriaLevel2 from a dict
-provisioning_criteria_level2_form_dict = provisioning_criteria_level2.from_dict(provisioning_criteria_level2_dict)
+provisioning_criteria_level2_from_dict = ProvisioningCriteriaLevel2.from_dict(provisioning_criteria_level2_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

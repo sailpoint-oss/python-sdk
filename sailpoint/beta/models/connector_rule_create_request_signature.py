@@ -17,28 +17,25 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel
 from sailpoint.beta.models.argument import Argument
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class ConnectorRuleCreateRequestSignature(BaseModel):
     """
     The rule's function signature. Describes the rule's input arguments and output (if any)
     """ # noqa: E501
-    input: List[Argument]
+    input: List[Optional[Argument]]
     output: Optional[Argument] = None
     __properties: ClassVar[List[str]] = ["input", "output"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -51,7 +48,7 @@ class ConnectorRuleCreateRequestSignature(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of ConnectorRuleCreateRequestSignature from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -65,18 +62,20 @@ class ConnectorRuleCreateRequestSignature(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in input (list)
         _items = []
         if self.input:
-            for _item in self.input:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_input in self.input:
+                if _item_input:
+                    _items.append(_item_input.to_dict())
             _dict['input'] = _items
         # override the default output from pydantic by calling `to_dict()` of output
         if self.output:
@@ -89,7 +88,7 @@ class ConnectorRuleCreateRequestSignature(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of ConnectorRuleCreateRequestSignature from a dict"""
         if obj is None:
             return None
@@ -98,8 +97,8 @@ class ConnectorRuleCreateRequestSignature(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "input": [Argument.from_dict(_item) for _item in obj.get("input")] if obj.get("input") is not None else None,
-            "output": Argument.from_dict(obj.get("output")) if obj.get("output") is not None else None
+            "input": [Argument.from_dict(_item) for _item in obj["input"]] if obj.get("input") is not None else None,
+            "output": Argument.from_dict(obj["output"]) if obj.get("output") is not None else None
         })
         return _obj
 

@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of AccessProfileApprovalScheme from a JSON string
 access_profile_approval_scheme_instance = AccessProfileApprovalScheme.from_json(json)
 # print the JSON string representation of the object
-print AccessProfileApprovalScheme.to_json()
+print(AccessProfileApprovalScheme.to_json())
 
 # convert the object into a dict
 access_profile_approval_scheme_dict = access_profile_approval_scheme_instance.to_dict()
 # create an instance of AccessProfileApprovalScheme from a dict
-access_profile_approval_scheme_form_dict = access_profile_approval_scheme.from_dict(access_profile_approval_scheme_dict)
+access_profile_approval_scheme_from_dict = AccessProfileApprovalScheme.from_dict(access_profile_approval_scheme_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

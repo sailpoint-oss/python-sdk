@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of SourceManagerCorrelationMapping from a JSON string
 source_manager_correlation_mapping_instance = SourceManagerCorrelationMapping.from_json(json)
 # print the JSON string representation of the object
-print SourceManagerCorrelationMapping.to_json()
+print(SourceManagerCorrelationMapping.to_json())
 
 # convert the object into a dict
 source_manager_correlation_mapping_dict = source_manager_correlation_mapping_instance.to_dict()
 # create an instance of SourceManagerCorrelationMapping from a dict
-source_manager_correlation_mapping_form_dict = source_manager_correlation_mapping.from_dict(source_manager_correlation_mapping_dict)
+source_manager_correlation_mapping_from_dict = SourceManagerCorrelationMapping.from_dict(source_manager_correlation_mapping_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

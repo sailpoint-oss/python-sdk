@@ -25,12 +25,12 @@ json = "{}"
 # create an instance of InvocationStatus from a JSON string
 invocation_status_instance = InvocationStatus.from_json(json)
 # print the JSON string representation of the object
-print InvocationStatus.to_json()
+print(InvocationStatus.to_json())
 
 # convert the object into a dict
 invocation_status_dict = invocation_status_instance.to_dict()
 # create an instance of InvocationStatus from a dict
-invocation_status_form_dict = invocation_status.from_dict(invocation_status_dict)
+invocation_status_from_dict = InvocationStatus.from_dict(invocation_status_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

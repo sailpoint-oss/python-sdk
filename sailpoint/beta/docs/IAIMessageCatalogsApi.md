@@ -20,8 +20,6 @@ The getMessageCatalogs API returns message catalog based on the language headers
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.message_catalog_dto import MessageCatalogDto
 from sailpoint.beta.rest import ApiException

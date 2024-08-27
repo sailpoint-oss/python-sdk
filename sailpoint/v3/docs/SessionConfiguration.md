@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of SessionConfiguration from a JSON string
 session_configuration_instance = SessionConfiguration.from_json(json)
 # print the JSON string representation of the object
-print SessionConfiguration.to_json()
+print(SessionConfiguration.to_json())
 
 # convert the object into a dict
 session_configuration_dict = session_configuration_instance.to_dict()
 # create an instance of SessionConfiguration from a dict
-session_configuration_form_dict = session_configuration.from_dict(session_configuration_dict)
+session_configuration_from_dict = SessionConfiguration.from_dict(session_configuration_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

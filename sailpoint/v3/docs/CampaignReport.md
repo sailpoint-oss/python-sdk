@@ -22,12 +22,12 @@ json = "{}"
 # create an instance of CampaignReport from a JSON string
 campaign_report_instance = CampaignReport.from_json(json)
 # print the JSON string representation of the object
-print CampaignReport.to_json()
+print(CampaignReport.to_json())
 
 # convert the object into a dict
 campaign_report_dict = campaign_report_instance.to_dict()
 # create an instance of CampaignReport from a dict
-campaign_report_form_dict = campaign_report.from_dict(campaign_report_dict)
+campaign_report_from_dict = CampaignReport.from_dict(campaign_report_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

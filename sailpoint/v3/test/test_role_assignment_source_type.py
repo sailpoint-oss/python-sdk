@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v3.models.role_assignment_source_type import RoleAssignmentSourceType
 

@@ -30,8 +30,6 @@ This API returns the certification task for the specified ID. A token with ORG_A
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.certification_task import CertificationTask
 from sailpoint.v3.rest import ApiException
@@ -116,8 +114,6 @@ This API returns a single identity campaign certification by its ID. A token wit
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.identity_certification_dto import IdentityCertificationDto
 from sailpoint.v3.rest import ApiException
@@ -202,8 +198,6 @@ This API returns the permissions associated with an entitlement certification it
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.permission_dto import PermissionDto
 from sailpoint.v3.rest import ApiException
@@ -298,8 +292,6 @@ This API returns a list of pending (`QUEUED` or `IN_PROGRESS`) certification tas
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.certification_task import CertificationTask
 from sailpoint.v3.rest import ApiException
@@ -392,8 +384,6 @@ This API returns a list of reviewers for the certification. A token with ORG_ADM
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.identity_reference_with_name_and_email import IdentityReferenceWithNameAndEmail
 from sailpoint.v3.rest import ApiException
@@ -488,8 +478,6 @@ This API returns a list of access review items for an identity campaign certific
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.access_review_item import AccessReviewItem
 from sailpoint.v3.rest import ApiException
@@ -590,8 +578,6 @@ Use this API to get a list of identity campaign certifications for the specified
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.identity_certification_dto import IdentityCertificationDto
 from sailpoint.v3.rest import ApiException
@@ -685,8 +671,6 @@ The API makes a decision to approve or revoke one or more identity campaign cert
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.identity_certification_dto import IdentityCertificationDto
 from sailpoint.v3.models.review_decision import ReviewDecision
@@ -774,8 +758,6 @@ This API reassigns up to 50 identities or items in an identity campaign certific
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.identity_certification_dto import IdentityCertificationDto
 from sailpoint.v3.models.review_reassign import ReviewReassign
@@ -863,8 +845,6 @@ This API finalizes all decisions made on an identity campaign certification and 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.identity_certification_dto import IdentityCertificationDto
 from sailpoint.v3.rest import ApiException
@@ -949,8 +929,6 @@ This API initiates a task to reassign up to 500 identities or items in an identi
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.certification_task import CertificationTask
 from sailpoint.v3.models.review_reassign import ReviewReassign

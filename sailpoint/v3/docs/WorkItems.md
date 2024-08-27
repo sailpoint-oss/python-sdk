@@ -33,12 +33,12 @@ json = "{}"
 # create an instance of WorkItems from a JSON string
 work_items_instance = WorkItems.from_json(json)
 # print the JSON string representation of the object
-print WorkItems.to_json()
+print(WorkItems.to_json())
 
 # convert the object into a dict
 work_items_dict = work_items_instance.to_dict()
 # create an instance of WorkItems from a dict
-work_items_form_dict = work_items.from_dict(work_items_dict)
+work_items_from_dict = WorkItems.from_dict(work_items_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

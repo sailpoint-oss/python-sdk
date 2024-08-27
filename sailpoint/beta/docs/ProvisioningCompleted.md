@@ -24,12 +24,12 @@ json = "{}"
 # create an instance of ProvisioningCompleted from a JSON string
 provisioning_completed_instance = ProvisioningCompleted.from_json(json)
 # print the JSON string representation of the object
-print ProvisioningCompleted.to_json()
+print(ProvisioningCompleted.to_json())
 
 # convert the object into a dict
 provisioning_completed_dict = provisioning_completed_instance.to_dict()
 # create an instance of ProvisioningCompleted from a dict
-provisioning_completed_form_dict = provisioning_completed.from_dict(provisioning_completed_dict)
+provisioning_completed_from_dict = ProvisioningCompleted.from_dict(provisioning_completed_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

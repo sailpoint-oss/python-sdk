@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v2024.models.outlier_feature_translation import OutlierFeatureTranslation
 
@@ -28,7 +27,7 @@ class TestOutlierFeatureTranslation(unittest.TestCase):
 
     def make_instance(self, include_optional) -> OutlierFeatureTranslation:
         """Test OutlierFeatureTranslation
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `OutlierFeatureTranslation`

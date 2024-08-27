@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of EntitlementAccessRequestConfig from a JSON string
 entitlement_access_request_config_instance = EntitlementAccessRequestConfig.from_json(json)
 # print the JSON string representation of the object
-print EntitlementAccessRequestConfig.to_json()
+print(EntitlementAccessRequestConfig.to_json())
 
 # convert the object into a dict
 entitlement_access_request_config_dict = entitlement_access_request_config_instance.to_dict()
 # create an instance of EntitlementAccessRequestConfig from a dict
-entitlement_access_request_config_form_dict = entitlement_access_request_config.from_dict(entitlement_access_request_config_dict)
+entitlement_access_request_config_from_dict = EntitlementAccessRequestConfig.from_dict(entitlement_access_request_config_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

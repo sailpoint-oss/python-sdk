@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of PeerGroupMember from a JSON string
 peer_group_member_instance = PeerGroupMember.from_json(json)
 # print the JSON string representation of the object
-print PeerGroupMember.to_json()
+print(PeerGroupMember.to_json())
 
 # convert the object into a dict
 peer_group_member_dict = peer_group_member_instance.to_dict()
 # create an instance of PeerGroupMember from a dict
-peer_group_member_form_dict = peer_group_member.from_dict(peer_group_member_dict)
+peer_group_member_from_dict = PeerGroupMember.from_dict(peer_group_member_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

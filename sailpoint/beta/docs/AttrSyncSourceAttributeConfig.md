@@ -21,12 +21,12 @@ json = "{}"
 # create an instance of AttrSyncSourceAttributeConfig from a JSON string
 attr_sync_source_attribute_config_instance = AttrSyncSourceAttributeConfig.from_json(json)
 # print the JSON string representation of the object
-print AttrSyncSourceAttributeConfig.to_json()
+print(AttrSyncSourceAttributeConfig.to_json())
 
 # convert the object into a dict
 attr_sync_source_attribute_config_dict = attr_sync_source_attribute_config_instance.to_dict()
 # create an instance of AttrSyncSourceAttributeConfig from a dict
-attr_sync_source_attribute_config_form_dict = attr_sync_source_attribute_config.from_dict(attr_sync_source_attribute_config_dict)
+attr_sync_source_attribute_config_from_dict = AttrSyncSourceAttributeConfig.from_dict(attr_sync_source_attribute_config_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

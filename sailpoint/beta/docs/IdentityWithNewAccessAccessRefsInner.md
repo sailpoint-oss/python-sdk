@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of IdentityWithNewAccessAccessRefsInner from a JSON string
 identity_with_new_access_access_refs_inner_instance = IdentityWithNewAccessAccessRefsInner.from_json(json)
 # print the JSON string representation of the object
-print IdentityWithNewAccessAccessRefsInner.to_json()
+print(IdentityWithNewAccessAccessRefsInner.to_json())
 
 # convert the object into a dict
 identity_with_new_access_access_refs_inner_dict = identity_with_new_access_access_refs_inner_instance.to_dict()
 # create an instance of IdentityWithNewAccessAccessRefsInner from a dict
-identity_with_new_access_access_refs_inner_form_dict = identity_with_new_access_access_refs_inner.from_dict(identity_with_new_access_access_refs_inner_dict)
+identity_with_new_access_access_refs_inner_from_dict = IdentityWithNewAccessAccessRefsInner.from_dict(identity_with_new_access_access_refs_inner_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -25,8 +25,6 @@ Creates a new saved search.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.create_saved_search_request import CreateSavedSearchRequest
 from sailpoint.v3.models.saved_search import SavedSearch
@@ -111,8 +109,6 @@ Deletes the specified saved search.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.rest import ApiException
 from pprint import pprint
@@ -194,8 +190,6 @@ Executes the specified saved search.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.search_arguments import SearchArguments
 from sailpoint.v3.rest import ApiException
@@ -280,8 +274,6 @@ Returns the specified saved search.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.saved_search import SavedSearch
 from sailpoint.v3.rest import ApiException
@@ -366,8 +358,6 @@ Returns a list of saved searches.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.saved_search import SavedSearch
 from sailpoint.v3.rest import ApiException
@@ -457,8 +447,6 @@ Updates an existing saved search.   >**NOTE: You cannot update the `owner` of th
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.saved_search import SavedSearch
 from sailpoint.v3.rest import ApiException

@@ -27,12 +27,12 @@ json = "{}"
 # create an instance of TemplateSlack from a JSON string
 template_slack_instance = TemplateSlack.from_json(json)
 # print the JSON string representation of the object
-print TemplateSlack.to_json()
+print(TemplateSlack.to_json())
 
 # convert the object into a dict
 template_slack_dict = template_slack_instance.to_dict()
 # create an instance of TemplateSlack from a dict
-template_slack_form_dict = template_slack.from_dict(template_slack_dict)
+template_slack_from_dict = TemplateSlack.from_dict(template_slack_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

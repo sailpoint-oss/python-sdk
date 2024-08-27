@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.get_role_assignments200_response_inner import GetRoleAssignments200ResponseInner
 
@@ -28,7 +27,7 @@ class TestGetRoleAssignments200ResponseInner(unittest.TestCase):
 
     def make_instance(self, include_optional) -> GetRoleAssignments200ResponseInner:
         """Test GetRoleAssignments200ResponseInner
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `GetRoleAssignments200ResponseInner`

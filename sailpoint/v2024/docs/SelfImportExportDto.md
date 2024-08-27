@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of SelfImportExportDto from a JSON string
 self_import_export_dto_instance = SelfImportExportDto.from_json(json)
 # print the JSON string representation of the object
-print SelfImportExportDto.to_json()
+print(SelfImportExportDto.to_json())
 
 # convert the object into a dict
 self_import_export_dto_dict = self_import_export_dto_instance.to_dict()
 # create an instance of SelfImportExportDto from a dict
-self_import_export_dto_form_dict = self_import_export_dto.from_dict(self_import_export_dto_dict)
+self_import_export_dto_from_dict = SelfImportExportDto.from_dict(self_import_export_dto_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

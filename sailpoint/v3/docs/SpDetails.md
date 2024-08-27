@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of SpDetails from a JSON string
 sp_details_instance = SpDetails.from_json(json)
 # print the JSON string representation of the object
-print SpDetails.to_json()
+print(SpDetails.to_json())
 
 # convert the object into a dict
 sp_details_dict = sp_details_instance.to_dict()
 # create an instance of SpDetails from a dict
-sp_details_form_dict = sp_details.from_dict(sp_details_dict)
+sp_details_from_dict = SpDetails.from_dict(sp_details_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

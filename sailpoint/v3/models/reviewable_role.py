@@ -18,16 +18,13 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
-from pydantic import Field
 from sailpoint.v3.models.identity_reference_with_name_and_email import IdentityReferenceWithNameAndEmail
 from sailpoint.v3.models.reviewable_access_profile import ReviewableAccessProfile
 from sailpoint.v3.models.reviewable_entitlement import ReviewableEntitlement
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class ReviewableRole(BaseModel):
     """
@@ -41,14 +38,14 @@ class ReviewableRole(BaseModel):
     revocable: Optional[StrictBool] = Field(default=None, description="Indicates whether the Role can be revoked or requested")
     end_date: Optional[datetime] = Field(default=None, description="The date when a user's access expires.", alias="endDate")
     access_profiles: Optional[List[ReviewableAccessProfile]] = Field(default=None, description="The list of Access Profiles associated with this Role", alias="accessProfiles")
-    entitlements: Optional[List[ReviewableEntitlement]] = Field(default=None, description="The list of entitlements associated with this Role")
+    entitlements: Optional[List[Optional[ReviewableEntitlement]]] = Field(default=None, description="The list of entitlements associated with this Role")
     __properties: ClassVar[List[str]] = ["id", "name", "description", "privileged", "owner", "revocable", "endDate", "accessProfiles", "entitlements"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -61,7 +58,7 @@ class ReviewableRole(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of ReviewableRole from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -75,10 +72,12 @@ class ReviewableRole(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of owner
@@ -87,16 +86,16 @@ class ReviewableRole(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in access_profiles (list)
         _items = []
         if self.access_profiles:
-            for _item in self.access_profiles:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_access_profiles in self.access_profiles:
+                if _item_access_profiles:
+                    _items.append(_item_access_profiles.to_dict())
             _dict['accessProfiles'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in entitlements (list)
         _items = []
         if self.entitlements:
-            for _item in self.entitlements:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_entitlements in self.entitlements:
+                if _item_entitlements:
+                    _items.append(_item_entitlements.to_dict())
             _dict['entitlements'] = _items
         # set to None if owner (nullable) is None
         # and model_fields_set contains the field
@@ -106,7 +105,7 @@ class ReviewableRole(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of ReviewableRole from a dict"""
         if obj is None:
             return None
@@ -119,11 +118,11 @@ class ReviewableRole(BaseModel):
             "name": obj.get("name"),
             "description": obj.get("description"),
             "privileged": obj.get("privileged"),
-            "owner": IdentityReferenceWithNameAndEmail.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
+            "owner": IdentityReferenceWithNameAndEmail.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
             "revocable": obj.get("revocable"),
             "endDate": obj.get("endDate"),
-            "accessProfiles": [ReviewableAccessProfile.from_dict(_item) for _item in obj.get("accessProfiles")] if obj.get("accessProfiles") is not None else None,
-            "entitlements": [ReviewableEntitlement.from_dict(_item) for _item in obj.get("entitlements")] if obj.get("entitlements") is not None else None
+            "accessProfiles": [ReviewableAccessProfile.from_dict(_item) for _item in obj["accessProfiles"]] if obj.get("accessProfiles") is not None else None,
+            "entitlements": [ReviewableEntitlement.from_dict(_item) for _item in obj["entitlements"]] if obj.get("entitlements") is not None else None
         })
         return _obj
 

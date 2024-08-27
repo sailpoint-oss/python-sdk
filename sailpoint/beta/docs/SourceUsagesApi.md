@@ -21,8 +21,6 @@ This API returns the status of the source usage insights setup by IDN source ID.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.source_usage_status import SourceUsageStatus
 from sailpoint.beta.rest import ApiException
@@ -106,8 +104,6 @@ This API returns a summary of source usage insights for past 12 months.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.source_usage import SourceUsage
 from sailpoint.beta.rest import ApiException

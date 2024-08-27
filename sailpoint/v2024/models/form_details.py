@@ -17,15 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
 from sailpoint.v2024.models.section_details import SectionDetails
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class FormDetails(BaseModel):
     """
@@ -39,11 +35,11 @@ class FormDetails(BaseModel):
     sections: Optional[List[SectionDetails]] = Field(default=None, description="Sections of the form")
     __properties: ClassVar[List[str]] = ["id", "name", "title", "subtitle", "targetUser", "sections"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -56,7 +52,7 @@ class FormDetails(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of FormDetails from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -70,18 +66,20 @@ class FormDetails(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in sections (list)
         _items = []
         if self.sections:
-            for _item in self.sections:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_sections in self.sections:
+                if _item_sections:
+                    _items.append(_item_sections.to_dict())
             _dict['sections'] = _items
         # set to None if id (nullable) is None
         # and model_fields_set contains the field
@@ -96,7 +94,7 @@ class FormDetails(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of FormDetails from a dict"""
         if obj is None:
             return None
@@ -110,7 +108,7 @@ class FormDetails(BaseModel):
             "title": obj.get("title"),
             "subtitle": obj.get("subtitle"),
             "targetUser": obj.get("targetUser"),
-            "sections": [SectionDetails.from_dict(_item) for _item in obj.get("sections")] if obj.get("sections") is not None else None
+            "sections": [SectionDetails.from_dict(_item) for _item in obj["sections"]] if obj.get("sections") is not None else None
         })
         return _obj
 

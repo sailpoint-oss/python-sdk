@@ -26,12 +26,12 @@ json = "{}"
 # create an instance of NonEmployeeRequestBody from a JSON string
 non_employee_request_body_instance = NonEmployeeRequestBody.from_json(json)
 # print the JSON string representation of the object
-print NonEmployeeRequestBody.to_json()
+print(NonEmployeeRequestBody.to_json())
 
 # convert the object into a dict
 non_employee_request_body_dict = non_employee_request_body_instance.to_dict()
 # create an instance of NonEmployeeRequestBody from a dict
-non_employee_request_body_form_dict = non_employee_request_body.from_dict(non_employee_request_body_dict)
+non_employee_request_body_from_dict = NonEmployeeRequestBody.from_dict(non_employee_request_body_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

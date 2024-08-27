@@ -21,12 +21,12 @@ json = "{}"
 # create an instance of WorkgroupDtoOwner from a JSON string
 workgroup_dto_owner_instance = WorkgroupDtoOwner.from_json(json)
 # print the JSON string representation of the object
-print WorkgroupDtoOwner.to_json()
+print(WorkgroupDtoOwner.to_json())
 
 # convert the object into a dict
 workgroup_dto_owner_dict = workgroup_dto_owner_instance.to_dict()
 # create an instance of WorkgroupDtoOwner from a dict
-workgroup_dto_owner_form_dict = workgroup_dto_owner.from_dict(workgroup_dto_owner_dict)
+workgroup_dto_owner_from_dict = WorkgroupDtoOwner.from_dict(workgroup_dto_owner_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

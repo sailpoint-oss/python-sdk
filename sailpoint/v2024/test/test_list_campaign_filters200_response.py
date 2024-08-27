@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v2024.models.list_campaign_filters200_response import ListCampaignFilters200Response
 
@@ -28,7 +27,7 @@ class TestListCampaignFilters200Response(unittest.TestCase):
 
     def make_instance(self, include_optional) -> ListCampaignFilters200Response:
         """Test ListCampaignFilters200Response
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `ListCampaignFilters200Response`

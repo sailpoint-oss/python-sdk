@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of ApprovalReminderAndEscalationConfig from a JSON string
 approval_reminder_and_escalation_config_instance = ApprovalReminderAndEscalationConfig.from_json(json)
 # print the JSON string representation of the object
-print ApprovalReminderAndEscalationConfig.to_json()
+print(ApprovalReminderAndEscalationConfig.to_json())
 
 # convert the object into a dict
 approval_reminder_and_escalation_config_dict = approval_reminder_and_escalation_config_instance.to_dict()
 # create an instance of ApprovalReminderAndEscalationConfig from a dict
-approval_reminder_and_escalation_config_form_dict = approval_reminder_and_escalation_config.from_dict(approval_reminder_and_escalation_config_dict)
+approval_reminder_and_escalation_config_from_dict = ApprovalReminderAndEscalationConfig.from_dict(approval_reminder_and_escalation_config_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

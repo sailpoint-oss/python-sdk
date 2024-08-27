@@ -29,12 +29,12 @@ json = "{}"
 # create an instance of IdentityProfile from a JSON string
 identity_profile_instance = IdentityProfile.from_json(json)
 # print the JSON string representation of the object
-print IdentityProfile.to_json()
+print(IdentityProfile.to_json())
 
 # convert the object into a dict
 identity_profile_dict = identity_profile_instance.to_dict()
 # create an instance of IdentityProfile from a dict
-identity_profile_form_dict = identity_profile.from_dict(identity_profile_dict)
+identity_profile_from_dict = IdentityProfile.from_dict(identity_profile_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

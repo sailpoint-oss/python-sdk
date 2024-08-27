@@ -22,12 +22,12 @@ json = "{}"
 # create an instance of PasswordInfo from a JSON string
 password_info_instance = PasswordInfo.from_json(json)
 # print the JSON string representation of the object
-print PasswordInfo.to_json()
+print(PasswordInfo.to_json())
 
 # convert the object into a dict
 password_info_dict = password_info_instance.to_dict()
 # create an instance of PasswordInfo from a dict
-password_info_form_dict = password_info.from_dict(password_info_dict)
+password_info_from_dict = PasswordInfo.from_dict(password_info_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

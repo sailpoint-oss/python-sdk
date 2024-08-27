@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v3.models.task_result_dto import TaskResultDto
 
@@ -28,7 +27,7 @@ class TestTaskResultDto(unittest.TestCase):
 
     def make_instance(self, include_optional) -> TaskResultDto:
         """Test TaskResultDto
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `TaskResultDto`

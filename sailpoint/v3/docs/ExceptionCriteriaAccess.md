@@ -21,12 +21,12 @@ json = "{}"
 # create an instance of ExceptionCriteriaAccess from a JSON string
 exception_criteria_access_instance = ExceptionCriteriaAccess.from_json(json)
 # print the JSON string representation of the object
-print ExceptionCriteriaAccess.to_json()
+print(ExceptionCriteriaAccess.to_json())
 
 # convert the object into a dict
 exception_criteria_access_dict = exception_criteria_access_instance.to_dict()
 # create an instance of ExceptionCriteriaAccess from a dict
-exception_criteria_access_form_dict = exception_criteria_access.from_dict(exception_criteria_access_dict)
+exception_criteria_access_from_dict = ExceptionCriteriaAccess.from_dict(exception_criteria_access_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

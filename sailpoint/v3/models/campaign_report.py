@@ -18,14 +18,11 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr, field_validator
-from pydantic import Field
 from sailpoint.v3.models.report_type import ReportType
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class CampaignReport(BaseModel):
     """
@@ -45,7 +42,7 @@ class CampaignReport(BaseModel):
         if value is None:
             return value
 
-        if value not in ('REPORT_RESULT'):
+        if value not in set(['REPORT_RESULT']):
             raise ValueError("must be one of enum values ('REPORT_RESULT')")
         return value
 
@@ -55,15 +52,15 @@ class CampaignReport(BaseModel):
         if value is None:
             return value
 
-        if value not in ('SUCCESS', 'WARNING', 'ERROR', 'TERMINATED', 'TEMP_ERROR', 'PENDING'):
+        if value not in set(['SUCCESS', 'WARNING', 'ERROR', 'TERMINATED', 'TEMP_ERROR', 'PENDING']):
             raise ValueError("must be one of enum values ('SUCCESS', 'WARNING', 'ERROR', 'TERMINATED', 'TEMP_ERROR', 'PENDING')")
         return value
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -76,7 +73,7 @@ class CampaignReport(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of CampaignReport from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -91,17 +88,19 @@ class CampaignReport(BaseModel):
           are ignored.
         * OpenAPI `readOnly` fields are excluded.
         """
+        excluded_fields: Set[str] = set([
+            "last_run_at",
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-                "last_run_at",
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of CampaignReport from a dict"""
         if obj is None:
             return None

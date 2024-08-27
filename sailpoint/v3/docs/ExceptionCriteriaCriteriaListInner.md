@@ -21,12 +21,12 @@ json = "{}"
 # create an instance of ExceptionCriteriaCriteriaListInner from a JSON string
 exception_criteria_criteria_list_inner_instance = ExceptionCriteriaCriteriaListInner.from_json(json)
 # print the JSON string representation of the object
-print ExceptionCriteriaCriteriaListInner.to_json()
+print(ExceptionCriteriaCriteriaListInner.to_json())
 
 # convert the object into a dict
 exception_criteria_criteria_list_inner_dict = exception_criteria_criteria_list_inner_instance.to_dict()
 # create an instance of ExceptionCriteriaCriteriaListInner from a dict
-exception_criteria_criteria_list_inner_form_dict = exception_criteria_criteria_list_inner.from_dict(exception_criteria_criteria_list_inner_dict)
+exception_criteria_criteria_list_inner_from_dict = ExceptionCriteriaCriteriaListInner.from_dict(exception_criteria_criteria_list_inner_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

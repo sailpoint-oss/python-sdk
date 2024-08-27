@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of FormDefinitionFileUploadResponse from a JSON string
 form_definition_file_upload_response_instance = FormDefinitionFileUploadResponse.from_json(json)
 # print the JSON string representation of the object
-print FormDefinitionFileUploadResponse.to_json()
+print(FormDefinitionFileUploadResponse.to_json())
 
 # convert the object into a dict
 form_definition_file_upload_response_dict = form_definition_file_upload_response_instance.to_dict()
 # create an instance of FormDefinitionFileUploadResponse from a dict
-form_definition_file_upload_response_form_dict = form_definition_file_upload_response.from_dict(form_definition_file_upload_response_dict)
+form_definition_file_upload_response_from_dict = FormDefinitionFileUploadResponse.from_dict(form_definition_file_upload_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

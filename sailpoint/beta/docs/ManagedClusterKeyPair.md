@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of ManagedClusterKeyPair from a JSON string
 managed_cluster_key_pair_instance = ManagedClusterKeyPair.from_json(json)
 # print the JSON string representation of the object
-print ManagedClusterKeyPair.to_json()
+print(ManagedClusterKeyPair.to_json())
 
 # convert the object into a dict
 managed_cluster_key_pair_dict = managed_cluster_key_pair_instance.to_dict()
 # create an instance of ManagedClusterKeyPair from a dict
-managed_cluster_key_pair_form_dict = managed_cluster_key_pair.from_dict(managed_cluster_key_pair_dict)
+managed_cluster_key_pair_from_dict = ManagedClusterKeyPair.from_dict(managed_cluster_key_pair_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

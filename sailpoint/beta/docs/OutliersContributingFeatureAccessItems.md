@@ -22,12 +22,12 @@ json = "{}"
 # create an instance of OutliersContributingFeatureAccessItems from a JSON string
 outliers_contributing_feature_access_items_instance = OutliersContributingFeatureAccessItems.from_json(json)
 # print the JSON string representation of the object
-print OutliersContributingFeatureAccessItems.to_json()
+print(OutliersContributingFeatureAccessItems.to_json())
 
 # convert the object into a dict
 outliers_contributing_feature_access_items_dict = outliers_contributing_feature_access_items_instance.to_dict()
 # create an instance of OutliersContributingFeatureAccessItems from a dict
-outliers_contributing_feature_access_items_form_dict = outliers_contributing_feature_access_items.from_dict(outliers_contributing_feature_access_items_dict)
+outliers_contributing_feature_access_items_from_dict = OutliersContributingFeatureAccessItems.from_dict(outliers_contributing_feature_access_items_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

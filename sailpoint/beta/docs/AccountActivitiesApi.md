@@ -21,8 +21,6 @@ This gets a single account activity by its id.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.cancelable_account_activity import CancelableAccountActivity
 from sailpoint.beta.rest import ApiException
@@ -107,8 +105,6 @@ This gets a collection of account activities that satisfy the given query parame
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.cancelable_account_activity import CancelableAccountActivity
 from sailpoint.beta.rest import ApiException

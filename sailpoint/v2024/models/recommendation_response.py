@@ -17,17 +17,13 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr, field_validator
-from pydantic import Field
 from sailpoint.v2024.models.recommendation_request import RecommendationRequest
 from sailpoint.v2024.models.recommender_calculations import RecommenderCalculations
 from sailpoint.v2024.models.translation_message import TranslationMessage
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class RecommendationResponse(BaseModel):
     """
@@ -46,15 +42,15 @@ class RecommendationResponse(BaseModel):
         if value is None:
             return value
 
-        if value not in ('true', 'false', 'MAYBE', 'NOT_FOUND'):
+        if value not in set(['true', 'false', 'MAYBE', 'NOT_FOUND']):
             raise ValueError("must be one of enum values ('true', 'false', 'MAYBE', 'NOT_FOUND')")
         return value
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -67,7 +63,7 @@ class RecommendationResponse(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of RecommendationResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -81,10 +77,12 @@ class RecommendationResponse(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of request
@@ -93,9 +91,9 @@ class RecommendationResponse(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in translation_messages (list)
         _items = []
         if self.translation_messages:
-            for _item in self.translation_messages:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_translation_messages in self.translation_messages:
+                if _item_translation_messages:
+                    _items.append(_item_translation_messages.to_dict())
             _dict['translationMessages'] = _items
         # override the default output from pydantic by calling `to_dict()` of recommender_calculations
         if self.recommender_calculations:
@@ -103,7 +101,7 @@ class RecommendationResponse(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of RecommendationResponse from a dict"""
         if obj is None:
             return None
@@ -112,11 +110,11 @@ class RecommendationResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "request": RecommendationRequest.from_dict(obj.get("request")) if obj.get("request") is not None else None,
+            "request": RecommendationRequest.from_dict(obj["request"]) if obj.get("request") is not None else None,
             "recommendation": obj.get("recommendation"),
             "interpretations": obj.get("interpretations"),
-            "translationMessages": [TranslationMessage.from_dict(_item) for _item in obj.get("translationMessages")] if obj.get("translationMessages") is not None else None,
-            "recommenderCalculations": RecommenderCalculations.from_dict(obj.get("recommenderCalculations")) if obj.get("recommenderCalculations") is not None else None
+            "translationMessages": [TranslationMessage.from_dict(_item) for _item in obj["translationMessages"]] if obj.get("translationMessages") is not None else None,
+            "recommenderCalculations": RecommenderCalculations.from_dict(obj["recommenderCalculations"]) if obj.get("recommenderCalculations") is not None else None
         })
         return _obj
 

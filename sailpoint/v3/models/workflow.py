@@ -18,18 +18,15 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
-from pydantic import Field
 from sailpoint.v3.models.workflow_all_of_creator import WorkflowAllOfCreator
 from sailpoint.v3.models.workflow_body_owner import WorkflowBodyOwner
 from sailpoint.v3.models.workflow_definition import WorkflowDefinition
 from sailpoint.v3.models.workflow_modified_by import WorkflowModifiedBy
 from sailpoint.v3.models.workflow_trigger import WorkflowTrigger
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class Workflow(BaseModel):
     """
@@ -50,11 +47,11 @@ class Workflow(BaseModel):
     creator: Optional[WorkflowAllOfCreator] = None
     __properties: ClassVar[List[str]] = ["name", "owner", "description", "definition", "enabled", "trigger", "id", "executionCount", "failureCount", "created", "modified", "modifiedBy", "creator"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -67,7 +64,7 @@ class Workflow(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of Workflow from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -81,10 +78,12 @@ class Workflow(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of owner
@@ -105,7 +104,7 @@ class Workflow(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of Workflow from a dict"""
         if obj is None:
             return None
@@ -115,18 +114,18 @@ class Workflow(BaseModel):
 
         _obj = cls.model_validate({
             "name": obj.get("name"),
-            "owner": WorkflowBodyOwner.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
+            "owner": WorkflowBodyOwner.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
             "description": obj.get("description"),
-            "definition": WorkflowDefinition.from_dict(obj.get("definition")) if obj.get("definition") is not None else None,
+            "definition": WorkflowDefinition.from_dict(obj["definition"]) if obj.get("definition") is not None else None,
             "enabled": obj.get("enabled") if obj.get("enabled") is not None else False,
-            "trigger": WorkflowTrigger.from_dict(obj.get("trigger")) if obj.get("trigger") is not None else None,
+            "trigger": WorkflowTrigger.from_dict(obj["trigger"]) if obj.get("trigger") is not None else None,
             "id": obj.get("id"),
             "executionCount": obj.get("executionCount"),
             "failureCount": obj.get("failureCount"),
             "created": obj.get("created"),
             "modified": obj.get("modified"),
-            "modifiedBy": WorkflowModifiedBy.from_dict(obj.get("modifiedBy")) if obj.get("modifiedBy") is not None else None,
-            "creator": WorkflowAllOfCreator.from_dict(obj.get("creator")) if obj.get("creator") is not None else None
+            "modifiedBy": WorkflowModifiedBy.from_dict(obj["modifiedBy"]) if obj.get("modifiedBy") is not None else None,
+            "creator": WorkflowAllOfCreator.from_dict(obj["creator"]) if obj.get("creator") is not None else None
         })
         return _obj
 

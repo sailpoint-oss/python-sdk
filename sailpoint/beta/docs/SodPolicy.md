@@ -34,12 +34,12 @@ json = "{}"
 # create an instance of SodPolicy from a JSON string
 sod_policy_instance = SodPolicy.from_json(json)
 # print the JSON string representation of the object
-print SodPolicy.to_json()
+print(SodPolicy.to_json())
 
 # convert the object into a dict
 sod_policy_dict = sod_policy_instance.to_dict()
 # create an instance of SodPolicy from a dict
-sod_policy_form_dict = sod_policy.from_dict(sod_policy_dict)
+sod_policy_from_dict = SodPolicy.from_dict(sod_policy_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

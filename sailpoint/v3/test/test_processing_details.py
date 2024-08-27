@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v3.models.processing_details import ProcessingDetails
 
@@ -28,7 +27,7 @@ class TestProcessingDetails(unittest.TestCase):
 
     def make_instance(self, include_optional) -> ProcessingDetails:
         """Test ProcessingDetails
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `ProcessingDetails`

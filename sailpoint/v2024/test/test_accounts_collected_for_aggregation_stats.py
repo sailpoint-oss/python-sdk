@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v2024.models.accounts_collected_for_aggregation_stats import AccountsCollectedForAggregationStats
 
@@ -28,7 +27,7 @@ class TestAccountsCollectedForAggregationStats(unittest.TestCase):
 
     def make_instance(self, include_optional) -> AccountsCollectedForAggregationStats:
         """Test AccountsCollectedForAggregationStats
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `AccountsCollectedForAggregationStats`

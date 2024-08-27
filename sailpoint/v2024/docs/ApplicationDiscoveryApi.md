@@ -23,8 +23,6 @@ Fetches a list of applications that have been identified within the environment.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.get_discovered_applications200_response_inner import GetDiscoveredApplications200ResponseInner
 from sailpoint.v2024.rest import ApiException
@@ -116,8 +114,6 @@ This endpoint allows the user to download an example CSV file with two columns `
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.manual_discover_applications_template import ManualDiscoverApplicationsTemplate
 from sailpoint.v2024.rest import ApiException
@@ -197,8 +193,6 @@ Retrieves a list of mappings between SaaS vendors and IDN connectors, detailing 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.vendor_connector_mapping import VendorConnectorMapping
 from sailpoint.v2024.rest import ApiException
@@ -279,8 +273,6 @@ This endpoint supports uploading a CSV file with application data for manual cor
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint

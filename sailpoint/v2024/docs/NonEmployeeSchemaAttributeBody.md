@@ -22,12 +22,12 @@ json = "{}"
 # create an instance of NonEmployeeSchemaAttributeBody from a JSON string
 non_employee_schema_attribute_body_instance = NonEmployeeSchemaAttributeBody.from_json(json)
 # print the JSON string representation of the object
-print NonEmployeeSchemaAttributeBody.to_json()
+print(NonEmployeeSchemaAttributeBody.to_json())
 
 # convert the object into a dict
 non_employee_schema_attribute_body_dict = non_employee_schema_attribute_body_instance.to_dict()
 # create an instance of NonEmployeeSchemaAttributeBody from a dict
-non_employee_schema_attribute_body_form_dict = non_employee_schema_attribute_body.from_dict(non_employee_schema_attribute_body_dict)
+non_employee_schema_attribute_body_from_dict = NonEmployeeSchemaAttributeBody.from_dict(non_employee_schema_attribute_body_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

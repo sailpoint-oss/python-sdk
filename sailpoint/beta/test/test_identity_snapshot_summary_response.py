@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.identity_snapshot_summary_response import IdentitySnapshotSummaryResponse
 
@@ -28,7 +27,7 @@ class TestIdentitySnapshotSummaryResponse(unittest.TestCase):
 
     def make_instance(self, include_optional) -> IdentitySnapshotSummaryResponse:
         """Test IdentitySnapshotSummaryResponse
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `IdentitySnapshotSummaryResponse`

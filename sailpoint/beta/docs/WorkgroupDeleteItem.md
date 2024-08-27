@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of WorkgroupDeleteItem from a JSON string
 workgroup_delete_item_instance = WorkgroupDeleteItem.from_json(json)
 # print the JSON string representation of the object
-print WorkgroupDeleteItem.to_json()
+print(WorkgroupDeleteItem.to_json())
 
 # convert the object into a dict
 workgroup_delete_item_dict = workgroup_delete_item_instance.to_dict()
 # create an instance of WorkgroupDeleteItem from a dict
-workgroup_delete_item_form_dict = workgroup_delete_item.from_dict(workgroup_delete_item_dict)
+workgroup_delete_item_from_dict = WorkgroupDeleteItem.from_dict(workgroup_delete_item_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

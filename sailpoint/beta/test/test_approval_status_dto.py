@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.approval_status_dto import ApprovalStatusDto
 
@@ -28,7 +27,7 @@ class TestApprovalStatusDto(unittest.TestCase):
 
     def make_instance(self, include_optional) -> ApprovalStatusDto:
         """Test ApprovalStatusDto
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `ApprovalStatusDto`

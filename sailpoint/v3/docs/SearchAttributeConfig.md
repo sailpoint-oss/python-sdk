@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of SearchAttributeConfig from a JSON string
 search_attribute_config_instance = SearchAttributeConfig.from_json(json)
 # print the JSON string representation of the object
-print SearchAttributeConfig.to_json()
+print(SearchAttributeConfig.to_json())
 
 # convert the object into a dict
 search_attribute_config_dict = search_attribute_config_instance.to_dict()
 # create an instance of SearchAttributeConfig from a dict
-search_attribute_config_form_dict = search_attribute_config.from_dict(search_attribute_config_dict)
+search_attribute_config_from_dict = SearchAttributeConfig.from_dict(search_attribute_config_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

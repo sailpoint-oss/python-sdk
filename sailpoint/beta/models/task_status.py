@@ -18,17 +18,14 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictInt, StrictStr, field_validator
-from pydantic import Field
 from sailpoint.beta.models.target import Target
 from sailpoint.beta.models.task_definition_summary import TaskDefinitionSummary
 from sailpoint.beta.models.task_return_details import TaskReturnDetails
 from sailpoint.beta.models.task_status_message import TaskStatusMessage
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class TaskStatus(BaseModel):
     """
@@ -57,7 +54,7 @@ class TaskStatus(BaseModel):
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('QUARTZ', 'QPOC', 'QUEUED_TASK'):
+        if value not in set(['QUARTZ', 'QPOC', 'QUEUED_TASK']):
             raise ValueError("must be one of enum values ('QUARTZ', 'QPOC', 'QUEUED_TASK')")
         return value
 
@@ -67,15 +64,15 @@ class TaskStatus(BaseModel):
         if value is None:
             return value
 
-        if value not in ('SUCCESS', 'WARNING', 'ERROR', 'TERMINATED', 'TEMPERROR', 'null'):
+        if value not in set(['SUCCESS', 'WARNING', 'ERROR', 'TERMINATED', 'TEMPERROR', 'null']):
             raise ValueError("must be one of enum values ('SUCCESS', 'WARNING', 'ERROR', 'TERMINATED', 'TEMPERROR', 'null')")
         return value
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -88,7 +85,7 @@ class TaskStatus(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of TaskStatus from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -102,10 +99,12 @@ class TaskStatus(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of target
@@ -114,16 +113,16 @@ class TaskStatus(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in messages (list)
         _items = []
         if self.messages:
-            for _item in self.messages:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_messages in self.messages:
+                if _item_messages:
+                    _items.append(_item_messages.to_dict())
             _dict['messages'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in returns (list)
         _items = []
         if self.returns:
-            for _item in self.returns:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_returns in self.returns:
+                if _item_returns:
+                    _items.append(_item_returns.to_dict())
             _dict['returns'] = _items
         # override the default output from pydantic by calling `to_dict()` of task_definition_summary
         if self.task_definition_summary:
@@ -161,7 +160,7 @@ class TaskStatus(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of TaskStatus from a dict"""
         if obj is None:
             return None
@@ -176,18 +175,18 @@ class TaskStatus(BaseModel):
             "description": obj.get("description"),
             "parentName": obj.get("parentName"),
             "launcher": obj.get("launcher"),
-            "target": Target.from_dict(obj.get("target")) if obj.get("target") is not None else None,
+            "target": Target.from_dict(obj["target"]) if obj.get("target") is not None else None,
             "created": obj.get("created"),
             "modified": obj.get("modified"),
             "launched": obj.get("launched"),
             "completed": obj.get("completed"),
             "completionStatus": obj.get("completionStatus"),
-            "messages": [TaskStatusMessage.from_dict(_item) for _item in obj.get("messages")] if obj.get("messages") is not None else None,
-            "returns": [TaskReturnDetails.from_dict(_item) for _item in obj.get("returns")] if obj.get("returns") is not None else None,
+            "messages": [TaskStatusMessage.from_dict(_item) for _item in obj["messages"]] if obj.get("messages") is not None else None,
+            "returns": [TaskReturnDetails.from_dict(_item) for _item in obj["returns"]] if obj.get("returns") is not None else None,
             "attributes": obj.get("attributes"),
             "progress": obj.get("progress"),
             "percentComplete": obj.get("percentComplete"),
-            "taskDefinitionSummary": TaskDefinitionSummary.from_dict(obj.get("taskDefinitionSummary")) if obj.get("taskDefinitionSummary") is not None else None
+            "taskDefinitionSummary": TaskDefinitionSummary.from_dict(obj["taskDefinitionSummary"]) if obj.get("taskDefinitionSummary") is not None else None
         })
         return _obj
 

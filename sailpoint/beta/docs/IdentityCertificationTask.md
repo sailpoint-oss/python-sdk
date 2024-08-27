@@ -21,12 +21,12 @@ json = "{}"
 # create an instance of IdentityCertificationTask from a JSON string
 identity_certification_task_instance = IdentityCertificationTask.from_json(json)
 # print the JSON string representation of the object
-print IdentityCertificationTask.to_json()
+print(IdentityCertificationTask.to_json())
 
 # convert the object into a dict
 identity_certification_task_dict = identity_certification_task_instance.to_dict()
 # create an instance of IdentityCertificationTask from a dict
-identity_certification_task_form_dict = identity_certification_task.from_dict(identity_certification_task_dict)
+identity_certification_task_from_dict = IdentityCertificationTask.from_dict(identity_certification_task_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -26,8 +26,6 @@ This API creates a role.  You must have a token with API, ORG_ADMIN, ROLE_ADMIN,
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.role import Role
 from sailpoint.v3.rest import ApiException
@@ -111,8 +109,6 @@ This endpoint initiates a bulk deletion of one or more roles. When the request i
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.role_bulk_delete_request import RoleBulkDeleteRequest
 from sailpoint.v3.models.task_result_dto import TaskResultDto
@@ -197,8 +193,6 @@ This API deletes a Role by its ID.  A token with API, ORG_ADMIN, ROLE_ADMIN, or 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.rest import ApiException
 from pprint import pprint
@@ -279,8 +273,6 @@ This API returns a Role by its ID.  A token with API, ORG_ADMIN, ROLE_ADMIN, or 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.role import Role
 from sailpoint.v3.rest import ApiException
@@ -362,8 +354,6 @@ List Identities assigned a Role
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.role_identity import RoleIdentity
 from sailpoint.v3.rest import ApiException
@@ -457,8 +447,6 @@ This API returns a list of Roles.  A token with API, ORG_ADMIN, ROLE_ADMIN, or R
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.role import Role
 from sailpoint.v3.rest import ApiException
@@ -556,8 +544,6 @@ This API updates an existing role using [JSON Patch](https://tools.ietf.org/html
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v3.models.role import Role

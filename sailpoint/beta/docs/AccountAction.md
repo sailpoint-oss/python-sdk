@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of AccountAction from a JSON string
 account_action_instance = AccountAction.from_json(json)
 # print the JSON string representation of the object
-print AccountAction.to_json()
+print(AccountAction.to_json())
 
 # convert the object into a dict
 account_action_dict = account_action_instance.to_dict()
 # create an instance of AccountAction from a dict
-account_action_form_dict = account_action.from_dict(account_action_dict)
+account_action_from_dict = AccountAction.from_dict(account_action_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

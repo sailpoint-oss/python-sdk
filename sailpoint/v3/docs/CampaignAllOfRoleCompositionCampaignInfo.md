@@ -22,12 +22,12 @@ json = "{}"
 # create an instance of CampaignAllOfRoleCompositionCampaignInfo from a JSON string
 campaign_all_of_role_composition_campaign_info_instance = CampaignAllOfRoleCompositionCampaignInfo.from_json(json)
 # print the JSON string representation of the object
-print CampaignAllOfRoleCompositionCampaignInfo.to_json()
+print(CampaignAllOfRoleCompositionCampaignInfo.to_json())
 
 # convert the object into a dict
 campaign_all_of_role_composition_campaign_info_dict = campaign_all_of_role_composition_campaign_info_instance.to_dict()
 # create an instance of CampaignAllOfRoleCompositionCampaignInfo from a dict
-campaign_all_of_role_composition_campaign_info_form_dict = campaign_all_of_role_composition_campaign_info.from_dict(campaign_all_of_role_composition_campaign_info_dict)
+campaign_all_of_role_composition_campaign_info_from_dict = CampaignAllOfRoleCompositionCampaignInfo.from_dict(campaign_all_of_role_composition_campaign_info_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -17,30 +17,26 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
 from sailpoint.v3.models.metric_type import MetricType
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class MetricAggregation(BaseModel):
     """
     The calculation done on the results of the query
     """ # noqa: E501
     name: StrictStr = Field(description="The name of the metric aggregate to be included in the result. If the metric aggregation is omitted, the resulting aggregation will be a count of the documents in the search results.")
-    type: Optional[MetricType] = None
-    field: StrictStr = Field(description="The field the calculation is performed on.  Prefix the field name with '@' to reference a nested object. ")
+    type: Optional[MetricType] = MetricType.UNIQUE_COUNT
+    var_field: StrictStr = Field(description="The field the calculation is performed on.  Prefix the field name with '@' to reference a nested object. ", alias="field")
     __properties: ClassVar[List[str]] = ["name", "type", "field"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -53,7 +49,7 @@ class MetricAggregation(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of MetricAggregation from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -67,16 +63,18 @@ class MetricAggregation(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of MetricAggregation from a dict"""
         if obj is None:
             return None
@@ -86,7 +84,7 @@ class MetricAggregation(BaseModel):
 
         _obj = cls.model_validate({
             "name": obj.get("name"),
-            "type": obj.get("type"),
+            "type": obj.get("type") if obj.get("type") is not None else MetricType.UNIQUE_COUNT,
             "field": obj.get("field")
         })
         return _obj

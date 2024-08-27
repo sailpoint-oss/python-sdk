@@ -17,15 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictInt, StrictStr
-from pydantic import Field
 from sailpoint.beta.models.error_message import ErrorMessage
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class SearchFormDefinitionsByTenant400Response(BaseModel):
     """
@@ -37,11 +33,11 @@ class SearchFormDefinitionsByTenant400Response(BaseModel):
     tracking_id: Optional[StrictStr] = Field(default=None, alias="trackingId")
     __properties: ClassVar[List[str]] = ["detailCode", "messages", "statusCode", "trackingId"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -54,7 +50,7 @@ class SearchFormDefinitionsByTenant400Response(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of SearchFormDefinitionsByTenant400Response from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -68,23 +64,25 @@ class SearchFormDefinitionsByTenant400Response(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in messages (list)
         _items = []
         if self.messages:
-            for _item in self.messages:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_messages in self.messages:
+                if _item_messages:
+                    _items.append(_item_messages.to_dict())
             _dict['messages'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of SearchFormDefinitionsByTenant400Response from a dict"""
         if obj is None:
             return None
@@ -94,7 +92,7 @@ class SearchFormDefinitionsByTenant400Response(BaseModel):
 
         _obj = cls.model_validate({
             "detailCode": obj.get("detailCode"),
-            "messages": [ErrorMessage.from_dict(_item) for _item in obj.get("messages")] if obj.get("messages") is not None else None,
+            "messages": [ErrorMessage.from_dict(_item) for _item in obj["messages"]] if obj.get("messages") is not None else None,
             "statusCode": obj.get("statusCode"),
             "trackingId": obj.get("trackingId")
         })

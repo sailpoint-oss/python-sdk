@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of DataAccess from a JSON string
 data_access_instance = DataAccess.from_json(json)
 # print the JSON string representation of the object
-print DataAccess.to_json()
+print(DataAccess.to_json())
 
 # convert the object into a dict
 data_access_dict = data_access_instance.to_dict()
 # create an instance of DataAccess from a dict
-data_access_form_dict = data_access.from_dict(data_access_dict)
+data_access_from_dict = DataAccess.from_dict(data_access_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

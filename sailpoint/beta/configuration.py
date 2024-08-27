@@ -14,8 +14,10 @@
 
 import copy
 import logging
+from logging import FileHandler
 import multiprocessing
 import sys
+from typing import Optional
 import urllib3
 
 import http.client as httplib
@@ -30,6 +32,9 @@ class Configuration:
     """This class contains various settings of the API client.
 
     :param host: Base url.
+    :param ignore_operation_servers
+      Boolean to ignore operation servers for the API client.
+      Config will use `host` as the base url regardless of the operation servers.
     :param api_key: Dict to store API key(s).
       Each entry in the dict specifies an API key.
       The dict key is the name of the security scheme in the OAS specification.
@@ -52,6 +57,7 @@ class Configuration:
       values before.
     :param ssl_ca_cert: str - the path to a file of concatenated CA certificates
       in PEM format.
+    :param retries: Number of retries for API requests.
 
     :Example:
     """
@@ -64,7 +70,11 @@ class Configuration:
                  access_token=None,
                  server_index=None, server_variables=None,
                  server_operation_index=None, server_operation_variables=None,
+                 ignore_operation_servers=False,
                  ssl_ca_cert=None,
+                 retries=None,
+                 *,
+                 debug: Optional[bool] = None
                  ) -> None:
         """Constructor
         """
@@ -78,6 +88,9 @@ class Configuration:
         self.server_variables = server_variables or {}
         self.server_operation_variables = server_operation_variables or {}
         """Default server variables
+        """
+        self.ignore_operation_servers = ignore_operation_servers
+        """Ignore operation servers
         """
         self.temp_folder_path = None
         """Temp file folder for downloading files
@@ -116,13 +129,16 @@ class Configuration:
         self.logger_stream_handler = None
         """Log stream handler
         """
-        self.logger_file_handler = None
+        self.logger_file_handler: Optional[FileHandler] = None
         """Log file handler
         """
         self.logger_file = None
         """Debug file location
         """
-        self.debug = False
+        if debug is not None:
+            self.debug = debug
+        else:
+            self.__debug = False
         """Debug switch
         """
 
@@ -156,7 +172,7 @@ class Configuration:
            cpu_count * 5 is used as default value to increase performance.
         """
 
-        self.proxy = None
+        self.proxy: Optional[str] = None
         """Proxy URL
         """
         self.proxy_headers = None
@@ -165,7 +181,7 @@ class Configuration:
         self.safe_chars_for_path_param = ''
         """Safe chars for path_param
         """
-        self.retries = None
+        self.retries = retries
         """Adding retries to override urllib3 default value 3
         """
         # Enable client side validation

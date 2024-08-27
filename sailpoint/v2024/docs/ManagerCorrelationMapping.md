@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of ManagerCorrelationMapping from a JSON string
 manager_correlation_mapping_instance = ManagerCorrelationMapping.from_json(json)
 # print the JSON string representation of the object
-print ManagerCorrelationMapping.to_json()
+print(ManagerCorrelationMapping.to_json())
 
 # convert the object into a dict
 manager_correlation_mapping_dict = manager_correlation_mapping_instance.to_dict()
 # create an instance of ManagerCorrelationMapping from a dict
-manager_correlation_mapping_form_dict = manager_correlation_mapping.from_dict(manager_correlation_mapping_dict)
+manager_correlation_mapping_from_dict = ManagerCorrelationMapping.from_dict(manager_correlation_mapping_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -21,8 +21,6 @@ Return the specified user's authentication system details.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.auth_user import AuthUser
 from sailpoint.v3.rest import ApiException
@@ -107,8 +105,6 @@ Use a PATCH request to update an existing user in the authentication system. Use
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.auth_user import AuthUser
 from sailpoint.v3.models.json_patch_operation import JsonPatchOperation

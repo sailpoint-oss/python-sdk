@@ -22,8 +22,6 @@ This API returns the details of an org's network auth configuration. Requires se
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.network_configuration import NetworkConfiguration
 from sailpoint.v2024.rest import ApiException
@@ -108,8 +106,6 @@ This API returns the details of an org's network auth configuration. Requires se
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.network_configuration import NetworkConfiguration
 from sailpoint.v2024.rest import ApiException
@@ -190,8 +186,6 @@ This API updates an existing network configuration for an org using PATCH  Requi
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v2024.models.network_configuration import NetworkConfiguration

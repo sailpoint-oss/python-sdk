@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of FullcampaignAllOfSearchCampaignInfoReviewer from a JSON string
 fullcampaign_all_of_search_campaign_info_reviewer_instance = FullcampaignAllOfSearchCampaignInfoReviewer.from_json(json)
 # print the JSON string representation of the object
-print FullcampaignAllOfSearchCampaignInfoReviewer.to_json()
+print(FullcampaignAllOfSearchCampaignInfoReviewer.to_json())
 
 # convert the object into a dict
 fullcampaign_all_of_search_campaign_info_reviewer_dict = fullcampaign_all_of_search_campaign_info_reviewer_instance.to_dict()
 # create an instance of FullcampaignAllOfSearchCampaignInfoReviewer from a dict
-fullcampaign_all_of_search_campaign_info_reviewer_form_dict = fullcampaign_all_of_search_campaign_info_reviewer.from_dict(fullcampaign_all_of_search_campaign_info_reviewer_dict)
+fullcampaign_all_of_search_campaign_info_reviewer_from_dict = FullcampaignAllOfSearchCampaignInfoReviewer.from_dict(fullcampaign_all_of_search_campaign_info_reviewer_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

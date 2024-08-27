@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of SourceDeletedActor from a JSON string
 source_deleted_actor_instance = SourceDeletedActor.from_json(json)
 # print the JSON string representation of the object
-print SourceDeletedActor.to_json()
+print(SourceDeletedActor.to_json())
 
 # convert the object into a dict
 source_deleted_actor_dict = source_deleted_actor_instance.to_dict()
 # create an instance of SourceDeletedActor from a dict
-source_deleted_actor_form_dict = source_deleted_actor.from_dict(source_deleted_actor_dict)
+source_deleted_actor_from_dict = SourceDeletedActor.from_dict(source_deleted_actor_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

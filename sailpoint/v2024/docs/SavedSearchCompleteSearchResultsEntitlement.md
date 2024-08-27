@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of SavedSearchCompleteSearchResultsEntitlement from a JSON string
 saved_search_complete_search_results_entitlement_instance = SavedSearchCompleteSearchResultsEntitlement.from_json(json)
 # print the JSON string representation of the object
-print SavedSearchCompleteSearchResultsEntitlement.to_json()
+print(SavedSearchCompleteSearchResultsEntitlement.to_json())
 
 # convert the object into a dict
 saved_search_complete_search_results_entitlement_dict = saved_search_complete_search_results_entitlement_instance.to_dict()
 # create an instance of SavedSearchCompleteSearchResultsEntitlement from a dict
-saved_search_complete_search_results_entitlement_form_dict = saved_search_complete_search_results_entitlement.from_dict(saved_search_complete_search_results_entitlement_dict)
+saved_search_complete_search_results_entitlement_from_dict = SavedSearchCompleteSearchResultsEntitlement.from_dict(saved_search_complete_search_results_entitlement_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

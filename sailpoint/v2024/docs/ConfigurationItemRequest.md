@@ -22,12 +22,12 @@ json = "{}"
 # create an instance of ConfigurationItemRequest from a JSON string
 configuration_item_request_instance = ConfigurationItemRequest.from_json(json)
 # print the JSON string representation of the object
-print ConfigurationItemRequest.to_json()
+print(ConfigurationItemRequest.to_json())
 
 # convert the object into a dict
 configuration_item_request_dict = configuration_item_request_instance.to_dict()
 # create an instance of ConfigurationItemRequest from a dict
-configuration_item_request_form_dict = configuration_item_request.from_dict(configuration_item_request_dict)
+configuration_item_request_from_dict = ConfigurationItemRequest.from_dict(configuration_item_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

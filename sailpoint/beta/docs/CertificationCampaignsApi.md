@@ -41,8 +41,6 @@ Complete a Campaign
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.complete_campaign_options import CompleteCampaignOptions
 from sailpoint.beta.rest import ApiException
@@ -129,8 +127,6 @@ Use this API to create a certification campaign with the information provided in
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.campaign import Campaign
 from sailpoint.beta.rest import ApiException
@@ -214,8 +210,6 @@ Use this API to create a campaign template based on campaign. Though this Beta e
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.campaign_template import CampaignTemplate
 from sailpoint.beta.rest import ApiException
@@ -299,8 +293,6 @@ Use this API to delete a certification campaign template by ID. Though this Beta
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
@@ -382,8 +374,6 @@ Use this API to delete the schedule for a certification campaign template. The A
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
@@ -465,8 +455,6 @@ Use this API to delete certification campaigns whose IDs are specified in the pr
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.delete_campaigns_request import DeleteCampaignsRequest
 from sailpoint.beta.rest import ApiException
@@ -551,8 +539,6 @@ Use this API to get a list of campaigns. The API can provide increased level of 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.get_active_campaigns200_response_inner import GetActiveCampaigns200ResponseInner
 from sailpoint.beta.rest import ApiException
@@ -646,8 +632,6 @@ Use this API to get information for an existing certification campaign by the ca
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.slimcampaign import Slimcampaign
 from sailpoint.beta.rest import ApiException
@@ -732,8 +716,6 @@ Use this API to fetch all reports for a certification campaign by campaign ID. T
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.campaign_report import CampaignReport
 from sailpoint.beta.rest import ApiException
@@ -818,8 +800,6 @@ Use this API to fetch the configuration for certification campaign reports. The 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.campaign_reports_config import CampaignReportsConfig
 from sailpoint.beta.rest import ApiException
@@ -899,8 +879,6 @@ Use this API to fetch a certification campaign template by ID. Though this Beta 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.campaign_template import CampaignTemplate
 from sailpoint.beta.rest import ApiException
@@ -985,8 +963,6 @@ Use this API to get the schedule for a certification campaign template. The API 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.schedule import Schedule
 from sailpoint.beta.rest import ApiException
@@ -1071,8 +1047,6 @@ Use this API to get a list of all campaign templates. Scope can be reduced throu
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.campaign_template import CampaignTemplate
 from sailpoint.beta.rest import ApiException
@@ -1164,8 +1138,6 @@ This API reassigns the specified certifications from one identity to another.  T
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.admin_review_reassign import AdminReviewReassign
 from sailpoint.beta.models.certification_task import CertificationTask
@@ -1253,8 +1225,6 @@ Use this API to update individual fields on a certification campaign template, u
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.campaign_template import CampaignTemplate
 from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
@@ -1342,8 +1312,6 @@ Use this API to overwrite the configuration for campaign reports. Though this Be
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.campaign_reports_config import CampaignReportsConfig
 from sailpoint.beta.rest import ApiException
@@ -1427,8 +1395,6 @@ Use this API to set the schedule for a certification campaign template. If a sch
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.schedule import Schedule
 from sailpoint.beta.rest import ApiException
@@ -1513,8 +1479,6 @@ Use this API to submit a job to activate the certified campaign with the specifi
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.activate_campaign_options import ActivateCampaignOptions
 from sailpoint.beta.rest import ApiException
@@ -1601,8 +1565,6 @@ Use this API to run a remediation scan task for a certification campaign. Though
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
@@ -1686,8 +1648,6 @@ Use this API to run a report for a certification campaign. Though this Beta endp
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.report_type import ReportType
 from sailpoint.beta.rest import ApiException
@@ -1774,8 +1734,6 @@ Use this API to generate a new certification campaign from a campaign template. 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.campaign_reference import CampaignReference
 from sailpoint.beta.rest import ApiException
@@ -1859,8 +1817,6 @@ Use this API to update individual fields on a certification campaign, using the 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.slimcampaign import Slimcampaign
 from sailpoint.beta.rest import ApiException

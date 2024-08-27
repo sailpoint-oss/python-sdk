@@ -22,8 +22,6 @@ Get org configuration with only external (org admin) accessible properties for t
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.org_config import OrgConfig
 from sailpoint.v2024.rest import ApiException
@@ -108,8 +106,6 @@ Get a list of valid time zones that can be set in org configurations.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
@@ -192,8 +188,6 @@ Patch configuration of the current org using http://jsonpatch.com/ syntax.  Comm
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v2024.models.org_config import OrgConfig

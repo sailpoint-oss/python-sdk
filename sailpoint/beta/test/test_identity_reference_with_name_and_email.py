@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.identity_reference_with_name_and_email import IdentityReferenceWithNameAndEmail
 
@@ -28,7 +27,7 @@ class TestIdentityReferenceWithNameAndEmail(unittest.TestCase):
 
     def make_instance(self, include_optional) -> IdentityReferenceWithNameAndEmail:
         """Test IdentityReferenceWithNameAndEmail
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `IdentityReferenceWithNameAndEmail`

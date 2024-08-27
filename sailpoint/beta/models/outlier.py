@@ -18,13 +18,10 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional, Union
-from pydantic import BaseModel, StrictBool, StrictFloat, StrictInt, StrictStr, field_validator
-from pydantic import Field
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class Outlier(BaseModel):
     """
@@ -49,7 +46,7 @@ class Outlier(BaseModel):
         if value is None:
             return value
 
-        if value not in ('LOW_SIMILARITY', 'STRUCTURAL'):
+        if value not in set(['LOW_SIMILARITY', 'STRUCTURAL']):
             raise ValueError("must be one of enum values ('LOW_SIMILARITY', 'STRUCTURAL')")
         return value
 
@@ -59,15 +56,15 @@ class Outlier(BaseModel):
         if value is None:
             return value
 
-        if value not in ('MANUAL', 'AUTOMATIC', 'null'):
+        if value not in set(['MANUAL', 'AUTOMATIC', 'null']):
             raise ValueError("must be one of enum values ('MANUAL', 'AUTOMATIC', 'null')")
         return value
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -80,7 +77,7 @@ class Outlier(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of Outlier from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -94,10 +91,12 @@ class Outlier(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # set to None if unignore_type (nullable) is None
@@ -118,7 +117,7 @@ class Outlier(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of Outlier from a dict"""
         if obj is None:
             return None

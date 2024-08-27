@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.provisioning_criteria_operation import ProvisioningCriteriaOperation
 

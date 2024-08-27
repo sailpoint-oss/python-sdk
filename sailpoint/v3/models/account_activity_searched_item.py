@@ -18,19 +18,16 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
 from sailpoint.v3.models.account_request import AccountRequest
 from sailpoint.v3.models.account_source import AccountSource
 from sailpoint.v3.models.approval import Approval
 from sailpoint.v3.models.document_type import DocumentType
 from sailpoint.v3.models.expansion_item import ExpansionItem
 from sailpoint.v3.models.original_request import OriginalRequest
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class AccountActivitySearchedItem(BaseModel):
     """
@@ -57,11 +54,11 @@ class AccountActivitySearchedItem(BaseModel):
     sources: Optional[StrictStr] = Field(default=None, description="Sources involved in the account activity.")
     __properties: ClassVar[List[str]] = ["id", "name", "_type", "action", "created", "modified", "stage", "origin", "status", "requester", "recipient", "trackingNumber", "errors", "warnings", "approvals", "originalRequests", "expansionItems", "accountRequests", "sources"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -74,7 +71,7 @@ class AccountActivitySearchedItem(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of AccountActivitySearchedItem from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -88,10 +85,12 @@ class AccountActivitySearchedItem(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of requester
@@ -103,30 +102,30 @@ class AccountActivitySearchedItem(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in approvals (list)
         _items = []
         if self.approvals:
-            for _item in self.approvals:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_approvals in self.approvals:
+                if _item_approvals:
+                    _items.append(_item_approvals.to_dict())
             _dict['approvals'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in original_requests (list)
         _items = []
         if self.original_requests:
-            for _item in self.original_requests:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_original_requests in self.original_requests:
+                if _item_original_requests:
+                    _items.append(_item_original_requests.to_dict())
             _dict['originalRequests'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in expansion_items (list)
         _items = []
         if self.expansion_items:
-            for _item in self.expansion_items:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_expansion_items in self.expansion_items:
+                if _item_expansion_items:
+                    _items.append(_item_expansion_items.to_dict())
             _dict['expansionItems'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in account_requests (list)
         _items = []
         if self.account_requests:
-            for _item in self.account_requests:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_account_requests in self.account_requests:
+                if _item_account_requests:
+                    _items.append(_item_account_requests.to_dict())
             _dict['accountRequests'] = _items
         # set to None if created (nullable) is None
         # and model_fields_set contains the field
@@ -156,7 +155,7 @@ class AccountActivitySearchedItem(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of AccountActivitySearchedItem from a dict"""
         if obj is None:
             return None
@@ -174,15 +173,15 @@ class AccountActivitySearchedItem(BaseModel):
             "stage": obj.get("stage"),
             "origin": obj.get("origin"),
             "status": obj.get("status"),
-            "requester": AccountSource.from_dict(obj.get("requester")) if obj.get("requester") is not None else None,
-            "recipient": AccountSource.from_dict(obj.get("recipient")) if obj.get("recipient") is not None else None,
+            "requester": AccountSource.from_dict(obj["requester"]) if obj.get("requester") is not None else None,
+            "recipient": AccountSource.from_dict(obj["recipient"]) if obj.get("recipient") is not None else None,
             "trackingNumber": obj.get("trackingNumber"),
             "errors": obj.get("errors"),
             "warnings": obj.get("warnings"),
-            "approvals": [Approval.from_dict(_item) for _item in obj.get("approvals")] if obj.get("approvals") is not None else None,
-            "originalRequests": [OriginalRequest.from_dict(_item) for _item in obj.get("originalRequests")] if obj.get("originalRequests") is not None else None,
-            "expansionItems": [ExpansionItem.from_dict(_item) for _item in obj.get("expansionItems")] if obj.get("expansionItems") is not None else None,
-            "accountRequests": [AccountRequest.from_dict(_item) for _item in obj.get("accountRequests")] if obj.get("accountRequests") is not None else None,
+            "approvals": [Approval.from_dict(_item) for _item in obj["approvals"]] if obj.get("approvals") is not None else None,
+            "originalRequests": [OriginalRequest.from_dict(_item) for _item in obj["originalRequests"]] if obj.get("originalRequests") is not None else None,
+            "expansionItems": [ExpansionItem.from_dict(_item) for _item in obj["expansionItems"]] if obj.get("expansionItems") is not None else None,
+            "accountRequests": [AccountRequest.from_dict(_item) for _item in obj["accountRequests"]] if obj.get("accountRequests") is not None else None,
             "sources": obj.get("sources")
         })
         return _obj

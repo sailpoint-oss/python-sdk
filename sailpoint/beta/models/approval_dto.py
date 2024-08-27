@@ -17,15 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel
-from pydantic import Field
 from sailpoint.beta.models.approval_identity import ApprovalIdentity
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class ApprovalDto(BaseModel):
     """
@@ -39,11 +35,11 @@ class ApprovalDto(BaseModel):
     additional_attributes: Optional[Dict[str, Any]] = Field(default=None, description="Any additional attributes that the approval request may need", alias="additionalAttributes")
     __properties: ClassVar[List[str]] = ["comments", "approvedBy", "rejectedBy", "reassignFrom", "reassignTo", "additionalAttributes"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -56,7 +52,7 @@ class ApprovalDto(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of ApprovalDto from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -70,25 +66,27 @@ class ApprovalDto(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in approved_by (list)
         _items = []
         if self.approved_by:
-            for _item in self.approved_by:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_approved_by in self.approved_by:
+                if _item_approved_by:
+                    _items.append(_item_approved_by.to_dict())
             _dict['approvedBy'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in rejected_by (list)
         _items = []
         if self.rejected_by:
-            for _item in self.rejected_by:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_rejected_by in self.rejected_by:
+                if _item_rejected_by:
+                    _items.append(_item_rejected_by.to_dict())
             _dict['rejectedBy'] = _items
         # override the default output from pydantic by calling `to_dict()` of reassign_from
         if self.reassign_from:
@@ -99,7 +97,7 @@ class ApprovalDto(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of ApprovalDto from a dict"""
         if obj is None:
             return None
@@ -109,10 +107,10 @@ class ApprovalDto(BaseModel):
 
         _obj = cls.model_validate({
             "comments": obj.get("comments"),
-            "approvedBy": [ApprovalIdentity.from_dict(_item) for _item in obj.get("approvedBy")] if obj.get("approvedBy") is not None else None,
-            "rejectedBy": [ApprovalIdentity.from_dict(_item) for _item in obj.get("rejectedBy")] if obj.get("rejectedBy") is not None else None,
-            "reassignFrom": ApprovalIdentity.from_dict(obj.get("reassignFrom")) if obj.get("reassignFrom") is not None else None,
-            "reassignTo": ApprovalIdentity.from_dict(obj.get("reassignTo")) if obj.get("reassignTo") is not None else None,
+            "approvedBy": [ApprovalIdentity.from_dict(_item) for _item in obj["approvedBy"]] if obj.get("approvedBy") is not None else None,
+            "rejectedBy": [ApprovalIdentity.from_dict(_item) for _item in obj["rejectedBy"]] if obj.get("rejectedBy") is not None else None,
+            "reassignFrom": ApprovalIdentity.from_dict(obj["reassignFrom"]) if obj.get("reassignFrom") is not None else None,
+            "reassignTo": ApprovalIdentity.from_dict(obj["reassignTo"]) if obj.get("reassignTo") is not None else None,
             "additionalAttributes": obj.get("additionalAttributes")
         })
         return _obj

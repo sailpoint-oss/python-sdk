@@ -17,19 +17,15 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel
-from pydantic import Field
 from sailpoint.v3.models.aggregations import Aggregations
 from sailpoint.v3.models.bucket_aggregation import BucketAggregation
 from sailpoint.v3.models.filter_aggregation import FilterAggregation
 from sailpoint.v3.models.metric_aggregation import MetricAggregation
 from sailpoint.v3.models.nested_aggregation import NestedAggregation
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class SubSearchAggregationSpecification(BaseModel):
     """
@@ -42,11 +38,11 @@ class SubSearchAggregationSpecification(BaseModel):
     sub_aggregation: Optional[Aggregations] = Field(default=None, alias="subAggregation")
     __properties: ClassVar[List[str]] = ["nested", "metric", "filter", "bucket", "subAggregation"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -59,7 +55,7 @@ class SubSearchAggregationSpecification(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of SubSearchAggregationSpecification from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -73,10 +69,12 @@ class SubSearchAggregationSpecification(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of nested
@@ -97,7 +95,7 @@ class SubSearchAggregationSpecification(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of SubSearchAggregationSpecification from a dict"""
         if obj is None:
             return None
@@ -106,11 +104,11 @@ class SubSearchAggregationSpecification(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "nested": NestedAggregation.from_dict(obj.get("nested")) if obj.get("nested") is not None else None,
-            "metric": MetricAggregation.from_dict(obj.get("metric")) if obj.get("metric") is not None else None,
-            "filter": FilterAggregation.from_dict(obj.get("filter")) if obj.get("filter") is not None else None,
-            "bucket": BucketAggregation.from_dict(obj.get("bucket")) if obj.get("bucket") is not None else None,
-            "subAggregation": Aggregations.from_dict(obj.get("subAggregation")) if obj.get("subAggregation") is not None else None
+            "nested": NestedAggregation.from_dict(obj["nested"]) if obj.get("nested") is not None else None,
+            "metric": MetricAggregation.from_dict(obj["metric"]) if obj.get("metric") is not None else None,
+            "filter": FilterAggregation.from_dict(obj["filter"]) if obj.get("filter") is not None else None,
+            "bucket": BucketAggregation.from_dict(obj["bucket"]) if obj.get("bucket") is not None else None,
+            "subAggregation": Aggregations.from_dict(obj["subAggregation"]) if obj.get("subAggregation") is not None else None
         })
         return _obj
 

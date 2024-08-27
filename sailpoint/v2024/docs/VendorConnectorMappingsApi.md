@@ -21,8 +21,6 @@ Creates a new mapping between a SaaS vendor and an IDN connector to establish co
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.vendor_connector_mapping import VendorConnectorMapping
 from sailpoint.v2024.rest import ApiException
@@ -107,8 +105,6 @@ Soft deletes a mapping between a SaaS vendor and an IDN connector, removing the 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.delete_vendor_connector_mapping200_response import DeleteVendorConnectorMapping200Response
 from sailpoint.v2024.models.vendor_connector_mapping import VendorConnectorMapping

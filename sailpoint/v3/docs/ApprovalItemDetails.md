@@ -23,12 +23,12 @@ json = "{}"
 # create an instance of ApprovalItemDetails from a JSON string
 approval_item_details_instance = ApprovalItemDetails.from_json(json)
 # print the JSON string representation of the object
-print ApprovalItemDetails.to_json()
+print(ApprovalItemDetails.to_json())
 
 # convert the object into a dict
 approval_item_details_dict = approval_item_details_instance.to_dict()
 # create an instance of ApprovalItemDetails from a dict
-approval_item_details_form_dict = approval_item_details.from_dict(approval_item_details_dict)
+approval_item_details_from_dict = ApprovalItemDetails.from_dict(approval_item_details_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

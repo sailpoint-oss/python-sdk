@@ -18,15 +18,12 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
 from sailpoint.v2024.models.account_source import AccountSource
 from sailpoint.v2024.models.approval_comment1 import ApprovalComment1
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class Approval1(BaseModel):
     """
@@ -40,11 +37,11 @@ class Approval1(BaseModel):
     type: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["comments", "created", "modified", "owner", "result", "type"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -57,7 +54,7 @@ class Approval1(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of Approval1 from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -71,18 +68,20 @@ class Approval1(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in comments (list)
         _items = []
         if self.comments:
-            for _item in self.comments:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_comments in self.comments:
+                if _item_comments:
+                    _items.append(_item_comments.to_dict())
             _dict['comments'] = _items
         # override the default output from pydantic by calling `to_dict()` of owner
         if self.owner:
@@ -105,7 +104,7 @@ class Approval1(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of Approval1 from a dict"""
         if obj is None:
             return None
@@ -114,10 +113,10 @@ class Approval1(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "comments": [ApprovalComment1.from_dict(_item) for _item in obj.get("comments")] if obj.get("comments") is not None else None,
+            "comments": [ApprovalComment1.from_dict(_item) for _item in obj["comments"]] if obj.get("comments") is not None else None,
             "created": obj.get("created"),
             "modified": obj.get("modified"),
-            "owner": AccountSource.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
+            "owner": AccountSource.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
             "result": obj.get("result"),
             "type": obj.get("type")
         })

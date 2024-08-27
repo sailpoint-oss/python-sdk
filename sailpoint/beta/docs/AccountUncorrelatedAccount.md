@@ -22,12 +22,12 @@ json = "{}"
 # create an instance of AccountUncorrelatedAccount from a JSON string
 account_uncorrelated_account_instance = AccountUncorrelatedAccount.from_json(json)
 # print the JSON string representation of the object
-print AccountUncorrelatedAccount.to_json()
+print(AccountUncorrelatedAccount.to_json())
 
 # convert the object into a dict
 account_uncorrelated_account_dict = account_uncorrelated_account_instance.to_dict()
 # create an instance of AccountUncorrelatedAccount from a dict
-account_uncorrelated_account_form_dict = account_uncorrelated_account.from_dict(account_uncorrelated_account_dict)
+account_uncorrelated_account_from_dict = AccountUncorrelatedAccount.from_dict(account_uncorrelated_account_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

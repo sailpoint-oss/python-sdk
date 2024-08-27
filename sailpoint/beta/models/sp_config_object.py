@@ -17,15 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
-from pydantic import Field
 from sailpoint.beta.models.sp_config_url import SpConfigUrl
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class SpConfigObject(BaseModel):
     """
@@ -46,11 +42,11 @@ class SpConfigObject(BaseModel):
     one_per_tenant: Optional[StrictBool] = Field(default=False, alias="onePerTenant")
     __properties: ClassVar[List[str]] = ["objectType", "resolveByIdUrl", "resolveByNameUrl", "exportUrl", "exportRight", "exportLimit", "importUrl", "importRight", "importLimit", "referenceExtractors", "signatureRequired", "legacyObject", "onePerTenant"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -63,7 +59,7 @@ class SpConfigObject(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of SpConfigObject from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -77,10 +73,12 @@ class SpConfigObject(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of resolve_by_id_url
@@ -89,9 +87,9 @@ class SpConfigObject(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in resolve_by_name_url (list)
         _items = []
         if self.resolve_by_name_url:
-            for _item in self.resolve_by_name_url:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_resolve_by_name_url in self.resolve_by_name_url:
+                if _item_resolve_by_name_url:
+                    _items.append(_item_resolve_by_name_url.to_dict())
             _dict['resolveByNameUrl'] = _items
         # override the default output from pydantic by calling `to_dict()` of export_url
         if self.export_url:
@@ -107,7 +105,7 @@ class SpConfigObject(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of SpConfigObject from a dict"""
         if obj is None:
             return None
@@ -117,12 +115,12 @@ class SpConfigObject(BaseModel):
 
         _obj = cls.model_validate({
             "objectType": obj.get("objectType"),
-            "resolveByIdUrl": SpConfigUrl.from_dict(obj.get("resolveByIdUrl")) if obj.get("resolveByIdUrl") is not None else None,
-            "resolveByNameUrl": [SpConfigUrl.from_dict(_item) for _item in obj.get("resolveByNameUrl")] if obj.get("resolveByNameUrl") is not None else None,
-            "exportUrl": SpConfigUrl.from_dict(obj.get("exportUrl")) if obj.get("exportUrl") is not None else None,
+            "resolveByIdUrl": SpConfigUrl.from_dict(obj["resolveByIdUrl"]) if obj.get("resolveByIdUrl") is not None else None,
+            "resolveByNameUrl": [SpConfigUrl.from_dict(_item) for _item in obj["resolveByNameUrl"]] if obj.get("resolveByNameUrl") is not None else None,
+            "exportUrl": SpConfigUrl.from_dict(obj["exportUrl"]) if obj.get("exportUrl") is not None else None,
             "exportRight": obj.get("exportRight"),
             "exportLimit": obj.get("exportLimit"),
-            "importUrl": SpConfigUrl.from_dict(obj.get("importUrl")) if obj.get("importUrl") is not None else None,
+            "importUrl": SpConfigUrl.from_dict(obj["importUrl"]) if obj.get("importUrl") is not None else None,
             "importRight": obj.get("importRight"),
             "importLimit": obj.get("importLimit"),
             "referenceExtractors": obj.get("referenceExtractors"),

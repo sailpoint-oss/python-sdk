@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of AccessProfileRef from a JSON string
 access_profile_ref_instance = AccessProfileRef.from_json(json)
 # print the JSON string representation of the object
-print AccessProfileRef.to_json()
+print(AccessProfileRef.to_json())
 
 # convert the object into a dict
 access_profile_ref_dict = access_profile_ref_instance.to_dict()
 # create an instance of AccessProfileRef from a dict
-access_profile_ref_form_dict = access_profile_ref.from_dict(access_profile_ref_dict)
+access_profile_ref_from_dict = AccessProfileRef.from_dict(access_profile_ref_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

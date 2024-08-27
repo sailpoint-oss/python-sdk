@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.get_discovered_applications200_response_inner import GetDiscoveredApplications200ResponseInner
 
@@ -28,7 +27,7 @@ class TestGetDiscoveredApplications200ResponseInner(unittest.TestCase):
 
     def make_instance(self, include_optional) -> GetDiscoveredApplications200ResponseInner:
         """Test GetDiscoveredApplications200ResponseInner
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `GetDiscoveredApplications200ResponseInner`

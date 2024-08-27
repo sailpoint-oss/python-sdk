@@ -18,25 +18,22 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
-from pydantic import Field
 from sailpoint.beta.models.access_item_owner_dto import AccessItemOwnerDto
 from sailpoint.beta.models.access_item_requester_dto import AccessItemRequesterDto
 from sailpoint.beta.models.access_request_type import AccessRequestType
 from sailpoint.beta.models.approval_forward_history import ApprovalForwardHistory
+from sailpoint.beta.models.comment_dto import CommentDto
 from sailpoint.beta.models.comment_dto1 import CommentDto1
 from sailpoint.beta.models.completed_approval_pre_approval_trigger_result import CompletedApprovalPreApprovalTriggerResult
 from sailpoint.beta.models.completed_approval_reviewed_by import CompletedApprovalReviewedBy
-from sailpoint.beta.models.completed_approval_reviewer_comment import CompletedApprovalReviewerComment
 from sailpoint.beta.models.completed_approval_state import CompletedApprovalState
 from sailpoint.beta.models.requestable_object_reference import RequestableObjectReference
 from sailpoint.beta.models.requested_item_status_requested_for import RequestedItemStatusRequestedFor
 from sailpoint.beta.models.sod_violation_context_check_completed1 import SodViolationContextCheckCompleted1
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class CompletedApproval(BaseModel):
     """
@@ -54,7 +51,7 @@ class CompletedApproval(BaseModel):
     owner: Optional[AccessItemOwnerDto] = None
     requested_object: Optional[RequestableObjectReference] = Field(default=None, alias="requestedObject")
     requester_comment: Optional[CommentDto1] = Field(default=None, alias="requesterComment")
-    reviewer_comment: Optional[CompletedApprovalReviewerComment] = Field(default=None, alias="reviewerComment")
+    reviewer_comment: Optional[CommentDto] = Field(default=None, description="The approval's reviewer's comment.", alias="reviewerComment")
     previous_reviewers_comments: Optional[List[CommentDto1]] = Field(default=None, description="The history of the previous reviewers comments.", alias="previousReviewersComments")
     forward_history: Optional[List[ApprovalForwardHistory]] = Field(default=None, description="The history of approval forward action.", alias="forwardHistory")
     comment_required_when_rejected: Optional[StrictBool] = Field(default=False, description="When true the rejector has to provide comments when rejecting", alias="commentRequiredWhenRejected")
@@ -67,11 +64,11 @@ class CompletedApproval(BaseModel):
     client_metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Arbitrary key-value pairs provided during the request.", alias="clientMetadata")
     __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "requestCreated", "requestType", "requester", "requestedFor", "reviewedBy", "owner", "requestedObject", "requesterComment", "reviewerComment", "previousReviewersComments", "forwardHistory", "commentRequiredWhenRejected", "state", "removeDate", "removeDateUpdateRequested", "currentRemoveDate", "sodViolationContext", "preApprovalTriggerResult", "clientMetadata"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -84,7 +81,7 @@ class CompletedApproval(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of CompletedApproval from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -98,10 +95,12 @@ class CompletedApproval(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of requester
@@ -128,16 +127,16 @@ class CompletedApproval(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in previous_reviewers_comments (list)
         _items = []
         if self.previous_reviewers_comments:
-            for _item in self.previous_reviewers_comments:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_previous_reviewers_comments in self.previous_reviewers_comments:
+                if _item_previous_reviewers_comments:
+                    _items.append(_item_previous_reviewers_comments.to_dict())
             _dict['previousReviewersComments'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in forward_history (list)
         _items = []
         if self.forward_history:
-            for _item in self.forward_history:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_forward_history in self.forward_history:
+                if _item_forward_history:
+                    _items.append(_item_forward_history.to_dict())
             _dict['forwardHistory'] = _items
         # override the default output from pydantic by calling `to_dict()` of sod_violation_context
         if self.sod_violation_context:
@@ -178,7 +177,7 @@ class CompletedApproval(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of CompletedApproval from a dict"""
         if obj is None:
             return None
@@ -193,22 +192,22 @@ class CompletedApproval(BaseModel):
             "modified": obj.get("modified"),
             "requestCreated": obj.get("requestCreated"),
             "requestType": obj.get("requestType"),
-            "requester": AccessItemRequesterDto.from_dict(obj.get("requester")) if obj.get("requester") is not None else None,
-            "requestedFor": RequestedItemStatusRequestedFor.from_dict(obj.get("requestedFor")) if obj.get("requestedFor") is not None else None,
-            "reviewedBy": CompletedApprovalReviewedBy.from_dict(obj.get("reviewedBy")) if obj.get("reviewedBy") is not None else None,
-            "owner": AccessItemOwnerDto.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
-            "requestedObject": RequestableObjectReference.from_dict(obj.get("requestedObject")) if obj.get("requestedObject") is not None else None,
-            "requesterComment": CommentDto1.from_dict(obj.get("requesterComment")) if obj.get("requesterComment") is not None else None,
-            "reviewerComment": CompletedApprovalReviewerComment.from_dict(obj.get("reviewerComment")) if obj.get("reviewerComment") is not None else None,
-            "previousReviewersComments": [CommentDto1.from_dict(_item) for _item in obj.get("previousReviewersComments")] if obj.get("previousReviewersComments") is not None else None,
-            "forwardHistory": [ApprovalForwardHistory.from_dict(_item) for _item in obj.get("forwardHistory")] if obj.get("forwardHistory") is not None else None,
+            "requester": AccessItemRequesterDto.from_dict(obj["requester"]) if obj.get("requester") is not None else None,
+            "requestedFor": RequestedItemStatusRequestedFor.from_dict(obj["requestedFor"]) if obj.get("requestedFor") is not None else None,
+            "reviewedBy": CompletedApprovalReviewedBy.from_dict(obj["reviewedBy"]) if obj.get("reviewedBy") is not None else None,
+            "owner": AccessItemOwnerDto.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
+            "requestedObject": RequestableObjectReference.from_dict(obj["requestedObject"]) if obj.get("requestedObject") is not None else None,
+            "requesterComment": CommentDto1.from_dict(obj["requesterComment"]) if obj.get("requesterComment") is not None else None,
+            "reviewerComment": CommentDto.from_dict(obj["reviewerComment"]) if obj.get("reviewerComment") is not None else None,
+            "previousReviewersComments": [CommentDto1.from_dict(_item) for _item in obj["previousReviewersComments"]] if obj.get("previousReviewersComments") is not None else None,
+            "forwardHistory": [ApprovalForwardHistory.from_dict(_item) for _item in obj["forwardHistory"]] if obj.get("forwardHistory") is not None else None,
             "commentRequiredWhenRejected": obj.get("commentRequiredWhenRejected") if obj.get("commentRequiredWhenRejected") is not None else False,
             "state": obj.get("state"),
             "removeDate": obj.get("removeDate"),
             "removeDateUpdateRequested": obj.get("removeDateUpdateRequested") if obj.get("removeDateUpdateRequested") is not None else False,
             "currentRemoveDate": obj.get("currentRemoveDate"),
-            "sodViolationContext": SodViolationContextCheckCompleted1.from_dict(obj.get("sodViolationContext")) if obj.get("sodViolationContext") is not None else None,
-            "preApprovalTriggerResult": CompletedApprovalPreApprovalTriggerResult.from_dict(obj.get("preApprovalTriggerResult")) if obj.get("preApprovalTriggerResult") is not None else None,
+            "sodViolationContext": SodViolationContextCheckCompleted1.from_dict(obj["sodViolationContext"]) if obj.get("sodViolationContext") is not None else None,
+            "preApprovalTriggerResult": CompletedApprovalPreApprovalTriggerResult.from_dict(obj["preApprovalTriggerResult"]) if obj.get("preApprovalTriggerResult") is not None else None,
             "clientMetadata": obj.get("clientMetadata")
         })
         return _obj

@@ -27,12 +27,12 @@ json = "{}"
 # create an instance of OrgConfig from a JSON string
 org_config_instance = OrgConfig.from_json(json)
 # print the JSON string representation of the object
-print OrgConfig.to_json()
+print(OrgConfig.to_json())
 
 # convert the object into a dict
 org_config_dict = org_config_instance.to_dict()
 # create an instance of OrgConfig from a dict
-org_config_form_dict = org_config.from_dict(org_config_dict)
+org_config_from_dict = OrgConfig.from_dict(org_config_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

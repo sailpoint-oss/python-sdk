@@ -22,8 +22,6 @@ This API creates the custom password instructions for the specified page ID. A t
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.custom_password_instruction import CustomPasswordInstruction
 from sailpoint.beta.rest import ApiException
@@ -105,8 +103,6 @@ This API delete the custom password instructions for the specified page ID. A to
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
@@ -188,8 +184,6 @@ This API returns the custom password instructions for the specified page ID. A t
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.custom_password_instruction import CustomPasswordInstruction
 from sailpoint.beta.rest import ApiException

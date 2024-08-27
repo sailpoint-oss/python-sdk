@@ -21,8 +21,6 @@ This API is used to check if granting some additional accesses would cause the s
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.identity_with_new_access import IdentityWithNewAccess
 from sailpoint.v2024.models.violation_prediction import ViolationPrediction
@@ -108,8 +106,6 @@ This API initiates a SOD policy verification asynchronously.  A token with ORG_A
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.identity_with_new_access1 import IdentityWithNewAccess1
 from sailpoint.v2024.models.sod_violation_check import SodViolationCheck

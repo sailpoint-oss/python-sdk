@@ -18,16 +18,13 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
 from sailpoint.v2024.models.account_activity_item import AccountActivityItem
 from sailpoint.v2024.models.execution_status import ExecutionStatus
 from sailpoint.v2024.models.identity_summary import IdentitySummary
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class AccountActivity(BaseModel):
     """
@@ -49,11 +46,11 @@ class AccountActivity(BaseModel):
     client_metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Arbitrary key-value pairs, if any were included in the corresponding access request", alias="clientMetadata")
     __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "completed", "completionStatus", "type", "requesterIdentitySummary", "targetIdentitySummary", "errors", "warnings", "items", "executionStatus", "clientMetadata"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -66,7 +63,7 @@ class AccountActivity(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of AccountActivity from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -80,10 +77,12 @@ class AccountActivity(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of completion_status
@@ -98,9 +97,9 @@ class AccountActivity(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in items (list)
         _items = []
         if self.items:
-            for _item in self.items:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_items in self.items:
+                if _item_items:
+                    _items.append(_item_items.to_dict())
             _dict['items'] = _items
         # set to None if modified (nullable) is None
         # and model_fields_set contains the field
@@ -150,7 +149,7 @@ class AccountActivity(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of AccountActivity from a dict"""
         if obj is None:
             return None
@@ -164,13 +163,13 @@ class AccountActivity(BaseModel):
             "created": obj.get("created"),
             "modified": obj.get("modified"),
             "completed": obj.get("completed"),
-            "completionStatus": CompletionStatus.from_dict(obj.get("completionStatus")) if obj.get("completionStatus") is not None else None,
+            "completionStatus": CompletionStatus.from_dict(obj["completionStatus"]) if obj.get("completionStatus") is not None else None,
             "type": obj.get("type"),
-            "requesterIdentitySummary": IdentitySummary.from_dict(obj.get("requesterIdentitySummary")) if obj.get("requesterIdentitySummary") is not None else None,
-            "targetIdentitySummary": IdentitySummary.from_dict(obj.get("targetIdentitySummary")) if obj.get("targetIdentitySummary") is not None else None,
+            "requesterIdentitySummary": IdentitySummary.from_dict(obj["requesterIdentitySummary"]) if obj.get("requesterIdentitySummary") is not None else None,
+            "targetIdentitySummary": IdentitySummary.from_dict(obj["targetIdentitySummary"]) if obj.get("targetIdentitySummary") is not None else None,
             "errors": obj.get("errors"),
             "warnings": obj.get("warnings"),
-            "items": [AccountActivityItem.from_dict(_item) for _item in obj.get("items")] if obj.get("items") is not None else None,
+            "items": [AccountActivityItem.from_dict(_item) for _item in obj["items"]] if obj.get("items") is not None else None,
             "executionStatus": obj.get("executionStatus"),
             "clientMetadata": obj.get("clientMetadata")
         })

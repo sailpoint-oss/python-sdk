@@ -22,12 +22,12 @@ json = "{}"
 # create an instance of ReviewDecision from a JSON string
 review_decision_instance = ReviewDecision.from_json(json)
 # print the JSON string representation of the object
-print ReviewDecision.to_json()
+print(ReviewDecision.to_json())
 
 # convert the object into a dict
 review_decision_dict = review_decision_instance.to_dict()
 # create an instance of ReviewDecision from a dict
-review_decision_form_dict = review_decision.from_dict(review_decision_dict)
+review_decision_from_dict = ReviewDecision.from_dict(review_decision_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

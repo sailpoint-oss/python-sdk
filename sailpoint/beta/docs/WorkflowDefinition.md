@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of WorkflowDefinition from a JSON string
 workflow_definition_instance = WorkflowDefinition.from_json(json)
 # print the JSON string representation of the object
-print WorkflowDefinition.to_json()
+print(WorkflowDefinition.to_json())
 
 # convert the object into a dict
 workflow_definition_dict = workflow_definition_instance.to_dict()
 # create an instance of WorkflowDefinition from a dict
-workflow_definition_form_dict = workflow_definition.from_dict(workflow_definition_dict)
+workflow_definition_from_dict = WorkflowDefinition.from_dict(workflow_definition_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

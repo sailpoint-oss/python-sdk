@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.http_dispatch_mode import HttpDispatchMode
 

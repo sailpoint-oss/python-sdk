@@ -21,12 +21,12 @@ json = "{}"
 # create an instance of SodViolationCheckResult from a JSON string
 sod_violation_check_result_instance = SodViolationCheckResult.from_json(json)
 # print the JSON string representation of the object
-print SodViolationCheckResult.to_json()
+print(SodViolationCheckResult.to_json())
 
 # convert the object into a dict
 sod_violation_check_result_dict = sod_violation_check_result_instance.to_dict()
 # create an instance of SodViolationCheckResult from a dict
-sod_violation_check_result_form_dict = sod_violation_check_result.from_dict(sod_violation_check_result_dict)
+sod_violation_check_result_from_dict = SodViolationCheckResult.from_dict(sod_violation_check_result_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

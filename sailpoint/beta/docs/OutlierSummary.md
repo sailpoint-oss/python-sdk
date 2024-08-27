@@ -21,12 +21,12 @@ json = "{}"
 # create an instance of OutlierSummary from a JSON string
 outlier_summary_instance = OutlierSummary.from_json(json)
 # print the JSON string representation of the object
-print OutlierSummary.to_json()
+print(OutlierSummary.to_json())
 
 # convert the object into a dict
 outlier_summary_dict = outlier_summary_instance.to_dict()
 # create an instance of OutlierSummary from a dict
-outlier_summary_form_dict = outlier_summary.from_dict(outlier_summary_dict)
+outlier_summary_from_dict = OutlierSummary.from_dict(outlier_summary_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -18,14 +18,11 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictInt, StrictStr
-from pydantic import Field
 from sailpoint.v3.models.non_employee_identity_reference_with_id import NonEmployeeIdentityReferenceWithId
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class NonEmployeeSourceWithNECount(BaseModel):
     """
@@ -42,11 +39,11 @@ class NonEmployeeSourceWithNECount(BaseModel):
     non_employee_count: Optional[StrictInt] = Field(default=None, description="Number of non-employee records associated with this source.", alias="nonEmployeeCount")
     __properties: ClassVar[List[str]] = ["id", "sourceId", "name", "description", "approvers", "accountManagers", "modified", "created", "nonEmployeeCount"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -59,7 +56,7 @@ class NonEmployeeSourceWithNECount(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of NonEmployeeSourceWithNECount from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -73,25 +70,27 @@ class NonEmployeeSourceWithNECount(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in approvers (list)
         _items = []
         if self.approvers:
-            for _item in self.approvers:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_approvers in self.approvers:
+                if _item_approvers:
+                    _items.append(_item_approvers.to_dict())
             _dict['approvers'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in account_managers (list)
         _items = []
         if self.account_managers:
-            for _item in self.account_managers:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_account_managers in self.account_managers:
+                if _item_account_managers:
+                    _items.append(_item_account_managers.to_dict())
             _dict['accountManagers'] = _items
         # set to None if non_employee_count (nullable) is None
         # and model_fields_set contains the field
@@ -101,7 +100,7 @@ class NonEmployeeSourceWithNECount(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of NonEmployeeSourceWithNECount from a dict"""
         if obj is None:
             return None
@@ -114,8 +113,8 @@ class NonEmployeeSourceWithNECount(BaseModel):
             "sourceId": obj.get("sourceId"),
             "name": obj.get("name"),
             "description": obj.get("description"),
-            "approvers": [NonEmployeeIdentityReferenceWithId.from_dict(_item) for _item in obj.get("approvers")] if obj.get("approvers") is not None else None,
-            "accountManagers": [NonEmployeeIdentityReferenceWithId.from_dict(_item) for _item in obj.get("accountManagers")] if obj.get("accountManagers") is not None else None,
+            "approvers": [NonEmployeeIdentityReferenceWithId.from_dict(_item) for _item in obj["approvers"]] if obj.get("approvers") is not None else None,
+            "accountManagers": [NonEmployeeIdentityReferenceWithId.from_dict(_item) for _item in obj["accountManagers"]] if obj.get("accountManagers") is not None else None,
             "modified": obj.get("modified"),
             "created": obj.get("created"),
             "nonEmployeeCount": obj.get("nonEmployeeCount")

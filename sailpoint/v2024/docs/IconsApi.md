@@ -21,8 +21,6 @@ This API endpoint delete an icon by object type and object id. A token with ORG_
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
@@ -108,8 +106,6 @@ This API endpoint updates an icon by object type and object id. A token with ORG
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.set_icon200_response import SetIcon200Response
 from sailpoint.v2024.rest import ApiException

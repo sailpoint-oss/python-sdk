@@ -25,8 +25,6 @@ This API endpoint cancels a pending access request. An access request can be can
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.cancel_access_request import CancelAccessRequest
 from sailpoint.v2024.rest import ApiException
@@ -111,8 +109,6 @@ This endpoint closes access requests that are stuck in a pending state. It can b
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.close_access_request import CloseAccessRequest
 from sailpoint.v2024.rest import ApiException
@@ -198,8 +194,6 @@ Use this API to submit an access request in Identity Security Cloud (ISC), where
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.access_request import AccessRequest
 from sailpoint.v2024.rest import ApiException
@@ -283,8 +277,6 @@ This endpoint returns the current access-request configuration.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.access_request_config import AccessRequestConfig
 from sailpoint.v2024.rest import ApiException
@@ -364,8 +356,6 @@ Use this API to return a list of access request statuses based on the specified 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.requested_item_status import RequestedItemStatus
 from sailpoint.v2024.rest import ApiException
@@ -465,8 +455,6 @@ This endpoint replaces the current access-request configuration. A token with OR
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.access_request_config import AccessRequestConfig
 from sailpoint.v2024.rest import ApiException

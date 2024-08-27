@@ -17,16 +17,12 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel
-from pydantic import Field
 from sailpoint.v2024.models.export_form_definitions_by_tenant200_response_inner import ExportFormDefinitionsByTenant200ResponseInner
 from sailpoint.v2024.models.import_form_definitions202_response_errors_inner import ImportFormDefinitions202ResponseErrorsInner
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class ImportFormDefinitions202Response(BaseModel):
     """
@@ -38,11 +34,11 @@ class ImportFormDefinitions202Response(BaseModel):
     warnings: Optional[List[ImportFormDefinitions202ResponseErrorsInner]] = None
     __properties: ClassVar[List[str]] = ["errors", "importedObjects", "infos", "warnings"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -55,7 +51,7 @@ class ImportFormDefinitions202Response(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of ImportFormDefinitions202Response from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -69,44 +65,46 @@ class ImportFormDefinitions202Response(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in errors (list)
         _items = []
         if self.errors:
-            for _item in self.errors:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_errors in self.errors:
+                if _item_errors:
+                    _items.append(_item_errors.to_dict())
             _dict['errors'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in imported_objects (list)
         _items = []
         if self.imported_objects:
-            for _item in self.imported_objects:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_imported_objects in self.imported_objects:
+                if _item_imported_objects:
+                    _items.append(_item_imported_objects.to_dict())
             _dict['importedObjects'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in infos (list)
         _items = []
         if self.infos:
-            for _item in self.infos:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_infos in self.infos:
+                if _item_infos:
+                    _items.append(_item_infos.to_dict())
             _dict['infos'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in warnings (list)
         _items = []
         if self.warnings:
-            for _item in self.warnings:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_warnings in self.warnings:
+                if _item_warnings:
+                    _items.append(_item_warnings.to_dict())
             _dict['warnings'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of ImportFormDefinitions202Response from a dict"""
         if obj is None:
             return None
@@ -115,10 +113,10 @@ class ImportFormDefinitions202Response(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "errors": [ImportFormDefinitions202ResponseErrorsInner.from_dict(_item) for _item in obj.get("errors")] if obj.get("errors") is not None else None,
-            "importedObjects": [ExportFormDefinitionsByTenant200ResponseInner.from_dict(_item) for _item in obj.get("importedObjects")] if obj.get("importedObjects") is not None else None,
-            "infos": [ImportFormDefinitions202ResponseErrorsInner.from_dict(_item) for _item in obj.get("infos")] if obj.get("infos") is not None else None,
-            "warnings": [ImportFormDefinitions202ResponseErrorsInner.from_dict(_item) for _item in obj.get("warnings")] if obj.get("warnings") is not None else None
+            "errors": [ImportFormDefinitions202ResponseErrorsInner.from_dict(_item) for _item in obj["errors"]] if obj.get("errors") is not None else None,
+            "importedObjects": [ExportFormDefinitionsByTenant200ResponseInner.from_dict(_item) for _item in obj["importedObjects"]] if obj.get("importedObjects") is not None else None,
+            "infos": [ImportFormDefinitions202ResponseErrorsInner.from_dict(_item) for _item in obj["infos"]] if obj.get("infos") is not None else None,
+            "warnings": [ImportFormDefinitions202ResponseErrorsInner.from_dict(_item) for _item in obj["warnings"]] if obj.get("warnings") is not None else None
         })
         return _obj
 

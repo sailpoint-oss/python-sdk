@@ -17,15 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
 from sailpoint.beta.models.access_criteria_criteria_list_inner import AccessCriteriaCriteriaListInner
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class AccessCriteria(BaseModel):
     """
@@ -35,11 +31,11 @@ class AccessCriteria(BaseModel):
     criteria_list: Optional[List[AccessCriteriaCriteriaListInner]] = Field(default=None, description="List of criteria.  There is a min of 1 and max of 50 items in the list.", alias="criteriaList")
     __properties: ClassVar[List[str]] = ["name", "criteriaList"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -52,7 +48,7 @@ class AccessCriteria(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of AccessCriteria from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -66,23 +62,25 @@ class AccessCriteria(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in criteria_list (list)
         _items = []
         if self.criteria_list:
-            for _item in self.criteria_list:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_criteria_list in self.criteria_list:
+                if _item_criteria_list:
+                    _items.append(_item_criteria_list.to_dict())
             _dict['criteriaList'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of AccessCriteria from a dict"""
         if obj is None:
             return None
@@ -92,7 +90,7 @@ class AccessCriteria(BaseModel):
 
         _obj = cls.model_validate({
             "name": obj.get("name"),
-            "criteriaList": [AccessCriteriaCriteriaListInner.from_dict(_item) for _item in obj.get("criteriaList")] if obj.get("criteriaList") is not None else None
+            "criteriaList": [AccessCriteriaCriteriaListInner.from_dict(_item) for _item in obj["criteriaList"]] if obj.get("criteriaList") is not None else None
         })
         return _obj
 

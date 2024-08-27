@@ -17,15 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr, field_validator
-from pydantic import Field
 from sailpoint.beta.models.object_export_import_options import ObjectExportImportOptions
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class ImportOptions(BaseModel):
     """
@@ -45,7 +41,7 @@ class ImportOptions(BaseModel):
             return value
 
         for i in value:
-            if i not in ('IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION'):
+            if i not in set(['IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION']):
                 raise ValueError("each list item must be one of ('IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION')")
         return value
 
@@ -56,7 +52,7 @@ class ImportOptions(BaseModel):
             return value
 
         for i in value:
-            if i not in ('IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION'):
+            if i not in set(['IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION']):
                 raise ValueError("each list item must be one of ('IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION')")
         return value
 
@@ -67,15 +63,15 @@ class ImportOptions(BaseModel):
             return value
 
         for i in value:
-            if i not in ('IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION'):
+            if i not in set(['IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION']):
                 raise ValueError("each list item must be one of ('IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION')")
         return value
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -88,7 +84,7 @@ class ImportOptions(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of ImportOptions from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -102,23 +98,25 @@ class ImportOptions(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each value in object_options (dict)
         _field_dict = {}
         if self.object_options:
-            for _key in self.object_options:
-                if self.object_options[_key]:
-                    _field_dict[_key] = self.object_options[_key].to_dict()
+            for _key_object_options in self.object_options:
+                if self.object_options[_key_object_options]:
+                    _field_dict[_key_object_options] = self.object_options[_key_object_options].to_dict()
             _dict['objectOptions'] = _field_dict
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of ImportOptions from a dict"""
         if obj is None:
             return None
@@ -131,7 +129,7 @@ class ImportOptions(BaseModel):
             "includeTypes": obj.get("includeTypes"),
             "objectOptions": dict(
                 (_k, ObjectExportImportOptions.from_dict(_v))
-                for _k, _v in obj.get("objectOptions").items()
+                for _k, _v in obj["objectOptions"].items()
             )
             if obj.get("objectOptions") is not None
             else None,

@@ -27,12 +27,12 @@ json = "{}"
 # create an instance of CreateSavedSearchRequest from a JSON string
 create_saved_search_request_instance = CreateSavedSearchRequest.from_json(json)
 # print the JSON string representation of the object
-print CreateSavedSearchRequest.to_json()
+print(CreateSavedSearchRequest.to_json())
 
 # convert the object into a dict
 create_saved_search_request_dict = create_saved_search_request_instance.to_dict()
 # create an instance of CreateSavedSearchRequest from a dict
-create_saved_search_request_form_dict = create_saved_search_request.from_dict(create_saved_search_request_dict)
+create_saved_search_request_from_dict = CreateSavedSearchRequest.from_dict(create_saved_search_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

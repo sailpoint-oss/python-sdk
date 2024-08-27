@@ -18,18 +18,15 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
 from sailpoint.v2024.models.form_condition import FormCondition
 from sailpoint.v2024.models.form_definition_input import FormDefinitionInput
 from sailpoint.v2024.models.form_element import FormElement
 from sailpoint.v2024.models.form_owner import FormOwner
 from sailpoint.v2024.models.form_used_by import FormUsedBy
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class FormDefinitionResponse(BaseModel):
     """
@@ -47,11 +44,11 @@ class FormDefinitionResponse(BaseModel):
     modified: Optional[datetime] = Field(default=None, description="Modified is the last date the form definition was modified")
     __properties: ClassVar[List[str]] = ["id", "name", "description", "owner", "usedBy", "formInput", "formElements", "formConditions", "created", "modified"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -64,7 +61,7 @@ class FormDefinitionResponse(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of FormDefinitionResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -78,10 +75,12 @@ class FormDefinitionResponse(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of owner
@@ -90,35 +89,35 @@ class FormDefinitionResponse(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in used_by (list)
         _items = []
         if self.used_by:
-            for _item in self.used_by:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_used_by in self.used_by:
+                if _item_used_by:
+                    _items.append(_item_used_by.to_dict())
             _dict['usedBy'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in form_input (list)
         _items = []
         if self.form_input:
-            for _item in self.form_input:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_form_input in self.form_input:
+                if _item_form_input:
+                    _items.append(_item_form_input.to_dict())
             _dict['formInput'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in form_elements (list)
         _items = []
         if self.form_elements:
-            for _item in self.form_elements:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_form_elements in self.form_elements:
+                if _item_form_elements:
+                    _items.append(_item_form_elements.to_dict())
             _dict['formElements'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in form_conditions (list)
         _items = []
         if self.form_conditions:
-            for _item in self.form_conditions:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_form_conditions in self.form_conditions:
+                if _item_form_conditions:
+                    _items.append(_item_form_conditions.to_dict())
             _dict['formConditions'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of FormDefinitionResponse from a dict"""
         if obj is None:
             return None
@@ -130,11 +129,11 @@ class FormDefinitionResponse(BaseModel):
             "id": obj.get("id"),
             "name": obj.get("name"),
             "description": obj.get("description"),
-            "owner": FormOwner.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
-            "usedBy": [FormUsedBy.from_dict(_item) for _item in obj.get("usedBy")] if obj.get("usedBy") is not None else None,
-            "formInput": [FormDefinitionInput.from_dict(_item) for _item in obj.get("formInput")] if obj.get("formInput") is not None else None,
-            "formElements": [FormElement.from_dict(_item) for _item in obj.get("formElements")] if obj.get("formElements") is not None else None,
-            "formConditions": [FormCondition.from_dict(_item) for _item in obj.get("formConditions")] if obj.get("formConditions") is not None else None,
+            "owner": FormOwner.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
+            "usedBy": [FormUsedBy.from_dict(_item) for _item in obj["usedBy"]] if obj.get("usedBy") is not None else None,
+            "formInput": [FormDefinitionInput.from_dict(_item) for _item in obj["formInput"]] if obj.get("formInput") is not None else None,
+            "formElements": [FormElement.from_dict(_item) for _item in obj["formElements"]] if obj.get("formElements") is not None else None,
+            "formConditions": [FormCondition.from_dict(_item) for _item in obj["formConditions"]] if obj.get("formConditions") is not None else None,
             "created": obj.get("created"),
             "modified": obj.get("modified")
         })

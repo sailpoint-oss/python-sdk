@@ -24,8 +24,6 @@ This creates an OAuth client.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.create_o_auth_client_request import CreateOAuthClientRequest
 from sailpoint.beta.models.create_o_auth_client_response import CreateOAuthClientResponse
@@ -110,8 +108,6 @@ This deletes an OAuth client.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
@@ -193,8 +189,6 @@ This gets details of an OAuth client.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.get_o_auth_client_response import GetOAuthClientResponse
 from sailpoint.beta.rest import ApiException
@@ -279,8 +273,6 @@ This gets a list of OAuth clients.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.get_o_auth_client_response import GetOAuthClientResponse
 from sailpoint.beta.rest import ApiException
@@ -364,8 +356,6 @@ This performs a targeted update to the field(s) of an OAuth client. Request will
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.get_o_auth_client_response import GetOAuthClientResponse
 from sailpoint.beta.models.json_patch_operation import JsonPatchOperation

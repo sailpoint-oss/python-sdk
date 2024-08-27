@@ -18,13 +18,10 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
-from pydantic import Field
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class PasswordPolicyV3Dto(BaseModel):
     """
@@ -63,11 +60,11 @@ class PasswordPolicyV3Dto(BaseModel):
     source_ids: Optional[List[StrictStr]] = Field(default=None, description="List of sources IDs managed by this password policy.", alias="sourceIds")
     __properties: ClassVar[List[str]] = ["id", "description", "name", "dateCreated", "lastUpdated", "firstExpirationReminder", "accountIdMinWordLength", "accountNameMinWordLength", "minAlpha", "minCharacterTypes", "maxLength", "minLength", "maxRepeatedChars", "minLower", "minNumeric", "minSpecial", "minUpper", "passwordExpiration", "defaultPolicy", "enablePasswdExpiration", "requireStrongAuthn", "requireStrongAuthOffNetwork", "requireStrongAuthUntrustedGeographies", "useAccountAttributes", "useDictionary", "useIdentityAttributes", "validateAgainstAccountId", "validateAgainstAccountName", "created", "modified", "sourceIds"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -80,7 +77,7 @@ class PasswordPolicyV3Dto(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of PasswordPolicyV3Dto from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -94,10 +91,12 @@ class PasswordPolicyV3Dto(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # set to None if description (nullable) is None
@@ -123,7 +122,7 @@ class PasswordPolicyV3Dto(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of PasswordPolicyV3Dto from a dict"""
         if obj is None:
             return None

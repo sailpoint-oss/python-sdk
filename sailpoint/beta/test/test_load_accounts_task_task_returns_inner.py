@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.load_accounts_task_task_returns_inner import LoadAccountsTaskTaskReturnsInner
 
@@ -28,7 +27,7 @@ class TestLoadAccountsTaskTaskReturnsInner(unittest.TestCase):
 
     def make_instance(self, include_optional) -> LoadAccountsTaskTaskReturnsInner:
         """Test LoadAccountsTaskTaskReturnsInner
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `LoadAccountsTaskTaskReturnsInner`

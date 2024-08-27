@@ -17,16 +17,12 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr, field_validator
-from pydantic import Field
 from sailpoint.v2024.models.expression_children_inner import ExpressionChildrenInner
 from sailpoint.v2024.models.value import Value
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class Expression(BaseModel):
     """
@@ -44,15 +40,15 @@ class Expression(BaseModel):
         if value is None:
             return value
 
-        if value not in ('AND', 'EQUALS'):
+        if value not in set(['AND', 'EQUALS']):
             raise ValueError("must be one of enum values ('AND', 'EQUALS')")
         return value
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -65,7 +61,7 @@ class Expression(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of Expression from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -79,10 +75,12 @@ class Expression(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of value
@@ -91,9 +89,9 @@ class Expression(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in children (list)
         _items = []
         if self.children:
-            for _item in self.children:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_children in self.children:
+                if _item_children:
+                    _items.append(_item_children.to_dict())
             _dict['children'] = _items
         # set to None if attribute (nullable) is None
         # and model_fields_set contains the field
@@ -113,7 +111,7 @@ class Expression(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of Expression from a dict"""
         if obj is None:
             return None
@@ -124,8 +122,8 @@ class Expression(BaseModel):
         _obj = cls.model_validate({
             "operator": obj.get("operator"),
             "attribute": obj.get("attribute"),
-            "value": Value.from_dict(obj.get("value")) if obj.get("value") is not None else None,
-            "children": [ExpressionChildrenInner.from_dict(_item) for _item in obj.get("children")] if obj.get("children") is not None else None
+            "value": Value.from_dict(obj["value"]) if obj.get("value") is not None else None,
+            "children": [ExpressionChildrenInner.from_dict(_item) for _item in obj["children"]] if obj.get("children") is not None else None
         })
         return _obj
 

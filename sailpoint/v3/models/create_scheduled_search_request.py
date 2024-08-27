@@ -18,15 +18,12 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
-from pydantic import Field
 from sailpoint.v3.models.schedule1 import Schedule1
 from sailpoint.v3.models.search_schedule_recipients_inner import SearchScheduleRecipientsInner
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class CreateScheduledSearchRequest(BaseModel):
     """
@@ -35,8 +32,8 @@ class CreateScheduledSearchRequest(BaseModel):
     name: Optional[StrictStr] = Field(default=None, description="The name of the scheduled search. ")
     description: Optional[StrictStr] = Field(default=None, description="The description of the scheduled search. ")
     saved_search_id: StrictStr = Field(description="The ID of the saved search that will be executed.", alias="savedSearchId")
-    created: Optional[datetime] = Field(default=None, description="A date-time in ISO-8601 format")
-    modified: Optional[datetime] = Field(default=None, description="A date-time in ISO-8601 format")
+    created: Optional[datetime] = Field(default=None, description="The date the scheduled search was initially created.")
+    modified: Optional[datetime] = Field(default=None, description="The last date the scheduled search was modified.")
     schedule: Schedule1
     recipients: List[SearchScheduleRecipientsInner] = Field(description="A list of identities that should receive the scheduled search report via email.")
     enabled: Optional[StrictBool] = Field(default=False, description="Indicates if the scheduled search is enabled. ")
@@ -44,11 +41,11 @@ class CreateScheduledSearchRequest(BaseModel):
     display_query_details: Optional[StrictBool] = Field(default=False, description="Indicates if the generated email should include the query and search results preview (which could include PII). ", alias="displayQueryDetails")
     __properties: ClassVar[List[str]] = ["name", "description", "savedSearchId", "created", "modified", "schedule", "recipients", "enabled", "emailEmptyResults", "displayQueryDetails"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -61,7 +58,7 @@ class CreateScheduledSearchRequest(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of CreateScheduledSearchRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -77,12 +74,14 @@ class CreateScheduledSearchRequest(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         """
+        excluded_fields: Set[str] = set([
+            "created",
+            "modified",
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-                "created",
-                "modified",
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of schedule
@@ -91,9 +90,9 @@ class CreateScheduledSearchRequest(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in recipients (list)
         _items = []
         if self.recipients:
-            for _item in self.recipients:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_recipients in self.recipients:
+                if _item_recipients:
+                    _items.append(_item_recipients.to_dict())
             _dict['recipients'] = _items
         # set to None if name (nullable) is None
         # and model_fields_set contains the field
@@ -118,7 +117,7 @@ class CreateScheduledSearchRequest(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of CreateScheduledSearchRequest from a dict"""
         if obj is None:
             return None
@@ -132,8 +131,8 @@ class CreateScheduledSearchRequest(BaseModel):
             "savedSearchId": obj.get("savedSearchId"),
             "created": obj.get("created"),
             "modified": obj.get("modified"),
-            "schedule": Schedule1.from_dict(obj.get("schedule")) if obj.get("schedule") is not None else None,
-            "recipients": [SearchScheduleRecipientsInner.from_dict(_item) for _item in obj.get("recipients")] if obj.get("recipients") is not None else None,
+            "schedule": Schedule1.from_dict(obj["schedule"]) if obj.get("schedule") is not None else None,
+            "recipients": [SearchScheduleRecipientsInner.from_dict(_item) for _item in obj["recipients"]] if obj.get("recipients") is not None else None,
             "enabled": obj.get("enabled") if obj.get("enabled") is not None else False,
             "emailEmptyResults": obj.get("emailEmptyResults") if obj.get("emailEmptyResults") is not None else False,
             "displayQueryDetails": obj.get("displayQueryDetails") if obj.get("displayQueryDetails") is not None else False

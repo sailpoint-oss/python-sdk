@@ -20,8 +20,6 @@ Fetches list of connectors that have 'RELEASED' status using filtering and pagin
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.v3_connector_dto import V3ConnectorDto
 from sailpoint.beta.rest import ApiException

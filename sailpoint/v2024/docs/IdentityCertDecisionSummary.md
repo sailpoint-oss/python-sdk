@@ -32,12 +32,12 @@ json = "{}"
 # create an instance of IdentityCertDecisionSummary from a JSON string
 identity_cert_decision_summary_instance = IdentityCertDecisionSummary.from_json(json)
 # print the JSON string representation of the object
-print IdentityCertDecisionSummary.to_json()
+print(IdentityCertDecisionSummary.to_json())
 
 # convert the object into a dict
 identity_cert_decision_summary_dict = identity_cert_decision_summary_instance.to_dict()
 # create an instance of IdentityCertDecisionSummary from a dict
-identity_cert_decision_summary_form_dict = identity_cert_decision_summary.from_dict(identity_cert_decision_summary_dict)
+identity_cert_decision_summary_from_dict = IdentityCertDecisionSummary.from_dict(identity_cert_decision_summary_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -21,12 +21,12 @@ json = "{}"
 # create an instance of LoadUncorrelatedAccountsTaskTaskMessagesInner from a JSON string
 load_uncorrelated_accounts_task_task_messages_inner_instance = LoadUncorrelatedAccountsTaskTaskMessagesInner.from_json(json)
 # print the JSON string representation of the object
-print LoadUncorrelatedAccountsTaskTaskMessagesInner.to_json()
+print(LoadUncorrelatedAccountsTaskTaskMessagesInner.to_json())
 
 # convert the object into a dict
 load_uncorrelated_accounts_task_task_messages_inner_dict = load_uncorrelated_accounts_task_task_messages_inner_instance.to_dict()
 # create an instance of LoadUncorrelatedAccountsTaskTaskMessagesInner from a dict
-load_uncorrelated_accounts_task_task_messages_inner_form_dict = load_uncorrelated_accounts_task_task_messages_inner.from_dict(load_uncorrelated_accounts_task_task_messages_inner_dict)
+load_uncorrelated_accounts_task_task_messages_inner_from_dict = LoadUncorrelatedAccountsTaskTaskMessagesInner.from_dict(load_uncorrelated_accounts_task_task_messages_inner_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

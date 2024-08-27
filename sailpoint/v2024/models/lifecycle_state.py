@@ -18,15 +18,12 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
-from pydantic import Field
 from sailpoint.v2024.models.account_action import AccountAction
 from sailpoint.v2024.models.email_notification_option import EmailNotificationOption
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class LifecycleState(BaseModel):
     """
@@ -46,11 +43,11 @@ class LifecycleState(BaseModel):
     identity_state: Optional[StrictStr] = Field(default=None, description="The lifecycle state's associated identity state. This field is generally 'null'.", alias="identityState")
     __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "enabled", "technicalName", "description", "identityCount", "emailNotificationOption", "accountActions", "accessProfileIds", "identityState"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -63,7 +60,7 @@ class LifecycleState(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of LifecycleState from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -81,14 +78,16 @@ class LifecycleState(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         """
+        excluded_fields: Set[str] = set([
+            "id",
+            "created",
+            "modified",
+            "identity_count",
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-                "id",
-                "created",
-                "modified",
-                "identity_count",
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of email_notification_option
@@ -97,9 +96,9 @@ class LifecycleState(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in account_actions (list)
         _items = []
         if self.account_actions:
-            for _item in self.account_actions:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_account_actions in self.account_actions:
+                if _item_account_actions:
+                    _items.append(_item_account_actions.to_dict())
             _dict['accountActions'] = _items
         # set to None if identity_state (nullable) is None
         # and model_fields_set contains the field
@@ -109,7 +108,7 @@ class LifecycleState(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of LifecycleState from a dict"""
         if obj is None:
             return None
@@ -126,8 +125,8 @@ class LifecycleState(BaseModel):
             "technicalName": obj.get("technicalName"),
             "description": obj.get("description"),
             "identityCount": obj.get("identityCount"),
-            "emailNotificationOption": EmailNotificationOption.from_dict(obj.get("emailNotificationOption")) if obj.get("emailNotificationOption") is not None else None,
-            "accountActions": [AccountAction.from_dict(_item) for _item in obj.get("accountActions")] if obj.get("accountActions") is not None else None,
+            "emailNotificationOption": EmailNotificationOption.from_dict(obj["emailNotificationOption"]) if obj.get("emailNotificationOption") is not None else None,
+            "accountActions": [AccountAction.from_dict(_item) for _item in obj["accountActions"]] if obj.get("accountActions") is not None else None,
             "accessProfileIds": obj.get("accessProfileIds"),
             "identityState": obj.get("identityState")
         })

@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v2024.models.list_identity_access_items200_response_inner import ListIdentityAccessItems200ResponseInner
 
@@ -28,7 +27,7 @@ class TestListIdentityAccessItems200ResponseInner(unittest.TestCase):
 
     def make_instance(self, include_optional) -> ListIdentityAccessItems200ResponseInner:
         """Test ListIdentityAccessItems200ResponseInner
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `ListIdentityAccessItems200ResponseInner`

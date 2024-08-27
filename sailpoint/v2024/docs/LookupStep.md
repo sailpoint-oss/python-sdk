@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of LookupStep from a JSON string
 lookup_step_instance = LookupStep.from_json(json)
 # print the JSON string representation of the object
-print LookupStep.to_json()
+print(LookupStep.to_json())
 
 # convert the object into a dict
 lookup_step_dict = lookup_step_instance.to_dict()
 # create an instance of LookupStep from a dict
-lookup_step_form_dict = lookup_step.from_dict(lookup_step_dict)
+lookup_step_from_dict = LookupStep.from_dict(lookup_step_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

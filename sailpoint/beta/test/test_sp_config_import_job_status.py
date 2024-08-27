@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.sp_config_import_job_status import SpConfigImportJobStatus
 
@@ -28,7 +27,7 @@ class TestSpConfigImportJobStatus(unittest.TestCase):
 
     def make_instance(self, include_optional) -> SpConfigImportJobStatus:
         """Test SpConfigImportJobStatus
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `SpConfigImportJobStatus`

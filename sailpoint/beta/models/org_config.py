@@ -17,15 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
-from pydantic import Field
 from sailpoint.beta.models.report_config_dto import ReportConfigDTO
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class OrgConfig(BaseModel):
     """
@@ -43,11 +39,11 @@ class OrgConfig(BaseModel):
     sod_report_configs: Optional[List[ReportConfigDTO]] = Field(default=None, alias="sodReportConfigs")
     __properties: ClassVar[List[str]] = ["orgName", "timeZone", "lcsChangeHonorsSourceEnableFeature", "armCustomerId", "armSapSystemIdMappings", "armAuth", "armDb", "armSsoUrl", "iaiEnableCertificationRecommendations", "sodReportConfigs"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -60,7 +56,7 @@ class OrgConfig(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of OrgConfig from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -74,18 +70,20 @@ class OrgConfig(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in sod_report_configs (list)
         _items = []
         if self.sod_report_configs:
-            for _item in self.sod_report_configs:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_sod_report_configs in self.sod_report_configs:
+                if _item_sod_report_configs:
+                    _items.append(_item_sod_report_configs.to_dict())
             _dict['sodReportConfigs'] = _items
         # set to None if arm_customer_id (nullable) is None
         # and model_fields_set contains the field
@@ -115,7 +113,7 @@ class OrgConfig(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of OrgConfig from a dict"""
         if obj is None:
             return None
@@ -133,7 +131,7 @@ class OrgConfig(BaseModel):
             "armDb": obj.get("armDb"),
             "armSsoUrl": obj.get("armSsoUrl"),
             "iaiEnableCertificationRecommendations": obj.get("iaiEnableCertificationRecommendations"),
-            "sodReportConfigs": [ReportConfigDTO.from_dict(_item) for _item in obj.get("sodReportConfigs")] if obj.get("sodReportConfigs") is not None else None
+            "sodReportConfigs": [ReportConfigDTO.from_dict(_item) for _item in obj["sodReportConfigs"]] if obj.get("sodReportConfigs") is not None else None
         })
         return _obj
 

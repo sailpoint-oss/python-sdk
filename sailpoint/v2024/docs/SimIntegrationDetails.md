@@ -28,12 +28,12 @@ json = "{}"
 # create an instance of SimIntegrationDetails from a JSON string
 sim_integration_details_instance = SimIntegrationDetails.from_json(json)
 # print the JSON string representation of the object
-print SimIntegrationDetails.to_json()
+print(SimIntegrationDetails.to_json())
 
 # convert the object into a dict
 sim_integration_details_dict = sim_integration_details_instance.to_dict()
 # create an instance of SimIntegrationDetails from a dict
-sim_integration_details_form_dict = sim_integration_details.from_dict(sim_integration_details_dict)
+sim_integration_details_from_dict = SimIntegrationDetails.from_dict(sim_integration_details_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

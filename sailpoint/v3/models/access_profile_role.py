@@ -17,16 +17,12 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
-from pydantic import Field
 from sailpoint.v3.models.display_reference import DisplayReference
 from sailpoint.v3.models.dto_type import DtoType
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class AccessProfileRole(BaseModel):
     """
@@ -42,11 +38,11 @@ class AccessProfileRole(BaseModel):
     revocable: Optional[StrictBool] = None
     __properties: ClassVar[List[str]] = ["id", "name", "displayName", "type", "description", "owner", "disabled", "revocable"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -59,7 +55,7 @@ class AccessProfileRole(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of AccessProfileRole from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -73,10 +69,12 @@ class AccessProfileRole(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of owner
@@ -90,7 +88,7 @@ class AccessProfileRole(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of AccessProfileRole from a dict"""
         if obj is None:
             return None
@@ -104,7 +102,7 @@ class AccessProfileRole(BaseModel):
             "displayName": obj.get("displayName"),
             "type": obj.get("type"),
             "description": obj.get("description"),
-            "owner": DisplayReference.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
+            "owner": DisplayReference.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
             "disabled": obj.get("disabled"),
             "revocable": obj.get("revocable")
         })

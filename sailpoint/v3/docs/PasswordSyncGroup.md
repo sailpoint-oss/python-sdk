@@ -22,12 +22,12 @@ json = "{}"
 # create an instance of PasswordSyncGroup from a JSON string
 password_sync_group_instance = PasswordSyncGroup.from_json(json)
 # print the JSON string representation of the object
-print PasswordSyncGroup.to_json()
+print(PasswordSyncGroup.to_json())
 
 # convert the object into a dict
 password_sync_group_dict = password_sync_group_instance.to_dict()
 # create an instance of PasswordSyncGroup from a dict
-password_sync_group_form_dict = password_sync_group.from_dict(password_sync_group_dict)
+password_sync_group_from_dict = PasswordSyncGroup.from_dict(password_sync_group_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

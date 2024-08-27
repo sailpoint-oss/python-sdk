@@ -18,15 +18,12 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr, field_validator
-from pydantic import Field
 from sailpoint.beta.models.accounts_collected_for_aggregation_source import AccountsCollectedForAggregationSource
 from sailpoint.beta.models.accounts_collected_for_aggregation_stats import AccountsCollectedForAggregationStats
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class AccountsCollectedForAggregation(BaseModel):
     """
@@ -44,15 +41,15 @@ class AccountsCollectedForAggregation(BaseModel):
     @field_validator('status')
     def status_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('Success', 'Failed', 'Terminated'):
+        if value not in set(['Success', 'Failed', 'Terminated']):
             raise ValueError("must be one of enum values ('Success', 'Failed', 'Terminated')")
         return value
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -65,7 +62,7 @@ class AccountsCollectedForAggregation(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of AccountsCollectedForAggregation from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -79,10 +76,12 @@ class AccountsCollectedForAggregation(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of source
@@ -104,7 +103,7 @@ class AccountsCollectedForAggregation(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of AccountsCollectedForAggregation from a dict"""
         if obj is None:
             return None
@@ -113,13 +112,13 @@ class AccountsCollectedForAggregation(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "source": AccountsCollectedForAggregationSource.from_dict(obj.get("source")) if obj.get("source") is not None else None,
+            "source": AccountsCollectedForAggregationSource.from_dict(obj["source"]) if obj.get("source") is not None else None,
             "status": obj.get("status"),
             "started": obj.get("started"),
             "completed": obj.get("completed"),
             "errors": obj.get("errors"),
             "warnings": obj.get("warnings"),
-            "stats": AccountsCollectedForAggregationStats.from_dict(obj.get("stats")) if obj.get("stats") is not None else None
+            "stats": AccountsCollectedForAggregationStats.from_dict(obj["stats"]) if obj.get("stats") is not None else None
         })
         return _obj
 

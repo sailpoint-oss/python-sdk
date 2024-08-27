@@ -1,4 +1,4 @@
-# Field
+# ModelField
 
 
 ## Properties
@@ -15,19 +15,19 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from sailpoint.beta.models.field import Field
+from sailpoint.beta.models.model_field import ModelField
 
 # TODO update the JSON string below
 json = "{}"
-# create an instance of Field from a JSON string
-field_instance = Field.from_json(json)
+# create an instance of ModelField from a JSON string
+model_field_instance = ModelField.from_json(json)
 # print the JSON string representation of the object
-print Field.to_json()
+print(ModelField.to_json())
 
 # convert the object into a dict
-field_dict = field_instance.to_dict()
-# create an instance of Field from a dict
-field_form_dict = field.from_dict(field_dict)
+model_field_dict = model_field_instance.to_dict()
+# create an instance of ModelField from a dict
+model_field_from_dict = ModelField.from_dict(model_field_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

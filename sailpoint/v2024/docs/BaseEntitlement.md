@@ -24,12 +24,12 @@ json = "{}"
 # create an instance of BaseEntitlement from a JSON string
 base_entitlement_instance = BaseEntitlement.from_json(json)
 # print the JSON string representation of the object
-print BaseEntitlement.to_json()
+print(BaseEntitlement.to_json())
 
 # convert the object into a dict
 base_entitlement_dict = base_entitlement_instance.to_dict()
 # create an instance of BaseEntitlement from a dict
-base_entitlement_form_dict = base_entitlement.from_dict(base_entitlement_dict)
+base_entitlement_from_dict = BaseEntitlement.from_dict(base_entitlement_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

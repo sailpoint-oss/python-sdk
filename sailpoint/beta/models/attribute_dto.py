@@ -17,15 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
-from pydantic import Field
 from sailpoint.beta.models.attribute_value_dto import AttributeValueDTO
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class AttributeDTO(BaseModel):
     """
@@ -41,11 +37,11 @@ class AttributeDTO(BaseModel):
     values: Optional[List[AttributeValueDTO]] = None
     __properties: ClassVar[List[str]] = ["key", "name", "multiselect", "status", "type", "objectTypes", "description", "values"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -58,7 +54,7 @@ class AttributeDTO(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of AttributeDTO from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -72,18 +68,20 @@ class AttributeDTO(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in values (list)
         _items = []
         if self.values:
-            for _item in self.values:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_values in self.values:
+                if _item_values:
+                    _items.append(_item_values.to_dict())
             _dict['values'] = _items
         # set to None if object_types (nullable) is None
         # and model_fields_set contains the field
@@ -98,7 +96,7 @@ class AttributeDTO(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of AttributeDTO from a dict"""
         if obj is None:
             return None
@@ -114,7 +112,7 @@ class AttributeDTO(BaseModel):
             "type": obj.get("type"),
             "objectTypes": obj.get("objectTypes"),
             "description": obj.get("description"),
-            "values": [AttributeValueDTO.from_dict(_item) for _item in obj.get("values")] if obj.get("values") is not None else None
+            "values": [AttributeValueDTO.from_dict(_item) for _item in obj["values"]] if obj.get("values") is not None else None
         })
         return _obj
 

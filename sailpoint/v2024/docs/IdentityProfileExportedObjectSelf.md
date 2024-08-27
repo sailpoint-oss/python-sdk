@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of IdentityProfileExportedObjectSelf from a JSON string
 identity_profile_exported_object_self_instance = IdentityProfileExportedObjectSelf.from_json(json)
 # print the JSON string representation of the object
-print IdentityProfileExportedObjectSelf.to_json()
+print(IdentityProfileExportedObjectSelf.to_json())
 
 # convert the object into a dict
 identity_profile_exported_object_self_dict = identity_profile_exported_object_self_instance.to_dict()
 # create an instance of IdentityProfileExportedObjectSelf from a dict
-identity_profile_exported_object_self_form_dict = identity_profile_exported_object_self.from_dict(identity_profile_exported_object_self_dict)
+identity_profile_exported_object_self_from_dict = IdentityProfileExportedObjectSelf.from_dict(identity_profile_exported_object_self_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

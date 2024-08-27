@@ -17,18 +17,14 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel
-from pydantic import Field
 from sailpoint.v3.models.access_summary_access import AccessSummaryAccess
 from sailpoint.v3.models.reviewable_access_profile import ReviewableAccessProfile
 from sailpoint.v3.models.reviewable_entitlement import ReviewableEntitlement
 from sailpoint.v3.models.reviewable_role import ReviewableRole
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class AccessSummary(BaseModel):
     """
@@ -40,11 +36,11 @@ class AccessSummary(BaseModel):
     role: Optional[ReviewableRole] = None
     __properties: ClassVar[List[str]] = ["access", "entitlement", "accessProfile", "role"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -57,7 +53,7 @@ class AccessSummary(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of AccessSummary from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -71,10 +67,12 @@ class AccessSummary(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of access
@@ -102,7 +100,7 @@ class AccessSummary(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of AccessSummary from a dict"""
         if obj is None:
             return None
@@ -111,10 +109,10 @@ class AccessSummary(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "access": AccessSummaryAccess.from_dict(obj.get("access")) if obj.get("access") is not None else None,
-            "entitlement": ReviewableEntitlement.from_dict(obj.get("entitlement")) if obj.get("entitlement") is not None else None,
-            "accessProfile": ReviewableAccessProfile.from_dict(obj.get("accessProfile")) if obj.get("accessProfile") is not None else None,
-            "role": ReviewableRole.from_dict(obj.get("role")) if obj.get("role") is not None else None
+            "access": AccessSummaryAccess.from_dict(obj["access"]) if obj.get("access") is not None else None,
+            "entitlement": ReviewableEntitlement.from_dict(obj["entitlement"]) if obj.get("entitlement") is not None else None,
+            "accessProfile": ReviewableAccessProfile.from_dict(obj["accessProfile"]) if obj.get("accessProfile") is not None else None,
+            "role": ReviewableRole.from_dict(obj["role"]) if obj.get("role") is not None else None
         })
         return _obj
 

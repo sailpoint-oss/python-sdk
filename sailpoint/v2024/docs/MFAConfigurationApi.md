@@ -26,8 +26,6 @@ This API returns the configuration of an Duo MFA method. A token with ORG_ADMIN 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.mfa_duo_config import MfaDuoConfig
 from sailpoint.v2024.rest import ApiException
@@ -107,8 +105,6 @@ This API returns the KBA configuration for MFA. A token with USER or ORG_ADMIN a
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.kba_question import KbaQuestion
 from sailpoint.v2024.rest import ApiException
@@ -192,8 +188,6 @@ This API returns the configuration of an Okta MFA method. A token with ORG_ADMIN
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.mfa_okta_config import MfaOktaConfig
 from sailpoint.v2024.rest import ApiException
@@ -273,8 +267,6 @@ This API sets the configuration of an Duo MFA method. A token with ORG_ADMIN aut
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.mfa_duo_config import MfaDuoConfig
 from sailpoint.v2024.rest import ApiException
@@ -358,8 +350,6 @@ This API sets the configuration of an Okta MFA method. A token with ORG_ADMIN au
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.mfa_okta_config import MfaOktaConfig
 from sailpoint.v2024.rest import ApiException
@@ -443,8 +433,6 @@ This API sets answers to challenge questions.  Any configured questions omitted 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.kba_answer_request_item import KbaAnswerRequestItem
 from sailpoint.v2024.models.kba_answer_response_item import KbaAnswerResponseItem
@@ -529,8 +517,6 @@ This API validates that the configuration is valid and will properly authenticat
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.mfa_config_test_response import MfaConfigTestResponse
 from sailpoint.v2024.rest import ApiException

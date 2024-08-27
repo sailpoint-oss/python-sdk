@@ -37,8 +37,6 @@ Use this API to cancel a running workflow execution.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
@@ -120,8 +118,6 @@ Create a new workflow with the desired trigger and steps specified in the reques
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.create_workflow_request import CreateWorkflowRequest
 from sailpoint.beta.models.workflow import Workflow
@@ -206,8 +202,6 @@ Delete a workflow.  **Enabled workflows cannot be deleted**.  They must first be
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
@@ -288,8 +282,6 @@ Get a single workflow by id.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.workflow import Workflow
 from sailpoint.beta.rest import ApiException
@@ -373,8 +365,6 @@ Use this API to get a single workflow execution. Workflow executions are availab
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
@@ -458,8 +448,6 @@ Get a detailed history of a single workflow execution.  Workflow executions are 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.workflow_execution_event import WorkflowExecutionEvent
 from sailpoint.beta.rest import ApiException
@@ -544,8 +532,6 @@ Use this API to list a specified workflow's executions. Workflow executions are 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.workflow_execution import WorkflowExecution
 from sailpoint.beta.rest import ApiException
@@ -638,8 +624,6 @@ This lists all triggers, actions, and operators in the library
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.list_complete_workflow_library200_response_inner import ListCompleteWorkflowLibrary200ResponseInner
 from sailpoint.beta.rest import ApiException
@@ -725,8 +709,6 @@ This lists the workflow actions available to you.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.workflow_library_action import WorkflowLibraryAction
 from sailpoint.beta.rest import ApiException
@@ -814,8 +796,6 @@ This lists the workflow operators available to you
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.workflow_library_operator import WorkflowLibraryOperator
 from sailpoint.beta.rest import ApiException
@@ -895,8 +875,6 @@ This lists the workflow triggers available to you
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.workflow_library_trigger import WorkflowLibraryTrigger
 from sailpoint.beta.rest import ApiException
@@ -984,8 +962,6 @@ List all workflows in the tenant.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.workflow import Workflow
 from sailpoint.beta.rest import ApiException
@@ -1065,8 +1041,6 @@ Partially update an existing Workflow using [JSON Patch](https://tools.ietf.org/
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
 from sailpoint.beta.models.workflow import Workflow
@@ -1153,8 +1127,6 @@ This endpoint allows a service outside of IdentityNow to initiate a workflow tha
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.post_external_execute_workflow200_response import PostExternalExecuteWorkflow200Response
 from sailpoint.beta.models.post_external_execute_workflow_request import PostExternalExecuteWorkflowRequest
@@ -1241,8 +1213,6 @@ Create OAuth client ID, client secret, and callback URL for use in an external t
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.workflow_o_auth_client import WorkflowOAuthClient
 from sailpoint.beta.rest import ApiException
@@ -1326,8 +1296,6 @@ Validate a workflow with an \"External Trigger\" can receive input.  The respons
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.test_external_execute_workflow200_response import TestExternalExecuteWorkflow200Response
 from sailpoint.beta.models.test_external_execute_workflow_request import TestExternalExecuteWorkflowRequest
@@ -1414,8 +1382,6 @@ Test a workflow with the provided input data.  The input data should resemble th
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.test_workflow200_response import TestWorkflow200Response
 from sailpoint.beta.models.test_workflow_request import TestWorkflowRequest
@@ -1502,8 +1468,6 @@ Perform a full update of a workflow.  The updated workflow object is returned in
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.workflow import Workflow
 from sailpoint.beta.models.workflow_body import WorkflowBody

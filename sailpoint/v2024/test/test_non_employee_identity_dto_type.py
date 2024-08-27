@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v2024.models.non_employee_identity_dto_type import NonEmployeeIdentityDtoType
 

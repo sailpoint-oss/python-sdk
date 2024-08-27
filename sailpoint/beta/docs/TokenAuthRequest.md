@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of TokenAuthRequest from a JSON string
 token_auth_request_instance = TokenAuthRequest.from_json(json)
 # print the JSON string representation of the object
-print TokenAuthRequest.to_json()
+print(TokenAuthRequest.to_json())
 
 # convert the object into a dict
 token_auth_request_dict = token_auth_request_instance.to_dict()
 # create an instance of TokenAuthRequest from a dict
-token_auth_request_form_dict = token_auth_request.from_dict(token_auth_request_dict)
+token_auth_request_from_dict = TokenAuthRequest.from_dict(token_auth_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

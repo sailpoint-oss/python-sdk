@@ -25,8 +25,6 @@ Use this API to create a new identity attribute.   A token with ORG_ADMIN author
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.identity_attribute import IdentityAttribute
 from sailpoint.beta.rest import ApiException
@@ -111,8 +109,6 @@ This deletes an identity attribute with the given name.  The `system` and `stand
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
@@ -194,8 +190,6 @@ Use this API to bulk delete identity attributes for a given set of names. Attrib
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.identity_attribute_names import IdentityAttributeNames
 from sailpoint.beta.rest import ApiException
@@ -278,8 +272,6 @@ This gets an identity attribute for a given technical name.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.identity_attribute import IdentityAttribute
 from sailpoint.beta.rest import ApiException
@@ -364,8 +356,6 @@ Use this API to get a collection of identity attributes.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.identity_attribute import IdentityAttribute
 from sailpoint.beta.rest import ApiException
@@ -455,8 +445,6 @@ This updates an existing identity attribute.  Making an attribute searchable req
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.identity_attribute import IdentityAttribute
 from sailpoint.beta.rest import ApiException

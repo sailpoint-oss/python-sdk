@@ -17,14 +17,10 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr, field_validator
-from pydantic import Field
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class CampaignReference(BaseModel):
     """
@@ -42,36 +38,36 @@ class CampaignReference(BaseModel):
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('CAMPAIGN'):
+        if value not in set(['CAMPAIGN']):
             raise ValueError("must be one of enum values ('CAMPAIGN')")
         return value
 
     @field_validator('campaign_type')
     def campaign_type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('MANAGER', 'SOURCE_OWNER', 'SEARCH'):
+        if value not in set(['MANAGER', 'SOURCE_OWNER', 'SEARCH']):
             raise ValueError("must be one of enum values ('MANAGER', 'SOURCE_OWNER', 'SEARCH')")
         return value
 
     @field_validator('correlated_status')
     def correlated_status_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('CORRELATED', 'UNCORRELATED'):
+        if value not in set(['CORRELATED', 'UNCORRELATED']):
             raise ValueError("must be one of enum values ('CORRELATED', 'UNCORRELATED')")
         return value
 
     @field_validator('mandatory_comment_requirement')
     def mandatory_comment_requirement_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('ALL_DECISIONS', 'REVOKE_ONLY_DECISIONS', 'NO_DECISIONS'):
+        if value not in set(['ALL_DECISIONS', 'REVOKE_ONLY_DECISIONS', 'NO_DECISIONS']):
             raise ValueError("must be one of enum values ('ALL_DECISIONS', 'REVOKE_ONLY_DECISIONS', 'NO_DECISIONS')")
         return value
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -84,7 +80,7 @@ class CampaignReference(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of CampaignReference from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -98,10 +94,12 @@ class CampaignReference(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # set to None if description (nullable) is None
@@ -112,7 +110,7 @@ class CampaignReference(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of CampaignReference from a dict"""
         if obj is None:
             return None

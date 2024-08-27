@@ -17,15 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List
-from pydantic import BaseModel
-from pydantic import Field
 from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class ObjectMappingBulkPatchRequest(BaseModel):
     """
@@ -34,11 +30,11 @@ class ObjectMappingBulkPatchRequest(BaseModel):
     patches: Dict[str, List[JsonPatchOperation]] = Field(description="Map of id of the object mapping to a JsonPatchOperation describing what to patch on that object mapping.")
     __properties: ClassVar[List[str]] = ["patches"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -51,7 +47,7 @@ class ObjectMappingBulkPatchRequest(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of ObjectMappingBulkPatchRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -65,25 +61,27 @@ class ObjectMappingBulkPatchRequest(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each value in patches (dict of array)
         _field_dict_of_array = {}
         if self.patches:
-            for _key in self.patches:
-                if self.patches[_key] is not None:
-                    _field_dict_of_array[_key] = [
-                        _item.to_dict() for _item in self.patches[_key]
+            for _key_patches in self.patches:
+                if self.patches[_key_patches] is not None:
+                    _field_dict_of_array[_key_patches] = [
+                        _item.to_dict() for _item in self.patches[_key_patches]
                     ]
             _dict['patches'] = _field_dict_of_array
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of ObjectMappingBulkPatchRequest from a dict"""
         if obj is None:
             return None
@@ -98,7 +96,7 @@ class ObjectMappingBulkPatchRequest(BaseModel):
                         if _v is not None
                         else None
                 )
-                for _k, _v in obj.get("patches").items()
+                for _k, _v in obj.get("patches", {}).items()
             )
         })
         return _obj

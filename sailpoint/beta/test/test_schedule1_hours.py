@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.schedule1_hours import Schedule1Hours
 
@@ -28,7 +27,7 @@ class TestSchedule1Hours(unittest.TestCase):
 
     def make_instance(self, include_optional) -> Schedule1Hours:
         """Test Schedule1Hours
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `Schedule1Hours`

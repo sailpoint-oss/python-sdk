@@ -18,13 +18,10 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictInt, StrictStr, field_validator
-from pydantic import Field
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class ManagedClient(BaseModel):
     """
@@ -59,7 +56,7 @@ class ManagedClient(BaseModel):
         if value is None:
             return value
 
-        if value not in ('NORMAL', 'UNDEFINED', 'NOT_CONFIGURED', 'CONFIGURING', 'WARNING', 'ERROR', 'FAILED', 'null'):
+        if value not in set(['NORMAL', 'UNDEFINED', 'NOT_CONFIGURED', 'CONFIGURING', 'WARNING', 'ERROR', 'FAILED', 'null']):
             raise ValueError("must be one of enum values ('NORMAL', 'UNDEFINED', 'NOT_CONFIGURED', 'CONFIGURING', 'WARNING', 'ERROR', 'FAILED', 'null')")
         return value
 
@@ -69,7 +66,7 @@ class ManagedClient(BaseModel):
         if value is None:
             return value
 
-        if value not in ('null', 'idn', 'iai', 'spConnectCluster', 'sqsCluster', 'das-rc', 'das-pc', 'das-dc'):
+        if value not in set(['null', 'idn', 'iai', 'spConnectCluster', 'sqsCluster', 'das-rc', 'das-pc', 'das-dc']):
             raise ValueError("must be one of enum values ('null', 'idn', 'iai', 'spConnectCluster', 'sqsCluster', 'das-rc', 'das-pc', 'das-dc')")
         return value
 
@@ -79,15 +76,15 @@ class ManagedClient(BaseModel):
         if value is None:
             return value
 
-        if value not in ('null', 'PROVISIONED', 'DRAFT'):
+        if value not in set(['null', 'PROVISIONED', 'DRAFT']):
             raise ValueError("must be one of enum values ('null', 'PROVISIONED', 'DRAFT')")
         return value
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -100,7 +97,7 @@ class ManagedClient(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of ManagedClient from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -124,20 +121,22 @@ class ManagedClient(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         """
+        excluded_fields: Set[str] = set([
+            "id",
+            "alert_key",
+            "ip_address",
+            "last_seen",
+            "since_last_seen",
+            "status",
+            "cluster_type",
+            "va_download_url",
+            "va_version",
+            "provision_status",
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-                "id",
-                "alert_key",
-                "ip_address",
-                "last_seen",
-                "since_last_seen",
-                "status",
-                "cluster_type",
-                "va_download_url",
-                "va_version",
-                "provision_status",
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # set to None if id (nullable) is None
@@ -228,7 +227,7 @@ class ManagedClient(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of ManagedClient from a dict"""
         if obj is None:
             return None

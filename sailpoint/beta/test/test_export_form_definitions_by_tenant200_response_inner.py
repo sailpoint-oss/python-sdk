@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.export_form_definitions_by_tenant200_response_inner import ExportFormDefinitionsByTenant200ResponseInner
 
@@ -28,7 +27,7 @@ class TestExportFormDefinitionsByTenant200ResponseInner(unittest.TestCase):
 
     def make_instance(self, include_optional) -> ExportFormDefinitionsByTenant200ResponseInner:
         """Test ExportFormDefinitionsByTenant200ResponseInner
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `ExportFormDefinitionsByTenant200ResponseInner`

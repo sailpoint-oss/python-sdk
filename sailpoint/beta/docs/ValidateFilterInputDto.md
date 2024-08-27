@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of ValidateFilterInputDto from a JSON string
 validate_filter_input_dto_instance = ValidateFilterInputDto.from_json(json)
 # print the JSON string representation of the object
-print ValidateFilterInputDto.to_json()
+print(ValidateFilterInputDto.to_json())
 
 # convert the object into a dict
 validate_filter_input_dto_dict = validate_filter_input_dto_instance.to_dict()
 # create an instance of ValidateFilterInputDto from a dict
-validate_filter_input_dto_form_dict = validate_filter_input_dto.from_dict(validate_filter_input_dto_dict)
+validate_filter_input_dto_from_dict = ValidateFilterInputDto.from_dict(validate_filter_input_dto_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

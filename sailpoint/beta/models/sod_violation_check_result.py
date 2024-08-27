@@ -17,17 +17,13 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
 from sailpoint.beta.models.error_message_dto import ErrorMessageDto
 from sailpoint.beta.models.sod_policy_dto import SodPolicyDto
 from sailpoint.beta.models.sod_violation_context import SodViolationContext
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class SodViolationCheckResult(BaseModel):
     """
@@ -39,11 +35,11 @@ class SodViolationCheckResult(BaseModel):
     violated_policies: Optional[List[SodPolicyDto]] = Field(default=None, description="A list of the SOD policies that were violated.", alias="violatedPolicies")
     __properties: ClassVar[List[str]] = ["message", "clientMetadata", "violationContexts", "violatedPolicies"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -56,7 +52,7 @@ class SodViolationCheckResult(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of SodViolationCheckResult from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -70,10 +66,12 @@ class SodViolationCheckResult(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of message
@@ -82,16 +80,16 @@ class SodViolationCheckResult(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in violation_contexts (list)
         _items = []
         if self.violation_contexts:
-            for _item in self.violation_contexts:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_violation_contexts in self.violation_contexts:
+                if _item_violation_contexts:
+                    _items.append(_item_violation_contexts.to_dict())
             _dict['violationContexts'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in violated_policies (list)
         _items = []
         if self.violated_policies:
-            for _item in self.violated_policies:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_violated_policies in self.violated_policies:
+                if _item_violated_policies:
+                    _items.append(_item_violated_policies.to_dict())
             _dict['violatedPolicies'] = _items
         # set to None if client_metadata (nullable) is None
         # and model_fields_set contains the field
@@ -111,7 +109,7 @@ class SodViolationCheckResult(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of SodViolationCheckResult from a dict"""
         if obj is None:
             return None
@@ -120,10 +118,10 @@ class SodViolationCheckResult(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "message": ErrorMessageDto.from_dict(obj.get("message")) if obj.get("message") is not None else None,
+            "message": ErrorMessageDto.from_dict(obj["message"]) if obj.get("message") is not None else None,
             "clientMetadata": obj.get("clientMetadata"),
-            "violationContexts": [SodViolationContext.from_dict(_item) for _item in obj.get("violationContexts")] if obj.get("violationContexts") is not None else None,
-            "violatedPolicies": [SodPolicyDto.from_dict(_item) for _item in obj.get("violatedPolicies")] if obj.get("violatedPolicies") is not None else None
+            "violationContexts": [SodViolationContext.from_dict(_item) for _item in obj["violationContexts"]] if obj.get("violationContexts") is not None else None,
+            "violatedPolicies": [SodPolicyDto.from_dict(_item) for _item in obj["violatedPolicies"]] if obj.get("violatedPolicies") is not None else None
         })
         return _obj
 

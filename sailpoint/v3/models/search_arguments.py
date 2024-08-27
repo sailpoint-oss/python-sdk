@@ -17,30 +17,26 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
 from sailpoint.v3.models.typed_reference import TypedReference
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class SearchArguments(BaseModel):
     """
     SearchArguments
     """ # noqa: E501
     schedule_id: Optional[StrictStr] = Field(default=None, description="The ID of the scheduled search that triggered the saved search execution. ", alias="scheduleId")
-    owner: Optional[TypedReference] = None
+    owner: Optional[TypedReference] = Field(default=None, description="The owner of the scheduled search being tested. ")
     recipients: Optional[List[TypedReference]] = Field(default=None, description="The email recipients of the scheduled search being tested. ")
     __properties: ClassVar[List[str]] = ["scheduleId", "owner", "recipients"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -53,7 +49,7 @@ class SearchArguments(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of SearchArguments from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -67,10 +63,12 @@ class SearchArguments(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of owner
@@ -79,14 +77,14 @@ class SearchArguments(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in recipients (list)
         _items = []
         if self.recipients:
-            for _item in self.recipients:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_recipients in self.recipients:
+                if _item_recipients:
+                    _items.append(_item_recipients.to_dict())
             _dict['recipients'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of SearchArguments from a dict"""
         if obj is None:
             return None
@@ -96,8 +94,8 @@ class SearchArguments(BaseModel):
 
         _obj = cls.model_validate({
             "scheduleId": obj.get("scheduleId"),
-            "owner": TypedReference.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
-            "recipients": [TypedReference.from_dict(_item) for _item in obj.get("recipients")] if obj.get("recipients") is not None else None
+            "owner": TypedReference.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
+            "recipients": [TypedReference.from_dict(_item) for _item in obj["recipients"]] if obj.get("recipients") is not None else None
         })
         return _obj
 

@@ -25,8 +25,6 @@ Creates a new connector rule. A token with ORG_ADMIN authority is required to ca
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.connector_rule_create_request import ConnectorRuleCreateRequest
 from sailpoint.beta.models.connector_rule_response import ConnectorRuleResponse
@@ -111,8 +109,6 @@ Deletes the connector rule specified by the given ID. A token with ORG_ADMIN aut
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
@@ -194,8 +190,6 @@ Returns the connector rule specified by ID. A token with ORG_ADMIN authority is 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.connector_rule_response import ConnectorRuleResponse
 from sailpoint.beta.rest import ApiException
@@ -280,8 +274,6 @@ Returns the list of connector rules. A token with ORG_ADMIN authority is require
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.connector_rule_response import ConnectorRuleResponse
 from sailpoint.beta.rest import ApiException
@@ -361,8 +353,6 @@ Updates an existing connector rule with the one provided in the request body. No
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.connector_rule_response import ConnectorRuleResponse
 from sailpoint.beta.models.connector_rule_update_request import ConnectorRuleUpdateRequest
@@ -450,8 +440,6 @@ Returns a list of issues within the code to fix, if any. A token with ORG_ADMIN 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.connector_rule_validation_response import ConnectorRuleValidationResponse
 from sailpoint.beta.models.source_code import SourceCode

@@ -23,12 +23,12 @@ json = "{}"
 # create an instance of CorrelatedGovernanceEvent from a JSON string
 correlated_governance_event_instance = CorrelatedGovernanceEvent.from_json(json)
 # print the JSON string representation of the object
-print CorrelatedGovernanceEvent.to_json()
+print(CorrelatedGovernanceEvent.to_json())
 
 # convert the object into a dict
 correlated_governance_event_dict = correlated_governance_event_instance.to_dict()
 # create an instance of CorrelatedGovernanceEvent from a dict
-correlated_governance_event_form_dict = correlated_governance_event.from_dict(correlated_governance_event_dict)
+correlated_governance_event_from_dict = CorrelatedGovernanceEvent.from_dict(correlated_governance_event_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

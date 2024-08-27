@@ -26,12 +26,12 @@ json = "{}"
 # create an instance of ReviewableEntitlementAccount from a JSON string
 reviewable_entitlement_account_instance = ReviewableEntitlementAccount.from_json(json)
 # print the JSON string representation of the object
-print ReviewableEntitlementAccount.to_json()
+print(ReviewableEntitlementAccount.to_json())
 
 # convert the object into a dict
 reviewable_entitlement_account_dict = reviewable_entitlement_account_instance.to_dict()
 # create an instance of ReviewableEntitlementAccount from a dict
-reviewable_entitlement_account_form_dict = reviewable_entitlement_account.from_dict(reviewable_entitlement_account_dict)
+reviewable_entitlement_account_from_dict = ReviewableEntitlementAccount.from_dict(reviewable_entitlement_account_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

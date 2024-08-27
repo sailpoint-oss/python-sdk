@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v2024.models.form_item_details import FormItemDetails
 
@@ -28,7 +27,7 @@ class TestFormItemDetails(unittest.TestCase):
 
     def make_instance(self, include_optional) -> FormItemDetails:
         """Test FormItemDetails
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `FormItemDetails`

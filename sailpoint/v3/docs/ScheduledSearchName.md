@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of ScheduledSearchName from a JSON string
 scheduled_search_name_instance = ScheduledSearchName.from_json(json)
 # print the JSON string representation of the object
-print ScheduledSearchName.to_json()
+print(ScheduledSearchName.to_json())
 
 # convert the object into a dict
 scheduled_search_name_dict = scheduled_search_name_instance.to_dict()
 # create an instance of ScheduledSearchName from a dict
-scheduled_search_name_form_dict = scheduled_search_name.from_dict(scheduled_search_name_dict)
+scheduled_search_name_from_dict = ScheduledSearchName.from_dict(scheduled_search_name_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

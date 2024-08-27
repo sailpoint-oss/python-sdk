@@ -17,15 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
 from sailpoint.v2024.models.identity_with_new_access_access_refs_inner import IdentityWithNewAccessAccessRefsInner
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class IdentityWithNewAccess(BaseModel):
     """
@@ -35,11 +31,11 @@ class IdentityWithNewAccess(BaseModel):
     access_refs: List[IdentityWithNewAccessAccessRefsInner] = Field(description="The list of entitlements to consider for possible violations in a preventive check.", alias="accessRefs")
     __properties: ClassVar[List[str]] = ["identityId", "accessRefs"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -52,7 +48,7 @@ class IdentityWithNewAccess(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of IdentityWithNewAccess from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -66,23 +62,25 @@ class IdentityWithNewAccess(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in access_refs (list)
         _items = []
         if self.access_refs:
-            for _item in self.access_refs:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_access_refs in self.access_refs:
+                if _item_access_refs:
+                    _items.append(_item_access_refs.to_dict())
             _dict['accessRefs'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of IdentityWithNewAccess from a dict"""
         if obj is None:
             return None
@@ -92,7 +90,7 @@ class IdentityWithNewAccess(BaseModel):
 
         _obj = cls.model_validate({
             "identityId": obj.get("identityId"),
-            "accessRefs": [IdentityWithNewAccessAccessRefsInner.from_dict(_item) for _item in obj.get("accessRefs")] if obj.get("accessRefs") is not None else None
+            "accessRefs": [IdentityWithNewAccessAccessRefsInner.from_dict(_item) for _item in obj["accessRefs"]] if obj.get("accessRefs") is not None else None
         })
         return _obj
 

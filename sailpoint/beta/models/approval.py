@@ -17,19 +17,15 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr, field_validator
-from pydantic import Field
 from sailpoint.beta.models.approval_comment import ApprovalComment
 from sailpoint.beta.models.approval_description import ApprovalDescription
 from sailpoint.beta.models.approval_identity import ApprovalIdentity
 from sailpoint.beta.models.approval_name import ApprovalName
 from sailpoint.beta.models.approval_reference import ApprovalReference
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class Approval(BaseModel):
     """
@@ -60,7 +56,7 @@ class Approval(BaseModel):
         if value is None:
             return value
 
-        if value not in ('HIGH', 'MEDIUM', 'LOW'):
+        if value not in set(['HIGH', 'MEDIUM', 'LOW']):
             raise ValueError("must be one of enum values ('HIGH', 'MEDIUM', 'LOW')")
         return value
 
@@ -70,7 +66,7 @@ class Approval(BaseModel):
         if value is None:
             return value
 
-        if value not in ('SINGLE', 'DOUBLE', 'TRIPLE', 'QUARTER', 'HALF', 'ALL'):
+        if value not in set(['SINGLE', 'DOUBLE', 'TRIPLE', 'QUARTER', 'HALF', 'ALL']):
             raise ValueError("must be one of enum values ('SINGLE', 'DOUBLE', 'TRIPLE', 'QUARTER', 'HALF', 'ALL')")
         return value
 
@@ -80,15 +76,15 @@ class Approval(BaseModel):
         if value is None:
             return value
 
-        if value not in ('PENDING', 'APPROVED', 'REJECTED'):
+        if value not in set(['PENDING', 'APPROVED', 'REJECTED']):
             raise ValueError("must be one of enum values ('PENDING', 'APPROVED', 'REJECTED')")
         return value
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -101,7 +97,7 @@ class Approval(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of Approval from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -115,25 +111,27 @@ class Approval(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in approvers (list)
         _items = []
         if self.approvers:
-            for _item in self.approvers:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_approvers in self.approvers:
+                if _item_approvers:
+                    _items.append(_item_approvers.to_dict())
             _dict['approvers'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in name (list)
         _items = []
         if self.name:
-            for _item in self.name:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_name in self.name:
+                if _item_name:
+                    _items.append(_item_name.to_dict())
             _dict['name'] = _items
         # override the default output from pydantic by calling `to_dict()` of batch_request
         if self.batch_request:
@@ -141,9 +139,9 @@ class Approval(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in description (list)
         _items = []
         if self.description:
-            for _item in self.description:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_description in self.description:
+                if _item_description:
+                    _items.append(_item_description.to_dict())
             _dict['description'] = _items
         # override the default output from pydantic by calling `to_dict()` of requester
         if self.requester:
@@ -151,35 +149,35 @@ class Approval(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in comments (list)
         _items = []
         if self.comments:
-            for _item in self.comments:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_comments in self.comments:
+                if _item_comments:
+                    _items.append(_item_comments.to_dict())
             _dict['comments'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in approved_by (list)
         _items = []
         if self.approved_by:
-            for _item in self.approved_by:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_approved_by in self.approved_by:
+                if _item_approved_by:
+                    _items.append(_item_approved_by.to_dict())
             _dict['approvedBy'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in rejected_by (list)
         _items = []
         if self.rejected_by:
-            for _item in self.rejected_by:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_rejected_by in self.rejected_by:
+                if _item_rejected_by:
+                    _items.append(_item_rejected_by.to_dict())
             _dict['rejectedBy'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in reference_data (list)
         _items = []
         if self.reference_data:
-            for _item in self.reference_data:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_reference_data in self.reference_data:
+                if _item_reference_data:
+                    _items.append(_item_reference_data.to_dict())
             _dict['referenceData'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of Approval from a dict"""
         if obj is None:
             return None
@@ -189,22 +187,22 @@ class Approval(BaseModel):
 
         _obj = cls.model_validate({
             "approvalId": obj.get("approvalId"),
-            "approvers": [ApprovalIdentity.from_dict(_item) for _item in obj.get("approvers")] if obj.get("approvers") is not None else None,
+            "approvers": [ApprovalIdentity.from_dict(_item) for _item in obj["approvers"]] if obj.get("approvers") is not None else None,
             "createdDate": obj.get("createdDate"),
             "type": obj.get("type"),
-            "name": [ApprovalName.from_dict(_item) for _item in obj.get("name")] if obj.get("name") is not None else None,
-            "batchRequest": ApprovalBatch.from_dict(obj.get("batchRequest")) if obj.get("batchRequest") is not None else None,
-            "description": [ApprovalDescription.from_dict(_item) for _item in obj.get("description")] if obj.get("description") is not None else None,
+            "name": [ApprovalName.from_dict(_item) for _item in obj["name"]] if obj.get("name") is not None else None,
+            "batchRequest": ApprovalBatch.from_dict(obj["batchRequest"]) if obj.get("batchRequest") is not None else None,
+            "description": [ApprovalDescription.from_dict(_item) for _item in obj["description"]] if obj.get("description") is not None else None,
             "priority": obj.get("priority"),
-            "requester": ApprovalIdentity.from_dict(obj.get("requester")) if obj.get("requester") is not None else None,
-            "comments": [ApprovalComment.from_dict(_item) for _item in obj.get("comments")] if obj.get("comments") is not None else None,
-            "approvedBy": [ApprovalIdentity.from_dict(_item) for _item in obj.get("approvedBy")] if obj.get("approvedBy") is not None else None,
-            "rejectedBy": [ApprovalIdentity.from_dict(_item) for _item in obj.get("rejectedBy")] if obj.get("rejectedBy") is not None else None,
+            "requester": ApprovalIdentity.from_dict(obj["requester"]) if obj.get("requester") is not None else None,
+            "comments": [ApprovalComment.from_dict(_item) for _item in obj["comments"]] if obj.get("comments") is not None else None,
+            "approvedBy": [ApprovalIdentity.from_dict(_item) for _item in obj["approvedBy"]] if obj.get("approvedBy") is not None else None,
+            "rejectedBy": [ApprovalIdentity.from_dict(_item) for _item in obj["rejectedBy"]] if obj.get("rejectedBy") is not None else None,
             "completedDate": obj.get("completedDate"),
             "approvalCriteria": obj.get("approvalCriteria"),
             "status": obj.get("status"),
             "additionalAttributes": obj.get("additionalAttributes"),
-            "referenceData": [ApprovalReference.from_dict(_item) for _item in obj.get("referenceData")] if obj.get("referenceData") is not None else None
+            "referenceData": [ApprovalReference.from_dict(_item) for _item in obj["referenceData"]] if obj.get("referenceData") is not None else None
         })
         return _obj
 

@@ -22,12 +22,12 @@ json = "{}"
 # create an instance of AccountAttributesChangedAccount from a JSON string
 account_attributes_changed_account_instance = AccountAttributesChangedAccount.from_json(json)
 # print the JSON string representation of the object
-print AccountAttributesChangedAccount.to_json()
+print(AccountAttributesChangedAccount.to_json())
 
 # convert the object into a dict
 account_attributes_changed_account_dict = account_attributes_changed_account_instance.to_dict()
 # create an instance of AccountAttributesChangedAccount from a dict
-account_attributes_changed_account_form_dict = account_attributes_changed_account.from_dict(account_attributes_changed_account_dict)
+account_attributes_changed_account_from_dict = AccountAttributesChangedAccount.from_dict(account_attributes_changed_account_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

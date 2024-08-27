@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v2024.models.attribute_definition_type import AttributeDefinitionType
 

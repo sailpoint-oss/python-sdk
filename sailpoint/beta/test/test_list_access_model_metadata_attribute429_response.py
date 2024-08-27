@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.list_access_model_metadata_attribute429_response import ListAccessModelMetadataAttribute429Response
 
@@ -28,7 +27,7 @@ class TestListAccessModelMetadataAttribute429Response(unittest.TestCase):
 
     def make_instance(self, include_optional) -> ListAccessModelMetadataAttribute429Response:
         """Test ListAccessModelMetadataAttribute429Response
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `ListAccessModelMetadataAttribute429Response`

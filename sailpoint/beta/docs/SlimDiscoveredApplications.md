@@ -26,12 +26,12 @@ json = "{}"
 # create an instance of SlimDiscoveredApplications from a JSON string
 slim_discovered_applications_instance = SlimDiscoveredApplications.from_json(json)
 # print the JSON string representation of the object
-print SlimDiscoveredApplications.to_json()
+print(SlimDiscoveredApplications.to_json())
 
 # convert the object into a dict
 slim_discovered_applications_dict = slim_discovered_applications_instance.to_dict()
 # create an instance of SlimDiscoveredApplications from a dict
-slim_discovered_applications_form_dict = slim_discovered_applications.from_dict(slim_discovered_applications_dict)
+slim_discovered_applications_from_dict = SlimDiscoveredApplications.from_dict(slim_discovered_applications_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

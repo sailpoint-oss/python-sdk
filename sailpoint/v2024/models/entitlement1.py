@@ -18,18 +18,15 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
-from pydantic import Field
 from sailpoint.v2024.models.entitlement1_access_model_metadata import Entitlement1AccessModelMetadata
 from sailpoint.v2024.models.entitlement1_manually_updated_fields import Entitlement1ManuallyUpdatedFields
 from sailpoint.v2024.models.entitlement1_owner import Entitlement1Owner
 from sailpoint.v2024.models.entitlement1_source import Entitlement1Source
 from sailpoint.v2024.models.permission_dto import PermissionDto
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class Entitlement1(BaseModel):
     """
@@ -55,11 +52,11 @@ class Entitlement1(BaseModel):
     access_model_metadata: Optional[Entitlement1AccessModelMetadata] = Field(default=None, alias="accessModelMetadata")
     __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "attribute", "value", "sourceSchemaObjectType", "privileged", "cloudGoverned", "description", "requestable", "attributes", "source", "owner", "directPermissions", "segments", "manuallyUpdatedFields", "accessModelMetadata"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -72,7 +69,7 @@ class Entitlement1(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of Entitlement1 from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -86,10 +83,12 @@ class Entitlement1(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of source
@@ -101,9 +100,9 @@ class Entitlement1(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in direct_permissions (list)
         _items = []
         if self.direct_permissions:
-            for _item in self.direct_permissions:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_direct_permissions in self.direct_permissions:
+                if _item_direct_permissions:
+                    _items.append(_item_direct_permissions.to_dict())
             _dict['directPermissions'] = _items
         # override the default output from pydantic by calling `to_dict()` of manually_updated_fields
         if self.manually_updated_fields:
@@ -129,7 +128,7 @@ class Entitlement1(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of Entitlement1 from a dict"""
         if obj is None:
             return None
@@ -150,12 +149,12 @@ class Entitlement1(BaseModel):
             "description": obj.get("description"),
             "requestable": obj.get("requestable") if obj.get("requestable") is not None else False,
             "attributes": obj.get("attributes"),
-            "source": Entitlement1Source.from_dict(obj.get("source")) if obj.get("source") is not None else None,
-            "owner": Entitlement1Owner.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
-            "directPermissions": [PermissionDto.from_dict(_item) for _item in obj.get("directPermissions")] if obj.get("directPermissions") is not None else None,
+            "source": Entitlement1Source.from_dict(obj["source"]) if obj.get("source") is not None else None,
+            "owner": Entitlement1Owner.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
+            "directPermissions": [PermissionDto.from_dict(_item) for _item in obj["directPermissions"]] if obj.get("directPermissions") is not None else None,
             "segments": obj.get("segments"),
-            "manuallyUpdatedFields": Entitlement1ManuallyUpdatedFields.from_dict(obj.get("manuallyUpdatedFields")) if obj.get("manuallyUpdatedFields") is not None else None,
-            "accessModelMetadata": Entitlement1AccessModelMetadata.from_dict(obj.get("accessModelMetadata")) if obj.get("accessModelMetadata") is not None else None
+            "manuallyUpdatedFields": Entitlement1ManuallyUpdatedFields.from_dict(obj["manuallyUpdatedFields"]) if obj.get("manuallyUpdatedFields") is not None else None,
+            "accessModelMetadata": Entitlement1AccessModelMetadata.from_dict(obj["accessModelMetadata"]) if obj.get("accessModelMetadata") is not None else None
         })
         return _obj
 

@@ -17,15 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
 from sailpoint.beta.models.access_item_ref import AccessItemRef
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class RecommendationRequest(BaseModel):
     """
@@ -35,11 +31,11 @@ class RecommendationRequest(BaseModel):
     item: Optional[AccessItemRef] = None
     __properties: ClassVar[List[str]] = ["identityId", "item"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -52,7 +48,7 @@ class RecommendationRequest(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of RecommendationRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -66,10 +62,12 @@ class RecommendationRequest(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of item
@@ -78,7 +76,7 @@ class RecommendationRequest(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of RecommendationRequest from a dict"""
         if obj is None:
             return None
@@ -88,7 +86,7 @@ class RecommendationRequest(BaseModel):
 
         _obj = cls.model_validate({
             "identityId": obj.get("identityId"),
-            "item": AccessItemRef.from_dict(obj.get("item")) if obj.get("item") is not None else None
+            "item": AccessItemRef.from_dict(obj["item"]) if obj.get("item") is not None else None
         })
         return _obj
 

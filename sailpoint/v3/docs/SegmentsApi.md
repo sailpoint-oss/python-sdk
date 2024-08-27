@@ -24,8 +24,6 @@ This API creates a segment.  >**Note:** Segment definitions may take time to pro
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.segment import Segment
 from sailpoint.v3.rest import ApiException
@@ -109,8 +107,6 @@ This API deletes the segment specified by the given ID. >**Note:** that segment 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.rest import ApiException
 from pprint import pprint
@@ -192,8 +188,6 @@ This API returns the segment specified by the given ID. A token with ORG_ADMIN o
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.segment import Segment
 from sailpoint.v3.rest import ApiException
@@ -278,8 +272,6 @@ This API returns a list of all segments.  A token with ORG_ADMIN or API authorit
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.segment import Segment
 from sailpoint.v3.rest import ApiException
@@ -367,8 +359,6 @@ Use this API to update segment fields by using the [JSON Patch](https://tools.ie
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.segment import Segment
 from sailpoint.v3.rest import ApiException

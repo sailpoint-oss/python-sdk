@@ -17,22 +17,18 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
-from pydantic import Field
 from typing_extensions import Annotated
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class TypeAheadQuery(BaseModel):
     """
     Query parameters used to construct an Elasticsearch type ahead query object.  The typeAheadQuery performs a search for top values beginning with the typed values. For example, typing \"Jo\" results in top hits matching \"Jo.\" Typing \"Job\" results in top hits matching \"Job.\" 
     """ # noqa: E501
     query: StrictStr = Field(description="The type ahead query string used to construct a phrase prefix match query.")
-    field: StrictStr = Field(description="The field on which to perform the type ahead search.")
+    var_field: StrictStr = Field(description="The field on which to perform the type ahead search.", alias="field")
     nested_type: Optional[StrictStr] = Field(default=None, description="The nested type.", alias="nestedType")
     max_expansions: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = Field(default=10, description="The number of suffixes the last term will be expanded into. Influences the performance of the query and the number results returned. Valid values: 1 to 1000.", alias="maxExpansions")
     size: Optional[Annotated[int, Field(strict=True, ge=1)]] = Field(default=100, description="The max amount of records the search will return.")
@@ -40,11 +36,11 @@ class TypeAheadQuery(BaseModel):
     sort_by_value: Optional[StrictBool] = Field(default=False, description="The flag that defines the sort type, by count or value.", alias="sortByValue")
     __properties: ClassVar[List[str]] = ["query", "field", "nestedType", "maxExpansions", "size", "sort", "sortByValue"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -57,7 +53,7 @@ class TypeAheadQuery(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of TypeAheadQuery from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -71,16 +67,18 @@ class TypeAheadQuery(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of TypeAheadQuery from a dict"""
         if obj is None:
             return None

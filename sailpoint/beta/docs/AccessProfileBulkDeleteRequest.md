@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of AccessProfileBulkDeleteRequest from a JSON string
 access_profile_bulk_delete_request_instance = AccessProfileBulkDeleteRequest.from_json(json)
 # print the JSON string representation of the object
-print AccessProfileBulkDeleteRequest.to_json()
+print(AccessProfileBulkDeleteRequest.to_json())
 
 # convert the object into a dict
 access_profile_bulk_delete_request_dict = access_profile_bulk_delete_request_instance.to_dict()
 # create an instance of AccessProfileBulkDeleteRequest from a dict
-access_profile_bulk_delete_request_form_dict = access_profile_bulk_delete_request.from_dict(access_profile_bulk_delete_request_dict)
+access_profile_bulk_delete_request_from_dict = AccessProfileBulkDeleteRequest.from_dict(access_profile_bulk_delete_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

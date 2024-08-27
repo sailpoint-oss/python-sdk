@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v3.models.create_o_auth_client_response import CreateOAuthClientResponse
 
@@ -28,7 +27,7 @@ class TestCreateOAuthClientResponse(unittest.TestCase):
 
     def make_instance(self, include_optional) -> CreateOAuthClientResponse:
         """Test CreateOAuthClientResponse
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `CreateOAuthClientResponse`

@@ -23,8 +23,6 @@ This API returns a list of access summaries for the specified identity campaign 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.access_summary import AccessSummary
 from sailpoint.v2024.rest import ApiException
@@ -121,8 +119,6 @@ This API returns a summary of the decisions made on an identity campaign certifi
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.identity_cert_decision_summary import IdentityCertDecisionSummary
 from sailpoint.v2024.rest import ApiException
@@ -209,8 +205,6 @@ This API returns a list of the identity summaries for a specific identity campai
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.certification_identity_summary import CertificationIdentitySummary
 from sailpoint.v2024.rest import ApiException
@@ -305,8 +299,6 @@ This API returns the summary for an identity on a specified identity campaign ce
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.certification_identity_summary import CertificationIdentitySummary
 from sailpoint.v2024.rest import ApiException

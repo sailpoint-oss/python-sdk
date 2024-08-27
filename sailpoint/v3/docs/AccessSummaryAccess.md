@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of AccessSummaryAccess from a JSON string
 access_summary_access_instance = AccessSummaryAccess.from_json(json)
 # print the JSON string representation of the object
-print AccessSummaryAccess.to_json()
+print(AccessSummaryAccess.to_json())
 
 # convert the object into a dict
 access_summary_access_dict = access_summary_access_instance.to_dict()
 # create an instance of AccessSummaryAccess from a dict
-access_summary_access_form_dict = access_summary_access.from_dict(access_summary_access_dict)
+access_summary_access_from_dict = AccessSummaryAccess.from_dict(access_summary_access_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

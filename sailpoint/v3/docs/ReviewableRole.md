@@ -25,12 +25,12 @@ json = "{}"
 # create an instance of ReviewableRole from a JSON string
 reviewable_role_instance = ReviewableRole.from_json(json)
 # print the JSON string representation of the object
-print ReviewableRole.to_json()
+print(ReviewableRole.to_json())
 
 # convert the object into a dict
 reviewable_role_dict = reviewable_role_instance.to_dict()
 # create an instance of ReviewableRole from a dict
-reviewable_role_form_dict = reviewable_role.from_dict(reviewable_role_dict)
+reviewable_role_from_dict = ReviewableRole.from_dict(reviewable_role_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

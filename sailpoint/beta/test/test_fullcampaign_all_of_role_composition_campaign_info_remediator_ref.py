@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.fullcampaign_all_of_role_composition_campaign_info_remediator_ref import FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef
 
@@ -28,7 +27,7 @@ class TestFullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef(unittest.Tes
 
     def make_instance(self, include_optional) -> FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef:
         """Test FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef`

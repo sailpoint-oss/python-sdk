@@ -27,12 +27,12 @@ json = "{}"
 # create an instance of ReportDetailsArguments from a JSON string
 report_details_arguments_instance = ReportDetailsArguments.from_json(json)
 # print the JSON string representation of the object
-print ReportDetailsArguments.to_json()
+print(ReportDetailsArguments.to_json())
 
 # convert the object into a dict
 report_details_arguments_dict = report_details_arguments_instance.to_dict()
 # create an instance of ReportDetailsArguments from a dict
-report_details_arguments_form_dict = report_details_arguments.from_dict(report_details_arguments_dict)
+report_details_arguments_from_dict = ReportDetailsArguments.from_dict(report_details_arguments_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

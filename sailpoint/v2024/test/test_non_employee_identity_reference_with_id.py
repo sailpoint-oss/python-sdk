@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v2024.models.non_employee_identity_reference_with_id import NonEmployeeIdentityReferenceWithId
 
@@ -28,7 +27,7 @@ class TestNonEmployeeIdentityReferenceWithId(unittest.TestCase):
 
     def make_instance(self, include_optional) -> NonEmployeeIdentityReferenceWithId:
         """Test NonEmployeeIdentityReferenceWithId
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `NonEmployeeIdentityReferenceWithId`

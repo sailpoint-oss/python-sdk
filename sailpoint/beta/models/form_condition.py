@@ -17,16 +17,12 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr, field_validator
-from pydantic import Field
 from sailpoint.beta.models.condition_effect import ConditionEffect
 from sailpoint.beta.models.condition_rule import ConditionRule
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class FormCondition(BaseModel):
     """
@@ -43,15 +39,15 @@ class FormCondition(BaseModel):
         if value is None:
             return value
 
-        if value not in ('AND', 'OR'):
+        if value not in set(['AND', 'OR']):
             raise ValueError("must be one of enum values ('AND', 'OR')")
         return value
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -64,7 +60,7 @@ class FormCondition(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of FormCondition from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -78,30 +74,32 @@ class FormCondition(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in rules (list)
         _items = []
         if self.rules:
-            for _item in self.rules:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_rules in self.rules:
+                if _item_rules:
+                    _items.append(_item_rules.to_dict())
             _dict['rules'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in effects (list)
         _items = []
         if self.effects:
-            for _item in self.effects:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_effects in self.effects:
+                if _item_effects:
+                    _items.append(_item_effects.to_dict())
             _dict['effects'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of FormCondition from a dict"""
         if obj is None:
             return None
@@ -111,8 +109,8 @@ class FormCondition(BaseModel):
 
         _obj = cls.model_validate({
             "ruleOperator": obj.get("ruleOperator"),
-            "rules": [ConditionRule.from_dict(_item) for _item in obj.get("rules")] if obj.get("rules") is not None else None,
-            "effects": [ConditionEffect.from_dict(_item) for _item in obj.get("effects")] if obj.get("effects") is not None else None
+            "rules": [ConditionRule.from_dict(_item) for _item in obj["rules"]] if obj.get("rules") is not None else None,
+            "effects": [ConditionEffect.from_dict(_item) for _item in obj["effects"]] if obj.get("effects") is not None else None
         })
         return _obj
 

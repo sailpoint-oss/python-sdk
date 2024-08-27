@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of CommentDto1 from a JSON string
 comment_dto1_instance = CommentDto1.from_json(json)
 # print the JSON string representation of the object
-print CommentDto1.to_json()
+print(CommentDto1.to_json())
 
 # convert the object into a dict
 comment_dto1_dict = comment_dto1_instance.to_dict()
 # create an instance of CommentDto1 from a dict
-comment_dto1_form_dict = comment_dto1.from_dict(comment_dto1_dict)
+comment_dto1_from_dict = CommentDto1.from_dict(comment_dto1_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

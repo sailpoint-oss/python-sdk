@@ -28,8 +28,6 @@ Creates a new Reassignment Configuration for the specified identity.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.configuration_item_request import ConfigurationItemRequest
 from sailpoint.v2024.models.configuration_item_response import ConfigurationItemResponse
@@ -116,8 +114,6 @@ Deletes all Reassignment Configuration for the specified identity
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
@@ -200,8 +196,6 @@ Evaluates the Reassignment Configuration for an `Identity` to determine if work 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.config_type_enum import ConfigTypeEnum
 from sailpoint.v2024.models.evaluate_response import EvaluateResponse
@@ -292,8 +286,6 @@ Gets a collection of types which are available in the Reassignment Configuration
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.config_type import ConfigType
 from sailpoint.v2024.rest import ApiException
@@ -377,8 +369,6 @@ Gets the Reassignment Configuration for an identity.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.configuration_response import ConfigurationResponse
 from sailpoint.v2024.rest import ApiException
@@ -465,8 +455,6 @@ Gets the global Reassignment Configuration settings for the requestor's tenant.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.tenant_configuration_response import TenantConfigurationResponse
 from sailpoint.v2024.rest import ApiException
@@ -551,8 +539,6 @@ Gets all Reassignment configuration for the current org.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.configuration_response import ConfigurationResponse
 from sailpoint.v2024.rest import ApiException
@@ -637,8 +623,6 @@ Replaces existing Reassignment configuration for an identity with the newly prov
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.configuration_item_request import ConfigurationItemRequest
 from sailpoint.v2024.models.configuration_item_response import ConfigurationItemResponse
@@ -727,8 +711,6 @@ Replaces existing Tenant-wide Reassignment Configuration settings with the newly
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.tenant_configuration_request import TenantConfigurationRequest
 from sailpoint.v2024.models.tenant_configuration_response import TenantConfigurationResponse

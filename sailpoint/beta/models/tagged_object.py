@@ -17,15 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
 from sailpoint.beta.models.tagged_object_object_ref import TaggedObjectObjectRef
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class TaggedObject(BaseModel):
     """
@@ -35,11 +31,11 @@ class TaggedObject(BaseModel):
     tags: Optional[List[StrictStr]] = Field(default=None, description="Labels to be applied to an Object")
     __properties: ClassVar[List[str]] = ["objectRef", "tags"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -52,7 +48,7 @@ class TaggedObject(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of TaggedObject from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -66,10 +62,12 @@ class TaggedObject(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of object_ref
@@ -78,7 +76,7 @@ class TaggedObject(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of TaggedObject from a dict"""
         if obj is None:
             return None
@@ -87,7 +85,7 @@ class TaggedObject(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "objectRef": TaggedObjectObjectRef.from_dict(obj.get("objectRef")) if obj.get("objectRef") is not None else None,
+            "objectRef": TaggedObjectObjectRef.from_dict(obj["objectRef"]) if obj.get("objectRef") is not None else None,
             "tags": obj.get("tags")
         })
         return _obj

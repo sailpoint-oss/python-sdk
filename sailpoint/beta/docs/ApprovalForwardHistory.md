@@ -22,12 +22,12 @@ json = "{}"
 # create an instance of ApprovalForwardHistory from a JSON string
 approval_forward_history_instance = ApprovalForwardHistory.from_json(json)
 # print the JSON string representation of the object
-print ApprovalForwardHistory.to_json()
+print(ApprovalForwardHistory.to_json())
 
 # convert the object into a dict
 approval_forward_history_dict = approval_forward_history_instance.to_dict()
 # create an instance of ApprovalForwardHistory from a dict
-approval_forward_history_form_dict = approval_forward_history.from_dict(approval_forward_history_dict)
+approval_forward_history_from_dict = ApprovalForwardHistory.from_dict(approval_forward_history_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

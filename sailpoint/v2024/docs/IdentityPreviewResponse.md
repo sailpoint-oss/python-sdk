@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of IdentityPreviewResponse from a JSON string
 identity_preview_response_instance = IdentityPreviewResponse.from_json(json)
 # print the JSON string representation of the object
-print IdentityPreviewResponse.to_json()
+print(IdentityPreviewResponse.to_json())
 
 # convert the object into a dict
 identity_preview_response_dict = identity_preview_response_instance.to_dict()
 # create an instance of IdentityPreviewResponse from a dict
-identity_preview_response_form_dict = identity_preview_response.from_dict(identity_preview_response_dict)
+identity_preview_response_from_dict = IdentityPreviewResponse.from_dict(identity_preview_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -17,16 +17,12 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List
-from pydantic import BaseModel
-from pydantic import Field
 from sailpoint.beta.models.identity_attributes_changed_changes_inner import IdentityAttributesChangedChangesInner
 from sailpoint.beta.models.identity_attributes_changed_identity import IdentityAttributesChangedIdentity
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class IdentityAttributesChanged(BaseModel):
     """
@@ -36,11 +32,11 @@ class IdentityAttributesChanged(BaseModel):
     changes: List[IdentityAttributesChangedChangesInner] = Field(description="A list of one or more identity attributes that changed on the identity.")
     __properties: ClassVar[List[str]] = ["identity", "changes"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -53,7 +49,7 @@ class IdentityAttributesChanged(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of IdentityAttributesChanged from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -67,10 +63,12 @@ class IdentityAttributesChanged(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of identity
@@ -79,14 +77,14 @@ class IdentityAttributesChanged(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in changes (list)
         _items = []
         if self.changes:
-            for _item in self.changes:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_changes in self.changes:
+                if _item_changes:
+                    _items.append(_item_changes.to_dict())
             _dict['changes'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of IdentityAttributesChanged from a dict"""
         if obj is None:
             return None
@@ -95,8 +93,8 @@ class IdentityAttributesChanged(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "identity": IdentityAttributesChangedIdentity.from_dict(obj.get("identity")) if obj.get("identity") is not None else None,
-            "changes": [IdentityAttributesChangedChangesInner.from_dict(_item) for _item in obj.get("changes")] if obj.get("changes") is not None else None
+            "identity": IdentityAttributesChangedIdentity.from_dict(obj["identity"]) if obj.get("identity") is not None else None,
+            "changes": [IdentityAttributesChangedChangesInner.from_dict(_item) for _item in obj["changes"]] if obj.get("changes") is not None else None
         })
         return _obj
 

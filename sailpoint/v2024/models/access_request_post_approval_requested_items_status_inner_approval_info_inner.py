@@ -17,15 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr, field_validator
-from pydantic import Field
 from sailpoint.v2024.models.access_request_post_approval_requested_items_status_inner_approval_info_inner_approver import AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner(BaseModel):
     """
@@ -40,15 +36,15 @@ class AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner(BaseMo
     @field_validator('approval_decision')
     def approval_decision_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('APPROVED', 'DENIED'):
+        if value not in set(['APPROVED', 'DENIED']):
             raise ValueError("must be one of enum values ('APPROVED', 'DENIED')")
         return value
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -61,7 +57,7 @@ class AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner(BaseMo
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -75,10 +71,12 @@ class AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner(BaseMo
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of approver
@@ -92,7 +90,7 @@ class AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner(BaseMo
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner from a dict"""
         if obj is None:
             return None
@@ -104,7 +102,7 @@ class AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner(BaseMo
             "approvalComment": obj.get("approvalComment"),
             "approvalDecision": obj.get("approvalDecision"),
             "approverName": obj.get("approverName"),
-            "approver": AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover.from_dict(obj.get("approver")) if obj.get("approver") is not None else None
+            "approver": AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover.from_dict(obj["approver"]) if obj.get("approver") is not None else None
         })
         return _obj
 

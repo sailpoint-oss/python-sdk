@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v2024.models.sed_approval_status import SedApprovalStatus
 
@@ -28,7 +27,7 @@ class TestSedApprovalStatus(unittest.TestCase):
 
     def make_instance(self, include_optional) -> SedApprovalStatus:
         """Test SedApprovalStatus
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `SedApprovalStatus`

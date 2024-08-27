@@ -24,8 +24,6 @@ This API returns the permissions associated with an entitlement certification it
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.permission_dto import PermissionDto
 from sailpoint.beta.rest import ApiException
@@ -120,8 +118,6 @@ This API returns the status of all pending (`QUEUED` or `IN_PROGRESS`) tasks for
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.identity_certification_task import IdentityCertificationTask
 from sailpoint.beta.rest import ApiException
@@ -206,8 +202,6 @@ This API returns the status of a certification task. A token with ORG_ADMIN or C
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.identity_certification_task import IdentityCertificationTask
 from sailpoint.beta.rest import ApiException
@@ -294,8 +288,6 @@ This API returns a list of reviewers for the certification. A token with ORG_ADM
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.identity_reference_with_name_and_email import IdentityReferenceWithNameAndEmail
 from sailpoint.beta.rest import ApiException
@@ -390,8 +382,6 @@ This API initiates a task to reassign up to 500 identities or items in an identi
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.identity_certification_task import IdentityCertificationTask
 from sailpoint.beta.models.review_reassign import ReviewReassign

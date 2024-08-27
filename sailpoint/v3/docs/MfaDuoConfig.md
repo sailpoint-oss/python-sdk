@@ -22,12 +22,12 @@ json = "{}"
 # create an instance of MfaDuoConfig from a JSON string
 mfa_duo_config_instance = MfaDuoConfig.from_json(json)
 # print the JSON string representation of the object
-print MfaDuoConfig.to_json()
+print(MfaDuoConfig.to_json())
 
 # convert the object into a dict
 mfa_duo_config_dict = mfa_duo_config_instance.to_dict()
 # create an instance of MfaDuoConfig from a dict
-mfa_duo_config_form_dict = mfa_duo_config.from_dict(mfa_duo_config_dict)
+mfa_duo_config_from_dict = MfaDuoConfig.from_dict(mfa_duo_config_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

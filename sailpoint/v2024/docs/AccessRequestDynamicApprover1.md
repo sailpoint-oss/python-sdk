@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of AccessRequestDynamicApprover1 from a JSON string
 access_request_dynamic_approver1_instance = AccessRequestDynamicApprover1.from_json(json)
 # print the JSON string representation of the object
-print AccessRequestDynamicApprover1.to_json()
+print(AccessRequestDynamicApprover1.to_json())
 
 # convert the object into a dict
 access_request_dynamic_approver1_dict = access_request_dynamic_approver1_instance.to_dict()
 # create an instance of AccessRequestDynamicApprover1 from a dict
-access_request_dynamic_approver1_form_dict = access_request_dynamic_approver1.from_dict(access_request_dynamic_approver1_dict)
+access_request_dynamic_approver1_from_dict = AccessRequestDynamicApprover1.from_dict(access_request_dynamic_approver1_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

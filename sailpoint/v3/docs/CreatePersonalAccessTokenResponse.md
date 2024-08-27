@@ -22,12 +22,12 @@ json = "{}"
 # create an instance of CreatePersonalAccessTokenResponse from a JSON string
 create_personal_access_token_response_instance = CreatePersonalAccessTokenResponse.from_json(json)
 # print the JSON string representation of the object
-print CreatePersonalAccessTokenResponse.to_json()
+print(CreatePersonalAccessTokenResponse.to_json())
 
 # convert the object into a dict
 create_personal_access_token_response_dict = create_personal_access_token_response_instance.to_dict()
 # create an instance of CreatePersonalAccessTokenResponse from a dict
-create_personal_access_token_response_form_dict = create_personal_access_token_response.from_dict(create_personal_access_token_response_dict)
+create_personal_access_token_response_from_dict = CreatePersonalAccessTokenResponse.from_dict(create_personal_access_token_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

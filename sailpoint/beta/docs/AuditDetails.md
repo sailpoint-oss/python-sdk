@@ -21,12 +21,12 @@ json = "{}"
 # create an instance of AuditDetails from a JSON string
 audit_details_instance = AuditDetails.from_json(json)
 # print the JSON string representation of the object
-print AuditDetails.to_json()
+print(AuditDetails.to_json())
 
 # convert the object into a dict
 audit_details_dict = audit_details_instance.to_dict()
 # create an instance of AuditDetails from a dict
-audit_details_form_dict = audit_details.from_dict(audit_details_dict)
+audit_details_from_dict = AuditDetails.from_dict(audit_details_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

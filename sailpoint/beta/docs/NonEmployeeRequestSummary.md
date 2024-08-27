@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of NonEmployeeRequestSummary from a JSON string
 non_employee_request_summary_instance = NonEmployeeRequestSummary.from_json(json)
 # print the JSON string representation of the object
-print NonEmployeeRequestSummary.to_json()
+print(NonEmployeeRequestSummary.to_json())
 
 # convert the object into a dict
 non_employee_request_summary_dict = non_employee_request_summary_instance.to_dict()
 # create an instance of NonEmployeeRequestSummary from a dict
-non_employee_request_summary_form_dict = non_employee_request_summary.from_dict(non_employee_request_summary_dict)
+non_employee_request_summary_from_dict = NonEmployeeRequestSummary.from_dict(non_employee_request_summary_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

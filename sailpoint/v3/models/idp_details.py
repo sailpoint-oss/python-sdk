@@ -17,15 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr, field_validator
-from pydantic import Field
 from sailpoint.v3.models.jit_configuration import JITConfiguration
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class IdpDetails(BaseModel):
     """
@@ -53,15 +49,15 @@ class IdpDetails(BaseModel):
         if value is None:
             return value
 
-        if value not in ('SAML_IDP'):
+        if value not in set(['SAML_IDP']):
             raise ValueError("must be one of enum values ('SAML_IDP')")
         return value
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -74,7 +70,7 @@ class IdpDetails(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of IdpDetails from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -88,10 +84,12 @@ class IdpDetails(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of jit_configuration
@@ -100,7 +98,7 @@ class IdpDetails(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of IdpDetails from a dict"""
         if obj is None:
             return None
@@ -116,7 +114,7 @@ class IdpDetails(BaseModel):
             "logoutUrl": obj.get("logoutUrl"),
             "includeAuthContext": obj.get("includeAuthContext") if obj.get("includeAuthContext") is not None else False,
             "nameId": obj.get("nameId"),
-            "jitConfiguration": JITConfiguration.from_dict(obj.get("jitConfiguration")) if obj.get("jitConfiguration") is not None else None,
+            "jitConfiguration": JITConfiguration.from_dict(obj["jitConfiguration"]) if obj.get("jitConfiguration") is not None else None,
             "cert": obj.get("cert"),
             "loginUrlPost": obj.get("loginUrlPost"),
             "loginUrlRedirect": obj.get("loginUrlRedirect"),

@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of RoleCriteriaKey from a JSON string
 role_criteria_key_instance = RoleCriteriaKey.from_json(json)
 # print the JSON string representation of the object
-print RoleCriteriaKey.to_json()
+print(RoleCriteriaKey.to_json())
 
 # convert the object into a dict
 role_criteria_key_dict = role_criteria_key_instance.to_dict()
 # create an instance of RoleCriteriaKey from a dict
-role_criteria_key_form_dict = role_criteria_key.from_dict(role_criteria_key_dict)
+role_criteria_key_from_dict = RoleCriteriaKey.from_dict(role_criteria_key_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

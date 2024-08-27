@@ -21,12 +21,12 @@ json = "{}"
 # create an instance of AccessItemAppResponse from a JSON string
 access_item_app_response_instance = AccessItemAppResponse.from_json(json)
 # print the JSON string representation of the object
-print AccessItemAppResponse.to_json()
+print(AccessItemAppResponse.to_json())
 
 # convert the object into a dict
 access_item_app_response_dict = access_item_app_response_instance.to_dict()
 # create an instance of AccessItemAppResponse from a dict
-access_item_app_response_form_dict = access_item_app_response.from_dict(access_item_app_response_dict)
+access_item_app_response_from_dict = AccessItemAppResponse.from_dict(access_item_app_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

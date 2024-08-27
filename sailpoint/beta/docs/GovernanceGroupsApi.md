@@ -29,8 +29,6 @@ This API creates a new Governance Group.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.workgroup_dto import WorkgroupDto
 from sailpoint.beta.rest import ApiException
@@ -114,8 +112,6 @@ This API deletes a Governance Group by its ID.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
@@ -196,8 +192,6 @@ This API removes one or more  members from a Governance Group.  A token with API
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.bulk_workgroup_members_request_inner import BulkWorkgroupMembersRequestInner
 from sailpoint.beta.models.workgroup_member_delete_item import WorkgroupMemberDeleteItem
@@ -284,8 +278,6 @@ Delete Governance Group(s)
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.workgroup_bulk_delete_request import WorkgroupBulkDeleteRequest
 from sailpoint.beta.models.workgroup_delete_item import WorkgroupDeleteItem
@@ -370,8 +362,6 @@ This API returns a Governance Groups by its ID.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.workgroup_dto import WorkgroupDto
 from sailpoint.beta.rest import ApiException
@@ -455,8 +445,6 @@ This API returns list of connections associated with a Governance Group.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.workgroup_connection_dto import WorkgroupConnectionDto
 from sailpoint.beta.rest import ApiException
@@ -548,8 +536,6 @@ This API returns list of members associated with a Governance Group.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.list_workgroup_members200_response_inner import ListWorkgroupMembers200ResponseInner
 from sailpoint.beta.rest import ApiException
@@ -641,8 +627,6 @@ This API returns list of Governance Groups
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.workgroup_dto import WorkgroupDto
 from sailpoint.beta.rest import ApiException
@@ -734,8 +718,6 @@ This API updates an existing governance group by ID.  The following fields and o
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
 from sailpoint.beta.models.workgroup_dto import WorkgroupDto
@@ -822,8 +804,6 @@ This API adds one or more members to a Governance Group.  A token with API, ORG_
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.bulk_workgroup_members_request_inner import BulkWorkgroupMembersRequestInner
 from sailpoint.beta.models.workgroup_member_add_item import WorkgroupMemberAddItem

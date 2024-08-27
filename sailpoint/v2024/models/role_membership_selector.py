@@ -17,17 +17,13 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel
-from pydantic import Field
 from sailpoint.v2024.models.role_criteria_level1 import RoleCriteriaLevel1
 from sailpoint.v2024.models.role_membership_identity import RoleMembershipIdentity
 from sailpoint.v2024.models.role_membership_selector_type import RoleMembershipSelectorType
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class RoleMembershipSelector(BaseModel):
     """
@@ -38,11 +34,11 @@ class RoleMembershipSelector(BaseModel):
     identities: Optional[List[RoleMembershipIdentity]] = Field(default=None, description="Defines role membership as being exclusive to the specified Identities, when type is IDENTITY_LIST.")
     __properties: ClassVar[List[str]] = ["type", "criteria", "identities"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -55,7 +51,7 @@ class RoleMembershipSelector(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of RoleMembershipSelector from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -69,10 +65,12 @@ class RoleMembershipSelector(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of criteria
@@ -81,9 +79,9 @@ class RoleMembershipSelector(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in identities (list)
         _items = []
         if self.identities:
-            for _item in self.identities:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_identities in self.identities:
+                if _item_identities:
+                    _items.append(_item_identities.to_dict())
             _dict['identities'] = _items
         # set to None if criteria (nullable) is None
         # and model_fields_set contains the field
@@ -98,7 +96,7 @@ class RoleMembershipSelector(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of RoleMembershipSelector from a dict"""
         if obj is None:
             return None
@@ -108,8 +106,8 @@ class RoleMembershipSelector(BaseModel):
 
         _obj = cls.model_validate({
             "type": obj.get("type"),
-            "criteria": RoleCriteriaLevel1.from_dict(obj.get("criteria")) if obj.get("criteria") is not None else None,
-            "identities": [RoleMembershipIdentity.from_dict(_item) for _item in obj.get("identities")] if obj.get("identities") is not None else None
+            "criteria": RoleCriteriaLevel1.from_dict(obj["criteria"]) if obj.get("criteria") is not None else None,
+            "identities": [RoleMembershipIdentity.from_dict(_item) for _item in obj["identities"]] if obj.get("identities") is not None else None
         })
         return _obj
 

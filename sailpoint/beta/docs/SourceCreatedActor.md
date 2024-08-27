@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of SourceCreatedActor from a JSON string
 source_created_actor_instance = SourceCreatedActor.from_json(json)
 # print the JSON string representation of the object
-print SourceCreatedActor.to_json()
+print(SourceCreatedActor.to_json())
 
 # convert the object into a dict
 source_created_actor_dict = source_created_actor_instance.to_dict()
 # create an instance of SourceCreatedActor from a dict
-source_created_actor_form_dict = source_created_actor.from_dict(source_created_actor_dict)
+source_created_actor_from_dict = SourceCreatedActor.from_dict(source_created_actor_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of AppAllOfAccount from a JSON string
 app_all_of_account_instance = AppAllOfAccount.from_json(json)
 # print the JSON string representation of the object
-print AppAllOfAccount.to_json()
+print(AppAllOfAccount.to_json())
 
 # convert the object into a dict
 app_all_of_account_dict = app_all_of_account_instance.to_dict()
 # create an instance of AppAllOfAccount from a dict
-app_all_of_account_form_dict = app_all_of_account.from_dict(app_all_of_account_dict)
+app_all_of_account_from_dict = AppAllOfAccount.from_dict(app_all_of_account_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

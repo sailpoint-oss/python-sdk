@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of AccessProfileUsage from a JSON string
 access_profile_usage_instance = AccessProfileUsage.from_json(json)
 # print the JSON string representation of the object
-print AccessProfileUsage.to_json()
+print(AccessProfileUsage.to_json())
 
 # convert the object into a dict
 access_profile_usage_dict = access_profile_usage_instance.to_dict()
 # create an instance of AccessProfileUsage from a dict
-access_profile_usage_form_dict = access_profile_usage.from_dict(access_profile_usage_dict)
+access_profile_usage_from_dict = AccessProfileUsage.from_dict(access_profile_usage_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

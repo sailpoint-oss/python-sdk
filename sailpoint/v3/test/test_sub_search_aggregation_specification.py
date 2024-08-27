@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v3.models.sub_search_aggregation_specification import SubSearchAggregationSpecification
 
@@ -28,7 +27,7 @@ class TestSubSearchAggregationSpecification(unittest.TestCase):
 
     def make_instance(self, include_optional) -> SubSearchAggregationSpecification:
         """Test SubSearchAggregationSpecification
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `SubSearchAggregationSpecification`

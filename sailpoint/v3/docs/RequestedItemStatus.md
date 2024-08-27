@@ -39,12 +39,12 @@ json = "{}"
 # create an instance of RequestedItemStatus from a JSON string
 requested_item_status_instance = RequestedItemStatus.from_json(json)
 # print the JSON string representation of the object
-print RequestedItemStatus.to_json()
+print(RequestedItemStatus.to_json())
 
 # convert the object into a dict
 requested_item_status_dict = requested_item_status_instance.to_dict()
 # create an instance of RequestedItemStatus from a dict
-requested_item_status_form_dict = requested_item_status.from_dict(requested_item_status_dict)
+requested_item_status_from_dict = RequestedItemStatus.from_dict(requested_item_status_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

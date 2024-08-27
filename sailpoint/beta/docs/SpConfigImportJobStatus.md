@@ -24,12 +24,12 @@ json = "{}"
 # create an instance of SpConfigImportJobStatus from a JSON string
 sp_config_import_job_status_instance = SpConfigImportJobStatus.from_json(json)
 # print the JSON string representation of the object
-print SpConfigImportJobStatus.to_json()
+print(SpConfigImportJobStatus.to_json())
 
 # convert the object into a dict
 sp_config_import_job_status_dict = sp_config_import_job_status_instance.to_dict()
 # create an instance of SpConfigImportJobStatus from a dict
-sp_config_import_job_status_form_dict = sp_config_import_job_status.from_dict(sp_config_import_job_status_dict)
+sp_config_import_job_status_from_dict = SpConfigImportJobStatus.from_dict(sp_config_import_job_status_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

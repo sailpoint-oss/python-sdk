@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v2024.models.provisioning_completed_account_requests_inner_attribute_requests_inner import ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner
 
@@ -28,7 +27,7 @@ class TestProvisioningCompletedAccountRequestsInnerAttributeRequestsInner(unitte
 
     def make_instance(self, include_optional) -> ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner:
         """Test ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner`

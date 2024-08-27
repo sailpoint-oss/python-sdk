@@ -21,12 +21,12 @@ json = "{}"
 # create an instance of CampaignTemplateOwnerRef from a JSON string
 campaign_template_owner_ref_instance = CampaignTemplateOwnerRef.from_json(json)
 # print the JSON string representation of the object
-print CampaignTemplateOwnerRef.to_json()
+print(CampaignTemplateOwnerRef.to_json())
 
 # convert the object into a dict
 campaign_template_owner_ref_dict = campaign_template_owner_ref_instance.to_dict()
 # create an instance of CampaignTemplateOwnerRef from a dict
-campaign_template_owner_ref_form_dict = campaign_template_owner_ref.from_dict(campaign_template_owner_ref_dict)
+campaign_template_owner_ref_from_dict = CampaignTemplateOwnerRef.from_dict(campaign_template_owner_ref_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

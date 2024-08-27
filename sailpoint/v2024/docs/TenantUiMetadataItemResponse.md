@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of TenantUiMetadataItemResponse from a JSON string
 tenant_ui_metadata_item_response_instance = TenantUiMetadataItemResponse.from_json(json)
 # print the JSON string representation of the object
-print TenantUiMetadataItemResponse.to_json()
+print(TenantUiMetadataItemResponse.to_json())
 
 # convert the object into a dict
 tenant_ui_metadata_item_response_dict = tenant_ui_metadata_item_response_instance.to_dict()
 # create an instance of TenantUiMetadataItemResponse from a dict
-tenant_ui_metadata_item_response_form_dict = tenant_ui_metadata_item_response.from_dict(tenant_ui_metadata_item_response_dict)
+tenant_ui_metadata_item_response_from_dict = TenantUiMetadataItemResponse.from_dict(tenant_ui_metadata_item_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

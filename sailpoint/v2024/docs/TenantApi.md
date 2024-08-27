@@ -20,8 +20,6 @@ This rest endpoint can be used to retrieve tenant details.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.tenant import Tenant
 from sailpoint.v2024.rest import ApiException

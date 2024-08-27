@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of PasswordDigitTokenReset from a JSON string
 password_digit_token_reset_instance = PasswordDigitTokenReset.from_json(json)
 # print the JSON string representation of the object
-print PasswordDigitTokenReset.to_json()
+print(PasswordDigitTokenReset.to_json())
 
 # convert the object into a dict
 password_digit_token_reset_dict = password_digit_token_reset_instance.to_dict()
 # create an instance of PasswordDigitTokenReset from a dict
-password_digit_token_reset_form_dict = password_digit_token_reset.from_dict(password_digit_token_reset_dict)
+password_digit_token_reset_from_dict = PasswordDigitTokenReset.from_dict(password_digit_token_reset_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

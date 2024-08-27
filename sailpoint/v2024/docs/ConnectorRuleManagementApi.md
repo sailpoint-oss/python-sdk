@@ -25,8 +25,6 @@ Creates a new connector rule. A token with ORG_ADMIN authority is required to ca
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.connector_rule_create_request import ConnectorRuleCreateRequest
 from sailpoint.v2024.models.connector_rule_response import ConnectorRuleResponse
@@ -113,8 +111,6 @@ Deletes the connector rule specified by the given ID. A token with ORG_ADMIN aut
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
@@ -198,8 +194,6 @@ Returns the connector rule specified by ID. A token with ORG_ADMIN authority is 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.connector_rule_response import ConnectorRuleResponse
 from sailpoint.v2024.rest import ApiException
@@ -286,8 +280,6 @@ Returns the list of connector rules. A token with ORG_ADMIN authority is require
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.connector_rule_response import ConnectorRuleResponse
 from sailpoint.v2024.rest import ApiException
@@ -371,8 +363,6 @@ Updates an existing connector rule with the one provided in the request body. No
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.connector_rule_response import ConnectorRuleResponse
 from sailpoint.v2024.models.connector_rule_update_request import ConnectorRuleUpdateRequest
@@ -462,8 +452,6 @@ Returns a list of issues within the code to fix, if any. A token with ORG_ADMIN 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.connector_rule_validation_response import ConnectorRuleValidationResponse
 from sailpoint.v2024.models.source_code import SourceCode

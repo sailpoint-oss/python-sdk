@@ -23,12 +23,12 @@ json = "{}"
 # create an instance of AuthProfile from a JSON string
 auth_profile_instance = AuthProfile.from_json(json)
 # print the JSON string representation of the object
-print AuthProfile.to_json()
+print(AuthProfile.to_json())
 
 # convert the object into a dict
 auth_profile_dict = auth_profile_instance.to_dict()
 # create an instance of AuthProfile from a dict
-auth_profile_form_dict = auth_profile.from_dict(auth_profile_dict)
+auth_profile_from_dict = AuthProfile.from_dict(auth_profile_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

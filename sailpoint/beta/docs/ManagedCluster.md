@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **pod** | **str** | ManagedCluster pod | [optional] 
 **org** | **str** | ManagedCluster org | [optional] 
 **type** | [**ManagedClusterTypes**](ManagedClusterTypes.md) |  | [optional] 
-**configuration** | **Dict[str, str]** | ManagedProcess configuration map | [optional] 
+**configuration** | **Dict[str, Optional[str]]** | ManagedProcess configuration map | [optional] 
 **key_pair** | [**ManagedClusterKeyPair**](ManagedClusterKeyPair.md) |  | [optional] 
 **attributes** | [**ManagedClusterAttributes**](ManagedClusterAttributes.md) |  | [optional] 
 **description** | **str** | ManagedCluster description | [optional] 
@@ -42,12 +42,12 @@ json = "{}"
 # create an instance of ManagedCluster from a JSON string
 managed_cluster_instance = ManagedCluster.from_json(json)
 # print the JSON string representation of the object
-print ManagedCluster.to_json()
+print(ManagedCluster.to_json())
 
 # convert the object into a dict
 managed_cluster_dict = managed_cluster_instance.to_dict()
 # create an instance of ManagedCluster from a dict
-managed_cluster_form_dict = managed_cluster.from_dict(managed_cluster_dict)
+managed_cluster_from_dict = ManagedCluster.from_dict(managed_cluster_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

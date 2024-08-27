@@ -24,8 +24,6 @@ This API creates a password sync group based on the specifications provided. A t
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.password_sync_group import PasswordSyncGroup
 from sailpoint.v2024.rest import ApiException
@@ -109,8 +107,6 @@ This API deletes the specified password sync group. A token with ORG_ADMIN autho
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
@@ -191,8 +187,6 @@ This API returns the sync group for the specified ID. A token with ORG_ADMIN aut
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.password_sync_group import PasswordSyncGroup
 from sailpoint.v2024.rest import ApiException
@@ -277,8 +271,6 @@ This API returns a list of password sync groups. A token with ORG_ADMIN authorit
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.password_sync_group import PasswordSyncGroup
 from sailpoint.v2024.rest import ApiException
@@ -366,8 +358,6 @@ This API updates the specified password sync group. A token with ORG_ADMIN autho
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.password_sync_group import PasswordSyncGroup
 from sailpoint.v2024.rest import ApiException

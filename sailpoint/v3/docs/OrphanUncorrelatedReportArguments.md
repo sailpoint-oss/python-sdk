@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of OrphanUncorrelatedReportArguments from a JSON string
 orphan_uncorrelated_report_arguments_instance = OrphanUncorrelatedReportArguments.from_json(json)
 # print the JSON string representation of the object
-print OrphanUncorrelatedReportArguments.to_json()
+print(OrphanUncorrelatedReportArguments.to_json())
 
 # convert the object into a dict
 orphan_uncorrelated_report_arguments_dict = orphan_uncorrelated_report_arguments_instance.to_dict()
 # create an instance of OrphanUncorrelatedReportArguments from a dict
-orphan_uncorrelated_report_arguments_form_dict = orphan_uncorrelated_report_arguments.from_dict(orphan_uncorrelated_report_arguments_dict)
+orphan_uncorrelated_report_arguments_from_dict = OrphanUncorrelatedReportArguments.from_dict(orphan_uncorrelated_report_arguments_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

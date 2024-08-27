@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.requestable_object_request_status import RequestableObjectRequestStatus
 

@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of ManualWorkItemDetailsOriginalOwner from a JSON string
 manual_work_item_details_original_owner_instance = ManualWorkItemDetailsOriginalOwner.from_json(json)
 # print the JSON string representation of the object
-print ManualWorkItemDetailsOriginalOwner.to_json()
+print(ManualWorkItemDetailsOriginalOwner.to_json())
 
 # convert the object into a dict
 manual_work_item_details_original_owner_dict = manual_work_item_details_original_owner_instance.to_dict()
 # create an instance of ManualWorkItemDetailsOriginalOwner from a dict
-manual_work_item_details_original_owner_form_dict = manual_work_item_details_original_owner.from_dict(manual_work_item_details_original_owner_dict)
+manual_work_item_details_original_owner_from_dict = ManualWorkItemDetailsOriginalOwner.from_dict(manual_work_item_details_original_owner_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of EntitlementApprovalScheme from a JSON string
 entitlement_approval_scheme_instance = EntitlementApprovalScheme.from_json(json)
 # print the JSON string representation of the object
-print EntitlementApprovalScheme.to_json()
+print(EntitlementApprovalScheme.to_json())
 
 # convert the object into a dict
 entitlement_approval_scheme_dict = entitlement_approval_scheme_instance.to_dict()
 # create an instance of EntitlementApprovalScheme from a dict
-entitlement_approval_scheme_form_dict = entitlement_approval_scheme.from_dict(entitlement_approval_scheme_dict)
+entitlement_approval_scheme_from_dict = EntitlementApprovalScheme.from_dict(entitlement_approval_scheme_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -24,8 +24,6 @@ This API creates the specified password policy. A token with ORG_ADMIN authority
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.password_policy_v3_dto import PasswordPolicyV3Dto
 from sailpoint.v2024.rest import ApiException
@@ -110,8 +108,6 @@ This API deletes the specified password policy. A token with ORG_ADMIN authority
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
@@ -193,8 +189,6 @@ This API returns the password policy for the specified ID. A token with ORG_ADMI
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.password_policy_v3_dto import PasswordPolicyV3Dto
 from sailpoint.v2024.rest import ApiException
@@ -279,8 +273,6 @@ This gets list of all Password Policies. Requires role of ORG_ADMIN
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.password_policy_v3_dto import PasswordPolicyV3Dto
 from sailpoint.v2024.rest import ApiException
@@ -368,8 +360,6 @@ This API updates the specified password policy. A token with ORG_ADMIN authority
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.password_policy_v3_dto import PasswordPolicyV3Dto
 from sailpoint.v2024.rest import ApiException

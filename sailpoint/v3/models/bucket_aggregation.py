@@ -17,32 +17,28 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictInt, StrictStr
-from pydantic import Field
 from sailpoint.v3.models.bucket_type import BucketType
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class BucketAggregation(BaseModel):
     """
     The bucket to group the results of the aggregation query by.
     """ # noqa: E501
     name: StrictStr = Field(description="The name of the bucket aggregate to be included in the result.")
-    type: Optional[BucketType] = None
-    field: StrictStr = Field(description="The field to bucket on. Prefix the field name with '@' to reference a nested object.")
+    type: Optional[BucketType] = BucketType.TERMS
+    var_field: StrictStr = Field(description="The field to bucket on. Prefix the field name with '@' to reference a nested object.", alias="field")
     size: Optional[StrictInt] = Field(default=None, description="Maximum number of buckets to include.")
     min_doc_count: Optional[StrictInt] = Field(default=None, description="Minimum number of documents a bucket should have.", alias="minDocCount")
     __properties: ClassVar[List[str]] = ["name", "type", "field", "size", "minDocCount"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -55,7 +51,7 @@ class BucketAggregation(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of BucketAggregation from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -69,16 +65,18 @@ class BucketAggregation(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of BucketAggregation from a dict"""
         if obj is None:
             return None
@@ -88,7 +86,7 @@ class BucketAggregation(BaseModel):
 
         _obj = cls.model_validate({
             "name": obj.get("name"),
-            "type": obj.get("type"),
+            "type": obj.get("type") if obj.get("type") is not None else BucketType.TERMS,
             "field": obj.get("field"),
             "size": obj.get("size"),
             "minDocCount": obj.get("minDocCount")

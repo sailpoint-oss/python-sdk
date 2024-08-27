@@ -18,14 +18,11 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr, field_validator
-from pydantic import Field
 from sailpoint.beta.models.error_message_dto import ErrorMessageDto
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class CertificationTask(BaseModel):
     """
@@ -46,7 +43,7 @@ class CertificationTask(BaseModel):
         if value is None:
             return value
 
-        if value not in ('REASSIGN', 'ADMIN_REASSIGN', 'COMPLETE_CERTIFICATION', 'FINISH_CERTIFICATION', 'COMPLETE_CAMPAIGN', 'ACTIVATE_CAMPAIGN', 'CAMPAIGN_CREATE', 'CAMPAIGN_DELETE'):
+        if value not in set(['REASSIGN', 'ADMIN_REASSIGN', 'COMPLETE_CERTIFICATION', 'FINISH_CERTIFICATION', 'COMPLETE_CAMPAIGN', 'ACTIVATE_CAMPAIGN', 'CAMPAIGN_CREATE', 'CAMPAIGN_DELETE']):
             raise ValueError("must be one of enum values ('REASSIGN', 'ADMIN_REASSIGN', 'COMPLETE_CERTIFICATION', 'FINISH_CERTIFICATION', 'COMPLETE_CAMPAIGN', 'ACTIVATE_CAMPAIGN', 'CAMPAIGN_CREATE', 'CAMPAIGN_DELETE')")
         return value
 
@@ -56,7 +53,7 @@ class CertificationTask(BaseModel):
         if value is None:
             return value
 
-        if value not in ('CERTIFICATION', 'CAMPAIGN'):
+        if value not in set(['CERTIFICATION', 'CAMPAIGN']):
             raise ValueError("must be one of enum values ('CERTIFICATION', 'CAMPAIGN')")
         return value
 
@@ -66,15 +63,15 @@ class CertificationTask(BaseModel):
         if value is None:
             return value
 
-        if value not in ('QUEUED', 'IN_PROGRESS', 'SUCCESS', 'ERROR'):
+        if value not in set(['QUEUED', 'IN_PROGRESS', 'SUCCESS', 'ERROR']):
             raise ValueError("must be one of enum values ('QUEUED', 'IN_PROGRESS', 'SUCCESS', 'ERROR')")
         return value
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -87,7 +84,7 @@ class CertificationTask(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of CertificationTask from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -101,23 +98,25 @@ class CertificationTask(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in errors (list)
         _items = []
         if self.errors:
-            for _item in self.errors:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_errors in self.errors:
+                if _item_errors:
+                    _items.append(_item_errors.to_dict())
             _dict['errors'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of CertificationTask from a dict"""
         if obj is None:
             return None
@@ -131,7 +130,7 @@ class CertificationTask(BaseModel):
             "targetType": obj.get("targetType"),
             "targetId": obj.get("targetId"),
             "status": obj.get("status"),
-            "errors": [ErrorMessageDto.from_dict(_item) for _item in obj.get("errors")] if obj.get("errors") is not None else None,
+            "errors": [ErrorMessageDto.from_dict(_item) for _item in obj["errors"]] if obj.get("errors") is not None else None,
             "created": obj.get("created")
         })
         return _obj

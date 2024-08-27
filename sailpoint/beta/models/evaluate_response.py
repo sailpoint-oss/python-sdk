@@ -17,15 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
 from sailpoint.beta.models.lookup_step import LookupStep
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class EvaluateResponse(BaseModel):
     """
@@ -35,11 +31,11 @@ class EvaluateResponse(BaseModel):
     lookup_trail: Optional[List[LookupStep]] = Field(default=None, description="List of Reassignments found by looking up the next `TargetIdentity` in a ReassignmentConfiguration", alias="lookupTrail")
     __properties: ClassVar[List[str]] = ["reassignToId", "lookupTrail"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -52,7 +48,7 @@ class EvaluateResponse(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of EvaluateResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -66,23 +62,25 @@ class EvaluateResponse(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in lookup_trail (list)
         _items = []
         if self.lookup_trail:
-            for _item in self.lookup_trail:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_lookup_trail in self.lookup_trail:
+                if _item_lookup_trail:
+                    _items.append(_item_lookup_trail.to_dict())
             _dict['lookupTrail'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of EvaluateResponse from a dict"""
         if obj is None:
             return None
@@ -92,7 +90,7 @@ class EvaluateResponse(BaseModel):
 
         _obj = cls.model_validate({
             "reassignToId": obj.get("reassignToId"),
-            "lookupTrail": [LookupStep.from_dict(_item) for _item in obj.get("lookupTrail")] if obj.get("lookupTrail") is not None else None
+            "lookupTrail": [LookupStep.from_dict(_item) for _item in obj["lookupTrail"]] if obj.get("lookupTrail") is not None else None
         })
         return _obj
 

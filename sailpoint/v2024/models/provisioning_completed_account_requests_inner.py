@@ -17,16 +17,12 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr, field_validator
-from pydantic import Field
 from sailpoint.v2024.models.provisioning_completed_account_requests_inner_attribute_requests_inner import ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner
 from sailpoint.v2024.models.provisioning_completed_account_requests_inner_source import ProvisioningCompletedAccountRequestsInnerSource
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class ProvisioningCompletedAccountRequestsInner(BaseModel):
     """
@@ -44,15 +40,15 @@ class ProvisioningCompletedAccountRequestsInner(BaseModel):
     @field_validator('provisioning_result')
     def provisioning_result_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('SUCCESS', 'PENDING', 'FAILED'):
+        if value not in set(['SUCCESS', 'PENDING', 'FAILED']):
             raise ValueError("must be one of enum values ('SUCCESS', 'PENDING', 'FAILED')")
         return value
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -65,7 +61,7 @@ class ProvisioningCompletedAccountRequestsInner(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of ProvisioningCompletedAccountRequestsInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -79,10 +75,12 @@ class ProvisioningCompletedAccountRequestsInner(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of source
@@ -91,9 +89,9 @@ class ProvisioningCompletedAccountRequestsInner(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in attribute_requests (list)
         _items = []
         if self.attribute_requests:
-            for _item in self.attribute_requests:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_attribute_requests in self.attribute_requests:
+                if _item_attribute_requests:
+                    _items.append(_item_attribute_requests.to_dict())
             _dict['attributeRequests'] = _items
         # set to None if ticket_id (nullable) is None
         # and model_fields_set contains the field
@@ -108,7 +106,7 @@ class ProvisioningCompletedAccountRequestsInner(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of ProvisioningCompletedAccountRequestsInner from a dict"""
         if obj is None:
             return None
@@ -117,13 +115,13 @@ class ProvisioningCompletedAccountRequestsInner(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "source": ProvisioningCompletedAccountRequestsInnerSource.from_dict(obj.get("source")) if obj.get("source") is not None else None,
+            "source": ProvisioningCompletedAccountRequestsInnerSource.from_dict(obj["source"]) if obj.get("source") is not None else None,
             "accountId": obj.get("accountId"),
             "accountOperation": obj.get("accountOperation"),
             "provisioningResult": obj.get("provisioningResult"),
             "provisioningTarget": obj.get("provisioningTarget"),
             "ticketId": obj.get("ticketId"),
-            "attributeRequests": [ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner.from_dict(_item) for _item in obj.get("attributeRequests")] if obj.get("attributeRequests") is not None else None
+            "attributeRequests": [ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner.from_dict(_item) for _item in obj["attributeRequests"]] if obj.get("attributeRequests") is not None else None
         })
         return _obj
 

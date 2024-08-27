@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of ViolationContextPolicy from a JSON string
 violation_context_policy_instance = ViolationContextPolicy.from_json(json)
 # print the JSON string representation of the object
-print ViolationContextPolicy.to_json()
+print(ViolationContextPolicy.to_json())
 
 # convert the object into a dict
 violation_context_policy_dict = violation_context_policy_instance.to_dict()
 # create an instance of ViolationContextPolicy from a dict
-violation_context_policy_form_dict = violation_context_policy.from_dict(violation_context_policy_dict)
+violation_context_policy_from_dict = ViolationContextPolicy.from_dict(violation_context_policy_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

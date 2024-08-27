@@ -36,8 +36,6 @@ This creates both General and Conflicting Access Based policy, with a limit of 5
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.sod_policy import SodPolicy
 from sailpoint.v2024.rest import ApiException
@@ -121,8 +119,6 @@ This deletes a specified SOD policy. Requires role of ORG_ADMIN.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
@@ -206,8 +202,6 @@ This deletes schedule for a specified SOD policy by ID.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
@@ -289,8 +283,6 @@ This allows to download a specified named violation report for a given report re
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
@@ -376,8 +368,6 @@ This allows to download a violation report for a given report reference.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
@@ -461,8 +451,6 @@ This endpoint gets the status for a violation report for all policy run.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.report_result_reference import ReportResultReference
 from sailpoint.v2024.rest import ApiException
@@ -542,8 +530,6 @@ This gets specified SOD policy. Requires role of ORG_ADMIN.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.sod_policy import SodPolicy
 from sailpoint.v2024.rest import ApiException
@@ -628,8 +614,6 @@ This endpoint gets a specified SOD policy's schedule.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.sod_policy_schedule import SodPolicySchedule
 from sailpoint.v2024.rest import ApiException
@@ -713,8 +697,6 @@ This gets the status for a violation report run task that has already been invok
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.report_result_reference import ReportResultReference
 from sailpoint.v2024.rest import ApiException
@@ -799,8 +781,6 @@ This gets the status for a violation report run task that has already been invok
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.report_result_reference import ReportResultReference
 from sailpoint.v2024.rest import ApiException
@@ -885,8 +865,6 @@ This gets list of all SOD policies. Requires role of ORG_ADMIN
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.sod_policy import SodPolicy
 from sailpoint.v2024.rest import ApiException
@@ -978,8 +956,6 @@ Allows updating SOD Policy fields other than [\"id\",\"created\",\"creatorId\",\
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v2024.models.sod_policy import SodPolicy
@@ -1067,8 +1043,6 @@ This updates schedule for a specified SOD policy.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.sod_policy_schedule import SodPolicySchedule
 from sailpoint.v2024.rest import ApiException
@@ -1154,8 +1128,6 @@ This updates a specified SOD policy. Requires role of ORG_ADMIN.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.sod_policy import SodPolicy
 from sailpoint.v2024.rest import ApiException
@@ -1242,8 +1214,6 @@ Runs the scheduled report for the policy retrieved by passed policy ID.  The rep
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.report_result_reference import ReportResultReference
 from sailpoint.v2024.rest import ApiException
@@ -1327,8 +1297,6 @@ Runs multi-policy report for the org. If a policy reports more than 5000 violati
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.multi_policy_request import MultiPolicyRequest
 from sailpoint.v2024.models.report_result_reference import ReportResultReference
@@ -1413,8 +1381,6 @@ This invokes processing of violation report for given SOD policy. If the policy 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.report_result_reference import ReportResultReference
 from sailpoint.v2024.rest import ApiException

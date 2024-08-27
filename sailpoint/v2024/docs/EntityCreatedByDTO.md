@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of EntityCreatedByDTO from a JSON string
 entity_created_by_dto_instance = EntityCreatedByDTO.from_json(json)
 # print the JSON string representation of the object
-print EntityCreatedByDTO.to_json()
+print(EntityCreatedByDTO.to_json())
 
 # convert the object into a dict
 entity_created_by_dto_dict = entity_created_by_dto_instance.to_dict()
 # create an instance of EntityCreatedByDTO from a dict
-entity_created_by_dto_form_dict = entity_created_by_dto.from_dict(entity_created_by_dto_dict)
+entity_created_by_dto_from_dict = EntityCreatedByDTO.from_dict(entity_created_by_dto_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

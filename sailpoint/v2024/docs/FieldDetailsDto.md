@@ -22,12 +22,12 @@ json = "{}"
 # create an instance of FieldDetailsDto from a JSON string
 field_details_dto_instance = FieldDetailsDto.from_json(json)
 # print the JSON string representation of the object
-print FieldDetailsDto.to_json()
+print(FieldDetailsDto.to_json())
 
 # convert the object into a dict
 field_details_dto_dict = field_details_dto_instance.to_dict()
 # create an instance of FieldDetailsDto from a dict
-field_details_dto_form_dict = field_details_dto.from_dict(field_details_dto_dict)
+field_details_dto_from_dict = FieldDetailsDto.from_dict(field_details_dto_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

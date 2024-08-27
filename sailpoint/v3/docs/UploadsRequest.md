@@ -28,12 +28,12 @@ json = "{}"
 # create an instance of UploadsRequest from a JSON string
 uploads_request_instance = UploadsRequest.from_json(json)
 # print the JSON string representation of the object
-print UploadsRequest.to_json()
+print(UploadsRequest.to_json())
 
 # convert the object into a dict
 uploads_request_dict = uploads_request_instance.to_dict()
 # create an instance of UploadsRequest from a dict
-uploads_request_form_dict = uploads_request.from_dict(uploads_request_dict)
+uploads_request_from_dict = UploadsRequest.from_dict(uploads_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

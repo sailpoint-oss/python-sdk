@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.sod_policy_schedule import SodPolicySchedule
 
@@ -28,7 +27,7 @@ class TestSodPolicySchedule(unittest.TestCase):
 
     def make_instance(self, include_optional) -> SodPolicySchedule:
         """Test SodPolicySchedule
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `SodPolicySchedule`

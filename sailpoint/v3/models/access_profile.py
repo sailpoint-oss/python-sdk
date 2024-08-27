@@ -18,19 +18,16 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
-from pydantic import Field
 from sailpoint.v3.models.access_profile_source_ref import AccessProfileSourceRef
 from sailpoint.v3.models.entitlement_ref import EntitlementRef
 from sailpoint.v3.models.owner_reference import OwnerReference
 from sailpoint.v3.models.provisioning_criteria_level1 import ProvisioningCriteriaLevel1
 from sailpoint.v3.models.requestability import Requestability
 from sailpoint.v3.models.revocability import Revocability
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class AccessProfile(BaseModel):
     """
@@ -52,11 +49,11 @@ class AccessProfile(BaseModel):
     provisioning_criteria: Optional[ProvisioningCriteriaLevel1] = Field(default=None, alias="provisioningCriteria")
     __properties: ClassVar[List[str]] = ["id", "name", "description", "created", "modified", "enabled", "owner", "source", "entitlements", "requestable", "accessRequestConfig", "revocationRequestConfig", "segments", "provisioningCriteria"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -69,7 +66,7 @@ class AccessProfile(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of AccessProfile from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -86,13 +83,15 @@ class AccessProfile(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         """
+        excluded_fields: Set[str] = set([
+            "id",
+            "created",
+            "modified",
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-                "id",
-                "created",
-                "modified",
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of owner
@@ -104,9 +103,9 @@ class AccessProfile(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in entitlements (list)
         _items = []
         if self.entitlements:
-            for _item in self.entitlements:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_entitlements in self.entitlements:
+                if _item_entitlements:
+                    _items.append(_item_entitlements.to_dict())
             _dict['entitlements'] = _items
         # override the default output from pydantic by calling `to_dict()` of access_request_config
         if self.access_request_config:
@@ -150,7 +149,7 @@ class AccessProfile(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of AccessProfile from a dict"""
         if obj is None:
             return None
@@ -165,14 +164,14 @@ class AccessProfile(BaseModel):
             "created": obj.get("created"),
             "modified": obj.get("modified"),
             "enabled": obj.get("enabled") if obj.get("enabled") is not None else True,
-            "owner": OwnerReference.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
-            "source": AccessProfileSourceRef.from_dict(obj.get("source")) if obj.get("source") is not None else None,
-            "entitlements": [EntitlementRef.from_dict(_item) for _item in obj.get("entitlements")] if obj.get("entitlements") is not None else None,
+            "owner": OwnerReference.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
+            "source": AccessProfileSourceRef.from_dict(obj["source"]) if obj.get("source") is not None else None,
+            "entitlements": [EntitlementRef.from_dict(_item) for _item in obj["entitlements"]] if obj.get("entitlements") is not None else None,
             "requestable": obj.get("requestable") if obj.get("requestable") is not None else True,
-            "accessRequestConfig": Requestability.from_dict(obj.get("accessRequestConfig")) if obj.get("accessRequestConfig") is not None else None,
-            "revocationRequestConfig": Revocability.from_dict(obj.get("revocationRequestConfig")) if obj.get("revocationRequestConfig") is not None else None,
+            "accessRequestConfig": Requestability.from_dict(obj["accessRequestConfig"]) if obj.get("accessRequestConfig") is not None else None,
+            "revocationRequestConfig": Revocability.from_dict(obj["revocationRequestConfig"]) if obj.get("revocationRequestConfig") is not None else None,
             "segments": obj.get("segments"),
-            "provisioningCriteria": ProvisioningCriteriaLevel1.from_dict(obj.get("provisioningCriteria")) if obj.get("provisioningCriteria") is not None else None
+            "provisioningCriteria": ProvisioningCriteriaLevel1.from_dict(obj["provisioningCriteria"]) if obj.get("provisioningCriteria") is not None else None
         })
         return _obj
 

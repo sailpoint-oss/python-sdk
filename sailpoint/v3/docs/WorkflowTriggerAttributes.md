@@ -28,12 +28,12 @@ json = "{}"
 # create an instance of WorkflowTriggerAttributes from a JSON string
 workflow_trigger_attributes_instance = WorkflowTriggerAttributes.from_json(json)
 # print the JSON string representation of the object
-print WorkflowTriggerAttributes.to_json()
+print(WorkflowTriggerAttributes.to_json())
 
 # convert the object into a dict
 workflow_trigger_attributes_dict = workflow_trigger_attributes_instance.to_dict()
 # create an instance of WorkflowTriggerAttributes from a dict
-workflow_trigger_attributes_form_dict = workflow_trigger_attributes.from_dict(workflow_trigger_attributes_dict)
+workflow_trigger_attributes_from_dict = WorkflowTriggerAttributes.from_dict(workflow_trigger_attributes_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

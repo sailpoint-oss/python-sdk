@@ -38,12 +38,12 @@ json = "{}"
 # create an instance of ManagedClient from a JSON string
 managed_client_instance = ManagedClient.from_json(json)
 # print the JSON string representation of the object
-print ManagedClient.to_json()
+print(ManagedClient.to_json())
 
 # convert the object into a dict
 managed_client_dict = managed_client_instance.to_dict()
 # create an instance of ManagedClient from a dict
-managed_client_form_dict = managed_client.from_dict(managed_client_dict)
+managed_client_from_dict = ManagedClient.from_dict(managed_client_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

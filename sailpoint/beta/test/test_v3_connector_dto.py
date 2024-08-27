@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.v3_connector_dto import V3ConnectorDto
 
@@ -28,7 +27,7 @@ class TestV3ConnectorDto(unittest.TestCase):
 
     def make_instance(self, include_optional) -> V3ConnectorDto:
         """Test V3ConnectorDto
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `V3ConnectorDto`

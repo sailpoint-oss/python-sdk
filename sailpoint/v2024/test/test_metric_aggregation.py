@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v2024.models.metric_aggregation import MetricAggregation
 
@@ -28,7 +27,7 @@ class TestMetricAggregation(unittest.TestCase):
 
     def make_instance(self, include_optional) -> MetricAggregation:
         """Test MetricAggregation
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `MetricAggregation`
@@ -38,12 +37,12 @@ class TestMetricAggregation(unittest.TestCase):
             return MetricAggregation(
                 name = 'Access Name Count',
                 type = 'UNIQUE_COUNT',
-                field = '@access.name'
+                var_field = '@access.name'
             )
         else:
             return MetricAggregation(
                 name = 'Access Name Count',
-                field = '@access.name',
+                var_field = '@access.name',
         )
         """
 

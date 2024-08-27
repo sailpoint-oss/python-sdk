@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v2024.models.connector_detail1 import ConnectorDetail1
 
@@ -28,7 +27,7 @@ class TestConnectorDetail1(unittest.TestCase):
 
     def make_instance(self, include_optional) -> ConnectorDetail1:
         """Test ConnectorDetail1
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `ConnectorDetail1`

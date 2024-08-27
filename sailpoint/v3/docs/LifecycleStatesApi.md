@@ -25,8 +25,6 @@ Use this endpoint to create a lifecycle state. A token with ORG_ADMIN or API aut
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.lifecycle_state import LifecycleState
 from sailpoint.v3.rest import ApiException
@@ -112,8 +110,6 @@ Use this endpoint to delete the lifecycle state by its ID.  A token with API, or
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.lifecyclestate_deleted import LifecyclestateDeleted
 from sailpoint.v3.rest import ApiException
@@ -200,8 +196,6 @@ Use this endpoint to get a lifecycle state by its ID and its associated identity
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.lifecycle_state import LifecycleState
 from sailpoint.v3.rest import ApiException
@@ -288,8 +282,6 @@ Use this endpoint to list all lifecycle states by their associated identity prof
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.lifecycle_state import LifecycleState
 from sailpoint.v3.rest import ApiException
@@ -381,8 +373,6 @@ Use this API to set/update an identity's lifecycle state to the one provided and
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.set_lifecycle_state200_response import SetLifecycleState200Response
 from sailpoint.v3.models.set_lifecycle_state_request import SetLifecycleStateRequest
@@ -470,8 +460,6 @@ Use this endpoint to update individual lifecycle state fields, using the [JSON P
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v3.models.lifecycle_state import LifecycleState

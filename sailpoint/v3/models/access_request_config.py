@@ -17,17 +17,13 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictBool
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool
-from pydantic import Field
 from sailpoint.v3.models.approval_reminder_and_escalation_config import ApprovalReminderAndEscalationConfig
 from sailpoint.v3.models.entitlement_request_config import EntitlementRequestConfig
 from sailpoint.v3.models.request_on_behalf_of_config import RequestOnBehalfOfConfig
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class AccessRequestConfig(BaseModel):
     """
@@ -40,11 +36,11 @@ class AccessRequestConfig(BaseModel):
     entitlement_request_config: Optional[EntitlementRequestConfig] = Field(default=None, alias="entitlementRequestConfig")
     __properties: ClassVar[List[str]] = ["approvalsMustBeExternal", "autoApprovalEnabled", "requestOnBehalfOfConfig", "approvalReminderAndEscalationConfig", "entitlementRequestConfig"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -57,7 +53,7 @@ class AccessRequestConfig(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of AccessRequestConfig from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -71,10 +67,12 @@ class AccessRequestConfig(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of request_on_behalf_of_config
@@ -89,7 +87,7 @@ class AccessRequestConfig(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of AccessRequestConfig from a dict"""
         if obj is None:
             return None
@@ -100,9 +98,9 @@ class AccessRequestConfig(BaseModel):
         _obj = cls.model_validate({
             "approvalsMustBeExternal": obj.get("approvalsMustBeExternal") if obj.get("approvalsMustBeExternal") is not None else False,
             "autoApprovalEnabled": obj.get("autoApprovalEnabled") if obj.get("autoApprovalEnabled") is not None else False,
-            "requestOnBehalfOfConfig": RequestOnBehalfOfConfig.from_dict(obj.get("requestOnBehalfOfConfig")) if obj.get("requestOnBehalfOfConfig") is not None else None,
-            "approvalReminderAndEscalationConfig": ApprovalReminderAndEscalationConfig.from_dict(obj.get("approvalReminderAndEscalationConfig")) if obj.get("approvalReminderAndEscalationConfig") is not None else None,
-            "entitlementRequestConfig": EntitlementRequestConfig.from_dict(obj.get("entitlementRequestConfig")) if obj.get("entitlementRequestConfig") is not None else None
+            "requestOnBehalfOfConfig": RequestOnBehalfOfConfig.from_dict(obj["requestOnBehalfOfConfig"]) if obj.get("requestOnBehalfOfConfig") is not None else None,
+            "approvalReminderAndEscalationConfig": ApprovalReminderAndEscalationConfig.from_dict(obj["approvalReminderAndEscalationConfig"]) if obj.get("approvalReminderAndEscalationConfig") is not None else None,
+            "entitlementRequestConfig": EntitlementRequestConfig.from_dict(obj["entitlementRequestConfig"]) if obj.get("entitlementRequestConfig") is not None else None
         })
         return _obj
 

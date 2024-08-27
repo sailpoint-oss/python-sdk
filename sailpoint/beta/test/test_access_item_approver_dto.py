@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.access_item_approver_dto import AccessItemApproverDto
 
@@ -28,7 +27,7 @@ class TestAccessItemApproverDto(unittest.TestCase):
 
     def make_instance(self, include_optional) -> AccessItemApproverDto:
         """Test AccessItemApproverDto
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `AccessItemApproverDto`

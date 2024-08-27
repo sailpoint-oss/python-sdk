@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.transform_definition1 import TransformDefinition1
 
@@ -28,7 +27,7 @@ class TestTransformDefinition1(unittest.TestCase):
 
     def make_instance(self, include_optional) -> TransformDefinition1:
         """Test TransformDefinition1
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `TransformDefinition1`

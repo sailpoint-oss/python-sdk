@@ -32,12 +32,12 @@ json = "{}"
 # create an instance of ServiceProviderConfigurationFederationProtocolDetailsInner from a JSON string
 service_provider_configuration_federation_protocol_details_inner_instance = ServiceProviderConfigurationFederationProtocolDetailsInner.from_json(json)
 # print the JSON string representation of the object
-print ServiceProviderConfigurationFederationProtocolDetailsInner.to_json()
+print(ServiceProviderConfigurationFederationProtocolDetailsInner.to_json())
 
 # convert the object into a dict
 service_provider_configuration_federation_protocol_details_inner_dict = service_provider_configuration_federation_protocol_details_inner_instance.to_dict()
 # create an instance of ServiceProviderConfigurationFederationProtocolDetailsInner from a dict
-service_provider_configuration_federation_protocol_details_inner_form_dict = service_provider_configuration_federation_protocol_details_inner.from_dict(service_provider_configuration_federation_protocol_details_inner_dict)
+service_provider_configuration_federation_protocol_details_inner_from_dict = ServiceProviderConfigurationFederationProtocolDetailsInner.from_dict(service_provider_configuration_federation_protocol_details_inner_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

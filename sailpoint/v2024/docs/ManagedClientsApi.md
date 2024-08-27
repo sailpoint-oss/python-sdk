@@ -25,8 +25,6 @@ Create a new Managed Client. The API returns a result that includes the Managed 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.managed_client import ManagedClient
 from sailpoint.v2024.models.managed_client_request import ManagedClientRequest
@@ -111,8 +109,6 @@ Delete an existing Managed Client.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
@@ -193,8 +189,6 @@ Get a Managed Client.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.managed_client import ManagedClient
 from sailpoint.v2024.rest import ApiException
@@ -279,8 +273,6 @@ Retrieve the Status of a Managed Client by ID.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.managed_client_status import ManagedClientStatus
 from sailpoint.v2024.models.managed_client_type import ManagedClientType
@@ -368,8 +360,6 @@ Get a list of Managed Clients.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.managed_client import ManagedClient
 from sailpoint.v2024.rest import ApiException
@@ -459,8 +449,6 @@ Update an existing Managed Client.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v2024.models.managed_client import ManagedClient

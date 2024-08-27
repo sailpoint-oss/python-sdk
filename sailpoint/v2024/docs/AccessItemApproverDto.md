@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of AccessItemApproverDto from a JSON string
 access_item_approver_dto_instance = AccessItemApproverDto.from_json(json)
 # print the JSON string representation of the object
-print AccessItemApproverDto.to_json()
+print(AccessItemApproverDto.to_json())
 
 # convert the object into a dict
 access_item_approver_dto_dict = access_item_approver_dto_instance.to_dict()
 # create an instance of AccessItemApproverDto from a dict
-access_item_approver_dto_form_dict = access_item_approver_dto.from_dict(access_item_approver_dto_dict)
+access_item_approver_dto_from_dict = AccessItemApproverDto.from_dict(access_item_approver_dto_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -26,12 +26,12 @@ json = "{}"
 # create an instance of FormDefinitionResponse from a JSON string
 form_definition_response_instance = FormDefinitionResponse.from_json(json)
 # print the JSON string representation of the object
-print FormDefinitionResponse.to_json()
+print(FormDefinitionResponse.to_json())
 
 # convert the object into a dict
 form_definition_response_dict = form_definition_response_instance.to_dict()
 # create an instance of FormDefinitionResponse from a dict
-form_definition_response_form_dict = form_definition_response.from_dict(form_definition_response_dict)
+form_definition_response_from_dict = FormDefinitionResponse.from_dict(form_definition_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

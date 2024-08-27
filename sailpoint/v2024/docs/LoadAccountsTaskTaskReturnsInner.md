@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of LoadAccountsTaskTaskReturnsInner from a JSON string
 load_accounts_task_task_returns_inner_instance = LoadAccountsTaskTaskReturnsInner.from_json(json)
 # print the JSON string representation of the object
-print LoadAccountsTaskTaskReturnsInner.to_json()
+print(LoadAccountsTaskTaskReturnsInner.to_json())
 
 # convert the object into a dict
 load_accounts_task_task_returns_inner_dict = load_accounts_task_task_returns_inner_instance.to_dict()
 # create an instance of LoadAccountsTaskTaskReturnsInner from a dict
-load_accounts_task_task_returns_inner_form_dict = load_accounts_task_task_returns_inner.from_dict(load_accounts_task_task_returns_inner_dict)
+load_accounts_task_task_returns_inner_from_dict = LoadAccountsTaskTaskReturnsInner.from_dict(load_accounts_task_task_returns_inner_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -17,18 +17,14 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
 from sailpoint.v2024.models.basic_auth_config import BasicAuthConfig
 from sailpoint.v2024.models.bearer_token_auth_config import BearerTokenAuthConfig
 from sailpoint.v2024.models.http_authentication_type import HttpAuthenticationType
 from sailpoint.v2024.models.http_dispatch_mode import HttpDispatchMode
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class HttpConfig(BaseModel):
     """
@@ -36,16 +32,16 @@ class HttpConfig(BaseModel):
     """ # noqa: E501
     url: StrictStr = Field(description="URL of the external/custom integration.")
     http_dispatch_mode: HttpDispatchMode = Field(alias="httpDispatchMode")
-    http_authentication_type: Optional[HttpAuthenticationType] = Field(default=None, alias="httpAuthenticationType")
+    http_authentication_type: Optional[HttpAuthenticationType] = Field(default=HttpAuthenticationType.NO_AUTH, alias="httpAuthenticationType")
     basic_auth_config: Optional[BasicAuthConfig] = Field(default=None, alias="basicAuthConfig")
     bearer_token_auth_config: Optional[BearerTokenAuthConfig] = Field(default=None, alias="bearerTokenAuthConfig")
     __properties: ClassVar[List[str]] = ["url", "httpDispatchMode", "httpAuthenticationType", "basicAuthConfig", "bearerTokenAuthConfig"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -58,7 +54,7 @@ class HttpConfig(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of HttpConfig from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -72,10 +68,12 @@ class HttpConfig(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of basic_auth_config
@@ -97,7 +95,7 @@ class HttpConfig(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of HttpConfig from a dict"""
         if obj is None:
             return None
@@ -108,9 +106,9 @@ class HttpConfig(BaseModel):
         _obj = cls.model_validate({
             "url": obj.get("url"),
             "httpDispatchMode": obj.get("httpDispatchMode"),
-            "httpAuthenticationType": obj.get("httpAuthenticationType"),
-            "basicAuthConfig": BasicAuthConfig.from_dict(obj.get("basicAuthConfig")) if obj.get("basicAuthConfig") is not None else None,
-            "bearerTokenAuthConfig": BearerTokenAuthConfig.from_dict(obj.get("bearerTokenAuthConfig")) if obj.get("bearerTokenAuthConfig") is not None else None
+            "httpAuthenticationType": obj.get("httpAuthenticationType") if obj.get("httpAuthenticationType") is not None else HttpAuthenticationType.NO_AUTH,
+            "basicAuthConfig": BasicAuthConfig.from_dict(obj["basicAuthConfig"]) if obj.get("basicAuthConfig") is not None else None,
+            "bearerTokenAuthConfig": BearerTokenAuthConfig.from_dict(obj["bearerTokenAuthConfig"]) if obj.get("bearerTokenAuthConfig") is not None else None
         })
         return _obj
 

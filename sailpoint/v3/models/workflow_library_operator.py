@@ -18,14 +18,11 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
-from pydantic import Field
 from sailpoint.v3.models.workflow_library_form_fields import WorkflowLibraryFormFields
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class WorkflowLibraryOperator(BaseModel):
     """
@@ -42,11 +39,11 @@ class WorkflowLibraryOperator(BaseModel):
     form_fields: Optional[List[WorkflowLibraryFormFields]] = Field(default=None, description="One or more inputs that the operator accepts", alias="formFields")
     __properties: ClassVar[List[str]] = ["id", "name", "type", "description", "isDynamicSchema", "deprecated", "deprecatedBy", "isSimulationEnabled", "formFields"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -59,7 +56,7 @@ class WorkflowLibraryOperator(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of WorkflowLibraryOperator from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -73,18 +70,20 @@ class WorkflowLibraryOperator(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in form_fields (list)
         _items = []
         if self.form_fields:
-            for _item in self.form_fields:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_form_fields in self.form_fields:
+                if _item_form_fields:
+                    _items.append(_item_form_fields.to_dict())
             _dict['formFields'] = _items
         # set to None if form_fields (nullable) is None
         # and model_fields_set contains the field
@@ -94,7 +93,7 @@ class WorkflowLibraryOperator(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of WorkflowLibraryOperator from a dict"""
         if obj is None:
             return None
@@ -111,7 +110,7 @@ class WorkflowLibraryOperator(BaseModel):
             "deprecated": obj.get("deprecated"),
             "deprecatedBy": obj.get("deprecatedBy"),
             "isSimulationEnabled": obj.get("isSimulationEnabled"),
-            "formFields": [WorkflowLibraryFormFields.from_dict(_item) for _item in obj.get("formFields")] if obj.get("formFields") is not None else None
+            "formFields": [WorkflowLibraryFormFields.from_dict(_item) for _item in obj["formFields"]] if obj.get("formFields") is not None else None
         })
         return _obj
 

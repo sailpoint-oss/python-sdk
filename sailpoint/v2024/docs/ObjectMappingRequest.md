@@ -21,12 +21,12 @@ json = "{}"
 # create an instance of ObjectMappingRequest from a JSON string
 object_mapping_request_instance = ObjectMappingRequest.from_json(json)
 # print the JSON string representation of the object
-print ObjectMappingRequest.to_json()
+print(ObjectMappingRequest.to_json())
 
 # convert the object into a dict
 object_mapping_request_dict = object_mapping_request_instance.to_dict()
 # create an instance of ObjectMappingRequest from a dict
-object_mapping_request_form_dict = object_mapping_request.from_dict(object_mapping_request_dict)
+object_mapping_request_from_dict = ObjectMappingRequest.from_dict(object_mapping_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

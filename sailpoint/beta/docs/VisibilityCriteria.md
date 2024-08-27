@@ -17,12 +17,12 @@ json = "{}"
 # create an instance of VisibilityCriteria from a JSON string
 visibility_criteria_instance = VisibilityCriteria.from_json(json)
 # print the JSON string representation of the object
-print VisibilityCriteria.to_json()
+print(VisibilityCriteria.to_json())
 
 # convert the object into a dict
 visibility_criteria_dict = visibility_criteria_instance.to_dict()
 # create an instance of VisibilityCriteria from a dict
-visibility_criteria_form_dict = visibility_criteria.from_dict(visibility_criteria_dict)
+visibility_criteria_from_dict = VisibilityCriteria.from_dict(visibility_criteria_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -17,15 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
 from sailpoint.v3.models.access_profile_usage_used_by_inner import AccessProfileUsageUsedByInner
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class AccessProfileUsage(BaseModel):
     """
@@ -35,11 +31,11 @@ class AccessProfileUsage(BaseModel):
     used_by: Optional[List[AccessProfileUsageUsedByInner]] = Field(default=None, description="List of references to objects which are using the indicated Access Profile", alias="usedBy")
     __properties: ClassVar[List[str]] = ["accessProfileId", "usedBy"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -52,7 +48,7 @@ class AccessProfileUsage(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of AccessProfileUsage from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -66,23 +62,25 @@ class AccessProfileUsage(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in used_by (list)
         _items = []
         if self.used_by:
-            for _item in self.used_by:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_used_by in self.used_by:
+                if _item_used_by:
+                    _items.append(_item_used_by.to_dict())
             _dict['usedBy'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of AccessProfileUsage from a dict"""
         if obj is None:
             return None
@@ -92,7 +90,7 @@ class AccessProfileUsage(BaseModel):
 
         _obj = cls.model_validate({
             "accessProfileId": obj.get("accessProfileId"),
-            "usedBy": [AccessProfileUsageUsedByInner.from_dict(_item) for _item in obj.get("usedBy")] if obj.get("usedBy") is not None else None
+            "usedBy": [AccessProfileUsageUsedByInner.from_dict(_item) for _item in obj["usedBy"]] if obj.get("usedBy") is not None else None
         })
         return _obj
 

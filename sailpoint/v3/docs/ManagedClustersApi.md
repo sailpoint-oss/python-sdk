@@ -24,8 +24,6 @@ Create a new Managed Cluster. The API returns a result that includes the Managed
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.managed_cluster import ManagedCluster
 from sailpoint.v3.models.managed_cluster_request import ManagedClusterRequest
@@ -110,8 +108,6 @@ Delete an existing Managed Cluster.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.rest import ApiException
 from pprint import pprint
@@ -194,8 +190,6 @@ Retrieve a ManagedCluster by ID.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.managed_cluster import ManagedCluster
 from sailpoint.v3.rest import ApiException
@@ -280,8 +274,6 @@ Retrieve all Managed Clusters for the current Org, based on request context.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.managed_cluster import ManagedCluster
 from sailpoint.v3.rest import ApiException
@@ -371,8 +363,6 @@ Update an existing Managed Cluster.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v3.models.managed_cluster import ManagedCluster

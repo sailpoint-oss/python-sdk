@@ -22,12 +22,12 @@ json = "{}"
 # create an instance of ProvisioningConfig from a JSON string
 provisioning_config_instance = ProvisioningConfig.from_json(json)
 # print the JSON string representation of the object
-print ProvisioningConfig.to_json()
+print(ProvisioningConfig.to_json())
 
 # convert the object into a dict
 provisioning_config_dict = provisioning_config_instance.to_dict()
 # create an instance of ProvisioningConfig from a dict
-provisioning_config_form_dict = provisioning_config.from_dict(provisioning_config_dict)
+provisioning_config_from_dict = ProvisioningConfig.from_dict(provisioning_config_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

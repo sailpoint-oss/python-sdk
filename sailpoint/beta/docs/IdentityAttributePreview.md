@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of IdentityAttributePreview from a JSON string
 identity_attribute_preview_instance = IdentityAttributePreview.from_json(json)
 # print the JSON string representation of the object
-print IdentityAttributePreview.to_json()
+print(IdentityAttributePreview.to_json())
 
 # convert the object into a dict
 identity_attribute_preview_dict = identity_attribute_preview_instance.to_dict()
 # create an instance of IdentityAttributePreview from a dict
-identity_attribute_preview_form_dict = identity_attribute_preview.from_dict(identity_attribute_preview_dict)
+identity_attribute_preview_from_dict = IdentityAttributePreview.from_dict(identity_attribute_preview_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

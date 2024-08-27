@@ -18,15 +18,12 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel
-from pydantic import Field
 from sailpoint.v3.models.identity_reference import IdentityReference
 from sailpoint.v3.models.public_identity_attribute_config import PublicIdentityAttributeConfig
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class PublicIdentityConfig(BaseModel):
     """
@@ -37,11 +34,11 @@ class PublicIdentityConfig(BaseModel):
     modified_by: Optional[IdentityReference] = Field(default=None, alias="modifiedBy")
     __properties: ClassVar[List[str]] = ["attributes", "modified", "modifiedBy"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -54,7 +51,7 @@ class PublicIdentityConfig(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of PublicIdentityConfig from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -68,18 +65,20 @@ class PublicIdentityConfig(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in attributes (list)
         _items = []
         if self.attributes:
-            for _item in self.attributes:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_attributes in self.attributes:
+                if _item_attributes:
+                    _items.append(_item_attributes.to_dict())
             _dict['attributes'] = _items
         # override the default output from pydantic by calling `to_dict()` of modified_by
         if self.modified_by:
@@ -97,7 +96,7 @@ class PublicIdentityConfig(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of PublicIdentityConfig from a dict"""
         if obj is None:
             return None
@@ -106,9 +105,9 @@ class PublicIdentityConfig(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "attributes": [PublicIdentityAttributeConfig.from_dict(_item) for _item in obj.get("attributes")] if obj.get("attributes") is not None else None,
+            "attributes": [PublicIdentityAttributeConfig.from_dict(_item) for _item in obj["attributes"]] if obj.get("attributes") is not None else None,
             "modified": obj.get("modified"),
-            "modifiedBy": IdentityReference.from_dict(obj.get("modifiedBy")) if obj.get("modifiedBy") is not None else None
+            "modifiedBy": IdentityReference.from_dict(obj["modifiedBy"]) if obj.get("modifiedBy") is not None else None
         })
         return _obj
 

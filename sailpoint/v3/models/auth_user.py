@@ -17,14 +17,10 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictInt, StrictStr, field_validator
-from pydantic import Field
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class AuthUser(BaseModel):
     """
@@ -56,15 +52,15 @@ class AuthUser(BaseModel):
             return value
 
         for i in value:
-            if i not in ('CERT_ADMIN', 'CLOUD_GOV_ADMIN', 'CLOUD_GOV_USER', 'HELPDESK', 'ORG_ADMIN', 'REPORT_ADMIN', 'ROLE_ADMIN', 'ROLE_SUBADMIN', 'SAAS_MANAGEMENT_ADMIN', 'SAAS_MANAGEMENT_READER', 'SOURCE_ADMIN', 'SOURCE_SUBADMIN', 'das:ui-administrator', 'das:ui-compliance_manager', 'das:ui-auditor', 'das:ui-data-scope', 'sp:aic-dashboard-read', 'sp:aic-dashboard-write', 'sp:ui-config-hub-admin', 'sp:ui-config-hub-backup-admin', 'sp:ui-config-hub-read'):
+            if i not in set(['CERT_ADMIN', 'CLOUD_GOV_ADMIN', 'CLOUD_GOV_USER', 'HELPDESK', 'ORG_ADMIN', 'REPORT_ADMIN', 'ROLE_ADMIN', 'ROLE_SUBADMIN', 'SAAS_MANAGEMENT_ADMIN', 'SAAS_MANAGEMENT_READER', 'SOURCE_ADMIN', 'SOURCE_SUBADMIN', 'das:ui-administrator', 'das:ui-compliance_manager', 'das:ui-auditor', 'das:ui-data-scope', 'sp:aic-dashboard-read', 'sp:aic-dashboard-write', 'sp:ui-config-hub-admin', 'sp:ui-config-hub-backup-admin', 'sp:ui-config-hub-read']):
                 raise ValueError("each list item must be one of ('CERT_ADMIN', 'CLOUD_GOV_ADMIN', 'CLOUD_GOV_USER', 'HELPDESK', 'ORG_ADMIN', 'REPORT_ADMIN', 'ROLE_ADMIN', 'ROLE_SUBADMIN', 'SAAS_MANAGEMENT_ADMIN', 'SAAS_MANAGEMENT_READER', 'SOURCE_ADMIN', 'SOURCE_SUBADMIN', 'das:ui-administrator', 'das:ui-compliance_manager', 'das:ui-auditor', 'das:ui-data-scope', 'sp:aic-dashboard-read', 'sp:aic-dashboard-write', 'sp:ui-config-hub-admin', 'sp:ui-config-hub-backup-admin', 'sp:ui-config-hub-read')")
         return value
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -77,7 +73,7 @@ class AuthUser(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of AuthUser from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -91,16 +87,18 @@ class AuthUser(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of AuthUser from a dict"""
         if obj is None:
             return None

@@ -17,12 +17,12 @@ json = "{}"
 # create an instance of ExceptionCriteria from a JSON string
 exception_criteria_instance = ExceptionCriteria.from_json(json)
 # print the JSON string representation of the object
-print ExceptionCriteria.to_json()
+print(ExceptionCriteria.to_json())
 
 # convert the object into a dict
 exception_criteria_dict = exception_criteria_instance.to_dict()
 # create an instance of ExceptionCriteria from a dict
-exception_criteria_form_dict = exception_criteria.from_dict(exception_criteria_dict)
+exception_criteria_from_dict = ExceptionCriteria.from_dict(exception_criteria_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

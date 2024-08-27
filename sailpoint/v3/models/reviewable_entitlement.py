@@ -17,17 +17,13 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
-from pydantic import Field
 from sailpoint.v3.models.data_access import DataAccess
 from sailpoint.v3.models.identity_reference_with_name_and_email import IdentityReferenceWithNameAndEmail
 from sailpoint.v3.models.reviewable_entitlement_account import ReviewableEntitlementAccount
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class ReviewableEntitlement(BaseModel):
     """
@@ -53,11 +49,11 @@ class ReviewableEntitlement(BaseModel):
     account: Optional[ReviewableEntitlementAccount] = None
     __properties: ClassVar[List[str]] = ["id", "name", "description", "privileged", "owner", "attributeName", "attributeValue", "sourceSchemaObjectType", "sourceName", "sourceType", "sourceId", "hasPermissions", "isPermission", "revocable", "cloudGoverned", "containsDataAccess", "dataAccess", "account"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -70,7 +66,7 @@ class ReviewableEntitlement(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of ReviewableEntitlement from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -84,10 +80,12 @@ class ReviewableEntitlement(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of owner
@@ -122,7 +120,7 @@ class ReviewableEntitlement(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of ReviewableEntitlement from a dict"""
         if obj is None:
             return None
@@ -135,7 +133,7 @@ class ReviewableEntitlement(BaseModel):
             "name": obj.get("name"),
             "description": obj.get("description"),
             "privileged": obj.get("privileged") if obj.get("privileged") is not None else False,
-            "owner": IdentityReferenceWithNameAndEmail.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
+            "owner": IdentityReferenceWithNameAndEmail.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
             "attributeName": obj.get("attributeName"),
             "attributeValue": obj.get("attributeValue"),
             "sourceSchemaObjectType": obj.get("sourceSchemaObjectType"),
@@ -147,8 +145,8 @@ class ReviewableEntitlement(BaseModel):
             "revocable": obj.get("revocable") if obj.get("revocable") is not None else False,
             "cloudGoverned": obj.get("cloudGoverned") if obj.get("cloudGoverned") is not None else False,
             "containsDataAccess": obj.get("containsDataAccess") if obj.get("containsDataAccess") is not None else False,
-            "dataAccess": DataAccess.from_dict(obj.get("dataAccess")) if obj.get("dataAccess") is not None else None,
-            "account": ReviewableEntitlementAccount.from_dict(obj.get("account")) if obj.get("account") is not None else None
+            "dataAccess": DataAccess.from_dict(obj["dataAccess"]) if obj.get("dataAccess") is not None else None,
+            "account": ReviewableEntitlementAccount.from_dict(obj["account"]) if obj.get("account") is not None else None
         })
         return _obj
 

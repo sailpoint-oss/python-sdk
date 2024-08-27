@@ -34,12 +34,12 @@ json = "{}"
 # create an instance of Entitlement1 from a JSON string
 entitlement1_instance = Entitlement1.from_json(json)
 # print the JSON string representation of the object
-print Entitlement1.to_json()
+print(Entitlement1.to_json())
 
 # convert the object into a dict
 entitlement1_dict = entitlement1_instance.to_dict()
 # create an instance of Entitlement1 from a dict
-entitlement1_form_dict = entitlement1.from_dict(entitlement1_dict)
+entitlement1_from_dict = Entitlement1.from_dict(entitlement1_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

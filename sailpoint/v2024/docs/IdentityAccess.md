@@ -29,12 +29,12 @@ json = "{}"
 # create an instance of IdentityAccess from a JSON string
 identity_access_instance = IdentityAccess.from_json(json)
 # print the JSON string representation of the object
-print IdentityAccess.to_json()
+print(IdentityAccess.to_json())
 
 # convert the object into a dict
 identity_access_dict = identity_access_instance.to_dict()
 # create an instance of IdentityAccess from a dict
-identity_access_form_dict = identity_access.from_dict(identity_access_dict)
+identity_access_from_dict = IdentityAccess.from_dict(identity_access_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

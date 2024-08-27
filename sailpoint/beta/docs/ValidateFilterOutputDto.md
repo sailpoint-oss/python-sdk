@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of ValidateFilterOutputDto from a JSON string
 validate_filter_output_dto_instance = ValidateFilterOutputDto.from_json(json)
 # print the JSON string representation of the object
-print ValidateFilterOutputDto.to_json()
+print(ValidateFilterOutputDto.to_json())
 
 # convert the object into a dict
 validate_filter_output_dto_dict = validate_filter_output_dto_instance.to_dict()
 # create an instance of ValidateFilterOutputDto from a dict
-validate_filter_output_dto_form_dict = validate_filter_output_dto.from_dict(validate_filter_output_dto_dict)
+validate_filter_output_dto_from_dict = ValidateFilterOutputDto.from_dict(validate_filter_output_dto_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

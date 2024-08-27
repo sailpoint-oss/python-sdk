@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of AccessReviewReassignment from a JSON string
 access_review_reassignment_instance = AccessReviewReassignment.from_json(json)
 # print the JSON string representation of the object
-print AccessReviewReassignment.to_json()
+print(AccessReviewReassignment.to_json())
 
 # convert the object into a dict
 access_review_reassignment_dict = access_review_reassignment_instance.to_dict()
 # create an instance of AccessReviewReassignment from a dict
-access_review_reassignment_form_dict = access_review_reassignment.from_dict(access_review_reassignment_dict)
+access_review_reassignment_from_dict = AccessReviewReassignment.from_dict(access_review_reassignment_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

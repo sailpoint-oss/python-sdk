@@ -20,8 +20,6 @@ Identity Outliers List
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.peer_group_member import PeerGroupMember
 from sailpoint.v2024.rest import ApiException

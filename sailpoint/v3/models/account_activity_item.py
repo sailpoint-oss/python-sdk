@@ -18,17 +18,14 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
 from sailpoint.v3.models.account_request_info import AccountRequestInfo
 from sailpoint.v3.models.comment import Comment
 from sailpoint.v3.models.identity_summary import IdentitySummary
 from sailpoint.v3.models.provisioning_state import ProvisioningState
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class AccountActivityItem(BaseModel):
     """
@@ -52,11 +49,11 @@ class AccountActivityItem(BaseModel):
     remove_date: Optional[datetime] = Field(default=None, description="The date the role or access profile or entitlement is no longer assigned to the specified identity.", alias="removeDate")
     __properties: ClassVar[List[str]] = ["id", "name", "requested", "approvalStatus", "provisioningStatus", "requesterComment", "reviewerIdentitySummary", "reviewerComment", "operation", "attribute", "value", "nativeIdentity", "sourceId", "accountRequestInfo", "clientMetadata", "removeDate"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -69,7 +66,7 @@ class AccountActivityItem(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of AccountActivityItem from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -83,10 +80,12 @@ class AccountActivityItem(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of approval_status
@@ -155,7 +154,7 @@ class AccountActivityItem(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of AccountActivityItem from a dict"""
         if obj is None:
             return None
@@ -167,17 +166,17 @@ class AccountActivityItem(BaseModel):
             "id": obj.get("id"),
             "name": obj.get("name"),
             "requested": obj.get("requested"),
-            "approvalStatus": AccountActivityApprovalStatus.from_dict(obj.get("approvalStatus")) if obj.get("approvalStatus") is not None else None,
+            "approvalStatus": AccountActivityApprovalStatus.from_dict(obj["approvalStatus"]) if obj.get("approvalStatus") is not None else None,
             "provisioningStatus": obj.get("provisioningStatus"),
-            "requesterComment": Comment.from_dict(obj.get("requesterComment")) if obj.get("requesterComment") is not None else None,
-            "reviewerIdentitySummary": IdentitySummary.from_dict(obj.get("reviewerIdentitySummary")) if obj.get("reviewerIdentitySummary") is not None else None,
-            "reviewerComment": Comment.from_dict(obj.get("reviewerComment")) if obj.get("reviewerComment") is not None else None,
-            "operation": AccountActivityItemOperation.from_dict(obj.get("operation")) if obj.get("operation") is not None else None,
+            "requesterComment": Comment.from_dict(obj["requesterComment"]) if obj.get("requesterComment") is not None else None,
+            "reviewerIdentitySummary": IdentitySummary.from_dict(obj["reviewerIdentitySummary"]) if obj.get("reviewerIdentitySummary") is not None else None,
+            "reviewerComment": Comment.from_dict(obj["reviewerComment"]) if obj.get("reviewerComment") is not None else None,
+            "operation": AccountActivityItemOperation.from_dict(obj["operation"]) if obj.get("operation") is not None else None,
             "attribute": obj.get("attribute"),
             "value": obj.get("value"),
             "nativeIdentity": obj.get("nativeIdentity"),
             "sourceId": obj.get("sourceId"),
-            "accountRequestInfo": AccountRequestInfo.from_dict(obj.get("accountRequestInfo")) if obj.get("accountRequestInfo") is not None else None,
+            "accountRequestInfo": AccountRequestInfo.from_dict(obj["accountRequestInfo"]) if obj.get("accountRequestInfo") is not None else None,
             "clientMetadata": obj.get("clientMetadata"),
             "removeDate": obj.get("removeDate")
         })

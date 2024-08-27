@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of IdentityAssociationDetailsAssociationDetailsInner from a JSON string
 identity_association_details_association_details_inner_instance = IdentityAssociationDetailsAssociationDetailsInner.from_json(json)
 # print the JSON string representation of the object
-print IdentityAssociationDetailsAssociationDetailsInner.to_json()
+print(IdentityAssociationDetailsAssociationDetailsInner.to_json())
 
 # convert the object into a dict
 identity_association_details_association_details_inner_dict = identity_association_details_association_details_inner_instance.to_dict()
 # create an instance of IdentityAssociationDetailsAssociationDetailsInner from a dict
-identity_association_details_association_details_inner_form_dict = identity_association_details_association_details_inner.from_dict(identity_association_details_association_details_inner_dict)
+identity_association_details_association_details_inner_from_dict = IdentityAssociationDetailsAssociationDetailsInner.from_dict(identity_association_details_association_details_inner_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

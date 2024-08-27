@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of ReassignmentReference from a JSON string
 reassignment_reference_instance = ReassignmentReference.from_json(json)
 # print the JSON string representation of the object
-print ReassignmentReference.to_json()
+print(ReassignmentReference.to_json())
 
 # convert the object into a dict
 reassignment_reference_dict = reassignment_reference_instance.to_dict()
 # create an instance of ReassignmentReference from a dict
-reassignment_reference_form_dict = reassignment_reference.from_dict(reassignment_reference_dict)
+reassignment_reference_from_dict = ReassignmentReference.from_dict(reassignment_reference_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

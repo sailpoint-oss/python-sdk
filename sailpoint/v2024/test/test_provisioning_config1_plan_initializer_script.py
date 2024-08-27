@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v2024.models.provisioning_config1_plan_initializer_script import ProvisioningConfig1PlanInitializerScript
 
@@ -28,7 +27,7 @@ class TestProvisioningConfig1PlanInitializerScript(unittest.TestCase):
 
     def make_instance(self, include_optional) -> ProvisioningConfig1PlanInitializerScript:
         """Test ProvisioningConfig1PlanInitializerScript
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `ProvisioningConfig1PlanInitializerScript`

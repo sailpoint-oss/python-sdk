@@ -23,12 +23,12 @@ json = "{}"
 # create an instance of CreateFormDefinitionRequest from a JSON string
 create_form_definition_request_instance = CreateFormDefinitionRequest.from_json(json)
 # print the JSON string representation of the object
-print CreateFormDefinitionRequest.to_json()
+print(CreateFormDefinitionRequest.to_json())
 
 # convert the object into a dict
 create_form_definition_request_dict = create_form_definition_request_instance.to_dict()
 # create an instance of CreateFormDefinitionRequest from a dict
-create_form_definition_request_form_dict = create_form_definition_request.from_dict(create_form_definition_request_dict)
+create_form_definition_request_from_dict = CreateFormDefinitionRequest.from_dict(create_form_definition_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of ProvisioningCompletedAccountRequestsInnerSource from a JSON string
 provisioning_completed_account_requests_inner_source_instance = ProvisioningCompletedAccountRequestsInnerSource.from_json(json)
 # print the JSON string representation of the object
-print ProvisioningCompletedAccountRequestsInnerSource.to_json()
+print(ProvisioningCompletedAccountRequestsInnerSource.to_json())
 
 # convert the object into a dict
 provisioning_completed_account_requests_inner_source_dict = provisioning_completed_account_requests_inner_source_instance.to_dict()
 # create an instance of ProvisioningCompletedAccountRequestsInnerSource from a dict
-provisioning_completed_account_requests_inner_source_form_dict = provisioning_completed_account_requests_inner_source.from_dict(provisioning_completed_account_requests_inner_source_dict)
+provisioning_completed_account_requests_inner_source_from_dict = ProvisioningCompletedAccountRequestsInnerSource.from_dict(provisioning_completed_account_requests_inner_source_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

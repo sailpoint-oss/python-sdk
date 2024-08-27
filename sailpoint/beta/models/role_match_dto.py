@@ -17,16 +17,12 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel
-from pydantic import Field
 from sailpoint.beta.models.base_reference_dto import BaseReferenceDto
 from sailpoint.beta.models.context_attribute_dto import ContextAttributeDto
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class RoleMatchDto(BaseModel):
     """
@@ -36,11 +32,11 @@ class RoleMatchDto(BaseModel):
     matched_attributes: Optional[List[ContextAttributeDto]] = Field(default=None, alias="matchedAttributes")
     __properties: ClassVar[List[str]] = ["roleRef", "matchedAttributes"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -53,7 +49,7 @@ class RoleMatchDto(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of RoleMatchDto from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -67,10 +63,12 @@ class RoleMatchDto(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of role_ref
@@ -79,14 +77,14 @@ class RoleMatchDto(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in matched_attributes (list)
         _items = []
         if self.matched_attributes:
-            for _item in self.matched_attributes:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_matched_attributes in self.matched_attributes:
+                if _item_matched_attributes:
+                    _items.append(_item_matched_attributes.to_dict())
             _dict['matchedAttributes'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of RoleMatchDto from a dict"""
         if obj is None:
             return None
@@ -95,8 +93,8 @@ class RoleMatchDto(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "roleRef": BaseReferenceDto.from_dict(obj.get("roleRef")) if obj.get("roleRef") is not None else None,
-            "matchedAttributes": [ContextAttributeDto.from_dict(_item) for _item in obj.get("matchedAttributes")] if obj.get("matchedAttributes") is not None else None
+            "roleRef": BaseReferenceDto.from_dict(obj["roleRef"]) if obj.get("roleRef") is not None else None,
+            "matchedAttributes": [ContextAttributeDto.from_dict(_item) for _item in obj["matchedAttributes"]] if obj.get("matchedAttributes") is not None else None
         })
         return _obj
 

@@ -30,8 +30,6 @@ This API submits an account creation task and returns the task ID.    You must i
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.account_attributes_create import AccountAttributesCreate
 from sailpoint.v3.models.accounts_async_result import AccountsAsyncResult
@@ -116,8 +114,6 @@ Use this API to delete an account.  This endpoint submits an account delete task
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.accounts_async_result import AccountsAsyncResult
 from sailpoint.v3.rest import ApiException
@@ -202,8 +198,6 @@ This API submits a task to disable the account and returns the task ID.   A toke
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.account_toggle_request import AccountToggleRequest
 from sailpoint.v3.models.accounts_async_result import AccountsAsyncResult
@@ -291,8 +285,6 @@ This API submits a task to enable account and returns the task ID.   A token wit
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.account_toggle_request import AccountToggleRequest
 from sailpoint.v3.models.accounts_async_result import AccountsAsyncResult
@@ -380,8 +372,6 @@ Use this API to return the details for a single account by its ID.   A token wit
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.account import Account
 from sailpoint.v3.rest import ApiException
@@ -466,8 +456,6 @@ This API returns entitlements of the account.   A token with ORG_ADMIN, SOURCE_A
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.entitlement_dto import EntitlementDto
 from sailpoint.v3.rest import ApiException
@@ -558,8 +546,6 @@ This returns a list of accounts.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.account import Account
 from sailpoint.v3.rest import ApiException
@@ -651,8 +637,6 @@ Use this API to update an account with a PUT request.   This endpoint submits an
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.account_attributes import AccountAttributes
 from sailpoint.v3.models.accounts_async_result import AccountsAsyncResult
@@ -740,8 +724,6 @@ This API asynchronously reloads the account directly from the connector and perf
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.accounts_async_result import AccountsAsyncResult
 from sailpoint.v3.rest import ApiException
@@ -826,8 +808,6 @@ This API submits a task to unlock an account and returns the task ID.   To use t
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.account_unlock_request import AccountUnlockRequest
 from sailpoint.v3.models.accounts_async_result import AccountsAsyncResult
@@ -915,8 +895,6 @@ Use this API to update account details.  A token with ORG_ADMIN, SOURCE_ADMIN, o
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.rest import ApiException
 from pprint import pprint

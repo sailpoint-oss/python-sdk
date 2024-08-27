@@ -32,8 +32,6 @@ This API approves an Approval Item. Either an admin, or the owning/current user 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.work_items import WorkItems
 from sailpoint.v3.rest import ApiException
@@ -120,8 +118,6 @@ This API bulk approves Approval Items. Either an admin, or the owning/current us
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.work_items import WorkItems
 from sailpoint.v3.rest import ApiException
@@ -206,8 +202,6 @@ This API completes a work item. Either an admin, or the owning/current user must
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.work_items import WorkItems
 from sailpoint.v3.rest import ApiException
@@ -292,8 +286,6 @@ This gets a collection of completed work items belonging to either the specified
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.work_items import WorkItems
 from sailpoint.v3.rest import ApiException
@@ -383,8 +375,6 @@ This gets a count of completed work items belonging to either the specified user
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.work_items_count import WorkItemsCount
 from sailpoint.v3.rest import ApiException
@@ -468,8 +458,6 @@ This gets a count of work items belonging to either the specified user(admin req
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.work_items_count import WorkItemsCount
 from sailpoint.v3.rest import ApiException
@@ -553,8 +541,6 @@ This gets the details of a Work Item belonging to either the specified user(admi
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.work_items import WorkItems
 from sailpoint.v3.rest import ApiException
@@ -638,8 +624,6 @@ This gets a summary of work items belonging to either the specified user(admin r
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.work_items_summary import WorkItemsSummary
 from sailpoint.v3.rest import ApiException
@@ -723,8 +707,6 @@ This gets a collection of work items belonging to either the specified user(admi
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.work_items import WorkItems
 from sailpoint.v3.rest import ApiException
@@ -814,8 +796,6 @@ This API rejects an Approval Item. Either an admin, or the owning/current user m
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.work_items import WorkItems
 from sailpoint.v3.rest import ApiException
@@ -902,8 +882,6 @@ This API bulk rejects Approval Items. Either an admin, or the owning/current use
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.work_items import WorkItems
 from sailpoint.v3.rest import ApiException
@@ -988,8 +966,6 @@ This API forwards a work item to a new owner. Either an admin, or the owning/cur
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.work_item_forward import WorkItemForward
 from sailpoint.v3.rest import ApiException
@@ -1073,8 +1049,6 @@ This API submits account selections. Either an admin, or the owning/current user
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.work_items import WorkItems
 from sailpoint.v3.rest import ApiException

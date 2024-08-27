@@ -23,12 +23,12 @@ json = "{}"
 # create an instance of LoadEntitlementTask from a JSON string
 load_entitlement_task_instance = LoadEntitlementTask.from_json(json)
 # print the JSON string representation of the object
-print LoadEntitlementTask.to_json()
+print(LoadEntitlementTask.to_json())
 
 # convert the object into a dict
 load_entitlement_task_dict = load_entitlement_task_instance.to_dict()
 # create an instance of LoadEntitlementTask from a dict
-load_entitlement_task_form_dict = load_entitlement_task.from_dict(load_entitlement_task_dict)
+load_entitlement_task_from_dict = LoadEntitlementTask.from_dict(load_entitlement_task_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

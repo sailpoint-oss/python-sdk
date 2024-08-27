@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of ForwardApprovalDto from a JSON string
 forward_approval_dto_instance = ForwardApprovalDto.from_json(json)
 # print the JSON string representation of the object
-print ForwardApprovalDto.to_json()
+print(ForwardApprovalDto.to_json())
 
 # convert the object into a dict
 forward_approval_dto_dict = forward_approval_dto_instance.to_dict()
 # create an instance of ForwardApprovalDto from a dict
-forward_approval_dto_form_dict = forward_approval_dto.from_dict(forward_approval_dto_dict)
+forward_approval_dto_from_dict = ForwardApprovalDto.from_dict(forward_approval_dto_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

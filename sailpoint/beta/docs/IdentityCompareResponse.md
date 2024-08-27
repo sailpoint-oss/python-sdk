@@ -17,12 +17,12 @@ json = "{}"
 # create an instance of IdentityCompareResponse from a JSON string
 identity_compare_response_instance = IdentityCompareResponse.from_json(json)
 # print the JSON string representation of the object
-print IdentityCompareResponse.to_json()
+print(IdentityCompareResponse.to_json())
 
 # convert the object into a dict
 identity_compare_response_dict = identity_compare_response_instance.to_dict()
 # create an instance of IdentityCompareResponse from a dict
-identity_compare_response_form_dict = identity_compare_response.from_dict(identity_compare_response_dict)
+identity_compare_response_from_dict = IdentityCompareResponse.from_dict(identity_compare_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

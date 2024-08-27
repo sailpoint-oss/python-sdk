@@ -38,12 +38,12 @@ json = "{}"
 # create an instance of Fullcampaign from a JSON string
 fullcampaign_instance = Fullcampaign.from_json(json)
 # print the JSON string representation of the object
-print Fullcampaign.to_json()
+print(Fullcampaign.to_json())
 
 # convert the object into a dict
 fullcampaign_dict = fullcampaign_instance.to_dict()
 # create an instance of Fullcampaign from a dict
-fullcampaign_form_dict = fullcampaign.from_dict(fullcampaign_dict)
+fullcampaign_from_dict = Fullcampaign.from_dict(fullcampaign_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

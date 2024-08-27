@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of WorkflowOAuthClient from a JSON string
 workflow_o_auth_client_instance = WorkflowOAuthClient.from_json(json)
 # print the JSON string representation of the object
-print WorkflowOAuthClient.to_json()
+print(WorkflowOAuthClient.to_json())
 
 # convert the object into a dict
 workflow_o_auth_client_dict = workflow_o_auth_client_instance.to_dict()
 # create an instance of WorkflowOAuthClient from a dict
-workflow_o_auth_client_form_dict = workflow_o_auth_client.from_dict(workflow_o_auth_client_dict)
+workflow_o_auth_client_from_dict = WorkflowOAuthClient.from_dict(workflow_o_auth_client_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

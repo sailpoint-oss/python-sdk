@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of ActivityInsights from a JSON string
 activity_insights_instance = ActivityInsights.from_json(json)
 # print the JSON string representation of the object
-print ActivityInsights.to_json()
+print(ActivityInsights.to_json())
 
 # convert the object into a dict
 activity_insights_dict = activity_insights_instance.to_dict()
 # create an instance of ActivityInsights from a dict
-activity_insights_form_dict = activity_insights.from_dict(activity_insights_dict)
+activity_insights_from_dict = ActivityInsights.from_dict(activity_insights_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -51,8 +51,6 @@ Approves a non-employee approval request and notifies the next approver.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.non_employee_approval_decision import NonEmployeeApprovalDecision
 from sailpoint.beta.models.non_employee_approval_item import NonEmployeeApprovalItem
@@ -139,8 +137,6 @@ This request will create a non-employee record. Request will require the followi
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.non_employee_record import NonEmployeeRecord
 from sailpoint.beta.models.non_employee_request_body import NonEmployeeRequestBody
@@ -225,8 +221,6 @@ This request will create a non-employee request and notify the approver
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.non_employee_request import NonEmployeeRequest
 from sailpoint.beta.models.non_employee_request_body import NonEmployeeRequestBody
@@ -311,8 +305,6 @@ This request will create a non-employee source. Request will require the followi
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.non_employee_source_request_body import NonEmployeeSourceRequestBody
 from sailpoint.beta.models.non_employee_source_with_cloud_external_id import NonEmployeeSourceWithCloudExternalId
@@ -397,8 +389,6 @@ This API creates a new schema attribute for Non-Employee Source. The schema tech
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.non_employee_schema_attribute import NonEmployeeSchemaAttribute
 from sailpoint.beta.models.non_employee_schema_attribute_body import NonEmployeeSchemaAttributeBody
@@ -485,8 +475,6 @@ This request will delete a non-employee record.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
@@ -567,8 +555,6 @@ This request will delete multiple non-employee records based on the non-employee
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.delete_non_employee_record_in_bulk_request import DeleteNonEmployeeRecordInBulkRequest
 from sailpoint.beta.rest import ApiException
@@ -650,8 +636,6 @@ This request will delete a non-employee request.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
@@ -733,8 +717,6 @@ This end-point deletes a specific schema attribute for a non-employee source.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
@@ -817,8 +799,6 @@ This request will delete a non-employee source.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
@@ -899,8 +879,6 @@ This end-point deletes all custom schema attributes for a non-employee source.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
@@ -981,8 +959,6 @@ This requests a CSV download for all non-employees from a provided source.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
@@ -1064,8 +1040,6 @@ This requests a download for the Source Schema Template for a provided source. R
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
@@ -1147,8 +1121,6 @@ Approves a non-employee approval request and notifies the next approver.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.non_employee_approval_item_detail import NonEmployeeApprovalItemDetail
 from sailpoint.beta.rest import ApiException
@@ -1234,8 +1206,6 @@ This request will retrieve a summary of non-employee approval requests. There ar
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.non_employee_approval_summary import NonEmployeeApprovalSummary
 from sailpoint.beta.rest import ApiException
@@ -1319,8 +1289,6 @@ The nonEmployeeBulkUploadStatus API returns the status of the newest bulk upload
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.non_employee_bulk_upload_status import NonEmployeeBulkUploadStatus
 from sailpoint.beta.rest import ApiException
@@ -1404,8 +1372,6 @@ This gets a non-employee record.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.non_employee_record import NonEmployeeRecord
 from sailpoint.beta.rest import ApiException
@@ -1489,8 +1455,6 @@ This gets a non-employee request.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.non_employee_request import NonEmployeeRequest
 from sailpoint.beta.rest import ApiException
@@ -1575,8 +1539,6 @@ This request will retrieve a summary of non-employee requests. There are two con
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.non_employee_request_summary import NonEmployeeRequestSummary
 from sailpoint.beta.rest import ApiException
@@ -1660,8 +1622,6 @@ This API gets a schema attribute by Id for the specified Non-Employee SourceId.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.non_employee_schema_attribute import NonEmployeeSchemaAttribute
 from sailpoint.beta.rest import ApiException
@@ -1747,8 +1707,6 @@ This gets a non-employee source.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.non_employee_source import NonEmployeeSource
 from sailpoint.beta.rest import ApiException
@@ -1832,8 +1790,6 @@ This API gets the list of schema attributes for the specified Non-Employee Sourc
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.non_employee_schema_attribute import NonEmployeeSchemaAttribute
 from sailpoint.beta.rest import ApiException
@@ -1918,8 +1874,6 @@ This post will import, or update, Non-Employee records found in the CSV. Request
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.non_employee_bulk_upload_job import NonEmployeeBulkUploadJob
 from sailpoint.beta.rest import ApiException
@@ -2006,8 +1960,6 @@ This gets a list of non-employee approval requests.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.non_employee_approval_item import NonEmployeeApprovalItem
 from sailpoint.beta.rest import ApiException
@@ -2101,8 +2053,6 @@ This gets a list of non-employee records.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.non_employee_record import NonEmployeeRecord
 from sailpoint.beta.rest import ApiException
@@ -2194,8 +2144,6 @@ This gets a list of non-employee requests.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.non_employee_request import NonEmployeeRequest
 from sailpoint.beta.rest import ApiException
@@ -2289,8 +2237,6 @@ This gets a list of non-employee sources.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.non_employee_source_with_ne_count import NonEmployeeSourceWithNECount
 from sailpoint.beta.rest import ApiException
@@ -2384,8 +2330,6 @@ This request will patch a non-employee record.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
 from sailpoint.beta.models.non_employee_record import NonEmployeeRecord
@@ -2473,8 +2417,6 @@ This end-point patches a specific schema attribute for a non-employee SourceId.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
 from sailpoint.beta.models.non_employee_schema_attribute import NonEmployeeSchemaAttribute
@@ -2564,8 +2506,6 @@ patch a non-employee source. (Partial Update)  Patchable field: **name, descript
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
 from sailpoint.beta.models.non_employee_source import NonEmployeeSource
@@ -2652,8 +2592,6 @@ This endpoint will reject an approval item request and notify user.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.non_employee_approval_item import NonEmployeeApprovalItem
 from sailpoint.beta.models.non_employee_reject_approval_decision import NonEmployeeRejectApprovalDecision
@@ -2740,8 +2678,6 @@ This request will update a non-employee record.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.non_employee_record import NonEmployeeRecord
 from sailpoint.beta.models.non_employee_request_body import NonEmployeeRequestBody

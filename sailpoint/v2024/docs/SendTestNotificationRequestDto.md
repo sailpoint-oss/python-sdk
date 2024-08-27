@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of SendTestNotificationRequestDto from a JSON string
 send_test_notification_request_dto_instance = SendTestNotificationRequestDto.from_json(json)
 # print the JSON string representation of the object
-print SendTestNotificationRequestDto.to_json()
+print(SendTestNotificationRequestDto.to_json())
 
 # convert the object into a dict
 send_test_notification_request_dto_dict = send_test_notification_request_dto_instance.to_dict()
 # create an instance of SendTestNotificationRequestDto from a dict
-send_test_notification_request_dto_form_dict = send_test_notification_request_dto.from_dict(send_test_notification_request_dto_dict)
+send_test_notification_request_dto_from_dict = SendTestNotificationRequestDto.from_dict(send_test_notification_request_dto_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

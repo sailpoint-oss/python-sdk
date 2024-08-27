@@ -17,14 +17,10 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class TenantUiMetadataItemResponse(BaseModel):
     """
@@ -35,11 +31,11 @@ class TenantUiMetadataItemResponse(BaseModel):
     username_empty_text: Optional[StrictStr] = Field(default=None, description="Placeholder text displayed in the username input field. If you would like to reset the value use \"null\".", alias="usernameEmptyText")
     __properties: ClassVar[List[str]] = ["iframeWhiteList", "usernameLabel", "usernameEmptyText"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -52,7 +48,7 @@ class TenantUiMetadataItemResponse(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of TenantUiMetadataItemResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -66,10 +62,12 @@ class TenantUiMetadataItemResponse(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # set to None if iframe_white_list (nullable) is None
@@ -90,7 +88,7 @@ class TenantUiMetadataItemResponse(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of TenantUiMetadataItemResponse from a dict"""
         if obj is None:
             return None

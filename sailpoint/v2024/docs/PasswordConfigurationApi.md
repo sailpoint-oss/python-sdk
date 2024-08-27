@@ -22,8 +22,6 @@ This API creates the password org config. Unspecified fields will use default va
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.password_org_config import PasswordOrgConfig
 from sailpoint.v2024.rest import ApiException
@@ -107,8 +105,6 @@ This API returns the password org config . Requires ORG_ADMIN, API role or autho
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.password_org_config import PasswordOrgConfig
 from sailpoint.v2024.rest import ApiException
@@ -188,8 +184,6 @@ This API updates the password org config for specified fields. Other fields will
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.password_org_config import PasswordOrgConfig
 from sailpoint.v2024.rest import ApiException

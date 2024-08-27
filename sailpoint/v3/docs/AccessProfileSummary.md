@@ -25,12 +25,12 @@ json = "{}"
 # create an instance of AccessProfileSummary from a JSON string
 access_profile_summary_instance = AccessProfileSummary.from_json(json)
 # print the JSON string representation of the object
-print AccessProfileSummary.to_json()
+print(AccessProfileSummary.to_json())
 
 # convert the object into a dict
 access_profile_summary_dict = access_profile_summary_instance.to_dict()
 # create an instance of AccessProfileSummary from a dict
-access_profile_summary_form_dict = access_profile_summary.from_dict(access_profile_summary_dict)
+access_profile_summary_from_dict = AccessProfileSummary.from_dict(access_profile_summary_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

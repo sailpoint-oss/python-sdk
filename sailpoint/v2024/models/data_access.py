@@ -17,17 +17,13 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel
-from pydantic import Field
 from sailpoint.v2024.models.data_access_categories_inner import DataAccessCategoriesInner
 from sailpoint.v2024.models.data_access_impact_score import DataAccessImpactScore
 from sailpoint.v2024.models.data_access_policies_inner import DataAccessPoliciesInner
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class DataAccess(BaseModel):
     """
@@ -38,11 +34,11 @@ class DataAccess(BaseModel):
     impact_score: Optional[DataAccessImpactScore] = Field(default=None, alias="impactScore")
     __properties: ClassVar[List[str]] = ["policies", "categories", "impactScore"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -55,7 +51,7 @@ class DataAccess(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of DataAccess from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -69,25 +65,27 @@ class DataAccess(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in policies (list)
         _items = []
         if self.policies:
-            for _item in self.policies:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_policies in self.policies:
+                if _item_policies:
+                    _items.append(_item_policies.to_dict())
             _dict['policies'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in categories (list)
         _items = []
         if self.categories:
-            for _item in self.categories:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_categories in self.categories:
+                if _item_categories:
+                    _items.append(_item_categories.to_dict())
             _dict['categories'] = _items
         # override the default output from pydantic by calling `to_dict()` of impact_score
         if self.impact_score:
@@ -95,7 +93,7 @@ class DataAccess(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of DataAccess from a dict"""
         if obj is None:
             return None
@@ -104,9 +102,9 @@ class DataAccess(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "policies": [DataAccessPoliciesInner.from_dict(_item) for _item in obj.get("policies")] if obj.get("policies") is not None else None,
-            "categories": [DataAccessCategoriesInner.from_dict(_item) for _item in obj.get("categories")] if obj.get("categories") is not None else None,
-            "impactScore": DataAccessImpactScore.from_dict(obj.get("impactScore")) if obj.get("impactScore") is not None else None
+            "policies": [DataAccessPoliciesInner.from_dict(_item) for _item in obj["policies"]] if obj.get("policies") is not None else None,
+            "categories": [DataAccessCategoriesInner.from_dict(_item) for _item in obj["categories"]] if obj.get("categories") is not None else None,
+            "impactScore": DataAccessImpactScore.from_dict(obj["impactScore"]) if obj.get("impactScore") is not None else None
         })
         return _obj
 

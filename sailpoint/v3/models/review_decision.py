@@ -18,15 +18,12 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
-from pydantic import Field
 from sailpoint.v3.models.certification_decision import CertificationDecision
 from sailpoint.v3.models.review_recommendation import ReviewRecommendation
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class ReviewDecision(BaseModel):
     """
@@ -40,11 +37,11 @@ class ReviewDecision(BaseModel):
     comments: Optional[StrictStr] = Field(default=None, description="Comments recorded when the decision was made")
     __properties: ClassVar[List[str]] = ["id", "decision", "proposedEndDate", "bulk", "recommendation", "comments"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -57,7 +54,7 @@ class ReviewDecision(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of ReviewDecision from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -71,10 +68,12 @@ class ReviewDecision(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of recommendation
@@ -83,7 +82,7 @@ class ReviewDecision(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of ReviewDecision from a dict"""
         if obj is None:
             return None
@@ -96,7 +95,7 @@ class ReviewDecision(BaseModel):
             "decision": obj.get("decision"),
             "proposedEndDate": obj.get("proposedEndDate"),
             "bulk": obj.get("bulk"),
-            "recommendation": ReviewRecommendation.from_dict(obj.get("recommendation")) if obj.get("recommendation") is not None else None,
+            "recommendation": ReviewRecommendation.from_dict(obj["recommendation"]) if obj.get("recommendation") is not None else None,
             "comments": obj.get("comments")
         })
         return _obj

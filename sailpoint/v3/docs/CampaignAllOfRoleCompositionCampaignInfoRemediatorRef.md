@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of CampaignAllOfRoleCompositionCampaignInfoRemediatorRef from a JSON string
 campaign_all_of_role_composition_campaign_info_remediator_ref_instance = CampaignAllOfRoleCompositionCampaignInfoRemediatorRef.from_json(json)
 # print the JSON string representation of the object
-print CampaignAllOfRoleCompositionCampaignInfoRemediatorRef.to_json()
+print(CampaignAllOfRoleCompositionCampaignInfoRemediatorRef.to_json())
 
 # convert the object into a dict
 campaign_all_of_role_composition_campaign_info_remediator_ref_dict = campaign_all_of_role_composition_campaign_info_remediator_ref_instance.to_dict()
 # create an instance of CampaignAllOfRoleCompositionCampaignInfoRemediatorRef from a dict
-campaign_all_of_role_composition_campaign_info_remediator_ref_form_dict = campaign_all_of_role_composition_campaign_info_remediator_ref.from_dict(campaign_all_of_role_composition_campaign_info_remediator_ref_dict)
+campaign_all_of_role_composition_campaign_info_remediator_ref_from_dict = CampaignAllOfRoleCompositionCampaignInfoRemediatorRef.from_dict(campaign_all_of_role_composition_campaign_info_remediator_ref_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

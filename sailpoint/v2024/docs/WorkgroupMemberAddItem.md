@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of WorkgroupMemberAddItem from a JSON string
 workgroup_member_add_item_instance = WorkgroupMemberAddItem.from_json(json)
 # print the JSON string representation of the object
-print WorkgroupMemberAddItem.to_json()
+print(WorkgroupMemberAddItem.to_json())
 
 # convert the object into a dict
 workgroup_member_add_item_dict = workgroup_member_add_item_instance.to_dict()
 # create an instance of WorkgroupMemberAddItem from a dict
-workgroup_member_add_item_form_dict = workgroup_member_add_item.from_dict(workgroup_member_add_item_dict)
+workgroup_member_add_item_from_dict = WorkgroupMemberAddItem.from_dict(workgroup_member_add_item_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

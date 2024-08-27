@@ -17,17 +17,13 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr, field_validator
-from pydantic import Field
 from typing_extensions import Annotated
 from sailpoint.v2024.models.connector_rule_create_request_signature import ConnectorRuleCreateRequestSignature
 from sailpoint.v2024.models.source_code import SourceCode
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class ConnectorRuleResponse(BaseModel):
     """
@@ -47,15 +43,15 @@ class ConnectorRuleResponse(BaseModel):
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('BuildMap', 'ConnectorAfterCreate', 'ConnectorAfterDelete', 'ConnectorAfterModify', 'ConnectorBeforeCreate', 'ConnectorBeforeDelete', 'ConnectorBeforeModify', 'JDBCBuildMap', 'JDBCOperationProvisioning', 'JDBCProvision', 'PeopleSoftHRMSBuildMap', 'PeopleSoftHRMSOperationProvisioning', 'PeopleSoftHRMSProvision', 'RACFPermissionCustomization', 'SAPBuildMap', 'SapHrManagerRule', 'SapHrOperationProvisioning', 'SapHrProvision', 'SuccessFactorsOperationProvisioning', 'WebServiceAfterOperationRule', 'WebServiceBeforeOperationRule'):
+        if value not in set(['BuildMap', 'ConnectorAfterCreate', 'ConnectorAfterDelete', 'ConnectorAfterModify', 'ConnectorBeforeCreate', 'ConnectorBeforeDelete', 'ConnectorBeforeModify', 'JDBCBuildMap', 'JDBCOperationProvisioning', 'JDBCProvision', 'PeopleSoftHRMSBuildMap', 'PeopleSoftHRMSOperationProvisioning', 'PeopleSoftHRMSProvision', 'RACFPermissionCustomization', 'SAPBuildMap', 'SapHrManagerRule', 'SapHrOperationProvisioning', 'SapHrProvision', 'SuccessFactorsOperationProvisioning', 'WebServiceAfterOperationRule', 'WebServiceBeforeOperationRule']):
             raise ValueError("must be one of enum values ('BuildMap', 'ConnectorAfterCreate', 'ConnectorAfterDelete', 'ConnectorAfterModify', 'ConnectorBeforeCreate', 'ConnectorBeforeDelete', 'ConnectorBeforeModify', 'JDBCBuildMap', 'JDBCOperationProvisioning', 'JDBCProvision', 'PeopleSoftHRMSBuildMap', 'PeopleSoftHRMSOperationProvisioning', 'PeopleSoftHRMSProvision', 'RACFPermissionCustomization', 'SAPBuildMap', 'SapHrManagerRule', 'SapHrOperationProvisioning', 'SapHrProvision', 'SuccessFactorsOperationProvisioning', 'WebServiceAfterOperationRule', 'WebServiceBeforeOperationRule')")
         return value
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -68,7 +64,7 @@ class ConnectorRuleResponse(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of ConnectorRuleResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -82,10 +78,12 @@ class ConnectorRuleResponse(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of signature
@@ -107,7 +105,7 @@ class ConnectorRuleResponse(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of ConnectorRuleResponse from a dict"""
         if obj is None:
             return None
@@ -119,8 +117,8 @@ class ConnectorRuleResponse(BaseModel):
             "name": obj.get("name"),
             "description": obj.get("description"),
             "type": obj.get("type"),
-            "signature": ConnectorRuleCreateRequestSignature.from_dict(obj.get("signature")) if obj.get("signature") is not None else None,
-            "sourceCode": SourceCode.from_dict(obj.get("sourceCode")) if obj.get("sourceCode") is not None else None,
+            "signature": ConnectorRuleCreateRequestSignature.from_dict(obj["signature"]) if obj.get("signature") is not None else None,
+            "sourceCode": SourceCode.from_dict(obj["sourceCode"]) if obj.get("sourceCode") is not None else None,
             "attributes": obj.get("attributes"),
             "id": obj.get("id"),
             "created": obj.get("created"),

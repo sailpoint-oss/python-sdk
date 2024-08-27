@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **last_seen** | **datetime** | When the ManagedClient was last seen by the server | [optional] [readonly] 
 **name** | **str** | ManagedClient name | [optional] 
 **since_last_seen** | **str** | Milliseconds since the ManagedClient has polled the server | [optional] [readonly] 
-**status** | [**ManagedClientStatusEnum**](ManagedClientStatusEnum.md) |  | [optional] [readonly] 
+**status** | [**ManagedClientStatusEnum**](ManagedClientStatusEnum.md) | Status of the ManagedClient | [optional] [readonly] 
 **type** | **str** | Type of the ManagedClient (VA, CCG) | 
 **va_download_url** | **str** | ManagedClient VA download URL | [optional] [readonly] 
 **va_version** | **str** | Version that the ManagedClient&#39;s VA is running | [optional] [readonly] 
@@ -34,12 +34,12 @@ json = "{}"
 # create an instance of ManagedClient from a JSON string
 managed_client_instance = ManagedClient.from_json(json)
 # print the JSON string representation of the object
-print ManagedClient.to_json()
+print(ManagedClient.to_json())
 
 # convert the object into a dict
 managed_client_dict = managed_client_instance.to_dict()
 # create an instance of ManagedClient from a dict
-managed_client_form_dict = managed_client.from_dict(managed_client_dict)
+managed_client_from_dict = ManagedClient.from_dict(managed_client_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

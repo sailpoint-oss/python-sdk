@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.password_status import PasswordStatus
 
@@ -28,7 +27,7 @@ class TestPasswordStatus(unittest.TestCase):
 
     def make_instance(self, include_optional) -> PasswordStatus:
         """Test PasswordStatus
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `PasswordStatus`

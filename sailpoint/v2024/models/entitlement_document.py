@@ -18,16 +18,13 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
-from pydantic import Field
 from sailpoint.v2024.models.base_segment import BaseSegment
 from sailpoint.v2024.models.document_type import DocumentType
 from sailpoint.v2024.models.entitlement_document_all_of_source import EntitlementDocumentAllOfSource
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class EntitlementDocument(BaseModel):
     """
@@ -50,11 +47,11 @@ class EntitlementDocument(BaseModel):
     tags: Optional[List[StrictStr]] = Field(default=None, description="Tags that have been applied to the object.")
     __properties: ClassVar[List[str]] = ["id", "name", "_type", "modified", "synced", "displayName", "source", "segments", "segmentCount", "requestable", "cloudGoverned", "created", "privileged", "identityCount", "tags"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -67,7 +64,7 @@ class EntitlementDocument(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of EntitlementDocument from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -81,10 +78,12 @@ class EntitlementDocument(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of source
@@ -93,9 +92,9 @@ class EntitlementDocument(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in segments (list)
         _items = []
         if self.segments:
-            for _item in self.segments:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_segments in self.segments:
+                if _item_segments:
+                    _items.append(_item_segments.to_dict())
             _dict['segments'] = _items
         # set to None if modified (nullable) is None
         # and model_fields_set contains the field
@@ -110,7 +109,7 @@ class EntitlementDocument(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of EntitlementDocument from a dict"""
         if obj is None:
             return None
@@ -125,8 +124,8 @@ class EntitlementDocument(BaseModel):
             "modified": obj.get("modified"),
             "synced": obj.get("synced"),
             "displayName": obj.get("displayName"),
-            "source": EntitlementDocumentAllOfSource.from_dict(obj.get("source")) if obj.get("source") is not None else None,
-            "segments": [BaseSegment.from_dict(_item) for _item in obj.get("segments")] if obj.get("segments") is not None else None,
+            "source": EntitlementDocumentAllOfSource.from_dict(obj["source"]) if obj.get("source") is not None else None,
+            "segments": [BaseSegment.from_dict(_item) for _item in obj["segments"]] if obj.get("segments") is not None else None,
             "segmentCount": obj.get("segmentCount"),
             "requestable": obj.get("requestable") if obj.get("requestable") is not None else False,
             "cloudGoverned": obj.get("cloudGoverned") if obj.get("cloudGoverned") is not None else False,

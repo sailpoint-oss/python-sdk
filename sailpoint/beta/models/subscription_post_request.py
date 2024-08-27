@@ -17,17 +17,13 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
-from pydantic import Field
 from sailpoint.beta.models.event_bridge_config import EventBridgeConfig
 from sailpoint.beta.models.http_config import HttpConfig
 from sailpoint.beta.models.subscription_type import SubscriptionType
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class SubscriptionPostRequest(BaseModel):
     """
@@ -44,11 +40,11 @@ class SubscriptionPostRequest(BaseModel):
     filter: Optional[StrictStr] = Field(default=None, description="JSONPath filter to conditionally invoke trigger when expression evaluates to true.")
     __properties: ClassVar[List[str]] = ["name", "description", "triggerId", "type", "responseDeadline", "httpConfig", "eventBridgeConfig", "enabled", "filter"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -61,7 +57,7 @@ class SubscriptionPostRequest(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of SubscriptionPostRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -75,10 +71,12 @@ class SubscriptionPostRequest(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of http_config
@@ -90,7 +88,7 @@ class SubscriptionPostRequest(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of SubscriptionPostRequest from a dict"""
         if obj is None:
             return None
@@ -104,8 +102,8 @@ class SubscriptionPostRequest(BaseModel):
             "triggerId": obj.get("triggerId"),
             "type": obj.get("type"),
             "responseDeadline": obj.get("responseDeadline") if obj.get("responseDeadline") is not None else 'PT1H',
-            "httpConfig": HttpConfig.from_dict(obj.get("httpConfig")) if obj.get("httpConfig") is not None else None,
-            "eventBridgeConfig": EventBridgeConfig.from_dict(obj.get("eventBridgeConfig")) if obj.get("eventBridgeConfig") is not None else None,
+            "httpConfig": HttpConfig.from_dict(obj["httpConfig"]) if obj.get("httpConfig") is not None else None,
+            "eventBridgeConfig": EventBridgeConfig.from_dict(obj["eventBridgeConfig"]) if obj.get("eventBridgeConfig") is not None else None,
             "enabled": obj.get("enabled") if obj.get("enabled") is not None else True,
             "filter": obj.get("filter")
         })

@@ -17,17 +17,12 @@ from inspect import getfullargspec
 import json
 import pprint
 import re  # noqa: F401
-
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, ValidationError, field_validator
 from typing import Any, Dict, List, Optional
-from pydantic import BaseModel, Field, StrictInt, StrictStr, ValidationError, field_validator
 from sailpoint.beta.models.subscription_patch_request_inner_value_any_of_inner import SubscriptionPatchRequestInnerValueAnyOfInner
-from typing import Union, Any, List, TYPE_CHECKING, Optional, Dict
-from typing_extensions import Literal
-from pydantic import StrictStr, Field
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Union, Any, List, Set, TYPE_CHECKING, Optional, Dict
+from typing_extensions import Literal, Self
+from pydantic import Field
 
 SUBSCRIPTIONPATCHREQUESTINNERVALUE_ANY_OF_SCHEMAS = ["List[SubscriptionPatchRequestInnerValueAnyOfInner]", "int", "object", "str"]
 
@@ -48,7 +43,7 @@ class SubscriptionPatchRequestInnerValue(BaseModel):
         actual_instance: Optional[Union[List[SubscriptionPatchRequestInnerValueAnyOfInner], int, object, str]] = None
     else:
         actual_instance: Any = None
-    any_of_schemas: List[str] = Literal[SUBSCRIPTIONPATCHREQUESTINNERVALUE_ANY_OF_SCHEMAS]
+    any_of_schemas: Set[str] = { "List[SubscriptionPatchRequestInnerValueAnyOfInner]", "int", "object", "str" }
 
     model_config = {
         "validate_assignment": True,
@@ -100,7 +95,7 @@ class SubscriptionPatchRequestInnerValue(BaseModel):
             return v
 
     @classmethod
-    def from_dict(cls, obj: dict) -> Self:
+    def from_dict(cls, obj: Dict[str, Any]) -> Self:
         return cls.from_json(json.dumps(obj))
 
     @classmethod
@@ -156,22 +151,20 @@ class SubscriptionPatchRequestInnerValue(BaseModel):
         if self.actual_instance is None:
             return "null"
 
-        to_json = getattr(self.actual_instance, "to_json", None)
-        if callable(to_json):
+        if hasattr(self.actual_instance, "to_json") and callable(self.actual_instance.to_json):
             return self.actual_instance.to_json()
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], List[SubscriptionPatchRequestInnerValueAnyOfInner], int, object, str]]:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
-            return "null"
+            return None
 
-        to_json = getattr(self.actual_instance, "to_json", None)
-        if callable(to_json):
+        if hasattr(self.actual_instance, "to_dict") and callable(self.actual_instance.to_dict):
             return self.actual_instance.to_dict()
         else:
-            return json.dumps(self.actual_instance)
+            return self.actual_instance
 
     def to_str(self) -> str:
         """Returns the string representation of the actual instance"""

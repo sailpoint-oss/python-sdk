@@ -27,12 +27,12 @@ json = "{}"
 # create an instance of LifecycleState from a JSON string
 lifecycle_state_instance = LifecycleState.from_json(json)
 # print the JSON string representation of the object
-print LifecycleState.to_json()
+print(LifecycleState.to_json())
 
 # convert the object into a dict
 lifecycle_state_dict = lifecycle_state_instance.to_dict()
 # create an instance of LifecycleState from a dict
-lifecycle_state_form_dict = lifecycle_state.from_dict(lifecycle_state_dict)
+lifecycle_state_from_dict = LifecycleState.from_dict(lifecycle_state_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

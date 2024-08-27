@@ -27,12 +27,12 @@ json = "{}"
 # create an instance of EntitlementSummary from a JSON string
 entitlement_summary_instance = EntitlementSummary.from_json(json)
 # print the JSON string representation of the object
-print EntitlementSummary.to_json()
+print(EntitlementSummary.to_json())
 
 # convert the object into a dict
 entitlement_summary_dict = entitlement_summary_instance.to_dict()
 # create an instance of EntitlementSummary from a dict
-entitlement_summary_form_dict = entitlement_summary.from_dict(entitlement_summary_dict)
+entitlement_summary_from_dict = EntitlementSummary.from_dict(entitlement_summary_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

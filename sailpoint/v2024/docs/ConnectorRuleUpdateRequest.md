@@ -24,12 +24,12 @@ json = "{}"
 # create an instance of ConnectorRuleUpdateRequest from a JSON string
 connector_rule_update_request_instance = ConnectorRuleUpdateRequest.from_json(json)
 # print the JSON string representation of the object
-print ConnectorRuleUpdateRequest.to_json()
+print(ConnectorRuleUpdateRequest.to_json())
 
 # convert the object into a dict
 connector_rule_update_request_dict = connector_rule_update_request_instance.to_dict()
 # create an instance of ConnectorRuleUpdateRequest from a dict
-connector_rule_update_request_form_dict = connector_rule_update_request.from_dict(connector_rule_update_request_dict)
+connector_rule_update_request_from_dict = ConnectorRuleUpdateRequest.from_dict(connector_rule_update_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

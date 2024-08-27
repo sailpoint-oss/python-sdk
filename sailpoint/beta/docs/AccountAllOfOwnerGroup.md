@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of AccountAllOfOwnerGroup from a JSON string
 account_all_of_owner_group_instance = AccountAllOfOwnerGroup.from_json(json)
 # print the JSON string representation of the object
-print AccountAllOfOwnerGroup.to_json()
+print(AccountAllOfOwnerGroup.to_json())
 
 # convert the object into a dict
 account_all_of_owner_group_dict = account_all_of_owner_group_instance.to_dict()
 # create an instance of AccountAllOfOwnerGroup from a dict
-account_all_of_owner_group_form_dict = account_all_of_owner_group.from_dict(account_all_of_owner_group_dict)
+account_all_of_owner_group_from_dict = AccountAllOfOwnerGroup.from_dict(account_all_of_owner_group_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

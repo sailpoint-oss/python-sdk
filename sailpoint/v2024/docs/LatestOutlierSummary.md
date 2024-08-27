@@ -21,12 +21,12 @@ json = "{}"
 # create an instance of LatestOutlierSummary from a JSON string
 latest_outlier_summary_instance = LatestOutlierSummary.from_json(json)
 # print the JSON string representation of the object
-print LatestOutlierSummary.to_json()
+print(LatestOutlierSummary.to_json())
 
 # convert the object into a dict
 latest_outlier_summary_dict = latest_outlier_summary_instance.to_dict()
 # create an instance of LatestOutlierSummary from a dict
-latest_outlier_summary_form_dict = latest_outlier_summary.from_dict(latest_outlier_summary_dict)
+latest_outlier_summary_from_dict = LatestOutlierSummary.from_dict(latest_outlier_summary_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

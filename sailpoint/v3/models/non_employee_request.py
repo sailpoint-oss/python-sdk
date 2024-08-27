@@ -18,16 +18,13 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
 from sailpoint.v3.models.approval_status import ApprovalStatus
 from sailpoint.v3.models.non_employee_approval_item_base import NonEmployeeApprovalItemBase
 from sailpoint.v3.models.non_employee_source_lite import NonEmployeeSourceLite
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class NonEmployeeRequest(BaseModel):
     """
@@ -55,11 +52,11 @@ class NonEmployeeRequest(BaseModel):
     created: Optional[datetime] = Field(default=None, description="When the request was created.")
     __properties: ClassVar[List[str]] = ["id", "sourceId", "name", "description", "accountName", "firstName", "lastName", "email", "phone", "manager", "nonEmployeeSource", "data", "approvalItems", "approvalStatus", "comment", "completionDate", "startDate", "endDate", "modified", "created"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -72,7 +69,7 @@ class NonEmployeeRequest(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of NonEmployeeRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -86,10 +83,12 @@ class NonEmployeeRequest(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of non_employee_source
@@ -98,14 +97,14 @@ class NonEmployeeRequest(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in approval_items (list)
         _items = []
         if self.approval_items:
-            for _item in self.approval_items:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_approval_items in self.approval_items:
+                if _item_approval_items:
+                    _items.append(_item_approval_items.to_dict())
             _dict['approvalItems'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of NonEmployeeRequest from a dict"""
         if obj is None:
             return None
@@ -124,9 +123,9 @@ class NonEmployeeRequest(BaseModel):
             "email": obj.get("email"),
             "phone": obj.get("phone"),
             "manager": obj.get("manager"),
-            "nonEmployeeSource": NonEmployeeSourceLite.from_dict(obj.get("nonEmployeeSource")) if obj.get("nonEmployeeSource") is not None else None,
+            "nonEmployeeSource": NonEmployeeSourceLite.from_dict(obj["nonEmployeeSource"]) if obj.get("nonEmployeeSource") is not None else None,
             "data": obj.get("data"),
-            "approvalItems": [NonEmployeeApprovalItemBase.from_dict(_item) for _item in obj.get("approvalItems")] if obj.get("approvalItems") is not None else None,
+            "approvalItems": [NonEmployeeApprovalItemBase.from_dict(_item) for _item in obj["approvalItems"]] if obj.get("approvalItems") is not None else None,
             "approvalStatus": obj.get("approvalStatus"),
             "comment": obj.get("comment"),
             "completionDate": obj.get("completionDate"),

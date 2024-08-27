@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v2024.models.source_password_policies_inner import SourcePasswordPoliciesInner
 
@@ -28,7 +27,7 @@ class TestSourcePasswordPoliciesInner(unittest.TestCase):
 
     def make_instance(self, include_optional) -> SourcePasswordPoliciesInner:
         """Test SourcePasswordPoliciesInner
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `SourcePasswordPoliciesInner`

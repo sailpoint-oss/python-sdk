@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of Reassignment1 from a JSON string
 reassignment1_instance = Reassignment1.from_json(json)
 # print the JSON string representation of the object
-print Reassignment1.to_json()
+print(Reassignment1.to_json())
 
 # convert the object into a dict
 reassignment1_dict = reassignment1_instance.to_dict()
 # create an instance of Reassignment1 from a dict
-reassignment1_form_dict = reassignment1.from_dict(reassignment1_dict)
+reassignment1_from_dict = Reassignment1.from_dict(reassignment1_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of WorkflowModifiedBy from a JSON string
 workflow_modified_by_instance = WorkflowModifiedBy.from_json(json)
 # print the JSON string representation of the object
-print WorkflowModifiedBy.to_json()
+print(WorkflowModifiedBy.to_json())
 
 # convert the object into a dict
 workflow_modified_by_dict = workflow_modified_by_instance.to_dict()
 # create an instance of WorkflowModifiedBy from a dict
-workflow_modified_by_form_dict = workflow_modified_by.from_dict(workflow_modified_by_dict)
+workflow_modified_by_from_dict = WorkflowModifiedBy.from_dict(workflow_modified_by_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

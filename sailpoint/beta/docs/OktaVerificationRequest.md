@@ -17,12 +17,12 @@ json = "{}"
 # create an instance of OktaVerificationRequest from a JSON string
 okta_verification_request_instance = OktaVerificationRequest.from_json(json)
 # print the JSON string representation of the object
-print OktaVerificationRequest.to_json()
+print(OktaVerificationRequest.to_json())
 
 # convert the object into a dict
 okta_verification_request_dict = okta_verification_request_instance.to_dict()
 # create an instance of OktaVerificationRequest from a dict
-okta_verification_request_form_dict = okta_verification_request.from_dict(okta_verification_request_dict)
+okta_verification_request_from_dict = OktaVerificationRequest.from_dict(okta_verification_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

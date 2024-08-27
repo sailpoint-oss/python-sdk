@@ -22,12 +22,12 @@ json = "{}"
 # create an instance of ConfigType from a JSON string
 config_type_instance = ConfigType.from_json(json)
 # print the JSON string representation of the object
-print ConfigType.to_json()
+print(ConfigType.to_json())
 
 # convert the object into a dict
 config_type_dict = config_type_instance.to_dict()
 # create an instance of ConfigType from a dict
-config_type_form_dict = config_type.from_dict(config_type_dict)
+config_type_from_dict = ConfigType.from_dict(config_type_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

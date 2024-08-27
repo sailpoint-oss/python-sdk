@@ -25,8 +25,6 @@ Use this endpoint to approve an access request approval. Only the owner of the a
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.comment_dto import CommentDto
 from sailpoint.beta.rest import ApiException
@@ -113,8 +111,6 @@ Use this API to forward an access request approval to a new owner. Only the owne
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.forward_approval_dto import ForwardApprovalDto
 from sailpoint.beta.rest import ApiException
@@ -201,8 +197,6 @@ Use this API to return the number of pending, approved and rejected access reque
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.approval_summary import ApprovalSummary
 from sailpoint.beta.rest import ApiException
@@ -288,8 +282,6 @@ This endpoint returns list of completed approvals. See *owner-id* query paramete
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.completed_approval import CompletedApproval
 from sailpoint.beta.rest import ApiException
@@ -382,8 +374,6 @@ This endpoint returns a list of pending approvals. See \"owner-id\" query parame
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.pending_approval import PendingApproval
 from sailpoint.beta.rest import ApiException
@@ -476,8 +466,6 @@ Use this API to reject an access request approval. Only the owner of the approva
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.comment_dto import CommentDto
 from sailpoint.beta.rest import ApiException

@@ -17,12 +17,12 @@ json = "{}"
 # create an instance of DeleteCampaignsRequest from a JSON string
 delete_campaigns_request_instance = DeleteCampaignsRequest.from_json(json)
 # print the JSON string representation of the object
-print DeleteCampaignsRequest.to_json()
+print(DeleteCampaignsRequest.to_json())
 
 # convert the object into a dict
 delete_campaigns_request_dict = delete_campaigns_request_instance.to_dict()
 # create an instance of DeleteCampaignsRequest from a dict
-delete_campaigns_request_form_dict = delete_campaigns_request.from_dict(delete_campaigns_request_dict)
+delete_campaigns_request_from_dict = DeleteCampaignsRequest.from_dict(delete_campaigns_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

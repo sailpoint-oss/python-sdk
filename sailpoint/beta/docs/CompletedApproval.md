@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **owner** | [**AccessItemOwnerDto**](AccessItemOwnerDto.md) |  | [optional] 
 **requested_object** | [**RequestableObjectReference**](RequestableObjectReference.md) |  | [optional] 
 **requester_comment** | [**CommentDto1**](CommentDto1.md) |  | [optional] 
-**reviewer_comment** | [**CompletedApprovalReviewerComment**](CompletedApprovalReviewerComment.md) |  | [optional] 
+**reviewer_comment** | [**CommentDto**](CommentDto.md) | The approval&#39;s reviewer&#39;s comment. | [optional] 
 **previous_reviewers_comments** | [**List[CommentDto1]**](CommentDto1.md) | The history of the previous reviewers comments. | [optional] 
 **forward_history** | [**List[ApprovalForwardHistory]**](ApprovalForwardHistory.md) | The history of approval forward action. | [optional] 
 **comment_required_when_rejected** | **bool** | When true the rejector has to provide comments when rejecting | [optional] [default to False]
@@ -39,12 +39,12 @@ json = "{}"
 # create an instance of CompletedApproval from a JSON string
 completed_approval_instance = CompletedApproval.from_json(json)
 # print the JSON string representation of the object
-print CompletedApproval.to_json()
+print(CompletedApproval.to_json())
 
 # convert the object into a dict
 completed_approval_dict = completed_approval_instance.to_dict()
 # create an instance of CompletedApproval from a dict
-completed_approval_form_dict = completed_approval.from_dict(completed_approval_dict)
+completed_approval_from_dict = CompletedApproval.from_dict(completed_approval_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

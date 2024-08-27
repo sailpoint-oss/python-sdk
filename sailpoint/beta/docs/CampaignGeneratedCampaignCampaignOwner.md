@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of CampaignGeneratedCampaignCampaignOwner from a JSON string
 campaign_generated_campaign_campaign_owner_instance = CampaignGeneratedCampaignCampaignOwner.from_json(json)
 # print the JSON string representation of the object
-print CampaignGeneratedCampaignCampaignOwner.to_json()
+print(CampaignGeneratedCampaignCampaignOwner.to_json())
 
 # convert the object into a dict
 campaign_generated_campaign_campaign_owner_dict = campaign_generated_campaign_campaign_owner_instance.to_dict()
 # create an instance of CampaignGeneratedCampaignCampaignOwner from a dict
-campaign_generated_campaign_campaign_owner_form_dict = campaign_generated_campaign_campaign_owner.from_dict(campaign_generated_campaign_campaign_owner_dict)
+campaign_generated_campaign_campaign_owner_from_dict = CampaignGeneratedCampaignCampaignOwner.from_dict(campaign_generated_campaign_campaign_owner_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

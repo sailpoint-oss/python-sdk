@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v2024.models.kba_question import KbaQuestion
 
@@ -28,7 +27,7 @@ class TestKbaQuestion(unittest.TestCase):
 
     def make_instance(self, include_optional) -> KbaQuestion:
         """Test KbaQuestion
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `KbaQuestion`

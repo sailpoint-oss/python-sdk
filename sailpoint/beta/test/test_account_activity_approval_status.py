@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.account_activity_approval_status import AccountActivityApprovalStatus
 

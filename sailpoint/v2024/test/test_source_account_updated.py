@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v2024.models.source_account_updated import SourceAccountUpdated
 
@@ -28,7 +27,7 @@ class TestSourceAccountUpdated(unittest.TestCase):
 
     def make_instance(self, include_optional) -> SourceAccountUpdated:
         """Test SourceAccountUpdated
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `SourceAccountUpdated`

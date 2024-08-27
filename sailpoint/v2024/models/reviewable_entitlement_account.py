@@ -18,15 +18,12 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
-from pydantic import Field
 from sailpoint.v2024.models.activity_insights import ActivityInsights
 from sailpoint.v2024.models.dto_type import DtoType
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class ReviewableEntitlementAccount(BaseModel):
     """
@@ -43,11 +40,11 @@ class ReviewableEntitlementAccount(BaseModel):
     activity_insights: Optional[ActivityInsights] = Field(default=None, alias="activityInsights")
     __properties: ClassVar[List[str]] = ["nativeIdentity", "disabled", "locked", "type", "id", "name", "created", "modified", "activityInsights"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -60,7 +57,7 @@ class ReviewableEntitlementAccount(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of ReviewableEntitlementAccount from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -74,10 +71,12 @@ class ReviewableEntitlementAccount(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of activity_insights
@@ -106,7 +105,7 @@ class ReviewableEntitlementAccount(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of ReviewableEntitlementAccount from a dict"""
         if obj is None:
             return None
@@ -123,7 +122,7 @@ class ReviewableEntitlementAccount(BaseModel):
             "name": obj.get("name"),
             "created": obj.get("created"),
             "modified": obj.get("modified"),
-            "activityInsights": ActivityInsights.from_dict(obj.get("activityInsights")) if obj.get("activityInsights") is not None else None
+            "activityInsights": ActivityInsights.from_dict(obj["activityInsights"]) if obj.get("activityInsights") is not None else None
         })
         return _obj
 

@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of TestInvocation from a JSON string
 test_invocation_instance = TestInvocation.from_json(json)
 # print the JSON string representation of the object
-print TestInvocation.to_json()
+print(TestInvocation.to_json())
 
 # convert the object into a dict
 test_invocation_dict = test_invocation_instance.to_dict()
 # create an instance of TestInvocation from a dict
-test_invocation_form_dict = test_invocation.from_dict(test_invocation_dict)
+test_invocation_from_dict = TestInvocation.from_dict(test_invocation_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

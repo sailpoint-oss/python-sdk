@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v2024.models.sed_assignment import SedAssignment
 
@@ -28,7 +27,7 @@ class TestSedAssignment(unittest.TestCase):
 
     def make_instance(self, include_optional) -> SedAssignment:
         """Test SedAssignment
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `SedAssignment`

@@ -17,12 +17,12 @@ json = "{}"
 # create an instance of NonEmployeeBulkUploadStatus from a JSON string
 non_employee_bulk_upload_status_instance = NonEmployeeBulkUploadStatus.from_json(json)
 # print the JSON string representation of the object
-print NonEmployeeBulkUploadStatus.to_json()
+print(NonEmployeeBulkUploadStatus.to_json())
 
 # convert the object into a dict
 non_employee_bulk_upload_status_dict = non_employee_bulk_upload_status_instance.to_dict()
 # create an instance of NonEmployeeBulkUploadStatus from a dict
-non_employee_bulk_upload_status_form_dict = non_employee_bulk_upload_status.from_dict(non_employee_bulk_upload_status_dict)
+non_employee_bulk_upload_status_from_dict = NonEmployeeBulkUploadStatus.from_dict(non_employee_bulk_upload_status_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

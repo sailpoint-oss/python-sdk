@@ -18,14 +18,11 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr, field_validator
-from pydantic import Field
 from sailpoint.v2024.models.license import License
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class Product(BaseModel):
     """
@@ -55,15 +52,15 @@ class Product(BaseModel):
         if value is None:
             return value
 
-        if value not in ('development', 'staging', 'production', 'test', 'partner', 'training', 'demonstration', 'sandbox', 'null'):
+        if value not in set(['development', 'staging', 'production', 'test', 'partner', 'training', 'demonstration', 'sandbox', 'null']):
             raise ValueError("must be one of enum values ('development', 'staging', 'production', 'test', 'partner', 'training', 'demonstration', 'sandbox', 'null')")
         return value
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -76,7 +73,7 @@ class Product(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of Product from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -90,18 +87,20 @@ class Product(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in licenses (list)
         _items = []
         if self.licenses:
-            for _item in self.licenses:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_licenses in self.licenses:
+                if _item_licenses:
+                    _items.append(_item_licenses.to_dict())
             _dict['licenses'] = _items
         # set to None if api_url (nullable) is None
         # and model_fields_set contains the field
@@ -126,7 +125,7 @@ class Product(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of Product from a dict"""
         if obj is None:
             return None
@@ -141,7 +140,7 @@ class Product(BaseModel):
             "productRegion": obj.get("productRegion"),
             "productRight": obj.get("productRight"),
             "apiUrl": obj.get("apiUrl"),
-            "licenses": [License.from_dict(_item) for _item in obj.get("licenses")] if obj.get("licenses") is not None else None,
+            "licenses": [License.from_dict(_item) for _item in obj["licenses"]] if obj.get("licenses") is not None else None,
             "attributes": obj.get("attributes"),
             "zone": obj.get("zone"),
             "status": obj.get("status"),

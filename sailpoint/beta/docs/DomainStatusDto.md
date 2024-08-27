@@ -22,12 +22,12 @@ json = "{}"
 # create an instance of DomainStatusDto from a JSON string
 domain_status_dto_instance = DomainStatusDto.from_json(json)
 # print the JSON string representation of the object
-print DomainStatusDto.to_json()
+print(DomainStatusDto.to_json())
 
 # convert the object into a dict
 domain_status_dto_dict = domain_status_dto_instance.to_dict()
 # create an instance of DomainStatusDto from a dict
-domain_status_dto_form_dict = domain_status_dto.from_dict(domain_status_dto_dict)
+domain_status_dto_from_dict = DomainStatusDto.from_dict(domain_status_dto_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

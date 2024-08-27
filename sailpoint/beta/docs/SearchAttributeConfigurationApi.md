@@ -24,8 +24,6 @@ This API accepts an attribute name, an attribute display name and a list of name
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.search_attribute_config import SearchAttributeConfig
 from sailpoint.beta.rest import ApiException
@@ -110,8 +108,6 @@ This API accepts an extended attribute name and deletes the corresponding extend
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
@@ -192,8 +188,6 @@ This API retrieves a list of attribute/application associates currently configur
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.search_attribute_config import SearchAttributeConfig
 from sailpoint.beta.rest import ApiException
@@ -272,8 +266,6 @@ This API accepts an extended attribute name and retrieves the corresponding exte
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.search_attribute_config import SearchAttributeConfig
 from sailpoint.beta.rest import ApiException
@@ -358,8 +350,6 @@ This API updates an existing Search Attribute Configuration. The following field
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
 from sailpoint.beta.models.search_attribute_config import SearchAttributeConfig

@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v2024.models.delete_non_employee_records_in_bulk_request import DeleteNonEmployeeRecordsInBulkRequest
 
@@ -28,7 +27,7 @@ class TestDeleteNonEmployeeRecordsInBulkRequest(unittest.TestCase):
 
     def make_instance(self, include_optional) -> DeleteNonEmployeeRecordsInBulkRequest:
         """Test DeleteNonEmployeeRecordsInBulkRequest
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `DeleteNonEmployeeRecordsInBulkRequest`

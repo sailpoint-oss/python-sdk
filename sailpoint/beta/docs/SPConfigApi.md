@@ -26,8 +26,6 @@ This post will export objects from the tenant to a JSON configuration file. For 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.export_payload import ExportPayload
 from sailpoint.beta.models.sp_config_export_job import SpConfigExportJob
@@ -113,8 +111,6 @@ This endpoint gets the export file resulting from the export job with the reques
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.sp_config_export_results import SpConfigExportResults
 from sailpoint.beta.rest import ApiException
@@ -199,8 +195,6 @@ This gets the status of the export job identified by the `id` parameter. The req
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.sp_config_export_job_status import SpConfigExportJobStatus
 from sailpoint.beta.rest import ApiException
@@ -285,8 +279,6 @@ This gets import file resulting from the import job with the requested id and do
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.sp_config_import_results import SpConfigImportResults
 from sailpoint.beta.rest import ApiException
@@ -371,8 +363,6 @@ This gets the status of the import job identified by the `id` parameter. For mor
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.sp_config_import_job_status import SpConfigImportJobStatus
 from sailpoint.beta.rest import ApiException
@@ -457,8 +447,6 @@ This post will import objects from a JSON configuration file into a tenant. By d
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.import_options import ImportOptions
 from sailpoint.beta.models.sp_config_job import SpConfigJob
@@ -548,8 +536,6 @@ This gets the list of object configurations which are known to the tenant export
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.sp_config_object import SpConfigObject
 from sailpoint.beta.rest import ApiException

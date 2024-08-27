@@ -18,18 +18,15 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictInt, StrictStr
-from pydantic import Field
 from sailpoint.v2024.models.approval_item_details import ApprovalItemDetails
 from sailpoint.v2024.models.remediation_item_details import RemediationItemDetails
 from sailpoint.v2024.models.work_item_state_manual_work_items import WorkItemStateManualWorkItems
 from sailpoint.v2024.models.work_item_type_manual_work_items import WorkItemTypeManualWorkItems
 from sailpoint.v2024.models.work_items_form import WorkItemsForm
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class WorkItems(BaseModel):
     """
@@ -54,11 +51,11 @@ class WorkItems(BaseModel):
     errors: Optional[List[StrictStr]] = Field(default=None, description="An array of errors that ocurred during the work item")
     __properties: ClassVar[List[str]] = ["id", "requesterId", "requesterDisplayName", "ownerId", "ownerName", "created", "modified", "description", "state", "type", "remediationItems", "approvalItems", "name", "completed", "numItems", "form", "errors"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -71,7 +68,7 @@ class WorkItems(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of WorkItems from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -85,25 +82,27 @@ class WorkItems(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in remediation_items (list)
         _items = []
         if self.remediation_items:
-            for _item in self.remediation_items:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_remediation_items in self.remediation_items:
+                if _item_remediation_items:
+                    _items.append(_item_remediation_items.to_dict())
             _dict['remediationItems'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in approval_items (list)
         _items = []
         if self.approval_items:
-            for _item in self.approval_items:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_approval_items in self.approval_items:
+                if _item_approval_items:
+                    _items.append(_item_approval_items.to_dict())
             _dict['approvalItems'] = _items
         # override the default output from pydantic by calling `to_dict()` of form
         if self.form:
@@ -156,7 +155,7 @@ class WorkItems(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of WorkItems from a dict"""
         if obj is None:
             return None
@@ -175,12 +174,12 @@ class WorkItems(BaseModel):
             "description": obj.get("description"),
             "state": obj.get("state"),
             "type": obj.get("type"),
-            "remediationItems": [RemediationItemDetails.from_dict(_item) for _item in obj.get("remediationItems")] if obj.get("remediationItems") is not None else None,
-            "approvalItems": [ApprovalItemDetails.from_dict(_item) for _item in obj.get("approvalItems")] if obj.get("approvalItems") is not None else None,
+            "remediationItems": [RemediationItemDetails.from_dict(_item) for _item in obj["remediationItems"]] if obj.get("remediationItems") is not None else None,
+            "approvalItems": [ApprovalItemDetails.from_dict(_item) for _item in obj["approvalItems"]] if obj.get("approvalItems") is not None else None,
             "name": obj.get("name"),
             "completed": obj.get("completed"),
             "numItems": obj.get("numItems"),
-            "form": WorkItemsForm.from_dict(obj.get("form")) if obj.get("form") is not None else None,
+            "form": WorkItemsForm.from_dict(obj["form"]) if obj.get("form") is not None else None,
             "errors": obj.get("errors")
         })
         return _obj

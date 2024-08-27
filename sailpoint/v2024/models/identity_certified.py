@@ -17,15 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
 from sailpoint.v2024.models.certifier_response import CertifierResponse
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class IdentityCertified(BaseModel):
     """
@@ -41,11 +37,11 @@ class IdentityCertified(BaseModel):
     dt: Optional[StrictStr] = Field(default=None, description="the date of event")
     __properties: ClassVar[List[str]] = ["certificationId", "certificationName", "signedDate", "certifiers", "reviewers", "signer", "eventType", "dt"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -58,7 +54,7 @@ class IdentityCertified(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of IdentityCertified from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -72,25 +68,27 @@ class IdentityCertified(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in certifiers (list)
         _items = []
         if self.certifiers:
-            for _item in self.certifiers:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_certifiers in self.certifiers:
+                if _item_certifiers:
+                    _items.append(_item_certifiers.to_dict())
             _dict['certifiers'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in reviewers (list)
         _items = []
         if self.reviewers:
-            for _item in self.reviewers:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_reviewers in self.reviewers:
+                if _item_reviewers:
+                    _items.append(_item_reviewers.to_dict())
             _dict['reviewers'] = _items
         # override the default output from pydantic by calling `to_dict()` of signer
         if self.signer:
@@ -98,7 +96,7 @@ class IdentityCertified(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of IdentityCertified from a dict"""
         if obj is None:
             return None
@@ -110,9 +108,9 @@ class IdentityCertified(BaseModel):
             "certificationId": obj.get("certificationId"),
             "certificationName": obj.get("certificationName"),
             "signedDate": obj.get("signedDate"),
-            "certifiers": [CertifierResponse.from_dict(_item) for _item in obj.get("certifiers")] if obj.get("certifiers") is not None else None,
-            "reviewers": [CertifierResponse.from_dict(_item) for _item in obj.get("reviewers")] if obj.get("reviewers") is not None else None,
-            "signer": CertifierResponse.from_dict(obj.get("signer")) if obj.get("signer") is not None else None,
+            "certifiers": [CertifierResponse.from_dict(_item) for _item in obj["certifiers"]] if obj.get("certifiers") is not None else None,
+            "reviewers": [CertifierResponse.from_dict(_item) for _item in obj["reviewers"]] if obj.get("reviewers") is not None else None,
+            "signer": CertifierResponse.from_dict(obj["signer"]) if obj.get("signer") is not None else None,
             "eventType": obj.get("eventType"),
             "dt": obj.get("dt")
         })

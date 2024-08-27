@@ -30,12 +30,12 @@ json = "{}"
 # create an instance of SpConfigObject from a JSON string
 sp_config_object_instance = SpConfigObject.from_json(json)
 # print the JSON string representation of the object
-print SpConfigObject.to_json()
+print(SpConfigObject.to_json())
 
 # convert the object into a dict
 sp_config_object_dict = sp_config_object_instance.to_dict()
 # create an instance of SpConfigObject from a dict
-sp_config_object_form_dict = sp_config_object.from_dict(sp_config_object_dict)
+sp_config_object_from_dict = SpConfigObject.from_dict(sp_config_object_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

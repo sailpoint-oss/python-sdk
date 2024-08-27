@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of ApprovalReference from a JSON string
 approval_reference_instance = ApprovalReference.from_json(json)
 # print the JSON string representation of the object
-print ApprovalReference.to_json()
+print(ApprovalReference.to_json())
 
 # convert the object into a dict
 approval_reference_dict = approval_reference_instance.to_dict()
 # create an instance of ApprovalReference from a dict
-approval_reference_form_dict = approval_reference.from_dict(approval_reference_dict)
+approval_reference_from_dict = ApprovalReference.from_dict(approval_reference_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

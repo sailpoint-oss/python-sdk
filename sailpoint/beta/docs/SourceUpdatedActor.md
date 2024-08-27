@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of SourceUpdatedActor from a JSON string
 source_updated_actor_instance = SourceUpdatedActor.from_json(json)
 # print the JSON string representation of the object
-print SourceUpdatedActor.to_json()
+print(SourceUpdatedActor.to_json())
 
 # convert the object into a dict
 source_updated_actor_dict = source_updated_actor_instance.to_dict()
 # create an instance of SourceUpdatedActor from a dict
-source_updated_actor_form_dict = source_updated_actor.from_dict(source_updated_actor_dict)
+source_updated_actor_from_dict = SourceUpdatedActor.from_dict(source_updated_actor_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

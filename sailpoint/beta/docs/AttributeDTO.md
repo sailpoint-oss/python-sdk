@@ -24,12 +24,12 @@ json = "{}"
 # create an instance of AttributeDTO from a JSON string
 attribute_dto_instance = AttributeDTO.from_json(json)
 # print the JSON string representation of the object
-print AttributeDTO.to_json()
+print(AttributeDTO.to_json())
 
 # convert the object into a dict
 attribute_dto_dict = attribute_dto_instance.to_dict()
 # create an instance of AttributeDTO from a dict
-attribute_dto_form_dict = attribute_dto.from_dict(attribute_dto_dict)
+attribute_dto_from_dict = AttributeDTO.from_dict(attribute_dto_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

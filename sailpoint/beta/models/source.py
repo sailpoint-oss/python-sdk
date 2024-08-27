@@ -18,9 +18,8 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictInt, StrictStr, field_validator
-from pydantic import Field
 from sailpoint.beta.models.manager_correlation_mapping import ManagerCorrelationMapping
 from sailpoint.beta.models.source_account_correlation_config import SourceAccountCorrelationConfig
 from sailpoint.beta.models.source_account_correlation_rule import SourceAccountCorrelationRule
@@ -31,10 +30,8 @@ from sailpoint.beta.models.source_manager_correlation_rule import SourceManagerC
 from sailpoint.beta.models.source_owner import SourceOwner
 from sailpoint.beta.models.source_password_policies_inner import SourcePasswordPoliciesInner
 from sailpoint.beta.models.source_schemas_inner import SourceSchemasInner
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class Source(BaseModel):
     """
@@ -80,7 +77,7 @@ class Source(BaseModel):
             return value
 
         for i in value:
-            if i not in ('AUTHENTICATE', 'COMPOSITE', 'DIRECT_PERMISSIONS', 'DISCOVER_SCHEMA', 'ENABLE', 'MANAGER_LOOKUP', 'NO_RANDOM_ACCESS', 'PROXY', 'SEARCH', 'TEMPLATE', 'UNLOCK', 'UNSTRUCTURED_TARGETS', 'SHAREPOINT_TARGET', 'PROVISIONING', 'GROUP_PROVISIONING', 'SYNC_PROVISIONING', 'PASSWORD', 'CURRENT_PASSWORD', 'ACCOUNT_ONLY_REQUEST', 'ADDITIONAL_ACCOUNT_REQUEST', 'NO_AGGREGATION', 'GROUPS_HAVE_MEMBERS', 'NO_PERMISSIONS_PROVISIONING', 'NO_GROUP_PERMISSIONS_PROVISIONING', 'NO_UNSTRUCTURED_TARGETS_PROVISIONING', 'NO_DIRECT_PERMISSIONS_PROVISIONING', 'PREFER_UUID', 'ARM_SECURITY_EXTRACT', 'ARM_UTILIZATION_EXTRACT', 'ARM_CHANGELOG_EXTRACT', 'USES_UUID'):
+            if i not in set(['AUTHENTICATE', 'COMPOSITE', 'DIRECT_PERMISSIONS', 'DISCOVER_SCHEMA', 'ENABLE', 'MANAGER_LOOKUP', 'NO_RANDOM_ACCESS', 'PROXY', 'SEARCH', 'TEMPLATE', 'UNLOCK', 'UNSTRUCTURED_TARGETS', 'SHAREPOINT_TARGET', 'PROVISIONING', 'GROUP_PROVISIONING', 'SYNC_PROVISIONING', 'PASSWORD', 'CURRENT_PASSWORD', 'ACCOUNT_ONLY_REQUEST', 'ADDITIONAL_ACCOUNT_REQUEST', 'NO_AGGREGATION', 'GROUPS_HAVE_MEMBERS', 'NO_PERMISSIONS_PROVISIONING', 'NO_GROUP_PERMISSIONS_PROVISIONING', 'NO_UNSTRUCTURED_TARGETS_PROVISIONING', 'NO_DIRECT_PERMISSIONS_PROVISIONING', 'PREFER_UUID', 'ARM_SECURITY_EXTRACT', 'ARM_UTILIZATION_EXTRACT', 'ARM_CHANGELOG_EXTRACT', 'USES_UUID']):
                 raise ValueError("each list item must be one of ('AUTHENTICATE', 'COMPOSITE', 'DIRECT_PERMISSIONS', 'DISCOVER_SCHEMA', 'ENABLE', 'MANAGER_LOOKUP', 'NO_RANDOM_ACCESS', 'PROXY', 'SEARCH', 'TEMPLATE', 'UNLOCK', 'UNSTRUCTURED_TARGETS', 'SHAREPOINT_TARGET', 'PROVISIONING', 'GROUP_PROVISIONING', 'SYNC_PROVISIONING', 'PASSWORD', 'CURRENT_PASSWORD', 'ACCOUNT_ONLY_REQUEST', 'ADDITIONAL_ACCOUNT_REQUEST', 'NO_AGGREGATION', 'GROUPS_HAVE_MEMBERS', 'NO_PERMISSIONS_PROVISIONING', 'NO_GROUP_PERMISSIONS_PROVISIONING', 'NO_UNSTRUCTURED_TARGETS_PROVISIONING', 'NO_DIRECT_PERMISSIONS_PROVISIONING', 'PREFER_UUID', 'ARM_SECURITY_EXTRACT', 'ARM_UTILIZATION_EXTRACT', 'ARM_CHANGELOG_EXTRACT', 'USES_UUID')")
         return value
 
@@ -90,15 +87,15 @@ class Source(BaseModel):
         if value is None:
             return value
 
-        if value not in ('SOURCE_STATE_ERROR_ACCOUNT_FILE_IMPORT', 'SOURCE_STATE_ERROR_CLUSTER', 'SOURCE_STATE_ERROR_SOURCE', 'SOURCE_STATE_ERROR_VA', 'SOURCE_STATE_FAILURE_CLUSTER', 'SOURCE_STATE_FAILURE_SOURCE', 'SOURCE_STATE_HEALTHY', 'SOURCE_STATE_UNCHECKED_CLUSTER', 'SOURCE_STATE_UNCHECKED_CLUSTER_NO_SOURCES', 'SOURCE_STATE_UNCHECKED_SOURCE', 'SOURCE_STATE_UNCHECKED_SOURCE_NO_ACCOUNTS'):
+        if value not in set(['SOURCE_STATE_ERROR_ACCOUNT_FILE_IMPORT', 'SOURCE_STATE_ERROR_CLUSTER', 'SOURCE_STATE_ERROR_SOURCE', 'SOURCE_STATE_ERROR_VA', 'SOURCE_STATE_FAILURE_CLUSTER', 'SOURCE_STATE_FAILURE_SOURCE', 'SOURCE_STATE_HEALTHY', 'SOURCE_STATE_UNCHECKED_CLUSTER', 'SOURCE_STATE_UNCHECKED_CLUSTER_NO_SOURCES', 'SOURCE_STATE_UNCHECKED_SOURCE', 'SOURCE_STATE_UNCHECKED_SOURCE_NO_ACCOUNTS']):
             raise ValueError("must be one of enum values ('SOURCE_STATE_ERROR_ACCOUNT_FILE_IMPORT', 'SOURCE_STATE_ERROR_CLUSTER', 'SOURCE_STATE_ERROR_SOURCE', 'SOURCE_STATE_ERROR_VA', 'SOURCE_STATE_FAILURE_CLUSTER', 'SOURCE_STATE_FAILURE_SOURCE', 'SOURCE_STATE_HEALTHY', 'SOURCE_STATE_UNCHECKED_CLUSTER', 'SOURCE_STATE_UNCHECKED_CLUSTER_NO_SOURCES', 'SOURCE_STATE_UNCHECKED_SOURCE', 'SOURCE_STATE_UNCHECKED_SOURCE_NO_ACCOUNTS')")
         return value
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -111,7 +108,7 @@ class Source(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of Source from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -126,11 +123,13 @@ class Source(BaseModel):
           are ignored.
         * OpenAPI `readOnly` fields are excluded.
         """
+        excluded_fields: Set[str] = set([
+            "id",
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-                "id",
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of owner
@@ -157,16 +156,16 @@ class Source(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in schemas (list)
         _items = []
         if self.schemas:
-            for _item in self.schemas:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_schemas in self.schemas:
+                if _item_schemas:
+                    _items.append(_item_schemas.to_dict())
             _dict['schemas'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in password_policies (list)
         _items = []
         if self.password_policies:
-            for _item in self.password_policies:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_password_policies in self.password_policies:
+                if _item_password_policies:
+                    _items.append(_item_password_policies.to_dict())
             _dict['passwordPolicies'] = _items
         # override the default output from pydantic by calling `to_dict()` of management_workgroup
         if self.management_workgroup:
@@ -219,7 +218,7 @@ class Source(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of Source from a dict"""
         if obj is None:
             return None
@@ -231,15 +230,15 @@ class Source(BaseModel):
             "id": obj.get("id"),
             "name": obj.get("name"),
             "description": obj.get("description"),
-            "owner": SourceOwner.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
-            "cluster": SourceCluster.from_dict(obj.get("cluster")) if obj.get("cluster") is not None else None,
-            "accountCorrelationConfig": SourceAccountCorrelationConfig.from_dict(obj.get("accountCorrelationConfig")) if obj.get("accountCorrelationConfig") is not None else None,
-            "accountCorrelationRule": SourceAccountCorrelationRule.from_dict(obj.get("accountCorrelationRule")) if obj.get("accountCorrelationRule") is not None else None,
-            "managerCorrelationMapping": ManagerCorrelationMapping.from_dict(obj.get("managerCorrelationMapping")) if obj.get("managerCorrelationMapping") is not None else None,
-            "managerCorrelationRule": SourceManagerCorrelationRule.from_dict(obj.get("managerCorrelationRule")) if obj.get("managerCorrelationRule") is not None else None,
-            "beforeProvisioningRule": SourceBeforeProvisioningRule.from_dict(obj.get("beforeProvisioningRule")) if obj.get("beforeProvisioningRule") is not None else None,
-            "schemas": [SourceSchemasInner.from_dict(_item) for _item in obj.get("schemas")] if obj.get("schemas") is not None else None,
-            "passwordPolicies": [SourcePasswordPoliciesInner.from_dict(_item) for _item in obj.get("passwordPolicies")] if obj.get("passwordPolicies") is not None else None,
+            "owner": SourceOwner.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
+            "cluster": SourceCluster.from_dict(obj["cluster"]) if obj.get("cluster") is not None else None,
+            "accountCorrelationConfig": SourceAccountCorrelationConfig.from_dict(obj["accountCorrelationConfig"]) if obj.get("accountCorrelationConfig") is not None else None,
+            "accountCorrelationRule": SourceAccountCorrelationRule.from_dict(obj["accountCorrelationRule"]) if obj.get("accountCorrelationRule") is not None else None,
+            "managerCorrelationMapping": ManagerCorrelationMapping.from_dict(obj["managerCorrelationMapping"]) if obj.get("managerCorrelationMapping") is not None else None,
+            "managerCorrelationRule": SourceManagerCorrelationRule.from_dict(obj["managerCorrelationRule"]) if obj.get("managerCorrelationRule") is not None else None,
+            "beforeProvisioningRule": SourceBeforeProvisioningRule.from_dict(obj["beforeProvisioningRule"]) if obj.get("beforeProvisioningRule") is not None else None,
+            "schemas": [SourceSchemasInner.from_dict(_item) for _item in obj["schemas"]] if obj.get("schemas") is not None else None,
+            "passwordPolicies": [SourcePasswordPoliciesInner.from_dict(_item) for _item in obj["passwordPolicies"]] if obj.get("passwordPolicies") is not None else None,
             "features": obj.get("features"),
             "type": obj.get("type"),
             "connector": obj.get("connector"),
@@ -247,7 +246,7 @@ class Source(BaseModel):
             "connectorAttributes": obj.get("connectorAttributes"),
             "deleteThreshold": obj.get("deleteThreshold"),
             "authoritative": obj.get("authoritative") if obj.get("authoritative") is not None else False,
-            "managementWorkgroup": SourceManagementWorkgroup.from_dict(obj.get("managementWorkgroup")) if obj.get("managementWorkgroup") is not None else None,
+            "managementWorkgroup": SourceManagementWorkgroup.from_dict(obj["managementWorkgroup"]) if obj.get("managementWorkgroup") is not None else None,
             "healthy": obj.get("healthy") if obj.get("healthy") is not None else False,
             "status": obj.get("status"),
             "since": obj.get("since"),

@@ -20,8 +20,6 @@ This API returns the status of an *in-progress* account aggregation, along with 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.account_aggregation_status import AccountAggregationStatus
 from sailpoint.v2024.rest import ApiException

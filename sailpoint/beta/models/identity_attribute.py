@@ -17,15 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
-from pydantic import Field
 from sailpoint.beta.models.source1 import Source1
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class IdentityAttribute(BaseModel):
     """
@@ -41,11 +37,11 @@ class IdentityAttribute(BaseModel):
     sources: Optional[List[Source1]] = Field(default=None, description="Identity attribute's list of sources - this specifies how the rule's value is derived.")
     __properties: ClassVar[List[str]] = ["name", "displayName", "standard", "type", "multi", "searchable", "system", "sources"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -58,7 +54,7 @@ class IdentityAttribute(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of IdentityAttribute from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -72,18 +68,20 @@ class IdentityAttribute(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in sources (list)
         _items = []
         if self.sources:
-            for _item in self.sources:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_sources in self.sources:
+                if _item_sources:
+                    _items.append(_item_sources.to_dict())
             _dict['sources'] = _items
         # set to None if type (nullable) is None
         # and model_fields_set contains the field
@@ -93,7 +91,7 @@ class IdentityAttribute(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of IdentityAttribute from a dict"""
         if obj is None:
             return None
@@ -109,7 +107,7 @@ class IdentityAttribute(BaseModel):
             "multi": obj.get("multi") if obj.get("multi") is not None else False,
             "searchable": obj.get("searchable") if obj.get("searchable") is not None else False,
             "system": obj.get("system") if obj.get("system") is not None else False,
-            "sources": [Source1.from_dict(_item) for _item in obj.get("sources")] if obj.get("sources") is not None else None
+            "sources": [Source1.from_dict(_item) for _item in obj["sources"]] if obj.get("sources") is not None else None
         })
         return _obj
 

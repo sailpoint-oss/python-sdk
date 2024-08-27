@@ -18,17 +18,14 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
-from pydantic import Field
 from sailpoint.beta.models.role_mining_role_type import RoleMiningRoleType
 from sailpoint.beta.models.role_mining_session_response_created_by import RoleMiningSessionResponseCreatedBy
 from sailpoint.beta.models.role_mining_session_scope import RoleMiningSessionScope
 from sailpoint.beta.models.role_mining_session_status import RoleMiningSessionStatus
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class RoleMiningSessionResponse(BaseModel):
     """
@@ -54,11 +51,11 @@ class RoleMiningSessionResponse(BaseModel):
     type: Optional[RoleMiningRoleType] = None
     __properties: ClassVar[List[str]] = ["scope", "minNumIdentitiesInPotentialRole", "scopingMethod", "prescribedPruneThreshold", "pruneThreshold", "potentialRoleCount", "potentialRolesReadyCount", "status", "emailRecipientId", "createdBy", "identityCount", "saved", "name", "dataFilePath", "id", "createdDate", "modifiedDate", "type"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -71,7 +68,7 @@ class RoleMiningSessionResponse(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of RoleMiningSessionResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -85,10 +82,12 @@ class RoleMiningSessionResponse(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of scope
@@ -138,7 +137,7 @@ class RoleMiningSessionResponse(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of RoleMiningSessionResponse from a dict"""
         if obj is None:
             return None
@@ -147,16 +146,16 @@ class RoleMiningSessionResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "scope": RoleMiningSessionScope.from_dict(obj.get("scope")) if obj.get("scope") is not None else None,
+            "scope": RoleMiningSessionScope.from_dict(obj["scope"]) if obj.get("scope") is not None else None,
             "minNumIdentitiesInPotentialRole": obj.get("minNumIdentitiesInPotentialRole"),
             "scopingMethod": obj.get("scopingMethod"),
             "prescribedPruneThreshold": obj.get("prescribedPruneThreshold"),
             "pruneThreshold": obj.get("pruneThreshold"),
             "potentialRoleCount": obj.get("potentialRoleCount"),
             "potentialRolesReadyCount": obj.get("potentialRolesReadyCount"),
-            "status": RoleMiningSessionStatus.from_dict(obj.get("status")) if obj.get("status") is not None else None,
+            "status": RoleMiningSessionStatus.from_dict(obj["status"]) if obj.get("status") is not None else None,
             "emailRecipientId": obj.get("emailRecipientId"),
-            "createdBy": RoleMiningSessionResponseCreatedBy.from_dict(obj.get("createdBy")) if obj.get("createdBy") is not None else None,
+            "createdBy": RoleMiningSessionResponseCreatedBy.from_dict(obj["createdBy"]) if obj.get("createdBy") is not None else None,
             "identityCount": obj.get("identityCount"),
             "saved": obj.get("saved") if obj.get("saved") is not None else False,
             "name": obj.get("name"),

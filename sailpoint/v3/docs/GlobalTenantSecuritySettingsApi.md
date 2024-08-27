@@ -28,8 +28,6 @@ This API returns the details of an org's network auth configuration. Requires se
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.network_configuration import NetworkConfiguration
 from sailpoint.v3.rest import ApiException
@@ -114,8 +112,6 @@ This API returns the details of an org's lockout auth configuration.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.lockout_configuration import LockoutConfiguration
 from sailpoint.v3.rest import ApiException
@@ -196,8 +192,6 @@ This API returns the details of an org's network auth configuration. Requires se
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.network_configuration import NetworkConfiguration
 from sailpoint.v3.rest import ApiException
@@ -278,8 +272,6 @@ This API returns the details of an org's service provider auth configuration.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.service_provider_configuration import ServiceProviderConfiguration
 from sailpoint.v3.rest import ApiException
@@ -360,8 +352,6 @@ This API returns the details of an org's session auth configuration.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.session_configuration import SessionConfiguration
 from sailpoint.v3.rest import ApiException
@@ -442,8 +432,6 @@ This API updates an existing lockout configuration for an org using PATCH  Requi
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v3.models.lockout_configuration import LockoutConfiguration
@@ -529,8 +517,6 @@ This API updates an existing network configuration for an org using PATCH  Requi
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v3.models.network_configuration import NetworkConfiguration
@@ -616,8 +602,6 @@ This API updates an existing service provider configuration for an org using PAT
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v3.models.service_provider_configuration import ServiceProviderConfiguration
@@ -703,8 +687,6 @@ This API updates an existing session configuration for an org using PATCH.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v3.models.session_configuration import SessionConfiguration

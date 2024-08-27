@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of PasswordStatus from a JSON string
 password_status_instance = PasswordStatus.from_json(json)
 # print the JSON string representation of the object
-print PasswordStatus.to_json()
+print(PasswordStatus.to_json())
 
 # convert the object into a dict
 password_status_dict = password_status_instance.to_dict()
 # create an instance of PasswordStatus from a dict
-password_status_form_dict = password_status.from_dict(password_status_dict)
+password_status_from_dict = PasswordStatus.from_dict(password_status_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

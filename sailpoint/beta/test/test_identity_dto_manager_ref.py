@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.identity_dto_manager_ref import IdentityDtoManagerRef
 
@@ -28,7 +27,7 @@ class TestIdentityDtoManagerRef(unittest.TestCase):
 
     def make_instance(self, include_optional) -> IdentityDtoManagerRef:
         """Test IdentityDtoManagerRef
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `IdentityDtoManagerRef`

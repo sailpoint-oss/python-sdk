@@ -28,12 +28,12 @@ json = "{}"
 # create an instance of WorkflowLibraryAction from a JSON string
 workflow_library_action_instance = WorkflowLibraryAction.from_json(json)
 # print the JSON string representation of the object
-print WorkflowLibraryAction.to_json()
+print(WorkflowLibraryAction.to_json())
 
 # convert the object into a dict
 workflow_library_action_dict = workflow_library_action_instance.to_dict()
 # create an instance of WorkflowLibraryAction from a dict
-workflow_library_action_form_dict = workflow_library_action.from_dict(workflow_library_action_dict)
+workflow_library_action_from_dict = WorkflowLibraryAction.from_dict(workflow_library_action_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

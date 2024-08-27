@@ -20,8 +20,6 @@ This endpoint returns a list of acccess items that that can be requested through
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.requestable_object import RequestableObject
 from sailpoint.beta.models.requestable_object_request_status import RequestableObjectRequestStatus

@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.access_request_item_response import AccessRequestItemResponse
 
@@ -28,7 +27,7 @@ class TestAccessRequestItemResponse(unittest.TestCase):
 
     def make_instance(self, include_optional) -> AccessRequestItemResponse:
         """Test AccessRequestItemResponse
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `AccessRequestItemResponse`

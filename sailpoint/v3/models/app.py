@@ -17,16 +17,12 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
 from sailpoint.v3.models.app_all_of_account import AppAllOfAccount
 from sailpoint.v3.models.reference import Reference
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class App(BaseModel):
     """
@@ -38,11 +34,11 @@ class App(BaseModel):
     account: Optional[AppAllOfAccount] = None
     __properties: ClassVar[List[str]] = ["id", "name", "source", "account"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -55,7 +51,7 @@ class App(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of App from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -69,10 +65,12 @@ class App(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of source
@@ -84,7 +82,7 @@ class App(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of App from a dict"""
         if obj is None:
             return None
@@ -95,8 +93,8 @@ class App(BaseModel):
         _obj = cls.model_validate({
             "id": obj.get("id"),
             "name": obj.get("name"),
-            "source": Reference.from_dict(obj.get("source")) if obj.get("source") is not None else None,
-            "account": AppAllOfAccount.from_dict(obj.get("account")) if obj.get("account") is not None else None
+            "source": Reference.from_dict(obj["source"]) if obj.get("source") is not None else None,
+            "account": AppAllOfAccount.from_dict(obj["account"]) if obj.get("account") is not None else None
         })
         return _obj
 

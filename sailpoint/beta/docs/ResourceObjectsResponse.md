@@ -22,12 +22,12 @@ json = "{}"
 # create an instance of ResourceObjectsResponse from a JSON string
 resource_objects_response_instance = ResourceObjectsResponse.from_json(json)
 # print the JSON string representation of the object
-print ResourceObjectsResponse.to_json()
+print(ResourceObjectsResponse.to_json())
 
 # convert the object into a dict
 resource_objects_response_dict = resource_objects_response_instance.to_dict()
 # create an instance of ResourceObjectsResponse from a dict
-resource_objects_response_form_dict = resource_objects_response.from_dict(resource_objects_response_dict)
+resource_objects_response_from_dict = ResourceObjectsResponse.from_dict(resource_objects_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

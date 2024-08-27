@@ -22,12 +22,12 @@ json = "{}"
 # create an instance of SearchExportReportArguments from a JSON string
 search_export_report_arguments_instance = SearchExportReportArguments.from_json(json)
 # print the JSON string representation of the object
-print SearchExportReportArguments.to_json()
+print(SearchExportReportArguments.to_json())
 
 # convert the object into a dict
 search_export_report_arguments_dict = search_export_report_arguments_instance.to_dict()
 # create an instance of SearchExportReportArguments from a dict
-search_export_report_arguments_form_dict = search_export_report_arguments.from_dict(search_export_report_arguments_dict)
+search_export_report_arguments_from_dict = SearchExportReportArguments.from_dict(search_export_report_arguments_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

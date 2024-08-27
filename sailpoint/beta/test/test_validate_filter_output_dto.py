@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.validate_filter_output_dto import ValidateFilterOutputDto
 
@@ -28,7 +27,7 @@ class TestValidateFilterOutputDto(unittest.TestCase):
 
     def make_instance(self, include_optional) -> ValidateFilterOutputDto:
         """Test ValidateFilterOutputDto
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `ValidateFilterOutputDto`

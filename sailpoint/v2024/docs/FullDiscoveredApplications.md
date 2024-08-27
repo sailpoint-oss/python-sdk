@@ -27,12 +27,12 @@ json = "{}"
 # create an instance of FullDiscoveredApplications from a JSON string
 full_discovered_applications_instance = FullDiscoveredApplications.from_json(json)
 # print the JSON string representation of the object
-print FullDiscoveredApplications.to_json()
+print(FullDiscoveredApplications.to_json())
 
 # convert the object into a dict
 full_discovered_applications_dict = full_discovered_applications_instance.to_dict()
 # create an instance of FullDiscoveredApplications from a dict
-full_discovered_applications_form_dict = full_discovered_applications.from_dict(full_discovered_applications_dict)
+full_discovered_applications_from_dict = FullDiscoveredApplications.from_dict(full_discovered_applications_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

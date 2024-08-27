@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v2024.models.column import Column
 
@@ -28,7 +27,7 @@ class TestColumn(unittest.TestCase):
 
     def make_instance(self, include_optional) -> Column:
         """Test Column
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `Column`
@@ -36,12 +35,12 @@ class TestColumn(unittest.TestCase):
         model = Column()
         if include_optional:
             return Column(
-                field = 'email',
+                var_field = 'email',
                 header = 'Work Email'
             )
         else:
             return Column(
-                field = 'email',
+                var_field = 'email',
         )
         """
 

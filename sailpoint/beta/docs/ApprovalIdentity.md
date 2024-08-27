@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of ApprovalIdentity from a JSON string
 approval_identity_instance = ApprovalIdentity.from_json(json)
 # print the JSON string representation of the object
-print ApprovalIdentity.to_json()
+print(ApprovalIdentity.to_json())
 
 # convert the object into a dict
 approval_identity_dict = approval_identity_instance.to_dict()
 # create an instance of ApprovalIdentity from a dict
-approval_identity_form_dict = approval_identity.from_dict(approval_identity_dict)
+approval_identity_from_dict = ApprovalIdentity.from_dict(approval_identity_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

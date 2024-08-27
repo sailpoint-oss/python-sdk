@@ -44,8 +44,6 @@ This API generates a create policy/template based on field value transforms. Thi
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.provisioning_policy_dto import ProvisioningPolicyDto
 from sailpoint.v3.rest import ApiException
@@ -132,8 +130,6 @@ This creates a specific source with a full source JSON representation. Any passw
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.source import Source
 from sailpoint.v3.rest import ApiException
@@ -219,8 +215,6 @@ Use this API to create a new schema on the specified source in Identity Security
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.model_schema import ModelSchema
 from sailpoint.v3.rest import ApiException
@@ -306,8 +300,6 @@ Deletes the provisioning policy with the specified usage on an application. A to
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.usage_type import UsageType
 from sailpoint.v3.rest import ApiException
@@ -392,8 +384,6 @@ Use this API to delete a specific source in Identity Security Cloud (ISC). The A
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.delete_source202_response import DeleteSource202Response
 from sailpoint.v3.rest import ApiException
@@ -476,8 +466,6 @@ Delete Source Schema by ID
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.rest import ApiException
 from pprint import pprint
@@ -561,8 +549,6 @@ This API downloads the CSV schema that defines the account attributes on a sourc
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.rest import ApiException
 from pprint import pprint
@@ -644,8 +630,6 @@ This API downloads the CSV schema that defines the entitlement attributes on a s
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.rest import ApiException
 from pprint import pprint
@@ -729,8 +713,6 @@ This end-point retrieves the ProvisioningPolicy with the specified usage on the 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.provisioning_policy_dto import ProvisioningPolicyDto
 from sailpoint.v3.models.usage_type import UsageType
@@ -818,8 +800,6 @@ Use this API to get a source by a specified ID in Identity Security Cloud (ISC).
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.source import Source
 from sailpoint.v3.rest import ApiException
@@ -904,8 +884,6 @@ This endpoint fetches source health by source's id
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.source_health_dto import SourceHealthDto
 from sailpoint.v3.rest import ApiException
@@ -990,8 +968,6 @@ Get the Source Schema by ID in IdentityNow.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.model_schema import ModelSchema
 from sailpoint.v3.rest import ApiException
@@ -1078,8 +1054,6 @@ Use this API to list the schemas that exist on the specified source in Identity 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.model_schema import ModelSchema
 from sailpoint.v3.rest import ApiException
@@ -1166,8 +1140,6 @@ This API uploads a source schema template file to configure a source's account a
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.model_schema import ModelSchema
 from sailpoint.v3.rest import ApiException
@@ -1253,8 +1225,6 @@ This uploads a supplemental source connector file (like jdbc driver jars) to a s
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.source import Source
 from sailpoint.v3.rest import ApiException
@@ -1340,8 +1310,6 @@ This API uploads a source schema template file to configure a source's entitleme
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.model_schema import ModelSchema
 from sailpoint.v3.rest import ApiException
@@ -1429,8 +1397,6 @@ This end-point lists all the ProvisioningPolicies in IdentityNow. A token with A
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.provisioning_policy_dto import ProvisioningPolicyDto
 from sailpoint.v3.rest import ApiException
@@ -1515,8 +1481,6 @@ This end-point lists all the sources in IdentityNow. A token with ORG_ADMIN, SOU
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.source import Source
 from sailpoint.v3.rest import ApiException
@@ -1611,8 +1575,6 @@ This end-point updates the provisioning policy with the specified usage on the s
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.provisioning_policy_dto import ProvisioningPolicyDto
 from sailpoint.v3.models.usage_type import UsageType
@@ -1702,8 +1664,6 @@ Use this API to update a source in Identity Security Cloud (ISC), using a full o
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.source import Source
 from sailpoint.v3.rest import ApiException
@@ -1790,8 +1750,6 @@ This API will completely replace an existing Schema with the submitted payload. 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.model_schema import ModelSchema
 from sailpoint.v3.rest import ApiException
@@ -1880,8 +1838,6 @@ This end-point updates a list of provisioning policies on the specified source i
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.provisioning_policy_dto import ProvisioningPolicyDto
 from sailpoint.v3.rest import ApiException
@@ -1968,8 +1924,6 @@ This API selectively updates an existing Provisioning Policy using a JSONPatch p
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v3.models.provisioning_policy_dto import ProvisioningPolicyDto
@@ -2060,8 +2014,6 @@ Use this API to partially update a source in Identity Security Cloud (ISC), usin
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v3.models.source import Source
@@ -2149,8 +2101,6 @@ Use this API to selectively update an existing Schema using a JSONPatch payload.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v3.models.model_schema import ModelSchema

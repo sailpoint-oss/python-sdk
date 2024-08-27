@@ -25,12 +25,12 @@ json = "{}"
 # create an instance of WorkflowLibraryOperator from a JSON string
 workflow_library_operator_instance = WorkflowLibraryOperator.from_json(json)
 # print the JSON string representation of the object
-print WorkflowLibraryOperator.to_json()
+print(WorkflowLibraryOperator.to_json())
 
 # convert the object into a dict
 workflow_library_operator_dict = workflow_library_operator_instance.to_dict()
 # create an instance of WorkflowLibraryOperator from a dict
-workflow_library_operator_form_dict = workflow_library_operator.from_dict(workflow_library_operator_dict)
+workflow_library_operator_from_dict = WorkflowLibraryOperator.from_dict(workflow_library_operator_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -18,16 +18,13 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
 from sailpoint.beta.models.complete_invocation_input import CompleteInvocationInput
 from sailpoint.beta.models.invocation_status_type import InvocationStatusType
 from sailpoint.beta.models.start_invocation_input import StartInvocationInput
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class InvocationStatus(BaseModel):
     """
@@ -44,11 +41,11 @@ class InvocationStatus(BaseModel):
     complete_invocation_input: Optional[CompleteInvocationInput] = Field(default=None, alias="completeInvocationInput")
     __properties: ClassVar[List[str]] = ["id", "triggerId", "subscriptionName", "subscriptionId", "type", "created", "completed", "startInvocationInput", "completeInvocationInput"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -61,7 +58,7 @@ class InvocationStatus(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of InvocationStatus from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -75,10 +72,12 @@ class InvocationStatus(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of start_invocation_input
@@ -90,7 +89,7 @@ class InvocationStatus(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of InvocationStatus from a dict"""
         if obj is None:
             return None
@@ -106,8 +105,8 @@ class InvocationStatus(BaseModel):
             "type": obj.get("type"),
             "created": obj.get("created"),
             "completed": obj.get("completed"),
-            "startInvocationInput": StartInvocationInput.from_dict(obj.get("startInvocationInput")) if obj.get("startInvocationInput") is not None else None,
-            "completeInvocationInput": CompleteInvocationInput.from_dict(obj.get("completeInvocationInput")) if obj.get("completeInvocationInput") is not None else None
+            "startInvocationInput": StartInvocationInput.from_dict(obj["startInvocationInput"]) if obj.get("startInvocationInput") is not None else None,
+            "completeInvocationInput": CompleteInvocationInput.from_dict(obj["completeInvocationInput"]) if obj.get("completeInvocationInput") is not None else None
         })
         return _obj
 

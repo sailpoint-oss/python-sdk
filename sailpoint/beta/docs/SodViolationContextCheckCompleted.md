@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of SodViolationContextCheckCompleted from a JSON string
 sod_violation_context_check_completed_instance = SodViolationContextCheckCompleted.from_json(json)
 # print the JSON string representation of the object
-print SodViolationContextCheckCompleted.to_json()
+print(SodViolationContextCheckCompleted.to_json())
 
 # convert the object into a dict
 sod_violation_context_check_completed_dict = sod_violation_context_check_completed_instance.to_dict()
 # create an instance of SodViolationContextCheckCompleted from a dict
-sod_violation_context_check_completed_form_dict = sod_violation_context_check_completed.from_dict(sod_violation_context_check_completed_dict)
+sod_violation_context_check_completed_from_dict = SodViolationContextCheckCompleted.from_dict(sod_violation_context_check_completed_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

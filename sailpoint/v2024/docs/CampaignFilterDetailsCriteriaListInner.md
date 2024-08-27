@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of CampaignFilterDetailsCriteriaListInner from a JSON string
 campaign_filter_details_criteria_list_inner_instance = CampaignFilterDetailsCriteriaListInner.from_json(json)
 # print the JSON string representation of the object
-print CampaignFilterDetailsCriteriaListInner.to_json()
+print(CampaignFilterDetailsCriteriaListInner.to_json())
 
 # convert the object into a dict
 campaign_filter_details_criteria_list_inner_dict = campaign_filter_details_criteria_list_inner_instance.to_dict()
 # create an instance of CampaignFilterDetailsCriteriaListInner from a dict
-campaign_filter_details_criteria_list_inner_form_dict = campaign_filter_details_criteria_list_inner.from_dict(campaign_filter_details_criteria_list_inner_dict)
+campaign_filter_details_criteria_list_inner_from_dict = CampaignFilterDetailsCriteriaListInner.from_dict(campaign_filter_details_criteria_list_inner_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

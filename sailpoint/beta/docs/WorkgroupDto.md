@@ -24,12 +24,12 @@ json = "{}"
 # create an instance of WorkgroupDto from a JSON string
 workgroup_dto_instance = WorkgroupDto.from_json(json)
 # print the JSON string representation of the object
-print WorkgroupDto.to_json()
+print(WorkgroupDto.to_json())
 
 # convert the object into a dict
 workgroup_dto_dict = workgroup_dto_instance.to_dict()
 # create an instance of WorkgroupDto from a dict
-workgroup_dto_form_dict = workgroup_dto.from_dict(workgroup_dto_dict)
+workgroup_dto_from_dict = WorkgroupDto.from_dict(workgroup_dto_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

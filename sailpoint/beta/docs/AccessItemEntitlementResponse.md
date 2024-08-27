@@ -28,12 +28,12 @@ json = "{}"
 # create an instance of AccessItemEntitlementResponse from a JSON string
 access_item_entitlement_response_instance = AccessItemEntitlementResponse.from_json(json)
 # print the JSON string representation of the object
-print AccessItemEntitlementResponse.to_json()
+print(AccessItemEntitlementResponse.to_json())
 
 # convert the object into a dict
 access_item_entitlement_response_dict = access_item_entitlement_response_instance.to_dict()
 # create an instance of AccessItemEntitlementResponse from a dict
-access_item_entitlement_response_form_dict = access_item_entitlement_response.from_dict(access_item_entitlement_response_dict)
+access_item_entitlement_response_from_dict = AccessItemEntitlementResponse.from_dict(access_item_entitlement_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

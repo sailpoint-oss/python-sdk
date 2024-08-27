@@ -17,15 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr, field_validator
-from pydantic import Field
 from sailpoint.v2024.models.reviewer import Reviewer
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class CertificationReference(BaseModel):
     """
@@ -43,15 +39,15 @@ class CertificationReference(BaseModel):
         if value is None:
             return value
 
-        if value not in ('CERTIFICATION'):
+        if value not in set(['CERTIFICATION']):
             raise ValueError("must be one of enum values ('CERTIFICATION')")
         return value
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -64,7 +60,7 @@ class CertificationReference(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of CertificationReference from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -78,10 +74,12 @@ class CertificationReference(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of reviewer
@@ -90,7 +88,7 @@ class CertificationReference(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of CertificationReference from a dict"""
         if obj is None:
             return None
@@ -102,7 +100,7 @@ class CertificationReference(BaseModel):
             "id": obj.get("id"),
             "name": obj.get("name"),
             "type": obj.get("type"),
-            "reviewer": Reviewer.from_dict(obj.get("reviewer")) if obj.get("reviewer") is not None else None
+            "reviewer": Reviewer.from_dict(obj["reviewer"]) if obj.get("reviewer") is not None else None
         })
         return _obj
 

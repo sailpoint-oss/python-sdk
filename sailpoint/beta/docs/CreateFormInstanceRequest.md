@@ -24,12 +24,12 @@ json = "{}"
 # create an instance of CreateFormInstanceRequest from a JSON string
 create_form_instance_request_instance = CreateFormInstanceRequest.from_json(json)
 # print the JSON string representation of the object
-print CreateFormInstanceRequest.to_json()
+print(CreateFormInstanceRequest.to_json())
 
 # convert the object into a dict
 create_form_instance_request_dict = create_form_instance_request_instance.to_dict()
 # create an instance of CreateFormInstanceRequest from a dict
-create_form_instance_request_form_dict = create_form_instance_request.from_dict(create_form_instance_request_dict)
+create_form_instance_request_from_dict = CreateFormInstanceRequest.from_dict(create_form_instance_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

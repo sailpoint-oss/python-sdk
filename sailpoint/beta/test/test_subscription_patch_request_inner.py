@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.subscription_patch_request_inner import SubscriptionPatchRequestInner
 
@@ -28,7 +27,7 @@ class TestSubscriptionPatchRequestInner(unittest.TestCase):
 
     def make_instance(self, include_optional) -> SubscriptionPatchRequestInner:
         """Test SubscriptionPatchRequestInner
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `SubscriptionPatchRequestInner`

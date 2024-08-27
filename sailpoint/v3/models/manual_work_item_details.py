@@ -18,17 +18,14 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool
-from pydantic import Field
 from sailpoint.v3.models.approval_forward_history import ApprovalForwardHistory
 from sailpoint.v3.models.manual_work_item_details_current_owner import ManualWorkItemDetailsCurrentOwner
 from sailpoint.v3.models.manual_work_item_details_original_owner import ManualWorkItemDetailsOriginalOwner
 from sailpoint.v3.models.manual_work_item_state import ManualWorkItemState
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class ManualWorkItemDetails(BaseModel):
     """
@@ -42,11 +39,11 @@ class ManualWorkItemDetails(BaseModel):
     forward_history: Optional[List[ApprovalForwardHistory]] = Field(default=None, description="The history of approval forward action.", alias="forwardHistory")
     __properties: ClassVar[List[str]] = ["forwarded", "originalOwner", "currentOwner", "modified", "status", "forwardHistory"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -59,7 +56,7 @@ class ManualWorkItemDetails(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of ManualWorkItemDetails from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -73,10 +70,12 @@ class ManualWorkItemDetails(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of original_owner
@@ -88,9 +87,9 @@ class ManualWorkItemDetails(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in forward_history (list)
         _items = []
         if self.forward_history:
-            for _item in self.forward_history:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_forward_history in self.forward_history:
+                if _item_forward_history:
+                    _items.append(_item_forward_history.to_dict())
             _dict['forwardHistory'] = _items
         # set to None if original_owner (nullable) is None
         # and model_fields_set contains the field
@@ -110,7 +109,7 @@ class ManualWorkItemDetails(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of ManualWorkItemDetails from a dict"""
         if obj is None:
             return None
@@ -120,11 +119,11 @@ class ManualWorkItemDetails(BaseModel):
 
         _obj = cls.model_validate({
             "forwarded": obj.get("forwarded") if obj.get("forwarded") is not None else False,
-            "originalOwner": ManualWorkItemDetailsOriginalOwner.from_dict(obj.get("originalOwner")) if obj.get("originalOwner") is not None else None,
-            "currentOwner": ManualWorkItemDetailsCurrentOwner.from_dict(obj.get("currentOwner")) if obj.get("currentOwner") is not None else None,
+            "originalOwner": ManualWorkItemDetailsOriginalOwner.from_dict(obj["originalOwner"]) if obj.get("originalOwner") is not None else None,
+            "currentOwner": ManualWorkItemDetailsCurrentOwner.from_dict(obj["currentOwner"]) if obj.get("currentOwner") is not None else None,
             "modified": obj.get("modified"),
             "status": obj.get("status"),
-            "forwardHistory": [ApprovalForwardHistory.from_dict(_item) for _item in obj.get("forwardHistory")] if obj.get("forwardHistory") is not None else None
+            "forwardHistory": [ApprovalForwardHistory.from_dict(_item) for _item in obj["forwardHistory"]] if obj.get("forwardHistory") is not None else None
         })
         return _obj
 

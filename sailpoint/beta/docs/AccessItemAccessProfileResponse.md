@@ -28,12 +28,12 @@ json = "{}"
 # create an instance of AccessItemAccessProfileResponse from a JSON string
 access_item_access_profile_response_instance = AccessItemAccessProfileResponse.from_json(json)
 # print the JSON string representation of the object
-print AccessItemAccessProfileResponse.to_json()
+print(AccessItemAccessProfileResponse.to_json())
 
 # convert the object into a dict
 access_item_access_profile_response_dict = access_item_access_profile_response_instance.to_dict()
 # create an instance of AccessItemAccessProfileResponse from a dict
-access_item_access_profile_response_form_dict = access_item_access_profile_response.from_dict(access_item_access_profile_response_dict)
+access_item_access_profile_response_from_dict = AccessItemAccessProfileResponse.from_dict(access_item_access_profile_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

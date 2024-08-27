@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of NonEmployeeSourceLite from a JSON string
 non_employee_source_lite_instance = NonEmployeeSourceLite.from_json(json)
 # print the JSON string representation of the object
-print NonEmployeeSourceLite.to_json()
+print(NonEmployeeSourceLite.to_json())
 
 # convert the object into a dict
 non_employee_source_lite_dict = non_employee_source_lite_instance.to_dict()
 # create an instance of NonEmployeeSourceLite from a dict
-non_employee_source_lite_form_dict = non_employee_source_lite.from_dict(non_employee_source_lite_dict)
+non_employee_source_lite_from_dict = NonEmployeeSourceLite.from_dict(non_employee_source_lite_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

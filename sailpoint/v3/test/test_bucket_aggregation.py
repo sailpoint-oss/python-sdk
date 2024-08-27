@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v3.models.bucket_aggregation import BucketAggregation
 
@@ -28,7 +27,7 @@ class TestBucketAggregation(unittest.TestCase):
 
     def make_instance(self, include_optional) -> BucketAggregation:
         """Test BucketAggregation
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `BucketAggregation`
@@ -38,14 +37,14 @@ class TestBucketAggregation(unittest.TestCase):
             return BucketAggregation(
                 name = 'Identity Locations',
                 type = 'TERMS',
-                field = 'attributes.city',
+                var_field = 'attributes.city',
                 size = 100,
                 min_doc_count = 2
             )
         else:
             return BucketAggregation(
                 name = 'Identity Locations',
-                field = 'attributes.city',
+                var_field = 'attributes.city',
         )
         """
 

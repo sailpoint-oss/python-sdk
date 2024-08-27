@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.entitlement_manually_updated_fields import EntitlementManuallyUpdatedFields
 
@@ -28,7 +27,7 @@ class TestEntitlementManuallyUpdatedFields(unittest.TestCase):
 
     def make_instance(self, include_optional) -> EntitlementManuallyUpdatedFields:
         """Test EntitlementManuallyUpdatedFields
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `EntitlementManuallyUpdatedFields`

@@ -21,8 +21,6 @@ Returns the publicly visible attributes of an identity available to request appr
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.public_identity_config import PublicIdentityConfig
 from sailpoint.v3.rest import ApiException
@@ -102,8 +100,6 @@ Updates the publicly visible attributes of an identity available to request appr
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.public_identity_config import PublicIdentityConfig
 from sailpoint.v3.rest import ApiException

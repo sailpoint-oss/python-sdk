@@ -29,8 +29,6 @@ Completes an invocation to a REQUEST_RESPONSE type trigger.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.complete_invocation import CompleteInvocation
 from sailpoint.beta.rest import ApiException
@@ -114,8 +112,6 @@ This API creates a new subscription to a trigger and defines trigger invocation 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.subscription import Subscription
 from sailpoint.beta.models.subscription_post_request import SubscriptionPostRequest
@@ -200,8 +196,6 @@ Deletes an existing subscription to a trigger.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
@@ -283,8 +277,6 @@ Gets a list of all trigger subscriptions.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.subscription import Subscription
 from sailpoint.beta.rest import ApiException
@@ -376,8 +368,6 @@ Gets a list of latest invocation statuses. Statuses of successful invocations ar
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.invocation_status import InvocationStatus
 from sailpoint.beta.rest import ApiException
@@ -469,8 +459,6 @@ Gets a list of triggers that are available in the tenant.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.trigger import Trigger
 from sailpoint.beta.rest import ApiException
@@ -562,8 +550,6 @@ This API updates a trigger subscription in IdentityNow, using a set of instructi
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.subscription import Subscription
 from sailpoint.beta.models.subscription_patch_request_inner import SubscriptionPatchRequestInner
@@ -651,8 +637,6 @@ Initiate a test event for all subscribers of the specified event trigger.  If th
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.invocation import Invocation
 from sailpoint.beta.models.test_invocation import TestInvocation
@@ -738,8 +722,6 @@ Validates a JSONPath filter expression against a provided mock input. Request re
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.validate_filter_input_dto import ValidateFilterInputDto
 from sailpoint.beta.models.validate_filter_output_dto import ValidateFilterOutputDto
@@ -824,8 +806,6 @@ This API updates a trigger subscription in IdentityNow, using a full object repr
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.subscription import Subscription
 from sailpoint.beta.models.subscription_put_request import SubscriptionPutRequest

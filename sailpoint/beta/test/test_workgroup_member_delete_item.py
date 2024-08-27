@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.workgroup_member_delete_item import WorkgroupMemberDeleteItem
 
@@ -28,7 +27,7 @@ class TestWorkgroupMemberDeleteItem(unittest.TestCase):
 
     def make_instance(self, include_optional) -> WorkgroupMemberDeleteItem:
         """Test WorkgroupMemberDeleteItem
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `WorkgroupMemberDeleteItem`

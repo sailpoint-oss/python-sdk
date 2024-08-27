@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of CompleteInvocation from a JSON string
 complete_invocation_instance = CompleteInvocation.from_json(json)
 # print the JSON string representation of the object
-print CompleteInvocation.to_json()
+print(CompleteInvocation.to_json())
 
 # convert the object into a dict
 complete_invocation_dict = complete_invocation_instance.to_dict()
 # create an instance of CompleteInvocation from a dict
-complete_invocation_form_dict = complete_invocation.from_dict(complete_invocation_dict)
+complete_invocation_from_dict = CompleteInvocation.from_dict(complete_invocation_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

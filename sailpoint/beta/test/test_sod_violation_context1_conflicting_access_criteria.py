@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.sod_violation_context1_conflicting_access_criteria import SodViolationContext1ConflictingAccessCriteria
 
@@ -28,7 +27,7 @@ class TestSodViolationContext1ConflictingAccessCriteria(unittest.TestCase):
 
     def make_instance(self, include_optional) -> SodViolationContext1ConflictingAccessCriteria:
         """Test SodViolationContext1ConflictingAccessCriteria
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `SodViolationContext1ConflictingAccessCriteria`

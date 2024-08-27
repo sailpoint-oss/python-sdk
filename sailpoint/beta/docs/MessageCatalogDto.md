@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of MessageCatalogDto from a JSON string
 message_catalog_dto_instance = MessageCatalogDto.from_json(json)
 # print the JSON string representation of the object
-print MessageCatalogDto.to_json()
+print(MessageCatalogDto.to_json())
 
 # convert the object into a dict
 message_catalog_dto_dict = message_catalog_dto_instance.to_dict()
 # create an instance of MessageCatalogDto from a dict
-message_catalog_dto_form_dict = message_catalog_dto.from_dict(message_catalog_dto_dict)
+message_catalog_dto_from_dict = MessageCatalogDto.from_dict(message_catalog_dto_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

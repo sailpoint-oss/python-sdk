@@ -17,18 +17,14 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
+from sailpoint.v2024.models.before_provisioning_rule_dto import BeforeProvisioningRuleDto
+from sailpoint.v2024.models.owner_dto import OwnerDto
 from sailpoint.v2024.models.provisioning_config1 import ProvisioningConfig1
-from sailpoint.v2024.models.service_desk_integration_dto1_all_of_before_provisioning_rule import ServiceDeskIntegrationDto1AllOfBeforeProvisioningRule
-from sailpoint.v2024.models.service_desk_integration_dto1_all_of_cluster_ref import ServiceDeskIntegrationDto1AllOfClusterRef
-from sailpoint.v2024.models.service_desk_integration_dto1_all_of_owner_ref import ServiceDeskIntegrationDto1AllOfOwnerRef
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from sailpoint.v2024.models.source_cluster_dto import SourceClusterDto
+from typing import Optional, Set
+from typing_extensions import Self
 
 class ServiceDeskIntegrationDto1(BaseModel):
     """
@@ -37,20 +33,20 @@ class ServiceDeskIntegrationDto1(BaseModel):
     name: StrictStr = Field(description="Service Desk integration's name. The name must be unique.")
     description: StrictStr = Field(description="Service Desk integration's description.")
     type: StrictStr = Field(description="Service Desk integration types:  - ServiceNowSDIM - ServiceNow ")
-    owner_ref: Optional[ServiceDeskIntegrationDto1AllOfOwnerRef] = Field(default=None, alias="ownerRef")
-    cluster_ref: Optional[ServiceDeskIntegrationDto1AllOfClusterRef] = Field(default=None, alias="clusterRef")
+    owner_ref: Optional[OwnerDto] = Field(default=None, alias="ownerRef")
+    cluster_ref: Optional[SourceClusterDto] = Field(default=None, alias="clusterRef")
     cluster: Optional[StrictStr] = Field(default=None, description="Cluster ID for the Service Desk integration (replaced by clusterRef, retained for backward compatibility).")
     managed_sources: Optional[List[StrictStr]] = Field(default=None, description="Source IDs for the Service Desk integration (replaced by provisioningConfig.managedSResourceRefs, but retained here for backward compatibility).", alias="managedSources")
     provisioning_config: Optional[ProvisioningConfig1] = Field(default=None, alias="provisioningConfig")
     attributes: Dict[str, Any] = Field(description="Service Desk integration's attributes. Validation constraints enforced by the implementation.")
-    before_provisioning_rule: Optional[ServiceDeskIntegrationDto1AllOfBeforeProvisioningRule] = Field(default=None, alias="beforeProvisioningRule")
+    before_provisioning_rule: Optional[BeforeProvisioningRuleDto] = Field(default=None, alias="beforeProvisioningRule")
     __properties: ClassVar[List[str]] = ["name", "description", "type", "ownerRef", "clusterRef", "cluster", "managedSources", "provisioningConfig", "attributes", "beforeProvisioningRule"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -63,7 +59,7 @@ class ServiceDeskIntegrationDto1(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of ServiceDeskIntegrationDto1 from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -77,10 +73,12 @@ class ServiceDeskIntegrationDto1(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of owner_ref
@@ -98,7 +96,7 @@ class ServiceDeskIntegrationDto1(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of ServiceDeskIntegrationDto1 from a dict"""
         if obj is None:
             return None
@@ -110,13 +108,13 @@ class ServiceDeskIntegrationDto1(BaseModel):
             "name": obj.get("name"),
             "description": obj.get("description"),
             "type": obj.get("type") if obj.get("type") is not None else 'ServiceNowSDIM',
-            "ownerRef": ServiceDeskIntegrationDto1AllOfOwnerRef.from_dict(obj.get("ownerRef")) if obj.get("ownerRef") is not None else None,
-            "clusterRef": ServiceDeskIntegrationDto1AllOfClusterRef.from_dict(obj.get("clusterRef")) if obj.get("clusterRef") is not None else None,
+            "ownerRef": OwnerDto.from_dict(obj["ownerRef"]) if obj.get("ownerRef") is not None else None,
+            "clusterRef": SourceClusterDto.from_dict(obj["clusterRef"]) if obj.get("clusterRef") is not None else None,
             "cluster": obj.get("cluster"),
             "managedSources": obj.get("managedSources"),
-            "provisioningConfig": ProvisioningConfig1.from_dict(obj.get("provisioningConfig")) if obj.get("provisioningConfig") is not None else None,
+            "provisioningConfig": ProvisioningConfig1.from_dict(obj["provisioningConfig"]) if obj.get("provisioningConfig") is not None else None,
             "attributes": obj.get("attributes"),
-            "beforeProvisioningRule": ServiceDeskIntegrationDto1AllOfBeforeProvisioningRule.from_dict(obj.get("beforeProvisioningRule")) if obj.get("beforeProvisioningRule") is not None else None
+            "beforeProvisioningRule": BeforeProvisioningRuleDto.from_dict(obj["beforeProvisioningRule"]) if obj.get("beforeProvisioningRule") is not None else None
         })
         return _obj
 

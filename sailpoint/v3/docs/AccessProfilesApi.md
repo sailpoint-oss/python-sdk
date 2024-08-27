@@ -26,8 +26,6 @@ Use this API to create an access profile. A token with API, ORG_ADMIN, ROLE_ADMI
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.access_profile import AccessProfile
 from sailpoint.v3.rest import ApiException
@@ -111,8 +109,6 @@ This API deletes an existing Access Profile.  The Access Profile must not be in 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.rest import ApiException
 from pprint import pprint
@@ -193,8 +189,6 @@ This endpoint initiates a bulk deletion of one or more access profiles. When the
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.access_profile_bulk_delete_request import AccessProfileBulkDeleteRequest
 from sailpoint.v3.models.access_profile_bulk_delete_response import AccessProfileBulkDeleteResponse
@@ -280,8 +274,6 @@ This API returns an Access Profile by its ID.  A token with API, ORG_ADMIN, ROLE
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.access_profile import AccessProfile
 from sailpoint.v3.rest import ApiException
@@ -365,8 +357,6 @@ Use this API to get a list of an access profile's entitlements.  A token with AP
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.entitlement import Entitlement
 from sailpoint.v3.rest import ApiException
@@ -460,8 +450,6 @@ Use this API to get a list of access profiles. A token with API, ORG_ADMIN, ROLE
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.access_profile import AccessProfile
 from sailpoint.v3.rest import ApiException
@@ -559,8 +547,6 @@ This API updates an existing Access Profile. The following fields are patchable:
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.access_profile import AccessProfile
 from sailpoint.v3.models.json_patch_operation import JsonPatchOperation

@@ -43,8 +43,6 @@ This method starts a job to provision a potential role
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.role_mining_potential_role_provision_request import RoleMiningPotentialRoleProvisionRequest
 from sailpoint.beta.models.role_mining_potential_role_summary import RoleMiningPotentialRoleSummary
@@ -137,8 +135,6 @@ This submits a create role mining session request to the role mining application
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.role_mining_session_dto import RoleMiningSessionDto
 from sailpoint.beta.models.role_mining_session_response import RoleMiningSessionResponse
@@ -223,8 +219,6 @@ This endpoint downloads a completed export of information for a potential role i
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
@@ -310,8 +304,6 @@ This endpoint downloads all the information for a potential role in a role minin
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
@@ -395,8 +387,6 @@ This endpoint uploads all the information for a potential role in a role mining 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.role_mining_potential_role_export_request import RoleMiningPotentialRoleExportRequest
 from sailpoint.beta.models.role_mining_potential_role_export_response import RoleMiningPotentialRoleExportResponse
@@ -484,8 +474,6 @@ This endpoint retrieves information about the current status of a potential role
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.role_mining_potential_role_export_response import RoleMiningPotentialRoleExportResponse
 from sailpoint.beta.rest import ApiException
@@ -572,8 +560,6 @@ Returns all potential role summaries that match the query parameters
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.role_mining_potential_role_summary import RoleMiningPotentialRoleSummary
 from sailpoint.beta.rest import ApiException
@@ -665,8 +651,6 @@ This method returns entitlement popularity distribution for a potential role in 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
@@ -752,8 +736,6 @@ This method returns entitlements for a potential role in a role mining session.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.role_mining_entitlement import RoleMiningEntitlement
 from sailpoint.beta.rest import ApiException
@@ -851,8 +833,6 @@ This method returns excluded entitlements for a potential role in a role mining 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.role_mining_entitlement import RoleMiningEntitlement
 from sailpoint.beta.rest import ApiException
@@ -947,8 +927,6 @@ This method returns identities for a potential role in a role mining session.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.role_mining_identity import RoleMiningIdentity
 from sailpoint.beta.rest import ApiException
@@ -1043,8 +1021,6 @@ This method returns a specific potential role for a role mining session.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.role_mining_potential_role import RoleMiningPotentialRole
 from sailpoint.beta.rest import ApiException
@@ -1130,8 +1106,6 @@ This method returns the applications of a potential role for a role mining sessi
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.role_mining_potential_role_application import RoleMiningPotentialRoleApplication
 from sailpoint.beta.rest import ApiException
@@ -1222,8 +1196,6 @@ This method returns source usageCount (as number of days in the last 90 days) fo
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.role_mining_potential_role_source_usage import RoleMiningPotentialRoleSourceUsage
 from sailpoint.beta.rest import ApiException
@@ -1317,8 +1289,6 @@ This method returns the potential role summaries for a role mining session.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.role_mining_potential_role_summary import RoleMiningPotentialRoleSummary
 from sailpoint.beta.rest import ApiException
@@ -1412,8 +1382,6 @@ This method returns a specific potential role.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.role_mining_potential_role import RoleMiningPotentialRole
 from sailpoint.beta.rest import ApiException
@@ -1497,8 +1465,6 @@ The method retrieves a role mining session.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.role_mining_session_response import RoleMiningSessionResponse
 from sailpoint.beta.rest import ApiException
@@ -1583,8 +1549,6 @@ This method returns a role mining session status for a customer.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.role_mining_session_status import RoleMiningSessionStatus
 from sailpoint.beta.rest import ApiException
@@ -1667,8 +1631,6 @@ Returns all role mining sessions that match the query parameters
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.role_mining_session_response import RoleMiningSessionResponse
 from sailpoint.beta.rest import ApiException
@@ -1760,8 +1722,6 @@ This method returns all saved potential roles (draft roles).
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.role_mining_session_draft_role_dto import RoleMiningSessionDraftRoleDto
 from sailpoint.beta.rest import ApiException
@@ -1851,8 +1811,6 @@ This method updates an existing potential role using the role mining session id 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.patch_potential_role_request_inner import PatchPotentialRoleRequestInner
 from sailpoint.beta.rest import ApiException
@@ -1941,8 +1899,6 @@ This method updates an existing potential role.  The following fields can be mod
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.patch_potential_role_request_inner import PatchPotentialRoleRequestInner
 from sailpoint.beta.rest import ApiException
@@ -2029,8 +1985,6 @@ The  method updates an existing role mining session using PATCH. Supports op in 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
 from sailpoint.beta.rest import ApiException
@@ -2117,8 +2071,6 @@ This endpoint adds or removes entitlements from an exclusion list for a potentia
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.role_mining_potential_role import RoleMiningPotentialRole
 from sailpoint.beta.models.role_mining_potential_role_edit_entitlements import RoleMiningPotentialRoleEditEntitlements

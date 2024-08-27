@@ -22,8 +22,6 @@ This API returns the status of a password change request. A token with identity 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.password_status import PasswordStatus
 from sailpoint.v3.rest import ApiException
@@ -108,8 +106,6 @@ This API is used to query password related information.   A token with [API auth
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.password_info import PasswordInfo
 from sailpoint.v3.models.password_info_query_dto import PasswordInfoQueryDTO
@@ -194,8 +190,6 @@ This API is used to set a password for an identity.   An identity can change the
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.password_change_request import PasswordChangeRequest
 from sailpoint.v3.models.password_change_response import PasswordChangeResponse

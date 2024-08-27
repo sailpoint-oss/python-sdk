@@ -18,14 +18,11 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr, field_validator
-from pydantic import Field
 from sailpoint.v2024.models.attribute_definition import AttributeDefinition
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class ModelSchema(BaseModel):
     """
@@ -52,15 +49,15 @@ class ModelSchema(BaseModel):
             return value
 
         for i in value:
-            if i not in ('AUTHENTICATE', 'COMPOSITE', 'DIRECT_PERMISSIONS', 'DISCOVER_SCHEMA', 'ENABLE', 'MANAGER_LOOKUP', 'NO_RANDOM_ACCESS', 'PROXY', 'SEARCH', 'TEMPLATE', 'UNLOCK', 'UNSTRUCTURED_TARGETS', 'SHAREPOINT_TARGET', 'PROVISIONING', 'GROUP_PROVISIONING', 'SYNC_PROVISIONING', 'PASSWORD', 'CURRENT_PASSWORD', 'ACCOUNT_ONLY_REQUEST', 'ADDITIONAL_ACCOUNT_REQUEST', 'NO_AGGREGATION', 'GROUPS_HAVE_MEMBERS', 'NO_PERMISSIONS_PROVISIONING', 'NO_GROUP_PERMISSIONS_PROVISIONING', 'NO_UNSTRUCTURED_TARGETS_PROVISIONING', 'NO_DIRECT_PERMISSIONS_PROVISIONING', 'PREFER_UUID', 'ARM_SECURITY_EXTRACT', 'ARM_UTILIZATION_EXTRACT', 'ARM_CHANGELOG_EXTRACT', 'USES_UUID'):
+            if i not in set(['AUTHENTICATE', 'COMPOSITE', 'DIRECT_PERMISSIONS', 'DISCOVER_SCHEMA', 'ENABLE', 'MANAGER_LOOKUP', 'NO_RANDOM_ACCESS', 'PROXY', 'SEARCH', 'TEMPLATE', 'UNLOCK', 'UNSTRUCTURED_TARGETS', 'SHAREPOINT_TARGET', 'PROVISIONING', 'GROUP_PROVISIONING', 'SYNC_PROVISIONING', 'PASSWORD', 'CURRENT_PASSWORD', 'ACCOUNT_ONLY_REQUEST', 'ADDITIONAL_ACCOUNT_REQUEST', 'NO_AGGREGATION', 'GROUPS_HAVE_MEMBERS', 'NO_PERMISSIONS_PROVISIONING', 'NO_GROUP_PERMISSIONS_PROVISIONING', 'NO_UNSTRUCTURED_TARGETS_PROVISIONING', 'NO_DIRECT_PERMISSIONS_PROVISIONING', 'PREFER_UUID', 'ARM_SECURITY_EXTRACT', 'ARM_UTILIZATION_EXTRACT', 'ARM_CHANGELOG_EXTRACT', 'USES_UUID']):
                 raise ValueError("each list item must be one of ('AUTHENTICATE', 'COMPOSITE', 'DIRECT_PERMISSIONS', 'DISCOVER_SCHEMA', 'ENABLE', 'MANAGER_LOOKUP', 'NO_RANDOM_ACCESS', 'PROXY', 'SEARCH', 'TEMPLATE', 'UNLOCK', 'UNSTRUCTURED_TARGETS', 'SHAREPOINT_TARGET', 'PROVISIONING', 'GROUP_PROVISIONING', 'SYNC_PROVISIONING', 'PASSWORD', 'CURRENT_PASSWORD', 'ACCOUNT_ONLY_REQUEST', 'ADDITIONAL_ACCOUNT_REQUEST', 'NO_AGGREGATION', 'GROUPS_HAVE_MEMBERS', 'NO_PERMISSIONS_PROVISIONING', 'NO_GROUP_PERMISSIONS_PROVISIONING', 'NO_UNSTRUCTURED_TARGETS_PROVISIONING', 'NO_DIRECT_PERMISSIONS_PROVISIONING', 'PREFER_UUID', 'ARM_SECURITY_EXTRACT', 'ARM_UTILIZATION_EXTRACT', 'ARM_CHANGELOG_EXTRACT', 'USES_UUID')")
         return value
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -73,7 +70,7 @@ class ModelSchema(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of ModelSchema from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -87,23 +84,25 @@ class ModelSchema(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in attributes (list)
         _items = []
         if self.attributes:
-            for _item in self.attributes:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_attributes in self.attributes:
+                if _item_attributes:
+                    _items.append(_item_attributes.to_dict())
             _dict['attributes'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of ModelSchema from a dict"""
         if obj is None:
             return None
@@ -121,7 +120,7 @@ class ModelSchema(BaseModel):
             "includePermissions": obj.get("includePermissions"),
             "features": obj.get("features"),
             "configuration": obj.get("configuration"),
-            "attributes": [AttributeDefinition.from_dict(_item) for _item in obj.get("attributes")] if obj.get("attributes") is not None else None,
+            "attributes": [AttributeDefinition.from_dict(_item) for _item in obj["attributes"]] if obj.get("attributes") is not None else None,
             "created": obj.get("created"),
             "modified": obj.get("modified")
         })

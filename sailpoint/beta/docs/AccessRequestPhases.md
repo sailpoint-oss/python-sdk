@@ -23,12 +23,12 @@ json = "{}"
 # create an instance of AccessRequestPhases from a JSON string
 access_request_phases_instance = AccessRequestPhases.from_json(json)
 # print the JSON string representation of the object
-print AccessRequestPhases.to_json()
+print(AccessRequestPhases.to_json())
 
 # convert the object into a dict
 access_request_phases_dict = access_request_phases_instance.to_dict()
 # create an instance of AccessRequestPhases from a dict
-access_request_phases_form_dict = access_request_phases.from_dict(access_request_phases_dict)
+access_request_phases_from_dict = AccessRequestPhases.from_dict(access_request_phases_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

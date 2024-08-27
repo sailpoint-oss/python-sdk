@@ -18,14 +18,11 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
-from pydantic import Field
 from sailpoint.v2024.models.non_employee_schema_attribute_type import NonEmployeeSchemaAttributeType
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class NonEmployeeSchemaAttribute(BaseModel):
     """
@@ -43,11 +40,11 @@ class NonEmployeeSchemaAttribute(BaseModel):
     required: Optional[StrictBool] = Field(default=None, description="If true, the schema attribute is required for all non-employees in the source")
     __properties: ClassVar[List[str]] = ["id", "system", "modified", "created", "type", "label", "technicalName", "helpText", "placeholder", "required"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -60,7 +57,7 @@ class NonEmployeeSchemaAttribute(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of NonEmployeeSchemaAttribute from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -74,16 +71,18 @@ class NonEmployeeSchemaAttribute(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of NonEmployeeSchemaAttribute from a dict"""
         if obj is None:
             return None

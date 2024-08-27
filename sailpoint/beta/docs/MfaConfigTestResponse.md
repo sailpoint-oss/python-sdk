@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of MfaConfigTestResponse from a JSON string
 mfa_config_test_response_instance = MfaConfigTestResponse.from_json(json)
 # print the JSON string representation of the object
-print MfaConfigTestResponse.to_json()
+print(MfaConfigTestResponse.to_json())
 
 # convert the object into a dict
 mfa_config_test_response_dict = mfa_config_test_response_instance.to_dict()
 # create an instance of MfaConfigTestResponse from a dict
-mfa_config_test_response_form_dict = mfa_config_test_response.from_dict(mfa_config_test_response_dict)
+mfa_config_test_response_from_dict = MfaConfigTestResponse.from_dict(mfa_config_test_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

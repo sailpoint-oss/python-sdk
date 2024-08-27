@@ -18,15 +18,12 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
-from pydantic import Field
 from sailpoint.v2024.models.identity_reference_with_name_and_email import IdentityReferenceWithNameAndEmail
 from sailpoint.v2024.models.reviewable_entitlement import ReviewableEntitlement
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class ReviewableAccessProfile(BaseModel):
     """
@@ -39,16 +36,16 @@ class ReviewableAccessProfile(BaseModel):
     cloud_governed: Optional[StrictBool] = Field(default=None, description="True if the entitlement is cloud governed", alias="cloudGoverned")
     end_date: Optional[datetime] = Field(default=None, description="The date at which a user's access expires", alias="endDate")
     owner: Optional[IdentityReferenceWithNameAndEmail] = None
-    entitlements: Optional[List[ReviewableEntitlement]] = Field(default=None, description="A list of entitlements associated with this Access Profile")
+    entitlements: Optional[List[Optional[ReviewableEntitlement]]] = Field(default=None, description="A list of entitlements associated with this Access Profile")
     created: Optional[datetime] = Field(default=None, description="Date the Access Profile was created.")
     modified: Optional[datetime] = Field(default=None, description="Date the Access Profile was last modified.")
     __properties: ClassVar[List[str]] = ["id", "name", "description", "privileged", "cloudGoverned", "endDate", "owner", "entitlements", "created", "modified"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -61,7 +58,7 @@ class ReviewableAccessProfile(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of ReviewableAccessProfile from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -75,10 +72,12 @@ class ReviewableAccessProfile(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of owner
@@ -87,9 +86,9 @@ class ReviewableAccessProfile(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in entitlements (list)
         _items = []
         if self.entitlements:
-            for _item in self.entitlements:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_entitlements in self.entitlements:
+                if _item_entitlements:
+                    _items.append(_item_entitlements.to_dict())
             _dict['entitlements'] = _items
         # set to None if end_date (nullable) is None
         # and model_fields_set contains the field
@@ -104,7 +103,7 @@ class ReviewableAccessProfile(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of ReviewableAccessProfile from a dict"""
         if obj is None:
             return None
@@ -119,8 +118,8 @@ class ReviewableAccessProfile(BaseModel):
             "privileged": obj.get("privileged"),
             "cloudGoverned": obj.get("cloudGoverned"),
             "endDate": obj.get("endDate"),
-            "owner": IdentityReferenceWithNameAndEmail.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
-            "entitlements": [ReviewableEntitlement.from_dict(_item) for _item in obj.get("entitlements")] if obj.get("entitlements") is not None else None,
+            "owner": IdentityReferenceWithNameAndEmail.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
+            "entitlements": [ReviewableEntitlement.from_dict(_item) for _item in obj["entitlements"]] if obj.get("entitlements") is not None else None,
             "created": obj.get("created"),
             "modified": obj.get("modified")
         })

@@ -35,12 +35,12 @@ json = "{}"
 # create an instance of CreateOAuthClientResponse from a JSON string
 create_o_auth_client_response_instance = CreateOAuthClientResponse.from_json(json)
 # print the JSON string representation of the object
-print CreateOAuthClientResponse.to_json()
+print(CreateOAuthClientResponse.to_json())
 
 # convert the object into a dict
 create_o_auth_client_response_dict = create_o_auth_client_response_instance.to_dict()
 # create an instance of CreateOAuthClientResponse from a dict
-create_o_auth_client_response_form_dict = create_o_auth_client_response.from_dict(create_o_auth_client_response_dict)
+create_o_auth_client_response_from_dict = CreateOAuthClientResponse.from_dict(create_o_auth_client_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

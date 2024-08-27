@@ -25,8 +25,6 @@ Creates a new scheduled search.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.create_scheduled_search_request import CreateScheduledSearchRequest
 from sailpoint.v2024.models.scheduled_search import ScheduledSearch
@@ -112,8 +110,6 @@ Deletes the specified scheduled search.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
@@ -195,8 +191,6 @@ Returns the specified scheduled search.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.scheduled_search import ScheduledSearch
 from sailpoint.v2024.rest import ApiException
@@ -281,8 +275,6 @@ Returns a list of scheduled searches.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.scheduled_search import ScheduledSearch
 from sailpoint.v2024.rest import ApiException
@@ -373,8 +365,6 @@ Unsubscribes a recipient from the specified scheduled search.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.typed_reference import TypedReference
 from sailpoint.v2024.rest import ApiException
@@ -456,8 +446,6 @@ Updates an existing scheduled search.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.scheduled_search import ScheduledSearch
 from sailpoint.v2024.rest import ApiException

@@ -24,8 +24,6 @@ Use this API to create a campaign filter based on filter details and criteria.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.campaign_filter_details import CampaignFilterDetails
 from sailpoint.v3.rest import ApiException
@@ -109,8 +107,6 @@ Deletes campaign filters whose Ids are specified in the provided list of campaig
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.rest import ApiException
 from pprint import pprint
@@ -192,8 +188,6 @@ Retrieves information for an existing campaign filter using the filter's ID.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.campaign_filter_details import CampaignFilterDetails
 from sailpoint.v3.rest import ApiException
@@ -278,8 +272,6 @@ Use this API to list all campaign filters. You can reduce scope with standard V3
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.list_campaign_filters200_response import ListCampaignFilters200Response
 from sailpoint.v3.rest import ApiException
@@ -367,8 +359,6 @@ Updates an existing campaign filter using the filter's ID.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.campaign_filter_details import CampaignFilterDetails
 from sailpoint.v3.rest import ApiException

@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of SourceUsage from a JSON string
 source_usage_instance = SourceUsage.from_json(json)
 # print the JSON string representation of the object
-print SourceUsage.to_json()
+print(SourceUsage.to_json())
 
 # convert the object into a dict
 source_usage_dict = source_usage_instance.to_dict()
 # create an instance of SourceUsage from a dict
-source_usage_form_dict = source_usage.from_dict(source_usage_dict)
+source_usage_from_dict = SourceUsage.from_dict(source_usage_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

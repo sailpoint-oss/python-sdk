@@ -47,12 +47,12 @@ json = "{}"
 # create an instance of PasswordPolicyV3Dto from a JSON string
 password_policy_v3_dto_instance = PasswordPolicyV3Dto.from_json(json)
 # print the JSON string representation of the object
-print PasswordPolicyV3Dto.to_json()
+print(PasswordPolicyV3Dto.to_json())
 
 # convert the object into a dict
 password_policy_v3_dto_dict = password_policy_v3_dto_instance.to_dict()
 # create an instance of PasswordPolicyV3Dto from a dict
-password_policy_v3_dto_form_dict = password_policy_v3_dto.from_dict(password_policy_v3_dto_dict)
+password_policy_v3_dto_from_dict = PasswordPolicyV3Dto.from_dict(password_policy_v3_dto_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

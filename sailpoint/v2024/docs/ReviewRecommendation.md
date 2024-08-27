@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of ReviewRecommendation from a JSON string
 review_recommendation_instance = ReviewRecommendation.from_json(json)
 # print the JSON string representation of the object
-print ReviewRecommendation.to_json()
+print(ReviewRecommendation.to_json())
 
 # convert the object into a dict
 review_recommendation_dict = review_recommendation_instance.to_dict()
 # create an instance of ReviewRecommendation from a dict
-review_recommendation_form_dict = review_recommendation.from_dict(review_recommendation_dict)
+review_recommendation_from_dict = ReviewRecommendation.from_dict(review_recommendation_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

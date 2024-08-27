@@ -21,12 +21,12 @@ json = "{}"
 # create an instance of CompletedApprovalPreApprovalTriggerResult from a JSON string
 completed_approval_pre_approval_trigger_result_instance = CompletedApprovalPreApprovalTriggerResult.from_json(json)
 # print the JSON string representation of the object
-print CompletedApprovalPreApprovalTriggerResult.to_json()
+print(CompletedApprovalPreApprovalTriggerResult.to_json())
 
 # convert the object into a dict
 completed_approval_pre_approval_trigger_result_dict = completed_approval_pre_approval_trigger_result_instance.to_dict()
 # create an instance of CompletedApprovalPreApprovalTriggerResult from a dict
-completed_approval_pre_approval_trigger_result_form_dict = completed_approval_pre_approval_trigger_result.from_dict(completed_approval_pre_approval_trigger_result_dict)
+completed_approval_pre_approval_trigger_result_from_dict = CompletedApprovalPreApprovalTriggerResult.from_dict(completed_approval_pre_approval_trigger_result_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

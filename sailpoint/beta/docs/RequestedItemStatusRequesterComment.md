@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of RequestedItemStatusRequesterComment from a JSON string
 requested_item_status_requester_comment_instance = RequestedItemStatusRequesterComment.from_json(json)
 # print the JSON string representation of the object
-print RequestedItemStatusRequesterComment.to_json()
+print(RequestedItemStatusRequesterComment.to_json())
 
 # convert the object into a dict
 requested_item_status_requester_comment_dict = requested_item_status_requester_comment_instance.to_dict()
 # create an instance of RequestedItemStatusRequesterComment from a dict
-requested_item_status_requester_comment_form_dict = requested_item_status_requester_comment.from_dict(requested_item_status_requester_comment_dict)
+requested_item_status_requester_comment_from_dict = RequestedItemStatusRequesterComment.from_dict(requested_item_status_requester_comment_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of JITConfiguration from a JSON string
 jit_configuration_instance = JITConfiguration.from_json(json)
 # print the JSON string representation of the object
-print JITConfiguration.to_json()
+print(JITConfiguration.to_json())
 
 # convert the object into a dict
 jit_configuration_dict = jit_configuration_instance.to_dict()
 # create an instance of JITConfiguration from a dict
-jit_configuration_form_dict = jit_configuration.from_dict(jit_configuration_dict)
+jit_configuration_from_dict = JITConfiguration.from_dict(jit_configuration_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

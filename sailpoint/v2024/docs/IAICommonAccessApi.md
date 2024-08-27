@@ -22,8 +22,6 @@ This API is used to add roles/access profiles to the list of common access for a
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.common_access_item_request import CommonAccessItemRequest
 from sailpoint.v2024.models.common_access_item_response import CommonAccessItemResponse
@@ -110,8 +108,6 @@ This endpoint returns the current common access for a customer. The returned ite
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.common_access_response import CommonAccessResponse
 from sailpoint.v2024.rest import ApiException
@@ -204,8 +200,6 @@ This submits an update request to the common access application. At this time th
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v2024
 from sailpoint.v2024.models.common_access_id_status import CommonAccessIDStatus
 from sailpoint.v2024.rest import ApiException

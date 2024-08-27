@@ -22,12 +22,12 @@ json = "{}"
 # create an instance of AccessRequestPreApprovalRequestedItemsInner from a JSON string
 access_request_pre_approval_requested_items_inner_instance = AccessRequestPreApprovalRequestedItemsInner.from_json(json)
 # print the JSON string representation of the object
-print AccessRequestPreApprovalRequestedItemsInner.to_json()
+print(AccessRequestPreApprovalRequestedItemsInner.to_json())
 
 # convert the object into a dict
 access_request_pre_approval_requested_items_inner_dict = access_request_pre_approval_requested_items_inner_instance.to_dict()
 # create an instance of AccessRequestPreApprovalRequestedItemsInner from a dict
-access_request_pre_approval_requested_items_inner_form_dict = access_request_pre_approval_requested_items_inner.from_dict(access_request_pre_approval_requested_items_inner_dict)
+access_request_pre_approval_requested_items_inner_from_dict = AccessRequestPreApprovalRequestedItemsInner.from_dict(access_request_pre_approval_requested_items_inner_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

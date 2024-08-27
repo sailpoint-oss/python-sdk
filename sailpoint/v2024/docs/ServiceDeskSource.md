@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of ServiceDeskSource from a JSON string
 service_desk_source_instance = ServiceDeskSource.from_json(json)
 # print the JSON string representation of the object
-print ServiceDeskSource.to_json()
+print(ServiceDeskSource.to_json())
 
 # convert the object into a dict
 service_desk_source_dict = service_desk_source_instance.to_dict()
 # create an instance of ServiceDeskSource from a dict
-service_desk_source_form_dict = service_desk_source.from_dict(service_desk_source_dict)
+service_desk_source_from_dict = ServiceDeskSource.from_dict(service_desk_source_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

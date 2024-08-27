@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v3.models.reassignment_trail_dto import ReassignmentTrailDTO
 
@@ -28,7 +27,7 @@ class TestReassignmentTrailDTO(unittest.TestCase):
 
     def make_instance(self, include_optional) -> ReassignmentTrailDTO:
         """Test ReassignmentTrailDTO
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `ReassignmentTrailDTO`

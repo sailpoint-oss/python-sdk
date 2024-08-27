@@ -17,16 +17,12 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
 from sailpoint.v2024.models.campaign_all_of_role_composition_campaign_info_remediator_ref import CampaignAllOfRoleCompositionCampaignInfoRemediatorRef
 from sailpoint.v2024.models.campaign_all_of_search_campaign_info_reviewer import CampaignAllOfSearchCampaignInfoReviewer
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class CampaignAllOfRoleCompositionCampaignInfo(BaseModel):
     """
@@ -39,11 +35,11 @@ class CampaignAllOfRoleCompositionCampaignInfo(BaseModel):
     description: Optional[StrictStr] = Field(default=None, description="Describes this role composition campaign. Intended for storing the query used, and possibly the number of roles selected/available.")
     __properties: ClassVar[List[str]] = ["reviewer", "roleIds", "remediatorRef", "query", "description"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -56,7 +52,7 @@ class CampaignAllOfRoleCompositionCampaignInfo(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of CampaignAllOfRoleCompositionCampaignInfo from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -70,10 +66,12 @@ class CampaignAllOfRoleCompositionCampaignInfo(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of reviewer
@@ -85,7 +83,7 @@ class CampaignAllOfRoleCompositionCampaignInfo(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of CampaignAllOfRoleCompositionCampaignInfo from a dict"""
         if obj is None:
             return None
@@ -94,9 +92,9 @@ class CampaignAllOfRoleCompositionCampaignInfo(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "reviewer": CampaignAllOfSearchCampaignInfoReviewer.from_dict(obj.get("reviewer")) if obj.get("reviewer") is not None else None,
+            "reviewer": CampaignAllOfSearchCampaignInfoReviewer.from_dict(obj["reviewer"]) if obj.get("reviewer") is not None else None,
             "roleIds": obj.get("roleIds"),
-            "remediatorRef": CampaignAllOfRoleCompositionCampaignInfoRemediatorRef.from_dict(obj.get("remediatorRef")) if obj.get("remediatorRef") is not None else None,
+            "remediatorRef": CampaignAllOfRoleCompositionCampaignInfoRemediatorRef.from_dict(obj["remediatorRef"]) if obj.get("remediatorRef") is not None else None,
             "query": obj.get("query"),
             "description": obj.get("description")
         })

@@ -22,12 +22,12 @@ json = "{}"
 # create an instance of MailFromAttributes from a JSON string
 mail_from_attributes_instance = MailFromAttributes.from_json(json)
 # print the JSON string representation of the object
-print MailFromAttributes.to_json()
+print(MailFromAttributes.to_json())
 
 # convert the object into a dict
 mail_from_attributes_dict = mail_from_attributes_instance.to_dict()
 # create an instance of MailFromAttributes from a dict
-mail_from_attributes_form_dict = mail_from_attributes.from_dict(mail_from_attributes_dict)
+mail_from_attributes_from_dict = MailFromAttributes.from_dict(mail_from_attributes_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

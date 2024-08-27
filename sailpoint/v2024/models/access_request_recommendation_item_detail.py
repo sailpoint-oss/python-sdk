@@ -17,17 +17,13 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
-from pydantic import Field
 from sailpoint.v2024.models.access_recommendation_message import AccessRecommendationMessage
 from sailpoint.v2024.models.access_request_recommendation_item_detail_access import AccessRequestRecommendationItemDetailAccess
 from sailpoint.v2024.models.translation_message import TranslationMessage
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class AccessRequestRecommendationItemDetail(BaseModel):
     """
@@ -42,11 +38,11 @@ class AccessRequestRecommendationItemDetail(BaseModel):
     translation_messages: Optional[List[TranslationMessage]] = Field(default=None, description="The list of translation messages", alias="translationMessages")
     __properties: ClassVar[List[str]] = ["identityId", "access", "ignored", "requested", "viewed", "messages", "translationMessages"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -59,7 +55,7 @@ class AccessRequestRecommendationItemDetail(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of AccessRequestRecommendationItemDetail from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -73,10 +69,12 @@ class AccessRequestRecommendationItemDetail(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of access
@@ -85,21 +83,21 @@ class AccessRequestRecommendationItemDetail(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in messages (list)
         _items = []
         if self.messages:
-            for _item in self.messages:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_messages in self.messages:
+                if _item_messages:
+                    _items.append(_item_messages.to_dict())
             _dict['messages'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in translation_messages (list)
         _items = []
         if self.translation_messages:
-            for _item in self.translation_messages:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_translation_messages in self.translation_messages:
+                if _item_translation_messages:
+                    _items.append(_item_translation_messages.to_dict())
             _dict['translationMessages'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of AccessRequestRecommendationItemDetail from a dict"""
         if obj is None:
             return None
@@ -109,12 +107,12 @@ class AccessRequestRecommendationItemDetail(BaseModel):
 
         _obj = cls.model_validate({
             "identityId": obj.get("identityId"),
-            "access": AccessRequestRecommendationItemDetailAccess.from_dict(obj.get("access")) if obj.get("access") is not None else None,
+            "access": AccessRequestRecommendationItemDetailAccess.from_dict(obj["access"]) if obj.get("access") is not None else None,
             "ignored": obj.get("ignored"),
             "requested": obj.get("requested"),
             "viewed": obj.get("viewed"),
-            "messages": [AccessRecommendationMessage.from_dict(_item) for _item in obj.get("messages")] if obj.get("messages") is not None else None,
-            "translationMessages": [TranslationMessage.from_dict(_item) for _item in obj.get("translationMessages")] if obj.get("translationMessages") is not None else None
+            "messages": [AccessRecommendationMessage.from_dict(_item) for _item in obj["messages"]] if obj.get("messages") is not None else None,
+            "translationMessages": [TranslationMessage.from_dict(_item) for _item in obj["translationMessages"]] if obj.get("translationMessages") is not None else None
         })
         return _obj
 

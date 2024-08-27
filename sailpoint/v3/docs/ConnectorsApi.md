@@ -32,8 +32,6 @@ Create custom connector. A token with ORG_ADMIN authority is required to call th
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.v3_connector_dto import V3ConnectorDto
 from sailpoint.v3.models.v3_create_connector_dto import V3CreateConnectorDto
@@ -119,8 +117,6 @@ Delete a custom connector that using its script name. A token with ORG_ADMIN aut
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.rest import ApiException
 from pprint import pprint
@@ -202,8 +198,6 @@ Fetches a connector that using its script name. A token with ORG_ADMIN authority
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.connector_detail import ConnectorDetail
 from sailpoint.v3.rest import ApiException
@@ -290,8 +284,6 @@ Fetches a connector's correlation config using its script name. A token with ORG
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.rest import ApiException
 from pprint import pprint
@@ -374,8 +366,6 @@ Fetches list of connectors that have 'RELEASED' status using filtering and pagin
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.v3_connector_dto import V3ConnectorDto
 from sailpoint.v3.rest import ApiException
@@ -468,8 +458,6 @@ Fetches a connector's source config using its script name. A token with ORG_ADMI
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.rest import ApiException
 from pprint import pprint
@@ -552,8 +540,6 @@ Fetches a connector's source template using its script name. A token with ORG_AD
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.rest import ApiException
 from pprint import pprint
@@ -636,8 +622,6 @@ Fetches a connector's translations using its script name. A token with ORG_ADMIN
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.rest import ApiException
 from pprint import pprint
@@ -722,8 +706,6 @@ Update a connector's correlation config using its script name. A token with ORG_
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.update_detail import UpdateDetail
 from sailpoint.v3.rest import ApiException
@@ -809,8 +791,6 @@ Update a connector's source config using its script name. A token with ORG_ADMIN
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.update_detail import UpdateDetail
 from sailpoint.v3.rest import ApiException
@@ -896,8 +876,6 @@ Update a connector's source template using its script name. A token with ORG_ADM
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.update_detail import UpdateDetail
 from sailpoint.v3.rest import ApiException
@@ -983,8 +961,6 @@ Update a connector's translations using its script name. A token with ORG_ADMIN 
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.update_detail import UpdateDetail
 from sailpoint.v3.rest import ApiException
@@ -1070,8 +1046,6 @@ Patch a custom connector that using its script name. A token with ORG_ADMIN auth
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.connector_detail import ConnectorDetail
 from sailpoint.v3.models.json_patch_operation import JsonPatchOperation

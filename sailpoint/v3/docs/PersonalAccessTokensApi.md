@@ -23,8 +23,6 @@ This creates a personal access token.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.create_personal_access_token_request import CreatePersonalAccessTokenRequest
 from sailpoint.v3.models.create_personal_access_token_response import CreatePersonalAccessTokenResponse
@@ -109,8 +107,6 @@ This deletes a personal access token.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.rest import ApiException
 from pprint import pprint
@@ -192,8 +188,6 @@ This gets a collection of personal access tokens associated with the optional `o
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.get_personal_access_token_response import GetPersonalAccessTokenResponse
 from sailpoint.v3.rest import ApiException
@@ -279,8 +273,6 @@ This performs a targeted update to the field(s) of a Personal Access Token. Chan
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.v3
 from sailpoint.v3.models.get_personal_access_token_response import GetPersonalAccessTokenResponse
 from sailpoint.v3.models.json_patch_operation import JsonPatchOperation

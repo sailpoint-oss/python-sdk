@@ -24,12 +24,12 @@ json = "{}"
 # create an instance of IdentityCertified from a JSON string
 identity_certified_instance = IdentityCertified.from_json(json)
 # print the JSON string representation of the object
-print IdentityCertified.to_json()
+print(IdentityCertified.to_json())
 
 # convert the object into a dict
 identity_certified_dict = identity_certified_instance.to_dict()
 # create an instance of IdentityCertified from a dict
-identity_certified_form_dict = identity_certified.from_dict(identity_certified_dict)
+identity_certified_from_dict = IdentityCertified.from_dict(identity_certified_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

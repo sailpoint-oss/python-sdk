@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v2024.models.test_workflow200_response import TestWorkflow200Response
 
@@ -28,7 +27,7 @@ class TestTestWorkflow200Response(unittest.TestCase):
 
     def make_instance(self, include_optional) -> TestWorkflow200Response:
         """Test TestWorkflow200Response
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `TestWorkflow200Response`

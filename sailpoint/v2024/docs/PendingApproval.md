@@ -35,12 +35,12 @@ json = "{}"
 # create an instance of PendingApproval from a JSON string
 pending_approval_instance = PendingApproval.from_json(json)
 # print the JSON string representation of the object
-print PendingApproval.to_json()
+print(PendingApproval.to_json())
 
 # convert the object into a dict
 pending_approval_dict = pending_approval_instance.to_dict()
 # create an instance of PendingApproval from a dict
-pending_approval_form_dict = pending_approval.from_dict(pending_approval_dict)
+pending_approval_from_dict = PendingApproval.from_dict(pending_approval_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

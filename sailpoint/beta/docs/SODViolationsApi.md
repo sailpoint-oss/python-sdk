@@ -20,8 +20,6 @@ This API is used to check if granting some additional accesses would cause the s
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.identity_with_new_access import IdentityWithNewAccess
 from sailpoint.beta.models.violation_prediction import ViolationPrediction

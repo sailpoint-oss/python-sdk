@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of QueuedCheckConfigDetails from a JSON string
 queued_check_config_details_instance = QueuedCheckConfigDetails.from_json(json)
 # print the JSON string representation of the object
-print QueuedCheckConfigDetails.to_json()
+print(QueuedCheckConfigDetails.to_json())
 
 # convert the object into a dict
 queued_check_config_details_dict = queued_check_config_details_instance.to_dict()
 # create an instance of QueuedCheckConfigDetails from a dict
-queued_check_config_details_form_dict = queued_check_config_details.from_dict(queued_check_config_details_dict)
+queued_check_config_details_from_dict = QueuedCheckConfigDetails.from_dict(queued_check_config_details_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.set_icon200_response import SetIcon200Response
 
@@ -28,7 +27,7 @@ class TestSetIcon200Response(unittest.TestCase):
 
     def make_instance(self, include_optional) -> SetIcon200Response:
         """Test SetIcon200Response
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `SetIcon200Response`

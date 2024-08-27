@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of SodViolationContext1ConflictingAccessCriteria from a JSON string
 sod_violation_context1_conflicting_access_criteria_instance = SodViolationContext1ConflictingAccessCriteria.from_json(json)
 # print the JSON string representation of the object
-print SodViolationContext1ConflictingAccessCriteria.to_json()
+print(SodViolationContext1ConflictingAccessCriteria.to_json())
 
 # convert the object into a dict
 sod_violation_context1_conflicting_access_criteria_dict = sod_violation_context1_conflicting_access_criteria_instance.to_dict()
 # create an instance of SodViolationContext1ConflictingAccessCriteria from a dict
-sod_violation_context1_conflicting_access_criteria_form_dict = sod_violation_context1_conflicting_access_criteria.from_dict(sod_violation_context1_conflicting_access_criteria_dict)
+sod_violation_context1_conflicting_access_criteria_from_dict = SodViolationContext1ConflictingAccessCriteria.from_dict(sod_violation_context1_conflicting_access_criteria_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

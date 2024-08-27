@@ -24,12 +24,12 @@ json = "{}"
 # create an instance of CommonAccessResponse from a JSON string
 common_access_response_instance = CommonAccessResponse.from_json(json)
 # print the JSON string representation of the object
-print CommonAccessResponse.to_json()
+print(CommonAccessResponse.to_json())
 
 # convert the object into a dict
 common_access_response_dict = common_access_response_instance.to_dict()
 # create an instance of CommonAccessResponse from a dict
-common_access_response_form_dict = common_access_response.from_dict(common_access_response_dict)
+common_access_response_from_dict = CommonAccessResponse.from_dict(common_access_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

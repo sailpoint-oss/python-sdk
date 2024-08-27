@@ -22,12 +22,12 @@ json = "{}"
 # create an instance of SpConfigJob from a JSON string
 sp_config_job_instance = SpConfigJob.from_json(json)
 # print the JSON string representation of the object
-print SpConfigJob.to_json()
+print(SpConfigJob.to_json())
 
 # convert the object into a dict
 sp_config_job_dict = sp_config_job_instance.to_dict()
 # create an instance of SpConfigJob from a dict
-sp_config_job_form_dict = sp_config_job.from_dict(sp_config_job_dict)
+sp_config_job_from_dict = SpConfigJob.from_dict(sp_config_job_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

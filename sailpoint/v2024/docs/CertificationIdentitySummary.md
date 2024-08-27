@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of CertificationIdentitySummary from a JSON string
 certification_identity_summary_instance = CertificationIdentitySummary.from_json(json)
 # print the JSON string representation of the object
-print CertificationIdentitySummary.to_json()
+print(CertificationIdentitySummary.to_json())
 
 # convert the object into a dict
 certification_identity_summary_dict = certification_identity_summary_instance.to_dict()
 # create an instance of CertificationIdentitySummary from a dict
-certification_identity_summary_form_dict = certification_identity_summary.from_dict(certification_identity_summary_dict)
+certification_identity_summary_from_dict = CertificationIdentitySummary.from_dict(certification_identity_summary_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

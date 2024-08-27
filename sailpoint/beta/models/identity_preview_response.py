@@ -17,16 +17,12 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel
-from pydantic import Field
 from sailpoint.beta.models.identity_attribute_preview import IdentityAttributePreview
 from sailpoint.beta.models.identity_preview_response_identity import IdentityPreviewResponseIdentity
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class IdentityPreviewResponse(BaseModel):
     """
@@ -36,11 +32,11 @@ class IdentityPreviewResponse(BaseModel):
     preview_attributes: Optional[List[IdentityAttributePreview]] = Field(default=None, alias="previewAttributes")
     __properties: ClassVar[List[str]] = ["identity", "previewAttributes"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -53,7 +49,7 @@ class IdentityPreviewResponse(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of IdentityPreviewResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -67,10 +63,12 @@ class IdentityPreviewResponse(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of identity
@@ -79,14 +77,14 @@ class IdentityPreviewResponse(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in preview_attributes (list)
         _items = []
         if self.preview_attributes:
-            for _item in self.preview_attributes:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_preview_attributes in self.preview_attributes:
+                if _item_preview_attributes:
+                    _items.append(_item_preview_attributes.to_dict())
             _dict['previewAttributes'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of IdentityPreviewResponse from a dict"""
         if obj is None:
             return None
@@ -95,8 +93,8 @@ class IdentityPreviewResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "identity": IdentityPreviewResponseIdentity.from_dict(obj.get("identity")) if obj.get("identity") is not None else None,
-            "previewAttributes": [IdentityAttributePreview.from_dict(_item) for _item in obj.get("previewAttributes")] if obj.get("previewAttributes") is not None else None
+            "identity": IdentityPreviewResponseIdentity.from_dict(obj["identity"]) if obj.get("identity") is not None else None,
+            "previewAttributes": [IdentityAttributePreview.from_dict(_item) for _item in obj["previewAttributes"]] if obj.get("previewAttributes") is not None else None
         })
         return _obj
 

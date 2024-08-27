@@ -20,12 +20,12 @@ json = "{}"
 # create an instance of OwnerReferenceSegments from a JSON string
 owner_reference_segments_instance = OwnerReferenceSegments.from_json(json)
 # print the JSON string representation of the object
-print OwnerReferenceSegments.to_json()
+print(OwnerReferenceSegments.to_json())
 
 # convert the object into a dict
 owner_reference_segments_dict = owner_reference_segments_instance.to_dict()
 # create an instance of OwnerReferenceSegments from a dict
-owner_reference_segments_form_dict = owner_reference_segments.from_dict(owner_reference_segments_dict)
+owner_reference_segments_from_dict = OwnerReferenceSegments.from_dict(owner_reference_segments_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

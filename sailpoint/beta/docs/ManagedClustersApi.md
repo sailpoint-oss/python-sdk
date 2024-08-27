@@ -23,8 +23,6 @@ Get managed cluster's log configuration.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.client_log_configuration import ClientLogConfiguration
 from sailpoint.beta.rest import ApiException
@@ -109,8 +107,6 @@ Retrieve a ManagedCluster by ID.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.managed_cluster import ManagedCluster
 from sailpoint.beta.rest import ApiException
@@ -195,8 +191,6 @@ Retrieve all Managed Clusters for the current Org, based on request context.
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.managed_cluster import ManagedCluster
 from sailpoint.beta.rest import ApiException
@@ -286,8 +280,6 @@ Update managed cluster's log configuration
 * OAuth Authentication (UserContextAuth):
 
 ```python
-import time
-import os
 import sailpoint.beta
 from sailpoint.beta.models.client_log_configuration import ClientLogConfiguration
 from sailpoint.beta.rest import ApiException

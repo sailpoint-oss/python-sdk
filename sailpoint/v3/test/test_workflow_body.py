@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v3.models.workflow_body import WorkflowBody
 
@@ -28,7 +27,7 @@ class TestWorkflowBody(unittest.TestCase):
 
     def make_instance(self, include_optional) -> WorkflowBody:
         """Test WorkflowBody
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `WorkflowBody`

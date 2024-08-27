@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v3.models.access_criteria_criteria_list_inner import AccessCriteriaCriteriaListInner
 
@@ -28,7 +27,7 @@ class TestAccessCriteriaCriteriaListInner(unittest.TestCase):
 
     def make_instance(self, include_optional) -> AccessCriteriaCriteriaListInner:
         """Test AccessCriteriaCriteriaListInner
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `AccessCriteriaCriteriaListInner`

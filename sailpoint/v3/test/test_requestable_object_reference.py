@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v3.models.requestable_object_reference import RequestableObjectReference
 
@@ -28,7 +27,7 @@ class TestRequestableObjectReference(unittest.TestCase):
 
     def make_instance(self, include_optional) -> RequestableObjectReference:
         """Test RequestableObjectReference
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `RequestableObjectReference`

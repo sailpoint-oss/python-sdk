@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.beta.models.common_access_item_access import CommonAccessItemAccess
 
@@ -28,7 +27,7 @@ class TestCommonAccessItemAccess(unittest.TestCase):
 
     def make_instance(self, include_optional) -> CommonAccessItemAccess:
         """Test CommonAccessItemAccess
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `CommonAccessItemAccess`

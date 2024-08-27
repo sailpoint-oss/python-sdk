@@ -17,15 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr, field_validator
-from pydantic import Field
 from sailpoint.v3.models.error_message_dto import ErrorMessageDto
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class CampaignAlert(BaseModel):
     """
@@ -41,15 +37,15 @@ class CampaignAlert(BaseModel):
         if value is None:
             return value
 
-        if value not in ('ERROR', 'WARN', 'INFO'):
+        if value not in set(['ERROR', 'WARN', 'INFO']):
             raise ValueError("must be one of enum values ('ERROR', 'WARN', 'INFO')")
         return value
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -62,7 +58,7 @@ class CampaignAlert(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of CampaignAlert from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -76,23 +72,25 @@ class CampaignAlert(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in localizations (list)
         _items = []
         if self.localizations:
-            for _item in self.localizations:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_localizations in self.localizations:
+                if _item_localizations:
+                    _items.append(_item_localizations.to_dict())
             _dict['localizations'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of CampaignAlert from a dict"""
         if obj is None:
             return None
@@ -102,7 +100,7 @@ class CampaignAlert(BaseModel):
 
         _obj = cls.model_validate({
             "level": obj.get("level"),
-            "localizations": [ErrorMessageDto.from_dict(_item) for _item in obj.get("localizations")] if obj.get("localizations") is not None else None
+            "localizations": [ErrorMessageDto.from_dict(_item) for _item in obj["localizations"]] if obj.get("localizations") is not None else None
         })
         return _obj
 

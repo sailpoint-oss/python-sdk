@@ -18,9 +18,8 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr, field_validator
-from pydantic import Field
 from sailpoint.v2024.models.access_item_requester import AccessItemRequester
 from sailpoint.v2024.models.access_request_phases import AccessRequestPhases
 from sailpoint.v2024.models.access_request_type import AccessRequestType
@@ -34,10 +33,8 @@ from sailpoint.v2024.models.requested_item_status_request_state import Requested
 from sailpoint.v2024.models.requested_item_status_requested_for import RequestedItemStatusRequestedFor
 from sailpoint.v2024.models.requested_item_status_requester_comment import RequestedItemStatusRequesterComment
 from sailpoint.v2024.models.requested_item_status_sod_violation_context import RequestedItemStatusSodViolationContext
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class RequestedItemStatus(BaseModel):
     """
@@ -74,15 +71,15 @@ class RequestedItemStatus(BaseModel):
         if value is None:
             return value
 
-        if value not in ('ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT', 'null'):
+        if value not in set(['ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT', 'null']):
             raise ValueError("must be one of enum values ('ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT', 'null')")
         return value
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -95,7 +92,7 @@ class RequestedItemStatus(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of RequestedItemStatus from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -109,10 +106,12 @@ class RequestedItemStatus(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of cancelled_request_details
@@ -121,25 +120,25 @@ class RequestedItemStatus(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in error_messages (list of list)
         _items = []
         if self.error_messages:
-            for _item in self.error_messages:
-                if _item:
+            for _item_error_messages in self.error_messages:
+                if _item_error_messages:
                     _items.append(
-                         [_inner_item.to_dict() for _inner_item in _item if _inner_item is not None]
+                         [_inner_item.to_dict() for _inner_item in _item_error_messages if _inner_item is not None]
                     )
             _dict['errorMessages'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in approval_details (list)
         _items = []
         if self.approval_details:
-            for _item in self.approval_details:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_approval_details in self.approval_details:
+                if _item_approval_details:
+                    _items.append(_item_approval_details.to_dict())
             _dict['approvalDetails'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in manual_work_item_details (list)
         _items = []
         if self.manual_work_item_details:
-            for _item in self.manual_work_item_details:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_manual_work_item_details in self.manual_work_item_details:
+                if _item_manual_work_item_details:
+                    _items.append(_item_manual_work_item_details.to_dict())
             _dict['manualWorkItemDetails'] = _items
         # override the default output from pydantic by calling `to_dict()` of requester
         if self.requester:
@@ -162,9 +161,9 @@ class RequestedItemStatus(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in access_request_phases (list)
         _items = []
         if self.access_request_phases:
-            for _item in self.access_request_phases:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_access_request_phases in self.access_request_phases:
+                if _item_access_request_phases:
+                    _items.append(_item_access_request_phases.to_dict())
             _dict['accessRequestPhases'] = _items
         # set to None if name (nullable) is None
         # and model_fields_set contains the field
@@ -219,7 +218,7 @@ class RequestedItemStatus(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of RequestedItemStatus from a dict"""
         if obj is None:
             return None
@@ -230,25 +229,25 @@ class RequestedItemStatus(BaseModel):
         _obj = cls.model_validate({
             "name": obj.get("name"),
             "type": obj.get("type"),
-            "cancelledRequestDetails": RequestedItemStatusCancelledRequestDetails.from_dict(obj.get("cancelledRequestDetails")) if obj.get("cancelledRequestDetails") is not None else None,
+            "cancelledRequestDetails": RequestedItemStatusCancelledRequestDetails.from_dict(obj["cancelledRequestDetails"]) if obj.get("cancelledRequestDetails") is not None else None,
             "errorMessages": [
                     [ErrorMessageDto.from_dict(_inner_item) for _inner_item in _item]
-                    for _item in obj.get("errorMessages")
+                    for _item in obj["errorMessages"]
                 ] if obj.get("errorMessages") is not None else None,
             "state": obj.get("state"),
-            "approvalDetails": [ApprovalStatusDto.from_dict(_item) for _item in obj.get("approvalDetails")] if obj.get("approvalDetails") is not None else None,
-            "manualWorkItemDetails": [ManualWorkItemDetails.from_dict(_item) for _item in obj.get("manualWorkItemDetails")] if obj.get("manualWorkItemDetails") is not None else None,
+            "approvalDetails": [ApprovalStatusDto.from_dict(_item) for _item in obj["approvalDetails"]] if obj.get("approvalDetails") is not None else None,
+            "manualWorkItemDetails": [ManualWorkItemDetails.from_dict(_item) for _item in obj["manualWorkItemDetails"]] if obj.get("manualWorkItemDetails") is not None else None,
             "accountActivityItemId": obj.get("accountActivityItemId"),
             "requestType": obj.get("requestType"),
             "modified": obj.get("modified"),
             "created": obj.get("created"),
-            "requester": AccessItemRequester.from_dict(obj.get("requester")) if obj.get("requester") is not None else None,
-            "requestedFor": RequestedItemStatusRequestedFor.from_dict(obj.get("requestedFor")) if obj.get("requestedFor") is not None else None,
-            "requesterComment": RequestedItemStatusRequesterComment.from_dict(obj.get("requesterComment")) if obj.get("requesterComment") is not None else None,
-            "sodViolationContext": RequestedItemStatusSodViolationContext.from_dict(obj.get("sodViolationContext")) if obj.get("sodViolationContext") is not None else None,
-            "provisioningDetails": RequestedItemStatusProvisioningDetails.from_dict(obj.get("provisioningDetails")) if obj.get("provisioningDetails") is not None else None,
-            "preApprovalTriggerDetails": RequestedItemStatusPreApprovalTriggerDetails.from_dict(obj.get("preApprovalTriggerDetails")) if obj.get("preApprovalTriggerDetails") is not None else None,
-            "accessRequestPhases": [AccessRequestPhases.from_dict(_item) for _item in obj.get("accessRequestPhases")] if obj.get("accessRequestPhases") is not None else None,
+            "requester": AccessItemRequester.from_dict(obj["requester"]) if obj.get("requester") is not None else None,
+            "requestedFor": RequestedItemStatusRequestedFor.from_dict(obj["requestedFor"]) if obj.get("requestedFor") is not None else None,
+            "requesterComment": RequestedItemStatusRequesterComment.from_dict(obj["requesterComment"]) if obj.get("requesterComment") is not None else None,
+            "sodViolationContext": RequestedItemStatusSodViolationContext.from_dict(obj["sodViolationContext"]) if obj.get("sodViolationContext") is not None else None,
+            "provisioningDetails": RequestedItemStatusProvisioningDetails.from_dict(obj["provisioningDetails"]) if obj.get("provisioningDetails") is not None else None,
+            "preApprovalTriggerDetails": RequestedItemStatusPreApprovalTriggerDetails.from_dict(obj["preApprovalTriggerDetails"]) if obj.get("preApprovalTriggerDetails") is not None else None,
+            "accessRequestPhases": [AccessRequestPhases.from_dict(_item) for _item in obj["accessRequestPhases"]] if obj.get("accessRequestPhases") is not None else None,
             "description": obj.get("description"),
             "removeDate": obj.get("removeDate"),
             "cancelable": obj.get("cancelable") if obj.get("cancelable") is not None else False,

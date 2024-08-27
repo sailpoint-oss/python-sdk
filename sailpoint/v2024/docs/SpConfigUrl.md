@@ -19,12 +19,12 @@ json = "{}"
 # create an instance of SpConfigUrl from a JSON string
 sp_config_url_instance = SpConfigUrl.from_json(json)
 # print the JSON string representation of the object
-print SpConfigUrl.to_json()
+print(SpConfigUrl.to_json())
 
 # convert the object into a dict
 sp_config_url_dict = sp_config_url_instance.to_dict()
 # create an instance of SpConfigUrl from a dict
-sp_config_url_form_dict = sp_config_url.from_dict(sp_config_url_dict)
+sp_config_url_from_dict = SpConfigUrl.from_dict(sp_config_url_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

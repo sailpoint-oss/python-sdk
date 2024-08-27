@@ -13,7 +13,6 @@
 
 
 import unittest
-import datetime
 
 from sailpoint.v2024.models.list_form_instances_by_tenant_response import ListFormInstancesByTenantResponse
 
@@ -28,7 +27,7 @@ class TestListFormInstancesByTenantResponse(unittest.TestCase):
 
     def make_instance(self, include_optional) -> ListFormInstancesByTenantResponse:
         """Test ListFormInstancesByTenantResponse
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `ListFormInstancesByTenantResponse`

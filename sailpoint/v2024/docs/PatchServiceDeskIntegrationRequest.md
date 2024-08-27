@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of PatchServiceDeskIntegrationRequest from a JSON string
 patch_service_desk_integration_request_instance = PatchServiceDeskIntegrationRequest.from_json(json)
 # print the JSON string representation of the object
-print PatchServiceDeskIntegrationRequest.to_json()
+print(PatchServiceDeskIntegrationRequest.to_json())
 
 # convert the object into a dict
 patch_service_desk_integration_request_dict = patch_service_desk_integration_request_instance.to_dict()
 # create an instance of PatchServiceDeskIntegrationRequest from a dict
-patch_service_desk_integration_request_form_dict = patch_service_desk_integration_request.from_dict(patch_service_desk_integration_request_dict)
+patch_service_desk_integration_request_from_dict = PatchServiceDeskIntegrationRequest.from_dict(patch_service_desk_integration_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
