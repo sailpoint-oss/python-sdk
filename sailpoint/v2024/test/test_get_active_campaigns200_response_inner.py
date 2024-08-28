@@ -44,7 +44,7 @@ class TestGetActiveCampaigns200ResponseInner(unittest.TestCase):
                 auto_revoke_allowed = False,
                 recommendations_enabled = True,
                 status = 'ACTIVE',
-                correlated_status = CORRELATED,
+                correlated_status = 'CORRELATED',
                 created = '2020-03-03T22:15:13.611Z',
                 total_certifications = 100,
                 completed_certifications = 10,

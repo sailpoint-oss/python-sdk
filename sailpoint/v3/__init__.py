@@ -181,7 +181,6 @@ from sailpoint.v3.models.bulk_remove_tagged_object import BulkRemoveTaggedObject
 from sailpoint.v3.models.bulk_tagged_object_response import BulkTaggedObjectResponse
 from sailpoint.v3.models.campaign import Campaign
 from sailpoint.v3.models.campaign_alert import CampaignAlert
-from sailpoint.v3.models.campaign_all_of_correlated_status import CampaignAllOfCorrelatedStatus
 from sailpoint.v3.models.campaign_all_of_filter import CampaignAllOfFilter
 from sailpoint.v3.models.campaign_all_of_role_composition_campaign_info import CampaignAllOfRoleCompositionCampaignInfo
 from sailpoint.v3.models.campaign_all_of_role_composition_campaign_info_remediator_ref import CampaignAllOfRoleCompositionCampaignInfoRemediatorRef

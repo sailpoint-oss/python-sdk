@@ -291,7 +291,6 @@ sailpoint/v2024/docs/CampaignActivated.md
 sailpoint/v2024/docs/CampaignActivatedCampaign.md
 sailpoint/v2024/docs/CampaignActivatedCampaignCampaignOwner.md
 sailpoint/v2024/docs/CampaignAlert.md
-sailpoint/v2024/docs/CampaignAllOfCorrelatedStatus.md
 sailpoint/v2024/docs/CampaignAllOfFilter.md
 sailpoint/v2024/docs/CampaignAllOfRoleCompositionCampaignInfo.md
 sailpoint/v2024/docs/CampaignAllOfRoleCompositionCampaignInfoRemediatorRef.md
@@ -1325,7 +1324,6 @@ sailpoint/v2024/models/campaign_activated.py
 sailpoint/v2024/models/campaign_activated_campaign.py
 sailpoint/v2024/models/campaign_activated_campaign_campaign_owner.py
 sailpoint/v2024/models/campaign_alert.py
-sailpoint/v2024/models/campaign_all_of_correlated_status.py
 sailpoint/v2024/models/campaign_all_of_filter.py
 sailpoint/v2024/models/campaign_all_of_role_composition_campaign_info.py
 sailpoint/v2024/models/campaign_all_of_role_composition_campaign_info_remediator_ref.py
@@ -2307,7 +2305,6 @@ sailpoint/v2024/test/test_campaign_activated.py
 sailpoint/v2024/test/test_campaign_activated_campaign.py
 sailpoint/v2024/test/test_campaign_activated_campaign_campaign_owner.py
 sailpoint/v2024/test/test_campaign_alert.py
-sailpoint/v2024/test/test_campaign_all_of_correlated_status.py
 sailpoint/v2024/test/test_campaign_all_of_filter.py
 sailpoint/v2024/test/test_campaign_all_of_role_composition_campaign_info.py
 sailpoint/v2024/test/test_campaign_all_of_role_composition_campaign_info_remediator_ref.py

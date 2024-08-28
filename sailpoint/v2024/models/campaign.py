@@ -21,7 +21,6 @@ from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v2024.models.campaign_alert import CampaignAlert
-from sailpoint.v2024.models.campaign_all_of_correlated_status import CampaignAllOfCorrelatedStatus
 from sailpoint.v2024.models.campaign_all_of_filter import CampaignAllOfFilter
 from sailpoint.v2024.models.campaign_all_of_role_composition_campaign_info import CampaignAllOfRoleCompositionCampaignInfo
 from sailpoint.v2024.models.campaign_all_of_search_campaign_info import CampaignAllOfSearchCampaignInfo
@@ -43,7 +42,7 @@ class Campaign(BaseModel):
     auto_revoke_allowed: Optional[StrictBool] = Field(default=False, description="Allows auto revoke for this campaign", alias="autoRevokeAllowed")
     recommendations_enabled: Optional[StrictBool] = Field(default=False, description="Enables IAI for this campaign. Accepts true even if the IAI product feature is off. If IAI is turned off then campaigns generated from this template will indicate false. The real value will then be returned if IAI is ever enabled for the org in the future.", alias="recommendationsEnabled")
     status: Optional[StrictStr] = Field(default=None, description="The campaign's current status.")
-    correlated_status: Optional[CampaignAllOfCorrelatedStatus] = Field(default=None, alias="correlatedStatus")
+    correlated_status: Optional[StrictStr] = Field(default=None, description="The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns can be Uncorrelated. An Uncorrelated certification campaign only includes Uncorrelated identities (An identity is uncorrelated if it has no accounts on an authoritative source).", alias="correlatedStatus")
     created: Optional[datetime] = Field(default=None, description="Created time of the campaign")
     total_certifications: Optional[StrictInt] = Field(default=None, description="The total number of certifications in this campaign.", alias="totalCertifications")
     completed_certifications: Optional[StrictInt] = Field(default=None, description="The number of completed certifications in this campaign.", alias="completedCertifications")
@@ -73,6 +72,16 @@ class Campaign(BaseModel):
 
         if value not in set(['PENDING', 'STAGED', 'CANCELING', 'ACTIVATING', 'ACTIVE', 'COMPLETING', 'COMPLETED', 'ERROR', 'ARCHIVED']):
             raise ValueError("must be one of enum values ('PENDING', 'STAGED', 'CANCELING', 'ACTIVATING', 'ACTIVE', 'COMPLETING', 'COMPLETED', 'ERROR', 'ARCHIVED')")
+        return value
+
+    @field_validator('correlated_status')
+    def correlated_status_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['CORRELATED', 'UNCORRELATED']):
+            raise ValueError("must be one of enum values ('CORRELATED', 'UNCORRELATED')")
         return value
 
     @field_validator('mandatory_comment_requirement')

@@ -537,7 +537,6 @@ Class | Method | HTTP request | Description
  - [BulkTaggedObjectResponse](sailpoint/v3/docs/BulkTaggedObjectResponse.md)
  - [Campaign](sailpoint/v3/docs/Campaign.md)
  - [CampaignAlert](sailpoint/v3/docs/CampaignAlert.md)
- - [CampaignAllOfCorrelatedStatus](sailpoint/v3/docs/CampaignAllOfCorrelatedStatus.md)
  - [CampaignAllOfFilter](sailpoint/v3/docs/CampaignAllOfFilter.md)
  - [CampaignAllOfRoleCompositionCampaignInfo](sailpoint/v3/docs/CampaignAllOfRoleCompositionCampaignInfo.md)
  - [CampaignAllOfRoleCompositionCampaignInfoRemediatorRef](sailpoint/v3/docs/CampaignAllOfRoleCompositionCampaignInfoRemediatorRef.md)

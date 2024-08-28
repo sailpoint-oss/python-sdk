@@ -854,7 +854,6 @@ Class | Method | HTTP request | Description
  - [CampaignActivatedCampaign](sailpoint/v2024/docs/CampaignActivatedCampaign.md)
  - [CampaignActivatedCampaignCampaignOwner](sailpoint/v2024/docs/CampaignActivatedCampaignCampaignOwner.md)
  - [CampaignAlert](sailpoint/v2024/docs/CampaignAlert.md)
- - [CampaignAllOfCorrelatedStatus](sailpoint/v2024/docs/CampaignAllOfCorrelatedStatus.md)
  - [CampaignAllOfFilter](sailpoint/v2024/docs/CampaignAllOfFilter.md)
  - [CampaignAllOfRoleCompositionCampaignInfo](sailpoint/v2024/docs/CampaignAllOfRoleCompositionCampaignInfo.md)
  - [CampaignAllOfRoleCompositionCampaignInfoRemediatorRef](sailpoint/v2024/docs/CampaignAllOfRoleCompositionCampaignInfoRemediatorRef.md)
