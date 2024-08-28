@@ -6,7 +6,7 @@ Set of FormElementValidation items.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**validation_type** | **str** |  | [optional] 
+**validation_type** | **str** | The type of data validation that you wish to enforce, e.g., a required field, a minimum length, etc. | [optional] 
 
 ## Example
 

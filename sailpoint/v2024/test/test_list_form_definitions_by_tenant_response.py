@@ -65,7 +65,8 @@ class TestListFormDefinitionsByTenantResponse(unittest.TestCase):
                                 config = {label=Department}, 
                                 key = 'department', 
                                 validations = [
-                                    [{validationType=REQUIRED}]
+                                    sailpoint.v2024.models.form_element_validations_set.FormElementValidationsSet(
+                                        validation_type = 'REQUIRED', )
                                     ], )
                             ], 
                         form_conditions = [
@@ -77,7 +78,7 @@ class TestListFormDefinitionsByTenantResponse(unittest.TestCase):
                                         source = 'department', 
                                         operator = 'EQ', 
                                         value_type = 'STRING', 
-                                        value = Engineering, )
+                                        value = 'Engineering', )
                                     ], 
                                 effects = [
                                     sailpoint.v2024.models.condition_effect.ConditionEffect(

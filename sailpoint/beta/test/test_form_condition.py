@@ -42,7 +42,7 @@ class TestFormCondition(unittest.TestCase):
                         source = 'department', 
                         operator = 'EQ', 
                         value_type = 'STRING', 
-                        value = Engineering, )
+                        value = 'Engineering', )
                     ],
                 effects = [
                     sailpoint.beta.models.condition_effect.ConditionEffect(

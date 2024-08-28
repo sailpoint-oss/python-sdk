@@ -63,7 +63,8 @@ class TestImportFormDefinitionsRequestInner(unittest.TestCase):
                             config = {label=Department}, 
                             key = 'department', 
                             validations = [
-                                [{validationType=REQUIRED}]
+                                sailpoint.beta.models.form_element_validations_set.FormElementValidationsSet(
+                                    validation_type = 'REQUIRED', )
                                 ], )
                         ], 
                     form_conditions = [
@@ -75,7 +76,7 @@ class TestImportFormDefinitionsRequestInner(unittest.TestCase):
                                     source = 'department', 
                                     operator = 'EQ', 
                                     value_type = 'STRING', 
-                                    value = Engineering, )
+                                    value = 'Engineering', )
                                 ], 
                             effects = [
                                 sailpoint.beta.models.condition_effect.ConditionEffect(

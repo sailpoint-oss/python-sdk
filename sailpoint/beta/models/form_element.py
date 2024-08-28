@@ -29,7 +29,7 @@ class FormElement(BaseModel):
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="Form element identifier.")
     element_type: Optional[StrictStr] = Field(default=None, description="FormElementType value.  TEXT FormElementTypeText TOGGLE FormElementTypeToggle TEXTAREA FormElementTypeTextArea HIDDEN FormElementTypeHidden PHONE FormElementTypePhone EMAIL FormElementTypeEmail SELECT FormElementTypeSelect DATE FormElementTypeDate SECTION FormElementTypeSection COLUMN_SET FormElementTypeColumns IMAGE FormElementTypeImage DESCRIPTION FormElementTypeDescription", alias="elementType")
-    config: Optional[Dict[str, Dict[str, Any]]] = Field(default=None, description="Config object.")
+    config: Optional[Dict[str, Any]] = Field(default=None, description="Config object.")
     key: Optional[StrictStr] = Field(default=None, description="Technical key.")
     validations: Optional[List[FormElementValidationsSet]] = None
     __properties: ClassVar[List[str]] = ["id", "elementType", "config", "key", "validations"]

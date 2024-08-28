@@ -26,7 +26,7 @@ class FormElementValidationsSet(BaseModel):
     """
     Set of FormElementValidation items.
     """ # noqa: E501
-    validation_type: Optional[StrictStr] = Field(default=None, alias="validationType")
+    validation_type: Optional[StrictStr] = Field(default=None, description="The type of data validation that you wish to enforce, e.g., a required field, a minimum length, etc.", alias="validationType")
     __properties: ClassVar[List[str]] = ["validationType"]
 
     @field_validator('validation_type')

@@ -36,7 +36,7 @@ class FormInstanceResponse(BaseModel):
     created_by: Optional[FormInstanceCreatedBy] = Field(default=None, alias="createdBy")
     expire: Optional[StrictStr] = Field(default=None, description="Expire is the maximum amount of time that a form can be in progress. After this time is reached then the form will be moved to a CANCELED state automatically. The user will no longer be able to complete the submission. When a form instance is expires an audit log will be generated for that record")
     form_conditions: Optional[List[FormCondition]] = Field(default=None, description="FormConditions is the conditional logic that modify the form dynamically modify the form as the recipient is interacting out the form", alias="formConditions")
-    form_data: Optional[Dict[str, Dict[str, Any]]] = Field(default=None, description="FormData is the data provided by the form on submit. The data is in a key -> value map", alias="formData")
+    form_data: Optional[Dict[str, Any]] = Field(default=None, description="FormData is the data provided by the form on submit. The data is in a key -> value map", alias="formData")
     form_definition_id: Optional[StrictStr] = Field(default=None, description="FormDefinitionID is the id of the form definition that created this form", alias="formDefinitionId")
     form_elements: Optional[List[FormElement]] = Field(default=None, description="FormElements is the configuration of the form, this would be a repeat of the fields from the form-config", alias="formElements")
     form_errors: Optional[List[FormError]] = Field(default=None, description="FormErrors is an array of form validation errors from the last time the form instance was transitioned to the SUBMITTED state. If the form instance had validation errors then it would be moved to the IN PROGRESS state where the client can retrieve these errors", alias="formErrors")
@@ -129,6 +129,11 @@ class FormInstanceResponse(BaseModel):
                 if _item_recipients:
                     _items.append(_item_recipients.to_dict())
             _dict['recipients'] = _items
+        # set to None if form_data (nullable) is None
+        # and model_fields_set contains the field
+        if self.form_data is None and "form_data" in self.model_fields_set:
+            _dict['formData'] = None
+
         # set to None if form_input (nullable) is None
         # and model_fields_set contains the field
         if self.form_input is None and "form_input" in self.model_fields_set:

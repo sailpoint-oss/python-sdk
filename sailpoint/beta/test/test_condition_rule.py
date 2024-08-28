@@ -39,7 +39,7 @@ class TestConditionRule(unittest.TestCase):
                 source = 'department',
                 operator = 'EQ',
                 value_type = 'STRING',
-                value = Engineering
+                value = 'Engineering'
             )
         else:
             return ConditionRule(

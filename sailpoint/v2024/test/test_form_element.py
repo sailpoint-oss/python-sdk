@@ -40,7 +40,8 @@ class TestFormElement(unittest.TestCase):
                 config = {label=Department},
                 key = 'department',
                 validations = [
-                    [{validationType=REQUIRED}]
+                    sailpoint.v2024.models.form_element_validations_set.FormElementValidationsSet(
+                        validation_type = 'REQUIRED', )
                     ]
             )
         else:
