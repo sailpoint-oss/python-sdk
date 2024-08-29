@@ -20,6 +20,7 @@ import json
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.beta.models.campaign import Campaign
 from sailpoint.beta.models.campaign_template_owner_ref import CampaignTemplateOwnerRef
 from typing import Optional, Set
 from typing_extensions import Self
@@ -32,11 +33,11 @@ class CampaignTemplate(BaseModel):
     name: StrictStr = Field(description="This template's name. Has no bearing on generated campaigns' names.")
     description: StrictStr = Field(description="This template's description. Has no bearing on generated campaigns' descriptions.")
     created: datetime = Field(description="Creation date of Campaign Template")
-    modified: datetime = Field(description="Modification date of Campaign Template")
+    modified: Optional[datetime] = Field(description="Modification date of Campaign Template")
     scheduled: Optional[StrictBool] = Field(default=False, description="Indicates if this campaign template has been scheduled.")
     owner_ref: Optional[CampaignTemplateOwnerRef] = Field(default=None, alias="ownerRef")
     deadline_duration: Optional[StrictStr] = Field(default=None, description="The time period during which the campaign should be completed, formatted as an ISO-8601 Duration. When this template generates a campaign, the campaign's deadline will be the current date plus this duration. For example, if generation occurred on 2020-01-01 and this field was \"P2W\" (two weeks), the resulting campaign's deadline would be 2020-01-15 (the current date plus 14 days).", alias="deadlineDuration")
-    campaign: Dict[str, Any] = Field(description="This will hold campaign related information like name, description etc.")
+    campaign: Campaign
     __properties: ClassVar[List[str]] = ["id", "name", "description", "created", "modified", "scheduled", "ownerRef", "deadlineDuration", "campaign"]
 
     model_config = ConfigDict(
@@ -90,6 +91,11 @@ class CampaignTemplate(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of campaign
         if self.campaign:
             _dict['campaign'] = self.campaign.to_dict()
+        # set to None if modified (nullable) is None
+        # and model_fields_set contains the field
+        if self.modified is None and "modified" in self.model_fields_set:
+            _dict['modified'] = None
+
         return _dict
 
     @classmethod
