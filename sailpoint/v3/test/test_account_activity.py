@@ -40,7 +40,7 @@ class TestAccountActivity(unittest.TestCase):
                 created = '2017-07-11T18:45:37.098Z',
                 modified = '2018-06-25T20:22:28.104Z',
                 completed = '2018-10-19T13:49:37.385Z',
-                completion_status = None,
+                completion_status = 'SUCCESS',
                 type = 'appRequest',
                 requester_identity_summary = sailpoint.v3.models.identity_summary.IdentitySummary(
                     id = 'ff80818155fe8c080155fe8d925b0316', 
@@ -59,7 +59,7 @@ class TestAccountActivity(unittest.TestCase):
                         id = '48c545831b264409a81befcabb0e3c5a', 
                         name = '48c545831b264409a81befcabb0e3c5a', 
                         requested = '2017-07-11T18:45:37.098Z', 
-                        approval_status = null, 
+                        approval_status = 'PENDING', 
                         provisioning_status = 'PENDING', 
                         requester_comment = sailpoint.v3.models.comment.Comment(
                             commenter_id = '2c918084660f45d6016617daa9210584', 
@@ -76,7 +76,7 @@ class TestAccountActivity(unittest.TestCase):
                             commenter_name = 'Adam Kennedy', 
                             body = 'Et quam massa maximus vivamus nisi ut urna tincidunt metus elementum erat.', 
                             date = '2017-07-11T18:45:37.098Z', ), 
-                        operation = null, 
+                        operation = 'ADD', 
                         attribute = 'detectedRoles', 
                         value = 'Treasury Analyst [AccessProfile-1529010191212]', 
                         native_identity = 'Sandie.Camero', 

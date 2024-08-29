@@ -61,7 +61,7 @@ class TestCancelableAccountActivity(unittest.TestCase):
                         id = '48c545831b264409a81befcabb0e3c5a', 
                         name = '48c545831b264409a81befcabb0e3c5a', 
                         requested = '2017-07-11T18:45:37.098Z', 
-                        approval_status = null, 
+                        approval_status = 'PENDING', 
                         provisioning_status = 'PENDING', 
                         requester_comment = sailpoint.beta.models.comment.Comment(
                             commenter_id = '2c918084660f45d6016617daa9210584', 
@@ -78,7 +78,7 @@ class TestCancelableAccountActivity(unittest.TestCase):
                             commenter_name = 'Adam Kennedy', 
                             body = 'Et quam massa maximus vivamus nisi ut urna tincidunt metus elementum erat.', 
                             date = '2017-07-11T18:45:37.098Z', ), 
-                        operation = null, 
+                        operation = 'ADD', 
                         attribute = 'detectedRoles', 
                         value = 'Treasury Analyst [AccessProfile-1529010191212]', 
                         native_identity = 'Sandie.Camero', 

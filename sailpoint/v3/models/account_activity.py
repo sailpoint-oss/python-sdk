@@ -21,6 +21,7 @@ from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v3.models.account_activity_item import AccountActivityItem
+from sailpoint.v3.models.completion_status import CompletionStatus
 from sailpoint.v3.models.execution_status import ExecutionStatus
 from sailpoint.v3.models.identity_summary import IdentitySummary
 from typing import Optional, Set
@@ -35,7 +36,7 @@ class AccountActivity(BaseModel):
     created: Optional[datetime] = Field(default=None, description="When the activity was first created")
     modified: Optional[datetime] = Field(default=None, description="When the activity was last modified")
     completed: Optional[datetime] = Field(default=None, description="When the activity was completed")
-    completion_status: Optional[Any] = Field(default=None, alias="completionStatus")
+    completion_status: Optional[CompletionStatus] = Field(default=None, alias="completionStatus")
     type: Optional[StrictStr] = Field(default=None, description="The type of action the activity performed.  Please see the following list of types.  This list may grow over time.  - CloudAutomated - IdentityAttributeUpdate - appRequest - LifecycleStateChange - AccountStateUpdate - AccountAttributeUpdate - CloudPasswordRequest - Attribute Synchronization Refresh - Certification - Identity Refresh - Lifecycle Change Refresh   [Learn more here](https://documentation.sailpoint.com/saas/help/search/searchable-fields.html#searching-account-activity-data). ")
     requester_identity_summary: Optional[IdentitySummary] = Field(default=None, alias="requesterIdentitySummary")
     target_identity_summary: Optional[IdentitySummary] = Field(default=None, alias="targetIdentitySummary")
@@ -85,9 +86,6 @@ class AccountActivity(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of completion_status
-        if self.completion_status:
-            _dict['completionStatus'] = self.completion_status.to_dict()
         # override the default output from pydantic by calling `to_dict()` of requester_identity_summary
         if self.requester_identity_summary:
             _dict['requesterIdentitySummary'] = self.requester_identity_summary.to_dict()
@@ -110,6 +108,11 @@ class AccountActivity(BaseModel):
         # and model_fields_set contains the field
         if self.completed is None and "completed" in self.model_fields_set:
             _dict['completed'] = None
+
+        # set to None if completion_status (nullable) is None
+        # and model_fields_set contains the field
+        if self.completion_status is None and "completion_status" in self.model_fields_set:
+            _dict['completionStatus'] = None
 
         # set to None if type (nullable) is None
         # and model_fields_set contains the field
@@ -163,7 +166,7 @@ class AccountActivity(BaseModel):
             "created": obj.get("created"),
             "modified": obj.get("modified"),
             "completed": obj.get("completed"),
-            "completionStatus": CompletionStatus.from_dict(obj["completionStatus"]) if obj.get("completionStatus") is not None else None,
+            "completionStatus": obj.get("completionStatus"),
             "type": obj.get("type"),
             "requesterIdentitySummary": IdentitySummary.from_dict(obj["requesterIdentitySummary"]) if obj.get("requesterIdentitySummary") is not None else None,
             "targetIdentitySummary": IdentitySummary.from_dict(obj["targetIdentitySummary"]) if obj.get("targetIdentitySummary") is not None else None,
