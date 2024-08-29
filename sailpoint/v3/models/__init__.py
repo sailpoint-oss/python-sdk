@@ -170,6 +170,10 @@ from sailpoint.v3.models.data_access_policies_inner import DataAccessPoliciesInn
 from sailpoint.v3.models.delete_non_employee_records_in_bulk_request import DeleteNonEmployeeRecordsInBulkRequest
 from sailpoint.v3.models.delete_source202_response import DeleteSource202Response
 from sailpoint.v3.models.delete_vendor_connector_mapping200_response import DeleteVendorConnectorMapping200Response
+from sailpoint.v3.models.dependant_app_connections import DependantAppConnections
+from sailpoint.v3.models.dependant_app_connections_account_source import DependantAppConnectionsAccountSource
+from sailpoint.v3.models.dependant_app_connections_account_source_password_policies_inner import DependantAppConnectionsAccountSourcePasswordPoliciesInner
+from sailpoint.v3.models.dependant_connections_missing_dto import DependantConnectionsMissingDto
 from sailpoint.v3.models.display_reference import DisplayReference
 from sailpoint.v3.models.document_type import DocumentType
 from sailpoint.v3.models.dto_type import DtoType
@@ -236,6 +240,7 @@ from sailpoint.v3.models.identity_profile_all_of_owner import IdentityProfileAll
 from sailpoint.v3.models.identity_profile_exported_object import IdentityProfileExportedObject
 from sailpoint.v3.models.identity_profile_exported_object_self import IdentityProfileExportedObjectSelf
 from sailpoint.v3.models.identity_profile_identity_error_report_arguments import IdentityProfileIdentityErrorReportArguments
+from sailpoint.v3.models.identity_profiles_connections import IdentityProfilesConnections
 from sailpoint.v3.models.identity_reference import IdentityReference
 from sailpoint.v3.models.identity_reference_with_name_and_email import IdentityReferenceWithNameAndEmail
 from sailpoint.v3.models.identity_summary import IdentitySummary
@@ -488,6 +493,7 @@ from sailpoint.v3.models.source_account_correlation_rule import SourceAccountCor
 from sailpoint.v3.models.source_before_provisioning_rule import SourceBeforeProvisioningRule
 from sailpoint.v3.models.source_cluster import SourceCluster
 from sailpoint.v3.models.source_cluster_dto import SourceClusterDto
+from sailpoint.v3.models.source_connections_dto import SourceConnectionsDto
 from sailpoint.v3.models.source_health_dto import SourceHealthDto
 from sailpoint.v3.models.source_management_workgroup import SourceManagementWorkgroup
 from sailpoint.v3.models.source_manager_correlation_mapping import SourceManagerCorrelationMapping
