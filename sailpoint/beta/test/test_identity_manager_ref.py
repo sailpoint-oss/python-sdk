@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.beta.models.identity_dto_lifecycle_state import IdentityDtoLifecycleState
+from sailpoint.beta.models.identity_manager_ref import IdentityManagerRef
 
-class TestIdentityDtoLifecycleState(unittest.TestCase):
-    """IdentityDtoLifecycleState unit test stubs"""
+class TestIdentityManagerRef(unittest.TestCase):
+    """IdentityManagerRef unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,28 +25,27 @@ class TestIdentityDtoLifecycleState(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> IdentityDtoLifecycleState:
-        """Test IdentityDtoLifecycleState
+    def make_instance(self, include_optional) -> IdentityManagerRef:
+        """Test IdentityManagerRef
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `IdentityDtoLifecycleState`
+        # uncomment below to create an instance of `IdentityManagerRef`
         """
-        model = IdentityDtoLifecycleState()
+        model = IdentityManagerRef()
         if include_optional:
-            return IdentityDtoLifecycleState(
-                state_name = 'active',
-                manually_updated = True
+            return IdentityManagerRef(
+                type = 'IDENTITY',
+                id = '2c4180a46faadee4016fb4e018c20626',
+                name = 'Robert Robinson'
             )
         else:
-            return IdentityDtoLifecycleState(
-                state_name = 'active',
-                manually_updated = True,
+            return IdentityManagerRef(
         )
         """
 
-    def testIdentityDtoLifecycleState(self):
-        """Test IdentityDtoLifecycleState"""
+    def testIdentityManagerRef(self):
+        """Test IdentityManagerRef"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

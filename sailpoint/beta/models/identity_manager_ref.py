@@ -22,13 +22,13 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class IdentityDtoManagerRef(BaseModel):
+class IdentityManagerRef(BaseModel):
     """
-    Identity's manager.
+    Identity's manager
     """ # noqa: E501
-    type: Optional[StrictStr] = Field(default=None, description="DTO type of identity's manager.")
-    id: Optional[StrictStr] = Field(default=None, description="ID of identity's manager.")
-    name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of identity's manager.")
+    type: Optional[StrictStr] = Field(default=None, description="DTO type of identity's manager")
+    id: Optional[StrictStr] = Field(default=None, description="ID of identity's manager")
+    name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of identity's manager")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')
@@ -59,7 +59,7 @@ class IdentityDtoManagerRef(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of IdentityDtoManagerRef from a JSON string"""
+        """Create an instance of IdentityManagerRef from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -84,7 +84,7 @@ class IdentityDtoManagerRef(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of IdentityDtoManagerRef from a dict"""
+        """Create an instance of IdentityManagerRef from a dict"""
         if obj is None:
             return None
 

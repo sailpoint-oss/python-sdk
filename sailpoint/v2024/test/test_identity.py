@@ -35,26 +35,26 @@ class TestIdentity(unittest.TestCase):
         model = Identity()
         if include_optional:
             return Identity(
-                id = 'id12345',
-                name = 'aName',
+                id = '01f04e428c484542a241dc89c303b178',
+                name = 'Walter White',
                 created = '2023-01-03T21:16:22.432Z',
                 modified = '2023-01-03T21:16:22.432Z',
                 alias = 'walter.white',
-                email_address = 'sender@example.com',
+                email_address = 'walter.white@example.com',
                 processing_state = 'ERROR',
                 identity_status = 'LOCKED',
-                manager_ref = sailpoint.v2024.models.identity_dto_manager_ref.IdentityDto_managerRef(
+                manager_ref = sailpoint.v2024.models.identity_manager_ref.Identity_managerRef(
                     type = 'IDENTITY', 
                     id = '2c4180a46faadee4016fb4e018c20626', 
                     name = 'Robert Robinson', ),
                 is_manager = True,
                 last_refresh = '2020-11-22T15:42:31.123Z',
-                attributes = {"uid":"Walter White","firstname":"walter","cloudStatus":"UNREGISTERED","displayName":"Walter White","identificationNumber":"942","lastSyncDate":1470348809380,"email":"walter@gmail.com","lastname":"white"},
+                attributes = {uid=86754, firstname=Walter, cloudStatus=UNREGISTERED, displayName=Walter White, identificationNumber=86754, lastSyncDate=1470348809380, email=walter.white@example.com, lastname=White},
                 lifecycle_state = None
             )
         else:
             return Identity(
-                name = 'aName',
+                name = 'Walter White',
         )
         """
 

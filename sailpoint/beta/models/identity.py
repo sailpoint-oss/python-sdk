@@ -20,8 +20,8 @@ import json
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.beta.models.identity_dto_lifecycle_state import IdentityDtoLifecycleState
-from sailpoint.beta.models.identity_dto_manager_ref import IdentityDtoManagerRef
+from sailpoint.beta.models.identity_lifecycle_state import IdentityLifecycleState
+from sailpoint.beta.models.identity_manager_ref import IdentityManagerRef
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,19 +29,19 @@ class Identity(BaseModel):
     """
     Identity
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(default=None, description="System-generated unique ID of the Object")
-    name: StrictStr = Field(description="Name of the Object")
-    created: Optional[datetime] = Field(default=None, description="Creation date of the Object")
-    modified: Optional[datetime] = Field(default=None, description="Last modification date of the Object")
-    alias: Optional[StrictStr] = Field(default=None, description="Alternate unique identifier for the identity")
+    id: Optional[StrictStr] = Field(default=None, description="System-generated unique ID of the identity")
+    name: StrictStr = Field(description="The identity's name is equivalent to its Display Name attribute.")
+    created: Optional[datetime] = Field(default=None, description="Creation date of the identity")
+    modified: Optional[datetime] = Field(default=None, description="Last modification date of the identity")
+    alias: Optional[StrictStr] = Field(default=None, description="The identity's alternate unique identifier is equivalent to its Account Name on the authoritative source account schema.")
     email_address: Optional[StrictStr] = Field(default=None, description="The email address of the identity", alias="emailAddress")
     processing_state: Optional[StrictStr] = Field(default=None, description="The processing state of the identity", alias="processingState")
     identity_status: Optional[StrictStr] = Field(default=None, description="The identity's status in the system", alias="identityStatus")
-    manager_ref: Optional[IdentityDtoManagerRef] = Field(default=None, alias="managerRef")
+    manager_ref: Optional[IdentityManagerRef] = Field(default=None, alias="managerRef")
     is_manager: Optional[StrictBool] = Field(default=False, description="Whether this identity is a manager of another identity", alias="isManager")
     last_refresh: Optional[datetime] = Field(default=None, description="The last time the identity was refreshed by the system", alias="lastRefresh")
     attributes: Optional[Dict[str, Any]] = Field(default=None, description="A map with the identity attributes for the identity")
-    lifecycle_state: Optional[IdentityDtoLifecycleState] = Field(default=None, alias="lifecycleState")
+    lifecycle_state: Optional[IdentityLifecycleState] = Field(default=None, alias="lifecycleState")
     __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "alias", "emailAddress", "processingState", "identityStatus", "managerRef", "isManager", "lastRefresh", "attributes", "lifecycleState"]
 
     @field_validator('processing_state')
@@ -150,11 +150,11 @@ class Identity(BaseModel):
             "emailAddress": obj.get("emailAddress"),
             "processingState": obj.get("processingState"),
             "identityStatus": obj.get("identityStatus"),
-            "managerRef": IdentityDtoManagerRef.from_dict(obj["managerRef"]) if obj.get("managerRef") is not None else None,
+            "managerRef": IdentityManagerRef.from_dict(obj["managerRef"]) if obj.get("managerRef") is not None else None,
             "isManager": obj.get("isManager") if obj.get("isManager") is not None else False,
             "lastRefresh": obj.get("lastRefresh"),
             "attributes": obj.get("attributes"),
-            "lifecycleState": IdentityDtoLifecycleState.from_dict(obj["lifecycleState"]) if obj.get("lifecycleState") is not None else None
+            "lifecycleState": IdentityLifecycleState.from_dict(obj["lifecycleState"]) if obj.get("lifecycleState") is not None else None
         })
         return _obj
 

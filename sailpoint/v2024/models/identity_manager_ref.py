@@ -17,18 +17,29 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
-from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class IdentityDtoLifecycleState(BaseModel):
+class IdentityManagerRef(BaseModel):
     """
-    IdentityDtoLifecycleState
+    Identity's manager
     """ # noqa: E501
-    state_name: StrictStr = Field(description="The name of the lifecycle state", alias="stateName")
-    manually_updated: StrictBool = Field(description="Whether the lifecycle state has been manually or automatically set", alias="manuallyUpdated")
-    __properties: ClassVar[List[str]] = ["stateName", "manuallyUpdated"]
+    type: Optional[StrictStr] = Field(default=None, description="DTO type of identity's manager")
+    id: Optional[StrictStr] = Field(default=None, description="ID of identity's manager")
+    name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of identity's manager")
+    __properties: ClassVar[List[str]] = ["type", "id", "name"]
+
+    @field_validator('type')
+    def type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['IDENTITY']):
+            raise ValueError("must be one of enum values ('IDENTITY')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -48,7 +59,7 @@ class IdentityDtoLifecycleState(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of IdentityDtoLifecycleState from a JSON string"""
+        """Create an instance of IdentityManagerRef from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,7 +84,7 @@ class IdentityDtoLifecycleState(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of IdentityDtoLifecycleState from a dict"""
+        """Create an instance of IdentityManagerRef from a dict"""
         if obj is None:
             return None
 
@@ -81,8 +92,9 @@ class IdentityDtoLifecycleState(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "stateName": obj.get("stateName"),
-            "manuallyUpdated": obj.get("manuallyUpdated")
+            "type": obj.get("type"),
+            "id": obj.get("id"),
+            "name": obj.get("name")
         })
         return _obj
 

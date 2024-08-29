@@ -5,19 +5,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | System-generated unique ID of the Object | [optional] [readonly] 
-**name** | **str** | Name of the Object | 
-**created** | **datetime** | Creation date of the Object | [optional] [readonly] 
-**modified** | **datetime** | Last modification date of the Object | [optional] [readonly] 
-**alias** | **str** | Alternate unique identifier for the identity | [optional] 
+**id** | **str** | System-generated unique ID of the identity | [optional] [readonly] 
+**name** | **str** | The identity&#39;s name is equivalent to its Display Name attribute. | 
+**created** | **datetime** | Creation date of the identity | [optional] [readonly] 
+**modified** | **datetime** | Last modification date of the identity | [optional] [readonly] 
+**alias** | **str** | The identity&#39;s alternate unique identifier is equivalent to its Account Name on the authoritative source account schema. | [optional] 
 **email_address** | **str** | The email address of the identity | [optional] 
 **processing_state** | **str** | The processing state of the identity | [optional] 
 **identity_status** | **str** | The identity&#39;s status in the system | [optional] 
-**manager_ref** | [**IdentityDtoManagerRef**](IdentityDtoManagerRef.md) |  | [optional] 
+**manager_ref** | [**IdentityManagerRef**](IdentityManagerRef.md) |  | [optional] 
 **is_manager** | **bool** | Whether this identity is a manager of another identity | [optional] [default to False]
 **last_refresh** | **datetime** | The last time the identity was refreshed by the system | [optional] 
 **attributes** | **object** | A map with the identity attributes for the identity | [optional] 
-**lifecycle_state** | [**IdentityDtoLifecycleState**](IdentityDtoLifecycleState.md) |  | [optional] 
+**lifecycle_state** | [**IdentityLifecycleState**](IdentityLifecycleState.md) |  | [optional] 
 
 ## Example
 
