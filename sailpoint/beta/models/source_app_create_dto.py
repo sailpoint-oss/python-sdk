@@ -17,19 +17,21 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.beta.models.selector_account_match_config import SelectorAccountMatchConfig
+from sailpoint.beta.models.source_app_create_dto_account_source import SourceAppCreateDtoAccountSource
 from typing import Optional, Set
 from typing_extensions import Self
 
-class Schedule1Hours(BaseModel):
+class SourceAppCreateDto(BaseModel):
     """
-    Schedule1Hours
+    SourceAppCreateDto
     """ # noqa: E501
-    application_id: Optional[StrictStr] = Field(default=None, description="The application id", alias="applicationId")
-    account_match_config: Optional[SelectorAccountMatchConfig] = Field(default=None, alias="accountMatchConfig")
-    __properties: ClassVar[List[str]] = ["applicationId", "accountMatchConfig"]
+    name: StrictStr = Field(description="The source app name")
+    description: StrictStr = Field(description="The description of the source app")
+    match_all_accounts: Optional[StrictBool] = Field(default=False, description="True if the source app match all accounts", alias="matchAllAccounts")
+    account_source: SourceAppCreateDtoAccountSource = Field(alias="accountSource")
+    __properties: ClassVar[List[str]] = ["name", "description", "matchAllAccounts", "accountSource"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -49,7 +51,7 @@ class Schedule1Hours(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Schedule1Hours from a JSON string"""
+        """Create an instance of SourceAppCreateDto from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -70,14 +72,14 @@ class Schedule1Hours(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of account_match_config
-        if self.account_match_config:
-            _dict['accountMatchConfig'] = self.account_match_config.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of account_source
+        if self.account_source:
+            _dict['accountSource'] = self.account_source.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Schedule1Hours from a dict"""
+        """Create an instance of SourceAppCreateDto from a dict"""
         if obj is None:
             return None
 
@@ -85,8 +87,10 @@ class Schedule1Hours(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "applicationId": obj.get("applicationId"),
-            "accountMatchConfig": SelectorAccountMatchConfig.from_dict(obj["accountMatchConfig"]) if obj.get("accountMatchConfig") is not None else None
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "matchAllAccounts": obj.get("matchAllAccounts") if obj.get("matchAllAccounts") is not None else False,
+            "accountSource": SourceAppCreateDtoAccountSource.from_dict(obj["accountSource"]) if obj.get("accountSource") is not None else None
         })
         return _obj
 

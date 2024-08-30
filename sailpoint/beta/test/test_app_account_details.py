@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.beta.models.selector import Selector
+from sailpoint.beta.models.app_account_details import AppAccountDetails
 
-class TestSelector(unittest.TestCase):
-    """Selector unit test stubs"""
+class TestAppAccountDetails(unittest.TestCase):
+    """AppAccountDetails unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,29 +25,32 @@ class TestSelector(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> Selector:
-        """Test Selector
+    def make_instance(self, include_optional) -> AppAccountDetails:
+        """Test AppAccountDetails
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `Selector`
+        # uncomment below to create an instance of `AppAccountDetails`
         """
-        model = Selector()
+        model = AppAccountDetails()
         if include_optional:
-            return Selector(
-                application_id = '2c91808874ff91550175097daaec161c"',
-                account_match_config = sailpoint.beta.models.selector_account_match_config.selector_accountMatchConfig(
-                    match_expression = sailpoint.beta.models.selector_account_match_config_match_expression.selector_accountMatchConfig_matchExpression(
-                        match_terms = [{name=, value=, op=null, container=true, and=false, children=[{name=businessCategory, value=Service, op=eq, container=false, and=false, children=null}]}], 
-                        and = True, ), )
+            return AppAccountDetails(
+                app_id = 'fbf4f72280304f1a8bc808fc2a3bcf7b',
+                app_display_name = 'AD source app',
+                source_account = sailpoint.beta.models.app_account_details_source_account.AppAccountDetails_sourceAccount(
+                    id = 'fbf4f72280304f1a8bc808fc2a3bcf7b', 
+                    native_identity = 'CN=Abby Smith,OU=Austin,OU=Americas,OU=Demo,DC=seri,DC=acme,DC=com', 
+                    display_name = 'Abby Smith', 
+                    source_id = '10efa58ea3954883b52bf74f489ce8f9', 
+                    source_display_name = 'ODS-AD-SOURCE', )
             )
         else:
-            return Selector(
+            return AppAccountDetails(
         )
         """
 
-    def testSelector(self):
-        """Test Selector"""
+    def testAppAccountDetails(self):
+        """Test AppAccountDetails"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

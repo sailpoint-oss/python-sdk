@@ -5,9 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | [**SelectorType**](SelectorType.md) |  | 
-**values** | **List[str]** | The selected values.  | 
-**interval** | **int** | The selected interval for RANGE selectors.  | [optional] 
+**application_id** | **str** | The application id | [optional] 
+**account_match_config** | [**SelectorAccountMatchConfig**](SelectorAccountMatchConfig.md) |  | [optional] 
 
 ## Example
 

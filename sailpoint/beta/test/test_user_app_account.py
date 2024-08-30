@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.beta.models.selector import Selector
+from sailpoint.beta.models.user_app_account import UserAppAccount
 
-class TestSelector(unittest.TestCase):
-    """Selector unit test stubs"""
+class TestUserAppAccount(unittest.TestCase):
+    """UserAppAccount unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,29 +25,27 @@ class TestSelector(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> Selector:
-        """Test Selector
+    def make_instance(self, include_optional) -> UserAppAccount:
+        """Test UserAppAccount
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `Selector`
+        # uncomment below to create an instance of `UserAppAccount`
         """
-        model = Selector()
+        model = UserAppAccount()
         if include_optional:
-            return Selector(
-                application_id = '2c91808874ff91550175097daaec161c"',
-                account_match_config = sailpoint.beta.models.selector_account_match_config.selector_accountMatchConfig(
-                    match_expression = sailpoint.beta.models.selector_account_match_config_match_expression.selector_accountMatchConfig_matchExpression(
-                        match_terms = [{name=, value=, op=null, container=true, and=false, children=[{name=businessCategory, value=Service, op=eq, container=false, and=false, children=null}]}], 
-                        and = True, ), )
+            return UserAppAccount(
+                id = '85d173e7d57e496569df763231d6deb6a',
+                type = 'ACCOUNT',
+                name = 'test account'
             )
         else:
-            return Selector(
+            return UserAppAccount(
         )
         """
 
-    def testSelector(self):
-        """Test Selector"""
+    def testUserAppAccount(self):
+        """Test UserAppAccount"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

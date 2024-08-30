@@ -17,19 +17,19 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.beta.models.selector_account_match_config import SelectorAccountMatchConfig
+from sailpoint.beta.models.match_term import MatchTerm
 from typing import Optional, Set
 from typing_extensions import Self
 
-class Schedule1Hours(BaseModel):
+class SelectorAccountMatchConfigMatchExpression(BaseModel):
     """
-    Schedule1Hours
+    SelectorAccountMatchConfigMatchExpression
     """ # noqa: E501
-    application_id: Optional[StrictStr] = Field(default=None, description="The application id", alias="applicationId")
-    account_match_config: Optional[SelectorAccountMatchConfig] = Field(default=None, alias="accountMatchConfig")
-    __properties: ClassVar[List[str]] = ["applicationId", "accountMatchConfig"]
+    match_terms: Optional[List[MatchTerm]] = Field(default=None, alias="matchTerms")
+    var_and: Optional[StrictBool] = Field(default=True, description="If it is AND operators for match terms", alias="and")
+    __properties: ClassVar[List[str]] = ["matchTerms", "and"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -49,7 +49,7 @@ class Schedule1Hours(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Schedule1Hours from a JSON string"""
+        """Create an instance of SelectorAccountMatchConfigMatchExpression from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -70,14 +70,18 @@ class Schedule1Hours(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of account_match_config
-        if self.account_match_config:
-            _dict['accountMatchConfig'] = self.account_match_config.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in match_terms (list)
+        _items = []
+        if self.match_terms:
+            for _item_match_terms in self.match_terms:
+                if _item_match_terms:
+                    _items.append(_item_match_terms.to_dict())
+            _dict['matchTerms'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Schedule1Hours from a dict"""
+        """Create an instance of SelectorAccountMatchConfigMatchExpression from a dict"""
         if obj is None:
             return None
 
@@ -85,8 +89,8 @@ class Schedule1Hours(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "applicationId": obj.get("applicationId"),
-            "accountMatchConfig": SelectorAccountMatchConfig.from_dict(obj["accountMatchConfig"]) if obj.get("accountMatchConfig") is not None else None
+            "matchTerms": [MatchTerm.from_dict(_item) for _item in obj["matchTerms"]] if obj.get("matchTerms") is not None else None,
+            "and": obj.get("and") if obj.get("and") is not None else True
         })
         return _obj
 

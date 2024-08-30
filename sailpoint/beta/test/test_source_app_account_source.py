@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.beta.models.selector import Selector
+from sailpoint.beta.models.source_app_account_source import SourceAppAccountSource
 
-class TestSelector(unittest.TestCase):
-    """Selector unit test stubs"""
+class TestSourceAppAccountSource(unittest.TestCase):
+    """SourceAppAccountSource unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,29 +25,29 @@ class TestSelector(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> Selector:
-        """Test Selector
+    def make_instance(self, include_optional) -> SourceAppAccountSource:
+        """Test SourceAppAccountSource
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `Selector`
+        # uncomment below to create an instance of `SourceAppAccountSource`
         """
-        model = Selector()
+        model = SourceAppAccountSource()
         if include_optional:
-            return Selector(
-                application_id = '2c91808874ff91550175097daaec161c"',
-                account_match_config = sailpoint.beta.models.selector_account_match_config.selector_accountMatchConfig(
-                    match_expression = sailpoint.beta.models.selector_account_match_config_match_expression.selector_accountMatchConfig_matchExpression(
-                        match_terms = [{name=, value=, op=null, container=true, and=false, children=[{name=businessCategory, value=Service, op=eq, container=false, and=false, children=null}]}], 
-                        and = True, ), )
+            return SourceAppAccountSource(
+                id = '2c9180827ca885d7017ca8ce28a000eb',
+                type = 'SOURCE',
+                name = 'ODS-AD-Source',
+                use_for_password_management = False,
+                password_policies = [{type=PASSWORD_POLICY, id=006a072ecc6647f68bba9f4a4ad34649, name=Password Policy 1}]
             )
         else:
-            return Selector(
+            return SourceAppAccountSource(
         )
         """
 
-    def testSelector(self):
-        """Test Selector"""
+    def testSourceAppAccountSource(self):
+        """Test SourceAppAccountSource"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.beta.models.selector import Selector
+from sailpoint.beta.models.base_reference_dto1 import BaseReferenceDto1
 
-class TestSelector(unittest.TestCase):
-    """Selector unit test stubs"""
+class TestBaseReferenceDto1(unittest.TestCase):
+    """BaseReferenceDto1 unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,29 +25,27 @@ class TestSelector(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> Selector:
-        """Test Selector
+    def make_instance(self, include_optional) -> BaseReferenceDto1:
+        """Test BaseReferenceDto1
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `Selector`
+        # uncomment below to create an instance of `BaseReferenceDto1`
         """
-        model = Selector()
+        model = BaseReferenceDto1()
         if include_optional:
-            return Selector(
-                application_id = '2c91808874ff91550175097daaec161c"',
-                account_match_config = sailpoint.beta.models.selector_account_match_config.selector_accountMatchConfig(
-                    match_expression = sailpoint.beta.models.selector_account_match_config_match_expression.selector_accountMatchConfig_matchExpression(
-                        match_terms = [{name=, value=, op=null, container=true, and=false, children=[{name=businessCategory, value=Service, op=eq, container=false, and=false, children=null}]}], 
-                        and = True, ), )
+            return BaseReferenceDto1(
+                type = 'IDENTITY',
+                id = '2c91808568c529c60168cca6f90c1313',
+                name = 'William Wilson'
             )
         else:
-            return Selector(
+            return BaseReferenceDto1(
         )
         """
 
-    def testSelector(self):
-        """Test Selector"""
+    def testBaseReferenceDto1(self):
+        """Test BaseReferenceDto1"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

@@ -17,9 +17,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.beta.models.selector_type import SelectorType
+from sailpoint.beta.models.selector_account_match_config import SelectorAccountMatchConfig
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,10 +27,9 @@ class Schedule1Days(BaseModel):
     """
     Schedule1Days
     """ # noqa: E501
-    type: SelectorType
-    values: List[StrictStr] = Field(description="The selected values. ")
-    interval: Optional[StrictInt] = Field(default=None, description="The selected interval for RANGE selectors. ")
-    __properties: ClassVar[List[str]] = ["type", "values", "interval"]
+    application_id: Optional[StrictStr] = Field(default=None, description="The application id", alias="applicationId")
+    account_match_config: Optional[SelectorAccountMatchConfig] = Field(default=None, alias="accountMatchConfig")
+    __properties: ClassVar[List[str]] = ["applicationId", "accountMatchConfig"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -71,11 +70,9 @@ class Schedule1Days(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if interval (nullable) is None
-        # and model_fields_set contains the field
-        if self.interval is None and "interval" in self.model_fields_set:
-            _dict['interval'] = None
-
+        # override the default output from pydantic by calling `to_dict()` of account_match_config
+        if self.account_match_config:
+            _dict['accountMatchConfig'] = self.account_match_config.to_dict()
         return _dict
 
     @classmethod
@@ -88,9 +85,8 @@ class Schedule1Days(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "type": obj.get("type"),
-            "values": obj.get("values"),
-            "interval": obj.get("interval")
+            "applicationId": obj.get("applicationId"),
+            "accountMatchConfig": SelectorAccountMatchConfig.from_dict(obj["accountMatchConfig"]) if obj.get("accountMatchConfig") is not None else None
         })
         return _obj
 
