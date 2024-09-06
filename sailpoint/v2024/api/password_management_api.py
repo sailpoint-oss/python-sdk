@@ -45,7 +45,7 @@ class PasswordManagementApi:
 
 
     @validate_call
-    def generate_digit_token(
+    def create_digit_token(
         self,
         password_digit_token_reset: PasswordDigitTokenReset,
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
@@ -92,7 +92,7 @@ class PasswordManagementApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._generate_digit_token_serialize(
+        _param = self._create_digit_token_serialize(
             x_sail_point_experimental=x_sail_point_experimental,
             password_digit_token_reset=password_digit_token_reset,
             _request_auth=_request_auth,
@@ -104,7 +104,9 @@ class PasswordManagementApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "PasswordDigitToken",
             '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -119,7 +121,7 @@ class PasswordManagementApi:
 
 
     @validate_call
-    def generate_digit_token_with_http_info(
+    def create_digit_token_with_http_info(
         self,
         password_digit_token_reset: PasswordDigitTokenReset,
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
@@ -166,7 +168,7 @@ class PasswordManagementApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._generate_digit_token_serialize(
+        _param = self._create_digit_token_serialize(
             x_sail_point_experimental=x_sail_point_experimental,
             password_digit_token_reset=password_digit_token_reset,
             _request_auth=_request_auth,
@@ -178,7 +180,9 @@ class PasswordManagementApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "PasswordDigitToken",
             '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -193,7 +197,7 @@ class PasswordManagementApi:
 
 
     @validate_call
-    def generate_digit_token_without_preload_content(
+    def create_digit_token_without_preload_content(
         self,
         password_digit_token_reset: PasswordDigitTokenReset,
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
@@ -240,7 +244,7 @@ class PasswordManagementApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._generate_digit_token_serialize(
+        _param = self._create_digit_token_serialize(
             x_sail_point_experimental=x_sail_point_experimental,
             password_digit_token_reset=password_digit_token_reset,
             _request_auth=_request_auth,
@@ -252,7 +256,9 @@ class PasswordManagementApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "PasswordDigitToken",
             '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -262,7 +268,7 @@ class PasswordManagementApi:
         return response_data.response
 
 
-    def _generate_digit_token_serialize(
+    def _create_digit_token_serialize(
         self,
         x_sail_point_experimental,
         password_digit_token_reset,

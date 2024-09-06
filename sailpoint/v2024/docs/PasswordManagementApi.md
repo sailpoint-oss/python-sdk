@@ -4,14 +4,14 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v2024*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**generate_digit_token**](PasswordManagementApi.md#generate_digit_token) | **POST** /generate-password-reset-token/digit | Generate a digit token
+[**create_digit_token**](PasswordManagementApi.md#create_digit_token) | **POST** /generate-password-reset-token/digit | Generate a digit token
 [**get_password_change_status**](PasswordManagementApi.md#get_password_change_status) | **GET** /password-change-status/{id} | Get Password Change Request Status
 [**query_password_info**](PasswordManagementApi.md#query_password_info) | **POST** /query-password-info | Query Password Info
 [**set_password**](PasswordManagementApi.md#set_password) | **POST** /set-password | Set Identity&#39;s Password
 
 
-# **generate_digit_token**
-> PasswordDigitToken generate_digit_token(x_sail_point_experimental, password_digit_token_reset)
+# **create_digit_token**
+> PasswordDigitToken create_digit_token(x_sail_point_experimental, password_digit_token_reset)
 
 Generate a digit token
 
@@ -53,11 +53,11 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
 
     try:
         # Generate a digit token
-        api_response = api_instance.generate_digit_token(x_sail_point_experimental, password_digit_token_reset)
-        print("The response of PasswordManagementApi->generate_digit_token:\n")
+        api_response = api_instance.create_digit_token(x_sail_point_experimental, password_digit_token_reset)
+        print("The response of PasswordManagementApi->create_digit_token:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling PasswordManagementApi->generate_digit_token: %s\n" % e)
+        print("Exception when calling PasswordManagementApi->create_digit_token: %s\n" % e)
 ```
 
 
@@ -89,7 +89,9 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | The digit token for password management. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
 **500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

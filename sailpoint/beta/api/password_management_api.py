@@ -44,7 +44,7 @@ class PasswordManagementApi:
 
 
     @validate_call
-    def generate_digit_token(
+    def create_digit_token(
         self,
         password_digit_token_reset: PasswordDigitTokenReset,
         _request_timeout: Union[
@@ -88,7 +88,7 @@ class PasswordManagementApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._generate_digit_token_serialize(
+        _param = self._create_digit_token_serialize(
             password_digit_token_reset=password_digit_token_reset,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -99,7 +99,9 @@ class PasswordManagementApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "PasswordDigitToken",
             '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -114,7 +116,7 @@ class PasswordManagementApi:
 
 
     @validate_call
-    def generate_digit_token_with_http_info(
+    def create_digit_token_with_http_info(
         self,
         password_digit_token_reset: PasswordDigitTokenReset,
         _request_timeout: Union[
@@ -158,7 +160,7 @@ class PasswordManagementApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._generate_digit_token_serialize(
+        _param = self._create_digit_token_serialize(
             password_digit_token_reset=password_digit_token_reset,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -169,7 +171,9 @@ class PasswordManagementApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "PasswordDigitToken",
             '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -184,7 +188,7 @@ class PasswordManagementApi:
 
 
     @validate_call
-    def generate_digit_token_without_preload_content(
+    def create_digit_token_without_preload_content(
         self,
         password_digit_token_reset: PasswordDigitTokenReset,
         _request_timeout: Union[
@@ -228,7 +232,7 @@ class PasswordManagementApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._generate_digit_token_serialize(
+        _param = self._create_digit_token_serialize(
             password_digit_token_reset=password_digit_token_reset,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -239,7 +243,9 @@ class PasswordManagementApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "PasswordDigitToken",
             '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -249,7 +255,7 @@ class PasswordManagementApi:
         return response_data.response
 
 
-    def _generate_digit_token_serialize(
+    def _create_digit_token_serialize(
         self,
         password_digit_token_reset,
         _request_auth,

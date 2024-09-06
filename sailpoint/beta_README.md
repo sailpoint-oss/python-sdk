@@ -391,7 +391,7 @@ Class | Method | HTTP request | Description
 *PasswordConfigurationApi* | [**put_password_org_config**](sailpoint/beta/docs/PasswordConfigurationApi.md#put_password_org_config) | **PUT** /password-org-config | Update Password Org Config
 *PasswordDictionaryApi* | [**get_password_dictionary**](sailpoint/beta/docs/PasswordDictionaryApi.md#get_password_dictionary) | **GET** /password-dictionary | Get Password Dictionary
 *PasswordDictionaryApi* | [**put_password_dictionary**](sailpoint/beta/docs/PasswordDictionaryApi.md#put_password_dictionary) | **PUT** /password-dictionary | Update Password Dictionary
-*PasswordManagementApi* | [**generate_digit_token**](sailpoint/beta/docs/PasswordManagementApi.md#generate_digit_token) | **POST** /generate-password-reset-token/digit | Generate a digit token
+*PasswordManagementApi* | [**create_digit_token**](sailpoint/beta/docs/PasswordManagementApi.md#create_digit_token) | **POST** /generate-password-reset-token/digit | Generate a digit token
 *PasswordManagementApi* | [**get_identity_password_change_status**](sailpoint/beta/docs/PasswordManagementApi.md#get_identity_password_change_status) | **GET** /password-change-status/{id} | Get Password Change Request Status
 *PasswordManagementApi* | [**query_password_info**](sailpoint/beta/docs/PasswordManagementApi.md#query_password_info) | **POST** /query-password-info | Query Password Info
 *PasswordManagementApi* | [**set_identity_password**](sailpoint/beta/docs/PasswordManagementApi.md#set_identity_password) | **POST** /set-password | Set Identity&#39;s Password

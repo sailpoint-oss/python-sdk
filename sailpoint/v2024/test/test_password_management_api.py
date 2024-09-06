@@ -26,8 +26,8 @@ class TestPasswordManagementApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_generate_digit_token(self) -> None:
-        """Test case for generate_digit_token
+    def test_create_digit_token(self) -> None:
+        """Test case for create_digit_token
 
         Generate a digit token
         """
