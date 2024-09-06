@@ -125,6 +125,20 @@ Class | Method | HTTP request | Description
 *ApprovalsApi* | [**get_approval**](sailpoint/v2024/docs/ApprovalsApi.md#get_approval) | **GET** /generic-approvals/{id} | Get an approval
 *ApprovalsApi* | [**get_approvals**](sailpoint/v2024/docs/ApprovalsApi.md#get_approvals) | **GET** /generic-approvals | Get Approvals
 *ApprovalsApi* | [**patch_approval**](sailpoint/v2024/docs/ApprovalsApi.md#patch_approval) | **PATCH** /generic-approvals/{id} | Change an approval
+*AppsApi* | [**create_source_app**](sailpoint/v2024/docs/AppsApi.md#create_source_app) | **POST** /source-apps | Create source app
+*AppsApi* | [**delete_access_profiles_from_source_app_by_bulk**](sailpoint/v2024/docs/AppsApi.md#delete_access_profiles_from_source_app_by_bulk) | **POST** /source-apps/{id}/access-profiles/bulk-remove | Bulk remove access profiles from the specified source app
+*AppsApi* | [**delete_source_app**](sailpoint/v2024/docs/AppsApi.md#delete_source_app) | **DELETE** /source-apps/{id} | Delete source app by ID
+*AppsApi* | [**get_source_app**](sailpoint/v2024/docs/AppsApi.md#get_source_app) | **GET** /source-apps/{id} | Get source app by ID
+*AppsApi* | [**list_access_profiles_for_source_app**](sailpoint/v2024/docs/AppsApi.md#list_access_profiles_for_source_app) | **GET** /source-apps/{id}/access-profiles | List access profiles for the specified source app
+*AppsApi* | [**list_all_source_app**](sailpoint/v2024/docs/AppsApi.md#list_all_source_app) | **GET** /source-apps/all | List all source apps
+*AppsApi* | [**list_all_user_apps**](sailpoint/v2024/docs/AppsApi.md#list_all_user_apps) | **GET** /user-apps/all | List all user apps
+*AppsApi* | [**list_assigned_source_app**](sailpoint/v2024/docs/AppsApi.md#list_assigned_source_app) | **GET** /source-apps/assigned | List assigned source apps
+*AppsApi* | [**list_available_accounts_for_user_app**](sailpoint/v2024/docs/AppsApi.md#list_available_accounts_for_user_app) | **GET** /user-apps/{id}/available-accounts | List available accounts for user app
+*AppsApi* | [**list_available_source_apps**](sailpoint/v2024/docs/AppsApi.md#list_available_source_apps) | **GET** /source-apps | List available source apps
+*AppsApi* | [**list_owned_user_apps**](sailpoint/v2024/docs/AppsApi.md#list_owned_user_apps) | **GET** /user-apps | List owned user apps
+*AppsApi* | [**patch_source_app**](sailpoint/v2024/docs/AppsApi.md#patch_source_app) | **PATCH** /source-apps/{id} | Patch source app by ID
+*AppsApi* | [**patch_user_app**](sailpoint/v2024/docs/AppsApi.md#patch_user_app) | **PATCH** /user-apps/{id} | Patch user app by ID
+*AppsApi* | [**update_source_apps_in_bulk**](sailpoint/v2024/docs/AppsApi.md#update_source_apps_in_bulk) | **POST** /source-apps/bulk-update | Bulk update source apps
 *AuthProfileApi* | [**get_profile_config**](sailpoint/v2024/docs/AuthProfileApi.md#get_profile_config) | **GET** /auth-profiles/{id} | Get Auth Profile.
 *AuthProfileApi* | [**get_profile_config_list**](sailpoint/v2024/docs/AuthProfileApi.md#get_profile_config_list) | **GET** /auth-profiles | Get list of Auth Profiles.
 *AuthProfileApi* | [**patch_profile_config**](sailpoint/v2024/docs/AuthProfileApi.md#patch_profile_config) | **PATCH** /auth-profiles/{id} | Patch a specified Auth Profile
@@ -686,6 +700,8 @@ Class | Method | HTTP request | Description
  - [AccessProfileBulkDeleteRequest](sailpoint/v2024/docs/AccessProfileBulkDeleteRequest.md)
  - [AccessProfileBulkDeleteResponse](sailpoint/v2024/docs/AccessProfileBulkDeleteResponse.md)
  - [AccessProfileBulkUpdateRequestInner](sailpoint/v2024/docs/AccessProfileBulkUpdateRequestInner.md)
+ - [AccessProfileDetails](sailpoint/v2024/docs/AccessProfileDetails.md)
+ - [AccessProfileDetailsAccountSelector](sailpoint/v2024/docs/AccessProfileDetailsAccountSelector.md)
  - [AccessProfileDocument](sailpoint/v2024/docs/AccessProfileDocument.md)
  - [AccessProfileDocumentAllOfSource](sailpoint/v2024/docs/AccessProfileDocumentAllOfSource.md)
  - [AccessProfileEntitlement](sailpoint/v2024/docs/AccessProfileEntitlement.md)
@@ -784,6 +800,8 @@ Class | Method | HTTP request | Description
  - [AggregationType](sailpoint/v2024/docs/AggregationType.md)
  - [Aggregations](sailpoint/v2024/docs/Aggregations.md)
  - [App](sailpoint/v2024/docs/App.md)
+ - [AppAccountDetails](sailpoint/v2024/docs/AppAccountDetails.md)
+ - [AppAccountDetailsSourceAccount](sailpoint/v2024/docs/AppAccountDetailsSourceAccount.md)
  - [AppAllOfAccount](sailpoint/v2024/docs/AppAllOfAccount.md)
  - [Approval](sailpoint/v2024/docs/Approval.md)
  - [Approval1](sailpoint/v2024/docs/Approval1.md)
@@ -1175,6 +1193,7 @@ Class | Method | HTTP request | Description
  - [ManualWorkItemDetailsOriginalOwner](sailpoint/v2024/docs/ManualWorkItemDetailsOriginalOwner.md)
  - [ManualWorkItemState](sailpoint/v2024/docs/ManualWorkItemState.md)
  - [ManuallyUpdatedFieldsDTO](sailpoint/v2024/docs/ManuallyUpdatedFieldsDTO.md)
+ - [MatchTerm](sailpoint/v2024/docs/MatchTerm.md)
  - [Medium](sailpoint/v2024/docs/Medium.md)
  - [MetricAggregation](sailpoint/v2024/docs/MetricAggregation.md)
  - [MetricResponse](sailpoint/v2024/docs/MetricResponse.md)
@@ -1447,7 +1466,8 @@ Class | Method | HTTP request | Description
  - [Segment](sailpoint/v2024/docs/Segment.md)
  - [SegmentVisibilityCriteria](sailpoint/v2024/docs/SegmentVisibilityCriteria.md)
  - [Selector](sailpoint/v2024/docs/Selector.md)
- - [SelectorType](sailpoint/v2024/docs/SelectorType.md)
+ - [SelectorAccountMatchConfig](sailpoint/v2024/docs/SelectorAccountMatchConfig.md)
+ - [SelectorAccountMatchConfigMatchExpression](sailpoint/v2024/docs/SelectorAccountMatchConfigMatchExpression.md)
  - [SelfImportExportDto](sailpoint/v2024/docs/SelfImportExportDto.md)
  - [SendTestNotificationRequestDto](sailpoint/v2024/docs/SendTestNotificationRequestDto.md)
  - [ServiceDeskIntegrationDto](sailpoint/v2024/docs/ServiceDeskIntegrationDto.md)
@@ -1484,6 +1504,12 @@ Class | Method | HTTP request | Description
  - [SourceAccountCreated](sailpoint/v2024/docs/SourceAccountCreated.md)
  - [SourceAccountDeleted](sailpoint/v2024/docs/SourceAccountDeleted.md)
  - [SourceAccountUpdated](sailpoint/v2024/docs/SourceAccountUpdated.md)
+ - [SourceApp](sailpoint/v2024/docs/SourceApp.md)
+ - [SourceAppAccountSource](sailpoint/v2024/docs/SourceAppAccountSource.md)
+ - [SourceAppBulkUpdateRequest](sailpoint/v2024/docs/SourceAppBulkUpdateRequest.md)
+ - [SourceAppCreateDto](sailpoint/v2024/docs/SourceAppCreateDto.md)
+ - [SourceAppCreateDtoAccountSource](sailpoint/v2024/docs/SourceAppCreateDtoAccountSource.md)
+ - [SourceAppPatchDto](sailpoint/v2024/docs/SourceAppPatchDto.md)
  - [SourceBeforeProvisioningRule](sailpoint/v2024/docs/SourceBeforeProvisioningRule.md)
  - [SourceCluster](sailpoint/v2024/docs/SourceCluster.md)
  - [SourceClusterDto](sailpoint/v2024/docs/SourceClusterDto.md)
@@ -1575,6 +1601,11 @@ Class | Method | HTTP request | Description
  - [UploadsRequest](sailpoint/v2024/docs/UploadsRequest.md)
  - [UploadsResponse](sailpoint/v2024/docs/UploadsResponse.md)
  - [UsageType](sailpoint/v2024/docs/UsageType.md)
+ - [UserApp](sailpoint/v2024/docs/UserApp.md)
+ - [UserAppAccount](sailpoint/v2024/docs/UserAppAccount.md)
+ - [UserAppOwner](sailpoint/v2024/docs/UserAppOwner.md)
+ - [UserAppSource](sailpoint/v2024/docs/UserAppSource.md)
+ - [UserAppSourceApp](sailpoint/v2024/docs/UserAppSourceApp.md)
  - [V3ConnectorDto](sailpoint/v2024/docs/V3ConnectorDto.md)
  - [V3CreateConnectorDto](sailpoint/v2024/docs/V3CreateConnectorDto.md)
  - [VAClusterStatusChangeEvent](sailpoint/v2024/docs/VAClusterStatusChangeEvent.md)

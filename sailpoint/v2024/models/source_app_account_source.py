@@ -17,19 +17,22 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2024.models.selector_account_match_config import SelectorAccountMatchConfig
+from sailpoint.v2024.models.base_reference_dto import BaseReferenceDto
 from typing import Optional, Set
 from typing_extensions import Self
 
-class Schedule1Days(BaseModel):
+class SourceAppAccountSource(BaseModel):
     """
-    Schedule1Days
+    SourceAppAccountSource
     """ # noqa: E501
-    application_id: Optional[StrictStr] = Field(default=None, description="The application id", alias="applicationId")
-    account_match_config: Optional[SelectorAccountMatchConfig] = Field(default=None, alias="accountMatchConfig")
-    __properties: ClassVar[List[str]] = ["applicationId", "accountMatchConfig"]
+    id: Optional[StrictStr] = Field(default=None, description="The source ID")
+    type: Optional[StrictStr] = Field(default=None, description="The source type, will always be \"SOURCE\"")
+    name: Optional[StrictStr] = Field(default=None, description="The source name")
+    use_for_password_management: Optional[StrictBool] = Field(default=False, description="If the source is used for password management", alias="useForPasswordManagement")
+    password_policies: Optional[List[BaseReferenceDto]] = Field(default=None, description="The password policies for the source", alias="passwordPolicies")
+    __properties: ClassVar[List[str]] = ["id", "type", "name", "useForPasswordManagement", "passwordPolicies"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -49,7 +52,7 @@ class Schedule1Days(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Schedule1Days from a JSON string"""
+        """Create an instance of SourceAppAccountSource from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -70,14 +73,23 @@ class Schedule1Days(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of account_match_config
-        if self.account_match_config:
-            _dict['accountMatchConfig'] = self.account_match_config.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in password_policies (list)
+        _items = []
+        if self.password_policies:
+            for _item_password_policies in self.password_policies:
+                if _item_password_policies:
+                    _items.append(_item_password_policies.to_dict())
+            _dict['passwordPolicies'] = _items
+        # set to None if password_policies (nullable) is None
+        # and model_fields_set contains the field
+        if self.password_policies is None and "password_policies" in self.model_fields_set:
+            _dict['passwordPolicies'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Schedule1Days from a dict"""
+        """Create an instance of SourceAppAccountSource from a dict"""
         if obj is None:
             return None
 
@@ -85,8 +97,11 @@ class Schedule1Days(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "applicationId": obj.get("applicationId"),
-            "accountMatchConfig": SelectorAccountMatchConfig.from_dict(obj["accountMatchConfig"]) if obj.get("accountMatchConfig") is not None else None
+            "id": obj.get("id"),
+            "type": obj.get("type"),
+            "name": obj.get("name"),
+            "useForPasswordManagement": obj.get("useForPasswordManagement") if obj.get("useForPasswordManagement") is not None else False,
+            "passwordPolicies": [BaseReferenceDto.from_dict(_item) for _item in obj["passwordPolicies"]] if obj.get("passwordPolicies") is not None else None
         })
         return _obj
 

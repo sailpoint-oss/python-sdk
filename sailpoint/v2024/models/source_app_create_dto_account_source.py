@@ -19,17 +19,17 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2024.models.selector_account_match_config import SelectorAccountMatchConfig
 from typing import Optional, Set
 from typing_extensions import Self
 
-class Schedule1Days(BaseModel):
+class SourceAppCreateDtoAccountSource(BaseModel):
     """
-    Schedule1Days
+    SourceAppCreateDtoAccountSource
     """ # noqa: E501
-    application_id: Optional[StrictStr] = Field(default=None, description="The application id", alias="applicationId")
-    account_match_config: Optional[SelectorAccountMatchConfig] = Field(default=None, alias="accountMatchConfig")
-    __properties: ClassVar[List[str]] = ["applicationId", "accountMatchConfig"]
+    id: StrictStr = Field(description="The source ID")
+    type: Optional[StrictStr] = Field(default=None, description="The source type, will always be \"SOURCE\"")
+    name: Optional[StrictStr] = Field(default=None, description="The source name")
+    __properties: ClassVar[List[str]] = ["id", "type", "name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -49,7 +49,7 @@ class Schedule1Days(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Schedule1Days from a JSON string"""
+        """Create an instance of SourceAppCreateDtoAccountSource from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -70,14 +70,11 @@ class Schedule1Days(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of account_match_config
-        if self.account_match_config:
-            _dict['accountMatchConfig'] = self.account_match_config.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Schedule1Days from a dict"""
+        """Create an instance of SourceAppCreateDtoAccountSource from a dict"""
         if obj is None:
             return None
 
@@ -85,8 +82,9 @@ class Schedule1Days(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "applicationId": obj.get("applicationId"),
-            "accountMatchConfig": SelectorAccountMatchConfig.from_dict(obj["accountMatchConfig"]) if obj.get("accountMatchConfig") is not None else None
+            "id": obj.get("id"),
+            "type": obj.get("type"),
+            "name": obj.get("name")
         })
         return _obj
 

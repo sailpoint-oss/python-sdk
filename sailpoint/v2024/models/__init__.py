@@ -39,6 +39,8 @@ from sailpoint.v2024.models.access_profile_approval_scheme import AccessProfileA
 from sailpoint.v2024.models.access_profile_bulk_delete_request import AccessProfileBulkDeleteRequest
 from sailpoint.v2024.models.access_profile_bulk_delete_response import AccessProfileBulkDeleteResponse
 from sailpoint.v2024.models.access_profile_bulk_update_request_inner import AccessProfileBulkUpdateRequestInner
+from sailpoint.v2024.models.access_profile_details import AccessProfileDetails
+from sailpoint.v2024.models.access_profile_details_account_selector import AccessProfileDetailsAccountSelector
 from sailpoint.v2024.models.access_profile_document import AccessProfileDocument
 from sailpoint.v2024.models.access_profile_document_all_of_source import AccessProfileDocumentAllOfSource
 from sailpoint.v2024.models.access_profile_entitlement import AccessProfileEntitlement
@@ -137,6 +139,8 @@ from sailpoint.v2024.models.aggregation_result import AggregationResult
 from sailpoint.v2024.models.aggregation_type import AggregationType
 from sailpoint.v2024.models.aggregations import Aggregations
 from sailpoint.v2024.models.app import App
+from sailpoint.v2024.models.app_account_details import AppAccountDetails
+from sailpoint.v2024.models.app_account_details_source_account import AppAccountDetailsSourceAccount
 from sailpoint.v2024.models.app_all_of_account import AppAllOfAccount
 from sailpoint.v2024.models.approval import Approval
 from sailpoint.v2024.models.approval1 import Approval1
@@ -528,6 +532,7 @@ from sailpoint.v2024.models.manual_work_item_details_current_owner import Manual
 from sailpoint.v2024.models.manual_work_item_details_original_owner import ManualWorkItemDetailsOriginalOwner
 from sailpoint.v2024.models.manual_work_item_state import ManualWorkItemState
 from sailpoint.v2024.models.manually_updated_fields_dto import ManuallyUpdatedFieldsDTO
+from sailpoint.v2024.models.match_term import MatchTerm
 from sailpoint.v2024.models.medium import Medium
 from sailpoint.v2024.models.metric_aggregation import MetricAggregation
 from sailpoint.v2024.models.metric_response import MetricResponse
@@ -800,7 +805,8 @@ from sailpoint.v2024.models.sed_patch import SedPatch
 from sailpoint.v2024.models.segment import Segment
 from sailpoint.v2024.models.segment_visibility_criteria import SegmentVisibilityCriteria
 from sailpoint.v2024.models.selector import Selector
-from sailpoint.v2024.models.selector_type import SelectorType
+from sailpoint.v2024.models.selector_account_match_config import SelectorAccountMatchConfig
+from sailpoint.v2024.models.selector_account_match_config_match_expression import SelectorAccountMatchConfigMatchExpression
 from sailpoint.v2024.models.self_import_export_dto import SelfImportExportDto
 from sailpoint.v2024.models.send_test_notification_request_dto import SendTestNotificationRequestDto
 from sailpoint.v2024.models.service_desk_integration_dto import ServiceDeskIntegrationDto
@@ -837,6 +843,12 @@ from sailpoint.v2024.models.source_account_correlation_rule import SourceAccount
 from sailpoint.v2024.models.source_account_created import SourceAccountCreated
 from sailpoint.v2024.models.source_account_deleted import SourceAccountDeleted
 from sailpoint.v2024.models.source_account_updated import SourceAccountUpdated
+from sailpoint.v2024.models.source_app import SourceApp
+from sailpoint.v2024.models.source_app_account_source import SourceAppAccountSource
+from sailpoint.v2024.models.source_app_bulk_update_request import SourceAppBulkUpdateRequest
+from sailpoint.v2024.models.source_app_create_dto import SourceAppCreateDto
+from sailpoint.v2024.models.source_app_create_dto_account_source import SourceAppCreateDtoAccountSource
+from sailpoint.v2024.models.source_app_patch_dto import SourceAppPatchDto
 from sailpoint.v2024.models.source_before_provisioning_rule import SourceBeforeProvisioningRule
 from sailpoint.v2024.models.source_cluster import SourceCluster
 from sailpoint.v2024.models.source_cluster_dto import SourceClusterDto
@@ -928,6 +940,11 @@ from sailpoint.v2024.models.update_detail import UpdateDetail
 from sailpoint.v2024.models.uploads_request import UploadsRequest
 from sailpoint.v2024.models.uploads_response import UploadsResponse
 from sailpoint.v2024.models.usage_type import UsageType
+from sailpoint.v2024.models.user_app import UserApp
+from sailpoint.v2024.models.user_app_account import UserAppAccount
+from sailpoint.v2024.models.user_app_owner import UserAppOwner
+from sailpoint.v2024.models.user_app_source import UserAppSource
+from sailpoint.v2024.models.user_app_source_app import UserAppSourceApp
 from sailpoint.v2024.models.v3_connector_dto import V3ConnectorDto
 from sailpoint.v2024.models.v3_create_connector_dto import V3CreateConnectorDto
 from sailpoint.v2024.models.va_cluster_status_change_event import VAClusterStatusChangeEvent

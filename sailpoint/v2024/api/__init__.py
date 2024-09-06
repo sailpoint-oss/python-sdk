@@ -12,6 +12,7 @@ from sailpoint.v2024.api.account_usages_api import AccountUsagesApi
 from sailpoint.v2024.api.accounts_api import AccountsApi
 from sailpoint.v2024.api.application_discovery_api import ApplicationDiscoveryApi
 from sailpoint.v2024.api.approvals_api import ApprovalsApi
+from sailpoint.v2024.api.apps_api import AppsApi
 from sailpoint.v2024.api.auth_profile_api import AuthProfileApi
 from sailpoint.v2024.api.auth_users_api import AuthUsersApi
 from sailpoint.v2024.api.branding_api import BrandingApi

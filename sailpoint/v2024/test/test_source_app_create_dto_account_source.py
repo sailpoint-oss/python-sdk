@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2024.models.schedule1_hours import Schedule1Hours
+from sailpoint.v2024.models.source_app_create_dto_account_source import SourceAppCreateDtoAccountSource
 
-class TestSchedule1Hours(unittest.TestCase):
-    """Schedule1Hours unit test stubs"""
+class TestSourceAppCreateDtoAccountSource(unittest.TestCase):
+    """SourceAppCreateDtoAccountSource unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,29 +25,28 @@ class TestSchedule1Hours(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> Schedule1Hours:
-        """Test Schedule1Hours
+    def make_instance(self, include_optional) -> SourceAppCreateDtoAccountSource:
+        """Test SourceAppCreateDtoAccountSource
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `Schedule1Hours`
+        # uncomment below to create an instance of `SourceAppCreateDtoAccountSource`
         """
-        model = Schedule1Hours()
+        model = SourceAppCreateDtoAccountSource()
         if include_optional:
-            return Schedule1Hours(
-                application_id = '2c91808874ff91550175097daaec161c"',
-                account_match_config = sailpoint.v2024.models.selector_account_match_config.selector_accountMatchConfig(
-                    match_expression = sailpoint.v2024.models.selector_account_match_config_match_expression.selector_accountMatchConfig_matchExpression(
-                        match_terms = [{name=, value=, op=null, container=true, and=false, children=[{name=businessCategory, value=Service, op=eq, container=false, and=false, children=null}]}], 
-                        and = True, ), )
+            return SourceAppCreateDtoAccountSource(
+                id = '2c9180827ca885d7017ca8ce28a000eb',
+                type = 'SOURCE',
+                name = 'ODS-AD-Source'
             )
         else:
-            return Schedule1Hours(
+            return SourceAppCreateDtoAccountSource(
+                id = '2c9180827ca885d7017ca8ce28a000eb',
         )
         """
 
-    def testSchedule1Hours(self):
-        """Test Schedule1Hours"""
+    def testSourceAppCreateDtoAccountSource(self):
+        """Test SourceAppCreateDtoAccountSource"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

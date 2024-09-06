@@ -19,17 +19,19 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2024.models.selector_account_match_config import SelectorAccountMatchConfig
 from typing import Optional, Set
 from typing_extensions import Self
 
-class Schedule1Days(BaseModel):
+class AppAccountDetailsSourceAccount(BaseModel):
     """
-    Schedule1Days
+    AppAccountDetailsSourceAccount
     """ # noqa: E501
-    application_id: Optional[StrictStr] = Field(default=None, description="The application id", alias="applicationId")
-    account_match_config: Optional[SelectorAccountMatchConfig] = Field(default=None, alias="accountMatchConfig")
-    __properties: ClassVar[List[str]] = ["applicationId", "accountMatchConfig"]
+    id: Optional[StrictStr] = Field(default=None, description="The account ID")
+    native_identity: Optional[StrictStr] = Field(default=None, description="The native identity of account", alias="nativeIdentity")
+    display_name: Optional[StrictStr] = Field(default=None, description="The display name of account", alias="displayName")
+    source_id: Optional[StrictStr] = Field(default=None, description="The source ID of account", alias="sourceId")
+    source_display_name: Optional[StrictStr] = Field(default=None, description="The source name of account", alias="sourceDisplayName")
+    __properties: ClassVar[List[str]] = ["id", "nativeIdentity", "displayName", "sourceId", "sourceDisplayName"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -49,7 +51,7 @@ class Schedule1Days(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Schedule1Days from a JSON string"""
+        """Create an instance of AppAccountDetailsSourceAccount from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -70,14 +72,11 @@ class Schedule1Days(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of account_match_config
-        if self.account_match_config:
-            _dict['accountMatchConfig'] = self.account_match_config.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Schedule1Days from a dict"""
+        """Create an instance of AppAccountDetailsSourceAccount from a dict"""
         if obj is None:
             return None
 
@@ -85,8 +84,11 @@ class Schedule1Days(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "applicationId": obj.get("applicationId"),
-            "accountMatchConfig": SelectorAccountMatchConfig.from_dict(obj["accountMatchConfig"]) if obj.get("accountMatchConfig") is not None else None
+            "id": obj.get("id"),
+            "nativeIdentity": obj.get("nativeIdentity"),
+            "displayName": obj.get("displayName"),
+            "sourceId": obj.get("sourceId"),
+            "sourceDisplayName": obj.get("sourceDisplayName")
         })
         return _obj
 
