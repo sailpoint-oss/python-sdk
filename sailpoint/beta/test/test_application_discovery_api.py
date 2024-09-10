@@ -26,6 +26,13 @@ class TestApplicationDiscoveryApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_get_discovered_application_by_id(self) -> None:
+        """Test case for get_discovered_application_by_id
+
+        Get Discovered Application by ID
+        """
+        pass
+
     def test_get_discovered_applications(self) -> None:
         """Test case for get_discovered_applications
 
@@ -44,6 +51,13 @@ class TestApplicationDiscoveryApi(unittest.TestCase):
         """Test case for get_vendor_connector_mappings
 
         List vendor connector mappings
+        """
+        pass
+
+    def test_patch_discovered_application_by_id(self) -> None:
+        """Test case for patch_discovered_application_by_id
+
+        Patch Discovered Application by Id
         """
         pass
 

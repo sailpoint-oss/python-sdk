@@ -4,11 +4,93 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**get_discovered_application_by_id**](ApplicationDiscoveryApi.md#get_discovered_application_by_id) | **GET** /discovered-applications/{id} | Get Discovered Application by ID
 [**get_discovered_applications**](ApplicationDiscoveryApi.md#get_discovered_applications) | **GET** /discovered-applications | Retrieve discovered applications for tenant
 [**get_manual_discover_applications_csv_template**](ApplicationDiscoveryApi.md#get_manual_discover_applications_csv_template) | **GET** /manual-discover-applications-template | CSV template download for discovery
 [**get_vendor_connector_mappings**](ApplicationDiscoveryApi.md#get_vendor_connector_mappings) | **GET** /vendor-connector-mappings | List vendor connector mappings
+[**patch_discovered_application_by_id**](ApplicationDiscoveryApi.md#patch_discovered_application_by_id) | **PATCH** /discovered-applications/{id} | Patch Discovered Application by Id
 [**send_manual_discover_applications_csv_template**](ApplicationDiscoveryApi.md#send_manual_discover_applications_csv_template) | **POST** /manual-discover-applications | CSV Upload to discover applications
 
+
+# **get_discovered_application_by_id**
+> get_discovered_application_by_id(id)
+
+Get Discovered Application by ID
+
+This API returns a discovered application with its associated sources based on the ID provided. 
+
+### Example
+
+* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (UserContextAuth):
+
+```python
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sailpoint.beta.Configuration(
+    host = "https://sailpoint.api.identitynow.com/beta"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with sailpoint.beta.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sailpoint.beta.ApplicationDiscoveryApi(api_client)
+    id = '123e4567-e89b-12d3-a456-426655440000' # str | ID of the discovered application.
+
+    try:
+        # Get Discovered Application by ID
+        api_instance.get_discovered_application_by_id(id)
+    except Exception as e:
+        print("Exception when calling ApplicationDiscoveryApi->get_discovered_application_by_id: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**| ID of the discovered application. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Returns the discovered application along with its associated sources. |  -  |
+**400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
+**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_discovered_applications**
 > List[GetDiscoveredApplications200ResponseInner] get_discovered_applications(limit=limit, offset=offset, detail=detail, filter=filter, sorters=sorters)
@@ -255,6 +337,89 @@ This endpoint does not need any parameter.
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
 **405** | Method Not Allowed - indicates that the server knows the request method, but the target resource doesn&#39;t support this method. |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patch_discovered_application_by_id**
+> patch_discovered_application_by_id(id, json_patch_operations=json_patch_operations)
+
+Patch Discovered Application by Id
+
+This API updates an existing discovered application using a limited version of the [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax. The following fields are patchable: - **associatedSources** - **dismissed**
+
+### Example
+
+* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (UserContextAuth):
+
+```python
+import sailpoint.beta
+from sailpoint.beta.models.json_patch_operations import JsonPatchOperations
+from sailpoint.beta.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sailpoint.beta.Configuration(
+    host = "https://sailpoint.api.identitynow.com/beta"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with sailpoint.beta.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sailpoint.beta.ApplicationDiscoveryApi(api_client)
+    id = '123e4567-e89b-12d3-a456-426655440000' # str | ID of the discovered application.
+    json_patch_operations = [{op=replace, path=/dismissed, value=true}] # List[JsonPatchOperations] |  (optional)
+
+    try:
+        # Patch Discovered Application by Id
+        api_instance.patch_discovered_application_by_id(id, json_patch_operations=json_patch_operations)
+    except Exception as e:
+        print("Exception when calling ApplicationDiscoveryApi->patch_discovered_application_by_id: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**| ID of the discovered application. | 
+ **json_patch_operations** | [**List[JsonPatchOperations]**](JsonPatchOperations.md)|  | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Returns the single patched discovered application. |  -  |
+**400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
+**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
 **429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
 **500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
 

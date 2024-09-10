@@ -117,9 +117,11 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**submit_reload_account**](sailpoint/beta/docs/AccountsApi.md#submit_reload_account) | **POST** /accounts/{id}/reload | Reload Account
 *AccountsApi* | [**unlock_account**](sailpoint/beta/docs/AccountsApi.md#unlock_account) | **POST** /accounts/{id}/unlock | Unlock Account
 *AccountsApi* | [**update_account**](sailpoint/beta/docs/AccountsApi.md#update_account) | **PATCH** /accounts/{id} | Update Account
+*ApplicationDiscoveryApi* | [**get_discovered_application_by_id**](sailpoint/beta/docs/ApplicationDiscoveryApi.md#get_discovered_application_by_id) | **GET** /discovered-applications/{id} | Get Discovered Application by ID
 *ApplicationDiscoveryApi* | [**get_discovered_applications**](sailpoint/beta/docs/ApplicationDiscoveryApi.md#get_discovered_applications) | **GET** /discovered-applications | Retrieve discovered applications for tenant
 *ApplicationDiscoveryApi* | [**get_manual_discover_applications_csv_template**](sailpoint/beta/docs/ApplicationDiscoveryApi.md#get_manual_discover_applications_csv_template) | **GET** /manual-discover-applications-template | CSV template download for discovery
 *ApplicationDiscoveryApi* | [**get_vendor_connector_mappings**](sailpoint/beta/docs/ApplicationDiscoveryApi.md#get_vendor_connector_mappings) | **GET** /vendor-connector-mappings | List vendor connector mappings
+*ApplicationDiscoveryApi* | [**patch_discovered_application_by_id**](sailpoint/beta/docs/ApplicationDiscoveryApi.md#patch_discovered_application_by_id) | **PATCH** /discovered-applications/{id} | Patch Discovered Application by Id
 *ApplicationDiscoveryApi* | [**send_manual_discover_applications_csv_template**](sailpoint/beta/docs/ApplicationDiscoveryApi.md#send_manual_discover_applications_csv_template) | **POST** /manual-discover-applications | CSV Upload to discover applications
 *ApprovalsApi* | [**get_approval**](sailpoint/beta/docs/ApprovalsApi.md#get_approval) | **GET** /generic-approvals/{id} | Get an approval
 *ApprovalsApi* | [**get_approvals**](sailpoint/beta/docs/ApprovalsApi.md#get_approvals) | **GET** /generic-approvals | Get Approvals
@@ -738,6 +740,7 @@ Class | Method | HTTP request | Description
  - [ApprovalSummary](sailpoint/beta/docs/ApprovalSummary.md)
  - [Argument](sailpoint/beta/docs/Argument.md)
  - [ArrayInner](sailpoint/beta/docs/ArrayInner.md)
+ - [ArrayInner1](sailpoint/beta/docs/ArrayInner1.md)
  - [AssignmentContextDto](sailpoint/beta/docs/AssignmentContextDto.md)
  - [AttrSyncSource](sailpoint/beta/docs/AttrSyncSource.md)
  - [AttrSyncSourceAttributeConfig](sailpoint/beta/docs/AttrSyncSourceAttributeConfig.md)
@@ -1007,6 +1010,8 @@ Class | Method | HTTP request | Description
  - [JsonPatch](sailpoint/beta/docs/JsonPatch.md)
  - [JsonPatchOperation](sailpoint/beta/docs/JsonPatchOperation.md)
  - [JsonPatchOperationValue](sailpoint/beta/docs/JsonPatchOperationValue.md)
+ - [JsonPatchOperations](sailpoint/beta/docs/JsonPatchOperations.md)
+ - [JsonPatchOperationsValue](sailpoint/beta/docs/JsonPatchOperationsValue.md)
  - [KbaAnswerRequestItem](sailpoint/beta/docs/KbaAnswerRequestItem.md)
  - [KbaAnswerResponseItem](sailpoint/beta/docs/KbaAnswerResponseItem.md)
  - [KbaAuthResponse](sailpoint/beta/docs/KbaAuthResponse.md)

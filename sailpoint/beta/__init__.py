@@ -231,6 +231,7 @@ from sailpoint.beta.models.approval_status_dto_original_owner import ApprovalSta
 from sailpoint.beta.models.approval_summary import ApprovalSummary
 from sailpoint.beta.models.argument import Argument
 from sailpoint.beta.models.array_inner import ArrayInner
+from sailpoint.beta.models.array_inner1 import ArrayInner1
 from sailpoint.beta.models.assignment_context_dto import AssignmentContextDto
 from sailpoint.beta.models.attr_sync_source import AttrSyncSource
 from sailpoint.beta.models.attr_sync_source_attribute_config import AttrSyncSourceAttributeConfig
@@ -500,6 +501,8 @@ from sailpoint.beta.models.invocation_status_type import InvocationStatusType
 from sailpoint.beta.models.json_patch import JsonPatch
 from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
 from sailpoint.beta.models.json_patch_operation_value import JsonPatchOperationValue
+from sailpoint.beta.models.json_patch_operations import JsonPatchOperations
+from sailpoint.beta.models.json_patch_operations_value import JsonPatchOperationsValue
 from sailpoint.beta.models.kba_answer_request_item import KbaAnswerRequestItem
 from sailpoint.beta.models.kba_answer_response_item import KbaAnswerResponseItem
 from sailpoint.beta.models.kba_auth_response import KbaAuthResponse
