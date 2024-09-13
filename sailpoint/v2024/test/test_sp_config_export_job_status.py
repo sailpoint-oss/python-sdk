@@ -52,7 +52,6 @@ class TestSpConfigExportJobStatus(unittest.TestCase):
                 expiration = '2021-05-11T22:23:16Z',
                 created = '2021-05-11T22:23:16Z',
                 modified = '2021-05-11T22:23:16Z',
-                description = 'ETS configuration objects from Acme-Solar sandbox',
                 completed = '2021-05-11T22:23:16Z',
         )
         """

@@ -19,7 +19,7 @@ import json
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -33,7 +33,7 @@ class SpConfigExportJobStatus(BaseModel):
     expiration: datetime = Field(description="The time until which the artifacts will be available for download.")
     created: datetime = Field(description="The time the job was started.")
     modified: datetime = Field(description="The time of the last update to the job.")
-    description: StrictStr = Field(description="Optional user defined description/name for export job.")
+    description: Optional[StrictStr] = Field(default=None, description="Optional user defined description/name for export job.")
     completed: datetime = Field(description="The time the job was completed.")
     __properties: ClassVar[List[str]] = ["jobId", "status", "type", "expiration", "created", "modified", "description", "completed"]
 

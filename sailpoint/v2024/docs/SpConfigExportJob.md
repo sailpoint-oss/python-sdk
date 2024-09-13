@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **expiration** | **datetime** | The time until which the artifacts will be available for download. | 
 **created** | **datetime** | The time the job was started. | 
 **modified** | **datetime** | The time of the last update to the job. | 
-**description** | **str** | Optional user defined description/name for export job. | 
+**description** | **str** | Optional user defined description/name for export job. | [optional] 
 
 ## Example
 
