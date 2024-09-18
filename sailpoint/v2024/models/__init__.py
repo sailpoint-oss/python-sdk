@@ -184,6 +184,8 @@ from sailpoint.v2024.models.audit_details import AuditDetails
 from sailpoint.v2024.models.auth_profile import AuthProfile
 from sailpoint.v2024.models.auth_profile_summary import AuthProfileSummary
 from sailpoint.v2024.models.auth_user import AuthUser
+from sailpoint.v2024.models.backup_options import BackupOptions
+from sailpoint.v2024.models.backup_response import BackupResponse
 from sailpoint.v2024.models.base_access import BaseAccess
 from sailpoint.v2024.models.base_access_all_of_owner import BaseAccessAllOfOwner
 from sailpoint.v2024.models.base_access_profile import BaseAccessProfile
@@ -306,6 +308,7 @@ from sailpoint.v2024.models.create_personal_access_token_request import CreatePe
 from sailpoint.v2024.models.create_personal_access_token_response import CreatePersonalAccessTokenResponse
 from sailpoint.v2024.models.create_saved_search_request import CreateSavedSearchRequest
 from sailpoint.v2024.models.create_scheduled_search_request import CreateScheduledSearchRequest
+from sailpoint.v2024.models.create_uploaded_configuration_request import CreateUploadedConfigurationRequest
 from sailpoint.v2024.models.create_workflow_request import CreateWorkflowRequest
 from sailpoint.v2024.models.criteria_type import CriteriaType
 from sailpoint.v2024.models.custom_password_instruction import CustomPasswordInstruction
@@ -471,7 +474,6 @@ from sailpoint.v2024.models.import_non_employee_records_in_bulk_request import I
 from sailpoint.v2024.models.import_object import ImportObject
 from sailpoint.v2024.models.import_options import ImportOptions
 from sailpoint.v2024.models.import_sp_config_request import ImportSpConfigRequest
-from sailpoint.v2024.models.import_uploaded_backup_request import ImportUploadedBackupRequest
 from sailpoint.v2024.models.index import Index
 from sailpoint.v2024.models.inner_hit import InnerHit
 from sailpoint.v2024.models.invocation import Invocation
@@ -574,6 +576,7 @@ from sailpoint.v2024.models.non_employee_source_request_body import NonEmployeeS
 from sailpoint.v2024.models.non_employee_source_with_cloud_external_id import NonEmployeeSourceWithCloudExternalId
 from sailpoint.v2024.models.non_employee_source_with_ne_count import NonEmployeeSourceWithNECount
 from sailpoint.v2024.models.notification_template_context import NotificationTemplateContext
+from sailpoint.v2024.models.object_export_import_names import ObjectExportImportNames
 from sailpoint.v2024.models.object_export_import_options import ObjectExportImportOptions
 from sailpoint.v2024.models.object_import_result import ObjectImportResult
 from sailpoint.v2024.models.object_import_result1 import ObjectImportResult1
@@ -939,8 +942,6 @@ from sailpoint.v2024.models.type_ahead_query import TypeAheadQuery
 from sailpoint.v2024.models.typed_reference import TypedReference
 from sailpoint.v2024.models.update_access_profiles_in_bulk412_response import UpdateAccessProfilesInBulk412Response
 from sailpoint.v2024.models.update_detail import UpdateDetail
-from sailpoint.v2024.models.uploads_request import UploadsRequest
-from sailpoint.v2024.models.uploads_response import UploadsResponse
 from sailpoint.v2024.models.usage_type import UsageType
 from sailpoint.v2024.models.user_app import UserApp
 from sailpoint.v2024.models.user_app_account import UserAppAccount

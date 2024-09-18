@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v3.models.import_uploaded_backup_request import ImportUploadedBackupRequest
+from sailpoint.v3.models.create_uploaded_configuration_request import CreateUploadedConfigurationRequest
 
-class TestImportUploadedBackupRequest(unittest.TestCase):
-    """ImportUploadedBackupRequest unit test stubs"""
+class TestCreateUploadedConfigurationRequest(unittest.TestCase):
+    """CreateUploadedConfigurationRequest unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,28 +25,28 @@ class TestImportUploadedBackupRequest(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ImportUploadedBackupRequest:
-        """Test ImportUploadedBackupRequest
+    def make_instance(self, include_optional) -> CreateUploadedConfigurationRequest:
+        """Test CreateUploadedConfigurationRequest
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ImportUploadedBackupRequest`
+        # uncomment below to create an instance of `CreateUploadedConfigurationRequest`
         """
-        model = ImportUploadedBackupRequest()
+        model = CreateUploadedConfigurationRequest()
         if include_optional:
-            return ImportUploadedBackupRequest(
+            return CreateUploadedConfigurationRequest(
                 data = bytes(b'blah'),
                 name = ''
             )
         else:
-            return ImportUploadedBackupRequest(
+            return CreateUploadedConfigurationRequest(
                 data = bytes(b'blah'),
                 name = '',
         )
         """
 
-    def testImportUploadedBackupRequest(self):
-        """Test ImportUploadedBackupRequest"""
+    def testCreateUploadedConfigurationRequest(self):
+        """Test CreateUploadedConfigurationRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

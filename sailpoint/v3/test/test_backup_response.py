@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v3.models.uploads_response import UploadsResponse
+from sailpoint.v3.models.backup_response import BackupResponse
 
-class TestUploadsResponse(unittest.TestCase):
-    """UploadsResponse unit test stubs"""
+class TestBackupResponse(unittest.TestCase):
+    """BackupResponse unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,41 +25,45 @@ class TestUploadsResponse(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> UploadsResponse:
-        """Test UploadsResponse
+    def make_instance(self, include_optional) -> BackupResponse:
+        """Test BackupResponse
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `UploadsResponse`
+        # uncomment below to create an instance of `BackupResponse`
         """
-        model = UploadsResponse()
+        model = BackupResponse()
         if include_optional:
-            return UploadsResponse(
+            return BackupResponse(
                 job_id = '3469b87d-48ca-439a-868f-2160001da8c1',
                 status = 'COMPLETE',
                 type = 'BACKUP',
-                tenant = 'uploaderTenant',
-                requester_name = 'support',
+                tenant = 'tenant-name',
+                requester_name = 'Requester Name',
+                file_exists = True,
                 created = '2021-05-11T22:23:16Z',
                 modified = '2021-05-11T22:23:16Z',
-                name = 'A_NEW_UPLOADED_BACKUP',
+                completed = '2021-05-11T22:23:16Z',
+                name = 'Backup Name',
                 user_can_delete = False,
                 is_partial = False,
-                backup_type = 'UPLOADED',
-                hydration_status = 'NOT_HYDRATED'
+                backup_type = 'MANUAL',
+                options = sailpoint.v3.models.backup_options.BackupOptions(
+                    include_types = [
+                        'TRIGGER_SUBSCRIPTION'
+                        ], 
+                    object_options = {TRIGGER_SUBSCRIPTION={includedNames=[Trigger Subscription name]}}, ),
+                hydration_status = 'NOT_HYDRATED',
+                total_object_count = 10,
+                cloud_storage_status = 'SYNCED'
             )
         else:
-            return UploadsResponse(
-                job_id = '3469b87d-48ca-439a-868f-2160001da8c1',
-                status = 'COMPLETE',
-                type = 'BACKUP',
-                created = '2021-05-11T22:23:16Z',
-                modified = '2021-05-11T22:23:16Z',
+            return BackupResponse(
         )
         """
 
-    def testUploadsResponse(self):
-        """Test UploadsResponse"""
+    def testBackupResponse(self):
+        """Test BackupResponse"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

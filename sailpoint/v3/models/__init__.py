@@ -95,6 +95,8 @@ from sailpoint.v3.models.attribute_definition_schema import AttributeDefinitionS
 from sailpoint.v3.models.attribute_definition_type import AttributeDefinitionType
 from sailpoint.v3.models.attribute_request import AttributeRequest
 from sailpoint.v3.models.auth_user import AuthUser
+from sailpoint.v3.models.backup_options import BackupOptions
+from sailpoint.v3.models.backup_response import BackupResponse
 from sailpoint.v3.models.base_access import BaseAccess
 from sailpoint.v3.models.base_access_all_of_owner import BaseAccessAllOfOwner
 from sailpoint.v3.models.base_access_profile import BaseAccessProfile
@@ -161,6 +163,7 @@ from sailpoint.v3.models.create_personal_access_token_request import CreatePerso
 from sailpoint.v3.models.create_personal_access_token_response import CreatePersonalAccessTokenResponse
 from sailpoint.v3.models.create_saved_search_request import CreateSavedSearchRequest
 from sailpoint.v3.models.create_scheduled_search_request import CreateScheduledSearchRequest
+from sailpoint.v3.models.create_uploaded_configuration_request import CreateUploadedConfigurationRequest
 from sailpoint.v3.models.create_workflow_request import CreateWorkflowRequest
 from sailpoint.v3.models.criteria_type import CriteriaType
 from sailpoint.v3.models.data_access import DataAccess
@@ -250,7 +253,6 @@ from sailpoint.v3.models.identity_with_new_access_access_refs_inner import Ident
 from sailpoint.v3.models.idp_details import IdpDetails
 from sailpoint.v3.models.import_non_employee_records_in_bulk_request import ImportNonEmployeeRecordsInBulkRequest
 from sailpoint.v3.models.import_object import ImportObject
-from sailpoint.v3.models.import_uploaded_backup_request import ImportUploadedBackupRequest
 from sailpoint.v3.models.index import Index
 from sailpoint.v3.models.inner_hit import InnerHit
 from sailpoint.v3.models.jit_configuration import JITConfiguration
@@ -323,6 +325,7 @@ from sailpoint.v3.models.non_employee_source_lite_with_schema_attributes import 
 from sailpoint.v3.models.non_employee_source_request_body import NonEmployeeSourceRequestBody
 from sailpoint.v3.models.non_employee_source_with_cloud_external_id import NonEmployeeSourceWithCloudExternalId
 from sailpoint.v3.models.non_employee_source_with_ne_count import NonEmployeeSourceWithNECount
+from sailpoint.v3.models.object_export_import_names import ObjectExportImportNames
 from sailpoint.v3.models.object_import_result import ObjectImportResult
 from sailpoint.v3.models.object_mapping_bulk_create_request import ObjectMappingBulkCreateRequest
 from sailpoint.v3.models.object_mapping_bulk_create_response import ObjectMappingBulkCreateResponse
@@ -528,8 +531,6 @@ from sailpoint.v3.models.transform_read import TransformRead
 from sailpoint.v3.models.type_ahead_query import TypeAheadQuery
 from sailpoint.v3.models.typed_reference import TypedReference
 from sailpoint.v3.models.update_detail import UpdateDetail
-from sailpoint.v3.models.uploads_request import UploadsRequest
-from sailpoint.v3.models.uploads_response import UploadsResponse
 from sailpoint.v3.models.usage_type import UsageType
 from sailpoint.v3.models.v3_connector_dto import V3ConnectorDto
 from sailpoint.v3.models.v3_create_connector_dto import V3CreateConnectorDto

@@ -40,6 +40,20 @@ class TestConfigurationHubApi(unittest.TestCase):
         """
         pass
 
+    def test_create_uploaded_configuration(self) -> None:
+        """Test case for create_uploaded_configuration
+
+        Upload a Configuration
+        """
+        pass
+
+    def test_delete_backup(self) -> None:
+        """Test case for delete_backup
+
+        Delete a Backup
+        """
+        pass
+
     def test_delete_draft(self) -> None:
         """Test case for delete_draft
 
@@ -54,10 +68,10 @@ class TestConfigurationHubApi(unittest.TestCase):
         """
         pass
 
-    def test_delete_uploaded_backup(self) -> None:
-        """Test case for delete_uploaded_backup
+    def test_delete_uploaded_configuration(self) -> None:
+        """Test case for delete_uploaded_configuration
 
-        Deletes an uploaded backup file
+        Delete an Uploaded Configuration
         """
         pass
 
@@ -68,24 +82,17 @@ class TestConfigurationHubApi(unittest.TestCase):
         """
         pass
 
-    def test_get_uploaded_backup(self) -> None:
-        """Test case for get_uploaded_backup
+    def test_get_uploaded_configuration(self) -> None:
+        """Test case for get_uploaded_configuration
 
-        Get an uploaded backup's information
+        Get an Uploaded Configuration
         """
         pass
 
-    def test_get_uploaded_backups(self) -> None:
-        """Test case for get_uploaded_backups
+    def test_list_backups(self) -> None:
+        """Test case for list_backups
 
-        Gets list of Uploaded backups
-        """
-        pass
-
-    def test_import_uploaded_backup(self) -> None:
-        """Test case for import_uploaded_backup
-
-        Uploads a backup file
+        List Backups
         """
         pass
 
@@ -93,6 +100,13 @@ class TestConfigurationHubApi(unittest.TestCase):
         """Test case for list_drafts
 
         List Drafts
+        """
+        pass
+
+    def test_list_uploaded_configurations(self) -> None:
+        """Test case for list_uploaded_configurations
+
+        List Uploaded Configurations
         """
         pass
 

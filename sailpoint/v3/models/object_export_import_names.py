@@ -17,18 +17,17 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBytes, StrictStr
-from typing import Any, ClassVar, Dict, List, Union
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class ImportUploadedBackupRequest(BaseModel):
+class ObjectExportImportNames(BaseModel):
     """
-    ImportUploadedBackupRequest
+    ObjectExportImportNames
     """ # noqa: E501
-    data: Union[StrictBytes, StrictStr] = Field(description="JSON file containing the objects to be imported.")
-    name: StrictStr = Field(description="Name that will be assigned to the uploaded file.")
-    __properties: ClassVar[List[str]] = ["data", "name"]
+    included_names: Optional[List[StrictStr]] = Field(default=None, description="Object names to be included in a backup.", alias="includedNames")
+    __properties: ClassVar[List[str]] = ["includedNames"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -48,7 +47,7 @@ class ImportUploadedBackupRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ImportUploadedBackupRequest from a JSON string"""
+        """Create an instance of ObjectExportImportNames from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,7 +72,7 @@ class ImportUploadedBackupRequest(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ImportUploadedBackupRequest from a dict"""
+        """Create an instance of ObjectExportImportNames from a dict"""
         if obj is None:
             return None
 
@@ -81,8 +80,7 @@ class ImportUploadedBackupRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "data": obj.get("data"),
-            "name": obj.get("name")
+            "includedNames": obj.get("includedNames")
         })
         return _obj
 

@@ -159,12 +159,12 @@ Class | Method | HTTP request | Description
 *CertificationsApi* | [**submit_reassign_certs_async**](sailpoint/v3/docs/CertificationsApi.md#submit_reassign_certs_async) | **POST** /certifications/{id}/reassign-async | Reassign Certifications Asynchronously
 *ConfigurationHubApi* | [**create_object_mapping**](sailpoint/v3/docs/ConfigurationHubApi.md#create_object_mapping) | **POST** /configuration-hub/object-mappings/{sourceOrg} | Creates an object mapping
 *ConfigurationHubApi* | [**create_object_mappings**](sailpoint/v3/docs/ConfigurationHubApi.md#create_object_mappings) | **POST** /configuration-hub/object-mappings/{sourceOrg}/bulk-create | Bulk creates object mappings
+*ConfigurationHubApi* | [**create_uploaded_configuration**](sailpoint/v3/docs/ConfigurationHubApi.md#create_uploaded_configuration) | **POST** /configuration-hub/backups/uploads | Upload a Configuration
 *ConfigurationHubApi* | [**delete_object_mapping**](sailpoint/v3/docs/ConfigurationHubApi.md#delete_object_mapping) | **DELETE** /configuration-hub/object-mappings/{sourceOrg}/{objectMappingId} | Deletes an object mapping
-*ConfigurationHubApi* | [**delete_uploaded_backup**](sailpoint/v3/docs/ConfigurationHubApi.md#delete_uploaded_backup) | **DELETE** /configuration-hub/backups/uploads/{id} | Deletes an uploaded backup file
+*ConfigurationHubApi* | [**delete_uploaded_configuration**](sailpoint/v3/docs/ConfigurationHubApi.md#delete_uploaded_configuration) | **DELETE** /configuration-hub/backups/uploads/{id} | Delete an Uploaded Configuration
 *ConfigurationHubApi* | [**get_object_mappings**](sailpoint/v3/docs/ConfigurationHubApi.md#get_object_mappings) | **GET** /configuration-hub/object-mappings/{sourceOrg} | Gets list of object mappings
-*ConfigurationHubApi* | [**get_uploaded_backup**](sailpoint/v3/docs/ConfigurationHubApi.md#get_uploaded_backup) | **GET** /configuration-hub/backups/uploads/{id} | Get an uploaded backup&#39;s information
-*ConfigurationHubApi* | [**get_uploaded_backups**](sailpoint/v3/docs/ConfigurationHubApi.md#get_uploaded_backups) | **GET** /configuration-hub/backups/uploads | Gets list of Uploaded backups
-*ConfigurationHubApi* | [**import_uploaded_backup**](sailpoint/v3/docs/ConfigurationHubApi.md#import_uploaded_backup) | **POST** /configuration-hub/backups/uploads | Uploads a backup file
+*ConfigurationHubApi* | [**get_uploaded_configuration**](sailpoint/v3/docs/ConfigurationHubApi.md#get_uploaded_configuration) | **GET** /configuration-hub/backups/uploads/{id} | Get an Uploaded Configuration
+*ConfigurationHubApi* | [**list_uploaded_configurations**](sailpoint/v3/docs/ConfigurationHubApi.md#list_uploaded_configurations) | **GET** /configuration-hub/backups/uploads | List Uploaded Configurations
 *ConfigurationHubApi* | [**update_object_mappings**](sailpoint/v3/docs/ConfigurationHubApi.md#update_object_mappings) | **POST** /configuration-hub/object-mappings/{sourceOrg}/bulk-patch | Bulk updates object mappings
 *ConnectorsApi* | [**create_custom_connector**](sailpoint/v3/docs/ConnectorsApi.md#create_custom_connector) | **POST** /connectors | Create custom connector
 *ConnectorsApi* | [**delete_custom_connector**](sailpoint/v3/docs/ConnectorsApi.md#delete_custom_connector) | **DELETE** /connectors/{scriptName} | Deletes connector by script name
@@ -518,6 +518,8 @@ Class | Method | HTTP request | Description
  - [AttributeDefinitionType](sailpoint/v3/docs/AttributeDefinitionType.md)
  - [AttributeRequest](sailpoint/v3/docs/AttributeRequest.md)
  - [AuthUser](sailpoint/v3/docs/AuthUser.md)
+ - [BackupOptions](sailpoint/v3/docs/BackupOptions.md)
+ - [BackupResponse](sailpoint/v3/docs/BackupResponse.md)
  - [BaseAccess](sailpoint/v3/docs/BaseAccess.md)
  - [BaseAccessAllOfOwner](sailpoint/v3/docs/BaseAccessAllOfOwner.md)
  - [BaseAccessProfile](sailpoint/v3/docs/BaseAccessProfile.md)
@@ -584,6 +586,7 @@ Class | Method | HTTP request | Description
  - [CreatePersonalAccessTokenResponse](sailpoint/v3/docs/CreatePersonalAccessTokenResponse.md)
  - [CreateSavedSearchRequest](sailpoint/v3/docs/CreateSavedSearchRequest.md)
  - [CreateScheduledSearchRequest](sailpoint/v3/docs/CreateScheduledSearchRequest.md)
+ - [CreateUploadedConfigurationRequest](sailpoint/v3/docs/CreateUploadedConfigurationRequest.md)
  - [CreateWorkflowRequest](sailpoint/v3/docs/CreateWorkflowRequest.md)
  - [CriteriaType](sailpoint/v3/docs/CriteriaType.md)
  - [DataAccess](sailpoint/v3/docs/DataAccess.md)
@@ -673,7 +676,6 @@ Class | Method | HTTP request | Description
  - [IdpDetails](sailpoint/v3/docs/IdpDetails.md)
  - [ImportNonEmployeeRecordsInBulkRequest](sailpoint/v3/docs/ImportNonEmployeeRecordsInBulkRequest.md)
  - [ImportObject](sailpoint/v3/docs/ImportObject.md)
- - [ImportUploadedBackupRequest](sailpoint/v3/docs/ImportUploadedBackupRequest.md)
  - [Index](sailpoint/v3/docs/Index.md)
  - [InnerHit](sailpoint/v3/docs/InnerHit.md)
  - [JITConfiguration](sailpoint/v3/docs/JITConfiguration.md)
@@ -746,6 +748,7 @@ Class | Method | HTTP request | Description
  - [NonEmployeeSourceRequestBody](sailpoint/v3/docs/NonEmployeeSourceRequestBody.md)
  - [NonEmployeeSourceWithCloudExternalId](sailpoint/v3/docs/NonEmployeeSourceWithCloudExternalId.md)
  - [NonEmployeeSourceWithNECount](sailpoint/v3/docs/NonEmployeeSourceWithNECount.md)
+ - [ObjectExportImportNames](sailpoint/v3/docs/ObjectExportImportNames.md)
  - [ObjectImportResult](sailpoint/v3/docs/ObjectImportResult.md)
  - [ObjectMappingBulkCreateRequest](sailpoint/v3/docs/ObjectMappingBulkCreateRequest.md)
  - [ObjectMappingBulkCreateResponse](sailpoint/v3/docs/ObjectMappingBulkCreateResponse.md)
@@ -951,8 +954,6 @@ Class | Method | HTTP request | Description
  - [TypeAheadQuery](sailpoint/v3/docs/TypeAheadQuery.md)
  - [TypedReference](sailpoint/v3/docs/TypedReference.md)
  - [UpdateDetail](sailpoint/v3/docs/UpdateDetail.md)
- - [UploadsRequest](sailpoint/v3/docs/UploadsRequest.md)
- - [UploadsResponse](sailpoint/v3/docs/UploadsResponse.md)
  - [UsageType](sailpoint/v3/docs/UsageType.md)
  - [V3ConnectorDto](sailpoint/v3/docs/V3ConnectorDto.md)
  - [V3CreateConnectorDto](sailpoint/v3/docs/V3CreateConnectorDto.md)
