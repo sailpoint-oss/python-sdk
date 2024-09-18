@@ -36,7 +36,7 @@ class TestApproval1(unittest.TestCase):
         if include_optional:
             return Approval1(
                 comments = [
-                    sailpoint.v2024.models.approval_comment_1.ApprovalComment_1(
+                    sailpoint.v2024.models.approval_comment_2.ApprovalComment_2(
                         comment = 'This request was autoapproved by our automated ETS subscriber.', 
                         commenter = 'Automated AR Approval', 
                         date = '2018-06-25T20:22:28.104Z', )

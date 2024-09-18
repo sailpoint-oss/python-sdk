@@ -244,6 +244,7 @@ from sailpoint.v2024.models.approval1 import Approval1
 from sailpoint.v2024.models.approval_batch import ApprovalBatch
 from sailpoint.v2024.models.approval_comment import ApprovalComment
 from sailpoint.v2024.models.approval_comment1 import ApprovalComment1
+from sailpoint.v2024.models.approval_comment2 import ApprovalComment2
 from sailpoint.v2024.models.approval_description import ApprovalDescription
 from sailpoint.v2024.models.approval_dto import ApprovalDto
 from sailpoint.v2024.models.approval_forward_history import ApprovalForwardHistory
@@ -417,6 +418,7 @@ from sailpoint.v2024.models.dkim_attributes import DkimAttributes
 from sailpoint.v2024.models.document_type import DocumentType
 from sailpoint.v2024.models.domain_address import DomainAddress
 from sailpoint.v2024.models.domain_status_dto import DomainStatusDto
+from sailpoint.v2024.models.draft_response import DraftResponse
 from sailpoint.v2024.models.dto_type import DtoType
 from sailpoint.v2024.models.email_notification_option import EmailNotificationOption
 from sailpoint.v2024.models.email_status_dto import EmailStatusDto

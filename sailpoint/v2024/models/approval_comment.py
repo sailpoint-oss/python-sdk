@@ -17,20 +17,29 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2024.models.approval_identity import ApprovalIdentity
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
 class ApprovalComment(BaseModel):
     """
-    Comments Object
+    ApprovalComment
     """ # noqa: E501
-    author: Optional[ApprovalIdentity] = None
-    comment: Optional[StrictStr] = Field(default=None, description="Comment to be left on an approval")
-    created_date: Optional[StrictStr] = Field(default=None, description="Date the comment was created", alias="createdDate")
-    __properties: ClassVar[List[str]] = ["author", "comment", "createdDate"]
+    comment: StrictStr = Field(description="Comment provided either by the approval requester or the approver.")
+    timestamp: datetime = Field(description="The time when this comment was provided.")
+    user: StrictStr = Field(description="Name of the user that provided this comment.")
+    id: StrictStr = Field(description="Id of the user that provided this comment.")
+    changed_to_status: StrictStr = Field(description="Status transition of the draft.", alias="changedToStatus")
+    __properties: ClassVar[List[str]] = ["comment", "timestamp", "user", "id", "changedToStatus"]
+
+    @field_validator('changed_to_status')
+    def changed_to_status_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['PENDING_APPROVAL', 'APPROVED', 'REJECTED']):
+            raise ValueError("must be one of enum values ('PENDING_APPROVAL', 'APPROVED', 'REJECTED')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -71,9 +80,6 @@ class ApprovalComment(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of author
-        if self.author:
-            _dict['author'] = self.author.to_dict()
         return _dict
 
     @classmethod
@@ -86,9 +92,11 @@ class ApprovalComment(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "author": ApprovalIdentity.from_dict(obj["author"]) if obj.get("author") is not None else None,
             "comment": obj.get("comment"),
-            "createdDate": obj.get("createdDate")
+            "timestamp": obj.get("timestamp"),
+            "user": obj.get("user"),
+            "id": obj.get("id"),
+            "changedToStatus": obj.get("changedToStatus")
         })
         return _obj
 

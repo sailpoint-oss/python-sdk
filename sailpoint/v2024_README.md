@@ -193,12 +193,14 @@ Class | Method | HTTP request | Description
 *CertificationsApi* | [**submit_reassign_certs_async**](sailpoint/v2024/docs/CertificationsApi.md#submit_reassign_certs_async) | **POST** /certifications/{id}/reassign-async | Reassign Certifications Asynchronously
 *ConfigurationHubApi* | [**create_object_mapping**](sailpoint/v2024/docs/ConfigurationHubApi.md#create_object_mapping) | **POST** /configuration-hub/object-mappings/{sourceOrg} | Creates an object mapping
 *ConfigurationHubApi* | [**create_object_mappings**](sailpoint/v2024/docs/ConfigurationHubApi.md#create_object_mappings) | **POST** /configuration-hub/object-mappings/{sourceOrg}/bulk-create | Bulk creates object mappings
+*ConfigurationHubApi* | [**delete_draft**](sailpoint/v2024/docs/ConfigurationHubApi.md#delete_draft) | **DELETE** /configuration-hub/drafts/{id} | Delete a draft
 *ConfigurationHubApi* | [**delete_object_mapping**](sailpoint/v2024/docs/ConfigurationHubApi.md#delete_object_mapping) | **DELETE** /configuration-hub/object-mappings/{sourceOrg}/{objectMappingId} | Deletes an object mapping
 *ConfigurationHubApi* | [**delete_uploaded_backup**](sailpoint/v2024/docs/ConfigurationHubApi.md#delete_uploaded_backup) | **DELETE** /configuration-hub/backups/uploads/{id} | Deletes an uploaded backup file
 *ConfigurationHubApi* | [**get_object_mappings**](sailpoint/v2024/docs/ConfigurationHubApi.md#get_object_mappings) | **GET** /configuration-hub/object-mappings/{sourceOrg} | Gets list of object mappings
 *ConfigurationHubApi* | [**get_uploaded_backup**](sailpoint/v2024/docs/ConfigurationHubApi.md#get_uploaded_backup) | **GET** /configuration-hub/backups/uploads/{id} | Get an uploaded backup&#39;s information
 *ConfigurationHubApi* | [**get_uploaded_backups**](sailpoint/v2024/docs/ConfigurationHubApi.md#get_uploaded_backups) | **GET** /configuration-hub/backups/uploads | Gets list of Uploaded backups
 *ConfigurationHubApi* | [**import_uploaded_backup**](sailpoint/v2024/docs/ConfigurationHubApi.md#import_uploaded_backup) | **POST** /configuration-hub/backups/uploads | Uploads a backup file
+*ConfigurationHubApi* | [**list_drafts**](sailpoint/v2024/docs/ConfigurationHubApi.md#list_drafts) | **GET** /configuration-hub/drafts | List Drafts
 *ConfigurationHubApi* | [**update_object_mappings**](sailpoint/v2024/docs/ConfigurationHubApi.md#update_object_mappings) | **POST** /configuration-hub/object-mappings/{sourceOrg}/bulk-patch | Bulk updates object mappings
 *ConnectorRuleManagementApi* | [**create_connector_rule**](sailpoint/v2024/docs/ConnectorRuleManagementApi.md#create_connector_rule) | **POST** /connector-rules | Create Connector Rule
 *ConnectorRuleManagementApi* | [**delete_connector_rule**](sailpoint/v2024/docs/ConnectorRuleManagementApi.md#delete_connector_rule) | **DELETE** /connector-rules/{id} | Delete a Connector-Rule
@@ -808,6 +810,7 @@ Class | Method | HTTP request | Description
  - [ApprovalBatch](sailpoint/v2024/docs/ApprovalBatch.md)
  - [ApprovalComment](sailpoint/v2024/docs/ApprovalComment.md)
  - [ApprovalComment1](sailpoint/v2024/docs/ApprovalComment1.md)
+ - [ApprovalComment2](sailpoint/v2024/docs/ApprovalComment2.md)
  - [ApprovalDescription](sailpoint/v2024/docs/ApprovalDescription.md)
  - [ApprovalDto](sailpoint/v2024/docs/ApprovalDto.md)
  - [ApprovalForwardHistory](sailpoint/v2024/docs/ApprovalForwardHistory.md)
@@ -981,6 +984,7 @@ Class | Method | HTTP request | Description
  - [DocumentType](sailpoint/v2024/docs/DocumentType.md)
  - [DomainAddress](sailpoint/v2024/docs/DomainAddress.md)
  - [DomainStatusDto](sailpoint/v2024/docs/DomainStatusDto.md)
+ - [DraftResponse](sailpoint/v2024/docs/DraftResponse.md)
  - [DtoType](sailpoint/v2024/docs/DtoType.md)
  - [EmailNotificationOption](sailpoint/v2024/docs/EmailNotificationOption.md)
  - [EmailStatusDto](sailpoint/v2024/docs/EmailStatusDto.md)

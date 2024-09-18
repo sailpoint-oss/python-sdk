@@ -35,9 +35,12 @@ class TestApprovalComment1(unittest.TestCase):
         model = ApprovalComment1()
         if include_optional:
             return ApprovalComment1(
-                comment = 'This request was autoapproved by our automated ETS subscriber.',
-                commenter = 'Automated AR Approval',
-                var_date = '2018-06-25T20:22:28.104Z'
+                author = sailpoint.v2024.models.approval_identity.ApprovalIdentity(
+                    id = '85d173e7d57e496569df763231d6deb6a', 
+                    type = 'IDENTITY', 
+                    name = 'John Doe', ),
+                comment = 'Looks good',
+                created_date = '2023-04-12T23:20:50.52Z'
             )
         else:
             return ApprovalComment1(

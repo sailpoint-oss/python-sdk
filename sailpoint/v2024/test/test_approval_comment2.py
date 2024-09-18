@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2024.models.approval_comment import ApprovalComment
+from sailpoint.v2024.models.approval_comment2 import ApprovalComment2
 
-class TestApprovalComment(unittest.TestCase):
-    """ApprovalComment unit test stubs"""
+class TestApprovalComment2(unittest.TestCase):
+    """ApprovalComment2 unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,34 +25,27 @@ class TestApprovalComment(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ApprovalComment:
-        """Test ApprovalComment
+    def make_instance(self, include_optional) -> ApprovalComment2:
+        """Test ApprovalComment2
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ApprovalComment`
+        # uncomment below to create an instance of `ApprovalComment2`
         """
-        model = ApprovalComment()
+        model = ApprovalComment2()
         if include_optional:
-            return ApprovalComment(
-                comment = 'Approval comment',
-                timestamp = '2021-05-11T22:23:16Z',
-                user = 'user.name',
-                id = '549bf881-1ac4-4a64-9acf-6014e8a3a887',
-                changed_to_status = 'PENDING_APPROVAL'
+            return ApprovalComment2(
+                comment = 'This request was autoapproved by our automated ETS subscriber.',
+                commenter = 'Automated AR Approval',
+                var_date = '2018-06-25T20:22:28.104Z'
             )
         else:
-            return ApprovalComment(
-                comment = 'Approval comment',
-                timestamp = '2021-05-11T22:23:16Z',
-                user = 'user.name',
-                id = '549bf881-1ac4-4a64-9acf-6014e8a3a887',
-                changed_to_status = 'PENDING_APPROVAL',
+            return ApprovalComment2(
         )
         """
 
-    def testApprovalComment(self):
-        """Test ApprovalComment"""
+    def testApprovalComment2(self):
+        """Test ApprovalComment2"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

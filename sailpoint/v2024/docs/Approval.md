@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **description** | [**List[ApprovalDescription]**](ApprovalDescription.md) | The description of the approval for a given locale | [optional] 
 **priority** | **str** | The priority of the approval | [optional] 
 **requester** | [**ApprovalIdentity**](.md) | Object representation of the requester of the approval | [optional] 
-**comments** | [**List[ApprovalComment]**](ApprovalComment.md) | Object representation of a comment on the approval | [optional] 
+**comments** | [**List[ApprovalComment1]**](ApprovalComment1.md) | Object representation of a comment on the approval | [optional] 
 **approved_by** | [**List[ApprovalIdentity]**](ApprovalIdentity.md) | Array of approvers who have approved the approval | [optional] 
 **rejected_by** | [**List[ApprovalIdentity]**](ApprovalIdentity.md) | Array of approvers who have rejected the approval | [optional] 
 **completed_date** | **str** | Date the approval was completed | [optional] 

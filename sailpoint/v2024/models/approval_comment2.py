@@ -20,22 +20,17 @@ import json
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2024.models.account_source import AccountSource
-from sailpoint.v2024.models.approval_comment2 import ApprovalComment2
 from typing import Optional, Set
 from typing_extensions import Self
 
-class Approval1(BaseModel):
+class ApprovalComment2(BaseModel):
     """
-    Approval1
+    ApprovalComment2
     """ # noqa: E501
-    comments: Optional[List[ApprovalComment2]] = None
-    created: Optional[datetime] = Field(default=None, description="A date-time in ISO-8601 format")
-    modified: Optional[datetime] = Field(default=None, description="A date-time in ISO-8601 format")
-    owner: Optional[AccountSource] = None
-    result: Optional[StrictStr] = Field(default=None, description="The result of the approval")
-    type: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["comments", "created", "modified", "owner", "result", "type"]
+    comment: Optional[StrictStr] = Field(default=None, description="The comment text")
+    commenter: Optional[StrictStr] = Field(default=None, description="The name of the commenter")
+    var_date: Optional[datetime] = Field(default=None, description="A date-time in ISO-8601 format", alias="date")
+    __properties: ClassVar[List[str]] = ["comment", "commenter", "date"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -55,7 +50,7 @@ class Approval1(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Approval1 from a JSON string"""
+        """Create an instance of ApprovalComment2 from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -76,36 +71,16 @@ class Approval1(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in comments (list)
-        _items = []
-        if self.comments:
-            for _item_comments in self.comments:
-                if _item_comments:
-                    _items.append(_item_comments.to_dict())
-            _dict['comments'] = _items
-        # override the default output from pydantic by calling `to_dict()` of owner
-        if self.owner:
-            _dict['owner'] = self.owner.to_dict()
-        # set to None if created (nullable) is None
+        # set to None if var_date (nullable) is None
         # and model_fields_set contains the field
-        if self.created is None and "created" in self.model_fields_set:
-            _dict['created'] = None
-
-        # set to None if modified (nullable) is None
-        # and model_fields_set contains the field
-        if self.modified is None and "modified" in self.model_fields_set:
-            _dict['modified'] = None
-
-        # set to None if type (nullable) is None
-        # and model_fields_set contains the field
-        if self.type is None and "type" in self.model_fields_set:
-            _dict['type'] = None
+        if self.var_date is None and "var_date" in self.model_fields_set:
+            _dict['date'] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Approval1 from a dict"""
+        """Create an instance of ApprovalComment2 from a dict"""
         if obj is None:
             return None
 
@@ -113,12 +88,9 @@ class Approval1(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "comments": [ApprovalComment2.from_dict(_item) for _item in obj["comments"]] if obj.get("comments") is not None else None,
-            "created": obj.get("created"),
-            "modified": obj.get("modified"),
-            "owner": AccountSource.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
-            "result": obj.get("result"),
-            "type": obj.get("type")
+            "comment": obj.get("comment"),
+            "commenter": obj.get("commenter"),
+            "date": obj.get("date")
         })
         return _obj
 

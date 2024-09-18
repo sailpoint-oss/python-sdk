@@ -17,20 +17,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.v2024.models.approval_identity import ApprovalIdentity
 from typing import Optional, Set
 from typing_extensions import Self
 
 class ApprovalComment1(BaseModel):
     """
-    ApprovalComment1
+    Comments Object
     """ # noqa: E501
-    comment: Optional[StrictStr] = Field(default=None, description="The comment text")
-    commenter: Optional[StrictStr] = Field(default=None, description="The name of the commenter")
-    var_date: Optional[datetime] = Field(default=None, description="A date-time in ISO-8601 format", alias="date")
-    __properties: ClassVar[List[str]] = ["comment", "commenter", "date"]
+    author: Optional[ApprovalIdentity] = None
+    comment: Optional[StrictStr] = Field(default=None, description="Comment to be left on an approval")
+    created_date: Optional[StrictStr] = Field(default=None, description="Date the comment was created", alias="createdDate")
+    __properties: ClassVar[List[str]] = ["author", "comment", "createdDate"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -71,11 +71,9 @@ class ApprovalComment1(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if var_date (nullable) is None
-        # and model_fields_set contains the field
-        if self.var_date is None and "var_date" in self.model_fields_set:
-            _dict['date'] = None
-
+        # override the default output from pydantic by calling `to_dict()` of author
+        if self.author:
+            _dict['author'] = self.author.to_dict()
         return _dict
 
     @classmethod
@@ -88,9 +86,9 @@ class ApprovalComment1(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "author": ApprovalIdentity.from_dict(obj["author"]) if obj.get("author") is not None else None,
             "comment": obj.get("comment"),
-            "commenter": obj.get("commenter"),
-            "date": obj.get("date")
+            "createdDate": obj.get("createdDate")
         })
         return _obj
 

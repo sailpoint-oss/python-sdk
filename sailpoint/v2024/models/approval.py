@@ -19,7 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2024.models.approval_comment import ApprovalComment
+from sailpoint.v2024.models.approval_comment1 import ApprovalComment1
 from sailpoint.v2024.models.approval_description import ApprovalDescription
 from sailpoint.v2024.models.approval_identity import ApprovalIdentity
 from sailpoint.v2024.models.approval_name import ApprovalName
@@ -40,7 +40,7 @@ class Approval(BaseModel):
     description: Optional[List[ApprovalDescription]] = Field(default=None, description="The description of the approval for a given locale")
     priority: Optional[StrictStr] = Field(default=None, description="The priority of the approval")
     requester: Optional[Dict[str, Any]] = Field(default=None, description="Object representation of the requester of the approval")
-    comments: Optional[List[ApprovalComment]] = Field(default=None, description="Object representation of a comment on the approval")
+    comments: Optional[List[ApprovalComment1]] = Field(default=None, description="Object representation of a comment on the approval")
     approved_by: Optional[List[ApprovalIdentity]] = Field(default=None, description="Array of approvers who have approved the approval", alias="approvedBy")
     rejected_by: Optional[List[ApprovalIdentity]] = Field(default=None, description="Array of approvers who have rejected the approval", alias="rejectedBy")
     completed_date: Optional[StrictStr] = Field(default=None, description="Date the approval was completed", alias="completedDate")
@@ -195,7 +195,7 @@ class Approval(BaseModel):
             "description": [ApprovalDescription.from_dict(_item) for _item in obj["description"]] if obj.get("description") is not None else None,
             "priority": obj.get("priority"),
             "requester": ApprovalIdentity.from_dict(obj["requester"]) if obj.get("requester") is not None else None,
-            "comments": [ApprovalComment.from_dict(_item) for _item in obj["comments"]] if obj.get("comments") is not None else None,
+            "comments": [ApprovalComment1.from_dict(_item) for _item in obj["comments"]] if obj.get("comments") is not None else None,
             "approvedBy": [ApprovalIdentity.from_dict(_item) for _item in obj["approvedBy"]] if obj.get("approvedBy") is not None else None,
             "rejectedBy": [ApprovalIdentity.from_dict(_item) for _item in obj["rejectedBy"]] if obj.get("rejectedBy") is not None else None,
             "completedDate": obj.get("completedDate"),

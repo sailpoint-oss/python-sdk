@@ -40,6 +40,13 @@ class TestConfigurationHubApi(unittest.TestCase):
         """
         pass
 
+    def test_delete_draft(self) -> None:
+        """Test case for delete_draft
+
+        Delete a draft
+        """
+        pass
+
     def test_delete_object_mapping(self) -> None:
         """Test case for delete_object_mapping
 
@@ -79,6 +86,13 @@ class TestConfigurationHubApi(unittest.TestCase):
         """Test case for import_uploaded_backup
 
         Uploads a backup file
+        """
+        pass
+
+    def test_list_drafts(self) -> None:
+        """Test case for list_drafts
+
+        List Drafts
         """
         pass
 

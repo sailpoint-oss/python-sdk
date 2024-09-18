@@ -1,14 +1,15 @@
 # ApprovalComment
 
-Comments Object
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**author** | [**ApprovalIdentity**](ApprovalIdentity.md) |  | [optional] 
-**comment** | **str** | Comment to be left on an approval | [optional] 
-**created_date** | **str** | Date the comment was created | [optional] 
+**comment** | **str** | Comment provided either by the approval requester or the approver. | 
+**timestamp** | **datetime** | The time when this comment was provided. | 
+**user** | **str** | Name of the user that provided this comment. | 
+**id** | **str** | Id of the user that provided this comment. | 
+**changed_to_status** | **str** | Status transition of the draft. | 
 
 ## Example
 

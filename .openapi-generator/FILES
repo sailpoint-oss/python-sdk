@@ -228,6 +228,7 @@ sailpoint/v2024/docs/Approval1.md
 sailpoint/v2024/docs/ApprovalBatch.md
 sailpoint/v2024/docs/ApprovalComment.md
 sailpoint/v2024/docs/ApprovalComment1.md
+sailpoint/v2024/docs/ApprovalComment2.md
 sailpoint/v2024/docs/ApprovalDescription.md
 sailpoint/v2024/docs/ApprovalDto.md
 sailpoint/v2024/docs/ApprovalForwardHistory.md
@@ -415,6 +416,7 @@ sailpoint/v2024/docs/DkimAttributes.md
 sailpoint/v2024/docs/DocumentType.md
 sailpoint/v2024/docs/DomainAddress.md
 sailpoint/v2024/docs/DomainStatusDto.md
+sailpoint/v2024/docs/DraftResponse.md
 sailpoint/v2024/docs/DtoType.md
 sailpoint/v2024/docs/EmailNotificationOption.md
 sailpoint/v2024/docs/EmailStatusDto.md
@@ -1283,6 +1285,7 @@ sailpoint/v2024/models/approval1.py
 sailpoint/v2024/models/approval_batch.py
 sailpoint/v2024/models/approval_comment.py
 sailpoint/v2024/models/approval_comment1.py
+sailpoint/v2024/models/approval_comment2.py
 sailpoint/v2024/models/approval_description.py
 sailpoint/v2024/models/approval_dto.py
 sailpoint/v2024/models/approval_forward_history.py
@@ -1456,6 +1459,7 @@ sailpoint/v2024/models/dkim_attributes.py
 sailpoint/v2024/models/document_type.py
 sailpoint/v2024/models/domain_address.py
 sailpoint/v2024/models/domain_status_dto.py
+sailpoint/v2024/models/draft_response.py
 sailpoint/v2024/models/dto_type.py
 sailpoint/v2024/models/email_notification_option.py
 sailpoint/v2024/models/email_status_dto.py
@@ -2277,6 +2281,7 @@ sailpoint/v2024/test/test_approval1.py
 sailpoint/v2024/test/test_approval_batch.py
 sailpoint/v2024/test/test_approval_comment.py
 sailpoint/v2024/test/test_approval_comment1.py
+sailpoint/v2024/test/test_approval_comment2.py
 sailpoint/v2024/test/test_approval_description.py
 sailpoint/v2024/test/test_approval_dto.py
 sailpoint/v2024/test/test_approval_forward_history.py
@@ -2464,6 +2469,7 @@ sailpoint/v2024/test/test_dkim_attributes.py
 sailpoint/v2024/test/test_document_type.py
 sailpoint/v2024/test/test_domain_address.py
 sailpoint/v2024/test/test_domain_status_dto.py
+sailpoint/v2024/test/test_draft_response.py
 sailpoint/v2024/test/test_dto_type.py
 sailpoint/v2024/test/test_email_notification_option.py
 sailpoint/v2024/test/test_email_status_dto.py

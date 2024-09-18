@@ -1,13 +1,14 @@
 # ApprovalComment1
 
+Comments Object
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**comment** | **str** | The comment text | [optional] 
-**commenter** | **str** | The name of the commenter | [optional] 
-**var_date** | **datetime** | A date-time in ISO-8601 format | [optional] 
+**author** | [**ApprovalIdentity**](ApprovalIdentity.md) |  | [optional] 
+**comment** | **str** | Comment to be left on an approval | [optional] 
+**created_date** | **str** | Date the comment was created | [optional] 
 
 ## Example
 

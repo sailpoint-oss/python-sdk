@@ -58,7 +58,7 @@ class TestApproval(unittest.TestCase):
                 priority = 'HIGH',
                 requester = {id=85d173e7d57e496569df763231d6deb6a, type=IDENTITY, name=John Doe},
                 comments = [
-                    sailpoint.v2024.models.approval_comment.ApprovalComment(
+                    sailpoint.v2024.models.approval_comment_1.ApprovalComment_1(
                         author = sailpoint.v2024.models.approval_identity.ApprovalIdentity(
                             id = '85d173e7d57e496569df763231d6deb6a', 
                             type = 'IDENTITY', 
