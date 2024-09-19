@@ -377,8 +377,10 @@ Class | Method | HTTP request | Description
 *ManagedClientsApi* | [**update_managed_client**](sailpoint/v2024/docs/ManagedClientsApi.md#update_managed_client) | **PATCH** /managed-clients/{id} | Update a Managed Client
 *ManagedClustersApi* | [**create_managed_cluster**](sailpoint/v2024/docs/ManagedClustersApi.md#create_managed_cluster) | **POST** /managed-clusters | Create a new Managed Cluster
 *ManagedClustersApi* | [**delete_managed_cluster**](sailpoint/v2024/docs/ManagedClustersApi.md#delete_managed_cluster) | **DELETE** /managed-clusters/{id} | Delete a Managed Cluster
+*ManagedClustersApi* | [**get_client_log_configuration**](sailpoint/v2024/docs/ManagedClustersApi.md#get_client_log_configuration) | **GET** /managed-clusters/{id}/log-config | Get managed cluster&#39;s log configuration
 *ManagedClustersApi* | [**get_managed_cluster**](sailpoint/v2024/docs/ManagedClustersApi.md#get_managed_cluster) | **GET** /managed-clusters/{id} | Get a specified Managed Cluster.
 *ManagedClustersApi* | [**get_managed_clusters**](sailpoint/v2024/docs/ManagedClustersApi.md#get_managed_clusters) | **GET** /managed-clusters | Retrieve all Managed Clusters.
+*ManagedClustersApi* | [**put_client_log_configuration**](sailpoint/v2024/docs/ManagedClustersApi.md#put_client_log_configuration) | **PUT** /managed-clusters/{id}/log-config | Update managed cluster&#39;s log configuration
 *ManagedClustersApi* | [**update_managed_cluster**](sailpoint/v2024/docs/ManagedClustersApi.md#update_managed_cluster) | **PATCH** /managed-clusters/{id} | Update a Managed Cluster
 *NonEmployeeLifecycleManagementApi* | [**approve_non_employee_request**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#approve_non_employee_request) | **POST** /non-employee-approvals/{id}/approve | Approve a Non-Employee Request
 *NonEmployeeLifecycleManagementApi* | [**create_non_employee_record**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#create_non_employee_record) | **POST** /non-employee-records | Create Non-Employee Record

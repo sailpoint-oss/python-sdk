@@ -6,8 +6,10 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_managed_cluster**](ManagedClustersApi.md#create_managed_cluster) | **POST** /managed-clusters | Create a new Managed Cluster
 [**delete_managed_cluster**](ManagedClustersApi.md#delete_managed_cluster) | **DELETE** /managed-clusters/{id} | Delete a Managed Cluster
+[**get_client_log_configuration**](ManagedClustersApi.md#get_client_log_configuration) | **GET** /managed-clusters/{id}/log-config | Get managed cluster&#39;s log configuration
 [**get_managed_cluster**](ManagedClustersApi.md#get_managed_cluster) | **GET** /managed-clusters/{id} | Get a specified Managed Cluster.
 [**get_managed_clusters**](ManagedClustersApi.md#get_managed_clusters) | **GET** /managed-clusters | Retrieve all Managed Clusters.
+[**put_client_log_configuration**](ManagedClustersApi.md#put_client_log_configuration) | **PUT** /managed-clusters/{id}/log-config | Update managed cluster&#39;s log configuration
 [**update_managed_cluster**](ManagedClustersApi.md#update_managed_cluster) | **PATCH** /managed-clusters/{id} | Update a Managed Cluster
 
 
@@ -172,6 +174,91 @@ void (empty response body)
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_client_log_configuration**
+> ClientLogConfiguration get_client_log_configuration(id)
+
+Get managed cluster's log configuration
+
+Get managed cluster's log configuration.
+
+### Example
+
+* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (UserContextAuth):
+
+```python
+import sailpoint.v2024
+from sailpoint.v2024.models.client_log_configuration import ClientLogConfiguration
+from sailpoint.v2024.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v2024
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sailpoint.v2024.Configuration(
+    host = "https://sailpoint.api.identitynow.com/v2024"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with sailpoint.v2024.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sailpoint.v2024.ManagedClustersApi(api_client)
+    id = '2b838de9-db9b-abcf-e646-d4f274ad4238' # str | ID of ManagedCluster to get log configuration for
+
+    try:
+        # Get managed cluster's log configuration
+        api_response = api_instance.get_client_log_configuration(id)
+        print("The response of ManagedClustersApi->get_client_log_configuration:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ManagedClustersApi->get_client_log_configuration: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**| ID of ManagedCluster to get log configuration for | 
+
+### Return type
+
+[**ClientLogConfiguration**](ClientLogConfiguration.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Log configuration of ManagedCluster matching given cluster ID |  -  |
+**204** | No content - indicates the request was successful but there is no content to be returned in the response. |  -  |
+**400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
+**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**404** | Not Found - returned if the request URL refers to a resource or object that does not exist |  -  |
 **429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
 **500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
 
@@ -345,6 +432,92 @@ Name | Type | Description  | Notes
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **put_client_log_configuration**
+> ClientLogConfiguration put_client_log_configuration(id, client_log_configuration)
+
+Update managed cluster's log configuration
+
+Update managed cluster's log configuration
+
+### Example
+
+* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (UserContextAuth):
+
+```python
+import sailpoint.v2024
+from sailpoint.v2024.models.client_log_configuration import ClientLogConfiguration
+from sailpoint.v2024.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v2024
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sailpoint.v2024.Configuration(
+    host = "https://sailpoint.api.identitynow.com/v2024"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with sailpoint.v2024.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sailpoint.v2024.ManagedClustersApi(api_client)
+    id = '2b838de9-db9b-abcf-e646-d4f274ad4238' # str | ID of ManagedCluster to update log configuration for
+    client_log_configuration = sailpoint.v2024.ClientLogConfiguration() # ClientLogConfiguration | ClientLogConfiguration for given ManagedCluster
+
+    try:
+        # Update managed cluster's log configuration
+        api_response = api_instance.put_client_log_configuration(id, client_log_configuration)
+        print("The response of ManagedClustersApi->put_client_log_configuration:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ManagedClustersApi->put_client_log_configuration: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**| ID of ManagedCluster to update log configuration for | 
+ **client_log_configuration** | [**ClientLogConfiguration**](ClientLogConfiguration.md)| ClientLogConfiguration for given ManagedCluster | 
+
+### Return type
+
+[**ClientLogConfiguration**](ClientLogConfiguration.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Responds with updated ClientLogConfiguration for given ManagedCluster |  -  |
+**400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
+**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**404** | Not Found - returned if the request URL refers to a resource or object that does not exist |  -  |
 **429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
 **500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
 
