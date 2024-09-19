@@ -7,6 +7,7 @@ Sed Batch Request
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **entitlements** | **List[str]** | list of entitlement ids | [optional] 
+**seds** | **List[str]** | list of sed ids | [optional] 
 
 ## Example
 

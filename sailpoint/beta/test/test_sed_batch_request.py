@@ -37,6 +37,9 @@ class TestSedBatchRequest(unittest.TestCase):
             return SedBatchRequest(
                 entitlements = [
                     '016629d1-1d25-463f-97f3-c6686846650'
+                    ],
+                seds = [
+                    '016629d1-1d25-463f-97f3-c6686846650'
                     ]
             )
         else:
