@@ -40,6 +40,13 @@ class TestManagedClustersApi(unittest.TestCase):
         """
         pass
 
+    def test_get_client_log_configuration(self) -> None:
+        """Test case for get_client_log_configuration
+
+        Get managed cluster's log configuration
+        """
+        pass
+
     def test_get_managed_cluster(self) -> None:
         """Test case for get_managed_cluster
 
@@ -51,6 +58,13 @@ class TestManagedClustersApi(unittest.TestCase):
         """Test case for get_managed_clusters
 
         Retrieve all Managed Clusters.
+        """
+        pass
+
+    def test_put_client_log_configuration(self) -> None:
+        """Test case for put_client_log_configuration
+
+        Update managed cluster's log configuration
         """
         pass
 
