@@ -414,6 +414,8 @@ sailpoint/v2024/docs/DataAccessPoliciesInner.md
 sailpoint/v2024/docs/DeleteNonEmployeeRecordsInBulkRequest.md
 sailpoint/v2024/docs/DeleteSource202Response.md
 sailpoint/v2024/docs/DeleteVendorConnectorMapping200Response.md
+sailpoint/v2024/docs/DeployRequest.md
+sailpoint/v2024/docs/DeployResponse.md
 sailpoint/v2024/docs/DisplayReference.md
 sailpoint/v2024/docs/DkimAttributes.md
 sailpoint/v2024/docs/DocumentType.md
@@ -1458,6 +1460,8 @@ sailpoint/v2024/models/data_access_policies_inner.py
 sailpoint/v2024/models/delete_non_employee_records_in_bulk_request.py
 sailpoint/v2024/models/delete_source202_response.py
 sailpoint/v2024/models/delete_vendor_connector_mapping200_response.py
+sailpoint/v2024/models/deploy_request.py
+sailpoint/v2024/models/deploy_response.py
 sailpoint/v2024/models/display_reference.py
 sailpoint/v2024/models/dkim_attributes.py
 sailpoint/v2024/models/document_type.py
@@ -2469,6 +2473,8 @@ sailpoint/v2024/test/test_data_access_policies_inner.py
 sailpoint/v2024/test/test_delete_non_employee_records_in_bulk_request.py
 sailpoint/v2024/test/test_delete_source202_response.py
 sailpoint/v2024/test/test_delete_vendor_connector_mapping200_response.py
+sailpoint/v2024/test/test_deploy_request.py
+sailpoint/v2024/test/test_deploy_response.py
 sailpoint/v2024/test/test_display_reference.py
 sailpoint/v2024/test/test_dkim_attributes.py
 sailpoint/v2024/test/test_document_type.py

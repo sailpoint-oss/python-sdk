@@ -416,6 +416,8 @@ from sailpoint.v2024.models.data_access_policies_inner import DataAccessPolicies
 from sailpoint.v2024.models.delete_non_employee_records_in_bulk_request import DeleteNonEmployeeRecordsInBulkRequest
 from sailpoint.v2024.models.delete_source202_response import DeleteSource202Response
 from sailpoint.v2024.models.delete_vendor_connector_mapping200_response import DeleteVendorConnectorMapping200Response
+from sailpoint.v2024.models.deploy_request import DeployRequest
+from sailpoint.v2024.models.deploy_response import DeployResponse
 from sailpoint.v2024.models.display_reference import DisplayReference
 from sailpoint.v2024.models.dkim_attributes import DkimAttributes
 from sailpoint.v2024.models.document_type import DocumentType

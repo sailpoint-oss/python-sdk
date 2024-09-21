@@ -26,6 +26,13 @@ class TestConfigurationHubApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_create_deploy(self) -> None:
+        """Test case for create_deploy
+
+        Create a Deploy
+        """
+        pass
+
     def test_create_object_mapping(self) -> None:
         """Test case for create_object_mapping
 
@@ -75,6 +82,13 @@ class TestConfigurationHubApi(unittest.TestCase):
         """
         pass
 
+    def test_get_deploy(self) -> None:
+        """Test case for get_deploy
+
+        Get a Deploy
+        """
+        pass
+
     def test_get_object_mappings(self) -> None:
         """Test case for get_object_mappings
 
@@ -93,6 +107,13 @@ class TestConfigurationHubApi(unittest.TestCase):
         """Test case for list_backups
 
         List Backups
+        """
+        pass
+
+    def test_list_deploys(self) -> None:
+        """Test case for list_deploys
+
+        List Deploys
         """
         pass
 

@@ -4,6 +4,7 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v2024*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**create_deploy**](ConfigurationHubApi.md#create_deploy) | **POST** /configuration-hub/deploys | Create a Deploy
 [**create_object_mapping**](ConfigurationHubApi.md#create_object_mapping) | **POST** /configuration-hub/object-mappings/{sourceOrg} | Creates an object mapping
 [**create_object_mappings**](ConfigurationHubApi.md#create_object_mappings) | **POST** /configuration-hub/object-mappings/{sourceOrg}/bulk-create | Bulk creates object mappings
 [**create_uploaded_configuration**](ConfigurationHubApi.md#create_uploaded_configuration) | **POST** /configuration-hub/backups/uploads | Upload a Configuration
@@ -11,13 +12,99 @@ Method | HTTP request | Description
 [**delete_draft**](ConfigurationHubApi.md#delete_draft) | **DELETE** /configuration-hub/drafts/{id} | Delete a draft
 [**delete_object_mapping**](ConfigurationHubApi.md#delete_object_mapping) | **DELETE** /configuration-hub/object-mappings/{sourceOrg}/{objectMappingId} | Deletes an object mapping
 [**delete_uploaded_configuration**](ConfigurationHubApi.md#delete_uploaded_configuration) | **DELETE** /configuration-hub/backups/uploads/{id} | Delete an Uploaded Configuration
+[**get_deploy**](ConfigurationHubApi.md#get_deploy) | **GET** /configuration-hub/deploys/{id} | Get a Deploy
 [**get_object_mappings**](ConfigurationHubApi.md#get_object_mappings) | **GET** /configuration-hub/object-mappings/{sourceOrg} | Gets list of object mappings
 [**get_uploaded_configuration**](ConfigurationHubApi.md#get_uploaded_configuration) | **GET** /configuration-hub/backups/uploads/{id} | Get an Uploaded Configuration
 [**list_backups**](ConfigurationHubApi.md#list_backups) | **GET** /configuration-hub/backups | List Backups
+[**list_deploys**](ConfigurationHubApi.md#list_deploys) | **GET** /configuration-hub/deploys | List Deploys
 [**list_drafts**](ConfigurationHubApi.md#list_drafts) | **GET** /configuration-hub/drafts | List Drafts
 [**list_uploaded_configurations**](ConfigurationHubApi.md#list_uploaded_configurations) | **GET** /configuration-hub/backups/uploads | List Uploaded Configurations
 [**update_object_mappings**](ConfigurationHubApi.md#update_object_mappings) | **POST** /configuration-hub/object-mappings/{sourceOrg}/bulk-patch | Bulk updates object mappings
 
+
+# **create_deploy**
+> DeployResponse create_deploy(deploy_request)
+
+Create a Deploy
+
+This API performs a deploy based on an existing daft.
+
+### Example
+
+* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (UserContextAuth):
+
+```python
+import sailpoint.v2024
+from sailpoint.v2024.models.deploy_request import DeployRequest
+from sailpoint.v2024.models.deploy_response import DeployResponse
+from sailpoint.v2024.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v2024
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sailpoint.v2024.Configuration(
+    host = "https://sailpoint.api.identitynow.com/v2024"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with sailpoint.v2024.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sailpoint.v2024.ConfigurationHubApi(api_client)
+    deploy_request = {draftId=c9a38d8c-5edf-4182-9d39-f6581d3ebd05} # DeployRequest | The deploy request body.
+
+    try:
+        # Create a Deploy
+        api_response = api_instance.create_deploy(deploy_request)
+        print("The response of ConfigurationHubApi->create_deploy:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ConfigurationHubApi->create_deploy: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **deploy_request** | [**DeployRequest**](DeployRequest.md)| The deploy request body. | 
+
+### Return type
+
+[**DeployResponse**](DeployResponse.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Deploy job accepted and queued for processing. |  -  |
+**400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
+**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_object_mapping**
 > ObjectMappingResponse create_object_mapping(source_org, object_mapping_request)
@@ -604,6 +691,90 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_deploy**
+> DeployResponse get_deploy(id)
+
+Get a Deploy
+
+This API gets an existing deploy for the current tenant.
+
+### Example
+
+* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (UserContextAuth):
+
+```python
+import sailpoint.v2024
+from sailpoint.v2024.models.deploy_response import DeployResponse
+from sailpoint.v2024.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v2024
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sailpoint.v2024.Configuration(
+    host = "https://sailpoint.api.identitynow.com/v2024"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with sailpoint.v2024.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sailpoint.v2024.ConfigurationHubApi(api_client)
+    id = '3d0fe04b-57df-4a46-a83b-8f04b0f9d10b' # str | The id of the deploy.
+
+    try:
+        # Get a Deploy
+        api_response = api_instance.get_deploy(id)
+        print("The response of ConfigurationHubApi->get_deploy:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ConfigurationHubApi->get_deploy: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**| The id of the deploy. | 
+
+### Return type
+
+[**DeployResponse**](DeployResponse.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Gets the details of a deploy. |  -  |
+**400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
+**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**404** | Not Found - returned if the request URL refers to a resource or object that does not exist |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_object_mappings**
 > List[ObjectMappingResponse] get_object_mappings(source_org)
 
@@ -847,6 +1018,85 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | List of existing backups. |  -  |
+**400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
+**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_deploys**
+> List[DeployResponse] list_deploys()
+
+List Deploys
+
+This API gets a list of deploys for the current tenant.
+
+### Example
+
+* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (UserContextAuth):
+
+```python
+import sailpoint.v2024
+from sailpoint.v2024.models.deploy_response import DeployResponse
+from sailpoint.v2024.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v2024
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sailpoint.v2024.Configuration(
+    host = "https://sailpoint.api.identitynow.com/v2024"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with sailpoint.v2024.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sailpoint.v2024.ConfigurationHubApi(api_client)
+
+    try:
+        # List Deploys
+        api_response = api_instance.list_deploys()
+        print("The response of ConfigurationHubApi->list_deploys:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ConfigurationHubApi->list_deploys: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List[DeployResponse]**](DeployResponse.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of existing deploys. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
