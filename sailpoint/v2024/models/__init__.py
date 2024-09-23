@@ -149,7 +149,6 @@ from sailpoint.v2024.models.approval_comment import ApprovalComment
 from sailpoint.v2024.models.approval_comment1 import ApprovalComment1
 from sailpoint.v2024.models.approval_comment2 import ApprovalComment2
 from sailpoint.v2024.models.approval_description import ApprovalDescription
-from sailpoint.v2024.models.approval_dto import ApprovalDto
 from sailpoint.v2024.models.approval_forward_history import ApprovalForwardHistory
 from sailpoint.v2024.models.approval_identity import ApprovalIdentity
 from sailpoint.v2024.models.approval_info_response import ApprovalInfoResponse

@@ -40,13 +40,6 @@ class TestApprovalsApi(unittest.TestCase):
         """
         pass
 
-    def test_patch_approval(self) -> None:
-        """Test case for patch_approval
-
-        Change an approval
-        """
-        pass
-
 
 if __name__ == '__main__':
     unittest.main()

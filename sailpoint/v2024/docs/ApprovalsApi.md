@@ -6,7 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_approval**](ApprovalsApi.md#get_approval) | **GET** /generic-approvals/{id} | Get an approval
 [**get_approvals**](ApprovalsApi.md#get_approvals) | **GET** /generic-approvals | Get Approvals
-[**patch_approval**](ApprovalsApi.md#patch_approval) | **PATCH** /generic-approvals/{id} | Change an approval
 
 
 # **get_approval**
@@ -175,92 +174,6 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | List of Approvals |  -  |
-**400** | Client Error - Returned if the request body is invalid. |  -  |
-**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
-**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
-**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
-**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **patch_approval**
-> Approval patch_approval(x_sail_point_experimental, approval_dto)
-
-Change an approval
-
-Change the values of a given approval
-
-### Example
-
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
-
-```python
-import sailpoint.v2024
-from sailpoint.v2024.models.approval import Approval
-from sailpoint.v2024.models.approval_dto import ApprovalDto
-from sailpoint.v2024.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v2024
-# See configuration.py for a list of all supported configuration parameters.
-configuration = sailpoint.v2024.Configuration(
-    host = "https://sailpoint.api.identitynow.com/v2024"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with sailpoint.v2024.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = sailpoint.v2024.ApprovalsApi(api_client)
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true')
-    approval_dto = sailpoint.v2024.ApprovalDto() # ApprovalDto | 
-
-    try:
-        # Change an approval
-        api_response = api_instance.patch_approval(x_sail_point_experimental, approval_dto)
-        print("The response of ApprovalsApi->patch_approval:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling ApprovalsApi->patch_approval: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **x_sail_point_experimental** | **str**| Use this header to enable this experimental API. | [default to &#39;true&#39;]
- **approval_dto** | [**ApprovalDto**](ApprovalDto.md)|  | 
-
-### Return type
-
-[**Approval**](Approval.md)
-
-### Authorization
-
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Approval object |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |

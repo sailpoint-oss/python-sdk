@@ -125,7 +125,6 @@ from sailpoint.beta.models.approval import Approval
 from sailpoint.beta.models.approval_batch import ApprovalBatch
 from sailpoint.beta.models.approval_comment import ApprovalComment
 from sailpoint.beta.models.approval_description import ApprovalDescription
-from sailpoint.beta.models.approval_dto import ApprovalDto
 from sailpoint.beta.models.approval_forward_history import ApprovalForwardHistory
 from sailpoint.beta.models.approval_identity import ApprovalIdentity
 from sailpoint.beta.models.approval_info_response import ApprovalInfoResponse

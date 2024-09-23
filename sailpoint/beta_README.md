@@ -125,7 +125,6 @@ Class | Method | HTTP request | Description
 *ApplicationDiscoveryApi* | [**send_manual_discover_applications_csv_template**](sailpoint/beta/docs/ApplicationDiscoveryApi.md#send_manual_discover_applications_csv_template) | **POST** /manual-discover-applications | CSV Upload to discover applications
 *ApprovalsApi* | [**get_approval**](sailpoint/beta/docs/ApprovalsApi.md#get_approval) | **GET** /generic-approvals/{id} | Get an approval
 *ApprovalsApi* | [**get_approvals**](sailpoint/beta/docs/ApprovalsApi.md#get_approvals) | **GET** /generic-approvals | Get Approvals
-*ApprovalsApi* | [**patch_approval**](sailpoint/beta/docs/ApprovalsApi.md#patch_approval) | **PATCH** /generic-approvals/{id} | Change an approval
 *AppsApi* | [**create_source_app**](sailpoint/beta/docs/AppsApi.md#create_source_app) | **POST** /source-apps | Create source app
 *AppsApi* | [**delete_access_profiles_from_source_app_by_bulk**](sailpoint/beta/docs/AppsApi.md#delete_access_profiles_from_source_app_by_bulk) | **POST** /source-apps/{id}/access-profiles/bulk-remove | Bulk remove access profiles from the specified source app
 *AppsApi* | [**delete_source_app**](sailpoint/beta/docs/AppsApi.md#delete_source_app) | **DELETE** /source-apps/{id} | Delete source app by ID
@@ -722,7 +721,6 @@ Class | Method | HTTP request | Description
  - [ApprovalBatch](sailpoint/beta/docs/ApprovalBatch.md)
  - [ApprovalComment](sailpoint/beta/docs/ApprovalComment.md)
  - [ApprovalDescription](sailpoint/beta/docs/ApprovalDescription.md)
- - [ApprovalDto](sailpoint/beta/docs/ApprovalDto.md)
  - [ApprovalForwardHistory](sailpoint/beta/docs/ApprovalForwardHistory.md)
  - [ApprovalIdentity](sailpoint/beta/docs/ApprovalIdentity.md)
  - [ApprovalInfoResponse](sailpoint/beta/docs/ApprovalInfoResponse.md)
