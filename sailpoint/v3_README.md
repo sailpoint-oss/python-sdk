@@ -951,7 +951,6 @@ Class | Method | HTTP request | Description
  - [TokenAuthResponse](sailpoint/v3/docs/TokenAuthResponse.md)
  - [Transform](sailpoint/v3/docs/Transform.md)
  - [TransformDefinition](sailpoint/v3/docs/TransformDefinition.md)
- - [TransformDefinitionAttributesValue](sailpoint/v3/docs/TransformDefinitionAttributesValue.md)
  - [TransformRead](sailpoint/v3/docs/TransformRead.md)
  - [TypeAheadQuery](sailpoint/v3/docs/TypeAheadQuery.md)
  - [TypedReference](sailpoint/v3/docs/TypedReference.md)

@@ -1426,7 +1426,6 @@ Class | Method | HTTP request | Description
  - [Transform](sailpoint/beta/docs/Transform.md)
  - [TransformDefinition](sailpoint/beta/docs/TransformDefinition.md)
  - [TransformDefinition1](sailpoint/beta/docs/TransformDefinition1.md)
- - [TransformDefinition1AttributesValue](sailpoint/beta/docs/TransformDefinition1AttributesValue.md)
  - [TransformRead](sailpoint/beta/docs/TransformRead.md)
  - [TranslationMessage](sailpoint/beta/docs/TranslationMessage.md)
  - [Trigger](sailpoint/beta/docs/Trigger.md)

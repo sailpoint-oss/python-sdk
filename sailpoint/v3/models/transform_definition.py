@@ -19,7 +19,6 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v3.models.transform_definition_attributes_value import TransformDefinitionAttributesValue
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,7 +27,7 @@ class TransformDefinition(BaseModel):
     TransformDefinition
     """ # noqa: E501
     type: Optional[StrictStr] = Field(default=None, description="The type of the transform definition.")
-    attributes: Optional[Dict[str, TransformDefinitionAttributesValue]] = Field(default=None, description="Arbitrary key-value pairs to store any metadata for the object")
+    attributes: Optional[Dict[str, Any]] = Field(default=None, description="Arbitrary key-value pairs to store any metadata for the object")
     __properties: ClassVar[List[str]] = ["type", "attributes"]
 
     model_config = ConfigDict(
@@ -70,13 +69,6 @@ class TransformDefinition(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each value in attributes (dict)
-        _field_dict = {}
-        if self.attributes:
-            for _key_attributes in self.attributes:
-                if self.attributes[_key_attributes]:
-                    _field_dict[_key_attributes] = self.attributes[_key_attributes].to_dict()
-            _dict['attributes'] = _field_dict
         return _dict
 
     @classmethod
@@ -90,12 +82,7 @@ class TransformDefinition(BaseModel):
 
         _obj = cls.model_validate({
             "type": obj.get("type"),
-            "attributes": dict(
-                (_k, TransformDefinitionAttributesValue.from_dict(_v))
-                for _k, _v in obj["attributes"].items()
-            )
-            if obj.get("attributes") is not None
-            else None
+            "attributes": obj.get("attributes")
         })
         return _obj
 

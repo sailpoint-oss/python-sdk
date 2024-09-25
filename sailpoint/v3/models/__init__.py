@@ -526,7 +526,6 @@ from sailpoint.v3.models.token_auth_request import TokenAuthRequest
 from sailpoint.v3.models.token_auth_response import TokenAuthResponse
 from sailpoint.v3.models.transform import Transform
 from sailpoint.v3.models.transform_definition import TransformDefinition
-from sailpoint.v3.models.transform_definition_attributes_value import TransformDefinitionAttributesValue
 from sailpoint.v3.models.transform_read import TransformRead
 from sailpoint.v3.models.type_ahead_query import TypeAheadQuery
 from sailpoint.v3.models.typed_reference import TypedReference

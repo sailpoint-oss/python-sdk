@@ -1601,7 +1601,6 @@ Class | Method | HTTP request | Description
  - [TextQuery](sailpoint/v2024/docs/TextQuery.md)
  - [Transform](sailpoint/v2024/docs/Transform.md)
  - [TransformDefinition](sailpoint/v2024/docs/TransformDefinition.md)
- - [TransformDefinitionAttributesValue](sailpoint/v2024/docs/TransformDefinitionAttributesValue.md)
  - [TransformRead](sailpoint/v2024/docs/TransformRead.md)
  - [TranslationMessage](sailpoint/v2024/docs/TranslationMessage.md)
  - [Trigger](sailpoint/v2024/docs/Trigger.md)

@@ -817,7 +817,6 @@ from sailpoint.beta.models.token_auth_response import TokenAuthResponse
 from sailpoint.beta.models.transform import Transform
 from sailpoint.beta.models.transform_definition import TransformDefinition
 from sailpoint.beta.models.transform_definition1 import TransformDefinition1
-from sailpoint.beta.models.transform_definition1_attributes_value import TransformDefinition1AttributesValue
 from sailpoint.beta.models.transform_read import TransformRead
 from sailpoint.beta.models.translation_message import TranslationMessage
 from sailpoint.beta.models.trigger import Trigger

@@ -932,7 +932,6 @@ from sailpoint.v2024.models.test_workflow_request import TestWorkflowRequest
 from sailpoint.v2024.models.text_query import TextQuery
 from sailpoint.v2024.models.transform import Transform
 from sailpoint.v2024.models.transform_definition import TransformDefinition
-from sailpoint.v2024.models.transform_definition_attributes_value import TransformDefinitionAttributesValue
 from sailpoint.v2024.models.transform_read import TransformRead
 from sailpoint.v2024.models.translation_message import TranslationMessage
 from sailpoint.v2024.models.trigger import Trigger

@@ -1077,7 +1077,6 @@ sailpoint/v2024/docs/TestWorkflowRequest.md
 sailpoint/v2024/docs/TextQuery.md
 sailpoint/v2024/docs/Transform.md
 sailpoint/v2024/docs/TransformDefinition.md
-sailpoint/v2024/docs/TransformDefinitionAttributesValue.md
 sailpoint/v2024/docs/TransformRead.md
 sailpoint/v2024/docs/TransformsApi.md
 sailpoint/v2024/docs/TranslationMessage.md
@@ -2072,7 +2071,6 @@ sailpoint/v2024/models/test_workflow_request.py
 sailpoint/v2024/models/text_query.py
 sailpoint/v2024/models/transform.py
 sailpoint/v2024/models/transform_definition.py
-sailpoint/v2024/models/transform_definition_attributes_value.py
 sailpoint/v2024/models/transform_read.py
 sailpoint/v2024/models/translation_message.py
 sailpoint/v2024/models/trigger.py
@@ -3134,7 +3132,6 @@ sailpoint/v2024/test/test_test_workflow_request.py
 sailpoint/v2024/test/test_text_query.py
 sailpoint/v2024/test/test_transform.py
 sailpoint/v2024/test/test_transform_definition.py
-sailpoint/v2024/test/test_transform_definition_attributes_value.py
 sailpoint/v2024/test/test_transform_read.py
 sailpoint/v2024/test/test_transforms_api.py
 sailpoint/v2024/test/test_translation_message.py

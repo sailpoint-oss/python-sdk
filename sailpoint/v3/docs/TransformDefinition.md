@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | The type of the transform definition. | [optional] 
-**attributes** | [**Dict[str, TransformDefinitionAttributesValue]**](TransformDefinitionAttributesValue.md) | Arbitrary key-value pairs to store any metadata for the object | [optional] 
+**attributes** | **Dict[str, object]** | Arbitrary key-value pairs to store any metadata for the object | [optional] 
 
 ## Example
 
