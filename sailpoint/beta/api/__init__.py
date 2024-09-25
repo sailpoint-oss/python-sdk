@@ -39,6 +39,7 @@ from sailpoint.beta.api.mfa_configuration_api import MFAConfigurationApi
 from sailpoint.beta.api.mfa_controller_api import MFAControllerApi
 from sailpoint.beta.api.managed_clients_api import ManagedClientsApi
 from sailpoint.beta.api.managed_clusters_api import ManagedClustersApi
+from sailpoint.beta.api.multi_host_integration_api import MultiHostIntegrationApi
 from sailpoint.beta.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi
 from sailpoint.beta.api.notifications_api import NotificationsApi
 from sailpoint.beta.api.o_auth_clients_api import OAuthClientsApi

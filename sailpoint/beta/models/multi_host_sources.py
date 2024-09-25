@@ -18,8 +18,9 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from sailpoint.beta.models.manager_correlation_mapping import ManagerCorrelationMapping
 from sailpoint.beta.models.multi_host_integrations_cluster import MultiHostIntegrationsCluster
 from sailpoint.beta.models.multi_host_integrations_management_workgroup import MultiHostIntegrationsManagementWorkgroup
@@ -33,11 +34,11 @@ from sailpoint.beta.models.multi_host_sources_schemas_inner import MultiHostSour
 from typing import Optional, Set
 from typing_extensions import Self
 
-class Source(BaseModel):
+class MultiHostSources(BaseModel):
     """
-    Source
+    MultiHostSources
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(default=None, description="Source ID.")
+    id: StrictStr = Field(description="Source ID.")
     name: StrictStr = Field(description="Source's human-readable name.")
     description: Optional[StrictStr] = Field(default=None, description="Source's human-readable description.")
     owner: MultiHostIntegrationsOwner
@@ -50,18 +51,18 @@ class Source(BaseModel):
     schemas: Optional[List[MultiHostSourcesSchemasInner]] = Field(default=None, description="List of references to schema objects.")
     password_policies: Optional[List[MultiHostSourcesPasswordPoliciesInner]] = Field(default=None, description="List of references to the associated PasswordPolicy objects.", alias="passwordPolicies")
     features: Optional[List[StrictStr]] = Field(default=None, description="Optional features that can be supported by a source. Modifying the features array may cause source configuration errors that are unsupportable. It is recommended to not modify this array for SailPoint supported connectors. * AUTHENTICATE: The source supports pass-through authentication. * COMPOSITE: The source supports composite source creation. * DIRECT_PERMISSIONS: The source supports returning DirectPermissions. * DISCOVER_SCHEMA: The source supports discovering schemas for users and groups. * ENABLE The source supports reading if an account is enabled or disabled. * MANAGER_LOOKUP: The source supports looking up managers as they are encountered in a feed. This is the opposite of NO_RANDOM_ACCESS. * NO_RANDOM_ACCESS: The source does not support random access and the getObject() methods should not be called and expected to perform. * PROXY: The source can serve as a proxy for another source. When an source has a proxy, all connector calls made with that source are redirected through the connector for the proxy source. * SEARCH * TEMPLATE * UNLOCK: The source supports reading if an account is locked or unlocked. * UNSTRUCTURED_TARGETS: The source supports returning unstructured Targets. * SHAREPOINT_TARGET: The source supports returning unstructured Target data for SharePoint. It will be typically used by AD, LDAP sources. * PROVISIONING: The source can both read and write accounts. Having this feature implies that the provision() method is implemented. It also means that direct and target permissions can also be provisioned if they can be returned by aggregation. * GROUP_PROVISIONING: The source can both read and write groups. Having this feature implies that the provision() method is implemented. * SYNC_PROVISIONING: The source can provision accounts synchronously. * PASSWORD: The source can provision password changes. Since sources can never read passwords, this is should only be used in conjunction with the PROVISIONING feature. * CURRENT_PASSWORD: Some source types support verification of the current password * ACCOUNT_ONLY_REQUEST: The source supports requesting accounts without entitlements. * ADDITIONAL_ACCOUNT_REQUEST: The source supports requesting additional accounts. * NO_AGGREGATION: A source that does not support aggregation. * GROUPS_HAVE_MEMBERS: The source models group memberships with a member attribute on the group object rather than a groups attribute on the account object. This effects the implementation of delta account aggregation. * NO_PERMISSIONS_PROVISIONING: Indicates that the connector cannot provision direct or target permissions for accounts. When DIRECT_PERMISSIONS and PROVISIONING features are present, it is assumed that the connector can also provision direct permissions. This feature disables that assumption and causes permission request to be converted to work items for accounts. * NO_GROUP_PERMISSIONS_PROVISIONING: Indicates that the connector cannot provision direct or target permissions for groups. When DIRECT_PERMISSIONS and PROVISIONING features are present, it is assumed that the connector can also provision direct permissions. This feature disables that assumption and causes permission request to be converted to work items for groups. * NO_UNSTRUCTURED_TARGETS_PROVISIONING: This string will be replaced by NO_GROUP_PERMISSIONS_PROVISIONING and NO_PERMISSIONS_PROVISIONING. * NO_DIRECT_PERMISSIONS_PROVISIONING: This string will be replaced by NO_GROUP_PERMISSIONS_PROVISIONING and NO_PERMISSIONS_PROVISIONING. * USES_UUID: Connectivity 2.0 flag used to indicate that the connector supports a compound naming structure. * PREFER_UUID: Used in ISC Provisioning AND Aggregation to decide if it should prefer account.uuid to account.nativeIdentity when data is read in through aggregation OR pushed out through provisioning. * ARM_SECURITY_EXTRACT: Indicates the application supports Security extracts for ARM * ARM_UTILIZATION_EXTRACT: Indicates the application supports Utilization extracts for ARM * ARM_CHANGELOG_EXTRACT: Indicates the application supports Change-log extracts for ARM")
-    type: Optional[StrictStr] = Field(default=None, description="Specifies the type of system being managed e.g. Active Directory, Workday, etc.. If you are creating a delimited file source, you must set the `provisionasCsv` query parameter to `true`. ")
+    type: Optional[StrictStr] = Field(default=None, description="Specifies the type of system being managed e.g. Multi-Host - Microsoft SQL Server, Workday, etc.. If you are creating a delimited file source, you must set the `provisionasCsv` query parameter to `true`. ")
     connector: StrictStr = Field(description="Connector script name.")
     connector_class: Optional[StrictStr] = Field(default=None, description="Fully qualified name of the Java class that implements the connector interface.", alias="connectorClass")
     connector_attributes: Optional[Dict[str, Any]] = Field(default=None, description="Connector specific configuration. This configuration will differ from type to type.", alias="connectorAttributes")
-    delete_threshold: Optional[StrictInt] = Field(default=None, description="Number from 0 to 100 that specifies when to skip the delete phase.", alias="deleteThreshold")
+    delete_threshold: Optional[Annotated[int, Field(le=100, strict=True, ge=0)]] = Field(default=None, description="Number from 0 to 100 that specifies when to skip the delete phase.", alias="deleteThreshold")
     authoritative: Optional[StrictBool] = Field(default=False, description="When this is true, it indicates that the source is referenced by an identity profile.")
     management_workgroup: Optional[MultiHostIntegrationsManagementWorkgroup] = Field(default=None, alias="managementWorkgroup")
     healthy: Optional[StrictBool] = Field(default=False, description="When this is true, it indicates that the source is healthy.")
     status: Optional[StrictStr] = Field(default=None, description="Status identifier that gives specific information about why a source is or isn't healthy. ")
-    since: Optional[StrictStr] = Field(default=None, description="Timestamp that shows when a source health check was last performed.")
+    since: Optional[datetime] = Field(default=None, description="Timestamp that shows when a source health check was last performed.")
     connector_id: Optional[StrictStr] = Field(default=None, description="Connector ID", alias="connectorId")
-    connector_name: Optional[StrictStr] = Field(default=None, description="Name of the connector that was chosen during source creation.", alias="connectorName")
+    connector_name: StrictStr = Field(description="Name of the connector that was chosen during source creation.", alias="connectorName")
     connection_type: Optional[StrictStr] = Field(default=None, description="Type of connection (direct or file).", alias="connectionType")
     connector_implementation_id: Optional[StrictStr] = Field(default=None, description="Connector implementation ID.", alias="connectorImplementationId")
     created: Optional[datetime] = Field(default=None, description="Date-time when the source was created")
@@ -109,7 +110,7 @@ class Source(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Source from a JSON string"""
+        """Create an instance of MultiHostSources from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -219,7 +220,7 @@ class Source(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Source from a dict"""
+        """Create an instance of MultiHostSources from a dict"""
         if obj is None:
             return None
 

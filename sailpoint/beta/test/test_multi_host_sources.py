@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.beta.models.source import Source
+from sailpoint.beta.models.multi_host_sources import MultiHostSources
 
-class TestSource(unittest.TestCase):
-    """Source unit test stubs"""
+class TestMultiHostSources(unittest.TestCase):
+    """MultiHostSources unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,19 +25,19 @@ class TestSource(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> Source:
-        """Test Source
+    def make_instance(self, include_optional) -> MultiHostSources:
+        """Test MultiHostSources
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `Source`
+        # uncomment below to create an instance of `MultiHostSources`
         """
-        model = Source()
+        model = MultiHostSources()
         if include_optional:
-            return Source(
+            return MultiHostSources(
                 id = '2c91808568c529c60168cca6f90c1324',
                 name = 'My Source',
-                description = 'This is the corporate directory.',
+                description = 'This is the Source.',
                 owner = sailpoint.beta.models.multi_host_integrations_owner.MultiHostIntegrations_owner(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
@@ -68,9 +68,9 @@ class TestSource(unittest.TestCase):
                 schemas = [{type=CONNECTOR_SCHEMA, id=2c9180835d191a86015d28455b4b232a, name=account}, {type=CONNECTOR_SCHEMA, id=2c9180835d191a86015d28455b4b232b, name=group}],
                 password_policies = [{type=PASSWORD_POLICY, id=2c9180855d191c59015d291ceb053980, name=Corporate Password Policy}, {type=PASSWORD_POLICY, id=2c9180855d191c59015d291ceb057777, name=Vendor Password Policy}],
                 features = [PROVISIONING, NO_PERMISSIONS_PROVISIONING, GROUPS_HAVE_MEMBERS],
-                type = 'OpenLDAP - Direct',
-                connector = 'active-directory',
-                connector_class = 'sailpoint.connector.LDAPConnector',
+                type = 'Multi-Host - Microsoft SQL Server',
+                connector = 'multihost-microsoft-sql-server',
+                connector_class = 'sailpoint.connector.OpenConnectorAdapter',
                 connector_attributes = {healthCheckTimeout=30, authSearchAttributes=[cn, uid, mail]},
                 delete_threshold = 10,
                 authoritative = False,
@@ -80,29 +80,31 @@ class TestSource(unittest.TestCase):
                     name = 'My Management Workgroup', ),
                 healthy = True,
                 status = 'SOURCE_STATE_HEALTHY',
-                since = '2021-09-28T15:48:29.3801666300Z',
-                connector_id = 'active-directory',
-                connector_name = 'Active Directory',
+                since = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                connector_id = 'multihost-microsoft-sql-server',
+                connector_name = 'Multi-Host Microsoft SQL Server',
                 connection_type = 'file',
-                connector_implementation_id = 'delimited-file',
+                connector_implementation_id = 'multihost-microsoft-sql-server',
                 created = '2022-02-08T14:50:03.827Z',
                 modified = '2024-01-23T18:08:50.897Z',
                 credential_provider_enabled = False,
                 category = 'CredentialProvider'
             )
         else:
-            return Source(
+            return MultiHostSources(
+                id = '2c91808568c529c60168cca6f90c1324',
                 name = 'My Source',
                 owner = sailpoint.beta.models.multi_host_integrations_owner.MultiHostIntegrations_owner(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'MyName', ),
-                connector = 'active-directory',
+                connector = 'multihost-microsoft-sql-server',
+                connector_name = 'Multi-Host Microsoft SQL Server',
         )
         """
 
-    def testSource(self):
-        """Test Source"""
+    def testMultiHostSources(self):
+        """Test MultiHostSources"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

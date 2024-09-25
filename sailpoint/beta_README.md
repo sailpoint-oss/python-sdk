@@ -332,6 +332,19 @@ Class | Method | HTTP request | Description
 *ManagedClustersApi* | [**get_managed_cluster**](sailpoint/beta/docs/ManagedClustersApi.md#get_managed_cluster) | **GET** /managed-clusters/{id} | Get a specified ManagedCluster.
 *ManagedClustersApi* | [**get_managed_clusters**](sailpoint/beta/docs/ManagedClustersApi.md#get_managed_clusters) | **GET** /managed-clusters | Retrieve all Managed Clusters.
 *ManagedClustersApi* | [**put_client_log_configuration**](sailpoint/beta/docs/ManagedClustersApi.md#put_client_log_configuration) | **PUT** /managed-clusters/{id}/log-config | Update managed cluster&#39;s log configuration
+*MultiHostIntegrationApi* | [**create_multi_host_integration**](sailpoint/beta/docs/MultiHostIntegrationApi.md#create_multi_host_integration) | **POST** /multihosts | Create Multi-Host Integration
+*MultiHostIntegrationApi* | [**create_sources_within_multi_host**](sailpoint/beta/docs/MultiHostIntegrationApi.md#create_sources_within_multi_host) | **POST** /multihosts/{id} | Create Sources Within Multi-Host Integration
+*MultiHostIntegrationApi* | [**delete_multi_host**](sailpoint/beta/docs/MultiHostIntegrationApi.md#delete_multi_host) | **DELETE** /multihosts/{id} | Delete Multi-Host Integration
+*MultiHostIntegrationApi* | [**get_acct_aggregation_groups**](sailpoint/beta/docs/MultiHostIntegrationApi.md#get_acct_aggregation_groups) | **GET** /multihosts/{multihostId}/acctAggregationGroups | Get Account Aggregation Groups Within Multi-Host Integration ID
+*MultiHostIntegrationApi* | [**get_entitlement_aggregation_groups**](sailpoint/beta/docs/MultiHostIntegrationApi.md#get_entitlement_aggregation_groups) | **GET** /multihosts/{multiHostId}/entitlementAggregationGroups | Get Entitlement Aggregation Groups Within Multi-Host Integration ID
+*MultiHostIntegrationApi* | [**get_multi_host_integrations**](sailpoint/beta/docs/MultiHostIntegrationApi.md#get_multi_host_integrations) | **GET** /multihosts/{id} | Get Multi-Host Integration By ID
+*MultiHostIntegrationApi* | [**get_multi_host_integrations_list**](sailpoint/beta/docs/MultiHostIntegrationApi.md#get_multi_host_integrations_list) | **GET** /multihosts | List All Existing Multi-Host Integrations
+*MultiHostIntegrationApi* | [**get_multihost_integration_types**](sailpoint/beta/docs/MultiHostIntegrationApi.md#get_multihost_integration_types) | **GET** /multihosts/types | List Multi-Host Integration Types
+*MultiHostIntegrationApi* | [**get_sources_within_multi_host**](sailpoint/beta/docs/MultiHostIntegrationApi.md#get_sources_within_multi_host) | **GET** /multihosts/{id}/sources | List Sources Within Multi-Host Integration
+*MultiHostIntegrationApi* | [**get_sources_within_multi_host_0**](sailpoint/beta/docs/MultiHostIntegrationApi.md#get_sources_within_multi_host_0) | **GET** /multihosts/{multiHostId}/sources/errors | List Multi-Host Integration Sources Creation Errors
+*MultiHostIntegrationApi* | [**test_connection_multi_host_sources**](sailpoint/beta/docs/MultiHostIntegrationApi.md#test_connection_multi_host_sources) | **POST** /multihosts/{multihost_id}/sources/testConnection | Test Configuration For Multi-Host Integration
+*MultiHostIntegrationApi* | [**test_source_connection_multihost**](sailpoint/beta/docs/MultiHostIntegrationApi.md#test_source_connection_multihost) | **GET** /multihosts/{multihost_id}/sources/{sourceId}/testConnection | Test Configuration For Multi-Host Integration&#39;s Single Source
+*MultiHostIntegrationApi* | [**update_multi_host_sources**](sailpoint/beta/docs/MultiHostIntegrationApi.md#update_multi_host_sources) | **PATCH** /multihosts/{id} | Update Multi-Host Integration
 *NonEmployeeLifecycleManagementApi* | [**approve_non_employee_request**](sailpoint/beta/docs/NonEmployeeLifecycleManagementApi.md#approve_non_employee_request) | **POST** /non-employee-approvals/{id}/approve | Approve a Non-Employee Request
 *NonEmployeeLifecycleManagementApi* | [**create_non_employee_record**](sailpoint/beta/docs/NonEmployeeLifecycleManagementApi.md#create_non_employee_record) | **POST** /non-employee-records | Create Non-Employee Record
 *NonEmployeeLifecycleManagementApi* | [**create_non_employee_request**](sailpoint/beta/docs/NonEmployeeLifecycleManagementApi.md#create_non_employee_request) | **POST** /non-employee-requests | Create Non-Employee Request
@@ -1071,6 +1084,24 @@ Class | Method | HTTP request | Description
  - [MfaOktaConfig](sailpoint/beta/docs/MfaOktaConfig.md)
  - [ModelField](sailpoint/beta/docs/ModelField.md)
  - [ModelSchema](sailpoint/beta/docs/ModelSchema.md)
+ - [MultiHostIntegrationTemplateType](sailpoint/beta/docs/MultiHostIntegrationTemplateType.md)
+ - [MultiHostIntegrations](sailpoint/beta/docs/MultiHostIntegrations.md)
+ - [MultiHostIntegrationsAggScheduleUpdate](sailpoint/beta/docs/MultiHostIntegrationsAggScheduleUpdate.md)
+ - [MultiHostIntegrationsCluster](sailpoint/beta/docs/MultiHostIntegrationsCluster.md)
+ - [MultiHostIntegrationsConnectorAttributes](sailpoint/beta/docs/MultiHostIntegrationsConnectorAttributes.md)
+ - [MultiHostIntegrationsConnectorAttributesConnectorFileUploadHistory](sailpoint/beta/docs/MultiHostIntegrationsConnectorAttributesConnectorFileUploadHistory.md)
+ - [MultiHostIntegrationsConnectorAttributesMultiHostAttributes](sailpoint/beta/docs/MultiHostIntegrationsConnectorAttributesMultiHostAttributes.md)
+ - [MultiHostIntegrationsCreate](sailpoint/beta/docs/MultiHostIntegrationsCreate.md)
+ - [MultiHostIntegrationsCreateSources](sailpoint/beta/docs/MultiHostIntegrationsCreateSources.md)
+ - [MultiHostIntegrationsManagementWorkgroup](sailpoint/beta/docs/MultiHostIntegrationsManagementWorkgroup.md)
+ - [MultiHostIntegrationsOwner](sailpoint/beta/docs/MultiHostIntegrationsOwner.md)
+ - [MultiHostSources](sailpoint/beta/docs/MultiHostSources.md)
+ - [MultiHostSourcesAccountCorrelationConfig](sailpoint/beta/docs/MultiHostSourcesAccountCorrelationConfig.md)
+ - [MultiHostSourcesAccountCorrelationRule](sailpoint/beta/docs/MultiHostSourcesAccountCorrelationRule.md)
+ - [MultiHostSourcesBeforeProvisioningRule](sailpoint/beta/docs/MultiHostSourcesBeforeProvisioningRule.md)
+ - [MultiHostSourcesManagerCorrelationRule](sailpoint/beta/docs/MultiHostSourcesManagerCorrelationRule.md)
+ - [MultiHostSourcesPasswordPoliciesInner](sailpoint/beta/docs/MultiHostSourcesPasswordPoliciesInner.md)
+ - [MultiHostSourcesSchemasInner](sailpoint/beta/docs/MultiHostSourcesSchemasInner.md)
  - [MultiPolicyRequest](sailpoint/beta/docs/MultiPolicyRequest.md)
  - [NativeChangeDetectionConfig](sailpoint/beta/docs/NativeChangeDetectionConfig.md)
  - [NonEmployeeApprovalDecision](sailpoint/beta/docs/NonEmployeeApprovalDecision.md)
@@ -1318,8 +1349,6 @@ Class | Method | HTTP request | Description
  - [SodViolationContextConflictingAccessCriteriaLeftCriteria](sailpoint/beta/docs/SodViolationContextConflictingAccessCriteriaLeftCriteria.md)
  - [Source](sailpoint/beta/docs/Source.md)
  - [Source1](sailpoint/beta/docs/Source1.md)
- - [SourceAccountCorrelationConfig](sailpoint/beta/docs/SourceAccountCorrelationConfig.md)
- - [SourceAccountCorrelationRule](sailpoint/beta/docs/SourceAccountCorrelationRule.md)
  - [SourceAccountCreated](sailpoint/beta/docs/SourceAccountCreated.md)
  - [SourceAccountDeleted](sailpoint/beta/docs/SourceAccountDeleted.md)
  - [SourceAccountUpdated](sailpoint/beta/docs/SourceAccountUpdated.md)
@@ -1329,20 +1358,14 @@ Class | Method | HTTP request | Description
  - [SourceAppCreateDto](sailpoint/beta/docs/SourceAppCreateDto.md)
  - [SourceAppCreateDtoAccountSource](sailpoint/beta/docs/SourceAppCreateDtoAccountSource.md)
  - [SourceAppPatchDto](sailpoint/beta/docs/SourceAppPatchDto.md)
- - [SourceBeforeProvisioningRule](sailpoint/beta/docs/SourceBeforeProvisioningRule.md)
- - [SourceCluster](sailpoint/beta/docs/SourceCluster.md)
  - [SourceClusterDto](sailpoint/beta/docs/SourceClusterDto.md)
  - [SourceCode](sailpoint/beta/docs/SourceCode.md)
  - [SourceCreated](sailpoint/beta/docs/SourceCreated.md)
  - [SourceCreatedActor](sailpoint/beta/docs/SourceCreatedActor.md)
+ - [SourceCreationErrors](sailpoint/beta/docs/SourceCreationErrors.md)
  - [SourceDeleted](sailpoint/beta/docs/SourceDeleted.md)
  - [SourceDeletedActor](sailpoint/beta/docs/SourceDeletedActor.md)
  - [SourceEntitlementRequestConfig](sailpoint/beta/docs/SourceEntitlementRequestConfig.md)
- - [SourceManagementWorkgroup](sailpoint/beta/docs/SourceManagementWorkgroup.md)
- - [SourceManagerCorrelationRule](sailpoint/beta/docs/SourceManagerCorrelationRule.md)
- - [SourceOwner](sailpoint/beta/docs/SourceOwner.md)
- - [SourcePasswordPoliciesInner](sailpoint/beta/docs/SourcePasswordPoliciesInner.md)
- - [SourceSchemasInner](sailpoint/beta/docs/SourceSchemasInner.md)
  - [SourceSyncJob](sailpoint/beta/docs/SourceSyncJob.md)
  - [SourceSyncPayload](sailpoint/beta/docs/SourceSyncPayload.md)
  - [SourceUpdated](sailpoint/beta/docs/SourceUpdated.md)
@@ -1395,6 +1418,7 @@ Class | Method | HTTP request | Description
  - [TestExternalExecuteWorkflow200Response](sailpoint/beta/docs/TestExternalExecuteWorkflow200Response.md)
  - [TestExternalExecuteWorkflowRequest](sailpoint/beta/docs/TestExternalExecuteWorkflowRequest.md)
  - [TestInvocation](sailpoint/beta/docs/TestInvocation.md)
+ - [TestSourceConnectionMultihost200Response](sailpoint/beta/docs/TestSourceConnectionMultihost200Response.md)
  - [TestWorkflow200Response](sailpoint/beta/docs/TestWorkflow200Response.md)
  - [TestWorkflowRequest](sailpoint/beta/docs/TestWorkflowRequest.md)
  - [TokenAuthRequest](sailpoint/beta/docs/TokenAuthRequest.md)
@@ -1410,6 +1434,7 @@ Class | Method | HTTP request | Description
  - [TriggerExampleOutput](sailpoint/beta/docs/TriggerExampleOutput.md)
  - [TriggerType](sailpoint/beta/docs/TriggerType.md)
  - [UpdateAccessProfilesInBulk412Response](sailpoint/beta/docs/UpdateAccessProfilesInBulk412Response.md)
+ - [UpdateMultiHostSourcesRequest](sailpoint/beta/docs/UpdateMultiHostSourcesRequest.md)
  - [UsageType](sailpoint/beta/docs/UsageType.md)
  - [UserApp](sailpoint/beta/docs/UserApp.md)
  - [UserAppAccount](sailpoint/beta/docs/UserAppAccount.md)
