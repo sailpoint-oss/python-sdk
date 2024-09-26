@@ -11,9 +11,9 @@ Method | HTTP request | Description
 [**get_entitlement_aggregation_groups**](MultiHostIntegrationApi.md#get_entitlement_aggregation_groups) | **GET** /multihosts/{multiHostId}/entitlementAggregationGroups | Get Entitlement Aggregation Groups Within Multi-Host Integration ID
 [**get_multi_host_integrations**](MultiHostIntegrationApi.md#get_multi_host_integrations) | **GET** /multihosts/{id} | Get Multi-Host Integration By ID
 [**get_multi_host_integrations_list**](MultiHostIntegrationApi.md#get_multi_host_integrations_list) | **GET** /multihosts | List All Existing Multi-Host Integrations
+[**get_multi_host_source_creation_errors**](MultiHostIntegrationApi.md#get_multi_host_source_creation_errors) | **GET** /multihosts/{multiHostId}/sources/errors | List Multi-Host Source Creation Errors
 [**get_multihost_integration_types**](MultiHostIntegrationApi.md#get_multihost_integration_types) | **GET** /multihosts/types | List Multi-Host Integration Types
 [**get_sources_within_multi_host**](MultiHostIntegrationApi.md#get_sources_within_multi_host) | **GET** /multihosts/{id}/sources | List Sources Within Multi-Host Integration
-[**get_sources_within_multi_host_0**](MultiHostIntegrationApi.md#get_sources_within_multi_host_0) | **GET** /multihosts/{multiHostId}/sources/errors | List Multi-Host Integration Sources Creation Errors
 [**test_connection_multi_host_sources**](MultiHostIntegrationApi.md#test_connection_multi_host_sources) | **POST** /multihosts/{multihost_id}/sources/testConnection | Test Configuration For Multi-Host Integration
 [**test_source_connection_multihost**](MultiHostIntegrationApi.md#test_source_connection_multihost) | **GET** /multihosts/{multihost_id}/sources/{sourceId}/testConnection | Test Configuration For Multi-Host Integration&#39;s Single Source
 [**update_multi_host_sources**](MultiHostIntegrationApi.md#update_multi_host_sources) | **PATCH** /multihosts/{id} | Update Multi-Host Integration
@@ -615,6 +615,90 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_multi_host_source_creation_errors**
+> List[SourceCreationErrors] get_multi_host_source_creation_errors(multi_host_id)
+
+List Multi-Host Source Creation Errors
+
+Get a list of sources creation errors within Multi-Host Integration ID.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
+
+### Example
+
+* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (UserContextAuth):
+
+```python
+import sailpoint.beta
+from sailpoint.beta.models.source_creation_errors import SourceCreationErrors
+from sailpoint.beta.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sailpoint.beta.Configuration(
+    host = "https://sailpoint.api.identitynow.com/beta"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with sailpoint.beta.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sailpoint.beta.MultiHostIntegrationApi(api_client)
+    multi_host_id = '004091cb79b04636b88662afa50a4440' # str | ID of the Multi-Host Integration
+
+    try:
+        # List Multi-Host Source Creation Errors
+        api_response = api_instance.get_multi_host_source_creation_errors(multi_host_id)
+        print("The response of MultiHostIntegrationApi->get_multi_host_source_creation_errors:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling MultiHostIntegrationApi->get_multi_host_source_creation_errors: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **multi_host_id** | **str**| ID of the Multi-Host Integration | 
+
+### Return type
+
+[**List[SourceCreationErrors]**](SourceCreationErrors.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK. Returned if the request was successfully accepted into the system. |  -  |
+**400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
+**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**404** | Not Found - returned if the request URL refers to a resource or object that does not exist |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_multihost_integration_types**
 > List[MultiHostIntegrationTemplateType] get_multihost_integration_types()
 
@@ -763,90 +847,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**List[MultiHostSources]**](MultiHostSources.md)
-
-### Authorization
-
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK. Returned if the request was successfully accepted into the system. |  -  |
-**400** | Client Error - Returned if the request body is invalid. |  -  |
-**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
-**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
-**404** | Not Found - returned if the request URL refers to a resource or object that does not exist |  -  |
-**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
-**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_sources_within_multi_host_0**
-> List[SourceCreationErrors] get_sources_within_multi_host_0(multi_host_id)
-
-List Multi-Host Integration Sources Creation Errors
-
-Get a list of sources creation errors within Multi-Host Integration ID.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
-
-### Example
-
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
-
-```python
-import sailpoint.beta
-from sailpoint.beta.models.source_creation_errors import SourceCreationErrors
-from sailpoint.beta.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
-# See configuration.py for a list of all supported configuration parameters.
-configuration = sailpoint.beta.Configuration(
-    host = "https://sailpoint.api.identitynow.com/beta"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with sailpoint.beta.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = sailpoint.beta.MultiHostIntegrationApi(api_client)
-    multi_host_id = '004091cb79b04636b88662afa50a4440' # str | ID of the Multi-Host Integration
-
-    try:
-        # List Multi-Host Integration Sources Creation Errors
-        api_response = api_instance.get_sources_within_multi_host_0(multi_host_id)
-        print("The response of MultiHostIntegrationApi->get_sources_within_multi_host_0:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling MultiHostIntegrationApi->get_sources_within_multi_host_0: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **multi_host_id** | **str**| ID of the Multi-Host Integration | 
-
-### Return type
-
-[**List[SourceCreationErrors]**](SourceCreationErrors.md)
 
 ### Authorization
 
@@ -1039,7 +1039,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_multi_host_sources**
-> update_multi_host_sources(multihost_id, update_multi_host_sources_request)
+> update_multi_host_sources(multihost_id, update_multi_host_sources_request_inner)
 
 Update Multi-Host Integration
 
@@ -1052,7 +1052,7 @@ Update existing sources within Multi-Host Integration.  A token with Org Admin o
 
 ```python
 import sailpoint.beta
-from sailpoint.beta.models.update_multi_host_sources_request import UpdateMultiHostSourcesRequest
+from sailpoint.beta.models.update_multi_host_sources_request_inner import UpdateMultiHostSourcesRequestInner
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
@@ -1076,11 +1076,11 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.MultiHostIntegrationApi(api_client)
     multihost_id = 'anId' # str | ID of the Multi-Host Integration to update.
-    update_multi_host_sources_request = [{op=add, path=/description, value=MDK Multi-Host Integration 222 description}] # UpdateMultiHostSourcesRequest | A list of Multi-Host Integration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed. 
+    update_multi_host_sources_request_inner = [{op=add, path=/description, value=MDK Multi-Host Integration 222 description}] # List[UpdateMultiHostSourcesRequestInner] | This endpoint allows you to update a Multi-Host Integration. 
 
     try:
         # Update Multi-Host Integration
-        api_instance.update_multi_host_sources(multihost_id, update_multi_host_sources_request)
+        api_instance.update_multi_host_sources(multihost_id, update_multi_host_sources_request_inner)
     except Exception as e:
         print("Exception when calling MultiHostIntegrationApi->update_multi_host_sources: %s\n" % e)
 ```
@@ -1093,7 +1093,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **multihost_id** | **str**| ID of the Multi-Host Integration to update. | 
- **update_multi_host_sources_request** | [**UpdateMultiHostSourcesRequest**](UpdateMultiHostSourcesRequest.md)| A list of Multi-Host Integration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only &#x60;replace&#x60; operations are accepted by this endpoint.  A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed.  | 
+ **update_multi_host_sources_request_inner** | [**List[UpdateMultiHostSourcesRequestInner]**](UpdateMultiHostSourcesRequestInner.md)| This endpoint allows you to update a Multi-Host Integration.  | 
 
 ### Return type
 

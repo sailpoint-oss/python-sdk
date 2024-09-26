@@ -27,7 +27,7 @@ from sailpoint.beta.models.multi_host_integrations_create_sources import MultiHo
 from sailpoint.beta.models.multi_host_sources import MultiHostSources
 from sailpoint.beta.models.source_creation_errors import SourceCreationErrors
 from sailpoint.beta.models.test_source_connection_multihost200_response import TestSourceConnectionMultihost200Response
-from sailpoint.beta.models.update_multi_host_sources_request import UpdateMultiHostSourcesRequest
+from sailpoint.beta.models.update_multi_host_sources_request_inner import UpdateMultiHostSourcesRequestInner
 
 from sailpoint.beta.api_client import ApiClient, RequestSerialized
 from sailpoint.beta.api_response import ApiResponse
@@ -2123,6 +2123,284 @@ class MultiHostIntegrationApi:
 
 
     @validate_call
+    def get_multi_host_source_creation_errors(
+        self,
+        multi_host_id: Annotated[StrictStr, Field(description="ID of the Multi-Host Integration")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[SourceCreationErrors]:
+        """List Multi-Host Source Creation Errors
+
+        Get a list of sources creation errors within Multi-Host Integration ID.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
+
+        :param multi_host_id: ID of the Multi-Host Integration (required)
+        :type multi_host_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_multi_host_source_creation_errors_serialize(
+            multi_host_id=multi_host_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[SourceCreationErrors]",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttribute401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def get_multi_host_source_creation_errors_with_http_info(
+        self,
+        multi_host_id: Annotated[StrictStr, Field(description="ID of the Multi-Host Integration")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[SourceCreationErrors]]:
+        """List Multi-Host Source Creation Errors
+
+        Get a list of sources creation errors within Multi-Host Integration ID.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
+
+        :param multi_host_id: ID of the Multi-Host Integration (required)
+        :type multi_host_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_multi_host_source_creation_errors_serialize(
+            multi_host_id=multi_host_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[SourceCreationErrors]",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttribute401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def get_multi_host_source_creation_errors_without_preload_content(
+        self,
+        multi_host_id: Annotated[StrictStr, Field(description="ID of the Multi-Host Integration")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """List Multi-Host Source Creation Errors
+
+        Get a list of sources creation errors within Multi-Host Integration ID.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
+
+        :param multi_host_id: ID of the Multi-Host Integration (required)
+        :type multi_host_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_multi_host_source_creation_errors_serialize(
+            multi_host_id=multi_host_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[SourceCreationErrors]",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttribute401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_multi_host_source_creation_errors_serialize(
+        self,
+        multi_host_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, Union[str, bytes]] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if multi_host_id is not None:
+            _path_params['multiHostId'] = multi_host_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'UserContextAuth', 
+            'UserContextAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/multihosts/{multiHostId}/sources/errors',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def get_multihost_integration_types(
         self,
         _request_timeout: Union[
@@ -2734,284 +3012,6 @@ class MultiHostIntegrationApi:
 
 
     @validate_call
-    def get_sources_within_multi_host_0(
-        self,
-        multi_host_id: Annotated[StrictStr, Field(description="ID of the Multi-Host Integration")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[SourceCreationErrors]:
-        """List Multi-Host Integration Sources Creation Errors
-
-        Get a list of sources creation errors within Multi-Host Integration ID.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
-
-        :param multi_host_id: ID of the Multi-Host Integration (required)
-        :type multi_host_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_sources_within_multi_host_0_serialize(
-            multi_host_id=multi_host_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[SourceCreationErrors]",
-            '400': "ErrorResponseDto",
-            '401': "ListAccessModelMetadataAttribute401Response",
-            '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto",
-            '429': "ListAccessModelMetadataAttribute429Response",
-            '500': "ErrorResponseDto",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def get_sources_within_multi_host_0_with_http_info(
-        self,
-        multi_host_id: Annotated[StrictStr, Field(description="ID of the Multi-Host Integration")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[SourceCreationErrors]]:
-        """List Multi-Host Integration Sources Creation Errors
-
-        Get a list of sources creation errors within Multi-Host Integration ID.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
-
-        :param multi_host_id: ID of the Multi-Host Integration (required)
-        :type multi_host_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_sources_within_multi_host_0_serialize(
-            multi_host_id=multi_host_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[SourceCreationErrors]",
-            '400': "ErrorResponseDto",
-            '401': "ListAccessModelMetadataAttribute401Response",
-            '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto",
-            '429': "ListAccessModelMetadataAttribute429Response",
-            '500': "ErrorResponseDto",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def get_sources_within_multi_host_0_without_preload_content(
-        self,
-        multi_host_id: Annotated[StrictStr, Field(description="ID of the Multi-Host Integration")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """List Multi-Host Integration Sources Creation Errors
-
-        Get a list of sources creation errors within Multi-Host Integration ID.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
-
-        :param multi_host_id: ID of the Multi-Host Integration (required)
-        :type multi_host_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_sources_within_multi_host_0_serialize(
-            multi_host_id=multi_host_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[SourceCreationErrors]",
-            '400': "ErrorResponseDto",
-            '401': "ListAccessModelMetadataAttribute401Response",
-            '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto",
-            '429': "ListAccessModelMetadataAttribute429Response",
-            '500': "ErrorResponseDto",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_sources_within_multi_host_0_serialize(
-        self,
-        multi_host_id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if multi_host_id is not None:
-            _path_params['multiHostId'] = multi_host_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'UserContextAuth', 
-            'UserContextAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/multihosts/{multiHostId}/sources/errors',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
     def test_connection_multi_host_sources(
         self,
         multihost_id: Annotated[StrictStr, Field(description="ID of the Multi-Host Integration")],
@@ -3586,7 +3586,7 @@ class MultiHostIntegrationApi:
     def update_multi_host_sources(
         self,
         multihost_id: Annotated[StrictStr, Field(description="ID of the Multi-Host Integration to update.")],
-        update_multi_host_sources_request: Annotated[UpdateMultiHostSourcesRequest, Field(description="A list of Multi-Host Integration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed. ")],
+        update_multi_host_sources_request_inner: Annotated[List[UpdateMultiHostSourcesRequestInner], Field(description="This endpoint allows you to update a Multi-Host Integration. ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3606,8 +3606,8 @@ class MultiHostIntegrationApi:
 
         :param multihost_id: ID of the Multi-Host Integration to update. (required)
         :type multihost_id: str
-        :param update_multi_host_sources_request: A list of Multi-Host Integration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed.  (required)
-        :type update_multi_host_sources_request: UpdateMultiHostSourcesRequest
+        :param update_multi_host_sources_request_inner: This endpoint allows you to update a Multi-Host Integration.  (required)
+        :type update_multi_host_sources_request_inner: List[UpdateMultiHostSourcesRequestInner]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3632,7 +3632,7 @@ class MultiHostIntegrationApi:
 
         _param = self._update_multi_host_sources_serialize(
             multihost_id=multihost_id,
-            update_multi_host_sources_request=update_multi_host_sources_request,
+            update_multi_host_sources_request_inner=update_multi_host_sources_request_inner,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3663,7 +3663,7 @@ class MultiHostIntegrationApi:
     def update_multi_host_sources_with_http_info(
         self,
         multihost_id: Annotated[StrictStr, Field(description="ID of the Multi-Host Integration to update.")],
-        update_multi_host_sources_request: Annotated[UpdateMultiHostSourcesRequest, Field(description="A list of Multi-Host Integration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed. ")],
+        update_multi_host_sources_request_inner: Annotated[List[UpdateMultiHostSourcesRequestInner], Field(description="This endpoint allows you to update a Multi-Host Integration. ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3683,8 +3683,8 @@ class MultiHostIntegrationApi:
 
         :param multihost_id: ID of the Multi-Host Integration to update. (required)
         :type multihost_id: str
-        :param update_multi_host_sources_request: A list of Multi-Host Integration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed.  (required)
-        :type update_multi_host_sources_request: UpdateMultiHostSourcesRequest
+        :param update_multi_host_sources_request_inner: This endpoint allows you to update a Multi-Host Integration.  (required)
+        :type update_multi_host_sources_request_inner: List[UpdateMultiHostSourcesRequestInner]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3709,7 +3709,7 @@ class MultiHostIntegrationApi:
 
         _param = self._update_multi_host_sources_serialize(
             multihost_id=multihost_id,
-            update_multi_host_sources_request=update_multi_host_sources_request,
+            update_multi_host_sources_request_inner=update_multi_host_sources_request_inner,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3740,7 +3740,7 @@ class MultiHostIntegrationApi:
     def update_multi_host_sources_without_preload_content(
         self,
         multihost_id: Annotated[StrictStr, Field(description="ID of the Multi-Host Integration to update.")],
-        update_multi_host_sources_request: Annotated[UpdateMultiHostSourcesRequest, Field(description="A list of Multi-Host Integration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed. ")],
+        update_multi_host_sources_request_inner: Annotated[List[UpdateMultiHostSourcesRequestInner], Field(description="This endpoint allows you to update a Multi-Host Integration. ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3760,8 +3760,8 @@ class MultiHostIntegrationApi:
 
         :param multihost_id: ID of the Multi-Host Integration to update. (required)
         :type multihost_id: str
-        :param update_multi_host_sources_request: A list of Multi-Host Integration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed.  (required)
-        :type update_multi_host_sources_request: UpdateMultiHostSourcesRequest
+        :param update_multi_host_sources_request_inner: This endpoint allows you to update a Multi-Host Integration.  (required)
+        :type update_multi_host_sources_request_inner: List[UpdateMultiHostSourcesRequestInner]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3786,7 +3786,7 @@ class MultiHostIntegrationApi:
 
         _param = self._update_multi_host_sources_serialize(
             multihost_id=multihost_id,
-            update_multi_host_sources_request=update_multi_host_sources_request,
+            update_multi_host_sources_request_inner=update_multi_host_sources_request_inner,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3812,7 +3812,7 @@ class MultiHostIntegrationApi:
     def _update_multi_host_sources_serialize(
         self,
         multihost_id,
-        update_multi_host_sources_request,
+        update_multi_host_sources_request_inner,
         _request_auth,
         _content_type,
         _headers,
@@ -3822,6 +3822,7 @@ class MultiHostIntegrationApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'UpdateMultiHostSourcesRequestInner': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -3838,8 +3839,8 @@ class MultiHostIntegrationApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if update_multi_host_sources_request is not None:
-            _body_params = update_multi_host_sources_request
+        if update_multi_host_sources_request_inner is not None:
+            _body_params = update_multi_host_sources_request_inner
 
 
         # set the HTTP header `Accept`

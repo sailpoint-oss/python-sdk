@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **op** | **str** | The operation to be performed | [optional] 
 **path** | **str** | A string JSON Pointer representing the target path to an element to be affected by the operation | 
-**value** | [**JsonPatchOperationValue**](JsonPatchOperationValue.md) |  | [optional] 
+**value** | [**UpdateMultiHostSourcesRequestInnerValue**](UpdateMultiHostSourcesRequestInnerValue.md) |  | [optional] 
 
 ## Example
 

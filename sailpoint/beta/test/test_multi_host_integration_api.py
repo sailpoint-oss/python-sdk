@@ -75,6 +75,13 @@ class TestMultiHostIntegrationApi(unittest.TestCase):
         """
         pass
 
+    def test_get_multi_host_source_creation_errors(self) -> None:
+        """Test case for get_multi_host_source_creation_errors
+
+        List Multi-Host Source Creation Errors
+        """
+        pass
+
     def test_get_multihost_integration_types(self) -> None:
         """Test case for get_multihost_integration_types
 
@@ -86,13 +93,6 @@ class TestMultiHostIntegrationApi(unittest.TestCase):
         """Test case for get_sources_within_multi_host
 
         List Sources Within Multi-Host Integration
-        """
-        pass
-
-    def test_get_sources_within_multi_host_0(self) -> None:
-        """Test case for get_sources_within_multi_host_0
-
-        List Multi-Host Integration Sources Creation Errors
         """
         pass
 

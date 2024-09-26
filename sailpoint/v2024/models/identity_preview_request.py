@@ -28,7 +28,7 @@ class IdentityPreviewRequest(BaseModel):
     IdentityPreviewRequest
     """ # noqa: E501
     identity_id: Optional[StrictStr] = Field(default=None, description="The Identity id", alias="identityId")
-    identity_attribute_config: Optional[List[IdentityAttributeConfig]] = Field(default=None, alias="identityAttributeConfig")
+    identity_attribute_config: Optional[IdentityAttributeConfig] = Field(default=None, alias="identityAttributeConfig")
     __properties: ClassVar[List[str]] = ["identityId", "identityAttributeConfig"]
 
     model_config = ConfigDict(
@@ -70,13 +70,9 @@ class IdentityPreviewRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in identity_attribute_config (list)
-        _items = []
+        # override the default output from pydantic by calling `to_dict()` of identity_attribute_config
         if self.identity_attribute_config:
-            for _item_identity_attribute_config in self.identity_attribute_config:
-                if _item_identity_attribute_config:
-                    _items.append(_item_identity_attribute_config.to_dict())
-            _dict['identityAttributeConfig'] = _items
+            _dict['identityAttributeConfig'] = self.identity_attribute_config.to_dict()
         return _dict
 
     @classmethod
@@ -90,7 +86,7 @@ class IdentityPreviewRequest(BaseModel):
 
         _obj = cls.model_validate({
             "identityId": obj.get("identityId"),
-            "identityAttributeConfig": [IdentityAttributeConfig.from_dict(_item) for _item in obj["identityAttributeConfig"]] if obj.get("identityAttributeConfig") is not None else None
+            "identityAttributeConfig": IdentityAttributeConfig.from_dict(obj["identityAttributeConfig"]) if obj.get("identityAttributeConfig") is not None else None
         })
         return _obj
 

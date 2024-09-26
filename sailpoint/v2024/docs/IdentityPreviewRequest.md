@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **identity_id** | **str** | The Identity id | [optional] 
-**identity_attribute_config** | [**List[IdentityAttributeConfig]**](IdentityAttributeConfig.md) |  | [optional] 
+**identity_attribute_config** | [**IdentityAttributeConfig**](IdentityAttributeConfig.md) |  | [optional] 
 
 ## Example
 

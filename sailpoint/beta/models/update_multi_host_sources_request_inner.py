@@ -17,18 +17,27 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
+from sailpoint.beta.models.update_multi_host_sources_request_inner_value import UpdateMultiHostSourcesRequestInnerValue
 from typing import Optional, Set
 from typing_extensions import Self
 
-class UpdateMultiHostSourcesRequest(BaseModel):
+class UpdateMultiHostSourcesRequestInner(BaseModel):
     """
-    A JSONPatch document as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902).  Only `replace` operations are accepted by this endpoint.
+    A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)
     """ # noqa: E501
-    operations: Optional[List[JsonPatchOperation]] = Field(default=None, description="Operations to be applied.")
-    __properties: ClassVar[List[str]] = ["operations"]
+    op: StrictStr = Field(description="The operation to be performed")
+    path: StrictStr = Field(description="A string JSON Pointer representing the target path to an element to be affected by the operation")
+    value: Optional[UpdateMultiHostSourcesRequestInnerValue] = None
+    __properties: ClassVar[List[str]] = ["op", "path", "value"]
+
+    @field_validator('op')
+    def op_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['add', 'replace']):
+            raise ValueError("must be one of enum values ('add', 'replace')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -48,7 +57,7 @@ class UpdateMultiHostSourcesRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of UpdateMultiHostSourcesRequest from a JSON string"""
+        """Create an instance of UpdateMultiHostSourcesRequestInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -69,18 +78,14 @@ class UpdateMultiHostSourcesRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in operations (list)
-        _items = []
-        if self.operations:
-            for _item_operations in self.operations:
-                if _item_operations:
-                    _items.append(_item_operations.to_dict())
-            _dict['operations'] = _items
+        # override the default output from pydantic by calling `to_dict()` of value
+        if self.value:
+            _dict['value'] = self.value.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of UpdateMultiHostSourcesRequest from a dict"""
+        """Create an instance of UpdateMultiHostSourcesRequestInner from a dict"""
         if obj is None:
             return None
 
@@ -88,7 +93,9 @@ class UpdateMultiHostSourcesRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "operations": [JsonPatchOperation.from_dict(_item) for _item in obj["operations"]] if obj.get("operations") is not None else None
+            "op": obj.get("op"),
+            "path": obj.get("path"),
+            "value": UpdateMultiHostSourcesRequestInnerValue.from_dict(obj["value"]) if obj.get("value") is not None else None
         })
         return _obj
 

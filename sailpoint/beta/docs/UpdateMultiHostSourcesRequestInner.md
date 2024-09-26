@@ -1,4 +1,4 @@
-# JsonPatchOperation
+# UpdateMultiHostSourcesRequestInner
 
 A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)
 
@@ -13,19 +13,19 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
+from sailpoint.beta.models.update_multi_host_sources_request_inner import UpdateMultiHostSourcesRequestInner
 
 # TODO update the JSON string below
 json = "{}"
-# create an instance of JsonPatchOperation from a JSON string
-json_patch_operation_instance = JsonPatchOperation.from_json(json)
+# create an instance of UpdateMultiHostSourcesRequestInner from a JSON string
+update_multi_host_sources_request_inner_instance = UpdateMultiHostSourcesRequestInner.from_json(json)
 # print the JSON string representation of the object
-print(JsonPatchOperation.to_json())
+print(UpdateMultiHostSourcesRequestInner.to_json())
 
 # convert the object into a dict
-json_patch_operation_dict = json_patch_operation_instance.to_dict()
-# create an instance of JsonPatchOperation from a dict
-json_patch_operation_from_dict = JsonPatchOperation.from_dict(json_patch_operation_dict)
+update_multi_host_sources_request_inner_dict = update_multi_host_sources_request_inner_instance.to_dict()
+# create an instance of UpdateMultiHostSourcesRequestInner from a dict
+update_multi_host_sources_request_inner_from_dict = UpdateMultiHostSourcesRequestInner.from_dict(update_multi_host_sources_request_inner_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

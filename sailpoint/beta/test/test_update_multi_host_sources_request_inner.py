@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.beta.models.update_multi_host_sources_request import UpdateMultiHostSourcesRequest
+from sailpoint.beta.models.update_multi_host_sources_request_inner import UpdateMultiHostSourcesRequestInner
 
-class TestUpdateMultiHostSourcesRequest(unittest.TestCase):
-    """UpdateMultiHostSourcesRequest unit test stubs"""
+class TestUpdateMultiHostSourcesRequestInner(unittest.TestCase):
+    """UpdateMultiHostSourcesRequestInner unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,30 +25,29 @@ class TestUpdateMultiHostSourcesRequest(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> UpdateMultiHostSourcesRequest:
-        """Test UpdateMultiHostSourcesRequest
+    def make_instance(self, include_optional) -> UpdateMultiHostSourcesRequestInner:
+        """Test UpdateMultiHostSourcesRequestInner
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `UpdateMultiHostSourcesRequest`
+        # uncomment below to create an instance of `UpdateMultiHostSourcesRequestInner`
         """
-        model = UpdateMultiHostSourcesRequest()
+        model = UpdateMultiHostSourcesRequestInner()
         if include_optional:
-            return UpdateMultiHostSourcesRequest(
-                operations = [
-                    sailpoint.beta.models.json_patch_operation.JsonPatchOperation(
-                        op = 'replace', 
-                        path = '/description', 
-                        value = New description, )
-                    ]
+            return UpdateMultiHostSourcesRequestInner(
+                op = 'replace',
+                path = '/description',
+                value = New description
             )
         else:
-            return UpdateMultiHostSourcesRequest(
+            return UpdateMultiHostSourcesRequestInner(
+                op = 'replace',
+                path = '/description',
         )
         """
 
-    def testUpdateMultiHostSourcesRequest(self):
-        """Test UpdateMultiHostSourcesRequest"""
+    def testUpdateMultiHostSourcesRequestInner(self):
+        """Test UpdateMultiHostSourcesRequestInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

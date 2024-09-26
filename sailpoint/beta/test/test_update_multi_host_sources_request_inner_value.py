@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.beta.models.json_patch_operation_value import JsonPatchOperationValue
+from sailpoint.beta.models.update_multi_host_sources_request_inner_value import UpdateMultiHostSourcesRequestInnerValue
 
-class TestJsonPatchOperationValue(unittest.TestCase):
-    """JsonPatchOperationValue unit test stubs"""
+class TestUpdateMultiHostSourcesRequestInnerValue(unittest.TestCase):
+    """UpdateMultiHostSourcesRequestInnerValue unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,24 +25,24 @@ class TestJsonPatchOperationValue(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> JsonPatchOperationValue:
-        """Test JsonPatchOperationValue
+    def make_instance(self, include_optional) -> UpdateMultiHostSourcesRequestInnerValue:
+        """Test UpdateMultiHostSourcesRequestInnerValue
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `JsonPatchOperationValue`
+        # uncomment below to create an instance of `UpdateMultiHostSourcesRequestInnerValue`
         """
-        model = JsonPatchOperationValue()
+        model = UpdateMultiHostSourcesRequestInnerValue()
         if include_optional:
-            return JsonPatchOperationValue(
+            return UpdateMultiHostSourcesRequestInnerValue(
             )
         else:
-            return JsonPatchOperationValue(
+            return UpdateMultiHostSourcesRequestInnerValue(
         )
         """
 
-    def testJsonPatchOperationValue(self):
-        """Test JsonPatchOperationValue"""
+    def testUpdateMultiHostSourcesRequestInnerValue(self):
+        """Test UpdateMultiHostSourcesRequestInnerValue"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

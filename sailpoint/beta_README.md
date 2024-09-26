@@ -339,9 +339,9 @@ Class | Method | HTTP request | Description
 *MultiHostIntegrationApi* | [**get_entitlement_aggregation_groups**](sailpoint/beta/docs/MultiHostIntegrationApi.md#get_entitlement_aggregation_groups) | **GET** /multihosts/{multiHostId}/entitlementAggregationGroups | Get Entitlement Aggregation Groups Within Multi-Host Integration ID
 *MultiHostIntegrationApi* | [**get_multi_host_integrations**](sailpoint/beta/docs/MultiHostIntegrationApi.md#get_multi_host_integrations) | **GET** /multihosts/{id} | Get Multi-Host Integration By ID
 *MultiHostIntegrationApi* | [**get_multi_host_integrations_list**](sailpoint/beta/docs/MultiHostIntegrationApi.md#get_multi_host_integrations_list) | **GET** /multihosts | List All Existing Multi-Host Integrations
+*MultiHostIntegrationApi* | [**get_multi_host_source_creation_errors**](sailpoint/beta/docs/MultiHostIntegrationApi.md#get_multi_host_source_creation_errors) | **GET** /multihosts/{multiHostId}/sources/errors | List Multi-Host Source Creation Errors
 *MultiHostIntegrationApi* | [**get_multihost_integration_types**](sailpoint/beta/docs/MultiHostIntegrationApi.md#get_multihost_integration_types) | **GET** /multihosts/types | List Multi-Host Integration Types
 *MultiHostIntegrationApi* | [**get_sources_within_multi_host**](sailpoint/beta/docs/MultiHostIntegrationApi.md#get_sources_within_multi_host) | **GET** /multihosts/{id}/sources | List Sources Within Multi-Host Integration
-*MultiHostIntegrationApi* | [**get_sources_within_multi_host_0**](sailpoint/beta/docs/MultiHostIntegrationApi.md#get_sources_within_multi_host_0) | **GET** /multihosts/{multiHostId}/sources/errors | List Multi-Host Integration Sources Creation Errors
 *MultiHostIntegrationApi* | [**test_connection_multi_host_sources**](sailpoint/beta/docs/MultiHostIntegrationApi.md#test_connection_multi_host_sources) | **POST** /multihosts/{multihost_id}/sources/testConnection | Test Configuration For Multi-Host Integration
 *MultiHostIntegrationApi* | [**test_source_connection_multihost**](sailpoint/beta/docs/MultiHostIntegrationApi.md#test_source_connection_multihost) | **GET** /multihosts/{multihost_id}/sources/{sourceId}/testConnection | Test Configuration For Multi-Host Integration&#39;s Single Source
 *MultiHostIntegrationApi* | [**update_multi_host_sources**](sailpoint/beta/docs/MultiHostIntegrationApi.md#update_multi_host_sources) | **PATCH** /multihosts/{id} | Update Multi-Host Integration
@@ -1020,7 +1020,6 @@ Class | Method | HTTP request | Description
  - [InvocationStatusType](sailpoint/beta/docs/InvocationStatusType.md)
  - [JsonPatch](sailpoint/beta/docs/JsonPatch.md)
  - [JsonPatchOperation](sailpoint/beta/docs/JsonPatchOperation.md)
- - [JsonPatchOperationValue](sailpoint/beta/docs/JsonPatchOperationValue.md)
  - [JsonPatchOperations](sailpoint/beta/docs/JsonPatchOperations.md)
  - [JsonPatchOperationsValue](sailpoint/beta/docs/JsonPatchOperationsValue.md)
  - [KbaAnswerRequestItem](sailpoint/beta/docs/KbaAnswerRequestItem.md)
@@ -1433,7 +1432,8 @@ Class | Method | HTTP request | Description
  - [TriggerExampleOutput](sailpoint/beta/docs/TriggerExampleOutput.md)
  - [TriggerType](sailpoint/beta/docs/TriggerType.md)
  - [UpdateAccessProfilesInBulk412Response](sailpoint/beta/docs/UpdateAccessProfilesInBulk412Response.md)
- - [UpdateMultiHostSourcesRequest](sailpoint/beta/docs/UpdateMultiHostSourcesRequest.md)
+ - [UpdateMultiHostSourcesRequestInner](sailpoint/beta/docs/UpdateMultiHostSourcesRequestInner.md)
+ - [UpdateMultiHostSourcesRequestInnerValue](sailpoint/beta/docs/UpdateMultiHostSourcesRequestInnerValue.md)
  - [UsageType](sailpoint/beta/docs/UsageType.md)
  - [UserApp](sailpoint/beta/docs/UserApp.md)
  - [UserAppAccount](sailpoint/beta/docs/UserAppAccount.md)

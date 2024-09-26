@@ -411,7 +411,6 @@ from sailpoint.beta.models.invocation_status import InvocationStatus
 from sailpoint.beta.models.invocation_status_type import InvocationStatusType
 from sailpoint.beta.models.json_patch import JsonPatch
 from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
-from sailpoint.beta.models.json_patch_operation_value import JsonPatchOperationValue
 from sailpoint.beta.models.json_patch_operations import JsonPatchOperations
 from sailpoint.beta.models.json_patch_operations_value import JsonPatchOperationsValue
 from sailpoint.beta.models.kba_answer_request_item import KbaAnswerRequestItem
@@ -824,7 +823,8 @@ from sailpoint.beta.models.trigger_example_input import TriggerExampleInput
 from sailpoint.beta.models.trigger_example_output import TriggerExampleOutput
 from sailpoint.beta.models.trigger_type import TriggerType
 from sailpoint.beta.models.update_access_profiles_in_bulk412_response import UpdateAccessProfilesInBulk412Response
-from sailpoint.beta.models.update_multi_host_sources_request import UpdateMultiHostSourcesRequest
+from sailpoint.beta.models.update_multi_host_sources_request_inner import UpdateMultiHostSourcesRequestInner
+from sailpoint.beta.models.update_multi_host_sources_request_inner_value import UpdateMultiHostSourcesRequestInnerValue
 from sailpoint.beta.models.usage_type import UsageType
 from sailpoint.beta.models.user_app import UserApp
 from sailpoint.beta.models.user_app_account import UserAppAccount
