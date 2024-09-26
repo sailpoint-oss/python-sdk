@@ -193,21 +193,21 @@ class Configuration:
         """
         auth = {}
         if self.access_token is not None:
-            auth["UserContextAuth"] = {
+            auth["userAuth"] = {
                 "type": "oauth2",
                 "in": "header",
                 "key": "Authorization",
                 "value": "Bearer " + self.access_token,
             }
         if self.access_token is not None:
-            auth["UserContextAuth"] = {
+            auth["userAuth"] = {
                 "type": "oauth2",
                 "in": "header",
                 "key": "Authorization",
                 "value": "Bearer " + self.access_token,
             }
         if self.access_token is not None:
-            auth["ApplicationOnlyAuth"] = {
+            auth["applicationAuth"] = {
                 "type": "oauth2",
                 "in": "header",
                 "key": "Authorization",
