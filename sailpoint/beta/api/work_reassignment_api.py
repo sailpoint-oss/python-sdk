@@ -312,8 +312,8 @@ class WorkReassignmentApi:
 
         # authentication setting
         _auth_settings: List[str] = [
-            'UserContextAuth', 
-            'UserContextAuth'
+            'userAuth', 
+            'userAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -587,8 +587,8 @@ class WorkReassignmentApi:
 
         # authentication setting
         _auth_settings: List[str] = [
-            'UserContextAuth', 
-            'UserContextAuth'
+            'userAuth', 
+            'userAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -895,8 +895,8 @@ class WorkReassignmentApi:
 
         # authentication setting
         _auth_settings: List[str] = [
-            'UserContextAuth', 
-            'UserContextAuth'
+            'userAuth', 
+            'userAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -1155,8 +1155,8 @@ class WorkReassignmentApi:
 
         # authentication setting
         _auth_settings: List[str] = [
-            'UserContextAuth', 
-            'UserContextAuth'
+            'userAuth', 
+            'userAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -1433,8 +1433,8 @@ class WorkReassignmentApi:
 
         # authentication setting
         _auth_settings: List[str] = [
-            'UserContextAuth', 
-            'UserContextAuth'
+            'userAuth', 
+            'userAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -1696,8 +1696,8 @@ class WorkReassignmentApi:
 
         # authentication setting
         _auth_settings: List[str] = [
-            'UserContextAuth', 
-            'UserContextAuth'
+            'userAuth', 
+            'userAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -1959,8 +1959,8 @@ class WorkReassignmentApi:
 
         # authentication setting
         _auth_settings: List[str] = [
-            'UserContextAuth', 
-            'UserContextAuth'
+            'userAuth', 
+            'userAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -2262,8 +2262,8 @@ class WorkReassignmentApi:
 
         # authentication setting
         _auth_settings: List[str] = [
-            'UserContextAuth', 
-            'UserContextAuth'
+            'userAuth', 
+            'userAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -2550,8 +2550,8 @@ class WorkReassignmentApi:
 
         # authentication setting
         _auth_settings: List[str] = [
-            'UserContextAuth', 
-            'UserContextAuth'
+            'userAuth', 
+            'userAuth'
         ]
 
         return self.api_client.param_serialize(

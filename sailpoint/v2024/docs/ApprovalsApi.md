@@ -17,8 +17,8 @@ Retrieve a single approval for a given approval ID. This endpoint is for generic
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.v2024
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 
@@ -102,8 +102,8 @@ Retrieve a list of approvals, which can be filtered by requester ID, status, or 
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.v2024
@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 

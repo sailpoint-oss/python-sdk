@@ -22,8 +22,8 @@ This API creates a role.  You must have a token with API, ORG_ADMIN, ROLE_ADMIN,
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.v3
@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 
@@ -105,8 +105,8 @@ This endpoint initiates a bulk deletion of one or more roles. When the request i
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.v3
@@ -160,7 +160,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 
@@ -189,8 +189,8 @@ This API deletes a Role by its ID.  A token with API, ORG_ADMIN, ROLE_ADMIN, or 
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.v3
@@ -240,7 +240,7 @@ void (empty response body)
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 
@@ -269,8 +269,8 @@ This API returns a Role by its ID.  A token with API, ORG_ADMIN, ROLE_ADMIN, or 
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.v3
@@ -323,7 +323,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 
@@ -350,8 +350,8 @@ List Identities assigned a Role
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.v3
@@ -414,7 +414,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 
@@ -443,8 +443,8 @@ This API returns a list of Roles.  A token with API, ORG_ADMIN, ROLE_ADMIN, or R
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.v3
@@ -511,7 +511,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 
@@ -540,8 +540,8 @@ This API updates an existing role using [JSON Patch](https://tools.ietf.org/html
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.v3
@@ -597,7 +597,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 

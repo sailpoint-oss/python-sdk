@@ -33,8 +33,8 @@ Use this API to cancel a running workflow execution.
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.v3
@@ -84,7 +84,7 @@ void (empty response body)
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 
@@ -114,8 +114,8 @@ This endpoint allows a service outside of IdentityNow to initiate a workflow tha
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.v3
@@ -171,7 +171,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 
@@ -200,8 +200,8 @@ Create a new workflow with the desired trigger and steps specified in the reques
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.v3
@@ -255,7 +255,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 
@@ -284,8 +284,8 @@ Create OAuth client ID, client secret, and callback URL for use in an external t
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.v3
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 
@@ -367,8 +367,8 @@ Delete a workflow.  **Enabled workflows cannot be deleted**.  They must first be
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.v3
@@ -418,7 +418,7 @@ void (empty response body)
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 
@@ -447,8 +447,8 @@ Get a single workflow by id.
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.v3
@@ -501,7 +501,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 
@@ -530,8 +530,8 @@ Use this API to get a single workflow execution. Workflow executions are availab
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.v3
@@ -583,7 +583,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 
@@ -613,8 +613,8 @@ Get a detailed history of a single workflow execution.  Workflow executions are 
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.v3
@@ -667,7 +667,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 
@@ -697,8 +697,8 @@ Use this API to list a specified workflow's executions. Workflow executions are 
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.v3
@@ -759,7 +759,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 
@@ -789,8 +789,8 @@ This lists all triggers, actions, and operators in the library
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.v3
@@ -845,7 +845,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 
@@ -874,8 +874,8 @@ This lists the workflow actions available to you.
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.v3
@@ -932,7 +932,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 
@@ -961,8 +961,8 @@ This lists the workflow operators available to you
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.v3
@@ -1011,7 +1011,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 
@@ -1040,8 +1040,8 @@ This lists the workflow triggers available to you
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.v3
@@ -1098,7 +1098,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 
@@ -1127,8 +1127,8 @@ List all workflows in the tenant.
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.v3
@@ -1177,7 +1177,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 
@@ -1206,8 +1206,8 @@ Partially update an existing Workflow using [JSON Patch](https://tools.ietf.org/
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.v3
@@ -1263,7 +1263,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 
@@ -1292,8 +1292,8 @@ Perform a full update of a workflow.  The updated workflow object is returned in
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.v3
@@ -1349,7 +1349,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 
@@ -1378,8 +1378,8 @@ Validate a workflow with an \"External Trigger\" can receive input.  The respons
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.v3
@@ -1435,7 +1435,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 
@@ -1464,8 +1464,8 @@ Test a workflow with the provided input data.  The input data should resemble th
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.v3
@@ -1521,7 +1521,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 

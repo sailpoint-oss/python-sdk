@@ -17,8 +17,8 @@ This gets password dictionary for the organization. A token with ORG_ADMIN autho
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.beta
@@ -66,7 +66,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 
@@ -96,8 +96,8 @@ This updates password dictionary for the organization. A token with ORG_ADMIN au
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.beta
@@ -147,7 +147,7 @@ void (empty response body)
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 

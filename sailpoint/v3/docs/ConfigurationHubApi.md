@@ -24,8 +24,8 @@ This creates an object mapping between current org and source org. Source org sh
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.v3
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 
@@ -111,8 +111,8 @@ This creates a set of object mappings (Max 25) between current org and source or
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.v3
@@ -168,7 +168,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 
@@ -198,8 +198,8 @@ This API uploads a JSON configuration file into a tenant.  Configuration files c
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.v3
@@ -254,7 +254,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 
@@ -283,8 +283,8 @@ This deletes an existing object mapping. Source org should be \"default\" when d
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.v3
@@ -336,7 +336,7 @@ void (empty response body)
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 
@@ -366,8 +366,8 @@ This API deletes an uploaded configuration based on Id.  On success, this endpoi
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.v3
@@ -417,7 +417,7 @@ void (empty response body)
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 
@@ -447,8 +447,8 @@ This gets a list of existing object mappings between current org and source org.
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.v3
@@ -501,7 +501,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 
@@ -531,8 +531,8 @@ This API gets an existing uploaded configuration for the current tenant.
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.v3
@@ -585,7 +585,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 
@@ -615,8 +615,8 @@ This API gets a list of existing uploaded configurations for the current tenant.
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.v3
@@ -669,7 +669,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 
@@ -699,8 +699,8 @@ This updates a set of object mappings, only enabled and targetValue fields can b
 
 ### Example
 
-* OAuth Authentication (UserContextAuth):
-* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
 
 ```python
 import sailpoint.v3
@@ -756,7 +756,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
 
 ### HTTP request headers
 
