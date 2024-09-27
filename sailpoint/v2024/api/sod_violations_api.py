@@ -58,7 +58,7 @@ class SODViolationsApi:
     ) -> ViolationPrediction:
         """Predict SOD violations for identity.
 
-        This API is used to check if granting some additional accesses would cause the subject to be in violation of any SOD policies. Returns the violations that would be caused.  A token with ORG_ADMIN or API authority is required to call this API.
+        This API is used to check if granting some additional accesses would cause the subject to be in violation of any SOD policies. Returns the violations that would be caused.
 
         :param identity_with_new_access: (required)
         :type identity_with_new_access: IdentityWithNewAccess
@@ -131,7 +131,7 @@ class SODViolationsApi:
     ) -> ApiResponse[ViolationPrediction]:
         """Predict SOD violations for identity.
 
-        This API is used to check if granting some additional accesses would cause the subject to be in violation of any SOD policies. Returns the violations that would be caused.  A token with ORG_ADMIN or API authority is required to call this API.
+        This API is used to check if granting some additional accesses would cause the subject to be in violation of any SOD policies. Returns the violations that would be caused.
 
         :param identity_with_new_access: (required)
         :type identity_with_new_access: IdentityWithNewAccess
@@ -204,7 +204,7 @@ class SODViolationsApi:
     ) -> RESTResponseType:
         """Predict SOD violations for identity.
 
-        This API is used to check if granting some additional accesses would cause the subject to be in violation of any SOD policies. Returns the violations that would be caused.  A token with ORG_ADMIN or API authority is required to call this API.
+        This API is used to check if granting some additional accesses would cause the subject to be in violation of any SOD policies. Returns the violations that would be caused.
 
         :param identity_with_new_access: (required)
         :type identity_with_new_access: IdentityWithNewAccess
@@ -309,7 +309,8 @@ class SODViolationsApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -349,7 +350,7 @@ class SODViolationsApi:
     ) -> SodViolationCheck:
         """Check SOD violations
 
-        This API initiates a SOD policy verification asynchronously.  A token with ORG_ADMIN authority is required to call this API.
+        This API initiates a SOD policy verification asynchronously.
 
         :param identity_with_new_access1: (required)
         :type identity_with_new_access1: IdentityWithNewAccess1
@@ -422,7 +423,7 @@ class SODViolationsApi:
     ) -> ApiResponse[SodViolationCheck]:
         """Check SOD violations
 
-        This API initiates a SOD policy verification asynchronously.  A token with ORG_ADMIN authority is required to call this API.
+        This API initiates a SOD policy verification asynchronously.
 
         :param identity_with_new_access1: (required)
         :type identity_with_new_access1: IdentityWithNewAccess1
@@ -495,7 +496,7 @@ class SODViolationsApi:
     ) -> RESTResponseType:
         """Check SOD violations
 
-        This API initiates a SOD policy verification asynchronously.  A token with ORG_ADMIN authority is required to call this API.
+        This API initiates a SOD policy verification asynchronously.
 
         :param identity_with_new_access1: (required)
         :type identity_with_new_access1: IdentityWithNewAccess1

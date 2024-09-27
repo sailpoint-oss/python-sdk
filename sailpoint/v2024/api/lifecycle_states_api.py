@@ -63,7 +63,7 @@ class LifecycleStatesApi:
     ) -> LifecycleState:
         """Create Lifecycle State
 
-        Use this endpoint to create a lifecycle state. A token with ORG_ADMIN or API authority is required to call this API.
+        Use this endpoint to create a lifecycle state.
 
         :param identity_profile_id: Identity profile ID. (required)
         :type identity_profile_id: str
@@ -139,7 +139,7 @@ class LifecycleStatesApi:
     ) -> ApiResponse[LifecycleState]:
         """Create Lifecycle State
 
-        Use this endpoint to create a lifecycle state. A token with ORG_ADMIN or API authority is required to call this API.
+        Use this endpoint to create a lifecycle state.
 
         :param identity_profile_id: Identity profile ID. (required)
         :type identity_profile_id: str
@@ -215,7 +215,7 @@ class LifecycleStatesApi:
     ) -> RESTResponseType:
         """Create Lifecycle State
 
-        Use this endpoint to create a lifecycle state. A token with ORG_ADMIN or API authority is required to call this API.
+        Use this endpoint to create a lifecycle state.
 
         :param identity_profile_id: Identity profile ID. (required)
         :type identity_profile_id: str
@@ -325,7 +325,8 @@ class LifecycleStatesApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -366,7 +367,7 @@ class LifecycleStatesApi:
     ) -> LifecyclestateDeleted:
         """Delete Lifecycle State
 
-        Use this endpoint to delete the lifecycle state by its ID.  A token with API, or ORG_ADMIN authority is required to call this API.
+        Use this endpoint to delete the lifecycle state by its ID. 
 
         :param identity_profile_id: Identity profile ID. (required)
         :type identity_profile_id: str
@@ -443,7 +444,7 @@ class LifecycleStatesApi:
     ) -> ApiResponse[LifecyclestateDeleted]:
         """Delete Lifecycle State
 
-        Use this endpoint to delete the lifecycle state by its ID.  A token with API, or ORG_ADMIN authority is required to call this API.
+        Use this endpoint to delete the lifecycle state by its ID. 
 
         :param identity_profile_id: Identity profile ID. (required)
         :type identity_profile_id: str
@@ -520,7 +521,7 @@ class LifecycleStatesApi:
     ) -> RESTResponseType:
         """Delete Lifecycle State
 
-        Use this endpoint to delete the lifecycle state by its ID.  A token with API, or ORG_ADMIN authority is required to call this API.
+        Use this endpoint to delete the lifecycle state by its ID. 
 
         :param identity_profile_id: Identity profile ID. (required)
         :type identity_profile_id: str
@@ -618,7 +619,8 @@ class LifecycleStatesApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -659,7 +661,7 @@ class LifecycleStatesApi:
     ) -> LifecycleState:
         """Get Lifecycle State
 
-        Use this endpoint to get a lifecycle state by its ID and its associated identity profile ID.  A token with ORG_ADMIN or API authority is required to call this API.
+        Use this endpoint to get a lifecycle state by its ID and its associated identity profile ID. 
 
         :param identity_profile_id: Identity profile ID. (required)
         :type identity_profile_id: str
@@ -736,7 +738,7 @@ class LifecycleStatesApi:
     ) -> ApiResponse[LifecycleState]:
         """Get Lifecycle State
 
-        Use this endpoint to get a lifecycle state by its ID and its associated identity profile ID.  A token with ORG_ADMIN or API authority is required to call this API.
+        Use this endpoint to get a lifecycle state by its ID and its associated identity profile ID. 
 
         :param identity_profile_id: Identity profile ID. (required)
         :type identity_profile_id: str
@@ -813,7 +815,7 @@ class LifecycleStatesApi:
     ) -> RESTResponseType:
         """Get Lifecycle State
 
-        Use this endpoint to get a lifecycle state by its ID and its associated identity profile ID.  A token with ORG_ADMIN or API authority is required to call this API.
+        Use this endpoint to get a lifecycle state by its ID and its associated identity profile ID. 
 
         :param identity_profile_id: Identity profile ID. (required)
         :type identity_profile_id: str
@@ -955,7 +957,7 @@ class LifecycleStatesApi:
     ) -> List[LifecycleState]:
         """Lists LifecycleStates
 
-        Use this endpoint to list all lifecycle states by their associated identity profiles.  A token with API, or ORG_ADMIN authority is required to call this API.
+        Use this endpoint to list all lifecycle states by their associated identity profiles. 
 
         :param identity_profile_id: Identity profile ID. (required)
         :type identity_profile_id: str
@@ -1043,7 +1045,7 @@ class LifecycleStatesApi:
     ) -> ApiResponse[List[LifecycleState]]:
         """Lists LifecycleStates
 
-        Use this endpoint to list all lifecycle states by their associated identity profiles.  A token with API, or ORG_ADMIN authority is required to call this API.
+        Use this endpoint to list all lifecycle states by their associated identity profiles. 
 
         :param identity_profile_id: Identity profile ID. (required)
         :type identity_profile_id: str
@@ -1131,7 +1133,7 @@ class LifecycleStatesApi:
     ) -> RESTResponseType:
         """Lists LifecycleStates
 
-        Use this endpoint to list all lifecycle states by their associated identity profiles.  A token with API, or ORG_ADMIN authority is required to call this API.
+        Use this endpoint to list all lifecycle states by their associated identity profiles. 
 
         :param identity_profile_id: Identity profile ID. (required)
         :type identity_profile_id: str
@@ -1254,7 +1256,8 @@ class LifecycleStatesApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -1295,7 +1298,7 @@ class LifecycleStatesApi:
     ) -> SetLifecycleState200Response:
         """Set Lifecycle State
 
-        Use this API to set/update an identity's lifecycle state to the one provided and update the corresponding identity profile. A token with ORG_ADMIN or API authority and the appropriate user context is required to call this API.
+        Use this API to set/update an identity's lifecycle state to the one provided and update the corresponding identity profile.
 
         :param identity_id: ID of the identity to update. (required)
         :type identity_id: str
@@ -1372,7 +1375,7 @@ class LifecycleStatesApi:
     ) -> ApiResponse[SetLifecycleState200Response]:
         """Set Lifecycle State
 
-        Use this API to set/update an identity's lifecycle state to the one provided and update the corresponding identity profile. A token with ORG_ADMIN or API authority and the appropriate user context is required to call this API.
+        Use this API to set/update an identity's lifecycle state to the one provided and update the corresponding identity profile.
 
         :param identity_id: ID of the identity to update. (required)
         :type identity_id: str
@@ -1449,7 +1452,7 @@ class LifecycleStatesApi:
     ) -> RESTResponseType:
         """Set Lifecycle State
 
-        Use this API to set/update an identity's lifecycle state to the one provided and update the corresponding identity profile. A token with ORG_ADMIN or API authority and the appropriate user context is required to call this API.
+        Use this API to set/update an identity's lifecycle state to the one provided and update the corresponding identity profile.
 
         :param identity_id: ID of the identity to update. (required)
         :type identity_id: str
@@ -1560,7 +1563,8 @@ class LifecycleStatesApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -1602,7 +1606,7 @@ class LifecycleStatesApi:
     ) -> LifecycleState:
         """Update Lifecycle State
 
-        Use this endpoint to update individual lifecycle state fields, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. A token with ORG_ADMIN or API authority is required to call this API.
+        Use this endpoint to update individual lifecycle state fields, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
         :param identity_profile_id: Identity profile ID. (required)
         :type identity_profile_id: str
@@ -1683,7 +1687,7 @@ class LifecycleStatesApi:
     ) -> ApiResponse[LifecycleState]:
         """Update Lifecycle State
 
-        Use this endpoint to update individual lifecycle state fields, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. A token with ORG_ADMIN or API authority is required to call this API.
+        Use this endpoint to update individual lifecycle state fields, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
         :param identity_profile_id: Identity profile ID. (required)
         :type identity_profile_id: str
@@ -1764,7 +1768,7 @@ class LifecycleStatesApi:
     ) -> RESTResponseType:
         """Update Lifecycle State
 
-        Use this endpoint to update individual lifecycle state fields, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. A token with ORG_ADMIN or API authority is required to call this API.
+        Use this endpoint to update individual lifecycle state fields, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
         :param identity_profile_id: Identity profile ID. (required)
         :type identity_profile_id: str
@@ -1882,7 +1886,8 @@ class LifecycleStatesApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(

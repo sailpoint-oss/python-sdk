@@ -40,10 +40,31 @@ class TestRolesApi(unittest.TestCase):
         """
         pass
 
+    def test_delete_metadata_from_role_by_key_and_value(self) -> None:
+        """Test case for delete_metadata_from_role_by_key_and_value
+
+        Remove a Metadata From Role.
+        """
+        pass
+
     def test_delete_role(self) -> None:
         """Test case for delete_role
 
         Delete a Role
+        """
+        pass
+
+    def test_get_bulk_update_status(self) -> None:
+        """Test case for get_bulk_update_status
+
+        Get Bulk-Update Statuses
+        """
+        pass
+
+    def test_get_bulk_update_status_by_id(self) -> None:
+        """Test case for get_bulk_update_status_by_id
+
+        Get Bulk-Update Status by ID
         """
         pass
 
@@ -79,6 +100,41 @@ class TestRolesApi(unittest.TestCase):
         """Test case for patch_role
 
         Patch a specified Role
+        """
+        pass
+
+    def test_search_roles_by_filter(self) -> None:
+        """Test case for search_roles_by_filter
+
+        Filter Roles by Metadata
+        """
+        pass
+
+    def test_update_attribute_key_and_value_to_role(self) -> None:
+        """Test case for update_attribute_key_and_value_to_role
+
+        Add a Metadata to Role.
+        """
+        pass
+
+    def test_update_roles_metadata_by_filter(self) -> None:
+        """Test case for update_roles_metadata_by_filter
+
+        Bulk-Update Roles' Metadata by Filters
+        """
+        pass
+
+    def test_update_roles_metadata_by_ids(self) -> None:
+        """Test case for update_roles_metadata_by_ids
+
+        Bulk-Update Roles' Metadata by ID
+        """
+        pass
+
+    def test_update_roles_metadata_by_query(self) -> None:
+        """Test case for update_roles_metadata_by_query
+
+        Bulk-Update Roles' Metadata by Query
         """
         pass
 

@@ -76,7 +76,7 @@ class SourcesApi:
     ) -> ProvisioningPolicyDto:
         """Create Provisioning Policy
 
-        This API generates a create policy/template based on field value transforms. This API is intended for use when setting up JDBC Provisioning type sources, but it will also work on other source types. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information. A token with ORG_ADMIN authority is required to call this API.
+        This API generates a create policy/template based on field value transforms. This API is intended for use when setting up JDBC Provisioning type sources, but it will also work on other source types. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
 
         :param source_id: The Source id (required)
         :type source_id: str
@@ -153,7 +153,7 @@ class SourcesApi:
     ) -> ApiResponse[ProvisioningPolicyDto]:
         """Create Provisioning Policy
 
-        This API generates a create policy/template based on field value transforms. This API is intended for use when setting up JDBC Provisioning type sources, but it will also work on other source types. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information. A token with ORG_ADMIN authority is required to call this API.
+        This API generates a create policy/template based on field value transforms. This API is intended for use when setting up JDBC Provisioning type sources, but it will also work on other source types. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
 
         :param source_id: The Source id (required)
         :type source_id: str
@@ -230,7 +230,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Create Provisioning Policy
 
-        This API generates a create policy/template based on field value transforms. This API is intended for use when setting up JDBC Provisioning type sources, but it will also work on other source types. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information. A token with ORG_ADMIN authority is required to call this API.
+        This API generates a create policy/template based on field value transforms. This API is intended for use when setting up JDBC Provisioning type sources, but it will also work on other source types. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
 
         :param source_id: The Source id (required)
         :type source_id: str
@@ -382,7 +382,7 @@ class SourcesApi:
     ) -> Source:
         """Creates a source in IdentityNow.
 
-        This creates a specific source with a full source JSON representation. Any passwords are submitted as plain-text and encrypted upon receipt in IdentityNow. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        This creates a specific source with a full source JSON representation. Any passwords are submitted as plain-text and encrypted upon receipt in IdentityNow.
 
         :param source: (required)
         :type source: Source
@@ -458,7 +458,7 @@ class SourcesApi:
     ) -> ApiResponse[Source]:
         """Creates a source in IdentityNow.
 
-        This creates a specific source with a full source JSON representation. Any passwords are submitted as plain-text and encrypted upon receipt in IdentityNow. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        This creates a specific source with a full source JSON representation. Any passwords are submitted as plain-text and encrypted upon receipt in IdentityNow.
 
         :param source: (required)
         :type source: Source
@@ -534,7 +534,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Creates a source in IdentityNow.
 
-        This creates a specific source with a full source JSON representation. Any passwords are submitted as plain-text and encrypted upon receipt in IdentityNow. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        This creates a specific source with a full source JSON representation. Any passwords are submitted as plain-text and encrypted upon receipt in IdentityNow.
 
         :param source: (required)
         :type source: Source
@@ -1280,7 +1280,7 @@ class SourcesApi:
     ) -> None:
         """Delete Native Change Detection Configuration
 
-        Deletes the native change detection configuration for the source specified by the given ID. A token with API, or ORG_ADMIN authority is required to call this API.
+        Deletes the native change detection configuration for the source specified by the given ID.
 
         :param id: The source id (required)
         :type id: str
@@ -1357,7 +1357,7 @@ class SourcesApi:
     ) -> ApiResponse[None]:
         """Delete Native Change Detection Configuration
 
-        Deletes the native change detection configuration for the source specified by the given ID. A token with API, or ORG_ADMIN authority is required to call this API.
+        Deletes the native change detection configuration for the source specified by the given ID.
 
         :param id: The source id (required)
         :type id: str
@@ -1434,7 +1434,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Delete Native Change Detection Configuration
 
-        Deletes the native change detection configuration for the source specified by the given ID. A token with API, or ORG_ADMIN authority is required to call this API.
+        Deletes the native change detection configuration for the source specified by the given ID.
 
         :param id: The source id (required)
         :type id: str
@@ -1532,7 +1532,8 @@ class SourcesApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -1573,7 +1574,7 @@ class SourcesApi:
     ) -> None:
         """Delete Provisioning Policy by UsageType
 
-        Deletes the provisioning policy with the specified usage on an application. A token with API, or ORG_ADMIN authority is required to call this API.
+        Deletes the provisioning policy with the specified usage on an application.
 
         :param source_id: The Source ID. (required)
         :type source_id: str
@@ -1650,7 +1651,7 @@ class SourcesApi:
     ) -> ApiResponse[None]:
         """Delete Provisioning Policy by UsageType
 
-        Deletes the provisioning policy with the specified usage on an application. A token with API, or ORG_ADMIN authority is required to call this API.
+        Deletes the provisioning policy with the specified usage on an application.
 
         :param source_id: The Source ID. (required)
         :type source_id: str
@@ -1727,7 +1728,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Delete Provisioning Policy by UsageType
 
-        Deletes the provisioning policy with the specified usage on an application. A token with API, or ORG_ADMIN authority is required to call this API.
+        Deletes the provisioning policy with the specified usage on an application.
 
         :param source_id: The Source ID. (required)
         :type source_id: str
@@ -1825,7 +1826,8 @@ class SourcesApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -1865,7 +1867,7 @@ class SourcesApi:
     ) -> DeleteSource202Response:
         """Delete Source by ID
 
-        Use this API to delete a specific source in Identity Security Cloud (ISC). The API removes all the accounts on the source first, and then it deletes the source. You can retrieve the actual task execution status with this method: GET `/task-status/{id}` A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        Use this API to delete a specific source in Identity Security Cloud (ISC). The API removes all the accounts on the source first, and then it deletes the source. You can retrieve the actual task execution status with this method: GET `/task-status/{id}`
 
         :param id: Source ID. (required)
         :type id: str
@@ -1938,7 +1940,7 @@ class SourcesApi:
     ) -> ApiResponse[DeleteSource202Response]:
         """Delete Source by ID
 
-        Use this API to delete a specific source in Identity Security Cloud (ISC). The API removes all the accounts on the source first, and then it deletes the source. You can retrieve the actual task execution status with this method: GET `/task-status/{id}` A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        Use this API to delete a specific source in Identity Security Cloud (ISC). The API removes all the accounts on the source first, and then it deletes the source. You can retrieve the actual task execution status with this method: GET `/task-status/{id}`
 
         :param id: Source ID. (required)
         :type id: str
@@ -2011,7 +2013,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Delete Source by ID
 
-        Use this API to delete a specific source in Identity Security Cloud (ISC). The API removes all the accounts on the source first, and then it deletes the source. You can retrieve the actual task execution status with this method: GET `/task-status/{id}` A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        Use this API to delete a specific source in Identity Security Cloud (ISC). The API removes all the accounts on the source first, and then it deletes the source. You can retrieve the actual task execution status with this method: GET `/task-status/{id}`
 
         :param id: Source ID. (required)
         :type id: str
@@ -3009,7 +3011,7 @@ class SourcesApi:
     ) -> NativeChangeDetectionConfig:
         """Native Change Detection Configuration
 
-        This API returns the existing native change detection configuration for a source specified by the given ID. A token with ORG_ADMIN authority is required to call this API.
+        This API returns the existing native change detection configuration for a source specified by the given ID.
 
         :param id: The source id (required)
         :type id: str
@@ -3086,7 +3088,7 @@ class SourcesApi:
     ) -> ApiResponse[NativeChangeDetectionConfig]:
         """Native Change Detection Configuration
 
-        This API returns the existing native change detection configuration for a source specified by the given ID. A token with ORG_ADMIN authority is required to call this API.
+        This API returns the existing native change detection configuration for a source specified by the given ID.
 
         :param id: The source id (required)
         :type id: str
@@ -3163,7 +3165,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Native Change Detection Configuration
 
-        This API returns the existing native change detection configuration for a source specified by the given ID. A token with ORG_ADMIN authority is required to call this API.
+        This API returns the existing native change detection configuration for a source specified by the given ID.
 
         :param id: The source id (required)
         :type id: str
@@ -3302,7 +3304,7 @@ class SourcesApi:
     ) -> ProvisioningPolicyDto:
         """Get Provisioning Policy by UsageType
 
-        This end-point retrieves the ProvisioningPolicy with the specified usage on the specified Source in IdentityNow. A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        This end-point retrieves the ProvisioningPolicy with the specified usage on the specified Source in IdentityNow.
 
         :param source_id: The Source ID. (required)
         :type source_id: str
@@ -3379,7 +3381,7 @@ class SourcesApi:
     ) -> ApiResponse[ProvisioningPolicyDto]:
         """Get Provisioning Policy by UsageType
 
-        This end-point retrieves the ProvisioningPolicy with the specified usage on the specified Source in IdentityNow. A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        This end-point retrieves the ProvisioningPolicy with the specified usage on the specified Source in IdentityNow.
 
         :param source_id: The Source ID. (required)
         :type source_id: str
@@ -3456,7 +3458,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Get Provisioning Policy by UsageType
 
-        This end-point retrieves the ProvisioningPolicy with the specified usage on the specified Source in IdentityNow. A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        This end-point retrieves the ProvisioningPolicy with the specified usage on the specified Source in IdentityNow.
 
         :param source_id: The Source ID. (required)
         :type source_id: str
@@ -3554,7 +3556,8 @@ class SourcesApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -3594,7 +3597,7 @@ class SourcesApi:
     ) -> Source:
         """Get Source by ID
 
-        Use this API to get a source by a specified ID in Identity Security Cloud (ISC). A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        Use this API to get a source by a specified ID in Identity Security Cloud (ISC).
 
         :param id: Source ID. (required)
         :type id: str
@@ -3667,7 +3670,7 @@ class SourcesApi:
     ) -> ApiResponse[Source]:
         """Get Source by ID
 
-        Use this API to get a source by a specified ID in Identity Security Cloud (ISC). A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        Use this API to get a source by a specified ID in Identity Security Cloud (ISC).
 
         :param id: Source ID. (required)
         :type id: str
@@ -3740,7 +3743,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Get Source by ID
 
-        Use this API to get a source by a specified ID in Identity Security Cloud (ISC). A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        Use this API to get a source by a specified ID in Identity Security Cloud (ISC).
 
         :param id: Source ID. (required)
         :type id: str
@@ -3873,7 +3876,7 @@ class SourcesApi:
     ) -> AttrSyncSourceConfig:
         """Attribute Sync Config
 
-        This API returns the existing attribute synchronization configuration for a source specified by the given ID. The response contains all attributes, regardless of whether they enabled or not. A token with ORG_ADMIN or HELPDESK authority is required to call this API.
+        This API returns the existing attribute synchronization configuration for a source specified by the given ID. The response contains all attributes, regardless of whether they enabled or not.
 
         :param id: The source id (required)
         :type id: str
@@ -3950,7 +3953,7 @@ class SourcesApi:
     ) -> ApiResponse[AttrSyncSourceConfig]:
         """Attribute Sync Config
 
-        This API returns the existing attribute synchronization configuration for a source specified by the given ID. The response contains all attributes, regardless of whether they enabled or not. A token with ORG_ADMIN or HELPDESK authority is required to call this API.
+        This API returns the existing attribute synchronization configuration for a source specified by the given ID. The response contains all attributes, regardless of whether they enabled or not.
 
         :param id: The source id (required)
         :type id: str
@@ -4027,7 +4030,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Attribute Sync Config
 
-        This API returns the existing attribute synchronization configuration for a source specified by the given ID. The response contains all attributes, regardless of whether they enabled or not. A token with ORG_ADMIN or HELPDESK authority is required to call this API.
+        This API returns the existing attribute synchronization configuration for a source specified by the given ID. The response contains all attributes, regardless of whether they enabled or not.
 
         :param id: The source id (required)
         :type id: str
@@ -4167,7 +4170,7 @@ class SourcesApi:
     ) -> ConnectorDetail1:
         """Gets source config with language translations
 
-        Looks up and returns the source config for the requested source id after populating the source config values and applying language translations. A token with ORG_ADMIN authority is required to call this API.
+        Looks up and returns the source config for the requested source id after populating the source config values and applying language translations.
 
         :param id: The Source id (required)
         :type id: str
@@ -4247,7 +4250,7 @@ class SourcesApi:
     ) -> ApiResponse[ConnectorDetail1]:
         """Gets source config with language translations
 
-        Looks up and returns the source config for the requested source id after populating the source config values and applying language translations. A token with ORG_ADMIN authority is required to call this API.
+        Looks up and returns the source config for the requested source id after populating the source config values and applying language translations.
 
         :param id: The Source id (required)
         :type id: str
@@ -4327,7 +4330,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Gets source config with language translations
 
-        Looks up and returns the source config for the requested source id after populating the source config values and applying language translations. A token with ORG_ADMIN authority is required to call this API.
+        Looks up and returns the source config for the requested source id after populating the source config values and applying language translations.
 
         :param id: The Source id (required)
         :type id: str
@@ -4472,7 +4475,7 @@ class SourcesApi:
     ) -> SourceEntitlementRequestConfig:
         """Get Source Entitlement Request Configuration
 
-        This API gets the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        This API gets the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -4544,7 +4547,7 @@ class SourcesApi:
     ) -> ApiResponse[SourceEntitlementRequestConfig]:
         """Get Source Entitlement Request Configuration
 
-        This API gets the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        This API gets the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -4616,7 +4619,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Get Source Entitlement Request Configuration
 
-        This API gets the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        This API gets the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -5616,7 +5619,7 @@ class SourcesApi:
     ) -> LoadAccountsTask:
         """Account Aggregation
 
-        Starts an account aggregation on the specified source.  If the target source is a delimited file source, then the CSV file needs to be included in the request body. You will also need to set the Content-Type header to `multipart/form-data`. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        Starts an account aggregation on the specified source.  If the target source is a delimited file source, then the CSV file needs to be included in the request body. You will also need to set the Content-Type header to `multipart/form-data`.
 
         :param id: Source Id (required)
         :type id: str
@@ -5700,7 +5703,7 @@ class SourcesApi:
     ) -> ApiResponse[LoadAccountsTask]:
         """Account Aggregation
 
-        Starts an account aggregation on the specified source.  If the target source is a delimited file source, then the CSV file needs to be included in the request body. You will also need to set the Content-Type header to `multipart/form-data`. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        Starts an account aggregation on the specified source.  If the target source is a delimited file source, then the CSV file needs to be included in the request body. You will also need to set the Content-Type header to `multipart/form-data`.
 
         :param id: Source Id (required)
         :type id: str
@@ -5784,7 +5787,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Account Aggregation
 
-        Starts an account aggregation on the specified source.  If the target source is a delimited file source, then the CSV file needs to be included in the request body. You will also need to set the Content-Type header to `multipart/form-data`. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        Starts an account aggregation on the specified source.  If the target source is a delimited file source, then the CSV file needs to be included in the request body. You will also need to set the Content-Type header to `multipart/form-data`.
 
         :param id: Source Id (required)
         :type id: str
@@ -6250,7 +6253,7 @@ class SourcesApi:
     ) -> Source:
         """Upload connector file to source
 
-        This uploads a supplemental source connector file (like jdbc driver jars) to a source's S3 bucket. This also sends ETS and Audit events. A token with ORG_ADMIN authority is required to call this API.
+        This uploads a supplemental source connector file (like jdbc driver jars) to a source's S3 bucket. This also sends ETS and Audit events.
 
         :param source_id: The Source id. (required)
         :type source_id: str
@@ -6326,7 +6329,7 @@ class SourcesApi:
     ) -> ApiResponse[Source]:
         """Upload connector file to source
 
-        This uploads a supplemental source connector file (like jdbc driver jars) to a source's S3 bucket. This also sends ETS and Audit events. A token with ORG_ADMIN authority is required to call this API.
+        This uploads a supplemental source connector file (like jdbc driver jars) to a source's S3 bucket. This also sends ETS and Audit events.
 
         :param source_id: The Source id. (required)
         :type source_id: str
@@ -6402,7 +6405,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Upload connector file to source
 
-        This uploads a supplemental source connector file (like jdbc driver jars) to a source's S3 bucket. This also sends ETS and Audit events. A token with ORG_ADMIN authority is required to call this API.
+        This uploads a supplemental source connector file (like jdbc driver jars) to a source's S3 bucket. This also sends ETS and Audit events.
 
         :param source_id: The Source id. (required)
         :type source_id: str
@@ -7190,7 +7193,7 @@ class SourcesApi:
     ) -> List[ProvisioningPolicyDto]:
         """Lists ProvisioningPolicies
 
-        This end-point lists all the ProvisioningPolicies in IdentityNow. A token with API, or ORG_ADMIN authority is required to call this API.
+        This end-point lists all the ProvisioningPolicies in IdentityNow.
 
         :param source_id: The Source id (required)
         :type source_id: str
@@ -7263,7 +7266,7 @@ class SourcesApi:
     ) -> ApiResponse[List[ProvisioningPolicyDto]]:
         """Lists ProvisioningPolicies
 
-        This end-point lists all the ProvisioningPolicies in IdentityNow. A token with API, or ORG_ADMIN authority is required to call this API.
+        This end-point lists all the ProvisioningPolicies in IdentityNow.
 
         :param source_id: The Source id (required)
         :type source_id: str
@@ -7336,7 +7339,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Lists ProvisioningPolicies
 
-        This end-point lists all the ProvisioningPolicies in IdentityNow. A token with API, or ORG_ADMIN authority is required to call this API.
+        This end-point lists all the ProvisioningPolicies in IdentityNow.
 
         :param source_id: The Source id (required)
         :type source_id: str
@@ -7428,7 +7431,8 @@ class SourcesApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -7473,7 +7477,7 @@ class SourcesApi:
     ) -> List[Source]:
         """Lists all sources in IdentityNow.
 
-        This end-point lists all the sources in IdentityNow. A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or ROLE_SUBADMIN authority is required to call this API.
+        This end-point lists all the sources in IdentityNow.
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -7566,7 +7570,7 @@ class SourcesApi:
     ) -> ApiResponse[List[Source]]:
         """Lists all sources in IdentityNow.
 
-        This end-point lists all the sources in IdentityNow. A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or ROLE_SUBADMIN authority is required to call this API.
+        This end-point lists all the sources in IdentityNow.
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -7659,7 +7663,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Lists all sources in IdentityNow.
 
-        This end-point lists all the sources in IdentityNow. A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or ROLE_SUBADMIN authority is required to call this API.
+        This end-point lists all the sources in IdentityNow.
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -7835,7 +7839,7 @@ class SourcesApi:
     ) -> ResourceObjectsResponse:
         """Peek source connector's resource objects
 
-        Retrieves a sample of data returned from account and group aggregation requests. A token with ORG_ADMIN authority is required to call this API.
+        Retrieves a sample of data returned from account and group aggregation requests.
 
         :param source_id: The ID of the Source (required)
         :type source_id: str
@@ -7916,7 +7920,7 @@ class SourcesApi:
     ) -> ApiResponse[ResourceObjectsResponse]:
         """Peek source connector's resource objects
 
-        Retrieves a sample of data returned from account and group aggregation requests. A token with ORG_ADMIN authority is required to call this API.
+        Retrieves a sample of data returned from account and group aggregation requests.
 
         :param source_id: The ID of the Source (required)
         :type source_id: str
@@ -7997,7 +8001,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Peek source connector's resource objects
 
-        Retrieves a sample of data returned from account and group aggregation requests. A token with ORG_ADMIN authority is required to call this API.
+        Retrieves a sample of data returned from account and group aggregation requests.
 
         :param source_id: The ID of the Source (required)
         :type source_id: str
@@ -8155,7 +8159,7 @@ class SourcesApi:
     ) -> StatusResponse:
         """Ping cluster for source connector
 
-        This endpoint validates that the cluster being used by the source is reachable from IdentityNow. A token with ORG_ADMIN authority is required to call this API.
+        This endpoint validates that the cluster being used by the source is reachable from IdentityNow.
 
         :param source_id: The ID of the Source (required)
         :type source_id: str
@@ -8232,7 +8236,7 @@ class SourcesApi:
     ) -> ApiResponse[StatusResponse]:
         """Ping cluster for source connector
 
-        This endpoint validates that the cluster being used by the source is reachable from IdentityNow. A token with ORG_ADMIN authority is required to call this API.
+        This endpoint validates that the cluster being used by the source is reachable from IdentityNow.
 
         :param source_id: The ID of the Source (required)
         :type source_id: str
@@ -8309,7 +8313,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Ping cluster for source connector
 
-        This endpoint validates that the cluster being used by the source is reachable from IdentityNow. A token with ORG_ADMIN authority is required to call this API.
+        This endpoint validates that the cluster being used by the source is reachable from IdentityNow.
 
         :param source_id: The ID of the Source (required)
         :type source_id: str
@@ -8449,7 +8453,7 @@ class SourcesApi:
     ) -> NativeChangeDetectionConfig:
         """Update Native Change Detection Configuration
 
-        Replaces the native change detection configuration for the source specified by the given ID with the configuration provided in the request body.      A token with ORG_ADMIN authority is required to call this API.
+        Replaces the native change detection configuration for the source specified by the given ID with the configuration provided in the request body.
 
         :param id: The source id (required)
         :type id: str
@@ -8530,7 +8534,7 @@ class SourcesApi:
     ) -> ApiResponse[NativeChangeDetectionConfig]:
         """Update Native Change Detection Configuration
 
-        Replaces the native change detection configuration for the source specified by the given ID with the configuration provided in the request body.      A token with ORG_ADMIN authority is required to call this API.
+        Replaces the native change detection configuration for the source specified by the given ID with the configuration provided in the request body.
 
         :param id: The source id (required)
         :type id: str
@@ -8611,7 +8615,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Update Native Change Detection Configuration
 
-        Replaces the native change detection configuration for the source specified by the given ID with the configuration provided in the request body.      A token with ORG_ADMIN authority is required to call this API.
+        Replaces the native change detection configuration for the source specified by the given ID with the configuration provided in the request body.
 
         :param id: The source id (required)
         :type id: str
@@ -8770,7 +8774,7 @@ class SourcesApi:
     ) -> ProvisioningPolicyDto:
         """Update Provisioning Policy by UsageType
 
-        This end-point updates the provisioning policy with the specified usage on the specified source in IdentityNow. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information. A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        This end-point updates the provisioning policy with the specified usage on the specified source in IdentityNow. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
 
         :param source_id: The Source ID. (required)
         :type source_id: str
@@ -8851,7 +8855,7 @@ class SourcesApi:
     ) -> ApiResponse[ProvisioningPolicyDto]:
         """Update Provisioning Policy by UsageType
 
-        This end-point updates the provisioning policy with the specified usage on the specified source in IdentityNow. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information. A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        This end-point updates the provisioning policy with the specified usage on the specified source in IdentityNow. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
 
         :param source_id: The Source ID. (required)
         :type source_id: str
@@ -8932,7 +8936,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Update Provisioning Policy by UsageType
 
-        This end-point updates the provisioning policy with the specified usage on the specified source in IdentityNow. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information. A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        This end-point updates the provisioning policy with the specified usage on the specified source in IdentityNow. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
 
         :param source_id: The Source ID. (required)
         :type source_id: str
@@ -9049,7 +9053,8 @@ class SourcesApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -9090,7 +9095,7 @@ class SourcesApi:
     ) -> Source:
         """Update Source (Full)
 
-        Use this API to update a source in Identity Security Cloud (ISC), using a full object representation. This means that when you use this API, it completely replaces the existing source configuration.  These fields are immutable, so they cannot be changed:  * id * type * authoritative * connector * connectorClass * passwordPolicies  Attempts to modify these fields will result in a 400 error.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. 
+        Use this API to update a source in Identity Security Cloud (ISC), using a full object representation. This means that when you use this API, it completely replaces the existing source configuration.  These fields are immutable, so they cannot be changed:  * id * type * authoritative * connector * connectorClass * passwordPolicies  Attempts to modify these fields will result in a 400 error. 
 
         :param id: Source ID. (required)
         :type id: str
@@ -9167,7 +9172,7 @@ class SourcesApi:
     ) -> ApiResponse[Source]:
         """Update Source (Full)
 
-        Use this API to update a source in Identity Security Cloud (ISC), using a full object representation. This means that when you use this API, it completely replaces the existing source configuration.  These fields are immutable, so they cannot be changed:  * id * type * authoritative * connector * connectorClass * passwordPolicies  Attempts to modify these fields will result in a 400 error.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. 
+        Use this API to update a source in Identity Security Cloud (ISC), using a full object representation. This means that when you use this API, it completely replaces the existing source configuration.  These fields are immutable, so they cannot be changed:  * id * type * authoritative * connector * connectorClass * passwordPolicies  Attempts to modify these fields will result in a 400 error. 
 
         :param id: Source ID. (required)
         :type id: str
@@ -9244,7 +9249,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Update Source (Full)
 
-        Use this API to update a source in Identity Security Cloud (ISC), using a full object representation. This means that when you use this API, it completely replaces the existing source configuration.  These fields are immutable, so they cannot be changed:  * id * type * authoritative * connector * connectorClass * passwordPolicies  Attempts to modify these fields will result in a 400 error.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. 
+        Use this API to update a source in Identity Security Cloud (ISC), using a full object representation. This means that when you use this API, it completely replaces the existing source configuration.  These fields are immutable, so they cannot be changed:  * id * type * authoritative * connector * connectorClass * passwordPolicies  Attempts to modify these fields will result in a 400 error. 
 
         :param id: Source ID. (required)
         :type id: str
@@ -9397,7 +9402,7 @@ class SourcesApi:
     ) -> AttrSyncSourceConfig:
         """Update Attribute Sync Config
 
-        Replaces the attribute synchronization configuration for the source specified by the given ID with the configuration provided in the request body. Only the \"enabled\" field of the values in the \"attributes\" array is mutable. Attempting to change other attributes or add new values to the \"attributes\" array will result in an error.      A token with ORG_ADMIN authority is required to call this API.
+        Replaces the attribute synchronization configuration for the source specified by the given ID with the configuration provided in the request body. Only the \"enabled\" field of the values in the \"attributes\" array is mutable. Attempting to change other attributes or add new values to the \"attributes\" array will result in an error. 
 
         :param id: The source id (required)
         :type id: str
@@ -9478,7 +9483,7 @@ class SourcesApi:
     ) -> ApiResponse[AttrSyncSourceConfig]:
         """Update Attribute Sync Config
 
-        Replaces the attribute synchronization configuration for the source specified by the given ID with the configuration provided in the request body. Only the \"enabled\" field of the values in the \"attributes\" array is mutable. Attempting to change other attributes or add new values to the \"attributes\" array will result in an error.      A token with ORG_ADMIN authority is required to call this API.
+        Replaces the attribute synchronization configuration for the source specified by the given ID with the configuration provided in the request body. Only the \"enabled\" field of the values in the \"attributes\" array is mutable. Attempting to change other attributes or add new values to the \"attributes\" array will result in an error. 
 
         :param id: The source id (required)
         :type id: str
@@ -9559,7 +9564,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Update Attribute Sync Config
 
-        Replaces the attribute synchronization configuration for the source specified by the given ID with the configuration provided in the request body. Only the \"enabled\" field of the values in the \"attributes\" array is mutable. Attempting to change other attributes or add new values to the \"attributes\" array will result in an error.      A token with ORG_ADMIN authority is required to call this API.
+        Replaces the attribute synchronization configuration for the source specified by the given ID with the configuration provided in the request body. Only the \"enabled\" field of the values in the \"attributes\" array is mutable. Attempting to change other attributes or add new values to the \"attributes\" array will result in an error. 
 
         :param id: The source id (required)
         :type id: str
@@ -10038,7 +10043,7 @@ class SourcesApi:
     ) -> SourceSyncJob:
         """Synchronize single source attributes.
 
-        This end-point performs attribute synchronization for a selected source. A token with ORG_ADMIN or SOURCE_ADMIN authority is required to call this API.
+        This end-point performs attribute synchronization for a selected source.
 
         :param id: The Source id (required)
         :type id: str
@@ -10115,7 +10120,7 @@ class SourcesApi:
     ) -> ApiResponse[SourceSyncJob]:
         """Synchronize single source attributes.
 
-        This end-point performs attribute synchronization for a selected source. A token with ORG_ADMIN or SOURCE_ADMIN authority is required to call this API.
+        This end-point performs attribute synchronization for a selected source.
 
         :param id: The Source id (required)
         :type id: str
@@ -10192,7 +10197,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Synchronize single source attributes.
 
-        This end-point performs attribute synchronization for a selected source. A token with ORG_ADMIN or SOURCE_ADMIN authority is required to call this API.
+        This end-point performs attribute synchronization for a selected source.
 
         :param id: The Source id (required)
         :type id: str
@@ -10331,7 +10336,7 @@ class SourcesApi:
     ) -> StatusResponse:
         """Test configuration for source connector
 
-        This endpoint performs a more detailed validation of the source's configuration that can take longer than the lighter weight credential validation performed by the checkConnection API. A token with ORG_ADMIN authority is required to call this API.
+        This endpoint performs a more detailed validation of the source''s configuration that can take longer than the lighter weight credential validation performed by the checkConnection API.
 
         :param source_id: The ID of the Source (required)
         :type source_id: str
@@ -10408,7 +10413,7 @@ class SourcesApi:
     ) -> ApiResponse[StatusResponse]:
         """Test configuration for source connector
 
-        This endpoint performs a more detailed validation of the source's configuration that can take longer than the lighter weight credential validation performed by the checkConnection API. A token with ORG_ADMIN authority is required to call this API.
+        This endpoint performs a more detailed validation of the source''s configuration that can take longer than the lighter weight credential validation performed by the checkConnection API.
 
         :param source_id: The ID of the Source (required)
         :type source_id: str
@@ -10485,7 +10490,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Test configuration for source connector
 
-        This endpoint performs a more detailed validation of the source's configuration that can take longer than the lighter weight credential validation performed by the checkConnection API. A token with ORG_ADMIN authority is required to call this API.
+        This endpoint performs a more detailed validation of the source''s configuration that can take longer than the lighter weight credential validation performed by the checkConnection API.
 
         :param source_id: The ID of the Source (required)
         :type source_id: str
@@ -10624,7 +10629,7 @@ class SourcesApi:
     ) -> StatusResponse:
         """Check connection for source connector.
 
-        This endpoint validates that the configured credentials are valid and will properly authenticate with the source identified by the sourceId path parameter. A token with ORG_ADMIN authority is required to call this API.
+        This endpoint validates that the configured credentials are valid and will properly authenticate with the source identified by the sourceId path parameter.
 
         :param source_id: The ID of the Source. (required)
         :type source_id: str
@@ -10701,7 +10706,7 @@ class SourcesApi:
     ) -> ApiResponse[StatusResponse]:
         """Check connection for source connector.
 
-        This endpoint validates that the configured credentials are valid and will properly authenticate with the source identified by the sourceId path parameter. A token with ORG_ADMIN authority is required to call this API.
+        This endpoint validates that the configured credentials are valid and will properly authenticate with the source identified by the sourceId path parameter.
 
         :param source_id: The ID of the Source. (required)
         :type source_id: str
@@ -10778,7 +10783,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Check connection for source connector.
 
-        This endpoint validates that the configured credentials are valid and will properly authenticate with the source identified by the sourceId path parameter. A token with ORG_ADMIN authority is required to call this API.
+        This endpoint validates that the configured credentials are valid and will properly authenticate with the source identified by the sourceId path parameter.
 
         :param source_id: The ID of the Source. (required)
         :type source_id: str
@@ -10917,7 +10922,7 @@ class SourcesApi:
     ) -> List[ProvisioningPolicyDto]:
         """Bulk Update Provisioning Policies
 
-        This end-point updates a list of provisioning policies on the specified source in IdentityNow. A token with API, or ORG_ADMIN authority is required to call this API.
+        This end-point updates a list of provisioning policies on the specified source in IdentityNow.
 
         :param source_id: The Source id. (required)
         :type source_id: str
@@ -10994,7 +10999,7 @@ class SourcesApi:
     ) -> ApiResponse[List[ProvisioningPolicyDto]]:
         """Bulk Update Provisioning Policies
 
-        This end-point updates a list of provisioning policies on the specified source in IdentityNow. A token with API, or ORG_ADMIN authority is required to call this API.
+        This end-point updates a list of provisioning policies on the specified source in IdentityNow.
 
         :param source_id: The Source id. (required)
         :type source_id: str
@@ -11071,7 +11076,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Bulk Update Provisioning Policies
 
-        This end-point updates a list of provisioning policies on the specified source in IdentityNow. A token with API, or ORG_ADMIN authority is required to call this API.
+        This end-point updates a list of provisioning policies on the specified source in IdentityNow.
 
         :param source_id: The Source id. (required)
         :type source_id: str
@@ -11183,7 +11188,8 @@ class SourcesApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -11225,7 +11231,7 @@ class SourcesApi:
     ) -> ProvisioningPolicyDto:
         """Partial update of Provisioning Policy
 
-        This API selectively updates an existing Provisioning Policy using a JSONPatch payload. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information. A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        This API selectively updates an existing Provisioning Policy using a JSONPatch payload. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
 
         :param source_id: The Source id. (required)
         :type source_id: str
@@ -11306,7 +11312,7 @@ class SourcesApi:
     ) -> ApiResponse[ProvisioningPolicyDto]:
         """Partial update of Provisioning Policy
 
-        This API selectively updates an existing Provisioning Policy using a JSONPatch payload. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information. A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        This API selectively updates an existing Provisioning Policy using a JSONPatch payload. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
 
         :param source_id: The Source id. (required)
         :type source_id: str
@@ -11387,7 +11393,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Partial update of Provisioning Policy
 
-        This API selectively updates an existing Provisioning Policy using a JSONPatch payload. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information. A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        This API selectively updates an existing Provisioning Policy using a JSONPatch payload. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
 
         :param source_id: The Source id. (required)
         :type source_id: str
@@ -11505,7 +11511,8 @@ class SourcesApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -11546,7 +11553,7 @@ class SourcesApi:
     ) -> Source:
         """Update Source (Partial)
 
-        Use this API to partially update a source in Identity Security Cloud (ISC), using a list of patch operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  These fields are immutable, so they cannot be changed:  * id * type * authoritative * created * modified * connector * connectorClass * passwordPolicies  Attempts to modify these fields will result in a 400 error.  A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or API authority is required to call this API. 
+        Use this API to partially update a source in Identity Security Cloud (ISC), using a list of patch operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  These fields are immutable, so they cannot be changed:  * id * type * authoritative * created * modified * connector * connectorClass * passwordPolicies  Attempts to modify these fields will result in a 400 error. 
 
         :param id: Source ID. (required)
         :type id: str
@@ -11623,7 +11630,7 @@ class SourcesApi:
     ) -> ApiResponse[Source]:
         """Update Source (Partial)
 
-        Use this API to partially update a source in Identity Security Cloud (ISC), using a list of patch operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  These fields are immutable, so they cannot be changed:  * id * type * authoritative * created * modified * connector * connectorClass * passwordPolicies  Attempts to modify these fields will result in a 400 error.  A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or API authority is required to call this API. 
+        Use this API to partially update a source in Identity Security Cloud (ISC), using a list of patch operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  These fields are immutable, so they cannot be changed:  * id * type * authoritative * created * modified * connector * connectorClass * passwordPolicies  Attempts to modify these fields will result in a 400 error. 
 
         :param id: Source ID. (required)
         :type id: str
@@ -11700,7 +11707,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Update Source (Partial)
 
-        Use this API to partially update a source in Identity Security Cloud (ISC), using a list of patch operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  These fields are immutable, so they cannot be changed:  * id * type * authoritative * created * modified * connector * connectorClass * passwordPolicies  Attempts to modify these fields will result in a 400 error.  A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or API authority is required to call this API. 
+        Use this API to partially update a source in Identity Security Cloud (ISC), using a list of patch operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  These fields are immutable, so they cannot be changed:  * id * type * authoritative * created * modified * connector * connectorClass * passwordPolicies  Attempts to modify these fields will result in a 400 error. 
 
         :param id: Source ID. (required)
         :type id: str
@@ -11853,7 +11860,7 @@ class SourcesApi:
     ) -> SourceEntitlementRequestConfig:
         """Update Source Entitlement Request Configuration
 
-        This API replaces the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        This API replaces the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -11929,7 +11936,7 @@ class SourcesApi:
     ) -> ApiResponse[SourceEntitlementRequestConfig]:
         """Update Source Entitlement Request Configuration
 
-        This API replaces the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        This API replaces the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -12005,7 +12012,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Update Source Entitlement Request Configuration
 
-        This API replaces the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        This API replaces the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str

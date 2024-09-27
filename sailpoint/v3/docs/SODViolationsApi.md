@@ -13,12 +13,13 @@ Method | HTTP request | Description
 
 Predict SOD violations for identity.
 
-This API is used to check if granting some additional accesses would cause the subject to be in violation of any SOD policies. Returns the violations that would be caused.  A token with ORG_ADMIN or API authority is required to call this API.
+This API is used to check if granting some additional accesses would cause the subject to be in violation of any SOD policies. Returns the violations that would be caused.
 
 ### Example
 
 * OAuth Authentication (userAuth):
 * OAuth Authentication (userAuth):
+* OAuth Authentication (applicationAuth):
 
 ```python
 import sailpoint.v3
@@ -37,6 +38,8 @@ configuration = sailpoint.v3.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
@@ -72,7 +75,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth), [applicationAuth](../README.md#applicationAuth)
 
 ### HTTP request headers
 
@@ -98,7 +101,7 @@ Name | Type | Description  | Notes
 
 Check SOD violations
 
-This API initiates a SOD policy verification asynchronously.  A token with ORG_ADMIN authority is required to call this API.
+This API initiates a SOD policy verification asynchronously.
 
 ### Example
 

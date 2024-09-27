@@ -77,7 +77,7 @@ class SourcesApi:
     ) -> ProvisioningPolicyDto:
         """Create Provisioning Policy
 
-        This API generates a create policy/template based on field value transforms. This API is intended for use when setting up JDBC Provisioning type sources, but it will also work on other source types. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information. A token with ORG_ADMIN authority is required to call this API.
+        This API generates a create policy/template based on field value transforms. This API is intended for use when setting up JDBC Provisioning type sources, but it will also work on other source types. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
 
         :param source_id: The Source id (required)
         :type source_id: str
@@ -154,7 +154,7 @@ class SourcesApi:
     ) -> ApiResponse[ProvisioningPolicyDto]:
         """Create Provisioning Policy
 
-        This API generates a create policy/template based on field value transforms. This API is intended for use when setting up JDBC Provisioning type sources, but it will also work on other source types. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information. A token with ORG_ADMIN authority is required to call this API.
+        This API generates a create policy/template based on field value transforms. This API is intended for use when setting up JDBC Provisioning type sources, but it will also work on other source types. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
 
         :param source_id: The Source id (required)
         :type source_id: str
@@ -231,7 +231,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Create Provisioning Policy
 
-        This API generates a create policy/template based on field value transforms. This API is intended for use when setting up JDBC Provisioning type sources, but it will also work on other source types. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information. A token with ORG_ADMIN authority is required to call this API.
+        This API generates a create policy/template based on field value transforms. This API is intended for use when setting up JDBC Provisioning type sources, but it will also work on other source types. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
 
         :param source_id: The Source id (required)
         :type source_id: str
@@ -1822,7 +1822,7 @@ class SourcesApi:
     ) -> None:
         """Delete Provisioning Policy by UsageType
 
-        Deletes the provisioning policy with the specified usage on an application. A token with API, or ORG_ADMIN authority is required to call this API.
+        Deletes the provisioning policy with the specified usage on an application.
 
         :param source_id: The Source ID. (required)
         :type source_id: str
@@ -1899,7 +1899,7 @@ class SourcesApi:
     ) -> ApiResponse[None]:
         """Delete Provisioning Policy by UsageType
 
-        Deletes the provisioning policy with the specified usage on an application. A token with API, or ORG_ADMIN authority is required to call this API.
+        Deletes the provisioning policy with the specified usage on an application.
 
         :param source_id: The Source ID. (required)
         :type source_id: str
@@ -1976,7 +1976,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Delete Provisioning Policy by UsageType
 
-        Deletes the provisioning policy with the specified usage on an application. A token with API, or ORG_ADMIN authority is required to call this API.
+        Deletes the provisioning policy with the specified usage on an application.
 
         :param source_id: The Source ID. (required)
         :type source_id: str
@@ -2074,7 +2074,8 @@ class SourcesApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -2961,7 +2962,7 @@ class SourcesApi:
     ) -> ProvisioningPolicyDto:
         """Get Provisioning Policy by UsageType
 
-        This end-point retrieves the ProvisioningPolicy with the specified usage on the specified Source in IdentityNow. A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        This end-point retrieves the ProvisioningPolicy with the specified usage on the specified Source in IdentityNow.
 
         :param source_id: The Source ID. (required)
         :type source_id: str
@@ -3038,7 +3039,7 @@ class SourcesApi:
     ) -> ApiResponse[ProvisioningPolicyDto]:
         """Get Provisioning Policy by UsageType
 
-        This end-point retrieves the ProvisioningPolicy with the specified usage on the specified Source in IdentityNow. A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        This end-point retrieves the ProvisioningPolicy with the specified usage on the specified Source in IdentityNow.
 
         :param source_id: The Source ID. (required)
         :type source_id: str
@@ -3115,7 +3116,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Get Provisioning Policy by UsageType
 
-        This end-point retrieves the ProvisioningPolicy with the specified usage on the specified Source in IdentityNow. A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        This end-point retrieves the ProvisioningPolicy with the specified usage on the specified Source in IdentityNow.
 
         :param source_id: The Source ID. (required)
         :type source_id: str
@@ -3213,7 +3214,8 @@ class SourcesApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -7386,7 +7388,7 @@ class SourcesApi:
     ) -> List[ProvisioningPolicyDto]:
         """Lists ProvisioningPolicies
 
-        This end-point lists all the ProvisioningPolicies in IdentityNow. A token with API, or ORG_ADMIN authority is required to call this API.
+        This end-point lists all the ProvisioningPolicies in IdentityNow.
 
         :param source_id: The Source id (required)
         :type source_id: str
@@ -7459,7 +7461,7 @@ class SourcesApi:
     ) -> ApiResponse[List[ProvisioningPolicyDto]]:
         """Lists ProvisioningPolicies
 
-        This end-point lists all the ProvisioningPolicies in IdentityNow. A token with API, or ORG_ADMIN authority is required to call this API.
+        This end-point lists all the ProvisioningPolicies in IdentityNow.
 
         :param source_id: The Source id (required)
         :type source_id: str
@@ -7532,7 +7534,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Lists ProvisioningPolicies
 
-        This end-point lists all the ProvisioningPolicies in IdentityNow. A token with API, or ORG_ADMIN authority is required to call this API.
+        This end-point lists all the ProvisioningPolicies in IdentityNow.
 
         :param source_id: The Source id (required)
         :type source_id: str
@@ -7624,7 +7626,8 @@ class SourcesApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -9227,7 +9230,7 @@ class SourcesApi:
     ) -> ProvisioningPolicyDto:
         """Update Provisioning Policy by UsageType
 
-        This end-point updates the provisioning policy with the specified usage on the specified source in IdentityNow. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information. A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        This end-point updates the provisioning policy with the specified usage on the specified source in IdentityNow. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
 
         :param source_id: The Source ID. (required)
         :type source_id: str
@@ -9308,7 +9311,7 @@ class SourcesApi:
     ) -> ApiResponse[ProvisioningPolicyDto]:
         """Update Provisioning Policy by UsageType
 
-        This end-point updates the provisioning policy with the specified usage on the specified source in IdentityNow. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information. A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        This end-point updates the provisioning policy with the specified usage on the specified source in IdentityNow. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
 
         :param source_id: The Source ID. (required)
         :type source_id: str
@@ -9389,7 +9392,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Update Provisioning Policy by UsageType
 
-        This end-point updates the provisioning policy with the specified usage on the specified source in IdentityNow. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information. A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        This end-point updates the provisioning policy with the specified usage on the specified source in IdentityNow. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
 
         :param source_id: The Source ID. (required)
         :type source_id: str
@@ -9506,7 +9509,8 @@ class SourcesApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -11314,7 +11318,7 @@ class SourcesApi:
     ) -> List[ProvisioningPolicyDto]:
         """Bulk Update Provisioning Policies
 
-        This end-point updates a list of provisioning policies on the specified source in IdentityNow. A token with API, or ORG_ADMIN authority is required to call this API.
+        This end-point updates a list of provisioning policies on the specified source in IdentityNow.
 
         :param source_id: The Source id. (required)
         :type source_id: str
@@ -11391,7 +11395,7 @@ class SourcesApi:
     ) -> ApiResponse[List[ProvisioningPolicyDto]]:
         """Bulk Update Provisioning Policies
 
-        This end-point updates a list of provisioning policies on the specified source in IdentityNow. A token with API, or ORG_ADMIN authority is required to call this API.
+        This end-point updates a list of provisioning policies on the specified source in IdentityNow.
 
         :param source_id: The Source id. (required)
         :type source_id: str
@@ -11468,7 +11472,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Bulk Update Provisioning Policies
 
-        This end-point updates a list of provisioning policies on the specified source in IdentityNow. A token with API, or ORG_ADMIN authority is required to call this API.
+        This end-point updates a list of provisioning policies on the specified source in IdentityNow.
 
         :param source_id: The Source id. (required)
         :type source_id: str
@@ -11580,7 +11584,8 @@ class SourcesApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -11622,7 +11627,7 @@ class SourcesApi:
     ) -> ProvisioningPolicyDto:
         """Partial update of Provisioning Policy
 
-        This API selectively updates an existing Provisioning Policy using a JSONPatch payload. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information. A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        This API selectively updates an existing Provisioning Policy using a JSONPatch payload. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
 
         :param source_id: The Source id. (required)
         :type source_id: str
@@ -11703,7 +11708,7 @@ class SourcesApi:
     ) -> ApiResponse[ProvisioningPolicyDto]:
         """Partial update of Provisioning Policy
 
-        This API selectively updates an existing Provisioning Policy using a JSONPatch payload. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information. A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        This API selectively updates an existing Provisioning Policy using a JSONPatch payload. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
 
         :param source_id: The Source id. (required)
         :type source_id: str
@@ -11784,7 +11789,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Partial update of Provisioning Policy
 
-        This API selectively updates an existing Provisioning Policy using a JSONPatch payload. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information. A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        This API selectively updates an existing Provisioning Policy using a JSONPatch payload. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
 
         :param source_id: The Source id. (required)
         :type source_id: str
@@ -11902,7 +11907,8 @@ class SourcesApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(

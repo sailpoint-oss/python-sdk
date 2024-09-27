@@ -351,7 +351,7 @@ class TaggedObjectsApi:
     ) -> None:
         """Remove Tags from Multiple Objects
 
-        This API removes tags from multiple objects.  A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        This API removes tags from multiple objects.
 
         :param bulk_remove_tagged_object: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
         :type bulk_remove_tagged_object: BulkRemoveTaggedObject
@@ -423,7 +423,7 @@ class TaggedObjectsApi:
     ) -> ApiResponse[None]:
         """Remove Tags from Multiple Objects
 
-        This API removes tags from multiple objects.  A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        This API removes tags from multiple objects.
 
         :param bulk_remove_tagged_object: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
         :type bulk_remove_tagged_object: BulkRemoveTaggedObject
@@ -495,7 +495,7 @@ class TaggedObjectsApi:
     ) -> RESTResponseType:
         """Remove Tags from Multiple Objects
 
-        This API removes tags from multiple objects.  A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        This API removes tags from multiple objects.
 
         :param bulk_remove_tagged_object: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
         :type bulk_remove_tagged_object: BulkRemoveTaggedObject
@@ -599,7 +599,8 @@ class TaggedObjectsApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -2206,7 +2207,7 @@ class TaggedObjectsApi:
     ) -> List[BulkTaggedObjectResponse]:
         """Tag Multiple Objects
 
-        This API adds tags to multiple objects.  A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        This API adds tags to multiple objects.
 
         :param bulk_add_tagged_object: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
         :type bulk_add_tagged_object: BulkAddTaggedObject
@@ -2278,7 +2279,7 @@ class TaggedObjectsApi:
     ) -> ApiResponse[List[BulkTaggedObjectResponse]]:
         """Tag Multiple Objects
 
-        This API adds tags to multiple objects.  A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        This API adds tags to multiple objects.
 
         :param bulk_add_tagged_object: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
         :type bulk_add_tagged_object: BulkAddTaggedObject
@@ -2350,7 +2351,7 @@ class TaggedObjectsApi:
     ) -> RESTResponseType:
         """Tag Multiple Objects
 
-        This API adds tags to multiple objects.  A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+        This API adds tags to multiple objects.
 
         :param bulk_add_tagged_object: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
         :type bulk_add_tagged_object: BulkAddTaggedObject
@@ -2454,7 +2455,8 @@ class TaggedObjectsApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(

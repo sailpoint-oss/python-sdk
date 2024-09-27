@@ -59,7 +59,7 @@ class TransformsApi:
     ) -> TransformRead:
         """Create transform
 
-        Creates a new transform object immediately. By default, the internal flag is set to false to indicate that this is a custom transform. Only SailPoint employees have the ability to create a transform with internal set to true. Newly created Transforms can be used in the Identity Profile mappings within the UI. A token with transform write authority is required to call this API.
+        Creates a new transform object immediately. By default, the internal flag is set to false to indicate that this is a custom transform. Only SailPoint employees have the ability to create a transform with internal set to true. Newly created Transforms can be used in the Identity Profile mappings within the UI.
 
         :param transform: The transform to be created. (required)
         :type transform: Transform
@@ -132,7 +132,7 @@ class TransformsApi:
     ) -> ApiResponse[TransformRead]:
         """Create transform
 
-        Creates a new transform object immediately. By default, the internal flag is set to false to indicate that this is a custom transform. Only SailPoint employees have the ability to create a transform with internal set to true. Newly created Transforms can be used in the Identity Profile mappings within the UI. A token with transform write authority is required to call this API.
+        Creates a new transform object immediately. By default, the internal flag is set to false to indicate that this is a custom transform. Only SailPoint employees have the ability to create a transform with internal set to true. Newly created Transforms can be used in the Identity Profile mappings within the UI.
 
         :param transform: The transform to be created. (required)
         :type transform: Transform
@@ -205,7 +205,7 @@ class TransformsApi:
     ) -> RESTResponseType:
         """Create transform
 
-        Creates a new transform object immediately. By default, the internal flag is set to false to indicate that this is a custom transform. Only SailPoint employees have the ability to create a transform with internal set to true. Newly created Transforms can be used in the Identity Profile mappings within the UI. A token with transform write authority is required to call this API.
+        Creates a new transform object immediately. By default, the internal flag is set to false to indicate that this is a custom transform. Only SailPoint employees have the ability to create a transform with internal set to true. Newly created Transforms can be used in the Identity Profile mappings within the UI.
 
         :param transform: The transform to be created. (required)
         :type transform: Transform
@@ -350,7 +350,7 @@ class TransformsApi:
     ) -> None:
         """Delete a transform
 
-        Deletes the transform specified by the given ID. Attempting to delete a transform that is used in one or more Identity Profile mappings will result in an error. If this occurs, you must first remove the transform from all mappings before deleting the transform. A token with transform delete authority is required to call this API.
+        Deletes the transform specified by the given ID. Attempting to delete a transform that is used in one or more Identity Profile mappings will result in an error. If this occurs, you must first remove the transform from all mappings before deleting the transform.
 
         :param id: ID of the transform to delete (required)
         :type id: str
@@ -423,7 +423,7 @@ class TransformsApi:
     ) -> ApiResponse[None]:
         """Delete a transform
 
-        Deletes the transform specified by the given ID. Attempting to delete a transform that is used in one or more Identity Profile mappings will result in an error. If this occurs, you must first remove the transform from all mappings before deleting the transform. A token with transform delete authority is required to call this API.
+        Deletes the transform specified by the given ID. Attempting to delete a transform that is used in one or more Identity Profile mappings will result in an error. If this occurs, you must first remove the transform from all mappings before deleting the transform.
 
         :param id: ID of the transform to delete (required)
         :type id: str
@@ -496,7 +496,7 @@ class TransformsApi:
     ) -> RESTResponseType:
         """Delete a transform
 
-        Deletes the transform specified by the given ID. Attempting to delete a transform that is used in one or more Identity Profile mappings will result in an error. If this occurs, you must first remove the transform from all mappings before deleting the transform. A token with transform delete authority is required to call this API.
+        Deletes the transform specified by the given ID. Attempting to delete a transform that is used in one or more Identity Profile mappings will result in an error. If this occurs, you must first remove the transform from all mappings before deleting the transform.
 
         :param id: ID of the transform to delete (required)
         :type id: str
@@ -628,7 +628,7 @@ class TransformsApi:
     ) -> TransformRead:
         """Transform by ID
 
-        This API returns the transform specified by the given ID. A token with transform read authority is required to call this API.
+        This API returns the transform specified by the given ID.
 
         :param id: ID of the transform to retrieve (required)
         :type id: str
@@ -701,7 +701,7 @@ class TransformsApi:
     ) -> ApiResponse[TransformRead]:
         """Transform by ID
 
-        This API returns the transform specified by the given ID. A token with transform read authority is required to call this API.
+        This API returns the transform specified by the given ID.
 
         :param id: ID of the transform to retrieve (required)
         :type id: str
@@ -774,7 +774,7 @@ class TransformsApi:
     ) -> RESTResponseType:
         """Transform by ID
 
-        This API returns the transform specified by the given ID. A token with transform read authority is required to call this API.
+        This API returns the transform specified by the given ID.
 
         :param id: ID of the transform to retrieve (required)
         :type id: str
@@ -910,7 +910,7 @@ class TransformsApi:
     ) -> List[TransformRead]:
         """List transforms
 
-        Gets a list of all saved transform objects. A token with transforms-list read authority is required to call this API.
+        Gets a list of all saved transform objects.
 
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
@@ -999,7 +999,7 @@ class TransformsApi:
     ) -> ApiResponse[List[TransformRead]]:
         """List transforms
 
-        Gets a list of all saved transform objects. A token with transforms-list read authority is required to call this API.
+        Gets a list of all saved transform objects.
 
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
@@ -1088,7 +1088,7 @@ class TransformsApi:
     ) -> RESTResponseType:
         """List transforms
 
-        Gets a list of all saved transform objects. A token with transforms-list read authority is required to call this API.
+        Gets a list of all saved transform objects.
 
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
@@ -1255,7 +1255,7 @@ class TransformsApi:
     ) -> TransformRead:
         """Update a transform
 
-        Replaces the transform specified by the given ID with the transform provided in the request body. Only the \"attributes\" field is mutable. Attempting to change other properties (ex. \"name\" and \"type\") will result in an error. A token with transform write authority is required to call this API.
+        Replaces the transform specified by the given ID with the transform provided in the request body. Only the \"attributes\" field is mutable. Attempting to change other properties (ex. \"name\" and \"type\") will result in an error.
 
         :param id: ID of the transform to update (required)
         :type id: str
@@ -1332,7 +1332,7 @@ class TransformsApi:
     ) -> ApiResponse[TransformRead]:
         """Update a transform
 
-        Replaces the transform specified by the given ID with the transform provided in the request body. Only the \"attributes\" field is mutable. Attempting to change other properties (ex. \"name\" and \"type\") will result in an error. A token with transform write authority is required to call this API.
+        Replaces the transform specified by the given ID with the transform provided in the request body. Only the \"attributes\" field is mutable. Attempting to change other properties (ex. \"name\" and \"type\") will result in an error.
 
         :param id: ID of the transform to update (required)
         :type id: str
@@ -1409,7 +1409,7 @@ class TransformsApi:
     ) -> RESTResponseType:
         """Update a transform
 
-        Replaces the transform specified by the given ID with the transform provided in the request body. Only the \"attributes\" field is mutable. Attempting to change other properties (ex. \"name\" and \"type\") will result in an error. A token with transform write authority is required to call this API.
+        Replaces the transform specified by the given ID with the transform provided in the request body. Only the \"attributes\" field is mutable. Attempting to change other properties (ex. \"name\" and \"type\") will result in an error.
 
         :param id: ID of the transform to update (required)
         :type id: str

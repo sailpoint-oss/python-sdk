@@ -16,12 +16,13 @@ Method | HTTP request | Description
 
 Create a branding item
 
-This API endpoint creates a branding item. A token with API, ORG_ADMIN authority is required to call this API.
+This API endpoint creates a branding item.
 
 ### Example
 
 * OAuth Authentication (userAuth):
 * OAuth Authentication (userAuth):
+* OAuth Authentication (applicationAuth):
 
 ```python
 import sailpoint.v2024
@@ -39,6 +40,8 @@ configuration = sailpoint.v2024.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
@@ -88,7 +91,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth), [applicationAuth](../README.md#applicationAuth)
 
 ### HTTP request headers
 
@@ -113,12 +116,13 @@ Name | Type | Description  | Notes
 
 Delete a branding item
 
-This API endpoint delete information for an existing branding item by name. A token with API, ORG_ADMIN authority is required to call this API.
+This API endpoint delete information for an existing branding item by name.    
 
 ### Example
 
 * OAuth Authentication (userAuth):
 * OAuth Authentication (userAuth):
+* OAuth Authentication (applicationAuth):
 
 ```python
 import sailpoint.v2024
@@ -135,6 +139,8 @@ configuration = sailpoint.v2024.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
@@ -168,7 +174,7 @@ void (empty response body)
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth), [applicationAuth](../README.md#applicationAuth)
 
 ### HTTP request headers
 
@@ -194,12 +200,13 @@ void (empty response body)
 
 Get a branding item
 
-This API endpoint retrieves information for an existing branding item by name. A token with API, ORG_ADMIN authority is required to call this API.
+This API endpoint retrieves information for an existing branding item by name.    
 
 ### Example
 
 * OAuth Authentication (userAuth):
 * OAuth Authentication (userAuth):
+* OAuth Authentication (applicationAuth):
 
 ```python
 import sailpoint.v2024
@@ -217,6 +224,8 @@ configuration = sailpoint.v2024.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
@@ -252,7 +261,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth), [applicationAuth](../README.md#applicationAuth)
 
 ### HTTP request headers
 
@@ -278,12 +287,13 @@ Name | Type | Description  | Notes
 
 List of branding items
 
-This API endpoint returns a list of branding items.  A token with API, ORG_ADMIN authority is required to call this API.
+This API endpoint returns a list of branding items.
 
 ### Example
 
 * OAuth Authentication (userAuth):
 * OAuth Authentication (userAuth):
+* OAuth Authentication (applicationAuth):
 
 ```python
 import sailpoint.v2024
@@ -301,6 +311,8 @@ configuration = sailpoint.v2024.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
@@ -332,7 +344,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth), [applicationAuth](../README.md#applicationAuth)
 
 ### HTTP request headers
 
@@ -357,12 +369,13 @@ This endpoint does not need any parameter.
 
 Update a branding item
 
-This API endpoint updates information for an existing branding item. A token with API, ORG_ADMIN authority is required to call this API.
+This API endpoint updates information for an existing branding item.
 
 ### Example
 
 * OAuth Authentication (userAuth):
 * OAuth Authentication (userAuth):
+* OAuth Authentication (applicationAuth):
 
 ```python
 import sailpoint.v2024
@@ -380,6 +393,8 @@ configuration = sailpoint.v2024.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
@@ -431,7 +446,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth), [applicationAuth](../README.md#applicationAuth)
 
 ### HTTP request headers
 

@@ -59,7 +59,7 @@ class CustomPasswordInstructionsApi:
     ) -> CustomPasswordInstruction:
         """Create Custom Password Instructions
 
-        This API creates the custom password instructions for the specified page ID. A token with ORG_ADMIN authority is required to call this API.
+        This API creates the custom password instructions for the specified page ID.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -133,7 +133,7 @@ class CustomPasswordInstructionsApi:
     ) -> ApiResponse[CustomPasswordInstruction]:
         """Create Custom Password Instructions
 
-        This API creates the custom password instructions for the specified page ID. A token with ORG_ADMIN authority is required to call this API.
+        This API creates the custom password instructions for the specified page ID.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -207,7 +207,7 @@ class CustomPasswordInstructionsApi:
     ) -> RESTResponseType:
         """Create Custom Password Instructions
 
-        This API creates the custom password instructions for the specified page ID. A token with ORG_ADMIN authority is required to call this API.
+        This API creates the custom password instructions for the specified page ID.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -357,7 +357,7 @@ class CustomPasswordInstructionsApi:
     ) -> None:
         """Delete Custom Password Instructions by page ID
 
-        This API delete the custom password instructions for the specified page ID. A token with ORG_ADMIN authority is required to call this API.
+        This API delete the custom password instructions for the specified page ID.
 
         :param page_id: The page ID of custom password instructions to delete. (required)
         :type page_id: str
@@ -436,7 +436,7 @@ class CustomPasswordInstructionsApi:
     ) -> ApiResponse[None]:
         """Delete Custom Password Instructions by page ID
 
-        This API delete the custom password instructions for the specified page ID. A token with ORG_ADMIN authority is required to call this API.
+        This API delete the custom password instructions for the specified page ID.
 
         :param page_id: The page ID of custom password instructions to delete. (required)
         :type page_id: str
@@ -515,7 +515,7 @@ class CustomPasswordInstructionsApi:
     ) -> RESTResponseType:
         """Delete Custom Password Instructions by page ID
 
-        This API delete the custom password instructions for the specified page ID. A token with ORG_ADMIN authority is required to call this API.
+        This API delete the custom password instructions for the specified page ID.
 
         :param page_id: The page ID of custom password instructions to delete. (required)
         :type page_id: str
@@ -661,7 +661,7 @@ class CustomPasswordInstructionsApi:
     ) -> CustomPasswordInstruction:
         """Get Custom Password Instructions by Page ID
 
-        This API returns the custom password instructions for the specified page ID. A token with ORG_ADMIN authority is required to call this API.
+        This API returns the custom password instructions for the specified page ID.
 
         :param page_id: The page ID of custom password instructions to query. (required)
         :type page_id: str
@@ -740,7 +740,7 @@ class CustomPasswordInstructionsApi:
     ) -> ApiResponse[CustomPasswordInstruction]:
         """Get Custom Password Instructions by Page ID
 
-        This API returns the custom password instructions for the specified page ID. A token with ORG_ADMIN authority is required to call this API.
+        This API returns the custom password instructions for the specified page ID.
 
         :param page_id: The page ID of custom password instructions to query. (required)
         :type page_id: str
@@ -819,7 +819,7 @@ class CustomPasswordInstructionsApi:
     ) -> RESTResponseType:
         """Get Custom Password Instructions by Page ID
 
-        This API returns the custom password instructions for the specified page ID. A token with ORG_ADMIN authority is required to call this API.
+        This API returns the custom password instructions for the specified page ID.
 
         :param page_id: The page ID of custom password instructions to query. (required)
         :type page_id: str

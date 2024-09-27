@@ -60,7 +60,7 @@ class SIMIntegrationsApi:
     ) -> ServiceDeskIntegrationDto1:
         """Create new SIM integration
 
-        Create a new SIM Integrations.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Create a new SIM Integrations.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -137,7 +137,7 @@ class SIMIntegrationsApi:
     ) -> ApiResponse[ServiceDeskIntegrationDto1]:
         """Create new SIM integration
 
-        Create a new SIM Integrations.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Create a new SIM Integrations.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -214,7 +214,7 @@ class SIMIntegrationsApi:
     ) -> RESTResponseType:
         """Create new SIM integration
 
-        Create a new SIM Integrations.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Create a new SIM Integrations.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -366,7 +366,7 @@ class SIMIntegrationsApi:
     ) -> None:
         """Delete a SIM integration
 
-        Get the details of a SIM integration. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Get the details of a SIM integration.
 
         :param id: The id of the integration to delete. (required)
         :type id: str
@@ -443,7 +443,7 @@ class SIMIntegrationsApi:
     ) -> ApiResponse[None]:
         """Delete a SIM integration
 
-        Get the details of a SIM integration. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Get the details of a SIM integration.
 
         :param id: The id of the integration to delete. (required)
         :type id: str
@@ -520,7 +520,7 @@ class SIMIntegrationsApi:
     ) -> RESTResponseType:
         """Delete a SIM integration
 
-        Get the details of a SIM integration. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Get the details of a SIM integration.
 
         :param id: The id of the integration to delete. (required)
         :type id: str
@@ -659,7 +659,7 @@ class SIMIntegrationsApi:
     ) -> ServiceDeskIntegrationDto1:
         """Get a SIM integration details.
 
-        Get the details of a SIM integration. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Get the details of a SIM integration.
 
         :param id: The id of the integration. (required)
         :type id: str
@@ -736,7 +736,7 @@ class SIMIntegrationsApi:
     ) -> ApiResponse[ServiceDeskIntegrationDto1]:
         """Get a SIM integration details.
 
-        Get the details of a SIM integration. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Get the details of a SIM integration.
 
         :param id: The id of the integration. (required)
         :type id: str
@@ -813,7 +813,7 @@ class SIMIntegrationsApi:
     ) -> RESTResponseType:
         """Get a SIM integration details.
 
-        Get the details of a SIM integration. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Get the details of a SIM integration.
 
         :param id: The id of the integration. (required)
         :type id: str
@@ -951,7 +951,7 @@ class SIMIntegrationsApi:
     ) -> ServiceDeskIntegrationDto1:
         """List the existing SIM integrations.
 
-        List the existing SIM integrations. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        List the existing SIM integrations.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -1024,7 +1024,7 @@ class SIMIntegrationsApi:
     ) -> ApiResponse[ServiceDeskIntegrationDto1]:
         """List the existing SIM integrations.
 
-        List the existing SIM integrations. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        List the existing SIM integrations.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -1097,7 +1097,7 @@ class SIMIntegrationsApi:
     ) -> RESTResponseType:
         """List the existing SIM integrations.
 
-        List the existing SIM integrations. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        List the existing SIM integrations.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -1231,7 +1231,7 @@ class SIMIntegrationsApi:
     ) -> ServiceDeskIntegrationDto1:
         """Patch a SIM beforeProvisioningRule attribute.
 
-        Patch a SIM beforeProvisioningRule attribute given a JsonPatch object. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Patch a SIM beforeProvisioningRule attribute given a JsonPatch object.
 
         :param id: SIM integration id (required)
         :type id: str
@@ -1312,7 +1312,7 @@ class SIMIntegrationsApi:
     ) -> ApiResponse[ServiceDeskIntegrationDto1]:
         """Patch a SIM beforeProvisioningRule attribute.
 
-        Patch a SIM beforeProvisioningRule attribute given a JsonPatch object. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Patch a SIM beforeProvisioningRule attribute given a JsonPatch object.
 
         :param id: SIM integration id (required)
         :type id: str
@@ -1393,7 +1393,7 @@ class SIMIntegrationsApi:
     ) -> RESTResponseType:
         """Patch a SIM beforeProvisioningRule attribute.
 
-        Patch a SIM beforeProvisioningRule attribute given a JsonPatch object. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Patch a SIM beforeProvisioningRule attribute given a JsonPatch object.
 
         :param id: SIM integration id (required)
         :type id: str
@@ -1552,7 +1552,7 @@ class SIMIntegrationsApi:
     ) -> ServiceDeskIntegrationDto1:
         """Patch a SIM attribute.
 
-        Patch a SIM attribute given a JsonPatch object. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Patch a SIM attribute given a JsonPatch object.
 
         :param id: SIM integration id (required)
         :type id: str
@@ -1633,7 +1633,7 @@ class SIMIntegrationsApi:
     ) -> ApiResponse[ServiceDeskIntegrationDto1]:
         """Patch a SIM attribute.
 
-        Patch a SIM attribute given a JsonPatch object. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Patch a SIM attribute given a JsonPatch object.
 
         :param id: SIM integration id (required)
         :type id: str
@@ -1714,7 +1714,7 @@ class SIMIntegrationsApi:
     ) -> RESTResponseType:
         """Patch a SIM attribute.
 
-        Patch a SIM attribute given a JsonPatch object. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Patch a SIM attribute given a JsonPatch object.
 
         :param id: SIM integration id (required)
         :type id: str
@@ -1873,7 +1873,7 @@ class SIMIntegrationsApi:
     ) -> ServiceDeskIntegrationDto1:
         """Update an existing SIM integration
 
-        Update an existing SIM integration.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Update an existing SIM integration.
 
         :param id: The id of the integration. (required)
         :type id: str
@@ -1954,7 +1954,7 @@ class SIMIntegrationsApi:
     ) -> ApiResponse[ServiceDeskIntegrationDto1]:
         """Update an existing SIM integration
 
-        Update an existing SIM integration.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Update an existing SIM integration.
 
         :param id: The id of the integration. (required)
         :type id: str
@@ -2035,7 +2035,7 @@ class SIMIntegrationsApi:
     ) -> RESTResponseType:
         """Update an existing SIM integration
 
-        Update an existing SIM integration.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Update an existing SIM integration.
 
         :param id: The id of the integration. (required)
         :type id: str

@@ -65,7 +65,7 @@ class BrandingApi:
     ) -> BrandingItem:
         """Create a branding item
 
-        This API endpoint creates a branding item. A token with API, ORG_ADMIN authority is required to call this API.
+        This API endpoint creates a branding item.
 
         :param name: name of branding item (required)
         :type name: str
@@ -165,7 +165,7 @@ class BrandingApi:
     ) -> ApiResponse[BrandingItem]:
         """Create a branding item
 
-        This API endpoint creates a branding item. A token with API, ORG_ADMIN authority is required to call this API.
+        This API endpoint creates a branding item.
 
         :param name: name of branding item (required)
         :type name: str
@@ -265,7 +265,7 @@ class BrandingApi:
     ) -> RESTResponseType:
         """Create a branding item
 
-        This API endpoint creates a branding item. A token with API, ORG_ADMIN authority is required to call this API.
+        This API endpoint creates a branding item.
 
         :param name: name of branding item (required)
         :type name: str
@@ -411,7 +411,8 @@ class BrandingApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -451,7 +452,7 @@ class BrandingApi:
     ) -> None:
         """Delete a branding item
 
-        This API endpoint delete information for an existing branding item by name. A token with API, ORG_ADMIN authority is required to call this API.
+        This API endpoint delete information for an existing branding item by name.    
 
         :param name: The name of the branding item to be deleted (required)
         :type name: str
@@ -524,7 +525,7 @@ class BrandingApi:
     ) -> ApiResponse[None]:
         """Delete a branding item
 
-        This API endpoint delete information for an existing branding item by name. A token with API, ORG_ADMIN authority is required to call this API.
+        This API endpoint delete information for an existing branding item by name.    
 
         :param name: The name of the branding item to be deleted (required)
         :type name: str
@@ -597,7 +598,7 @@ class BrandingApi:
     ) -> RESTResponseType:
         """Delete a branding item
 
-        This API endpoint delete information for an existing branding item by name. A token with API, ORG_ADMIN authority is required to call this API.
+        This API endpoint delete information for an existing branding item by name.    
 
         :param name: The name of the branding item to be deleted (required)
         :type name: str
@@ -689,7 +690,8 @@ class BrandingApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -729,7 +731,7 @@ class BrandingApi:
     ) -> BrandingItem:
         """Get a branding item
 
-        This API endpoint retrieves information for an existing branding item by name. A token with API, ORG_ADMIN authority is required to call this API.
+        This API endpoint retrieves information for an existing branding item by name.    
 
         :param name: The name of the branding item to be retrieved (required)
         :type name: str
@@ -802,7 +804,7 @@ class BrandingApi:
     ) -> ApiResponse[BrandingItem]:
         """Get a branding item
 
-        This API endpoint retrieves information for an existing branding item by name. A token with API, ORG_ADMIN authority is required to call this API.
+        This API endpoint retrieves information for an existing branding item by name.    
 
         :param name: The name of the branding item to be retrieved (required)
         :type name: str
@@ -875,7 +877,7 @@ class BrandingApi:
     ) -> RESTResponseType:
         """Get a branding item
 
-        This API endpoint retrieves information for an existing branding item by name. A token with API, ORG_ADMIN authority is required to call this API.
+        This API endpoint retrieves information for an existing branding item by name.    
 
         :param name: The name of the branding item to be retrieved (required)
         :type name: str
@@ -967,7 +969,8 @@ class BrandingApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -1006,7 +1009,7 @@ class BrandingApi:
     ) -> List[BrandingItem]:
         """List of branding items
 
-        This API endpoint returns a list of branding items.  A token with API, ORG_ADMIN authority is required to call this API.
+        This API endpoint returns a list of branding items.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1074,7 +1077,7 @@ class BrandingApi:
     ) -> ApiResponse[List[BrandingItem]]:
         """List of branding items
 
-        This API endpoint returns a list of branding items.  A token with API, ORG_ADMIN authority is required to call this API.
+        This API endpoint returns a list of branding items.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1142,7 +1145,7 @@ class BrandingApi:
     ) -> RESTResponseType:
         """List of branding items
 
-        This API endpoint returns a list of branding items.  A token with API, ORG_ADMIN authority is required to call this API.
+        This API endpoint returns a list of branding items.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1227,7 +1230,8 @@ class BrandingApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -1275,7 +1279,7 @@ class BrandingApi:
     ) -> BrandingItem:
         """Update a branding item
 
-        This API endpoint updates information for an existing branding item. A token with API, ORG_ADMIN authority is required to call this API.
+        This API endpoint updates information for an existing branding item.
 
         :param name: The name of the branding item to be retrieved (required)
         :type name: str
@@ -1380,7 +1384,7 @@ class BrandingApi:
     ) -> ApiResponse[BrandingItem]:
         """Update a branding item
 
-        This API endpoint updates information for an existing branding item. A token with API, ORG_ADMIN authority is required to call this API.
+        This API endpoint updates information for an existing branding item.
 
         :param name: The name of the branding item to be retrieved (required)
         :type name: str
@@ -1485,7 +1489,7 @@ class BrandingApi:
     ) -> RESTResponseType:
         """Update a branding item
 
-        This API endpoint updates information for an existing branding item. A token with API, ORG_ADMIN authority is required to call this API.
+        This API endpoint updates information for an existing branding item.
 
         :param name: The name of the branding item to be retrieved (required)
         :type name: str
@@ -1638,7 +1642,8 @@ class BrandingApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(

@@ -62,7 +62,7 @@ class ServiceDeskIntegrationApi:
     ) -> ServiceDeskIntegrationDto:
         """Create new Service Desk integration
 
-        Create a new Service Desk Integrations.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Create a new Service Desk Integrations.
 
         :param service_desk_integration_dto: The specifics of a new integration to create (required)
         :type service_desk_integration_dto: ServiceDeskIntegrationDto
@@ -135,7 +135,7 @@ class ServiceDeskIntegrationApi:
     ) -> ApiResponse[ServiceDeskIntegrationDto]:
         """Create new Service Desk integration
 
-        Create a new Service Desk Integrations.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Create a new Service Desk Integrations.
 
         :param service_desk_integration_dto: The specifics of a new integration to create (required)
         :type service_desk_integration_dto: ServiceDeskIntegrationDto
@@ -208,7 +208,7 @@ class ServiceDeskIntegrationApi:
     ) -> RESTResponseType:
         """Create new Service Desk integration
 
-        Create a new Service Desk Integrations.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Create a new Service Desk Integrations.
 
         :param service_desk_integration_dto: The specifics of a new integration to create (required)
         :type service_desk_integration_dto: ServiceDeskIntegrationDto
@@ -353,7 +353,7 @@ class ServiceDeskIntegrationApi:
     ) -> None:
         """Delete a Service Desk integration
 
-        Delete an existing Service Desk integration by ID.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Delete an existing Service Desk integration by ID.
 
         :param id: ID of Service Desk integration to delete (required)
         :type id: str
@@ -426,7 +426,7 @@ class ServiceDeskIntegrationApi:
     ) -> ApiResponse[None]:
         """Delete a Service Desk integration
 
-        Delete an existing Service Desk integration by ID.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Delete an existing Service Desk integration by ID.
 
         :param id: ID of Service Desk integration to delete (required)
         :type id: str
@@ -499,7 +499,7 @@ class ServiceDeskIntegrationApi:
     ) -> RESTResponseType:
         """Delete a Service Desk integration
 
-        Delete an existing Service Desk integration by ID.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Delete an existing Service Desk integration by ID.
 
         :param id: ID of Service Desk integration to delete (required)
         :type id: str
@@ -631,7 +631,7 @@ class ServiceDeskIntegrationApi:
     ) -> ServiceDeskIntegrationDto:
         """Get a Service Desk integration
 
-        Get an existing Service Desk integration by ID.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Get an existing Service Desk integration by ID.
 
         :param id: ID of the Service Desk integration to get (required)
         :type id: str
@@ -704,7 +704,7 @@ class ServiceDeskIntegrationApi:
     ) -> ApiResponse[ServiceDeskIntegrationDto]:
         """Get a Service Desk integration
 
-        Get an existing Service Desk integration by ID.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Get an existing Service Desk integration by ID.
 
         :param id: ID of the Service Desk integration to get (required)
         :type id: str
@@ -777,7 +777,7 @@ class ServiceDeskIntegrationApi:
     ) -> RESTResponseType:
         """Get a Service Desk integration
 
-        Get an existing Service Desk integration by ID.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Get an existing Service Desk integration by ID.
 
         :param id: ID of the Service Desk integration to get (required)
         :type id: str
@@ -909,7 +909,7 @@ class ServiceDeskIntegrationApi:
     ) -> ServiceDeskIntegrationTemplateDto:
         """Service Desk integration template by scriptName.
 
-        This API endpoint returns an existing Service Desk integration template by scriptName.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        This API endpoint returns an existing Service Desk integration template by scriptName.
 
         :param script_name: The scriptName value of the Service Desk integration template to get (required)
         :type script_name: str
@@ -982,7 +982,7 @@ class ServiceDeskIntegrationApi:
     ) -> ApiResponse[ServiceDeskIntegrationTemplateDto]:
         """Service Desk integration template by scriptName.
 
-        This API endpoint returns an existing Service Desk integration template by scriptName.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        This API endpoint returns an existing Service Desk integration template by scriptName.
 
         :param script_name: The scriptName value of the Service Desk integration template to get (required)
         :type script_name: str
@@ -1055,7 +1055,7 @@ class ServiceDeskIntegrationApi:
     ) -> RESTResponseType:
         """Service Desk integration template by scriptName.
 
-        This API endpoint returns an existing Service Desk integration template by scriptName.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        This API endpoint returns an existing Service Desk integration template by scriptName.
 
         :param script_name: The scriptName value of the Service Desk integration template to get (required)
         :type script_name: str
@@ -1186,7 +1186,7 @@ class ServiceDeskIntegrationApi:
     ) -> List[ServiceDeskIntegrationTemplateType]:
         """Service Desk Integration Types List.
 
-        This API endpoint returns the current list of supported Service Desk integration types.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        This API endpoint returns the current list of supported Service Desk integration types.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1255,7 +1255,7 @@ class ServiceDeskIntegrationApi:
     ) -> ApiResponse[List[ServiceDeskIntegrationTemplateType]]:
         """Service Desk Integration Types List.
 
-        This API endpoint returns the current list of supported Service Desk integration types.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        This API endpoint returns the current list of supported Service Desk integration types.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1324,7 +1324,7 @@ class ServiceDeskIntegrationApi:
     ) -> RESTResponseType:
         """Service Desk Integration Types List.
 
-        This API endpoint returns the current list of supported Service Desk integration types.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        This API endpoint returns the current list of supported Service Desk integration types.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1454,7 +1454,7 @@ class ServiceDeskIntegrationApi:
     ) -> List[ServiceDeskIntegrationDto]:
         """List existing Service Desk Integrations
 
-        Get a list of ServiceDeskIntegrationDto for existing Service Desk Integrations.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Get a list of ServiceDeskIntegrationDto for existing Service Desk Integrations.
 
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
@@ -1543,7 +1543,7 @@ class ServiceDeskIntegrationApi:
     ) -> ApiResponse[List[ServiceDeskIntegrationDto]]:
         """List existing Service Desk Integrations
 
-        Get a list of ServiceDeskIntegrationDto for existing Service Desk Integrations.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Get a list of ServiceDeskIntegrationDto for existing Service Desk Integrations.
 
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
@@ -1632,7 +1632,7 @@ class ServiceDeskIntegrationApi:
     ) -> RESTResponseType:
         """List existing Service Desk Integrations
 
-        Get a list of ServiceDeskIntegrationDto for existing Service Desk Integrations.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Get a list of ServiceDeskIntegrationDto for existing Service Desk Integrations.
 
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
@@ -1797,7 +1797,7 @@ class ServiceDeskIntegrationApi:
     ) -> QueuedCheckConfigDetails:
         """Get the time check configuration
 
-        Get the time check configuration of queued SDIM tickets.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Get the time check configuration of queued SDIM tickets.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1866,7 +1866,7 @@ class ServiceDeskIntegrationApi:
     ) -> ApiResponse[QueuedCheckConfigDetails]:
         """Get the time check configuration
 
-        Get the time check configuration of queued SDIM tickets.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Get the time check configuration of queued SDIM tickets.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1935,7 +1935,7 @@ class ServiceDeskIntegrationApi:
     ) -> RESTResponseType:
         """Get the time check configuration
 
-        Get the time check configuration of queued SDIM tickets.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Get the time check configuration of queued SDIM tickets.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2368,7 +2368,7 @@ class ServiceDeskIntegrationApi:
     ) -> ServiceDeskIntegrationDto:
         """Update a Service Desk integration
 
-        Update an existing Service Desk integration by ID with updated value in JSON form as the request body.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Update an existing Service Desk integration by ID with updated value in JSON form as the request body.
 
         :param id: ID of the Service Desk integration to update (required)
         :type id: str
@@ -2445,7 +2445,7 @@ class ServiceDeskIntegrationApi:
     ) -> ApiResponse[ServiceDeskIntegrationDto]:
         """Update a Service Desk integration
 
-        Update an existing Service Desk integration by ID with updated value in JSON form as the request body.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Update an existing Service Desk integration by ID with updated value in JSON form as the request body.
 
         :param id: ID of the Service Desk integration to update (required)
         :type id: str
@@ -2522,7 +2522,7 @@ class ServiceDeskIntegrationApi:
     ) -> RESTResponseType:
         """Update a Service Desk integration
 
-        Update an existing Service Desk integration by ID with updated value in JSON form as the request body.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Update an existing Service Desk integration by ID with updated value in JSON form as the request body.
 
         :param id: ID of the Service Desk integration to update (required)
         :type id: str
@@ -2673,7 +2673,7 @@ class ServiceDeskIntegrationApi:
     ) -> QueuedCheckConfigDetails:
         """Update the time check configuration
 
-        Update the time check configuration of queued SDIM tickets.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Update the time check configuration of queued SDIM tickets.
 
         :param queued_check_config_details: the modified time check configuration (required)
         :type queued_check_config_details: QueuedCheckConfigDetails
@@ -2746,7 +2746,7 @@ class ServiceDeskIntegrationApi:
     ) -> ApiResponse[QueuedCheckConfigDetails]:
         """Update the time check configuration
 
-        Update the time check configuration of queued SDIM tickets.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Update the time check configuration of queued SDIM tickets.
 
         :param queued_check_config_details: the modified time check configuration (required)
         :type queued_check_config_details: QueuedCheckConfigDetails
@@ -2819,7 +2819,7 @@ class ServiceDeskIntegrationApi:
     ) -> RESTResponseType:
         """Update the time check configuration
 
-        Update the time check configuration of queued SDIM tickets.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+        Update the time check configuration of queued SDIM tickets.
 
         :param queued_check_config_details: the modified time check configuration (required)
         :type queued_check_config_details: QueuedCheckConfigDetails

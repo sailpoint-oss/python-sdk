@@ -62,7 +62,7 @@ class ConnectorsApi:
     ) -> V3ConnectorDto:
         """Create custom connector
 
-        Create custom connector. A token with ORG_ADMIN authority is required to call this API.
+        Create custom connector.    
 
         :param v3_create_connector_dto: (required)
         :type v3_create_connector_dto: V3CreateConnectorDto
@@ -135,7 +135,7 @@ class ConnectorsApi:
     ) -> ApiResponse[V3ConnectorDto]:
         """Create custom connector
 
-        Create custom connector. A token with ORG_ADMIN authority is required to call this API.
+        Create custom connector.    
 
         :param v3_create_connector_dto: (required)
         :type v3_create_connector_dto: V3CreateConnectorDto
@@ -208,7 +208,7 @@ class ConnectorsApi:
     ) -> RESTResponseType:
         """Create custom connector
 
-        Create custom connector. A token with ORG_ADMIN authority is required to call this API.
+        Create custom connector.    
 
         :param v3_create_connector_dto: (required)
         :type v3_create_connector_dto: V3CreateConnectorDto
@@ -353,7 +353,7 @@ class ConnectorsApi:
     ) -> None:
         """Deletes connector by script name
 
-        Delete a custom connector that using its script name. A token with ORG_ADMIN authority is required to call this API.
+        Delete a custom connector that using its script name.
 
         :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
         :type script_name: str
@@ -426,7 +426,7 @@ class ConnectorsApi:
     ) -> ApiResponse[None]:
         """Deletes connector by script name
 
-        Delete a custom connector that using its script name. A token with ORG_ADMIN authority is required to call this API.
+        Delete a custom connector that using its script name.
 
         :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
         :type script_name: str
@@ -499,7 +499,7 @@ class ConnectorsApi:
     ) -> RESTResponseType:
         """Deletes connector by script name
 
-        Delete a custom connector that using its script name. A token with ORG_ADMIN authority is required to call this API.
+        Delete a custom connector that using its script name.
 
         :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
         :type script_name: str
@@ -632,7 +632,7 @@ class ConnectorsApi:
     ) -> ConnectorDetail:
         """Gets connector by script name
 
-        Fetches a connector that using its script name. A token with ORG_ADMIN authority is required to call this API.
+        Fetches a connector that using its script name.    
 
         :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
         :type script_name: str
@@ -709,7 +709,7 @@ class ConnectorsApi:
     ) -> ApiResponse[ConnectorDetail]:
         """Gets connector by script name
 
-        Fetches a connector that using its script name. A token with ORG_ADMIN authority is required to call this API.
+        Fetches a connector that using its script name.    
 
         :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
         :type script_name: str
@@ -786,7 +786,7 @@ class ConnectorsApi:
     ) -> RESTResponseType:
         """Gets connector by script name
 
-        Fetches a connector that using its script name. A token with ORG_ADMIN authority is required to call this API.
+        Fetches a connector that using its script name.    
 
         :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
         :type script_name: str
@@ -926,7 +926,7 @@ class ConnectorsApi:
     ) -> str:
         """get_connector_correlation_config
 
-        Fetches a connector's correlation config using its script name. A token with ORG_ADMIN authority is required to call this API.
+        Fetches a connector's correlation config using its script name.    
 
         :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
         :type script_name: str
@@ -999,7 +999,7 @@ class ConnectorsApi:
     ) -> ApiResponse[str]:
         """get_connector_correlation_config
 
-        Fetches a connector's correlation config using its script name. A token with ORG_ADMIN authority is required to call this API.
+        Fetches a connector's correlation config using its script name.    
 
         :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
         :type script_name: str
@@ -1072,7 +1072,7 @@ class ConnectorsApi:
     ) -> RESTResponseType:
         """get_connector_correlation_config
 
-        Fetches a connector's correlation config using its script name. A token with ORG_ADMIN authority is required to call this API.
+        Fetches a connector's correlation config using its script name.    
 
         :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
         :type script_name: str
@@ -1209,7 +1209,7 @@ class ConnectorsApi:
     ) -> List[V3ConnectorDto]:
         """Gets connector list
 
-        Fetches list of connectors that have 'RELEASED' status using filtering and pagination. A token with ORG_ADMIN authority is required to call this API.
+        Fetches list of connectors that have 'RELEASED' status using filtering and pagination.
 
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw, co*  **type**: *sw, co, eq*  **directConnect**: *eq*  **category**: *eq*  **features**: *ca*  **labels**: *ca*
         :type filters: str
@@ -1298,7 +1298,7 @@ class ConnectorsApi:
     ) -> ApiResponse[List[V3ConnectorDto]]:
         """Gets connector list
 
-        Fetches list of connectors that have 'RELEASED' status using filtering and pagination. A token with ORG_ADMIN authority is required to call this API.
+        Fetches list of connectors that have 'RELEASED' status using filtering and pagination.
 
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw, co*  **type**: *sw, co, eq*  **directConnect**: *eq*  **category**: *eq*  **features**: *ca*  **labels**: *ca*
         :type filters: str
@@ -1387,7 +1387,7 @@ class ConnectorsApi:
     ) -> RESTResponseType:
         """Gets connector list
 
-        Fetches list of connectors that have 'RELEASED' status using filtering and pagination. A token with ORG_ADMIN authority is required to call this API.
+        Fetches list of connectors that have 'RELEASED' status using filtering and pagination.
 
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw, co*  **type**: *sw, co, eq*  **directConnect**: *eq*  **category**: *eq*  **features**: *ca*  **labels**: *ca*
         :type filters: str
@@ -1553,7 +1553,7 @@ class ConnectorsApi:
     ) -> str:
         """get_connector_source_config
 
-        Fetches a connector's source config using its script name. A token with ORG_ADMIN authority is required to call this API.
+        Fetches a connector's source config using its script name.    
 
         :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
         :type script_name: str
@@ -1626,7 +1626,7 @@ class ConnectorsApi:
     ) -> ApiResponse[str]:
         """get_connector_source_config
 
-        Fetches a connector's source config using its script name. A token with ORG_ADMIN authority is required to call this API.
+        Fetches a connector's source config using its script name.    
 
         :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
         :type script_name: str
@@ -1699,7 +1699,7 @@ class ConnectorsApi:
     ) -> RESTResponseType:
         """get_connector_source_config
 
-        Fetches a connector's source config using its script name. A token with ORG_ADMIN authority is required to call this API.
+        Fetches a connector's source config using its script name.    
 
         :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
         :type script_name: str
@@ -1832,7 +1832,7 @@ class ConnectorsApi:
     ) -> str:
         """get_connector_source_template
 
-        Fetches a connector's source template using its script name. A token with ORG_ADMIN authority is required to call this API.
+        Fetches a connector's source template using its script name.    
 
         :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
         :type script_name: str
@@ -1905,7 +1905,7 @@ class ConnectorsApi:
     ) -> ApiResponse[str]:
         """get_connector_source_template
 
-        Fetches a connector's source template using its script name. A token with ORG_ADMIN authority is required to call this API.
+        Fetches a connector's source template using its script name.    
 
         :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
         :type script_name: str
@@ -1978,7 +1978,7 @@ class ConnectorsApi:
     ) -> RESTResponseType:
         """get_connector_source_template
 
-        Fetches a connector's source template using its script name. A token with ORG_ADMIN authority is required to call this API.
+        Fetches a connector's source template using its script name.    
 
         :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
         :type script_name: str
@@ -2112,7 +2112,7 @@ class ConnectorsApi:
     ) -> str:
         """get_connector_translations
 
-        Fetches a connector's translations using its script name. A token with ORG_ADMIN authority is required to call this API.
+        Fetches a connector's translations using its script name.    
 
         :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
         :type script_name: str
@@ -2189,7 +2189,7 @@ class ConnectorsApi:
     ) -> ApiResponse[str]:
         """get_connector_translations
 
-        Fetches a connector's translations using its script name. A token with ORG_ADMIN authority is required to call this API.
+        Fetches a connector's translations using its script name.    
 
         :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
         :type script_name: str
@@ -2266,7 +2266,7 @@ class ConnectorsApi:
     ) -> RESTResponseType:
         """get_connector_translations
 
-        Fetches a connector's translations using its script name. A token with ORG_ADMIN authority is required to call this API.
+        Fetches a connector's translations using its script name.    
 
         :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
         :type script_name: str
@@ -2406,7 +2406,7 @@ class ConnectorsApi:
     ) -> UpdateDetail:
         """put_correlation_config
 
-        Update a connector's correlation config using its script name. A token with ORG_ADMIN authority is required to call this API.
+        Update a connector's correlation config using its script name.    
 
         :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
         :type script_name: str
@@ -2483,7 +2483,7 @@ class ConnectorsApi:
     ) -> ApiResponse[UpdateDetail]:
         """put_correlation_config
 
-        Update a connector's correlation config using its script name. A token with ORG_ADMIN authority is required to call this API.
+        Update a connector's correlation config using its script name.    
 
         :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
         :type script_name: str
@@ -2560,7 +2560,7 @@ class ConnectorsApi:
     ) -> RESTResponseType:
         """put_correlation_config
 
-        Update a connector's correlation config using its script name. A token with ORG_ADMIN authority is required to call this API.
+        Update a connector's correlation config using its script name.    
 
         :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
         :type script_name: str
@@ -2712,7 +2712,7 @@ class ConnectorsApi:
     ) -> UpdateDetail:
         """put_source_config
 
-        Update a connector's source config using its script name. A token with ORG_ADMIN authority is required to call this API.
+        Update a connector's source config using its script name.    
 
         :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
         :type script_name: str
@@ -2789,7 +2789,7 @@ class ConnectorsApi:
     ) -> ApiResponse[UpdateDetail]:
         """put_source_config
 
-        Update a connector's source config using its script name. A token with ORG_ADMIN authority is required to call this API.
+        Update a connector's source config using its script name.    
 
         :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
         :type script_name: str
@@ -2866,7 +2866,7 @@ class ConnectorsApi:
     ) -> RESTResponseType:
         """put_source_config
 
-        Update a connector's source config using its script name. A token with ORG_ADMIN authority is required to call this API.
+        Update a connector's source config using its script name.    
 
         :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
         :type script_name: str
@@ -3018,7 +3018,7 @@ class ConnectorsApi:
     ) -> UpdateDetail:
         """put_source_template
 
-        Update a connector's source template using its script name. A token with ORG_ADMIN authority is required to call this API.
+        Update a connector's source template using its script name.    
 
         :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
         :type script_name: str
@@ -3095,7 +3095,7 @@ class ConnectorsApi:
     ) -> ApiResponse[UpdateDetail]:
         """put_source_template
 
-        Update a connector's source template using its script name. A token with ORG_ADMIN authority is required to call this API.
+        Update a connector's source template using its script name.    
 
         :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
         :type script_name: str
@@ -3172,7 +3172,7 @@ class ConnectorsApi:
     ) -> RESTResponseType:
         """put_source_template
 
-        Update a connector's source template using its script name. A token with ORG_ADMIN authority is required to call this API.
+        Update a connector's source template using its script name.    
 
         :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
         :type script_name: str
@@ -3324,7 +3324,7 @@ class ConnectorsApi:
     ) -> UpdateDetail:
         """put_translations
 
-        Update a connector's translations using its script name. A token with ORG_ADMIN authority is required to call this API.
+        Update a connector's translations using its script name.    
 
         :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
         :type script_name: str
@@ -3401,7 +3401,7 @@ class ConnectorsApi:
     ) -> ApiResponse[UpdateDetail]:
         """put_translations
 
-        Update a connector's translations using its script name. A token with ORG_ADMIN authority is required to call this API.
+        Update a connector's translations using its script name.    
 
         :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
         :type script_name: str
@@ -3478,7 +3478,7 @@ class ConnectorsApi:
     ) -> RESTResponseType:
         """put_translations
 
-        Update a connector's translations using its script name. A token with ORG_ADMIN authority is required to call this API.
+        Update a connector's translations using its script name.    
 
         :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
         :type script_name: str
@@ -3630,7 +3630,7 @@ class ConnectorsApi:
     ) -> ConnectorDetail:
         """Update connector by script name
 
-        Patch a custom connector that using its script name. A token with ORG_ADMIN authority is required to call this API. The following fields are patchable: * connectorMetadata * applicationXml * correlationConfigXml * sourceConfigXml
+        Patch a custom connector that using its script name. The following fields are patchable: * connectorMetadata * applicationXml * correlationConfigXml * sourceConfigXml
 
         :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
         :type script_name: str
@@ -3707,7 +3707,7 @@ class ConnectorsApi:
     ) -> ApiResponse[ConnectorDetail]:
         """Update connector by script name
 
-        Patch a custom connector that using its script name. A token with ORG_ADMIN authority is required to call this API. The following fields are patchable: * connectorMetadata * applicationXml * correlationConfigXml * sourceConfigXml
+        Patch a custom connector that using its script name. The following fields are patchable: * connectorMetadata * applicationXml * correlationConfigXml * sourceConfigXml
 
         :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
         :type script_name: str
@@ -3784,7 +3784,7 @@ class ConnectorsApi:
     ) -> RESTResponseType:
         """Update connector by script name
 
-        Patch a custom connector that using its script name. A token with ORG_ADMIN authority is required to call this API. The following fields are patchable: * connectorMetadata * applicationXml * correlationConfigXml * sourceConfigXml
+        Patch a custom connector that using its script name. The following fields are patchable: * connectorMetadata * applicationXml * correlationConfigXml * sourceConfigXml
 
         :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
         :type script_name: str

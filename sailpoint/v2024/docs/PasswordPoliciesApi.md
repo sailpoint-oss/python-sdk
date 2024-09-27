@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 Create Password Policy
 
-This API creates the specified password policy. A token with ORG_ADMIN authority is required to call this API.
+This API creates the specified password policy.
 
 ### Example
 
@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 
 Delete Password Policy by ID
 
-This API deletes the specified password policy. A token with ORG_ADMIN authority is required to call this API.
+This API deletes the specified password policy.
 
 ### Example
 
@@ -181,7 +181,7 @@ void (empty response body)
 
 Get Password Policy by ID
 
-This API returns the password policy for the specified ID. A token with ORG_ADMIN authority is required to call this API.
+This API returns the password policy for the specified ID.
 
 ### Example
 
@@ -352,7 +352,7 @@ Name | Type | Description  | Notes
 
 Update Password Policy by ID
 
-This API updates the specified password policy. A token with ORG_ADMIN authority is required to call this API.
+This API updates the specified password policy.
 
 ### Example
 

@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 Create Password Sync Group
 
-This API creates a password sync group based on the specifications provided. A token with ORG_ADMIN authority is required to call this API.
+This API creates a password sync group based on the specifications provided.
 
 ### Example
 
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 
 Delete Password Sync Group by ID
 
-This API deletes the specified password sync group. A token with ORG_ADMIN authority is required to call this API.
+This API deletes the specified password sync group.
 
 ### Example
 
@@ -179,7 +179,7 @@ void (empty response body)
 
 Get Password Sync Group by ID
 
-This API returns the sync group for the specified ID. A token with ORG_ADMIN authority is required to call this API.
+This API returns the sync group for the specified ID.
 
 ### Example
 
@@ -263,7 +263,7 @@ Name | Type | Description  | Notes
 
 Get Password Sync Group List
 
-This API returns a list of password sync groups. A token with ORG_ADMIN authority is required to call this API.
+This API returns a list of password sync groups.
 
 ### Example
 
@@ -350,7 +350,7 @@ Name | Type | Description  | Notes
 
 Update Password Sync Group by ID
 
-This API updates the specified password sync group. A token with ORG_ADMIN authority is required to call this API.
+This API updates the specified password sync group.
 
 ### Example
 

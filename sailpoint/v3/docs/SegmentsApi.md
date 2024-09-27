@@ -16,12 +16,13 @@ Method | HTTP request | Description
 
 Create Segment
 
-This API creates a segment.  >**Note:** Segment definitions may take time to propagate to all identities. A token with ORG_ADMIN or API authority is required to call this API.
+This API creates a segment.  >**Note:** Segment definitions may take time to propagate to all identities.
 
 ### Example
 
 * OAuth Authentication (userAuth):
 * OAuth Authentication (userAuth):
+* OAuth Authentication (applicationAuth):
 
 ```python
 import sailpoint.v3
@@ -39,6 +40,8 @@ configuration = sailpoint.v3.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
@@ -74,7 +77,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth), [applicationAuth](../README.md#applicationAuth)
 
 ### HTTP request headers
 
@@ -99,12 +102,13 @@ Name | Type | Description  | Notes
 
 Delete Segment by ID
 
-This API deletes the segment specified by the given ID. >**Note:** that segment deletion may take some time to become effective. A token with ORG_ADMIN or API authority is required to call this API.
+This API deletes the segment specified by the given ID. >**Note:** that segment deletion may take some time to become effective.    
 
 ### Example
 
 * OAuth Authentication (userAuth):
 * OAuth Authentication (userAuth):
+* OAuth Authentication (applicationAuth):
 
 ```python
 import sailpoint.v3
@@ -121,6 +125,8 @@ configuration = sailpoint.v3.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
@@ -154,7 +160,7 @@ void (empty response body)
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth), [applicationAuth](../README.md#applicationAuth)
 
 ### HTTP request headers
 
@@ -180,12 +186,13 @@ void (empty response body)
 
 Get Segment by ID
 
-This API returns the segment specified by the given ID. A token with ORG_ADMIN or API authority is required to call this API.
+This API returns the segment specified by the given ID.
 
 ### Example
 
 * OAuth Authentication (userAuth):
 * OAuth Authentication (userAuth):
+* OAuth Authentication (applicationAuth):
 
 ```python
 import sailpoint.v3
@@ -203,6 +210,8 @@ configuration = sailpoint.v3.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
@@ -238,7 +247,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth), [applicationAuth](../README.md#applicationAuth)
 
 ### HTTP request headers
 
@@ -264,12 +273,13 @@ Name | Type | Description  | Notes
 
 List Segments
 
-This API returns a list of all segments.  A token with ORG_ADMIN or API authority is required to call this API.
+This API returns a list of all segments. 
 
 ### Example
 
 * OAuth Authentication (userAuth):
 * OAuth Authentication (userAuth):
+* OAuth Authentication (applicationAuth):
 
 ```python
 import sailpoint.v3
@@ -287,6 +297,8 @@ configuration = sailpoint.v3.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
@@ -326,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth), [applicationAuth](../README.md#applicationAuth)
 
 ### HTTP request headers
 
@@ -351,12 +363,13 @@ Name | Type | Description  | Notes
 
 Update Segment
 
-Use this API to update segment fields by using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. >**Note:** Changes to a segment may take some time to propagate to all identities. A token with ORG_ADMIN or API authority is required to call this API.
+Use this API to update segment fields by using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. >**Note:** Changes to a segment may take some time to propagate to all identities.
 
 ### Example
 
 * OAuth Authentication (userAuth):
 * OAuth Authentication (userAuth):
+* OAuth Authentication (applicationAuth):
 
 ```python
 import sailpoint.v3
@@ -374,6 +387,8 @@ configuration = sailpoint.v3.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
@@ -411,7 +426,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth), [applicationAuth](../README.md#applicationAuth)
 
 ### HTTP request headers
 

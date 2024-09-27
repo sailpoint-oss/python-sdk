@@ -21,8 +21,9 @@ Name | Type | Description | Notes
 **access_request_config** | [**RequestabilityForRole**](RequestabilityForRole.md) |  | [optional] 
 **revocation_request_config** | [**RevocabilityForRole**](RevocabilityForRole.md) |  | [optional] 
 **segments** | **List[str]** | List of IDs of segments, if any, to which this Role is assigned. | [optional] 
-**dimensional** | **bool** |  | [optional] 
-**dimension_refs** | **str** |  | [optional] 
+**dimensional** | **bool** | Whether the Role is dimensional. | [optional] [default to False]
+**dimension_refs** | **str** | TBD | [optional] 
+**access_model_metadata** | [**List[AttributeDTOList]**](AttributeDTOList.md) |  | [optional] 
 
 ## Example
 

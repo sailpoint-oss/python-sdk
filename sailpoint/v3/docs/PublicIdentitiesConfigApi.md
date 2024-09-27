@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 Get the Public Identities Configuration
 
-Returns the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns. A token with ORG ADMIN authority is required to call this API.
+Returns the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns.
 
 ### Example
 
@@ -92,7 +92,7 @@ This endpoint does not need any parameter.
 
 Update the Public Identities Configuration
 
-Updates the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns. A token with ORG ADMIN authority is required to call this API.
+Updates the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns.
 
 ### Example
 

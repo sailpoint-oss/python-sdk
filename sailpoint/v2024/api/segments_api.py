@@ -58,7 +58,7 @@ class SegmentsApi:
     ) -> Segment:
         """Create Segment
 
-        This API creates a segment.  >**Note:** Segment definitions may take time to propagate to all identities. A token with ORG_ADMIN or API authority is required to call this API.
+        This API creates a segment.  >**Note:** Segment definitions may take time to propagate to all identities.
 
         :param segment: (required)
         :type segment: Segment
@@ -130,7 +130,7 @@ class SegmentsApi:
     ) -> ApiResponse[Segment]:
         """Create Segment
 
-        This API creates a segment.  >**Note:** Segment definitions may take time to propagate to all identities. A token with ORG_ADMIN or API authority is required to call this API.
+        This API creates a segment.  >**Note:** Segment definitions may take time to propagate to all identities.
 
         :param segment: (required)
         :type segment: Segment
@@ -202,7 +202,7 @@ class SegmentsApi:
     ) -> RESTResponseType:
         """Create Segment
 
-        This API creates a segment.  >**Note:** Segment definitions may take time to propagate to all identities. A token with ORG_ADMIN or API authority is required to call this API.
+        This API creates a segment.  >**Note:** Segment definitions may take time to propagate to all identities.
 
         :param segment: (required)
         :type segment: Segment
@@ -306,7 +306,8 @@ class SegmentsApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -346,7 +347,7 @@ class SegmentsApi:
     ) -> None:
         """Delete Segment by ID
 
-        This API deletes the segment specified by the given ID. >**Note:** that segment deletion may take some time to become effective. A token with ORG_ADMIN or API authority is required to call this API.
+        This API deletes the segment specified by the given ID. >**Note:** that segment deletion may take some time to become effective.    
 
         :param id: The segment ID to delete. (required)
         :type id: str
@@ -419,7 +420,7 @@ class SegmentsApi:
     ) -> ApiResponse[None]:
         """Delete Segment by ID
 
-        This API deletes the segment specified by the given ID. >**Note:** that segment deletion may take some time to become effective. A token with ORG_ADMIN or API authority is required to call this API.
+        This API deletes the segment specified by the given ID. >**Note:** that segment deletion may take some time to become effective.    
 
         :param id: The segment ID to delete. (required)
         :type id: str
@@ -492,7 +493,7 @@ class SegmentsApi:
     ) -> RESTResponseType:
         """Delete Segment by ID
 
-        This API deletes the segment specified by the given ID. >**Note:** that segment deletion may take some time to become effective. A token with ORG_ADMIN or API authority is required to call this API.
+        This API deletes the segment specified by the given ID. >**Note:** that segment deletion may take some time to become effective.    
 
         :param id: The segment ID to delete. (required)
         :type id: str
@@ -584,7 +585,8 @@ class SegmentsApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -624,7 +626,7 @@ class SegmentsApi:
     ) -> Segment:
         """Get Segment by ID
 
-        This API returns the segment specified by the given ID. A token with ORG_ADMIN or API authority is required to call this API.
+        This API returns the segment specified by the given ID.
 
         :param id: The segment ID to retrieve. (required)
         :type id: str
@@ -697,7 +699,7 @@ class SegmentsApi:
     ) -> ApiResponse[Segment]:
         """Get Segment by ID
 
-        This API returns the segment specified by the given ID. A token with ORG_ADMIN or API authority is required to call this API.
+        This API returns the segment specified by the given ID.
 
         :param id: The segment ID to retrieve. (required)
         :type id: str
@@ -770,7 +772,7 @@ class SegmentsApi:
     ) -> RESTResponseType:
         """Get Segment by ID
 
-        This API returns the segment specified by the given ID. A token with ORG_ADMIN or API authority is required to call this API.
+        This API returns the segment specified by the given ID.
 
         :param id: The segment ID to retrieve. (required)
         :type id: str
@@ -862,7 +864,8 @@ class SegmentsApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -904,7 +907,7 @@ class SegmentsApi:
     ) -> List[Segment]:
         """List Segments
 
-        This API returns a list of all segments.  A token with ORG_ADMIN or API authority is required to call this API.
+        This API returns a list of all segments. 
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -984,7 +987,7 @@ class SegmentsApi:
     ) -> ApiResponse[List[Segment]]:
         """List Segments
 
-        This API returns a list of all segments.  A token with ORG_ADMIN or API authority is required to call this API.
+        This API returns a list of all segments. 
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -1064,7 +1067,7 @@ class SegmentsApi:
     ) -> RESTResponseType:
         """List Segments
 
-        This API returns a list of all segments.  A token with ORG_ADMIN or API authority is required to call this API.
+        This API returns a list of all segments. 
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -1173,7 +1176,8 @@ class SegmentsApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -1214,7 +1218,7 @@ class SegmentsApi:
     ) -> Segment:
         """Update Segment
 
-        Use this API to update segment fields by using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. >**Note:** Changes to a segment may take some time to propagate to all identities. A token with ORG_ADMIN or API authority is required to call this API.
+        Use this API to update segment fields by using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. >**Note:** Changes to a segment may take some time to propagate to all identities.
 
         :param id: The segment ID to modify. (required)
         :type id: str
@@ -1291,7 +1295,7 @@ class SegmentsApi:
     ) -> ApiResponse[Segment]:
         """Update Segment
 
-        Use this API to update segment fields by using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. >**Note:** Changes to a segment may take some time to propagate to all identities. A token with ORG_ADMIN or API authority is required to call this API.
+        Use this API to update segment fields by using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. >**Note:** Changes to a segment may take some time to propagate to all identities.
 
         :param id: The segment ID to modify. (required)
         :type id: str
@@ -1368,7 +1372,7 @@ class SegmentsApi:
     ) -> RESTResponseType:
         """Update Segment
 
-        Use this API to update segment fields by using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. >**Note:** Changes to a segment may take some time to propagate to all identities. A token with ORG_ADMIN or API authority is required to call this API.
+        Use this API to update segment fields by using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. >**Note:** Changes to a segment may take some time to propagate to all identities.
 
         :param id: The segment ID to modify. (required)
         :type id: str
@@ -1480,7 +1484,8 @@ class SegmentsApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(

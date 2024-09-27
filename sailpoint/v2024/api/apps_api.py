@@ -1615,7 +1615,7 @@ class AppsApi:
     ) -> List[SourceApp]:
         """List all source apps
 
-        This API returns the list of all source apps for the org.  A token with ORG_ADMIN authority is required to call this API.
+        This API returns the list of all source apps for the org.    
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -1703,7 +1703,7 @@ class AppsApi:
     ) -> ApiResponse[List[SourceApp]]:
         """List all source apps
 
-        This API returns the list of all source apps for the org.  A token with ORG_ADMIN authority is required to call this API.
+        This API returns the list of all source apps for the org.    
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -1791,7 +1791,7 @@ class AppsApi:
     ) -> RESTResponseType:
         """List all source apps
 
-        This API returns the list of all source apps for the org.  A token with ORG_ADMIN authority is required to call this API.
+        This API returns the list of all source apps for the org.    
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str

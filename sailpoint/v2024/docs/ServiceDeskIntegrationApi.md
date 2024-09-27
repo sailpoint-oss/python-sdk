@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 Create new Service Desk integration
 
-Create a new Service Desk Integrations.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+Create a new Service Desk Integrations.
 
 ### Example
 
@@ -105,7 +105,7 @@ Name | Type | Description  | Notes
 
 Delete a Service Desk integration
 
-Delete an existing Service Desk integration by ID.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+Delete an existing Service Desk integration by ID.
 
 ### Example
 
@@ -186,7 +186,7 @@ void (empty response body)
 
 Get a Service Desk integration
 
-Get an existing Service Desk integration by ID.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+Get an existing Service Desk integration by ID.
 
 ### Example
 
@@ -270,7 +270,7 @@ Name | Type | Description  | Notes
 
 Service Desk integration template by scriptName.
 
-This API endpoint returns an existing Service Desk integration template by scriptName.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+This API endpoint returns an existing Service Desk integration template by scriptName.
 
 ### Example
 
@@ -354,7 +354,7 @@ Name | Type | Description  | Notes
 
 Service Desk Integration Types List.
 
-This API endpoint returns the current list of supported Service Desk integration types.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+This API endpoint returns the current list of supported Service Desk integration types.
 
 ### Example
 
@@ -434,7 +434,7 @@ This endpoint does not need any parameter.
 
 List existing Service Desk Integrations
 
-Get a list of ServiceDeskIntegrationDto for existing Service Desk Integrations.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+Get a list of ServiceDeskIntegrationDto for existing Service Desk Integrations.
 
 ### Example
 
@@ -526,7 +526,7 @@ Name | Type | Description  | Notes
 
 Get the time check configuration
 
-Get the time check configuration of queued SDIM tickets.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+Get the time check configuration of queued SDIM tickets.
 
 ### Example
 
@@ -693,7 +693,7 @@ Name | Type | Description  | Notes
 
 Update a Service Desk integration
 
-Update an existing Service Desk integration by ID with updated value in JSON form as the request body.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+Update an existing Service Desk integration by ID with updated value in JSON form as the request body.
 
 ### Example
 
@@ -779,7 +779,7 @@ Name | Type | Description  | Notes
 
 Update the time check configuration
 
-Update the time check configuration of queued SDIM tickets.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+Update the time check configuration of queued SDIM tickets.
 
 ### Example
 

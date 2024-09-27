@@ -90,10 +90,13 @@ from sailpoint.v3.models.approval_status_dto_current_owner import ApprovalStatus
 from sailpoint.v3.models.approval_status_dto_original_owner import ApprovalStatusDtoOriginalOwner
 from sailpoint.v3.models.approval_summary import ApprovalSummary
 from sailpoint.v3.models.array_inner import ArrayInner
+from sailpoint.v3.models.attribute_dto import AttributeDTO
+from sailpoint.v3.models.attribute_dto_list import AttributeDTOList
 from sailpoint.v3.models.attribute_definition import AttributeDefinition
 from sailpoint.v3.models.attribute_definition_schema import AttributeDefinitionSchema
 from sailpoint.v3.models.attribute_definition_type import AttributeDefinitionType
 from sailpoint.v3.models.attribute_request import AttributeRequest
+from sailpoint.v3.models.attribute_value_dto import AttributeValueDTO
 from sailpoint.v3.models.auth_user import AuthUser
 from sailpoint.v3.models.backup_options import BackupOptions
 from sailpoint.v3.models.backup_response import BackupResponse

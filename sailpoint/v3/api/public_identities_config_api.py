@@ -54,7 +54,7 @@ class PublicIdentitiesConfigApi:
     ) -> PublicIdentityConfig:
         """Get the Public Identities Configuration
 
-        Returns the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns. A token with ORG ADMIN authority is required to call this API.
+        Returns the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -122,7 +122,7 @@ class PublicIdentitiesConfigApi:
     ) -> ApiResponse[PublicIdentityConfig]:
         """Get the Public Identities Configuration
 
-        Returns the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns. A token with ORG ADMIN authority is required to call this API.
+        Returns the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -190,7 +190,7 @@ class PublicIdentitiesConfigApi:
     ) -> RESTResponseType:
         """Get the Public Identities Configuration
 
-        Returns the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns. A token with ORG ADMIN authority is required to call this API.
+        Returns the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -315,7 +315,7 @@ class PublicIdentitiesConfigApi:
     ) -> PublicIdentityConfig:
         """Update the Public Identities Configuration
 
-        Updates the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns. A token with ORG ADMIN authority is required to call this API.
+        Updates the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns.
 
         :param public_identity_config: (required)
         :type public_identity_config: PublicIdentityConfig
@@ -387,7 +387,7 @@ class PublicIdentitiesConfigApi:
     ) -> ApiResponse[PublicIdentityConfig]:
         """Update the Public Identities Configuration
 
-        Updates the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns. A token with ORG ADMIN authority is required to call this API.
+        Updates the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns.
 
         :param public_identity_config: (required)
         :type public_identity_config: PublicIdentityConfig
@@ -459,7 +459,7 @@ class PublicIdentitiesConfigApi:
     ) -> RESTResponseType:
         """Update the Public Identities Configuration
 
-        Updates the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns. A token with ORG ADMIN authority is required to call this API.
+        Updates the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns.
 
         :param public_identity_config: (required)
         :type public_identity_config: PublicIdentityConfig

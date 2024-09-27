@@ -63,7 +63,7 @@ class MFAConfigurationApi:
     ) -> MfaOktaConfig:
         """Delete MFA method configuration
 
-        This API removes the configuration for the specified MFA method. A token with ORG_ADMIN authority is required to call this API.
+        This API removes the configuration for the specified MFA method.
 
         :param method: The name of the MFA method. The currently supported method names are 'okta-verify' and 'duo-web'. (required)
         :type method: str
@@ -135,7 +135,7 @@ class MFAConfigurationApi:
     ) -> ApiResponse[MfaOktaConfig]:
         """Delete MFA method configuration
 
-        This API removes the configuration for the specified MFA method. A token with ORG_ADMIN authority is required to call this API.
+        This API removes the configuration for the specified MFA method.
 
         :param method: The name of the MFA method. The currently supported method names are 'okta-verify' and 'duo-web'. (required)
         :type method: str
@@ -207,7 +207,7 @@ class MFAConfigurationApi:
     ) -> RESTResponseType:
         """Delete MFA method configuration
 
-        This API removes the configuration for the specified MFA method. A token with ORG_ADMIN authority is required to call this API.
+        This API removes the configuration for the specified MFA method.
 
         :param method: The name of the MFA method. The currently supported method names are 'okta-verify' and 'duo-web'. (required)
         :type method: str
@@ -337,7 +337,7 @@ class MFAConfigurationApi:
     ) -> MfaDuoConfig:
         """Configuration of Duo MFA method
 
-        This API returns the configuration of an Duo MFA method. A token with ORG_ADMIN authority is required to call this API.
+        This API returns the configuration of an Duo MFA method.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -405,7 +405,7 @@ class MFAConfigurationApi:
     ) -> ApiResponse[MfaDuoConfig]:
         """Configuration of Duo MFA method
 
-        This API returns the configuration of an Duo MFA method. A token with ORG_ADMIN authority is required to call this API.
+        This API returns the configuration of an Duo MFA method.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -473,7 +473,7 @@ class MFAConfigurationApi:
     ) -> RESTResponseType:
         """Configuration of Duo MFA method
 
-        This API returns the configuration of an Duo MFA method. A token with ORG_ADMIN authority is required to call this API.
+        This API returns the configuration of an Duo MFA method.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -598,7 +598,7 @@ class MFAConfigurationApi:
     ) -> List[KbaQuestion]:
         """Configuration of KBA MFA method
 
-        This API returns the KBA configuration for MFA. A token with USER or ORG_ADMIN authority is required to call this API.
+        This API returns the KBA configuration for MFA.
 
         :param all_languages: Indicator whether the question text should be returned in all configured languages    * If true, the question text is returned in all languages that it is configured in.    * If false, the question text is returned in the user locale if available, else for the default locale.     * If not passed, it behaves the same way as passing this parameter as false
         :type all_languages: bool
@@ -670,7 +670,7 @@ class MFAConfigurationApi:
     ) -> ApiResponse[List[KbaQuestion]]:
         """Configuration of KBA MFA method
 
-        This API returns the KBA configuration for MFA. A token with USER or ORG_ADMIN authority is required to call this API.
+        This API returns the KBA configuration for MFA.
 
         :param all_languages: Indicator whether the question text should be returned in all configured languages    * If true, the question text is returned in all languages that it is configured in.    * If false, the question text is returned in the user locale if available, else for the default locale.     * If not passed, it behaves the same way as passing this parameter as false
         :type all_languages: bool
@@ -742,7 +742,7 @@ class MFAConfigurationApi:
     ) -> RESTResponseType:
         """Configuration of KBA MFA method
 
-        This API returns the KBA configuration for MFA. A token with USER or ORG_ADMIN authority is required to call this API.
+        This API returns the KBA configuration for MFA.
 
         :param all_languages: Indicator whether the question text should be returned in all configured languages    * If true, the question text is returned in all languages that it is configured in.    * If false, the question text is returned in the user locale if available, else for the default locale.     * If not passed, it behaves the same way as passing this parameter as false
         :type all_languages: bool
@@ -874,7 +874,7 @@ class MFAConfigurationApi:
     ) -> MfaOktaConfig:
         """Configuration of Okta MFA method
 
-        This API returns the configuration of an Okta MFA method. A token with ORG_ADMIN authority is required to call this API.
+        This API returns the configuration of an Okta MFA method.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -942,7 +942,7 @@ class MFAConfigurationApi:
     ) -> ApiResponse[MfaOktaConfig]:
         """Configuration of Okta MFA method
 
-        This API returns the configuration of an Okta MFA method. A token with ORG_ADMIN authority is required to call this API.
+        This API returns the configuration of an Okta MFA method.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1010,7 +1010,7 @@ class MFAConfigurationApi:
     ) -> RESTResponseType:
         """Configuration of Okta MFA method
 
-        This API returns the configuration of an Okta MFA method. A token with ORG_ADMIN authority is required to call this API.
+        This API returns the configuration of an Okta MFA method.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1135,7 +1135,7 @@ class MFAConfigurationApi:
     ) -> MfaDuoConfig:
         """Set Duo MFA configuration
 
-        This API sets the configuration of an Duo MFA method. A token with ORG_ADMIN authority is required to call this API.
+        This API sets the configuration of an Duo MFA method.
 
         :param mfa_duo_config: (required)
         :type mfa_duo_config: MfaDuoConfig
@@ -1207,7 +1207,7 @@ class MFAConfigurationApi:
     ) -> ApiResponse[MfaDuoConfig]:
         """Set Duo MFA configuration
 
-        This API sets the configuration of an Duo MFA method. A token with ORG_ADMIN authority is required to call this API.
+        This API sets the configuration of an Duo MFA method.
 
         :param mfa_duo_config: (required)
         :type mfa_duo_config: MfaDuoConfig
@@ -1279,7 +1279,7 @@ class MFAConfigurationApi:
     ) -> RESTResponseType:
         """Set Duo MFA configuration
 
-        This API sets the configuration of an Duo MFA method. A token with ORG_ADMIN authority is required to call this API.
+        This API sets the configuration of an Duo MFA method.
 
         :param mfa_duo_config: (required)
         :type mfa_duo_config: MfaDuoConfig
@@ -1423,7 +1423,7 @@ class MFAConfigurationApi:
     ) -> MfaOktaConfig:
         """Set Okta MFA configuration
 
-        This API sets the configuration of an Okta MFA method. A token with ORG_ADMIN authority is required to call this API.
+        This API sets the configuration of an Okta MFA method.
 
         :param mfa_okta_config: (required)
         :type mfa_okta_config: MfaOktaConfig
@@ -1495,7 +1495,7 @@ class MFAConfigurationApi:
     ) -> ApiResponse[MfaOktaConfig]:
         """Set Okta MFA configuration
 
-        This API sets the configuration of an Okta MFA method. A token with ORG_ADMIN authority is required to call this API.
+        This API sets the configuration of an Okta MFA method.
 
         :param mfa_okta_config: (required)
         :type mfa_okta_config: MfaOktaConfig
@@ -1567,7 +1567,7 @@ class MFAConfigurationApi:
     ) -> RESTResponseType:
         """Set Okta MFA configuration
 
-        This API sets the configuration of an Okta MFA method. A token with ORG_ADMIN authority is required to call this API.
+        This API sets the configuration of an Okta MFA method.
 
         :param mfa_okta_config: (required)
         :type mfa_okta_config: MfaOktaConfig
@@ -1711,7 +1711,7 @@ class MFAConfigurationApi:
     ) -> List[KbaAnswerResponseItem]:
         """Set MFA KBA configuration
 
-        This API sets answers to challenge questions.  Any configured questions omitted from the request are removed from user KBA configuration. A token with USER authority is required to call this API.
+        This API sets answers to challenge questions.  Any configured questions omitted from the request are removed from user KBA configuration.    
 
         :param kba_answer_request_item: (required)
         :type kba_answer_request_item: List[KbaAnswerRequestItem]
@@ -1783,7 +1783,7 @@ class MFAConfigurationApi:
     ) -> ApiResponse[List[KbaAnswerResponseItem]]:
         """Set MFA KBA configuration
 
-        This API sets answers to challenge questions.  Any configured questions omitted from the request are removed from user KBA configuration. A token with USER authority is required to call this API.
+        This API sets answers to challenge questions.  Any configured questions omitted from the request are removed from user KBA configuration.    
 
         :param kba_answer_request_item: (required)
         :type kba_answer_request_item: List[KbaAnswerRequestItem]
@@ -1855,7 +1855,7 @@ class MFAConfigurationApi:
     ) -> RESTResponseType:
         """Set MFA KBA configuration
 
-        This API sets answers to challenge questions.  Any configured questions omitted from the request are removed from user KBA configuration. A token with USER authority is required to call this API.
+        This API sets answers to challenge questions.  Any configured questions omitted from the request are removed from user KBA configuration.    
 
         :param kba_answer_request_item: (required)
         :type kba_answer_request_item: List[KbaAnswerRequestItem]
@@ -2000,7 +2000,7 @@ class MFAConfigurationApi:
     ) -> MfaConfigTestResponse:
         """MFA method's test configuration
 
-        This API validates that the configuration is valid and will properly authenticate with the MFA provider identified by the method path parameter. A token with ORG_ADMIN authority is required to call this API.
+        This API validates that the configuration is valid and will properly authenticate with the MFA provider identified by the method path parameter.
 
         :param method: The name of the MFA method. The currently supported method names are 'okta-verify' and 'duo-web'. (required)
         :type method: str
@@ -2072,7 +2072,7 @@ class MFAConfigurationApi:
     ) -> ApiResponse[MfaConfigTestResponse]:
         """MFA method's test configuration
 
-        This API validates that the configuration is valid and will properly authenticate with the MFA provider identified by the method path parameter. A token with ORG_ADMIN authority is required to call this API.
+        This API validates that the configuration is valid and will properly authenticate with the MFA provider identified by the method path parameter.
 
         :param method: The name of the MFA method. The currently supported method names are 'okta-verify' and 'duo-web'. (required)
         :type method: str
@@ -2144,7 +2144,7 @@ class MFAConfigurationApi:
     ) -> RESTResponseType:
         """MFA method's test configuration
 
-        This API validates that the configuration is valid and will properly authenticate with the MFA provider identified by the method path parameter. A token with ORG_ADMIN authority is required to call this API.
+        This API validates that the configuration is valid and will properly authenticate with the MFA provider identified by the method path parameter.
 
         :param method: The name of the MFA method. The currently supported method names are 'okta-verify' and 'duo-web'. (required)
         :type method: str

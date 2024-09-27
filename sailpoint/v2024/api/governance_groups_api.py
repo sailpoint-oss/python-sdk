@@ -619,7 +619,8 @@ class GovernanceGroupsApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -661,7 +662,7 @@ class GovernanceGroupsApi:
     ) -> List[WorkgroupMemberDeleteItem]:
         """Remove members from Governance Group
 
-        This API removes one or more  members from a Governance Group.  A token with API, ORG_ADMIN authority is required to call this API.  >  **Following field of Identity is an optional field in the request.**  >  **name**
+        This API removes one or more  members from a Governance Group.  A >  **Following field of Identity is an optional field in the request.**  >  **name**
 
         :param workgroup_id: ID of the Governance Group. (required)
         :type workgroup_id: str
@@ -741,7 +742,7 @@ class GovernanceGroupsApi:
     ) -> ApiResponse[List[WorkgroupMemberDeleteItem]]:
         """Remove members from Governance Group
 
-        This API removes one or more  members from a Governance Group.  A token with API, ORG_ADMIN authority is required to call this API.  >  **Following field of Identity is an optional field in the request.**  >  **name**
+        This API removes one or more  members from a Governance Group.  A >  **Following field of Identity is an optional field in the request.**  >  **name**
 
         :param workgroup_id: ID of the Governance Group. (required)
         :type workgroup_id: str
@@ -821,7 +822,7 @@ class GovernanceGroupsApi:
     ) -> RESTResponseType:
         """Remove members from Governance Group
 
-        This API removes one or more  members from a Governance Group.  A token with API, ORG_ADMIN authority is required to call this API.  >  **Following field of Identity is an optional field in the request.**  >  **name**
+        This API removes one or more  members from a Governance Group.  A >  **Following field of Identity is an optional field in the request.**  >  **name**
 
         :param workgroup_id: ID of the Governance Group. (required)
         :type workgroup_id: str
@@ -938,7 +939,8 @@ class GovernanceGroupsApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -1531,7 +1533,8 @@ class GovernanceGroupsApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -2649,7 +2652,7 @@ class GovernanceGroupsApi:
     ) -> WorkgroupDto:
         """Patch a Governance Group
 
-        This API updates an existing governance group by ID.  The following fields and objects are patchable:   * name   * description   * owner  A token with API or ORG_ADMIN authority is required to call this API.
+        This API updates an existing governance group by ID. The following fields and objects are patchable: * name * description * owner
 
         :param id: ID of the Governance Group (required)
         :type id: str
@@ -2729,7 +2732,7 @@ class GovernanceGroupsApi:
     ) -> ApiResponse[WorkgroupDto]:
         """Patch a Governance Group
 
-        This API updates an existing governance group by ID.  The following fields and objects are patchable:   * name   * description   * owner  A token with API or ORG_ADMIN authority is required to call this API.
+        This API updates an existing governance group by ID. The following fields and objects are patchable: * name * description * owner
 
         :param id: ID of the Governance Group (required)
         :type id: str
@@ -2809,7 +2812,7 @@ class GovernanceGroupsApi:
     ) -> RESTResponseType:
         """Patch a Governance Group
 
-        This API updates an existing governance group by ID.  The following fields and objects are patchable:   * name   * description   * owner  A token with API or ORG_ADMIN authority is required to call this API.
+        This API updates an existing governance group by ID. The following fields and objects are patchable: * name * description * owner
 
         :param id: ID of the Governance Group (required)
         :type id: str
@@ -2926,7 +2929,8 @@ class GovernanceGroupsApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(

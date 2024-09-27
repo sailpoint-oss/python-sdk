@@ -58,7 +58,7 @@ class PasswordSyncGroupsApi:
     ) -> PasswordSyncGroup:
         """Create Password Sync Group
 
-        This API creates a password sync group based on the specifications provided. A token with ORG_ADMIN authority is required to call this API.
+        This API creates a password sync group based on the specifications provided.
 
         :param password_sync_group: (required)
         :type password_sync_group: PasswordSyncGroup
@@ -130,7 +130,7 @@ class PasswordSyncGroupsApi:
     ) -> ApiResponse[PasswordSyncGroup]:
         """Create Password Sync Group
 
-        This API creates a password sync group based on the specifications provided. A token with ORG_ADMIN authority is required to call this API.
+        This API creates a password sync group based on the specifications provided.
 
         :param password_sync_group: (required)
         :type password_sync_group: PasswordSyncGroup
@@ -202,7 +202,7 @@ class PasswordSyncGroupsApi:
     ) -> RESTResponseType:
         """Create Password Sync Group
 
-        This API creates a password sync group based on the specifications provided. A token with ORG_ADMIN authority is required to call this API.
+        This API creates a password sync group based on the specifications provided.
 
         :param password_sync_group: (required)
         :type password_sync_group: PasswordSyncGroup
@@ -346,7 +346,7 @@ class PasswordSyncGroupsApi:
     ) -> None:
         """Delete Password Sync Group by ID
 
-        This API deletes the specified password sync group. A token with ORG_ADMIN authority is required to call this API.
+        This API deletes the specified password sync group.
 
         :param id: The ID of password sync group to delete. (required)
         :type id: str
@@ -418,7 +418,7 @@ class PasswordSyncGroupsApi:
     ) -> ApiResponse[None]:
         """Delete Password Sync Group by ID
 
-        This API deletes the specified password sync group. A token with ORG_ADMIN authority is required to call this API.
+        This API deletes the specified password sync group.
 
         :param id: The ID of password sync group to delete. (required)
         :type id: str
@@ -490,7 +490,7 @@ class PasswordSyncGroupsApi:
     ) -> RESTResponseType:
         """Delete Password Sync Group by ID
 
-        This API deletes the specified password sync group. A token with ORG_ADMIN authority is required to call this API.
+        This API deletes the specified password sync group.
 
         :param id: The ID of password sync group to delete. (required)
         :type id: str
@@ -621,7 +621,7 @@ class PasswordSyncGroupsApi:
     ) -> PasswordSyncGroup:
         """Get Password Sync Group by ID
 
-        This API returns the sync group for the specified ID. A token with ORG_ADMIN authority is required to call this API.
+        This API returns the sync group for the specified ID.
 
         :param id: The ID of password sync group to retrieve. (required)
         :type id: str
@@ -694,7 +694,7 @@ class PasswordSyncGroupsApi:
     ) -> ApiResponse[PasswordSyncGroup]:
         """Get Password Sync Group by ID
 
-        This API returns the sync group for the specified ID. A token with ORG_ADMIN authority is required to call this API.
+        This API returns the sync group for the specified ID.
 
         :param id: The ID of password sync group to retrieve. (required)
         :type id: str
@@ -767,7 +767,7 @@ class PasswordSyncGroupsApi:
     ) -> RESTResponseType:
         """Get Password Sync Group by ID
 
-        This API returns the sync group for the specified ID. A token with ORG_ADMIN authority is required to call this API.
+        This API returns the sync group for the specified ID.
 
         :param id: The ID of password sync group to retrieve. (required)
         :type id: str
@@ -901,7 +901,7 @@ class PasswordSyncGroupsApi:
     ) -> List[PasswordSyncGroup]:
         """Get Password Sync Group List
 
-        This API returns a list of password sync groups. A token with ORG_ADMIN authority is required to call this API.
+        This API returns a list of password sync groups.
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -981,7 +981,7 @@ class PasswordSyncGroupsApi:
     ) -> ApiResponse[List[PasswordSyncGroup]]:
         """Get Password Sync Group List
 
-        This API returns a list of password sync groups. A token with ORG_ADMIN authority is required to call this API.
+        This API returns a list of password sync groups.
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -1061,7 +1061,7 @@ class PasswordSyncGroupsApi:
     ) -> RESTResponseType:
         """Get Password Sync Group List
 
-        This API returns a list of password sync groups. A token with ORG_ADMIN authority is required to call this API.
+        This API returns a list of password sync groups.
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -1211,7 +1211,7 @@ class PasswordSyncGroupsApi:
     ) -> PasswordSyncGroup:
         """Update Password Sync Group by ID
 
-        This API updates the specified password sync group. A token with ORG_ADMIN authority is required to call this API.
+        This API updates the specified password sync group.
 
         :param id: The ID of password sync group to update. (required)
         :type id: str
@@ -1288,7 +1288,7 @@ class PasswordSyncGroupsApi:
     ) -> ApiResponse[PasswordSyncGroup]:
         """Update Password Sync Group by ID
 
-        This API updates the specified password sync group. A token with ORG_ADMIN authority is required to call this API.
+        This API updates the specified password sync group.
 
         :param id: The ID of password sync group to update. (required)
         :type id: str
@@ -1365,7 +1365,7 @@ class PasswordSyncGroupsApi:
     ) -> RESTResponseType:
         """Update Password Sync Group by ID
 
-        This API updates the specified password sync group. A token with ORG_ADMIN authority is required to call this API.
+        This API updates the specified password sync group.
 
         :param id: The ID of password sync group to update. (required)
         :type id: str

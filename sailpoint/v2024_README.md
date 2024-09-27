@@ -481,12 +481,20 @@ Class | Method | HTTP request | Description
 *RoleInsightsApi* | [**get_role_insights_summary**](sailpoint/v2024/docs/RoleInsightsApi.md#get_role_insights_summary) | **GET** /role-insights/summary | Get role insights summary information
 *RolesApi* | [**create_role**](sailpoint/v2024/docs/RolesApi.md#create_role) | **POST** /roles | Create a Role
 *RolesApi* | [**delete_bulk_roles**](sailpoint/v2024/docs/RolesApi.md#delete_bulk_roles) | **POST** /roles/bulk-delete | Delete Role(s)
+*RolesApi* | [**delete_metadata_from_role_by_key_and_value**](sailpoint/v2024/docs/RolesApi.md#delete_metadata_from_role_by_key_and_value) | **DELETE** /roles/{id}/access-model-metadata/{attributeKey}/values/{attributeValue} | Remove a Metadata From Role.
 *RolesApi* | [**delete_role**](sailpoint/v2024/docs/RolesApi.md#delete_role) | **DELETE** /roles/{id} | Delete a Role
+*RolesApi* | [**get_bulk_update_status**](sailpoint/v2024/docs/RolesApi.md#get_bulk_update_status) | **GET** /roles/access-model-metadata/bulk-update | Get Bulk-Update Statuses
+*RolesApi* | [**get_bulk_update_status_by_id**](sailpoint/v2024/docs/RolesApi.md#get_bulk_update_status_by_id) | **GET** /roles/access-model-metadata/bulk-update/id | Get Bulk-Update Status by ID
 *RolesApi* | [**get_role**](sailpoint/v2024/docs/RolesApi.md#get_role) | **GET** /roles/{id} | Get a Role
 *RolesApi* | [**get_role_assigned_identities**](sailpoint/v2024/docs/RolesApi.md#get_role_assigned_identities) | **GET** /roles/{id}/assigned-identities | List Identities assigned a Role
 *RolesApi* | [**get_role_entitlements**](sailpoint/v2024/docs/RolesApi.md#get_role_entitlements) | **GET** /roles/{id}/entitlements | List role&#39;s Entitlements
 *RolesApi* | [**list_roles**](sailpoint/v2024/docs/RolesApi.md#list_roles) | **GET** /roles | List Roles
 *RolesApi* | [**patch_role**](sailpoint/v2024/docs/RolesApi.md#patch_role) | **PATCH** /roles/{id} | Patch a specified Role
+*RolesApi* | [**search_roles_by_filter**](sailpoint/v2024/docs/RolesApi.md#search_roles_by_filter) | **POST** /roles/filter | Filter Roles by Metadata
+*RolesApi* | [**update_attribute_key_and_value_to_role**](sailpoint/v2024/docs/RolesApi.md#update_attribute_key_and_value_to_role) | **POST** /roles/{id}/access-model-metadata/{attributeKey}/values/{attributeValue} | Add a Metadata to Role.
+*RolesApi* | [**update_roles_metadata_by_filter**](sailpoint/v2024/docs/RolesApi.md#update_roles_metadata_by_filter) | **POST** /roles/access-model-metadata/bulk-update/filter | Bulk-Update Roles&#39; Metadata by Filters
+*RolesApi* | [**update_roles_metadata_by_ids**](sailpoint/v2024/docs/RolesApi.md#update_roles_metadata_by_ids) | **POST** /roles/access-model-metadata/bulk-update/ids | Bulk-Update Roles&#39; Metadata by ID
+*RolesApi* | [**update_roles_metadata_by_query**](sailpoint/v2024/docs/RolesApi.md#update_roles_metadata_by_query) | **POST** /roles/access-model-metadata/bulk-update/query | Bulk-Update Roles&#39; Metadata by Query
 *SIMIntegrationsApi* | [**create_sim_integration**](sailpoint/v2024/docs/SIMIntegrationsApi.md#create_sim_integration) | **POST** /sim-integrations | Create new SIM integration
 *SIMIntegrationsApi* | [**delete_sim_integration**](sailpoint/v2024/docs/SIMIntegrationsApi.md#delete_sim_integration) | **DELETE** /sim-integrations/{id} | Delete a SIM integration
 *SIMIntegrationsApi* | [**get_sim_integration**](sailpoint/v2024/docs/SIMIntegrationsApi.md#get_sim_integration) | **GET** /sim-integrations/{id} | Get a SIM integration details.
@@ -1386,6 +1394,7 @@ Class | Method | HTTP request | Description
  - [RoleAssignmentRef](sailpoint/v2024/docs/RoleAssignmentRef.md)
  - [RoleAssignmentSourceType](sailpoint/v2024/docs/RoleAssignmentSourceType.md)
  - [RoleBulkDeleteRequest](sailpoint/v2024/docs/RoleBulkDeleteRequest.md)
+ - [RoleBulkUpdateResponse](sailpoint/v2024/docs/RoleBulkUpdateResponse.md)
  - [RoleCriteriaKey](sailpoint/v2024/docs/RoleCriteriaKey.md)
  - [RoleCriteriaKeyType](sailpoint/v2024/docs/RoleCriteriaKeyType.md)
  - [RoleCriteriaLevel1](sailpoint/v2024/docs/RoleCriteriaLevel1.md)
@@ -1402,10 +1411,18 @@ Class | Method | HTTP request | Description
  - [RoleInsightsResponse](sailpoint/v2024/docs/RoleInsightsResponse.md)
  - [RoleInsightsRole](sailpoint/v2024/docs/RoleInsightsRole.md)
  - [RoleInsightsSummary](sailpoint/v2024/docs/RoleInsightsSummary.md)
+ - [RoleListFilterDTO](sailpoint/v2024/docs/RoleListFilterDTO.md)
+ - [RoleListFilterDTOAmmKeyValuesInner](sailpoint/v2024/docs/RoleListFilterDTOAmmKeyValuesInner.md)
  - [RoleMatchDto](sailpoint/v2024/docs/RoleMatchDto.md)
  - [RoleMembershipIdentity](sailpoint/v2024/docs/RoleMembershipIdentity.md)
  - [RoleMembershipSelector](sailpoint/v2024/docs/RoleMembershipSelector.md)
  - [RoleMembershipSelectorType](sailpoint/v2024/docs/RoleMembershipSelectorType.md)
+ - [RoleMetadataBulkUpdateByFilterRequest](sailpoint/v2024/docs/RoleMetadataBulkUpdateByFilterRequest.md)
+ - [RoleMetadataBulkUpdateByFilterRequestValuesInner](sailpoint/v2024/docs/RoleMetadataBulkUpdateByFilterRequestValuesInner.md)
+ - [RoleMetadataBulkUpdateByIdRequest](sailpoint/v2024/docs/RoleMetadataBulkUpdateByIdRequest.md)
+ - [RoleMetadataBulkUpdateByIdRequestValuesInner](sailpoint/v2024/docs/RoleMetadataBulkUpdateByIdRequestValuesInner.md)
+ - [RoleMetadataBulkUpdateByQueryRequest](sailpoint/v2024/docs/RoleMetadataBulkUpdateByQueryRequest.md)
+ - [RoleMetadataBulkUpdateByQueryRequestValuesInner](sailpoint/v2024/docs/RoleMetadataBulkUpdateByQueryRequestValuesInner.md)
  - [RoleMiningEntitlement](sailpoint/v2024/docs/RoleMiningEntitlement.md)
  - [RoleMiningEntitlementRef](sailpoint/v2024/docs/RoleMiningEntitlementRef.md)
  - [RoleMiningIdentity](sailpoint/v2024/docs/RoleMiningIdentity.md)

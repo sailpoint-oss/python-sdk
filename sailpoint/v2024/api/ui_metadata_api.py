@@ -58,7 +58,7 @@ class UIMetadataApi:
     ) -> TenantUiMetadataItemResponse:
         """Get a tenant UI metadata
 
-        This API endpoint retrieves UI metadata configured for your tenant. A token with ORG_ADMIN authority is required to call this API.
+        This API endpoint retrieves UI metadata configured for your tenant.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -131,7 +131,7 @@ class UIMetadataApi:
     ) -> ApiResponse[TenantUiMetadataItemResponse]:
         """Get a tenant UI metadata
 
-        This API endpoint retrieves UI metadata configured for your tenant. A token with ORG_ADMIN authority is required to call this API.
+        This API endpoint retrieves UI metadata configured for your tenant.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -204,7 +204,7 @@ class UIMetadataApi:
     ) -> RESTResponseType:
         """Get a tenant UI metadata
 
-        This API endpoint retrieves UI metadata configured for your tenant. A token with ORG_ADMIN authority is required to call this API.
+        This API endpoint retrieves UI metadata configured for your tenant.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -337,7 +337,7 @@ class UIMetadataApi:
     ) -> TenantUiMetadataItemResponse:
         """Update tenant UI metadata
 
-        This API endpoint updates UI metadata for your tenant. These changes may require up to 5 minutes to take effect on the UI. A token with ORG_ADMIN authority is required to call this API.
+        This API endpoint updates UI metadata for your tenant. These changes may require up to 5 minutes to take effect on the UI.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -414,7 +414,7 @@ class UIMetadataApi:
     ) -> ApiResponse[TenantUiMetadataItemResponse]:
         """Update tenant UI metadata
 
-        This API endpoint updates UI metadata for your tenant. These changes may require up to 5 minutes to take effect on the UI. A token with ORG_ADMIN authority is required to call this API.
+        This API endpoint updates UI metadata for your tenant. These changes may require up to 5 minutes to take effect on the UI.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -491,7 +491,7 @@ class UIMetadataApi:
     ) -> RESTResponseType:
         """Update tenant UI metadata
 
-        This API endpoint updates UI metadata for your tenant. These changes may require up to 5 minutes to take effect on the UI. A token with ORG_ADMIN authority is required to call this API.
+        This API endpoint updates UI metadata for your tenant. These changes may require up to 5 minutes to take effect on the UI.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str

@@ -64,7 +64,7 @@ class CertificationsApi:
     ) -> CertificationTask:
         """Certification Task by ID
 
-        This API returns the certification task for the specified ID. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for the specified certification can also call this API.
+        This API returns the certification task for the specified ID. Reviewers for the specified certification can also call this API.
 
         :param id: The task ID (required)
         :type id: str
@@ -137,7 +137,7 @@ class CertificationsApi:
     ) -> ApiResponse[CertificationTask]:
         """Certification Task by ID
 
-        This API returns the certification task for the specified ID. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for the specified certification can also call this API.
+        This API returns the certification task for the specified ID. Reviewers for the specified certification can also call this API.
 
         :param id: The task ID (required)
         :type id: str
@@ -210,7 +210,7 @@ class CertificationsApi:
     ) -> RESTResponseType:
         """Certification Task by ID
 
-        This API returns the certification task for the specified ID. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for the specified certification can also call this API.
+        This API returns the certification task for the specified ID. Reviewers for the specified certification can also call this API.
 
         :param id: The task ID (required)
         :type id: str
@@ -342,7 +342,7 @@ class CertificationsApi:
     ) -> IdentityCertificationDto:
         """Identity Certification by ID
 
-        This API returns a single identity campaign certification by its ID. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
+        This API returns a single identity campaign certification by its ID. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
 
         :param id: The certification id (required)
         :type id: str
@@ -415,7 +415,7 @@ class CertificationsApi:
     ) -> ApiResponse[IdentityCertificationDto]:
         """Identity Certification by ID
 
-        This API returns a single identity campaign certification by its ID. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
+        This API returns a single identity campaign certification by its ID. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
 
         :param id: The certification id (required)
         :type id: str
@@ -488,7 +488,7 @@ class CertificationsApi:
     ) -> RESTResponseType:
         """Identity Certification by ID
 
-        This API returns a single identity campaign certification by its ID. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
+        This API returns a single identity campaign certification by its ID. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
 
         :param id: The certification id (required)
         :type id: str
@@ -625,7 +625,7 @@ class CertificationsApi:
     ) -> List[PermissionDto]:
         """Permissions for Entitlement Certification Item
 
-        This API returns the permissions associated with an entitlement certification item based on the certification item's ID. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.
+        This API returns the permissions associated with an entitlement certification item based on the certification item's ID. Reviewers for this certification can also call this API.
 
         :param certification_id: The certification ID (required)
         :type certification_id: str
@@ -718,7 +718,7 @@ class CertificationsApi:
     ) -> ApiResponse[List[PermissionDto]]:
         """Permissions for Entitlement Certification Item
 
-        This API returns the permissions associated with an entitlement certification item based on the certification item's ID. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.
+        This API returns the permissions associated with an entitlement certification item based on the certification item's ID. Reviewers for this certification can also call this API.
 
         :param certification_id: The certification ID (required)
         :type certification_id: str
@@ -811,7 +811,7 @@ class CertificationsApi:
     ) -> RESTResponseType:
         """Permissions for Entitlement Certification Item
 
-        This API returns the permissions associated with an entitlement certification item based on the certification item's ID. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.
+        This API returns the permissions associated with an entitlement certification item based on the certification item's ID. Reviewers for this certification can also call this API.
 
         :param certification_id: The certification ID (required)
         :type certification_id: str
@@ -1334,7 +1334,7 @@ class CertificationsApi:
     ) -> List[IdentityReferenceWithNameAndEmail]:
         """List of Reviewers for certification
 
-        This API returns a list of reviewers for the certification. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.
+        This API returns a list of reviewers for the certification. Reviewers for this certification can also call this API.
 
         :param id: The certification ID (required)
         :type id: str
@@ -1427,7 +1427,7 @@ class CertificationsApi:
     ) -> ApiResponse[List[IdentityReferenceWithNameAndEmail]]:
         """List of Reviewers for certification
 
-        This API returns a list of reviewers for the certification. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.
+        This API returns a list of reviewers for the certification. Reviewers for this certification can also call this API.
 
         :param id: The certification ID (required)
         :type id: str
@@ -1520,7 +1520,7 @@ class CertificationsApi:
     ) -> RESTResponseType:
         """List of Reviewers for certification
 
-        This API returns a list of reviewers for the certification. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.
+        This API returns a list of reviewers for the certification. Reviewers for this certification can also call this API.
 
         :param id: The certification ID (required)
         :type id: str
@@ -1700,7 +1700,7 @@ class CertificationsApi:
     ) -> List[AccessReviewItem]:
         """List of Access Review Items
 
-        This API returns a list of access review items for an identity campaign certification. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
+        This API returns a list of access review items for an identity campaign certification. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
 
         :param id: The identity campaign certification ID (required)
         :type id: str
@@ -1805,7 +1805,7 @@ class CertificationsApi:
     ) -> ApiResponse[List[AccessReviewItem]]:
         """List of Access Review Items
 
-        This API returns a list of access review items for an identity campaign certification. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
+        This API returns a list of access review items for an identity campaign certification. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
 
         :param id: The identity campaign certification ID (required)
         :type id: str
@@ -1910,7 +1910,7 @@ class CertificationsApi:
     ) -> RESTResponseType:
         """List of Access Review Items
 
-        This API returns a list of access review items for an identity campaign certification. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
+        This API returns a list of access review items for an identity campaign certification. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
 
         :param id: The identity campaign certification ID (required)
         :type id: str
@@ -2469,7 +2469,7 @@ class CertificationsApi:
     ) -> IdentityCertificationDto:
         """Decide on a Certification Item
 
-        The API makes a decision to approve or revoke one or more identity campaign certification items. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
+        The API makes a decision to approve or revoke one or more identity campaign certification items. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
 
         :param id: The ID of the identity campaign certification on which to make decisions (required)
         :type id: str
@@ -2546,7 +2546,7 @@ class CertificationsApi:
     ) -> ApiResponse[IdentityCertificationDto]:
         """Decide on a Certification Item
 
-        The API makes a decision to approve or revoke one or more identity campaign certification items. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
+        The API makes a decision to approve or revoke one or more identity campaign certification items. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
 
         :param id: The ID of the identity campaign certification on which to make decisions (required)
         :type id: str
@@ -2623,7 +2623,7 @@ class CertificationsApi:
     ) -> RESTResponseType:
         """Decide on a Certification Item
 
-        The API makes a decision to approve or revoke one or more identity campaign certification items. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
+        The API makes a decision to approve or revoke one or more identity campaign certification items. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
 
         :param id: The ID of the identity campaign certification on which to make decisions (required)
         :type id: str
@@ -3081,7 +3081,7 @@ class CertificationsApi:
     ) -> IdentityCertificationDto:
         """Finalize Identity Certification Decisions
 
-        This API finalizes all decisions made on an identity campaign certification and initiates any remediations required. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
+        This API finalizes all decisions made on an identity campaign certification and initiates any remediations required. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
 
         :param id: The identity campaign certification ID (required)
         :type id: str
@@ -3154,7 +3154,7 @@ class CertificationsApi:
     ) -> ApiResponse[IdentityCertificationDto]:
         """Finalize Identity Certification Decisions
 
-        This API finalizes all decisions made on an identity campaign certification and initiates any remediations required. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
+        This API finalizes all decisions made on an identity campaign certification and initiates any remediations required. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
 
         :param id: The identity campaign certification ID (required)
         :type id: str
@@ -3227,7 +3227,7 @@ class CertificationsApi:
     ) -> RESTResponseType:
         """Finalize Identity Certification Decisions
 
-        This API finalizes all decisions made on an identity campaign certification and initiates any remediations required. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
+        This API finalizes all decisions made on an identity campaign certification and initiates any remediations required. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
 
         :param id: The identity campaign certification ID (required)
         :type id: str
@@ -3360,7 +3360,7 @@ class CertificationsApi:
     ) -> CertificationTask:
         """Reassign Certifications Asynchronously
 
-        This API initiates a task to reassign up to 500 identities or items in an identity campaign certification to another reviewer. The `certification-tasks` API can be used to get an updated status on the task and determine when the reassignment is complete.   A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API. 
+        This API initiates a task to reassign up to 500 identities or items in an identity campaign certification to another reviewer. The `certification-tasks` API can be used to get an updated status on the task and determine when the reassignment is complete.   Reviewers for this certification can also call this API. 
 
         :param id: The identity campaign certification ID (required)
         :type id: str
@@ -3437,7 +3437,7 @@ class CertificationsApi:
     ) -> ApiResponse[CertificationTask]:
         """Reassign Certifications Asynchronously
 
-        This API initiates a task to reassign up to 500 identities or items in an identity campaign certification to another reviewer. The `certification-tasks` API can be used to get an updated status on the task and determine when the reassignment is complete.   A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API. 
+        This API initiates a task to reassign up to 500 identities or items in an identity campaign certification to another reviewer. The `certification-tasks` API can be used to get an updated status on the task and determine when the reassignment is complete.   Reviewers for this certification can also call this API. 
 
         :param id: The identity campaign certification ID (required)
         :type id: str
@@ -3514,7 +3514,7 @@ class CertificationsApi:
     ) -> RESTResponseType:
         """Reassign Certifications Asynchronously
 
-        This API initiates a task to reassign up to 500 identities or items in an identity campaign certification to another reviewer. The `certification-tasks` API can be used to get an updated status on the task and determine when the reassignment is complete.   A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API. 
+        This API initiates a task to reassign up to 500 identities or items in an identity campaign certification to another reviewer. The `certification-tasks` API can be used to get an updated status on the task and determine when the reassignment is complete.   Reviewers for this certification can also call this API. 
 
         :param id: The identity campaign certification ID (required)
         :type id: str

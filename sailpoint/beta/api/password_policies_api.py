@@ -58,7 +58,7 @@ class PasswordPoliciesApi:
     ) -> PasswordPolicyV3Dto:
         """Create Password Policy
 
-        This API creates the specified password policy. A token with ORG_ADMIN authority is required to call this API.
+        This API creates the specified password policy.
 
         :param password_policy_v3_dto: (required)
         :type password_policy_v3_dto: PasswordPolicyV3Dto
@@ -131,7 +131,7 @@ class PasswordPoliciesApi:
     ) -> ApiResponse[PasswordPolicyV3Dto]:
         """Create Password Policy
 
-        This API creates the specified password policy. A token with ORG_ADMIN authority is required to call this API.
+        This API creates the specified password policy.
 
         :param password_policy_v3_dto: (required)
         :type password_policy_v3_dto: PasswordPolicyV3Dto
@@ -204,7 +204,7 @@ class PasswordPoliciesApi:
     ) -> RESTResponseType:
         """Create Password Policy
 
-        This API creates the specified password policy. A token with ORG_ADMIN authority is required to call this API.
+        This API creates the specified password policy.
 
         :param password_policy_v3_dto: (required)
         :type password_policy_v3_dto: PasswordPolicyV3Dto
@@ -349,7 +349,7 @@ class PasswordPoliciesApi:
     ) -> None:
         """Delete Password Policy by ID
 
-        This API deletes the specified password policy. A token with ORG_ADMIN authority is required to call this API.
+        This API deletes the specified password policy.
 
         :param id: The ID of password policy to delete. (required)
         :type id: str
@@ -422,7 +422,7 @@ class PasswordPoliciesApi:
     ) -> ApiResponse[None]:
         """Delete Password Policy by ID
 
-        This API deletes the specified password policy. A token with ORG_ADMIN authority is required to call this API.
+        This API deletes the specified password policy.
 
         :param id: The ID of password policy to delete. (required)
         :type id: str
@@ -495,7 +495,7 @@ class PasswordPoliciesApi:
     ) -> RESTResponseType:
         """Delete Password Policy by ID
 
-        This API deletes the specified password policy. A token with ORG_ADMIN authority is required to call this API.
+        This API deletes the specified password policy.
 
         :param id: The ID of password policy to delete. (required)
         :type id: str
@@ -627,7 +627,7 @@ class PasswordPoliciesApi:
     ) -> PasswordPolicyV3Dto:
         """Get Password Policy by ID
 
-        This API returns the password policy for the specified ID. A token with ORG_ADMIN authority is required to call this API.
+        This API returns the password policy for the specified ID.
 
         :param id: The ID of password policy to retrieve. (required)
         :type id: str
@@ -700,7 +700,7 @@ class PasswordPoliciesApi:
     ) -> ApiResponse[PasswordPolicyV3Dto]:
         """Get Password Policy by ID
 
-        This API returns the password policy for the specified ID. A token with ORG_ADMIN authority is required to call this API.
+        This API returns the password policy for the specified ID.
 
         :param id: The ID of password policy to retrieve. (required)
         :type id: str
@@ -773,7 +773,7 @@ class PasswordPoliciesApi:
     ) -> RESTResponseType:
         """Get Password Policy by ID
 
-        This API returns the password policy for the specified ID. A token with ORG_ADMIN authority is required to call this API.
+        This API returns the password policy for the specified ID.
 
         :param id: The ID of password policy to retrieve. (required)
         :type id: str
@@ -1217,7 +1217,7 @@ class PasswordPoliciesApi:
     ) -> PasswordPolicyV3Dto:
         """Update Password Policy by ID
 
-        This API updates the specified password policy. A token with ORG_ADMIN authority is required to call this API.
+        This API updates the specified password policy.
 
         :param id: The ID of password policy to update. (required)
         :type id: str
@@ -1294,7 +1294,7 @@ class PasswordPoliciesApi:
     ) -> ApiResponse[PasswordPolicyV3Dto]:
         """Update Password Policy by ID
 
-        This API updates the specified password policy. A token with ORG_ADMIN authority is required to call this API.
+        This API updates the specified password policy.
 
         :param id: The ID of password policy to update. (required)
         :type id: str
@@ -1371,7 +1371,7 @@ class PasswordPoliciesApi:
     ) -> RESTResponseType:
         """Update Password Policy by ID
 
-        This API updates the specified password policy. A token with ORG_ADMIN authority is required to call this API.
+        This API updates the specified password policy.
 
         :param id: The ID of password policy to update. (required)
         :type id: str

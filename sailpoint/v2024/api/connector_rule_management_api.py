@@ -63,7 +63,7 @@ class ConnectorRuleManagementApi:
     ) -> ConnectorRuleResponse:
         """Create Connector Rule
 
-        Creates a new connector rule. A token with ORG_ADMIN authority is required to call this API.
+        Creates a new connector rule.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -139,7 +139,7 @@ class ConnectorRuleManagementApi:
     ) -> ApiResponse[ConnectorRuleResponse]:
         """Create Connector Rule
 
-        Creates a new connector rule. A token with ORG_ADMIN authority is required to call this API.
+        Creates a new connector rule.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -215,7 +215,7 @@ class ConnectorRuleManagementApi:
     ) -> RESTResponseType:
         """Create Connector Rule
 
-        Creates a new connector rule. A token with ORG_ADMIN authority is required to call this API.
+        Creates a new connector rule.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -366,7 +366,7 @@ class ConnectorRuleManagementApi:
     ) -> None:
         """Delete a Connector-Rule
 
-        Deletes the connector rule specified by the given ID. A token with ORG_ADMIN authority is required to call this API.
+        Deletes the connector rule specified by the given ID.
 
         :param id: ID of the connector rule to delete (required)
         :type id: str
@@ -443,7 +443,7 @@ class ConnectorRuleManagementApi:
     ) -> ApiResponse[None]:
         """Delete a Connector-Rule
 
-        Deletes the connector rule specified by the given ID. A token with ORG_ADMIN authority is required to call this API.
+        Deletes the connector rule specified by the given ID.
 
         :param id: ID of the connector rule to delete (required)
         :type id: str
@@ -520,7 +520,7 @@ class ConnectorRuleManagementApi:
     ) -> RESTResponseType:
         """Delete a Connector-Rule
 
-        Deletes the connector rule specified by the given ID. A token with ORG_ADMIN authority is required to call this API.
+        Deletes the connector rule specified by the given ID.
 
         :param id: ID of the connector rule to delete (required)
         :type id: str
@@ -659,7 +659,7 @@ class ConnectorRuleManagementApi:
     ) -> ConnectorRuleResponse:
         """Connector-Rule by ID
 
-        Returns the connector rule specified by ID. A token with ORG_ADMIN authority is required to call this API.
+        Returns the connector rule specified by ID.
 
         :param id: ID of the connector rule to retrieve (required)
         :type id: str
@@ -736,7 +736,7 @@ class ConnectorRuleManagementApi:
     ) -> ApiResponse[ConnectorRuleResponse]:
         """Connector-Rule by ID
 
-        Returns the connector rule specified by ID. A token with ORG_ADMIN authority is required to call this API.
+        Returns the connector rule specified by ID.
 
         :param id: ID of the connector rule to retrieve (required)
         :type id: str
@@ -813,7 +813,7 @@ class ConnectorRuleManagementApi:
     ) -> RESTResponseType:
         """Connector-Rule by ID
 
-        Returns the connector rule specified by ID. A token with ORG_ADMIN authority is required to call this API.
+        Returns the connector rule specified by ID.
 
         :param id: ID of the connector rule to retrieve (required)
         :type id: str
@@ -951,7 +951,7 @@ class ConnectorRuleManagementApi:
     ) -> List[ConnectorRuleResponse]:
         """List Connector Rules
 
-        Returns the list of connector rules. A token with ORG_ADMIN authority is required to call this API.
+        Returns the list of connector rules.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -1023,7 +1023,7 @@ class ConnectorRuleManagementApi:
     ) -> ApiResponse[List[ConnectorRuleResponse]]:
         """List Connector Rules
 
-        Returns the list of connector rules. A token with ORG_ADMIN authority is required to call this API.
+        Returns the list of connector rules.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -1095,7 +1095,7 @@ class ConnectorRuleManagementApi:
     ) -> RESTResponseType:
         """List Connector Rules
 
-        Returns the list of connector rules. A token with ORG_ADMIN authority is required to call this API.
+        Returns the list of connector rules.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -1228,7 +1228,7 @@ class ConnectorRuleManagementApi:
     ) -> ConnectorRuleResponse:
         """Update a Connector Rule
 
-        Updates an existing connector rule with the one provided in the request body. Note that the fields 'id', 'name', and 'type' are immutable. A token with ORG_ADMIN authority is required to call this API.
+        Updates an existing connector rule with the one provided in the request body. Note that the fields 'id', 'name', and 'type' are immutable.
 
         :param id: ID of the connector rule to update (required)
         :type id: str
@@ -1309,7 +1309,7 @@ class ConnectorRuleManagementApi:
     ) -> ApiResponse[ConnectorRuleResponse]:
         """Update a Connector Rule
 
-        Updates an existing connector rule with the one provided in the request body. Note that the fields 'id', 'name', and 'type' are immutable. A token with ORG_ADMIN authority is required to call this API.
+        Updates an existing connector rule with the one provided in the request body. Note that the fields 'id', 'name', and 'type' are immutable.
 
         :param id: ID of the connector rule to update (required)
         :type id: str
@@ -1390,7 +1390,7 @@ class ConnectorRuleManagementApi:
     ) -> RESTResponseType:
         """Update a Connector Rule
 
-        Updates an existing connector rule with the one provided in the request body. Note that the fields 'id', 'name', and 'type' are immutable. A token with ORG_ADMIN authority is required to call this API.
+        Updates an existing connector rule with the one provided in the request body. Note that the fields 'id', 'name', and 'type' are immutable.
 
         :param id: ID of the connector rule to update (required)
         :type id: str
@@ -1548,7 +1548,7 @@ class ConnectorRuleManagementApi:
     ) -> ConnectorRuleValidationResponse:
         """Validate Connector Rule
 
-        Returns a list of issues within the code to fix, if any. A token with ORG_ADMIN authority is required to call this API.
+        Returns a list of issues within the code to fix, if any.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -1624,7 +1624,7 @@ class ConnectorRuleManagementApi:
     ) -> ApiResponse[ConnectorRuleValidationResponse]:
         """Validate Connector Rule
 
-        Returns a list of issues within the code to fix, if any. A token with ORG_ADMIN authority is required to call this API.
+        Returns a list of issues within the code to fix, if any.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -1700,7 +1700,7 @@ class ConnectorRuleManagementApi:
     ) -> RESTResponseType:
         """Validate Connector Rule
 
-        Returns a list of issues within the code to fix, if any. A token with ORG_ADMIN authority is required to call this API.
+        Returns a list of issues within the code to fix, if any.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str

@@ -49,6 +49,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 
 # Enter a context with an instance of the API client
 with sailpoint.v3.ApiClient(configuration) as api_client:
@@ -515,10 +517,13 @@ Class | Method | HTTP request | Description
  - [ApprovalStatusDtoOriginalOwner](sailpoint/v3/docs/ApprovalStatusDtoOriginalOwner.md)
  - [ApprovalSummary](sailpoint/v3/docs/ApprovalSummary.md)
  - [ArrayInner](sailpoint/v3/docs/ArrayInner.md)
+ - [AttributeDTO](sailpoint/v3/docs/AttributeDTO.md)
+ - [AttributeDTOList](sailpoint/v3/docs/AttributeDTOList.md)
  - [AttributeDefinition](sailpoint/v3/docs/AttributeDefinition.md)
  - [AttributeDefinitionSchema](sailpoint/v3/docs/AttributeDefinitionSchema.md)
  - [AttributeDefinitionType](sailpoint/v3/docs/AttributeDefinitionType.md)
  - [AttributeRequest](sailpoint/v3/docs/AttributeRequest.md)
+ - [AttributeValueDTO](sailpoint/v3/docs/AttributeValueDTO.md)
  - [AuthUser](sailpoint/v3/docs/AuthUser.md)
  - [BackupOptions](sailpoint/v3/docs/BackupOptions.md)
  - [BackupResponse](sailpoint/v3/docs/BackupResponse.md)

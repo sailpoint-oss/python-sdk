@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 Create new SIM integration
 
-Create a new SIM Integrations.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+Create a new SIM Integrations.
 
 ### Example
 
@@ -105,7 +105,7 @@ Name | Type | Description  | Notes
 
 Delete a SIM integration
 
-Get the details of a SIM integration. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+Get the details of a SIM integration.
 
 ### Example
 
@@ -188,7 +188,7 @@ void (empty response body)
 
 Get a SIM integration details.
 
-Get the details of a SIM integration. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+Get the details of a SIM integration.
 
 ### Example
 
@@ -274,7 +274,7 @@ Name | Type | Description  | Notes
 
 List the existing SIM integrations.
 
-List the existing SIM integrations. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+List the existing SIM integrations.
 
 ### Example
 
@@ -358,7 +358,7 @@ Name | Type | Description  | Notes
 
 Patch a SIM beforeProvisioningRule attribute.
 
-Patch a SIM beforeProvisioningRule attribute given a JsonPatch object. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+Patch a SIM beforeProvisioningRule attribute given a JsonPatch object.
 
 ### Example
 
@@ -447,7 +447,7 @@ Name | Type | Description  | Notes
 
 Patch a SIM attribute.
 
-Patch a SIM attribute given a JsonPatch object. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+Patch a SIM attribute given a JsonPatch object.
 
 ### Example
 
@@ -536,7 +536,7 @@ Name | Type | Description  | Notes
 
 Update an existing SIM integration
 
-Update an existing SIM integration.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+Update an existing SIM integration.
 
 ### Example
 
