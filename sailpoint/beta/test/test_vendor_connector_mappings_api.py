@@ -29,14 +29,21 @@ class TestVendorConnectorMappingsApi(unittest.TestCase):
     def test_create_vendor_connector_mapping(self) -> None:
         """Test case for create_vendor_connector_mapping
 
-        Create a vendor connector mapping
+        Create Vendor Connector Mapping
         """
         pass
 
     def test_delete_vendor_connector_mapping(self) -> None:
         """Test case for delete_vendor_connector_mapping
 
-        Delete a vendor connector mapping
+        Delete Vendor Connector Mapping
+        """
+        pass
+
+    def test_get_vendor_connector_mappings(self) -> None:
+        """Test case for get_vendor_connector_mappings
+
+        List Vendor Connector Mappings
         """
         pass
 

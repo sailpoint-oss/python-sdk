@@ -54,9 +54,9 @@ class VendorConnectorMappingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> VendorConnectorMapping:
-        """Create a vendor connector mapping
+        """Create Vendor Connector Mapping
 
-        Creates a new mapping between a SaaS vendor and an IDN connector to establish correlation paths. 
+        Create a new mapping between a SaaS vendor and an ISC connector to establish correlation paths. 
 
         :param vendor_connector_mapping: (required)
         :type vendor_connector_mapping: VendorConnectorMapping
@@ -127,9 +127,9 @@ class VendorConnectorMappingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[VendorConnectorMapping]:
-        """Create a vendor connector mapping
+        """Create Vendor Connector Mapping
 
-        Creates a new mapping between a SaaS vendor and an IDN connector to establish correlation paths. 
+        Create a new mapping between a SaaS vendor and an ISC connector to establish correlation paths. 
 
         :param vendor_connector_mapping: (required)
         :type vendor_connector_mapping: VendorConnectorMapping
@@ -200,9 +200,9 @@ class VendorConnectorMappingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create a vendor connector mapping
+        """Create Vendor Connector Mapping
 
-        Creates a new mapping between a SaaS vendor and an IDN connector to establish correlation paths. 
+        Create a new mapping between a SaaS vendor and an ISC connector to establish correlation paths. 
 
         :param vendor_connector_mapping: (required)
         :type vendor_connector_mapping: VendorConnectorMapping
@@ -345,9 +345,9 @@ class VendorConnectorMappingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> DeleteVendorConnectorMapping200Response:
-        """Delete a vendor connector mapping
+        """Delete Vendor Connector Mapping
 
-        Soft deletes a mapping between a SaaS vendor and an IDN connector, removing the established correlation. 
+        Soft delete a mapping between a SaaS vendor and an ISC connector, removing the established correlation. 
 
         :param vendor_connector_mapping: (required)
         :type vendor_connector_mapping: VendorConnectorMapping
@@ -418,9 +418,9 @@ class VendorConnectorMappingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[DeleteVendorConnectorMapping200Response]:
-        """Delete a vendor connector mapping
+        """Delete Vendor Connector Mapping
 
-        Soft deletes a mapping between a SaaS vendor and an IDN connector, removing the established correlation. 
+        Soft delete a mapping between a SaaS vendor and an ISC connector, removing the established correlation. 
 
         :param vendor_connector_mapping: (required)
         :type vendor_connector_mapping: VendorConnectorMapping
@@ -491,9 +491,9 @@ class VendorConnectorMappingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete a vendor connector mapping
+        """Delete Vendor Connector Mapping
 
-        Soft deletes a mapping between a SaaS vendor and an IDN connector, removing the established correlation. 
+        Soft delete a mapping between a SaaS vendor and an ISC connector, removing the established correlation. 
 
         :param vendor_connector_mapping: (required)
         :type vendor_connector_mapping: VendorConnectorMapping

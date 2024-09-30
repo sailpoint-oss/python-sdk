@@ -119,11 +119,10 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**update_account**](sailpoint/beta/docs/AccountsApi.md#update_account) | **PATCH** /accounts/{id} | Update Account
 *ApplicationDiscoveryApi* | [**get_discovered_application_by_id**](sailpoint/beta/docs/ApplicationDiscoveryApi.md#get_discovered_application_by_id) | **GET** /discovered-applications/{id} | Get Discovered Application by ID
 *ApplicationDiscoveryApi* | [**get_discovered_applications**](sailpoint/beta/docs/ApplicationDiscoveryApi.md#get_discovered_applications) | **GET** /discovered-applications | Retrieve discovered applications for tenant
-*ApplicationDiscoveryApi* | [**get_manual_discover_applications_csv_template**](sailpoint/beta/docs/ApplicationDiscoveryApi.md#get_manual_discover_applications_csv_template) | **GET** /manual-discover-applications-template | CSV template download for discovery
-*ApplicationDiscoveryApi* | [**get_vendor_connector_mappings**](sailpoint/beta/docs/ApplicationDiscoveryApi.md#get_vendor_connector_mappings) | **GET** /vendor-connector-mappings | List vendor connector mappings
-*ApplicationDiscoveryApi* | [**patch_discovered_application_by_id**](sailpoint/beta/docs/ApplicationDiscoveryApi.md#patch_discovered_application_by_id) | **PATCH** /discovered-applications/{id} | Patch Discovered Application by Id
-*ApplicationDiscoveryApi* | [**send_manual_discover_applications_csv_template**](sailpoint/beta/docs/ApplicationDiscoveryApi.md#send_manual_discover_applications_csv_template) | **POST** /manual-discover-applications | CSV Upload to discover applications
-*ApprovalsApi* | [**get_approval**](sailpoint/beta/docs/ApprovalsApi.md#get_approval) | **GET** /generic-approvals/{id} | Get an approval
+*ApplicationDiscoveryApi* | [**get_manual_discover_applications_csv_template**](sailpoint/beta/docs/ApplicationDiscoveryApi.md#get_manual_discover_applications_csv_template) | **GET** /manual-discover-applications-template | Download CSV Template for Discovery
+*ApplicationDiscoveryApi* | [**patch_discovered_application_by_id**](sailpoint/beta/docs/ApplicationDiscoveryApi.md#patch_discovered_application_by_id) | **PATCH** /discovered-applications/{id} | Patch Discovered Application by ID
+*ApplicationDiscoveryApi* | [**send_manual_discover_applications_csv_template**](sailpoint/beta/docs/ApplicationDiscoveryApi.md#send_manual_discover_applications_csv_template) | **POST** /manual-discover-applications | Upload CSV to Discover Applications
+*ApprovalsApi* | [**get_approval**](sailpoint/beta/docs/ApprovalsApi.md#get_approval) | **GET** /generic-approvals/{id} | Get Approval
 *ApprovalsApi* | [**get_approvals**](sailpoint/beta/docs/ApprovalsApi.md#get_approvals) | **GET** /generic-approvals | Get Approvals
 *AppsApi* | [**create_source_app**](sailpoint/beta/docs/AppsApi.md#create_source_app) | **POST** /source-apps | Create source app
 *AppsApi* | [**delete_access_profiles_from_source_app_by_bulk**](sailpoint/beta/docs/AppsApi.md#delete_access_profiles_from_source_app_by_bulk) | **POST** /source-apps/{id}/access-profiles/bulk-remove | Bulk remove access profiles from the specified source app
@@ -474,11 +473,11 @@ Class | Method | HTTP request | Description
 *SPConfigApi* | [**get_sp_config_import_status**](sailpoint/beta/docs/SPConfigApi.md#get_sp_config_import_status) | **GET** /sp-config/import/{id} | Get import job status
 *SPConfigApi* | [**import_sp_config**](sailpoint/beta/docs/SPConfigApi.md#import_sp_config) | **POST** /sp-config/import | Initiates configuration objects import job
 *SPConfigApi* | [**list_sp_config_objects**](sailpoint/beta/docs/SPConfigApi.md#list_sp_config_objects) | **GET** /sp-config/config-objects | Get config object details
-*SearchAttributeConfigurationApi* | [**create_search_attribute_config**](sailpoint/beta/docs/SearchAttributeConfigurationApi.md#create_search_attribute_config) | **POST** /accounts/search-attribute-config | Configure/create extended search attributes in IdentityNow.
-*SearchAttributeConfigurationApi* | [**delete_search_attribute_config**](sailpoint/beta/docs/SearchAttributeConfigurationApi.md#delete_search_attribute_config) | **DELETE** /accounts/search-attribute-config/{name} | Delete an extended search attribute in IdentityNow.
-*SearchAttributeConfigurationApi* | [**get_search_attribute_config**](sailpoint/beta/docs/SearchAttributeConfigurationApi.md#get_search_attribute_config) | **GET** /accounts/search-attribute-config | Retrieve a list of extended search attributes in IdentityNow.
-*SearchAttributeConfigurationApi* | [**get_single_search_attribute_config**](sailpoint/beta/docs/SearchAttributeConfigurationApi.md#get_single_search_attribute_config) | **GET** /accounts/search-attribute-config/{name} | Get the details of a specific extended search attribute in IdentityNow.
-*SearchAttributeConfigurationApi* | [**patch_search_attribute_config**](sailpoint/beta/docs/SearchAttributeConfigurationApi.md#patch_search_attribute_config) | **PATCH** /accounts/search-attribute-config/{name} | Update the details of a specific extended search attribute in IdentityNow.
+*SearchAttributeConfigurationApi* | [**create_search_attribute_config**](sailpoint/beta/docs/SearchAttributeConfigurationApi.md#create_search_attribute_config) | **POST** /accounts/search-attribute-config | Create Extended Search Attributes
+*SearchAttributeConfigurationApi* | [**delete_search_attribute_config**](sailpoint/beta/docs/SearchAttributeConfigurationApi.md#delete_search_attribute_config) | **DELETE** /accounts/search-attribute-config/{name} | Delete Extended Search Attribute
+*SearchAttributeConfigurationApi* | [**get_search_attribute_config**](sailpoint/beta/docs/SearchAttributeConfigurationApi.md#get_search_attribute_config) | **GET** /accounts/search-attribute-config | List Extended Search Attributes
+*SearchAttributeConfigurationApi* | [**get_single_search_attribute_config**](sailpoint/beta/docs/SearchAttributeConfigurationApi.md#get_single_search_attribute_config) | **GET** /accounts/search-attribute-config/{name} | Get Extended Search Attribute
+*SearchAttributeConfigurationApi* | [**patch_search_attribute_config**](sailpoint/beta/docs/SearchAttributeConfigurationApi.md#patch_search_attribute_config) | **PATCH** /accounts/search-attribute-config/{name} | Update Extended Search Attribute
 *SegmentsApi* | [**create_segment**](sailpoint/beta/docs/SegmentsApi.md#create_segment) | **POST** /segments | Create Segment
 *SegmentsApi* | [**delete_segment**](sailpoint/beta/docs/SegmentsApi.md#delete_segment) | **DELETE** /segments/{id} | Delete Segment by ID
 *SegmentsApi* | [**get_segment**](sailpoint/beta/docs/SegmentsApi.md#get_segment) | **GET** /segments/{id} | Get Segment by ID
@@ -577,8 +576,9 @@ Class | Method | HTTP request | Description
 *TriggersApi* | [**update_subscription**](sailpoint/beta/docs/TriggersApi.md#update_subscription) | **PUT** /trigger-subscriptions/{id} | Update a Subscription
 *UIMetadataApi* | [**get_tenant_ui_metadata**](sailpoint/beta/docs/UIMetadataApi.md#get_tenant_ui_metadata) | **GET** /ui-metadata/tenant | Get a tenant UI metadata
 *UIMetadataApi* | [**set_tenant_ui_metadata**](sailpoint/beta/docs/UIMetadataApi.md#set_tenant_ui_metadata) | **PUT** /ui-metadata/tenant | Update tenant UI metadata
-*VendorConnectorMappingsApi* | [**create_vendor_connector_mapping**](sailpoint/beta/docs/VendorConnectorMappingsApi.md#create_vendor_connector_mapping) | **POST** /vendor-connector-mappings | Create a vendor connector mapping
-*VendorConnectorMappingsApi* | [**delete_vendor_connector_mapping**](sailpoint/beta/docs/VendorConnectorMappingsApi.md#delete_vendor_connector_mapping) | **DELETE** /vendor-connector-mappings | Delete a vendor connector mapping
+*VendorConnectorMappingsApi* | [**create_vendor_connector_mapping**](sailpoint/beta/docs/VendorConnectorMappingsApi.md#create_vendor_connector_mapping) | **POST** /vendor-connector-mappings | Create Vendor Connector Mapping
+*VendorConnectorMappingsApi* | [**delete_vendor_connector_mapping**](sailpoint/beta/docs/VendorConnectorMappingsApi.md#delete_vendor_connector_mapping) | **DELETE** /vendor-connector-mappings | Delete Vendor Connector Mapping
+*VendorConnectorMappingsApi* | [**get_vendor_connector_mappings**](sailpoint/beta/docs/VendorConnectorMappingsApi.md#get_vendor_connector_mappings) | **GET** /vendor-connector-mappings | List Vendor Connector Mappings
 *WorkItemsApi* | [**approve_approval_item**](sailpoint/beta/docs/WorkItemsApi.md#approve_approval_item) | **POST** /work-items/{id}/approve/{approvalItemId} | Approve an Approval Item
 *WorkItemsApi* | [**approve_approval_items_in_bulk**](sailpoint/beta/docs/WorkItemsApi.md#approve_approval_items_in_bulk) | **POST** /work-items/bulk-approve/{id} | Bulk approve Approval Items
 *WorkItemsApi* | [**complete_work_item**](sailpoint/beta/docs/WorkItemsApi.md#complete_work_item) | **POST** /work-items/{id} | Complete a Work Item

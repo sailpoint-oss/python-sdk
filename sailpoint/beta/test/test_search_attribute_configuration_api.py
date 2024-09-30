@@ -29,35 +29,35 @@ class TestSearchAttributeConfigurationApi(unittest.TestCase):
     def test_create_search_attribute_config(self) -> None:
         """Test case for create_search_attribute_config
 
-        Configure/create extended search attributes in IdentityNow.
+        Create Extended Search Attributes
         """
         pass
 
     def test_delete_search_attribute_config(self) -> None:
         """Test case for delete_search_attribute_config
 
-        Delete an extended search attribute in IdentityNow.
+        Delete Extended Search Attribute
         """
         pass
 
     def test_get_search_attribute_config(self) -> None:
         """Test case for get_search_attribute_config
 
-        Retrieve a list of extended search attributes in IdentityNow.
+        List Extended Search Attributes
         """
         pass
 
     def test_get_single_search_attribute_config(self) -> None:
         """Test case for get_single_search_attribute_config
 
-        Get the details of a specific extended search attribute in IdentityNow.
+        Get Extended Search Attribute
         """
         pass
 
     def test_patch_search_attribute_config(self) -> None:
         """Test case for patch_search_attribute_config
 
-        Update the details of a specific extended search attribute in IdentityNow.
+        Update Extended Search Attribute
         """
         pass
 

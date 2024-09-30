@@ -42,7 +42,7 @@ class ApprovalsApi:
     @validate_call
     def get_approval(
         self,
-        id: Annotated[StrictStr, Field(description="ID of the approval that is to be returned")],
+        id: Annotated[StrictStr, Field(description="ID of the approval that to be returned.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -56,11 +56,11 @@ class ApprovalsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Approval:
-        """Get an approval
+        """Get Approval
 
-        Retrieve a single approval for a given approval ID. This endpoint is for generic approvals, different than the access-request-approval endpoint and does not include access-request-approvals.
+        Get a single approval for a given approval ID. This endpoint is for generic approvals, unlike the access-request-approval endpoint, and doesn't include access-request-approvals.
 
-        :param id: ID of the approval that is to be returned (required)
+        :param id: ID of the approval that to be returned. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -114,7 +114,7 @@ class ApprovalsApi:
     @validate_call
     def get_approval_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="ID of the approval that is to be returned")],
+        id: Annotated[StrictStr, Field(description="ID of the approval that to be returned.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -128,11 +128,11 @@ class ApprovalsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Approval]:
-        """Get an approval
+        """Get Approval
 
-        Retrieve a single approval for a given approval ID. This endpoint is for generic approvals, different than the access-request-approval endpoint and does not include access-request-approvals.
+        Get a single approval for a given approval ID. This endpoint is for generic approvals, unlike the access-request-approval endpoint, and doesn't include access-request-approvals.
 
-        :param id: ID of the approval that is to be returned (required)
+        :param id: ID of the approval that to be returned. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -186,7 +186,7 @@ class ApprovalsApi:
     @validate_call
     def get_approval_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="ID of the approval that is to be returned")],
+        id: Annotated[StrictStr, Field(description="ID of the approval that to be returned.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -200,11 +200,11 @@ class ApprovalsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get an approval
+        """Get Approval
 
-        Retrieve a single approval for a given approval ID. This endpoint is for generic approvals, different than the access-request-approval endpoint and does not include access-request-approvals.
+        Get a single approval for a given approval ID. This endpoint is for generic approvals, unlike the access-request-approval endpoint, and doesn't include access-request-approvals.
 
-        :param id: ID of the approval that is to be returned (required)
+        :param id: ID of the approval that to be returned. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -317,8 +317,8 @@ class ApprovalsApi:
     @validate_call
     def get_approvals(
         self,
-        mine: Annotated[Optional[StrictBool], Field(description="Returns the list of approvals for the current caller")] = None,
-        requester_id: Annotated[Optional[StrictStr], Field(description="Returns the list of approvals for a given requester ID")] = None,
+        mine: Annotated[Optional[StrictBool], Field(description="Returns the list of approvals for the current caller.")] = None,
+        requester_id: Annotated[Optional[StrictStr], Field(description="Returns the list of approvals for a given requester ID.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq*  **referenceType**: *eq*")] = None,
         _request_timeout: Union[
             None,
@@ -335,11 +335,11 @@ class ApprovalsApi:
     ) -> List[Approval]:
         """Get Approvals
 
-        Retrieve a list of approvals, which can be filtered by requester ID, status, or reference type. \"Mine\" query parameter can be used and it will return all approvals for the current approver. This endpoint is for generic approvals, different than the access-request-approval endpoint and does not include access-request-approvals.  Absence of all query parameters will will default to mine=true.
+        Get a list of approvals, which can be filtered by requester ID, status, or reference type. You can use the \"Mine\" query parameter to return all approvals for the current approver. This endpoint is for generic approvals, unlike the access-request-approval endpoint, and does not include access-request-approvals.  Absence of all query parameters will will default to mine=true.
 
-        :param mine: Returns the list of approvals for the current caller
+        :param mine: Returns the list of approvals for the current caller.
         :type mine: bool
-        :param requester_id: Returns the list of approvals for a given requester ID
+        :param requester_id: Returns the list of approvals for a given requester ID.
         :type requester_id: str
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq*  **referenceType**: *eq*
         :type filters: str
@@ -397,8 +397,8 @@ class ApprovalsApi:
     @validate_call
     def get_approvals_with_http_info(
         self,
-        mine: Annotated[Optional[StrictBool], Field(description="Returns the list of approvals for the current caller")] = None,
-        requester_id: Annotated[Optional[StrictStr], Field(description="Returns the list of approvals for a given requester ID")] = None,
+        mine: Annotated[Optional[StrictBool], Field(description="Returns the list of approvals for the current caller.")] = None,
+        requester_id: Annotated[Optional[StrictStr], Field(description="Returns the list of approvals for a given requester ID.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq*  **referenceType**: *eq*")] = None,
         _request_timeout: Union[
             None,
@@ -415,11 +415,11 @@ class ApprovalsApi:
     ) -> ApiResponse[List[Approval]]:
         """Get Approvals
 
-        Retrieve a list of approvals, which can be filtered by requester ID, status, or reference type. \"Mine\" query parameter can be used and it will return all approvals for the current approver. This endpoint is for generic approvals, different than the access-request-approval endpoint and does not include access-request-approvals.  Absence of all query parameters will will default to mine=true.
+        Get a list of approvals, which can be filtered by requester ID, status, or reference type. You can use the \"Mine\" query parameter to return all approvals for the current approver. This endpoint is for generic approvals, unlike the access-request-approval endpoint, and does not include access-request-approvals.  Absence of all query parameters will will default to mine=true.
 
-        :param mine: Returns the list of approvals for the current caller
+        :param mine: Returns the list of approvals for the current caller.
         :type mine: bool
-        :param requester_id: Returns the list of approvals for a given requester ID
+        :param requester_id: Returns the list of approvals for a given requester ID.
         :type requester_id: str
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq*  **referenceType**: *eq*
         :type filters: str
@@ -477,8 +477,8 @@ class ApprovalsApi:
     @validate_call
     def get_approvals_without_preload_content(
         self,
-        mine: Annotated[Optional[StrictBool], Field(description="Returns the list of approvals for the current caller")] = None,
-        requester_id: Annotated[Optional[StrictStr], Field(description="Returns the list of approvals for a given requester ID")] = None,
+        mine: Annotated[Optional[StrictBool], Field(description="Returns the list of approvals for the current caller.")] = None,
+        requester_id: Annotated[Optional[StrictStr], Field(description="Returns the list of approvals for a given requester ID.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq*  **referenceType**: *eq*")] = None,
         _request_timeout: Union[
             None,
@@ -495,11 +495,11 @@ class ApprovalsApi:
     ) -> RESTResponseType:
         """Get Approvals
 
-        Retrieve a list of approvals, which can be filtered by requester ID, status, or reference type. \"Mine\" query parameter can be used and it will return all approvals for the current approver. This endpoint is for generic approvals, different than the access-request-approval endpoint and does not include access-request-approvals.  Absence of all query parameters will will default to mine=true.
+        Get a list of approvals, which can be filtered by requester ID, status, or reference type. You can use the \"Mine\" query parameter to return all approvals for the current approver. This endpoint is for generic approvals, unlike the access-request-approval endpoint, and does not include access-request-approvals.  Absence of all query parameters will will default to mine=true.
 
-        :param mine: Returns the list of approvals for the current caller
+        :param mine: Returns the list of approvals for the current caller.
         :type mine: bool
-        :param requester_id: Returns the list of approvals for a given requester ID
+        :param requester_id: Returns the list of approvals for a given requester ID.
         :type requester_id: str
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq*  **referenceType**: *eq*
         :type filters: str

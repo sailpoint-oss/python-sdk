@@ -14,29 +14,22 @@
 
 import unittest
 
-from sailpoint.v2024.api.vendor_connector_mappings_api import VendorConnectorMappingsApi
+from sailpoint.v2024.api.vendor_connector_mappping_api import VendorConnectorMapppingApi
 
 
-class TestVendorConnectorMappingsApi(unittest.TestCase):
-    """VendorConnectorMappingsApi unit test stubs"""
+class TestVendorConnectorMapppingApi(unittest.TestCase):
+    """VendorConnectorMapppingApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = VendorConnectorMappingsApi()
+        self.api = VendorConnectorMapppingApi()
 
     def tearDown(self) -> None:
         pass
 
-    def test_create_vendor_connector_mapping(self) -> None:
-        """Test case for create_vendor_connector_mapping
+    def test_get_vendor_connector_mappings(self) -> None:
+        """Test case for get_vendor_connector_mappings
 
-        Create Vendor Connector Mapping
-        """
-        pass
-
-    def test_delete_vendor_connector_mapping(self) -> None:
-        """Test case for delete_vendor_connector_mapping
-
-        Delete Vendor Connector Mapping
+        List Vendor Connector Mappings
         """
         pass
 

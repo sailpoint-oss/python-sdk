@@ -21,7 +21,6 @@ from typing import List, Optional, Union
 from typing_extensions import Annotated
 from sailpoint.v3.models.get_discovered_applications200_response_inner import GetDiscoveredApplications200ResponseInner
 from sailpoint.v3.models.manual_discover_applications_template import ManualDiscoverApplicationsTemplate
-from sailpoint.v3.models.vendor_connector_mapping import VendorConnectorMapping
 
 from sailpoint.v3.api_client import ApiClient, RequestSerialized
 from sailpoint.v3.api_response import ApiResponse
@@ -62,9 +61,9 @@ class ApplicationDiscoveryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[GetDiscoveredApplications200ResponseInner]:
-        """Retrieve discovered applications for tenant
+        """Get Discovered Applications for Tenant
 
-        Fetches a list of applications that have been identified within the environment. This includes details such as application names, discovery dates, potential correlated saas_vendors and related suggested connectors. 
+        Get a list of applications that have been identified within the environment. This includes details such as application names, discovery dates, potential correlated saas_vendors and related suggested connectors. 
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -150,9 +149,9 @@ class ApplicationDiscoveryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[GetDiscoveredApplications200ResponseInner]]:
-        """Retrieve discovered applications for tenant
+        """Get Discovered Applications for Tenant
 
-        Fetches a list of applications that have been identified within the environment. This includes details such as application names, discovery dates, potential correlated saas_vendors and related suggested connectors. 
+        Get a list of applications that have been identified within the environment. This includes details such as application names, discovery dates, potential correlated saas_vendors and related suggested connectors. 
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -238,9 +237,9 @@ class ApplicationDiscoveryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Retrieve discovered applications for tenant
+        """Get Discovered Applications for Tenant
 
-        Fetches a list of applications that have been identified within the environment. This includes details such as application names, discovery dates, potential correlated saas_vendors and related suggested connectors. 
+        Get a list of applications that have been identified within the environment. This includes details such as application names, discovery dates, potential correlated saas_vendors and related suggested connectors. 
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -402,9 +401,9 @@ class ApplicationDiscoveryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ManualDiscoverApplicationsTemplate:
-        """CSV template download for discovery
+        """Download CSV Template for Discovery
 
-        This endpoint allows the user to download an example CSV file with two columns `application_name` and `description`.  The CSV file contains a single row with the values 'Example Application' and 'Example Description'.  The downloaded template is specifically designed for use with the `/manual-discover-applications` endpoint. 
+        Download an example CSV file with two columns `application_name` and `description`.  The CSV file contains a single row with the values 'Example Application' and 'Example Description'.  The downloaded template is specifically designed for use with the `/manual-discover-applications` endpoint. 
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -470,9 +469,9 @@ class ApplicationDiscoveryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ManualDiscoverApplicationsTemplate]:
-        """CSV template download for discovery
+        """Download CSV Template for Discovery
 
-        This endpoint allows the user to download an example CSV file with two columns `application_name` and `description`.  The CSV file contains a single row with the values 'Example Application' and 'Example Description'.  The downloaded template is specifically designed for use with the `/manual-discover-applications` endpoint. 
+        Download an example CSV file with two columns `application_name` and `description`.  The CSV file contains a single row with the values 'Example Application' and 'Example Description'.  The downloaded template is specifically designed for use with the `/manual-discover-applications` endpoint. 
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -538,9 +537,9 @@ class ApplicationDiscoveryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """CSV template download for discovery
+        """Download CSV Template for Discovery
 
-        This endpoint allows the user to download an example CSV file with two columns `application_name` and `description`.  The CSV file contains a single row with the values 'Example Application' and 'Example Description'.  The downloaded template is specifically designed for use with the `/manual-discover-applications` endpoint. 
+        Download an example CSV file with two columns `application_name` and `description`.  The CSV file contains a single row with the values 'Example Application' and 'Example Description'.  The downloaded template is specifically designed for use with the `/manual-discover-applications` endpoint. 
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -648,269 +647,6 @@ class ApplicationDiscoveryApi:
 
 
     @validate_call
-    def get_vendor_connector_mappings(
-        self,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[VendorConnectorMapping]:
-        """List vendor connector mappings
-
-        Retrieves a list of mappings between SaaS vendors and IDN connectors, detailing the connections established for correlation. 
-
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_vendor_connector_mappings_serialize(
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[VendorConnectorMapping]",
-            '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
-            '403': "ErrorResponseDto",
-            '405': "GetVendorConnectorMappings405Response",
-            '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def get_vendor_connector_mappings_with_http_info(
-        self,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[VendorConnectorMapping]]:
-        """List vendor connector mappings
-
-        Retrieves a list of mappings between SaaS vendors and IDN connectors, detailing the connections established for correlation. 
-
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_vendor_connector_mappings_serialize(
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[VendorConnectorMapping]",
-            '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
-            '403': "ErrorResponseDto",
-            '405': "GetVendorConnectorMappings405Response",
-            '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def get_vendor_connector_mappings_without_preload_content(
-        self,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """List vendor connector mappings
-
-        Retrieves a list of mappings between SaaS vendors and IDN connectors, detailing the connections established for correlation. 
-
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_vendor_connector_mappings_serialize(
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[VendorConnectorMapping]",
-            '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
-            '403': "ErrorResponseDto",
-            '405': "GetVendorConnectorMappings405Response",
-            '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_vendor_connector_mappings_serialize(
-        self,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'userAuth', 
-            'userAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/vendor-connector-mappings',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
     def send_manual_discover_applications_csv_template(
         self,
         file: Annotated[Union[StrictBytes, StrictStr], Field(description="The CSV file to upload containing `application_name` and `description` columns. Each row represents an application to be discovered.")],
@@ -927,9 +663,9 @@ class ApplicationDiscoveryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """CSV Upload to discover applications
+        """Upload CSV to Discover Applications
 
-        This endpoint supports uploading a CSV file with application data for manual correlation to specific IDN connectors.  If a suitable IDN connector is unavailable, the system will recommend generic connectors instead.
+        Uploading a CSV file with application data for manual correlation to specific ISC connectors.  If a suitable ISC connector is unavailable, the system will recommend generic connectors instead.
 
         :param file: The CSV file to upload containing `application_name` and `description` columns. Each row represents an application to be discovered. (required)
         :type file: bytearray
@@ -999,9 +735,9 @@ class ApplicationDiscoveryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """CSV Upload to discover applications
+        """Upload CSV to Discover Applications
 
-        This endpoint supports uploading a CSV file with application data for manual correlation to specific IDN connectors.  If a suitable IDN connector is unavailable, the system will recommend generic connectors instead.
+        Uploading a CSV file with application data for manual correlation to specific ISC connectors.  If a suitable ISC connector is unavailable, the system will recommend generic connectors instead.
 
         :param file: The CSV file to upload containing `application_name` and `description` columns. Each row represents an application to be discovered. (required)
         :type file: bytearray
@@ -1071,9 +807,9 @@ class ApplicationDiscoveryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """CSV Upload to discover applications
+        """Upload CSV to Discover Applications
 
-        This endpoint supports uploading a CSV file with application data for manual correlation to specific IDN connectors.  If a suitable IDN connector is unavailable, the system will recommend generic connectors instead.
+        Uploading a CSV file with application data for manual correlation to specific ISC connectors.  If a suitable ISC connector is unavailable, the system will recommend generic connectors instead.
 
         :param file: The CSV file to upload containing `application_name` and `description` columns. Each row represents an application to be discovered. (required)
         :type file: bytearray

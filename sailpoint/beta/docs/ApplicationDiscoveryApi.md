@@ -6,10 +6,9 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_discovered_application_by_id**](ApplicationDiscoveryApi.md#get_discovered_application_by_id) | **GET** /discovered-applications/{id} | Get Discovered Application by ID
 [**get_discovered_applications**](ApplicationDiscoveryApi.md#get_discovered_applications) | **GET** /discovered-applications | Retrieve discovered applications for tenant
-[**get_manual_discover_applications_csv_template**](ApplicationDiscoveryApi.md#get_manual_discover_applications_csv_template) | **GET** /manual-discover-applications-template | CSV template download for discovery
-[**get_vendor_connector_mappings**](ApplicationDiscoveryApi.md#get_vendor_connector_mappings) | **GET** /vendor-connector-mappings | List vendor connector mappings
-[**patch_discovered_application_by_id**](ApplicationDiscoveryApi.md#patch_discovered_application_by_id) | **PATCH** /discovered-applications/{id} | Patch Discovered Application by Id
-[**send_manual_discover_applications_csv_template**](ApplicationDiscoveryApi.md#send_manual_discover_applications_csv_template) | **POST** /manual-discover-applications | CSV Upload to discover applications
+[**get_manual_discover_applications_csv_template**](ApplicationDiscoveryApi.md#get_manual_discover_applications_csv_template) | **GET** /manual-discover-applications-template | Download CSV Template for Discovery
+[**patch_discovered_application_by_id**](ApplicationDiscoveryApi.md#patch_discovered_application_by_id) | **PATCH** /discovered-applications/{id} | Patch Discovered Application by ID
+[**send_manual_discover_applications_csv_template**](ApplicationDiscoveryApi.md#send_manual_discover_applications_csv_template) | **POST** /manual-discover-applications | Upload CSV to Discover Applications
 
 
 # **get_discovered_application_by_id**
@@ -17,7 +16,7 @@ Method | HTTP request | Description
 
 Get Discovered Application by ID
 
-This API returns a discovered application with its associated sources based on the ID provided. 
+Get the discovered application, along with with its associated sources, based on the provided ID. 
 
 ### Example
 
@@ -48,7 +47,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.ApplicationDiscoveryApi(api_client)
-    id = '123e4567-e89b-12d3-a456-426655440000' # str | ID of the discovered application.
+    id = '123e4567-e89b-12d3-a456-426655440000' # str | Discovered application's ID.
 
     try:
         # Get Discovered Application by ID
@@ -64,7 +63,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| ID of the discovered application. | 
+ **id** | **str**| Discovered application&#39;s ID. | 
 
 ### Return type
 
@@ -83,7 +82,7 @@ void (empty response body)
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Returns the discovered application along with its associated sources. |  -  |
+**200** | Returns the discovered application, along with its associated sources. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -97,7 +96,7 @@ void (empty response body)
 
 Retrieve discovered applications for tenant
 
-Fetches a list of applications that have been identified within the environment. This includes details such as application names, discovery dates, potential correlated saas_vendors and related suggested connectors. 
+Get a list of applications that have been identified within the environment. This includes details such as application names, discovery dates, potential correlated saas_vendors and related suggested connectors. 
 
 ### Example
 
@@ -186,9 +185,9 @@ Name | Type | Description  | Notes
 # **get_manual_discover_applications_csv_template**
 > ManualDiscoverApplicationsTemplate get_manual_discover_applications_csv_template()
 
-CSV template download for discovery
+Download CSV Template for Discovery
 
-This endpoint allows the user to download an example CSV file with two columns `application_name` and `description`.  The CSV file contains a single row with the values 'Example Application' and 'Example Description'.  The downloaded template is specifically designed for use with the `/manual-discover-applications` endpoint. 
+Download an example CSV file with two columns `application_name` and `description`.  The CSV file contains a single row with the values 'Example Application' and 'Example Description'.  The downloaded template is specifically designed for use with the `/manual-discover-applications` endpoint. 
 
 ### Example
 
@@ -222,7 +221,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
     api_instance = sailpoint.beta.ApplicationDiscoveryApi(api_client)
 
     try:
-        # CSV template download for discovery
+        # Download CSV Template for Discovery
         api_response = api_instance.get_manual_discover_applications_csv_template()
         print("The response of ApplicationDiscoveryApi->get_manual_discover_applications_csv_template:\n")
         pprint(api_response)
@@ -262,92 +261,12 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_vendor_connector_mappings**
-> List[VendorConnectorMapping] get_vendor_connector_mappings()
-
-List vendor connector mappings
-
-Retrieves a list of mappings between SaaS vendors and IDN connectors, detailing the connections established for correlation. 
-
-### Example
-
-* OAuth Authentication (userAuth):
-* OAuth Authentication (userAuth):
-
-```python
-import sailpoint.beta
-from sailpoint.beta.models.vendor_connector_mapping import VendorConnectorMapping
-from sailpoint.beta.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
-# See configuration.py for a list of all supported configuration parameters.
-configuration = sailpoint.beta.Configuration(
-    host = "https://sailpoint.api.identitynow.com/beta"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with sailpoint.beta.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = sailpoint.beta.ApplicationDiscoveryApi(api_client)
-
-    try:
-        # List vendor connector mappings
-        api_response = api_instance.get_vendor_connector_mappings()
-        print("The response of ApplicationDiscoveryApi->get_vendor_connector_mappings:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling ApplicationDiscoveryApi->get_vendor_connector_mappings: %s\n" % e)
-```
-
-
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**List[VendorConnectorMapping]**](VendorConnectorMapping.md)
-
-### Authorization
-
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successfully retrieved list. |  -  |
-**400** | Client Error - Returned if the request body is invalid. |  -  |
-**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
-**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
-**405** | Method Not Allowed - indicates that the server knows the request method, but the target resource doesn&#39;t support this method. |  -  |
-**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
-**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **patch_discovered_application_by_id**
 > patch_discovered_application_by_id(id, json_patch_operations=json_patch_operations)
 
-Patch Discovered Application by Id
+Patch Discovered Application by ID
 
-This API updates an existing discovered application using a limited version of the [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax. The following fields are patchable: - **associatedSources** - **dismissed**
+Update an existing discovered application by using a limited version of the [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax. You can patch these fields: - **associatedSources** - **dismissed**
 
 ### Example
 
@@ -379,11 +298,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.ApplicationDiscoveryApi(api_client)
-    id = '123e4567-e89b-12d3-a456-426655440000' # str | ID of the discovered application.
+    id = '123e4567-e89b-12d3-a456-426655440000' # str | Discovered application's ID.
     json_patch_operations = [{op=replace, path=/dismissed, value=true}] # List[JsonPatchOperations] |  (optional)
 
     try:
-        # Patch Discovered Application by Id
+        # Patch Discovered Application by ID
         api_instance.patch_discovered_application_by_id(id, json_patch_operations=json_patch_operations)
     except Exception as e:
         print("Exception when calling ApplicationDiscoveryApi->patch_discovered_application_by_id: %s\n" % e)
@@ -396,7 +315,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| ID of the discovered application. | 
+ **id** | **str**| Discovered application&#39;s ID. | 
  **json_patch_operations** | [**List[JsonPatchOperations]**](JsonPatchOperations.md)|  | [optional] 
 
 ### Return type
@@ -428,9 +347,9 @@ void (empty response body)
 # **send_manual_discover_applications_csv_template**
 > send_manual_discover_applications_csv_template(file)
 
-CSV Upload to discover applications
+Upload CSV to Discover Applications
 
-This endpoint supports uploading a CSV file with application data for manual correlation to specific IDN connectors.  If a suitable IDN connector is unavailable, the system will recommend generic connectors instead.
+Upload a CSV file with application data for manual correlation to specific ISC connectors.  If a suitable ISC connector is unavailable, the system will recommend generic connectors instead.
 
 ### Example
 
@@ -464,7 +383,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
     file = None # bytearray | The CSV file to upload containing `application_name` and `description` columns. Each row represents an application to be discovered.
 
     try:
-        # CSV Upload to discover applications
+        # Upload CSV to Discover Applications
         api_instance.send_manual_discover_applications_csv_template(file)
     except Exception as e:
         print("Exception when calling ApplicationDiscoveryApi->send_manual_discover_applications_csv_template: %s\n" % e)

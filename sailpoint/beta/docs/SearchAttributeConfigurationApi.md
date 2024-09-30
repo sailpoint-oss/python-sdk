@@ -4,19 +4,19 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_search_attribute_config**](SearchAttributeConfigurationApi.md#create_search_attribute_config) | **POST** /accounts/search-attribute-config | Configure/create extended search attributes in IdentityNow.
-[**delete_search_attribute_config**](SearchAttributeConfigurationApi.md#delete_search_attribute_config) | **DELETE** /accounts/search-attribute-config/{name} | Delete an extended search attribute in IdentityNow.
-[**get_search_attribute_config**](SearchAttributeConfigurationApi.md#get_search_attribute_config) | **GET** /accounts/search-attribute-config | Retrieve a list of extended search attributes in IdentityNow.
-[**get_single_search_attribute_config**](SearchAttributeConfigurationApi.md#get_single_search_attribute_config) | **GET** /accounts/search-attribute-config/{name} | Get the details of a specific extended search attribute in IdentityNow.
-[**patch_search_attribute_config**](SearchAttributeConfigurationApi.md#patch_search_attribute_config) | **PATCH** /accounts/search-attribute-config/{name} | Update the details of a specific extended search attribute in IdentityNow.
+[**create_search_attribute_config**](SearchAttributeConfigurationApi.md#create_search_attribute_config) | **POST** /accounts/search-attribute-config | Create Extended Search Attributes
+[**delete_search_attribute_config**](SearchAttributeConfigurationApi.md#delete_search_attribute_config) | **DELETE** /accounts/search-attribute-config/{name} | Delete Extended Search Attribute
+[**get_search_attribute_config**](SearchAttributeConfigurationApi.md#get_search_attribute_config) | **GET** /accounts/search-attribute-config | List Extended Search Attributes
+[**get_single_search_attribute_config**](SearchAttributeConfigurationApi.md#get_single_search_attribute_config) | **GET** /accounts/search-attribute-config/{name} | Get Extended Search Attribute
+[**patch_search_attribute_config**](SearchAttributeConfigurationApi.md#patch_search_attribute_config) | **PATCH** /accounts/search-attribute-config/{name} | Update Extended Search Attribute
 
 
 # **create_search_attribute_config**
 > object create_search_attribute_config(search_attribute_config)
 
-Configure/create extended search attributes in IdentityNow.
+Create Extended Search Attributes
 
-This API accepts an attribute name, an attribute display name and a list of name/value pair associates of application IDs to attribute names.  It will then validate the inputs and configure/create and attribute promotion configuration in the Link ObjectConfig. A token with ORG_ADMIN authority is required to call this API.
+Create and configure extended search attributes. This API accepts an attribute name, an attribute display name and a list of name/value pair associates of application IDs to attribute names. It will then validate the inputs and configure/create and attribute promotion configuration in the Link ObjectConfig. A token with ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -51,7 +51,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
     search_attribute_config = {name=newMailAttribute, displayName=New Mail Attribute, applicationAttributes={2c9180866166b5b0016167c32ef31a66=mail, 2c9180866166b5b0016167c32ef31a67=mail}} # SearchAttributeConfig | 
 
     try:
-        # Configure/create extended search attributes in IdentityNow.
+        # Create Extended Search Attributes
         api_response = api_instance.create_search_attribute_config(search_attribute_config)
         print("The response of SearchAttributeConfigurationApi->create_search_attribute_config:\n")
         pprint(api_response)
@@ -98,9 +98,9 @@ Name | Type | Description  | Notes
 # **delete_search_attribute_config**
 > delete_search_attribute_config(name)
 
-Delete an extended search attribute in IdentityNow.
+Delete Extended Search Attribute
 
-This API accepts an extended attribute name and deletes the corresponding extended attribute configuration. A token with ORG_ADMIN authority is required to call this API.
+Delete an extended attribute configuration by name.
 
 ### Example
 
@@ -134,7 +134,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
     name = 'newMailAttribute' # str | Name of the extended search attribute configuration to delete.
 
     try:
-        # Delete an extended search attribute in IdentityNow.
+        # Delete Extended Search Attribute
         api_instance.delete_search_attribute_config(name)
     except Exception as e:
         print("Exception when calling SearchAttributeConfigurationApi->delete_search_attribute_config: %s\n" % e)
@@ -178,9 +178,9 @@ void (empty response body)
 # **get_search_attribute_config**
 > List[SearchAttributeConfig] get_search_attribute_config()
 
-Retrieve a list of extended search attributes in IdentityNow.
+List Extended Search Attributes
 
-This API retrieves a list of attribute/application associates currently configured in IdentityNow. A token with ORG_ADMIN authority is required to call this API.
+Get a list of attribute/application associates currently configured in Identity Security Cloud (ISC). A token with ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -214,7 +214,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
     api_instance = sailpoint.beta.SearchAttributeConfigurationApi(api_client)
 
     try:
-        # Retrieve a list of extended search attributes in IdentityNow.
+        # List Extended Search Attributes
         api_response = api_instance.get_search_attribute_config()
         print("The response of SearchAttributeConfigurationApi->get_search_attribute_config:\n")
         pprint(api_response)
@@ -245,7 +245,7 @@ This endpoint does not need any parameter.
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | List of attribute configurations in IdentityNow. |  -  |
+**200** | List of attribute configurations in ISC. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
 **429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
@@ -256,9 +256,9 @@ This endpoint does not need any parameter.
 # **get_single_search_attribute_config**
 > List[SearchAttributeConfig] get_single_search_attribute_config(name)
 
-Get the details of a specific extended search attribute in IdentityNow.
+Get Extended Search Attribute
 
-This API accepts an extended attribute name and retrieves the corresponding extended attribute configuration. A token with ORG_ADMIN authority is required to call this API.
+Get an extended attribute configuration by name.
 
 ### Example
 
@@ -290,10 +290,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.SearchAttributeConfigurationApi(api_client)
-    name = 'newMailAttribute' # str | Name of the extended search attribute configuration to delete.
+    name = 'newMailAttribute' # str | Name of the extended search attribute configuration to get.
 
     try:
-        # Get the details of a specific extended search attribute in IdentityNow.
+        # Get Extended Search Attribute
         api_response = api_instance.get_single_search_attribute_config(name)
         print("The response of SearchAttributeConfigurationApi->get_single_search_attribute_config:\n")
         pprint(api_response)
@@ -308,7 +308,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**| Name of the extended search attribute configuration to delete. | 
+ **name** | **str**| Name of the extended search attribute configuration to get. | 
 
 ### Return type
 
@@ -340,9 +340,9 @@ Name | Type | Description  | Notes
 # **patch_search_attribute_config**
 > SearchAttributeConfig patch_search_attribute_config(name, json_patch_operation)
 
-Update the details of a specific extended search attribute in IdentityNow.
+Update Extended Search Attribute
 
-This API updates an existing Search Attribute Configuration. The following fields are patchable: **name**, **displayName**, **applicationAttributes** A token with ORG_ADMIN authority is required to call this API.
+Update an existing search attribute configuration.  You can patch these fields: * name  * displayName * applicationAttributes
 
 ### Example
 
@@ -375,11 +375,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.SearchAttributeConfigurationApi(api_client)
-    name = 'promotedMailAttribute' # str | Name of the Search Attribute Configuration to patch.
+    name = 'promotedMailAttribute' # str | Name of the extended search attribute configuration to patch.
     json_patch_operation = [{op=replace, path=/name, value=newAttributeName}, {op=replace, path=/displayName, value=new attribute display name}, {op=add, path=/applicationAttributes, value={2c91808b79fd2422017a0b35d30f3968=employeeNumber}}] # List[JsonPatchOperation] | 
 
     try:
-        # Update the details of a specific extended search attribute in IdentityNow.
+        # Update Extended Search Attribute
         api_response = api_instance.patch_search_attribute_config(name, json_patch_operation)
         print("The response of SearchAttributeConfigurationApi->patch_search_attribute_config:\n")
         pprint(api_response)
@@ -394,7 +394,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**| Name of the Search Attribute Configuration to patch. | 
+ **name** | **str**| Name of the extended search attribute configuration to patch. | 
  **json_patch_operation** | [**List[JsonPatchOperation]**](JsonPatchOperation.md)|  | 
 
 ### Return type
@@ -414,7 +414,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Responds with the Search Attribute Configuration as updated. |  -  |
+**200** | Responds with the search attribute configuration as updated. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |

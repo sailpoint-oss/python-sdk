@@ -4,16 +4,16 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v2024*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_vendor_connector_mapping**](VendorConnectorMappingsApi.md#create_vendor_connector_mapping) | **POST** /vendor-connector-mappings | Create a vendor connector mapping
-[**delete_vendor_connector_mapping**](VendorConnectorMappingsApi.md#delete_vendor_connector_mapping) | **DELETE** /vendor-connector-mappings | Delete a vendor connector mapping
+[**create_vendor_connector_mapping**](VendorConnectorMappingsApi.md#create_vendor_connector_mapping) | **POST** /vendor-connector-mappings | Create Vendor Connector Mapping
+[**delete_vendor_connector_mapping**](VendorConnectorMappingsApi.md#delete_vendor_connector_mapping) | **DELETE** /vendor-connector-mappings | Delete Vendor Connector Mapping
 
 
 # **create_vendor_connector_mapping**
 > VendorConnectorMapping create_vendor_connector_mapping(vendor_connector_mapping)
 
-Create a vendor connector mapping
+Create Vendor Connector Mapping
 
-Creates a new mapping between a SaaS vendor and an IDN connector to establish correlation paths. 
+Create a new mapping between a SaaS vendor and an ISC connector to establish correlation paths. 
 
 ### Example
 
@@ -48,7 +48,7 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
     vendor_connector_mapping = sailpoint.v2024.VendorConnectorMapping() # VendorConnectorMapping | 
 
     try:
-        # Create a vendor connector mapping
+        # Create Vendor Connector Mapping
         api_response = api_instance.create_vendor_connector_mapping(vendor_connector_mapping)
         print("The response of VendorConnectorMappingsApi->create_vendor_connector_mapping:\n")
         pprint(api_response)
@@ -95,9 +95,9 @@ Name | Type | Description  | Notes
 # **delete_vendor_connector_mapping**
 > DeleteVendorConnectorMapping200Response delete_vendor_connector_mapping(vendor_connector_mapping)
 
-Delete a vendor connector mapping
+Delete Vendor Connector Mapping
 
-Soft deletes a mapping between a SaaS vendor and an IDN connector, removing the established correlation. 
+Soft delete a mapping between a SaaS vendor and an ISC connector, removing the established correlation. 
 
 ### Example
 
@@ -133,7 +133,7 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
     vendor_connector_mapping = sailpoint.v2024.VendorConnectorMapping() # VendorConnectorMapping | 
 
     try:
-        # Delete a vendor connector mapping
+        # Delete Vendor Connector Mapping
         api_response = api_instance.delete_vendor_connector_mapping(vendor_connector_mapping)
         print("The response of VendorConnectorMappingsApi->delete_vendor_connector_mapping:\n")
         pprint(api_response)

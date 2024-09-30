@@ -79,6 +79,7 @@ from sailpoint.v2024.api.transforms_api import TransformsApi
 from sailpoint.v2024.api.triggers_api import TriggersApi
 from sailpoint.v2024.api.ui_metadata_api import UIMetadataApi
 from sailpoint.v2024.api.vendor_connector_mappings_api import VendorConnectorMappingsApi
+from sailpoint.v2024.api.vendor_connector_mappping_api import VendorConnectorMapppingApi
 from sailpoint.v2024.api.work_items_api import WorkItemsApi
 from sailpoint.v2024.api.work_reassignment_api import WorkReassignmentApi
 from sailpoint.v2024.api.workflows_api import WorkflowsApi

@@ -57,9 +57,9 @@ class SearchAttributeConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> object:
-        """Configure/create search attributes in IdentityNow.
+        """Create Extended Search Attributes
 
-        This API accepts an attribute name, an attribute display name and a list of name/value pair associates of application IDs to attribute names.  It will then validate the inputs and configure/create and attribute promotion configuration in the Link ObjectConfig.
+        Create and configure extended search attributes. This API accepts an attribute name, an attribute display name and a list of name/value pair associates of application IDs to attribute names. It will then validate the inputs and configure/create and attribute promotion configuration in the Link ObjectConfig.
 
         :param search_attribute_config: (required)
         :type search_attribute_config: SearchAttributeConfig
@@ -130,9 +130,9 @@ class SearchAttributeConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[object]:
-        """Configure/create search attributes in IdentityNow.
+        """Create Extended Search Attributes
 
-        This API accepts an attribute name, an attribute display name and a list of name/value pair associates of application IDs to attribute names.  It will then validate the inputs and configure/create and attribute promotion configuration in the Link ObjectConfig.
+        Create and configure extended search attributes. This API accepts an attribute name, an attribute display name and a list of name/value pair associates of application IDs to attribute names. It will then validate the inputs and configure/create and attribute promotion configuration in the Link ObjectConfig.
 
         :param search_attribute_config: (required)
         :type search_attribute_config: SearchAttributeConfig
@@ -203,9 +203,9 @@ class SearchAttributeConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Configure/create search attributes in IdentityNow.
+        """Create Extended Search Attributes
 
-        This API accepts an attribute name, an attribute display name and a list of name/value pair associates of application IDs to attribute names.  It will then validate the inputs and configure/create and attribute promotion configuration in the Link ObjectConfig.
+        Create and configure extended search attributes. This API accepts an attribute name, an attribute display name and a list of name/value pair associates of application IDs to attribute names. It will then validate the inputs and configure/create and attribute promotion configuration in the Link ObjectConfig.
 
         :param search_attribute_config: (required)
         :type search_attribute_config: SearchAttributeConfig
@@ -348,9 +348,9 @@ class SearchAttributeConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete search attribute in IdentityNow.
+        """Delete Extended Search Attribute
 
-        This API accepts an extended search attribute name and deletes the corresponding extended attribute configuration.
+        Delete an extended attribute configuration by name.
 
         :param name: Name of the extended search attribute configuration to delete. (required)
         :type name: str
@@ -421,9 +421,9 @@ class SearchAttributeConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete search attribute in IdentityNow.
+        """Delete Extended Search Attribute
 
-        This API accepts an extended search attribute name and deletes the corresponding extended attribute configuration.
+        Delete an extended attribute configuration by name.
 
         :param name: Name of the extended search attribute configuration to delete. (required)
         :type name: str
@@ -494,9 +494,9 @@ class SearchAttributeConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete search attribute in IdentityNow.
+        """Delete Extended Search Attribute
 
-        This API accepts an extended search attribute name and deletes the corresponding extended attribute configuration.
+        Delete an extended attribute configuration by name.
 
         :param name: Name of the extended search attribute configuration to delete. (required)
         :type name: str
@@ -625,9 +625,9 @@ class SearchAttributeConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[SearchAttributeConfig]:
-        """Retrieve attribute list in IdentityNow.
+        """List Extended Search Attributes
 
-        This API retrieves a list of extended search attribute/application associates currently configured in IdentityNow.
+        Get a list of attribute/application associates currently configured in Identity Security Cloud (ISC).
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -693,9 +693,9 @@ class SearchAttributeConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[SearchAttributeConfig]]:
-        """Retrieve attribute list in IdentityNow.
+        """List Extended Search Attributes
 
-        This API retrieves a list of extended search attribute/application associates currently configured in IdentityNow.
+        Get a list of attribute/application associates currently configured in Identity Security Cloud (ISC).
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -761,9 +761,9 @@ class SearchAttributeConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Retrieve attribute list in IdentityNow.
+        """List Extended Search Attributes
 
-        This API retrieves a list of extended search attribute/application associates currently configured in IdentityNow.
+        Get a list of attribute/application associates currently configured in Identity Security Cloud (ISC).
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -886,9 +886,9 @@ class SearchAttributeConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[SearchAttributeConfig]:
-        """Get specific attribute in IdentityNow.
+        """Get Extended Search Attribute
 
-        This API accepts an extended search attribute name and retrieves the corresponding extended attribute configuration.
+        Get an extended attribute configuration by name.
 
         :param name: Name of the extended search attribute configuration to retrieve. (required)
         :type name: str
@@ -960,9 +960,9 @@ class SearchAttributeConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[SearchAttributeConfig]]:
-        """Get specific attribute in IdentityNow.
+        """Get Extended Search Attribute
 
-        This API accepts an extended search attribute name and retrieves the corresponding extended attribute configuration.
+        Get an extended attribute configuration by name.
 
         :param name: Name of the extended search attribute configuration to retrieve. (required)
         :type name: str
@@ -1034,9 +1034,9 @@ class SearchAttributeConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get specific attribute in IdentityNow.
+        """Get Extended Search Attribute
 
-        This API accepts an extended search attribute name and retrieves the corresponding extended attribute configuration.
+        Get an extended attribute configuration by name.
 
         :param name: Name of the extended search attribute configuration to retrieve. (required)
         :type name: str
@@ -1153,7 +1153,7 @@ class SearchAttributeConfigurationApi:
     @validate_call
     def patch_search_attribute_config(
         self,
-        name: Annotated[StrictStr, Field(description="Name of the Search Attribute Configuration to patch.")],
+        name: Annotated[StrictStr, Field(description="Name of the search attribute configuration to patch.")],
         json_patch_operation: List[JsonPatchOperation],
         _request_timeout: Union[
             None,
@@ -1168,11 +1168,11 @@ class SearchAttributeConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SearchAttributeConfig:
-        """Update search attribute in IdentityNow.
+        """Update Extended Search Attribute
 
-        This API updates an existing Search Attribute Configuration. The following fields are patchable: **name**, **displayName**, **applicationAttributes**
+        Update an existing search attribute configuration.  You can patch these fields: * name  * displayName * applicationAttributes
 
-        :param name: Name of the Search Attribute Configuration to patch. (required)
+        :param name: Name of the search attribute configuration to patch. (required)
         :type name: str
         :param json_patch_operation: (required)
         :type json_patch_operation: List[JsonPatchOperation]
@@ -1230,7 +1230,7 @@ class SearchAttributeConfigurationApi:
     @validate_call
     def patch_search_attribute_config_with_http_info(
         self,
-        name: Annotated[StrictStr, Field(description="Name of the Search Attribute Configuration to patch.")],
+        name: Annotated[StrictStr, Field(description="Name of the search attribute configuration to patch.")],
         json_patch_operation: List[JsonPatchOperation],
         _request_timeout: Union[
             None,
@@ -1245,11 +1245,11 @@ class SearchAttributeConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SearchAttributeConfig]:
-        """Update search attribute in IdentityNow.
+        """Update Extended Search Attribute
 
-        This API updates an existing Search Attribute Configuration. The following fields are patchable: **name**, **displayName**, **applicationAttributes**
+        Update an existing search attribute configuration.  You can patch these fields: * name  * displayName * applicationAttributes
 
-        :param name: Name of the Search Attribute Configuration to patch. (required)
+        :param name: Name of the search attribute configuration to patch. (required)
         :type name: str
         :param json_patch_operation: (required)
         :type json_patch_operation: List[JsonPatchOperation]
@@ -1307,7 +1307,7 @@ class SearchAttributeConfigurationApi:
     @validate_call
     def patch_search_attribute_config_without_preload_content(
         self,
-        name: Annotated[StrictStr, Field(description="Name of the Search Attribute Configuration to patch.")],
+        name: Annotated[StrictStr, Field(description="Name of the search attribute configuration to patch.")],
         json_patch_operation: List[JsonPatchOperation],
         _request_timeout: Union[
             None,
@@ -1322,11 +1322,11 @@ class SearchAttributeConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update search attribute in IdentityNow.
+        """Update Extended Search Attribute
 
-        This API updates an existing Search Attribute Configuration. The following fields are patchable: **name**, **displayName**, **applicationAttributes**
+        Update an existing search attribute configuration.  You can patch these fields: * name  * displayName * applicationAttributes
 
-        :param name: Name of the Search Attribute Configuration to patch. (required)
+        :param name: Name of the search attribute configuration to patch. (required)
         :type name: str
         :param json_patch_operation: (required)
         :type json_patch_operation: List[JsonPatchOperation]
