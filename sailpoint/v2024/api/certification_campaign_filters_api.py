@@ -636,7 +636,7 @@ class CertificationCampaignFiltersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[CampaignFilterDetails]:
+    ) -> CampaignFilterDetails:
         """Get Campaign Filter by ID
 
         Retrieves information for an existing campaign filter using the filter's ID.
@@ -674,7 +674,7 @@ class CertificationCampaignFiltersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[CampaignFilterDetails]",
+            '200': "CampaignFilterDetails",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -709,7 +709,7 @@ class CertificationCampaignFiltersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[CampaignFilterDetails]]:
+    ) -> ApiResponse[CampaignFilterDetails]:
         """Get Campaign Filter by ID
 
         Retrieves information for an existing campaign filter using the filter's ID.
@@ -747,7 +747,7 @@ class CertificationCampaignFiltersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[CampaignFilterDetails]",
+            '200': "CampaignFilterDetails",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -820,7 +820,7 @@ class CertificationCampaignFiltersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[CampaignFilterDetails]",
+            '200': "CampaignFilterDetails",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",

@@ -176,7 +176,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_campaign_filter_by_id**
-> List[CampaignFilterDetails] get_campaign_filter_by_id(id)
+> CampaignFilterDetails get_campaign_filter_by_id(id)
 
 Get Campaign Filter by ID
 
@@ -234,7 +234,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List[CampaignFilterDetails]**](CampaignFilterDetails.md)
+[**CampaignFilterDetails**](CampaignFilterDetails.md)
 
 ### Authorization
 
