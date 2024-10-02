@@ -623,7 +623,7 @@ class CertificationCampaignFiltersApi:
     @validate_call
     def get_campaign_filter_by_id(
         self,
-        filter_id: Annotated[StrictStr, Field(description="The ID of the campaign filter to be retrieved.")],
+        id: Annotated[StrictStr, Field(description="The ID of the campaign filter to be retrieved.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -641,8 +641,8 @@ class CertificationCampaignFiltersApi:
 
         Retrieves information for an existing campaign filter using the filter's ID.
 
-        :param filter_id: The ID of the campaign filter to be retrieved. (required)
-        :type filter_id: str
+        :param id: The ID of the campaign filter to be retrieved. (required)
+        :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -666,7 +666,7 @@ class CertificationCampaignFiltersApi:
         """ # noqa: E501
 
         _param = self._get_campaign_filter_by_id_serialize(
-            filter_id=filter_id,
+            id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -696,7 +696,7 @@ class CertificationCampaignFiltersApi:
     @validate_call
     def get_campaign_filter_by_id_with_http_info(
         self,
-        filter_id: Annotated[StrictStr, Field(description="The ID of the campaign filter to be retrieved.")],
+        id: Annotated[StrictStr, Field(description="The ID of the campaign filter to be retrieved.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -714,8 +714,8 @@ class CertificationCampaignFiltersApi:
 
         Retrieves information for an existing campaign filter using the filter's ID.
 
-        :param filter_id: The ID of the campaign filter to be retrieved. (required)
-        :type filter_id: str
+        :param id: The ID of the campaign filter to be retrieved. (required)
+        :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -739,7 +739,7 @@ class CertificationCampaignFiltersApi:
         """ # noqa: E501
 
         _param = self._get_campaign_filter_by_id_serialize(
-            filter_id=filter_id,
+            id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -769,7 +769,7 @@ class CertificationCampaignFiltersApi:
     @validate_call
     def get_campaign_filter_by_id_without_preload_content(
         self,
-        filter_id: Annotated[StrictStr, Field(description="The ID of the campaign filter to be retrieved.")],
+        id: Annotated[StrictStr, Field(description="The ID of the campaign filter to be retrieved.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -787,8 +787,8 @@ class CertificationCampaignFiltersApi:
 
         Retrieves information for an existing campaign filter using the filter's ID.
 
-        :param filter_id: The ID of the campaign filter to be retrieved. (required)
-        :type filter_id: str
+        :param id: The ID of the campaign filter to be retrieved. (required)
+        :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -812,7 +812,7 @@ class CertificationCampaignFiltersApi:
         """ # noqa: E501
 
         _param = self._get_campaign_filter_by_id_serialize(
-            filter_id=filter_id,
+            id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -837,7 +837,7 @@ class CertificationCampaignFiltersApi:
 
     def _get_campaign_filter_by_id_serialize(
         self,
-        filter_id,
+        id,
         _request_auth,
         _content_type,
         _headers,
@@ -857,8 +857,8 @@ class CertificationCampaignFiltersApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if filter_id is not None:
-            _path_params['filterId'] = filter_id
+        if id is not None:
+            _path_params['id'] = id
         # process the query parameters
         # process the header parameters
         # process the form parameters

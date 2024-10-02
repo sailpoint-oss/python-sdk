@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v2024.models.campaign_filter_details_criteria_list_inner import CampaignFilterDetailsCriteriaListInner
 from typing import Optional, Set
@@ -27,12 +27,14 @@ class CampaignFilterDetails(BaseModel):
     """
     Campaign Filter Details
     """ # noqa: E501
+    id: StrictStr = Field(description="The unique ID of the campaign filter")
     name: StrictStr = Field(description="Campaign filter name.")
     description: Optional[StrictStr] = Field(default=None, description="Campaign filter description.")
     owner: Optional[StrictStr] = Field(description="Owner of the filter. This field automatically populates at creation time with the current user.")
     mode: Dict[str, Any] = Field(description="Mode/type of filter, either the INCLUSION or EXCLUSION type. The INCLUSION type includes the data in generated campaigns  as per specified in the criteria, whereas the EXCLUSION type excludes the data in generated campaigns as per specified in criteria.")
     criteria_list: Optional[List[CampaignFilterDetailsCriteriaListInner]] = Field(default=None, description="List of criteria.", alias="criteriaList")
-    __properties: ClassVar[List[str]] = ["name", "description", "owner", "mode", "criteriaList"]
+    is_system_filter: StrictBool = Field(description="If true, the filter is created by the system. If false, the filter is created by a user.", alias="isSystemFilter")
+    __properties: ClassVar[List[str]] = ["id", "name", "description", "owner", "mode", "criteriaList", "isSystemFilter"]
 
     @field_validator('mode')
     def mode_validate_enum(cls, value):
@@ -104,11 +106,13 @@ class CampaignFilterDetails(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "id": obj.get("id"),
             "name": obj.get("name"),
             "description": obj.get("description"),
             "owner": obj.get("owner"),
             "mode": obj.get("mode"),
-            "criteriaList": [CampaignFilterDetailsCriteriaListInner.from_dict(_item) for _item in obj["criteriaList"]] if obj.get("criteriaList") is not None else None
+            "criteriaList": [CampaignFilterDetailsCriteriaListInner.from_dict(_item) for _item in obj["criteriaList"]] if obj.get("criteriaList") is not None else None,
+            "isSystemFilter": obj.get("isSystemFilter") if obj.get("isSystemFilter") is not None else False
         })
         return _obj
 

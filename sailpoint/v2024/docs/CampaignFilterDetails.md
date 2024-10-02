@@ -6,11 +6,13 @@ Campaign Filter Details
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **str** | The unique ID of the campaign filter | 
 **name** | **str** | Campaign filter name. | 
 **description** | **str** | Campaign filter description. | [optional] 
 **owner** | **str** | Owner of the filter. This field automatically populates at creation time with the current user. | 
 **mode** | **object** | Mode/type of filter, either the INCLUSION or EXCLUSION type. The INCLUSION type includes the data in generated campaigns  as per specified in the criteria, whereas the EXCLUSION type excludes the data in generated campaigns as per specified in criteria. | 
 **criteria_list** | [**List[CampaignFilterDetailsCriteriaListInner]**](CampaignFilterDetailsCriteriaListInner.md) | List of criteria. | [optional] 
+**is_system_filter** | **bool** | If true, the filter is created by the system. If false, the filter is created by a user. | [default to False]
 
 ## Example
 

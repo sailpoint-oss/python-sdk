@@ -176,7 +176,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_campaign_filter_by_id**
-> List[CampaignFilterDetails] get_campaign_filter_by_id(filter_id)
+> List[CampaignFilterDetails] get_campaign_filter_by_id(id)
 
 Get Campaign Filter by ID
 
@@ -212,11 +212,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v2024.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v2024.CertificationCampaignFiltersApi(api_client)
-    filter_id = 'e9f9a1397b842fd5a65842087040d3ac' # str | The ID of the campaign filter to be retrieved.
+    id = 'e9f9a1397b842fd5a65842087040d3ac' # str | The ID of the campaign filter to be retrieved.
 
     try:
         # Get Campaign Filter by ID
-        api_response = api_instance.get_campaign_filter_by_id(filter_id)
+        api_response = api_instance.get_campaign_filter_by_id(id)
         print("The response of CertificationCampaignFiltersApi->get_campaign_filter_by_id:\n")
         pprint(api_response)
     except Exception as e:
@@ -230,7 +230,7 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter_id** | **str**| The ID of the campaign filter to be retrieved. | 
+ **id** | **str**| The ID of the campaign filter to be retrieved. | 
 
 ### Return type
 
