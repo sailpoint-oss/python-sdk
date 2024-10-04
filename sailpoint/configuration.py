@@ -29,9 +29,18 @@ class Configuration:
             self.client_secret = configurationParams.client_secret
             self.token_url = configurationParams.token_url
 
-            url = f"{self.token_url}"
-            if self.access_token == None:
-                self.access_token = self.get_access_token(url, self.client_id, self.client_secret)
+        else:
+            self.access_token = configurationParams.access_token
+            self.base_url = configurationParams.base_url
+            self.client_id = configurationParams.client_id
+            self.client_secret = configurationParams.client_secret
+            self.token_url = str(configurationParams.base_url) + "/oauth/token"
+
+
+        url = f"{self.token_url}"
+        if self.access_token == None:
+            self.access_token = self.get_access_token(url, self.client_id, self.client_secret)
+
 
 
         self.experimental = False
