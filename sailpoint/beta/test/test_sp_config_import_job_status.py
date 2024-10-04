@@ -53,7 +53,6 @@ class TestSpConfigImportJobStatus(unittest.TestCase):
                 created = '2021-05-11T22:23:16Z',
                 modified = '2021-05-11T22:23:16Z',
                 message = 'Download import results for details.',
-                completed = '2021-05-11T22:23:16Z',
         )
         """
 

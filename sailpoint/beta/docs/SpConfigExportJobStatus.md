@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **created** | **datetime** | The time the job was started. | 
 **modified** | **datetime** | The time of the last update to the job. | 
 **description** | **str** | Optional user defined description/name for export job. | [optional] 
-**completed** | **datetime** | The time the job was completed. | 
+**completed** | **datetime** | The time the job was completed. | [optional] 
 
 ## Example
 

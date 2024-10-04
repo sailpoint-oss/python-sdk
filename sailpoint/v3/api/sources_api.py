@@ -3822,7 +3822,8 @@ class SourcesApi:
     def get_source_schemas(
         self,
         source_id: Annotated[StrictStr, Field(description="Source ID.")],
-        include_types: Annotated[Optional[StrictStr], Field(description="If this is set to `group`, the API filters the account schema and only returns only group schemas. If this is set to `user`, the API returns the account schema for the source. ")] = None,
+        include_types: Annotated[Optional[StrictStr], Field(description="If set to 'group', then the account schema is filtered and only group schemas are returned. Only a value of 'group' is recognized presently.  Note: The API will check whether include-types is group or not, if not, it will list schemas based on include-names, if include-names is not provided, it will list all schemas.")] = None,
+        include_names: Annotated[Optional[StrictStr], Field(description="A comma-separated list of schema names to filter result.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3838,12 +3839,14 @@ class SourcesApi:
     ) -> List[ModelSchema]:
         """List Schemas on Source
 
-        Use this API to list the schemas that exist on the specified source in Identity Security Cloud (ISC). 
+        Use this API to list the schemas that exist on the specified source in Identity Security Cloud (ISC).
 
         :param source_id: Source ID. (required)
         :type source_id: str
-        :param include_types: If this is set to `group`, the API filters the account schema and only returns only group schemas. If this is set to `user`, the API returns the account schema for the source. 
+        :param include_types: If set to 'group', then the account schema is filtered and only group schemas are returned. Only a value of 'group' is recognized presently.  Note: The API will check whether include-types is group or not, if not, it will list schemas based on include-names, if include-names is not provided, it will list all schemas.
         :type include_types: str
+        :param include_names: A comma-separated list of schema names to filter result.
+        :type include_names: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3869,6 +3872,7 @@ class SourcesApi:
         _param = self._get_source_schemas_serialize(
             source_id=source_id,
             include_types=include_types,
+            include_names=include_names,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3899,7 +3903,8 @@ class SourcesApi:
     def get_source_schemas_with_http_info(
         self,
         source_id: Annotated[StrictStr, Field(description="Source ID.")],
-        include_types: Annotated[Optional[StrictStr], Field(description="If this is set to `group`, the API filters the account schema and only returns only group schemas. If this is set to `user`, the API returns the account schema for the source. ")] = None,
+        include_types: Annotated[Optional[StrictStr], Field(description="If set to 'group', then the account schema is filtered and only group schemas are returned. Only a value of 'group' is recognized presently.  Note: The API will check whether include-types is group or not, if not, it will list schemas based on include-names, if include-names is not provided, it will list all schemas.")] = None,
+        include_names: Annotated[Optional[StrictStr], Field(description="A comma-separated list of schema names to filter result.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3915,12 +3920,14 @@ class SourcesApi:
     ) -> ApiResponse[List[ModelSchema]]:
         """List Schemas on Source
 
-        Use this API to list the schemas that exist on the specified source in Identity Security Cloud (ISC). 
+        Use this API to list the schemas that exist on the specified source in Identity Security Cloud (ISC).
 
         :param source_id: Source ID. (required)
         :type source_id: str
-        :param include_types: If this is set to `group`, the API filters the account schema and only returns only group schemas. If this is set to `user`, the API returns the account schema for the source. 
+        :param include_types: If set to 'group', then the account schema is filtered and only group schemas are returned. Only a value of 'group' is recognized presently.  Note: The API will check whether include-types is group or not, if not, it will list schemas based on include-names, if include-names is not provided, it will list all schemas.
         :type include_types: str
+        :param include_names: A comma-separated list of schema names to filter result.
+        :type include_names: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3946,6 +3953,7 @@ class SourcesApi:
         _param = self._get_source_schemas_serialize(
             source_id=source_id,
             include_types=include_types,
+            include_names=include_names,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3976,7 +3984,8 @@ class SourcesApi:
     def get_source_schemas_without_preload_content(
         self,
         source_id: Annotated[StrictStr, Field(description="Source ID.")],
-        include_types: Annotated[Optional[StrictStr], Field(description="If this is set to `group`, the API filters the account schema and only returns only group schemas. If this is set to `user`, the API returns the account schema for the source. ")] = None,
+        include_types: Annotated[Optional[StrictStr], Field(description="If set to 'group', then the account schema is filtered and only group schemas are returned. Only a value of 'group' is recognized presently.  Note: The API will check whether include-types is group or not, if not, it will list schemas based on include-names, if include-names is not provided, it will list all schemas.")] = None,
+        include_names: Annotated[Optional[StrictStr], Field(description="A comma-separated list of schema names to filter result.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3992,12 +4001,14 @@ class SourcesApi:
     ) -> RESTResponseType:
         """List Schemas on Source
 
-        Use this API to list the schemas that exist on the specified source in Identity Security Cloud (ISC). 
+        Use this API to list the schemas that exist on the specified source in Identity Security Cloud (ISC).
 
         :param source_id: Source ID. (required)
         :type source_id: str
-        :param include_types: If this is set to `group`, the API filters the account schema and only returns only group schemas. If this is set to `user`, the API returns the account schema for the source. 
+        :param include_types: If set to 'group', then the account schema is filtered and only group schemas are returned. Only a value of 'group' is recognized presently.  Note: The API will check whether include-types is group or not, if not, it will list schemas based on include-names, if include-names is not provided, it will list all schemas.
         :type include_types: str
+        :param include_names: A comma-separated list of schema names to filter result.
+        :type include_names: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4023,6 +4034,7 @@ class SourcesApi:
         _param = self._get_source_schemas_serialize(
             source_id=source_id,
             include_types=include_types,
+            include_names=include_names,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4049,6 +4061,7 @@ class SourcesApi:
         self,
         source_id,
         include_types,
+        include_names,
         _request_auth,
         _content_type,
         _headers,
@@ -4074,6 +4087,10 @@ class SourcesApi:
         if include_types is not None:
             
             _query_params.append(('include-types', include_types))
+            
+        if include_names is not None:
+            
+            _query_params.append(('include-names', include_names))
             
         # process the header parameters
         # process the form parameters

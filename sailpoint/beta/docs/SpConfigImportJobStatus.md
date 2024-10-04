@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **created** | **datetime** | The time the job was started. | 
 **modified** | **datetime** | The time of the last update to the job. | 
 **message** | **str** | This message contains additional information about the overall status of the job. | 
-**completed** | **datetime** | The time the job was completed. | 
+**completed** | **datetime** | The time the job was completed. | [optional] 
 
 ## Example
 

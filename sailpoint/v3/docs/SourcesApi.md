@@ -1133,11 +1133,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_source_schemas**
-> List[ModelSchema] get_source_schemas(source_id, include_types=include_types)
+> List[ModelSchema] get_source_schemas(source_id, include_types=include_types, include_names=include_names)
 
 List Schemas on Source
 
-Use this API to list the schemas that exist on the specified source in Identity Security Cloud (ISC). 
+Use this API to list the schemas that exist on the specified source in Identity Security Cloud (ISC).
 
 ### Example
 
@@ -1170,11 +1170,12 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.SourcesApi(api_client)
     source_id = '2c9180835d191a86015d28455b4a2329' # str | Source ID.
-    include_types = 'group' # str | If this is set to `group`, the API filters the account schema and only returns only group schemas. If this is set to `user`, the API returns the account schema for the source.  (optional)
+    include_types = 'group' # str | If set to 'group', then the account schema is filtered and only group schemas are returned. Only a value of 'group' is recognized presently.  Note: The API will check whether include-types is group or not, if not, it will list schemas based on include-names, if include-names is not provided, it will list all schemas. (optional)
+    include_names = 'account' # str | A comma-separated list of schema names to filter result. (optional)
 
     try:
         # List Schemas on Source
-        api_response = api_instance.get_source_schemas(source_id, include_types=include_types)
+        api_response = api_instance.get_source_schemas(source_id, include_types=include_types, include_names=include_names)
         print("The response of SourcesApi->get_source_schemas:\n")
         pprint(api_response)
     except Exception as e:
@@ -1189,7 +1190,8 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **source_id** | **str**| Source ID. | 
- **include_types** | **str**| If this is set to &#x60;group&#x60;, the API filters the account schema and only returns only group schemas. If this is set to &#x60;user&#x60;, the API returns the account schema for the source.  | [optional] 
+ **include_types** | **str**| If set to &#39;group&#39;, then the account schema is filtered and only group schemas are returned. Only a value of &#39;group&#39; is recognized presently.  Note: The API will check whether include-types is group or not, if not, it will list schemas based on include-names, if include-names is not provided, it will list all schemas. | [optional] 
+ **include_names** | **str**| A comma-separated list of schema names to filter result. | [optional] 
 
 ### Return type
 

@@ -34,7 +34,7 @@ class SpConfigExportJobStatus(BaseModel):
     created: datetime = Field(description="The time the job was started.")
     modified: datetime = Field(description="The time of the last update to the job.")
     description: Optional[StrictStr] = Field(default=None, description="Optional user defined description/name for export job.")
-    completed: datetime = Field(description="The time the job was completed.")
+    completed: Optional[datetime] = Field(default=None, description="The time the job was completed.")
     __properties: ClassVar[List[str]] = ["jobId", "status", "type", "expiration", "created", "modified", "description", "completed"]
 
     @field_validator('status')

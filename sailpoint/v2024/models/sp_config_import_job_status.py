@@ -19,7 +19,7 @@ import json
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -34,7 +34,7 @@ class SpConfigImportJobStatus(BaseModel):
     created: datetime = Field(description="The time the job was started.")
     modified: datetime = Field(description="The time of the last update to the job.")
     message: StrictStr = Field(description="This message contains additional information about the overall status of the job.")
-    completed: datetime = Field(description="The time the job was completed.")
+    completed: Optional[datetime] = Field(default=None, description="The time the job was completed.")
     __properties: ClassVar[List[str]] = ["jobId", "status", "type", "expiration", "created", "modified", "message", "completed"]
 
     @field_validator('status')
