@@ -247,6 +247,7 @@ from sailpoint.v3.models.dependant_app_connections import DependantAppConnection
 from sailpoint.v3.models.dependant_app_connections_account_source import DependantAppConnectionsAccountSource
 from sailpoint.v3.models.dependant_app_connections_account_source_password_policies_inner import DependantAppConnectionsAccountSourcePasswordPoliciesInner
 from sailpoint.v3.models.dependant_connections_missing_dto import DependantConnectionsMissingDto
+from sailpoint.v3.models.dimension_ref import DimensionRef
 from sailpoint.v3.models.display_reference import DisplayReference
 from sailpoint.v3.models.document_type import DocumentType
 from sailpoint.v3.models.dto_type import DtoType

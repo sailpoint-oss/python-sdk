@@ -867,6 +867,7 @@ Class | Method | HTTP request | Description
  - [DeleteCampaignsRequest](sailpoint/beta/docs/DeleteCampaignsRequest.md)
  - [DeleteNonEmployeeRecordInBulkRequest](sailpoint/beta/docs/DeleteNonEmployeeRecordInBulkRequest.md)
  - [DeleteVendorConnectorMapping200Response](sailpoint/beta/docs/DeleteVendorConnectorMapping200Response.md)
+ - [DimensionRef](sailpoint/beta/docs/DimensionRef.md)
  - [DkimAttributes](sailpoint/beta/docs/DkimAttributes.md)
  - [DomainAddress](sailpoint/beta/docs/DomainAddress.md)
  - [DomainStatusDto](sailpoint/beta/docs/DomainStatusDto.md)

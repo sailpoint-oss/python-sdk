@@ -347,6 +347,7 @@ from sailpoint.beta.models.delete202_response import Delete202Response
 from sailpoint.beta.models.delete_campaigns_request import DeleteCampaignsRequest
 from sailpoint.beta.models.delete_non_employee_record_in_bulk_request import DeleteNonEmployeeRecordInBulkRequest
 from sailpoint.beta.models.delete_vendor_connector_mapping200_response import DeleteVendorConnectorMapping200Response
+from sailpoint.beta.models.dimension_ref import DimensionRef
 from sailpoint.beta.models.dkim_attributes import DkimAttributes
 from sailpoint.beta.models.domain_address import DomainAddress
 from sailpoint.beta.models.domain_status_dto import DomainStatusDto

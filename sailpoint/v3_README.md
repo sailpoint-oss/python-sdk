@@ -607,6 +607,7 @@ Class | Method | HTTP request | Description
  - [DependantAppConnectionsAccountSource](sailpoint/v3/docs/DependantAppConnectionsAccountSource.md)
  - [DependantAppConnectionsAccountSourcePasswordPoliciesInner](sailpoint/v3/docs/DependantAppConnectionsAccountSourcePasswordPoliciesInner.md)
  - [DependantConnectionsMissingDto](sailpoint/v3/docs/DependantConnectionsMissingDto.md)
+ - [DimensionRef](sailpoint/v3/docs/DimensionRef.md)
  - [DisplayReference](sailpoint/v3/docs/DisplayReference.md)
  - [DocumentType](sailpoint/v3/docs/DocumentType.md)
  - [DtoType](sailpoint/v3/docs/DtoType.md)

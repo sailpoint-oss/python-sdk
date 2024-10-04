@@ -320,6 +320,7 @@ from sailpoint.v2024.models.delete_source202_response import DeleteSource202Resp
 from sailpoint.v2024.models.delete_vendor_connector_mapping200_response import DeleteVendorConnectorMapping200Response
 from sailpoint.v2024.models.deploy_request import DeployRequest
 from sailpoint.v2024.models.deploy_response import DeployResponse
+from sailpoint.v2024.models.dimension_ref import DimensionRef
 from sailpoint.v2024.models.display_reference import DisplayReference
 from sailpoint.v2024.models.dkim_attributes import DkimAttributes
 from sailpoint.v2024.models.document_type import DocumentType

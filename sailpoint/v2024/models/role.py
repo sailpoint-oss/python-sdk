@@ -23,6 +23,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from sailpoint.v2024.models.access_profile_ref import AccessProfileRef
 from sailpoint.v2024.models.attribute_dto_list import AttributeDTOList
+from sailpoint.v2024.models.dimension_ref import DimensionRef
 from sailpoint.v2024.models.entitlement_ref import EntitlementRef
 from sailpoint.v2024.models.owner_reference import OwnerReference
 from sailpoint.v2024.models.requestability_for_role import RequestabilityForRole
@@ -51,7 +52,7 @@ class Role(BaseModel):
     revocation_request_config: Optional[RevocabilityForRole] = Field(default=None, alias="revocationRequestConfig")
     segments: Optional[List[StrictStr]] = Field(default=None, description="List of IDs of segments, if any, to which this Role is assigned.")
     dimensional: Optional[StrictBool] = Field(default=False, description="Whether the Role is dimensional.")
-    dimension_refs: Optional[StrictStr] = Field(default=None, description="TBD", alias="dimensionRefs")
+    dimension_refs: Optional[List[DimensionRef]] = Field(default=None, description="List of references to dimensions to which this Role is assigned. This field is only relevant if the Role is dimensional.", alias="dimensionRefs")
     access_model_metadata: Optional[List[AttributeDTOList]] = Field(default=None, alias="accessModelMetadata")
     __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "description", "owner", "accessProfiles", "entitlements", "membership", "legacyMembershipInfo", "enabled", "requestable", "accessRequestConfig", "revocationRequestConfig", "segments", "dimensional", "dimensionRefs", "accessModelMetadata"]
 
@@ -124,6 +125,13 @@ class Role(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of revocation_request_config
         if self.revocation_request_config:
             _dict['revocationRequestConfig'] = self.revocation_request_config.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in dimension_refs (list)
+        _items = []
+        if self.dimension_refs:
+            for _item_dimension_refs in self.dimension_refs:
+                if _item_dimension_refs:
+                    _items.append(_item_dimension_refs.to_dict())
+            _dict['dimensionRefs'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in access_model_metadata (list)
         _items = []
         if self.access_model_metadata:
@@ -194,7 +202,7 @@ class Role(BaseModel):
             "revocationRequestConfig": RevocabilityForRole.from_dict(obj["revocationRequestConfig"]) if obj.get("revocationRequestConfig") is not None else None,
             "segments": obj.get("segments"),
             "dimensional": obj.get("dimensional") if obj.get("dimensional") is not None else False,
-            "dimensionRefs": obj.get("dimensionRefs"),
+            "dimensionRefs": [DimensionRef.from_dict(_item) for _item in obj["dimensionRefs"]] if obj.get("dimensionRefs") is not None else None,
             "accessModelMetadata": [AttributeDTOList.from_dict(_item) for _item in obj["accessModelMetadata"]] if obj.get("accessModelMetadata") is not None else None
         })
         return _obj

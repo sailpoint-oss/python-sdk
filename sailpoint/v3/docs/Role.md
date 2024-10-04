@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **revocation_request_config** | [**RevocabilityForRole**](RevocabilityForRole.md) |  | [optional] 
 **segments** | **List[str]** | List of IDs of segments, if any, to which this Role is assigned. | [optional] 
 **dimensional** | **bool** | Whether the Role is dimensional. | [optional] [default to False]
-**dimension_refs** | **str** | TBD | [optional] 
+**dimension_refs** | [**List[DimensionRef]**](DimensionRef.md) | List of references to dimensions to which this Role is assigned. This field is only relevant if the Role is dimensional. | [optional] 
 **access_model_metadata** | [**List[AttributeDTOList]**](AttributeDTOList.md) |  | [optional] 
 
 ## Example

@@ -96,7 +96,12 @@ class TestRole(unittest.TestCase):
                         ], ),
                 segments = [f7b1b8a3-5fed-4fd4-ad29-82014e137e19, 29cb6c06-1da8-43ea-8be4-b3125f248f2a],
                 dimensional = True,
-                dimension_refs = '',
+                dimension_refs = [
+                    sailpoint.v3.models.dimension_ref.DimensionRef(
+                        type = 'DIMENSION', 
+                        id = '2c91808568c529c60168cca6f90c1313', 
+                        name = 'Role 2', )
+                    ],
                 access_model_metadata = [{key=iscFederalClassifications, name=Federal Classifications, multiselect=true, status=active, type=governance, objectTypes=[general], description=Classification used by government organizations to specify the level of confidentiality for an access item., values=[{value=secret, name=Secret, status=active}]}]
             )
         else:

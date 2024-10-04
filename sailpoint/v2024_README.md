@@ -997,6 +997,7 @@ Class | Method | HTTP request | Description
  - [DeleteVendorConnectorMapping200Response](sailpoint/v2024/docs/DeleteVendorConnectorMapping200Response.md)
  - [DeployRequest](sailpoint/v2024/docs/DeployRequest.md)
  - [DeployResponse](sailpoint/v2024/docs/DeployResponse.md)
+ - [DimensionRef](sailpoint/v2024/docs/DimensionRef.md)
  - [DisplayReference](sailpoint/v2024/docs/DisplayReference.md)
  - [DkimAttributes](sailpoint/v2024/docs/DkimAttributes.md)
  - [DocumentType](sailpoint/v2024/docs/DocumentType.md)
