@@ -27,8 +27,8 @@ class ObjectMappingBulkCreateRequest(BaseModel):
     """
     ObjectMappingBulkCreateRequest
     """ # noqa: E501
-    new_object_mappings: List[ObjectMappingRequest] = Field(alias="newObjectMappings")
-    __properties: ClassVar[List[str]] = ["newObjectMappings"]
+    new_objects_mappings: List[ObjectMappingRequest] = Field(alias="newObjectsMappings")
+    __properties: ClassVar[List[str]] = ["newObjectsMappings"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -69,13 +69,13 @@ class ObjectMappingBulkCreateRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in new_object_mappings (list)
+        # override the default output from pydantic by calling `to_dict()` of each item in new_objects_mappings (list)
         _items = []
-        if self.new_object_mappings:
-            for _item_new_object_mappings in self.new_object_mappings:
-                if _item_new_object_mappings:
-                    _items.append(_item_new_object_mappings.to_dict())
-            _dict['newObjectMappings'] = _items
+        if self.new_objects_mappings:
+            for _item_new_objects_mappings in self.new_objects_mappings:
+                if _item_new_objects_mappings:
+                    _items.append(_item_new_objects_mappings.to_dict())
+            _dict['newObjectsMappings'] = _items
         return _dict
 
     @classmethod
@@ -88,7 +88,7 @@ class ObjectMappingBulkCreateRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "newObjectMappings": [ObjectMappingRequest.from_dict(_item) for _item in obj["newObjectMappings"]] if obj.get("newObjectMappings") is not None else None
+            "newObjectsMappings": [ObjectMappingRequest.from_dict(_item) for _item in obj["newObjectsMappings"]] if obj.get("newObjectsMappings") is not None else None
         })
         return _obj
 

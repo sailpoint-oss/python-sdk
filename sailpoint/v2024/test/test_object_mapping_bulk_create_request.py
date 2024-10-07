@@ -35,7 +35,7 @@ class TestObjectMappingBulkCreateRequest(unittest.TestCase):
         model = ObjectMappingBulkCreateRequest()
         if include_optional:
             return ObjectMappingBulkCreateRequest(
-                new_object_mappings = [
+                new_objects_mappings = [
                     sailpoint.v2024.models.object_mapping_request.Object Mapping Request(
                         object_type = 'IDENTITY', 
                         json_path = '$.name', 
@@ -46,7 +46,7 @@ class TestObjectMappingBulkCreateRequest(unittest.TestCase):
             )
         else:
             return ObjectMappingBulkCreateRequest(
-                new_object_mappings = [
+                new_objects_mappings = [
                     sailpoint.v2024.models.object_mapping_request.Object Mapping Request(
                         object_type = 'IDENTITY', 
                         json_path = '$.name', 

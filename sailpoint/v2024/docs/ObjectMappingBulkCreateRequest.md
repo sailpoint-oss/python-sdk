@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**new_object_mappings** | [**List[ObjectMappingRequest]**](ObjectMappingRequest.md) |  | 
+**new_objects_mappings** | [**List[ObjectMappingRequest]**](ObjectMappingRequest.md) |  | 
 
 ## Example
 
