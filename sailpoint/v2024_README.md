@@ -245,6 +245,14 @@ Class | Method | HTTP request | Description
 *CustomPasswordInstructionsApi* | [**create_custom_password_instructions**](sailpoint/v2024/docs/CustomPasswordInstructionsApi.md#create_custom_password_instructions) | **POST** /custom-password-instructions | Create Custom Password Instructions
 *CustomPasswordInstructionsApi* | [**delete_custom_password_instructions**](sailpoint/v2024/docs/CustomPasswordInstructionsApi.md#delete_custom_password_instructions) | **DELETE** /custom-password-instructions/{pageId} | Delete Custom Password Instructions by page ID
 *CustomPasswordInstructionsApi* | [**get_custom_password_instructions**](sailpoint/v2024/docs/CustomPasswordInstructionsApi.md#get_custom_password_instructions) | **GET** /custom-password-instructions/{pageId} | Get Custom Password Instructions by Page ID
+*DimensionsApi* | [**create_dimension**](sailpoint/v2024/docs/DimensionsApi.md#create_dimension) | **POST** /roles/{roleId}/dimensions | Create a Dimension
+*DimensionsApi* | [**delete_bulk_dimensions**](sailpoint/v2024/docs/DimensionsApi.md#delete_bulk_dimensions) | **POST** /roles/{roleId}/dimensions/bulk-delete | Delete Dimension(s)
+*DimensionsApi* | [**delete_dimension**](sailpoint/v2024/docs/DimensionsApi.md#delete_dimension) | **DELETE** /roles/{roleId}/dimensions/{dimensionId} | Delete a Dimension
+*DimensionsApi* | [**get_dimension**](sailpoint/v2024/docs/DimensionsApi.md#get_dimension) | **GET** /roles/{roleId}/dimensions/{dimensionId} | Get a Dimension under Role.
+*DimensionsApi* | [**get_dimension_entitlements**](sailpoint/v2024/docs/DimensionsApi.md#get_dimension_entitlements) | **GET** /roles/{roleId}/dimensions/{dimensionId}/entitlements | List Dimension&#39;s Entitlements
+*DimensionsApi* | [**list_dimension_access_profiles**](sailpoint/v2024/docs/DimensionsApi.md#list_dimension_access_profiles) | **GET** /roles/{roleId}/dimensions/{dimensionId}/access-profiles | List Dimension&#39;s Access Profiles
+*DimensionsApi* | [**list_dimensions**](sailpoint/v2024/docs/DimensionsApi.md#list_dimensions) | **GET** /roles/{roleId}/dimensions | List Dimensions
+*DimensionsApi* | [**patch_dimension**](sailpoint/v2024/docs/DimensionsApi.md#patch_dimension) | **PATCH** /roles/{roleId}/dimensions/{dimensionId} | Patch a specified Dimension
 *EntitlementsApi* | [**create_access_model_metadata_for_entitlement**](sailpoint/v2024/docs/EntitlementsApi.md#create_access_model_metadata_for_entitlement) | **POST** /entitlements/{id}/access-model-metadata/{attributeKey}/values/{attributeValue} | Add metadata to an entitlement.
 *EntitlementsApi* | [**delete_access_model_metadata_from_entitlement**](sailpoint/v2024/docs/EntitlementsApi.md#delete_access_model_metadata_from_entitlement) | **DELETE** /entitlements/{id}/access-model-metadata/{attributeKey}/values/{attributeValue} | Remove metadata from an entitlement.
 *EntitlementsApi* | [**get_entitlement**](sailpoint/v2024/docs/EntitlementsApi.md#get_entitlement) | **GET** /entitlements/{id} | Get an entitlement
@@ -997,6 +1005,16 @@ Class | Method | HTTP request | Description
  - [DeleteVendorConnectorMapping200Response](sailpoint/v2024/docs/DeleteVendorConnectorMapping200Response.md)
  - [DeployRequest](sailpoint/v2024/docs/DeployRequest.md)
  - [DeployResponse](sailpoint/v2024/docs/DeployResponse.md)
+ - [Dimension](sailpoint/v2024/docs/Dimension.md)
+ - [DimensionBulkDeleteRequest](sailpoint/v2024/docs/DimensionBulkDeleteRequest.md)
+ - [DimensionCriteriaKey](sailpoint/v2024/docs/DimensionCriteriaKey.md)
+ - [DimensionCriteriaKeyType](sailpoint/v2024/docs/DimensionCriteriaKeyType.md)
+ - [DimensionCriteriaLevel1](sailpoint/v2024/docs/DimensionCriteriaLevel1.md)
+ - [DimensionCriteriaLevel2](sailpoint/v2024/docs/DimensionCriteriaLevel2.md)
+ - [DimensionCriteriaLevel3](sailpoint/v2024/docs/DimensionCriteriaLevel3.md)
+ - [DimensionCriteriaOperation](sailpoint/v2024/docs/DimensionCriteriaOperation.md)
+ - [DimensionMembershipSelector](sailpoint/v2024/docs/DimensionMembershipSelector.md)
+ - [DimensionMembershipSelectorType](sailpoint/v2024/docs/DimensionMembershipSelectorType.md)
  - [DimensionRef](sailpoint/v2024/docs/DimensionRef.md)
  - [DisplayReference](sailpoint/v2024/docs/DisplayReference.md)
  - [DkimAttributes](sailpoint/v2024/docs/DkimAttributes.md)

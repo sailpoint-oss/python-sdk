@@ -320,6 +320,16 @@ from sailpoint.v2024.models.delete_source202_response import DeleteSource202Resp
 from sailpoint.v2024.models.delete_vendor_connector_mapping200_response import DeleteVendorConnectorMapping200Response
 from sailpoint.v2024.models.deploy_request import DeployRequest
 from sailpoint.v2024.models.deploy_response import DeployResponse
+from sailpoint.v2024.models.dimension import Dimension
+from sailpoint.v2024.models.dimension_bulk_delete_request import DimensionBulkDeleteRequest
+from sailpoint.v2024.models.dimension_criteria_key import DimensionCriteriaKey
+from sailpoint.v2024.models.dimension_criteria_key_type import DimensionCriteriaKeyType
+from sailpoint.v2024.models.dimension_criteria_level1 import DimensionCriteriaLevel1
+from sailpoint.v2024.models.dimension_criteria_level2 import DimensionCriteriaLevel2
+from sailpoint.v2024.models.dimension_criteria_level3 import DimensionCriteriaLevel3
+from sailpoint.v2024.models.dimension_criteria_operation import DimensionCriteriaOperation
+from sailpoint.v2024.models.dimension_membership_selector import DimensionMembershipSelector
+from sailpoint.v2024.models.dimension_membership_selector_type import DimensionMembershipSelectorType
 from sailpoint.v2024.models.dimension_ref import DimensionRef
 from sailpoint.v2024.models.display_reference import DisplayReference
 from sailpoint.v2024.models.dkim_attributes import DkimAttributes

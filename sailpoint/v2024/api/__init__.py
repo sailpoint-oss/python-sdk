@@ -25,6 +25,7 @@ from sailpoint.v2024.api.connector_rule_management_api import ConnectorRuleManag
 from sailpoint.v2024.api.connectors_api import ConnectorsApi
 from sailpoint.v2024.api.custom_forms_api import CustomFormsApi
 from sailpoint.v2024.api.custom_password_instructions_api import CustomPasswordInstructionsApi
+from sailpoint.v2024.api.dimensions_api import DimensionsApi
 from sailpoint.v2024.api.entitlements_api import EntitlementsApi
 from sailpoint.v2024.api.global_tenant_security_settings_api import GlobalTenantSecuritySettingsApi
 from sailpoint.v2024.api.governance_groups_api import GovernanceGroupsApi
