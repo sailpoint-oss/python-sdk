@@ -700,7 +700,7 @@ from sailpoint.v2024.models.object_mapping_response import ObjectMappingResponse
 from sailpoint.v2024.models.operation import Operation
 from sailpoint.v2024.models.org_config import OrgConfig
 from sailpoint.v2024.models.original_request import OriginalRequest
-from sailpoint.v2024.models.orphan_uncorrelated_report_arguments import OrphanUncorrelatedReportArguments
+from sailpoint.v2024.models.orphan_identities_report_arguments import OrphanIdentitiesReportArguments
 from sailpoint.v2024.models.outlier import Outlier
 from sailpoint.v2024.models.outlier_contributing_feature import OutlierContributingFeature
 from sailpoint.v2024.models.outlier_contributing_feature_value import OutlierContributingFeatureValue
@@ -1059,6 +1059,7 @@ from sailpoint.v2024.models.trigger_example_output import TriggerExampleOutput
 from sailpoint.v2024.models.trigger_type import TriggerType
 from sailpoint.v2024.models.type_ahead_query import TypeAheadQuery
 from sailpoint.v2024.models.typed_reference import TypedReference
+from sailpoint.v2024.models.uncorrelated_accounts_report_arguments import UncorrelatedAccountsReportArguments
 from sailpoint.v2024.models.update_access_profiles_in_bulk412_response import UpdateAccessProfilesInBulk412Response
 from sailpoint.v2024.models.update_detail import UpdateDetail
 from sailpoint.v2024.models.usage_type import UsageType

@@ -958,7 +958,7 @@ class ReportsDataExtractionApi:
     ) -> TaskResultDetails:
         """Run Report
 
-        Runs a report according to input report details. If non-concurrent task is already running then it returns, otherwise new task creates and returns.
+        Use this API to run a report according to report input details. If non-concurrent task is already running then it returns, otherwise new task creates and returns.
 
         :param report_details: (required)
         :type report_details: ReportDetails
@@ -1030,7 +1030,7 @@ class ReportsDataExtractionApi:
     ) -> ApiResponse[TaskResultDetails]:
         """Run Report
 
-        Runs a report according to input report details. If non-concurrent task is already running then it returns, otherwise new task creates and returns.
+        Use this API to run a report according to report input details. If non-concurrent task is already running then it returns, otherwise new task creates and returns.
 
         :param report_details: (required)
         :type report_details: ReportDetails
@@ -1102,7 +1102,7 @@ class ReportsDataExtractionApi:
     ) -> RESTResponseType:
         """Run Report
 
-        Runs a report according to input report details. If non-concurrent task is already running then it returns, otherwise new task creates and returns.
+        Use this API to run a report according to report input details. If non-concurrent task is already running then it returns, otherwise new task creates and returns.
 
         :param report_details: (required)
         :type report_details: ReportDetails
@@ -1206,7 +1206,8 @@ class ReportsDataExtractionApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(

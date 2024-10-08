@@ -26,7 +26,7 @@ class IdentityProfileIdentityErrorReportArguments(BaseModel):
     """
     Arguments for Identity Profile Identity Error report (IDENTITY_PROFILE_IDENTITY_ERROR)
     """ # noqa: E501
-    authoritative_source: StrictStr = Field(description="Source Id to be checked on errors of identity profiles aggregation", alias="authoritativeSource")
+    authoritative_source: StrictStr = Field(description="Source ID.", alias="authoritativeSource")
     __properties: ClassVar[List[str]] = ["authoritativeSource"]
 
     model_config = ConfigDict(

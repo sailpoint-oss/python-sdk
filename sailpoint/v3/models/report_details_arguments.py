@@ -21,13 +21,14 @@ from sailpoint.v3.models.accounts_export_report_arguments import AccountsExportR
 from sailpoint.v3.models.identities_details_report_arguments import IdentitiesDetailsReportArguments
 from sailpoint.v3.models.identities_report_arguments import IdentitiesReportArguments
 from sailpoint.v3.models.identity_profile_identity_error_report_arguments import IdentityProfileIdentityErrorReportArguments
-from sailpoint.v3.models.orphan_uncorrelated_report_arguments import OrphanUncorrelatedReportArguments
+from sailpoint.v3.models.orphan_identities_report_arguments import OrphanIdentitiesReportArguments
 from sailpoint.v3.models.search_export_report_arguments import SearchExportReportArguments
+from sailpoint.v3.models.uncorrelated_accounts_report_arguments import UncorrelatedAccountsReportArguments
 from pydantic import StrictStr, Field
 from typing import Union, List, Set, Optional, Dict
 from typing_extensions import Literal, Self
 
-REPORTDETAILSARGUMENTS_ONE_OF_SCHEMAS = ["AccountsExportReportArguments", "IdentitiesDetailsReportArguments", "IdentitiesReportArguments", "IdentityProfileIdentityErrorReportArguments", "OrphanUncorrelatedReportArguments", "SearchExportReportArguments"]
+REPORTDETAILSARGUMENTS_ONE_OF_SCHEMAS = ["AccountsExportReportArguments", "IdentitiesDetailsReportArguments", "IdentitiesReportArguments", "IdentityProfileIdentityErrorReportArguments", "OrphanIdentitiesReportArguments", "SearchExportReportArguments", "UncorrelatedAccountsReportArguments"]
 
 class ReportDetailsArguments(BaseModel):
     """
@@ -41,12 +42,14 @@ class ReportDetailsArguments(BaseModel):
     oneof_schema_3_validator: Optional[IdentitiesReportArguments] = None
     # data type: IdentityProfileIdentityErrorReportArguments
     oneof_schema_4_validator: Optional[IdentityProfileIdentityErrorReportArguments] = None
-    # data type: OrphanUncorrelatedReportArguments
-    oneof_schema_5_validator: Optional[OrphanUncorrelatedReportArguments] = None
+    # data type: OrphanIdentitiesReportArguments
+    oneof_schema_5_validator: Optional[OrphanIdentitiesReportArguments] = None
     # data type: SearchExportReportArguments
     oneof_schema_6_validator: Optional[SearchExportReportArguments] = None
-    actual_instance: Optional[Union[AccountsExportReportArguments, IdentitiesDetailsReportArguments, IdentitiesReportArguments, IdentityProfileIdentityErrorReportArguments, OrphanUncorrelatedReportArguments, SearchExportReportArguments]] = None
-    one_of_schemas: Set[str] = { "AccountsExportReportArguments", "IdentitiesDetailsReportArguments", "IdentitiesReportArguments", "IdentityProfileIdentityErrorReportArguments", "OrphanUncorrelatedReportArguments", "SearchExportReportArguments" }
+    # data type: UncorrelatedAccountsReportArguments
+    oneof_schema_7_validator: Optional[UncorrelatedAccountsReportArguments] = None
+    actual_instance: Optional[Union[AccountsExportReportArguments, IdentitiesDetailsReportArguments, IdentitiesReportArguments, IdentityProfileIdentityErrorReportArguments, OrphanIdentitiesReportArguments, SearchExportReportArguments, UncorrelatedAccountsReportArguments]] = None
+    one_of_schemas: Set[str] = { "AccountsExportReportArguments", "IdentitiesDetailsReportArguments", "IdentitiesReportArguments", "IdentityProfileIdentityErrorReportArguments", "OrphanIdentitiesReportArguments", "SearchExportReportArguments", "UncorrelatedAccountsReportArguments" }
 
     model_config = ConfigDict(
         validate_assignment=True,
@@ -89,9 +92,9 @@ class ReportDetailsArguments(BaseModel):
             error_messages.append(f"Error! Input type `{type(v)}` is not `IdentityProfileIdentityErrorReportArguments`")
         else:
             match += 1
-        # validate data type: OrphanUncorrelatedReportArguments
-        if not isinstance(v, OrphanUncorrelatedReportArguments):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `OrphanUncorrelatedReportArguments`")
+        # validate data type: OrphanIdentitiesReportArguments
+        if not isinstance(v, OrphanIdentitiesReportArguments):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `OrphanIdentitiesReportArguments`")
         else:
             match += 1
         # validate data type: SearchExportReportArguments
@@ -99,12 +102,17 @@ class ReportDetailsArguments(BaseModel):
             error_messages.append(f"Error! Input type `{type(v)}` is not `SearchExportReportArguments`")
         else:
             match += 1
+        # validate data type: UncorrelatedAccountsReportArguments
+        if not isinstance(v, UncorrelatedAccountsReportArguments):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `UncorrelatedAccountsReportArguments`")
+        else:
+            match += 1
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when setting `actual_instance` in ReportDetailsArguments with oneOf schemas: AccountsExportReportArguments, IdentitiesDetailsReportArguments, IdentitiesReportArguments, IdentityProfileIdentityErrorReportArguments, OrphanUncorrelatedReportArguments, SearchExportReportArguments. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when setting `actual_instance` in ReportDetailsArguments with oneOf schemas: AccountsExportReportArguments, IdentitiesDetailsReportArguments, IdentitiesReportArguments, IdentityProfileIdentityErrorReportArguments, OrphanIdentitiesReportArguments, SearchExportReportArguments, UncorrelatedAccountsReportArguments. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when setting `actual_instance` in ReportDetailsArguments with oneOf schemas: AccountsExportReportArguments, IdentitiesDetailsReportArguments, IdentitiesReportArguments, IdentityProfileIdentityErrorReportArguments, OrphanUncorrelatedReportArguments, SearchExportReportArguments. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in ReportDetailsArguments with oneOf schemas: AccountsExportReportArguments, IdentitiesDetailsReportArguments, IdentitiesReportArguments, IdentityProfileIdentityErrorReportArguments, OrphanIdentitiesReportArguments, SearchExportReportArguments, UncorrelatedAccountsReportArguments. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -143,9 +151,9 @@ class ReportDetailsArguments(BaseModel):
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
-        # deserialize data into OrphanUncorrelatedReportArguments
+        # deserialize data into OrphanIdentitiesReportArguments
         try:
-            instance.actual_instance = OrphanUncorrelatedReportArguments.from_json(json_str)
+            instance.actual_instance = OrphanIdentitiesReportArguments.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
@@ -155,13 +163,19 @@ class ReportDetailsArguments(BaseModel):
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
+        # deserialize data into UncorrelatedAccountsReportArguments
+        try:
+            instance.actual_instance = UncorrelatedAccountsReportArguments.from_json(json_str)
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
 
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when deserializing the JSON string into ReportDetailsArguments with oneOf schemas: AccountsExportReportArguments, IdentitiesDetailsReportArguments, IdentitiesReportArguments, IdentityProfileIdentityErrorReportArguments, OrphanUncorrelatedReportArguments, SearchExportReportArguments. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when deserializing the JSON string into ReportDetailsArguments with oneOf schemas: AccountsExportReportArguments, IdentitiesDetailsReportArguments, IdentitiesReportArguments, IdentityProfileIdentityErrorReportArguments, OrphanIdentitiesReportArguments, SearchExportReportArguments, UncorrelatedAccountsReportArguments. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into ReportDetailsArguments with oneOf schemas: AccountsExportReportArguments, IdentitiesDetailsReportArguments, IdentitiesReportArguments, IdentityProfileIdentityErrorReportArguments, OrphanUncorrelatedReportArguments, SearchExportReportArguments. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into ReportDetailsArguments with oneOf schemas: AccountsExportReportArguments, IdentitiesDetailsReportArguments, IdentitiesReportArguments, IdentityProfileIdentityErrorReportArguments, OrphanIdentitiesReportArguments, SearchExportReportArguments, UncorrelatedAccountsReportArguments. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -175,7 +189,7 @@ class ReportDetailsArguments(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Optional[Union[Dict[str, Any], AccountsExportReportArguments, IdentitiesDetailsReportArguments, IdentitiesReportArguments, IdentityProfileIdentityErrorReportArguments, OrphanUncorrelatedReportArguments, SearchExportReportArguments]]:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], AccountsExportReportArguments, IdentitiesDetailsReportArguments, IdentitiesReportArguments, IdentityProfileIdentityErrorReportArguments, OrphanIdentitiesReportArguments, SearchExportReportArguments, UncorrelatedAccountsReportArguments]]:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None

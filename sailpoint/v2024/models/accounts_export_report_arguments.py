@@ -24,10 +24,10 @@ from typing_extensions import Self
 
 class AccountsExportReportArguments(BaseModel):
     """
-    Arguments for Account Export (ACCOUNTS)
+    Arguments for Account Export report (ACCOUNTS)
     """ # noqa: E501
-    application: StrictStr = Field(description="Id of the authoritative source to export related accounts e.g. identities")
-    source_name: StrictStr = Field(description="Name of the authoritative source for accounts export", alias="sourceName")
+    application: StrictStr = Field(description="Source ID.")
+    source_name: StrictStr = Field(description="Source name.", alias="sourceName")
     __properties: ClassVar[List[str]] = ["application", "sourceName"]
 
     model_config = ConfigDict(

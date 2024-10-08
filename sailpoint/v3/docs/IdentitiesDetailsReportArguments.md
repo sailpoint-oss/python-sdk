@@ -1,12 +1,12 @@
 # IdentitiesDetailsReportArguments
 
-Arguments for Identities details report (IDENTITIES_DETAILS)
+Arguments for Identities Details report (IDENTITIES_DETAILS)
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**correlated_only** | **bool** | Boolean FLAG to specify if only correlated identities should be used in report processing | [default to False]
+**correlated_only** | **bool** | Flag to specify if only correlated identities are included in report. | [default to False]
 
 ## Example
 

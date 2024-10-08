@@ -721,7 +721,7 @@ sailpoint/v2024/docs/Operation.md
 sailpoint/v2024/docs/OrgConfig.md
 sailpoint/v2024/docs/OrgConfigApi.md
 sailpoint/v2024/docs/OriginalRequest.md
-sailpoint/v2024/docs/OrphanUncorrelatedReportArguments.md
+sailpoint/v2024/docs/OrphanIdentitiesReportArguments.md
 sailpoint/v2024/docs/Outlier.md
 sailpoint/v2024/docs/OutlierContributingFeature.md
 sailpoint/v2024/docs/OutlierContributingFeatureValue.md
@@ -1111,6 +1111,7 @@ sailpoint/v2024/docs/TriggersApi.md
 sailpoint/v2024/docs/TypeAheadQuery.md
 sailpoint/v2024/docs/TypedReference.md
 sailpoint/v2024/docs/UIMetadataApi.md
+sailpoint/v2024/docs/UncorrelatedAccountsReportArguments.md
 sailpoint/v2024/docs/UpdateAccessProfilesInBulk412Response.md
 sailpoint/v2024/docs/UpdateDetail.md
 sailpoint/v2024/docs/UsageType.md
@@ -1764,7 +1765,7 @@ sailpoint/v2024/models/object_mapping_response.py
 sailpoint/v2024/models/operation.py
 sailpoint/v2024/models/org_config.py
 sailpoint/v2024/models/original_request.py
-sailpoint/v2024/models/orphan_uncorrelated_report_arguments.py
+sailpoint/v2024/models/orphan_identities_report_arguments.py
 sailpoint/v2024/models/outlier.py
 sailpoint/v2024/models/outlier_contributing_feature.py
 sailpoint/v2024/models/outlier_contributing_feature_value.py
@@ -2123,6 +2124,7 @@ sailpoint/v2024/models/trigger_example_output.py
 sailpoint/v2024/models/trigger_type.py
 sailpoint/v2024/models/type_ahead_query.py
 sailpoint/v2024/models/typed_reference.py
+sailpoint/v2024/models/uncorrelated_accounts_report_arguments.py
 sailpoint/v2024/models/update_access_profiles_in_bulk412_response.py
 sailpoint/v2024/models/update_detail.py
 sailpoint/v2024/models/usage_type.py
@@ -2818,7 +2820,7 @@ sailpoint/v2024/test/test_operation.py
 sailpoint/v2024/test/test_org_config.py
 sailpoint/v2024/test/test_org_config_api.py
 sailpoint/v2024/test/test_original_request.py
-sailpoint/v2024/test/test_orphan_uncorrelated_report_arguments.py
+sailpoint/v2024/test/test_orphan_identities_report_arguments.py
 sailpoint/v2024/test/test_outlier.py
 sailpoint/v2024/test/test_outlier_contributing_feature.py
 sailpoint/v2024/test/test_outlier_contributing_feature_value.py
@@ -3208,6 +3210,7 @@ sailpoint/v2024/test/test_triggers_api.py
 sailpoint/v2024/test/test_type_ahead_query.py
 sailpoint/v2024/test/test_typed_reference.py
 sailpoint/v2024/test/test_ui_metadata_api.py
+sailpoint/v2024/test/test_uncorrelated_accounts_report_arguments.py
 sailpoint/v2024/test/test_update_access_profiles_in_bulk412_response.py
 sailpoint/v2024/test/test_update_detail.py
 sailpoint/v2024/test/test_usage_type.py

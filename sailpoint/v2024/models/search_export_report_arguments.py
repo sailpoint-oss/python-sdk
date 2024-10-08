@@ -17,24 +17,21 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2024.models.filter import Filter
 from sailpoint.v2024.models.index import Index
-from sailpoint.v2024.models.query import Query
 from typing import Optional, Set
 from typing_extensions import Self
 
 class SearchExportReportArguments(BaseModel):
     """
-    Arguments for Search Export report (SEARCH_EXPORT)
+    Arguments for Search Export report (SEARCH_EXPORT)  The report file generated will be a zip file containing csv files of the search results. 
     """ # noqa: E501
     indices: Optional[List[Index]] = Field(default=None, description="The names of the Elasticsearch indices in which to search. If none are provided, then all indices will be searched.")
-    filters: Optional[Dict[str, Filter]] = Field(default=None, description="The filters to be applied for each filtered field name.")
-    query: Query
-    include_nested: Optional[StrictBool] = Field(default=True, description="Indicates whether nested objects from returned search results should be included.", alias="includeNested")
+    query: StrictStr = Field(description="The query using the Elasticsearch [Query String Query](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-query-string-query.html#query-string) syntax from the Query DSL extended by SailPoint to support Nested queries.")
+    columns: Optional[StrictStr] = Field(default=None, description="Comma separated string consisting of technical attribute names of fields to include in report.  Use `access.spread`, `apps.spread`, `accounts.spread` to include respective identity access details.  Use `accessProfiles.spread` to unclude access profile details.  Use `entitlements.spread` to include entitlement details. ")
     sort: Optional[List[StrictStr]] = Field(default=None, description="The fields to be used to sort the search results. Use + or - to specify the sort direction.")
-    __properties: ClassVar[List[str]] = ["indices", "filters", "query", "includeNested", "sort"]
+    __properties: ClassVar[List[str]] = ["indices", "query", "columns", "sort"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -75,16 +72,6 @@ class SearchExportReportArguments(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each value in filters (dict)
-        _field_dict = {}
-        if self.filters:
-            for _key_filters in self.filters:
-                if self.filters[_key_filters]:
-                    _field_dict[_key_filters] = self.filters[_key_filters].to_dict()
-            _dict['filters'] = _field_dict
-        # override the default output from pydantic by calling `to_dict()` of query
-        if self.query:
-            _dict['query'] = self.query.to_dict()
         return _dict
 
     @classmethod
@@ -98,14 +85,8 @@ class SearchExportReportArguments(BaseModel):
 
         _obj = cls.model_validate({
             "indices": obj.get("indices"),
-            "filters": dict(
-                (_k, Filter.from_dict(_v))
-                for _k, _v in obj["filters"].items()
-            )
-            if obj.get("filters") is not None
-            else None,
-            "query": Query.from_dict(obj["query"]) if obj.get("query") is not None else None,
-            "includeNested": obj.get("includeNested") if obj.get("includeNested") is not None else True,
+            "query": obj.get("query"),
+            "columns": obj.get("columns"),
             "sort": obj.get("sort")
         })
         return _obj

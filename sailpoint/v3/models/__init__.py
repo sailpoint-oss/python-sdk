@@ -340,7 +340,7 @@ from sailpoint.v3.models.object_mapping_response import ObjectMappingResponse
 from sailpoint.v3.models.okta_verification_request import OktaVerificationRequest
 from sailpoint.v3.models.operation import Operation
 from sailpoint.v3.models.original_request import OriginalRequest
-from sailpoint.v3.models.orphan_uncorrelated_report_arguments import OrphanUncorrelatedReportArguments
+from sailpoint.v3.models.orphan_identities_report_arguments import OrphanIdentitiesReportArguments
 from sailpoint.v3.models.owner_dto import OwnerDto
 from sailpoint.v3.models.owner_reference import OwnerReference
 from sailpoint.v3.models.owner_reference_segments import OwnerReferenceSegments
@@ -533,6 +533,7 @@ from sailpoint.v3.models.transform_definition import TransformDefinition
 from sailpoint.v3.models.transform_read import TransformRead
 from sailpoint.v3.models.type_ahead_query import TypeAheadQuery
 from sailpoint.v3.models.typed_reference import TypedReference
+from sailpoint.v3.models.uncorrelated_accounts_report_arguments import UncorrelatedAccountsReportArguments
 from sailpoint.v3.models.update_detail import UpdateDetail
 from sailpoint.v3.models.usage_type import UsageType
 from sailpoint.v3.models.v3_connector_dto import V3ConnectorDto

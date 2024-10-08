@@ -24,9 +24,9 @@ from typing_extensions import Self
 
 class IdentitiesDetailsReportArguments(BaseModel):
     """
-    Arguments for Identities details report (IDENTITIES_DETAILS)
+    Arguments for Identities Details report (IDENTITIES_DETAILS)
     """ # noqa: E501
-    correlated_only: StrictBool = Field(description="Boolean FLAG to specify if only correlated identities should be used in report processing", alias="correlatedOnly")
+    correlated_only: StrictBool = Field(description="Flag to specify if only correlated identities are included in report.", alias="correlatedOnly")
     __properties: ClassVar[List[str]] = ["correlatedOnly"]
 
     model_config = ConfigDict(

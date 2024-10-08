@@ -35,8 +35,8 @@ class TestReportDetails(unittest.TestCase):
         model = ReportDetails()
         if include_optional:
             return ReportDetails(
-                report_type = 'IDENTITIES_DETAILS',
-                arguments = {application=2c9180897e7742b2017e781782f705b9, sourceName=DataScienceWorkday}
+                report_type = 'ACCOUNTS',
+                arguments = {application=2c9180897e7742b2017e781782f705b9, sourceName=Active Directory}
             )
         else:
             return ReportDetails(

@@ -36,26 +36,13 @@ class TestSearchExportReportArguments(unittest.TestCase):
         if include_optional:
             return SearchExportReportArguments(
                 indices = [entitlements],
-                filters = {source.id={type=TERMS, terms=[2c9180897termsId780bd2920576]}, source.name.exact={type=TERMS, terms=[IdentityNow], exclude=true}},
-                query = sailpoint.v3.models.query.Query(
-                    query = 'name:a*', 
-                    fields = '[firstName,lastName,email]', 
-                    time_zone = 'America/Chicago', 
-                    inner_hit = sailpoint.v3.models.inner_hit.InnerHit(
-                        query = 'source.name:\"Active Directory\"', 
-                        type = 'access', ), ),
-                include_nested = True,
+                query = 'name:a*',
+                columns = 'displayName,firstName,lastName,email,created,attributes.cloudLifecycleState',
                 sort = [displayName, +id]
             )
         else:
             return SearchExportReportArguments(
-                query = sailpoint.v3.models.query.Query(
-                    query = 'name:a*', 
-                    fields = '[firstName,lastName,email]', 
-                    time_zone = 'America/Chicago', 
-                    inner_hit = sailpoint.v3.models.inner_hit.InnerHit(
-                        query = 'source.name:\"Active Directory\"', 
-                        type = 'access', ), ),
+                query = 'name:a*',
         )
         """
 

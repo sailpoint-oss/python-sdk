@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2024.models.orphan_uncorrelated_report_arguments import OrphanUncorrelatedReportArguments
+from sailpoint.v2024.models.uncorrelated_accounts_report_arguments import UncorrelatedAccountsReportArguments
 
-class TestOrphanUncorrelatedReportArguments(unittest.TestCase):
-    """OrphanUncorrelatedReportArguments unit test stubs"""
+class TestUncorrelatedAccountsReportArguments(unittest.TestCase):
+    """UncorrelatedAccountsReportArguments unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,25 +25,25 @@ class TestOrphanUncorrelatedReportArguments(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> OrphanUncorrelatedReportArguments:
-        """Test OrphanUncorrelatedReportArguments
+    def make_instance(self, include_optional) -> UncorrelatedAccountsReportArguments:
+        """Test UncorrelatedAccountsReportArguments
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `OrphanUncorrelatedReportArguments`
+        # uncomment below to create an instance of `UncorrelatedAccountsReportArguments`
         """
-        model = OrphanUncorrelatedReportArguments()
+        model = UncorrelatedAccountsReportArguments()
         if include_optional:
-            return OrphanUncorrelatedReportArguments(
+            return UncorrelatedAccountsReportArguments(
                 selected_formats = [CSV]
             )
         else:
-            return OrphanUncorrelatedReportArguments(
+            return UncorrelatedAccountsReportArguments(
         )
         """
 
-    def testOrphanUncorrelatedReportArguments(self):
-        """Test OrphanUncorrelatedReportArguments"""
+    def testUncorrelatedAccountsReportArguments(self):
+        """Test UncorrelatedAccountsReportArguments"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

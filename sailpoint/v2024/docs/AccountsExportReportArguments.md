@@ -1,13 +1,13 @@
 # AccountsExportReportArguments
 
-Arguments for Account Export (ACCOUNTS)
+Arguments for Account Export report (ACCOUNTS)
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**application** | **str** | Id of the authoritative source to export related accounts e.g. identities | 
-**source_name** | **str** | Name of the authoritative source for accounts export | 
+**application** | **str** | Source ID. | 
+**source_name** | **str** | Source name. | 
 
 ## Example
 

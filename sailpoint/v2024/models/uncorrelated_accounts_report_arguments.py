@@ -17,17 +17,28 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class IdentitiesReportArguments(BaseModel):
+class UncorrelatedAccountsReportArguments(BaseModel):
     """
-    Arguments for Identities report (IDENTITIES)
+    Arguments for Uncorrelated Accounts report (UNCORRELATED_ACCOUNTS)
     """ # noqa: E501
-    correlated_only: Optional[StrictBool] = Field(default=False, description="Flag to specify if only correlated identities are included in report.", alias="correlatedOnly")
-    __properties: ClassVar[List[str]] = ["correlatedOnly"]
+    selected_formats: Optional[List[StrictStr]] = Field(default=None, description="Output report file formats. These are formats for calling GET endpoint as query parameter 'fileFormat'.  In case report won't have this argument there will be ['CSV', 'PDF'] as default.", alias="selectedFormats")
+    __properties: ClassVar[List[str]] = ["selectedFormats"]
+
+    @field_validator('selected_formats')
+    def selected_formats_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        for i in value:
+            if i not in set(['CSV', 'PDF']):
+                raise ValueError("each list item must be one of ('CSV', 'PDF')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -47,7 +58,7 @@ class IdentitiesReportArguments(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of IdentitiesReportArguments from a JSON string"""
+        """Create an instance of UncorrelatedAccountsReportArguments from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -72,7 +83,7 @@ class IdentitiesReportArguments(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of IdentitiesReportArguments from a dict"""
+        """Create an instance of UncorrelatedAccountsReportArguments from a dict"""
         if obj is None:
             return None
 
@@ -80,7 +91,7 @@ class IdentitiesReportArguments(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "correlatedOnly": obj.get("correlatedOnly") if obj.get("correlatedOnly") is not None else False
+            "selectedFormats": obj.get("selectedFormats")
         })
         return _obj
 

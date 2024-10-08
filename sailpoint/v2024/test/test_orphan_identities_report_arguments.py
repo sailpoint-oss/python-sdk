@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2024.models.search_export_report_arguments import SearchExportReportArguments
+from sailpoint.v2024.models.orphan_identities_report_arguments import OrphanIdentitiesReportArguments
 
-class TestSearchExportReportArguments(unittest.TestCase):
-    """SearchExportReportArguments unit test stubs"""
+class TestOrphanIdentitiesReportArguments(unittest.TestCase):
+    """OrphanIdentitiesReportArguments unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,29 +25,25 @@ class TestSearchExportReportArguments(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> SearchExportReportArguments:
-        """Test SearchExportReportArguments
+    def make_instance(self, include_optional) -> OrphanIdentitiesReportArguments:
+        """Test OrphanIdentitiesReportArguments
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `SearchExportReportArguments`
+        # uncomment below to create an instance of `OrphanIdentitiesReportArguments`
         """
-        model = SearchExportReportArguments()
+        model = OrphanIdentitiesReportArguments()
         if include_optional:
-            return SearchExportReportArguments(
-                indices = [entitlements],
-                query = 'name:a*',
-                columns = 'displayName,firstName,lastName,email,created,attributes.cloudLifecycleState',
-                sort = [displayName, +id]
+            return OrphanIdentitiesReportArguments(
+                selected_formats = [CSV]
             )
         else:
-            return SearchExportReportArguments(
-                query = 'name:a*',
+            return OrphanIdentitiesReportArguments(
         )
         """
 
-    def testSearchExportReportArguments(self):
-        """Test SearchExportReportArguments"""
+    def testOrphanIdentitiesReportArguments(self):
+        """Test OrphanIdentitiesReportArguments"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

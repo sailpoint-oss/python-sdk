@@ -36,12 +36,12 @@ class TestAccountsExportReportArguments(unittest.TestCase):
         if include_optional:
             return AccountsExportReportArguments(
                 application = '2c9180897eSourceIde781782f705b9',
-                source_name = 'DataScienceSourceName'
+                source_name = 'Active Directory'
             )
         else:
             return AccountsExportReportArguments(
                 application = '2c9180897eSourceIde781782f705b9',
-                source_name = 'DataScienceSourceName',
+                source_name = 'Active Directory',
         )
         """
 

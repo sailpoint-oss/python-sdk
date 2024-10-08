@@ -26,7 +26,7 @@ class IdentitiesReportArguments(BaseModel):
     """
     Arguments for Identities report (IDENTITIES)
     """ # noqa: E501
-    correlated_only: Optional[StrictBool] = Field(default=False, description="Boolean FLAG to specify if only correlated identities should be used in report processing", alias="correlatedOnly")
+    correlated_only: Optional[StrictBool] = Field(default=False, description="Flag to specify if only correlated identities are included in report.", alias="correlatedOnly")
     __properties: ClassVar[List[str]] = ["correlatedOnly"]
 
     model_config = ConfigDict(

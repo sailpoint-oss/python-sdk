@@ -6,7 +6,7 @@ Arguments for Identities report (IDENTITIES)
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**correlated_only** | **bool** | Boolean FLAG to specify if only correlated identities should be used in report processing | [optional] [default to False]
+**correlated_only** | **bool** | Flag to specify if only correlated identities are included in report. | [optional] [default to False]
 
 ## Example
 
