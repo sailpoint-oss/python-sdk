@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2024.models.sp_config_url import SpConfigUrl
+from sailpoint.v2024.models.sp_config_rule import SpConfigRule
 
-class TestSpConfigUrl(unittest.TestCase):
-    """SpConfigUrl unit test stubs"""
+class TestSpConfigRule(unittest.TestCase):
+    """SpConfigRule unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,26 +25,27 @@ class TestSpConfigUrl(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> SpConfigUrl:
-        """Test SpConfigUrl
+    def make_instance(self, include_optional) -> SpConfigRule:
+        """Test SpConfigRule
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `SpConfigUrl`
+        # uncomment below to create an instance of `SpConfigRule`
         """
-        model = SpConfigUrl()
+        model = SpConfigRule()
         if include_optional:
-            return SpConfigUrl(
-                url = 'ets://trigger-subscriptions/$id',
-                query = sailpoint.v2024.models.query.query()
+            return SpConfigRule(
+                path = '$.enabled',
+                value = sailpoint.v2024.models.value.value(),
+                mode = [RESTORE, PROMOTE]
             )
         else:
-            return SpConfigUrl(
+            return SpConfigRule(
         )
         """
 
-    def testSpConfigUrl(self):
-        """Test SpConfigUrl"""
+    def testSpConfigRule(self):
+        """Test SpConfigRule"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

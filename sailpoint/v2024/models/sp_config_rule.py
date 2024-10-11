@@ -17,18 +17,30 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class SpConfigUrl(BaseModel):
+class SpConfigRule(BaseModel):
     """
-    Format of resolver URLs for Object Configurations
+    Format of Config Hub Object Rules
     """ # noqa: E501
-    url: Optional[StrictStr] = Field(default=None, description="URL for the target object endpoint.")
-    query: Optional[Dict[str, Any]] = Field(default=None, description="Any query parameters that are needed for the URL.")
-    __properties: ClassVar[List[str]] = ["url", "query"]
+    path: Optional[StrictStr] = Field(default=None, description="JSONPath expression denoting the path within the object where a value substitution should be applied")
+    value: Optional[Dict[str, Any]] = Field(default=None, description="Value to be assigned at the jsonPath location within the object")
+    mode: Optional[List[StrictStr]] = Field(default=None, description="Draft modes to which this rule will apply")
+    __properties: ClassVar[List[str]] = ["path", "value", "mode"]
+
+    @field_validator('mode')
+    def mode_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        for i in value:
+            if i not in set(['RESTORE', 'PROMOTE', 'UPLOAD']):
+                raise ValueError("each list item must be one of ('RESTORE', 'PROMOTE', 'UPLOAD')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -48,7 +60,7 @@ class SpConfigUrl(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of SpConfigUrl from a JSON string"""
+        """Create an instance of SpConfigRule from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -69,16 +81,16 @@ class SpConfigUrl(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if query (nullable) is None
+        # set to None if value (nullable) is None
         # and model_fields_set contains the field
-        if self.query is None and "query" in self.model_fields_set:
-            _dict['query'] = None
+        if self.value is None and "value" in self.model_fields_set:
+            _dict['value'] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of SpConfigUrl from a dict"""
+        """Create an instance of SpConfigRule from a dict"""
         if obj is None:
             return None
 
@@ -86,8 +98,9 @@ class SpConfigUrl(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "url": obj.get("url"),
-            "query": obj.get("query")
+            "path": obj.get("path"),
+            "value": obj.get("value"),
+            "mode": obj.get("mode")
         })
         return _obj
 

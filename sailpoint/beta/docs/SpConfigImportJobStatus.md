@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **expiration** | **datetime** | The time until which the artifacts will be available for download. | 
 **created** | **datetime** | The time the job was started. | 
 **modified** | **datetime** | The time of the last update to the job. | 
-**message** | **str** | This message contains additional information about the overall status of the job. | 
+**message** | **str** | This message contains additional information about the overall status of the job. | [optional] 
 **completed** | **datetime** | The time the job was completed. | [optional] 
 
 ## Example

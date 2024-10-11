@@ -36,28 +36,25 @@ class TestSpConfigObject(unittest.TestCase):
         if include_optional:
             return SpConfigObject(
                 object_type = 'TRIGGER_SUBSCRIPTION',
-                resolve_by_id_url = sailpoint.beta.models.resolver_url_format_for_object_configuration/.Resolver URL Format for Object Configuration.(
-                    url = 'ets://trigger-subscriptions/$id', 
-                    query = sailpoint.beta.models.query.query(), ),
-                resolve_by_name_url = [
-                    sailpoint.beta.models.resolver_url_format_for_object_configuration/.Resolver URL Format for Object Configuration.(
-                        url = 'ets://trigger-subscriptions/$id', 
-                        query = sailpoint.beta.models.query.query(), )
-                    ],
-                export_url = sailpoint.beta.models.resolver_url_format_for_object_configuration/.Resolver URL Format for Object Configuration.(
-                    url = 'ets://trigger-subscriptions/$id', 
-                    query = sailpoint.beta.models.query.query(), ),
-                export_right = 'idn:trigger-service-subscriptions:read',
-                export_limit = 10,
-                import_url = sailpoint.beta.models.resolver_url_format_for_object_configuration/.Resolver URL Format for Object Configuration.(
-                    url = 'ets://trigger-subscriptions/$id', 
-                    query = sailpoint.beta.models.query.query(), ),
-                import_right = 'idn:trigger-service-subscriptions:create',
-                import_limit = 10,
                 reference_extractors = [$.owner],
                 signature_required = False,
                 legacy_object = False,
-                one_per_tenant = False
+                one_per_tenant = False,
+                exportable = True,
+                rules = sailpoint.beta.models.config_object_rules.Config Object Rules(
+                    take_from_target_rules = [
+                        sailpoint.beta.models.config_object_rule.Config Object Rule(
+                            path = '$.enabled', 
+                            value = sailpoint.beta.models.value.value(), 
+                            mode = [RESTORE, PROMOTE], )
+                        ], 
+                    default_rules = [
+                        sailpoint.beta.models.config_object_rule.Config Object Rule(
+                            path = '$.enabled', 
+                            value = sailpoint.beta.models.value.value(), 
+                            mode = [RESTORE, PROMOTE], )
+                        ], 
+                    editable = True, )
             )
         else:
             return SpConfigObject(

@@ -17,38 +17,29 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class SpConfigImportJobStatus(BaseModel):
+class SpConfigRule(BaseModel):
     """
-    SpConfigImportJobStatus
+    Format of Config Hub Object Rules
     """ # noqa: E501
-    job_id: StrictStr = Field(description="Unique id assigned to this job.", alias="jobId")
-    status: StrictStr = Field(description="Status of the job.")
-    type: StrictStr = Field(description="Type of the job, either export or import.")
-    expiration: datetime = Field(description="The time until which the artifacts will be available for download.")
-    created: datetime = Field(description="The time the job was started.")
-    modified: datetime = Field(description="The time of the last update to the job.")
-    message: Optional[StrictStr] = Field(default=None, description="This message contains additional information about the overall status of the job.")
-    completed: Optional[datetime] = Field(default=None, description="The time the job was completed.")
-    __properties: ClassVar[List[str]] = ["jobId", "status", "type", "expiration", "created", "modified", "message", "completed"]
+    path: Optional[StrictStr] = Field(default=None, description="JSONPath expression denoting the path within the object where a value substitution should be applied")
+    value: Optional[Dict[str, Any]] = Field(default=None, description="Value to be assigned at the jsonPath location within the object")
+    mode: Optional[List[StrictStr]] = Field(default=None, description="Draft modes to which this rule will apply")
+    __properties: ClassVar[List[str]] = ["path", "value", "mode"]
 
-    @field_validator('status')
-    def status_validate_enum(cls, value):
+    @field_validator('mode')
+    def mode_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['NOT_STARTED', 'IN_PROGRESS', 'COMPLETE', 'CANCELLED', 'FAILED']):
-            raise ValueError("must be one of enum values ('NOT_STARTED', 'IN_PROGRESS', 'COMPLETE', 'CANCELLED', 'FAILED')")
-        return value
+        if value is None:
+            return value
 
-    @field_validator('type')
-    def type_validate_enum(cls, value):
-        """Validates the enum"""
-        if value not in set(['EXPORT', 'IMPORT']):
-            raise ValueError("must be one of enum values ('EXPORT', 'IMPORT')")
+        for i in value:
+            if i not in set(['RESTORE', 'PROMOTE', 'UPLOAD']):
+                raise ValueError("each list item must be one of ('RESTORE', 'PROMOTE', 'UPLOAD')")
         return value
 
     model_config = ConfigDict(
@@ -69,7 +60,7 @@ class SpConfigImportJobStatus(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of SpConfigImportJobStatus from a JSON string"""
+        """Create an instance of SpConfigRule from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -90,11 +81,16 @@ class SpConfigImportJobStatus(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if value (nullable) is None
+        # and model_fields_set contains the field
+        if self.value is None and "value" in self.model_fields_set:
+            _dict['value'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of SpConfigImportJobStatus from a dict"""
+        """Create an instance of SpConfigRule from a dict"""
         if obj is None:
             return None
 
@@ -102,14 +98,9 @@ class SpConfigImportJobStatus(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "jobId": obj.get("jobId"),
-            "status": obj.get("status"),
-            "type": obj.get("type"),
-            "expiration": obj.get("expiration"),
-            "created": obj.get("created"),
-            "modified": obj.get("modified"),
-            "message": obj.get("message"),
-            "completed": obj.get("completed")
+            "path": obj.get("path"),
+            "value": obj.get("value"),
+            "mode": obj.get("mode")
         })
         return _obj
 

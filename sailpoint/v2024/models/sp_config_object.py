@@ -17,9 +17,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2024.models.sp_config_url import SpConfigUrl
+from sailpoint.v2024.models.sp_config_rules import SpConfigRules
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,19 +28,13 @@ class SpConfigObject(BaseModel):
     Response model for get object configuration.
     """ # noqa: E501
     object_type: Optional[StrictStr] = Field(default=None, description="The object type this configuration is for.", alias="objectType")
-    resolve_by_id_url: Optional[SpConfigUrl] = Field(default=None, alias="resolveByIdUrl")
-    resolve_by_name_url: Optional[List[SpConfigUrl]] = Field(default=None, description="Url and query parameters to be used to resolve this type of object by name.", alias="resolveByNameUrl")
-    export_url: Optional[SpConfigUrl] = Field(default=None, alias="exportUrl")
-    export_right: Optional[StrictStr] = Field(default=None, description="Rights needed by the invoker of sp-config/export in order to export this type of object.", alias="exportRight")
-    export_limit: Optional[StrictInt] = Field(default=None, description="Pagination limit imposed by the target service for this object type.", alias="exportLimit")
-    import_url: Optional[SpConfigUrl] = Field(default=None, alias="importUrl")
-    import_right: Optional[StrictStr] = Field(default=None, description="Rights needed by the invoker of sp-config/import in order to import this type of object.", alias="importRight")
-    import_limit: Optional[StrictInt] = Field(default=None, description="Pagination limit imposed by the target service for this object type.", alias="importLimit")
     reference_extractors: Optional[List[StrictStr]] = Field(default=None, description="List of json paths within an exported object of this type that represent references that need to be resolved.", alias="referenceExtractors")
     signature_required: Optional[StrictBool] = Field(default=False, description="If true, this type of object will be JWS signed and cannot be modified before import.", alias="signatureRequired")
-    legacy_object: Optional[StrictBool] = Field(default=False, alias="legacyObject")
-    one_per_tenant: Optional[StrictBool] = Field(default=False, alias="onePerTenant")
-    __properties: ClassVar[List[str]] = ["objectType", "resolveByIdUrl", "resolveByNameUrl", "exportUrl", "exportRight", "exportLimit", "importUrl", "importRight", "importLimit", "referenceExtractors", "signatureRequired", "legacyObject", "onePerTenant"]
+    legacy_object: Optional[StrictBool] = Field(default=False, description="Whether this is a legacy object", alias="legacyObject")
+    one_per_tenant: Optional[StrictBool] = Field(default=False, description="Whether there is only one object of this type", alias="onePerTenant")
+    exportable: Optional[StrictBool] = Field(default=False, description="Whether this object can be exported or it is just a reference object")
+    rules: Optional[SpConfigRules] = None
+    __properties: ClassVar[List[str]] = ["objectType", "referenceExtractors", "signatureRequired", "legacyObject", "onePerTenant", "exportable", "rules"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,22 +75,9 @@ class SpConfigObject(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of resolve_by_id_url
-        if self.resolve_by_id_url:
-            _dict['resolveByIdUrl'] = self.resolve_by_id_url.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of each item in resolve_by_name_url (list)
-        _items = []
-        if self.resolve_by_name_url:
-            for _item_resolve_by_name_url in self.resolve_by_name_url:
-                if _item_resolve_by_name_url:
-                    _items.append(_item_resolve_by_name_url.to_dict())
-            _dict['resolveByNameUrl'] = _items
-        # override the default output from pydantic by calling `to_dict()` of export_url
-        if self.export_url:
-            _dict['exportUrl'] = self.export_url.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of import_url
-        if self.import_url:
-            _dict['importUrl'] = self.import_url.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of rules
+        if self.rules:
+            _dict['rules'] = self.rules.to_dict()
         # set to None if reference_extractors (nullable) is None
         # and model_fields_set contains the field
         if self.reference_extractors is None and "reference_extractors" in self.model_fields_set:
@@ -115,18 +96,12 @@ class SpConfigObject(BaseModel):
 
         _obj = cls.model_validate({
             "objectType": obj.get("objectType"),
-            "resolveByIdUrl": SpConfigUrl.from_dict(obj["resolveByIdUrl"]) if obj.get("resolveByIdUrl") is not None else None,
-            "resolveByNameUrl": [SpConfigUrl.from_dict(_item) for _item in obj["resolveByNameUrl"]] if obj.get("resolveByNameUrl") is not None else None,
-            "exportUrl": SpConfigUrl.from_dict(obj["exportUrl"]) if obj.get("exportUrl") is not None else None,
-            "exportRight": obj.get("exportRight"),
-            "exportLimit": obj.get("exportLimit"),
-            "importUrl": SpConfigUrl.from_dict(obj["importUrl"]) if obj.get("importUrl") is not None else None,
-            "importRight": obj.get("importRight"),
-            "importLimit": obj.get("importLimit"),
             "referenceExtractors": obj.get("referenceExtractors"),
             "signatureRequired": obj.get("signatureRequired") if obj.get("signatureRequired") is not None else False,
             "legacyObject": obj.get("legacyObject") if obj.get("legacyObject") is not None else False,
-            "onePerTenant": obj.get("onePerTenant") if obj.get("onePerTenant") is not None else False
+            "onePerTenant": obj.get("onePerTenant") if obj.get("onePerTenant") is not None else False,
+            "exportable": obj.get("exportable") if obj.get("exportable") is not None else False,
+            "rules": SpConfigRules.from_dict(obj["rules"]) if obj.get("rules") is not None else None
         })
         return _obj
 

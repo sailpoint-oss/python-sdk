@@ -17,18 +17,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.beta.models.sp_config_rule import SpConfigRule
 from typing import Optional, Set
 from typing_extensions import Self
 
-class SpConfigUrl(BaseModel):
+class SpConfigRules(BaseModel):
     """
-    Format of resolver URLs for Object Configurations
+    Rules to be applied to the config object during draft process
     """ # noqa: E501
-    url: Optional[StrictStr] = Field(default=None, description="URL for the target object endpoint.")
-    query: Optional[Dict[str, Any]] = Field(default=None, description="Any query parameters that are needed for the URL.")
-    __properties: ClassVar[List[str]] = ["url", "query"]
+    take_from_target_rules: Optional[List[SpConfigRule]] = Field(default=None, alias="takeFromTargetRules")
+    default_rules: Optional[List[SpConfigRule]] = Field(default=None, alias="defaultRules")
+    editable: Optional[StrictBool] = Field(default=False, description="Whether this object can be edited")
+    __properties: ClassVar[List[str]] = ["takeFromTargetRules", "defaultRules", "editable"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -48,7 +50,7 @@ class SpConfigUrl(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of SpConfigUrl from a JSON string"""
+        """Create an instance of SpConfigRules from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -69,16 +71,25 @@ class SpConfigUrl(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if query (nullable) is None
-        # and model_fields_set contains the field
-        if self.query is None and "query" in self.model_fields_set:
-            _dict['query'] = None
-
+        # override the default output from pydantic by calling `to_dict()` of each item in take_from_target_rules (list)
+        _items = []
+        if self.take_from_target_rules:
+            for _item_take_from_target_rules in self.take_from_target_rules:
+                if _item_take_from_target_rules:
+                    _items.append(_item_take_from_target_rules.to_dict())
+            _dict['takeFromTargetRules'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in default_rules (list)
+        _items = []
+        if self.default_rules:
+            for _item_default_rules in self.default_rules:
+                if _item_default_rules:
+                    _items.append(_item_default_rules.to_dict())
+            _dict['defaultRules'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of SpConfigUrl from a dict"""
+        """Create an instance of SpConfigRules from a dict"""
         if obj is None:
             return None
 
@@ -86,8 +97,9 @@ class SpConfigUrl(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "url": obj.get("url"),
-            "query": obj.get("query")
+            "takeFromTargetRules": [SpConfigRule.from_dict(_item) for _item in obj["takeFromTargetRules"]] if obj.get("takeFromTargetRules") is not None else None,
+            "defaultRules": [SpConfigRule.from_dict(_item) for _item in obj["defaultRules"]] if obj.get("defaultRules") is not None else None,
+            "editable": obj.get("editable") if obj.get("editable") is not None else False
         })
         return _obj
 

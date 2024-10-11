@@ -17,39 +17,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.v2024.models.sp_config_rule import SpConfigRule
 from typing import Optional, Set
 from typing_extensions import Self
 
-class SpConfigImportJobStatus(BaseModel):
+class SpConfigRules(BaseModel):
     """
-    SpConfigImportJobStatus
+    Rules to be applied to the config object during draft process
     """ # noqa: E501
-    job_id: StrictStr = Field(description="Unique id assigned to this job.", alias="jobId")
-    status: StrictStr = Field(description="Status of the job.")
-    type: StrictStr = Field(description="Type of the job, either export or import.")
-    expiration: datetime = Field(description="The time until which the artifacts will be available for download.")
-    created: datetime = Field(description="The time the job was started.")
-    modified: datetime = Field(description="The time of the last update to the job.")
-    message: Optional[StrictStr] = Field(default=None, description="This message contains additional information about the overall status of the job.")
-    completed: Optional[datetime] = Field(default=None, description="The time the job was completed.")
-    __properties: ClassVar[List[str]] = ["jobId", "status", "type", "expiration", "created", "modified", "message", "completed"]
-
-    @field_validator('status')
-    def status_validate_enum(cls, value):
-        """Validates the enum"""
-        if value not in set(['NOT_STARTED', 'IN_PROGRESS', 'COMPLETE', 'CANCELLED', 'FAILED']):
-            raise ValueError("must be one of enum values ('NOT_STARTED', 'IN_PROGRESS', 'COMPLETE', 'CANCELLED', 'FAILED')")
-        return value
-
-    @field_validator('type')
-    def type_validate_enum(cls, value):
-        """Validates the enum"""
-        if value not in set(['EXPORT', 'IMPORT']):
-            raise ValueError("must be one of enum values ('EXPORT', 'IMPORT')")
-        return value
+    take_from_target_rules: Optional[List[SpConfigRule]] = Field(default=None, alias="takeFromTargetRules")
+    default_rules: Optional[List[SpConfigRule]] = Field(default=None, alias="defaultRules")
+    editable: Optional[StrictBool] = Field(default=False, description="Whether this object can be edited")
+    __properties: ClassVar[List[str]] = ["takeFromTargetRules", "defaultRules", "editable"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -69,7 +50,7 @@ class SpConfigImportJobStatus(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of SpConfigImportJobStatus from a JSON string"""
+        """Create an instance of SpConfigRules from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -90,11 +71,25 @@ class SpConfigImportJobStatus(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in take_from_target_rules (list)
+        _items = []
+        if self.take_from_target_rules:
+            for _item_take_from_target_rules in self.take_from_target_rules:
+                if _item_take_from_target_rules:
+                    _items.append(_item_take_from_target_rules.to_dict())
+            _dict['takeFromTargetRules'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in default_rules (list)
+        _items = []
+        if self.default_rules:
+            for _item_default_rules in self.default_rules:
+                if _item_default_rules:
+                    _items.append(_item_default_rules.to_dict())
+            _dict['defaultRules'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of SpConfigImportJobStatus from a dict"""
+        """Create an instance of SpConfigRules from a dict"""
         if obj is None:
             return None
 
@@ -102,14 +97,9 @@ class SpConfigImportJobStatus(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "jobId": obj.get("jobId"),
-            "status": obj.get("status"),
-            "type": obj.get("type"),
-            "expiration": obj.get("expiration"),
-            "created": obj.get("created"),
-            "modified": obj.get("modified"),
-            "message": obj.get("message"),
-            "completed": obj.get("completed")
+            "takeFromTargetRules": [SpConfigRule.from_dict(_item) for _item in obj["takeFromTargetRules"]] if obj.get("takeFromTargetRules") is not None else None,
+            "defaultRules": [SpConfigRule.from_dict(_item) for _item in obj["defaultRules"]] if obj.get("defaultRules") is not None else None,
+            "editable": obj.get("editable") if obj.get("editable") is not None else False
         })
         return _obj
 

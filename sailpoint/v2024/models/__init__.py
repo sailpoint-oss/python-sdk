@@ -906,7 +906,8 @@ from sailpoint.v2024.models.sp_config_job import SpConfigJob
 from sailpoint.v2024.models.sp_config_message import SpConfigMessage
 from sailpoint.v2024.models.sp_config_message1 import SpConfigMessage1
 from sailpoint.v2024.models.sp_config_object import SpConfigObject
-from sailpoint.v2024.models.sp_config_url import SpConfigUrl
+from sailpoint.v2024.models.sp_config_rule import SpConfigRule
+from sailpoint.v2024.models.sp_config_rules import SpConfigRules
 from sailpoint.v2024.models.standard_level import StandardLevel
 from sailpoint.v2024.models.start_invocation_input import StartInvocationInput
 from sailpoint.v2024.models.status_response import StatusResponse

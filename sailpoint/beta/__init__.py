@@ -860,7 +860,8 @@ from sailpoint.beta.models.sp_config_import_results import SpConfigImportResults
 from sailpoint.beta.models.sp_config_job import SpConfigJob
 from sailpoint.beta.models.sp_config_message import SpConfigMessage
 from sailpoint.beta.models.sp_config_object import SpConfigObject
-from sailpoint.beta.models.sp_config_url import SpConfigUrl
+from sailpoint.beta.models.sp_config_rule import SpConfigRule
+from sailpoint.beta.models.sp_config_rules import SpConfigRules
 from sailpoint.beta.models.standard_level import StandardLevel
 from sailpoint.beta.models.start_invocation_input import StartInvocationInput
 from sailpoint.beta.models.status_response import StatusResponse
