@@ -335,6 +335,7 @@ from sailpoint.beta.models.get_active_campaigns200_response_inner import GetActi
 from sailpoint.beta.models.get_discovered_applications200_response_inner import GetDiscoveredApplications200ResponseInner
 from sailpoint.beta.models.get_form_definition_by_key400_response import GetFormDefinitionByKey400Response
 from sailpoint.beta.models.get_historical_identity_events200_response_inner import GetHistoricalIdentityEvents200ResponseInner
+from sailpoint.beta.models.get_launchers200_response import GetLaunchers200Response
 from sailpoint.beta.models.get_o_auth_client_response import GetOAuthClientResponse
 from sailpoint.beta.models.get_personal_access_token_response import GetPersonalAccessTokenResponse
 from sailpoint.beta.models.get_role_assignments200_response_inner import GetRoleAssignments200ResponseInner
@@ -420,6 +421,11 @@ from sailpoint.beta.models.kba_auth_response import KbaAuthResponse
 from sailpoint.beta.models.kba_auth_response_item import KbaAuthResponseItem
 from sailpoint.beta.models.kba_question import KbaQuestion
 from sailpoint.beta.models.latest_outlier_summary import LatestOutlierSummary
+from sailpoint.beta.models.launcher import Launcher
+from sailpoint.beta.models.launcher_owner import LauncherOwner
+from sailpoint.beta.models.launcher_reference import LauncherReference
+from sailpoint.beta.models.launcher_request import LauncherRequest
+from sailpoint.beta.models.launcher_request_reference import LauncherRequestReference
 from sailpoint.beta.models.license import License
 from sailpoint.beta.models.lifecycle_state import LifecycleState
 from sailpoint.beta.models.lifecycle_state_dto import LifecycleStateDto
@@ -775,6 +781,7 @@ from sailpoint.beta.models.sp_config_rule import SpConfigRule
 from sailpoint.beta.models.sp_config_rules import SpConfigRules
 from sailpoint.beta.models.standard_level import StandardLevel
 from sailpoint.beta.models.start_invocation_input import StartInvocationInput
+from sailpoint.beta.models.start_launcher200_response import StartLauncher200Response
 from sailpoint.beta.models.status_response import StatusResponse
 from sailpoint.beta.models.subscription import Subscription
 from sailpoint.beta.models.subscription_patch_request_inner import SubscriptionPatchRequestInner

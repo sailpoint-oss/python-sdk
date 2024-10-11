@@ -50,6 +50,7 @@ from sailpoint.beta.api.identities_api import IdentitiesApi
 from sailpoint.beta.api.identity_attributes_api import IdentityAttributesApi
 from sailpoint.beta.api.identity_history_api import IdentityHistoryApi
 from sailpoint.beta.api.identity_profiles_api import IdentityProfilesApi
+from sailpoint.beta.api.launchers_api import LaunchersApi
 from sailpoint.beta.api.lifecycle_states_api import LifecycleStatesApi
 from sailpoint.beta.api.mfa_configuration_api import MFAConfigurationApi
 from sailpoint.beta.api.mfa_controller_api import MFAControllerApi
@@ -90,6 +91,7 @@ from sailpoint.beta.api.vendor_connector_mappings_api import VendorConnectorMapp
 from sailpoint.beta.api.work_items_api import WorkItemsApi
 from sailpoint.beta.api.work_reassignment_api import WorkReassignmentApi
 from sailpoint.beta.api.workflows_api import WorkflowsApi
+from sailpoint.beta.api.default_api import DefaultApi
 
 # import ApiClient
 from sailpoint.beta.api_response import ApiResponse
@@ -424,6 +426,7 @@ from sailpoint.beta.models.get_active_campaigns200_response_inner import GetActi
 from sailpoint.beta.models.get_discovered_applications200_response_inner import GetDiscoveredApplications200ResponseInner
 from sailpoint.beta.models.get_form_definition_by_key400_response import GetFormDefinitionByKey400Response
 from sailpoint.beta.models.get_historical_identity_events200_response_inner import GetHistoricalIdentityEvents200ResponseInner
+from sailpoint.beta.models.get_launchers200_response import GetLaunchers200Response
 from sailpoint.beta.models.get_o_auth_client_response import GetOAuthClientResponse
 from sailpoint.beta.models.get_personal_access_token_response import GetPersonalAccessTokenResponse
 from sailpoint.beta.models.get_role_assignments200_response_inner import GetRoleAssignments200ResponseInner
@@ -509,6 +512,11 @@ from sailpoint.beta.models.kba_auth_response import KbaAuthResponse
 from sailpoint.beta.models.kba_auth_response_item import KbaAuthResponseItem
 from sailpoint.beta.models.kba_question import KbaQuestion
 from sailpoint.beta.models.latest_outlier_summary import LatestOutlierSummary
+from sailpoint.beta.models.launcher import Launcher
+from sailpoint.beta.models.launcher_owner import LauncherOwner
+from sailpoint.beta.models.launcher_reference import LauncherReference
+from sailpoint.beta.models.launcher_request import LauncherRequest
+from sailpoint.beta.models.launcher_request_reference import LauncherRequestReference
 from sailpoint.beta.models.license import License
 from sailpoint.beta.models.lifecycle_state import LifecycleState
 from sailpoint.beta.models.lifecycle_state_dto import LifecycleStateDto
@@ -864,6 +872,7 @@ from sailpoint.beta.models.sp_config_rule import SpConfigRule
 from sailpoint.beta.models.sp_config_rules import SpConfigRules
 from sailpoint.beta.models.standard_level import StandardLevel
 from sailpoint.beta.models.start_invocation_input import StartInvocationInput
+from sailpoint.beta.models.start_launcher200_response import StartLauncher200Response
 from sailpoint.beta.models.status_response import StatusResponse
 from sailpoint.beta.models.subscription import Subscription
 from sailpoint.beta.models.subscription_patch_request_inner import SubscriptionPatchRequestInner

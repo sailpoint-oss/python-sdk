@@ -34,6 +34,7 @@ from sailpoint.beta.api.identities_api import IdentitiesApi
 from sailpoint.beta.api.identity_attributes_api import IdentityAttributesApi
 from sailpoint.beta.api.identity_history_api import IdentityHistoryApi
 from sailpoint.beta.api.identity_profiles_api import IdentityProfilesApi
+from sailpoint.beta.api.launchers_api import LaunchersApi
 from sailpoint.beta.api.lifecycle_states_api import LifecycleStatesApi
 from sailpoint.beta.api.mfa_configuration_api import MFAConfigurationApi
 from sailpoint.beta.api.mfa_controller_api import MFAControllerApi
@@ -74,4 +75,5 @@ from sailpoint.beta.api.vendor_connector_mappings_api import VendorConnectorMapp
 from sailpoint.beta.api.work_items_api import WorkItemsApi
 from sailpoint.beta.api.work_reassignment_api import WorkReassignmentApi
 from sailpoint.beta.api.workflows_api import WorkflowsApi
+from sailpoint.beta.api.default_api import DefaultApi
 

@@ -309,6 +309,9 @@ Class | Method | HTTP request | Description
 *IdentityProfilesApi* | [**show_generate_identity_preview**](sailpoint/beta/docs/IdentityProfilesApi.md#show_generate_identity_preview) | **POST** /identity-profiles/identity-preview | Generate Identity Profile Preview
 *IdentityProfilesApi* | [**sync_identity_profile**](sailpoint/beta/docs/IdentityProfilesApi.md#sync_identity_profile) | **POST** /identity-profiles/{identity-profile-id}/process-identities | Process identities under profile
 *IdentityProfilesApi* | [**update_identity_profile**](sailpoint/beta/docs/IdentityProfilesApi.md#update_identity_profile) | **PATCH** /identity-profiles/{identity-profile-id} | Update the Identity Profile
+*LaunchersApi* | [**get_launcher**](sailpoint/beta/docs/LaunchersApi.md#get_launcher) | **GET** /launchers/{launcherID} | Get Launcher by ID
+*LaunchersApi* | [**get_launchers**](sailpoint/beta/docs/LaunchersApi.md#get_launchers) | **GET** /launchers | List all Launchers for tenant
+*LaunchersApi* | [**start_launcher**](sailpoint/beta/docs/LaunchersApi.md#start_launcher) | **POST** /beta/launchers/{launcherID}/launch | Launch a Launcher
 *LifecycleStatesApi* | [**get_lifecycle_states**](sailpoint/beta/docs/LifecycleStatesApi.md#get_lifecycle_states) | **GET** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Get Lifecycle State
 *LifecycleStatesApi* | [**update_lifecycle_states**](sailpoint/beta/docs/LifecycleStatesApi.md#update_lifecycle_states) | **PATCH** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Update Lifecycle State
 *MFAConfigurationApi* | [**delete_mfa_config**](sailpoint/beta/docs/MFAConfigurationApi.md#delete_mfa_config) | **DELETE** /mfa/{method}/delete | Delete MFA method configuration
@@ -619,6 +622,9 @@ Class | Method | HTTP request | Description
 *WorkflowsApi* | [**test_external_execute_workflow**](sailpoint/beta/docs/WorkflowsApi.md#test_external_execute_workflow) | **POST** /workflows/execute/external/{id}/test | Test Workflow via External Trigger
 *WorkflowsApi* | [**test_workflow**](sailpoint/beta/docs/WorkflowsApi.md#test_workflow) | **POST** /workflows/{id}/test | Test Workflow By Id
 *WorkflowsApi* | [**update_workflow**](sailpoint/beta/docs/WorkflowsApi.md#update_workflow) | **PUT** /workflows/{id} | Update Workflow
+*DefaultApi* | [**create_launcher**](sailpoint/beta/docs/DefaultApi.md#create_launcher) | **POST** /launchers | Create launcher
+*DefaultApi* | [**delete_launcher**](sailpoint/beta/docs/DefaultApi.md#delete_launcher) | **DELETE** /launchers/{launcherID} | Delete Launcher
+*DefaultApi* | [**put_launcher**](sailpoint/beta/docs/DefaultApi.md#put_launcher) | **PUT** /launchers/{launcherID} | Replace Launcher
 
 
 ## Documentation For Models
@@ -944,6 +950,7 @@ Class | Method | HTTP request | Description
  - [GetDiscoveredApplications200ResponseInner](sailpoint/beta/docs/GetDiscoveredApplications200ResponseInner.md)
  - [GetFormDefinitionByKey400Response](sailpoint/beta/docs/GetFormDefinitionByKey400Response.md)
  - [GetHistoricalIdentityEvents200ResponseInner](sailpoint/beta/docs/GetHistoricalIdentityEvents200ResponseInner.md)
+ - [GetLaunchers200Response](sailpoint/beta/docs/GetLaunchers200Response.md)
  - [GetOAuthClientResponse](sailpoint/beta/docs/GetOAuthClientResponse.md)
  - [GetPersonalAccessTokenResponse](sailpoint/beta/docs/GetPersonalAccessTokenResponse.md)
  - [GetRoleAssignments200ResponseInner](sailpoint/beta/docs/GetRoleAssignments200ResponseInner.md)
@@ -1029,6 +1036,11 @@ Class | Method | HTTP request | Description
  - [KbaAuthResponseItem](sailpoint/beta/docs/KbaAuthResponseItem.md)
  - [KbaQuestion](sailpoint/beta/docs/KbaQuestion.md)
  - [LatestOutlierSummary](sailpoint/beta/docs/LatestOutlierSummary.md)
+ - [Launcher](sailpoint/beta/docs/Launcher.md)
+ - [LauncherOwner](sailpoint/beta/docs/LauncherOwner.md)
+ - [LauncherReference](sailpoint/beta/docs/LauncherReference.md)
+ - [LauncherRequest](sailpoint/beta/docs/LauncherRequest.md)
+ - [LauncherRequestReference](sailpoint/beta/docs/LauncherRequestReference.md)
  - [License](sailpoint/beta/docs/License.md)
  - [LifecycleState](sailpoint/beta/docs/LifecycleState.md)
  - [LifecycleStateDto](sailpoint/beta/docs/LifecycleStateDto.md)
@@ -1384,6 +1396,7 @@ Class | Method | HTTP request | Description
  - [SpConfigRules](sailpoint/beta/docs/SpConfigRules.md)
  - [StandardLevel](sailpoint/beta/docs/StandardLevel.md)
  - [StartInvocationInput](sailpoint/beta/docs/StartInvocationInput.md)
+ - [StartLauncher200Response](sailpoint/beta/docs/StartLauncher200Response.md)
  - [StatusResponse](sailpoint/beta/docs/StatusResponse.md)
  - [Subscription](sailpoint/beta/docs/Subscription.md)
  - [SubscriptionPatchRequestInner](sailpoint/beta/docs/SubscriptionPatchRequestInner.md)
