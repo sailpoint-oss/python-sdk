@@ -30,7 +30,7 @@ class CreateWorkflowRequest(BaseModel):
     CreateWorkflowRequest
     """ # noqa: E501
     name: StrictStr = Field(description="The name of the workflow")
-    owner: WorkflowBodyOwner
+    owner: Optional[WorkflowBodyOwner] = None
     description: Optional[StrictStr] = Field(default=None, description="Description of what the workflow accomplishes")
     definition: Optional[WorkflowDefinition] = None
     enabled: Optional[StrictBool] = Field(default=False, description="Enable or disable the workflow.  Workflows cannot be created in an enabled state.")

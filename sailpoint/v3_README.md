@@ -421,7 +421,7 @@ Class | Method | HTTP request | Description
 *WorkItemsApi* | [**submit_account_selection**](sailpoint/v3/docs/WorkItemsApi.md#submit_account_selection) | **POST** /work-items/{id}/submit-account-selection | Submit Account Selections
 *WorkflowsApi* | [**cancel_workflow_execution**](sailpoint/v3/docs/WorkflowsApi.md#cancel_workflow_execution) | **POST** /workflow-executions/{id}/cancel | Cancel Workflow Execution by ID
 *WorkflowsApi* | [**create_external_execute_workflow**](sailpoint/v3/docs/WorkflowsApi.md#create_external_execute_workflow) | **POST** /workflows/execute/external/{id} | Execute Workflow via External Trigger
-*WorkflowsApi* | [**create_workflow**](sailpoint/v3/docs/WorkflowsApi.md#create_workflow) | **POST** /workflows/{id} | Create Workflow
+*WorkflowsApi* | [**create_workflow**](sailpoint/v3/docs/WorkflowsApi.md#create_workflow) | **POST** /workflows | Create Workflow
 *WorkflowsApi* | [**create_workflow_external_trigger**](sailpoint/v3/docs/WorkflowsApi.md#create_workflow_external_trigger) | **POST** /workflows/{id}/external/oauth-clients | Generate External Trigger OAuth Client
 *WorkflowsApi* | [**delete_workflow**](sailpoint/v3/docs/WorkflowsApi.md#delete_workflow) | **DELETE** /workflows/{id} | Delete Workflow By Id
 *WorkflowsApi* | [**get_workflow**](sailpoint/v3/docs/WorkflowsApi.md#get_workflow) | **GET** /workflows/{id} | Get Workflow By Id

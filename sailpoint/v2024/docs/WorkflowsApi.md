@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**cancel_workflow_execution**](WorkflowsApi.md#cancel_workflow_execution) | **POST** /workflow-executions/{id}/cancel | Cancel Workflow Execution by ID
 [**create_external_execute_workflow**](WorkflowsApi.md#create_external_execute_workflow) | **POST** /workflows/execute/external/{id} | Execute Workflow via External Trigger
-[**create_workflow**](WorkflowsApi.md#create_workflow) | **POST** /workflows/{id} | Create Workflow
+[**create_workflow**](WorkflowsApi.md#create_workflow) | **POST** /workflows | Create Workflow
 [**create_workflow_external_trigger**](WorkflowsApi.md#create_workflow_external_trigger) | **POST** /workflows/{id}/external/oauth-clients | Generate External Trigger OAuth Client
 [**delete_workflow**](WorkflowsApi.md#delete_workflow) | **DELETE** /workflows/{id} | Delete Workflow By Id
 [**get_workflow**](WorkflowsApi.md#get_workflow) | **GET** /workflows/{id} | Get Workflow By Id

@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | The name of the workflow | 
-**owner** | [**WorkflowBodyOwner**](WorkflowBodyOwner.md) |  | 
+**owner** | [**WorkflowBodyOwner**](WorkflowBodyOwner.md) |  | [optional] 
 **description** | **str** | Description of what the workflow accomplishes | [optional] 
 **definition** | [**WorkflowDefinition**](WorkflowDefinition.md) |  | [optional] 
 **enabled** | **bool** | Enable or disable the workflow.  Workflows cannot be created in an enabled state. | [optional] [default to False]

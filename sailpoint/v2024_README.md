@@ -679,7 +679,7 @@ Class | Method | HTTP request | Description
 *WorkReassignmentApi* | [**put_tenant_configuration**](sailpoint/v2024/docs/WorkReassignmentApi.md#put_tenant_configuration) | **PUT** /reassignment-configurations/tenant-config | Update Tenant-wide Reassignment Configuration settings
 *WorkflowsApi* | [**cancel_workflow_execution**](sailpoint/v2024/docs/WorkflowsApi.md#cancel_workflow_execution) | **POST** /workflow-executions/{id}/cancel | Cancel Workflow Execution by ID
 *WorkflowsApi* | [**create_external_execute_workflow**](sailpoint/v2024/docs/WorkflowsApi.md#create_external_execute_workflow) | **POST** /workflows/execute/external/{id} | Execute Workflow via External Trigger
-*WorkflowsApi* | [**create_workflow**](sailpoint/v2024/docs/WorkflowsApi.md#create_workflow) | **POST** /workflows/{id} | Create Workflow
+*WorkflowsApi* | [**create_workflow**](sailpoint/v2024/docs/WorkflowsApi.md#create_workflow) | **POST** /workflows | Create Workflow
 *WorkflowsApi* | [**create_workflow_external_trigger**](sailpoint/v2024/docs/WorkflowsApi.md#create_workflow_external_trigger) | **POST** /workflows/{id}/external/oauth-clients | Generate External Trigger OAuth Client
 *WorkflowsApi* | [**delete_workflow**](sailpoint/v2024/docs/WorkflowsApi.md#delete_workflow) | **DELETE** /workflows/{id} | Delete Workflow By Id
 *WorkflowsApi* | [**get_workflow**](sailpoint/v2024/docs/WorkflowsApi.md#get_workflow) | **GET** /workflows/{id} | Get Workflow By Id

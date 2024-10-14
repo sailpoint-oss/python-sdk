@@ -53,10 +53,6 @@ class TestCreateWorkflowRequest(unittest.TestCase):
         else:
             return CreateWorkflowRequest(
                 name = 'Send Email',
-                owner = sailpoint.v3.models.workflow_body_owner.WorkflowBody_owner(
-                    type = 'IDENTITY', 
-                    id = '2c91808568c529c60168cca6f90c1313', 
-                    name = 'William Wilson', ),
         )
         """
 
