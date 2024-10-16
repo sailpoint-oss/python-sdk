@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **saved_search_id** | **str** | The ID of the saved search that will be executed. | 
 **created** | **datetime** | The date the scheduled search was initially created. | [optional] [readonly] 
 **modified** | **datetime** | The last date the scheduled search was modified. | [optional] [readonly] 
-**schedule** | [**Schedule1**](Schedule1.md) |  | 
+**schedule** | [**Schedule2**](Schedule2.md) |  | 
 **recipients** | [**List[SearchScheduleRecipientsInner]**](SearchScheduleRecipientsInner.md) | A list of identities that should receive the scheduled search report via email. | 
 **enabled** | **bool** | Indicates if the scheduled search is enabled.  | [optional] [default to False]
 **email_empty_results** | **bool** | Indicates if email generation should occur when search returns no results.  | [optional] [default to False]

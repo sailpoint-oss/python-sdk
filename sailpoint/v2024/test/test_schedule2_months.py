@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2024.models.schedule1 import Schedule1
+from sailpoint.v2024.models.schedule2_months import Schedule2Months
 
-class TestSchedule1(unittest.TestCase):
-    """Schedule1 unit test stubs"""
+class TestSchedule2Months(unittest.TestCase):
+    """Schedule2Months unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,28 +25,29 @@ class TestSchedule1(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> Schedule1:
-        """Test Schedule1
+    def make_instance(self, include_optional) -> Schedule2Months:
+        """Test Schedule2Months
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `Schedule1`
+        # uncomment below to create an instance of `Schedule2Months`
         """
-        model = Schedule1()
+        model = Schedule2Months()
         if include_optional:
-            return Schedule1(
-                type = 'ACCOUNT_AGGREGATION',
-                cron_expression = '0 0 5,13,21 * * ?'
+            return Schedule2Months(
+                application_id = '2c91808874ff91550175097daaec161c"',
+                account_match_config = sailpoint.v2024.models.selector_account_match_config.selector_accountMatchConfig(
+                    match_expression = sailpoint.v2024.models.selector_account_match_config_match_expression.selector_accountMatchConfig_matchExpression(
+                        match_terms = [{name=, value=, op=null, container=true, and=false, children=[{name=businessCategory, value=Service, op=eq, container=false, and=false, children=null}]}], 
+                        and = True, ), )
             )
         else:
-            return Schedule1(
-                type = 'ACCOUNT_AGGREGATION',
-                cron_expression = '0 0 5,13,21 * * ?',
+            return Schedule2Months(
         )
         """
 
-    def testSchedule1(self):
-        """Test Schedule1"""
+    def testSchedule2Months(self):
+        """Test Schedule2Months"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

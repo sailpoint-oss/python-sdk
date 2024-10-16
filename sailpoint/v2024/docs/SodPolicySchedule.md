@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **created** | **datetime** | The time when this SOD policy schedule is created. | [optional] [readonly] 
 **modified** | **datetime** | The time when this SOD policy schedule is modified. | [optional] [readonly] 
 **description** | **str** | SOD Policy schedule description | [optional] 
-**schedule** | [**Schedule1**](Schedule1.md) |  | [optional] 
+**schedule** | [**Schedule2**](Schedule2.md) |  | [optional] 
 **recipients** | [**List[SodRecipient]**](SodRecipient.md) |  | [optional] 
 **email_empty_results** | **bool** | Indicates if empty results need to be emailed | [optional] [default to False]
 **creator_id** | **str** | Policy&#39;s creator ID | [optional] [readonly] 

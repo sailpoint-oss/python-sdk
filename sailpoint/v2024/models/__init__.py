@@ -796,9 +796,10 @@ from sailpoint.v2024.models.saved_search_detail_filters import SavedSearchDetail
 from sailpoint.v2024.models.saved_search_name import SavedSearchName
 from sailpoint.v2024.models.schedule import Schedule
 from sailpoint.v2024.models.schedule1 import Schedule1
-from sailpoint.v2024.models.schedule1_days import Schedule1Days
-from sailpoint.v2024.models.schedule1_hours import Schedule1Hours
-from sailpoint.v2024.models.schedule1_months import Schedule1Months
+from sailpoint.v2024.models.schedule2 import Schedule2
+from sailpoint.v2024.models.schedule2_days import Schedule2Days
+from sailpoint.v2024.models.schedule2_hours import Schedule2Hours
+from sailpoint.v2024.models.schedule2_months import Schedule2Months
 from sailpoint.v2024.models.schedule_days import ScheduleDays
 from sailpoint.v2024.models.schedule_hours import ScheduleHours
 from sailpoint.v2024.models.schedule_months import ScheduleMonths
@@ -890,6 +891,7 @@ from sailpoint.v2024.models.source_manager_correlation_mapping import SourceMana
 from sailpoint.v2024.models.source_manager_correlation_rule import SourceManagerCorrelationRule
 from sailpoint.v2024.models.source_owner import SourceOwner
 from sailpoint.v2024.models.source_password_policies_inner import SourcePasswordPoliciesInner
+from sailpoint.v2024.models.source_schedule import SourceSchedule
 from sailpoint.v2024.models.source_schemas_inner import SourceSchemasInner
 from sailpoint.v2024.models.source_sync_job import SourceSyncJob
 from sailpoint.v2024.models.source_sync_payload import SourceSyncPayload

@@ -20,7 +20,7 @@ import json
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2024.models.schedule1 import Schedule1
+from sailpoint.v2024.models.schedule2 import Schedule2
 from sailpoint.v2024.models.search_schedule_recipients_inner import SearchScheduleRecipientsInner
 from typing import Optional, Set
 from typing_extensions import Self
@@ -32,7 +32,7 @@ class SearchSchedule(BaseModel):
     saved_search_id: StrictStr = Field(description="The ID of the saved search that will be executed.", alias="savedSearchId")
     created: Optional[datetime] = Field(default=None, description="The date the scheduled search was initially created.")
     modified: Optional[datetime] = Field(default=None, description="The last date the scheduled search was modified.")
-    schedule: Schedule1
+    schedule: Schedule2
     recipients: List[SearchScheduleRecipientsInner] = Field(description="A list of identities that should receive the scheduled search report via email.")
     enabled: Optional[StrictBool] = Field(default=False, description="Indicates if the scheduled search is enabled. ")
     email_empty_results: Optional[StrictBool] = Field(default=False, description="Indicates if email generation should occur when search returns no results. ", alias="emailEmptyResults")
@@ -117,7 +117,7 @@ class SearchSchedule(BaseModel):
             "savedSearchId": obj.get("savedSearchId"),
             "created": obj.get("created"),
             "modified": obj.get("modified"),
-            "schedule": Schedule1.from_dict(obj["schedule"]) if obj.get("schedule") is not None else None,
+            "schedule": Schedule2.from_dict(obj["schedule"]) if obj.get("schedule") is not None else None,
             "recipients": [SearchScheduleRecipientsInner.from_dict(_item) for _item in obj["recipients"]] if obj.get("recipients") is not None else None,
             "enabled": obj.get("enabled") if obj.get("enabled") is not None else False,
             "emailEmptyResults": obj.get("emailEmptyResults") if obj.get("emailEmptyResults") is not None else False,

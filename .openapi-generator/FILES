@@ -933,9 +933,10 @@ sailpoint/v2024/docs/SavedSearchDetailFilters.md
 sailpoint/v2024/docs/SavedSearchName.md
 sailpoint/v2024/docs/Schedule.md
 sailpoint/v2024/docs/Schedule1.md
-sailpoint/v2024/docs/Schedule1Days.md
-sailpoint/v2024/docs/Schedule1Hours.md
-sailpoint/v2024/docs/Schedule1Months.md
+sailpoint/v2024/docs/Schedule2.md
+sailpoint/v2024/docs/Schedule2Days.md
+sailpoint/v2024/docs/Schedule2Hours.md
+sailpoint/v2024/docs/Schedule2Months.md
 sailpoint/v2024/docs/ScheduleDays.md
 sailpoint/v2024/docs/ScheduleHours.md
 sailpoint/v2024/docs/ScheduleMonths.md
@@ -1032,6 +1033,7 @@ sailpoint/v2024/docs/SourceManagerCorrelationMapping.md
 sailpoint/v2024/docs/SourceManagerCorrelationRule.md
 sailpoint/v2024/docs/SourceOwner.md
 sailpoint/v2024/docs/SourcePasswordPoliciesInner.md
+sailpoint/v2024/docs/SourceSchedule.md
 sailpoint/v2024/docs/SourceSchemasInner.md
 sailpoint/v2024/docs/SourceSyncJob.md
 sailpoint/v2024/docs/SourceSyncPayload.md
@@ -1961,9 +1963,10 @@ sailpoint/v2024/models/saved_search_detail_filters.py
 sailpoint/v2024/models/saved_search_name.py
 sailpoint/v2024/models/schedule.py
 sailpoint/v2024/models/schedule1.py
-sailpoint/v2024/models/schedule1_days.py
-sailpoint/v2024/models/schedule1_hours.py
-sailpoint/v2024/models/schedule1_months.py
+sailpoint/v2024/models/schedule2.py
+sailpoint/v2024/models/schedule2_days.py
+sailpoint/v2024/models/schedule2_hours.py
+sailpoint/v2024/models/schedule2_months.py
 sailpoint/v2024/models/schedule_days.py
 sailpoint/v2024/models/schedule_hours.py
 sailpoint/v2024/models/schedule_months.py
@@ -2055,6 +2058,7 @@ sailpoint/v2024/models/source_manager_correlation_mapping.py
 sailpoint/v2024/models/source_manager_correlation_rule.py
 sailpoint/v2024/models/source_owner.py
 sailpoint/v2024/models/source_password_policies_inner.py
+sailpoint/v2024/models/source_schedule.py
 sailpoint/v2024/models/source_schemas_inner.py
 sailpoint/v2024/models/source_sync_job.py
 sailpoint/v2024/models/source_sync_payload.py
@@ -3030,9 +3034,10 @@ sailpoint/v2024/test/test_saved_search_detail_filters.py
 sailpoint/v2024/test/test_saved_search_name.py
 sailpoint/v2024/test/test_schedule.py
 sailpoint/v2024/test/test_schedule1.py
-sailpoint/v2024/test/test_schedule1_days.py
-sailpoint/v2024/test/test_schedule1_hours.py
-sailpoint/v2024/test/test_schedule1_months.py
+sailpoint/v2024/test/test_schedule2.py
+sailpoint/v2024/test/test_schedule2_days.py
+sailpoint/v2024/test/test_schedule2_hours.py
+sailpoint/v2024/test/test_schedule2_months.py
 sailpoint/v2024/test/test_schedule_days.py
 sailpoint/v2024/test/test_schedule_hours.py
 sailpoint/v2024/test/test_schedule_months.py
@@ -3132,6 +3137,7 @@ sailpoint/v2024/test/test_source_manager_correlation_mapping.py
 sailpoint/v2024/test/test_source_manager_correlation_rule.py
 sailpoint/v2024/test/test_source_owner.py
 sailpoint/v2024/test/test_source_password_policies_inner.py
+sailpoint/v2024/test/test_source_schedule.py
 sailpoint/v2024/test/test_source_schemas_inner.py
 sailpoint/v2024/test/test_source_sync_job.py
 sailpoint/v2024/test/test_source_sync_payload.py

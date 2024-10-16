@@ -6,11 +6,13 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_provisioning_policy**](SourcesApi.md#create_provisioning_policy) | **POST** /sources/{sourceId}/provisioning-policies | Create Provisioning Policy
 [**create_source**](SourcesApi.md#create_source) | **POST** /sources | Creates a source in IdentityNow.
+[**create_source_schedule**](SourcesApi.md#create_source_schedule) | **POST** /sources/{sourceId}/schedules | Create Schedule on Source
 [**create_source_schema**](SourcesApi.md#create_source_schema) | **POST** /sources/{sourceId}/schemas | Create Schema on Source
 [**delete_accounts_async**](SourcesApi.md#delete_accounts_async) | **POST** /sources/{id}/remove-accounts | Remove All Accounts in a Source
 [**delete_native_change_detection_config**](SourcesApi.md#delete_native_change_detection_config) | **DELETE** /sources/{sourceId}/native-change-detection-config | Delete Native Change Detection Configuration
 [**delete_provisioning_policy**](SourcesApi.md#delete_provisioning_policy) | **DELETE** /sources/{sourceId}/provisioning-policies/{usageType} | Delete Provisioning Policy by UsageType
 [**delete_source**](SourcesApi.md#delete_source) | **DELETE** /sources/{id} | Delete Source by ID
+[**delete_source_schedule**](SourcesApi.md#delete_source_schedule) | **DELETE** /sources/{sourceId}/schedules/{scheduleType} | Delete Source Schedule by type.
 [**delete_source_schema**](SourcesApi.md#delete_source_schema) | **DELETE** /sources/{sourceId}/schemas/{schemaId} | Delete Source Schema by ID
 [**get_accounts_schema**](SourcesApi.md#get_accounts_schema) | **GET** /sources/{id}/schemas/accounts | Downloads source accounts schema template
 [**get_entitlements_schema**](SourcesApi.md#get_entitlements_schema) | **GET** /sources/{id}/schemas/entitlements | Downloads source entitlements schema template
@@ -21,6 +23,8 @@ Method | HTTP request | Description
 [**get_source_config**](SourcesApi.md#get_source_config) | **GET** /sources/{id}/connectors/source-config | Gets source config with language translations
 [**get_source_entitlement_request_config**](SourcesApi.md#get_source_entitlement_request_config) | **GET** /sources/{id}/entitlement-request-config | Get Source Entitlement Request Configuration
 [**get_source_health**](SourcesApi.md#get_source_health) | **GET** /sources/{sourceId}/source-health | Fetches source health by id
+[**get_source_schedule**](SourcesApi.md#get_source_schedule) | **GET** /sources/{sourceId}/schedules/{scheduleType} | Get Source Schedule by Type
+[**get_source_schedules**](SourcesApi.md#get_source_schedules) | **GET** /sources/{sourceId}/schedules | List Schedules on Source
 [**get_source_schema**](SourcesApi.md#get_source_schema) | **GET** /sources/{sourceId}/schemas/{schemaId} | Get Source Schema by ID
 [**get_source_schemas**](SourcesApi.md#get_source_schemas) | **GET** /sources/{sourceId}/schemas | List Schemas on Source
 [**import_accounts**](SourcesApi.md#import_accounts) | **POST** /sources/{id}/load-accounts | Account Aggregation
@@ -44,6 +48,7 @@ Method | HTTP request | Description
 [**update_provisioning_policy**](SourcesApi.md#update_provisioning_policy) | **PATCH** /sources/{sourceId}/provisioning-policies/{usageType} | Partial update of Provisioning Policy
 [**update_source**](SourcesApi.md#update_source) | **PATCH** /sources/{id} | Update Source (Partial)
 [**update_source_entitlement_request_config**](SourcesApi.md#update_source_entitlement_request_config) | **PUT** /sources/{id}/entitlement-request-config | Update Source Entitlement Request Configuration
+[**update_source_schedule**](SourcesApi.md#update_source_schedule) | **PATCH** /sources/{sourceId}/schedules/{scheduleType} | Update Source Schedule (Partial)
 [**update_source_schema**](SourcesApi.md#update_source_schema) | **PATCH** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Partial)
 
 
@@ -210,6 +215,91 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created Source object. Any passwords will only show the the encrypted cipher-text, as they are not decrypt-able in IdentityNow cloud-based services, per IdentityNow security design. |  -  |
+**400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
+**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_source_schedule**
+> Schedule1 create_source_schedule(source_id, schedule1)
+
+Create Schedule on Source
+
+Use this API to create a new schedule for a type on the specified source in Identity Security Cloud (ISC). 
+
+### Example
+
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
+
+```python
+import sailpoint.v2024
+from sailpoint.v2024.models.schedule1 import Schedule1
+from sailpoint.v2024.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v2024
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sailpoint.v2024.Configuration(
+    host = "https://sailpoint.api.identitynow.com/v2024"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with sailpoint.v2024.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sailpoint.v2024.SourcesApi(api_client)
+    source_id = '2c9180835d191a86015d28455b4a2329' # str | Source ID.
+    schedule1 = sailpoint.v2024.Schedule1() # Schedule1 | 
+
+    try:
+        # Create Schedule on Source
+        api_response = api_instance.create_source_schedule(source_id, schedule1)
+        print("The response of SourcesApi->create_source_schedule:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SourcesApi->create_source_schedule: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **source_id** | **str**| Source ID. | 
+ **schedule1** | [**Schedule1**](Schedule1.md)|  | 
+
+### Return type
+
+[**Schedule1**](Schedule1.md)
+
+### Authorization
+
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | The schedule was successfully created on the specified source. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -636,6 +726,87 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **202** | Accepted - Returned if the request was successfully accepted into the system. |  -  |
+**400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
+**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**404** | Not Found - returned if the request URL refers to a resource or object that does not exist |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_source_schedule**
+> delete_source_schedule(source_id, schedule_type)
+
+Delete Source Schedule by type.
+
+### Example
+
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
+
+```python
+import sailpoint.v2024
+from sailpoint.v2024.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v2024
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sailpoint.v2024.Configuration(
+    host = "https://sailpoint.api.identitynow.com/v2024"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with sailpoint.v2024.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sailpoint.v2024.SourcesApi(api_client)
+    source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id.
+    schedule_type = 'ACCOUNT_AGGREGATION' # str | The Schedule type.
+
+    try:
+        # Delete Source Schedule by type.
+        api_instance.delete_source_schedule(source_id, schedule_type)
+    except Exception as e:
+        print("Exception when calling SourcesApi->delete_source_schedule: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **source_id** | **str**| The Source id. | 
+ **schedule_type** | **str**| The Schedule type. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No content - indicates the request was successful but there is no content to be returned in the response. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -1481,6 +1652,176 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Fetched source health successfully |  -  |
+**400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
+**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**404** | Not Found - returned if the request URL refers to a resource or object that does not exist |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_source_schedule**
+> Schedule1 get_source_schedule(source_id, schedule_type)
+
+Get Source Schedule by Type
+
+Get the source schedule by type in Identity Security Cloud (ISC). 
+
+### Example
+
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
+
+```python
+import sailpoint.v2024
+from sailpoint.v2024.models.schedule1 import Schedule1
+from sailpoint.v2024.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v2024
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sailpoint.v2024.Configuration(
+    host = "https://sailpoint.api.identitynow.com/v2024"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with sailpoint.v2024.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sailpoint.v2024.SourcesApi(api_client)
+    source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id.
+    schedule_type = 'ACCOUNT_AGGREGATION' # str | The Schedule type.
+
+    try:
+        # Get Source Schedule by Type
+        api_response = api_instance.get_source_schedule(source_id, schedule_type)
+        print("The response of SourcesApi->get_source_schedule:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SourcesApi->get_source_schedule: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **source_id** | **str**| The Source id. | 
+ **schedule_type** | **str**| The Schedule type. | 
+
+### Return type
+
+[**Schedule1**](Schedule1.md)
+
+### Authorization
+
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The requested Schedule was successfully retrieved. |  -  |
+**400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
+**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**404** | Not Found - returned if the request URL refers to a resource or object that does not exist |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_source_schedules**
+> List[Schedule1] get_source_schedules(source_id)
+
+List Schedules on Source
+
+Use this API to list the schedules that exist on the specified source in Identity Security Cloud (ISC).
+
+### Example
+
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
+
+```python
+import sailpoint.v2024
+from sailpoint.v2024.models.schedule1 import Schedule1
+from sailpoint.v2024.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v2024
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sailpoint.v2024.Configuration(
+    host = "https://sailpoint.api.identitynow.com/v2024"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with sailpoint.v2024.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sailpoint.v2024.SourcesApi(api_client)
+    source_id = '2c9180835d191a86015d28455b4a2329' # str | Source ID.
+
+    try:
+        # List Schedules on Source
+        api_response = api_instance.get_source_schedules(source_id)
+        print("The response of SourcesApi->get_source_schedules:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SourcesApi->get_source_schedules: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **source_id** | **str**| Source ID. | 
+
+### Return type
+
+[**List[Schedule1]**](Schedule1.md)
+
+### Authorization
+
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The schedules were successfully retrieved. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -3504,6 +3845,95 @@ Name | Type | Description  | Notes
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_source_schedule**
+> Schedule1 update_source_schedule(source_id, schedule_type, json_patch_operation)
+
+Update Source Schedule (Partial)
+
+Use this API to selectively update an existing Schedule using a JSONPatch payload.   The following schedule fields are immutable and cannot be updated:  - type 
+
+### Example
+
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
+
+```python
+import sailpoint.v2024
+from sailpoint.v2024.models.json_patch_operation import JsonPatchOperation
+from sailpoint.v2024.models.schedule1 import Schedule1
+from sailpoint.v2024.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v2024
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sailpoint.v2024.Configuration(
+    host = "https://sailpoint.api.identitynow.com/v2024"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with sailpoint.v2024.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sailpoint.v2024.SourcesApi(api_client)
+    source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id.
+    schedule_type = 'ACCOUNT_AGGREGATION' # str | The Schedule type.
+    json_patch_operation = [{op=replace, path=/cronExpression, value=0 0 6 * * ?}] # List[JsonPatchOperation] | The JSONPatch payload used to update the schedule.
+
+    try:
+        # Update Source Schedule (Partial)
+        api_response = api_instance.update_source_schedule(source_id, schedule_type, json_patch_operation)
+        print("The response of SourcesApi->update_source_schedule:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SourcesApi->update_source_schedule: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **source_id** | **str**| The Source id. | 
+ **schedule_type** | **str**| The Schedule type. | 
+ **json_patch_operation** | [**List[JsonPatchOperation]**](JsonPatchOperation.md)| The JSONPatch payload used to update the schedule. | 
+
+### Return type
+
+[**Schedule1**](Schedule1.md)
+
+### Authorization
+
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The Schedule was successfully updated. |  -  |
+**400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
+**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**404** | Not Found - returned if the request URL refers to a resource or object that does not exist |  -  |
 **429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
 **500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
 

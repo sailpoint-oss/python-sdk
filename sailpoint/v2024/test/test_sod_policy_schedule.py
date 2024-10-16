@@ -39,7 +39,7 @@ class TestSodPolicySchedule(unittest.TestCase):
                 created = '2020-01-01T00:00Z',
                 modified = '2020-01-01T00:00Z',
                 description = 'Schedule for policy xyz',
-                schedule = sailpoint.v2024.models.schedule_1.Schedule_1(
+                schedule = sailpoint.v2024.models.schedule_2.Schedule_2(
                     type = 'WEEKLY', 
                     months = null, 
                     days = null, 

@@ -575,11 +575,13 @@ Class | Method | HTTP request | Description
 *SourceUsagesApi* | [**get_usages_by_source_id**](sailpoint/v2024/docs/SourceUsagesApi.md#get_usages_by_source_id) | **GET** /source-usages/{sourceId}/summaries | Returns source usage insights
 *SourcesApi* | [**create_provisioning_policy**](sailpoint/v2024/docs/SourcesApi.md#create_provisioning_policy) | **POST** /sources/{sourceId}/provisioning-policies | Create Provisioning Policy
 *SourcesApi* | [**create_source**](sailpoint/v2024/docs/SourcesApi.md#create_source) | **POST** /sources | Creates a source in IdentityNow.
+*SourcesApi* | [**create_source_schedule**](sailpoint/v2024/docs/SourcesApi.md#create_source_schedule) | **POST** /sources/{sourceId}/schedules | Create Schedule on Source
 *SourcesApi* | [**create_source_schema**](sailpoint/v2024/docs/SourcesApi.md#create_source_schema) | **POST** /sources/{sourceId}/schemas | Create Schema on Source
 *SourcesApi* | [**delete_accounts_async**](sailpoint/v2024/docs/SourcesApi.md#delete_accounts_async) | **POST** /sources/{id}/remove-accounts | Remove All Accounts in a Source
 *SourcesApi* | [**delete_native_change_detection_config**](sailpoint/v2024/docs/SourcesApi.md#delete_native_change_detection_config) | **DELETE** /sources/{sourceId}/native-change-detection-config | Delete Native Change Detection Configuration
 *SourcesApi* | [**delete_provisioning_policy**](sailpoint/v2024/docs/SourcesApi.md#delete_provisioning_policy) | **DELETE** /sources/{sourceId}/provisioning-policies/{usageType} | Delete Provisioning Policy by UsageType
 *SourcesApi* | [**delete_source**](sailpoint/v2024/docs/SourcesApi.md#delete_source) | **DELETE** /sources/{id} | Delete Source by ID
+*SourcesApi* | [**delete_source_schedule**](sailpoint/v2024/docs/SourcesApi.md#delete_source_schedule) | **DELETE** /sources/{sourceId}/schedules/{scheduleType} | Delete Source Schedule by type.
 *SourcesApi* | [**delete_source_schema**](sailpoint/v2024/docs/SourcesApi.md#delete_source_schema) | **DELETE** /sources/{sourceId}/schemas/{schemaId} | Delete Source Schema by ID
 *SourcesApi* | [**get_accounts_schema**](sailpoint/v2024/docs/SourcesApi.md#get_accounts_schema) | **GET** /sources/{id}/schemas/accounts | Downloads source accounts schema template
 *SourcesApi* | [**get_entitlements_schema**](sailpoint/v2024/docs/SourcesApi.md#get_entitlements_schema) | **GET** /sources/{id}/schemas/entitlements | Downloads source entitlements schema template
@@ -590,6 +592,8 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**get_source_config**](sailpoint/v2024/docs/SourcesApi.md#get_source_config) | **GET** /sources/{id}/connectors/source-config | Gets source config with language translations
 *SourcesApi* | [**get_source_entitlement_request_config**](sailpoint/v2024/docs/SourcesApi.md#get_source_entitlement_request_config) | **GET** /sources/{id}/entitlement-request-config | Get Source Entitlement Request Configuration
 *SourcesApi* | [**get_source_health**](sailpoint/v2024/docs/SourcesApi.md#get_source_health) | **GET** /sources/{sourceId}/source-health | Fetches source health by id
+*SourcesApi* | [**get_source_schedule**](sailpoint/v2024/docs/SourcesApi.md#get_source_schedule) | **GET** /sources/{sourceId}/schedules/{scheduleType} | Get Source Schedule by Type
+*SourcesApi* | [**get_source_schedules**](sailpoint/v2024/docs/SourcesApi.md#get_source_schedules) | **GET** /sources/{sourceId}/schedules | List Schedules on Source
 *SourcesApi* | [**get_source_schema**](sailpoint/v2024/docs/SourcesApi.md#get_source_schema) | **GET** /sources/{sourceId}/schemas/{schemaId} | Get Source Schema by ID
 *SourcesApi* | [**get_source_schemas**](sailpoint/v2024/docs/SourcesApi.md#get_source_schemas) | **GET** /sources/{sourceId}/schemas | List Schemas on Source
 *SourcesApi* | [**import_accounts**](sailpoint/v2024/docs/SourcesApi.md#import_accounts) | **POST** /sources/{id}/load-accounts | Account Aggregation
@@ -613,6 +617,7 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**update_provisioning_policy**](sailpoint/v2024/docs/SourcesApi.md#update_provisioning_policy) | **PATCH** /sources/{sourceId}/provisioning-policies/{usageType} | Partial update of Provisioning Policy
 *SourcesApi* | [**update_source**](sailpoint/v2024/docs/SourcesApi.md#update_source) | **PATCH** /sources/{id} | Update Source (Partial)
 *SourcesApi* | [**update_source_entitlement_request_config**](sailpoint/v2024/docs/SourcesApi.md#update_source_entitlement_request_config) | **PUT** /sources/{id}/entitlement-request-config | Update Source Entitlement Request Configuration
+*SourcesApi* | [**update_source_schedule**](sailpoint/v2024/docs/SourcesApi.md#update_source_schedule) | **PATCH** /sources/{sourceId}/schedules/{scheduleType} | Update Source Schedule (Partial)
 *SourcesApi* | [**update_source_schema**](sailpoint/v2024/docs/SourcesApi.md#update_source_schema) | **PATCH** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Partial)
 *SuggestedEntitlementDescriptionApi* | [**get_sed_batch_stats**](sailpoint/v2024/docs/SuggestedEntitlementDescriptionApi.md#get_sed_batch_stats) | **GET** /suggested-entitlement-description-batches/{batchId}/stats | Submit Sed Batch Stats Request
 *SuggestedEntitlementDescriptionApi* | [**get_sed_batches**](sailpoint/v2024/docs/SuggestedEntitlementDescriptionApi.md#get_sed_batches) | **GET** /suggested-entitlement-description-batches | List Sed Batch Request
@@ -1481,9 +1486,10 @@ Class | Method | HTTP request | Description
  - [SavedSearchName](sailpoint/v2024/docs/SavedSearchName.md)
  - [Schedule](sailpoint/v2024/docs/Schedule.md)
  - [Schedule1](sailpoint/v2024/docs/Schedule1.md)
- - [Schedule1Days](sailpoint/v2024/docs/Schedule1Days.md)
- - [Schedule1Hours](sailpoint/v2024/docs/Schedule1Hours.md)
- - [Schedule1Months](sailpoint/v2024/docs/Schedule1Months.md)
+ - [Schedule2](sailpoint/v2024/docs/Schedule2.md)
+ - [Schedule2Days](sailpoint/v2024/docs/Schedule2Days.md)
+ - [Schedule2Hours](sailpoint/v2024/docs/Schedule2Hours.md)
+ - [Schedule2Months](sailpoint/v2024/docs/Schedule2Months.md)
  - [ScheduleDays](sailpoint/v2024/docs/ScheduleDays.md)
  - [ScheduleHours](sailpoint/v2024/docs/ScheduleHours.md)
  - [ScheduleMonths](sailpoint/v2024/docs/ScheduleMonths.md)
@@ -1575,6 +1581,7 @@ Class | Method | HTTP request | Description
  - [SourceManagerCorrelationRule](sailpoint/v2024/docs/SourceManagerCorrelationRule.md)
  - [SourceOwner](sailpoint/v2024/docs/SourceOwner.md)
  - [SourcePasswordPoliciesInner](sailpoint/v2024/docs/SourcePasswordPoliciesInner.md)
+ - [SourceSchedule](sailpoint/v2024/docs/SourceSchedule.md)
  - [SourceSchemasInner](sailpoint/v2024/docs/SourceSchemasInner.md)
  - [SourceSyncJob](sailpoint/v2024/docs/SourceSyncJob.md)
  - [SourceSyncPayload](sailpoint/v2024/docs/SourceSyncPayload.md)

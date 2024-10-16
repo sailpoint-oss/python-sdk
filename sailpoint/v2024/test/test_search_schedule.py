@@ -38,7 +38,7 @@ class TestSearchSchedule(unittest.TestCase):
                 saved_search_id = '554f1511-f0a1-4744-ab14-599514d3e57c',
                 created = '2018-06-25T20:22:28.104Z',
                 modified = '2018-06-25T20:22:28.104Z',
-                schedule = sailpoint.v2024.models.schedule_1.Schedule_1(
+                schedule = sailpoint.v2024.models.schedule_2.Schedule_2(
                     type = 'WEEKLY', 
                     months = null, 
                     days = null, 
@@ -57,7 +57,7 @@ class TestSearchSchedule(unittest.TestCase):
         else:
             return SearchSchedule(
                 saved_search_id = '554f1511-f0a1-4744-ab14-599514d3e57c',
-                schedule = sailpoint.v2024.models.schedule_1.Schedule_1(
+                schedule = sailpoint.v2024.models.schedule_2.Schedule_2(
                     type = 'WEEKLY', 
                     months = null, 
                     days = null, 

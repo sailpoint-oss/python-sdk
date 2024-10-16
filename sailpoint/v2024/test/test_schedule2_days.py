@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2024.models.schedule1_days import Schedule1Days
+from sailpoint.v2024.models.schedule2_days import Schedule2Days
 
-class TestSchedule1Days(unittest.TestCase):
-    """Schedule1Days unit test stubs"""
+class TestSchedule2Days(unittest.TestCase):
+    """Schedule2Days unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,16 +25,16 @@ class TestSchedule1Days(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> Schedule1Days:
-        """Test Schedule1Days
+    def make_instance(self, include_optional) -> Schedule2Days:
+        """Test Schedule2Days
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `Schedule1Days`
+        # uncomment below to create an instance of `Schedule2Days`
         """
-        model = Schedule1Days()
+        model = Schedule2Days()
         if include_optional:
-            return Schedule1Days(
+            return Schedule2Days(
                 application_id = '2c91808874ff91550175097daaec161c"',
                 account_match_config = sailpoint.v2024.models.selector_account_match_config.selector_accountMatchConfig(
                     match_expression = sailpoint.v2024.models.selector_account_match_config_match_expression.selector_accountMatchConfig_matchExpression(
@@ -42,12 +42,12 @@ class TestSchedule1Days(unittest.TestCase):
                         and = True, ), )
             )
         else:
-            return Schedule1Days(
+            return Schedule2Days(
         )
         """
 
-    def testSchedule1Days(self):
-        """Test Schedule1Days"""
+    def testSchedule2Days(self):
+        """Test Schedule2Days"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

@@ -40,6 +40,13 @@ class TestSourcesApi(unittest.TestCase):
         """
         pass
 
+    def test_create_source_schedule(self) -> None:
+        """Test case for create_source_schedule
+
+        Create Schedule on Source
+        """
+        pass
+
     def test_create_source_schema(self) -> None:
         """Test case for create_source_schema
 
@@ -72,6 +79,13 @@ class TestSourcesApi(unittest.TestCase):
         """Test case for delete_source
 
         Delete Source by ID
+        """
+        pass
+
+    def test_delete_source_schedule(self) -> None:
+        """Test case for delete_source_schedule
+
+        Delete Source Schedule by type.
         """
         pass
 
@@ -142,6 +156,20 @@ class TestSourcesApi(unittest.TestCase):
         """Test case for get_source_health
 
         Fetches source health by id
+        """
+        pass
+
+    def test_get_source_schedule(self) -> None:
+        """Test case for get_source_schedule
+
+        Get Source Schedule by Type
+        """
+        pass
+
+    def test_get_source_schedules(self) -> None:
+        """Test case for get_source_schedules
+
+        List Schedules on Source
         """
         pass
 
@@ -303,6 +331,13 @@ class TestSourcesApi(unittest.TestCase):
         """Test case for update_source_entitlement_request_config
 
         Update Source Entitlement Request Configuration
+        """
+        pass
+
+    def test_update_source_schedule(self) -> None:
+        """Test case for update_source_schedule
+
+        Update Source Schedule (Partial)
         """
         pass
 

@@ -23,9 +23,9 @@ from sailpoint.v2024.models.selector_account_match_config import SelectorAccount
 from typing import Optional, Set
 from typing_extensions import Self
 
-class Schedule1Months(BaseModel):
+class Schedule2Hours(BaseModel):
     """
-    Schedule1Months
+    Schedule2Hours
     """ # noqa: E501
     application_id: Optional[StrictStr] = Field(default=None, description="The application id", alias="applicationId")
     account_match_config: Optional[SelectorAccountMatchConfig] = Field(default=None, alias="accountMatchConfig")
@@ -49,7 +49,7 @@ class Schedule1Months(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Schedule1Months from a JSON string"""
+        """Create an instance of Schedule2Hours from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -77,7 +77,7 @@ class Schedule1Months(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Schedule1Months from a dict"""
+        """Create an instance of Schedule2Hours from a dict"""
         if obj is None:
             return None
 

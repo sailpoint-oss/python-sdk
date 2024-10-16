@@ -20,7 +20,7 @@ import json
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2024.models.schedule1 import Schedule1
+from sailpoint.v2024.models.schedule2 import Schedule2
 from sailpoint.v2024.models.sod_recipient import SodRecipient
 from typing import Optional, Set
 from typing_extensions import Self
@@ -33,7 +33,7 @@ class SodPolicySchedule(BaseModel):
     created: Optional[datetime] = Field(default=None, description="The time when this SOD policy schedule is created.")
     modified: Optional[datetime] = Field(default=None, description="The time when this SOD policy schedule is modified.")
     description: Optional[StrictStr] = Field(default=None, description="SOD Policy schedule description")
-    schedule: Optional[Schedule1] = None
+    schedule: Optional[Schedule2] = None
     recipients: Optional[List[SodRecipient]] = None
     email_empty_results: Optional[StrictBool] = Field(default=False, description="Indicates if empty results need to be emailed", alias="emailEmptyResults")
     creator_id: Optional[StrictStr] = Field(default=None, description="Policy's creator ID", alias="creatorId")
@@ -113,7 +113,7 @@ class SodPolicySchedule(BaseModel):
             "created": obj.get("created"),
             "modified": obj.get("modified"),
             "description": obj.get("description"),
-            "schedule": Schedule1.from_dict(obj["schedule"]) if obj.get("schedule") is not None else None,
+            "schedule": Schedule2.from_dict(obj["schedule"]) if obj.get("schedule") is not None else None,
             "recipients": [SodRecipient.from_dict(_item) for _item in obj["recipients"]] if obj.get("recipients") is not None else None,
             "emailEmptyResults": obj.get("emailEmptyResults") if obj.get("emailEmptyResults") is not None else False,
             "creatorId": obj.get("creatorId"),

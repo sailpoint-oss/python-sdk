@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2024.models.schedule1_months import Schedule1Months
+from sailpoint.v2024.models.schedule2 import Schedule2
 
-class TestSchedule1Months(unittest.TestCase):
-    """Schedule1Months unit test stubs"""
+class TestSchedule2(unittest.TestCase):
+    """Schedule2 unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,29 +25,32 @@ class TestSchedule1Months(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> Schedule1Months:
-        """Test Schedule1Months
+    def make_instance(self, include_optional) -> Schedule2:
+        """Test Schedule2
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `Schedule1Months`
+        # uncomment below to create an instance of `Schedule2`
         """
-        model = Schedule1Months()
+        model = Schedule2()
         if include_optional:
-            return Schedule1Months(
-                application_id = '2c91808874ff91550175097daaec161c"',
-                account_match_config = sailpoint.v2024.models.selector_account_match_config.selector_accountMatchConfig(
-                    match_expression = sailpoint.v2024.models.selector_account_match_config_match_expression.selector_accountMatchConfig_matchExpression(
-                        match_terms = [{name=, value=, op=null, container=true, and=false, children=[{name=businessCategory, value=Service, op=eq, container=false, and=false, children=null}]}], 
-                        and = True, ), )
+            return Schedule2(
+                type = 'WEEKLY',
+                months = None,
+                days = None,
+                hours = None,
+                expiration = '2018-06-25T20:22:28.104Z',
+                time_zone_id = 'America/Chicago'
             )
         else:
-            return Schedule1Months(
+            return Schedule2(
+                type = 'WEEKLY',
+                hours = None,
         )
         """
 
-    def testSchedule1Months(self):
-        """Test Schedule1Months"""
+    def testSchedule2(self):
+        """Test Schedule2"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

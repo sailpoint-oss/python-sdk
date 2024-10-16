@@ -1,4 +1,4 @@
-# Schedule1
+# SourceSchedule
 
 
 ## Properties
@@ -11,19 +11,19 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from sailpoint.v2024.models.schedule1 import Schedule1
+from sailpoint.v2024.models.source_schedule import SourceSchedule
 
 # TODO update the JSON string below
 json = "{}"
-# create an instance of Schedule1 from a JSON string
-schedule1_instance = Schedule1.from_json(json)
+# create an instance of SourceSchedule from a JSON string
+source_schedule_instance = SourceSchedule.from_json(json)
 # print the JSON string representation of the object
-print(Schedule1.to_json())
+print(SourceSchedule.to_json())
 
 # convert the object into a dict
-schedule1_dict = schedule1_instance.to_dict()
-# create an instance of Schedule1 from a dict
-schedule1_from_dict = Schedule1.from_dict(schedule1_dict)
+source_schedule_dict = source_schedule_instance.to_dict()
+# create an instance of SourceSchedule from a dict
+source_schedule_from_dict = SourceSchedule.from_dict(source_schedule_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
