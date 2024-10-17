@@ -31,7 +31,7 @@ class MatchTerm(BaseModel):
     op: Optional[StrictStr] = Field(default=None, description="The operator between name and value")
     container: Optional[StrictBool] = Field(default=False, description="If it is a container or a real match term")
     var_and: Optional[StrictBool] = Field(default=False, description="If it is AND logical operator for the children match terms", alias="and")
-    children: Optional[List[MatchTerm]] = Field(default=None, description="The children under this match term")
+    children: Optional[List[Dict[str, Any]]] = Field(default=None, description="The children under this match term")
     __properties: ClassVar[List[str]] = ["name", "value", "op", "container", "and", "children"]
 
     model_config = ConfigDict(
@@ -73,13 +73,6 @@ class MatchTerm(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in children (list)
-        _items = []
-        if self.children:
-            for _item_children in self.children:
-                if _item_children:
-                    _items.append(_item_children.to_dict())
-            _dict['children'] = _items
         # set to None if children (nullable) is None
         # and model_fields_set contains the field
         if self.children is None and "children" in self.model_fields_set:
@@ -102,10 +95,8 @@ class MatchTerm(BaseModel):
             "op": obj.get("op"),
             "container": obj.get("container") if obj.get("container") is not None else False,
             "and": obj.get("and") if obj.get("and") is not None else False,
-            "children": [MatchTerm.from_dict(_item) for _item in obj["children"]] if obj.get("children") is not None else None
+            "children": obj.get("children")
         })
         return _obj
 
-# TODO: Rewrite to not use raise_errors
-MatchTerm.model_rebuild(raise_errors=False)
 

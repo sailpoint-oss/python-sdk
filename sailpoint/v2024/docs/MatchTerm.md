@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **op** | **str** | The operator between name and value | [optional] 
 **container** | **bool** | If it is a container or a real match term | [optional] [default to False]
 **var_and** | **bool** | If it is AND logical operator for the children match terms | [optional] [default to False]
-**children** | [**List[MatchTerm]**](MatchTerm.md) | The children under this match term | [optional] 
+**children** | **List[Dict[str, object]]** | The children under this match term | [optional] 
 
 ## Example
 
