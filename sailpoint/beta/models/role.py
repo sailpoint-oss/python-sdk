@@ -53,7 +53,7 @@ class Role(BaseModel):
     segments: Optional[List[StrictStr]] = Field(default=None, description="List of IDs of segments, if any, to which this Role is assigned.")
     dimensional: Optional[StrictBool] = Field(default=False, description="Whether the Role is dimensional.")
     dimension_refs: Optional[List[DimensionRef]] = Field(default=None, description="List of references to dimensions to which this Role is assigned. This field is only relevant if the Role is dimensional.", alias="dimensionRefs")
-    access_model_metadata: Optional[List[AttributeDTOList]] = Field(default=None, alias="accessModelMetadata")
+    access_model_metadata: Optional[AttributeDTOList] = Field(default=None, alias="accessModelMetadata")
     __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "description", "owner", "accessProfiles", "entitlements", "membership", "legacyMembershipInfo", "enabled", "requestable", "accessRequestConfig", "revocationRequestConfig", "segments", "dimensional", "dimensionRefs", "accessModelMetadata"]
 
     model_config = ConfigDict(
@@ -132,13 +132,9 @@ class Role(BaseModel):
                 if _item_dimension_refs:
                     _items.append(_item_dimension_refs.to_dict())
             _dict['dimensionRefs'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in access_model_metadata (list)
-        _items = []
+        # override the default output from pydantic by calling `to_dict()` of access_model_metadata
         if self.access_model_metadata:
-            for _item_access_model_metadata in self.access_model_metadata:
-                if _item_access_model_metadata:
-                    _items.append(_item_access_model_metadata.to_dict())
-            _dict['accessModelMetadata'] = _items
+            _dict['accessModelMetadata'] = self.access_model_metadata.to_dict()
         # set to None if description (nullable) is None
         # and model_fields_set contains the field
         if self.description is None and "description" in self.model_fields_set:
@@ -203,7 +199,7 @@ class Role(BaseModel):
             "segments": obj.get("segments"),
             "dimensional": obj.get("dimensional") if obj.get("dimensional") is not None else False,
             "dimensionRefs": [DimensionRef.from_dict(_item) for _item in obj["dimensionRefs"]] if obj.get("dimensionRefs") is not None else None,
-            "accessModelMetadata": [AttributeDTOList.from_dict(_item) for _item in obj["accessModelMetadata"]] if obj.get("accessModelMetadata") is not None else None
+            "accessModelMetadata": AttributeDTOList.from_dict(obj["accessModelMetadata"]) if obj.get("accessModelMetadata") is not None else None
         })
         return _obj
 

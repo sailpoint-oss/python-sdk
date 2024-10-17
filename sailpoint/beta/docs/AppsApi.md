@@ -142,7 +142,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.AppsApi(api_client)
     id = '2c91808a7813090a017814121e121518' # str | ID of the source app
-    request_body = [c9575abb5e3a4e3db82b2f989a738aa2, c9dc28e148a24d65b3ccb5fb8ca5ddd9] # List[str] | 
+    request_body = ['request_body_example'] # List[str] | 
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
 
     try:

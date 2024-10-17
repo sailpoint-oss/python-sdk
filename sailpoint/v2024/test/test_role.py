@@ -102,7 +102,8 @@ class TestRole(unittest.TestCase):
                         id = '2c91808568c529c60168cca6f90c1313', 
                         name = 'Role 2', )
                     ],
-                access_model_metadata = [{key=iscFederalClassifications, name=Federal Classifications, multiselect=true, status=active, type=governance, objectTypes=[general], description=Classification used by government organizations to specify the level of confidentiality for an access item., values=[{value=secret, name=Secret, status=active}]}]
+                access_model_metadata = sailpoint.v2024.models.attribute_dto_list.AttributeDTOList(
+                    attributes = [{key=iscPrivacy, name=Privacy, multiselect=false, status=active, type=governance, objectTypes=[all], description=Specifies the level of privacy associated with an access item., values=[{value=public, name=Public, status=active}]}], )
             )
         else:
             return Role(
