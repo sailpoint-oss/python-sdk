@@ -36,7 +36,8 @@ class TestCreatePersonalAccessTokenRequest(unittest.TestCase):
         if include_optional:
             return CreatePersonalAccessTokenRequest(
                 name = 'NodeJS Integration',
-                scope = [demo:personal-access-token-scope:first, demo:personal-access-token-scope:second]
+                scope = [demo:personal-access-token-scope:first, demo:personal-access-token-scope:second],
+                access_token_validity_seconds = 36900
             )
         else:
             return CreatePersonalAccessTokenRequest(

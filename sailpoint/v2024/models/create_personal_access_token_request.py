@@ -19,6 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,7 +29,8 @@ class CreatePersonalAccessTokenRequest(BaseModel):
     """ # noqa: E501
     name: StrictStr = Field(description="The name of the personal access token (PAT) to be created. Cannot be the same as another PAT owned by the user for whom this PAT is being created.")
     scope: Optional[List[StrictStr]] = Field(default=None, description="Scopes of the personal  access token. If no scope is specified, the token will be created with the default scope \"sp:scopes:all\". This means the personal access token will have all the rights of the owner who created it.")
-    __properties: ClassVar[List[str]] = ["name", "scope"]
+    access_token_validity_seconds: Optional[Annotated[int, Field(le=43200, strict=True, ge=15)]] = Field(default=None, description="Number of seconds an access token is valid when generated using this Personal Access Token. If no value is specified, the token will be created with the default value of 43200.", alias="accessTokenValiditySeconds")
+    __properties: ClassVar[List[str]] = ["name", "scope", "accessTokenValiditySeconds"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,7 +89,8 @@ class CreatePersonalAccessTokenRequest(BaseModel):
 
         _obj = cls.model_validate({
             "name": obj.get("name"),
-            "scope": obj.get("scope")
+            "scope": obj.get("scope"),
+            "accessTokenValiditySeconds": obj.get("accessTokenValiditySeconds")
         })
         return _obj
 

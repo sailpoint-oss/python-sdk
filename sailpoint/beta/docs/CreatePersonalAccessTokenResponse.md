@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **name** | **str** | The name of the personal access token. Cannot be the same as other personal access tokens owned by a user. | 
 **owner** | [**PatOwner**](PatOwner.md) |  | 
 **created** | **datetime** | The date and time, down to the millisecond, when this personal access token was created. | 
+**access_token_validity_seconds** | **int** | Number of seconds an access token is valid when generated using this Personal Access Token. If no value is specified, the token will be created with the default value of 43200. | 
 
 ## Example
 

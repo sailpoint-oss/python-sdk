@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v3.models.pat_owner import PatOwner
 from typing import Optional, Set
@@ -34,7 +34,8 @@ class CreatePersonalAccessTokenResponse(BaseModel):
     name: StrictStr = Field(description="The name of the personal access token. Cannot be the same as other personal access tokens owned by a user.")
     owner: PatOwner
     created: datetime = Field(description="The date and time, down to the millisecond, when this personal access token was created.")
-    __properties: ClassVar[List[str]] = ["id", "secret", "scope", "name", "owner", "created"]
+    access_token_validity_seconds: StrictInt = Field(description="Number of seconds an access token is valid when generated using this Personal Access Token. If no value is specified, the token will be created with the default value of 43200.", alias="accessTokenValiditySeconds")
+    __properties: ClassVar[List[str]] = ["id", "secret", "scope", "name", "owner", "created", "accessTokenValiditySeconds"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -100,7 +101,8 @@ class CreatePersonalAccessTokenResponse(BaseModel):
             "scope": obj.get("scope"),
             "name": obj.get("name"),
             "owner": PatOwner.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
-            "created": obj.get("created")
+            "created": obj.get("created"),
+            "accessTokenValiditySeconds": obj.get("accessTokenValiditySeconds")
         })
         return _obj
 
