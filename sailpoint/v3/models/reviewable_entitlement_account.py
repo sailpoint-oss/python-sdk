@@ -22,6 +22,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v3.models.activity_insights import ActivityInsights
 from sailpoint.v3.models.dto_type import DtoType
+from sailpoint.v3.models.reviewable_entitlement_account_owner import ReviewableEntitlementAccountOwner
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -38,7 +39,10 @@ class ReviewableEntitlementAccount(BaseModel):
     created: Optional[datetime] = Field(default=None, description="When the account was created")
     modified: Optional[datetime] = Field(default=None, description="When the account was last modified")
     activity_insights: Optional[ActivityInsights] = Field(default=None, alias="activityInsights")
-    __properties: ClassVar[List[str]] = ["nativeIdentity", "disabled", "locked", "type", "id", "name", "created", "modified", "activityInsights"]
+    description: Optional[StrictStr] = Field(default=None, description="Information about the account")
+    governance_group_id: Optional[StrictStr] = Field(default=None, description="The id associated with the machine Account Governance Group", alias="governanceGroupId")
+    owner: Optional[ReviewableEntitlementAccountOwner] = None
+    __properties: ClassVar[List[str]] = ["nativeIdentity", "disabled", "locked", "type", "id", "name", "created", "modified", "activityInsights", "description", "governanceGroupId", "owner"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,6 +86,9 @@ class ReviewableEntitlementAccount(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of activity_insights
         if self.activity_insights:
             _dict['activityInsights'] = self.activity_insights.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of owner
+        if self.owner:
+            _dict['owner'] = self.owner.to_dict()
         # set to None if id (nullable) is None
         # and model_fields_set contains the field
         if self.id is None and "id" in self.model_fields_set:
@@ -101,6 +108,21 @@ class ReviewableEntitlementAccount(BaseModel):
         # and model_fields_set contains the field
         if self.modified is None and "modified" in self.model_fields_set:
             _dict['modified'] = None
+
+        # set to None if description (nullable) is None
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
+            _dict['description'] = None
+
+        # set to None if governance_group_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.governance_group_id is None and "governance_group_id" in self.model_fields_set:
+            _dict['governanceGroupId'] = None
+
+        # set to None if owner (nullable) is None
+        # and model_fields_set contains the field
+        if self.owner is None and "owner" in self.model_fields_set:
+            _dict['owner'] = None
 
         return _dict
 
@@ -122,7 +144,10 @@ class ReviewableEntitlementAccount(BaseModel):
             "name": obj.get("name"),
             "created": obj.get("created"),
             "modified": obj.get("modified"),
-            "activityInsights": ActivityInsights.from_dict(obj["activityInsights"]) if obj.get("activityInsights") is not None else None
+            "activityInsights": ActivityInsights.from_dict(obj["activityInsights"]) if obj.get("activityInsights") is not None else None,
+            "description": obj.get("description"),
+            "governanceGroupId": obj.get("governanceGroupId"),
+            "owner": ReviewableEntitlementAccountOwner.from_dict(obj["owner"]) if obj.get("owner") is not None else None
         })
         return _obj
 

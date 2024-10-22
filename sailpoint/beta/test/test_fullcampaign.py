@@ -93,6 +93,9 @@ class TestFullcampaign(unittest.TestCase):
                         name = 'Role Admin', ), 
                     query = 'Search Query', 
                     description = 'Role Composition Description', ),
+                machine_account_campaign_info = sailpoint.beta.models.fullcampaign_all_of_machine_account_campaign_info.fullcampaign_allOf_machineAccountCampaignInfo(
+                    source_ids = [0fbe863c063c4c88a35fd7f17e8a3df5], 
+                    reviewer_type = 'ACCOUNT_OWNER', ),
                 sources_with_orphan_entitlements = [
                     sailpoint.beta.models.fullcampaign_all_of_sources_with_orphan_entitlements.fullcampaign_allOf_sourcesWithOrphanEntitlements(
                         id = '2c90ad2a70ace7d50170acf22ca90010', 

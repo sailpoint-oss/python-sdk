@@ -22,6 +22,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, Strict
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v3.models.campaign_alert import CampaignAlert
 from sailpoint.v3.models.campaign_all_of_filter import CampaignAllOfFilter
+from sailpoint.v3.models.campaign_all_of_machine_account_campaign_info import CampaignAllOfMachineAccountCampaignInfo
 from sailpoint.v3.models.campaign_all_of_role_composition_campaign_info import CampaignAllOfRoleCompositionCampaignInfo
 from sailpoint.v3.models.campaign_all_of_search_campaign_info import CampaignAllOfSearchCampaignInfo
 from sailpoint.v3.models.campaign_all_of_source_owner_campaign_info import CampaignAllOfSourceOwnerCampaignInfo
@@ -53,15 +54,16 @@ class Campaign(BaseModel):
     source_owner_campaign_info: Optional[CampaignAllOfSourceOwnerCampaignInfo] = Field(default=None, alias="sourceOwnerCampaignInfo")
     search_campaign_info: Optional[CampaignAllOfSearchCampaignInfo] = Field(default=None, alias="searchCampaignInfo")
     role_composition_campaign_info: Optional[CampaignAllOfRoleCompositionCampaignInfo] = Field(default=None, alias="roleCompositionCampaignInfo")
+    machine_account_campaign_info: Optional[CampaignAllOfMachineAccountCampaignInfo] = Field(default=None, alias="machineAccountCampaignInfo")
     sources_with_orphan_entitlements: Optional[List[CampaignAllOfSourcesWithOrphanEntitlements]] = Field(default=None, description="A list of sources in the campaign that contain \\\"orphan entitlements\\\" (entitlements without a corresponding Managed Attribute). An empty list indicates the campaign has no orphan entitlements. Null indicates there may be unknown orphan entitlements in the campaign (the campaign was created before this feature was implemented).", alias="sourcesWithOrphanEntitlements")
     mandatory_comment_requirement: Optional[StrictStr] = Field(default=None, description="Determines whether comments are required for decisions during certification reviews. You can require comments for all decisions, revoke-only decisions, or no decisions. By default, comments are not required for decisions.", alias="mandatoryCommentRequirement")
-    __properties: ClassVar[List[str]] = ["id", "name", "description", "deadline", "type", "emailNotificationEnabled", "autoRevokeAllowed", "recommendationsEnabled", "status", "correlatedStatus", "created", "totalCertifications", "completedCertifications", "alerts", "modified", "filter", "sunsetCommentsRequired", "sourceOwnerCampaignInfo", "searchCampaignInfo", "roleCompositionCampaignInfo", "sourcesWithOrphanEntitlements", "mandatoryCommentRequirement"]
+    __properties: ClassVar[List[str]] = ["id", "name", "description", "deadline", "type", "emailNotificationEnabled", "autoRevokeAllowed", "recommendationsEnabled", "status", "correlatedStatus", "created", "totalCertifications", "completedCertifications", "alerts", "modified", "filter", "sunsetCommentsRequired", "sourceOwnerCampaignInfo", "searchCampaignInfo", "roleCompositionCampaignInfo", "machineAccountCampaignInfo", "sourcesWithOrphanEntitlements", "mandatoryCommentRequirement"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['MANAGER', 'SOURCE_OWNER', 'SEARCH', 'ROLE_COMPOSITION']):
-            raise ValueError("must be one of enum values ('MANAGER', 'SOURCE_OWNER', 'SEARCH', 'ROLE_COMPOSITION')")
+        if value not in set(['MANAGER', 'SOURCE_OWNER', 'SEARCH', 'ROLE_COMPOSITION', 'MACHINE_ACCOUNT']):
+            raise ValueError("must be one of enum values ('MANAGER', 'SOURCE_OWNER', 'SEARCH', 'ROLE_COMPOSITION', 'MACHINE_ACCOUNT')")
         return value
 
     @field_validator('status')
@@ -168,6 +170,9 @@ class Campaign(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of role_composition_campaign_info
         if self.role_composition_campaign_info:
             _dict['roleCompositionCampaignInfo'] = self.role_composition_campaign_info.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of machine_account_campaign_info
+        if self.machine_account_campaign_info:
+            _dict['machineAccountCampaignInfo'] = self.machine_account_campaign_info.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in sources_with_orphan_entitlements (list)
         _items = []
         if self.sources_with_orphan_entitlements:
@@ -207,6 +212,7 @@ class Campaign(BaseModel):
             "sourceOwnerCampaignInfo": CampaignAllOfSourceOwnerCampaignInfo.from_dict(obj["sourceOwnerCampaignInfo"]) if obj.get("sourceOwnerCampaignInfo") is not None else None,
             "searchCampaignInfo": CampaignAllOfSearchCampaignInfo.from_dict(obj["searchCampaignInfo"]) if obj.get("searchCampaignInfo") is not None else None,
             "roleCompositionCampaignInfo": CampaignAllOfRoleCompositionCampaignInfo.from_dict(obj["roleCompositionCampaignInfo"]) if obj.get("roleCompositionCampaignInfo") is not None else None,
+            "machineAccountCampaignInfo": CampaignAllOfMachineAccountCampaignInfo.from_dict(obj["machineAccountCampaignInfo"]) if obj.get("machineAccountCampaignInfo") is not None else None,
             "sourcesWithOrphanEntitlements": [CampaignAllOfSourcesWithOrphanEntitlements.from_dict(_item) for _item in obj["sourcesWithOrphanEntitlements"]] if obj.get("sourcesWithOrphanEntitlements") is not None else None,
             "mandatoryCommentRequirement": obj.get("mandatoryCommentRequirement")
         })

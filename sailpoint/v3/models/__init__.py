@@ -121,6 +121,7 @@ from sailpoint.v3.models.bulk_tagged_object_response import BulkTaggedObjectResp
 from sailpoint.v3.models.campaign import Campaign
 from sailpoint.v3.models.campaign_alert import CampaignAlert
 from sailpoint.v3.models.campaign_all_of_filter import CampaignAllOfFilter
+from sailpoint.v3.models.campaign_all_of_machine_account_campaign_info import CampaignAllOfMachineAccountCampaignInfo
 from sailpoint.v3.models.campaign_all_of_role_composition_campaign_info import CampaignAllOfRoleCompositionCampaignInfo
 from sailpoint.v3.models.campaign_all_of_role_composition_campaign_info_remediator_ref import CampaignAllOfRoleCompositionCampaignInfoRemediatorRef
 from sailpoint.v3.models.campaign_all_of_search_campaign_info import CampaignAllOfSearchCampaignInfo
@@ -418,6 +419,7 @@ from sailpoint.v3.models.review_recommendation import ReviewRecommendation
 from sailpoint.v3.models.reviewable_access_profile import ReviewableAccessProfile
 from sailpoint.v3.models.reviewable_entitlement import ReviewableEntitlement
 from sailpoint.v3.models.reviewable_entitlement_account import ReviewableEntitlementAccount
+from sailpoint.v3.models.reviewable_entitlement_account_owner import ReviewableEntitlementAccountOwner
 from sailpoint.v3.models.reviewable_role import ReviewableRole
 from sailpoint.v3.models.reviewer import Reviewer
 from sailpoint.v3.models.revocability import Revocability

@@ -47,8 +47,8 @@ class SlimCampaign(BaseModel):
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['MANAGER', 'SOURCE_OWNER', 'SEARCH', 'ROLE_COMPOSITION']):
-            raise ValueError("must be one of enum values ('MANAGER', 'SOURCE_OWNER', 'SEARCH', 'ROLE_COMPOSITION')")
+        if value not in set(['MANAGER', 'SOURCE_OWNER', 'SEARCH', 'ROLE_COMPOSITION', 'MACHINE_ACCOUNT']):
+            raise ValueError("must be one of enum values ('MANAGER', 'SOURCE_OWNER', 'SEARCH', 'ROLE_COMPOSITION', 'MACHINE_ACCOUNT')")
         return value
 
     @field_validator('status')

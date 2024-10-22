@@ -302,6 +302,7 @@ sailpoint/v2024/docs/CampaignActivatedCampaign.md
 sailpoint/v2024/docs/CampaignActivatedCampaignCampaignOwner.md
 sailpoint/v2024/docs/CampaignAlert.md
 sailpoint/v2024/docs/CampaignAllOfFilter.md
+sailpoint/v2024/docs/CampaignAllOfMachineAccountCampaignInfo.md
 sailpoint/v2024/docs/CampaignAllOfRoleCompositionCampaignInfo.md
 sailpoint/v2024/docs/CampaignAllOfRoleCompositionCampaignInfoRemediatorRef.md
 sailpoint/v2024/docs/CampaignAllOfSearchCampaignInfo.md
@@ -848,6 +849,7 @@ sailpoint/v2024/docs/ReviewRecommendation.md
 sailpoint/v2024/docs/ReviewableAccessProfile.md
 sailpoint/v2024/docs/ReviewableEntitlement.md
 sailpoint/v2024/docs/ReviewableEntitlementAccount.md
+sailpoint/v2024/docs/ReviewableEntitlementAccountOwner.md
 sailpoint/v2024/docs/ReviewableRole.md
 sailpoint/v2024/docs/Reviewer.md
 sailpoint/v2024/docs/Reviewer1.md
@@ -1381,6 +1383,7 @@ sailpoint/v2024/models/campaign_activated_campaign.py
 sailpoint/v2024/models/campaign_activated_campaign_campaign_owner.py
 sailpoint/v2024/models/campaign_alert.py
 sailpoint/v2024/models/campaign_all_of_filter.py
+sailpoint/v2024/models/campaign_all_of_machine_account_campaign_info.py
 sailpoint/v2024/models/campaign_all_of_role_composition_campaign_info.py
 sailpoint/v2024/models/campaign_all_of_role_composition_campaign_info_remediator_ref.py
 sailpoint/v2024/models/campaign_all_of_search_campaign_info.py
@@ -1885,6 +1888,7 @@ sailpoint/v2024/models/review_recommendation.py
 sailpoint/v2024/models/reviewable_access_profile.py
 sailpoint/v2024/models/reviewable_entitlement.py
 sailpoint/v2024/models/reviewable_entitlement_account.py
+sailpoint/v2024/models/reviewable_entitlement_account_owner.py
 sailpoint/v2024/models/reviewable_role.py
 sailpoint/v2024/models/reviewer.py
 sailpoint/v2024/models/reviewer1.py
@@ -2407,6 +2411,7 @@ sailpoint/v2024/test/test_campaign_activated_campaign.py
 sailpoint/v2024/test/test_campaign_activated_campaign_campaign_owner.py
 sailpoint/v2024/test/test_campaign_alert.py
 sailpoint/v2024/test/test_campaign_all_of_filter.py
+sailpoint/v2024/test/test_campaign_all_of_machine_account_campaign_info.py
 sailpoint/v2024/test/test_campaign_all_of_role_composition_campaign_info.py
 sailpoint/v2024/test/test_campaign_all_of_role_composition_campaign_info_remediator_ref.py
 sailpoint/v2024/test/test_campaign_all_of_search_campaign_info.py
@@ -2953,6 +2958,7 @@ sailpoint/v2024/test/test_review_recommendation.py
 sailpoint/v2024/test/test_reviewable_access_profile.py
 sailpoint/v2024/test/test_reviewable_entitlement.py
 sailpoint/v2024/test/test_reviewable_entitlement_account.py
+sailpoint/v2024/test/test_reviewable_entitlement_account_owner.py
 sailpoint/v2024/test/test_reviewable_role.py
 sailpoint/v2024/test/test_reviewer.py
 sailpoint/v2024/test/test_reviewer1.py

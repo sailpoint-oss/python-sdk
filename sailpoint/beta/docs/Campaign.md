@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **source_owner_campaign_info** | [**FullcampaignAllOfSourceOwnerCampaignInfo**](FullcampaignAllOfSourceOwnerCampaignInfo.md) |  | [optional] 
 **search_campaign_info** | [**FullcampaignAllOfSearchCampaignInfo**](FullcampaignAllOfSearchCampaignInfo.md) |  | [optional] 
 **role_composition_campaign_info** | [**FullcampaignAllOfRoleCompositionCampaignInfo**](FullcampaignAllOfRoleCompositionCampaignInfo.md) |  | [optional] 
+**machine_account_campaign_info** | [**FullcampaignAllOfMachineAccountCampaignInfo**](FullcampaignAllOfMachineAccountCampaignInfo.md) |  | [optional] 
 **sources_with_orphan_entitlements** | [**List[FullcampaignAllOfSourcesWithOrphanEntitlements]**](FullcampaignAllOfSourcesWithOrphanEntitlements.md) | A list of sources in the campaign that contain \\\&quot;orphan entitlements\\\&quot; (entitlements without a corresponding Managed Attribute). An empty list indicates the campaign has no orphan entitlements. Null indicates there may be unknown orphan entitlements in the campaign (the campaign was created before this feature was implemented). | [optional] [readonly] 
 **mandatory_comment_requirement** | **str** | Determines whether comments are required for decisions during certification reviews. You can require comments for all decisions, revoke-only decisions, or no decisions. By default, comments are not required for decisions. | [optional] 
 

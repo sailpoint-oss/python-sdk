@@ -83,7 +83,9 @@ class TestAccessReviewItem(unittest.TestCase):
                             activity_insights = sailpoint.v3.models.activity_insights.ActivityInsights(
                                 account_id = 'c4ddd5421d8549f0abd309162cafd3b1', 
                                 usage_days = 45, 
-                                usage_days_state = 'COMPLETE', ), ), ), 
+                                usage_days_state = 'COMPLETE', ), 
+                            description = 'Account for Read/write to the company database', 
+                            governance_group_id = '2c9180857182305e0171993737eb29e6', ), ), 
                     access_profile = sailpoint.v3.models.reviewable_access_profile.ReviewableAccessProfile(
                         id = '2c91808a7190d06e01719938fcd20792', 
                         name = 'Employee-database-read-write', 

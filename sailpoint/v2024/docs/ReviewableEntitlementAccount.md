@@ -15,6 +15,9 @@ Name | Type | Description | Notes
 **created** | **datetime** | When the account was created | [optional] 
 **modified** | **datetime** | When the account was last modified | [optional] 
 **activity_insights** | [**ActivityInsights**](ActivityInsights.md) |  | [optional] 
+**description** | **str** | Information about the account | [optional] 
+**governance_group_id** | **str** | The id associated with the machine Account Governance Group | [optional] 
+**owner** | [**ReviewableEntitlementAccountOwner**](ReviewableEntitlementAccountOwner.md) |  | [optional] 
 
 ## Example
 

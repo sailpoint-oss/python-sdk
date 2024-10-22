@@ -940,6 +940,7 @@ Class | Method | HTTP request | Description
  - [FullDiscoveredApplications](sailpoint/beta/docs/FullDiscoveredApplications.md)
  - [Fullcampaign](sailpoint/beta/docs/Fullcampaign.md)
  - [FullcampaignAllOfFilter](sailpoint/beta/docs/FullcampaignAllOfFilter.md)
+ - [FullcampaignAllOfMachineAccountCampaignInfo](sailpoint/beta/docs/FullcampaignAllOfMachineAccountCampaignInfo.md)
  - [FullcampaignAllOfRoleCompositionCampaignInfo](sailpoint/beta/docs/FullcampaignAllOfRoleCompositionCampaignInfo.md)
  - [FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef](sailpoint/beta/docs/FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef.md)
  - [FullcampaignAllOfSearchCampaignInfo](sailpoint/beta/docs/FullcampaignAllOfSearchCampaignInfo.md)
