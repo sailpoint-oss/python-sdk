@@ -193,7 +193,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_metadata_from_role_by_key_and_value**
-> Role delete_metadata_from_role_by_key_and_value(id, attribute_key, attribute_value)
+> delete_metadata_from_role_by_key_and_value(id, attribute_key, attribute_value)
 
 Remove a Metadata From Role.
 
@@ -206,7 +206,6 @@ This API initialize a request to remove a single Access Model Metadata from a ro
 
 ```python
 import sailpoint.v2024
-from sailpoint.v2024.models.role import Role
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
 
@@ -235,9 +234,7 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
 
     try:
         # Remove a Metadata From Role.
-        api_response = api_instance.delete_metadata_from_role_by_key_and_value(id, attribute_key, attribute_value)
-        print("The response of RolesApi->delete_metadata_from_role_by_key_and_value:\n")
-        pprint(api_response)
+        api_instance.delete_metadata_from_role_by_key_and_value(id, attribute_key, attribute_value)
     except Exception as e:
         print("Exception when calling RolesApi->delete_metadata_from_role_by_key_and_value: %s\n" % e)
 ```
@@ -255,7 +252,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Role**](Role.md)
+void (empty response body)
 
 ### Authorization
 
@@ -270,7 +267,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Responds with the Role as updated. |  -  |
+**202** | Request accepted |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |

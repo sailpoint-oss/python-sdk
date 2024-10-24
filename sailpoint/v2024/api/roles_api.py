@@ -644,7 +644,7 @@ class RolesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Role:
+    ) -> None:
         """Remove a Metadata From Role.
 
         This API initialize a request to remove a single Access Model Metadata from a role by attribute key and value. A token with ORG_ADMIN, ROLE_ADMIN ROLE_SUBADMIN authority is required to call this API.
@@ -688,7 +688,7 @@ class RolesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Role",
+            '202': None,
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -724,7 +724,7 @@ class RolesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Role]:
+    ) -> ApiResponse[None]:
         """Remove a Metadata From Role.
 
         This API initialize a request to remove a single Access Model Metadata from a role by attribute key and value. A token with ORG_ADMIN, ROLE_ADMIN ROLE_SUBADMIN authority is required to call this API.
@@ -768,7 +768,7 @@ class RolesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Role",
+            '202': None,
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -848,7 +848,7 @@ class RolesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Role",
+            '202': None,
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
