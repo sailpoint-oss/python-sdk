@@ -75,5 +75,4 @@ from sailpoint.beta.api.vendor_connector_mappings_api import VendorConnectorMapp
 from sailpoint.beta.api.work_items_api import WorkItemsApi
 from sailpoint.beta.api.work_reassignment_api import WorkReassignmentApi
 from sailpoint.beta.api.workflows_api import WorkflowsApi
-from sailpoint.beta.api.default_api import DefaultApi
 

@@ -659,7 +659,7 @@ Class | Method | HTTP request | Description
 *UIMetadataApi* | [**set_tenant_ui_metadata**](sailpoint/v2024/docs/UIMetadataApi.md#set_tenant_ui_metadata) | **PUT** /ui-metadata/tenant | Update tenant UI metadata
 *VendorConnectorMappingsApi* | [**create_vendor_connector_mapping**](sailpoint/v2024/docs/VendorConnectorMappingsApi.md#create_vendor_connector_mapping) | **POST** /vendor-connector-mappings | Create Vendor Connector Mapping
 *VendorConnectorMappingsApi* | [**delete_vendor_connector_mapping**](sailpoint/v2024/docs/VendorConnectorMappingsApi.md#delete_vendor_connector_mapping) | **DELETE** /vendor-connector-mappings | Delete Vendor Connector Mapping
-*VendorConnectorMapppingApi* | [**get_vendor_connector_mappings**](sailpoint/v2024/docs/VendorConnectorMapppingApi.md#get_vendor_connector_mappings) | **GET** /vendor-connector-mappings | List Vendor Connector Mappings
+*VendorConnectorMapppingsApi* | [**get_vendor_connector_mappings**](sailpoint/v2024/docs/VendorConnectorMapppingsApi.md#get_vendor_connector_mappings) | **GET** /vendor-connector-mappings | List Vendor Connector Mappings
 *WorkItemsApi* | [**approve_approval_item**](sailpoint/v2024/docs/WorkItemsApi.md#approve_approval_item) | **POST** /work-items/{id}/approve/{approvalItemId} | Approve an Approval Item
 *WorkItemsApi* | [**approve_approval_items_in_bulk**](sailpoint/v2024/docs/WorkItemsApi.md#approve_approval_items_in_bulk) | **POST** /work-items/bulk-approve/{id} | Bulk approve Approval Items
 *WorkItemsApi* | [**complete_work_item**](sailpoint/v2024/docs/WorkItemsApi.md#complete_work_item) | **POST** /work-items/{id} | Complete a Work Item

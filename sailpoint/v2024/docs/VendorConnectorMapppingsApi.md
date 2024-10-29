@@ -1,10 +1,10 @@
-# sailpoint.v2024.VendorConnectorMapppingApi
+# sailpoint.v2024.VendorConnectorMapppingsApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v2024*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_vendor_connector_mappings**](VendorConnectorMapppingApi.md#get_vendor_connector_mappings) | **GET** /vendor-connector-mappings | List Vendor Connector Mappings
+[**get_vendor_connector_mappings**](VendorConnectorMapppingsApi.md#get_vendor_connector_mappings) | **GET** /vendor-connector-mappings | List Vendor Connector Mappings
 
 
 # **get_vendor_connector_mappings**
@@ -43,15 +43,15 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with sailpoint.v2024.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = sailpoint.v2024.VendorConnectorMapppingApi(api_client)
+    api_instance = sailpoint.v2024.VendorConnectorMapppingsApi(api_client)
 
     try:
         # List Vendor Connector Mappings
         api_response = api_instance.get_vendor_connector_mappings()
-        print("The response of VendorConnectorMapppingApi->get_vendor_connector_mappings:\n")
+        print("The response of VendorConnectorMapppingsApi->get_vendor_connector_mappings:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling VendorConnectorMapppingApi->get_vendor_connector_mappings: %s\n" % e)
+        print("Exception when calling VendorConnectorMapppingsApi->get_vendor_connector_mappings: %s\n" % e)
 ```
 
 

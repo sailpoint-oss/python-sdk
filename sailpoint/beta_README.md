@@ -309,8 +309,11 @@ Class | Method | HTTP request | Description
 *IdentityProfilesApi* | [**show_generate_identity_preview**](sailpoint/beta/docs/IdentityProfilesApi.md#show_generate_identity_preview) | **POST** /identity-profiles/identity-preview | Generate Identity Profile Preview
 *IdentityProfilesApi* | [**sync_identity_profile**](sailpoint/beta/docs/IdentityProfilesApi.md#sync_identity_profile) | **POST** /identity-profiles/{identity-profile-id}/process-identities | Process identities under profile
 *IdentityProfilesApi* | [**update_identity_profile**](sailpoint/beta/docs/IdentityProfilesApi.md#update_identity_profile) | **PATCH** /identity-profiles/{identity-profile-id} | Update the Identity Profile
+*LaunchersApi* | [**create_launcher**](sailpoint/beta/docs/LaunchersApi.md#create_launcher) | **POST** /launchers | Create launcher
+*LaunchersApi* | [**delete_launcher**](sailpoint/beta/docs/LaunchersApi.md#delete_launcher) | **DELETE** /launchers/{launcherID} | Delete Launcher
 *LaunchersApi* | [**get_launcher**](sailpoint/beta/docs/LaunchersApi.md#get_launcher) | **GET** /launchers/{launcherID} | Get Launcher by ID
 *LaunchersApi* | [**get_launchers**](sailpoint/beta/docs/LaunchersApi.md#get_launchers) | **GET** /launchers | List all Launchers for tenant
+*LaunchersApi* | [**put_launcher**](sailpoint/beta/docs/LaunchersApi.md#put_launcher) | **PUT** /launchers/{launcherID} | Replace Launcher
 *LaunchersApi* | [**start_launcher**](sailpoint/beta/docs/LaunchersApi.md#start_launcher) | **POST** /beta/launchers/{launcherID}/launch | Launch a Launcher
 *LifecycleStatesApi* | [**get_lifecycle_states**](sailpoint/beta/docs/LifecycleStatesApi.md#get_lifecycle_states) | **GET** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Get Lifecycle State
 *LifecycleStatesApi* | [**update_lifecycle_states**](sailpoint/beta/docs/LifecycleStatesApi.md#update_lifecycle_states) | **PATCH** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Update Lifecycle State
@@ -622,9 +625,6 @@ Class | Method | HTTP request | Description
 *WorkflowsApi* | [**test_external_execute_workflow**](sailpoint/beta/docs/WorkflowsApi.md#test_external_execute_workflow) | **POST** /workflows/execute/external/{id}/test | Test Workflow via External Trigger
 *WorkflowsApi* | [**test_workflow**](sailpoint/beta/docs/WorkflowsApi.md#test_workflow) | **POST** /workflows/{id}/test | Test Workflow By Id
 *WorkflowsApi* | [**update_workflow**](sailpoint/beta/docs/WorkflowsApi.md#update_workflow) | **PUT** /workflows/{id} | Update Workflow
-*DefaultApi* | [**create_launcher**](sailpoint/beta/docs/DefaultApi.md#create_launcher) | **POST** /launchers | Create launcher
-*DefaultApi* | [**delete_launcher**](sailpoint/beta/docs/DefaultApi.md#delete_launcher) | **DELETE** /launchers/{launcherID} | Delete Launcher
-*DefaultApi* | [**put_launcher**](sailpoint/beta/docs/DefaultApi.md#put_launcher) | **PUT** /launchers/{launcherID} | Replace Launcher
 
 
 ## Documentation For Models

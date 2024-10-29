@@ -26,6 +26,20 @@ class TestLaunchersApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_create_launcher(self) -> None:
+        """Test case for create_launcher
+
+        Create launcher
+        """
+        pass
+
+    def test_delete_launcher(self) -> None:
+        """Test case for delete_launcher
+
+        Delete Launcher
+        """
+        pass
+
     def test_get_launcher(self) -> None:
         """Test case for get_launcher
 
@@ -37,6 +51,13 @@ class TestLaunchersApi(unittest.TestCase):
         """Test case for get_launchers
 
         List all Launchers for tenant
+        """
+        pass
+
+    def test_put_launcher(self) -> None:
+        """Test case for put_launcher
+
+        Replace Launcher
         """
         pass
 

@@ -80,7 +80,7 @@ sailpoint/v2024/api/transforms_api.py
 sailpoint/v2024/api/triggers_api.py
 sailpoint/v2024/api/ui_metadata_api.py
 sailpoint/v2024/api/vendor_connector_mappings_api.py
-sailpoint/v2024/api/vendor_connector_mappping_api.py
+sailpoint/v2024/api/vendor_connector_mapppings_api.py
 sailpoint/v2024/api/work_items_api.py
 sailpoint/v2024/api/work_reassignment_api.py
 sailpoint/v2024/api/workflows_api.py
@@ -1140,7 +1140,7 @@ sailpoint/v2024/docs/VendorConnectorMappingDeletedBy.md
 sailpoint/v2024/docs/VendorConnectorMappingUpdatedAt.md
 sailpoint/v2024/docs/VendorConnectorMappingUpdatedBy.md
 sailpoint/v2024/docs/VendorConnectorMappingsApi.md
-sailpoint/v2024/docs/VendorConnectorMapppingApi.md
+sailpoint/v2024/docs/VendorConnectorMapppingsApi.md
 sailpoint/v2024/docs/ViolationContext.md
 sailpoint/v2024/docs/ViolationContextPolicy.md
 sailpoint/v2024/docs/ViolationOwnerAssignmentConfig.md
@@ -3249,7 +3249,7 @@ sailpoint/v2024/test/test_vendor_connector_mapping_deleted_by.py
 sailpoint/v2024/test/test_vendor_connector_mapping_updated_at.py
 sailpoint/v2024/test/test_vendor_connector_mapping_updated_by.py
 sailpoint/v2024/test/test_vendor_connector_mappings_api.py
-sailpoint/v2024/test/test_vendor_connector_mappping_api.py
+sailpoint/v2024/test/test_vendor_connector_mapppings_api.py
 sailpoint/v2024/test/test_violation_context.py
 sailpoint/v2024/test/test_violation_context_policy.py
 sailpoint/v2024/test/test_violation_owner_assignment_config.py

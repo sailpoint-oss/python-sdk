@@ -49,7 +49,7 @@ from sailpoint.v3.api.sources_api import SourcesApi
 from sailpoint.v3.api.tagged_objects_api import TaggedObjectsApi
 from sailpoint.v3.api.transforms_api import TransformsApi
 from sailpoint.v3.api.vendor_connector_mappings_api import VendorConnectorMappingsApi
-from sailpoint.v3.api.vendor_connector_mappping_api import VendorConnectorMapppingApi
+from sailpoint.v3.api.vendor_connector_mapppings_api import VendorConnectorMapppingsApi
 from sailpoint.v3.api.work_items_api import WorkItemsApi
 from sailpoint.v3.api.workflows_api import WorkflowsApi
 
