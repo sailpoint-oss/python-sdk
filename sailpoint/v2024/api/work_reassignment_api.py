@@ -353,6 +353,7 @@ class WorkReassignmentApi:
     def delete_reassignment_configuration(
         self,
         identity_id: Annotated[StrictStr, Field(description="unique identity id")],
+        config_type: ConfigTypeEnum,
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -369,10 +370,12 @@ class WorkReassignmentApi:
     ) -> None:
         """Delete Reassignment Configuration
 
-        Deletes all Reassignment Configuration for the specified identity
+        Deletes a single reassignment configuration for the specified identity
 
         :param identity_id: unique identity id (required)
         :type identity_id: str
+        :param config_type: (required)
+        :type config_type: ConfigTypeEnum
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -399,6 +402,7 @@ class WorkReassignmentApi:
 
         _param = self._delete_reassignment_configuration_serialize(
             identity_id=identity_id,
+            config_type=config_type,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -429,6 +433,7 @@ class WorkReassignmentApi:
     def delete_reassignment_configuration_with_http_info(
         self,
         identity_id: Annotated[StrictStr, Field(description="unique identity id")],
+        config_type: ConfigTypeEnum,
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -445,10 +450,12 @@ class WorkReassignmentApi:
     ) -> ApiResponse[None]:
         """Delete Reassignment Configuration
 
-        Deletes all Reassignment Configuration for the specified identity
+        Deletes a single reassignment configuration for the specified identity
 
         :param identity_id: unique identity id (required)
         :type identity_id: str
+        :param config_type: (required)
+        :type config_type: ConfigTypeEnum
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -475,6 +482,7 @@ class WorkReassignmentApi:
 
         _param = self._delete_reassignment_configuration_serialize(
             identity_id=identity_id,
+            config_type=config_type,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -505,6 +513,7 @@ class WorkReassignmentApi:
     def delete_reassignment_configuration_without_preload_content(
         self,
         identity_id: Annotated[StrictStr, Field(description="unique identity id")],
+        config_type: ConfigTypeEnum,
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -521,10 +530,12 @@ class WorkReassignmentApi:
     ) -> RESTResponseType:
         """Delete Reassignment Configuration
 
-        Deletes all Reassignment Configuration for the specified identity
+        Deletes a single reassignment configuration for the specified identity
 
         :param identity_id: unique identity id (required)
         :type identity_id: str
+        :param config_type: (required)
+        :type config_type: ConfigTypeEnum
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -551,6 +562,7 @@ class WorkReassignmentApi:
 
         _param = self._delete_reassignment_configuration_serialize(
             identity_id=identity_id,
+            config_type=config_type,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -576,6 +588,7 @@ class WorkReassignmentApi:
     def _delete_reassignment_configuration_serialize(
         self,
         identity_id,
+        config_type,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -598,6 +611,8 @@ class WorkReassignmentApi:
         # process the path parameters
         if identity_id is not None:
             _path_params['identityId'] = identity_id
+        if config_type is not None:
+            _path_params['configType'] = config_type.value
         # process the query parameters
         # process the header parameters
         if x_sail_point_experimental is not None:
@@ -623,7 +638,7 @@ class WorkReassignmentApi:
 
         return self.api_client.param_serialize(
             method='DELETE',
-            resource_path='/reassignment-configurations/{identityId}',
+            resource_path='/reassignment-configurations/{identityId}/{configType}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

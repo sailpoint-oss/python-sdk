@@ -5,7 +5,7 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v2024*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_reassignment_configuration**](WorkReassignmentApi.md#create_reassignment_configuration) | **POST** /reassignment-configurations | Create a Reassignment Configuration
-[**delete_reassignment_configuration**](WorkReassignmentApi.md#delete_reassignment_configuration) | **DELETE** /reassignment-configurations/{identityId} | Delete Reassignment Configuration
+[**delete_reassignment_configuration**](WorkReassignmentApi.md#delete_reassignment_configuration) | **DELETE** /reassignment-configurations/{identityId}/{configType} | Delete Reassignment Configuration
 [**get_evaluate_reassignment_configuration**](WorkReassignmentApi.md#get_evaluate_reassignment_configuration) | **GET** /reassignment-configurations/{identityId}/evaluate/{configType} | Evaluate Reassignment Configuration
 [**get_reassignment_config_types**](WorkReassignmentApi.md#get_reassignment_config_types) | **GET** /reassignment-configurations/types | List Reassignment Config Types
 [**get_reassignment_configuration**](WorkReassignmentApi.md#get_reassignment_configuration) | **GET** /reassignment-configurations/{identityId} | Get Reassignment Configuration
@@ -102,11 +102,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_reassignment_configuration**
-> delete_reassignment_configuration(identity_id, x_sail_point_experimental)
+> delete_reassignment_configuration(identity_id, config_type, x_sail_point_experimental)
 
 Delete Reassignment Configuration
 
-Deletes all Reassignment Configuration for the specified identity
+Deletes a single reassignment configuration for the specified identity
 
 ### Example
 
@@ -115,6 +115,7 @@ Deletes all Reassignment Configuration for the specified identity
 
 ```python
 import sailpoint.v2024
+from sailpoint.v2024.models.config_type_enum import ConfigTypeEnum
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
 
@@ -138,11 +139,12 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v2024.WorkReassignmentApi(api_client)
     identity_id = '2c91808781a71ddb0181b9090b5c504e' # str | unique identity id
+    config_type = sailpoint.v2024.ConfigTypeEnum() # ConfigTypeEnum | 
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true')
 
     try:
         # Delete Reassignment Configuration
-        api_instance.delete_reassignment_configuration(identity_id, x_sail_point_experimental)
+        api_instance.delete_reassignment_configuration(identity_id, config_type, x_sail_point_experimental)
     except Exception as e:
         print("Exception when calling WorkReassignmentApi->delete_reassignment_configuration: %s\n" % e)
 ```
@@ -155,6 +157,7 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identity_id** | **str**| unique identity id | 
+ **config_type** | [**ConfigTypeEnum**](.md)|  | 
  **x_sail_point_experimental** | **str**| Use this header to enable this experimental API. | [default to &#39;true&#39;]
 
 ### Return type

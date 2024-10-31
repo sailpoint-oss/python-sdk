@@ -338,6 +338,7 @@ class WorkReassignmentApi:
     def delete_reassignment_configuration(
         self,
         identity_id: Annotated[StrictStr, Field(description="unique identity id")],
+        config_type: ConfigTypeEnum,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -353,10 +354,12 @@ class WorkReassignmentApi:
     ) -> None:
         """Delete Reassignment Configuration
 
-        Deletes all Reassignment Configuration for the specified identity
+        Deletes a single reassignment configuration for the specified identity
 
         :param identity_id: unique identity id (required)
         :type identity_id: str
+        :param config_type: (required)
+        :type config_type: ConfigTypeEnum
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -381,6 +384,7 @@ class WorkReassignmentApi:
 
         _param = self._delete_reassignment_configuration_serialize(
             identity_id=identity_id,
+            config_type=config_type,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -410,6 +414,7 @@ class WorkReassignmentApi:
     def delete_reassignment_configuration_with_http_info(
         self,
         identity_id: Annotated[StrictStr, Field(description="unique identity id")],
+        config_type: ConfigTypeEnum,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -425,10 +430,12 @@ class WorkReassignmentApi:
     ) -> ApiResponse[None]:
         """Delete Reassignment Configuration
 
-        Deletes all Reassignment Configuration for the specified identity
+        Deletes a single reassignment configuration for the specified identity
 
         :param identity_id: unique identity id (required)
         :type identity_id: str
+        :param config_type: (required)
+        :type config_type: ConfigTypeEnum
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -453,6 +460,7 @@ class WorkReassignmentApi:
 
         _param = self._delete_reassignment_configuration_serialize(
             identity_id=identity_id,
+            config_type=config_type,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -482,6 +490,7 @@ class WorkReassignmentApi:
     def delete_reassignment_configuration_without_preload_content(
         self,
         identity_id: Annotated[StrictStr, Field(description="unique identity id")],
+        config_type: ConfigTypeEnum,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -497,10 +506,12 @@ class WorkReassignmentApi:
     ) -> RESTResponseType:
         """Delete Reassignment Configuration
 
-        Deletes all Reassignment Configuration for the specified identity
+        Deletes a single reassignment configuration for the specified identity
 
         :param identity_id: unique identity id (required)
         :type identity_id: str
+        :param config_type: (required)
+        :type config_type: ConfigTypeEnum
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -525,6 +536,7 @@ class WorkReassignmentApi:
 
         _param = self._delete_reassignment_configuration_serialize(
             identity_id=identity_id,
+            config_type=config_type,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -549,6 +561,7 @@ class WorkReassignmentApi:
     def _delete_reassignment_configuration_serialize(
         self,
         identity_id,
+        config_type,
         _request_auth,
         _content_type,
         _headers,
@@ -570,6 +583,8 @@ class WorkReassignmentApi:
         # process the path parameters
         if identity_id is not None:
             _path_params['identityId'] = identity_id
+        if config_type is not None:
+            _path_params['configType'] = config_type.value
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -593,7 +608,7 @@ class WorkReassignmentApi:
 
         return self.api_client.param_serialize(
             method='DELETE',
-            resource_path='/reassignment-configurations/{identityId}',
+            resource_path='/reassignment-configurations/{identityId}/{configType}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
