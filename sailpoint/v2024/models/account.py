@@ -36,7 +36,7 @@ class Account(BaseModel):
     created: Optional[datetime] = Field(default=None, description="Creation date of the Object")
     modified: Optional[datetime] = Field(default=None, description="Last modification date of the Object")
     source_id: StrictStr = Field(description="The unique ID of the source this account belongs to", alias="sourceId")
-    source_name: StrictStr = Field(description="The display name of the source this account belongs to", alias="sourceName")
+    source_name: Optional[StrictStr] = Field(description="The display name of the source this account belongs to", alias="sourceName")
     identity_id: Optional[StrictStr] = Field(default=None, description="The unique ID of the identity this account is correlated to", alias="identityId")
     cloud_lifecycle_state: Optional[StrictStr] = Field(default=None, description="The lifecycle state of the identity this account is correlated to", alias="cloudLifecycleState")
     identity_state: Optional[StrictStr] = Field(default=None, description="The identity state of the identity this account is correlated to", alias="identityState")
@@ -128,6 +128,11 @@ class Account(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of owner_group
         if self.owner_group:
             _dict['ownerGroup'] = self.owner_group.to_dict()
+        # set to None if source_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.source_name is None and "source_name" in self.model_fields_set:
+            _dict['sourceName'] = None
+
         # set to None if cloud_lifecycle_state (nullable) is None
         # and model_fields_set contains the field
         if self.cloud_lifecycle_state is None and "cloud_lifecycle_state" in self.model_fields_set:
