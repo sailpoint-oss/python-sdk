@@ -36,7 +36,7 @@ class Campaign(BaseModel):
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="Id of the campaign")
     name: StrictStr = Field(description="The campaign name. If this object is part of a template, special formatting applies; see the `/campaign-templates/{id}/generate` endpoint documentation for details.")
-    description: StrictStr = Field(description="The campaign description. If this object is part of a template, special formatting applies; see the `/campaign-templates/{id}/generate` endpoint documentation for details.")
+    description: Optional[StrictStr] = Field(description="The campaign description. If this object is part of a template, special formatting applies; see the `/campaign-templates/{id}/generate` endpoint documentation for details.")
     deadline: Optional[datetime] = Field(default=None, description="The campaign's completion deadline.  This date must be in the future in order to activate the campaign.  If you try to activate a campaign with a deadline of today or in the past, you will receive a 400 error response.")
     type: StrictStr = Field(description="The type of campaign. Could be extended in the future.")
     email_notification_enabled: Optional[StrictBool] = Field(default=False, description="Enables email notification for this campaign", alias="emailNotificationEnabled")
@@ -180,6 +180,11 @@ class Campaign(BaseModel):
                 if _item_sources_with_orphan_entitlements:
                     _items.append(_item_sources_with_orphan_entitlements.to_dict())
             _dict['sourcesWithOrphanEntitlements'] = _items
+        # set to None if description (nullable) is None
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
+            _dict['description'] = None
+
         return _dict
 
     @classmethod
