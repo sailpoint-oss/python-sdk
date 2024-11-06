@@ -30,8 +30,8 @@ class ClientLogConfiguration(BaseModel):
     Client Runtime Logging Configuration
     """ # noqa: E501
     client_id: Optional[StrictStr] = Field(default=None, description="Log configuration's client ID", alias="clientId")
-    duration_minutes: Annotated[int, Field(le=1440, strict=True, ge=5)] = Field(description="Duration in minutes for log configuration to remain in effect before resetting to defaults", alias="durationMinutes")
-    expiration: Optional[datetime] = Field(default=None, description="Expiration date-time of the log configuration request")
+    duration_minutes: Optional[Annotated[int, Field(le=1440, strict=True, ge=5)]] = Field(default=240, description="Duration in minutes for log configuration to remain in effect before resetting to defaults.", alias="durationMinutes")
+    expiration: Optional[datetime] = Field(default=None, description="Expiration date-time of the log configuration request.  Can be no greater than 24 hours from current date-time.")
     root_level: StandardLevel = Field(alias="rootLevel")
     log_levels: Optional[Dict[str, StandardLevel]] = Field(default=None, description="Mapping of identifiers to Standard Log Level values", alias="logLevels")
     __properties: ClassVar[List[str]] = ["clientId", "durationMinutes", "expiration", "rootLevel", "logLevels"]
@@ -88,7 +88,7 @@ class ClientLogConfiguration(BaseModel):
 
         _obj = cls.model_validate({
             "clientId": obj.get("clientId"),
-            "durationMinutes": obj.get("durationMinutes"),
+            "durationMinutes": obj.get("durationMinutes") if obj.get("durationMinutes") is not None else 240,
             "expiration": obj.get("expiration"),
             "rootLevel": obj.get("rootLevel"),
             "logLevels": dict((_k, _v) for _k, _v in obj.get("logLevels").items())

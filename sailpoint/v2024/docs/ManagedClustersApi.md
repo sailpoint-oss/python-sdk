@@ -6,10 +6,10 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_managed_cluster**](ManagedClustersApi.md#create_managed_cluster) | **POST** /managed-clusters | Create a new Managed Cluster
 [**delete_managed_cluster**](ManagedClustersApi.md#delete_managed_cluster) | **DELETE** /managed-clusters/{id} | Delete a Managed Cluster
-[**get_client_log_configuration**](ManagedClustersApi.md#get_client_log_configuration) | **GET** /managed-clusters/{id}/log-config | Get managed cluster&#39;s log configuration
+[**get_client_log_configuration**](ManagedClustersApi.md#get_client_log_configuration) | **GET** /managed-clusters/{id}/log-config | Get Managed Cluster&#39;s log configuration
 [**get_managed_cluster**](ManagedClustersApi.md#get_managed_cluster) | **GET** /managed-clusters/{id} | Get a specified Managed Cluster.
 [**get_managed_clusters**](ManagedClustersApi.md#get_managed_clusters) | **GET** /managed-clusters | Retrieve all Managed Clusters.
-[**put_client_log_configuration**](ManagedClustersApi.md#put_client_log_configuration) | **PUT** /managed-clusters/{id}/log-config | Update managed cluster&#39;s log configuration
+[**put_client_log_configuration**](ManagedClustersApi.md#put_client_log_configuration) | **PUT** /managed-clusters/{id}/log-config | Update Managed Cluster&#39;s log configuration
 [**update_managed_cluster**](ManagedClustersApi.md#update_managed_cluster) | **PATCH** /managed-clusters/{id} | Update a Managed Cluster
 
 
@@ -182,7 +182,7 @@ void (empty response body)
 # **get_client_log_configuration**
 > ClientLogConfiguration get_client_log_configuration(id)
 
-Get managed cluster's log configuration
+Get Managed Cluster's log configuration
 
 Get managed cluster's log configuration.
 
@@ -219,7 +219,7 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
     id = '2b838de9-db9b-abcf-e646-d4f274ad4238' # str | ID of ManagedCluster to get log configuration for
 
     try:
-        # Get managed cluster's log configuration
+        # Get Managed Cluster's log configuration
         api_response = api_instance.get_client_log_configuration(id)
         print("The response of ManagedClustersApi->get_client_log_configuration:\n")
         pprint(api_response)
@@ -438,11 +438,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_client_log_configuration**
-> ClientLogConfiguration put_client_log_configuration(id, client_log_configuration)
+> ClientLogConfiguration put_client_log_configuration(id, put_client_log_configuration_request)
 
-Update managed cluster's log configuration
+Update Managed Cluster's log configuration
 
-Update managed cluster's log configuration
+Update managed cluster's log configuration.  Only one of `durationMinutes` or `expiration` may be specified, up to 1440 minutes (24 hours) in the future. If neither is specified, the default value for `durationMinutes` will be 240.
 
 ### Example
 
@@ -452,6 +452,7 @@ Update managed cluster's log configuration
 ```python
 import sailpoint.v2024
 from sailpoint.v2024.models.client_log_configuration import ClientLogConfiguration
+from sailpoint.v2024.models.put_client_log_configuration_request import PutClientLogConfigurationRequest
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
 
@@ -475,11 +476,11 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v2024.ManagedClustersApi(api_client)
     id = '2b838de9-db9b-abcf-e646-d4f274ad4238' # str | ID of ManagedCluster to update log configuration for
-    client_log_configuration = sailpoint.v2024.ClientLogConfiguration() # ClientLogConfiguration | ClientLogConfiguration for given ManagedCluster
+    put_client_log_configuration_request = sailpoint.v2024.PutClientLogConfigurationRequest() # PutClientLogConfigurationRequest | ClientLogConfiguration for given ManagedCluster
 
     try:
-        # Update managed cluster's log configuration
-        api_response = api_instance.put_client_log_configuration(id, client_log_configuration)
+        # Update Managed Cluster's log configuration
+        api_response = api_instance.put_client_log_configuration(id, put_client_log_configuration_request)
         print("The response of ManagedClustersApi->put_client_log_configuration:\n")
         pprint(api_response)
     except Exception as e:
@@ -494,7 +495,7 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| ID of ManagedCluster to update log configuration for | 
- **client_log_configuration** | [**ClientLogConfiguration**](ClientLogConfiguration.md)| ClientLogConfiguration for given ManagedCluster | 
+ **put_client_log_configuration_request** | [**PutClientLogConfigurationRequest**](PutClientLogConfigurationRequest.md)| ClientLogConfiguration for given ManagedCluster | 
 
 ### Return type
 

@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v3.models.client_log_configuration import ClientLogConfiguration
+from sailpoint.v3.models.put_client_log_configuration_request import PutClientLogConfigurationRequest
 
-class TestClientLogConfiguration(unittest.TestCase):
-    """ClientLogConfiguration unit test stubs"""
+class TestPutClientLogConfigurationRequest(unittest.TestCase):
+    """PutClientLogConfigurationRequest unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,30 +25,30 @@ class TestClientLogConfiguration(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ClientLogConfiguration:
-        """Test ClientLogConfiguration
+    def make_instance(self, include_optional) -> PutClientLogConfigurationRequest:
+        """Test PutClientLogConfigurationRequest
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ClientLogConfiguration`
+        # uncomment below to create an instance of `PutClientLogConfigurationRequest`
         """
-        model = ClientLogConfiguration()
+        model = PutClientLogConfigurationRequest()
         if include_optional:
-            return ClientLogConfiguration(
+            return PutClientLogConfigurationRequest(
                 client_id = '3a38a51992e8445ab51a549c0a70ee66',
                 duration_minutes = 120,
-                expiration = '2024-11-06T01:31:08.013164Z',
                 root_level = 'INFO',
-                log_levels = INFO
+                log_levels = INFO,
+                expiration = '2024-11-06T01:31:08.013164Z'
             )
         else:
-            return ClientLogConfiguration(
+            return PutClientLogConfigurationRequest(
                 root_level = 'INFO',
         )
         """
 
-    def testClientLogConfiguration(self):
-        """Test ClientLogConfiguration"""
+    def testPutClientLogConfigurationRequest(self):
+        """Test PutClientLogConfigurationRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

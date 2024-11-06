@@ -20,21 +20,19 @@ import json
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from typing_extensions import Annotated
 from sailpoint.v3.models.standard_level import StandardLevel
 from typing import Optional, Set
 from typing_extensions import Self
 
-class ClientLogConfiguration(BaseModel):
+class ClientLogConfigurationExpiration(BaseModel):
     """
     Client Runtime Logging Configuration
     """ # noqa: E501
     client_id: Optional[StrictStr] = Field(default=None, description="Log configuration's client ID", alias="clientId")
-    duration_minutes: Optional[Annotated[int, Field(le=1440, strict=True, ge=5)]] = Field(default=240, description="Duration in minutes for log configuration to remain in effect before resetting to defaults.", alias="durationMinutes")
     expiration: Optional[datetime] = Field(default=None, description="Expiration date-time of the log configuration request.  Can be no greater than 24 hours from current date-time.")
     root_level: StandardLevel = Field(alias="rootLevel")
     log_levels: Optional[Dict[str, StandardLevel]] = Field(default=None, description="Mapping of identifiers to Standard Log Level values", alias="logLevels")
-    __properties: ClassVar[List[str]] = ["clientId", "durationMinutes", "expiration", "rootLevel", "logLevels"]
+    __properties: ClassVar[List[str]] = ["clientId", "expiration", "rootLevel", "logLevels"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -54,7 +52,7 @@ class ClientLogConfiguration(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ClientLogConfiguration from a JSON string"""
+        """Create an instance of ClientLogConfigurationExpiration from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -79,7 +77,7 @@ class ClientLogConfiguration(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ClientLogConfiguration from a dict"""
+        """Create an instance of ClientLogConfigurationExpiration from a dict"""
         if obj is None:
             return None
 
@@ -88,7 +86,6 @@ class ClientLogConfiguration(BaseModel):
 
         _obj = cls.model_validate({
             "clientId": obj.get("clientId"),
-            "durationMinutes": obj.get("durationMinutes") if obj.get("durationMinutes") is not None else 240,
             "expiration": obj.get("expiration"),
             "rootLevel": obj.get("rootLevel"),
             "logLevels": dict((_k, _v) for _k, _v in obj.get("logLevels").items())

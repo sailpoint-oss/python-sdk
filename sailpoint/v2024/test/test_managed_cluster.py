@@ -58,9 +58,9 @@ class TestManagedCluster(unittest.TestCase):
                 ccg_version = 'v01',
                 pinned_config = False,
                 log_configuration = sailpoint.v2024.models.client_log_configuration.ClientLogConfiguration(
-                    client_id = 'aClientId', 
+                    client_id = '3a38a51992e8445ab51a549c0a70ee66', 
                     duration_minutes = 120, 
-                    expiration = '2020-12-15T19:13:36.079Z', 
+                    expiration = '2024-11-06T01:31:08.013164Z', 
                     root_level = 'INFO', 
                     log_levels = INFO, ),
                 operational = False,

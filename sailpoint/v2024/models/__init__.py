@@ -250,6 +250,8 @@ from sailpoint.v2024.models.certification_signed_off_certification import Certif
 from sailpoint.v2024.models.certification_task import CertificationTask
 from sailpoint.v2024.models.certifier_response import CertifierResponse
 from sailpoint.v2024.models.client_log_configuration import ClientLogConfiguration
+from sailpoint.v2024.models.client_log_configuration_duration_minutes import ClientLogConfigurationDurationMinutes
+from sailpoint.v2024.models.client_log_configuration_expiration import ClientLogConfigurationExpiration
 from sailpoint.v2024.models.client_type import ClientType
 from sailpoint.v2024.models.close_access_request import CloseAccessRequest
 from sailpoint.v2024.models.column import Column
@@ -663,6 +665,7 @@ from sailpoint.v2024.models.provisioning_state import ProvisioningState
 from sailpoint.v2024.models.public_identity import PublicIdentity
 from sailpoint.v2024.models.public_identity_attribute_config import PublicIdentityAttributeConfig
 from sailpoint.v2024.models.public_identity_config import PublicIdentityConfig
+from sailpoint.v2024.models.put_client_log_configuration_request import PutClientLogConfigurationRequest
 from sailpoint.v2024.models.put_correlation_config_request import PutCorrelationConfigRequest
 from sailpoint.v2024.models.put_password_dictionary_request import PutPasswordDictionaryRequest
 from sailpoint.v2024.models.put_source_config_request import PutSourceConfigRequest

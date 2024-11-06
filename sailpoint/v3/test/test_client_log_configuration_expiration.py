@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v3.models.client_log_configuration import ClientLogConfiguration
+from sailpoint.v3.models.client_log_configuration_expiration import ClientLogConfigurationExpiration
 
-class TestClientLogConfiguration(unittest.TestCase):
-    """ClientLogConfiguration unit test stubs"""
+class TestClientLogConfigurationExpiration(unittest.TestCase):
+    """ClientLogConfigurationExpiration unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,30 +25,29 @@ class TestClientLogConfiguration(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ClientLogConfiguration:
-        """Test ClientLogConfiguration
+    def make_instance(self, include_optional) -> ClientLogConfigurationExpiration:
+        """Test ClientLogConfigurationExpiration
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ClientLogConfiguration`
+        # uncomment below to create an instance of `ClientLogConfigurationExpiration`
         """
-        model = ClientLogConfiguration()
+        model = ClientLogConfigurationExpiration()
         if include_optional:
-            return ClientLogConfiguration(
+            return ClientLogConfigurationExpiration(
                 client_id = '3a38a51992e8445ab51a549c0a70ee66',
-                duration_minutes = 120,
                 expiration = '2024-11-06T01:31:08.013164Z',
                 root_level = 'INFO',
                 log_levels = INFO
             )
         else:
-            return ClientLogConfiguration(
+            return ClientLogConfigurationExpiration(
                 root_level = 'INFO',
         )
         """
 
-    def testClientLogConfiguration(self):
-        """Test ClientLogConfiguration"""
+    def testClientLogConfigurationExpiration(self):
+        """Test ClientLogConfigurationExpiration"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

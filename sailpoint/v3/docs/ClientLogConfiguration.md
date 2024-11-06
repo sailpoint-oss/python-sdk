@@ -7,8 +7,8 @@ Client Runtime Logging Configuration
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **client_id** | **str** | Log configuration&#39;s client ID | [optional] 
-**duration_minutes** | **int** | Duration in minutes for log configuration to remain in effect before resetting to defaults | 
-**expiration** | **datetime** | Expiration date-time of the log configuration request | [optional] 
+**duration_minutes** | **int** | Duration in minutes for log configuration to remain in effect before resetting to defaults. | [optional] [default to 240]
+**expiration** | **datetime** | Expiration date-time of the log configuration request.  Can be no greater than 24 hours from current date-time. | [optional] 
 **root_level** | [**StandardLevel**](StandardLevel.md) |  | 
 **log_levels** | [**Dict[str, StandardLevel]**](StandardLevel.md) | Mapping of identifiers to Standard Log Level values | [optional] 
 

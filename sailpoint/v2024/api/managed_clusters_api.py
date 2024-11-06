@@ -23,6 +23,7 @@ from sailpoint.v2024.models.client_log_configuration import ClientLogConfigurati
 from sailpoint.v2024.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v2024.models.managed_cluster import ManagedCluster
 from sailpoint.v2024.models.managed_cluster_request import ManagedClusterRequest
+from sailpoint.v2024.models.put_client_log_configuration_request import PutClientLogConfigurationRequest
 
 from sailpoint.v2024.api_client import ApiClient, RequestSerialized
 from sailpoint.v2024.api_response import ApiResponse
@@ -639,7 +640,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ClientLogConfiguration:
-        """Get managed cluster's log configuration
+        """Get Managed Cluster's log configuration
 
         Get managed cluster's log configuration.
 
@@ -713,7 +714,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ClientLogConfiguration]:
-        """Get managed cluster's log configuration
+        """Get Managed Cluster's log configuration
 
         Get managed cluster's log configuration.
 
@@ -787,7 +788,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get managed cluster's log configuration
+        """Get Managed Cluster's log configuration
 
         Get managed cluster's log configuration.
 
@@ -1513,7 +1514,7 @@ class ManagedClustersApi:
     def put_client_log_configuration(
         self,
         id: Annotated[StrictStr, Field(description="ID of ManagedCluster to update log configuration for")],
-        client_log_configuration: Annotated[Optional[ClientLogConfiguration], Field(description="ClientLogConfiguration for given ManagedCluster")],
+        put_client_log_configuration_request: Annotated[PutClientLogConfigurationRequest, Field(description="ClientLogConfiguration for given ManagedCluster")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1527,14 +1528,14 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ClientLogConfiguration:
-        """Update managed cluster's log configuration
+        """Update Managed Cluster's log configuration
 
-        Update managed cluster's log configuration
+        Update managed cluster's log configuration.  Only one of `durationMinutes` or `expiration` may be specified, up to 1440 minutes (24 hours) in the future. If neither is specified, the default value for `durationMinutes` will be 240.
 
         :param id: ID of ManagedCluster to update log configuration for (required)
         :type id: str
-        :param client_log_configuration: ClientLogConfiguration for given ManagedCluster (required)
-        :type client_log_configuration: ClientLogConfiguration
+        :param put_client_log_configuration_request: ClientLogConfiguration for given ManagedCluster (required)
+        :type put_client_log_configuration_request: PutClientLogConfigurationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1559,7 +1560,7 @@ class ManagedClustersApi:
 
         _param = self._put_client_log_configuration_serialize(
             id=id,
-            client_log_configuration=client_log_configuration,
+            put_client_log_configuration_request=put_client_log_configuration_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1590,7 +1591,7 @@ class ManagedClustersApi:
     def put_client_log_configuration_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="ID of ManagedCluster to update log configuration for")],
-        client_log_configuration: Annotated[Optional[ClientLogConfiguration], Field(description="ClientLogConfiguration for given ManagedCluster")],
+        put_client_log_configuration_request: Annotated[PutClientLogConfigurationRequest, Field(description="ClientLogConfiguration for given ManagedCluster")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1604,14 +1605,14 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ClientLogConfiguration]:
-        """Update managed cluster's log configuration
+        """Update Managed Cluster's log configuration
 
-        Update managed cluster's log configuration
+        Update managed cluster's log configuration.  Only one of `durationMinutes` or `expiration` may be specified, up to 1440 minutes (24 hours) in the future. If neither is specified, the default value for `durationMinutes` will be 240.
 
         :param id: ID of ManagedCluster to update log configuration for (required)
         :type id: str
-        :param client_log_configuration: ClientLogConfiguration for given ManagedCluster (required)
-        :type client_log_configuration: ClientLogConfiguration
+        :param put_client_log_configuration_request: ClientLogConfiguration for given ManagedCluster (required)
+        :type put_client_log_configuration_request: PutClientLogConfigurationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1636,7 +1637,7 @@ class ManagedClustersApi:
 
         _param = self._put_client_log_configuration_serialize(
             id=id,
-            client_log_configuration=client_log_configuration,
+            put_client_log_configuration_request=put_client_log_configuration_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1667,7 +1668,7 @@ class ManagedClustersApi:
     def put_client_log_configuration_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="ID of ManagedCluster to update log configuration for")],
-        client_log_configuration: Annotated[Optional[ClientLogConfiguration], Field(description="ClientLogConfiguration for given ManagedCluster")],
+        put_client_log_configuration_request: Annotated[PutClientLogConfigurationRequest, Field(description="ClientLogConfiguration for given ManagedCluster")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1681,14 +1682,14 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update managed cluster's log configuration
+        """Update Managed Cluster's log configuration
 
-        Update managed cluster's log configuration
+        Update managed cluster's log configuration.  Only one of `durationMinutes` or `expiration` may be specified, up to 1440 minutes (24 hours) in the future. If neither is specified, the default value for `durationMinutes` will be 240.
 
         :param id: ID of ManagedCluster to update log configuration for (required)
         :type id: str
-        :param client_log_configuration: ClientLogConfiguration for given ManagedCluster (required)
-        :type client_log_configuration: ClientLogConfiguration
+        :param put_client_log_configuration_request: ClientLogConfiguration for given ManagedCluster (required)
+        :type put_client_log_configuration_request: PutClientLogConfigurationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1713,7 +1714,7 @@ class ManagedClustersApi:
 
         _param = self._put_client_log_configuration_serialize(
             id=id,
-            client_log_configuration=client_log_configuration,
+            put_client_log_configuration_request=put_client_log_configuration_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1739,7 +1740,7 @@ class ManagedClustersApi:
     def _put_client_log_configuration_serialize(
         self,
         id,
-        client_log_configuration,
+        put_client_log_configuration_request,
         _request_auth,
         _content_type,
         _headers,
@@ -1765,8 +1766,8 @@ class ManagedClustersApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if client_log_configuration is not None:
-            _body_params = client_log_configuration
+        if put_client_log_configuration_request is not None:
+            _body_params = put_client_log_configuration_request
 
 
         # set the HTTP header `Accept`
