@@ -118,9 +118,6 @@ from sailpoint.v3.models.account_activity_document import AccountActivityDocumen
 from sailpoint.v3.models.account_activity_item import AccountActivityItem
 from sailpoint.v3.models.account_activity_item_operation import AccountActivityItemOperation
 from sailpoint.v3.models.account_activity_searched_item import AccountActivitySearchedItem
-from sailpoint.v3.models.account_all_of_owner_group import AccountAllOfOwnerGroup
-from sailpoint.v3.models.account_all_of_owner_identity import AccountAllOfOwnerIdentity
-from sailpoint.v3.models.account_all_of_source_owner import AccountAllOfSourceOwner
 from sailpoint.v3.models.account_attributes import AccountAttributes
 from sailpoint.v3.models.account_attributes_create import AccountAttributesCreate
 from sailpoint.v3.models.account_attributes_create_attributes import AccountAttributesCreateAttributes
@@ -459,6 +456,7 @@ from sailpoint.v3.models.reassignment import Reassignment
 from sailpoint.v3.models.reassignment_reference import ReassignmentReference
 from sailpoint.v3.models.reassignment_trail_dto import ReassignmentTrailDTO
 from sailpoint.v3.models.reassignment_type import ReassignmentType
+from sailpoint.v3.models.recommendation import Recommendation
 from sailpoint.v3.models.reference import Reference
 from sailpoint.v3.models.remediation_item_details import RemediationItemDetails
 from sailpoint.v3.models.remediation_items import RemediationItems

@@ -36,12 +36,12 @@ class TestGetRoleAssignments200ResponseInner(unittest.TestCase):
         if include_optional:
             return GetRoleAssignments200ResponseInner(
                 id = '1cbb0705b38c4226b1334eadd8874086',
-                role = sailpoint.beta.models.base_reference_dto.BaseReferenceDto(
+                role = sailpoint.beta.models.base_reference_dto_1.BaseReferenceDto_1(
                     id = 'ff8081814d977c21014da056804a0af3', 
                     name = 'Github', ),
                 comments = 'I'm a new Engineer and need this role to do my work',
                 assignment_source = 'UI',
-                assigner = sailpoint.beta.models.base_reference_dto.BaseReferenceDto(
+                assigner = sailpoint.beta.models.base_reference_dto_1.BaseReferenceDto_1(
                     id = 'ff8081814d977c21014da056804a0af3', 
                     name = 'Github', ),
                 assigned_dimensions = [{id=1acc8ffe5fcf457090de28bee2af36ee, type=DIMENSION, name=Northeast region}],
@@ -55,7 +55,7 @@ class TestGetRoleAssignments200ResponseInner(unittest.TestCase):
                             ], ), 
                     matched = [
                         sailpoint.beta.models.role_match_dto.RoleMatchDto(
-                            role_ref = sailpoint.beta.models.base_reference_dto.BaseReferenceDto(
+                            role_ref = sailpoint.beta.models.base_reference_dto_1.BaseReferenceDto_1(
                                 id = 'ff8081814d977c21014da056804a0af3', 
                                 name = 'Github', ), 
                             matched_attributes = [
@@ -67,7 +67,7 @@ class TestGetRoleAssignments200ResponseInner(unittest.TestCase):
                     computed_date = 'Wed Feb 14 10:58:42', ),
                 account_targets = [
                     sailpoint.beta.models.role_target_dto.RoleTargetDto(
-                        source = sailpoint.beta.models.base_reference_dto.BaseReferenceDto(
+                        source = sailpoint.beta.models.base_reference_dto_1.BaseReferenceDto_1(
                             id = 'ff8081814d977c21014da056804a0af3', 
                             name = 'Github', ), 
                         account_info = sailpoint.beta.models.account_info_dto.AccountInfoDto(

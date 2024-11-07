@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.beta.models.account_all_of_source_owner import AccountAllOfSourceOwner
+from sailpoint.beta.models.recommendation import Recommendation
 
-class TestAccountAllOfSourceOwner(unittest.TestCase):
-    """AccountAllOfSourceOwner unit test stubs"""
+class TestRecommendation(unittest.TestCase):
+    """Recommendation unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,27 +25,28 @@ class TestAccountAllOfSourceOwner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> AccountAllOfSourceOwner:
-        """Test AccountAllOfSourceOwner
+    def make_instance(self, include_optional) -> Recommendation:
+        """Test Recommendation
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `AccountAllOfSourceOwner`
+        # uncomment below to create an instance of `Recommendation`
         """
-        model = AccountAllOfSourceOwner()
+        model = Recommendation()
         if include_optional:
-            return AccountAllOfSourceOwner(
-                type = 'IDENTITY',
-                id = '4c5c8534e99445de98eef6c75e25eb01',
-                name = 'SailPoint Support'
+            return Recommendation(
+                type = 'MACHINE',
+                method = 'DISCOVERY'
             )
         else:
-            return AccountAllOfSourceOwner(
+            return Recommendation(
+                type = 'MACHINE',
+                method = 'DISCOVERY',
         )
         """
 
-    def testAccountAllOfSourceOwner(self):
-        """Test AccountAllOfSourceOwner"""
+    def testRecommendation(self):
+        """Test Recommendation"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

@@ -45,7 +45,10 @@ class TestAccount(unittest.TestCase):
                 cloud_lifecycle_state = 'active',
                 identity_state = 'ACTIVE',
                 connection_type = 'direct',
-                type = 'NON_HUMAN',
+                is_machine = True,
+                recommendation = sailpoint.v2024.models.recommendation.Recommendation(
+                    type = 'MACHINE', 
+                    method = 'DISCOVERY', ),
                 attributes = {firstName=SailPoint, lastName=Support, displayName=SailPoint Support},
                 authoritative = False,
                 description = '',
@@ -54,27 +57,23 @@ class TestAccount(unittest.TestCase):
                 native_identity = '552775',
                 system_account = False,
                 uncorrelated = False,
-                uuid = 'slpt.support',
+                uuid = '{b0dce506-d6d4-44d2-8a32-d9a5b21fb175}',
                 manually_correlated = False,
                 has_entitlements = True,
                 identity = sailpoint.v2024.models.base_reference_dto.BaseReferenceDto(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'William Wilson', ),
-                source_owner = sailpoint.v2024.models.account_all_of_source_owner.Account_allOf_sourceOwner(
+                source_owner = sailpoint.v2024.models.base_reference_dto.BaseReferenceDto(
                     type = 'IDENTITY', 
-                    id = '4c5c8534e99445de98eef6c75e25eb01', 
-                    name = 'John Cavender', ),
+                    id = '2c91808568c529c60168cca6f90c1313', 
+                    name = 'William Wilson', ),
                 features = 'ENABLE',
                 origin = 'AGGREGATED',
-                owner_identity = sailpoint.v2024.models.account_all_of_owner_identity.Account_allOf_ownerIdentity(
+                owner_identity = sailpoint.v2024.models.base_reference_dto.BaseReferenceDto(
                     type = 'IDENTITY', 
-                    id = '2c918084660f45d6016617daa9210584', 
-                    name = 'Adam Kennedy', ),
-                owner_group = sailpoint.v2024.models.account_all_of_owner_group.Account_allOf_ownerGroup(
-                    type = 'GOVERNANCE_GROUP', 
-                    id = '8d3e0094e99445de98eef6c75e25jc04', 
-                    name = 'GovGroup AX17Z', )
+                    id = '2c91808568c529c60168cca6f90c1313', 
+                    name = 'William Wilson', )
             )
         else:
             return Account(

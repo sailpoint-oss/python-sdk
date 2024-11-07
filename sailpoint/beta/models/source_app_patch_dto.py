@@ -20,7 +20,7 @@ import json
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.beta.models.base_reference_dto1 import BaseReferenceDto1
+from sailpoint.beta.models.base_reference_dto import BaseReferenceDto
 from sailpoint.beta.models.source_app_account_source import SourceAppAccountSource
 from typing import Optional, Set
 from typing_extensions import Self
@@ -41,7 +41,7 @@ class SourceAppPatchDto(BaseModel):
     app_center_enabled: Optional[StrictBool] = Field(default=True, description="True if the source app is shown in the app center", alias="appCenterEnabled")
     access_profiles: Optional[List[StrictStr]] = Field(default=None, description="List of IDs of access profiles", alias="accessProfiles")
     account_source: Optional[SourceAppAccountSource] = Field(default=None, alias="accountSource")
-    owner: Optional[BaseReferenceDto1] = Field(default=None, description="The owner of source app")
+    owner: Optional[BaseReferenceDto] = Field(default=None, description="The owner of source app")
     __properties: ClassVar[List[str]] = ["id", "cloudAppId", "name", "created", "modified", "enabled", "provisionRequestEnabled", "description", "matchAllAccounts", "appCenterEnabled", "accessProfiles", "accountSource", "owner"]
 
     model_config = ConfigDict(
@@ -128,7 +128,7 @@ class SourceAppPatchDto(BaseModel):
             "appCenterEnabled": obj.get("appCenterEnabled") if obj.get("appCenterEnabled") is not None else True,
             "accessProfiles": obj.get("accessProfiles"),
             "accountSource": SourceAppAccountSource.from_dict(obj["accountSource"]) if obj.get("accountSource") is not None else None,
-            "owner": BaseReferenceDto1.from_dict(obj["owner"]) if obj.get("owner") is not None else None
+            "owner": BaseReferenceDto.from_dict(obj["owner"]) if obj.get("owner") is not None else None
         })
         return _obj
 

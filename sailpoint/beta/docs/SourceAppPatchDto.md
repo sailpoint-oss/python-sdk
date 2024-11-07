@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **app_center_enabled** | **bool** | True if the source app is shown in the app center | [optional] [default to True]
 **access_profiles** | **List[str]** | List of IDs of access profiles | [optional] 
 **account_source** | [**SourceAppAccountSource**](SourceAppAccountSource.md) |  | [optional] 
-**owner** | [**BaseReferenceDto1**](BaseReferenceDto1.md) | The owner of source app | [optional] 
+**owner** | [**BaseReferenceDto**](BaseReferenceDto.md) | The owner of source app | [optional] 
 
 ## Example
 

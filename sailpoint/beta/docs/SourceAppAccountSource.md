@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **type** | **str** | The source type, will always be \&quot;SOURCE\&quot; | [optional] 
 **name** | **str** | The source name | [optional] 
 **use_for_password_management** | **bool** | If the source is used for password management | [optional] [default to False]
-**password_policies** | [**List[BaseReferenceDto1]**](BaseReferenceDto1.md) | The password policies for the source | [optional] 
+**password_policies** | [**List[BaseReferenceDto]**](BaseReferenceDto.md) | The password policies for the source | [optional] 
 
 ## Example
 

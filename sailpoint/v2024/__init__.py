@@ -192,9 +192,6 @@ from sailpoint.v2024.models.account_aggregation_completed import AccountAggregat
 from sailpoint.v2024.models.account_aggregation_completed_source import AccountAggregationCompletedSource
 from sailpoint.v2024.models.account_aggregation_completed_stats import AccountAggregationCompletedStats
 from sailpoint.v2024.models.account_aggregation_status import AccountAggregationStatus
-from sailpoint.v2024.models.account_all_of_owner_group import AccountAllOfOwnerGroup
-from sailpoint.v2024.models.account_all_of_owner_identity import AccountAllOfOwnerIdentity
-from sailpoint.v2024.models.account_all_of_source_owner import AccountAllOfSourceOwner
 from sailpoint.v2024.models.account_attributes import AccountAttributes
 from sailpoint.v2024.models.account_attributes_changed import AccountAttributesChanged
 from sailpoint.v2024.models.account_attributes_changed_account import AccountAttributesChangedAccount
@@ -780,6 +777,7 @@ from sailpoint.v2024.models.reassignment_reference import ReassignmentReference
 from sailpoint.v2024.models.reassignment_trail_dto import ReassignmentTrailDTO
 from sailpoint.v2024.models.reassignment_type import ReassignmentType
 from sailpoint.v2024.models.reassignment_type_enum import ReassignmentTypeEnum
+from sailpoint.v2024.models.recommendation import Recommendation
 from sailpoint.v2024.models.recommendation_config_dto import RecommendationConfigDto
 from sailpoint.v2024.models.recommendation_request import RecommendationRequest
 from sailpoint.v2024.models.recommendation_request_dto import RecommendationRequestDto

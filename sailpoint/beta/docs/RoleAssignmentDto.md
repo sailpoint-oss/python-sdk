@@ -6,11 +6,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Assignment Id | [optional] 
-**role** | [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
+**role** | [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
 **comments** | **str** | Comments added by the user when the assignment was made | [optional] 
 **assignment_source** | **str** | Source describing how this assignment was made | [optional] 
-**assigner** | [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
-**assigned_dimensions** | [**List[BaseReferenceDto]**](BaseReferenceDto.md) | Dimensions assigned related to this role | [optional] 
+**assigner** | [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
+**assigned_dimensions** | [**List[BaseReferenceDto1]**](BaseReferenceDto1.md) | Dimensions assigned related to this role | [optional] 
 **assignment_context** | [**AssignmentContextDto**](AssignmentContextDto.md) |  | [optional] 
 **account_targets** | [**List[RoleTargetDto]**](RoleTargetDto.md) |  | [optional] 
 **remove_date** | **str** | Date that the assignment will be removed | [optional] 

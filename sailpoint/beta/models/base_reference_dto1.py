@@ -19,7 +19,6 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.beta.models.dto_type import DtoType
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,10 +26,9 @@ class BaseReferenceDto1(BaseModel):
     """
     BaseReferenceDto1
     """ # noqa: E501
-    type: Optional[DtoType] = None
-    id: Optional[StrictStr] = Field(default=None, description="ID of the object to which this reference applies")
-    name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of the object to which this reference applies")
-    __properties: ClassVar[List[str]] = ["type", "id", "name"]
+    id: Optional[StrictStr] = Field(default=None, description="the application ID")
+    name: Optional[StrictStr] = Field(default=None, description="the application name")
+    __properties: ClassVar[List[str]] = ["id", "name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,7 +81,6 @@ class BaseReferenceDto1(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "type": obj.get("type"),
             "id": obj.get("id"),
             "name": obj.get("name")
         })

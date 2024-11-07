@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**role_ref** | [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
+**role_ref** | [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
 **matched_attributes** | [**List[ContextAttributeDto]**](ContextAttributeDto.md) |  | [optional] 
 
 ## Example

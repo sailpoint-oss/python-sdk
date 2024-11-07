@@ -18,27 +18,30 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
-class AccountAllOfSourceOwner(BaseModel):
+class Recommendation(BaseModel):
     """
-    The owner of this object.
+    Recommendation
     """ # noqa: E501
-    type: Optional[StrictStr] = Field(default=None, description="Type of owner object.")
-    id: Optional[StrictStr] = Field(default=None, description="Identity id")
-    name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of the owner.")
-    __properties: ClassVar[List[str]] = ["type", "id", "name"]
+    type: StrictStr = Field(description="Recommended type of account.")
+    method: StrictStr = Field(description="Method used to produce the recommendation. DISCOVERY - suggested by AI, SOURCE - the account comes from a source flagged as containing machine accounts, CRITERIA - the account satisfies classification criteria.")
+    __properties: ClassVar[List[str]] = ["type", "method"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
-        if value is None:
-            return value
+        if value not in set(['HUMAN', 'MACHINE']):
+            raise ValueError("must be one of enum values ('HUMAN', 'MACHINE')")
+        return value
 
-        if value not in set(['IDENTITY']):
-            raise ValueError("must be one of enum values ('IDENTITY')")
+    @field_validator('method')
+    def method_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['DISCOVERY', 'SOURCE', 'CRITERIA']):
+            raise ValueError("must be one of enum values ('DISCOVERY', 'SOURCE', 'CRITERIA')")
         return value
 
     model_config = ConfigDict(
@@ -59,7 +62,7 @@ class AccountAllOfSourceOwner(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AccountAllOfSourceOwner from a JSON string"""
+        """Create an instance of Recommendation from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -84,7 +87,7 @@ class AccountAllOfSourceOwner(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AccountAllOfSourceOwner from a dict"""
+        """Create an instance of Recommendation from a dict"""
         if obj is None:
             return None
 
@@ -93,8 +96,7 @@ class AccountAllOfSourceOwner(BaseModel):
 
         _obj = cls.model_validate({
             "type": obj.get("type"),
-            "id": obj.get("id"),
-            "name": obj.get("name")
+            "method": obj.get("method")
         })
         return _obj
 

@@ -5,9 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | [**DtoType**](DtoType.md) |  | [optional] 
-**id** | **str** | ID of the object to which this reference applies | [optional] 
-**name** | **str** | Human-readable display name of the object to which this reference applies | [optional] 
+**id** | **str** | the application ID | [optional] 
+**name** | **str** | the application name | [optional] 
 
 ## Example
 

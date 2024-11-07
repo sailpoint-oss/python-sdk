@@ -34,6 +34,8 @@ An enumeration of the types of DTOs supported within the IdentityNow infrastruct
 
 * `IDENTITY_REQUEST` (value: `'IDENTITY_REQUEST'`)
 
+* `MACHINE_IDENTITY` (value: `'MACHINE_IDENTITY'`)
+
 * `LIFECYCLE_STATE` (value: `'LIFECYCLE_STATE'`)
 
 * `PASSWORD_POLICY` (value: `'PASSWORD_POLICY'`)

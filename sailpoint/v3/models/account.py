@@ -20,10 +20,8 @@ import json
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v3.models.account_all_of_owner_group import AccountAllOfOwnerGroup
-from sailpoint.v3.models.account_all_of_owner_identity import AccountAllOfOwnerIdentity
-from sailpoint.v3.models.account_all_of_source_owner import AccountAllOfSourceOwner
 from sailpoint.v3.models.base_reference_dto import BaseReferenceDto
+from sailpoint.v3.models.recommendation import Recommendation
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -41,7 +39,8 @@ class Account(BaseModel):
     cloud_lifecycle_state: Optional[StrictStr] = Field(default=None, description="The lifecycle state of the identity this account is correlated to", alias="cloudLifecycleState")
     identity_state: Optional[StrictStr] = Field(default=None, description="The identity state of the identity this account is correlated to", alias="identityState")
     connection_type: Optional[StrictStr] = Field(default=None, description="The connection type of the source this account is from", alias="connectionType")
-    type: Optional[StrictStr] = Field(default=None, description="The type of the account")
+    is_machine: Optional[StrictBool] = Field(default=False, description="Indicates if the account is of machine type", alias="isMachine")
+    recommendation: Optional[Recommendation] = None
     attributes: Optional[Dict[str, Any]] = Field(description="The account attributes that are aggregated")
     authoritative: StrictBool = Field(description="Indicates if this account is from an authoritative source")
     description: Optional[StrictStr] = Field(default=None, description="A description of the account")
@@ -54,12 +53,11 @@ class Account(BaseModel):
     manually_correlated: StrictBool = Field(description="Indicates if the account has been manually correlated to an identity", alias="manuallyCorrelated")
     has_entitlements: StrictBool = Field(description="Indicates if the account has entitlements", alias="hasEntitlements")
     identity: Optional[BaseReferenceDto] = None
-    source_owner: Optional[AccountAllOfSourceOwner] = Field(default=None, alias="sourceOwner")
+    source_owner: Optional[BaseReferenceDto] = Field(default=None, alias="sourceOwner")
     features: Optional[StrictStr] = Field(default=None, description="A string list containing the owning source's features")
     origin: Optional[StrictStr] = Field(default=None, description="The origin of the account either aggregated or provisioned")
-    owner_identity: Optional[AccountAllOfOwnerIdentity] = Field(default=None, alias="ownerIdentity")
-    owner_group: Optional[AccountAllOfOwnerGroup] = Field(default=None, alias="ownerGroup")
-    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "sourceId", "sourceName", "identityId", "cloudLifecycleState", "identityState", "connectionType", "type", "attributes", "authoritative", "description", "disabled", "locked", "nativeIdentity", "systemAccount", "uncorrelated", "uuid", "manuallyCorrelated", "hasEntitlements", "identity", "sourceOwner", "features", "origin", "ownerIdentity", "ownerGroup"]
+    owner_identity: Optional[BaseReferenceDto] = Field(default=None, alias="ownerIdentity")
+    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "sourceId", "sourceName", "identityId", "cloudLifecycleState", "identityState", "connectionType", "isMachine", "recommendation", "attributes", "authoritative", "description", "disabled", "locked", "nativeIdentity", "systemAccount", "uncorrelated", "uuid", "manuallyCorrelated", "hasEntitlements", "identity", "sourceOwner", "features", "origin", "ownerIdentity"]
 
     @field_validator('origin')
     def origin_validate_enum(cls, value):
@@ -116,6 +114,9 @@ class Account(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of recommendation
+        if self.recommendation:
+            _dict['recommendation'] = self.recommendation.to_dict()
         # override the default output from pydantic by calling `to_dict()` of identity
         if self.identity:
             _dict['identity'] = self.identity.to_dict()
@@ -125,9 +126,6 @@ class Account(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of owner_identity
         if self.owner_identity:
             _dict['ownerIdentity'] = self.owner_identity.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of owner_group
-        if self.owner_group:
-            _dict['ownerGroup'] = self.owner_group.to_dict()
         # set to None if source_name (nullable) is None
         # and model_fields_set contains the field
         if self.source_name is None and "source_name" in self.model_fields_set:
@@ -148,11 +146,6 @@ class Account(BaseModel):
         if self.connection_type is None and "connection_type" in self.model_fields_set:
             _dict['connectionType'] = None
 
-        # set to None if type (nullable) is None
-        # and model_fields_set contains the field
-        if self.type is None and "type" in self.model_fields_set:
-            _dict['type'] = None
-
         # set to None if attributes (nullable) is None
         # and model_fields_set contains the field
         if self.attributes is None and "attributes" in self.model_fields_set:
@@ -168,11 +161,6 @@ class Account(BaseModel):
         if self.uuid is None and "uuid" in self.model_fields_set:
             _dict['uuid'] = None
 
-        # set to None if source_owner (nullable) is None
-        # and model_fields_set contains the field
-        if self.source_owner is None and "source_owner" in self.model_fields_set:
-            _dict['sourceOwner'] = None
-
         # set to None if features (nullable) is None
         # and model_fields_set contains the field
         if self.features is None and "features" in self.model_fields_set:
@@ -182,16 +170,6 @@ class Account(BaseModel):
         # and model_fields_set contains the field
         if self.origin is None and "origin" in self.model_fields_set:
             _dict['origin'] = None
-
-        # set to None if owner_identity (nullable) is None
-        # and model_fields_set contains the field
-        if self.owner_identity is None and "owner_identity" in self.model_fields_set:
-            _dict['ownerIdentity'] = None
-
-        # set to None if owner_group (nullable) is None
-        # and model_fields_set contains the field
-        if self.owner_group is None and "owner_group" in self.model_fields_set:
-            _dict['ownerGroup'] = None
 
         return _dict
 
@@ -215,7 +193,8 @@ class Account(BaseModel):
             "cloudLifecycleState": obj.get("cloudLifecycleState"),
             "identityState": obj.get("identityState"),
             "connectionType": obj.get("connectionType"),
-            "type": obj.get("type"),
+            "isMachine": obj.get("isMachine") if obj.get("isMachine") is not None else False,
+            "recommendation": Recommendation.from_dict(obj["recommendation"]) if obj.get("recommendation") is not None else None,
             "attributes": obj.get("attributes"),
             "authoritative": obj.get("authoritative"),
             "description": obj.get("description"),
@@ -228,11 +207,10 @@ class Account(BaseModel):
             "manuallyCorrelated": obj.get("manuallyCorrelated"),
             "hasEntitlements": obj.get("hasEntitlements"),
             "identity": BaseReferenceDto.from_dict(obj["identity"]) if obj.get("identity") is not None else None,
-            "sourceOwner": AccountAllOfSourceOwner.from_dict(obj["sourceOwner"]) if obj.get("sourceOwner") is not None else None,
+            "sourceOwner": BaseReferenceDto.from_dict(obj["sourceOwner"]) if obj.get("sourceOwner") is not None else None,
             "features": obj.get("features"),
             "origin": obj.get("origin"),
-            "ownerIdentity": AccountAllOfOwnerIdentity.from_dict(obj["ownerIdentity"]) if obj.get("ownerIdentity") is not None else None,
-            "ownerGroup": AccountAllOfOwnerGroup.from_dict(obj["ownerGroup"]) if obj.get("ownerGroup") is not None else None
+            "ownerIdentity": BaseReferenceDto.from_dict(obj["ownerIdentity"]) if obj.get("ownerIdentity") is not None else None
         })
         return _obj
 

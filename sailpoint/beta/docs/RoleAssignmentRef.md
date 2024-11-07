@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Assignment Id | [optional] 
-**role** | [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
+**role** | [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
 
 ## Example
 

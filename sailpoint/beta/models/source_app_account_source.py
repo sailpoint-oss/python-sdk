@@ -19,7 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.beta.models.base_reference_dto1 import BaseReferenceDto1
+from sailpoint.beta.models.base_reference_dto import BaseReferenceDto
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -31,7 +31,7 @@ class SourceAppAccountSource(BaseModel):
     type: Optional[StrictStr] = Field(default=None, description="The source type, will always be \"SOURCE\"")
     name: Optional[StrictStr] = Field(default=None, description="The source name")
     use_for_password_management: Optional[StrictBool] = Field(default=False, description="If the source is used for password management", alias="useForPasswordManagement")
-    password_policies: Optional[List[BaseReferenceDto1]] = Field(default=None, description="The password policies for the source", alias="passwordPolicies")
+    password_policies: Optional[List[BaseReferenceDto]] = Field(default=None, description="The password policies for the source", alias="passwordPolicies")
     __properties: ClassVar[List[str]] = ["id", "type", "name", "useForPasswordManagement", "passwordPolicies"]
 
     model_config = ConfigDict(
@@ -101,7 +101,7 @@ class SourceAppAccountSource(BaseModel):
             "type": obj.get("type"),
             "name": obj.get("name"),
             "useForPasswordManagement": obj.get("useForPasswordManagement") if obj.get("useForPasswordManagement") is not None else False,
-            "passwordPolicies": [BaseReferenceDto1.from_dict(_item) for _item in obj["passwordPolicies"]] if obj.get("passwordPolicies") is not None else None
+            "passwordPolicies": [BaseReferenceDto.from_dict(_item) for _item in obj["passwordPolicies"]] if obj.get("passwordPolicies") is not None else None
         })
         return _obj
 

@@ -35,7 +35,7 @@ class TestRoleTargetDto(unittest.TestCase):
         model = RoleTargetDto()
         if include_optional:
             return RoleTargetDto(
-                source = sailpoint.beta.models.base_reference_dto.BaseReferenceDto(
+                source = sailpoint.beta.models.base_reference_dto_1.BaseReferenceDto_1(
                     id = 'ff8081814d977c21014da056804a0af3', 
                     name = 'Github', ),
                 account_info = sailpoint.beta.models.account_info_dto.AccountInfoDto(

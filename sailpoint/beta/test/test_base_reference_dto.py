@@ -35,8 +35,9 @@ class TestBaseReferenceDto(unittest.TestCase):
         model = BaseReferenceDto()
         if include_optional:
             return BaseReferenceDto(
-                id = 'ff8081814d977c21014da056804a0af3',
-                name = 'Github'
+                type = 'IDENTITY',
+                id = '2c91808568c529c60168cca6f90c1313',
+                name = 'William Wilson'
             )
         else:
             return BaseReferenceDto(

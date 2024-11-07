@@ -44,7 +44,7 @@ class TestAssignmentContextDto(unittest.TestCase):
                         ], ),
                 matched = [
                     sailpoint.beta.models.role_match_dto.RoleMatchDto(
-                        role_ref = sailpoint.beta.models.base_reference_dto.BaseReferenceDto(
+                        role_ref = sailpoint.beta.models.base_reference_dto_1.BaseReferenceDto_1(
                             id = 'ff8081814d977c21014da056804a0af3', 
                             name = 'Github', ), 
                         matched_attributes = [

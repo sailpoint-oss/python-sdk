@@ -172,10 +172,6 @@ from sailpoint.beta.models.account_aggregation_completed import AccountAggregati
 from sailpoint.beta.models.account_aggregation_completed_source import AccountAggregationCompletedSource
 from sailpoint.beta.models.account_aggregation_completed_stats import AccountAggregationCompletedStats
 from sailpoint.beta.models.account_aggregation_status import AccountAggregationStatus
-from sailpoint.beta.models.account_all_of_identity import AccountAllOfIdentity
-from sailpoint.beta.models.account_all_of_owner_group import AccountAllOfOwnerGroup
-from sailpoint.beta.models.account_all_of_owner_identity import AccountAllOfOwnerIdentity
-from sailpoint.beta.models.account_all_of_source_owner import AccountAllOfSourceOwner
 from sailpoint.beta.models.account_attributes import AccountAttributes
 from sailpoint.beta.models.account_attributes_changed import AccountAttributesChanged
 from sailpoint.beta.models.account_attributes_changed_account import AccountAttributesChangedAccount
@@ -682,6 +678,7 @@ from sailpoint.beta.models.reassign_reference import ReassignReference
 from sailpoint.beta.models.reassignment import Reassignment
 from sailpoint.beta.models.reassignment_type import ReassignmentType
 from sailpoint.beta.models.reassignment_type_enum import ReassignmentTypeEnum
+from sailpoint.beta.models.recommendation import Recommendation
 from sailpoint.beta.models.recommendation_config_dto import RecommendationConfigDto
 from sailpoint.beta.models.recommendation_request import RecommendationRequest
 from sailpoint.beta.models.recommendation_request_dto import RecommendationRequestDto

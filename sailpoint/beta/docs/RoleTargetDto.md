@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**source** | [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
+**source** | [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
 **account_info** | [**AccountInfoDto**](AccountInfoDto.md) |  | [optional] 
 **role_name** | **str** | Specific role name for this target if using multiple accounts | [optional] 
 
