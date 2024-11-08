@@ -62,7 +62,7 @@ class ServiceDeskIntegrationApi:
     ) -> ServiceDeskIntegrationDto:
         """Create new Service Desk integration
 
-        Create a new Service Desk Integrations.
+        Create a new Service Desk integration.
 
         :param service_desk_integration_dto: The specifics of a new integration to create (required)
         :type service_desk_integration_dto: ServiceDeskIntegrationDto
@@ -135,7 +135,7 @@ class ServiceDeskIntegrationApi:
     ) -> ApiResponse[ServiceDeskIntegrationDto]:
         """Create new Service Desk integration
 
-        Create a new Service Desk Integrations.
+        Create a new Service Desk integration.
 
         :param service_desk_integration_dto: The specifics of a new integration to create (required)
         :type service_desk_integration_dto: ServiceDeskIntegrationDto
@@ -208,7 +208,7 @@ class ServiceDeskIntegrationApi:
     ) -> RESTResponseType:
         """Create new Service Desk integration
 
-        Create a new Service Desk Integrations.
+        Create a new Service Desk integration.
 
         :param service_desk_integration_dto: The specifics of a new integration to create (required)
         :type service_desk_integration_dto: ServiceDeskIntegrationDto
@@ -907,7 +907,7 @@ class ServiceDeskIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ServiceDeskIntegrationTemplateDto:
-        """Service Desk integration template by scriptName.
+        """Service Desk integration template by scriptName
 
         This API endpoint returns an existing Service Desk integration template by scriptName.
 
@@ -980,7 +980,7 @@ class ServiceDeskIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ServiceDeskIntegrationTemplateDto]:
-        """Service Desk integration template by scriptName.
+        """Service Desk integration template by scriptName
 
         This API endpoint returns an existing Service Desk integration template by scriptName.
 
@@ -1053,7 +1053,7 @@ class ServiceDeskIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Service Desk integration template by scriptName.
+        """Service Desk integration template by scriptName
 
         This API endpoint returns an existing Service Desk integration template by scriptName.
 
@@ -1184,7 +1184,7 @@ class ServiceDeskIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[ServiceDeskIntegrationTemplateType]:
-        """Service Desk Integration Types List.
+        """List Service Desk integration types
 
         This API endpoint returns the current list of supported Service Desk integration types.
 
@@ -1253,7 +1253,7 @@ class ServiceDeskIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[ServiceDeskIntegrationTemplateType]]:
-        """Service Desk Integration Types List.
+        """List Service Desk integration types
 
         This API endpoint returns the current list of supported Service Desk integration types.
 
@@ -1322,7 +1322,7 @@ class ServiceDeskIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Service Desk Integration Types List.
+        """List Service Desk integration types
 
         This API endpoint returns the current list of supported Service Desk integration types.
 
@@ -1452,9 +1452,9 @@ class ServiceDeskIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[ServiceDeskIntegrationDto]:
-        """List existing Service Desk Integrations
+        """List existing Service Desk integrations
 
-        Get a list of ServiceDeskIntegrationDto for existing Service Desk Integrations.
+        Get a list of Service Desk integration objects.
 
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
@@ -1541,9 +1541,9 @@ class ServiceDeskIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[ServiceDeskIntegrationDto]]:
-        """List existing Service Desk Integrations
+        """List existing Service Desk integrations
 
-        Get a list of ServiceDeskIntegrationDto for existing Service Desk Integrations.
+        Get a list of Service Desk integration objects.
 
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
@@ -1630,9 +1630,9 @@ class ServiceDeskIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List existing Service Desk Integrations
+        """List existing Service Desk integrations
 
-        Get a list of ServiceDeskIntegrationDto for existing Service Desk Integrations.
+        Get a list of Service Desk integration objects.
 
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
@@ -2046,7 +2046,7 @@ class ServiceDeskIntegrationApi:
     def patch_service_desk_integration(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Service Desk integration to update")],
-        patch_service_desk_integration_request: Annotated[PatchServiceDeskIntegrationRequest, Field(description="A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed. ")],
+        patch_service_desk_integration_request: Annotated[PatchServiceDeskIntegrationRequest, Field(description="A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed. ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2060,13 +2060,13 @@ class ServiceDeskIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ServiceDeskIntegrationDto:
-        """Service Desk Integration Update PATCH
+        """Patch a Service Desk Integration
 
-        Update an existing ServiceDeskIntegration by ID with a PATCH request.
+        Update an existing Service Desk integration by ID with a PATCH request.
 
         :param id: ID of the Service Desk integration to update (required)
         :type id: str
-        :param patch_service_desk_integration_request: A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed.  (required)
+        :param patch_service_desk_integration_request: A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed.  (required)
         :type patch_service_desk_integration_request: PatchServiceDeskIntegrationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2123,7 +2123,7 @@ class ServiceDeskIntegrationApi:
     def patch_service_desk_integration_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Service Desk integration to update")],
-        patch_service_desk_integration_request: Annotated[PatchServiceDeskIntegrationRequest, Field(description="A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed. ")],
+        patch_service_desk_integration_request: Annotated[PatchServiceDeskIntegrationRequest, Field(description="A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed. ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2137,13 +2137,13 @@ class ServiceDeskIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ServiceDeskIntegrationDto]:
-        """Service Desk Integration Update PATCH
+        """Patch a Service Desk Integration
 
-        Update an existing ServiceDeskIntegration by ID with a PATCH request.
+        Update an existing Service Desk integration by ID with a PATCH request.
 
         :param id: ID of the Service Desk integration to update (required)
         :type id: str
-        :param patch_service_desk_integration_request: A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed.  (required)
+        :param patch_service_desk_integration_request: A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed.  (required)
         :type patch_service_desk_integration_request: PatchServiceDeskIntegrationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2200,7 +2200,7 @@ class ServiceDeskIntegrationApi:
     def patch_service_desk_integration_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Service Desk integration to update")],
-        patch_service_desk_integration_request: Annotated[PatchServiceDeskIntegrationRequest, Field(description="A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed. ")],
+        patch_service_desk_integration_request: Annotated[PatchServiceDeskIntegrationRequest, Field(description="A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed. ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2214,13 +2214,13 @@ class ServiceDeskIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Service Desk Integration Update PATCH
+        """Patch a Service Desk Integration
 
-        Update an existing ServiceDeskIntegration by ID with a PATCH request.
+        Update an existing Service Desk integration by ID with a PATCH request.
 
         :param id: ID of the Service Desk integration to update (required)
         :type id: str
-        :param patch_service_desk_integration_request: A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed.  (required)
+        :param patch_service_desk_integration_request: A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed.  (required)
         :type patch_service_desk_integration_request: PatchServiceDeskIntegrationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2368,7 +2368,7 @@ class ServiceDeskIntegrationApi:
     ) -> ServiceDeskIntegrationDto:
         """Update a Service Desk integration
 
-        Update an existing Service Desk integration by ID with updated value in JSON form as the request body.
+        Update an existing Service Desk integration by ID.
 
         :param id: ID of the Service Desk integration to update (required)
         :type id: str
@@ -2445,7 +2445,7 @@ class ServiceDeskIntegrationApi:
     ) -> ApiResponse[ServiceDeskIntegrationDto]:
         """Update a Service Desk integration
 
-        Update an existing Service Desk integration by ID with updated value in JSON form as the request body.
+        Update an existing Service Desk integration by ID.
 
         :param id: ID of the Service Desk integration to update (required)
         :type id: str
@@ -2522,7 +2522,7 @@ class ServiceDeskIntegrationApi:
     ) -> RESTResponseType:
         """Update a Service Desk integration
 
-        Update an existing Service Desk integration by ID with updated value in JSON form as the request body.
+        Update an existing Service Desk integration by ID.
 
         :param id: ID of the Service Desk integration to update (required)
         :type id: str
@@ -2657,7 +2657,7 @@ class ServiceDeskIntegrationApi:
     @validate_call
     def update_status_check_details(
         self,
-        queued_check_config_details: Annotated[QueuedCheckConfigDetails, Field(description="the modified time check configuration")],
+        queued_check_config_details: Annotated[QueuedCheckConfigDetails, Field(description="The modified time check configuration")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2675,7 +2675,7 @@ class ServiceDeskIntegrationApi:
 
         Update the time check configuration of queued SDIM tickets.
 
-        :param queued_check_config_details: the modified time check configuration (required)
+        :param queued_check_config_details: The modified time check configuration (required)
         :type queued_check_config_details: QueuedCheckConfigDetails
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2730,7 +2730,7 @@ class ServiceDeskIntegrationApi:
     @validate_call
     def update_status_check_details_with_http_info(
         self,
-        queued_check_config_details: Annotated[QueuedCheckConfigDetails, Field(description="the modified time check configuration")],
+        queued_check_config_details: Annotated[QueuedCheckConfigDetails, Field(description="The modified time check configuration")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2748,7 +2748,7 @@ class ServiceDeskIntegrationApi:
 
         Update the time check configuration of queued SDIM tickets.
 
-        :param queued_check_config_details: the modified time check configuration (required)
+        :param queued_check_config_details: The modified time check configuration (required)
         :type queued_check_config_details: QueuedCheckConfigDetails
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2803,7 +2803,7 @@ class ServiceDeskIntegrationApi:
     @validate_call
     def update_status_check_details_without_preload_content(
         self,
-        queued_check_config_details: Annotated[QueuedCheckConfigDetails, Field(description="the modified time check configuration")],
+        queued_check_config_details: Annotated[QueuedCheckConfigDetails, Field(description="The modified time check configuration")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2821,7 +2821,7 @@ class ServiceDeskIntegrationApi:
 
         Update the time check configuration of queued SDIM tickets.
 
-        :param queued_check_config_details: the modified time check configuration (required)
+        :param queued_check_config_details: The modified time check configuration (required)
         :type queued_check_config_details: QueuedCheckConfigDetails
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

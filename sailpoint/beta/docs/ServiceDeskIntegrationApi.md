@@ -7,11 +7,11 @@ Method | HTTP request | Description
 [**create_service_desk_integration**](ServiceDeskIntegrationApi.md#create_service_desk_integration) | **POST** /service-desk-integrations | Create new Service Desk integration
 [**delete_service_desk_integration**](ServiceDeskIntegrationApi.md#delete_service_desk_integration) | **DELETE** /service-desk-integrations/{id} | Delete a Service Desk integration
 [**get_service_desk_integration**](ServiceDeskIntegrationApi.md#get_service_desk_integration) | **GET** /service-desk-integrations/{id} | Get a Service Desk integration
-[**get_service_desk_integration_list**](ServiceDeskIntegrationApi.md#get_service_desk_integration_list) | **GET** /service-desk-integrations | List existing Service Desk Integrations
-[**get_service_desk_integration_template**](ServiceDeskIntegrationApi.md#get_service_desk_integration_template) | **GET** /service-desk-integrations/templates/{scriptName} | Service Desk integration template by scriptName.
-[**get_service_desk_integration_types**](ServiceDeskIntegrationApi.md#get_service_desk_integration_types) | **GET** /service-desk-integrations/types | Service Desk Integration Types List.
+[**get_service_desk_integration_list**](ServiceDeskIntegrationApi.md#get_service_desk_integration_list) | **GET** /service-desk-integrations | List existing Service Desk integrations
+[**get_service_desk_integration_template**](ServiceDeskIntegrationApi.md#get_service_desk_integration_template) | **GET** /service-desk-integrations/templates/{scriptName} | Service Desk integration template by scriptName
+[**get_service_desk_integration_types**](ServiceDeskIntegrationApi.md#get_service_desk_integration_types) | **GET** /service-desk-integrations/types | List Service Desk integration types
 [**get_status_check_details**](ServiceDeskIntegrationApi.md#get_status_check_details) | **GET** /service-desk-integrations/status-check-configuration | Get the time check configuration
-[**patch_service_desk_integration**](ServiceDeskIntegrationApi.md#patch_service_desk_integration) | **PATCH** /service-desk-integrations/{id} | Service Desk Integration Update PATCH
+[**patch_service_desk_integration**](ServiceDeskIntegrationApi.md#patch_service_desk_integration) | **PATCH** /service-desk-integrations/{id} | Patch a Service Desk Integration
 [**put_service_desk_integration**](ServiceDeskIntegrationApi.md#put_service_desk_integration) | **PUT** /service-desk-integrations/{id} | Update a Service Desk integration
 [**update_status_check_details**](ServiceDeskIntegrationApi.md#update_status_check_details) | **PUT** /service-desk-integrations/status-check-configuration | Update the time check configuration
 
@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 Create new Service Desk integration
 
-Create a new Service Desk Integrations.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+Create a new Service Desk integration.
 
 ### Example
 
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | details of the created integration |  -  |
+**200** | Details of the created integration |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -105,7 +105,7 @@ Name | Type | Description  | Notes
 
 Delete a Service Desk integration
 
-Delete an existing Service Desk integration by ID.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+Delete an existing Service Desk integration by ID.
 
 ### Example
 
@@ -186,7 +186,7 @@ void (empty response body)
 
 Get a Service Desk integration
 
-Get an existing Service Desk integration by ID.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+Get an existing Service Desk integration by ID.
 
 ### Example
 
@@ -268,9 +268,9 @@ Name | Type | Description  | Notes
 # **get_service_desk_integration_list**
 > List[ServiceDeskIntegrationDto] get_service_desk_integration_list(offset=offset, limit=limit, sorters=sorters, filters=filters, count=count)
 
-List existing Service Desk Integrations
+List existing Service Desk integrations
 
-Get a list of ServiceDeskIntegrationDto for existing Service Desk Integrations.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+Get a list of Service Desk integration objects.
 
 ### Example
 
@@ -309,7 +309,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
 
     try:
-        # List existing Service Desk Integrations
+        # List existing Service Desk integrations
         api_response = api_instance.get_service_desk_integration_list(offset=offset, limit=limit, sorters=sorters, filters=filters, count=count)
         print("The response of ServiceDeskIntegrationApi->get_service_desk_integration_list:\n")
         pprint(api_response)
@@ -360,9 +360,9 @@ Name | Type | Description  | Notes
 # **get_service_desk_integration_template**
 > ServiceDeskIntegrationTemplateDto get_service_desk_integration_template(script_name)
 
-Service Desk integration template by scriptName.
+Service Desk integration template by scriptName
 
-This API endpoint returns an existing Service Desk integration template by scriptName.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+This API endpoint returns an existing Service Desk integration template by scriptName.
 
 ### Example
 
@@ -397,7 +397,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
     script_name = 'aScriptName' # str | The scriptName value of the Service Desk integration template to get
 
     try:
-        # Service Desk integration template by scriptName.
+        # Service Desk integration template by scriptName
         api_response = api_instance.get_service_desk_integration_template(script_name)
         print("The response of ServiceDeskIntegrationApi->get_service_desk_integration_template:\n")
         pprint(api_response)
@@ -444,9 +444,9 @@ Name | Type | Description  | Notes
 # **get_service_desk_integration_types**
 > List[ServiceDeskIntegrationTemplateType] get_service_desk_integration_types()
 
-Service Desk Integration Types List.
+List Service Desk integration types
 
-This API endpoint returns the current list of supported Service Desk integration types.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+This API endpoint returns the current list of supported Service Desk integration types.
 
 ### Example
 
@@ -480,7 +480,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
     api_instance = sailpoint.beta.ServiceDeskIntegrationApi(api_client)
 
     try:
-        # Service Desk Integration Types List.
+        # List Service Desk integration types
         api_response = api_instance.get_service_desk_integration_types()
         print("The response of ServiceDeskIntegrationApi->get_service_desk_integration_types:\n")
         pprint(api_response)
@@ -526,7 +526,7 @@ This endpoint does not need any parameter.
 
 Get the time check configuration
 
-Get the time check configuration of queued SDIM tickets.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+Get the time check configuration of queued SDIM tickets.
 
 ### Example
 
@@ -604,9 +604,9 @@ This endpoint does not need any parameter.
 # **patch_service_desk_integration**
 > ServiceDeskIntegrationDto patch_service_desk_integration(id, patch_service_desk_integration_request)
 
-Service Desk Integration Update PATCH
+Patch a Service Desk Integration
 
-Update an existing ServiceDeskIntegration by ID with a PATCH request.
+Update an existing Service Desk integration by ID with a PATCH request.
 
 ### Example
 
@@ -640,20 +640,10 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.ServiceDeskIntegrationApi(api_client)
     id = 'anId' # str | ID of the Service Desk integration to update
-    patch_service_desk_integration_request = [
-  {
-      "op": "replace",
-      "path": "/ownerRef",
-      "value": {
-          "id": "2c9180867d05b227017d09921a205b4d",
-          "type": "IDENTITY",
-          "name": "Angelo2 tester"
-      }
-  }
-] # PatchServiceDeskIntegrationRequest | A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed. 
+    patch_service_desk_integration_request = sailpoint.beta.PatchServiceDeskIntegrationRequest() # PatchServiceDeskIntegrationRequest | A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed. 
 
     try:
-        # Service Desk Integration Update PATCH
+        # Patch a Service Desk Integration
         api_response = api_instance.patch_service_desk_integration(id, patch_service_desk_integration_request)
         print("The response of ServiceDeskIntegrationApi->patch_service_desk_integration:\n")
         pprint(api_response)
@@ -669,7 +659,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| ID of the Service Desk integration to update | 
- **patch_service_desk_integration_request** | [**PatchServiceDeskIntegrationRequest**](PatchServiceDeskIntegrationRequest.md)| A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only &#x60;replace&#x60; operations are accepted by this endpoint.  A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed.  | 
+ **patch_service_desk_integration_request** | [**PatchServiceDeskIntegrationRequest**](PatchServiceDeskIntegrationRequest.md)| A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only &#x60;replace&#x60; operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed.  | 
 
 ### Return type
 
@@ -703,7 +693,7 @@ Name | Type | Description  | Notes
 
 Update a Service Desk integration
 
-Update an existing Service Desk integration by ID with updated value in JSON form as the request body.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+Update an existing Service Desk integration by ID.
 
 ### Example
 
@@ -789,7 +779,7 @@ Name | Type | Description  | Notes
 
 Update the time check configuration
 
-Update the time check configuration of queued SDIM tickets.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
+Update the time check configuration of queued SDIM tickets.
 
 ### Example
 
@@ -821,7 +811,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.ServiceDeskIntegrationApi(api_client)
-    queued_check_config_details = sailpoint.beta.QueuedCheckConfigDetails() # QueuedCheckConfigDetails | the modified time check configuration
+    queued_check_config_details = sailpoint.beta.QueuedCheckConfigDetails() # QueuedCheckConfigDetails | The modified time check configuration
 
     try:
         # Update the time check configuration
@@ -839,7 +829,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **queued_check_config_details** | [**QueuedCheckConfigDetails**](QueuedCheckConfigDetails.md)| the modified time check configuration | 
+ **queued_check_config_details** | [**QueuedCheckConfigDetails**](QueuedCheckConfigDetails.md)| The modified time check configuration | 
 
 ### Return type
 

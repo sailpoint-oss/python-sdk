@@ -50,21 +50,21 @@ class TestServiceDeskIntegrationApi(unittest.TestCase):
     def test_get_service_desk_integration_template(self) -> None:
         """Test case for get_service_desk_integration_template
 
-        Service Desk integration template by scriptName.
+        Service Desk integration template by scriptName
         """
         pass
 
     def test_get_service_desk_integration_types(self) -> None:
         """Test case for get_service_desk_integration_types
 
-        Service Desk Integration Types List.
+        List Service Desk integration types
         """
         pass
 
     def test_get_service_desk_integrations(self) -> None:
         """Test case for get_service_desk_integrations
 
-        List existing Service Desk Integrations
+        List existing Service Desk integrations
         """
         pass
 
@@ -78,7 +78,7 @@ class TestServiceDeskIntegrationApi(unittest.TestCase):
     def test_patch_service_desk_integration(self) -> None:
         """Test case for patch_service_desk_integration
 
-        Service Desk Integration Update PATCH
+        Patch a Service Desk Integration
         """
         pass
 

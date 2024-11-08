@@ -1,13 +1,13 @@
 # QueuedCheckConfigDetails
 
-Configuration of maximum number days and interval for checking Service Desk integration queue status
+Configuration of maximum number of days and interval for checking Service Desk integration queue status.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**provisioning_status_check_interval_minutes** | **str** | interval in minutes between status checks | 
-**provisioning_max_status_check_days** | **str** | maximum number of days to check | 
+**provisioning_status_check_interval_minutes** | **str** | Interval in minutes between status checks | 
+**provisioning_max_status_check_days** | **str** | Maximum number of days to check | 
 
 ## Example
 

@@ -24,10 +24,10 @@ from typing_extensions import Self
 
 class QueuedCheckConfigDetails(BaseModel):
     """
-    Configuration of maximum number days and interval for checking Service Desk integration queue status
+    Configuration of maximum number of days and interval for checking Service Desk integration queue status.
     """ # noqa: E501
-    provisioning_status_check_interval_minutes: StrictStr = Field(description="interval in minutes between status checks", alias="provisioningStatusCheckIntervalMinutes")
-    provisioning_max_status_check_days: StrictStr = Field(description="maximum number of days to check", alias="provisioningMaxStatusCheckDays")
+    provisioning_status_check_interval_minutes: StrictStr = Field(description="Interval in minutes between status checks", alias="provisioningStatusCheckIntervalMinutes")
+    provisioning_max_status_check_days: StrictStr = Field(description="Maximum number of days to check", alias="provisioningMaxStatusCheckDays")
     __properties: ClassVar[List[str]] = ["provisioningStatusCheckIntervalMinutes", "provisioningMaxStatusCheckDays"]
 
     model_config = ConfigDict(
