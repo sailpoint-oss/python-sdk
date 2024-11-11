@@ -43,7 +43,7 @@ class TestSuggestedEntitlementDescriptionApi(unittest.TestCase):
     def test_list_seds(self) -> None:
         """Test case for list_seds
 
-        List Suggested Entitlement Description
+        List Suggested Entitlement Descriptions
         """
         pass
 

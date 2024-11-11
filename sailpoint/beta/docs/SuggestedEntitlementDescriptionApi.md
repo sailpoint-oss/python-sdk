@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_sed_batch_stats**](SuggestedEntitlementDescriptionApi.md#get_sed_batch_stats) | **GET** /suggested-entitlement-description-batches/{batchId}/stats | Submit Sed Batch Stats Request
 [**get_sed_batches**](SuggestedEntitlementDescriptionApi.md#get_sed_batches) | **GET** /suggested-entitlement-description-batches | List Sed Batch Request
-[**list_seds**](SuggestedEntitlementDescriptionApi.md#list_seds) | **GET** /suggested-entitlement-descriptions | List Suggested Entitlement Description
+[**list_seds**](SuggestedEntitlementDescriptionApi.md#list_seds) | **GET** /suggested-entitlement-descriptions | List Suggested Entitlement Descriptions
 [**patch_sed**](SuggestedEntitlementDescriptionApi.md#patch_sed) | **PATCH** /suggested-entitlement-descriptions | Patch Suggested Entitlement Description
 [**submit_sed_approval**](SuggestedEntitlementDescriptionApi.md#submit_sed_approval) | **POST** /suggested-entitlement-description-approvals | Submit Bulk Approval Request
 [**submit_sed_assignment**](SuggestedEntitlementDescriptionApi.md#submit_sed_assignment) | **POST** /suggested-entitlement-description-assignments | Submit Sed Assignment Request
@@ -178,11 +178,11 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_seds**
-> List[Sed] list_seds(limit=limit, filters=filters, count=count, count_only=count_only, requested_by_anyone=requested_by_anyone, show_pending_status_only=show_pending_status_only)
+> List[Sed] list_seds(limit=limit, filters=filters, sorters=sorters, count=count, count_only=count_only, requested_by_anyone=requested_by_anyone, show_pending_status_only=show_pending_status_only)
 
-List Suggested Entitlement Description
+List Suggested Entitlement Descriptions
 
-List of Suggested Entitlement Description
+List of Suggested Entitlement Descriptions (SED)  SED field descriptions:  **batchId**: the ID of the batch of entitlements that are submitted for description generation  **displayName**: the display name of the entitlement that we are generating a description for  **sourceName**: the name of the source associated with the entitlement that we are generating the description for  **sourceId**: the ID of the source associated with the entitlement that we are generating the description for  **status**: the status of the suggested entitlement description, valid status options: \"requested\", \"suggested\", \"not_suggested\", \"failed\", \"assigned\", \"approved\", \"denied\"  **fullText**: will filter suggested entitlement description records by text found in any of the following fields: entitlement name, entitlement display name, suggested description, source name
 
 ### Example
 
@@ -214,16 +214,17 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.SuggestedEntitlementDescriptionApi(api_client)
-    limit = limit=0 # int | Integer specifying the maximum number of records to return in a single API call.  The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional)
-    filters = 'displayName co \"Read and Write\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **batchId**: *eq*  **status**: *eq, ne, in*  **displayName**: *eq, co* (optional)
+    limit = limit=25 # int | Integer specifying the maximum number of records to return in a single API call.  The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional)
+    filters = 'displayName co \"Read and Write\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **batchId**: *eq, ne*  **displayName**: *eq, ne, co*  **sourceName**: *eq, ne, co*  **sourceId**: *eq, ne*  **status**: *eq, ne*  **fullText**: *co* (optional)
+    sorters = 'sorters=displayName' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName, sourceName, status** (optional)
     count = count=true # bool | If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored.  The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). Since requesting a total count can have a performance impact, it is recommended not to send `count=true` if that value will not be used. (optional)
     count_only = count-only=true # bool | If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored. This parameter differs from the Coun parameter in that this one skip executing the actual query and always return an empty array. (optional)
     requested_by_anyone = requested-by-anyone=true # bool | By default, the ListSeds API will only return items that you have requested to be generated.   This option will allow you to see all items that have been requested (optional)
     show_pending_status_only = show-pending-status-only=true # bool | Will limit records to items that are in \"suggested\" or \"approved\" status (optional)
 
     try:
-        # List Suggested Entitlement Description
-        api_response = api_instance.list_seds(limit=limit, filters=filters, count=count, count_only=count_only, requested_by_anyone=requested_by_anyone, show_pending_status_only=show_pending_status_only)
+        # List Suggested Entitlement Descriptions
+        api_response = api_instance.list_seds(limit=limit, filters=filters, sorters=sorters, count=count, count_only=count_only, requested_by_anyone=requested_by_anyone, show_pending_status_only=show_pending_status_only)
         print("The response of SuggestedEntitlementDescriptionApi->list_seds:\n")
         pprint(api_response)
     except Exception as e:
@@ -238,7 +239,8 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **int**| Integer specifying the maximum number of records to return in a single API call.  The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. | [optional] 
- **filters** | **str**| Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **batchId**: *eq*  **status**: *eq, ne, in*  **displayName**: *eq, co* | [optional] 
+ **filters** | **str**| Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **batchId**: *eq, ne*  **displayName**: *eq, ne, co*  **sourceName**: *eq, ne, co*  **sourceId**: *eq, ne*  **status**: *eq, ne*  **fullText**: *co* | [optional] 
+ **sorters** | **str**| Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName, sourceName, status** | [optional] 
  **count** | **bool**| If &#x60;true&#x60; it will populate the &#x60;X-Total-Count&#x60; response header with the number of results that would be returned if &#x60;limit&#x60; and &#x60;offset&#x60; were ignored.  The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). Since requesting a total count can have a performance impact, it is recommended not to send &#x60;count&#x3D;true&#x60; if that value will not be used. | [optional] 
  **count_only** | **bool**| If &#x60;true&#x60; it will populate the &#x60;X-Total-Count&#x60; response header with the number of results that would be returned if &#x60;limit&#x60; and &#x60;offset&#x60; were ignored. This parameter differs from the Coun parameter in that this one skip executing the actual query and always return an empty array. | [optional] 
  **requested_by_anyone** | **bool**| By default, the ListSeds API will only return items that you have requested to be generated.   This option will allow you to see all items that have been requested | [optional] 
