@@ -258,7 +258,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_access_request_status**
-> List[RequestedItemStatus] list_access_request_status(requested_for=requested_for, requested_by=requested_by, regarding_identity=regarding_identity, assigned_to=assigned_to, count=count, limit=limit, offset=offset, filters=filters, sorters=sorters)
+> List[RequestedItemStatus] list_access_request_status(requested_for=requested_for, requested_by=requested_by, regarding_identity=regarding_identity, assigned_to=assigned_to, count=count, limit=limit, offset=offset, filters=filters, sorters=sorters, request_state=request_state)
 
 Access Request Status
 
@@ -295,7 +295,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.AccessRequestsApi(api_client)
     requested_for = '2c9180877b2b6ea4017b2c545f971429' # str | Filter the results by the identity the requests were made for. *me* indicates the current user. Mutually exclusive with *regarding-identity*. (optional)
-    requested_by = '2c9180877b2b6ea4017b2c545f971429' # str | Filter the results by the identity twho made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*. (optional)
+    requested_by = '2c9180877b2b6ea4017b2c545f971429' # str | Filter the results by the identity who made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*. (optional)
     regarding_identity = '2c9180877b2b6ea4017b2c545f971429' # str | Filter the results by the specified identity who is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*. (optional)
     assigned_to = '2c9180877b2b6ea4017b2c545f971429' # str | Filter the results by the specified identity who is the owner of the Identity Request Work Item. *me* indicates the current user. (optional)
     count = False # bool | If this is true, the *X-Total-Count* response header populates with the number of results that would be returned if limit and offset were ignored. (optional) (default to False)
@@ -303,10 +303,11 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
     offset = 10 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified. (optional)
     filters = 'accountActivityItemId eq \"2c918086771c86df0177401efcdf54c0\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw* (optional)
     sorters = 'created' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name** (optional)
+    request_state = 'request-state=EXECUTING' # str | Filter the results by the state of the request. The only valid value is *EXECUTING*. (optional)
 
     try:
         # Access Request Status
-        api_response = api_instance.list_access_request_status(requested_for=requested_for, requested_by=requested_by, regarding_identity=regarding_identity, assigned_to=assigned_to, count=count, limit=limit, offset=offset, filters=filters, sorters=sorters)
+        api_response = api_instance.list_access_request_status(requested_for=requested_for, requested_by=requested_by, regarding_identity=regarding_identity, assigned_to=assigned_to, count=count, limit=limit, offset=offset, filters=filters, sorters=sorters, request_state=request_state)
         print("The response of AccessRequestsApi->list_access_request_status:\n")
         pprint(api_response)
     except Exception as e:
@@ -321,7 +322,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **requested_for** | **str**| Filter the results by the identity the requests were made for. *me* indicates the current user. Mutually exclusive with *regarding-identity*. | [optional] 
- **requested_by** | **str**| Filter the results by the identity twho made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*. | [optional] 
+ **requested_by** | **str**| Filter the results by the identity who made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*. | [optional] 
  **regarding_identity** | **str**| Filter the results by the specified identity who is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*. | [optional] 
  **assigned_to** | **str**| Filter the results by the specified identity who is the owner of the Identity Request Work Item. *me* indicates the current user. | [optional] 
  **count** | **bool**| If this is true, the *X-Total-Count* response header populates with the number of results that would be returned if limit and offset were ignored. | [optional] [default to False]
@@ -329,6 +330,7 @@ Name | Type | Description  | Notes
  **offset** | **int**| Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified. | [optional] 
  **filters** | **str**| Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw* | [optional] 
  **sorters** | **str**| Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name** | [optional] 
+ **request_state** | **str**| Filter the results by the state of the request. The only valid value is *EXECUTING*. | [optional] 
 
 ### Return type
 

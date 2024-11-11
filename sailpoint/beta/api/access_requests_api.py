@@ -1174,7 +1174,7 @@ class AccessRequestsApi:
     def list_access_request_status(
         self,
         requested_for: Annotated[Optional[StrictStr], Field(description="Filter the results by the identity the requests were made for. *me* indicates the current user. Mutually exclusive with *regarding-identity*.")] = None,
-        requested_by: Annotated[Optional[StrictStr], Field(description="Filter the results by the identity twho made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*.")] = None,
+        requested_by: Annotated[Optional[StrictStr], Field(description="Filter the results by the identity who made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*.")] = None,
         regarding_identity: Annotated[Optional[StrictStr], Field(description="Filter the results by the specified identity who is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*.")] = None,
         assigned_to: Annotated[Optional[StrictStr], Field(description="Filter the results by the specified identity who is the owner of the Identity Request Work Item. *me* indicates the current user.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If this is true, the *X-Total-Count* response header populates with the number of results that would be returned if limit and offset were ignored.")] = None,
@@ -1182,6 +1182,7 @@ class AccessRequestsApi:
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name**")] = None,
+        request_state: Annotated[Optional[StrictStr], Field(description="Filter the results by the state of the request. The only valid value is *EXECUTING*.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1201,7 +1202,7 @@ class AccessRequestsApi:
 
         :param requested_for: Filter the results by the identity the requests were made for. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
         :type requested_for: str
-        :param requested_by: Filter the results by the identity twho made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
+        :param requested_by: Filter the results by the identity who made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
         :type requested_by: str
         :param regarding_identity: Filter the results by the specified identity who is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*.
         :type regarding_identity: str
@@ -1217,6 +1218,8 @@ class AccessRequestsApi:
         :type filters: str
         :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name**
         :type sorters: str
+        :param request_state: Filter the results by the state of the request. The only valid value is *EXECUTING*.
+        :type request_state: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1249,6 +1252,7 @@ class AccessRequestsApi:
             offset=offset,
             filters=filters,
             sorters=sorters,
+            request_state=request_state,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1278,7 +1282,7 @@ class AccessRequestsApi:
     def list_access_request_status_with_http_info(
         self,
         requested_for: Annotated[Optional[StrictStr], Field(description="Filter the results by the identity the requests were made for. *me* indicates the current user. Mutually exclusive with *regarding-identity*.")] = None,
-        requested_by: Annotated[Optional[StrictStr], Field(description="Filter the results by the identity twho made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*.")] = None,
+        requested_by: Annotated[Optional[StrictStr], Field(description="Filter the results by the identity who made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*.")] = None,
         regarding_identity: Annotated[Optional[StrictStr], Field(description="Filter the results by the specified identity who is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*.")] = None,
         assigned_to: Annotated[Optional[StrictStr], Field(description="Filter the results by the specified identity who is the owner of the Identity Request Work Item. *me* indicates the current user.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If this is true, the *X-Total-Count* response header populates with the number of results that would be returned if limit and offset were ignored.")] = None,
@@ -1286,6 +1290,7 @@ class AccessRequestsApi:
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name**")] = None,
+        request_state: Annotated[Optional[StrictStr], Field(description="Filter the results by the state of the request. The only valid value is *EXECUTING*.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1305,7 +1310,7 @@ class AccessRequestsApi:
 
         :param requested_for: Filter the results by the identity the requests were made for. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
         :type requested_for: str
-        :param requested_by: Filter the results by the identity twho made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
+        :param requested_by: Filter the results by the identity who made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
         :type requested_by: str
         :param regarding_identity: Filter the results by the specified identity who is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*.
         :type regarding_identity: str
@@ -1321,6 +1326,8 @@ class AccessRequestsApi:
         :type filters: str
         :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name**
         :type sorters: str
+        :param request_state: Filter the results by the state of the request. The only valid value is *EXECUTING*.
+        :type request_state: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1353,6 +1360,7 @@ class AccessRequestsApi:
             offset=offset,
             filters=filters,
             sorters=sorters,
+            request_state=request_state,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1382,7 +1390,7 @@ class AccessRequestsApi:
     def list_access_request_status_without_preload_content(
         self,
         requested_for: Annotated[Optional[StrictStr], Field(description="Filter the results by the identity the requests were made for. *me* indicates the current user. Mutually exclusive with *regarding-identity*.")] = None,
-        requested_by: Annotated[Optional[StrictStr], Field(description="Filter the results by the identity twho made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*.")] = None,
+        requested_by: Annotated[Optional[StrictStr], Field(description="Filter the results by the identity who made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*.")] = None,
         regarding_identity: Annotated[Optional[StrictStr], Field(description="Filter the results by the specified identity who is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*.")] = None,
         assigned_to: Annotated[Optional[StrictStr], Field(description="Filter the results by the specified identity who is the owner of the Identity Request Work Item. *me* indicates the current user.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If this is true, the *X-Total-Count* response header populates with the number of results that would be returned if limit and offset were ignored.")] = None,
@@ -1390,6 +1398,7 @@ class AccessRequestsApi:
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name**")] = None,
+        request_state: Annotated[Optional[StrictStr], Field(description="Filter the results by the state of the request. The only valid value is *EXECUTING*.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1409,7 +1418,7 @@ class AccessRequestsApi:
 
         :param requested_for: Filter the results by the identity the requests were made for. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
         :type requested_for: str
-        :param requested_by: Filter the results by the identity twho made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
+        :param requested_by: Filter the results by the identity who made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
         :type requested_by: str
         :param regarding_identity: Filter the results by the specified identity who is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*.
         :type regarding_identity: str
@@ -1425,6 +1434,8 @@ class AccessRequestsApi:
         :type filters: str
         :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name**
         :type sorters: str
+        :param request_state: Filter the results by the state of the request. The only valid value is *EXECUTING*.
+        :type request_state: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1457,6 +1468,7 @@ class AccessRequestsApi:
             offset=offset,
             filters=filters,
             sorters=sorters,
+            request_state=request_state,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1489,6 +1501,7 @@ class AccessRequestsApi:
         offset,
         filters,
         sorters,
+        request_state,
         _request_auth,
         _content_type,
         _headers,
@@ -1544,6 +1557,10 @@ class AccessRequestsApi:
         if sorters is not None:
             
             _query_params.append(('sorters', sorters))
+            
+        if request_state is not None:
+            
+            _query_params.append(('request-state', request_state))
             
         # process the header parameters
         # process the form parameters
