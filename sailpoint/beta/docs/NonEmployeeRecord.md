@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **phone** | **str** | Non-Employee&#39;s phone. | [optional] 
 **manager** | **str** | The account ID of a valid identity to serve as this non-employee&#39;s manager. | [optional] 
 **source_id** | **str** | Non-Employee&#39;s source id. | [optional] 
-**data** | **Dict[str, str]** | Attribute blob/bag for a non-employee. | [optional] 
+**data** | **Dict[str, str]** | Additional attributes for a non-employee. Up to 10 custom attributes can be added. | [optional] 
 **start_date** | **datetime** | Non-Employee employment start date. | [optional] 
 **end_date** | **datetime** | Non-Employee employment end date. | [optional] 
 **modified** | **datetime** | When the request was last modified. | [optional] 

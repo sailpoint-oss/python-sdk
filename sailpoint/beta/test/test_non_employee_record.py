@@ -35,17 +35,15 @@ class TestNonEmployeeRecord(unittest.TestCase):
         model = NonEmployeeRecord()
         if include_optional:
             return NonEmployeeRecord(
-                id = '',
-                account_name = '',
+                id = 'ac10e21c-931c-1ef2-8193-1c51e7ff0003',
+                account_name = 'william.smith',
                 first_name = 'William',
                 last_name = 'Smith',
                 email = 'william.smith@example.com',
-                phone = '5555555555',
+                phone = '5125555555',
                 manager = 'jane.doe',
                 source_id = '2c91808568c529c60168cca6f90c1313',
-                data = {
-                    'key' : ''
-                    },
+                data = {description=Auditing},
                 start_date = '2019-08-23T18:52:59.162Z',
                 end_date = '2020-08-23T18:52:59.162Z',
                 modified = '2019-08-23T18:52:59.162Z',

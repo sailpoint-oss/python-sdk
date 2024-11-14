@@ -40,7 +40,7 @@ class TestNonEmployeeRecord(unittest.TestCase):
                 first_name = 'William',
                 last_name = 'Smith',
                 email = 'william.smith@example.com',
-                phone = '5555555555',
+                phone = '5125555555',
                 manager = 'jane.doe',
                 source_id = '2c91808568c529c60168cca6f90c1313',
                 data = {description=Auditing},

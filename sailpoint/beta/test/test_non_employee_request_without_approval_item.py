@@ -35,7 +35,7 @@ class TestNonEmployeeRequestWithoutApprovalItem(unittest.TestCase):
         model = NonEmployeeRequestWithoutApprovalItem()
         if include_optional:
             return NonEmployeeRequestWithoutApprovalItem(
-                id = '',
+                id = 'ac10e21c-931c-1ef2-8193-1c51e7ff0003',
                 requester = sailpoint.beta.models.identity_reference_with_id.IdentityReferenceWithId(
                     type = 'IDENTITY', 
                     id = '5168015d32f890ca15812c9180835d2e', ),
@@ -43,14 +43,12 @@ class TestNonEmployeeRequestWithoutApprovalItem(unittest.TestCase):
                 first_name = 'William',
                 last_name = 'Smith',
                 email = 'william.smith@example.com',
-                phone = '5555555555',
+                phone = '5125555555',
                 manager = 'jane.doe',
                 non_employee_source = None,
-                data = {
-                    'key' : ''
-                    },
+                data = {description=Auditing},
                 approval_status = 'APPROVED',
-                comment = '',
+                comment = 'approved',
                 completion_date = '2020-03-24T11:11:41.139-05:00',
                 start_date = 'Tue Mar 24 00:00:00 UTC 2020',
                 end_date = 'Thu Mar 25 00:00:00 UTC 2021',

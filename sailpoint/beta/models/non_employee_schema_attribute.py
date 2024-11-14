@@ -29,7 +29,7 @@ class NonEmployeeSchemaAttribute(BaseModel):
     NonEmployeeSchemaAttribute
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="Schema Attribute Id")
-    system: Optional[StrictBool] = Field(default=None, description="True if this schema attribute is mandatory on all non-employees sources.")
+    system: Optional[StrictBool] = Field(default=False, description="True if this schema attribute is mandatory on all non-employees sources.")
     modified: Optional[datetime] = Field(default=None, description="When the schema attribute was last modified.")
     created: Optional[datetime] = Field(default=None, description="When the schema attribute was created.")
     type: NonEmployeeSchemaAttributeType
@@ -37,7 +37,7 @@ class NonEmployeeSchemaAttribute(BaseModel):
     technical_name: StrictStr = Field(description="The technical name of the attribute. Must be unique per source.", alias="technicalName")
     help_text: Optional[StrictStr] = Field(default=None, description="help text displayed by UI.", alias="helpText")
     placeholder: Optional[StrictStr] = Field(default=None, description="Hint text that fills UI box.")
-    required: Optional[StrictBool] = Field(default=None, description="If true, the schema attribute is required for all non-employees in the source")
+    required: Optional[StrictBool] = Field(default=False, description="If true, the schema attribute is required for all non-employees in the source")
     __properties: ClassVar[List[str]] = ["id", "system", "modified", "created", "type", "label", "technicalName", "helpText", "placeholder", "required"]
 
     model_config = ConfigDict(
@@ -92,7 +92,7 @@ class NonEmployeeSchemaAttribute(BaseModel):
 
         _obj = cls.model_validate({
             "id": obj.get("id"),
-            "system": obj.get("system"),
+            "system": obj.get("system") if obj.get("system") is not None else False,
             "modified": obj.get("modified"),
             "created": obj.get("created"),
             "type": obj.get("type"),
@@ -100,7 +100,7 @@ class NonEmployeeSchemaAttribute(BaseModel):
             "technicalName": obj.get("technicalName"),
             "helpText": obj.get("helpText"),
             "placeholder": obj.get("placeholder"),
-            "required": obj.get("required")
+            "required": obj.get("required") if obj.get("required") is not None else False
         })
         return _obj
 

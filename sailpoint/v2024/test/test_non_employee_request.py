@@ -43,7 +43,7 @@ class TestNonEmployeeRequest(unittest.TestCase):
                 first_name = 'William',
                 last_name = 'Smith',
                 email = 'william.smith@example.com',
-                phone = '5555555555',
+                phone = '5125555555',
                 manager = 'jane.doe',
                 non_employee_source = sailpoint.v2024.models.non_employee_source_lite.NonEmployeeSourceLite(
                     id = 'a0303682-5e4a-44f7-bdc2-6ce6112549c1', 

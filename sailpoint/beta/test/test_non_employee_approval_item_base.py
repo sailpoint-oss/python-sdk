@@ -42,7 +42,7 @@ class TestNonEmployeeApprovalItemBase(unittest.TestCase):
                 account_name = 'test.account',
                 approval_status = 'APPROVED',
                 approval_order = 1,
-                comment = '',
+                comment = 'true',
                 modified = '2019-08-23T18:52:59.162Z',
                 created = '2019-08-23T18:40:35.772Z'
             )

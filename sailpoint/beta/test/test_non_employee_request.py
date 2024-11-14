@@ -43,16 +43,14 @@ class TestNonEmployeeRequest(unittest.TestCase):
                 first_name = 'William',
                 last_name = 'Smith',
                 email = 'william.smith@example.com',
-                phone = '5555555555',
+                phone = '5125555555',
                 manager = 'jane.doe',
                 non_employee_source = sailpoint.beta.models.non_employee_source_lite.NonEmployeeSourceLite(
                     id = 'a0303682-5e4a-44f7-bdc2-6ce6112549c1', 
                     source_id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'Retail', 
                     description = 'Source description', ),
-                data = {
-                    'key' : ''
-                    },
+                data = {description=Auditing},
                 approval_items = [
                     sailpoint.beta.models.non_employee_approval_item_base.NonEmployeeApprovalItemBase(
                         id = '2c1e388b-1e55-4b0a-ab5c-897f1204159c', 
@@ -62,12 +60,12 @@ class TestNonEmployeeRequest(unittest.TestCase):
                         account_name = 'test.account', 
                         approval_status = 'APPROVED', 
                         approval_order = 1, 
-                        comment = '', 
+                        comment = 'true', 
                         modified = '2019-08-23T18:52:59.162Z', 
                         created = '2019-08-23T18:40:35.772Z', )
                     ],
                 approval_status = 'APPROVED',
-                comment = '',
+                comment = 'approved',
                 completion_date = '2020-03-24T11:11:41.139-05:00',
                 start_date = '2020-03-24T00:00-05:00',
                 end_date = '2021-03-25T00:00-05:00',

@@ -34,7 +34,7 @@ class NonEmployeeRequestBody(BaseModel):
     phone: StrictStr = Field(description="Non-Employee's phone.")
     manager: StrictStr = Field(description="The account ID of a valid identity to serve as this non-employee's manager.")
     source_id: StrictStr = Field(description="Non-Employee's source id.", alias="sourceId")
-    data: Optional[Dict[str, StrictStr]] = Field(default=None, description="Attribute blob/bag for a non-employee, 10 attributes is the maximum size supported.")
+    data: Optional[Dict[str, StrictStr]] = Field(default=None, description="Additional attributes for a non-employee. Up to 10 custom attributes can be added.")
     start_date: datetime = Field(description="Non-Employee employment start date.", alias="startDate")
     end_date: datetime = Field(description="Non-Employee employment end date.", alias="endDate")
     __properties: ClassVar[List[str]] = ["accountName", "firstName", "lastName", "email", "phone", "manager", "sourceId", "data", "startDate", "endDate"]

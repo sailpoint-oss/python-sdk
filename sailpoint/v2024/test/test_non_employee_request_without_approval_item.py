@@ -43,7 +43,7 @@ class TestNonEmployeeRequestWithoutApprovalItem(unittest.TestCase):
                 first_name = 'William',
                 last_name = 'Smith',
                 email = 'william.smith@example.com',
-                phone = '5555555555',
+                phone = '5125555555',
                 manager = 'jane.doe',
                 non_employee_source = None,
                 data = {description=Auditing},

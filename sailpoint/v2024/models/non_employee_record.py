@@ -35,7 +35,7 @@ class NonEmployeeRecord(BaseModel):
     phone: Optional[StrictStr] = Field(default=None, description="Non-Employee's phone.")
     manager: Optional[StrictStr] = Field(default=None, description="The account ID of a valid identity to serve as this non-employee's manager.")
     source_id: Optional[StrictStr] = Field(default=None, description="Non-Employee's source id.", alias="sourceId")
-    data: Optional[Dict[str, StrictStr]] = Field(default=None, description="Attribute blob/bag for a non-employee.")
+    data: Optional[Dict[str, StrictStr]] = Field(default=None, description="Additional attributes for a non-employee. Up to 10 custom attributes can be added.")
     start_date: Optional[datetime] = Field(default=None, description="Non-Employee employment start date.", alias="startDate")
     end_date: Optional[datetime] = Field(default=None, description="Non-Employee employment end date.", alias="endDate")
     modified: Optional[datetime] = Field(default=None, description="When the request was last modified.")

@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Schema Attribute Id | [optional] 
-**system** | **bool** | True if this schema attribute is mandatory on all non-employees sources. | [optional] 
+**system** | **bool** | True if this schema attribute is mandatory on all non-employees sources. | [optional] [default to False]
 **modified** | **datetime** | When the schema attribute was last modified. | [optional] 
 **created** | **datetime** | When the schema attribute was created. | [optional] 
 **type** | [**NonEmployeeSchemaAttributeType**](NonEmployeeSchemaAttributeType.md) |  | 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **technical_name** | **str** | The technical name of the attribute. Must be unique per source. | 
 **help_text** | **str** | help text displayed by UI. | [optional] 
 **placeholder** | **str** | Hint text that fills UI box. | [optional] 
-**required** | **bool** | If true, the schema attribute is required for all non-employees in the source | [optional] 
+**required** | **bool** | If true, the schema attribute is required for all non-employees in the source | [optional] [default to False]
 
 ## Example
 
