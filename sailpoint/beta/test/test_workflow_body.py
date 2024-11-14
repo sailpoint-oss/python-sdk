@@ -48,7 +48,7 @@ class TestWorkflowBody(unittest.TestCase):
                 trigger = sailpoint.beta.models.workflow_trigger.WorkflowTrigger(
                     type = 'EVENT', 
                     display_name = '', 
-                    attributes = sailpoint.beta.models.attributes.attributes(), )
+                    attributes = null, )
             )
         else:
             return WorkflowBody(

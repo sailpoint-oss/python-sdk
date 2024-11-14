@@ -48,7 +48,7 @@ class TestWorkflow(unittest.TestCase):
                 trigger = sailpoint.beta.models.workflow_trigger.WorkflowTrigger(
                     type = 'EVENT', 
                     display_name = '', 
-                    attributes = sailpoint.beta.models.attributes.attributes(), ),
+                    attributes = null, ),
                 id = 'd201c5e9-d37b-4aff-af14-66414f39d569',
                 modified = '2023-12-05T15:18:27.699132301Z',
                 modified_by = sailpoint.beta.models.workflow_modified_by.WorkflowModifiedBy(

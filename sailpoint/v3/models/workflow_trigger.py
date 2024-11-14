@@ -29,14 +29,14 @@ class WorkflowTrigger(BaseModel):
     """ # noqa: E501
     type: StrictStr = Field(description="The trigger type")
     display_name: Optional[StrictStr] = Field(default=None, alias="displayName")
-    attributes: WorkflowTriggerAttributes
+    attributes: Optional[WorkflowTriggerAttributes]
     __properties: ClassVar[List[str]] = ["type", "displayName", "attributes"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['EVENT', 'EXTERNAL', 'SCHEDULED']):
-            raise ValueError("must be one of enum values ('EVENT', 'EXTERNAL', 'SCHEDULED')")
+        if value not in set(['EVENT', 'EXTERNAL', 'SCHEDULED', '']):
+            raise ValueError("must be one of enum values ('EVENT', 'EXTERNAL', 'SCHEDULED', '')")
         return value
 
     model_config = ConfigDict(
@@ -85,6 +85,11 @@ class WorkflowTrigger(BaseModel):
         # and model_fields_set contains the field
         if self.display_name is None and "display_name" in self.model_fields_set:
             _dict['displayName'] = None
+
+        # set to None if attributes (nullable) is None
+        # and model_fields_set contains the field
+        if self.attributes is None and "attributes" in self.model_fields_set:
+            _dict['attributes'] = None
 
         return _dict
 

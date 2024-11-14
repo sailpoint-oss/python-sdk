@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.beta.models.workflow_trigger import WorkflowTrigger
+from sailpoint.beta.models.external_attributes import ExternalAttributes
 
-class TestWorkflowTrigger(unittest.TestCase):
-    """WorkflowTrigger unit test stubs"""
+class TestExternalAttributes(unittest.TestCase):
+    """ExternalAttributes unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,29 +25,28 @@ class TestWorkflowTrigger(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> WorkflowTrigger:
-        """Test WorkflowTrigger
+    def make_instance(self, include_optional) -> ExternalAttributes:
+        """Test ExternalAttributes
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `WorkflowTrigger`
+        # uncomment below to create an instance of `ExternalAttributes`
         """
-        model = WorkflowTrigger()
+        model = ExternalAttributes()
         if include_optional:
-            return WorkflowTrigger(
-                type = 'EVENT',
-                display_name = '',
-                attributes = None
+            return ExternalAttributes(
+                name = 'search-and-notify',
+                description = 'Run a search and notify the results',
+                client_id = '87e239b2-b85b-4bde-b9a7-55bf304ddcdc',
+                url = 'https://tenant.api.identitynow.com/beta/workflows/execute/external/c79e0079-562c-4df5-aa73-60a9e25c916d'
             )
         else:
-            return WorkflowTrigger(
-                type = 'EVENT',
-                attributes = None,
+            return ExternalAttributes(
         )
         """
 
-    def testWorkflowTrigger(self):
-        """Test WorkflowTrigger"""
+    def testExternalAttributes(self):
+        """Test ExternalAttributes"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

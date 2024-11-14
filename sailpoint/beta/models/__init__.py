@@ -280,6 +280,7 @@ from sailpoint.beta.models.error_message import ErrorMessage
 from sailpoint.beta.models.error_message_dto import ErrorMessageDto
 from sailpoint.beta.models.error_response_dto import ErrorResponseDto
 from sailpoint.beta.models.evaluate_response import EvaluateResponse
+from sailpoint.beta.models.event_attributes import EventAttributes
 from sailpoint.beta.models.event_bridge_config import EventBridgeConfig
 from sailpoint.beta.models.exception_access_criteria import ExceptionAccessCriteria
 from sailpoint.beta.models.exception_criteria import ExceptionCriteria
@@ -290,6 +291,7 @@ from sailpoint.beta.models.export_form_definitions_by_tenant200_response_inner i
 from sailpoint.beta.models.export_options import ExportOptions
 from sailpoint.beta.models.export_payload import ExportPayload
 from sailpoint.beta.models.expression import Expression
+from sailpoint.beta.models.external_attributes import ExternalAttributes
 from sailpoint.beta.models.feature_value_dto import FeatureValueDto
 from sailpoint.beta.models.field_details import FieldDetails
 from sailpoint.beta.models.field_details_dto import FieldDetailsDto
@@ -689,6 +691,7 @@ from sailpoint.beta.models.schedule_days import ScheduleDays
 from sailpoint.beta.models.schedule_hours import ScheduleHours
 from sailpoint.beta.models.schedule_months import ScheduleMonths
 from sailpoint.beta.models.schedule_type import ScheduleType
+from sailpoint.beta.models.scheduled_attributes import ScheduledAttributes
 from sailpoint.beta.models.search_attribute_config import SearchAttributeConfig
 from sailpoint.beta.models.search_form_definitions_by_tenant400_response import SearchFormDefinitionsByTenant400Response
 from sailpoint.beta.models.section import Section
@@ -880,6 +883,7 @@ from sailpoint.beta.models.workflow_library_trigger import WorkflowLibraryTrigge
 from sailpoint.beta.models.workflow_modified_by import WorkflowModifiedBy
 from sailpoint.beta.models.workflow_o_auth_client import WorkflowOAuthClient
 from sailpoint.beta.models.workflow_trigger import WorkflowTrigger
+from sailpoint.beta.models.workflow_trigger_attributes import WorkflowTriggerAttributes
 from sailpoint.beta.models.workgroup_bulk_delete_request import WorkgroupBulkDeleteRequest
 from sailpoint.beta.models.workgroup_connection_dto import WorkgroupConnectionDto
 from sailpoint.beta.models.workgroup_delete_item import WorkgroupDeleteItem

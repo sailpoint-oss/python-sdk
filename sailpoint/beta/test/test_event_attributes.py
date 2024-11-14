@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.beta.models.workflow_trigger import WorkflowTrigger
+from sailpoint.beta.models.event_attributes import EventAttributes
 
-class TestWorkflowTrigger(unittest.TestCase):
-    """WorkflowTrigger unit test stubs"""
+class TestEventAttributes(unittest.TestCase):
+    """EventAttributes unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,29 +25,28 @@ class TestWorkflowTrigger(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> WorkflowTrigger:
-        """Test WorkflowTrigger
+    def make_instance(self, include_optional) -> EventAttributes:
+        """Test EventAttributes
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `WorkflowTrigger`
+        # uncomment below to create an instance of `EventAttributes`
         """
-        model = WorkflowTrigger()
+        model = EventAttributes()
         if include_optional:
-            return WorkflowTrigger(
-                type = 'EVENT',
-                display_name = '',
-                attributes = None
+            return EventAttributes(
+                id = 'idn:identity-attributes-changed',
+                filter_ = '$.changes[?(@.attribute == 'manager')]',
+                description = ''
             )
         else:
-            return WorkflowTrigger(
-                type = 'EVENT',
-                attributes = None,
+            return EventAttributes(
+                id = 'idn:identity-attributes-changed',
         )
         """
 
-    def testWorkflowTrigger(self):
-        """Test WorkflowTrigger"""
+    def testEventAttributes(self):
+        """Test EventAttributes"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

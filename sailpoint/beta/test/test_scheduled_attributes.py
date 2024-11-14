@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.beta.models.workflow_trigger import WorkflowTrigger
+from sailpoint.beta.models.scheduled_attributes import ScheduledAttributes
 
-class TestWorkflowTrigger(unittest.TestCase):
-    """WorkflowTrigger unit test stubs"""
+class TestScheduledAttributes(unittest.TestCase):
+    """ScheduledAttributes unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,29 +25,30 @@ class TestWorkflowTrigger(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> WorkflowTrigger:
-        """Test WorkflowTrigger
+    def make_instance(self, include_optional) -> ScheduledAttributes:
+        """Test ScheduledAttributes
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `WorkflowTrigger`
+        # uncomment below to create an instance of `ScheduledAttributes`
         """
-        model = WorkflowTrigger()
+        model = ScheduledAttributes()
         if include_optional:
-            return WorkflowTrigger(
-                type = 'EVENT',
-                display_name = '',
-                attributes = None
+            return ScheduledAttributes(
+                frequency = 'daily',
+                time_zone = 'America/Chicago',
+                cron_string = '0 9 * * 1',
+                weekly_days = Monday,
+                weekly_times = Monday
             )
         else:
-            return WorkflowTrigger(
-                type = 'EVENT',
-                attributes = None,
+            return ScheduledAttributes(
+                frequency = 'daily',
         )
         """
 
-    def testWorkflowTrigger(self):
-        """Test WorkflowTrigger"""
+    def testScheduledAttributes(self):
+        """Test ScheduledAttributes"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

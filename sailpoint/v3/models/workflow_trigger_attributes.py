@@ -13,37 +13,42 @@
 
 
 from __future__ import annotations
+from inspect import getfullargspec
 import json
 import pprint
+import re  # noqa: F401
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
-from typing import Any, List, Optional
+from typing import Optional
 from sailpoint.v3.models.event_attributes import EventAttributes
 from sailpoint.v3.models.external_attributes import ExternalAttributes
 from sailpoint.v3.models.scheduled_attributes import ScheduledAttributes
-from pydantic import StrictStr, Field
-from typing import Union, List, Set, Optional, Dict
+from typing import Union, Any, List, Set, TYPE_CHECKING, Optional, Dict
 from typing_extensions import Literal, Self
+from pydantic import Field
 
-WORKFLOWTRIGGERATTRIBUTES_ONE_OF_SCHEMAS = ["EventAttributes", "ExternalAttributes", "ScheduledAttributes"]
+WORKFLOWTRIGGERATTRIBUTES_ANY_OF_SCHEMAS = ["EventAttributes", "ExternalAttributes", "ScheduledAttributes"]
 
 class WorkflowTriggerAttributes(BaseModel):
     """
     Workflow Trigger Attributes.
     """
+
     # data type: EventAttributes
-    oneof_schema_1_validator: Optional[EventAttributes] = None
+    anyof_schema_1_validator: Optional[EventAttributes] = None
     # data type: ExternalAttributes
-    oneof_schema_2_validator: Optional[ExternalAttributes] = None
+    anyof_schema_2_validator: Optional[ExternalAttributes] = None
     # data type: ScheduledAttributes
-    oneof_schema_3_validator: Optional[ScheduledAttributes] = None
-    actual_instance: Optional[Union[EventAttributes, ExternalAttributes, ScheduledAttributes]] = None
-    one_of_schemas: Set[str] = { "EventAttributes", "ExternalAttributes", "ScheduledAttributes" }
+    anyof_schema_3_validator: Optional[ScheduledAttributes] = None
+    if TYPE_CHECKING:
+        actual_instance: Optional[Union[EventAttributes, ExternalAttributes, ScheduledAttributes]] = None
+    else:
+        actual_instance: Any = None
+    any_of_schemas: Set[str] = { "EventAttributes", "ExternalAttributes", "ScheduledAttributes" }
 
-    model_config = ConfigDict(
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
-
+    model_config = {
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def __init__(self, *args, **kwargs) -> None:
         if args:
@@ -56,70 +61,70 @@ class WorkflowTriggerAttributes(BaseModel):
             super().__init__(**kwargs)
 
     @field_validator('actual_instance')
-    def actual_instance_must_validate_oneof(cls, v):
+    def actual_instance_must_validate_anyof(cls, v):
+        if v is None:
+            return v
+
         instance = WorkflowTriggerAttributes.model_construct()
         error_messages = []
-        match = 0
         # validate data type: EventAttributes
         if not isinstance(v, EventAttributes):
             error_messages.append(f"Error! Input type `{type(v)}` is not `EventAttributes`")
         else:
-            match += 1
+            return v
+
         # validate data type: ExternalAttributes
         if not isinstance(v, ExternalAttributes):
             error_messages.append(f"Error! Input type `{type(v)}` is not `ExternalAttributes`")
         else:
-            match += 1
+            return v
+
         # validate data type: ScheduledAttributes
         if not isinstance(v, ScheduledAttributes):
             error_messages.append(f"Error! Input type `{type(v)}` is not `ScheduledAttributes`")
         else:
-            match += 1
-        if match > 1:
-            # more than 1 match
-            raise ValueError("Multiple matches found when setting `actual_instance` in WorkflowTriggerAttributes with oneOf schemas: EventAttributes, ExternalAttributes, ScheduledAttributes. Details: " + ", ".join(error_messages))
-        elif match == 0:
+            return v
+
+        if error_messages:
             # no match
-            raise ValueError("No match found when setting `actual_instance` in WorkflowTriggerAttributes with oneOf schemas: EventAttributes, ExternalAttributes, ScheduledAttributes. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting the actual_instance in WorkflowTriggerAttributes with anyOf schemas: EventAttributes, ExternalAttributes, ScheduledAttributes. Details: " + ", ".join(error_messages))
         else:
             return v
 
     @classmethod
-    def from_dict(cls, obj: Union[str, Dict[str, Any]]) -> Self:
+    def from_dict(cls, obj: Dict[str, Any]) -> Self:
         return cls.from_json(json.dumps(obj))
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
         """Returns the object represented by the json string"""
         instance = cls.model_construct()
-        error_messages = []
-        match = 0
+        if json_str is None:
+            return instance
 
-        # deserialize data into EventAttributes
+        error_messages = []
+        # anyof_schema_1_validator: Optional[EventAttributes] = None
         try:
             instance.actual_instance = EventAttributes.from_json(json_str)
-            match += 1
+            return instance
         except (ValidationError, ValueError) as e:
-            error_messages.append(str(e))
-        # deserialize data into ExternalAttributes
+             error_messages.append(str(e))
+        # anyof_schema_2_validator: Optional[ExternalAttributes] = None
         try:
             instance.actual_instance = ExternalAttributes.from_json(json_str)
-            match += 1
+            return instance
         except (ValidationError, ValueError) as e:
-            error_messages.append(str(e))
-        # deserialize data into ScheduledAttributes
+             error_messages.append(str(e))
+        # anyof_schema_3_validator: Optional[ScheduledAttributes] = None
         try:
             instance.actual_instance = ScheduledAttributes.from_json(json_str)
-            match += 1
+            return instance
         except (ValidationError, ValueError) as e:
-            error_messages.append(str(e))
+             error_messages.append(str(e))
 
-        if match > 1:
-            # more than 1 match
-            raise ValueError("Multiple matches found when deserializing the JSON string into WorkflowTriggerAttributes with oneOf schemas: EventAttributes, ExternalAttributes, ScheduledAttributes. Details: " + ", ".join(error_messages))
-        elif match == 0:
+        if error_messages:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into WorkflowTriggerAttributes with oneOf schemas: EventAttributes, ExternalAttributes, ScheduledAttributes. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into WorkflowTriggerAttributes with anyOf schemas: EventAttributes, ExternalAttributes, ScheduledAttributes. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -141,7 +146,6 @@ class WorkflowTriggerAttributes(BaseModel):
         if hasattr(self.actual_instance, "to_dict") and callable(self.actual_instance.to_dict):
             return self.actual_instance.to_dict()
         else:
-            # primitive type
             return self.actual_instance
 
     def to_str(self) -> str:

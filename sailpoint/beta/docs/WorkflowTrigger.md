@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | The trigger type | 
 **display_name** | **str** |  | [optional] 
-**attributes** | **object** | Workflow Trigger Attributes. | 
+**attributes** | [**WorkflowTriggerAttributes**](WorkflowTriggerAttributes.md) |  | 
 
 ## Example
 

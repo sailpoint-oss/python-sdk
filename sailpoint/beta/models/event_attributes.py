@@ -17,27 +17,19 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.beta.models.workflow_trigger_attributes import WorkflowTriggerAttributes
 from typing import Optional, Set
 from typing_extensions import Self
 
-class WorkflowTrigger(BaseModel):
+class EventAttributes(BaseModel):
     """
-    The trigger that starts the workflow
+    Attributes related to an IdentityNow ETS event
     """ # noqa: E501
-    type: StrictStr = Field(description="The trigger type")
-    display_name: Optional[StrictStr] = Field(default=None, alias="displayName")
-    attributes: Optional[WorkflowTriggerAttributes]
-    __properties: ClassVar[List[str]] = ["type", "displayName", "attributes"]
-
-    @field_validator('type')
-    def type_validate_enum(cls, value):
-        """Validates the enum"""
-        if value not in set(['EVENT', 'EXTERNAL', 'SCHEDULED', '']):
-            raise ValueError("must be one of enum values ('EVENT', 'EXTERNAL', 'SCHEDULED', '')")
-        return value
+    id: StrictStr = Field(description="The unique ID of the trigger")
+    filter_: Optional[StrictStr] = Field(default=None, description="JSON path expression that will limit which events the trigger will fire on", alias="filter.$")
+    description: Optional[StrictStr] = Field(default=None, description="Description of the event trigger")
+    __properties: ClassVar[List[str]] = ["id", "filter.$", "description"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -57,7 +49,7 @@ class WorkflowTrigger(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of WorkflowTrigger from a JSON string"""
+        """Create an instance of EventAttributes from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -78,24 +70,11 @@ class WorkflowTrigger(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of attributes
-        if self.attributes:
-            _dict['attributes'] = self.attributes.to_dict()
-        # set to None if display_name (nullable) is None
-        # and model_fields_set contains the field
-        if self.display_name is None and "display_name" in self.model_fields_set:
-            _dict['displayName'] = None
-
-        # set to None if attributes (nullable) is None
-        # and model_fields_set contains the field
-        if self.attributes is None and "attributes" in self.model_fields_set:
-            _dict['attributes'] = None
-
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of WorkflowTrigger from a dict"""
+        """Create an instance of EventAttributes from a dict"""
         if obj is None:
             return None
 
@@ -103,9 +82,9 @@ class WorkflowTrigger(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "type": obj.get("type"),
-            "displayName": obj.get("displayName"),
-            "attributes": WorkflowTriggerAttributes.from_dict(obj["attributes"]) if obj.get("attributes") is not None else None
+            "id": obj.get("id"),
+            "filter.$": obj.get("filter.$"),
+            "description": obj.get("description")
         })
         return _obj
 
