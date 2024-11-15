@@ -36,7 +36,7 @@ class TestWorkgroupDeleteItem(unittest.TestCase):
         if include_optional:
             return WorkgroupDeleteItem(
                 id = '464ae7bf791e49fdb74606a2e4a89635',
-                status = '204',
+                status = 204,
                 description = '
 > Governance Group deleted successfully.
 
@@ -48,7 +48,7 @@ class TestWorkgroupDeleteItem(unittest.TestCase):
         else:
             return WorkgroupDeleteItem(
                 id = '464ae7bf791e49fdb74606a2e4a89635',
-                status = '204',
+                status = 204,
         )
         """
 

@@ -36,7 +36,7 @@ class TestWorkgroupMemberAddItem(unittest.TestCase):
         if include_optional:
             return WorkgroupMemberAddItem(
                 id = '464ae7bf791e49fdb74606a2e4a89635',
-                status = '201',
+                status = 201,
                 description = '
 > Identity is added into Governance Group members list.
 
@@ -46,7 +46,7 @@ class TestWorkgroupMemberAddItem(unittest.TestCase):
         else:
             return WorkgroupMemberAddItem(
                 id = '464ae7bf791e49fdb74606a2e4a89635',
-                status = '201',
+                status = 201,
         )
         """
 

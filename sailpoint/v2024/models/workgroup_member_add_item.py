@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,7 +27,7 @@ class WorkgroupMemberAddItem(BaseModel):
     WorkgroupMemberAddItem
     """ # noqa: E501
     id: StrictStr = Field(description="Identifier of identity in bulk member add request.")
-    status: StrictStr = Field(description=" The HTTP response status code returned for an individual member that is requested for addition during a bulk add operation.   The HTTP response status code returned for an individual Governance Group is requested for deletion.   > 201   - Identity is added into Governance Group members list.  > 409   - Identity is already member of  Governance Group. ")
+    status: StrictInt = Field(description=" The HTTP response status code returned for an individual member that is requested for addition during a bulk add operation. The HTTP response status code returned for an individual Governance Group is requested for deletion.  > 201   - Identity is added into Governance Group members list.  > 409   - Identity is already member of  Governance Group. ")
     description: Optional[StrictStr] = Field(default=None, description="Human readable status description and containing additional context information about success or failures etc. ")
     __properties: ClassVar[List[str]] = ["id", "status", "description"]
 
