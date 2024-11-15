@@ -66,6 +66,7 @@ from sailpoint.beta.api.source_usages_api import SourceUsagesApi
 from sailpoint.beta.api.sources_api import SourcesApi
 from sailpoint.beta.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
 from sailpoint.beta.api.tagged_objects_api import TaggedObjectsApi
+from sailpoint.beta.api.tags_api import TagsApi
 from sailpoint.beta.api.task_management_api import TaskManagementApi
 from sailpoint.beta.api.tenant_api import TenantApi
 from sailpoint.beta.api.transforms_api import TransformsApi

@@ -559,6 +559,10 @@ Class | Method | HTTP request | Description
 *TaggedObjectsApi* | [**put_tagged_object**](sailpoint/beta/docs/TaggedObjectsApi.md#put_tagged_object) | **PUT** /tagged-objects/{type}/{id} | Update Tagged Object
 *TaggedObjectsApi* | [**set_tag_to_object**](sailpoint/beta/docs/TaggedObjectsApi.md#set_tag_to_object) | **POST** /tagged-objects | Add Tag to Object
 *TaggedObjectsApi* | [**set_tags_to_many_objects**](sailpoint/beta/docs/TaggedObjectsApi.md#set_tags_to_many_objects) | **POST** /tagged-objects/bulk-add | Tag Multiple Objects
+*TagsApi* | [**create_tag**](sailpoint/beta/docs/TagsApi.md#create_tag) | **POST** /tags | Create Tag
+*TagsApi* | [**delete_tag_by_id**](sailpoint/beta/docs/TagsApi.md#delete_tag_by_id) | **DELETE** /tags/{id} | Delete Tag
+*TagsApi* | [**get_tag_by_id**](sailpoint/beta/docs/TagsApi.md#get_tag_by_id) | **GET** /tags/{id} | Get Tag By Id
+*TagsApi* | [**list_tags**](sailpoint/beta/docs/TagsApi.md#list_tags) | **GET** /tags | List Tags
 *TaskManagementApi* | [**get_pending_task_headers**](sailpoint/beta/docs/TaskManagementApi.md#get_pending_task_headers) | **HEAD** /task-status/pending-tasks | Retrieve headers only for pending task list.
 *TaskManagementApi* | [**get_pending_tasks**](sailpoint/beta/docs/TaskManagementApi.md#get_pending_tasks) | **GET** /task-status/pending-tasks | Retrieve a pending task list.
 *TaskManagementApi* | [**get_task_status**](sailpoint/beta/docs/TaskManagementApi.md#get_task_status) | **GET** /task-status/{id} | Get task status by ID.
@@ -1406,6 +1410,8 @@ Class | Method | HTTP request | Description
  - [SubscriptionPostRequest](sailpoint/beta/docs/SubscriptionPostRequest.md)
  - [SubscriptionPutRequest](sailpoint/beta/docs/SubscriptionPutRequest.md)
  - [SubscriptionType](sailpoint/beta/docs/SubscriptionType.md)
+ - [Tag](sailpoint/beta/docs/Tag.md)
+ - [TagTagCategoryRefsInner](sailpoint/beta/docs/TagTagCategoryRefsInner.md)
  - [TaggedObject](sailpoint/beta/docs/TaggedObject.md)
  - [TaggedObjectDto](sailpoint/beta/docs/TaggedObjectDto.md)
  - [TaggedObjectObjectRef](sailpoint/beta/docs/TaggedObjectObjectRef.md)
