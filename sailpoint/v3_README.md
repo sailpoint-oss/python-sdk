@@ -292,7 +292,7 @@ Class | Method | HTTP request | Description
 *PersonalAccessTokensApi* | [**delete_personal_access_token**](sailpoint/v3/docs/PersonalAccessTokensApi.md#delete_personal_access_token) | **DELETE** /personal-access-tokens/{id} | Delete Personal Access Token
 *PersonalAccessTokensApi* | [**list_personal_access_tokens**](sailpoint/v3/docs/PersonalAccessTokensApi.md#list_personal_access_tokens) | **GET** /personal-access-tokens | List Personal Access Tokens
 *PersonalAccessTokensApi* | [**patch_personal_access_token**](sailpoint/v3/docs/PersonalAccessTokensApi.md#patch_personal_access_token) | **PATCH** /personal-access-tokens/{id} | Patch Personal Access Token
-*PublicIdentitiesApi* | [**get_public_identities**](sailpoint/v3/docs/PublicIdentitiesApi.md#get_public_identities) | **GET** /public-identities | Get a list of public identities
+*PublicIdentitiesApi* | [**get_public_identities**](sailpoint/v3/docs/PublicIdentitiesApi.md#get_public_identities) | **GET** /public-identities | Get list of public identities
 *PublicIdentitiesConfigApi* | [**get_public_identity_config**](sailpoint/v3/docs/PublicIdentitiesConfigApi.md#get_public_identity_config) | **GET** /public-identities-config | Get the Public Identities Configuration
 *PublicIdentitiesConfigApi* | [**update_public_identity_config**](sailpoint/v3/docs/PublicIdentitiesConfigApi.md#update_public_identity_config) | **PUT** /public-identities-config | Update the Public Identities Configuration
 *ReportsDataExtractionApi* | [**cancel_report**](sailpoint/v3/docs/ReportsDataExtractionApi.md#cancel_report) | **POST** /reports/{id}/cancel | Cancel Report
@@ -654,7 +654,6 @@ Class | Method | HTTP request | Description
  - [IdentitiesDetailsReportArguments](sailpoint/v3/docs/IdentitiesDetailsReportArguments.md)
  - [IdentitiesReportArguments](sailpoint/v3/docs/IdentitiesReportArguments.md)
  - [IdentityAccess](sailpoint/v3/docs/IdentityAccess.md)
- - [IdentityAttribute](sailpoint/v3/docs/IdentityAttribute.md)
  - [IdentityAttributeConfig](sailpoint/v3/docs/IdentityAttributeConfig.md)
  - [IdentityAttributePreview](sailpoint/v3/docs/IdentityAttributePreview.md)
  - [IdentityAttributeTransform](sailpoint/v3/docs/IdentityAttributeTransform.md)
@@ -801,6 +800,7 @@ Class | Method | HTTP request | Description
  - [ProvisioningState](sailpoint/v3/docs/ProvisioningState.md)
  - [PublicIdentity](sailpoint/v3/docs/PublicIdentity.md)
  - [PublicIdentityAttributeConfig](sailpoint/v3/docs/PublicIdentityAttributeConfig.md)
+ - [PublicIdentityAttributesInner](sailpoint/v3/docs/PublicIdentityAttributesInner.md)
  - [PublicIdentityConfig](sailpoint/v3/docs/PublicIdentityConfig.md)
  - [PutClientLogConfigurationRequest](sailpoint/v3/docs/PutClientLogConfigurationRequest.md)
  - [PutCorrelationConfigRequest](sailpoint/v3/docs/PutCorrelationConfigRequest.md)

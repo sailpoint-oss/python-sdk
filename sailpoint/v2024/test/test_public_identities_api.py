@@ -29,7 +29,7 @@ class TestPublicIdentitiesApi(unittest.TestCase):
     def test_get_public_identities(self) -> None:
         """Test case for get_public_identities
 
-        Get a list of public identities
+        Get list of public identities
         """
         pass
 

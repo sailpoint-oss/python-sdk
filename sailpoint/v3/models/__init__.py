@@ -227,7 +227,6 @@ from sailpoint.v3.models.grant_type import GrantType
 from sailpoint.v3.models.identities_details_report_arguments import IdentitiesDetailsReportArguments
 from sailpoint.v3.models.identities_report_arguments import IdentitiesReportArguments
 from sailpoint.v3.models.identity_access import IdentityAccess
-from sailpoint.v3.models.identity_attribute import IdentityAttribute
 from sailpoint.v3.models.identity_attribute_config import IdentityAttributeConfig
 from sailpoint.v3.models.identity_attribute_preview import IdentityAttributePreview
 from sailpoint.v3.models.identity_attribute_transform import IdentityAttributeTransform
@@ -374,6 +373,7 @@ from sailpoint.v3.models.provisioning_policy_dto import ProvisioningPolicyDto
 from sailpoint.v3.models.provisioning_state import ProvisioningState
 from sailpoint.v3.models.public_identity import PublicIdentity
 from sailpoint.v3.models.public_identity_attribute_config import PublicIdentityAttributeConfig
+from sailpoint.v3.models.public_identity_attributes_inner import PublicIdentityAttributesInner
 from sailpoint.v3.models.public_identity_config import PublicIdentityConfig
 from sailpoint.v3.models.put_client_log_configuration_request import PutClientLogConfigurationRequest
 from sailpoint.v3.models.put_correlation_config_request import PutCorrelationConfigRequest

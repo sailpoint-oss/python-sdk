@@ -1,4 +1,4 @@
-# IdentityAttribute
+# PublicIdentityAttributesInner
 
 
 ## Properties
@@ -12,19 +12,19 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from sailpoint.v3.models.identity_attribute import IdentityAttribute
+from sailpoint.v2024.models.public_identity_attributes_inner import PublicIdentityAttributesInner
 
 # TODO update the JSON string below
 json = "{}"
-# create an instance of IdentityAttribute from a JSON string
-identity_attribute_instance = IdentityAttribute.from_json(json)
+# create an instance of PublicIdentityAttributesInner from a JSON string
+public_identity_attributes_inner_instance = PublicIdentityAttributesInner.from_json(json)
 # print the JSON string representation of the object
-print(IdentityAttribute.to_json())
+print(PublicIdentityAttributesInner.to_json())
 
 # convert the object into a dict
-identity_attribute_dict = identity_attribute_instance.to_dict()
-# create an instance of IdentityAttribute from a dict
-identity_attribute_from_dict = IdentityAttribute.from_dict(identity_attribute_dict)
+public_identity_attributes_inner_dict = public_identity_attributes_inner_instance.to_dict()
+# create an instance of PublicIdentityAttributesInner from a dict
+public_identity_attributes_inner_from_dict = PublicIdentityAttributesInner.from_dict(public_identity_attributes_inner_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -4,13 +4,15 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_public_identities**](PublicIdentitiesApi.md#get_public_identities) | **GET** /public-identities | Get a list of public identities
+[**get_public_identities**](PublicIdentitiesApi.md#get_public_identities) | **GET** /public-identities | Get list of public identities
 
 
 # **get_public_identities**
 > List[PublicIdentity] get_public_identities(limit=limit, offset=offset, count=count, filters=filters, add_core_filters=add_core_filters, sorters=sorters)
 
-Get a list of public identities
+Get list of public identities
+
+Get a list of public identities.  Set `add-core-filters` to `true` to exclude incomplete identities and uncorrelated accounts.
 
 ### Example
 
@@ -50,7 +52,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
     sorters = 'name' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name** (optional)
 
     try:
-        # Get a list of public identities
+        # Get list of public identities
         api_response = api_instance.get_public_identities(limit=limit, offset=offset, count=count, filters=filters, add_core_filters=add_core_filters, sorters=sorters)
         print("The response of PublicIdentitiesApi->get_public_identities:\n")
         pprint(api_response)

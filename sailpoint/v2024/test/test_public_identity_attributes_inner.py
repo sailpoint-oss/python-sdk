@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2024.models.identity_attribute1 import IdentityAttribute1
+from sailpoint.v2024.models.public_identity_attributes_inner import PublicIdentityAttributesInner
 
-class TestIdentityAttribute1(unittest.TestCase):
-    """IdentityAttribute1 unit test stubs"""
+class TestPublicIdentityAttributesInner(unittest.TestCase):
+    """PublicIdentityAttributesInner unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,27 +25,27 @@ class TestIdentityAttribute1(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> IdentityAttribute1:
-        """Test IdentityAttribute1
+    def make_instance(self, include_optional) -> PublicIdentityAttributesInner:
+        """Test PublicIdentityAttributesInner
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `IdentityAttribute1`
+        # uncomment below to create an instance of `PublicIdentityAttributesInner`
         """
-        model = IdentityAttribute1()
+        model = PublicIdentityAttributesInner()
         if include_optional:
-            return IdentityAttribute1(
+            return PublicIdentityAttributesInner(
                 key = 'country',
                 name = 'Country',
                 value = 'US'
             )
         else:
-            return IdentityAttribute1(
+            return PublicIdentityAttributesInner(
         )
         """
 
-    def testIdentityAttribute1(self):
-        """Test IdentityAttribute1"""
+    def testPublicIdentityAttributesInner(self):
+        """Test PublicIdentityAttributesInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

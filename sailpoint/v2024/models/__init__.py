@@ -428,7 +428,6 @@ from sailpoint.v2024.models.identity_access import IdentityAccess
 from sailpoint.v2024.models.identity_association_details import IdentityAssociationDetails
 from sailpoint.v2024.models.identity_association_details_association_details_inner import IdentityAssociationDetailsAssociationDetailsInner
 from sailpoint.v2024.models.identity_attribute import IdentityAttribute
-from sailpoint.v2024.models.identity_attribute1 import IdentityAttribute1
 from sailpoint.v2024.models.identity_attribute_config import IdentityAttributeConfig
 from sailpoint.v2024.models.identity_attribute_names import IdentityAttributeNames
 from sailpoint.v2024.models.identity_attribute_preview import IdentityAttributePreview
@@ -661,6 +660,7 @@ from sailpoint.v2024.models.provisioning_policy_dto import ProvisioningPolicyDto
 from sailpoint.v2024.models.provisioning_state import ProvisioningState
 from sailpoint.v2024.models.public_identity import PublicIdentity
 from sailpoint.v2024.models.public_identity_attribute_config import PublicIdentityAttributeConfig
+from sailpoint.v2024.models.public_identity_attributes_inner import PublicIdentityAttributesInner
 from sailpoint.v2024.models.public_identity_config import PublicIdentityConfig
 from sailpoint.v2024.models.put_client_log_configuration_request import PutClientLogConfigurationRequest
 from sailpoint.v2024.models.put_correlation_config_request import PutCorrelationConfigRequest

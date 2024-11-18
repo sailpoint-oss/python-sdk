@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **status** | **str** | The lifecycle status for the identity | [optional] 
 **identity_state** | **str** | The current state of the identity, which determines how Identity Security Cloud interacts with the identity. An identity that is Active will be included identity picklists in Request Center, identity processing, and more. Identities that are Inactive will be excluded from these features.  | [optional] 
 **manager** | [**IdentityReference**](IdentityReference.md) |  | [optional] 
-**attributes** | [**List[IdentityAttribute1]**](IdentityAttribute1.md) | The public identity attributes of the identity | [optional] 
+**attributes** | [**List[PublicIdentityAttributesInner]**](PublicIdentityAttributesInner.md) | The public identity attributes of the identity | [optional] 
 
 ## Example
 

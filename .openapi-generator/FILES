@@ -536,7 +536,6 @@ sailpoint/v2024/docs/IdentityAccess.md
 sailpoint/v2024/docs/IdentityAssociationDetails.md
 sailpoint/v2024/docs/IdentityAssociationDetailsAssociationDetailsInner.md
 sailpoint/v2024/docs/IdentityAttribute.md
-sailpoint/v2024/docs/IdentityAttribute1.md
 sailpoint/v2024/docs/IdentityAttributeConfig.md
 sailpoint/v2024/docs/IdentityAttributeNames.md
 sailpoint/v2024/docs/IdentityAttributePreview.md
@@ -788,6 +787,7 @@ sailpoint/v2024/docs/PublicIdentitiesApi.md
 sailpoint/v2024/docs/PublicIdentitiesConfigApi.md
 sailpoint/v2024/docs/PublicIdentity.md
 sailpoint/v2024/docs/PublicIdentityAttributeConfig.md
+sailpoint/v2024/docs/PublicIdentityAttributesInner.md
 sailpoint/v2024/docs/PublicIdentityConfig.md
 sailpoint/v2024/docs/PutClientLogConfigurationRequest.md
 sailpoint/v2024/docs/PutCorrelationConfigRequest.md
@@ -1596,7 +1596,6 @@ sailpoint/v2024/models/identity_access.py
 sailpoint/v2024/models/identity_association_details.py
 sailpoint/v2024/models/identity_association_details_association_details_inner.py
 sailpoint/v2024/models/identity_attribute.py
-sailpoint/v2024/models/identity_attribute1.py
 sailpoint/v2024/models/identity_attribute_config.py
 sailpoint/v2024/models/identity_attribute_names.py
 sailpoint/v2024/models/identity_attribute_preview.py
@@ -1829,6 +1828,7 @@ sailpoint/v2024/models/provisioning_policy_dto.py
 sailpoint/v2024/models/provisioning_state.py
 sailpoint/v2024/models/public_identity.py
 sailpoint/v2024/models/public_identity_attribute_config.py
+sailpoint/v2024/models/public_identity_attributes_inner.py
 sailpoint/v2024/models/public_identity_config.py
 sailpoint/v2024/models/put_client_log_configuration_request.py
 sailpoint/v2024/models/put_correlation_config_request.py
@@ -2646,7 +2646,6 @@ sailpoint/v2024/test/test_identity_access.py
 sailpoint/v2024/test/test_identity_association_details.py
 sailpoint/v2024/test/test_identity_association_details_association_details_inner.py
 sailpoint/v2024/test/test_identity_attribute.py
-sailpoint/v2024/test/test_identity_attribute1.py
 sailpoint/v2024/test/test_identity_attribute_config.py
 sailpoint/v2024/test/test_identity_attribute_names.py
 sailpoint/v2024/test/test_identity_attribute_preview.py
@@ -2898,6 +2897,7 @@ sailpoint/v2024/test/test_public_identities_api.py
 sailpoint/v2024/test/test_public_identities_config_api.py
 sailpoint/v2024/test/test_public_identity.py
 sailpoint/v2024/test/test_public_identity_attribute_config.py
+sailpoint/v2024/test/test_public_identity_attributes_inner.py
 sailpoint/v2024/test/test_public_identity_config.py
 sailpoint/v2024/test/test_put_client_log_configuration_request.py
 sailpoint/v2024/test/test_put_correlation_config_request.py
