@@ -6303,7 +6303,7 @@ class CertificationCampaignsApi:
     ) -> Slimcampaign:
         """(Deprecated) Update a Campaign
 
-        Use this API to update individual fields on a certification campaign, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Though this endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/beta/update-campaign).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
+        Use this API to update individual fields on a certification campaign, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Though this endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/update-campaign).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
         :param id: ID of the campaign template being modified. (required)
         :type id: str
@@ -6381,7 +6381,7 @@ class CertificationCampaignsApi:
     ) -> ApiResponse[Slimcampaign]:
         """(Deprecated) Update a Campaign
 
-        Use this API to update individual fields on a certification campaign, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Though this endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/beta/update-campaign).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
+        Use this API to update individual fields on a certification campaign, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Though this endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/update-campaign).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
         :param id: ID of the campaign template being modified. (required)
         :type id: str
@@ -6459,7 +6459,7 @@ class CertificationCampaignsApi:
     ) -> RESTResponseType:
         """(Deprecated) Update a Campaign
 
-        Use this API to update individual fields on a certification campaign, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Though this endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/beta/update-campaign).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
+        Use this API to update individual fields on a certification campaign, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Though this endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/update-campaign).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
         :param id: ID of the campaign template being modified. (required)
         :type id: str
