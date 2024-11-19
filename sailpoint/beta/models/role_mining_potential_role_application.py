@@ -26,8 +26,8 @@ class RoleMiningPotentialRoleApplication(BaseModel):
     """
     RoleMiningPotentialRoleApplication
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(default=None, description="Id of the potential role")
-    name: Optional[StrictStr] = Field(default=None, description="Name of the potential role")
+    id: Optional[StrictStr] = Field(default=None, description="Id of the application")
+    name: Optional[StrictStr] = Field(default=None, description="Name of the application")
     __properties: ClassVar[List[str]] = ["id", "name"]
 
     model_config = ConfigDict(

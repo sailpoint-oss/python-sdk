@@ -17,6 +17,7 @@ Method | HTTP request | Description
 [**get_identities_potential_role**](IAIRoleMiningApi.md#get_identities_potential_role) | **GET** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/identities | Retrieves identities for a potential role in a role mining session
 [**get_potential_role**](IAIRoleMiningApi.md#get_potential_role) | **GET** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Retrieves a specific potential role
 [**get_potential_role_applications**](IAIRoleMiningApi.md#get_potential_role_applications) | **GET** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}/applications | Retrieves the applications of a potential role for a role mining session
+[**get_potential_role_entitlements**](IAIRoleMiningApi.md#get_potential_role_entitlements) | **GET** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}/entitlements | Retrieves the entitlements of a potential role for a role mining session
 [**get_potential_role_source_identity_usage**](IAIRoleMiningApi.md#get_potential_role_source_identity_usage) | **GET** /role-mining-potential-roles/{potentialRoleId}/sources/{sourceId}/identityUsage | Retrieves potential role source usage
 [**get_potential_role_summaries**](IAIRoleMiningApi.md#get_potential_role_summaries) | **GET** /role-mining-sessions/{sessionId}/potential-role-summaries | Retrieves all potential role summaries
 [**get_role_mining_potential_role**](IAIRoleMiningApi.md#get_role_mining_potential_role) | **GET** /role-mining-potential-roles/{potentialRoleId} | Retrieves a specific potential role
@@ -1118,7 +1119,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_potential_role_applications**
-> List[RoleMiningPotentialRoleApplication] get_potential_role_applications(session_id, potential_role_id, x_sail_point_experimental, offset=offset, limit=limit, count=count)
+> List[RoleMiningPotentialRoleApplication] get_potential_role_applications(session_id, potential_role_id, x_sail_point_experimental, filters=filters, offset=offset, limit=limit, count=count)
 
 Retrieves the applications of a potential role for a role mining session
 
@@ -1155,15 +1156,16 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v2024.IAIRoleMiningApi(api_client)
     session_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role mining session id
-    potential_role_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | A potential role id in a role mining session
+    potential_role_id = '62f28d91-7d9f-4d17-be15-666d5b41d77f' # str | A potential role id in a role mining session
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true')
+    filters = 'applicationName sw \"test\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **applicationName**: *sw* (optional)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
 
     try:
         # Retrieves the applications of a potential role for a role mining session
-        api_response = api_instance.get_potential_role_applications(session_id, potential_role_id, x_sail_point_experimental, offset=offset, limit=limit, count=count)
+        api_response = api_instance.get_potential_role_applications(session_id, potential_role_id, x_sail_point_experimental, filters=filters, offset=offset, limit=limit, count=count)
         print("The response of IAIRoleMiningApi->get_potential_role_applications:\n")
         pprint(api_response)
     except Exception as e:
@@ -1180,6 +1182,7 @@ Name | Type | Description  | Notes
  **session_id** | **str**| The role mining session id | 
  **potential_role_id** | **str**| A potential role id in a role mining session | 
  **x_sail_point_experimental** | **str**| Use this header to enable this experimental API. | [default to &#39;true&#39;]
+ **filters** | **str**| Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **applicationName**: *sw* | [optional] 
  **offset** | **int**| Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 0]
  **limit** | **int**| Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 250]
  **count** | **bool**| If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to False]
@@ -1205,6 +1208,102 @@ Name | Type | Description  | Notes
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_potential_role_entitlements**
+> List[RoleMiningPotentialRoleEntitlements] get_potential_role_entitlements(session_id, potential_role_id, x_sail_point_experimental, filters=filters, offset=offset, limit=limit, count=count)
+
+Retrieves the entitlements of a potential role for a role mining session
+
+This method returns the entitlements of a potential role for a role mining session.
+
+### Example
+
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
+
+```python
+import sailpoint.v2024
+from sailpoint.v2024.models.role_mining_potential_role_entitlements import RoleMiningPotentialRoleEntitlements
+from sailpoint.v2024.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v2024
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sailpoint.v2024.Configuration(
+    host = "https://sailpoint.api.identitynow.com/v2024"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with sailpoint.v2024.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sailpoint.v2024.IAIRoleMiningApi(api_client)
+    session_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role mining session id
+    potential_role_id = '62f28d91-7d9f-4d17-be15-666d5b41d77f' # str | A potential role id in a role mining session
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true')
+    filters = 'entitlementRef.name sw \"test\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **entitlementRef.name**: *sw* (optional)
+    offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+    limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+    count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+
+    try:
+        # Retrieves the entitlements of a potential role for a role mining session
+        api_response = api_instance.get_potential_role_entitlements(session_id, potential_role_id, x_sail_point_experimental, filters=filters, offset=offset, limit=limit, count=count)
+        print("The response of IAIRoleMiningApi->get_potential_role_entitlements:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling IAIRoleMiningApi->get_potential_role_entitlements: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **session_id** | **str**| The role mining session id | 
+ **potential_role_id** | **str**| A potential role id in a role mining session | 
+ **x_sail_point_experimental** | **str**| Use this header to enable this experimental API. | [default to &#39;true&#39;]
+ **filters** | **str**| Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **entitlementRef.name**: *sw* | [optional] 
+ **offset** | **int**| Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 0]
+ **limit** | **int**| Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 250]
+ **count** | **bool**| If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to False]
+
+### Return type
+
+[**List[RoleMiningPotentialRoleEntitlements]**](RoleMiningPotentialRoleEntitlements.md)
+
+### Authorization
+
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Succeeded. Returns the entitlements of a potential role for a role mining session. session. |  -  |
+**400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
+**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
 **500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

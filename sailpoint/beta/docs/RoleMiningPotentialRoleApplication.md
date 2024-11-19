@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | Id of the potential role | [optional] 
-**name** | **str** | Name of the potential role | [optional] 
+**id** | **str** | Id of the application | [optional] 
+**name** | **str** | Name of the application | [optional] 
 
 ## Example
 

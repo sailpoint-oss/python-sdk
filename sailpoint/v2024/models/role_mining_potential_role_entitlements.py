@@ -22,12 +22,12 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class RoleMiningPotentialRoleApplication(BaseModel):
+class RoleMiningPotentialRoleEntitlements(BaseModel):
     """
-    RoleMiningPotentialRoleApplication
+    RoleMiningPotentialRoleEntitlements
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(default=None, description="Id of the application")
-    name: Optional[StrictStr] = Field(default=None, description="Name of the application")
+    id: Optional[StrictStr] = Field(default=None, description="Id of the entitlement")
+    name: Optional[StrictStr] = Field(default=None, description="Name of the entitlement")
     __properties: ClassVar[List[str]] = ["id", "name"]
 
     model_config = ConfigDict(
@@ -48,7 +48,7 @@ class RoleMiningPotentialRoleApplication(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of RoleMiningPotentialRoleApplication from a JSON string"""
+        """Create an instance of RoleMiningPotentialRoleEntitlements from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,7 +73,7 @@ class RoleMiningPotentialRoleApplication(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of RoleMiningPotentialRoleApplication from a dict"""
+        """Create an instance of RoleMiningPotentialRoleEntitlements from a dict"""
         if obj is None:
             return None
 

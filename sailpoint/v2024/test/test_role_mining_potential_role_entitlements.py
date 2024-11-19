@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2024.models.role_mining_potential_role_application import RoleMiningPotentialRoleApplication
+from sailpoint.v2024.models.role_mining_potential_role_entitlements import RoleMiningPotentialRoleEntitlements
 
-class TestRoleMiningPotentialRoleApplication(unittest.TestCase):
-    """RoleMiningPotentialRoleApplication unit test stubs"""
+class TestRoleMiningPotentialRoleEntitlements(unittest.TestCase):
+    """RoleMiningPotentialRoleEntitlements unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,26 +25,26 @@ class TestRoleMiningPotentialRoleApplication(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> RoleMiningPotentialRoleApplication:
-        """Test RoleMiningPotentialRoleApplication
+    def make_instance(self, include_optional) -> RoleMiningPotentialRoleEntitlements:
+        """Test RoleMiningPotentialRoleEntitlements
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `RoleMiningPotentialRoleApplication`
+        # uncomment below to create an instance of `RoleMiningPotentialRoleEntitlements`
         """
-        model = RoleMiningPotentialRoleApplication()
+        model = RoleMiningPotentialRoleEntitlements()
         if include_optional:
-            return RoleMiningPotentialRoleApplication(
-                id = '{id=2c9180877212632a017228d5a796292b}',
-                name = '{name=Slack}'
+            return RoleMiningPotentialRoleEntitlements(
+                id = '{id=2c9180877212632a017228d5a796292c}',
+                name = '{name=LauncherTest2}'
             )
         else:
-            return RoleMiningPotentialRoleApplication(
+            return RoleMiningPotentialRoleEntitlements(
         )
         """
 
-    def testRoleMiningPotentialRoleApplication(self):
-        """Test RoleMiningPotentialRoleApplication"""
+    def testRoleMiningPotentialRoleEntitlements(self):
+        """Test RoleMiningPotentialRoleEntitlements"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

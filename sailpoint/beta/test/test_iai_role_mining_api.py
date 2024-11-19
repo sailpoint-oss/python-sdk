@@ -117,6 +117,13 @@ class TestIAIRoleMiningApi(unittest.TestCase):
         """
         pass
 
+    def test_get_potential_role_entitlements(self) -> None:
+        """Test case for get_potential_role_entitlements
+
+        Retrieves the entitlements of a potential role for a role mining session
+        """
+        pass
+
     def test_get_potential_role_source_identity_usage(self) -> None:
         """Test case for get_potential_role_source_identity_usage
 

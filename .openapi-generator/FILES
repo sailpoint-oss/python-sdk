@@ -897,6 +897,7 @@ sailpoint/v2024/docs/RoleMiningIdentityDistribution.md
 sailpoint/v2024/docs/RoleMiningPotentialRole.md
 sailpoint/v2024/docs/RoleMiningPotentialRoleApplication.md
 sailpoint/v2024/docs/RoleMiningPotentialRoleEditEntitlements.md
+sailpoint/v2024/docs/RoleMiningPotentialRoleEntitlements.md
 sailpoint/v2024/docs/RoleMiningPotentialRoleExportRequest.md
 sailpoint/v2024/docs/RoleMiningPotentialRoleExportResponse.md
 sailpoint/v2024/docs/RoleMiningPotentialRoleExportState.md
@@ -1935,6 +1936,7 @@ sailpoint/v2024/models/role_mining_identity_distribution.py
 sailpoint/v2024/models/role_mining_potential_role.py
 sailpoint/v2024/models/role_mining_potential_role_application.py
 sailpoint/v2024/models/role_mining_potential_role_edit_entitlements.py
+sailpoint/v2024/models/role_mining_potential_role_entitlements.py
 sailpoint/v2024/models/role_mining_potential_role_export_request.py
 sailpoint/v2024/models/role_mining_potential_role_export_response.py
 sailpoint/v2024/models/role_mining_potential_role_export_state.py
@@ -3007,6 +3009,7 @@ sailpoint/v2024/test/test_role_mining_identity_distribution.py
 sailpoint/v2024/test/test_role_mining_potential_role.py
 sailpoint/v2024/test/test_role_mining_potential_role_application.py
 sailpoint/v2024/test/test_role_mining_potential_role_edit_entitlements.py
+sailpoint/v2024/test/test_role_mining_potential_role_entitlements.py
 sailpoint/v2024/test/test_role_mining_potential_role_export_request.py
 sailpoint/v2024/test/test_role_mining_potential_role_export_response.py
 sailpoint/v2024/test/test_role_mining_potential_role_export_state.py
