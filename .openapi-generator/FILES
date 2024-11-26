@@ -868,6 +868,7 @@ sailpoint/v2024/docs/RoleCriteriaLevel2.md
 sailpoint/v2024/docs/RoleCriteriaLevel3.md
 sailpoint/v2024/docs/RoleCriteriaOperation.md
 sailpoint/v2024/docs/RoleDocument.md
+sailpoint/v2024/docs/RoleGetAllBulkUpdateResponse.md
 sailpoint/v2024/docs/RoleIdentity.md
 sailpoint/v2024/docs/RoleInsight.md
 sailpoint/v2024/docs/RoleInsightsApi.md
@@ -1908,6 +1909,7 @@ sailpoint/v2024/models/role_criteria_level2.py
 sailpoint/v2024/models/role_criteria_level3.py
 sailpoint/v2024/models/role_criteria_operation.py
 sailpoint/v2024/models/role_document.py
+sailpoint/v2024/models/role_get_all_bulk_update_response.py
 sailpoint/v2024/models/role_identity.py
 sailpoint/v2024/models/role_insight.py
 sailpoint/v2024/models/role_insights_entitlement.py
@@ -2980,6 +2982,7 @@ sailpoint/v2024/test/test_role_criteria_level2.py
 sailpoint/v2024/test/test_role_criteria_level3.py
 sailpoint/v2024/test/test_role_criteria_operation.py
 sailpoint/v2024/test/test_role_document.py
+sailpoint/v2024/test/test_role_get_all_bulk_update_response.py
 sailpoint/v2024/test/test_role_identity.py
 sailpoint/v2024/test/test_role_insight.py
 sailpoint/v2024/test/test_role_insights_api.py

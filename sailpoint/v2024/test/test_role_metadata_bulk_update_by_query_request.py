@@ -36,7 +36,7 @@ class TestRoleMetadataBulkUpdateByQueryRequest(unittest.TestCase):
         if include_optional:
             return RoleMetadataBulkUpdateByQueryRequest(
                 query = {query"={indices=[roles], queryType=TEXT, textQuery={terms=[test123], fields=[id], matchAny=false, contains=true}, includeNested=false}},
-                operation = 'replace',
+                operation = 'REPLACE',
                 replace_scope = 'ALL',
                 values = [
                     sailpoint.v2024.models.role_metadata_bulk_update_by_query_request_values_inner.RoleMetadataBulkUpdateByQueryRequest_values_inner(
@@ -47,7 +47,7 @@ class TestRoleMetadataBulkUpdateByQueryRequest(unittest.TestCase):
         else:
             return RoleMetadataBulkUpdateByQueryRequest(
                 query = {query"={indices=[roles], queryType=TEXT, textQuery={terms=[test123], fields=[id], matchAny=false, contains=true}, includeNested=false}},
-                operation = 'replace',
+                operation = 'REPLACE',
                 values = [
                     sailpoint.v2024.models.role_metadata_bulk_update_by_query_request_values_inner.RoleMetadataBulkUpdateByQueryRequest_values_inner(
                         attribute_key = 'iscFederalClassifications', 

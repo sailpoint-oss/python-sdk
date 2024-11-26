@@ -837,6 +837,7 @@ from sailpoint.v2024.models.role_criteria_level2 import RoleCriteriaLevel2
 from sailpoint.v2024.models.role_criteria_level3 import RoleCriteriaLevel3
 from sailpoint.v2024.models.role_criteria_operation import RoleCriteriaOperation
 from sailpoint.v2024.models.role_document import RoleDocument
+from sailpoint.v2024.models.role_get_all_bulk_update_response import RoleGetAllBulkUpdateResponse
 from sailpoint.v2024.models.role_identity import RoleIdentity
 from sailpoint.v2024.models.role_insight import RoleInsight
 from sailpoint.v2024.models.role_insights_entitlement import RoleInsightsEntitlement

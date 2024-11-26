@@ -36,14 +36,14 @@ class TestRoleMetadataBulkUpdateByIdRequest(unittest.TestCase):
         if include_optional:
             return RoleMetadataBulkUpdateByIdRequest(
                 roles = [b1db89554cfa431cb8b9921ea38d9367],
-                operation = 'replace',
+                operation = 'REPLACE',
                 replace_scope = 'ALL',
                 values = [{attribute=iscFederalClassifications, values=[topSecret]}]
             )
         else:
             return RoleMetadataBulkUpdateByIdRequest(
                 roles = [b1db89554cfa431cb8b9921ea38d9367],
-                operation = 'replace',
+                operation = 'REPLACE',
                 values = [{attribute=iscFederalClassifications, values=[topSecret]}],
         )
         """

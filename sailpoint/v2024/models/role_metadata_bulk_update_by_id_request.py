@@ -36,8 +36,8 @@ class RoleMetadataBulkUpdateByIdRequest(BaseModel):
     @field_validator('operation')
     def operation_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['add', 'remove', 'replace']):
-            raise ValueError("must be one of enum values ('add', 'remove', 'replace')")
+        if value not in set(['ADD', 'REMOVE', 'REPLACE']):
+            raise ValueError("must be one of enum values ('ADD', 'REMOVE', 'REPLACE')")
         return value
 
     @field_validator('replace_scope')

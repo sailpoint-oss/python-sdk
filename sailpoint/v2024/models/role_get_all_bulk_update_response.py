@@ -17,37 +17,30 @@ import pprint
 import re  # noqa: F401
 import json
 
+from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2024.models.role_metadata_bulk_update_by_filter_request_values_inner import RoleMetadataBulkUpdateByFilterRequestValuesInner
 from typing import Optional, Set
 from typing_extensions import Self
 
-class RoleMetadataBulkUpdateByFilterRequest(BaseModel):
+class RoleGetAllBulkUpdateResponse(BaseModel):
     """
-    This API initialize a a Bulk update by filter request of Role metadata. The maximum meta data values that one single role assigned can not exceed 25. Custom metadata need suit licensed.
+    RoleGetAllBulkUpdateResponse
     """ # noqa: E501
-    filters: StrictStr = Field(description="Filtering is supported for the following fields and operators:  **id** : *eq, in*  **name** : *eq, sw*  **created** : *gt, lt, ge, le*  **modified** : *gt, lt, ge, le*  **owner.id** : *eq, in*  **requestable** : *eq*")
-    operation: StrictStr = Field(description="The operation to be performed")
-    replace_scope: Optional[StrictStr] = Field(default=None, description="The choice of update scope.", alias="replaceScope")
-    values: List[RoleMetadataBulkUpdateByFilterRequestValuesInner] = Field(description="The metadata to be updated, including attribute key and value.")
-    __properties: ClassVar[List[str]] = ["filters", "operation", "replaceScope", "values"]
+    id: Optional[StrictStr] = Field(default=None, description="ID of the task which is executing the bulk update. This also used in to the bulk-update/** API to track status.")
+    type: Optional[StrictStr] = Field(default=None, description="Type of the bulk update object.")
+    status: Optional[StrictStr] = Field(default=None, description="The status of the bulk update request, only list unfinished request's status, the status could also checked by getBulkUpdateStatus API")
+    created: Optional[datetime] = Field(default=None, description="Time when the bulk update request was created")
+    __properties: ClassVar[List[str]] = ["id", "type", "status", "created"]
 
-    @field_validator('operation')
-    def operation_validate_enum(cls, value):
-        """Validates the enum"""
-        if value not in set(['ADD', 'REMOVE', 'REPLACE']):
-            raise ValueError("must be one of enum values ('ADD', 'REMOVE', 'REPLACE')")
-        return value
-
-    @field_validator('replace_scope')
-    def replace_scope_validate_enum(cls, value):
+    @field_validator('status')
+    def status_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
             return value
 
-        if value not in set(['ALL', 'ATTRIBUTE']):
-            raise ValueError("must be one of enum values ('ALL', 'ATTRIBUTE')")
+        if value not in set(['CREATED', 'PRE_PROCESS', 'POST_PROCESS', 'CHUNK_PENDING', 'CHUNK_PROCESSING']):
+            raise ValueError("must be one of enum values ('CREATED', 'PRE_PROCESS', 'POST_PROCESS', 'CHUNK_PENDING', 'CHUNK_PROCESSING')")
         return value
 
     model_config = ConfigDict(
@@ -68,7 +61,7 @@ class RoleMetadataBulkUpdateByFilterRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of RoleMetadataBulkUpdateByFilterRequest from a JSON string"""
+        """Create an instance of RoleGetAllBulkUpdateResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -89,18 +82,11 @@ class RoleMetadataBulkUpdateByFilterRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in values (list)
-        _items = []
-        if self.values:
-            for _item_values in self.values:
-                if _item_values:
-                    _items.append(_item_values.to_dict())
-            _dict['values'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of RoleMetadataBulkUpdateByFilterRequest from a dict"""
+        """Create an instance of RoleGetAllBulkUpdateResponse from a dict"""
         if obj is None:
             return None
 
@@ -108,10 +94,10 @@ class RoleMetadataBulkUpdateByFilterRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "filters": obj.get("filters"),
-            "operation": obj.get("operation"),
-            "replaceScope": obj.get("replaceScope"),
-            "values": [RoleMetadataBulkUpdateByFilterRequestValuesInner.from_dict(_item) for _item in obj["values"]] if obj.get("values") is not None else None
+            "id": obj.get("id"),
+            "type": obj.get("type"),
+            "status": obj.get("status"),
+            "created": obj.get("created")
         })
         return _obj
 

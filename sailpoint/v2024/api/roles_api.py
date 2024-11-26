@@ -24,6 +24,7 @@ from sailpoint.v2024.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v2024.models.role import Role
 from sailpoint.v2024.models.role_bulk_delete_request import RoleBulkDeleteRequest
 from sailpoint.v2024.models.role_bulk_update_response import RoleBulkUpdateResponse
+from sailpoint.v2024.models.role_get_all_bulk_update_response import RoleGetAllBulkUpdateResponse
 from sailpoint.v2024.models.role_identity import RoleIdentity
 from sailpoint.v2024.models.role_list_filter_dto import RoleListFilterDTO
 from sailpoint.v2024.models.role_metadata_bulk_update_by_filter_request import RoleMetadataBulkUpdateByFilterRequest
@@ -1222,10 +1223,10 @@ class RolesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[RoleBulkUpdateResponse]:
+    ) -> List[RoleGetAllBulkUpdateResponse]:
         """Get Bulk-Update Statuses
 
-        This API returns a list of all  bulk update process status of the tenant. A token with ORG_ADMIN, ROLE_ADMIN ROLE_SUBADMIN  authority is required to call this API. 
+        This API returns a list of all unfinished bulk update process status of the tenant.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1257,7 +1258,7 @@ class RolesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[RoleBulkUpdateResponse]",
+            '200': "List[RoleGetAllBulkUpdateResponse]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -1290,10 +1291,10 @@ class RolesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[RoleBulkUpdateResponse]]:
+    ) -> ApiResponse[List[RoleGetAllBulkUpdateResponse]]:
         """Get Bulk-Update Statuses
 
-        This API returns a list of all  bulk update process status of the tenant. A token with ORG_ADMIN, ROLE_ADMIN ROLE_SUBADMIN  authority is required to call this API. 
+        This API returns a list of all unfinished bulk update process status of the tenant.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1325,7 +1326,7 @@ class RolesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[RoleBulkUpdateResponse]",
+            '200': "List[RoleGetAllBulkUpdateResponse]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -1361,7 +1362,7 @@ class RolesApi:
     ) -> RESTResponseType:
         """Get Bulk-Update Statuses
 
-        This API returns a list of all  bulk update process status of the tenant. A token with ORG_ADMIN, ROLE_ADMIN ROLE_SUBADMIN  authority is required to call this API. 
+        This API returns a list of all unfinished bulk update process status of the tenant.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1393,7 +1394,7 @@ class RolesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[RoleBulkUpdateResponse]",
+            '200': "List[RoleGetAllBulkUpdateResponse]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -3881,7 +3882,7 @@ class RolesApi:
     ) -> Role:
         """Add a Metadata to Role.
 
-        This API initialize a request to add a single Access Model Metadata to a role by attribute key and attribute value. A token with ORG_ADMIN, ROLE_ADMIN ROLE_SUBADMIN authority is required to call this API. Custom metadata update, including ADD and REPLACE need suit licensed.
+        This API initialize a request to add a single Access Model Metadata to a role by attribute key and attribute value. A token with ORG_ADMIN, ROLE_ADMIN ROLE_SUBADMIN authority is required to call this API. The maximum number of attributes in one role is 25. Custom metadata update, including ADD and REPLACE need suit licensed.
 
         :param id: The Id of a role (required)
         :type id: str
@@ -3961,7 +3962,7 @@ class RolesApi:
     ) -> ApiResponse[Role]:
         """Add a Metadata to Role.
 
-        This API initialize a request to add a single Access Model Metadata to a role by attribute key and attribute value. A token with ORG_ADMIN, ROLE_ADMIN ROLE_SUBADMIN authority is required to call this API. Custom metadata update, including ADD and REPLACE need suit licensed.
+        This API initialize a request to add a single Access Model Metadata to a role by attribute key and attribute value. A token with ORG_ADMIN, ROLE_ADMIN ROLE_SUBADMIN authority is required to call this API. The maximum number of attributes in one role is 25. Custom metadata update, including ADD and REPLACE need suit licensed.
 
         :param id: The Id of a role (required)
         :type id: str
@@ -4041,7 +4042,7 @@ class RolesApi:
     ) -> RESTResponseType:
         """Add a Metadata to Role.
 
-        This API initialize a request to add a single Access Model Metadata to a role by attribute key and attribute value. A token with ORG_ADMIN, ROLE_ADMIN ROLE_SUBADMIN authority is required to call this API. Custom metadata update, including ADD and REPLACE need suit licensed.
+        This API initialize a request to add a single Access Model Metadata to a role by attribute key and attribute value. A token with ORG_ADMIN, ROLE_ADMIN ROLE_SUBADMIN authority is required to call this API. The maximum number of attributes in one role is 25. Custom metadata update, including ADD and REPLACE need suit licensed.
 
         :param id: The Id of a role (required)
         :type id: str

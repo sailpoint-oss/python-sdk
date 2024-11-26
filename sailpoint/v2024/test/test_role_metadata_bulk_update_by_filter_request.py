@@ -36,14 +36,14 @@ class TestRoleMetadataBulkUpdateByFilterRequest(unittest.TestCase):
         if include_optional:
             return RoleMetadataBulkUpdateByFilterRequest(
                 filters = ' requestable eq false',
-                operation = 'replace',
+                operation = 'REPLACE',
                 replace_scope = 'ALL',
                 values = [{attribute=iscFederalClassifications, values=[topSecret]}]
             )
         else:
             return RoleMetadataBulkUpdateByFilterRequest(
                 filters = ' requestable eq false',
-                operation = 'replace',
+                operation = 'REPLACE',
                 values = [{attribute=iscFederalClassifications, values=[topSecret]}],
         )
         """

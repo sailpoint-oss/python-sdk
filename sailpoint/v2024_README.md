@@ -1430,6 +1430,7 @@ Class | Method | HTTP request | Description
  - [RoleCriteriaLevel3](sailpoint/v2024/docs/RoleCriteriaLevel3.md)
  - [RoleCriteriaOperation](sailpoint/v2024/docs/RoleCriteriaOperation.md)
  - [RoleDocument](sailpoint/v2024/docs/RoleDocument.md)
+ - [RoleGetAllBulkUpdateResponse](sailpoint/v2024/docs/RoleGetAllBulkUpdateResponse.md)
  - [RoleIdentity](sailpoint/v2024/docs/RoleIdentity.md)
  - [RoleInsight](sailpoint/v2024/docs/RoleInsight.md)
  - [RoleInsightsEntitlement](sailpoint/v2024/docs/RoleInsightsEntitlement.md)

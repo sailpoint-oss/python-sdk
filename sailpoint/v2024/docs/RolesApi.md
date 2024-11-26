@@ -360,11 +360,11 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_bulk_update_status**
-> List[RoleBulkUpdateResponse] get_bulk_update_status()
+> List[RoleGetAllBulkUpdateResponse] get_bulk_update_status()
 
 Get Bulk-Update Statuses
 
-This API returns a list of all  bulk update process status of the tenant. A token with ORG_ADMIN, ROLE_ADMIN ROLE_SUBADMIN  authority is required to call this API. 
+This API returns a list of all unfinished bulk update process status of the tenant.
 
 ### Example
 
@@ -373,7 +373,7 @@ This API returns a list of all  bulk update process status of the tenant. A toke
 
 ```python
 import sailpoint.v2024
-from sailpoint.v2024.models.role_bulk_update_response import RoleBulkUpdateResponse
+from sailpoint.v2024.models.role_get_all_bulk_update_response import RoleGetAllBulkUpdateResponse
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
 
@@ -414,7 +414,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List[RoleBulkUpdateResponse]**](RoleBulkUpdateResponse.md)
+[**List[RoleGetAllBulkUpdateResponse]**](RoleGetAllBulkUpdateResponse.md)
 
 ### Authorization
 
@@ -429,7 +429,7 @@ This endpoint does not need any parameter.
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | successfully get the status of all bulk updates. |  -  |
+**200** | successfully get the status of all unfinished bulk updates request. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -1088,7 +1088,7 @@ Name | Type | Description  | Notes
 
 Add a Metadata to Role.
 
-This API initialize a request to add a single Access Model Metadata to a role by attribute key and attribute value. A token with ORG_ADMIN, ROLE_ADMIN ROLE_SUBADMIN authority is required to call this API. Custom metadata update, including ADD and REPLACE need suit licensed.
+This API initialize a request to add a single Access Model Metadata to a role by attribute key and attribute value. A token with ORG_ADMIN, ROLE_ADMIN ROLE_SUBADMIN authority is required to call this API. The maximum number of attributes in one role is 25. Custom metadata update, including ADD and REPLACE need suit licensed.
 
 ### Example
 
