@@ -60,9 +60,9 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ManagedClient:
-        """Create a new Managed Client
+        """Create Managed Client
 
-        Create a new Managed Client. The API returns a result that includes the Managed Client ID.
+        Create a new managed client. The API returns a result that includes the managed client ID.
 
         :param managed_client_request: (required)
         :type managed_client_request: ManagedClientRequest
@@ -132,9 +132,9 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ManagedClient]:
-        """Create a new Managed Client
+        """Create Managed Client
 
-        Create a new Managed Client. The API returns a result that includes the Managed Client ID.
+        Create a new managed client. The API returns a result that includes the managed client ID.
 
         :param managed_client_request: (required)
         :type managed_client_request: ManagedClientRequest
@@ -204,9 +204,9 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create a new Managed Client
+        """Create Managed Client
 
-        Create a new Managed Client. The API returns a result that includes the Managed Client ID.
+        Create a new managed client. The API returns a result that includes the managed client ID.
 
         :param managed_client_request: (required)
         :type managed_client_request: ManagedClientRequest
@@ -334,7 +334,7 @@ class ManagedClientsApi:
     @validate_call
     def delete_managed_client(
         self,
-        id: Annotated[StrictStr, Field(description="Managed Client ID.")],
+        id: Annotated[StrictStr, Field(description="Managed client ID.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -348,11 +348,11 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete a Managed Client
+        """Delete Managed Client
 
-        Delete an existing Managed Client.
+        Delete an existing managed client.
 
-        :param id: Managed Client ID. (required)
+        :param id: Managed client ID. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -406,7 +406,7 @@ class ManagedClientsApi:
     @validate_call
     def delete_managed_client_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="Managed Client ID.")],
+        id: Annotated[StrictStr, Field(description="Managed client ID.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -420,11 +420,11 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete a Managed Client
+        """Delete Managed Client
 
-        Delete an existing Managed Client.
+        Delete an existing managed client.
 
-        :param id: Managed Client ID. (required)
+        :param id: Managed client ID. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -478,7 +478,7 @@ class ManagedClientsApi:
     @validate_call
     def delete_managed_client_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="Managed Client ID.")],
+        id: Annotated[StrictStr, Field(description="Managed client ID.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -492,11 +492,11 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete a Managed Client
+        """Delete Managed Client
 
-        Delete an existing Managed Client.
+        Delete an existing managed client.
 
-        :param id: Managed Client ID. (required)
+        :param id: Managed client ID. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -887,8 +887,8 @@ class ManagedClientsApi:
     @validate_call
     def get_managed_client_status(
         self,
-        id: Annotated[StrictStr, Field(description="ID of the Managed Client to get Status of")],
-        type: Annotated[ManagedClientType, Field(description="Type of the Managed Client to get Status of")],
+        id: Annotated[StrictStr, Field(description="Managed client ID to get status for.")],
+        type: Annotated[ManagedClientType, Field(description="Managed client type to get status for.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -902,13 +902,13 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ManagedClientStatus:
-        """Get Managed Client Status.
+        """Get Managed Client Status
 
-        Retrieve the Status of a Managed Client by ID.
+        Get a managed client's status, using its ID.
 
-        :param id: ID of the Managed Client to get Status of (required)
+        :param id: Managed client ID to get status for. (required)
         :type id: str
-        :param type: Type of the Managed Client to get Status of (required)
+        :param type: Managed client type to get status for. (required)
         :type type: ManagedClientType
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -964,8 +964,8 @@ class ManagedClientsApi:
     @validate_call
     def get_managed_client_status_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="ID of the Managed Client to get Status of")],
-        type: Annotated[ManagedClientType, Field(description="Type of the Managed Client to get Status of")],
+        id: Annotated[StrictStr, Field(description="Managed client ID to get status for.")],
+        type: Annotated[ManagedClientType, Field(description="Managed client type to get status for.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -979,13 +979,13 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ManagedClientStatus]:
-        """Get Managed Client Status.
+        """Get Managed Client Status
 
-        Retrieve the Status of a Managed Client by ID.
+        Get a managed client's status, using its ID.
 
-        :param id: ID of the Managed Client to get Status of (required)
+        :param id: Managed client ID to get status for. (required)
         :type id: str
-        :param type: Type of the Managed Client to get Status of (required)
+        :param type: Managed client type to get status for. (required)
         :type type: ManagedClientType
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1041,8 +1041,8 @@ class ManagedClientsApi:
     @validate_call
     def get_managed_client_status_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="ID of the Managed Client to get Status of")],
-        type: Annotated[ManagedClientType, Field(description="Type of the Managed Client to get Status of")],
+        id: Annotated[StrictStr, Field(description="Managed client ID to get status for.")],
+        type: Annotated[ManagedClientType, Field(description="Managed client type to get status for.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1056,13 +1056,13 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Managed Client Status.
+        """Get Managed Client Status
 
-        Retrieve the Status of a Managed Client by ID.
+        Get a managed client's status, using its ID.
 
-        :param id: ID of the Managed Client to get Status of (required)
+        :param id: Managed client ID to get status for. (required)
         :type id: str
-        :param type: Type of the Managed Client to get Status of (required)
+        :param type: Managed client type to get status for. (required)
         :type type: ManagedClientType
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1201,7 +1201,7 @@ class ManagedClientsApi:
     ) -> List[ManagedClient]:
         """Get Managed Clients
 
-        Get a list of Managed Clients.
+        List managed clients.
 
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
@@ -1285,7 +1285,7 @@ class ManagedClientsApi:
     ) -> ApiResponse[List[ManagedClient]]:
         """Get Managed Clients
 
-        Get a list of Managed Clients.
+        List managed clients.
 
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
@@ -1369,7 +1369,7 @@ class ManagedClientsApi:
     ) -> RESTResponseType:
         """Get Managed Clients
 
-        Get a list of Managed Clients.
+        List managed clients.
 
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
@@ -1510,8 +1510,8 @@ class ManagedClientsApi:
     @validate_call
     def update_managed_client(
         self,
-        id: Annotated[StrictStr, Field(description="Managed Client ID.")],
-        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
+        id: Annotated[StrictStr, Field(description="Managed client ID.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="JSONPatch payload used to update the object.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1525,13 +1525,13 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ManagedClient:
-        """Update a Managed Client
+        """Update Managed Client
 
-        Update an existing Managed Client.
+        Update an existing managed client.
 
-        :param id: Managed Client ID. (required)
+        :param id: Managed client ID. (required)
         :type id: str
-        :param json_patch_operation: The JSONPatch payload used to update the object. (required)
+        :param json_patch_operation: JSONPatch payload used to update the object. (required)
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1587,8 +1587,8 @@ class ManagedClientsApi:
     @validate_call
     def update_managed_client_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="Managed Client ID.")],
-        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
+        id: Annotated[StrictStr, Field(description="Managed client ID.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="JSONPatch payload used to update the object.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1602,13 +1602,13 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ManagedClient]:
-        """Update a Managed Client
+        """Update Managed Client
 
-        Update an existing Managed Client.
+        Update an existing managed client.
 
-        :param id: Managed Client ID. (required)
+        :param id: Managed client ID. (required)
         :type id: str
-        :param json_patch_operation: The JSONPatch payload used to update the object. (required)
+        :param json_patch_operation: JSONPatch payload used to update the object. (required)
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1664,8 +1664,8 @@ class ManagedClientsApi:
     @validate_call
     def update_managed_client_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="Managed Client ID.")],
-        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
+        id: Annotated[StrictStr, Field(description="Managed client ID.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="JSONPatch payload used to update the object.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1679,13 +1679,13 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update a Managed Client
+        """Update Managed Client
 
-        Update an existing Managed Client.
+        Update an existing managed client.
 
-        :param id: Managed Client ID. (required)
+        :param id: Managed client ID. (required)
         :type id: str
-        :param json_patch_operation: The JSONPatch payload used to update the object. (required)
+        :param json_patch_operation: JSONPatch payload used to update the object. (required)
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

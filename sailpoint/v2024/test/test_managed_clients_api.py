@@ -29,14 +29,14 @@ class TestManagedClientsApi(unittest.TestCase):
     def test_create_managed_client(self) -> None:
         """Test case for create_managed_client
 
-        Create a new Managed Client
+        Create Managed Client
         """
         pass
 
     def test_delete_managed_client(self) -> None:
         """Test case for delete_managed_client
 
-        Delete a Managed Client
+        Delete Managed Client
         """
         pass
 
@@ -50,7 +50,7 @@ class TestManagedClientsApi(unittest.TestCase):
     def test_get_managed_client_status(self) -> None:
         """Test case for get_managed_client_status
 
-        Get Managed Client Status.
+        Get Managed Client Status
         """
         pass
 
@@ -64,7 +64,7 @@ class TestManagedClientsApi(unittest.TestCase):
     def test_update_managed_client(self) -> None:
         """Test case for update_managed_client
 
-        Update a Managed Client
+        Update Managed Client
         """
         pass
 

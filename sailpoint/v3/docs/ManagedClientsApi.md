@@ -4,20 +4,20 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_managed_client**](ManagedClientsApi.md#create_managed_client) | **POST** /managed-clients | Create a new Managed Client
-[**delete_managed_client**](ManagedClientsApi.md#delete_managed_client) | **DELETE** /managed-clients/{id} | Delete a Managed Client
+[**create_managed_client**](ManagedClientsApi.md#create_managed_client) | **POST** /managed-clients | Create Managed Client
+[**delete_managed_client**](ManagedClientsApi.md#delete_managed_client) | **DELETE** /managed-clients/{id} | Delete Managed Client
 [**get_managed_client**](ManagedClientsApi.md#get_managed_client) | **GET** /managed-clients/{id} | Get a Managed Client
-[**get_managed_client_status**](ManagedClientsApi.md#get_managed_client_status) | **GET** /managed-clients/{id}/status | Get Managed Client Status.
+[**get_managed_client_status**](ManagedClientsApi.md#get_managed_client_status) | **GET** /managed-clients/{id}/status | Get Managed Client Status
 [**get_managed_clients**](ManagedClientsApi.md#get_managed_clients) | **GET** /managed-clients | Get Managed Clients
-[**update_managed_client**](ManagedClientsApi.md#update_managed_client) | **PATCH** /managed-clients/{id} | Update a Managed Client
+[**update_managed_client**](ManagedClientsApi.md#update_managed_client) | **PATCH** /managed-clients/{id} | Update Managed Client
 
 
 # **create_managed_client**
 > ManagedClient create_managed_client(managed_client_request)
 
-Create a new Managed Client
+Create Managed Client
 
-Create a new Managed Client. The API returns a result that includes the Managed Client ID.
+Create a new managed client. The API returns a result that includes the managed client ID.
 
 ### Example
 
@@ -53,7 +53,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
     managed_client_request = sailpoint.v3.ManagedClientRequest() # ManagedClientRequest | 
 
     try:
-        # Create a new Managed Client
+        # Create Managed Client
         api_response = api_instance.create_managed_client(managed_client_request)
         print("The response of ManagedClientsApi->create_managed_client:\n")
         pprint(api_response)
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The created ManagedClient |  -  |
+**200** | Created ManagedClient. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -99,9 +99,9 @@ Name | Type | Description  | Notes
 # **delete_managed_client**
 > delete_managed_client(id)
 
-Delete a Managed Client
+Delete Managed Client
 
-Delete an existing Managed Client.
+Delete an existing managed client.
 
 ### Example
 
@@ -132,10 +132,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.ManagedClientsApi(api_client)
-    id = '4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7' # str | Managed Client ID.
+    id = '4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7' # str | Managed client ID.
 
     try:
-        # Delete a Managed Client
+        # Delete Managed Client
         api_instance.delete_managed_client(id)
     except Exception as e:
         print("Exception when calling ManagedClientsApi->delete_managed_client: %s\n" % e)
@@ -148,7 +148,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| Managed Client ID. | 
+ **id** | **str**| Managed client ID. | 
 
 ### Return type
 
@@ -263,9 +263,9 @@ Name | Type | Description  | Notes
 # **get_managed_client_status**
 > ManagedClientStatus get_managed_client_status(id, type)
 
-Get Managed Client Status.
+Get Managed Client Status
 
-Retrieve the Status of a Managed Client by ID.
+Get a managed client's status, using its ID.
 
 ### Example
 
@@ -298,11 +298,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.ManagedClientsApi(api_client)
-    id = 'aClientId' # str | ID of the Managed Client to get Status of
-    type = sailpoint.v3.ManagedClientType() # ManagedClientType | Type of the Managed Client to get Status of
+    id = 'aClientId' # str | Managed client ID to get status for.
+    type = sailpoint.v3.ManagedClientType() # ManagedClientType | Managed client type to get status for.
 
     try:
-        # Get Managed Client Status.
+        # Get Managed Client Status
         api_response = api_instance.get_managed_client_status(id, type)
         print("The response of ManagedClientsApi->get_managed_client_status:\n")
         pprint(api_response)
@@ -317,8 +317,8 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| ID of the Managed Client to get Status of | 
- **type** | [**ManagedClientType**](.md)| Type of the Managed Client to get Status of | 
+ **id** | **str**| Managed client ID to get status for. | 
+ **type** | [**ManagedClientType**](.md)| Managed client type to get status for. | 
 
 ### Return type
 
@@ -337,7 +337,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Responds with the Status of the Managed Client with the given ID and Type. |  -  |
+**200** | Response with the managed client status, with the given ID and type. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -352,7 +352,7 @@ Name | Type | Description  | Notes
 
 Get Managed Clients
 
-Get a list of Managed Clients.
+List managed clients.
 
 ### Example
 
@@ -427,7 +427,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Responds with a list of ManagedClient based on the query params provided |  -  |
+**200** | Response with a list of managed clients, based on the specified query parameters. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -439,9 +439,9 @@ Name | Type | Description  | Notes
 # **update_managed_client**
 > ManagedClient update_managed_client(id, json_patch_operation)
 
-Update a Managed Client
+Update Managed Client
 
-Update an existing Managed Client.
+Update an existing managed client.
 
 ### Example
 
@@ -474,11 +474,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.ManagedClientsApi(api_client)
-    id = '4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7' # str | Managed Client ID.
-    json_patch_operation = [sailpoint.v3.JsonPatchOperation()] # List[JsonPatchOperation] | The JSONPatch payload used to update the object.
+    id = '4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7' # str | Managed client ID.
+    json_patch_operation = [sailpoint.v3.JsonPatchOperation()] # List[JsonPatchOperation] | JSONPatch payload used to update the object.
 
     try:
-        # Update a Managed Client
+        # Update Managed Client
         api_response = api_instance.update_managed_client(id, json_patch_operation)
         print("The response of ManagedClientsApi->update_managed_client:\n")
         pprint(api_response)
@@ -493,8 +493,8 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| Managed Client ID. | 
- **json_patch_operation** | [**List[JsonPatchOperation]**](JsonPatchOperation.md)| The JSONPatch payload used to update the object. | 
+ **id** | **str**| Managed client ID. | 
+ **json_patch_operation** | [**List[JsonPatchOperation]**](JsonPatchOperation.md)| JSONPatch payload used to update the object. | 
 
 ### Return type
 
@@ -513,7 +513,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The updated Managed Client |  -  |
+**200** | Updated managed client. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |

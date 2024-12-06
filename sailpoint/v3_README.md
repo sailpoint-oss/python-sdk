@@ -220,12 +220,12 @@ Class | Method | HTTP request | Description
 *MFAControllerApi* | [**send_kba_answers**](sailpoint/v3/docs/MFAControllerApi.md#send_kba_answers) | **POST** /mfa/kba/authenticate | Authenticate KBA provided MFA method
 *MFAControllerApi* | [**send_okta_verify_request**](sailpoint/v3/docs/MFAControllerApi.md#send_okta_verify_request) | **POST** /mfa/okta-verify/verify | Verifying authentication via Okta method
 *MFAControllerApi* | [**send_token_auth_request**](sailpoint/v3/docs/MFAControllerApi.md#send_token_auth_request) | **POST** /mfa/token/authenticate | Authenticate Token provided MFA method
-*ManagedClientsApi* | [**create_managed_client**](sailpoint/v3/docs/ManagedClientsApi.md#create_managed_client) | **POST** /managed-clients | Create a new Managed Client
-*ManagedClientsApi* | [**delete_managed_client**](sailpoint/v3/docs/ManagedClientsApi.md#delete_managed_client) | **DELETE** /managed-clients/{id} | Delete a Managed Client
+*ManagedClientsApi* | [**create_managed_client**](sailpoint/v3/docs/ManagedClientsApi.md#create_managed_client) | **POST** /managed-clients | Create Managed Client
+*ManagedClientsApi* | [**delete_managed_client**](sailpoint/v3/docs/ManagedClientsApi.md#delete_managed_client) | **DELETE** /managed-clients/{id} | Delete Managed Client
 *ManagedClientsApi* | [**get_managed_client**](sailpoint/v3/docs/ManagedClientsApi.md#get_managed_client) | **GET** /managed-clients/{id} | Get a Managed Client
-*ManagedClientsApi* | [**get_managed_client_status**](sailpoint/v3/docs/ManagedClientsApi.md#get_managed_client_status) | **GET** /managed-clients/{id}/status | Get Managed Client Status.
+*ManagedClientsApi* | [**get_managed_client_status**](sailpoint/v3/docs/ManagedClientsApi.md#get_managed_client_status) | **GET** /managed-clients/{id}/status | Get Managed Client Status
 *ManagedClientsApi* | [**get_managed_clients**](sailpoint/v3/docs/ManagedClientsApi.md#get_managed_clients) | **GET** /managed-clients | Get Managed Clients
-*ManagedClientsApi* | [**update_managed_client**](sailpoint/v3/docs/ManagedClientsApi.md#update_managed_client) | **PATCH** /managed-clients/{id} | Update a Managed Client
+*ManagedClientsApi* | [**update_managed_client**](sailpoint/v3/docs/ManagedClientsApi.md#update_managed_client) | **PATCH** /managed-clients/{id} | Update Managed Client
 *ManagedClustersApi* | [**create_managed_cluster**](sailpoint/v3/docs/ManagedClustersApi.md#create_managed_cluster) | **POST** /managed-clusters | Create a new Managed Cluster
 *ManagedClustersApi* | [**delete_managed_cluster**](sailpoint/v3/docs/ManagedClustersApi.md#delete_managed_cluster) | **DELETE** /managed-clusters/{id} | Delete a Managed Cluster
 *ManagedClustersApi* | [**get_client_log_configuration**](sailpoint/v3/docs/ManagedClustersApi.md#get_client_log_configuration) | **GET** /managed-clusters/{id}/log-config | Get Managed Cluster&#39;s log configuration
