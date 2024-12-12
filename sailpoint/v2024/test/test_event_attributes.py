@@ -37,7 +37,8 @@ class TestEventAttributes(unittest.TestCase):
             return EventAttributes(
                 id = 'idn:identity-attributes-changed',
                 filter_ = '$.changes[?(@.attribute == 'manager')]',
-                description = ''
+                description = 'Triggered when an identity's manager attribute changes',
+                attribute_to_filter = 'LifecycleState'
             )
         else:
             return EventAttributes(

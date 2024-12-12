@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **id** | **str** | The unique ID of the trigger | 
 **filter_** | **str** | JSON path expression that will limit which events the trigger will fire on | [optional] 
 **description** | **str** | Additonal context about the external trigger | [optional] 
+**attribute_to_filter** | **str** | The attribute to filter on | [optional] 
 **name** | **str** | A unique name for the external trigger | [optional] 
 **client_id** | **str** | OAuth Client ID to authenticate with this trigger | [optional] 
 **url** | **str** | URL to invoke this workflow | [optional] 

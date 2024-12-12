@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **id** | **str** | The unique ID of the trigger | 
 **filter_** | **str** | JSON path expression that will limit which events the trigger will fire on | [optional] 
 **description** | **str** | Description of the event trigger | [optional] 
+**attribute_to_filter** | **str** | The attribute to filter on | [optional] 
 
 ## Example
 
