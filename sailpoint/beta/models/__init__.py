@@ -805,6 +805,7 @@ from sailpoint.beta.models.task_result_simplified import TaskResultSimplified
 from sailpoint.beta.models.task_return_details import TaskReturnDetails
 from sailpoint.beta.models.task_status import TaskStatus
 from sailpoint.beta.models.task_status_message import TaskStatusMessage
+from sailpoint.beta.models.task_status_message_parameters_inner import TaskStatusMessageParametersInner
 from sailpoint.beta.models.template_bulk_delete_dto import TemplateBulkDeleteDto
 from sailpoint.beta.models.template_dto import TemplateDto
 from sailpoint.beta.models.template_dto_default import TemplateDtoDefault

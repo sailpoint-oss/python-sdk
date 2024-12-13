@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **type** | **str** | Type of the message | 
 **localized_text** | [**LocalizedMessage**](LocalizedMessage.md) |  | 
 **key** | **str** | Key of the message | 
-**parameters** | **List[object]** | Message parameters for internationalization | 
+**parameters** | [**List[TaskStatusMessageParametersInner]**](TaskStatusMessageParametersInner.md) | Message parameters for internationalization | 
 
 ## Example
 

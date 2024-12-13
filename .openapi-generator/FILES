@@ -1085,6 +1085,7 @@ sailpoint/v2024/docs/TaskResultSimplified.md
 sailpoint/v2024/docs/TaskReturnDetails.md
 sailpoint/v2024/docs/TaskStatus.md
 sailpoint/v2024/docs/TaskStatusMessage.md
+sailpoint/v2024/docs/TaskStatusMessageParametersInner.md
 sailpoint/v2024/docs/TemplateBulkDeleteDto.md
 sailpoint/v2024/docs/TemplateDto.md
 sailpoint/v2024/docs/TemplateDtoDefault.md
@@ -2109,6 +2110,7 @@ sailpoint/v2024/models/task_result_simplified.py
 sailpoint/v2024/models/task_return_details.py
 sailpoint/v2024/models/task_status.py
 sailpoint/v2024/models/task_status_message.py
+sailpoint/v2024/models/task_status_message_parameters_inner.py
 sailpoint/v2024/models/template_bulk_delete_dto.py
 sailpoint/v2024/models/template_dto.py
 sailpoint/v2024/models/template_dto_default.py
@@ -3199,6 +3201,7 @@ sailpoint/v2024/test/test_task_result_simplified.py
 sailpoint/v2024/test/test_task_return_details.py
 sailpoint/v2024/test/test_task_status.py
 sailpoint/v2024/test/test_task_status_message.py
+sailpoint/v2024/test/test_task_status_message_parameters_inner.py
 sailpoint/v2024/test/test_template_bulk_delete_dto.py
 sailpoint/v2024/test/test_template_dto.py
 sailpoint/v2024/test/test_template_dto_default.py

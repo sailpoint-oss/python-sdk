@@ -20,6 +20,7 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.beta.models.localized_message import LocalizedMessage
+from sailpoint.beta.models.task_status_message_parameters_inner import TaskStatusMessageParametersInner
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -30,7 +31,7 @@ class TaskStatusMessage(BaseModel):
     type: StrictStr = Field(description="Type of the message")
     localized_text: Optional[LocalizedMessage] = Field(alias="localizedText")
     key: StrictStr = Field(description="Key of the message")
-    parameters: Optional[List[Dict[str, Any]]] = Field(description="Message parameters for internationalization")
+    parameters: Optional[List[TaskStatusMessageParametersInner]] = Field(description="Message parameters for internationalization")
     __properties: ClassVar[List[str]] = ["type", "localizedText", "key", "parameters"]
 
     @field_validator('type')
@@ -82,6 +83,13 @@ class TaskStatusMessage(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of localized_text
         if self.localized_text:
             _dict['localizedText'] = self.localized_text.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in parameters (list)
+        _items = []
+        if self.parameters:
+            for _item_parameters in self.parameters:
+                if _item_parameters:
+                    _items.append(_item_parameters.to_dict())
+            _dict['parameters'] = _items
         # set to None if localized_text (nullable) is None
         # and model_fields_set contains the field
         if self.localized_text is None and "localized_text" in self.model_fields_set:
@@ -107,7 +115,7 @@ class TaskStatusMessage(BaseModel):
             "type": obj.get("type"),
             "localizedText": LocalizedMessage.from_dict(obj["localizedText"]) if obj.get("localizedText") is not None else None,
             "key": obj.get("key"),
-            "parameters": obj.get("parameters")
+            "parameters": [TaskStatusMessageParametersInner.from_dict(_item) for _item in obj["parameters"]] if obj.get("parameters") is not None else None
         })
         return _obj
 

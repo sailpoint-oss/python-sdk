@@ -4,24 +4,25 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v2024*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_pending_task_headers**](TaskManagementApi.md#get_pending_task_headers) | **HEAD** /task-status/pending-tasks | Retrieve headers only for pending task list.
-[**get_pending_tasks**](TaskManagementApi.md#get_pending_tasks) | **GET** /task-status/pending-tasks | Retrieve a pending task list.
-[**get_task_status**](TaskManagementApi.md#get_task_status) | **GET** /task-status/{id} | Get task status by ID.
-[**get_task_status_list**](TaskManagementApi.md#get_task_status_list) | **GET** /task-status | Retrieve a task status list.
-[**update_task_status**](TaskManagementApi.md#update_task_status) | **PATCH** /task-status/{id} | Update task status by ID
+[**get_pending_task_headers**](TaskManagementApi.md#get_pending_task_headers) | **HEAD** /task-status/pending-tasks | Retrieve Pending Task List Headers
+[**get_pending_tasks**](TaskManagementApi.md#get_pending_tasks) | **GET** /task-status/pending-tasks | Retrieve Pending Task Status List
+[**get_task_status**](TaskManagementApi.md#get_task_status) | **GET** /task-status/{id} | Get Task Status by ID
+[**get_task_status_list**](TaskManagementApi.md#get_task_status_list) | **GET** /task-status | Retrieve Task Status List
+[**update_task_status**](TaskManagementApi.md#update_task_status) | **PATCH** /task-status/{id} | Update Task Status by ID
 
 
 # **get_pending_task_headers**
 > get_pending_task_headers(x_sail_point_experimental, offset=offset, limit=limit, count=count)
 
-Retrieve headers only for pending task list.
+Retrieve Pending Task List Headers
 
-Retrieve headers for a list of TaskStatus for pending tasks.
+Responds with headers only for list of task statuses for pending tasks.
 
 ### Example
 
 * OAuth Authentication (userAuth):
 * OAuth Authentication (userAuth):
+* OAuth Authentication (applicationAuth):
 
 ```python
 import sailpoint.v2024
@@ -43,6 +44,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with sailpoint.v2024.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -53,7 +56,7 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
 
     try:
-        # Retrieve headers only for pending task list.
+        # Retrieve Pending Task List Headers
         api_instance.get_pending_task_headers(x_sail_point_experimental, offset=offset, limit=limit, count=count)
     except Exception as e:
         print("Exception when calling TaskManagementApi->get_pending_task_headers: %s\n" % e)
@@ -77,7 +80,7 @@ void (empty response body)
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth), [applicationAuth](../README.md#applicationAuth)
 
 ### HTTP request headers
 
@@ -88,24 +91,28 @@ void (empty response body)
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Responds with headers for List of TaskStatus for pending tasks. |  -  |
+**200** | Retrieve headers for a list of TaskStatus for pending tasks. |  -  |
 **204** | No content - indicates the request was successful but there is no content to be returned in the response. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_pending_tasks**
 > List[TaskStatus] get_pending_tasks(x_sail_point_experimental, offset=offset, limit=limit, count=count)
 
-Retrieve a pending task list.
+Retrieve Pending Task Status List
 
-Retrieve a list of TaskStatus for pending tasks.
+Retrieve a list of statuses for pending tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks.  Data for tasks older than 90 days will not be returned.
 
 ### Example
 
 * OAuth Authentication (userAuth):
 * OAuth Authentication (userAuth):
+* OAuth Authentication (applicationAuth):
 
 ```python
 import sailpoint.v2024
@@ -128,6 +135,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with sailpoint.v2024.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -138,7 +147,7 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
 
     try:
-        # Retrieve a pending task list.
+        # Retrieve Pending Task Status List
         api_response = api_instance.get_pending_tasks(x_sail_point_experimental, offset=offset, limit=limit, count=count)
         print("The response of TaskManagementApi->get_pending_tasks:\n")
         pprint(api_response)
@@ -164,7 +173,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth), [applicationAuth](../README.md#applicationAuth)
 
 ### HTTP request headers
 
@@ -178,21 +187,25 @@ Name | Type | Description  | Notes
 **200** | Responds with a list of TaskStatus for pending tasks. |  -  |
 **204** | No content - indicates the request was successful but there is no content to be returned in the response. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_task_status**
 > TaskStatus get_task_status(id, x_sail_point_experimental)
 
-Get task status by ID.
+Get Task Status by ID
 
-Get a TaskStatus for a task by task ID.
+Get task status by task ID. Types of tasks include account and entitlement aggregation and other general background processing tasks.  Data for tasks older than 90 days will not be returned.
 
 ### Example
 
 * OAuth Authentication (userAuth):
 * OAuth Authentication (userAuth):
+* OAuth Authentication (applicationAuth):
 
 ```python
 import sailpoint.v2024
@@ -215,6 +228,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with sailpoint.v2024.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -223,7 +238,7 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true')
 
     try:
-        # Get task status by ID.
+        # Get Task Status by ID
         api_response = api_instance.get_task_status(id, x_sail_point_experimental)
         print("The response of TaskManagementApi->get_task_status:\n")
         pprint(api_response)
@@ -247,7 +262,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth), [applicationAuth](../README.md#applicationAuth)
 
 ### HTTP request headers
 
@@ -271,14 +286,15 @@ Name | Type | Description  | Notes
 # **get_task_status_list**
 > List[TaskStatus] get_task_status_list(x_sail_point_experimental, limit=limit, offset=offset, count=count, filters=filters, sorters=sorters)
 
-Retrieve a task status list.
+Retrieve Task Status List
 
-Use this endpoint to get a list of **completed** tasks. To get a list of tasks **in-progress**, please use the [get pending tasks](https://developer.sailpoint.com/docs/api/beta/get-pending-tasks) endpoint. 
+Use this endpoint to get a list of statuses for **completed** tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks.  Data for tasks older than 90 days will not be returned. To get a list of statuses for **in-progress** tasks, please use the [retrieve pending task status list](https://developer.sailpoint.com/docs/api/v2024/get-pending-tasks) endpoint. 
 
 ### Example
 
 * OAuth Authentication (userAuth):
 * OAuth Authentication (userAuth):
+* OAuth Authentication (applicationAuth):
 
 ```python
 import sailpoint.v2024
@@ -301,6 +317,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with sailpoint.v2024.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -313,7 +331,7 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
     sorters = '-created' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created** (optional)
 
     try:
-        # Retrieve a task status list.
+        # Retrieve Task Status List
         api_response = api_instance.get_task_status_list(x_sail_point_experimental, limit=limit, offset=offset, count=count, filters=filters, sorters=sorters)
         print("The response of TaskManagementApi->get_task_status_list:\n")
         pprint(api_response)
@@ -341,7 +359,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth), [applicationAuth](../README.md#applicationAuth)
 
 ### HTTP request headers
 
@@ -365,7 +383,7 @@ Name | Type | Description  | Notes
 # **update_task_status**
 > TaskStatus update_task_status(id, x_sail_point_experimental, json_patch_operation)
 
-Update task status by ID
+Update Task Status by ID
 
 Update a current task status by task ID. Use this API to clear a pending task by updating the completionStatus and completed attributes.
 
@@ -405,7 +423,7 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
     json_patch_operation = [sailpoint.v2024.JsonPatchOperation()] # List[JsonPatchOperation] | The JSONPatch payload used to update the object.
 
     try:
-        # Update task status by ID
+        # Update Task Status by ID
         api_response = api_instance.update_task_status(id, x_sail_point_experimental, json_patch_operation)
         print("The response of TaskManagementApi->update_task_status:\n")
         pprint(api_response)

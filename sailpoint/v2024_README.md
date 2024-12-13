@@ -635,11 +635,11 @@ Class | Method | HTTP request | Description
 *TaggedObjectsApi* | [**put_tagged_object**](sailpoint/v2024/docs/TaggedObjectsApi.md#put_tagged_object) | **PUT** /tagged-objects/{type}/{id} | Update Tagged Object
 *TaggedObjectsApi* | [**set_tag_to_object**](sailpoint/v2024/docs/TaggedObjectsApi.md#set_tag_to_object) | **POST** /tagged-objects | Add Tag to Object
 *TaggedObjectsApi* | [**set_tags_to_many_objects**](sailpoint/v2024/docs/TaggedObjectsApi.md#set_tags_to_many_objects) | **POST** /tagged-objects/bulk-add | Tag Multiple Objects
-*TaskManagementApi* | [**get_pending_task_headers**](sailpoint/v2024/docs/TaskManagementApi.md#get_pending_task_headers) | **HEAD** /task-status/pending-tasks | Retrieve headers only for pending task list.
-*TaskManagementApi* | [**get_pending_tasks**](sailpoint/v2024/docs/TaskManagementApi.md#get_pending_tasks) | **GET** /task-status/pending-tasks | Retrieve a pending task list.
-*TaskManagementApi* | [**get_task_status**](sailpoint/v2024/docs/TaskManagementApi.md#get_task_status) | **GET** /task-status/{id} | Get task status by ID.
-*TaskManagementApi* | [**get_task_status_list**](sailpoint/v2024/docs/TaskManagementApi.md#get_task_status_list) | **GET** /task-status | Retrieve a task status list.
-*TaskManagementApi* | [**update_task_status**](sailpoint/v2024/docs/TaskManagementApi.md#update_task_status) | **PATCH** /task-status/{id} | Update task status by ID
+*TaskManagementApi* | [**get_pending_task_headers**](sailpoint/v2024/docs/TaskManagementApi.md#get_pending_task_headers) | **HEAD** /task-status/pending-tasks | Retrieve Pending Task List Headers
+*TaskManagementApi* | [**get_pending_tasks**](sailpoint/v2024/docs/TaskManagementApi.md#get_pending_tasks) | **GET** /task-status/pending-tasks | Retrieve Pending Task Status List
+*TaskManagementApi* | [**get_task_status**](sailpoint/v2024/docs/TaskManagementApi.md#get_task_status) | **GET** /task-status/{id} | Get Task Status by ID
+*TaskManagementApi* | [**get_task_status_list**](sailpoint/v2024/docs/TaskManagementApi.md#get_task_status_list) | **GET** /task-status | Retrieve Task Status List
+*TaskManagementApi* | [**update_task_status**](sailpoint/v2024/docs/TaskManagementApi.md#update_task_status) | **PATCH** /task-status/{id} | Update Task Status by ID
 *TenantApi* | [**get_tenant**](sailpoint/v2024/docs/TenantApi.md#get_tenant) | **GET** /tenant | Get Tenant Information.
 *TransformsApi* | [**create_transform**](sailpoint/v2024/docs/TransformsApi.md#create_transform) | **POST** /transforms | Create transform
 *TransformsApi* | [**delete_transform**](sailpoint/v2024/docs/TransformsApi.md#delete_transform) | **DELETE** /transforms/{id} | Delete a transform
@@ -1630,6 +1630,7 @@ Class | Method | HTTP request | Description
  - [TaskReturnDetails](sailpoint/v2024/docs/TaskReturnDetails.md)
  - [TaskStatus](sailpoint/v2024/docs/TaskStatus.md)
  - [TaskStatusMessage](sailpoint/v2024/docs/TaskStatusMessage.md)
+ - [TaskStatusMessageParametersInner](sailpoint/v2024/docs/TaskStatusMessageParametersInner.md)
  - [TemplateBulkDeleteDto](sailpoint/v2024/docs/TemplateBulkDeleteDto.md)
  - [TemplateDto](sailpoint/v2024/docs/TemplateDto.md)
  - [TemplateDtoDefault](sailpoint/v2024/docs/TemplateDtoDefault.md)

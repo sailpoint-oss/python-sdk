@@ -29,35 +29,35 @@ class TestTaskManagementApi(unittest.TestCase):
     def test_get_pending_task_headers(self) -> None:
         """Test case for get_pending_task_headers
 
-        Retrieve headers only for pending task list.
+        Retrieve Pending Task List Headers
         """
         pass
 
     def test_get_pending_tasks(self) -> None:
         """Test case for get_pending_tasks
 
-        Retrieve a pending task list.
+        Retrieve Pending Task Status List
         """
         pass
 
     def test_get_task_status(self) -> None:
         """Test case for get_task_status
 
-        Get task status by ID.
+        Get Task Status by ID
         """
         pass
 
     def test_get_task_status_list(self) -> None:
         """Test case for get_task_status_list
 
-        Retrieve a task status list.
+        Retrieve Task Status List
         """
         pass
 
     def test_update_task_status(self) -> None:
         """Test case for update_task_status
 
-        Update task status by ID
+        Update Task Status by ID
         """
         pass
 

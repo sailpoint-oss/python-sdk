@@ -59,9 +59,9 @@ class TaskManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Retrieve headers only for pending task list.
+        """Retrieve Pending Task List Headers
 
-        Retrieve headers for a list of TaskStatus for pending tasks.
+        Responds with headers only for list of task statuses for pending tasks.
 
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
@@ -105,7 +105,10 @@ class TaskManagementApi:
             '200': None,
             '204': None,
             '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -137,9 +140,9 @@ class TaskManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Retrieve headers only for pending task list.
+        """Retrieve Pending Task List Headers
 
-        Retrieve headers for a list of TaskStatus for pending tasks.
+        Responds with headers only for list of task statuses for pending tasks.
 
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
@@ -183,7 +186,10 @@ class TaskManagementApi:
             '200': None,
             '204': None,
             '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -215,9 +221,9 @@ class TaskManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Retrieve headers only for pending task list.
+        """Retrieve Pending Task List Headers
 
-        Retrieve headers for a list of TaskStatus for pending tasks.
+        Responds with headers only for list of task statuses for pending tasks.
 
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
@@ -261,7 +267,10 @@ class TaskManagementApi:
             '200': None,
             '204': None,
             '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -324,7 +333,8 @@ class TaskManagementApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -364,9 +374,9 @@ class TaskManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[TaskStatus]:
-        """Retrieve a pending task list.
+        """Retrieve Pending Task Status List
 
-        Retrieve a list of TaskStatus for pending tasks.
+        Retrieve a list of statuses for pending tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks.  Data for tasks older than 90 days will not be returned.
 
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
@@ -410,7 +420,10 @@ class TaskManagementApi:
             '200': "List[TaskStatus]",
             '204': None,
             '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -442,9 +455,9 @@ class TaskManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[TaskStatus]]:
-        """Retrieve a pending task list.
+        """Retrieve Pending Task Status List
 
-        Retrieve a list of TaskStatus for pending tasks.
+        Retrieve a list of statuses for pending tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks.  Data for tasks older than 90 days will not be returned.
 
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
@@ -488,7 +501,10 @@ class TaskManagementApi:
             '200': "List[TaskStatus]",
             '204': None,
             '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -520,9 +536,9 @@ class TaskManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Retrieve a pending task list.
+        """Retrieve Pending Task Status List
 
-        Retrieve a list of TaskStatus for pending tasks.
+        Retrieve a list of statuses for pending tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks.  Data for tasks older than 90 days will not be returned.
 
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
@@ -566,7 +582,10 @@ class TaskManagementApi:
             '200': "List[TaskStatus]",
             '204': None,
             '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -629,7 +648,8 @@ class TaskManagementApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -667,9 +687,9 @@ class TaskManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> TaskStatus:
-        """Get task status by ID.
+        """Get Task Status by ID
 
-        Get a TaskStatus for a task by task ID.
+        Get task status by task ID. Types of tasks include account and entitlement aggregation and other general background processing tasks.  Data for tasks older than 90 days will not be returned.
 
         :param id: Task ID. (required)
         :type id: str
@@ -740,9 +760,9 @@ class TaskManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[TaskStatus]:
-        """Get task status by ID.
+        """Get Task Status by ID
 
-        Get a TaskStatus for a task by task ID.
+        Get task status by task ID. Types of tasks include account and entitlement aggregation and other general background processing tasks.  Data for tasks older than 90 days will not be returned.
 
         :param id: Task ID. (required)
         :type id: str
@@ -813,9 +833,9 @@ class TaskManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get task status by ID.
+        """Get Task Status by ID
 
-        Get a TaskStatus for a task by task ID.
+        Get task status by task ID. Types of tasks include account and entitlement aggregation and other general background processing tasks.  Data for tasks older than 90 days will not be returned.
 
         :param id: Task ID. (required)
         :type id: str
@@ -907,7 +927,8 @@ class TaskManagementApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -949,9 +970,9 @@ class TaskManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[TaskStatus]:
-        """Retrieve a task status list.
+        """Retrieve Task Status List
 
-        Use this endpoint to get a list of **completed** tasks. To get a list of tasks **in-progress**, please use the [get pending tasks](https://developer.sailpoint.com/docs/api/beta/get-pending-tasks) endpoint. 
+        Use this endpoint to get a list of statuses for **completed** tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks.  Data for tasks older than 90 days will not be returned. To get a list of statuses for **in-progress** tasks, please use the [retrieve pending task status list](https://developer.sailpoint.com/docs/api/beta/get-pending-tasks) endpoint. 
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -1038,9 +1059,9 @@ class TaskManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[TaskStatus]]:
-        """Retrieve a task status list.
+        """Retrieve Task Status List
 
-        Use this endpoint to get a list of **completed** tasks. To get a list of tasks **in-progress**, please use the [get pending tasks](https://developer.sailpoint.com/docs/api/beta/get-pending-tasks) endpoint. 
+        Use this endpoint to get a list of statuses for **completed** tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks.  Data for tasks older than 90 days will not be returned. To get a list of statuses for **in-progress** tasks, please use the [retrieve pending task status list](https://developer.sailpoint.com/docs/api/beta/get-pending-tasks) endpoint. 
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -1127,9 +1148,9 @@ class TaskManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Retrieve a task status list.
+        """Retrieve Task Status List
 
-        Use this endpoint to get a list of **completed** tasks. To get a list of tasks **in-progress**, please use the [get pending tasks](https://developer.sailpoint.com/docs/api/beta/get-pending-tasks) endpoint. 
+        Use this endpoint to get a list of statuses for **completed** tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks.  Data for tasks older than 90 days will not be returned. To get a list of statuses for **in-progress** tasks, please use the [retrieve pending task status list](https://developer.sailpoint.com/docs/api/beta/get-pending-tasks) endpoint. 
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -1255,7 +1276,8 @@ class TaskManagementApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -1294,7 +1316,7 @@ class TaskManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> TaskStatus:
-        """Update task status by ID
+        """Update Task Status by ID
 
         Update a current task status by task ID. Use this API to clear a pending task by updating the completionStatus and completed attributes.
 
@@ -1371,7 +1393,7 @@ class TaskManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[TaskStatus]:
-        """Update task status by ID
+        """Update Task Status by ID
 
         Update a current task status by task ID. Use this API to clear a pending task by updating the completionStatus and completed attributes.
 
@@ -1448,7 +1470,7 @@ class TaskManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update task status by ID
+        """Update Task Status by ID
 
         Update a current task status by task ID. Use this API to clear a pending task by updating the completionStatus and completed attributes.
 
