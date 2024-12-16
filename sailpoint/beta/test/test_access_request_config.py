@@ -37,6 +37,7 @@ class TestAccessRequestConfig(unittest.TestCase):
             return AccessRequestConfig(
                 approvals_must_be_external = True,
                 auto_approval_enabled = True,
+                reauthorization_enabled = True,
                 request_on_behalf_of_config = sailpoint.beta.models.request_on_behalf_of_config.RequestOnBehalfOfConfig(
                     allow_request_on_behalf_of_anyone_by_anyone = True, 
                     allow_request_on_behalf_of_employee_by_manager = True, ),

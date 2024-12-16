@@ -31,10 +31,11 @@ class AccessRequestConfig(BaseModel):
     """ # noqa: E501
     approvals_must_be_external: Optional[StrictBool] = Field(default=False, description="If this is true, approvals must be processed by an external system. Also, if this is true, it blocks Request Center access requests and returns an error for any user who isn't an org admin.", alias="approvalsMustBeExternal")
     auto_approval_enabled: Optional[StrictBool] = Field(default=False, description="If this is true and the requester and reviewer are the same, the request is automatically approved.", alias="autoApprovalEnabled")
+    reauthorization_enabled: Optional[StrictBool] = Field(default=False, description="If this is true, reauthorization will be enforced for appropriately configured access items. Enablement of this feature is currently in a limited state.", alias="reauthorizationEnabled")
     request_on_behalf_of_config: Optional[RequestOnBehalfOfConfig] = Field(default=None, alias="requestOnBehalfOfConfig")
     approval_reminder_and_escalation_config: Optional[ApprovalReminderAndEscalationConfig] = Field(default=None, alias="approvalReminderAndEscalationConfig")
     entitlement_request_config: Optional[EntitlementRequestConfig1] = Field(default=None, alias="entitlementRequestConfig")
-    __properties: ClassVar[List[str]] = ["approvalsMustBeExternal", "autoApprovalEnabled", "requestOnBehalfOfConfig", "approvalReminderAndEscalationConfig", "entitlementRequestConfig"]
+    __properties: ClassVar[List[str]] = ["approvalsMustBeExternal", "autoApprovalEnabled", "reauthorizationEnabled", "requestOnBehalfOfConfig", "approvalReminderAndEscalationConfig", "entitlementRequestConfig"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -98,6 +99,7 @@ class AccessRequestConfig(BaseModel):
         _obj = cls.model_validate({
             "approvalsMustBeExternal": obj.get("approvalsMustBeExternal") if obj.get("approvalsMustBeExternal") is not None else False,
             "autoApprovalEnabled": obj.get("autoApprovalEnabled") if obj.get("autoApprovalEnabled") is not None else False,
+            "reauthorizationEnabled": obj.get("reauthorizationEnabled") if obj.get("reauthorizationEnabled") is not None else False,
             "requestOnBehalfOfConfig": RequestOnBehalfOfConfig.from_dict(obj["requestOnBehalfOfConfig"]) if obj.get("requestOnBehalfOfConfig") is not None else None,
             "approvalReminderAndEscalationConfig": ApprovalReminderAndEscalationConfig.from_dict(obj["approvalReminderAndEscalationConfig"]) if obj.get("approvalReminderAndEscalationConfig") is not None else None,
             "entitlementRequestConfig": EntitlementRequestConfig1.from_dict(obj["entitlementRequestConfig"]) if obj.get("entitlementRequestConfig") is not None else None
