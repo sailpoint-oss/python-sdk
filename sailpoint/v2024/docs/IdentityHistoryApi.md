@@ -12,7 +12,7 @@ Method | HTTP request | Description
 [**get_identity_snapshot_summary**](IdentityHistoryApi.md#get_identity_snapshot_summary) | **GET** /historical-identities/{id}/snapshot-summary | Gets the summary for the event count for a specific identity
 [**get_identity_start_date**](IdentityHistoryApi.md#get_identity_start_date) | **GET** /historical-identities/{id}/start-date | Gets the start date of the identity
 [**list_historical_identities**](IdentityHistoryApi.md#list_historical_identities) | **GET** /historical-identities | Lists all the identities
-[**list_identity_access_items**](IdentityHistoryApi.md#list_identity_access_items) | **GET** /historical-identities/{id}/access-items | Gets a list of access items for the identity filtered by item type
+[**list_identity_access_items**](IdentityHistoryApi.md#list_identity_access_items) | **GET** /historical-identities/{id}/access-items | List Access Items by Identity
 [**list_identity_snapshot_access_items**](IdentityHistoryApi.md#list_identity_snapshot_access_items) | **GET** /historical-identities/{id}/snapshots/{date}/access-items | Gets the list of identity access items at a given date filterd by item type
 [**list_identity_snapshots**](IdentityHistoryApi.md#list_identity_snapshots) | **GET** /historical-identities/{id}/snapshots | Lists all the snapshots for the identity
 
@@ -758,11 +758,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_identity_access_items**
-> List[ListIdentityAccessItems200ResponseInner] list_identity_access_items(id, x_sail_point_experimental, type=type)
+> List[ListIdentityAccessItems200ResponseInner] list_identity_access_items(id, x_sail_point_experimental, type=type, limit=limit, count=count, offset=offset)
 
-Gets a list of access items for the identity filtered by item type
+List Access Items by Identity
 
-This method retrieves a list of access item for the identity filtered by the access item type Requires authorization scope of 'idn:identity-history:read' 
+This method retrieves a list of access item for the identity filtered by the access item type 
 
 ### Example
 
@@ -797,10 +797,13 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
     id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The identity id
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true')
     type = 'account' # str | The type of access item for the identity. If not provided, it defaults to account (optional)
+    limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+    count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+    offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
 
     try:
-        # Gets a list of access items for the identity filtered by item type
-        api_response = api_instance.list_identity_access_items(id, x_sail_point_experimental, type=type)
+        # List Access Items by Identity
+        api_response = api_instance.list_identity_access_items(id, x_sail_point_experimental, type=type, limit=limit, count=count, offset=offset)
         print("The response of IdentityHistoryApi->list_identity_access_items:\n")
         pprint(api_response)
     except Exception as e:
@@ -817,6 +820,9 @@ Name | Type | Description  | Notes
  **id** | **str**| The identity id | 
  **x_sail_point_experimental** | **str**| Use this header to enable this experimental API. | [default to &#39;true&#39;]
  **type** | **str**| The type of access item for the identity. If not provided, it defaults to account | [optional] 
+ **limit** | **int**| Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 250]
+ **count** | **bool**| If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to False]
+ **offset** | **int**| Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 0]
 
 ### Return type
 
@@ -840,6 +846,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
 **404** | Not Found - returned if the request URL refers to a resource or object that does not exist |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
 **500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

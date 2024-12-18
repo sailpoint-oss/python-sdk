@@ -2885,6 +2885,9 @@ class IdentityHistoryApi:
         self,
         id: Annotated[StrictStr, Field(description="The identity id")],
         type: Annotated[Optional[StrictStr], Field(description="The type of access item for the identity. If not provided, it defaults to account")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -2899,9 +2902,9 @@ class IdentityHistoryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[ListIdentityAccessItems200ResponseInner]:
-        """Gets a list of access items for the identity filtered by item type
+        """List Access Items by Identity
 
-        This method retrieves a list of access item for the identity filtered by the access item type Requires authorization scope of 'idn:identity-history:read' 
+        This method retrieves a list of access item for the identity filtered by the access item type 
 
         :param id: The identity id (required)
         :type id: str
@@ -2909,6 +2912,12 @@ class IdentityHistoryApi:
         :type x_sail_point_experimental: str
         :param type: The type of access item for the identity. If not provided, it defaults to account
         :type type: str
+        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2935,6 +2944,9 @@ class IdentityHistoryApi:
             id=id,
             x_sail_point_experimental=x_sail_point_experimental,
             type=type,
+            limit=limit,
+            count=count,
+            offset=offset,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2947,6 +2959,7 @@ class IdentityHistoryApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -2965,6 +2978,9 @@ class IdentityHistoryApi:
         self,
         id: Annotated[StrictStr, Field(description="The identity id")],
         type: Annotated[Optional[StrictStr], Field(description="The type of access item for the identity. If not provided, it defaults to account")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -2979,9 +2995,9 @@ class IdentityHistoryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[ListIdentityAccessItems200ResponseInner]]:
-        """Gets a list of access items for the identity filtered by item type
+        """List Access Items by Identity
 
-        This method retrieves a list of access item for the identity filtered by the access item type Requires authorization scope of 'idn:identity-history:read' 
+        This method retrieves a list of access item for the identity filtered by the access item type 
 
         :param id: The identity id (required)
         :type id: str
@@ -2989,6 +3005,12 @@ class IdentityHistoryApi:
         :type x_sail_point_experimental: str
         :param type: The type of access item for the identity. If not provided, it defaults to account
         :type type: str
+        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3015,6 +3037,9 @@ class IdentityHistoryApi:
             id=id,
             x_sail_point_experimental=x_sail_point_experimental,
             type=type,
+            limit=limit,
+            count=count,
+            offset=offset,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3027,6 +3052,7 @@ class IdentityHistoryApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -3045,6 +3071,9 @@ class IdentityHistoryApi:
         self,
         id: Annotated[StrictStr, Field(description="The identity id")],
         type: Annotated[Optional[StrictStr], Field(description="The type of access item for the identity. If not provided, it defaults to account")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -3059,9 +3088,9 @@ class IdentityHistoryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Gets a list of access items for the identity filtered by item type
+        """List Access Items by Identity
 
-        This method retrieves a list of access item for the identity filtered by the access item type Requires authorization scope of 'idn:identity-history:read' 
+        This method retrieves a list of access item for the identity filtered by the access item type 
 
         :param id: The identity id (required)
         :type id: str
@@ -3069,6 +3098,12 @@ class IdentityHistoryApi:
         :type x_sail_point_experimental: str
         :param type: The type of access item for the identity. If not provided, it defaults to account
         :type type: str
+        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3095,6 +3130,9 @@ class IdentityHistoryApi:
             id=id,
             x_sail_point_experimental=x_sail_point_experimental,
             type=type,
+            limit=limit,
+            count=count,
+            offset=offset,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3107,6 +3145,7 @@ class IdentityHistoryApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -3121,6 +3160,9 @@ class IdentityHistoryApi:
         id,
         x_sail_point_experimental,
         type,
+        limit,
+        count,
+        offset,
         _request_auth,
         _content_type,
         _headers,
@@ -3146,6 +3188,18 @@ class IdentityHistoryApi:
         if type is not None:
             
             _query_params.append(('type', type))
+            
+        if limit is not None:
+            
+            _query_params.append(('limit', limit))
+            
+        if count is not None:
+            
+            _query_params.append(('count', count))
+            
+        if offset is not None:
+            
+            _query_params.append(('offset', offset))
             
         # process the header parameters
         if x_sail_point_experimental is not None:

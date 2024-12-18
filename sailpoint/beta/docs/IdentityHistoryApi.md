@@ -12,7 +12,7 @@ Method | HTTP request | Description
 [**get_identity_snapshot_summary**](IdentityHistoryApi.md#get_identity_snapshot_summary) | **GET** /historical-identities/{id}/snapshot-summary | Gets the summary for the event count for a specific identity
 [**get_identity_start_date**](IdentityHistoryApi.md#get_identity_start_date) | **GET** /historical-identities/{id}/start-date | Gets the start date of the identity
 [**list_historical_identities**](IdentityHistoryApi.md#list_historical_identities) | **GET** /historical-identities | Lists all the identities
-[**list_identity_access_items**](IdentityHistoryApi.md#list_identity_access_items) | **GET** /historical-identities/{id}/access-items | Gets a list of access items for the identity filtered by item type
+[**list_identity_access_items**](IdentityHistoryApi.md#list_identity_access_items) | **GET** /historical-identities/{id}/access-items | List Access Items by Identity
 [**list_identity_snapshot_access_items**](IdentityHistoryApi.md#list_identity_snapshot_access_items) | **GET** /historical-identities/{id}/snapshots/{date}/access-items | Get Identity Access Items Snapshot
 [**list_identity_snapshots**](IdentityHistoryApi.md#list_identity_snapshots) | **GET** /historical-identities/{id}/snapshots | Lists all the snapshots for the identity
 
@@ -742,11 +742,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_identity_access_items**
-> List[ListIdentityAccessItems200ResponseInner] list_identity_access_items(id, type=type, filters=filters, sorters=sorters, query=query)
+> List[ListIdentityAccessItems200ResponseInner] list_identity_access_items(id, type=type, filters=filters, sorters=sorters, query=query, limit=limit, count=count, offset=offset)
 
-Gets a list of access items for the identity filtered by item type
+List Access Items by Identity
 
-This method retrieves a list of access item for the identity filtered by the access item type Requires authorization scope of 'idn:identity-history:read' 
+This method retrieves a list of access item for the identity filtered by the access item type
 
 ### Example
 
@@ -783,10 +783,13 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
     filters = 'source eq \"DataScienceDataset\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **source**: *eq*  **standalone**: *eq*  **privileged**: *eq*  **attribute**: *eq*  **cloudGoverned**: *eq* (optional)
     sorters = 'name' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, value, standalone, privileged, attribute, source, cloudGoverned, removeDate, nativeIdentity, entitlementCount** (optional)
     query = 'Dr. Arden' # str | This param is used to search if certain fields of the access item contain the string provided.  Searching is supported for the following fields depending on the type:  Access Profiles: **name, description**  Accounts: **name, nativeIdentity**  Apps: **name**  Entitlements: **name, value, description**  Roles: **name, description** (optional)
+    limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+    count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+    offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
 
     try:
-        # Gets a list of access items for the identity filtered by item type
-        api_response = api_instance.list_identity_access_items(id, type=type, filters=filters, sorters=sorters, query=query)
+        # List Access Items by Identity
+        api_response = api_instance.list_identity_access_items(id, type=type, filters=filters, sorters=sorters, query=query, limit=limit, count=count, offset=offset)
         print("The response of IdentityHistoryApi->list_identity_access_items:\n")
         pprint(api_response)
     except Exception as e:
@@ -805,6 +808,9 @@ Name | Type | Description  | Notes
  **filters** | **str**| Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **source**: *eq*  **standalone**: *eq*  **privileged**: *eq*  **attribute**: *eq*  **cloudGoverned**: *eq* | [optional] 
  **sorters** | **str**| Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, value, standalone, privileged, attribute, source, cloudGoverned, removeDate, nativeIdentity, entitlementCount** | [optional] 
  **query** | **str**| This param is used to search if certain fields of the access item contain the string provided.  Searching is supported for the following fields depending on the type:  Access Profiles: **name, description**  Accounts: **name, nativeIdentity**  Apps: **name**  Entitlements: **name, value, description**  Roles: **name, description** | [optional] 
+ **limit** | **int**| Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 250]
+ **count** | **bool**| If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to False]
+ **offset** | **int**| Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 0]
 
 ### Return type
 

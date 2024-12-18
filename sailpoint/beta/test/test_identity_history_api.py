@@ -85,7 +85,7 @@ class TestIdentityHistoryApi(unittest.TestCase):
     def test_list_identity_access_items(self) -> None:
         """Test case for list_identity_access_items
 
-        Gets a list of access items for the identity filtered by item type
+        List Access Items by Identity
         """
         pass
 
