@@ -167,19 +167,17 @@ Class | Method | HTTP request | Description
 *ConfigurationHubApi* | [**get_uploaded_configuration**](sailpoint/v3/docs/ConfigurationHubApi.md#get_uploaded_configuration) | **GET** /configuration-hub/backups/uploads/{id} | Get an Uploaded Configuration
 *ConfigurationHubApi* | [**list_uploaded_configurations**](sailpoint/v3/docs/ConfigurationHubApi.md#list_uploaded_configurations) | **GET** /configuration-hub/backups/uploads | List Uploaded Configurations
 *ConfigurationHubApi* | [**update_object_mappings**](sailpoint/v3/docs/ConfigurationHubApi.md#update_object_mappings) | **POST** /configuration-hub/object-mappings/{sourceOrg}/bulk-patch | Bulk updates object mappings
-*ConnectorsApi* | [**create_custom_connector**](sailpoint/v3/docs/ConnectorsApi.md#create_custom_connector) | **POST** /connectors | Create custom connector
-*ConnectorsApi* | [**delete_custom_connector**](sailpoint/v3/docs/ConnectorsApi.md#delete_custom_connector) | **DELETE** /connectors/{scriptName} | Deletes connector by script name
-*ConnectorsApi* | [**get_connector**](sailpoint/v3/docs/ConnectorsApi.md#get_connector) | **GET** /connectors/{scriptName} | Gets connector by script name
-*ConnectorsApi* | [**get_connector_correlation_config**](sailpoint/v3/docs/ConnectorsApi.md#get_connector_correlation_config) | **GET** /connectors/{scriptName}/correlation-config | 
-*ConnectorsApi* | [**get_connector_list**](sailpoint/v3/docs/ConnectorsApi.md#get_connector_list) | **GET** /connectors | Gets connector list
-*ConnectorsApi* | [**get_connector_source_config**](sailpoint/v3/docs/ConnectorsApi.md#get_connector_source_config) | **GET** /connectors/{scriptName}/source-config | 
-*ConnectorsApi* | [**get_connector_source_template**](sailpoint/v3/docs/ConnectorsApi.md#get_connector_source_template) | **GET** /connectors/{scriptName}/source-template | 
-*ConnectorsApi* | [**get_connector_translations**](sailpoint/v3/docs/ConnectorsApi.md#get_connector_translations) | **GET** /connectors/{scriptName}/translations/{locale} | 
-*ConnectorsApi* | [**put_correlation_config**](sailpoint/v3/docs/ConnectorsApi.md#put_correlation_config) | **PUT** /connectors/{scriptName}/correlation-config | 
-*ConnectorsApi* | [**put_source_config**](sailpoint/v3/docs/ConnectorsApi.md#put_source_config) | **PUT** /connectors/{scriptName}/source-config | 
-*ConnectorsApi* | [**put_source_template**](sailpoint/v3/docs/ConnectorsApi.md#put_source_template) | **PUT** /connectors/{scriptName}/source-template | 
-*ConnectorsApi* | [**put_translations**](sailpoint/v3/docs/ConnectorsApi.md#put_translations) | **PUT** /connectors/{scriptName}/translations/{locale} | 
-*ConnectorsApi* | [**update_connector**](sailpoint/v3/docs/ConnectorsApi.md#update_connector) | **PATCH** /connectors/{scriptName} | Update connector by script name
+*ConnectorsApi* | [**create_custom_connector**](sailpoint/v3/docs/ConnectorsApi.md#create_custom_connector) | **POST** /connectors | Create Custom Connector
+*ConnectorsApi* | [**delete_custom_connector**](sailpoint/v3/docs/ConnectorsApi.md#delete_custom_connector) | **DELETE** /connectors/{scriptName} | Delete Connector by Script Name
+*ConnectorsApi* | [**get_connector**](sailpoint/v3/docs/ConnectorsApi.md#get_connector) | **GET** /connectors/{scriptName} | Get Connector by Script Name
+*ConnectorsApi* | [**get_connector_list**](sailpoint/v3/docs/ConnectorsApi.md#get_connector_list) | **GET** /connectors | Get Connector List
+*ConnectorsApi* | [**get_connector_source_config**](sailpoint/v3/docs/ConnectorsApi.md#get_connector_source_config) | **GET** /connectors/{scriptName}/source-config | Get Connector Source Configuration
+*ConnectorsApi* | [**get_connector_source_template**](sailpoint/v3/docs/ConnectorsApi.md#get_connector_source_template) | **GET** /connectors/{scriptName}/source-template | Get Connector Source Template
+*ConnectorsApi* | [**get_connector_translations**](sailpoint/v3/docs/ConnectorsApi.md#get_connector_translations) | **GET** /connectors/{scriptName}/translations/{locale} | Get Connector Translations
+*ConnectorsApi* | [**put_connector_source_config**](sailpoint/v3/docs/ConnectorsApi.md#put_connector_source_config) | **PUT** /connectors/{scriptName}/source-config | Update Connector Source Configuration
+*ConnectorsApi* | [**put_connector_source_template**](sailpoint/v3/docs/ConnectorsApi.md#put_connector_source_template) | **PUT** /connectors/{scriptName}/source-template | Update Connector Source Template
+*ConnectorsApi* | [**put_connector_translations**](sailpoint/v3/docs/ConnectorsApi.md#put_connector_translations) | **PUT** /connectors/{scriptName}/translations/{locale} | Update Connector Translations
+*ConnectorsApi* | [**update_connector**](sailpoint/v3/docs/ConnectorsApi.md#update_connector) | **PATCH** /connectors/{scriptName} | Update Connector by Script Name
 *GlobalTenantSecuritySettingsApi* | [**create_auth_org_network_config**](sailpoint/v3/docs/GlobalTenantSecuritySettingsApi.md#create_auth_org_network_config) | **POST** /auth-org/network-config | Create security network configuration.
 *GlobalTenantSecuritySettingsApi* | [**get_auth_org_lockout_config**](sailpoint/v3/docs/GlobalTenantSecuritySettingsApi.md#get_auth_org_lockout_config) | **GET** /auth-org/lockout-config | Get Auth Org Lockout Configuration.
 *GlobalTenantSecuritySettingsApi* | [**get_auth_org_network_config**](sailpoint/v3/docs/GlobalTenantSecuritySettingsApi.md#get_auth_org_network_config) | **GET** /auth-org/network-config | Get security network configuration.
@@ -805,10 +803,9 @@ Class | Method | HTTP request | Description
  - [PublicIdentityAttributesInner](sailpoint/v3/docs/PublicIdentityAttributesInner.md)
  - [PublicIdentityConfig](sailpoint/v3/docs/PublicIdentityConfig.md)
  - [PutClientLogConfigurationRequest](sailpoint/v3/docs/PutClientLogConfigurationRequest.md)
- - [PutCorrelationConfigRequest](sailpoint/v3/docs/PutCorrelationConfigRequest.md)
+ - [PutConnectorSourceConfigRequest](sailpoint/v3/docs/PutConnectorSourceConfigRequest.md)
+ - [PutConnectorSourceTemplateRequest](sailpoint/v3/docs/PutConnectorSourceTemplateRequest.md)
  - [PutPasswordDictionaryRequest](sailpoint/v3/docs/PutPasswordDictionaryRequest.md)
- - [PutSourceConfigRequest](sailpoint/v3/docs/PutSourceConfigRequest.md)
- - [PutSourceTemplateRequest](sailpoint/v3/docs/PutSourceTemplateRequest.md)
  - [Query](sailpoint/v3/docs/Query.md)
  - [QueryResultFilter](sailpoint/v3/docs/QueryResultFilter.md)
  - [QueryType](sailpoint/v3/docs/QueryType.md)

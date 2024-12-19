@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**delete_source_schedule**](SourcesApi.md#delete_source_schedule) | **DELETE** /sources/{sourceId}/schedules/{scheduleType} | Delete Source Schedule by type.
 [**delete_source_schema**](SourcesApi.md#delete_source_schema) | **DELETE** /sources/{sourceId}/schemas/{schemaId} | Delete Source Schema by ID
 [**get_accounts_schema**](SourcesApi.md#get_accounts_schema) | **GET** /sources/{id}/schemas/accounts | Downloads source accounts schema template
+[**get_correlation_config**](SourcesApi.md#get_correlation_config) | **GET** /sources/{id}/correlation-config | Get Source Correlation Configuration
 [**get_entitlements_schema**](SourcesApi.md#get_entitlements_schema) | **GET** /sources/{id}/schemas/entitlements | Downloads source entitlements schema template
 [**get_native_change_detection_config**](SourcesApi.md#get_native_change_detection_config) | **GET** /sources/{sourceId}/native-change-detection-config | Native Change Detection Configuration
 [**get_provisioning_policy**](SourcesApi.md#get_provisioning_policy) | **GET** /sources/{sourceId}/provisioning-policies/{usageType} | Get Provisioning Policy by UsageType
@@ -36,6 +37,7 @@ Method | HTTP request | Description
 [**list_sources**](SourcesApi.md#list_sources) | **GET** /sources | Lists all sources in IdentityNow.
 [**peek_resource_objects**](SourcesApi.md#peek_resource_objects) | **POST** /sources/{sourceId}/connector/peek-resource-objects | Peek source connector&#39;s resource objects
 [**ping_cluster**](SourcesApi.md#ping_cluster) | **POST** /sources/{sourceId}/connector/ping-cluster | Ping cluster for source connector
+[**put_correlation_config**](SourcesApi.md#put_correlation_config) | **PUT** /sources/{id}/correlation-config | Update Source Correlation Configuration
 [**put_native_change_detection_config**](SourcesApi.md#put_native_change_detection_config) | **PUT** /sources/{sourceId}/native-change-detection-config | Update Native Change Detection Configuration
 [**put_provisioning_policy**](SourcesApi.md#put_provisioning_policy) | **PUT** /sources/{sourceId}/provisioning-policies/{usageType} | Update Provisioning Policy by UsageType
 [**put_source**](SourcesApi.md#put_source) | **PUT** /sources/{id} | Update Source (Full)
@@ -973,6 +975,90 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successfully downloaded the file |  -  |
+**400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
+**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**404** | Not Found - returned if the request URL refers to a resource or object that does not exist |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_correlation_config**
+> CorrelationConfig get_correlation_config(id)
+
+Get Source Correlation Configuration
+
+This API returns the existing correlation configuration for a source specified by the given ID.
+
+### Example
+
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
+
+```python
+import sailpoint.v2024
+from sailpoint.v2024.models.correlation_config import CorrelationConfig
+from sailpoint.v2024.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v2024
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sailpoint.v2024.Configuration(
+    host = "https://sailpoint.api.identitynow.com/v2024"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with sailpoint.v2024.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sailpoint.v2024.SourcesApi(api_client)
+    id = '2c9180835d191a86015d28455b4a2329' # str | The source id
+
+    try:
+        # Get Source Correlation Configuration
+        api_response = api_instance.get_correlation_config(id)
+        print("The response of SourcesApi->get_correlation_config:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SourcesApi->get_correlation_config: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**| The source id | 
+
+### Return type
+
+[**CorrelationConfig**](CorrelationConfig.md)
+
+### Authorization
+
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Correlation configuration for a source |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -2795,6 +2881,92 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | The result of pinging connection with the source connector. |  -  |
+**400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
+**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**404** | Not Found - returned if the request URL refers to a resource or object that does not exist |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **put_correlation_config**
+> CorrelationConfig put_correlation_config(id, correlation_config)
+
+Update Source Correlation Configuration
+
+Replaces the correlation configuration for the source specified by the given ID with the configuration provided in the request body.
+
+### Example
+
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
+
+```python
+import sailpoint.v2024
+from sailpoint.v2024.models.correlation_config import CorrelationConfig
+from sailpoint.v2024.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v2024
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sailpoint.v2024.Configuration(
+    host = "https://sailpoint.api.identitynow.com/v2024"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with sailpoint.v2024.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sailpoint.v2024.SourcesApi(api_client)
+    id = '2c9180835d191a86015d28455b4a2329' # str | The source id
+    correlation_config = sailpoint.v2024.CorrelationConfig() # CorrelationConfig | 
+
+    try:
+        # Update Source Correlation Configuration
+        api_response = api_instance.put_correlation_config(id, correlation_config)
+        print("The response of SourcesApi->put_correlation_config:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SourcesApi->put_correlation_config: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**| The source id | 
+ **correlation_config** | [**CorrelationConfig**](CorrelationConfig.md)|  | 
+
+### Return type
+
+[**CorrelationConfig**](CorrelationConfig.md)
+
+### Authorization
+
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Updated correlation configuration for a source |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |

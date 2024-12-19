@@ -613,11 +613,11 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **send_identity_verification_account_token**
-> send_identity_verification_account_token(send_account_verification_request)
+> send_identity_verification_account_token(id, send_account_verification_request)
 
 Send password reset email
 
-This API sends an email with the link to start Password Reset. After selecting the link an identity will be able to set up a new password. Emails expire after 2 hours.  A token with ORG_ADMIN or HELPDESK authority is required to call this API. 
+This API sends an email with the link to start Password Reset. After selecting the link an identity will be able to set up a new password. Emails expire after 2 hours. 
 
 ### Example
 
@@ -649,11 +649,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.IdentitiesApi(api_client)
+    id = 'ef38f94347e94562b5bb8424a56397d8' # str | Identity ID
     send_account_verification_request = sailpoint.beta.SendAccountVerificationRequest() # SendAccountVerificationRequest | 
 
     try:
         # Send password reset email
-        api_instance.send_identity_verification_account_token(send_account_verification_request)
+        api_instance.send_identity_verification_account_token(id, send_account_verification_request)
     except Exception as e:
         print("Exception when calling IdentitiesApi->send_identity_verification_account_token: %s\n" % e)
 ```
@@ -665,6 +666,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **id** | **str**| Identity ID | 
  **send_account_verification_request** | [**SendAccountVerificationRequest**](SendAccountVerificationRequest.md)|  | 
 
 ### Return type
@@ -699,7 +701,7 @@ void (empty response body)
 
 Invite identities to register
 
-This API submits a task for inviting given identities via email to complete registration. The invitation email will include the link. After selecting the link an identity will be able to set up password and log in into the system. Invitations expire after 7 days. By default invitations send to the work identity email. It can be changed in Admin > Identities > Identity Profiles by selecting corresponding profile and editing Invitation Options.  This task will send an invitation email only for unregistered identities.  The executed task status can be checked by Task Management > [Get task status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status)  A token with ORG_ADMIN or HELPDESK authority is required to call this API. 
+This API submits a task for inviting given identities via email to complete registration. The invitation email will include the link. After selecting the link an identity will be able to set up password and log in into the system. Invitations expire after 7 days. By default invitations send to the work identity email. It can be changed in Admin > Identities > Identity Profiles by selecting corresponding profile and editing Invitation Options.  This task will send an invitation email only for unregistered identities.  The executed task status can be checked by Task Management > [Get task status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status). 
 
 ### Example
 

@@ -4,25 +4,25 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v2024*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_custom_connector**](ConnectorsApi.md#create_custom_connector) | **POST** /connectors | Create custom connector
-[**delete_custom_connector**](ConnectorsApi.md#delete_custom_connector) | **DELETE** /connectors/{scriptName} | Deletes connector by script name
-[**get_connector**](ConnectorsApi.md#get_connector) | **GET** /connectors/{scriptName} | Gets connector by script name
-[**get_connector_correlation_config**](ConnectorsApi.md#get_connector_correlation_config) | **GET** /connectors/{scriptName}/correlation-config | 
-[**get_connector_list**](ConnectorsApi.md#get_connector_list) | **GET** /connectors | Gets connector list
-[**get_connector_source_config**](ConnectorsApi.md#get_connector_source_config) | **GET** /connectors/{scriptName}/source-config | 
-[**get_connector_source_template**](ConnectorsApi.md#get_connector_source_template) | **GET** /connectors/{scriptName}/source-template | 
-[**get_connector_translations**](ConnectorsApi.md#get_connector_translations) | **GET** /connectors/{scriptName}/translations/{locale} | 
-[**put_correlation_config**](ConnectorsApi.md#put_correlation_config) | **PUT** /connectors/{scriptName}/correlation-config | 
-[**put_source_config**](ConnectorsApi.md#put_source_config) | **PUT** /connectors/{scriptName}/source-config | 
-[**put_source_template**](ConnectorsApi.md#put_source_template) | **PUT** /connectors/{scriptName}/source-template | 
-[**put_translations**](ConnectorsApi.md#put_translations) | **PUT** /connectors/{scriptName}/translations/{locale} | 
-[**update_connector**](ConnectorsApi.md#update_connector) | **PATCH** /connectors/{scriptName} | Update connector by script name
+[**create_custom_connector**](ConnectorsApi.md#create_custom_connector) | **POST** /connectors | Create Custom Connector
+[**delete_custom_connector**](ConnectorsApi.md#delete_custom_connector) | **DELETE** /connectors/{scriptName} | Delete Connector by Script Name
+[**get_connector**](ConnectorsApi.md#get_connector) | **GET** /connectors/{scriptName} | Get Connector by Script Name
+[**get_connector_correlation_config**](ConnectorsApi.md#get_connector_correlation_config) | **GET** /connectors/{scriptName}/correlation-config | Get Connector Correlation Configuration
+[**get_connector_list**](ConnectorsApi.md#get_connector_list) | **GET** /connectors | Get Connector List
+[**get_connector_source_config**](ConnectorsApi.md#get_connector_source_config) | **GET** /connectors/{scriptName}/source-config | Get Connector Source Configuration
+[**get_connector_source_template**](ConnectorsApi.md#get_connector_source_template) | **GET** /connectors/{scriptName}/source-template | Get Connector Source Template
+[**get_connector_translations**](ConnectorsApi.md#get_connector_translations) | **GET** /connectors/{scriptName}/translations/{locale} | Get Connector Translations
+[**put_connector_correlation_config**](ConnectorsApi.md#put_connector_correlation_config) | **PUT** /connectors/{scriptName}/correlation-config | Update Connector Correlation Configuration
+[**put_connector_source_config**](ConnectorsApi.md#put_connector_source_config) | **PUT** /connectors/{scriptName}/source-config | Update Connector Source Configuration
+[**put_connector_source_template**](ConnectorsApi.md#put_connector_source_template) | **PUT** /connectors/{scriptName}/source-template | Update Connector Source Template
+[**put_connector_translations**](ConnectorsApi.md#put_connector_translations) | **PUT** /connectors/{scriptName}/translations/{locale} | Update Connector Translations
+[**update_connector**](ConnectorsApi.md#update_connector) | **PATCH** /connectors/{scriptName} | Update Connector by Script Name
 
 
 # **create_custom_connector**
 > V3ConnectorDto create_custom_connector(v3_create_connector_dto)
 
-Create custom connector
+Create Custom Connector
 
 Create custom connector.    
 
@@ -60,7 +60,7 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
     v3_create_connector_dto = sailpoint.v2024.V3CreateConnectorDto() # V3CreateConnectorDto | 
 
     try:
-        # Create custom connector
+        # Create Custom Connector
         api_response = api_instance.create_custom_connector(v3_create_connector_dto)
         print("The response of ConnectorsApi->create_custom_connector:\n")
         pprint(api_response)
@@ -107,7 +107,7 @@ Name | Type | Description  | Notes
 # **delete_custom_connector**
 > delete_custom_connector(script_name)
 
-Deletes connector by script name
+Delete Connector by Script Name
 
 Delete a custom connector that using its script name.
 
@@ -140,10 +140,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v2024.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v2024.ConnectorsApi(api_client)
-    script_name = 'aScriptName' # str | The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
+    script_name = 'aScriptName' # str | The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
 
     try:
-        # Deletes connector by script name
+        # Delete Connector by Script Name
         api_instance.delete_custom_connector(script_name)
     except Exception as e:
         print("Exception when calling ConnectorsApi->delete_custom_connector: %s\n" % e)
@@ -156,7 +156,7 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **script_name** | **str**| The scriptName value of the connector. Scriptname is the unique id generated at connector creation. | 
+ **script_name** | **str**| The scriptName value of the connector. ScriptName is the unique id generated at connector creation. | 
 
 ### Return type
 
@@ -188,7 +188,7 @@ void (empty response body)
 # **get_connector**
 > ConnectorDetail get_connector(script_name, locale=locale)
 
-Gets connector by script name
+Get Connector by Script Name
 
 Fetches a connector that using its script name.    
 
@@ -222,11 +222,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v2024.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v2024.ConnectorsApi(api_client)
-    script_name = 'aScriptName' # str | The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
+    script_name = 'aScriptName' # str | The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
     locale = 'de' # str | The locale to apply to the config. If no viable locale is given, it will default to \"en\" (optional)
 
     try:
-        # Gets connector by script name
+        # Get Connector by Script Name
         api_response = api_instance.get_connector(script_name, locale=locale)
         print("The response of ConnectorsApi->get_connector:\n")
         pprint(api_response)
@@ -241,7 +241,7 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **script_name** | **str**| The scriptName value of the connector. Scriptname is the unique id generated at connector creation. | 
+ **script_name** | **str**| The scriptName value of the connector. ScriptName is the unique id generated at connector creation. | 
  **locale** | **str**| The locale to apply to the config. If no viable locale is given, it will default to \&quot;en\&quot; | [optional] 
 
 ### Return type
@@ -274,7 +274,7 @@ Name | Type | Description  | Notes
 # **get_connector_correlation_config**
 > str get_connector_correlation_config(script_name)
 
-
+Get Connector Correlation Configuration
 
 Fetches a connector's correlation config using its script name.    
 
@@ -310,6 +310,7 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
     script_name = 'aScriptName' # str | The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
 
     try:
+        # Get Connector Correlation Configuration
         api_response = api_instance.get_connector_correlation_config(script_name)
         print("The response of ConnectorsApi->get_connector_correlation_config:\n")
         pprint(api_response)
@@ -356,7 +357,7 @@ Name | Type | Description  | Notes
 # **get_connector_list**
 > List[V3ConnectorDto] get_connector_list(filters=filters, limit=limit, offset=offset, count=count, locale=locale)
 
-Gets connector list
+Get Connector List
 
 Fetches list of connectors that have 'RELEASED' status using filtering and pagination.
 
@@ -397,7 +398,7 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
     locale = 'de' # str | The locale to apply to the config. If no viable locale is given, it will default to \"en\" (optional)
 
     try:
-        # Gets connector list
+        # Get Connector List
         api_response = api_instance.get_connector_list(filters=filters, limit=limit, offset=offset, count=count, locale=locale)
         print("The response of ConnectorsApi->get_connector_list:\n")
         pprint(api_response)
@@ -448,7 +449,7 @@ Name | Type | Description  | Notes
 # **get_connector_source_config**
 > str get_connector_source_config(script_name)
 
-
+Get Connector Source Configuration
 
 Fetches a connector's source config using its script name.    
 
@@ -481,9 +482,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v2024.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v2024.ConnectorsApi(api_client)
-    script_name = 'aScriptName' # str | The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
+    script_name = 'aScriptName' # str | The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
 
     try:
+        # Get Connector Source Configuration
         api_response = api_instance.get_connector_source_config(script_name)
         print("The response of ConnectorsApi->get_connector_source_config:\n")
         pprint(api_response)
@@ -498,7 +500,7 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **script_name** | **str**| The scriptName value of the connector. Scriptname is the unique id generated at connector creation. | 
+ **script_name** | **str**| The scriptName value of the connector. ScriptName is the unique id generated at connector creation. | 
 
 ### Return type
 
@@ -530,7 +532,7 @@ Name | Type | Description  | Notes
 # **get_connector_source_template**
 > str get_connector_source_template(script_name)
 
-
+Get Connector Source Template
 
 Fetches a connector's source template using its script name.    
 
@@ -563,9 +565,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v2024.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v2024.ConnectorsApi(api_client)
-    script_name = 'aScriptName' # str | The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
+    script_name = 'aScriptName' # str | The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
 
     try:
+        # Get Connector Source Template
         api_response = api_instance.get_connector_source_template(script_name)
         print("The response of ConnectorsApi->get_connector_source_template:\n")
         pprint(api_response)
@@ -580,7 +583,7 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **script_name** | **str**| The scriptName value of the connector. Scriptname is the unique id generated at connector creation. | 
+ **script_name** | **str**| The scriptName value of the connector. ScriptName is the unique id generated at connector creation. | 
 
 ### Return type
 
@@ -612,7 +615,7 @@ Name | Type | Description  | Notes
 # **get_connector_translations**
 > str get_connector_translations(script_name, locale)
 
-
+Get Connector Translations
 
 Fetches a connector's translations using its script name.    
 
@@ -649,6 +652,7 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
     locale = 'de' # str | The locale to apply to the config. If no viable locale is given, it will default to \"en\"
 
     try:
+        # Get Connector Translations
         api_response = api_instance.get_connector_translations(script_name, locale)
         print("The response of ConnectorsApi->get_connector_translations:\n")
         pprint(api_response)
@@ -693,10 +697,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **put_correlation_config**
-> UpdateDetail put_correlation_config(script_name, file)
+# **put_connector_correlation_config**
+> UpdateDetail put_connector_correlation_config(script_name, file)
 
-
+Update Connector Correlation Configuration
 
 Update a connector's correlation config using its script name.    
 
@@ -734,11 +738,12 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
     file = None # bytearray | connector correlation config xml file
 
     try:
-        api_response = api_instance.put_correlation_config(script_name, file)
-        print("The response of ConnectorsApi->put_correlation_config:\n")
+        # Update Connector Correlation Configuration
+        api_response = api_instance.put_connector_correlation_config(script_name, file)
+        print("The response of ConnectorsApi->put_connector_correlation_config:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ConnectorsApi->put_correlation_config: %s\n" % e)
+        print("Exception when calling ConnectorsApi->put_connector_correlation_config: %s\n" % e)
 ```
 
 
@@ -778,10 +783,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **put_source_config**
-> UpdateDetail put_source_config(script_name, file)
+# **put_connector_source_config**
+> UpdateDetail put_connector_source_config(script_name, file)
 
-
+Update Connector Source Configuration
 
 Update a connector's source config using its script name.    
 
@@ -815,15 +820,16 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v2024.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v2024.ConnectorsApi(api_client)
-    script_name = 'aScriptName' # str | The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
+    script_name = 'aScriptName' # str | The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
     file = None # bytearray | connector source config xml file
 
     try:
-        api_response = api_instance.put_source_config(script_name, file)
-        print("The response of ConnectorsApi->put_source_config:\n")
+        # Update Connector Source Configuration
+        api_response = api_instance.put_connector_source_config(script_name, file)
+        print("The response of ConnectorsApi->put_connector_source_config:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ConnectorsApi->put_source_config: %s\n" % e)
+        print("Exception when calling ConnectorsApi->put_connector_source_config: %s\n" % e)
 ```
 
 
@@ -833,7 +839,7 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **script_name** | **str**| The scriptName value of the connector. Scriptname is the unique id generated at connector creation. | 
+ **script_name** | **str**| The scriptName value of the connector. ScriptName is the unique id generated at connector creation. | 
  **file** | **bytearray**| connector source config xml file | 
 
 ### Return type
@@ -863,10 +869,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **put_source_template**
-> UpdateDetail put_source_template(script_name, file)
+# **put_connector_source_template**
+> UpdateDetail put_connector_source_template(script_name, file)
 
-
+Update Connector Source Template
 
 Update a connector's source template using its script name.    
 
@@ -900,15 +906,16 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v2024.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v2024.ConnectorsApi(api_client)
-    script_name = 'aScriptName' # str | The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
+    script_name = 'aScriptName' # str | The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
     file = None # bytearray | connector source template xml file
 
     try:
-        api_response = api_instance.put_source_template(script_name, file)
-        print("The response of ConnectorsApi->put_source_template:\n")
+        # Update Connector Source Template
+        api_response = api_instance.put_connector_source_template(script_name, file)
+        print("The response of ConnectorsApi->put_connector_source_template:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ConnectorsApi->put_source_template: %s\n" % e)
+        print("Exception when calling ConnectorsApi->put_connector_source_template: %s\n" % e)
 ```
 
 
@@ -918,7 +925,7 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **script_name** | **str**| The scriptName value of the connector. Scriptname is the unique id generated at connector creation. | 
+ **script_name** | **str**| The scriptName value of the connector. ScriptName is the unique id generated at connector creation. | 
  **file** | **bytearray**| connector source template xml file | 
 
 ### Return type
@@ -948,10 +955,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **put_translations**
-> UpdateDetail put_translations(script_name, locale)
+# **put_connector_translations**
+> UpdateDetail put_connector_translations(script_name, locale)
 
-
+Update Connector Translations
 
 Update a connector's translations using its script name.    
 
@@ -989,11 +996,12 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
     locale = 'de' # str | The locale to apply to the config. If no viable locale is given, it will default to \"en\"
 
     try:
-        api_response = api_instance.put_translations(script_name, locale)
-        print("The response of ConnectorsApi->put_translations:\n")
+        # Update Connector Translations
+        api_response = api_instance.put_connector_translations(script_name, locale)
+        print("The response of ConnectorsApi->put_connector_translations:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ConnectorsApi->put_translations: %s\n" % e)
+        print("Exception when calling ConnectorsApi->put_connector_translations: %s\n" % e)
 ```
 
 
@@ -1036,9 +1044,9 @@ Name | Type | Description  | Notes
 # **update_connector**
 > ConnectorDetail update_connector(script_name, json_patch_operation)
 
-Update connector by script name
+Update Connector by Script Name
 
-Patch a custom connector that using its script name. The following fields are patchable: * connectorMetadata * applicationXml * correlationConfigXml * sourceConfigXml
+This API updates a custom connector by script name using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.  The following fields are patchable:   * connectorMetadata  * applicationXml  * correlationConfigXml  * sourceConfigXml 
 
 ### Example
 
@@ -1071,11 +1079,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v2024.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v2024.ConnectorsApi(api_client)
-    script_name = 'aScriptName' # str | The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
-    json_patch_operation = [sailpoint.v2024.JsonPatchOperation()] # List[JsonPatchOperation] | A list of connector detail update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+    script_name = 'aScriptName' # str | The scriptName value of the connector. ScriptName is the unique id generated at connector creation.
+    json_patch_operation = [sailpoint.v2024.JsonPatchOperation()] # List[JsonPatchOperation] | A list of connector detail update operations 
 
     try:
-        # Update connector by script name
+        # Update Connector by Script Name
         api_response = api_instance.update_connector(script_name, json_patch_operation)
         print("The response of ConnectorsApi->update_connector:\n")
         pprint(api_response)
@@ -1090,8 +1098,8 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **script_name** | **str**| The scriptName value of the connector. Scriptname is the unique id generated at connector creation. | 
- **json_patch_operation** | [**List[JsonPatchOperation]**](JsonPatchOperation.md)| A list of connector detail update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. | 
+ **script_name** | **str**| The scriptName value of the connector. ScriptName is the unique id generated at connector creation. | 
+ **json_patch_operation** | [**List[JsonPatchOperation]**](JsonPatchOperation.md)| A list of connector detail update operations  | 
 
 ### Return type
 

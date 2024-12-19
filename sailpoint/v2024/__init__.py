@@ -395,6 +395,8 @@ from sailpoint.v2024.models.connector_rule_validation_response_details_inner imp
 from sailpoint.v2024.models.context_attribute_dto import ContextAttributeDto
 from sailpoint.v2024.models.context_attribute_dto_value import ContextAttributeDtoValue
 from sailpoint.v2024.models.correlated_governance_event import CorrelatedGovernanceEvent
+from sailpoint.v2024.models.correlation_config import CorrelationConfig
+from sailpoint.v2024.models.correlation_config_attribute_assignments_inner import CorrelationConfigAttributeAssignmentsInner
 from sailpoint.v2024.models.create_domain_dkim405_response import CreateDomainDkim405Response
 from sailpoint.v2024.models.create_external_execute_workflow200_response import CreateExternalExecuteWorkflow200Response
 from sailpoint.v2024.models.create_external_execute_workflow_request import CreateExternalExecuteWorkflowRequest
@@ -587,6 +589,7 @@ from sailpoint.v2024.models.import_options import ImportOptions
 from sailpoint.v2024.models.import_sp_config_request import ImportSpConfigRequest
 from sailpoint.v2024.models.index import Index
 from sailpoint.v2024.models.inner_hit import InnerHit
+from sailpoint.v2024.models.invite_identities_request import InviteIdentitiesRequest
 from sailpoint.v2024.models.invocation import Invocation
 from sailpoint.v2024.models.invocation_status import InvocationStatus
 from sailpoint.v2024.models.invocation_status_type import InvocationStatusType
@@ -763,10 +766,10 @@ from sailpoint.v2024.models.public_identity_attribute_config import PublicIdenti
 from sailpoint.v2024.models.public_identity_attributes_inner import PublicIdentityAttributesInner
 from sailpoint.v2024.models.public_identity_config import PublicIdentityConfig
 from sailpoint.v2024.models.put_client_log_configuration_request import PutClientLogConfigurationRequest
-from sailpoint.v2024.models.put_correlation_config_request import PutCorrelationConfigRequest
+from sailpoint.v2024.models.put_connector_correlation_config_request import PutConnectorCorrelationConfigRequest
+from sailpoint.v2024.models.put_connector_source_config_request import PutConnectorSourceConfigRequest
+from sailpoint.v2024.models.put_connector_source_template_request import PutConnectorSourceTemplateRequest
 from sailpoint.v2024.models.put_password_dictionary_request import PutPasswordDictionaryRequest
-from sailpoint.v2024.models.put_source_config_request import PutSourceConfigRequest
-from sailpoint.v2024.models.put_source_template_request import PutSourceTemplateRequest
 from sailpoint.v2024.models.query import Query
 from sailpoint.v2024.models.query_result_filter import QueryResultFilter
 from sailpoint.v2024.models.query_type import QueryType
@@ -941,6 +944,7 @@ from sailpoint.v2024.models.selector import Selector
 from sailpoint.v2024.models.selector_account_match_config import SelectorAccountMatchConfig
 from sailpoint.v2024.models.selector_account_match_config_match_expression import SelectorAccountMatchConfigMatchExpression
 from sailpoint.v2024.models.self_import_export_dto import SelfImportExportDto
+from sailpoint.v2024.models.send_account_verification_request import SendAccountVerificationRequest
 from sailpoint.v2024.models.send_test_notification_request_dto import SendTestNotificationRequestDto
 from sailpoint.v2024.models.service_desk_integration_dto import ServiceDeskIntegrationDto
 from sailpoint.v2024.models.service_desk_integration_dto1 import ServiceDeskIntegrationDto1

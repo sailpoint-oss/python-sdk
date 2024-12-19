@@ -75,6 +75,20 @@ class TestIdentitiesApi(unittest.TestCase):
         """
         pass
 
+    def test_send_identity_verification_account_token(self) -> None:
+        """Test case for send_identity_verification_account_token
+
+        Send password reset email
+        """
+        pass
+
+    def test_start_identities_invite(self) -> None:
+        """Test case for start_identities_invite
+
+        Invite identities to register
+        """
+        pass
+
     def test_start_identity_processing(self) -> None:
         """Test case for start_identity_processing
 

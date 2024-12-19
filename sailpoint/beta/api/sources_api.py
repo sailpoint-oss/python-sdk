@@ -2405,7 +2405,7 @@ class SourcesApi:
     ) -> CorrelationConfig:
         """Get Source Correlation Configuration
 
-        This API returns the existing correlation configuration for a source specified by the given ID. A token with ORG_ADMIN authority is required to call this API.
+        This API returns the existing correlation configuration for a source specified by the given ID.
 
         :param id: The source id (required)
         :type id: str
@@ -2478,7 +2478,7 @@ class SourcesApi:
     ) -> ApiResponse[CorrelationConfig]:
         """Get Source Correlation Configuration
 
-        This API returns the existing correlation configuration for a source specified by the given ID. A token with ORG_ADMIN authority is required to call this API.
+        This API returns the existing correlation configuration for a source specified by the given ID.
 
         :param id: The source id (required)
         :type id: str
@@ -2551,7 +2551,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Get Source Correlation Configuration
 
-        This API returns the existing correlation configuration for a source specified by the given ID. A token with ORG_ADMIN authority is required to call this API.
+        This API returns the existing correlation configuration for a source specified by the given ID.
 
         :param id: The source id (required)
         :type id: str
@@ -8634,7 +8634,7 @@ class SourcesApi:
     ) -> CorrelationConfig:
         """Update Source Correlation Configuration
 
-        Replaces the correlation configuration for the source specified by the given ID with the configuration provided in the request body.      A token with ORG_ADMIN authority is required to call this API.
+        Replaces the correlation configuration for the source specified by the given ID with the configuration provided in the request body.
 
         :param id: The source id (required)
         :type id: str
@@ -8711,7 +8711,7 @@ class SourcesApi:
     ) -> ApiResponse[CorrelationConfig]:
         """Update Source Correlation Configuration
 
-        Replaces the correlation configuration for the source specified by the given ID with the configuration provided in the request body.      A token with ORG_ADMIN authority is required to call this API.
+        Replaces the correlation configuration for the source specified by the given ID with the configuration provided in the request body.
 
         :param id: The source id (required)
         :type id: str
@@ -8788,7 +8788,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Update Source Correlation Configuration
 
-        Replaces the correlation configuration for the source specified by the given ID with the configuration provided in the request body.      A token with ORG_ADMIN authority is required to call this API.
+        Replaces the correlation configuration for the source specified by the given ID with the configuration provided in the request body.
 
         :param id: The source id (required)
         :type id: str

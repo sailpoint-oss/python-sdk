@@ -444,10 +444,9 @@ from sailpoint.v3.models.public_identity_attribute_config import PublicIdentityA
 from sailpoint.v3.models.public_identity_attributes_inner import PublicIdentityAttributesInner
 from sailpoint.v3.models.public_identity_config import PublicIdentityConfig
 from sailpoint.v3.models.put_client_log_configuration_request import PutClientLogConfigurationRequest
-from sailpoint.v3.models.put_correlation_config_request import PutCorrelationConfigRequest
+from sailpoint.v3.models.put_connector_source_config_request import PutConnectorSourceConfigRequest
+from sailpoint.v3.models.put_connector_source_template_request import PutConnectorSourceTemplateRequest
 from sailpoint.v3.models.put_password_dictionary_request import PutPasswordDictionaryRequest
-from sailpoint.v3.models.put_source_config_request import PutSourceConfigRequest
-from sailpoint.v3.models.put_source_template_request import PutSourceTemplateRequest
 from sailpoint.v3.models.query import Query
 from sailpoint.v3.models.query_result_filter import QueryResultFilter
 from sailpoint.v3.models.query_type import QueryType

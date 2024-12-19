@@ -2127,6 +2127,7 @@ class IdentitiesApi:
     @validate_call
     def send_identity_verification_account_token(
         self,
+        id: Annotated[StrictStr, Field(description="Identity ID")],
         send_account_verification_request: SendAccountVerificationRequest,
         _request_timeout: Union[
             None,
@@ -2143,8 +2144,10 @@ class IdentitiesApi:
     ) -> None:
         """Send password reset email
 
-        This API sends an email with the link to start Password Reset. After selecting the link an identity will be able to set up a new password. Emails expire after 2 hours.  A token with ORG_ADMIN or HELPDESK authority is required to call this API. 
+        This API sends an email with the link to start Password Reset. After selecting the link an identity will be able to set up a new password. Emails expire after 2 hours. 
 
+        :param id: Identity ID (required)
+        :type id: str
         :param send_account_verification_request: (required)
         :type send_account_verification_request: SendAccountVerificationRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -2170,6 +2173,7 @@ class IdentitiesApi:
         """ # noqa: E501
 
         _param = self._send_identity_verification_account_token_serialize(
+            id=id,
             send_account_verification_request=send_account_verification_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2200,6 +2204,7 @@ class IdentitiesApi:
     @validate_call
     def send_identity_verification_account_token_with_http_info(
         self,
+        id: Annotated[StrictStr, Field(description="Identity ID")],
         send_account_verification_request: SendAccountVerificationRequest,
         _request_timeout: Union[
             None,
@@ -2216,8 +2221,10 @@ class IdentitiesApi:
     ) -> ApiResponse[None]:
         """Send password reset email
 
-        This API sends an email with the link to start Password Reset. After selecting the link an identity will be able to set up a new password. Emails expire after 2 hours.  A token with ORG_ADMIN or HELPDESK authority is required to call this API. 
+        This API sends an email with the link to start Password Reset. After selecting the link an identity will be able to set up a new password. Emails expire after 2 hours. 
 
+        :param id: Identity ID (required)
+        :type id: str
         :param send_account_verification_request: (required)
         :type send_account_verification_request: SendAccountVerificationRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -2243,6 +2250,7 @@ class IdentitiesApi:
         """ # noqa: E501
 
         _param = self._send_identity_verification_account_token_serialize(
+            id=id,
             send_account_verification_request=send_account_verification_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2273,6 +2281,7 @@ class IdentitiesApi:
     @validate_call
     def send_identity_verification_account_token_without_preload_content(
         self,
+        id: Annotated[StrictStr, Field(description="Identity ID")],
         send_account_verification_request: SendAccountVerificationRequest,
         _request_timeout: Union[
             None,
@@ -2289,8 +2298,10 @@ class IdentitiesApi:
     ) -> RESTResponseType:
         """Send password reset email
 
-        This API sends an email with the link to start Password Reset. After selecting the link an identity will be able to set up a new password. Emails expire after 2 hours.  A token with ORG_ADMIN or HELPDESK authority is required to call this API. 
+        This API sends an email with the link to start Password Reset. After selecting the link an identity will be able to set up a new password. Emails expire after 2 hours. 
 
+        :param id: Identity ID (required)
+        :type id: str
         :param send_account_verification_request: (required)
         :type send_account_verification_request: SendAccountVerificationRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -2316,6 +2327,7 @@ class IdentitiesApi:
         """ # noqa: E501
 
         _param = self._send_identity_verification_account_token_serialize(
+            id=id,
             send_account_verification_request=send_account_verification_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2341,6 +2353,7 @@ class IdentitiesApi:
 
     def _send_identity_verification_account_token_serialize(
         self,
+        id,
         send_account_verification_request,
         _request_auth,
         _content_type,
@@ -2361,6 +2374,8 @@ class IdentitiesApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -2434,7 +2449,7 @@ class IdentitiesApi:
     ) -> TaskStatus:
         """Invite identities to register
 
-        This API submits a task for inviting given identities via email to complete registration. The invitation email will include the link. After selecting the link an identity will be able to set up password and log in into the system. Invitations expire after 7 days. By default invitations send to the work identity email. It can be changed in Admin > Identities > Identity Profiles by selecting corresponding profile and editing Invitation Options.  This task will send an invitation email only for unregistered identities.  The executed task status can be checked by Task Management > [Get task status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status)  A token with ORG_ADMIN or HELPDESK authority is required to call this API. 
+        This API submits a task for inviting given identities via email to complete registration. The invitation email will include the link. After selecting the link an identity will be able to set up password and log in into the system. Invitations expire after 7 days. By default invitations send to the work identity email. It can be changed in Admin > Identities > Identity Profiles by selecting corresponding profile and editing Invitation Options.  This task will send an invitation email only for unregistered identities.  The executed task status can be checked by Task Management > [Get task status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status). 
 
         :param invite_identities_request: (required)
         :type invite_identities_request: InviteIdentitiesRequest
@@ -2507,7 +2522,7 @@ class IdentitiesApi:
     ) -> ApiResponse[TaskStatus]:
         """Invite identities to register
 
-        This API submits a task for inviting given identities via email to complete registration. The invitation email will include the link. After selecting the link an identity will be able to set up password and log in into the system. Invitations expire after 7 days. By default invitations send to the work identity email. It can be changed in Admin > Identities > Identity Profiles by selecting corresponding profile and editing Invitation Options.  This task will send an invitation email only for unregistered identities.  The executed task status can be checked by Task Management > [Get task status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status)  A token with ORG_ADMIN or HELPDESK authority is required to call this API. 
+        This API submits a task for inviting given identities via email to complete registration. The invitation email will include the link. After selecting the link an identity will be able to set up password and log in into the system. Invitations expire after 7 days. By default invitations send to the work identity email. It can be changed in Admin > Identities > Identity Profiles by selecting corresponding profile and editing Invitation Options.  This task will send an invitation email only for unregistered identities.  The executed task status can be checked by Task Management > [Get task status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status). 
 
         :param invite_identities_request: (required)
         :type invite_identities_request: InviteIdentitiesRequest
@@ -2580,7 +2595,7 @@ class IdentitiesApi:
     ) -> RESTResponseType:
         """Invite identities to register
 
-        This API submits a task for inviting given identities via email to complete registration. The invitation email will include the link. After selecting the link an identity will be able to set up password and log in into the system. Invitations expire after 7 days. By default invitations send to the work identity email. It can be changed in Admin > Identities > Identity Profiles by selecting corresponding profile and editing Invitation Options.  This task will send an invitation email only for unregistered identities.  The executed task status can be checked by Task Management > [Get task status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status)  A token with ORG_ADMIN or HELPDESK authority is required to call this API. 
+        This API submits a task for inviting given identities via email to complete registration. The invitation email will include the link. After selecting the link an identity will be able to set up password and log in into the system. Invitations expire after 7 days. By default invitations send to the work identity email. It can be changed in Admin > Identities > Identity Profiles by selecting corresponding profile and editing Invitation Options.  This task will send an invitation email only for unregistered identities.  The executed task status can be checked by Task Management > [Get task status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status). 
 
         :param invite_identities_request: (required)
         :type invite_identities_request: InviteIdentitiesRequest

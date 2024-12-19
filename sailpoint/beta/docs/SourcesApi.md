@@ -726,7 +726,7 @@ void (empty response body)
 
 Get Source Correlation Configuration
 
-This API returns the existing correlation configuration for a source specified by the given ID. A token with ORG_ADMIN authority is required to call this API.
+This API returns the existing correlation configuration for a source specified by the given ID.
 
 ### Example
 
@@ -2518,7 +2518,7 @@ Name | Type | Description  | Notes
 
 Update Source Correlation Configuration
 
-Replaces the correlation configuration for the source specified by the given ID with the configuration provided in the request body.      A token with ORG_ADMIN authority is required to call this API.
+Replaces the correlation configuration for the source specified by the given ID with the configuration provided in the request body.
 
 ### Example
 

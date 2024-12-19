@@ -211,19 +211,19 @@ Class | Method | HTTP request | Description
 *ConnectorRuleManagementApi* | [**get_connector_rule_list**](sailpoint/v2024/docs/ConnectorRuleManagementApi.md#get_connector_rule_list) | **GET** /connector-rules | List Connector Rules
 *ConnectorRuleManagementApi* | [**update_connector_rule**](sailpoint/v2024/docs/ConnectorRuleManagementApi.md#update_connector_rule) | **PUT** /connector-rules/{id} | Update a Connector Rule
 *ConnectorRuleManagementApi* | [**validate_connector_rule**](sailpoint/v2024/docs/ConnectorRuleManagementApi.md#validate_connector_rule) | **POST** /connector-rules/validate | Validate Connector Rule
-*ConnectorsApi* | [**create_custom_connector**](sailpoint/v2024/docs/ConnectorsApi.md#create_custom_connector) | **POST** /connectors | Create custom connector
-*ConnectorsApi* | [**delete_custom_connector**](sailpoint/v2024/docs/ConnectorsApi.md#delete_custom_connector) | **DELETE** /connectors/{scriptName} | Deletes connector by script name
-*ConnectorsApi* | [**get_connector**](sailpoint/v2024/docs/ConnectorsApi.md#get_connector) | **GET** /connectors/{scriptName} | Gets connector by script name
-*ConnectorsApi* | [**get_connector_correlation_config**](sailpoint/v2024/docs/ConnectorsApi.md#get_connector_correlation_config) | **GET** /connectors/{scriptName}/correlation-config | 
-*ConnectorsApi* | [**get_connector_list**](sailpoint/v2024/docs/ConnectorsApi.md#get_connector_list) | **GET** /connectors | Gets connector list
-*ConnectorsApi* | [**get_connector_source_config**](sailpoint/v2024/docs/ConnectorsApi.md#get_connector_source_config) | **GET** /connectors/{scriptName}/source-config | 
-*ConnectorsApi* | [**get_connector_source_template**](sailpoint/v2024/docs/ConnectorsApi.md#get_connector_source_template) | **GET** /connectors/{scriptName}/source-template | 
-*ConnectorsApi* | [**get_connector_translations**](sailpoint/v2024/docs/ConnectorsApi.md#get_connector_translations) | **GET** /connectors/{scriptName}/translations/{locale} | 
-*ConnectorsApi* | [**put_correlation_config**](sailpoint/v2024/docs/ConnectorsApi.md#put_correlation_config) | **PUT** /connectors/{scriptName}/correlation-config | 
-*ConnectorsApi* | [**put_source_config**](sailpoint/v2024/docs/ConnectorsApi.md#put_source_config) | **PUT** /connectors/{scriptName}/source-config | 
-*ConnectorsApi* | [**put_source_template**](sailpoint/v2024/docs/ConnectorsApi.md#put_source_template) | **PUT** /connectors/{scriptName}/source-template | 
-*ConnectorsApi* | [**put_translations**](sailpoint/v2024/docs/ConnectorsApi.md#put_translations) | **PUT** /connectors/{scriptName}/translations/{locale} | 
-*ConnectorsApi* | [**update_connector**](sailpoint/v2024/docs/ConnectorsApi.md#update_connector) | **PATCH** /connectors/{scriptName} | Update connector by script name
+*ConnectorsApi* | [**create_custom_connector**](sailpoint/v2024/docs/ConnectorsApi.md#create_custom_connector) | **POST** /connectors | Create Custom Connector
+*ConnectorsApi* | [**delete_custom_connector**](sailpoint/v2024/docs/ConnectorsApi.md#delete_custom_connector) | **DELETE** /connectors/{scriptName} | Delete Connector by Script Name
+*ConnectorsApi* | [**get_connector**](sailpoint/v2024/docs/ConnectorsApi.md#get_connector) | **GET** /connectors/{scriptName} | Get Connector by Script Name
+*ConnectorsApi* | [**get_connector_correlation_config**](sailpoint/v2024/docs/ConnectorsApi.md#get_connector_correlation_config) | **GET** /connectors/{scriptName}/correlation-config | Get Connector Correlation Configuration
+*ConnectorsApi* | [**get_connector_list**](sailpoint/v2024/docs/ConnectorsApi.md#get_connector_list) | **GET** /connectors | Get Connector List
+*ConnectorsApi* | [**get_connector_source_config**](sailpoint/v2024/docs/ConnectorsApi.md#get_connector_source_config) | **GET** /connectors/{scriptName}/source-config | Get Connector Source Configuration
+*ConnectorsApi* | [**get_connector_source_template**](sailpoint/v2024/docs/ConnectorsApi.md#get_connector_source_template) | **GET** /connectors/{scriptName}/source-template | Get Connector Source Template
+*ConnectorsApi* | [**get_connector_translations**](sailpoint/v2024/docs/ConnectorsApi.md#get_connector_translations) | **GET** /connectors/{scriptName}/translations/{locale} | Get Connector Translations
+*ConnectorsApi* | [**put_connector_correlation_config**](sailpoint/v2024/docs/ConnectorsApi.md#put_connector_correlation_config) | **PUT** /connectors/{scriptName}/correlation-config | Update Connector Correlation Configuration
+*ConnectorsApi* | [**put_connector_source_config**](sailpoint/v2024/docs/ConnectorsApi.md#put_connector_source_config) | **PUT** /connectors/{scriptName}/source-config | Update Connector Source Configuration
+*ConnectorsApi* | [**put_connector_source_template**](sailpoint/v2024/docs/ConnectorsApi.md#put_connector_source_template) | **PUT** /connectors/{scriptName}/source-template | Update Connector Source Template
+*ConnectorsApi* | [**put_connector_translations**](sailpoint/v2024/docs/ConnectorsApi.md#put_connector_translations) | **PUT** /connectors/{scriptName}/translations/{locale} | Update Connector Translations
+*ConnectorsApi* | [**update_connector**](sailpoint/v2024/docs/ConnectorsApi.md#update_connector) | **PATCH** /connectors/{scriptName} | Update Connector by Script Name
 *CustomFormsApi* | [**create_form_definition**](sailpoint/v2024/docs/CustomFormsApi.md#create_form_definition) | **POST** /form-definitions | Creates a form definition.
 *CustomFormsApi* | [**create_form_definition_dynamic_schema**](sailpoint/v2024/docs/CustomFormsApi.md#create_form_definition_dynamic_schema) | **POST** /form-definitions/forms-action-dynamic-schema | Generate JSON Schema dynamically.
 *CustomFormsApi* | [**create_form_definition_file_request**](sailpoint/v2024/docs/CustomFormsApi.md#create_form_definition_file_request) | **POST** /form-definitions/{formDefinitionID}/upload | Upload new form definition file.
@@ -336,6 +336,8 @@ Class | Method | HTTP request | Description
 *IdentitiesApi* | [**get_role_assignments**](sailpoint/v2024/docs/IdentitiesApi.md#get_role_assignments) | **GET** /identities/{identityId}/role-assignments | List role assignments
 *IdentitiesApi* | [**list_identities**](sailpoint/v2024/docs/IdentitiesApi.md#list_identities) | **GET** /identities | List Identities
 *IdentitiesApi* | [**reset_identity**](sailpoint/v2024/docs/IdentitiesApi.md#reset_identity) | **POST** /identities/{id}/reset | Reset an identity
+*IdentitiesApi* | [**send_identity_verification_account_token**](sailpoint/v2024/docs/IdentitiesApi.md#send_identity_verification_account_token) | **POST** /identities/{id}/verification/account/send | Send password reset email
+*IdentitiesApi* | [**start_identities_invite**](sailpoint/v2024/docs/IdentitiesApi.md#start_identities_invite) | **POST** /identities/invite | Invite identities to register
 *IdentitiesApi* | [**start_identity_processing**](sailpoint/v2024/docs/IdentitiesApi.md#start_identity_processing) | **POST** /identities/process | Process a list of identityIds
 *IdentitiesApi* | [**synchronize_attributes_for_identity**](sailpoint/v2024/docs/IdentitiesApi.md#synchronize_attributes_for_identity) | **POST** /identities/{identityId}/synchronize-attributes | Attribute synchronization for single identity.
 *IdentityAttributesApi* | [**create_identity_attribute**](sailpoint/v2024/docs/IdentityAttributesApi.md#create_identity_attribute) | **POST** /identity-attributes | Create Identity Attribute
@@ -585,6 +587,7 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**delete_source_schedule**](sailpoint/v2024/docs/SourcesApi.md#delete_source_schedule) | **DELETE** /sources/{sourceId}/schedules/{scheduleType} | Delete Source Schedule by type.
 *SourcesApi* | [**delete_source_schema**](sailpoint/v2024/docs/SourcesApi.md#delete_source_schema) | **DELETE** /sources/{sourceId}/schemas/{schemaId} | Delete Source Schema by ID
 *SourcesApi* | [**get_accounts_schema**](sailpoint/v2024/docs/SourcesApi.md#get_accounts_schema) | **GET** /sources/{id}/schemas/accounts | Downloads source accounts schema template
+*SourcesApi* | [**get_correlation_config**](sailpoint/v2024/docs/SourcesApi.md#get_correlation_config) | **GET** /sources/{id}/correlation-config | Get Source Correlation Configuration
 *SourcesApi* | [**get_entitlements_schema**](sailpoint/v2024/docs/SourcesApi.md#get_entitlements_schema) | **GET** /sources/{id}/schemas/entitlements | Downloads source entitlements schema template
 *SourcesApi* | [**get_native_change_detection_config**](sailpoint/v2024/docs/SourcesApi.md#get_native_change_detection_config) | **GET** /sources/{sourceId}/native-change-detection-config | Native Change Detection Configuration
 *SourcesApi* | [**get_provisioning_policy**](sailpoint/v2024/docs/SourcesApi.md#get_provisioning_policy) | **GET** /sources/{sourceId}/provisioning-policies/{usageType} | Get Provisioning Policy by UsageType
@@ -606,6 +609,7 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**list_sources**](sailpoint/v2024/docs/SourcesApi.md#list_sources) | **GET** /sources | Lists all sources in IdentityNow.
 *SourcesApi* | [**peek_resource_objects**](sailpoint/v2024/docs/SourcesApi.md#peek_resource_objects) | **POST** /sources/{sourceId}/connector/peek-resource-objects | Peek source connector&#39;s resource objects
 *SourcesApi* | [**ping_cluster**](sailpoint/v2024/docs/SourcesApi.md#ping_cluster) | **POST** /sources/{sourceId}/connector/ping-cluster | Ping cluster for source connector
+*SourcesApi* | [**put_correlation_config**](sailpoint/v2024/docs/SourcesApi.md#put_correlation_config) | **PUT** /sources/{id}/correlation-config | Update Source Correlation Configuration
 *SourcesApi* | [**put_native_change_detection_config**](sailpoint/v2024/docs/SourcesApi.md#put_native_change_detection_config) | **PUT** /sources/{sourceId}/native-change-detection-config | Update Native Change Detection Configuration
 *SourcesApi* | [**put_provisioning_policy**](sailpoint/v2024/docs/SourcesApi.md#put_provisioning_policy) | **PUT** /sources/{sourceId}/provisioning-policies/{usageType} | Update Provisioning Policy by UsageType
 *SourcesApi* | [**put_source**](sailpoint/v2024/docs/SourcesApi.md#put_source) | **PUT** /sources/{id} | Update Source (Full)
@@ -988,6 +992,8 @@ Class | Method | HTTP request | Description
  - [ContextAttributeDto](sailpoint/v2024/docs/ContextAttributeDto.md)
  - [ContextAttributeDtoValue](sailpoint/v2024/docs/ContextAttributeDtoValue.md)
  - [CorrelatedGovernanceEvent](sailpoint/v2024/docs/CorrelatedGovernanceEvent.md)
+ - [CorrelationConfig](sailpoint/v2024/docs/CorrelationConfig.md)
+ - [CorrelationConfigAttributeAssignmentsInner](sailpoint/v2024/docs/CorrelationConfigAttributeAssignmentsInner.md)
  - [CreateDomainDkim405Response](sailpoint/v2024/docs/CreateDomainDkim405Response.md)
  - [CreateExternalExecuteWorkflow200Response](sailpoint/v2024/docs/CreateExternalExecuteWorkflow200Response.md)
  - [CreateExternalExecuteWorkflowRequest](sailpoint/v2024/docs/CreateExternalExecuteWorkflowRequest.md)
@@ -1180,6 +1186,7 @@ Class | Method | HTTP request | Description
  - [ImportSpConfigRequest](sailpoint/v2024/docs/ImportSpConfigRequest.md)
  - [Index](sailpoint/v2024/docs/Index.md)
  - [InnerHit](sailpoint/v2024/docs/InnerHit.md)
+ - [InviteIdentitiesRequest](sailpoint/v2024/docs/InviteIdentitiesRequest.md)
  - [Invocation](sailpoint/v2024/docs/Invocation.md)
  - [InvocationStatus](sailpoint/v2024/docs/InvocationStatus.md)
  - [InvocationStatusType](sailpoint/v2024/docs/InvocationStatusType.md)
@@ -1356,10 +1363,10 @@ Class | Method | HTTP request | Description
  - [PublicIdentityAttributesInner](sailpoint/v2024/docs/PublicIdentityAttributesInner.md)
  - [PublicIdentityConfig](sailpoint/v2024/docs/PublicIdentityConfig.md)
  - [PutClientLogConfigurationRequest](sailpoint/v2024/docs/PutClientLogConfigurationRequest.md)
- - [PutCorrelationConfigRequest](sailpoint/v2024/docs/PutCorrelationConfigRequest.md)
+ - [PutConnectorCorrelationConfigRequest](sailpoint/v2024/docs/PutConnectorCorrelationConfigRequest.md)
+ - [PutConnectorSourceConfigRequest](sailpoint/v2024/docs/PutConnectorSourceConfigRequest.md)
+ - [PutConnectorSourceTemplateRequest](sailpoint/v2024/docs/PutConnectorSourceTemplateRequest.md)
  - [PutPasswordDictionaryRequest](sailpoint/v2024/docs/PutPasswordDictionaryRequest.md)
- - [PutSourceConfigRequest](sailpoint/v2024/docs/PutSourceConfigRequest.md)
- - [PutSourceTemplateRequest](sailpoint/v2024/docs/PutSourceTemplateRequest.md)
  - [Query](sailpoint/v2024/docs/Query.md)
  - [QueryResultFilter](sailpoint/v2024/docs/QueryResultFilter.md)
  - [QueryType](sailpoint/v2024/docs/QueryType.md)
@@ -1534,6 +1541,7 @@ Class | Method | HTTP request | Description
  - [SelectorAccountMatchConfig](sailpoint/v2024/docs/SelectorAccountMatchConfig.md)
  - [SelectorAccountMatchConfigMatchExpression](sailpoint/v2024/docs/SelectorAccountMatchConfigMatchExpression.md)
  - [SelfImportExportDto](sailpoint/v2024/docs/SelfImportExportDto.md)
+ - [SendAccountVerificationRequest](sailpoint/v2024/docs/SendAccountVerificationRequest.md)
  - [SendTestNotificationRequestDto](sailpoint/v2024/docs/SendTestNotificationRequestDto.md)
  - [ServiceDeskIntegrationDto](sailpoint/v2024/docs/ServiceDeskIntegrationDto.md)
  - [ServiceDeskIntegrationDto1](sailpoint/v2024/docs/ServiceDeskIntegrationDto1.md)

@@ -4,15 +4,15 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_connector_list**](ConnectorsApi.md#get_connector_list) | **GET** /connectors | Gets connector list
+[**get_connector_list**](ConnectorsApi.md#get_connector_list) | **GET** /connectors | Get Connector List
 
 
 # **get_connector_list**
 > List[V3ConnectorDto] get_connector_list(filters=filters, limit=limit, offset=offset, count=count, locale=locale)
 
-Gets connector list
+Get Connector List
 
-Fetches list of connectors that have 'RELEASED' status using filtering and pagination. A token with ORG_ADMIN authority is required to call this API.
+Fetches list of connectors that have 'RELEASED' status using filtering and pagination.
 
 ### Example
 
@@ -51,7 +51,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
     locale = 'de' # str | The locale to apply to the config. If no viable locale is given, it will default to \"en\" (optional)
 
     try:
-        # Gets connector list
+        # Get Connector List
         api_response = api_instance.get_connector_list(filters=filters, limit=limit, offset=offset, count=count, locale=locale)
         print("The response of ConnectorsApi->get_connector_list:\n")
         pprint(api_response)

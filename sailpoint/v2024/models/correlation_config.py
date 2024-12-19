@@ -17,17 +17,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBytes, StrictStr
-from typing import Any, ClassVar, Dict, List, Union
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.v2024.models.correlation_config_attribute_assignments_inner import CorrelationConfigAttributeAssignmentsInner
 from typing import Optional, Set
 from typing_extensions import Self
 
-class PutSourceConfigRequest(BaseModel):
+class CorrelationConfig(BaseModel):
     """
-    PutSourceConfigRequest
+    Source configuration information that is used by correlation process.
     """ # noqa: E501
-    file: Union[StrictBytes, StrictStr] = Field(description="connector source config xml file")
-    __properties: ClassVar[List[str]] = ["file"]
+    id: Optional[StrictStr] = Field(default=None, description="The ID of the correlation configuration.")
+    name: Optional[StrictStr] = Field(default=None, description="The name of the correlation configuration.")
+    attribute_assignments: Optional[List[CorrelationConfigAttributeAssignmentsInner]] = Field(default=None, description="The list of attribute assignments of the correlation configuration.", alias="attributeAssignments")
+    __properties: ClassVar[List[str]] = ["id", "name", "attributeAssignments"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -47,7 +50,7 @@ class PutSourceConfigRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of PutSourceConfigRequest from a JSON string"""
+        """Create an instance of CorrelationConfig from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -68,11 +71,18 @@ class PutSourceConfigRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in attribute_assignments (list)
+        _items = []
+        if self.attribute_assignments:
+            for _item_attribute_assignments in self.attribute_assignments:
+                if _item_attribute_assignments:
+                    _items.append(_item_attribute_assignments.to_dict())
+            _dict['attributeAssignments'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of PutSourceConfigRequest from a dict"""
+        """Create an instance of CorrelationConfig from a dict"""
         if obj is None:
             return None
 
@@ -80,7 +90,9 @@ class PutSourceConfigRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "file": obj.get("file")
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "attributeAssignments": [CorrelationConfigAttributeAssignmentsInner.from_dict(_item) for _item in obj["attributeAssignments"]] if obj.get("attributeAssignments") is not None else None
         })
         return _obj
 

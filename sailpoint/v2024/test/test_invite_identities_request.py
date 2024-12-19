@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2024.models.put_source_config_request import PutSourceConfigRequest
+from sailpoint.v2024.models.invite_identities_request import InviteIdentitiesRequest
 
-class TestPutSourceConfigRequest(unittest.TestCase):
-    """PutSourceConfigRequest unit test stubs"""
+class TestInviteIdentitiesRequest(unittest.TestCase):
+    """InviteIdentitiesRequest unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,26 +25,26 @@ class TestPutSourceConfigRequest(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> PutSourceConfigRequest:
-        """Test PutSourceConfigRequest
+    def make_instance(self, include_optional) -> InviteIdentitiesRequest:
+        """Test InviteIdentitiesRequest
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `PutSourceConfigRequest`
+        # uncomment below to create an instance of `InviteIdentitiesRequest`
         """
-        model = PutSourceConfigRequest()
+        model = InviteIdentitiesRequest()
         if include_optional:
-            return PutSourceConfigRequest(
-                file = bytes(b'blah')
+            return InviteIdentitiesRequest(
+                ids = [2b568c65bc3c4c57a43bd97e3a8e55, 2c9180867769897d01776ed5f125512f],
+                uninvited = False
             )
         else:
-            return PutSourceConfigRequest(
-                file = bytes(b'blah'),
+            return InviteIdentitiesRequest(
         )
         """
 
-    def testPutSourceConfigRequest(self):
-        """Test PutSourceConfigRequest"""
+    def testInviteIdentitiesRequest(self):
+        """Test InviteIdentitiesRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

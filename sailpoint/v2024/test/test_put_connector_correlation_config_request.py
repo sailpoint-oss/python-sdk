@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2024.models.put_source_template_request import PutSourceTemplateRequest
+from sailpoint.v2024.models.put_connector_correlation_config_request import PutConnectorCorrelationConfigRequest
 
-class TestPutSourceTemplateRequest(unittest.TestCase):
-    """PutSourceTemplateRequest unit test stubs"""
+class TestPutConnectorCorrelationConfigRequest(unittest.TestCase):
+    """PutConnectorCorrelationConfigRequest unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,26 +25,26 @@ class TestPutSourceTemplateRequest(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> PutSourceTemplateRequest:
-        """Test PutSourceTemplateRequest
+    def make_instance(self, include_optional) -> PutConnectorCorrelationConfigRequest:
+        """Test PutConnectorCorrelationConfigRequest
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `PutSourceTemplateRequest`
+        # uncomment below to create an instance of `PutConnectorCorrelationConfigRequest`
         """
-        model = PutSourceTemplateRequest()
+        model = PutConnectorCorrelationConfigRequest()
         if include_optional:
-            return PutSourceTemplateRequest(
+            return PutConnectorCorrelationConfigRequest(
                 file = bytes(b'blah')
             )
         else:
-            return PutSourceTemplateRequest(
+            return PutConnectorCorrelationConfigRequest(
                 file = bytes(b'blah'),
         )
         """
 
-    def testPutSourceTemplateRequest(self):
-        """Test PutSourceTemplateRequest"""
+    def testPutConnectorCorrelationConfigRequest(self):
+        """Test PutConnectorCorrelationConfigRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

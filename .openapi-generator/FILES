@@ -391,6 +391,8 @@ sailpoint/v2024/docs/ConnectorsApi.md
 sailpoint/v2024/docs/ContextAttributeDto.md
 sailpoint/v2024/docs/ContextAttributeDtoValue.md
 sailpoint/v2024/docs/CorrelatedGovernanceEvent.md
+sailpoint/v2024/docs/CorrelationConfig.md
+sailpoint/v2024/docs/CorrelationConfigAttributeAssignmentsInner.md
 sailpoint/v2024/docs/CreateDomainDkim405Response.md
 sailpoint/v2024/docs/CreateExternalExecuteWorkflow200Response.md
 sailpoint/v2024/docs/CreateExternalExecuteWorkflowRequest.md
@@ -600,6 +602,7 @@ sailpoint/v2024/docs/ImportOptions.md
 sailpoint/v2024/docs/ImportSpConfigRequest.md
 sailpoint/v2024/docs/Index.md
 sailpoint/v2024/docs/InnerHit.md
+sailpoint/v2024/docs/InviteIdentitiesRequest.md
 sailpoint/v2024/docs/Invocation.md
 sailpoint/v2024/docs/InvocationStatus.md
 sailpoint/v2024/docs/InvocationStatusType.md
@@ -792,10 +795,10 @@ sailpoint/v2024/docs/PublicIdentityAttributeConfig.md
 sailpoint/v2024/docs/PublicIdentityAttributesInner.md
 sailpoint/v2024/docs/PublicIdentityConfig.md
 sailpoint/v2024/docs/PutClientLogConfigurationRequest.md
-sailpoint/v2024/docs/PutCorrelationConfigRequest.md
+sailpoint/v2024/docs/PutConnectorCorrelationConfigRequest.md
+sailpoint/v2024/docs/PutConnectorSourceConfigRequest.md
+sailpoint/v2024/docs/PutConnectorSourceTemplateRequest.md
 sailpoint/v2024/docs/PutPasswordDictionaryRequest.md
-sailpoint/v2024/docs/PutSourceConfigRequest.md
-sailpoint/v2024/docs/PutSourceTemplateRequest.md
 sailpoint/v2024/docs/Query.md
 sailpoint/v2024/docs/QueryResultFilter.md
 sailpoint/v2024/docs/QueryType.md
@@ -983,6 +986,7 @@ sailpoint/v2024/docs/Selector.md
 sailpoint/v2024/docs/SelectorAccountMatchConfig.md
 sailpoint/v2024/docs/SelectorAccountMatchConfigMatchExpression.md
 sailpoint/v2024/docs/SelfImportExportDto.md
+sailpoint/v2024/docs/SendAccountVerificationRequest.md
 sailpoint/v2024/docs/SendTestNotificationRequestDto.md
 sailpoint/v2024/docs/ServiceDeskIntegrationApi.md
 sailpoint/v2024/docs/ServiceDeskIntegrationDto.md
@@ -1471,6 +1475,8 @@ sailpoint/v2024/models/connector_rule_validation_response_details_inner.py
 sailpoint/v2024/models/context_attribute_dto.py
 sailpoint/v2024/models/context_attribute_dto_value.py
 sailpoint/v2024/models/correlated_governance_event.py
+sailpoint/v2024/models/correlation_config.py
+sailpoint/v2024/models/correlation_config_attribute_assignments_inner.py
 sailpoint/v2024/models/create_domain_dkim405_response.py
 sailpoint/v2024/models/create_external_execute_workflow200_response.py
 sailpoint/v2024/models/create_external_execute_workflow_request.py
@@ -1663,6 +1669,7 @@ sailpoint/v2024/models/import_options.py
 sailpoint/v2024/models/import_sp_config_request.py
 sailpoint/v2024/models/index.py
 sailpoint/v2024/models/inner_hit.py
+sailpoint/v2024/models/invite_identities_request.py
 sailpoint/v2024/models/invocation.py
 sailpoint/v2024/models/invocation_status.py
 sailpoint/v2024/models/invocation_status_type.py
@@ -1839,10 +1846,10 @@ sailpoint/v2024/models/public_identity_attribute_config.py
 sailpoint/v2024/models/public_identity_attributes_inner.py
 sailpoint/v2024/models/public_identity_config.py
 sailpoint/v2024/models/put_client_log_configuration_request.py
-sailpoint/v2024/models/put_correlation_config_request.py
+sailpoint/v2024/models/put_connector_correlation_config_request.py
+sailpoint/v2024/models/put_connector_source_config_request.py
+sailpoint/v2024/models/put_connector_source_template_request.py
 sailpoint/v2024/models/put_password_dictionary_request.py
-sailpoint/v2024/models/put_source_config_request.py
-sailpoint/v2024/models/put_source_template_request.py
 sailpoint/v2024/models/query.py
 sailpoint/v2024/models/query_result_filter.py
 sailpoint/v2024/models/query_type.py
@@ -2017,6 +2024,7 @@ sailpoint/v2024/models/selector.py
 sailpoint/v2024/models/selector_account_match_config.py
 sailpoint/v2024/models/selector_account_match_config_match_expression.py
 sailpoint/v2024/models/self_import_export_dto.py
+sailpoint/v2024/models/send_account_verification_request.py
 sailpoint/v2024/models/send_test_notification_request_dto.py
 sailpoint/v2024/models/service_desk_integration_dto.py
 sailpoint/v2024/models/service_desk_integration_dto1.py
@@ -2513,6 +2521,8 @@ sailpoint/v2024/test/test_connectors_api.py
 sailpoint/v2024/test/test_context_attribute_dto.py
 sailpoint/v2024/test/test_context_attribute_dto_value.py
 sailpoint/v2024/test/test_correlated_governance_event.py
+sailpoint/v2024/test/test_correlation_config.py
+sailpoint/v2024/test/test_correlation_config_attribute_assignments_inner.py
 sailpoint/v2024/test/test_create_domain_dkim405_response.py
 sailpoint/v2024/test/test_create_external_execute_workflow200_response.py
 sailpoint/v2024/test/test_create_external_execute_workflow_request.py
@@ -2722,6 +2732,7 @@ sailpoint/v2024/test/test_import_options.py
 sailpoint/v2024/test/test_import_sp_config_request.py
 sailpoint/v2024/test/test_index.py
 sailpoint/v2024/test/test_inner_hit.py
+sailpoint/v2024/test/test_invite_identities_request.py
 sailpoint/v2024/test/test_invocation.py
 sailpoint/v2024/test/test_invocation_status.py
 sailpoint/v2024/test/test_invocation_status_type.py
@@ -2914,10 +2925,10 @@ sailpoint/v2024/test/test_public_identity_attribute_config.py
 sailpoint/v2024/test/test_public_identity_attributes_inner.py
 sailpoint/v2024/test/test_public_identity_config.py
 sailpoint/v2024/test/test_put_client_log_configuration_request.py
-sailpoint/v2024/test/test_put_correlation_config_request.py
+sailpoint/v2024/test/test_put_connector_correlation_config_request.py
+sailpoint/v2024/test/test_put_connector_source_config_request.py
+sailpoint/v2024/test/test_put_connector_source_template_request.py
 sailpoint/v2024/test/test_put_password_dictionary_request.py
-sailpoint/v2024/test/test_put_source_config_request.py
-sailpoint/v2024/test/test_put_source_template_request.py
 sailpoint/v2024/test/test_query.py
 sailpoint/v2024/test/test_query_result_filter.py
 sailpoint/v2024/test/test_query_type.py
@@ -3101,6 +3112,7 @@ sailpoint/v2024/test/test_selector.py
 sailpoint/v2024/test/test_selector_account_match_config.py
 sailpoint/v2024/test/test_selector_account_match_config_match_expression.py
 sailpoint/v2024/test/test_self_import_export_dto.py
+sailpoint/v2024/test/test_send_account_verification_request.py
 sailpoint/v2024/test/test_send_test_notification_request_dto.py
 sailpoint/v2024/test/test_service_desk_integration_api.py
 sailpoint/v2024/test/test_service_desk_integration_dto.py

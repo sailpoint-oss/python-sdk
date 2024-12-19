@@ -29,83 +29,91 @@ class TestConnectorsApi(unittest.TestCase):
     def test_create_custom_connector(self) -> None:
         """Test case for create_custom_connector
 
-        Create custom connector
+        Create Custom Connector
         """
         pass
 
     def test_delete_custom_connector(self) -> None:
         """Test case for delete_custom_connector
 
-        Deletes connector by script name
+        Delete Connector by Script Name
         """
         pass
 
     def test_get_connector(self) -> None:
         """Test case for get_connector
 
-        Gets connector by script name
+        Get Connector by Script Name
         """
         pass
 
     def test_get_connector_correlation_config(self) -> None:
         """Test case for get_connector_correlation_config
 
+        Get Connector Correlation Configuration
         """
         pass
 
     def test_get_connector_list(self) -> None:
         """Test case for get_connector_list
 
-        Gets connector list
+        Get Connector List
         """
         pass
 
     def test_get_connector_source_config(self) -> None:
         """Test case for get_connector_source_config
 
+        Get Connector Source Configuration
         """
         pass
 
     def test_get_connector_source_template(self) -> None:
         """Test case for get_connector_source_template
 
+        Get Connector Source Template
         """
         pass
 
     def test_get_connector_translations(self) -> None:
         """Test case for get_connector_translations
 
+        Get Connector Translations
         """
         pass
 
-    def test_put_correlation_config(self) -> None:
-        """Test case for put_correlation_config
+    def test_put_connector_correlation_config(self) -> None:
+        """Test case for put_connector_correlation_config
 
+        Update Connector Correlation Configuration
         """
         pass
 
-    def test_put_source_config(self) -> None:
-        """Test case for put_source_config
+    def test_put_connector_source_config(self) -> None:
+        """Test case for put_connector_source_config
 
+        Update Connector Source Configuration
         """
         pass
 
-    def test_put_source_template(self) -> None:
-        """Test case for put_source_template
+    def test_put_connector_source_template(self) -> None:
+        """Test case for put_connector_source_template
 
+        Update Connector Source Template
         """
         pass
 
-    def test_put_translations(self) -> None:
-        """Test case for put_translations
+    def test_put_connector_translations(self) -> None:
+        """Test case for put_connector_translations
 
+        Update Connector Translations
         """
         pass
 
     def test_update_connector(self) -> None:
         """Test case for update_connector
 
-        Update connector by script name
+        Update Connector by Script Name
         """
         pass
 

@@ -103,6 +103,13 @@ class TestSourcesApi(unittest.TestCase):
         """
         pass
 
+    def test_get_correlation_config(self) -> None:
+        """Test case for get_correlation_config
+
+        Get Source Correlation Configuration
+        """
+        pass
+
     def test_get_entitlements_schema(self) -> None:
         """Test case for get_entitlements_schema
 
@@ -247,6 +254,13 @@ class TestSourcesApi(unittest.TestCase):
         """Test case for ping_cluster
 
         Ping cluster for source connector
+        """
+        pass
+
+    def test_put_correlation_config(self) -> None:
+        """Test case for put_correlation_config
+
+        Update Source Correlation Configuration
         """
         pass
 

@@ -60,7 +60,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> V3ConnectorDto:
-        """Create custom connector
+        """Create Custom Connector
 
         Create custom connector.    
 
@@ -133,7 +133,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[V3ConnectorDto]:
-        """Create custom connector
+        """Create Custom Connector
 
         Create custom connector.    
 
@@ -206,7 +206,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create custom connector
+        """Create Custom Connector
 
         Create custom connector.    
 
@@ -337,7 +337,7 @@ class ConnectorsApi:
     @validate_call
     def delete_custom_connector(
         self,
-        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. Scriptname is the unique id generated at connector creation.")],
+        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. ScriptName is the unique id generated at connector creation.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -351,11 +351,11 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Deletes connector by script name
+        """Delete Connector by Script Name
 
         Delete a custom connector that using its script name.
 
-        :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
+        :param script_name: The scriptName value of the connector. ScriptName is the unique id generated at connector creation. (required)
         :type script_name: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -410,7 +410,7 @@ class ConnectorsApi:
     @validate_call
     def delete_custom_connector_with_http_info(
         self,
-        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. Scriptname is the unique id generated at connector creation.")],
+        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. ScriptName is the unique id generated at connector creation.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -424,11 +424,11 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Deletes connector by script name
+        """Delete Connector by Script Name
 
         Delete a custom connector that using its script name.
 
-        :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
+        :param script_name: The scriptName value of the connector. ScriptName is the unique id generated at connector creation. (required)
         :type script_name: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -483,7 +483,7 @@ class ConnectorsApi:
     @validate_call
     def delete_custom_connector_without_preload_content(
         self,
-        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. Scriptname is the unique id generated at connector creation.")],
+        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. ScriptName is the unique id generated at connector creation.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -497,11 +497,11 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Deletes connector by script name
+        """Delete Connector by Script Name
 
         Delete a custom connector that using its script name.
 
-        :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
+        :param script_name: The scriptName value of the connector. ScriptName is the unique id generated at connector creation. (required)
         :type script_name: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -615,7 +615,7 @@ class ConnectorsApi:
     @validate_call
     def get_connector(
         self,
-        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. Scriptname is the unique id generated at connector creation.")],
+        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. ScriptName is the unique id generated at connector creation.")],
         locale: Annotated[Optional[StrictStr], Field(description="The locale to apply to the config. If no viable locale is given, it will default to \"en\"")] = None,
         _request_timeout: Union[
             None,
@@ -630,11 +630,11 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ConnectorDetail:
-        """Gets connector by script name
+        """Get Connector by Script Name
 
         Fetches a connector that using its script name.    
 
-        :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
+        :param script_name: The scriptName value of the connector. ScriptName is the unique id generated at connector creation. (required)
         :type script_name: str
         :param locale: The locale to apply to the config. If no viable locale is given, it will default to \"en\"
         :type locale: str
@@ -692,7 +692,7 @@ class ConnectorsApi:
     @validate_call
     def get_connector_with_http_info(
         self,
-        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. Scriptname is the unique id generated at connector creation.")],
+        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. ScriptName is the unique id generated at connector creation.")],
         locale: Annotated[Optional[StrictStr], Field(description="The locale to apply to the config. If no viable locale is given, it will default to \"en\"")] = None,
         _request_timeout: Union[
             None,
@@ -707,11 +707,11 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ConnectorDetail]:
-        """Gets connector by script name
+        """Get Connector by Script Name
 
         Fetches a connector that using its script name.    
 
-        :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
+        :param script_name: The scriptName value of the connector. ScriptName is the unique id generated at connector creation. (required)
         :type script_name: str
         :param locale: The locale to apply to the config. If no viable locale is given, it will default to \"en\"
         :type locale: str
@@ -769,7 +769,7 @@ class ConnectorsApi:
     @validate_call
     def get_connector_without_preload_content(
         self,
-        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. Scriptname is the unique id generated at connector creation.")],
+        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. ScriptName is the unique id generated at connector creation.")],
         locale: Annotated[Optional[StrictStr], Field(description="The locale to apply to the config. If no viable locale is given, it will default to \"en\"")] = None,
         _request_timeout: Union[
             None,
@@ -784,11 +784,11 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Gets connector by script name
+        """Get Connector by Script Name
 
         Fetches a connector that using its script name.    
 
-        :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
+        :param script_name: The scriptName value of the connector. ScriptName is the unique id generated at connector creation. (required)
         :type script_name: str
         :param locale: The locale to apply to the config. If no viable locale is given, it will default to \"en\"
         :type locale: str
@@ -924,7 +924,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> str:
-        """get_connector_correlation_config
+        """Get Connector Correlation Configuration
 
         Fetches a connector's correlation config using its script name.    
 
@@ -997,7 +997,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[str]:
-        """get_connector_correlation_config
+        """Get Connector Correlation Configuration
 
         Fetches a connector's correlation config using its script name.    
 
@@ -1070,7 +1070,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_connector_correlation_config
+        """Get Connector Correlation Configuration
 
         Fetches a connector's correlation config using its script name.    
 
@@ -1207,7 +1207,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[V3ConnectorDto]:
-        """Gets connector list
+        """Get Connector List
 
         Fetches list of connectors that have 'RELEASED' status using filtering and pagination.
 
@@ -1296,7 +1296,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[V3ConnectorDto]]:
-        """Gets connector list
+        """Get Connector List
 
         Fetches list of connectors that have 'RELEASED' status using filtering and pagination.
 
@@ -1385,7 +1385,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Gets connector list
+        """Get Connector List
 
         Fetches list of connectors that have 'RELEASED' status using filtering and pagination.
 
@@ -1537,7 +1537,7 @@ class ConnectorsApi:
     @validate_call
     def get_connector_source_config(
         self,
-        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. Scriptname is the unique id generated at connector creation.")],
+        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. ScriptName is the unique id generated at connector creation.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1551,11 +1551,11 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> str:
-        """get_connector_source_config
+        """Get Connector Source Configuration
 
         Fetches a connector's source config using its script name.    
 
-        :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
+        :param script_name: The scriptName value of the connector. ScriptName is the unique id generated at connector creation. (required)
         :type script_name: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1610,7 +1610,7 @@ class ConnectorsApi:
     @validate_call
     def get_connector_source_config_with_http_info(
         self,
-        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. Scriptname is the unique id generated at connector creation.")],
+        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. ScriptName is the unique id generated at connector creation.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1624,11 +1624,11 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[str]:
-        """get_connector_source_config
+        """Get Connector Source Configuration
 
         Fetches a connector's source config using its script name.    
 
-        :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
+        :param script_name: The scriptName value of the connector. ScriptName is the unique id generated at connector creation. (required)
         :type script_name: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1683,7 +1683,7 @@ class ConnectorsApi:
     @validate_call
     def get_connector_source_config_without_preload_content(
         self,
-        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. Scriptname is the unique id generated at connector creation.")],
+        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. ScriptName is the unique id generated at connector creation.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1697,11 +1697,11 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_connector_source_config
+        """Get Connector Source Configuration
 
         Fetches a connector's source config using its script name.    
 
-        :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
+        :param script_name: The scriptName value of the connector. ScriptName is the unique id generated at connector creation. (required)
         :type script_name: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1816,7 +1816,7 @@ class ConnectorsApi:
     @validate_call
     def get_connector_source_template(
         self,
-        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. Scriptname is the unique id generated at connector creation.")],
+        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. ScriptName is the unique id generated at connector creation.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1830,11 +1830,11 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> str:
-        """get_connector_source_template
+        """Get Connector Source Template
 
         Fetches a connector's source template using its script name.    
 
-        :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
+        :param script_name: The scriptName value of the connector. ScriptName is the unique id generated at connector creation. (required)
         :type script_name: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1889,7 +1889,7 @@ class ConnectorsApi:
     @validate_call
     def get_connector_source_template_with_http_info(
         self,
-        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. Scriptname is the unique id generated at connector creation.")],
+        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. ScriptName is the unique id generated at connector creation.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1903,11 +1903,11 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[str]:
-        """get_connector_source_template
+        """Get Connector Source Template
 
         Fetches a connector's source template using its script name.    
 
-        :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
+        :param script_name: The scriptName value of the connector. ScriptName is the unique id generated at connector creation. (required)
         :type script_name: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1962,7 +1962,7 @@ class ConnectorsApi:
     @validate_call
     def get_connector_source_template_without_preload_content(
         self,
-        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. Scriptname is the unique id generated at connector creation.")],
+        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. ScriptName is the unique id generated at connector creation.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1976,11 +1976,11 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_connector_source_template
+        """Get Connector Source Template
 
         Fetches a connector's source template using its script name.    
 
-        :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
+        :param script_name: The scriptName value of the connector. ScriptName is the unique id generated at connector creation. (required)
         :type script_name: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2110,7 +2110,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> str:
-        """get_connector_translations
+        """Get Connector Translations
 
         Fetches a connector's translations using its script name.    
 
@@ -2187,7 +2187,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[str]:
-        """get_connector_translations
+        """Get Connector Translations
 
         Fetches a connector's translations using its script name.    
 
@@ -2264,7 +2264,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_connector_translations
+        """Get Connector Translations
 
         Fetches a connector's translations using its script name.    
 
@@ -2387,7 +2387,7 @@ class ConnectorsApi:
 
 
     @validate_call
-    def put_correlation_config(
+    def put_connector_correlation_config(
         self,
         script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. Scriptname is the unique id generated at connector creation.")],
         file: Annotated[Union[StrictBytes, StrictStr], Field(description="connector correlation config xml file")],
@@ -2404,7 +2404,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> UpdateDetail:
-        """put_correlation_config
+        """Update Connector Correlation Configuration
 
         Update a connector's correlation config using its script name.    
 
@@ -2434,7 +2434,7 @@ class ConnectorsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._put_correlation_config_serialize(
+        _param = self._put_connector_correlation_config_serialize(
             script_name=script_name,
             file=file,
             _request_auth=_request_auth,
@@ -2464,7 +2464,7 @@ class ConnectorsApi:
 
 
     @validate_call
-    def put_correlation_config_with_http_info(
+    def put_connector_correlation_config_with_http_info(
         self,
         script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. Scriptname is the unique id generated at connector creation.")],
         file: Annotated[Union[StrictBytes, StrictStr], Field(description="connector correlation config xml file")],
@@ -2481,7 +2481,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[UpdateDetail]:
-        """put_correlation_config
+        """Update Connector Correlation Configuration
 
         Update a connector's correlation config using its script name.    
 
@@ -2511,7 +2511,7 @@ class ConnectorsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._put_correlation_config_serialize(
+        _param = self._put_connector_correlation_config_serialize(
             script_name=script_name,
             file=file,
             _request_auth=_request_auth,
@@ -2541,7 +2541,7 @@ class ConnectorsApi:
 
 
     @validate_call
-    def put_correlation_config_without_preload_content(
+    def put_connector_correlation_config_without_preload_content(
         self,
         script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. Scriptname is the unique id generated at connector creation.")],
         file: Annotated[Union[StrictBytes, StrictStr], Field(description="connector correlation config xml file")],
@@ -2558,7 +2558,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """put_correlation_config
+        """Update Connector Correlation Configuration
 
         Update a connector's correlation config using its script name.    
 
@@ -2588,7 +2588,7 @@ class ConnectorsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._put_correlation_config_serialize(
+        _param = self._put_connector_correlation_config_serialize(
             script_name=script_name,
             file=file,
             _request_auth=_request_auth,
@@ -2613,7 +2613,7 @@ class ConnectorsApi:
         return response_data.response
 
 
-    def _put_correlation_config_serialize(
+    def _put_connector_correlation_config_serialize(
         self,
         script_name,
         file,
@@ -2693,9 +2693,9 @@ class ConnectorsApi:
 
 
     @validate_call
-    def put_source_config(
+    def put_connector_source_config(
         self,
-        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. Scriptname is the unique id generated at connector creation.")],
+        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. ScriptName is the unique id generated at connector creation.")],
         file: Annotated[Union[StrictBytes, StrictStr], Field(description="connector source config xml file")],
         _request_timeout: Union[
             None,
@@ -2710,11 +2710,11 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> UpdateDetail:
-        """put_source_config
+        """Update Connector Source Configuration
 
         Update a connector's source config using its script name.    
 
-        :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
+        :param script_name: The scriptName value of the connector. ScriptName is the unique id generated at connector creation. (required)
         :type script_name: str
         :param file: connector source config xml file (required)
         :type file: bytearray
@@ -2740,7 +2740,7 @@ class ConnectorsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._put_source_config_serialize(
+        _param = self._put_connector_source_config_serialize(
             script_name=script_name,
             file=file,
             _request_auth=_request_auth,
@@ -2770,9 +2770,9 @@ class ConnectorsApi:
 
 
     @validate_call
-    def put_source_config_with_http_info(
+    def put_connector_source_config_with_http_info(
         self,
-        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. Scriptname is the unique id generated at connector creation.")],
+        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. ScriptName is the unique id generated at connector creation.")],
         file: Annotated[Union[StrictBytes, StrictStr], Field(description="connector source config xml file")],
         _request_timeout: Union[
             None,
@@ -2787,11 +2787,11 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[UpdateDetail]:
-        """put_source_config
+        """Update Connector Source Configuration
 
         Update a connector's source config using its script name.    
 
-        :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
+        :param script_name: The scriptName value of the connector. ScriptName is the unique id generated at connector creation. (required)
         :type script_name: str
         :param file: connector source config xml file (required)
         :type file: bytearray
@@ -2817,7 +2817,7 @@ class ConnectorsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._put_source_config_serialize(
+        _param = self._put_connector_source_config_serialize(
             script_name=script_name,
             file=file,
             _request_auth=_request_auth,
@@ -2847,9 +2847,9 @@ class ConnectorsApi:
 
 
     @validate_call
-    def put_source_config_without_preload_content(
+    def put_connector_source_config_without_preload_content(
         self,
-        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. Scriptname is the unique id generated at connector creation.")],
+        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. ScriptName is the unique id generated at connector creation.")],
         file: Annotated[Union[StrictBytes, StrictStr], Field(description="connector source config xml file")],
         _request_timeout: Union[
             None,
@@ -2864,11 +2864,11 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """put_source_config
+        """Update Connector Source Configuration
 
         Update a connector's source config using its script name.    
 
-        :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
+        :param script_name: The scriptName value of the connector. ScriptName is the unique id generated at connector creation. (required)
         :type script_name: str
         :param file: connector source config xml file (required)
         :type file: bytearray
@@ -2894,7 +2894,7 @@ class ConnectorsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._put_source_config_serialize(
+        _param = self._put_connector_source_config_serialize(
             script_name=script_name,
             file=file,
             _request_auth=_request_auth,
@@ -2919,7 +2919,7 @@ class ConnectorsApi:
         return response_data.response
 
 
-    def _put_source_config_serialize(
+    def _put_connector_source_config_serialize(
         self,
         script_name,
         file,
@@ -2999,9 +2999,9 @@ class ConnectorsApi:
 
 
     @validate_call
-    def put_source_template(
+    def put_connector_source_template(
         self,
-        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. Scriptname is the unique id generated at connector creation.")],
+        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. ScriptName is the unique id generated at connector creation.")],
         file: Annotated[Union[StrictBytes, StrictStr], Field(description="connector source template xml file")],
         _request_timeout: Union[
             None,
@@ -3016,11 +3016,11 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> UpdateDetail:
-        """put_source_template
+        """Update Connector Source Template
 
         Update a connector's source template using its script name.    
 
-        :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
+        :param script_name: The scriptName value of the connector. ScriptName is the unique id generated at connector creation. (required)
         :type script_name: str
         :param file: connector source template xml file (required)
         :type file: bytearray
@@ -3046,7 +3046,7 @@ class ConnectorsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._put_source_template_serialize(
+        _param = self._put_connector_source_template_serialize(
             script_name=script_name,
             file=file,
             _request_auth=_request_auth,
@@ -3076,9 +3076,9 @@ class ConnectorsApi:
 
 
     @validate_call
-    def put_source_template_with_http_info(
+    def put_connector_source_template_with_http_info(
         self,
-        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. Scriptname is the unique id generated at connector creation.")],
+        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. ScriptName is the unique id generated at connector creation.")],
         file: Annotated[Union[StrictBytes, StrictStr], Field(description="connector source template xml file")],
         _request_timeout: Union[
             None,
@@ -3093,11 +3093,11 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[UpdateDetail]:
-        """put_source_template
+        """Update Connector Source Template
 
         Update a connector's source template using its script name.    
 
-        :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
+        :param script_name: The scriptName value of the connector. ScriptName is the unique id generated at connector creation. (required)
         :type script_name: str
         :param file: connector source template xml file (required)
         :type file: bytearray
@@ -3123,7 +3123,7 @@ class ConnectorsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._put_source_template_serialize(
+        _param = self._put_connector_source_template_serialize(
             script_name=script_name,
             file=file,
             _request_auth=_request_auth,
@@ -3153,9 +3153,9 @@ class ConnectorsApi:
 
 
     @validate_call
-    def put_source_template_without_preload_content(
+    def put_connector_source_template_without_preload_content(
         self,
-        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. Scriptname is the unique id generated at connector creation.")],
+        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. ScriptName is the unique id generated at connector creation.")],
         file: Annotated[Union[StrictBytes, StrictStr], Field(description="connector source template xml file")],
         _request_timeout: Union[
             None,
@@ -3170,11 +3170,11 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """put_source_template
+        """Update Connector Source Template
 
         Update a connector's source template using its script name.    
 
-        :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
+        :param script_name: The scriptName value of the connector. ScriptName is the unique id generated at connector creation. (required)
         :type script_name: str
         :param file: connector source template xml file (required)
         :type file: bytearray
@@ -3200,7 +3200,7 @@ class ConnectorsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._put_source_template_serialize(
+        _param = self._put_connector_source_template_serialize(
             script_name=script_name,
             file=file,
             _request_auth=_request_auth,
@@ -3225,7 +3225,7 @@ class ConnectorsApi:
         return response_data.response
 
 
-    def _put_source_template_serialize(
+    def _put_connector_source_template_serialize(
         self,
         script_name,
         file,
@@ -3305,7 +3305,7 @@ class ConnectorsApi:
 
 
     @validate_call
-    def put_translations(
+    def put_connector_translations(
         self,
         script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. Scriptname is the unique id generated at connector creation.")],
         locale: Annotated[StrictStr, Field(description="The locale to apply to the config. If no viable locale is given, it will default to \"en\"")],
@@ -3322,7 +3322,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> UpdateDetail:
-        """put_translations
+        """Update Connector Translations
 
         Update a connector's translations using its script name.    
 
@@ -3352,7 +3352,7 @@ class ConnectorsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._put_translations_serialize(
+        _param = self._put_connector_translations_serialize(
             script_name=script_name,
             locale=locale,
             _request_auth=_request_auth,
@@ -3382,7 +3382,7 @@ class ConnectorsApi:
 
 
     @validate_call
-    def put_translations_with_http_info(
+    def put_connector_translations_with_http_info(
         self,
         script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. Scriptname is the unique id generated at connector creation.")],
         locale: Annotated[StrictStr, Field(description="The locale to apply to the config. If no viable locale is given, it will default to \"en\"")],
@@ -3399,7 +3399,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[UpdateDetail]:
-        """put_translations
+        """Update Connector Translations
 
         Update a connector's translations using its script name.    
 
@@ -3429,7 +3429,7 @@ class ConnectorsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._put_translations_serialize(
+        _param = self._put_connector_translations_serialize(
             script_name=script_name,
             locale=locale,
             _request_auth=_request_auth,
@@ -3459,7 +3459,7 @@ class ConnectorsApi:
 
 
     @validate_call
-    def put_translations_without_preload_content(
+    def put_connector_translations_without_preload_content(
         self,
         script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. Scriptname is the unique id generated at connector creation.")],
         locale: Annotated[StrictStr, Field(description="The locale to apply to the config. If no viable locale is given, it will default to \"en\"")],
@@ -3476,7 +3476,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """put_translations
+        """Update Connector Translations
 
         Update a connector's translations using its script name.    
 
@@ -3506,7 +3506,7 @@ class ConnectorsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._put_translations_serialize(
+        _param = self._put_connector_translations_serialize(
             script_name=script_name,
             locale=locale,
             _request_auth=_request_auth,
@@ -3531,7 +3531,7 @@ class ConnectorsApi:
         return response_data.response
 
 
-    def _put_translations_serialize(
+    def _put_connector_translations_serialize(
         self,
         script_name,
         locale,
@@ -3613,8 +3613,8 @@ class ConnectorsApi:
     @validate_call
     def update_connector(
         self,
-        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. Scriptname is the unique id generated at connector creation.")],
-        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of connector detail update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
+        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. ScriptName is the unique id generated at connector creation.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of connector detail update operations ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3628,13 +3628,13 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ConnectorDetail:
-        """Update connector by script name
+        """Update Connector by Script Name
 
-        Patch a custom connector that using its script name. The following fields are patchable: * connectorMetadata * applicationXml * correlationConfigXml * sourceConfigXml
+        This API updates a custom connector by script name using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.  The following fields are patchable:   * connectorMetadata  * applicationXml  * correlationConfigXml  * sourceConfigXml 
 
-        :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
+        :param script_name: The scriptName value of the connector. ScriptName is the unique id generated at connector creation. (required)
         :type script_name: str
-        :param json_patch_operation: A list of connector detail update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
+        :param json_patch_operation: A list of connector detail update operations  (required)
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3690,8 +3690,8 @@ class ConnectorsApi:
     @validate_call
     def update_connector_with_http_info(
         self,
-        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. Scriptname is the unique id generated at connector creation.")],
-        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of connector detail update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
+        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. ScriptName is the unique id generated at connector creation.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of connector detail update operations ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3705,13 +3705,13 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ConnectorDetail]:
-        """Update connector by script name
+        """Update Connector by Script Name
 
-        Patch a custom connector that using its script name. The following fields are patchable: * connectorMetadata * applicationXml * correlationConfigXml * sourceConfigXml
+        This API updates a custom connector by script name using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.  The following fields are patchable:   * connectorMetadata  * applicationXml  * correlationConfigXml  * sourceConfigXml 
 
-        :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
+        :param script_name: The scriptName value of the connector. ScriptName is the unique id generated at connector creation. (required)
         :type script_name: str
-        :param json_patch_operation: A list of connector detail update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
+        :param json_patch_operation: A list of connector detail update operations  (required)
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3767,8 +3767,8 @@ class ConnectorsApi:
     @validate_call
     def update_connector_without_preload_content(
         self,
-        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. Scriptname is the unique id generated at connector creation.")],
-        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of connector detail update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
+        script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. ScriptName is the unique id generated at connector creation.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of connector detail update operations ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3782,13 +3782,13 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update connector by script name
+        """Update Connector by Script Name
 
-        Patch a custom connector that using its script name. The following fields are patchable: * connectorMetadata * applicationXml * correlationConfigXml * sourceConfigXml
+        This API updates a custom connector by script name using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.  The following fields are patchable:   * connectorMetadata  * applicationXml  * correlationConfigXml  * sourceConfigXml 
 
-        :param script_name: The scriptName value of the connector. Scriptname is the unique id generated at connector creation. (required)
+        :param script_name: The scriptName value of the connector. ScriptName is the unique id generated at connector creation. (required)
         :type script_name: str
-        :param json_patch_operation: A list of connector detail update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
+        :param json_patch_operation: A list of connector detail update operations  (required)
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

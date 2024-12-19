@@ -60,9 +60,9 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[V3ConnectorDto]:
-        """Gets connector list
+        """Get Connector List
 
-        Fetches list of connectors that have 'RELEASED' status using filtering and pagination. A token with ORG_ADMIN authority is required to call this API.
+        Fetches list of connectors that have 'RELEASED' status using filtering and pagination.
 
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **type**: *eq*  **directConnect**: *eq*  **category**: *eq*  **features**: *ca*
         :type filters: str
@@ -149,9 +149,9 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[V3ConnectorDto]]:
-        """Gets connector list
+        """Get Connector List
 
-        Fetches list of connectors that have 'RELEASED' status using filtering and pagination. A token with ORG_ADMIN authority is required to call this API.
+        Fetches list of connectors that have 'RELEASED' status using filtering and pagination.
 
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **type**: *eq*  **directConnect**: *eq*  **category**: *eq*  **features**: *ca*
         :type filters: str
@@ -238,9 +238,9 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Gets connector list
+        """Get Connector List
 
-        Fetches list of connectors that have 'RELEASED' status using filtering and pagination. A token with ORG_ADMIN authority is required to call this API.
+        Fetches list of connectors that have 'RELEASED' status using filtering and pagination.
 
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **type**: *eq*  **directConnect**: *eq*  **category**: *eq*  **features**: *ca*
         :type filters: str
