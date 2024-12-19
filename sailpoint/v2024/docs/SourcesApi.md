@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_source_schedule**
-> Schedule1 create_source_schedule(source_id, schedule1)
+> Schedule1 create_source_schedule(source_id, x_sail_point_experimental, schedule1)
 
 Create Schedule on Source
 
@@ -261,11 +261,12 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v2024.SourcesApi(api_client)
     source_id = '2c9180835d191a86015d28455b4a2329' # str | Source ID.
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true')
     schedule1 = sailpoint.v2024.Schedule1() # Schedule1 | 
 
     try:
         # Create Schedule on Source
-        api_response = api_instance.create_source_schedule(source_id, schedule1)
+        api_response = api_instance.create_source_schedule(source_id, x_sail_point_experimental, schedule1)
         print("The response of SourcesApi->create_source_schedule:\n")
         pprint(api_response)
     except Exception as e:
@@ -280,6 +281,7 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **source_id** | **str**| Source ID. | 
+ **x_sail_point_experimental** | **str**| Use this header to enable this experimental API. | [default to &#39;true&#39;]
  **schedule1** | [**Schedule1**](Schedule1.md)|  | 
 
 ### Return type
@@ -736,7 +738,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_source_schedule**
-> delete_source_schedule(source_id, schedule_type)
+> delete_source_schedule(source_id, schedule_type, x_sail_point_experimental)
 
 Delete Source Schedule by type.
 
@@ -771,10 +773,11 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
     api_instance = sailpoint.v2024.SourcesApi(api_client)
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id.
     schedule_type = 'ACCOUNT_AGGREGATION' # str | The Schedule type.
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true')
 
     try:
         # Delete Source Schedule by type.
-        api_instance.delete_source_schedule(source_id, schedule_type)
+        api_instance.delete_source_schedule(source_id, schedule_type, x_sail_point_experimental)
     except Exception as e:
         print("Exception when calling SourcesApi->delete_source_schedule: %s\n" % e)
 ```
@@ -788,6 +791,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **source_id** | **str**| The Source id. | 
  **schedule_type** | **str**| The Schedule type. | 
+ **x_sail_point_experimental** | **str**| Use this header to enable this experimental API. | [default to &#39;true&#39;]
 
 ### Return type
 
@@ -1662,7 +1666,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_source_schedule**
-> Schedule1 get_source_schedule(source_id, schedule_type)
+> Schedule1 get_source_schedule(source_id, schedule_type, x_sail_point_experimental)
 
 Get Source Schedule by Type
 
@@ -1700,10 +1704,11 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
     api_instance = sailpoint.v2024.SourcesApi(api_client)
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id.
     schedule_type = 'ACCOUNT_AGGREGATION' # str | The Schedule type.
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true')
 
     try:
         # Get Source Schedule by Type
-        api_response = api_instance.get_source_schedule(source_id, schedule_type)
+        api_response = api_instance.get_source_schedule(source_id, schedule_type, x_sail_point_experimental)
         print("The response of SourcesApi->get_source_schedule:\n")
         pprint(api_response)
     except Exception as e:
@@ -1719,6 +1724,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **source_id** | **str**| The Source id. | 
  **schedule_type** | **str**| The Schedule type. | 
+ **x_sail_point_experimental** | **str**| Use this header to enable this experimental API. | [default to &#39;true&#39;]
 
 ### Return type
 
@@ -1748,7 +1754,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_source_schedules**
-> List[Schedule1] get_source_schedules(source_id)
+> List[Schedule1] get_source_schedules(source_id, x_sail_point_experimental)
 
 List Schedules on Source
 
@@ -1785,10 +1791,11 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v2024.SourcesApi(api_client)
     source_id = '2c9180835d191a86015d28455b4a2329' # str | Source ID.
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true')
 
     try:
         # List Schedules on Source
-        api_response = api_instance.get_source_schedules(source_id)
+        api_response = api_instance.get_source_schedules(source_id, x_sail_point_experimental)
         print("The response of SourcesApi->get_source_schedules:\n")
         pprint(api_response)
     except Exception as e:
@@ -1803,6 +1810,7 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **source_id** | **str**| Source ID. | 
+ **x_sail_point_experimental** | **str**| Use this header to enable this experimental API. | [default to &#39;true&#39;]
 
 ### Return type
 
@@ -3851,7 +3859,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_source_schedule**
-> Schedule1 update_source_schedule(source_id, schedule_type, json_patch_operation)
+> Schedule1 update_source_schedule(source_id, schedule_type, x_sail_point_experimental, json_patch_operation)
 
 Update Source Schedule (Partial)
 
@@ -3890,11 +3898,12 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
     api_instance = sailpoint.v2024.SourcesApi(api_client)
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id.
     schedule_type = 'ACCOUNT_AGGREGATION' # str | The Schedule type.
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true')
     json_patch_operation = [{op=replace, path=/cronExpression, value=0 0 6 * * ?}] # List[JsonPatchOperation] | The JSONPatch payload used to update the schedule.
 
     try:
         # Update Source Schedule (Partial)
-        api_response = api_instance.update_source_schedule(source_id, schedule_type, json_patch_operation)
+        api_response = api_instance.update_source_schedule(source_id, schedule_type, x_sail_point_experimental, json_patch_operation)
         print("The response of SourcesApi->update_source_schedule:\n")
         pprint(api_response)
     except Exception as e:
@@ -3910,6 +3919,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **source_id** | **str**| The Source id. | 
  **schedule_type** | **str**| The Schedule type. | 
+ **x_sail_point_experimental** | **str**| Use this header to enable this experimental API. | [default to &#39;true&#39;]
  **json_patch_operation** | [**List[JsonPatchOperation]**](JsonPatchOperation.md)| The JSONPatch payload used to update the schedule. | 
 
 ### Return type
