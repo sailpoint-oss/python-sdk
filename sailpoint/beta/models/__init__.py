@@ -69,6 +69,8 @@ from sailpoint.beta.models.access_request_recommendation_item_detail import Acce
 from sailpoint.beta.models.access_request_recommendation_item_detail_access import AccessRequestRecommendationItemDetailAccess
 from sailpoint.beta.models.access_request_recommendation_item_type import AccessRequestRecommendationItemType
 from sailpoint.beta.models.access_request_response import AccessRequestResponse
+from sailpoint.beta.models.access_request_response1 import AccessRequestResponse1
+from sailpoint.beta.models.access_request_tracking import AccessRequestTracking
 from sailpoint.beta.models.access_request_type import AccessRequestType
 from sailpoint.beta.models.access_requested import AccessRequested
 from sailpoint.beta.models.access_type import AccessType
@@ -610,6 +612,7 @@ from sailpoint.beta.models.requestable_object import RequestableObject
 from sailpoint.beta.models.requestable_object_reference import RequestableObjectReference
 from sailpoint.beta.models.requestable_object_request_status import RequestableObjectRequestStatus
 from sailpoint.beta.models.requestable_object_type import RequestableObjectType
+from sailpoint.beta.models.requested_item_details import RequestedItemDetails
 from sailpoint.beta.models.requested_item_status import RequestedItemStatus
 from sailpoint.beta.models.requested_item_status_cancelled_request_details import RequestedItemStatusCancelledRequestDetails
 from sailpoint.beta.models.requested_item_status_pre_approval_trigger_details import RequestedItemStatusPreApprovalTriggerDetails

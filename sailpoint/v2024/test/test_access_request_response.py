@@ -35,9 +35,8 @@ class TestAccessRequestResponse(unittest.TestCase):
         model = AccessRequestResponse()
         if include_optional:
             return AccessRequestResponse(
-                requester_id = '2c91808a77ff216301782327a50f09bf',
-                requester_name = 'Bing C',
-                items = [{operation=Add, accessItemType=role, name=Role-1, decision=APPROVED, description=The role descrition, sourceId=8a80828f643d484f01643e14202e206f, sourceName=Source1, approvalInfos=[{name=John Snow, id=8a80828f643d484f01643e14202e2000, status=Approved}]}]
+                new_requests = [{requestedFor=899fd612ecfc4cf3bf48f14d0afdef89, requestedItemsDetails=[{type=ENTITLEMENT, id=779c6fd7171540bba1184e5946112c28}], attributesHash=-1928438224, accessRequestIds=[5d3118c518a44ec7805450d53479ccdb]}],
+                existing_requests = [{requestedFor=899fd612ecfc4cf3bf48f14d0afdef89, requestedItemsDetails=[{type=ROLE, id=779c6fd7171540bbc1184e5946112c28}], attributesHash=2843118224, accessRequestIds=[5d3118c518a44ec7805450d53479ccdc]}]
             )
         else:
             return AccessRequestResponse(

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **dt** | **str** | the date of event | [optional] 
 **governance_event** | [**CorrelatedGovernanceEvent**](CorrelatedGovernanceEvent.md) |  | [optional] 
 **changes** | [**List[AttributeChange]**](AttributeChange.md) |  | [optional] 
-**access_request** | [**AccessRequestResponse**](AccessRequestResponse.md) |  | [optional] 
+**access_request** | [**AccessRequestResponse1**](AccessRequestResponse1.md) |  | [optional] 
 **certification_id** | **str** | the id of the certification item | [optional] 
 **certification_name** | **str** | the certification item name | [optional] 
 **signed_date** | **str** | the date ceritification was signed | [optional] 

@@ -17,9 +17,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.beta.models.access_request_item_response import AccessRequestItemResponse
+from sailpoint.beta.models.access_request_tracking import AccessRequestTracking
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,10 +27,9 @@ class AccessRequestResponse(BaseModel):
     """
     AccessRequestResponse
     """ # noqa: E501
-    requester_id: Optional[StrictStr] = Field(default=None, description="the requester Id", alias="requesterId")
-    requester_name: Optional[StrictStr] = Field(default=None, description="the requesterName", alias="requesterName")
-    items: Optional[List[AccessRequestItemResponse]] = None
-    __properties: ClassVar[List[str]] = ["requesterId", "requesterName", "items"]
+    new_requests: Optional[List[AccessRequestTracking]] = Field(default=None, description="A list of new access request tracking data mapped to the values requested.", alias="newRequests")
+    existing_requests: Optional[List[AccessRequestTracking]] = Field(default=None, description="A list of existing access request tracking data mapped to the values requested.  This indicates access has already been requested for this item.", alias="existingRequests")
+    __properties: ClassVar[List[str]] = ["newRequests", "existingRequests"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -71,13 +70,20 @@ class AccessRequestResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in items (list)
+        # override the default output from pydantic by calling `to_dict()` of each item in new_requests (list)
         _items = []
-        if self.items:
-            for _item_items in self.items:
-                if _item_items:
-                    _items.append(_item_items.to_dict())
-            _dict['items'] = _items
+        if self.new_requests:
+            for _item_new_requests in self.new_requests:
+                if _item_new_requests:
+                    _items.append(_item_new_requests.to_dict())
+            _dict['newRequests'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in existing_requests (list)
+        _items = []
+        if self.existing_requests:
+            for _item_existing_requests in self.existing_requests:
+                if _item_existing_requests:
+                    _items.append(_item_existing_requests.to_dict())
+            _dict['existingRequests'] = _items
         return _dict
 
     @classmethod
@@ -90,9 +96,8 @@ class AccessRequestResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "requesterId": obj.get("requesterId"),
-            "requesterName": obj.get("requesterName"),
-            "items": [AccessRequestItemResponse.from_dict(_item) for _item in obj["items"]] if obj.get("items") is not None else None
+            "newRequests": [AccessRequestTracking.from_dict(_item) for _item in obj["newRequests"]] if obj.get("newRequests") is not None else None,
+            "existingRequests": [AccessRequestTracking.from_dict(_item) for _item in obj["existingRequests"]] if obj.get("existingRequests") is not None else None
         })
         return _obj
 

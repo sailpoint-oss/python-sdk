@@ -36,7 +36,7 @@ class TestCustomPasswordInstruction(unittest.TestCase):
         if include_optional:
             return CustomPasswordInstruction(
                 page_id = 'change-password:enter-password',
-                page_content = '',
+                page_content = 'Please enter a new password. Your password must be at least 8 characters long and contain at least one number and one letter.',
                 locale = 'en'
             )
         else:

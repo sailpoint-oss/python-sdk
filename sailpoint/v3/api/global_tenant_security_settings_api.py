@@ -615,7 +615,7 @@ class GlobalTenantSecuritySettingsApi:
     ) -> NetworkConfiguration:
         """Get security network configuration.
 
-        This API returns the details of an org's network auth configuration. Requires security scope of: 'sp:auth-org:read'
+        This API returns the details of an org's network auth configuration.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -684,7 +684,7 @@ class GlobalTenantSecuritySettingsApi:
     ) -> ApiResponse[NetworkConfiguration]:
         """Get security network configuration.
 
-        This API returns the details of an org's network auth configuration. Requires security scope of: 'sp:auth-org:read'
+        This API returns the details of an org's network auth configuration.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -753,7 +753,7 @@ class GlobalTenantSecuritySettingsApi:
     ) -> RESTResponseType:
         """Get security network configuration.
 
-        This API returns the details of an org's network auth configuration. Requires security scope of: 'sp:auth-org:read'
+        This API returns the details of an org's network auth configuration.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1389,7 +1389,7 @@ class GlobalTenantSecuritySettingsApi:
     @validate_call
     def patch_auth_org_lockout_config(
         self,
-        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Lockout Config conforms to certain logical guidelines, which are:   1. maximumAttempts >= 1 && maximumAttempts <= 15   2. lockoutDuration >= 5 && lockoutDuration <= 60   3. lockoutWindow >= 5 && lockoutDuration <= 60")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Lockout Config conforms to certain logical guidelines, which are:   `1. maximumAttempts >= 1 && maximumAttempts <= 15   2. lockoutDuration >= 5 && lockoutDuration <= 60   3. lockoutWindow >= 5 && lockoutDuration <= 60`")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1405,9 +1405,9 @@ class GlobalTenantSecuritySettingsApi:
     ) -> LockoutConfiguration:
         """Update Auth Org Lockout Configuration
 
-        This API updates an existing lockout configuration for an org using PATCH  Requires security scope of:  'sp:auth-org:update'
+        This API updates an existing lockout configuration for an org using PATCH 
 
-        :param json_patch_operation: A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Lockout Config conforms to certain logical guidelines, which are:   1. maximumAttempts >= 1 && maximumAttempts <= 15   2. lockoutDuration >= 5 && lockoutDuration <= 60   3. lockoutWindow >= 5 && lockoutDuration <= 60 (required)
+        :param json_patch_operation: A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Lockout Config conforms to certain logical guidelines, which are:   `1. maximumAttempts >= 1 && maximumAttempts <= 15   2. lockoutDuration >= 5 && lockoutDuration <= 60   3. lockoutWindow >= 5 && lockoutDuration <= 60` (required)
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1462,7 +1462,7 @@ class GlobalTenantSecuritySettingsApi:
     @validate_call
     def patch_auth_org_lockout_config_with_http_info(
         self,
-        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Lockout Config conforms to certain logical guidelines, which are:   1. maximumAttempts >= 1 && maximumAttempts <= 15   2. lockoutDuration >= 5 && lockoutDuration <= 60   3. lockoutWindow >= 5 && lockoutDuration <= 60")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Lockout Config conforms to certain logical guidelines, which are:   `1. maximumAttempts >= 1 && maximumAttempts <= 15   2. lockoutDuration >= 5 && lockoutDuration <= 60   3. lockoutWindow >= 5 && lockoutDuration <= 60`")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1478,9 +1478,9 @@ class GlobalTenantSecuritySettingsApi:
     ) -> ApiResponse[LockoutConfiguration]:
         """Update Auth Org Lockout Configuration
 
-        This API updates an existing lockout configuration for an org using PATCH  Requires security scope of:  'sp:auth-org:update'
+        This API updates an existing lockout configuration for an org using PATCH 
 
-        :param json_patch_operation: A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Lockout Config conforms to certain logical guidelines, which are:   1. maximumAttempts >= 1 && maximumAttempts <= 15   2. lockoutDuration >= 5 && lockoutDuration <= 60   3. lockoutWindow >= 5 && lockoutDuration <= 60 (required)
+        :param json_patch_operation: A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Lockout Config conforms to certain logical guidelines, which are:   `1. maximumAttempts >= 1 && maximumAttempts <= 15   2. lockoutDuration >= 5 && lockoutDuration <= 60   3. lockoutWindow >= 5 && lockoutDuration <= 60` (required)
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1535,7 +1535,7 @@ class GlobalTenantSecuritySettingsApi:
     @validate_call
     def patch_auth_org_lockout_config_without_preload_content(
         self,
-        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Lockout Config conforms to certain logical guidelines, which are:   1. maximumAttempts >= 1 && maximumAttempts <= 15   2. lockoutDuration >= 5 && lockoutDuration <= 60   3. lockoutWindow >= 5 && lockoutDuration <= 60")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Lockout Config conforms to certain logical guidelines, which are:   `1. maximumAttempts >= 1 && maximumAttempts <= 15   2. lockoutDuration >= 5 && lockoutDuration <= 60   3. lockoutWindow >= 5 && lockoutDuration <= 60`")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1551,9 +1551,9 @@ class GlobalTenantSecuritySettingsApi:
     ) -> RESTResponseType:
         """Update Auth Org Lockout Configuration
 
-        This API updates an existing lockout configuration for an org using PATCH  Requires security scope of:  'sp:auth-org:update'
+        This API updates an existing lockout configuration for an org using PATCH 
 
-        :param json_patch_operation: A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Lockout Config conforms to certain logical guidelines, which are:   1. maximumAttempts >= 1 && maximumAttempts <= 15   2. lockoutDuration >= 5 && lockoutDuration <= 60   3. lockoutWindow >= 5 && lockoutDuration <= 60 (required)
+        :param json_patch_operation: A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Lockout Config conforms to certain logical guidelines, which are:   `1. maximumAttempts >= 1 && maximumAttempts <= 15   2. lockoutDuration >= 5 && lockoutDuration <= 60   3. lockoutWindow >= 5 && lockoutDuration <= 60` (required)
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2265,7 +2265,7 @@ class GlobalTenantSecuritySettingsApi:
     @validate_call
     def patch_auth_org_session_config(
         self,
-        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of auth org session configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Session Config conforms to certain logical guidelines, which are:   1. maxSessionTime >= 1 && maxSessionTime <= 10080 (1 week)   2. maxIdleTime >= 1 && maxIdleTime <= 1440 (1 day)   3. maxSessionTime must have a greater duration than maxIdleTime.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of auth org session configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Ensures that the patched Session Config conforms to certain logical guidelines, which are:   `1. maxSessionTime >= 1 && maxSessionTime <= 10080 (1 week)   2. maxIdleTime >= 1 && maxIdleTime <= 1440 (1 day)   3. maxSessionTime must have a greater duration than maxIdleTime.` ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2283,7 +2283,7 @@ class GlobalTenantSecuritySettingsApi:
 
         This API updates an existing session configuration for an org using PATCH.
 
-        :param json_patch_operation: A list of auth org session configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Session Config conforms to certain logical guidelines, which are:   1. maxSessionTime >= 1 && maxSessionTime <= 10080 (1 week)   2. maxIdleTime >= 1 && maxIdleTime <= 1440 (1 day)   3. maxSessionTime must have a greater duration than maxIdleTime. (required)
+        :param json_patch_operation: A list of auth org session configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Ensures that the patched Session Config conforms to certain logical guidelines, which are:   `1. maxSessionTime >= 1 && maxSessionTime <= 10080 (1 week)   2. maxIdleTime >= 1 && maxIdleTime <= 1440 (1 day)   3. maxSessionTime must have a greater duration than maxIdleTime.`  (required)
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2338,7 +2338,7 @@ class GlobalTenantSecuritySettingsApi:
     @validate_call
     def patch_auth_org_session_config_with_http_info(
         self,
-        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of auth org session configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Session Config conforms to certain logical guidelines, which are:   1. maxSessionTime >= 1 && maxSessionTime <= 10080 (1 week)   2. maxIdleTime >= 1 && maxIdleTime <= 1440 (1 day)   3. maxSessionTime must have a greater duration than maxIdleTime.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of auth org session configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Ensures that the patched Session Config conforms to certain logical guidelines, which are:   `1. maxSessionTime >= 1 && maxSessionTime <= 10080 (1 week)   2. maxIdleTime >= 1 && maxIdleTime <= 1440 (1 day)   3. maxSessionTime must have a greater duration than maxIdleTime.` ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2356,7 +2356,7 @@ class GlobalTenantSecuritySettingsApi:
 
         This API updates an existing session configuration for an org using PATCH.
 
-        :param json_patch_operation: A list of auth org session configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Session Config conforms to certain logical guidelines, which are:   1. maxSessionTime >= 1 && maxSessionTime <= 10080 (1 week)   2. maxIdleTime >= 1 && maxIdleTime <= 1440 (1 day)   3. maxSessionTime must have a greater duration than maxIdleTime. (required)
+        :param json_patch_operation: A list of auth org session configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Ensures that the patched Session Config conforms to certain logical guidelines, which are:   `1. maxSessionTime >= 1 && maxSessionTime <= 10080 (1 week)   2. maxIdleTime >= 1 && maxIdleTime <= 1440 (1 day)   3. maxSessionTime must have a greater duration than maxIdleTime.`  (required)
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2411,7 +2411,7 @@ class GlobalTenantSecuritySettingsApi:
     @validate_call
     def patch_auth_org_session_config_without_preload_content(
         self,
-        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of auth org session configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Session Config conforms to certain logical guidelines, which are:   1. maxSessionTime >= 1 && maxSessionTime <= 10080 (1 week)   2. maxIdleTime >= 1 && maxIdleTime <= 1440 (1 day)   3. maxSessionTime must have a greater duration than maxIdleTime.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of auth org session configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Ensures that the patched Session Config conforms to certain logical guidelines, which are:   `1. maxSessionTime >= 1 && maxSessionTime <= 10080 (1 week)   2. maxIdleTime >= 1 && maxIdleTime <= 1440 (1 day)   3. maxSessionTime must have a greater duration than maxIdleTime.` ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2429,7 +2429,7 @@ class GlobalTenantSecuritySettingsApi:
 
         This API updates an existing session configuration for an org using PATCH.
 
-        :param json_patch_operation: A list of auth org session configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Session Config conforms to certain logical guidelines, which are:   1. maxSessionTime >= 1 && maxSessionTime <= 10080 (1 week)   2. maxIdleTime >= 1 && maxIdleTime <= 1440 (1 day)   3. maxSessionTime must have a greater duration than maxIdleTime. (required)
+        :param json_patch_operation: A list of auth org session configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Ensures that the patched Session Config conforms to certain logical guidelines, which are:   `1. maxSessionTime >= 1 && maxSessionTime <= 10080 (1 week)   2. maxIdleTime >= 1 && maxIdleTime <= 1440 (1 day)   3. maxSessionTime must have a greater duration than maxIdleTime.`  (required)
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

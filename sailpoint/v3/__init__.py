@@ -104,6 +104,8 @@ from sailpoint.v3.models.access_request import AccessRequest
 from sailpoint.v3.models.access_request_config import AccessRequestConfig
 from sailpoint.v3.models.access_request_item import AccessRequestItem
 from sailpoint.v3.models.access_request_phases import AccessRequestPhases
+from sailpoint.v3.models.access_request_response import AccessRequestResponse
+from sailpoint.v3.models.access_request_tracking import AccessRequestTracking
 from sailpoint.v3.models.access_request_type import AccessRequestType
 from sailpoint.v3.models.access_review_item import AccessReviewItem
 from sailpoint.v3.models.access_review_reassignment import AccessReviewReassignment
@@ -472,6 +474,7 @@ from sailpoint.v3.models.requestable_object import RequestableObject
 from sailpoint.v3.models.requestable_object_reference import RequestableObjectReference
 from sailpoint.v3.models.requestable_object_request_status import RequestableObjectRequestStatus
 from sailpoint.v3.models.requestable_object_type import RequestableObjectType
+from sailpoint.v3.models.requested_item_details import RequestedItemDetails
 from sailpoint.v3.models.requested_item_status import RequestedItemStatus
 from sailpoint.v3.models.requested_item_status_cancelled_request_details import RequestedItemStatusCancelledRequestDetails
 from sailpoint.v3.models.requested_item_status_pre_approval_trigger_details import RequestedItemStatusPreApprovalTriggerDetails

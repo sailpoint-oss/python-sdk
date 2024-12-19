@@ -184,7 +184,7 @@ This endpoint does not need any parameter.
 
 Get security network configuration.
 
-This API returns the details of an org's network auth configuration. Requires security scope of: 'sp:auth-org:read'
+This API returns the details of an org's network auth configuration.
 
 ### Example
 
@@ -424,7 +424,7 @@ This endpoint does not need any parameter.
 
 Update Auth Org Lockout Configuration
 
-This API updates an existing lockout configuration for an org using PATCH  Requires security scope of:  'sp:auth-org:update'
+This API updates an existing lockout configuration for an org using PATCH 
 
 ### Example
 
@@ -457,7 +457,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.GlobalTenantSecuritySettingsApi(api_client)
-    json_patch_operation = [{op=replace, path=/maximumAttempts, value=7,}, {op=add, path=/lockoutDuration, value=35}] # List[JsonPatchOperation] | A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Lockout Config conforms to certain logical guidelines, which are:   1. maximumAttempts >= 1 && maximumAttempts <= 15   2. lockoutDuration >= 5 && lockoutDuration <= 60   3. lockoutWindow >= 5 && lockoutDuration <= 60
+    json_patch_operation = [{op=replace, path=/maximumAttempts, value=7,}, {op=add, path=/lockoutDuration, value=35}] # List[JsonPatchOperation] | A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Lockout Config conforms to certain logical guidelines, which are:   `1. maximumAttempts >= 1 && maximumAttempts <= 15   2. lockoutDuration >= 5 && lockoutDuration <= 60   3. lockoutWindow >= 5 && lockoutDuration <= 60`
 
     try:
         # Update Auth Org Lockout Configuration
@@ -475,7 +475,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **json_patch_operation** | [**List[JsonPatchOperation]**](JsonPatchOperation.md)| A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Lockout Config conforms to certain logical guidelines, which are:   1. maximumAttempts &gt;&#x3D; 1 &amp;&amp; maximumAttempts &lt;&#x3D; 15   2. lockoutDuration &gt;&#x3D; 5 &amp;&amp; lockoutDuration &lt;&#x3D; 60   3. lockoutWindow &gt;&#x3D; 5 &amp;&amp; lockoutDuration &lt;&#x3D; 60 | 
+ **json_patch_operation** | [**List[JsonPatchOperation]**](JsonPatchOperation.md)| A list of auth org lockout configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Lockout Config conforms to certain logical guidelines, which are:   &#x60;1. maximumAttempts &gt;&#x3D; 1 &amp;&amp; maximumAttempts &lt;&#x3D; 15   2. lockoutDuration &gt;&#x3D; 5 &amp;&amp; lockoutDuration &lt;&#x3D; 60   3. lockoutWindow &gt;&#x3D; 5 &amp;&amp; lockoutDuration &lt;&#x3D; 60&#x60; | 
 
 ### Return type
 
@@ -712,7 +712,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.GlobalTenantSecuritySettingsApi(api_client)
-    json_patch_operation = [{op=replace, path=/rememberMe, value=true,}, {op=add, path=/maxSessionTime, value=480}] # List[JsonPatchOperation] | A list of auth org session configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Session Config conforms to certain logical guidelines, which are:   1. maxSessionTime >= 1 && maxSessionTime <= 10080 (1 week)   2. maxIdleTime >= 1 && maxIdleTime <= 1440 (1 day)   3. maxSessionTime must have a greater duration than maxIdleTime.
+    json_patch_operation = [{op=replace, path=/rememberMe, value=true,}, {op=add, path=/maxSessionTime, value=480}] # List[JsonPatchOperation] | A list of auth org session configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Ensures that the patched Session Config conforms to certain logical guidelines, which are:   `1. maxSessionTime >= 1 && maxSessionTime <= 10080 (1 week)   2. maxIdleTime >= 1 && maxIdleTime <= 1440 (1 day)   3. maxSessionTime must have a greater duration than maxIdleTime.` 
 
     try:
         # Update Auth Org Session Configuration
@@ -730,7 +730,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **json_patch_operation** | [**List[JsonPatchOperation]**](JsonPatchOperation.md)| A list of auth org session configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Session Config conforms to certain logical guidelines, which are:   1. maxSessionTime &gt;&#x3D; 1 &amp;&amp; maxSessionTime &lt;&#x3D; 10080 (1 week)   2. maxIdleTime &gt;&#x3D; 1 &amp;&amp; maxIdleTime &lt;&#x3D; 1440 (1 day)   3. maxSessionTime must have a greater duration than maxIdleTime. | 
+ **json_patch_operation** | [**List[JsonPatchOperation]**](JsonPatchOperation.md)| A list of auth org session configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Ensures that the patched Session Config conforms to certain logical guidelines, which are:   &#x60;1. maxSessionTime &gt;&#x3D; 1 &amp;&amp; maxSessionTime &lt;&#x3D; 10080 (1 week)   2. maxIdleTime &gt;&#x3D; 1 &amp;&amp; maxIdleTime &lt;&#x3D; 1440 (1 day)   3. maxSessionTime must have a greater duration than maxIdleTime.&#x60;  | 
 
 ### Return type
 

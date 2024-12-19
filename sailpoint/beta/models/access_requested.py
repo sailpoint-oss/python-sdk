@@ -19,7 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.beta.models.access_request_response import AccessRequestResponse
+from sailpoint.beta.models.access_request_response1 import AccessRequestResponse1
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,7 +27,7 @@ class AccessRequested(BaseModel):
     """
     AccessRequested
     """ # noqa: E501
-    access_request: Optional[AccessRequestResponse] = Field(default=None, alias="accessRequest")
+    access_request: Optional[AccessRequestResponse1] = Field(default=None, alias="accessRequest")
     identity_id: Optional[StrictStr] = Field(default=None, description="the identity id", alias="identityId")
     event_type: Optional[StrictStr] = Field(default=None, description="the event type", alias="eventType")
     dt: Optional[StrictStr] = Field(default=None, description="the date of event")
@@ -87,7 +87,7 @@ class AccessRequested(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "accessRequest": AccessRequestResponse.from_dict(obj["accessRequest"]) if obj.get("accessRequest") is not None else None,
+            "accessRequest": AccessRequestResponse1.from_dict(obj["accessRequest"]) if obj.get("accessRequest") is not None else None,
             "identityId": obj.get("identityId"),
             "eventType": obj.get("eventType"),
             "dt": obj.get("dt")

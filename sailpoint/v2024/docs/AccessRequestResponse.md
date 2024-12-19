@@ -5,9 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**requester_id** | **str** | the requester Id | [optional] 
-**requester_name** | **str** | the requesterName | [optional] 
-**items** | [**List[AccessRequestItemResponse]**](AccessRequestItemResponse.md) |  | [optional] 
+**new_requests** | [**List[AccessRequestTracking]**](AccessRequestTracking.md) | A list of new access request tracking data mapped to the values requested. | [optional] 
+**existing_requests** | [**List[AccessRequestTracking]**](AccessRequestTracking.md) | A list of existing access request tracking data mapped to the values requested.  This indicates access has already been requested for this item. | [optional] 
 
 ## Example
 

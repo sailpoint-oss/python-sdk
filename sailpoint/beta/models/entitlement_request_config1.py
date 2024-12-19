@@ -29,7 +29,7 @@ class EntitlementRequestConfig1(BaseModel):
     allow_entitlement_request: Optional[StrictBool] = Field(default=False, description="If this is true, entitlement requests are allowed.", alias="allowEntitlementRequest")
     request_comments_required: Optional[StrictBool] = Field(default=False, description="If this is true, comments are required to submit entitlement requests.", alias="requestCommentsRequired")
     denied_comments_required: Optional[StrictBool] = Field(default=False, description="If this is true, comments are required to reject entitlement requests.", alias="deniedCommentsRequired")
-    grant_request_approval_schemes: Optional[StrictStr] = Field(default='sourceOwner', description="Approval schemes for granting entitlement request. This can be empty if no approval is needed. Multiple schemes must be comma-separated. The valid schemes are \"entitlementOwner\", \"sourceOwner\", \"manager\" and \"workgroup:{id}\". You can use multiple governance groups (workgroups). ", alias="grantRequestApprovalSchemes")
+    grant_request_approval_schemes: Optional[StrictStr] = Field(default='sourceOwner', description="Approval schemes for granting entitlement request. This can be empty if no approval is needed. Multiple schemes must be comma-separated. The valid schemes are \"entitlementOwner\", \"sourceOwner\", \"manager\" and \"`workgroup:{id}`\". You can use multiple governance groups (workgroups). ", alias="grantRequestApprovalSchemes")
     __properties: ClassVar[List[str]] = ["allowEntitlementRequest", "requestCommentsRequired", "deniedCommentsRequired", "grantRequestApprovalSchemes"]
 
     model_config = ConfigDict(

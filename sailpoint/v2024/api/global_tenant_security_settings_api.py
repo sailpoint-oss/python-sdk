@@ -349,7 +349,7 @@ class GlobalTenantSecuritySettingsApi:
     ) -> NetworkConfiguration:
         """Get security network configuration.
 
-        This API returns the details of an org's network auth configuration. Requires security scope of: 'sp:auth-org:read'
+        This API returns the details of an org's network auth configuration.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -418,7 +418,7 @@ class GlobalTenantSecuritySettingsApi:
     ) -> ApiResponse[NetworkConfiguration]:
         """Get security network configuration.
 
-        This API returns the details of an org's network auth configuration. Requires security scope of: 'sp:auth-org:read'
+        This API returns the details of an org's network auth configuration.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -487,7 +487,7 @@ class GlobalTenantSecuritySettingsApi:
     ) -> RESTResponseType:
         """Get security network configuration.
 
-        This API returns the details of an org's network auth configuration. Requires security scope of: 'sp:auth-org:read'
+        This API returns the details of an org's network auth configuration.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

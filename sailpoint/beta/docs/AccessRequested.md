@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**access_request** | [**AccessRequestResponse**](AccessRequestResponse.md) |  | [optional] 
+**access_request** | [**AccessRequestResponse1**](AccessRequestResponse1.md) |  | [optional] 
 **identity_id** | **str** | the identity id | [optional] 
 **event_type** | **str** | the event type | [optional] 
 **dt** | **str** | the date of event | [optional] 

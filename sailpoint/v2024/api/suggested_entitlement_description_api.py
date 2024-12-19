@@ -68,7 +68,7 @@ class SuggestedEntitlementDescriptionApi:
     ) -> SedBatchStats:
         """Submit Sed Batch Stats Request
 
-        Submit Sed Batch Stats Request. Submits batchId in the path param (e.g. {batchId}/stats). API responses with stats of the batchId.
+        'Submit Sed Batch Stats Request.   Submits batchId in the path param `(e.g. {batchId}/stats)`. API responses with stats  of the batchId.' 
 
         :param batch_id: Batch Id (required)
         :type batch_id: str
@@ -145,7 +145,7 @@ class SuggestedEntitlementDescriptionApi:
     ) -> ApiResponse[SedBatchStats]:
         """Submit Sed Batch Stats Request
 
-        Submit Sed Batch Stats Request. Submits batchId in the path param (e.g. {batchId}/stats). API responses with stats of the batchId.
+        'Submit Sed Batch Stats Request.   Submits batchId in the path param `(e.g. {batchId}/stats)`. API responses with stats  of the batchId.' 
 
         :param batch_id: Batch Id (required)
         :type batch_id: str
@@ -222,7 +222,7 @@ class SuggestedEntitlementDescriptionApi:
     ) -> RESTResponseType:
         """Submit Sed Batch Stats Request
 
-        Submit Sed Batch Stats Request. Submits batchId in the path param (e.g. {batchId}/stats). API responses with stats of the batchId.
+        'Submit Sed Batch Stats Request.   Submits batchId in the path param `(e.g. {batchId}/stats)`. API responses with stats  of the batchId.' 
 
         :param batch_id: Batch Id (required)
         :type batch_id: str

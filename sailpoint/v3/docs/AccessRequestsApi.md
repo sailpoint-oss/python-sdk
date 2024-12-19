@@ -96,7 +96,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_access_request**
-> object create_access_request(access_request)
+> AccessRequestResponse create_access_request(access_request)
 
 Submit Access Request
 
@@ -110,6 +110,7 @@ Use this API to submit an access request in Identity Security Cloud (ISC), where
 ```python
 import sailpoint.v3
 from sailpoint.v3.models.access_request import AccessRequest
+from sailpoint.v3.models.access_request_response import AccessRequestResponse
 from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
@@ -154,7 +155,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**AccessRequestResponse**](AccessRequestResponse.md)
 
 ### Authorization
 
@@ -169,7 +170,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**202** | Accepted - Returned if the request was successfully accepted into the system. |  -  |
+**202** | Access Request Response. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
