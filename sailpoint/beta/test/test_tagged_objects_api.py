@@ -29,7 +29,7 @@ class TestTaggedObjectsApi(unittest.TestCase):
     def test_delete_tagged_object(self) -> None:
         """Test case for delete_tagged_object
 
-        Delete Tagged Object
+        Delete Object Tags
         """
         pass
 

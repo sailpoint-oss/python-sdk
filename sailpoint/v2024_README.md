@@ -206,11 +206,11 @@ Class | Method | HTTP request | Description
 *ConfigurationHubApi* | [**list_uploaded_configurations**](sailpoint/v2024/docs/ConfigurationHubApi.md#list_uploaded_configurations) | **GET** /configuration-hub/backups/uploads | List Uploaded Configurations
 *ConfigurationHubApi* | [**update_object_mappings**](sailpoint/v2024/docs/ConfigurationHubApi.md#update_object_mappings) | **POST** /configuration-hub/object-mappings/{sourceOrg}/bulk-patch | Bulk updates object mappings
 *ConnectorRuleManagementApi* | [**create_connector_rule**](sailpoint/v2024/docs/ConnectorRuleManagementApi.md#create_connector_rule) | **POST** /connector-rules | Create Connector Rule
-*ConnectorRuleManagementApi* | [**delete_connector_rule**](sailpoint/v2024/docs/ConnectorRuleManagementApi.md#delete_connector_rule) | **DELETE** /connector-rules/{id} | Delete a Connector-Rule
-*ConnectorRuleManagementApi* | [**get_connector_rule**](sailpoint/v2024/docs/ConnectorRuleManagementApi.md#get_connector_rule) | **GET** /connector-rules/{id} | Connector-Rule by ID
+*ConnectorRuleManagementApi* | [**delete_connector_rule**](sailpoint/v2024/docs/ConnectorRuleManagementApi.md#delete_connector_rule) | **DELETE** /connector-rules/{id} | Delete Connector Rule
+*ConnectorRuleManagementApi* | [**get_connector_rule**](sailpoint/v2024/docs/ConnectorRuleManagementApi.md#get_connector_rule) | **GET** /connector-rules/{id} | Get Connector Rule
 *ConnectorRuleManagementApi* | [**get_connector_rule_list**](sailpoint/v2024/docs/ConnectorRuleManagementApi.md#get_connector_rule_list) | **GET** /connector-rules | List Connector Rules
-*ConnectorRuleManagementApi* | [**update_connector_rule**](sailpoint/v2024/docs/ConnectorRuleManagementApi.md#update_connector_rule) | **PUT** /connector-rules/{id} | Update a Connector Rule
-*ConnectorRuleManagementApi* | [**validate_connector_rule**](sailpoint/v2024/docs/ConnectorRuleManagementApi.md#validate_connector_rule) | **POST** /connector-rules/validate | Validate Connector Rule
+*ConnectorRuleManagementApi* | [**put_connector_rule**](sailpoint/v2024/docs/ConnectorRuleManagementApi.md#put_connector_rule) | **PUT** /connector-rules/{id} | Update Connector Rule
+*ConnectorRuleManagementApi* | [**test_connector_rule**](sailpoint/v2024/docs/ConnectorRuleManagementApi.md#test_connector_rule) | **POST** /connector-rules/validate | Validate Connector Rule
 *ConnectorsApi* | [**create_custom_connector**](sailpoint/v2024/docs/ConnectorsApi.md#create_custom_connector) | **POST** /connectors | Create Custom Connector
 *ConnectorsApi* | [**delete_custom_connector**](sailpoint/v2024/docs/ConnectorsApi.md#delete_custom_connector) | **DELETE** /connectors/{scriptName} | Delete Connector by Script Name
 *ConnectorsApi* | [**get_connector**](sailpoint/v2024/docs/ConnectorsApi.md#get_connector) | **GET** /connectors/{scriptName} | Get Connector by Script Name
@@ -446,9 +446,9 @@ Class | Method | HTTP request | Description
 *OAuthClientsApi* | [**get_oauth_client**](sailpoint/v2024/docs/OAuthClientsApi.md#get_oauth_client) | **GET** /oauth-clients/{id} | Get OAuth Client
 *OAuthClientsApi* | [**list_oauth_clients**](sailpoint/v2024/docs/OAuthClientsApi.md#list_oauth_clients) | **GET** /oauth-clients | List OAuth Clients
 *OAuthClientsApi* | [**patch_oauth_client**](sailpoint/v2024/docs/OAuthClientsApi.md#patch_oauth_client) | **PATCH** /oauth-clients/{id} | Patch OAuth Client
-*OrgConfigApi* | [**get_org_config**](sailpoint/v2024/docs/OrgConfigApi.md#get_org_config) | **GET** /org-config | Get Org configuration settings
-*OrgConfigApi* | [**get_valid_time_zones**](sailpoint/v2024/docs/OrgConfigApi.md#get_valid_time_zones) | **GET** /org-config/valid-time-zones | Get list of time zones
-*OrgConfigApi* | [**patch_org_config**](sailpoint/v2024/docs/OrgConfigApi.md#patch_org_config) | **PATCH** /org-config | Patch an Org configuration property
+*OrgConfigApi* | [**get_org_config**](sailpoint/v2024/docs/OrgConfigApi.md#get_org_config) | **GET** /org-config | Get Org Config Settings
+*OrgConfigApi* | [**get_valid_time_zones**](sailpoint/v2024/docs/OrgConfigApi.md#get_valid_time_zones) | **GET** /org-config/valid-time-zones | Get Valid Time Zones
+*OrgConfigApi* | [**patch_org_config**](sailpoint/v2024/docs/OrgConfigApi.md#patch_org_config) | **PATCH** /org-config | Patch Org Config
 *PasswordConfigurationApi* | [**create_password_org_config**](sailpoint/v2024/docs/PasswordConfigurationApi.md#create_password_org_config) | **POST** /password-org-config | Create Password Org Config
 *PasswordConfigurationApi* | [**get_password_org_config**](sailpoint/v2024/docs/PasswordConfigurationApi.md#get_password_org_config) | **GET** /password-org-config | Get Password Org Config
 *PasswordConfigurationApi* | [**put_password_org_config**](sailpoint/v2024/docs/PasswordConfigurationApi.md#put_password_org_config) | **PUT** /password-org-config | Update Password Org Config

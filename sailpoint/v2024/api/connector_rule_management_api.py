@@ -16,7 +16,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictStr
+from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
 from sailpoint.v2024.models.connector_rule_create_request import ConnectorRuleCreateRequest
@@ -46,7 +46,7 @@ class ConnectorRuleManagementApi:
     @validate_call
     def create_connector_rule(
         self,
-        connector_rule_create_request: Annotated[ConnectorRuleCreateRequest, Field(description="The connector rule to create")],
+        connector_rule_create_request: Annotated[ConnectorRuleCreateRequest, Field(description="Connector rule to create.")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -63,11 +63,11 @@ class ConnectorRuleManagementApi:
     ) -> ConnectorRuleResponse:
         """Create Connector Rule
 
-        Creates a new connector rule.
+        Create a connector rule from the available types.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
-        :param connector_rule_create_request: The connector rule to create (required)
+        :param connector_rule_create_request: Connector rule to create. (required)
         :type connector_rule_create_request: ConnectorRuleCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -122,7 +122,7 @@ class ConnectorRuleManagementApi:
     @validate_call
     def create_connector_rule_with_http_info(
         self,
-        connector_rule_create_request: Annotated[ConnectorRuleCreateRequest, Field(description="The connector rule to create")],
+        connector_rule_create_request: Annotated[ConnectorRuleCreateRequest, Field(description="Connector rule to create.")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -139,11 +139,11 @@ class ConnectorRuleManagementApi:
     ) -> ApiResponse[ConnectorRuleResponse]:
         """Create Connector Rule
 
-        Creates a new connector rule.
+        Create a connector rule from the available types.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
-        :param connector_rule_create_request: The connector rule to create (required)
+        :param connector_rule_create_request: Connector rule to create. (required)
         :type connector_rule_create_request: ConnectorRuleCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -198,7 +198,7 @@ class ConnectorRuleManagementApi:
     @validate_call
     def create_connector_rule_without_preload_content(
         self,
-        connector_rule_create_request: Annotated[ConnectorRuleCreateRequest, Field(description="The connector rule to create")],
+        connector_rule_create_request: Annotated[ConnectorRuleCreateRequest, Field(description="Connector rule to create.")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -215,11 +215,11 @@ class ConnectorRuleManagementApi:
     ) -> RESTResponseType:
         """Create Connector Rule
 
-        Creates a new connector rule.
+        Create a connector rule from the available types.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
-        :param connector_rule_create_request: The connector rule to create (required)
+        :param connector_rule_create_request: Connector rule to create. (required)
         :type connector_rule_create_request: ConnectorRuleCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -349,7 +349,7 @@ class ConnectorRuleManagementApi:
     @validate_call
     def delete_connector_rule(
         self,
-        id: Annotated[StrictStr, Field(description="ID of the connector rule to delete")],
+        id: Annotated[StrictStr, Field(description="ID of the connector rule to delete.")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -364,11 +364,11 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete a Connector-Rule
+        """Delete Connector Rule
 
-        Deletes the connector rule specified by the given ID.
+        Delete the connector rule for the given ID.
 
-        :param id: ID of the connector rule to delete (required)
+        :param id: ID of the connector rule to delete. (required)
         :type id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -426,7 +426,7 @@ class ConnectorRuleManagementApi:
     @validate_call
     def delete_connector_rule_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="ID of the connector rule to delete")],
+        id: Annotated[StrictStr, Field(description="ID of the connector rule to delete.")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -441,11 +441,11 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete a Connector-Rule
+        """Delete Connector Rule
 
-        Deletes the connector rule specified by the given ID.
+        Delete the connector rule for the given ID.
 
-        :param id: ID of the connector rule to delete (required)
+        :param id: ID of the connector rule to delete. (required)
         :type id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -503,7 +503,7 @@ class ConnectorRuleManagementApi:
     @validate_call
     def delete_connector_rule_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="ID of the connector rule to delete")],
+        id: Annotated[StrictStr, Field(description="ID of the connector rule to delete.")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -518,11 +518,11 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete a Connector-Rule
+        """Delete Connector Rule
 
-        Deletes the connector rule specified by the given ID.
+        Delete the connector rule for the given ID.
 
-        :param id: ID of the connector rule to delete (required)
+        :param id: ID of the connector rule to delete. (required)
         :type id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -642,7 +642,7 @@ class ConnectorRuleManagementApi:
     @validate_call
     def get_connector_rule(
         self,
-        id: Annotated[StrictStr, Field(description="ID of the connector rule to retrieve")],
+        id: Annotated[StrictStr, Field(description="ID of the connector rule to get.")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -657,11 +657,11 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ConnectorRuleResponse:
-        """Connector-Rule by ID
+        """Get Connector Rule
 
-        Returns the connector rule specified by ID.
+        Get a connector rule by ID.
 
-        :param id: ID of the connector rule to retrieve (required)
+        :param id: ID of the connector rule to get. (required)
         :type id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -719,7 +719,7 @@ class ConnectorRuleManagementApi:
     @validate_call
     def get_connector_rule_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="ID of the connector rule to retrieve")],
+        id: Annotated[StrictStr, Field(description="ID of the connector rule to get.")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -734,11 +734,11 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ConnectorRuleResponse]:
-        """Connector-Rule by ID
+        """Get Connector Rule
 
-        Returns the connector rule specified by ID.
+        Get a connector rule by ID.
 
-        :param id: ID of the connector rule to retrieve (required)
+        :param id: ID of the connector rule to get. (required)
         :type id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -796,7 +796,7 @@ class ConnectorRuleManagementApi:
     @validate_call
     def get_connector_rule_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="ID of the connector rule to retrieve")],
+        id: Annotated[StrictStr, Field(description="ID of the connector rule to get.")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -811,11 +811,11 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Connector-Rule by ID
+        """Get Connector Rule
 
-        Returns the connector rule specified by ID.
+        Get a connector rule by ID.
 
-        :param id: ID of the connector rule to retrieve (required)
+        :param id: ID of the connector rule to get. (required)
         :type id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -935,6 +935,9 @@ class ConnectorRuleManagementApi:
     @validate_call
     def get_connector_rule_list(
         self,
+        limit: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=0)]], Field(description="Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -951,10 +954,16 @@ class ConnectorRuleManagementApi:
     ) -> List[ConnectorRuleResponse]:
         """List Connector Rules
 
-        Returns the list of connector rules.
+        List existing connector rules.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
+        :param limit: Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type count: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -979,6 +988,9 @@ class ConnectorRuleManagementApi:
 
         _param = self._get_connector_rule_list_serialize(
             x_sail_point_experimental=x_sail_point_experimental,
+            limit=limit,
+            offset=offset,
+            count=count,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1007,6 +1019,9 @@ class ConnectorRuleManagementApi:
     @validate_call
     def get_connector_rule_list_with_http_info(
         self,
+        limit: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=0)]], Field(description="Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -1023,10 +1038,16 @@ class ConnectorRuleManagementApi:
     ) -> ApiResponse[List[ConnectorRuleResponse]]:
         """List Connector Rules
 
-        Returns the list of connector rules.
+        List existing connector rules.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
+        :param limit: Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type count: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1051,6 +1072,9 @@ class ConnectorRuleManagementApi:
 
         _param = self._get_connector_rule_list_serialize(
             x_sail_point_experimental=x_sail_point_experimental,
+            limit=limit,
+            offset=offset,
+            count=count,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1079,6 +1103,9 @@ class ConnectorRuleManagementApi:
     @validate_call
     def get_connector_rule_list_without_preload_content(
         self,
+        limit: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=0)]], Field(description="Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -1095,10 +1122,16 @@ class ConnectorRuleManagementApi:
     ) -> RESTResponseType:
         """List Connector Rules
 
-        Returns the list of connector rules.
+        List existing connector rules.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
+        :param limit: Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type count: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1123,6 +1156,9 @@ class ConnectorRuleManagementApi:
 
         _param = self._get_connector_rule_list_serialize(
             x_sail_point_experimental=x_sail_point_experimental,
+            limit=limit,
+            offset=offset,
+            count=count,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1147,6 +1183,9 @@ class ConnectorRuleManagementApi:
     def _get_connector_rule_list_serialize(
         self,
         x_sail_point_experimental,
+        limit,
+        offset,
+        count,
         _request_auth,
         _content_type,
         _headers,
@@ -1167,6 +1206,18 @@ class ConnectorRuleManagementApi:
 
         # process the path parameters
         # process the query parameters
+        if limit is not None:
+            
+            _query_params.append(('limit', limit))
+            
+        if offset is not None:
+            
+            _query_params.append(('offset', offset))
+            
+        if count is not None:
+            
+            _query_params.append(('count', count))
+            
         # process the header parameters
         if x_sail_point_experimental is not None:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
@@ -1208,10 +1259,10 @@ class ConnectorRuleManagementApi:
 
 
     @validate_call
-    def update_connector_rule(
+    def put_connector_rule(
         self,
-        id: Annotated[StrictStr, Field(description="ID of the connector rule to update")],
-        connector_rule_update_request: Annotated[Optional[ConnectorRuleUpdateRequest], Field(description="The connector rule with updated data")] = None,
+        id: Annotated[StrictStr, Field(description="ID of the connector rule to update.")],
+        connector_rule_update_request: Annotated[Optional[ConnectorRuleUpdateRequest], Field(description="Connector rule with updated data.")] = None,
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -1226,15 +1277,15 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ConnectorRuleResponse:
-        """Update a Connector Rule
+        """Update Connector Rule
 
-        Updates an existing connector rule with the one provided in the request body. Note that the fields 'id', 'name', and 'type' are immutable.
+        Update an existing connector rule with the one provided in the request body. These fields are immutable: `id`, `name`, `type`
 
-        :param id: ID of the connector rule to update (required)
+        :param id: ID of the connector rule to update. (required)
         :type id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
-        :param connector_rule_update_request: The connector rule with updated data
+        :param connector_rule_update_request: Connector rule with updated data.
         :type connector_rule_update_request: ConnectorRuleUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1258,7 +1309,7 @@ class ConnectorRuleManagementApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update_connector_rule_serialize(
+        _param = self._put_connector_rule_serialize(
             id=id,
             x_sail_point_experimental=x_sail_point_experimental,
             connector_rule_update_request=connector_rule_update_request,
@@ -1289,10 +1340,10 @@ class ConnectorRuleManagementApi:
 
 
     @validate_call
-    def update_connector_rule_with_http_info(
+    def put_connector_rule_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="ID of the connector rule to update")],
-        connector_rule_update_request: Annotated[Optional[ConnectorRuleUpdateRequest], Field(description="The connector rule with updated data")] = None,
+        id: Annotated[StrictStr, Field(description="ID of the connector rule to update.")],
+        connector_rule_update_request: Annotated[Optional[ConnectorRuleUpdateRequest], Field(description="Connector rule with updated data.")] = None,
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -1307,15 +1358,15 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ConnectorRuleResponse]:
-        """Update a Connector Rule
+        """Update Connector Rule
 
-        Updates an existing connector rule with the one provided in the request body. Note that the fields 'id', 'name', and 'type' are immutable.
+        Update an existing connector rule with the one provided in the request body. These fields are immutable: `id`, `name`, `type`
 
-        :param id: ID of the connector rule to update (required)
+        :param id: ID of the connector rule to update. (required)
         :type id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
-        :param connector_rule_update_request: The connector rule with updated data
+        :param connector_rule_update_request: Connector rule with updated data.
         :type connector_rule_update_request: ConnectorRuleUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1339,7 +1390,7 @@ class ConnectorRuleManagementApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update_connector_rule_serialize(
+        _param = self._put_connector_rule_serialize(
             id=id,
             x_sail_point_experimental=x_sail_point_experimental,
             connector_rule_update_request=connector_rule_update_request,
@@ -1370,10 +1421,10 @@ class ConnectorRuleManagementApi:
 
 
     @validate_call
-    def update_connector_rule_without_preload_content(
+    def put_connector_rule_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="ID of the connector rule to update")],
-        connector_rule_update_request: Annotated[Optional[ConnectorRuleUpdateRequest], Field(description="The connector rule with updated data")] = None,
+        id: Annotated[StrictStr, Field(description="ID of the connector rule to update.")],
+        connector_rule_update_request: Annotated[Optional[ConnectorRuleUpdateRequest], Field(description="Connector rule with updated data.")] = None,
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -1388,15 +1439,15 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update a Connector Rule
+        """Update Connector Rule
 
-        Updates an existing connector rule with the one provided in the request body. Note that the fields 'id', 'name', and 'type' are immutable.
+        Update an existing connector rule with the one provided in the request body. These fields are immutable: `id`, `name`, `type`
 
-        :param id: ID of the connector rule to update (required)
+        :param id: ID of the connector rule to update. (required)
         :type id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
-        :param connector_rule_update_request: The connector rule with updated data
+        :param connector_rule_update_request: Connector rule with updated data.
         :type connector_rule_update_request: ConnectorRuleUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1420,7 +1471,7 @@ class ConnectorRuleManagementApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update_connector_rule_serialize(
+        _param = self._put_connector_rule_serialize(
             id=id,
             x_sail_point_experimental=x_sail_point_experimental,
             connector_rule_update_request=connector_rule_update_request,
@@ -1446,7 +1497,7 @@ class ConnectorRuleManagementApi:
         return response_data.response
 
 
-    def _update_connector_rule_serialize(
+    def _put_connector_rule_serialize(
         self,
         id,
         x_sail_point_experimental,
@@ -1529,9 +1580,9 @@ class ConnectorRuleManagementApi:
 
 
     @validate_call
-    def validate_connector_rule(
+    def test_connector_rule(
         self,
-        source_code: Annotated[SourceCode, Field(description="The code to validate")],
+        source_code: Annotated[SourceCode, Field(description="Code to validate.")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -1548,11 +1599,11 @@ class ConnectorRuleManagementApi:
     ) -> ConnectorRuleValidationResponse:
         """Validate Connector Rule
 
-        Returns a list of issues within the code to fix, if any.
+        Detect issues within the connector rule's code to fix and list them.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
-        :param source_code: The code to validate (required)
+        :param source_code: Code to validate. (required)
         :type source_code: SourceCode
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1576,7 +1627,7 @@ class ConnectorRuleManagementApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._validate_connector_rule_serialize(
+        _param = self._test_connector_rule_serialize(
             x_sail_point_experimental=x_sail_point_experimental,
             source_code=source_code,
             _request_auth=_request_auth,
@@ -1605,9 +1656,9 @@ class ConnectorRuleManagementApi:
 
 
     @validate_call
-    def validate_connector_rule_with_http_info(
+    def test_connector_rule_with_http_info(
         self,
-        source_code: Annotated[SourceCode, Field(description="The code to validate")],
+        source_code: Annotated[SourceCode, Field(description="Code to validate.")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -1624,11 +1675,11 @@ class ConnectorRuleManagementApi:
     ) -> ApiResponse[ConnectorRuleValidationResponse]:
         """Validate Connector Rule
 
-        Returns a list of issues within the code to fix, if any.
+        Detect issues within the connector rule's code to fix and list them.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
-        :param source_code: The code to validate (required)
+        :param source_code: Code to validate. (required)
         :type source_code: SourceCode
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1652,7 +1703,7 @@ class ConnectorRuleManagementApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._validate_connector_rule_serialize(
+        _param = self._test_connector_rule_serialize(
             x_sail_point_experimental=x_sail_point_experimental,
             source_code=source_code,
             _request_auth=_request_auth,
@@ -1681,9 +1732,9 @@ class ConnectorRuleManagementApi:
 
 
     @validate_call
-    def validate_connector_rule_without_preload_content(
+    def test_connector_rule_without_preload_content(
         self,
-        source_code: Annotated[SourceCode, Field(description="The code to validate")],
+        source_code: Annotated[SourceCode, Field(description="Code to validate.")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -1700,11 +1751,11 @@ class ConnectorRuleManagementApi:
     ) -> RESTResponseType:
         """Validate Connector Rule
 
-        Returns a list of issues within the code to fix, if any.
+        Detect issues within the connector rule's code to fix and list them.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
-        :param source_code: The code to validate (required)
+        :param source_code: Code to validate. (required)
         :type source_code: SourceCode
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1728,7 +1779,7 @@ class ConnectorRuleManagementApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._validate_connector_rule_serialize(
+        _param = self._test_connector_rule_serialize(
             x_sail_point_experimental=x_sail_point_experimental,
             source_code=source_code,
             _request_auth=_request_auth,
@@ -1752,7 +1803,7 @@ class ConnectorRuleManagementApi:
         return response_data.response
 
 
-    def _validate_connector_rule_serialize(
+    def _test_connector_rule_serialize(
         self,
         x_sail_point_experimental,
         source_code,

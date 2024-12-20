@@ -16,8 +16,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictStr
-from typing import List
+from pydantic import Field, StrictBool, StrictStr
+from typing import List, Optional
 from typing_extensions import Annotated
 from sailpoint.v2024.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v2024.models.org_config import OrgConfig
@@ -57,9 +57,9 @@ class OrgConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> OrgConfig:
-        """Get Org configuration settings
+        """Get Org Config Settings
 
-        Get org configuration with only external (org admin) accessible properties for the current org.
+        Get the current organization's configuration settings, only external accessible properties.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -130,9 +130,9 @@ class OrgConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[OrgConfig]:
-        """Get Org configuration settings
+        """Get Org Config Settings
 
-        Get org configuration with only external (org admin) accessible properties for the current org.
+        Get the current organization's configuration settings, only external accessible properties.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -203,9 +203,9 @@ class OrgConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Org configuration settings
+        """Get Org Config Settings
 
-        Get org configuration with only external (org admin) accessible properties for the current org.
+        Get the current organization's configuration settings, only external accessible properties.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -321,6 +321,9 @@ class OrgConfigApi:
     @validate_call
     def get_valid_time_zones(
         self,
+        limit: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=0)]], Field(description="Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -335,12 +338,18 @@ class OrgConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[str]:
-        """Get list of time zones
+        """Get Valid Time Zones
 
-        Get a list of valid time zones that can be set in org configurations.
+        List the valid time zones that can be set in organization configurations.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
+        :param limit: Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type count: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -365,6 +374,9 @@ class OrgConfigApi:
 
         _param = self._get_valid_time_zones_serialize(
             x_sail_point_experimental=x_sail_point_experimental,
+            limit=limit,
+            offset=offset,
+            count=count,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -393,6 +405,9 @@ class OrgConfigApi:
     @validate_call
     def get_valid_time_zones_with_http_info(
         self,
+        limit: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=0)]], Field(description="Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -407,12 +422,18 @@ class OrgConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[str]]:
-        """Get list of time zones
+        """Get Valid Time Zones
 
-        Get a list of valid time zones that can be set in org configurations.
+        List the valid time zones that can be set in organization configurations.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
+        :param limit: Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type count: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -437,6 +458,9 @@ class OrgConfigApi:
 
         _param = self._get_valid_time_zones_serialize(
             x_sail_point_experimental=x_sail_point_experimental,
+            limit=limit,
+            offset=offset,
+            count=count,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -465,6 +489,9 @@ class OrgConfigApi:
     @validate_call
     def get_valid_time_zones_without_preload_content(
         self,
+        limit: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=0)]], Field(description="Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -479,12 +506,18 @@ class OrgConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get list of time zones
+        """Get Valid Time Zones
 
-        Get a list of valid time zones that can be set in org configurations.
+        List the valid time zones that can be set in organization configurations.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
+        :param limit: Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type count: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -509,6 +542,9 @@ class OrgConfigApi:
 
         _param = self._get_valid_time_zones_serialize(
             x_sail_point_experimental=x_sail_point_experimental,
+            limit=limit,
+            offset=offset,
+            count=count,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -533,6 +569,9 @@ class OrgConfigApi:
     def _get_valid_time_zones_serialize(
         self,
         x_sail_point_experimental,
+        limit,
+        offset,
+        count,
         _request_auth,
         _content_type,
         _headers,
@@ -553,6 +592,18 @@ class OrgConfigApi:
 
         # process the path parameters
         # process the query parameters
+        if limit is not None:
+            
+            _query_params.append(('limit', limit))
+            
+        if offset is not None:
+            
+            _query_params.append(('offset', offset))
+            
+        if count is not None:
+            
+            _query_params.append(('count', count))
+            
         # process the header parameters
         if x_sail_point_experimental is not None:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
@@ -611,9 +662,9 @@ class OrgConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> OrgConfig:
-        """Patch an Org configuration property
+        """Patch Org Config
 
-        Patch configuration of the current org using http://jsonpatch.com/ syntax.  Commonly used for changing the time zone of an org.
+        Patch the current organization's configuration, using http://jsonpatch.com/ syntax. This is commonly used to changing an organization's time zone.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -688,9 +739,9 @@ class OrgConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[OrgConfig]:
-        """Patch an Org configuration property
+        """Patch Org Config
 
-        Patch configuration of the current org using http://jsonpatch.com/ syntax.  Commonly used for changing the time zone of an org.
+        Patch the current organization's configuration, using http://jsonpatch.com/ syntax. This is commonly used to changing an organization's time zone.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -765,9 +816,9 @@ class OrgConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Patch an Org configuration property
+        """Patch Org Config
 
-        Patch configuration of the current org using http://jsonpatch.com/ syntax.  Commonly used for changing the time zone of an org.
+        Patch the current organization's configuration, using http://jsonpatch.com/ syntax. This is commonly used to changing an organization's time zone.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str

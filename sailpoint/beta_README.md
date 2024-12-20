@@ -552,7 +552,7 @@ Class | Method | HTTP request | Description
 *SuggestedEntitlementDescriptionApi* | [**submit_sed_approval**](sailpoint/beta/docs/SuggestedEntitlementDescriptionApi.md#submit_sed_approval) | **POST** /suggested-entitlement-description-approvals | Submit Bulk Approval Request
 *SuggestedEntitlementDescriptionApi* | [**submit_sed_assignment**](sailpoint/beta/docs/SuggestedEntitlementDescriptionApi.md#submit_sed_assignment) | **POST** /suggested-entitlement-description-assignments | Submit Sed Assignment Request
 *SuggestedEntitlementDescriptionApi* | [**submit_sed_batch_request**](sailpoint/beta/docs/SuggestedEntitlementDescriptionApi.md#submit_sed_batch_request) | **POST** /suggested-entitlement-description-batches | Submit Sed Batch Request
-*TaggedObjectsApi* | [**delete_tagged_object**](sailpoint/beta/docs/TaggedObjectsApi.md#delete_tagged_object) | **DELETE** /tagged-objects/{type}/{id} | Delete Tagged Object
+*TaggedObjectsApi* | [**delete_tagged_object**](sailpoint/beta/docs/TaggedObjectsApi.md#delete_tagged_object) | **DELETE** /tagged-objects/{type}/{id} | Delete Object Tags
 *TaggedObjectsApi* | [**delete_tags_to_many_object**](sailpoint/beta/docs/TaggedObjectsApi.md#delete_tags_to_many_object) | **POST** /tagged-objects/bulk-remove | Remove Tags from Multiple Objects
 *TaggedObjectsApi* | [**get_tagged_object**](sailpoint/beta/docs/TaggedObjectsApi.md#get_tagged_object) | **GET** /tagged-objects/{type}/{id} | Get Tagged Object
 *TaggedObjectsApi* | [**list_tagged_objects**](sailpoint/beta/docs/TaggedObjectsApi.md#list_tagged_objects) | **GET** /tagged-objects | List Tagged Objects
