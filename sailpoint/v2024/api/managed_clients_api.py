@@ -609,7 +609,7 @@ class ManagedClientsApi:
     @validate_call
     def get_managed_client(
         self,
-        id: Annotated[StrictStr, Field(description="Managed Client ID.")],
+        id: Annotated[StrictStr, Field(description="Managed client ID.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -623,11 +623,11 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ManagedClient:
-        """Get a Managed Client
+        """Get Managed Client
 
-        Get a Managed Client.
+        Get managed client by ID. 
 
-        :param id: Managed Client ID. (required)
+        :param id: Managed client ID. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -682,7 +682,7 @@ class ManagedClientsApi:
     @validate_call
     def get_managed_client_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="Managed Client ID.")],
+        id: Annotated[StrictStr, Field(description="Managed client ID.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -696,11 +696,11 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ManagedClient]:
-        """Get a Managed Client
+        """Get Managed Client
 
-        Get a Managed Client.
+        Get managed client by ID. 
 
-        :param id: Managed Client ID. (required)
+        :param id: Managed client ID. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -755,7 +755,7 @@ class ManagedClientsApi:
     @validate_call
     def get_managed_client_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="Managed Client ID.")],
+        id: Annotated[StrictStr, Field(description="Managed client ID.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -769,11 +769,11 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get a Managed Client
+        """Get Managed Client
 
-        Get a Managed Client.
+        Get managed client by ID. 
 
-        :param id: Managed Client ID. (required)
+        :param id: Managed client ID. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

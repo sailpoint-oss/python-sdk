@@ -4,21 +4,21 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_managed_cluster**](ManagedClustersApi.md#create_managed_cluster) | **POST** /managed-clusters | Create a new Managed Cluster
-[**delete_managed_cluster**](ManagedClustersApi.md#delete_managed_cluster) | **DELETE** /managed-clusters/{id} | Delete a Managed Cluster
-[**get_client_log_configuration**](ManagedClustersApi.md#get_client_log_configuration) | **GET** /managed-clusters/{id}/log-config | Get Managed Cluster&#39;s log configuration
-[**get_managed_cluster**](ManagedClustersApi.md#get_managed_cluster) | **GET** /managed-clusters/{id} | Get a specified Managed Cluster.
-[**get_managed_clusters**](ManagedClustersApi.md#get_managed_clusters) | **GET** /managed-clusters | Retrieve all Managed Clusters.
-[**put_client_log_configuration**](ManagedClustersApi.md#put_client_log_configuration) | **PUT** /managed-clusters/{id}/log-config | Update Managed Cluster&#39;s log configuration
-[**update_managed_cluster**](ManagedClustersApi.md#update_managed_cluster) | **PATCH** /managed-clusters/{id} | Update a Managed Cluster
+[**create_managed_cluster**](ManagedClustersApi.md#create_managed_cluster) | **POST** /managed-clusters | Create Create Managed Cluster
+[**delete_managed_cluster**](ManagedClustersApi.md#delete_managed_cluster) | **DELETE** /managed-clusters/{id} | Delete Managed Cluster
+[**get_client_log_configuration**](ManagedClustersApi.md#get_client_log_configuration) | **GET** /managed-clusters/{id}/log-config | Get Managed Cluster Log Configuration
+[**get_managed_cluster**](ManagedClustersApi.md#get_managed_cluster) | **GET** /managed-clusters/{id} | Get Managed Cluster
+[**get_managed_clusters**](ManagedClustersApi.md#get_managed_clusters) | **GET** /managed-clusters | Get Managed Clusters
+[**put_client_log_configuration**](ManagedClustersApi.md#put_client_log_configuration) | **PUT** /managed-clusters/{id}/log-config | Update Managed Cluster Log Configuration
+[**update_managed_cluster**](ManagedClustersApi.md#update_managed_cluster) | **PATCH** /managed-clusters/{id} | Update Managed Cluster
 
 
 # **create_managed_cluster**
 > ManagedCluster create_managed_cluster(managed_cluster_request)
 
-Create a new Managed Cluster
+Create Create Managed Cluster
 
-Create a new Managed Cluster. The API returns a result that includes the Managed Cluster ID.
+Create a new Managed Cluster. The API returns a result that includes the managed cluster ID.
 
 ### Example
 
@@ -54,7 +54,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
     managed_cluster_request = sailpoint.v3.ManagedClusterRequest() # ManagedClusterRequest | 
 
     try:
-        # Create a new Managed Cluster
+        # Create Create Managed Cluster
         api_response = api_instance.create_managed_cluster(managed_cluster_request)
         print("The response of ManagedClustersApi->create_managed_cluster:\n")
         pprint(api_response)
@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The created ManagedClient |  -  |
+**200** | Created managed cluster. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -100,9 +100,9 @@ Name | Type | Description  | Notes
 # **delete_managed_cluster**
 > delete_managed_cluster(id, remove_clients=remove_clients)
 
-Delete a Managed Cluster
+Delete Managed Cluster
 
-Delete an existing Managed Cluster.
+Delete an existing managed cluster.
 
 ### Example
 
@@ -133,11 +133,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.ManagedClustersApi(api_client)
-    id = '2c9180897de347a2017de8859e8c5039' # str | Managed Cluster ID.
-    remove_clients = False # bool | Flag to determine the need to delete a cluster with clients (optional) (default to False)
+    id = '2c9180897de347a2017de8859e8c5039' # str | Managed cluster ID.
+    remove_clients = False # bool | Flag to determine the need to delete a cluster with clients. (optional) (default to False)
 
     try:
-        # Delete a Managed Cluster
+        # Delete Managed Cluster
         api_instance.delete_managed_cluster(id, remove_clients=remove_clients)
     except Exception as e:
         print("Exception when calling ManagedClustersApi->delete_managed_cluster: %s\n" % e)
@@ -150,8 +150,8 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| Managed Cluster ID. | 
- **remove_clients** | **bool**| Flag to determine the need to delete a cluster with clients | [optional] [default to False]
+ **id** | **str**| Managed cluster ID. | 
+ **remove_clients** | **bool**| Flag to determine the need to delete a cluster with clients. | [optional] [default to False]
 
 ### Return type
 
@@ -182,9 +182,9 @@ void (empty response body)
 # **get_client_log_configuration**
 > ClientLogConfiguration get_client_log_configuration(id)
 
-Get Managed Cluster's log configuration
+Get Managed Cluster Log Configuration
 
-Get managed cluster's log configuration.
+Get a managed cluster's log configuration.
 
 ### Example
 
@@ -216,10 +216,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.ManagedClustersApi(api_client)
-    id = '2b838de9-db9b-abcf-e646-d4f274ad4238' # str | ID of ManagedCluster to get log configuration for
+    id = '2b838de9-db9b-abcf-e646-d4f274ad4238' # str | ID of managed cluster to get log configuration for.
 
     try:
-        # Get Managed Cluster's log configuration
+        # Get Managed Cluster Log Configuration
         api_response = api_instance.get_client_log_configuration(id)
         print("The response of ManagedClustersApi->get_client_log_configuration:\n")
         pprint(api_response)
@@ -234,7 +234,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| ID of ManagedCluster to get log configuration for | 
+ **id** | **str**| ID of managed cluster to get log configuration for. | 
 
 ### Return type
 
@@ -253,7 +253,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Log configuration of ManagedCluster matching given cluster ID |  -  |
+**200** | Log configuration of managed cluster for given cluster ID. |  -  |
 **204** | No content - indicates the request was successful but there is no content to be returned in the response. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
@@ -267,9 +267,9 @@ Name | Type | Description  | Notes
 # **get_managed_cluster**
 > ManagedCluster get_managed_cluster(id)
 
-Get a specified Managed Cluster.
+Get Managed Cluster
 
-Retrieve a ManagedCluster by ID.
+Get a managed cluster by ID.
 
 ### Example
 
@@ -301,10 +301,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.ManagedClustersApi(api_client)
-    id = '2c9180897de347a2017de8859e8c5039' # str | ManagedCluster ID.
+    id = '2c9180897de347a2017de8859e8c5039' # str | Managed cluster ID.
 
     try:
-        # Get a specified Managed Cluster.
+        # Get Managed Cluster
         api_response = api_instance.get_managed_cluster(id)
         print("The response of ManagedClustersApi->get_managed_cluster:\n")
         pprint(api_response)
@@ -319,7 +319,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| ManagedCluster ID. | 
+ **id** | **str**| Managed cluster ID. | 
 
 ### Return type
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Responds with ManagedCluster having the given ID. |  -  |
+**200** | Response with managed cluster for the given ID. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -351,9 +351,9 @@ Name | Type | Description  | Notes
 # **get_managed_clusters**
 > List[ManagedCluster] get_managed_clusters(offset=offset, limit=limit, count=count, filters=filters)
 
-Retrieve all Managed Clusters.
+Get Managed Clusters
 
-Retrieve all Managed Clusters for the current Org, based on request context.
+List current organization's managed clusters, based on request context.
 
 ### Example
 
@@ -391,7 +391,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
     filters = 'operational eq \"operation\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **operational**: *eq* (optional)
 
     try:
-        # Retrieve all Managed Clusters.
+        # Get Managed Clusters
         api_response = api_instance.get_managed_clusters(offset=offset, limit=limit, count=count, filters=filters)
         print("The response of ManagedClustersApi->get_managed_clusters:\n")
         pprint(api_response)
@@ -428,7 +428,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Responds with a list of ManagedCluster. |  -  |
+**200** | Response with a list of managed clusters. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -440,9 +440,9 @@ Name | Type | Description  | Notes
 # **put_client_log_configuration**
 > ClientLogConfiguration put_client_log_configuration(id, put_client_log_configuration_request)
 
-Update Managed Cluster's log configuration
+Update Managed Cluster Log Configuration
 
-Update managed cluster's log configuration.  Only one of `durationMinutes` or `expiration` may be specified, up to 1440 minutes (24 hours) in the future. If neither is specified, the default value for `durationMinutes` will be 240.
+Update a managed cluster's log configuration. You may only specify one of `durationMinutes` or `expiration`, up to 1440 minutes (24 hours) in the future. If neither is specified, the default value for `durationMinutes` is 240.
 
 ### Example
 
@@ -475,11 +475,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.ManagedClustersApi(api_client)
-    id = '2b838de9-db9b-abcf-e646-d4f274ad4238' # str | ID of ManagedCluster to update log configuration for
-    put_client_log_configuration_request = sailpoint.v3.PutClientLogConfigurationRequest() # PutClientLogConfigurationRequest | ClientLogConfiguration for given ManagedCluster
+    id = '2b838de9-db9b-abcf-e646-d4f274ad4238' # str | ID of the managed cluster to update the log configuration for.
+    put_client_log_configuration_request = sailpoint.v3.PutClientLogConfigurationRequest() # PutClientLogConfigurationRequest | Client log configuration for the given managed cluster.
 
     try:
-        # Update Managed Cluster's log configuration
+        # Update Managed Cluster Log Configuration
         api_response = api_instance.put_client_log_configuration(id, put_client_log_configuration_request)
         print("The response of ManagedClustersApi->put_client_log_configuration:\n")
         pprint(api_response)
@@ -494,8 +494,8 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| ID of ManagedCluster to update log configuration for | 
- **put_client_log_configuration_request** | [**PutClientLogConfigurationRequest**](PutClientLogConfigurationRequest.md)| ClientLogConfiguration for given ManagedCluster | 
+ **id** | **str**| ID of the managed cluster to update the log configuration for. | 
+ **put_client_log_configuration_request** | [**PutClientLogConfigurationRequest**](PutClientLogConfigurationRequest.md)| Client log configuration for the given managed cluster. | 
 
 ### Return type
 
@@ -514,7 +514,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Responds with updated ClientLogConfiguration for given ManagedCluster |  -  |
+**200** | Response with updated client log configuration for the given managed cluster. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -527,9 +527,9 @@ Name | Type | Description  | Notes
 # **update_managed_cluster**
 > ManagedCluster update_managed_cluster(id, json_patch_operation)
 
-Update a Managed Cluster
+Update Managed Cluster
 
-Update an existing Managed Cluster.
+Update an existing managed cluster.
 
 ### Example
 
@@ -562,11 +562,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.ManagedClustersApi(api_client)
-    id = '2c9180897de347a2017de8859e8c5039' # str | Managed Cluster ID.
-    json_patch_operation = [sailpoint.v3.JsonPatchOperation()] # List[JsonPatchOperation] | The JSONPatch payload used to update the object.
+    id = '2c9180897de347a2017de8859e8c5039' # str | Managed cluster ID.
+    json_patch_operation = [sailpoint.v3.JsonPatchOperation()] # List[JsonPatchOperation] | JSONPatch payload used to update the object.
 
     try:
-        # Update a Managed Cluster
+        # Update Managed Cluster
         api_response = api_instance.update_managed_cluster(id, json_patch_operation)
         print("The response of ManagedClustersApi->update_managed_cluster:\n")
         pprint(api_response)
@@ -581,8 +581,8 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| Managed Cluster ID. | 
- **json_patch_operation** | [**List[JsonPatchOperation]**](JsonPatchOperation.md)| The JSONPatch payload used to update the object. | 
+ **id** | **str**| Managed cluster ID. | 
+ **json_patch_operation** | [**List[JsonPatchOperation]**](JsonPatchOperation.md)| JSONPatch payload used to update the object. | 
 
 ### Return type
 
@@ -601,7 +601,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The updated Managed Cluster |  -  |
+**200** | Updated managed cluster. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |

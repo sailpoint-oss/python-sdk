@@ -4,7 +4,7 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete_tagged_object**](TaggedObjectsApi.md#delete_tagged_object) | **DELETE** /tagged-objects/{type}/{id} | Delete Tagged Object
+[**delete_tagged_object**](TaggedObjectsApi.md#delete_tagged_object) | **DELETE** /tagged-objects/{type}/{id} | Delete Object Tags
 [**delete_tags_to_many_object**](TaggedObjectsApi.md#delete_tags_to_many_object) | **POST** /tagged-objects/bulk-remove | Remove Tags from Multiple Objects
 [**get_tagged_object**](TaggedObjectsApi.md#get_tagged_object) | **GET** /tagged-objects/{type}/{id} | Get Tagged Object
 [**list_tagged_objects**](TaggedObjectsApi.md#list_tagged_objects) | **GET** /tagged-objects | List Tagged Objects
@@ -17,9 +17,9 @@ Method | HTTP request | Description
 # **delete_tagged_object**
 > delete_tagged_object(type, id)
 
-Delete Tagged Object
+Delete Object Tags
 
-This deletes a tagged object for the specified type.
+Delete all tags from a tagged object.
 
 ### Example
 
@@ -50,11 +50,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.TaggedObjectsApi(api_client)
-    type = 'ROLE' # str | The type of tagged object to delete.
-    id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the object reference to delete.
+    type = 'ROLE' # str | The type of object to delete tags from.
+    id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the object to delete tags from.
 
     try:
-        # Delete Tagged Object
+        # Delete Object Tags
         api_instance.delete_tagged_object(type, id)
     except Exception as e:
         print("Exception when calling TaggedObjectsApi->delete_tagged_object: %s\n" % e)
@@ -67,8 +67,8 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **type** | **str**| The type of tagged object to delete. | 
- **id** | **str**| The ID of the object reference to delete. | 
+ **type** | **str**| The type of object to delete tags from. | 
+ **id** | **str**| The ID of the object to delete tags from. | 
 
 ### Return type
 

@@ -4,6 +4,7 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v2024*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**approve_bulk_access_request**](AccessRequestsApi.md#approve_bulk_access_request) | **POST** /access-request-approvals/bulk-approve | Bulk Approve Access Request
 [**cancel_access_request**](AccessRequestsApi.md#cancel_access_request) | **POST** /access-requests/cancel | Cancel Access Request
 [**close_access_request**](AccessRequestsApi.md#close_access_request) | **POST** /access-requests/close | Close Access Request
 [**create_access_request**](AccessRequestsApi.md#create_access_request) | **POST** /access-requests | Submit Access Request
@@ -11,6 +12,90 @@ Method | HTTP request | Description
 [**list_access_request_status**](AccessRequestsApi.md#list_access_request_status) | **GET** /access-request-status | Access Request Status
 [**set_access_request_config**](AccessRequestsApi.md#set_access_request_config) | **PUT** /access-request-config | Update Access Request Configuration
 
+
+# **approve_bulk_access_request**
+> object approve_bulk_access_request(bulk_approve_access_request)
+
+Bulk Approve Access Request
+
+This API endpoint allows approving pending access requests in bulk. Maximum of 50 approval ids can be  provided in the request for one single invocation.  ORG_ADMIN or users with rights \"idn:access-request-administration:write\" can approve the access requests in bulk.
+
+### Example
+
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
+
+```python
+import sailpoint.v2024
+from sailpoint.v2024.models.bulk_approve_access_request import BulkApproveAccessRequest
+from sailpoint.v2024.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v2024
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sailpoint.v2024.Configuration(
+    host = "https://sailpoint.api.identitynow.com/v2024"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with sailpoint.v2024.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sailpoint.v2024.AccessRequestsApi(api_client)
+    bulk_approve_access_request = {accessRequestIds=[2c91808568c529c60168cca6f90c1313, 2c91808568c529c60168cca6f90c1314], comment=I approve these request items} # BulkApproveAccessRequest | 
+
+    try:
+        # Bulk Approve Access Request
+        api_response = api_instance.approve_bulk_access_request(bulk_approve_access_request)
+        print("The response of AccessRequestsApi->approve_bulk_access_request:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AccessRequestsApi->approve_bulk_access_request: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **bulk_approve_access_request** | [**BulkApproveAccessRequest**](BulkApproveAccessRequest.md)|  | 
+
+### Return type
+
+**object**
+
+### Authorization
+
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted - Returned if the request was successfully accepted into the system. |  -  |
+**400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
+**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**404** | Not Found - returned if the request URL refers to a resource or object that does not exist |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cancel_access_request**
 > object cancel_access_request(cancel_access_request)

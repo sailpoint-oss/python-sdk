@@ -29,49 +29,49 @@ class TestManagedClustersApi(unittest.TestCase):
     def test_create_managed_cluster(self) -> None:
         """Test case for create_managed_cluster
 
-        Create a new Managed Cluster
+        Create Create Managed Cluster
         """
         pass
 
     def test_delete_managed_cluster(self) -> None:
         """Test case for delete_managed_cluster
 
-        Delete a Managed Cluster
+        Delete Managed Cluster
         """
         pass
 
     def test_get_client_log_configuration(self) -> None:
         """Test case for get_client_log_configuration
 
-        Get Managed Cluster's log configuration
+        Get Managed Cluster Log Configuration
         """
         pass
 
     def test_get_managed_cluster(self) -> None:
         """Test case for get_managed_cluster
 
-        Get a specified Managed Cluster.
+        Get Managed Cluster
         """
         pass
 
     def test_get_managed_clusters(self) -> None:
         """Test case for get_managed_clusters
 
-        Retrieve all Managed Clusters.
+        Get Managed Clusters
         """
         pass
 
     def test_put_client_log_configuration(self) -> None:
         """Test case for put_client_log_configuration
 
-        Update Managed Cluster's log configuration
+        Update Managed Cluster Log Configuration
         """
         pass
 
     def test_update_managed_cluster(self) -> None:
         """Test case for update_managed_cluster
 
-        Update a Managed Cluster
+        Update Managed Cluster
         """
         pass
 

@@ -60,9 +60,9 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ManagedCluster:
-        """Create a new Managed Cluster
+        """Create Create Managed Cluster
 
-        Create a new Managed Cluster. The API returns a result that includes the Managed Cluster ID.
+        Create a new Managed Cluster. The API returns a result that includes the managed cluster ID.
 
         :param managed_cluster_request: (required)
         :type managed_cluster_request: ManagedClusterRequest
@@ -132,9 +132,9 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ManagedCluster]:
-        """Create a new Managed Cluster
+        """Create Create Managed Cluster
 
-        Create a new Managed Cluster. The API returns a result that includes the Managed Cluster ID.
+        Create a new Managed Cluster. The API returns a result that includes the managed cluster ID.
 
         :param managed_cluster_request: (required)
         :type managed_cluster_request: ManagedClusterRequest
@@ -204,9 +204,9 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create a new Managed Cluster
+        """Create Create Managed Cluster
 
-        Create a new Managed Cluster. The API returns a result that includes the Managed Cluster ID.
+        Create a new Managed Cluster. The API returns a result that includes the managed cluster ID.
 
         :param managed_cluster_request: (required)
         :type managed_cluster_request: ManagedClusterRequest
@@ -334,8 +334,8 @@ class ManagedClustersApi:
     @validate_call
     def delete_managed_cluster(
         self,
-        id: Annotated[StrictStr, Field(description="Managed Cluster ID.")],
-        remove_clients: Annotated[Optional[StrictBool], Field(description="Flag to determine the need to delete a cluster with clients")] = None,
+        id: Annotated[StrictStr, Field(description="Managed cluster ID.")],
+        remove_clients: Annotated[Optional[StrictBool], Field(description="Flag to determine the need to delete a cluster with clients.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -349,13 +349,13 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete a Managed Cluster
+        """Delete Managed Cluster
 
-        Delete an existing Managed Cluster.
+        Delete an existing managed cluster.
 
-        :param id: Managed Cluster ID. (required)
+        :param id: Managed cluster ID. (required)
         :type id: str
-        :param remove_clients: Flag to determine the need to delete a cluster with clients
+        :param remove_clients: Flag to determine the need to delete a cluster with clients.
         :type remove_clients: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -410,8 +410,8 @@ class ManagedClustersApi:
     @validate_call
     def delete_managed_cluster_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="Managed Cluster ID.")],
-        remove_clients: Annotated[Optional[StrictBool], Field(description="Flag to determine the need to delete a cluster with clients")] = None,
+        id: Annotated[StrictStr, Field(description="Managed cluster ID.")],
+        remove_clients: Annotated[Optional[StrictBool], Field(description="Flag to determine the need to delete a cluster with clients.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -425,13 +425,13 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete a Managed Cluster
+        """Delete Managed Cluster
 
-        Delete an existing Managed Cluster.
+        Delete an existing managed cluster.
 
-        :param id: Managed Cluster ID. (required)
+        :param id: Managed cluster ID. (required)
         :type id: str
-        :param remove_clients: Flag to determine the need to delete a cluster with clients
+        :param remove_clients: Flag to determine the need to delete a cluster with clients.
         :type remove_clients: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -486,8 +486,8 @@ class ManagedClustersApi:
     @validate_call
     def delete_managed_cluster_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="Managed Cluster ID.")],
-        remove_clients: Annotated[Optional[StrictBool], Field(description="Flag to determine the need to delete a cluster with clients")] = None,
+        id: Annotated[StrictStr, Field(description="Managed cluster ID.")],
+        remove_clients: Annotated[Optional[StrictBool], Field(description="Flag to determine the need to delete a cluster with clients.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -501,13 +501,13 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete a Managed Cluster
+        """Delete Managed Cluster
 
-        Delete an existing Managed Cluster.
+        Delete an existing managed cluster.
 
-        :param id: Managed Cluster ID. (required)
+        :param id: Managed cluster ID. (required)
         :type id: str
-        :param remove_clients: Flag to determine the need to delete a cluster with clients
+        :param remove_clients: Flag to determine the need to delete a cluster with clients.
         :type remove_clients: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -626,7 +626,7 @@ class ManagedClustersApi:
     @validate_call
     def get_client_log_configuration(
         self,
-        id: Annotated[StrictStr, Field(description="ID of ManagedCluster to get log configuration for")],
+        id: Annotated[StrictStr, Field(description="ID of managed cluster to get log configuration for.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -640,11 +640,11 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ClientLogConfiguration:
-        """Get Managed Cluster's log configuration
+        """Get Managed Cluster Log Configuration
 
-        Get managed cluster's log configuration.
+        Get a managed cluster's log configuration.
 
-        :param id: ID of ManagedCluster to get log configuration for (required)
+        :param id: ID of managed cluster to get log configuration for. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -700,7 +700,7 @@ class ManagedClustersApi:
     @validate_call
     def get_client_log_configuration_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="ID of ManagedCluster to get log configuration for")],
+        id: Annotated[StrictStr, Field(description="ID of managed cluster to get log configuration for.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -714,11 +714,11 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ClientLogConfiguration]:
-        """Get Managed Cluster's log configuration
+        """Get Managed Cluster Log Configuration
 
-        Get managed cluster's log configuration.
+        Get a managed cluster's log configuration.
 
-        :param id: ID of ManagedCluster to get log configuration for (required)
+        :param id: ID of managed cluster to get log configuration for. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -774,7 +774,7 @@ class ManagedClustersApi:
     @validate_call
     def get_client_log_configuration_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="ID of ManagedCluster to get log configuration for")],
+        id: Annotated[StrictStr, Field(description="ID of managed cluster to get log configuration for.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -788,11 +788,11 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Managed Cluster's log configuration
+        """Get Managed Cluster Log Configuration
 
-        Get managed cluster's log configuration.
+        Get a managed cluster's log configuration.
 
-        :param id: ID of ManagedCluster to get log configuration for (required)
+        :param id: ID of managed cluster to get log configuration for. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -907,7 +907,7 @@ class ManagedClustersApi:
     @validate_call
     def get_managed_cluster(
         self,
-        id: Annotated[StrictStr, Field(description="ManagedCluster ID.")],
+        id: Annotated[StrictStr, Field(description="Managed cluster ID.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -921,11 +921,11 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ManagedCluster:
-        """Get a specified Managed Cluster.
+        """Get Managed Cluster
 
-        Retrieve a ManagedCluster by ID.
+        Get a managed cluster by ID.
 
-        :param id: ManagedCluster ID. (required)
+        :param id: Managed cluster ID. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -980,7 +980,7 @@ class ManagedClustersApi:
     @validate_call
     def get_managed_cluster_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="ManagedCluster ID.")],
+        id: Annotated[StrictStr, Field(description="Managed cluster ID.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -994,11 +994,11 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ManagedCluster]:
-        """Get a specified Managed Cluster.
+        """Get Managed Cluster
 
-        Retrieve a ManagedCluster by ID.
+        Get a managed cluster by ID.
 
-        :param id: ManagedCluster ID. (required)
+        :param id: Managed cluster ID. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1053,7 +1053,7 @@ class ManagedClustersApi:
     @validate_call
     def get_managed_cluster_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="ManagedCluster ID.")],
+        id: Annotated[StrictStr, Field(description="Managed cluster ID.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1067,11 +1067,11 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get a specified Managed Cluster.
+        """Get Managed Cluster
 
-        Retrieve a ManagedCluster by ID.
+        Get a managed cluster by ID.
 
-        :param id: ManagedCluster ID. (required)
+        :param id: Managed cluster ID. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1202,9 +1202,9 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[ManagedCluster]:
-        """Retrieve all Managed Clusters.
+        """Get Managed Clusters
 
-        Retrieve all Managed Clusters for the current Org, based on request context.
+        List current organization's managed clusters, based on request context.
 
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
@@ -1286,9 +1286,9 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[ManagedCluster]]:
-        """Retrieve all Managed Clusters.
+        """Get Managed Clusters
 
-        Retrieve all Managed Clusters for the current Org, based on request context.
+        List current organization's managed clusters, based on request context.
 
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
@@ -1370,9 +1370,9 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Retrieve all Managed Clusters.
+        """Get Managed Clusters
 
-        Retrieve all Managed Clusters for the current Org, based on request context.
+        List current organization's managed clusters, based on request context.
 
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
@@ -1513,8 +1513,8 @@ class ManagedClustersApi:
     @validate_call
     def put_client_log_configuration(
         self,
-        id: Annotated[StrictStr, Field(description="ID of ManagedCluster to update log configuration for")],
-        put_client_log_configuration_request: Annotated[PutClientLogConfigurationRequest, Field(description="ClientLogConfiguration for given ManagedCluster")],
+        id: Annotated[StrictStr, Field(description="ID of the managed cluster to update the log configuration for.")],
+        put_client_log_configuration_request: Annotated[PutClientLogConfigurationRequest, Field(description="Client log configuration for the given managed cluster.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1528,13 +1528,13 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ClientLogConfiguration:
-        """Update Managed Cluster's log configuration
+        """Update Managed Cluster Log Configuration
 
-        Update managed cluster's log configuration.  Only one of `durationMinutes` or `expiration` may be specified, up to 1440 minutes (24 hours) in the future. If neither is specified, the default value for `durationMinutes` will be 240.
+        Update a managed cluster's log configuration. You may only specify one of `durationMinutes` or `expiration`, up to 1440 minutes (24 hours) in the future. If neither is specified, the default value for `durationMinutes` is 240.
 
-        :param id: ID of ManagedCluster to update log configuration for (required)
+        :param id: ID of the managed cluster to update the log configuration for. (required)
         :type id: str
-        :param put_client_log_configuration_request: ClientLogConfiguration for given ManagedCluster (required)
+        :param put_client_log_configuration_request: Client log configuration for the given managed cluster. (required)
         :type put_client_log_configuration_request: PutClientLogConfigurationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1590,8 +1590,8 @@ class ManagedClustersApi:
     @validate_call
     def put_client_log_configuration_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="ID of ManagedCluster to update log configuration for")],
-        put_client_log_configuration_request: Annotated[PutClientLogConfigurationRequest, Field(description="ClientLogConfiguration for given ManagedCluster")],
+        id: Annotated[StrictStr, Field(description="ID of the managed cluster to update the log configuration for.")],
+        put_client_log_configuration_request: Annotated[PutClientLogConfigurationRequest, Field(description="Client log configuration for the given managed cluster.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1605,13 +1605,13 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ClientLogConfiguration]:
-        """Update Managed Cluster's log configuration
+        """Update Managed Cluster Log Configuration
 
-        Update managed cluster's log configuration.  Only one of `durationMinutes` or `expiration` may be specified, up to 1440 minutes (24 hours) in the future. If neither is specified, the default value for `durationMinutes` will be 240.
+        Update a managed cluster's log configuration. You may only specify one of `durationMinutes` or `expiration`, up to 1440 minutes (24 hours) in the future. If neither is specified, the default value for `durationMinutes` is 240.
 
-        :param id: ID of ManagedCluster to update log configuration for (required)
+        :param id: ID of the managed cluster to update the log configuration for. (required)
         :type id: str
-        :param put_client_log_configuration_request: ClientLogConfiguration for given ManagedCluster (required)
+        :param put_client_log_configuration_request: Client log configuration for the given managed cluster. (required)
         :type put_client_log_configuration_request: PutClientLogConfigurationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1667,8 +1667,8 @@ class ManagedClustersApi:
     @validate_call
     def put_client_log_configuration_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="ID of ManagedCluster to update log configuration for")],
-        put_client_log_configuration_request: Annotated[PutClientLogConfigurationRequest, Field(description="ClientLogConfiguration for given ManagedCluster")],
+        id: Annotated[StrictStr, Field(description="ID of the managed cluster to update the log configuration for.")],
+        put_client_log_configuration_request: Annotated[PutClientLogConfigurationRequest, Field(description="Client log configuration for the given managed cluster.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1682,13 +1682,13 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Managed Cluster's log configuration
+        """Update Managed Cluster Log Configuration
 
-        Update managed cluster's log configuration.  Only one of `durationMinutes` or `expiration` may be specified, up to 1440 minutes (24 hours) in the future. If neither is specified, the default value for `durationMinutes` will be 240.
+        Update a managed cluster's log configuration. You may only specify one of `durationMinutes` or `expiration`, up to 1440 minutes (24 hours) in the future. If neither is specified, the default value for `durationMinutes` is 240.
 
-        :param id: ID of ManagedCluster to update log configuration for (required)
+        :param id: ID of the managed cluster to update the log configuration for. (required)
         :type id: str
-        :param put_client_log_configuration_request: ClientLogConfiguration for given ManagedCluster (required)
+        :param put_client_log_configuration_request: Client log configuration for the given managed cluster. (required)
         :type put_client_log_configuration_request: PutClientLogConfigurationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1819,8 +1819,8 @@ class ManagedClustersApi:
     @validate_call
     def update_managed_cluster(
         self,
-        id: Annotated[StrictStr, Field(description="Managed Cluster ID.")],
-        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
+        id: Annotated[StrictStr, Field(description="Managed cluster ID.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="JSONPatch payload used to update the object.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1834,13 +1834,13 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ManagedCluster:
-        """Update a Managed Cluster
+        """Update Managed Cluster
 
-        Update an existing Managed Cluster.
+        Update an existing managed cluster.
 
-        :param id: Managed Cluster ID. (required)
+        :param id: Managed cluster ID. (required)
         :type id: str
-        :param json_patch_operation: The JSONPatch payload used to update the object. (required)
+        :param json_patch_operation: JSONPatch payload used to update the object. (required)
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1896,8 +1896,8 @@ class ManagedClustersApi:
     @validate_call
     def update_managed_cluster_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="Managed Cluster ID.")],
-        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
+        id: Annotated[StrictStr, Field(description="Managed cluster ID.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="JSONPatch payload used to update the object.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1911,13 +1911,13 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ManagedCluster]:
-        """Update a Managed Cluster
+        """Update Managed Cluster
 
-        Update an existing Managed Cluster.
+        Update an existing managed cluster.
 
-        :param id: Managed Cluster ID. (required)
+        :param id: Managed cluster ID. (required)
         :type id: str
-        :param json_patch_operation: The JSONPatch payload used to update the object. (required)
+        :param json_patch_operation: JSONPatch payload used to update the object. (required)
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1973,8 +1973,8 @@ class ManagedClustersApi:
     @validate_call
     def update_managed_cluster_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="Managed Cluster ID.")],
-        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
+        id: Annotated[StrictStr, Field(description="Managed cluster ID.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="JSONPatch payload used to update the object.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1988,13 +1988,13 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update a Managed Cluster
+        """Update Managed Cluster
 
-        Update an existing Managed Cluster.
+        Update an existing managed cluster.
 
-        :param id: Managed Cluster ID. (required)
+        :param id: Managed cluster ID. (required)
         :type id: str
-        :param json_patch_operation: The JSONPatch payload used to update the object. (required)
+        :param json_patch_operation: JSONPatch payload used to update the object. (required)
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

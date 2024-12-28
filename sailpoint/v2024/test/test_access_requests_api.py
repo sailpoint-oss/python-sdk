@@ -26,6 +26,13 @@ class TestAccessRequestsApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_approve_bulk_access_request(self) -> None:
+        """Test case for approve_bulk_access_request
+
+        Bulk Approve Access Request
+        """
+        pass
+
     def test_cancel_access_request(self) -> None:
         """Test case for cancel_access_request
 

@@ -291,6 +291,7 @@ sailpoint/v2024/docs/BrandingItemCreate.md
 sailpoint/v2024/docs/BucketAggregation.md
 sailpoint/v2024/docs/BucketType.md
 sailpoint/v2024/docs/BulkAddTaggedObject.md
+sailpoint/v2024/docs/BulkApproveAccessRequest.md
 sailpoint/v2024/docs/BulkIdentitiesAccountsResponse.md
 sailpoint/v2024/docs/BulkRemoveTaggedObject.md
 sailpoint/v2024/docs/BulkTaggedObjectResponse.md
@@ -1382,6 +1383,7 @@ sailpoint/v2024/models/branding_item_create.py
 sailpoint/v2024/models/bucket_aggregation.py
 sailpoint/v2024/models/bucket_type.py
 sailpoint/v2024/models/bulk_add_tagged_object.py
+sailpoint/v2024/models/bulk_approve_access_request.py
 sailpoint/v2024/models/bulk_identities_accounts_response.py
 sailpoint/v2024/models/bulk_remove_tagged_object.py
 sailpoint/v2024/models/bulk_tagged_object_response.py
@@ -2421,6 +2423,7 @@ sailpoint/v2024/test/test_branding_item_create.py
 sailpoint/v2024/test/test_bucket_aggregation.py
 sailpoint/v2024/test/test_bucket_type.py
 sailpoint/v2024/test/test_bulk_add_tagged_object.py
+sailpoint/v2024/test/test_bulk_approve_access_request.py
 sailpoint/v2024/test/test_bulk_identities_accounts_response.py
 sailpoint/v2024/test/test_bulk_remove_tagged_object.py
 sailpoint/v2024/test/test_bulk_tagged_object_response.py

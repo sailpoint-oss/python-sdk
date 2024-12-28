@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_managed_client**](ManagedClientsApi.md#create_managed_client) | **POST** /managed-clients | Create Managed Client
 [**delete_managed_client**](ManagedClientsApi.md#delete_managed_client) | **DELETE** /managed-clients/{id} | Delete Managed Client
-[**get_managed_client**](ManagedClientsApi.md#get_managed_client) | **GET** /managed-clients/{id} | Get a Managed Client
+[**get_managed_client**](ManagedClientsApi.md#get_managed_client) | **GET** /managed-clients/{id} | Get Managed Client
 [**get_managed_client_status**](ManagedClientsApi.md#get_managed_client_status) | **GET** /managed-clients/{id}/status | Get Managed Client Status
 [**get_managed_clients**](ManagedClientsApi.md#get_managed_clients) | **GET** /managed-clients | Get Managed Clients
 [**update_managed_client**](ManagedClientsApi.md#update_managed_client) | **PATCH** /managed-clients/{id} | Update Managed Client
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Created ManagedClient. |  -  |
+**200** | Created managed client. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -179,9 +179,9 @@ void (empty response body)
 # **get_managed_client**
 > ManagedClient get_managed_client(id)
 
-Get a Managed Client
+Get Managed Client
 
-Get a Managed Client.
+Get managed client by ID. 
 
 ### Example
 
@@ -213,10 +213,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.ManagedClientsApi(api_client)
-    id = '4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7' # str | Managed Client ID.
+    id = '4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7' # str | Managed client ID.
 
     try:
-        # Get a Managed Client
+        # Get Managed Client
         api_response = api_instance.get_managed_client(id)
         print("The response of ManagedClientsApi->get_managed_client:\n")
         pprint(api_response)
@@ -231,7 +231,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| Managed Client ID. | 
+ **id** | **str**| Managed client ID. | 
 
 ### Return type
 
@@ -250,7 +250,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Responds with a Managed Client |  -  |
+**200** | Managed client response. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |

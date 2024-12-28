@@ -45,8 +45,8 @@ class TaggedObjectsApi:
     @validate_call
     def delete_tagged_object(
         self,
-        type: Annotated[StrictStr, Field(description="The type of tagged object to delete.")],
-        id: Annotated[StrictStr, Field(description="The ID of the object reference to delete.")],
+        type: Annotated[StrictStr, Field(description="The type of object to delete tags from.")],
+        id: Annotated[StrictStr, Field(description="The ID of the object to delete tags from.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -60,13 +60,13 @@ class TaggedObjectsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete Tagged Object
+        """Delete Object Tags
 
-        This deletes a tagged object for the specified type.
+        Delete all tags from a tagged object.
 
-        :param type: The type of tagged object to delete. (required)
+        :param type: The type of object to delete tags from. (required)
         :type type: str
-        :param id: The ID of the object reference to delete. (required)
+        :param id: The ID of the object to delete tags from. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -121,8 +121,8 @@ class TaggedObjectsApi:
     @validate_call
     def delete_tagged_object_with_http_info(
         self,
-        type: Annotated[StrictStr, Field(description="The type of tagged object to delete.")],
-        id: Annotated[StrictStr, Field(description="The ID of the object reference to delete.")],
+        type: Annotated[StrictStr, Field(description="The type of object to delete tags from.")],
+        id: Annotated[StrictStr, Field(description="The ID of the object to delete tags from.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -136,13 +136,13 @@ class TaggedObjectsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete Tagged Object
+        """Delete Object Tags
 
-        This deletes a tagged object for the specified type.
+        Delete all tags from a tagged object.
 
-        :param type: The type of tagged object to delete. (required)
+        :param type: The type of object to delete tags from. (required)
         :type type: str
-        :param id: The ID of the object reference to delete. (required)
+        :param id: The ID of the object to delete tags from. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -197,8 +197,8 @@ class TaggedObjectsApi:
     @validate_call
     def delete_tagged_object_without_preload_content(
         self,
-        type: Annotated[StrictStr, Field(description="The type of tagged object to delete.")],
-        id: Annotated[StrictStr, Field(description="The ID of the object reference to delete.")],
+        type: Annotated[StrictStr, Field(description="The type of object to delete tags from.")],
+        id: Annotated[StrictStr, Field(description="The ID of the object to delete tags from.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -212,13 +212,13 @@ class TaggedObjectsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Tagged Object
+        """Delete Object Tags
 
-        This deletes a tagged object for the specified type.
+        Delete all tags from a tagged object.
 
-        :param type: The type of tagged object to delete. (required)
+        :param type: The type of object to delete tags from. (required)
         :type type: str
-        :param id: The ID of the object reference to delete. (required)
+        :param id: The ID of the object to delete tags from. (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

@@ -220,17 +220,17 @@ Class | Method | HTTP request | Description
 *MFAControllerApi* | [**send_token_auth_request**](sailpoint/v3/docs/MFAControllerApi.md#send_token_auth_request) | **POST** /mfa/token/authenticate | Authenticate Token provided MFA method
 *ManagedClientsApi* | [**create_managed_client**](sailpoint/v3/docs/ManagedClientsApi.md#create_managed_client) | **POST** /managed-clients | Create Managed Client
 *ManagedClientsApi* | [**delete_managed_client**](sailpoint/v3/docs/ManagedClientsApi.md#delete_managed_client) | **DELETE** /managed-clients/{id} | Delete Managed Client
-*ManagedClientsApi* | [**get_managed_client**](sailpoint/v3/docs/ManagedClientsApi.md#get_managed_client) | **GET** /managed-clients/{id} | Get a Managed Client
+*ManagedClientsApi* | [**get_managed_client**](sailpoint/v3/docs/ManagedClientsApi.md#get_managed_client) | **GET** /managed-clients/{id} | Get Managed Client
 *ManagedClientsApi* | [**get_managed_client_status**](sailpoint/v3/docs/ManagedClientsApi.md#get_managed_client_status) | **GET** /managed-clients/{id}/status | Get Managed Client Status
 *ManagedClientsApi* | [**get_managed_clients**](sailpoint/v3/docs/ManagedClientsApi.md#get_managed_clients) | **GET** /managed-clients | Get Managed Clients
 *ManagedClientsApi* | [**update_managed_client**](sailpoint/v3/docs/ManagedClientsApi.md#update_managed_client) | **PATCH** /managed-clients/{id} | Update Managed Client
-*ManagedClustersApi* | [**create_managed_cluster**](sailpoint/v3/docs/ManagedClustersApi.md#create_managed_cluster) | **POST** /managed-clusters | Create a new Managed Cluster
-*ManagedClustersApi* | [**delete_managed_cluster**](sailpoint/v3/docs/ManagedClustersApi.md#delete_managed_cluster) | **DELETE** /managed-clusters/{id} | Delete a Managed Cluster
-*ManagedClustersApi* | [**get_client_log_configuration**](sailpoint/v3/docs/ManagedClustersApi.md#get_client_log_configuration) | **GET** /managed-clusters/{id}/log-config | Get Managed Cluster&#39;s log configuration
-*ManagedClustersApi* | [**get_managed_cluster**](sailpoint/v3/docs/ManagedClustersApi.md#get_managed_cluster) | **GET** /managed-clusters/{id} | Get a specified Managed Cluster.
-*ManagedClustersApi* | [**get_managed_clusters**](sailpoint/v3/docs/ManagedClustersApi.md#get_managed_clusters) | **GET** /managed-clusters | Retrieve all Managed Clusters.
-*ManagedClustersApi* | [**put_client_log_configuration**](sailpoint/v3/docs/ManagedClustersApi.md#put_client_log_configuration) | **PUT** /managed-clusters/{id}/log-config | Update Managed Cluster&#39;s log configuration
-*ManagedClustersApi* | [**update_managed_cluster**](sailpoint/v3/docs/ManagedClustersApi.md#update_managed_cluster) | **PATCH** /managed-clusters/{id} | Update a Managed Cluster
+*ManagedClustersApi* | [**create_managed_cluster**](sailpoint/v3/docs/ManagedClustersApi.md#create_managed_cluster) | **POST** /managed-clusters | Create Create Managed Cluster
+*ManagedClustersApi* | [**delete_managed_cluster**](sailpoint/v3/docs/ManagedClustersApi.md#delete_managed_cluster) | **DELETE** /managed-clusters/{id} | Delete Managed Cluster
+*ManagedClustersApi* | [**get_client_log_configuration**](sailpoint/v3/docs/ManagedClustersApi.md#get_client_log_configuration) | **GET** /managed-clusters/{id}/log-config | Get Managed Cluster Log Configuration
+*ManagedClustersApi* | [**get_managed_cluster**](sailpoint/v3/docs/ManagedClustersApi.md#get_managed_cluster) | **GET** /managed-clusters/{id} | Get Managed Cluster
+*ManagedClustersApi* | [**get_managed_clusters**](sailpoint/v3/docs/ManagedClustersApi.md#get_managed_clusters) | **GET** /managed-clusters | Get Managed Clusters
+*ManagedClustersApi* | [**put_client_log_configuration**](sailpoint/v3/docs/ManagedClustersApi.md#put_client_log_configuration) | **PUT** /managed-clusters/{id}/log-config | Update Managed Cluster Log Configuration
+*ManagedClustersApi* | [**update_managed_cluster**](sailpoint/v3/docs/ManagedClustersApi.md#update_managed_cluster) | **PATCH** /managed-clusters/{id} | Update Managed Cluster
 *NonEmployeeLifecycleManagementApi* | [**approve_non_employee_request**](sailpoint/v3/docs/NonEmployeeLifecycleManagementApi.md#approve_non_employee_request) | **POST** /non-employee-approvals/{id}/approve | Approve a Non-Employee Request
 *NonEmployeeLifecycleManagementApi* | [**create_non_employee_record**](sailpoint/v3/docs/NonEmployeeLifecycleManagementApi.md#create_non_employee_record) | **POST** /non-employee-records | Create Non-Employee Record
 *NonEmployeeLifecycleManagementApi* | [**create_non_employee_request**](sailpoint/v3/docs/NonEmployeeLifecycleManagementApi.md#create_non_employee_request) | **POST** /non-employee-requests | Create Non-Employee Request
@@ -388,7 +388,7 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**update_provisioning_policy**](sailpoint/v3/docs/SourcesApi.md#update_provisioning_policy) | **PATCH** /sources/{sourceId}/provisioning-policies/{usageType} | Partial update of Provisioning Policy
 *SourcesApi* | [**update_source**](sailpoint/v3/docs/SourcesApi.md#update_source) | **PATCH** /sources/{id} | Update Source (Partial)
 *SourcesApi* | [**update_source_schema**](sailpoint/v3/docs/SourcesApi.md#update_source_schema) | **PATCH** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Partial)
-*TaggedObjectsApi* | [**delete_tagged_object**](sailpoint/v3/docs/TaggedObjectsApi.md#delete_tagged_object) | **DELETE** /tagged-objects/{type}/{id} | Delete Tagged Object
+*TaggedObjectsApi* | [**delete_tagged_object**](sailpoint/v3/docs/TaggedObjectsApi.md#delete_tagged_object) | **DELETE** /tagged-objects/{type}/{id} | Delete Object Tags
 *TaggedObjectsApi* | [**delete_tags_to_many_object**](sailpoint/v3/docs/TaggedObjectsApi.md#delete_tags_to_many_object) | **POST** /tagged-objects/bulk-remove | Remove Tags from Multiple Objects
 *TaggedObjectsApi* | [**get_tagged_object**](sailpoint/v3/docs/TaggedObjectsApi.md#get_tagged_object) | **GET** /tagged-objects/{type}/{id} | Get Tagged Object
 *TaggedObjectsApi* | [**list_tagged_objects**](sailpoint/v3/docs/TaggedObjectsApi.md#list_tagged_objects) | **GET** /tagged-objects | List Tagged Objects

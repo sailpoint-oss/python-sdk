@@ -43,7 +43,7 @@ class TestManagedClientsApi(unittest.TestCase):
     def test_get_managed_client(self) -> None:
         """Test case for get_managed_client
 
-        Get a Managed Client
+        Get Managed Client
         """
         pass
 

@@ -92,6 +92,7 @@ Class | Method | HTTP request | Description
 *AccessRequestApprovalsApi* | [**list_pending_approvals**](sailpoint/v2024/docs/AccessRequestApprovalsApi.md#list_pending_approvals) | **GET** /access-request-approvals/pending | Pending Access Request Approvals List
 *AccessRequestApprovalsApi* | [**reject_access_request**](sailpoint/v2024/docs/AccessRequestApprovalsApi.md#reject_access_request) | **POST** /access-request-approvals/{approvalId}/reject | Reject Access Request Approval
 *AccessRequestIdentityMetricsApi* | [**get_access_request_identity_metrics**](sailpoint/v2024/docs/AccessRequestIdentityMetricsApi.md#get_access_request_identity_metrics) | **GET** /access-request-identity-metrics/{identityId}/requested-objects/{requestedObjectId}/type/{type} | Return access request identity metrics
+*AccessRequestsApi* | [**approve_bulk_access_request**](sailpoint/v2024/docs/AccessRequestsApi.md#approve_bulk_access_request) | **POST** /access-request-approvals/bulk-approve | Bulk Approve Access Request
 *AccessRequestsApi* | [**cancel_access_request**](sailpoint/v2024/docs/AccessRequestsApi.md#cancel_access_request) | **POST** /access-requests/cancel | Cancel Access Request
 *AccessRequestsApi* | [**close_access_request**](sailpoint/v2024/docs/AccessRequestsApi.md#close_access_request) | **POST** /access-requests/close | Close Access Request
 *AccessRequestsApi* | [**create_access_request**](sailpoint/v2024/docs/AccessRequestsApi.md#create_access_request) | **POST** /access-requests | Submit Access Request
@@ -383,17 +384,17 @@ Class | Method | HTTP request | Description
 *MFAConfigurationApi* | [**test_mfa_config**](sailpoint/v2024/docs/MFAConfigurationApi.md#test_mfa_config) | **GET** /mfa/{method}/test | MFA method&#39;s test configuration
 *ManagedClientsApi* | [**create_managed_client**](sailpoint/v2024/docs/ManagedClientsApi.md#create_managed_client) | **POST** /managed-clients | Create Managed Client
 *ManagedClientsApi* | [**delete_managed_client**](sailpoint/v2024/docs/ManagedClientsApi.md#delete_managed_client) | **DELETE** /managed-clients/{id} | Delete Managed Client
-*ManagedClientsApi* | [**get_managed_client**](sailpoint/v2024/docs/ManagedClientsApi.md#get_managed_client) | **GET** /managed-clients/{id} | Get a Managed Client
+*ManagedClientsApi* | [**get_managed_client**](sailpoint/v2024/docs/ManagedClientsApi.md#get_managed_client) | **GET** /managed-clients/{id} | Get Managed Client
 *ManagedClientsApi* | [**get_managed_client_status**](sailpoint/v2024/docs/ManagedClientsApi.md#get_managed_client_status) | **GET** /managed-clients/{id}/status | Get Managed Client Status
 *ManagedClientsApi* | [**get_managed_clients**](sailpoint/v2024/docs/ManagedClientsApi.md#get_managed_clients) | **GET** /managed-clients | Get Managed Clients
 *ManagedClientsApi* | [**update_managed_client**](sailpoint/v2024/docs/ManagedClientsApi.md#update_managed_client) | **PATCH** /managed-clients/{id} | Update Managed Client
-*ManagedClustersApi* | [**create_managed_cluster**](sailpoint/v2024/docs/ManagedClustersApi.md#create_managed_cluster) | **POST** /managed-clusters | Create a new Managed Cluster
-*ManagedClustersApi* | [**delete_managed_cluster**](sailpoint/v2024/docs/ManagedClustersApi.md#delete_managed_cluster) | **DELETE** /managed-clusters/{id} | Delete a Managed Cluster
-*ManagedClustersApi* | [**get_client_log_configuration**](sailpoint/v2024/docs/ManagedClustersApi.md#get_client_log_configuration) | **GET** /managed-clusters/{id}/log-config | Get Managed Cluster&#39;s log configuration
-*ManagedClustersApi* | [**get_managed_cluster**](sailpoint/v2024/docs/ManagedClustersApi.md#get_managed_cluster) | **GET** /managed-clusters/{id} | Get a specified Managed Cluster.
-*ManagedClustersApi* | [**get_managed_clusters**](sailpoint/v2024/docs/ManagedClustersApi.md#get_managed_clusters) | **GET** /managed-clusters | Retrieve all Managed Clusters.
-*ManagedClustersApi* | [**put_client_log_configuration**](sailpoint/v2024/docs/ManagedClustersApi.md#put_client_log_configuration) | **PUT** /managed-clusters/{id}/log-config | Update Managed Cluster&#39;s log configuration
-*ManagedClustersApi* | [**update_managed_cluster**](sailpoint/v2024/docs/ManagedClustersApi.md#update_managed_cluster) | **PATCH** /managed-clusters/{id} | Update a Managed Cluster
+*ManagedClustersApi* | [**create_managed_cluster**](sailpoint/v2024/docs/ManagedClustersApi.md#create_managed_cluster) | **POST** /managed-clusters | Create Create Managed Cluster
+*ManagedClustersApi* | [**delete_managed_cluster**](sailpoint/v2024/docs/ManagedClustersApi.md#delete_managed_cluster) | **DELETE** /managed-clusters/{id} | Delete Managed Cluster
+*ManagedClustersApi* | [**get_client_log_configuration**](sailpoint/v2024/docs/ManagedClustersApi.md#get_client_log_configuration) | **GET** /managed-clusters/{id}/log-config | Get Managed Cluster Log Configuration
+*ManagedClustersApi* | [**get_managed_cluster**](sailpoint/v2024/docs/ManagedClustersApi.md#get_managed_cluster) | **GET** /managed-clusters/{id} | Get Managed Cluster
+*ManagedClustersApi* | [**get_managed_clusters**](sailpoint/v2024/docs/ManagedClustersApi.md#get_managed_clusters) | **GET** /managed-clusters | Get Managed Clusters
+*ManagedClustersApi* | [**put_client_log_configuration**](sailpoint/v2024/docs/ManagedClustersApi.md#put_client_log_configuration) | **PUT** /managed-clusters/{id}/log-config | Update Managed Cluster Log Configuration
+*ManagedClustersApi* | [**update_managed_cluster**](sailpoint/v2024/docs/ManagedClustersApi.md#update_managed_cluster) | **PATCH** /managed-clusters/{id} | Update Managed Cluster
 *NonEmployeeLifecycleManagementApi* | [**approve_non_employee_request**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#approve_non_employee_request) | **POST** /non-employee-approvals/{id}/approve | Approve a Non-Employee Request
 *NonEmployeeLifecycleManagementApi* | [**create_non_employee_record**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#create_non_employee_record) | **POST** /non-employee-records | Create Non-Employee Record
 *NonEmployeeLifecycleManagementApi* | [**create_non_employee_request**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#create_non_employee_request) | **POST** /non-employee-requests | Create Non-Employee Request
@@ -631,7 +632,7 @@ Class | Method | HTTP request | Description
 *SuggestedEntitlementDescriptionApi* | [**submit_sed_approval**](sailpoint/v2024/docs/SuggestedEntitlementDescriptionApi.md#submit_sed_approval) | **POST** /suggested-entitlement-description-approvals | Submit Bulk Approval Request
 *SuggestedEntitlementDescriptionApi* | [**submit_sed_assignment**](sailpoint/v2024/docs/SuggestedEntitlementDescriptionApi.md#submit_sed_assignment) | **POST** /suggested-entitlement-description-assignments | Submit Sed Assignment Request
 *SuggestedEntitlementDescriptionApi* | [**submit_sed_batch_request**](sailpoint/v2024/docs/SuggestedEntitlementDescriptionApi.md#submit_sed_batch_request) | **POST** /suggested-entitlement-description-batches | Submit Sed Batch Request
-*TaggedObjectsApi* | [**delete_tagged_object**](sailpoint/v2024/docs/TaggedObjectsApi.md#delete_tagged_object) | **DELETE** /tagged-objects/{type}/{id} | Delete Tagged Object
+*TaggedObjectsApi* | [**delete_tagged_object**](sailpoint/v2024/docs/TaggedObjectsApi.md#delete_tagged_object) | **DELETE** /tagged-objects/{type}/{id} | Delete Object Tags
 *TaggedObjectsApi* | [**delete_tags_to_many_object**](sailpoint/v2024/docs/TaggedObjectsApi.md#delete_tags_to_many_object) | **POST** /tagged-objects/bulk-remove | Remove Tags from Multiple Objects
 *TaggedObjectsApi* | [**get_tagged_object**](sailpoint/v2024/docs/TaggedObjectsApi.md#get_tagged_object) | **GET** /tagged-objects/{type}/{id} | Get Tagged Object
 *TaggedObjectsApi* | [**list_tagged_objects**](sailpoint/v2024/docs/TaggedObjectsApi.md#list_tagged_objects) | **GET** /tagged-objects | List Tagged Objects
@@ -899,6 +900,7 @@ Class | Method | HTTP request | Description
  - [BucketAggregation](sailpoint/v2024/docs/BucketAggregation.md)
  - [BucketType](sailpoint/v2024/docs/BucketType.md)
  - [BulkAddTaggedObject](sailpoint/v2024/docs/BulkAddTaggedObject.md)
+ - [BulkApproveAccessRequest](sailpoint/v2024/docs/BulkApproveAccessRequest.md)
  - [BulkIdentitiesAccountsResponse](sailpoint/v2024/docs/BulkIdentitiesAccountsResponse.md)
  - [BulkRemoveTaggedObject](sailpoint/v2024/docs/BulkRemoveTaggedObject.md)
  - [BulkTaggedObjectResponse](sailpoint/v2024/docs/BulkTaggedObjectResponse.md)
