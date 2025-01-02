@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **error_messages** | **List[List[ErrorMessageDto]]** | List of list of localized error messages, if any, encountered during the approval/provisioning process. | [optional] 
 **state** | [**RequestedItemStatusRequestState**](RequestedItemStatusRequestState.md) |  | [optional] 
 **approval_details** | [**List[ApprovalStatusDto]**](ApprovalStatusDto.md) | Approval details for each item. | [optional] 
+**approval_ids** | **List[str]** | List of approval IDs associated with the request. | [optional] 
 **manual_work_item_details** | [**List[ManualWorkItemDetails]**](ManualWorkItemDetails.md) | Manual work items created for provisioning the item. | [optional] 
 **account_activity_item_id** | **str** | Id of associated account activity item. | [optional] 
 **request_type** | [**AccessRequestType**](AccessRequestType.md) |  | [optional] 
