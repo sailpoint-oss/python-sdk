@@ -47,7 +47,7 @@ class AccessRequestApprovalsApi:
     def approve_access_request(
         self,
         approval_id: Annotated[StrictStr, Field(description="Approval ID.")],
-        comment_dto: Annotated[CommentDto, Field(description="Reviewer's comment.")],
+        comment_dto: Annotated[Optional[CommentDto], Field(description="Reviewer's comment.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -67,7 +67,7 @@ class AccessRequestApprovalsApi:
 
         :param approval_id: Approval ID. (required)
         :type approval_id: str
-        :param comment_dto: Reviewer's comment. (required)
+        :param comment_dto: Reviewer's comment.
         :type comment_dto: CommentDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -124,7 +124,7 @@ class AccessRequestApprovalsApi:
     def approve_access_request_with_http_info(
         self,
         approval_id: Annotated[StrictStr, Field(description="Approval ID.")],
-        comment_dto: Annotated[CommentDto, Field(description="Reviewer's comment.")],
+        comment_dto: Annotated[Optional[CommentDto], Field(description="Reviewer's comment.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -144,7 +144,7 @@ class AccessRequestApprovalsApi:
 
         :param approval_id: Approval ID. (required)
         :type approval_id: str
-        :param comment_dto: Reviewer's comment. (required)
+        :param comment_dto: Reviewer's comment.
         :type comment_dto: CommentDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -201,7 +201,7 @@ class AccessRequestApprovalsApi:
     def approve_access_request_without_preload_content(
         self,
         approval_id: Annotated[StrictStr, Field(description="Approval ID.")],
-        comment_dto: Annotated[CommentDto, Field(description="Reviewer's comment.")],
+        comment_dto: Annotated[Optional[CommentDto], Field(description="Reviewer's comment.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -221,7 +221,7 @@ class AccessRequestApprovalsApi:
 
         :param approval_id: Approval ID. (required)
         :type approval_id: str
-        :param comment_dto: Reviewer's comment. (required)
+        :param comment_dto: Reviewer's comment.
         :type comment_dto: CommentDto
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **approve_access_request**
-> object approve_access_request(approval_id, comment_dto)
+> object approve_access_request(approval_id, comment_dto=comment_dto)
 
 Approve Access Request Approval
 
@@ -50,11 +50,11 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.AccessRequestApprovalsApi(api_client)
     approval_id = '2c91808b7294bea301729568c68c002e' # str | Approval ID.
-    comment_dto = sailpoint.v3.CommentDto() # CommentDto | Reviewer's comment.
+    comment_dto = sailpoint.v3.CommentDto() # CommentDto | Reviewer's comment. (optional)
 
     try:
         # Approve Access Request Approval
-        api_response = api_instance.approve_access_request(approval_id, comment_dto)
+        api_response = api_instance.approve_access_request(approval_id, comment_dto=comment_dto)
         print("The response of AccessRequestApprovalsApi->approve_access_request:\n")
         pprint(api_response)
     except Exception as e:
@@ -69,7 +69,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **approval_id** | **str**| Approval ID. | 
- **comment_dto** | [**CommentDto**](CommentDto.md)| Reviewer&#39;s comment. | 
+ **comment_dto** | [**CommentDto**](CommentDto.md)| Reviewer&#39;s comment. | [optional] 
 
 ### Return type
 
