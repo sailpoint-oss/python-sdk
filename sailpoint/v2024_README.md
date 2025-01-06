@@ -94,6 +94,7 @@ Class | Method | HTTP request | Description
 *AccessRequestIdentityMetricsApi* | [**get_access_request_identity_metrics**](sailpoint/v2024/docs/AccessRequestIdentityMetricsApi.md#get_access_request_identity_metrics) | **GET** /access-request-identity-metrics/{identityId}/requested-objects/{requestedObjectId}/type/{type} | Return access request identity metrics
 *AccessRequestsApi* | [**approve_bulk_access_request**](sailpoint/v2024/docs/AccessRequestsApi.md#approve_bulk_access_request) | **POST** /access-request-approvals/bulk-approve | Bulk Approve Access Request
 *AccessRequestsApi* | [**cancel_access_request**](sailpoint/v2024/docs/AccessRequestsApi.md#cancel_access_request) | **POST** /access-requests/cancel | Cancel Access Request
+*AccessRequestsApi* | [**cancel_access_request_in_bulk**](sailpoint/v2024/docs/AccessRequestsApi.md#cancel_access_request_in_bulk) | **POST** /access-requests/bulk-cancel | Bulk Cancel Access Request
 *AccessRequestsApi* | [**close_access_request**](sailpoint/v2024/docs/AccessRequestsApi.md#close_access_request) | **POST** /access-requests/close | Close Access Request
 *AccessRequestsApi* | [**create_access_request**](sailpoint/v2024/docs/AccessRequestsApi.md#create_access_request) | **POST** /access-requests | Submit Access Request
 *AccessRequestsApi* | [**get_access_request_config**](sailpoint/v2024/docs/AccessRequestsApi.md#get_access_request_config) | **GET** /access-request-config | Get Access Request Configuration
@@ -901,6 +902,7 @@ Class | Method | HTTP request | Description
  - [BucketType](sailpoint/v2024/docs/BucketType.md)
  - [BulkAddTaggedObject](sailpoint/v2024/docs/BulkAddTaggedObject.md)
  - [BulkApproveAccessRequest](sailpoint/v2024/docs/BulkApproveAccessRequest.md)
+ - [BulkCancelAccessRequest](sailpoint/v2024/docs/BulkCancelAccessRequest.md)
  - [BulkIdentitiesAccountsResponse](sailpoint/v2024/docs/BulkIdentitiesAccountsResponse.md)
  - [BulkRemoveTaggedObject](sailpoint/v2024/docs/BulkRemoveTaggedObject.md)
  - [BulkTaggedObjectResponse](sailpoint/v2024/docs/BulkTaggedObjectResponse.md)

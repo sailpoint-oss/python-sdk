@@ -40,6 +40,13 @@ class TestAccessRequestsApi(unittest.TestCase):
         """
         pass
 
+    def test_cancel_access_request_in_bulk(self) -> None:
+        """Test case for cancel_access_request_in_bulk
+
+        Bulk Cancel Access Request
+        """
+        pass
+
     def test_close_access_request(self) -> None:
         """Test case for close_access_request
 
