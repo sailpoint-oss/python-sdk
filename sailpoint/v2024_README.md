@@ -88,6 +88,7 @@ Class | Method | HTTP request | Description
 *AccessRequestApprovalsApi* | [**approve_access_request**](sailpoint/v2024/docs/AccessRequestApprovalsApi.md#approve_access_request) | **POST** /access-request-approvals/{approvalId}/approve | Approve Access Request Approval
 *AccessRequestApprovalsApi* | [**forward_access_request**](sailpoint/v2024/docs/AccessRequestApprovalsApi.md#forward_access_request) | **POST** /access-request-approvals/{approvalId}/forward | Forward Access Request Approval
 *AccessRequestApprovalsApi* | [**get_access_request_approval_summary**](sailpoint/v2024/docs/AccessRequestApprovalsApi.md#get_access_request_approval_summary) | **GET** /access-request-approvals/approval-summary | Get Access Requests Approvals Number
+*AccessRequestApprovalsApi* | [**list_access_request_approvers**](sailpoint/v2024/docs/AccessRequestApprovalsApi.md#list_access_request_approvers) | **GET** /access-request-approvals/{accessRequestId}/approvers | Access Request Approvers
 *AccessRequestApprovalsApi* | [**list_completed_approvals**](sailpoint/v2024/docs/AccessRequestApprovalsApi.md#list_completed_approvals) | **GET** /access-request-approvals/completed | Completed Access Request Approvals List
 *AccessRequestApprovalsApi* | [**list_pending_approvals**](sailpoint/v2024/docs/AccessRequestApprovalsApi.md#list_pending_approvals) | **GET** /access-request-approvals/pending | Pending Access Request Approvals List
 *AccessRequestApprovalsApi* | [**reject_access_request**](sailpoint/v2024/docs/AccessRequestApprovalsApi.md#reject_access_request) | **POST** /access-request-approvals/{approvalId}/reject | Reject Access Request Approval
@@ -750,6 +751,7 @@ Class | Method | HTTP request | Description
  - [AccessProfileUsageUsedByInner](sailpoint/v2024/docs/AccessProfileUsageUsedByInner.md)
  - [AccessRecommendationMessage](sailpoint/v2024/docs/AccessRecommendationMessage.md)
  - [AccessRequest](sailpoint/v2024/docs/AccessRequest.md)
+ - [AccessRequestApproversListResponse](sailpoint/v2024/docs/AccessRequestApproversListResponse.md)
  - [AccessRequestConfig](sailpoint/v2024/docs/AccessRequestConfig.md)
  - [AccessRequestContext](sailpoint/v2024/docs/AccessRequestContext.md)
  - [AccessRequestDynamicApprover](sailpoint/v2024/docs/AccessRequestDynamicApprover.md)

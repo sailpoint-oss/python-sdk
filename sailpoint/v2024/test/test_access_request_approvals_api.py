@@ -47,6 +47,13 @@ class TestAccessRequestApprovalsApi(unittest.TestCase):
         """
         pass
 
+    def test_list_access_request_approvers(self) -> None:
+        """Test case for list_access_request_approvers
+
+        Access Request Approvers
+        """
+        pass
+
     def test_list_completed_approvals(self) -> None:
         """Test case for list_completed_approvals
 

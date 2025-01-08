@@ -53,6 +53,7 @@ from sailpoint.v2024.models.access_profile_usage import AccessProfileUsage
 from sailpoint.v2024.models.access_profile_usage_used_by_inner import AccessProfileUsageUsedByInner
 from sailpoint.v2024.models.access_recommendation_message import AccessRecommendationMessage
 from sailpoint.v2024.models.access_request import AccessRequest
+from sailpoint.v2024.models.access_request_approvers_list_response import AccessRequestApproversListResponse
 from sailpoint.v2024.models.access_request_config import AccessRequestConfig
 from sailpoint.v2024.models.access_request_context import AccessRequestContext
 from sailpoint.v2024.models.access_request_dynamic_approver import AccessRequestDynamicApprover

@@ -128,6 +128,7 @@ sailpoint/v2024/docs/AccessProfilesApi.md
 sailpoint/v2024/docs/AccessRecommendationMessage.md
 sailpoint/v2024/docs/AccessRequest.md
 sailpoint/v2024/docs/AccessRequestApprovalsApi.md
+sailpoint/v2024/docs/AccessRequestApproversListResponse.md
 sailpoint/v2024/docs/AccessRequestConfig.md
 sailpoint/v2024/docs/AccessRequestContext.md
 sailpoint/v2024/docs/AccessRequestDynamicApprover.md
@@ -1233,6 +1234,7 @@ sailpoint/v2024/models/access_profile_usage.py
 sailpoint/v2024/models/access_profile_usage_used_by_inner.py
 sailpoint/v2024/models/access_recommendation_message.py
 sailpoint/v2024/models/access_request.py
+sailpoint/v2024/models/access_request_approvers_list_response.py
 sailpoint/v2024/models/access_request_config.py
 sailpoint/v2024/models/access_request_context.py
 sailpoint/v2024/models/access_request_dynamic_approver.py
@@ -2262,6 +2264,7 @@ sailpoint/v2024/test/test_access_profiles_api.py
 sailpoint/v2024/test/test_access_recommendation_message.py
 sailpoint/v2024/test/test_access_request.py
 sailpoint/v2024/test/test_access_request_approvals_api.py
+sailpoint/v2024/test/test_access_request_approvers_list_response.py
 sailpoint/v2024/test/test_access_request_config.py
 sailpoint/v2024/test/test_access_request_context.py
 sailpoint/v2024/test/test_access_request_dynamic_approver.py
