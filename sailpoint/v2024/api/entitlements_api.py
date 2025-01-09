@@ -3438,7 +3438,7 @@ class EntitlementsApi:
     ) -> EntitlementSourceResetBaseReferenceDto:
         """Reset Source Entitlements
 
-        Removes all entitlements on a specific source.
+        Remove all entitlements from a specific source. To reload the accounts along with the entitlements you removed, you must run an unoptimized aggregation.  To do so, use [Account Aggregation](https://developer.sailpoint.com/docs/api/v2024/import-accounts/) with `disableOptimization` = `true`. 
 
         :param id: ID of source for the entitlement reset (required)
         :type id: str
@@ -3514,7 +3514,7 @@ class EntitlementsApi:
     ) -> ApiResponse[EntitlementSourceResetBaseReferenceDto]:
         """Reset Source Entitlements
 
-        Removes all entitlements on a specific source.
+        Remove all entitlements from a specific source. To reload the accounts along with the entitlements you removed, you must run an unoptimized aggregation.  To do so, use [Account Aggregation](https://developer.sailpoint.com/docs/api/v2024/import-accounts/) with `disableOptimization` = `true`. 
 
         :param id: ID of source for the entitlement reset (required)
         :type id: str
@@ -3590,7 +3590,7 @@ class EntitlementsApi:
     ) -> RESTResponseType:
         """Reset Source Entitlements
 
-        Removes all entitlements on a specific source.
+        Remove all entitlements from a specific source. To reload the accounts along with the entitlements you removed, you must run an unoptimized aggregation.  To do so, use [Account Aggregation](https://developer.sailpoint.com/docs/api/v2024/import-accounts/) with `disableOptimization` = `true`. 
 
         :param id: ID of source for the entitlement reset (required)
         :type id: str
