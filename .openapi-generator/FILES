@@ -753,6 +753,9 @@ sailpoint/v2024/docs/PasswordInfoQueryDTO.md
 sailpoint/v2024/docs/PasswordManagementApi.md
 sailpoint/v2024/docs/PasswordOrgConfig.md
 sailpoint/v2024/docs/PasswordPoliciesApi.md
+sailpoint/v2024/docs/PasswordPolicyHoldersDtoAttributes.md
+sailpoint/v2024/docs/PasswordPolicyHoldersDtoAttributesIdentityAttrInner.md
+sailpoint/v2024/docs/PasswordPolicyHoldersDtoInner.md
 sailpoint/v2024/docs/PasswordPolicyV3Dto.md
 sailpoint/v2024/docs/PasswordStatus.md
 sailpoint/v2024/docs/PasswordSyncGroup.md
@@ -1811,6 +1814,9 @@ sailpoint/v2024/models/password_info.py
 sailpoint/v2024/models/password_info_account.py
 sailpoint/v2024/models/password_info_query_dto.py
 sailpoint/v2024/models/password_org_config.py
+sailpoint/v2024/models/password_policy_holders_dto_attributes.py
+sailpoint/v2024/models/password_policy_holders_dto_attributes_identity_attr_inner.py
+sailpoint/v2024/models/password_policy_holders_dto_inner.py
 sailpoint/v2024/models/password_policy_v3_dto.py
 sailpoint/v2024/models/password_status.py
 sailpoint/v2024/models/password_sync_group.py
@@ -2889,6 +2895,9 @@ sailpoint/v2024/test/test_password_info_query_dto.py
 sailpoint/v2024/test/test_password_management_api.py
 sailpoint/v2024/test/test_password_org_config.py
 sailpoint/v2024/test/test_password_policies_api.py
+sailpoint/v2024/test/test_password_policy_holders_dto_attributes.py
+sailpoint/v2024/test/test_password_policy_holders_dto_attributes_identity_attr_inner.py
+sailpoint/v2024/test/test_password_policy_holders_dto_inner.py
 sailpoint/v2024/test/test_password_policy_v3_dto.py
 sailpoint/v2024/test/test_password_status.py
 sailpoint/v2024/test/test_password_sync_group.py

@@ -621,6 +621,7 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**sync_attributes_for_source**](sailpoint/v2024/docs/SourcesApi.md#sync_attributes_for_source) | **POST** /sources/{id}/synchronize-attributes | Synchronize single source attributes.
 *SourcesApi* | [**test_source_configuration**](sailpoint/v2024/docs/SourcesApi.md#test_source_configuration) | **POST** /sources/{sourceId}/connector/test-configuration | Test configuration for source connector
 *SourcesApi* | [**test_source_connection**](sailpoint/v2024/docs/SourcesApi.md#test_source_connection) | **POST** /sources/{sourceId}/connector/check-connection | Check connection for source connector.
+*SourcesApi* | [**update_password_policy_holders**](sailpoint/v2024/docs/SourcesApi.md#update_password_policy_holders) | **PATCH** /sources/{sourceId}/password-policies | Update Password Policy
 *SourcesApi* | [**update_provisioning_policies_in_bulk**](sailpoint/v2024/docs/SourcesApi.md#update_provisioning_policies_in_bulk) | **POST** /sources/{sourceId}/provisioning-policies/bulk-update | Bulk Update Provisioning Policies
 *SourcesApi* | [**update_provisioning_policy**](sailpoint/v2024/docs/SourcesApi.md#update_provisioning_policy) | **PATCH** /sources/{sourceId}/provisioning-policies/{usageType} | Partial update of Provisioning Policy
 *SourcesApi* | [**update_source**](sailpoint/v2024/docs/SourcesApi.md#update_source) | **PATCH** /sources/{id} | Update Source (Partial)
@@ -1328,6 +1329,9 @@ Class | Method | HTTP request | Description
  - [PasswordInfoAccount](sailpoint/v2024/docs/PasswordInfoAccount.md)
  - [PasswordInfoQueryDTO](sailpoint/v2024/docs/PasswordInfoQueryDTO.md)
  - [PasswordOrgConfig](sailpoint/v2024/docs/PasswordOrgConfig.md)
+ - [PasswordPolicyHoldersDtoAttributes](sailpoint/v2024/docs/PasswordPolicyHoldersDtoAttributes.md)
+ - [PasswordPolicyHoldersDtoAttributesIdentityAttrInner](sailpoint/v2024/docs/PasswordPolicyHoldersDtoAttributesIdentityAttrInner.md)
+ - [PasswordPolicyHoldersDtoInner](sailpoint/v2024/docs/PasswordPolicyHoldersDtoInner.md)
  - [PasswordPolicyV3Dto](sailpoint/v2024/docs/PasswordPolicyV3Dto.md)
  - [PasswordStatus](sailpoint/v2024/docs/PasswordStatus.md)
  - [PasswordSyncGroup](sailpoint/v2024/docs/PasswordSyncGroup.md)

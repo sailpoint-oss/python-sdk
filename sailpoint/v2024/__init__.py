@@ -728,6 +728,9 @@ from sailpoint.v2024.models.password_info import PasswordInfo
 from sailpoint.v2024.models.password_info_account import PasswordInfoAccount
 from sailpoint.v2024.models.password_info_query_dto import PasswordInfoQueryDTO
 from sailpoint.v2024.models.password_org_config import PasswordOrgConfig
+from sailpoint.v2024.models.password_policy_holders_dto_attributes import PasswordPolicyHoldersDtoAttributes
+from sailpoint.v2024.models.password_policy_holders_dto_attributes_identity_attr_inner import PasswordPolicyHoldersDtoAttributesIdentityAttrInner
+from sailpoint.v2024.models.password_policy_holders_dto_inner import PasswordPolicyHoldersDtoInner
 from sailpoint.v2024.models.password_policy_v3_dto import PasswordPolicyV3Dto
 from sailpoint.v2024.models.password_status import PasswordStatus
 from sailpoint.v2024.models.password_sync_group import PasswordSyncGroup

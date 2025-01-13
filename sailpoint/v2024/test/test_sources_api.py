@@ -320,6 +320,13 @@ class TestSourcesApi(unittest.TestCase):
         """
         pass
 
+    def test_update_password_policy_holders(self) -> None:
+        """Test case for update_password_policy_holders
+
+        Update Password Policy
+        """
+        pass
+
     def test_update_provisioning_policies_in_bulk(self) -> None:
         """Test case for update_provisioning_policies_in_bulk
 
