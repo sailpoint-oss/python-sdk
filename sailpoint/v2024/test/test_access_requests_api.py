@@ -75,6 +75,13 @@ class TestAccessRequestsApi(unittest.TestCase):
         """
         pass
 
+    def test_list_administrators_access_request_status(self) -> None:
+        """Test case for list_administrators_access_request_status
+
+        Access Request Status for Administrators
+        """
+        pass
+
     def test_set_access_request_config(self) -> None:
         """Test case for set_access_request_config
 

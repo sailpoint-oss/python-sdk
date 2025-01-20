@@ -127,6 +127,9 @@ sailpoint/v2024/docs/AccessProfileUsageUsedByInner.md
 sailpoint/v2024/docs/AccessProfilesApi.md
 sailpoint/v2024/docs/AccessRecommendationMessage.md
 sailpoint/v2024/docs/AccessRequest.md
+sailpoint/v2024/docs/AccessRequestAdminItemStatus.md
+sailpoint/v2024/docs/AccessRequestAdminItemStatusCancelledRequestDetails.md
+sailpoint/v2024/docs/AccessRequestAdminItemStatusSodViolationContext.md
 sailpoint/v2024/docs/AccessRequestApprovalsApi.md
 sailpoint/v2024/docs/AccessRequestApproversListResponse.md
 sailpoint/v2024/docs/AccessRequestConfig.md
@@ -232,6 +235,7 @@ sailpoint/v2024/docs/ApprovalComment1.md
 sailpoint/v2024/docs/ApprovalComment2.md
 sailpoint/v2024/docs/ApprovalDescription.md
 sailpoint/v2024/docs/ApprovalForwardHistory.md
+sailpoint/v2024/docs/ApprovalForwardHistory1.md
 sailpoint/v2024/docs/ApprovalIdentity.md
 sailpoint/v2024/docs/ApprovalInfoResponse.md
 sailpoint/v2024/docs/ApprovalItemDetails.md
@@ -243,6 +247,7 @@ sailpoint/v2024/docs/ApprovalScheme.md
 sailpoint/v2024/docs/ApprovalSchemeForRole.md
 sailpoint/v2024/docs/ApprovalStatus.md
 sailpoint/v2024/docs/ApprovalStatusDto.md
+sailpoint/v2024/docs/ApprovalStatusDto1.md
 sailpoint/v2024/docs/ApprovalStatusDtoCurrentOwner.md
 sailpoint/v2024/docs/ApprovalStatusDtoOriginalOwner.md
 sailpoint/v2024/docs/ApprovalSummary.md
@@ -326,6 +331,7 @@ sailpoint/v2024/docs/CampaignTemplateOwnerRef.md
 sailpoint/v2024/docs/CampaignsDeleteRequest.md
 sailpoint/v2024/docs/CancelAccessRequest.md
 sailpoint/v2024/docs/CancelledRequestDetails.md
+sailpoint/v2024/docs/CancelledRequestDetails1.md
 sailpoint/v2024/docs/Certification.md
 sailpoint/v2024/docs/CertificationCampaignFiltersApi.md
 sailpoint/v2024/docs/CertificationCampaignsApi.md
@@ -468,6 +474,7 @@ sailpoint/v2024/docs/EntityCreatedByDTO.md
 sailpoint/v2024/docs/Error.md
 sailpoint/v2024/docs/ErrorMessage.md
 sailpoint/v2024/docs/ErrorMessageDto.md
+sailpoint/v2024/docs/ErrorMessageDto1.md
 sailpoint/v2024/docs/ErrorResponseDto.md
 sailpoint/v2024/docs/EvaluateResponse.md
 sailpoint/v2024/docs/Event.md
@@ -666,6 +673,7 @@ sailpoint/v2024/docs/ManagerCorrelationMapping.md
 sailpoint/v2024/docs/ManualDiscoverApplications.md
 sailpoint/v2024/docs/ManualDiscoverApplicationsTemplate.md
 sailpoint/v2024/docs/ManualWorkItemDetails.md
+sailpoint/v2024/docs/ManualWorkItemDetails1.md
 sailpoint/v2024/docs/ManualWorkItemDetailsCurrentOwner.md
 sailpoint/v2024/docs/ManualWorkItemDetailsOriginalOwner.md
 sailpoint/v2024/docs/ManualWorkItemState.md
@@ -1009,6 +1017,7 @@ sailpoint/v2024/docs/SimIntegrationDetailsAllOfBeforeProvisioningRule.md
 sailpoint/v2024/docs/SlimCampaign.md
 sailpoint/v2024/docs/SlimDiscoveredApplications.md
 sailpoint/v2024/docs/SodExemptCriteria.md
+sailpoint/v2024/docs/SodExemptCriteria1.md
 sailpoint/v2024/docs/SodPolicy.md
 sailpoint/v2024/docs/SodPolicyConflictingAccessCriteria.md
 sailpoint/v2024/docs/SodPolicyDto.md
@@ -1018,8 +1027,13 @@ sailpoint/v2024/docs/SodRecipient.md
 sailpoint/v2024/docs/SodReportResultDto.md
 sailpoint/v2024/docs/SodViolationCheck.md
 sailpoint/v2024/docs/SodViolationCheckResult.md
+sailpoint/v2024/docs/SodViolationCheckResult1.md
 sailpoint/v2024/docs/SodViolationContext.md
+sailpoint/v2024/docs/SodViolationContext1.md
+sailpoint/v2024/docs/SodViolationContext1ConflictingAccessCriteria.md
+sailpoint/v2024/docs/SodViolationContext1ConflictingAccessCriteriaLeftCriteria.md
 sailpoint/v2024/docs/SodViolationContextCheckCompleted.md
+sailpoint/v2024/docs/SodViolationContextCheckCompleted1.md
 sailpoint/v2024/docs/SodViolationContextConflictingAccessCriteria.md
 sailpoint/v2024/docs/SodViolationContextConflictingAccessCriteriaLeftCriteria.md
 sailpoint/v2024/docs/Source.md
@@ -1237,6 +1251,9 @@ sailpoint/v2024/models/access_profile_usage.py
 sailpoint/v2024/models/access_profile_usage_used_by_inner.py
 sailpoint/v2024/models/access_recommendation_message.py
 sailpoint/v2024/models/access_request.py
+sailpoint/v2024/models/access_request_admin_item_status.py
+sailpoint/v2024/models/access_request_admin_item_status_cancelled_request_details.py
+sailpoint/v2024/models/access_request_admin_item_status_sod_violation_context.py
 sailpoint/v2024/models/access_request_approvers_list_response.py
 sailpoint/v2024/models/access_request_config.py
 sailpoint/v2024/models/access_request_context.py
@@ -1334,6 +1351,7 @@ sailpoint/v2024/models/approval_comment1.py
 sailpoint/v2024/models/approval_comment2.py
 sailpoint/v2024/models/approval_description.py
 sailpoint/v2024/models/approval_forward_history.py
+sailpoint/v2024/models/approval_forward_history1.py
 sailpoint/v2024/models/approval_identity.py
 sailpoint/v2024/models/approval_info_response.py
 sailpoint/v2024/models/approval_item_details.py
@@ -1345,6 +1363,7 @@ sailpoint/v2024/models/approval_scheme.py
 sailpoint/v2024/models/approval_scheme_for_role.py
 sailpoint/v2024/models/approval_status.py
 sailpoint/v2024/models/approval_status_dto.py
+sailpoint/v2024/models/approval_status_dto1.py
 sailpoint/v2024/models/approval_status_dto_current_owner.py
 sailpoint/v2024/models/approval_status_dto_original_owner.py
 sailpoint/v2024/models/approval_summary.py
@@ -1423,6 +1442,7 @@ sailpoint/v2024/models/campaign_template_owner_ref.py
 sailpoint/v2024/models/campaigns_delete_request.py
 sailpoint/v2024/models/cancel_access_request.py
 sailpoint/v2024/models/cancelled_request_details.py
+sailpoint/v2024/models/cancelled_request_details1.py
 sailpoint/v2024/models/certification.py
 sailpoint/v2024/models/certification_decision.py
 sailpoint/v2024/models/certification_dto.py
@@ -1554,6 +1574,7 @@ sailpoint/v2024/models/entity_created_by_dto.py
 sailpoint/v2024/models/error.py
 sailpoint/v2024/models/error_message.py
 sailpoint/v2024/models/error_message_dto.py
+sailpoint/v2024/models/error_message_dto1.py
 sailpoint/v2024/models/error_response_dto.py
 sailpoint/v2024/models/evaluate_response.py
 sailpoint/v2024/models/event.py
@@ -1735,6 +1756,7 @@ sailpoint/v2024/models/manager_correlation_mapping.py
 sailpoint/v2024/models/manual_discover_applications.py
 sailpoint/v2024/models/manual_discover_applications_template.py
 sailpoint/v2024/models/manual_work_item_details.py
+sailpoint/v2024/models/manual_work_item_details1.py
 sailpoint/v2024/models/manual_work_item_details_current_owner.py
 sailpoint/v2024/models/manual_work_item_details_original_owner.py
 sailpoint/v2024/models/manual_work_item_state.py
@@ -2052,6 +2074,7 @@ sailpoint/v2024/models/sim_integration_details_all_of_before_provisioning_rule.p
 sailpoint/v2024/models/slim_campaign.py
 sailpoint/v2024/models/slim_discovered_applications.py
 sailpoint/v2024/models/sod_exempt_criteria.py
+sailpoint/v2024/models/sod_exempt_criteria1.py
 sailpoint/v2024/models/sod_policy.py
 sailpoint/v2024/models/sod_policy_conflicting_access_criteria.py
 sailpoint/v2024/models/sod_policy_dto.py
@@ -2061,8 +2084,13 @@ sailpoint/v2024/models/sod_recipient.py
 sailpoint/v2024/models/sod_report_result_dto.py
 sailpoint/v2024/models/sod_violation_check.py
 sailpoint/v2024/models/sod_violation_check_result.py
+sailpoint/v2024/models/sod_violation_check_result1.py
 sailpoint/v2024/models/sod_violation_context.py
+sailpoint/v2024/models/sod_violation_context1.py
+sailpoint/v2024/models/sod_violation_context1_conflicting_access_criteria.py
+sailpoint/v2024/models/sod_violation_context1_conflicting_access_criteria_left_criteria.py
 sailpoint/v2024/models/sod_violation_context_check_completed.py
+sailpoint/v2024/models/sod_violation_context_check_completed1.py
 sailpoint/v2024/models/sod_violation_context_conflicting_access_criteria.py
 sailpoint/v2024/models/sod_violation_context_conflicting_access_criteria_left_criteria.py
 sailpoint/v2024/models/source.py
@@ -2269,6 +2297,9 @@ sailpoint/v2024/test/test_access_profile_usage_used_by_inner.py
 sailpoint/v2024/test/test_access_profiles_api.py
 sailpoint/v2024/test/test_access_recommendation_message.py
 sailpoint/v2024/test/test_access_request.py
+sailpoint/v2024/test/test_access_request_admin_item_status.py
+sailpoint/v2024/test/test_access_request_admin_item_status_cancelled_request_details.py
+sailpoint/v2024/test/test_access_request_admin_item_status_sod_violation_context.py
 sailpoint/v2024/test/test_access_request_approvals_api.py
 sailpoint/v2024/test/test_access_request_approvers_list_response.py
 sailpoint/v2024/test/test_access_request_config.py
@@ -2374,6 +2405,7 @@ sailpoint/v2024/test/test_approval_comment1.py
 sailpoint/v2024/test/test_approval_comment2.py
 sailpoint/v2024/test/test_approval_description.py
 sailpoint/v2024/test/test_approval_forward_history.py
+sailpoint/v2024/test/test_approval_forward_history1.py
 sailpoint/v2024/test/test_approval_identity.py
 sailpoint/v2024/test/test_approval_info_response.py
 sailpoint/v2024/test/test_approval_item_details.py
@@ -2385,6 +2417,7 @@ sailpoint/v2024/test/test_approval_scheme.py
 sailpoint/v2024/test/test_approval_scheme_for_role.py
 sailpoint/v2024/test/test_approval_status.py
 sailpoint/v2024/test/test_approval_status_dto.py
+sailpoint/v2024/test/test_approval_status_dto1.py
 sailpoint/v2024/test/test_approval_status_dto_current_owner.py
 sailpoint/v2024/test/test_approval_status_dto_original_owner.py
 sailpoint/v2024/test/test_approval_summary.py
@@ -2468,6 +2501,7 @@ sailpoint/v2024/test/test_campaign_template_owner_ref.py
 sailpoint/v2024/test/test_campaigns_delete_request.py
 sailpoint/v2024/test/test_cancel_access_request.py
 sailpoint/v2024/test/test_cancelled_request_details.py
+sailpoint/v2024/test/test_cancelled_request_details1.py
 sailpoint/v2024/test/test_certification.py
 sailpoint/v2024/test/test_certification_campaign_filters_api.py
 sailpoint/v2024/test/test_certification_campaigns_api.py
@@ -2610,6 +2644,7 @@ sailpoint/v2024/test/test_entity_created_by_dto.py
 sailpoint/v2024/test/test_error.py
 sailpoint/v2024/test/test_error_message.py
 sailpoint/v2024/test/test_error_message_dto.py
+sailpoint/v2024/test/test_error_message_dto1.py
 sailpoint/v2024/test/test_error_response_dto.py
 sailpoint/v2024/test/test_evaluate_response.py
 sailpoint/v2024/test/test_event.py
@@ -2807,6 +2842,7 @@ sailpoint/v2024/test/test_manager_correlation_mapping.py
 sailpoint/v2024/test/test_manual_discover_applications.py
 sailpoint/v2024/test/test_manual_discover_applications_template.py
 sailpoint/v2024/test/test_manual_work_item_details.py
+sailpoint/v2024/test/test_manual_work_item_details1.py
 sailpoint/v2024/test/test_manual_work_item_details_current_owner.py
 sailpoint/v2024/test/test_manual_work_item_details_original_owner.py
 sailpoint/v2024/test/test_manual_work_item_state.py
@@ -3148,6 +3184,7 @@ sailpoint/v2024/test/test_sim_integrations_api.py
 sailpoint/v2024/test/test_slim_campaign.py
 sailpoint/v2024/test/test_slim_discovered_applications.py
 sailpoint/v2024/test/test_sod_exempt_criteria.py
+sailpoint/v2024/test/test_sod_exempt_criteria1.py
 sailpoint/v2024/test/test_sod_policies_api.py
 sailpoint/v2024/test/test_sod_policy.py
 sailpoint/v2024/test/test_sod_policy_conflicting_access_criteria.py
@@ -3158,8 +3195,13 @@ sailpoint/v2024/test/test_sod_recipient.py
 sailpoint/v2024/test/test_sod_report_result_dto.py
 sailpoint/v2024/test/test_sod_violation_check.py
 sailpoint/v2024/test/test_sod_violation_check_result.py
+sailpoint/v2024/test/test_sod_violation_check_result1.py
 sailpoint/v2024/test/test_sod_violation_context.py
+sailpoint/v2024/test/test_sod_violation_context1.py
+sailpoint/v2024/test/test_sod_violation_context1_conflicting_access_criteria.py
+sailpoint/v2024/test/test_sod_violation_context1_conflicting_access_criteria_left_criteria.py
 sailpoint/v2024/test/test_sod_violation_context_check_completed.py
+sailpoint/v2024/test/test_sod_violation_context_check_completed1.py
 sailpoint/v2024/test/test_sod_violation_context_conflicting_access_criteria.py
 sailpoint/v2024/test/test_sod_violation_context_conflicting_access_criteria_left_criteria.py
 sailpoint/v2024/test/test_sod_violations_api.py

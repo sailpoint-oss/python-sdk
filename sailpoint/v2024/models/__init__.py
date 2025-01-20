@@ -53,6 +53,9 @@ from sailpoint.v2024.models.access_profile_usage import AccessProfileUsage
 from sailpoint.v2024.models.access_profile_usage_used_by_inner import AccessProfileUsageUsedByInner
 from sailpoint.v2024.models.access_recommendation_message import AccessRecommendationMessage
 from sailpoint.v2024.models.access_request import AccessRequest
+from sailpoint.v2024.models.access_request_admin_item_status import AccessRequestAdminItemStatus
+from sailpoint.v2024.models.access_request_admin_item_status_cancelled_request_details import AccessRequestAdminItemStatusCancelledRequestDetails
+from sailpoint.v2024.models.access_request_admin_item_status_sod_violation_context import AccessRequestAdminItemStatusSodViolationContext
 from sailpoint.v2024.models.access_request_approvers_list_response import AccessRequestApproversListResponse
 from sailpoint.v2024.models.access_request_config import AccessRequestConfig
 from sailpoint.v2024.models.access_request_context import AccessRequestContext
@@ -150,6 +153,7 @@ from sailpoint.v2024.models.approval_comment1 import ApprovalComment1
 from sailpoint.v2024.models.approval_comment2 import ApprovalComment2
 from sailpoint.v2024.models.approval_description import ApprovalDescription
 from sailpoint.v2024.models.approval_forward_history import ApprovalForwardHistory
+from sailpoint.v2024.models.approval_forward_history1 import ApprovalForwardHistory1
 from sailpoint.v2024.models.approval_identity import ApprovalIdentity
 from sailpoint.v2024.models.approval_info_response import ApprovalInfoResponse
 from sailpoint.v2024.models.approval_item_details import ApprovalItemDetails
@@ -161,6 +165,7 @@ from sailpoint.v2024.models.approval_scheme import ApprovalScheme
 from sailpoint.v2024.models.approval_scheme_for_role import ApprovalSchemeForRole
 from sailpoint.v2024.models.approval_status import ApprovalStatus
 from sailpoint.v2024.models.approval_status_dto import ApprovalStatusDto
+from sailpoint.v2024.models.approval_status_dto1 import ApprovalStatusDto1
 from sailpoint.v2024.models.approval_status_dto_current_owner import ApprovalStatusDtoCurrentOwner
 from sailpoint.v2024.models.approval_status_dto_original_owner import ApprovalStatusDtoOriginalOwner
 from sailpoint.v2024.models.approval_summary import ApprovalSummary
@@ -239,6 +244,7 @@ from sailpoint.v2024.models.campaign_template_owner_ref import CampaignTemplateO
 from sailpoint.v2024.models.campaigns_delete_request import CampaignsDeleteRequest
 from sailpoint.v2024.models.cancel_access_request import CancelAccessRequest
 from sailpoint.v2024.models.cancelled_request_details import CancelledRequestDetails
+from sailpoint.v2024.models.cancelled_request_details1 import CancelledRequestDetails1
 from sailpoint.v2024.models.certification import Certification
 from sailpoint.v2024.models.certification_decision import CertificationDecision
 from sailpoint.v2024.models.certification_dto import CertificationDto
@@ -370,6 +376,7 @@ from sailpoint.v2024.models.entity_created_by_dto import EntityCreatedByDTO
 from sailpoint.v2024.models.error import Error
 from sailpoint.v2024.models.error_message import ErrorMessage
 from sailpoint.v2024.models.error_message_dto import ErrorMessageDto
+from sailpoint.v2024.models.error_message_dto1 import ErrorMessageDto1
 from sailpoint.v2024.models.error_response_dto import ErrorResponseDto
 from sailpoint.v2024.models.evaluate_response import EvaluateResponse
 from sailpoint.v2024.models.event import Event
@@ -551,6 +558,7 @@ from sailpoint.v2024.models.manager_correlation_mapping import ManagerCorrelatio
 from sailpoint.v2024.models.manual_discover_applications import ManualDiscoverApplications
 from sailpoint.v2024.models.manual_discover_applications_template import ManualDiscoverApplicationsTemplate
 from sailpoint.v2024.models.manual_work_item_details import ManualWorkItemDetails
+from sailpoint.v2024.models.manual_work_item_details1 import ManualWorkItemDetails1
 from sailpoint.v2024.models.manual_work_item_details_current_owner import ManualWorkItemDetailsCurrentOwner
 from sailpoint.v2024.models.manual_work_item_details_original_owner import ManualWorkItemDetailsOriginalOwner
 from sailpoint.v2024.models.manual_work_item_state import ManualWorkItemState
@@ -868,6 +876,7 @@ from sailpoint.v2024.models.sim_integration_details_all_of_before_provisioning_r
 from sailpoint.v2024.models.slim_campaign import SlimCampaign
 from sailpoint.v2024.models.slim_discovered_applications import SlimDiscoveredApplications
 from sailpoint.v2024.models.sod_exempt_criteria import SodExemptCriteria
+from sailpoint.v2024.models.sod_exempt_criteria1 import SodExemptCriteria1
 from sailpoint.v2024.models.sod_policy import SodPolicy
 from sailpoint.v2024.models.sod_policy_conflicting_access_criteria import SodPolicyConflictingAccessCriteria
 from sailpoint.v2024.models.sod_policy_dto import SodPolicyDto
@@ -877,8 +886,13 @@ from sailpoint.v2024.models.sod_recipient import SodRecipient
 from sailpoint.v2024.models.sod_report_result_dto import SodReportResultDto
 from sailpoint.v2024.models.sod_violation_check import SodViolationCheck
 from sailpoint.v2024.models.sod_violation_check_result import SodViolationCheckResult
+from sailpoint.v2024.models.sod_violation_check_result1 import SodViolationCheckResult1
 from sailpoint.v2024.models.sod_violation_context import SodViolationContext
+from sailpoint.v2024.models.sod_violation_context1 import SodViolationContext1
+from sailpoint.v2024.models.sod_violation_context1_conflicting_access_criteria import SodViolationContext1ConflictingAccessCriteria
+from sailpoint.v2024.models.sod_violation_context1_conflicting_access_criteria_left_criteria import SodViolationContext1ConflictingAccessCriteriaLeftCriteria
 from sailpoint.v2024.models.sod_violation_context_check_completed import SodViolationContextCheckCompleted
+from sailpoint.v2024.models.sod_violation_context_check_completed1 import SodViolationContextCheckCompleted1
 from sailpoint.v2024.models.sod_violation_context_conflicting_access_criteria import SodViolationContextConflictingAccessCriteria
 from sailpoint.v2024.models.sod_violation_context_conflicting_access_criteria_left_criteria import SodViolationContextConflictingAccessCriteriaLeftCriteria
 from sailpoint.v2024.models.source import Source
