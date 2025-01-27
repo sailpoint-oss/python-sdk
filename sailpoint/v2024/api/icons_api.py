@@ -17,7 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictBytes, StrictStr
-from typing import Union
+from typing import Tuple, Union
 from typing_extensions import Annotated
 from sailpoint.v2024.models.set_icon200_response import SetIcon200Response
 
@@ -352,7 +352,7 @@ class IconsApi:
         self,
         object_type: Annotated[StrictStr, Field(description="Object type. Available options ['application']")],
         object_id: Annotated[StrictStr, Field(description="Object id.")],
-        image: Annotated[Union[StrictBytes, StrictStr], Field(description="file with icon. Allowed mime-types ['image/png', 'image/jpeg']")],
+        image: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="file with icon. Allowed mime-types ['image/png', 'image/jpeg']")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -437,7 +437,7 @@ class IconsApi:
         self,
         object_type: Annotated[StrictStr, Field(description="Object type. Available options ['application']")],
         object_id: Annotated[StrictStr, Field(description="Object id.")],
-        image: Annotated[Union[StrictBytes, StrictStr], Field(description="file with icon. Allowed mime-types ['image/png', 'image/jpeg']")],
+        image: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="file with icon. Allowed mime-types ['image/png', 'image/jpeg']")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -522,7 +522,7 @@ class IconsApi:
         self,
         object_type: Annotated[StrictStr, Field(description="Object type. Available options ['application']")],
         object_id: Annotated[StrictStr, Field(description="Object id.")],
-        image: Annotated[Union[StrictBytes, StrictStr], Field(description="file with icon. Allowed mime-types ['image/png', 'image/jpeg']")],
+        image: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="file with icon. Allowed mime-types ['image/png', 'image/jpeg']")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,

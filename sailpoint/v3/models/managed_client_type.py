@@ -30,7 +30,6 @@ class ManagedClientType(str, Enum):
     VA = 'VA'
     INTERNAL = 'INTERNAL'
     IIQ_HARVESTER = 'IIQ_HARVESTER'
-    NULL = 'null'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

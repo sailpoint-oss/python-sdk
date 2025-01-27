@@ -8,8 +8,6 @@ Access request type. Defaults to GRANT_ACCESS. REVOKE_ACCESS type can only have 
 
 * `REVOKE_ACCESS` (value: `'REVOKE_ACCESS'`)
 
-* `NULL` (value: `'null'`)
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

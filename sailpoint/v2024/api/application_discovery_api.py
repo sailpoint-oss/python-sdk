@@ -17,7 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictBytes, StrictStr, field_validator
-from typing import List, Optional, Union
+from typing import List, Optional, Tuple, Union
 from typing_extensions import Annotated
 from sailpoint.v2024.models.get_discovered_applications200_response_inner import GetDiscoveredApplications200ResponseInner
 from sailpoint.v2024.models.manual_discover_applications_template import ManualDiscoverApplicationsTemplate
@@ -649,7 +649,7 @@ class ApplicationDiscoveryApi:
     @validate_call
     def send_manual_discover_applications_csv_template(
         self,
-        file: Annotated[Union[StrictBytes, StrictStr], Field(description="The CSV file to upload containing `application_name` and `description` columns. Each row represents an application to be discovered.")],
+        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="The CSV file to upload containing `application_name` and `description` columns. Each row represents an application to be discovered.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -721,7 +721,7 @@ class ApplicationDiscoveryApi:
     @validate_call
     def send_manual_discover_applications_csv_template_with_http_info(
         self,
-        file: Annotated[Union[StrictBytes, StrictStr], Field(description="The CSV file to upload containing `application_name` and `description` columns. Each row represents an application to be discovered.")],
+        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="The CSV file to upload containing `application_name` and `description` columns. Each row represents an application to be discovered.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -793,7 +793,7 @@ class ApplicationDiscoveryApi:
     @validate_call
     def send_manual_discover_applications_csv_template_without_preload_content(
         self,
-        file: Annotated[Union[StrictBytes, StrictStr], Field(description="The CSV file to upload containing `application_name` and `description` columns. Each row represents an application to be discovered.")],
+        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="The CSV file to upload containing `application_name` and `description` columns. Each row represents an application to be discovered.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],

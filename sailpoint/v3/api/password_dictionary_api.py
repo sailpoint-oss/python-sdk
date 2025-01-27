@@ -17,7 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import StrictBytes, StrictStr
-from typing import Optional, Union
+from typing import Optional, Tuple, Union
 
 from sailpoint.v3.api_client import ApiClient, RequestSerialized
 from sailpoint.v3.api_response import ApiResponse
@@ -304,7 +304,7 @@ class PasswordDictionaryApi:
     @validate_call
     def put_password_dictionary(
         self,
-        file: Optional[Union[StrictBytes, StrictStr]] = None,
+        file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -378,7 +378,7 @@ class PasswordDictionaryApi:
     @validate_call
     def put_password_dictionary_with_http_info(
         self,
-        file: Optional[Union[StrictBytes, StrictStr]] = None,
+        file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -452,7 +452,7 @@ class PasswordDictionaryApi:
     @validate_call
     def put_password_dictionary_without_preload_content(
         self,
-        file: Optional[Union[StrictBytes, StrictStr]] = None,
+        file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],

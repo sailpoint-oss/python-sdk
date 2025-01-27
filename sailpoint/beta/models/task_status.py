@@ -64,8 +64,8 @@ class TaskStatus(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['SUCCESS', 'WARNING', 'ERROR', 'TERMINATED', 'TEMPERROR', 'null']):
-            raise ValueError("must be one of enum values ('SUCCESS', 'WARNING', 'ERROR', 'TERMINATED', 'TEMPERROR', 'null')")
+        if value not in set(['SUCCESS', 'WARNING', 'ERROR', 'TERMINATED', 'TEMPERROR']):
+            raise ValueError("must be one of enum values ('SUCCESS', 'WARNING', 'ERROR', 'TERMINATED', 'TEMPERROR')")
         return value
 
     model_config = ConfigDict(

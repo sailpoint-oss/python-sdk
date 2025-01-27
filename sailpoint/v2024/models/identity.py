@@ -50,8 +50,8 @@ class Identity(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['ERROR', 'OK', 'null']):
-            raise ValueError("must be one of enum values ('ERROR', 'OK', 'null')")
+        if value not in set(['ERROR', 'OK']):
+            raise ValueError("must be one of enum values ('ERROR', 'OK')")
         return value
 
     @field_validator('identity_status')

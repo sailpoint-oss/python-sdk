@@ -17,7 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictBool, StrictBytes, StrictStr
-from typing import Any, Dict, List, Optional, Union
+from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 from sailpoint.beta.models.multi_policy_request import MultiPolicyRequest
 from sailpoint.beta.models.report_result_reference import ReportResultReference

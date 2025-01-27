@@ -17,7 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictBool, StrictBytes, StrictStr, field_validator
-from typing import List, Optional, Union
+from typing import List, Optional, Tuple, Union
 from typing_extensions import Annotated
 from sailpoint.v3.models.delete_source202_response import DeleteSource202Response
 from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
@@ -4134,7 +4134,7 @@ class SourcesApi:
     def import_accounts_schema(
         self,
         id: Annotated[StrictStr, Field(description="The Source id")],
-        file: Optional[Union[StrictBytes, StrictStr]] = None,
+        file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4210,7 +4210,7 @@ class SourcesApi:
     def import_accounts_schema_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The Source id")],
-        file: Optional[Union[StrictBytes, StrictStr]] = None,
+        file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4286,7 +4286,7 @@ class SourcesApi:
     def import_accounts_schema_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The Source id")],
-        file: Optional[Union[StrictBytes, StrictStr]] = None,
+        file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4437,7 +4437,7 @@ class SourcesApi:
     def import_connector_file(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id.")],
-        file: Optional[Union[StrictBytes, StrictStr]] = None,
+        file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4513,7 +4513,7 @@ class SourcesApi:
     def import_connector_file_with_http_info(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id.")],
-        file: Optional[Union[StrictBytes, StrictStr]] = None,
+        file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4589,7 +4589,7 @@ class SourcesApi:
     def import_connector_file_without_preload_content(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id.")],
-        file: Optional[Union[StrictBytes, StrictStr]] = None,
+        file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4741,7 +4741,7 @@ class SourcesApi:
         self,
         id: Annotated[StrictStr, Field(description="The Source id")],
         schema_name: Annotated[Optional[StrictStr], Field(description="Name of entitlement schema")] = None,
-        file: Optional[Union[StrictBytes, StrictStr]] = None,
+        file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4821,7 +4821,7 @@ class SourcesApi:
         self,
         id: Annotated[StrictStr, Field(description="The Source id")],
         schema_name: Annotated[Optional[StrictStr], Field(description="Name of entitlement schema")] = None,
-        file: Optional[Union[StrictBytes, StrictStr]] = None,
+        file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4901,7 +4901,7 @@ class SourcesApi:
         self,
         id: Annotated[StrictStr, Field(description="The Source id")],
         schema_name: Annotated[Optional[StrictStr], Field(description="Name of entitlement schema")] = None,
-        file: Optional[Union[StrictBytes, StrictStr]] = None,
+        file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],

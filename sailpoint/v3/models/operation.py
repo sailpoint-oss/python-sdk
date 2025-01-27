@@ -33,7 +33,6 @@ class Operation(str, Enum):
     ENDS_WITH = 'ENDS_WITH'
     AND = 'AND'
     OR = 'OR'
-    NULL = 'null'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

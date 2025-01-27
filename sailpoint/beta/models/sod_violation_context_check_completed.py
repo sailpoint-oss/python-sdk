@@ -38,8 +38,8 @@ class SodViolationContextCheckCompleted(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['SUCCESS', 'ERROR', 'null']):
-            raise ValueError("must be one of enum values ('SUCCESS', 'ERROR', 'null')")
+        if value not in set(['SUCCESS', 'ERROR']):
+            raise ValueError("must be one of enum values ('SUCCESS', 'ERROR')")
         return value
 
     model_config = ConfigDict(

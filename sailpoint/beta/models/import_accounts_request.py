@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBytes, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional, Tuple, Union
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -26,7 +26,7 @@ class ImportAccountsRequest(BaseModel):
     """
     ImportAccountsRequest
     """ # noqa: E501
-    file: Optional[Union[StrictBytes, StrictStr]] = Field(default=None, description="The CSV file containing the source accounts to aggregate.")
+    file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = Field(default=None, description="The CSV file containing the source accounts to aggregate.")
     disable_optimization: Optional[StrictStr] = Field(default=None, description="Use this flag to reprocess every account whether or not the data has changed.", alias="disableOptimization")
     __properties: ClassVar[List[str]] = ["file", "disableOptimization"]
 

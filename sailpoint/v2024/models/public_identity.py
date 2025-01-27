@@ -44,8 +44,8 @@ class PublicIdentity(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['ACTIVE', 'INACTIVE_SHORT_TERM', 'INACTIVE_LONG_TERM', 'null']):
-            raise ValueError("must be one of enum values ('ACTIVE', 'INACTIVE_SHORT_TERM', 'INACTIVE_LONG_TERM', 'null')")
+        if value not in set(['ACTIVE', 'INACTIVE_SHORT_TERM', 'INACTIVE_LONG_TERM']):
+            raise ValueError("must be one of enum values ('ACTIVE', 'INACTIVE_SHORT_TERM', 'INACTIVE_LONG_TERM')")
         return value
 
     model_config = ConfigDict(

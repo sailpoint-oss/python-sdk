@@ -17,7 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictBool, StrictBytes, StrictStr
-from typing import List, Optional, Union
+from typing import List, Optional, Tuple, Union
 from typing_extensions import Annotated
 from sailpoint.v2024.models.delete_non_employee_records_in_bulk_request import DeleteNonEmployeeRecordsInBulkRequest
 from sailpoint.v2024.models.json_patch_operation import JsonPatchOperation
@@ -6283,7 +6283,7 @@ class NonEmployeeLifecycleManagementApi:
     def import_non_employee_records_in_bulk(
         self,
         id: Annotated[StrictStr, Field(description="Source Id (UUID)")],
-        data: Union[StrictBytes, StrictStr],
+        data: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6360,7 +6360,7 @@ class NonEmployeeLifecycleManagementApi:
     def import_non_employee_records_in_bulk_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Source Id (UUID)")],
-        data: Union[StrictBytes, StrictStr],
+        data: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6437,7 +6437,7 @@ class NonEmployeeLifecycleManagementApi:
     def import_non_employee_records_in_bulk_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Source Id (UUID)")],
-        data: Union[StrictBytes, StrictStr],
+        data: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],

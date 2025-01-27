@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, StrictBytes, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional, Tuple, Union
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -26,7 +26,7 @@ class PutPasswordDictionaryRequest(BaseModel):
     """
     PutPasswordDictionaryRequest
     """ # noqa: E501
-    file: Optional[Union[StrictBytes, StrictStr]] = None
+    file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None
     __properties: ClassVar[List[str]] = ["file"]
 
     model_config = ConfigDict(

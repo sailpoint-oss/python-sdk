@@ -56,8 +56,8 @@ class ManagedClient(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['NORMAL', 'UNDEFINED', 'NOT_CONFIGURED', 'CONFIGURING', 'WARNING', 'ERROR', 'FAILED', 'null']):
-            raise ValueError("must be one of enum values ('NORMAL', 'UNDEFINED', 'NOT_CONFIGURED', 'CONFIGURING', 'WARNING', 'ERROR', 'FAILED', 'null')")
+        if value not in set(['NORMAL', 'UNDEFINED', 'NOT_CONFIGURED', 'CONFIGURING', 'WARNING', 'ERROR', 'FAILED']):
+            raise ValueError("must be one of enum values ('NORMAL', 'UNDEFINED', 'NOT_CONFIGURED', 'CONFIGURING', 'WARNING', 'ERROR', 'FAILED')")
         return value
 
     @field_validator('cluster_type')
@@ -66,8 +66,8 @@ class ManagedClient(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['null', 'idn', 'iai', 'spConnectCluster', 'sqsCluster', 'das-rc', 'das-pc', 'das-dc']):
-            raise ValueError("must be one of enum values ('null', 'idn', 'iai', 'spConnectCluster', 'sqsCluster', 'das-rc', 'das-pc', 'das-dc')")
+        if value not in set(['idn', 'iai', 'spConnectCluster', 'sqsCluster', 'das-rc', 'das-pc', 'das-dc']):
+            raise ValueError("must be one of enum values ('idn', 'iai', 'spConnectCluster', 'sqsCluster', 'das-rc', 'das-pc', 'das-dc')")
         return value
 
     @field_validator('provision_status')
@@ -76,8 +76,8 @@ class ManagedClient(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['null', 'PROVISIONED', 'DRAFT']):
-            raise ValueError("must be one of enum values ('null', 'PROVISIONED', 'DRAFT')")
+        if value not in set(['PROVISIONED', 'DRAFT']):
+            raise ValueError("must be one of enum values ('PROVISIONED', 'DRAFT')")
         return value
 
     model_config = ConfigDict(

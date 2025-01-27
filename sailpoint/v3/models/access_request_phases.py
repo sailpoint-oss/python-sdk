@@ -51,8 +51,8 @@ class AccessRequestPhases(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['SUCCESSFUL', 'FAILED', 'null']):
-            raise ValueError("must be one of enum values ('SUCCESSFUL', 'FAILED', 'null')")
+        if value not in set(['SUCCESSFUL', 'FAILED']):
+            raise ValueError("must be one of enum values ('SUCCESSFUL', 'FAILED')")
         return value
 
     model_config = ConfigDict(

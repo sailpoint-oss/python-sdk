@@ -28,7 +28,6 @@ class AccessRequestType(str, Enum):
     """
     GRANT_ACCESS = 'GRANT_ACCESS'
     REVOKE_ACCESS = 'REVOKE_ACCESS'
-    NULL = 'null'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

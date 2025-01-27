@@ -17,7 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictBool, StrictBytes, StrictStr
-from typing import List, Optional, Union
+from typing import List, Optional, Tuple, Union
 from typing_extensions import Annotated
 from sailpoint.v2024.models.entitlement1 import Entitlement1
 from sailpoint.v2024.models.entitlement_bulk_update_request import EntitlementBulkUpdateRequest
@@ -1274,7 +1274,7 @@ class EntitlementsApi:
     def import_entitlements_by_source(
         self,
         id: Annotated[StrictStr, Field(description="Source Id")],
-        csv_file: Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="The CSV file containing the source entitlements to aggregate.")] = None,
+        csv_file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The CSV file containing the source entitlements to aggregate.")] = None,
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -1355,7 +1355,7 @@ class EntitlementsApi:
     def import_entitlements_by_source_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Source Id")],
-        csv_file: Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="The CSV file containing the source entitlements to aggregate.")] = None,
+        csv_file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The CSV file containing the source entitlements to aggregate.")] = None,
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -1436,7 +1436,7 @@ class EntitlementsApi:
     def import_entitlements_by_source_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Source Id")],
-        csv_file: Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="The CSV file containing the source entitlements to aggregate.")] = None,
+        csv_file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The CSV file containing the source entitlements to aggregate.")] = None,
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,

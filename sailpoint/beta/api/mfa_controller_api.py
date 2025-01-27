@@ -16,7 +16,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictStr
+from pydantic import Field, StrictStr, field_validator
 from typing import List
 from typing_extensions import Annotated
 from sailpoint.beta.models.duo_verification_request import DuoVerificationRequest

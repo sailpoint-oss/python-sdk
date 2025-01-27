@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBytes, StrictStr
-from typing import Any, ClassVar, Dict, List, Union
+from typing import Any, ClassVar, Dict, List, Tuple, Union
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -26,7 +26,7 @@ class CreateUploadedConfigurationRequest(BaseModel):
     """
     CreateUploadedConfigurationRequest
     """ # noqa: E501
-    data: Union[StrictBytes, StrictStr] = Field(description="JSON file containing the objects to be imported.")
+    data: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]] = Field(description="JSON file containing the objects to be imported.")
     name: StrictStr = Field(description="Name that will be assigned to the uploaded configuration file.")
     __properties: ClassVar[List[str]] = ["data", "name"]
 

@@ -10,8 +10,6 @@ Status indicating the ability of an access request for the object to be made by 
 
 * `ASSIGNED` (value: `'ASSIGNED'`)
 
-* `NULL` (value: `'null'`)
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

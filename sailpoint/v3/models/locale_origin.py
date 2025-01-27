@@ -28,7 +28,6 @@ class LocaleOrigin(str, Enum):
     """
     DEFAULT = 'DEFAULT'
     REQUEST = 'REQUEST'
-    NULL = 'null'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

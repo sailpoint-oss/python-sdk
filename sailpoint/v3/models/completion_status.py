@@ -30,7 +30,6 @@ class CompletionStatus(str, Enum):
     FAILURE = 'FAILURE'
     INCOMPLETE = 'INCOMPLETE'
     PENDING = 'PENDING'
-    NULL = 'null'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

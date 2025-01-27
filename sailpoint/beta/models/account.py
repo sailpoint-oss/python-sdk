@@ -65,8 +65,8 @@ class Account(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['AGGREGATED', 'PROVISIONED', 'null']):
-            raise ValueError("must be one of enum values ('AGGREGATED', 'PROVISIONED', 'null')")
+        if value not in set(['AGGREGATED', 'PROVISIONED']):
+            raise ValueError("must be one of enum values ('AGGREGATED', 'PROVISIONED')")
         return value
 
     model_config = ConfigDict(

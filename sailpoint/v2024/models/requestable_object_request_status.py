@@ -29,7 +29,6 @@ class RequestableObjectRequestStatus(str, Enum):
     AVAILABLE = 'AVAILABLE'
     PENDING = 'PENDING'
     ASSIGNED = 'ASSIGNED'
-    NULL = 'null'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

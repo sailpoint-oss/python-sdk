@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBytes, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional, Tuple, Union
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -33,7 +33,7 @@ class BrandingItemCreate(BaseModel):
     navigation_color: Optional[StrictStr] = Field(default=None, description="hex value of color for navigation bar", alias="navigationColor")
     email_from_address: Optional[StrictStr] = Field(default=None, description="email from address", alias="emailFromAddress")
     login_informational_message: Optional[StrictStr] = Field(default=None, description="login information message", alias="loginInformationalMessage")
-    file_standard: Optional[Union[StrictBytes, StrictStr]] = Field(default=None, description="png file with logo", alias="fileStandard")
+    file_standard: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = Field(default=None, description="png file with logo", alias="fileStandard")
     __properties: ClassVar[List[str]] = ["name", "productName", "actionButtonColor", "activeLinkColor", "navigationColor", "emailFromAddress", "loginInformationalMessage", "fileStandard"]
 
     model_config = ConfigDict(

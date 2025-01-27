@@ -17,7 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictBool, StrictBytes, StrictStr
-from typing import List, Optional, Union
+from typing import List, Optional, Tuple, Union
 from typing_extensions import Annotated
 from sailpoint.beta.models.export_payload import ExportPayload
 from sailpoint.beta.models.import_options import ImportOptions
@@ -1453,7 +1453,7 @@ class SPConfigApi:
     @validate_call
     def import_sp_config(
         self,
-        data: Annotated[Union[StrictBytes, StrictStr], Field(description="JSON file containing the objects to be imported.")],
+        data: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="JSON file containing the objects to be imported.")],
         preview: Annotated[Optional[StrictBool], Field(description="This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \"true\", no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported. ")] = None,
         options: Optional[ImportOptions] = None,
         _request_timeout: Union[
@@ -1534,7 +1534,7 @@ class SPConfigApi:
     @validate_call
     def import_sp_config_with_http_info(
         self,
-        data: Annotated[Union[StrictBytes, StrictStr], Field(description="JSON file containing the objects to be imported.")],
+        data: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="JSON file containing the objects to be imported.")],
         preview: Annotated[Optional[StrictBool], Field(description="This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \"true\", no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported. ")] = None,
         options: Optional[ImportOptions] = None,
         _request_timeout: Union[
@@ -1615,7 +1615,7 @@ class SPConfigApi:
     @validate_call
     def import_sp_config_without_preload_content(
         self,
-        data: Annotated[Union[StrictBytes, StrictStr], Field(description="JSON file containing the objects to be imported.")],
+        data: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="JSON file containing the objects to be imported.")],
         preview: Annotated[Optional[StrictBool], Field(description="This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \"true\", no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported. ")] = None,
         options: Optional[ImportOptions] = None,
         _request_timeout: Union[

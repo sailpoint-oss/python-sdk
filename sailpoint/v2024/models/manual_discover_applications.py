@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBytes, StrictStr
-from typing import Any, ClassVar, Dict, List, Union
+from typing import Any, ClassVar, Dict, List, Tuple, Union
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -26,7 +26,7 @@ class ManualDiscoverApplications(BaseModel):
     """
     ManualDiscoverApplications
     """ # noqa: E501
-    file: Union[StrictBytes, StrictStr] = Field(description="The CSV file to upload containing `application_name` and `description` columns. Each row represents an application to be discovered.")
+    file: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]] = Field(description="The CSV file to upload containing `application_name` and `description` columns. Each row represents an application to be discovered.")
     __properties: ClassVar[List[str]] = ["file"]
 
     model_config = ConfigDict(

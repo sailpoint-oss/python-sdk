@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBytes, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional, Tuple, Union
 from sailpoint.v2024.models.import_options import ImportOptions
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,7 +27,7 @@ class ImportSpConfigRequest(BaseModel):
     """
     ImportSpConfigRequest
     """ # noqa: E501
-    data: Union[StrictBytes, StrictStr] = Field(description="JSON file containing the objects to be imported.")
+    data: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]] = Field(description="JSON file containing the objects to be imported.")
     options: Optional[ImportOptions] = None
     __properties: ClassVar[List[str]] = ["data", "options"]
 

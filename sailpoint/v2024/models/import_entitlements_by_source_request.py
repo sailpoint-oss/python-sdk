@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBytes, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional, Tuple, Union
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -26,7 +26,7 @@ class ImportEntitlementsBySourceRequest(BaseModel):
     """
     ImportEntitlementsBySourceRequest
     """ # noqa: E501
-    csv_file: Optional[Union[StrictBytes, StrictStr]] = Field(default=None, description="The CSV file containing the source entitlements to aggregate.", alias="csvFile")
+    csv_file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = Field(default=None, description="The CSV file containing the source entitlements to aggregate.", alias="csvFile")
     __properties: ClassVar[List[str]] = ["csvFile"]
 
     model_config = ConfigDict(

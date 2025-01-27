@@ -32,7 +32,6 @@ class WorkItemState(str, Enum):
     EXPIRED = 'Expired'
     PENDING = 'Pending'
     CANCELED = 'Canceled'
-    NULL = 'null'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

@@ -17,7 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictBytes, StrictInt, StrictStr
-from typing import Any, Dict, List, Optional, Union
+from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 from sailpoint.v2024.models.create_form_definition_request import CreateFormDefinitionRequest
 from sailpoint.v2024.models.create_form_instance_request import CreateFormInstanceRequest
@@ -660,7 +660,7 @@ class CustomFormsApi:
     def create_form_definition_file_request(
         self,
         form_definition_id: Annotated[StrictStr, Field(description="FormDefinitionID  String specifying FormDefinitionID")],
-        file: Annotated[Union[StrictBytes, StrictStr], Field(description="File specifying the multipart")],
+        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="File specifying the multipart")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -744,7 +744,7 @@ class CustomFormsApi:
     def create_form_definition_file_request_with_http_info(
         self,
         form_definition_id: Annotated[StrictStr, Field(description="FormDefinitionID  String specifying FormDefinitionID")],
-        file: Annotated[Union[StrictBytes, StrictStr], Field(description="File specifying the multipart")],
+        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="File specifying the multipart")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -828,7 +828,7 @@ class CustomFormsApi:
     def create_form_definition_file_request_without_preload_content(
         self,
         form_definition_id: Annotated[StrictStr, Field(description="FormDefinitionID  String specifying FormDefinitionID")],
-        file: Annotated[Union[StrictBytes, StrictStr], Field(description="File specifying the multipart")],
+        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="File specifying the multipart")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,

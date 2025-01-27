@@ -32,7 +32,6 @@ class AccountActivityApprovalStatus(str, Enum):
     EXPIRED = 'EXPIRED'
     PENDING = 'PENDING'
     CANCELED = 'CANCELED'
-    NULL = 'null'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

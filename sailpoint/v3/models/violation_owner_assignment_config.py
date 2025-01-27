@@ -37,8 +37,8 @@ class ViolationOwnerAssignmentConfig(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['MANAGER', 'STATIC', 'null']):
-            raise ValueError("must be one of enum values ('MANAGER', 'STATIC', 'null')")
+        if value not in set(['MANAGER', 'STATIC']):
+            raise ValueError("must be one of enum values ('MANAGER', 'STATIC')")
         return value
 
     model_config = ConfigDict(

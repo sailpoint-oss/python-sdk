@@ -17,7 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictBytes, StrictStr
-from typing import List, Optional, Union
+from typing import List, Optional, Tuple, Union
 from typing_extensions import Annotated
 from sailpoint.v2024.models.backup_response import BackupResponse
 from sailpoint.v2024.models.deploy_request import DeployRequest
@@ -951,7 +951,7 @@ class ConfigurationHubApi:
     @validate_call
     def create_uploaded_configuration(
         self,
-        data: Annotated[Union[StrictBytes, StrictStr], Field(description="JSON file containing the objects to be imported.")],
+        data: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="JSON file containing the objects to be imported.")],
         name: Annotated[StrictStr, Field(description="Name that will be assigned to the uploaded configuration file.")],
         _request_timeout: Union[
             None,
@@ -1027,7 +1027,7 @@ class ConfigurationHubApi:
     @validate_call
     def create_uploaded_configuration_with_http_info(
         self,
-        data: Annotated[Union[StrictBytes, StrictStr], Field(description="JSON file containing the objects to be imported.")],
+        data: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="JSON file containing the objects to be imported.")],
         name: Annotated[StrictStr, Field(description="Name that will be assigned to the uploaded configuration file.")],
         _request_timeout: Union[
             None,
@@ -1103,7 +1103,7 @@ class ConfigurationHubApi:
     @validate_call
     def create_uploaded_configuration_without_preload_content(
         self,
-        data: Annotated[Union[StrictBytes, StrictStr], Field(description="JSON file containing the objects to be imported.")],
+        data: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="JSON file containing the objects to be imported.")],
         name: Annotated[StrictStr, Field(description="Name that will be assigned to the uploaded configuration file.")],
         _request_timeout: Union[
             None,

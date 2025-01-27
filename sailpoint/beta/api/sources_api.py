@@ -17,7 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictBool, StrictBytes, StrictStr, field_validator
-from typing import List, Optional, Union
+from typing import List, Optional, Tuple, Union
 from typing_extensions import Annotated
 from sailpoint.beta.models.attr_sync_source_config import AttrSyncSourceConfig
 from sailpoint.beta.models.connector_detail import ConnectorDetail
@@ -5522,7 +5522,7 @@ class SourcesApi:
     def import_accounts(
         self,
         id: Annotated[StrictStr, Field(description="Source Id")],
-        file: Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="The CSV file containing the source accounts to aggregate.")] = None,
+        file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The CSV file containing the source accounts to aggregate.")] = None,
         disable_optimization: Annotated[Optional[StrictStr], Field(description="Use this flag to reprocess every account whether or not the data has changed.")] = None,
         _request_timeout: Union[
             None,
@@ -5602,7 +5602,7 @@ class SourcesApi:
     def import_accounts_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Source Id")],
-        file: Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="The CSV file containing the source accounts to aggregate.")] = None,
+        file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The CSV file containing the source accounts to aggregate.")] = None,
         disable_optimization: Annotated[Optional[StrictStr], Field(description="Use this flag to reprocess every account whether or not the data has changed.")] = None,
         _request_timeout: Union[
             None,
@@ -5682,7 +5682,7 @@ class SourcesApi:
     def import_accounts_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Source Id")],
-        file: Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="The CSV file containing the source accounts to aggregate.")] = None,
+        file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The CSV file containing the source accounts to aggregate.")] = None,
         disable_optimization: Annotated[Optional[StrictStr], Field(description="Use this flag to reprocess every account whether or not the data has changed.")] = None,
         _request_timeout: Union[
             None,
@@ -5841,7 +5841,7 @@ class SourcesApi:
     def import_entitlements(
         self,
         id: Annotated[StrictStr, Field(description="Source Id")],
-        file: Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="The CSV file containing the source entitlements to aggregate.")] = None,
+        file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The CSV file containing the source entitlements to aggregate.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5917,7 +5917,7 @@ class SourcesApi:
     def import_entitlements_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Source Id")],
-        file: Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="The CSV file containing the source entitlements to aggregate.")] = None,
+        file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The CSV file containing the source entitlements to aggregate.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5993,7 +5993,7 @@ class SourcesApi:
     def import_entitlements_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Source Id")],
-        file: Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="The CSV file containing the source entitlements to aggregate.")] = None,
+        file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The CSV file containing the source entitlements to aggregate.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6144,7 +6144,7 @@ class SourcesApi:
     def import_source_accounts_schema(
         self,
         id: Annotated[StrictStr, Field(description="The Source id")],
-        file: Optional[Union[StrictBytes, StrictStr]] = None,
+        file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6220,7 +6220,7 @@ class SourcesApi:
     def import_source_accounts_schema_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The Source id")],
-        file: Optional[Union[StrictBytes, StrictStr]] = None,
+        file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6296,7 +6296,7 @@ class SourcesApi:
     def import_source_accounts_schema_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The Source id")],
-        file: Optional[Union[StrictBytes, StrictStr]] = None,
+        file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6447,7 +6447,7 @@ class SourcesApi:
     def import_source_connector_file(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id")],
-        file: Optional[Union[StrictBytes, StrictStr]] = None,
+        file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6523,7 +6523,7 @@ class SourcesApi:
     def import_source_connector_file_with_http_info(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id")],
-        file: Optional[Union[StrictBytes, StrictStr]] = None,
+        file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6599,7 +6599,7 @@ class SourcesApi:
     def import_source_connector_file_without_preload_content(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id")],
-        file: Optional[Union[StrictBytes, StrictStr]] = None,
+        file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6751,7 +6751,7 @@ class SourcesApi:
         self,
         id: Annotated[StrictStr, Field(description="The Source id")],
         schema_name: Annotated[Optional[StrictStr], Field(description="Name of entitlement schema")] = None,
-        file: Optional[Union[StrictBytes, StrictStr]] = None,
+        file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6831,7 +6831,7 @@ class SourcesApi:
         self,
         id: Annotated[StrictStr, Field(description="The Source id")],
         schema_name: Annotated[Optional[StrictStr], Field(description="Name of entitlement schema")] = None,
-        file: Optional[Union[StrictBytes, StrictStr]] = None,
+        file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6911,7 +6911,7 @@ class SourcesApi:
         self,
         id: Annotated[StrictStr, Field(description="The Source id")],
         schema_name: Annotated[Optional[StrictStr], Field(description="Name of entitlement schema")] = None,
-        file: Optional[Union[StrictBytes, StrictStr]] = None,
+        file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7070,7 +7070,7 @@ class SourcesApi:
     def import_uncorrelated_accounts(
         self,
         id: Annotated[StrictStr, Field(description="Source Id")],
-        file: Optional[Union[StrictBytes, StrictStr]] = None,
+        file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7146,7 +7146,7 @@ class SourcesApi:
     def import_uncorrelated_accounts_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Source Id")],
-        file: Optional[Union[StrictBytes, StrictStr]] = None,
+        file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7222,7 +7222,7 @@ class SourcesApi:
     def import_uncorrelated_accounts_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Source Id")],
-        file: Optional[Union[StrictBytes, StrictStr]] = None,
+        file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],

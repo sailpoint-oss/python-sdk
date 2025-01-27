@@ -56,8 +56,8 @@ class Outlier(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['MANUAL', 'AUTOMATIC', 'null']):
-            raise ValueError("must be one of enum values ('MANUAL', 'AUTOMATIC', 'null')")
+        if value not in set(['MANUAL', 'AUTOMATIC']):
+            raise ValueError("must be one of enum values ('MANUAL', 'AUTOMATIC')")
         return value
 
     model_config = ConfigDict(

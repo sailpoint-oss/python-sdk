@@ -52,8 +52,8 @@ class Product(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['development', 'staging', 'production', 'test', 'partner', 'training', 'demonstration', 'sandbox', 'null']):
-            raise ValueError("must be one of enum values ('development', 'staging', 'production', 'test', 'partner', 'training', 'demonstration', 'sandbox', 'null')")
+        if value not in set(['development', 'staging', 'production', 'test', 'partner', 'training', 'demonstration', 'sandbox']):
+            raise ValueError("must be one of enum values ('development', 'staging', 'production', 'test', 'partner', 'training', 'demonstration', 'sandbox')")
         return value
 
     model_config = ConfigDict(

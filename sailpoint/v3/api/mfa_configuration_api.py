@@ -16,7 +16,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictBool, StrictStr
+from pydantic import Field, StrictBool, StrictStr, field_validator
 from typing import List, Optional
 from typing_extensions import Annotated
 from sailpoint.v3.models.kba_answer_request_item import KbaAnswerRequestItem

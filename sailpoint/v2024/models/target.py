@@ -37,8 +37,8 @@ class Target(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['APPLICATION', 'IDENTITY', 'null']):
-            raise ValueError("must be one of enum values ('APPLICATION', 'IDENTITY', 'null')")
+        if value not in set(['APPLICATION', 'IDENTITY']):
+            raise ValueError("must be one of enum values ('APPLICATION', 'IDENTITY')")
         return value
 
     model_config = ConfigDict(

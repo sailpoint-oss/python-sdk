@@ -72,8 +72,8 @@ class RequestedItemStatus(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT', 'null']):
-            raise ValueError("must be one of enum values ('ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT', 'null')")
+        if value not in set(['ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT']):
+            raise ValueError("must be one of enum values ('ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT')")
         return value
 
     model_config = ConfigDict(

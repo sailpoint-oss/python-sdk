@@ -37,8 +37,8 @@ class ViolationOwnerAssignmentConfigOwnerRef(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['IDENTITY', 'GOVERNANCE_GROUP', 'MANAGER', 'null']):
-            raise ValueError("must be one of enum values ('IDENTITY', 'GOVERNANCE_GROUP', 'MANAGER', 'null')")
+        if value not in set(['IDENTITY', 'GOVERNANCE_GROUP', 'MANAGER']):
+            raise ValueError("must be one of enum values ('IDENTITY', 'GOVERNANCE_GROUP', 'MANAGER')")
         return value
 
     model_config = ConfigDict(
@@ -80,6 +80,11 @@ class ViolationOwnerAssignmentConfigOwnerRef(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if type (nullable) is None
+        # and model_fields_set contains the field
+        if self.type is None and "type" in self.model_fields_set:
+            _dict['type'] = None
+
         return _dict
 
     @classmethod

@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBytes, StrictStr
-from typing import Any, ClassVar, Dict, List, Union
+from typing import Any, ClassVar, Dict, List, Tuple, Union
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -26,7 +26,7 @@ class SetIconRequest(BaseModel):
     """
     SetIconRequest
     """ # noqa: E501
-    image: Union[StrictBytes, StrictStr] = Field(description="file with icon. Allowed mime-types ['image/png', 'image/jpeg']")
+    image: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]] = Field(description="file with icon. Allowed mime-types ['image/png', 'image/jpeg']")
     __properties: ClassVar[List[str]] = ["image"]
 
     model_config = ConfigDict(

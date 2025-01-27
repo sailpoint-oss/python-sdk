@@ -17,7 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictBytes, StrictStr
-from typing import List, Optional, Union
+from typing import List, Optional, Tuple, Union
 from typing_extensions import Annotated
 from sailpoint.v2024.models.branding_item import BrandingItem
 
@@ -49,7 +49,7 @@ class BrandingApi:
         navigation_color: Annotated[Optional[StrictStr], Field(description="hex value of color for navigation bar")] = None,
         email_from_address: Annotated[Optional[StrictStr], Field(description="email from address")] = None,
         login_informational_message: Annotated[Optional[StrictStr], Field(description="login information message")] = None,
-        file_standard: Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="png file with logo")] = None,
+        file_standard: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="png file with logo")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -149,7 +149,7 @@ class BrandingApi:
         navigation_color: Annotated[Optional[StrictStr], Field(description="hex value of color for navigation bar")] = None,
         email_from_address: Annotated[Optional[StrictStr], Field(description="email from address")] = None,
         login_informational_message: Annotated[Optional[StrictStr], Field(description="login information message")] = None,
-        file_standard: Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="png file with logo")] = None,
+        file_standard: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="png file with logo")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -249,7 +249,7 @@ class BrandingApi:
         navigation_color: Annotated[Optional[StrictStr], Field(description="hex value of color for navigation bar")] = None,
         email_from_address: Annotated[Optional[StrictStr], Field(description="email from address")] = None,
         login_informational_message: Annotated[Optional[StrictStr], Field(description="login information message")] = None,
-        file_standard: Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="png file with logo")] = None,
+        file_standard: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="png file with logo")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1263,7 +1263,7 @@ class BrandingApi:
         navigation_color: Annotated[Optional[StrictStr], Field(description="hex value of color for navigation bar")] = None,
         email_from_address: Annotated[Optional[StrictStr], Field(description="email from address")] = None,
         login_informational_message: Annotated[Optional[StrictStr], Field(description="login information message")] = None,
-        file_standard: Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="png file with logo")] = None,
+        file_standard: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="png file with logo")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1368,7 +1368,7 @@ class BrandingApi:
         navigation_color: Annotated[Optional[StrictStr], Field(description="hex value of color for navigation bar")] = None,
         email_from_address: Annotated[Optional[StrictStr], Field(description="email from address")] = None,
         login_informational_message: Annotated[Optional[StrictStr], Field(description="login information message")] = None,
-        file_standard: Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="png file with logo")] = None,
+        file_standard: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="png file with logo")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1473,7 +1473,7 @@ class BrandingApi:
         navigation_color: Annotated[Optional[StrictStr], Field(description="hex value of color for navigation bar")] = None,
         email_from_address: Annotated[Optional[StrictStr], Field(description="email from address")] = None,
         login_informational_message: Annotated[Optional[StrictStr], Field(description="login information message")] = None,
-        file_standard: Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="png file with logo")] = None,
+        file_standard: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="png file with logo")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],

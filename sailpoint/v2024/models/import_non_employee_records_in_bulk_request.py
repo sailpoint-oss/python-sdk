@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, StrictBytes, StrictStr
-from typing import Any, ClassVar, Dict, List, Union
+from typing import Any, ClassVar, Dict, List, Tuple, Union
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -26,7 +26,7 @@ class ImportNonEmployeeRecordsInBulkRequest(BaseModel):
     """
     ImportNonEmployeeRecordsInBulkRequest
     """ # noqa: E501
-    data: Union[StrictBytes, StrictStr]
+    data: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]
     __properties: ClassVar[List[str]] = ["data"]
 
     model_config = ConfigDict(

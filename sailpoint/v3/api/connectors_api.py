@@ -17,7 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictBool, StrictBytes, StrictStr, field_validator
-from typing import List, Optional, Union
+from typing import List, Optional, Tuple, Union
 from typing_extensions import Annotated
 from sailpoint.v3.models.connector_detail import ConnectorDetail
 from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
@@ -2111,7 +2111,7 @@ class ConnectorsApi:
     def put_connector_source_config(
         self,
         script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. ScriptName is the unique id generated at connector creation.")],
-        file: Annotated[Union[StrictBytes, StrictStr], Field(description="connector source config xml file")],
+        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="connector source config xml file")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2188,7 +2188,7 @@ class ConnectorsApi:
     def put_connector_source_config_with_http_info(
         self,
         script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. ScriptName is the unique id generated at connector creation.")],
-        file: Annotated[Union[StrictBytes, StrictStr], Field(description="connector source config xml file")],
+        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="connector source config xml file")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2265,7 +2265,7 @@ class ConnectorsApi:
     def put_connector_source_config_without_preload_content(
         self,
         script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. ScriptName is the unique id generated at connector creation.")],
-        file: Annotated[Union[StrictBytes, StrictStr], Field(description="connector source config xml file")],
+        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="connector source config xml file")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2417,7 +2417,7 @@ class ConnectorsApi:
     def put_connector_source_template(
         self,
         script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. ScriptName is the unique id generated at connector creation.")],
-        file: Annotated[Union[StrictBytes, StrictStr], Field(description="connector source template xml file")],
+        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="connector source template xml file")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2494,7 +2494,7 @@ class ConnectorsApi:
     def put_connector_source_template_with_http_info(
         self,
         script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. ScriptName is the unique id generated at connector creation.")],
-        file: Annotated[Union[StrictBytes, StrictStr], Field(description="connector source template xml file")],
+        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="connector source template xml file")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2571,7 +2571,7 @@ class ConnectorsApi:
     def put_connector_source_template_without_preload_content(
         self,
         script_name: Annotated[StrictStr, Field(description="The scriptName value of the connector. ScriptName is the unique id generated at connector creation.")],
-        file: Annotated[Union[StrictBytes, StrictStr], Field(description="connector source template xml file")],
+        file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="connector source template xml file")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
