@@ -675,7 +675,6 @@ class SourcesApi:
         self,
         source_id: Annotated[StrictStr, Field(description="Source ID.")],
         schedule1: Schedule1,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -695,8 +694,6 @@ class SourcesApi:
 
         :param source_id: Source ID. (required)
         :type source_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param schedule1: (required)
         :type schedule1: Schedule1
         :param _request_timeout: timeout setting for this request. If one
@@ -723,7 +720,6 @@ class SourcesApi:
 
         _param = self._create_source_schedule_serialize(
             source_id=source_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             schedule1=schedule1,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -755,7 +751,6 @@ class SourcesApi:
         self,
         source_id: Annotated[StrictStr, Field(description="Source ID.")],
         schedule1: Schedule1,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -775,8 +770,6 @@ class SourcesApi:
 
         :param source_id: Source ID. (required)
         :type source_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param schedule1: (required)
         :type schedule1: Schedule1
         :param _request_timeout: timeout setting for this request. If one
@@ -803,7 +796,6 @@ class SourcesApi:
 
         _param = self._create_source_schedule_serialize(
             source_id=source_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             schedule1=schedule1,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -835,7 +827,6 @@ class SourcesApi:
         self,
         source_id: Annotated[StrictStr, Field(description="Source ID.")],
         schedule1: Schedule1,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -855,8 +846,6 @@ class SourcesApi:
 
         :param source_id: Source ID. (required)
         :type source_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param schedule1: (required)
         :type schedule1: Schedule1
         :param _request_timeout: timeout setting for this request. If one
@@ -883,7 +872,6 @@ class SourcesApi:
 
         _param = self._create_source_schedule_serialize(
             source_id=source_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             schedule1=schedule1,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -909,7 +897,6 @@ class SourcesApi:
     def _create_source_schedule_serialize(
         self,
         source_id,
-        x_sail_point_experimental,
         schedule1,
         _request_auth,
         _content_type,
@@ -934,8 +921,6 @@ class SourcesApi:
             _path_params['sourceId'] = source_id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if schedule1 is not None:
@@ -2452,7 +2437,6 @@ class SourcesApi:
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id.")],
         schedule_type: Annotated[StrictStr, Field(description="The Schedule type.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2473,8 +2457,6 @@ class SourcesApi:
         :type source_id: str
         :param schedule_type: The Schedule type. (required)
         :type schedule_type: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2500,7 +2482,6 @@ class SourcesApi:
         _param = self._delete_source_schedule_serialize(
             source_id=source_id,
             schedule_type=schedule_type,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2532,7 +2513,6 @@ class SourcesApi:
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id.")],
         schedule_type: Annotated[StrictStr, Field(description="The Schedule type.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2553,8 +2533,6 @@ class SourcesApi:
         :type source_id: str
         :param schedule_type: The Schedule type. (required)
         :type schedule_type: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2580,7 +2558,6 @@ class SourcesApi:
         _param = self._delete_source_schedule_serialize(
             source_id=source_id,
             schedule_type=schedule_type,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2612,7 +2589,6 @@ class SourcesApi:
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id.")],
         schedule_type: Annotated[StrictStr, Field(description="The Schedule type.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2633,8 +2609,6 @@ class SourcesApi:
         :type source_id: str
         :param schedule_type: The Schedule type. (required)
         :type schedule_type: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2660,7 +2634,6 @@ class SourcesApi:
         _param = self._delete_source_schedule_serialize(
             source_id=source_id,
             schedule_type=schedule_type,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2687,7 +2660,6 @@ class SourcesApi:
         self,
         source_id,
         schedule_type,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -2713,8 +2685,6 @@ class SourcesApi:
             _path_params['scheduleType'] = schedule_type
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -5918,7 +5888,6 @@ class SourcesApi:
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id.")],
         schedule_type: Annotated[StrictStr, Field(description="The Schedule type.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5940,8 +5909,6 @@ class SourcesApi:
         :type source_id: str
         :param schedule_type: The Schedule type. (required)
         :type schedule_type: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5967,7 +5934,6 @@ class SourcesApi:
         _param = self._get_source_schedule_serialize(
             source_id=source_id,
             schedule_type=schedule_type,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5999,7 +5965,6 @@ class SourcesApi:
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id.")],
         schedule_type: Annotated[StrictStr, Field(description="The Schedule type.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6021,8 +5986,6 @@ class SourcesApi:
         :type source_id: str
         :param schedule_type: The Schedule type. (required)
         :type schedule_type: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6048,7 +6011,6 @@ class SourcesApi:
         _param = self._get_source_schedule_serialize(
             source_id=source_id,
             schedule_type=schedule_type,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6080,7 +6042,6 @@ class SourcesApi:
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id.")],
         schedule_type: Annotated[StrictStr, Field(description="The Schedule type.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6102,8 +6063,6 @@ class SourcesApi:
         :type source_id: str
         :param schedule_type: The Schedule type. (required)
         :type schedule_type: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6129,7 +6088,6 @@ class SourcesApi:
         _param = self._get_source_schedule_serialize(
             source_id=source_id,
             schedule_type=schedule_type,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6156,7 +6114,6 @@ class SourcesApi:
         self,
         source_id,
         schedule_type,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -6182,8 +6139,6 @@ class SourcesApi:
             _path_params['scheduleType'] = schedule_type
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -6225,7 +6180,6 @@ class SourcesApi:
     def get_source_schedules(
         self,
         source_id: Annotated[StrictStr, Field(description="Source ID.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6245,8 +6199,6 @@ class SourcesApi:
 
         :param source_id: Source ID. (required)
         :type source_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6271,7 +6223,6 @@ class SourcesApi:
 
         _param = self._get_source_schedules_serialize(
             source_id=source_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6302,7 +6253,6 @@ class SourcesApi:
     def get_source_schedules_with_http_info(
         self,
         source_id: Annotated[StrictStr, Field(description="Source ID.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6322,8 +6272,6 @@ class SourcesApi:
 
         :param source_id: Source ID. (required)
         :type source_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6348,7 +6296,6 @@ class SourcesApi:
 
         _param = self._get_source_schedules_serialize(
             source_id=source_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6379,7 +6326,6 @@ class SourcesApi:
     def get_source_schedules_without_preload_content(
         self,
         source_id: Annotated[StrictStr, Field(description="Source ID.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6399,8 +6345,6 @@ class SourcesApi:
 
         :param source_id: Source ID. (required)
         :type source_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6425,7 +6369,6 @@ class SourcesApi:
 
         _param = self._get_source_schedules_serialize(
             source_id=source_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6451,7 +6394,6 @@ class SourcesApi:
     def _get_source_schedules_serialize(
         self,
         source_id,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -6475,8 +6417,6 @@ class SourcesApi:
             _path_params['sourceId'] = source_id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -14301,7 +14241,6 @@ class SourcesApi:
         source_id: Annotated[StrictStr, Field(description="The Source id.")],
         schedule_type: Annotated[StrictStr, Field(description="The Schedule type.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the schedule.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -14323,8 +14262,6 @@ class SourcesApi:
         :type source_id: str
         :param schedule_type: The Schedule type. (required)
         :type schedule_type: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param json_patch_operation: The JSONPatch payload used to update the schedule. (required)
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
@@ -14352,7 +14289,6 @@ class SourcesApi:
         _param = self._update_source_schedule_serialize(
             source_id=source_id,
             schedule_type=schedule_type,
-            x_sail_point_experimental=x_sail_point_experimental,
             json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -14386,7 +14322,6 @@ class SourcesApi:
         source_id: Annotated[StrictStr, Field(description="The Source id.")],
         schedule_type: Annotated[StrictStr, Field(description="The Schedule type.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the schedule.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -14408,8 +14343,6 @@ class SourcesApi:
         :type source_id: str
         :param schedule_type: The Schedule type. (required)
         :type schedule_type: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param json_patch_operation: The JSONPatch payload used to update the schedule. (required)
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
@@ -14437,7 +14370,6 @@ class SourcesApi:
         _param = self._update_source_schedule_serialize(
             source_id=source_id,
             schedule_type=schedule_type,
-            x_sail_point_experimental=x_sail_point_experimental,
             json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -14471,7 +14403,6 @@ class SourcesApi:
         source_id: Annotated[StrictStr, Field(description="The Source id.")],
         schedule_type: Annotated[StrictStr, Field(description="The Schedule type.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the schedule.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -14493,8 +14424,6 @@ class SourcesApi:
         :type source_id: str
         :param schedule_type: The Schedule type. (required)
         :type schedule_type: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param json_patch_operation: The JSONPatch payload used to update the schedule. (required)
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
@@ -14522,7 +14451,6 @@ class SourcesApi:
         _param = self._update_source_schedule_serialize(
             source_id=source_id,
             schedule_type=schedule_type,
-            x_sail_point_experimental=x_sail_point_experimental,
             json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -14550,7 +14478,6 @@ class SourcesApi:
         self,
         source_id,
         schedule_type,
-        x_sail_point_experimental,
         json_patch_operation,
         _request_auth,
         _content_type,
@@ -14578,8 +14505,6 @@ class SourcesApi:
             _path_params['scheduleType'] = schedule_type
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if json_patch_operation is not None:
