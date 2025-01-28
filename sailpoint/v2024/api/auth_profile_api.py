@@ -44,6 +44,7 @@ class AuthProfileApi:
     @validate_call
     def get_profile_config(
         self,
+        id: Annotated[StrictStr, Field(description="ID of the Auth Profile to patch.")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -64,6 +65,8 @@ class AuthProfileApi:
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
+        :param id: ID of the Auth Profile to patch. (required)
+        :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -88,6 +91,7 @@ class AuthProfileApi:
 
         _param = self._get_profile_config_serialize(
             x_sail_point_experimental=x_sail_point_experimental,
+            id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -117,6 +121,7 @@ class AuthProfileApi:
     @validate_call
     def get_profile_config_with_http_info(
         self,
+        id: Annotated[StrictStr, Field(description="ID of the Auth Profile to patch.")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -137,6 +142,8 @@ class AuthProfileApi:
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
+        :param id: ID of the Auth Profile to patch. (required)
+        :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -161,6 +168,7 @@ class AuthProfileApi:
 
         _param = self._get_profile_config_serialize(
             x_sail_point_experimental=x_sail_point_experimental,
+            id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -190,6 +198,7 @@ class AuthProfileApi:
     @validate_call
     def get_profile_config_without_preload_content(
         self,
+        id: Annotated[StrictStr, Field(description="ID of the Auth Profile to patch.")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -210,6 +219,8 @@ class AuthProfileApi:
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
+        :param id: ID of the Auth Profile to patch. (required)
+        :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -234,6 +245,7 @@ class AuthProfileApi:
 
         _param = self._get_profile_config_serialize(
             x_sail_point_experimental=x_sail_point_experimental,
+            id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -259,6 +271,7 @@ class AuthProfileApi:
     def _get_profile_config_serialize(
         self,
         x_sail_point_experimental,
+        id,
         _request_auth,
         _content_type,
         _headers,
@@ -278,6 +291,8 @@ class AuthProfileApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
         # process the query parameters
         # process the header parameters
         if x_sail_point_experimental is not None:

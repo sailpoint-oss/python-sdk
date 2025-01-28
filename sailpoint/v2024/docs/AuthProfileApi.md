@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **get_profile_config**
-> AuthProfile get_profile_config(x_sail_point_experimental)
+> AuthProfile get_profile_config(x_sail_point_experimental, id)
 
 Get Auth Profile.
 
@@ -47,10 +47,11 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v2024.AuthProfileApi(api_client)
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true')
+    id = '2c91808a7813090a017814121919ecca' # str | ID of the Auth Profile to patch.
 
     try:
         # Get Auth Profile.
-        api_response = api_instance.get_profile_config(x_sail_point_experimental)
+        api_response = api_instance.get_profile_config(x_sail_point_experimental, id)
         print("The response of AuthProfileApi->get_profile_config:\n")
         pprint(api_response)
     except Exception as e:
@@ -65,6 +66,7 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **x_sail_point_experimental** | **str**| Use this header to enable this experimental API. | [default to &#39;true&#39;]
+ **id** | **str**| ID of the Auth Profile to patch. | 
 
 ### Return type
 
