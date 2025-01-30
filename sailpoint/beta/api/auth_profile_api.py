@@ -44,6 +44,7 @@ class AuthProfileApi:
     @validate_call
     def get_profile_config(
         self,
+        id: Annotated[StrictStr, Field(description="ID of the Auth Profile to get.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -61,6 +62,8 @@ class AuthProfileApi:
 
         This API returns auth profile information.
 
+        :param id: ID of the Auth Profile to get. (required)
+        :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -84,6 +87,7 @@ class AuthProfileApi:
         """ # noqa: E501
 
         _param = self._get_profile_config_serialize(
+            id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -113,6 +117,7 @@ class AuthProfileApi:
     @validate_call
     def get_profile_config_with_http_info(
         self,
+        id: Annotated[StrictStr, Field(description="ID of the Auth Profile to get.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -130,6 +135,8 @@ class AuthProfileApi:
 
         This API returns auth profile information.
 
+        :param id: ID of the Auth Profile to get. (required)
+        :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -153,6 +160,7 @@ class AuthProfileApi:
         """ # noqa: E501
 
         _param = self._get_profile_config_serialize(
+            id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -182,6 +190,7 @@ class AuthProfileApi:
     @validate_call
     def get_profile_config_without_preload_content(
         self,
+        id: Annotated[StrictStr, Field(description="ID of the Auth Profile to get.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -199,6 +208,8 @@ class AuthProfileApi:
 
         This API returns auth profile information.
 
+        :param id: ID of the Auth Profile to get. (required)
+        :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -222,6 +233,7 @@ class AuthProfileApi:
         """ # noqa: E501
 
         _param = self._get_profile_config_serialize(
+            id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -246,6 +258,7 @@ class AuthProfileApi:
 
     def _get_profile_config_serialize(
         self,
+        id,
         _request_auth,
         _content_type,
         _headers,
@@ -265,6 +278,8 @@ class AuthProfileApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
         # process the query parameters
         # process the header parameters
         # process the form parameters

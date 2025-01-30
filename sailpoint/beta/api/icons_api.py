@@ -16,7 +16,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictBytes, StrictStr
+from pydantic import Field, StrictBytes, StrictStr, field_validator
 from typing import Tuple, Union
 from typing_extensions import Annotated
 from sailpoint.beta.models.set_icon200_response import SetIcon200Response
@@ -42,7 +42,7 @@ class IconsApi:
     @validate_call
     def delete_icon(
         self,
-        object_type: Annotated[StrictStr, Field(description="Object type. Available options ['application']")],
+        object_type: Annotated[StrictStr, Field(description="Object type")],
         object_id: Annotated[StrictStr, Field(description="Object id.")],
         _request_timeout: Union[
             None,
@@ -61,7 +61,7 @@ class IconsApi:
 
         This API endpoint delete an icon by object type and object id. A token with ORG_ADMIN authority is required to call this API.
 
-        :param object_type: Object type. Available options ['application'] (required)
+        :param object_type: Object type (required)
         :type object_type: str
         :param object_id: Object id. (required)
         :type object_id: str
@@ -119,7 +119,7 @@ class IconsApi:
     @validate_call
     def delete_icon_with_http_info(
         self,
-        object_type: Annotated[StrictStr, Field(description="Object type. Available options ['application']")],
+        object_type: Annotated[StrictStr, Field(description="Object type")],
         object_id: Annotated[StrictStr, Field(description="Object id.")],
         _request_timeout: Union[
             None,
@@ -138,7 +138,7 @@ class IconsApi:
 
         This API endpoint delete an icon by object type and object id. A token with ORG_ADMIN authority is required to call this API.
 
-        :param object_type: Object type. Available options ['application'] (required)
+        :param object_type: Object type (required)
         :type object_type: str
         :param object_id: Object id. (required)
         :type object_id: str
@@ -196,7 +196,7 @@ class IconsApi:
     @validate_call
     def delete_icon_without_preload_content(
         self,
-        object_type: Annotated[StrictStr, Field(description="Object type. Available options ['application']")],
+        object_type: Annotated[StrictStr, Field(description="Object type")],
         object_id: Annotated[StrictStr, Field(description="Object id.")],
         _request_timeout: Union[
             None,
@@ -215,7 +215,7 @@ class IconsApi:
 
         This API endpoint delete an icon by object type and object id. A token with ORG_ADMIN authority is required to call this API.
 
-        :param object_type: Object type. Available options ['application'] (required)
+        :param object_type: Object type (required)
         :type object_type: str
         :param object_id: Object id. (required)
         :type object_id: str
@@ -335,7 +335,7 @@ class IconsApi:
     @validate_call
     def set_icon(
         self,
-        object_type: Annotated[StrictStr, Field(description="Object type. Available options ['application']")],
+        object_type: Annotated[StrictStr, Field(description="Object type")],
         object_id: Annotated[StrictStr, Field(description="Object id.")],
         image: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="file with icon. Allowed mime-types ['image/png', 'image/jpeg']")],
         _request_timeout: Union[
@@ -355,7 +355,7 @@ class IconsApi:
 
         This API endpoint updates an icon by object type and object id. A token with ORG_ADMIN authority is required to call this API.
 
-        :param object_type: Object type. Available options ['application'] (required)
+        :param object_type: Object type (required)
         :type object_type: str
         :param object_id: Object id. (required)
         :type object_id: str
@@ -416,7 +416,7 @@ class IconsApi:
     @validate_call
     def set_icon_with_http_info(
         self,
-        object_type: Annotated[StrictStr, Field(description="Object type. Available options ['application']")],
+        object_type: Annotated[StrictStr, Field(description="Object type")],
         object_id: Annotated[StrictStr, Field(description="Object id.")],
         image: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="file with icon. Allowed mime-types ['image/png', 'image/jpeg']")],
         _request_timeout: Union[
@@ -436,7 +436,7 @@ class IconsApi:
 
         This API endpoint updates an icon by object type and object id. A token with ORG_ADMIN authority is required to call this API.
 
-        :param object_type: Object type. Available options ['application'] (required)
+        :param object_type: Object type (required)
         :type object_type: str
         :param object_id: Object id. (required)
         :type object_id: str
@@ -497,7 +497,7 @@ class IconsApi:
     @validate_call
     def set_icon_without_preload_content(
         self,
-        object_type: Annotated[StrictStr, Field(description="Object type. Available options ['application']")],
+        object_type: Annotated[StrictStr, Field(description="Object type")],
         object_id: Annotated[StrictStr, Field(description="Object id.")],
         image: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="file with icon. Allowed mime-types ['image/png', 'image/jpeg']")],
         _request_timeout: Union[
@@ -517,7 +517,7 @@ class IconsApi:
 
         This API endpoint updates an icon by object type and object id. A token with ORG_ADMIN authority is required to call this API.
 
-        :param object_type: Object type. Available options ['application'] (required)
+        :param object_type: Object type (required)
         :type object_type: str
         :param object_id: Object id. (required)
         :type object_id: str

@@ -44,7 +44,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.IconsApi(api_client)
-    object_type = 'application' # str | Object type. Available options ['application']
+    object_type = 'application' # str | Object type
     object_id = 'a291e870-48c3-4953-b656-fb5ce2a93169' # str | Object id.
 
     try:
@@ -61,7 +61,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **object_type** | **str**| Object type. Available options [&#39;application&#39;] | 
+ **object_type** | **str**| Object type | 
  **object_id** | **str**| Object id. | 
 
 ### Return type
@@ -128,7 +128,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.IconsApi(api_client)
-    object_type = 'application' # str | Object type. Available options ['application']
+    object_type = 'application' # str | Object type
     object_id = 'a291e870-48c3-4953-b656-fb5ce2a93169' # str | Object id.
     image = None # bytearray | file with icon. Allowed mime-types ['image/png', 'image/jpeg']
 
@@ -148,7 +148,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **object_type** | **str**| Object type. Available options [&#39;application&#39;] | 
+ **object_type** | **str**| Object type | 
  **object_id** | **str**| Object id. | 
  **image** | **bytearray**| file with icon. Allowed mime-types [&#39;image/png&#39;, &#39;image/jpeg&#39;] | 
 

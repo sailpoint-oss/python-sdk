@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **get_profile_config**
-> AuthProfile get_profile_config()
+> AuthProfile get_profile_config(id)
 
 Get Auth Profile.
 
@@ -46,10 +46,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.AuthProfileApi(api_client)
+    id = '2c91808a7813090a017814121919ecca' # str | ID of the Auth Profile to get.
 
     try:
         # Get Auth Profile.
-        api_response = api_instance.get_profile_config()
+        api_response = api_instance.get_profile_config(id)
         print("The response of AuthProfileApi->get_profile_config:\n")
         pprint(api_response)
     except Exception as e:
@@ -60,7 +61,10 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**| ID of the Auth Profile to get. | 
 
 ### Return type
 

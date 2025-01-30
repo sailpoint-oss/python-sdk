@@ -1841,7 +1841,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.CertificationCampaignsApi(api_client)
-    id = '2c91808571bcfcf80171c23e4b4221fc' # str | ID of the campaign template being modified.
+    id = '2c91808571bcfcf80171c23e4b4221fc' # str | ID of the campaign being modified.
     request_body = [{op=replace, path=/name, value=This field has been updated!}, {op=copy, from=/name, path=/description}] # List[object] | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline 
 
     try:
@@ -1860,7 +1860,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| ID of the campaign template being modified. | 
+ **id** | **str**| ID of the campaign being modified. | 
  **request_body** | [**List[object]**](object.md)| A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline  | 
 
 ### Return type
