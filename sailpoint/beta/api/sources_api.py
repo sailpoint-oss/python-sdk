@@ -1252,7 +1252,7 @@ class SourcesApi:
     @validate_call
     def delete_accounts_async(
         self,
-        id: Annotated[StrictStr, Field(description="The source id")],
+        source_id: Annotated[StrictStr, Field(description="The source id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1270,8 +1270,8 @@ class SourcesApi:
 
         Use this endpoint to remove all accounts from the system without provisioning changes to the source. Accounts that are removed could be re-created during the next aggregation.  This endpoint is good for: * Removing accounts that no longer exist on the source. * Removing accounts that won't be aggregated following updates to the source configuration. * Forcing accounts to be re-created following the next aggregation to re-run account processing, support testing, etc. 
 
-        :param id: The source id (required)
-        :type id: str
+        :param source_id: The source id (required)
+        :type source_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1295,7 +1295,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._delete_accounts_async_serialize(
-            id=id,
+            source_id=source_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1324,7 +1324,7 @@ class SourcesApi:
     @validate_call
     def delete_accounts_async_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The source id")],
+        source_id: Annotated[StrictStr, Field(description="The source id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1342,8 +1342,8 @@ class SourcesApi:
 
         Use this endpoint to remove all accounts from the system without provisioning changes to the source. Accounts that are removed could be re-created during the next aggregation.  This endpoint is good for: * Removing accounts that no longer exist on the source. * Removing accounts that won't be aggregated following updates to the source configuration. * Forcing accounts to be re-created following the next aggregation to re-run account processing, support testing, etc. 
 
-        :param id: The source id (required)
-        :type id: str
+        :param source_id: The source id (required)
+        :type source_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1367,7 +1367,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._delete_accounts_async_serialize(
-            id=id,
+            source_id=source_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1396,7 +1396,7 @@ class SourcesApi:
     @validate_call
     def delete_accounts_async_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The source id")],
+        source_id: Annotated[StrictStr, Field(description="The source id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1414,8 +1414,8 @@ class SourcesApi:
 
         Use this endpoint to remove all accounts from the system without provisioning changes to the source. Accounts that are removed could be re-created during the next aggregation.  This endpoint is good for: * Removing accounts that no longer exist on the source. * Removing accounts that won't be aggregated following updates to the source configuration. * Forcing accounts to be re-created following the next aggregation to re-run account processing, support testing, etc. 
 
-        :param id: The source id (required)
-        :type id: str
+        :param source_id: The source id (required)
+        :type source_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1439,7 +1439,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._delete_accounts_async_serialize(
-            id=id,
+            source_id=source_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1463,7 +1463,7 @@ class SourcesApi:
 
     def _delete_accounts_async_serialize(
         self,
-        id,
+        source_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1483,8 +1483,8 @@ class SourcesApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if id is not None:
-            _path_params['id'] = id
+        if source_id is not None:
+            _path_params['sourceId'] = source_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -1508,7 +1508,7 @@ class SourcesApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/sources/{id}/remove-accounts',
+            resource_path='/sources/{sourceId}/remove-accounts',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1527,7 +1527,7 @@ class SourcesApi:
     @validate_call
     def delete_native_change_detection_config(
         self,
-        id: Annotated[StrictStr, Field(description="The source id")],
+        source_id: Annotated[StrictStr, Field(description="The source id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1545,8 +1545,8 @@ class SourcesApi:
 
         Deletes the native change detection configuration for the source specified by the given ID. A token with API, or ORG_ADMIN authority is required to call this API.
 
-        :param id: The source id (required)
-        :type id: str
+        :param source_id: The source id (required)
+        :type source_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1570,7 +1570,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._delete_native_change_detection_config_serialize(
-            id=id,
+            source_id=source_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1600,7 +1600,7 @@ class SourcesApi:
     @validate_call
     def delete_native_change_detection_config_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The source id")],
+        source_id: Annotated[StrictStr, Field(description="The source id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1618,8 +1618,8 @@ class SourcesApi:
 
         Deletes the native change detection configuration for the source specified by the given ID. A token with API, or ORG_ADMIN authority is required to call this API.
 
-        :param id: The source id (required)
-        :type id: str
+        :param source_id: The source id (required)
+        :type source_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1643,7 +1643,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._delete_native_change_detection_config_serialize(
-            id=id,
+            source_id=source_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1673,7 +1673,7 @@ class SourcesApi:
     @validate_call
     def delete_native_change_detection_config_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The source id")],
+        source_id: Annotated[StrictStr, Field(description="The source id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1691,8 +1691,8 @@ class SourcesApi:
 
         Deletes the native change detection configuration for the source specified by the given ID. A token with API, or ORG_ADMIN authority is required to call this API.
 
-        :param id: The source id (required)
-        :type id: str
+        :param source_id: The source id (required)
+        :type source_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1716,7 +1716,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._delete_native_change_detection_config_serialize(
-            id=id,
+            source_id=source_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1741,7 +1741,7 @@ class SourcesApi:
 
     def _delete_native_change_detection_config_serialize(
         self,
-        id,
+        source_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1761,8 +1761,8 @@ class SourcesApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if id is not None:
-            _path_params['id'] = id
+        if source_id is not None:
+            _path_params['sourceId'] = source_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -2389,7 +2389,7 @@ class SourcesApi:
     @validate_call
     def get_correlation_config(
         self,
-        id: Annotated[StrictStr, Field(description="The source id")],
+        source_id: Annotated[StrictStr, Field(description="The source id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2407,8 +2407,8 @@ class SourcesApi:
 
         This API returns the existing correlation configuration for a source specified by the given ID.
 
-        :param id: The source id (required)
-        :type id: str
+        :param source_id: The source id (required)
+        :type source_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2432,7 +2432,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._get_correlation_config_serialize(
-            id=id,
+            source_id=source_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2462,7 +2462,7 @@ class SourcesApi:
     @validate_call
     def get_correlation_config_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The source id")],
+        source_id: Annotated[StrictStr, Field(description="The source id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2480,8 +2480,8 @@ class SourcesApi:
 
         This API returns the existing correlation configuration for a source specified by the given ID.
 
-        :param id: The source id (required)
-        :type id: str
+        :param source_id: The source id (required)
+        :type source_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2505,7 +2505,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._get_correlation_config_serialize(
-            id=id,
+            source_id=source_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2535,7 +2535,7 @@ class SourcesApi:
     @validate_call
     def get_correlation_config_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The source id")],
+        source_id: Annotated[StrictStr, Field(description="The source id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2553,8 +2553,8 @@ class SourcesApi:
 
         This API returns the existing correlation configuration for a source specified by the given ID.
 
-        :param id: The source id (required)
-        :type id: str
+        :param source_id: The source id (required)
+        :type source_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2578,7 +2578,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._get_correlation_config_serialize(
-            id=id,
+            source_id=source_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2603,7 +2603,7 @@ class SourcesApi:
 
     def _get_correlation_config_serialize(
         self,
-        id,
+        source_id,
         _request_auth,
         _content_type,
         _headers,
@@ -2623,8 +2623,8 @@ class SourcesApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if id is not None:
-            _path_params['id'] = id
+        if source_id is not None:
+            _path_params['sourceId'] = source_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -2648,7 +2648,7 @@ class SourcesApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/sources/{id}/correlation-config',
+            resource_path='/sources/{sourceId}/correlation-config',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -2667,7 +2667,7 @@ class SourcesApi:
     @validate_call
     def get_native_change_detection_config(
         self,
-        id: Annotated[StrictStr, Field(description="The source id")],
+        source_id: Annotated[StrictStr, Field(description="The source id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2685,8 +2685,8 @@ class SourcesApi:
 
         This API returns the existing native change detection configuration for a source specified by the given ID. A token with ORG_ADMIN authority is required to call this API.
 
-        :param id: The source id (required)
-        :type id: str
+        :param source_id: The source id (required)
+        :type source_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2710,7 +2710,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._get_native_change_detection_config_serialize(
-            id=id,
+            source_id=source_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2740,7 +2740,7 @@ class SourcesApi:
     @validate_call
     def get_native_change_detection_config_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The source id")],
+        source_id: Annotated[StrictStr, Field(description="The source id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2758,8 +2758,8 @@ class SourcesApi:
 
         This API returns the existing native change detection configuration for a source specified by the given ID. A token with ORG_ADMIN authority is required to call this API.
 
-        :param id: The source id (required)
-        :type id: str
+        :param source_id: The source id (required)
+        :type source_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2783,7 +2783,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._get_native_change_detection_config_serialize(
-            id=id,
+            source_id=source_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2813,7 +2813,7 @@ class SourcesApi:
     @validate_call
     def get_native_change_detection_config_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The source id")],
+        source_id: Annotated[StrictStr, Field(description="The source id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2831,8 +2831,8 @@ class SourcesApi:
 
         This API returns the existing native change detection configuration for a source specified by the given ID. A token with ORG_ADMIN authority is required to call this API.
 
-        :param id: The source id (required)
-        :type id: str
+        :param source_id: The source id (required)
+        :type source_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2856,7 +2856,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._get_native_change_detection_config_serialize(
-            id=id,
+            source_id=source_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2881,7 +2881,7 @@ class SourcesApi:
 
     def _get_native_change_detection_config_serialize(
         self,
-        id,
+        source_id,
         _request_auth,
         _content_type,
         _headers,
@@ -2901,8 +2901,8 @@ class SourcesApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if id is not None:
-            _path_params['id'] = id
+        if source_id is not None:
+            _path_params['sourceId'] = source_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -3517,7 +3517,7 @@ class SourcesApi:
     @validate_call
     def get_source_accounts_schema(
         self,
-        id: Annotated[StrictStr, Field(description="The Source id")],
+        source_id: Annotated[StrictStr, Field(description="The Source id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3534,8 +3534,8 @@ class SourcesApi:
         """Downloads source accounts schema template
 
 
-        :param id: The Source id (required)
-        :type id: str
+        :param source_id: The Source id (required)
+        :type source_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3559,7 +3559,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._get_source_accounts_schema_serialize(
-            id=id,
+            source_id=source_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3589,7 +3589,7 @@ class SourcesApi:
     @validate_call
     def get_source_accounts_schema_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The Source id")],
+        source_id: Annotated[StrictStr, Field(description="The Source id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3606,8 +3606,8 @@ class SourcesApi:
         """Downloads source accounts schema template
 
 
-        :param id: The Source id (required)
-        :type id: str
+        :param source_id: The Source id (required)
+        :type source_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3631,7 +3631,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._get_source_accounts_schema_serialize(
-            id=id,
+            source_id=source_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3661,7 +3661,7 @@ class SourcesApi:
     @validate_call
     def get_source_accounts_schema_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The Source id")],
+        source_id: Annotated[StrictStr, Field(description="The Source id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3678,8 +3678,8 @@ class SourcesApi:
         """Downloads source accounts schema template
 
 
-        :param id: The Source id (required)
-        :type id: str
+        :param source_id: The Source id (required)
+        :type source_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3703,7 +3703,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._get_source_accounts_schema_serialize(
-            id=id,
+            source_id=source_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3728,7 +3728,7 @@ class SourcesApi:
 
     def _get_source_accounts_schema_serialize(
         self,
-        id,
+        source_id,
         _request_auth,
         _content_type,
         _headers,
@@ -3748,8 +3748,8 @@ class SourcesApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if id is not None:
-            _path_params['id'] = id
+        if source_id is not None:
+            _path_params['sourceId'] = source_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -3774,7 +3774,7 @@ class SourcesApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/sources/{id}/schemas/accounts',
+            resource_path='/sources/{sourceId}/schemas/accounts',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -4363,6 +4363,7 @@ class SourcesApi:
     @validate_call
     def get_source_entitlement_request_config(
         self,
+        source_id: Annotated[StrictStr, Field(description="The Source id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4380,6 +4381,8 @@ class SourcesApi:
 
         This API gets the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
+        :param source_id: The Source id (required)
+        :type source_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4403,6 +4406,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._get_source_entitlement_request_config_serialize(
+            source_id=source_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4431,6 +4435,7 @@ class SourcesApi:
     @validate_call
     def get_source_entitlement_request_config_with_http_info(
         self,
+        source_id: Annotated[StrictStr, Field(description="The Source id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4448,6 +4453,8 @@ class SourcesApi:
 
         This API gets the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
+        :param source_id: The Source id (required)
+        :type source_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4471,6 +4478,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._get_source_entitlement_request_config_serialize(
+            source_id=source_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4499,6 +4507,7 @@ class SourcesApi:
     @validate_call
     def get_source_entitlement_request_config_without_preload_content(
         self,
+        source_id: Annotated[StrictStr, Field(description="The Source id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4516,6 +4525,8 @@ class SourcesApi:
 
         This API gets the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
+        :param source_id: The Source id (required)
+        :type source_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4539,6 +4550,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._get_source_entitlement_request_config_serialize(
+            source_id=source_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4562,6 +4574,7 @@ class SourcesApi:
 
     def _get_source_entitlement_request_config_serialize(
         self,
+        source_id,
         _request_auth,
         _content_type,
         _headers,
@@ -4581,6 +4594,8 @@ class SourcesApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
+        if source_id is not None:
+            _path_params['sourceId'] = source_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -4604,7 +4619,7 @@ class SourcesApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/sources/{id}/entitlement-request-config',
+            resource_path='/sources/{sourceId}/entitlement-request-config',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -4623,7 +4638,7 @@ class SourcesApi:
     @validate_call
     def get_source_entitlements_schema(
         self,
-        id: Annotated[StrictStr, Field(description="The Source id")],
+        source_id: Annotated[StrictStr, Field(description="The Source id")],
         schema_name: Annotated[Optional[StrictStr], Field(description="Name of entitlement schema")] = None,
         _request_timeout: Union[
             None,
@@ -4641,8 +4656,8 @@ class SourcesApi:
         """Downloads source entitlements schema template
 
 
-        :param id: The Source id (required)
-        :type id: str
+        :param source_id: The Source id (required)
+        :type source_id: str
         :param schema_name: Name of entitlement schema
         :type schema_name: str
         :param _request_timeout: timeout setting for this request. If one
@@ -4668,7 +4683,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._get_source_entitlements_schema_serialize(
-            id=id,
+            source_id=source_id,
             schema_name=schema_name,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4699,7 +4714,7 @@ class SourcesApi:
     @validate_call
     def get_source_entitlements_schema_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The Source id")],
+        source_id: Annotated[StrictStr, Field(description="The Source id")],
         schema_name: Annotated[Optional[StrictStr], Field(description="Name of entitlement schema")] = None,
         _request_timeout: Union[
             None,
@@ -4717,8 +4732,8 @@ class SourcesApi:
         """Downloads source entitlements schema template
 
 
-        :param id: The Source id (required)
-        :type id: str
+        :param source_id: The Source id (required)
+        :type source_id: str
         :param schema_name: Name of entitlement schema
         :type schema_name: str
         :param _request_timeout: timeout setting for this request. If one
@@ -4744,7 +4759,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._get_source_entitlements_schema_serialize(
-            id=id,
+            source_id=source_id,
             schema_name=schema_name,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4775,7 +4790,7 @@ class SourcesApi:
     @validate_call
     def get_source_entitlements_schema_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The Source id")],
+        source_id: Annotated[StrictStr, Field(description="The Source id")],
         schema_name: Annotated[Optional[StrictStr], Field(description="Name of entitlement schema")] = None,
         _request_timeout: Union[
             None,
@@ -4793,8 +4808,8 @@ class SourcesApi:
         """Downloads source entitlements schema template
 
 
-        :param id: The Source id (required)
-        :type id: str
+        :param source_id: The Source id (required)
+        :type source_id: str
         :param schema_name: Name of entitlement schema
         :type schema_name: str
         :param _request_timeout: timeout setting for this request. If one
@@ -4820,7 +4835,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._get_source_entitlements_schema_serialize(
-            id=id,
+            source_id=source_id,
             schema_name=schema_name,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4846,7 +4861,7 @@ class SourcesApi:
 
     def _get_source_entitlements_schema_serialize(
         self,
-        id,
+        source_id,
         schema_name,
         _request_auth,
         _content_type,
@@ -4867,8 +4882,8 @@ class SourcesApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if id is not None:
-            _path_params['id'] = id
+        if source_id is not None:
+            _path_params['sourceId'] = source_id
         # process the query parameters
         if schema_name is not None:
             
@@ -4897,7 +4912,7 @@ class SourcesApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/sources/{id}/schemas/entitlements',
+            resource_path='/sources/{sourceId}/schemas/entitlements',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -5521,7 +5536,7 @@ class SourcesApi:
     @validate_call
     def import_accounts(
         self,
-        id: Annotated[StrictStr, Field(description="Source Id")],
+        source_id: Annotated[StrictStr, Field(description="Source Id")],
         file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The CSV file containing the source accounts to aggregate.")] = None,
         disable_optimization: Annotated[Optional[StrictStr], Field(description="Use this flag to reprocess every account whether or not the data has changed.")] = None,
         _request_timeout: Union[
@@ -5541,8 +5556,8 @@ class SourcesApi:
 
         Starts an account aggregation on the specified source.  If the target source is a delimited file source, then the CSV file needs to be included in the request body. You will also need to set the Content-Type header to `multipart/form-data`. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
-        :param id: Source Id (required)
-        :type id: str
+        :param source_id: Source Id (required)
+        :type source_id: str
         :param file: The CSV file containing the source accounts to aggregate.
         :type file: bytearray
         :param disable_optimization: Use this flag to reprocess every account whether or not the data has changed.
@@ -5570,7 +5585,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._import_accounts_serialize(
-            id=id,
+            source_id=source_id,
             file=file,
             disable_optimization=disable_optimization,
             _request_auth=_request_auth,
@@ -5601,7 +5616,7 @@ class SourcesApi:
     @validate_call
     def import_accounts_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="Source Id")],
+        source_id: Annotated[StrictStr, Field(description="Source Id")],
         file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The CSV file containing the source accounts to aggregate.")] = None,
         disable_optimization: Annotated[Optional[StrictStr], Field(description="Use this flag to reprocess every account whether or not the data has changed.")] = None,
         _request_timeout: Union[
@@ -5621,8 +5636,8 @@ class SourcesApi:
 
         Starts an account aggregation on the specified source.  If the target source is a delimited file source, then the CSV file needs to be included in the request body. You will also need to set the Content-Type header to `multipart/form-data`. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
-        :param id: Source Id (required)
-        :type id: str
+        :param source_id: Source Id (required)
+        :type source_id: str
         :param file: The CSV file containing the source accounts to aggregate.
         :type file: bytearray
         :param disable_optimization: Use this flag to reprocess every account whether or not the data has changed.
@@ -5650,7 +5665,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._import_accounts_serialize(
-            id=id,
+            source_id=source_id,
             file=file,
             disable_optimization=disable_optimization,
             _request_auth=_request_auth,
@@ -5681,7 +5696,7 @@ class SourcesApi:
     @validate_call
     def import_accounts_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="Source Id")],
+        source_id: Annotated[StrictStr, Field(description="Source Id")],
         file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The CSV file containing the source accounts to aggregate.")] = None,
         disable_optimization: Annotated[Optional[StrictStr], Field(description="Use this flag to reprocess every account whether or not the data has changed.")] = None,
         _request_timeout: Union[
@@ -5701,8 +5716,8 @@ class SourcesApi:
 
         Starts an account aggregation on the specified source.  If the target source is a delimited file source, then the CSV file needs to be included in the request body. You will also need to set the Content-Type header to `multipart/form-data`. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
-        :param id: Source Id (required)
-        :type id: str
+        :param source_id: Source Id (required)
+        :type source_id: str
         :param file: The CSV file containing the source accounts to aggregate.
         :type file: bytearray
         :param disable_optimization: Use this flag to reprocess every account whether or not the data has changed.
@@ -5730,7 +5745,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._import_accounts_serialize(
-            id=id,
+            source_id=source_id,
             file=file,
             disable_optimization=disable_optimization,
             _request_auth=_request_auth,
@@ -5756,7 +5771,7 @@ class SourcesApi:
 
     def _import_accounts_serialize(
         self,
-        id,
+        source_id,
         file,
         disable_optimization,
         _request_auth,
@@ -5778,8 +5793,8 @@ class SourcesApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if id is not None:
-            _path_params['id'] = id
+        if source_id is not None:
+            _path_params['sourceId'] = source_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -5821,7 +5836,7 @@ class SourcesApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/sources/{id}/load-accounts',
+            resource_path='/sources/{sourceId}/load-accounts',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -5840,7 +5855,7 @@ class SourcesApi:
     @validate_call
     def import_entitlements(
         self,
-        id: Annotated[StrictStr, Field(description="Source Id")],
+        source_id: Annotated[StrictStr, Field(description="Source Id")],
         file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The CSV file containing the source entitlements to aggregate.")] = None,
         _request_timeout: Union[
             None,
@@ -5859,8 +5874,8 @@ class SourcesApi:
 
         Starts an entitlement aggregation on the specified source.  If the target source is a delimited file source, then the CSV file needs to be included in the request body.  You will also need to set the Content-Type header to `multipart/form-data`. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
-        :param id: Source Id (required)
-        :type id: str
+        :param source_id: Source Id (required)
+        :type source_id: str
         :param file: The CSV file containing the source entitlements to aggregate.
         :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
@@ -5886,7 +5901,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._import_entitlements_serialize(
-            id=id,
+            source_id=source_id,
             file=file,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -5916,7 +5931,7 @@ class SourcesApi:
     @validate_call
     def import_entitlements_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="Source Id")],
+        source_id: Annotated[StrictStr, Field(description="Source Id")],
         file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The CSV file containing the source entitlements to aggregate.")] = None,
         _request_timeout: Union[
             None,
@@ -5935,8 +5950,8 @@ class SourcesApi:
 
         Starts an entitlement aggregation on the specified source.  If the target source is a delimited file source, then the CSV file needs to be included in the request body.  You will also need to set the Content-Type header to `multipart/form-data`. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
-        :param id: Source Id (required)
-        :type id: str
+        :param source_id: Source Id (required)
+        :type source_id: str
         :param file: The CSV file containing the source entitlements to aggregate.
         :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
@@ -5962,7 +5977,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._import_entitlements_serialize(
-            id=id,
+            source_id=source_id,
             file=file,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -5992,7 +6007,7 @@ class SourcesApi:
     @validate_call
     def import_entitlements_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="Source Id")],
+        source_id: Annotated[StrictStr, Field(description="Source Id")],
         file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The CSV file containing the source entitlements to aggregate.")] = None,
         _request_timeout: Union[
             None,
@@ -6011,8 +6026,8 @@ class SourcesApi:
 
         Starts an entitlement aggregation on the specified source.  If the target source is a delimited file source, then the CSV file needs to be included in the request body.  You will also need to set the Content-Type header to `multipart/form-data`. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
-        :param id: Source Id (required)
-        :type id: str
+        :param source_id: Source Id (required)
+        :type source_id: str
         :param file: The CSV file containing the source entitlements to aggregate.
         :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
@@ -6038,7 +6053,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._import_entitlements_serialize(
-            id=id,
+            source_id=source_id,
             file=file,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -6063,7 +6078,7 @@ class SourcesApi:
 
     def _import_entitlements_serialize(
         self,
-        id,
+        source_id,
         file,
         _request_auth,
         _content_type,
@@ -6084,8 +6099,8 @@ class SourcesApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if id is not None:
-            _path_params['id'] = id
+        if source_id is not None:
+            _path_params['sourceId'] = source_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -6124,7 +6139,7 @@ class SourcesApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/sources/{id}/load-entitlements',
+            resource_path='/sources/{sourceId}/load-entitlements',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -6143,7 +6158,7 @@ class SourcesApi:
     @validate_call
     def import_source_accounts_schema(
         self,
-        id: Annotated[StrictStr, Field(description="The Source id")],
+        source_id: Annotated[StrictStr, Field(description="The Source id")],
         file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
             None,
@@ -6162,8 +6177,8 @@ class SourcesApi:
 
         This API uploads a source schema template file to configure a source's account attributes.
 
-        :param id: The Source id (required)
-        :type id: str
+        :param source_id: The Source id (required)
+        :type source_id: str
         :param file:
         :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
@@ -6189,7 +6204,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._import_source_accounts_schema_serialize(
-            id=id,
+            source_id=source_id,
             file=file,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -6219,7 +6234,7 @@ class SourcesApi:
     @validate_call
     def import_source_accounts_schema_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The Source id")],
+        source_id: Annotated[StrictStr, Field(description="The Source id")],
         file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
             None,
@@ -6238,8 +6253,8 @@ class SourcesApi:
 
         This API uploads a source schema template file to configure a source's account attributes.
 
-        :param id: The Source id (required)
-        :type id: str
+        :param source_id: The Source id (required)
+        :type source_id: str
         :param file:
         :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
@@ -6265,7 +6280,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._import_source_accounts_schema_serialize(
-            id=id,
+            source_id=source_id,
             file=file,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -6295,7 +6310,7 @@ class SourcesApi:
     @validate_call
     def import_source_accounts_schema_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The Source id")],
+        source_id: Annotated[StrictStr, Field(description="The Source id")],
         file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
             None,
@@ -6314,8 +6329,8 @@ class SourcesApi:
 
         This API uploads a source schema template file to configure a source's account attributes.
 
-        :param id: The Source id (required)
-        :type id: str
+        :param source_id: The Source id (required)
+        :type source_id: str
         :param file:
         :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
@@ -6341,7 +6356,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._import_source_accounts_schema_serialize(
-            id=id,
+            source_id=source_id,
             file=file,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -6366,7 +6381,7 @@ class SourcesApi:
 
     def _import_source_accounts_schema_serialize(
         self,
-        id,
+        source_id,
         file,
         _request_auth,
         _content_type,
@@ -6387,8 +6402,8 @@ class SourcesApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if id is not None:
-            _path_params['id'] = id
+        if source_id is not None:
+            _path_params['sourceId'] = source_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -6427,7 +6442,7 @@ class SourcesApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/sources/{id}/schemas/accounts',
+            resource_path='/sources/{sourceId}/schemas/accounts',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -6749,7 +6764,7 @@ class SourcesApi:
     @validate_call
     def import_source_entitlements_schema(
         self,
-        id: Annotated[StrictStr, Field(description="The Source id")],
+        source_id: Annotated[StrictStr, Field(description="The Source id")],
         schema_name: Annotated[Optional[StrictStr], Field(description="Name of entitlement schema")] = None,
         file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
@@ -6769,8 +6784,8 @@ class SourcesApi:
 
         This API uploads a source schema template file to configure a source's entitlement attributes.
 
-        :param id: The Source id (required)
-        :type id: str
+        :param source_id: The Source id (required)
+        :type source_id: str
         :param schema_name: Name of entitlement schema
         :type schema_name: str
         :param file:
@@ -6798,7 +6813,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._import_source_entitlements_schema_serialize(
-            id=id,
+            source_id=source_id,
             schema_name=schema_name,
             file=file,
             _request_auth=_request_auth,
@@ -6829,7 +6844,7 @@ class SourcesApi:
     @validate_call
     def import_source_entitlements_schema_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The Source id")],
+        source_id: Annotated[StrictStr, Field(description="The Source id")],
         schema_name: Annotated[Optional[StrictStr], Field(description="Name of entitlement schema")] = None,
         file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
@@ -6849,8 +6864,8 @@ class SourcesApi:
 
         This API uploads a source schema template file to configure a source's entitlement attributes.
 
-        :param id: The Source id (required)
-        :type id: str
+        :param source_id: The Source id (required)
+        :type source_id: str
         :param schema_name: Name of entitlement schema
         :type schema_name: str
         :param file:
@@ -6878,7 +6893,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._import_source_entitlements_schema_serialize(
-            id=id,
+            source_id=source_id,
             schema_name=schema_name,
             file=file,
             _request_auth=_request_auth,
@@ -6909,7 +6924,7 @@ class SourcesApi:
     @validate_call
     def import_source_entitlements_schema_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The Source id")],
+        source_id: Annotated[StrictStr, Field(description="The Source id")],
         schema_name: Annotated[Optional[StrictStr], Field(description="Name of entitlement schema")] = None,
         file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
@@ -6929,8 +6944,8 @@ class SourcesApi:
 
         This API uploads a source schema template file to configure a source's entitlement attributes.
 
-        :param id: The Source id (required)
-        :type id: str
+        :param source_id: The Source id (required)
+        :type source_id: str
         :param schema_name: Name of entitlement schema
         :type schema_name: str
         :param file:
@@ -6958,7 +6973,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._import_source_entitlements_schema_serialize(
-            id=id,
+            source_id=source_id,
             schema_name=schema_name,
             file=file,
             _request_auth=_request_auth,
@@ -6984,7 +6999,7 @@ class SourcesApi:
 
     def _import_source_entitlements_schema_serialize(
         self,
-        id,
+        source_id,
         schema_name,
         file,
         _request_auth,
@@ -7006,8 +7021,8 @@ class SourcesApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if id is not None:
-            _path_params['id'] = id
+        if source_id is not None:
+            _path_params['sourceId'] = source_id
         # process the query parameters
         if schema_name is not None:
             
@@ -7050,7 +7065,7 @@ class SourcesApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/sources/{id}/schemas/entitlements',
+            resource_path='/sources/{sourceId}/schemas/entitlements',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -7069,7 +7084,7 @@ class SourcesApi:
     @validate_call
     def import_uncorrelated_accounts(
         self,
-        id: Annotated[StrictStr, Field(description="Source Id")],
+        source_id: Annotated[StrictStr, Field(description="Source Id")],
         file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
             None,
@@ -7088,8 +7103,8 @@ class SourcesApi:
 
         File is required for upload. You will also need to set the Content-Type header to `multipart/form-data`
 
-        :param id: Source Id (required)
-        :type id: str
+        :param source_id: Source Id (required)
+        :type source_id: str
         :param file:
         :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
@@ -7115,7 +7130,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._import_uncorrelated_accounts_serialize(
-            id=id,
+            source_id=source_id,
             file=file,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -7145,7 +7160,7 @@ class SourcesApi:
     @validate_call
     def import_uncorrelated_accounts_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="Source Id")],
+        source_id: Annotated[StrictStr, Field(description="Source Id")],
         file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
             None,
@@ -7164,8 +7179,8 @@ class SourcesApi:
 
         File is required for upload. You will also need to set the Content-Type header to `multipart/form-data`
 
-        :param id: Source Id (required)
-        :type id: str
+        :param source_id: Source Id (required)
+        :type source_id: str
         :param file:
         :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
@@ -7191,7 +7206,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._import_uncorrelated_accounts_serialize(
-            id=id,
+            source_id=source_id,
             file=file,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -7221,7 +7236,7 @@ class SourcesApi:
     @validate_call
     def import_uncorrelated_accounts_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="Source Id")],
+        source_id: Annotated[StrictStr, Field(description="Source Id")],
         file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
             None,
@@ -7240,8 +7255,8 @@ class SourcesApi:
 
         File is required for upload. You will also need to set the Content-Type header to `multipart/form-data`
 
-        :param id: Source Id (required)
-        :type id: str
+        :param source_id: Source Id (required)
+        :type source_id: str
         :param file:
         :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
@@ -7267,7 +7282,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._import_uncorrelated_accounts_serialize(
-            id=id,
+            source_id=source_id,
             file=file,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -7292,7 +7307,7 @@ class SourcesApi:
 
     def _import_uncorrelated_accounts_serialize(
         self,
-        id,
+        source_id,
         file,
         _request_auth,
         _content_type,
@@ -7313,8 +7328,8 @@ class SourcesApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if id is not None:
-            _path_params['id'] = id
+        if source_id is not None:
+            _path_params['sourceId'] = source_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -7353,7 +7368,7 @@ class SourcesApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/sources/{id}/load-uncorrelated-accounts',
+            resource_path='/sources/{sourceId}/load-uncorrelated-accounts',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -8617,7 +8632,7 @@ class SourcesApi:
     @validate_call
     def put_correlation_config(
         self,
-        id: Annotated[StrictStr, Field(description="The source id")],
+        source_id: Annotated[StrictStr, Field(description="The source id")],
         correlation_config: CorrelationConfig,
         _request_timeout: Union[
             None,
@@ -8636,8 +8651,8 @@ class SourcesApi:
 
         Replaces the correlation configuration for the source specified by the given ID with the configuration provided in the request body.
 
-        :param id: The source id (required)
-        :type id: str
+        :param source_id: The source id (required)
+        :type source_id: str
         :param correlation_config: (required)
         :type correlation_config: CorrelationConfig
         :param _request_timeout: timeout setting for this request. If one
@@ -8663,7 +8678,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._put_correlation_config_serialize(
-            id=id,
+            source_id=source_id,
             correlation_config=correlation_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -8694,7 +8709,7 @@ class SourcesApi:
     @validate_call
     def put_correlation_config_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The source id")],
+        source_id: Annotated[StrictStr, Field(description="The source id")],
         correlation_config: CorrelationConfig,
         _request_timeout: Union[
             None,
@@ -8713,8 +8728,8 @@ class SourcesApi:
 
         Replaces the correlation configuration for the source specified by the given ID with the configuration provided in the request body.
 
-        :param id: The source id (required)
-        :type id: str
+        :param source_id: The source id (required)
+        :type source_id: str
         :param correlation_config: (required)
         :type correlation_config: CorrelationConfig
         :param _request_timeout: timeout setting for this request. If one
@@ -8740,7 +8755,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._put_correlation_config_serialize(
-            id=id,
+            source_id=source_id,
             correlation_config=correlation_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -8771,7 +8786,7 @@ class SourcesApi:
     @validate_call
     def put_correlation_config_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The source id")],
+        source_id: Annotated[StrictStr, Field(description="The source id")],
         correlation_config: CorrelationConfig,
         _request_timeout: Union[
             None,
@@ -8790,8 +8805,8 @@ class SourcesApi:
 
         Replaces the correlation configuration for the source specified by the given ID with the configuration provided in the request body.
 
-        :param id: The source id (required)
-        :type id: str
+        :param source_id: The source id (required)
+        :type source_id: str
         :param correlation_config: (required)
         :type correlation_config: CorrelationConfig
         :param _request_timeout: timeout setting for this request. If one
@@ -8817,7 +8832,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._put_correlation_config_serialize(
-            id=id,
+            source_id=source_id,
             correlation_config=correlation_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -8843,7 +8858,7 @@ class SourcesApi:
 
     def _put_correlation_config_serialize(
         self,
-        id,
+        source_id,
         correlation_config,
         _request_auth,
         _content_type,
@@ -8864,8 +8879,8 @@ class SourcesApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if id is not None:
-            _path_params['id'] = id
+        if source_id is not None:
+            _path_params['sourceId'] = source_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -8904,7 +8919,7 @@ class SourcesApi:
 
         return self.api_client.param_serialize(
             method='PUT',
-            resource_path='/sources/{id}/correlation-config',
+            resource_path='/sources/{sourceId}/correlation-config',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -8923,7 +8938,7 @@ class SourcesApi:
     @validate_call
     def put_native_change_detection_config(
         self,
-        id: Annotated[StrictStr, Field(description="The source id")],
+        source_id: Annotated[StrictStr, Field(description="The source id")],
         native_change_detection_config: NativeChangeDetectionConfig,
         _request_timeout: Union[
             None,
@@ -8942,8 +8957,8 @@ class SourcesApi:
 
         Replaces the native change detection configuration for the source specified by the given ID with the configuration provided in the request body.      A token with ORG_ADMIN authority is required to call this API.
 
-        :param id: The source id (required)
-        :type id: str
+        :param source_id: The source id (required)
+        :type source_id: str
         :param native_change_detection_config: (required)
         :type native_change_detection_config: NativeChangeDetectionConfig
         :param _request_timeout: timeout setting for this request. If one
@@ -8969,7 +8984,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._put_native_change_detection_config_serialize(
-            id=id,
+            source_id=source_id,
             native_change_detection_config=native_change_detection_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -9000,7 +9015,7 @@ class SourcesApi:
     @validate_call
     def put_native_change_detection_config_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The source id")],
+        source_id: Annotated[StrictStr, Field(description="The source id")],
         native_change_detection_config: NativeChangeDetectionConfig,
         _request_timeout: Union[
             None,
@@ -9019,8 +9034,8 @@ class SourcesApi:
 
         Replaces the native change detection configuration for the source specified by the given ID with the configuration provided in the request body.      A token with ORG_ADMIN authority is required to call this API.
 
-        :param id: The source id (required)
-        :type id: str
+        :param source_id: The source id (required)
+        :type source_id: str
         :param native_change_detection_config: (required)
         :type native_change_detection_config: NativeChangeDetectionConfig
         :param _request_timeout: timeout setting for this request. If one
@@ -9046,7 +9061,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._put_native_change_detection_config_serialize(
-            id=id,
+            source_id=source_id,
             native_change_detection_config=native_change_detection_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -9077,7 +9092,7 @@ class SourcesApi:
     @validate_call
     def put_native_change_detection_config_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The source id")],
+        source_id: Annotated[StrictStr, Field(description="The source id")],
         native_change_detection_config: NativeChangeDetectionConfig,
         _request_timeout: Union[
             None,
@@ -9096,8 +9111,8 @@ class SourcesApi:
 
         Replaces the native change detection configuration for the source specified by the given ID with the configuration provided in the request body.      A token with ORG_ADMIN authority is required to call this API.
 
-        :param id: The source id (required)
-        :type id: str
+        :param source_id: The source id (required)
+        :type source_id: str
         :param native_change_detection_config: (required)
         :type native_change_detection_config: NativeChangeDetectionConfig
         :param _request_timeout: timeout setting for this request. If one
@@ -9123,7 +9138,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._put_native_change_detection_config_serialize(
-            id=id,
+            source_id=source_id,
             native_change_detection_config=native_change_detection_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -9149,7 +9164,7 @@ class SourcesApi:
 
     def _put_native_change_detection_config_serialize(
         self,
-        id,
+        source_id,
         native_change_detection_config,
         _request_auth,
         _content_type,
@@ -9170,8 +9185,8 @@ class SourcesApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if id is not None:
-            _path_params['id'] = id
+        if source_id is not None:
+            _path_params['sourceId'] = source_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -10484,7 +10499,7 @@ class SourcesApi:
     @validate_call
     def sync_attributes_for_source(
         self,
-        id: Annotated[StrictStr, Field(description="The Source id")],
+        source_id: Annotated[StrictStr, Field(description="The Source id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -10502,8 +10517,8 @@ class SourcesApi:
 
         This end-point performs attribute synchronization for a selected source. A token with ORG_ADMIN or SOURCE_ADMIN authority is required to call this API.
 
-        :param id: The Source id (required)
-        :type id: str
+        :param source_id: The Source id (required)
+        :type source_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -10527,7 +10542,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._sync_attributes_for_source_serialize(
-            id=id,
+            source_id=source_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -10557,7 +10572,7 @@ class SourcesApi:
     @validate_call
     def sync_attributes_for_source_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The Source id")],
+        source_id: Annotated[StrictStr, Field(description="The Source id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -10575,8 +10590,8 @@ class SourcesApi:
 
         This end-point performs attribute synchronization for a selected source. A token with ORG_ADMIN or SOURCE_ADMIN authority is required to call this API.
 
-        :param id: The Source id (required)
-        :type id: str
+        :param source_id: The Source id (required)
+        :type source_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -10600,7 +10615,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._sync_attributes_for_source_serialize(
-            id=id,
+            source_id=source_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -10630,7 +10645,7 @@ class SourcesApi:
     @validate_call
     def sync_attributes_for_source_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The Source id")],
+        source_id: Annotated[StrictStr, Field(description="The Source id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -10648,8 +10663,8 @@ class SourcesApi:
 
         This end-point performs attribute synchronization for a selected source. A token with ORG_ADMIN or SOURCE_ADMIN authority is required to call this API.
 
-        :param id: The Source id (required)
-        :type id: str
+        :param source_id: The Source id (required)
+        :type source_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -10673,7 +10688,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._sync_attributes_for_source_serialize(
-            id=id,
+            source_id=source_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -10698,7 +10713,7 @@ class SourcesApi:
 
     def _sync_attributes_for_source_serialize(
         self,
-        id,
+        source_id,
         _request_auth,
         _content_type,
         _headers,
@@ -10718,8 +10733,8 @@ class SourcesApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if id is not None:
-            _path_params['id'] = id
+        if source_id is not None:
+            _path_params['sourceId'] = source_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -10743,7 +10758,7 @@ class SourcesApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/sources/{id}/synchronize-attributes',
+            resource_path='/sources/{sourceId}/synchronize-attributes',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -12256,6 +12271,7 @@ class SourcesApi:
     @validate_call
     def update_source_entitlement_request_config(
         self,
+        source_id: Annotated[StrictStr, Field(description="The Source id")],
         source_entitlement_request_config: SourceEntitlementRequestConfig,
         _request_timeout: Union[
             None,
@@ -12274,6 +12290,8 @@ class SourcesApi:
 
         This API replaces the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
+        :param source_id: The Source id (required)
+        :type source_id: str
         :param source_entitlement_request_config: (required)
         :type source_entitlement_request_config: SourceEntitlementRequestConfig
         :param _request_timeout: timeout setting for this request. If one
@@ -12299,6 +12317,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._update_source_entitlement_request_config_serialize(
+            source_id=source_id,
             source_entitlement_request_config=source_entitlement_request_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -12328,6 +12347,7 @@ class SourcesApi:
     @validate_call
     def update_source_entitlement_request_config_with_http_info(
         self,
+        source_id: Annotated[StrictStr, Field(description="The Source id")],
         source_entitlement_request_config: SourceEntitlementRequestConfig,
         _request_timeout: Union[
             None,
@@ -12346,6 +12366,8 @@ class SourcesApi:
 
         This API replaces the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
+        :param source_id: The Source id (required)
+        :type source_id: str
         :param source_entitlement_request_config: (required)
         :type source_entitlement_request_config: SourceEntitlementRequestConfig
         :param _request_timeout: timeout setting for this request. If one
@@ -12371,6 +12393,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._update_source_entitlement_request_config_serialize(
+            source_id=source_id,
             source_entitlement_request_config=source_entitlement_request_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -12400,6 +12423,7 @@ class SourcesApi:
     @validate_call
     def update_source_entitlement_request_config_without_preload_content(
         self,
+        source_id: Annotated[StrictStr, Field(description="The Source id")],
         source_entitlement_request_config: SourceEntitlementRequestConfig,
         _request_timeout: Union[
             None,
@@ -12418,6 +12442,8 @@ class SourcesApi:
 
         This API replaces the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
+        :param source_id: The Source id (required)
+        :type source_id: str
         :param source_entitlement_request_config: (required)
         :type source_entitlement_request_config: SourceEntitlementRequestConfig
         :param _request_timeout: timeout setting for this request. If one
@@ -12443,6 +12469,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._update_source_entitlement_request_config_serialize(
+            source_id=source_id,
             source_entitlement_request_config=source_entitlement_request_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -12467,6 +12494,7 @@ class SourcesApi:
 
     def _update_source_entitlement_request_config_serialize(
         self,
+        source_id,
         source_entitlement_request_config,
         _request_auth,
         _content_type,
@@ -12487,6 +12515,8 @@ class SourcesApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
+        if source_id is not None:
+            _path_params['sourceId'] = source_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -12525,7 +12555,7 @@ class SourcesApi:
 
         return self.api_client.param_serialize(
             method='PUT',
-            resource_path='/sources/{id}/entitlement-request-config',
+            resource_path='/sources/{sourceId}/entitlement-request-config',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

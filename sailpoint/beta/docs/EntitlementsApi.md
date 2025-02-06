@@ -14,7 +14,7 @@ Method | HTTP request | Description
 [**list_entitlements**](EntitlementsApi.md#list_entitlements) | **GET** /entitlements | Gets a list of entitlements.
 [**patch_entitlement**](EntitlementsApi.md#patch_entitlement) | **PATCH** /entitlements/{id} | Patch an entitlement
 [**put_entitlement_request_config**](EntitlementsApi.md#put_entitlement_request_config) | **PUT** /entitlements/{id}/entitlement-request-config | Replace Entitlement Request Config
-[**reset_source_entitlements**](EntitlementsApi.md#reset_source_entitlements) | **POST** /entitlements/reset/sources/{id} | Reset Source Entitlements
+[**reset_source_entitlements**](EntitlementsApi.md#reset_source_entitlements) | **POST** /entitlements/reset/sources/{sourceId} | Reset Source Entitlements
 [**update_entitlements_in_bulk**](EntitlementsApi.md#update_entitlements_in_bulk) | **POST** /entitlements/bulk-update | Bulk update an entitlement list
 
 
@@ -903,7 +903,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **reset_source_entitlements**
-> EntitlementSourceResetBaseReferenceDto reset_source_entitlements(id)
+> EntitlementSourceResetBaseReferenceDto reset_source_entitlements(source_id)
 
 Reset Source Entitlements
 
@@ -939,11 +939,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.EntitlementsApi(api_client)
-    id = '2c91808a7813090a017814121919ecca' # str | ID of source for the entitlement reset
+    source_id = '2c91808a7813090a017814121919ecca' # str | ID of source for the entitlement reset
 
     try:
         # Reset Source Entitlements
-        api_response = api_instance.reset_source_entitlements(id)
+        api_response = api_instance.reset_source_entitlements(source_id)
         print("The response of EntitlementsApi->reset_source_entitlements:\n")
         pprint(api_response)
     except Exception as e:
@@ -957,7 +957,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| ID of source for the entitlement reset | 
+ **source_id** | **str**| ID of source for the entitlement reset | 
 
 ### Return type
 

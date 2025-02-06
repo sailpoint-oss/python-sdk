@@ -10,7 +10,7 @@ Method | HTTP request | Description
 [**delete_notification_templates_in_bulk**](NotificationsApi.md#delete_notification_templates_in_bulk) | **POST** /notification-templates/bulk-delete | Bulk Delete Notification Templates
 [**delete_verified_from_address**](NotificationsApi.md#delete_verified_from_address) | **DELETE** /verified-from-addresses/{id} | Delete Verified From Address
 [**get_dkim_attributes**](NotificationsApi.md#get_dkim_attributes) | **GET** /verified-domains | Get DKIM Attributes
-[**get_mail_from_attributes**](NotificationsApi.md#get_mail_from_attributes) | **GET** /mail-from-attributes/{identity} | Get MAIL FROM Attributes
+[**get_mail_from_attributes**](NotificationsApi.md#get_mail_from_attributes) | **GET** /mail-from-attributes/{identityId} | Get MAIL FROM Attributes
 [**get_notification_template**](NotificationsApi.md#get_notification_template) | **GET** /notification-templates/{id} | Get Notification Template By Id
 [**get_notifications_template_context**](NotificationsApi.md#get_notifications_template_context) | **GET** /notification-template-context | Get Notification Template Context
 [**list_from_addresses**](NotificationsApi.md#list_from_addresses) | **GET** /verified-from-addresses | List From Addresses
@@ -514,7 +514,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_mail_from_attributes**
-> MailFromAttributes get_mail_from_attributes(id)
+> MailFromAttributes get_mail_from_attributes(identity_id)
 
 Get MAIL FROM Attributes
 
@@ -550,11 +550,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.NotificationsApi(api_client)
-    id = 'bobsmith@sailpoint.com' # str | Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status
+    identity_id = 'bobsmith@sailpoint.com' # str | Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status
 
     try:
         # Get MAIL FROM Attributes
-        api_response = api_instance.get_mail_from_attributes(id)
+        api_response = api_instance.get_mail_from_attributes(identity_id)
         print("The response of NotificationsApi->get_mail_from_attributes:\n")
         pprint(api_response)
     except Exception as e:
@@ -568,7 +568,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status | 
+ **identity_id** | **str**| Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status | 
 
 ### Return type
 
@@ -849,7 +849,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_notification_preferences**
-> List[PreferencesDto] list_notification_preferences()
+> List[PreferencesDto] list_notification_preferences(key)
 
 List Notification Preferences for tenant.
 
@@ -885,10 +885,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.NotificationsApi(api_client)
+    key = 'cloud_manual_work_item_summary' # str | The notification key.
 
     try:
         # List Notification Preferences for tenant.
-        api_response = api_instance.list_notification_preferences()
+        api_response = api_instance.list_notification_preferences(key)
         print("The response of NotificationsApi->list_notification_preferences:\n")
         pprint(api_response)
     except Exception as e:
@@ -899,7 +900,10 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **key** | **str**| The notification key. | 
 
 ### Return type
 

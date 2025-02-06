@@ -341,7 +341,7 @@ class MultiHostIntegrationApi:
     @validate_call
     def create_sources_within_multi_host(
         self,
-        id: Annotated[StrictStr, Field(description="ID of the Multi-Host Integration.")],
+        multihost_id: Annotated[StrictStr, Field(description="ID of the Multi-Host Integration.")],
         multi_host_integrations_create_sources: Annotated[List[MultiHostIntegrationsCreateSources], Field(description="The specifics of the sources to create within Multi-Host Integration.")],
         _request_timeout: Union[
             None,
@@ -360,8 +360,8 @@ class MultiHostIntegrationApi:
 
         This API is used to create sources within Multi-Host Integration. Multi-Host Integration holds similar types of sources.  A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
-        :param id: ID of the Multi-Host Integration. (required)
-        :type id: str
+        :param multihost_id: ID of the Multi-Host Integration. (required)
+        :type multihost_id: str
         :param multi_host_integrations_create_sources: The specifics of the sources to create within Multi-Host Integration. (required)
         :type multi_host_integrations_create_sources: List[MultiHostIntegrationsCreateSources]
         :param _request_timeout: timeout setting for this request. If one
@@ -387,7 +387,7 @@ class MultiHostIntegrationApi:
         """ # noqa: E501
 
         _param = self._create_sources_within_multi_host_serialize(
-            id=id,
+            multihost_id=multihost_id,
             multi_host_integrations_create_sources=multi_host_integrations_create_sources,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -418,7 +418,7 @@ class MultiHostIntegrationApi:
     @validate_call
     def create_sources_within_multi_host_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="ID of the Multi-Host Integration.")],
+        multihost_id: Annotated[StrictStr, Field(description="ID of the Multi-Host Integration.")],
         multi_host_integrations_create_sources: Annotated[List[MultiHostIntegrationsCreateSources], Field(description="The specifics of the sources to create within Multi-Host Integration.")],
         _request_timeout: Union[
             None,
@@ -437,8 +437,8 @@ class MultiHostIntegrationApi:
 
         This API is used to create sources within Multi-Host Integration. Multi-Host Integration holds similar types of sources.  A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
-        :param id: ID of the Multi-Host Integration. (required)
-        :type id: str
+        :param multihost_id: ID of the Multi-Host Integration. (required)
+        :type multihost_id: str
         :param multi_host_integrations_create_sources: The specifics of the sources to create within Multi-Host Integration. (required)
         :type multi_host_integrations_create_sources: List[MultiHostIntegrationsCreateSources]
         :param _request_timeout: timeout setting for this request. If one
@@ -464,7 +464,7 @@ class MultiHostIntegrationApi:
         """ # noqa: E501
 
         _param = self._create_sources_within_multi_host_serialize(
-            id=id,
+            multihost_id=multihost_id,
             multi_host_integrations_create_sources=multi_host_integrations_create_sources,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -495,7 +495,7 @@ class MultiHostIntegrationApi:
     @validate_call
     def create_sources_within_multi_host_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="ID of the Multi-Host Integration.")],
+        multihost_id: Annotated[StrictStr, Field(description="ID of the Multi-Host Integration.")],
         multi_host_integrations_create_sources: Annotated[List[MultiHostIntegrationsCreateSources], Field(description="The specifics of the sources to create within Multi-Host Integration.")],
         _request_timeout: Union[
             None,
@@ -514,8 +514,8 @@ class MultiHostIntegrationApi:
 
         This API is used to create sources within Multi-Host Integration. Multi-Host Integration holds similar types of sources.  A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
-        :param id: ID of the Multi-Host Integration. (required)
-        :type id: str
+        :param multihost_id: ID of the Multi-Host Integration. (required)
+        :type multihost_id: str
         :param multi_host_integrations_create_sources: The specifics of the sources to create within Multi-Host Integration. (required)
         :type multi_host_integrations_create_sources: List[MultiHostIntegrationsCreateSources]
         :param _request_timeout: timeout setting for this request. If one
@@ -541,7 +541,7 @@ class MultiHostIntegrationApi:
         """ # noqa: E501
 
         _param = self._create_sources_within_multi_host_serialize(
-            id=id,
+            multihost_id=multihost_id,
             multi_host_integrations_create_sources=multi_host_integrations_create_sources,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -567,7 +567,7 @@ class MultiHostIntegrationApi:
 
     def _create_sources_within_multi_host_serialize(
         self,
-        id,
+        multihost_id,
         multi_host_integrations_create_sources,
         _request_auth,
         _content_type,
@@ -589,8 +589,8 @@ class MultiHostIntegrationApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if id is not None:
-            _path_params['id'] = id
+        if multihost_id is not None:
+            _path_params['multihostId'] = multihost_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -629,7 +629,7 @@ class MultiHostIntegrationApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/multihosts/{id}',
+            resource_path='/multihosts/{multihostId}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -648,7 +648,7 @@ class MultiHostIntegrationApi:
     @validate_call
     def delete_multi_host(
         self,
-        id: Annotated[StrictStr, Field(description="ID of Multi-Host Integration to delete.")],
+        multihost_id: Annotated[StrictStr, Field(description="ID of Multi-Host Integration to delete.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -666,8 +666,8 @@ class MultiHostIntegrationApi:
 
         Delete an existing Multi-Host Integration by ID.    A token with Org Admin or Multi Host Admin authority is required to access this endpoint.
 
-        :param id: ID of Multi-Host Integration to delete. (required)
-        :type id: str
+        :param multihost_id: ID of Multi-Host Integration to delete. (required)
+        :type multihost_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -691,7 +691,7 @@ class MultiHostIntegrationApi:
         """ # noqa: E501
 
         _param = self._delete_multi_host_serialize(
-            id=id,
+            multihost_id=multihost_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -721,7 +721,7 @@ class MultiHostIntegrationApi:
     @validate_call
     def delete_multi_host_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="ID of Multi-Host Integration to delete.")],
+        multihost_id: Annotated[StrictStr, Field(description="ID of Multi-Host Integration to delete.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -739,8 +739,8 @@ class MultiHostIntegrationApi:
 
         Delete an existing Multi-Host Integration by ID.    A token with Org Admin or Multi Host Admin authority is required to access this endpoint.
 
-        :param id: ID of Multi-Host Integration to delete. (required)
-        :type id: str
+        :param multihost_id: ID of Multi-Host Integration to delete. (required)
+        :type multihost_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -764,7 +764,7 @@ class MultiHostIntegrationApi:
         """ # noqa: E501
 
         _param = self._delete_multi_host_serialize(
-            id=id,
+            multihost_id=multihost_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -794,7 +794,7 @@ class MultiHostIntegrationApi:
     @validate_call
     def delete_multi_host_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="ID of Multi-Host Integration to delete.")],
+        multihost_id: Annotated[StrictStr, Field(description="ID of Multi-Host Integration to delete.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -812,8 +812,8 @@ class MultiHostIntegrationApi:
 
         Delete an existing Multi-Host Integration by ID.    A token with Org Admin or Multi Host Admin authority is required to access this endpoint.
 
-        :param id: ID of Multi-Host Integration to delete. (required)
-        :type id: str
+        :param multihost_id: ID of Multi-Host Integration to delete. (required)
+        :type multihost_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -837,7 +837,7 @@ class MultiHostIntegrationApi:
         """ # noqa: E501
 
         _param = self._delete_multi_host_serialize(
-            id=id,
+            multihost_id=multihost_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -862,7 +862,7 @@ class MultiHostIntegrationApi:
 
     def _delete_multi_host_serialize(
         self,
-        id,
+        multihost_id,
         _request_auth,
         _content_type,
         _headers,
@@ -882,8 +882,8 @@ class MultiHostIntegrationApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if id is not None:
-            _path_params['id'] = id
+        if multihost_id is not None:
+            _path_params['multihostId'] = multihost_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -907,7 +907,7 @@ class MultiHostIntegrationApi:
 
         return self.api_client.param_serialize(
             method='DELETE',
-            resource_path='/multihosts/{id}',
+            resource_path='/multihosts/{multihostId}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -926,7 +926,7 @@ class MultiHostIntegrationApi:
     @validate_call
     def get_acct_aggregation_groups(
         self,
-        multi_host_id: Annotated[StrictStr, Field(description="ID of the Multi-Host Integration to update")],
+        multihost_id: Annotated[StrictStr, Field(description="ID of the Multi-Host Integration to update")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -944,8 +944,8 @@ class MultiHostIntegrationApi:
 
         This API will return array of account aggregation groups within provided Multi-Host Integration ID.  A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
-        :param multi_host_id: ID of the Multi-Host Integration to update (required)
-        :type multi_host_id: str
+        :param multihost_id: ID of the Multi-Host Integration to update (required)
+        :type multihost_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -969,7 +969,7 @@ class MultiHostIntegrationApi:
         """ # noqa: E501
 
         _param = self._get_acct_aggregation_groups_serialize(
-            multi_host_id=multi_host_id,
+            multihost_id=multihost_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -999,7 +999,7 @@ class MultiHostIntegrationApi:
     @validate_call
     def get_acct_aggregation_groups_with_http_info(
         self,
-        multi_host_id: Annotated[StrictStr, Field(description="ID of the Multi-Host Integration to update")],
+        multihost_id: Annotated[StrictStr, Field(description="ID of the Multi-Host Integration to update")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1017,8 +1017,8 @@ class MultiHostIntegrationApi:
 
         This API will return array of account aggregation groups within provided Multi-Host Integration ID.  A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
-        :param multi_host_id: ID of the Multi-Host Integration to update (required)
-        :type multi_host_id: str
+        :param multihost_id: ID of the Multi-Host Integration to update (required)
+        :type multihost_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1042,7 +1042,7 @@ class MultiHostIntegrationApi:
         """ # noqa: E501
 
         _param = self._get_acct_aggregation_groups_serialize(
-            multi_host_id=multi_host_id,
+            multihost_id=multihost_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1072,7 +1072,7 @@ class MultiHostIntegrationApi:
     @validate_call
     def get_acct_aggregation_groups_without_preload_content(
         self,
-        multi_host_id: Annotated[StrictStr, Field(description="ID of the Multi-Host Integration to update")],
+        multihost_id: Annotated[StrictStr, Field(description="ID of the Multi-Host Integration to update")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1090,8 +1090,8 @@ class MultiHostIntegrationApi:
 
         This API will return array of account aggregation groups within provided Multi-Host Integration ID.  A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
-        :param multi_host_id: ID of the Multi-Host Integration to update (required)
-        :type multi_host_id: str
+        :param multihost_id: ID of the Multi-Host Integration to update (required)
+        :type multihost_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1115,7 +1115,7 @@ class MultiHostIntegrationApi:
         """ # noqa: E501
 
         _param = self._get_acct_aggregation_groups_serialize(
-            multi_host_id=multi_host_id,
+            multihost_id=multihost_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1140,7 +1140,7 @@ class MultiHostIntegrationApi:
 
     def _get_acct_aggregation_groups_serialize(
         self,
-        multi_host_id,
+        multihost_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1160,8 +1160,8 @@ class MultiHostIntegrationApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if multi_host_id is not None:
-            _path_params['multiHostId'] = multi_host_id
+        if multihost_id is not None:
+            _path_params['multihostId'] = multihost_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -1482,7 +1482,7 @@ class MultiHostIntegrationApi:
     @validate_call
     def get_multi_host_integrations(
         self,
-        id: Annotated[StrictStr, Field(description="ID of the Multi-Host Integration.")],
+        multihost_id: Annotated[StrictStr, Field(description="ID of the Multi-Host Integration.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1500,8 +1500,8 @@ class MultiHostIntegrationApi:
 
         Get an existing Multi-Host Integration.   A token with Org Admin or Multi-Host Integration Admin authority is required to access this endpoint.
 
-        :param id: ID of the Multi-Host Integration. (required)
-        :type id: str
+        :param multihost_id: ID of the Multi-Host Integration. (required)
+        :type multihost_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1525,7 +1525,7 @@ class MultiHostIntegrationApi:
         """ # noqa: E501
 
         _param = self._get_multi_host_integrations_serialize(
-            id=id,
+            multihost_id=multihost_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1555,7 +1555,7 @@ class MultiHostIntegrationApi:
     @validate_call
     def get_multi_host_integrations_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="ID of the Multi-Host Integration.")],
+        multihost_id: Annotated[StrictStr, Field(description="ID of the Multi-Host Integration.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1573,8 +1573,8 @@ class MultiHostIntegrationApi:
 
         Get an existing Multi-Host Integration.   A token with Org Admin or Multi-Host Integration Admin authority is required to access this endpoint.
 
-        :param id: ID of the Multi-Host Integration. (required)
-        :type id: str
+        :param multihost_id: ID of the Multi-Host Integration. (required)
+        :type multihost_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1598,7 +1598,7 @@ class MultiHostIntegrationApi:
         """ # noqa: E501
 
         _param = self._get_multi_host_integrations_serialize(
-            id=id,
+            multihost_id=multihost_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1628,7 +1628,7 @@ class MultiHostIntegrationApi:
     @validate_call
     def get_multi_host_integrations_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="ID of the Multi-Host Integration.")],
+        multihost_id: Annotated[StrictStr, Field(description="ID of the Multi-Host Integration.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1646,8 +1646,8 @@ class MultiHostIntegrationApi:
 
         Get an existing Multi-Host Integration.   A token with Org Admin or Multi-Host Integration Admin authority is required to access this endpoint.
 
-        :param id: ID of the Multi-Host Integration. (required)
-        :type id: str
+        :param multihost_id: ID of the Multi-Host Integration. (required)
+        :type multihost_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1671,7 +1671,7 @@ class MultiHostIntegrationApi:
         """ # noqa: E501
 
         _param = self._get_multi_host_integrations_serialize(
-            id=id,
+            multihost_id=multihost_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1696,7 +1696,7 @@ class MultiHostIntegrationApi:
 
     def _get_multi_host_integrations_serialize(
         self,
-        id,
+        multihost_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1716,8 +1716,8 @@ class MultiHostIntegrationApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if id is not None:
-            _path_params['id'] = id
+        if multihost_id is not None:
+            _path_params['multihostId'] = multihost_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -1741,7 +1741,7 @@ class MultiHostIntegrationApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/multihosts/{id}',
+            resource_path='/multihosts/{multihostId}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -2666,6 +2666,7 @@ class MultiHostIntegrationApi:
     @validate_call
     def get_sources_within_multi_host(
         self,
+        multihost_id: Annotated[StrictStr, Field(description="ID of the Multi-Host Integration to update")],
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name**")] = None,
@@ -2688,6 +2689,8 @@ class MultiHostIntegrationApi:
 
         Get a list of sources within Multi-Host Integration ID.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
+        :param multihost_id: ID of the Multi-Host Integration to update (required)
+        :type multihost_id: str
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -2721,6 +2724,7 @@ class MultiHostIntegrationApi:
         """ # noqa: E501
 
         _param = self._get_sources_within_multi_host_serialize(
+            multihost_id=multihost_id,
             offset=offset,
             limit=limit,
             sorters=sorters,
@@ -2755,6 +2759,7 @@ class MultiHostIntegrationApi:
     @validate_call
     def get_sources_within_multi_host_with_http_info(
         self,
+        multihost_id: Annotated[StrictStr, Field(description="ID of the Multi-Host Integration to update")],
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name**")] = None,
@@ -2777,6 +2782,8 @@ class MultiHostIntegrationApi:
 
         Get a list of sources within Multi-Host Integration ID.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
+        :param multihost_id: ID of the Multi-Host Integration to update (required)
+        :type multihost_id: str
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -2810,6 +2817,7 @@ class MultiHostIntegrationApi:
         """ # noqa: E501
 
         _param = self._get_sources_within_multi_host_serialize(
+            multihost_id=multihost_id,
             offset=offset,
             limit=limit,
             sorters=sorters,
@@ -2844,6 +2852,7 @@ class MultiHostIntegrationApi:
     @validate_call
     def get_sources_within_multi_host_without_preload_content(
         self,
+        multihost_id: Annotated[StrictStr, Field(description="ID of the Multi-Host Integration to update")],
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name**")] = None,
@@ -2866,6 +2875,8 @@ class MultiHostIntegrationApi:
 
         Get a list of sources within Multi-Host Integration ID.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
+        :param multihost_id: ID of the Multi-Host Integration to update (required)
+        :type multihost_id: str
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -2899,6 +2910,7 @@ class MultiHostIntegrationApi:
         """ # noqa: E501
 
         _param = self._get_sources_within_multi_host_serialize(
+            multihost_id=multihost_id,
             offset=offset,
             limit=limit,
             sorters=sorters,
@@ -2928,6 +2940,7 @@ class MultiHostIntegrationApi:
 
     def _get_sources_within_multi_host_serialize(
         self,
+        multihost_id,
         offset,
         limit,
         sorters,
@@ -2952,6 +2965,8 @@ class MultiHostIntegrationApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
+        if multihost_id is not None:
+            _path_params['multihostId'] = multihost_id
         # process the query parameters
         if offset is not None:
             
@@ -2995,7 +3010,7 @@ class MultiHostIntegrationApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/multihosts/{id}/sources',
+            resource_path='/multihosts/{multihostId}/sources',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -3249,7 +3264,7 @@ class MultiHostIntegrationApi:
 
         # process the path parameters
         if multihost_id is not None:
-            _path_params['multihost_id'] = multihost_id
+            _path_params['multihostId'] = multihost_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -3273,7 +3288,7 @@ class MultiHostIntegrationApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/multihosts/{multihost_id}/sources/testConnection',
+            resource_path='/multihosts/{multihostId}/sources/testConnection',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -3540,7 +3555,7 @@ class MultiHostIntegrationApi:
 
         # process the path parameters
         if multihost_id is not None:
-            _path_params['multihost_id'] = multihost_id
+            _path_params['multihostId'] = multihost_id
         if source_id is not None:
             _path_params['sourceId'] = source_id
         # process the query parameters
@@ -3566,7 +3581,7 @@ class MultiHostIntegrationApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/multihosts/{multihost_id}/sources/{sourceId}/testConnection',
+            resource_path='/multihosts/{multihostId}/sources/{sourceId}/testConnection',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -3834,7 +3849,7 @@ class MultiHostIntegrationApi:
 
         # process the path parameters
         if multihost_id is not None:
-            _path_params['multihost_id'] = multihost_id
+            _path_params['multihostId'] = multihost_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -3873,7 +3888,7 @@ class MultiHostIntegrationApi:
 
         return self.api_client.param_serialize(
             method='PATCH',
-            resource_path='/multihosts/{id}',
+            resource_path='/multihosts/{multihostId}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

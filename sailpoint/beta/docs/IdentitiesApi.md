@@ -10,7 +10,7 @@ Method | HTTP request | Description
 [**get_role_assignment**](IdentitiesApi.md#get_role_assignment) | **GET** /identities/{identityId}/role-assignments/{assignmentId} | Role assignment details
 [**get_role_assignments**](IdentitiesApi.md#get_role_assignments) | **GET** /identities/{identityId}/role-assignments | List role assignments
 [**list_identities**](IdentitiesApi.md#list_identities) | **GET** /identities | List Identities
-[**reset_identity**](IdentitiesApi.md#reset_identity) | **POST** /identities/{id}/reset | Reset an identity
+[**reset_identity**](IdentitiesApi.md#reset_identity) | **POST** /identities/{identityId}/reset | Reset an identity
 [**send_identity_verification_account_token**](IdentitiesApi.md#send_identity_verification_account_token) | **POST** /identities/{id}/verification/account/send | Send password reset email
 [**start_identities_invite**](IdentitiesApi.md#start_identities_invite) | **POST** /identities/invite | Invite identities to register
 [**start_identity_processing**](IdentitiesApi.md#start_identity_processing) | **POST** /identities/process | Process a list of identityIds

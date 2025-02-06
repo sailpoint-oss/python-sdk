@@ -3271,7 +3271,7 @@ class EntitlementsApi:
     @validate_call
     def reset_source_entitlements(
         self,
-        id: Annotated[StrictStr, Field(description="ID of source for the entitlement reset")],
+        source_id: Annotated[StrictStr, Field(description="ID of source for the entitlement reset")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3289,8 +3289,8 @@ class EntitlementsApi:
 
         Remove all entitlements from a specific source. To reload the accounts along with the entitlements you removed, you must run an unoptimized aggregation.  To do so, use [Import Accounts](https://developer.sailpoint.com/docs/api/beta/import-accounts/) with `disableOptimization` = `true`. 
 
-        :param id: ID of source for the entitlement reset (required)
-        :type id: str
+        :param source_id: ID of source for the entitlement reset (required)
+        :type source_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3314,7 +3314,7 @@ class EntitlementsApi:
         """ # noqa: E501
 
         _param = self._reset_source_entitlements_serialize(
-            id=id,
+            source_id=source_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3343,7 +3343,7 @@ class EntitlementsApi:
     @validate_call
     def reset_source_entitlements_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="ID of source for the entitlement reset")],
+        source_id: Annotated[StrictStr, Field(description="ID of source for the entitlement reset")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3361,8 +3361,8 @@ class EntitlementsApi:
 
         Remove all entitlements from a specific source. To reload the accounts along with the entitlements you removed, you must run an unoptimized aggregation.  To do so, use [Import Accounts](https://developer.sailpoint.com/docs/api/beta/import-accounts/) with `disableOptimization` = `true`. 
 
-        :param id: ID of source for the entitlement reset (required)
-        :type id: str
+        :param source_id: ID of source for the entitlement reset (required)
+        :type source_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3386,7 +3386,7 @@ class EntitlementsApi:
         """ # noqa: E501
 
         _param = self._reset_source_entitlements_serialize(
-            id=id,
+            source_id=source_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3415,7 +3415,7 @@ class EntitlementsApi:
     @validate_call
     def reset_source_entitlements_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="ID of source for the entitlement reset")],
+        source_id: Annotated[StrictStr, Field(description="ID of source for the entitlement reset")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3433,8 +3433,8 @@ class EntitlementsApi:
 
         Remove all entitlements from a specific source. To reload the accounts along with the entitlements you removed, you must run an unoptimized aggregation.  To do so, use [Import Accounts](https://developer.sailpoint.com/docs/api/beta/import-accounts/) with `disableOptimization` = `true`. 
 
-        :param id: ID of source for the entitlement reset (required)
-        :type id: str
+        :param source_id: ID of source for the entitlement reset (required)
+        :type source_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3458,7 +3458,7 @@ class EntitlementsApi:
         """ # noqa: E501
 
         _param = self._reset_source_entitlements_serialize(
-            id=id,
+            source_id=source_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3482,7 +3482,7 @@ class EntitlementsApi:
 
     def _reset_source_entitlements_serialize(
         self,
-        id,
+        source_id,
         _request_auth,
         _content_type,
         _headers,
@@ -3502,8 +3502,8 @@ class EntitlementsApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if id is not None:
-            _path_params['id'] = id
+        if source_id is not None:
+            _path_params['sourceId'] = source_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -3527,7 +3527,7 @@ class EntitlementsApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/entitlements/reset/sources/{id}',
+            resource_path='/entitlements/reset/sources/{sourceId}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

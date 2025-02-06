@@ -1747,7 +1747,7 @@ class NotificationsApi:
     @validate_call
     def get_mail_from_attributes(
         self,
-        id: Annotated[StrictStr, Field(description="Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status")],
+        identity_id: Annotated[StrictStr, Field(description="Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1765,8 +1765,8 @@ class NotificationsApi:
 
         Retrieve MAIL FROM attributes for a given AWS SES identity.
 
-        :param id: Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status (required)
-        :type id: str
+        :param identity_id: Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status (required)
+        :type identity_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1790,7 +1790,7 @@ class NotificationsApi:
         """ # noqa: E501
 
         _param = self._get_mail_from_attributes_serialize(
-            id=id,
+            identity_id=identity_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1819,7 +1819,7 @@ class NotificationsApi:
     @validate_call
     def get_mail_from_attributes_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status")],
+        identity_id: Annotated[StrictStr, Field(description="Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1837,8 +1837,8 @@ class NotificationsApi:
 
         Retrieve MAIL FROM attributes for a given AWS SES identity.
 
-        :param id: Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status (required)
-        :type id: str
+        :param identity_id: Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status (required)
+        :type identity_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1862,7 +1862,7 @@ class NotificationsApi:
         """ # noqa: E501
 
         _param = self._get_mail_from_attributes_serialize(
-            id=id,
+            identity_id=identity_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1891,7 +1891,7 @@ class NotificationsApi:
     @validate_call
     def get_mail_from_attributes_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status")],
+        identity_id: Annotated[StrictStr, Field(description="Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1909,8 +1909,8 @@ class NotificationsApi:
 
         Retrieve MAIL FROM attributes for a given AWS SES identity.
 
-        :param id: Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status (required)
-        :type id: str
+        :param identity_id: Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status (required)
+        :type identity_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1934,7 +1934,7 @@ class NotificationsApi:
         """ # noqa: E501
 
         _param = self._get_mail_from_attributes_serialize(
-            id=id,
+            identity_id=identity_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1958,7 +1958,7 @@ class NotificationsApi:
 
     def _get_mail_from_attributes_serialize(
         self,
-        id,
+        identity_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1978,11 +1978,9 @@ class NotificationsApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
+        if identity_id is not None:
+            _path_params['identityId'] = identity_id
         # process the query parameters
-        if id is not None:
-            
-            _query_params.append(('id', id))
-            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -2005,7 +2003,7 @@ class NotificationsApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/mail-from-attributes/{identity}',
+            resource_path='/mail-from-attributes/{identityId}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -2901,6 +2899,7 @@ class NotificationsApi:
     @validate_call
     def list_notification_preferences(
         self,
+        key: Annotated[StrictStr, Field(description="The notification key.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2918,6 +2917,8 @@ class NotificationsApi:
 
         Returns a list of notification preferences for tenant.
 
+        :param key: The notification key. (required)
+        :type key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2941,6 +2942,7 @@ class NotificationsApi:
         """ # noqa: E501
 
         _param = self._list_notification_preferences_serialize(
+            key=key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2970,6 +2972,7 @@ class NotificationsApi:
     @validate_call
     def list_notification_preferences_with_http_info(
         self,
+        key: Annotated[StrictStr, Field(description="The notification key.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2987,6 +2990,8 @@ class NotificationsApi:
 
         Returns a list of notification preferences for tenant.
 
+        :param key: The notification key. (required)
+        :type key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3010,6 +3015,7 @@ class NotificationsApi:
         """ # noqa: E501
 
         _param = self._list_notification_preferences_serialize(
+            key=key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3039,6 +3045,7 @@ class NotificationsApi:
     @validate_call
     def list_notification_preferences_without_preload_content(
         self,
+        key: Annotated[StrictStr, Field(description="The notification key.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3056,6 +3063,8 @@ class NotificationsApi:
 
         Returns a list of notification preferences for tenant.
 
+        :param key: The notification key. (required)
+        :type key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3079,6 +3088,7 @@ class NotificationsApi:
         """ # noqa: E501
 
         _param = self._list_notification_preferences_serialize(
+            key=key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3103,6 +3113,7 @@ class NotificationsApi:
 
     def _list_notification_preferences_serialize(
         self,
+        key,
         _request_auth,
         _content_type,
         _headers,
@@ -3122,6 +3133,8 @@ class NotificationsApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
+        if key is not None:
+            _path_params['key'] = key
         # process the query parameters
         # process the header parameters
         # process the form parameters

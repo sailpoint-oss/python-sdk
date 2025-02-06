@@ -27,13 +27,13 @@ class SourceCreationErrors(BaseModel):
     """
     SourceCreationErrors
     """ # noqa: E501
-    multihost_id: Optional[StrictStr] = Field(default=None, description="Multi-Host Integration ID.")
+    multihost_id: Optional[StrictStr] = Field(default=None, description="Multi-Host Integration ID.", alias="multihostId")
     source_name: Optional[StrictStr] = Field(default=None, description="Source's human-readable name.")
     source_error: Optional[StrictStr] = Field(default=None, description="Source's human-readable description.")
     created: Optional[datetime] = Field(default=None, description="Date-time when the source was created")
     modified: Optional[datetime] = Field(default=None, description="Date-time when the source was last modified.")
     operation: Optional[StrictStr] = Field(default=None, description="operation category (e.g. DELETE).")
-    __properties: ClassVar[List[str]] = ["multihost_id", "source_name", "source_error", "created", "modified", "operation"]
+    __properties: ClassVar[List[str]] = ["multihostId", "source_name", "source_error", "created", "modified", "operation"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -93,7 +93,7 @@ class SourceCreationErrors(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "multihost_id": obj.get("multihost_id"),
+            "multihostId": obj.get("multihostId"),
             "source_name": obj.get("source_name"),
             "source_error": obj.get("source_error"),
             "created": obj.get("created"),

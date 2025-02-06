@@ -207,7 +207,7 @@ Class | Method | HTTP request | Description
 *EntitlementsApi* | [**list_entitlements**](sailpoint/beta/docs/EntitlementsApi.md#list_entitlements) | **GET** /entitlements | Gets a list of entitlements.
 *EntitlementsApi* | [**patch_entitlement**](sailpoint/beta/docs/EntitlementsApi.md#patch_entitlement) | **PATCH** /entitlements/{id} | Patch an entitlement
 *EntitlementsApi* | [**put_entitlement_request_config**](sailpoint/beta/docs/EntitlementsApi.md#put_entitlement_request_config) | **PUT** /entitlements/{id}/entitlement-request-config | Replace Entitlement Request Config
-*EntitlementsApi* | [**reset_source_entitlements**](sailpoint/beta/docs/EntitlementsApi.md#reset_source_entitlements) | **POST** /entitlements/reset/sources/{id} | Reset Source Entitlements
+*EntitlementsApi* | [**reset_source_entitlements**](sailpoint/beta/docs/EntitlementsApi.md#reset_source_entitlements) | **POST** /entitlements/reset/sources/{sourceId} | Reset Source Entitlements
 *EntitlementsApi* | [**update_entitlements_in_bulk**](sailpoint/beta/docs/EntitlementsApi.md#update_entitlements_in_bulk) | **POST** /entitlements/bulk-update | Bulk update an entitlement list
 *GovernanceGroupsApi* | [**create_workgroup**](sailpoint/beta/docs/GovernanceGroupsApi.md#create_workgroup) | **POST** /workgroups | Create a new Governance Group.
 *GovernanceGroupsApi* | [**delete_workgroup**](sailpoint/beta/docs/GovernanceGroupsApi.md#delete_workgroup) | **DELETE** /workgroups/{id} | Delete a Governance Group
@@ -277,7 +277,7 @@ Class | Method | HTTP request | Description
 *IdentitiesApi* | [**get_role_assignment**](sailpoint/beta/docs/IdentitiesApi.md#get_role_assignment) | **GET** /identities/{identityId}/role-assignments/{assignmentId} | Role assignment details
 *IdentitiesApi* | [**get_role_assignments**](sailpoint/beta/docs/IdentitiesApi.md#get_role_assignments) | **GET** /identities/{identityId}/role-assignments | List role assignments
 *IdentitiesApi* | [**list_identities**](sailpoint/beta/docs/IdentitiesApi.md#list_identities) | **GET** /identities | List Identities
-*IdentitiesApi* | [**reset_identity**](sailpoint/beta/docs/IdentitiesApi.md#reset_identity) | **POST** /identities/{id}/reset | Reset an identity
+*IdentitiesApi* | [**reset_identity**](sailpoint/beta/docs/IdentitiesApi.md#reset_identity) | **POST** /identities/{identityId}/reset | Reset an identity
 *IdentitiesApi* | [**send_identity_verification_account_token**](sailpoint/beta/docs/IdentitiesApi.md#send_identity_verification_account_token) | **POST** /identities/{id}/verification/account/send | Send password reset email
 *IdentitiesApi* | [**start_identities_invite**](sailpoint/beta/docs/IdentitiesApi.md#start_identities_invite) | **POST** /identities/invite | Invite identities to register
 *IdentitiesApi* | [**start_identity_processing**](sailpoint/beta/docs/IdentitiesApi.md#start_identity_processing) | **POST** /identities/process | Process a list of identityIds
@@ -289,7 +289,7 @@ Class | Method | HTTP request | Description
 *IdentityAttributesApi* | [**list_identity_attributes**](sailpoint/beta/docs/IdentityAttributesApi.md#list_identity_attributes) | **GET** /identity-attributes | List Identity Attributes
 *IdentityAttributesApi* | [**put_identity_attribute**](sailpoint/beta/docs/IdentityAttributesApi.md#put_identity_attribute) | **PUT** /identity-attributes/{name} | Update Identity Attribute
 *IdentityHistoryApi* | [**compare_identity_snapshots**](sailpoint/beta/docs/IdentityHistoryApi.md#compare_identity_snapshots) | **GET** /historical-identities/{id}/compare | Gets a difference of count for each access item types for the given identity between 2 snapshots
-*IdentityHistoryApi* | [**compare_identity_snapshots_access_type**](sailpoint/beta/docs/IdentityHistoryApi.md#compare_identity_snapshots_access_type) | **GET** /historical-identities/{id}/compare/{access-type} | Gets a list of differences of specific accessType for the given identity between 2 snapshots
+*IdentityHistoryApi* | [**compare_identity_snapshots_access_type**](sailpoint/beta/docs/IdentityHistoryApi.md#compare_identity_snapshots_access_type) | **GET** /historical-identities/{id}/compare/{accessType} | Gets a list of differences of specific accessType for the given identity between 2 snapshots
 *IdentityHistoryApi* | [**get_historical_identity**](sailpoint/beta/docs/IdentityHistoryApi.md#get_historical_identity) | **GET** /historical-identities/{id} | Get latest snapshot of identity
 *IdentityHistoryApi* | [**get_historical_identity_events**](sailpoint/beta/docs/IdentityHistoryApi.md#get_historical_identity_events) | **GET** /historical-identities/{id}/events | Lists all events for the given identity
 *IdentityHistoryApi* | [**get_identity_snapshot**](sailpoint/beta/docs/IdentityHistoryApi.md#get_identity_snapshot) | **GET** /historical-identities/{id}/snapshots/{date} | Gets an identity snapshot at a given date
@@ -339,18 +339,18 @@ Class | Method | HTTP request | Description
 *ManagedClustersApi* | [**get_managed_clusters**](sailpoint/beta/docs/ManagedClustersApi.md#get_managed_clusters) | **GET** /managed-clusters | Retrieve all Managed Clusters.
 *ManagedClustersApi* | [**put_client_log_configuration**](sailpoint/beta/docs/ManagedClustersApi.md#put_client_log_configuration) | **PUT** /managed-clusters/{id}/log-config | Update managed cluster&#39;s log configuration
 *MultiHostIntegrationApi* | [**create_multi_host_integration**](sailpoint/beta/docs/MultiHostIntegrationApi.md#create_multi_host_integration) | **POST** /multihosts | Create Multi-Host Integration
-*MultiHostIntegrationApi* | [**create_sources_within_multi_host**](sailpoint/beta/docs/MultiHostIntegrationApi.md#create_sources_within_multi_host) | **POST** /multihosts/{id} | Create Sources Within Multi-Host Integration
-*MultiHostIntegrationApi* | [**delete_multi_host**](sailpoint/beta/docs/MultiHostIntegrationApi.md#delete_multi_host) | **DELETE** /multihosts/{id} | Delete Multi-Host Integration
+*MultiHostIntegrationApi* | [**create_sources_within_multi_host**](sailpoint/beta/docs/MultiHostIntegrationApi.md#create_sources_within_multi_host) | **POST** /multihosts/{multihostId} | Create Sources Within Multi-Host Integration
+*MultiHostIntegrationApi* | [**delete_multi_host**](sailpoint/beta/docs/MultiHostIntegrationApi.md#delete_multi_host) | **DELETE** /multihosts/{multihostId} | Delete Multi-Host Integration
 *MultiHostIntegrationApi* | [**get_acct_aggregation_groups**](sailpoint/beta/docs/MultiHostIntegrationApi.md#get_acct_aggregation_groups) | **GET** /multihosts/{multihostId}/acctAggregationGroups | Get Account Aggregation Groups Within Multi-Host Integration ID
 *MultiHostIntegrationApi* | [**get_entitlement_aggregation_groups**](sailpoint/beta/docs/MultiHostIntegrationApi.md#get_entitlement_aggregation_groups) | **GET** /multihosts/{multiHostId}/entitlementAggregationGroups | Get Entitlement Aggregation Groups Within Multi-Host Integration ID
-*MultiHostIntegrationApi* | [**get_multi_host_integrations**](sailpoint/beta/docs/MultiHostIntegrationApi.md#get_multi_host_integrations) | **GET** /multihosts/{id} | Get Multi-Host Integration By ID
+*MultiHostIntegrationApi* | [**get_multi_host_integrations**](sailpoint/beta/docs/MultiHostIntegrationApi.md#get_multi_host_integrations) | **GET** /multihosts/{multihostId} | Get Multi-Host Integration By ID
 *MultiHostIntegrationApi* | [**get_multi_host_integrations_list**](sailpoint/beta/docs/MultiHostIntegrationApi.md#get_multi_host_integrations_list) | **GET** /multihosts | List All Existing Multi-Host Integrations
 *MultiHostIntegrationApi* | [**get_multi_host_source_creation_errors**](sailpoint/beta/docs/MultiHostIntegrationApi.md#get_multi_host_source_creation_errors) | **GET** /multihosts/{multiHostId}/sources/errors | List Multi-Host Source Creation Errors
 *MultiHostIntegrationApi* | [**get_multihost_integration_types**](sailpoint/beta/docs/MultiHostIntegrationApi.md#get_multihost_integration_types) | **GET** /multihosts/types | List Multi-Host Integration Types
-*MultiHostIntegrationApi* | [**get_sources_within_multi_host**](sailpoint/beta/docs/MultiHostIntegrationApi.md#get_sources_within_multi_host) | **GET** /multihosts/{id}/sources | List Sources Within Multi-Host Integration
-*MultiHostIntegrationApi* | [**test_connection_multi_host_sources**](sailpoint/beta/docs/MultiHostIntegrationApi.md#test_connection_multi_host_sources) | **POST** /multihosts/{multihost_id}/sources/testConnection | Test Configuration For Multi-Host Integration
-*MultiHostIntegrationApi* | [**test_source_connection_multihost**](sailpoint/beta/docs/MultiHostIntegrationApi.md#test_source_connection_multihost) | **GET** /multihosts/{multihost_id}/sources/{sourceId}/testConnection | Test Configuration For Multi-Host Integration&#39;s Single Source
-*MultiHostIntegrationApi* | [**update_multi_host_sources**](sailpoint/beta/docs/MultiHostIntegrationApi.md#update_multi_host_sources) | **PATCH** /multihosts/{id} | Update Multi-Host Integration
+*MultiHostIntegrationApi* | [**get_sources_within_multi_host**](sailpoint/beta/docs/MultiHostIntegrationApi.md#get_sources_within_multi_host) | **GET** /multihosts/{multihostId}/sources | List Sources Within Multi-Host Integration
+*MultiHostIntegrationApi* | [**test_connection_multi_host_sources**](sailpoint/beta/docs/MultiHostIntegrationApi.md#test_connection_multi_host_sources) | **POST** /multihosts/{multihostId}/sources/testConnection | Test Configuration For Multi-Host Integration
+*MultiHostIntegrationApi* | [**test_source_connection_multihost**](sailpoint/beta/docs/MultiHostIntegrationApi.md#test_source_connection_multihost) | **GET** /multihosts/{multihostId}/sources/{sourceId}/testConnection | Test Configuration For Multi-Host Integration&#39;s Single Source
+*MultiHostIntegrationApi* | [**update_multi_host_sources**](sailpoint/beta/docs/MultiHostIntegrationApi.md#update_multi_host_sources) | **PATCH** /multihosts/{multihostId} | Update Multi-Host Integration
 *NonEmployeeLifecycleManagementApi* | [**approve_non_employee_request**](sailpoint/beta/docs/NonEmployeeLifecycleManagementApi.md#approve_non_employee_request) | **POST** /non-employee-approvals/{id}/approve | Approve a Non-Employee Request
 *NonEmployeeLifecycleManagementApi* | [**create_non_employee_record**](sailpoint/beta/docs/NonEmployeeLifecycleManagementApi.md#create_non_employee_record) | **POST** /non-employee-records | Create Non-Employee Record
 *NonEmployeeLifecycleManagementApi* | [**create_non_employee_request**](sailpoint/beta/docs/NonEmployeeLifecycleManagementApi.md#create_non_employee_request) | **POST** /non-employee-requests | Create Non-Employee Request
@@ -389,7 +389,7 @@ Class | Method | HTTP request | Description
 *NotificationsApi* | [**delete_notification_templates_in_bulk**](sailpoint/beta/docs/NotificationsApi.md#delete_notification_templates_in_bulk) | **POST** /notification-templates/bulk-delete | Bulk Delete Notification Templates
 *NotificationsApi* | [**delete_verified_from_address**](sailpoint/beta/docs/NotificationsApi.md#delete_verified_from_address) | **DELETE** /verified-from-addresses/{id} | Delete Verified From Address
 *NotificationsApi* | [**get_dkim_attributes**](sailpoint/beta/docs/NotificationsApi.md#get_dkim_attributes) | **GET** /verified-domains | Get DKIM Attributes
-*NotificationsApi* | [**get_mail_from_attributes**](sailpoint/beta/docs/NotificationsApi.md#get_mail_from_attributes) | **GET** /mail-from-attributes/{identity} | Get MAIL FROM Attributes
+*NotificationsApi* | [**get_mail_from_attributes**](sailpoint/beta/docs/NotificationsApi.md#get_mail_from_attributes) | **GET** /mail-from-attributes/{identityId} | Get MAIL FROM Attributes
 *NotificationsApi* | [**get_notification_template**](sailpoint/beta/docs/NotificationsApi.md#get_notification_template) | **GET** /notification-templates/{id} | Get Notification Template By Id
 *NotificationsApi* | [**get_notifications_template_context**](sailpoint/beta/docs/NotificationsApi.md#get_notifications_template_context) | **GET** /notification-template-context | Get Notification Template Context
 *NotificationsApi* | [**list_from_addresses**](sailpoint/beta/docs/NotificationsApi.md#list_from_addresses) | **GET** /verified-from-addresses | List From Addresses
@@ -506,44 +506,44 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**create_source**](sailpoint/beta/docs/SourcesApi.md#create_source) | **POST** /sources | Creates a source in IdentityNow.
 *SourcesApi* | [**create_source_schema**](sailpoint/beta/docs/SourcesApi.md#create_source_schema) | **POST** /sources/{sourceId}/schemas | Create Schema on Source
 *SourcesApi* | [**delete**](sailpoint/beta/docs/SourcesApi.md#delete) | **DELETE** /sources/{id} | Delete Source by ID
-*SourcesApi* | [**delete_accounts_async**](sailpoint/beta/docs/SourcesApi.md#delete_accounts_async) | **POST** /sources/{id}/remove-accounts | Remove All Accounts in a Source
+*SourcesApi* | [**delete_accounts_async**](sailpoint/beta/docs/SourcesApi.md#delete_accounts_async) | **POST** /sources/{sourceId}/remove-accounts | Remove All Accounts in a Source
 *SourcesApi* | [**delete_native_change_detection_config**](sailpoint/beta/docs/SourcesApi.md#delete_native_change_detection_config) | **DELETE** /sources/{sourceId}/native-change-detection-config | Delete Native Change Detection Configuration
 *SourcesApi* | [**delete_provisioning_policy**](sailpoint/beta/docs/SourcesApi.md#delete_provisioning_policy) | **DELETE** /sources/{sourceId}/provisioning-policies/{usageType} | Delete Provisioning Policy by UsageType
 *SourcesApi* | [**delete_source_schema**](sailpoint/beta/docs/SourcesApi.md#delete_source_schema) | **DELETE** /sources/{sourceId}/schemas/{schemaId} | Delete Source Schema by ID
-*SourcesApi* | [**get_correlation_config**](sailpoint/beta/docs/SourcesApi.md#get_correlation_config) | **GET** /sources/{id}/correlation-config | Get Source Correlation Configuration
+*SourcesApi* | [**get_correlation_config**](sailpoint/beta/docs/SourcesApi.md#get_correlation_config) | **GET** /sources/{sourceId}/correlation-config | Get Source Correlation Configuration
 *SourcesApi* | [**get_native_change_detection_config**](sailpoint/beta/docs/SourcesApi.md#get_native_change_detection_config) | **GET** /sources/{sourceId}/native-change-detection-config | Native Change Detection Configuration
 *SourcesApi* | [**get_provisioning_policy**](sailpoint/beta/docs/SourcesApi.md#get_provisioning_policy) | **GET** /sources/{sourceId}/provisioning-policies/{usageType} | Get Provisioning Policy by UsageType
 *SourcesApi* | [**get_source**](sailpoint/beta/docs/SourcesApi.md#get_source) | **GET** /sources/{id} | Get Source by ID
-*SourcesApi* | [**get_source_accounts_schema**](sailpoint/beta/docs/SourcesApi.md#get_source_accounts_schema) | **GET** /sources/{id}/schemas/accounts | Downloads source accounts schema template
+*SourcesApi* | [**get_source_accounts_schema**](sailpoint/beta/docs/SourcesApi.md#get_source_accounts_schema) | **GET** /sources/{sourceId}/schemas/accounts | Downloads source accounts schema template
 *SourcesApi* | [**get_source_attr_sync_config**](sailpoint/beta/docs/SourcesApi.md#get_source_attr_sync_config) | **GET** /sources/{id}/attribute-sync-config | Attribute Sync Config
 *SourcesApi* | [**get_source_config**](sailpoint/beta/docs/SourcesApi.md#get_source_config) | **GET** /sources/{id}/connectors/source-config | Gets source config with language translations
-*SourcesApi* | [**get_source_entitlement_request_config**](sailpoint/beta/docs/SourcesApi.md#get_source_entitlement_request_config) | **GET** /sources/{id}/entitlement-request-config | Get Source Entitlement Request Configuration
-*SourcesApi* | [**get_source_entitlements_schema**](sailpoint/beta/docs/SourcesApi.md#get_source_entitlements_schema) | **GET** /sources/{id}/schemas/entitlements | Downloads source entitlements schema template
+*SourcesApi* | [**get_source_entitlement_request_config**](sailpoint/beta/docs/SourcesApi.md#get_source_entitlement_request_config) | **GET** /sources/{sourceId}/entitlement-request-config | Get Source Entitlement Request Configuration
+*SourcesApi* | [**get_source_entitlements_schema**](sailpoint/beta/docs/SourcesApi.md#get_source_entitlements_schema) | **GET** /sources/{sourceId}/schemas/entitlements | Downloads source entitlements schema template
 *SourcesApi* | [**get_source_schema**](sailpoint/beta/docs/SourcesApi.md#get_source_schema) | **GET** /sources/{sourceId}/schemas/{schemaId} | Get Source Schema by ID
 *SourcesApi* | [**get_source_schemas**](sailpoint/beta/docs/SourcesApi.md#get_source_schemas) | **GET** /sources/{sourceId}/schemas | List Schemas on Source
-*SourcesApi* | [**import_accounts**](sailpoint/beta/docs/SourcesApi.md#import_accounts) | **POST** /sources/{id}/load-accounts | Account Aggregation
-*SourcesApi* | [**import_entitlements**](sailpoint/beta/docs/SourcesApi.md#import_entitlements) | **POST** /sources/{id}/load-entitlements | Entitlement Aggregation
-*SourcesApi* | [**import_source_accounts_schema**](sailpoint/beta/docs/SourcesApi.md#import_source_accounts_schema) | **POST** /sources/{id}/schemas/accounts | Uploads source accounts schema template
+*SourcesApi* | [**import_accounts**](sailpoint/beta/docs/SourcesApi.md#import_accounts) | **POST** /sources/{sourceId}/load-accounts | Account Aggregation
+*SourcesApi* | [**import_entitlements**](sailpoint/beta/docs/SourcesApi.md#import_entitlements) | **POST** /sources/{sourceId}/load-entitlements | Entitlement Aggregation
+*SourcesApi* | [**import_source_accounts_schema**](sailpoint/beta/docs/SourcesApi.md#import_source_accounts_schema) | **POST** /sources/{sourceId}/schemas/accounts | Uploads source accounts schema template
 *SourcesApi* | [**import_source_connector_file**](sailpoint/beta/docs/SourcesApi.md#import_source_connector_file) | **POST** /sources/{sourceId}/upload-connector-file | Upload connector file to source
-*SourcesApi* | [**import_source_entitlements_schema**](sailpoint/beta/docs/SourcesApi.md#import_source_entitlements_schema) | **POST** /sources/{id}/schemas/entitlements | Uploads source entitlements schema template
-*SourcesApi* | [**import_uncorrelated_accounts**](sailpoint/beta/docs/SourcesApi.md#import_uncorrelated_accounts) | **POST** /sources/{id}/load-uncorrelated-accounts | Process Uncorrelated Accounts
+*SourcesApi* | [**import_source_entitlements_schema**](sailpoint/beta/docs/SourcesApi.md#import_source_entitlements_schema) | **POST** /sources/{sourceId}/schemas/entitlements | Uploads source entitlements schema template
+*SourcesApi* | [**import_uncorrelated_accounts**](sailpoint/beta/docs/SourcesApi.md#import_uncorrelated_accounts) | **POST** /sources/{sourceId}/load-uncorrelated-accounts | Process Uncorrelated Accounts
 *SourcesApi* | [**list_provisioning_policies**](sailpoint/beta/docs/SourcesApi.md#list_provisioning_policies) | **GET** /sources/{sourceId}/provisioning-policies | Lists ProvisioningPolicies
 *SourcesApi* | [**list_sources**](sailpoint/beta/docs/SourcesApi.md#list_sources) | **GET** /sources | Lists all sources in IdentityNow.
 *SourcesApi* | [**peek_resource_objects**](sailpoint/beta/docs/SourcesApi.md#peek_resource_objects) | **POST** /sources/{sourceId}/connector/peek-resource-objects | Peek source connector&#39;s resource objects
 *SourcesApi* | [**ping_cluster**](sailpoint/beta/docs/SourcesApi.md#ping_cluster) | **POST** /sources/{sourceId}/connector/ping-cluster | Ping cluster for source connector
-*SourcesApi* | [**put_correlation_config**](sailpoint/beta/docs/SourcesApi.md#put_correlation_config) | **PUT** /sources/{id}/correlation-config | Update Source Correlation Configuration
+*SourcesApi* | [**put_correlation_config**](sailpoint/beta/docs/SourcesApi.md#put_correlation_config) | **PUT** /sources/{sourceId}/correlation-config | Update Source Correlation Configuration
 *SourcesApi* | [**put_native_change_detection_config**](sailpoint/beta/docs/SourcesApi.md#put_native_change_detection_config) | **PUT** /sources/{sourceId}/native-change-detection-config | Update Native Change Detection Configuration
 *SourcesApi* | [**put_provisioning_policy**](sailpoint/beta/docs/SourcesApi.md#put_provisioning_policy) | **PUT** /sources/{sourceId}/provisioning-policies/{usageType} | Update Provisioning Policy by UsageType
 *SourcesApi* | [**put_source**](sailpoint/beta/docs/SourcesApi.md#put_source) | **PUT** /sources/{id} | Update Source (Full)
 *SourcesApi* | [**put_source_attr_sync_config**](sailpoint/beta/docs/SourcesApi.md#put_source_attr_sync_config) | **PUT** /sources/{id}/attribute-sync-config | Update Attribute Sync Config
 *SourcesApi* | [**put_source_schema**](sailpoint/beta/docs/SourcesApi.md#put_source_schema) | **PUT** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Full)
-*SourcesApi* | [**sync_attributes_for_source**](sailpoint/beta/docs/SourcesApi.md#sync_attributes_for_source) | **POST** /sources/{id}/synchronize-attributes | Synchronize single source attributes.
+*SourcesApi* | [**sync_attributes_for_source**](sailpoint/beta/docs/SourcesApi.md#sync_attributes_for_source) | **POST** /sources/{sourceId}/synchronize-attributes | Synchronize single source attributes.
 *SourcesApi* | [**test_source_configuration**](sailpoint/beta/docs/SourcesApi.md#test_source_configuration) | **POST** /sources/{sourceId}/connector/test-configuration | Test configuration for source connector
 *SourcesApi* | [**test_source_connection**](sailpoint/beta/docs/SourcesApi.md#test_source_connection) | **POST** /sources/{sourceId}/connector/check-connection | Check connection for source connector.
 *SourcesApi* | [**update_provisioning_policies_in_bulk**](sailpoint/beta/docs/SourcesApi.md#update_provisioning_policies_in_bulk) | **POST** /sources/{sourceId}/provisioning-policies/bulk-update | Bulk Update Provisioning Policies
 *SourcesApi* | [**update_provisioning_policy**](sailpoint/beta/docs/SourcesApi.md#update_provisioning_policy) | **PATCH** /sources/{sourceId}/provisioning-policies/{usageType} | Partial update of Provisioning Policy
 *SourcesApi* | [**update_source**](sailpoint/beta/docs/SourcesApi.md#update_source) | **PATCH** /sources/{id} | Update Source (Partial)
-*SourcesApi* | [**update_source_entitlement_request_config**](sailpoint/beta/docs/SourcesApi.md#update_source_entitlement_request_config) | **PUT** /sources/{id}/entitlement-request-config | Update Source Entitlement Request Configuration
+*SourcesApi* | [**update_source_entitlement_request_config**](sailpoint/beta/docs/SourcesApi.md#update_source_entitlement_request_config) | **PUT** /sources/{sourceId}/entitlement-request-config | Update Source Entitlement Request Configuration
 *SourcesApi* | [**update_source_schema**](sailpoint/beta/docs/SourcesApi.md#update_source_schema) | **PATCH** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Partial)
 *SuggestedEntitlementDescriptionApi* | [**get_sed_batch_stats**](sailpoint/beta/docs/SuggestedEntitlementDescriptionApi.md#get_sed_batch_stats) | **GET** /suggested-entitlement-description-batches/{batchId}/stats | Submit Sed Batch Stats Request
 *SuggestedEntitlementDescriptionApi* | [**get_sed_batches**](sailpoint/beta/docs/SuggestedEntitlementDescriptionApi.md#get_sed_batches) | **GET** /suggested-entitlement-description-batches | List Sed Batch Request

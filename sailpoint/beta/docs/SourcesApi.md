@@ -8,44 +8,44 @@ Method | HTTP request | Description
 [**create_source**](SourcesApi.md#create_source) | **POST** /sources | Creates a source in IdentityNow.
 [**create_source_schema**](SourcesApi.md#create_source_schema) | **POST** /sources/{sourceId}/schemas | Create Schema on Source
 [**delete**](SourcesApi.md#delete) | **DELETE** /sources/{id} | Delete Source by ID
-[**delete_accounts_async**](SourcesApi.md#delete_accounts_async) | **POST** /sources/{id}/remove-accounts | Remove All Accounts in a Source
+[**delete_accounts_async**](SourcesApi.md#delete_accounts_async) | **POST** /sources/{sourceId}/remove-accounts | Remove All Accounts in a Source
 [**delete_native_change_detection_config**](SourcesApi.md#delete_native_change_detection_config) | **DELETE** /sources/{sourceId}/native-change-detection-config | Delete Native Change Detection Configuration
 [**delete_provisioning_policy**](SourcesApi.md#delete_provisioning_policy) | **DELETE** /sources/{sourceId}/provisioning-policies/{usageType} | Delete Provisioning Policy by UsageType
 [**delete_source_schema**](SourcesApi.md#delete_source_schema) | **DELETE** /sources/{sourceId}/schemas/{schemaId} | Delete Source Schema by ID
-[**get_correlation_config**](SourcesApi.md#get_correlation_config) | **GET** /sources/{id}/correlation-config | Get Source Correlation Configuration
+[**get_correlation_config**](SourcesApi.md#get_correlation_config) | **GET** /sources/{sourceId}/correlation-config | Get Source Correlation Configuration
 [**get_native_change_detection_config**](SourcesApi.md#get_native_change_detection_config) | **GET** /sources/{sourceId}/native-change-detection-config | Native Change Detection Configuration
 [**get_provisioning_policy**](SourcesApi.md#get_provisioning_policy) | **GET** /sources/{sourceId}/provisioning-policies/{usageType} | Get Provisioning Policy by UsageType
 [**get_source**](SourcesApi.md#get_source) | **GET** /sources/{id} | Get Source by ID
-[**get_source_accounts_schema**](SourcesApi.md#get_source_accounts_schema) | **GET** /sources/{id}/schemas/accounts | Downloads source accounts schema template
+[**get_source_accounts_schema**](SourcesApi.md#get_source_accounts_schema) | **GET** /sources/{sourceId}/schemas/accounts | Downloads source accounts schema template
 [**get_source_attr_sync_config**](SourcesApi.md#get_source_attr_sync_config) | **GET** /sources/{id}/attribute-sync-config | Attribute Sync Config
 [**get_source_config**](SourcesApi.md#get_source_config) | **GET** /sources/{id}/connectors/source-config | Gets source config with language translations
-[**get_source_entitlement_request_config**](SourcesApi.md#get_source_entitlement_request_config) | **GET** /sources/{id}/entitlement-request-config | Get Source Entitlement Request Configuration
-[**get_source_entitlements_schema**](SourcesApi.md#get_source_entitlements_schema) | **GET** /sources/{id}/schemas/entitlements | Downloads source entitlements schema template
+[**get_source_entitlement_request_config**](SourcesApi.md#get_source_entitlement_request_config) | **GET** /sources/{sourceId}/entitlement-request-config | Get Source Entitlement Request Configuration
+[**get_source_entitlements_schema**](SourcesApi.md#get_source_entitlements_schema) | **GET** /sources/{sourceId}/schemas/entitlements | Downloads source entitlements schema template
 [**get_source_schema**](SourcesApi.md#get_source_schema) | **GET** /sources/{sourceId}/schemas/{schemaId} | Get Source Schema by ID
 [**get_source_schemas**](SourcesApi.md#get_source_schemas) | **GET** /sources/{sourceId}/schemas | List Schemas on Source
-[**import_accounts**](SourcesApi.md#import_accounts) | **POST** /sources/{id}/load-accounts | Account Aggregation
-[**import_entitlements**](SourcesApi.md#import_entitlements) | **POST** /sources/{id}/load-entitlements | Entitlement Aggregation
-[**import_source_accounts_schema**](SourcesApi.md#import_source_accounts_schema) | **POST** /sources/{id}/schemas/accounts | Uploads source accounts schema template
+[**import_accounts**](SourcesApi.md#import_accounts) | **POST** /sources/{sourceId}/load-accounts | Account Aggregation
+[**import_entitlements**](SourcesApi.md#import_entitlements) | **POST** /sources/{sourceId}/load-entitlements | Entitlement Aggregation
+[**import_source_accounts_schema**](SourcesApi.md#import_source_accounts_schema) | **POST** /sources/{sourceId}/schemas/accounts | Uploads source accounts schema template
 [**import_source_connector_file**](SourcesApi.md#import_source_connector_file) | **POST** /sources/{sourceId}/upload-connector-file | Upload connector file to source
-[**import_source_entitlements_schema**](SourcesApi.md#import_source_entitlements_schema) | **POST** /sources/{id}/schemas/entitlements | Uploads source entitlements schema template
-[**import_uncorrelated_accounts**](SourcesApi.md#import_uncorrelated_accounts) | **POST** /sources/{id}/load-uncorrelated-accounts | Process Uncorrelated Accounts
+[**import_source_entitlements_schema**](SourcesApi.md#import_source_entitlements_schema) | **POST** /sources/{sourceId}/schemas/entitlements | Uploads source entitlements schema template
+[**import_uncorrelated_accounts**](SourcesApi.md#import_uncorrelated_accounts) | **POST** /sources/{sourceId}/load-uncorrelated-accounts | Process Uncorrelated Accounts
 [**list_provisioning_policies**](SourcesApi.md#list_provisioning_policies) | **GET** /sources/{sourceId}/provisioning-policies | Lists ProvisioningPolicies
 [**list_sources**](SourcesApi.md#list_sources) | **GET** /sources | Lists all sources in IdentityNow.
 [**peek_resource_objects**](SourcesApi.md#peek_resource_objects) | **POST** /sources/{sourceId}/connector/peek-resource-objects | Peek source connector&#39;s resource objects
 [**ping_cluster**](SourcesApi.md#ping_cluster) | **POST** /sources/{sourceId}/connector/ping-cluster | Ping cluster for source connector
-[**put_correlation_config**](SourcesApi.md#put_correlation_config) | **PUT** /sources/{id}/correlation-config | Update Source Correlation Configuration
+[**put_correlation_config**](SourcesApi.md#put_correlation_config) | **PUT** /sources/{sourceId}/correlation-config | Update Source Correlation Configuration
 [**put_native_change_detection_config**](SourcesApi.md#put_native_change_detection_config) | **PUT** /sources/{sourceId}/native-change-detection-config | Update Native Change Detection Configuration
 [**put_provisioning_policy**](SourcesApi.md#put_provisioning_policy) | **PUT** /sources/{sourceId}/provisioning-policies/{usageType} | Update Provisioning Policy by UsageType
 [**put_source**](SourcesApi.md#put_source) | **PUT** /sources/{id} | Update Source (Full)
 [**put_source_attr_sync_config**](SourcesApi.md#put_source_attr_sync_config) | **PUT** /sources/{id}/attribute-sync-config | Update Attribute Sync Config
 [**put_source_schema**](SourcesApi.md#put_source_schema) | **PUT** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Full)
-[**sync_attributes_for_source**](SourcesApi.md#sync_attributes_for_source) | **POST** /sources/{id}/synchronize-attributes | Synchronize single source attributes.
+[**sync_attributes_for_source**](SourcesApi.md#sync_attributes_for_source) | **POST** /sources/{sourceId}/synchronize-attributes | Synchronize single source attributes.
 [**test_source_configuration**](SourcesApi.md#test_source_configuration) | **POST** /sources/{sourceId}/connector/test-configuration | Test configuration for source connector
 [**test_source_connection**](SourcesApi.md#test_source_connection) | **POST** /sources/{sourceId}/connector/check-connection | Check connection for source connector.
 [**update_provisioning_policies_in_bulk**](SourcesApi.md#update_provisioning_policies_in_bulk) | **POST** /sources/{sourceId}/provisioning-policies/bulk-update | Bulk Update Provisioning Policies
 [**update_provisioning_policy**](SourcesApi.md#update_provisioning_policy) | **PATCH** /sources/{sourceId}/provisioning-policies/{usageType} | Partial update of Provisioning Policy
 [**update_source**](SourcesApi.md#update_source) | **PATCH** /sources/{id} | Update Source (Partial)
-[**update_source_entitlement_request_config**](SourcesApi.md#update_source_entitlement_request_config) | **PUT** /sources/{id}/entitlement-request-config | Update Source Entitlement Request Configuration
+[**update_source_entitlement_request_config**](SourcesApi.md#update_source_entitlement_request_config) | **PUT** /sources/{sourceId}/entitlement-request-config | Update Source Entitlement Request Configuration
 [**update_source_schema**](SourcesApi.md#update_source_schema) | **PATCH** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Partial)
 
 
@@ -390,7 +390,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_accounts_async**
-> TaskResultDto delete_accounts_async(id)
+> TaskResultDto delete_accounts_async(source_id)
 
 Remove All Accounts in a Source
 
@@ -426,11 +426,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.SourcesApi(api_client)
-    id = 'ebbf35756e1140699ce52b233121384a' # str | The source id
+    source_id = 'ebbf35756e1140699ce52b233121384a' # str | The source id
 
     try:
         # Remove All Accounts in a Source
-        api_response = api_instance.delete_accounts_async(id)
+        api_response = api_instance.delete_accounts_async(source_id)
         print("The response of SourcesApi->delete_accounts_async:\n")
         pprint(api_response)
     except Exception as e:
@@ -444,7 +444,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The source id | 
+ **source_id** | **str**| The source id | 
 
 ### Return type
 
@@ -473,7 +473,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_native_change_detection_config**
-> delete_native_change_detection_config(id)
+> delete_native_change_detection_config(source_id)
 
 Delete Native Change Detection Configuration
 
@@ -508,11 +508,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.SourcesApi(api_client)
-    id = '2c9180835d191a86015d28455b4a2329' # str | The source id
+    source_id = '2c9180835d191a86015d28455b4a2329' # str | The source id
 
     try:
         # Delete Native Change Detection Configuration
-        api_instance.delete_native_change_detection_config(id)
+        api_instance.delete_native_change_detection_config(source_id)
     except Exception as e:
         print("Exception when calling SourcesApi->delete_native_change_detection_config: %s\n" % e)
 ```
@@ -524,7 +524,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The source id | 
+ **source_id** | **str**| The source id | 
 
 ### Return type
 
@@ -722,7 +722,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_correlation_config**
-> CorrelationConfig get_correlation_config(id)
+> CorrelationConfig get_correlation_config(source_id)
 
 Get Source Correlation Configuration
 
@@ -758,11 +758,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.SourcesApi(api_client)
-    id = '2c9180835d191a86015d28455b4a2329' # str | The source id
+    source_id = '2c9180835d191a86015d28455b4a2329' # str | The source id
 
     try:
         # Get Source Correlation Configuration
-        api_response = api_instance.get_correlation_config(id)
+        api_response = api_instance.get_correlation_config(source_id)
         print("The response of SourcesApi->get_correlation_config:\n")
         pprint(api_response)
     except Exception as e:
@@ -776,7 +776,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The source id | 
+ **source_id** | **str**| The source id | 
 
 ### Return type
 
@@ -806,7 +806,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_native_change_detection_config**
-> NativeChangeDetectionConfig get_native_change_detection_config(id)
+> NativeChangeDetectionConfig get_native_change_detection_config(source_id)
 
 Native Change Detection Configuration
 
@@ -842,11 +842,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.SourcesApi(api_client)
-    id = '2c9180835d191a86015d28455b4a2329' # str | The source id
+    source_id = '2c9180835d191a86015d28455b4a2329' # str | The source id
 
     try:
         # Native Change Detection Configuration
-        api_response = api_instance.get_native_change_detection_config(id)
+        api_response = api_instance.get_native_change_detection_config(source_id)
         print("The response of SourcesApi->get_native_change_detection_config:\n")
         pprint(api_response)
     except Exception as e:
@@ -860,7 +860,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The source id | 
+ **source_id** | **str**| The source id | 
 
 ### Return type
 
@@ -1064,7 +1064,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_source_accounts_schema**
-> get_source_accounts_schema(id)
+> get_source_accounts_schema(source_id)
 
 Downloads source accounts schema template
 
@@ -1097,11 +1097,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.SourcesApi(api_client)
-    id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The Source id
+    source_id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The Source id
 
     try:
         # Downloads source accounts schema template
-        api_instance.get_source_accounts_schema(id)
+        api_instance.get_source_accounts_schema(source_id)
     except Exception as e:
         print("Exception when calling SourcesApi->get_source_accounts_schema: %s\n" % e)
 ```
@@ -1113,7 +1113,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The Source id | 
+ **source_id** | **str**| The Source id | 
 
 ### Return type
 
@@ -1312,7 +1312,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_source_entitlement_request_config**
-> SourceEntitlementRequestConfig get_source_entitlement_request_config()
+> SourceEntitlementRequestConfig get_source_entitlement_request_config(source_id)
 
 Get Source Entitlement Request Configuration
 
@@ -1348,10 +1348,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.SourcesApi(api_client)
+    source_id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The Source id
 
     try:
         # Get Source Entitlement Request Configuration
-        api_response = api_instance.get_source_entitlement_request_config()
+        api_response = api_instance.get_source_entitlement_request_config(source_id)
         print("The response of SourcesApi->get_source_entitlement_request_config:\n")
         pprint(api_response)
     except Exception as e:
@@ -1362,7 +1363,10 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **source_id** | **str**| The Source id | 
 
 ### Return type
 
@@ -1391,7 +1395,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_source_entitlements_schema**
-> get_source_entitlements_schema(id, schema_name=schema_name)
+> get_source_entitlements_schema(source_id, schema_name=schema_name)
 
 Downloads source entitlements schema template
 
@@ -1424,12 +1428,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.SourcesApi(api_client)
-    id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The Source id
+    source_id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The Source id
     schema_name = '?schemaName=group' # str | Name of entitlement schema (optional)
 
     try:
         # Downloads source entitlements schema template
-        api_instance.get_source_entitlements_schema(id, schema_name=schema_name)
+        api_instance.get_source_entitlements_schema(source_id, schema_name=schema_name)
     except Exception as e:
         print("Exception when calling SourcesApi->get_source_entitlements_schema: %s\n" % e)
 ```
@@ -1441,7 +1445,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The Source id | 
+ **source_id** | **str**| The Source id | 
  **schema_name** | **str**| Name of entitlement schema | [optional] 
 
 ### Return type
@@ -1646,7 +1650,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **import_accounts**
-> LoadAccountsTask import_accounts(id, file=file, disable_optimization=disable_optimization)
+> LoadAccountsTask import_accounts(source_id, file=file, disable_optimization=disable_optimization)
 
 Account Aggregation
 
@@ -1682,13 +1686,13 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.SourcesApi(api_client)
-    id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source Id
+    source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source Id
     file = None # bytearray | The CSV file containing the source accounts to aggregate. (optional)
     disable_optimization = 'disable_optimization_example' # str | Use this flag to reprocess every account whether or not the data has changed. (optional)
 
     try:
         # Account Aggregation
-        api_response = api_instance.import_accounts(id, file=file, disable_optimization=disable_optimization)
+        api_response = api_instance.import_accounts(source_id, file=file, disable_optimization=disable_optimization)
         print("The response of SourcesApi->import_accounts:\n")
         pprint(api_response)
     except Exception as e:
@@ -1702,7 +1706,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| Source Id | 
+ **source_id** | **str**| Source Id | 
  **file** | **bytearray**| The CSV file containing the source accounts to aggregate. | [optional] 
  **disable_optimization** | **str**| Use this flag to reprocess every account whether or not the data has changed. | [optional] 
 
@@ -1733,7 +1737,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **import_entitlements**
-> LoadEntitlementTask import_entitlements(id, file=file)
+> LoadEntitlementTask import_entitlements(source_id, file=file)
 
 Entitlement Aggregation
 
@@ -1769,12 +1773,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.SourcesApi(api_client)
-    id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source Id
+    source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source Id
     file = None # bytearray | The CSV file containing the source entitlements to aggregate. (optional)
 
     try:
         # Entitlement Aggregation
-        api_response = api_instance.import_entitlements(id, file=file)
+        api_response = api_instance.import_entitlements(source_id, file=file)
         print("The response of SourcesApi->import_entitlements:\n")
         pprint(api_response)
     except Exception as e:
@@ -1788,7 +1792,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| Source Id | 
+ **source_id** | **str**| Source Id | 
  **file** | **bytearray**| The CSV file containing the source entitlements to aggregate. | [optional] 
 
 ### Return type
@@ -1818,7 +1822,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **import_source_accounts_schema**
-> ModelSchema import_source_accounts_schema(id, file=file)
+> ModelSchema import_source_accounts_schema(source_id, file=file)
 
 Uploads source accounts schema template
 
@@ -1854,12 +1858,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.SourcesApi(api_client)
-    id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The Source id
+    source_id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The Source id
     file = None # bytearray |  (optional)
 
     try:
         # Uploads source accounts schema template
-        api_response = api_instance.import_source_accounts_schema(id, file=file)
+        api_response = api_instance.import_source_accounts_schema(source_id, file=file)
         print("The response of SourcesApi->import_source_accounts_schema:\n")
         pprint(api_response)
     except Exception as e:
@@ -1873,7 +1877,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The Source id | 
+ **source_id** | **str**| The Source id | 
  **file** | **bytearray**|  | [optional] 
 
 ### Return type
@@ -1988,7 +1992,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **import_source_entitlements_schema**
-> ModelSchema import_source_entitlements_schema(id, schema_name=schema_name, file=file)
+> ModelSchema import_source_entitlements_schema(source_id, schema_name=schema_name, file=file)
 
 Uploads source entitlements schema template
 
@@ -2024,13 +2028,13 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.SourcesApi(api_client)
-    id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The Source id
+    source_id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The Source id
     schema_name = '?schemaName=group' # str | Name of entitlement schema (optional)
     file = None # bytearray |  (optional)
 
     try:
         # Uploads source entitlements schema template
-        api_response = api_instance.import_source_entitlements_schema(id, schema_name=schema_name, file=file)
+        api_response = api_instance.import_source_entitlements_schema(source_id, schema_name=schema_name, file=file)
         print("The response of SourcesApi->import_source_entitlements_schema:\n")
         pprint(api_response)
     except Exception as e:
@@ -2044,7 +2048,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The Source id | 
+ **source_id** | **str**| The Source id | 
  **schema_name** | **str**| Name of entitlement schema | [optional] 
  **file** | **bytearray**|  | [optional] 
 
@@ -2075,7 +2079,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **import_uncorrelated_accounts**
-> LoadUncorrelatedAccountsTask import_uncorrelated_accounts(id, file=file)
+> LoadUncorrelatedAccountsTask import_uncorrelated_accounts(source_id, file=file)
 
 Process Uncorrelated Accounts
 
@@ -2111,12 +2115,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.SourcesApi(api_client)
-    id = '75dbec1ebe154d5785da27b95e1dd5d7' # str | Source Id
+    source_id = '75dbec1ebe154d5785da27b95e1dd5d7' # str | Source Id
     file = None # bytearray |  (optional)
 
     try:
         # Process Uncorrelated Accounts
-        api_response = api_instance.import_uncorrelated_accounts(id, file=file)
+        api_response = api_instance.import_uncorrelated_accounts(source_id, file=file)
         print("The response of SourcesApi->import_uncorrelated_accounts:\n")
         pprint(api_response)
     except Exception as e:
@@ -2130,7 +2134,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| Source Id | 
+ **source_id** | **str**| Source Id | 
  **file** | **bytearray**|  | [optional] 
 
 ### Return type
@@ -2514,7 +2518,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_correlation_config**
-> CorrelationConfig put_correlation_config(id, correlation_config)
+> CorrelationConfig put_correlation_config(source_id, correlation_config)
 
 Update Source Correlation Configuration
 
@@ -2550,12 +2554,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.SourcesApi(api_client)
-    id = '2c9180835d191a86015d28455b4a2329' # str | The source id
+    source_id = '2c9180835d191a86015d28455b4a2329' # str | The source id
     correlation_config = sailpoint.beta.CorrelationConfig() # CorrelationConfig | 
 
     try:
         # Update Source Correlation Configuration
-        api_response = api_instance.put_correlation_config(id, correlation_config)
+        api_response = api_instance.put_correlation_config(source_id, correlation_config)
         print("The response of SourcesApi->put_correlation_config:\n")
         pprint(api_response)
     except Exception as e:
@@ -2569,7 +2573,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The source id | 
+ **source_id** | **str**| The source id | 
  **correlation_config** | [**CorrelationConfig**](CorrelationConfig.md)|  | 
 
 ### Return type
@@ -2600,7 +2604,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_native_change_detection_config**
-> NativeChangeDetectionConfig put_native_change_detection_config(id, native_change_detection_config)
+> NativeChangeDetectionConfig put_native_change_detection_config(source_id, native_change_detection_config)
 
 Update Native Change Detection Configuration
 
@@ -2636,12 +2640,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.SourcesApi(api_client)
-    id = '2c9180835d191a86015d28455b4a2329' # str | The source id
+    source_id = '2c9180835d191a86015d28455b4a2329' # str | The source id
     native_change_detection_config = sailpoint.beta.NativeChangeDetectionConfig() # NativeChangeDetectionConfig | 
 
     try:
         # Update Native Change Detection Configuration
-        api_response = api_instance.put_native_change_detection_config(id, native_change_detection_config)
+        api_response = api_instance.put_native_change_detection_config(source_id, native_change_detection_config)
         print("The response of SourcesApi->put_native_change_detection_config:\n")
         pprint(api_response)
     except Exception as e:
@@ -2655,7 +2659,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The source id | 
+ **source_id** | **str**| The source id | 
  **native_change_detection_config** | [**NativeChangeDetectionConfig**](NativeChangeDetectionConfig.md)|  | 
 
 ### Return type
@@ -3038,7 +3042,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **sync_attributes_for_source**
-> SourceSyncJob sync_attributes_for_source(id)
+> SourceSyncJob sync_attributes_for_source(source_id)
 
 Synchronize single source attributes.
 
@@ -3074,11 +3078,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.SourcesApi(api_client)
-    id = 'id_example' # str | The Source id
+    source_id = 'source_id_example' # str | The Source id
 
     try:
         # Synchronize single source attributes.
-        api_response = api_instance.sync_attributes_for_source(id)
+        api_response = api_instance.sync_attributes_for_source(source_id)
         print("The response of SourcesApi->sync_attributes_for_source:\n")
         pprint(api_response)
     except Exception as e:
@@ -3092,7 +3096,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| The Source id | 
+ **source_id** | **str**| The Source id | 
 
 ### Return type
 
@@ -3559,7 +3563,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_source_entitlement_request_config**
-> SourceEntitlementRequestConfig update_source_entitlement_request_config(source_entitlement_request_config)
+> SourceEntitlementRequestConfig update_source_entitlement_request_config(source_id, source_entitlement_request_config)
 
 Update Source Entitlement Request Configuration
 
@@ -3595,11 +3599,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.SourcesApi(api_client)
+    source_id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The Source id
     source_entitlement_request_config = {accessRequestConfig={approvalSchemes=[]}} # SourceEntitlementRequestConfig | 
 
     try:
         # Update Source Entitlement Request Configuration
-        api_response = api_instance.update_source_entitlement_request_config(source_entitlement_request_config)
+        api_response = api_instance.update_source_entitlement_request_config(source_id, source_entitlement_request_config)
         print("The response of SourcesApi->update_source_entitlement_request_config:\n")
         pprint(api_response)
     except Exception as e:
@@ -3613,6 +3618,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **source_id** | **str**| The Source id | 
  **source_entitlement_request_config** | [**SourceEntitlementRequestConfig**](SourceEntitlementRequestConfig.md)|  | 
 
 ### Return type

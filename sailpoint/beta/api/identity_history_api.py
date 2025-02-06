@@ -800,7 +800,7 @@ class IdentityHistoryApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/historical-identities/{id}/compare/{access-type}',
+            resource_path='/historical-identities/{id}/compare/{accessType}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

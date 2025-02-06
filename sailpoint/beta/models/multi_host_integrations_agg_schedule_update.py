@@ -27,7 +27,7 @@ class MultiHostIntegrationsAggScheduleUpdate(BaseModel):
     """
     MultiHostIntegrationsAggScheduleUpdate
     """ # noqa: E501
-    multihost_id: StrictStr = Field(description="Multi-Host Integration ID. The ID must be unique")
+    multihost_id: StrictStr = Field(description="Multi-Host Integration ID. The ID must be unique", alias="multihostId")
     aggregation_grp_id: StrictStr = Field(description="Multi-Host Integration aggregation group ID")
     aggregation_grp_name: StrictStr = Field(description="Multi-Host Integration name")
     aggregation_cron_schedule: StrictStr = Field(description="Cron expression to schedule aggregation")
@@ -35,7 +35,7 @@ class MultiHostIntegrationsAggScheduleUpdate(BaseModel):
     source_id_list: List[StrictStr] = Field(description="Source IDs of the Multi-Host Integration")
     created: Optional[datetime] = Field(default=None, description="Created date of Multi-Host Integration aggregation schedule")
     modified: Optional[datetime] = Field(default=None, description="Modified date of Multi-Host Integration aggregation schedule")
-    __properties: ClassVar[List[str]] = ["multihost_id", "aggregation_grp_id", "aggregation_grp_name", "aggregation_cron_schedule", "enableSchedule", "source_id_list", "created", "modified"]
+    __properties: ClassVar[List[str]] = ["multihostId", "aggregation_grp_id", "aggregation_grp_name", "aggregation_cron_schedule", "enableSchedule", "source_id_list", "created", "modified"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -88,7 +88,7 @@ class MultiHostIntegrationsAggScheduleUpdate(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "multihost_id": obj.get("multihost_id"),
+            "multihostId": obj.get("multihostId"),
             "aggregation_grp_id": obj.get("aggregation_grp_id"),
             "aggregation_grp_name": obj.get("aggregation_grp_name"),
             "aggregation_cron_schedule": obj.get("aggregation_cron_schedule"),
