@@ -21,6 +21,7 @@ import mimetypes
 import os
 import re
 import tempfile
+import xmltodict
 
 from urllib.parse import quote
 from typing import Tuple, Optional, List, Dict, Union
@@ -427,6 +428,8 @@ class ApiClient:
                 data = ""
             else:
                 data = json.loads(response_text)
+        elif content_type.startswith("application/xml") or content_type.startswith("text/xml"):
+            data = xmltodict.parse(response_text)
         elif content_type.startswith("text/plain"):
             data = response_text
         else:
