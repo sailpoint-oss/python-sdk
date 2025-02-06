@@ -249,6 +249,14 @@ Class | Method | HTTP request | Description
 *CustomPasswordInstructionsApi* | [**create_custom_password_instructions**](sailpoint/v2024/docs/CustomPasswordInstructionsApi.md#create_custom_password_instructions) | **POST** /custom-password-instructions | Create Custom Password Instructions
 *CustomPasswordInstructionsApi* | [**delete_custom_password_instructions**](sailpoint/v2024/docs/CustomPasswordInstructionsApi.md#delete_custom_password_instructions) | **DELETE** /custom-password-instructions/{pageId} | Delete Custom Password Instructions by page ID
 *CustomPasswordInstructionsApi* | [**get_custom_password_instructions**](sailpoint/v2024/docs/CustomPasswordInstructionsApi.md#get_custom_password_instructions) | **GET** /custom-password-instructions/{pageId} | Get Custom Password Instructions by Page ID
+*DataSegmentationApi* | [**create_data_segment**](sailpoint/v2024/docs/DataSegmentationApi.md#create_data_segment) | **POST** /data-segments | Create Segment
+*DataSegmentationApi* | [**delete_data_segment**](sailpoint/v2024/docs/DataSegmentationApi.md#delete_data_segment) | **DELETE** /data-segments/{segmentId} | Delete Segment by ID
+*DataSegmentationApi* | [**get_data_segment**](sailpoint/v2024/docs/DataSegmentationApi.md#get_data_segment) | **GET** /data-segments/{segmentId} | Get Segment by ID
+*DataSegmentationApi* | [**get_data_segment_identity_membership**](sailpoint/v2024/docs/DataSegmentationApi.md#get_data_segment_identity_membership) | **GET** /data-segments/membership/{identityId} | Get SegmentMembership by Identity ID
+*DataSegmentationApi* | [**get_data_segmentation_enabled_for_user**](sailpoint/v2024/docs/DataSegmentationApi.md#get_data_segmentation_enabled_for_user) | **GET** /data-segments/user-enabled/{identityId} | Is Segmentation enabled by Identity
+*DataSegmentationApi* | [**list_data_segments**](sailpoint/v2024/docs/DataSegmentationApi.md#list_data_segments) | **GET** /data-segments | Get Segments
+*DataSegmentationApi* | [**patch_data_segment**](sailpoint/v2024/docs/DataSegmentationApi.md#patch_data_segment) | **PATCH** /data-segments/{segmentId} | Update Segment
+*DataSegmentationApi* | [**publish_data_segment**](sailpoint/v2024/docs/DataSegmentationApi.md#publish_data_segment) | **POST** /data-segments/{segmentId} | Publish segment by ID
 *DimensionsApi* | [**create_dimension**](sailpoint/v2024/docs/DimensionsApi.md#create_dimension) | **POST** /roles/{roleId}/dimensions | Create a Dimension
 *DimensionsApi* | [**delete_bulk_dimensions**](sailpoint/v2024/docs/DimensionsApi.md#delete_bulk_dimensions) | **POST** /roles/{roleId}/dimensions/bulk-delete | Delete Dimension(s)
 *DimensionsApi* | [**delete_dimension**](sailpoint/v2024/docs/DimensionsApi.md#delete_dimension) | **DELETE** /roles/{roleId}/dimensions/{dimensionId} | Delete a Dimension
@@ -1028,6 +1036,7 @@ Class | Method | HTTP request | Description
  - [DataAccessCategoriesInner](sailpoint/v2024/docs/DataAccessCategoriesInner.md)
  - [DataAccessImpactScore](sailpoint/v2024/docs/DataAccessImpactScore.md)
  - [DataAccessPoliciesInner](sailpoint/v2024/docs/DataAccessPoliciesInner.md)
+ - [DataSegment](sailpoint/v2024/docs/DataSegment.md)
  - [DeleteNonEmployeeRecordsInBulkRequest](sailpoint/v2024/docs/DeleteNonEmployeeRecordsInBulkRequest.md)
  - [DeleteSource202Response](sailpoint/v2024/docs/DeleteSource202Response.md)
  - [DeleteVendorConnectorMapping200Response](sailpoint/v2024/docs/DeleteVendorConnectorMapping200Response.md)
@@ -1265,6 +1274,7 @@ Class | Method | HTTP request | Description
  - [ManuallyUpdatedFieldsDTO](sailpoint/v2024/docs/ManuallyUpdatedFieldsDTO.md)
  - [MatchTerm](sailpoint/v2024/docs/MatchTerm.md)
  - [Medium](sailpoint/v2024/docs/Medium.md)
+ - [MembershipType](sailpoint/v2024/docs/MembershipType.md)
  - [MetricAggregation](sailpoint/v2024/docs/MetricAggregation.md)
  - [MetricResponse](sailpoint/v2024/docs/MetricResponse.md)
  - [MetricType](sailpoint/v2024/docs/MetricType.md)
@@ -1406,6 +1416,7 @@ Class | Method | HTTP request | Description
  - [RecommendationResponseDto](sailpoint/v2024/docs/RecommendationResponseDto.md)
  - [RecommenderCalculations](sailpoint/v2024/docs/RecommenderCalculations.md)
  - [RecommenderCalculationsIdentityAttributesValue](sailpoint/v2024/docs/RecommenderCalculationsIdentityAttributesValue.md)
+ - [Ref](sailpoint/v2024/docs/Ref.md)
  - [Reference](sailpoint/v2024/docs/Reference.md)
  - [RemediationItemDetails](sailpoint/v2024/docs/RemediationItemDetails.md)
  - [RemediationItems](sailpoint/v2024/docs/RemediationItems.md)
@@ -1533,6 +1544,9 @@ Class | Method | HTTP request | Description
  - [ScheduledSearch](sailpoint/v2024/docs/ScheduledSearch.md)
  - [ScheduledSearchAllOfOwner](sailpoint/v2024/docs/ScheduledSearchAllOfOwner.md)
  - [ScheduledSearchName](sailpoint/v2024/docs/ScheduledSearchName.md)
+ - [Scope](sailpoint/v2024/docs/Scope.md)
+ - [ScopeType](sailpoint/v2024/docs/ScopeType.md)
+ - [ScopeVisibilityType](sailpoint/v2024/docs/ScopeVisibilityType.md)
  - [Search](sailpoint/v2024/docs/Search.md)
  - [SearchAggregationSpecification](sailpoint/v2024/docs/SearchAggregationSpecification.md)
  - [SearchArguments](sailpoint/v2024/docs/SearchArguments.md)

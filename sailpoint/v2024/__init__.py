@@ -41,6 +41,7 @@ from sailpoint.v2024.api.connector_rule_management_api import ConnectorRuleManag
 from sailpoint.v2024.api.connectors_api import ConnectorsApi
 from sailpoint.v2024.api.custom_forms_api import CustomFormsApi
 from sailpoint.v2024.api.custom_password_instructions_api import CustomPasswordInstructionsApi
+from sailpoint.v2024.api.data_segmentation_api import DataSegmentationApi
 from sailpoint.v2024.api.dimensions_api import DimensionsApi
 from sailpoint.v2024.api.entitlements_api import EntitlementsApi
 from sailpoint.v2024.api.global_tenant_security_settings_api import GlobalTenantSecuritySettingsApi
@@ -426,6 +427,7 @@ from sailpoint.v2024.models.data_access import DataAccess
 from sailpoint.v2024.models.data_access_categories_inner import DataAccessCategoriesInner
 from sailpoint.v2024.models.data_access_impact_score import DataAccessImpactScore
 from sailpoint.v2024.models.data_access_policies_inner import DataAccessPoliciesInner
+from sailpoint.v2024.models.data_segment import DataSegment
 from sailpoint.v2024.models.delete_non_employee_records_in_bulk_request import DeleteNonEmployeeRecordsInBulkRequest
 from sailpoint.v2024.models.delete_source202_response import DeleteSource202Response
 from sailpoint.v2024.models.delete_vendor_connector_mapping200_response import DeleteVendorConnectorMapping200Response
@@ -663,6 +665,7 @@ from sailpoint.v2024.models.manual_work_item_state import ManualWorkItemState
 from sailpoint.v2024.models.manually_updated_fields_dto import ManuallyUpdatedFieldsDTO
 from sailpoint.v2024.models.match_term import MatchTerm
 from sailpoint.v2024.models.medium import Medium
+from sailpoint.v2024.models.membership_type import MembershipType
 from sailpoint.v2024.models.metric_aggregation import MetricAggregation
 from sailpoint.v2024.models.metric_response import MetricResponse
 from sailpoint.v2024.models.metric_type import MetricType
@@ -804,6 +807,7 @@ from sailpoint.v2024.models.recommendation_response import RecommendationRespons
 from sailpoint.v2024.models.recommendation_response_dto import RecommendationResponseDto
 from sailpoint.v2024.models.recommender_calculations import RecommenderCalculations
 from sailpoint.v2024.models.recommender_calculations_identity_attributes_value import RecommenderCalculationsIdentityAttributesValue
+from sailpoint.v2024.models.ref import Ref
 from sailpoint.v2024.models.reference import Reference
 from sailpoint.v2024.models.remediation_item_details import RemediationItemDetails
 from sailpoint.v2024.models.remediation_items import RemediationItems
@@ -931,6 +935,9 @@ from sailpoint.v2024.models.scheduled_attributes import ScheduledAttributes
 from sailpoint.v2024.models.scheduled_search import ScheduledSearch
 from sailpoint.v2024.models.scheduled_search_all_of_owner import ScheduledSearchAllOfOwner
 from sailpoint.v2024.models.scheduled_search_name import ScheduledSearchName
+from sailpoint.v2024.models.scope import Scope
+from sailpoint.v2024.models.scope_type import ScopeType
+from sailpoint.v2024.models.scope_visibility_type import ScopeVisibilityType
 from sailpoint.v2024.models.search import Search
 from sailpoint.v2024.models.search_aggregation_specification import SearchAggregationSpecification
 from sailpoint.v2024.models.search_arguments import SearchArguments
