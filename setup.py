@@ -18,7 +18,7 @@ VERSION = "1.2.2"
 PYTHON_REQUIRES = ">=3.7"
 REQUIRES = [
     "urllib3 >= 1.25.3, < 2.1.0", "python-dateutil", "pydantic >= 2",
-    "typing-extensions >= 4.7.1",
+    "typing-extensions >= 4.7.1", "xmltodict>=0.14.2"
 ]
 
 setup(
