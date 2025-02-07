@@ -38,6 +38,7 @@ class PendingApproval(BaseModel):
     PendingApproval
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="The approval id.")
+    access_request_id: Optional[StrictStr] = Field(default=None, description="This is the access request id.", alias="accessRequestId")
     name: Optional[StrictStr] = Field(default=None, description="The name of the approval.")
     created: Optional[datetime] = Field(default=None, description="When the approval was created.")
     modified: Optional[datetime] = Field(default=None, description="When the approval was modified last time.")
@@ -56,7 +57,7 @@ class PendingApproval(BaseModel):
     remove_date_update_requested: Optional[StrictBool] = Field(default=False, description="If true, then the request is to change the remove date or sunset date.", alias="removeDateUpdateRequested")
     current_remove_date: Optional[datetime] = Field(default=None, description="The remove date or sunset date that was assigned at the time of the request.", alias="currentRemoveDate")
     sod_violation_context: Optional[SodViolationContextCheckCompleted] = Field(default=None, alias="sodViolationContext")
-    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "requestCreated", "requestType", "requester", "requestedFor", "owner", "requestedObject", "requesterComment", "previousReviewersComments", "forwardHistory", "commentRequiredWhenRejected", "actionInProcess", "removeDate", "removeDateUpdateRequested", "currentRemoveDate", "sodViolationContext"]
+    __properties: ClassVar[List[str]] = ["id", "accessRequestId", "name", "created", "modified", "requestCreated", "requestType", "requester", "requestedFor", "owner", "requestedObject", "requesterComment", "previousReviewersComments", "forwardHistory", "commentRequiredWhenRejected", "actionInProcess", "removeDate", "removeDateUpdateRequested", "currentRemoveDate", "sodViolationContext"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -156,6 +157,7 @@ class PendingApproval(BaseModel):
 
         _obj = cls.model_validate({
             "id": obj.get("id"),
+            "accessRequestId": obj.get("accessRequestId"),
             "name": obj.get("name"),
             "created": obj.get("created"),
             "modified": obj.get("modified"),

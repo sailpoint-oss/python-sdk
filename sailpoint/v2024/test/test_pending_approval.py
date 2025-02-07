@@ -36,6 +36,7 @@ class TestPendingApproval(unittest.TestCase):
         if include_optional:
             return PendingApproval(
                 id = 'id12345',
+                access_request_id = '2b838de9db9babcfe646d4f274ad4238',
                 name = 'aName',
                 created = '2017-07-11T18:45:37.098Z',
                 modified = '2018-07-25T20:22:28.104Z',

@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | The approval id. | [optional] 
+**access_request_id** | **str** | This is the access request id. | [optional] 
 **name** | **str** | The name of the approval. | [optional] 
 **created** | **datetime** | When the approval was created. | [optional] 
 **modified** | **datetime** | When the approval was modified last time. | [optional] 
