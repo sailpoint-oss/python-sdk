@@ -4,9 +4,22 @@ import copy
 import logging
 import multiprocessing
 import sys
+import ssl
 import urllib3
 
 import http.client as httplib
+
+SUPPORTED_SOCKS_PROXIES = {"socks5", "socks5h", "socks4", "socks4a"}
+
+def is_socks_proxy_url(url):
+    if url is None:
+        return False
+    split_section = url.split("://")
+    if len(split_section) < 2:
+        return False
+    else:
+        return split_section[0].lower() in SUPPORTED_SOCKS_PROXIES
+
 
 
 class ConfigurationParams:
@@ -16,32 +29,26 @@ class ConfigurationParams:
     token_url = None
     access_token = None
     ssl_ca_cert = None
-
+    proxy = None
+    proxy_headers = None
+    verify_ssl = True
 
 class Configuration:
     def __init__(self, configurationParams: ConfigurationParams = None) -> None:
-        if configurationParams == None:
-            configurationParams = self.get_configuration_params()
+        defaultConfiguration = self.get_configuration_params()
 
-            self.access_token = configurationParams.access_token
-            self.base_url = configurationParams.base_url
-            self.client_id = configurationParams.client_id
-            self.client_secret = configurationParams.client_secret
-            self.token_url = configurationParams.token_url
-
-        else:
-            self.access_token = configurationParams.access_token
-            self.base_url = configurationParams.base_url
-            self.client_id = configurationParams.client_id
-            self.client_secret = configurationParams.client_secret
-            self.token_url = str(configurationParams.base_url) + "/oauth/token"
-
+        self.base_url = configurationParams.base_url if configurationParams and configurationParams.base_url else defaultConfiguration.base_url
+        self.client_id = configurationParams.client_id if configurationParams and configurationParams.client_id else defaultConfiguration.client_id
+        self.client_secret = configurationParams.client_secret if configurationParams and configurationParams.client_secret else defaultConfiguration.client_secret
+        self.token_url = str(configurationParams.base_url) + "/oauth/token" if configurationParams and configurationParams.base_url else defaultConfiguration.token_url
+        self.access_token = configurationParams.access_token if configurationParams and configurationParams.access_token else defaultConfiguration.access_token
+        self.proxy = configurationParams.proxy if configurationParams and configurationParams.proxy else None
+        self.proxy_headers = configurationParams.proxy_headers if configurationParams and configurationParams.proxy_headers else None
+        self.verify_ssl = configurationParams.verify_ssl if configurationParams and configurationParams.verify_ssl else True
 
         url = f"{self.token_url}"
         if self.access_token == None:
-            self.access_token = self.get_access_token(url, self.client_id, self.client_secret)
-
-
+            self.access_token = self.get_access_token(url, self.client_id, self.client_secret, self.proxy, self.proxy_headers, self.verify_ssl)
 
         self.experimental = False
 
@@ -79,7 +86,7 @@ class Configuration:
            Set this to false to skip verifying SSL certificate when calling API
            from https server.
         """
-        self.ssl_ca_cert = configurationParams.ssl_ca_cert
+        self.ssl_ca_cert = defaultConfiguration.ssl_ca_cert
         """Set this to customize the certificate file to verify the peer.
         """
         self.cert_file = None
@@ -104,12 +111,6 @@ class Configuration:
            cpu_count * 5 is used as default value to increase performance.
         """
 
-        self.proxy = None
-        """Proxy URL
-        """
-        self.proxy_headers = None
-        """Proxy headers
-        """
         self.safe_chars_for_path_param = ""
         """Safe chars for path_param
         """
@@ -141,7 +142,7 @@ class Configuration:
         if localConfiguration.base_url:
             return localConfiguration
 
-        return {}
+        return ConfigurationParams()
 
     @classmethod
     def get_environment_params(self) -> ConfigurationParams:
@@ -178,9 +179,32 @@ class Configuration:
                 return config
 
     @classmethod
-    def get_access_token(self, url: str, client_id: str, client_secret: str) -> str:
+    def get_access_token(self, url: str, client_id: str, client_secret: str, proxy: str, proxy_headers: dict, verify_ssl: bool) -> str:
+
+        http = urllib3.PoolManager()
+        pool_args = {}
+
+        if verify_ssl:
+            cert_reqs = ssl.CERT_REQUIRED
+        else:
+            cert_reqs = ssl.CERT_NONE
+
+        if proxy:
+            if is_socks_proxy_url(proxy):
+                from urllib3.contrib.socks import SOCKSProxyManager
+                pool_args["proxy_url"] = proxy
+                pool_args["headers"] = proxy_headers
+                pool_args["cert_reqs"] = cert_reqs
+                http = SOCKSProxyManager(**pool_args)
+            else:
+                pool_args["proxy_url"] = proxy
+                pool_args["proxy_headers"] = proxy_headers
+                pool_args["cert_reqs"] = cert_reqs
+                http = urllib3.ProxyManager(**pool_args)
+        else:
+            http = urllib3.PoolManager(**pool_args)
+
         try:
-            http = urllib3.PoolManager()
             response = http.request_encode_body("POST", url, encode_multipart=False, fields={"grant_type": "client_credentials", "client_id": client_id, "client_secret": client_secret})
             data = json.loads(response.data)
             if response.status == 200:
