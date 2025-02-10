@@ -176,7 +176,8 @@ class Configuration:
                 config.client_id = data["ClientId"]
                 config.client_secret = data["ClientSecret"]
                 config.token_url = config.base_url + "/oauth/token"
-                return config
+        
+        return config
 
     @classmethod
     def get_access_token(self, url: str, client_id: str, client_secret: str, proxy: str, proxy_headers: dict, verify_ssl: bool) -> str:

@@ -3,7 +3,7 @@ import sailpoint.v2024
 import sailpoint.v3
 import sailpoint.beta
 from sailpoint.v3.models.search import Search
-from sailpoint.configuration import Configuration
+from sailpoint.configuration import Configuration, ConfigurationParams
 from sailpoint.paginator import Paginator
 
 class TestPythonSDK(unittest.TestCase):
@@ -14,6 +14,17 @@ class TestPythonSDK(unittest.TestCase):
     configuration.experimental = True
     v2024_api_client = sailpoint.v2024.ApiClient(configuration)
 
+
+    def test_manual_configuration(self):
+        configurationParams = ConfigurationParams()
+        configurationParams.base_url = "https://localhost:8080"
+        configurationParams.client_id = "client_id"
+        configurationParams.client_secret = "client_secret"
+        configuration = Configuration(configurationParams)
+
+        self.assertEqual(configuration.base_url, "https://localhost:8080")
+        self.assertEqual(configuration.client_id, "client_id")
+        self.assertEqual(configuration.client_secret, "client_secret")
 
     def test_v3_accounts(self):
         accounts = sailpoint.v3.AccountsApi(self.v3_api_client).list_accounts_with_http_info()
