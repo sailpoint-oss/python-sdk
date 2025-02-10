@@ -46,12 +46,10 @@ class TestPendingApproval(unittest.TestCase):
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20648', 
                     name = 'William Wilson', ),
-                requested_for = [
-                    sailpoint.v2024.models.access_item_requested_for.AccessItemRequestedFor(
-                        type = 'IDENTITY', 
-                        id = '2c4180a46faadee4016fb4e018c20626', 
-                        name = 'Robert Robinson', )
-                    ],
+                requested_for = sailpoint.v2024.models.access_item_requested_for.AccessItemRequestedFor(
+                    type = 'IDENTITY', 
+                    id = '2c4180a46faadee4016fb4e018c20626', 
+                    name = 'Robert Robinson', ),
                 owner = sailpoint.v2024.models.pending_approval_owner.PendingApproval_owner(
                     type = 'IDENTITY', 
                     id = '2c9180a46faadee4016fb4e018c20639', 

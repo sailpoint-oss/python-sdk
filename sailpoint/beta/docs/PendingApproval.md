@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **request_created** | **datetime** | When the access-request was created. | [optional] 
 **request_type** | [**AccessRequestType**](AccessRequestType.md) |  | [optional] 
 **requester** | [**AccessItemRequesterDto**](AccessItemRequesterDto.md) |  | [optional] 
-**requested_for** | [**List[AccessItemRequestedForDto]**](AccessItemRequestedForDto.md) | Identities access was requested for. | [optional] 
+**requested_for** | [**AccessItemRequestedForDto**](AccessItemRequestedForDto.md) |  | [optional] 
 **owner** | [**AccessItemOwnerDto**](AccessItemOwnerDto.md) |  | [optional] 
 **requested_object** | [**RequestableObjectReference**](RequestableObjectReference.md) |  | [optional] 
 **requester_comment** | [**CommentDto1**](CommentDto1.md) |  | [optional] 

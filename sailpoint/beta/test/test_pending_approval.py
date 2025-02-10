@@ -45,12 +45,10 @@ class TestPendingApproval(unittest.TestCase):
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20648', 
                     name = 'William Wilson', ),
-                requested_for = [
-                    sailpoint.beta.models.access_item_requested_for_dto.AccessItemRequestedForDto(
-                        type = 'IDENTITY', 
-                        id = '2c4180a46faadee4016fb4e018c20626', 
-                        name = 'Robert Robinson', )
-                    ],
+                requested_for = sailpoint.beta.models.access_item_requested_for_dto.AccessItemRequestedForDto(
+                    type = 'IDENTITY', 
+                    id = '2c4180a46faadee4016fb4e018c20626', 
+                    name = 'Robert Robinson', ),
                 owner = sailpoint.beta.models.access_item_owner_dto.AccessItemOwnerDto(
                     type = 'IDENTITY', 
                     id = '2c9180a46faadee4016fb4e018c20639', 

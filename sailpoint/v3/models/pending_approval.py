@@ -20,7 +20,6 @@ import json
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from typing_extensions import Annotated
 from sailpoint.v3.models.access_item_requested_for import AccessItemRequestedFor
 from sailpoint.v3.models.access_item_requester import AccessItemRequester
 from sailpoint.v3.models.access_request_type import AccessRequestType
@@ -45,7 +44,7 @@ class PendingApproval(BaseModel):
     request_created: Optional[datetime] = Field(default=None, description="When the access-request was created.", alias="requestCreated")
     request_type: Optional[AccessRequestType] = Field(default=None, alias="requestType")
     requester: Optional[AccessItemRequester] = None
-    requested_for: Optional[Annotated[List[AccessItemRequestedFor], Field(min_length=1, max_length=10)]] = Field(default=None, description="Identities access was requested for.", alias="requestedFor")
+    requested_for: Optional[AccessItemRequestedFor] = Field(default=None, alias="requestedFor")
     owner: Optional[PendingApprovalOwner] = None
     requested_object: Optional[RequestableObjectReference] = Field(default=None, alias="requestedObject")
     requester_comment: Optional[CommentDto] = Field(default=None, alias="requesterComment")
@@ -101,13 +100,9 @@ class PendingApproval(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of requester
         if self.requester:
             _dict['requester'] = self.requester.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of each item in requested_for (list)
-        _items = []
+        # override the default output from pydantic by calling `to_dict()` of requested_for
         if self.requested_for:
-            for _item_requested_for in self.requested_for:
-                if _item_requested_for:
-                    _items.append(_item_requested_for.to_dict())
-            _dict['requestedFor'] = _items
+            _dict['requestedFor'] = self.requested_for.to_dict()
         # override the default output from pydantic by calling `to_dict()` of owner
         if self.owner:
             _dict['owner'] = self.owner.to_dict()
@@ -164,7 +159,7 @@ class PendingApproval(BaseModel):
             "requestCreated": obj.get("requestCreated"),
             "requestType": obj.get("requestType"),
             "requester": AccessItemRequester.from_dict(obj["requester"]) if obj.get("requester") is not None else None,
-            "requestedFor": [AccessItemRequestedFor.from_dict(_item) for _item in obj["requestedFor"]] if obj.get("requestedFor") is not None else None,
+            "requestedFor": AccessItemRequestedFor.from_dict(obj["requestedFor"]) if obj.get("requestedFor") is not None else None,
             "owner": PendingApprovalOwner.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
             "requestedObject": RequestableObjectReference.from_dict(obj["requestedObject"]) if obj.get("requestedObject") is not None else None,
             "requesterComment": CommentDto.from_dict(obj["requesterComment"]) if obj.get("requesterComment") is not None else None,
