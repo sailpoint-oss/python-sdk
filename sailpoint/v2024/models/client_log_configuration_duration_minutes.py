@@ -47,8 +47,8 @@ class ClientLogConfigurationDurationMinutes(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return self.model_dump_json(by_alias=True, exclude_unset=True)
-
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -88,7 +88,7 @@ class ClientLogConfigurationDurationMinutes(BaseModel):
             "clientId": obj.get("clientId"),
             "durationMinutes": obj.get("durationMinutes") if obj.get("durationMinutes") is not None else 240,
             "rootLevel": obj.get("rootLevel"),
-            "logLevels": dict((_k, _v) for _k, _v in obj.get("logLevels").items())
+            "logLevels": dict((_k, _v) for _k, _v in obj.get("logLevels").items()) if obj.get("logLevels") is not None else None
         })
         return _obj
 
