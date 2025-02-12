@@ -54,6 +54,13 @@ class TestCertificationsApi(unittest.TestCase):
         """
         pass
 
+    def test_list_certifications(self) -> None:
+        """Test case for list_certifications
+
+        Certifications by IDs
+        """
+        pass
+
     def test_submit_reassign_certs_async(self) -> None:
         """Test case for submit_reassign_certs_async
 

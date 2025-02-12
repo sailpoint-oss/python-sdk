@@ -167,6 +167,7 @@ Class | Method | HTTP request | Description
 *CertificationsApi* | [**get_identity_certification_pending_tasks**](sailpoint/beta/docs/CertificationsApi.md#get_identity_certification_pending_tasks) | **GET** /certifications/{id}/tasks-pending | Pending Certification Tasks
 *CertificationsApi* | [**get_identity_certification_task_status**](sailpoint/beta/docs/CertificationsApi.md#get_identity_certification_task_status) | **GET** /certifications/{id}/tasks/{taskId} | Certification Task Status
 *CertificationsApi* | [**list_certification_reviewers**](sailpoint/beta/docs/CertificationsApi.md#list_certification_reviewers) | **GET** /certifications/{id}/reviewers | List of Reviewers for certification
+*CertificationsApi* | [**list_certifications**](sailpoint/beta/docs/CertificationsApi.md#list_certifications) | **GET** /certifications | Certifications by IDs
 *CertificationsApi* | [**submit_reassign_certs_async**](sailpoint/beta/docs/CertificationsApi.md#submit_reassign_certs_async) | **POST** /certifications/{id}/reassign-async | Reassign Certifications Asynchronously
 *ConnectorRuleManagementApi* | [**create_connector_rule**](sailpoint/beta/docs/ConnectorRuleManagementApi.md#create_connector_rule) | **POST** /connector-rules | Create Connector Rule
 *ConnectorRuleManagementApi* | [**delete_connector_rule**](sailpoint/beta/docs/ConnectorRuleManagementApi.md#delete_connector_rule) | **DELETE** /connector-rules/{id} | Delete a Connector-Rule
