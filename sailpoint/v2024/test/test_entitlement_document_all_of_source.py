@@ -36,7 +36,8 @@ class TestEntitlementDocumentAllOfSource(unittest.TestCase):
         if include_optional:
             return EntitlementDocumentAllOfSource(
                 id = '2c91808b6e9e6fb8016eec1a2b6f7b5f',
-                name = 'ODS-HR-Employees'
+                name = 'ODS-HR-Employees',
+                type = 'SOURCE'
             )
         else:
             return EntitlementDocumentAllOfSource(

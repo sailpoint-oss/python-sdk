@@ -38,8 +38,8 @@ class TestAccessProfileSummary(unittest.TestCase):
                 id = '2c91808568c529c60168cca6f90c1313',
                 name = 'John Doe',
                 display_name = 'John Q. Doe',
-                type = 'IDENTITY',
                 description = '',
+                type = 'ACCESS_PROFILE',
                 source = sailpoint.v3.models.reference.Reference(
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'John Doe', ),

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | Attribute name. | [optional] 
 **op** | **str** | Operation to perform on attribute. | [optional] 
-**value** | **str** | Value of attribute. | [optional] 
+**value** | [**AttributeRequestValue**](AttributeRequestValue.md) |  | [optional] 
 
 ## Example
 

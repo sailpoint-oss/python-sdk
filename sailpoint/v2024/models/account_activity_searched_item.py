@@ -21,9 +21,8 @@ from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v2024.models.account_request import AccountRequest
-from sailpoint.v2024.models.account_source import AccountSource
+from sailpoint.v2024.models.activity_identity import ActivityIdentity
 from sailpoint.v2024.models.approval1 import Approval1
-from sailpoint.v2024.models.document_type import DocumentType
 from sailpoint.v2024.models.expansion_item import ExpansionItem
 from sailpoint.v2024.models.original_request import OriginalRequest
 from typing import Optional, Set
@@ -33,17 +32,15 @@ class AccountActivitySearchedItem(BaseModel):
     """
     AccountActivity
     """ # noqa: E501
-    id: StrictStr
-    name: StrictStr
-    type: DocumentType = Field(alias="_type")
+    id: Optional[StrictStr] = Field(default=None, description="ID of account activity.")
     action: Optional[StrictStr] = Field(default=None, description="Type of action performed in the activity.")
     created: Optional[datetime] = Field(default=None, description="ISO-8601 date-time referring to the time when the object was created.")
     modified: Optional[datetime] = Field(default=None, description="ISO-8601 date-time referring to the time when the object was last modified.")
+    synced: Optional[StrictStr] = Field(default=None, description="ISO-8601 date-time referring to the date-time when object was queued to be synced into search database for use in the search API.   This date-time changes anytime there is an update to the object, which triggers a synchronization event being sent to the search database.  There may be some delay between the `synced` time and the time when the updated data is actually available in the search API. ")
     stage: Optional[StrictStr] = Field(default=None, description="Activity's current stage.")
-    origin: Optional[StrictStr] = Field(default=None, description="Activity's origin.")
     status: Optional[StrictStr] = Field(default=None, description="Activity's current status.")
-    requester: Optional[AccountSource] = None
-    recipient: Optional[AccountSource] = None
+    requester: Optional[ActivityIdentity] = None
+    recipient: Optional[ActivityIdentity] = None
     tracking_number: Optional[StrictStr] = Field(default=None, description="Account activity's tracking number.", alias="trackingNumber")
     errors: Optional[List[StrictStr]] = Field(default=None, description="Errors provided by the source while completing account actions.")
     warnings: Optional[List[StrictStr]] = Field(default=None, description="Warnings provided by the source while completing account actions.")
@@ -52,7 +49,7 @@ class AccountActivitySearchedItem(BaseModel):
     expansion_items: Optional[List[ExpansionItem]] = Field(default=None, description="Controls that translated the attribute requests into actual provisioning actions on the source.", alias="expansionItems")
     account_requests: Optional[List[AccountRequest]] = Field(default=None, description="Account data for each individual source action triggered by the original requests.", alias="accountRequests")
     sources: Optional[StrictStr] = Field(default=None, description="Sources involved in the account activity.")
-    __properties: ClassVar[List[str]] = ["id", "name", "_type", "action", "created", "modified", "stage", "origin", "status", "requester", "recipient", "trackingNumber", "errors", "warnings", "approvals", "originalRequests", "expansionItems", "accountRequests", "sources"]
+    __properties: ClassVar[List[str]] = ["id", "action", "created", "modified", "synced", "stage", "status", "requester", "recipient", "trackingNumber", "errors", "warnings", "approvals", "originalRequests", "expansionItems", "accountRequests", "sources"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -137,11 +134,6 @@ class AccountActivitySearchedItem(BaseModel):
         if self.modified is None and "modified" in self.model_fields_set:
             _dict['modified'] = None
 
-        # set to None if origin (nullable) is None
-        # and model_fields_set contains the field
-        if self.origin is None and "origin" in self.model_fields_set:
-            _dict['origin'] = None
-
         # set to None if errors (nullable) is None
         # and model_fields_set contains the field
         if self.errors is None and "errors" in self.model_fields_set:
@@ -165,16 +157,14 @@ class AccountActivitySearchedItem(BaseModel):
 
         _obj = cls.model_validate({
             "id": obj.get("id"),
-            "name": obj.get("name"),
-            "_type": obj.get("_type"),
             "action": obj.get("action"),
             "created": obj.get("created"),
             "modified": obj.get("modified"),
+            "synced": obj.get("synced"),
             "stage": obj.get("stage"),
-            "origin": obj.get("origin"),
             "status": obj.get("status"),
-            "requester": AccountSource.from_dict(obj["requester"]) if obj.get("requester") is not None else None,
-            "recipient": AccountSource.from_dict(obj["recipient"]) if obj.get("recipient") is not None else None,
+            "requester": ActivityIdentity.from_dict(obj["requester"]) if obj.get("requester") is not None else None,
+            "recipient": ActivityIdentity.from_dict(obj["recipient"]) if obj.get("recipient") is not None else None,
             "trackingNumber": obj.get("trackingNumber"),
             "errors": obj.get("errors"),
             "warnings": obj.get("warnings"),

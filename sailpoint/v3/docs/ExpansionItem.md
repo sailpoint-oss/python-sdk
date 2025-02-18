@@ -6,10 +6,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **account_id** | **str** | The ID of the account | [optional] 
-**cause** | **str** |  | [optional] 
+**cause** | **str** | Cause of the expansion item. | [optional] 
 **name** | **str** | The name of the item | [optional] 
-**attribute_requests** | [**List[AttributeRequest]**](AttributeRequest.md) |  | [optional] 
+**attribute_request** | [**AttributeRequest**](AttributeRequest.md) |  | [optional] 
 **source** | [**AccountSource**](AccountSource.md) |  | [optional] 
+**id** | **str** | ID of the expansion item | [optional] 
+**state** | **str** | State of the expansion item | [optional] 
 
 ## Example
 

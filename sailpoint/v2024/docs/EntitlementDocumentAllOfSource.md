@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | ID of entitlement&#39;s source. | [optional] 
 **name** | **str** | Display name of entitlement&#39;s source. | [optional] 
+**type** | **str** | Type of object. | [optional] 
 
 ## Example
 

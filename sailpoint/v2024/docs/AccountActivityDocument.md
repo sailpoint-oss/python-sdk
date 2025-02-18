@@ -6,17 +6,15 @@ AccountActivity
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | 
-**name** | **str** |  | 
-**type** | [**DocumentType**](DocumentType.md) |  | 
+**id** | **str** | ID of account activity. | [optional] 
 **action** | **str** | Type of action performed in the activity. | [optional] 
 **created** | **datetime** | ISO-8601 date-time referring to the time when the object was created. | [optional] 
 **modified** | **datetime** | ISO-8601 date-time referring to the time when the object was last modified. | [optional] 
+**synced** | **str** | ISO-8601 date-time referring to the date-time when object was queued to be synced into search database for use in the search API.   This date-time changes anytime there is an update to the object, which triggers a synchronization event being sent to the search database.  There may be some delay between the &#x60;synced&#x60; time and the time when the updated data is actually available in the search API.  | [optional] 
 **stage** | **str** | Activity&#39;s current stage. | [optional] 
-**origin** | **str** | Activity&#39;s origin. | [optional] 
 **status** | **str** | Activity&#39;s current status. | [optional] 
-**requester** | [**AccountSource**](AccountSource.md) |  | [optional] 
-**recipient** | [**AccountSource**](AccountSource.md) |  | [optional] 
+**requester** | [**ActivityIdentity**](ActivityIdentity.md) |  | [optional] 
+**recipient** | [**ActivityIdentity**](ActivityIdentity.md) |  | [optional] 
 **tracking_number** | **str** | Account activity&#39;s tracking number. | [optional] 
 **errors** | **List[str]** | Errors provided by the source while completing account actions. | [optional] 
 **warnings** | **List[str]** | Warnings provided by the source while completing account actions. | [optional] 

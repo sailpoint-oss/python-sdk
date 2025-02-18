@@ -21,6 +21,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v2024.models.account_source import AccountSource
 from sailpoint.v2024.models.attribute_request import AttributeRequest
+from sailpoint.v2024.models.result import Result
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,10 +30,11 @@ class OriginalRequest(BaseModel):
     OriginalRequest
     """ # noqa: E501
     account_id: Optional[StrictStr] = Field(default=None, description="Account ID.", alias="accountId")
+    result: Optional[Result] = None
     attribute_requests: Optional[List[AttributeRequest]] = Field(default=None, description="Attribute changes requested for account.", alias="attributeRequests")
     op: Optional[StrictStr] = Field(default=None, description="Operation used.")
     source: Optional[AccountSource] = None
-    __properties: ClassVar[List[str]] = ["accountId", "attributeRequests", "op", "source"]
+    __properties: ClassVar[List[str]] = ["accountId", "result", "attributeRequests", "op", "source"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -73,6 +75,9 @@ class OriginalRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of result
+        if self.result:
+            _dict['result'] = self.result.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in attribute_requests (list)
         _items = []
         if self.attribute_requests:
@@ -96,6 +101,7 @@ class OriginalRequest(BaseModel):
 
         _obj = cls.model_validate({
             "accountId": obj.get("accountId"),
+            "result": Result.from_dict(obj["result"]) if obj.get("result") is not None else None,
             "attributeRequests": [AttributeRequest.from_dict(_item) for _item in obj["attributeRequests"]] if obj.get("attributeRequests") is not None else None,
             "op": obj.get("op"),
             "source": AccountSource.from_dict(obj["source"]) if obj.get("source") is not None else None

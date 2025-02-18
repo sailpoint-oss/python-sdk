@@ -15,6 +15,8 @@
 
 # import models into model package
 from sailpoint.v2024.models.access import Access
+from sailpoint.v2024.models.access_apps import AccessApps
+from sailpoint.v2024.models.access_apps_owner import AccessAppsOwner
 from sailpoint.v2024.models.access_constraint import AccessConstraint
 from sailpoint.v2024.models.access_criteria import AccessCriteria
 from sailpoint.v2024.models.access_criteria_criteria_list_inner import AccessCriteriaCriteriaListInner
@@ -135,6 +137,7 @@ from sailpoint.v2024.models.accounts_collected_for_aggregation_source import Acc
 from sailpoint.v2024.models.accounts_collected_for_aggregation_stats import AccountsCollectedForAggregationStats
 from sailpoint.v2024.models.accounts_export_report_arguments import AccountsExportReportArguments
 from sailpoint.v2024.models.activate_campaign_options import ActivateCampaignOptions
+from sailpoint.v2024.models.activity_identity import ActivityIdentity
 from sailpoint.v2024.models.activity_insights import ActivityInsights
 from sailpoint.v2024.models.admin_review_reassign import AdminReviewReassign
 from sailpoint.v2024.models.admin_review_reassign_reassign_to import AdminReviewReassignReassignTo
@@ -182,6 +185,7 @@ from sailpoint.v2024.models.attribute_definition import AttributeDefinition
 from sailpoint.v2024.models.attribute_definition_schema import AttributeDefinitionSchema
 from sailpoint.v2024.models.attribute_definition_type import AttributeDefinitionType
 from sailpoint.v2024.models.attribute_request import AttributeRequest
+from sailpoint.v2024.models.attribute_request_value import AttributeRequestValue
 from sailpoint.v2024.models.attribute_value_dto import AttributeValueDTO
 from sailpoint.v2024.models.attributes_changed import AttributesChanged
 from sailpoint.v2024.models.audit_details import AuditDetails
@@ -191,7 +195,7 @@ from sailpoint.v2024.models.auth_user import AuthUser
 from sailpoint.v2024.models.backup_options import BackupOptions
 from sailpoint.v2024.models.backup_response import BackupResponse
 from sailpoint.v2024.models.base_access import BaseAccess
-from sailpoint.v2024.models.base_access_all_of_owner import BaseAccessAllOfOwner
+from sailpoint.v2024.models.base_access_owner import BaseAccessOwner
 from sailpoint.v2024.models.base_access_profile import BaseAccessProfile
 from sailpoint.v2024.models.base_account import BaseAccount
 from sailpoint.v2024.models.base_common_dto import BaseCommonDto
@@ -347,7 +351,6 @@ from sailpoint.v2024.models.dimension_membership_selector_type import DimensionM
 from sailpoint.v2024.models.dimension_ref import DimensionRef
 from sailpoint.v2024.models.display_reference import DisplayReference
 from sailpoint.v2024.models.dkim_attributes import DkimAttributes
-from sailpoint.v2024.models.document_type import DocumentType
 from sailpoint.v2024.models.domain_address import DomainAddress
 from sailpoint.v2024.models.domain_status_dto import DomainStatusDto
 from sailpoint.v2024.models.draft_response import DraftResponse
@@ -364,6 +367,8 @@ from sailpoint.v2024.models.entitlement_access_request_config import Entitlement
 from sailpoint.v2024.models.entitlement_approval_scheme import EntitlementApprovalScheme
 from sailpoint.v2024.models.entitlement_bulk_update_request import EntitlementBulkUpdateRequest
 from sailpoint.v2024.models.entitlement_document import EntitlementDocument
+from sailpoint.v2024.models.entitlement_document_all_of_manually_updated_fields import EntitlementDocumentAllOfManuallyUpdatedFields
+from sailpoint.v2024.models.entitlement_document_all_of_permissions import EntitlementDocumentAllOfPermissions
 from sailpoint.v2024.models.entitlement_document_all_of_source import EntitlementDocumentAllOfSource
 from sailpoint.v2024.models.entitlement_dto import EntitlementDto
 from sailpoint.v2024.models.entitlement_ref import EntitlementRef
@@ -381,9 +386,11 @@ from sailpoint.v2024.models.error_message_dto1 import ErrorMessageDto1
 from sailpoint.v2024.models.error_response_dto import ErrorResponseDto
 from sailpoint.v2024.models.evaluate_response import EvaluateResponse
 from sailpoint.v2024.models.event import Event
+from sailpoint.v2024.models.event_actor import EventActor
 from sailpoint.v2024.models.event_attributes import EventAttributes
 from sailpoint.v2024.models.event_bridge_config import EventBridgeConfig
 from sailpoint.v2024.models.event_document import EventDocument
+from sailpoint.v2024.models.event_target import EventTarget
 from sailpoint.v2024.models.exception_access_criteria import ExceptionAccessCriteria
 from sailpoint.v2024.models.exception_criteria import ExceptionCriteria
 from sailpoint.v2024.models.exception_criteria_access import ExceptionCriteriaAccess
@@ -737,6 +744,7 @@ from sailpoint.v2024.models.requested_item_status_sod_violation_context import R
 from sailpoint.v2024.models.resource_object import ResourceObject
 from sailpoint.v2024.models.resource_objects_request import ResourceObjectsRequest
 from sailpoint.v2024.models.resource_objects_response import ResourceObjectsResponse
+from sailpoint.v2024.models.result import Result
 from sailpoint.v2024.models.review_decision import ReviewDecision
 from sailpoint.v2024.models.review_reassign import ReviewReassign
 from sailpoint.v2024.models.review_recommendation import ReviewRecommendation
@@ -762,6 +770,10 @@ from sailpoint.v2024.models.role_criteria_level2 import RoleCriteriaLevel2
 from sailpoint.v2024.models.role_criteria_level3 import RoleCriteriaLevel3
 from sailpoint.v2024.models.role_criteria_operation import RoleCriteriaOperation
 from sailpoint.v2024.models.role_document import RoleDocument
+from sailpoint.v2024.models.role_document_all_of_dimension_schema_attributes import RoleDocumentAllOfDimensionSchemaAttributes
+from sailpoint.v2024.models.role_document_all_of_dimensions import RoleDocumentAllOfDimensions
+from sailpoint.v2024.models.role_document_all_of_entitlements import RoleDocumentAllOfEntitlements
+from sailpoint.v2024.models.role_document_all_of_entitlements1 import RoleDocumentAllOfEntitlements1
 from sailpoint.v2024.models.role_get_all_bulk_update_response import RoleGetAllBulkUpdateResponse
 from sailpoint.v2024.models.role_identity import RoleIdentity
 from sailpoint.v2024.models.role_insight import RoleInsight

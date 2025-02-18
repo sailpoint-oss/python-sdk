@@ -21,7 +21,8 @@ from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v2024.models.base_segment import BaseSegment
-from sailpoint.v2024.models.document_type import DocumentType
+from sailpoint.v2024.models.entitlement_document_all_of_manually_updated_fields import EntitlementDocumentAllOfManuallyUpdatedFields
+from sailpoint.v2024.models.entitlement_document_all_of_permissions import EntitlementDocumentAllOfPermissions
 from sailpoint.v2024.models.entitlement_document_all_of_source import EntitlementDocumentAllOfSource
 from typing import Optional, Set
 from typing_extensions import Self
@@ -30,22 +31,30 @@ class EntitlementDocument(BaseModel):
     """
     Entitlement
     """ # noqa: E501
-    id: StrictStr
-    name: StrictStr
-    type: DocumentType = Field(alias="_type")
+    id: StrictStr = Field(description="ID of the referenced object.")
+    name: StrictStr = Field(description="The human readable name of the referenced object.")
     modified: Optional[datetime] = Field(default=None, description="ISO-8601 date-time referring to the time when the object was last modified.")
     synced: Optional[StrictStr] = Field(default=None, description="ISO-8601 date-time referring to the date-time when object was queued to be synced into search database for use in the search API.   This date-time changes anytime there is an update to the object, which triggers a synchronization event being sent to the search database.  There may be some delay between the `synced` time and the time when the updated data is actually available in the search API. ")
     display_name: Optional[StrictStr] = Field(default=None, description="Entitlement's display name.", alias="displayName")
     source: Optional[EntitlementDocumentAllOfSource] = None
-    segments: Optional[List[BaseSegment]] = Field(default=None, description="Segments with the role.")
+    segments: Optional[List[BaseSegment]] = Field(default=None, description="Segments with the entitlement.")
     segment_count: Optional[StrictInt] = Field(default=None, description="Number of segments with the role.", alias="segmentCount")
     requestable: Optional[StrictBool] = Field(default=False, description="Indicates whether the entitlement is requestable.")
     cloud_governed: Optional[StrictBool] = Field(default=False, description="Indicates whether the entitlement is cloud governed.", alias="cloudGoverned")
     created: Optional[datetime] = Field(default=None, description="ISO-8601 date-time referring to the time when the object was created.")
     privileged: Optional[StrictBool] = Field(default=False, description="Indicates whether the entitlement is privileged.")
-    identity_count: Optional[StrictInt] = Field(default=None, description="Number of identities who have access to the entitlement.", alias="identityCount")
     tags: Optional[List[StrictStr]] = Field(default=None, description="Tags that have been applied to the object.")
-    __properties: ClassVar[List[str]] = ["id", "name", "_type", "modified", "synced", "displayName", "source", "segments", "segmentCount", "requestable", "cloudGoverned", "created", "privileged", "identityCount", "tags"]
+    attribute: Optional[StrictStr] = Field(default=None, description="Attribute information for the entitlement.")
+    value: Optional[StrictStr] = Field(default=None, description="Value of the entitlement.")
+    source_schema_object_type: Optional[StrictStr] = Field(default=None, description="Source schema object type of the entitlement.", alias="sourceSchemaObjectType")
+    var_schema: Optional[StrictStr] = Field(default=None, description="Schema type of the entitlement.", alias="schema")
+    hash: Optional[StrictStr] = Field(default=None, description="Read-only calculated hash value of an entitlement.")
+    attributes: Optional[Dict[str, Any]] = Field(default=None, description="Attributes of the entitlement.")
+    truncated_attributes: Optional[List[StrictStr]] = Field(default=None, description="Truncated attributes of the entitlement.", alias="truncatedAttributes")
+    contains_data_access: Optional[StrictBool] = Field(default=False, description="Indicates whether the entitlement contains data access.", alias="containsDataAccess")
+    manually_updated_fields: Optional[EntitlementDocumentAllOfManuallyUpdatedFields] = Field(default=None, alias="manuallyUpdatedFields")
+    permissions: Optional[List[EntitlementDocumentAllOfPermissions]] = None
+    __properties: ClassVar[List[str]] = ["id", "name", "modified", "synced", "displayName", "source", "segments", "segmentCount", "requestable", "cloudGoverned", "created", "privileged", "tags", "attribute", "value", "sourceSchemaObjectType", "schema", "hash", "attributes", "truncatedAttributes", "containsDataAccess", "manuallyUpdatedFields", "permissions"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -96,6 +105,16 @@ class EntitlementDocument(BaseModel):
                 if _item_segments:
                     _items.append(_item_segments.to_dict())
             _dict['segments'] = _items
+        # override the default output from pydantic by calling `to_dict()` of manually_updated_fields
+        if self.manually_updated_fields:
+            _dict['manuallyUpdatedFields'] = self.manually_updated_fields.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in permissions (list)
+        _items = []
+        if self.permissions:
+            for _item_permissions in self.permissions:
+                if _item_permissions:
+                    _items.append(_item_permissions.to_dict())
+            _dict['permissions'] = _items
         # set to None if modified (nullable) is None
         # and model_fields_set contains the field
         if self.modified is None and "modified" in self.model_fields_set:
@@ -105,6 +124,11 @@ class EntitlementDocument(BaseModel):
         # and model_fields_set contains the field
         if self.created is None and "created" in self.model_fields_set:
             _dict['created'] = None
+
+        # set to None if manually_updated_fields (nullable) is None
+        # and model_fields_set contains the field
+        if self.manually_updated_fields is None and "manually_updated_fields" in self.model_fields_set:
+            _dict['manuallyUpdatedFields'] = None
 
         return _dict
 
@@ -120,7 +144,6 @@ class EntitlementDocument(BaseModel):
         _obj = cls.model_validate({
             "id": obj.get("id"),
             "name": obj.get("name"),
-            "_type": obj.get("_type"),
             "modified": obj.get("modified"),
             "synced": obj.get("synced"),
             "displayName": obj.get("displayName"),
@@ -131,8 +154,17 @@ class EntitlementDocument(BaseModel):
             "cloudGoverned": obj.get("cloudGoverned") if obj.get("cloudGoverned") is not None else False,
             "created": obj.get("created"),
             "privileged": obj.get("privileged") if obj.get("privileged") is not None else False,
-            "identityCount": obj.get("identityCount"),
-            "tags": obj.get("tags")
+            "tags": obj.get("tags"),
+            "attribute": obj.get("attribute"),
+            "value": obj.get("value"),
+            "sourceSchemaObjectType": obj.get("sourceSchemaObjectType"),
+            "schema": obj.get("schema"),
+            "hash": obj.get("hash"),
+            "attributes": obj.get("attributes"),
+            "truncatedAttributes": obj.get("truncatedAttributes"),
+            "containsDataAccess": obj.get("containsDataAccess") if obj.get("containsDataAccess") is not None else False,
+            "manuallyUpdatedFields": EntitlementDocumentAllOfManuallyUpdatedFields.from_dict(obj["manuallyUpdatedFields"]) if obj.get("manuallyUpdatedFields") is not None else None,
+            "permissions": [EntitlementDocumentAllOfPermissions.from_dict(_item) for _item in obj["permissions"]] if obj.get("permissions") is not None else None
         })
         return _obj
 

@@ -6,9 +6,6 @@ Role
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | The unique ID of the referenced object. | 
-**name** | **str** | The human readable name of the referenced object. | 
-**type** | [**DocumentType**](DocumentType.md) |  | 
 **description** | **str** | Access item&#39;s description. | [optional] 
 **created** | **datetime** | ISO-8601 date-time referring to the time when the object was created. | [optional] 
 **modified** | **datetime** | ISO-8601 date-time referring to the time when the object was last modified. | [optional] 
@@ -16,14 +13,20 @@ Name | Type | Description | Notes
 **enabled** | **bool** | Indicates whether the access item is currently enabled. | [optional] [default to False]
 **requestable** | **bool** | Indicates whether the access item can be requested. | [optional] [default to True]
 **request_comments_required** | **bool** | Indicates whether comments are required for requests to access the item. | [optional] [default to False]
-**owner** | [**BaseAccessAllOfOwner**](BaseAccessAllOfOwner.md) |  | [optional] 
+**owner** | [**BaseAccessOwner**](BaseAccessOwner.md) |  | [optional] 
+**id** | **str** | ID of the role. | 
+**name** | **str** | Name of the role. | 
 **access_profiles** | [**List[BaseAccessProfile]**](BaseAccessProfile.md) | Access profiles included with the role. | [optional] 
 **access_profile_count** | **int** | Number of access profiles included with the role. | [optional] 
 **tags** | **List[str]** | Tags that have been applied to the object. | [optional] 
 **segments** | [**List[BaseSegment]**](BaseSegment.md) | Segments with the role. | [optional] 
 **segment_count** | **int** | Number of segments with the role. | [optional] 
-**entitlements** | [**List[BaseEntitlement]**](BaseEntitlement.md) | Entitlements included with the role. | [optional] 
+**entitlements** | [**List[RoleDocumentAllOfEntitlements]**](RoleDocumentAllOfEntitlements.md) | Entitlements included with the role. | [optional] 
 **entitlement_count** | **int** | Number of entitlements included with the role. | [optional] 
+**dimensional** | **bool** |  | [optional] [default to False]
+**dimension_schema_attribute_count** | **int** | Number of dimension attributes included with the role. | [optional] 
+**dimension_schema_attributes** | [**List[RoleDocumentAllOfDimensionSchemaAttributes]**](RoleDocumentAllOfDimensionSchemaAttributes.md) | Dimension attributes included with the role. | [optional] 
+**dimensions** | [**List[RoleDocumentAllOfDimensions]**](RoleDocumentAllOfDimensions.md) |  | [optional] 
 
 ## Example
 

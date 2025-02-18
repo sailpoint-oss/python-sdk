@@ -45,7 +45,9 @@ class TestBaseAccount(unittest.TestCase):
                 manually_correlated = False,
                 password_last_set = '2018-06-25T20:22:28.104Z',
                 entitlement_attributes = {moderator=true, admin=true, trust_level=4},
-                created = '2018-06-25T20:22:28.104Z'
+                created = '2018-06-25T20:22:28.104Z',
+                supports_password_change = False,
+                account_attributes = {type=global, admin=true, trust_level=4}
             )
         else:
             return BaseAccount(

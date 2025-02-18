@@ -26,9 +26,9 @@ class AccountRequestResult(BaseModel):
     """
     AccountRequestResult
     """ # noqa: E501
-    errors: Optional[List[StrictStr]] = None
+    errors: Optional[List[StrictStr]] = Field(default=None, description="Error message.")
     status: Optional[StrictStr] = Field(default=None, description="The status of the account request")
-    ticket_id: Optional[StrictStr] = Field(default=None, alias="ticketId")
+    ticket_id: Optional[StrictStr] = Field(default=None, description="ID of associated ticket.", alias="ticketId")
     __properties: ClassVar[List[str]] = ["errors", "status", "ticketId"]
 
     model_config = ConfigDict(

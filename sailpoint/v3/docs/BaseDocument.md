@@ -5,9 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | 
-**name** | **str** |  | 
-**type** | [**DocumentType**](DocumentType.md) |  | 
+**id** | **str** | ID of the referenced object. | 
+**name** | **str** | The human readable name of the referenced object. | 
 
 ## Example
 

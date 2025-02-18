@@ -29,11 +29,13 @@ class ExpansionItem(BaseModel):
     ExpansionItem
     """ # noqa: E501
     account_id: Optional[StrictStr] = Field(default=None, description="The ID of the account", alias="accountId")
-    cause: Optional[StrictStr] = None
+    cause: Optional[StrictStr] = Field(default=None, description="Cause of the expansion item.")
     name: Optional[StrictStr] = Field(default=None, description="The name of the item")
-    attribute_requests: Optional[List[AttributeRequest]] = Field(default=None, alias="attributeRequests")
+    attribute_request: Optional[AttributeRequest] = Field(default=None, alias="attributeRequest")
     source: Optional[AccountSource] = None
-    __properties: ClassVar[List[str]] = ["accountId", "cause", "name", "attributeRequests", "source"]
+    id: Optional[StrictStr] = Field(default=None, description="ID of the expansion item")
+    state: Optional[StrictStr] = Field(default=None, description="State of the expansion item")
+    __properties: ClassVar[List[str]] = ["accountId", "cause", "name", "attributeRequest", "source", "id", "state"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -74,13 +76,9 @@ class ExpansionItem(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in attribute_requests (list)
-        _items = []
-        if self.attribute_requests:
-            for _item_attribute_requests in self.attribute_requests:
-                if _item_attribute_requests:
-                    _items.append(_item_attribute_requests.to_dict())
-            _dict['attributeRequests'] = _items
+        # override the default output from pydantic by calling `to_dict()` of attribute_request
+        if self.attribute_request:
+            _dict['attributeRequest'] = self.attribute_request.to_dict()
         # override the default output from pydantic by calling `to_dict()` of source
         if self.source:
             _dict['source'] = self.source.to_dict()
@@ -99,8 +97,10 @@ class ExpansionItem(BaseModel):
             "accountId": obj.get("accountId"),
             "cause": obj.get("cause"),
             "name": obj.get("name"),
-            "attributeRequests": [AttributeRequest.from_dict(_item) for _item in obj["attributeRequests"]] if obj.get("attributeRequests") is not None else None,
-            "source": AccountSource.from_dict(obj["source"]) if obj.get("source") is not None else None
+            "attributeRequest": AttributeRequest.from_dict(obj["attributeRequest"]) if obj.get("attributeRequest") is not None else None,
+            "source": AccountSource.from_dict(obj["source"]) if obj.get("source") is not None else None,
+            "id": obj.get("id"),
+            "state": obj.get("state")
         })
         return _obj
 

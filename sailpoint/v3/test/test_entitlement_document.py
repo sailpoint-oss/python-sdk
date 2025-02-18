@@ -37,13 +37,13 @@ class TestEntitlementDocument(unittest.TestCase):
             return EntitlementDocument(
                 id = '2c91808375d8e80a0175e1f88a575222',
                 name = 'john.doe',
-                type = 'identity',
                 modified = '2018-06-25T20:22:28.104Z',
                 synced = '',
                 display_name = 'Admin',
                 source = sailpoint.v3.models.entitlement_document_all_of_source.EntitlementDocument_allOf_source(
                     id = '2c91808b6e9e6fb8016eec1a2b6f7b5f', 
-                    name = 'ODS-HR-Employees', ),
+                    name = 'ODS-HR-Employees', 
+                    type = 'SOURCE', ),
                 segments = [
                     sailpoint.v3.models.base_segment.BaseSegment(
                         id = 'b009b6e3-b56d-41d9-8735-cb532ea0b017', 
@@ -54,14 +54,32 @@ class TestEntitlementDocument(unittest.TestCase):
                 cloud_governed = False,
                 created = '2018-06-25T20:22:28.104Z',
                 privileged = False,
-                identity_count = 3,
-                tags = [TAG_1, TAG_2]
+                tags = [TAG_1, TAG_2],
+                attribute = 'groups',
+                value = '1733ff75-441e-4327-9bfc-3ac445fd8cd1',
+                source_schema_object_type = 'group',
+                var_schema = 'group',
+                hash = 'c6fab95235584cca98a454a2f51e5683bc77d6a0',
+                attributes = { },
+                truncated_attributes = [
+                    ''
+                    ],
+                contains_data_access = True,
+                manually_updated_fields = sailpoint.v3.models.entitlement_document_all_of_manually_updated_fields.EntitlementDocument_allOf_manuallyUpdatedFields(
+                    description = False, 
+                    display_name = False, ),
+                permissions = [
+                    sailpoint.v3.models.entitlement_document_all_of_permissions.EntitlementDocument_allOf_permissions(
+                        target = 'SYS.GV_$TRANSACTION', 
+                        rights = [
+                            'SELECT'
+                            ], )
+                    ]
             )
         else:
             return EntitlementDocument(
                 id = '2c91808375d8e80a0175e1f88a575222',
                 name = 'john.doe',
-                type = 'identity',
         )
         """
 

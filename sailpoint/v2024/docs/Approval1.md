@@ -6,11 +6,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **comments** | [**List[ApprovalComment2]**](ApprovalComment2.md) |  | [optional] 
-**created** | **datetime** | A date-time in ISO-8601 format | [optional] 
 **modified** | **datetime** | A date-time in ISO-8601 format | [optional] 
-**owner** | [**AccountSource**](AccountSource.md) |  | [optional] 
+**owner** | [**ActivityIdentity**](ActivityIdentity.md) |  | [optional] 
 **result** | **str** | The result of the approval | [optional] 
-**type** | **str** |  | [optional] 
+**attribute_request** | [**AttributeRequest**](AttributeRequest.md) |  | [optional] 
+**source** | [**AccountSource**](AccountSource.md) |  | [optional] 
 
 ## Example
 

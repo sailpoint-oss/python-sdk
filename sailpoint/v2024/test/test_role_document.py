@@ -35,21 +35,20 @@ class TestRoleDocument(unittest.TestCase):
         model = RoleDocument()
         if include_optional:
             return RoleDocument(
-                id = '2c91808568c529c60168cca6f90c1313',
-                name = 'John Doe',
-                type = 'identity',
-                description = 'The admin role',
+                description = 'Admin access',
                 created = '2018-06-25T20:22:28.104Z',
                 modified = '2018-06-25T20:22:28.104Z',
                 synced = '2018-06-25T20:22:33.104Z',
                 enabled = True,
                 requestable = True,
                 request_comments_required = False,
-                owner = sailpoint.v2024.models.base_access_all_of_owner.BaseAccess_allOf_owner(
+                owner = sailpoint.v2024.models.base_access_owner.BaseAccess_owner(
                     type = 'IDENTITY', 
                     id = '2c9180a46faadee4016fb4e018c20639', 
                     name = 'Support', 
                     email = 'cloud-support@sailpoint.com', ),
+                id = '2c91808375d8e80a0175e1f88a575222',
+                name = 'Branch Manager Access',
                 access_profiles = [
                     sailpoint.v2024.models.base_access_profile.BaseAccessProfile(
                         id = '2c91809c6faade77016fb4f0b63407ae', 
@@ -64,23 +63,36 @@ class TestRoleDocument(unittest.TestCase):
                     ],
                 segment_count = 1,
                 entitlements = [
-                    sailpoint.v2024.models.base_entitlement.BaseEntitlement(
-                        has_permissions = False, 
-                        description = 'Cloud engineering', 
-                        attribute = 'memberOf', 
-                        value = 'CN=Cloud Engineering,DC=sailpoint,DC=COM', 
-                        schema = 'group', 
-                        privileged = False, 
-                        id = '2c918084575812550157589064f33b89', 
-                        name = 'CN=Cloud Engineering,DC=sailpoint,DC=COM', )
+                    null
                     ],
-                entitlement_count = 3
+                entitlement_count = 3,
+                dimensional = False,
+                dimension_schema_attribute_count = 3,
+                dimension_schema_attributes = [
+                    sailpoint.v2024.models.role_document_all_of_dimension_schema_attributes.RoleDocument_allOf_dimensionSchemaAttributes(
+                        derived = True, 
+                        display_name = 'Department', 
+                        name = 'department', )
+                    ],
+                dimensions = [
+                    sailpoint.v2024.models.role_document_all_of_dimensions.RoleDocument_allOf_dimensions(
+                        id = 'b3c28992ba964a40a7598978139d1ced', 
+                        name = 'Manager Austin Branch', 
+                        description = 'Managers located at the Austin branch', 
+                        entitlements = [
+                            null
+                            ], 
+                        access_profiles = [
+                            sailpoint.v2024.models.base_access_profile.BaseAccessProfile(
+                                id = '2c91809c6faade77016fb4f0b63407ae', 
+                                name = 'Admin Access', )
+                            ], )
+                    ]
             )
         else:
             return RoleDocument(
-                id = '2c91808568c529c60168cca6f90c1313',
-                name = 'John Doe',
-                type = 'identity',
+                id = '2c91808375d8e80a0175e1f88a575222',
+                name = 'Branch Manager Access',
         )
         """
 

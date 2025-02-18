@@ -192,6 +192,7 @@ Fetches a single document from the specified index, using the specified document
 
 * OAuth Authentication (userAuth):
 * OAuth Authentication (userAuth):
+* OAuth Authentication (applicationAuth):
 
 ```python
 import sailpoint.v3
@@ -213,11 +214,13 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 # Enter a context with an instance of the API client
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.SearchApi(api_client)
-    index = 'accounts' # str | The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, and *roles*. 
+    index = 'identities' # str | The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, and *roles*. 
     id = '2c91808568c529c60168cca6f90c1313' # str | ID of the requested document.
 
     try:
@@ -245,7 +248,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth), [applicationAuth](../README.md#applicationAuth)
 
 ### HTTP request headers
 
@@ -277,6 +280,7 @@ Perform a search with the provided query and return a matching result collection
 
 * OAuth Authentication (userAuth):
 * OAuth Authentication (userAuth):
+* OAuth Authentication (applicationAuth):
 
 ```python
 import sailpoint.v3
@@ -294,6 +298,8 @@ configuration = sailpoint.v3.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
@@ -335,7 +341,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth), [applicationAuth](../README.md#applicationAuth)
 
 ### HTTP request headers
 

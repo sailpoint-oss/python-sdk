@@ -19,6 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.v3.models.attribute_request_value import AttributeRequestValue
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,7 +29,7 @@ class AttributeRequest(BaseModel):
     """ # noqa: E501
     name: Optional[StrictStr] = Field(default=None, description="Attribute name.")
     op: Optional[StrictStr] = Field(default=None, description="Operation to perform on attribute.")
-    value: Optional[StrictStr] = Field(default=None, description="Value of attribute.")
+    value: Optional[AttributeRequestValue] = None
     __properties: ClassVar[List[str]] = ["name", "op", "value"]
 
     model_config = ConfigDict(
@@ -70,6 +71,9 @@ class AttributeRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of value
+        if self.value:
+            _dict['value'] = self.value.to_dict()
         return _dict
 
     @classmethod
@@ -84,7 +88,7 @@ class AttributeRequest(BaseModel):
         _obj = cls.model_validate({
             "name": obj.get("name"),
             "op": obj.get("op"),
-            "value": obj.get("value")
+            "value": AttributeRequestValue.from_dict(obj["value"]) if obj.get("value") is not None else None
         })
         return _obj
 

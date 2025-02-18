@@ -36,11 +36,13 @@ class TestOriginalRequest(unittest.TestCase):
         if include_optional:
             return OriginalRequest(
                 account_id = 'CN=Abby Smith,OU=Austin,OU=Americas,OU=Demo,DC=seri,DC=acme,DC=com',
+                result = sailpoint.v3.models.result.Result(
+                    status = 'Manual Task Created', ),
                 attribute_requests = [
                     sailpoint.v3.models.attribute_request.AttributeRequest(
                         name = 'groups', 
                         op = 'Add', 
-                        value = '3203537556531076', )
+                        value = null, )
                     ],
                 op = 'add',
                 source = None

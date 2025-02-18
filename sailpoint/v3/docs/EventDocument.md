@@ -6,15 +6,14 @@ Event
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | 
-**name** | **str** |  | 
-**type** | [**DocumentType**](DocumentType.md) |  | 
+**id** | **str** | ID of the entitlement. | [optional] 
+**name** | **str** | Name of the entitlement. | [optional] 
 **created** | **datetime** | ISO-8601 date-time referring to the time when the object was created. | [optional] 
 **synced** | **str** | ISO-8601 date-time referring to the date-time when object was queued to be synced into search database for use in the search API.   This date-time changes anytime there is an update to the object, which triggers a synchronization event being sent to the search database.  There may be some delay between the &#x60;synced&#x60; time and the time when the updated data is actually available in the search API.  | [optional] 
 **action** | **str** | Name of the event as it&#39;s displayed in audit reports. | [optional] 
 **type** | **str** | Event type. Refer to [Event Types](https://documentation.sailpoint.com/saas/help/search/index.html#event-types) for a list of event types and their meanings. | [optional] 
-**actor** | **str** | Name of the actor that generated the event. | [optional] 
-**target** | **str** | Name of the target, or recipient, of the event. | [optional] 
+**actor** | [**EventActor**](EventActor.md) |  | [optional] 
+**target** | [**EventTarget**](EventTarget.md) |  | [optional] 
 **stack** | **str** | The event&#39;s stack. | [optional] 
 **tracking_number** | **str** | ID of the group of events. | [optional] 
 **ip_address** | **str** | Target system&#39;s IP address. | [optional] 

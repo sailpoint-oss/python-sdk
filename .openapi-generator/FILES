@@ -88,6 +88,8 @@ sailpoint/v2024/api_client.py
 sailpoint/v2024/api_response.py
 sailpoint/v2024/configuration.py
 sailpoint/v2024/docs/Access.md
+sailpoint/v2024/docs/AccessApps.md
+sailpoint/v2024/docs/AccessAppsOwner.md
 sailpoint/v2024/docs/AccessConstraint.md
 sailpoint/v2024/docs/AccessCriteria.md
 sailpoint/v2024/docs/AccessCriteriaCriteriaListInner.md
@@ -217,6 +219,7 @@ sailpoint/v2024/docs/AccountsCollectedForAggregationSource.md
 sailpoint/v2024/docs/AccountsCollectedForAggregationStats.md
 sailpoint/v2024/docs/AccountsExportReportArguments.md
 sailpoint/v2024/docs/ActivateCampaignOptions.md
+sailpoint/v2024/docs/ActivityIdentity.md
 sailpoint/v2024/docs/ActivityInsights.md
 sailpoint/v2024/docs/AdminReviewReassign.md
 sailpoint/v2024/docs/AdminReviewReassignReassignTo.md
@@ -267,6 +270,7 @@ sailpoint/v2024/docs/AttributeDefinition.md
 sailpoint/v2024/docs/AttributeDefinitionSchema.md
 sailpoint/v2024/docs/AttributeDefinitionType.md
 sailpoint/v2024/docs/AttributeRequest.md
+sailpoint/v2024/docs/AttributeRequestValue.md
 sailpoint/v2024/docs/AttributeValueDTO.md
 sailpoint/v2024/docs/AttributesChanged.md
 sailpoint/v2024/docs/AuditDetails.md
@@ -278,7 +282,7 @@ sailpoint/v2024/docs/AuthUsersApi.md
 sailpoint/v2024/docs/BackupOptions.md
 sailpoint/v2024/docs/BackupResponse.md
 sailpoint/v2024/docs/BaseAccess.md
-sailpoint/v2024/docs/BaseAccessAllOfOwner.md
+sailpoint/v2024/docs/BaseAccessOwner.md
 sailpoint/v2024/docs/BaseAccessProfile.md
 sailpoint/v2024/docs/BaseAccount.md
 sailpoint/v2024/docs/BaseCommonDto.md
@@ -446,7 +450,6 @@ sailpoint/v2024/docs/DimensionRef.md
 sailpoint/v2024/docs/DimensionsApi.md
 sailpoint/v2024/docs/DisplayReference.md
 sailpoint/v2024/docs/DkimAttributes.md
-sailpoint/v2024/docs/DocumentType.md
 sailpoint/v2024/docs/DomainAddress.md
 sailpoint/v2024/docs/DomainStatusDto.md
 sailpoint/v2024/docs/DraftResponse.md
@@ -463,6 +466,8 @@ sailpoint/v2024/docs/EntitlementAccessRequestConfig.md
 sailpoint/v2024/docs/EntitlementApprovalScheme.md
 sailpoint/v2024/docs/EntitlementBulkUpdateRequest.md
 sailpoint/v2024/docs/EntitlementDocument.md
+sailpoint/v2024/docs/EntitlementDocumentAllOfManuallyUpdatedFields.md
+sailpoint/v2024/docs/EntitlementDocumentAllOfPermissions.md
 sailpoint/v2024/docs/EntitlementDocumentAllOfSource.md
 sailpoint/v2024/docs/EntitlementDto.md
 sailpoint/v2024/docs/EntitlementRef.md
@@ -481,9 +486,11 @@ sailpoint/v2024/docs/ErrorMessageDto1.md
 sailpoint/v2024/docs/ErrorResponseDto.md
 sailpoint/v2024/docs/EvaluateResponse.md
 sailpoint/v2024/docs/Event.md
+sailpoint/v2024/docs/EventActor.md
 sailpoint/v2024/docs/EventAttributes.md
 sailpoint/v2024/docs/EventBridgeConfig.md
 sailpoint/v2024/docs/EventDocument.md
+sailpoint/v2024/docs/EventTarget.md
 sailpoint/v2024/docs/ExceptionAccessCriteria.md
 sailpoint/v2024/docs/ExceptionCriteria.md
 sailpoint/v2024/docs/ExceptionCriteriaAccess.md
@@ -868,6 +875,7 @@ sailpoint/v2024/docs/RequestedItemStatusSodViolationContext.md
 sailpoint/v2024/docs/ResourceObject.md
 sailpoint/v2024/docs/ResourceObjectsRequest.md
 sailpoint/v2024/docs/ResourceObjectsResponse.md
+sailpoint/v2024/docs/Result.md
 sailpoint/v2024/docs/ReviewDecision.md
 sailpoint/v2024/docs/ReviewReassign.md
 sailpoint/v2024/docs/ReviewRecommendation.md
@@ -893,6 +901,10 @@ sailpoint/v2024/docs/RoleCriteriaLevel2.md
 sailpoint/v2024/docs/RoleCriteriaLevel3.md
 sailpoint/v2024/docs/RoleCriteriaOperation.md
 sailpoint/v2024/docs/RoleDocument.md
+sailpoint/v2024/docs/RoleDocumentAllOfDimensionSchemaAttributes.md
+sailpoint/v2024/docs/RoleDocumentAllOfDimensions.md
+sailpoint/v2024/docs/RoleDocumentAllOfEntitlements.md
+sailpoint/v2024/docs/RoleDocumentAllOfEntitlements1.md
 sailpoint/v2024/docs/RoleGetAllBulkUpdateResponse.md
 sailpoint/v2024/docs/RoleIdentity.md
 sailpoint/v2024/docs/RoleInsight.md
@@ -1221,6 +1233,8 @@ sailpoint/v2024/docs/WorkgroupMemberDeleteItem.md
 sailpoint/v2024/exceptions.py
 sailpoint/v2024/models/__init__.py
 sailpoint/v2024/models/access.py
+sailpoint/v2024/models/access_apps.py
+sailpoint/v2024/models/access_apps_owner.py
 sailpoint/v2024/models/access_constraint.py
 sailpoint/v2024/models/access_criteria.py
 sailpoint/v2024/models/access_criteria_criteria_list_inner.py
@@ -1341,6 +1355,7 @@ sailpoint/v2024/models/accounts_collected_for_aggregation_source.py
 sailpoint/v2024/models/accounts_collected_for_aggregation_stats.py
 sailpoint/v2024/models/accounts_export_report_arguments.py
 sailpoint/v2024/models/activate_campaign_options.py
+sailpoint/v2024/models/activity_identity.py
 sailpoint/v2024/models/activity_insights.py
 sailpoint/v2024/models/admin_review_reassign.py
 sailpoint/v2024/models/admin_review_reassign_reassign_to.py
@@ -1388,6 +1403,7 @@ sailpoint/v2024/models/attribute_definition_type.py
 sailpoint/v2024/models/attribute_dto.py
 sailpoint/v2024/models/attribute_dto_list.py
 sailpoint/v2024/models/attribute_request.py
+sailpoint/v2024/models/attribute_request_value.py
 sailpoint/v2024/models/attribute_value_dto.py
 sailpoint/v2024/models/attributes_changed.py
 sailpoint/v2024/models/audit_details.py
@@ -1397,7 +1413,7 @@ sailpoint/v2024/models/auth_user.py
 sailpoint/v2024/models/backup_options.py
 sailpoint/v2024/models/backup_response.py
 sailpoint/v2024/models/base_access.py
-sailpoint/v2024/models/base_access_all_of_owner.py
+sailpoint/v2024/models/base_access_owner.py
 sailpoint/v2024/models/base_access_profile.py
 sailpoint/v2024/models/base_account.py
 sailpoint/v2024/models/base_common_dto.py
@@ -1553,7 +1569,6 @@ sailpoint/v2024/models/dimension_membership_selector_type.py
 sailpoint/v2024/models/dimension_ref.py
 sailpoint/v2024/models/display_reference.py
 sailpoint/v2024/models/dkim_attributes.py
-sailpoint/v2024/models/document_type.py
 sailpoint/v2024/models/domain_address.py
 sailpoint/v2024/models/domain_status_dto.py
 sailpoint/v2024/models/draft_response.py
@@ -1570,6 +1585,8 @@ sailpoint/v2024/models/entitlement_access_request_config.py
 sailpoint/v2024/models/entitlement_approval_scheme.py
 sailpoint/v2024/models/entitlement_bulk_update_request.py
 sailpoint/v2024/models/entitlement_document.py
+sailpoint/v2024/models/entitlement_document_all_of_manually_updated_fields.py
+sailpoint/v2024/models/entitlement_document_all_of_permissions.py
 sailpoint/v2024/models/entitlement_document_all_of_source.py
 sailpoint/v2024/models/entitlement_dto.py
 sailpoint/v2024/models/entitlement_ref.py
@@ -1587,9 +1604,11 @@ sailpoint/v2024/models/error_message_dto1.py
 sailpoint/v2024/models/error_response_dto.py
 sailpoint/v2024/models/evaluate_response.py
 sailpoint/v2024/models/event.py
+sailpoint/v2024/models/event_actor.py
 sailpoint/v2024/models/event_attributes.py
 sailpoint/v2024/models/event_bridge_config.py
 sailpoint/v2024/models/event_document.py
+sailpoint/v2024/models/event_target.py
 sailpoint/v2024/models/exception_access_criteria.py
 sailpoint/v2024/models/exception_criteria.py
 sailpoint/v2024/models/exception_criteria_access.py
@@ -1943,6 +1962,7 @@ sailpoint/v2024/models/requested_item_status_sod_violation_context.py
 sailpoint/v2024/models/resource_object.py
 sailpoint/v2024/models/resource_objects_request.py
 sailpoint/v2024/models/resource_objects_response.py
+sailpoint/v2024/models/result.py
 sailpoint/v2024/models/review_decision.py
 sailpoint/v2024/models/review_reassign.py
 sailpoint/v2024/models/review_recommendation.py
@@ -1968,6 +1988,10 @@ sailpoint/v2024/models/role_criteria_level2.py
 sailpoint/v2024/models/role_criteria_level3.py
 sailpoint/v2024/models/role_criteria_operation.py
 sailpoint/v2024/models/role_document.py
+sailpoint/v2024/models/role_document_all_of_dimension_schema_attributes.py
+sailpoint/v2024/models/role_document_all_of_dimensions.py
+sailpoint/v2024/models/role_document_all_of_entitlements.py
+sailpoint/v2024/models/role_document_all_of_entitlements1.py
 sailpoint/v2024/models/role_get_all_bulk_update_response.py
 sailpoint/v2024/models/role_identity.py
 sailpoint/v2024/models/role_insight.py
@@ -2271,6 +2295,8 @@ sailpoint/v2024/models/workgroup_member_delete_item.py
 sailpoint/v2024/rest.py
 sailpoint/v2024/test/__init__.py
 sailpoint/v2024/test/test_access.py
+sailpoint/v2024/test/test_access_apps.py
+sailpoint/v2024/test/test_access_apps_owner.py
 sailpoint/v2024/test/test_access_constraint.py
 sailpoint/v2024/test/test_access_criteria.py
 sailpoint/v2024/test/test_access_criteria_criteria_list_inner.py
@@ -2400,6 +2426,7 @@ sailpoint/v2024/test/test_accounts_collected_for_aggregation_source.py
 sailpoint/v2024/test/test_accounts_collected_for_aggregation_stats.py
 sailpoint/v2024/test/test_accounts_export_report_arguments.py
 sailpoint/v2024/test/test_activate_campaign_options.py
+sailpoint/v2024/test/test_activity_identity.py
 sailpoint/v2024/test/test_activity_insights.py
 sailpoint/v2024/test/test_admin_review_reassign.py
 sailpoint/v2024/test/test_admin_review_reassign_reassign_to.py
@@ -2450,6 +2477,7 @@ sailpoint/v2024/test/test_attribute_definition_type.py
 sailpoint/v2024/test/test_attribute_dto.py
 sailpoint/v2024/test/test_attribute_dto_list.py
 sailpoint/v2024/test/test_attribute_request.py
+sailpoint/v2024/test/test_attribute_request_value.py
 sailpoint/v2024/test/test_attribute_value_dto.py
 sailpoint/v2024/test/test_attributes_changed.py
 sailpoint/v2024/test/test_audit_details.py
@@ -2461,7 +2489,7 @@ sailpoint/v2024/test/test_auth_users_api.py
 sailpoint/v2024/test/test_backup_options.py
 sailpoint/v2024/test/test_backup_response.py
 sailpoint/v2024/test/test_base_access.py
-sailpoint/v2024/test/test_base_access_all_of_owner.py
+sailpoint/v2024/test/test_base_access_owner.py
 sailpoint/v2024/test/test_base_access_profile.py
 sailpoint/v2024/test/test_base_account.py
 sailpoint/v2024/test/test_base_common_dto.py
@@ -2629,7 +2657,6 @@ sailpoint/v2024/test/test_dimension_ref.py
 sailpoint/v2024/test/test_dimensions_api.py
 sailpoint/v2024/test/test_display_reference.py
 sailpoint/v2024/test/test_dkim_attributes.py
-sailpoint/v2024/test/test_document_type.py
 sailpoint/v2024/test/test_domain_address.py
 sailpoint/v2024/test/test_domain_status_dto.py
 sailpoint/v2024/test/test_draft_response.py
@@ -2646,6 +2673,8 @@ sailpoint/v2024/test/test_entitlement_access_request_config.py
 sailpoint/v2024/test/test_entitlement_approval_scheme.py
 sailpoint/v2024/test/test_entitlement_bulk_update_request.py
 sailpoint/v2024/test/test_entitlement_document.py
+sailpoint/v2024/test/test_entitlement_document_all_of_manually_updated_fields.py
+sailpoint/v2024/test/test_entitlement_document_all_of_permissions.py
 sailpoint/v2024/test/test_entitlement_document_all_of_source.py
 sailpoint/v2024/test/test_entitlement_dto.py
 sailpoint/v2024/test/test_entitlement_ref.py
@@ -2664,9 +2693,11 @@ sailpoint/v2024/test/test_error_message_dto1.py
 sailpoint/v2024/test/test_error_response_dto.py
 sailpoint/v2024/test/test_evaluate_response.py
 sailpoint/v2024/test/test_event.py
+sailpoint/v2024/test/test_event_actor.py
 sailpoint/v2024/test/test_event_attributes.py
 sailpoint/v2024/test/test_event_bridge_config.py
 sailpoint/v2024/test/test_event_document.py
+sailpoint/v2024/test/test_event_target.py
 sailpoint/v2024/test/test_exception_access_criteria.py
 sailpoint/v2024/test/test_exception_criteria.py
 sailpoint/v2024/test/test_exception_criteria_access.py
@@ -3051,6 +3082,7 @@ sailpoint/v2024/test/test_requested_item_status_sod_violation_context.py
 sailpoint/v2024/test/test_resource_object.py
 sailpoint/v2024/test/test_resource_objects_request.py
 sailpoint/v2024/test/test_resource_objects_response.py
+sailpoint/v2024/test/test_result.py
 sailpoint/v2024/test/test_review_decision.py
 sailpoint/v2024/test/test_review_reassign.py
 sailpoint/v2024/test/test_review_recommendation.py
@@ -3076,6 +3108,10 @@ sailpoint/v2024/test/test_role_criteria_level2.py
 sailpoint/v2024/test/test_role_criteria_level3.py
 sailpoint/v2024/test/test_role_criteria_operation.py
 sailpoint/v2024/test/test_role_document.py
+sailpoint/v2024/test/test_role_document_all_of_dimension_schema_attributes.py
+sailpoint/v2024/test/test_role_document_all_of_dimensions.py
+sailpoint/v2024/test/test_role_document_all_of_entitlements.py
+sailpoint/v2024/test/test_role_document_all_of_entitlements1.py
 sailpoint/v2024/test/test_role_get_all_bulk_update_response.py
 sailpoint/v2024/test/test_role_identity.py
 sailpoint/v2024/test/test_role_insight.py

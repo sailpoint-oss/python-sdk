@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | The unique ID of the referenced object. | 
 **name** | **str** | The human readable name of the referenced object. | 
-**type** | [**DocumentType**](DocumentType.md) |  | 
 **display_name** | **str** | Identity&#39;s display name. | [optional] 
 **first_name** | **str** | Identity&#39;s first name. | [optional] 
 **last_name** | **str** | Identity&#39;s last name. | [optional] 
@@ -26,6 +25,8 @@ Name | Type | Description | Notes
 **identity_profile** | [**IdentityDocumentAllOfIdentityProfile**](IdentityDocumentAllOfIdentityProfile.md) |  | [optional] 
 **source** | [**IdentityDocumentAllOfSource**](IdentityDocumentAllOfSource.md) |  | [optional] 
 **attributes** | **Dict[str, object]** | Map or dictionary of key/value pairs. | [optional] 
+**disabled** | **bool** | Indicates whether the identity is disabled. | [optional] [default to False]
+**locked** | **bool** | Indicates whether the identity is locked. | [optional] [default to False]
 **processing_state** | **str** | Identity&#39;s processing state. | [optional] 
 **processing_details** | [**ProcessingDetails**](ProcessingDetails.md) |  | [optional] 
 **accounts** | [**List[BaseAccount]**](BaseAccount.md) | List of accounts associated with the identity. | [optional] 
@@ -40,6 +41,9 @@ Name | Type | Description | Notes
 **owns** | [**List[Owns]**](Owns.md) | Access items the identity owns. | [optional] 
 **owns_count** | **int** | Number of access items the identity owns. | [optional] 
 **tags** | **List[str]** | Tags that have been applied to the object. | [optional] 
+**tags_count** | **int** | Number of tags on the identity. | [optional] 
+**visible_segments** | **List[str]** | List of segments that the identity is in. | [optional] 
+**visible_segment_count** | **int** | Number of segments the identity is in. | [optional] 
 
 ## Example
 

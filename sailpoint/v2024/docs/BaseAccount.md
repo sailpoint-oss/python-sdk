@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 **password_last_set** | **datetime** | A date-time in ISO-8601 format | [optional] 
 **entitlement_attributes** | **Dict[str, object]** | Map or dictionary of key/value pairs. | [optional] 
 **created** | **datetime** | ISO-8601 date-time referring to the time when the object was created. | [optional] 
+**supports_password_change** | **bool** | Indicates whether the account supports password change. | [optional] [default to False]
+**account_attributes** | **Dict[str, object]** | Map or dictionary of key/value pairs. | [optional] 
 
 ## Example
 

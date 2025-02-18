@@ -15,6 +15,8 @@
 
 # import models into model package
 from sailpoint.v3.models.access import Access
+from sailpoint.v3.models.access_apps import AccessApps
+from sailpoint.v3.models.access_apps_owner import AccessAppsOwner
 from sailpoint.v3.models.access_constraint import AccessConstraint
 from sailpoint.v3.models.access_criteria import AccessCriteria
 from sailpoint.v3.models.access_criteria_criteria_list_inner import AccessCriteriaCriteriaListInner
@@ -67,6 +69,7 @@ from sailpoint.v3.models.account_usage import AccountUsage
 from sailpoint.v3.models.accounts_async_result import AccountsAsyncResult
 from sailpoint.v3.models.accounts_export_report_arguments import AccountsExportReportArguments
 from sailpoint.v3.models.activate_campaign_options import ActivateCampaignOptions
+from sailpoint.v3.models.activity_identity import ActivityIdentity
 from sailpoint.v3.models.activity_insights import ActivityInsights
 from sailpoint.v3.models.admin_review_reassign import AdminReviewReassign
 from sailpoint.v3.models.admin_review_reassign_reassign_to import AdminReviewReassignReassignTo
@@ -95,12 +98,13 @@ from sailpoint.v3.models.attribute_definition import AttributeDefinition
 from sailpoint.v3.models.attribute_definition_schema import AttributeDefinitionSchema
 from sailpoint.v3.models.attribute_definition_type import AttributeDefinitionType
 from sailpoint.v3.models.attribute_request import AttributeRequest
+from sailpoint.v3.models.attribute_request_value import AttributeRequestValue
 from sailpoint.v3.models.attribute_value_dto import AttributeValueDTO
 from sailpoint.v3.models.auth_user import AuthUser
 from sailpoint.v3.models.backup_options import BackupOptions
 from sailpoint.v3.models.backup_response import BackupResponse
 from sailpoint.v3.models.base_access import BaseAccess
-from sailpoint.v3.models.base_access_all_of_owner import BaseAccessAllOfOwner
+from sailpoint.v3.models.base_access_owner import BaseAccessOwner
 from sailpoint.v3.models.base_access_profile import BaseAccessProfile
 from sailpoint.v3.models.base_account import BaseAccount
 from sailpoint.v3.models.base_common_dto import BaseCommonDto
@@ -184,12 +188,13 @@ from sailpoint.v3.models.dependant_app_connections_account_source_password_polic
 from sailpoint.v3.models.dependant_connections_missing_dto import DependantConnectionsMissingDto
 from sailpoint.v3.models.dimension_ref import DimensionRef
 from sailpoint.v3.models.display_reference import DisplayReference
-from sailpoint.v3.models.document_type import DocumentType
 from sailpoint.v3.models.dto_type import DtoType
 from sailpoint.v3.models.duo_verification_request import DuoVerificationRequest
 from sailpoint.v3.models.email_notification_option import EmailNotificationOption
 from sailpoint.v3.models.entitlement import Entitlement
 from sailpoint.v3.models.entitlement_document import EntitlementDocument
+from sailpoint.v3.models.entitlement_document_all_of_manually_updated_fields import EntitlementDocumentAllOfManuallyUpdatedFields
+from sailpoint.v3.models.entitlement_document_all_of_permissions import EntitlementDocumentAllOfPermissions
 from sailpoint.v3.models.entitlement_document_all_of_source import EntitlementDocumentAllOfSource
 from sailpoint.v3.models.entitlement_dto import EntitlementDto
 from sailpoint.v3.models.entitlement_ref import EntitlementRef
@@ -200,8 +205,10 @@ from sailpoint.v3.models.entitlement_summary import EntitlementSummary
 from sailpoint.v3.models.error_message_dto import ErrorMessageDto
 from sailpoint.v3.models.error_response_dto import ErrorResponseDto
 from sailpoint.v3.models.event import Event
+from sailpoint.v3.models.event_actor import EventActor
 from sailpoint.v3.models.event_attributes import EventAttributes
 from sailpoint.v3.models.event_document import EventDocument
+from sailpoint.v3.models.event_target import EventTarget
 from sailpoint.v3.models.exception_access_criteria import ExceptionAccessCriteria
 from sailpoint.v3.models.exception_criteria import ExceptionCriteria
 from sailpoint.v3.models.exception_criteria_access import ExceptionCriteriaAccess
@@ -416,6 +423,7 @@ from sailpoint.v3.models.requested_item_status_request_state import RequestedIte
 from sailpoint.v3.models.requested_item_status_requested_for import RequestedItemStatusRequestedFor
 from sailpoint.v3.models.requested_item_status_requester_comment import RequestedItemStatusRequesterComment
 from sailpoint.v3.models.requested_item_status_sod_violation_context import RequestedItemStatusSodViolationContext
+from sailpoint.v3.models.result import Result
 from sailpoint.v3.models.review_decision import ReviewDecision
 from sailpoint.v3.models.review_reassign import ReviewReassign
 from sailpoint.v3.models.review_recommendation import ReviewRecommendation
@@ -437,6 +445,10 @@ from sailpoint.v3.models.role_criteria_level2 import RoleCriteriaLevel2
 from sailpoint.v3.models.role_criteria_level3 import RoleCriteriaLevel3
 from sailpoint.v3.models.role_criteria_operation import RoleCriteriaOperation
 from sailpoint.v3.models.role_document import RoleDocument
+from sailpoint.v3.models.role_document_all_of_dimension_schema_attributes import RoleDocumentAllOfDimensionSchemaAttributes
+from sailpoint.v3.models.role_document_all_of_dimensions import RoleDocumentAllOfDimensions
+from sailpoint.v3.models.role_document_all_of_entitlements import RoleDocumentAllOfEntitlements
+from sailpoint.v3.models.role_document_all_of_entitlements1 import RoleDocumentAllOfEntitlements1
 from sailpoint.v3.models.role_identity import RoleIdentity
 from sailpoint.v3.models.role_membership_identity import RoleMembershipIdentity
 from sailpoint.v3.models.role_membership_selector import RoleMembershipSelector

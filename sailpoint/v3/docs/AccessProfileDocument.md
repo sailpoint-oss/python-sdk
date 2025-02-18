@@ -6,8 +6,6 @@ More complete representation of an access profile.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | Access profile&#39;s ID. | 
-**name** | **str** | Access profile&#39;s name. | 
 **description** | **str** | Access item&#39;s description. | [optional] 
 **created** | **datetime** | ISO-8601 date-time referring to the time when the object was created. | [optional] 
 **modified** | **datetime** | ISO-8601 date-time referring to the time when the object was last modified. | [optional] 
@@ -15,12 +13,16 @@ Name | Type | Description | Notes
 **enabled** | **bool** | Indicates whether the access item is currently enabled. | [optional] [default to False]
 **requestable** | **bool** | Indicates whether the access item can be requested. | [optional] [default to True]
 **request_comments_required** | **bool** | Indicates whether comments are required for requests to access the item. | [optional] [default to False]
-**owner** | [**BaseAccessAllOfOwner**](BaseAccessAllOfOwner.md) |  | [optional] 
-**type** | **str** | Access profile&#39;s document type.  This enum represents the currently supported document types. Additional values may be added in the future without notice. | 
+**owner** | [**BaseAccessOwner**](BaseAccessOwner.md) |  | [optional] 
+**id** | **str** | Access profile&#39;s ID. | 
+**name** | **str** | Access profile&#39;s name. | 
 **source** | [**AccessProfileDocumentAllOfSource**](AccessProfileDocumentAllOfSource.md) |  | [optional] 
 **entitlements** | [**List[BaseEntitlement]**](BaseEntitlement.md) | Entitlements the access profile has access to. | [optional] 
 **entitlement_count** | **int** | Number of entitlements. | [optional] 
+**segments** | [**List[BaseSegment]**](BaseSegment.md) | Segments with the access profile. | [optional] 
+**segment_count** | **int** | Number of segments with the access profile. | [optional] 
 **tags** | **List[str]** | Tags that have been applied to the object. | [optional] 
+**apps** | [**List[AccessApps]**](AccessApps.md) | Applications with the access profile | [optional] 
 
 ## Example
 

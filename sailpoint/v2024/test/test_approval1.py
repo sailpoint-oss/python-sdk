@@ -41,11 +41,14 @@ class TestApproval1(unittest.TestCase):
                         commenter = 'Automated AR Approval', 
                         date = '2018-06-25T20:22:28.104Z', )
                     ],
-                created = '2018-06-25T20:22:28.104Z',
                 modified = '2018-06-25T20:22:28.104Z',
                 owner = None,
                 result = 'Finished',
-                type = ''
+                attribute_request = sailpoint.v2024.models.attribute_request.AttributeRequest(
+                    name = 'groups', 
+                    op = 'Add', 
+                    value = null, ),
+                source = None
             )
         else:
             return Approval1(
