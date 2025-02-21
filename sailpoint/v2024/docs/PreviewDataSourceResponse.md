@@ -1,6 +1,6 @@
 # PreviewDataSourceResponse
 
-PreviewDataSourceResponse is the response sent by /form-definitions/{formDefinitionID}/data-source endpoint
+PreviewDataSourceResponse is the response sent by `/form-definitions/{formDefinitionID}/data-source` endpoint
 
 ## Properties
 

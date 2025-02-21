@@ -16,8 +16,6 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictStr
-from typing_extensions import Annotated
 from sailpoint.v2024.models.tenant import Tenant
 
 from sailpoint.v2024.api_client import ApiClient, RequestSerialized
@@ -41,7 +39,6 @@ class TenantApi:
     @validate_call
     def get_tenant(
         self,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -59,8 +56,6 @@ class TenantApi:
 
         This rest endpoint can be used to retrieve tenant details.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -84,7 +79,6 @@ class TenantApi:
         """ # noqa: E501
 
         _param = self._get_tenant_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -114,7 +108,6 @@ class TenantApi:
     @validate_call
     def get_tenant_with_http_info(
         self,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -132,8 +125,6 @@ class TenantApi:
 
         This rest endpoint can be used to retrieve tenant details.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -157,7 +148,6 @@ class TenantApi:
         """ # noqa: E501
 
         _param = self._get_tenant_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -187,7 +177,6 @@ class TenantApi:
     @validate_call
     def get_tenant_without_preload_content(
         self,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -205,8 +194,6 @@ class TenantApi:
 
         This rest endpoint can be used to retrieve tenant details.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -230,7 +217,6 @@ class TenantApi:
         """ # noqa: E501
 
         _param = self._get_tenant_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -255,7 +241,6 @@ class TenantApi:
 
     def _get_tenant_serialize(
         self,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -279,8 +264,6 @@ class TenantApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 

@@ -25,7 +25,7 @@ from typing_extensions import Self
 
 class PreviewDataSourceResponse(BaseModel):
     """
-    PreviewDataSourceResponse is the response sent by /form-definitions/{formDefinitionID}/data-source endpoint
+    PreviewDataSourceResponse is the response sent by `/form-definitions/{formDefinitionID}/data-source` endpoint
     """ # noqa: E501
     results: Optional[List[FormElementDataSourceConfigOptions]] = Field(default=None, description="Results holds a list of FormElementDataSourceConfigOptions items")
     __properties: ClassVar[List[str]] = ["results"]

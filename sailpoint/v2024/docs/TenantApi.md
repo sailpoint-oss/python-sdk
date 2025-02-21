@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **get_tenant**
-> Tenant get_tenant(x_sail_point_experimental)
+> Tenant get_tenant()
 
 Get Tenant Information.
 
@@ -44,11 +44,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v2024.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v2024.TenantApi(api_client)
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true')
 
     try:
         # Get Tenant Information.
-        api_response = api_instance.get_tenant(x_sail_point_experimental)
+        api_response = api_instance.get_tenant()
         print("The response of TenantApi->get_tenant:\n")
         pprint(api_response)
     except Exception as e:
@@ -59,10 +58,7 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **x_sail_point_experimental** | **str**| Use this header to enable this experimental API. | [default to &#39;true&#39;]
+This endpoint does not need any parameter.
 
 ### Return type
 
