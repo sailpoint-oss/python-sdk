@@ -146,6 +146,11 @@ class Account(BaseModel):
         if self.connection_type is None and "connection_type" in self.model_fields_set:
             _dict['connectionType'] = None
 
+        # set to None if recommendation (nullable) is None
+        # and model_fields_set contains the field
+        if self.recommendation is None and "recommendation" in self.model_fields_set:
+            _dict['recommendation'] = None
+
         # set to None if attributes (nullable) is None
         # and model_fields_set contains the field
         if self.attributes is None and "attributes" in self.model_fields_set:
