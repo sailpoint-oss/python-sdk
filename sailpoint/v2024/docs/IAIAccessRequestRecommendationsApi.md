@@ -9,9 +9,11 @@ Method | HTTP request | Description
 [**add_access_request_recommendations_viewed_item**](IAIAccessRequestRecommendationsApi.md#add_access_request_recommendations_viewed_item) | **POST** /ai-access-request-recommendations/viewed-items | Notification of Viewed Access Request Recommendations
 [**add_access_request_recommendations_viewed_items**](IAIAccessRequestRecommendationsApi.md#add_access_request_recommendations_viewed_items) | **POST** /ai-access-request-recommendations/viewed-items/bulk-create | Notification of Viewed Access Request Recommendations in Bulk
 [**get_access_request_recommendations**](IAIAccessRequestRecommendationsApi.md#get_access_request_recommendations) | **GET** /ai-access-request-recommendations | Identity Access Request Recommendations
+[**get_access_request_recommendations_config**](IAIAccessRequestRecommendationsApi.md#get_access_request_recommendations_config) | **GET** /ai-access-request-recommendations/config | Get Access Request Recommendations config
 [**get_access_request_recommendations_ignored_items**](IAIAccessRequestRecommendationsApi.md#get_access_request_recommendations_ignored_items) | **GET** /ai-access-request-recommendations/ignored-items | List of Ignored Access Request Recommendations
 [**get_access_request_recommendations_requested_items**](IAIAccessRequestRecommendationsApi.md#get_access_request_recommendations_requested_items) | **GET** /ai-access-request-recommendations/requested-items | List of Requested Access Request Recommendations
 [**get_access_request_recommendations_viewed_items**](IAIAccessRequestRecommendationsApi.md#get_access_request_recommendations_viewed_items) | **GET** /ai-access-request-recommendations/viewed-items | List of Viewed Access Request Recommendations
+[**set_access_request_recommendations_config**](IAIAccessRequestRecommendationsApi.md#set_access_request_recommendations_config) | **PUT** /ai-access-request-recommendations/config | Update Access Request Recommendations config
 
 
 # **add_access_request_recommendations_ignored_item**
@@ -455,6 +457,89 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_access_request_recommendations_config**
+> AccessRequestRecommendationConfigDto get_access_request_recommendations_config(x_sail_point_experimental)
+
+Get Access Request Recommendations config
+
+This API returns the configurations for Access Request Recommender for the tenant.
+
+### Example
+
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
+
+```python
+import sailpoint.v2024
+from sailpoint.v2024.models.access_request_recommendation_config_dto import AccessRequestRecommendationConfigDto
+from sailpoint.v2024.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v2024
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sailpoint.v2024.Configuration(
+    host = "https://sailpoint.api.identitynow.com/v2024"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with sailpoint.v2024.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sailpoint.v2024.IAIAccessRequestRecommendationsApi(api_client)
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true')
+
+    try:
+        # Get Access Request Recommendations config
+        api_response = api_instance.get_access_request_recommendations_config(x_sail_point_experimental)
+        print("The response of IAIAccessRequestRecommendationsApi->get_access_request_recommendations_config:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling IAIAccessRequestRecommendationsApi->get_access_request_recommendations_config: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **x_sail_point_experimental** | **str**| Use this header to enable this experimental API. | [default to &#39;true&#39;]
+
+### Return type
+
+[**AccessRequestRecommendationConfigDto**](AccessRequestRecommendationConfigDto.md)
+
+### Authorization
+
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Configurations for Access Request Recommender for the tenant. |  -  |
+**400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
+**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_access_request_recommendations_ignored_items**
 > List[AccessRequestRecommendationActionItemResponseDto] get_access_request_recommendations_ignored_items(x_sail_point_experimental, limit=limit, offset=offset, count=count, filters=filters, sorters=sorters)
 
@@ -726,6 +811,91 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Returns list of viewed access request recommendations. |  -  |
+**400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
+**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **set_access_request_recommendations_config**
+> AccessRequestRecommendationConfigDto set_access_request_recommendations_config(x_sail_point_experimental, access_request_recommendation_config_dto)
+
+Update Access Request Recommendations config
+
+This API updates the configurations for Access Request Recommender for the tenant.
+
+### Example
+
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
+
+```python
+import sailpoint.v2024
+from sailpoint.v2024.models.access_request_recommendation_config_dto import AccessRequestRecommendationConfigDto
+from sailpoint.v2024.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v2024
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sailpoint.v2024.Configuration(
+    host = "https://sailpoint.api.identitynow.com/v2024"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with sailpoint.v2024.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sailpoint.v2024.IAIAccessRequestRecommendationsApi(api_client)
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true')
+    access_request_recommendation_config_dto = sailpoint.v2024.AccessRequestRecommendationConfigDto() # AccessRequestRecommendationConfigDto | The desired configurations for Access Request Recommender for the tenant.
+
+    try:
+        # Update Access Request Recommendations config
+        api_response = api_instance.set_access_request_recommendations_config(x_sail_point_experimental, access_request_recommendation_config_dto)
+        print("The response of IAIAccessRequestRecommendationsApi->set_access_request_recommendations_config:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling IAIAccessRequestRecommendationsApi->set_access_request_recommendations_config: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **x_sail_point_experimental** | **str**| Use this header to enable this experimental API. | [default to &#39;true&#39;]
+ **access_request_recommendation_config_dto** | [**AccessRequestRecommendationConfigDto**](AccessRequestRecommendationConfigDto.md)| The desired configurations for Access Request Recommender for the tenant. | 
+
+### Return type
+
+[**AccessRequestRecommendationConfigDto**](AccessRequestRecommendationConfigDto.md)
+
+### Authorization
+
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successfully updated configurations for Access Request Recommender for the tenant. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |

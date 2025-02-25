@@ -61,6 +61,13 @@ class TestIAIAccessRequestRecommendationsApi(unittest.TestCase):
         """
         pass
 
+    def test_get_access_request_recommendations_config(self) -> None:
+        """Test case for get_access_request_recommendations_config
+
+        Get Access Request Recommendations config
+        """
+        pass
+
     def test_get_access_request_recommendations_ignored_items(self) -> None:
         """Test case for get_access_request_recommendations_ignored_items
 
@@ -79,6 +86,13 @@ class TestIAIAccessRequestRecommendationsApi(unittest.TestCase):
         """Test case for get_access_request_recommendations_viewed_items
 
         List of Viewed Access Request Recommendations
+        """
+        pass
+
+    def test_set_access_request_recommendations_config(self) -> None:
+        """Test case for set_access_request_recommendations_config
+
+        Update Access Request Recommendations config
         """
         pass
 

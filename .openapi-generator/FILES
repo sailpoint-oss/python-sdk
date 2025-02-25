@@ -153,6 +153,7 @@ sailpoint/v2024/docs/AccessRequestPreApproval1.md
 sailpoint/v2024/docs/AccessRequestPreApprovalRequestedItemsInner.md
 sailpoint/v2024/docs/AccessRequestRecommendationActionItemDto.md
 sailpoint/v2024/docs/AccessRequestRecommendationActionItemResponseDto.md
+sailpoint/v2024/docs/AccessRequestRecommendationConfigDto.md
 sailpoint/v2024/docs/AccessRequestRecommendationItem.md
 sailpoint/v2024/docs/AccessRequestRecommendationItemDetail.md
 sailpoint/v2024/docs/AccessRequestRecommendationItemDetailAccess.md
@@ -1294,6 +1295,7 @@ sailpoint/v2024/models/access_request_pre_approval1.py
 sailpoint/v2024/models/access_request_pre_approval_requested_items_inner.py
 sailpoint/v2024/models/access_request_recommendation_action_item_dto.py
 sailpoint/v2024/models/access_request_recommendation_action_item_response_dto.py
+sailpoint/v2024/models/access_request_recommendation_config_dto.py
 sailpoint/v2024/models/access_request_recommendation_item.py
 sailpoint/v2024/models/access_request_recommendation_item_detail.py
 sailpoint/v2024/models/access_request_recommendation_item_detail_access.py
@@ -2360,6 +2362,7 @@ sailpoint/v2024/test/test_access_request_pre_approval1.py
 sailpoint/v2024/test/test_access_request_pre_approval_requested_items_inner.py
 sailpoint/v2024/test/test_access_request_recommendation_action_item_dto.py
 sailpoint/v2024/test/test_access_request_recommendation_action_item_response_dto.py
+sailpoint/v2024/test/test_access_request_recommendation_config_dto.py
 sailpoint/v2024/test/test_access_request_recommendation_item.py
 sailpoint/v2024/test/test_access_request_recommendation_item_detail.py
 sailpoint/v2024/test/test_access_request_recommendation_item_detail_access.py

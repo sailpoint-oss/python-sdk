@@ -296,9 +296,11 @@ Class | Method | HTTP request | Description
 *IAIAccessRequestRecommendationsApi* | [**add_access_request_recommendations_viewed_item**](sailpoint/v2024/docs/IAIAccessRequestRecommendationsApi.md#add_access_request_recommendations_viewed_item) | **POST** /ai-access-request-recommendations/viewed-items | Notification of Viewed Access Request Recommendations
 *IAIAccessRequestRecommendationsApi* | [**add_access_request_recommendations_viewed_items**](sailpoint/v2024/docs/IAIAccessRequestRecommendationsApi.md#add_access_request_recommendations_viewed_items) | **POST** /ai-access-request-recommendations/viewed-items/bulk-create | Notification of Viewed Access Request Recommendations in Bulk
 *IAIAccessRequestRecommendationsApi* | [**get_access_request_recommendations**](sailpoint/v2024/docs/IAIAccessRequestRecommendationsApi.md#get_access_request_recommendations) | **GET** /ai-access-request-recommendations | Identity Access Request Recommendations
+*IAIAccessRequestRecommendationsApi* | [**get_access_request_recommendations_config**](sailpoint/v2024/docs/IAIAccessRequestRecommendationsApi.md#get_access_request_recommendations_config) | **GET** /ai-access-request-recommendations/config | Get Access Request Recommendations config
 *IAIAccessRequestRecommendationsApi* | [**get_access_request_recommendations_ignored_items**](sailpoint/v2024/docs/IAIAccessRequestRecommendationsApi.md#get_access_request_recommendations_ignored_items) | **GET** /ai-access-request-recommendations/ignored-items | List of Ignored Access Request Recommendations
 *IAIAccessRequestRecommendationsApi* | [**get_access_request_recommendations_requested_items**](sailpoint/v2024/docs/IAIAccessRequestRecommendationsApi.md#get_access_request_recommendations_requested_items) | **GET** /ai-access-request-recommendations/requested-items | List of Requested Access Request Recommendations
 *IAIAccessRequestRecommendationsApi* | [**get_access_request_recommendations_viewed_items**](sailpoint/v2024/docs/IAIAccessRequestRecommendationsApi.md#get_access_request_recommendations_viewed_items) | **GET** /ai-access-request-recommendations/viewed-items | List of Viewed Access Request Recommendations
+*IAIAccessRequestRecommendationsApi* | [**set_access_request_recommendations_config**](sailpoint/v2024/docs/IAIAccessRequestRecommendationsApi.md#set_access_request_recommendations_config) | **PUT** /ai-access-request-recommendations/config | Update Access Request Recommendations config
 *IAICommonAccessApi* | [**create_common_access**](sailpoint/v2024/docs/IAICommonAccessApi.md#create_common_access) | **POST** /common-access | Create common access items
 *IAICommonAccessApi* | [**get_common_access**](sailpoint/v2024/docs/IAICommonAccessApi.md#get_common_access) | **GET** /common-access | Get a paginated list of common access
 *IAICommonAccessApi* | [**update_common_access_status_in_bulk**](sailpoint/v2024/docs/IAICommonAccessApi.md#update_common_access_status_in_bulk) | **POST** /common-access/update-status | Bulk update common access status
@@ -785,6 +787,7 @@ Class | Method | HTTP request | Description
  - [AccessRequestPreApprovalRequestedItemsInner](sailpoint/v2024/docs/AccessRequestPreApprovalRequestedItemsInner.md)
  - [AccessRequestRecommendationActionItemDto](sailpoint/v2024/docs/AccessRequestRecommendationActionItemDto.md)
  - [AccessRequestRecommendationActionItemResponseDto](sailpoint/v2024/docs/AccessRequestRecommendationActionItemResponseDto.md)
+ - [AccessRequestRecommendationConfigDto](sailpoint/v2024/docs/AccessRequestRecommendationConfigDto.md)
  - [AccessRequestRecommendationItem](sailpoint/v2024/docs/AccessRequestRecommendationItem.md)
  - [AccessRequestRecommendationItemDetail](sailpoint/v2024/docs/AccessRequestRecommendationItemDetail.md)
  - [AccessRequestRecommendationItemDetailAccess](sailpoint/v2024/docs/AccessRequestRecommendationItemDetailAccess.md)
