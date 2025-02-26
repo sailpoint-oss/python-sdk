@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **get_access_request_identity_metrics**
-> object get_access_request_identity_metrics(identity_id, requested_object_id, type, x_sail_point_experimental)
+> object get_access_request_identity_metrics(identity_id, requested_object_id, type)
 
 Return access request identity metrics
 
@@ -46,11 +46,10 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
     identity_id = '7025c863-c270-4ba6-beea-edf3cb091573' # str | Manager's identity ID.
     requested_object_id = '2db501be-f0fb-4cc5-a695-334133c52891' # str | Requested access item's ID.
     type = 'ENTITLEMENT' # str | Requested access item's type.
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true')
 
     try:
         # Return access request identity metrics
-        api_response = api_instance.get_access_request_identity_metrics(identity_id, requested_object_id, type, x_sail_point_experimental)
+        api_response = api_instance.get_access_request_identity_metrics(identity_id, requested_object_id, type)
         print("The response of AccessRequestIdentityMetricsApi->get_access_request_identity_metrics:\n")
         pprint(api_response)
     except Exception as e:
@@ -67,7 +66,6 @@ Name | Type | Description  | Notes
  **identity_id** | **str**| Manager&#39;s identity ID. | 
  **requested_object_id** | **str**| Requested access item&#39;s ID. | 
  **type** | **str**| Requested access item&#39;s type. | 
- **x_sail_point_experimental** | **str**| Use this header to enable this experimental API. | [default to &#39;true&#39;]
 
 ### Return type
 
