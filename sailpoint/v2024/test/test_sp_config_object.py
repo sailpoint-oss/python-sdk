@@ -38,6 +38,7 @@ class TestSpConfigObject(unittest.TestCase):
                 object_type = 'TRIGGER_SUBSCRIPTION',
                 reference_extractors = [$.owner],
                 signature_required = False,
+                always_resolve_by_id = True,
                 legacy_object = False,
                 one_per_tenant = False,
                 exportable = True,
@@ -45,14 +46,13 @@ class TestSpConfigObject(unittest.TestCase):
                     take_from_target_rules = [
                         sailpoint.v2024.models.config_object_rule.Config Object Rule(
                             path = '$.enabled', 
-                            value = sailpoint.v2024.models.value.value(), 
-                            mode = [RESTORE, PROMOTE], )
+                            value = null, 
+                            modes = [RESTORE, PROMOTE], )
                         ], 
                     default_rules = [
                         sailpoint.v2024.models.config_object_rule.Config Object Rule(
                             path = '$.enabled', 
-                            value = sailpoint.v2024.models.value.value(), 
-                            mode = [RESTORE, PROMOTE], )
+                            modes = [RESTORE, PROMOTE], )
                         ], 
                     editable = True, )
             )

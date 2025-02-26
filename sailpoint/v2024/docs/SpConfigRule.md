@@ -7,8 +7,8 @@ Format of Config Hub Object Rules
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **path** | **str** | JSONPath expression denoting the path within the object where a value substitution should be applied | [optional] 
-**value** | **object** | Value to be assigned at the jsonPath location within the object | [optional] 
-**mode** | **List[str]** | Draft modes to which this rule will apply | [optional] 
+**value** | [**SpConfigRuleValue**](SpConfigRuleValue.md) |  | [optional] 
+**modes** | **List[str]** | Draft modes to which this rule will apply | [optional] 
 
 ## Example
 

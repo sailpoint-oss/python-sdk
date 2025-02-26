@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **export_sp_config**
-> SpConfigExportJob export_sp_config(x_sail_point_experimental, export_payload)
+> SpConfigExportJob export_sp_config(export_payload)
 
 Initiates configuration objects export job
 
@@ -51,12 +51,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v2024.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v2024.SPConfigApi(api_client)
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true')
     export_payload = {description=Export all available objects, excludeTypes=[], includeTypes=[ACCESS_PROFILE, ACCESS_REQUEST_CONFIG, ATTR_SYNC_SOURCE_CONFIG, AUTH_ORG, CAMPAIGN_FILTER, FORM_DEFINITION, GOVERNANCE_GROUP, IDENTITY_OBJECT_CONFIG, IDENTITY_PROFILE, LIFECYCLE_STATE, NOTIFICATION_TEMPLATE, PASSWORD_POLICY, PASSWORD_SYNC_GROUP, PUBLIC_IDENTITIES_CONFIG, ROLE, RULE, SEGMENT, SERVICE_DESK_INTEGRATION, SOD_POLICY, SOURCE, TAG, TRANSFORM, TRIGGER_SUBSCRIPTION, WORKFLOW], objectOptions={}} # ExportPayload | Export options control what will be included in the export.
 
     try:
         # Initiates configuration objects export job
-        api_response = api_instance.export_sp_config(x_sail_point_experimental, export_payload)
+        api_response = api_instance.export_sp_config(export_payload)
         print("The response of SPConfigApi->export_sp_config:\n")
         pprint(api_response)
     except Exception as e:
@@ -70,7 +69,6 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_sail_point_experimental** | **str**| Use this header to enable this experimental API. | [default to &#39;true&#39;]
  **export_payload** | [**ExportPayload**](ExportPayload.md)| Export options control what will be included in the export. | 
 
 ### Return type
@@ -101,7 +99,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_sp_config_export**
-> SpConfigExportResults get_sp_config_export(id, x_sail_point_experimental)
+> SpConfigExportResults get_sp_config_export(id)
 
 Download export job result.
 
@@ -138,11 +136,10 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v2024.SPConfigApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the export job whose results will be downloaded.
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true')
 
     try:
         # Download export job result.
-        api_response = api_instance.get_sp_config_export(id, x_sail_point_experimental)
+        api_response = api_instance.get_sp_config_export(id)
         print("The response of SPConfigApi->get_sp_config_export:\n")
         pprint(api_response)
     except Exception as e:
@@ -157,7 +154,6 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| The ID of the export job whose results will be downloaded. | 
- **x_sail_point_experimental** | **str**| Use this header to enable this experimental API. | [default to &#39;true&#39;]
 
 ### Return type
 
@@ -187,7 +183,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_sp_config_export_status**
-> SpConfigExportJobStatus get_sp_config_export_status(id, x_sail_point_experimental)
+> SpConfigExportJobStatus get_sp_config_export_status(id)
 
 Get export job status
 
@@ -224,11 +220,10 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v2024.SPConfigApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the export job whose status will be returned.
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true')
 
     try:
         # Get export job status
-        api_response = api_instance.get_sp_config_export_status(id, x_sail_point_experimental)
+        api_response = api_instance.get_sp_config_export_status(id)
         print("The response of SPConfigApi->get_sp_config_export_status:\n")
         pprint(api_response)
     except Exception as e:
@@ -243,7 +238,6 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| The ID of the export job whose status will be returned. | 
- **x_sail_point_experimental** | **str**| Use this header to enable this experimental API. | [default to &#39;true&#39;]
 
 ### Return type
 
@@ -273,7 +267,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_sp_config_import**
-> SpConfigImportResults get_sp_config_import(id, x_sail_point_experimental)
+> SpConfigImportResults get_sp_config_import(id)
 
 Download import job result
 
@@ -310,11 +304,10 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v2024.SPConfigApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the import job whose results will be downloaded.
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true')
 
     try:
         # Download import job result
-        api_response = api_instance.get_sp_config_import(id, x_sail_point_experimental)
+        api_response = api_instance.get_sp_config_import(id)
         print("The response of SPConfigApi->get_sp_config_import:\n")
         pprint(api_response)
     except Exception as e:
@@ -329,7 +322,6 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| The ID of the import job whose results will be downloaded. | 
- **x_sail_point_experimental** | **str**| Use this header to enable this experimental API. | [default to &#39;true&#39;]
 
 ### Return type
 
@@ -359,7 +351,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_sp_config_import_status**
-> SpConfigImportJobStatus get_sp_config_import_status(id, x_sail_point_experimental)
+> SpConfigImportJobStatus get_sp_config_import_status(id)
 
 Get import job status
 
@@ -396,11 +388,10 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v2024.SPConfigApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the import job whose status will be returned.
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true')
 
     try:
         # Get import job status
-        api_response = api_instance.get_sp_config_import_status(id, x_sail_point_experimental)
+        api_response = api_instance.get_sp_config_import_status(id)
         print("The response of SPConfigApi->get_sp_config_import_status:\n")
         pprint(api_response)
     except Exception as e:
@@ -415,7 +406,6 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| The ID of the import job whose status will be returned. | 
- **x_sail_point_experimental** | **str**| Use this header to enable this experimental API. | [default to &#39;true&#39;]
 
 ### Return type
 
@@ -445,7 +435,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **import_sp_config**
-> SpConfigJob import_sp_config(x_sail_point_experimental, data, preview=preview, options=options)
+> SpConfigJob import_sp_config(data, preview=preview, options=options)
 
 Initiates configuration objects import job
 
@@ -482,14 +472,13 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v2024.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v2024.SPConfigApi(api_client)
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true')
     data = None # bytearray | JSON file containing the objects to be imported.
     preview = False # bool | This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \"true\", no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported.  (optional) (default to False)
     options = sailpoint.v2024.ImportOptions() # ImportOptions |  (optional)
 
     try:
         # Initiates configuration objects import job
-        api_response = api_instance.import_sp_config(x_sail_point_experimental, data, preview=preview, options=options)
+        api_response = api_instance.import_sp_config(data, preview=preview, options=options)
         print("The response of SPConfigApi->import_sp_config:\n")
         pprint(api_response)
     except Exception as e:
@@ -503,7 +492,6 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **x_sail_point_experimental** | **str**| Use this header to enable this experimental API. | [default to &#39;true&#39;]
  **data** | **bytearray**| JSON file containing the objects to be imported. | 
  **preview** | **bool**| This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \&quot;true\&quot;, no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported.  | [optional] [default to False]
  **options** | [**ImportOptions**](ImportOptions.md)|  | [optional] 
@@ -536,7 +524,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_sp_config_objects**
-> List[SpConfigObject] list_sp_config_objects(x_sail_point_experimental)
+> List[SpConfigObject] list_sp_config_objects()
 
 Get config object details
 
@@ -572,11 +560,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v2024.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v2024.SPConfigApi(api_client)
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true')
 
     try:
         # Get config object details
-        api_response = api_instance.list_sp_config_objects(x_sail_point_experimental)
+        api_response = api_instance.list_sp_config_objects()
         print("The response of SPConfigApi->list_sp_config_objects:\n")
         pprint(api_response)
     except Exception as e:
@@ -587,10 +574,7 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **x_sail_point_experimental** | **str**| Use this header to enable this experimental API. | [default to &#39;true&#39;]
+This endpoint does not need any parameter.
 
 ### Return type
 

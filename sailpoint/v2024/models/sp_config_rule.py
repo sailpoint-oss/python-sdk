@@ -19,6 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.v2024.models.sp_config_rule_value import SpConfigRuleValue
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,12 +28,12 @@ class SpConfigRule(BaseModel):
     Format of Config Hub Object Rules
     """ # noqa: E501
     path: Optional[StrictStr] = Field(default=None, description="JSONPath expression denoting the path within the object where a value substitution should be applied")
-    value: Optional[Dict[str, Any]] = Field(default=None, description="Value to be assigned at the jsonPath location within the object")
-    mode: Optional[List[StrictStr]] = Field(default=None, description="Draft modes to which this rule will apply")
-    __properties: ClassVar[List[str]] = ["path", "value", "mode"]
+    value: Optional[SpConfigRuleValue] = None
+    modes: Optional[List[StrictStr]] = Field(default=None, description="Draft modes to which this rule will apply")
+    __properties: ClassVar[List[str]] = ["path", "value", "modes"]
 
-    @field_validator('mode')
-    def mode_validate_enum(cls, value):
+    @field_validator('modes')
+    def modes_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
             return value
@@ -81,6 +82,9 @@ class SpConfigRule(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of value
+        if self.value:
+            _dict['value'] = self.value.to_dict()
         # set to None if value (nullable) is None
         # and model_fields_set contains the field
         if self.value is None and "value" in self.model_fields_set:
@@ -99,8 +103,8 @@ class SpConfigRule(BaseModel):
 
         _obj = cls.model_validate({
             "path": obj.get("path"),
-            "value": obj.get("value"),
-            "mode": obj.get("mode")
+            "value": SpConfigRuleValue.from_dict(obj["value"]) if obj.get("value") is not None else None,
+            "modes": obj.get("modes")
         })
         return _obj
 

@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2024.models.sp_config_rules import SpConfigRules
+from sailpoint.v2024.models.sp_config_rule_value import SpConfigRuleValue
 
-class TestSpConfigRules(unittest.TestCase):
-    """SpConfigRules unit test stubs"""
+class TestSpConfigRuleValue(unittest.TestCase):
+    """SpConfigRuleValue unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,37 +25,24 @@ class TestSpConfigRules(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> SpConfigRules:
-        """Test SpConfigRules
+    def make_instance(self, include_optional) -> SpConfigRuleValue:
+        """Test SpConfigRuleValue
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `SpConfigRules`
+        # uncomment below to create an instance of `SpConfigRuleValue`
         """
-        model = SpConfigRules()
+        model = SpConfigRuleValue()
         if include_optional:
-            return SpConfigRules(
-                take_from_target_rules = [
-                    sailpoint.v2024.models.config_object_rule.Config Object Rule(
-                        path = '$.enabled', 
-                        value = null, 
-                        modes = [RESTORE, PROMOTE], )
-                    ],
-                default_rules = [
-                    sailpoint.v2024.models.config_object_rule.Config Object Rule(
-                        path = '$.enabled', 
-                        value = null, 
-                        modes = [RESTORE, PROMOTE], )
-                    ],
-                editable = True
+            return SpConfigRuleValue(
             )
         else:
-            return SpConfigRules(
+            return SpConfigRuleValue(
         )
         """
 
-    def testSpConfigRules(self):
-        """Test SpConfigRules"""
+    def testSpConfigRuleValue(self):
+        """Test SpConfigRuleValue"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

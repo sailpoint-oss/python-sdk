@@ -51,7 +51,6 @@ class SPConfigApi:
     def export_sp_config(
         self,
         export_payload: Annotated[ExportPayload, Field(description="Export options control what will be included in the export.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -69,8 +68,6 @@ class SPConfigApi:
 
         This post will export objects from the tenant to a JSON configuration file. For more information about the object types that currently support export functionality, refer to [SaaS Configuration](https://developer.sailpoint.com/idn/docs/saas-configuration/#supported-objects).
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param export_payload: Export options control what will be included in the export. (required)
         :type export_payload: ExportPayload
         :param _request_timeout: timeout setting for this request. If one
@@ -96,7 +93,6 @@ class SPConfigApi:
         """ # noqa: E501
 
         _param = self._export_sp_config_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             export_payload=export_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -128,7 +124,6 @@ class SPConfigApi:
     def export_sp_config_with_http_info(
         self,
         export_payload: Annotated[ExportPayload, Field(description="Export options control what will be included in the export.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -146,8 +141,6 @@ class SPConfigApi:
 
         This post will export objects from the tenant to a JSON configuration file. For more information about the object types that currently support export functionality, refer to [SaaS Configuration](https://developer.sailpoint.com/idn/docs/saas-configuration/#supported-objects).
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param export_payload: Export options control what will be included in the export. (required)
         :type export_payload: ExportPayload
         :param _request_timeout: timeout setting for this request. If one
@@ -173,7 +166,6 @@ class SPConfigApi:
         """ # noqa: E501
 
         _param = self._export_sp_config_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             export_payload=export_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -205,7 +197,6 @@ class SPConfigApi:
     def export_sp_config_without_preload_content(
         self,
         export_payload: Annotated[ExportPayload, Field(description="Export options control what will be included in the export.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -223,8 +214,6 @@ class SPConfigApi:
 
         This post will export objects from the tenant to a JSON configuration file. For more information about the object types that currently support export functionality, refer to [SaaS Configuration](https://developer.sailpoint.com/idn/docs/saas-configuration/#supported-objects).
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param export_payload: Export options control what will be included in the export. (required)
         :type export_payload: ExportPayload
         :param _request_timeout: timeout setting for this request. If one
@@ -250,7 +239,6 @@ class SPConfigApi:
         """ # noqa: E501
 
         _param = self._export_sp_config_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             export_payload=export_payload,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -276,7 +264,6 @@ class SPConfigApi:
 
     def _export_sp_config_serialize(
         self,
-        x_sail_point_experimental,
         export_payload,
         _request_auth,
         _content_type,
@@ -301,8 +288,6 @@ class SPConfigApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if export_payload is not None:
@@ -359,7 +344,6 @@ class SPConfigApi:
     def get_sp_config_export(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the export job whose results will be downloaded.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -379,8 +363,6 @@ class SPConfigApi:
 
         :param id: The ID of the export job whose results will be downloaded. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -405,7 +387,6 @@ class SPConfigApi:
 
         _param = self._get_sp_config_export_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -436,7 +417,6 @@ class SPConfigApi:
     def get_sp_config_export_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the export job whose results will be downloaded.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -456,8 +436,6 @@ class SPConfigApi:
 
         :param id: The ID of the export job whose results will be downloaded. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -482,7 +460,6 @@ class SPConfigApi:
 
         _param = self._get_sp_config_export_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -513,7 +490,6 @@ class SPConfigApi:
     def get_sp_config_export_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the export job whose results will be downloaded.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -533,8 +509,6 @@ class SPConfigApi:
 
         :param id: The ID of the export job whose results will be downloaded. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -559,7 +533,6 @@ class SPConfigApi:
 
         _param = self._get_sp_config_export_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -585,7 +558,6 @@ class SPConfigApi:
     def _get_sp_config_export_serialize(
         self,
         id,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -611,8 +583,6 @@ class SPConfigApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -654,7 +624,6 @@ class SPConfigApi:
     def get_sp_config_export_status(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the export job whose status will be returned.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -674,8 +643,6 @@ class SPConfigApi:
 
         :param id: The ID of the export job whose status will be returned. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -700,7 +667,6 @@ class SPConfigApi:
 
         _param = self._get_sp_config_export_status_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -731,7 +697,6 @@ class SPConfigApi:
     def get_sp_config_export_status_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the export job whose status will be returned.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -751,8 +716,6 @@ class SPConfigApi:
 
         :param id: The ID of the export job whose status will be returned. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -777,7 +740,6 @@ class SPConfigApi:
 
         _param = self._get_sp_config_export_status_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -808,7 +770,6 @@ class SPConfigApi:
     def get_sp_config_export_status_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the export job whose status will be returned.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -828,8 +789,6 @@ class SPConfigApi:
 
         :param id: The ID of the export job whose status will be returned. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -854,7 +813,6 @@ class SPConfigApi:
 
         _param = self._get_sp_config_export_status_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -880,7 +838,6 @@ class SPConfigApi:
     def _get_sp_config_export_status_serialize(
         self,
         id,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -906,8 +863,6 @@ class SPConfigApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -949,7 +904,6 @@ class SPConfigApi:
     def get_sp_config_import(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the import job whose results will be downloaded.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -969,8 +923,6 @@ class SPConfigApi:
 
         :param id: The ID of the import job whose results will be downloaded. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -995,7 +947,6 @@ class SPConfigApi:
 
         _param = self._get_sp_config_import_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1026,7 +977,6 @@ class SPConfigApi:
     def get_sp_config_import_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the import job whose results will be downloaded.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1046,8 +996,6 @@ class SPConfigApi:
 
         :param id: The ID of the import job whose results will be downloaded. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1072,7 +1020,6 @@ class SPConfigApi:
 
         _param = self._get_sp_config_import_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1103,7 +1050,6 @@ class SPConfigApi:
     def get_sp_config_import_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the import job whose results will be downloaded.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1123,8 +1069,6 @@ class SPConfigApi:
 
         :param id: The ID of the import job whose results will be downloaded. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1149,7 +1093,6 @@ class SPConfigApi:
 
         _param = self._get_sp_config_import_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1175,7 +1118,6 @@ class SPConfigApi:
     def _get_sp_config_import_serialize(
         self,
         id,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -1201,8 +1143,6 @@ class SPConfigApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -1244,7 +1184,6 @@ class SPConfigApi:
     def get_sp_config_import_status(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the import job whose status will be returned.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1264,8 +1203,6 @@ class SPConfigApi:
 
         :param id: The ID of the import job whose status will be returned. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1290,7 +1227,6 @@ class SPConfigApi:
 
         _param = self._get_sp_config_import_status_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1321,7 +1257,6 @@ class SPConfigApi:
     def get_sp_config_import_status_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the import job whose status will be returned.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1341,8 +1276,6 @@ class SPConfigApi:
 
         :param id: The ID of the import job whose status will be returned. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1367,7 +1300,6 @@ class SPConfigApi:
 
         _param = self._get_sp_config_import_status_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1398,7 +1330,6 @@ class SPConfigApi:
     def get_sp_config_import_status_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the import job whose status will be returned.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1418,8 +1349,6 @@ class SPConfigApi:
 
         :param id: The ID of the import job whose status will be returned. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1444,7 +1373,6 @@ class SPConfigApi:
 
         _param = self._get_sp_config_import_status_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1470,7 +1398,6 @@ class SPConfigApi:
     def _get_sp_config_import_status_serialize(
         self,
         id,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -1496,8 +1423,6 @@ class SPConfigApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -1541,7 +1466,6 @@ class SPConfigApi:
         data: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="JSON file containing the objects to be imported.")],
         preview: Annotated[Optional[StrictBool], Field(description="This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \"true\", no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported. ")] = None,
         options: Optional[ImportOptions] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1559,8 +1483,6 @@ class SPConfigApi:
 
         \"This post will import objects from a JSON configuration file into\\  \\ a tenant. By default, every import will first export all existing objects supported\\  \\ by sp-config as a backup before the import is attempted. The backup is provided\\  \\ so that the state of the configuration prior to the import is available for\\  \\ inspection or restore if needed. The backup can be skipped by setting \\\"excludeBackup\\\"\\  \\ to true in the import options. If a backup is performed, the id of the backup\\  \\ will be provided in the ImportResult as the \\\"exportJobId\\\". This can be downloaded\\  \\  using the `/sp-config/export/{exportJobId}/download` endpoint.\\nYou cannot currently\\  \\ import from the Non-Employee Lifecycle Management (NELM) source. You cannot\\  \\ use this endpoint to back up or store NELM data. \\nFor more information about\\  \\ the object types that currently support import functionality, refer to [SaaS\\  \\ Configuration](https://developer.sailpoint.com/idn/docs/saas-configuration/#supported-objects).\" 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param data: JSON file containing the objects to be imported. (required)
         :type data: bytearray
         :param preview: This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \"true\", no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported. 
@@ -1590,7 +1512,6 @@ class SPConfigApi:
         """ # noqa: E501
 
         _param = self._import_sp_config_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             data=data,
             preview=preview,
             options=options,
@@ -1626,7 +1547,6 @@ class SPConfigApi:
         data: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="JSON file containing the objects to be imported.")],
         preview: Annotated[Optional[StrictBool], Field(description="This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \"true\", no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported. ")] = None,
         options: Optional[ImportOptions] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1644,8 +1564,6 @@ class SPConfigApi:
 
         \"This post will import objects from a JSON configuration file into\\  \\ a tenant. By default, every import will first export all existing objects supported\\  \\ by sp-config as a backup before the import is attempted. The backup is provided\\  \\ so that the state of the configuration prior to the import is available for\\  \\ inspection or restore if needed. The backup can be skipped by setting \\\"excludeBackup\\\"\\  \\ to true in the import options. If a backup is performed, the id of the backup\\  \\ will be provided in the ImportResult as the \\\"exportJobId\\\". This can be downloaded\\  \\  using the `/sp-config/export/{exportJobId}/download` endpoint.\\nYou cannot currently\\  \\ import from the Non-Employee Lifecycle Management (NELM) source. You cannot\\  \\ use this endpoint to back up or store NELM data. \\nFor more information about\\  \\ the object types that currently support import functionality, refer to [SaaS\\  \\ Configuration](https://developer.sailpoint.com/idn/docs/saas-configuration/#supported-objects).\" 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param data: JSON file containing the objects to be imported. (required)
         :type data: bytearray
         :param preview: This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \"true\", no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported. 
@@ -1675,7 +1593,6 @@ class SPConfigApi:
         """ # noqa: E501
 
         _param = self._import_sp_config_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             data=data,
             preview=preview,
             options=options,
@@ -1711,7 +1628,6 @@ class SPConfigApi:
         data: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="JSON file containing the objects to be imported.")],
         preview: Annotated[Optional[StrictBool], Field(description="This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \"true\", no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported. ")] = None,
         options: Optional[ImportOptions] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1729,8 +1645,6 @@ class SPConfigApi:
 
         \"This post will import objects from a JSON configuration file into\\  \\ a tenant. By default, every import will first export all existing objects supported\\  \\ by sp-config as a backup before the import is attempted. The backup is provided\\  \\ so that the state of the configuration prior to the import is available for\\  \\ inspection or restore if needed. The backup can be skipped by setting \\\"excludeBackup\\\"\\  \\ to true in the import options. If a backup is performed, the id of the backup\\  \\ will be provided in the ImportResult as the \\\"exportJobId\\\". This can be downloaded\\  \\  using the `/sp-config/export/{exportJobId}/download` endpoint.\\nYou cannot currently\\  \\ import from the Non-Employee Lifecycle Management (NELM) source. You cannot\\  \\ use this endpoint to back up or store NELM data. \\nFor more information about\\  \\ the object types that currently support import functionality, refer to [SaaS\\  \\ Configuration](https://developer.sailpoint.com/idn/docs/saas-configuration/#supported-objects).\" 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param data: JSON file containing the objects to be imported. (required)
         :type data: bytearray
         :param preview: This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \"true\", no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported. 
@@ -1760,7 +1674,6 @@ class SPConfigApi:
         """ # noqa: E501
 
         _param = self._import_sp_config_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             data=data,
             preview=preview,
             options=options,
@@ -1788,7 +1701,6 @@ class SPConfigApi:
 
     def _import_sp_config_serialize(
         self,
-        x_sail_point_experimental,
         data,
         preview,
         options,
@@ -1819,8 +1731,6 @@ class SPConfigApi:
             _query_params.append(('preview', preview))
             
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         if data is not None:
             _files['data'] = data
@@ -1878,7 +1788,6 @@ class SPConfigApi:
     @validate_call
     def list_sp_config_objects(
         self,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1896,8 +1805,6 @@ class SPConfigApi:
 
         This gets the list of object configurations which are known to the tenant export/import service. Object configurations that contain \"importUrl\" and \"exportUrl\" are available for export/import.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1921,7 +1828,6 @@ class SPConfigApi:
         """ # noqa: E501
 
         _param = self._list_sp_config_objects_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1951,7 +1857,6 @@ class SPConfigApi:
     @validate_call
     def list_sp_config_objects_with_http_info(
         self,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1969,8 +1874,6 @@ class SPConfigApi:
 
         This gets the list of object configurations which are known to the tenant export/import service. Object configurations that contain \"importUrl\" and \"exportUrl\" are available for export/import.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1994,7 +1897,6 @@ class SPConfigApi:
         """ # noqa: E501
 
         _param = self._list_sp_config_objects_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2024,7 +1926,6 @@ class SPConfigApi:
     @validate_call
     def list_sp_config_objects_without_preload_content(
         self,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2042,8 +1943,6 @@ class SPConfigApi:
 
         This gets the list of object configurations which are known to the tenant export/import service. Object configurations that contain \"importUrl\" and \"exportUrl\" are available for export/import.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2067,7 +1966,6 @@ class SPConfigApi:
         """ # noqa: E501
 
         _param = self._list_sp_config_objects_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2092,7 +1990,6 @@ class SPConfigApi:
 
     def _list_sp_config_objects_serialize(
         self,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -2116,8 +2013,6 @@ class SPConfigApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 

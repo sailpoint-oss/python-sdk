@@ -1105,6 +1105,7 @@ sailpoint/v2024/docs/SpConfigMessage.md
 sailpoint/v2024/docs/SpConfigMessage1.md
 sailpoint/v2024/docs/SpConfigObject.md
 sailpoint/v2024/docs/SpConfigRule.md
+sailpoint/v2024/docs/SpConfigRuleValue.md
 sailpoint/v2024/docs/SpConfigRules.md
 sailpoint/v2024/docs/StandardLevel.md
 sailpoint/v2024/docs/StartInvocationInput.md
@@ -2179,6 +2180,7 @@ sailpoint/v2024/models/sp_config_message.py
 sailpoint/v2024/models/sp_config_message1.py
 sailpoint/v2024/models/sp_config_object.py
 sailpoint/v2024/models/sp_config_rule.py
+sailpoint/v2024/models/sp_config_rule_value.py
 sailpoint/v2024/models/sp_config_rules.py
 sailpoint/v2024/models/standard_level.py
 sailpoint/v2024/models/start_invocation_input.py
@@ -3314,6 +3316,7 @@ sailpoint/v2024/test/test_sp_config_message.py
 sailpoint/v2024/test/test_sp_config_message1.py
 sailpoint/v2024/test/test_sp_config_object.py
 sailpoint/v2024/test/test_sp_config_rule.py
+sailpoint/v2024/test/test_sp_config_rule_value.py
 sailpoint/v2024/test/test_sp_config_rules.py
 sailpoint/v2024/test/test_standard_level.py
 sailpoint/v2024/test/test_start_invocation_input.py

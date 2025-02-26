@@ -1671,6 +1671,7 @@ Class | Method | HTTP request | Description
  - [SpConfigMessage1](sailpoint/v2024/docs/SpConfigMessage1.md)
  - [SpConfigObject](sailpoint/v2024/docs/SpConfigObject.md)
  - [SpConfigRule](sailpoint/v2024/docs/SpConfigRule.md)
+ - [SpConfigRuleValue](sailpoint/v2024/docs/SpConfigRuleValue.md)
  - [SpConfigRules](sailpoint/v2024/docs/SpConfigRules.md)
  - [StandardLevel](sailpoint/v2024/docs/StandardLevel.md)
  - [StartInvocationInput](sailpoint/v2024/docs/StartInvocationInput.md)

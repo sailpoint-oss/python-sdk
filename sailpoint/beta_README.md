@@ -1405,6 +1405,7 @@ Class | Method | HTTP request | Description
  - [SpConfigMessage](sailpoint/beta/docs/SpConfigMessage.md)
  - [SpConfigObject](sailpoint/beta/docs/SpConfigObject.md)
  - [SpConfigRule](sailpoint/beta/docs/SpConfigRule.md)
+ - [SpConfigRuleValue](sailpoint/beta/docs/SpConfigRuleValue.md)
  - [SpConfigRules](sailpoint/beta/docs/SpConfigRules.md)
  - [StandardLevel](sailpoint/beta/docs/StandardLevel.md)
  - [StartInvocationInput](sailpoint/beta/docs/StartInvocationInput.md)

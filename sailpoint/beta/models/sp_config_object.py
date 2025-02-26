@@ -30,11 +30,12 @@ class SpConfigObject(BaseModel):
     object_type: Optional[StrictStr] = Field(default=None, description="The object type this configuration is for.", alias="objectType")
     reference_extractors: Optional[List[StrictStr]] = Field(default=None, description="List of json paths within an exported object of this type that represent references that need to be resolved.", alias="referenceExtractors")
     signature_required: Optional[StrictBool] = Field(default=False, description="If true, this type of object will be JWS signed and cannot be modified before import.", alias="signatureRequired")
+    always_resolve_by_id: Optional[StrictBool] = Field(default=False, description="Whether this object type has to be resolved always by ID", alias="alwaysResolveById")
     legacy_object: Optional[StrictBool] = Field(default=False, description="Whether this is a legacy object", alias="legacyObject")
     one_per_tenant: Optional[StrictBool] = Field(default=False, description="Whether there is only one object of this type", alias="onePerTenant")
     exportable: Optional[StrictBool] = Field(default=False, description="Whether this object can be exported or it is just a reference object")
     rules: Optional[SpConfigRules] = None
-    __properties: ClassVar[List[str]] = ["objectType", "referenceExtractors", "signatureRequired", "legacyObject", "onePerTenant", "exportable", "rules"]
+    __properties: ClassVar[List[str]] = ["objectType", "referenceExtractors", "signatureRequired", "alwaysResolveById", "legacyObject", "onePerTenant", "exportable", "rules"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -98,6 +99,7 @@ class SpConfigObject(BaseModel):
             "objectType": obj.get("objectType"),
             "referenceExtractors": obj.get("referenceExtractors"),
             "signatureRequired": obj.get("signatureRequired") if obj.get("signatureRequired") is not None else False,
+            "alwaysResolveById": obj.get("alwaysResolveById") if obj.get("alwaysResolveById") is not None else False,
             "legacyObject": obj.get("legacyObject") if obj.get("legacyObject") is not None else False,
             "onePerTenant": obj.get("onePerTenant") if obj.get("onePerTenant") is not None else False,
             "exportable": obj.get("exportable") if obj.get("exportable") is not None else False,
