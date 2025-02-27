@@ -63,9 +63,9 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> IdentityProfile:
-        """Create an Identity Profile
+        """Create Identity Profile
 
-        This creates an Identity Profile.  A token with ORG_ADMIN authority is required to call this API to create an Identity Profile.
+        Create an identity profile. A token with ORG_ADMIN authority is required to call this API to create an Identity Profile.
 
         :param identity_profile: (required)
         :type identity_profile: IdentityProfile
@@ -135,9 +135,9 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[IdentityProfile]:
-        """Create an Identity Profile
+        """Create Identity Profile
 
-        This creates an Identity Profile.  A token with ORG_ADMIN authority is required to call this API to create an Identity Profile.
+        Create an identity profile. A token with ORG_ADMIN authority is required to call this API to create an Identity Profile.
 
         :param identity_profile: (required)
         :type identity_profile: IdentityProfile
@@ -207,9 +207,9 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create an Identity Profile
+        """Create Identity Profile
 
-        This creates an Identity Profile.  A token with ORG_ADMIN authority is required to call this API to create an Identity Profile.
+        Create an identity profile. A token with ORG_ADMIN authority is required to call this API to create an Identity Profile.
 
         :param identity_profile: (required)
         :type identity_profile: IdentityProfile
@@ -339,7 +339,7 @@ class IdentityProfilesApi:
     @validate_call
     def delete_identity_profile(
         self,
-        identity_profile_id: Annotated[StrictStr, Field(description="The Identity Profile ID.")],
+        identity_profile_id: Annotated[StrictStr, Field(description="Identity profile ID.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -353,11 +353,11 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> TaskResultSimplified:
-        """Delete an Identity Profile
+        """Delete Identity Profile
 
-        This deletes an Identity Profile based on ID.  On success, this endpoint will return a reference to the bulk delete task result.  A token with ORG_ADMIN authority is required to call this API.  The following rights are required to access this endpoint: idn:identity-profile:delete
+        Delete an identity profile by ID. On success, this endpoint will return a reference to the bulk delete task result. A token with ORG_ADMIN authority is required to call this API.
 
-        :param identity_profile_id: The Identity Profile ID. (required)
+        :param identity_profile_id: Identity profile ID. (required)
         :type identity_profile_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -412,7 +412,7 @@ class IdentityProfilesApi:
     @validate_call
     def delete_identity_profile_with_http_info(
         self,
-        identity_profile_id: Annotated[StrictStr, Field(description="The Identity Profile ID.")],
+        identity_profile_id: Annotated[StrictStr, Field(description="Identity profile ID.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -426,11 +426,11 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[TaskResultSimplified]:
-        """Delete an Identity Profile
+        """Delete Identity Profile
 
-        This deletes an Identity Profile based on ID.  On success, this endpoint will return a reference to the bulk delete task result.  A token with ORG_ADMIN authority is required to call this API.  The following rights are required to access this endpoint: idn:identity-profile:delete
+        Delete an identity profile by ID. On success, this endpoint will return a reference to the bulk delete task result. A token with ORG_ADMIN authority is required to call this API.
 
-        :param identity_profile_id: The Identity Profile ID. (required)
+        :param identity_profile_id: Identity profile ID. (required)
         :type identity_profile_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -485,7 +485,7 @@ class IdentityProfilesApi:
     @validate_call
     def delete_identity_profile_without_preload_content(
         self,
-        identity_profile_id: Annotated[StrictStr, Field(description="The Identity Profile ID.")],
+        identity_profile_id: Annotated[StrictStr, Field(description="Identity profile ID.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -499,11 +499,11 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete an Identity Profile
+        """Delete Identity Profile
 
-        This deletes an Identity Profile based on ID.  On success, this endpoint will return a reference to the bulk delete task result.  A token with ORG_ADMIN authority is required to call this API.  The following rights are required to access this endpoint: idn:identity-profile:delete
+        Delete an identity profile by ID. On success, this endpoint will return a reference to the bulk delete task result. A token with ORG_ADMIN authority is required to call this API.
 
-        :param identity_profile_id: The Identity Profile ID. (required)
+        :param identity_profile_id: Identity profile ID. (required)
         :type identity_profile_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1540,7 +1540,7 @@ class IdentityProfilesApi:
     @validate_call
     def get_identity_profile(
         self,
-        identity_profile_id: Annotated[StrictStr, Field(description="The Identity Profile ID")],
+        identity_profile_id: Annotated[StrictStr, Field(description="Identity profile ID.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1554,11 +1554,11 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> IdentityProfile:
-        """Gets a single Identity Profile
+        """Get Identity Profile
 
-        This returns a single Identity Profile based on ID.  A token with ORG_ADMIN or API authority is required to call this API.
+        Get a single identity profile by ID. A token with ORG_ADMIN or API authority is required to call this API.
 
-        :param identity_profile_id: The Identity Profile ID (required)
+        :param identity_profile_id: Identity profile ID. (required)
         :type identity_profile_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1613,7 +1613,7 @@ class IdentityProfilesApi:
     @validate_call
     def get_identity_profile_with_http_info(
         self,
-        identity_profile_id: Annotated[StrictStr, Field(description="The Identity Profile ID")],
+        identity_profile_id: Annotated[StrictStr, Field(description="Identity profile ID.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1627,11 +1627,11 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[IdentityProfile]:
-        """Gets a single Identity Profile
+        """Get Identity Profile
 
-        This returns a single Identity Profile based on ID.  A token with ORG_ADMIN or API authority is required to call this API.
+        Get a single identity profile by ID. A token with ORG_ADMIN or API authority is required to call this API.
 
-        :param identity_profile_id: The Identity Profile ID (required)
+        :param identity_profile_id: Identity profile ID. (required)
         :type identity_profile_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1686,7 +1686,7 @@ class IdentityProfilesApi:
     @validate_call
     def get_identity_profile_without_preload_content(
         self,
-        identity_profile_id: Annotated[StrictStr, Field(description="The Identity Profile ID")],
+        identity_profile_id: Annotated[StrictStr, Field(description="Identity profile ID.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1700,11 +1700,11 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Gets a single Identity Profile
+        """Get Identity Profile
 
-        This returns a single Identity Profile based on ID.  A token with ORG_ADMIN or API authority is required to call this API.
+        Get a single identity profile by ID. A token with ORG_ADMIN or API authority is required to call this API.
 
-        :param identity_profile_id: The Identity Profile ID (required)
+        :param identity_profile_id: Identity profile ID. (required)
         :type identity_profile_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2114,7 +2114,7 @@ class IdentityProfilesApi:
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, ge, gt, in, le, lt, isnull, sw*  **name**: *eq, ne, in, le, lt, isnull, sw*  **priority**: *eq, ne*")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, ge, gt, in, le, sw*  **name**: *eq, ne, ge, gt, in, le, sw*  **priority**: *eq, ne*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, priority, created, modified, owner.id, owner.name**")] = None,
         _request_timeout: Union[
             None,
@@ -2129,9 +2129,9 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[IdentityProfile]:
-        """Identity Profiles List
+        """List Identity Profiles
 
-        This returns a list of Identity Profiles based on the specified query parameters. A token with ORG_ADMIN or API authority is required to call this API to get a list of Identity Profiles.
+        Get a list of identity profiles, based on the specified query parameters. A token with ORG_ADMIN or API authority is required to call this API to get a list of Identity Profiles.
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -2139,7 +2139,7 @@ class IdentityProfilesApi:
         :type offset: int
         :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type count: bool
-        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, ge, gt, in, le, lt, isnull, sw*  **name**: *eq, ne, in, le, lt, isnull, sw*  **priority**: *eq, ne*
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, ge, gt, in, le, sw*  **name**: *eq, ne, ge, gt, in, le, sw*  **priority**: *eq, ne*
         :type filters: str
         :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, priority, created, modified, owner.id, owner.name**
         :type sorters: str
@@ -2202,7 +2202,7 @@ class IdentityProfilesApi:
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, ge, gt, in, le, lt, isnull, sw*  **name**: *eq, ne, in, le, lt, isnull, sw*  **priority**: *eq, ne*")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, ge, gt, in, le, sw*  **name**: *eq, ne, ge, gt, in, le, sw*  **priority**: *eq, ne*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, priority, created, modified, owner.id, owner.name**")] = None,
         _request_timeout: Union[
             None,
@@ -2217,9 +2217,9 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[IdentityProfile]]:
-        """Identity Profiles List
+        """List Identity Profiles
 
-        This returns a list of Identity Profiles based on the specified query parameters. A token with ORG_ADMIN or API authority is required to call this API to get a list of Identity Profiles.
+        Get a list of identity profiles, based on the specified query parameters. A token with ORG_ADMIN or API authority is required to call this API to get a list of Identity Profiles.
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -2227,7 +2227,7 @@ class IdentityProfilesApi:
         :type offset: int
         :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type count: bool
-        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, ge, gt, in, le, lt, isnull, sw*  **name**: *eq, ne, in, le, lt, isnull, sw*  **priority**: *eq, ne*
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, ge, gt, in, le, sw*  **name**: *eq, ne, ge, gt, in, le, sw*  **priority**: *eq, ne*
         :type filters: str
         :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, priority, created, modified, owner.id, owner.name**
         :type sorters: str
@@ -2290,7 +2290,7 @@ class IdentityProfilesApi:
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, ge, gt, in, le, lt, isnull, sw*  **name**: *eq, ne, in, le, lt, isnull, sw*  **priority**: *eq, ne*")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, ge, gt, in, le, sw*  **name**: *eq, ne, ge, gt, in, le, sw*  **priority**: *eq, ne*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, priority, created, modified, owner.id, owner.name**")] = None,
         _request_timeout: Union[
             None,
@@ -2305,9 +2305,9 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Identity Profiles List
+        """List Identity Profiles
 
-        This returns a list of Identity Profiles based on the specified query parameters. A token with ORG_ADMIN or API authority is required to call this API to get a list of Identity Profiles.
+        Get a list of identity profiles, based on the specified query parameters. A token with ORG_ADMIN or API authority is required to call this API to get a list of Identity Profiles.
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -2315,7 +2315,7 @@ class IdentityProfilesApi:
         :type offset: int
         :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type count: bool
-        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, ge, gt, in, le, lt, isnull, sw*  **name**: *eq, ne, in, le, lt, isnull, sw*  **priority**: *eq, ne*
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, ge, gt, in, le, sw*  **name**: *eq, ne, ge, gt, in, le, sw*  **priority**: *eq, ne*
         :type filters: str
         :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, priority, created, modified, owner.id, owner.name**
         :type sorters: str
@@ -3028,8 +3028,8 @@ class IdentityProfilesApi:
     @validate_call
     def update_identity_profile(
         self,
-        identity_profile_id: Annotated[StrictStr, Field(description="The Identity Profile ID")],
-        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of Identity Profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
+        identity_profile_id: Annotated[StrictStr, Field(description="Identity profile ID.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="List of identity profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3043,13 +3043,13 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> IdentityProfile:
-        """Update the Identity Profile
+        """Update Identity Profile
 
-        This updates the specified Identity Profile.  A token with ORG_ADMIN authority is required to call this API to update the Identity Profile.  Some fields of the Schema cannot be updated. These fields are listed below: * id * name * created * modified * identityCount * identityRefreshRequired * Authoritative Source and Identity Attribute Configuration cannot be modified at once.
+        Update the specified identity profile with this PATCH request.  A token with ORG_ADMIN authority is required to call this API to update the Identity Profile. These fields cannot be updated: * id * created * modified * identityCount * identityRefreshRequired * Authoritative Source and Identity Attribute Configuration cannot be modified at once.
 
-        :param identity_profile_id: The Identity Profile ID (required)
+        :param identity_profile_id: Identity profile ID. (required)
         :type identity_profile_id: str
-        :param json_patch_operation: A list of Identity Profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
+        :param json_patch_operation: List of identity profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3105,8 +3105,8 @@ class IdentityProfilesApi:
     @validate_call
     def update_identity_profile_with_http_info(
         self,
-        identity_profile_id: Annotated[StrictStr, Field(description="The Identity Profile ID")],
-        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of Identity Profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
+        identity_profile_id: Annotated[StrictStr, Field(description="Identity profile ID.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="List of identity profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3120,13 +3120,13 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[IdentityProfile]:
-        """Update the Identity Profile
+        """Update Identity Profile
 
-        This updates the specified Identity Profile.  A token with ORG_ADMIN authority is required to call this API to update the Identity Profile.  Some fields of the Schema cannot be updated. These fields are listed below: * id * name * created * modified * identityCount * identityRefreshRequired * Authoritative Source and Identity Attribute Configuration cannot be modified at once.
+        Update the specified identity profile with this PATCH request.  A token with ORG_ADMIN authority is required to call this API to update the Identity Profile. These fields cannot be updated: * id * created * modified * identityCount * identityRefreshRequired * Authoritative Source and Identity Attribute Configuration cannot be modified at once.
 
-        :param identity_profile_id: The Identity Profile ID (required)
+        :param identity_profile_id: Identity profile ID. (required)
         :type identity_profile_id: str
-        :param json_patch_operation: A list of Identity Profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
+        :param json_patch_operation: List of identity profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3182,8 +3182,8 @@ class IdentityProfilesApi:
     @validate_call
     def update_identity_profile_without_preload_content(
         self,
-        identity_profile_id: Annotated[StrictStr, Field(description="The Identity Profile ID")],
-        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of Identity Profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
+        identity_profile_id: Annotated[StrictStr, Field(description="Identity profile ID.")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="List of identity profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3197,13 +3197,13 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update the Identity Profile
+        """Update Identity Profile
 
-        This updates the specified Identity Profile.  A token with ORG_ADMIN authority is required to call this API to update the Identity Profile.  Some fields of the Schema cannot be updated. These fields are listed below: * id * name * created * modified * identityCount * identityRefreshRequired * Authoritative Source and Identity Attribute Configuration cannot be modified at once.
+        Update the specified identity profile with this PATCH request.  A token with ORG_ADMIN authority is required to call this API to update the Identity Profile. These fields cannot be updated: * id * created * modified * identityCount * identityRefreshRequired * Authoritative Source and Identity Attribute Configuration cannot be modified at once.
 
-        :param identity_profile_id: The Identity Profile ID (required)
+        :param identity_profile_id: Identity profile ID. (required)
         :type identity_profile_id: str
-        :param json_patch_operation: A list of Identity Profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
+        :param json_patch_operation: List of identity profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

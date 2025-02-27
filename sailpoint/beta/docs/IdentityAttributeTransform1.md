@@ -1,12 +1,12 @@
 # IdentityAttributeTransform1
 
-Defines a transformation definition for an identity attribute.
+Transform definition for an identity attribute.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**identity_attribute_name** | **str** | Name of the identity attribute. | [optional] 
+**identity_attribute_name** | **str** | Identity attribute&#39;s name. | [optional] 
 **transform_definition** | [**TransformDefinition1**](TransformDefinition1.md) |  | [optional] 
 
 ## Example

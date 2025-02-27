@@ -4,25 +4,25 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_identity_profile**](IdentityProfilesApi.md#create_identity_profile) | **POST** /identity-profiles | Create an Identity Profile
-[**delete_identity_profile**](IdentityProfilesApi.md#delete_identity_profile) | **DELETE** /identity-profiles/{identity-profile-id} | Delete an Identity Profile
+[**create_identity_profile**](IdentityProfilesApi.md#create_identity_profile) | **POST** /identity-profiles | Create Identity Profile
+[**delete_identity_profile**](IdentityProfilesApi.md#delete_identity_profile) | **DELETE** /identity-profiles/{identity-profile-id} | Delete Identity Profile
 [**delete_identity_profiles**](IdentityProfilesApi.md#delete_identity_profiles) | **POST** /identity-profiles/bulk-delete | Delete Identity Profiles
 [**export_identity_profiles**](IdentityProfilesApi.md#export_identity_profiles) | **GET** /identity-profiles/export | Export Identity Profiles
 [**get_default_identity_attribute_config**](IdentityProfilesApi.md#get_default_identity_attribute_config) | **GET** /identity-profiles/{identity-profile-id}/default-identity-attribute-config | Default identity attribute config
-[**get_identity_profile**](IdentityProfilesApi.md#get_identity_profile) | **GET** /identity-profiles/{identity-profile-id} | Gets a single Identity Profile
+[**get_identity_profile**](IdentityProfilesApi.md#get_identity_profile) | **GET** /identity-profiles/{identity-profile-id} | Get Identity Profile
 [**import_identity_profiles**](IdentityProfilesApi.md#import_identity_profiles) | **POST** /identity-profiles/import | Import Identity Profiles
-[**list_identity_profiles**](IdentityProfilesApi.md#list_identity_profiles) | **GET** /identity-profiles | Identity Profiles List
+[**list_identity_profiles**](IdentityProfilesApi.md#list_identity_profiles) | **GET** /identity-profiles | List Identity Profiles
 [**show_generate_identity_preview**](IdentityProfilesApi.md#show_generate_identity_preview) | **POST** /identity-profiles/identity-preview | Generate Identity Profile Preview
 [**sync_identity_profile**](IdentityProfilesApi.md#sync_identity_profile) | **POST** /identity-profiles/{identity-profile-id}/process-identities | Process identities under profile
-[**update_identity_profile**](IdentityProfilesApi.md#update_identity_profile) | **PATCH** /identity-profiles/{identity-profile-id} | Update the Identity Profile
+[**update_identity_profile**](IdentityProfilesApi.md#update_identity_profile) | **PATCH** /identity-profiles/{identity-profile-id} | Update Identity Profile
 
 
 # **create_identity_profile**
 > IdentityProfile create_identity_profile(identity_profile)
 
-Create an Identity Profile
+Create Identity Profile
 
-This creates an Identity Profile.  A token with ORG_ADMIN authority is required to call this API to create an Identity Profile.
+Create an identity profile. A token with ORG_ADMIN authority is required to call this API to create an Identity Profile.
 
 ### Example
 
@@ -57,7 +57,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
     identity_profile = sailpoint.beta.IdentityProfile() # IdentityProfile | 
 
     try:
-        # Create an Identity Profile
+        # Create Identity Profile
         api_response = api_instance.create_identity_profile(identity_profile)
         print("The response of IdentityProfilesApi->create_identity_profile:\n")
         pprint(api_response)
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | The created Identity Profile |  -  |
+**201** | Created identity profile |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -103,9 +103,9 @@ Name | Type | Description  | Notes
 # **delete_identity_profile**
 > TaskResultSimplified delete_identity_profile(identity_profile_id)
 
-Delete an Identity Profile
+Delete Identity Profile
 
-This deletes an Identity Profile based on ID.  On success, this endpoint will return a reference to the bulk delete task result.  A token with ORG_ADMIN authority is required to call this API.  The following rights are required to access this endpoint: idn:identity-profile:delete
+Delete an identity profile by ID. On success, this endpoint will return a reference to the bulk delete task result. A token with ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -137,10 +137,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.IdentityProfilesApi(api_client)
-    identity_profile_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The Identity Profile ID.
+    identity_profile_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Identity profile ID.
 
     try:
-        # Delete an Identity Profile
+        # Delete Identity Profile
         api_response = api_instance.delete_identity_profile(identity_profile_id)
         print("The response of IdentityProfilesApi->delete_identity_profile:\n")
         pprint(api_response)
@@ -155,7 +155,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identity_profile_id** | **str**| The Identity Profile ID. | 
+ **identity_profile_id** | **str**| Identity profile ID. | 
 
 ### Return type
 
@@ -446,9 +446,9 @@ Name | Type | Description  | Notes
 # **get_identity_profile**
 > IdentityProfile get_identity_profile(identity_profile_id)
 
-Gets a single Identity Profile
+Get Identity Profile
 
-This returns a single Identity Profile based on ID.  A token with ORG_ADMIN or API authority is required to call this API.
+Get a single identity profile by ID. A token with ORG_ADMIN or API authority is required to call this API.
 
 ### Example
 
@@ -480,10 +480,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.IdentityProfilesApi(api_client)
-    identity_profile_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The Identity Profile ID
+    identity_profile_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Identity profile ID.
 
     try:
-        # Gets a single Identity Profile
+        # Get Identity Profile
         api_response = api_instance.get_identity_profile(identity_profile_id)
         print("The response of IdentityProfilesApi->get_identity_profile:\n")
         pprint(api_response)
@@ -498,7 +498,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identity_profile_id** | **str**| The Identity Profile ID | 
+ **identity_profile_id** | **str**| Identity profile ID. | 
 
 ### Return type
 
@@ -517,7 +517,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | An Identity Profile object |  -  |
+**200** | Identity profile object. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -614,9 +614,9 @@ Name | Type | Description  | Notes
 # **list_identity_profiles**
 > List[IdentityProfile] list_identity_profiles(limit=limit, offset=offset, count=count, filters=filters, sorters=sorters)
 
-Identity Profiles List
+List Identity Profiles
 
-This returns a list of Identity Profiles based on the specified query parameters. A token with ORG_ADMIN or API authority is required to call this API to get a list of Identity Profiles.
+Get a list of identity profiles, based on the specified query parameters. A token with ORG_ADMIN or API authority is required to call this API to get a list of Identity Profiles.
 
 ### Example
 
@@ -651,11 +651,11 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
-    filters = 'id eq 8c190e6787aa4ed9a90bd9d5344523fb' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, ge, gt, in, le, lt, isnull, sw*  **name**: *eq, ne, in, le, lt, isnull, sw*  **priority**: *eq, ne* (optional)
+    filters = 'id eq 8c190e6787aa4ed9a90bd9d5344523fb' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, ge, gt, in, le, sw*  **name**: *eq, ne, ge, gt, in, le, sw*  **priority**: *eq, ne* (optional)
     sorters = 'name,-priority' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, priority, created, modified, owner.id, owner.name** (optional)
 
     try:
-        # Identity Profiles List
+        # List Identity Profiles
         api_response = api_instance.list_identity_profiles(limit=limit, offset=offset, count=count, filters=filters, sorters=sorters)
         print("The response of IdentityProfilesApi->list_identity_profiles:\n")
         pprint(api_response)
@@ -673,7 +673,7 @@ Name | Type | Description  | Notes
  **limit** | **int**| Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 250]
  **offset** | **int**| Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 0]
  **count** | **bool**| If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to False]
- **filters** | **str**| Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, ge, gt, in, le, lt, isnull, sw*  **name**: *eq, ne, in, le, lt, isnull, sw*  **priority**: *eq, ne* | [optional] 
+ **filters** | **str**| Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, ge, gt, in, le, sw*  **name**: *eq, ne, ge, gt, in, le, sw*  **priority**: *eq, ne* | [optional] 
  **sorters** | **str**| Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, priority, created, modified, owner.id, owner.name** | [optional] 
 
 ### Return type
@@ -693,7 +693,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | List of identityProfiles. |  -  |
+**200** | List of identity profiles. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -872,9 +872,9 @@ Name | Type | Description  | Notes
 # **update_identity_profile**
 > IdentityProfile update_identity_profile(identity_profile_id, json_patch_operation)
 
-Update the Identity Profile
+Update Identity Profile
 
-This updates the specified Identity Profile.  A token with ORG_ADMIN authority is required to call this API to update the Identity Profile.  Some fields of the Schema cannot be updated. These fields are listed below: * id * name * created * modified * identityCount * identityRefreshRequired * Authoritative Source and Identity Attribute Configuration cannot be modified at once.
+Update the specified identity profile with this PATCH request.  A token with ORG_ADMIN authority is required to call this API to update the Identity Profile. These fields cannot be updated: * id * created * modified * identityCount * identityRefreshRequired * Authoritative Source and Identity Attribute Configuration cannot be modified at once.
 
 ### Example
 
@@ -907,11 +907,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.IdentityProfilesApi(api_client)
-    identity_profile_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The Identity Profile ID
-    json_patch_operation = [{op=add, path=/identityAttributeConfig/attributeTransforms/0, value={identityAttributeName=location, transformDefinition={type=accountAttribute, attributes={sourceName=Employees, attributeName=location, sourceId=2c91808878b7d63b0178c66ffcdc4ce4}}}}] # List[JsonPatchOperation] | A list of Identity Profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+    identity_profile_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Identity profile ID.
+    json_patch_operation = [{op=add, path=/identityAttributeConfig/attributeTransforms/0, value={identityAttributeName=location, transformDefinition={type=accountAttribute, attributes={sourceName=Employees, attributeName=location, sourceId=2c91808878b7d63b0178c66ffcdc4ce4}}}}] # List[JsonPatchOperation] | List of identity profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
     try:
-        # Update the Identity Profile
+        # Update Identity Profile
         api_response = api_instance.update_identity_profile(identity_profile_id, json_patch_operation)
         print("The response of IdentityProfilesApi->update_identity_profile:\n")
         pprint(api_response)
@@ -926,8 +926,8 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identity_profile_id** | **str**| The Identity Profile ID | 
- **json_patch_operation** | [**List[JsonPatchOperation]**](JsonPatchOperation.md)| A list of Identity Profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. | 
+ **identity_profile_id** | **str**| Identity profile ID. | 
+ **json_patch_operation** | [**List[JsonPatchOperation]**](JsonPatchOperation.md)| List of identity profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. | 
 
 ### Return type
 
@@ -946,7 +946,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The updated Identity Profile. |  -  |
+**200** | Updated identity profile. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |

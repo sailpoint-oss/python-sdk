@@ -26,8 +26,8 @@ class IdentityExceptionReportReference(BaseModel):
     """
     IdentityExceptionReportReference
     """ # noqa: E501
-    task_result_id: Optional[StrictStr] = Field(default=None, description="The id of the task result", alias="taskResultId")
-    report_name: Optional[StrictStr] = Field(default=None, description="The name of the report", alias="reportName")
+    task_result_id: Optional[StrictStr] = Field(default=None, description="Task result ID.", alias="taskResultId")
+    report_name: Optional[StrictStr] = Field(default=None, description="Report name.", alias="reportName")
     __properties: ClassVar[List[str]] = ["taskResultId", "reportName"]
 
     model_config = ConfigDict(

@@ -26,7 +26,7 @@ class TransformDefinition(BaseModel):
     """
     TransformDefinition
     """ # noqa: E501
-    type: Optional[StrictStr] = Field(default=None, description="The type of the transform definition.")
+    type: Optional[StrictStr] = Field(default=None, description="Transform definition type.")
     attributes: Optional[Dict[str, Any]] = Field(default=None, description="Arbitrary key-value pairs to store any metadata for the object")
     __properties: ClassVar[List[str]] = ["type", "attributes"]
 

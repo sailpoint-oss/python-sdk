@@ -1,14 +1,14 @@
 # IdentityProfileAllOfOwner
 
-The owner of the Identity Profile.
+Identity profile's owner.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **str** | Type of the object to which this reference applies | [optional] 
-**id** | **str** | ID of the object to which this reference applies | [optional] 
-**name** | **str** | Human-readable display name of the object to which this reference applies | [optional] 
+**type** | **str** | Owner&#39;s object type. | [optional] 
+**id** | **str** | Owner&#39;s ID. | [optional] 
+**name** | **str** | Owner&#39;s name. | [optional] 
 
 ## Example
 

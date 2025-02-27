@@ -9,15 +9,15 @@ Name | Type | Description | Notes
 **name** | **str** | Name of the Object | 
 **created** | **datetime** | Creation date of the Object | [optional] [readonly] 
 **modified** | **datetime** | Last modification date of the Object | [optional] [readonly] 
-**description** | **str** | The description of the Identity Profile. | [optional] 
+**description** | **str** | Identity profile&#39;s description. | [optional] 
 **owner** | [**IdentityProfileAllOfOwner**](IdentityProfileAllOfOwner.md) |  | [optional] 
-**priority** | **int** | The priority for an Identity Profile. | [optional] 
+**priority** | **int** | Identity profile&#39;s priority. | [optional] 
 **authoritative_source** | [**IdentityProfileAllOfAuthoritativeSource**](IdentityProfileAllOfAuthoritativeSource.md) |  | 
-**identity_refresh_required** | **bool** | True if a identity refresh is needed. Typically triggered when a change on the source has been made | [optional] [default to False]
-**identity_count** | **int** | The number of identities that belong to the Identity Profile. | [optional] 
+**identity_refresh_required** | **bool** | Set this value to &#39;True&#39; if an identity refresh is necessary. You would typically want to trigger an identity refresh when a change has been made on the source. | [optional] [default to False]
+**identity_count** | **int** | Number of identities belonging to the identity profile. | [optional] 
 **identity_attribute_config** | [**IdentityAttributeConfig**](IdentityAttributeConfig.md) |  | [optional] 
 **identity_exception_report_reference** | [**IdentityExceptionReportReference**](IdentityExceptionReportReference.md) |  | [optional] 
-**has_time_based_attr** | **bool** | Indicates the value of requiresPeriodicRefresh attribute for the Identity Profile. | [optional] [default to True]
+**has_time_based_attr** | **bool** | Indicates the value of &#x60;requiresPeriodicRefresh&#x60; attribute for the identity profile. | [optional] [default to True]
 
 ## Example
 

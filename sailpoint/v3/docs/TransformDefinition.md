@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **str** | The type of the transform definition. | [optional] 
+**type** | **str** | Transform definition type. | [optional] 
 **attributes** | **Dict[str, object]** | Arbitrary key-value pairs to store any metadata for the object | [optional] 
 
 ## Example

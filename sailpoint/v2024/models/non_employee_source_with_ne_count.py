@@ -36,7 +36,7 @@ class NonEmployeeSourceWithNECount(BaseModel):
     account_managers: Optional[List[NonEmployeeIdentityReferenceWithId]] = Field(default=None, description="List of account managers", alias="accountManagers")
     modified: Optional[datetime] = Field(default=None, description="When the request was last modified.")
     created: Optional[datetime] = Field(default=None, description="When the request was created.")
-    non_employee_count: Optional[StrictInt] = Field(default=None, description="Number of non-employee records associated with this source.", alias="nonEmployeeCount")
+    non_employee_count: Optional[StrictInt] = Field(default=None, description="Number of non-employee records associated with this source. This value is 'NULL' by default. To get the non-employee count, you must set the `non-employee-count` flag in your request to 'true'.", alias="nonEmployeeCount")
     __properties: ClassVar[List[str]] = ["id", "sourceId", "name", "description", "approvers", "accountManagers", "modified", "created", "nonEmployeeCount"]
 
     model_config = ConfigDict(

@@ -24,11 +24,11 @@ from typing_extensions import Self
 
 class IdentityProfileAllOfOwner(BaseModel):
     """
-    The owner of the Identity Profile.
+    Identity profile's owner.
     """ # noqa: E501
-    type: Optional[StrictStr] = Field(default=None, description="Type of the object to which this reference applies")
-    id: Optional[StrictStr] = Field(default=None, description="ID of the object to which this reference applies")
-    name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of the object to which this reference applies")
+    type: Optional[StrictStr] = Field(default=None, description="Owner's object type.")
+    id: Optional[StrictStr] = Field(default=None, description="Owner's ID.")
+    name: Optional[StrictStr] = Field(default=None, description="Owner's name.")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')

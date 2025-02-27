@@ -27,7 +27,7 @@ class IdentityAttributeConfig(BaseModel):
     """
     IdentityAttributeConfig
     """ # noqa: E501
-    enabled: Optional[StrictBool] = Field(default=True, description="If the profile or mapping is enabled")
+    enabled: Optional[StrictBool] = Field(default=True, description="Backend will only promote values if the profile/mapping is enabled.")
     attribute_transforms: Optional[List[IdentityAttributeTransform]] = Field(default=None, alias="attributeTransforms")
     __properties: ClassVar[List[str]] = ["enabled", "attributeTransforms"]
 

@@ -1,14 +1,14 @@
 # IdentityProfileAllOfAuthoritativeSource
 
-The authoritative source for this Identity Profile.
+Identity profile's authoritative source.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **str** | Type of the object to which this reference applies | [optional] 
-**id** | **str** | ID of the object to which this reference applies | [optional] 
-**name** | **str** | Human-readable display name of the object to which this reference applies | [optional] 
+**type** | **str** | Authoritative source&#39;s object type. | [optional] 
+**id** | **str** | Authoritative source&#39;s ID. | [optional] 
+**name** | **str** | Authoritative source&#39;s name. | [optional] 
 
 ## Example
 
