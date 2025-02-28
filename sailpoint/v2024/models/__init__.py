@@ -549,6 +549,8 @@ from sailpoint.v2024.models.load_uncorrelated_accounts_task_task_messages_inner 
 from sailpoint.v2024.models.locale_origin import LocaleOrigin
 from sailpoint.v2024.models.localized_message import LocalizedMessage
 from sailpoint.v2024.models.lookup_step import LookupStep
+from sailpoint.v2024.models.machine_account import MachineAccount
+from sailpoint.v2024.models.machine_identity import MachineIdentity
 from sailpoint.v2024.models.mail_from_attributes import MailFromAttributes
 from sailpoint.v2024.models.mail_from_attributes_dto import MailFromAttributesDto
 from sailpoint.v2024.models.managed_client import ManagedClient

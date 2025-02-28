@@ -42,6 +42,8 @@ sailpoint/v2024/api/identity_attributes_api.py
 sailpoint/v2024/api/identity_history_api.py
 sailpoint/v2024/api/identity_profiles_api.py
 sailpoint/v2024/api/lifecycle_states_api.py
+sailpoint/v2024/api/machine_accounts_api.py
+sailpoint/v2024/api/machine_identities_api.py
 sailpoint/v2024/api/managed_clients_api.py
 sailpoint/v2024/api/managed_clusters_api.py
 sailpoint/v2024/api/mfa_configuration_api.py
@@ -664,6 +666,10 @@ sailpoint/v2024/docs/LocaleOrigin.md
 sailpoint/v2024/docs/LocalizedMessage.md
 sailpoint/v2024/docs/LookupStep.md
 sailpoint/v2024/docs/MFAConfigurationApi.md
+sailpoint/v2024/docs/MachineAccount.md
+sailpoint/v2024/docs/MachineAccountsApi.md
+sailpoint/v2024/docs/MachineIdentitiesApi.md
+sailpoint/v2024/docs/MachineIdentity.md
 sailpoint/v2024/docs/MailFromAttributes.md
 sailpoint/v2024/docs/MailFromAttributesDto.md
 sailpoint/v2024/docs/ManagedClient.md
@@ -1769,6 +1775,8 @@ sailpoint/v2024/models/load_uncorrelated_accounts_task_task_messages_inner.py
 sailpoint/v2024/models/locale_origin.py
 sailpoint/v2024/models/localized_message.py
 sailpoint/v2024/models/lookup_step.py
+sailpoint/v2024/models/machine_account.py
+sailpoint/v2024/models/machine_identity.py
 sailpoint/v2024/models/mail_from_attributes.py
 sailpoint/v2024/models/mail_from_attributes_dto.py
 sailpoint/v2024/models/managed_client.py
@@ -2874,6 +2882,10 @@ sailpoint/v2024/test/test_load_uncorrelated_accounts_task_task_messages_inner.py
 sailpoint/v2024/test/test_locale_origin.py
 sailpoint/v2024/test/test_localized_message.py
 sailpoint/v2024/test/test_lookup_step.py
+sailpoint/v2024/test/test_machine_account.py
+sailpoint/v2024/test/test_machine_accounts_api.py
+sailpoint/v2024/test/test_machine_identities_api.py
+sailpoint/v2024/test/test_machine_identity.py
 sailpoint/v2024/test/test_mail_from_attributes.py
 sailpoint/v2024/test/test_mail_from_attributes_dto.py
 sailpoint/v2024/test/test_managed_client.py

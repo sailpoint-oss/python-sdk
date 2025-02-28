@@ -43,6 +43,8 @@ from sailpoint.v2024.api.identity_history_api import IdentityHistoryApi
 from sailpoint.v2024.api.identity_profiles_api import IdentityProfilesApi
 from sailpoint.v2024.api.lifecycle_states_api import LifecycleStatesApi
 from sailpoint.v2024.api.mfa_configuration_api import MFAConfigurationApi
+from sailpoint.v2024.api.machine_accounts_api import MachineAccountsApi
+from sailpoint.v2024.api.machine_identities_api import MachineIdentitiesApi
 from sailpoint.v2024.api.managed_clients_api import ManagedClientsApi
 from sailpoint.v2024.api.managed_clusters_api import ManagedClustersApi
 from sailpoint.v2024.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi

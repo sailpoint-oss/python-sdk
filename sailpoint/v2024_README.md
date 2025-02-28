@@ -396,6 +396,14 @@ Class | Method | HTTP request | Description
 *MFAConfigurationApi* | [**set_mfa_okta_config**](sailpoint/v2024/docs/MFAConfigurationApi.md#set_mfa_okta_config) | **PUT** /mfa/okta-verify/config | Set Okta MFA configuration
 *MFAConfigurationApi* | [**set_mfakba_config**](sailpoint/v2024/docs/MFAConfigurationApi.md#set_mfakba_config) | **POST** /mfa/kba/config/answers | Set MFA KBA configuration
 *MFAConfigurationApi* | [**test_mfa_config**](sailpoint/v2024/docs/MFAConfigurationApi.md#test_mfa_config) | **GET** /mfa/{method}/test | MFA method&#39;s test configuration
+*MachineAccountsApi* | [**get_machine_account**](sailpoint/v2024/docs/MachineAccountsApi.md#get_machine_account) | **GET** /machine-accounts/{id} | Machine Account Details
+*MachineAccountsApi* | [**list_machine_accounts**](sailpoint/v2024/docs/MachineAccountsApi.md#list_machine_accounts) | **GET** /machine-accounts | Machine Accounts List
+*MachineAccountsApi* | [**update_machine_account**](sailpoint/v2024/docs/MachineAccountsApi.md#update_machine_account) | **PATCH** /machine-accounts/{id} | Update a Machine Account
+*MachineIdentitiesApi* | [**create_machine_identity**](sailpoint/v2024/docs/MachineIdentitiesApi.md#create_machine_identity) | **POST** /machine-identities | Create Machine Identities
+*MachineIdentitiesApi* | [**delete_machine_identity**](sailpoint/v2024/docs/MachineIdentitiesApi.md#delete_machine_identity) | **DELETE** /machine-identities/{id} | Delete machine identity
+*MachineIdentitiesApi* | [**get_machine_identity**](sailpoint/v2024/docs/MachineIdentitiesApi.md#get_machine_identity) | **GET** /machine-identities/{id} | Machine Identity Details
+*MachineIdentitiesApi* | [**list_machine_identities**](sailpoint/v2024/docs/MachineIdentitiesApi.md#list_machine_identities) | **GET** /machine-identities | List Machine Identities
+*MachineIdentitiesApi* | [**update_machine_identity**](sailpoint/v2024/docs/MachineIdentitiesApi.md#update_machine_identity) | **PATCH** /machine-identities/{id} | Update a Machine Identity
 *ManagedClientsApi* | [**create_managed_client**](sailpoint/v2024/docs/ManagedClientsApi.md#create_managed_client) | **POST** /managed-clients | Create Managed Client
 *ManagedClientsApi* | [**delete_managed_client**](sailpoint/v2024/docs/ManagedClientsApi.md#delete_managed_client) | **DELETE** /managed-clients/{id} | Delete Managed Client
 *ManagedClientsApi* | [**get_managed_client**](sailpoint/v2024/docs/ManagedClientsApi.md#get_managed_client) | **GET** /managed-clients/{id} | Get Managed Client
@@ -1260,6 +1268,8 @@ Class | Method | HTTP request | Description
  - [LocaleOrigin](sailpoint/v2024/docs/LocaleOrigin.md)
  - [LocalizedMessage](sailpoint/v2024/docs/LocalizedMessage.md)
  - [LookupStep](sailpoint/v2024/docs/LookupStep.md)
+ - [MachineAccount](sailpoint/v2024/docs/MachineAccount.md)
+ - [MachineIdentity](sailpoint/v2024/docs/MachineIdentity.md)
  - [MailFromAttributes](sailpoint/v2024/docs/MailFromAttributes.md)
  - [MailFromAttributesDto](sailpoint/v2024/docs/MailFromAttributesDto.md)
  - [ManagedClient](sailpoint/v2024/docs/ManagedClient.md)
