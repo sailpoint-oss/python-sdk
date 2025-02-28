@@ -123,7 +123,6 @@ sailpoint/v2024/docs/AccessProfileDetails.md
 sailpoint/v2024/docs/AccessProfileDetailsAccountSelector.md
 sailpoint/v2024/docs/AccessProfileDocument.md
 sailpoint/v2024/docs/AccessProfileDocumentAllOfSource.md
-sailpoint/v2024/docs/AccessProfileDocuments.md
 sailpoint/v2024/docs/AccessProfileEntitlement.md
 sailpoint/v2024/docs/AccessProfileRef.md
 sailpoint/v2024/docs/AccessProfileRole.md
@@ -185,7 +184,6 @@ sailpoint/v2024/docs/AccountActivitiesApideveloperSite_code_examples.yaml
 sailpoint/v2024/docs/AccountActivity.md
 sailpoint/v2024/docs/AccountActivityApprovalStatus.md
 sailpoint/v2024/docs/AccountActivityDocument.md
-sailpoint/v2024/docs/AccountActivityDocuments.md
 sailpoint/v2024/docs/AccountActivityItem.md
 sailpoint/v2024/docs/AccountActivityItemOperation.md
 sailpoint/v2024/docs/AccountActivitySearchedItem.md
@@ -482,8 +480,6 @@ sailpoint/v2024/docs/DimensionsApi.md
 sailpoint/v2024/docs/DimensionsApideveloperSite_code_examples.yaml
 sailpoint/v2024/docs/DisplayReference.md
 sailpoint/v2024/docs/DkimAttributes.md
-sailpoint/v2024/docs/DocumentFields.md
-sailpoint/v2024/docs/DocumentType.md
 sailpoint/v2024/docs/DomainAddress.md
 sailpoint/v2024/docs/DomainStatusDto.md
 sailpoint/v2024/docs/DraftResponse.md
@@ -503,7 +499,6 @@ sailpoint/v2024/docs/EntitlementDocument.md
 sailpoint/v2024/docs/EntitlementDocumentAllOfManuallyUpdatedFields.md
 sailpoint/v2024/docs/EntitlementDocumentAllOfPermissions.md
 sailpoint/v2024/docs/EntitlementDocumentAllOfSource.md
-sailpoint/v2024/docs/EntitlementDocuments.md
 sailpoint/v2024/docs/EntitlementDto.md
 sailpoint/v2024/docs/EntitlementRef.md
 sailpoint/v2024/docs/EntitlementRef1.md
@@ -526,7 +521,6 @@ sailpoint/v2024/docs/EventActor.md
 sailpoint/v2024/docs/EventAttributes.md
 sailpoint/v2024/docs/EventBridgeConfig.md
 sailpoint/v2024/docs/EventDocument.md
-sailpoint/v2024/docs/EventDocuments.md
 sailpoint/v2024/docs/EventTarget.md
 sailpoint/v2024/docs/ExceptionAccessCriteria.md
 sailpoint/v2024/docs/ExceptionCriteria.md
@@ -631,7 +625,6 @@ sailpoint/v2024/docs/IdentityDocument.md
 sailpoint/v2024/docs/IdentityDocumentAllOfIdentityProfile.md
 sailpoint/v2024/docs/IdentityDocumentAllOfManager.md
 sailpoint/v2024/docs/IdentityDocumentAllOfSource.md
-sailpoint/v2024/docs/IdentityDocuments.md
 sailpoint/v2024/docs/IdentityEntities.md
 sailpoint/v2024/docs/IdentityEntitiesIdentityEntity.md
 sailpoint/v2024/docs/IdentityExceptionReportReference.md
@@ -981,7 +974,6 @@ sailpoint/v2024/docs/RoleDocumentAllOfDimensionSchemaAttributes.md
 sailpoint/v2024/docs/RoleDocumentAllOfDimensions.md
 sailpoint/v2024/docs/RoleDocumentAllOfEntitlements.md
 sailpoint/v2024/docs/RoleDocumentAllOfEntitlements1.md
-sailpoint/v2024/docs/RoleDocuments.md
 sailpoint/v2024/docs/RoleGetAllBulkUpdateResponse.md
 sailpoint/v2024/docs/RoleIdentity.md
 sailpoint/v2024/docs/RoleInsight.md
@@ -1083,7 +1075,6 @@ sailpoint/v2024/docs/SearchArguments.md
 sailpoint/v2024/docs/SearchAttributeConfig.md
 sailpoint/v2024/docs/SearchAttributeConfigurationApi.md
 sailpoint/v2024/docs/SearchAttributeConfigurationApideveloperSite_code_examples.yaml
-sailpoint/v2024/docs/SearchDocuments.md
 sailpoint/v2024/docs/SearchExportReportArguments.md
 sailpoint/v2024/docs/SearchFilterType.md
 sailpoint/v2024/docs/SearchFormDefinitionsByTenant400Response.md
@@ -1367,7 +1358,6 @@ sailpoint/v2024/models/access_profile_details.py
 sailpoint/v2024/models/access_profile_details_account_selector.py
 sailpoint/v2024/models/access_profile_document.py
 sailpoint/v2024/models/access_profile_document_all_of_source.py
-sailpoint/v2024/models/access_profile_documents.py
 sailpoint/v2024/models/access_profile_entitlement.py
 sailpoint/v2024/models/access_profile_ref.py
 sailpoint/v2024/models/access_profile_role.py
@@ -1419,7 +1409,6 @@ sailpoint/v2024/models/account_action.py
 sailpoint/v2024/models/account_activity.py
 sailpoint/v2024/models/account_activity_approval_status.py
 sailpoint/v2024/models/account_activity_document.py
-sailpoint/v2024/models/account_activity_documents.py
 sailpoint/v2024/models/account_activity_item.py
 sailpoint/v2024/models/account_activity_item_operation.py
 sailpoint/v2024/models/account_activity_searched_item.py
@@ -1676,8 +1665,6 @@ sailpoint/v2024/models/dimension_membership_selector_type.py
 sailpoint/v2024/models/dimension_ref.py
 sailpoint/v2024/models/display_reference.py
 sailpoint/v2024/models/dkim_attributes.py
-sailpoint/v2024/models/document_fields.py
-sailpoint/v2024/models/document_type.py
 sailpoint/v2024/models/domain_address.py
 sailpoint/v2024/models/domain_status_dto.py
 sailpoint/v2024/models/draft_response.py
@@ -1697,7 +1684,6 @@ sailpoint/v2024/models/entitlement_document.py
 sailpoint/v2024/models/entitlement_document_all_of_manually_updated_fields.py
 sailpoint/v2024/models/entitlement_document_all_of_permissions.py
 sailpoint/v2024/models/entitlement_document_all_of_source.py
-sailpoint/v2024/models/entitlement_documents.py
 sailpoint/v2024/models/entitlement_dto.py
 sailpoint/v2024/models/entitlement_ref.py
 sailpoint/v2024/models/entitlement_ref1.py
@@ -1718,7 +1704,6 @@ sailpoint/v2024/models/event_actor.py
 sailpoint/v2024/models/event_attributes.py
 sailpoint/v2024/models/event_bridge_config.py
 sailpoint/v2024/models/event_document.py
-sailpoint/v2024/models/event_documents.py
 sailpoint/v2024/models/event_target.py
 sailpoint/v2024/models/exception_access_criteria.py
 sailpoint/v2024/models/exception_criteria.py
@@ -1801,7 +1786,6 @@ sailpoint/v2024/models/identity_document.py
 sailpoint/v2024/models/identity_document_all_of_identity_profile.py
 sailpoint/v2024/models/identity_document_all_of_manager.py
 sailpoint/v2024/models/identity_document_all_of_source.py
-sailpoint/v2024/models/identity_documents.py
 sailpoint/v2024/models/identity_entities.py
 sailpoint/v2024/models/identity_entities_identity_entity.py
 sailpoint/v2024/models/identity_exception_report_reference.py
@@ -2106,7 +2090,6 @@ sailpoint/v2024/models/role_document_all_of_dimension_schema_attributes.py
 sailpoint/v2024/models/role_document_all_of_dimensions.py
 sailpoint/v2024/models/role_document_all_of_entitlements.py
 sailpoint/v2024/models/role_document_all_of_entitlements1.py
-sailpoint/v2024/models/role_documents.py
 sailpoint/v2024/models/role_get_all_bulk_update_response.py
 sailpoint/v2024/models/role_identity.py
 sailpoint/v2024/models/role_insight.py
@@ -2188,7 +2171,6 @@ sailpoint/v2024/models/search.py
 sailpoint/v2024/models/search_aggregation_specification.py
 sailpoint/v2024/models/search_arguments.py
 sailpoint/v2024/models/search_attribute_config.py
-sailpoint/v2024/models/search_documents.py
 sailpoint/v2024/models/search_export_report_arguments.py
 sailpoint/v2024/models/search_filter_type.py
 sailpoint/v2024/models/search_form_definitions_by_tenant400_response.py
@@ -2443,7 +2425,6 @@ sailpoint/v2024/test/test_access_profile_details.py
 sailpoint/v2024/test/test_access_profile_details_account_selector.py
 sailpoint/v2024/test/test_access_profile_document.py
 sailpoint/v2024/test/test_access_profile_document_all_of_source.py
-sailpoint/v2024/test/test_access_profile_documents.py
 sailpoint/v2024/test/test_access_profile_entitlement.py
 sailpoint/v2024/test/test_access_profile_ref.py
 sailpoint/v2024/test/test_access_profile_role.py
@@ -2500,7 +2481,6 @@ sailpoint/v2024/test/test_account_activities_api.py
 sailpoint/v2024/test/test_account_activity.py
 sailpoint/v2024/test/test_account_activity_approval_status.py
 sailpoint/v2024/test/test_account_activity_document.py
-sailpoint/v2024/test/test_account_activity_documents.py
 sailpoint/v2024/test/test_account_activity_item.py
 sailpoint/v2024/test/test_account_activity_item_operation.py
 sailpoint/v2024/test/test_account_activity_searched_item.py
@@ -2777,8 +2757,6 @@ sailpoint/v2024/test/test_dimension_ref.py
 sailpoint/v2024/test/test_dimensions_api.py
 sailpoint/v2024/test/test_display_reference.py
 sailpoint/v2024/test/test_dkim_attributes.py
-sailpoint/v2024/test/test_document_fields.py
-sailpoint/v2024/test/test_document_type.py
 sailpoint/v2024/test/test_domain_address.py
 sailpoint/v2024/test/test_domain_status_dto.py
 sailpoint/v2024/test/test_draft_response.py
@@ -2798,7 +2776,6 @@ sailpoint/v2024/test/test_entitlement_document.py
 sailpoint/v2024/test/test_entitlement_document_all_of_manually_updated_fields.py
 sailpoint/v2024/test/test_entitlement_document_all_of_permissions.py
 sailpoint/v2024/test/test_entitlement_document_all_of_source.py
-sailpoint/v2024/test/test_entitlement_documents.py
 sailpoint/v2024/test/test_entitlement_dto.py
 sailpoint/v2024/test/test_entitlement_ref.py
 sailpoint/v2024/test/test_entitlement_ref1.py
@@ -2820,7 +2797,6 @@ sailpoint/v2024/test/test_event_actor.py
 sailpoint/v2024/test/test_event_attributes.py
 sailpoint/v2024/test/test_event_bridge_config.py
 sailpoint/v2024/test/test_event_document.py
-sailpoint/v2024/test/test_event_documents.py
 sailpoint/v2024/test/test_event_target.py
 sailpoint/v2024/test/test_exception_access_criteria.py
 sailpoint/v2024/test/test_exception_criteria.py
@@ -2914,7 +2890,6 @@ sailpoint/v2024/test/test_identity_document.py
 sailpoint/v2024/test/test_identity_document_all_of_identity_profile.py
 sailpoint/v2024/test/test_identity_document_all_of_manager.py
 sailpoint/v2024/test/test_identity_document_all_of_source.py
-sailpoint/v2024/test/test_identity_documents.py
 sailpoint/v2024/test/test_identity_entities.py
 sailpoint/v2024/test/test_identity_entities_identity_entity.py
 sailpoint/v2024/test/test_identity_exception_report_reference.py
@@ -3241,7 +3216,6 @@ sailpoint/v2024/test/test_role_document_all_of_dimension_schema_attributes.py
 sailpoint/v2024/test/test_role_document_all_of_dimensions.py
 sailpoint/v2024/test/test_role_document_all_of_entitlements.py
 sailpoint/v2024/test/test_role_document_all_of_entitlements1.py
-sailpoint/v2024/test/test_role_documents.py
 sailpoint/v2024/test/test_role_get_all_bulk_update_response.py
 sailpoint/v2024/test/test_role_identity.py
 sailpoint/v2024/test/test_role_insight.py
@@ -3329,7 +3303,6 @@ sailpoint/v2024/test/test_search_api.py
 sailpoint/v2024/test/test_search_arguments.py
 sailpoint/v2024/test/test_search_attribute_config.py
 sailpoint/v2024/test/test_search_attribute_configuration_api.py
-sailpoint/v2024/test/test_search_documents.py
 sailpoint/v2024/test/test_search_export_report_arguments.py
 sailpoint/v2024/test/test_search_filter_type.py
 sailpoint/v2024/test/test_search_form_definitions_by_tenant400_response.py

@@ -21,7 +21,6 @@ from typing import Any, Dict, List, Optional
 from typing_extensions import Annotated
 from sailpoint.v2024.models.aggregation_result import AggregationResult
 from sailpoint.v2024.models.search import Search
-from sailpoint.v2024.models.search_documents import SearchDocuments
 
 from sailpoint.v2024.api_client import ApiClient, RequestSerialized
 from sailpoint.v2024.api_response import ApiResponse
@@ -988,7 +987,7 @@ class SearchApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[SearchDocuments]:
+    ) -> List[object]:
         """Perform Search
 
         Perform a search with the provided query and return a matching result collection. To page past 10,000 records, you can use `searchAfter` paging.  Refer to [Paginating Search Queries](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-search-queries) for more information about how to implement `searchAfter` paging. 
@@ -1035,7 +1034,7 @@ class SearchApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[SearchDocuments]",
+            '200': "List[object]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -1072,7 +1071,7 @@ class SearchApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[SearchDocuments]]:
+    ) -> ApiResponse[List[object]]:
         """Perform Search
 
         Perform a search with the provided query and return a matching result collection. To page past 10,000 records, you can use `searchAfter` paging.  Refer to [Paginating Search Queries](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-search-queries) for more information about how to implement `searchAfter` paging. 
@@ -1119,7 +1118,7 @@ class SearchApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[SearchDocuments]",
+            '200': "List[object]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -1203,7 +1202,7 @@ class SearchApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[SearchDocuments]",
+            '200': "List[object]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",

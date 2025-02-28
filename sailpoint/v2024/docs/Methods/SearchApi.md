@@ -478,12 +478,12 @@ Param Type | Name | Data Type | Required  | Description
   Query | count | **bool** |   (optional) (default to False) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
 ### Return type
-[**List[SearchDocuments]**](../models/search-documents)
+**List[object]**
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of matching documents. | List[SearchDocuments] |  * X-Total-Count - The total result count.  |
+200 | List of matching documents. | List[object] |  * X-Total-Count - The total result count.  |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
@@ -501,7 +501,6 @@ import sailpoint.v2024
 from sailpoint.v2024.api.search_api import SearchApi
 from sailpoint.v2024.api_client import ApiClient
 from sailpoint.v2024.models.search import Search
-from sailpoint.v2024.models.search_documents import SearchDocuments
 from pprint import pprint
 from sailpoint.configuration import Configuration
 configuration = Configuration()

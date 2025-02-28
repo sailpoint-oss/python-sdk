@@ -146,7 +146,6 @@ from sailpoint.v2024.models.access_profile_details import AccessProfileDetails
 from sailpoint.v2024.models.access_profile_details_account_selector import AccessProfileDetailsAccountSelector
 from sailpoint.v2024.models.access_profile_document import AccessProfileDocument
 from sailpoint.v2024.models.access_profile_document_all_of_source import AccessProfileDocumentAllOfSource
-from sailpoint.v2024.models.access_profile_documents import AccessProfileDocuments
 from sailpoint.v2024.models.access_profile_entitlement import AccessProfileEntitlement
 from sailpoint.v2024.models.access_profile_ref import AccessProfileRef
 from sailpoint.v2024.models.access_profile_role import AccessProfileRole
@@ -198,7 +197,6 @@ from sailpoint.v2024.models.account_action import AccountAction
 from sailpoint.v2024.models.account_activity import AccountActivity
 from sailpoint.v2024.models.account_activity_approval_status import AccountActivityApprovalStatus
 from sailpoint.v2024.models.account_activity_document import AccountActivityDocument
-from sailpoint.v2024.models.account_activity_documents import AccountActivityDocuments
 from sailpoint.v2024.models.account_activity_item import AccountActivityItem
 from sailpoint.v2024.models.account_activity_item_operation import AccountActivityItemOperation
 from sailpoint.v2024.models.account_activity_searched_item import AccountActivitySearchedItem
@@ -455,8 +453,6 @@ from sailpoint.v2024.models.dimension_membership_selector_type import DimensionM
 from sailpoint.v2024.models.dimension_ref import DimensionRef
 from sailpoint.v2024.models.display_reference import DisplayReference
 from sailpoint.v2024.models.dkim_attributes import DkimAttributes
-from sailpoint.v2024.models.document_fields import DocumentFields
-from sailpoint.v2024.models.document_type import DocumentType
 from sailpoint.v2024.models.domain_address import DomainAddress
 from sailpoint.v2024.models.domain_status_dto import DomainStatusDto
 from sailpoint.v2024.models.draft_response import DraftResponse
@@ -476,7 +472,6 @@ from sailpoint.v2024.models.entitlement_document import EntitlementDocument
 from sailpoint.v2024.models.entitlement_document_all_of_manually_updated_fields import EntitlementDocumentAllOfManuallyUpdatedFields
 from sailpoint.v2024.models.entitlement_document_all_of_permissions import EntitlementDocumentAllOfPermissions
 from sailpoint.v2024.models.entitlement_document_all_of_source import EntitlementDocumentAllOfSource
-from sailpoint.v2024.models.entitlement_documents import EntitlementDocuments
 from sailpoint.v2024.models.entitlement_dto import EntitlementDto
 from sailpoint.v2024.models.entitlement_ref import EntitlementRef
 from sailpoint.v2024.models.entitlement_ref1 import EntitlementRef1
@@ -497,7 +492,6 @@ from sailpoint.v2024.models.event_actor import EventActor
 from sailpoint.v2024.models.event_attributes import EventAttributes
 from sailpoint.v2024.models.event_bridge_config import EventBridgeConfig
 from sailpoint.v2024.models.event_document import EventDocument
-from sailpoint.v2024.models.event_documents import EventDocuments
 from sailpoint.v2024.models.event_target import EventTarget
 from sailpoint.v2024.models.exception_access_criteria import ExceptionAccessCriteria
 from sailpoint.v2024.models.exception_criteria import ExceptionCriteria
@@ -580,7 +574,6 @@ from sailpoint.v2024.models.identity_document import IdentityDocument
 from sailpoint.v2024.models.identity_document_all_of_identity_profile import IdentityDocumentAllOfIdentityProfile
 from sailpoint.v2024.models.identity_document_all_of_manager import IdentityDocumentAllOfManager
 from sailpoint.v2024.models.identity_document_all_of_source import IdentityDocumentAllOfSource
-from sailpoint.v2024.models.identity_documents import IdentityDocuments
 from sailpoint.v2024.models.identity_entities import IdentityEntities
 from sailpoint.v2024.models.identity_entities_identity_entity import IdentityEntitiesIdentityEntity
 from sailpoint.v2024.models.identity_exception_report_reference import IdentityExceptionReportReference
@@ -885,7 +878,6 @@ from sailpoint.v2024.models.role_document_all_of_dimension_schema_attributes imp
 from sailpoint.v2024.models.role_document_all_of_dimensions import RoleDocumentAllOfDimensions
 from sailpoint.v2024.models.role_document_all_of_entitlements import RoleDocumentAllOfEntitlements
 from sailpoint.v2024.models.role_document_all_of_entitlements1 import RoleDocumentAllOfEntitlements1
-from sailpoint.v2024.models.role_documents import RoleDocuments
 from sailpoint.v2024.models.role_get_all_bulk_update_response import RoleGetAllBulkUpdateResponse
 from sailpoint.v2024.models.role_identity import RoleIdentity
 from sailpoint.v2024.models.role_insight import RoleInsight
@@ -967,7 +959,6 @@ from sailpoint.v2024.models.search import Search
 from sailpoint.v2024.models.search_aggregation_specification import SearchAggregationSpecification
 from sailpoint.v2024.models.search_arguments import SearchArguments
 from sailpoint.v2024.models.search_attribute_config import SearchAttributeConfig
-from sailpoint.v2024.models.search_documents import SearchDocuments
 from sailpoint.v2024.models.search_export_report_arguments import SearchExportReportArguments
 from sailpoint.v2024.models.search_filter_type import SearchFilterType
 from sailpoint.v2024.models.search_form_definitions_by_tenant400_response import SearchFormDefinitionsByTenant400Response
