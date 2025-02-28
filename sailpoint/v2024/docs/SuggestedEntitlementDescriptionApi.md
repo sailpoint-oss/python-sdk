@@ -276,7 +276,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch_sed**
-> Sed patch_sed(id, x_sail_point_experimental, sed_patch)
+> Sed patch_sed(id, sed_patch)
 
 Patch Suggested Entitlement Description
 
@@ -314,12 +314,11 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v2024.SuggestedEntitlementDescriptionApi(api_client)
     id = 'ebab396f-0af1-4050-89b7-dafc63ec70e7' # str | id is sed id
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true')
     sed_patch = [sailpoint.v2024.SedPatch()] # List[SedPatch] | Sed Patch Request
 
     try:
         # Patch Suggested Entitlement Description
-        api_response = api_instance.patch_sed(id, x_sail_point_experimental, sed_patch)
+        api_response = api_instance.patch_sed(id, sed_patch)
         print("The response of SuggestedEntitlementDescriptionApi->patch_sed:\n")
         pprint(api_response)
     except Exception as e:
@@ -334,7 +333,6 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| id is sed id | 
- **x_sail_point_experimental** | **str**| Use this header to enable this experimental API. | [default to &#39;true&#39;]
  **sed_patch** | [**List[SedPatch]**](SedPatch.md)| Sed Patch Request | 
 
 ### Return type
