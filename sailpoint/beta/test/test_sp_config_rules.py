@@ -38,14 +38,14 @@ class TestSpConfigRules(unittest.TestCase):
                 take_from_target_rules = [
                     sailpoint.beta.models.config_object_rule.Config Object Rule(
                         path = '$.enabled', 
-                        value = sailpoint.beta.models.value.value(), 
-                        mode = [RESTORE, PROMOTE], )
+                        value = null, 
+                        modes = [RESTORE, PROMOTE], )
                     ],
                 default_rules = [
                     sailpoint.beta.models.config_object_rule.Config Object Rule(
                         path = '$.enabled', 
-                        value = sailpoint.beta.models.value.value(), 
-                        mode = [RESTORE, PROMOTE], )
+                        value = null, 
+                        modes = [RESTORE, PROMOTE], )
                     ],
                 editable = True
             )

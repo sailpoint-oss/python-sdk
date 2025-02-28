@@ -188,17 +188,17 @@ Class | Method | HTTP request | Description
 *GlobalTenantSecuritySettingsApi* | [**patch_auth_org_network_config**](sailpoint\v3/docs/GlobalTenantSecuritySettingsApi.md#patch_auth_org_network_config) | **PATCH** /auth-org/network-config | Update security network configuration.
 *GlobalTenantSecuritySettingsApi* | [**patch_auth_org_service_provider_config**](sailpoint\v3/docs/GlobalTenantSecuritySettingsApi.md#patch_auth_org_service_provider_config) | **PATCH** /auth-org/service-provider-config | Update Service Provider Configuration
 *GlobalTenantSecuritySettingsApi* | [**patch_auth_org_session_config**](sailpoint\v3/docs/GlobalTenantSecuritySettingsApi.md#patch_auth_org_session_config) | **PATCH** /auth-org/session-config | Update Auth Org Session Configuration
-*IdentityProfilesApi* | [**create_identity_profile**](sailpoint\v3/docs/IdentityProfilesApi.md#create_identity_profile) | **POST** /identity-profiles | Create an Identity Profile
-*IdentityProfilesApi* | [**delete_identity_profile**](sailpoint\v3/docs/IdentityProfilesApi.md#delete_identity_profile) | **DELETE** /identity-profiles/{identity-profile-id} | Delete an Identity Profile
+*IdentityProfilesApi* | [**create_identity_profile**](sailpoint\v3/docs/IdentityProfilesApi.md#create_identity_profile) | **POST** /identity-profiles | Create Identity Profile
+*IdentityProfilesApi* | [**delete_identity_profile**](sailpoint\v3/docs/IdentityProfilesApi.md#delete_identity_profile) | **DELETE** /identity-profiles/{identity-profile-id} | Delete Identity Profile
 *IdentityProfilesApi* | [**delete_identity_profiles**](sailpoint\v3/docs/IdentityProfilesApi.md#delete_identity_profiles) | **POST** /identity-profiles/bulk-delete | Delete Identity Profiles
 *IdentityProfilesApi* | [**export_identity_profiles**](sailpoint\v3/docs/IdentityProfilesApi.md#export_identity_profiles) | **GET** /identity-profiles/export | Export Identity Profiles
 *IdentityProfilesApi* | [**get_default_identity_attribute_config**](sailpoint\v3/docs/IdentityProfilesApi.md#get_default_identity_attribute_config) | **GET** /identity-profiles/{identity-profile-id}/default-identity-attribute-config | Get default Identity Attribute Config
-*IdentityProfilesApi* | [**get_identity_profile**](sailpoint\v3/docs/IdentityProfilesApi.md#get_identity_profile) | **GET** /identity-profiles/{identity-profile-id} | Get single Identity Profile
+*IdentityProfilesApi* | [**get_identity_profile**](sailpoint\v3/docs/IdentityProfilesApi.md#get_identity_profile) | **GET** /identity-profiles/{identity-profile-id} | Get Identity Profile
 *IdentityProfilesApi* | [**import_identity_profiles**](sailpoint\v3/docs/IdentityProfilesApi.md#import_identity_profiles) | **POST** /identity-profiles/import | Import Identity Profiles
-*IdentityProfilesApi* | [**list_identity_profiles**](sailpoint\v3/docs/IdentityProfilesApi.md#list_identity_profiles) | **GET** /identity-profiles | Identity Profiles List
+*IdentityProfilesApi* | [**list_identity_profiles**](sailpoint\v3/docs/IdentityProfilesApi.md#list_identity_profiles) | **GET** /identity-profiles | List Identity Profiles
 *IdentityProfilesApi* | [**show_identity_preview**](sailpoint\v3/docs/IdentityProfilesApi.md#show_identity_preview) | **POST** /identity-profiles/identity-preview | Generate Identity Profile Preview
 *IdentityProfilesApi* | [**sync_identity_profile**](sailpoint\v3/docs/IdentityProfilesApi.md#sync_identity_profile) | **POST** /identity-profiles/{identity-profile-id}/process-identities | Process identities under profile
-*IdentityProfilesApi* | [**update_identity_profile**](sailpoint\v3/docs/IdentityProfilesApi.md#update_identity_profile) | **PATCH** /identity-profiles/{identity-profile-id} | Update the Identity Profile
+*IdentityProfilesApi* | [**update_identity_profile**](sailpoint\v3/docs/IdentityProfilesApi.md#update_identity_profile) | **PATCH** /identity-profiles/{identity-profile-id} | Update Identity Profile
 *LifecycleStatesApi* | [**create_lifecycle_state**](sailpoint\v3/docs/LifecycleStatesApi.md#create_lifecycle_state) | **POST** /identity-profiles/{identity-profile-id}/lifecycle-states | Create Lifecycle State
 *LifecycleStatesApi* | [**delete_lifecycle_state**](sailpoint\v3/docs/LifecycleStatesApi.md#delete_lifecycle_state) | **DELETE** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Delete Lifecycle State
 *LifecycleStatesApi* | [**get_lifecycle_state**](sailpoint\v3/docs/LifecycleStatesApi.md#get_lifecycle_state) | **GET** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Get Lifecycle State
@@ -441,6 +441,8 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [Access](sailpoint\v3/docs/Access.md)
+ - [AccessApps](sailpoint\v3/docs/AccessApps.md)
+ - [AccessAppsOwner](sailpoint\v3/docs/AccessAppsOwner.md)
  - [AccessConstraint](sailpoint\v3/docs/AccessConstraint.md)
  - [AccessCriteria](sailpoint\v3/docs/AccessCriteria.md)
  - [AccessCriteriaCriteriaListInner](sailpoint\v3/docs/AccessCriteriaCriteriaListInner.md)
@@ -453,6 +455,7 @@ Class | Method | HTTP request | Description
  - [AccessProfileBulkDeleteResponse](sailpoint\v3/docs/AccessProfileBulkDeleteResponse.md)
  - [AccessProfileDocument](sailpoint\v3/docs/AccessProfileDocument.md)
  - [AccessProfileDocumentAllOfSource](sailpoint\v3/docs/AccessProfileDocumentAllOfSource.md)
+ - [AccessProfileDocuments](sailpoint\v3/docs/AccessProfileDocuments.md)
  - [AccessProfileEntitlement](sailpoint\v3/docs/AccessProfileEntitlement.md)
  - [AccessProfileRef](sailpoint\v3/docs/AccessProfileRef.md)
  - [AccessProfileRole](sailpoint\v3/docs/AccessProfileRole.md)
@@ -477,6 +480,7 @@ Class | Method | HTTP request | Description
  - [AccountActivity](sailpoint\v3/docs/AccountActivity.md)
  - [AccountActivityApprovalStatus](sailpoint\v3/docs/AccountActivityApprovalStatus.md)
  - [AccountActivityDocument](sailpoint\v3/docs/AccountActivityDocument.md)
+ - [AccountActivityDocuments](sailpoint\v3/docs/AccountActivityDocuments.md)
  - [AccountActivityItem](sailpoint\v3/docs/AccountActivityItem.md)
  - [AccountActivityItemOperation](sailpoint\v3/docs/AccountActivityItemOperation.md)
  - [AccountActivitySearchedItem](sailpoint\v3/docs/AccountActivitySearchedItem.md)
@@ -493,6 +497,7 @@ Class | Method | HTTP request | Description
  - [AccountsAsyncResult](sailpoint\v3/docs/AccountsAsyncResult.md)
  - [AccountsExportReportArguments](sailpoint\v3/docs/AccountsExportReportArguments.md)
  - [ActivateCampaignOptions](sailpoint\v3/docs/ActivateCampaignOptions.md)
+ - [ActivityIdentity](sailpoint\v3/docs/ActivityIdentity.md)
  - [ActivityInsights](sailpoint\v3/docs/ActivityInsights.md)
  - [AdminReviewReassign](sailpoint\v3/docs/AdminReviewReassign.md)
  - [AdminReviewReassignReassignTo](sailpoint\v3/docs/AdminReviewReassignReassignTo.md)
@@ -521,12 +526,13 @@ Class | Method | HTTP request | Description
  - [AttributeDefinitionSchema](sailpoint\v3/docs/AttributeDefinitionSchema.md)
  - [AttributeDefinitionType](sailpoint\v3/docs/AttributeDefinitionType.md)
  - [AttributeRequest](sailpoint\v3/docs/AttributeRequest.md)
+ - [AttributeRequestValue](sailpoint\v3/docs/AttributeRequestValue.md)
  - [AttributeValueDTO](sailpoint\v3/docs/AttributeValueDTO.md)
  - [AuthUser](sailpoint\v3/docs/AuthUser.md)
  - [BackupOptions](sailpoint\v3/docs/BackupOptions.md)
  - [BackupResponse](sailpoint\v3/docs/BackupResponse.md)
  - [BaseAccess](sailpoint\v3/docs/BaseAccess.md)
- - [BaseAccessAllOfOwner](sailpoint\v3/docs/BaseAccessAllOfOwner.md)
+ - [BaseAccessOwner](sailpoint\v3/docs/BaseAccessOwner.md)
  - [BaseAccessProfile](sailpoint\v3/docs/BaseAccessProfile.md)
  - [BaseAccount](sailpoint\v3/docs/BaseAccount.md)
  - [BaseCommonDto](sailpoint\v3/docs/BaseCommonDto.md)
@@ -610,13 +616,17 @@ Class | Method | HTTP request | Description
  - [DependantConnectionsMissingDto](sailpoint\v3/docs/DependantConnectionsMissingDto.md)
  - [DimensionRef](sailpoint\v3/docs/DimensionRef.md)
  - [DisplayReference](sailpoint\v3/docs/DisplayReference.md)
+ - [DocumentFields](sailpoint\v3/docs/DocumentFields.md)
  - [DocumentType](sailpoint\v3/docs/DocumentType.md)
  - [DtoType](sailpoint\v3/docs/DtoType.md)
  - [DuoVerificationRequest](sailpoint\v3/docs/DuoVerificationRequest.md)
  - [EmailNotificationOption](sailpoint\v3/docs/EmailNotificationOption.md)
  - [Entitlement](sailpoint\v3/docs/Entitlement.md)
  - [EntitlementDocument](sailpoint\v3/docs/EntitlementDocument.md)
+ - [EntitlementDocumentAllOfManuallyUpdatedFields](sailpoint\v3/docs/EntitlementDocumentAllOfManuallyUpdatedFields.md)
+ - [EntitlementDocumentAllOfPermissions](sailpoint\v3/docs/EntitlementDocumentAllOfPermissions.md)
  - [EntitlementDocumentAllOfSource](sailpoint\v3/docs/EntitlementDocumentAllOfSource.md)
+ - [EntitlementDocuments](sailpoint\v3/docs/EntitlementDocuments.md)
  - [EntitlementDto](sailpoint\v3/docs/EntitlementDto.md)
  - [EntitlementRef](sailpoint\v3/docs/EntitlementRef.md)
  - [EntitlementRef1](sailpoint\v3/docs/EntitlementRef1.md)
@@ -626,8 +636,11 @@ Class | Method | HTTP request | Description
  - [ErrorMessageDto](sailpoint\v3/docs/ErrorMessageDto.md)
  - [ErrorResponseDto](sailpoint\v3/docs/ErrorResponseDto.md)
  - [Event](sailpoint\v3/docs/Event.md)
+ - [EventActor](sailpoint\v3/docs/EventActor.md)
  - [EventAttributes](sailpoint\v3/docs/EventAttributes.md)
  - [EventDocument](sailpoint\v3/docs/EventDocument.md)
+ - [EventDocuments](sailpoint\v3/docs/EventDocuments.md)
+ - [EventTarget](sailpoint\v3/docs/EventTarget.md)
  - [ExceptionAccessCriteria](sailpoint\v3/docs/ExceptionAccessCriteria.md)
  - [ExceptionCriteria](sailpoint\v3/docs/ExceptionCriteria.md)
  - [ExceptionCriteriaAccess](sailpoint\v3/docs/ExceptionCriteriaAccess.md)
@@ -664,6 +677,7 @@ Class | Method | HTTP request | Description
  - [IdentityDocumentAllOfIdentityProfile](sailpoint\v3/docs/IdentityDocumentAllOfIdentityProfile.md)
  - [IdentityDocumentAllOfManager](sailpoint\v3/docs/IdentityDocumentAllOfManager.md)
  - [IdentityDocumentAllOfSource](sailpoint\v3/docs/IdentityDocumentAllOfSource.md)
+ - [IdentityDocuments](sailpoint\v3/docs/IdentityDocuments.md)
  - [IdentityExceptionReportReference](sailpoint\v3/docs/IdentityExceptionReportReference.md)
  - [IdentityPreviewRequest](sailpoint\v3/docs/IdentityPreviewRequest.md)
  - [IdentityPreviewResponse](sailpoint\v3/docs/IdentityPreviewResponse.md)
@@ -842,6 +856,7 @@ Class | Method | HTTP request | Description
  - [RequestedItemStatusRequestedFor](sailpoint\v3/docs/RequestedItemStatusRequestedFor.md)
  - [RequestedItemStatusRequesterComment](sailpoint\v3/docs/RequestedItemStatusRequesterComment.md)
  - [RequestedItemStatusSodViolationContext](sailpoint\v3/docs/RequestedItemStatusSodViolationContext.md)
+ - [Result](sailpoint\v3/docs/Result.md)
  - [ReviewDecision](sailpoint\v3/docs/ReviewDecision.md)
  - [ReviewReassign](sailpoint\v3/docs/ReviewReassign.md)
  - [ReviewRecommendation](sailpoint\v3/docs/ReviewRecommendation.md)
@@ -863,6 +878,11 @@ Class | Method | HTTP request | Description
  - [RoleCriteriaLevel3](sailpoint\v3/docs/RoleCriteriaLevel3.md)
  - [RoleCriteriaOperation](sailpoint\v3/docs/RoleCriteriaOperation.md)
  - [RoleDocument](sailpoint\v3/docs/RoleDocument.md)
+ - [RoleDocumentAllOfDimensionSchemaAttributes](sailpoint\v3/docs/RoleDocumentAllOfDimensionSchemaAttributes.md)
+ - [RoleDocumentAllOfDimensions](sailpoint\v3/docs/RoleDocumentAllOfDimensions.md)
+ - [RoleDocumentAllOfEntitlements](sailpoint\v3/docs/RoleDocumentAllOfEntitlements.md)
+ - [RoleDocumentAllOfEntitlements1](sailpoint\v3/docs/RoleDocumentAllOfEntitlements1.md)
+ - [RoleDocuments](sailpoint\v3/docs/RoleDocuments.md)
  - [RoleIdentity](sailpoint\v3/docs/RoleIdentity.md)
  - [RoleMembershipIdentity](sailpoint\v3/docs/RoleMembershipIdentity.md)
  - [RoleMembershipSelector](sailpoint\v3/docs/RoleMembershipSelector.md)
@@ -889,6 +909,7 @@ Class | Method | HTTP request | Description
  - [SearchAggregationSpecification](sailpoint\v3/docs/SearchAggregationSpecification.md)
  - [SearchArguments](sailpoint\v3/docs/SearchArguments.md)
  - [SearchAttributeConfig](sailpoint\v3/docs/SearchAttributeConfig.md)
+ - [SearchDocuments](sailpoint\v3/docs/SearchDocuments.md)
  - [SearchExportReportArguments](sailpoint\v3/docs/SearchExportReportArguments.md)
  - [SearchFilterType](sailpoint\v3/docs/SearchFilterType.md)
  - [SearchSchedule](sailpoint\v3/docs/SearchSchedule.md)

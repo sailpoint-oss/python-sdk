@@ -28,8 +28,6 @@ class DocumentType(str, Enum):
     """
     ACCESSPROFILE = 'accessprofile'
     ACCOUNTACTIVITY = 'accountactivity'
-    ACCOUNT = 'account'
-    AGGREGATION = 'aggregation'
     ENTITLEMENT = 'entitlement'
     EVENT = 'event'
     IDENTITY = 'identity'

@@ -40,7 +40,7 @@ class TestAccountRequest(unittest.TestCase):
                     sailpoint.v2024.models.attribute_request.AttributeRequest(
                         name = 'groups', 
                         op = 'Add', 
-                        value = '3203537556531076', )
+                        value = null, )
                     ],
                 op = 'Modify',
                 provisioning_target = None,

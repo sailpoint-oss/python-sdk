@@ -19,7 +19,6 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2024.models.dto_type import DtoType
 from sailpoint.v2024.models.reference import Reference
 from typing import Optional, Set
 from typing_extensions import Self
@@ -31,14 +30,14 @@ class AccessProfileEntitlement(BaseModel):
     id: Optional[StrictStr] = Field(default=None, description="The unique ID of the referenced object.")
     name: Optional[StrictStr] = Field(default=None, description="The human readable name of the referenced object.")
     display_name: Optional[StrictStr] = Field(default=None, alias="displayName")
-    type: Optional[DtoType] = None
-    description: Optional[StrictStr] = None
+    description: Optional[StrictStr] = Field(default=None, description="Description of access item.")
     source: Optional[Reference] = None
+    type: Optional[StrictStr] = Field(default=None, description="Type of the access item.")
     privileged: Optional[StrictBool] = None
     attribute: Optional[StrictStr] = None
     value: Optional[StrictStr] = None
     standalone: Optional[StrictBool] = None
-    __properties: ClassVar[List[str]] = ["id", "name", "displayName", "type", "description", "source", "privileged", "attribute", "value", "standalone"]
+    __properties: ClassVar[List[str]] = ["id", "name", "displayName", "description", "source", "type", "privileged", "attribute", "value", "standalone"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -102,9 +101,9 @@ class AccessProfileEntitlement(BaseModel):
             "id": obj.get("id"),
             "name": obj.get("name"),
             "displayName": obj.get("displayName"),
-            "type": obj.get("type"),
             "description": obj.get("description"),
             "source": Reference.from_dict(obj["source"]) if obj.get("source") is not None else None,
+            "type": obj.get("type"),
             "privileged": obj.get("privileged"),
             "attribute": obj.get("attribute"),
             "value": obj.get("value"),

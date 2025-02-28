@@ -19,7 +19,6 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List
-from sailpoint.v3.models.document_type import DocumentType
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,10 +26,9 @@ class BaseDocument(BaseModel):
     """
     BaseDocument
     """ # noqa: E501
-    id: StrictStr
-    name: StrictStr
-    type: DocumentType = Field(alias="_type")
-    __properties: ClassVar[List[str]] = ["id", "name", "_type"]
+    id: StrictStr = Field(description="ID of the referenced object.")
+    name: StrictStr = Field(description="The human readable name of the referenced object.")
+    __properties: ClassVar[List[str]] = ["id", "name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,8 +82,7 @@ class BaseDocument(BaseModel):
 
         _obj = cls.model_validate({
             "id": obj.get("id"),
-            "name": obj.get("name"),
-            "_type": obj.get("_type")
+            "name": obj.get("name")
         })
         return _obj
 

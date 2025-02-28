@@ -19,7 +19,6 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2024.models.dto_type import DtoType
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -30,9 +29,8 @@ class Access(BaseModel):
     id: Optional[StrictStr] = Field(default=None, description="The unique ID of the referenced object.")
     name: Optional[StrictStr] = Field(default=None, description="The human readable name of the referenced object.")
     display_name: Optional[StrictStr] = Field(default=None, alias="displayName")
-    type: Optional[DtoType] = None
-    description: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["id", "name", "displayName", "type", "description"]
+    description: Optional[StrictStr] = Field(default=None, description="Description of access item.")
+    __properties: ClassVar[List[str]] = ["id", "name", "displayName", "description"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -93,7 +91,6 @@ class Access(BaseModel):
             "id": obj.get("id"),
             "name": obj.get("name"),
             "displayName": obj.get("displayName"),
-            "type": obj.get("type"),
             "description": obj.get("description")
         })
         return _obj

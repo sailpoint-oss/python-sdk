@@ -38,13 +38,13 @@ class TestExpansionItem(unittest.TestCase):
                 account_id = '2c91808981f58ea601821c3e93482e6f',
                 cause = 'Role',
                 name = 'smartsheet-role',
-                attribute_requests = [
-                    sailpoint.v3.models.attribute_request.AttributeRequest(
-                        name = 'groups', 
-                        op = 'Add', 
-                        value = '3203537556531076', )
-                    ],
-                source = None
+                attribute_request = sailpoint.v3.models.attribute_request.AttributeRequest(
+                    name = 'groups', 
+                    op = 'Add', 
+                    value = null, ),
+                source = None,
+                id = 'ac2887ffe0e7435a8c18c73f7ae94c7b',
+                state = 'EXECUTING'
             )
         else:
             return ExpansionItem(

@@ -39,7 +39,9 @@ class BaseAccount(BaseModel):
     password_last_set: Optional[datetime] = Field(default=None, description="A date-time in ISO-8601 format", alias="passwordLastSet")
     entitlement_attributes: Optional[Dict[str, Any]] = Field(default=None, description="Map or dictionary of key/value pairs.", alias="entitlementAttributes")
     created: Optional[datetime] = Field(default=None, description="ISO-8601 date-time referring to the time when the object was created.")
-    __properties: ClassVar[List[str]] = ["id", "name", "accountId", "source", "disabled", "locked", "privileged", "manuallyCorrelated", "passwordLastSet", "entitlementAttributes", "created"]
+    supports_password_change: Optional[StrictBool] = Field(default=False, description="Indicates whether the account supports password change.", alias="supportsPasswordChange")
+    account_attributes: Optional[Dict[str, Any]] = Field(default=None, description="Map or dictionary of key/value pairs.", alias="accountAttributes")
+    __properties: ClassVar[List[str]] = ["id", "name", "accountId", "source", "disabled", "locked", "privileged", "manuallyCorrelated", "passwordLastSet", "entitlementAttributes", "created", "supportsPasswordChange", "accountAttributes"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -98,6 +100,11 @@ class BaseAccount(BaseModel):
         if self.created is None and "created" in self.model_fields_set:
             _dict['created'] = None
 
+        # set to None if account_attributes (nullable) is None
+        # and model_fields_set contains the field
+        if self.account_attributes is None and "account_attributes" in self.model_fields_set:
+            _dict['accountAttributes'] = None
+
         return _dict
 
     @classmethod
@@ -120,7 +127,9 @@ class BaseAccount(BaseModel):
             "manuallyCorrelated": obj.get("manuallyCorrelated") if obj.get("manuallyCorrelated") is not None else False,
             "passwordLastSet": obj.get("passwordLastSet"),
             "entitlementAttributes": obj.get("entitlementAttributes"),
-            "created": obj.get("created")
+            "created": obj.get("created"),
+            "supportsPasswordChange": obj.get("supportsPasswordChange") if obj.get("supportsPasswordChange") is not None else False,
+            "accountAttributes": obj.get("accountAttributes")
         })
         return _obj
 

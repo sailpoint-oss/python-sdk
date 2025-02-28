@@ -35,16 +35,14 @@ class TestBaseAccess(unittest.TestCase):
         model = BaseAccess()
         if include_optional:
             return BaseAccess(
-                id = '2c91808568c529c60168cca6f90c1313',
-                name = 'John Doe',
-                description = 'The admin role',
+                description = 'Admin access',
                 created = '2018-06-25T20:22:28.104Z',
                 modified = '2018-06-25T20:22:28.104Z',
                 synced = '2018-06-25T20:22:33.104Z',
                 enabled = True,
                 requestable = True,
                 request_comments_required = False,
-                owner = sailpoint.v2024.models.base_access_all_of_owner.BaseAccess_allOf_owner(
+                owner = sailpoint.v2024.models.base_access_owner.BaseAccess_owner(
                     type = 'IDENTITY', 
                     id = '2c9180a46faadee4016fb4e018c20639', 
                     name = 'Support', 

@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v3.models.base_access_all_of_owner import BaseAccessAllOfOwner
+from sailpoint.v3.models.attribute_request_value import AttributeRequestValue
 
-class TestBaseAccessAllOfOwner(unittest.TestCase):
-    """BaseAccessAllOfOwner unit test stubs"""
+class TestAttributeRequestValue(unittest.TestCase):
+    """AttributeRequestValue unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,28 +25,24 @@ class TestBaseAccessAllOfOwner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> BaseAccessAllOfOwner:
-        """Test BaseAccessAllOfOwner
+    def make_instance(self, include_optional) -> AttributeRequestValue:
+        """Test AttributeRequestValue
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `BaseAccessAllOfOwner`
+        # uncomment below to create an instance of `AttributeRequestValue`
         """
-        model = BaseAccessAllOfOwner()
+        model = AttributeRequestValue()
         if include_optional:
-            return BaseAccessAllOfOwner(
-                type = 'IDENTITY',
-                id = '2c9180a46faadee4016fb4e018c20639',
-                name = 'Support',
-                email = 'cloud-support@sailpoint.com'
+            return AttributeRequestValue(
             )
         else:
-            return BaseAccessAllOfOwner(
+            return AttributeRequestValue(
         )
         """
 
-    def testBaseAccessAllOfOwner(self):
-        """Test BaseAccessAllOfOwner"""
+    def testAttributeRequestValue(self):
+        """Test AttributeRequestValue"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

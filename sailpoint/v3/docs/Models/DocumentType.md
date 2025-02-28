@@ -19,10 +19,6 @@ Enum representing the currently supported document types.  Additional values may
 
 * `ACCOUNTACTIVITY` (value: `'accountactivity'`)
 
-* `ACCOUNT` (value: `'account'`)
-
-* `AGGREGATION` (value: `'aggregation'`)
-
 * `ENTITLEMENT` (value: `'entitlement'`)
 
 * `EVENT` (value: `'event'`)

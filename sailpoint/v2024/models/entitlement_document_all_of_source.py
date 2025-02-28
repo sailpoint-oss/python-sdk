@@ -28,7 +28,8 @@ class EntitlementDocumentAllOfSource(BaseModel):
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="ID of entitlement's source.")
     name: Optional[StrictStr] = Field(default=None, description="Display name of entitlement's source.")
-    __properties: ClassVar[List[str]] = ["id", "name"]
+    type: Optional[StrictStr] = Field(default=None, description="Type of object.")
+    __properties: ClassVar[List[str]] = ["id", "name", "type"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,7 +83,8 @@ class EntitlementDocumentAllOfSource(BaseModel):
 
         _obj = cls.model_validate({
             "id": obj.get("id"),
-            "name": obj.get("name")
+            "name": obj.get("name"),
+            "type": obj.get("type")
         })
         return _obj
 

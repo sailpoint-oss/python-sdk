@@ -20,11 +20,12 @@ import json
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2024.models.base_access_all_of_owner import BaseAccessAllOfOwner
+from sailpoint.v2024.models.base_access_owner import BaseAccessOwner
 from sailpoint.v2024.models.base_access_profile import BaseAccessProfile
-from sailpoint.v2024.models.base_entitlement import BaseEntitlement
 from sailpoint.v2024.models.base_segment import BaseSegment
-from sailpoint.v2024.models.document_type import DocumentType
+from sailpoint.v2024.models.role_document_all_of_dimension_schema_attributes import RoleDocumentAllOfDimensionSchemaAttributes
+from sailpoint.v2024.models.role_document_all_of_dimensions import RoleDocumentAllOfDimensions
+from sailpoint.v2024.models.role_document_all_of_entitlements import RoleDocumentAllOfEntitlements
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -32,9 +33,6 @@ class RoleDocument(BaseModel):
     """
     Role
     """ # noqa: E501
-    id: StrictStr = Field(description="The unique ID of the referenced object.")
-    name: StrictStr = Field(description="The human readable name of the referenced object.")
-    type: DocumentType = Field(alias="_type")
     description: Optional[StrictStr] = Field(default=None, description="Access item's description.")
     created: Optional[datetime] = Field(default=None, description="ISO-8601 date-time referring to the time when the object was created.")
     modified: Optional[datetime] = Field(default=None, description="ISO-8601 date-time referring to the time when the object was last modified.")
@@ -42,15 +40,21 @@ class RoleDocument(BaseModel):
     enabled: Optional[StrictBool] = Field(default=False, description="Indicates whether the access item is currently enabled.")
     requestable: Optional[StrictBool] = Field(default=True, description="Indicates whether the access item can be requested.")
     request_comments_required: Optional[StrictBool] = Field(default=False, description="Indicates whether comments are required for requests to access the item.", alias="requestCommentsRequired")
-    owner: Optional[BaseAccessAllOfOwner] = None
+    owner: Optional[BaseAccessOwner] = None
+    id: StrictStr = Field(description="ID of the role.")
+    name: StrictStr = Field(description="Name of the role.")
     access_profiles: Optional[List[BaseAccessProfile]] = Field(default=None, description="Access profiles included with the role.", alias="accessProfiles")
     access_profile_count: Optional[StrictInt] = Field(default=None, description="Number of access profiles included with the role.", alias="accessProfileCount")
     tags: Optional[List[StrictStr]] = Field(default=None, description="Tags that have been applied to the object.")
     segments: Optional[List[BaseSegment]] = Field(default=None, description="Segments with the role.")
     segment_count: Optional[StrictInt] = Field(default=None, description="Number of segments with the role.", alias="segmentCount")
-    entitlements: Optional[List[BaseEntitlement]] = Field(default=None, description="Entitlements included with the role.")
+    entitlements: Optional[List[RoleDocumentAllOfEntitlements]] = Field(default=None, description="Entitlements included with the role.")
     entitlement_count: Optional[StrictInt] = Field(default=None, description="Number of entitlements included with the role.", alias="entitlementCount")
-    __properties: ClassVar[List[str]] = ["id", "name", "_type", "description", "created", "modified", "synced", "enabled", "requestable", "requestCommentsRequired", "owner", "accessProfiles", "accessProfileCount", "tags", "segments", "segmentCount", "entitlements", "entitlementCount"]
+    dimensional: Optional[StrictBool] = False
+    dimension_schema_attribute_count: Optional[StrictInt] = Field(default=None, description="Number of dimension attributes included with the role.", alias="dimensionSchemaAttributeCount")
+    dimension_schema_attributes: Optional[List[RoleDocumentAllOfDimensionSchemaAttributes]] = Field(default=None, description="Dimension attributes included with the role.", alias="dimensionSchemaAttributes")
+    dimensions: Optional[List[RoleDocumentAllOfDimensions]] = None
+    __properties: ClassVar[List[str]] = ["description", "created", "modified", "synced", "enabled", "requestable", "requestCommentsRequired", "owner", "id", "name", "accessProfiles", "accessProfileCount", "tags", "segments", "segmentCount", "entitlements", "entitlementCount", "dimensional", "dimensionSchemaAttributeCount", "dimensionSchemaAttributes", "dimensions"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -115,6 +119,20 @@ class RoleDocument(BaseModel):
                 if _item_entitlements:
                     _items.append(_item_entitlements.to_dict())
             _dict['entitlements'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in dimension_schema_attributes (list)
+        _items = []
+        if self.dimension_schema_attributes:
+            for _item_dimension_schema_attributes in self.dimension_schema_attributes:
+                if _item_dimension_schema_attributes:
+                    _items.append(_item_dimension_schema_attributes.to_dict())
+            _dict['dimensionSchemaAttributes'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in dimensions (list)
+        _items = []
+        if self.dimensions:
+            for _item_dimensions in self.dimensions:
+                if _item_dimensions:
+                    _items.append(_item_dimensions.to_dict())
+            _dict['dimensions'] = _items
         # set to None if created (nullable) is None
         # and model_fields_set contains the field
         if self.created is None and "created" in self.model_fields_set:
@@ -130,6 +148,51 @@ class RoleDocument(BaseModel):
         if self.synced is None and "synced" in self.model_fields_set:
             _dict['synced'] = None
 
+        # set to None if access_profiles (nullable) is None
+        # and model_fields_set contains the field
+        if self.access_profiles is None and "access_profiles" in self.model_fields_set:
+            _dict['accessProfiles'] = None
+
+        # set to None if access_profile_count (nullable) is None
+        # and model_fields_set contains the field
+        if self.access_profile_count is None and "access_profile_count" in self.model_fields_set:
+            _dict['accessProfileCount'] = None
+
+        # set to None if segments (nullable) is None
+        # and model_fields_set contains the field
+        if self.segments is None and "segments" in self.model_fields_set:
+            _dict['segments'] = None
+
+        # set to None if segment_count (nullable) is None
+        # and model_fields_set contains the field
+        if self.segment_count is None and "segment_count" in self.model_fields_set:
+            _dict['segmentCount'] = None
+
+        # set to None if entitlements (nullable) is None
+        # and model_fields_set contains the field
+        if self.entitlements is None and "entitlements" in self.model_fields_set:
+            _dict['entitlements'] = None
+
+        # set to None if entitlement_count (nullable) is None
+        # and model_fields_set contains the field
+        if self.entitlement_count is None and "entitlement_count" in self.model_fields_set:
+            _dict['entitlementCount'] = None
+
+        # set to None if dimension_schema_attribute_count (nullable) is None
+        # and model_fields_set contains the field
+        if self.dimension_schema_attribute_count is None and "dimension_schema_attribute_count" in self.model_fields_set:
+            _dict['dimensionSchemaAttributeCount'] = None
+
+        # set to None if dimension_schema_attributes (nullable) is None
+        # and model_fields_set contains the field
+        if self.dimension_schema_attributes is None and "dimension_schema_attributes" in self.model_fields_set:
+            _dict['dimensionSchemaAttributes'] = None
+
+        # set to None if dimensions (nullable) is None
+        # and model_fields_set contains the field
+        if self.dimensions is None and "dimensions" in self.model_fields_set:
+            _dict['dimensions'] = None
+
         return _dict
 
     @classmethod
@@ -142,9 +205,6 @@ class RoleDocument(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "_type": obj.get("_type"),
             "description": obj.get("description"),
             "created": obj.get("created"),
             "modified": obj.get("modified"),
@@ -152,14 +212,20 @@ class RoleDocument(BaseModel):
             "enabled": obj.get("enabled") if obj.get("enabled") is not None else False,
             "requestable": obj.get("requestable") if obj.get("requestable") is not None else True,
             "requestCommentsRequired": obj.get("requestCommentsRequired") if obj.get("requestCommentsRequired") is not None else False,
-            "owner": BaseAccessAllOfOwner.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
+            "owner": BaseAccessOwner.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
+            "id": obj.get("id"),
+            "name": obj.get("name"),
             "accessProfiles": [BaseAccessProfile.from_dict(_item) for _item in obj["accessProfiles"]] if obj.get("accessProfiles") is not None else None,
             "accessProfileCount": obj.get("accessProfileCount"),
             "tags": obj.get("tags"),
             "segments": [BaseSegment.from_dict(_item) for _item in obj["segments"]] if obj.get("segments") is not None else None,
             "segmentCount": obj.get("segmentCount"),
-            "entitlements": [BaseEntitlement.from_dict(_item) for _item in obj["entitlements"]] if obj.get("entitlements") is not None else None,
-            "entitlementCount": obj.get("entitlementCount")
+            "entitlements": [RoleDocumentAllOfEntitlements.from_dict(_item) for _item in obj["entitlements"]] if obj.get("entitlements") is not None else None,
+            "entitlementCount": obj.get("entitlementCount"),
+            "dimensional": obj.get("dimensional") if obj.get("dimensional") is not None else False,
+            "dimensionSchemaAttributeCount": obj.get("dimensionSchemaAttributeCount"),
+            "dimensionSchemaAttributes": [RoleDocumentAllOfDimensionSchemaAttributes.from_dict(_item) for _item in obj["dimensionSchemaAttributes"]] if obj.get("dimensionSchemaAttributes") is not None else None,
+            "dimensions": [RoleDocumentAllOfDimensions.from_dict(_item) for _item in obj["dimensions"]] if obj.get("dimensions") is not None else None
         })
         return _obj
 

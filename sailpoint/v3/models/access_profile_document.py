@@ -18,11 +18,13 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.v3.models.access_apps import AccessApps
 from sailpoint.v3.models.access_profile_document_all_of_source import AccessProfileDocumentAllOfSource
-from sailpoint.v3.models.base_access_all_of_owner import BaseAccessAllOfOwner
+from sailpoint.v3.models.base_access_owner import BaseAccessOwner
 from sailpoint.v3.models.base_entitlement import BaseEntitlement
+from sailpoint.v3.models.base_segment import BaseSegment
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -30,8 +32,6 @@ class AccessProfileDocument(BaseModel):
     """
     More complete representation of an access profile.  
     """ # noqa: E501
-    id: StrictStr = Field(description="Access profile's ID.")
-    name: StrictStr = Field(description="Access profile's name.")
     description: Optional[StrictStr] = Field(default=None, description="Access item's description.")
     created: Optional[datetime] = Field(default=None, description="ISO-8601 date-time referring to the time when the object was created.")
     modified: Optional[datetime] = Field(default=None, description="ISO-8601 date-time referring to the time when the object was last modified.")
@@ -39,20 +39,17 @@ class AccessProfileDocument(BaseModel):
     enabled: Optional[StrictBool] = Field(default=False, description="Indicates whether the access item is currently enabled.")
     requestable: Optional[StrictBool] = Field(default=True, description="Indicates whether the access item can be requested.")
     request_comments_required: Optional[StrictBool] = Field(default=False, description="Indicates whether comments are required for requests to access the item.", alias="requestCommentsRequired")
-    owner: Optional[BaseAccessAllOfOwner] = None
-    type: StrictStr = Field(description="Access profile's document type.  This enum represents the currently supported document types. Additional values may be added in the future without notice.", alias="_type")
+    owner: Optional[BaseAccessOwner] = None
+    id: StrictStr = Field(description="Access profile's ID.")
+    name: StrictStr = Field(description="Access profile's name.")
     source: Optional[AccessProfileDocumentAllOfSource] = None
     entitlements: Optional[List[BaseEntitlement]] = Field(default=None, description="Entitlements the access profile has access to.")
     entitlement_count: Optional[StrictInt] = Field(default=None, description="Number of entitlements.", alias="entitlementCount")
+    segments: Optional[List[BaseSegment]] = Field(default=None, description="Segments with the access profile.")
+    segment_count: Optional[StrictInt] = Field(default=None, description="Number of segments with the access profile.", alias="segmentCount")
     tags: Optional[List[StrictStr]] = Field(default=None, description="Tags that have been applied to the object.")
-    __properties: ClassVar[List[str]] = ["id", "name", "description", "created", "modified", "synced", "enabled", "requestable", "requestCommentsRequired", "owner", "_type", "source", "entitlements", "entitlementCount", "tags"]
-
-    @field_validator('type')
-    def type_validate_enum(cls, value):
-        """Validates the enum"""
-        if value not in set(['accessprofile', 'accountactivity', 'account', 'aggregation', 'entitlement', 'event', 'identity', 'role']):
-            raise ValueError("must be one of enum values ('accessprofile', 'accountactivity', 'account', 'aggregation', 'entitlement', 'event', 'identity', 'role')")
-        return value
+    apps: Optional[List[AccessApps]] = Field(default=None, description="Applications with the access profile")
+    __properties: ClassVar[List[str]] = ["description", "created", "modified", "synced", "enabled", "requestable", "requestCommentsRequired", "owner", "id", "name", "source", "entitlements", "entitlementCount", "segments", "segmentCount", "tags", "apps"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -106,6 +103,20 @@ class AccessProfileDocument(BaseModel):
                 if _item_entitlements:
                     _items.append(_item_entitlements.to_dict())
             _dict['entitlements'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in segments (list)
+        _items = []
+        if self.segments:
+            for _item_segments in self.segments:
+                if _item_segments:
+                    _items.append(_item_segments.to_dict())
+            _dict['segments'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in apps (list)
+        _items = []
+        if self.apps:
+            for _item_apps in self.apps:
+                if _item_apps:
+                    _items.append(_item_apps.to_dict())
+            _dict['apps'] = _items
         # set to None if created (nullable) is None
         # and model_fields_set contains the field
         if self.created is None and "created" in self.model_fields_set:
@@ -133,8 +144,6 @@ class AccessProfileDocument(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
             "description": obj.get("description"),
             "created": obj.get("created"),
             "modified": obj.get("modified"),
@@ -142,12 +151,16 @@ class AccessProfileDocument(BaseModel):
             "enabled": obj.get("enabled") if obj.get("enabled") is not None else False,
             "requestable": obj.get("requestable") if obj.get("requestable") is not None else True,
             "requestCommentsRequired": obj.get("requestCommentsRequired") if obj.get("requestCommentsRequired") is not None else False,
-            "owner": BaseAccessAllOfOwner.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
-            "_type": obj.get("_type"),
+            "owner": BaseAccessOwner.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
+            "id": obj.get("id"),
+            "name": obj.get("name"),
             "source": AccessProfileDocumentAllOfSource.from_dict(obj["source"]) if obj.get("source") is not None else None,
             "entitlements": [BaseEntitlement.from_dict(_item) for _item in obj["entitlements"]] if obj.get("entitlements") is not None else None,
             "entitlementCount": obj.get("entitlementCount"),
-            "tags": obj.get("tags")
+            "segments": [BaseSegment.from_dict(_item) for _item in obj["segments"]] if obj.get("segments") is not None else None,
+            "segmentCount": obj.get("segmentCount"),
+            "tags": obj.get("tags"),
+            "apps": [AccessApps.from_dict(_item) for _item in obj["apps"]] if obj.get("apps") is not None else None
         })
         return _obj
 

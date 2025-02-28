@@ -37,7 +37,7 @@ class TestAttributeRequest(unittest.TestCase):
             return AttributeRequest(
                 name = 'groups',
                 op = 'Add',
-                value = '3203537556531076'
+                value = None
             )
         else:
             return AttributeRequest(

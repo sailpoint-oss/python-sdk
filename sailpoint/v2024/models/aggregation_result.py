@@ -19,6 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.v2024.models.search_documents import SearchDocuments
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,7 +28,7 @@ class AggregationResult(BaseModel):
     AggregationResult
     """ # noqa: E501
     aggregations: Optional[Dict[str, Any]] = Field(default=None, description="The document containing the results of the aggregation. This document is controlled by Elasticsearch and depends on the type of aggregation query that is run.  See Elasticsearch [Aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/search-aggregations.html) documentation for information. ")
-    hits: Optional[List[Dict[str, Any]]] = Field(default=None, description="The results of the aggregation search query. ")
+    hits: Optional[List[SearchDocuments]] = Field(default=None, description="The results of the aggregation search query. ")
     __properties: ClassVar[List[str]] = ["aggregations", "hits"]
 
     model_config = ConfigDict(
@@ -69,6 +70,13 @@ class AggregationResult(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in hits (list)
+        _items = []
+        if self.hits:
+            for _item_hits in self.hits:
+                if _item_hits:
+                    _items.append(_item_hits.to_dict())
+            _dict['hits'] = _items
         return _dict
 
     @classmethod
@@ -82,7 +90,7 @@ class AggregationResult(BaseModel):
 
         _obj = cls.model_validate({
             "aggregations": obj.get("aggregations"),
-            "hits": obj.get("hits")
+            "hits": [SearchDocuments.from_dict(_item) for _item in obj["hits"]] if obj.get("hits") is not None else None
         })
         return _obj
 

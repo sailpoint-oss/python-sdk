@@ -961,7 +961,7 @@ class NonEmployeeLifecycleManagementApi:
     ) -> NonEmployeeSourceWithCloudExternalId:
         """Create Non-Employee Source
 
-        This request will create a non-employee source. Requires role context of `idn:nesr:create`
+        Create a non-employee source. 
 
         :param non_employee_source_request_body: Non-Employee source creation request body. (required)
         :type non_employee_source_request_body: NonEmployeeSourceRequestBody
@@ -1033,7 +1033,7 @@ class NonEmployeeLifecycleManagementApi:
     ) -> ApiResponse[NonEmployeeSourceWithCloudExternalId]:
         """Create Non-Employee Source
 
-        This request will create a non-employee source. Requires role context of `idn:nesr:create`
+        Create a non-employee source. 
 
         :param non_employee_source_request_body: Non-Employee source creation request body. (required)
         :type non_employee_source_request_body: NonEmployeeSourceRequestBody
@@ -1105,7 +1105,7 @@ class NonEmployeeLifecycleManagementApi:
     ) -> RESTResponseType:
         """Create Non-Employee Source
 
-        This request will create a non-employee source. Requires role context of `idn:nesr:create`
+        Create a non-employee source. 
 
         :param non_employee_source_request_body: Non-Employee source creation request body. (required)
         :type non_employee_source_request_body: NonEmployeeSourceRequestBody
@@ -7709,11 +7709,11 @@ class NonEmployeeLifecycleManagementApi:
     @validate_call
     def list_non_employee_sources(
         self,
-        requested_for: Annotated[StrictStr, Field(description="The identity for whom the request was made. *me* indicates the current user.")],
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        non_employee_count: Annotated[Optional[StrictBool], Field(description="The flag to determine whether return a non-employee count associate with source.")] = None,
+        requested_for: Annotated[Optional[StrictStr], Field(description="Identity the request was made for. Use 'me' to indicate the current user.")] = None,
+        non_employee_count: Annotated[Optional[StrictBool], Field(description="Flag that determines whether the API will return a non-employee count associated with the source.")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, sourceId**")] = None,
         _request_timeout: Union[
             None,
@@ -7730,17 +7730,17 @@ class NonEmployeeLifecycleManagementApi:
     ) -> List[NonEmployeeSourceWithNECount]:
         """List Non-Employee Sources
 
-        This gets a list of non-employee sources. There are two contextual uses for the requested-for path parameter:    1. The user has the role context of `idn:nesr:read`, in which case he or she may request a list sources assigned to a particular account manager by passing in that manager's id.   2. The current user is an account manager, in which case \"me\" should be provided as the `requested-for` value. This will provide the user with a list of the sources that he or she owns.
+        Get a list of non-employee sources. There are two contextual uses for the `requested-for` path parameter:    1. If the user has the role context of `idn:nesr:read`, he or she may request a list sources assigned to a particular account manager by passing in that manager's `id`.   2. If the current user is an account manager, the user should provide 'me' as the `requested-for` value. Doing so provide the user with a list of the sources he or she owns.
 
-        :param requested_for: The identity for whom the request was made. *me* indicates the current user. (required)
-        :type requested_for: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
         :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type count: bool
-        :param non_employee_count: The flag to determine whether return a non-employee count associate with source.
+        :param requested_for: Identity the request was made for. Use 'me' to indicate the current user.
+        :type requested_for: str
+        :param non_employee_count: Flag that determines whether the API will return a non-employee count associated with the source.
         :type non_employee_count: bool
         :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, sourceId**
         :type sorters: str
@@ -7767,10 +7767,10 @@ class NonEmployeeLifecycleManagementApi:
         """ # noqa: E501
 
         _param = self._list_non_employee_sources_serialize(
-            requested_for=requested_for,
             limit=limit,
             offset=offset,
             count=count,
+            requested_for=requested_for,
             non_employee_count=non_employee_count,
             sorters=sorters,
             _request_auth=_request_auth,
@@ -7801,11 +7801,11 @@ class NonEmployeeLifecycleManagementApi:
     @validate_call
     def list_non_employee_sources_with_http_info(
         self,
-        requested_for: Annotated[StrictStr, Field(description="The identity for whom the request was made. *me* indicates the current user.")],
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        non_employee_count: Annotated[Optional[StrictBool], Field(description="The flag to determine whether return a non-employee count associate with source.")] = None,
+        requested_for: Annotated[Optional[StrictStr], Field(description="Identity the request was made for. Use 'me' to indicate the current user.")] = None,
+        non_employee_count: Annotated[Optional[StrictBool], Field(description="Flag that determines whether the API will return a non-employee count associated with the source.")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, sourceId**")] = None,
         _request_timeout: Union[
             None,
@@ -7822,17 +7822,17 @@ class NonEmployeeLifecycleManagementApi:
     ) -> ApiResponse[List[NonEmployeeSourceWithNECount]]:
         """List Non-Employee Sources
 
-        This gets a list of non-employee sources. There are two contextual uses for the requested-for path parameter:    1. The user has the role context of `idn:nesr:read`, in which case he or she may request a list sources assigned to a particular account manager by passing in that manager's id.   2. The current user is an account manager, in which case \"me\" should be provided as the `requested-for` value. This will provide the user with a list of the sources that he or she owns.
+        Get a list of non-employee sources. There are two contextual uses for the `requested-for` path parameter:    1. If the user has the role context of `idn:nesr:read`, he or she may request a list sources assigned to a particular account manager by passing in that manager's `id`.   2. If the current user is an account manager, the user should provide 'me' as the `requested-for` value. Doing so provide the user with a list of the sources he or she owns.
 
-        :param requested_for: The identity for whom the request was made. *me* indicates the current user. (required)
-        :type requested_for: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
         :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type count: bool
-        :param non_employee_count: The flag to determine whether return a non-employee count associate with source.
+        :param requested_for: Identity the request was made for. Use 'me' to indicate the current user.
+        :type requested_for: str
+        :param non_employee_count: Flag that determines whether the API will return a non-employee count associated with the source.
         :type non_employee_count: bool
         :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, sourceId**
         :type sorters: str
@@ -7859,10 +7859,10 @@ class NonEmployeeLifecycleManagementApi:
         """ # noqa: E501
 
         _param = self._list_non_employee_sources_serialize(
-            requested_for=requested_for,
             limit=limit,
             offset=offset,
             count=count,
+            requested_for=requested_for,
             non_employee_count=non_employee_count,
             sorters=sorters,
             _request_auth=_request_auth,
@@ -7893,11 +7893,11 @@ class NonEmployeeLifecycleManagementApi:
     @validate_call
     def list_non_employee_sources_without_preload_content(
         self,
-        requested_for: Annotated[StrictStr, Field(description="The identity for whom the request was made. *me* indicates the current user.")],
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        non_employee_count: Annotated[Optional[StrictBool], Field(description="The flag to determine whether return a non-employee count associate with source.")] = None,
+        requested_for: Annotated[Optional[StrictStr], Field(description="Identity the request was made for. Use 'me' to indicate the current user.")] = None,
+        non_employee_count: Annotated[Optional[StrictBool], Field(description="Flag that determines whether the API will return a non-employee count associated with the source.")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, sourceId**")] = None,
         _request_timeout: Union[
             None,
@@ -7914,17 +7914,17 @@ class NonEmployeeLifecycleManagementApi:
     ) -> RESTResponseType:
         """List Non-Employee Sources
 
-        This gets a list of non-employee sources. There are two contextual uses for the requested-for path parameter:    1. The user has the role context of `idn:nesr:read`, in which case he or she may request a list sources assigned to a particular account manager by passing in that manager's id.   2. The current user is an account manager, in which case \"me\" should be provided as the `requested-for` value. This will provide the user with a list of the sources that he or she owns.
+        Get a list of non-employee sources. There are two contextual uses for the `requested-for` path parameter:    1. If the user has the role context of `idn:nesr:read`, he or she may request a list sources assigned to a particular account manager by passing in that manager's `id`.   2. If the current user is an account manager, the user should provide 'me' as the `requested-for` value. Doing so provide the user with a list of the sources he or she owns.
 
-        :param requested_for: The identity for whom the request was made. *me* indicates the current user. (required)
-        :type requested_for: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
         :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type count: bool
-        :param non_employee_count: The flag to determine whether return a non-employee count associate with source.
+        :param requested_for: Identity the request was made for. Use 'me' to indicate the current user.
+        :type requested_for: str
+        :param non_employee_count: Flag that determines whether the API will return a non-employee count associated with the source.
         :type non_employee_count: bool
         :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, sourceId**
         :type sorters: str
@@ -7951,10 +7951,10 @@ class NonEmployeeLifecycleManagementApi:
         """ # noqa: E501
 
         _param = self._list_non_employee_sources_serialize(
-            requested_for=requested_for,
             limit=limit,
             offset=offset,
             count=count,
+            requested_for=requested_for,
             non_employee_count=non_employee_count,
             sorters=sorters,
             _request_auth=_request_auth,
@@ -7980,10 +7980,10 @@ class NonEmployeeLifecycleManagementApi:
 
     def _list_non_employee_sources_serialize(
         self,
-        requested_for,
         limit,
         offset,
         count,
+        requested_for,
         non_employee_count,
         sorters,
         _request_auth,

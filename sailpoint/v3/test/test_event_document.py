@@ -36,14 +36,15 @@ class TestEventDocument(unittest.TestCase):
         if include_optional:
             return EventDocument(
                 id = '2c91808375d8e80a0175e1f88a575222',
-                name = 'john.doe',
-                type = 'identity',
+                name = 'Add Entitlement Passed',
                 created = '2018-06-25T20:22:28.104Z',
-                synced = '',
-                action = 'update',
-                type = 'SYSTEM_CONFIG',
-                actor = 'System',
-                target = 'Carol.Adams',
+                synced = '2018-06-25T20:22:28.104Z',
+                action = 'AddEntitlement',
+                type = 'ACCESS_ITEM',
+                actor = sailpoint.v3.models.event_actor.Event_actor(
+                    name = 'System', ),
+                target = sailpoint.v3.models.event_target.Event_target(
+                    name = 'Carol.Adams', ),
                 stack = 'tpe',
                 tracking_number = '63f891e0735f4cc8bf1968144a1e7440',
                 ip_address = '52.52.97.85',
@@ -52,15 +53,12 @@ class TestEventDocument(unittest.TestCase):
                 objects = [
                     'AUTHENTICATION'
                     ],
-                operation = 'REQUEST',
+                operation = 'ADD',
                 status = 'PASSED',
-                technical_name = 'AUTHENTICATION_REQUEST_PASSED'
+                technical_name = 'ENTITLEMENT_ADD_PASSED'
             )
         else:
             return EventDocument(
-                id = '2c91808375d8e80a0175e1f88a575222',
-                name = 'john.doe',
-                type = 'identity',
         )
         """
 

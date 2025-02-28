@@ -36,14 +36,12 @@ class TestBaseDocument(unittest.TestCase):
         if include_optional:
             return BaseDocument(
                 id = '2c91808375d8e80a0175e1f88a575222',
-                name = 'john.doe',
-                type = 'identity'
+                name = 'john.doe'
             )
         else:
             return BaseDocument(
                 id = '2c91808375d8e80a0175e1f88a575222',
                 name = 'john.doe',
-                type = 'identity',
         )
         """
 

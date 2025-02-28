@@ -27,7 +27,7 @@ class IdentityAttributeConfig1(BaseModel):
     """
     Defines all the identity attribute mapping configurations. This defines how to generate or collect data for each identity attributes in identity refresh process.
     """ # noqa: E501
-    enabled: Optional[StrictBool] = Field(default=False, description="The backend will only promote values if the profile/mapping is enabled.")
+    enabled: Optional[StrictBool] = Field(default=False, description="Backend will only promote values if the profile/mapping is enabled.")
     attribute_transforms: Optional[List[IdentityAttributeTransform1]] = Field(default=None, alias="attributeTransforms")
     __properties: ClassVar[List[str]] = ["enabled", "attributeTransforms"]
 

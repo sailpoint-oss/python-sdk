@@ -38,11 +38,11 @@ class TestAccessProfileEntitlement(unittest.TestCase):
                 id = '2c91808568c529c60168cca6f90c1313',
                 name = 'John Doe',
                 display_name = 'John Q. Doe',
-                type = 'IDENTITY',
                 description = '',
                 source = sailpoint.v3.models.reference.Reference(
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'John Doe', ),
+                type = 'ENTITLEMENT',
                 privileged = False,
                 attribute = 'memberOf',
                 value = 'CN=Buyer,OU=Groups,OU=Demo,DC=seri,DC=sailpointdemo,DC=com',

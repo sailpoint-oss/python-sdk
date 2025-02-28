@@ -36,13 +36,11 @@ class TestAccountActivitySearchedItem(unittest.TestCase):
         if include_optional:
             return AccountActivitySearchedItem(
                 id = '2c91808375d8e80a0175e1f88a575222',
-                name = 'john.doe',
-                type = 'identity',
                 action = 'Identity Refresh.',
                 created = '2018-06-25T20:22:28.104Z',
                 modified = '2018-06-25T20:22:28.104Z',
+                synced = '2018-06-25T20:22:28.104Z',
                 stage = 'Completed',
-                origin = '',
                 status = 'Complete',
                 requester = None,
                 recipient = None,
@@ -61,20 +59,25 @@ class TestAccountActivitySearchedItem(unittest.TestCase):
                                 commenter = 'Automated AR Approval', 
                                 date = '2018-06-25T20:22:28.104Z', )
                             ], 
-                        created = '2018-06-25T20:22:28.104Z', 
                         modified = '2018-06-25T20:22:28.104Z', 
                         owner = null, 
                         result = 'Finished', 
-                        type = '', )
+                        attribute_request = sailpoint.v3.models.attribute_request.AttributeRequest(
+                            name = 'groups', 
+                            op = 'Add', 
+                            value = null, ), 
+                        source = null, )
                     ],
                 original_requests = [
                     sailpoint.v3.models.original_request.OriginalRequest(
                         account_id = 'CN=Abby Smith,OU=Austin,OU=Americas,OU=Demo,DC=seri,DC=acme,DC=com', 
+                        result = sailpoint.v3.models.result.Result(
+                            status = 'Manual Task Created', ), 
                         attribute_requests = [
                             sailpoint.v3.models.attribute_request.AttributeRequest(
                                 name = 'groups', 
                                 op = 'Add', 
-                                value = '3203537556531076', )
+                                value = null, )
                             ], 
                         op = 'add', 
                         source = null, )
@@ -84,13 +87,13 @@ class TestAccountActivitySearchedItem(unittest.TestCase):
                         account_id = '2c91808981f58ea601821c3e93482e6f', 
                         cause = 'Role', 
                         name = 'smartsheet-role', 
-                        attribute_requests = [
-                            sailpoint.v3.models.attribute_request.AttributeRequest(
-                                name = 'groups', 
-                                op = 'Add', 
-                                value = '3203537556531076', )
-                            ], 
-                        source = null, )
+                        attribute_request = sailpoint.v3.models.attribute_request.AttributeRequest(
+                            name = 'groups', 
+                            op = 'Add', 
+                            value = null, ), 
+                        source = null, 
+                        id = 'ac2887ffe0e7435a8c18c73f7ae94c7b', 
+                        state = 'EXECUTING', )
                     ],
                 account_requests = [
                     sailpoint.v3.models.account_request.AccountRequest(
@@ -99,7 +102,7 @@ class TestAccountActivitySearchedItem(unittest.TestCase):
                             sailpoint.v3.models.attribute_request.AttributeRequest(
                                 name = 'groups', 
                                 op = 'Add', 
-                                value = '3203537556531076', )
+                                value = null, )
                             ], 
                         op = 'Modify', 
                         provisioning_target = null, 
@@ -124,9 +127,6 @@ class TestAccountActivitySearchedItem(unittest.TestCase):
             )
         else:
             return AccountActivitySearchedItem(
-                id = '2c91808375d8e80a0175e1f88a575222',
-                name = 'john.doe',
-                type = 'identity',
         )
         """
 

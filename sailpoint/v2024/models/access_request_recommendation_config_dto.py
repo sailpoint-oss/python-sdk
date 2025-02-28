@@ -17,30 +17,22 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
 
-class BaseAccessAllOfOwner(BaseModel):
+class AccessRequestRecommendationConfigDto(BaseModel):
     """
-    Owner's identity.
+    AccessRequestRecommendationConfigDto
     """ # noqa: E501
-    type: Optional[StrictStr] = Field(default=None, description="Owner's DTO type.")
-    id: Optional[StrictStr] = Field(default=None, description="Owner's identity ID.")
-    name: Optional[StrictStr] = Field(default=None, description="Owner's display name.")
-    email: Optional[StrictStr] = Field(default=None, description="Owner's email.")
-    __properties: ClassVar[List[str]] = ["type", "id", "name", "email"]
-
-    @field_validator('type')
-    def type_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['IDENTITY']):
-            raise ValueError("must be one of enum values ('IDENTITY')")
-        return value
+    score_threshold: Union[StrictFloat, StrictInt] = Field(description="The value that internal calculations need to exceed for recommendations to be made.", alias="scoreThreshold")
+    start_date_attribute: Optional[StrictStr] = Field(default=None, description="Use to map an attribute name for determining identities' start date.", alias="startDateAttribute")
+    restriction_attribute: Optional[StrictStr] = Field(default=None, description="Use to only give recommendations based on this attribute.", alias="restrictionAttribute")
+    mover_attribute: Optional[StrictStr] = Field(default=None, description="Use to map an attribute name for determining whether identities are movers.", alias="moverAttribute")
+    joiner_attribute: Optional[StrictStr] = Field(default=None, description="Use to map an attribute name for determining whether identities are joiners.", alias="joinerAttribute")
+    use_restriction_attribute: Optional[StrictBool] = Field(default=False, description="Use only the attribute named in restrictionAttribute to make recommendations.", alias="useRestrictionAttribute")
+    __properties: ClassVar[List[str]] = ["scoreThreshold", "startDateAttribute", "restrictionAttribute", "moverAttribute", "joinerAttribute", "useRestrictionAttribute"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -60,7 +52,7 @@ class BaseAccessAllOfOwner(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of BaseAccessAllOfOwner from a JSON string"""
+        """Create an instance of AccessRequestRecommendationConfigDto from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -85,7 +77,7 @@ class BaseAccessAllOfOwner(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of BaseAccessAllOfOwner from a dict"""
+        """Create an instance of AccessRequestRecommendationConfigDto from a dict"""
         if obj is None:
             return None
 
@@ -93,10 +85,12 @@ class BaseAccessAllOfOwner(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "type": obj.get("type"),
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "email": obj.get("email")
+            "scoreThreshold": obj.get("scoreThreshold"),
+            "startDateAttribute": obj.get("startDateAttribute"),
+            "restrictionAttribute": obj.get("restrictionAttribute"),
+            "moverAttribute": obj.get("moverAttribute"),
+            "joinerAttribute": obj.get("joinerAttribute"),
+            "useRestrictionAttribute": obj.get("useRestrictionAttribute") if obj.get("useRestrictionAttribute") is not None else False
         })
         return _obj
 

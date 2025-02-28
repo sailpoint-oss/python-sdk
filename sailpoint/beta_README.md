@@ -168,6 +168,7 @@ Class | Method | HTTP request | Description
 *CertificationsApi* | [**get_identity_certification_pending_tasks**](sailpoint\beta/docs/CertificationsApi.md#get_identity_certification_pending_tasks) | **GET** /certifications/{id}/tasks-pending | Pending Certification Tasks
 *CertificationsApi* | [**get_identity_certification_task_status**](sailpoint\beta/docs/CertificationsApi.md#get_identity_certification_task_status) | **GET** /certifications/{id}/tasks/{taskId} | Certification Task Status
 *CertificationsApi* | [**list_certification_reviewers**](sailpoint\beta/docs/CertificationsApi.md#list_certification_reviewers) | **GET** /certifications/{id}/reviewers | List of Reviewers for certification
+*CertificationsApi* | [**list_certifications**](sailpoint\beta/docs/CertificationsApi.md#list_certifications) | **GET** /certifications | Certifications by IDs
 *CertificationsApi* | [**submit_reassign_certs_async**](sailpoint\beta/docs/CertificationsApi.md#submit_reassign_certs_async) | **POST** /certifications/{id}/reassign-async | Reassign Certifications Asynchronously
 *ConnectorRuleManagementApi* | [**create_connector_rule**](sailpoint\beta/docs/ConnectorRuleManagementApi.md#create_connector_rule) | **POST** /connector-rules | Create Connector Rule
 *ConnectorRuleManagementApi* | [**delete_connector_rule**](sailpoint\beta/docs/ConnectorRuleManagementApi.md#delete_connector_rule) | **DELETE** /connector-rules/{id} | Delete a Connector-Rule
@@ -300,17 +301,17 @@ Class | Method | HTTP request | Description
 *IdentityHistoryApi* | [**list_identity_access_items**](sailpoint\beta/docs/IdentityHistoryApi.md#list_identity_access_items) | **GET** /historical-identities/{id}/access-items | List Access Items by Identity
 *IdentityHistoryApi* | [**list_identity_snapshot_access_items**](sailpoint\beta/docs/IdentityHistoryApi.md#list_identity_snapshot_access_items) | **GET** /historical-identities/{id}/snapshots/{date}/access-items | Get Identity Access Items Snapshot
 *IdentityHistoryApi* | [**list_identity_snapshots**](sailpoint\beta/docs/IdentityHistoryApi.md#list_identity_snapshots) | **GET** /historical-identities/{id}/snapshots | Lists all the snapshots for the identity
-*IdentityProfilesApi* | [**create_identity_profile**](sailpoint\beta/docs/IdentityProfilesApi.md#create_identity_profile) | **POST** /identity-profiles | Create an Identity Profile
-*IdentityProfilesApi* | [**delete_identity_profile**](sailpoint\beta/docs/IdentityProfilesApi.md#delete_identity_profile) | **DELETE** /identity-profiles/{identity-profile-id} | Delete an Identity Profile
+*IdentityProfilesApi* | [**create_identity_profile**](sailpoint\beta/docs/IdentityProfilesApi.md#create_identity_profile) | **POST** /identity-profiles | Create Identity Profile
+*IdentityProfilesApi* | [**delete_identity_profile**](sailpoint\beta/docs/IdentityProfilesApi.md#delete_identity_profile) | **DELETE** /identity-profiles/{identity-profile-id} | Delete Identity Profile
 *IdentityProfilesApi* | [**delete_identity_profiles**](sailpoint\beta/docs/IdentityProfilesApi.md#delete_identity_profiles) | **POST** /identity-profiles/bulk-delete | Delete Identity Profiles
 *IdentityProfilesApi* | [**export_identity_profiles**](sailpoint\beta/docs/IdentityProfilesApi.md#export_identity_profiles) | **GET** /identity-profiles/export | Export Identity Profiles
 *IdentityProfilesApi* | [**get_default_identity_attribute_config**](sailpoint\beta/docs/IdentityProfilesApi.md#get_default_identity_attribute_config) | **GET** /identity-profiles/{identity-profile-id}/default-identity-attribute-config | Default identity attribute config
-*IdentityProfilesApi* | [**get_identity_profile**](sailpoint\beta/docs/IdentityProfilesApi.md#get_identity_profile) | **GET** /identity-profiles/{identity-profile-id} | Gets a single Identity Profile
+*IdentityProfilesApi* | [**get_identity_profile**](sailpoint\beta/docs/IdentityProfilesApi.md#get_identity_profile) | **GET** /identity-profiles/{identity-profile-id} | Get Identity Profile
 *IdentityProfilesApi* | [**import_identity_profiles**](sailpoint\beta/docs/IdentityProfilesApi.md#import_identity_profiles) | **POST** /identity-profiles/import | Import Identity Profiles
-*IdentityProfilesApi* | [**list_identity_profiles**](sailpoint\beta/docs/IdentityProfilesApi.md#list_identity_profiles) | **GET** /identity-profiles | Identity Profiles List
+*IdentityProfilesApi* | [**list_identity_profiles**](sailpoint\beta/docs/IdentityProfilesApi.md#list_identity_profiles) | **GET** /identity-profiles | List Identity Profiles
 *IdentityProfilesApi* | [**show_generate_identity_preview**](sailpoint\beta/docs/IdentityProfilesApi.md#show_generate_identity_preview) | **POST** /identity-profiles/identity-preview | Generate Identity Profile Preview
 *IdentityProfilesApi* | [**sync_identity_profile**](sailpoint\beta/docs/IdentityProfilesApi.md#sync_identity_profile) | **POST** /identity-profiles/{identity-profile-id}/process-identities | Process identities under profile
-*IdentityProfilesApi* | [**update_identity_profile**](sailpoint\beta/docs/IdentityProfilesApi.md#update_identity_profile) | **PATCH** /identity-profiles/{identity-profile-id} | Update the Identity Profile
+*IdentityProfilesApi* | [**update_identity_profile**](sailpoint\beta/docs/IdentityProfilesApi.md#update_identity_profile) | **PATCH** /identity-profiles/{identity-profile-id} | Update Identity Profile
 *LaunchersApi* | [**create_launcher**](sailpoint\beta/docs/LaunchersApi.md#create_launcher) | **POST** /launchers | Create launcher
 *LaunchersApi* | [**delete_launcher**](sailpoint\beta/docs/LaunchersApi.md#delete_launcher) | **DELETE** /launchers/{launcherID} | Delete Launcher
 *LaunchersApi* | [**get_launcher**](sailpoint\beta/docs/LaunchersApi.md#get_launcher) | **GET** /launchers/{launcherID} | Get Launcher by ID
@@ -1404,6 +1405,7 @@ Class | Method | HTTP request | Description
  - [SpConfigMessage](sailpoint\beta/docs/SpConfigMessage.md)
  - [SpConfigObject](sailpoint\beta/docs/SpConfigObject.md)
  - [SpConfigRule](sailpoint\beta/docs/SpConfigRule.md)
+ - [SpConfigRuleValue](sailpoint\beta/docs/SpConfigRuleValue.md)
  - [SpConfigRules](sailpoint\beta/docs/SpConfigRules.md)
  - [StandardLevel](sailpoint\beta/docs/StandardLevel.md)
  - [StartInvocationInput](sailpoint\beta/docs/StartInvocationInput.md)

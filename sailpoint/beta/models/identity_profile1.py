@@ -35,15 +35,15 @@ class IdentityProfile1(BaseModel):
     name: StrictStr = Field(description="Name of the Object")
     created: Optional[datetime] = Field(default=None, description="Creation date of the Object")
     modified: Optional[datetime] = Field(default=None, description="Last modification date of the Object")
-    description: Optional[StrictStr] = Field(default=None, description="The description of the Identity Profile.")
+    description: Optional[StrictStr] = Field(default=None, description="Identity profile's description.")
     owner: Optional[IdentityProfileAllOfOwner] = None
-    priority: Optional[StrictInt] = Field(default=None, description="The priority for an Identity Profile.")
+    priority: Optional[StrictInt] = Field(default=None, description="Identity profile's priority.")
     authoritative_source: IdentityProfile1AllOfAuthoritativeSource = Field(alias="authoritativeSource")
-    identity_refresh_required: Optional[StrictBool] = Field(default=False, description="True if a identity refresh is needed. Typically triggered when a change on the source has been made.", alias="identityRefreshRequired")
-    identity_count: Optional[StrictInt] = Field(default=None, description="The number of identities that belong to the Identity Profile.", alias="identityCount")
+    identity_refresh_required: Optional[StrictBool] = Field(default=False, description="Set this value to 'True' if an identity refresh is necessary. You would typically want to trigger an identity refresh when a change has been made on the source.", alias="identityRefreshRequired")
+    identity_count: Optional[StrictInt] = Field(default=None, description="Number of identities belonging to the identity profile.", alias="identityCount")
     identity_attribute_config: Optional[IdentityAttributeConfig1] = Field(default=None, alias="identityAttributeConfig")
     identity_exception_report_reference: Optional[IdentityExceptionReportReference1] = Field(default=None, alias="identityExceptionReportReference")
-    has_time_based_attr: Optional[StrictBool] = Field(default=False, description="Indicates the value of requiresPeriodicRefresh attribute for the Identity Profile.", alias="hasTimeBasedAttr")
+    has_time_based_attr: Optional[StrictBool] = Field(default=False, description="Indicates the value of `requiresPeriodicRefresh` attribute for the identity profile.", alias="hasTimeBasedAttr")
     __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "description", "owner", "priority", "authoritativeSource", "identityRefreshRequired", "identityCount", "identityAttributeConfig", "identityExceptionReportReference", "hasTimeBasedAttr"]
 
     model_config = ConfigDict(

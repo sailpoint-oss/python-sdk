@@ -20,7 +20,6 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v2024.models.display_reference import DisplayReference
-from sailpoint.v2024.models.dto_type import DtoType
 from sailpoint.v2024.models.reference import Reference
 from typing import Optional, Set
 from typing_extensions import Self
@@ -32,12 +31,12 @@ class AccessProfileSummary(BaseModel):
     id: Optional[StrictStr] = Field(default=None, description="The unique ID of the referenced object.")
     name: Optional[StrictStr] = Field(default=None, description="The human readable name of the referenced object.")
     display_name: Optional[StrictStr] = Field(default=None, alias="displayName")
-    type: Optional[DtoType] = None
-    description: Optional[StrictStr] = None
+    description: Optional[StrictStr] = Field(default=None, description="Description of access item.")
+    type: Optional[StrictStr] = Field(default=None, description="Type of the access item.")
     source: Optional[Reference] = None
     owner: Optional[DisplayReference] = None
     revocable: Optional[StrictBool] = None
-    __properties: ClassVar[List[str]] = ["id", "name", "displayName", "type", "description", "source", "owner", "revocable"]
+    __properties: ClassVar[List[str]] = ["id", "name", "displayName", "description", "type", "source", "owner", "revocable"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -104,8 +103,8 @@ class AccessProfileSummary(BaseModel):
             "id": obj.get("id"),
             "name": obj.get("name"),
             "displayName": obj.get("displayName"),
-            "type": obj.get("type"),
             "description": obj.get("description"),
+            "type": obj.get("type"),
             "source": Reference.from_dict(obj["source"]) if obj.get("source") is not None else None,
             "owner": DisplayReference.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
             "revocable": obj.get("revocable")

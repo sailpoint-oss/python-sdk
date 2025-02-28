@@ -44,7 +44,6 @@ class AccessRequestIdentityMetricsApi:
         identity_id: Annotated[StrictStr, Field(description="Manager's identity ID.")],
         requested_object_id: Annotated[StrictStr, Field(description="Requested access item's ID.")],
         type: Annotated[StrictStr, Field(description="Requested access item's type.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -68,8 +67,6 @@ class AccessRequestIdentityMetricsApi:
         :type requested_object_id: str
         :param type: Requested access item's type. (required)
         :type type: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -96,7 +93,6 @@ class AccessRequestIdentityMetricsApi:
             identity_id=identity_id,
             requested_object_id=requested_object_id,
             type=type,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -128,7 +124,6 @@ class AccessRequestIdentityMetricsApi:
         identity_id: Annotated[StrictStr, Field(description="Manager's identity ID.")],
         requested_object_id: Annotated[StrictStr, Field(description="Requested access item's ID.")],
         type: Annotated[StrictStr, Field(description="Requested access item's type.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -152,8 +147,6 @@ class AccessRequestIdentityMetricsApi:
         :type requested_object_id: str
         :param type: Requested access item's type. (required)
         :type type: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -180,7 +173,6 @@ class AccessRequestIdentityMetricsApi:
             identity_id=identity_id,
             requested_object_id=requested_object_id,
             type=type,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -212,7 +204,6 @@ class AccessRequestIdentityMetricsApi:
         identity_id: Annotated[StrictStr, Field(description="Manager's identity ID.")],
         requested_object_id: Annotated[StrictStr, Field(description="Requested access item's ID.")],
         type: Annotated[StrictStr, Field(description="Requested access item's type.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -236,8 +227,6 @@ class AccessRequestIdentityMetricsApi:
         :type requested_object_id: str
         :param type: Requested access item's type. (required)
         :type type: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -264,7 +253,6 @@ class AccessRequestIdentityMetricsApi:
             identity_id=identity_id,
             requested_object_id=requested_object_id,
             type=type,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -291,7 +279,6 @@ class AccessRequestIdentityMetricsApi:
         identity_id,
         requested_object_id,
         type,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -321,8 +308,6 @@ class AccessRequestIdentityMetricsApi:
             _path_params['type'] = type
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 

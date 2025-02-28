@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2024.models.base_access_all_of_owner import BaseAccessAllOfOwner
+from sailpoint.v2024.models.entitlement_document_all_of_manually_updated_fields import EntitlementDocumentAllOfManuallyUpdatedFields
 
-class TestBaseAccessAllOfOwner(unittest.TestCase):
-    """BaseAccessAllOfOwner unit test stubs"""
+class TestEntitlementDocumentAllOfManuallyUpdatedFields(unittest.TestCase):
+    """EntitlementDocumentAllOfManuallyUpdatedFields unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,28 +25,26 @@ class TestBaseAccessAllOfOwner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> BaseAccessAllOfOwner:
-        """Test BaseAccessAllOfOwner
+    def make_instance(self, include_optional) -> EntitlementDocumentAllOfManuallyUpdatedFields:
+        """Test EntitlementDocumentAllOfManuallyUpdatedFields
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `BaseAccessAllOfOwner`
+        # uncomment below to create an instance of `EntitlementDocumentAllOfManuallyUpdatedFields`
         """
-        model = BaseAccessAllOfOwner()
+        model = EntitlementDocumentAllOfManuallyUpdatedFields()
         if include_optional:
-            return BaseAccessAllOfOwner(
-                type = 'IDENTITY',
-                id = '2c9180a46faadee4016fb4e018c20639',
-                name = 'Support',
-                email = 'cloud-support@sailpoint.com'
+            return EntitlementDocumentAllOfManuallyUpdatedFields(
+                description = False,
+                display_name = False
             )
         else:
-            return BaseAccessAllOfOwner(
+            return EntitlementDocumentAllOfManuallyUpdatedFields(
         )
         """
 
-    def testBaseAccessAllOfOwner(self):
-        """Test BaseAccessAllOfOwner"""
+    def testEntitlementDocumentAllOfManuallyUpdatedFields(self):
+        """Test EntitlementDocumentAllOfManuallyUpdatedFields"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

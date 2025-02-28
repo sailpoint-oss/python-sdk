@@ -16,7 +16,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictBool, StrictInt, StrictStr
+from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
 from sailpoint.v2024.models.sed import Sed
@@ -52,7 +52,6 @@ class SuggestedEntitlementDescriptionApi:
     def get_sed_batch_stats(
         self,
         batch_id: Annotated[StrictStr, Field(description="Batch Id")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -72,8 +71,6 @@ class SuggestedEntitlementDescriptionApi:
 
         :param batch_id: Batch Id (required)
         :type batch_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -98,7 +95,6 @@ class SuggestedEntitlementDescriptionApi:
 
         _param = self._get_sed_batch_stats_serialize(
             batch_id=batch_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -129,7 +125,6 @@ class SuggestedEntitlementDescriptionApi:
     def get_sed_batch_stats_with_http_info(
         self,
         batch_id: Annotated[StrictStr, Field(description="Batch Id")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -149,8 +144,6 @@ class SuggestedEntitlementDescriptionApi:
 
         :param batch_id: Batch Id (required)
         :type batch_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -175,7 +168,6 @@ class SuggestedEntitlementDescriptionApi:
 
         _param = self._get_sed_batch_stats_serialize(
             batch_id=batch_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -206,7 +198,6 @@ class SuggestedEntitlementDescriptionApi:
     def get_sed_batch_stats_without_preload_content(
         self,
         batch_id: Annotated[StrictStr, Field(description="Batch Id")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -226,8 +217,6 @@ class SuggestedEntitlementDescriptionApi:
 
         :param batch_id: Batch Id (required)
         :type batch_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -252,7 +241,6 @@ class SuggestedEntitlementDescriptionApi:
 
         _param = self._get_sed_batch_stats_serialize(
             batch_id=batch_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -278,7 +266,6 @@ class SuggestedEntitlementDescriptionApi:
     def _get_sed_batch_stats_serialize(
         self,
         batch_id,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -304,8 +291,6 @@ class SuggestedEntitlementDescriptionApi:
             _path_params['batchId'] = batch_id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -346,7 +331,6 @@ class SuggestedEntitlementDescriptionApi:
     @validate_call
     def get_sed_batches(
         self,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -364,8 +348,6 @@ class SuggestedEntitlementDescriptionApi:
 
         List Sed Batches. API responses with Sed Batch Status
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -389,7 +371,6 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._get_sed_batches_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -419,7 +400,6 @@ class SuggestedEntitlementDescriptionApi:
     @validate_call
     def get_sed_batches_with_http_info(
         self,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -437,8 +417,6 @@ class SuggestedEntitlementDescriptionApi:
 
         List Sed Batches. API responses with Sed Batch Status
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -462,7 +440,6 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._get_sed_batches_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -492,7 +469,6 @@ class SuggestedEntitlementDescriptionApi:
     @validate_call
     def get_sed_batches_without_preload_content(
         self,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -510,8 +486,6 @@ class SuggestedEntitlementDescriptionApi:
 
         List Sed Batches. API responses with Sed Batch Status
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -535,7 +509,6 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._get_sed_batches_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -560,7 +533,6 @@ class SuggestedEntitlementDescriptionApi:
 
     def _get_sed_batches_serialize(
         self,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -584,8 +556,6 @@ class SuggestedEntitlementDescriptionApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -626,14 +596,14 @@ class SuggestedEntitlementDescriptionApi:
     @validate_call
     def list_seds(
         self,
-        limit: Annotated[Optional[StrictInt], Field(description="Integer specifying the maximum number of records to return in a single API call.  The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **batchId**: *eq, ne*  **displayName**: *eq, ne, co*  **sourceName**: *eq, ne, co*  **sourceId**: *eq, ne*  **status**: *eq, ne*  **fullText**: *co*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName, sourceName, status**")] = None,
-        count: Annotated[Optional[StrictBool], Field(description="If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored.  The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). Since requesting a total count can have a performance impact, it is recommended not to send `count=true` if that value will not be used.")] = None,
-        count_only: Annotated[Optional[StrictBool], Field(description="If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored. This parameter differs from the Coun parameter in that this one skip executing the actual query and always return an empty array.")] = None,
+        count_only: Annotated[Optional[StrictBool], Field(description="If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored. This parameter differs from the count parameter in that this one skips executing the actual query and always return an empty array.")] = None,
         requested_by_anyone: Annotated[Optional[StrictBool], Field(description="By default, the ListSeds API will only return items that you have requested to be generated.   This option will allow you to see all items that have been requested")] = None,
         show_pending_status_only: Annotated[Optional[StrictBool], Field(description="Will limit records to items that are in \"suggested\" or \"approved\" status")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -651,17 +621,17 @@ class SuggestedEntitlementDescriptionApi:
 
         List of Suggested Entitlement Descriptions (SED)  SED field descriptions:  **batchId**: the ID of the batch of entitlements that are submitted for description generation  **displayName**: the display name of the entitlement that we are generating a description for  **sourceName**: the name of the source associated with the entitlement that we are generating the description for  **sourceId**: the ID of the source associated with the entitlement that we are generating the description for  **status**: the status of the suggested entitlement description, valid status options: \"requested\", \"suggested\", \"not_suggested\", \"failed\", \"assigned\", \"approved\", \"denied\"  **fullText**: will filter suggested entitlement description records by text found in any of the following fields: entitlement name, entitlement display name, suggested description, source name
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
-        :param limit: Integer specifying the maximum number of records to return in a single API call.  The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
+        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type count: bool
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **batchId**: *eq, ne*  **displayName**: *eq, ne, co*  **sourceName**: *eq, ne, co*  **sourceId**: *eq, ne*  **status**: *eq, ne*  **fullText**: *co*
         :type filters: str
         :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName, sourceName, status**
         :type sorters: str
-        :param count: If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored.  The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). Since requesting a total count can have a performance impact, it is recommended not to send `count=true` if that value will not be used.
-        :type count: bool
-        :param count_only: If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored. This parameter differs from the Coun parameter in that this one skip executing the actual query and always return an empty array.
+        :param count_only: If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored. This parameter differs from the count parameter in that this one skips executing the actual query and always return an empty array.
         :type count_only: bool
         :param requested_by_anyone: By default, the ListSeds API will only return items that you have requested to be generated.   This option will allow you to see all items that have been requested
         :type requested_by_anyone: bool
@@ -690,11 +660,11 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._list_seds_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
+            offset=offset,
+            count=count,
             filters=filters,
             sorters=sorters,
-            count=count,
             count_only=count_only,
             requested_by_anyone=requested_by_anyone,
             show_pending_status_only=show_pending_status_only,
@@ -727,14 +697,14 @@ class SuggestedEntitlementDescriptionApi:
     @validate_call
     def list_seds_with_http_info(
         self,
-        limit: Annotated[Optional[StrictInt], Field(description="Integer specifying the maximum number of records to return in a single API call.  The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **batchId**: *eq, ne*  **displayName**: *eq, ne, co*  **sourceName**: *eq, ne, co*  **sourceId**: *eq, ne*  **status**: *eq, ne*  **fullText**: *co*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName, sourceName, status**")] = None,
-        count: Annotated[Optional[StrictBool], Field(description="If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored.  The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). Since requesting a total count can have a performance impact, it is recommended not to send `count=true` if that value will not be used.")] = None,
-        count_only: Annotated[Optional[StrictBool], Field(description="If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored. This parameter differs from the Coun parameter in that this one skip executing the actual query and always return an empty array.")] = None,
+        count_only: Annotated[Optional[StrictBool], Field(description="If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored. This parameter differs from the count parameter in that this one skips executing the actual query and always return an empty array.")] = None,
         requested_by_anyone: Annotated[Optional[StrictBool], Field(description="By default, the ListSeds API will only return items that you have requested to be generated.   This option will allow you to see all items that have been requested")] = None,
         show_pending_status_only: Annotated[Optional[StrictBool], Field(description="Will limit records to items that are in \"suggested\" or \"approved\" status")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -752,17 +722,17 @@ class SuggestedEntitlementDescriptionApi:
 
         List of Suggested Entitlement Descriptions (SED)  SED field descriptions:  **batchId**: the ID of the batch of entitlements that are submitted for description generation  **displayName**: the display name of the entitlement that we are generating a description for  **sourceName**: the name of the source associated with the entitlement that we are generating the description for  **sourceId**: the ID of the source associated with the entitlement that we are generating the description for  **status**: the status of the suggested entitlement description, valid status options: \"requested\", \"suggested\", \"not_suggested\", \"failed\", \"assigned\", \"approved\", \"denied\"  **fullText**: will filter suggested entitlement description records by text found in any of the following fields: entitlement name, entitlement display name, suggested description, source name
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
-        :param limit: Integer specifying the maximum number of records to return in a single API call.  The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
+        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type count: bool
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **batchId**: *eq, ne*  **displayName**: *eq, ne, co*  **sourceName**: *eq, ne, co*  **sourceId**: *eq, ne*  **status**: *eq, ne*  **fullText**: *co*
         :type filters: str
         :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName, sourceName, status**
         :type sorters: str
-        :param count: If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored.  The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). Since requesting a total count can have a performance impact, it is recommended not to send `count=true` if that value will not be used.
-        :type count: bool
-        :param count_only: If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored. This parameter differs from the Coun parameter in that this one skip executing the actual query and always return an empty array.
+        :param count_only: If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored. This parameter differs from the count parameter in that this one skips executing the actual query and always return an empty array.
         :type count_only: bool
         :param requested_by_anyone: By default, the ListSeds API will only return items that you have requested to be generated.   This option will allow you to see all items that have been requested
         :type requested_by_anyone: bool
@@ -791,11 +761,11 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._list_seds_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
+            offset=offset,
+            count=count,
             filters=filters,
             sorters=sorters,
-            count=count,
             count_only=count_only,
             requested_by_anyone=requested_by_anyone,
             show_pending_status_only=show_pending_status_only,
@@ -828,14 +798,14 @@ class SuggestedEntitlementDescriptionApi:
     @validate_call
     def list_seds_without_preload_content(
         self,
-        limit: Annotated[Optional[StrictInt], Field(description="Integer specifying the maximum number of records to return in a single API call.  The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **batchId**: *eq, ne*  **displayName**: *eq, ne, co*  **sourceName**: *eq, ne, co*  **sourceId**: *eq, ne*  **status**: *eq, ne*  **fullText**: *co*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName, sourceName, status**")] = None,
-        count: Annotated[Optional[StrictBool], Field(description="If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored.  The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). Since requesting a total count can have a performance impact, it is recommended not to send `count=true` if that value will not be used.")] = None,
-        count_only: Annotated[Optional[StrictBool], Field(description="If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored. This parameter differs from the Coun parameter in that this one skip executing the actual query and always return an empty array.")] = None,
+        count_only: Annotated[Optional[StrictBool], Field(description="If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored. This parameter differs from the count parameter in that this one skips executing the actual query and always return an empty array.")] = None,
         requested_by_anyone: Annotated[Optional[StrictBool], Field(description="By default, the ListSeds API will only return items that you have requested to be generated.   This option will allow you to see all items that have been requested")] = None,
         show_pending_status_only: Annotated[Optional[StrictBool], Field(description="Will limit records to items that are in \"suggested\" or \"approved\" status")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -853,17 +823,17 @@ class SuggestedEntitlementDescriptionApi:
 
         List of Suggested Entitlement Descriptions (SED)  SED field descriptions:  **batchId**: the ID of the batch of entitlements that are submitted for description generation  **displayName**: the display name of the entitlement that we are generating a description for  **sourceName**: the name of the source associated with the entitlement that we are generating the description for  **sourceId**: the ID of the source associated with the entitlement that we are generating the description for  **status**: the status of the suggested entitlement description, valid status options: \"requested\", \"suggested\", \"not_suggested\", \"failed\", \"assigned\", \"approved\", \"denied\"  **fullText**: will filter suggested entitlement description records by text found in any of the following fields: entitlement name, entitlement display name, suggested description, source name
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
-        :param limit: Integer specifying the maximum number of records to return in a single API call.  The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
+        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type count: bool
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **batchId**: *eq, ne*  **displayName**: *eq, ne, co*  **sourceName**: *eq, ne, co*  **sourceId**: *eq, ne*  **status**: *eq, ne*  **fullText**: *co*
         :type filters: str
         :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName, sourceName, status**
         :type sorters: str
-        :param count: If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored.  The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). Since requesting a total count can have a performance impact, it is recommended not to send `count=true` if that value will not be used.
-        :type count: bool
-        :param count_only: If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored. This parameter differs from the Coun parameter in that this one skip executing the actual query and always return an empty array.
+        :param count_only: If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored. This parameter differs from the count parameter in that this one skips executing the actual query and always return an empty array.
         :type count_only: bool
         :param requested_by_anyone: By default, the ListSeds API will only return items that you have requested to be generated.   This option will allow you to see all items that have been requested
         :type requested_by_anyone: bool
@@ -892,11 +862,11 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._list_seds_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
+            offset=offset,
+            count=count,
             filters=filters,
             sorters=sorters,
-            count=count,
             count_only=count_only,
             requested_by_anyone=requested_by_anyone,
             show_pending_status_only=show_pending_status_only,
@@ -924,11 +894,11 @@ class SuggestedEntitlementDescriptionApi:
 
     def _list_seds_serialize(
         self,
-        x_sail_point_experimental,
         limit,
+        offset,
+        count,
         filters,
         sorters,
-        count,
         count_only,
         requested_by_anyone,
         show_pending_status_only,
@@ -958,6 +928,14 @@ class SuggestedEntitlementDescriptionApi:
             
             _query_params.append(('limit', limit))
             
+        if offset is not None:
+            
+            _query_params.append(('offset', offset))
+            
+        if count is not None:
+            
+            _query_params.append(('count', count))
+            
         if filters is not None:
             
             _query_params.append(('filters', filters))
@@ -965,10 +943,6 @@ class SuggestedEntitlementDescriptionApi:
         if sorters is not None:
             
             _query_params.append(('sorters', sorters))
-            
-        if count is not None:
-            
-            _query_params.append(('count', count))
             
         if count_only is not None:
             
@@ -983,8 +957,6 @@ class SuggestedEntitlementDescriptionApi:
             _query_params.append(('show-pending-status-only', show_pending_status_only))
             
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -1350,7 +1322,6 @@ class SuggestedEntitlementDescriptionApi:
     def submit_sed_approval(
         self,
         sed_approval: Annotated[List[SedApproval], Field(description="Sed Approval")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1368,8 +1339,6 @@ class SuggestedEntitlementDescriptionApi:
 
         Submit Bulk Approval Request for SED. Request body takes list of SED Ids. API responses with list of SED Approval Status
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param sed_approval: Sed Approval (required)
         :type sed_approval: List[SedApproval]
         :param _request_timeout: timeout setting for this request. If one
@@ -1395,7 +1364,6 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._submit_sed_approval_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             sed_approval=sed_approval,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1427,7 +1395,6 @@ class SuggestedEntitlementDescriptionApi:
     def submit_sed_approval_with_http_info(
         self,
         sed_approval: Annotated[List[SedApproval], Field(description="Sed Approval")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1445,8 +1412,6 @@ class SuggestedEntitlementDescriptionApi:
 
         Submit Bulk Approval Request for SED. Request body takes list of SED Ids. API responses with list of SED Approval Status
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param sed_approval: Sed Approval (required)
         :type sed_approval: List[SedApproval]
         :param _request_timeout: timeout setting for this request. If one
@@ -1472,7 +1437,6 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._submit_sed_approval_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             sed_approval=sed_approval,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1504,7 +1468,6 @@ class SuggestedEntitlementDescriptionApi:
     def submit_sed_approval_without_preload_content(
         self,
         sed_approval: Annotated[List[SedApproval], Field(description="Sed Approval")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1522,8 +1485,6 @@ class SuggestedEntitlementDescriptionApi:
 
         Submit Bulk Approval Request for SED. Request body takes list of SED Ids. API responses with list of SED Approval Status
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param sed_approval: Sed Approval (required)
         :type sed_approval: List[SedApproval]
         :param _request_timeout: timeout setting for this request. If one
@@ -1549,7 +1510,6 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._submit_sed_approval_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             sed_approval=sed_approval,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1575,7 +1535,6 @@ class SuggestedEntitlementDescriptionApi:
 
     def _submit_sed_approval_serialize(
         self,
-        x_sail_point_experimental,
         sed_approval,
         _request_auth,
         _content_type,
@@ -1601,8 +1560,6 @@ class SuggestedEntitlementDescriptionApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if sed_approval is not None:
@@ -1659,7 +1616,6 @@ class SuggestedEntitlementDescriptionApi:
     def submit_sed_assignment(
         self,
         sed_assignment: Annotated[SedAssignment, Field(description="Sed Assignment Request")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1677,8 +1633,6 @@ class SuggestedEntitlementDescriptionApi:
 
         Submit Assignment Request. Request body has an assignee, and list of SED Ids that are assigned to that assignee API responses with batchId that groups all approval requests together
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param sed_assignment: Sed Assignment Request (required)
         :type sed_assignment: SedAssignment
         :param _request_timeout: timeout setting for this request. If one
@@ -1704,7 +1658,6 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._submit_sed_assignment_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             sed_assignment=sed_assignment,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1736,7 +1689,6 @@ class SuggestedEntitlementDescriptionApi:
     def submit_sed_assignment_with_http_info(
         self,
         sed_assignment: Annotated[SedAssignment, Field(description="Sed Assignment Request")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1754,8 +1706,6 @@ class SuggestedEntitlementDescriptionApi:
 
         Submit Assignment Request. Request body has an assignee, and list of SED Ids that are assigned to that assignee API responses with batchId that groups all approval requests together
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param sed_assignment: Sed Assignment Request (required)
         :type sed_assignment: SedAssignment
         :param _request_timeout: timeout setting for this request. If one
@@ -1781,7 +1731,6 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._submit_sed_assignment_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             sed_assignment=sed_assignment,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1813,7 +1762,6 @@ class SuggestedEntitlementDescriptionApi:
     def submit_sed_assignment_without_preload_content(
         self,
         sed_assignment: Annotated[SedAssignment, Field(description="Sed Assignment Request")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1831,8 +1779,6 @@ class SuggestedEntitlementDescriptionApi:
 
         Submit Assignment Request. Request body has an assignee, and list of SED Ids that are assigned to that assignee API responses with batchId that groups all approval requests together
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param sed_assignment: Sed Assignment Request (required)
         :type sed_assignment: SedAssignment
         :param _request_timeout: timeout setting for this request. If one
@@ -1858,7 +1804,6 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._submit_sed_assignment_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             sed_assignment=sed_assignment,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1884,7 +1829,6 @@ class SuggestedEntitlementDescriptionApi:
 
     def _submit_sed_assignment_serialize(
         self,
-        x_sail_point_experimental,
         sed_assignment,
         _request_auth,
         _content_type,
@@ -1909,8 +1853,6 @@ class SuggestedEntitlementDescriptionApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if sed_assignment is not None:
@@ -1967,7 +1909,6 @@ class SuggestedEntitlementDescriptionApi:
     def submit_sed_batch_request(
         self,
         sed_batch_request: Annotated[Optional[SedBatchRequest], Field(description="Sed Batch Request")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1985,8 +1926,6 @@ class SuggestedEntitlementDescriptionApi:
 
         Submit Sed Batch Request. Request body has one of the following: - a list of entitlement Ids - a list of SED Ids that user wants to have description generated by LLM. API responses with batchId that groups Ids together
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param sed_batch_request: Sed Batch Request
         :type sed_batch_request: SedBatchRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -2012,7 +1951,6 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._submit_sed_batch_request_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             sed_batch_request=sed_batch_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2044,7 +1982,6 @@ class SuggestedEntitlementDescriptionApi:
     def submit_sed_batch_request_with_http_info(
         self,
         sed_batch_request: Annotated[Optional[SedBatchRequest], Field(description="Sed Batch Request")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2062,8 +1999,6 @@ class SuggestedEntitlementDescriptionApi:
 
         Submit Sed Batch Request. Request body has one of the following: - a list of entitlement Ids - a list of SED Ids that user wants to have description generated by LLM. API responses with batchId that groups Ids together
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param sed_batch_request: Sed Batch Request
         :type sed_batch_request: SedBatchRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -2089,7 +2024,6 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._submit_sed_batch_request_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             sed_batch_request=sed_batch_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2121,7 +2055,6 @@ class SuggestedEntitlementDescriptionApi:
     def submit_sed_batch_request_without_preload_content(
         self,
         sed_batch_request: Annotated[Optional[SedBatchRequest], Field(description="Sed Batch Request")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2139,8 +2072,6 @@ class SuggestedEntitlementDescriptionApi:
 
         Submit Sed Batch Request. Request body has one of the following: - a list of entitlement Ids - a list of SED Ids that user wants to have description generated by LLM. API responses with batchId that groups Ids together
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param sed_batch_request: Sed Batch Request
         :type sed_batch_request: SedBatchRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -2166,7 +2097,6 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._submit_sed_batch_request_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             sed_batch_request=sed_batch_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2192,7 +2122,6 @@ class SuggestedEntitlementDescriptionApi:
 
     def _submit_sed_batch_request_serialize(
         self,
-        x_sail_point_experimental,
         sed_batch_request,
         _request_auth,
         _content_type,
@@ -2217,8 +2146,6 @@ class SuggestedEntitlementDescriptionApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if sed_batch_request is not None:

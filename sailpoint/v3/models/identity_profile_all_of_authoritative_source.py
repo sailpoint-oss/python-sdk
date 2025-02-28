@@ -26,9 +26,9 @@ class IdentityProfileAllOfAuthoritativeSource(BaseModel):
     """
     IdentityProfileAllOfAuthoritativeSource
     """ # noqa: E501
-    type: Optional[StrictStr] = Field(default=None, description="Type of the object to which this reference applies")
-    id: Optional[StrictStr] = Field(default=None, description="ID of the object to which this reference applies")
-    name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of the object to which this reference applies")
+    type: Optional[StrictStr] = Field(default=None, description="Authoritative source's object type.")
+    id: Optional[StrictStr] = Field(default=None, description="Authoritative source's ID.")
+    name: Optional[StrictStr] = Field(default=None, description="Authoritative source's name.")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')

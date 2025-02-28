@@ -22,7 +22,6 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, Strict
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v3.models.app import App
 from sailpoint.v3.models.base_account import BaseAccount
-from sailpoint.v3.models.document_type import DocumentType
 from sailpoint.v3.models.identity_access import IdentityAccess
 from sailpoint.v3.models.identity_document_all_of_identity_profile import IdentityDocumentAllOfIdentityProfile
 from sailpoint.v3.models.identity_document_all_of_manager import IdentityDocumentAllOfManager
@@ -38,7 +37,6 @@ class IdentityDocument(BaseModel):
     """ # noqa: E501
     id: StrictStr = Field(description="The unique ID of the referenced object.")
     name: StrictStr = Field(description="The human readable name of the referenced object.")
-    type: DocumentType = Field(alias="_type")
     display_name: Optional[StrictStr] = Field(default=None, description="Identity's display name.", alias="displayName")
     first_name: Optional[StrictStr] = Field(default=None, description="Identity's first name.", alias="firstName")
     last_name: Optional[StrictStr] = Field(default=None, description="Identity's last name.", alias="lastName")
@@ -56,6 +54,8 @@ class IdentityDocument(BaseModel):
     identity_profile: Optional[IdentityDocumentAllOfIdentityProfile] = Field(default=None, alias="identityProfile")
     source: Optional[IdentityDocumentAllOfSource] = None
     attributes: Optional[Dict[str, Any]] = Field(default=None, description="Map or dictionary of key/value pairs.")
+    disabled: Optional[StrictBool] = Field(default=False, description="Indicates whether the identity is disabled.")
+    locked: Optional[StrictBool] = Field(default=False, description="Indicates whether the identity is locked.")
     processing_state: Optional[StrictStr] = Field(default=None, description="Identity's processing state.", alias="processingState")
     processing_details: Optional[ProcessingDetails] = Field(default=None, alias="processingDetails")
     accounts: Optional[List[BaseAccount]] = Field(default=None, description="List of accounts associated with the identity.")
@@ -70,7 +70,10 @@ class IdentityDocument(BaseModel):
     owns: Optional[List[Owns]] = Field(default=None, description="Access items the identity owns.")
     owns_count: Optional[StrictInt] = Field(default=None, description="Number of access items the identity owns.", alias="ownsCount")
     tags: Optional[List[StrictStr]] = Field(default=None, description="Tags that have been applied to the object.")
-    __properties: ClassVar[List[str]] = ["id", "name", "_type", "displayName", "firstName", "lastName", "email", "created", "modified", "phone", "synced", "inactive", "protected", "status", "employeeNumber", "manager", "isManager", "identityProfile", "source", "attributes", "processingState", "processingDetails", "accounts", "accountCount", "apps", "appCount", "access", "accessCount", "entitlementCount", "roleCount", "accessProfileCount", "owns", "ownsCount", "tags"]
+    tags_count: Optional[StrictInt] = Field(default=None, description="Number of tags on the identity.", alias="tagsCount")
+    visible_segments: Optional[List[StrictStr]] = Field(default=None, description="List of segments that the identity is in.", alias="visibleSegments")
+    visible_segment_count: Optional[StrictInt] = Field(default=None, description="Number of segments the identity is in.", alias="visibleSegmentCount")
+    __properties: ClassVar[List[str]] = ["id", "name", "displayName", "firstName", "lastName", "email", "created", "modified", "phone", "synced", "inactive", "protected", "status", "employeeNumber", "manager", "isManager", "identityProfile", "source", "attributes", "disabled", "locked", "processingState", "processingDetails", "accounts", "accountCount", "apps", "appCount", "access", "accessCount", "entitlementCount", "roleCount", "accessProfileCount", "owns", "ownsCount", "tags", "tagsCount", "visibleSegments", "visibleSegmentCount"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -171,6 +174,11 @@ class IdentityDocument(BaseModel):
         if self.processing_state is None and "processing_state" in self.model_fields_set:
             _dict['processingState'] = None
 
+        # set to None if visible_segments (nullable) is None
+        # and model_fields_set contains the field
+        if self.visible_segments is None and "visible_segments" in self.model_fields_set:
+            _dict['visibleSegments'] = None
+
         return _dict
 
     @classmethod
@@ -185,7 +193,6 @@ class IdentityDocument(BaseModel):
         _obj = cls.model_validate({
             "id": obj.get("id"),
             "name": obj.get("name"),
-            "_type": obj.get("_type"),
             "displayName": obj.get("displayName"),
             "firstName": obj.get("firstName"),
             "lastName": obj.get("lastName"),
@@ -203,6 +210,8 @@ class IdentityDocument(BaseModel):
             "identityProfile": IdentityDocumentAllOfIdentityProfile.from_dict(obj["identityProfile"]) if obj.get("identityProfile") is not None else None,
             "source": IdentityDocumentAllOfSource.from_dict(obj["source"]) if obj.get("source") is not None else None,
             "attributes": obj.get("attributes"),
+            "disabled": obj.get("disabled") if obj.get("disabled") is not None else False,
+            "locked": obj.get("locked") if obj.get("locked") is not None else False,
             "processingState": obj.get("processingState"),
             "processingDetails": ProcessingDetails.from_dict(obj["processingDetails"]) if obj.get("processingDetails") is not None else None,
             "accounts": [BaseAccount.from_dict(_item) for _item in obj["accounts"]] if obj.get("accounts") is not None else None,
@@ -216,7 +225,10 @@ class IdentityDocument(BaseModel):
             "accessProfileCount": obj.get("accessProfileCount"),
             "owns": [Owns.from_dict(_item) for _item in obj["owns"]] if obj.get("owns") is not None else None,
             "ownsCount": obj.get("ownsCount"),
-            "tags": obj.get("tags")
+            "tags": obj.get("tags"),
+            "tagsCount": obj.get("tagsCount"),
+            "visibleSegments": obj.get("visibleSegments"),
+            "visibleSegmentCount": obj.get("visibleSegmentCount")
         })
         return _obj
 

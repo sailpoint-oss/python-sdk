@@ -20,7 +20,7 @@ import json
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v3.models.base_access_all_of_owner import BaseAccessAllOfOwner
+from sailpoint.v3.models.base_access_owner import BaseAccessOwner
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,8 +28,6 @@ class BaseAccess(BaseModel):
     """
     BaseAccess
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(default=None, description="The unique ID of the referenced object.")
-    name: Optional[StrictStr] = Field(default=None, description="The human readable name of the referenced object.")
     description: Optional[StrictStr] = Field(default=None, description="Access item's description.")
     created: Optional[datetime] = Field(default=None, description="ISO-8601 date-time referring to the time when the object was created.")
     modified: Optional[datetime] = Field(default=None, description="ISO-8601 date-time referring to the time when the object was last modified.")
@@ -37,8 +35,8 @@ class BaseAccess(BaseModel):
     enabled: Optional[StrictBool] = Field(default=False, description="Indicates whether the access item is currently enabled.")
     requestable: Optional[StrictBool] = Field(default=True, description="Indicates whether the access item can be requested.")
     request_comments_required: Optional[StrictBool] = Field(default=False, description="Indicates whether comments are required for requests to access the item.", alias="requestCommentsRequired")
-    owner: Optional[BaseAccessAllOfOwner] = None
-    __properties: ClassVar[List[str]] = ["id", "name", "description", "created", "modified", "synced", "enabled", "requestable", "requestCommentsRequired", "owner"]
+    owner: Optional[BaseAccessOwner] = None
+    __properties: ClassVar[List[str]] = ["description", "created", "modified", "synced", "enabled", "requestable", "requestCommentsRequired", "owner"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -109,8 +107,6 @@ class BaseAccess(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
             "description": obj.get("description"),
             "created": obj.get("created"),
             "modified": obj.get("modified"),
@@ -118,7 +114,7 @@ class BaseAccess(BaseModel):
             "enabled": obj.get("enabled") if obj.get("enabled") is not None else False,
             "requestable": obj.get("requestable") if obj.get("requestable") is not None else True,
             "requestCommentsRequired": obj.get("requestCommentsRequired") if obj.get("requestCommentsRequired") is not None else False,
-            "owner": BaseAccessAllOfOwner.from_dict(obj["owner"]) if obj.get("owner") is not None else None
+            "owner": BaseAccessOwner.from_dict(obj["owner"]) if obj.get("owner") is not None else None
         })
         return _obj
 

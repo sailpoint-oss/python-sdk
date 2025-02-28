@@ -37,7 +37,6 @@ class TestIdentityDocument(unittest.TestCase):
             return IdentityDocument(
                 id = '2c91808568c529c60168cca6f90c1313',
                 name = 'John Doe',
-                type = 'identity',
                 display_name = 'Carol.Adams',
                 first_name = 'Carol',
                 last_name = 'Adams',
@@ -62,7 +61,9 @@ class TestIdentityDocument(unittest.TestCase):
                     id = '2c91808b6e9e6fb8016eec1a2b6f7b5f', 
                     name = 'ODS-HR-Employees', ),
                 attributes = {country=US, firstname=Carol, cloudStatus=UNREGISTERED},
-                processing_state = '',
+                disabled = False,
+                locked = False,
+                processing_state = 'ERROR',
                 processing_details = sailpoint.v2024.models.processing_details.ProcessingDetails(
                     date = '2018-06-25T20:22:28.104Z', 
                     stage = 'In Process', 
@@ -111,13 +112,15 @@ class TestIdentityDocument(unittest.TestCase):
                         fallback_approver = False, )
                     ],
                 owns_count = 5,
-                tags = [TAG_1, TAG_2]
+                tags = [TAG_1, TAG_2],
+                tags_count = 56,
+                visible_segments = [All Employees],
+                visible_segment_count = 1
             )
         else:
             return IdentityDocument(
                 id = '2c91808568c529c60168cca6f90c1313',
                 name = 'John Doe',
-                type = 'identity',
         )
         """
 

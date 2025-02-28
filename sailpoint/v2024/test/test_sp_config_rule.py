@@ -36,8 +36,8 @@ class TestSpConfigRule(unittest.TestCase):
         if include_optional:
             return SpConfigRule(
                 path = '$.enabled',
-                value = sailpoint.v2024.models.value.value(),
-                mode = [RESTORE, PROMOTE]
+                value = None,
+                modes = [RESTORE, PROMOTE]
             )
         else:
             return SpConfigRule(

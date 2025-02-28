@@ -25,9 +25,9 @@ from typing_extensions import Self
 
 class IdentityAttributeTransform(BaseModel):
     """
-    IdentityAttributeTransform
+    Transform definition for an identity attribute.
     """ # noqa: E501
-    identity_attribute_name: Optional[StrictStr] = Field(default=None, description="Name of the identity attribute", alias="identityAttributeName")
+    identity_attribute_name: Optional[StrictStr] = Field(default=None, description="Identity attribute's name.", alias="identityAttributeName")
     transform_definition: Optional[TransformDefinition] = Field(default=None, alias="transformDefinition")
     __properties: ClassVar[List[str]] = ["identityAttributeName", "transformDefinition"]
 
