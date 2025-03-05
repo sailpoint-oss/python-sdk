@@ -1027,7 +1027,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_deploys**
-> List[DeployResponse] list_deploys()
+> ListDeploys200Response list_deploys()
 
 List Deploys
 
@@ -1040,7 +1040,7 @@ This API gets a list of deploys for the current tenant.
 
 ```python
 import sailpoint.v2024
-from sailpoint.v2024.models.deploy_response import DeployResponse
+from sailpoint.v2024.models.list_deploys200_response import ListDeploys200Response
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
 
@@ -1081,7 +1081,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List[DeployResponse]**](DeployResponse.md)
+[**ListDeploys200Response**](ListDeploys200Response.md)
 
 ### Authorization
 

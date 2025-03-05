@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **identity_state** | **str** | The identity state of the identity this account is correlated to | [optional] 
 **connection_type** | **str** | The connection type of the source this account is from | [optional] 
 **is_machine** | **bool** | Indicates if the account is of machine type | [optional] [default to False]
-**recommendation** | [**Recommendation**](Recommendation.md) |  | [optional] 
+**recommendation** | [**AccountAllOfRecommendation**](AccountAllOfRecommendation.md) |  | [optional] 
 **attributes** | **Dict[str, object]** | The account attributes that are aggregated | 
 **authoritative** | **bool** | Indicates if this account is from an authoritative source | 
 **description** | **str** | A description of the account | [optional] 
@@ -28,11 +28,11 @@ Name | Type | Description | Notes
 **uuid** | **str** | The unique ID of the account as determined by the account schema | [optional] 
 **manually_correlated** | **bool** | Indicates if the account has been manually correlated to an identity | 
 **has_entitlements** | **bool** | Indicates if the account has entitlements | 
-**identity** | [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
-**source_owner** | [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
+**identity** | [**AccountAllOfIdentity**](AccountAllOfIdentity.md) |  | [optional] 
+**source_owner** | [**AccountAllOfSourceOwner**](AccountAllOfSourceOwner.md) |  | [optional] 
 **features** | **str** | A string list containing the owning source&#39;s features | [optional] 
 **origin** | **str** | The origin of the account either aggregated or provisioned | [optional] 
-**owner_identity** | [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
+**owner_identity** | [**AccountAllOfOwnerIdentity**](AccountAllOfOwnerIdentity.md) |  | [optional] 
 
 ## Example
 

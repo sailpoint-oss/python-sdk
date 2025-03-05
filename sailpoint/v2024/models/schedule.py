@@ -93,6 +93,16 @@ class Schedule(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of hours
         if self.hours:
             _dict['hours'] = self.hours.to_dict()
+        # set to None if months (nullable) is None
+        # and model_fields_set contains the field
+        if self.months is None and "months" in self.model_fields_set:
+            _dict['months'] = None
+
+        # set to None if expiration (nullable) is None
+        # and model_fields_set contains the field
+        if self.expiration is None and "expiration" in self.model_fields_set:
+            _dict['expiration'] = None
+
         return _dict
 
     @classmethod

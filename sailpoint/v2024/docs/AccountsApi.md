@@ -876,7 +876,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_account_entitlements**
-> List[EntitlementDto] get_account_entitlements(id, limit=limit, offset=offset, count=count)
+> List[Entitlement] get_account_entitlements(id, limit=limit, offset=offset, count=count)
 
 Account Entitlements
 
@@ -889,7 +889,7 @@ This API returns entitlements of the account.
 
 ```python
 import sailpoint.v2024
-from sailpoint.v2024.models.entitlement_dto import EntitlementDto
+from sailpoint.v2024.models.entitlement import Entitlement
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
 
@@ -940,7 +940,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List[EntitlementDto]**](EntitlementDto.md)
+[**List[Entitlement]**](Entitlement.md)
 
 ### Authorization
 

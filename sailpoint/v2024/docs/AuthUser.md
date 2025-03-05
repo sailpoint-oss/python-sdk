@@ -18,9 +18,10 @@ Name | Type | Description | Notes
 **lastname** | **str** | Auth user&#39;s last name. | [optional] 
 **display_name** | **str** | Auth user&#39;s name in displayed format. | [optional] 
 **alias** | **str** | Auth user&#39;s alias. | [optional] 
-**last_password_change_date** | **str** | Date of last password change. | [optional] 
+**last_password_change_date** | **datetime** | Date of last password change. | [optional] 
 **last_login_timestamp** | **int** | Timestamp of the last login (long type value). | [optional] 
 **current_login_timestamp** | **int** | Timestamp of the current login (long type value). | [optional] 
+**last_unlock_timestamp** | **datetime** | The date and time when the user was last unlocked. | [optional] 
 **capabilities** | **List[str]** | Array of the auth user&#39;s capabilities. | [optional] 
 
 ## Example

@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **str** | ID of the access request | [optional] 
 **name** | **str** | Human-readable display name of the item being requested. | [optional] 
 **type** | **str** | Type of requested object. | [optional] 
 **cancelled_request_details** | [**AccessRequestAdminItemStatusCancelledRequestDetails**](AccessRequestAdminItemStatusCancelledRequestDetails.md) |  | [optional] 

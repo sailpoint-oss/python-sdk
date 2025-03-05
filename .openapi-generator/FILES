@@ -111,7 +111,9 @@ sailpoint/v2024/docs/AccessItemRequester.md
 sailpoint/v2024/docs/AccessItemRequesterDto.md
 sailpoint/v2024/docs/AccessItemReviewedBy.md
 sailpoint/v2024/docs/AccessItemRoleResponse.md
+sailpoint/v2024/docs/AccessModelMetadata.md
 sailpoint/v2024/docs/AccessModelMetadataApi.md
+sailpoint/v2024/docs/AccessModelMetadataValuesInner.md
 sailpoint/v2024/docs/AccessProfile.md
 sailpoint/v2024/docs/AccessProfileApprovalScheme.md
 sailpoint/v2024/docs/AccessProfileBulkDeleteRequest.md
@@ -185,6 +187,10 @@ sailpoint/v2024/docs/AccountAggregationCompletedSource.md
 sailpoint/v2024/docs/AccountAggregationCompletedStats.md
 sailpoint/v2024/docs/AccountAggregationStatus.md
 sailpoint/v2024/docs/AccountAggregationsApi.md
+sailpoint/v2024/docs/AccountAllOfIdentity.md
+sailpoint/v2024/docs/AccountAllOfOwnerIdentity.md
+sailpoint/v2024/docs/AccountAllOfRecommendation.md
+sailpoint/v2024/docs/AccountAllOfSourceOwner.md
 sailpoint/v2024/docs/AccountAttributes.md
 sailpoint/v2024/docs/AccountAttributesChanged.md
 sailpoint/v2024/docs/AccountAttributesChangedAccount.md
@@ -465,6 +471,7 @@ sailpoint/v2024/docs/Entitlement1AccessModelMetadata.md
 sailpoint/v2024/docs/Entitlement1ManuallyUpdatedFields.md
 sailpoint/v2024/docs/Entitlement1Owner.md
 sailpoint/v2024/docs/Entitlement1Source.md
+sailpoint/v2024/docs/EntitlementAccessModelMetadata.md
 sailpoint/v2024/docs/EntitlementAccessRequestConfig.md
 sailpoint/v2024/docs/EntitlementApprovalScheme.md
 sailpoint/v2024/docs/EntitlementBulkUpdateRequest.md
@@ -472,7 +479,7 @@ sailpoint/v2024/docs/EntitlementDocument.md
 sailpoint/v2024/docs/EntitlementDocumentAllOfManuallyUpdatedFields.md
 sailpoint/v2024/docs/EntitlementDocumentAllOfPermissions.md
 sailpoint/v2024/docs/EntitlementDocumentAllOfSource.md
-sailpoint/v2024/docs/EntitlementDto.md
+sailpoint/v2024/docs/EntitlementOwner.md
 sailpoint/v2024/docs/EntitlementRef.md
 sailpoint/v2024/docs/EntitlementRef1.md
 sailpoint/v2024/docs/EntitlementRequestConfig.md
@@ -645,6 +652,7 @@ sailpoint/v2024/docs/ListAccessProfiles401Response.md
 sailpoint/v2024/docs/ListAccessProfiles429Response.md
 sailpoint/v2024/docs/ListCampaignFilters200Response.md
 sailpoint/v2024/docs/ListCompleteWorkflowLibrary200ResponseInner.md
+sailpoint/v2024/docs/ListDeploys200Response.md
 sailpoint/v2024/docs/ListFormDefinitionsByTenantResponse.md
 sailpoint/v2024/docs/ListFormElementDataByElementIDResponse.md
 sailpoint/v2024/docs/ListFormInstancesByTenantResponse.md
@@ -1262,6 +1270,8 @@ sailpoint/v2024/models/access_item_requester.py
 sailpoint/v2024/models/access_item_requester_dto.py
 sailpoint/v2024/models/access_item_reviewed_by.py
 sailpoint/v2024/models/access_item_role_response.py
+sailpoint/v2024/models/access_model_metadata.py
+sailpoint/v2024/models/access_model_metadata_values_inner.py
 sailpoint/v2024/models/access_profile.py
 sailpoint/v2024/models/access_profile_approval_scheme.py
 sailpoint/v2024/models/access_profile_bulk_delete_request.py
@@ -1329,6 +1339,10 @@ sailpoint/v2024/models/account_aggregation_completed.py
 sailpoint/v2024/models/account_aggregation_completed_source.py
 sailpoint/v2024/models/account_aggregation_completed_stats.py
 sailpoint/v2024/models/account_aggregation_status.py
+sailpoint/v2024/models/account_all_of_identity.py
+sailpoint/v2024/models/account_all_of_owner_identity.py
+sailpoint/v2024/models/account_all_of_recommendation.py
+sailpoint/v2024/models/account_all_of_source_owner.py
 sailpoint/v2024/models/account_attributes.py
 sailpoint/v2024/models/account_attributes_changed.py
 sailpoint/v2024/models/account_attributes_changed_account.py
@@ -1590,6 +1604,7 @@ sailpoint/v2024/models/entitlement1_access_model_metadata.py
 sailpoint/v2024/models/entitlement1_manually_updated_fields.py
 sailpoint/v2024/models/entitlement1_owner.py
 sailpoint/v2024/models/entitlement1_source.py
+sailpoint/v2024/models/entitlement_access_model_metadata.py
 sailpoint/v2024/models/entitlement_access_request_config.py
 sailpoint/v2024/models/entitlement_approval_scheme.py
 sailpoint/v2024/models/entitlement_bulk_update_request.py
@@ -1597,7 +1612,7 @@ sailpoint/v2024/models/entitlement_document.py
 sailpoint/v2024/models/entitlement_document_all_of_manually_updated_fields.py
 sailpoint/v2024/models/entitlement_document_all_of_permissions.py
 sailpoint/v2024/models/entitlement_document_all_of_source.py
-sailpoint/v2024/models/entitlement_dto.py
+sailpoint/v2024/models/entitlement_owner.py
 sailpoint/v2024/models/entitlement_ref.py
 sailpoint/v2024/models/entitlement_ref1.py
 sailpoint/v2024/models/entitlement_request_config.py
@@ -1755,6 +1770,7 @@ sailpoint/v2024/models/list_access_profiles401_response.py
 sailpoint/v2024/models/list_access_profiles429_response.py
 sailpoint/v2024/models/list_campaign_filters200_response.py
 sailpoint/v2024/models/list_complete_workflow_library200_response_inner.py
+sailpoint/v2024/models/list_deploys200_response.py
 sailpoint/v2024/models/list_form_definitions_by_tenant_response.py
 sailpoint/v2024/models/list_form_element_data_by_element_id_response.py
 sailpoint/v2024/models/list_form_instances_by_tenant_response.py
@@ -2328,7 +2344,9 @@ sailpoint/v2024/test/test_access_item_requester.py
 sailpoint/v2024/test/test_access_item_requester_dto.py
 sailpoint/v2024/test/test_access_item_reviewed_by.py
 sailpoint/v2024/test/test_access_item_role_response.py
+sailpoint/v2024/test/test_access_model_metadata.py
 sailpoint/v2024/test/test_access_model_metadata_api.py
+sailpoint/v2024/test/test_access_model_metadata_values_inner.py
 sailpoint/v2024/test/test_access_profile.py
 sailpoint/v2024/test/test_access_profile_approval_scheme.py
 sailpoint/v2024/test/test_access_profile_bulk_delete_request.py
@@ -2402,6 +2420,10 @@ sailpoint/v2024/test/test_account_aggregation_completed_source.py
 sailpoint/v2024/test/test_account_aggregation_completed_stats.py
 sailpoint/v2024/test/test_account_aggregation_status.py
 sailpoint/v2024/test/test_account_aggregations_api.py
+sailpoint/v2024/test/test_account_all_of_identity.py
+sailpoint/v2024/test/test_account_all_of_owner_identity.py
+sailpoint/v2024/test/test_account_all_of_recommendation.py
+sailpoint/v2024/test/test_account_all_of_source_owner.py
 sailpoint/v2024/test/test_account_attributes.py
 sailpoint/v2024/test/test_account_attributes_changed.py
 sailpoint/v2024/test/test_account_attributes_changed_account.py
@@ -2682,6 +2704,7 @@ sailpoint/v2024/test/test_entitlement1_access_model_metadata.py
 sailpoint/v2024/test/test_entitlement1_manually_updated_fields.py
 sailpoint/v2024/test/test_entitlement1_owner.py
 sailpoint/v2024/test/test_entitlement1_source.py
+sailpoint/v2024/test/test_entitlement_access_model_metadata.py
 sailpoint/v2024/test/test_entitlement_access_request_config.py
 sailpoint/v2024/test/test_entitlement_approval_scheme.py
 sailpoint/v2024/test/test_entitlement_bulk_update_request.py
@@ -2689,7 +2712,7 @@ sailpoint/v2024/test/test_entitlement_document.py
 sailpoint/v2024/test/test_entitlement_document_all_of_manually_updated_fields.py
 sailpoint/v2024/test/test_entitlement_document_all_of_permissions.py
 sailpoint/v2024/test/test_entitlement_document_all_of_source.py
-sailpoint/v2024/test/test_entitlement_dto.py
+sailpoint/v2024/test/test_entitlement_owner.py
 sailpoint/v2024/test/test_entitlement_ref.py
 sailpoint/v2024/test/test_entitlement_ref1.py
 sailpoint/v2024/test/test_entitlement_request_config.py
@@ -2862,6 +2885,7 @@ sailpoint/v2024/test/test_list_access_profiles401_response.py
 sailpoint/v2024/test/test_list_access_profiles429_response.py
 sailpoint/v2024/test/test_list_campaign_filters200_response.py
 sailpoint/v2024/test/test_list_complete_workflow_library200_response_inner.py
+sailpoint/v2024/test/test_list_deploys200_response.py
 sailpoint/v2024/test/test_list_form_definitions_by_tenant_response.py
 sailpoint/v2024/test/test_list_form_element_data_by_element_id_response.py
 sailpoint/v2024/test/test_list_form_instances_by_tenant_response.py

@@ -98,6 +98,11 @@ class IdentityCertificationDto(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of reassignment
         if self.reassignment:
             _dict['reassignment'] = self.reassignment.to_dict()
+        # set to None if due (nullable) is None
+        # and model_fields_set contains the field
+        if self.due is None and "due" in self.model_fields_set:
+            _dict['due'] = None
+
         # set to None if signed (nullable) is None
         # and model_fields_set contains the field
         if self.signed is None and "signed" in self.model_fields_set:
