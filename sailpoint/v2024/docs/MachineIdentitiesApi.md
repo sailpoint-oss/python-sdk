@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **create_machine_identity**
-> MachineIdentity create_machine_identity(machine_identity)
+> MachineIdentity create_machine_identity(x_sail_point_experimental, machine_identity)
 
 Create Machine Identities
 
@@ -48,11 +48,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v2024.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v2024.MachineIdentitiesApi(api_client)
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true')
     machine_identity = sailpoint.v2024.MachineIdentity() # MachineIdentity | 
 
     try:
         # Create Machine Identities
-        api_response = api_instance.create_machine_identity(machine_identity)
+        api_response = api_instance.create_machine_identity(x_sail_point_experimental, machine_identity)
         print("The response of MachineIdentitiesApi->create_machine_identity:\n")
         pprint(api_response)
     except Exception as e:
@@ -66,6 +67,7 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **x_sail_point_experimental** | **str**| Use this header to enable this experimental API. | [default to &#39;true&#39;]
  **machine_identity** | [**MachineIdentity**](MachineIdentity.md)|  | 
 
 ### Return type

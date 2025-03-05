@@ -43,6 +43,7 @@ class MachineIdentitiesApi:
     def create_machine_identity(
         self,
         machine_identity: MachineIdentity,
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -60,6 +61,8 @@ class MachineIdentitiesApi:
 
         Use this API to create a machine identity. The maximum supported length for the description field is 2000 characters.
 
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
         :param machine_identity: (required)
         :type machine_identity: MachineIdentity
         :param _request_timeout: timeout setting for this request. If one
@@ -85,6 +88,7 @@ class MachineIdentitiesApi:
         """ # noqa: E501
 
         _param = self._create_machine_identity_serialize(
+            x_sail_point_experimental=x_sail_point_experimental,
             machine_identity=machine_identity,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -116,6 +120,7 @@ class MachineIdentitiesApi:
     def create_machine_identity_with_http_info(
         self,
         machine_identity: MachineIdentity,
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -133,6 +138,8 @@ class MachineIdentitiesApi:
 
         Use this API to create a machine identity. The maximum supported length for the description field is 2000 characters.
 
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
         :param machine_identity: (required)
         :type machine_identity: MachineIdentity
         :param _request_timeout: timeout setting for this request. If one
@@ -158,6 +165,7 @@ class MachineIdentitiesApi:
         """ # noqa: E501
 
         _param = self._create_machine_identity_serialize(
+            x_sail_point_experimental=x_sail_point_experimental,
             machine_identity=machine_identity,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -189,6 +197,7 @@ class MachineIdentitiesApi:
     def create_machine_identity_without_preload_content(
         self,
         machine_identity: MachineIdentity,
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -206,6 +215,8 @@ class MachineIdentitiesApi:
 
         Use this API to create a machine identity. The maximum supported length for the description field is 2000 characters.
 
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
         :param machine_identity: (required)
         :type machine_identity: MachineIdentity
         :param _request_timeout: timeout setting for this request. If one
@@ -231,6 +242,7 @@ class MachineIdentitiesApi:
         """ # noqa: E501
 
         _param = self._create_machine_identity_serialize(
+            x_sail_point_experimental=x_sail_point_experimental,
             machine_identity=machine_identity,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -256,6 +268,7 @@ class MachineIdentitiesApi:
 
     def _create_machine_identity_serialize(
         self,
+        x_sail_point_experimental,
         machine_identity,
         _request_auth,
         _content_type,
@@ -280,6 +293,8 @@ class MachineIdentitiesApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if machine_identity is not None:
