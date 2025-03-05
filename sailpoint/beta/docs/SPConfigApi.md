@@ -51,7 +51,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.SPConfigApi(api_client)
-    export_payload = {description=Export all available objects, excludeTypes=[], includeTypes=[ACCESS_PROFILE, ACCESS_REQUEST_CONFIG, ATTR_SYNC_SOURCE_CONFIG, AUTH_ORG, CAMPAIGN_FILTER, FORM_DEFINITION, GOVERNANCE_GROUP, IDENTITY_OBJECT_CONFIG, IDENTITY_PROFILE, LIFECYCLE_STATE, NOTIFICATION_TEMPLATE, PASSWORD_POLICY, PASSWORD_SYNC_GROUP, PUBLIC_IDENTITIES_CONFIG, ROLE, RULE, SEGMENT, SERVICE_DESK_INTEGRATION, SOD_POLICY, SOURCE, TAG, TRANSFORM, TRIGGER_SUBSCRIPTION, WORKFLOW], objectOptions={}} # ExportPayload | Export options control what will be included in the export.
+    export_payload = {description=Export all available objects, excludeTypes=[], includeTypes=[ACCESS_PROFILE, ACCESS_REQUEST_CONFIG, ATTR_SYNC_SOURCE_CONFIG, AUTH_ORG, CAMPAIGN_FILTER, CONNECTOR_RULE, FORM_DEFINITION, GOVERNANCE_GROUP, IDENTITY_OBJECT_CONFIG, IDENTITY_PROFILE, LIFECYCLE_STATE, NOTIFICATION_TEMPLATE, PASSWORD_POLICY, PASSWORD_SYNC_GROUP, PUBLIC_IDENTITIES_CONFIG, ROLE, RULE, SEGMENT, SERVICE_DESK_INTEGRATION, SOD_POLICY, SOURCE, TAG, TRANSFORM, TRIGGER_SUBSCRIPTION, WORKFLOW], objectOptions={}} # ExportPayload | Export options control what will be included in the export.
 
     try:
         # Initiates configuration objects export job

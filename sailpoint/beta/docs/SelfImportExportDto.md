@@ -6,7 +6,7 @@ Self block for imported/exported object.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **str** | Imported/exported object&#39;s DTO type. Import is currently only possible with the IDENTITY_OBJECT_CONFIG, IDENTITY_PROFILE, RULE, SOURCE, TRANSFORM, and TRIGGER_SUBSCRIPTION object types. | [optional] 
+**type** | **str** | Imported/exported object&#39;s DTO type. Import is currently only possible with the CONNECTOR_RULE, IDENTITY_OBJECT_CONFIG, IDENTITY_PROFILE, RULE, SOURCE, TRANSFORM, and TRIGGER_SUBSCRIPTION object types. | [optional] 
 **id** | **str** | Imported/exported object&#39;s ID. | [optional] 
 **name** | **str** | Imported/exported object&#39;s display name. | [optional] 
 
