@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **timestamp** | **datetime** | Time the export was completed. | [optional] 
 **tenant** | **str** | Name of the tenant where this export originated. | [optional] 
 **description** | **str** | Optional user defined description/name for export job. | [optional] 
-**options** | [**ExportOptions**](ExportOptions.md) |  | [optional] 
+**options** | [**ExportOptions1**](ExportOptions1.md) |  | [optional] 
 **objects** | [**List[ConfigObject]**](ConfigObject.md) |  | [optional] 
 
 ## Example

@@ -1495,7 +1495,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_source_config**
-> ConnectorDetail1 get_source_config(id, x_sail_point_experimental, locale=locale)
+> ConnectorDetail get_source_config(id, x_sail_point_experimental, locale=locale)
 
 Gets source config with language translations
 
@@ -1508,7 +1508,7 @@ Looks up and returns the source config for the requested source id after populat
 
 ```python
 import sailpoint.v2024
-from sailpoint.v2024.models.connector_detail1 import ConnectorDetail1
+from sailpoint.v2024.models.connector_detail import ConnectorDetail
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
 
@@ -1557,7 +1557,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ConnectorDetail1**](ConnectorDetail1.md)
+[**ConnectorDetail**](ConnectorDetail.md)
 
 ### Authorization
 

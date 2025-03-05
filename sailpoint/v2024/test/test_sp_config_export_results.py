@@ -39,7 +39,7 @@ class TestSpConfigExportResults(unittest.TestCase):
                 timestamp = '2021-05-11T22:23:16Z',
                 tenant = 'sample-tenant',
                 description = 'Export Job 1 Test',
-                options = sailpoint.v2024.models.export_options.ExportOptions(
+                options = sailpoint.v2024.models.export_options_1.ExportOptions_1(
                     exclude_types = [
                         'SOURCE'
                         ], 

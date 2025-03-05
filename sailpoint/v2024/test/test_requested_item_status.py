@@ -40,17 +40,11 @@ class TestRequestedItemStatus(unittest.TestCase):
                 type = 'ACCESS_PROFILE',
                 cancelled_request_details = None,
                 error_messages = [
-                    [
-                        sailpoint.v2024.models.error_message_dto.ErrorMessageDto(
-                            locale = 'en-US', 
-                            locale_origin = 'DEFAULT', 
-                            text = 'The request was syntactically correct but its content is semantically invalid.', )
-                        ]
+                    {locale=en-US, localeOrigin=DEFAULT, text=Error Message}
                     ],
                 state = 'EXECUTING',
                 approval_details = [
                     sailpoint.v2024.models.approval_status_dto.ApprovalStatusDto(
-                        approval_id = '2c9180877b2b6ea4017b2c545f971429', 
                         forwarded = False, 
                         original_owner = sailpoint.v2024.models.approval_status_dto_original_owner.ApprovalStatusDto_originalOwner(
                             type = 'IDENTITY', 

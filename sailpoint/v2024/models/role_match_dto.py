@@ -19,7 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2024.models.base_reference_dto1 import BaseReferenceDto1
+from sailpoint.v2024.models.base_reference_dto import BaseReferenceDto
 from sailpoint.v2024.models.context_attribute_dto import ContextAttributeDto
 from typing import Optional, Set
 from typing_extensions import Self
@@ -28,7 +28,7 @@ class RoleMatchDto(BaseModel):
     """
     RoleMatchDto
     """ # noqa: E501
-    role_ref: Optional[BaseReferenceDto1] = Field(default=None, alias="roleRef")
+    role_ref: Optional[BaseReferenceDto] = Field(default=None, alias="roleRef")
     matched_attributes: Optional[List[ContextAttributeDto]] = Field(default=None, alias="matchedAttributes")
     __properties: ClassVar[List[str]] = ["roleRef", "matchedAttributes"]
 
@@ -93,7 +93,7 @@ class RoleMatchDto(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "roleRef": BaseReferenceDto1.from_dict(obj["roleRef"]) if obj.get("roleRef") is not None else None,
+            "roleRef": BaseReferenceDto.from_dict(obj["roleRef"]) if obj.get("roleRef") is not None else None,
             "matchedAttributes": [ContextAttributeDto.from_dict(_item) for _item in obj["matchedAttributes"]] if obj.get("matchedAttributes") is not None else None
         })
         return _obj

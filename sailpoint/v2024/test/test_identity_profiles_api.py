@@ -54,6 +54,13 @@ class TestIdentityProfilesApi(unittest.TestCase):
         """
         pass
 
+    def test_generate_identity_preview(self) -> None:
+        """Test case for generate_identity_preview
+
+        Generate Identity Profile Preview
+        """
+        pass
+
     def test_get_default_identity_attribute_config(self) -> None:
         """Test case for get_default_identity_attribute_config
 
@@ -79,13 +86,6 @@ class TestIdentityProfilesApi(unittest.TestCase):
         """Test case for list_identity_profiles
 
         List Identity Profiles
-        """
-        pass
-
-    def test_show_identity_preview(self) -> None:
-        """Test case for show_identity_preview
-
-        Generate Identity Profile Preview
         """
         pass
 

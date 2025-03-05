@@ -20,7 +20,7 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v2024.models.account_info_dto import AccountInfoDto
-from sailpoint.v2024.models.base_reference_dto1 import BaseReferenceDto1
+from sailpoint.v2024.models.base_reference_dto import BaseReferenceDto
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,7 +28,7 @@ class RoleTargetDto(BaseModel):
     """
     RoleTargetDto
     """ # noqa: E501
-    source: Optional[BaseReferenceDto1] = None
+    source: Optional[BaseReferenceDto] = None
     account_info: Optional[AccountInfoDto] = Field(default=None, alias="accountInfo")
     role_name: Optional[StrictStr] = Field(default=None, description="Specific role name for this target if using multiple accounts", alias="roleName")
     __properties: ClassVar[List[str]] = ["source", "accountInfo", "roleName"]
@@ -90,7 +90,7 @@ class RoleTargetDto(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "source": BaseReferenceDto1.from_dict(obj["source"]) if obj.get("source") is not None else None,
+            "source": BaseReferenceDto.from_dict(obj["source"]) if obj.get("source") is not None else None,
             "accountInfo": AccountInfoDto.from_dict(obj["accountInfo"]) if obj.get("accountInfo") is not None else None,
             "roleName": obj.get("roleName")
         })

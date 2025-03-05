@@ -27,7 +27,7 @@ Method | HTTP request | Description
 
 Create a Role
 
-This API creates a role. In addition, a ROLE_SUBADMIN may not create a role including an access profile if that access profile is associated with a source the ROLE_SUBADMIN is not associated with themselves.   The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing roles. However, any new roles as well as any updates to existing descriptions will be limited to 2000 characters.
+This API creates a role.  You must have a token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority to call this API.   In addition, a ROLE_SUBADMIN may not create a role including an access profile if that access profile is associated with a source the ROLE_SUBADMIN is not associated with themselves.   The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing roles. However, any new roles as well as any updates to existing descriptions will be limited to 2000 characters.
 
 ### Example
 
@@ -278,7 +278,7 @@ void (empty response body)
 
 Delete a Role
 
-This API deletes a Role by its ID.  A user with ROLE_SUBADMIN authority may only call this API if all Access Profiles included in the Role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.
+This API deletes a Role by its ID.  A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a token with ROLE_SUBADMIN authority may only call this API if all Access Profiles included in the Role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.
 
 ### Example
 
@@ -520,7 +520,7 @@ Name | Type | Description  | Notes
 
 Get a Role
 
-This API returns a Role by its ID. A user with ROLE_SUBADMIN authority may only call this API if all Access Profiles included in the Role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.
+This API returns a Role by its ID. A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a token with ROLE_SUBADMIN authority may only call this API if all Access Profiles included in the Role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.
 
 ### Example
 
@@ -690,7 +690,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_role_entitlements**
-> List[Entitlement1] get_role_entitlements(id, x_sail_point_experimental, limit=limit, offset=offset, count=count, filters=filters, sorters=sorters)
+> List[Entitlement] get_role_entitlements(id, x_sail_point_experimental, limit=limit, offset=offset, count=count, filters=filters, sorters=sorters)
 
 List role's Entitlements
 
@@ -704,7 +704,7 @@ This API lists the Entitlements associated with a given role.
 
 ```python
 import sailpoint.v2024
-from sailpoint.v2024.models.entitlement1 import Entitlement1
+from sailpoint.v2024.models.entitlement import Entitlement
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
 
@@ -763,7 +763,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List[Entitlement1]**](Entitlement1.md)
+[**List[Entitlement]**](Entitlement.md)
 
 ### Authorization
 
@@ -792,7 +792,7 @@ Name | Type | Description  | Notes
 
 List Roles
 
-This API returns a list of Roles.
+This API returns a list of Roles.  A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API.
 
 ### Example
 
@@ -889,7 +889,7 @@ Name | Type | Description  | Notes
 
 Patch a specified Role
 
-This API updates an existing role using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax. The following fields are patchable: * name * description * enabled * owner * accessProfiles * entitlements * membership * requestable * accessRequestConfig * revokeRequestConfig * segments * accessModelMetadata  A user with ROLE_SUBADMIN authority may only call this API if all access profiles included in the role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.  The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing roles, however, any new roles as well as any updates to existing descriptions will be limited to 2000 characters.  When you use this API to modify a role's membership identities, you can only modify up to a limit of 500 membership identities at a time. 
+This API updates an existing role using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.  The following fields are patchable:  * name * description * enabled * owner * accessProfiles * entitlements * membership * requestable * accessRequestConfig * revokeRequestConfig * segments * accessModelMetadata    A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a token with ROLE_SUBADMIN authority may only call this API if all access profiles included in the role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.  The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing roles, however, any new roles as well as any updates to existing descriptions will be limited to 2000 characters.  When you use this API to modify a role's membership identities, you can only modify up to a limit of 500 membership identities at a time.
 
 ### Example
 

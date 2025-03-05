@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **name** | **str** | Name of the attribute that is being previewed. | [optional] 
 **value** | **str** | Value that was derived during the preview. | [optional] 
 **previous_value** | **str** | The value of the attribute before the preview. | [optional] 
-**error_messages** | [**List[ErrorMessageDto]**](ErrorMessageDto.md) |  | [optional] 
+**error_messages** | [**List[ErrorMessageDto]**](ErrorMessageDto.md) | List of error messages | [optional] 
 
 ## Example
 

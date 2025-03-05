@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **reauthorization_enabled** | **bool** | If this is true, reauthorization will be enforced for appropriately configured access items. Enablement of this feature is currently in a limited state. | [optional] [default to False]
 **request_on_behalf_of_config** | [**RequestOnBehalfOfConfig**](RequestOnBehalfOfConfig.md) |  | [optional] 
 **approval_reminder_and_escalation_config** | [**ApprovalReminderAndEscalationConfig**](ApprovalReminderAndEscalationConfig.md) |  | [optional] 
-**entitlement_request_config** | [**EntitlementRequestConfig1**](EntitlementRequestConfig1.md) |  | [optional] 
+**entitlement_request_config** | [**EntitlementRequestConfig**](EntitlementRequestConfig.md) |  | [optional] 
 
 ## Example
 

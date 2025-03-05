@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **create_sim_integration**
-> ServiceDeskIntegrationDto1 create_sim_integration(x_sail_point_experimental, sim_integration_details)
+> ServiceDeskIntegrationDto create_sim_integration(x_sail_point_experimental, sim_integration_details)
 
 Create new SIM integration
 
@@ -27,7 +27,7 @@ Create a new SIM Integrations.
 
 ```python
 import sailpoint.v2024
-from sailpoint.v2024.models.service_desk_integration_dto1 import ServiceDeskIntegrationDto1
+from sailpoint.v2024.models.service_desk_integration_dto import ServiceDeskIntegrationDto
 from sailpoint.v2024.models.sim_integration_details import SimIntegrationDetails
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServiceDeskIntegrationDto1**](ServiceDeskIntegrationDto1.md)
+[**ServiceDeskIntegrationDto**](ServiceDeskIntegrationDto.md)
 
 ### Authorization
 
@@ -184,7 +184,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_sim_integration**
-> ServiceDeskIntegrationDto1 get_sim_integration(id, x_sail_point_experimental)
+> ServiceDeskIntegrationDto get_sim_integration(id, x_sail_point_experimental)
 
 Get a SIM integration details.
 
@@ -197,7 +197,7 @@ Get the details of a SIM integration.
 
 ```python
 import sailpoint.v2024
-from sailpoint.v2024.models.service_desk_integration_dto1 import ServiceDeskIntegrationDto1
+from sailpoint.v2024.models.service_desk_integration_dto import ServiceDeskIntegrationDto
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
 
@@ -244,7 +244,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServiceDeskIntegrationDto1**](ServiceDeskIntegrationDto1.md)
+[**ServiceDeskIntegrationDto**](ServiceDeskIntegrationDto.md)
 
 ### Authorization
 
@@ -270,7 +270,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_sim_integrations**
-> ServiceDeskIntegrationDto1 get_sim_integrations(x_sail_point_experimental)
+> ServiceDeskIntegrationDto get_sim_integrations(x_sail_point_experimental)
 
 List the existing SIM integrations.
 
@@ -283,7 +283,7 @@ List the existing SIM integrations.
 
 ```python
 import sailpoint.v2024
-from sailpoint.v2024.models.service_desk_integration_dto1 import ServiceDeskIntegrationDto1
+from sailpoint.v2024.models.service_desk_integration_dto import ServiceDeskIntegrationDto
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
 
@@ -328,7 +328,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServiceDeskIntegrationDto1**](ServiceDeskIntegrationDto1.md)
+[**ServiceDeskIntegrationDto**](ServiceDeskIntegrationDto.md)
 
 ### Authorization
 
@@ -354,7 +354,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch_before_provisioning_rule**
-> ServiceDeskIntegrationDto1 patch_before_provisioning_rule(id, x_sail_point_experimental, json_patch)
+> ServiceDeskIntegrationDto patch_before_provisioning_rule(id, x_sail_point_experimental, json_patch)
 
 Patch a SIM beforeProvisioningRule attribute.
 
@@ -368,7 +368,7 @@ Patch a SIM beforeProvisioningRule attribute given a JsonPatch object.
 ```python
 import sailpoint.v2024
 from sailpoint.v2024.models.json_patch import JsonPatch
-from sailpoint.v2024.models.service_desk_integration_dto1 import ServiceDeskIntegrationDto1
+from sailpoint.v2024.models.service_desk_integration_dto import ServiceDeskIntegrationDto
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
 
@@ -417,7 +417,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServiceDeskIntegrationDto1**](ServiceDeskIntegrationDto1.md)
+[**ServiceDeskIntegrationDto**](ServiceDeskIntegrationDto.md)
 
 ### Authorization
 
@@ -443,7 +443,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch_sim_attributes**
-> ServiceDeskIntegrationDto1 patch_sim_attributes(id, x_sail_point_experimental, json_patch)
+> ServiceDeskIntegrationDto patch_sim_attributes(id, x_sail_point_experimental, json_patch)
 
 Patch a SIM attribute.
 
@@ -457,7 +457,7 @@ Patch a SIM attribute given a JsonPatch object.
 ```python
 import sailpoint.v2024
 from sailpoint.v2024.models.json_patch import JsonPatch
-from sailpoint.v2024.models.service_desk_integration_dto1 import ServiceDeskIntegrationDto1
+from sailpoint.v2024.models.service_desk_integration_dto import ServiceDeskIntegrationDto
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
 
@@ -506,7 +506,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServiceDeskIntegrationDto1**](ServiceDeskIntegrationDto1.md)
+[**ServiceDeskIntegrationDto**](ServiceDeskIntegrationDto.md)
 
 ### Authorization
 
@@ -532,7 +532,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_sim_integration**
-> ServiceDeskIntegrationDto1 put_sim_integration(id, x_sail_point_experimental, sim_integration_details)
+> ServiceDeskIntegrationDto put_sim_integration(id, x_sail_point_experimental, sim_integration_details)
 
 Update an existing SIM integration
 
@@ -545,7 +545,7 @@ Update an existing SIM integration.
 
 ```python
 import sailpoint.v2024
-from sailpoint.v2024.models.service_desk_integration_dto1 import ServiceDeskIntegrationDto1
+from sailpoint.v2024.models.service_desk_integration_dto import ServiceDeskIntegrationDto
 from sailpoint.v2024.models.sim_integration_details import SimIntegrationDetails
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
@@ -595,7 +595,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServiceDeskIntegrationDto1**](ServiceDeskIntegrationDto1.md)
+[**ServiceDeskIntegrationDto**](ServiceDeskIntegrationDto.md)
 
 ### Authorization
 

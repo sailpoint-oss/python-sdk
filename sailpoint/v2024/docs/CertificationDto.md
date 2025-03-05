@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **phase** | [**CertificationPhase**](CertificationPhase.md) |  | 
 **due** | **datetime** | The due date of the certification. | 
 **signed** | **datetime** | The date the reviewer signed off on the certification. | 
-**reviewer** | [**Reviewer1**](Reviewer1.md) |  | 
-**reassignment** | [**Reassignment1**](Reassignment1.md) |  | [optional] 
+**reviewer** | [**Reviewer**](Reviewer.md) |  | 
+**reassignment** | [**Reassignment**](Reassignment.md) |  | [optional] 
 **has_errors** | **bool** | Indicates it the certification has any errors. | 
 **error_message** | **str** | A message indicating what the error is. | [optional] 
 **completed** | **bool** | Indicates if all certification decisions have been made. | 

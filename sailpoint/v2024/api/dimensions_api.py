@@ -22,7 +22,7 @@ from typing_extensions import Annotated
 from sailpoint.v2024.models.access_profile import AccessProfile
 from sailpoint.v2024.models.dimension import Dimension
 from sailpoint.v2024.models.dimension_bulk_delete_request import DimensionBulkDeleteRequest
-from sailpoint.v2024.models.entitlement1 import Entitlement1
+from sailpoint.v2024.models.entitlement import Entitlement
 from sailpoint.v2024.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v2024.models.task_result_dto import TaskResultDto
 
@@ -1260,7 +1260,7 @@ class DimensionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Entitlement1]:
+    ) -> List[Entitlement]:
         """List Dimension's Entitlements
 
         This API lists the Entitlements associated with a given dimension.  A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API.
@@ -1316,7 +1316,7 @@ class DimensionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Entitlement1]",
+            '200': "List[Entitlement]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -1356,7 +1356,7 @@ class DimensionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Entitlement1]]:
+    ) -> ApiResponse[List[Entitlement]]:
         """List Dimension's Entitlements
 
         This API lists the Entitlements associated with a given dimension.  A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API.
@@ -1412,7 +1412,7 @@ class DimensionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Entitlement1]",
+            '200': "List[Entitlement]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -1508,7 +1508,7 @@ class DimensionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Entitlement1]",
+            '200': "List[Entitlement]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -1619,7 +1619,7 @@ class DimensionsApi:
     def list_dimension_access_profiles(
         self,
         role_id: Annotated[StrictStr, Field(description="Parent Role Id of the dimension.")],
-        dimension_id: Annotated[StrictStr, Field(description="ID of the Dimension")],
+        dimension_id: Annotated[StrictStr, Field(description="Id of the Dimension")],
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
@@ -1644,7 +1644,7 @@ class DimensionsApi:
 
         :param role_id: Parent Role Id of the dimension. (required)
         :type role_id: str
-        :param dimension_id: ID of the Dimension (required)
+        :param dimension_id: Id of the Dimension (required)
         :type dimension_id: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -1716,7 +1716,7 @@ class DimensionsApi:
     def list_dimension_access_profiles_with_http_info(
         self,
         role_id: Annotated[StrictStr, Field(description="Parent Role Id of the dimension.")],
-        dimension_id: Annotated[StrictStr, Field(description="ID of the Dimension")],
+        dimension_id: Annotated[StrictStr, Field(description="Id of the Dimension")],
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
@@ -1741,7 +1741,7 @@ class DimensionsApi:
 
         :param role_id: Parent Role Id of the dimension. (required)
         :type role_id: str
-        :param dimension_id: ID of the Dimension (required)
+        :param dimension_id: Id of the Dimension (required)
         :type dimension_id: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -1813,7 +1813,7 @@ class DimensionsApi:
     def list_dimension_access_profiles_without_preload_content(
         self,
         role_id: Annotated[StrictStr, Field(description="Parent Role Id of the dimension.")],
-        dimension_id: Annotated[StrictStr, Field(description="ID of the Dimension")],
+        dimension_id: Annotated[StrictStr, Field(description="Id of the Dimension")],
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
@@ -1838,7 +1838,7 @@ class DimensionsApi:
 
         :param role_id: Parent Role Id of the dimension. (required)
         :type role_id: str
-        :param dimension_id: ID of the Dimension (required)
+        :param dimension_id: Id of the Dimension (required)
         :type dimension_id: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int

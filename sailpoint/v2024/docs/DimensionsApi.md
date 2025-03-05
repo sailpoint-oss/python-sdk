@@ -353,7 +353,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_dimension_entitlements**
-> List[Entitlement1] get_dimension_entitlements(role_id, dimension_id, limit=limit, offset=offset, count=count, filters=filters, sorters=sorters)
+> List[Entitlement] get_dimension_entitlements(role_id, dimension_id, limit=limit, offset=offset, count=count, filters=filters, sorters=sorters)
 
 List Dimension's Entitlements
 
@@ -366,7 +366,7 @@ This API lists the Entitlements associated with a given dimension.  A token with
 
 ```python
 import sailpoint.v2024
-from sailpoint.v2024.models.entitlement1 import Entitlement1
+from sailpoint.v2024.models.entitlement import Entitlement
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
 
@@ -423,7 +423,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List[Entitlement1]**](Entitlement1.md)
+[**List[Entitlement]**](Entitlement.md)
 
 ### Authorization
 
@@ -485,7 +485,7 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v2024.DimensionsApi(api_client)
     role_id = '6603fba3004f43c687610a29195252ce' # str | Parent Role Id of the dimension.
-    dimension_id = '2c9180835d191a86015d28455b4a2329' # str | ID of the Dimension
+    dimension_id = '2c9180835d191a86015d28455b4a2329' # str | Id of the Dimension
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -509,7 +509,7 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **role_id** | **str**| Parent Role Id of the dimension. | 
- **dimension_id** | **str**| ID of the Dimension | 
+ **dimension_id** | **str**| Id of the Dimension | 
  **limit** | **int**| Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 250]
  **offset** | **int**| Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 0]
  **count** | **bool**| If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to False]

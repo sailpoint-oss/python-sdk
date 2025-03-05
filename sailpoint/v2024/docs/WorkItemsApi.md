@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**approve_approval_item**](WorkItemsApi.md#approve_approval_item) | **POST** /work-items/{id}/approve/{approvalItemId} | Approve an Approval Item
 [**approve_approval_items_in_bulk**](WorkItemsApi.md#approve_approval_items_in_bulk) | **POST** /work-items/bulk-approve/{id} | Bulk approve Approval Items
 [**complete_work_item**](WorkItemsApi.md#complete_work_item) | **POST** /work-items/{id} | Complete a Work Item
+[**forward_work_item**](WorkItemsApi.md#forward_work_item) | **POST** /work-items/{id}/forward | Forward a Work Item
 [**get_completed_work_items**](WorkItemsApi.md#get_completed_work_items) | **GET** /work-items/completed | Completed Work Items
 [**get_count_completed_work_items**](WorkItemsApi.md#get_count_completed_work_items) | **GET** /work-items/completed/count | Count Completed Work Items
 [**get_count_work_items**](WorkItemsApi.md#get_count_work_items) | **GET** /work-items/count | Count Work Items
@@ -15,7 +16,6 @@ Method | HTTP request | Description
 [**list_work_items**](WorkItemsApi.md#list_work_items) | **GET** /work-items | List Work Items
 [**reject_approval_item**](WorkItemsApi.md#reject_approval_item) | **POST** /work-items/{id}/reject/{approvalItemId} | Reject an Approval Item
 [**reject_approval_items_in_bulk**](WorkItemsApi.md#reject_approval_items_in_bulk) | **POST** /work-items/bulk-reject/{id} | Bulk reject Approval Items
-[**send_work_item_forward**](WorkItemsApi.md#send_work_item_forward) | **POST** /work-items/{id}/forward | Forward a Work Item
 [**submit_account_selection**](WorkItemsApi.md#submit_account_selection) | **POST** /work-items/{id}/submit-account-selection | Submit Account Selections
 
 
@@ -273,6 +273,91 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **forward_work_item**
+> forward_work_item(id, x_sail_point_experimental, work_item_forward)
+
+Forward a Work Item
+
+This API forwards a work item to a new owner. Either an admin, or the owning/current user must make this request.
+
+### Example
+
+* OAuth Authentication (userAuth):
+* OAuth Authentication (userAuth):
+
+```python
+import sailpoint.v2024
+from sailpoint.v2024.models.work_item_forward import WorkItemForward
+from sailpoint.v2024.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v2024
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sailpoint.v2024.Configuration(
+    host = "https://sailpoint.api.identitynow.com/v2024"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with sailpoint.v2024.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sailpoint.v2024.WorkItemsApi(api_client)
+    id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the work item
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true')
+    work_item_forward = sailpoint.v2024.WorkItemForward() # WorkItemForward | 
+
+    try:
+        # Forward a Work Item
+        api_instance.forward_work_item(id, x_sail_point_experimental, work_item_forward)
+    except Exception as e:
+        print("Exception when calling WorkItemsApi->forward_work_item: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**| The ID of the work item | 
+ **x_sail_point_experimental** | **str**| Use this header to enable this experimental API. | [default to &#39;true&#39;]
+ **work_item_forward** | [**WorkItemForward**](WorkItemForward.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success, but no data is returned. |  -  |
+**400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
+**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_completed_work_items**
 > List[WorkItems] get_completed_work_items(owner_id=owner_id, limit=limit, offset=offset, count=count)
 
@@ -363,7 +448,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_count_completed_work_items**
-> WorkItemsCount get_count_completed_work_items(owner_id=owner_id)
+> List[WorkItemsCount] get_count_completed_work_items(x_sail_point_experimental, owner_id=owner_id)
 
 Count Completed Work Items
 
@@ -399,11 +484,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v2024.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v2024.WorkItemsApi(api_client)
-    owner_id = '1211bcaa32112bcef6122adb21cef1ac' # str | ID of the work item owner. (optional)
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true')
+    owner_id = 'owner_id_example' # str | ID of the work item owner. (optional)
 
     try:
         # Count Completed Work Items
-        api_response = api_instance.get_count_completed_work_items(owner_id=owner_id)
+        api_response = api_instance.get_count_completed_work_items(x_sail_point_experimental, owner_id=owner_id)
         print("The response of WorkItemsApi->get_count_completed_work_items:\n")
         pprint(api_response)
     except Exception as e:
@@ -417,11 +503,12 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **x_sail_point_experimental** | **str**| Use this header to enable this experimental API. | [default to &#39;true&#39;]
  **owner_id** | **str**| ID of the work item owner. | [optional] 
 
 ### Return type
 
-[**WorkItemsCount**](WorkItemsCount.md)
+[**List[WorkItemsCount]**](WorkItemsCount.md)
 
 ### Authorization
 
@@ -437,11 +524,9 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | List of work items |  -  |
-**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
+**400** | Client Error - Returned if the request body is invalid. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
 **404** | Not Found - returned if the request URL refers to a resource or object that does not exist |  -  |
-**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
-**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -948,89 +1033,6 @@ Name | Type | Description  | Notes
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
 **404** | Not Found - returned if the request URL refers to a resource or object that does not exist |  -  |
-**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
-**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **send_work_item_forward**
-> send_work_item_forward(id, work_item_forward)
-
-Forward a Work Item
-
-This API forwards a work item to a new owner. Either an admin, or the owning/current user must make this request. Accessible to work-item Owner, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN.
-
-### Example
-
-* OAuth Authentication (userAuth):
-* OAuth Authentication (userAuth):
-
-```python
-import sailpoint.v2024
-from sailpoint.v2024.models.work_item_forward import WorkItemForward
-from sailpoint.v2024.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v2024
-# See configuration.py for a list of all supported configuration parameters.
-configuration = sailpoint.v2024.Configuration(
-    host = "https://sailpoint.api.identitynow.com/v2024"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with sailpoint.v2024.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = sailpoint.v2024.WorkItemsApi(api_client)
-    id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the work item
-    work_item_forward = sailpoint.v2024.WorkItemForward() # WorkItemForward | 
-
-    try:
-        # Forward a Work Item
-        api_instance.send_work_item_forward(id, work_item_forward)
-    except Exception as e:
-        print("Exception when calling WorkItemsApi->send_work_item_forward: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **str**| The ID of the work item | 
- **work_item_forward** | [**WorkItemForward**](WorkItemForward.md)|  | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[userAuth](../README.md#userAuth), [userAuth](../README.md#userAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Success, but no data is returned. |  -  |
-**400** | Client Error - Returned if the request body is invalid. |  -  |
-**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
-**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
 **429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
 **500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
 

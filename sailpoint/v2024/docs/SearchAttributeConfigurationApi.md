@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **create_search_attribute_config**
-> object create_search_attribute_config(search_attribute_config)
+> object create_search_attribute_config(x_sail_point_experimental, search_attribute_config)
 
 Create Extended Search Attributes
 
@@ -48,11 +48,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v2024.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v2024.SearchAttributeConfigurationApi(api_client)
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true')
     search_attribute_config = {name=newMailAttribute, displayName=New Mail Attribute, applicationAttributes={2c9180866166b5b0016167c32ef31a66=mail, 2c9180866166b5b0016167c32ef31a67=mail}} # SearchAttributeConfig | 
 
     try:
         # Create Extended Search Attributes
-        api_response = api_instance.create_search_attribute_config(search_attribute_config)
+        api_response = api_instance.create_search_attribute_config(x_sail_point_experimental, search_attribute_config)
         print("The response of SearchAttributeConfigurationApi->create_search_attribute_config:\n")
         pprint(api_response)
     except Exception as e:
@@ -66,6 +67,7 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **x_sail_point_experimental** | **str**| Use this header to enable this experimental API. | [default to &#39;true&#39;]
  **search_attribute_config** | [**SearchAttributeConfig**](SearchAttributeConfig.md)|  | 
 
 ### Return type
@@ -96,7 +98,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_search_attribute_config**
-> delete_search_attribute_config(name)
+> delete_search_attribute_config(name, x_sail_point_experimental)
 
 Delete Extended Search Attribute
 
@@ -132,10 +134,11 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v2024.SearchAttributeConfigurationApi(api_client)
     name = 'newMailAttribute' # str | Name of the extended search attribute configuration to delete.
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true')
 
     try:
         # Delete Extended Search Attribute
-        api_instance.delete_search_attribute_config(name)
+        api_instance.delete_search_attribute_config(name, x_sail_point_experimental)
     except Exception as e:
         print("Exception when calling SearchAttributeConfigurationApi->delete_search_attribute_config: %s\n" % e)
 ```
@@ -148,6 +151,7 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| Name of the extended search attribute configuration to delete. | 
+ **x_sail_point_experimental** | **str**| Use this header to enable this experimental API. | [default to &#39;true&#39;]
 
 ### Return type
 
@@ -167,7 +171,6 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No content - indicates the request was successful but there is no content to be returned in the response. |  -  |
-**400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
 **404** | Not Found - returned if the request URL refers to a resource or object that does not exist |  -  |
@@ -177,7 +180,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_search_attribute_config**
-> List[SearchAttributeConfig] get_search_attribute_config()
+> List[SearchAttributeConfig] get_search_attribute_config(x_sail_point_experimental)
 
 List Extended Search Attributes
 
@@ -213,10 +216,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v2024.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v2024.SearchAttributeConfigurationApi(api_client)
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true')
 
     try:
         # List Extended Search Attributes
-        api_response = api_instance.get_search_attribute_config()
+        api_response = api_instance.get_search_attribute_config(x_sail_point_experimental)
         print("The response of SearchAttributeConfigurationApi->get_search_attribute_config:\n")
         pprint(api_response)
     except Exception as e:
@@ -227,7 +231,10 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **x_sail_point_experimental** | **str**| Use this header to enable this experimental API. | [default to &#39;true&#39;]
 
 ### Return type
 
@@ -246,8 +253,7 @@ This endpoint does not need any parameter.
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | List of attribute configurations in IdentityNow. |  -  |
-**400** | Client Error - Returned if the request body is invalid. |  -  |
+**200** | List of attribute configurations in ISC. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
 **429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
@@ -256,7 +262,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_single_search_attribute_config**
-> List[SearchAttributeConfig] get_single_search_attribute_config(name)
+> List[SearchAttributeConfig] get_single_search_attribute_config(name, x_sail_point_experimental)
 
 Get Extended Search Attribute
 
@@ -292,11 +298,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v2024.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v2024.SearchAttributeConfigurationApi(api_client)
-    name = 'newMailAttribute' # str | Name of the extended search attribute configuration to retrieve.
+    name = 'newMailAttribute' # str | Name of the extended search attribute configuration to get.
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true')
 
     try:
         # Get Extended Search Attribute
-        api_response = api_instance.get_single_search_attribute_config(name)
+        api_response = api_instance.get_single_search_attribute_config(name, x_sail_point_experimental)
         print("The response of SearchAttributeConfigurationApi->get_single_search_attribute_config:\n")
         pprint(api_response)
     except Exception as e:
@@ -310,7 +317,8 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**| Name of the extended search attribute configuration to retrieve. | 
+ **name** | **str**| Name of the extended search attribute configuration to get. | 
+ **x_sail_point_experimental** | **str**| Use this header to enable this experimental API. | [default to &#39;true&#39;]
 
 ### Return type
 
@@ -329,9 +337,8 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Specific attribute configuration in ISC. |  -  |
+**200** | Specific attribute configuration in IdentityNow. |  -  |
 **204** | No content - indicates the request was successful but there is no content to be returned in the response. |  -  |
-**400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
 **404** | Not Found - returned if the request URL refers to a resource or object that does not exist |  -  |
@@ -341,7 +348,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch_search_attribute_config**
-> SearchAttributeConfig patch_search_attribute_config(name, json_patch_operation)
+> SearchAttributeConfig patch_search_attribute_config(name, x_sail_point_experimental, json_patch_operation)
 
 Update Extended Search Attribute
 
@@ -379,11 +386,12 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v2024.SearchAttributeConfigurationApi(api_client)
     name = 'promotedMailAttribute' # str | Name of the search attribute configuration to patch.
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true')
     json_patch_operation = [{op=replace, path=/name, value=newAttributeName}, {op=replace, path=/displayName, value=new attribute display name}, {op=add, path=/applicationAttributes, value={2c91808b79fd2422017a0b35d30f3968=employeeNumber}}] # List[JsonPatchOperation] | 
 
     try:
         # Update Extended Search Attribute
-        api_response = api_instance.patch_search_attribute_config(name, json_patch_operation)
+        api_response = api_instance.patch_search_attribute_config(name, x_sail_point_experimental, json_patch_operation)
         print("The response of SearchAttributeConfigurationApi->patch_search_attribute_config:\n")
         pprint(api_response)
     except Exception as e:
@@ -398,6 +406,7 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| Name of the search attribute configuration to patch. | 
+ **x_sail_point_experimental** | **str**| Use this header to enable this experimental API. | [default to &#39;true&#39;]
  **json_patch_operation** | [**List[JsonPatchOperation]**](JsonPatchOperation.md)|  | 
 
 ### Return type
@@ -417,7 +426,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The updated search attribute configuration. |  -  |
+**200** | Responds with the search attribute configuration as updated. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |

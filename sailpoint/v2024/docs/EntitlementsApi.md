@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 
 # **create_access_model_metadata_for_entitlement**
-> Entitlement1 create_access_model_metadata_for_entitlement(id, attribute_key, attribute_value, x_sail_point_experimental)
+> Entitlement create_access_model_metadata_for_entitlement(id, attribute_key, attribute_value, x_sail_point_experimental)
 
 Add metadata to an entitlement.
 
@@ -32,7 +32,7 @@ Add single Access Model Metadata to an entitlement.
 
 ```python
 import sailpoint.v2024
-from sailpoint.v2024.models.entitlement1 import Entitlement1
+from sailpoint.v2024.models.entitlement import Entitlement
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
 
@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Entitlement1**](Entitlement1.md)
+[**Entitlement**](Entitlement.md)
 
 ### Authorization
 
@@ -194,7 +194,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_entitlement**
-> Entitlement1 get_entitlement(id, x_sail_point_experimental)
+> Entitlement get_entitlement(id, x_sail_point_experimental)
 
 Get an entitlement
 
@@ -207,7 +207,7 @@ This API returns an entitlement by its ID.
 
 ```python
 import sailpoint.v2024
-from sailpoint.v2024.models.entitlement1 import Entitlement1
+from sailpoint.v2024.models.entitlement import Entitlement
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
 
@@ -254,7 +254,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Entitlement1**](Entitlement1.md)
+[**Entitlement**](Entitlement.md)
 
 ### Authorization
 
@@ -453,7 +453,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_entitlement_children**
-> List[Entitlement1] list_entitlement_children(id, x_sail_point_experimental, limit=limit, offset=offset, count=count, sorters=sorters, filters=filters)
+> List[Entitlement] list_entitlement_children(id, x_sail_point_experimental, limit=limit, offset=offset, count=count, sorters=sorters, filters=filters)
 
 List of entitlements children
 
@@ -466,7 +466,7 @@ This API returns a list of all child entitlements of a given entitlement.
 
 ```python
 import sailpoint.v2024
-from sailpoint.v2024.models.entitlement1 import Entitlement1
+from sailpoint.v2024.models.entitlement import Entitlement
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
 
@@ -523,7 +523,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List[Entitlement1]**](Entitlement1.md)
+[**List[Entitlement]**](Entitlement.md)
 
 ### Authorization
 
@@ -549,7 +549,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_entitlement_parents**
-> List[Entitlement1] list_entitlement_parents(id, x_sail_point_experimental, limit=limit, offset=offset, count=count, sorters=sorters, filters=filters)
+> List[Entitlement] list_entitlement_parents(id, x_sail_point_experimental, limit=limit, offset=offset, count=count, sorters=sorters, filters=filters)
 
 List of entitlements parents
 
@@ -562,7 +562,7 @@ This API returns a list of all parent entitlements of a given entitlement.
 
 ```python
 import sailpoint.v2024
-from sailpoint.v2024.models.entitlement1 import Entitlement1
+from sailpoint.v2024.models.entitlement import Entitlement
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
 
@@ -619,7 +619,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List[Entitlement1]**](Entitlement1.md)
+[**List[Entitlement]**](Entitlement.md)
 
 ### Authorization
 
@@ -645,7 +645,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_entitlements**
-> List[Entitlement1] list_entitlements(x_sail_point_experimental, account_id=account_id, segmented_for_identity=segmented_for_identity, for_segment_ids=for_segment_ids, include_unsegmented=include_unsegmented, offset=offset, limit=limit, count=count, sorters=sorters, filters=filters)
+> List[Entitlement] list_entitlements(x_sail_point_experimental, account_id=account_id, segmented_for_identity=segmented_for_identity, for_segment_ids=for_segment_ids, include_unsegmented=include_unsegmented, offset=offset, limit=limit, count=count, sorters=sorters, filters=filters)
 
 Gets a list of entitlements.
 
@@ -658,7 +658,7 @@ This API returns a list of entitlements.  This API can be used in one of the two
 
 ```python
 import sailpoint.v2024
-from sailpoint.v2024.models.entitlement1 import Entitlement1
+from sailpoint.v2024.models.entitlement import Entitlement
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
 
@@ -721,7 +721,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List[Entitlement1]**](Entitlement1.md)
+[**List[Entitlement]**](Entitlement.md)
 
 ### Authorization
 
@@ -746,7 +746,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch_entitlement**
-> Entitlement1 patch_entitlement(id, x_sail_point_experimental, json_patch_operation=json_patch_operation)
+> Entitlement patch_entitlement(id, x_sail_point_experimental, json_patch_operation=json_patch_operation)
 
 Patch an entitlement
 
@@ -759,7 +759,7 @@ This API updates an existing entitlement using [JSON Patch](https://tools.ietf.o
 
 ```python
 import sailpoint.v2024
-from sailpoint.v2024.models.entitlement1 import Entitlement1
+from sailpoint.v2024.models.entitlement import Entitlement
 from sailpoint.v2024.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v2024.rest import ApiException
 from pprint import pprint
@@ -809,7 +809,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Entitlement1**](Entitlement1.md)
+[**Entitlement**](Entitlement.md)
 
 ### Authorization
 

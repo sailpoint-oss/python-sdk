@@ -34,7 +34,7 @@ class CertificationTask(BaseModel):
     target_type: Optional[StrictStr] = Field(default=None, description="The type of item that is being operated on by this task whose ID is stored in the targetId field.", alias="targetType")
     target_id: Optional[StrictStr] = Field(default=None, description="The ID of the item being operated on by this task.", alias="targetId")
     status: Optional[StrictStr] = Field(default=None, description="The status of the task.")
-    errors: Optional[List[ErrorMessageDto]] = None
+    errors: Optional[List[ErrorMessageDto]] = Field(default=None, description="List of error messages")
     reassignment_trail_dtos: Optional[List[ReassignmentTrailDTO]] = Field(default=None, description="Reassignment trails that lead to self certification identity", alias="reassignmentTrailDTOs")
     created: Optional[datetime] = Field(default=None, description="The date and time on which this task was created.")
     __properties: ClassVar[List[str]] = ["id", "type", "targetType", "targetId", "status", "errors", "reassignmentTrailDTOs", "created"]

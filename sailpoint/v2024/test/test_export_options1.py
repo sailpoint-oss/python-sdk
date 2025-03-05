@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2024.models.certification_reference1 import CertificationReference1
+from sailpoint.v2024.models.export_options1 import ExportOptions1
 
-class TestCertificationReference1(unittest.TestCase):
-    """CertificationReference1 unit test stubs"""
+class TestExportOptions1(unittest.TestCase):
+    """ExportOptions1 unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,32 +25,31 @@ class TestCertificationReference1(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> CertificationReference1:
-        """Test CertificationReference1
+    def make_instance(self, include_optional) -> ExportOptions1:
+        """Test ExportOptions1
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `CertificationReference1`
+        # uncomment below to create an instance of `ExportOptions1`
         """
-        model = CertificationReference1()
+        model = ExportOptions1()
         if include_optional:
-            return CertificationReference1(
-                type = 'IDENTITY',
-                id = '7589a83cec4b4f138ce56c1a5ef0756d',
-                name = 'Manager Access for Michael Michaels',
-                reviewer = sailpoint.v2024.models.reviewer_1.Reviewer_1(
-                    type = 'IDENTITY', 
-                    id = '2c7180a46faadee4016fb4e018c20642', 
-                    name = 'Michael Michaels', 
-                    email = 'reviewer@test.com', )
+            return ExportOptions1(
+                exclude_types = [
+                    'SOURCE'
+                    ],
+                include_types = [
+                    'TRIGGER_SUBSCRIPTION'
+                    ],
+                object_options = {TRIGGER_SUBSCRIPTION={includedIds=[be9e116d-08e1-49fc-ab7f-fa585e96c9e4], includedNames=[Test 2]}}
             )
         else:
-            return CertificationReference1(
+            return ExportOptions1(
         )
         """
 
-    def testCertificationReference1(self):
-        """Test CertificationReference1"""
+    def testExportOptions1(self):
+        """Test ExportOptions1"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

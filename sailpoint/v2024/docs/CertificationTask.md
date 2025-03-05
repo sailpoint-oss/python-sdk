@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **target_type** | **str** | The type of item that is being operated on by this task whose ID is stored in the targetId field. | [optional] 
 **target_id** | **str** | The ID of the item being operated on by this task. | [optional] 
 **status** | **str** | The status of the task. | [optional] 
-**errors** | [**List[ErrorMessageDto]**](ErrorMessageDto.md) |  | [optional] 
+**errors** | [**List[ErrorMessageDto]**](ErrorMessageDto.md) | List of error messages | [optional] 
 **reassignment_trail_dtos** | [**List[ReassignmentTrailDTO]**](ReassignmentTrailDTO.md) | Reassignment trails that lead to self certification identity | [optional] 
 **created** | **datetime** | The date and time on which this task was created. | [optional] 
 

@@ -32,7 +32,6 @@ class ApprovalStatusDto(BaseModel):
     """
     ApprovalStatusDto
     """ # noqa: E501
-    approval_id: Optional[StrictStr] = Field(default=None, description="Unique identifier for the approval.", alias="approvalId")
     forwarded: Optional[StrictBool] = Field(default=False, description="True if the request for this item was forwarded from one owner to another.")
     original_owner: Optional[ApprovalStatusDtoOriginalOwner] = Field(default=None, alias="originalOwner")
     current_owner: Optional[ApprovalStatusDtoCurrentOwner] = Field(default=None, alias="currentOwner")
@@ -42,7 +41,7 @@ class ApprovalStatusDto(BaseModel):
     error_messages: Optional[List[ErrorMessageDto]] = Field(default=None, description="If the request failed, includes any error messages that were generated.", alias="errorMessages")
     comment: Optional[StrictStr] = Field(default=None, description="Comment, if any, provided by the approver.")
     remove_date: Optional[datetime] = Field(default=None, description="The date the role or access profile or entitlement is no longer assigned to the specified identity.", alias="removeDate")
-    __properties: ClassVar[List[str]] = ["approvalId", "forwarded", "originalOwner", "currentOwner", "modified", "status", "scheme", "errorMessages", "comment", "removeDate"]
+    __properties: ClassVar[List[str]] = ["forwarded", "originalOwner", "currentOwner", "modified", "status", "scheme", "errorMessages", "comment", "removeDate"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -96,11 +95,6 @@ class ApprovalStatusDto(BaseModel):
                 if _item_error_messages:
                     _items.append(_item_error_messages.to_dict())
             _dict['errorMessages'] = _items
-        # set to None if approval_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.approval_id is None and "approval_id" in self.model_fields_set:
-            _dict['approvalId'] = None
-
         # set to None if modified (nullable) is None
         # and model_fields_set contains the field
         if self.modified is None and "modified" in self.model_fields_set:
@@ -133,7 +127,6 @@ class ApprovalStatusDto(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "approvalId": obj.get("approvalId"),
             "forwarded": obj.get("forwarded") if obj.get("forwarded") is not None else False,
             "originalOwner": ApprovalStatusDtoOriginalOwner.from_dict(obj["originalOwner"]) if obj.get("originalOwner") is not None else None,
             "currentOwner": ApprovalStatusDtoCurrentOwner.from_dict(obj["currentOwner"]) if obj.get("currentOwner") is not None else None,

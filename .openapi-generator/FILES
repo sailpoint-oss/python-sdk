@@ -135,8 +135,6 @@ sailpoint/v2024/docs/AccessProfilesApi.md
 sailpoint/v2024/docs/AccessRecommendationMessage.md
 sailpoint/v2024/docs/AccessRequest.md
 sailpoint/v2024/docs/AccessRequestAdminItemStatus.md
-sailpoint/v2024/docs/AccessRequestAdminItemStatusCancelledRequestDetails.md
-sailpoint/v2024/docs/AccessRequestAdminItemStatusSodViolationContext.md
 sailpoint/v2024/docs/AccessRequestApprovalsApi.md
 sailpoint/v2024/docs/AccessRequestApproversListResponse.md
 sailpoint/v2024/docs/AccessRequestConfig.md
@@ -248,7 +246,6 @@ sailpoint/v2024/docs/ApprovalComment1.md
 sailpoint/v2024/docs/ApprovalComment2.md
 sailpoint/v2024/docs/ApprovalDescription.md
 sailpoint/v2024/docs/ApprovalForwardHistory.md
-sailpoint/v2024/docs/ApprovalForwardHistory1.md
 sailpoint/v2024/docs/ApprovalIdentity.md
 sailpoint/v2024/docs/ApprovalInfoResponse.md
 sailpoint/v2024/docs/ApprovalItemDetails.md
@@ -260,7 +257,6 @@ sailpoint/v2024/docs/ApprovalScheme.md
 sailpoint/v2024/docs/ApprovalSchemeForRole.md
 sailpoint/v2024/docs/ApprovalStatus.md
 sailpoint/v2024/docs/ApprovalStatusDto.md
-sailpoint/v2024/docs/ApprovalStatusDto1.md
 sailpoint/v2024/docs/ApprovalStatusDtoCurrentOwner.md
 sailpoint/v2024/docs/ApprovalStatusDtoOriginalOwner.md
 sailpoint/v2024/docs/ApprovalSummary.md
@@ -295,11 +291,9 @@ sailpoint/v2024/docs/BaseAccessOwner.md
 sailpoint/v2024/docs/BaseAccessProfile.md
 sailpoint/v2024/docs/BaseAccount.md
 sailpoint/v2024/docs/BaseCommonDto.md
-sailpoint/v2024/docs/BaseCommonDto1.md
 sailpoint/v2024/docs/BaseDocument.md
 sailpoint/v2024/docs/BaseEntitlement.md
 sailpoint/v2024/docs/BaseReferenceDto.md
-sailpoint/v2024/docs/BaseReferenceDto1.md
 sailpoint/v2024/docs/BaseSegment.md
 sailpoint/v2024/docs/BasicAuthConfig.md
 sailpoint/v2024/docs/BearerTokenAuthConfig.md
@@ -345,7 +339,6 @@ sailpoint/v2024/docs/CampaignTemplateOwnerRef.md
 sailpoint/v2024/docs/CampaignsDeleteRequest.md
 sailpoint/v2024/docs/CancelAccessRequest.md
 sailpoint/v2024/docs/CancelledRequestDetails.md
-sailpoint/v2024/docs/CancelledRequestDetails1.md
 sailpoint/v2024/docs/Certification.md
 sailpoint/v2024/docs/CertificationCampaignFiltersApi.md
 sailpoint/v2024/docs/CertificationCampaignsApi.md
@@ -354,8 +347,6 @@ sailpoint/v2024/docs/CertificationDto.md
 sailpoint/v2024/docs/CertificationIdentitySummary.md
 sailpoint/v2024/docs/CertificationPhase.md
 sailpoint/v2024/docs/CertificationReference.md
-sailpoint/v2024/docs/CertificationReference1.md
-sailpoint/v2024/docs/CertificationReferenceDto.md
 sailpoint/v2024/docs/CertificationSignedOff.md
 sailpoint/v2024/docs/CertificationSignedOffCertification.md
 sailpoint/v2024/docs/CertificationSummariesApi.md
@@ -402,7 +393,6 @@ sailpoint/v2024/docs/ConflictingAccessCriteria.md
 sailpoint/v2024/docs/ConnectedObject.md
 sailpoint/v2024/docs/ConnectedObjectType.md
 sailpoint/v2024/docs/ConnectorDetail.md
-sailpoint/v2024/docs/ConnectorDetail1.md
 sailpoint/v2024/docs/ConnectorRuleCreateRequest.md
 sailpoint/v2024/docs/ConnectorRuleCreateRequestSignature.md
 sailpoint/v2024/docs/ConnectorRuleManagementApi.md
@@ -466,11 +456,6 @@ sailpoint/v2024/docs/DtoType.md
 sailpoint/v2024/docs/EmailNotificationOption.md
 sailpoint/v2024/docs/EmailStatusDto.md
 sailpoint/v2024/docs/Entitlement.md
-sailpoint/v2024/docs/Entitlement1.md
-sailpoint/v2024/docs/Entitlement1AccessModelMetadata.md
-sailpoint/v2024/docs/Entitlement1ManuallyUpdatedFields.md
-sailpoint/v2024/docs/Entitlement1Owner.md
-sailpoint/v2024/docs/Entitlement1Source.md
 sailpoint/v2024/docs/EntitlementAccessModelMetadata.md
 sailpoint/v2024/docs/EntitlementAccessRequestConfig.md
 sailpoint/v2024/docs/EntitlementApprovalScheme.md
@@ -483,7 +468,6 @@ sailpoint/v2024/docs/EntitlementOwner.md
 sailpoint/v2024/docs/EntitlementRef.md
 sailpoint/v2024/docs/EntitlementRef1.md
 sailpoint/v2024/docs/EntitlementRequestConfig.md
-sailpoint/v2024/docs/EntitlementRequestConfig1.md
 sailpoint/v2024/docs/EntitlementSource.md
 sailpoint/v2024/docs/EntitlementSourceResetBaseReferenceDto.md
 sailpoint/v2024/docs/EntitlementSummary.md
@@ -492,7 +476,6 @@ sailpoint/v2024/docs/EntityCreatedByDTO.md
 sailpoint/v2024/docs/Error.md
 sailpoint/v2024/docs/ErrorMessage.md
 sailpoint/v2024/docs/ErrorMessageDto.md
-sailpoint/v2024/docs/ErrorMessageDto1.md
 sailpoint/v2024/docs/ErrorResponseDto.md
 sailpoint/v2024/docs/EvaluateResponse.md
 sailpoint/v2024/docs/Event.md
@@ -509,6 +492,7 @@ sailpoint/v2024/docs/ExecutionStatus.md
 sailpoint/v2024/docs/ExpansionItem.md
 sailpoint/v2024/docs/ExportFormDefinitionsByTenant200ResponseInner.md
 sailpoint/v2024/docs/ExportOptions.md
+sailpoint/v2024/docs/ExportOptions1.md
 sailpoint/v2024/docs/ExportPayload.md
 sailpoint/v2024/docs/Expression.md
 sailpoint/v2024/docs/ExpressionChildrenInner.md
@@ -698,11 +682,9 @@ sailpoint/v2024/docs/ManagerCorrelationMapping.md
 sailpoint/v2024/docs/ManualDiscoverApplications.md
 sailpoint/v2024/docs/ManualDiscoverApplicationsTemplate.md
 sailpoint/v2024/docs/ManualWorkItemDetails.md
-sailpoint/v2024/docs/ManualWorkItemDetails1.md
 sailpoint/v2024/docs/ManualWorkItemDetailsCurrentOwner.md
 sailpoint/v2024/docs/ManualWorkItemDetailsOriginalOwner.md
 sailpoint/v2024/docs/ManualWorkItemState.md
-sailpoint/v2024/docs/ManuallyUpdatedFieldsDTO.md
 sailpoint/v2024/docs/MatchTerm.md
 sailpoint/v2024/docs/Medium.md
 sailpoint/v2024/docs/MembershipType.md
@@ -772,7 +754,6 @@ sailpoint/v2024/docs/OutlierSummary.md
 sailpoint/v2024/docs/OutliersContributingFeatureAccessItems.md
 sailpoint/v2024/docs/OwnerDto.md
 sailpoint/v2024/docs/OwnerReference.md
-sailpoint/v2024/docs/OwnerReferenceDto.md
 sailpoint/v2024/docs/OwnerReferenceSegments.md
 sailpoint/v2024/docs/Owns.md
 sailpoint/v2024/docs/PasswordChangeRequest.md
@@ -816,9 +797,6 @@ sailpoint/v2024/docs/ProvisioningCompletedAccountRequestsInnerSource.md
 sailpoint/v2024/docs/ProvisioningCompletedRecipient.md
 sailpoint/v2024/docs/ProvisioningCompletedRequester.md
 sailpoint/v2024/docs/ProvisioningConfig.md
-sailpoint/v2024/docs/ProvisioningConfig1.md
-sailpoint/v2024/docs/ProvisioningConfig1ManagedResourceRefsInner.md
-sailpoint/v2024/docs/ProvisioningConfig1PlanInitializerScript.md
 sailpoint/v2024/docs/ProvisioningConfigPlanInitializerScript.md
 sailpoint/v2024/docs/ProvisioningCriteriaLevel1.md
 sailpoint/v2024/docs/ProvisioningCriteriaLevel2.md
@@ -846,7 +824,6 @@ sailpoint/v2024/docs/QueuedCheckConfigDetails.md
 sailpoint/v2024/docs/Range.md
 sailpoint/v2024/docs/ReassignReference.md
 sailpoint/v2024/docs/Reassignment.md
-sailpoint/v2024/docs/Reassignment1.md
 sailpoint/v2024/docs/ReassignmentReference.md
 sailpoint/v2024/docs/ReassignmentTrailDTO.md
 sailpoint/v2024/docs/ReassignmentType.md
@@ -900,7 +877,6 @@ sailpoint/v2024/docs/ReviewableEntitlementAccount.md
 sailpoint/v2024/docs/ReviewableEntitlementAccountOwner.md
 sailpoint/v2024/docs/ReviewableRole.md
 sailpoint/v2024/docs/Reviewer.md
-sailpoint/v2024/docs/Reviewer1.md
 sailpoint/v2024/docs/Revocability.md
 sailpoint/v2024/docs/RevocabilityForRole.md
 sailpoint/v2024/docs/Role.md
@@ -1039,7 +1015,6 @@ sailpoint/v2024/docs/SendAccountVerificationRequest.md
 sailpoint/v2024/docs/SendTestNotificationRequestDto.md
 sailpoint/v2024/docs/ServiceDeskIntegrationApi.md
 sailpoint/v2024/docs/ServiceDeskIntegrationDto.md
-sailpoint/v2024/docs/ServiceDeskIntegrationDto1.md
 sailpoint/v2024/docs/ServiceDeskIntegrationTemplateDto.md
 sailpoint/v2024/docs/ServiceDeskIntegrationTemplateType.md
 sailpoint/v2024/docs/ServiceDeskSource.md
@@ -1052,7 +1027,6 @@ sailpoint/v2024/docs/SimIntegrationDetailsAllOfBeforeProvisioningRule.md
 sailpoint/v2024/docs/SlimCampaign.md
 sailpoint/v2024/docs/SlimDiscoveredApplications.md
 sailpoint/v2024/docs/SodExemptCriteria.md
-sailpoint/v2024/docs/SodExemptCriteria1.md
 sailpoint/v2024/docs/SodPolicy.md
 sailpoint/v2024/docs/SodPolicyConflictingAccessCriteria.md
 sailpoint/v2024/docs/SodPolicyDto.md
@@ -1062,13 +1036,8 @@ sailpoint/v2024/docs/SodRecipient.md
 sailpoint/v2024/docs/SodReportResultDto.md
 sailpoint/v2024/docs/SodViolationCheck.md
 sailpoint/v2024/docs/SodViolationCheckResult.md
-sailpoint/v2024/docs/SodViolationCheckResult1.md
 sailpoint/v2024/docs/SodViolationContext.md
-sailpoint/v2024/docs/SodViolationContext1.md
-sailpoint/v2024/docs/SodViolationContext1ConflictingAccessCriteria.md
-sailpoint/v2024/docs/SodViolationContext1ConflictingAccessCriteriaLeftCriteria.md
 sailpoint/v2024/docs/SodViolationContextCheckCompleted.md
-sailpoint/v2024/docs/SodViolationContextCheckCompleted1.md
 sailpoint/v2024/docs/SodViolationContextConflictingAccessCriteria.md
 sailpoint/v2024/docs/SodViolationContextConflictingAccessCriteriaLeftCriteria.md
 sailpoint/v2024/docs/Source.md
@@ -1292,8 +1261,6 @@ sailpoint/v2024/models/access_profile_usage_used_by_inner.py
 sailpoint/v2024/models/access_recommendation_message.py
 sailpoint/v2024/models/access_request.py
 sailpoint/v2024/models/access_request_admin_item_status.py
-sailpoint/v2024/models/access_request_admin_item_status_cancelled_request_details.py
-sailpoint/v2024/models/access_request_admin_item_status_sod_violation_context.py
 sailpoint/v2024/models/access_request_approvers_list_response.py
 sailpoint/v2024/models/access_request_config.py
 sailpoint/v2024/models/access_request_context.py
@@ -1397,7 +1364,6 @@ sailpoint/v2024/models/approval_comment1.py
 sailpoint/v2024/models/approval_comment2.py
 sailpoint/v2024/models/approval_description.py
 sailpoint/v2024/models/approval_forward_history.py
-sailpoint/v2024/models/approval_forward_history1.py
 sailpoint/v2024/models/approval_identity.py
 sailpoint/v2024/models/approval_info_response.py
 sailpoint/v2024/models/approval_item_details.py
@@ -1409,7 +1375,6 @@ sailpoint/v2024/models/approval_scheme.py
 sailpoint/v2024/models/approval_scheme_for_role.py
 sailpoint/v2024/models/approval_status.py
 sailpoint/v2024/models/approval_status_dto.py
-sailpoint/v2024/models/approval_status_dto1.py
 sailpoint/v2024/models/approval_status_dto_current_owner.py
 sailpoint/v2024/models/approval_status_dto_original_owner.py
 sailpoint/v2024/models/approval_summary.py
@@ -1440,11 +1405,9 @@ sailpoint/v2024/models/base_access_owner.py
 sailpoint/v2024/models/base_access_profile.py
 sailpoint/v2024/models/base_account.py
 sailpoint/v2024/models/base_common_dto.py
-sailpoint/v2024/models/base_common_dto1.py
 sailpoint/v2024/models/base_document.py
 sailpoint/v2024/models/base_entitlement.py
 sailpoint/v2024/models/base_reference_dto.py
-sailpoint/v2024/models/base_reference_dto1.py
 sailpoint/v2024/models/base_segment.py
 sailpoint/v2024/models/basic_auth_config.py
 sailpoint/v2024/models/bearer_token_auth_config.py
@@ -1489,15 +1452,12 @@ sailpoint/v2024/models/campaign_template_owner_ref.py
 sailpoint/v2024/models/campaigns_delete_request.py
 sailpoint/v2024/models/cancel_access_request.py
 sailpoint/v2024/models/cancelled_request_details.py
-sailpoint/v2024/models/cancelled_request_details1.py
 sailpoint/v2024/models/certification.py
 sailpoint/v2024/models/certification_decision.py
 sailpoint/v2024/models/certification_dto.py
 sailpoint/v2024/models/certification_identity_summary.py
 sailpoint/v2024/models/certification_phase.py
 sailpoint/v2024/models/certification_reference.py
-sailpoint/v2024/models/certification_reference1.py
-sailpoint/v2024/models/certification_reference_dto.py
 sailpoint/v2024/models/certification_signed_off.py
 sailpoint/v2024/models/certification_signed_off_certification.py
 sailpoint/v2024/models/certification_task.py
@@ -1541,7 +1501,6 @@ sailpoint/v2024/models/conflicting_access_criteria.py
 sailpoint/v2024/models/connected_object.py
 sailpoint/v2024/models/connected_object_type.py
 sailpoint/v2024/models/connector_detail.py
-sailpoint/v2024/models/connector_detail1.py
 sailpoint/v2024/models/connector_rule_create_request.py
 sailpoint/v2024/models/connector_rule_create_request_signature.py
 sailpoint/v2024/models/connector_rule_response.py
@@ -1599,11 +1558,6 @@ sailpoint/v2024/models/dto_type.py
 sailpoint/v2024/models/email_notification_option.py
 sailpoint/v2024/models/email_status_dto.py
 sailpoint/v2024/models/entitlement.py
-sailpoint/v2024/models/entitlement1.py
-sailpoint/v2024/models/entitlement1_access_model_metadata.py
-sailpoint/v2024/models/entitlement1_manually_updated_fields.py
-sailpoint/v2024/models/entitlement1_owner.py
-sailpoint/v2024/models/entitlement1_source.py
 sailpoint/v2024/models/entitlement_access_model_metadata.py
 sailpoint/v2024/models/entitlement_access_request_config.py
 sailpoint/v2024/models/entitlement_approval_scheme.py
@@ -1616,7 +1570,6 @@ sailpoint/v2024/models/entitlement_owner.py
 sailpoint/v2024/models/entitlement_ref.py
 sailpoint/v2024/models/entitlement_ref1.py
 sailpoint/v2024/models/entitlement_request_config.py
-sailpoint/v2024/models/entitlement_request_config1.py
 sailpoint/v2024/models/entitlement_source.py
 sailpoint/v2024/models/entitlement_source_reset_base_reference_dto.py
 sailpoint/v2024/models/entitlement_summary.py
@@ -1624,7 +1577,6 @@ sailpoint/v2024/models/entity_created_by_dto.py
 sailpoint/v2024/models/error.py
 sailpoint/v2024/models/error_message.py
 sailpoint/v2024/models/error_message_dto.py
-sailpoint/v2024/models/error_message_dto1.py
 sailpoint/v2024/models/error_response_dto.py
 sailpoint/v2024/models/evaluate_response.py
 sailpoint/v2024/models/event.py
@@ -1641,6 +1593,7 @@ sailpoint/v2024/models/execution_status.py
 sailpoint/v2024/models/expansion_item.py
 sailpoint/v2024/models/export_form_definitions_by_tenant200_response_inner.py
 sailpoint/v2024/models/export_options.py
+sailpoint/v2024/models/export_options1.py
 sailpoint/v2024/models/export_payload.py
 sailpoint/v2024/models/expression.py
 sailpoint/v2024/models/expression_children_inner.py
@@ -1811,11 +1764,9 @@ sailpoint/v2024/models/manager_correlation_mapping.py
 sailpoint/v2024/models/manual_discover_applications.py
 sailpoint/v2024/models/manual_discover_applications_template.py
 sailpoint/v2024/models/manual_work_item_details.py
-sailpoint/v2024/models/manual_work_item_details1.py
 sailpoint/v2024/models/manual_work_item_details_current_owner.py
 sailpoint/v2024/models/manual_work_item_details_original_owner.py
 sailpoint/v2024/models/manual_work_item_state.py
-sailpoint/v2024/models/manually_updated_fields_dto.py
 sailpoint/v2024/models/match_term.py
 sailpoint/v2024/models/medium.py
 sailpoint/v2024/models/membership_type.py
@@ -1881,7 +1832,6 @@ sailpoint/v2024/models/outlier_summary.py
 sailpoint/v2024/models/outliers_contributing_feature_access_items.py
 sailpoint/v2024/models/owner_dto.py
 sailpoint/v2024/models/owner_reference.py
-sailpoint/v2024/models/owner_reference_dto.py
 sailpoint/v2024/models/owner_reference_segments.py
 sailpoint/v2024/models/owns.py
 sailpoint/v2024/models/password_change_request.py
@@ -1919,9 +1869,6 @@ sailpoint/v2024/models/provisioning_completed_account_requests_inner_source.py
 sailpoint/v2024/models/provisioning_completed_recipient.py
 sailpoint/v2024/models/provisioning_completed_requester.py
 sailpoint/v2024/models/provisioning_config.py
-sailpoint/v2024/models/provisioning_config1.py
-sailpoint/v2024/models/provisioning_config1_managed_resource_refs_inner.py
-sailpoint/v2024/models/provisioning_config1_plan_initializer_script.py
 sailpoint/v2024/models/provisioning_config_plan_initializer_script.py
 sailpoint/v2024/models/provisioning_criteria_level1.py
 sailpoint/v2024/models/provisioning_criteria_level2.py
@@ -1947,7 +1894,6 @@ sailpoint/v2024/models/queued_check_config_details.py
 sailpoint/v2024/models/range.py
 sailpoint/v2024/models/reassign_reference.py
 sailpoint/v2024/models/reassignment.py
-sailpoint/v2024/models/reassignment1.py
 sailpoint/v2024/models/reassignment_reference.py
 sailpoint/v2024/models/reassignment_trail_dto.py
 sailpoint/v2024/models/reassignment_type.py
@@ -1999,7 +1945,6 @@ sailpoint/v2024/models/reviewable_entitlement_account.py
 sailpoint/v2024/models/reviewable_entitlement_account_owner.py
 sailpoint/v2024/models/reviewable_role.py
 sailpoint/v2024/models/reviewer.py
-sailpoint/v2024/models/reviewer1.py
 sailpoint/v2024/models/revocability.py
 sailpoint/v2024/models/revocability_for_role.py
 sailpoint/v2024/models/role.py
@@ -2126,7 +2071,6 @@ sailpoint/v2024/models/self_import_export_dto.py
 sailpoint/v2024/models/send_account_verification_request.py
 sailpoint/v2024/models/send_test_notification_request_dto.py
 sailpoint/v2024/models/service_desk_integration_dto.py
-sailpoint/v2024/models/service_desk_integration_dto1.py
 sailpoint/v2024/models/service_desk_integration_template_dto.py
 sailpoint/v2024/models/service_desk_integration_template_type.py
 sailpoint/v2024/models/service_desk_source.py
@@ -2139,7 +2083,6 @@ sailpoint/v2024/models/sim_integration_details_all_of_before_provisioning_rule.p
 sailpoint/v2024/models/slim_campaign.py
 sailpoint/v2024/models/slim_discovered_applications.py
 sailpoint/v2024/models/sod_exempt_criteria.py
-sailpoint/v2024/models/sod_exempt_criteria1.py
 sailpoint/v2024/models/sod_policy.py
 sailpoint/v2024/models/sod_policy_conflicting_access_criteria.py
 sailpoint/v2024/models/sod_policy_dto.py
@@ -2149,13 +2092,8 @@ sailpoint/v2024/models/sod_recipient.py
 sailpoint/v2024/models/sod_report_result_dto.py
 sailpoint/v2024/models/sod_violation_check.py
 sailpoint/v2024/models/sod_violation_check_result.py
-sailpoint/v2024/models/sod_violation_check_result1.py
 sailpoint/v2024/models/sod_violation_context.py
-sailpoint/v2024/models/sod_violation_context1.py
-sailpoint/v2024/models/sod_violation_context1_conflicting_access_criteria.py
-sailpoint/v2024/models/sod_violation_context1_conflicting_access_criteria_left_criteria.py
 sailpoint/v2024/models/sod_violation_context_check_completed.py
-sailpoint/v2024/models/sod_violation_context_check_completed1.py
 sailpoint/v2024/models/sod_violation_context_conflicting_access_criteria.py
 sailpoint/v2024/models/sod_violation_context_conflicting_access_criteria_left_criteria.py
 sailpoint/v2024/models/source.py
@@ -2368,8 +2306,6 @@ sailpoint/v2024/test/test_access_profiles_api.py
 sailpoint/v2024/test/test_access_recommendation_message.py
 sailpoint/v2024/test/test_access_request.py
 sailpoint/v2024/test/test_access_request_admin_item_status.py
-sailpoint/v2024/test/test_access_request_admin_item_status_cancelled_request_details.py
-sailpoint/v2024/test/test_access_request_admin_item_status_sod_violation_context.py
 sailpoint/v2024/test/test_access_request_approvals_api.py
 sailpoint/v2024/test/test_access_request_approvers_list_response.py
 sailpoint/v2024/test/test_access_request_config.py
@@ -2481,7 +2417,6 @@ sailpoint/v2024/test/test_approval_comment1.py
 sailpoint/v2024/test/test_approval_comment2.py
 sailpoint/v2024/test/test_approval_description.py
 sailpoint/v2024/test/test_approval_forward_history.py
-sailpoint/v2024/test/test_approval_forward_history1.py
 sailpoint/v2024/test/test_approval_identity.py
 sailpoint/v2024/test/test_approval_info_response.py
 sailpoint/v2024/test/test_approval_item_details.py
@@ -2493,7 +2428,6 @@ sailpoint/v2024/test/test_approval_scheme.py
 sailpoint/v2024/test/test_approval_scheme_for_role.py
 sailpoint/v2024/test/test_approval_status.py
 sailpoint/v2024/test/test_approval_status_dto.py
-sailpoint/v2024/test/test_approval_status_dto1.py
 sailpoint/v2024/test/test_approval_status_dto_current_owner.py
 sailpoint/v2024/test/test_approval_status_dto_original_owner.py
 sailpoint/v2024/test/test_approval_summary.py
@@ -2528,11 +2462,9 @@ sailpoint/v2024/test/test_base_access_owner.py
 sailpoint/v2024/test/test_base_access_profile.py
 sailpoint/v2024/test/test_base_account.py
 sailpoint/v2024/test/test_base_common_dto.py
-sailpoint/v2024/test/test_base_common_dto1.py
 sailpoint/v2024/test/test_base_document.py
 sailpoint/v2024/test/test_base_entitlement.py
 sailpoint/v2024/test/test_base_reference_dto.py
-sailpoint/v2024/test/test_base_reference_dto1.py
 sailpoint/v2024/test/test_base_segment.py
 sailpoint/v2024/test/test_basic_auth_config.py
 sailpoint/v2024/test/test_bearer_token_auth_config.py
@@ -2578,7 +2510,6 @@ sailpoint/v2024/test/test_campaign_template_owner_ref.py
 sailpoint/v2024/test/test_campaigns_delete_request.py
 sailpoint/v2024/test/test_cancel_access_request.py
 sailpoint/v2024/test/test_cancelled_request_details.py
-sailpoint/v2024/test/test_cancelled_request_details1.py
 sailpoint/v2024/test/test_certification.py
 sailpoint/v2024/test/test_certification_campaign_filters_api.py
 sailpoint/v2024/test/test_certification_campaigns_api.py
@@ -2587,8 +2518,6 @@ sailpoint/v2024/test/test_certification_dto.py
 sailpoint/v2024/test/test_certification_identity_summary.py
 sailpoint/v2024/test/test_certification_phase.py
 sailpoint/v2024/test/test_certification_reference.py
-sailpoint/v2024/test/test_certification_reference1.py
-sailpoint/v2024/test/test_certification_reference_dto.py
 sailpoint/v2024/test/test_certification_signed_off.py
 sailpoint/v2024/test/test_certification_signed_off_certification.py
 sailpoint/v2024/test/test_certification_summaries_api.py
@@ -2635,7 +2564,6 @@ sailpoint/v2024/test/test_conflicting_access_criteria.py
 sailpoint/v2024/test/test_connected_object.py
 sailpoint/v2024/test/test_connected_object_type.py
 sailpoint/v2024/test/test_connector_detail.py
-sailpoint/v2024/test/test_connector_detail1.py
 sailpoint/v2024/test/test_connector_rule_create_request.py
 sailpoint/v2024/test/test_connector_rule_create_request_signature.py
 sailpoint/v2024/test/test_connector_rule_management_api.py
@@ -2699,11 +2627,6 @@ sailpoint/v2024/test/test_dto_type.py
 sailpoint/v2024/test/test_email_notification_option.py
 sailpoint/v2024/test/test_email_status_dto.py
 sailpoint/v2024/test/test_entitlement.py
-sailpoint/v2024/test/test_entitlement1.py
-sailpoint/v2024/test/test_entitlement1_access_model_metadata.py
-sailpoint/v2024/test/test_entitlement1_manually_updated_fields.py
-sailpoint/v2024/test/test_entitlement1_owner.py
-sailpoint/v2024/test/test_entitlement1_source.py
 sailpoint/v2024/test/test_entitlement_access_model_metadata.py
 sailpoint/v2024/test/test_entitlement_access_request_config.py
 sailpoint/v2024/test/test_entitlement_approval_scheme.py
@@ -2716,7 +2639,6 @@ sailpoint/v2024/test/test_entitlement_owner.py
 sailpoint/v2024/test/test_entitlement_ref.py
 sailpoint/v2024/test/test_entitlement_ref1.py
 sailpoint/v2024/test/test_entitlement_request_config.py
-sailpoint/v2024/test/test_entitlement_request_config1.py
 sailpoint/v2024/test/test_entitlement_source.py
 sailpoint/v2024/test/test_entitlement_source_reset_base_reference_dto.py
 sailpoint/v2024/test/test_entitlement_summary.py
@@ -2725,7 +2647,6 @@ sailpoint/v2024/test/test_entity_created_by_dto.py
 sailpoint/v2024/test/test_error.py
 sailpoint/v2024/test/test_error_message.py
 sailpoint/v2024/test/test_error_message_dto.py
-sailpoint/v2024/test/test_error_message_dto1.py
 sailpoint/v2024/test/test_error_response_dto.py
 sailpoint/v2024/test/test_evaluate_response.py
 sailpoint/v2024/test/test_event.py
@@ -2742,6 +2663,7 @@ sailpoint/v2024/test/test_execution_status.py
 sailpoint/v2024/test/test_expansion_item.py
 sailpoint/v2024/test/test_export_form_definitions_by_tenant200_response_inner.py
 sailpoint/v2024/test/test_export_options.py
+sailpoint/v2024/test/test_export_options1.py
 sailpoint/v2024/test/test_export_payload.py
 sailpoint/v2024/test/test_expression.py
 sailpoint/v2024/test/test_expression_children_inner.py
@@ -2930,11 +2852,9 @@ sailpoint/v2024/test/test_manager_correlation_mapping.py
 sailpoint/v2024/test/test_manual_discover_applications.py
 sailpoint/v2024/test/test_manual_discover_applications_template.py
 sailpoint/v2024/test/test_manual_work_item_details.py
-sailpoint/v2024/test/test_manual_work_item_details1.py
 sailpoint/v2024/test/test_manual_work_item_details_current_owner.py
 sailpoint/v2024/test/test_manual_work_item_details_original_owner.py
 sailpoint/v2024/test/test_manual_work_item_state.py
-sailpoint/v2024/test/test_manually_updated_fields_dto.py
 sailpoint/v2024/test/test_match_term.py
 sailpoint/v2024/test/test_medium.py
 sailpoint/v2024/test/test_membership_type.py
@@ -3005,7 +2925,6 @@ sailpoint/v2024/test/test_outlier_summary.py
 sailpoint/v2024/test/test_outliers_contributing_feature_access_items.py
 sailpoint/v2024/test/test_owner_dto.py
 sailpoint/v2024/test/test_owner_reference.py
-sailpoint/v2024/test/test_owner_reference_dto.py
 sailpoint/v2024/test/test_owner_reference_segments.py
 sailpoint/v2024/test/test_owns.py
 sailpoint/v2024/test/test_password_change_request.py
@@ -3049,9 +2968,6 @@ sailpoint/v2024/test/test_provisioning_completed_account_requests_inner_source.p
 sailpoint/v2024/test/test_provisioning_completed_recipient.py
 sailpoint/v2024/test/test_provisioning_completed_requester.py
 sailpoint/v2024/test/test_provisioning_config.py
-sailpoint/v2024/test/test_provisioning_config1.py
-sailpoint/v2024/test/test_provisioning_config1_managed_resource_refs_inner.py
-sailpoint/v2024/test/test_provisioning_config1_plan_initializer_script.py
 sailpoint/v2024/test/test_provisioning_config_plan_initializer_script.py
 sailpoint/v2024/test/test_provisioning_criteria_level1.py
 sailpoint/v2024/test/test_provisioning_criteria_level2.py
@@ -3079,7 +2995,6 @@ sailpoint/v2024/test/test_queued_check_config_details.py
 sailpoint/v2024/test/test_range.py
 sailpoint/v2024/test/test_reassign_reference.py
 sailpoint/v2024/test/test_reassignment.py
-sailpoint/v2024/test/test_reassignment1.py
 sailpoint/v2024/test/test_reassignment_reference.py
 sailpoint/v2024/test/test_reassignment_trail_dto.py
 sailpoint/v2024/test/test_reassignment_type.py
@@ -3133,7 +3048,6 @@ sailpoint/v2024/test/test_reviewable_entitlement_account.py
 sailpoint/v2024/test/test_reviewable_entitlement_account_owner.py
 sailpoint/v2024/test/test_reviewable_role.py
 sailpoint/v2024/test/test_reviewer.py
-sailpoint/v2024/test/test_reviewer1.py
 sailpoint/v2024/test/test_revocability.py
 sailpoint/v2024/test/test_revocability_for_role.py
 sailpoint/v2024/test/test_role.py
@@ -3268,7 +3182,6 @@ sailpoint/v2024/test/test_send_account_verification_request.py
 sailpoint/v2024/test/test_send_test_notification_request_dto.py
 sailpoint/v2024/test/test_service_desk_integration_api.py
 sailpoint/v2024/test/test_service_desk_integration_dto.py
-sailpoint/v2024/test/test_service_desk_integration_dto1.py
 sailpoint/v2024/test/test_service_desk_integration_template_dto.py
 sailpoint/v2024/test/test_service_desk_integration_template_type.py
 sailpoint/v2024/test/test_service_desk_source.py
@@ -3282,7 +3195,6 @@ sailpoint/v2024/test/test_sim_integrations_api.py
 sailpoint/v2024/test/test_slim_campaign.py
 sailpoint/v2024/test/test_slim_discovered_applications.py
 sailpoint/v2024/test/test_sod_exempt_criteria.py
-sailpoint/v2024/test/test_sod_exempt_criteria1.py
 sailpoint/v2024/test/test_sod_policies_api.py
 sailpoint/v2024/test/test_sod_policy.py
 sailpoint/v2024/test/test_sod_policy_conflicting_access_criteria.py
@@ -3293,13 +3205,8 @@ sailpoint/v2024/test/test_sod_recipient.py
 sailpoint/v2024/test/test_sod_report_result_dto.py
 sailpoint/v2024/test/test_sod_violation_check.py
 sailpoint/v2024/test/test_sod_violation_check_result.py
-sailpoint/v2024/test/test_sod_violation_check_result1.py
 sailpoint/v2024/test/test_sod_violation_context.py
-sailpoint/v2024/test/test_sod_violation_context1.py
-sailpoint/v2024/test/test_sod_violation_context1_conflicting_access_criteria.py
-sailpoint/v2024/test/test_sod_violation_context1_conflicting_access_criteria_left_criteria.py
 sailpoint/v2024/test/test_sod_violation_context_check_completed.py
-sailpoint/v2024/test/test_sod_violation_context_check_completed1.py
 sailpoint/v2024/test/test_sod_violation_context_conflicting_access_criteria.py
 sailpoint/v2024/test/test_sod_violation_context_conflicting_access_criteria_left_criteria.py
 sailpoint/v2024/test/test_sod_violations_api.py
