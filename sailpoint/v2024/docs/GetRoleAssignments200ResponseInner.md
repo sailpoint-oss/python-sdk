@@ -9,9 +9,9 @@ Name | Type | Description | Notes
 **role** | [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
 **comments** | **str** | Comments added by the user when the assignment was made | [optional] 
 **assignment_source** | **str** | Source describing how this assignment was made | [optional] 
-**assigner** | [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
+**assigner** | [**RoleAssignmentDtoAssigner**](RoleAssignmentDtoAssigner.md) |  | [optional] 
 **assigned_dimensions** | [**List[BaseReferenceDto]**](BaseReferenceDto.md) | Dimensions assigned related to this role | [optional] 
-**assignment_context** | [**AssignmentContextDto**](AssignmentContextDto.md) |  | [optional] 
+**assignment_context** | [**RoleAssignmentDtoAssignmentContext**](RoleAssignmentDtoAssignmentContext.md) |  | [optional] 
 **account_targets** | [**List[RoleTargetDto]**](RoleTargetDto.md) |  | [optional] 
 **remove_date** | **str** | Date that the assignment will be removed | [optional] 
 

@@ -40,7 +40,7 @@ class AccessRequestAdminItemStatus(BaseModel):
     """
     AccessRequestAdminItemStatus
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(default=None, description="ID of the access request")
+    id: Optional[StrictStr] = Field(default=None, description="ID of the access request. This is a new property as of 2025. Older access requests may not have an ID.")
     name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of the item being requested.")
     type: Optional[StrictStr] = Field(default=None, description="Type of requested object.")
     cancelled_request_details: Optional[RequestedItemStatusCancelledRequestDetails] = Field(default=None, alias="cancelledRequestDetails")
@@ -167,6 +167,11 @@ class AccessRequestAdminItemStatus(BaseModel):
                 if _item_access_request_phases:
                     _items.append(_item_access_request_phases.to_dict())
             _dict['accessRequestPhases'] = _items
+        # set to None if id (nullable) is None
+        # and model_fields_set contains the field
+        if self.id is None and "id" in self.model_fields_set:
+            _dict['id'] = None
+
         # set to None if name (nullable) is None
         # and model_fields_set contains the field
         if self.name is None and "name" in self.model_fields_set:

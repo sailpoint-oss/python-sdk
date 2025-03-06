@@ -319,6 +319,7 @@ sailpoint/v2024/docs/CampaignAllOfFilter.md
 sailpoint/v2024/docs/CampaignAllOfMachineAccountCampaignInfo.md
 sailpoint/v2024/docs/CampaignAllOfRoleCompositionCampaignInfo.md
 sailpoint/v2024/docs/CampaignAllOfRoleCompositionCampaignInfoRemediatorRef.md
+sailpoint/v2024/docs/CampaignAllOfRoleCompositionCampaignInfoReviewer.md
 sailpoint/v2024/docs/CampaignAllOfSearchCampaignInfo.md
 sailpoint/v2024/docs/CampaignAllOfSearchCampaignInfoReviewer.md
 sailpoint/v2024/docs/CampaignAllOfSourceOwnerCampaignInfo.md
@@ -746,11 +747,11 @@ sailpoint/v2024/docs/OriginalRequest.md
 sailpoint/v2024/docs/OrphanIdentitiesReportArguments.md
 sailpoint/v2024/docs/Outlier.md
 sailpoint/v2024/docs/OutlierContributingFeature.md
-sailpoint/v2024/docs/OutlierContributingFeatureValue.md
 sailpoint/v2024/docs/OutlierFeatureSummary.md
 sailpoint/v2024/docs/OutlierFeatureSummaryOutlierFeatureDisplayValuesInner.md
 sailpoint/v2024/docs/OutlierFeatureTranslation.md
 sailpoint/v2024/docs/OutlierSummary.md
+sailpoint/v2024/docs/OutlierValueType.md
 sailpoint/v2024/docs/OutliersContributingFeatureAccessItems.md
 sailpoint/v2024/docs/OwnerDto.md
 sailpoint/v2024/docs/OwnerReference.md
@@ -881,6 +882,8 @@ sailpoint/v2024/docs/Revocability.md
 sailpoint/v2024/docs/RevocabilityForRole.md
 sailpoint/v2024/docs/Role.md
 sailpoint/v2024/docs/RoleAssignmentDto.md
+sailpoint/v2024/docs/RoleAssignmentDtoAssigner.md
+sailpoint/v2024/docs/RoleAssignmentDtoAssignmentContext.md
 sailpoint/v2024/docs/RoleAssignmentRef.md
 sailpoint/v2024/docs/RoleAssignmentSourceType.md
 sailpoint/v2024/docs/RoleBulkDeleteRequest.md
@@ -1210,6 +1213,7 @@ sailpoint/v2024/docs/WorkflowTriggerAttributes.md
 sailpoint/v2024/docs/WorkflowsApi.md
 sailpoint/v2024/docs/WorkgroupBulkDeleteRequest.md
 sailpoint/v2024/docs/WorkgroupConnectionDto.md
+sailpoint/v2024/docs/WorkgroupConnectionDtoObject.md
 sailpoint/v2024/docs/WorkgroupDeleteItem.md
 sailpoint/v2024/docs/WorkgroupDto.md
 sailpoint/v2024/docs/WorkgroupDtoOwner.md
@@ -1432,6 +1436,7 @@ sailpoint/v2024/models/campaign_all_of_filter.py
 sailpoint/v2024/models/campaign_all_of_machine_account_campaign_info.py
 sailpoint/v2024/models/campaign_all_of_role_composition_campaign_info.py
 sailpoint/v2024/models/campaign_all_of_role_composition_campaign_info_remediator_ref.py
+sailpoint/v2024/models/campaign_all_of_role_composition_campaign_info_reviewer.py
 sailpoint/v2024/models/campaign_all_of_search_campaign_info.py
 sailpoint/v2024/models/campaign_all_of_search_campaign_info_reviewer.py
 sailpoint/v2024/models/campaign_all_of_source_owner_campaign_info.py
@@ -1824,11 +1829,11 @@ sailpoint/v2024/models/original_request.py
 sailpoint/v2024/models/orphan_identities_report_arguments.py
 sailpoint/v2024/models/outlier.py
 sailpoint/v2024/models/outlier_contributing_feature.py
-sailpoint/v2024/models/outlier_contributing_feature_value.py
 sailpoint/v2024/models/outlier_feature_summary.py
 sailpoint/v2024/models/outlier_feature_summary_outlier_feature_display_values_inner.py
 sailpoint/v2024/models/outlier_feature_translation.py
 sailpoint/v2024/models/outlier_summary.py
+sailpoint/v2024/models/outlier_value_type.py
 sailpoint/v2024/models/outliers_contributing_feature_access_items.py
 sailpoint/v2024/models/owner_dto.py
 sailpoint/v2024/models/owner_reference.py
@@ -1949,6 +1954,8 @@ sailpoint/v2024/models/revocability.py
 sailpoint/v2024/models/revocability_for_role.py
 sailpoint/v2024/models/role.py
 sailpoint/v2024/models/role_assignment_dto.py
+sailpoint/v2024/models/role_assignment_dto_assigner.py
+sailpoint/v2024/models/role_assignment_dto_assignment_context.py
 sailpoint/v2024/models/role_assignment_ref.py
 sailpoint/v2024/models/role_assignment_source_type.py
 sailpoint/v2024/models/role_bulk_delete_request.py
@@ -2253,6 +2260,7 @@ sailpoint/v2024/models/workflow_trigger.py
 sailpoint/v2024/models/workflow_trigger_attributes.py
 sailpoint/v2024/models/workgroup_bulk_delete_request.py
 sailpoint/v2024/models/workgroup_connection_dto.py
+sailpoint/v2024/models/workgroup_connection_dto_object.py
 sailpoint/v2024/models/workgroup_delete_item.py
 sailpoint/v2024/models/workgroup_dto.py
 sailpoint/v2024/models/workgroup_dto_owner.py
@@ -2490,6 +2498,7 @@ sailpoint/v2024/test/test_campaign_all_of_filter.py
 sailpoint/v2024/test/test_campaign_all_of_machine_account_campaign_info.py
 sailpoint/v2024/test/test_campaign_all_of_role_composition_campaign_info.py
 sailpoint/v2024/test/test_campaign_all_of_role_composition_campaign_info_remediator_ref.py
+sailpoint/v2024/test/test_campaign_all_of_role_composition_campaign_info_reviewer.py
 sailpoint/v2024/test/test_campaign_all_of_search_campaign_info.py
 sailpoint/v2024/test/test_campaign_all_of_search_campaign_info_reviewer.py
 sailpoint/v2024/test/test_campaign_all_of_source_owner_campaign_info.py
@@ -2917,11 +2926,11 @@ sailpoint/v2024/test/test_original_request.py
 sailpoint/v2024/test/test_orphan_identities_report_arguments.py
 sailpoint/v2024/test/test_outlier.py
 sailpoint/v2024/test/test_outlier_contributing_feature.py
-sailpoint/v2024/test/test_outlier_contributing_feature_value.py
 sailpoint/v2024/test/test_outlier_feature_summary.py
 sailpoint/v2024/test/test_outlier_feature_summary_outlier_feature_display_values_inner.py
 sailpoint/v2024/test/test_outlier_feature_translation.py
 sailpoint/v2024/test/test_outlier_summary.py
+sailpoint/v2024/test/test_outlier_value_type.py
 sailpoint/v2024/test/test_outliers_contributing_feature_access_items.py
 sailpoint/v2024/test/test_owner_dto.py
 sailpoint/v2024/test/test_owner_reference.py
@@ -3052,6 +3061,8 @@ sailpoint/v2024/test/test_revocability.py
 sailpoint/v2024/test/test_revocability_for_role.py
 sailpoint/v2024/test/test_role.py
 sailpoint/v2024/test/test_role_assignment_dto.py
+sailpoint/v2024/test/test_role_assignment_dto_assigner.py
+sailpoint/v2024/test/test_role_assignment_dto_assignment_context.py
 sailpoint/v2024/test/test_role_assignment_ref.py
 sailpoint/v2024/test/test_role_assignment_source_type.py
 sailpoint/v2024/test/test_role_bulk_delete_request.py
@@ -3381,6 +3392,7 @@ sailpoint/v2024/test/test_workflow_trigger_attributes.py
 sailpoint/v2024/test/test_workflows_api.py
 sailpoint/v2024/test/test_workgroup_bulk_delete_request.py
 sailpoint/v2024/test/test_workgroup_connection_dto.py
+sailpoint/v2024/test/test_workgroup_connection_dto_object.py
 sailpoint/v2024/test/test_workgroup_delete_item.py
 sailpoint/v2024/test/test_workgroup_dto.py
 sailpoint/v2024/test/test_workgroup_dto_owner.py

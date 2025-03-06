@@ -35,11 +35,7 @@ class TestWorkgroupConnectionDto(unittest.TestCase):
         model = WorkgroupConnectionDto()
         if include_optional:
             return WorkgroupConnectionDto(
-                object = sailpoint.v2024.models.connected_object.ConnectedObject(
-                    type = 'ACCESS_PROFILE', 
-                    id = '2c91808568c529c60168cca6f90c1313', 
-                    name = 'Employee-database-read-write', 
-                    description = 'Collection of entitlements to read/write the employee database.', ),
+                object = None,
                 connection_type = 'AccessRequestReviewer'
             )
         else:

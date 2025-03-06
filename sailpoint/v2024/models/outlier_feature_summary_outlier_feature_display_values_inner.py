@@ -17,8 +17,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.v2024.models.outlier_value_type import OutlierValueType
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,18 +29,8 @@ class OutlierFeatureSummaryOutlierFeatureDisplayValuesInner(BaseModel):
     """ # noqa: E501
     display_name: Optional[StrictStr] = Field(default=None, description="display name", alias="displayName")
     value: Optional[StrictStr] = Field(default=None, description="value")
-    value_type: Optional[StrictStr] = Field(default=None, description="The data type of the value field", alias="valueType")
+    value_type: Optional[OutlierValueType] = Field(default=None, alias="valueType")
     __properties: ClassVar[List[str]] = ["displayName", "value", "valueType"]
-
-    @field_validator('value_type')
-    def value_type_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['INTEGER', 'FLOAT']):
-            raise ValueError("must be one of enum values ('INTEGER', 'FLOAT')")
-        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -80,6 +71,9 @@ class OutlierFeatureSummaryOutlierFeatureDisplayValuesInner(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of value_type
+        if self.value_type:
+            _dict['valueType'] = self.value_type.to_dict()
         return _dict
 
     @classmethod
@@ -94,7 +88,7 @@ class OutlierFeatureSummaryOutlierFeatureDisplayValuesInner(BaseModel):
         _obj = cls.model_validate({
             "displayName": obj.get("displayName"),
             "value": obj.get("value"),
-            "valueType": obj.get("valueType")
+            "valueType": OutlierValueType.from_dict(obj["valueType"]) if obj.get("valueType") is not None else None
         })
         return _obj
 

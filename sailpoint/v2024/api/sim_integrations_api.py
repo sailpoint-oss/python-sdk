@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictStr
+from typing import List
 from typing_extensions import Annotated
 from sailpoint.v2024.models.json_patch import JsonPatch
 from sailpoint.v2024.models.service_desk_integration_dto import ServiceDeskIntegrationDto
@@ -954,7 +955,7 @@ class SIMIntegrationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServiceDeskIntegrationDto:
+    ) -> List[ServiceDeskIntegrationDto]:
         """List the existing SIM integrations.
 
         List the existing SIM integrations.
@@ -992,7 +993,7 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServiceDeskIntegrationDto",
+            '200': "List[ServiceDeskIntegrationDto]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -1027,7 +1028,7 @@ class SIMIntegrationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServiceDeskIntegrationDto]:
+    ) -> ApiResponse[List[ServiceDeskIntegrationDto]]:
         """List the existing SIM integrations.
 
         List the existing SIM integrations.
@@ -1065,7 +1066,7 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServiceDeskIntegrationDto",
+            '200': "List[ServiceDeskIntegrationDto]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -1138,7 +1139,7 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServiceDeskIntegrationDto",
+            '200': "List[ServiceDeskIntegrationDto]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",

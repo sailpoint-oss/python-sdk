@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Contributing feature id | [optional] 
 **name** | **str** | The name of the feature | [optional] 
-**value_type** | **str** | The data type of the value field | [optional] 
-**value** | [**OutlierContributingFeatureValue**](OutlierContributingFeatureValue.md) |  | [optional] 
+**value_type** | [**OutlierValueType**](OutlierValueType.md) |  | [optional] 
+**value** | **float** | The feature value | [optional] 
 **importance** | **float** | The importance of the feature. This can also be a negative value | [optional] 
 **display_name** | **str** | The (translated if header is passed) displayName for the feature | [optional] 
 **description** | **str** | The (translated if header is passed) description for the feature | [optional] 

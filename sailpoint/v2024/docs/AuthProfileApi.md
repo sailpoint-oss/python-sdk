@@ -4,15 +4,15 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v2024*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_profile_config**](AuthProfileApi.md#get_profile_config) | **GET** /auth-profiles/{id} | Get Auth Profile.
-[**get_profile_config_list**](AuthProfileApi.md#get_profile_config_list) | **GET** /auth-profiles | Get list of Auth Profiles.
+[**get_profile_config**](AuthProfileApi.md#get_profile_config) | **GET** /auth-profiles/{id} | Get Auth Profile
+[**get_profile_config_list**](AuthProfileApi.md#get_profile_config_list) | **GET** /auth-profiles | Get list of Auth Profiles
 [**patch_profile_config**](AuthProfileApi.md#patch_profile_config) | **PATCH** /auth-profiles/{id} | Patch a specified Auth Profile
 
 
 # **get_profile_config**
 > AuthProfile get_profile_config(x_sail_point_experimental, id)
 
-Get Auth Profile.
+Get Auth Profile
 
 This API returns auth profile information.
 
@@ -50,7 +50,7 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
     id = '2c91808a7813090a017814121919ecca' # str | ID of the Auth Profile to patch.
 
     try:
-        # Get Auth Profile.
+        # Get Auth Profile
         api_response = api_instance.get_profile_config(x_sail_point_experimental, id)
         print("The response of AuthProfileApi->get_profile_config:\n")
         pprint(api_response)
@@ -96,9 +96,9 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_profile_config_list**
-> AuthProfileSummary get_profile_config_list(x_sail_point_experimental)
+> List[AuthProfileSummary] get_profile_config_list(x_sail_point_experimental)
 
-Get list of Auth Profiles.
+Get list of Auth Profiles
 
 This API returns a list of auth profiles.
 
@@ -135,7 +135,7 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true')
 
     try:
-        # Get list of Auth Profiles.
+        # Get list of Auth Profiles
         api_response = api_instance.get_profile_config_list(x_sail_point_experimental)
         print("The response of AuthProfileApi->get_profile_config_list:\n")
         pprint(api_response)
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AuthProfileSummary**](AuthProfileSummary.md)
+[**List[AuthProfileSummary]**](AuthProfileSummary.md)
 
 ### Authorization
 

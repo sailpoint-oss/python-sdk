@@ -28,7 +28,7 @@ class RoleMiningIdentity(BaseModel):
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="Id of the identity")
     name: Optional[StrictStr] = Field(default=None, description="Name of the identity")
-    attributes: Optional[Dict[str, StrictStr]] = None
+    attributes: Optional[Dict[str, Optional[StrictStr]]] = None
     __properties: ClassVar[List[str]] = ["id", "name", "attributes"]
 
     model_config = ConfigDict(

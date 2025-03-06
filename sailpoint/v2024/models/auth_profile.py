@@ -84,6 +84,16 @@ class AuthProfile(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if application_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.application_id is None and "application_id" in self.model_fields_set:
+            _dict['applicationId'] = None
+
+        # set to None if application_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.application_name is None and "application_name" in self.model_fields_set:
+            _dict['applicationName'] = None
+
         return _dict
 
     @classmethod

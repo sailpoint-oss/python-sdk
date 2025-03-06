@@ -99,6 +99,16 @@ class ModelSchema(BaseModel):
                 if _item_attributes:
                     _items.append(_item_attributes.to_dict())
             _dict['attributes'] = _items
+        # set to None if hierarchy_attribute (nullable) is None
+        # and model_fields_set contains the field
+        if self.hierarchy_attribute is None and "hierarchy_attribute" in self.model_fields_set:
+            _dict['hierarchyAttribute'] = None
+
+        # set to None if modified (nullable) is None
+        # and model_fields_set contains the field
+        if self.modified is None and "modified" in self.model_fields_set:
+            _dict['modified'] = None
+
         return _dict
 
     @classmethod

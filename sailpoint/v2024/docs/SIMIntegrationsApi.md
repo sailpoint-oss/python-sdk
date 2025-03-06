@@ -270,7 +270,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_sim_integrations**
-> ServiceDeskIntegrationDto get_sim_integrations(x_sail_point_experimental)
+> List[ServiceDeskIntegrationDto] get_sim_integrations(x_sail_point_experimental)
 
 List the existing SIM integrations.
 
@@ -328,7 +328,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServiceDeskIntegrationDto**](ServiceDeskIntegrationDto.md)
+[**List[ServiceDeskIntegrationDto]**](ServiceDeskIntegrationDto.md)
 
 ### Authorization
 

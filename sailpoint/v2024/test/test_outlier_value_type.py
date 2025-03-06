@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2024.models.outlier_contributing_feature_value import OutlierContributingFeatureValue
+from sailpoint.v2024.models.outlier_value_type import OutlierValueType
 
-class TestOutlierContributingFeatureValue(unittest.TestCase):
-    """OutlierContributingFeatureValue unit test stubs"""
+class TestOutlierValueType(unittest.TestCase):
+    """OutlierValueType unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,24 +25,26 @@ class TestOutlierContributingFeatureValue(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> OutlierContributingFeatureValue:
-        """Test OutlierContributingFeatureValue
+    def make_instance(self, include_optional) -> OutlierValueType:
+        """Test OutlierValueType
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `OutlierContributingFeatureValue`
+        # uncomment below to create an instance of `OutlierValueType`
         """
-        model = OutlierContributingFeatureValue()
+        model = OutlierValueType()
         if include_optional:
-            return OutlierContributingFeatureValue(
+            return OutlierValueType(
+                name = 'INTEGER',
+                ordinal = 0
             )
         else:
-            return OutlierContributingFeatureValue(
+            return OutlierValueType(
         )
         """
 
-    def testOutlierContributingFeatureValue(self):
-        """Test OutlierContributingFeatureValue"""
+    def testOutlierValueType(self):
+        """Test OutlierValueType"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

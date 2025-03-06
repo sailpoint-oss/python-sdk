@@ -448,7 +448,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_count_completed_work_items**
-> List[WorkItemsCount] get_count_completed_work_items(x_sail_point_experimental, owner_id=owner_id)
+> WorkItemsCount get_count_completed_work_items(x_sail_point_experimental, owner_id=owner_id)
 
 Count Completed Work Items
 
@@ -508,7 +508,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List[WorkItemsCount]**](WorkItemsCount.md)
+[**WorkItemsCount**](WorkItemsCount.md)
 
 ### Authorization
 

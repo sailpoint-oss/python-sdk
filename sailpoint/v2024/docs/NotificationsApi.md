@@ -613,7 +613,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_notification_template**
-> List[TemplateDto] get_notification_template(id, x_sail_point_experimental)
+> TemplateDto get_notification_template(id, x_sail_point_experimental)
 
 Get Notification Template By Id
 
@@ -673,7 +673,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List[TemplateDto]**](TemplateDto.md)
+[**TemplateDto**](TemplateDto.md)
 
 ### Authorization
 
@@ -873,7 +873,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_notification_preferences**
-> List[PreferencesDto] list_notification_preferences(x_sail_point_experimental)
+> PreferencesDto list_notification_preferences(x_sail_point_experimental)
 
 List Notification Preferences for tenant.
 
@@ -931,7 +931,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List[PreferencesDto]**](PreferencesDto.md)
+[**PreferencesDto**](PreferencesDto.md)
 
 ### Authorization
 

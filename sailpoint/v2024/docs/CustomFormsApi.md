@@ -1335,7 +1335,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_form_instances_by_tenant**
-> ListFormInstancesByTenantResponse search_form_instances_by_tenant(x_sail_point_experimental)
+> List[ListFormInstancesByTenantResponse] search_form_instances_by_tenant(x_sail_point_experimental)
 
 List form instances by tenant.
 
@@ -1393,7 +1393,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListFormInstancesByTenantResponse**](ListFormInstancesByTenantResponse.md)
+[**List[ListFormInstancesByTenantResponse]**](ListFormInstancesByTenantResponse.md)
 
 ### Authorization
 

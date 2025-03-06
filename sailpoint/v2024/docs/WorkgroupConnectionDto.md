@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**object** | [**ConnectedObject**](ConnectedObject.md) |  | [optional] 
+**object** | [**WorkgroupConnectionDtoObject**](WorkgroupConnectionDtoObject.md) |  | [optional] 
 **connection_type** | **str** | Connection Type. | [optional] 
 
 ## Example

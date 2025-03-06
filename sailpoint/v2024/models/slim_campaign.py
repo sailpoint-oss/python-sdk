@@ -129,10 +129,45 @@ class SlimCampaign(BaseModel):
                 if _item_alerts:
                     _items.append(_item_alerts.to_dict())
             _dict['alerts'] = _items
+        # set to None if id (nullable) is None
+        # and model_fields_set contains the field
+        if self.id is None and "id" in self.model_fields_set:
+            _dict['id'] = None
+
         # set to None if description (nullable) is None
         # and model_fields_set contains the field
         if self.description is None and "description" in self.model_fields_set:
             _dict['description'] = None
+
+        # set to None if deadline (nullable) is None
+        # and model_fields_set contains the field
+        if self.deadline is None and "deadline" in self.model_fields_set:
+            _dict['deadline'] = None
+
+        # set to None if status (nullable) is None
+        # and model_fields_set contains the field
+        if self.status is None and "status" in self.model_fields_set:
+            _dict['status'] = None
+
+        # set to None if created (nullable) is None
+        # and model_fields_set contains the field
+        if self.created is None and "created" in self.model_fields_set:
+            _dict['created'] = None
+
+        # set to None if total_certifications (nullable) is None
+        # and model_fields_set contains the field
+        if self.total_certifications is None and "total_certifications" in self.model_fields_set:
+            _dict['totalCertifications'] = None
+
+        # set to None if completed_certifications (nullable) is None
+        # and model_fields_set contains the field
+        if self.completed_certifications is None and "completed_certifications" in self.model_fields_set:
+            _dict['completedCertifications'] = None
+
+        # set to None if alerts (nullable) is None
+        # and model_fields_set contains the field
+        if self.alerts is None and "alerts" in self.model_fields_set:
+            _dict['alerts'] = None
 
         return _dict
 

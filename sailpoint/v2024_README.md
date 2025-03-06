@@ -142,8 +142,8 @@ Class | Method | HTTP request | Description
 *AppsApi* | [**patch_source_app**](sailpoint/v2024/docs/AppsApi.md#patch_source_app) | **PATCH** /source-apps/{id} | Patch source app by ID
 *AppsApi* | [**patch_user_app**](sailpoint/v2024/docs/AppsApi.md#patch_user_app) | **PATCH** /user-apps/{id} | Patch user app by ID
 *AppsApi* | [**update_source_apps_in_bulk**](sailpoint/v2024/docs/AppsApi.md#update_source_apps_in_bulk) | **POST** /source-apps/bulk-update | Bulk update source apps
-*AuthProfileApi* | [**get_profile_config**](sailpoint/v2024/docs/AuthProfileApi.md#get_profile_config) | **GET** /auth-profiles/{id} | Get Auth Profile.
-*AuthProfileApi* | [**get_profile_config_list**](sailpoint/v2024/docs/AuthProfileApi.md#get_profile_config_list) | **GET** /auth-profiles | Get list of Auth Profiles.
+*AuthProfileApi* | [**get_profile_config**](sailpoint/v2024/docs/AuthProfileApi.md#get_profile_config) | **GET** /auth-profiles/{id} | Get Auth Profile
+*AuthProfileApi* | [**get_profile_config_list**](sailpoint/v2024/docs/AuthProfileApi.md#get_profile_config_list) | **GET** /auth-profiles | Get list of Auth Profiles
 *AuthProfileApi* | [**patch_profile_config**](sailpoint/v2024/docs/AuthProfileApi.md#patch_profile_config) | **PATCH** /auth-profiles/{id} | Patch a specified Auth Profile
 *AuthUsersApi* | [**get_auth_user**](sailpoint/v2024/docs/AuthUsersApi.md#get_auth_user) | **GET** /auth-users/{id} | Auth User Details
 *AuthUsersApi* | [**patch_auth_user**](sailpoint/v2024/docs/AuthUsersApi.md#patch_auth_user) | **PATCH** /auth-users/{id} | Auth User Update
@@ -948,6 +948,7 @@ Class | Method | HTTP request | Description
  - [CampaignAllOfMachineAccountCampaignInfo](sailpoint/v2024/docs/CampaignAllOfMachineAccountCampaignInfo.md)
  - [CampaignAllOfRoleCompositionCampaignInfo](sailpoint/v2024/docs/CampaignAllOfRoleCompositionCampaignInfo.md)
  - [CampaignAllOfRoleCompositionCampaignInfoRemediatorRef](sailpoint/v2024/docs/CampaignAllOfRoleCompositionCampaignInfoRemediatorRef.md)
+ - [CampaignAllOfRoleCompositionCampaignInfoReviewer](sailpoint/v2024/docs/CampaignAllOfRoleCompositionCampaignInfoReviewer.md)
  - [CampaignAllOfSearchCampaignInfo](sailpoint/v2024/docs/CampaignAllOfSearchCampaignInfo.md)
  - [CampaignAllOfSearchCampaignInfoReviewer](sailpoint/v2024/docs/CampaignAllOfSearchCampaignInfoReviewer.md)
  - [CampaignAllOfSourceOwnerCampaignInfo](sailpoint/v2024/docs/CampaignAllOfSourceOwnerCampaignInfo.md)
@@ -1340,11 +1341,11 @@ Class | Method | HTTP request | Description
  - [OrphanIdentitiesReportArguments](sailpoint/v2024/docs/OrphanIdentitiesReportArguments.md)
  - [Outlier](sailpoint/v2024/docs/Outlier.md)
  - [OutlierContributingFeature](sailpoint/v2024/docs/OutlierContributingFeature.md)
- - [OutlierContributingFeatureValue](sailpoint/v2024/docs/OutlierContributingFeatureValue.md)
  - [OutlierFeatureSummary](sailpoint/v2024/docs/OutlierFeatureSummary.md)
  - [OutlierFeatureSummaryOutlierFeatureDisplayValuesInner](sailpoint/v2024/docs/OutlierFeatureSummaryOutlierFeatureDisplayValuesInner.md)
  - [OutlierFeatureTranslation](sailpoint/v2024/docs/OutlierFeatureTranslation.md)
  - [OutlierSummary](sailpoint/v2024/docs/OutlierSummary.md)
+ - [OutlierValueType](sailpoint/v2024/docs/OutlierValueType.md)
  - [OutliersContributingFeatureAccessItems](sailpoint/v2024/docs/OutliersContributingFeatureAccessItems.md)
  - [OwnerDto](sailpoint/v2024/docs/OwnerDto.md)
  - [OwnerReference](sailpoint/v2024/docs/OwnerReference.md)
@@ -1465,6 +1466,8 @@ Class | Method | HTTP request | Description
  - [RevocabilityForRole](sailpoint/v2024/docs/RevocabilityForRole.md)
  - [Role](sailpoint/v2024/docs/Role.md)
  - [RoleAssignmentDto](sailpoint/v2024/docs/RoleAssignmentDto.md)
+ - [RoleAssignmentDtoAssigner](sailpoint/v2024/docs/RoleAssignmentDtoAssigner.md)
+ - [RoleAssignmentDtoAssignmentContext](sailpoint/v2024/docs/RoleAssignmentDtoAssignmentContext.md)
  - [RoleAssignmentRef](sailpoint/v2024/docs/RoleAssignmentRef.md)
  - [RoleAssignmentSourceType](sailpoint/v2024/docs/RoleAssignmentSourceType.md)
  - [RoleBulkDeleteRequest](sailpoint/v2024/docs/RoleBulkDeleteRequest.md)
@@ -1769,6 +1772,7 @@ Class | Method | HTTP request | Description
  - [WorkflowTriggerAttributes](sailpoint/v2024/docs/WorkflowTriggerAttributes.md)
  - [WorkgroupBulkDeleteRequest](sailpoint/v2024/docs/WorkgroupBulkDeleteRequest.md)
  - [WorkgroupConnectionDto](sailpoint/v2024/docs/WorkgroupConnectionDto.md)
+ - [WorkgroupConnectionDtoObject](sailpoint/v2024/docs/WorkgroupConnectionDtoObject.md)
  - [WorkgroupDeleteItem](sailpoint/v2024/docs/WorkgroupDeleteItem.md)
  - [WorkgroupDto](sailpoint/v2024/docs/WorkgroupDto.md)
  - [WorkgroupDtoOwner](sailpoint/v2024/docs/WorkgroupDtoOwner.md)

@@ -83,6 +83,16 @@ class OutlierFeatureSummary(BaseModel):
                 if _item_outlier_feature_display_values:
                     _items.append(_item_outlier_feature_display_values.to_dict())
             _dict['outlierFeatureDisplayValues'] = _items
+        # set to None if peer_display_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.peer_display_name is None and "peer_display_name" in self.model_fields_set:
+            _dict['peerDisplayName'] = None
+
+        # set to None if peer_identity_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.peer_identity_id is None and "peer_identity_id" in self.model_fields_set:
+            _dict['peerIdentityId'] = None
+
         return _dict
 
     @classmethod

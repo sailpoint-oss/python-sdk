@@ -6,7 +6,8 @@ Optional configuration options for role composition campaigns.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**reviewer** | [**CampaignAllOfSearchCampaignInfoReviewer**](CampaignAllOfSearchCampaignInfoReviewer.md) |  | [optional] 
+**reviewer_id** | **str** | The ID of the identity or governance group reviewing this campaign. Deprecated in favor of the \&quot;reviewer\&quot; object. | [optional] 
+**reviewer** | [**CampaignAllOfRoleCompositionCampaignInfoReviewer**](CampaignAllOfRoleCompositionCampaignInfoReviewer.md) |  | [optional] 
 **role_ids** | **List[str]** | Optional list of roles to include in this campaign. Only one of &#x60;roleIds&#x60; and &#x60;query&#x60; may be set; if neither are set, all roles are included. | [optional] 
 **remediator_ref** | [**CampaignAllOfRoleCompositionCampaignInfoRemediatorRef**](CampaignAllOfRoleCompositionCampaignInfoRemediatorRef.md) |  | 
 **query** | **str** | Optional search query to scope this campaign to a set of roles. Only one of &#x60;roleIds&#x60; and &#x60;query&#x60; may be set; if neither are set, all roles are included. | [optional] 

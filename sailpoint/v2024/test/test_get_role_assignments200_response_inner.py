@@ -42,32 +42,12 @@ class TestGetRoleAssignments200ResponseInner(unittest.TestCase):
                     name = 'William Wilson', ),
                 comments = 'I'm a new Engineer and need this role to do my work',
                 assignment_source = 'UI',
-                assigner = sailpoint.v2024.models.base_reference_dto.BaseReferenceDto(
+                assigner = sailpoint.v2024.models.role_assignment_dto_assigner.RoleAssignmentDto_assigner(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'William Wilson', ),
                 assigned_dimensions = [{id=1acc8ffe5fcf457090de28bee2af36ee, type=DIMENSION, name=Northeast region}],
-                assignment_context = sailpoint.v2024.models.assignment_context_dto.AssignmentContextDto(
-                    requested = sailpoint.v2024.models.access_request_context.AccessRequestContext(
-                        context_attributes = [
-                            sailpoint.v2024.models.context_attribute_dto.ContextAttributeDto(
-                                attribute = 'location', 
-                                value = Austin, 
-                                derived = False, )
-                            ], ), 
-                    matched = [
-                        sailpoint.v2024.models.role_match_dto.RoleMatchDto(
-                            role_ref = sailpoint.v2024.models.base_reference_dto.BaseReferenceDto(
-                                type = 'IDENTITY', 
-                                id = '2c91808568c529c60168cca6f90c1313', 
-                                name = 'William Wilson', ), 
-                            matched_attributes = [
-                                sailpoint.v2024.models.context_attribute_dto.ContextAttributeDto(
-                                    attribute = 'location', 
-                                    derived = False, )
-                                ], )
-                        ], 
-                    computed_date = 'Wed Feb 14 10:58:42', ),
+                assignment_context = {requested={contextAttributes=[{attribute=department, value=Engineering, derived=false}]}, matched=[{id=e7697a1e96d04db1ac7b0f4544915d2c, type=DIMENSION, name=Engineer}], computedDate=Wed Feb 14 10:58:42},
                 account_targets = [
                     sailpoint.v2024.models.role_target_dto.RoleTargetDto(
                         source = sailpoint.v2024.models.base_reference_dto.BaseReferenceDto(

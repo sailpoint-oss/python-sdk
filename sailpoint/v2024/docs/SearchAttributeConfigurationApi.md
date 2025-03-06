@@ -262,7 +262,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_single_search_attribute_config**
-> List[SearchAttributeConfig] get_single_search_attribute_config(name, x_sail_point_experimental)
+> SearchAttributeConfig get_single_search_attribute_config(name, x_sail_point_experimental)
 
 Get Extended Search Attribute
 
@@ -322,7 +322,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List[SearchAttributeConfig]**](SearchAttributeConfig.md)
+[**SearchAttributeConfig**](SearchAttributeConfig.md)
 
 ### Authorization
 

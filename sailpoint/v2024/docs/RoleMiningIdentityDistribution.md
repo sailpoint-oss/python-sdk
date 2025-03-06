@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **attribute_name** | **str** | Id of the potential role | [optional] 
-**distribution** | **List[Dict[str, str]]** |  | [optional] 
+**distribution** | **List[Dict[str, object]]** |  | [optional] 
 
 ## Example
 

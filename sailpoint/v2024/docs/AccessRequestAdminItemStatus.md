@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | ID of the access request | [optional] 
+**id** | **str** | ID of the access request. This is a new property as of 2025. Older access requests may not have an ID. | [optional] 
 **name** | **str** | Human-readable display name of the item being requested. | [optional] 
 **type** | **str** | Type of requested object. | [optional] 
 **cancelled_request_details** | [**RequestedItemStatusCancelledRequestDetails**](RequestedItemStatusCancelledRequestDetails.md) |  | [optional] 

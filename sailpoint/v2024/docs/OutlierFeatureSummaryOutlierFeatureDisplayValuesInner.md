@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **display_name** | **str** | display name | [optional] 
 **value** | **str** | value | [optional] 
-**value_type** | **str** | The data type of the value field | [optional] 
+**value_type** | [**OutlierValueType**](OutlierValueType.md) |  | [optional] 
 
 ## Example
 

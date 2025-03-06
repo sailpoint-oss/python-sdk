@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Id of the identity | [optional] 
 **name** | **str** | Name of the identity | [optional] 
-**attributes** | **Dict[str, str]** |  | [optional] 
+**attributes** | **Dict[str, Optional[str]]** |  | [optional] 
 
 ## Example
 

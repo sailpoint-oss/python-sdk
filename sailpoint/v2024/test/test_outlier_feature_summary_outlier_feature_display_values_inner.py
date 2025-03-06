@@ -37,7 +37,9 @@ class TestOutlierFeatureSummaryOutlierFeatureDisplayValuesInner(unittest.TestCas
             return OutlierFeatureSummaryOutlierFeatureDisplayValuesInner(
                 display_name = 'Aliza Chris',
                 value = '55',
-                value_type = 'INTEGER'
+                value_type = sailpoint.v2024.models.outlier_value_type.OutlierValueType(
+                    name = 'INTEGER', 
+                    ordinal = 0, )
             )
         else:
             return OutlierFeatureSummaryOutlierFeatureDisplayValuesInner(

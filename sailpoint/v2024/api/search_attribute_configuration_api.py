@@ -931,7 +931,7 @@ class SearchAttributeConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[SearchAttributeConfig]:
+    ) -> SearchAttributeConfig:
         """Get Extended Search Attribute
 
         Get an extended attribute configuration by name.
@@ -972,7 +972,7 @@ class SearchAttributeConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[SearchAttributeConfig]",
+            '200': "SearchAttributeConfig",
             '204': None,
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -1008,7 +1008,7 @@ class SearchAttributeConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[SearchAttributeConfig]]:
+    ) -> ApiResponse[SearchAttributeConfig]:
         """Get Extended Search Attribute
 
         Get an extended attribute configuration by name.
@@ -1049,7 +1049,7 @@ class SearchAttributeConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[SearchAttributeConfig]",
+            '200': "SearchAttributeConfig",
             '204': None,
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -1126,7 +1126,7 @@ class SearchAttributeConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[SearchAttributeConfig]",
+            '200': "SearchAttributeConfig",
             '204': None,
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",

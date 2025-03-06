@@ -100,6 +100,11 @@ class LifecycleState(BaseModel):
                 if _item_account_actions:
                     _items.append(_item_account_actions.to_dict())
             _dict['accountActions'] = _items
+        # set to None if description (nullable) is None
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
+            _dict['description'] = None
+
         # set to None if identity_state (nullable) is None
         # and model_fields_set contains the field
         if self.identity_state is None and "identity_state" in self.model_fields_set:
