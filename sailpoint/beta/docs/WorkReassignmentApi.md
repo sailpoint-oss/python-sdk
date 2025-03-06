@@ -514,7 +514,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_reassignment_configurations**
-> List[ConfigurationResponse] list_reassignment_configurations()
+> List[ConfigurationResponse] list_reassignment_configurations(limit=limit, offset=offset)
 
 List Reassignment Configurations
 
@@ -550,10 +550,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.WorkReassignmentApi(api_client)
+    limit = 20 # int | Max number of results to return. (optional) (default to 20)
+    offset = 10 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified. (optional)
 
     try:
         # List Reassignment Configurations
-        api_response = api_instance.list_reassignment_configurations()
+        api_response = api_instance.list_reassignment_configurations(limit=limit, offset=offset)
         print("The response of WorkReassignmentApi->list_reassignment_configurations:\n")
         pprint(api_response)
     except Exception as e:
@@ -564,7 +566,11 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **int**| Max number of results to return. | [optional] [default to 20]
+ **offset** | **int**| Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified. | [optional] 
 
 ### Return type
 
