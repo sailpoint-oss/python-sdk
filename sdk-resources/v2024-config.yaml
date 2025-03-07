@@ -3,3 +3,7 @@ packageName: sailpoint.v2024
 packageVersion: 1.2.5
 apiVersion: v2024
 generateSourceCodeOnly: true
+files:
+  validation_test.mustache:
+    templateType: APITests
+    destinationFilename: validation_test.py
