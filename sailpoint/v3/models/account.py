@@ -32,7 +32,7 @@ class Account(BaseModel):
     Account
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="System-generated unique ID of the Object")
-    name: StrictStr = Field(description="Name of the Object")
+    name: Optional[StrictStr] = Field(description="Name of the Object")
     created: Optional[datetime] = Field(default=None, description="Creation date of the Object")
     modified: Optional[datetime] = Field(default=None, description="Last modification date of the Object")
     source_id: StrictStr = Field(description="The unique ID of the source this account belongs to", alias="sourceId")
@@ -128,6 +128,11 @@ class Account(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of owner_identity
         if self.owner_identity:
             _dict['ownerIdentity'] = self.owner_identity.to_dict()
+        # set to None if name (nullable) is None
+        # and model_fields_set contains the field
+        if self.name is None and "name" in self.model_fields_set:
+            _dict['name'] = None
+
         # set to None if source_name (nullable) is None
         # and model_fields_set contains the field
         if self.source_name is None and "source_name" in self.model_fields_set:

@@ -32,7 +32,7 @@ class IdentityProfile1(BaseModel):
     IdentityProfile1
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="System-generated unique ID of the Object")
-    name: StrictStr = Field(description="Name of the Object")
+    name: Optional[StrictStr] = Field(description="Name of the Object")
     created: Optional[datetime] = Field(default=None, description="Creation date of the Object")
     modified: Optional[datetime] = Field(default=None, description="Last modification date of the Object")
     description: Optional[StrictStr] = Field(default=None, description="Identity profile's description.")
@@ -103,6 +103,11 @@ class IdentityProfile1(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of identity_exception_report_reference
         if self.identity_exception_report_reference:
             _dict['identityExceptionReportReference'] = self.identity_exception_report_reference.to_dict()
+        # set to None if name (nullable) is None
+        # and model_fields_set contains the field
+        if self.name is None and "name" in self.model_fields_set:
+            _dict['name'] = None
+
         # set to None if description (nullable) is None
         # and model_fields_set contains the field
         if self.description is None and "description" in self.model_fields_set:

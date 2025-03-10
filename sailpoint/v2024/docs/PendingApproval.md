@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **remove_date_update_requested** | **bool** | If true, then the request is to change the remove date or sunset date. | [optional] [default to False]
 **current_remove_date** | **datetime** | The remove date or sunset date that was assigned at the time of the request. | [optional] 
 **sod_violation_context** | [**SodViolationContextCheckCompleted**](SodViolationContextCheckCompleted.md) |  | [optional] 
+**client_metadata** | **Dict[str, str]** | Arbitrary key-value pairs, if any were included in the corresponding access request item | [optional] 
 
 ## Example
 

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **requested_for** | **str** | The identity id in which the access request is for. | [optional] 
 **requested_items_details** | [**List[RequestedItemDetails]**](RequestedItemDetails.md) | The details of the item requested. | [optional] 
-**attributes_hash** | **str** | a hash representation of the access requested, useful for longer term tracking client side. | [optional] 
+**attributes_hash** | **int** | a hash representation of the access requested, useful for longer term tracking client side. | [optional] 
 **access_request_ids** | **List[str]** | a list of access request identifiers, generally only one will be populated, but high volume requested may result in multiple ids. | [optional] 
 
 ## Example
