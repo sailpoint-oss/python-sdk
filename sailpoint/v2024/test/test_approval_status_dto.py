@@ -35,7 +35,6 @@ class TestApprovalStatusDto(unittest.TestCase):
         model = ApprovalStatusDto()
         if include_optional:
             return ApprovalStatusDto(
-                approval_id = '2c9180877b2b6ea4017b2c545f971429',
                 forwarded = False,
                 original_owner = sailpoint.v2024.models.approval_status_dto_original_owner.ApprovalStatusDto_originalOwner(
                     type = 'IDENTITY', 

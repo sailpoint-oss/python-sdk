@@ -50,7 +50,7 @@ class TestAccessRequestConfig(unittest.TestCase):
                         id = '5168015d32f890ca15812c9180835d2e', 
                         name = 'Alison Ferguso', 
                         email = 'alison.ferguso@identitysoon.com', ), ),
-                entitlement_request_config = sailpoint.v2024.models.entitlement_request_config_1.EntitlementRequestConfig_1(
+                entitlement_request_config = sailpoint.v2024.models.entitlement_request_config.EntitlementRequestConfig(
                     allow_entitlement_request = True, 
                     request_comments_required = False, 
                     denied_comments_required = False, 

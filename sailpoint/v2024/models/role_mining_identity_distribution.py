@@ -27,7 +27,7 @@ class RoleMiningIdentityDistribution(BaseModel):
     RoleMiningIdentityDistribution
     """ # noqa: E501
     attribute_name: Optional[StrictStr] = Field(default=None, description="Id of the potential role", alias="attributeName")
-    distribution: Optional[List[Dict[str, StrictStr]]] = None
+    distribution: Optional[List[Dict[str, Any]]] = None
     __properties: ClassVar[List[str]] = ["attributeName", "distribution"]
 
     model_config = ConfigDict(

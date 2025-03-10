@@ -91,6 +91,16 @@ class WorkItemsForm(BaseModel):
         if self.name is None and "name" in self.model_fields_set:
             _dict['name'] = None
 
+        # set to None if title (nullable) is None
+        # and model_fields_set contains the field
+        if self.title is None and "title" in self.model_fields_set:
+            _dict['title'] = None
+
+        # set to None if subtitle (nullable) is None
+        # and model_fields_set contains the field
+        if self.subtitle is None and "subtitle" in self.model_fields_set:
+            _dict['subtitle'] = None
+
         return _dict
 
     @classmethod

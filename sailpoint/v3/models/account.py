@@ -20,8 +20,10 @@ import json
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v3.models.base_reference_dto import BaseReferenceDto
-from sailpoint.v3.models.recommendation import Recommendation
+from sailpoint.v3.models.account_all_of_identity import AccountAllOfIdentity
+from sailpoint.v3.models.account_all_of_owner_identity import AccountAllOfOwnerIdentity
+from sailpoint.v3.models.account_all_of_recommendation import AccountAllOfRecommendation
+from sailpoint.v3.models.account_all_of_source_owner import AccountAllOfSourceOwner
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -40,7 +42,7 @@ class Account(BaseModel):
     identity_state: Optional[StrictStr] = Field(default=None, description="The identity state of the identity this account is correlated to", alias="identityState")
     connection_type: Optional[StrictStr] = Field(default=None, description="The connection type of the source this account is from", alias="connectionType")
     is_machine: Optional[StrictBool] = Field(default=False, description="Indicates if the account is of machine type", alias="isMachine")
-    recommendation: Optional[Recommendation] = None
+    recommendation: Optional[AccountAllOfRecommendation] = None
     attributes: Optional[Dict[str, Any]] = Field(description="The account attributes that are aggregated")
     authoritative: StrictBool = Field(description="Indicates if this account is from an authoritative source")
     description: Optional[StrictStr] = Field(default=None, description="A description of the account")
@@ -52,11 +54,11 @@ class Account(BaseModel):
     uuid: Optional[StrictStr] = Field(default=None, description="The unique ID of the account as determined by the account schema")
     manually_correlated: StrictBool = Field(description="Indicates if the account has been manually correlated to an identity", alias="manuallyCorrelated")
     has_entitlements: StrictBool = Field(description="Indicates if the account has entitlements", alias="hasEntitlements")
-    identity: Optional[BaseReferenceDto] = None
-    source_owner: Optional[BaseReferenceDto] = Field(default=None, alias="sourceOwner")
+    identity: Optional[AccountAllOfIdentity] = None
+    source_owner: Optional[AccountAllOfSourceOwner] = Field(default=None, alias="sourceOwner")
     features: Optional[StrictStr] = Field(default=None, description="A string list containing the owning source's features")
     origin: Optional[StrictStr] = Field(default=None, description="The origin of the account either aggregated or provisioned")
-    owner_identity: Optional[BaseReferenceDto] = Field(default=None, alias="ownerIdentity")
+    owner_identity: Optional[AccountAllOfOwnerIdentity] = Field(default=None, alias="ownerIdentity")
     __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "sourceId", "sourceName", "identityId", "cloudLifecycleState", "identityState", "connectionType", "isMachine", "recommendation", "attributes", "authoritative", "description", "disabled", "locked", "nativeIdentity", "systemAccount", "uncorrelated", "uuid", "manuallyCorrelated", "hasEntitlements", "identity", "sourceOwner", "features", "origin", "ownerIdentity"]
 
     @field_validator('origin')
@@ -161,6 +163,11 @@ class Account(BaseModel):
         if self.uuid is None and "uuid" in self.model_fields_set:
             _dict['uuid'] = None
 
+        # set to None if source_owner (nullable) is None
+        # and model_fields_set contains the field
+        if self.source_owner is None and "source_owner" in self.model_fields_set:
+            _dict['sourceOwner'] = None
+
         # set to None if features (nullable) is None
         # and model_fields_set contains the field
         if self.features is None and "features" in self.model_fields_set:
@@ -194,7 +201,7 @@ class Account(BaseModel):
             "identityState": obj.get("identityState"),
             "connectionType": obj.get("connectionType"),
             "isMachine": obj.get("isMachine") if obj.get("isMachine") is not None else False,
-            "recommendation": Recommendation.from_dict(obj["recommendation"]) if obj.get("recommendation") is not None else None,
+            "recommendation": AccountAllOfRecommendation.from_dict(obj["recommendation"]) if obj.get("recommendation") is not None else None,
             "attributes": obj.get("attributes"),
             "authoritative": obj.get("authoritative"),
             "description": obj.get("description"),
@@ -206,11 +213,11 @@ class Account(BaseModel):
             "uuid": obj.get("uuid"),
             "manuallyCorrelated": obj.get("manuallyCorrelated"),
             "hasEntitlements": obj.get("hasEntitlements"),
-            "identity": BaseReferenceDto.from_dict(obj["identity"]) if obj.get("identity") is not None else None,
-            "sourceOwner": BaseReferenceDto.from_dict(obj["sourceOwner"]) if obj.get("sourceOwner") is not None else None,
+            "identity": AccountAllOfIdentity.from_dict(obj["identity"]) if obj.get("identity") is not None else None,
+            "sourceOwner": AccountAllOfSourceOwner.from_dict(obj["sourceOwner"]) if obj.get("sourceOwner") is not None else None,
             "features": obj.get("features"),
             "origin": obj.get("origin"),
-            "ownerIdentity": BaseReferenceDto.from_dict(obj["ownerIdentity"]) if obj.get("ownerIdentity") is not None else None
+            "ownerIdentity": AccountAllOfOwnerIdentity.from_dict(obj["ownerIdentity"]) if obj.get("ownerIdentity") is not None else None
         })
         return _obj
 

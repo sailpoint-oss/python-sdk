@@ -2157,7 +2157,7 @@ class NotificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[TemplateDto]:
+    ) -> TemplateDto:
         """Get Notification Template By Id
 
         This gets a template that you have modified for your site by Id.
@@ -2198,7 +2198,7 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[TemplateDto]",
+            '200': "TemplateDto",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -2233,7 +2233,7 @@ class NotificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[TemplateDto]]:
+    ) -> ApiResponse[TemplateDto]:
         """Get Notification Template By Id
 
         This gets a template that you have modified for your site by Id.
@@ -2274,7 +2274,7 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[TemplateDto]",
+            '200': "TemplateDto",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -2350,7 +2350,7 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[TemplateDto]",
+            '200': "TemplateDto",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -3084,7 +3084,7 @@ class NotificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[PreferencesDto]:
+    ) -> PreferencesDto:
         """List Notification Preferences for tenant.
 
         Returns a list of notification preferences for tenant.
@@ -3122,7 +3122,7 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[PreferencesDto]",
+            '200': "PreferencesDto",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -3157,7 +3157,7 @@ class NotificationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[PreferencesDto]]:
+    ) -> ApiResponse[PreferencesDto]:
         """List Notification Preferences for tenant.
 
         Returns a list of notification preferences for tenant.
@@ -3195,7 +3195,7 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[PreferencesDto]",
+            '200': "PreferencesDto",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -3268,7 +3268,7 @@ class NotificationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[PreferencesDto]",
+            '200': "PreferencesDto",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",

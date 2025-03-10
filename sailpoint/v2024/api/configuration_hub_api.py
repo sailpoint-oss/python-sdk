@@ -23,6 +23,7 @@ from sailpoint.v2024.models.backup_response import BackupResponse
 from sailpoint.v2024.models.deploy_request import DeployRequest
 from sailpoint.v2024.models.deploy_response import DeployResponse
 from sailpoint.v2024.models.draft_response import DraftResponse
+from sailpoint.v2024.models.list_deploys200_response import ListDeploys200Response
 from sailpoint.v2024.models.object_mapping_bulk_create_request import ObjectMappingBulkCreateRequest
 from sailpoint.v2024.models.object_mapping_bulk_create_response import ObjectMappingBulkCreateResponse
 from sailpoint.v2024.models.object_mapping_bulk_patch_request import ObjectMappingBulkPatchRequest
@@ -3528,7 +3529,7 @@ class ConfigurationHubApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[DeployResponse]:
+    ) -> ListDeploys200Response:
         """List Deploys
 
         This API gets a list of deploys for the current tenant.
@@ -3563,7 +3564,7 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[DeployResponse]",
+            '200': "ListDeploys200Response",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -3596,7 +3597,7 @@ class ConfigurationHubApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[DeployResponse]]:
+    ) -> ApiResponse[ListDeploys200Response]:
         """List Deploys
 
         This API gets a list of deploys for the current tenant.
@@ -3631,7 +3632,7 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[DeployResponse]",
+            '200': "ListDeploys200Response",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -3699,7 +3700,7 @@ class ConfigurationHubApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[DeployResponse]",
+            '200': "ListDeploys200Response",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",

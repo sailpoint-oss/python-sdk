@@ -180,10 +180,80 @@ class Campaign(BaseModel):
                 if _item_sources_with_orphan_entitlements:
                     _items.append(_item_sources_with_orphan_entitlements.to_dict())
             _dict['sourcesWithOrphanEntitlements'] = _items
+        # set to None if id (nullable) is None
+        # and model_fields_set contains the field
+        if self.id is None and "id" in self.model_fields_set:
+            _dict['id'] = None
+
         # set to None if description (nullable) is None
         # and model_fields_set contains the field
         if self.description is None and "description" in self.model_fields_set:
             _dict['description'] = None
+
+        # set to None if deadline (nullable) is None
+        # and model_fields_set contains the field
+        if self.deadline is None and "deadline" in self.model_fields_set:
+            _dict['deadline'] = None
+
+        # set to None if status (nullable) is None
+        # and model_fields_set contains the field
+        if self.status is None and "status" in self.model_fields_set:
+            _dict['status'] = None
+
+        # set to None if created (nullable) is None
+        # and model_fields_set contains the field
+        if self.created is None and "created" in self.model_fields_set:
+            _dict['created'] = None
+
+        # set to None if total_certifications (nullable) is None
+        # and model_fields_set contains the field
+        if self.total_certifications is None and "total_certifications" in self.model_fields_set:
+            _dict['totalCertifications'] = None
+
+        # set to None if completed_certifications (nullable) is None
+        # and model_fields_set contains the field
+        if self.completed_certifications is None and "completed_certifications" in self.model_fields_set:
+            _dict['completedCertifications'] = None
+
+        # set to None if alerts (nullable) is None
+        # and model_fields_set contains the field
+        if self.alerts is None and "alerts" in self.model_fields_set:
+            _dict['alerts'] = None
+
+        # set to None if modified (nullable) is None
+        # and model_fields_set contains the field
+        if self.modified is None and "modified" in self.model_fields_set:
+            _dict['modified'] = None
+
+        # set to None if filter (nullable) is None
+        # and model_fields_set contains the field
+        if self.filter is None and "filter" in self.model_fields_set:
+            _dict['filter'] = None
+
+        # set to None if source_owner_campaign_info (nullable) is None
+        # and model_fields_set contains the field
+        if self.source_owner_campaign_info is None and "source_owner_campaign_info" in self.model_fields_set:
+            _dict['sourceOwnerCampaignInfo'] = None
+
+        # set to None if search_campaign_info (nullable) is None
+        # and model_fields_set contains the field
+        if self.search_campaign_info is None and "search_campaign_info" in self.model_fields_set:
+            _dict['searchCampaignInfo'] = None
+
+        # set to None if role_composition_campaign_info (nullable) is None
+        # and model_fields_set contains the field
+        if self.role_composition_campaign_info is None and "role_composition_campaign_info" in self.model_fields_set:
+            _dict['roleCompositionCampaignInfo'] = None
+
+        # set to None if machine_account_campaign_info (nullable) is None
+        # and model_fields_set contains the field
+        if self.machine_account_campaign_info is None and "machine_account_campaign_info" in self.model_fields_set:
+            _dict['machineAccountCampaignInfo'] = None
+
+        # set to None if sources_with_orphan_entitlements (nullable) is None
+        # and model_fields_set contains the field
+        if self.sources_with_orphan_entitlements is None and "sources_with_orphan_entitlements" in self.model_fields_set:
+            _dict['sourcesWithOrphanEntitlements'] = None
 
         return _dict
 

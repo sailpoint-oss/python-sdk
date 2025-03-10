@@ -142,8 +142,8 @@ Class | Method | HTTP request | Description
 *AppsApi* | [**patch_source_app**](sailpoint\v2024/docs/AppsApi.md#patch_source_app) | **PATCH** /source-apps/{id} | Patch source app by ID
 *AppsApi* | [**patch_user_app**](sailpoint\v2024/docs/AppsApi.md#patch_user_app) | **PATCH** /user-apps/{id} | Patch user app by ID
 *AppsApi* | [**update_source_apps_in_bulk**](sailpoint\v2024/docs/AppsApi.md#update_source_apps_in_bulk) | **POST** /source-apps/bulk-update | Bulk update source apps
-*AuthProfileApi* | [**get_profile_config**](sailpoint\v2024/docs/AuthProfileApi.md#get_profile_config) | **GET** /auth-profiles/{id} | Get Auth Profile.
-*AuthProfileApi* | [**get_profile_config_list**](sailpoint\v2024/docs/AuthProfileApi.md#get_profile_config_list) | **GET** /auth-profiles | Get list of Auth Profiles.
+*AuthProfileApi* | [**get_profile_config**](sailpoint\v2024/docs/AuthProfileApi.md#get_profile_config) | **GET** /auth-profiles/{id} | Get Auth Profile
+*AuthProfileApi* | [**get_profile_config_list**](sailpoint\v2024/docs/AuthProfileApi.md#get_profile_config_list) | **GET** /auth-profiles | Get list of Auth Profiles
 *AuthProfileApi* | [**patch_profile_config**](sailpoint\v2024/docs/AuthProfileApi.md#patch_profile_config) | **PATCH** /auth-profiles/{id} | Patch a specified Auth Profile
 *AuthUsersApi* | [**get_auth_user**](sailpoint\v2024/docs/AuthUsersApi.md#get_auth_user) | **GET** /auth-users/{id} | Auth User Details
 *AuthUsersApi* | [**patch_auth_user**](sailpoint\v2024/docs/AuthUsersApi.md#patch_auth_user) | **PATCH** /auth-users/{id} | Auth User Update
@@ -376,11 +376,11 @@ Class | Method | HTTP request | Description
 *IdentityProfilesApi* | [**delete_identity_profile**](sailpoint\v2024/docs/IdentityProfilesApi.md#delete_identity_profile) | **DELETE** /identity-profiles/{identity-profile-id} | Delete Identity Profile
 *IdentityProfilesApi* | [**delete_identity_profiles**](sailpoint\v2024/docs/IdentityProfilesApi.md#delete_identity_profiles) | **POST** /identity-profiles/bulk-delete | Delete Identity Profiles
 *IdentityProfilesApi* | [**export_identity_profiles**](sailpoint\v2024/docs/IdentityProfilesApi.md#export_identity_profiles) | **GET** /identity-profiles/export | Export Identity Profiles
+*IdentityProfilesApi* | [**generate_identity_preview**](sailpoint\v2024/docs/IdentityProfilesApi.md#generate_identity_preview) | **POST** /identity-profiles/identity-preview | Generate Identity Profile Preview
 *IdentityProfilesApi* | [**get_default_identity_attribute_config**](sailpoint\v2024/docs/IdentityProfilesApi.md#get_default_identity_attribute_config) | **GET** /identity-profiles/{identity-profile-id}/default-identity-attribute-config | Get default Identity Attribute Config
 *IdentityProfilesApi* | [**get_identity_profile**](sailpoint\v2024/docs/IdentityProfilesApi.md#get_identity_profile) | **GET** /identity-profiles/{identity-profile-id} | Get Identity Profile
 *IdentityProfilesApi* | [**import_identity_profiles**](sailpoint\v2024/docs/IdentityProfilesApi.md#import_identity_profiles) | **POST** /identity-profiles/import | Import Identity Profiles
 *IdentityProfilesApi* | [**list_identity_profiles**](sailpoint\v2024/docs/IdentityProfilesApi.md#list_identity_profiles) | **GET** /identity-profiles | List Identity Profiles
-*IdentityProfilesApi* | [**show_identity_preview**](sailpoint\v2024/docs/IdentityProfilesApi.md#show_identity_preview) | **POST** /identity-profiles/identity-preview | Generate Identity Profile Preview
 *IdentityProfilesApi* | [**sync_identity_profile**](sailpoint\v2024/docs/IdentityProfilesApi.md#sync_identity_profile) | **POST** /identity-profiles/{identity-profile-id}/process-identities | Process identities under profile
 *IdentityProfilesApi* | [**update_identity_profile**](sailpoint\v2024/docs/IdentityProfilesApi.md#update_identity_profile) | **PATCH** /identity-profiles/{identity-profile-id} | Update Identity Profile
 *LifecycleStatesApi* | [**create_lifecycle_state**](sailpoint\v2024/docs/LifecycleStatesApi.md#create_lifecycle_state) | **POST** /identity-profiles/{identity-profile-id}/lifecycle-states | Create Lifecycle State
@@ -692,6 +692,7 @@ Class | Method | HTTP request | Description
 *WorkItemsApi* | [**approve_approval_item**](sailpoint\v2024/docs/WorkItemsApi.md#approve_approval_item) | **POST** /work-items/{id}/approve/{approvalItemId} | Approve an Approval Item
 *WorkItemsApi* | [**approve_approval_items_in_bulk**](sailpoint\v2024/docs/WorkItemsApi.md#approve_approval_items_in_bulk) | **POST** /work-items/bulk-approve/{id} | Bulk approve Approval Items
 *WorkItemsApi* | [**complete_work_item**](sailpoint\v2024/docs/WorkItemsApi.md#complete_work_item) | **POST** /work-items/{id} | Complete a Work Item
+*WorkItemsApi* | [**forward_work_item**](sailpoint\v2024/docs/WorkItemsApi.md#forward_work_item) | **POST** /work-items/{id}/forward | Forward a Work Item
 *WorkItemsApi* | [**get_completed_work_items**](sailpoint\v2024/docs/WorkItemsApi.md#get_completed_work_items) | **GET** /work-items/completed | Completed Work Items
 *WorkItemsApi* | [**get_count_completed_work_items**](sailpoint\v2024/docs/WorkItemsApi.md#get_count_completed_work_items) | **GET** /work-items/completed/count | Count Completed Work Items
 *WorkItemsApi* | [**get_count_work_items**](sailpoint\v2024/docs/WorkItemsApi.md#get_count_work_items) | **GET** /work-items/count | Count Work Items
@@ -700,7 +701,6 @@ Class | Method | HTTP request | Description
 *WorkItemsApi* | [**list_work_items**](sailpoint\v2024/docs/WorkItemsApi.md#list_work_items) | **GET** /work-items | List Work Items
 *WorkItemsApi* | [**reject_approval_item**](sailpoint\v2024/docs/WorkItemsApi.md#reject_approval_item) | **POST** /work-items/{id}/reject/{approvalItemId} | Reject an Approval Item
 *WorkItemsApi* | [**reject_approval_items_in_bulk**](sailpoint\v2024/docs/WorkItemsApi.md#reject_approval_items_in_bulk) | **POST** /work-items/bulk-reject/{id} | Bulk reject Approval Items
-*WorkItemsApi* | [**send_work_item_forward**](sailpoint\v2024/docs/WorkItemsApi.md#send_work_item_forward) | **POST** /work-items/{id}/forward | Forward a Work Item
 *WorkItemsApi* | [**submit_account_selection**](sailpoint\v2024/docs/WorkItemsApi.md#submit_account_selection) | **POST** /work-items/{id}/submit-account-selection | Submit Account Selections
 *WorkReassignmentApi* | [**create_reassignment_configuration**](sailpoint\v2024/docs/WorkReassignmentApi.md#create_reassignment_configuration) | **POST** /reassignment-configurations | Create a Reassignment Configuration
 *WorkReassignmentApi* | [**delete_reassignment_configuration**](sailpoint\v2024/docs/WorkReassignmentApi.md#delete_reassignment_configuration) | **DELETE** /reassignment-configurations/{identityId}/{configType} | Delete Reassignment Configuration
@@ -755,6 +755,8 @@ Class | Method | HTTP request | Description
  - [AccessItemRequesterDto](sailpoint\v2024/docs/AccessItemRequesterDto.md)
  - [AccessItemReviewedBy](sailpoint\v2024/docs/AccessItemReviewedBy.md)
  - [AccessItemRoleResponse](sailpoint\v2024/docs/AccessItemRoleResponse.md)
+ - [AccessModelMetadata](sailpoint\v2024/docs/AccessModelMetadata.md)
+ - [AccessModelMetadataValuesInner](sailpoint\v2024/docs/AccessModelMetadataValuesInner.md)
  - [AccessProfile](sailpoint\v2024/docs/AccessProfile.md)
  - [AccessProfileApprovalScheme](sailpoint\v2024/docs/AccessProfileApprovalScheme.md)
  - [AccessProfileBulkDeleteRequest](sailpoint\v2024/docs/AccessProfileBulkDeleteRequest.md)
@@ -775,8 +777,6 @@ Class | Method | HTTP request | Description
  - [AccessRecommendationMessage](sailpoint\v2024/docs/AccessRecommendationMessage.md)
  - [AccessRequest](sailpoint\v2024/docs/AccessRequest.md)
  - [AccessRequestAdminItemStatus](sailpoint\v2024/docs/AccessRequestAdminItemStatus.md)
- - [AccessRequestAdminItemStatusCancelledRequestDetails](sailpoint\v2024/docs/AccessRequestAdminItemStatusCancelledRequestDetails.md)
- - [AccessRequestAdminItemStatusSodViolationContext](sailpoint\v2024/docs/AccessRequestAdminItemStatusSodViolationContext.md)
  - [AccessRequestApproversListResponse](sailpoint\v2024/docs/AccessRequestApproversListResponse.md)
  - [AccessRequestConfig](sailpoint\v2024/docs/AccessRequestConfig.md)
  - [AccessRequestContext](sailpoint\v2024/docs/AccessRequestContext.md)
@@ -822,6 +822,10 @@ Class | Method | HTTP request | Description
  - [AccountAggregationCompletedSource](sailpoint\v2024/docs/AccountAggregationCompletedSource.md)
  - [AccountAggregationCompletedStats](sailpoint\v2024/docs/AccountAggregationCompletedStats.md)
  - [AccountAggregationStatus](sailpoint\v2024/docs/AccountAggregationStatus.md)
+ - [AccountAllOfIdentity](sailpoint\v2024/docs/AccountAllOfIdentity.md)
+ - [AccountAllOfOwnerIdentity](sailpoint\v2024/docs/AccountAllOfOwnerIdentity.md)
+ - [AccountAllOfRecommendation](sailpoint\v2024/docs/AccountAllOfRecommendation.md)
+ - [AccountAllOfSourceOwner](sailpoint\v2024/docs/AccountAllOfSourceOwner.md)
  - [AccountAttributes](sailpoint\v2024/docs/AccountAttributes.md)
  - [AccountAttributesChanged](sailpoint\v2024/docs/AccountAttributesChanged.md)
  - [AccountAttributesChangedAccount](sailpoint\v2024/docs/AccountAttributesChangedAccount.md)
@@ -876,7 +880,6 @@ Class | Method | HTTP request | Description
  - [ApprovalComment2](sailpoint\v2024/docs/ApprovalComment2.md)
  - [ApprovalDescription](sailpoint\v2024/docs/ApprovalDescription.md)
  - [ApprovalForwardHistory](sailpoint\v2024/docs/ApprovalForwardHistory.md)
- - [ApprovalForwardHistory1](sailpoint\v2024/docs/ApprovalForwardHistory1.md)
  - [ApprovalIdentity](sailpoint\v2024/docs/ApprovalIdentity.md)
  - [ApprovalInfoResponse](sailpoint\v2024/docs/ApprovalInfoResponse.md)
  - [ApprovalItemDetails](sailpoint\v2024/docs/ApprovalItemDetails.md)
@@ -888,7 +891,6 @@ Class | Method | HTTP request | Description
  - [ApprovalSchemeForRole](sailpoint\v2024/docs/ApprovalSchemeForRole.md)
  - [ApprovalStatus](sailpoint\v2024/docs/ApprovalStatus.md)
  - [ApprovalStatusDto](sailpoint\v2024/docs/ApprovalStatusDto.md)
- - [ApprovalStatusDto1](sailpoint\v2024/docs/ApprovalStatusDto1.md)
  - [ApprovalStatusDtoCurrentOwner](sailpoint\v2024/docs/ApprovalStatusDtoCurrentOwner.md)
  - [ApprovalStatusDtoOriginalOwner](sailpoint\v2024/docs/ApprovalStatusDtoOriginalOwner.md)
  - [ApprovalSummary](sailpoint\v2024/docs/ApprovalSummary.md)
@@ -919,11 +921,9 @@ Class | Method | HTTP request | Description
  - [BaseAccessProfile](sailpoint\v2024/docs/BaseAccessProfile.md)
  - [BaseAccount](sailpoint\v2024/docs/BaseAccount.md)
  - [BaseCommonDto](sailpoint\v2024/docs/BaseCommonDto.md)
- - [BaseCommonDto1](sailpoint\v2024/docs/BaseCommonDto1.md)
  - [BaseDocument](sailpoint\v2024/docs/BaseDocument.md)
  - [BaseEntitlement](sailpoint\v2024/docs/BaseEntitlement.md)
  - [BaseReferenceDto](sailpoint\v2024/docs/BaseReferenceDto.md)
- - [BaseReferenceDto1](sailpoint\v2024/docs/BaseReferenceDto1.md)
  - [BaseSegment](sailpoint\v2024/docs/BaseSegment.md)
  - [BasicAuthConfig](sailpoint\v2024/docs/BasicAuthConfig.md)
  - [BearerTokenAuthConfig](sailpoint\v2024/docs/BearerTokenAuthConfig.md)
@@ -948,6 +948,7 @@ Class | Method | HTTP request | Description
  - [CampaignAllOfMachineAccountCampaignInfo](sailpoint\v2024/docs/CampaignAllOfMachineAccountCampaignInfo.md)
  - [CampaignAllOfRoleCompositionCampaignInfo](sailpoint\v2024/docs/CampaignAllOfRoleCompositionCampaignInfo.md)
  - [CampaignAllOfRoleCompositionCampaignInfoRemediatorRef](sailpoint\v2024/docs/CampaignAllOfRoleCompositionCampaignInfoRemediatorRef.md)
+ - [CampaignAllOfRoleCompositionCampaignInfoReviewer](sailpoint\v2024/docs/CampaignAllOfRoleCompositionCampaignInfoReviewer.md)
  - [CampaignAllOfSearchCampaignInfo](sailpoint\v2024/docs/CampaignAllOfSearchCampaignInfo.md)
  - [CampaignAllOfSearchCampaignInfoReviewer](sailpoint\v2024/docs/CampaignAllOfSearchCampaignInfoReviewer.md)
  - [CampaignAllOfSourceOwnerCampaignInfo](sailpoint\v2024/docs/CampaignAllOfSourceOwnerCampaignInfo.md)
@@ -968,15 +969,12 @@ Class | Method | HTTP request | Description
  - [CampaignsDeleteRequest](sailpoint\v2024/docs/CampaignsDeleteRequest.md)
  - [CancelAccessRequest](sailpoint\v2024/docs/CancelAccessRequest.md)
  - [CancelledRequestDetails](sailpoint\v2024/docs/CancelledRequestDetails.md)
- - [CancelledRequestDetails1](sailpoint\v2024/docs/CancelledRequestDetails1.md)
  - [Certification](sailpoint\v2024/docs/Certification.md)
  - [CertificationDecision](sailpoint\v2024/docs/CertificationDecision.md)
  - [CertificationDto](sailpoint\v2024/docs/CertificationDto.md)
  - [CertificationIdentitySummary](sailpoint\v2024/docs/CertificationIdentitySummary.md)
  - [CertificationPhase](sailpoint\v2024/docs/CertificationPhase.md)
  - [CertificationReference](sailpoint\v2024/docs/CertificationReference.md)
- - [CertificationReference1](sailpoint\v2024/docs/CertificationReference1.md)
- - [CertificationReferenceDto](sailpoint\v2024/docs/CertificationReferenceDto.md)
  - [CertificationSignedOff](sailpoint\v2024/docs/CertificationSignedOff.md)
  - [CertificationSignedOffCertification](sailpoint\v2024/docs/CertificationSignedOffCertification.md)
  - [CertificationTask](sailpoint\v2024/docs/CertificationTask.md)
@@ -1020,7 +1018,6 @@ Class | Method | HTTP request | Description
  - [ConnectedObject](sailpoint\v2024/docs/ConnectedObject.md)
  - [ConnectedObjectType](sailpoint\v2024/docs/ConnectedObjectType.md)
  - [ConnectorDetail](sailpoint\v2024/docs/ConnectorDetail.md)
- - [ConnectorDetail1](sailpoint\v2024/docs/ConnectorDetail1.md)
  - [ConnectorRuleCreateRequest](sailpoint\v2024/docs/ConnectorRuleCreateRequest.md)
  - [ConnectorRuleCreateRequestSignature](sailpoint\v2024/docs/ConnectorRuleCreateRequestSignature.md)
  - [ConnectorRuleResponse](sailpoint\v2024/docs/ConnectorRuleResponse.md)
@@ -1078,11 +1075,7 @@ Class | Method | HTTP request | Description
  - [EmailNotificationOption](sailpoint\v2024/docs/EmailNotificationOption.md)
  - [EmailStatusDto](sailpoint\v2024/docs/EmailStatusDto.md)
  - [Entitlement](sailpoint\v2024/docs/Entitlement.md)
- - [Entitlement1](sailpoint\v2024/docs/Entitlement1.md)
- - [Entitlement1AccessModelMetadata](sailpoint\v2024/docs/Entitlement1AccessModelMetadata.md)
- - [Entitlement1ManuallyUpdatedFields](sailpoint\v2024/docs/Entitlement1ManuallyUpdatedFields.md)
- - [Entitlement1Owner](sailpoint\v2024/docs/Entitlement1Owner.md)
- - [Entitlement1Source](sailpoint\v2024/docs/Entitlement1Source.md)
+ - [EntitlementAccessModelMetadata](sailpoint\v2024/docs/EntitlementAccessModelMetadata.md)
  - [EntitlementAccessRequestConfig](sailpoint\v2024/docs/EntitlementAccessRequestConfig.md)
  - [EntitlementApprovalScheme](sailpoint\v2024/docs/EntitlementApprovalScheme.md)
  - [EntitlementBulkUpdateRequest](sailpoint\v2024/docs/EntitlementBulkUpdateRequest.md)
@@ -1090,11 +1083,10 @@ Class | Method | HTTP request | Description
  - [EntitlementDocumentAllOfManuallyUpdatedFields](sailpoint\v2024/docs/EntitlementDocumentAllOfManuallyUpdatedFields.md)
  - [EntitlementDocumentAllOfPermissions](sailpoint\v2024/docs/EntitlementDocumentAllOfPermissions.md)
  - [EntitlementDocumentAllOfSource](sailpoint\v2024/docs/EntitlementDocumentAllOfSource.md)
- - [EntitlementDto](sailpoint\v2024/docs/EntitlementDto.md)
+ - [EntitlementOwner](sailpoint\v2024/docs/EntitlementOwner.md)
  - [EntitlementRef](sailpoint\v2024/docs/EntitlementRef.md)
  - [EntitlementRef1](sailpoint\v2024/docs/EntitlementRef1.md)
  - [EntitlementRequestConfig](sailpoint\v2024/docs/EntitlementRequestConfig.md)
- - [EntitlementRequestConfig1](sailpoint\v2024/docs/EntitlementRequestConfig1.md)
  - [EntitlementSource](sailpoint\v2024/docs/EntitlementSource.md)
  - [EntitlementSourceResetBaseReferenceDto](sailpoint\v2024/docs/EntitlementSourceResetBaseReferenceDto.md)
  - [EntitlementSummary](sailpoint\v2024/docs/EntitlementSummary.md)
@@ -1102,7 +1094,6 @@ Class | Method | HTTP request | Description
  - [Error](sailpoint\v2024/docs/Error.md)
  - [ErrorMessage](sailpoint\v2024/docs/ErrorMessage.md)
  - [ErrorMessageDto](sailpoint\v2024/docs/ErrorMessageDto.md)
- - [ErrorMessageDto1](sailpoint\v2024/docs/ErrorMessageDto1.md)
  - [ErrorResponseDto](sailpoint\v2024/docs/ErrorResponseDto.md)
  - [EvaluateResponse](sailpoint\v2024/docs/EvaluateResponse.md)
  - [Event](sailpoint\v2024/docs/Event.md)
@@ -1119,6 +1110,7 @@ Class | Method | HTTP request | Description
  - [ExpansionItem](sailpoint\v2024/docs/ExpansionItem.md)
  - [ExportFormDefinitionsByTenant200ResponseInner](sailpoint\v2024/docs/ExportFormDefinitionsByTenant200ResponseInner.md)
  - [ExportOptions](sailpoint\v2024/docs/ExportOptions.md)
+ - [ExportOptions1](sailpoint\v2024/docs/ExportOptions1.md)
  - [ExportPayload](sailpoint\v2024/docs/ExportPayload.md)
  - [Expression](sailpoint\v2024/docs/Expression.md)
  - [ExpressionChildrenInner](sailpoint\v2024/docs/ExpressionChildrenInner.md)
@@ -1248,6 +1240,7 @@ Class | Method | HTTP request | Description
  - [ListAccessProfiles429Response](sailpoint\v2024/docs/ListAccessProfiles429Response.md)
  - [ListCampaignFilters200Response](sailpoint\v2024/docs/ListCampaignFilters200Response.md)
  - [ListCompleteWorkflowLibrary200ResponseInner](sailpoint\v2024/docs/ListCompleteWorkflowLibrary200ResponseInner.md)
+ - [ListDeploys200Response](sailpoint\v2024/docs/ListDeploys200Response.md)
  - [ListFormDefinitionsByTenantResponse](sailpoint\v2024/docs/ListFormDefinitionsByTenantResponse.md)
  - [ListFormElementDataByElementIDResponse](sailpoint\v2024/docs/ListFormElementDataByElementIDResponse.md)
  - [ListFormInstancesByTenantResponse](sailpoint\v2024/docs/ListFormInstancesByTenantResponse.md)
@@ -1288,11 +1281,9 @@ Class | Method | HTTP request | Description
  - [ManualDiscoverApplications](sailpoint\v2024/docs/ManualDiscoverApplications.md)
  - [ManualDiscoverApplicationsTemplate](sailpoint\v2024/docs/ManualDiscoverApplicationsTemplate.md)
  - [ManualWorkItemDetails](sailpoint\v2024/docs/ManualWorkItemDetails.md)
- - [ManualWorkItemDetails1](sailpoint\v2024/docs/ManualWorkItemDetails1.md)
  - [ManualWorkItemDetailsCurrentOwner](sailpoint\v2024/docs/ManualWorkItemDetailsCurrentOwner.md)
  - [ManualWorkItemDetailsOriginalOwner](sailpoint\v2024/docs/ManualWorkItemDetailsOriginalOwner.md)
  - [ManualWorkItemState](sailpoint\v2024/docs/ManualWorkItemState.md)
- - [ManuallyUpdatedFieldsDTO](sailpoint\v2024/docs/ManuallyUpdatedFieldsDTO.md)
  - [MatchTerm](sailpoint\v2024/docs/MatchTerm.md)
  - [Medium](sailpoint\v2024/docs/Medium.md)
  - [MembershipType](sailpoint\v2024/docs/MembershipType.md)
@@ -1350,15 +1341,14 @@ Class | Method | HTTP request | Description
  - [OrphanIdentitiesReportArguments](sailpoint\v2024/docs/OrphanIdentitiesReportArguments.md)
  - [Outlier](sailpoint\v2024/docs/Outlier.md)
  - [OutlierContributingFeature](sailpoint\v2024/docs/OutlierContributingFeature.md)
- - [OutlierContributingFeatureValue](sailpoint\v2024/docs/OutlierContributingFeatureValue.md)
  - [OutlierFeatureSummary](sailpoint\v2024/docs/OutlierFeatureSummary.md)
  - [OutlierFeatureSummaryOutlierFeatureDisplayValuesInner](sailpoint\v2024/docs/OutlierFeatureSummaryOutlierFeatureDisplayValuesInner.md)
  - [OutlierFeatureTranslation](sailpoint\v2024/docs/OutlierFeatureTranslation.md)
  - [OutlierSummary](sailpoint\v2024/docs/OutlierSummary.md)
+ - [OutlierValueType](sailpoint\v2024/docs/OutlierValueType.md)
  - [OutliersContributingFeatureAccessItems](sailpoint\v2024/docs/OutliersContributingFeatureAccessItems.md)
  - [OwnerDto](sailpoint\v2024/docs/OwnerDto.md)
  - [OwnerReference](sailpoint\v2024/docs/OwnerReference.md)
- - [OwnerReferenceDto](sailpoint\v2024/docs/OwnerReferenceDto.md)
  - [OwnerReferenceSegments](sailpoint\v2024/docs/OwnerReferenceSegments.md)
  - [Owns](sailpoint\v2024/docs/Owns.md)
  - [PasswordChangeRequest](sailpoint\v2024/docs/PasswordChangeRequest.md)
@@ -1396,9 +1386,6 @@ Class | Method | HTTP request | Description
  - [ProvisioningCompletedRecipient](sailpoint\v2024/docs/ProvisioningCompletedRecipient.md)
  - [ProvisioningCompletedRequester](sailpoint\v2024/docs/ProvisioningCompletedRequester.md)
  - [ProvisioningConfig](sailpoint\v2024/docs/ProvisioningConfig.md)
- - [ProvisioningConfig1](sailpoint\v2024/docs/ProvisioningConfig1.md)
- - [ProvisioningConfig1ManagedResourceRefsInner](sailpoint\v2024/docs/ProvisioningConfig1ManagedResourceRefsInner.md)
- - [ProvisioningConfig1PlanInitializerScript](sailpoint\v2024/docs/ProvisioningConfig1PlanInitializerScript.md)
  - [ProvisioningConfigPlanInitializerScript](sailpoint\v2024/docs/ProvisioningConfigPlanInitializerScript.md)
  - [ProvisioningCriteriaLevel1](sailpoint\v2024/docs/ProvisioningCriteriaLevel1.md)
  - [ProvisioningCriteriaLevel2](sailpoint\v2024/docs/ProvisioningCriteriaLevel2.md)
@@ -1424,7 +1411,6 @@ Class | Method | HTTP request | Description
  - [Range](sailpoint\v2024/docs/Range.md)
  - [ReassignReference](sailpoint\v2024/docs/ReassignReference.md)
  - [Reassignment](sailpoint\v2024/docs/Reassignment.md)
- - [Reassignment1](sailpoint\v2024/docs/Reassignment1.md)
  - [ReassignmentReference](sailpoint\v2024/docs/ReassignmentReference.md)
  - [ReassignmentTrailDTO](sailpoint\v2024/docs/ReassignmentTrailDTO.md)
  - [ReassignmentType](sailpoint\v2024/docs/ReassignmentType.md)
@@ -1476,11 +1462,12 @@ Class | Method | HTTP request | Description
  - [ReviewableEntitlementAccountOwner](sailpoint\v2024/docs/ReviewableEntitlementAccountOwner.md)
  - [ReviewableRole](sailpoint\v2024/docs/ReviewableRole.md)
  - [Reviewer](sailpoint\v2024/docs/Reviewer.md)
- - [Reviewer1](sailpoint\v2024/docs/Reviewer1.md)
  - [Revocability](sailpoint\v2024/docs/Revocability.md)
  - [RevocabilityForRole](sailpoint\v2024/docs/RevocabilityForRole.md)
  - [Role](sailpoint\v2024/docs/Role.md)
  - [RoleAssignmentDto](sailpoint\v2024/docs/RoleAssignmentDto.md)
+ - [RoleAssignmentDtoAssigner](sailpoint\v2024/docs/RoleAssignmentDtoAssigner.md)
+ - [RoleAssignmentDtoAssignmentContext](sailpoint\v2024/docs/RoleAssignmentDtoAssignmentContext.md)
  - [RoleAssignmentRef](sailpoint\v2024/docs/RoleAssignmentRef.md)
  - [RoleAssignmentSourceType](sailpoint\v2024/docs/RoleAssignmentSourceType.md)
  - [RoleBulkDeleteRequest](sailpoint\v2024/docs/RoleBulkDeleteRequest.md)
@@ -1603,7 +1590,6 @@ Class | Method | HTTP request | Description
  - [SendAccountVerificationRequest](sailpoint\v2024/docs/SendAccountVerificationRequest.md)
  - [SendTestNotificationRequestDto](sailpoint\v2024/docs/SendTestNotificationRequestDto.md)
  - [ServiceDeskIntegrationDto](sailpoint\v2024/docs/ServiceDeskIntegrationDto.md)
- - [ServiceDeskIntegrationDto1](sailpoint\v2024/docs/ServiceDeskIntegrationDto1.md)
  - [ServiceDeskIntegrationTemplateDto](sailpoint\v2024/docs/ServiceDeskIntegrationTemplateDto.md)
  - [ServiceDeskIntegrationTemplateType](sailpoint\v2024/docs/ServiceDeskIntegrationTemplateType.md)
  - [ServiceDeskSource](sailpoint\v2024/docs/ServiceDeskSource.md)
@@ -1616,7 +1602,6 @@ Class | Method | HTTP request | Description
  - [SlimCampaign](sailpoint\v2024/docs/SlimCampaign.md)
  - [SlimDiscoveredApplications](sailpoint\v2024/docs/SlimDiscoveredApplications.md)
  - [SodExemptCriteria](sailpoint\v2024/docs/SodExemptCriteria.md)
- - [SodExemptCriteria1](sailpoint\v2024/docs/SodExemptCriteria1.md)
  - [SodPolicy](sailpoint\v2024/docs/SodPolicy.md)
  - [SodPolicyConflictingAccessCriteria](sailpoint\v2024/docs/SodPolicyConflictingAccessCriteria.md)
  - [SodPolicyDto](sailpoint\v2024/docs/SodPolicyDto.md)
@@ -1626,13 +1611,8 @@ Class | Method | HTTP request | Description
  - [SodReportResultDto](sailpoint\v2024/docs/SodReportResultDto.md)
  - [SodViolationCheck](sailpoint\v2024/docs/SodViolationCheck.md)
  - [SodViolationCheckResult](sailpoint\v2024/docs/SodViolationCheckResult.md)
- - [SodViolationCheckResult1](sailpoint\v2024/docs/SodViolationCheckResult1.md)
  - [SodViolationContext](sailpoint\v2024/docs/SodViolationContext.md)
- - [SodViolationContext1](sailpoint\v2024/docs/SodViolationContext1.md)
- - [SodViolationContext1ConflictingAccessCriteria](sailpoint\v2024/docs/SodViolationContext1ConflictingAccessCriteria.md)
- - [SodViolationContext1ConflictingAccessCriteriaLeftCriteria](sailpoint\v2024/docs/SodViolationContext1ConflictingAccessCriteriaLeftCriteria.md)
  - [SodViolationContextCheckCompleted](sailpoint\v2024/docs/SodViolationContextCheckCompleted.md)
- - [SodViolationContextCheckCompleted1](sailpoint\v2024/docs/SodViolationContextCheckCompleted1.md)
  - [SodViolationContextConflictingAccessCriteria](sailpoint\v2024/docs/SodViolationContextConflictingAccessCriteria.md)
  - [SodViolationContextConflictingAccessCriteriaLeftCriteria](sailpoint\v2024/docs/SodViolationContextConflictingAccessCriteriaLeftCriteria.md)
  - [Source](sailpoint\v2024/docs/Source.md)
@@ -1792,6 +1772,7 @@ Class | Method | HTTP request | Description
  - [WorkflowTriggerAttributes](sailpoint\v2024/docs/WorkflowTriggerAttributes.md)
  - [WorkgroupBulkDeleteRequest](sailpoint\v2024/docs/WorkgroupBulkDeleteRequest.md)
  - [WorkgroupConnectionDto](sailpoint\v2024/docs/WorkgroupConnectionDto.md)
+ - [WorkgroupConnectionDtoObject](sailpoint\v2024/docs/WorkgroupConnectionDtoObject.md)
  - [WorkgroupDeleteItem](sailpoint\v2024/docs/WorkgroupDeleteItem.md)
  - [WorkgroupDto](sailpoint\v2024/docs/WorkgroupDto.md)
  - [WorkgroupDtoOwner](sailpoint\v2024/docs/WorkgroupDtoOwner.md)

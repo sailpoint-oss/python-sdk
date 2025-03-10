@@ -93,6 +93,21 @@ class CampaignAllOfSearchCampaignInfo(BaseModel):
                 if _item_access_constraints:
                     _items.append(_item_access_constraints.to_dict())
             _dict['accessConstraints'] = _items
+        # set to None if reviewer (nullable) is None
+        # and model_fields_set contains the field
+        if self.reviewer is None and "reviewer" in self.model_fields_set:
+            _dict['reviewer'] = None
+
+        # set to None if query (nullable) is None
+        # and model_fields_set contains the field
+        if self.query is None and "query" in self.model_fields_set:
+            _dict['query'] = None
+
+        # set to None if identity_ids (nullable) is None
+        # and model_fields_set contains the field
+        if self.identity_ids is None and "identity_ids" in self.model_fields_set:
+            _dict['identityIds'] = None
+
         return _dict
 
     @classmethod

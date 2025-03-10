@@ -29,11 +29,11 @@ Method | HTTP request | Description
 [**delete-identity-profile**](#delete-identity-profile) | **DELETE** `/identity-profiles/{identity-profile-id}` | Delete Identity Profile
 [**delete-identity-profiles**](#delete-identity-profiles) | **POST** `/identity-profiles/bulk-delete` | Delete Identity Profiles
 [**export-identity-profiles**](#export-identity-profiles) | **GET** `/identity-profiles/export` | Export Identity Profiles
+[**generate-identity-preview**](#generate-identity-preview) | **POST** `/identity-profiles/identity-preview` | Generate Identity Profile Preview
 [**get-default-identity-attribute-config**](#get-default-identity-attribute-config) | **GET** `/identity-profiles/{identity-profile-id}/default-identity-attribute-config` | Get default Identity Attribute Config
 [**get-identity-profile**](#get-identity-profile) | **GET** `/identity-profiles/{identity-profile-id}` | Get Identity Profile
 [**import-identity-profiles**](#import-identity-profiles) | **POST** `/identity-profiles/import` | Import Identity Profiles
 [**list-identity-profiles**](#list-identity-profiles) | **GET** `/identity-profiles` | List Identity Profiles
-[**show-identity-preview**](#show-identity-preview) | **POST** `/identity-profiles/identity-preview` | Generate Identity Profile Preview
 [**sync-identity-profile**](#sync-identity-profile) | **POST** `/identity-profiles/{identity-profile-id}/process-identities` | Process identities under profile
 [**update-identity-profile**](#update-identity-profile) | **PATCH** `/identity-profiles/{identity-profile-id}` | Update Identity Profile
 
@@ -340,6 +340,98 @@ with ApiClient(configuration) as api_client:
 
 [[Back to top]](#) 
 
+## generate-identity-preview
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+Generate Identity Profile Preview
+This generates a non-persisted IdentityDetails object that will represent as the preview of the identities attribute when the given policy''s attribute config is applied.
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2024/generate-identity-preview)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+   | x_sail_point_experimental | **str** | True  (default to 'true') | Use this header to enable this experimental API.
+ Body  | identity_preview_request | [**IdentityPreviewRequest**](../models/identity-preview-request) | True  | Identity Preview request body.
+
+### Return type
+[**IdentityPreviewResponse**](../models/identity-preview-response)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | Object representing the preview object with all of the identity attributes using the current mappings. | IdentityPreviewResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### Example
+
+```python
+import sailpoint.v2024
+from sailpoint.v2024.api.identity_profiles_api import IdentityProfilesApi
+from sailpoint.v2024.api_client import ApiClient
+from sailpoint.v2024.models.identity_preview_request import IdentityPreviewRequest
+from sailpoint.v2024.models.identity_preview_response import IdentityPreviewResponse
+from pprint import pprint
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+with ApiClient(configuration) as api_client:
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+    identity_preview_request = {
+          "identityId" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+          "identityAttributeConfig" : {
+            "attributeTransforms" : [ {
+              "transformDefinition" : {
+                "attributes" : {
+                  "attributeName" : "e-mail",
+                  "sourceName" : "MySource",
+                  "sourceId" : "2c9180877a826e68017a8c0b03da1a53"
+                },
+                "type" : "accountAttribute"
+              },
+              "identityAttributeName" : "email"
+            }, {
+              "transformDefinition" : {
+                "attributes" : {
+                  "attributeName" : "e-mail",
+                  "sourceName" : "MySource",
+                  "sourceId" : "2c9180877a826e68017a8c0b03da1a53"
+                },
+                "type" : "accountAttribute"
+              },
+              "identityAttributeName" : "email"
+            } ],
+            "enabled" : true
+          }
+        } # IdentityPreviewRequest | Identity Preview request body.
+
+    try:
+        # Generate Identity Profile Preview
+        new_identity_preview_request = IdentityPreviewRequest()
+        new_identity_preview_request.from_json(identity_preview_request)
+        results =IdentityProfilesApi(api_client).generate_identity_preview(x_sail_point_experimental, new_identity_preview_request)
+        # Below is a request that includes all optional parameters
+        # results = IdentityProfilesApi(api_client).generate_identity_preview(x_sail_point_experimental, new_identity_preview_request)
+        print("The response of IdentityProfilesApi->generate_identity_preview:\n")
+        pprint(results)
+        except Exception as e:
+        print("Exception when calling IdentityProfilesApi->generate_identity_preview: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
 ## get-default-identity-attribute-config
 Get default Identity Attribute Config
 This returns the default identity attribute config.
@@ -640,94 +732,6 @@ with ApiClient(configuration) as api_client:
         pprint(results)
         except Exception as e:
         print("Exception when calling IdentityProfilesApi->list_identity_profiles: %s\n" % e)
-```
-
-
-
-[[Back to top]](#) 
-
-## show-identity-preview
-Generate Identity Profile Preview
-Use this API to generate a non-persisted preview of the identity object after applying `IdentityAttributeConfig` sent in request body.
-This API only allows `accountAttribute`, `reference` and `rule` transform types in the `IdentityAttributeConfig` sent in the request body.
-
-[API Spec](https://developer.sailpoint.com/docs/api/v2024/show-identity-preview)
-
-### Parameters 
-
-Param Type | Name | Data Type | Required  | Description
-------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | identity_preview_request | [**IdentityPreviewRequest**](../models/identity-preview-request) | True  | Identity Preview request body.
-
-### Return type
-[**IdentityPreviewResponse**](../models/identity-preview-response)
-
-### Responses
-Code | Description  | Data Type | Response headers |
-------------- | ------------- | ------------- |------------------|
-200 | A preview of the identity attributes after applying identity attributes config sent in request body. | IdentityPreviewResponse |  -  |
-400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
-401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
-429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
-
-### HTTP request headers
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### Example
-
-```python
-import sailpoint.v2024
-from sailpoint.v2024.api.identity_profiles_api import IdentityProfilesApi
-from sailpoint.v2024.api_client import ApiClient
-from sailpoint.v2024.models.identity_preview_request import IdentityPreviewRequest
-from sailpoint.v2024.models.identity_preview_response import IdentityPreviewResponse
-from pprint import pprint
-from sailpoint.configuration import Configuration
-configuration = Configuration()
-
-with ApiClient(configuration) as api_client:
-    identity_preview_request = {
-          "identityId" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
-          "identityAttributeConfig" : {
-            "attributeTransforms" : [ {
-              "transformDefinition" : {
-                "attributes" : {
-                  "attributeName" : "e-mail",
-                  "sourceName" : "MySource",
-                  "sourceId" : "2c9180877a826e68017a8c0b03da1a53"
-                },
-                "type" : "accountAttribute"
-              },
-              "identityAttributeName" : "email"
-            }, {
-              "transformDefinition" : {
-                "attributes" : {
-                  "attributeName" : "e-mail",
-                  "sourceName" : "MySource",
-                  "sourceId" : "2c9180877a826e68017a8c0b03da1a53"
-                },
-                "type" : "accountAttribute"
-              },
-              "identityAttributeName" : "email"
-            } ],
-            "enabled" : true
-          }
-        } # IdentityPreviewRequest | Identity Preview request body.
-
-    try:
-        # Generate Identity Profile Preview
-        new_identity_preview_request = IdentityPreviewRequest()
-        new_identity_preview_request.from_json(identity_preview_request)
-        results =IdentityProfilesApi(api_client).show_identity_preview(new_identity_preview_request)
-        # Below is a request that includes all optional parameters
-        # results = IdentityProfilesApi(api_client).show_identity_preview(new_identity_preview_request)
-        print("The response of IdentityProfilesApi->show_identity_preview:\n")
-        pprint(results)
-        except Exception as e:
-        print("Exception when calling IdentityProfilesApi->show_identity_preview: %s\n" % e)
 ```
 
 

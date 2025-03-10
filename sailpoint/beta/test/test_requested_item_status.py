@@ -35,6 +35,7 @@ class TestRequestedItemStatus(unittest.TestCase):
         model = RequestedItemStatus()
         if include_optional:
             return RequestedItemStatus(
+                id = '2c9180926cbfbddd016cbfc7c3b10010',
                 name = 'AccessProfile1',
                 type = 'ACCESS_PROFILE',
                 cancelled_request_details = None,

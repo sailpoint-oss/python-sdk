@@ -40,6 +40,7 @@ class RequestedItemStatus(BaseModel):
     """
     RequestedItemStatus
     """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="The ID of the access request.")
     name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of the item being requested.")
     type: Optional[StrictStr] = Field(default=None, description="Type of requested object.")
     cancelled_request_details: Optional[RequestedItemStatusCancelledRequestDetails] = Field(default=None, alias="cancelledRequestDetails")
@@ -64,7 +65,7 @@ class RequestedItemStatus(BaseModel):
     cancelable: Optional[StrictBool] = Field(default=False, description="True if the request can be canceled.")
     access_request_id: Optional[StrictStr] = Field(default=None, description="This is the account activity id.", alias="accessRequestId")
     client_metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Arbitrary key-value pairs, if any were included in the corresponding access request", alias="clientMetadata")
-    __properties: ClassVar[List[str]] = ["name", "type", "cancelledRequestDetails", "errorMessages", "state", "approvalDetails", "approvalIds", "manualWorkItemDetails", "accountActivityItemId", "requestType", "modified", "created", "requester", "requestedFor", "requesterComment", "sodViolationContext", "provisioningDetails", "preApprovalTriggerDetails", "accessRequestPhases", "description", "removeDate", "cancelable", "accessRequestId", "clientMetadata"]
+    __properties: ClassVar[List[str]] = ["id", "name", "type", "cancelledRequestDetails", "errorMessages", "state", "approvalDetails", "approvalIds", "manualWorkItemDetails", "accountActivityItemId", "requestType", "modified", "created", "requester", "requestedFor", "requesterComment", "sodViolationContext", "provisioningDetails", "preApprovalTriggerDetails", "accessRequestPhases", "description", "removeDate", "cancelable", "accessRequestId", "clientMetadata"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -233,6 +234,7 @@ class RequestedItemStatus(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "id": obj.get("id"),
             "name": obj.get("name"),
             "type": obj.get("type"),
             "cancelledRequestDetails": RequestedItemStatusCancelledRequestDetails.from_dict(obj["cancelledRequestDetails"]) if obj.get("cancelledRequestDetails") is not None else None,

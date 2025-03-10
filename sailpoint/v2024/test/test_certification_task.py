@@ -40,12 +40,7 @@ class TestCertificationTask(unittest.TestCase):
                 target_type = 'CAMPAIGN',
                 target_id = '2c918086719eec070171a7e3355a834c',
                 status = 'QUEUED',
-                errors = [
-                    sailpoint.v2024.models.error_message_dto.ErrorMessageDto(
-                        locale = 'en-US', 
-                        locale_origin = 'DEFAULT', 
-                        text = 'The request was syntactically correct but its content is semantically invalid.', )
-                    ],
+                errors = {locale=en-US, localeOrigin=DEFAULT, text=Error Message},
                 reassignment_trail_dtos = {previousOwner=ef38f94347e94562b5bb8424a56397d8, newOwner=ef38f94347e94562b5bb8424a56397a3, reassignmentType=AUTOMATIC_REASSIGNMENT},
                 created = '2020-09-24T18:10:47.693Z'
             )

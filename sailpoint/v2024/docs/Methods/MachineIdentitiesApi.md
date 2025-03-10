@@ -23,6 +23,9 @@ Method | HTTP request | Description
 
 
 ## create-machine-identity
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
 Create Machine Identities
 Use this API to create a machine identity.
 The maximum supported length for the description field is 2000 characters.
@@ -33,6 +36,7 @@ The maximum supported length for the description field is 2000 characters.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
+   | x_sail_point_experimental | **str** | True  (default to 'true') | Use this header to enable this experimental API.
  Body  | machine_identity | [**MachineIdentity**](../models/machine-identity) | True  | 
 
 ### Return type
@@ -65,6 +69,7 @@ from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 with ApiClient(configuration) as api_client:
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
     machine_identity = {
           "created" : "2015-05-28T14:07:17Z",
           "businessApplication" : "ADService",
@@ -80,9 +85,9 @@ with ApiClient(configuration) as api_client:
         # Create Machine Identities
         new_machine_identity = MachineIdentity()
         new_machine_identity.from_json(machine_identity)
-        results =MachineIdentitiesApi(api_client).create_machine_identity(new_machine_identity)
+        results =MachineIdentitiesApi(api_client).create_machine_identity(x_sail_point_experimental, new_machine_identity)
         # Below is a request that includes all optional parameters
-        # results = MachineIdentitiesApi(api_client).create_machine_identity(new_machine_identity)
+        # results = MachineIdentitiesApi(api_client).create_machine_identity(x_sail_point_experimental, new_machine_identity)
         print("The response of MachineIdentitiesApi->create_machine_identity:\n")
         pprint(results)
         except Exception as e:

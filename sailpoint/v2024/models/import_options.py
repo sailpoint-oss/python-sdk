@@ -41,8 +41,8 @@ class ImportOptions(BaseModel):
             return value
 
         for i in value:
-            if i not in set(['IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION']):
-                raise ValueError("each list item must be one of ('IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION')")
+            if i not in set(['CONNECTOR_RULE', 'IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION']):
+                raise ValueError("each list item must be one of ('CONNECTOR_RULE', 'IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION')")
         return value
 
     @field_validator('include_types')
@@ -52,8 +52,8 @@ class ImportOptions(BaseModel):
             return value
 
         for i in value:
-            if i not in set(['IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION']):
-                raise ValueError("each list item must be one of ('IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION')")
+            if i not in set(['CONNECTOR_RULE', 'IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION']):
+                raise ValueError("each list item must be one of ('CONNECTOR_RULE', 'IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION')")
         return value
 
     @field_validator('default_references')
@@ -63,8 +63,8 @@ class ImportOptions(BaseModel):
             return value
 
         for i in value:
-            if i not in set(['IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION']):
-                raise ValueError("each list item must be one of ('IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION')")
+            if i not in set(['CONNECTOR_RULE', 'IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION']):
+                raise ValueError("each list item must be one of ('CONNECTOR_RULE', 'IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION')")
         return value
 
     model_config = ConfigDict(

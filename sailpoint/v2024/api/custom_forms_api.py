@@ -4826,7 +4826,7 @@ class CustomFormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ListFormInstancesByTenantResponse:
+    ) -> List[ListFormInstancesByTenantResponse]:
         """List form instances by tenant.
 
         No parameters required.
@@ -4864,7 +4864,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ListFormInstancesByTenantResponse",
+            '200': "List[ListFormInstancesByTenantResponse]",
             '400': "SearchFormDefinitionsByTenant400Response",
             '401': "SearchFormDefinitionsByTenant400Response",
             '403': "SearchFormDefinitionsByTenant400Response",
@@ -4898,7 +4898,7 @@ class CustomFormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ListFormInstancesByTenantResponse]:
+    ) -> ApiResponse[List[ListFormInstancesByTenantResponse]]:
         """List form instances by tenant.
 
         No parameters required.
@@ -4936,7 +4936,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ListFormInstancesByTenantResponse",
+            '200': "List[ListFormInstancesByTenantResponse]",
             '400': "SearchFormDefinitionsByTenant400Response",
             '401': "SearchFormDefinitionsByTenant400Response",
             '403': "SearchFormDefinitionsByTenant400Response",
@@ -5008,7 +5008,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ListFormInstancesByTenantResponse",
+            '200': "List[ListFormInstancesByTenantResponse]",
             '400': "SearchFormDefinitionsByTenant400Response",
             '401': "SearchFormDefinitionsByTenant400Response",
             '403': "SearchFormDefinitionsByTenant400Response",

@@ -37,8 +37,8 @@ class ImportObject(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION']):
-            raise ValueError("must be one of enum values ('IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION')")
+        if value not in set(['CONNECTOR_RULE', 'IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION']):
+            raise ValueError("must be one of enum values ('CONNECTOR_RULE', 'IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION')")
         return value
 
     model_config = ConfigDict(

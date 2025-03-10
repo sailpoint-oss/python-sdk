@@ -237,9 +237,6 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## patch-sed
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
 Patch Suggested Entitlement Description
 Patch Suggested Entitlement Description
 
@@ -250,7 +247,6 @@ Patch Suggested Entitlement Description
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | id is sed id
-   | x_sail_point_experimental | **str** | True  (default to 'true') | Use this header to enable this experimental API.
  Body  | sed_patch | [**[]SedPatch**](../models/sed-patch) | True  | Sed Patch Request
 
 ### Return type
@@ -285,7 +281,6 @@ configuration = Configuration()
 
 with ApiClient(configuration) as api_client:
     id = 'ebab396f-0af1-4050-89b7-dafc63ec70e7' # str | id is sed id # str | id is sed id
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
     [sailpoint.v2024.SedPatch()] # List[SedPatch] | Sed Patch Request
      sed_patch = {
           "op" : "replace",
@@ -298,9 +293,9 @@ with ApiClient(configuration) as api_client:
         # Patch Suggested Entitlement Description
         new_sed_patch = SedPatch()
         new_sed_patch.from_json(sed_patch)
-        results =SuggestedEntitlementDescriptionApi(api_client).patch_sed(id, x_sail_point_experimental, new_sed_patch)
+        results =SuggestedEntitlementDescriptionApi(api_client).patch_sed(id, new_sed_patch)
         # Below is a request that includes all optional parameters
-        # results = SuggestedEntitlementDescriptionApi(api_client).patch_sed(id, x_sail_point_experimental, new_sed_patch)
+        # results = SuggestedEntitlementDescriptionApi(api_client).patch_sed(id, new_sed_patch)
         print("The response of SuggestedEntitlementDescriptionApi->patch_sed:\n")
         pprint(results)
         except Exception as e:

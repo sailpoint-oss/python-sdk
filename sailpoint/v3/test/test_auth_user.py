@@ -51,6 +51,7 @@ class TestAuthUser(unittest.TestCase):
                 last_password_change_date = '2021-03-08T22:37:33.901Z',
                 last_login_timestamp = 1656327185832,
                 current_login_timestamp = 1656327185832,
+                last_unlock_timestamp = '2021-03-08T22:37:33.901Z',
                 capabilities = [
                     'ORG_ADMIN'
                     ]

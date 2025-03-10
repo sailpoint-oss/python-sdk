@@ -43,8 +43,8 @@ class ConnectorRuleResponse(BaseModel):
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['BuildMap', 'ConnectorAfterCreate', 'ConnectorAfterDelete', 'ConnectorAfterModify', 'ConnectorBeforeCreate', 'ConnectorBeforeDelete', 'ConnectorBeforeModify', 'JDBCBuildMap', 'JDBCOperationProvisioning', 'JDBCProvision', 'PeopleSoftHRMSBuildMap', 'PeopleSoftHRMSOperationProvisioning', 'PeopleSoftHRMSProvision', 'RACFPermissionCustomization', 'SAPBuildMap', 'SapHrManagerRule', 'SapHrOperationProvisioning', 'SapHrProvision', 'SuccessFactorsOperationProvisioning', 'WebServiceAfterOperationRule', 'WebServiceBeforeOperationRule']):
-            raise ValueError("must be one of enum values ('BuildMap', 'ConnectorAfterCreate', 'ConnectorAfterDelete', 'ConnectorAfterModify', 'ConnectorBeforeCreate', 'ConnectorBeforeDelete', 'ConnectorBeforeModify', 'JDBCBuildMap', 'JDBCOperationProvisioning', 'JDBCProvision', 'PeopleSoftHRMSBuildMap', 'PeopleSoftHRMSOperationProvisioning', 'PeopleSoftHRMSProvision', 'RACFPermissionCustomization', 'SAPBuildMap', 'SapHrManagerRule', 'SapHrOperationProvisioning', 'SapHrProvision', 'SuccessFactorsOperationProvisioning', 'WebServiceAfterOperationRule', 'WebServiceBeforeOperationRule')")
+        if value not in set(['BuildMap', 'ConnectorAfterCreate', 'ConnectorAfterDelete', 'ConnectorAfterModify', 'ConnectorBeforeCreate', 'ConnectorBeforeDelete', 'ConnectorBeforeModify', 'JDBCBuildMap', 'JDBCOperationProvisioning', 'JDBCProvision', 'PeopleSoftHRMSBuildMap', 'PeopleSoftHRMSOperationProvisioning', 'PeopleSoftHRMSProvision', 'RACFPermissionCustomization', 'ResourceObjectCustomization', 'SAPBuildMap', 'SapHrManagerRule', 'SapHrOperationProvisioning', 'SapHrProvision', 'SuccessFactorsOperationProvisioning', 'WebServiceAfterOperationRule', 'WebServiceBeforeOperationRule']):
+            raise ValueError("must be one of enum values ('BuildMap', 'ConnectorAfterCreate', 'ConnectorAfterDelete', 'ConnectorAfterModify', 'ConnectorBeforeCreate', 'ConnectorBeforeDelete', 'ConnectorBeforeModify', 'JDBCBuildMap', 'JDBCOperationProvisioning', 'JDBCProvision', 'PeopleSoftHRMSBuildMap', 'PeopleSoftHRMSOperationProvisioning', 'PeopleSoftHRMSProvision', 'RACFPermissionCustomization', 'ResourceObjectCustomization', 'SAPBuildMap', 'SapHrManagerRule', 'SapHrOperationProvisioning', 'SapHrProvision', 'SuccessFactorsOperationProvisioning', 'WebServiceAfterOperationRule', 'WebServiceBeforeOperationRule')")
         return value
 
     model_config = ConfigDict(
@@ -92,6 +92,11 @@ class ConnectorRuleResponse(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of source_code
         if self.source_code:
             _dict['sourceCode'] = self.source_code.to_dict()
+        # set to None if description (nullable) is None
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
+            _dict['description'] = None
+
         # set to None if attributes (nullable) is None
         # and model_fields_set contains the field
         if self.attributes is None and "attributes" in self.model_fields_set:

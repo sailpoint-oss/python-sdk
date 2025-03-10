@@ -20,7 +20,7 @@ from pydantic import Field, StrictBool, StrictBytes, StrictStr, field_validator
 from typing import List, Optional, Tuple, Union
 from typing_extensions import Annotated
 from sailpoint.v2024.models.attr_sync_source_config import AttrSyncSourceConfig
-from sailpoint.v2024.models.connector_detail1 import ConnectorDetail1
+from sailpoint.v2024.models.connector_detail import ConnectorDetail
 from sailpoint.v2024.models.correlation_config import CorrelationConfig
 from sailpoint.v2024.models.delete_source202_response import DeleteSource202Response
 from sailpoint.v2024.models.json_patch_operation import JsonPatchOperation
@@ -5075,7 +5075,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ConnectorDetail1:
+    ) -> ConnectorDetail:
         """Gets source config with language translations
 
         Looks up and returns the source config for the requested source id after populating the source config values and applying language translations.
@@ -5119,7 +5119,7 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ConnectorDetail1",
+            '200': "ConnectorDetail",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
@@ -5155,7 +5155,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ConnectorDetail1]:
+    ) -> ApiResponse[ConnectorDetail]:
         """Gets source config with language translations
 
         Looks up and returns the source config for the requested source id after populating the source config values and applying language translations.
@@ -5199,7 +5199,7 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ConnectorDetail1",
+            '200': "ConnectorDetail",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
@@ -5279,7 +5279,7 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ConnectorDetail1",
+            '200': "ConnectorDetail",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",

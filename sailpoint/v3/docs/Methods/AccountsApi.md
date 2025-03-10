@@ -409,12 +409,12 @@ Path   | id | **str** | True  | The account id
   Query | count | **bool** |   (optional) (default to False) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
 ### Return type
-[**List[EntitlementDto]**](../models/entitlement-dto)
+[**List[Entitlement]**](../models/entitlement)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | An array of account entitlements | List[EntitlementDto] |  -  |
+200 | An array of account entitlements | List[Entitlement] |  -  |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
@@ -432,7 +432,7 @@ Code | Description  | Data Type | Response headers |
 import sailpoint.v3
 from sailpoint.v3.api.accounts_api import AccountsApi
 from sailpoint.v3.api_client import ApiClient
-from sailpoint.v3.models.entitlement_dto import EntitlementDto
+from sailpoint.v3.models.entitlement import Entitlement
 from pprint import pprint
 from sailpoint.configuration import Configuration
 configuration = Configuration()

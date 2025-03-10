@@ -79,6 +79,11 @@ class AttributeDefinition(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of var_schema
         if self.var_schema:
             _dict['schema'] = self.var_schema.to_dict()
+        # set to None if var_schema (nullable) is None
+        # and model_fields_set contains the field
+        if self.var_schema is None and "var_schema" in self.model_fields_set:
+            _dict['schema'] = None
+
         return _dict
 
     @classmethod

@@ -46,9 +46,7 @@ class TestAccount(unittest.TestCase):
                 identity_state = 'ACTIVE',
                 connection_type = 'direct',
                 is_machine = True,
-                recommendation = sailpoint.v3.models.recommendation.Recommendation(
-                    type = 'MACHINE', 
-                    method = 'DISCOVERY', ),
+                recommendation = None,
                 attributes = {firstName=SailPoint, lastName=Support, displayName=SailPoint Support},
                 authoritative = False,
                 description = '',
@@ -60,20 +58,17 @@ class TestAccount(unittest.TestCase):
                 uuid = '{b0dce506-d6d4-44d2-8a32-d9a5b21fb175}',
                 manually_correlated = False,
                 has_entitlements = True,
-                identity = sailpoint.v3.models.base_reference_dto.BaseReferenceDto(
+                identity = sailpoint.v3.models.account_all_of_identity.Account_allOf_identity(
+                    id = '2c918084660f45d6016617daa9210584', 
                     type = 'IDENTITY', 
-                    id = '2c91808568c529c60168cca6f90c1313', 
-                    name = 'William Wilson', ),
-                source_owner = sailpoint.v3.models.base_reference_dto.BaseReferenceDto(
+                    name = 'John Doe', ),
+                source_owner = sailpoint.v3.models.account_all_of_source_owner.Account_allOf_sourceOwner(
+                    id = '2c918084660f45d6016617daa9210584', 
                     type = 'IDENTITY', 
-                    id = '2c91808568c529c60168cca6f90c1313', 
-                    name = 'William Wilson', ),
+                    name = 'Adam Kennedy', ),
                 features = 'ENABLE',
                 origin = 'AGGREGATED',
-                owner_identity = sailpoint.v3.models.base_reference_dto.BaseReferenceDto(
-                    type = 'IDENTITY', 
-                    id = '2c91808568c529c60168cca6f90c1313', 
-                    name = 'William Wilson', )
+                owner_identity = None
             )
         else:
             return Account(

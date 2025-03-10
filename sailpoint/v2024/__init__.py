@@ -137,6 +137,8 @@ from sailpoint.v2024.models.access_item_requester import AccessItemRequester
 from sailpoint.v2024.models.access_item_requester_dto import AccessItemRequesterDto
 from sailpoint.v2024.models.access_item_reviewed_by import AccessItemReviewedBy
 from sailpoint.v2024.models.access_item_role_response import AccessItemRoleResponse
+from sailpoint.v2024.models.access_model_metadata import AccessModelMetadata
+from sailpoint.v2024.models.access_model_metadata_values_inner import AccessModelMetadataValuesInner
 from sailpoint.v2024.models.access_profile import AccessProfile
 from sailpoint.v2024.models.access_profile_approval_scheme import AccessProfileApprovalScheme
 from sailpoint.v2024.models.access_profile_bulk_delete_request import AccessProfileBulkDeleteRequest
@@ -157,8 +159,6 @@ from sailpoint.v2024.models.access_profile_usage_used_by_inner import AccessProf
 from sailpoint.v2024.models.access_recommendation_message import AccessRecommendationMessage
 from sailpoint.v2024.models.access_request import AccessRequest
 from sailpoint.v2024.models.access_request_admin_item_status import AccessRequestAdminItemStatus
-from sailpoint.v2024.models.access_request_admin_item_status_cancelled_request_details import AccessRequestAdminItemStatusCancelledRequestDetails
-from sailpoint.v2024.models.access_request_admin_item_status_sod_violation_context import AccessRequestAdminItemStatusSodViolationContext
 from sailpoint.v2024.models.access_request_approvers_list_response import AccessRequestApproversListResponse
 from sailpoint.v2024.models.access_request_config import AccessRequestConfig
 from sailpoint.v2024.models.access_request_context import AccessRequestContext
@@ -204,6 +204,10 @@ from sailpoint.v2024.models.account_aggregation_completed import AccountAggregat
 from sailpoint.v2024.models.account_aggregation_completed_source import AccountAggregationCompletedSource
 from sailpoint.v2024.models.account_aggregation_completed_stats import AccountAggregationCompletedStats
 from sailpoint.v2024.models.account_aggregation_status import AccountAggregationStatus
+from sailpoint.v2024.models.account_all_of_identity import AccountAllOfIdentity
+from sailpoint.v2024.models.account_all_of_owner_identity import AccountAllOfOwnerIdentity
+from sailpoint.v2024.models.account_all_of_recommendation import AccountAllOfRecommendation
+from sailpoint.v2024.models.account_all_of_source_owner import AccountAllOfSourceOwner
 from sailpoint.v2024.models.account_attributes import AccountAttributes
 from sailpoint.v2024.models.account_attributes_changed import AccountAttributesChanged
 from sailpoint.v2024.models.account_attributes_changed_account import AccountAttributesChangedAccount
@@ -258,7 +262,6 @@ from sailpoint.v2024.models.approval_comment1 import ApprovalComment1
 from sailpoint.v2024.models.approval_comment2 import ApprovalComment2
 from sailpoint.v2024.models.approval_description import ApprovalDescription
 from sailpoint.v2024.models.approval_forward_history import ApprovalForwardHistory
-from sailpoint.v2024.models.approval_forward_history1 import ApprovalForwardHistory1
 from sailpoint.v2024.models.approval_identity import ApprovalIdentity
 from sailpoint.v2024.models.approval_info_response import ApprovalInfoResponse
 from sailpoint.v2024.models.approval_item_details import ApprovalItemDetails
@@ -270,7 +273,6 @@ from sailpoint.v2024.models.approval_scheme import ApprovalScheme
 from sailpoint.v2024.models.approval_scheme_for_role import ApprovalSchemeForRole
 from sailpoint.v2024.models.approval_status import ApprovalStatus
 from sailpoint.v2024.models.approval_status_dto import ApprovalStatusDto
-from sailpoint.v2024.models.approval_status_dto1 import ApprovalStatusDto1
 from sailpoint.v2024.models.approval_status_dto_current_owner import ApprovalStatusDtoCurrentOwner
 from sailpoint.v2024.models.approval_status_dto_original_owner import ApprovalStatusDtoOriginalOwner
 from sailpoint.v2024.models.approval_summary import ApprovalSummary
@@ -301,11 +303,9 @@ from sailpoint.v2024.models.base_access_owner import BaseAccessOwner
 from sailpoint.v2024.models.base_access_profile import BaseAccessProfile
 from sailpoint.v2024.models.base_account import BaseAccount
 from sailpoint.v2024.models.base_common_dto import BaseCommonDto
-from sailpoint.v2024.models.base_common_dto1 import BaseCommonDto1
 from sailpoint.v2024.models.base_document import BaseDocument
 from sailpoint.v2024.models.base_entitlement import BaseEntitlement
 from sailpoint.v2024.models.base_reference_dto import BaseReferenceDto
-from sailpoint.v2024.models.base_reference_dto1 import BaseReferenceDto1
 from sailpoint.v2024.models.base_segment import BaseSegment
 from sailpoint.v2024.models.basic_auth_config import BasicAuthConfig
 from sailpoint.v2024.models.bearer_token_auth_config import BearerTokenAuthConfig
@@ -330,6 +330,7 @@ from sailpoint.v2024.models.campaign_all_of_filter import CampaignAllOfFilter
 from sailpoint.v2024.models.campaign_all_of_machine_account_campaign_info import CampaignAllOfMachineAccountCampaignInfo
 from sailpoint.v2024.models.campaign_all_of_role_composition_campaign_info import CampaignAllOfRoleCompositionCampaignInfo
 from sailpoint.v2024.models.campaign_all_of_role_composition_campaign_info_remediator_ref import CampaignAllOfRoleCompositionCampaignInfoRemediatorRef
+from sailpoint.v2024.models.campaign_all_of_role_composition_campaign_info_reviewer import CampaignAllOfRoleCompositionCampaignInfoReviewer
 from sailpoint.v2024.models.campaign_all_of_search_campaign_info import CampaignAllOfSearchCampaignInfo
 from sailpoint.v2024.models.campaign_all_of_search_campaign_info_reviewer import CampaignAllOfSearchCampaignInfoReviewer
 from sailpoint.v2024.models.campaign_all_of_source_owner_campaign_info import CampaignAllOfSourceOwnerCampaignInfo
@@ -350,15 +351,12 @@ from sailpoint.v2024.models.campaign_template_owner_ref import CampaignTemplateO
 from sailpoint.v2024.models.campaigns_delete_request import CampaignsDeleteRequest
 from sailpoint.v2024.models.cancel_access_request import CancelAccessRequest
 from sailpoint.v2024.models.cancelled_request_details import CancelledRequestDetails
-from sailpoint.v2024.models.cancelled_request_details1 import CancelledRequestDetails1
 from sailpoint.v2024.models.certification import Certification
 from sailpoint.v2024.models.certification_decision import CertificationDecision
 from sailpoint.v2024.models.certification_dto import CertificationDto
 from sailpoint.v2024.models.certification_identity_summary import CertificationIdentitySummary
 from sailpoint.v2024.models.certification_phase import CertificationPhase
 from sailpoint.v2024.models.certification_reference import CertificationReference
-from sailpoint.v2024.models.certification_reference1 import CertificationReference1
-from sailpoint.v2024.models.certification_reference_dto import CertificationReferenceDto
 from sailpoint.v2024.models.certification_signed_off import CertificationSignedOff
 from sailpoint.v2024.models.certification_signed_off_certification import CertificationSignedOffCertification
 from sailpoint.v2024.models.certification_task import CertificationTask
@@ -402,7 +400,6 @@ from sailpoint.v2024.models.conflicting_access_criteria import ConflictingAccess
 from sailpoint.v2024.models.connected_object import ConnectedObject
 from sailpoint.v2024.models.connected_object_type import ConnectedObjectType
 from sailpoint.v2024.models.connector_detail import ConnectorDetail
-from sailpoint.v2024.models.connector_detail1 import ConnectorDetail1
 from sailpoint.v2024.models.connector_rule_create_request import ConnectorRuleCreateRequest
 from sailpoint.v2024.models.connector_rule_create_request_signature import ConnectorRuleCreateRequestSignature
 from sailpoint.v2024.models.connector_rule_response import ConnectorRuleResponse
@@ -460,11 +457,7 @@ from sailpoint.v2024.models.dto_type import DtoType
 from sailpoint.v2024.models.email_notification_option import EmailNotificationOption
 from sailpoint.v2024.models.email_status_dto import EmailStatusDto
 from sailpoint.v2024.models.entitlement import Entitlement
-from sailpoint.v2024.models.entitlement1 import Entitlement1
-from sailpoint.v2024.models.entitlement1_access_model_metadata import Entitlement1AccessModelMetadata
-from sailpoint.v2024.models.entitlement1_manually_updated_fields import Entitlement1ManuallyUpdatedFields
-from sailpoint.v2024.models.entitlement1_owner import Entitlement1Owner
-from sailpoint.v2024.models.entitlement1_source import Entitlement1Source
+from sailpoint.v2024.models.entitlement_access_model_metadata import EntitlementAccessModelMetadata
 from sailpoint.v2024.models.entitlement_access_request_config import EntitlementAccessRequestConfig
 from sailpoint.v2024.models.entitlement_approval_scheme import EntitlementApprovalScheme
 from sailpoint.v2024.models.entitlement_bulk_update_request import EntitlementBulkUpdateRequest
@@ -472,11 +465,10 @@ from sailpoint.v2024.models.entitlement_document import EntitlementDocument
 from sailpoint.v2024.models.entitlement_document_all_of_manually_updated_fields import EntitlementDocumentAllOfManuallyUpdatedFields
 from sailpoint.v2024.models.entitlement_document_all_of_permissions import EntitlementDocumentAllOfPermissions
 from sailpoint.v2024.models.entitlement_document_all_of_source import EntitlementDocumentAllOfSource
-from sailpoint.v2024.models.entitlement_dto import EntitlementDto
+from sailpoint.v2024.models.entitlement_owner import EntitlementOwner
 from sailpoint.v2024.models.entitlement_ref import EntitlementRef
 from sailpoint.v2024.models.entitlement_ref1 import EntitlementRef1
 from sailpoint.v2024.models.entitlement_request_config import EntitlementRequestConfig
-from sailpoint.v2024.models.entitlement_request_config1 import EntitlementRequestConfig1
 from sailpoint.v2024.models.entitlement_source import EntitlementSource
 from sailpoint.v2024.models.entitlement_source_reset_base_reference_dto import EntitlementSourceResetBaseReferenceDto
 from sailpoint.v2024.models.entitlement_summary import EntitlementSummary
@@ -484,7 +476,6 @@ from sailpoint.v2024.models.entity_created_by_dto import EntityCreatedByDTO
 from sailpoint.v2024.models.error import Error
 from sailpoint.v2024.models.error_message import ErrorMessage
 from sailpoint.v2024.models.error_message_dto import ErrorMessageDto
-from sailpoint.v2024.models.error_message_dto1 import ErrorMessageDto1
 from sailpoint.v2024.models.error_response_dto import ErrorResponseDto
 from sailpoint.v2024.models.evaluate_response import EvaluateResponse
 from sailpoint.v2024.models.event import Event
@@ -501,6 +492,7 @@ from sailpoint.v2024.models.execution_status import ExecutionStatus
 from sailpoint.v2024.models.expansion_item import ExpansionItem
 from sailpoint.v2024.models.export_form_definitions_by_tenant200_response_inner import ExportFormDefinitionsByTenant200ResponseInner
 from sailpoint.v2024.models.export_options import ExportOptions
+from sailpoint.v2024.models.export_options1 import ExportOptions1
 from sailpoint.v2024.models.export_payload import ExportPayload
 from sailpoint.v2024.models.expression import Expression
 from sailpoint.v2024.models.expression_children_inner import ExpressionChildrenInner
@@ -630,6 +622,7 @@ from sailpoint.v2024.models.list_access_profiles401_response import ListAccessPr
 from sailpoint.v2024.models.list_access_profiles429_response import ListAccessProfiles429Response
 from sailpoint.v2024.models.list_campaign_filters200_response import ListCampaignFilters200Response
 from sailpoint.v2024.models.list_complete_workflow_library200_response_inner import ListCompleteWorkflowLibrary200ResponseInner
+from sailpoint.v2024.models.list_deploys200_response import ListDeploys200Response
 from sailpoint.v2024.models.list_form_definitions_by_tenant_response import ListFormDefinitionsByTenantResponse
 from sailpoint.v2024.models.list_form_element_data_by_element_id_response import ListFormElementDataByElementIDResponse
 from sailpoint.v2024.models.list_form_instances_by_tenant_response import ListFormInstancesByTenantResponse
@@ -670,11 +663,9 @@ from sailpoint.v2024.models.manager_correlation_mapping import ManagerCorrelatio
 from sailpoint.v2024.models.manual_discover_applications import ManualDiscoverApplications
 from sailpoint.v2024.models.manual_discover_applications_template import ManualDiscoverApplicationsTemplate
 from sailpoint.v2024.models.manual_work_item_details import ManualWorkItemDetails
-from sailpoint.v2024.models.manual_work_item_details1 import ManualWorkItemDetails1
 from sailpoint.v2024.models.manual_work_item_details_current_owner import ManualWorkItemDetailsCurrentOwner
 from sailpoint.v2024.models.manual_work_item_details_original_owner import ManualWorkItemDetailsOriginalOwner
 from sailpoint.v2024.models.manual_work_item_state import ManualWorkItemState
-from sailpoint.v2024.models.manually_updated_fields_dto import ManuallyUpdatedFieldsDTO
 from sailpoint.v2024.models.match_term import MatchTerm
 from sailpoint.v2024.models.medium import Medium
 from sailpoint.v2024.models.membership_type import MembershipType
@@ -732,15 +723,14 @@ from sailpoint.v2024.models.original_request import OriginalRequest
 from sailpoint.v2024.models.orphan_identities_report_arguments import OrphanIdentitiesReportArguments
 from sailpoint.v2024.models.outlier import Outlier
 from sailpoint.v2024.models.outlier_contributing_feature import OutlierContributingFeature
-from sailpoint.v2024.models.outlier_contributing_feature_value import OutlierContributingFeatureValue
 from sailpoint.v2024.models.outlier_feature_summary import OutlierFeatureSummary
 from sailpoint.v2024.models.outlier_feature_summary_outlier_feature_display_values_inner import OutlierFeatureSummaryOutlierFeatureDisplayValuesInner
 from sailpoint.v2024.models.outlier_feature_translation import OutlierFeatureTranslation
 from sailpoint.v2024.models.outlier_summary import OutlierSummary
+from sailpoint.v2024.models.outlier_value_type import OutlierValueType
 from sailpoint.v2024.models.outliers_contributing_feature_access_items import OutliersContributingFeatureAccessItems
 from sailpoint.v2024.models.owner_dto import OwnerDto
 from sailpoint.v2024.models.owner_reference import OwnerReference
-from sailpoint.v2024.models.owner_reference_dto import OwnerReferenceDto
 from sailpoint.v2024.models.owner_reference_segments import OwnerReferenceSegments
 from sailpoint.v2024.models.owns import Owns
 from sailpoint.v2024.models.password_change_request import PasswordChangeRequest
@@ -778,9 +768,6 @@ from sailpoint.v2024.models.provisioning_completed_account_requests_inner_source
 from sailpoint.v2024.models.provisioning_completed_recipient import ProvisioningCompletedRecipient
 from sailpoint.v2024.models.provisioning_completed_requester import ProvisioningCompletedRequester
 from sailpoint.v2024.models.provisioning_config import ProvisioningConfig
-from sailpoint.v2024.models.provisioning_config1 import ProvisioningConfig1
-from sailpoint.v2024.models.provisioning_config1_managed_resource_refs_inner import ProvisioningConfig1ManagedResourceRefsInner
-from sailpoint.v2024.models.provisioning_config1_plan_initializer_script import ProvisioningConfig1PlanInitializerScript
 from sailpoint.v2024.models.provisioning_config_plan_initializer_script import ProvisioningConfigPlanInitializerScript
 from sailpoint.v2024.models.provisioning_criteria_level1 import ProvisioningCriteriaLevel1
 from sailpoint.v2024.models.provisioning_criteria_level2 import ProvisioningCriteriaLevel2
@@ -806,7 +793,6 @@ from sailpoint.v2024.models.queued_check_config_details import QueuedCheckConfig
 from sailpoint.v2024.models.range import Range
 from sailpoint.v2024.models.reassign_reference import ReassignReference
 from sailpoint.v2024.models.reassignment import Reassignment
-from sailpoint.v2024.models.reassignment1 import Reassignment1
 from sailpoint.v2024.models.reassignment_reference import ReassignmentReference
 from sailpoint.v2024.models.reassignment_trail_dto import ReassignmentTrailDTO
 from sailpoint.v2024.models.reassignment_type import ReassignmentType
@@ -858,11 +844,12 @@ from sailpoint.v2024.models.reviewable_entitlement_account import ReviewableEnti
 from sailpoint.v2024.models.reviewable_entitlement_account_owner import ReviewableEntitlementAccountOwner
 from sailpoint.v2024.models.reviewable_role import ReviewableRole
 from sailpoint.v2024.models.reviewer import Reviewer
-from sailpoint.v2024.models.reviewer1 import Reviewer1
 from sailpoint.v2024.models.revocability import Revocability
 from sailpoint.v2024.models.revocability_for_role import RevocabilityForRole
 from sailpoint.v2024.models.role import Role
 from sailpoint.v2024.models.role_assignment_dto import RoleAssignmentDto
+from sailpoint.v2024.models.role_assignment_dto_assigner import RoleAssignmentDtoAssigner
+from sailpoint.v2024.models.role_assignment_dto_assignment_context import RoleAssignmentDtoAssignmentContext
 from sailpoint.v2024.models.role_assignment_ref import RoleAssignmentRef
 from sailpoint.v2024.models.role_assignment_source_type import RoleAssignmentSourceType
 from sailpoint.v2024.models.role_bulk_delete_request import RoleBulkDeleteRequest
@@ -985,7 +972,6 @@ from sailpoint.v2024.models.self_import_export_dto import SelfImportExportDto
 from sailpoint.v2024.models.send_account_verification_request import SendAccountVerificationRequest
 from sailpoint.v2024.models.send_test_notification_request_dto import SendTestNotificationRequestDto
 from sailpoint.v2024.models.service_desk_integration_dto import ServiceDeskIntegrationDto
-from sailpoint.v2024.models.service_desk_integration_dto1 import ServiceDeskIntegrationDto1
 from sailpoint.v2024.models.service_desk_integration_template_dto import ServiceDeskIntegrationTemplateDto
 from sailpoint.v2024.models.service_desk_integration_template_type import ServiceDeskIntegrationTemplateType
 from sailpoint.v2024.models.service_desk_source import ServiceDeskSource
@@ -998,7 +984,6 @@ from sailpoint.v2024.models.sim_integration_details_all_of_before_provisioning_r
 from sailpoint.v2024.models.slim_campaign import SlimCampaign
 from sailpoint.v2024.models.slim_discovered_applications import SlimDiscoveredApplications
 from sailpoint.v2024.models.sod_exempt_criteria import SodExemptCriteria
-from sailpoint.v2024.models.sod_exempt_criteria1 import SodExemptCriteria1
 from sailpoint.v2024.models.sod_policy import SodPolicy
 from sailpoint.v2024.models.sod_policy_conflicting_access_criteria import SodPolicyConflictingAccessCriteria
 from sailpoint.v2024.models.sod_policy_dto import SodPolicyDto
@@ -1008,13 +993,8 @@ from sailpoint.v2024.models.sod_recipient import SodRecipient
 from sailpoint.v2024.models.sod_report_result_dto import SodReportResultDto
 from sailpoint.v2024.models.sod_violation_check import SodViolationCheck
 from sailpoint.v2024.models.sod_violation_check_result import SodViolationCheckResult
-from sailpoint.v2024.models.sod_violation_check_result1 import SodViolationCheckResult1
 from sailpoint.v2024.models.sod_violation_context import SodViolationContext
-from sailpoint.v2024.models.sod_violation_context1 import SodViolationContext1
-from sailpoint.v2024.models.sod_violation_context1_conflicting_access_criteria import SodViolationContext1ConflictingAccessCriteria
-from sailpoint.v2024.models.sod_violation_context1_conflicting_access_criteria_left_criteria import SodViolationContext1ConflictingAccessCriteriaLeftCriteria
 from sailpoint.v2024.models.sod_violation_context_check_completed import SodViolationContextCheckCompleted
-from sailpoint.v2024.models.sod_violation_context_check_completed1 import SodViolationContextCheckCompleted1
 from sailpoint.v2024.models.sod_violation_context_conflicting_access_criteria import SodViolationContextConflictingAccessCriteria
 from sailpoint.v2024.models.sod_violation_context_conflicting_access_criteria_left_criteria import SodViolationContextConflictingAccessCriteriaLeftCriteria
 from sailpoint.v2024.models.source import Source
@@ -1174,6 +1154,7 @@ from sailpoint.v2024.models.workflow_trigger import WorkflowTrigger
 from sailpoint.v2024.models.workflow_trigger_attributes import WorkflowTriggerAttributes
 from sailpoint.v2024.models.workgroup_bulk_delete_request import WorkgroupBulkDeleteRequest
 from sailpoint.v2024.models.workgroup_connection_dto import WorkgroupConnectionDto
+from sailpoint.v2024.models.workgroup_connection_dto_object import WorkgroupConnectionDtoObject
 from sailpoint.v2024.models.workgroup_delete_item import WorkgroupDeleteItem
 from sailpoint.v2024.models.workgroup_dto import WorkgroupDto
 from sailpoint.v2024.models.workgroup_dto_owner import WorkgroupDtoOwner

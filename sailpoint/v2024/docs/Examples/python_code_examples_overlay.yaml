@@ -1632,7 +1632,7 @@
         x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
         id = '2c91808a7813090a017814121919ecca' # str | ID of the Auth Profile to patch. # str | ID of the Auth Profile to patch.
         try:
-          # Get Auth Profile.
+          # Get Auth Profile
           
           api_response = api_instance.get_profile_config(x_sail_point_experimental, id)
               
@@ -1650,7 +1650,7 @@
       source: |
         x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
         try:
-          # Get list of Auth Profiles.
+          # Get list of Auth Profiles
           
           api_response = api_instance.get_profile_config_list(x_sail_point_experimental)
               
@@ -2079,6 +2079,7 @@
               "id" : "2c90ad2a70ace7d50170acf22ca90010",
               "type" : "IDENTITY"
             },
+            "reviewerId" : "2c91808568c529c60168cca6f90c1313",
             "roleIds" : [ "2c90ad2a70ace7d50170acf22ca90010" ],
             "query" : "Search Query",
             "description" : "Role Composition Description",
@@ -2218,6 +2219,7 @@
                 "id" : "2c90ad2a70ace7d50170acf22ca90010",
                 "type" : "IDENTITY"
               },
+              "reviewerId" : "2c91808568c529c60168cca6f90c1313",
               "roleIds" : [ "2c90ad2a70ace7d50170acf22ca90010" ],
               "query" : "Search Query",
               "description" : "Role Composition Description",
@@ -4657,7 +4659,7 @@
       label: SDK_tools/sdk/python/v2024/methods/dimensions#list-dimension-access-profiles
       source: |
         role_id = '6603fba3004f43c687610a29195252ce' # str | Parent Role Id of the dimension. # str | Parent Role Id of the dimension.
-        dimension_id = '2c9180835d191a86015d28455b4a2329' # str | ID of the Dimension # str | ID of the Dimension
+        dimension_id = '2c9180835d191a86015d28455b4a2329' # str | Id of the Dimension # str | Id of the Dimension
         limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
         offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
         count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -4932,17 +4934,10 @@
         id = '2c91808a7813090a017814121e121518' # str | Entitlement ID # str | Entitlement ID
         x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
         entitlement_request_config = {
-          "accessRequestConfig" : {
-            "denialCommentRequired" : false,
-            "approvalSchemes" : [ {
-              "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
-              "approverType" : "GOVERNANCE_GROUP"
-            }, {
-              "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
-              "approverType" : "GOVERNANCE_GROUP"
-            } ],
-            "requestCommentRequired" : true
-          }
+          "requestCommentsRequired" : false,
+          "deniedCommentsRequired" : false,
+          "allowEntitlementRequest" : true,
+          "grantRequestApprovalSchemes" : "entitlementOwner, sourceOwner, manager, workgroup:2c918084660f45d6016617daa9210584"
         } # EntitlementRequestConfig | 
         try:
           # Replace Entitlement Request Config
@@ -7301,6 +7296,51 @@
           pprint(api_response)
         except Exception as e:
           print("Exception when calling IdentityProfilesApi->export_identity_profiles: %s\n" % e)
+- path: /identity-profiles/identity-preview
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2024/methods/identity-profiles#generate-identity-preview
+      source: |
+        x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+        identity_preview_request = {
+          "identityId" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+          "identityAttributeConfig" : {
+            "attributeTransforms" : [ {
+              "transformDefinition" : {
+                "attributes" : {
+                  "attributeName" : "e-mail",
+                  "sourceName" : "MySource",
+                  "sourceId" : "2c9180877a826e68017a8c0b03da1a53"
+                },
+                "type" : "accountAttribute"
+              },
+              "identityAttributeName" : "email"
+            }, {
+              "transformDefinition" : {
+                "attributes" : {
+                  "attributeName" : "e-mail",
+                  "sourceName" : "MySource",
+                  "sourceId" : "2c9180877a826e68017a8c0b03da1a53"
+                },
+                "type" : "accountAttribute"
+              },
+              "identityAttributeName" : "email"
+            } ],
+            "enabled" : true
+          }
+        } # IdentityPreviewRequest | Identity Preview request body.
+        try:
+          # Generate Identity Profile Preview
+          Result = identity_preview_request.from_json(identity_preview_request)
+          api_response = api_instance.generate_identity_preview(x_sail_point_experimental, Result)
+              
+          # Below is a request that includes all optional parameters
+          # api_response = api_instance.generate_identity_preview(x_sail_point_experimental, Result)
+          print("The response of IdentityProfilesApi->generate_identity_preview:\n")
+          pprint(api_response)
+        except Exception as e:
+          print("Exception when calling IdentityProfilesApi->generate_identity_preview: %s\n" % e)
 - path: /identity-profiles/{identity-profile-id}/default-identity-attribute-config
   method: GET
   xCodeSample:
@@ -7435,50 +7475,6 @@
           pprint(api_response)
         except Exception as e:
           print("Exception when calling IdentityProfilesApi->list_identity_profiles: %s\n" % e)
-- path: /identity-profiles/identity-preview
-  method: POST
-  xCodeSample:
-    - lang: Python
-      label: SDK_tools/sdk/python/v2024/methods/identity-profiles#show-identity-preview
-      source: |
-        identity_preview_request = {
-          "identityId" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
-          "identityAttributeConfig" : {
-            "attributeTransforms" : [ {
-              "transformDefinition" : {
-                "attributes" : {
-                  "attributeName" : "e-mail",
-                  "sourceName" : "MySource",
-                  "sourceId" : "2c9180877a826e68017a8c0b03da1a53"
-                },
-                "type" : "accountAttribute"
-              },
-              "identityAttributeName" : "email"
-            }, {
-              "transformDefinition" : {
-                "attributes" : {
-                  "attributeName" : "e-mail",
-                  "sourceName" : "MySource",
-                  "sourceId" : "2c9180877a826e68017a8c0b03da1a53"
-                },
-                "type" : "accountAttribute"
-              },
-              "identityAttributeName" : "email"
-            } ],
-            "enabled" : true
-          }
-        } # IdentityPreviewRequest | Identity Preview request body.
-        try:
-          # Generate Identity Profile Preview
-          Result = identity_preview_request.from_json(identity_preview_request)
-          api_response = api_instance.show_identity_preview(Result)
-              
-          # Below is a request that includes all optional parameters
-          # api_response = api_instance.show_identity_preview(Result)
-          print("The response of IdentityProfilesApi->show_identity_preview:\n")
-          pprint(api_response)
-        except Exception as e:
-          print("Exception when calling IdentityProfilesApi->show_identity_preview: %s\n" % e)
 - path: /identity-profiles/{identity-profile-id}/process-identities
   method: POST
   xCodeSample:
@@ -7740,6 +7736,7 @@
     - lang: Python
       label: SDK_tools/sdk/python/v2024/methods/machine-identities#create-machine-identity
       source: |
+        x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
         machine_identity = {
           "created" : "2015-05-28T14:07:17Z",
           "businessApplication" : "ADService",
@@ -7753,10 +7750,10 @@
         try:
           # Create Machine Identities
           Result = machine_identity.from_json(machine_identity)
-          api_response = api_instance.create_machine_identity(Result)
+          api_response = api_instance.create_machine_identity(x_sail_point_experimental, Result)
               
           # Below is a request that includes all optional parameters
-          # api_response = api_instance.create_machine_identity(Result)
+          # api_response = api_instance.create_machine_identity(x_sail_point_experimental, Result)
           print("The response of MachineIdentitiesApi->create_machine_identity:\n")
           pprint(api_response)
         except Exception as e:
@@ -9627,9 +9624,9 @@
           "requireStrongAuthUntrustedGeographies" : true,
           "enablePasswdExpiration" : true,
           "minNumeric" : 8,
-          "lastUpdated" : "2000-01-23T04:56:07.000+00:00",
+          "lastUpdated" : 1939056206564,
           "validateAgainstAccountId" : false,
-          "dateCreated" : "2000-01-23T04:56:07.000+00:00",
+          "dateCreated" : 1639056206564,
           "accountNameMinWordLength" : 6,
           "minUpper" : 8,
           "firstExpirationReminder" : 45,
@@ -9732,9 +9729,9 @@
           "requireStrongAuthUntrustedGeographies" : true,
           "enablePasswdExpiration" : true,
           "minNumeric" : 8,
-          "lastUpdated" : "2000-01-23T04:56:07.000+00:00",
+          "lastUpdated" : 1939056206564,
           "validateAgainstAccountId" : false,
-          "dateCreated" : "2000-01-23T04:56:07.000+00:00",
+          "dateCreated" : 1639056206564,
           "accountNameMinWordLength" : 6,
           "minUpper" : 8,
           "firstExpirationReminder" : 45,
@@ -11642,6 +11639,7 @@
     - lang: Python
       label: SDK_tools/sdk/python/v2024/methods/search-attribute-configuration#create-search-attribute-config
       source: |
+        x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
         search_attribute_config = {
           "displayName" : "New Mail Attribute",
           "name" : "newMailAttribute",
@@ -11653,10 +11651,10 @@
         try:
           # Create Extended Search Attributes
           Result = search_attribute_config.from_json(search_attribute_config)
-          api_response = api_instance.create_search_attribute_config(Result)
+          api_response = api_instance.create_search_attribute_config(x_sail_point_experimental, Result)
               
           # Below is a request that includes all optional parameters
-          # api_response = api_instance.create_search_attribute_config(Result)
+          # api_response = api_instance.create_search_attribute_config(x_sail_point_experimental, Result)
           print("The response of SearchAttributeConfigurationApi->create_search_attribute_config:\n")
           pprint(api_response)
         except Exception as e:
@@ -11668,13 +11666,14 @@
       label: SDK_tools/sdk/python/v2024/methods/search-attribute-configuration#delete-search-attribute-config
       source: |
         name = 'newMailAttribute' # str | Name of the extended search attribute configuration to delete. # str | Name of the extended search attribute configuration to delete.
+        x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
         try:
           # Delete Extended Search Attribute
           
-          api_instance.delete_search_attribute_config(name)
+          api_instance.delete_search_attribute_config(name, x_sail_point_experimental)
               
           # Below is a request that includes all optional parameters
-          # api_instance.delete_search_attribute_config(name)
+          # api_instance.delete_search_attribute_config(name, x_sail_point_experimental)
         except Exception as e:
           print("Exception when calling SearchAttributeConfigurationApi->delete_search_attribute_config: %s\n" % e)
 - path: /accounts/search-attribute-config
@@ -11683,13 +11682,14 @@
     - lang: Python
       label: SDK_tools/sdk/python/v2024/methods/search-attribute-configuration#get-search-attribute-config
       source: |
+        x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
         try:
           # List Extended Search Attributes
           
-          api_response = api_instance.get_search_attribute_config()
+          api_response = api_instance.get_search_attribute_config(x_sail_point_experimental)
               
           # Below is a request that includes all optional parameters
-          # api_response = api_instance.get_search_attribute_config()
+          # api_response = api_instance.get_search_attribute_config(x_sail_point_experimental)
           print("The response of SearchAttributeConfigurationApi->get_search_attribute_config:\n")
           pprint(api_response)
         except Exception as e:
@@ -11700,14 +11700,15 @@
     - lang: Python
       label: SDK_tools/sdk/python/v2024/methods/search-attribute-configuration#get-single-search-attribute-config
       source: |
-        name = 'newMailAttribute' # str | Name of the extended search attribute configuration to retrieve. # str | Name of the extended search attribute configuration to retrieve.
+        name = 'newMailAttribute' # str | Name of the extended search attribute configuration to get. # str | Name of the extended search attribute configuration to get.
+        x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
         try:
           # Get Extended Search Attribute
           
-          api_response = api_instance.get_single_search_attribute_config(name)
+          api_response = api_instance.get_single_search_attribute_config(name, x_sail_point_experimental)
               
           # Below is a request that includes all optional parameters
-          # api_response = api_instance.get_single_search_attribute_config(name)
+          # api_response = api_instance.get_single_search_attribute_config(name, x_sail_point_experimental)
           print("The response of SearchAttributeConfigurationApi->get_single_search_attribute_config:\n")
           pprint(api_response)
         except Exception as e:
@@ -11719,6 +11720,7 @@
       label: SDK_tools/sdk/python/v2024/methods/search-attribute-configuration#patch-search-attribute-config
       source: |
         name = 'promotedMailAttribute' # str | Name of the search attribute configuration to patch. # str | Name of the search attribute configuration to patch.
+        x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
         [{op=replace, path=/name, value=newAttributeName}, {op=replace, path=/displayName, value=new attribute display name}, {op=add, path=/applicationAttributes, value={2c91808b79fd2422017a0b35d30f3968=employeeNumber}}] # List[JsonPatchOperation] | 
          json_patch_operation = {
           "op" : "replace",
@@ -11729,10 +11731,10 @@
         try:
           # Update Extended Search Attribute
           Result = json_patch_operation.from_json(json_patch_operation)
-          api_response = api_instance.patch_search_attribute_config(name, Result)
+          api_response = api_instance.patch_search_attribute_config(name, x_sail_point_experimental, Result)
               
           # Below is a request that includes all optional parameters
-          # api_response = api_instance.patch_search_attribute_config(name, Result)
+          # api_response = api_instance.patch_search_attribute_config(name, x_sail_point_experimental, Result)
           print("The response of SearchAttributeConfigurationApi->patch_search_attribute_config:\n")
           pprint(api_response)
         except Exception as e:
@@ -12116,9 +12118,9 @@
           "statusMap" : "{closed_cancelled=Failed, closed_complete=Committed, closed_incomplete=Failed, closed_rejected=Failed, in_process=Queued, requested=Queued}",
           "request" : "{description=SailPoint Access Request,, req_description=The Service Request created by SailPoint ServiceNow Service Integration Module (SIM).,, req_short_description=SailPoint New Access Request Created from IdentityNow,, short_description=SailPoint Access Request $!plan.arguments.identityRequestId}",
           "sources" : [ "2c9180835d191a86015d28455b4a2329", "2c5680835d191a85765d28455b4a9823" ],
-          "created" : "2023-01-03T21:16:22.432Z",
+          "created" : "2015-05-28T14:07:17Z",
           "name" : "aName",
-          "modified" : "2023-01-03T21:16:22.432Z",
+          "modified" : "2015-05-28T14:07:17Z",
           "description" : "Integration description",
           "attributes" : "{\"uid\":\"Walter White\",\"firstname\":\"walter\",\"cloudStatus\":\"UNREGISTERED\",\"displayName\":\"Walter White\",\"identificationNumber\":\"942\",\"lastSyncDate\":1470348809380,\"email\":\"walter@gmail.com\",\"lastname\":\"white\"}",
           "id" : "id12345",
@@ -12202,7 +12204,17 @@
       source: |
         id = '12345' # str | SIM integration id # str | SIM integration id
         x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
-        json_patch = "[\n  {\n\t  \"op\": \"replace\",\n\t  \"path\": \"/description\",\n\t  \"value\": \"A new description\"\n  }\n]" # JsonPatch | The JsonPatch object that describes the changes of SIM beforeProvisioningRule.
+        json_patch = {
+          "operations" : [ {
+            "op" : "replace",
+            "path" : "/description",
+            "value" : "New description"
+          }, {
+            "op" : "replace",
+            "path" : "/description",
+            "value" : "New description"
+          } ]
+        } # JsonPatch | The JsonPatch object that describes the changes of SIM beforeProvisioningRule.
         try:
           # Patch a SIM beforeProvisioningRule attribute.
           Result = json_patch.from_json(json_patch)
@@ -12222,7 +12234,17 @@
       source: |
         id = '12345' # str | SIM integration id # str | SIM integration id
         x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
-        json_patch = "[\n  {\n\t  \"op\": \"replace\",\n\t  \"path\": \"/description\",\n\t  \"value\": \"A new description\"\n  }\n]" # JsonPatch | The JsonPatch object that describes the changes of SIM
+        json_patch = {
+          "operations" : [ {
+            "op" : "replace",
+            "path" : "/description",
+            "value" : "New description"
+          }, {
+            "op" : "replace",
+            "path" : "/description",
+            "value" : "New description"
+          } ]
+        } # JsonPatch | The JsonPatch object that describes the changes of SIM
         try:
           # Patch a SIM attribute.
           Result = json_patch.from_json(json_patch)
@@ -12247,9 +12269,9 @@
           "statusMap" : "{closed_cancelled=Failed, closed_complete=Committed, closed_incomplete=Failed, closed_rejected=Failed, in_process=Queued, requested=Queued}",
           "request" : "{description=SailPoint Access Request,, req_description=The Service Request created by SailPoint ServiceNow Service Integration Module (SIM).,, req_short_description=SailPoint New Access Request Created from IdentityNow,, short_description=SailPoint Access Request $!plan.arguments.identityRequestId}",
           "sources" : [ "2c9180835d191a86015d28455b4a2329", "2c5680835d191a85765d28455b4a9823" ],
-          "created" : "2023-01-03T21:16:22.432Z",
+          "created" : "2015-05-28T14:07:17Z",
           "name" : "aName",
-          "modified" : "2023-01-03T21:16:22.432Z",
+          "modified" : "2015-05-28T14:07:17Z",
           "description" : "Integration description",
           "attributes" : "{\"uid\":\"Walter White\",\"firstname\":\"walter\",\"cloudStatus\":\"UNREGISTERED\",\"displayName\":\"Walter White\",\"identificationNumber\":\"942\",\"lastSyncDate\":1470348809380,\"email\":\"walter@gmail.com\",\"lastname\":\"white\"}",
           "id" : "id12345",
@@ -14365,7 +14387,6 @@
       label: SDK_tools/sdk/python/v2024/methods/suggested-entitlement-description#patch-sed
       source: |
         id = 'ebab396f-0af1-4050-89b7-dafc63ec70e7' # str | id is sed id # str | id is sed id
-        x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
         [sailpoint.v2024.SedPatch()] # List[SedPatch] | Sed Patch Request
          sed_patch = {
           "op" : "replace",
@@ -14376,10 +14397,10 @@
         try:
           # Patch Suggested Entitlement Description
           Result = sed_patch.from_json(sed_patch)
-          api_response = api_instance.patch_sed(id, x_sail_point_experimental, Result)
+          api_response = api_instance.patch_sed(id, Result)
               
           # Below is a request that includes all optional parameters
-          # api_response = api_instance.patch_sed(id, x_sail_point_experimental, Result)
+          # api_response = api_instance.patch_sed(id, Result)
           print("The response of SuggestedEntitlementDescriptionApi->patch_sed:\n")
           pprint(api_response)
         except Exception as e:
@@ -15702,6 +15723,28 @@
           pprint(api_response)
         except Exception as e:
           print("Exception when calling WorkItemsApi->complete_work_item: %s\n" % e)
+- path: /work-items/{id}/forward
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2024/methods/work-items#forward-work-item
+      source: |
+        id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the work item # str | The ID of the work item
+        x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+        work_item_forward = {
+          "targetOwnerId" : "2c9180835d2e5168015d32f890ca1581",
+          "comment" : "I'm going on vacation.",
+          "sendNotifications" : true
+        } # WorkItemForward | 
+        try:
+          # Forward a Work Item
+          Result = work_item_forward.from_json(work_item_forward)
+          api_instance.forward_work_item(id, x_sail_point_experimental, Result)
+              
+          # Below is a request that includes all optional parameters
+          # api_instance.forward_work_item(id, x_sail_point_experimental, Result)
+        except Exception as e:
+          print("Exception when calling WorkItemsApi->forward_work_item: %s\n" % e)
 - path: /work-items/completed
   method: GET
   xCodeSample:
@@ -15729,14 +15772,15 @@
     - lang: Python
       label: SDK_tools/sdk/python/v2024/methods/work-items#get-count-completed-work-items
       source: |
-        owner_id = '1211bcaa32112bcef6122adb21cef1ac' # str | ID of the work item owner. (optional) # str | ID of the work item owner. (optional)
+        x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+        owner_id = 'owner_id_example' # str | ID of the work item owner. (optional) # str | ID of the work item owner. (optional)
         try:
           # Count Completed Work Items
           
-          api_response = api_instance.get_count_completed_work_items()
+          api_response = api_instance.get_count_completed_work_items(x_sail_point_experimental, )
               
           # Below is a request that includes all optional parameters
-          # api_response = api_instance.get_count_completed_work_items(owner_id)
+          # api_response = api_instance.get_count_completed_work_items(x_sail_point_experimental, owner_id)
           print("The response of WorkItemsApi->get_count_completed_work_items:\n")
           pprint(api_response)
         except Exception as e:
@@ -15853,27 +15897,6 @@
           pprint(api_response)
         except Exception as e:
           print("Exception when calling WorkItemsApi->reject_approval_items_in_bulk: %s\n" % e)
-- path: /work-items/{id}/forward
-  method: POST
-  xCodeSample:
-    - lang: Python
-      label: SDK_tools/sdk/python/v2024/methods/work-items#send-work-item-forward
-      source: |
-        id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the work item # str | The ID of the work item
-        work_item_forward = {
-          "targetOwnerId" : "2c9180835d2e5168015d32f890ca1581",
-          "comment" : "I'm going on vacation.",
-          "sendNotifications" : true
-        } # WorkItemForward | 
-        try:
-          # Forward a Work Item
-          Result = work_item_forward.from_json(work_item_forward)
-          api_instance.send_work_item_forward(id, Result)
-              
-          # Below is a request that includes all optional parameters
-          # api_instance.send_work_item_forward(id, Result)
-        except Exception as e:
-          print("Exception when calling WorkItemsApi->send_work_item_forward: %s\n" % e)
 - path: /work-items/{id}/submit-account-selection
   method: POST
   xCodeSample:

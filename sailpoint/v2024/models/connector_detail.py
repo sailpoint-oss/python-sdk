@@ -93,6 +93,16 @@ class ConnectorDetail(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if source_config (nullable) is None
+        # and model_fields_set contains the field
+        if self.source_config is None and "source_config" in self.model_fields_set:
+            _dict['sourceConfig'] = None
+
+        # set to None if source_config_from (nullable) is None
+        # and model_fields_set contains the field
+        if self.source_config_from is None and "source_config_from" in self.model_fields_set:
+            _dict['sourceConfigFrom'] = None
+
         # set to None if uploaded_files (nullable) is None
         # and model_fields_set contains the field
         if self.uploaded_files is None and "uploaded_files" in self.model_fields_set:

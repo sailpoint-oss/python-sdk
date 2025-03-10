@@ -13305,13 +13305,15 @@
     - lang: Python
       label: SDK_tools/sdk/python/beta/methods/work-reassignment#list-reassignment-configurations
       source: |
+        limit = 20 # int | Max number of results to return. (optional) (default to 20) # int | Max number of results to return. (optional) (default to 20)
+        offset = 10 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified. (optional) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified. (optional)
         try:
           # List Reassignment Configurations
           
           api_response = api_instance.list_reassignment_configurations()
               
           # Below is a request that includes all optional parameters
-          # api_response = api_instance.list_reassignment_configurations()
+          # api_response = api_instance.list_reassignment_configurations(limit, offset)
           print("The response of WorkReassignmentApi->list_reassignment_configurations:\n")
           pprint(api_response)
         except Exception as e:

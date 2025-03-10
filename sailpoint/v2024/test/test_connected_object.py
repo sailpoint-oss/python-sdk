@@ -35,7 +35,7 @@ class TestConnectedObject(unittest.TestCase):
         model = ConnectedObject()
         if include_optional:
             return ConnectedObject(
-                type = 'ACCESS_PROFILE',
+                type = None,
                 id = '2c91808568c529c60168cca6f90c1313',
                 name = 'Employee-database-read-write',
                 description = 'Collection of entitlements to read/write the employee database.'

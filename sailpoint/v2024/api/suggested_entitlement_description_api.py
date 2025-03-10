@@ -999,7 +999,6 @@ class SuggestedEntitlementDescriptionApi:
         self,
         id: Annotated[StrictStr, Field(description="id is sed id")],
         sed_patch: Annotated[List[SedPatch], Field(description="Sed Patch Request")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1019,8 +1018,6 @@ class SuggestedEntitlementDescriptionApi:
 
         :param id: id is sed id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param sed_patch: Sed Patch Request (required)
         :type sed_patch: List[SedPatch]
         :param _request_timeout: timeout setting for this request. If one
@@ -1047,7 +1044,6 @@ class SuggestedEntitlementDescriptionApi:
 
         _param = self._patch_sed_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             sed_patch=sed_patch,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1080,7 +1076,6 @@ class SuggestedEntitlementDescriptionApi:
         self,
         id: Annotated[StrictStr, Field(description="id is sed id")],
         sed_patch: Annotated[List[SedPatch], Field(description="Sed Patch Request")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1100,8 +1095,6 @@ class SuggestedEntitlementDescriptionApi:
 
         :param id: id is sed id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param sed_patch: Sed Patch Request (required)
         :type sed_patch: List[SedPatch]
         :param _request_timeout: timeout setting for this request. If one
@@ -1128,7 +1121,6 @@ class SuggestedEntitlementDescriptionApi:
 
         _param = self._patch_sed_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             sed_patch=sed_patch,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1161,7 +1153,6 @@ class SuggestedEntitlementDescriptionApi:
         self,
         id: Annotated[StrictStr, Field(description="id is sed id")],
         sed_patch: Annotated[List[SedPatch], Field(description="Sed Patch Request")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1181,8 +1172,6 @@ class SuggestedEntitlementDescriptionApi:
 
         :param id: id is sed id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param sed_patch: Sed Patch Request (required)
         :type sed_patch: List[SedPatch]
         :param _request_timeout: timeout setting for this request. If one
@@ -1209,7 +1198,6 @@ class SuggestedEntitlementDescriptionApi:
 
         _param = self._patch_sed_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             sed_patch=sed_patch,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1236,7 +1224,6 @@ class SuggestedEntitlementDescriptionApi:
     def _patch_sed_serialize(
         self,
         id,
-        x_sail_point_experimental,
         sed_patch,
         _request_auth,
         _content_type,
@@ -1264,8 +1251,6 @@ class SuggestedEntitlementDescriptionApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if sed_patch is not None:

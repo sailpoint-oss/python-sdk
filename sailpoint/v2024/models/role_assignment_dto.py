@@ -19,8 +19,9 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2024.models.assignment_context_dto import AssignmentContextDto
-from sailpoint.v2024.models.base_reference_dto1 import BaseReferenceDto1
+from sailpoint.v2024.models.base_reference_dto import BaseReferenceDto
+from sailpoint.v2024.models.role_assignment_dto_assigner import RoleAssignmentDtoAssigner
+from sailpoint.v2024.models.role_assignment_dto_assignment_context import RoleAssignmentDtoAssignmentContext
 from sailpoint.v2024.models.role_target_dto import RoleTargetDto
 from typing import Optional, Set
 from typing_extensions import Self
@@ -30,12 +31,12 @@ class RoleAssignmentDto(BaseModel):
     RoleAssignmentDto
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="Assignment Id")
-    role: Optional[BaseReferenceDto1] = None
+    role: Optional[BaseReferenceDto] = None
     comments: Optional[StrictStr] = Field(default=None, description="Comments added by the user when the assignment was made")
     assignment_source: Optional[StrictStr] = Field(default=None, description="Source describing how this assignment was made", alias="assignmentSource")
-    assigner: Optional[BaseReferenceDto1] = None
-    assigned_dimensions: Optional[List[BaseReferenceDto1]] = Field(default=None, description="Dimensions assigned related to this role", alias="assignedDimensions")
-    assignment_context: Optional[AssignmentContextDto] = Field(default=None, alias="assignmentContext")
+    assigner: Optional[RoleAssignmentDtoAssigner] = None
+    assigned_dimensions: Optional[List[BaseReferenceDto]] = Field(default=None, description="Dimensions assigned related to this role", alias="assignedDimensions")
+    assignment_context: Optional[RoleAssignmentDtoAssignmentContext] = Field(default=None, alias="assignmentContext")
     account_targets: Optional[List[RoleTargetDto]] = Field(default=None, alias="accountTargets")
     remove_date: Optional[StrictStr] = Field(default=None, description="Date that the assignment will be removed", alias="removeDate")
     __properties: ClassVar[List[str]] = ["id", "role", "comments", "assignmentSource", "assigner", "assignedDimensions", "assignmentContext", "accountTargets", "removeDate"]
@@ -102,6 +103,16 @@ class RoleAssignmentDto(BaseModel):
                 if _item_account_targets:
                     _items.append(_item_account_targets.to_dict())
             _dict['accountTargets'] = _items
+        # set to None if comments (nullable) is None
+        # and model_fields_set contains the field
+        if self.comments is None and "comments" in self.model_fields_set:
+            _dict['comments'] = None
+
+        # set to None if remove_date (nullable) is None
+        # and model_fields_set contains the field
+        if self.remove_date is None and "remove_date" in self.model_fields_set:
+            _dict['removeDate'] = None
+
         return _dict
 
     @classmethod
@@ -115,12 +126,12 @@ class RoleAssignmentDto(BaseModel):
 
         _obj = cls.model_validate({
             "id": obj.get("id"),
-            "role": BaseReferenceDto1.from_dict(obj["role"]) if obj.get("role") is not None else None,
+            "role": BaseReferenceDto.from_dict(obj["role"]) if obj.get("role") is not None else None,
             "comments": obj.get("comments"),
             "assignmentSource": obj.get("assignmentSource"),
-            "assigner": BaseReferenceDto1.from_dict(obj["assigner"]) if obj.get("assigner") is not None else None,
-            "assignedDimensions": [BaseReferenceDto1.from_dict(_item) for _item in obj["assignedDimensions"]] if obj.get("assignedDimensions") is not None else None,
-            "assignmentContext": AssignmentContextDto.from_dict(obj["assignmentContext"]) if obj.get("assignmentContext") is not None else None,
+            "assigner": RoleAssignmentDtoAssigner.from_dict(obj["assigner"]) if obj.get("assigner") is not None else None,
+            "assignedDimensions": [BaseReferenceDto.from_dict(_item) for _item in obj["assignedDimensions"]] if obj.get("assignedDimensions") is not None else None,
+            "assignmentContext": RoleAssignmentDtoAssignmentContext.from_dict(obj["assignmentContext"]) if obj.get("assignmentContext") is not None else None,
             "accountTargets": [RoleTargetDto.from_dict(_item) for _item in obj["accountTargets"]] if obj.get("accountTargets") is not None else None,
             "removeDate": obj.get("removeDate")
         })
