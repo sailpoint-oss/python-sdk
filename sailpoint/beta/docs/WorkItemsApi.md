@@ -184,7 +184,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **complete_work_item**
-> WorkItems complete_work_item(id)
+> WorkItems complete_work_item(id, body=body)
 
 Complete a Work Item
 
@@ -221,10 +221,11 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.WorkItemsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the work item
+    body = 'body_example' # str | Body is the request payload to create form definition request (optional)
 
     try:
         # Complete a Work Item
-        api_response = api_instance.complete_work_item(id)
+        api_response = api_instance.complete_work_item(id, body=body)
         print("The response of WorkItemsApi->complete_work_item:\n")
         pprint(api_response)
     except Exception as e:
@@ -239,6 +240,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| The ID of the work item | 
+ **body** | **str**| Body is the request payload to create form definition request | [optional] 
 
 ### Return type
 
@@ -250,7 +252,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -259,8 +261,11 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | A WorkItems object |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
 **404** | Not Found - returned if the request URL refers to a resource or object that does not exist |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -597,7 +602,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_work_item**
-> List[WorkItems] get_work_item(id, owner_id=owner_id)
+> object get_work_item(id, owner_id=owner_id)
 
 Get a Work Item
 
@@ -610,7 +615,6 @@ This gets the details of a Work Item belonging to either the specified user(admi
 
 ```python
 import sailpoint.beta
-from sailpoint.beta.models.work_items import WorkItems
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
@@ -633,8 +637,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.WorkItemsApi(api_client)
-    id = 'id_example' # str | ID of the work item.
-    owner_id = 'owner_id_example' # str | ID of the work item owner. (optional)
+    id = '2c9180835d191a86015d28455b4a2329' # str | ID of the work item.
+    owner_id = '2c9180835d191a86015d28455b4a2329' # str | ID of the work item owner. (optional)
 
     try:
         # Get a Work Item
@@ -657,7 +661,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List[WorkItems]**](WorkItems.md)
+**object**
 
 ### Authorization
 
@@ -674,8 +678,11 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | The work item with the given ID. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
 **404** | Not Found - returned if the request URL refers to a resource or object that does not exist |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

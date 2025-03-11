@@ -190,7 +190,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **complete_work_item**
-> WorkItems complete_work_item(id)
+> WorkItems complete_work_item(id, body=body)
 
 Complete a Work Item
 
@@ -227,10 +227,11 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v3.WorkItemsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the work item
+    body = 'body_example' # str | Body is the request payload to create form definition request (optional)
 
     try:
         # Complete a Work Item
-        api_response = api_instance.complete_work_item(id)
+        api_response = api_instance.complete_work_item(id, body=body)
         print("The response of WorkItemsApi->complete_work_item:\n")
         pprint(api_response)
     except Exception as e:
@@ -245,6 +246,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| The ID of the work item | 
+ **body** | **str**| Body is the request payload to create form definition request | [optional] 
 
 ### Return type
 
@@ -256,7 +258,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -603,6 +605,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | The work item with the given ID. |  -  |
+**400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
 **404** | Not Found - returned if the request URL refers to a resource or object that does not exist |  -  |
