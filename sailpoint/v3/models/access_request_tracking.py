@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v3.models.requested_item_details import RequestedItemDetails
 from typing import Optional, Set
@@ -29,7 +29,7 @@ class AccessRequestTracking(BaseModel):
     """ # noqa: E501
     requested_for: Optional[StrictStr] = Field(default=None, description="The identity id in which the access request is for.", alias="requestedFor")
     requested_items_details: Optional[List[RequestedItemDetails]] = Field(default=None, description="The details of the item requested.", alias="requestedItemsDetails")
-    attributes_hash: Optional[StrictStr] = Field(default=None, description="a hash representation of the access requested, useful for longer term tracking client side.", alias="attributesHash")
+    attributes_hash: Optional[StrictInt] = Field(default=None, description="a hash representation of the access requested, useful for longer term tracking client side.", alias="attributesHash")
     access_request_ids: Optional[List[StrictStr]] = Field(default=None, description="a list of access request identifiers, generally only one will be populated, but high volume requested may result in multiple ids.", alias="accessRequestIds")
     __properties: ClassVar[List[str]] = ["requestedFor", "requestedItemsDetails", "attributesHash", "accessRequestIds"]
 

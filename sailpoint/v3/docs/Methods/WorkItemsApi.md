@@ -177,6 +177,7 @@ This API completes a work item. Either an admin, or the owning/current user must
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | The ID of the work item
+ Body  | body | **str** |   (optional) | Body is the request payload to create form definition request
 
 ### Return type
 [**WorkItems**](../models/work-items)
@@ -193,7 +194,7 @@ Code | Description  | Data Type | Response headers |
 500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### Example
@@ -209,13 +210,14 @@ configuration = Configuration()
 
 with ApiClient(configuration) as api_client:
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the work item # str | The ID of the work item
+    body = 'body_example' # str | Body is the request payload to create form definition request (optional) # str | Body is the request payload to create form definition request (optional)
 
     try:
         # Complete a Work Item
         
-        results =WorkItemsApi(api_client).complete_work_item(id)
+        results =WorkItemsApi(api_client).complete_work_item(id, )
         # Below is a request that includes all optional parameters
-        # results = WorkItemsApi(api_client).complete_work_item(id)
+        # results = WorkItemsApi(api_client).complete_work_item(id, new_body)
         print("The response of WorkItemsApi->complete_work_item:\n")
         pprint(results)
         except Exception as e:
@@ -428,6 +430,7 @@ Path   | id | **str** | True  | ID of the work item.
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | The work item with the given ID. | WorkItems |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |

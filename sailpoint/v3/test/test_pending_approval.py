@@ -119,7 +119,8 @@ class TestPendingApproval(unittest.TestCase):
                             sailpoint.v3.models.sod_policy_dto.SodPolicyDto(
                                 id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde', 
                                 name = 'Business SOD Policy', )
-                            ], ), )
+                            ], ), ),
+                client_metadata = {customKey1=custom value 1, customKey2=custom value 2}
             )
         else:
             return PendingApproval(

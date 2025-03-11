@@ -171,6 +171,7 @@ This API completes a work item. Either an admin, or the owning/current user must
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | The ID of the work item
+ Body  | body | **str** |   (optional) | Body is the request payload to create form definition request
 
 ### Return type
 [**WorkItems**](../models/work-items)
@@ -180,11 +181,14 @@ Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
 200 | A WorkItems object | WorkItems |  -  |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessModelMetadataAttribute401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessModelMetadataAttribute429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### Example
@@ -200,13 +204,14 @@ configuration = Configuration()
 
 with ApiClient(configuration) as api_client:
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the work item # str | The ID of the work item
+    body = 'body_example' # str | Body is the request payload to create form definition request (optional) # str | Body is the request payload to create form definition request (optional)
 
     try:
         # Complete a Work Item
         
-        results =WorkItemsApi(api_client).complete_work_item(id)
+        results =WorkItemsApi(api_client).complete_work_item(id, )
         # Below is a request that includes all optional parameters
-        # results = WorkItemsApi(api_client).complete_work_item(id)
+        # results = WorkItemsApi(api_client).complete_work_item(id, new_body)
         print("The response of WorkItemsApi->complete_work_item:\n")
         pprint(results)
         except Exception as e:
@@ -472,15 +477,18 @@ Path   | id | **str** | True  | ID of the work item.
   Query | owner_id | **str** |   (optional) | ID of the work item owner.
 
 ### Return type
-[**List[WorkItems]**](../models/work-items)
+**object**
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The work item with the given ID. | List[WorkItems] |  -  |
+200 | The work item with the given ID. | object |  -  |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessModelMetadataAttribute401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
 404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessModelMetadataAttribute429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -492,14 +500,13 @@ Code | Description  | Data Type | Response headers |
 import sailpoint.beta
 from sailpoint.beta.api.work_items_api import WorkItemsApi
 from sailpoint.beta.api_client import ApiClient
-from sailpoint.beta.models.work_items import WorkItems
 from pprint import pprint
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 with ApiClient(configuration) as api_client:
-    id = 'id_example' # str | ID of the work item. # str | ID of the work item.
-    owner_id = 'owner_id_example' # str | ID of the work item owner. (optional) # str | ID of the work item owner. (optional)
+    id = '2c9180835d191a86015d28455b4a2329' # str | ID of the work item. # str | ID of the work item.
+    owner_id = '2c9180835d191a86015d28455b4a2329' # str | ID of the work item owner. (optional) # str | ID of the work item owner. (optional)
 
     try:
         # Get a Work Item

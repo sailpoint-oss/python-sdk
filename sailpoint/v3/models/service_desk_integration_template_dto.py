@@ -29,7 +29,7 @@ class ServiceDeskIntegrationTemplateDto(BaseModel):
     ServiceDeskIntegrationTemplateDto
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="System-generated unique ID of the Object")
-    name: StrictStr = Field(description="Name of the Object")
+    name: Optional[StrictStr] = Field(description="Name of the Object")
     created: Optional[datetime] = Field(default=None, description="Creation date of the Object")
     modified: Optional[datetime] = Field(default=None, description="Last modification date of the Object")
     type: StrictStr = Field(description="The 'type' property specifies the type of the Service Desk integration template.")
@@ -85,6 +85,11 @@ class ServiceDeskIntegrationTemplateDto(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of provisioning_config
         if self.provisioning_config:
             _dict['provisioningConfig'] = self.provisioning_config.to_dict()
+        # set to None if name (nullable) is None
+        # and model_fields_set contains the field
+        if self.name is None and "name" in self.model_fields_set:
+            _dict['name'] = None
+
         return _dict
 
     @classmethod

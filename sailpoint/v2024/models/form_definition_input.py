@@ -38,8 +38,8 @@ class FormDefinitionInput(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['STRING']):
-            raise ValueError("must be one of enum values ('STRING')")
+        if value not in set(['STRING', 'ARRAY']):
+            raise ValueError("must be one of enum values ('STRING', 'ARRAY')")
         return value
 
     model_config = ConfigDict(

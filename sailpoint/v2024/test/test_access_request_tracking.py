@@ -40,7 +40,7 @@ class TestAccessRequestTracking(unittest.TestCase):
 "type": "ENTITLEMENT", 
 "id": "779c6fd7171540bba1184e5946112c28" 
  },
-                attributes_hash = '-1928438224',
+                attributes_hash = -1928438224,
                 access_request_ids = [5d3118c518a44ec7805450d53479ccdb]
             )
         else:

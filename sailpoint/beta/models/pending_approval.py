@@ -55,7 +55,8 @@ class PendingApproval(BaseModel):
     remove_date_update_requested: Optional[StrictBool] = Field(default=False, description="If true, then the request is to change the remove date or sunset date.", alias="removeDateUpdateRequested")
     current_remove_date: Optional[datetime] = Field(default=None, description="The remove date or sunset date that was assigned at the time of the request.", alias="currentRemoveDate")
     sod_violation_context: Optional[SodViolationContextCheckCompleted1] = Field(default=None, alias="sodViolationContext")
-    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "requestCreated", "requestType", "requester", "requestedFor", "owner", "requestedObject", "requesterComment", "previousReviewersComments", "forwardHistory", "commentRequiredWhenRejected", "actionInProcess", "removeDate", "removeDateUpdateRequested", "currentRemoveDate", "sodViolationContext"]
+    client_metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Arbitrary key-value pairs, if any were included in the corresponding access request item", alias="clientMetadata")
+    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "requestCreated", "requestType", "requester", "requestedFor", "owner", "requestedObject", "requesterComment", "previousReviewersComments", "forwardHistory", "commentRequiredWhenRejected", "actionInProcess", "removeDate", "removeDateUpdateRequested", "currentRemoveDate", "sodViolationContext", "clientMetadata"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -138,6 +139,11 @@ class PendingApproval(BaseModel):
         if self.sod_violation_context is None and "sod_violation_context" in self.model_fields_set:
             _dict['sodViolationContext'] = None
 
+        # set to None if client_metadata (nullable) is None
+        # and model_fields_set contains the field
+        if self.client_metadata is None and "client_metadata" in self.model_fields_set:
+            _dict['clientMetadata'] = None
+
         return _dict
 
     @classmethod
@@ -168,7 +174,8 @@ class PendingApproval(BaseModel):
             "removeDate": obj.get("removeDate"),
             "removeDateUpdateRequested": obj.get("removeDateUpdateRequested") if obj.get("removeDateUpdateRequested") is not None else False,
             "currentRemoveDate": obj.get("currentRemoveDate"),
-            "sodViolationContext": SodViolationContextCheckCompleted1.from_dict(obj["sodViolationContext"]) if obj.get("sodViolationContext") is not None else None
+            "sodViolationContext": SodViolationContextCheckCompleted1.from_dict(obj["sodViolationContext"]) if obj.get("sodViolationContext") is not None else None,
+            "clientMetadata": obj.get("clientMetadata")
         })
         return _obj
 

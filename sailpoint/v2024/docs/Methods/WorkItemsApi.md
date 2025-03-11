@@ -177,6 +177,7 @@ This API completes a work item. Either an admin, or the owning/current user must
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | The ID of the work item
+ Body  | body | **str** |   (optional) | Body is the request payload to create form definition request
 
 ### Return type
 [**WorkItems**](../models/work-items)
@@ -193,7 +194,7 @@ Code | Description  | Data Type | Response headers |
 500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### Example
@@ -209,13 +210,14 @@ configuration = Configuration()
 
 with ApiClient(configuration) as api_client:
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the work item # str | The ID of the work item
+    body = 'body_example' # str | Body is the request payload to create form definition request (optional) # str | Body is the request payload to create form definition request (optional)
 
     try:
         # Complete a Work Item
         
-        results =WorkItemsApi(api_client).complete_work_item(id)
+        results =WorkItemsApi(api_client).complete_work_item(id, )
         # Below is a request that includes all optional parameters
-        # results = WorkItemsApi(api_client).complete_work_item(id)
+        # results = WorkItemsApi(api_client).complete_work_item(id, new_body)
         print("The response of WorkItemsApi->complete_work_item:\n")
         pprint(results)
         except Exception as e:
