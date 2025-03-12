@@ -3,3 +3,15 @@ packageName: sailpoint.v2024
 packageVersion: 1.2.7
 apiVersion: v2024
 generateSourceCodeOnly: true
+funtionPrefix: V2024
+subModuleName: V2024
+files:
+  developerSite_code_examples.mustache:
+    templateType: APIDocs
+    destinationFilename: developerSite_code_examples.yaml 
+  docs_methods_index.mustache:
+    templateType: SupportingFiles
+    destinationFilename: sailpoint/v2024/docs/Methods/Index.md
+  docs_models_index.mustache:
+    templateType: SupportingFiles
+    destinationFilename: sailpoint/v2024/Index.md
