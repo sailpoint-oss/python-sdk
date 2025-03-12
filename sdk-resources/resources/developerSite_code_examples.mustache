@@ -6,6 +6,20 @@
     - lang: Python
       label: SDK_tools/sdk/python/{{#lambda.lowercase}}{{subModuleName}}{{/lambda.lowercase}}/methods/{{#lambda.kebabcase}}{{#lambda.titlecase}}{{baseName}}{{/lambda.titlecase}}{{/lambda.kebabcase}}#{{#lambda.kebabcase}}{{#lambda.titlecase}}{{operationId}}{{/lambda.titlecase}}{{/lambda.kebabcase}}
       source: |
+        from {{{packageName}}}.api.{{#lambda.snakecase}}{{classname}}{{/lambda.snakecase}} import {{#lambda.titlecase}}{{classname}}{{/lambda.titlecase}}
+        from {{{packageName}}}.api_client import ApiClient
+        {{#vendorExtensions.x-py-example-import}}
+        {{{.}}}
+        {{/vendorExtensions.x-py-example-import}}
+        from pprint import pprint
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        {{#headerParams}}
+        configuration.experimental = true
+        {{/headerParams}}
+
+        with ApiClient(configuration) as api_client:
         {{#allParams}}
         {{^isArray}}
         {{#isModel}}
