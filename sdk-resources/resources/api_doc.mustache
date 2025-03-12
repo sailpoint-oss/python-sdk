@@ -28,6 +28,14 @@ This endpoint has been deprecated and may be replaced or removed in future versi
 {{#headerParams}}:::warning experimental 
 This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
 :::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
 {{/headerParams}}
 {{{summary}}}
 {{#notes}}{{{unescapedNotes}}}{{/notes}}

@@ -31,6 +31,14 @@ Method | HTTP request | Description
 :::warning experimental 
 This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
 :::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
 Ignore Access Request Recommendation
 This API ignores a recommended access request item. Once an item is ignored, it will be marked as ignored=true if it is still a recommended item. The consumer can decide to hide ignored recommendations.
 
@@ -63,7 +71,6 @@ Code | Description  | Data Type | Response headers |
 ### Example
 
 ```python
-import sailpoint.v2024
 from sailpoint.v2024.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi
 from sailpoint.v2024.api_client import ApiClient
 from sailpoint.v2024.models.access_request_recommendation_action_item_dto import AccessRequestRecommendationActionItemDto
@@ -72,26 +79,27 @@ from pprint import pprint
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = true
+
 with ApiClient(configuration) as api_client:
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
-    access_request_recommendation_action_item_dto = {
+    access_request_recommendation_action_item_dto = '''{
           "access" : {
             "id" : "2c9180835d2e5168015d32f890ca1581",
             "type" : "ACCESS_PROFILE"
           },
           "identityId" : "2c91808570313110017040b06f344ec9"
-        } # AccessRequestRecommendationActionItemDto | The recommended access item to ignore for an identity.
+        }''' # AccessRequestRecommendationActionItemDto | The recommended access item to ignore for an identity.
 
     try:
         # Ignore Access Request Recommendation
-        new_access_request_recommendation_action_item_dto = AccessRequestRecommendationActionItemDto()
-        new_access_request_recommendation_action_item_dto.from_json(access_request_recommendation_action_item_dto)
-        results =IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_ignored_item(x_sail_point_experimental, new_access_request_recommendation_action_item_dto)
+        new_access_request_recommendation_action_item_dto = AccessRequestRecommendationActionItemDto.from_json(access_request_recommendation_action_item_dto)
+        results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_ignored_item(x_sail_point_experimental=x_sail_point_experimental, access_request_recommendation_action_item_dto=new_access_request_recommendation_action_item_dto)
         # Below is a request that includes all optional parameters
         # results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_ignored_item(x_sail_point_experimental, new_access_request_recommendation_action_item_dto)
         print("The response of IAIAccessRequestRecommendationsApi->add_access_request_recommendations_ignored_item:\n")
         pprint(results)
-        except Exception as e:
+    except Exception as e:
         print("Exception when calling IAIAccessRequestRecommendationsApi->add_access_request_recommendations_ignored_item: %s\n" % e)
 ```
 
@@ -102,6 +110,14 @@ with ApiClient(configuration) as api_client:
 ## add-access-request-recommendations-requested-item
 :::warning experimental 
 This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
 :::
 Accept Access Request Recommendation
 This API consumes a notification that a recommended access request item was requested. This API does not actually make the request, it is just a notification. This will help provide feedback in order to improve our recommendations.
@@ -135,7 +151,6 @@ Code | Description  | Data Type | Response headers |
 ### Example
 
 ```python
-import sailpoint.v2024
 from sailpoint.v2024.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi
 from sailpoint.v2024.api_client import ApiClient
 from sailpoint.v2024.models.access_request_recommendation_action_item_dto import AccessRequestRecommendationActionItemDto
@@ -144,26 +159,27 @@ from pprint import pprint
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = true
+
 with ApiClient(configuration) as api_client:
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
-    access_request_recommendation_action_item_dto = {
+    access_request_recommendation_action_item_dto = '''{
           "access" : {
             "id" : "2c9180835d2e5168015d32f890ca1581",
             "type" : "ACCESS_PROFILE"
           },
           "identityId" : "2c91808570313110017040b06f344ec9"
-        } # AccessRequestRecommendationActionItemDto | The recommended access item that was requested for an identity.
+        }''' # AccessRequestRecommendationActionItemDto | The recommended access item that was requested for an identity.
 
     try:
         # Accept Access Request Recommendation
-        new_access_request_recommendation_action_item_dto = AccessRequestRecommendationActionItemDto()
-        new_access_request_recommendation_action_item_dto.from_json(access_request_recommendation_action_item_dto)
-        results =IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_requested_item(x_sail_point_experimental, new_access_request_recommendation_action_item_dto)
+        new_access_request_recommendation_action_item_dto = AccessRequestRecommendationActionItemDto.from_json(access_request_recommendation_action_item_dto)
+        results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_requested_item(x_sail_point_experimental=x_sail_point_experimental, access_request_recommendation_action_item_dto=new_access_request_recommendation_action_item_dto)
         # Below is a request that includes all optional parameters
         # results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_requested_item(x_sail_point_experimental, new_access_request_recommendation_action_item_dto)
         print("The response of IAIAccessRequestRecommendationsApi->add_access_request_recommendations_requested_item:\n")
         pprint(results)
-        except Exception as e:
+    except Exception as e:
         print("Exception when calling IAIAccessRequestRecommendationsApi->add_access_request_recommendations_requested_item: %s\n" % e)
 ```
 
@@ -174,6 +190,14 @@ with ApiClient(configuration) as api_client:
 ## add-access-request-recommendations-viewed-item
 :::warning experimental 
 This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
 :::
 Mark Viewed Access Request Recommendations
 This API consumes a notification that a recommended access request item was viewed. Future recommendations with this item will be marked with viewed=true. This can be useful for the consumer to determine if there are any new/unviewed recommendations.
@@ -207,7 +231,6 @@ Code | Description  | Data Type | Response headers |
 ### Example
 
 ```python
-import sailpoint.v2024
 from sailpoint.v2024.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi
 from sailpoint.v2024.api_client import ApiClient
 from sailpoint.v2024.models.access_request_recommendation_action_item_dto import AccessRequestRecommendationActionItemDto
@@ -216,26 +239,27 @@ from pprint import pprint
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = true
+
 with ApiClient(configuration) as api_client:
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
-    access_request_recommendation_action_item_dto = {
+    access_request_recommendation_action_item_dto = '''{
           "access" : {
             "id" : "2c9180835d2e5168015d32f890ca1581",
             "type" : "ACCESS_PROFILE"
           },
           "identityId" : "2c91808570313110017040b06f344ec9"
-        } # AccessRequestRecommendationActionItemDto | The recommended access that was viewed for an identity.
+        }''' # AccessRequestRecommendationActionItemDto | The recommended access that was viewed for an identity.
 
     try:
         # Mark Viewed Access Request Recommendations
-        new_access_request_recommendation_action_item_dto = AccessRequestRecommendationActionItemDto()
-        new_access_request_recommendation_action_item_dto.from_json(access_request_recommendation_action_item_dto)
-        results =IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_viewed_item(x_sail_point_experimental, new_access_request_recommendation_action_item_dto)
+        new_access_request_recommendation_action_item_dto = AccessRequestRecommendationActionItemDto.from_json(access_request_recommendation_action_item_dto)
+        results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_viewed_item(x_sail_point_experimental=x_sail_point_experimental, access_request_recommendation_action_item_dto=new_access_request_recommendation_action_item_dto)
         # Below is a request that includes all optional parameters
         # results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_viewed_item(x_sail_point_experimental, new_access_request_recommendation_action_item_dto)
         print("The response of IAIAccessRequestRecommendationsApi->add_access_request_recommendations_viewed_item:\n")
         pprint(results)
-        except Exception as e:
+    except Exception as e:
         print("Exception when calling IAIAccessRequestRecommendationsApi->add_access_request_recommendations_viewed_item: %s\n" % e)
 ```
 
@@ -246,6 +270,14 @@ with ApiClient(configuration) as api_client:
 ## add-access-request-recommendations-viewed-items
 :::warning experimental 
 This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
 :::
 Bulk Mark Viewed Access Request Recommendations
 This API consumes a notification that a set of recommended access request item were viewed. Future recommendations with these items will be marked with viewed=true. This can be useful for the consumer to determine if there are any new/unviewed recommendations.
@@ -279,7 +311,6 @@ Code | Description  | Data Type | Response headers |
 ### Example
 
 ```python
-import sailpoint.v2024
 from sailpoint.v2024.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi
 from sailpoint.v2024.api_client import ApiClient
 from sailpoint.v2024.models.access_request_recommendation_action_item_dto import AccessRequestRecommendationActionItemDto
@@ -288,28 +319,21 @@ from pprint import pprint
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = true
+
 with ApiClient(configuration) as api_client:
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
-    [sailpoint.v2024.AccessRequestRecommendationActionItemDto()] # List[AccessRequestRecommendationActionItemDto] | The recommended access items that were viewed for an identity.
-     access_request_recommendation_action_item_dto = {
-          "access" : {
-            "id" : "2c9180835d2e5168015d32f890ca1581",
-            "type" : "ACCESS_PROFILE"
-          },
-          "identityId" : "2c91808570313110017040b06f344ec9"
-        } # List[AccessRequestRecommendationActionItemDto] | The recommended access items that were viewed for an identity.
-    
+    access_request_recommendation_action_item_dto = '''[sailpoint.v2024.AccessRequestRecommendationActionItemDto()]''' # List[AccessRequestRecommendationActionItemDto] | The recommended access items that were viewed for an identity.
 
     try:
         # Bulk Mark Viewed Access Request Recommendations
-        new_access_request_recommendation_action_item_dto = AccessRequestRecommendationActionItemDto()
-        new_access_request_recommendation_action_item_dto.from_json(access_request_recommendation_action_item_dto)
-        results =IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_viewed_items(x_sail_point_experimental, new_access_request_recommendation_action_item_dto)
+        new_access_request_recommendation_action_item_dto = AccessRequestRecommendationActionItemDto.from_json(access_request_recommendation_action_item_dto)
+        results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_viewed_items(x_sail_point_experimental=x_sail_point_experimental, access_request_recommendation_action_item_dto=new_access_request_recommendation_action_item_dto)
         # Below is a request that includes all optional parameters
         # results = IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_viewed_items(x_sail_point_experimental, new_access_request_recommendation_action_item_dto)
         print("The response of IAIAccessRequestRecommendationsApi->add_access_request_recommendations_viewed_items:\n")
         pprint(results)
-        except Exception as e:
+    except Exception as e:
         print("Exception when calling IAIAccessRequestRecommendationsApi->add_access_request_recommendations_viewed_items: %s\n" % e)
 ```
 
@@ -320,6 +344,14 @@ with ApiClient(configuration) as api_client:
 ## get-access-request-recommendations
 :::warning experimental 
 This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
 :::
 Identity Access Request Recommendations
 This API returns the access request recommendations for the specified identity. The default identity is *me* which indicates the current user.
@@ -359,13 +391,14 @@ Code | Description  | Data Type | Response headers |
 ### Example
 
 ```python
-import sailpoint.v2024
 from sailpoint.v2024.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi
 from sailpoint.v2024.api_client import ApiClient
 from sailpoint.v2024.models.access_request_recommendation_item_detail import AccessRequestRecommendationItemDetail
 from pprint import pprint
 from sailpoint.configuration import Configuration
 configuration = Configuration()
+
+configuration.experimental = true
 
 with ApiClient(configuration) as api_client:
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
@@ -380,12 +413,12 @@ with ApiClient(configuration) as api_client:
     try:
         # Identity Access Request Recommendations
         
-        results =IAIAccessRequestRecommendationsApi(api_client).get_access_request_recommendations(x_sail_point_experimental, )
+        results = IAIAccessRequestRecommendationsApi(api_client).get_access_request_recommendations(x_sail_point_experimental=x_sail_point_experimental)
         # Below is a request that includes all optional parameters
         # results = IAIAccessRequestRecommendationsApi(api_client).get_access_request_recommendations(x_sail_point_experimental, identity_id, limit, offset, count, include_translation_messages, filters, sorters)
         print("The response of IAIAccessRequestRecommendationsApi->get_access_request_recommendations:\n")
         pprint(results)
-        except Exception as e:
+    except Exception as e:
         print("Exception when calling IAIAccessRequestRecommendationsApi->get_access_request_recommendations: %s\n" % e)
 ```
 
@@ -396,6 +429,14 @@ with ApiClient(configuration) as api_client:
 ## get-access-request-recommendations-config
 :::warning experimental 
 This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
 :::
 Get Access Request Recommendations config
 This API returns the configurations for Access Request Recommender for the tenant.
@@ -428,7 +469,6 @@ Code | Description  | Data Type | Response headers |
 ### Example
 
 ```python
-import sailpoint.v2024
 from sailpoint.v2024.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi
 from sailpoint.v2024.api_client import ApiClient
 from sailpoint.v2024.models.access_request_recommendation_config_dto import AccessRequestRecommendationConfigDto
@@ -436,18 +476,20 @@ from pprint import pprint
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = true
+
 with ApiClient(configuration) as api_client:
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
 
     try:
         # Get Access Request Recommendations config
         
-        results =IAIAccessRequestRecommendationsApi(api_client).get_access_request_recommendations_config(x_sail_point_experimental)
+        results = IAIAccessRequestRecommendationsApi(api_client).get_access_request_recommendations_config(x_sail_point_experimental=x_sail_point_experimental)
         # Below is a request that includes all optional parameters
         # results = IAIAccessRequestRecommendationsApi(api_client).get_access_request_recommendations_config(x_sail_point_experimental)
         print("The response of IAIAccessRequestRecommendationsApi->get_access_request_recommendations_config:\n")
         pprint(results)
-        except Exception as e:
+    except Exception as e:
         print("Exception when calling IAIAccessRequestRecommendationsApi->get_access_request_recommendations_config: %s\n" % e)
 ```
 
@@ -458,6 +500,14 @@ with ApiClient(configuration) as api_client:
 ## get-access-request-recommendations-ignored-items
 :::warning experimental 
 This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
 :::
 List Ignored Access Request Recommendations
 This API returns the list of ignored access request recommendations.
@@ -495,13 +545,14 @@ Code | Description  | Data Type | Response headers |
 ### Example
 
 ```python
-import sailpoint.v2024
 from sailpoint.v2024.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi
 from sailpoint.v2024.api_client import ApiClient
 from sailpoint.v2024.models.access_request_recommendation_action_item_response_dto import AccessRequestRecommendationActionItemResponseDto
 from pprint import pprint
 from sailpoint.configuration import Configuration
 configuration = Configuration()
+
+configuration.experimental = true
 
 with ApiClient(configuration) as api_client:
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
@@ -514,12 +565,12 @@ with ApiClient(configuration) as api_client:
     try:
         # List Ignored Access Request Recommendations
         
-        results =IAIAccessRequestRecommendationsApi(api_client).get_access_request_recommendations_ignored_items(x_sail_point_experimental, )
+        results = IAIAccessRequestRecommendationsApi(api_client).get_access_request_recommendations_ignored_items(x_sail_point_experimental=x_sail_point_experimental)
         # Below is a request that includes all optional parameters
         # results = IAIAccessRequestRecommendationsApi(api_client).get_access_request_recommendations_ignored_items(x_sail_point_experimental, limit, offset, count, filters, sorters)
         print("The response of IAIAccessRequestRecommendationsApi->get_access_request_recommendations_ignored_items:\n")
         pprint(results)
-        except Exception as e:
+    except Exception as e:
         print("Exception when calling IAIAccessRequestRecommendationsApi->get_access_request_recommendations_ignored_items: %s\n" % e)
 ```
 
@@ -530,6 +581,14 @@ with ApiClient(configuration) as api_client:
 ## get-access-request-recommendations-requested-items
 :::warning experimental 
 This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
 :::
 List Accepted Access Request Recommendations
 This API returns a list of requested access request recommendations.
@@ -567,13 +626,14 @@ Code | Description  | Data Type | Response headers |
 ### Example
 
 ```python
-import sailpoint.v2024
 from sailpoint.v2024.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi
 from sailpoint.v2024.api_client import ApiClient
 from sailpoint.v2024.models.access_request_recommendation_action_item_response_dto import AccessRequestRecommendationActionItemResponseDto
 from pprint import pprint
 from sailpoint.configuration import Configuration
 configuration = Configuration()
+
+configuration.experimental = true
 
 with ApiClient(configuration) as api_client:
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
@@ -586,12 +646,12 @@ with ApiClient(configuration) as api_client:
     try:
         # List Accepted Access Request Recommendations
         
-        results =IAIAccessRequestRecommendationsApi(api_client).get_access_request_recommendations_requested_items(x_sail_point_experimental, )
+        results = IAIAccessRequestRecommendationsApi(api_client).get_access_request_recommendations_requested_items(x_sail_point_experimental=x_sail_point_experimental)
         # Below is a request that includes all optional parameters
         # results = IAIAccessRequestRecommendationsApi(api_client).get_access_request_recommendations_requested_items(x_sail_point_experimental, limit, offset, count, filters, sorters)
         print("The response of IAIAccessRequestRecommendationsApi->get_access_request_recommendations_requested_items:\n")
         pprint(results)
-        except Exception as e:
+    except Exception as e:
         print("Exception when calling IAIAccessRequestRecommendationsApi->get_access_request_recommendations_requested_items: %s\n" % e)
 ```
 
@@ -602,6 +662,14 @@ with ApiClient(configuration) as api_client:
 ## get-access-request-recommendations-viewed-items
 :::warning experimental 
 This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
 :::
 List Viewed Access Request Recommendations
 This API returns the list of viewed access request recommendations.
@@ -639,13 +707,14 @@ Code | Description  | Data Type | Response headers |
 ### Example
 
 ```python
-import sailpoint.v2024
 from sailpoint.v2024.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi
 from sailpoint.v2024.api_client import ApiClient
 from sailpoint.v2024.models.access_request_recommendation_action_item_response_dto import AccessRequestRecommendationActionItemResponseDto
 from pprint import pprint
 from sailpoint.configuration import Configuration
 configuration = Configuration()
+
+configuration.experimental = true
 
 with ApiClient(configuration) as api_client:
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
@@ -658,12 +727,12 @@ with ApiClient(configuration) as api_client:
     try:
         # List Viewed Access Request Recommendations
         
-        results =IAIAccessRequestRecommendationsApi(api_client).get_access_request_recommendations_viewed_items(x_sail_point_experimental, )
+        results = IAIAccessRequestRecommendationsApi(api_client).get_access_request_recommendations_viewed_items(x_sail_point_experimental=x_sail_point_experimental)
         # Below is a request that includes all optional parameters
         # results = IAIAccessRequestRecommendationsApi(api_client).get_access_request_recommendations_viewed_items(x_sail_point_experimental, limit, offset, count, filters, sorters)
         print("The response of IAIAccessRequestRecommendationsApi->get_access_request_recommendations_viewed_items:\n")
         pprint(results)
-        except Exception as e:
+    except Exception as e:
         print("Exception when calling IAIAccessRequestRecommendationsApi->get_access_request_recommendations_viewed_items: %s\n" % e)
 ```
 
@@ -674,6 +743,14 @@ with ApiClient(configuration) as api_client:
 ## set-access-request-recommendations-config
 :::warning experimental 
 This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
 :::
 Update Access Request Recommendations config
 This API updates the configurations for Access Request Recommender for the tenant.
@@ -707,7 +784,6 @@ Code | Description  | Data Type | Response headers |
 ### Example
 
 ```python
-import sailpoint.v2024
 from sailpoint.v2024.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi
 from sailpoint.v2024.api_client import ApiClient
 from sailpoint.v2024.models.access_request_recommendation_config_dto import AccessRequestRecommendationConfigDto
@@ -715,27 +791,28 @@ from pprint import pprint
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
+configuration.experimental = true
+
 with ApiClient(configuration) as api_client:
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
-    access_request_recommendation_config_dto = {
+    access_request_recommendation_config_dto = '''{
           "scoreThreshold" : 0.5,
           "startDateAttribute" : "startDate",
           "restrictionAttribute" : "location",
           "moverAttribute" : "isMover",
           "joinerAttribute" : "isJoiner",
           "useRestrictionAttribute" : true
-        } # AccessRequestRecommendationConfigDto | The desired configurations for Access Request Recommender for the tenant.
+        }''' # AccessRequestRecommendationConfigDto | The desired configurations for Access Request Recommender for the tenant.
 
     try:
         # Update Access Request Recommendations config
-        new_access_request_recommendation_config_dto = AccessRequestRecommendationConfigDto()
-        new_access_request_recommendation_config_dto.from_json(access_request_recommendation_config_dto)
-        results =IAIAccessRequestRecommendationsApi(api_client).set_access_request_recommendations_config(x_sail_point_experimental, new_access_request_recommendation_config_dto)
+        new_access_request_recommendation_config_dto = AccessRequestRecommendationConfigDto.from_json(access_request_recommendation_config_dto)
+        results = IAIAccessRequestRecommendationsApi(api_client).set_access_request_recommendations_config(x_sail_point_experimental=x_sail_point_experimental, access_request_recommendation_config_dto=new_access_request_recommendation_config_dto)
         # Below is a request that includes all optional parameters
         # results = IAIAccessRequestRecommendationsApi(api_client).set_access_request_recommendations_config(x_sail_point_experimental, new_access_request_recommendation_config_dto)
         print("The response of IAIAccessRequestRecommendationsApi->set_access_request_recommendations_config:\n")
         pprint(results)
-        except Exception as e:
+    except Exception as e:
         print("Exception when calling IAIAccessRequestRecommendationsApi->set_access_request_recommendations_config: %s\n" % e)
 ```
 
