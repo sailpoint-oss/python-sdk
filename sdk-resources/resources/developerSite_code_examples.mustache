@@ -6,10 +6,24 @@
     - lang: Python
       label: SDK_tools/sdk/python/{{#lambda.lowercase}}{{subModuleName}}{{/lambda.lowercase}}/methods/{{#lambda.kebabcase}}{{#lambda.titlecase}}{{baseName}}{{/lambda.titlecase}}{{/lambda.kebabcase}}#{{#lambda.kebabcase}}{{#lambda.titlecase}}{{operationId}}{{/lambda.titlecase}}{{/lambda.kebabcase}}
       source: |
+        from {{{packageName}}}.api.{{#lambda.snakecase}}{{classname}}{{/lambda.snakecase}} import {{#lambda.titlecase}}{{classname}}{{/lambda.titlecase}}
+        from {{{packageName}}}.api_client import ApiClient
+        {{#vendorExtensions.x-py-example-import}}
+        {{{.}}}
+        {{/vendorExtensions.x-py-example-import}}
+        from pprint import pprint
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        {{#headerParams}}
+        configuration.experimental = true
+        {{/headerParams}}
+
+        with ApiClient(configuration) as api_client:
         {{#allParams}}
         {{^isArray}}
         {{#isModel}}
-        {{paramName}} = {{#lambda.indented_8}}{{#requestBodyExamples}}{{{example}}}{{/requestBodyExamples}}{{^requestBodyExamples}}{{#example}}{{{example}}}{{/example}}{{/requestBodyExamples}} # {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}{{/lambda.indented_8}}
+        {{paramName}} = '''{{#lambda.indented_8}}{{#requestBodyExamples}}{{{example}}}{{/requestBodyExamples}}{{^requestBodyExamples}}{{#example}}{{{example}}}{{/example}}{{/requestBodyExamples}}''' # {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}{{/lambda.indented_8}}
         {{/isModel}}
         {{^isModel}}
         {{paramName}} = {{{example}}} # {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}} # {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
@@ -17,29 +31,26 @@
         {{/isArray}}
         {{#isArray}}
         {{#items.isModel}}
-        {{{example}}} # {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
+        {{paramName}} = '''{{{example}}}''' # {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
         {{/items.isModel}}
         {{^items.isModel}}
-        {{paramName}} = {{{example}}} # {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
+        {{paramName}} = '''{{{example}}}''' # {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
         {{/items.isModel}}
-        {{#requestBodyExamples}} {{paramName}} = {{#lambda.indented_8}}{{{example}}} # {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}{{/lambda.indented_8}}{{/requestBodyExamples}}
-        {{^requestBodyExamples}}{{#example}}{{paramName}} = {{#lambda.indented_8}}{{{example}}} # {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}{{/lambda.indented_8}}{{/example}}{{/requestBodyExamples}}
         {{/isArray}}
         {{/allParams}}
         try:
-          {{#summary}}
-          # {{{.}}}
-          {{/summary}}
-          {{#requiredAndNotNullableParams}}{{#isBodyParam}}Result = {{paramName}}.from_json({{paramName}}){{/isBodyParam}}{{/requiredAndNotNullableParams}}
-          {{#returnType}}api_response = {{/returnType}}{{#asyncio}}await {{/asyncio}}api_instance.{{{operationId}}}({{#allParams}}{{#required}}{{^isBodyParam}}{{paramName}}{{/isBodyParam}}{{#isBodyParam}}Result{{/isBodyParam}}{{^-last}}, {{/-last}}{{/required}}{{/allParams}})
-              
-          # Below is a request that includes all optional parameters
-          # {{#returnType}}api_response = {{/returnType}}{{#asyncio}}await {{/asyncio}}api_instance.{{{operationId}}}({{#allParams}}{{^isBodyParam}}{{paramName}}{{/isBodyParam}}{{#isBodyParam}}Result{{/isBodyParam}}{{^-last}}, {{/-last}}{{/allParams}})
-          {{#returnType}}
-          print("The response of {{classname}}->{{operationId}}:\n")
-          pprint(api_response)
-          {{/returnType}}
+            {{#summary}}
+            # {{{.}}}
+            {{/summary}}
+            {{#requiredAndNotNullableParams}}{{#isBodyParam}}new_{{paramName}} = {{#lambda.titlecase}}{{#lambda.camelcase}}{{paramName}}{{/lambda.camelcase}}{{/lambda.titlecase}}.from_json({{paramName}}){{/isBodyParam}}{{/requiredAndNotNullableParams}}
+            {{#returnType}}results = {{/returnType}}{{#lambda.titlecase}}{{classname}}{{/lambda.titlecase}}(api_client).{{{operationId}}}({{#requiredParams}}{{#isBodyParam}}{{paramName}}=new_{{paramName}}{{^-last}}, {{/-last}}{{/isBodyParam}}{{^isBodyParam}}{{paramName}}={{paramName}}{{^-last}}, {{/-last}}{{/isBodyParam}}{{/requiredParams}})
+            # Below is a request that includes all optional parameters
+            # {{#returnType}}results = {{/returnType}}{{#lambda.titlecase}}{{classname}}{{/lambda.titlecase}}(api_client).{{{operationId}}}({{#allParams}}{{^isBodyParam}}{{paramName}}{{/isBodyParam}}{{#isBodyParam}}new_{{paramName}}{{/isBodyParam}}{{^-last}}, {{/-last}}{{/allParams}})
+            {{#returnType}}
+            print("The response of {{classname}}->{{operationId}}:\n")
+            pprint(results)
+            {{/returnType}}
         except Exception as e:
-          print("Exception when calling {{classname}}->{{operationId}}: %s\n" % e)
+            print("Exception when calling {{classname}}->{{operationId}}: %s\n" % e)
   {{/operation}}
 {{/operations}}
