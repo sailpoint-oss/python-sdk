@@ -15,18 +15,18 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**add-access-request-recommendations-ignored-item**](#add-access-request-recommendations-ignored-item) | **POST** `/ai-access-request-recommendations/ignored-items` | Notification of Ignored Access Request Recommendations
-[**add-access-request-recommendations-requested-item**](#add-access-request-recommendations-requested-item) | **POST** `/ai-access-request-recommendations/requested-items` | Notification of Requested Access Request Recommendations
-[**add-access-request-recommendations-viewed-item**](#add-access-request-recommendations-viewed-item) | **POST** `/ai-access-request-recommendations/viewed-items` | Notification of Viewed Access Request Recommendations
-[**add-access-request-recommendations-viewed-items**](#add-access-request-recommendations-viewed-items) | **POST** `/ai-access-request-recommendations/viewed-items/bulk-create` | Notification of Viewed Access Request Recommendations in Bulk
+[**add-access-request-recommendations-ignored-item**](#add-access-request-recommendations-ignored-item) | **POST** `/ai-access-request-recommendations/ignored-items` | Ignore Access Request Recommendation
+[**add-access-request-recommendations-requested-item**](#add-access-request-recommendations-requested-item) | **POST** `/ai-access-request-recommendations/requested-items` | Accept Access Request Recommendation
+[**add-access-request-recommendations-viewed-item**](#add-access-request-recommendations-viewed-item) | **POST** `/ai-access-request-recommendations/viewed-items` | Mark Viewed Access Request Recommendations
+[**add-access-request-recommendations-viewed-items**](#add-access-request-recommendations-viewed-items) | **POST** `/ai-access-request-recommendations/viewed-items/bulk-create` | Bulk Mark Viewed Access Request Recommendations
 [**get-access-request-recommendations**](#get-access-request-recommendations) | **GET** `/ai-access-request-recommendations` | Identity Access Request Recommendations
-[**get-access-request-recommendations-ignored-items**](#get-access-request-recommendations-ignored-items) | **GET** `/ai-access-request-recommendations/ignored-items` | List of Ignored Access Request Recommendations
-[**get-access-request-recommendations-requested-items**](#get-access-request-recommendations-requested-items) | **GET** `/ai-access-request-recommendations/requested-items` | List of Requested Access Request Recommendations
-[**get-access-request-recommendations-viewed-items**](#get-access-request-recommendations-viewed-items) | **GET** `/ai-access-request-recommendations/viewed-items` | List of Viewed Access Request Recommendations
+[**get-access-request-recommendations-ignored-items**](#get-access-request-recommendations-ignored-items) | **GET** `/ai-access-request-recommendations/ignored-items` | List Ignored Access Request Recommendations
+[**get-access-request-recommendations-requested-items**](#get-access-request-recommendations-requested-items) | **GET** `/ai-access-request-recommendations/requested-items` | List Accepted Access Request Recommendations
+[**get-access-request-recommendations-viewed-items**](#get-access-request-recommendations-viewed-items) | **GET** `/ai-access-request-recommendations/viewed-items` | List Viewed Access Request Recommendations
 
 
 ## add-access-request-recommendations-ignored-item
-Notification of Ignored Access Request Recommendations
+Ignore Access Request Recommendation
 This API ignores a recommended access request item. Once an item is ignored, it will be marked as ignored=true if it is still a recommended item. The consumer can decide to hide ignored recommendations.
 
 [API Spec](https://developer.sailpoint.com/docs/api/beta/add-access-request-recommendations-ignored-item)
@@ -76,7 +76,7 @@ with ApiClient(configuration) as api_client:
         } # AccessRequestRecommendationActionItemDto | The recommended access item to ignore for an identity.
 
     try:
-        # Notification of Ignored Access Request Recommendations
+        # Ignore Access Request Recommendation
         new_access_request_recommendation_action_item_dto = AccessRequestRecommendationActionItemDto()
         new_access_request_recommendation_action_item_dto.from_json(access_request_recommendation_action_item_dto)
         results =IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_ignored_item(new_access_request_recommendation_action_item_dto)
@@ -93,7 +93,7 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## add-access-request-recommendations-requested-item
-Notification of Requested Access Request Recommendations
+Accept Access Request Recommendation
 This API consumes a notification that a recommended access request item was requested. This API does not actually make the request, it is just a notification. This will help provide feedback in order to improve our recommendations.
 
 [API Spec](https://developer.sailpoint.com/docs/api/beta/add-access-request-recommendations-requested-item)
@@ -143,7 +143,7 @@ with ApiClient(configuration) as api_client:
         } # AccessRequestRecommendationActionItemDto | The recommended access item that was requested for an identity.
 
     try:
-        # Notification of Requested Access Request Recommendations
+        # Accept Access Request Recommendation
         new_access_request_recommendation_action_item_dto = AccessRequestRecommendationActionItemDto()
         new_access_request_recommendation_action_item_dto.from_json(access_request_recommendation_action_item_dto)
         results =IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_requested_item(new_access_request_recommendation_action_item_dto)
@@ -160,7 +160,7 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## add-access-request-recommendations-viewed-item
-Notification of Viewed Access Request Recommendations
+Mark Viewed Access Request Recommendations
 This API consumes a notification that a recommended access request item was viewed. Future recommendations with this item will be marked with viewed=true. This can be useful for the consumer to determine if there are any new/unviewed recommendations.
 
 [API Spec](https://developer.sailpoint.com/docs/api/beta/add-access-request-recommendations-viewed-item)
@@ -210,7 +210,7 @@ with ApiClient(configuration) as api_client:
         } # AccessRequestRecommendationActionItemDto | The recommended access that was viewed for an identity.
 
     try:
-        # Notification of Viewed Access Request Recommendations
+        # Mark Viewed Access Request Recommendations
         new_access_request_recommendation_action_item_dto = AccessRequestRecommendationActionItemDto()
         new_access_request_recommendation_action_item_dto.from_json(access_request_recommendation_action_item_dto)
         results =IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_viewed_item(new_access_request_recommendation_action_item_dto)
@@ -227,7 +227,7 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## add-access-request-recommendations-viewed-items
-Notification of Viewed Access Request Recommendations in Bulk
+Bulk Mark Viewed Access Request Recommendations
 This API consumes a notification that a set of recommended access request item were viewed. Future recommendations with these items will be marked with viewed=true. This can be useful for the consumer to determine if there are any new/unviewed recommendations.
 
 [API Spec](https://developer.sailpoint.com/docs/api/beta/add-access-request-recommendations-viewed-items)
@@ -279,7 +279,7 @@ with ApiClient(configuration) as api_client:
     
 
     try:
-        # Notification of Viewed Access Request Recommendations in Bulk
+        # Bulk Mark Viewed Access Request Recommendations
         new_access_request_recommendation_action_item_dto = AccessRequestRecommendationActionItemDto()
         new_access_request_recommendation_action_item_dto.from_json(access_request_recommendation_action_item_dto)
         results =IAIAccessRequestRecommendationsApi(api_client).add_access_request_recommendations_viewed_items(new_access_request_recommendation_action_item_dto)
@@ -348,7 +348,7 @@ with ApiClient(configuration) as api_client:
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
     include_translation_messages = False # bool | If *true* it will populate a list of translation messages in the response. (optional) (default to False) # bool | If *true* it will populate a list of translation messages in the response. (optional) (default to False)
     filters = 'access.name co \"admin\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **access.name**: *co*  **access.type**: *eq, in*  **access.description**: *co, eq, in* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **access.name**: *co*  **access.type**: *eq, in*  **access.description**: *co, eq, in* (optional)
-    sorters = 'sorters_example' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.name, access.type**  By default the recommendations are sorted by highest confidence first. (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.name, access.type**  By default the recommendations are sorted by highest confidence first. (optional)
+    sorters = 'access.name' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.name, access.type**  By default the recommendations are sorted by highest confidence first. (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.name, access.type**  By default the recommendations are sorted by highest confidence first. (optional)
 
     try:
         # Identity Access Request Recommendations
@@ -367,7 +367,7 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## get-access-request-recommendations-ignored-items
-List of Ignored Access Request Recommendations
+List Ignored Access Request Recommendations
 This API returns the list of ignored access request recommendations.
 
 [API Spec](https://developer.sailpoint.com/docs/api/beta/get-access-request-recommendations-ignored-items)
@@ -418,7 +418,7 @@ with ApiClient(configuration) as api_client:
     sorters = 'access.id' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.id, access.type, identityId, timestamp** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.id, access.type, identityId, timestamp** (optional)
 
     try:
-        # List of Ignored Access Request Recommendations
+        # List Ignored Access Request Recommendations
         
         results =IAIAccessRequestRecommendationsApi(api_client).get_access_request_recommendations_ignored_items()
         # Below is a request that includes all optional parameters
@@ -434,7 +434,7 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## get-access-request-recommendations-requested-items
-List of Requested Access Request Recommendations
+List Accepted Access Request Recommendations
 This API returns a list of requested access request recommendations.
 
 [API Spec](https://developer.sailpoint.com/docs/api/beta/get-access-request-recommendations-requested-items)
@@ -482,10 +482,10 @@ with ApiClient(configuration) as api_client:
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
     filters = 'access.id eq \"2c9180846b0a0583016b299f210c1314\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **access.id**: *eq, in*  **access.type**: *eq, in*  **identityId**: *eq, in* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **access.id**: *eq, in*  **access.type**: *eq, in*  **identityId**: *eq, in* (optional)
-    sorters = 'sorters_example' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.id, access.type, identityId, timestamp** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.id, access.type, identityId, timestamp** (optional)
+    sorters = 'access.id' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.id, access.type, identityId, timestamp** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.id, access.type, identityId, timestamp** (optional)
 
     try:
-        # List of Requested Access Request Recommendations
+        # List Accepted Access Request Recommendations
         
         results =IAIAccessRequestRecommendationsApi(api_client).get_access_request_recommendations_requested_items()
         # Below is a request that includes all optional parameters
@@ -501,7 +501,7 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## get-access-request-recommendations-viewed-items
-List of Viewed Access Request Recommendations
+List Viewed Access Request Recommendations
 This API returns the list of viewed access request recommendations.
 
 [API Spec](https://developer.sailpoint.com/docs/api/beta/get-access-request-recommendations-viewed-items)
@@ -549,10 +549,10 @@ with ApiClient(configuration) as api_client:
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
     filters = 'access.id eq \"2c9180846b0a0583016b299f210c1314\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **access.id**: *eq, in*  **access.type**: *eq, in*  **identityId**: *eq, in* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **access.id**: *eq, in*  **access.type**: *eq, in*  **identityId**: *eq, in* (optional)
-    sorters = 'sorters_example' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.id, access.type, identityId, timestamp** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.id, access.type, identityId, timestamp** (optional)
+    sorters = 'access.id' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.id, access.type, identityId, timestamp** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.id, access.type, identityId, timestamp** (optional)
 
     try:
-        # List of Viewed Access Request Recommendations
+        # List Viewed Access Request Recommendations
         
         results =IAIAccessRequestRecommendationsApi(api_client).get_access_request_recommendations_viewed_items()
         # Below is a request that includes all optional parameters

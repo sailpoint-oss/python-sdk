@@ -33,21 +33,21 @@ jobs:
       - name: Sync files between folders
         run: |
           CURRENT_V3_CODE_EXAMPLES_PATH="python-sdk/sailpoint/v3/docs/Examples/python_code_examples_overlay.yaml"
-          NEW_V3_CODE_EXAMPLES_PATH="developer-community/static/code-examples/v3"
+          NEW_V3_CODE_EXAMPLES_PATH="developer-community/static/code-examples/v3/"
           CURRENT_V3_SPEC_PATH_METHODS="python-sdk/sailpoint/v3/docs/Methods"
           NEW_V3_API_SPEC_PATH_METHODS="developer-community/docs/tools/sdk/python/Reference/V3"
           CURRENT_V3_SPEC_PATH_MODELS="python-sdk/sailpoint/v3/docs/Models"
           NEW_V3_API_SPEC_PATH_MODELS="developer-community/docs/tools/sdk/python/Reference/V3"
 
           CURRENT_BETA_CODE_EXAMPLES_PATH="python-sdk/sailpoint/beta/docs/Examples/python_code_examples_overlay.yaml"
-          NEW_BETA_CODE_EXAMPLES_PATH="developer-community/static/code-examples/beta"
+          NEW_BETA_CODE_EXAMPLES_PATH="developer-community/static/code-examples/beta/"
           CURRENT_BETA_SPEC_PATH_METHODS="python-sdk/sailpoint/beta/docs/Methods"
           NEW_BETA_API_SPEC_PATH_METHODS="developer-community/docs/tools/sdk/python/Reference/Beta"
           CURRENT_BETA_SPEC_PATH_MODELS="python-sdk/sailpoint/beta/docs/Models"
           NEW_BETA_API_SPEC_PATH_MODELS="developer-community/docs/tools/sdk/python/Reference/Beta"
 
           CURRENT_V2024_CODE_EXAMPLES_PATH="python-sdk/sailpoint/v2024/docs/Examples/python_code_examples_overlay.yaml"
-          NEW_V2024_CODE_EXAMPLES_PATH="developer-community/static/code-examples/v2024"
+          NEW_V2024_CODE_EXAMPLES_PATH="developer-community/static/code-examples/v2024/"
           CURRENT_V2024_SPEC_PATH_METHODS="python-sdk/sailpoint/v2024/docs/Methods"
           NEW_V2024_API_SPEC_PATH_METHODS="developer-community/docs/tools/sdk/python/Reference/V2024"
           CURRENT_V2024_SPEC_PATH_MODELS="python-sdk/sailpoint/v2024/docs/Models"
@@ -59,9 +59,10 @@ jobs:
           rsync -cav --delete $CURRENT_V3_SPEC_PATH_MODELS $NEW_V3_API_SPEC_PATH_MODELS
           rsync -cav --delete $CURRENT_BETA_SPEC_PATH_MODELS $NEW_BETA_API_SPEC_PATH_MODELS
           rsync -cav --delete $CURRENT_V2024_SPEC_PATH_MODELS $NEW_V2024_API_SPEC_PATH_MODELS
-          rsync -cav --delete $CURRENT_V3_CODE_EXAMPLES_PATH $NEW_V3_CODE_EXAMPLES_PATH
-          rsync -cav --delete $CURRENT_BETA_CODE_EXAMPLES_PATH $NEW_BETA_CODE_EXAMPLES_PATH
-          rsync -cav --delete $CURRENT_V2024_CODE_EXAMPLES_PATH $NEW_V2024_CODE_EXAMPLES_PATH
+    
+          rsync -av $CURRENT_V3_CODE_EXAMPLES_PATH $NEW_V3_CODE_EXAMPLES_PATH
+          rsync -av $CURRENT_BETA_CODE_EXAMPLES_PATH $NEW_BETA_CODE_EXAMPLES_PATH
+          rsync -av $CURRENT_V2024_CODE_EXAMPLES_PATH $NEW_V2024_CODE_EXAMPLES_PATH
 
       - name: Check for changes and commit if any
         run: |

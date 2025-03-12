@@ -15,7 +15,7 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v2024*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get-recommendations**](#get-recommendations) | **POST** `/recommendations/request` | Returns a Recommendation Based on Object
+[**get-recommendations**](#get-recommendations) | **POST** `/recommendations/request` | Returns Recommendation Based on Object
 [**get-recommendations-config**](#get-recommendations-config) | **GET** `/recommendations/config` | Get certification recommendation config values
 [**update-recommendations-config**](#update-recommendations-config) | **PUT** `/recommendations/config` | Update certification recommendation config values
 
@@ -24,7 +24,7 @@ Method | HTTP request | Description
 :::warning experimental 
 This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
 :::
-Returns a Recommendation Based on Object
+Returns Recommendation Based on Object
 The getRecommendations API returns recommendations based on the requested object. The recommendations are invoked by IdentityIQ and IdentityNow plug-ins that retrieve recommendations based on the performed calculations.
 
 [API Spec](https://developer.sailpoint.com/docs/api/v2024/get-recommendations)
@@ -88,7 +88,7 @@ with ApiClient(configuration) as api_client:
         } # RecommendationRequestDto | 
 
     try:
-        # Returns a Recommendation Based on Object
+        # Returns Recommendation Based on Object
         new_recommendation_request_dto = RecommendationRequestDto()
         new_recommendation_request_dto.from_json(recommendation_request_dto)
         results =IAIRecommendationsApi(api_client).get_recommendations(x_sail_point_experimental, new_recommendation_request_dto)
@@ -129,6 +129,7 @@ Code | Description  | Data Type | Response headers |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response |  -  |
 500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
@@ -191,6 +192,7 @@ Code | Description  | Data Type | Response headers |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response |  -  |
 500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
