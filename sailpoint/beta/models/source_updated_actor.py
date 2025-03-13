@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -26,9 +26,9 @@ class SourceUpdatedActor(BaseModel):
     """
     Identity who updated the source.
     """ # noqa: E501
-    type: StrictStr = Field(description="DTO type of identity who updated the source.")
-    id: Optional[StrictStr] = Field(default=None, description="ID of identity who updated the source.")
-    name: StrictStr = Field(description="Display name of identity who updated the source.")
+    type: StrictStr = Field(description="DTO type of the identity who updated the source.")
+    id: StrictStr = Field(description="ID of the identity who updated the source.")
+    name: StrictStr = Field(description="Name of the identity who updated the source.")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')

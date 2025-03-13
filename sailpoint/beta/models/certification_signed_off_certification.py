@@ -29,25 +29,25 @@ from typing_extensions import Self
 
 class CertificationSignedOffCertification(BaseModel):
     """
-    The certification campaign that was signed off on.
+    Certification campaign that was signed off on.
     """ # noqa: E501
-    id: StrictStr = Field(description="Unique ID of the certification.")
-    name: StrictStr = Field(description="The name of the certification.")
-    created: datetime = Field(description="The date and time the certification was created.")
-    modified: Optional[datetime] = Field(default=None, description="The date and time the certification was last modified.")
+    id: StrictStr = Field(description="Certification's unique ID.")
+    name: StrictStr = Field(description="Certification's name.")
+    created: datetime = Field(description="Date and time when the certification was created.")
+    modified: Optional[datetime] = Field(default=None, description="Date and time when the certification was last modified.")
     campaign_ref: CampaignReference = Field(alias="campaignRef")
     phase: CertificationPhase
-    due: datetime = Field(description="The due date of the certification.")
-    signed: datetime = Field(description="The date the reviewer signed off on the certification.")
+    due: datetime = Field(description="Date and time when the certification is due.")
+    signed: datetime = Field(description="Date and time when the reviewer signed off on the certification.")
     reviewer: Reviewer
     reassignment: Optional[Reassignment] = None
-    has_errors: StrictBool = Field(description="Indicates it the certification has any errors.", alias="hasErrors")
-    error_message: Optional[StrictStr] = Field(default=None, description="A message indicating what the error is.", alias="errorMessage")
-    completed: StrictBool = Field(description="Indicates if all certification decisions have been made.")
-    decisions_made: StrictInt = Field(description="The number of approve/revoke/acknowledge decisions that have been made by the reviewer.", alias="decisionsMade")
-    decisions_total: StrictInt = Field(description="The total number of approve/revoke/acknowledge decisions for the certification.", alias="decisionsTotal")
-    entities_completed: StrictInt = Field(description="The number of entities (identities, access profiles, roles, etc.) for which all decisions have been made and are complete.", alias="entitiesCompleted")
-    entities_total: StrictInt = Field(description="The total number of entities (identities, access profiles, roles, etc.) in the certification, both complete and incomplete.", alias="entitiesTotal")
+    has_errors: StrictBool = Field(description="Indicates whether the certification has any errors.", alias="hasErrors")
+    error_message: Optional[StrictStr] = Field(default=None, description="Message indicating what the error is.", alias="errorMessage")
+    completed: StrictBool = Field(description="Indicates whether all certification decisions have been made.")
+    decisions_made: StrictInt = Field(description="Number of approve/revoke/acknowledge decisions the reviewer has made.", alias="decisionsMade")
+    decisions_total: StrictInt = Field(description="Total number of approve/revoke/acknowledge decisions for the certification.", alias="decisionsTotal")
+    entities_completed: StrictInt = Field(description="Number of entities (identities, access profiles, roles, etc.) that are complete and all decisions have been made for.", alias="entitiesCompleted")
+    entities_total: StrictInt = Field(description="Total number of entities (identities, access profiles, roles, etc.) in the certification, both complete and incomplete.", alias="entitiesTotal")
     __properties: ClassVar[List[str]] = ["campaignRef", "phase", "due", "signed", "reviewer", "reassignment", "hasErrors", "errorMessage", "completed", "decisionsMade", "decisionsTotal", "entitiesCompleted", "entitiesTotal"]
 
     model_config = ConfigDict(

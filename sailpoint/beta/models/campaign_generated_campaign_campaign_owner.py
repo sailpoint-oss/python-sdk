@@ -24,11 +24,11 @@ from typing_extensions import Self
 
 class CampaignGeneratedCampaignCampaignOwner(BaseModel):
     """
-    The identity that owns the campaign.
+    Identity who owns the campaign.
     """ # noqa: E501
-    id: StrictStr = Field(description="The unique ID of the identity.")
-    display_name: StrictStr = Field(description="The display name of the identity.", alias="displayName")
-    email: StrictStr = Field(description="The primary email address of the identity.")
+    id: StrictStr = Field(description="Identity's unique ID.")
+    display_name: StrictStr = Field(description="Identity's name.", alias="displayName")
+    email: StrictStr = Field(description="Identity's primary email address.")
     __properties: ClassVar[List[str]] = ["id", "displayName", "email"]
 
     model_config = ConfigDict(

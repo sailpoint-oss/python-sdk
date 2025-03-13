@@ -28,7 +28,7 @@ class ProvisioningCompletedRequester(BaseModel):
     """ # noqa: E501
     type: StrictStr = Field(description="Provisioning requester's DTO type.")
     id: StrictStr = Field(description="Provisioning requester's identity ID.")
-    name: StrictStr = Field(description="Provisioning owner's human-readable display name.")
+    name: StrictStr = Field(description="Provisioning requester's name.")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')

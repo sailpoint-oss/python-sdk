@@ -28,11 +28,11 @@ class SourceDeleted(BaseModel):
     """
     SourceDeleted
     """ # noqa: E501
-    id: StrictStr = Field(description="The unique ID of the source.")
-    name: StrictStr = Field(description="Human friendly name of the source.")
-    type: StrictStr = Field(description="The connection type.")
-    deleted: datetime = Field(description="The date and time the source was deleted.")
-    connector: StrictStr = Field(description="The connector type used to connect to the source.")
+    id: StrictStr = Field(description="Source's unique ID.")
+    name: StrictStr = Field(description="Source name.")
+    type: StrictStr = Field(description="Connection type.")
+    deleted: datetime = Field(description="Date and time when the source was deleted.")
+    connector: StrictStr = Field(description="Connector type used to connect to the source.")
     actor: SourceDeletedActor
     __properties: ClassVar[List[str]] = ["id", "name", "type", "deleted", "connector", "actor"]
 

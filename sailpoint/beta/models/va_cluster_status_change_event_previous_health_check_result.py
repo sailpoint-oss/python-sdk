@@ -24,11 +24,11 @@ from typing_extensions import Self
 
 class VAClusterStatusChangeEventPreviousHealthCheckResult(BaseModel):
     """
-    The results of the last health check.
+    Results of the last health check.
     """ # noqa: E501
-    message: StrictStr = Field(description="Detailed message of the result of the health check.")
-    result_type: StrictStr = Field(description="The type of the health check result.", alias="resultType")
-    status: Dict[str, Any] = Field(description="The status of the health check.")
+    message: StrictStr = Field(description="Detailed message of the health check result.")
+    result_type: StrictStr = Field(description="Health check result type.", alias="resultType")
+    status: StrictStr = Field(description="Health check status.")
     __properties: ClassVar[List[str]] = ["message", "resultType", "status"]
 
     @field_validator('status')

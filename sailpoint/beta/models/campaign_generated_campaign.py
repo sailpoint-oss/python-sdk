@@ -28,15 +28,15 @@ class CampaignGeneratedCampaign(BaseModel):
     """
     Details about the campaign that was generated.
     """ # noqa: E501
-    id: StrictStr = Field(description="The unique ID of the campaign.")
-    name: StrictStr = Field(description="Human friendly name of the campaign.")
-    description: StrictStr = Field(description="Extended description of the campaign.")
-    created: datetime = Field(description="The date and time the campaign was created.")
-    modified: Optional[StrictStr] = Field(default=None, description="The date and time the campaign was last modified.")
-    deadline: Optional[StrictStr] = Field(default=None, description="The date and time when the campaign must be finished by.")
-    type: Dict[str, Any] = Field(description="The type of campaign that was generated.")
+    id: StrictStr = Field(description="Campaign's unique ID.")
+    name: StrictStr = Field(description="Campaign's name.")
+    description: StrictStr = Field(description="Campaign's extended description.")
+    created: datetime = Field(description="Date and time when the campaign was created.")
+    modified: Optional[StrictStr] = Field(default=None, description="Date and time when the campaign was last modified.")
+    deadline: Optional[StrictStr] = Field(default=None, description="Date and time when the campaign must be finished.")
+    type: Dict[str, Any] = Field(description="Campaign's type.")
     campaign_owner: CampaignGeneratedCampaignCampaignOwner = Field(alias="campaignOwner")
-    status: Dict[str, Any] = Field(description="The current status of the campaign.")
+    status: Dict[str, Any] = Field(description="Campaign's current status.")
     __properties: ClassVar[List[str]] = ["id", "name", "description", "created", "modified", "deadline", "type", "campaignOwner", "status"]
 
     @field_validator('type')

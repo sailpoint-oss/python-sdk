@@ -24,11 +24,11 @@ from typing_extensions import Self
 
 class AccountAggregationCompletedSource(BaseModel):
     """
-    The source the accounts are being aggregated from.
+    Source ISC is aggregating accounts from.
     """ # noqa: E501
-    type: StrictStr = Field(description="The DTO type of the source the accounts are being aggregated from.")
-    id: StrictStr = Field(description="The ID of the source the accounts are being aggregated from.")
-    name: StrictStr = Field(description="Display name of the source the accounts are being aggregated from.")
+    type: StrictStr = Field(description="Source's DTO type.")
+    id: StrictStr = Field(description="Source's unique ID.")
+    name: StrictStr = Field(description="Source's name.")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')

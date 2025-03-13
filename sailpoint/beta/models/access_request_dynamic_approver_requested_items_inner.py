@@ -26,12 +26,12 @@ class AccessRequestDynamicApproverRequestedItemsInner(BaseModel):
     """
     AccessRequestDynamicApproverRequestedItemsInner
     """ # noqa: E501
-    id: StrictStr = Field(description="The unique ID of the access item.")
-    name: StrictStr = Field(description="Human friendly name of the access item.")
-    description: Optional[StrictStr] = Field(default=None, description="Extended description of the access item.")
-    type: Dict[str, Any] = Field(description="The type of access item being requested.")
-    operation: Dict[str, Any] = Field(description="Grant or revoke the access item")
-    comment: Optional[StrictStr] = Field(default=None, description="A comment from the requestor on why the access is needed.")
+    id: StrictStr = Field(description="Access item's unique identifier.")
+    name: StrictStr = Field(description="Access item's name.")
+    description: Optional[StrictStr] = Field(default=None, description="Access item's extended description.")
+    type: Dict[str, Any] = Field(description="Type of access item being requested.")
+    operation: Dict[str, Any] = Field(description="Action to perform on the requested access item.")
+    comment: Optional[StrictStr] = Field(default=None, description="Comment from the requester about why the access is necessary.")
     __properties: ClassVar[List[str]] = ["id", "name", "description", "type", "operation", "comment"]
 
     @field_validator('type')

@@ -26,9 +26,9 @@ class IdentityCreatedIdentity(BaseModel):
     """
     Created identity.
     """ # noqa: E501
-    type: StrictStr = Field(description="Created identity's DTO type.")
-    id: StrictStr = Field(description="Created identity ID.")
-    name: StrictStr = Field(description="Created identity's display name.")
+    type: StrictStr = Field(description="Identity's DTO type.")
+    id: StrictStr = Field(description="Identity's unique ID.")
+    name: StrictStr = Field(description="Identity's name.")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')

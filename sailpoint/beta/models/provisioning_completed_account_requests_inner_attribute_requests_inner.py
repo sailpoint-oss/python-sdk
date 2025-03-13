@@ -26,9 +26,9 @@ class ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner(BaseModel)
     """
     ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner
     """ # noqa: E501
-    attribute_name: StrictStr = Field(description="The name of the attribute being provisioned.", alias="attributeName")
-    attribute_value: Optional[StrictStr] = Field(default=None, description="The value of the attribute being provisioned.", alias="attributeValue")
-    operation: Dict[str, Any] = Field(description="The operation to handle the attribute.")
+    attribute_name: StrictStr = Field(description="Name of the attribute being provisioned.", alias="attributeName")
+    attribute_value: Optional[StrictStr] = Field(default=None, description="Value of the attribute being provisioned.", alias="attributeValue")
+    operation: StrictStr = Field(description="The operation to handle the attribute.")
     __properties: ClassVar[List[str]] = ["attributeName", "attributeValue", "operation"]
 
     @field_validator('operation')

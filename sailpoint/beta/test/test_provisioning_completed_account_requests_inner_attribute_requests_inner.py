@@ -36,13 +36,13 @@ class TestProvisioningCompletedAccountRequestsInnerAttributeRequestsInner(unitte
         if include_optional:
             return ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner(
                 attribute_name = 'memberOf',
-                attribute_value = 'CN=jedi,DC=starwars,DC=com',
-                operation = Add
+                attribute_value = 'CN=sales,DC=helpco,DC=com',
+                operation = 'Add'
             )
         else:
             return ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner(
                 attribute_name = 'memberOf',
-                operation = Add,
+                operation = 'Add',
         )
         """
 

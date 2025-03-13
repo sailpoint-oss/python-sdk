@@ -18,22 +18,25 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover(BaseModel):
+class AccessItemRequestedForDto1(BaseModel):
     """
-    The identity of the approver.
+    Identity whom the access item is requested for.
     """ # noqa: E501
-    type: Dict[str, Any] = Field(description="The type of object that is referenced")
-    id: StrictStr = Field(description="ID of identity who approved the access item request.")
-    name: StrictStr = Field(description="Human-readable display name of identity who approved the access item request.")
+    type: Optional[StrictStr] = Field(default=None, description="DTO type of the identity whom the access item is requested for.")
+    id: Optional[StrictStr] = Field(default=None, description="ID of the identity whom the access item is requested for.")
+    name: Optional[StrictStr] = Field(default=None, description="Name of the identity whom the access item is requested for.")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
+        if value is None:
+            return value
+
         if value not in set(['IDENTITY']):
             raise ValueError("must be one of enum values ('IDENTITY')")
         return value
@@ -56,7 +59,7 @@ class AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprove
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover from a JSON string"""
+        """Create an instance of AccessItemRequestedForDto1 from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -81,7 +84,7 @@ class AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprove
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover from a dict"""
+        """Create an instance of AccessItemRequestedForDto1 from a dict"""
         if obj is None:
             return None
 

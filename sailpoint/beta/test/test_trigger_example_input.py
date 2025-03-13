@@ -37,7 +37,7 @@ class TestTriggerExampleInput(unittest.TestCase):
             return TriggerExampleInput(
                 access_request_id = '2c91808b6ef1d43e016efba0ce470904',
                 requested_for = [
-                    sailpoint.beta.models.access_item_requested_for_dto.AccessItemRequestedForDto(
+                    sailpoint.beta.models.access_item_requested_for_dto_1.AccessItemRequestedForDto_1(
                         type = 'IDENTITY', 
                         id = '2c4180a46faadee4016fb4e018c20626', 
                         name = 'Robert Robinson', )
@@ -51,7 +51,7 @@ class TestTriggerExampleInput(unittest.TestCase):
                         operation = Add, 
                         comment = 'William needs this access to do his job.', )
                     ],
-                requested_by = sailpoint.beta.models.access_item_requester_dto.AccessItemRequesterDto(
+                requested_by = sailpoint.beta.models.access_item_requester_dto_1.AccessItemRequesterDto_1(
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20648', 
                     name = 'William Wilson', ),
@@ -66,11 +66,10 @@ class TestTriggerExampleInput(unittest.TestCase):
                         client_metadata = {applicationName=My application}, 
                         approval_info = [
                             sailpoint.beta.models.access_request_post_approval_requested_items_status_inner_approval_info_inner.AccessRequestPostApproval_requestedItemsStatus_inner_approvalInfo_inner(
-                                approval_comment = 'This access looks good.  Approved.', 
+                                approval_comment = 'This access looks good. Approved.', 
                                 approval_decision = APPROVED, 
                                 approver_name = 'Stephen.Austin', 
-                                approver = sailpoint.beta.models.access_request_post_approval_requested_items_status_inner_approval_info_inner_approver.AccessRequestPostApproval_requestedItemsStatus_inner_approvalInfo_inner_approver(
-                                    type = IDENTITY, ), )
+                                approver = null, )
                             ], )
                     ],
                 source = sailpoint.beta.models.account_uncorrelated_source.AccountUncorrelated_source(
@@ -120,8 +119,8 @@ class TestTriggerExampleInput(unittest.TestCase):
                     type = MANAGER, 
                     campaign_owner = sailpoint.beta.models.campaign_generated_campaign_campaign_owner.CampaignGenerated_campaign_campaignOwner(
                         id = '37f080867702c1910177031320c40n27', 
-                        display_name = 'John Snow', 
-                        email = 'john.snow@example.com', ), 
+                        display_name = 'Albert Albertson', 
+                        email = 'albert.albertson@example.com', ), 
                     status = STAGED, ),
                 certification = sailpoint.beta.models.certification_signed_off_certification.CertificationSignedOff_certification(
                     id = '2c91808576f886190176f88caf0d0067', 
@@ -145,7 +144,7 @@ class TestTriggerExampleInput(unittest.TestCase):
                             id = '4e4d982dddff4267ab12f0f1e72b5a6d', 
                             type = 'SOURCE', 
                             name = 'Corporate Active Directory', ), 
-                        account_id = 'CN=Chewy.Bacca,ou=hardcorefigter,ou=wookies,dc=starwars,dc=com', 
+                        account_id = 'CN=Rob.Robertson,ou=csm,ou=sales,dc=helpco,dc=com', 
                         account_operation = 'Modify', 
                         provisioning_result = SUCCESS, 
                         provisioning_target = 'Corp AD', 
@@ -153,8 +152,8 @@ class TestTriggerExampleInput(unittest.TestCase):
                         attribute_requests = [
                             sailpoint.beta.models.provisioning_completed_account_requests_inner_attribute_requests_inner.ProvisioningCompleted_accountRequests_inner_attributeRequests_inner(
                                 attribute_name = 'memberOf', 
-                                attribute_value = 'CN=jedi,DC=starwars,DC=com', 
-                                operation = Add, )
+                                attribute_value = 'CN=sales,DC=helpco,DC=com', 
+                                operation = 'Add', )
                             ], )
                     ],
                 file_name = 'Modified.zip',
@@ -189,7 +188,7 @@ class TestTriggerExampleInput(unittest.TestCase):
                 source_name = 'Active Directory',
                 identity_id = 'ee769173319b41d19ccec6c235423237b',
                 identity_name = 'john.doe',
-                name = 'Corporate Active Directory',
+                name = 'Test source',
                 type = 'DIRECT_CONNECT',
                 created = '2020-06-29T22:01:50.474Z',
                 connector = 'active-directory',
@@ -206,17 +205,17 @@ class TestTriggerExampleInput(unittest.TestCase):
                 health_check_result = sailpoint.beta.models.va_cluster_status_change_event_health_check_result.VAClusterStatusChangeEvent_healthCheckResult(
                     message = 'Test Connection failed with exception. Error message - java.lang Exception', 
                     result_type = 'SOURCE_STATE_ERROR_CLUSTER', 
-                    status = Succeeded, ),
+                    status = 'Succeeded', ),
                 previous_health_check_result = sailpoint.beta.models.va_cluster_status_change_event_previous_health_check_result.VAClusterStatusChangeEvent_previousHealthCheckResult(
                     message = 'Test Connection failed with exception. Error message - java.lang Exception', 
                     result_type = 'SOURCE_STATE_ERROR_CLUSTER', 
-                    status = Failed, )
+                    status = 'Failed', )
             )
         else:
             return TriggerExampleInput(
                 access_request_id = '2c91808b6ef1d43e016efba0ce470904',
                 requested_for = [
-                    sailpoint.beta.models.access_item_requested_for_dto.AccessItemRequestedForDto(
+                    sailpoint.beta.models.access_item_requested_for_dto_1.AccessItemRequestedForDto_1(
                         type = 'IDENTITY', 
                         id = '2c4180a46faadee4016fb4e018c20626', 
                         name = 'Robert Robinson', )
@@ -230,7 +229,7 @@ class TestTriggerExampleInput(unittest.TestCase):
                         operation = Add, 
                         comment = 'William needs this access to do his job.', )
                     ],
-                requested_by = sailpoint.beta.models.access_item_requester_dto.AccessItemRequesterDto(
+                requested_by = sailpoint.beta.models.access_item_requester_dto_1.AccessItemRequesterDto_1(
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20648', 
                     name = 'William Wilson', ),
@@ -245,11 +244,10 @@ class TestTriggerExampleInput(unittest.TestCase):
                         client_metadata = {applicationName=My application}, 
                         approval_info = [
                             sailpoint.beta.models.access_request_post_approval_requested_items_status_inner_approval_info_inner.AccessRequestPostApproval_requestedItemsStatus_inner_approvalInfo_inner(
-                                approval_comment = 'This access looks good.  Approved.', 
+                                approval_comment = 'This access looks good. Approved.', 
                                 approval_decision = APPROVED, 
                                 approver_name = 'Stephen.Austin', 
-                                approver = sailpoint.beta.models.access_request_post_approval_requested_items_status_inner_approval_info_inner_approver.AccessRequestPostApproval_requestedItemsStatus_inner_approvalInfo_inner_approver(
-                                    type = IDENTITY, ), )
+                                approver = null, )
                             ], )
                     ],
                 source = sailpoint.beta.models.account_uncorrelated_source.AccountUncorrelated_source(
@@ -298,8 +296,8 @@ class TestTriggerExampleInput(unittest.TestCase):
                     type = MANAGER, 
                     campaign_owner = sailpoint.beta.models.campaign_generated_campaign_campaign_owner.CampaignGenerated_campaign_campaignOwner(
                         id = '37f080867702c1910177031320c40n27', 
-                        display_name = 'John Snow', 
-                        email = 'john.snow@example.com', ), 
+                        display_name = 'Albert Albertson', 
+                        email = 'albert.albertson@example.com', ), 
                     status = STAGED, ),
                 certification = sailpoint.beta.models.certification_signed_off_certification.CertificationSignedOff_certification(
                     id = '2c91808576f886190176f88caf0d0067', 
@@ -318,7 +316,7 @@ class TestTriggerExampleInput(unittest.TestCase):
                             id = '4e4d982dddff4267ab12f0f1e72b5a6d', 
                             type = 'SOURCE', 
                             name = 'Corporate Active Directory', ), 
-                        account_id = 'CN=Chewy.Bacca,ou=hardcorefigter,ou=wookies,dc=starwars,dc=com', 
+                        account_id = 'CN=Rob.Robertson,ou=csm,ou=sales,dc=helpco,dc=com', 
                         account_operation = 'Modify', 
                         provisioning_result = SUCCESS, 
                         provisioning_target = 'Corp AD', 
@@ -326,8 +324,8 @@ class TestTriggerExampleInput(unittest.TestCase):
                         attribute_requests = [
                             sailpoint.beta.models.provisioning_completed_account_requests_inner_attribute_requests_inner.ProvisioningCompleted_accountRequests_inner_attributeRequests_inner(
                                 attribute_name = 'memberOf', 
-                                attribute_value = 'CN=jedi,DC=starwars,DC=com', 
-                                operation = Add, )
+                                attribute_value = 'CN=sales,DC=helpco,DC=com', 
+                                operation = 'Add', )
                             ], )
                     ],
                 file_name = 'Modified.zip',
@@ -355,13 +353,14 @@ class TestTriggerExampleInput(unittest.TestCase):
                             []
                             ], ), ),
                 signed_s3_url = 'https://sptcbu-org-data-useast1.s3.amazonaws.com/arsenal-john/reports/Events%20Export.2020-05-06%2018%2759%20GMT.3e580592-86e4-4953-8aea-49e6ef20a086.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200506T185919Z&X-Amz-SignedHeaders=host&X-Amz-Expires=899&X-Amz-Credential=AKIAV5E54XOGTS4Q4L7A%2F20200506%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=2e732bb97a12a1fd8a215613e3c31fcdae8ba1fb6a25916843ab5b51d2ddefbc',
+                uuid = 'b7264868-7201-415f-9118-b581d431c688',
                 id = '2c9180866166b5b0016167c32ef31a66',
                 native_identifier = 'E009',
                 source_id = '2c918082814e693601816e09471b29b6',
                 source_name = 'Active Directory',
                 identity_id = 'ee769173319b41d19ccec6c235423237b',
                 identity_name = 'john.doe',
-                name = 'Corporate Active Directory',
+                name = 'Test source',
                 type = 'DIRECT_CONNECT',
                 created = '2020-06-29T22:01:50.474Z',
                 connector = 'active-directory',
@@ -378,11 +377,11 @@ class TestTriggerExampleInput(unittest.TestCase):
                 health_check_result = sailpoint.beta.models.va_cluster_status_change_event_health_check_result.VAClusterStatusChangeEvent_healthCheckResult(
                     message = 'Test Connection failed with exception. Error message - java.lang Exception', 
                     result_type = 'SOURCE_STATE_ERROR_CLUSTER', 
-                    status = Succeeded, ),
+                    status = 'Succeeded', ),
                 previous_health_check_result = sailpoint.beta.models.va_cluster_status_change_event_previous_health_check_result.VAClusterStatusChangeEvent_previousHealthCheckResult(
                     message = 'Test Connection failed with exception. Error message - java.lang Exception', 
                     result_type = 'SOURCE_STATE_ERROR_CLUSTER', 
-                    status = Failed, ),
+                    status = 'Failed', ),
         )
         """
 

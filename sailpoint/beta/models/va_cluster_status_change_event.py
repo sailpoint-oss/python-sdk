@@ -30,8 +30,8 @@ class VAClusterStatusChangeEvent(BaseModel):
     """
     VAClusterStatusChangeEvent
     """ # noqa: E501
-    created: datetime = Field(description="The date and time the status change occurred.")
-    type: Dict[str, Any] = Field(description="The type of the object that initiated this event.")
+    created: datetime = Field(description="Date and time when the status change occurred.")
+    type: Dict[str, Any] = Field(description="Type of the object that initiated the event.")
     application: VAClusterStatusChangeEventApplication
     health_check_result: VAClusterStatusChangeEventHealthCheckResult = Field(alias="healthCheckResult")
     previous_health_check_result: VAClusterStatusChangeEventPreviousHealthCheckResult = Field(alias="previousHealthCheckResult")

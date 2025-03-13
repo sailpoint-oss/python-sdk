@@ -42,6 +42,7 @@ class TestSourceUpdatedActor(unittest.TestCase):
         else:
             return SourceUpdatedActor(
                 type = 'IDENTITY',
+                id = '2c7180a46faadee4016fb4e018c20648',
                 name = 'William Wilson',
         )
         """

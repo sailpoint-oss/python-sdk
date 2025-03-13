@@ -28,15 +28,15 @@ class CampaignEndedCampaign(BaseModel):
     """
     Details about the certification campaign that ended.
     """ # noqa: E501
-    id: StrictStr = Field(description="Unique ID for the campaign.")
-    name: StrictStr = Field(description="The human friendly name of the campaign.")
-    description: StrictStr = Field(description="Extended description of the campaign.")
-    created: datetime = Field(description="The date and time the campaign was created.")
-    modified: Optional[datetime] = Field(default=None, description="The date and time the campaign was last modified.")
-    deadline: datetime = Field(description="The date and time the campaign is due.")
-    type: Dict[str, Any] = Field(description="The type of campaign.")
+    id: StrictStr = Field(description="Campaign's unique ID for the campaign.")
+    name: StrictStr = Field(description="Campaign's unique ID.")
+    description: StrictStr = Field(description="Campaign's extended description.")
+    created: datetime = Field(description="Date and time when the campaign was created.")
+    modified: Optional[datetime] = Field(default=None, description="Date and time when the campaign was last modified.")
+    deadline: datetime = Field(description="Date and time when the campaign is due.")
+    type: Dict[str, Any] = Field(description="Campaign's type.")
     campaign_owner: CampaignActivatedCampaignCampaignOwner = Field(alias="campaignOwner")
-    status: Dict[str, Any] = Field(description="The current status of the campaign.")
+    status: Dict[str, Any] = Field(description="Campaign's current status.")
     __properties: ClassVar[List[str]] = ["id", "name", "description", "created", "modified", "deadline", "type", "campaignOwner", "status"]
 
     @field_validator('type')

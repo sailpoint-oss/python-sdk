@@ -26,7 +26,7 @@ IDENTITYATTRIBUTESCHANGEDCHANGESINNEROLDVALUE_ONE_OF_SCHEMAS = ["Dict[str, Ident
 
 class IdentityAttributesChangedChangesInnerOldValue(BaseModel):
     """
-    The value of the identity attribute before it changed.
+    Identity attribute's previous value before the change.
     """
     # data type: str
     oneof_schema_1_validator: Optional[StrictStr] = None

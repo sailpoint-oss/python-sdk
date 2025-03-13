@@ -27,7 +27,7 @@ from typing_extensions import Self
 
 class SavedSearchCompleteSearchResults(BaseModel):
     """
-    A preview of the search results for each object type. This includes a count as well as headers, and the first several rows of data, per object type.
+    Preview of the search results for each object type. This includes a count as well as headers and the first several rows of data, per object type.
     """ # noqa: E501
     account: Optional[SavedSearchCompleteSearchResultsAccount] = Field(default=None, alias="Account")
     entitlement: Optional[SavedSearchCompleteSearchResultsEntitlement] = Field(default=None, alias="Entitlement")

@@ -36,14 +36,14 @@ class TestCampaignGeneratedCampaignCampaignOwner(unittest.TestCase):
         if include_optional:
             return CampaignGeneratedCampaignCampaignOwner(
                 id = '37f080867702c1910177031320c40n27',
-                display_name = 'John Snow',
-                email = 'john.snow@example.com'
+                display_name = 'Albert Albertson',
+                email = 'albert.albertson@example.com'
             )
         else:
             return CampaignGeneratedCampaignCampaignOwner(
                 id = '37f080867702c1910177031320c40n27',
-                display_name = 'John Snow',
-                email = 'john.snow@example.com',
+                display_name = 'Albert Albertson',
+                email = 'albert.albertson@example.com',
         )
         """
 

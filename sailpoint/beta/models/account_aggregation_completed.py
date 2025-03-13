@@ -30,11 +30,11 @@ class AccountAggregationCompleted(BaseModel):
     AccountAggregationCompleted
     """ # noqa: E501
     source: AccountAggregationCompletedSource
-    status: Dict[str, Any] = Field(description="The overall status of the aggregation.")
-    started: datetime = Field(description="The date and time when the account aggregation started.")
-    completed: datetime = Field(description="The date and time when the account aggregation finished.")
-    errors: Optional[List[StrictStr]] = Field(description="A list of errors that occurred during the aggregation.")
-    warnings: Optional[List[StrictStr]] = Field(description="A list of warnings that occurred during the aggregation.")
+    status: Dict[str, Any] = Field(description="Aggregation's overall status.")
+    started: datetime = Field(description="Date and time when the account aggregation started.")
+    completed: datetime = Field(description="Date and time when the account aggregation finished.")
+    errors: Optional[List[StrictStr]] = Field(description="List of errors that occurred during the aggregation.")
+    warnings: Optional[List[StrictStr]] = Field(description="List of warnings that occurred during the aggregation.")
     stats: AccountAggregationCompletedStats
     __properties: ClassVar[List[str]] = ["source", "status", "started", "completed", "errors", "warnings", "stats"]
 

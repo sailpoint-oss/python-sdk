@@ -28,7 +28,7 @@ class IdentityAttributesChangedIdentity(BaseModel):
     """ # noqa: E501
     type: StrictStr = Field(description="DTO type of identity whose attributes changed.")
     id: StrictStr = Field(description="ID of identity whose attributes changed.")
-    name: StrictStr = Field(description="Display name of identity whose attributes changed.")
+    name: StrictStr = Field(description="Name of identity whose attributes changed.")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')

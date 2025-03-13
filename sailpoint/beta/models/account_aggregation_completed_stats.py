@@ -27,11 +27,11 @@ class AccountAggregationCompletedStats(BaseModel):
     """
     Overall statistics about the account aggregation.
     """ # noqa: E501
-    scanned: Annotated[int, Field(le=2147483647, strict=True, ge=0)] = Field(description="The number of accounts which were scanned / iterated over.")
-    unchanged: Annotated[int, Field(le=2147483647, strict=True, ge=0)] = Field(description="The number of accounts which existed before, but had no changes.")
-    changed: Annotated[int, Field(le=2147483647, strict=True, ge=0)] = Field(description="The number of accounts which existed before, but had changes.")
-    added: Annotated[int, Field(le=2147483647, strict=True, ge=0)] = Field(description="The number of accounts which are new - have not existed before.")
-    removed: Annotated[int, Field(le=2147483647, strict=True, ge=0)] = Field(description="The number accounts which existed before, but no longer exist (thus getting removed).")
+    scanned: Annotated[int, Field(le=2147483647, strict=True, ge=0)] = Field(description="Number of accounts scanned/iterated over.")
+    unchanged: Annotated[int, Field(le=2147483647, strict=True, ge=0)] = Field(description="Number of accounts that existed before but had no changes.")
+    changed: Annotated[int, Field(le=2147483647, strict=True, ge=0)] = Field(description="Number of accounts that existed before but had changes.")
+    added: Annotated[int, Field(le=2147483647, strict=True, ge=0)] = Field(description="Number of accounts that are new and didn't previously exist.")
+    removed: Annotated[int, Field(le=2147483647, strict=True, ge=0)] = Field(description="Number accounts that existed before but were removed and no longer exist.")
     __properties: ClassVar[List[str]] = ["scanned", "unchanged", "changed", "added", "removed"]
 
     model_config = ConfigDict(

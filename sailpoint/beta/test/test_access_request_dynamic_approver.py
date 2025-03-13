@@ -37,7 +37,7 @@ class TestAccessRequestDynamicApprover(unittest.TestCase):
             return AccessRequestDynamicApprover(
                 access_request_id = '4b4d982dddff4267ab12f0f1e72b5a6d',
                 requested_for = [
-                    sailpoint.beta.models.access_item_requested_for_dto.AccessItemRequestedForDto(
+                    sailpoint.beta.models.access_item_requested_for_dto_1.AccessItemRequestedForDto_1(
                         type = 'IDENTITY', 
                         id = '2c4180a46faadee4016fb4e018c20626', 
                         name = 'Robert Robinson', )
@@ -51,7 +51,7 @@ class TestAccessRequestDynamicApprover(unittest.TestCase):
                         operation = Add, 
                         comment = 'William needs this access for his day to day job activities.', )
                     ],
-                requested_by = sailpoint.beta.models.access_item_requester_dto.AccessItemRequesterDto(
+                requested_by = sailpoint.beta.models.access_item_requester_dto_1.AccessItemRequesterDto_1(
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20648', 
                     name = 'William Wilson', )
@@ -60,7 +60,7 @@ class TestAccessRequestDynamicApprover(unittest.TestCase):
             return AccessRequestDynamicApprover(
                 access_request_id = '4b4d982dddff4267ab12f0f1e72b5a6d',
                 requested_for = [
-                    sailpoint.beta.models.access_item_requested_for_dto.AccessItemRequestedForDto(
+                    sailpoint.beta.models.access_item_requested_for_dto_1.AccessItemRequestedForDto_1(
                         type = 'IDENTITY', 
                         id = '2c4180a46faadee4016fb4e018c20626', 
                         name = 'Robert Robinson', )
@@ -74,7 +74,7 @@ class TestAccessRequestDynamicApprover(unittest.TestCase):
                         operation = Add, 
                         comment = 'William needs this access for his day to day job activities.', )
                     ],
-                requested_by = sailpoint.beta.models.access_item_requester_dto.AccessItemRequesterDto(
+                requested_by = sailpoint.beta.models.access_item_requester_dto_1.AccessItemRequesterDto_1(
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20648', 
                     name = 'William Wilson', ),

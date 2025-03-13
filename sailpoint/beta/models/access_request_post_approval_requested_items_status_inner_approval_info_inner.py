@@ -19,7 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.beta.models.access_request_post_approval_requested_items_status_inner_approval_info_inner_approver import AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover
+from sailpoint.beta.models.access_item_approver_dto import AccessItemApproverDto
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,10 +27,10 @@ class AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner(BaseMo
     """
     AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner
     """ # noqa: E501
-    approval_comment: Optional[StrictStr] = Field(default=None, description="A comment left by the approver.", alias="approvalComment")
-    approval_decision: Dict[str, Any] = Field(description="The final decision of the approver.", alias="approvalDecision")
-    approver_name: StrictStr = Field(description="The name of the approver", alias="approverName")
-    approver: AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover
+    approval_comment: Optional[StrictStr] = Field(default=None, description="Approver's comment.", alias="approvalComment")
+    approval_decision: Dict[str, Any] = Field(description="Approver's final decision.", alias="approvalDecision")
+    approver_name: StrictStr = Field(description="Approver's name.", alias="approverName")
+    approver: AccessItemApproverDto = Field(description="Approver's identity.")
     __properties: ClassVar[List[str]] = ["approvalComment", "approvalDecision", "approverName", "approver"]
 
     @field_validator('approval_decision')
@@ -102,7 +102,7 @@ class AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner(BaseMo
             "approvalComment": obj.get("approvalComment"),
             "approvalDecision": obj.get("approvalDecision"),
             "approverName": obj.get("approverName"),
-            "approver": AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover.from_dict(obj["approver"]) if obj.get("approver") is not None else None
+            "approver": AccessItemApproverDto.from_dict(obj["approver"]) if obj.get("approver") is not None else None
         })
         return _obj
 

@@ -24,12 +24,12 @@ from typing_extensions import Self
 
 class Reviewer(BaseModel):
     """
-    Details of the reviewer for certification.
+    Details of the reviewer for a certification.
     """ # noqa: E501
-    type: StrictStr = Field(description="The reviewer's DTO type.")
-    id: StrictStr = Field(description="The reviewer's ID.")
-    name: StrictStr = Field(description="The reviewer's display name.")
-    email: Optional[StrictStr] = Field(default=None, description="The reviewing identity's email. Only applicable to `IDENTITY`.")
+    type: StrictStr = Field(description="Reviewer's DTO type.")
+    id: StrictStr = Field(description="Reviewer's ID.")
+    name: StrictStr = Field(description="Reviewer's display name.")
+    email: Optional[StrictStr] = Field(default=None, description="Reviewing identity's email. This is only applicable to reviewers of the `IDENTITY` type.")
     __properties: ClassVar[List[str]] = ["type", "id", "name", "email"]
 
     @field_validator('type')

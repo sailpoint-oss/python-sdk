@@ -28,11 +28,11 @@ class SourceUpdated(BaseModel):
     """
     SourceUpdated
     """ # noqa: E501
-    id: StrictStr = Field(description="The unique ID of the source.")
-    name: StrictStr = Field(description="The user friendly name of the source.")
-    type: StrictStr = Field(description="The connection type of the source.")
-    modified: datetime = Field(description="The date and time the source was modified.")
-    connector: StrictStr = Field(description="The connector type used to connect to the source.")
+    id: StrictStr = Field(description="Source's unique ID.")
+    name: StrictStr = Field(description="Source name.")
+    type: StrictStr = Field(description="Connection type.")
+    modified: datetime = Field(description="Date and time when the source was modified.")
+    connector: StrictStr = Field(description="Connector type used to connect to the source.")
     actor: SourceUpdatedActor
     __properties: ClassVar[List[str]] = ["id", "name", "type", "modified", "connector", "actor"]
 

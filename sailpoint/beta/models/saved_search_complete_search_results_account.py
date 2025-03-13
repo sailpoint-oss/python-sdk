@@ -24,11 +24,11 @@ from typing_extensions import Self
 
 class SavedSearchCompleteSearchResultsAccount(BaseModel):
     """
-    A table of accounts that match the search criteria.
+    Table of accounts matching the search criteria.
     """ # noqa: E501
-    count: StrictStr = Field(description="The number of rows in the table.")
-    noun: StrictStr = Field(description="The type of object represented in the table.")
-    preview: List[List[StrictStr]] = Field(description="A sample of the data in the table.")
+    count: StrictStr = Field(description="Number of rows in the table.")
+    noun: StrictStr = Field(description="Type of object represented in the table.")
+    preview: List[List[StrictStr]] = Field(description="Sample of table data.")
     __properties: ClassVar[List[str]] = ["count", "noun", "preview"]
 
     model_config = ConfigDict(

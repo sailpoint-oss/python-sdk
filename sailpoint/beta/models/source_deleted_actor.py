@@ -26,9 +26,9 @@ class SourceDeletedActor(BaseModel):
     """
     Identity who deleted the source.
     """ # noqa: E501
-    type: StrictStr = Field(description="DTO type of identity who deleted the source.")
-    id: StrictStr = Field(description="ID of identity who deleted the source.")
-    name: StrictStr = Field(description="Display name of identity who deleted the source.")
+    type: StrictStr = Field(description="DTO type of the identity who deleted the source.")
+    id: StrictStr = Field(description="ID of the identity who deleted the source.")
+    name: StrictStr = Field(description="Name of the identity who deleted the source.")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')

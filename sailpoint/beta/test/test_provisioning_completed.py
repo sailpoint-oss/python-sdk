@@ -58,7 +58,7 @@ class TestProvisioningCompleted(unittest.TestCase):
                             id = '4e4d982dddff4267ab12f0f1e72b5a6d', 
                             type = 'SOURCE', 
                             name = 'Corporate Active Directory', ), 
-                        account_id = 'CN=Chewy.Bacca,ou=hardcorefigter,ou=wookies,dc=starwars,dc=com', 
+                        account_id = 'CN=Rob.Robertson,ou=csm,ou=sales,dc=helpco,dc=com', 
                         account_operation = 'Modify', 
                         provisioning_result = SUCCESS, 
                         provisioning_target = 'Corp AD', 
@@ -66,8 +66,8 @@ class TestProvisioningCompleted(unittest.TestCase):
                         attribute_requests = [
                             sailpoint.beta.models.provisioning_completed_account_requests_inner_attribute_requests_inner.ProvisioningCompleted_accountRequests_inner_attributeRequests_inner(
                                 attribute_name = 'memberOf', 
-                                attribute_value = 'CN=jedi,DC=starwars,DC=com', 
-                                operation = Add, )
+                                attribute_value = 'CN=sales,DC=helpco,DC=com', 
+                                operation = 'Add', )
                             ], )
                     ]
             )
@@ -85,7 +85,7 @@ class TestProvisioningCompleted(unittest.TestCase):
                             id = '4e4d982dddff4267ab12f0f1e72b5a6d', 
                             type = 'SOURCE', 
                             name = 'Corporate Active Directory', ), 
-                        account_id = 'CN=Chewy.Bacca,ou=hardcorefigter,ou=wookies,dc=starwars,dc=com', 
+                        account_id = 'CN=Rob.Robertson,ou=csm,ou=sales,dc=helpco,dc=com', 
                         account_operation = 'Modify', 
                         provisioning_result = SUCCESS, 
                         provisioning_target = 'Corp AD', 
@@ -93,8 +93,8 @@ class TestProvisioningCompleted(unittest.TestCase):
                         attribute_requests = [
                             sailpoint.beta.models.provisioning_completed_account_requests_inner_attribute_requests_inner.ProvisioningCompleted_accountRequests_inner_attributeRequests_inner(
                                 attribute_name = 'memberOf', 
-                                attribute_value = 'CN=jedi,DC=starwars,DC=com', 
-                                operation = Add, )
+                                attribute_value = 'CN=sales,DC=helpco,DC=com', 
+                                operation = 'Add', )
                             ], )
                     ],
         )

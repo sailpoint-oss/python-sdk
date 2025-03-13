@@ -29,14 +29,14 @@ class ProvisioningCompleted(BaseModel):
     """
     ProvisioningCompleted
     """ # noqa: E501
-    tracking_number: StrictStr = Field(description="The reference number of the provisioning request. Useful for tracking status in the Account Activity search interface.", alias="trackingNumber")
-    sources: StrictStr = Field(description="One or more sources that the provisioning transaction(s) were done against.  Sources are comma separated.")
-    action: Optional[StrictStr] = Field(default=None, description="Origin of where the provisioning request came from.")
-    errors: Optional[List[StrictStr]] = Field(default=None, description="A list of any accumulated error messages that occurred during provisioning.")
-    warnings: Optional[List[StrictStr]] = Field(default=None, description="A list of any accumulated warning messages that occurred during provisioning.")
+    tracking_number: StrictStr = Field(description="Provisioning request's reference number. Useful for tracking status in the 'Account Activity' search interface.", alias="trackingNumber")
+    sources: StrictStr = Field(description="Sources the provisioning transactions were performed on. Sources are comma separated.")
+    action: Optional[StrictStr] = Field(default=None, description="Origin of the provisioning request.")
+    errors: Optional[List[StrictStr]] = Field(default=None, description="List of any accumulated error messages that occurred during provisioning.")
+    warnings: Optional[List[StrictStr]] = Field(default=None, description="List of any accumulated warning messages that occurred during provisioning.")
     recipient: ProvisioningCompletedRecipient
     requester: Optional[ProvisioningCompletedRequester] = None
-    account_requests: List[ProvisioningCompletedAccountRequestsInner] = Field(description="A list of provisioning instructions to perform on an account-by-account basis.", alias="accountRequests")
+    account_requests: List[ProvisioningCompletedAccountRequestsInner] = Field(description="List of provisioning instructions to perform on an account-by-account basis.", alias="accountRequests")
     __properties: ClassVar[List[str]] = ["trackingNumber", "sources", "action", "errors", "warnings", "recipient", "requester", "accountRequests"]
 
     model_config = ConfigDict(

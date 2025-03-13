@@ -46,6 +46,7 @@ class TestSourceAccountUpdated(unittest.TestCase):
             )
         else:
             return SourceAccountUpdated(
+                uuid = 'b7264868-7201-415f-9118-b581d431c688',
                 id = 'ee769173319b41d19ccec35ba52f237b',
                 native_identifier = 'E009',
                 source_id = '2c918082814e693601816e09471b29b6',

@@ -1,0 +1,847 @@
+- path: /campaigns/{id}/complete
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/certification-campaigns#complete-campaign
+      source: |
+        from sailpoint.v3.api.certification_campaigns_api import CertificationCampaignsApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.campaign_complete_options import CampaignCompleteOptions
+        from pprint import pprint
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+        id = 'ef38f94347e94562b5bb8424a56397d8' # str | Campaign ID. # str | Campaign ID.
+        campaign_complete_options = '''{
+          "autoCompleteAction" : "REVOKE"
+        }''' # CampaignCompleteOptions | Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE (optional)
+        try:
+            # Complete a Campaign
+            
+            results = CertificationCampaignsApi(api_client).complete_campaign(id=id)
+            # Below is a request that includes all optional parameters
+            # results = CertificationCampaignsApi(api_client).complete_campaign(id, new_campaign_complete_options)
+            print("The response of CertificationCampaignsApi->complete_campaign:\n")
+            pprint(results)
+        except Exception as e:
+            print("Exception when calling CertificationCampaignsApi->complete_campaign: %s\n" % e)
+- path: /campaigns
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/certification-campaigns#create-campaign
+      source: |
+        from sailpoint.v3.api.certification_campaigns_api import CertificationCampaignsApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.campaign import Campaign
+        from pprint import pprint
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+        campaign = '''{
+          "totalCertifications" : 100,
+          "sourcesWithOrphanEntitlements" : [ {
+            "name" : "Source with orphan entitlements",
+            "id" : "2c90ad2a70ace7d50170acf22ca90010",
+            "type" : "SOURCE"
+          }, {
+            "name" : "Source with orphan entitlements",
+            "id" : "2c90ad2a70ace7d50170acf22ca90010",
+            "type" : "SOURCE"
+          } ],
+          "recommendationsEnabled" : true,
+          "sunsetCommentsRequired" : true,
+          "created" : "2020-03-03T22:15:13.611Z",
+          "machineAccountCampaignInfo" : {
+            "reviewerType" : "ACCOUNT_OWNER",
+            "sourceIds" : [ "0fbe863c063c4c88a35fd7f17e8a3df5" ]
+          },
+          "description" : "Everyone needs to be reviewed by their manager",
+          "type" : "MANAGER",
+          "sourceOwnerCampaignInfo" : {
+            "sourceIds" : [ "0fbe863c063c4c88a35fd7f17e8a3df5" ]
+          },
+          "emailNotificationEnabled" : false,
+          "alerts" : [ {
+            "level" : "ERROR",
+            "localizations" : [ {
+              "localeOrigin" : "DEFAULT",
+              "text" : "The request was syntactically correct but its content is semantically invalid.",
+              "locale" : "en-US"
+            }, {
+              "localeOrigin" : "DEFAULT",
+              "text" : "The request was syntactically correct but its content is semantically invalid.",
+              "locale" : "en-US"
+            } ]
+          }, {
+            "level" : "ERROR",
+            "localizations" : [ {
+              "localeOrigin" : "DEFAULT",
+              "text" : "The request was syntactically correct but its content is semantically invalid.",
+              "locale" : "en-US"
+            }, {
+              "localeOrigin" : "DEFAULT",
+              "text" : "The request was syntactically correct but its content is semantically invalid.",
+              "locale" : "en-US"
+            } ]
+          } ],
+          "filter" : {
+            "name" : "Test Filter",
+            "id" : "0fbe863c063c4c88a35fd7f17e8a3df5",
+            "type" : "CAMPAIGN_FILTER"
+          },
+          "searchCampaignInfo" : {
+            "identityIds" : [ "0fbe863c063c4c88a35fd7f17e8a3df5" ],
+            "query" : "Search Campaign query description",
+            "description" : "Search Campaign description",
+            "reviewer" : {
+              "name" : "William Wilson",
+              "id" : "2c91808568c529c60168cca6f90c1313",
+              "type" : "IDENTITY"
+            },
+            "type" : "ACCESS",
+            "accessConstraints" : [ {
+              "ids" : [ "2c90ad2a70ace7d50170acf22ca90010" ],
+              "type" : "ENTITLEMENT",
+              "operator" : "SELECTED"
+            }, {
+              "ids" : [ "2c90ad2a70ace7d50170acf22ca90010" ],
+              "type" : "ENTITLEMENT",
+              "operator" : "SELECTED"
+            }, {
+              "ids" : [ "2c90ad2a70ace7d50170acf22ca90010" ],
+              "type" : "ENTITLEMENT",
+              "operator" : "SELECTED"
+            }, {
+              "ids" : [ "2c90ad2a70ace7d50170acf22ca90010" ],
+              "type" : "ENTITLEMENT",
+              "operator" : "SELECTED"
+            }, {
+              "ids" : [ "2c90ad2a70ace7d50170acf22ca90010" ],
+              "type" : "ENTITLEMENT",
+              "operator" : "SELECTED"
+            } ]
+          },
+          "autoRevokeAllowed" : false,
+          "name" : "Manager Campaign",
+          "mandatoryCommentRequirement" : "NO_DECISIONS",
+          "modified" : "2020-03-03T22:20:12.674Z",
+          "roleCompositionCampaignInfo" : {
+            "remediatorRef" : {
+              "name" : "Role Admin",
+              "id" : "2c90ad2a70ace7d50170acf22ca90010",
+              "type" : "IDENTITY"
+            },
+            "roleIds" : [ "2c90ad2a70ace7d50170acf22ca90010" ],
+            "query" : "Search Query",
+            "description" : "Role Composition Description",
+            "reviewer" : {
+              "name" : "William Wilson",
+              "id" : "2c91808568c529c60168cca6f90c1313",
+              "type" : "IDENTITY"
+            }
+          },
+          "completedCertifications" : 10,
+          "id" : "2c9079b270a266a60170a2779fcb0007",
+          "deadline" : "2020-03-15T10:00:01.456Z",
+          "status" : "ACTIVE",
+          "correlatedStatus" : "CORRELATED"
+        }''' # Campaign | 
+        try:
+            # Create a campaign
+            new_campaign = Campaign.from_json(campaign)
+            results = CertificationCampaignsApi(api_client).create_campaign(campaign=new_campaign)
+            # Below is a request that includes all optional parameters
+            # results = CertificationCampaignsApi(api_client).create_campaign(new_campaign)
+            print("The response of CertificationCampaignsApi->create_campaign:\n")
+            pprint(results)
+        except Exception as e:
+            print("Exception when calling CertificationCampaignsApi->create_campaign: %s\n" % e)
+- path: /campaign-templates
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/certification-campaigns#create-campaign-template
+      source: |
+        from sailpoint.v3.api.certification_campaigns_api import CertificationCampaignsApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.campaign_template import CampaignTemplate
+        from pprint import pprint
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+        campaign_template = '''{
+          "ownerRef" : {
+            "name" : "Mister Manager",
+            "id" : "2c918086676d3e0601677611dbde220f",
+            "type" : "IDENTITY",
+            "email" : "mr.manager@example.com"
+          },
+          "deadlineDuration" : "P2W",
+          "created" : "2020-03-05T22:44:00.364Z",
+          "scheduled" : false,
+          "name" : "Manager Campaign Template",
+          "description" : "Template for the annual manager campaign.",
+          "modified" : "2020-03-05T22:52:09.969Z",
+          "campaign" : {
+            "totalCertifications" : 100,
+            "sourcesWithOrphanEntitlements" : [ {
+              "name" : "Source with orphan entitlements",
+              "id" : "2c90ad2a70ace7d50170acf22ca90010",
+              "type" : "SOURCE"
+            }, {
+              "name" : "Source with orphan entitlements",
+              "id" : "2c90ad2a70ace7d50170acf22ca90010",
+              "type" : "SOURCE"
+            } ],
+            "recommendationsEnabled" : true,
+            "sunsetCommentsRequired" : true,
+            "created" : "2020-03-03T22:15:13.611Z",
+            "machineAccountCampaignInfo" : {
+              "reviewerType" : "ACCOUNT_OWNER",
+              "sourceIds" : [ "0fbe863c063c4c88a35fd7f17e8a3df5" ]
+            },
+            "description" : "Everyone needs to be reviewed by their manager",
+            "type" : "MANAGER",
+            "sourceOwnerCampaignInfo" : {
+              "sourceIds" : [ "0fbe863c063c4c88a35fd7f17e8a3df5" ]
+            },
+            "emailNotificationEnabled" : false,
+            "alerts" : [ {
+              "level" : "ERROR",
+              "localizations" : [ {
+                "localeOrigin" : "DEFAULT",
+                "text" : "The request was syntactically correct but its content is semantically invalid.",
+                "locale" : "en-US"
+              }, {
+                "localeOrigin" : "DEFAULT",
+                "text" : "The request was syntactically correct but its content is semantically invalid.",
+                "locale" : "en-US"
+              } ]
+            }, {
+              "level" : "ERROR",
+              "localizations" : [ {
+                "localeOrigin" : "DEFAULT",
+                "text" : "The request was syntactically correct but its content is semantically invalid.",
+                "locale" : "en-US"
+              }, {
+                "localeOrigin" : "DEFAULT",
+                "text" : "The request was syntactically correct but its content is semantically invalid.",
+                "locale" : "en-US"
+              } ]
+            } ],
+            "filter" : {
+              "name" : "Test Filter",
+              "id" : "0fbe863c063c4c88a35fd7f17e8a3df5",
+              "type" : "CAMPAIGN_FILTER"
+            },
+            "searchCampaignInfo" : {
+              "identityIds" : [ "0fbe863c063c4c88a35fd7f17e8a3df5" ],
+              "query" : "Search Campaign query description",
+              "description" : "Search Campaign description",
+              "reviewer" : {
+                "name" : "William Wilson",
+                "id" : "2c91808568c529c60168cca6f90c1313",
+                "type" : "IDENTITY"
+              },
+              "type" : "ACCESS",
+              "accessConstraints" : [ {
+                "ids" : [ "2c90ad2a70ace7d50170acf22ca90010" ],
+                "type" : "ENTITLEMENT",
+                "operator" : "SELECTED"
+              }, {
+                "ids" : [ "2c90ad2a70ace7d50170acf22ca90010" ],
+                "type" : "ENTITLEMENT",
+                "operator" : "SELECTED"
+              }, {
+                "ids" : [ "2c90ad2a70ace7d50170acf22ca90010" ],
+                "type" : "ENTITLEMENT",
+                "operator" : "SELECTED"
+              }, {
+                "ids" : [ "2c90ad2a70ace7d50170acf22ca90010" ],
+                "type" : "ENTITLEMENT",
+                "operator" : "SELECTED"
+              }, {
+                "ids" : [ "2c90ad2a70ace7d50170acf22ca90010" ],
+                "type" : "ENTITLEMENT",
+                "operator" : "SELECTED"
+              } ]
+            },
+            "autoRevokeAllowed" : false,
+            "name" : "Manager Campaign",
+            "mandatoryCommentRequirement" : "NO_DECISIONS",
+            "modified" : "2020-03-03T22:20:12.674Z",
+            "roleCompositionCampaignInfo" : {
+              "remediatorRef" : {
+                "name" : "Role Admin",
+                "id" : "2c90ad2a70ace7d50170acf22ca90010",
+                "type" : "IDENTITY"
+              },
+              "roleIds" : [ "2c90ad2a70ace7d50170acf22ca90010" ],
+              "query" : "Search Query",
+              "description" : "Role Composition Description",
+              "reviewer" : {
+                "name" : "William Wilson",
+                "id" : "2c91808568c529c60168cca6f90c1313",
+                "type" : "IDENTITY"
+              }
+            },
+            "completedCertifications" : 10,
+            "id" : "2c9079b270a266a60170a2779fcb0007",
+            "deadline" : "2020-03-15T10:00:01.456Z",
+            "status" : "ACTIVE",
+            "correlatedStatus" : "CORRELATED"
+          },
+          "id" : "2c9079b270a266a60170a277bb960008"
+        }''' # CampaignTemplate | 
+        try:
+            # Create a Campaign Template
+            new_campaign_template = CampaignTemplate.from_json(campaign_template)
+            results = CertificationCampaignsApi(api_client).create_campaign_template(campaign_template=new_campaign_template)
+            # Below is a request that includes all optional parameters
+            # results = CertificationCampaignsApi(api_client).create_campaign_template(new_campaign_template)
+            print("The response of CertificationCampaignsApi->create_campaign_template:\n")
+            pprint(results)
+        except Exception as e:
+            print("Exception when calling CertificationCampaignsApi->create_campaign_template: %s\n" % e)
+- path: /campaign-templates/{id}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/certification-campaigns#delete-campaign-template
+      source: |
+        from sailpoint.v3.api.certification_campaigns_api import CertificationCampaignsApi
+        from sailpoint.v3.api_client import ApiClient
+        from pprint import pprint
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+        id = '2c9180835d191a86015d28455b4a2329' # str | ID of the campaign template being deleted. # str | ID of the campaign template being deleted.
+        try:
+            # Delete a Campaign Template
+            
+            CertificationCampaignsApi(api_client).delete_campaign_template(id=id)
+            # Below is a request that includes all optional parameters
+            # CertificationCampaignsApi(api_client).delete_campaign_template(id)
+        except Exception as e:
+            print("Exception when calling CertificationCampaignsApi->delete_campaign_template: %s\n" % e)
+- path: /campaign-templates/{id}/schedule
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/certification-campaigns#delete-campaign-template-schedule
+      source: |
+        from sailpoint.v3.api.certification_campaigns_api import CertificationCampaignsApi
+        from sailpoint.v3.api_client import ApiClient
+        from pprint import pprint
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+        id = '04bedce387bd47b2ae1f86eb0bb36dee' # str | ID of the campaign template whose schedule is being deleted. # str | ID of the campaign template whose schedule is being deleted.
+        try:
+            # Delete Campaign Template Schedule
+            
+            CertificationCampaignsApi(api_client).delete_campaign_template_schedule(id=id)
+            # Below is a request that includes all optional parameters
+            # CertificationCampaignsApi(api_client).delete_campaign_template_schedule(id)
+        except Exception as e:
+            print("Exception when calling CertificationCampaignsApi->delete_campaign_template_schedule: %s\n" % e)
+- path: /campaigns/delete
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/certification-campaigns#delete-campaigns
+      source: |
+        from sailpoint.v3.api.certification_campaigns_api import CertificationCampaignsApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.campaigns_delete_request import CampaignsDeleteRequest
+        from pprint import pprint
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+        campaigns_delete_request = '''{
+          "ids" : [ "2c9180887335cee10173490db1776c26", "2c9180836a712436016a7125a90c0021" ]
+        }''' # CampaignsDeleteRequest | IDs of the campaigns to delete.
+        try:
+            # Delete Campaigns
+            new_campaigns_delete_request = CampaignsDeleteRequest.from_json(campaigns_delete_request)
+            results = CertificationCampaignsApi(api_client).delete_campaigns(campaigns_delete_request=new_campaigns_delete_request)
+            # Below is a request that includes all optional parameters
+            # results = CertificationCampaignsApi(api_client).delete_campaigns(new_campaigns_delete_request)
+            print("The response of CertificationCampaignsApi->delete_campaigns:\n")
+            pprint(results)
+        except Exception as e:
+            print("Exception when calling CertificationCampaignsApi->delete_campaigns: %s\n" % e)
+- path: /campaigns
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/certification-campaigns#get-active-campaigns
+      source: |
+        from sailpoint.v3.api.certification_campaigns_api import CertificationCampaignsApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.get_active_campaigns200_response_inner import GetActiveCampaigns200ResponseInner
+        from pprint import pprint
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+        detail = 'FULL' # str | Determines whether slim, or increased level of detail is provided for each campaign in the returned list. Slim is the default behavior. (optional) # str | Determines whether slim, or increased level of detail is provided for each campaign in the returned list. Slim is the default behavior. (optional)
+        limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+        offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+        count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+        filters = 'name eq \"Manager Campaign\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **status**: *eq, in* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **status**: *eq, in* (optional)
+        sorters = 'name' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created** (optional)
+        try:
+            # List Campaigns
+            
+            results = CertificationCampaignsApi(api_client).get_active_campaigns()
+            # Below is a request that includes all optional parameters
+            # results = CertificationCampaignsApi(api_client).get_active_campaigns(detail, limit, offset, count, filters, sorters)
+            print("The response of CertificationCampaignsApi->get_active_campaigns:\n")
+            pprint(results)
+        except Exception as e:
+            print("Exception when calling CertificationCampaignsApi->get_active_campaigns: %s\n" % e)
+- path: /campaigns/{id}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/certification-campaigns#get-campaign
+      source: |
+        from sailpoint.v3.api.certification_campaigns_api import CertificationCampaignsApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.get_active_campaigns200_response_inner import GetActiveCampaigns200ResponseInner
+        from pprint import pprint
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+        id = '2c91808571bcfcf80171c23e4b4221fc' # str | ID of the campaign to be retrieved. # str | ID of the campaign to be retrieved.
+        detail = 'FULL' # str | Determines whether slim, or increased level of detail is provided for each campaign in the returned list. Slim is the default behavior. (optional) # str | Determines whether slim, or increased level of detail is provided for each campaign in the returned list. Slim is the default behavior. (optional)
+        try:
+            # Get Campaign
+            
+            results = CertificationCampaignsApi(api_client).get_campaign(id=id)
+            # Below is a request that includes all optional parameters
+            # results = CertificationCampaignsApi(api_client).get_campaign(id, detail)
+            print("The response of CertificationCampaignsApi->get_campaign:\n")
+            pprint(results)
+        except Exception as e:
+            print("Exception when calling CertificationCampaignsApi->get_campaign: %s\n" % e)
+- path: /campaigns/{id}/reports
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/certification-campaigns#get-campaign-reports
+      source: |
+        from sailpoint.v3.api.certification_campaigns_api import CertificationCampaignsApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.campaign_report import CampaignReport
+        from pprint import pprint
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+        id = '2c91808571bcfcf80171c23e4b4221fc' # str | ID of the campaign whose reports are being fetched. # str | ID of the campaign whose reports are being fetched.
+        try:
+            # Get Campaign Reports
+            
+            results = CertificationCampaignsApi(api_client).get_campaign_reports(id=id)
+            # Below is a request that includes all optional parameters
+            # results = CertificationCampaignsApi(api_client).get_campaign_reports(id)
+            print("The response of CertificationCampaignsApi->get_campaign_reports:\n")
+            pprint(results)
+        except Exception as e:
+            print("Exception when calling CertificationCampaignsApi->get_campaign_reports: %s\n" % e)
+- path: /campaigns/reports-configuration
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/certification-campaigns#get-campaign-reports-config
+      source: |
+        from sailpoint.v3.api.certification_campaigns_api import CertificationCampaignsApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.campaign_reports_config import CampaignReportsConfig
+        from pprint import pprint
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+        try:
+            # Get Campaign Reports Configuration
+            
+            results = CertificationCampaignsApi(api_client).get_campaign_reports_config()
+            # Below is a request that includes all optional parameters
+            # results = CertificationCampaignsApi(api_client).get_campaign_reports_config()
+            print("The response of CertificationCampaignsApi->get_campaign_reports_config:\n")
+            pprint(results)
+        except Exception as e:
+            print("Exception when calling CertificationCampaignsApi->get_campaign_reports_config: %s\n" % e)
+- path: /campaign-templates/{id}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/certification-campaigns#get-campaign-template
+      source: |
+        from sailpoint.v3.api.certification_campaigns_api import CertificationCampaignsApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.campaign_template import CampaignTemplate
+        from pprint import pprint
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+        id = '2c9180835d191a86015d28455b4a2329' # str | Requested campaign template's ID. # str | Requested campaign template's ID.
+        try:
+            # Get a Campaign Template
+            
+            results = CertificationCampaignsApi(api_client).get_campaign_template(id=id)
+            # Below is a request that includes all optional parameters
+            # results = CertificationCampaignsApi(api_client).get_campaign_template(id)
+            print("The response of CertificationCampaignsApi->get_campaign_template:\n")
+            pprint(results)
+        except Exception as e:
+            print("Exception when calling CertificationCampaignsApi->get_campaign_template: %s\n" % e)
+- path: /campaign-templates/{id}/schedule
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/certification-campaigns#get-campaign-template-schedule
+      source: |
+        from sailpoint.v3.api.certification_campaigns_api import CertificationCampaignsApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.schedule import Schedule
+        from pprint import pprint
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+        id = '04bedce387bd47b2ae1f86eb0bb36dee' # str | ID of the campaign template whose schedule is being fetched. # str | ID of the campaign template whose schedule is being fetched.
+        try:
+            # Get Campaign Template Schedule
+            
+            results = CertificationCampaignsApi(api_client).get_campaign_template_schedule(id=id)
+            # Below is a request that includes all optional parameters
+            # results = CertificationCampaignsApi(api_client).get_campaign_template_schedule(id)
+            print("The response of CertificationCampaignsApi->get_campaign_template_schedule:\n")
+            pprint(results)
+        except Exception as e:
+            print("Exception when calling CertificationCampaignsApi->get_campaign_template_schedule: %s\n" % e)
+- path: /campaign-templates
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/certification-campaigns#get-campaign-templates
+      source: |
+        from sailpoint.v3.api.certification_campaigns_api import CertificationCampaignsApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.campaign_template import CampaignTemplate
+        from pprint import pprint
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+        limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+        offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+        count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+        sorters = 'name' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional)
+        filters = 'name eq \"manager template\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, ge, gt, in, le, lt, ne, sw*  **id**: *eq, ge, gt, in, le, lt, ne, sw* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, ge, gt, in, le, lt, ne, sw*  **id**: *eq, ge, gt, in, le, lt, ne, sw* (optional)
+        try:
+            # List Campaign Templates
+            
+            results = CertificationCampaignsApi(api_client).get_campaign_templates()
+            # Below is a request that includes all optional parameters
+            # results = CertificationCampaignsApi(api_client).get_campaign_templates(limit, offset, count, sorters, filters)
+            print("The response of CertificationCampaignsApi->get_campaign_templates:\n")
+            pprint(results)
+        except Exception as e:
+            print("Exception when calling CertificationCampaignsApi->get_campaign_templates: %s\n" % e)
+- path: /campaigns/{id}/reassign
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/certification-campaigns#move
+      source: |
+        from sailpoint.v3.api.certification_campaigns_api import CertificationCampaignsApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.admin_review_reassign import AdminReviewReassign
+        from sailpoint.v3.models.certification_task import CertificationTask
+        from pprint import pprint
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+        id = 'ef38f94347e94562b5bb8424a56397d8' # str | The certification campaign ID # str | The certification campaign ID
+        admin_review_reassign = '''{
+          "certificationIds" : [ "af3859464779471211bb8424a563abc1", "af3859464779471211bb8424a563abc2", "af3859464779471211bb8424a563abc3" ],
+          "reason" : "reassigned for some reason",
+          "reassignTo" : {
+            "id" : "ef38f94347e94562b5bb8424a56397d8",
+            "type" : "IDENTITY"
+          }
+        }''' # AdminReviewReassign | 
+        try:
+            # Reassign Certifications
+            new_admin_review_reassign = AdminReviewReassign.from_json(admin_review_reassign)
+            results = CertificationCampaignsApi(api_client).move(id=id, admin_review_reassign=new_admin_review_reassign)
+            # Below is a request that includes all optional parameters
+            # results = CertificationCampaignsApi(api_client).move(id, new_admin_review_reassign)
+            print("The response of CertificationCampaignsApi->move:\n")
+            pprint(results)
+        except Exception as e:
+            print("Exception when calling CertificationCampaignsApi->move: %s\n" % e)
+- path: /campaign-templates/{id}
+  method: PATCH
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/certification-campaigns#patch-campaign-template
+      source: |
+        from sailpoint.v3.api.certification_campaigns_api import CertificationCampaignsApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.campaign_template import CampaignTemplate
+        from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
+        from pprint import pprint
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+        id = '2c9180835d191a86015d28455b4a2329' # str | ID of the campaign template being modified. # str | ID of the campaign template being modified.
+        json_patch_operation = '''[{op=replace, path=/description, value=Updated description!}, {op=replace, path=/campaign/filter/id, value=ff80818155fe8c080155fe8d925b0316}]''' # List[JsonPatchOperation] | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create) 
+        try:
+            # Update a Campaign Template
+            new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+            results = CertificationCampaignsApi(api_client).patch_campaign_template(id=id, json_patch_operation=new_json_patch_operation)
+            # Below is a request that includes all optional parameters
+            # results = CertificationCampaignsApi(api_client).patch_campaign_template(id, new_json_patch_operation)
+            print("The response of CertificationCampaignsApi->patch_campaign_template:\n")
+            pprint(results)
+        except Exception as e:
+            print("Exception when calling CertificationCampaignsApi->patch_campaign_template: %s\n" % e)
+- path: /campaigns/reports-configuration
+  method: PUT
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/certification-campaigns#set-campaign-reports-config
+      source: |
+        from sailpoint.v3.api.certification_campaigns_api import CertificationCampaignsApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.campaign_reports_config import CampaignReportsConfig
+        from pprint import pprint
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+        campaign_reports_config = '''{
+          "identityAttributeColumns" : [ "firstname", "lastname" ]
+        }''' # CampaignReportsConfig | Campaign report configuration.
+        try:
+            # Set Campaign Reports Configuration
+            new_campaign_reports_config = CampaignReportsConfig.from_json(campaign_reports_config)
+            results = CertificationCampaignsApi(api_client).set_campaign_reports_config(campaign_reports_config=new_campaign_reports_config)
+            # Below is a request that includes all optional parameters
+            # results = CertificationCampaignsApi(api_client).set_campaign_reports_config(new_campaign_reports_config)
+            print("The response of CertificationCampaignsApi->set_campaign_reports_config:\n")
+            pprint(results)
+        except Exception as e:
+            print("Exception when calling CertificationCampaignsApi->set_campaign_reports_config: %s\n" % e)
+- path: /campaign-templates/{id}/schedule
+  method: PUT
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/certification-campaigns#set-campaign-template-schedule
+      source: |
+        from sailpoint.v3.api.certification_campaigns_api import CertificationCampaignsApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.schedule import Schedule
+        from pprint import pprint
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+        id = '04bedce387bd47b2ae1f86eb0bb36dee' # str | ID of the campaign template being scheduled. # str | ID of the campaign template being scheduled.
+        schedule = '''{
+          "hours" : {
+            "values" : [ "1" ],
+            "interval" : 2,
+            "type" : "LIST"
+          },
+          "months" : {
+            "values" : [ "1" ],
+            "interval" : 2,
+            "type" : "LIST"
+          },
+          "timeZoneId" : "CST",
+          "days" : {
+            "values" : [ "1" ],
+            "interval" : 2,
+            "type" : "LIST"
+          },
+          "expiration" : "2000-01-23T04:56:07.000+00:00",
+          "type" : "WEEKLY"
+        }''' # Schedule |  (optional)
+        try:
+            # Set Campaign Template Schedule
+            
+            CertificationCampaignsApi(api_client).set_campaign_template_schedule(id=id)
+            # Below is a request that includes all optional parameters
+            # CertificationCampaignsApi(api_client).set_campaign_template_schedule(id, new_schedule)
+        except Exception as e:
+            print("Exception when calling CertificationCampaignsApi->set_campaign_template_schedule: %s\n" % e)
+- path: /campaigns/{id}/activate
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/certification-campaigns#start-campaign
+      source: |
+        from sailpoint.v3.api.certification_campaigns_api import CertificationCampaignsApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.activate_campaign_options import ActivateCampaignOptions
+        from pprint import pprint
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+        id = 'ef38f94347e94562b5bb8424a56397d8' # str | Campaign ID. # str | Campaign ID.
+        activate_campaign_options = '''{
+          "timeZone" : "-05:00"
+        }''' # ActivateCampaignOptions | Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format. (optional)
+        try:
+            # Activate a Campaign
+            
+            results = CertificationCampaignsApi(api_client).start_campaign(id=id)
+            # Below is a request that includes all optional parameters
+            # results = CertificationCampaignsApi(api_client).start_campaign(id, new_activate_campaign_options)
+            print("The response of CertificationCampaignsApi->start_campaign:\n")
+            pprint(results)
+        except Exception as e:
+            print("Exception when calling CertificationCampaignsApi->start_campaign: %s\n" % e)
+- path: /campaigns/{id}/run-remediation-scan
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/certification-campaigns#start-campaign-remediation-scan
+      source: |
+        from sailpoint.v3.api.certification_campaigns_api import CertificationCampaignsApi
+        from sailpoint.v3.api_client import ApiClient
+        from pprint import pprint
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+        id = '2c91808571bcfcf80171c23e4b4221fc' # str | ID of the campaign the remediation scan is being run for. # str | ID of the campaign the remediation scan is being run for.
+        try:
+            # Run Campaign Remediation Scan
+            
+            results = CertificationCampaignsApi(api_client).start_campaign_remediation_scan(id=id)
+            # Below is a request that includes all optional parameters
+            # results = CertificationCampaignsApi(api_client).start_campaign_remediation_scan(id)
+            print("The response of CertificationCampaignsApi->start_campaign_remediation_scan:\n")
+            pprint(results)
+        except Exception as e:
+            print("Exception when calling CertificationCampaignsApi->start_campaign_remediation_scan: %s\n" % e)
+- path: /campaigns/{id}/run-report/{type}
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/certification-campaigns#start-campaign-report
+      source: |
+        from sailpoint.v3.api.certification_campaigns_api import CertificationCampaignsApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.report_type import ReportType
+        from pprint import pprint
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+        id = '2c91808571bcfcf80171c23e4b4221fc' # str | ID of the campaign the report is being run for. # str | ID of the campaign the report is being run for.
+        type = sailpoint.v3.ReportType() # ReportType | Type of the report to run. # ReportType | Type of the report to run.
+        try:
+            # Run Campaign Report
+            
+            results = CertificationCampaignsApi(api_client).start_campaign_report(id=id, type=type)
+            # Below is a request that includes all optional parameters
+            # results = CertificationCampaignsApi(api_client).start_campaign_report(id, type)
+            print("The response of CertificationCampaignsApi->start_campaign_report:\n")
+            pprint(results)
+        except Exception as e:
+            print("Exception when calling CertificationCampaignsApi->start_campaign_report: %s\n" % e)
+- path: /campaign-templates/{id}/generate
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/certification-campaigns#start-generate-campaign-template
+      source: |
+        from sailpoint.v3.api.certification_campaigns_api import CertificationCampaignsApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.campaign_reference import CampaignReference
+        from pprint import pprint
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+        id = '2c9180835d191a86015d28455b4a2329' # str | ID of the campaign template to use for generation. # str | ID of the campaign template to use for generation.
+        try:
+            # Generate a Campaign from Template
+            
+            results = CertificationCampaignsApi(api_client).start_generate_campaign_template(id=id)
+            # Below is a request that includes all optional parameters
+            # results = CertificationCampaignsApi(api_client).start_generate_campaign_template(id)
+            print("The response of CertificationCampaignsApi->start_generate_campaign_template:\n")
+            pprint(results)
+        except Exception as e:
+            print("Exception when calling CertificationCampaignsApi->start_generate_campaign_template: %s\n" % e)
+- path: /campaigns/{id}
+  method: PATCH
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/certification-campaigns#update-campaign
+      source: |
+        from sailpoint.v3.api.certification_campaigns_api import CertificationCampaignsApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
+        from sailpoint.v3.models.slim_campaign import SlimCampaign
+        from pprint import pprint
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+        id = '2c91808571bcfcf80171c23e4b4221fc' # str | ID of the campaign template being modified. # str | ID of the campaign template being modified.
+        json_patch_operation = '''[{op=replace, path=/name, value=This field has been updated!}, {op=copy, from=/name, path=/description}]''' # List[JsonPatchOperation] | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  When the campaign is in the *STAGED* status, you can patch these fields: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  When the campaign is in the *ACTIVE* status, you can patch these fields: * deadline 
+        try:
+            # Update a Campaign
+            new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+            results = CertificationCampaignsApi(api_client).update_campaign(id=id, json_patch_operation=new_json_patch_operation)
+            # Below is a request that includes all optional parameters
+            # results = CertificationCampaignsApi(api_client).update_campaign(id, new_json_patch_operation)
+            print("The response of CertificationCampaignsApi->update_campaign:\n")
+            pprint(results)
+        except Exception as e:
+            print("Exception when calling CertificationCampaignsApi->update_campaign: %s\n" % e)

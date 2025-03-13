@@ -27,11 +27,11 @@ class SavedSearchComplete(BaseModel):
     """
     SavedSearchComplete
     """ # noqa: E501
-    file_name: StrictStr = Field(description="A name for the report file.", alias="fileName")
-    owner_email: StrictStr = Field(description="The email address of the identity that owns the saved search.", alias="ownerEmail")
-    owner_name: StrictStr = Field(description="The name of the identity that owns the saved search.", alias="ownerName")
-    query: StrictStr = Field(description="The search query that was used to generate the report.")
-    search_name: StrictStr = Field(description="The name of the saved search.", alias="searchName")
+    file_name: StrictStr = Field(description="Report file name.", alias="fileName")
+    owner_email: StrictStr = Field(description="Email address of the identity who owns the saved search.", alias="ownerEmail")
+    owner_name: StrictStr = Field(description="Name of the identity who owns the saved search.", alias="ownerName")
+    query: StrictStr = Field(description="Search query used to generate the report.")
+    search_name: StrictStr = Field(description="Saved search name.", alias="searchName")
     search_results: SavedSearchCompleteSearchResults = Field(alias="searchResults")
     signed_s3_url: StrictStr = Field(description="The Amazon S3 URL to download the report from.", alias="signedS3Url")
     __properties: ClassVar[List[str]] = ["fileName", "ownerEmail", "ownerName", "query", "searchName", "searchResults", "signedS3Url"]

@@ -28,7 +28,7 @@ class IdentityDeletedIdentity(BaseModel):
     """ # noqa: E501
     type: StrictStr = Field(description="Deleted identity's DTO type.")
     id: StrictStr = Field(description="Deleted identity ID.")
-    name: StrictStr = Field(description="Deleted identity's display name.")
+    name: StrictStr = Field(description="Deleted identity's name.")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')

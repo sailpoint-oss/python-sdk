@@ -28,7 +28,7 @@ class ProvisioningCompletedRecipient(BaseModel):
     """ # noqa: E501
     type: StrictStr = Field(description="Provisioning recipient DTO type.")
     id: StrictStr = Field(description="Provisioning recipient's identity ID.")
-    name: StrictStr = Field(description="Provisioning recipient's display name.")
+    name: StrictStr = Field(description="Provisioning recipient's name.")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')

@@ -24,11 +24,11 @@ from typing_extensions import Self
 
 class VAClusterStatusChangeEventApplication(BaseModel):
     """
-    Details about the `CLUSTER` or `SOURCE` that initiated this event.
+    Details about the `CLUSTER` or `SOURCE` that initiated the event.
     """ # noqa: E501
-    id: StrictStr = Field(description="The GUID of the application")
-    name: StrictStr = Field(description="The name of the application")
-    attributes: Optional[Dict[str, Any]] = Field(description="Custom map of attributes for a source.  This will only be populated if type is `SOURCE` and the source has a proxy.")
+    id: StrictStr = Field(description="Application's globally unique identifier (GUID).")
+    name: StrictStr = Field(description="Application name.")
+    attributes: Optional[Dict[str, Any]] = Field(description="Custom map of attributes for a source. Attributes only populate if the type is `SOURCE` and the source has a proxy.")
     __properties: ClassVar[List[str]] = ["id", "name", "attributes"]
 
     model_config = ConfigDict(

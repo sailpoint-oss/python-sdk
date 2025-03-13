@@ -24,11 +24,11 @@ from typing_extensions import Self
 
 class AccessItemApproverDto(BaseModel):
     """
-    Identity who approved the access item request.
+    AccessItemApproverDto
     """ # noqa: E501
-    type: Optional[StrictStr] = Field(default=None, description="DTO type of identity who approved the access item request.")
-    id: Optional[StrictStr] = Field(default=None, description="ID of identity who approved the access item request.")
-    name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of identity who approved the access item request.")
+    type: Optional[StrictStr] = Field(default=None, description="DTO type of the identity who approved the access item request.")
+    id: Optional[StrictStr] = Field(default=None, description="ID of the identity who approved the access item request.")
+    name: Optional[StrictStr] = Field(default=None, description="Name of the identity who approved the access item request.")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')

@@ -26,12 +26,12 @@ class AccessRequestPreApprovalRequestedItemsInner(BaseModel):
     """
     AccessRequestPreApprovalRequestedItemsInner
     """ # noqa: E501
-    id: StrictStr = Field(description="The unique ID of the access item being requested.")
-    name: StrictStr = Field(description="The human friendly name of the access item.")
-    description: Optional[StrictStr] = Field(default=None, description="Detailed description of the access item.")
-    type: Dict[str, Any] = Field(description="The type of access item.")
-    operation: Dict[str, Any] = Field(description="The action to perform on the access item.")
-    comment: Optional[StrictStr] = Field(default=None, description="A comment from the identity requesting the access.")
+    id: StrictStr = Field(description="Access item's unique ID.")
+    name: StrictStr = Field(description="Access item's name.")
+    description: Optional[StrictStr] = Field(default=None, description="Access item's description.")
+    type: Dict[str, Any] = Field(description="Access item's type.")
+    operation: Dict[str, Any] = Field(description="Action to perform on the access item.")
+    comment: Optional[StrictStr] = Field(default=None, description="Comment from the identity requesting access.")
     __properties: ClassVar[List[str]] = ["id", "name", "description", "type", "operation", "comment"]
 
     @field_validator('type')
