@@ -618,6 +618,7 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**get_source**](sailpoint/v2024/docs/SourcesApi.md#get_source) | **GET** /sources/{id} | Get Source by ID
 *SourcesApi* | [**get_source_attr_sync_config**](sailpoint/v2024/docs/SourcesApi.md#get_source_attr_sync_config) | **GET** /sources/{id}/attribute-sync-config | Attribute Sync Config
 *SourcesApi* | [**get_source_config**](sailpoint/v2024/docs/SourcesApi.md#get_source_config) | **GET** /sources/{id}/connectors/source-config | Gets source config with language translations
+*SourcesApi* | [**get_source_connections**](sailpoint/v2024/docs/SourcesApi.md#get_source_connections) | **GET** /sources/{sourceId}/connections | Get Source Connections by ID
 *SourcesApi* | [**get_source_entitlement_request_config**](sailpoint/v2024/docs/SourcesApi.md#get_source_entitlement_request_config) | **GET** /sources/{id}/entitlement-request-config | Get Source Entitlement Request Configuration
 *SourcesApi* | [**get_source_health**](sailpoint/v2024/docs/SourcesApi.md#get_source_health) | **GET** /sources/{sourceId}/source-health | Fetches source health by id
 *SourcesApi* | [**get_source_schedule**](sailpoint/v2024/docs/SourcesApi.md#get_source_schedule) | **GET** /sources/{sourceId}/schedules/{scheduleType} | Get Source Schedule by Type
@@ -1062,6 +1063,10 @@ Class | Method | HTTP request | Description
  - [DeleteNonEmployeeRecordsInBulkRequest](sailpoint/v2024/docs/DeleteNonEmployeeRecordsInBulkRequest.md)
  - [DeleteSource202Response](sailpoint/v2024/docs/DeleteSource202Response.md)
  - [DeleteVendorConnectorMapping200Response](sailpoint/v2024/docs/DeleteVendorConnectorMapping200Response.md)
+ - [DependantAppConnections](sailpoint/v2024/docs/DependantAppConnections.md)
+ - [DependantAppConnectionsAccountSource](sailpoint/v2024/docs/DependantAppConnectionsAccountSource.md)
+ - [DependantAppConnectionsAccountSourcePasswordPoliciesInner](sailpoint/v2024/docs/DependantAppConnectionsAccountSourcePasswordPoliciesInner.md)
+ - [DependantConnectionsMissingDto](sailpoint/v2024/docs/DependantConnectionsMissingDto.md)
  - [DeployRequest](sailpoint/v2024/docs/DeployRequest.md)
  - [DeployResponse](sailpoint/v2024/docs/DeployResponse.md)
  - [Dimension](sailpoint/v2024/docs/Dimension.md)
@@ -1213,6 +1218,7 @@ Class | Method | HTTP request | Description
  - [IdentityProfileExportedObject](sailpoint/v2024/docs/IdentityProfileExportedObject.md)
  - [IdentityProfileExportedObjectSelf](sailpoint/v2024/docs/IdentityProfileExportedObjectSelf.md)
  - [IdentityProfileIdentityErrorReportArguments](sailpoint/v2024/docs/IdentityProfileIdentityErrorReportArguments.md)
+ - [IdentityProfilesConnections](sailpoint/v2024/docs/IdentityProfilesConnections.md)
  - [IdentityReference](sailpoint/v2024/docs/IdentityReference.md)
  - [IdentityReferenceWithNameAndEmail](sailpoint/v2024/docs/IdentityReferenceWithNameAndEmail.md)
  - [IdentitySnapshotSummaryResponse](sailpoint/v2024/docs/IdentitySnapshotSummaryResponse.md)
@@ -1644,6 +1650,7 @@ Class | Method | HTTP request | Description
  - [SourceCluster](sailpoint/v2024/docs/SourceCluster.md)
  - [SourceClusterDto](sailpoint/v2024/docs/SourceClusterDto.md)
  - [SourceCode](sailpoint/v2024/docs/SourceCode.md)
+ - [SourceConnectionsDto](sailpoint/v2024/docs/SourceConnectionsDto.md)
  - [SourceCreated](sailpoint/v2024/docs/SourceCreated.md)
  - [SourceCreatedActor](sailpoint/v2024/docs/SourceCreatedActor.md)
  - [SourceDeleted](sailpoint/v2024/docs/SourceDeleted.md)

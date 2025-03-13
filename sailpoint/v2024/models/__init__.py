@@ -342,6 +342,10 @@ from sailpoint.v2024.models.data_segment import DataSegment
 from sailpoint.v2024.models.delete_non_employee_records_in_bulk_request import DeleteNonEmployeeRecordsInBulkRequest
 from sailpoint.v2024.models.delete_source202_response import DeleteSource202Response
 from sailpoint.v2024.models.delete_vendor_connector_mapping200_response import DeleteVendorConnectorMapping200Response
+from sailpoint.v2024.models.dependant_app_connections import DependantAppConnections
+from sailpoint.v2024.models.dependant_app_connections_account_source import DependantAppConnectionsAccountSource
+from sailpoint.v2024.models.dependant_app_connections_account_source_password_policies_inner import DependantAppConnectionsAccountSourcePasswordPoliciesInner
+from sailpoint.v2024.models.dependant_connections_missing_dto import DependantConnectionsMissingDto
 from sailpoint.v2024.models.deploy_request import DeployRequest
 from sailpoint.v2024.models.deploy_response import DeployResponse
 from sailpoint.v2024.models.dimension import Dimension
@@ -493,6 +497,7 @@ from sailpoint.v2024.models.identity_profile_all_of_owner import IdentityProfile
 from sailpoint.v2024.models.identity_profile_exported_object import IdentityProfileExportedObject
 from sailpoint.v2024.models.identity_profile_exported_object_self import IdentityProfileExportedObjectSelf
 from sailpoint.v2024.models.identity_profile_identity_error_report_arguments import IdentityProfileIdentityErrorReportArguments
+from sailpoint.v2024.models.identity_profiles_connections import IdentityProfilesConnections
 from sailpoint.v2024.models.identity_reference import IdentityReference
 from sailpoint.v2024.models.identity_reference_with_name_and_email import IdentityReferenceWithNameAndEmail
 from sailpoint.v2024.models.identity_snapshot_summary_response import IdentitySnapshotSummaryResponse
@@ -924,6 +929,7 @@ from sailpoint.v2024.models.source_before_provisioning_rule import SourceBeforeP
 from sailpoint.v2024.models.source_cluster import SourceCluster
 from sailpoint.v2024.models.source_cluster_dto import SourceClusterDto
 from sailpoint.v2024.models.source_code import SourceCode
+from sailpoint.v2024.models.source_connections_dto import SourceConnectionsDto
 from sailpoint.v2024.models.source_created import SourceCreated
 from sailpoint.v2024.models.source_created_actor import SourceCreatedActor
 from sailpoint.v2024.models.source_deleted import SourceDeleted

@@ -468,6 +468,10 @@ sailpoint/v2024/docs/DataSegmentationApideveloperSite_code_examples.yaml
 sailpoint/v2024/docs/DeleteNonEmployeeRecordsInBulkRequest.md
 sailpoint/v2024/docs/DeleteSource202Response.md
 sailpoint/v2024/docs/DeleteVendorConnectorMapping200Response.md
+sailpoint/v2024/docs/DependantAppConnections.md
+sailpoint/v2024/docs/DependantAppConnectionsAccountSource.md
+sailpoint/v2024/docs/DependantAppConnectionsAccountSourcePasswordPoliciesInner.md
+sailpoint/v2024/docs/DependantConnectionsMissingDto.md
 sailpoint/v2024/docs/DeployRequest.md
 sailpoint/v2024/docs/DeployResponse.md
 sailpoint/v2024/docs/Dimension.md
@@ -649,6 +653,7 @@ sailpoint/v2024/docs/IdentityProfileExportedObjectSelf.md
 sailpoint/v2024/docs/IdentityProfileIdentityErrorReportArguments.md
 sailpoint/v2024/docs/IdentityProfilesApi.md
 sailpoint/v2024/docs/IdentityProfilesApideveloperSite_code_examples.yaml
+sailpoint/v2024/docs/IdentityProfilesConnections.md
 sailpoint/v2024/docs/IdentityReference.md
 sailpoint/v2024/docs/IdentityReferenceWithNameAndEmail.md
 sailpoint/v2024/docs/IdentitySnapshotSummaryResponse.md
@@ -1145,6 +1150,7 @@ sailpoint/v2024/docs/SourceBeforeProvisioningRule.md
 sailpoint/v2024/docs/SourceCluster.md
 sailpoint/v2024/docs/SourceClusterDto.md
 sailpoint/v2024/docs/SourceCode.md
+sailpoint/v2024/docs/SourceConnectionsDto.md
 sailpoint/v2024/docs/SourceCreated.md
 sailpoint/v2024/docs/SourceCreatedActor.md
 sailpoint/v2024/docs/SourceDeleted.md
@@ -1647,6 +1653,10 @@ sailpoint/v2024/models/data_segment.py
 sailpoint/v2024/models/delete_non_employee_records_in_bulk_request.py
 sailpoint/v2024/models/delete_source202_response.py
 sailpoint/v2024/models/delete_vendor_connector_mapping200_response.py
+sailpoint/v2024/models/dependant_app_connections.py
+sailpoint/v2024/models/dependant_app_connections_account_source.py
+sailpoint/v2024/models/dependant_app_connections_account_source_password_policies_inner.py
+sailpoint/v2024/models/dependant_connections_missing_dto.py
 sailpoint/v2024/models/deploy_request.py
 sailpoint/v2024/models/deploy_response.py
 sailpoint/v2024/models/dimension.py
@@ -1798,6 +1808,7 @@ sailpoint/v2024/models/identity_profile_all_of_owner.py
 sailpoint/v2024/models/identity_profile_exported_object.py
 sailpoint/v2024/models/identity_profile_exported_object_self.py
 sailpoint/v2024/models/identity_profile_identity_error_report_arguments.py
+sailpoint/v2024/models/identity_profiles_connections.py
 sailpoint/v2024/models/identity_reference.py
 sailpoint/v2024/models/identity_reference_with_name_and_email.py
 sailpoint/v2024/models/identity_snapshot_summary_response.py
@@ -2229,6 +2240,7 @@ sailpoint/v2024/models/source_before_provisioning_rule.py
 sailpoint/v2024/models/source_cluster.py
 sailpoint/v2024/models/source_cluster_dto.py
 sailpoint/v2024/models/source_code.py
+sailpoint/v2024/models/source_connections_dto.py
 sailpoint/v2024/models/source_created.py
 sailpoint/v2024/models/source_created_actor.py
 sailpoint/v2024/models/source_deleted.py
@@ -2730,6 +2742,10 @@ sailpoint/v2024/test/test_data_segmentation_api.py
 sailpoint/v2024/test/test_delete_non_employee_records_in_bulk_request.py
 sailpoint/v2024/test/test_delete_source202_response.py
 sailpoint/v2024/test/test_delete_vendor_connector_mapping200_response.py
+sailpoint/v2024/test/test_dependant_app_connections.py
+sailpoint/v2024/test/test_dependant_app_connections_account_source.py
+sailpoint/v2024/test/test_dependant_app_connections_account_source_password_policies_inner.py
+sailpoint/v2024/test/test_dependant_connections_missing_dto.py
 sailpoint/v2024/test/test_deploy_request.py
 sailpoint/v2024/test/test_deploy_response.py
 sailpoint/v2024/test/test_dimension.py
@@ -2896,6 +2912,7 @@ sailpoint/v2024/test/test_identity_profile_exported_object.py
 sailpoint/v2024/test/test_identity_profile_exported_object_self.py
 sailpoint/v2024/test/test_identity_profile_identity_error_report_arguments.py
 sailpoint/v2024/test/test_identity_profiles_api.py
+sailpoint/v2024/test/test_identity_profiles_connections.py
 sailpoint/v2024/test/test_identity_reference.py
 sailpoint/v2024/test/test_identity_reference_with_name_and_email.py
 sailpoint/v2024/test/test_identity_snapshot_summary_response.py
@@ -3358,6 +3375,7 @@ sailpoint/v2024/test/test_source_before_provisioning_rule.py
 sailpoint/v2024/test/test_source_cluster.py
 sailpoint/v2024/test/test_source_cluster_dto.py
 sailpoint/v2024/test/test_source_code.py
+sailpoint/v2024/test/test_source_connections_dto.py
 sailpoint/v2024/test/test_source_created.py
 sailpoint/v2024/test/test_source_created_actor.py
 sailpoint/v2024/test/test_source_deleted.py

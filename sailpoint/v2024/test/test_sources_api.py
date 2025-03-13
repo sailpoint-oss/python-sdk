@@ -152,6 +152,13 @@ class TestSourcesApi(unittest.TestCase):
         """
         pass
 
+    def test_get_source_connections(self) -> None:
+        """Test case for get_source_connections
+
+        Get Source Connections by ID
+        """
+        pass
+
     def test_get_source_entitlement_request_config(self) -> None:
         """Test case for get_source_entitlement_request_config
 
