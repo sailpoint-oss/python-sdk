@@ -17,8 +17,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.v2024.models.export_form_definitions_by_tenant200_response_inner_self import ExportFormDefinitionsByTenant200ResponseInnerSelf
 from sailpoint.v2024.models.form_definition_response import FormDefinitionResponse
 from typing import Optional, Set
 from typing_extensions import Self
@@ -28,7 +29,7 @@ class ExportFormDefinitionsByTenant200ResponseInner(BaseModel):
     ExportFormDefinitionsByTenant200ResponseInner
     """ # noqa: E501
     object: Optional[FormDefinitionResponse] = None
-    var_self: Optional[StrictStr] = Field(default=None, alias="self")
+    var_self: Optional[ExportFormDefinitionsByTenant200ResponseInnerSelf] = Field(default=None, alias="self")
     version: Optional[StrictInt] = None
     __properties: ClassVar[List[str]] = ["object", "self", "version"]
 
@@ -74,6 +75,9 @@ class ExportFormDefinitionsByTenant200ResponseInner(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of object
         if self.object:
             _dict['object'] = self.object.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of var_self
+        if self.var_self:
+            _dict['self'] = self.var_self.to_dict()
         return _dict
 
     @classmethod
@@ -87,7 +91,7 @@ class ExportFormDefinitionsByTenant200ResponseInner(BaseModel):
 
         _obj = cls.model_validate({
             "object": FormDefinitionResponse.from_dict(obj["object"]) if obj.get("object") is not None else None,
-            "self": obj.get("self"),
+            "self": ExportFormDefinitionsByTenant200ResponseInnerSelf.from_dict(obj["self"]) if obj.get("self") is not None else None,
             "version": obj.get("version")
         })
         return _obj

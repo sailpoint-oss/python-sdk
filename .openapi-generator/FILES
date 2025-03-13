@@ -520,6 +520,7 @@ sailpoint/v2024/docs/ExceptionCriteriaCriteriaListInner.md
 sailpoint/v2024/docs/ExecutionStatus.md
 sailpoint/v2024/docs/ExpansionItem.md
 sailpoint/v2024/docs/ExportFormDefinitionsByTenant200ResponseInner.md
+sailpoint/v2024/docs/ExportFormDefinitionsByTenant200ResponseInnerSelf.md
 sailpoint/v2024/docs/ExportOptions.md
 sailpoint/v2024/docs/ExportOptions1.md
 sailpoint/v2024/docs/ExportPayload.md
@@ -538,6 +539,7 @@ sailpoint/v2024/docs/FormDefinitionDynamicSchemaResponse.md
 sailpoint/v2024/docs/FormDefinitionFileUploadResponse.md
 sailpoint/v2024/docs/FormDefinitionInput.md
 sailpoint/v2024/docs/FormDefinitionResponse.md
+sailpoint/v2024/docs/FormDefinitionSelfImportExportDto.md
 sailpoint/v2024/docs/FormDetails.md
 sailpoint/v2024/docs/FormElement.md
 sailpoint/v2024/docs/FormElementDataSourceConfigOptions.md
@@ -652,6 +654,7 @@ sailpoint/v2024/docs/ImportAccountsRequest.md
 sailpoint/v2024/docs/ImportEntitlementsBySourceRequest.md
 sailpoint/v2024/docs/ImportFormDefinitions202Response.md
 sailpoint/v2024/docs/ImportFormDefinitions202ResponseErrorsInner.md
+sailpoint/v2024/docs/ImportFormDefinitionsRequestInner.md
 sailpoint/v2024/docs/ImportNonEmployeeRecordsInBulkRequest.md
 sailpoint/v2024/docs/ImportObject.md
 sailpoint/v2024/docs/ImportOptions.md
@@ -1684,6 +1687,7 @@ sailpoint/v2024/models/exception_criteria_criteria_list_inner.py
 sailpoint/v2024/models/execution_status.py
 sailpoint/v2024/models/expansion_item.py
 sailpoint/v2024/models/export_form_definitions_by_tenant200_response_inner.py
+sailpoint/v2024/models/export_form_definitions_by_tenant200_response_inner_self.py
 sailpoint/v2024/models/export_options.py
 sailpoint/v2024/models/export_options1.py
 sailpoint/v2024/models/export_payload.py
@@ -1702,6 +1706,7 @@ sailpoint/v2024/models/form_definition_dynamic_schema_response.py
 sailpoint/v2024/models/form_definition_file_upload_response.py
 sailpoint/v2024/models/form_definition_input.py
 sailpoint/v2024/models/form_definition_response.py
+sailpoint/v2024/models/form_definition_self_import_export_dto.py
 sailpoint/v2024/models/form_details.py
 sailpoint/v2024/models/form_element.py
 sailpoint/v2024/models/form_element_data_source_config_options.py
@@ -1790,6 +1795,7 @@ sailpoint/v2024/models/import_accounts_request.py
 sailpoint/v2024/models/import_entitlements_by_source_request.py
 sailpoint/v2024/models/import_form_definitions202_response.py
 sailpoint/v2024/models/import_form_definitions202_response_errors_inner.py
+sailpoint/v2024/models/import_form_definitions_request_inner.py
 sailpoint/v2024/models/import_non_employee_records_in_bulk_request.py
 sailpoint/v2024/models/import_object.py
 sailpoint/v2024/models/import_options.py
@@ -2758,6 +2764,7 @@ sailpoint/v2024/test/test_exception_criteria_criteria_list_inner.py
 sailpoint/v2024/test/test_execution_status.py
 sailpoint/v2024/test/test_expansion_item.py
 sailpoint/v2024/test/test_export_form_definitions_by_tenant200_response_inner.py
+sailpoint/v2024/test/test_export_form_definitions_by_tenant200_response_inner_self.py
 sailpoint/v2024/test/test_export_options.py
 sailpoint/v2024/test/test_export_options1.py
 sailpoint/v2024/test/test_export_payload.py
@@ -2776,6 +2783,7 @@ sailpoint/v2024/test/test_form_definition_dynamic_schema_response.py
 sailpoint/v2024/test/test_form_definition_file_upload_response.py
 sailpoint/v2024/test/test_form_definition_input.py
 sailpoint/v2024/test/test_form_definition_response.py
+sailpoint/v2024/test/test_form_definition_self_import_export_dto.py
 sailpoint/v2024/test/test_form_details.py
 sailpoint/v2024/test/test_form_element.py
 sailpoint/v2024/test/test_form_element_data_source_config_options.py
@@ -2877,6 +2885,7 @@ sailpoint/v2024/test/test_import_accounts_request.py
 sailpoint/v2024/test/test_import_entitlements_by_source_request.py
 sailpoint/v2024/test/test_import_form_definitions202_response.py
 sailpoint/v2024/test/test_import_form_definitions202_response_errors_inner.py
+sailpoint/v2024/test/test_import_form_definitions_request_inner.py
 sailpoint/v2024/test/test_import_non_employee_records_in_bulk_request.py
 sailpoint/v2024/test/test_import_object.py
 sailpoint/v2024/test/test_import_options.py

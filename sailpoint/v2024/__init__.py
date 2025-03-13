@@ -491,6 +491,7 @@ from sailpoint.v2024.models.exception_criteria_criteria_list_inner import Except
 from sailpoint.v2024.models.execution_status import ExecutionStatus
 from sailpoint.v2024.models.expansion_item import ExpansionItem
 from sailpoint.v2024.models.export_form_definitions_by_tenant200_response_inner import ExportFormDefinitionsByTenant200ResponseInner
+from sailpoint.v2024.models.export_form_definitions_by_tenant200_response_inner_self import ExportFormDefinitionsByTenant200ResponseInnerSelf
 from sailpoint.v2024.models.export_options import ExportOptions
 from sailpoint.v2024.models.export_options1 import ExportOptions1
 from sailpoint.v2024.models.export_payload import ExportPayload
@@ -509,6 +510,7 @@ from sailpoint.v2024.models.form_definition_dynamic_schema_response import FormD
 from sailpoint.v2024.models.form_definition_file_upload_response import FormDefinitionFileUploadResponse
 from sailpoint.v2024.models.form_definition_input import FormDefinitionInput
 from sailpoint.v2024.models.form_definition_response import FormDefinitionResponse
+from sailpoint.v2024.models.form_definition_self_import_export_dto import FormDefinitionSelfImportExportDto
 from sailpoint.v2024.models.form_details import FormDetails
 from sailpoint.v2024.models.form_element import FormElement
 from sailpoint.v2024.models.form_element_data_source_config_options import FormElementDataSourceConfigOptions
@@ -597,6 +599,7 @@ from sailpoint.v2024.models.import_accounts_request import ImportAccountsRequest
 from sailpoint.v2024.models.import_entitlements_by_source_request import ImportEntitlementsBySourceRequest
 from sailpoint.v2024.models.import_form_definitions202_response import ImportFormDefinitions202Response
 from sailpoint.v2024.models.import_form_definitions202_response_errors_inner import ImportFormDefinitions202ResponseErrorsInner
+from sailpoint.v2024.models.import_form_definitions_request_inner import ImportFormDefinitionsRequestInner
 from sailpoint.v2024.models.import_non_employee_records_in_bulk_request import ImportNonEmployeeRecordsInBulkRequest
 from sailpoint.v2024.models.import_object import ImportObject
 from sailpoint.v2024.models.import_options import ImportOptions
