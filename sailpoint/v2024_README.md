@@ -416,6 +416,7 @@ Class | Method | HTTP request | Description
 *ManagedClustersApi* | [**get_managed_cluster**](sailpoint/v2024/docs/ManagedClustersApi.md#get_managed_cluster) | **GET** /managed-clusters/{id} | Get Managed Cluster
 *ManagedClustersApi* | [**get_managed_clusters**](sailpoint/v2024/docs/ManagedClustersApi.md#get_managed_clusters) | **GET** /managed-clusters | Get Managed Clusters
 *ManagedClustersApi* | [**put_client_log_configuration**](sailpoint/v2024/docs/ManagedClustersApi.md#put_client_log_configuration) | **PUT** /managed-clusters/{id}/log-config | Update Managed Cluster Log Configuration
+*ManagedClustersApi* | [**update**](sailpoint/v2024/docs/ManagedClustersApi.md#update) | **POST** /managed-clusters/{id}/manualUpgrade | Trigger Manual Upgrade for Managed Cluster
 *ManagedClustersApi* | [**update_managed_cluster**](sailpoint/v2024/docs/ManagedClustersApi.md#update_managed_cluster) | **PATCH** /managed-clusters/{id} | Update Managed Cluster
 *NonEmployeeLifecycleManagementApi* | [**approve_non_employee_request**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#approve_non_employee_request) | **POST** /non-employee-approvals/{id}/approve | Approve a Non-Employee Request
 *NonEmployeeLifecycleManagementApi* | [**create_non_employee_record**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#create_non_employee_record) | **POST** /non-employee-records | Create Non-Employee Record
@@ -984,6 +985,14 @@ Class | Method | HTTP request | Description
  - [ClientLogConfigurationExpiration](sailpoint/v2024/docs/ClientLogConfigurationExpiration.md)
  - [ClientType](sailpoint/v2024/docs/ClientType.md)
  - [CloseAccessRequest](sailpoint/v2024/docs/CloseAccessRequest.md)
+ - [ClusterManualUpgrade](sailpoint/v2024/docs/ClusterManualUpgrade.md)
+ - [ClusterManualUpgradeJobsInner](sailpoint/v2024/docs/ClusterManualUpgradeJobsInner.md)
+ - [ClusterManualUpgradeJobsInnerManagedProcessConfiguration](sailpoint/v2024/docs/ClusterManualUpgradeJobsInnerManagedProcessConfiguration.md)
+ - [ClusterManualUpgradeJobsInnerManagedProcessConfigurationCcg](sailpoint/v2024/docs/ClusterManualUpgradeJobsInnerManagedProcessConfigurationCcg.md)
+ - [ClusterManualUpgradeJobsInnerManagedProcessConfigurationCharon](sailpoint/v2024/docs/ClusterManualUpgradeJobsInnerManagedProcessConfigurationCharon.md)
+ - [ClusterManualUpgradeJobsInnerManagedProcessConfigurationOtelAgent](sailpoint/v2024/docs/ClusterManualUpgradeJobsInnerManagedProcessConfigurationOtelAgent.md)
+ - [ClusterManualUpgradeJobsInnerManagedProcessConfigurationRelay](sailpoint/v2024/docs/ClusterManualUpgradeJobsInnerManagedProcessConfigurationRelay.md)
+ - [ClusterManualUpgradeJobsInnerManagedProcessConfigurationToolbox](sailpoint/v2024/docs/ClusterManualUpgradeJobsInnerManagedProcessConfigurationToolbox.md)
  - [Column](sailpoint/v2024/docs/Column.md)
  - [Comment](sailpoint/v2024/docs/Comment.md)
  - [CommentDto](sailpoint/v2024/docs/CommentDto.md)
