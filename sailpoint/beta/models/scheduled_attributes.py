@@ -28,10 +28,11 @@ class ScheduledAttributes(BaseModel):
     """ # noqa: E501
     frequency: StrictStr = Field(description="Frequency of execution")
     time_zone: Optional[StrictStr] = Field(default=None, description="Time zone identifier", alias="timeZone")
-    cron_string: Optional[StrictStr] = Field(default=None, alias="cronString")
+    cron_string: Optional[StrictStr] = Field(default=None, description="A valid CRON expression", alias="cronString")
     weekly_days: Optional[List[StrictStr]] = Field(default=None, description="Scheduled days of the week for execution", alias="weeklyDays")
     weekly_times: Optional[List[StrictStr]] = Field(default=None, description="Scheduled execution times", alias="weeklyTimes")
-    __properties: ClassVar[List[str]] = ["frequency", "timeZone", "cronString", "weeklyDays", "weeklyTimes"]
+    yearly_times: Optional[List[StrictStr]] = Field(default=None, description="Scheduled execution times", alias="yearlyTimes")
+    __properties: ClassVar[List[str]] = ["frequency", "timeZone", "cronString", "weeklyDays", "weeklyTimes", "yearlyTimes"]
 
     @field_validator('frequency')
     def frequency_validate_enum(cls, value):
@@ -95,7 +96,8 @@ class ScheduledAttributes(BaseModel):
             "timeZone": obj.get("timeZone"),
             "cronString": obj.get("cronString"),
             "weeklyDays": obj.get("weeklyDays"),
-            "weeklyTimes": obj.get("weeklyTimes")
+            "weeklyTimes": obj.get("weeklyTimes"),
+            "yearlyTimes": obj.get("yearlyTimes")
         })
         return _obj
 

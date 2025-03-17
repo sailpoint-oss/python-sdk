@@ -39,6 +39,7 @@ class TestWorkflowTriggerAttributes(unittest.TestCase):
                 filter_ = '$.changes[?(@.attribute == 'manager')]',
                 description = 'Run a search and notify the results',
                 attribute_to_filter = 'LifecycleState',
+                form_definition_id = 'Admin_Access_Request_Form',
                 name = 'search-and-notify',
                 client_id = '87e239b2-b85b-4bde-b9a7-55bf304ddcdc',
                 url = 'https://tenant.api.identitynow.com/beta/workflows/execute/external/c79e0079-562c-4df5-aa73-60a9e25c916d',
@@ -46,7 +47,8 @@ class TestWorkflowTriggerAttributes(unittest.TestCase):
                 frequency = 'daily',
                 time_zone = 'America/Chicago',
                 weekly_days = Monday,
-                weekly_times = Monday
+                weekly_times = Monday,
+                yearly_times = 1969-12-31T09:00:00.000Z
             )
         else:
             return WorkflowTriggerAttributes(

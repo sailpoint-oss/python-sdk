@@ -39,7 +39,8 @@ class TestScheduledAttributes(unittest.TestCase):
                 frequency = 'daily',
                 time_zone = 'America/Chicago',
                 weekly_days = Monday,
-                weekly_times = Monday
+                weekly_times = Monday,
+                yearly_times = 1969-12-31T09:00:00.000Z
             )
         else:
             return ScheduledAttributes(

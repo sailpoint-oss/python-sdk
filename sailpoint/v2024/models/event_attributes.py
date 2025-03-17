@@ -30,7 +30,8 @@ class EventAttributes(BaseModel):
     filter_: Optional[StrictStr] = Field(default=None, description="JSON path expression that will limit which events the trigger will fire on", alias="filter.$")
     description: Optional[StrictStr] = Field(default=None, description="Description of the event trigger")
     attribute_to_filter: Optional[StrictStr] = Field(default=None, description="The attribute to filter on", alias="attributeToFilter")
-    __properties: ClassVar[List[str]] = ["id", "filter.$", "description", "attributeToFilter"]
+    form_definition_id: Optional[StrictStr] = Field(default=None, description="Form definition's unique identifier.", alias="formDefinitionId")
+    __properties: ClassVar[List[str]] = ["id", "filter.$", "description", "attributeToFilter", "formDefinitionId"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -86,7 +87,8 @@ class EventAttributes(BaseModel):
             "id": obj.get("id"),
             "filter.$": obj.get("filter.$"),
             "description": obj.get("description"),
-            "attributeToFilter": obj.get("attributeToFilter")
+            "attributeToFilter": obj.get("attributeToFilter"),
+            "formDefinitionId": obj.get("formDefinitionId")
         })
         return _obj
 

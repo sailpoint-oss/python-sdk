@@ -31,7 +31,8 @@ class ScheduledAttributes(BaseModel):
     time_zone: Optional[StrictStr] = Field(default=None, description="Time zone identifier", alias="timeZone")
     weekly_days: Optional[List[StrictStr]] = Field(default=None, description="Scheduled days of the week for execution", alias="weeklyDays")
     weekly_times: Optional[List[StrictStr]] = Field(default=None, description="Scheduled execution times", alias="weeklyTimes")
-    __properties: ClassVar[List[str]] = ["cronString", "frequency", "timeZone", "weeklyDays", "weeklyTimes"]
+    yearly_times: Optional[List[StrictStr]] = Field(default=None, description="Scheduled execution times", alias="yearlyTimes")
+    __properties: ClassVar[List[str]] = ["cronString", "frequency", "timeZone", "weeklyDays", "weeklyTimes", "yearlyTimes"]
 
     @field_validator('frequency')
     def frequency_validate_enum(cls, value):
@@ -95,7 +96,8 @@ class ScheduledAttributes(BaseModel):
             "frequency": obj.get("frequency"),
             "timeZone": obj.get("timeZone"),
             "weeklyDays": obj.get("weeklyDays"),
-            "weeklyTimes": obj.get("weeklyTimes")
+            "weeklyTimes": obj.get("weeklyTimes"),
+            "yearlyTimes": obj.get("yearlyTimes")
         })
         return _obj
 
