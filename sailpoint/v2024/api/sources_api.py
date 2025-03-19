@@ -6518,7 +6518,7 @@ class SourcesApi:
     ) -> List[Schedule1]:
         """List Schedules on Source
 
-        Use this API to list the schedules that exist on the specified source in Identity Security Cloud (ISC).
+        Use this API to list the schedules that exist on the specified source in Identity Security Cloud (ISC). :::info This endpoint uses a **cron expression** to schedule a task, following standard **cron job syntax**.  For example, `0 0 12 1/1 * ? *` runs the task **daily at 12:00 PM**.  **Days of the week are represented as 1-7 (Sunday-Saturday).** ::: 
 
         :param source_id: Source ID. (required)
         :type source_id: str
@@ -6591,7 +6591,7 @@ class SourcesApi:
     ) -> ApiResponse[List[Schedule1]]:
         """List Schedules on Source
 
-        Use this API to list the schedules that exist on the specified source in Identity Security Cloud (ISC).
+        Use this API to list the schedules that exist on the specified source in Identity Security Cloud (ISC). :::info This endpoint uses a **cron expression** to schedule a task, following standard **cron job syntax**.  For example, `0 0 12 1/1 * ? *` runs the task **daily at 12:00 PM**.  **Days of the week are represented as 1-7 (Sunday-Saturday).** ::: 
 
         :param source_id: Source ID. (required)
         :type source_id: str
@@ -6664,7 +6664,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """List Schedules on Source
 
-        Use this API to list the schedules that exist on the specified source in Identity Security Cloud (ISC).
+        Use this API to list the schedules that exist on the specified source in Identity Security Cloud (ISC). :::info This endpoint uses a **cron expression** to schedule a task, following standard **cron job syntax**.  For example, `0 0 12 1/1 * ? *` runs the task **daily at 12:00 PM**.  **Days of the week are represented as 1-7 (Sunday-Saturday).** ::: 
 
         :param source_id: Source ID. (required)
         :type source_id: str
