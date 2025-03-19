@@ -69,12 +69,14 @@
 
 
         with ApiClient(configuration) as api_client:
+        limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+        offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
         try:
             # List Extended Search Attributes
             
             results = SearchAttributeConfigurationApi(api_client).get_search_attribute_config()
             # Below is a request that includes all optional parameters
-            # results = SearchAttributeConfigurationApi(api_client).get_search_attribute_config()
+            # results = SearchAttributeConfigurationApi(api_client).get_search_attribute_config(limit, offset)
             print("The response of SearchAttributeConfigurationApi->get_search_attribute_config:\n")
             pprint(results)
         except Exception as e:
