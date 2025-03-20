@@ -521,7 +521,7 @@ Class | Method | HTTP request | Description
 *RolesApi* | [**get_bulk_update_status_by_id**](sailpoint\v2024/docs/RolesApi.md#get_bulk_update_status_by_id) | **GET** /roles/access-model-metadata/bulk-update/id | Get Bulk-Update Status by ID
 *RolesApi* | [**get_role**](sailpoint\v2024/docs/RolesApi.md#get_role) | **GET** /roles/{id} | Get a Role
 *RolesApi* | [**get_role_assigned_identities**](sailpoint\v2024/docs/RolesApi.md#get_role_assigned_identities) | **GET** /roles/{id}/assigned-identities | List Identities assigned a Role
-*RolesApi* | [**get_role_entitlements**](sailpoint\v2024/docs/RolesApi.md#get_role_entitlements) | **GET** /roles/{id}/entitlements | List role&#39;s Entitlements
+*RolesApi* | [**get_role_entitlements**](sailpoint\v2024/docs/RolesApi.md#get_role_entitlements) | **GET** /roles/{id}/entitlements | List Role&#39;s Entitlements
 *RolesApi* | [**list_roles**](sailpoint\v2024/docs/RolesApi.md#list_roles) | **GET** /roles | List Roles
 *RolesApi* | [**patch_role**](sailpoint\v2024/docs/RolesApi.md#patch_role) | **PATCH** /roles/{id} | Patch a specified Role
 *RolesApi* | [**search_roles_by_filter**](sailpoint\v2024/docs/RolesApi.md#search_roles_by_filter) | **POST** /roles/filter | Filter Roles by Metadata

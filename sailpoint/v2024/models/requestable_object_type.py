@@ -20,7 +20,7 @@ from typing_extensions import Self
 
 class RequestableObjectType(str, Enum):
     """
-    The currently supported requestable object types. 
+    Currently supported requestable object types.
     """
 
     """
