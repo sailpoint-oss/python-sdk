@@ -448,7 +448,7 @@ Class | Method | HTTP request | Description
 *RolesApi* | [**delete_role**](sailpoint/beta/docs/RolesApi.md#delete_role) | **DELETE** /roles/{id} | Delete a Role
 *RolesApi* | [**get_role**](sailpoint/beta/docs/RolesApi.md#get_role) | **GET** /roles/{id} | Get a Role
 *RolesApi* | [**get_role_assigned_identities**](sailpoint/beta/docs/RolesApi.md#get_role_assigned_identities) | **GET** /roles/{id}/assigned-identities | Identities assigned a Role
-*RolesApi* | [**get_role_entitlements**](sailpoint/beta/docs/RolesApi.md#get_role_entitlements) | **GET** /roles/{id}/entitlements | List role&#39;s Entitlements
+*RolesApi* | [**get_role_entitlements**](sailpoint/beta/docs/RolesApi.md#get_role_entitlements) | **GET** /roles/{id}/entitlements | List Role&#39;s Entitlements
 *RolesApi* | [**list_roles**](sailpoint/beta/docs/RolesApi.md#list_roles) | **GET** /roles | List Roles
 *RolesApi* | [**patch_role**](sailpoint/beta/docs/RolesApi.md#patch_role) | **PATCH** /roles/{id} | Patch a specified Role
 *SIMIntegrationsApi* | [**create_sim_integration**](sailpoint/beta/docs/SIMIntegrationsApi.md#create_sim_integration) | **POST** /sim-integrations | Create new SIM integration
