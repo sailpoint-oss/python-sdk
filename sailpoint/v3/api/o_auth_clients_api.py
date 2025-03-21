@@ -288,7 +288,7 @@ class OAuthClientsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -581,7 +581,7 @@ class OAuthClientsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -861,7 +861,7 @@ class OAuthClientsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -1140,7 +1140,7 @@ class OAuthClientsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -1436,7 +1436,7 @@ class OAuthClientsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
