@@ -31,7 +31,7 @@ class TaskResultDetails(BaseModel):
     """ # noqa: E501
     type: Optional[StrictStr] = Field(default=None, description="Type of the job or task underlying in the report processing. It could be a quartz task, QPOC or MENTOS jobs or a refresh/sync task.")
     id: Optional[StrictStr] = Field(default=None, description="Unique task definition identifier.")
-    report_type: Optional[Dict[str, Any]] = Field(default=None, description="Use this property to define what report should be processed in the RDE service.", alias="reportType")
+    report_type: Optional[StrictStr] = Field(default=None, description="Use this property to define what report should be processed in the RDE service.", alias="reportType")
     description: Optional[StrictStr] = Field(default=None, description="Description of the report purpose and/or contents.")
     parent_name: Optional[StrictStr] = Field(default=None, description="Name of the parent task/report if exists.", alias="parentName")
     launcher: Optional[StrictStr] = Field(default=None, description="Name of the report processing initiator.")
@@ -41,7 +41,7 @@ class TaskResultDetails(BaseModel):
     completion_status: Optional[StrictStr] = Field(default=None, description="Report completion status.", alias="completionStatus")
     messages: Optional[List[TaskResultDetailsMessagesInner]] = Field(default=None, description="List of the messages dedicated to the report.  From task definition perspective here usually should be warnings or errors.")
     returns: Optional[List[TaskResultDetailsReturnsInner]] = Field(default=None, description="Task definition results, if necessary.")
-    attributes: Optional[Dict[str, Dict[str, Any]]] = Field(default=None, description="Extra attributes map(dictionary) needed for the report.")
+    attributes: Optional[Dict[str, Any]] = Field(default=None, description="Extra attributes map(dictionary) needed for the report.")
     progress: Optional[StrictStr] = Field(default=None, description="Current report state.")
     __properties: ClassVar[List[str]] = ["type", "id", "reportType", "description", "parentName", "launcher", "created", "launched", "completed", "completionStatus", "messages", "returns", "attributes", "progress"]
 
