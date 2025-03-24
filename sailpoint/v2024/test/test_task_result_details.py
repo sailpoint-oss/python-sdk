@@ -37,7 +37,7 @@ class TestTaskResultDetails(unittest.TestCase):
             return TaskResultDetails(
                 type = 'MENTOS',
                 id = 'a248c16fe22222b2bd49615481311111',
-                report_type = 'IDENTITIES_DETAILS',
+                report_type = IDENTITIES_DETAILS,
                 description = 'A detailed view of the identities in the system.',
                 parent_name = 'Audit Report',
                 launcher = 'cloudadmin',
