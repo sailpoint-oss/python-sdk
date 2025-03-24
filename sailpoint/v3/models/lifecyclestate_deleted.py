@@ -37,8 +37,8 @@ class LifecyclestateDeleted(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['LIFECYCLE_STATE']):
-            raise ValueError("must be one of enum values ('LIFECYCLE_STATE')")
+        if value not in set(['LIFECYCLE_STATE', 'TASK_RESULT']):
+            raise ValueError("must be one of enum values ('LIFECYCLE_STATE', 'TASK_RESULT')")
         return value
 
     model_config = ConfigDict(
