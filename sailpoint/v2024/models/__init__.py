@@ -444,6 +444,7 @@ from sailpoint.v2024.models.get_historical_identity_events200_response_inner imp
 from sailpoint.v2024.models.get_o_auth_client_response import GetOAuthClientResponse
 from sailpoint.v2024.models.get_personal_access_token_response import GetPersonalAccessTokenResponse
 from sailpoint.v2024.models.get_role_assignments200_response_inner import GetRoleAssignments200ResponseInner
+from sailpoint.v2024.models.get_tenant_context200_response_inner import GetTenantContext200ResponseInner
 from sailpoint.v2024.models.grant_type import GrantType
 from sailpoint.v2024.models.http_authentication_type import HttpAuthenticationType
 from sailpoint.v2024.models.http_config import HttpConfig

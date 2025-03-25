@@ -671,6 +671,8 @@ Class | Method | HTTP request | Description
 *TaskManagementApi* | [**get_task_status_list**](sailpoint/v2024/docs/TaskManagementApi.md#get_task_status_list) | **GET** /task-status | Retrieve Task Status List
 *TaskManagementApi* | [**update_task_status**](sailpoint/v2024/docs/TaskManagementApi.md#update_task_status) | **PATCH** /task-status/{id} | Update Task Status by ID
 *TenantApi* | [**get_tenant**](sailpoint/v2024/docs/TenantApi.md#get_tenant) | **GET** /tenant | Get Tenant Information.
+*TenantContextApi* | [**get_tenant_context**](sailpoint/v2024/docs/TenantContextApi.md#get_tenant_context) | **GET** /tenant-context | Retrieve tenant context
+*TenantContextApi* | [**patch_tenant_context**](sailpoint/v2024/docs/TenantContextApi.md#patch_tenant_context) | **PATCH** /tenant-context | Update tenant context
 *TransformsApi* | [**create_transform**](sailpoint/v2024/docs/TransformsApi.md#create_transform) | **POST** /transforms | Create transform
 *TransformsApi* | [**delete_transform**](sailpoint/v2024/docs/TransformsApi.md#delete_transform) | **DELETE** /transforms/{id} | Delete a transform
 *TransformsApi* | [**get_transform**](sailpoint/v2024/docs/TransformsApi.md#get_transform) | **GET** /transforms/{id} | Transform by ID
@@ -1165,6 +1167,7 @@ Class | Method | HTTP request | Description
  - [GetOAuthClientResponse](sailpoint/v2024/docs/GetOAuthClientResponse.md)
  - [GetPersonalAccessTokenResponse](sailpoint/v2024/docs/GetPersonalAccessTokenResponse.md)
  - [GetRoleAssignments200ResponseInner](sailpoint/v2024/docs/GetRoleAssignments200ResponseInner.md)
+ - [GetTenantContext200ResponseInner](sailpoint/v2024/docs/GetTenantContext200ResponseInner.md)
  - [GrantType](sailpoint/v2024/docs/GrantType.md)
  - [HttpAuthenticationType](sailpoint/v2024/docs/HttpAuthenticationType.md)
  - [HttpConfig](sailpoint/v2024/docs/HttpConfig.md)

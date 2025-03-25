@@ -95,6 +95,7 @@ from sailpoint.v2024.api.suggested_entitlement_description_api import SuggestedE
 from sailpoint.v2024.api.tagged_objects_api import TaggedObjectsApi
 from sailpoint.v2024.api.task_management_api import TaskManagementApi
 from sailpoint.v2024.api.tenant_api import TenantApi
+from sailpoint.v2024.api.tenant_context_api import TenantContextApi
 from sailpoint.v2024.api.transforms_api import TransformsApi
 from sailpoint.v2024.api.triggers_api import TriggersApi
 from sailpoint.v2024.api.ui_metadata_api import UIMetadataApi
@@ -545,6 +546,7 @@ from sailpoint.v2024.models.get_historical_identity_events200_response_inner imp
 from sailpoint.v2024.models.get_o_auth_client_response import GetOAuthClientResponse
 from sailpoint.v2024.models.get_personal_access_token_response import GetPersonalAccessTokenResponse
 from sailpoint.v2024.models.get_role_assignments200_response_inner import GetRoleAssignments200ResponseInner
+from sailpoint.v2024.models.get_tenant_context200_response_inner import GetTenantContext200ResponseInner
 from sailpoint.v2024.models.grant_type import GrantType
 from sailpoint.v2024.models.http_authentication_type import HttpAuthenticationType
 from sailpoint.v2024.models.http_config import HttpConfig

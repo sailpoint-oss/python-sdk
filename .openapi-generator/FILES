@@ -80,6 +80,7 @@ sailpoint/v2024/api/suggested_entitlement_description_api.py
 sailpoint/v2024/api/tagged_objects_api.py
 sailpoint/v2024/api/task_management_api.py
 sailpoint/v2024/api/tenant_api.py
+sailpoint/v2024/api/tenant_context_api.py
 sailpoint/v2024/api/transforms_api.py
 sailpoint/v2024/api/triggers_api.py
 sailpoint/v2024/api/ui_metadata_api.py
@@ -574,6 +575,7 @@ sailpoint/v2024/docs/GetHistoricalIdentityEvents200ResponseInner.md
 sailpoint/v2024/docs/GetOAuthClientResponse.md
 sailpoint/v2024/docs/GetPersonalAccessTokenResponse.md
 sailpoint/v2024/docs/GetRoleAssignments200ResponseInner.md
+sailpoint/v2024/docs/GetTenantContext200ResponseInner.md
 sailpoint/v2024/docs/GlobalTenantSecuritySettingsApi.md
 sailpoint/v2024/docs/GlobalTenantSecuritySettingsApideveloperSite_code_examples.yaml
 sailpoint/v2024/docs/GovernanceGroupsApi.md
@@ -1231,6 +1233,8 @@ sailpoint/v2024/docs/TenantApideveloperSite_code_examples.yaml
 sailpoint/v2024/docs/TenantConfigurationDetails.md
 sailpoint/v2024/docs/TenantConfigurationRequest.md
 sailpoint/v2024/docs/TenantConfigurationResponse.md
+sailpoint/v2024/docs/TenantContextApi.md
+sailpoint/v2024/docs/TenantContextApideveloperSite_code_examples.yaml
 sailpoint/v2024/docs/TenantUiMetadataItemResponse.md
 sailpoint/v2024/docs/TenantUiMetadataItemUpdateRequest.md
 sailpoint/v2024/docs/TestExternalExecuteWorkflow200Response.md
@@ -1756,6 +1760,7 @@ sailpoint/v2024/models/get_historical_identity_events200_response_inner.py
 sailpoint/v2024/models/get_o_auth_client_response.py
 sailpoint/v2024/models/get_personal_access_token_response.py
 sailpoint/v2024/models/get_role_assignments200_response_inner.py
+sailpoint/v2024/models/get_tenant_context200_response_inner.py
 sailpoint/v2024/models/grant_type.py
 sailpoint/v2024/models/http_authentication_type.py
 sailpoint/v2024/models/http_config.py
@@ -2848,6 +2853,7 @@ sailpoint/v2024/test/test_get_historical_identity_events200_response_inner.py
 sailpoint/v2024/test/test_get_o_auth_client_response.py
 sailpoint/v2024/test/test_get_personal_access_token_response.py
 sailpoint/v2024/test/test_get_role_assignments200_response_inner.py
+sailpoint/v2024/test/test_get_tenant_context200_response_inner.py
 sailpoint/v2024/test/test_global_tenant_security_settings_api.py
 sailpoint/v2024/test/test_governance_groups_api.py
 sailpoint/v2024/test/test_grant_type.py
@@ -3453,6 +3459,7 @@ sailpoint/v2024/test/test_tenant_api.py
 sailpoint/v2024/test/test_tenant_configuration_details.py
 sailpoint/v2024/test/test_tenant_configuration_request.py
 sailpoint/v2024/test/test_tenant_configuration_response.py
+sailpoint/v2024/test/test_tenant_context_api.py
 sailpoint/v2024/test/test_tenant_ui_metadata_item_response.py
 sailpoint/v2024/test/test_tenant_ui_metadata_item_update_request.py
 sailpoint/v2024/test/test_test_external_execute_workflow200_response.py

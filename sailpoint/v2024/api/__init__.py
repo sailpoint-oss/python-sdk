@@ -79,6 +79,7 @@ from sailpoint.v2024.api.suggested_entitlement_description_api import SuggestedE
 from sailpoint.v2024.api.tagged_objects_api import TaggedObjectsApi
 from sailpoint.v2024.api.task_management_api import TaskManagementApi
 from sailpoint.v2024.api.tenant_api import TenantApi
+from sailpoint.v2024.api.tenant_context_api import TenantContextApi
 from sailpoint.v2024.api.transforms_api import TransformsApi
 from sailpoint.v2024.api.triggers_api import TriggersApi
 from sailpoint.v2024.api.ui_metadata_api import UIMetadataApi
