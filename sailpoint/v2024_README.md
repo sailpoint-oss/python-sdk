@@ -197,10 +197,12 @@ Class | Method | HTTP request | Description
 *ConfigurationHubApi* | [**create_deploy**](sailpoint/v2024/docs/ConfigurationHubApi.md#create_deploy) | **POST** /configuration-hub/deploys | Create a Deploy
 *ConfigurationHubApi* | [**create_object_mapping**](sailpoint/v2024/docs/ConfigurationHubApi.md#create_object_mapping) | **POST** /configuration-hub/object-mappings/{sourceOrg} | Creates an object mapping
 *ConfigurationHubApi* | [**create_object_mappings**](sailpoint/v2024/docs/ConfigurationHubApi.md#create_object_mappings) | **POST** /configuration-hub/object-mappings/{sourceOrg}/bulk-create | Bulk creates object mappings
+*ConfigurationHubApi* | [**create_scheduled_action**](sailpoint/v2024/docs/ConfigurationHubApi.md#create_scheduled_action) | **POST** /configuration-hub/scheduled-actions | Create Scheduled Action
 *ConfigurationHubApi* | [**create_uploaded_configuration**](sailpoint/v2024/docs/ConfigurationHubApi.md#create_uploaded_configuration) | **POST** /configuration-hub/backups/uploads | Upload a Configuration
 *ConfigurationHubApi* | [**delete_backup**](sailpoint/v2024/docs/ConfigurationHubApi.md#delete_backup) | **DELETE** /configuration-hub/backups/{id} | Delete a Backup
 *ConfigurationHubApi* | [**delete_draft**](sailpoint/v2024/docs/ConfigurationHubApi.md#delete_draft) | **DELETE** /configuration-hub/drafts/{id} | Delete a draft
 *ConfigurationHubApi* | [**delete_object_mapping**](sailpoint/v2024/docs/ConfigurationHubApi.md#delete_object_mapping) | **DELETE** /configuration-hub/object-mappings/{sourceOrg}/{objectMappingId} | Deletes an object mapping
+*ConfigurationHubApi* | [**delete_scheduled_action**](sailpoint/v2024/docs/ConfigurationHubApi.md#delete_scheduled_action) | **DELETE** /configuration-hub/scheduled-actions/{id} | Delete Scheduled Action
 *ConfigurationHubApi* | [**delete_uploaded_configuration**](sailpoint/v2024/docs/ConfigurationHubApi.md#delete_uploaded_configuration) | **DELETE** /configuration-hub/backups/uploads/{id} | Delete an Uploaded Configuration
 *ConfigurationHubApi* | [**get_deploy**](sailpoint/v2024/docs/ConfigurationHubApi.md#get_deploy) | **GET** /configuration-hub/deploys/{id} | Get a Deploy
 *ConfigurationHubApi* | [**get_object_mappings**](sailpoint/v2024/docs/ConfigurationHubApi.md#get_object_mappings) | **GET** /configuration-hub/object-mappings/{sourceOrg} | Gets list of object mappings
@@ -208,8 +210,10 @@ Class | Method | HTTP request | Description
 *ConfigurationHubApi* | [**list_backups**](sailpoint/v2024/docs/ConfigurationHubApi.md#list_backups) | **GET** /configuration-hub/backups | List Backups
 *ConfigurationHubApi* | [**list_deploys**](sailpoint/v2024/docs/ConfigurationHubApi.md#list_deploys) | **GET** /configuration-hub/deploys | List Deploys
 *ConfigurationHubApi* | [**list_drafts**](sailpoint/v2024/docs/ConfigurationHubApi.md#list_drafts) | **GET** /configuration-hub/drafts | List Drafts
+*ConfigurationHubApi* | [**list_scheduled_actions**](sailpoint/v2024/docs/ConfigurationHubApi.md#list_scheduled_actions) | **GET** /configuration-hub/scheduled-actions | List Scheduled Actions
 *ConfigurationHubApi* | [**list_uploaded_configurations**](sailpoint/v2024/docs/ConfigurationHubApi.md#list_uploaded_configurations) | **GET** /configuration-hub/backups/uploads | List Uploaded Configurations
 *ConfigurationHubApi* | [**update_object_mappings**](sailpoint/v2024/docs/ConfigurationHubApi.md#update_object_mappings) | **POST** /configuration-hub/object-mappings/{sourceOrg}/bulk-patch | Bulk updates object mappings
+*ConfigurationHubApi* | [**update_scheduled_action**](sailpoint/v2024/docs/ConfigurationHubApi.md#update_scheduled_action) | **PATCH** /configuration-hub/scheduled-actions/{id} | Update Scheduled Action
 *ConnectorRuleManagementApi* | [**create_connector_rule**](sailpoint/v2024/docs/ConnectorRuleManagementApi.md#create_connector_rule) | **POST** /connector-rules | Create Connector Rule
 *ConnectorRuleManagementApi* | [**delete_connector_rule**](sailpoint/v2024/docs/ConnectorRuleManagementApi.md#delete_connector_rule) | **DELETE** /connector-rules/{id} | Delete Connector Rule
 *ConnectorRuleManagementApi* | [**get_connector_rule**](sailpoint/v2024/docs/ConnectorRuleManagementApi.md#get_connector_rule) | **GET** /connector-rules/{id} | Get Connector Rule
@@ -1575,6 +1579,13 @@ Class | Method | HTTP request | Description
  - [ScheduleHours](sailpoint/v2024/docs/ScheduleHours.md)
  - [ScheduleMonths](sailpoint/v2024/docs/ScheduleMonths.md)
  - [ScheduleType](sailpoint/v2024/docs/ScheduleType.md)
+ - [ScheduledActionPayload](sailpoint/v2024/docs/ScheduledActionPayload.md)
+ - [ScheduledActionPayloadContent](sailpoint/v2024/docs/ScheduledActionPayloadContent.md)
+ - [ScheduledActionPayloadContentBackupOptions](sailpoint/v2024/docs/ScheduledActionPayloadContentBackupOptions.md)
+ - [ScheduledActionResponse](sailpoint/v2024/docs/ScheduledActionResponse.md)
+ - [ScheduledActionResponseContent](sailpoint/v2024/docs/ScheduledActionResponseContent.md)
+ - [ScheduledActionResponseContentBackupOptions](sailpoint/v2024/docs/ScheduledActionResponseContentBackupOptions.md)
+ - [ScheduledActionResponseContentBackupOptionsObjectOptionsValue](sailpoint/v2024/docs/ScheduledActionResponseContentBackupOptionsObjectOptionsValue.md)
  - [ScheduledAttributes](sailpoint/v2024/docs/ScheduledAttributes.md)
  - [ScheduledSearch](sailpoint/v2024/docs/ScheduledSearch.md)
  - [ScheduledSearchAllOfOwner](sailpoint/v2024/docs/ScheduledSearchAllOfOwner.md)
