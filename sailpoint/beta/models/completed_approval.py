@@ -30,6 +30,7 @@ from sailpoint.beta.models.completed_approval_pre_approval_trigger_result import
 from sailpoint.beta.models.completed_approval_reviewed_by import CompletedApprovalReviewedBy
 from sailpoint.beta.models.completed_approval_state import CompletedApprovalState
 from sailpoint.beta.models.requestable_object_reference import RequestableObjectReference
+from sailpoint.beta.models.requested_account_ref import RequestedAccountRef
 from sailpoint.beta.models.requested_item_status_requested_for import RequestedItemStatusRequestedFor
 from sailpoint.beta.models.sod_violation_context_check_completed1 import SodViolationContextCheckCompleted1
 from typing import Optional, Set
@@ -62,7 +63,8 @@ class CompletedApproval(BaseModel):
     sod_violation_context: Optional[SodViolationContextCheckCompleted1] = Field(default=None, alias="sodViolationContext")
     pre_approval_trigger_result: Optional[CompletedApprovalPreApprovalTriggerResult] = Field(default=None, alias="preApprovalTriggerResult")
     client_metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Arbitrary key-value pairs provided during the request.", alias="clientMetadata")
-    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "requestCreated", "requestType", "requester", "requestedFor", "reviewedBy", "owner", "requestedObject", "requesterComment", "reviewerComment", "previousReviewersComments", "forwardHistory", "commentRequiredWhenRejected", "state", "removeDate", "removeDateUpdateRequested", "currentRemoveDate", "sodViolationContext", "preApprovalTriggerResult", "clientMetadata"]
+    requested_accounts: Optional[List[RequestedAccountRef]] = Field(default=None, description="The accounts selected by the user for the access to be provisioned on, in case they have multiple accounts on one or more sources.", alias="requestedAccounts")
+    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "requestCreated", "requestType", "requester", "requestedFor", "reviewedBy", "owner", "requestedObject", "requesterComment", "reviewerComment", "previousReviewersComments", "forwardHistory", "commentRequiredWhenRejected", "state", "removeDate", "removeDateUpdateRequested", "currentRemoveDate", "sodViolationContext", "preApprovalTriggerResult", "clientMetadata", "requestedAccounts"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -144,6 +146,13 @@ class CompletedApproval(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of pre_approval_trigger_result
         if self.pre_approval_trigger_result:
             _dict['preApprovalTriggerResult'] = self.pre_approval_trigger_result.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in requested_accounts (list)
+        _items = []
+        if self.requested_accounts:
+            for _item_requested_accounts in self.requested_accounts:
+                if _item_requested_accounts:
+                    _items.append(_item_requested_accounts.to_dict())
+            _dict['requestedAccounts'] = _items
         # set to None if request_type (nullable) is None
         # and model_fields_set contains the field
         if self.request_type is None and "request_type" in self.model_fields_set:
@@ -173,6 +182,11 @@ class CompletedApproval(BaseModel):
         # and model_fields_set contains the field
         if self.pre_approval_trigger_result is None and "pre_approval_trigger_result" in self.model_fields_set:
             _dict['preApprovalTriggerResult'] = None
+
+        # set to None if requested_accounts (nullable) is None
+        # and model_fields_set contains the field
+        if self.requested_accounts is None and "requested_accounts" in self.model_fields_set:
+            _dict['requestedAccounts'] = None
 
         return _dict
 
@@ -208,7 +222,8 @@ class CompletedApproval(BaseModel):
             "currentRemoveDate": obj.get("currentRemoveDate"),
             "sodViolationContext": SodViolationContextCheckCompleted1.from_dict(obj["sodViolationContext"]) if obj.get("sodViolationContext") is not None else None,
             "preApprovalTriggerResult": CompletedApprovalPreApprovalTriggerResult.from_dict(obj["preApprovalTriggerResult"]) if obj.get("preApprovalTriggerResult") is not None else None,
-            "clientMetadata": obj.get("clientMetadata")
+            "clientMetadata": obj.get("clientMetadata"),
+            "requestedAccounts": [RequestedAccountRef.from_dict(_item) for _item in obj["requestedAccounts"]] if obj.get("requestedAccounts") is not None else None
         })
         return _obj
 

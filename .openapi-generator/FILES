@@ -934,6 +934,7 @@ sailpoint/v2024/docs/RequestableObjectRequestStatus.md
 sailpoint/v2024/docs/RequestableObjectType.md
 sailpoint/v2024/docs/RequestableObjectsApi.md
 sailpoint/v2024/docs/RequestableObjectsApideveloperSite_code_examples.yaml
+sailpoint/v2024/docs/RequestedAccountRef.md
 sailpoint/v2024/docs/RequestedItemDetails.md
 sailpoint/v2024/docs/RequestedItemStatus.md
 sailpoint/v2024/docs/RequestedItemStatusCancelledRequestDetails.md
@@ -2048,6 +2049,7 @@ sailpoint/v2024/models/requestable_object.py
 sailpoint/v2024/models/requestable_object_reference.py
 sailpoint/v2024/models/requestable_object_request_status.py
 sailpoint/v2024/models/requestable_object_type.py
+sailpoint/v2024/models/requested_account_ref.py
 sailpoint/v2024/models/requested_item_details.py
 sailpoint/v2024/models/requested_item_status.py
 sailpoint/v2024/models/requested_item_status_cancelled_request_details.py
@@ -3172,6 +3174,7 @@ sailpoint/v2024/test/test_requestable_object_reference.py
 sailpoint/v2024/test/test_requestable_object_request_status.py
 sailpoint/v2024/test/test_requestable_object_type.py
 sailpoint/v2024/test/test_requestable_objects_api.py
+sailpoint/v2024/test/test_requested_account_ref.py
 sailpoint/v2024/test/test_requested_item_details.py
 sailpoint/v2024/test/test_requested_item_status.py
 sailpoint/v2024/test/test_requested_item_status_cancelled_request_details.py

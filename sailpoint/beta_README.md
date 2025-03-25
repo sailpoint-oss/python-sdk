@@ -1235,6 +1235,7 @@ Class | Method | HTTP request | Description
  - [RequestableObjectReference](sailpoint/beta/docs/RequestableObjectReference.md)
  - [RequestableObjectRequestStatus](sailpoint/beta/docs/RequestableObjectRequestStatus.md)
  - [RequestableObjectType](sailpoint/beta/docs/RequestableObjectType.md)
+ - [RequestedAccountRef](sailpoint/beta/docs/RequestedAccountRef.md)
  - [RequestedItemDetails](sailpoint/beta/docs/RequestedItemDetails.md)
  - [RequestedItemStatus](sailpoint/beta/docs/RequestedItemStatus.md)
  - [RequestedItemStatusCancelledRequestDetails](sailpoint/beta/docs/RequestedItemStatusCancelledRequestDetails.md)

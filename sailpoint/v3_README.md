@@ -847,6 +847,7 @@ Class | Method | HTTP request | Description
  - [RequestableObjectReference](sailpoint/v3/docs/RequestableObjectReference.md)
  - [RequestableObjectRequestStatus](sailpoint/v3/docs/RequestableObjectRequestStatus.md)
  - [RequestableObjectType](sailpoint/v3/docs/RequestableObjectType.md)
+ - [RequestedAccountRef](sailpoint/v3/docs/RequestedAccountRef.md)
  - [RequestedItemDetails](sailpoint/v3/docs/RequestedItemDetails.md)
  - [RequestedItemStatus](sailpoint/v3/docs/RequestedItemStatus.md)
  - [RequestedItemStatusCancelledRequestDetails](sailpoint/v3/docs/RequestedItemStatusCancelledRequestDetails.md)

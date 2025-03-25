@@ -421,6 +421,7 @@ from sailpoint.v3.models.requestable_object import RequestableObject
 from sailpoint.v3.models.requestable_object_reference import RequestableObjectReference
 from sailpoint.v3.models.requestable_object_request_status import RequestableObjectRequestStatus
 from sailpoint.v3.models.requestable_object_type import RequestableObjectType
+from sailpoint.v3.models.requested_account_ref import RequestedAccountRef
 from sailpoint.v3.models.requested_item_details import RequestedItemDetails
 from sailpoint.v3.models.requested_item_status import RequestedItemStatus
 from sailpoint.v3.models.requested_item_status_cancelled_request_details import RequestedItemStatusCancelledRequestDetails
