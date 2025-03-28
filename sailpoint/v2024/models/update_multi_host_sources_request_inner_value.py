@@ -22,9 +22,9 @@ from pydantic import StrictStr, Field
 from typing import Union, List, Set, Optional, Dict
 from typing_extensions import Literal, Self
 
-JSONPATCHOPERATIONVALUE_ONE_OF_SCHEMAS = ["List[ArrayInner]", "bool", "int", "object", "str"]
+UPDATEMULTIHOSTSOURCESREQUESTINNERVALUE_ONE_OF_SCHEMAS = ["List[ArrayInner]", "bool", "int", "object", "str"]
 
-class JsonPatchOperationValue(BaseModel):
+class UpdateMultiHostSourcesRequestInnerValue(BaseModel):
     """
     The value to be used for the operation, required for \"add\" and \"replace\" operations
     """
@@ -59,7 +59,7 @@ class JsonPatchOperationValue(BaseModel):
 
     @field_validator('actual_instance')
     def actual_instance_must_validate_oneof(cls, v):
-        instance = JsonPatchOperationValue.model_construct()
+        instance = UpdateMultiHostSourcesRequestInnerValue.model_construct()
         error_messages = []
         match = 0
         # validate data type: str
@@ -94,10 +94,10 @@ class JsonPatchOperationValue(BaseModel):
             error_messages.append(str(e))
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when setting `actual_instance` in JsonPatchOperationValue with oneOf schemas: List[ArrayInner], bool, int, object, str. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when setting `actual_instance` in UpdateMultiHostSourcesRequestInnerValue with oneOf schemas: List[ArrayInner], bool, int, object, str. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when setting `actual_instance` in JsonPatchOperationValue with oneOf schemas: List[ArrayInner], bool, int, object, str. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in UpdateMultiHostSourcesRequestInnerValue with oneOf schemas: List[ArrayInner], bool, int, object, str. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -160,10 +160,10 @@ class JsonPatchOperationValue(BaseModel):
 
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when deserializing the JSON string into JsonPatchOperationValue with oneOf schemas: List[ArrayInner], bool, int, object, str. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when deserializing the JSON string into UpdateMultiHostSourcesRequestInnerValue with oneOf schemas: List[ArrayInner], bool, int, object, str. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into JsonPatchOperationValue with oneOf schemas: List[ArrayInner], bool, int, object, str. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into UpdateMultiHostSourcesRequestInnerValue with oneOf schemas: List[ArrayInner], bool, int, object, str. Details: " + ", ".join(error_messages))
         else:
             return instance
 

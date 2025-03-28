@@ -214,6 +214,12 @@ Class | Method | HTTP request | Description
 *ConfigurationHubApi* | [**list_uploaded_configurations**](sailpoint/v2024/docs/ConfigurationHubApi.md#list_uploaded_configurations) | **GET** /configuration-hub/backups/uploads | List Uploaded Configurations
 *ConfigurationHubApi* | [**update_object_mappings**](sailpoint/v2024/docs/ConfigurationHubApi.md#update_object_mappings) | **POST** /configuration-hub/object-mappings/{sourceOrg}/bulk-patch | Bulk updates object mappings
 *ConfigurationHubApi* | [**update_scheduled_action**](sailpoint/v2024/docs/ConfigurationHubApi.md#update_scheduled_action) | **PATCH** /configuration-hub/scheduled-actions/{id} | Update Scheduled Action
+*ConnectorCustomizersApi* | [**create_connector_customizer**](sailpoint/v2024/docs/ConnectorCustomizersApi.md#create_connector_customizer) | **POST** /connector-customizers | Create Connector Customizer
+*ConnectorCustomizersApi* | [**create_connector_customizer_version**](sailpoint/v2024/docs/ConnectorCustomizersApi.md#create_connector_customizer_version) | **POST** /connector-customizers/{id}/versions | Creates a connector customizer version
+*ConnectorCustomizersApi* | [**delete_connector_customizer**](sailpoint/v2024/docs/ConnectorCustomizersApi.md#delete_connector_customizer) | **DELETE** /connector-customizers/{id} | Delete Connector Customizer
+*ConnectorCustomizersApi* | [**get_connector_customizer**](sailpoint/v2024/docs/ConnectorCustomizersApi.md#get_connector_customizer) | **GET** /connector-customizers/{id} | Get connector customizer
+*ConnectorCustomizersApi* | [**list_connector_customizers**](sailpoint/v2024/docs/ConnectorCustomizersApi.md#list_connector_customizers) | **GET** /connector-customizers | List All Connector Customizers
+*ConnectorCustomizersApi* | [**put_connector_customizer**](sailpoint/v2024/docs/ConnectorCustomizersApi.md#put_connector_customizer) | **PUT** /connector-customizers/{id} | Update Connector Customizer
 *ConnectorRuleManagementApi* | [**create_connector_rule**](sailpoint/v2024/docs/ConnectorRuleManagementApi.md#create_connector_rule) | **POST** /connector-rules | Create Connector Rule
 *ConnectorRuleManagementApi* | [**delete_connector_rule**](sailpoint/v2024/docs/ConnectorRuleManagementApi.md#delete_connector_rule) | **DELETE** /connector-rules/{id} | Delete Connector Rule
 *ConnectorRuleManagementApi* | [**get_connector_rule**](sailpoint/v2024/docs/ConnectorRuleManagementApi.md#get_connector_rule) | **GET** /connector-rules/{id} | Get Connector Rule
@@ -414,6 +420,11 @@ Class | Method | HTTP request | Description
 *ManagedClientsApi* | [**get_managed_client_status**](sailpoint/v2024/docs/ManagedClientsApi.md#get_managed_client_status) | **GET** /managed-clients/{id}/status | Get Managed Client Status
 *ManagedClientsApi* | [**get_managed_clients**](sailpoint/v2024/docs/ManagedClientsApi.md#get_managed_clients) | **GET** /managed-clients | Get Managed Clients
 *ManagedClientsApi* | [**update_managed_client**](sailpoint/v2024/docs/ManagedClientsApi.md#update_managed_client) | **PATCH** /managed-clients/{id} | Update Managed Client
+*ManagedClusterTypesApi* | [**create_managed_cluster_type**](sailpoint/v2024/docs/ManagedClusterTypesApi.md#create_managed_cluster_type) | **POST** /managed-cluster-types | Create new Managed Cluster Type
+*ManagedClusterTypesApi* | [**delete_managed_cluster_type**](sailpoint/v2024/docs/ManagedClusterTypesApi.md#delete_managed_cluster_type) | **DELETE** /managed-cluster-types/{id} | Delete a Managed Cluster Type
+*ManagedClusterTypesApi* | [**get_managed_cluster_type**](sailpoint/v2024/docs/ManagedClusterTypesApi.md#get_managed_cluster_type) | **GET** /managed-cluster-types/{id} | Get a Managed Cluster Type
+*ManagedClusterTypesApi* | [**get_managed_cluster_types**](sailpoint/v2024/docs/ManagedClusterTypesApi.md#get_managed_cluster_types) | **GET** /managed-cluster-types | Get Managed Cluster Types
+*ManagedClusterTypesApi* | [**update_managed_cluster_type**](sailpoint/v2024/docs/ManagedClusterTypesApi.md#update_managed_cluster_type) | **PATCH** /managed-cluster-types/{id} | Update a Managed Cluster Type
 *ManagedClustersApi* | [**create_managed_cluster**](sailpoint/v2024/docs/ManagedClustersApi.md#create_managed_cluster) | **POST** /managed-clusters | Create Create Managed Cluster
 *ManagedClustersApi* | [**delete_managed_cluster**](sailpoint/v2024/docs/ManagedClustersApi.md#delete_managed_cluster) | **DELETE** /managed-clusters/{id} | Delete Managed Cluster
 *ManagedClustersApi* | [**get_client_log_configuration**](sailpoint/v2024/docs/ManagedClustersApi.md#get_client_log_configuration) | **GET** /managed-clusters/{id}/log-config | Get Managed Cluster Log Configuration
@@ -422,6 +433,19 @@ Class | Method | HTTP request | Description
 *ManagedClustersApi* | [**put_client_log_configuration**](sailpoint/v2024/docs/ManagedClustersApi.md#put_client_log_configuration) | **PUT** /managed-clusters/{id}/log-config | Update Managed Cluster Log Configuration
 *ManagedClustersApi* | [**update**](sailpoint/v2024/docs/ManagedClustersApi.md#update) | **POST** /managed-clusters/{id}/manualUpgrade | Trigger Manual Upgrade for Managed Cluster
 *ManagedClustersApi* | [**update_managed_cluster**](sailpoint/v2024/docs/ManagedClustersApi.md#update_managed_cluster) | **PATCH** /managed-clusters/{id} | Update Managed Cluster
+*MultiHostIntegrationApi* | [**create_multi_host_integration**](sailpoint/v2024/docs/MultiHostIntegrationApi.md#create_multi_host_integration) | **POST** /multihosts | Create Multi-Host Integration
+*MultiHostIntegrationApi* | [**create_sources_within_multi_host**](sailpoint/v2024/docs/MultiHostIntegrationApi.md#create_sources_within_multi_host) | **POST** /multihosts/{multihostId} | Create Sources Within Multi-Host Integration
+*MultiHostIntegrationApi* | [**delete_multi_host**](sailpoint/v2024/docs/MultiHostIntegrationApi.md#delete_multi_host) | **DELETE** /multihosts/{multihostId} | Delete Multi-Host Integration
+*MultiHostIntegrationApi* | [**get_acct_aggregation_groups**](sailpoint/v2024/docs/MultiHostIntegrationApi.md#get_acct_aggregation_groups) | **GET** /multihosts/{multihostId}/acctAggregationGroups | List Account-Aggregation-Groups by Multi-Host ID
+*MultiHostIntegrationApi* | [**get_entitlement_aggregation_groups**](sailpoint/v2024/docs/MultiHostIntegrationApi.md#get_entitlement_aggregation_groups) | **GET** /multihosts/{multiHostId}/entitlementAggregationGroups | List Entitlement-Aggregation-Groups by Integration ID
+*MultiHostIntegrationApi* | [**get_multi_host_integrations**](sailpoint/v2024/docs/MultiHostIntegrationApi.md#get_multi_host_integrations) | **GET** /multihosts/{multihostId} | Get Multi-Host Integration By ID
+*MultiHostIntegrationApi* | [**get_multi_host_integrations_list**](sailpoint/v2024/docs/MultiHostIntegrationApi.md#get_multi_host_integrations_list) | **GET** /multihosts | List All Existing Multi-Host Integrations
+*MultiHostIntegrationApi* | [**get_multi_host_source_creation_errors**](sailpoint/v2024/docs/MultiHostIntegrationApi.md#get_multi_host_source_creation_errors) | **GET** /multihosts/{multiHostId}/sources/errors | List Multi-Host Source Creation Errors
+*MultiHostIntegrationApi* | [**get_multihost_integration_types**](sailpoint/v2024/docs/MultiHostIntegrationApi.md#get_multihost_integration_types) | **GET** /multihosts/types | List Multi-Host Integration Types
+*MultiHostIntegrationApi* | [**get_sources_within_multi_host**](sailpoint/v2024/docs/MultiHostIntegrationApi.md#get_sources_within_multi_host) | **GET** /multihosts/{multihostId}/sources | List Sources Within Multi-Host Integration
+*MultiHostIntegrationApi* | [**test_connection_multi_host_sources**](sailpoint/v2024/docs/MultiHostIntegrationApi.md#test_connection_multi_host_sources) | **POST** /multihosts/{multihostId}/sources/testConnection | Test Configuration For Multi-Host Integration
+*MultiHostIntegrationApi* | [**test_source_connection_multihost**](sailpoint/v2024/docs/MultiHostIntegrationApi.md#test_source_connection_multihost) | **GET** /multihosts/{multihostId}/sources/{sourceId}/testConnection | Test Configuration For Multi-Host Integration&#39;s Single Source
+*MultiHostIntegrationApi* | [**update_multi_host_sources**](sailpoint/v2024/docs/MultiHostIntegrationApi.md#update_multi_host_sources) | **PATCH** /multihosts/{multihostId} | Update Multi-Host Integration
 *NonEmployeeLifecycleManagementApi* | [**approve_non_employee_request**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#approve_non_employee_request) | **POST** /non-employee-approvals/{id}/approve | Approve a Non-Employee Request
 *NonEmployeeLifecycleManagementApi* | [**create_non_employee_record**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#create_non_employee_record) | **POST** /non-employee-records | Create Non-Employee Record
 *NonEmployeeLifecycleManagementApi* | [**create_non_employee_request**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#create_non_employee_request) | **POST** /non-employee-requests | Create Non-Employee Request
@@ -621,7 +645,7 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**get_provisioning_policy**](sailpoint/v2024/docs/SourcesApi.md#get_provisioning_policy) | **GET** /sources/{sourceId}/provisioning-policies/{usageType} | Get Provisioning Policy by UsageType
 *SourcesApi* | [**get_source**](sailpoint/v2024/docs/SourcesApi.md#get_source) | **GET** /sources/{id} | Get Source by ID
 *SourcesApi* | [**get_source_attr_sync_config**](sailpoint/v2024/docs/SourcesApi.md#get_source_attr_sync_config) | **GET** /sources/{id}/attribute-sync-config | Attribute Sync Config
-*SourcesApi* | [**get_source_config**](sailpoint/v2024/docs/SourcesApi.md#get_source_config) | **GET** /sources/{id}/connectors/source-config | Gets source config with language translations
+*SourcesApi* | [**get_source_config**](sailpoint/v2024/docs/SourcesApi.md#get_source_config) | **GET** /sources/{id}/connectors/source-config | Gets source config with language-translations
 *SourcesApi* | [**get_source_connections**](sailpoint/v2024/docs/SourcesApi.md#get_source_connections) | **GET** /sources/{sourceId}/connections | Get Source Connections by ID
 *SourcesApi* | [**get_source_entitlement_request_config**](sailpoint/v2024/docs/SourcesApi.md#get_source_entitlement_request_config) | **GET** /sources/{id}/entitlement-request-config | Get Source Entitlement Request Configuration
 *SourcesApi* | [**get_source_health**](sailpoint/v2024/docs/SourcesApi.md#get_source_health) | **GET** /sources/{sourceId}/source-health | Fetches source health by id
@@ -636,7 +660,6 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**import_uncorrelated_accounts**](sailpoint/v2024/docs/SourcesApi.md#import_uncorrelated_accounts) | **POST** /sources/{id}/load-uncorrelated-accounts | Process Uncorrelated Accounts
 *SourcesApi* | [**list_provisioning_policies**](sailpoint/v2024/docs/SourcesApi.md#list_provisioning_policies) | **GET** /sources/{sourceId}/provisioning-policies | Lists ProvisioningPolicies
 *SourcesApi* | [**list_sources**](sailpoint/v2024/docs/SourcesApi.md#list_sources) | **GET** /sources | Lists all sources in IdentityNow.
-*SourcesApi* | [**peek_resource_objects**](sailpoint/v2024/docs/SourcesApi.md#peek_resource_objects) | **POST** /sources/{sourceId}/connector/peek-resource-objects | Peek source connector&#39;s resource objects
 *SourcesApi* | [**ping_cluster**](sailpoint/v2024/docs/SourcesApi.md#ping_cluster) | **POST** /sources/{sourceId}/connector/ping-cluster | Ping cluster for source connector
 *SourcesApi* | [**put_correlation_config**](sailpoint/v2024/docs/SourcesApi.md#put_correlation_config) | **PUT** /sources/{id}/correlation-config | Update Source Correlation Configuration
 *SourcesApi* | [**put_native_change_detection_config**](sailpoint/v2024/docs/SourcesApi.md#put_native_change_detection_config) | **PUT** /sources/{sourceId}/native-change-detection-config | Update Native Change Detection Configuration
@@ -644,6 +667,7 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**put_source**](sailpoint/v2024/docs/SourcesApi.md#put_source) | **PUT** /sources/{id} | Update Source (Full)
 *SourcesApi* | [**put_source_attr_sync_config**](sailpoint/v2024/docs/SourcesApi.md#put_source_attr_sync_config) | **PUT** /sources/{id}/attribute-sync-config | Update Attribute Sync Config
 *SourcesApi* | [**put_source_schema**](sailpoint/v2024/docs/SourcesApi.md#put_source_schema) | **PUT** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Full)
+*SourcesApi* | [**search_resource_objects**](sailpoint/v2024/docs/SourcesApi.md#search_resource_objects) | **POST** /sources/{sourceId}/connector/peek-resource-objects | Peek source connector&#39;s resource objects
 *SourcesApi* | [**sync_attributes_for_source**](sailpoint/v2024/docs/SourcesApi.md#sync_attributes_for_source) | **POST** /sources/{id}/synchronize-attributes | Synchronize single source attributes.
 *SourcesApi* | [**test_source_configuration**](sailpoint/v2024/docs/SourcesApi.md#test_source_configuration) | **POST** /sources/{sourceId}/connector/test-configuration | Test configuration for source connector
 *SourcesApi* | [**test_source_connection**](sailpoint/v2024/docs/SourcesApi.md#test_source_connection) | **POST** /sources/{sourceId}/connector/check-connection | Check connection for source connector.
@@ -1033,6 +1057,12 @@ Class | Method | HTTP request | Description
  - [ConflictingAccessCriteria](sailpoint/v2024/docs/ConflictingAccessCriteria.md)
  - [ConnectedObject](sailpoint/v2024/docs/ConnectedObject.md)
  - [ConnectedObjectType](sailpoint/v2024/docs/ConnectedObjectType.md)
+ - [ConnectorCustomizerCreateRequest](sailpoint/v2024/docs/ConnectorCustomizerCreateRequest.md)
+ - [ConnectorCustomizerCreateResponse](sailpoint/v2024/docs/ConnectorCustomizerCreateResponse.md)
+ - [ConnectorCustomizerUpdateRequest](sailpoint/v2024/docs/ConnectorCustomizerUpdateRequest.md)
+ - [ConnectorCustomizerUpdateResponse](sailpoint/v2024/docs/ConnectorCustomizerUpdateResponse.md)
+ - [ConnectorCustomizerVersionCreateResponse](sailpoint/v2024/docs/ConnectorCustomizerVersionCreateResponse.md)
+ - [ConnectorCustomizersResponse](sailpoint/v2024/docs/ConnectorCustomizersResponse.md)
  - [ConnectorDetail](sailpoint/v2024/docs/ConnectorDetail.md)
  - [ConnectorRuleCreateRequest](sailpoint/v2024/docs/ConnectorRuleCreateRequest.md)
  - [ConnectorRuleCreateRequestSignature](sailpoint/v2024/docs/ConnectorRuleCreateRequestSignature.md)
@@ -1252,7 +1282,6 @@ Class | Method | HTTP request | Description
  - [InvocationStatusType](sailpoint/v2024/docs/InvocationStatusType.md)
  - [JsonPatch](sailpoint/v2024/docs/JsonPatch.md)
  - [JsonPatchOperation](sailpoint/v2024/docs/JsonPatchOperation.md)
- - [JsonPatchOperationValue](sailpoint/v2024/docs/JsonPatchOperationValue.md)
  - [KbaAnswerRequestItem](sailpoint/v2024/docs/KbaAnswerRequestItem.md)
  - [KbaAnswerResponseItem](sailpoint/v2024/docs/KbaAnswerResponseItem.md)
  - [KbaQuestion](sailpoint/v2024/docs/KbaQuestion.md)
@@ -1301,6 +1330,7 @@ Class | Method | HTTP request | Description
  - [ManagedClusterQueue](sailpoint/v2024/docs/ManagedClusterQueue.md)
  - [ManagedClusterRedis](sailpoint/v2024/docs/ManagedClusterRedis.md)
  - [ManagedClusterRequest](sailpoint/v2024/docs/ManagedClusterRequest.md)
+ - [ManagedClusterType](sailpoint/v2024/docs/ManagedClusterType.md)
  - [ManagedClusterTypes](sailpoint/v2024/docs/ManagedClusterTypes.md)
  - [ManagerCorrelationMapping](sailpoint/v2024/docs/ManagerCorrelationMapping.md)
  - [ManualDiscoverApplications](sailpoint/v2024/docs/ManualDiscoverApplications.md)
@@ -1319,6 +1349,17 @@ Class | Method | HTTP request | Description
  - [MfaDuoConfig](sailpoint/v2024/docs/MfaDuoConfig.md)
  - [MfaOktaConfig](sailpoint/v2024/docs/MfaOktaConfig.md)
  - [ModelSchema](sailpoint/v2024/docs/ModelSchema.md)
+ - [MultiHostIntegrationTemplateType](sailpoint/v2024/docs/MultiHostIntegrationTemplateType.md)
+ - [MultiHostIntegrations](sailpoint/v2024/docs/MultiHostIntegrations.md)
+ - [MultiHostIntegrationsAccountsFile](sailpoint/v2024/docs/MultiHostIntegrationsAccountsFile.md)
+ - [MultiHostIntegrationsAggScheduleUpdate](sailpoint/v2024/docs/MultiHostIntegrationsAggScheduleUpdate.md)
+ - [MultiHostIntegrationsBeforeProvisioningRule](sailpoint/v2024/docs/MultiHostIntegrationsBeforeProvisioningRule.md)
+ - [MultiHostIntegrationsConnectorAttributes](sailpoint/v2024/docs/MultiHostIntegrationsConnectorAttributes.md)
+ - [MultiHostIntegrationsConnectorAttributesConnectorFileUploadHistory](sailpoint/v2024/docs/MultiHostIntegrationsConnectorAttributesConnectorFileUploadHistory.md)
+ - [MultiHostIntegrationsConnectorAttributesMultiHostAttributes](sailpoint/v2024/docs/MultiHostIntegrationsConnectorAttributesMultiHostAttributes.md)
+ - [MultiHostIntegrationsCreate](sailpoint/v2024/docs/MultiHostIntegrationsCreate.md)
+ - [MultiHostIntegrationsCreateSources](sailpoint/v2024/docs/MultiHostIntegrationsCreateSources.md)
+ - [MultiHostSources](sailpoint/v2024/docs/MultiHostSources.md)
  - [MultiPolicyRequest](sailpoint/v2024/docs/MultiPolicyRequest.md)
  - [NativeChangeDetectionConfig](sailpoint/v2024/docs/NativeChangeDetectionConfig.md)
  - [NestedAggregation](sailpoint/v2024/docs/NestedAggregation.md)
@@ -1668,6 +1709,7 @@ Class | Method | HTTP request | Description
  - [SourceConnectionsDto](sailpoint/v2024/docs/SourceConnectionsDto.md)
  - [SourceCreated](sailpoint/v2024/docs/SourceCreated.md)
  - [SourceCreatedActor](sailpoint/v2024/docs/SourceCreatedActor.md)
+ - [SourceCreationErrors](sailpoint/v2024/docs/SourceCreationErrors.md)
  - [SourceDeleted](sailpoint/v2024/docs/SourceDeleted.md)
  - [SourceDeletedActor](sailpoint/v2024/docs/SourceDeletedActor.md)
  - [SourceEntitlementRequestConfig](sailpoint/v2024/docs/SourceEntitlementRequestConfig.md)
@@ -1738,6 +1780,7 @@ Class | Method | HTTP request | Description
  - [TestExternalExecuteWorkflow200Response](sailpoint/v2024/docs/TestExternalExecuteWorkflow200Response.md)
  - [TestExternalExecuteWorkflowRequest](sailpoint/v2024/docs/TestExternalExecuteWorkflowRequest.md)
  - [TestInvocation](sailpoint/v2024/docs/TestInvocation.md)
+ - [TestSourceConnectionMultihost200Response](sailpoint/v2024/docs/TestSourceConnectionMultihost200Response.md)
  - [TestWorkflow200Response](sailpoint/v2024/docs/TestWorkflow200Response.md)
  - [TestWorkflowRequest](sailpoint/v2024/docs/TestWorkflowRequest.md)
  - [TextQuery](sailpoint/v2024/docs/TextQuery.md)
@@ -1754,6 +1797,8 @@ Class | Method | HTTP request | Description
  - [UncorrelatedAccountsReportArguments](sailpoint/v2024/docs/UncorrelatedAccountsReportArguments.md)
  - [UpdateAccessProfilesInBulk412Response](sailpoint/v2024/docs/UpdateAccessProfilesInBulk412Response.md)
  - [UpdateDetail](sailpoint/v2024/docs/UpdateDetail.md)
+ - [UpdateMultiHostSourcesRequestInner](sailpoint/v2024/docs/UpdateMultiHostSourcesRequestInner.md)
+ - [UpdateMultiHostSourcesRequestInnerValue](sailpoint/v2024/docs/UpdateMultiHostSourcesRequestInnerValue.md)
  - [UsageType](sailpoint/v2024/docs/UsageType.md)
  - [UserApp](sailpoint/v2024/docs/UserApp.md)
  - [UserAppAccount](sailpoint/v2024/docs/UserAppAccount.md)

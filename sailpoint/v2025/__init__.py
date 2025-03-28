@@ -37,6 +37,7 @@ from sailpoint.v2025.api.certification_campaigns_api import CertificationCampaig
 from sailpoint.v2025.api.certification_summaries_api import CertificationSummariesApi
 from sailpoint.v2025.api.certifications_api import CertificationsApi
 from sailpoint.v2025.api.configuration_hub_api import ConfigurationHubApi
+from sailpoint.v2025.api.connector_customizers_api import ConnectorCustomizersApi
 from sailpoint.v2025.api.connector_rule_management_api import ConnectorRuleManagementApi
 from sailpoint.v2025.api.connectors_api import ConnectorsApi
 from sailpoint.v2025.api.custom_forms_api import CustomFormsApi
@@ -62,7 +63,9 @@ from sailpoint.v2025.api.mfa_configuration_api import MFAConfigurationApi
 from sailpoint.v2025.api.machine_accounts_api import MachineAccountsApi
 from sailpoint.v2025.api.machine_identities_api import MachineIdentitiesApi
 from sailpoint.v2025.api.managed_clients_api import ManagedClientsApi
+from sailpoint.v2025.api.managed_cluster_types_api import ManagedClusterTypesApi
 from sailpoint.v2025.api.managed_clusters_api import ManagedClustersApi
+from sailpoint.v2025.api.multi_host_integration_api import MultiHostIntegrationApi
 from sailpoint.v2025.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi
 from sailpoint.v2025.api.notifications_api import NotificationsApi
 from sailpoint.v2025.api.o_auth_clients_api import OAuthClientsApi
@@ -410,6 +413,12 @@ from sailpoint.v2025.models.configuration_response import ConfigurationResponse
 from sailpoint.v2025.models.conflicting_access_criteria import ConflictingAccessCriteria
 from sailpoint.v2025.models.connected_object import ConnectedObject
 from sailpoint.v2025.models.connected_object_type import ConnectedObjectType
+from sailpoint.v2025.models.connector_customizer_create_request import ConnectorCustomizerCreateRequest
+from sailpoint.v2025.models.connector_customizer_create_response import ConnectorCustomizerCreateResponse
+from sailpoint.v2025.models.connector_customizer_update_request import ConnectorCustomizerUpdateRequest
+from sailpoint.v2025.models.connector_customizer_update_response import ConnectorCustomizerUpdateResponse
+from sailpoint.v2025.models.connector_customizer_version_create_response import ConnectorCustomizerVersionCreateResponse
+from sailpoint.v2025.models.connector_customizers_response import ConnectorCustomizersResponse
 from sailpoint.v2025.models.connector_detail import ConnectorDetail
 from sailpoint.v2025.models.connector_rule_create_request import ConnectorRuleCreateRequest
 from sailpoint.v2025.models.connector_rule_create_request_signature import ConnectorRuleCreateRequestSignature
@@ -631,7 +640,6 @@ from sailpoint.v2025.models.invocation_status import InvocationStatus
 from sailpoint.v2025.models.invocation_status_type import InvocationStatusType
 from sailpoint.v2025.models.json_patch import JsonPatch
 from sailpoint.v2025.models.json_patch_operation import JsonPatchOperation
-from sailpoint.v2025.models.json_patch_operation_value import JsonPatchOperationValue
 from sailpoint.v2025.models.kba_answer_request_item import KbaAnswerRequestItem
 from sailpoint.v2025.models.kba_answer_response_item import KbaAnswerResponseItem
 from sailpoint.v2025.models.kba_question import KbaQuestion
@@ -680,6 +688,7 @@ from sailpoint.v2025.models.managed_cluster_key_pair import ManagedClusterKeyPai
 from sailpoint.v2025.models.managed_cluster_queue import ManagedClusterQueue
 from sailpoint.v2025.models.managed_cluster_redis import ManagedClusterRedis
 from sailpoint.v2025.models.managed_cluster_request import ManagedClusterRequest
+from sailpoint.v2025.models.managed_cluster_type import ManagedClusterType
 from sailpoint.v2025.models.managed_cluster_types import ManagedClusterTypes
 from sailpoint.v2025.models.manager_correlation_mapping import ManagerCorrelationMapping
 from sailpoint.v2025.models.manual_discover_applications import ManualDiscoverApplications
@@ -698,6 +707,17 @@ from sailpoint.v2025.models.mfa_config_test_response import MfaConfigTestRespons
 from sailpoint.v2025.models.mfa_duo_config import MfaDuoConfig
 from sailpoint.v2025.models.mfa_okta_config import MfaOktaConfig
 from sailpoint.v2025.models.model_schema import ModelSchema
+from sailpoint.v2025.models.multi_host_integration_template_type import MultiHostIntegrationTemplateType
+from sailpoint.v2025.models.multi_host_integrations import MultiHostIntegrations
+from sailpoint.v2025.models.multi_host_integrations_accounts_file import MultiHostIntegrationsAccountsFile
+from sailpoint.v2025.models.multi_host_integrations_agg_schedule_update import MultiHostIntegrationsAggScheduleUpdate
+from sailpoint.v2025.models.multi_host_integrations_before_provisioning_rule import MultiHostIntegrationsBeforeProvisioningRule
+from sailpoint.v2025.models.multi_host_integrations_connector_attributes import MultiHostIntegrationsConnectorAttributes
+from sailpoint.v2025.models.multi_host_integrations_connector_attributes_connector_file_upload_history import MultiHostIntegrationsConnectorAttributesConnectorFileUploadHistory
+from sailpoint.v2025.models.multi_host_integrations_connector_attributes_multi_host_attributes import MultiHostIntegrationsConnectorAttributesMultiHostAttributes
+from sailpoint.v2025.models.multi_host_integrations_create import MultiHostIntegrationsCreate
+from sailpoint.v2025.models.multi_host_integrations_create_sources import MultiHostIntegrationsCreateSources
+from sailpoint.v2025.models.multi_host_sources import MultiHostSources
 from sailpoint.v2025.models.multi_policy_request import MultiPolicyRequest
 from sailpoint.v2025.models.native_change_detection_config import NativeChangeDetectionConfig
 from sailpoint.v2025.models.nested_aggregation import NestedAggregation
@@ -1047,6 +1067,7 @@ from sailpoint.v2025.models.source_code import SourceCode
 from sailpoint.v2025.models.source_connections_dto import SourceConnectionsDto
 from sailpoint.v2025.models.source_created import SourceCreated
 from sailpoint.v2025.models.source_created_actor import SourceCreatedActor
+from sailpoint.v2025.models.source_creation_errors import SourceCreationErrors
 from sailpoint.v2025.models.source_deleted import SourceDeleted
 from sailpoint.v2025.models.source_deleted_actor import SourceDeletedActor
 from sailpoint.v2025.models.source_entitlement_request_config import SourceEntitlementRequestConfig
@@ -1117,6 +1138,7 @@ from sailpoint.v2025.models.tenant_ui_metadata_item_update_request import Tenant
 from sailpoint.v2025.models.test_external_execute_workflow200_response import TestExternalExecuteWorkflow200Response
 from sailpoint.v2025.models.test_external_execute_workflow_request import TestExternalExecuteWorkflowRequest
 from sailpoint.v2025.models.test_invocation import TestInvocation
+from sailpoint.v2025.models.test_source_connection_multihost200_response import TestSourceConnectionMultihost200Response
 from sailpoint.v2025.models.test_workflow200_response import TestWorkflow200Response
 from sailpoint.v2025.models.test_workflow_request import TestWorkflowRequest
 from sailpoint.v2025.models.text_query import TextQuery
@@ -1133,6 +1155,8 @@ from sailpoint.v2025.models.typed_reference import TypedReference
 from sailpoint.v2025.models.uncorrelated_accounts_report_arguments import UncorrelatedAccountsReportArguments
 from sailpoint.v2025.models.update_access_profiles_in_bulk412_response import UpdateAccessProfilesInBulk412Response
 from sailpoint.v2025.models.update_detail import UpdateDetail
+from sailpoint.v2025.models.update_multi_host_sources_request_inner import UpdateMultiHostSourcesRequestInner
+from sailpoint.v2025.models.update_multi_host_sources_request_inner_value import UpdateMultiHostSourcesRequestInnerValue
 from sailpoint.v2025.models.usage_type import UsageType
 from sailpoint.v2025.models.user_app import UserApp
 from sailpoint.v2025.models.user_app_account import UserAppAccount

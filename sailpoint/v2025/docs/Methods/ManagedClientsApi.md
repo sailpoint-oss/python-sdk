@@ -11,7 +11,7 @@ tags: ['SDK', 'Software Development Kit', 'Managed_Clients', 'V2025Managed_Clien
 
 # sailpoint.v2025.ManagedClientsApi
   Use this API to implement managed client functionality. 
-With this functionality in place, administrators can modify and delete existing managed clients, create new ones, and view and make changes to their log configurations. 
+With this functionality in place, administrators can modify and delete existing managed clients, create new ones, and view and make changes to their log configurations.
  
 All URIs are relative to *https://sailpoint.api.identitynow.com/v2025*
 

@@ -47,7 +47,6 @@ class ConnectorRuleManagementApi:
     def create_connector_rule(
         self,
         connector_rule_create_request: Annotated[ConnectorRuleCreateRequest, Field(description="Connector rule to create.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -65,8 +64,6 @@ class ConnectorRuleManagementApi:
 
         Create a connector rule from the available types.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param connector_rule_create_request: Connector rule to create. (required)
         :type connector_rule_create_request: ConnectorRuleCreateRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -92,7 +89,6 @@ class ConnectorRuleManagementApi:
         """ # noqa: E501
 
         _param = self._create_connector_rule_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             connector_rule_create_request=connector_rule_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -123,7 +119,6 @@ class ConnectorRuleManagementApi:
     def create_connector_rule_with_http_info(
         self,
         connector_rule_create_request: Annotated[ConnectorRuleCreateRequest, Field(description="Connector rule to create.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -141,8 +136,6 @@ class ConnectorRuleManagementApi:
 
         Create a connector rule from the available types.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param connector_rule_create_request: Connector rule to create. (required)
         :type connector_rule_create_request: ConnectorRuleCreateRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -168,7 +161,6 @@ class ConnectorRuleManagementApi:
         """ # noqa: E501
 
         _param = self._create_connector_rule_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             connector_rule_create_request=connector_rule_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -199,7 +191,6 @@ class ConnectorRuleManagementApi:
     def create_connector_rule_without_preload_content(
         self,
         connector_rule_create_request: Annotated[ConnectorRuleCreateRequest, Field(description="Connector rule to create.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -217,8 +208,6 @@ class ConnectorRuleManagementApi:
 
         Create a connector rule from the available types.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param connector_rule_create_request: Connector rule to create. (required)
         :type connector_rule_create_request: ConnectorRuleCreateRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -244,7 +233,6 @@ class ConnectorRuleManagementApi:
         """ # noqa: E501
 
         _param = self._create_connector_rule_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             connector_rule_create_request=connector_rule_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -269,7 +257,6 @@ class ConnectorRuleManagementApi:
 
     def _create_connector_rule_serialize(
         self,
-        x_sail_point_experimental,
         connector_rule_create_request,
         _request_auth,
         _content_type,
@@ -294,8 +281,6 @@ class ConnectorRuleManagementApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if connector_rule_create_request is not None:
@@ -352,7 +337,6 @@ class ConnectorRuleManagementApi:
     def delete_connector_rule(
         self,
         id: Annotated[StrictStr, Field(description="ID of the connector rule to delete.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -372,8 +356,6 @@ class ConnectorRuleManagementApi:
 
         :param id: ID of the connector rule to delete. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -398,7 +380,6 @@ class ConnectorRuleManagementApi:
 
         _param = self._delete_connector_rule_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -429,7 +410,6 @@ class ConnectorRuleManagementApi:
     def delete_connector_rule_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="ID of the connector rule to delete.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -449,8 +429,6 @@ class ConnectorRuleManagementApi:
 
         :param id: ID of the connector rule to delete. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -475,7 +453,6 @@ class ConnectorRuleManagementApi:
 
         _param = self._delete_connector_rule_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -506,7 +483,6 @@ class ConnectorRuleManagementApi:
     def delete_connector_rule_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="ID of the connector rule to delete.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -526,8 +502,6 @@ class ConnectorRuleManagementApi:
 
         :param id: ID of the connector rule to delete. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -552,7 +526,6 @@ class ConnectorRuleManagementApi:
 
         _param = self._delete_connector_rule_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -578,7 +551,6 @@ class ConnectorRuleManagementApi:
     def _delete_connector_rule_serialize(
         self,
         id,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -604,8 +576,6 @@ class ConnectorRuleManagementApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -647,7 +617,6 @@ class ConnectorRuleManagementApi:
     def get_connector_rule(
         self,
         id: Annotated[StrictStr, Field(description="ID of the connector rule to get.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -667,8 +636,6 @@ class ConnectorRuleManagementApi:
 
         :param id: ID of the connector rule to get. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -693,7 +660,6 @@ class ConnectorRuleManagementApi:
 
         _param = self._get_connector_rule_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -724,7 +690,6 @@ class ConnectorRuleManagementApi:
     def get_connector_rule_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="ID of the connector rule to get.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -744,8 +709,6 @@ class ConnectorRuleManagementApi:
 
         :param id: ID of the connector rule to get. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -770,7 +733,6 @@ class ConnectorRuleManagementApi:
 
         _param = self._get_connector_rule_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -801,7 +763,6 @@ class ConnectorRuleManagementApi:
     def get_connector_rule_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="ID of the connector rule to get.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -821,8 +782,6 @@ class ConnectorRuleManagementApi:
 
         :param id: ID of the connector rule to get. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -847,7 +806,6 @@ class ConnectorRuleManagementApi:
 
         _param = self._get_connector_rule_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -873,7 +831,6 @@ class ConnectorRuleManagementApi:
     def _get_connector_rule_serialize(
         self,
         id,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -899,8 +856,6 @@ class ConnectorRuleManagementApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -944,7 +899,6 @@ class ConnectorRuleManagementApi:
         limit: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=0)]], Field(description="Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -962,8 +916,6 @@ class ConnectorRuleManagementApi:
 
         List existing connector rules.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param limit: Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -993,7 +945,6 @@ class ConnectorRuleManagementApi:
         """ # noqa: E501
 
         _param = self._get_connector_rule_list_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             offset=offset,
             count=count,
@@ -1028,7 +979,6 @@ class ConnectorRuleManagementApi:
         limit: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=0)]], Field(description="Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1046,8 +996,6 @@ class ConnectorRuleManagementApi:
 
         List existing connector rules.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param limit: Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -1077,7 +1025,6 @@ class ConnectorRuleManagementApi:
         """ # noqa: E501
 
         _param = self._get_connector_rule_list_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             offset=offset,
             count=count,
@@ -1112,7 +1059,6 @@ class ConnectorRuleManagementApi:
         limit: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=0)]], Field(description="Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1130,8 +1076,6 @@ class ConnectorRuleManagementApi:
 
         List existing connector rules.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param limit: Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -1161,7 +1105,6 @@ class ConnectorRuleManagementApi:
         """ # noqa: E501
 
         _param = self._get_connector_rule_list_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             offset=offset,
             count=count,
@@ -1188,7 +1131,6 @@ class ConnectorRuleManagementApi:
 
     def _get_connector_rule_list_serialize(
         self,
-        x_sail_point_experimental,
         limit,
         offset,
         count,
@@ -1227,8 +1169,6 @@ class ConnectorRuleManagementApi:
             _query_params.append(('count', count))
             
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -1271,7 +1211,6 @@ class ConnectorRuleManagementApi:
         self,
         id: Annotated[StrictStr, Field(description="ID of the connector rule to update.")],
         connector_rule_update_request: Annotated[Optional[ConnectorRuleUpdateRequest], Field(description="Connector rule with updated data.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1291,8 +1230,6 @@ class ConnectorRuleManagementApi:
 
         :param id: ID of the connector rule to update. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param connector_rule_update_request: Connector rule with updated data.
         :type connector_rule_update_request: ConnectorRuleUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1319,7 +1256,6 @@ class ConnectorRuleManagementApi:
 
         _param = self._put_connector_rule_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             connector_rule_update_request=connector_rule_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1352,7 +1288,6 @@ class ConnectorRuleManagementApi:
         self,
         id: Annotated[StrictStr, Field(description="ID of the connector rule to update.")],
         connector_rule_update_request: Annotated[Optional[ConnectorRuleUpdateRequest], Field(description="Connector rule with updated data.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1372,8 +1307,6 @@ class ConnectorRuleManagementApi:
 
         :param id: ID of the connector rule to update. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param connector_rule_update_request: Connector rule with updated data.
         :type connector_rule_update_request: ConnectorRuleUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1400,7 +1333,6 @@ class ConnectorRuleManagementApi:
 
         _param = self._put_connector_rule_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             connector_rule_update_request=connector_rule_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1433,7 +1365,6 @@ class ConnectorRuleManagementApi:
         self,
         id: Annotated[StrictStr, Field(description="ID of the connector rule to update.")],
         connector_rule_update_request: Annotated[Optional[ConnectorRuleUpdateRequest], Field(description="Connector rule with updated data.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1453,8 +1384,6 @@ class ConnectorRuleManagementApi:
 
         :param id: ID of the connector rule to update. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param connector_rule_update_request: Connector rule with updated data.
         :type connector_rule_update_request: ConnectorRuleUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1481,7 +1410,6 @@ class ConnectorRuleManagementApi:
 
         _param = self._put_connector_rule_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             connector_rule_update_request=connector_rule_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1508,7 +1436,6 @@ class ConnectorRuleManagementApi:
     def _put_connector_rule_serialize(
         self,
         id,
-        x_sail_point_experimental,
         connector_rule_update_request,
         _request_auth,
         _content_type,
@@ -1535,8 +1462,6 @@ class ConnectorRuleManagementApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if connector_rule_update_request is not None:
@@ -1593,7 +1518,6 @@ class ConnectorRuleManagementApi:
     def test_connector_rule(
         self,
         source_code: Annotated[SourceCode, Field(description="Code to validate.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1611,8 +1535,6 @@ class ConnectorRuleManagementApi:
 
         Detect issues within the connector rule's code to fix and list them.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param source_code: Code to validate. (required)
         :type source_code: SourceCode
         :param _request_timeout: timeout setting for this request. If one
@@ -1638,7 +1560,6 @@ class ConnectorRuleManagementApi:
         """ # noqa: E501
 
         _param = self._test_connector_rule_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             source_code=source_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1669,7 +1590,6 @@ class ConnectorRuleManagementApi:
     def test_connector_rule_with_http_info(
         self,
         source_code: Annotated[SourceCode, Field(description="Code to validate.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1687,8 +1607,6 @@ class ConnectorRuleManagementApi:
 
         Detect issues within the connector rule's code to fix and list them.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param source_code: Code to validate. (required)
         :type source_code: SourceCode
         :param _request_timeout: timeout setting for this request. If one
@@ -1714,7 +1632,6 @@ class ConnectorRuleManagementApi:
         """ # noqa: E501
 
         _param = self._test_connector_rule_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             source_code=source_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1745,7 +1662,6 @@ class ConnectorRuleManagementApi:
     def test_connector_rule_without_preload_content(
         self,
         source_code: Annotated[SourceCode, Field(description="Code to validate.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1763,8 +1679,6 @@ class ConnectorRuleManagementApi:
 
         Detect issues within the connector rule's code to fix and list them.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param source_code: Code to validate. (required)
         :type source_code: SourceCode
         :param _request_timeout: timeout setting for this request. If one
@@ -1790,7 +1704,6 @@ class ConnectorRuleManagementApi:
         """ # noqa: E501
 
         _param = self._test_connector_rule_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             source_code=source_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1815,7 +1728,6 @@ class ConnectorRuleManagementApi:
 
     def _test_connector_rule_serialize(
         self,
-        x_sail_point_experimental,
         source_code,
         _request_auth,
         _content_type,
@@ -1840,8 +1752,6 @@ class ConnectorRuleManagementApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if source_code is not None:

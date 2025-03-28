@@ -148,7 +148,7 @@ class TestSourcesApi(unittest.TestCase):
     def test_get_source_config(self) -> None:
         """Test case for get_source_config
 
-        Gets source config with language translations
+        Gets source config with language-translations
         """
         pass
 
@@ -250,13 +250,6 @@ class TestSourcesApi(unittest.TestCase):
         """
         pass
 
-    def test_peek_resource_objects(self) -> None:
-        """Test case for peek_resource_objects
-
-        Peek source connector's resource objects
-        """
-        pass
-
     def test_ping_cluster(self) -> None:
         """Test case for ping_cluster
 
@@ -303,6 +296,13 @@ class TestSourcesApi(unittest.TestCase):
         """Test case for put_source_schema
 
         Update Source Schema (Full)
+        """
+        pass
+
+    def test_search_resource_objects(self) -> None:
+        """Test case for search_resource_objects
+
+        Peek source connector's resource objects
         """
         pass
 

@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2025.models.json_patch_operation_value import JsonPatchOperationValue
+from sailpoint.v2025.models.connector_customizers_response import ConnectorCustomizersResponse
 
-class TestJsonPatchOperationValue(unittest.TestCase):
-    """JsonPatchOperationValue unit test stubs"""
+class TestConnectorCustomizersResponse(unittest.TestCase):
+    """ConnectorCustomizersResponse unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,24 +25,30 @@ class TestJsonPatchOperationValue(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> JsonPatchOperationValue:
-        """Test JsonPatchOperationValue
+    def make_instance(self, include_optional) -> ConnectorCustomizersResponse:
+        """Test ConnectorCustomizersResponse
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `JsonPatchOperationValue`
+        # uncomment below to create an instance of `ConnectorCustomizersResponse`
         """
-        model = JsonPatchOperationValue()
+        model = ConnectorCustomizersResponse()
         if include_optional:
-            return JsonPatchOperationValue(
+            return ConnectorCustomizersResponse(
+                id = 'b07dc46a-1498-4de8-bfbb-259a68e70c8a',
+                name = 'connector-customizer-name',
+                image_version = 1,
+                image_id = '2c91808568c529c60168cca6f90c1324',
+                tenant_id = '2c91808568c529c60168cca6f90c1324',
+                created = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
             )
         else:
-            return JsonPatchOperationValue(
+            return ConnectorCustomizersResponse(
         )
         """
 
-    def testJsonPatchOperationValue(self):
-        """Test JsonPatchOperationValue"""
+    def testConnectorCustomizersResponse(self):
+        """Test ConnectorCustomizersResponse"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
