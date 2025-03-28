@@ -76,6 +76,7 @@ jobs:
           yq -i '.packageVersion = "${{ github.event.inputs.version }}"' sdk-resources/beta-config.yaml
           yq -i '.packageVersion = "${{ github.event.inputs.version }}"' sdk-resources/v3-config.yaml
           yq -i '.packageVersion = "${{ github.event.inputs.version }}"' sdk-resources/v2024-config.yaml
+          yq -i '.packageVersion = "${{ github.event.inputs.version }}"' sdk-resources/v2025-config.yaml
 
 
 
@@ -111,9 +112,17 @@ jobs:
           java -jar openapi-generator-cli.jar generate -i api-specs/idn/sailpoint-api.v2024.yaml -g python -o . --global-property skipFormModel=false --config sdk-resources/v2024-config.yaml --enable-post-process-file
           node sdk-resources/postscript.js ./sailpoint/v2024
 
+      - name: Build V2025 SDK
+        id: buildV2025
+        if: steps.buildV2024.outcome == 'success'
+        run: |
+          rm -rf ./sailpoint/v2025
+          java -jar openapi-generator-cli.jar generate -i api-specs/idn/sailpoint-api.v2025.yaml -g python -o . --global-property skipFormModel=false --config sdk-resources/v2025-config.yaml --enable-post-process-file
+          node sdk-resources/postscript.js ./sailpoint/v2025
+
       - name: After SDK Build
         id: buildSDK
-        if: steps.buildV2024.outcome == 'success'
+        if: steps.buildV2025.outcome == 'success'
         shell: pwsh
         run: |
           pip install -r requirements.txt
