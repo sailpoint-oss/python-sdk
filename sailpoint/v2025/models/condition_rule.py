@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
@@ -40,7 +41,7 @@ class ConditionRule(BaseModel):
             return value
 
         if value not in set(['INPUT', 'ELEMENT']):
-            raise ValueError("must be one of enum values ('INPUT', 'ELEMENT')")
+            warnings.warn(f"must be one of enum values ('INPUT', 'ELEMENT') unknown value: {value}")
         return value
 
     @field_validator('operator')
@@ -50,7 +51,7 @@ class ConditionRule(BaseModel):
             return value
 
         if value not in set(['EQ', 'NE', 'CO', 'NOT_CO', 'IN', 'NOT_IN', 'EM', 'NOT_EM', 'SW', 'NOT_SW', 'EW', 'NOT_EW']):
-            raise ValueError("must be one of enum values ('EQ', 'NE', 'CO', 'NOT_CO', 'IN', 'NOT_IN', 'EM', 'NOT_EM', 'SW', 'NOT_SW', 'EW', 'NOT_EW')")
+            warnings.warn(f"must be one of enum values ('EQ', 'NE', 'CO', 'NOT_CO', 'IN', 'NOT_IN', 'EM', 'NOT_EM', 'SW', 'NOT_SW', 'EW', 'NOT_EW') unknown value: {value}")
         return value
 
     @field_validator('value_type')
@@ -60,7 +61,7 @@ class ConditionRule(BaseModel):
             return value
 
         if value not in set(['STRING', 'STRING_LIST', 'INPUT', 'ELEMENT', 'LIST', 'BOOLEAN']):
-            raise ValueError("must be one of enum values ('STRING', 'STRING_LIST', 'INPUT', 'ELEMENT', 'LIST', 'BOOLEAN')")
+            warnings.warn(f"must be one of enum values ('STRING', 'STRING_LIST', 'INPUT', 'ELEMENT', 'LIST', 'BOOLEAN') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

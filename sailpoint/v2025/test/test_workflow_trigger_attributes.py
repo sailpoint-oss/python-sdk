@@ -43,9 +43,9 @@ class TestWorkflowTriggerAttributes(unittest.TestCase):
                 name = 'search-and-notify',
                 client_id = '87e239b2-b85b-4bde-b9a7-55bf304ddcdc',
                 url = 'https://tenant.api.identitynow.com/beta/workflows/execute/external/c79e0079-562c-4df5-aa73-60a9e25c916d',
-                cron_string = '0 9 * * 1',
                 frequency = 'daily',
                 time_zone = 'America/Chicago',
+                cron_string = '0 9 * * 1',
                 weekly_days = Monday,
                 weekly_times = Monday,
                 yearly_times = 1969-12-31T09:00:00.000Z

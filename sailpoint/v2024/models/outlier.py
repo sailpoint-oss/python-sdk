@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr, field_validator
@@ -47,7 +48,7 @@ class Outlier(BaseModel):
             return value
 
         if value not in set(['LOW_SIMILARITY', 'STRUCTURAL']):
-            raise ValueError("must be one of enum values ('LOW_SIMILARITY', 'STRUCTURAL')")
+            warnings.warn(f"must be one of enum values ('LOW_SIMILARITY', 'STRUCTURAL') unknown value: {value}")
         return value
 
     @field_validator('unignore_type')
@@ -57,7 +58,7 @@ class Outlier(BaseModel):
             return value
 
         if value not in set(['MANUAL', 'AUTOMATIC']):
-            raise ValueError("must be one of enum values ('MANUAL', 'AUTOMATIC')")
+            warnings.warn(f"must be one of enum values ('MANUAL', 'AUTOMATIC') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

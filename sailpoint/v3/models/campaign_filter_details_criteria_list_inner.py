@@ -16,10 +16,12 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v3.models.criteria_type import CriteriaType
+from sailpoint.v3.models.operation import Operation
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,10 +30,16 @@ class CampaignFilterDetailsCriteriaListInner(BaseModel):
     CampaignFilterDetailsCriteriaListInner
     """ # noqa: E501
     type: CriteriaType
-    operation: Any
+    operation: Optional[Operation] = None
     var_property: Optional[StrictStr] = Field(description="Specified key from the type of criteria.", alias="property")
     value: Optional[StrictStr] = Field(description="Value for the specified key from the type of criteria.")
-    __properties: ClassVar[List[str]] = ["type", "operation", "property", "value"]
+    negate_result: Optional[StrictBool] = Field(default=False, description="If true, the filter will negate the result of the criteria.", alias="negateResult")
+    short_circuit: Optional[StrictBool] = Field(default=False, description="If true, the filter will short circuit the evaluation of the criteria.", alias="shortCircuit")
+    record_child_matches: Optional[StrictBool] = Field(default=False, description="If true, the filter will record child matches for the criteria.", alias="recordChildMatches")
+    id: Optional[StrictStr] = Field(default=None, description="The unique ID of the criteria.")
+    suppress_matched_items: Optional[StrictBool] = Field(default=False, description="If this value is true, then matched items will not only be excluded from the campaign, they will also not have archived certification items created.  Such items will not appear in the exclusion report. ", alias="suppressMatchedItems")
+    children: Optional[List[Dict[str, Any]]] = Field(default=None, description="List of child criteria.")
+    __properties: ClassVar[List[str]] = ["type", "operation", "property", "value", "negateResult", "shortCircuit", "recordChildMatches", "id", "suppressMatchedItems", "children"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -72,9 +80,11 @@ class CampaignFilterDetailsCriteriaListInner(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of operation
-        if self.operation:
-            _dict['operation'] = self.operation.to_dict()
+        # set to None if operation (nullable) is None
+        # and model_fields_set contains the field
+        if self.operation is None and "operation" in self.model_fields_set:
+            _dict['operation'] = None
+
         # set to None if var_property (nullable) is None
         # and model_fields_set contains the field
         if self.var_property is None and "var_property" in self.model_fields_set:
@@ -84,6 +94,11 @@ class CampaignFilterDetailsCriteriaListInner(BaseModel):
         # and model_fields_set contains the field
         if self.value is None and "value" in self.model_fields_set:
             _dict['value'] = None
+
+        # set to None if id (nullable) is None
+        # and model_fields_set contains the field
+        if self.id is None and "id" in self.model_fields_set:
+            _dict['id'] = None
 
         return _dict
 
@@ -98,9 +113,15 @@ class CampaignFilterDetailsCriteriaListInner(BaseModel):
 
         _obj = cls.model_validate({
             "type": obj.get("type"),
-            "operation": Operation.from_dict(obj["operation"]) if obj.get("operation") is not None else None,
+            "operation": obj.get("operation"),
             "property": obj.get("property"),
-            "value": obj.get("value")
+            "value": obj.get("value"),
+            "negateResult": obj.get("negateResult") if obj.get("negateResult") is not None else False,
+            "shortCircuit": obj.get("shortCircuit") if obj.get("shortCircuit") is not None else False,
+            "recordChildMatches": obj.get("recordChildMatches") if obj.get("recordChildMatches") is not None else False,
+            "id": obj.get("id"),
+            "suppressMatchedItems": obj.get("suppressMatchedItems") if obj.get("suppressMatchedItems") is not None else False,
+            "children": obj.get("children")
         })
         return _obj
 

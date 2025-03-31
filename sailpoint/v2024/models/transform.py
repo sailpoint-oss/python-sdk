@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
@@ -36,7 +37,7 @@ class Transform(BaseModel):
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['accountAttribute', 'base64Decode', 'base64Encode', 'concat', 'conditional', 'dateCompare', 'dateFormat', 'dateMath', 'decomposeDiacriticalMarks', 'e164phone', 'firstValid', 'rule', 'identityAttribute', 'indexOf', 'iso3166', 'lastIndexOf', 'leftPad', 'lookup', 'lower', 'normalizeNames', 'randomAlphaNumeric', 'randomNumeric', 'reference', 'replaceAll', 'replace', 'rightPad', 'split', 'static', 'substring', 'trim', 'upper', 'usernameGenerator', 'uuid', 'displayName', 'rfc5646']):
-            raise ValueError("must be one of enum values ('accountAttribute', 'base64Decode', 'base64Encode', 'concat', 'conditional', 'dateCompare', 'dateFormat', 'dateMath', 'decomposeDiacriticalMarks', 'e164phone', 'firstValid', 'rule', 'identityAttribute', 'indexOf', 'iso3166', 'lastIndexOf', 'leftPad', 'lookup', 'lower', 'normalizeNames', 'randomAlphaNumeric', 'randomNumeric', 'reference', 'replaceAll', 'replace', 'rightPad', 'split', 'static', 'substring', 'trim', 'upper', 'usernameGenerator', 'uuid', 'displayName', 'rfc5646')")
+            warnings.warn(f"must be one of enum values ('accountAttribute', 'base64Decode', 'base64Encode', 'concat', 'conditional', 'dateCompare', 'dateFormat', 'dateMath', 'decomposeDiacriticalMarks', 'e164phone', 'firstValid', 'rule', 'identityAttribute', 'indexOf', 'iso3166', 'lastIndexOf', 'leftPad', 'lookup', 'lower', 'normalizeNames', 'randomAlphaNumeric', 'randomNumeric', 'reference', 'replaceAll', 'replace', 'rightPad', 'split', 'static', 'substring', 'trim', 'upper', 'usernameGenerator', 'uuid', 'displayName', 'rfc5646') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

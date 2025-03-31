@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
@@ -39,28 +40,28 @@ class CampaignReference(BaseModel):
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['CAMPAIGN']):
-            raise ValueError("must be one of enum values ('CAMPAIGN')")
+            warnings.warn(f"must be one of enum values ('CAMPAIGN') unknown value: {value}")
         return value
 
     @field_validator('campaign_type')
     def campaign_type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['MANAGER', 'SOURCE_OWNER', 'SEARCH']):
-            raise ValueError("must be one of enum values ('MANAGER', 'SOURCE_OWNER', 'SEARCH')")
+            warnings.warn(f"must be one of enum values ('MANAGER', 'SOURCE_OWNER', 'SEARCH') unknown value: {value}")
         return value
 
     @field_validator('correlated_status')
     def correlated_status_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['CORRELATED', 'UNCORRELATED']):
-            raise ValueError("must be one of enum values ('CORRELATED', 'UNCORRELATED')")
+            warnings.warn(f"must be one of enum values ('CORRELATED', 'UNCORRELATED') unknown value: {value}")
         return value
 
     @field_validator('mandatory_comment_requirement')
     def mandatory_comment_requirement_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['ALL_DECISIONS', 'REVOKE_ONLY_DECISIONS', 'NO_DECISIONS']):
-            raise ValueError("must be one of enum values ('ALL_DECISIONS', 'REVOKE_ONLY_DECISIONS', 'NO_DECISIONS')")
+            warnings.warn(f"must be one of enum values ('ALL_DECISIONS', 'REVOKE_ONLY_DECISIONS', 'NO_DECISIONS') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

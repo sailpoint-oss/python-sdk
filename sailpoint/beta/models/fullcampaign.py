@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
@@ -63,7 +64,7 @@ class Fullcampaign(BaseModel):
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['MANAGER', 'SOURCE_OWNER', 'SEARCH', 'ROLE_COMPOSITION', 'MACHINE_ACCOUNT']):
-            raise ValueError("must be one of enum values ('MANAGER', 'SOURCE_OWNER', 'SEARCH', 'ROLE_COMPOSITION', 'MACHINE_ACCOUNT')")
+            warnings.warn(f"must be one of enum values ('MANAGER', 'SOURCE_OWNER', 'SEARCH', 'ROLE_COMPOSITION', 'MACHINE_ACCOUNT') unknown value: {value}")
         return value
 
     @field_validator('status')
@@ -73,7 +74,7 @@ class Fullcampaign(BaseModel):
             return value
 
         if value not in set(['PENDING', 'STAGED', 'CANCELING', 'ACTIVATING', 'ACTIVE', 'COMPLETING', 'COMPLETED', 'ERROR', 'ARCHIVED']):
-            raise ValueError("must be one of enum values ('PENDING', 'STAGED', 'CANCELING', 'ACTIVATING', 'ACTIVE', 'COMPLETING', 'COMPLETED', 'ERROR', 'ARCHIVED')")
+            warnings.warn(f"must be one of enum values ('PENDING', 'STAGED', 'CANCELING', 'ACTIVATING', 'ACTIVE', 'COMPLETING', 'COMPLETED', 'ERROR', 'ARCHIVED') unknown value: {value}")
         return value
 
     @field_validator('correlated_status')
@@ -83,7 +84,7 @@ class Fullcampaign(BaseModel):
             return value
 
         if value not in set(['CORRELATED', 'UNCORRELATED']):
-            raise ValueError("must be one of enum values ('CORRELATED', 'UNCORRELATED')")
+            warnings.warn(f"must be one of enum values ('CORRELATED', 'UNCORRELATED') unknown value: {value}")
         return value
 
     @field_validator('mandatory_comment_requirement')
@@ -93,7 +94,7 @@ class Fullcampaign(BaseModel):
             return value
 
         if value not in set(['ALL_DECISIONS', 'REVOKE_ONLY_DECISIONS', 'NO_DECISIONS']):
-            raise ValueError("must be one of enum values ('ALL_DECISIONS', 'REVOKE_ONLY_DECISIONS', 'NO_DECISIONS')")
+            warnings.warn(f"must be one of enum values ('ALL_DECISIONS', 'REVOKE_ONLY_DECISIONS', 'NO_DECISIONS') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

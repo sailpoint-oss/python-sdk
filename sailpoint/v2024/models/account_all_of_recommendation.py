@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List
@@ -34,14 +35,14 @@ class AccountAllOfRecommendation(BaseModel):
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['HUMAN', 'MACHINE']):
-            raise ValueError("must be one of enum values ('HUMAN', 'MACHINE')")
+            warnings.warn(f"must be one of enum values ('HUMAN', 'MACHINE') unknown value: {value}")
         return value
 
     @field_validator('method')
     def method_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['DISCOVERY', 'SOURCE', 'CRITERIA']):
-            raise ValueError("must be one of enum values ('DISCOVERY', 'SOURCE', 'CRITERIA')")
+            warnings.warn(f"must be one of enum values ('DISCOVERY', 'SOURCE', 'CRITERIA') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

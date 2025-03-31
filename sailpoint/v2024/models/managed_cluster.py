@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
@@ -67,7 +68,7 @@ class ManagedCluster(BaseModel):
             return value
 
         if value not in set(['CONFIGURING', 'FAILED', 'NO_CLIENTS', 'NORMAL', 'WARNING']):
-            raise ValueError("must be one of enum values ('CONFIGURING', 'FAILED', 'NO_CLIENTS', 'NORMAL', 'WARNING')")
+            warnings.warn(f"must be one of enum values ('CONFIGURING', 'FAILED', 'NO_CLIENTS', 'NORMAL', 'WARNING') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

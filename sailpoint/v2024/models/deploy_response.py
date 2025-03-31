@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
@@ -48,7 +49,7 @@ class DeployResponse(BaseModel):
             return value
 
         if value not in set(['NOT_STARTED', 'IN_PROGRESS', 'COMPLETE', 'CANCELLED', 'FAILED']):
-            raise ValueError("must be one of enum values ('NOT_STARTED', 'IN_PROGRESS', 'COMPLETE', 'CANCELLED', 'FAILED')")
+            warnings.warn(f"must be one of enum values ('NOT_STARTED', 'IN_PROGRESS', 'COMPLETE', 'CANCELLED', 'FAILED') unknown value: {value}")
         return value
 
     @field_validator('type')
@@ -58,7 +59,7 @@ class DeployResponse(BaseModel):
             return value
 
         if value not in set(['CONFIG_DEPLOY_DRAFT']):
-            raise ValueError("must be one of enum values ('CONFIG_DEPLOY_DRAFT')")
+            warnings.warn(f"must be one of enum values ('CONFIG_DEPLOY_DRAFT') unknown value: {value}")
         return value
 
     @field_validator('cloud_storage_status')
@@ -68,7 +69,7 @@ class DeployResponse(BaseModel):
             return value
 
         if value not in set(['SYNCED', 'NOT_SYNCED', 'SYNC_FAILED']):
-            raise ValueError("must be one of enum values ('SYNCED', 'NOT_SYNCED', 'SYNC_FAILED')")
+            warnings.warn(f"must be one of enum values ('SYNCED', 'NOT_SYNCED', 'SYNC_FAILED') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
@@ -42,7 +43,7 @@ class AuthProfile(BaseModel):
             return value
 
         if value not in set(['BLOCK', 'MFA', 'NON_PTA', 'PTA']):
-            raise ValueError("must be one of enum values ('BLOCK', 'MFA', 'NON_PTA', 'PTA')")
+            warnings.warn(f"must be one of enum values ('BLOCK', 'MFA', 'NON_PTA', 'PTA') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

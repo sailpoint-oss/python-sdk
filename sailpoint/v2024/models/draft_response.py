@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
@@ -53,7 +54,7 @@ class DraftResponse(BaseModel):
             return value
 
         if value not in set(['NOT_STARTED', 'IN_PROGRESS', 'COMPLETE', 'CANCELLED', 'FAILED']):
-            raise ValueError("must be one of enum values ('NOT_STARTED', 'IN_PROGRESS', 'COMPLETE', 'CANCELLED', 'FAILED')")
+            warnings.warn(f"must be one of enum values ('NOT_STARTED', 'IN_PROGRESS', 'COMPLETE', 'CANCELLED', 'FAILED') unknown value: {value}")
         return value
 
     @field_validator('type')
@@ -63,7 +64,7 @@ class DraftResponse(BaseModel):
             return value
 
         if value not in set(['CREATE_DRAFT']):
-            raise ValueError("must be one of enum values ('CREATE_DRAFT')")
+            warnings.warn(f"must be one of enum values ('CREATE_DRAFT') unknown value: {value}")
         return value
 
     @field_validator('mode')
@@ -73,7 +74,7 @@ class DraftResponse(BaseModel):
             return value
 
         if value not in set(['RESTORE', 'PROMOTE', 'UPLOAD']):
-            raise ValueError("must be one of enum values ('RESTORE', 'PROMOTE', 'UPLOAD')")
+            warnings.warn(f"must be one of enum values ('RESTORE', 'PROMOTE', 'UPLOAD') unknown value: {value}")
         return value
 
     @field_validator('approval_status')
@@ -83,7 +84,7 @@ class DraftResponse(BaseModel):
             return value
 
         if value not in set(['DEFAULT', 'PENDING_APPROVAL', 'APPROVED', 'DENIED']):
-            raise ValueError("must be one of enum values ('DEFAULT', 'PENDING_APPROVAL', 'APPROVED', 'DENIED')")
+            warnings.warn(f"must be one of enum values ('DEFAULT', 'PENDING_APPROVAL', 'APPROVED', 'DENIED') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

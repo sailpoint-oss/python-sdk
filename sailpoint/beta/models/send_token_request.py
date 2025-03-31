@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List
@@ -34,7 +35,7 @@ class SendTokenRequest(BaseModel):
     def delivery_type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['SMS_PERSONAL', 'VOICE_PERSONAL', 'SMS_WORK', 'VOICE_WORK', 'EMAIL_WORK', 'EMAIL_PERSONAL']):
-            raise ValueError("must be one of enum values ('SMS_PERSONAL', 'VOICE_PERSONAL', 'SMS_WORK', 'VOICE_WORK', 'EMAIL_WORK', 'EMAIL_PERSONAL')")
+            warnings.warn(f"must be one of enum values ('SMS_PERSONAL', 'VOICE_PERSONAL', 'SMS_WORK', 'VOICE_WORK', 'EMAIL_WORK', 'EMAIL_PERSONAL') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

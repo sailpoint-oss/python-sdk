@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
@@ -52,7 +53,7 @@ class TaskResultDetails(BaseModel):
             return value
 
         if value not in set(['QUARTZ', 'QPOC', 'MENTOS', 'QUEUED_TASK']):
-            raise ValueError("must be one of enum values ('QUARTZ', 'QPOC', 'MENTOS', 'QUEUED_TASK')")
+            warnings.warn(f"must be one of enum values ('QUARTZ', 'QPOC', 'MENTOS', 'QUEUED_TASK') unknown value: {value}")
         return value
 
     @field_validator('report_type')
@@ -62,7 +63,7 @@ class TaskResultDetails(BaseModel):
             return value
 
         if value not in set(['ACCOUNTS', 'IDENTITIES_DETAILS', 'IDENTITIES', 'IDENTITY_PROFILE_IDENTITY_ERROR', 'ORPHAN_IDENTITIES', 'SEARCH_EXPORT', 'UNCORRELATED_ACCOUNTS']):
-            raise ValueError("must be one of enum values ('ACCOUNTS', 'IDENTITIES_DETAILS', 'IDENTITIES', 'IDENTITY_PROFILE_IDENTITY_ERROR', 'ORPHAN_IDENTITIES', 'SEARCH_EXPORT', 'UNCORRELATED_ACCOUNTS')")
+            warnings.warn(f"must be one of enum values ('ACCOUNTS', 'IDENTITIES_DETAILS', 'IDENTITIES', 'IDENTITY_PROFILE_IDENTITY_ERROR', 'ORPHAN_IDENTITIES', 'SEARCH_EXPORT', 'UNCORRELATED_ACCOUNTS') unknown value: {value}")
         return value
 
     @field_validator('completion_status')
@@ -72,7 +73,7 @@ class TaskResultDetails(BaseModel):
             return value
 
         if value not in set(['SUCCESS', 'WARNING', 'ERROR', 'TERMINATED', 'TEMP_ERROR']):
-            raise ValueError("must be one of enum values ('SUCCESS', 'WARNING', 'ERROR', 'TERMINATED', 'TEMP_ERROR')")
+            warnings.warn(f"must be one of enum values ('SUCCESS', 'WARNING', 'ERROR', 'TERMINATED', 'TEMP_ERROR') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

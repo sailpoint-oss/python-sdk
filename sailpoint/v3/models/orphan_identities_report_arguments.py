@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
@@ -37,7 +38,7 @@ class OrphanIdentitiesReportArguments(BaseModel):
 
         for i in value:
             if i not in set(['CSV', 'PDF']):
-                raise ValueError("each list item must be one of ('CSV', 'PDF')")
+                warnings.warn(f"each list item must be one of ('CSV', 'PDF') unknown value: {i}")
         return value
 
     model_config = ConfigDict(

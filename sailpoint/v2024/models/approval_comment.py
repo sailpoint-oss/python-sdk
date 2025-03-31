@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
@@ -38,7 +39,7 @@ class ApprovalComment(BaseModel):
     def changed_to_status_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['PENDING_APPROVAL', 'APPROVED', 'REJECTED']):
-            raise ValueError("must be one of enum values ('PENDING_APPROVAL', 'APPROVED', 'REJECTED')")
+            warnings.warn(f"must be one of enum values ('PENDING_APPROVAL', 'APPROVED', 'REJECTED') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

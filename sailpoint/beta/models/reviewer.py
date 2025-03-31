@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
@@ -36,7 +37,7 @@ class Reviewer(BaseModel):
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['IDENTITY', 'GOVERNANCE_GROUP']):
-            raise ValueError("must be one of enum values ('IDENTITY', 'GOVERNANCE_GROUP')")
+            warnings.warn(f"must be one of enum values ('IDENTITY', 'GOVERNANCE_GROUP') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
@@ -66,7 +67,7 @@ class MultiHostIntegrations(BaseModel):
             return value
 
         if value not in set(['SOURCE_STATE_ERROR_ACCOUNT_FILE_IMPORT', 'SOURCE_STATE_ERROR_CLUSTER', 'SOURCE_STATE_ERROR_SOURCE', 'SOURCE_STATE_ERROR_VA', 'SOURCE_STATE_FAILURE_CLUSTER', 'SOURCE_STATE_FAILURE_SOURCE', 'SOURCE_STATE_HEALTHY', 'SOURCE_STATE_UNCHECKED_CLUSTER', 'SOURCE_STATE_UNCHECKED_CLUSTER_NO_SOURCES', 'SOURCE_STATE_UNCHECKED_SOURCE', 'SOURCE_STATE_UNCHECKED_SOURCE_NO_ACCOUNTS']):
-            raise ValueError("must be one of enum values ('SOURCE_STATE_ERROR_ACCOUNT_FILE_IMPORT', 'SOURCE_STATE_ERROR_CLUSTER', 'SOURCE_STATE_ERROR_SOURCE', 'SOURCE_STATE_ERROR_VA', 'SOURCE_STATE_FAILURE_CLUSTER', 'SOURCE_STATE_FAILURE_SOURCE', 'SOURCE_STATE_HEALTHY', 'SOURCE_STATE_UNCHECKED_CLUSTER', 'SOURCE_STATE_UNCHECKED_CLUSTER_NO_SOURCES', 'SOURCE_STATE_UNCHECKED_SOURCE', 'SOURCE_STATE_UNCHECKED_SOURCE_NO_ACCOUNTS')")
+            warnings.warn(f"must be one of enum values ('SOURCE_STATE_ERROR_ACCOUNT_FILE_IMPORT', 'SOURCE_STATE_ERROR_CLUSTER', 'SOURCE_STATE_ERROR_SOURCE', 'SOURCE_STATE_ERROR_VA', 'SOURCE_STATE_FAILURE_CLUSTER', 'SOURCE_STATE_FAILURE_SOURCE', 'SOURCE_STATE_HEALTHY', 'SOURCE_STATE_UNCHECKED_CLUSTER', 'SOURCE_STATE_UNCHECKED_CLUSTER_NO_SOURCES', 'SOURCE_STATE_UNCHECKED_SOURCE', 'SOURCE_STATE_UNCHECKED_SOURCE_NO_ACCOUNTS') unknown value: {value}")
         return value
 
     @field_validator('connection_type')
@@ -76,7 +77,7 @@ class MultiHostIntegrations(BaseModel):
             return value
 
         if value not in set(['direct', 'file']):
-            raise ValueError("must be one of enum values ('direct', 'file')")
+            warnings.warn(f"must be one of enum values ('direct', 'file') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
@@ -38,7 +39,7 @@ class CustomPasswordInstruction(BaseModel):
             return value
 
         if value not in set(['change-password:enter-password', 'change-password:finish', 'flow-selection:select', 'forget-username:user-email', 'mfa:enter-code', 'mfa:enter-kba', 'mfa:select', 'reset-password:enter-password', 'reset-password:enter-username', 'reset-password:finish', 'unlock-account:enter-username', 'unlock-account:finish']):
-            raise ValueError("must be one of enum values ('change-password:enter-password', 'change-password:finish', 'flow-selection:select', 'forget-username:user-email', 'mfa:enter-code', 'mfa:enter-kba', 'mfa:select', 'reset-password:enter-password', 'reset-password:enter-username', 'reset-password:finish', 'unlock-account:enter-username', 'unlock-account:finish')")
+            warnings.warn(f"must be one of enum values ('change-password:enter-password', 'change-password:finish', 'flow-selection:select', 'forget-username:user-email', 'mfa:enter-code', 'mfa:enter-kba', 'mfa:select', 'reset-password:enter-password', 'reset-password:enter-username', 'reset-password:finish', 'unlock-account:enter-username', 'unlock-account:finish') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

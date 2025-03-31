@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
@@ -40,7 +41,7 @@ class ExpressionChildrenInner(BaseModel):
             return value
 
         if value not in set(['AND', 'EQUALS']):
-            raise ValueError("must be one of enum values ('AND', 'EQUALS')")
+            warnings.warn(f"must be one of enum values ('AND', 'EQUALS') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

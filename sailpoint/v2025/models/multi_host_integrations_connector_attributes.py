@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
@@ -45,7 +46,7 @@ class MultiHostIntegrationsConnectorAttributes(BaseModel):
             return value
 
         if value not in set(['ready', 'processing', 'fileUploadInProgress', 'sourceCreationInProgress', 'aggregationGroupingInProgress', 'aggregationScheduleInProgress', 'deleteInProgress', 'deleteFailed']):
-            raise ValueError("must be one of enum values ('ready', 'processing', 'fileUploadInProgress', 'sourceCreationInProgress', 'aggregationGroupingInProgress', 'aggregationScheduleInProgress', 'deleteInProgress', 'deleteFailed')")
+            warnings.warn(f"must be one of enum values ('ready', 'processing', 'fileUploadInProgress', 'sourceCreationInProgress', 'aggregationGroupingInProgress', 'aggregationScheduleInProgress', 'deleteInProgress', 'deleteFailed') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

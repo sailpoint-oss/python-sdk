@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
@@ -26,7 +27,7 @@ class EventAttributes(BaseModel):
     """
     Attributes related to an IdentityNow ETS event
     """ # noqa: E501
-    id: StrictStr = Field(description="The unique ID of the trigger")
+    id: Optional[StrictStr] = Field(description="The unique ID of the trigger")
     filter_: Optional[StrictStr] = Field(default=None, description="JSON path expression that will limit which events the trigger will fire on", alias="filter.$")
     description: Optional[StrictStr] = Field(default=None, description="Description of the event trigger")
     attribute_to_filter: Optional[StrictStr] = Field(default=None, description="The attribute to filter on", alias="attributeToFilter")
@@ -72,6 +73,31 @@ class EventAttributes(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if id (nullable) is None
+        # and model_fields_set contains the field
+        if self.id is None and "id" in self.model_fields_set:
+            _dict['id'] = None
+
+        # set to None if filter_ (nullable) is None
+        # and model_fields_set contains the field
+        if self.filter_ is None and "filter_" in self.model_fields_set:
+            _dict['filter.$'] = None
+
+        # set to None if description (nullable) is None
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
+            _dict['description'] = None
+
+        # set to None if attribute_to_filter (nullable) is None
+        # and model_fields_set contains the field
+        if self.attribute_to_filter is None and "attribute_to_filter" in self.model_fields_set:
+            _dict['attributeToFilter'] = None
+
+        # set to None if form_definition_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.form_definition_id is None and "form_definition_id" in self.model_fields_set:
+            _dict['formDefinitionId'] = None
+
         return _dict
 
     @classmethod

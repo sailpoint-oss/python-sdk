@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
@@ -38,7 +39,7 @@ class AccessRequestItem(BaseModel):
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT']):
-            raise ValueError("must be one of enum values ('ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT')")
+            warnings.warn(f"must be one of enum values ('ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

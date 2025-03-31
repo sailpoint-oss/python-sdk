@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
@@ -36,7 +37,7 @@ class TokenAuthResponse(BaseModel):
             return value
 
         if value not in set(['PENDING', 'SUCCESS', 'FAILED', 'LOCKOUT', 'NOT_ENOUGH_DATA']):
-            raise ValueError("must be one of enum values ('PENDING', 'SUCCESS', 'FAILED', 'LOCKOUT', 'NOT_ENOUGH_DATA')")
+            warnings.warn(f"must be one of enum values ('PENDING', 'SUCCESS', 'FAILED', 'LOCKOUT', 'NOT_ENOUGH_DATA') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

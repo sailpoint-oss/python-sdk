@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
@@ -46,7 +47,7 @@ class Launcher(BaseModel):
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['INTERACTIVE_PROCESS']):
-            raise ValueError("must be one of enum values ('INTERACTIVE_PROCESS')")
+            warnings.warn(f"must be one of enum values ('INTERACTIVE_PROCESS') unknown value: {value}")
         return value
 
     @field_validator('config')

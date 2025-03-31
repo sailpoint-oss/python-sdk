@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
@@ -38,7 +39,7 @@ class AccessProfileRef(BaseModel):
             return value
 
         if value not in set(['ACCESS_PROFILE']):
-            raise ValueError("must be one of enum values ('ACCESS_PROFILE')")
+            warnings.warn(f"must be one of enum values ('ACCESS_PROFILE') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

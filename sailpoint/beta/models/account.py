@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
@@ -66,7 +67,7 @@ class Account(BaseModel):
             return value
 
         if value not in set(['AGGREGATED', 'PROVISIONED']):
-            raise ValueError("must be one of enum values ('AGGREGATED', 'PROVISIONED')")
+            warnings.warn(f"must be one of enum values ('AGGREGATED', 'PROVISIONED') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

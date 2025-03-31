@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
@@ -39,7 +40,7 @@ class ScheduledActionPayload(BaseModel):
     def job_type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['BACKUP', 'CREATE_DRAFT', 'CONFIG_DEPLOY_DRAFT']):
-            raise ValueError("must be one of enum values ('BACKUP', 'CREATE_DRAFT', 'CONFIG_DEPLOY_DRAFT')")
+            warnings.warn(f"must be one of enum values ('BACKUP', 'CREATE_DRAFT', 'CONFIG_DEPLOY_DRAFT') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

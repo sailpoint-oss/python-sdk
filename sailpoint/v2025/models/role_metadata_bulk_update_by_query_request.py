@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
@@ -37,7 +38,7 @@ class RoleMetadataBulkUpdateByQueryRequest(BaseModel):
     def operation_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['ADD', 'REMOVE', 'REPLACE']):
-            raise ValueError("must be one of enum values ('ADD', 'REMOVE', 'REPLACE')")
+            warnings.warn(f"must be one of enum values ('ADD', 'REMOVE', 'REPLACE') unknown value: {value}")
         return value
 
     @field_validator('replace_scope')
@@ -47,7 +48,7 @@ class RoleMetadataBulkUpdateByQueryRequest(BaseModel):
             return value
 
         if value not in set(['ALL', 'ATTRIBUTE']):
-            raise ValueError("must be one of enum values ('ALL', 'ATTRIBUTE')")
+            warnings.warn(f"must be one of enum values ('ALL', 'ATTRIBUTE') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

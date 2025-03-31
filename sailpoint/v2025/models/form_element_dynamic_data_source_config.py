@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
@@ -40,7 +41,7 @@ class FormElementDynamicDataSourceConfig(BaseModel):
 
         for i in value:
             if i not in set(['accessprofiles', 'accountactivities', 'entitlements', 'identities', 'events', 'roles', '*']):
-                raise ValueError("each list item must be one of ('accessprofiles', 'accountactivities', 'entitlements', 'identities', 'events', 'roles', '*')")
+                warnings.warn(f"each list item must be one of ('accessprofiles', 'accountactivities', 'entitlements', 'identities', 'events', 'roles', '*') unknown value: {i}")
         return value
 
     @field_validator('object_type')
@@ -50,7 +51,7 @@ class FormElementDynamicDataSourceConfig(BaseModel):
             return value
 
         if value not in set(['IDENTITY', 'ACCESS_PROFILE', 'SOURCES', 'ROLE', 'ENTITLEMENT']):
-            raise ValueError("must be one of enum values ('IDENTITY', 'ACCESS_PROFILE', 'SOURCES', 'ROLE', 'ENTITLEMENT')")
+            warnings.warn(f"must be one of enum values ('IDENTITY', 'ACCESS_PROFILE', 'SOURCES', 'ROLE', 'ENTITLEMENT') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

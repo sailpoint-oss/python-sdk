@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
@@ -57,7 +58,7 @@ class ManagedClient(BaseModel):
             return value
 
         if value not in set(['NORMAL', 'UNDEFINED', 'NOT_CONFIGURED', 'CONFIGURING', 'WARNING', 'ERROR', 'FAILED']):
-            raise ValueError("must be one of enum values ('NORMAL', 'UNDEFINED', 'NOT_CONFIGURED', 'CONFIGURING', 'WARNING', 'ERROR', 'FAILED')")
+            warnings.warn(f"must be one of enum values ('NORMAL', 'UNDEFINED', 'NOT_CONFIGURED', 'CONFIGURING', 'WARNING', 'ERROR', 'FAILED') unknown value: {value}")
         return value
 
     @field_validator('cluster_type')
@@ -67,7 +68,7 @@ class ManagedClient(BaseModel):
             return value
 
         if value not in set(['idn', 'iai', 'spConnectCluster', 'sqsCluster', 'das-rc', 'das-pc', 'das-dc']):
-            raise ValueError("must be one of enum values ('idn', 'iai', 'spConnectCluster', 'sqsCluster', 'das-rc', 'das-pc', 'das-dc')")
+            warnings.warn(f"must be one of enum values ('idn', 'iai', 'spConnectCluster', 'sqsCluster', 'das-rc', 'das-pc', 'das-dc') unknown value: {value}")
         return value
 
     @field_validator('provision_status')
@@ -77,7 +78,7 @@ class ManagedClient(BaseModel):
             return value
 
         if value not in set(['PROVISIONED', 'DRAFT']):
-            raise ValueError("must be one of enum values ('PROVISIONED', 'DRAFT')")
+            warnings.warn(f"must be one of enum values ('PROVISIONED', 'DRAFT') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

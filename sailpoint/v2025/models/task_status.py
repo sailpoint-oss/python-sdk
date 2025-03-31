@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
@@ -55,7 +56,7 @@ class TaskStatus(BaseModel):
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['QUARTZ', 'QPOC', 'QUEUED_TASK']):
-            raise ValueError("must be one of enum values ('QUARTZ', 'QPOC', 'QUEUED_TASK')")
+            warnings.warn(f"must be one of enum values ('QUARTZ', 'QPOC', 'QUEUED_TASK') unknown value: {value}")
         return value
 
     @field_validator('completion_status')
@@ -65,7 +66,7 @@ class TaskStatus(BaseModel):
             return value
 
         if value not in set(['SUCCESS', 'WARNING', 'ERROR', 'TERMINATED', 'TEMPERROR']):
-            raise ValueError("must be one of enum values ('SUCCESS', 'WARNING', 'ERROR', 'TERMINATED', 'TEMPERROR')")
+            warnings.warn(f"must be one of enum values ('SUCCESS', 'WARNING', 'ERROR', 'TERMINATED', 'TEMPERROR') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

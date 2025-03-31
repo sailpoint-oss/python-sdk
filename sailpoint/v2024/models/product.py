@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
@@ -53,7 +54,7 @@ class Product(BaseModel):
             return value
 
         if value not in set(['development', 'staging', 'production', 'test', 'partner', 'training', 'demonstration', 'sandbox']):
-            raise ValueError("must be one of enum values ('development', 'staging', 'production', 'test', 'partner', 'training', 'demonstration', 'sandbox')")
+            warnings.warn(f"must be one of enum values ('development', 'staging', 'production', 'test', 'partner', 'training', 'demonstration', 'sandbox') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

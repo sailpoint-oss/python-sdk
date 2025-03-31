@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
@@ -27,7 +28,7 @@ class ExternalAttributes(BaseModel):
     Attributes related to an external trigger
     """ # noqa: E501
     name: Optional[StrictStr] = Field(default=None, description="A unique name for the external trigger")
-    description: Optional[StrictStr] = Field(default=None, description="Additonal context about the external trigger")
+    description: Optional[StrictStr] = Field(default=None, description="Additional context about the external trigger")
     client_id: Optional[StrictStr] = Field(default=None, description="OAuth Client ID to authenticate with this trigger", alias="clientId")
     url: Optional[StrictStr] = Field(default=None, description="URL to invoke this workflow")
     __properties: ClassVar[List[str]] = ["name", "description", "clientId", "url"]
@@ -71,6 +72,26 @@ class ExternalAttributes(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if name (nullable) is None
+        # and model_fields_set contains the field
+        if self.name is None and "name" in self.model_fields_set:
+            _dict['name'] = None
+
+        # set to None if description (nullable) is None
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
+            _dict['description'] = None
+
+        # set to None if client_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.client_id is None and "client_id" in self.model_fields_set:
+            _dict['clientId'] = None
+
+        # set to None if url (nullable) is None
+        # and model_fields_set contains the field
+        if self.url is None and "url" in self.model_fields_set:
+            _dict['url'] = None
+
         return _dict
 
     @classmethod

@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
@@ -35,7 +36,7 @@ class ScheduleHours(BaseModel):
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['LIST', 'RANGE']):
-            raise ValueError("must be one of enum values ('LIST', 'RANGE')")
+            warnings.warn(f"must be one of enum values ('LIST', 'RANGE') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

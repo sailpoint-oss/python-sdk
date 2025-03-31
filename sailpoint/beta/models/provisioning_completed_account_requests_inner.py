@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
@@ -41,14 +42,14 @@ class ProvisioningCompletedAccountRequestsInner(BaseModel):
     def account_operation_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['Create', 'Modify', 'Enable', 'Disable', 'Unlock', 'Delete']):
-            raise ValueError("must be one of enum values ('Create', 'Modify', 'Enable', 'Disable', 'Unlock', 'Delete')")
+            warnings.warn(f"must be one of enum values ('Create', 'Modify', 'Enable', 'Disable', 'Unlock', 'Delete') unknown value: {value}")
         return value
 
     @field_validator('provisioning_result')
     def provisioning_result_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['SUCCESS', 'PENDING', 'FAILED']):
-            raise ValueError("must be one of enum values ('SUCCESS', 'PENDING', 'FAILED')")
+            warnings.warn(f"must be one of enum values ('SUCCESS', 'PENDING', 'FAILED') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

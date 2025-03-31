@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
@@ -43,7 +44,7 @@ class CampaignReport(BaseModel):
             return value
 
         if value not in set(['REPORT_RESULT']):
-            raise ValueError("must be one of enum values ('REPORT_RESULT')")
+            warnings.warn(f"must be one of enum values ('REPORT_RESULT') unknown value: {value}")
         return value
 
     @field_validator('status')
@@ -53,7 +54,7 @@ class CampaignReport(BaseModel):
             return value
 
         if value not in set(['SUCCESS', 'WARNING', 'ERROR', 'TERMINATED', 'TEMP_ERROR', 'PENDING']):
-            raise ValueError("must be one of enum values ('SUCCESS', 'WARNING', 'ERROR', 'TERMINATED', 'TEMP_ERROR', 'PENDING')")
+            warnings.warn(f"must be one of enum values ('SUCCESS', 'WARNING', 'ERROR', 'TERMINATED', 'TEMP_ERROR', 'PENDING') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

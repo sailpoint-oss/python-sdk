@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
@@ -41,7 +42,7 @@ class LatestOutlierSummary(BaseModel):
             return value
 
         if value not in set(['LOW_SIMILARITY', 'STRUCTURAL']):
-            raise ValueError("must be one of enum values ('LOW_SIMILARITY', 'STRUCTURAL')")
+            warnings.warn(f"must be one of enum values ('LOW_SIMILARITY', 'STRUCTURAL') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

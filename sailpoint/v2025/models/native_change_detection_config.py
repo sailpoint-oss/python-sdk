@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
@@ -42,7 +43,7 @@ class NativeChangeDetectionConfig(BaseModel):
 
         for i in value:
             if i not in set(['ACCOUNT_UPDATED', 'ACCOUNT_CREATED', 'ACCOUNT_DELETED']):
-                raise ValueError("each list item must be one of ('ACCOUNT_UPDATED', 'ACCOUNT_CREATED', 'ACCOUNT_DELETED')")
+                warnings.warn(f"each list item must be one of ('ACCOUNT_UPDATED', 'ACCOUNT_CREATED', 'ACCOUNT_DELETED') unknown value: {i}")
         return value
 
     model_config = ConfigDict(

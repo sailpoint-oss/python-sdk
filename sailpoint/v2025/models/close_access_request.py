@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
@@ -39,7 +40,7 @@ class CloseAccessRequest(BaseModel):
             return value
 
         if value not in set(['Terminated', 'Completed']):
-            raise ValueError("must be one of enum values ('Terminated', 'Completed')")
+            warnings.warn(f"must be one of enum values ('Terminated', 'Completed') unknown value: {value}")
         return value
 
     @field_validator('completion_status')
@@ -49,7 +50,7 @@ class CloseAccessRequest(BaseModel):
             return value
 
         if value not in set(['Success', 'Incomplete', 'Failure']):
-            raise ValueError("must be one of enum values ('Success', 'Incomplete', 'Failure')")
+            warnings.warn(f"must be one of enum values ('Success', 'Incomplete', 'Failure') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

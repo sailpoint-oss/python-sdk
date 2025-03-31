@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
@@ -51,7 +52,7 @@ class Identity(BaseModel):
             return value
 
         if value not in set(['ERROR', 'OK']):
-            raise ValueError("must be one of enum values ('ERROR', 'OK')")
+            warnings.warn(f"must be one of enum values ('ERROR', 'OK') unknown value: {value}")
         return value
 
     @field_validator('identity_status')
@@ -61,7 +62,7 @@ class Identity(BaseModel):
             return value
 
         if value not in set(['UNREGISTERED', 'REGISTERED', 'PENDING', 'WARNING', 'DISABLED', 'ACTIVE', 'DEACTIVATED', 'TERMINATED', 'ERROR', 'LOCKED']):
-            raise ValueError("must be one of enum values ('UNREGISTERED', 'REGISTERED', 'PENDING', 'WARNING', 'DISABLED', 'ACTIVE', 'DEACTIVATED', 'TERMINATED', 'ERROR', 'LOCKED')")
+            warnings.warn(f"must be one of enum values ('UNREGISTERED', 'REGISTERED', 'PENDING', 'WARNING', 'DISABLED', 'ACTIVE', 'DEACTIVATED', 'TERMINATED', 'ERROR', 'LOCKED') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

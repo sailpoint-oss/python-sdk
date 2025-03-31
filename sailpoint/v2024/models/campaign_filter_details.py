@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
@@ -31,7 +32,7 @@ class CampaignFilterDetails(BaseModel):
     name: StrictStr = Field(description="Campaign filter name.")
     description: Optional[StrictStr] = Field(default=None, description="Campaign filter description.")
     owner: Optional[StrictStr] = Field(description="Owner of the filter. This field automatically populates at creation time with the current user.")
-    mode: Dict[str, Any] = Field(description="Mode/type of filter, either the INCLUSION or EXCLUSION type. The INCLUSION type includes the data in generated campaigns  as per specified in the criteria, whereas the EXCLUSION type excludes the data in generated campaigns as per specified in criteria.")
+    mode: StrictStr = Field(description="Mode/type of filter, either the INCLUSION or EXCLUSION type. The INCLUSION type includes the data in generated campaigns  as per specified in the criteria, whereas the EXCLUSION type excludes the data in generated campaigns as per specified in criteria.")
     criteria_list: Optional[List[CampaignFilterDetailsCriteriaListInner]] = Field(default=None, description="List of criteria.", alias="criteriaList")
     is_system_filter: StrictBool = Field(description="If true, the filter is created by the system. If false, the filter is created by a user.", alias="isSystemFilter")
     __properties: ClassVar[List[str]] = ["id", "name", "description", "owner", "mode", "criteriaList", "isSystemFilter"]
@@ -40,7 +41,7 @@ class CampaignFilterDetails(BaseModel):
     def mode_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['INCLUSION', 'EXCLUSION']):
-            raise ValueError("must be one of enum values ('INCLUSION', 'EXCLUSION')")
+            warnings.warn(f"must be one of enum values ('INCLUSION', 'EXCLUSION') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

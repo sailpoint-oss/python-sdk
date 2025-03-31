@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
@@ -40,7 +41,7 @@ class RoleGetAllBulkUpdateResponse(BaseModel):
             return value
 
         if value not in set(['CREATED', 'PRE_PROCESS', 'POST_PROCESS', 'CHUNK_PENDING', 'CHUNK_PROCESSING']):
-            raise ValueError("must be one of enum values ('CREATED', 'PRE_PROCESS', 'POST_PROCESS', 'CHUNK_PENDING', 'CHUNK_PROCESSING')")
+            warnings.warn(f"must be one of enum values ('CREATED', 'PRE_PROCESS', 'POST_PROCESS', 'CHUNK_PENDING', 'CHUNK_PROCESSING') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

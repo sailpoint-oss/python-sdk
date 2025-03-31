@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
@@ -38,14 +39,14 @@ class AccessRequestDynamicApproverRequestedItemsInner(BaseModel):
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT']):
-            raise ValueError("must be one of enum values ('ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT')")
+            warnings.warn(f"must be one of enum values ('ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT') unknown value: {value}")
         return value
 
     @field_validator('operation')
     def operation_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['Add', 'Remove']):
-            raise ValueError("must be one of enum values ('Add', 'Remove')")
+            warnings.warn(f"must be one of enum values ('Add', 'Remove') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

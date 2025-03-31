@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
@@ -54,7 +55,7 @@ class BackupResponse(BaseModel):
             return value
 
         if value not in set(['NOT_STARTED', 'IN_PROGRESS', 'COMPLETE', 'CANCELLED', 'FAILED']):
-            raise ValueError("must be one of enum values ('NOT_STARTED', 'IN_PROGRESS', 'COMPLETE', 'CANCELLED', 'FAILED')")
+            warnings.warn(f"must be one of enum values ('NOT_STARTED', 'IN_PROGRESS', 'COMPLETE', 'CANCELLED', 'FAILED') unknown value: {value}")
         return value
 
     @field_validator('type')
@@ -64,7 +65,7 @@ class BackupResponse(BaseModel):
             return value
 
         if value not in set(['BACKUP']):
-            raise ValueError("must be one of enum values ('BACKUP')")
+            warnings.warn(f"must be one of enum values ('BACKUP') unknown value: {value}")
         return value
 
     @field_validator('backup_type')
@@ -74,7 +75,7 @@ class BackupResponse(BaseModel):
             return value
 
         if value not in set(['UPLOADED', 'AUTOMATED', 'MANUAL']):
-            raise ValueError("must be one of enum values ('UPLOADED', 'AUTOMATED', 'MANUAL')")
+            warnings.warn(f"must be one of enum values ('UPLOADED', 'AUTOMATED', 'MANUAL') unknown value: {value}")
         return value
 
     @field_validator('hydration_status')
@@ -84,7 +85,7 @@ class BackupResponse(BaseModel):
             return value
 
         if value not in set(['HYDRATED', 'NOT_HYDRATED']):
-            raise ValueError("must be one of enum values ('HYDRATED', 'NOT_HYDRATED')")
+            warnings.warn(f"must be one of enum values ('HYDRATED', 'NOT_HYDRATED') unknown value: {value}")
         return value
 
     @field_validator('cloud_storage_status')
@@ -94,7 +95,7 @@ class BackupResponse(BaseModel):
             return value
 
         if value not in set(['SYNCED', 'NOT_SYNCED', 'SYNC_FAILED']):
-            raise ValueError("must be one of enum values ('SYNCED', 'NOT_SYNCED', 'SYNC_FAILED')")
+            warnings.warn(f"must be one of enum values ('SYNCED', 'NOT_SYNCED', 'SYNC_FAILED') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

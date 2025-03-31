@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
@@ -43,7 +44,7 @@ class TaskResultSimplified(BaseModel):
             return value
 
         if value not in set(['Success', 'Warning', 'Error', 'Terminated', 'TempError']):
-            raise ValueError("must be one of enum values ('Success', 'Warning', 'Error', 'Terminated', 'TempError')")
+            warnings.warn(f"must be one of enum values ('Success', 'Warning', 'Error', 'Terminated', 'TempError') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

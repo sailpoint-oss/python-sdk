@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
@@ -42,7 +43,7 @@ class CorrelationConfigAttributeAssignmentsInner(BaseModel):
             return value
 
         if value not in set(['EQ']):
-            raise ValueError("must be one of enum values ('EQ')")
+            warnings.warn(f"must be one of enum values ('EQ') unknown value: {value}")
         return value
 
     @field_validator('match_mode')
@@ -52,7 +53,7 @@ class CorrelationConfigAttributeAssignmentsInner(BaseModel):
             return value
 
         if value not in set(['ANYWHERE', 'START', 'END']):
-            raise ValueError("must be one of enum values ('ANYWHERE', 'START', 'END')")
+            warnings.warn(f"must be one of enum values ('ANYWHERE', 'START', 'END') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

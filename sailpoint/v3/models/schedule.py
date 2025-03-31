@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
@@ -42,7 +43,7 @@ class Schedule(BaseModel):
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['WEEKLY', 'MONTHLY', 'ANNUALLY', 'CALENDAR']):
-            raise ValueError("must be one of enum values ('WEEKLY', 'MONTHLY', 'ANNUALLY', 'CALENDAR')")
+            warnings.warn(f"must be one of enum values ('WEEKLY', 'MONTHLY', 'ANNUALLY', 'CALENDAR') unknown value: {value}")
         return value
 
     model_config = ConfigDict(
