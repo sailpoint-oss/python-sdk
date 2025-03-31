@@ -589,7 +589,7 @@ Class | Method | HTTP request | Description
 *SPConfigApi* | [**get_sp_config_import**](sailpoint/v2025/docs/SPConfigApi.md#get_sp_config_import) | **GET** /sp-config/import/{id}/download | Download import job result
 *SPConfigApi* | [**get_sp_config_import_status**](sailpoint/v2025/docs/SPConfigApi.md#get_sp_config_import_status) | **GET** /sp-config/import/{id} | Get import job status
 *SPConfigApi* | [**import_sp_config**](sailpoint/v2025/docs/SPConfigApi.md#import_sp_config) | **POST** /sp-config/import | Initiates configuration objects import job
-*SPConfigApi* | [**list_sp_config_objects**](sailpoint/v2025/docs/SPConfigApi.md#list_sp_config_objects) | **GET** /sp-config/config-objects | Get config object details
+*SPConfigApi* | [**list_sp_config_objects**](sailpoint/v2025/docs/SPConfigApi.md#list_sp_config_objects) | **GET** /sp-config/config-objects | List Config Objects
 *SavedSearchApi* | [**create_saved_search**](sailpoint/v2025/docs/SavedSearchApi.md#create_saved_search) | **POST** /saved-searches | Create a saved search
 *SavedSearchApi* | [**delete_saved_search**](sailpoint/v2025/docs/SavedSearchApi.md#delete_saved_search) | **DELETE** /saved-searches/{id} | Delete document by ID
 *SavedSearchApi* | [**execute_saved_search**](sailpoint/v2025/docs/SavedSearchApi.md#execute_saved_search) | **POST** /saved-searches/{id}/execute | Execute a saved search by ID

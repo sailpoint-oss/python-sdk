@@ -481,7 +481,7 @@ Class | Method | HTTP request | Description
 *SPConfigApi* | [**get_sp_config_import**](sailpoint/beta/docs/SPConfigApi.md#get_sp_config_import) | **GET** /sp-config/import/{id}/download | Download import job result
 *SPConfigApi* | [**get_sp_config_import_status**](sailpoint/beta/docs/SPConfigApi.md#get_sp_config_import_status) | **GET** /sp-config/import/{id} | Get import job status
 *SPConfigApi* | [**import_sp_config**](sailpoint/beta/docs/SPConfigApi.md#import_sp_config) | **POST** /sp-config/import | Initiates configuration objects import job
-*SPConfigApi* | [**list_sp_config_objects**](sailpoint/beta/docs/SPConfigApi.md#list_sp_config_objects) | **GET** /sp-config/config-objects | Get config object details
+*SPConfigApi* | [**list_sp_config_objects**](sailpoint/beta/docs/SPConfigApi.md#list_sp_config_objects) | **GET** /sp-config/config-objects | List Config Objects
 *SearchAttributeConfigurationApi* | [**create_search_attribute_config**](sailpoint/beta/docs/SearchAttributeConfigurationApi.md#create_search_attribute_config) | **POST** /accounts/search-attribute-config | Create Extended Search Attributes
 *SearchAttributeConfigurationApi* | [**delete_search_attribute_config**](sailpoint/beta/docs/SearchAttributeConfigurationApi.md#delete_search_attribute_config) | **DELETE** /accounts/search-attribute-config/{name} | Delete Extended Search Attribute
 *SearchAttributeConfigurationApi* | [**get_search_attribute_config**](sailpoint/beta/docs/SearchAttributeConfigurationApi.md#get_search_attribute_config) | **GET** /accounts/search-attribute-config | List Extended Search Attributes

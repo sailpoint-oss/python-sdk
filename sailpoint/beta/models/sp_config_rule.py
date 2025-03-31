@@ -26,11 +26,11 @@ from typing_extensions import Self
 
 class SpConfigRule(BaseModel):
     """
-    Format of Config Hub Object Rules
+    Format of Config Hub object rules.
     """ # noqa: E501
-    path: Optional[StrictStr] = Field(default=None, description="JSONPath expression denoting the path within the object where a value substitution should be applied")
+    path: Optional[StrictStr] = Field(default=None, description="JSONPath expression denoting the path within the object where a value substitution should be applied.")
     value: Optional[SpConfigRuleValue] = None
-    modes: Optional[List[StrictStr]] = Field(default=None, description="Draft modes to which this rule will apply")
+    modes: Optional[List[StrictStr]] = Field(default=None, description="Draft modes the rule will apply to.")
     __properties: ClassVar[List[str]] = ["path", "value", "modes"]
 
     @field_validator('modes')

@@ -27,7 +27,7 @@ SPCONFIGRULEVALUE_ANY_OF_SCHEMAS = ["List[str]", "bool", "float", "object", "str
 
 class SpConfigRuleValue(BaseModel):
     """
-    Value to be assigned at the jsonPath location within the object
+    Value to be assigned at the jsonPath location within the object.
     """
 
     # data type: object

@@ -11,7 +11,7 @@ tags: ['SDK', 'Software Development Kit', 'SpConfigRuleValue', 'V2025SpConfigRul
 
 # SpConfigRuleValue
 
-Value to be assigned at the jsonPath location within the object
+Value to be assigned at the jsonPath location within the object.
 
 ## Properties
 

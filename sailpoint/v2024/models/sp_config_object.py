@@ -26,15 +26,15 @@ from typing_extensions import Self
 
 class SpConfigObject(BaseModel):
     """
-    Response model for get object configuration.
+    Response model for object configuration.
     """ # noqa: E501
-    object_type: Optional[StrictStr] = Field(default=None, description="The object type this configuration is for.", alias="objectType")
-    reference_extractors: Optional[List[StrictStr]] = Field(default=None, description="List of json paths within an exported object of this type that represent references that need to be resolved.", alias="referenceExtractors")
-    signature_required: Optional[StrictBool] = Field(default=False, description="If true, this type of object will be JWS signed and cannot be modified before import.", alias="signatureRequired")
-    always_resolve_by_id: Optional[StrictBool] = Field(default=False, description="Whether this object type has to be resolved always by ID", alias="alwaysResolveById")
-    legacy_object: Optional[StrictBool] = Field(default=False, description="Whether this is a legacy object", alias="legacyObject")
-    one_per_tenant: Optional[StrictBool] = Field(default=False, description="Whether there is only one object of this type", alias="onePerTenant")
-    exportable: Optional[StrictBool] = Field(default=False, description="Whether this object can be exported or it is just a reference object")
+    object_type: Optional[StrictStr] = Field(default=None, description="Object type the configuration is for.", alias="objectType")
+    reference_extractors: Optional[List[StrictStr]] = Field(default=None, description="List of JSON paths within an exported object of this type, representing references that must be resolved.", alias="referenceExtractors")
+    signature_required: Optional[StrictBool] = Field(default=False, description="Indicates whether this type of object will be JWS signed and cannot be modified before import.", alias="signatureRequired")
+    always_resolve_by_id: Optional[StrictBool] = Field(default=False, description="Indicates whether this object type must be always be resolved by ID.", alias="alwaysResolveById")
+    legacy_object: Optional[StrictBool] = Field(default=False, description="Indicates whether this is a legacy object.", alias="legacyObject")
+    one_per_tenant: Optional[StrictBool] = Field(default=False, description="Indicates whether there is only one object of this type.", alias="onePerTenant")
+    exportable: Optional[StrictBool] = Field(default=False, description="Indicates whether the object can be exported or is just a reference object.")
     rules: Optional[SpConfigRules] = None
     __properties: ClassVar[List[str]] = ["objectType", "referenceExtractors", "signatureRequired", "alwaysResolveById", "legacyObject", "onePerTenant", "exportable", "rules"]
 
