@@ -37,6 +37,7 @@ class TestRequestability(unittest.TestCase):
             return Requestability(
                 comments_required = True,
                 denial_comments_required = True,
+                reauthorization_required = True,
                 approval_schemes = [
                     sailpoint.v2025.models.access_profile_approval_scheme.AccessProfileApprovalScheme(
                         approver_type = 'GOVERNANCE_GROUP', 

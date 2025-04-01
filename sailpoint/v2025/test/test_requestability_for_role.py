@@ -37,6 +37,7 @@ class TestRequestabilityForRole(unittest.TestCase):
             return RequestabilityForRole(
                 comments_required = True,
                 denial_comments_required = True,
+                reauthorization_required = True,
                 approval_schemes = [
                     sailpoint.v2025.models.approval_scheme_for_role.ApprovalSchemeForRole(
                         approver_type = 'GOVERNANCE_GROUP', 

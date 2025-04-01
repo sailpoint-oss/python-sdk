@@ -32,21 +32,21 @@ from typing_extensions import Self
 
 class AccessProfile(BaseModel):
     """
-    Access Profile
+    Access profile.
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(default=None, description="The ID of the Access Profile")
-    name: StrictStr = Field(description="Name of the Access Profile")
-    description: Optional[StrictStr] = Field(default=None, description="Information about the Access Profile")
-    created: Optional[datetime] = Field(default=None, description="Date the Access Profile was created")
-    modified: Optional[datetime] = Field(default=None, description="Date the Access Profile was last modified.")
-    enabled: Optional[StrictBool] = Field(default=True, description="Whether the Access Profile is enabled. If the Access Profile is enabled then you must include at least one Entitlement.")
+    id: Optional[StrictStr] = Field(default=None, description="Access profile ID.")
+    name: StrictStr = Field(description="Access profile name.")
+    description: Optional[StrictStr] = Field(default=None, description="Access profile description.")
+    created: Optional[datetime] = Field(default=None, description="Date and time when the access profile was created.")
+    modified: Optional[datetime] = Field(default=None, description="Date and time when the access profile was last modified.")
+    enabled: Optional[StrictBool] = Field(default=False, description="Indicates whether the access profile is enabled. If it's enabled, you must include at least one entitlement.")
     owner: OwnerReference
     source: AccessProfileSourceRef
-    entitlements: Optional[List[EntitlementRef]] = Field(default=None, description="A list of entitlements associated with the Access Profile. If enabled is false this is allowed to be empty otherwise it needs to contain at least one Entitlement.")
-    requestable: Optional[StrictBool] = Field(default=True, description="Whether the Access Profile is requestable via access request. Currently, making an Access Profile non-requestable is only supported  for customers enabled with the new Request Center. Otherwise, attempting to create an Access Profile with a value  **false** in this field results in a 400 error.")
+    entitlements: Optional[List[EntitlementRef]] = Field(default=None, description="List of entitlements associated with the access profile. If `enabled` is false, this can be empty. Otherwise, it must contain at least one entitlement.")
+    requestable: Optional[StrictBool] = Field(default=True, description="Indicates whether the access profile is requestable by access request. Currently, making an access profile non-requestable is only supported  for customers enabled with the new Request Center. Otherwise, attempting to create an access profile with a value  **false** in this field results in a 400 error.")
     access_request_config: Optional[Requestability] = Field(default=None, alias="accessRequestConfig")
     revocation_request_config: Optional[Revocability] = Field(default=None, alias="revocationRequestConfig")
-    segments: Optional[List[StrictStr]] = Field(default=None, description="List of IDs of segments, if any, to which this Access Profile is assigned.")
+    segments: Optional[List[StrictStr]] = Field(default=None, description="List of segment IDs, if any, that the access profile is assigned to.")
     provisioning_criteria: Optional[ProvisioningCriteriaLevel1] = Field(default=None, alias="provisioningCriteria")
     __properties: ClassVar[List[str]] = ["id", "name", "description", "created", "modified", "enabled", "owner", "source", "entitlements", "requestable", "accessRequestConfig", "revocationRequestConfig", "segments", "provisioningCriteria"]
 
@@ -164,7 +164,7 @@ class AccessProfile(BaseModel):
             "description": obj.get("description"),
             "created": obj.get("created"),
             "modified": obj.get("modified"),
-            "enabled": obj.get("enabled") if obj.get("enabled") is not None else True,
+            "enabled": obj.get("enabled") if obj.get("enabled") is not None else False,
             "owner": OwnerReference.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
             "source": AccessProfileSourceRef.from_dict(obj["source"]) if obj.get("source") is not None else None,
             "entitlements": [EntitlementRef.from_dict(_item) for _item in obj["entitlements"]] if obj.get("entitlements") is not None else None,
