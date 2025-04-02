@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2024.models.source_usage import SourceUsage
+from sailpoint.v2024.models.managed_cluster_update_preferences import ManagedClusterUpdatePreferences
 
-class TestSourceUsage(unittest.TestCase):
-    """SourceUsage unit test stubs"""
+class TestManagedClusterUpdatePreferences(unittest.TestCase):
+    """ManagedClusterUpdatePreferences unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,26 +25,27 @@ class TestSourceUsage(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> SourceUsage:
-        """Test SourceUsage
+    def make_instance(self, include_optional) -> ManagedClusterUpdatePreferences:
+        """Test ManagedClusterUpdatePreferences
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `SourceUsage`
+        # uncomment below to create an instance of `ManagedClusterUpdatePreferences`
         """
-        model = SourceUsage()
+        model = ManagedClusterUpdatePreferences()
         if include_optional:
-            return SourceUsage(
-                var_date = 'Fri Apr 21 00:00:00 UTC 2023',
-                count = 10.45
+            return ManagedClusterUpdatePreferences(
+                process_groups = '',
+                update_state = 'DISABLED',
+                notification_email = 'test@mail.com'
             )
         else:
-            return SourceUsage(
+            return ManagedClusterUpdatePreferences(
         )
         """
 
-    def testSourceUsage(self):
-        """Test SourceUsage"""
+    def testManagedClusterUpdatePreferences(self):
+        """Test ManagedClusterUpdatePreferences"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
