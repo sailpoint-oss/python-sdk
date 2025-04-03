@@ -25,17 +25,17 @@ from typing import Union, Any, List, Set, TYPE_CHECKING, Optional, Dict
 from typing_extensions import Literal, Self
 from pydantic import Field
 
-GETACTIVECAMPAIGNS200RESPONSEINNER_ANY_OF_SCHEMAS = ["Campaign", "SlimCampaign"]
+GETCAMPAIGN200RESPONSE_ANY_OF_SCHEMAS = ["Campaign", "SlimCampaign"]
 
-class GetActiveCampaigns200ResponseInner(BaseModel):
+class GetCampaign200Response(BaseModel):
     """
-    GetActiveCampaigns200ResponseInner
+    GetCampaign200Response
     """
 
-    # data type: Campaign
-    anyof_schema_1_validator: Optional[Campaign] = None
     # data type: SlimCampaign
-    anyof_schema_2_validator: Optional[SlimCampaign] = None
+    anyof_schema_1_validator: Optional[SlimCampaign] = None
+    # data type: Campaign
+    anyof_schema_2_validator: Optional[Campaign] = None
     if TYPE_CHECKING:
         actual_instance: Optional[Union[Campaign, SlimCampaign]] = None
     else:
@@ -59,23 +59,23 @@ class GetActiveCampaigns200ResponseInner(BaseModel):
 
     @field_validator('actual_instance')
     def actual_instance_must_validate_anyof(cls, v):
-        instance = GetActiveCampaigns200ResponseInner.model_construct()
+        instance = GetCampaign200Response.model_construct()
         error_messages = []
-        # validate data type: Campaign
-        if not isinstance(v, Campaign):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `Campaign`")
-        else:
-            return v
-
         # validate data type: SlimCampaign
         if not isinstance(v, SlimCampaign):
             error_messages.append(f"Error! Input type `{type(v)}` is not `SlimCampaign`")
         else:
             return v
 
+        # validate data type: Campaign
+        if not isinstance(v, Campaign):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `Campaign`")
+        else:
+            return v
+
         if error_messages:
             # no match
-            raise ValueError("No match found when setting the actual_instance in GetActiveCampaigns200ResponseInner with anyOf schemas: Campaign, SlimCampaign. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting the actual_instance in GetCampaign200Response with anyOf schemas: Campaign, SlimCampaign. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -88,22 +88,22 @@ class GetActiveCampaigns200ResponseInner(BaseModel):
         """Returns the object represented by the json string"""
         instance = cls.model_construct()
         error_messages = []
-        # anyof_schema_1_validator: Optional[Campaign] = None
+        # anyof_schema_1_validator: Optional[SlimCampaign] = None
         try:
-            instance.actual_instance = Campaign.from_json(json_str)
+            instance.actual_instance = SlimCampaign.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
-        # anyof_schema_2_validator: Optional[SlimCampaign] = None
+        # anyof_schema_2_validator: Optional[Campaign] = None
         try:
-            instance.actual_instance = SlimCampaign.from_json(json_str)
+            instance.actual_instance = Campaign.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
 
         if error_messages:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into GetActiveCampaigns200ResponseInner with anyOf schemas: Campaign, SlimCampaign. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into GetCampaign200Response with anyOf schemas: Campaign, SlimCampaign. Details: " + ", ".join(error_messages))
         else:
             return instance
 

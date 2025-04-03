@@ -661,6 +661,7 @@ Class | Method | HTTP request | Description
  - [ForwardApprovalDto](sailpoint/v3/docs/ForwardApprovalDto.md)
  - [FullDiscoveredApplications](sailpoint/v3/docs/FullDiscoveredApplications.md)
  - [GetActiveCampaigns200ResponseInner](sailpoint/v3/docs/GetActiveCampaigns200ResponseInner.md)
+ - [GetCampaign200Response](sailpoint/v3/docs/GetCampaign200Response.md)
  - [GetDiscoveredApplications200ResponseInner](sailpoint/v3/docs/GetDiscoveredApplications200ResponseInner.md)
  - [GetOAuthClientResponse](sailpoint/v3/docs/GetOAuthClientResponse.md)
  - [GetPersonalAccessTokenResponse](sailpoint/v3/docs/GetPersonalAccessTokenResponse.md)

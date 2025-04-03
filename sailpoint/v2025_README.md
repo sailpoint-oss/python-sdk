@@ -1200,6 +1200,7 @@ Class | Method | HTTP request | Description
  - [ForwardApprovalDto](sailpoint/v2025/docs/ForwardApprovalDto.md)
  - [FullDiscoveredApplications](sailpoint/v2025/docs/FullDiscoveredApplications.md)
  - [GetActiveCampaigns200ResponseInner](sailpoint/v2025/docs/GetActiveCampaigns200ResponseInner.md)
+ - [GetCampaign200Response](sailpoint/v2025/docs/GetCampaign200Response.md)
  - [GetDiscoveredApplications200ResponseInner](sailpoint/v2025/docs/GetDiscoveredApplications200ResponseInner.md)
  - [GetHistoricalIdentityEvents200ResponseInner](sailpoint/v2025/docs/GetHistoricalIdentityEvents200ResponseInner.md)
  - [GetOAuthClientResponse](sailpoint/v2025/docs/GetOAuthClientResponse.md)

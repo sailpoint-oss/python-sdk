@@ -13,34 +13,39 @@
 
 
 from __future__ import annotations
+from inspect import getfullargspec
 import json
 import pprint
+import re  # noqa: F401
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
-from typing import Any, List, Optional
+from typing import Optional
 from sailpoint.beta.models.campaign import Campaign
 from sailpoint.beta.models.slimcampaign import Slimcampaign
-from pydantic import StrictStr, Field
-from typing import Union, List, Set, Optional, Dict
+from typing import Union, Any, List, Set, TYPE_CHECKING, Optional, Dict
 from typing_extensions import Literal, Self
+from pydantic import Field
 
-GETACTIVECAMPAIGNS200RESPONSEINNER_ONE_OF_SCHEMAS = ["Campaign", "Slimcampaign"]
+GETACTIVECAMPAIGNS200RESPONSEINNER_ANY_OF_SCHEMAS = ["Campaign", "Slimcampaign"]
 
 class GetActiveCampaigns200ResponseInner(BaseModel):
     """
     GetActiveCampaigns200ResponseInner
     """
-    # data type: Slimcampaign
-    oneof_schema_1_validator: Optional[Slimcampaign] = None
+
     # data type: Campaign
-    oneof_schema_2_validator: Optional[Campaign] = None
-    actual_instance: Optional[Union[Campaign, Slimcampaign]] = None
-    one_of_schemas: Set[str] = { "Campaign", "Slimcampaign" }
+    anyof_schema_1_validator: Optional[Campaign] = None
+    # data type: Slimcampaign
+    anyof_schema_2_validator: Optional[Slimcampaign] = None
+    if TYPE_CHECKING:
+        actual_instance: Optional[Union[Campaign, Slimcampaign]] = None
+    else:
+        actual_instance: Any = None
+    any_of_schemas: Set[str] = { "Campaign", "Slimcampaign" }
 
-    model_config = ConfigDict(
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
-
+    model_config = {
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def __init__(self, *args, **kwargs) -> None:
         if args:
@@ -53,31 +58,29 @@ class GetActiveCampaigns200ResponseInner(BaseModel):
             super().__init__(**kwargs)
 
     @field_validator('actual_instance')
-    def actual_instance_must_validate_oneof(cls, v):
+    def actual_instance_must_validate_anyof(cls, v):
         instance = GetActiveCampaigns200ResponseInner.model_construct()
         error_messages = []
-        match = 0
-        # validate data type: Slimcampaign
-        if not isinstance(v, Slimcampaign):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `Slimcampaign`")
-        else:
-            match += 1
         # validate data type: Campaign
         if not isinstance(v, Campaign):
             error_messages.append(f"Error! Input type `{type(v)}` is not `Campaign`")
         else:
-            match += 1
-        if match > 1:
-            # more than 1 match
-            raise ValueError("Multiple matches found when setting `actual_instance` in GetActiveCampaigns200ResponseInner with oneOf schemas: Campaign, Slimcampaign. Details: " + ", ".join(error_messages))
-        elif match == 0:
+            return v
+
+        # validate data type: Slimcampaign
+        if not isinstance(v, Slimcampaign):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `Slimcampaign`")
+        else:
+            return v
+
+        if error_messages:
             # no match
-            raise ValueError("No match found when setting `actual_instance` in GetActiveCampaigns200ResponseInner with oneOf schemas: Campaign, Slimcampaign. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting the actual_instance in GetActiveCampaigns200ResponseInner with anyOf schemas: Campaign, Slimcampaign. Details: " + ", ".join(error_messages))
         else:
             return v
 
     @classmethod
-    def from_dict(cls, obj: Union[str, Dict[str, Any]]) -> Self:
+    def from_dict(cls, obj: Dict[str, Any]) -> Self:
         return cls.from_json(json.dumps(obj))
 
     @classmethod
@@ -85,27 +88,22 @@ class GetActiveCampaigns200ResponseInner(BaseModel):
         """Returns the object represented by the json string"""
         instance = cls.model_construct()
         error_messages = []
-        match = 0
-
-        # deserialize data into Slimcampaign
-        try:
-            instance.actual_instance = Slimcampaign.from_json(json_str)
-            match += 1
-        except (ValidationError, ValueError) as e:
-            error_messages.append(str(e))
-        # deserialize data into Campaign
+        # anyof_schema_1_validator: Optional[Campaign] = None
         try:
             instance.actual_instance = Campaign.from_json(json_str)
-            match += 1
+            return instance
         except (ValidationError, ValueError) as e:
-            error_messages.append(str(e))
+             error_messages.append(str(e))
+        # anyof_schema_2_validator: Optional[Slimcampaign] = None
+        try:
+            instance.actual_instance = Slimcampaign.from_json(json_str)
+            return instance
+        except (ValidationError, ValueError) as e:
+             error_messages.append(str(e))
 
-        if match > 1:
-            # more than 1 match
-            raise ValueError("Multiple matches found when deserializing the JSON string into GetActiveCampaigns200ResponseInner with oneOf schemas: Campaign, Slimcampaign. Details: " + ", ".join(error_messages))
-        elif match == 0:
+        if error_messages:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into GetActiveCampaigns200ResponseInner with oneOf schemas: Campaign, Slimcampaign. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into GetActiveCampaigns200ResponseInner with anyOf schemas: Campaign, Slimcampaign. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -127,7 +125,6 @@ class GetActiveCampaigns200ResponseInner(BaseModel):
         if hasattr(self.actual_instance, "to_dict") and callable(self.actual_instance.to_dict):
             return self.actual_instance.to_dict()
         else:
-            # primitive type
             return self.actual_instance
 
     def to_str(self) -> str:

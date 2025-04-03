@@ -235,6 +235,7 @@ from sailpoint.v3.models.form_item_details import FormItemDetails
 from sailpoint.v3.models.forward_approval_dto import ForwardApprovalDto
 from sailpoint.v3.models.full_discovered_applications import FullDiscoveredApplications
 from sailpoint.v3.models.get_active_campaigns200_response_inner import GetActiveCampaigns200ResponseInner
+from sailpoint.v3.models.get_campaign200_response import GetCampaign200Response
 from sailpoint.v3.models.get_discovered_applications200_response_inner import GetDiscoveredApplications200ResponseInner
 from sailpoint.v3.models.get_o_auth_client_response import GetOAuthClientResponse
 from sailpoint.v3.models.get_personal_access_token_response import GetPersonalAccessTokenResponse

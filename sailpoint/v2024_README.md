@@ -1196,6 +1196,7 @@ Class | Method | HTTP request | Description
  - [ForwardApprovalDto](sailpoint/v2024/docs/ForwardApprovalDto.md)
  - [FullDiscoveredApplications](sailpoint/v2024/docs/FullDiscoveredApplications.md)
  - [GetActiveCampaigns200ResponseInner](sailpoint/v2024/docs/GetActiveCampaigns200ResponseInner.md)
+ - [GetCampaign200Response](sailpoint/v2024/docs/GetCampaign200Response.md)
  - [GetDiscoveredApplications200ResponseInner](sailpoint/v2024/docs/GetDiscoveredApplications200ResponseInner.md)
  - [GetHistoricalIdentityEvents200ResponseInner](sailpoint/v2024/docs/GetHistoricalIdentityEvents200ResponseInner.md)
  - [GetOAuthClientResponse](sailpoint/v2024/docs/GetOAuthClientResponse.md)

@@ -30,6 +30,7 @@ from sailpoint.v3.models.campaign_template import CampaignTemplate
 from sailpoint.v3.models.campaigns_delete_request import CampaignsDeleteRequest
 from sailpoint.v3.models.certification_task import CertificationTask
 from sailpoint.v3.models.get_active_campaigns200_response_inner import GetActiveCampaigns200ResponseInner
+from sailpoint.v3.models.get_campaign200_response import GetCampaign200Response
 from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v3.models.report_type import ReportType
 from sailpoint.v3.models.schedule import Schedule
@@ -2175,7 +2176,7 @@ class CertificationCampaignsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> GetActiveCampaigns200ResponseInner:
+    ) -> GetCampaign200Response:
         """Get Campaign
 
         Use this API to get information for an existing certification campaign by the campaign's ID. 
@@ -2216,7 +2217,7 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "GetActiveCampaigns200ResponseInner",
+            '200': "GetCampaign200Response",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -2252,7 +2253,7 @@ class CertificationCampaignsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[GetActiveCampaigns200ResponseInner]:
+    ) -> ApiResponse[GetCampaign200Response]:
         """Get Campaign
 
         Use this API to get information for an existing certification campaign by the campaign's ID. 
@@ -2293,7 +2294,7 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "GetActiveCampaigns200ResponseInner",
+            '200': "GetCampaign200Response",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -2370,7 +2371,7 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "GetActiveCampaigns200ResponseInner",
+            '200': "GetCampaign200Response",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
