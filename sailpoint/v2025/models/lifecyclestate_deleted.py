@@ -38,8 +38,8 @@ class LifecyclestateDeleted(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['LIFECYCLE_STATE']):
-            warnings.warn(f"must be one of enum values ('LIFECYCLE_STATE') unknown value: {value}")
+        if value not in set(['LIFECYCLE_STATE', 'TASK_RESULT']):
+            warnings.warn(f"must be one of enum values ('LIFECYCLE_STATE', 'TASK_RESULT') unknown value: {value}")
         return value
 
     model_config = ConfigDict(
