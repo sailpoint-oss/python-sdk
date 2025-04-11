@@ -30,8 +30,9 @@ class SpDetails(BaseModel):
     role: Optional[StrictStr] = Field(default=None, description="Federation protocol role")
     entity_id: Optional[StrictStr] = Field(default=None, description="An entity ID is a globally unique name for a SAML entity, either an Identity Provider (IDP) or a Service Provider (SP).", alias="entityId")
     alias: Optional[StrictStr] = Field(default=None, description="Unique alias used to identify the selected local service provider based on used URL. Used with SP configurations.")
-    callback_url: Optional[StrictStr] = Field(default=None, description="The allowed callback URL where users will be redirected to after authentication. Used with SP configurations.", alias="callbackUrl")
-    __properties: ClassVar[List[str]] = ["role", "entityId", "alias", "callbackUrl"]
+    callback_url: StrictStr = Field(description="The allowed callback URL where users will be redirected to after authentication. Used with SP configurations.", alias="callbackUrl")
+    legacy_acs_url: Optional[StrictStr] = Field(default=None, description="The legacy ACS URL used for SAML authentication. Used with SP configurations.", alias="legacyAcsUrl")
+    __properties: ClassVar[List[str]] = ["role", "entityId", "alias", "callbackUrl", "legacyAcsUrl"]
 
     @field_validator('role')
     def role_validate_enum(cls, value):
@@ -39,8 +40,8 @@ class SpDetails(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['SAML_SP']):
-            warnings.warn(f"must be one of enum values ('SAML_SP') unknown value: {value}")
+        if value not in set(['SAML_IDP', 'SAML_SP']):
+            warnings.warn(f"must be one of enum values ('SAML_IDP', 'SAML_SP') unknown value: {value}")
         return value
 
     model_config = ConfigDict(
@@ -97,7 +98,8 @@ class SpDetails(BaseModel):
             "role": obj.get("role"),
             "entityId": obj.get("entityId"),
             "alias": obj.get("alias"),
-            "callbackUrl": obj.get("callbackUrl")
+            "callbackUrl": obj.get("callbackUrl"),
+            "legacyAcsUrl": obj.get("legacyAcsUrl")
         })
         return _obj
 

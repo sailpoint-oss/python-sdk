@@ -227,6 +227,8 @@ from sailpoint.v2024.models.account_correlated_account import AccountCorrelatedA
 from sailpoint.v2024.models.account_correlated_identity import AccountCorrelatedIdentity
 from sailpoint.v2024.models.account_correlated_source import AccountCorrelatedSource
 from sailpoint.v2024.models.account_info_dto import AccountInfoDto
+from sailpoint.v2024.models.account_info_ref import AccountInfoRef
+from sailpoint.v2024.models.account_item_ref import AccountItemRef
 from sailpoint.v2024.models.account_request import AccountRequest
 from sailpoint.v2024.models.account_request_info import AccountRequestInfo
 from sailpoint.v2024.models.account_request_result import AccountRequestResult
@@ -246,6 +248,8 @@ from sailpoint.v2024.models.accounts_collected_for_aggregation import AccountsCo
 from sailpoint.v2024.models.accounts_collected_for_aggregation_source import AccountsCollectedForAggregationSource
 from sailpoint.v2024.models.accounts_collected_for_aggregation_stats import AccountsCollectedForAggregationStats
 from sailpoint.v2024.models.accounts_export_report_arguments import AccountsExportReportArguments
+from sailpoint.v2024.models.accounts_selection_request import AccountsSelectionRequest
+from sailpoint.v2024.models.accounts_selection_response import AccountsSelectionResponse
 from sailpoint.v2024.models.activate_campaign_options import ActivateCampaignOptions
 from sailpoint.v2024.models.activity_identity import ActivityIdentity
 from sailpoint.v2024.models.activity_insights import ActivityInsights
@@ -521,6 +525,7 @@ from sailpoint.v2024.models.expression import Expression
 from sailpoint.v2024.models.expression_children_inner import ExpressionChildrenInner
 from sailpoint.v2024.models.external_attributes import ExternalAttributes
 from sailpoint.v2024.models.feature_value_dto import FeatureValueDto
+from sailpoint.v2024.models.federation_protocol_details import FederationProtocolDetails
 from sailpoint.v2024.models.field_details_dto import FieldDetailsDto
 from sailpoint.v2024.models.filter import Filter
 from sailpoint.v2024.models.filter_aggregation import FilterAggregation
@@ -567,6 +572,7 @@ from sailpoint.v2024.models.identities_report_arguments import IdentitiesReportA
 from sailpoint.v2024.models.identity import Identity
 from sailpoint.v2024.models.identity1 import Identity1
 from sailpoint.v2024.models.identity_access import IdentityAccess
+from sailpoint.v2024.models.identity_account_selections import IdentityAccountSelections
 from sailpoint.v2024.models.identity_association_details import IdentityAssociationDetails
 from sailpoint.v2024.models.identity_association_details_association_details_inner import IdentityAssociationDetailsAssociationDetailsInner
 from sailpoint.v2024.models.identity_attribute import IdentityAttribute
@@ -620,6 +626,7 @@ from sailpoint.v2024.models.identity_sync_payload import IdentitySyncPayload
 from sailpoint.v2024.models.identity_with_new_access import IdentityWithNewAccess
 from sailpoint.v2024.models.identity_with_new_access1 import IdentityWithNewAccess1
 from sailpoint.v2024.models.identity_with_new_access_access_refs_inner import IdentityWithNewAccessAccessRefsInner
+from sailpoint.v2024.models.idp_details import IdpDetails
 from sailpoint.v2024.models.import_accounts_request import ImportAccountsRequest
 from sailpoint.v2024.models.import_entitlements_by_source_request import ImportEntitlementsBySourceRequest
 from sailpoint.v2024.models.import_form_definitions202_response import ImportFormDefinitions202Response
@@ -635,6 +642,7 @@ from sailpoint.v2024.models.invite_identities_request import InviteIdentitiesReq
 from sailpoint.v2024.models.invocation import Invocation
 from sailpoint.v2024.models.invocation_status import InvocationStatus
 from sailpoint.v2024.models.invocation_status_type import InvocationStatusType
+from sailpoint.v2024.models.jit_configuration import JITConfiguration
 from sailpoint.v2024.models.json_patch import JsonPatch
 from sailpoint.v2024.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v2024.models.kba_answer_request_item import KbaAnswerRequestItem
@@ -669,6 +677,7 @@ from sailpoint.v2024.models.load_uncorrelated_accounts_task_task_attributes impo
 from sailpoint.v2024.models.load_uncorrelated_accounts_task_task_messages_inner import LoadUncorrelatedAccountsTaskTaskMessagesInner
 from sailpoint.v2024.models.locale_origin import LocaleOrigin
 from sailpoint.v2024.models.localized_message import LocalizedMessage
+from sailpoint.v2024.models.lockout_configuration import LockoutConfiguration
 from sailpoint.v2024.models.lookup_step import LookupStep
 from sailpoint.v2024.models.machine_account import MachineAccount
 from sailpoint.v2024.models.machine_identity import MachineIdentity
@@ -863,7 +872,10 @@ from sailpoint.v2024.models.requestable_object_reference import RequestableObjec
 from sailpoint.v2024.models.requestable_object_request_status import RequestableObjectRequestStatus
 from sailpoint.v2024.models.requestable_object_type import RequestableObjectType
 from sailpoint.v2024.models.requested_account_ref import RequestedAccountRef
+from sailpoint.v2024.models.requested_for_dto_ref import RequestedForDtoRef
+from sailpoint.v2024.models.requested_item_account_selections import RequestedItemAccountSelections
 from sailpoint.v2024.models.requested_item_details import RequestedItemDetails
+from sailpoint.v2024.models.requested_item_dto_ref import RequestedItemDtoRef
 from sailpoint.v2024.models.requested_item_status import RequestedItemStatus
 from sailpoint.v2024.models.requested_item_status_cancelled_request_details import RequestedItemStatusCancelledRequestDetails
 from sailpoint.v2024.models.requested_item_status_pre_approval_trigger_details import RequestedItemStatusPreApprovalTriggerDetails
@@ -1023,6 +1035,9 @@ from sailpoint.v2024.models.service_desk_integration_dto import ServiceDeskInteg
 from sailpoint.v2024.models.service_desk_integration_template_dto import ServiceDeskIntegrationTemplateDto
 from sailpoint.v2024.models.service_desk_integration_template_type import ServiceDeskIntegrationTemplateType
 from sailpoint.v2024.models.service_desk_source import ServiceDeskSource
+from sailpoint.v2024.models.service_provider_configuration import ServiceProviderConfiguration
+from sailpoint.v2024.models.service_provider_configuration_federation_protocol_details_inner import ServiceProviderConfigurationFederationProtocolDetailsInner
+from sailpoint.v2024.models.session_configuration import SessionConfiguration
 from sailpoint.v2024.models.set_icon200_response import SetIcon200Response
 from sailpoint.v2024.models.set_icon_request import SetIconRequest
 from sailpoint.v2024.models.set_lifecycle_state200_response import SetLifecycleState200Response
@@ -1051,6 +1066,7 @@ from sailpoint.v2024.models.source_account_correlation_config import SourceAccou
 from sailpoint.v2024.models.source_account_correlation_rule import SourceAccountCorrelationRule
 from sailpoint.v2024.models.source_account_created import SourceAccountCreated
 from sailpoint.v2024.models.source_account_deleted import SourceAccountDeleted
+from sailpoint.v2024.models.source_account_selections import SourceAccountSelections
 from sailpoint.v2024.models.source_account_updated import SourceAccountUpdated
 from sailpoint.v2024.models.source_app import SourceApp
 from sailpoint.v2024.models.source_app_account_source import SourceAppAccountSource
@@ -1070,6 +1086,7 @@ from sailpoint.v2024.models.source_deleted import SourceDeleted
 from sailpoint.v2024.models.source_deleted_actor import SourceDeletedActor
 from sailpoint.v2024.models.source_entitlement_request_config import SourceEntitlementRequestConfig
 from sailpoint.v2024.models.source_health_dto import SourceHealthDto
+from sailpoint.v2024.models.source_item_ref import SourceItemRef
 from sailpoint.v2024.models.source_management_workgroup import SourceManagementWorkgroup
 from sailpoint.v2024.models.source_manager_correlation_mapping import SourceManagerCorrelationMapping
 from sailpoint.v2024.models.source_manager_correlation_rule import SourceManagerCorrelationRule
@@ -1095,6 +1112,7 @@ from sailpoint.v2024.models.sp_config_object import SpConfigObject
 from sailpoint.v2024.models.sp_config_rule import SpConfigRule
 from sailpoint.v2024.models.sp_config_rule_value import SpConfigRuleValue
 from sailpoint.v2024.models.sp_config_rules import SpConfigRules
+from sailpoint.v2024.models.sp_details import SpDetails
 from sailpoint.v2024.models.standard_level import StandardLevel
 from sailpoint.v2024.models.start_invocation_input import StartInvocationInput
 from sailpoint.v2024.models.status_response import StatusResponse

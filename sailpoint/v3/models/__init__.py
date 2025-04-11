@@ -65,6 +65,7 @@ from sailpoint.v3.models.account_all_of_source_owner import AccountAllOfSourceOw
 from sailpoint.v3.models.account_attributes import AccountAttributes
 from sailpoint.v3.models.account_attributes_create import AccountAttributesCreate
 from sailpoint.v3.models.account_attributes_create_attributes import AccountAttributesCreateAttributes
+from sailpoint.v3.models.account_item_ref import AccountItemRef
 from sailpoint.v3.models.account_request import AccountRequest
 from sailpoint.v3.models.account_request_info import AccountRequestInfo
 from sailpoint.v3.models.account_request_result import AccountRequestResult
@@ -423,7 +424,9 @@ from sailpoint.v3.models.requestable_object_reference import RequestableObjectRe
 from sailpoint.v3.models.requestable_object_request_status import RequestableObjectRequestStatus
 from sailpoint.v3.models.requestable_object_type import RequestableObjectType
 from sailpoint.v3.models.requested_account_ref import RequestedAccountRef
+from sailpoint.v3.models.requested_for_dto_ref import RequestedForDtoRef
 from sailpoint.v3.models.requested_item_details import RequestedItemDetails
+from sailpoint.v3.models.requested_item_dto_ref import RequestedItemDtoRef
 from sailpoint.v3.models.requested_item_status import RequestedItemStatus
 from sailpoint.v3.models.requested_item_status_cancelled_request_details import RequestedItemStatusCancelledRequestDetails
 from sailpoint.v3.models.requested_item_status_pre_approval_trigger_details import RequestedItemStatusPreApprovalTriggerDetails
@@ -528,6 +531,7 @@ from sailpoint.v3.models.source_cluster import SourceCluster
 from sailpoint.v3.models.source_cluster_dto import SourceClusterDto
 from sailpoint.v3.models.source_connections_dto import SourceConnectionsDto
 from sailpoint.v3.models.source_health_dto import SourceHealthDto
+from sailpoint.v3.models.source_item_ref import SourceItemRef
 from sailpoint.v3.models.source_management_workgroup import SourceManagementWorkgroup
 from sailpoint.v3.models.source_manager_correlation_mapping import SourceManagerCorrelationMapping
 from sailpoint.v3.models.source_manager_correlation_rule import SourceManagerCorrelationRule

@@ -191,6 +191,7 @@ from sailpoint.beta.models.account_correlated_account import AccountCorrelatedAc
 from sailpoint.beta.models.account_correlated_identity import AccountCorrelatedIdentity
 from sailpoint.beta.models.account_correlated_source import AccountCorrelatedSource
 from sailpoint.beta.models.account_info_dto import AccountInfoDto
+from sailpoint.beta.models.account_item_ref import AccountItemRef
 from sailpoint.beta.models.account_request_info import AccountRequestInfo
 from sailpoint.beta.models.account_status_changed import AccountStatusChanged
 from sailpoint.beta.models.account_status_changed_account import AccountStatusChangedAccount
@@ -705,7 +706,9 @@ from sailpoint.beta.models.requestable_object_reference import RequestableObject
 from sailpoint.beta.models.requestable_object_request_status import RequestableObjectRequestStatus
 from sailpoint.beta.models.requestable_object_type import RequestableObjectType
 from sailpoint.beta.models.requested_account_ref import RequestedAccountRef
+from sailpoint.beta.models.requested_for_dto_ref import RequestedForDtoRef
 from sailpoint.beta.models.requested_item_details import RequestedItemDetails
+from sailpoint.beta.models.requested_item_dto_ref import RequestedItemDtoRef
 from sailpoint.beta.models.requested_item_status import RequestedItemStatus
 from sailpoint.beta.models.requested_item_status_cancelled_request_details import RequestedItemStatusCancelledRequestDetails
 from sailpoint.beta.models.requested_item_status_pre_approval_trigger_details import RequestedItemStatusPreApprovalTriggerDetails
@@ -861,6 +864,7 @@ from sailpoint.beta.models.source_creation_errors import SourceCreationErrors
 from sailpoint.beta.models.source_deleted import SourceDeleted
 from sailpoint.beta.models.source_deleted_actor import SourceDeletedActor
 from sailpoint.beta.models.source_entitlement_request_config import SourceEntitlementRequestConfig
+from sailpoint.beta.models.source_item_ref import SourceItemRef
 from sailpoint.beta.models.source_sync_job import SourceSyncJob
 from sailpoint.beta.models.source_sync_payload import SourceSyncPayload
 from sailpoint.beta.models.source_updated import SourceUpdated

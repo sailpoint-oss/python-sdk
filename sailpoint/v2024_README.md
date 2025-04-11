@@ -102,6 +102,7 @@ Class | Method | HTTP request | Description
 *AccessRequestsApi* | [**get_access_request_config**](sailpoint/v2024/docs/AccessRequestsApi.md#get_access_request_config) | **GET** /access-request-config | Get Access Request Configuration
 *AccessRequestsApi* | [**list_access_request_status**](sailpoint/v2024/docs/AccessRequestsApi.md#list_access_request_status) | **GET** /access-request-status | Access Request Status
 *AccessRequestsApi* | [**list_administrators_access_request_status**](sailpoint/v2024/docs/AccessRequestsApi.md#list_administrators_access_request_status) | **GET** /access-request-administration | Access Request Status for Administrators
+*AccessRequestsApi* | [**load_account_selections**](sailpoint/v2024/docs/AccessRequestsApi.md#load_account_selections) | **POST** /access-requests/accounts-selection | Get accounts selections for identity
 *AccessRequestsApi* | [**set_access_request_config**](sailpoint/v2024/docs/AccessRequestsApi.md#set_access_request_config) | **PUT** /access-request-config | Update Access Request Configuration
 *AccountActivitiesApi* | [**get_account_activity**](sailpoint/v2024/docs/AccountActivitiesApi.md#get_account_activity) | **GET** /account-activities/{id} | Get an Account Activity
 *AccountActivitiesApi* | [**list_account_activities**](sailpoint/v2024/docs/AccountActivitiesApi.md#list_account_activities) | **GET** /account-activities | List Account Activities
@@ -289,8 +290,14 @@ Class | Method | HTTP request | Description
 *EntitlementsApi* | [**reset_source_entitlements**](sailpoint/v2024/docs/EntitlementsApi.md#reset_source_entitlements) | **POST** /entitlements/reset/sources/{id} | Reset Source Entitlements
 *EntitlementsApi* | [**update_entitlements_in_bulk**](sailpoint/v2024/docs/EntitlementsApi.md#update_entitlements_in_bulk) | **POST** /entitlements/bulk-update | Bulk update an entitlement list
 *GlobalTenantSecuritySettingsApi* | [**create_auth_org_network_config**](sailpoint/v2024/docs/GlobalTenantSecuritySettingsApi.md#create_auth_org_network_config) | **POST** /auth-org/network-config | Create security network configuration.
+*GlobalTenantSecuritySettingsApi* | [**get_auth_org_lockout_config**](sailpoint/v2024/docs/GlobalTenantSecuritySettingsApi.md#get_auth_org_lockout_config) | **GET** /auth-org/lockout-config | Get Auth Org Lockout Configuration.
 *GlobalTenantSecuritySettingsApi* | [**get_auth_org_network_config**](sailpoint/v2024/docs/GlobalTenantSecuritySettingsApi.md#get_auth_org_network_config) | **GET** /auth-org/network-config | Get security network configuration.
+*GlobalTenantSecuritySettingsApi* | [**get_auth_org_service_provider_config**](sailpoint/v2024/docs/GlobalTenantSecuritySettingsApi.md#get_auth_org_service_provider_config) | **GET** /auth-org/service-provider-config | Get Service Provider Configuration.
+*GlobalTenantSecuritySettingsApi* | [**get_auth_org_session_config**](sailpoint/v2024/docs/GlobalTenantSecuritySettingsApi.md#get_auth_org_session_config) | **GET** /auth-org/session-config | Get Auth Org Session Configuration.
+*GlobalTenantSecuritySettingsApi* | [**patch_auth_org_lockout_config**](sailpoint/v2024/docs/GlobalTenantSecuritySettingsApi.md#patch_auth_org_lockout_config) | **PATCH** /auth-org/lockout-config | Update Auth Org Lockout Configuration
 *GlobalTenantSecuritySettingsApi* | [**patch_auth_org_network_config**](sailpoint/v2024/docs/GlobalTenantSecuritySettingsApi.md#patch_auth_org_network_config) | **PATCH** /auth-org/network-config | Update security network configuration.
+*GlobalTenantSecuritySettingsApi* | [**patch_auth_org_service_provider_config**](sailpoint/v2024/docs/GlobalTenantSecuritySettingsApi.md#patch_auth_org_service_provider_config) | **PATCH** /auth-org/service-provider-config | Update Service Provider Configuration
+*GlobalTenantSecuritySettingsApi* | [**patch_auth_org_session_config**](sailpoint/v2024/docs/GlobalTenantSecuritySettingsApi.md#patch_auth_org_session_config) | **PATCH** /auth-org/session-config | Update Auth Org Session Configuration
 *GovernanceGroupsApi* | [**create_workgroup**](sailpoint/v2024/docs/GovernanceGroupsApi.md#create_workgroup) | **POST** /workgroups | Create a new Governance Group.
 *GovernanceGroupsApi* | [**delete_workgroup**](sailpoint/v2024/docs/GovernanceGroupsApi.md#delete_workgroup) | **DELETE** /workgroups/{id} | Delete a Governance Group
 *GovernanceGroupsApi* | [**delete_workgroup_members**](sailpoint/v2024/docs/GovernanceGroupsApi.md#delete_workgroup_members) | **POST** /workgroups/{workgroupId}/members/bulk-delete | Remove members from Governance Group
@@ -873,6 +880,8 @@ Class | Method | HTTP request | Description
  - [AccountCorrelatedIdentity](sailpoint/v2024/docs/AccountCorrelatedIdentity.md)
  - [AccountCorrelatedSource](sailpoint/v2024/docs/AccountCorrelatedSource.md)
  - [AccountInfoDto](sailpoint/v2024/docs/AccountInfoDto.md)
+ - [AccountInfoRef](sailpoint/v2024/docs/AccountInfoRef.md)
+ - [AccountItemRef](sailpoint/v2024/docs/AccountItemRef.md)
  - [AccountRequest](sailpoint/v2024/docs/AccountRequest.md)
  - [AccountRequestInfo](sailpoint/v2024/docs/AccountRequestInfo.md)
  - [AccountRequestResult](sailpoint/v2024/docs/AccountRequestResult.md)
@@ -892,6 +901,8 @@ Class | Method | HTTP request | Description
  - [AccountsCollectedForAggregationSource](sailpoint/v2024/docs/AccountsCollectedForAggregationSource.md)
  - [AccountsCollectedForAggregationStats](sailpoint/v2024/docs/AccountsCollectedForAggregationStats.md)
  - [AccountsExportReportArguments](sailpoint/v2024/docs/AccountsExportReportArguments.md)
+ - [AccountsSelectionRequest](sailpoint/v2024/docs/AccountsSelectionRequest.md)
+ - [AccountsSelectionResponse](sailpoint/v2024/docs/AccountsSelectionResponse.md)
  - [ActivateCampaignOptions](sailpoint/v2024/docs/ActivateCampaignOptions.md)
  - [ActivityIdentity](sailpoint/v2024/docs/ActivityIdentity.md)
  - [ActivityInsights](sailpoint/v2024/docs/ActivityInsights.md)
@@ -1167,6 +1178,7 @@ Class | Method | HTTP request | Description
  - [ExpressionChildrenInner](sailpoint/v2024/docs/ExpressionChildrenInner.md)
  - [ExternalAttributes](sailpoint/v2024/docs/ExternalAttributes.md)
  - [FeatureValueDto](sailpoint/v2024/docs/FeatureValueDto.md)
+ - [FederationProtocolDetails](sailpoint/v2024/docs/FederationProtocolDetails.md)
  - [FieldDetailsDto](sailpoint/v2024/docs/FieldDetailsDto.md)
  - [Filter](sailpoint/v2024/docs/Filter.md)
  - [FilterAggregation](sailpoint/v2024/docs/FilterAggregation.md)
@@ -1213,6 +1225,7 @@ Class | Method | HTTP request | Description
  - [Identity](sailpoint/v2024/docs/Identity.md)
  - [Identity1](sailpoint/v2024/docs/Identity1.md)
  - [IdentityAccess](sailpoint/v2024/docs/IdentityAccess.md)
+ - [IdentityAccountSelections](sailpoint/v2024/docs/IdentityAccountSelections.md)
  - [IdentityAssociationDetails](sailpoint/v2024/docs/IdentityAssociationDetails.md)
  - [IdentityAssociationDetailsAssociationDetailsInner](sailpoint/v2024/docs/IdentityAssociationDetailsAssociationDetailsInner.md)
  - [IdentityAttribute](sailpoint/v2024/docs/IdentityAttribute.md)
@@ -1266,6 +1279,7 @@ Class | Method | HTTP request | Description
  - [IdentityWithNewAccess](sailpoint/v2024/docs/IdentityWithNewAccess.md)
  - [IdentityWithNewAccess1](sailpoint/v2024/docs/IdentityWithNewAccess1.md)
  - [IdentityWithNewAccessAccessRefsInner](sailpoint/v2024/docs/IdentityWithNewAccessAccessRefsInner.md)
+ - [IdpDetails](sailpoint/v2024/docs/IdpDetails.md)
  - [ImportAccountsRequest](sailpoint/v2024/docs/ImportAccountsRequest.md)
  - [ImportEntitlementsBySourceRequest](sailpoint/v2024/docs/ImportEntitlementsBySourceRequest.md)
  - [ImportFormDefinitions202Response](sailpoint/v2024/docs/ImportFormDefinitions202Response.md)
@@ -1281,6 +1295,7 @@ Class | Method | HTTP request | Description
  - [Invocation](sailpoint/v2024/docs/Invocation.md)
  - [InvocationStatus](sailpoint/v2024/docs/InvocationStatus.md)
  - [InvocationStatusType](sailpoint/v2024/docs/InvocationStatusType.md)
+ - [JITConfiguration](sailpoint/v2024/docs/JITConfiguration.md)
  - [JsonPatch](sailpoint/v2024/docs/JsonPatch.md)
  - [JsonPatchOperation](sailpoint/v2024/docs/JsonPatchOperation.md)
  - [KbaAnswerRequestItem](sailpoint/v2024/docs/KbaAnswerRequestItem.md)
@@ -1315,6 +1330,7 @@ Class | Method | HTTP request | Description
  - [LoadUncorrelatedAccountsTaskTaskMessagesInner](sailpoint/v2024/docs/LoadUncorrelatedAccountsTaskTaskMessagesInner.md)
  - [LocaleOrigin](sailpoint/v2024/docs/LocaleOrigin.md)
  - [LocalizedMessage](sailpoint/v2024/docs/LocalizedMessage.md)
+ - [LockoutConfiguration](sailpoint/v2024/docs/LockoutConfiguration.md)
  - [LookupStep](sailpoint/v2024/docs/LookupStep.md)
  - [MachineAccount](sailpoint/v2024/docs/MachineAccount.md)
  - [MachineIdentity](sailpoint/v2024/docs/MachineIdentity.md)
@@ -1509,7 +1525,10 @@ Class | Method | HTTP request | Description
  - [RequestableObjectRequestStatus](sailpoint/v2024/docs/RequestableObjectRequestStatus.md)
  - [RequestableObjectType](sailpoint/v2024/docs/RequestableObjectType.md)
  - [RequestedAccountRef](sailpoint/v2024/docs/RequestedAccountRef.md)
+ - [RequestedForDtoRef](sailpoint/v2024/docs/RequestedForDtoRef.md)
+ - [RequestedItemAccountSelections](sailpoint/v2024/docs/RequestedItemAccountSelections.md)
  - [RequestedItemDetails](sailpoint/v2024/docs/RequestedItemDetails.md)
+ - [RequestedItemDtoRef](sailpoint/v2024/docs/RequestedItemDtoRef.md)
  - [RequestedItemStatus](sailpoint/v2024/docs/RequestedItemStatus.md)
  - [RequestedItemStatusCancelledRequestDetails](sailpoint/v2024/docs/RequestedItemStatusCancelledRequestDetails.md)
  - [RequestedItemStatusPreApprovalTriggerDetails](sailpoint/v2024/docs/RequestedItemStatusPreApprovalTriggerDetails.md)
@@ -1669,6 +1688,9 @@ Class | Method | HTTP request | Description
  - [ServiceDeskIntegrationTemplateDto](sailpoint/v2024/docs/ServiceDeskIntegrationTemplateDto.md)
  - [ServiceDeskIntegrationTemplateType](sailpoint/v2024/docs/ServiceDeskIntegrationTemplateType.md)
  - [ServiceDeskSource](sailpoint/v2024/docs/ServiceDeskSource.md)
+ - [ServiceProviderConfiguration](sailpoint/v2024/docs/ServiceProviderConfiguration.md)
+ - [ServiceProviderConfigurationFederationProtocolDetailsInner](sailpoint/v2024/docs/ServiceProviderConfigurationFederationProtocolDetailsInner.md)
+ - [SessionConfiguration](sailpoint/v2024/docs/SessionConfiguration.md)
  - [SetIcon200Response](sailpoint/v2024/docs/SetIcon200Response.md)
  - [SetIconRequest](sailpoint/v2024/docs/SetIconRequest.md)
  - [SetLifecycleState200Response](sailpoint/v2024/docs/SetLifecycleState200Response.md)
@@ -1697,6 +1719,7 @@ Class | Method | HTTP request | Description
  - [SourceAccountCorrelationRule](sailpoint/v2024/docs/SourceAccountCorrelationRule.md)
  - [SourceAccountCreated](sailpoint/v2024/docs/SourceAccountCreated.md)
  - [SourceAccountDeleted](sailpoint/v2024/docs/SourceAccountDeleted.md)
+ - [SourceAccountSelections](sailpoint/v2024/docs/SourceAccountSelections.md)
  - [SourceAccountUpdated](sailpoint/v2024/docs/SourceAccountUpdated.md)
  - [SourceApp](sailpoint/v2024/docs/SourceApp.md)
  - [SourceAppAccountSource](sailpoint/v2024/docs/SourceAppAccountSource.md)
@@ -1716,6 +1739,7 @@ Class | Method | HTTP request | Description
  - [SourceDeletedActor](sailpoint/v2024/docs/SourceDeletedActor.md)
  - [SourceEntitlementRequestConfig](sailpoint/v2024/docs/SourceEntitlementRequestConfig.md)
  - [SourceHealthDto](sailpoint/v2024/docs/SourceHealthDto.md)
+ - [SourceItemRef](sailpoint/v2024/docs/SourceItemRef.md)
  - [SourceManagementWorkgroup](sailpoint/v2024/docs/SourceManagementWorkgroup.md)
  - [SourceManagerCorrelationMapping](sailpoint/v2024/docs/SourceManagerCorrelationMapping.md)
  - [SourceManagerCorrelationRule](sailpoint/v2024/docs/SourceManagerCorrelationRule.md)
@@ -1741,6 +1765,7 @@ Class | Method | HTTP request | Description
  - [SpConfigRule](sailpoint/v2024/docs/SpConfigRule.md)
  - [SpConfigRuleValue](sailpoint/v2024/docs/SpConfigRuleValue.md)
  - [SpConfigRules](sailpoint/v2024/docs/SpConfigRules.md)
+ - [SpDetails](sailpoint/v2024/docs/SpDetails.md)
  - [StandardLevel](sailpoint/v2024/docs/StandardLevel.md)
  - [StartInvocationInput](sailpoint/v2024/docs/StartInvocationInput.md)
  - [StatusResponse](sailpoint/v2024/docs/StatusResponse.md)

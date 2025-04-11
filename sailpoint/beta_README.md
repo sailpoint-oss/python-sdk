@@ -629,9 +629,9 @@ Class | Method | HTTP request | Description
 *WorkflowsApi* | [**patch_workflow**](sailpoint/beta/docs/WorkflowsApi.md#patch_workflow) | **PATCH** /workflows/{id} | Patch Workflow
 *WorkflowsApi* | [**post_external_execute_workflow**](sailpoint/beta/docs/WorkflowsApi.md#post_external_execute_workflow) | **POST** /workflows/execute/external/{id} | Execute Workflow via External Trigger
 *WorkflowsApi* | [**post_workflow_external_trigger**](sailpoint/beta/docs/WorkflowsApi.md#post_workflow_external_trigger) | **POST** /workflows/{id}/external/oauth-clients | Generate External Trigger OAuth Client
+*WorkflowsApi* | [**put_workflow**](sailpoint/beta/docs/WorkflowsApi.md#put_workflow) | **PUT** /workflows/{id} | Update Workflow
 *WorkflowsApi* | [**test_external_execute_workflow**](sailpoint/beta/docs/WorkflowsApi.md#test_external_execute_workflow) | **POST** /workflows/execute/external/{id}/test | Test Workflow via External Trigger
 *WorkflowsApi* | [**test_workflow**](sailpoint/beta/docs/WorkflowsApi.md#test_workflow) | **POST** /workflows/{id}/test | Test Workflow By Id
-*WorkflowsApi* | [**update_workflow**](sailpoint/beta/docs/WorkflowsApi.md#update_workflow) | **PUT** /workflows/{id} | Update Workflow
 
 
 ## Documentation For Models
@@ -722,6 +722,7 @@ Class | Method | HTTP request | Description
  - [AccountCorrelatedIdentity](sailpoint/beta/docs/AccountCorrelatedIdentity.md)
  - [AccountCorrelatedSource](sailpoint/beta/docs/AccountCorrelatedSource.md)
  - [AccountInfoDto](sailpoint/beta/docs/AccountInfoDto.md)
+ - [AccountItemRef](sailpoint/beta/docs/AccountItemRef.md)
  - [AccountRequestInfo](sailpoint/beta/docs/AccountRequestInfo.md)
  - [AccountStatusChanged](sailpoint/beta/docs/AccountStatusChanged.md)
  - [AccountStatusChangedAccount](sailpoint/beta/docs/AccountStatusChangedAccount.md)
@@ -1236,7 +1237,9 @@ Class | Method | HTTP request | Description
  - [RequestableObjectRequestStatus](sailpoint/beta/docs/RequestableObjectRequestStatus.md)
  - [RequestableObjectType](sailpoint/beta/docs/RequestableObjectType.md)
  - [RequestedAccountRef](sailpoint/beta/docs/RequestedAccountRef.md)
+ - [RequestedForDtoRef](sailpoint/beta/docs/RequestedForDtoRef.md)
  - [RequestedItemDetails](sailpoint/beta/docs/RequestedItemDetails.md)
+ - [RequestedItemDtoRef](sailpoint/beta/docs/RequestedItemDtoRef.md)
  - [RequestedItemStatus](sailpoint/beta/docs/RequestedItemStatus.md)
  - [RequestedItemStatusCancelledRequestDetails](sailpoint/beta/docs/RequestedItemStatusCancelledRequestDetails.md)
  - [RequestedItemStatusPreApprovalTriggerDetails](sailpoint/beta/docs/RequestedItemStatusPreApprovalTriggerDetails.md)
@@ -1392,6 +1395,7 @@ Class | Method | HTTP request | Description
  - [SourceDeleted](sailpoint/beta/docs/SourceDeleted.md)
  - [SourceDeletedActor](sailpoint/beta/docs/SourceDeletedActor.md)
  - [SourceEntitlementRequestConfig](sailpoint/beta/docs/SourceEntitlementRequestConfig.md)
+ - [SourceItemRef](sailpoint/beta/docs/SourceItemRef.md)
  - [SourceSyncJob](sailpoint/beta/docs/SourceSyncJob.md)
  - [SourceSyncPayload](sailpoint/beta/docs/SourceSyncPayload.md)
  - [SourceUpdated](sailpoint/beta/docs/SourceUpdated.md)

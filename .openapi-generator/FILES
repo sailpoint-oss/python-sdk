@@ -153,6 +153,7 @@ sailpoint/v2025/docs/AccessRequestDynamicApproverRequestedItemsInner.md
 sailpoint/v2025/docs/AccessRequestIdentityMetricsApi.md
 sailpoint/v2025/docs/AccessRequestIdentityMetricsApideveloperSite_code_examples.yaml
 sailpoint/v2025/docs/AccessRequestItem.md
+sailpoint/v2025/docs/AccessRequestItem1.md
 sailpoint/v2025/docs/AccessRequestItemResponse.md
 sailpoint/v2025/docs/AccessRequestPhases.md
 sailpoint/v2025/docs/AccessRequestPostApproval.md
@@ -216,6 +217,8 @@ sailpoint/v2025/docs/AccountCorrelatedAccount.md
 sailpoint/v2025/docs/AccountCorrelatedIdentity.md
 sailpoint/v2025/docs/AccountCorrelatedSource.md
 sailpoint/v2025/docs/AccountInfoDto.md
+sailpoint/v2025/docs/AccountInfoRef.md
+sailpoint/v2025/docs/AccountItemRef.md
 sailpoint/v2025/docs/AccountRequest.md
 sailpoint/v2025/docs/AccountRequestInfo.md
 sailpoint/v2025/docs/AccountRequestResult.md
@@ -239,6 +242,8 @@ sailpoint/v2025/docs/AccountsCollectedForAggregation.md
 sailpoint/v2025/docs/AccountsCollectedForAggregationSource.md
 sailpoint/v2025/docs/AccountsCollectedForAggregationStats.md
 sailpoint/v2025/docs/AccountsExportReportArguments.md
+sailpoint/v2025/docs/AccountsSelectionRequest.md
+sailpoint/v2025/docs/AccountsSelectionResponse.md
 sailpoint/v2025/docs/ActivateCampaignOptions.md
 sailpoint/v2025/docs/ActivityIdentity.md
 sailpoint/v2025/docs/ActivityInsights.md
@@ -556,6 +561,7 @@ sailpoint/v2025/docs/Expression.md
 sailpoint/v2025/docs/ExpressionChildrenInner.md
 sailpoint/v2025/docs/ExternalAttributes.md
 sailpoint/v2025/docs/FeatureValueDto.md
+sailpoint/v2025/docs/FederationProtocolDetails.md
 sailpoint/v2025/docs/FieldDetailsDto.md
 sailpoint/v2025/docs/Filter.md
 sailpoint/v2025/docs/FilterAggregation.md
@@ -622,6 +628,7 @@ sailpoint/v2025/docs/IdentitiesReportArguments.md
 sailpoint/v2025/docs/Identity.md
 sailpoint/v2025/docs/Identity1.md
 sailpoint/v2025/docs/IdentityAccess.md
+sailpoint/v2025/docs/IdentityAccountSelections.md
 sailpoint/v2025/docs/IdentityAssociationDetails.md
 sailpoint/v2025/docs/IdentityAssociationDetailsAssociationDetailsInner.md
 sailpoint/v2025/docs/IdentityAttribute.md
@@ -651,6 +658,9 @@ sailpoint/v2025/docs/IdentityDocumentAllOfManager.md
 sailpoint/v2025/docs/IdentityDocumentAllOfSource.md
 sailpoint/v2025/docs/IdentityEntities.md
 sailpoint/v2025/docs/IdentityEntitiesIdentityEntity.md
+sailpoint/v2025/docs/IdentityEntitlementDetails.md
+sailpoint/v2025/docs/IdentityEntitlementDetailsAccountTarget.md
+sailpoint/v2025/docs/IdentityEntitlementDetailsEntitlementDto.md
 sailpoint/v2025/docs/IdentityExceptionReportReference.md
 sailpoint/v2025/docs/IdentityHistoryApi.md
 sailpoint/v2025/docs/IdentityHistoryApideveloperSite_code_examples.yaml
@@ -681,6 +691,7 @@ sailpoint/v2025/docs/IdentitySyncPayload.md
 sailpoint/v2025/docs/IdentityWithNewAccess.md
 sailpoint/v2025/docs/IdentityWithNewAccess1.md
 sailpoint/v2025/docs/IdentityWithNewAccessAccessRefsInner.md
+sailpoint/v2025/docs/IdpDetails.md
 sailpoint/v2025/docs/ImportAccountsRequest.md
 sailpoint/v2025/docs/ImportEntitlementsBySourceRequest.md
 sailpoint/v2025/docs/ImportFormDefinitions202Response.md
@@ -696,6 +707,7 @@ sailpoint/v2025/docs/InviteIdentitiesRequest.md
 sailpoint/v2025/docs/Invocation.md
 sailpoint/v2025/docs/InvocationStatus.md
 sailpoint/v2025/docs/InvocationStatusType.md
+sailpoint/v2025/docs/JITConfiguration.md
 sailpoint/v2025/docs/JsonPatch.md
 sailpoint/v2025/docs/JsonPatchOperation.md
 sailpoint/v2025/docs/KbaAnswerRequestItem.md
@@ -732,6 +744,7 @@ sailpoint/v2025/docs/LoadUncorrelatedAccountsTaskTaskAttributes.md
 sailpoint/v2025/docs/LoadUncorrelatedAccountsTaskTaskMessagesInner.md
 sailpoint/v2025/docs/LocaleOrigin.md
 sailpoint/v2025/docs/LocalizedMessage.md
+sailpoint/v2025/docs/LockoutConfiguration.md
 sailpoint/v2025/docs/LookupStep.md
 sailpoint/v2025/docs/MFAConfigurationApi.md
 sailpoint/v2025/docs/MFAConfigurationApideveloperSite_code_examples.yaml
@@ -968,7 +981,10 @@ sailpoint/v2025/docs/RequestableObjectType.md
 sailpoint/v2025/docs/RequestableObjectsApi.md
 sailpoint/v2025/docs/RequestableObjectsApideveloperSite_code_examples.yaml
 sailpoint/v2025/docs/RequestedAccountRef.md
+sailpoint/v2025/docs/RequestedForDtoRef.md
+sailpoint/v2025/docs/RequestedItemAccountSelections.md
 sailpoint/v2025/docs/RequestedItemDetails.md
+sailpoint/v2025/docs/RequestedItemDtoRef.md
 sailpoint/v2025/docs/RequestedItemStatus.md
 sailpoint/v2025/docs/RequestedItemStatusCancelledRequestDetails.md
 sailpoint/v2025/docs/RequestedItemStatusPreApprovalTriggerDetails.md
@@ -1152,6 +1168,9 @@ sailpoint/v2025/docs/ServiceDeskIntegrationDto.md
 sailpoint/v2025/docs/ServiceDeskIntegrationTemplateDto.md
 sailpoint/v2025/docs/ServiceDeskIntegrationTemplateType.md
 sailpoint/v2025/docs/ServiceDeskSource.md
+sailpoint/v2025/docs/ServiceProviderConfiguration.md
+sailpoint/v2025/docs/ServiceProviderConfigurationFederationProtocolDetailsInner.md
+sailpoint/v2025/docs/SessionConfiguration.md
 sailpoint/v2025/docs/SetIcon200Response.md
 sailpoint/v2025/docs/SetIconRequest.md
 sailpoint/v2025/docs/SetLifecycleState200Response.md
@@ -1180,6 +1199,7 @@ sailpoint/v2025/docs/SourceAccountCorrelationConfig.md
 sailpoint/v2025/docs/SourceAccountCorrelationRule.md
 sailpoint/v2025/docs/SourceAccountCreated.md
 sailpoint/v2025/docs/SourceAccountDeleted.md
+sailpoint/v2025/docs/SourceAccountSelections.md
 sailpoint/v2025/docs/SourceAccountUpdated.md
 sailpoint/v2025/docs/SourceApp.md
 sailpoint/v2025/docs/SourceAppAccountSource.md
@@ -1199,6 +1219,7 @@ sailpoint/v2025/docs/SourceDeleted.md
 sailpoint/v2025/docs/SourceDeletedActor.md
 sailpoint/v2025/docs/SourceEntitlementRequestConfig.md
 sailpoint/v2025/docs/SourceHealthDto.md
+sailpoint/v2025/docs/SourceItemRef.md
 sailpoint/v2025/docs/SourceManagementWorkgroup.md
 sailpoint/v2025/docs/SourceManagerCorrelationMapping.md
 sailpoint/v2025/docs/SourceManagerCorrelationRule.md
@@ -1228,6 +1249,7 @@ sailpoint/v2025/docs/SpConfigObject.md
 sailpoint/v2025/docs/SpConfigRule.md
 sailpoint/v2025/docs/SpConfigRuleValue.md
 sailpoint/v2025/docs/SpConfigRules.md
+sailpoint/v2025/docs/SpDetails.md
 sailpoint/v2025/docs/StandardLevel.md
 sailpoint/v2025/docs/StartInvocationInput.md
 sailpoint/v2025/docs/StatusResponse.md
@@ -1423,6 +1445,7 @@ sailpoint/v2025/models/access_request_dynamic_approver.py
 sailpoint/v2025/models/access_request_dynamic_approver1.py
 sailpoint/v2025/models/access_request_dynamic_approver_requested_items_inner.py
 sailpoint/v2025/models/access_request_item.py
+sailpoint/v2025/models/access_request_item1.py
 sailpoint/v2025/models/access_request_item_response.py
 sailpoint/v2025/models/access_request_phases.py
 sailpoint/v2025/models/access_request_post_approval.py
@@ -1480,6 +1503,8 @@ sailpoint/v2025/models/account_correlated_account.py
 sailpoint/v2025/models/account_correlated_identity.py
 sailpoint/v2025/models/account_correlated_source.py
 sailpoint/v2025/models/account_info_dto.py
+sailpoint/v2025/models/account_info_ref.py
+sailpoint/v2025/models/account_item_ref.py
 sailpoint/v2025/models/account_request.py
 sailpoint/v2025/models/account_request_info.py
 sailpoint/v2025/models/account_request_result.py
@@ -1499,6 +1524,8 @@ sailpoint/v2025/models/accounts_collected_for_aggregation.py
 sailpoint/v2025/models/accounts_collected_for_aggregation_source.py
 sailpoint/v2025/models/accounts_collected_for_aggregation_stats.py
 sailpoint/v2025/models/accounts_export_report_arguments.py
+sailpoint/v2025/models/accounts_selection_request.py
+sailpoint/v2025/models/accounts_selection_response.py
 sailpoint/v2025/models/activate_campaign_options.py
 sailpoint/v2025/models/activity_identity.py
 sailpoint/v2025/models/activity_insights.py
@@ -1778,6 +1805,7 @@ sailpoint/v2025/models/expression.py
 sailpoint/v2025/models/expression_children_inner.py
 sailpoint/v2025/models/external_attributes.py
 sailpoint/v2025/models/feature_value_dto.py
+sailpoint/v2025/models/federation_protocol_details.py
 sailpoint/v2025/models/field_details_dto.py
 sailpoint/v2025/models/filter.py
 sailpoint/v2025/models/filter_aggregation.py
@@ -1824,6 +1852,7 @@ sailpoint/v2025/models/identities_report_arguments.py
 sailpoint/v2025/models/identity.py
 sailpoint/v2025/models/identity1.py
 sailpoint/v2025/models/identity_access.py
+sailpoint/v2025/models/identity_account_selections.py
 sailpoint/v2025/models/identity_association_details.py
 sailpoint/v2025/models/identity_association_details_association_details_inner.py
 sailpoint/v2025/models/identity_attribute.py
@@ -1851,6 +1880,9 @@ sailpoint/v2025/models/identity_document_all_of_manager.py
 sailpoint/v2025/models/identity_document_all_of_source.py
 sailpoint/v2025/models/identity_entities.py
 sailpoint/v2025/models/identity_entities_identity_entity.py
+sailpoint/v2025/models/identity_entitlement_details.py
+sailpoint/v2025/models/identity_entitlement_details_account_target.py
+sailpoint/v2025/models/identity_entitlement_details_entitlement_dto.py
 sailpoint/v2025/models/identity_exception_report_reference.py
 sailpoint/v2025/models/identity_history_response.py
 sailpoint/v2025/models/identity_lifecycle_state.py
@@ -1877,6 +1909,7 @@ sailpoint/v2025/models/identity_sync_payload.py
 sailpoint/v2025/models/identity_with_new_access.py
 sailpoint/v2025/models/identity_with_new_access1.py
 sailpoint/v2025/models/identity_with_new_access_access_refs_inner.py
+sailpoint/v2025/models/idp_details.py
 sailpoint/v2025/models/import_accounts_request.py
 sailpoint/v2025/models/import_entitlements_by_source_request.py
 sailpoint/v2025/models/import_form_definitions202_response.py
@@ -1892,6 +1925,7 @@ sailpoint/v2025/models/invite_identities_request.py
 sailpoint/v2025/models/invocation.py
 sailpoint/v2025/models/invocation_status.py
 sailpoint/v2025/models/invocation_status_type.py
+sailpoint/v2025/models/jit_configuration.py
 sailpoint/v2025/models/json_patch.py
 sailpoint/v2025/models/json_patch_operation.py
 sailpoint/v2025/models/kba_answer_request_item.py
@@ -1926,6 +1960,7 @@ sailpoint/v2025/models/load_uncorrelated_accounts_task_task_attributes.py
 sailpoint/v2025/models/load_uncorrelated_accounts_task_task_messages_inner.py
 sailpoint/v2025/models/locale_origin.py
 sailpoint/v2025/models/localized_message.py
+sailpoint/v2025/models/lockout_configuration.py
 sailpoint/v2025/models/lookup_step.py
 sailpoint/v2025/models/machine_account.py
 sailpoint/v2025/models/machine_identity.py
@@ -2119,7 +2154,10 @@ sailpoint/v2025/models/requestable_object_reference.py
 sailpoint/v2025/models/requestable_object_request_status.py
 sailpoint/v2025/models/requestable_object_type.py
 sailpoint/v2025/models/requested_account_ref.py
+sailpoint/v2025/models/requested_for_dto_ref.py
+sailpoint/v2025/models/requested_item_account_selections.py
 sailpoint/v2025/models/requested_item_details.py
+sailpoint/v2025/models/requested_item_dto_ref.py
 sailpoint/v2025/models/requested_item_status.py
 sailpoint/v2025/models/requested_item_status_cancelled_request_details.py
 sailpoint/v2025/models/requested_item_status_pre_approval_trigger_details.py
@@ -2279,6 +2317,9 @@ sailpoint/v2025/models/service_desk_integration_dto.py
 sailpoint/v2025/models/service_desk_integration_template_dto.py
 sailpoint/v2025/models/service_desk_integration_template_type.py
 sailpoint/v2025/models/service_desk_source.py
+sailpoint/v2025/models/service_provider_configuration.py
+sailpoint/v2025/models/service_provider_configuration_federation_protocol_details_inner.py
+sailpoint/v2025/models/session_configuration.py
 sailpoint/v2025/models/set_icon200_response.py
 sailpoint/v2025/models/set_icon_request.py
 sailpoint/v2025/models/set_lifecycle_state200_response.py
@@ -2307,6 +2348,7 @@ sailpoint/v2025/models/source_account_correlation_config.py
 sailpoint/v2025/models/source_account_correlation_rule.py
 sailpoint/v2025/models/source_account_created.py
 sailpoint/v2025/models/source_account_deleted.py
+sailpoint/v2025/models/source_account_selections.py
 sailpoint/v2025/models/source_account_updated.py
 sailpoint/v2025/models/source_app.py
 sailpoint/v2025/models/source_app_account_source.py
@@ -2326,6 +2368,7 @@ sailpoint/v2025/models/source_deleted.py
 sailpoint/v2025/models/source_deleted_actor.py
 sailpoint/v2025/models/source_entitlement_request_config.py
 sailpoint/v2025/models/source_health_dto.py
+sailpoint/v2025/models/source_item_ref.py
 sailpoint/v2025/models/source_management_workgroup.py
 sailpoint/v2025/models/source_manager_correlation_mapping.py
 sailpoint/v2025/models/source_manager_correlation_rule.py
@@ -2351,6 +2394,7 @@ sailpoint/v2025/models/sp_config_object.py
 sailpoint/v2025/models/sp_config_rule.py
 sailpoint/v2025/models/sp_config_rule_value.py
 sailpoint/v2025/models/sp_config_rules.py
+sailpoint/v2025/models/sp_details.py
 sailpoint/v2025/models/standard_level.py
 sailpoint/v2025/models/start_invocation_input.py
 sailpoint/v2025/models/status_response.py
@@ -2526,6 +2570,7 @@ sailpoint/v2025/test/test_access_request_dynamic_approver1.py
 sailpoint/v2025/test/test_access_request_dynamic_approver_requested_items_inner.py
 sailpoint/v2025/test/test_access_request_identity_metrics_api.py
 sailpoint/v2025/test/test_access_request_item.py
+sailpoint/v2025/test/test_access_request_item1.py
 sailpoint/v2025/test/test_access_request_item_response.py
 sailpoint/v2025/test/test_access_request_phases.py
 sailpoint/v2025/test/test_access_request_post_approval.py
@@ -2586,6 +2631,8 @@ sailpoint/v2025/test/test_account_correlated_account.py
 sailpoint/v2025/test/test_account_correlated_identity.py
 sailpoint/v2025/test/test_account_correlated_source.py
 sailpoint/v2025/test/test_account_info_dto.py
+sailpoint/v2025/test/test_account_info_ref.py
+sailpoint/v2025/test/test_account_item_ref.py
 sailpoint/v2025/test/test_account_request.py
 sailpoint/v2025/test/test_account_request_info.py
 sailpoint/v2025/test/test_account_request_result.py
@@ -2607,6 +2654,8 @@ sailpoint/v2025/test/test_accounts_collected_for_aggregation.py
 sailpoint/v2025/test/test_accounts_collected_for_aggregation_source.py
 sailpoint/v2025/test/test_accounts_collected_for_aggregation_stats.py
 sailpoint/v2025/test/test_accounts_export_report_arguments.py
+sailpoint/v2025/test/test_accounts_selection_request.py
+sailpoint/v2025/test/test_accounts_selection_response.py
 sailpoint/v2025/test/test_activate_campaign_options.py
 sailpoint/v2025/test/test_activity_identity.py
 sailpoint/v2025/test/test_activity_insights.py
@@ -2905,6 +2954,7 @@ sailpoint/v2025/test/test_expression.py
 sailpoint/v2025/test/test_expression_children_inner.py
 sailpoint/v2025/test/test_external_attributes.py
 sailpoint/v2025/test/test_feature_value_dto.py
+sailpoint/v2025/test/test_federation_protocol_details.py
 sailpoint/v2025/test/test_field_details_dto.py
 sailpoint/v2025/test/test_filter.py
 sailpoint/v2025/test/test_filter_aggregation.py
@@ -2961,6 +3011,7 @@ sailpoint/v2025/test/test_identities_report_arguments.py
 sailpoint/v2025/test/test_identity.py
 sailpoint/v2025/test/test_identity1.py
 sailpoint/v2025/test/test_identity_access.py
+sailpoint/v2025/test/test_identity_account_selections.py
 sailpoint/v2025/test/test_identity_association_details.py
 sailpoint/v2025/test/test_identity_association_details_association_details_inner.py
 sailpoint/v2025/test/test_identity_attribute.py
@@ -2989,6 +3040,9 @@ sailpoint/v2025/test/test_identity_document_all_of_manager.py
 sailpoint/v2025/test/test_identity_document_all_of_source.py
 sailpoint/v2025/test/test_identity_entities.py
 sailpoint/v2025/test/test_identity_entities_identity_entity.py
+sailpoint/v2025/test/test_identity_entitlement_details.py
+sailpoint/v2025/test/test_identity_entitlement_details_account_target.py
+sailpoint/v2025/test/test_identity_entitlement_details_entitlement_dto.py
 sailpoint/v2025/test/test_identity_exception_report_reference.py
 sailpoint/v2025/test/test_identity_history_api.py
 sailpoint/v2025/test/test_identity_history_response.py
@@ -3017,6 +3071,7 @@ sailpoint/v2025/test/test_identity_sync_payload.py
 sailpoint/v2025/test/test_identity_with_new_access.py
 sailpoint/v2025/test/test_identity_with_new_access1.py
 sailpoint/v2025/test/test_identity_with_new_access_access_refs_inner.py
+sailpoint/v2025/test/test_idp_details.py
 sailpoint/v2025/test/test_import_accounts_request.py
 sailpoint/v2025/test/test_import_entitlements_by_source_request.py
 sailpoint/v2025/test/test_import_form_definitions202_response.py
@@ -3032,6 +3087,7 @@ sailpoint/v2025/test/test_invite_identities_request.py
 sailpoint/v2025/test/test_invocation.py
 sailpoint/v2025/test/test_invocation_status.py
 sailpoint/v2025/test/test_invocation_status_type.py
+sailpoint/v2025/test/test_jit_configuration.py
 sailpoint/v2025/test/test_json_patch.py
 sailpoint/v2025/test/test_json_patch_operation.py
 sailpoint/v2025/test/test_kba_answer_request_item.py
@@ -3067,6 +3123,7 @@ sailpoint/v2025/test/test_load_uncorrelated_accounts_task_task_attributes.py
 sailpoint/v2025/test/test_load_uncorrelated_accounts_task_task_messages_inner.py
 sailpoint/v2025/test/test_locale_origin.py
 sailpoint/v2025/test/test_localized_message.py
+sailpoint/v2025/test/test_lockout_configuration.py
 sailpoint/v2025/test/test_lookup_step.py
 sailpoint/v2025/test/test_machine_account.py
 sailpoint/v2025/test/test_machine_accounts_api.py
@@ -3281,7 +3338,10 @@ sailpoint/v2025/test/test_requestable_object_request_status.py
 sailpoint/v2025/test/test_requestable_object_type.py
 sailpoint/v2025/test/test_requestable_objects_api.py
 sailpoint/v2025/test/test_requested_account_ref.py
+sailpoint/v2025/test/test_requested_for_dto_ref.py
+sailpoint/v2025/test/test_requested_item_account_selections.py
 sailpoint/v2025/test/test_requested_item_details.py
+sailpoint/v2025/test/test_requested_item_dto_ref.py
 sailpoint/v2025/test/test_requested_item_status.py
 sailpoint/v2025/test/test_requested_item_status_cancelled_request_details.py
 sailpoint/v2025/test/test_requested_item_status_pre_approval_trigger_details.py
@@ -3449,6 +3509,9 @@ sailpoint/v2025/test/test_service_desk_integration_dto.py
 sailpoint/v2025/test/test_service_desk_integration_template_dto.py
 sailpoint/v2025/test/test_service_desk_integration_template_type.py
 sailpoint/v2025/test/test_service_desk_source.py
+sailpoint/v2025/test/test_service_provider_configuration.py
+sailpoint/v2025/test/test_service_provider_configuration_federation_protocol_details_inner.py
+sailpoint/v2025/test/test_session_configuration.py
 sailpoint/v2025/test/test_set_icon200_response.py
 sailpoint/v2025/test/test_set_icon_request.py
 sailpoint/v2025/test/test_set_lifecycle_state200_response.py
@@ -3480,6 +3543,7 @@ sailpoint/v2025/test/test_source_account_correlation_config.py
 sailpoint/v2025/test/test_source_account_correlation_rule.py
 sailpoint/v2025/test/test_source_account_created.py
 sailpoint/v2025/test/test_source_account_deleted.py
+sailpoint/v2025/test/test_source_account_selections.py
 sailpoint/v2025/test/test_source_account_updated.py
 sailpoint/v2025/test/test_source_app.py
 sailpoint/v2025/test/test_source_app_account_source.py
@@ -3499,6 +3563,7 @@ sailpoint/v2025/test/test_source_deleted.py
 sailpoint/v2025/test/test_source_deleted_actor.py
 sailpoint/v2025/test/test_source_entitlement_request_config.py
 sailpoint/v2025/test/test_source_health_dto.py
+sailpoint/v2025/test/test_source_item_ref.py
 sailpoint/v2025/test/test_source_management_workgroup.py
 sailpoint/v2025/test/test_source_manager_correlation_mapping.py
 sailpoint/v2025/test/test_source_manager_correlation_rule.py
@@ -3527,6 +3592,7 @@ sailpoint/v2025/test/test_sp_config_object.py
 sailpoint/v2025/test/test_sp_config_rule.py
 sailpoint/v2025/test/test_sp_config_rule_value.py
 sailpoint/v2025/test/test_sp_config_rules.py
+sailpoint/v2025/test/test_sp_details.py
 sailpoint/v2025/test/test_standard_level.py
 sailpoint/v2025/test/test_start_invocation_input.py
 sailpoint/v2025/test/test_status_response.py

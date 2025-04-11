@@ -47,7 +47,7 @@ class TestScheduledActionResponse(unittest.TestCase):
                     source_tenant = 'tenant-name', 
                     draft_id = '9012b87d-48ca-439a-868f-2160001da8c3', ),
                 start_time = '2021-05-12T10:00Z',
-                cron_string = '0 0 12 * * ?',
+                cron_string = '0 0 * * * *',
                 time_zone_id = 'America/Chicago'
             )
         else:
