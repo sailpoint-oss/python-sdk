@@ -1,0 +1,348 @@
+- path: /roles
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/roles#create-role
+      source: |
+        from sailpoint.v3.api.roles_api import RolesApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.role import Role
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          role = '''{
+          "owner" : {
+            "name" : "support",
+            "id" : "2c9180a46faadee4016fb4e018c20639",
+            "type" : "IDENTITY"
+          },
+          "entitlements" : [ {
+            "name" : "CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local",
+            "id" : "2c91809773dee32014e13e122092014e",
+            "type" : "ENTITLEMENT"
+          }, {
+            "name" : "CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local",
+            "id" : "2c91809773dee32014e13e122092014e",
+            "type" : "ENTITLEMENT"
+          } ],
+          "dimensional" : false,
+          "created" : "2021-03-01T22:32:58.104Z",
+          "dimensionRefs" : [ {
+            "name" : "Role 2",
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "DIMENSION"
+          }, {
+            "name" : "Role 2",
+            "id" : "2c91808568c529c60168cca6f90c1313",
+            "type" : "DIMENSION"
+          } ],
+          "description" : "Urna amet cursus pellentesque nisl orci maximus lorem nisl euismod fusce morbi placerat adipiscing maecenas nisi tristique et metus et lacus sed morbi nunc nisl maximus magna arcu varius sollicitudin elementum enim maecenas nisi id ipsum tempus fusce diam ipsum tortor.",
+          "membership" : {
+            "identities" : [ {
+              "aliasName" : "t.edison",
+              "name" : "Thomas Edison",
+              "id" : "2c9180a46faadee4016fb4e018c20639",
+              "type" : "IDENTITY"
+            }, {
+              "aliasName" : "t.edison",
+              "name" : "Thomas Edison",
+              "id" : "2c9180a46faadee4016fb4e018c20639",
+              "type" : "IDENTITY"
+            } ],
+            "criteria" : {
+              "stringValue" : "carlee.cert1c9f9b6fd@mailinator.com",
+              "children" : [ {
+                "stringValue" : "carlee.cert1c9f9b6fd@mailinator.com",
+                "children" : [ {
+                  "stringValue" : "carlee.cert1c9f9b6fd@mailinator.com",
+                  "operation" : "EQUALS",
+                  "key" : {
+                    "sourceId" : "2c9180867427f3a301745aec18211519",
+                    "property" : "attribute.email",
+                    "type" : "ACCOUNT"
+                  }
+                }, {
+                  "stringValue" : "carlee.cert1c9f9b6fd@mailinator.com",
+                  "operation" : "EQUALS",
+                  "key" : {
+                    "sourceId" : "2c9180867427f3a301745aec18211519",
+                    "property" : "attribute.email",
+                    "type" : "ACCOUNT"
+                  }
+                } ],
+                "operation" : "EQUALS",
+                "key" : {
+                  "sourceId" : "2c9180867427f3a301745aec18211519",
+                  "property" : "attribute.email",
+                  "type" : "ACCOUNT"
+                }
+              }, {
+                "stringValue" : "carlee.cert1c9f9b6fd@mailinator.com",
+                "children" : [ {
+                  "stringValue" : "carlee.cert1c9f9b6fd@mailinator.com",
+                  "operation" : "EQUALS",
+                  "key" : {
+                    "sourceId" : "2c9180867427f3a301745aec18211519",
+                    "property" : "attribute.email",
+                    "type" : "ACCOUNT"
+                  }
+                }, {
+                  "stringValue" : "carlee.cert1c9f9b6fd@mailinator.com",
+                  "operation" : "EQUALS",
+                  "key" : {
+                    "sourceId" : "2c9180867427f3a301745aec18211519",
+                    "property" : "attribute.email",
+                    "type" : "ACCOUNT"
+                  }
+                } ],
+                "operation" : "EQUALS",
+                "key" : {
+                  "sourceId" : "2c9180867427f3a301745aec18211519",
+                  "property" : "attribute.email",
+                  "type" : "ACCOUNT"
+                }
+              } ],
+              "operation" : "EQUALS",
+              "key" : {
+                "sourceId" : "2c9180867427f3a301745aec18211519",
+                "property" : "attribute.email",
+                "type" : "ACCOUNT"
+              }
+            },
+            "type" : "IDENTITY_LIST"
+          },
+          "enabled" : true,
+          "revocationRequestConfig" : {
+            "commentsRequired" : false,
+            "approvalSchemes" : [ {
+              "approverId" : "46c79819-a69f-49a2-becb-12c971ae66c6",
+              "approverType" : "GOVERNANCE_GROUP"
+            }, {
+              "approverId" : "46c79819-a69f-49a2-becb-12c971ae66c6",
+              "approverType" : "GOVERNANCE_GROUP"
+            } ],
+            "denialCommentsRequired" : false
+          },
+          "segments" : [ "f7b1b8a3-5fed-4fd4-ad29-82014e137e19", "29cb6c06-1da8-43ea-8be4-b3125f248f2a" ],
+          "legacyMembershipInfo" : {
+            "type" : "IDENTITY_LIST"
+          },
+          "accessRequestConfig" : {
+            "commentsRequired" : true,
+            "approvalSchemes" : [ {
+              "approverId" : "46c79819-a69f-49a2-becb-12c971ae66c6",
+              "approverType" : "GOVERNANCE_GROUP"
+            }, {
+              "approverId" : "46c79819-a69f-49a2-becb-12c971ae66c6",
+              "approverType" : "GOVERNANCE_GROUP"
+            } ],
+            "denialCommentsRequired" : true
+          },
+          "accessProfiles" : [ {
+            "name" : "Access Profile 2567",
+            "id" : "ff808081751e6e129f1518161919ecca",
+            "type" : "ACCESS_PROFILE"
+          }, {
+            "name" : "Access Profile 2567",
+            "id" : "ff808081751e6e129f1518161919ecca",
+            "type" : "ACCESS_PROFILE"
+          } ],
+          "name" : "Role 2567",
+          "modified" : "2021-03-02T20:22:28.104Z",
+          "accessModelMetadata" : {
+            "attributes" : [ {
+              "key" : "iscPrivacy",
+              "name" : "Privacy",
+              "multiselect" : false,
+              "status" : "active",
+              "type" : "governance",
+              "objectTypes" : [ "all" ],
+              "description" : "Specifies the level of privacy associated with an access item.",
+              "values" : [ {
+                "value" : "public",
+                "name" : "Public",
+                "status" : "active"
+              } ]
+            } ]
+          },
+          "id" : "2c918086749d78830174a1a40e121518",
+          "requestable" : true
+        }''' # Role | 
+          try:
+              # Create a Role
+              new_role = Role.from_json(role)
+              results = RolesApi(api_client).create_role(role=new_role)
+              # Below is a request that includes all optional parameters
+              # results = RolesApi(api_client).create_role(new_role)
+              print("The response of RolesApi->create_role:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling RolesApi->create_role: %s\n" % e)
+- path: /roles/bulk-delete
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/roles#delete-bulk-roles
+      source: |
+        from sailpoint.v3.api.roles_api import RolesApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.role_bulk_delete_request import RoleBulkDeleteRequest
+        from sailpoint.v3.models.task_result_dto import TaskResultDto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          role_bulk_delete_request = '''{
+          "roleIds" : [ "2c9180847812e0b1017817051919ecca", "2c9180887812e0b201781e129f151816" ]
+        }''' # RoleBulkDeleteRequest | 
+          try:
+              # Delete Role(s)
+              new_role_bulk_delete_request = RoleBulkDeleteRequest.from_json(role_bulk_delete_request)
+              results = RolesApi(api_client).delete_bulk_roles(role_bulk_delete_request=new_role_bulk_delete_request)
+              # Below is a request that includes all optional parameters
+              # results = RolesApi(api_client).delete_bulk_roles(new_role_bulk_delete_request)
+              print("The response of RolesApi->delete_bulk_roles:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling RolesApi->delete_bulk_roles: %s\n" % e)
+- path: /roles/{id}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/roles#delete-role
+      source: |
+        from sailpoint.v3.api.roles_api import RolesApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '2c91808a7813090a017814121e121518' # str | ID of the Role # str | ID of the Role
+          try:
+              # Delete a Role
+              
+              RolesApi(api_client).delete_role(id=id)
+              # Below is a request that includes all optional parameters
+              # RolesApi(api_client).delete_role(id)
+          except Exception as e:
+              print("Exception when calling RolesApi->delete_role: %s\n" % e)
+- path: /roles/{id}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/roles#get-role
+      source: |
+        from sailpoint.v3.api.roles_api import RolesApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.role import Role
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '2c91808a7813090a017814121e121518' # str | ID of the Role # str | ID of the Role
+          try:
+              # Get a Role
+              
+              results = RolesApi(api_client).get_role(id=id)
+              # Below is a request that includes all optional parameters
+              # results = RolesApi(api_client).get_role(id)
+              print("The response of RolesApi->get_role:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling RolesApi->get_role: %s\n" % e)
+- path: /roles/{id}/assigned-identities
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/roles#get-role-assigned-identities
+      source: |
+        from sailpoint.v3.api.roles_api import RolesApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.role_identity import RoleIdentity
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '2c91808a7813090a017814121e121518' # str | ID of the Role for which the assigned Identities are to be listed # str | ID of the Role for which the assigned Identities are to be listed
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          filters = 'name sw Joe' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **aliasName**: *eq, sw*  **email**: *eq, sw*  **name**: *eq, sw, co* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **aliasName**: *eq, sw*  **email**: *eq, sw*  **name**: *eq, sw, co* (optional)
+          sorters = 'aliasName,name' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, aliasName, email** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, aliasName, email** (optional)
+          try:
+              # List Identities assigned a Role
+              
+              results = RolesApi(api_client).get_role_assigned_identities(id=id)
+              # Below is a request that includes all optional parameters
+              # results = RolesApi(api_client).get_role_assigned_identities(id, limit, offset, count, filters, sorters)
+              print("The response of RolesApi->get_role_assigned_identities:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling RolesApi->get_role_assigned_identities: %s\n" % e)
+- path: /roles
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/roles#list-roles
+      source: |
+        from sailpoint.v3.api.roles_api import RolesApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.role import Role
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          for_subadmin = '5168015d32f890ca15812c9180835d2e' # str | If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID. A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin. (optional) # str | If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID. A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin. (optional)
+          limit = 50 # int | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50) # int | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          filters = 'requestable eq false' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **requestable**: *eq* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **requestable**: *eq* (optional)
+          sorters = 'name,-modified' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional)
+          for_segment_ids = '0b5c9f25-83c6-4762-9073-e38f7bb2ae26,2e8d8180-24bc-4d21-91c6-7affdb473b0d' # str | If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error. (optional) # str | If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error. (optional)
+          include_unsegmented = True # bool | Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error. (optional) (default to True) # bool | Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error. (optional) (default to True)
+          try:
+              # List Roles
+              
+              results = RolesApi(api_client).list_roles()
+              # Below is a request that includes all optional parameters
+              # results = RolesApi(api_client).list_roles(for_subadmin, limit, offset, count, filters, sorters, for_segment_ids, include_unsegmented)
+              print("The response of RolesApi->list_roles:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling RolesApi->list_roles: %s\n" % e)
+- path: /roles/{id}
+  method: PATCH
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/roles#patch-role
+      source: |
+        from sailpoint.v3.api.roles_api import RolesApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
+        from sailpoint.v3.models.role import Role
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '2c91808a7813090a017814121e121518' # str | ID of the Role to patch # str | ID of the Role to patch
+          json_patch_operation = '''[{op=replace, path=/requestable, value=true}, {op=replace, path=/enabled, value=true}]''' # List[JsonPatchOperation] | 
+          try:
+              # Patch a specified Role
+              new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+              results = RolesApi(api_client).patch_role(id=id, json_patch_operation=new_json_patch_operation)
+              # Below is a request that includes all optional parameters
+              # results = RolesApi(api_client).patch_role(id, new_json_patch_operation)
+              print("The response of RolesApi->patch_role:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling RolesApi->patch_role: %s\n" % e)

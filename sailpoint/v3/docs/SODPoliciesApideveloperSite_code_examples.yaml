@@ -1,0 +1,577 @@
+- path: /sod-policies
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/sod-policies#create-sod-policy
+      source: |
+        from sailpoint.v3.api.sod_policies_api import SODPoliciesApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.sod_policy import SodPolicy
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          sod_policy = '''{
+          "conflictingAccessCriteria" : {
+            "leftCriteria" : {
+              "name" : "money-in",
+              "criteriaList" : [ {
+                "type" : "ENTITLEMENT",
+                "id" : "2c9180866166b5b0016167c32ef31a66",
+                "name" : "Administrator"
+              }, {
+                "type" : "ENTITLEMENT",
+                "id" : "2c9180866166b5b0016167c32ef31a67",
+                "name" : "Administrator"
+              } ]
+            },
+            "rightCriteria" : {
+              "name" : "money-in",
+              "criteriaList" : [ {
+                "type" : "ENTITLEMENT",
+                "id" : "2c9180866166b5b0016167c32ef31a66",
+                "name" : "Administrator"
+              }, {
+                "type" : "ENTITLEMENT",
+                "id" : "2c9180866166b5b0016167c32ef31a67",
+                "name" : "Administrator"
+              } ]
+            }
+          },
+          "ownerRef" : {
+            "name" : "Support",
+            "id" : "2c9180a46faadee4016fb4e018c20639",
+            "type" : "IDENTITY"
+          },
+          "created" : "2020-01-01T00:00:00Z",
+          "scheduled" : true,
+          "creatorId" : "0f11f2a4-7c94-4bf3-a2bd-742580fe3bde",
+          "modifierId" : "0f11f2a4-7c94-4bf3-a2bd-742580fe3bde",
+          "description" : "This policy ensures compliance of xyz",
+          "violationOwnerAssignmentConfig" : {
+            "assignmentRule" : "MANAGER",
+            "ownerRef" : {
+              "name" : "Support",
+              "id" : "2c9180a46faadee4016fb4e018c20639",
+              "type" : "IDENTITY"
+            }
+          },
+          "correctionAdvice" : "Based on the role of the employee, managers should remove access that is not required for their job function.",
+          "type" : "GENERAL",
+          "tags" : [ "TAG1", "TAG2" ],
+          "name" : "policy-xyz",
+          "modified" : "2020-01-01T00:00:00Z",
+          "policyQuery" : "@access(id:0f11f2a4-7c94-4bf3-a2bd-742580fe3bdg) AND @access(id:0f11f2a4-7c94-4bf3-a2bd-742580fe3bdf)",
+          "compensatingControls" : "Have a manager review the transaction decisions for their \"out of compliance\" employee",
+          "id" : "0f11f2a4-7c94-4bf3-a2bd-742580fe3bde",
+          "state" : "ENFORCED",
+          "externalPolicyReference" : "XYZ policy"
+        }''' # SodPolicy | 
+          try:
+              # Create SOD policy
+              new_sod_policy = SodPolicy.from_json(sod_policy)
+              results = SODPoliciesApi(api_client).create_sod_policy(sod_policy=new_sod_policy)
+              # Below is a request that includes all optional parameters
+              # results = SODPoliciesApi(api_client).create_sod_policy(new_sod_policy)
+              print("The response of SODPoliciesApi->create_sod_policy:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling SODPoliciesApi->create_sod_policy: %s\n" % e)
+- path: /sod-policies/{id}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/sod-policies#delete-sod-policy
+      source: |
+        from sailpoint.v3.api.sod_policies_api import SODPoliciesApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f943-47e9-4562-b5bb-8424a56397d8' # str | The ID of the SOD Policy to delete. # str | The ID of the SOD Policy to delete.
+          logical = True # bool | Indicates whether this is a soft delete (logical true) or a hard delete.  Soft delete marks the policy as deleted and just save it with this status. It could be fully deleted or recovered further.  Hard delete vise versa permanently delete SOD request during this call. (optional) (default to True) # bool | Indicates whether this is a soft delete (logical true) or a hard delete.  Soft delete marks the policy as deleted and just save it with this status. It could be fully deleted or recovered further.  Hard delete vise versa permanently delete SOD request during this call. (optional) (default to True)
+          try:
+              # Delete SOD policy by ID
+              
+              SODPoliciesApi(api_client).delete_sod_policy(id=id)
+              # Below is a request that includes all optional parameters
+              # SODPoliciesApi(api_client).delete_sod_policy(id, logical)
+          except Exception as e:
+              print("Exception when calling SODPoliciesApi->delete_sod_policy: %s\n" % e)
+- path: /sod-policies/{id}/schedule
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/sod-policies#delete-sod-policy-schedule
+      source: |
+        from sailpoint.v3.api.sod_policies_api import SODPoliciesApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f943-47e9-4562-b5bb-8424a56397d8' # str | The ID of the SOD policy the schedule must be deleted for. # str | The ID of the SOD policy the schedule must be deleted for.
+          try:
+              # Delete SOD policy schedule
+              
+              SODPoliciesApi(api_client).delete_sod_policy_schedule(id=id)
+              # Below is a request that includes all optional parameters
+              # SODPoliciesApi(api_client).delete_sod_policy_schedule(id)
+          except Exception as e:
+              print("Exception when calling SODPoliciesApi->delete_sod_policy_schedule: %s\n" % e)
+- path: /sod-violation-report/{reportResultId}/download/{fileName}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/sod-policies#get-custom-violation-report
+      source: |
+        from sailpoint.v3.api.sod_policies_api import SODPoliciesApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          report_result_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the report reference to download. # str | The ID of the report reference to download.
+          file_name = 'custom-name' # str | Custom Name for the  file. # str | Custom Name for the  file.
+          try:
+              # Download custom violation report
+              
+              results = SODPoliciesApi(api_client).get_custom_violation_report(report_result_id=report_result_id, file_name=file_name)
+              # Below is a request that includes all optional parameters
+              # results = SODPoliciesApi(api_client).get_custom_violation_report(report_result_id, file_name)
+              print("The response of SODPoliciesApi->get_custom_violation_report:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling SODPoliciesApi->get_custom_violation_report: %s\n" % e)
+- path: /sod-violation-report/{reportResultId}/download
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/sod-policies#get-default-violation-report
+      source: |
+        from sailpoint.v3.api.sod_policies_api import SODPoliciesApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          report_result_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the report reference to download. # str | The ID of the report reference to download.
+          try:
+              # Download violation report
+              
+              results = SODPoliciesApi(api_client).get_default_violation_report(report_result_id=report_result_id)
+              # Below is a request that includes all optional parameters
+              # results = SODPoliciesApi(api_client).get_default_violation_report(report_result_id)
+              print("The response of SODPoliciesApi->get_default_violation_report:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling SODPoliciesApi->get_default_violation_report: %s\n" % e)
+- path: /sod-violation-report
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/sod-policies#get-sod-all-report-run-status
+      source: |
+        from sailpoint.v3.api.sod_policies_api import SODPoliciesApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.report_result_reference import ReportResultReference
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          try:
+              # Get multi-report run task status
+              
+              results = SODPoliciesApi(api_client).get_sod_all_report_run_status()
+              # Below is a request that includes all optional parameters
+              # results = SODPoliciesApi(api_client).get_sod_all_report_run_status()
+              print("The response of SODPoliciesApi->get_sod_all_report_run_status:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling SODPoliciesApi->get_sod_all_report_run_status: %s\n" % e)
+- path: /sod-policies/{id}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/sod-policies#get-sod-policy
+      source: |
+        from sailpoint.v3.api.sod_policies_api import SODPoliciesApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.sod_policy import SodPolicy
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f943-47e9-4562-b5bb-8424a56397d8' # str | The ID of the SOD Policy to retrieve. # str | The ID of the SOD Policy to retrieve.
+          try:
+              # Get SOD policy by ID
+              
+              results = SODPoliciesApi(api_client).get_sod_policy(id=id)
+              # Below is a request that includes all optional parameters
+              # results = SODPoliciesApi(api_client).get_sod_policy(id)
+              print("The response of SODPoliciesApi->get_sod_policy:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling SODPoliciesApi->get_sod_policy: %s\n" % e)
+- path: /sod-policies/{id}/schedule
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/sod-policies#get-sod-policy-schedule
+      source: |
+        from sailpoint.v3.api.sod_policies_api import SODPoliciesApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.sod_policy_schedule import SodPolicySchedule
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f943-47e9-4562-b5bb-8424a56397d8' # str | The ID of the SOD policy schedule to retrieve. # str | The ID of the SOD policy schedule to retrieve.
+          try:
+              # Get SOD policy schedule
+              
+              results = SODPoliciesApi(api_client).get_sod_policy_schedule(id=id)
+              # Below is a request that includes all optional parameters
+              # results = SODPoliciesApi(api_client).get_sod_policy_schedule(id)
+              print("The response of SODPoliciesApi->get_sod_policy_schedule:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling SODPoliciesApi->get_sod_policy_schedule: %s\n" % e)
+- path: /sod-policies/sod-violation-report-status/{reportResultId}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/sod-policies#get-sod-violation-report-run-status
+      source: |
+        from sailpoint.v3.api.sod_policies_api import SODPoliciesApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.report_result_reference import ReportResultReference
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          report_result_id = '2e8d8180-24bc-4d21-91c6-7affdb473b0d' # str | The ID of the report reference to retrieve. # str | The ID of the report reference to retrieve.
+          try:
+              # Get violation report run status
+              
+              results = SODPoliciesApi(api_client).get_sod_violation_report_run_status(report_result_id=report_result_id)
+              # Below is a request that includes all optional parameters
+              # results = SODPoliciesApi(api_client).get_sod_violation_report_run_status(report_result_id)
+              print("The response of SODPoliciesApi->get_sod_violation_report_run_status:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling SODPoliciesApi->get_sod_violation_report_run_status: %s\n" % e)
+- path: /sod-policies/{id}/violation-report
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/sod-policies#get-sod-violation-report-status
+      source: |
+        from sailpoint.v3.api.sod_policies_api import SODPoliciesApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.report_result_reference import ReportResultReference
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f943-47e9-4562-b5bb-8424a56397d8' # str | The ID of the violation report to retrieve status for. # str | The ID of the violation report to retrieve status for.
+          try:
+              # Get SOD violation report status
+              
+              results = SODPoliciesApi(api_client).get_sod_violation_report_status(id=id)
+              # Below is a request that includes all optional parameters
+              # results = SODPoliciesApi(api_client).get_sod_violation_report_status(id)
+              print("The response of SODPoliciesApi->get_sod_violation_report_status:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling SODPoliciesApi->get_sod_violation_report_status: %s\n" % e)
+- path: /sod-policies
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/sod-policies#list-sod-policies
+      source: |
+        from sailpoint.v3.api.sod_policies_api import SODPoliciesApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.sod_policy import SodPolicy
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          filters = 'id eq \"bc693f07e7b645539626c25954c58554\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in*  **state**: *eq, in* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in*  **state**: *eq, in* (optional)
+          sorters = 'id,name' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, description** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, description** (optional)
+          try:
+              # List SOD policies
+              
+              results = SODPoliciesApi(api_client).list_sod_policies()
+              # Below is a request that includes all optional parameters
+              # results = SODPoliciesApi(api_client).list_sod_policies(limit, offset, count, filters, sorters)
+              print("The response of SODPoliciesApi->list_sod_policies:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling SODPoliciesApi->list_sod_policies: %s\n" % e)
+- path: /sod-policies/{id}
+  method: PATCH
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/sod-policies#patch-sod-policy
+      source: |
+        from sailpoint.v3.api.sod_policies_api import SODPoliciesApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
+        from sailpoint.v3.models.sod_policy import SodPolicy
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '2c918083-5d19-1a86-015d-28455b4a2329' # str | The ID of the SOD policy being modified. # str | The ID of the SOD policy being modified.
+          json_patch_operation = '''[{op=replace, path=/description, value=Modified description}, {op=replace, path=/conflictingAccessCriteria/leftCriteria/name, value=money-in-modified}, {op=replace, path=/conflictingAccessCriteria/rightCriteria, value={name=money-out-modified, criteriaList=[{type=ENTITLEMENT, id=2c918087682f9a86016839c0509c1ab2}]}}]''' # List[JsonPatchOperation] | A list of SOD Policy update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * ownerRef * externalPolicyReference * compensatingControls * correctionAdvice * state * tags * violationOwnerAssignmentConfig * scheduled * conflictingAccessCriteria 
+          try:
+              # Patch SOD policy by ID
+              new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+              results = SODPoliciesApi(api_client).patch_sod_policy(id=id, json_patch_operation=new_json_patch_operation)
+              # Below is a request that includes all optional parameters
+              # results = SODPoliciesApi(api_client).patch_sod_policy(id, new_json_patch_operation)
+              print("The response of SODPoliciesApi->patch_sod_policy:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling SODPoliciesApi->patch_sod_policy: %s\n" % e)
+- path: /sod-policies/{id}/schedule
+  method: PUT
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/sod-policies#put-policy-schedule
+      source: |
+        from sailpoint.v3.api.sod_policies_api import SODPoliciesApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.sod_policy_schedule import SodPolicySchedule
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f943-47e9-4562-b5bb-8424a56397d8' # str | The ID of the SOD policy to update its schedule. # str | The ID of the SOD policy to update its schedule.
+          sod_policy_schedule = '''{
+          "schedule" : {
+            "hours" : {
+              "values" : [ "MON", "WED" ],
+              "interval" : 3,
+              "type" : "LIST"
+            },
+            "months" : {
+              "values" : [ "MON", "WED" ],
+              "interval" : 3,
+              "type" : "LIST"
+            },
+            "timeZoneId" : "America/Chicago",
+            "days" : {
+              "values" : [ "MON", "WED" ],
+              "interval" : 3,
+              "type" : "LIST"
+            },
+            "expiration" : "2018-06-25T20:22:28.104Z",
+            "type" : "WEEKLY"
+          },
+          "created" : "2020-01-01T00:00:00Z",
+          "recipients" : [ {
+            "name" : "Michael Michaels",
+            "id" : "2c7180a46faadee4016fb4e018c20642",
+            "type" : "IDENTITY"
+          }, {
+            "name" : "Michael Michaels",
+            "id" : "2c7180a46faadee4016fb4e018c20642",
+            "type" : "IDENTITY"
+          } ],
+          "name" : "SCH-1584312283015",
+          "creatorId" : "0f11f2a47c944bf3a2bd742580fe3bde",
+          "modifierId" : "0f11f2a47c944bf3a2bd742580fe3bde",
+          "modified" : "2020-01-01T00:00:00Z",
+          "description" : "Schedule for policy xyz",
+          "emailEmptyResults" : false
+        }''' # SodPolicySchedule | 
+          try:
+              # Update SOD Policy schedule
+              new_sod_policy_schedule = SodPolicySchedule.from_json(sod_policy_schedule)
+              results = SODPoliciesApi(api_client).put_policy_schedule(id=id, sod_policy_schedule=new_sod_policy_schedule)
+              # Below is a request that includes all optional parameters
+              # results = SODPoliciesApi(api_client).put_policy_schedule(id, new_sod_policy_schedule)
+              print("The response of SODPoliciesApi->put_policy_schedule:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling SODPoliciesApi->put_policy_schedule: %s\n" % e)
+- path: /sod-policies/{id}
+  method: PUT
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/sod-policies#put-sod-policy
+      source: |
+        from sailpoint.v3.api.sod_policies_api import SODPoliciesApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.sod_policy import SodPolicy
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f943-47e9-4562-b5bb-8424a56397d8' # str | The ID of the SOD policy to update. # str | The ID of the SOD policy to update.
+          sod_policy = '''{
+          "conflictingAccessCriteria" : {
+            "leftCriteria" : {
+              "name" : "money-in",
+              "criteriaList" : [ {
+                "type" : "ENTITLEMENT",
+                "id" : "2c9180866166b5b0016167c32ef31a66",
+                "name" : "Administrator"
+              }, {
+                "type" : "ENTITLEMENT",
+                "id" : "2c9180866166b5b0016167c32ef31a67",
+                "name" : "Administrator"
+              } ]
+            },
+            "rightCriteria" : {
+              "name" : "money-in",
+              "criteriaList" : [ {
+                "type" : "ENTITLEMENT",
+                "id" : "2c9180866166b5b0016167c32ef31a66",
+                "name" : "Administrator"
+              }, {
+                "type" : "ENTITLEMENT",
+                "id" : "2c9180866166b5b0016167c32ef31a67",
+                "name" : "Administrator"
+              } ]
+            }
+          },
+          "ownerRef" : {
+            "name" : "Support",
+            "id" : "2c9180a46faadee4016fb4e018c20639",
+            "type" : "IDENTITY"
+          },
+          "created" : "2020-01-01T00:00:00Z",
+          "scheduled" : true,
+          "creatorId" : "0f11f2a4-7c94-4bf3-a2bd-742580fe3bde",
+          "modifierId" : "0f11f2a4-7c94-4bf3-a2bd-742580fe3bde",
+          "description" : "This policy ensures compliance of xyz",
+          "violationOwnerAssignmentConfig" : {
+            "assignmentRule" : "MANAGER",
+            "ownerRef" : {
+              "name" : "Support",
+              "id" : "2c9180a46faadee4016fb4e018c20639",
+              "type" : "IDENTITY"
+            }
+          },
+          "correctionAdvice" : "Based on the role of the employee, managers should remove access that is not required for their job function.",
+          "type" : "GENERAL",
+          "tags" : [ "TAG1", "TAG2" ],
+          "name" : "policy-xyz",
+          "modified" : "2020-01-01T00:00:00Z",
+          "policyQuery" : "@access(id:0f11f2a4-7c94-4bf3-a2bd-742580fe3bdg) AND @access(id:0f11f2a4-7c94-4bf3-a2bd-742580fe3bdf)",
+          "compensatingControls" : "Have a manager review the transaction decisions for their \"out of compliance\" employee",
+          "id" : "0f11f2a4-7c94-4bf3-a2bd-742580fe3bde",
+          "state" : "ENFORCED",
+          "externalPolicyReference" : "XYZ policy"
+        }''' # SodPolicy | 
+          try:
+              # Update SOD policy by ID
+              new_sod_policy = SodPolicy.from_json(sod_policy)
+              results = SODPoliciesApi(api_client).put_sod_policy(id=id, sod_policy=new_sod_policy)
+              # Below is a request that includes all optional parameters
+              # results = SODPoliciesApi(api_client).put_sod_policy(id, new_sod_policy)
+              print("The response of SODPoliciesApi->put_sod_policy:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling SODPoliciesApi->put_sod_policy: %s\n" % e)
+- path: /sod-policies/{id}/evaluate
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/sod-policies#start-evaluate-sod-policy
+      source: |
+        from sailpoint.v3.api.sod_policies_api import SODPoliciesApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.report_result_reference import ReportResultReference
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f943-47e9-4562-b5bb-8424a56397d8' # str | The SOD policy ID to run. # str | The SOD policy ID to run.
+          try:
+              # Evaluate one policy by ID
+              
+              results = SODPoliciesApi(api_client).start_evaluate_sod_policy(id=id)
+              # Below is a request that includes all optional parameters
+              # results = SODPoliciesApi(api_client).start_evaluate_sod_policy(id)
+              print("The response of SODPoliciesApi->start_evaluate_sod_policy:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling SODPoliciesApi->start_evaluate_sod_policy: %s\n" % e)
+- path: /sod-violation-report/run
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/sod-policies#start-sod-all-policies-for-org
+      source: |
+        from sailpoint.v3.api.sod_policies_api import SODPoliciesApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.multi_policy_request import MultiPolicyRequest
+        from sailpoint.v3.models.report_result_reference import ReportResultReference
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          multi_policy_request = '''{
+          "filteredPolicyList" : [ "[b868cd40-ffa4-4337-9c07-1a51846cfa94, 63a07a7b-39a4-48aa-956d-50c827deba2a]", "[b868cd40-ffa4-4337-9c07-1a51846cfa94, 63a07a7b-39a4-48aa-956d-50c827deba2a]" ]
+        }''' # MultiPolicyRequest |  (optional)
+          try:
+              # Runs all policies for org
+              
+              results = SODPoliciesApi(api_client).start_sod_all_policies_for_org()
+              # Below is a request that includes all optional parameters
+              # results = SODPoliciesApi(api_client).start_sod_all_policies_for_org(new_multi_policy_request)
+              print("The response of SODPoliciesApi->start_sod_all_policies_for_org:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling SODPoliciesApi->start_sod_all_policies_for_org: %s\n" % e)
+- path: /sod-policies/{id}/violation-report/run
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/sod-policies#start-sod-policy
+      source: |
+        from sailpoint.v3.api.sod_policies_api import SODPoliciesApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.report_result_reference import ReportResultReference
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f943-47e9-4562-b5bb-8424a56397d8' # str | The SOD policy ID to run. # str | The SOD policy ID to run.
+          try:
+              # Runs SOD policy violation report
+              
+              results = SODPoliciesApi(api_client).start_sod_policy(id=id)
+              # Below is a request that includes all optional parameters
+              # results = SODPoliciesApi(api_client).start_sod_policy(id)
+              print("The response of SODPoliciesApi->start_sod_policy:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling SODPoliciesApi->start_sod_policy: %s\n" % e)

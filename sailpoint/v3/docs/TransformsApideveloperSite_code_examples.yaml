@@ -1,0 +1,138 @@
+- path: /transforms
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/transforms#create-transform
+      source: |
+        from sailpoint.v3.api.transforms_api import TransformsApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.transform import Transform
+        from sailpoint.v3.models.transform_read import TransformRead
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          transform = '''{
+          "name" : "Timestamp To Date",
+          "attributes" : "{}",
+          "type" : "dateFormat"
+        }''' # Transform | The transform to be created.
+          try:
+              # Create transform
+              new_transform = Transform.from_json(transform)
+              results = TransformsApi(api_client).create_transform(transform=new_transform)
+              # Below is a request that includes all optional parameters
+              # results = TransformsApi(api_client).create_transform(new_transform)
+              print("The response of TransformsApi->create_transform:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling TransformsApi->create_transform: %s\n" % e)
+- path: /transforms/{id}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/transforms#delete-transform
+      source: |
+        from sailpoint.v3.api.transforms_api import TransformsApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '2cd78adghjkja34jh2b1hkjhasuecd' # str | ID of the transform to delete # str | ID of the transform to delete
+          try:
+              # Delete a transform
+              
+              TransformsApi(api_client).delete_transform(id=id)
+              # Below is a request that includes all optional parameters
+              # TransformsApi(api_client).delete_transform(id)
+          except Exception as e:
+              print("Exception when calling TransformsApi->delete_transform: %s\n" % e)
+- path: /transforms/{id}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/transforms#get-transform
+      source: |
+        from sailpoint.v3.api.transforms_api import TransformsApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.transform_read import TransformRead
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '2cd78adghjkja34jh2b1hkjhasuecd' # str | ID of the transform to retrieve # str | ID of the transform to retrieve
+          try:
+              # Transform by ID
+              
+              results = TransformsApi(api_client).get_transform(id=id)
+              # Below is a request that includes all optional parameters
+              # results = TransformsApi(api_client).get_transform(id)
+              print("The response of TransformsApi->get_transform:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling TransformsApi->get_transform: %s\n" % e)
+- path: /transforms
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/transforms#list-transforms
+      source: |
+        from sailpoint.v3.api.transforms_api import TransformsApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.transform_read import TransformRead
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          name = 'ExampleTransformName123' # str | Name of the transform to retrieve from the list. (optional) # str | Name of the transform to retrieve from the list. (optional)
+          filters = 'name eq \"Uppercase\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **internal**: *eq*  **name**: *eq, sw* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **internal**: *eq*  **name**: *eq, sw* (optional)
+          try:
+              # List transforms
+              
+              results = TransformsApi(api_client).list_transforms()
+              # Below is a request that includes all optional parameters
+              # results = TransformsApi(api_client).list_transforms(offset, limit, count, name, filters)
+              print("The response of TransformsApi->list_transforms:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling TransformsApi->list_transforms: %s\n" % e)
+- path: /transforms/{id}
+  method: PUT
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v3/methods/transforms#update-transform
+      source: |
+        from sailpoint.v3.api.transforms_api import TransformsApi
+        from sailpoint.v3.api_client import ApiClient
+        from sailpoint.v3.models.transform import Transform
+        from sailpoint.v3.models.transform_read import TransformRead
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '2cd78adghjkja34jh2b1hkjhasuecd' # str | ID of the transform to update # str | ID of the transform to update
+          transform = '''{
+          "name" : "Timestamp To Date",
+          "attributes" : "{}",
+          "type" : "dateFormat"
+        }''' # Transform | The updated transform object. Must include \"name\", \"type\", and \"attributes\" fields, but \"name\" and \"type\" must not be modified. (optional)
+          try:
+              # Update a transform
+              
+              results = TransformsApi(api_client).update_transform(id=id)
+              # Below is a request that includes all optional parameters
+              # results = TransformsApi(api_client).update_transform(id, new_transform)
+              print("The response of TransformsApi->update_transform:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling TransformsApi->update_transform: %s\n" % e)
