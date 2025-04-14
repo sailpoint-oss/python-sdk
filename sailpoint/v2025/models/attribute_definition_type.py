@@ -30,6 +30,7 @@ class AttributeDefinitionType(str, Enum):
     LONG = 'LONG'
     INT = 'INT'
     BOOLEAN = 'BOOLEAN'
+    DATE = 'DATE'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
