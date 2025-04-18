@@ -35,9 +35,7 @@ class TestPermissionDto(unittest.TestCase):
         model = PermissionDto()
         if include_optional:
             return PermissionDto(
-                rights = [
-                    'SELECT'
-                    ],
+                rights = HereIsRight1,
                 target = 'SYS.GV_$TRANSACTION'
             )
         else:

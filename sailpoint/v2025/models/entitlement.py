@@ -38,8 +38,8 @@ class Entitlement(BaseModel):
     value: Optional[StrictStr] = Field(default=None, description="The value of the entitlement")
     source_schema_object_type: Optional[StrictStr] = Field(default=None, description="The object type of the entitlement from the source schema", alias="sourceSchemaObjectType")
     description: Optional[StrictStr] = Field(default=None, description="The description of the entitlement")
-    privileged: Optional[StrictBool] = Field(default=None, description="True if the entitlement is privileged")
-    cloud_governed: Optional[StrictBool] = Field(default=None, description="True if the entitlement is cloud governed", alias="cloudGoverned")
+    privileged: Optional[StrictBool] = Field(default=False, description="True if the entitlement is privileged")
+    cloud_governed: Optional[StrictBool] = Field(default=False, description="True if the entitlement is cloud governed", alias="cloudGoverned")
     requestable: Optional[StrictBool] = Field(default=False, description="True if the entitlement is able to be directly requested")
     owner: Optional[EntitlementOwner] = None
     manually_updated_fields: Optional[Dict[str, Any]] = Field(default=None, description="A map of entitlement fields that have been manually updated. The key is the field name in UPPER_SNAKE_CASE format, and the value is true or false to indicate if the field has been updated.", alias="manuallyUpdatedFields")
@@ -145,8 +145,8 @@ class Entitlement(BaseModel):
             "value": obj.get("value"),
             "sourceSchemaObjectType": obj.get("sourceSchemaObjectType"),
             "description": obj.get("description"),
-            "privileged": obj.get("privileged"),
-            "cloudGoverned": obj.get("cloudGoverned"),
+            "privileged": obj.get("privileged") if obj.get("privileged") is not None else False,
+            "cloudGoverned": obj.get("cloudGoverned") if obj.get("cloudGoverned") is not None else False,
             "requestable": obj.get("requestable") if obj.get("requestable") is not None else False,
             "owner": EntitlementOwner.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
             "manuallyUpdatedFields": obj.get("manuallyUpdatedFields"),

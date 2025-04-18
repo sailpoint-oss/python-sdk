@@ -57,9 +57,7 @@ class TestEntitlement(unittest.TestCase):
                             multiselect = True, 
                             status = 'active', 
                             type = 'governance', 
-                            object_types = [
-                                'general'
-                                ], 
+                            object_types = [general], 
                             description = 'Indicates the type of deployment environment of an access item.', 
                             values = [
                                 sailpoint.v2025.models.access_model_metadata_values_inner.AccessModelMetadata_values_inner(
@@ -78,9 +76,7 @@ class TestEntitlement(unittest.TestCase):
                 segments = [f7b1b8a3-5fed-4fd4-ad29-82014e137e19, 29cb6c06-1da8-43ea-8be4-b3125f248f2a],
                 direct_permissions = [
                     sailpoint.v2025.models.permission_dto.PermissionDto(
-                        rights = [
-                            'SELECT'
-                            ], 
+                        rights = HereIsRight1, 
                         target = 'SYS.GV_$TRANSACTION', )
                     ]
             )
