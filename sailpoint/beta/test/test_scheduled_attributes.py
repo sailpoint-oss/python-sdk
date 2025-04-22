@@ -39,7 +39,8 @@ class TestScheduledAttributes(unittest.TestCase):
                 time_zone = 'America/Chicago',
                 cron_string = '0 9 * * 1',
                 weekly_days = Monday,
-                weekly_times = Monday
+                weekly_times = Monday,
+                yearly_times = 1969-12-31T09:00:00.000Z
             )
         else:
             return ScheduledAttributes(

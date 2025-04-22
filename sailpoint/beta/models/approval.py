@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
@@ -57,7 +58,7 @@ class Approval(BaseModel):
             return value
 
         if value not in set(['HIGH', 'MEDIUM', 'LOW']):
-            raise ValueError("must be one of enum values ('HIGH', 'MEDIUM', 'LOW')")
+            warnings.warn(f"must be one of enum values ('HIGH', 'MEDIUM', 'LOW') unknown value: {value}")
         return value
 
     @field_validator('approval_criteria')
@@ -67,7 +68,7 @@ class Approval(BaseModel):
             return value
 
         if value not in set(['SINGLE', 'DOUBLE', 'TRIPLE', 'QUARTER', 'HALF', 'ALL']):
-            raise ValueError("must be one of enum values ('SINGLE', 'DOUBLE', 'TRIPLE', 'QUARTER', 'HALF', 'ALL')")
+            warnings.warn(f"must be one of enum values ('SINGLE', 'DOUBLE', 'TRIPLE', 'QUARTER', 'HALF', 'ALL') unknown value: {value}")
         return value
 
     @field_validator('status')
@@ -77,7 +78,7 @@ class Approval(BaseModel):
             return value
 
         if value not in set(['PENDING', 'APPROVED', 'REJECTED']):
-            raise ValueError("must be one of enum values ('PENDING', 'APPROVED', 'REJECTED')")
+            warnings.warn(f"must be one of enum values ('PENDING', 'APPROVED', 'REJECTED') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

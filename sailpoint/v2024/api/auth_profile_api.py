@@ -59,7 +59,7 @@ class AuthProfileApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> AuthProfile:
-        """Get Auth Profile.
+        """Get Auth Profile
 
         This API returns auth profile information.
 
@@ -136,7 +136,7 @@ class AuthProfileApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[AuthProfile]:
-        """Get Auth Profile.
+        """Get Auth Profile
 
         This API returns auth profile information.
 
@@ -213,7 +213,7 @@ class AuthProfileApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Auth Profile.
+        """Get Auth Profile
 
         This API returns auth profile information.
 
@@ -305,7 +305,7 @@ class AuthProfileApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -352,8 +352,8 @@ class AuthProfileApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AuthProfileSummary:
-        """Get list of Auth Profiles.
+    ) -> List[AuthProfileSummary]:
+        """Get list of Auth Profiles
 
         This API returns a list of auth profiles.
 
@@ -390,7 +390,7 @@ class AuthProfileApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AuthProfileSummary",
+            '200': "List[AuthProfileSummary]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -424,8 +424,8 @@ class AuthProfileApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AuthProfileSummary]:
-        """Get list of Auth Profiles.
+    ) -> ApiResponse[List[AuthProfileSummary]]:
+        """Get list of Auth Profiles
 
         This API returns a list of auth profiles.
 
@@ -462,7 +462,7 @@ class AuthProfileApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AuthProfileSummary",
+            '200': "List[AuthProfileSummary]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -497,7 +497,7 @@ class AuthProfileApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get list of Auth Profiles.
+        """Get list of Auth Profiles
 
         This API returns a list of auth profiles.
 
@@ -534,7 +534,7 @@ class AuthProfileApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AuthProfileSummary",
+            '200': "List[AuthProfileSummary]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -582,7 +582,7 @@ class AuthProfileApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -890,7 +890,7 @@ class AuthProfileApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]

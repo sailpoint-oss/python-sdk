@@ -118,7 +118,16 @@ class TestPendingApproval(unittest.TestCase):
                             sailpoint.beta.models.sod_policy_dto.SodPolicyDto(
                                 id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde', 
                                 name = 'Business SOD Policy', )
-                            ], ), )
+                            ], ), ),
+                client_metadata = {customKey1=custom value 1, customKey2=custom value 2},
+                requested_accounts = [
+                    sailpoint.beta.models.requested_account_ref.RequestedAccountRef(
+                        name = 'Glen.067da3248e914', 
+                        type = 'IDENTITY', 
+                        account_uuid = '{fab7119e-004f-4822-9c33-b8d570d6c6a6}', 
+                        account_id = 'CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local', 
+                        source_name = 'Multi Account AD source name', )
+                    ]
             )
         else:
             return PendingApproval(

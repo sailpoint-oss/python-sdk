@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List
@@ -24,18 +25,18 @@ from typing_extensions import Self
 
 class VAClusterStatusChangeEventHealthCheckResult(BaseModel):
     """
-    The results of the most recent health check.
+    Results of the most recent health check.
     """ # noqa: E501
-    message: StrictStr = Field(description="Detailed message of the result of the health check.")
-    result_type: StrictStr = Field(description="The type of the health check result.", alias="resultType")
-    status: Dict[str, Any] = Field(description="The status of the health check.")
+    message: StrictStr = Field(description="Detailed message of the health check result..")
+    result_type: StrictStr = Field(description="Health check result type.", alias="resultType")
+    status: StrictStr = Field(description="Health check status.")
     __properties: ClassVar[List[str]] = ["message", "resultType", "status"]
 
     @field_validator('status')
     def status_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['Succeeded', 'Failed']):
-            raise ValueError("must be one of enum values ('Succeeded', 'Failed')")
+            warnings.warn(f"must be one of enum values ('Succeeded', 'Failed') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

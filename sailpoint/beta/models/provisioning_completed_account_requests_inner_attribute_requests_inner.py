@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
@@ -26,16 +27,16 @@ class ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner(BaseModel)
     """
     ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner
     """ # noqa: E501
-    attribute_name: StrictStr = Field(description="The name of the attribute being provisioned.", alias="attributeName")
-    attribute_value: Optional[StrictStr] = Field(default=None, description="The value of the attribute being provisioned.", alias="attributeValue")
-    operation: Dict[str, Any] = Field(description="The operation to handle the attribute.")
+    attribute_name: StrictStr = Field(description="Name of the attribute being provisioned.", alias="attributeName")
+    attribute_value: Optional[StrictStr] = Field(default=None, description="Value of the attribute being provisioned.", alias="attributeValue")
+    operation: StrictStr = Field(description="The operation to handle the attribute.")
     __properties: ClassVar[List[str]] = ["attributeName", "attributeValue", "operation"]
 
     @field_validator('operation')
     def operation_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['Add', 'Set', 'Remove']):
-            raise ValueError("must be one of enum values ('Add', 'Set', 'Remove')")
+            warnings.warn(f"must be one of enum values ('Add', 'Set', 'Remove') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

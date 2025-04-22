@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, field_validator
@@ -30,8 +31,8 @@ class VAClusterStatusChangeEvent(BaseModel):
     """
     VAClusterStatusChangeEvent
     """ # noqa: E501
-    created: datetime = Field(description="The date and time the status change occurred.")
-    type: Dict[str, Any] = Field(description="The type of the object that initiated this event.")
+    created: datetime = Field(description="Date and time when the status change occurred.")
+    type: Dict[str, Any] = Field(description="Type of the object that initiated the event.")
     application: VAClusterStatusChangeEventApplication
     health_check_result: VAClusterStatusChangeEventHealthCheckResult = Field(alias="healthCheckResult")
     previous_health_check_result: VAClusterStatusChangeEventPreviousHealthCheckResult = Field(alias="previousHealthCheckResult")
@@ -41,7 +42,7 @@ class VAClusterStatusChangeEvent(BaseModel):
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['SOURCE', 'CLUSTER']):
-            raise ValueError("must be one of enum values ('SOURCE', 'CLUSTER')")
+            warnings.warn(f"must be one of enum values ('SOURCE', 'CLUSTER') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

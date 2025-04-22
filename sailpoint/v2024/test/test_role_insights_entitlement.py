@@ -35,12 +35,12 @@ class TestRoleInsightsEntitlement(unittest.TestCase):
         model = RoleInsightsEntitlement()
         if include_optional:
             return RoleInsightsEntitlement(
-                name = '',
-                id = '',
-                description = '',
-                source = '',
-                attribute = '',
-                value = ''
+                name = 'Administrator',
+                id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb',
+                description = 'Full administrative access to IdentityNow',
+                source = 'IdentityNow',
+                attribute = 'assignedGroups',
+                value = 'ORG_ADMIN'
             )
         else:
             return RoleInsightsEntitlement(

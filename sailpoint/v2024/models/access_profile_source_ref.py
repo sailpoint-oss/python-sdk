@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
@@ -26,9 +27,9 @@ class AccessProfileSourceRef(BaseModel):
     """
     AccessProfileSourceRef
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(default=None, description="The ID of the Source with with which the Access Profile is associated")
-    type: Optional[StrictStr] = Field(default=None, description="The type of the Source, will always be SOURCE")
-    name: Optional[StrictStr] = Field(default=None, description="The display name of the associated Source")
+    id: Optional[StrictStr] = Field(default=None, description="ID of the source the access profile is associated with.")
+    type: Optional[StrictStr] = Field(default=None, description="Source's DTO type.")
+    name: Optional[StrictStr] = Field(default=None, description="Source name.")
     __properties: ClassVar[List[str]] = ["id", "type", "name"]
 
     @field_validator('type')
@@ -38,7 +39,7 @@ class AccessProfileSourceRef(BaseModel):
             return value
 
         if value not in set(['SOURCE']):
-            raise ValueError("must be one of enum values ('SOURCE')")
+            warnings.warn(f"must be one of enum values ('SOURCE') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

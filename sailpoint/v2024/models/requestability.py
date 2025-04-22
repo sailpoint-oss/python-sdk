@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool
 from typing import Any, ClassVar, Dict, List, Optional
@@ -27,10 +28,11 @@ class Requestability(BaseModel):
     """
     Requestability
     """ # noqa: E501
-    comments_required: Optional[StrictBool] = Field(default=False, description="Whether the requester of the containing object must provide comments justifying the request", alias="commentsRequired")
-    denial_comments_required: Optional[StrictBool] = Field(default=False, description="Whether an approver must provide comments when denying the request", alias="denialCommentsRequired")
-    approval_schemes: Optional[List[AccessProfileApprovalScheme]] = Field(default=None, description="List describing the steps in approving the request", alias="approvalSchemes")
-    __properties: ClassVar[List[str]] = ["commentsRequired", "denialCommentsRequired", "approvalSchemes"]
+    comments_required: Optional[StrictBool] = Field(default=False, description="Indicates whether the requester of the containing object must provide comments justifying the request.", alias="commentsRequired")
+    denial_comments_required: Optional[StrictBool] = Field(default=False, description="Indicates whether an approver must provide comments when denying the request.", alias="denialCommentsRequired")
+    reauthorization_required: Optional[StrictBool] = Field(default=False, description="Indicates whether reauthorization is required for the request.", alias="reauthorizationRequired")
+    approval_schemes: Optional[List[AccessProfileApprovalScheme]] = Field(default=None, description="List describing the steps involved in approving the request.", alias="approvalSchemes")
+    __properties: ClassVar[List[str]] = ["commentsRequired", "denialCommentsRequired", "reauthorizationRequired", "approvalSchemes"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -88,6 +90,11 @@ class Requestability(BaseModel):
         if self.denial_comments_required is None and "denial_comments_required" in self.model_fields_set:
             _dict['denialCommentsRequired'] = None
 
+        # set to None if reauthorization_required (nullable) is None
+        # and model_fields_set contains the field
+        if self.reauthorization_required is None and "reauthorization_required" in self.model_fields_set:
+            _dict['reauthorizationRequired'] = None
+
         # set to None if approval_schemes (nullable) is None
         # and model_fields_set contains the field
         if self.approval_schemes is None and "approval_schemes" in self.model_fields_set:
@@ -107,6 +114,7 @@ class Requestability(BaseModel):
         _obj = cls.model_validate({
             "commentsRequired": obj.get("commentsRequired") if obj.get("commentsRequired") is not None else False,
             "denialCommentsRequired": obj.get("denialCommentsRequired") if obj.get("denialCommentsRequired") is not None else False,
+            "reauthorizationRequired": obj.get("reauthorizationRequired") if obj.get("reauthorizationRequired") is not None else False,
             "approvalSchemes": [AccessProfileApprovalScheme.from_dict(_item) for _item in obj["approvalSchemes"]] if obj.get("approvalSchemes") is not None else None
         })
         return _obj

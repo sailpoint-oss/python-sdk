@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List
@@ -26,16 +27,16 @@ class SourceCreatedActor(BaseModel):
     """
     Identity who created the source.
     """ # noqa: E501
-    type: StrictStr = Field(description="DTO type of identity who created the source.")
-    id: StrictStr = Field(description="ID of identity who created the source.")
-    name: StrictStr = Field(description="Display name of identity who created the source.")
+    type: StrictStr = Field(description="DTO type of the identity who created the source.")
+    id: StrictStr = Field(description="ID of the identity who created the source.")
+    name: StrictStr = Field(description="Name of the identity who created the source.")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['IDENTITY']):
-            raise ValueError("must be one of enum values ('IDENTITY')")
+            warnings.warn(f"must be one of enum values ('IDENTITY') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

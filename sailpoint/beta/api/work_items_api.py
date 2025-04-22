@@ -297,7 +297,7 @@ class WorkItemsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -568,7 +568,7 @@ class WorkItemsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -603,6 +603,7 @@ class WorkItemsApi:
     def complete_work_item(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the work item")],
+        body: Annotated[Optional[StrictStr], Field(description="Body is the request payload to create form definition request")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -622,6 +623,8 @@ class WorkItemsApi:
 
         :param id: The ID of the work item (required)
         :type id: str
+        :param body: Body is the request payload to create form definition request
+        :type body: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -646,6 +649,7 @@ class WorkItemsApi:
 
         _param = self._complete_work_item_serialize(
             id=id,
+            body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -655,8 +659,11 @@ class WorkItemsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WorkItems",
             '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -673,6 +680,7 @@ class WorkItemsApi:
     def complete_work_item_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the work item")],
+        body: Annotated[Optional[StrictStr], Field(description="Body is the request payload to create form definition request")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -692,6 +700,8 @@ class WorkItemsApi:
 
         :param id: The ID of the work item (required)
         :type id: str
+        :param body: Body is the request payload to create form definition request
+        :type body: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -716,6 +726,7 @@ class WorkItemsApi:
 
         _param = self._complete_work_item_serialize(
             id=id,
+            body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -725,8 +736,11 @@ class WorkItemsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WorkItems",
             '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -743,6 +757,7 @@ class WorkItemsApi:
     def complete_work_item_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the work item")],
+        body: Annotated[Optional[StrictStr], Field(description="Body is the request payload to create form definition request")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -762,6 +777,8 @@ class WorkItemsApi:
 
         :param id: The ID of the work item (required)
         :type id: str
+        :param body: Body is the request payload to create form definition request
+        :type body: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -786,6 +803,7 @@ class WorkItemsApi:
 
         _param = self._complete_work_item_serialize(
             id=id,
+            body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -795,8 +813,11 @@ class WorkItemsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WorkItems",
             '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -808,6 +829,7 @@ class WorkItemsApi:
     def _complete_work_item_serialize(
         self,
         id,
+        body,
         _request_auth,
         _content_type,
         _headers,
@@ -835,16 +857,31 @@ class WorkItemsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
+        if body is not None:
+            _body_params = body
 
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
             )
 
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
         _auth_settings: List[str] = [
@@ -1131,7 +1168,7 @@ class WorkItemsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -1468,7 +1505,7 @@ class WorkItemsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -1741,7 +1778,7 @@ class WorkItemsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -2014,7 +2051,7 @@ class WorkItemsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -2062,7 +2099,7 @@ class WorkItemsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[WorkItems]:
+    ) -> object:
         """Get a Work Item
 
         This gets the details of a Work Item belonging to either the specified user(admin required), or the current user.
@@ -2103,10 +2140,13 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[WorkItems]",
+            '200': "object",
             '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2136,7 +2176,7 @@ class WorkItemsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[WorkItems]]:
+    ) -> ApiResponse[object]:
         """Get a Work Item
 
         This gets the details of a Work Item belonging to either the specified user(admin required), or the current user.
@@ -2177,10 +2217,13 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[WorkItems]",
+            '200': "object",
             '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2251,10 +2294,13 @@ class WorkItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[WorkItems]",
+            '200': "object",
             '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2302,7 +2348,7 @@ class WorkItemsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -2575,7 +2621,7 @@ class WorkItemsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -2899,7 +2945,7 @@ class WorkItemsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -3185,7 +3231,7 @@ class WorkItemsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -3456,7 +3502,7 @@ class WorkItemsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -3742,7 +3788,7 @@ class WorkItemsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]

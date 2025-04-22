@@ -47,6 +47,13 @@ class TestWorkItemsApi(unittest.TestCase):
         """
         pass
 
+    def test_forward_work_item(self) -> None:
+        """Test case for forward_work_item
+
+        Forward a Work Item
+        """
+        pass
+
     def test_get_completed_work_items(self) -> None:
         """Test case for get_completed_work_items
 
@@ -100,13 +107,6 @@ class TestWorkItemsApi(unittest.TestCase):
         """Test case for reject_approval_items_in_bulk
 
         Bulk reject Approval Items
-        """
-        pass
-
-    def test_send_work_item_forward(self) -> None:
-        """Test case for send_work_item_forward
-
-        Forward a Work Item
         """
         pass
 

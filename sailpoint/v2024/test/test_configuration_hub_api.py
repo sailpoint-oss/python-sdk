@@ -47,6 +47,13 @@ class TestConfigurationHubApi(unittest.TestCase):
         """
         pass
 
+    def test_create_scheduled_action(self) -> None:
+        """Test case for create_scheduled_action
+
+        Create Scheduled Action
+        """
+        pass
+
     def test_create_uploaded_configuration(self) -> None:
         """Test case for create_uploaded_configuration
 
@@ -72,6 +79,13 @@ class TestConfigurationHubApi(unittest.TestCase):
         """Test case for delete_object_mapping
 
         Deletes an object mapping
+        """
+        pass
+
+    def test_delete_scheduled_action(self) -> None:
+        """Test case for delete_scheduled_action
+
+        Delete Scheduled Action
         """
         pass
 
@@ -124,6 +138,13 @@ class TestConfigurationHubApi(unittest.TestCase):
         """
         pass
 
+    def test_list_scheduled_actions(self) -> None:
+        """Test case for list_scheduled_actions
+
+        List Scheduled Actions
+        """
+        pass
+
     def test_list_uploaded_configurations(self) -> None:
         """Test case for list_uploaded_configurations
 
@@ -135,6 +156,13 @@ class TestConfigurationHubApi(unittest.TestCase):
         """Test case for update_object_mappings
 
         Bulk updates object mappings
+        """
+        pass
+
+    def test_update_scheduled_action(self) -> None:
+        """Test case for update_scheduled_action
+
+        Update Scheduled Action
         """
         pass
 

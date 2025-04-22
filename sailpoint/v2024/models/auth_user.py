@@ -16,7 +16,9 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
+from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
@@ -39,11 +41,12 @@ class AuthUser(BaseModel):
     lastname: Optional[StrictStr] = Field(default=None, description="Auth user's last name.")
     display_name: Optional[StrictStr] = Field(default=None, description="Auth user's name in displayed format.", alias="displayName")
     alias: Optional[StrictStr] = Field(default=None, description="Auth user's alias.")
-    last_password_change_date: Optional[StrictStr] = Field(default=None, description="Date of last password change.", alias="lastPasswordChangeDate")
+    last_password_change_date: Optional[datetime] = Field(default=None, description="Date of last password change.", alias="lastPasswordChangeDate")
     last_login_timestamp: Optional[StrictInt] = Field(default=None, description="Timestamp of the last login (long type value).", alias="lastLoginTimestamp")
     current_login_timestamp: Optional[StrictInt] = Field(default=None, description="Timestamp of the current login (long type value).", alias="currentLoginTimestamp")
+    last_unlock_timestamp: Optional[datetime] = Field(default=None, description="The date and time when the user was last unlocked.", alias="lastUnlockTimestamp")
     capabilities: Optional[List[StrictStr]] = Field(default=None, description="Array of the auth user's capabilities.")
-    __properties: ClassVar[List[str]] = ["tenant", "id", "uid", "profile", "identificationNumber", "email", "phone", "workPhone", "personalEmail", "firstname", "lastname", "displayName", "alias", "lastPasswordChangeDate", "lastLoginTimestamp", "currentLoginTimestamp", "capabilities"]
+    __properties: ClassVar[List[str]] = ["tenant", "id", "uid", "profile", "identificationNumber", "email", "phone", "workPhone", "personalEmail", "firstname", "lastname", "displayName", "alias", "lastPasswordChangeDate", "lastLoginTimestamp", "currentLoginTimestamp", "lastUnlockTimestamp", "capabilities"]
 
     @field_validator('capabilities')
     def capabilities_validate_enum(cls, value):
@@ -53,7 +56,7 @@ class AuthUser(BaseModel):
 
         for i in value:
             if i not in set(['CERT_ADMIN', 'CLOUD_GOV_ADMIN', 'CLOUD_GOV_USER', 'HELPDESK', 'ORG_ADMIN', 'REPORT_ADMIN', 'ROLE_ADMIN', 'ROLE_SUBADMIN', 'SAAS_MANAGEMENT_ADMIN', 'SAAS_MANAGEMENT_READER', 'SOURCE_ADMIN', 'SOURCE_SUBADMIN', 'das:ui-administrator', 'das:ui-compliance_manager', 'das:ui-auditor', 'das:ui-data-scope', 'sp:aic-dashboard-read', 'sp:aic-dashboard-write', 'sp:ui-config-hub-admin', 'sp:ui-config-hub-backup-admin', 'sp:ui-config-hub-read']):
-                raise ValueError("each list item must be one of ('CERT_ADMIN', 'CLOUD_GOV_ADMIN', 'CLOUD_GOV_USER', 'HELPDESK', 'ORG_ADMIN', 'REPORT_ADMIN', 'ROLE_ADMIN', 'ROLE_SUBADMIN', 'SAAS_MANAGEMENT_ADMIN', 'SAAS_MANAGEMENT_READER', 'SOURCE_ADMIN', 'SOURCE_SUBADMIN', 'das:ui-administrator', 'das:ui-compliance_manager', 'das:ui-auditor', 'das:ui-data-scope', 'sp:aic-dashboard-read', 'sp:aic-dashboard-write', 'sp:ui-config-hub-admin', 'sp:ui-config-hub-backup-admin', 'sp:ui-config-hub-read')")
+                warnings.warn(f"each list item must be one of ('CERT_ADMIN', 'CLOUD_GOV_ADMIN', 'CLOUD_GOV_USER', 'HELPDESK', 'ORG_ADMIN', 'REPORT_ADMIN', 'ROLE_ADMIN', 'ROLE_SUBADMIN', 'SAAS_MANAGEMENT_ADMIN', 'SAAS_MANAGEMENT_READER', 'SOURCE_ADMIN', 'SOURCE_SUBADMIN', 'das:ui-administrator', 'das:ui-compliance_manager', 'das:ui-auditor', 'das:ui-data-scope', 'sp:aic-dashboard-read', 'sp:aic-dashboard-write', 'sp:ui-config-hub-admin', 'sp:ui-config-hub-backup-admin', 'sp:ui-config-hub-read') unknown value: {i}")
         return value
 
     model_config = ConfigDict(
@@ -95,6 +98,56 @@ class AuthUser(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if identification_number (nullable) is None
+        # and model_fields_set contains the field
+        if self.identification_number is None and "identification_number" in self.model_fields_set:
+            _dict['identificationNumber'] = None
+
+        # set to None if email (nullable) is None
+        # and model_fields_set contains the field
+        if self.email is None and "email" in self.model_fields_set:
+            _dict['email'] = None
+
+        # set to None if phone (nullable) is None
+        # and model_fields_set contains the field
+        if self.phone is None and "phone" in self.model_fields_set:
+            _dict['phone'] = None
+
+        # set to None if work_phone (nullable) is None
+        # and model_fields_set contains the field
+        if self.work_phone is None and "work_phone" in self.model_fields_set:
+            _dict['workPhone'] = None
+
+        # set to None if personal_email (nullable) is None
+        # and model_fields_set contains the field
+        if self.personal_email is None and "personal_email" in self.model_fields_set:
+            _dict['personalEmail'] = None
+
+        # set to None if firstname (nullable) is None
+        # and model_fields_set contains the field
+        if self.firstname is None and "firstname" in self.model_fields_set:
+            _dict['firstname'] = None
+
+        # set to None if lastname (nullable) is None
+        # and model_fields_set contains the field
+        if self.lastname is None and "lastname" in self.model_fields_set:
+            _dict['lastname'] = None
+
+        # set to None if last_password_change_date (nullable) is None
+        # and model_fields_set contains the field
+        if self.last_password_change_date is None and "last_password_change_date" in self.model_fields_set:
+            _dict['lastPasswordChangeDate'] = None
+
+        # set to None if last_unlock_timestamp (nullable) is None
+        # and model_fields_set contains the field
+        if self.last_unlock_timestamp is None and "last_unlock_timestamp" in self.model_fields_set:
+            _dict['lastUnlockTimestamp'] = None
+
+        # set to None if capabilities (nullable) is None
+        # and model_fields_set contains the field
+        if self.capabilities is None and "capabilities" in self.model_fields_set:
+            _dict['capabilities'] = None
+
         return _dict
 
     @classmethod
@@ -123,6 +176,7 @@ class AuthUser(BaseModel):
             "lastPasswordChangeDate": obj.get("lastPasswordChangeDate"),
             "lastLoginTimestamp": obj.get("lastLoginTimestamp"),
             "currentLoginTimestamp": obj.get("currentLoginTimestamp"),
+            "lastUnlockTimestamp": obj.get("lastUnlockTimestamp"),
             "capabilities": obj.get("capabilities")
         })
         return _obj

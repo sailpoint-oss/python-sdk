@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool
 from typing import Any, ClassVar, Dict, List, Optional
@@ -25,11 +26,11 @@ from typing_extensions import Self
 
 class SpConfigRules(BaseModel):
     """
-    Rules to be applied to the config object during draft process
+    Rules to be applied to the config object during the draft process.
     """ # noqa: E501
     take_from_target_rules: Optional[List[SpConfigRule]] = Field(default=None, alias="takeFromTargetRules")
     default_rules: Optional[List[SpConfigRule]] = Field(default=None, alias="defaultRules")
-    editable: Optional[StrictBool] = Field(default=False, description="Whether this object can be edited")
+    editable: Optional[StrictBool] = Field(default=False, description="Indicates whether the object can be edited.")
     __properties: ClassVar[List[str]] = ["takeFromTargetRules", "defaultRules", "editable"]
 
     model_config = ConfigDict(

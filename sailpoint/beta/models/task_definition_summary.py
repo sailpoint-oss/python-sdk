@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
@@ -28,7 +29,7 @@ class TaskDefinitionSummary(BaseModel):
     """ # noqa: E501
     id: StrictStr = Field(description="System-generated unique ID of the TaskDefinition")
     unique_name: StrictStr = Field(description="Name of the TaskDefinition", alias="uniqueName")
-    description: StrictStr = Field(description="Description of the TaskDefinition")
+    description: Optional[StrictStr] = Field(description="Description of the TaskDefinition")
     parent_name: StrictStr = Field(description="Name of the parent of the TaskDefinition", alias="parentName")
     executor: Optional[StrictStr] = Field(description="Executor of the TaskDefinition")
     arguments: Dict[str, Any] = Field(description="Formal parameters of the TaskDefinition, without values")
@@ -73,6 +74,11 @@ class TaskDefinitionSummary(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if description (nullable) is None
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
+            _dict['description'] = None
+
         # set to None if executor (nullable) is None
         # and model_fields_set contains the field
         if self.executor is None and "executor" in self.model_fields_set:

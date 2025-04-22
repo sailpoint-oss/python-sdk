@@ -292,7 +292,7 @@ class WorkReassignmentApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -597,7 +597,7 @@ class WorkReassignmentApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -907,7 +907,7 @@ class WorkReassignmentApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -1169,7 +1169,7 @@ class WorkReassignmentApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -1449,7 +1449,7 @@ class WorkReassignmentApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -1714,7 +1714,7 @@ class WorkReassignmentApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -1748,6 +1748,8 @@ class WorkReassignmentApi:
     @validate_call
     def list_reassignment_configurations(
         self,
+        limit: Annotated[Optional[Annotated[int, Field(le=20, strict=True, ge=0)]], Field(description="Max number of results to return.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1765,6 +1767,10 @@ class WorkReassignmentApi:
 
         Gets all Reassignment configuration for the current org.
 
+        :param limit: Max number of results to return.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified.
+        :type offset: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1788,6 +1794,8 @@ class WorkReassignmentApi:
         """ # noqa: E501
 
         _param = self._list_reassignment_configurations_serialize(
+            limit=limit,
+            offset=offset,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1817,6 +1825,8 @@ class WorkReassignmentApi:
     @validate_call
     def list_reassignment_configurations_with_http_info(
         self,
+        limit: Annotated[Optional[Annotated[int, Field(le=20, strict=True, ge=0)]], Field(description="Max number of results to return.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1834,6 +1844,10 @@ class WorkReassignmentApi:
 
         Gets all Reassignment configuration for the current org.
 
+        :param limit: Max number of results to return.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified.
+        :type offset: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1857,6 +1871,8 @@ class WorkReassignmentApi:
         """ # noqa: E501
 
         _param = self._list_reassignment_configurations_serialize(
+            limit=limit,
+            offset=offset,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1886,6 +1902,8 @@ class WorkReassignmentApi:
     @validate_call
     def list_reassignment_configurations_without_preload_content(
         self,
+        limit: Annotated[Optional[Annotated[int, Field(le=20, strict=True, ge=0)]], Field(description="Max number of results to return.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1903,6 +1921,10 @@ class WorkReassignmentApi:
 
         Gets all Reassignment configuration for the current org.
 
+        :param limit: Max number of results to return.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified.
+        :type offset: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1926,6 +1948,8 @@ class WorkReassignmentApi:
         """ # noqa: E501
 
         _param = self._list_reassignment_configurations_serialize(
+            limit=limit,
+            offset=offset,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1950,6 +1974,8 @@ class WorkReassignmentApi:
 
     def _list_reassignment_configurations_serialize(
         self,
+        limit,
+        offset,
         _request_auth,
         _content_type,
         _headers,
@@ -1972,6 +1998,14 @@ class WorkReassignmentApi:
 
         # process the path parameters
         # process the query parameters
+        if limit is not None:
+            
+            _query_params.append(('limit', limit))
+            
+        if offset is not None:
+            
+            _query_params.append(('offset', offset))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -1979,7 +2013,7 @@ class WorkReassignmentApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -2271,7 +2305,7 @@ class WorkReassignmentApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -2561,7 +2595,7 @@ class WorkReassignmentApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]

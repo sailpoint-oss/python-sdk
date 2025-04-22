@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
@@ -29,7 +30,7 @@ class SimIntegrationDetails(BaseModel):
     SimIntegrationDetails
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="System-generated unique ID of the Object")
-    name: StrictStr = Field(description="Name of the Object")
+    name: Optional[StrictStr] = Field(description="Name of the Object")
     created: Optional[datetime] = Field(default=None, description="Creation date of the Object")
     modified: Optional[datetime] = Field(default=None, description="Last modification date of the Object")
     description: Optional[StrictStr] = Field(default=None, description="The description of the integration")
@@ -90,6 +91,11 @@ class SimIntegrationDetails(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of before_provisioning_rule
         if self.before_provisioning_rule:
             _dict['beforeProvisioningRule'] = self.before_provisioning_rule.to_dict()
+        # set to None if name (nullable) is None
+        # and model_fields_set contains the field
+        if self.name is None and "name" in self.model_fields_set:
+            _dict['name'] = None
+
         # set to None if attributes (nullable) is None
         # and model_fields_set contains the field
         if self.attributes is None and "attributes" in self.model_fields_set:

@@ -45,8 +45,8 @@ class TestCampaignEnded(unittest.TestCase):
                     type = MANAGER, 
                     campaign_owner = sailpoint.beta.models.campaign_activated_campaign_campaign_owner.CampaignActivated_campaign_campaignOwner(
                         id = '37f080867702c1910177031320c40n27', 
-                        display_name = 'John Snow', 
-                        email = 'john.snow@example.com', ), 
+                        display_name = 'Albert Albertson', 
+                        email = 'albert.albertson@example.com', ), 
                     status = COMPLETED, )
             )
         else:
@@ -61,8 +61,8 @@ class TestCampaignEnded(unittest.TestCase):
                     type = MANAGER, 
                     campaign_owner = sailpoint.beta.models.campaign_activated_campaign_campaign_owner.CampaignActivated_campaign_campaignOwner(
                         id = '37f080867702c1910177031320c40n27', 
-                        display_name = 'John Snow', 
-                        email = 'john.snow@example.com', ), 
+                        display_name = 'Albert Albertson', 
+                        email = 'albert.albertson@example.com', ), 
                     status = COMPLETED, ),
         )
         """

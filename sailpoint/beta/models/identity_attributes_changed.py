@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List
@@ -29,7 +30,7 @@ class IdentityAttributesChanged(BaseModel):
     IdentityAttributesChanged
     """ # noqa: E501
     identity: IdentityAttributesChangedIdentity
-    changes: List[IdentityAttributesChangedChangesInner] = Field(description="A list of one or more identity attributes that changed on the identity.")
+    changes: List[IdentityAttributesChangedChangesInner] = Field(description="List of identity's attributes that changed.")
     __properties: ClassVar[List[str]] = ["identity", "changes"]
 
     model_config = ConfigDict(

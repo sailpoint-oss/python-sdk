@@ -17,9 +17,10 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictStr
+from typing import List
 from typing_extensions import Annotated
 from sailpoint.v2024.models.json_patch import JsonPatch
-from sailpoint.v2024.models.service_desk_integration_dto1 import ServiceDeskIntegrationDto1
+from sailpoint.v2024.models.service_desk_integration_dto import ServiceDeskIntegrationDto
 from sailpoint.v2024.models.sim_integration_details import SimIntegrationDetails
 
 from sailpoint.v2024.api_client import ApiClient, RequestSerialized
@@ -57,7 +58,7 @@ class SIMIntegrationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServiceDeskIntegrationDto1:
+    ) -> ServiceDeskIntegrationDto:
         """Create new SIM integration
 
         Create a new SIM Integrations.
@@ -98,7 +99,7 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServiceDeskIntegrationDto1",
+            '200': "ServiceDeskIntegrationDto",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -134,7 +135,7 @@ class SIMIntegrationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServiceDeskIntegrationDto1]:
+    ) -> ApiResponse[ServiceDeskIntegrationDto]:
         """Create new SIM integration
 
         Create a new SIM Integrations.
@@ -175,7 +176,7 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServiceDeskIntegrationDto1",
+            '200': "ServiceDeskIntegrationDto",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -252,7 +253,7 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServiceDeskIntegrationDto1",
+            '200': "ServiceDeskIntegrationDto",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -304,7 +305,7 @@ class SIMIntegrationsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -612,7 +613,7 @@ class SIMIntegrationsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -660,7 +661,7 @@ class SIMIntegrationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServiceDeskIntegrationDto1:
+    ) -> ServiceDeskIntegrationDto:
         """Get a SIM integration details.
 
         Get the details of a SIM integration.
@@ -701,7 +702,7 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServiceDeskIntegrationDto1",
+            '200': "ServiceDeskIntegrationDto",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -737,7 +738,7 @@ class SIMIntegrationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServiceDeskIntegrationDto1]:
+    ) -> ApiResponse[ServiceDeskIntegrationDto]:
         """Get a SIM integration details.
 
         Get the details of a SIM integration.
@@ -778,7 +779,7 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServiceDeskIntegrationDto1",
+            '200': "ServiceDeskIntegrationDto",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -855,7 +856,7 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServiceDeskIntegrationDto1",
+            '200': "ServiceDeskIntegrationDto",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -907,7 +908,7 @@ class SIMIntegrationsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -954,7 +955,7 @@ class SIMIntegrationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServiceDeskIntegrationDto1:
+    ) -> List[ServiceDeskIntegrationDto]:
         """List the existing SIM integrations.
 
         List the existing SIM integrations.
@@ -992,7 +993,7 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServiceDeskIntegrationDto1",
+            '200': "List[ServiceDeskIntegrationDto]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -1027,7 +1028,7 @@ class SIMIntegrationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServiceDeskIntegrationDto1]:
+    ) -> ApiResponse[List[ServiceDeskIntegrationDto]]:
         """List the existing SIM integrations.
 
         List the existing SIM integrations.
@@ -1065,7 +1066,7 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServiceDeskIntegrationDto1",
+            '200': "List[ServiceDeskIntegrationDto]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -1138,7 +1139,7 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServiceDeskIntegrationDto1",
+            '200': "List[ServiceDeskIntegrationDto]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -1187,7 +1188,7 @@ class SIMIntegrationsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -1236,7 +1237,7 @@ class SIMIntegrationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServiceDeskIntegrationDto1:
+    ) -> ServiceDeskIntegrationDto:
         """Patch a SIM beforeProvisioningRule attribute.
 
         Patch a SIM beforeProvisioningRule attribute given a JsonPatch object.
@@ -1280,7 +1281,7 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServiceDeskIntegrationDto1",
+            '200': "ServiceDeskIntegrationDto",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -1317,7 +1318,7 @@ class SIMIntegrationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServiceDeskIntegrationDto1]:
+    ) -> ApiResponse[ServiceDeskIntegrationDto]:
         """Patch a SIM beforeProvisioningRule attribute.
 
         Patch a SIM beforeProvisioningRule attribute given a JsonPatch object.
@@ -1361,7 +1362,7 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServiceDeskIntegrationDto1",
+            '200': "ServiceDeskIntegrationDto",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -1442,7 +1443,7 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServiceDeskIntegrationDto1",
+            '200': "ServiceDeskIntegrationDto",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -1497,7 +1498,7 @@ class SIMIntegrationsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -1559,7 +1560,7 @@ class SIMIntegrationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServiceDeskIntegrationDto1:
+    ) -> ServiceDeskIntegrationDto:
         """Patch a SIM attribute.
 
         Patch a SIM attribute given a JsonPatch object.
@@ -1603,7 +1604,7 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServiceDeskIntegrationDto1",
+            '200': "ServiceDeskIntegrationDto",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -1640,7 +1641,7 @@ class SIMIntegrationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServiceDeskIntegrationDto1]:
+    ) -> ApiResponse[ServiceDeskIntegrationDto]:
         """Patch a SIM attribute.
 
         Patch a SIM attribute given a JsonPatch object.
@@ -1684,7 +1685,7 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServiceDeskIntegrationDto1",
+            '200': "ServiceDeskIntegrationDto",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -1765,7 +1766,7 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServiceDeskIntegrationDto1",
+            '200': "ServiceDeskIntegrationDto",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -1820,7 +1821,7 @@ class SIMIntegrationsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -1882,7 +1883,7 @@ class SIMIntegrationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServiceDeskIntegrationDto1:
+    ) -> ServiceDeskIntegrationDto:
         """Update an existing SIM integration
 
         Update an existing SIM integration.
@@ -1926,7 +1927,7 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServiceDeskIntegrationDto1",
+            '200': "ServiceDeskIntegrationDto",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -1963,7 +1964,7 @@ class SIMIntegrationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServiceDeskIntegrationDto1]:
+    ) -> ApiResponse[ServiceDeskIntegrationDto]:
         """Update an existing SIM integration
 
         Update an existing SIM integration.
@@ -2007,7 +2008,7 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServiceDeskIntegrationDto1",
+            '200': "ServiceDeskIntegrationDto",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -2088,7 +2089,7 @@ class SIMIntegrationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServiceDeskIntegrationDto1",
+            '200': "ServiceDeskIntegrationDto",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -2143,7 +2144,7 @@ class SIMIntegrationsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]

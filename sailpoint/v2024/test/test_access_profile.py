@@ -59,6 +59,7 @@ class TestAccessProfile(unittest.TestCase):
                 access_request_config = sailpoint.v2024.models.requestability.Requestability(
                     comments_required = True, 
                     denial_comments_required = True, 
+                    reauthorization_required = True, 
                     approval_schemes = [
                         sailpoint.v2024.models.access_profile_approval_scheme.AccessProfileApprovalScheme(
                             approver_type = 'GOVERNANCE_GROUP', 

@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
@@ -57,7 +58,7 @@ class SodPolicy(BaseModel):
             return value
 
         if value not in set(['ENFORCED', 'NOT_ENFORCED']):
-            raise ValueError("must be one of enum values ('ENFORCED', 'NOT_ENFORCED')")
+            warnings.warn(f"must be one of enum values ('ENFORCED', 'NOT_ENFORCED') unknown value: {value}")
         return value
 
     @field_validator('type')
@@ -67,7 +68,7 @@ class SodPolicy(BaseModel):
             return value
 
         if value not in set(['GENERAL', 'CONFLICTING_ACCESS_BASED']):
-            raise ValueError("must be one of enum values ('GENERAL', 'CONFLICTING_ACCESS_BASED')")
+            warnings.warn(f"must be one of enum values ('GENERAL', 'CONFLICTING_ACCESS_BASED') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

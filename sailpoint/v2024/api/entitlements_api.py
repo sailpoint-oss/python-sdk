@@ -19,7 +19,7 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictBytes, StrictStr
 from typing import List, Optional, Tuple, Union
 from typing_extensions import Annotated
-from sailpoint.v2024.models.entitlement1 import Entitlement1
+from sailpoint.v2024.models.entitlement import Entitlement
 from sailpoint.v2024.models.entitlement_bulk_update_request import EntitlementBulkUpdateRequest
 from sailpoint.v2024.models.entitlement_request_config import EntitlementRequestConfig
 from sailpoint.v2024.models.entitlement_source_reset_base_reference_dto import EntitlementSourceResetBaseReferenceDto
@@ -63,7 +63,7 @@ class EntitlementsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Entitlement1:
+    ) -> Entitlement:
         """Add metadata to an entitlement.
 
         Add single Access Model Metadata to an entitlement.
@@ -110,7 +110,7 @@ class EntitlementsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Entitlement1",
+            '200': "Entitlement",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -147,7 +147,7 @@ class EntitlementsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Entitlement1]:
+    ) -> ApiResponse[Entitlement]:
         """Add metadata to an entitlement.
 
         Add single Access Model Metadata to an entitlement.
@@ -194,7 +194,7 @@ class EntitlementsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Entitlement1",
+            '200': "Entitlement",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -278,7 +278,7 @@ class EntitlementsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Entitlement1",
+            '200': "Entitlement",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -335,7 +335,7 @@ class EntitlementsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -657,7 +657,7 @@ class EntitlementsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -705,7 +705,7 @@ class EntitlementsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Entitlement1:
+    ) -> Entitlement:
         """Get an entitlement
 
         This API returns an entitlement by its ID.
@@ -746,7 +746,7 @@ class EntitlementsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Entitlement1",
+            '200': "Entitlement",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -782,7 +782,7 @@ class EntitlementsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Entitlement1]:
+    ) -> ApiResponse[Entitlement]:
         """Get an entitlement
 
         This API returns an entitlement by its ID.
@@ -823,7 +823,7 @@ class EntitlementsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Entitlement1",
+            '200': "Entitlement",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -900,7 +900,7 @@ class EntitlementsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Entitlement1",
+            '200': "Entitlement",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -952,7 +952,7 @@ class EntitlementsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -1247,7 +1247,7 @@ class EntitlementsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -1557,7 +1557,7 @@ class EntitlementsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -1623,7 +1623,7 @@ class EntitlementsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Entitlement1]:
+    ) -> List[Entitlement]:
         """List of entitlements children
 
         This API returns a list of all child entitlements of a given entitlement.
@@ -1679,7 +1679,7 @@ class EntitlementsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Entitlement1]",
+            '200': "List[Entitlement]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -1720,7 +1720,7 @@ class EntitlementsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Entitlement1]]:
+    ) -> ApiResponse[List[Entitlement]]:
         """List of entitlements children
 
         This API returns a list of all child entitlements of a given entitlement.
@@ -1776,7 +1776,7 @@ class EntitlementsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Entitlement1]",
+            '200': "List[Entitlement]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -1873,7 +1873,7 @@ class EntitlementsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Entitlement1]",
+            '200': "List[Entitlement]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -1950,7 +1950,7 @@ class EntitlementsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -2003,7 +2003,7 @@ class EntitlementsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Entitlement1]:
+    ) -> List[Entitlement]:
         """List of entitlements parents
 
         This API returns a list of all parent entitlements of a given entitlement.
@@ -2059,7 +2059,7 @@ class EntitlementsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Entitlement1]",
+            '200': "List[Entitlement]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -2100,7 +2100,7 @@ class EntitlementsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Entitlement1]]:
+    ) -> ApiResponse[List[Entitlement]]:
         """List of entitlements parents
 
         This API returns a list of all parent entitlements of a given entitlement.
@@ -2156,7 +2156,7 @@ class EntitlementsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Entitlement1]",
+            '200': "List[Entitlement]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -2253,7 +2253,7 @@ class EntitlementsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Entitlement1]",
+            '200': "List[Entitlement]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -2330,7 +2330,7 @@ class EntitlementsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -2386,7 +2386,7 @@ class EntitlementsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Entitlement1]:
+    ) -> List[Entitlement]:
         """Gets a list of entitlements.
 
         This API returns a list of entitlements.  This API can be used in one of the two following ways: either getting entitlements for a specific **account-id**, or getting via use of **filters** (those two options are exclusive).  Any authenticated token can call this API.
@@ -2451,7 +2451,7 @@ class EntitlementsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Entitlement1]",
+            '200': "List[Entitlement]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -2494,7 +2494,7 @@ class EntitlementsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Entitlement1]]:
+    ) -> ApiResponse[List[Entitlement]]:
         """Gets a list of entitlements.
 
         This API returns a list of entitlements.  This API can be used in one of the two following ways: either getting entitlements for a specific **account-id**, or getting via use of **filters** (those two options are exclusive).  Any authenticated token can call this API.
@@ -2559,7 +2559,7 @@ class EntitlementsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Entitlement1]",
+            '200': "List[Entitlement]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -2667,7 +2667,7 @@ class EntitlementsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Entitlement1]",
+            '200': "List[Entitlement]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -2760,7 +2760,7 @@ class EntitlementsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -2809,7 +2809,7 @@ class EntitlementsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Entitlement1:
+    ) -> Entitlement:
         """Patch an entitlement
 
         This API updates an existing entitlement using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.  The following fields are patchable: **requestable**, **privileged**, **segments**, **owner**, **name**, **description**, and **manuallyUpdatedFields**  When you're patching owner, only owner type and owner id must be provided. Owner name is optional, and it won't be modified. If the owner name is provided, it should correspond to the real name. The only owner type currently supported is IDENTITY.
@@ -2853,7 +2853,7 @@ class EntitlementsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Entitlement1",
+            '200': "Entitlement",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -2890,7 +2890,7 @@ class EntitlementsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Entitlement1]:
+    ) -> ApiResponse[Entitlement]:
         """Patch an entitlement
 
         This API updates an existing entitlement using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.  The following fields are patchable: **requestable**, **privileged**, **segments**, **owner**, **name**, **description**, and **manuallyUpdatedFields**  When you're patching owner, only owner type and owner id must be provided. Owner name is optional, and it won't be modified. If the owner name is provided, it should correspond to the real name. The only owner type currently supported is IDENTITY.
@@ -2934,7 +2934,7 @@ class EntitlementsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Entitlement1",
+            '200': "Entitlement",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -3015,7 +3015,7 @@ class EntitlementsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Entitlement1",
+            '200': "Entitlement",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -3071,7 +3071,7 @@ class EntitlementsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -3394,7 +3394,7 @@ class EntitlementsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -3699,7 +3699,7 @@ class EntitlementsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -3991,7 +3991,7 @@ class EntitlementsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]

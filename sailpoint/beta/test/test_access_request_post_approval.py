@@ -37,7 +37,7 @@ class TestAccessRequestPostApproval(unittest.TestCase):
             return AccessRequestPostApproval(
                 access_request_id = '2c91808b6ef1d43e016efba0ce470904',
                 requested_for = [
-                    sailpoint.beta.models.access_item_requested_for_dto.AccessItemRequestedForDto(
+                    sailpoint.beta.models.access_item_requested_for_dto_1.AccessItemRequestedForDto_1(
                         type = 'IDENTITY', 
                         id = '2c4180a46faadee4016fb4e018c20626', 
                         name = 'Robert Robinson', )
@@ -53,14 +53,13 @@ class TestAccessRequestPostApproval(unittest.TestCase):
                         client_metadata = {applicationName=My application}, 
                         approval_info = [
                             sailpoint.beta.models.access_request_post_approval_requested_items_status_inner_approval_info_inner.AccessRequestPostApproval_requestedItemsStatus_inner_approvalInfo_inner(
-                                approval_comment = 'This access looks good.  Approved.', 
+                                approval_comment = 'This access looks good. Approved.', 
                                 approval_decision = APPROVED, 
                                 approver_name = 'Stephen.Austin', 
-                                approver = sailpoint.beta.models.access_request_post_approval_requested_items_status_inner_approval_info_inner_approver.AccessRequestPostApproval_requestedItemsStatus_inner_approvalInfo_inner_approver(
-                                    type = IDENTITY, ), )
+                                approver = null, )
                             ], )
                     ],
-                requested_by = sailpoint.beta.models.access_item_requester_dto.AccessItemRequesterDto(
+                requested_by = sailpoint.beta.models.access_item_requester_dto_1.AccessItemRequesterDto_1(
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20648', 
                     name = 'William Wilson', )
@@ -69,7 +68,7 @@ class TestAccessRequestPostApproval(unittest.TestCase):
             return AccessRequestPostApproval(
                 access_request_id = '2c91808b6ef1d43e016efba0ce470904',
                 requested_for = [
-                    sailpoint.beta.models.access_item_requested_for_dto.AccessItemRequestedForDto(
+                    sailpoint.beta.models.access_item_requested_for_dto_1.AccessItemRequestedForDto_1(
                         type = 'IDENTITY', 
                         id = '2c4180a46faadee4016fb4e018c20626', 
                         name = 'Robert Robinson', )
@@ -85,14 +84,13 @@ class TestAccessRequestPostApproval(unittest.TestCase):
                         client_metadata = {applicationName=My application}, 
                         approval_info = [
                             sailpoint.beta.models.access_request_post_approval_requested_items_status_inner_approval_info_inner.AccessRequestPostApproval_requestedItemsStatus_inner_approvalInfo_inner(
-                                approval_comment = 'This access looks good.  Approved.', 
+                                approval_comment = 'This access looks good. Approved.', 
                                 approval_decision = APPROVED, 
                                 approver_name = 'Stephen.Austin', 
-                                approver = sailpoint.beta.models.access_request_post_approval_requested_items_status_inner_approval_info_inner_approver.AccessRequestPostApproval_requestedItemsStatus_inner_approvalInfo_inner_approver(
-                                    type = IDENTITY, ), )
+                                approver = null, )
                             ], )
                     ],
-                requested_by = sailpoint.beta.models.access_item_requester_dto.AccessItemRequesterDto(
+                requested_by = sailpoint.beta.models.access_item_requester_dto_1.AccessItemRequesterDto_1(
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20648', 
                     name = 'William Wilson', ),

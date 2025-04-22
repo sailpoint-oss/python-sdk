@@ -88,7 +88,11 @@ class TestExportFormDefinitionsByTenant200ResponseInner(unittest.TestCase):
                         ], 
                     created = '2023-07-12T20:14:57.744860Z', 
                     modified = '2023-07-12T20:14:57.744860Z', ),
-                var_self = '',
+                var_self = sailpoint.v2024.models.export_form_definitions_by_tenant_200_response_inner_self.exportFormDefinitionsByTenant_200_response_inner_self(
+                    object = sailpoint.v2024.models.form_definition_self_import_export_dto.FormDefinitionSelfImportExportDto(
+                        type = 'FORM_DEFINITION', 
+                        id = '2c9180835d191a86015d28455b4b232a', 
+                        name = 'Temporary User Level Permissions - Requester', ), ),
                 version = 56
             )
         else:

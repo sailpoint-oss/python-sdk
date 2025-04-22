@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
@@ -27,7 +28,7 @@ class RoleMiningIdentityDistribution(BaseModel):
     RoleMiningIdentityDistribution
     """ # noqa: E501
     attribute_name: Optional[StrictStr] = Field(default=None, description="Id of the potential role", alias="attributeName")
-    distribution: Optional[List[Dict[str, StrictStr]]] = None
+    distribution: Optional[List[Dict[str, Any]]] = None
     __properties: ClassVar[List[str]] = ["attributeName", "distribution"]
 
     model_config = ConfigDict(

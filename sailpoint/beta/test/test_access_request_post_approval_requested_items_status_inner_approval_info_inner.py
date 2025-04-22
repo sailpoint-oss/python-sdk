@@ -35,18 +35,22 @@ class TestAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner(un
         model = AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner()
         if include_optional:
             return AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner(
-                approval_comment = 'This access looks good.  Approved.',
+                approval_comment = 'This access looks good. Approved.',
                 approval_decision = APPROVED,
                 approver_name = 'Stephen.Austin',
-                approver = sailpoint.beta.models.access_request_post_approval_requested_items_status_inner_approval_info_inner_approver.AccessRequestPostApproval_requestedItemsStatus_inner_approvalInfo_inner_approver(
-                    type = IDENTITY, )
+                approver = sailpoint.beta.models.access_item_approver_dto.AccessItemApproverDto(
+                    type = 'IDENTITY', 
+                    id = '2c3780a46faadee4016fb4e018c20652', 
+                    name = 'Allen Albertson', )
             )
         else:
             return AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner(
                 approval_decision = APPROVED,
                 approver_name = 'Stephen.Austin',
-                approver = sailpoint.beta.models.access_request_post_approval_requested_items_status_inner_approval_info_inner_approver.AccessRequestPostApproval_requestedItemsStatus_inner_approvalInfo_inner_approver(
-                    type = IDENTITY, ),
+                approver = sailpoint.beta.models.access_item_approver_dto.AccessItemApproverDto(
+                    type = 'IDENTITY', 
+                    id = '2c3780a46faadee4016fb4e018c20652', 
+                    name = 'Allen Albertson', ),
         )
         """
 

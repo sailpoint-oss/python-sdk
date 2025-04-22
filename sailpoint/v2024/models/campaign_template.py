@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
@@ -95,6 +96,11 @@ class CampaignTemplate(BaseModel):
         # and model_fields_set contains the field
         if self.modified is None and "modified" in self.model_fields_set:
             _dict['modified'] = None
+
+        # set to None if deadline_duration (nullable) is None
+        # and model_fields_set contains the field
+        if self.deadline_duration is None and "deadline_duration" in self.model_fields_set:
+            _dict['deadlineDuration'] = None
 
         return _dict
 

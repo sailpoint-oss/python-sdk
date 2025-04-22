@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
@@ -24,11 +25,11 @@ from typing_extensions import Self
 
 class AccessItemApproverDto(BaseModel):
     """
-    Identity who approved the access item request.
+    AccessItemApproverDto
     """ # noqa: E501
-    type: Optional[StrictStr] = Field(default=None, description="DTO type of identity who approved the access item request.")
-    id: Optional[StrictStr] = Field(default=None, description="ID of identity who approved the access item request.")
-    name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of identity who approved the access item request.")
+    type: Optional[StrictStr] = Field(default=None, description="DTO type of the identity who approved the access item request.")
+    id: Optional[StrictStr] = Field(default=None, description="ID of the identity who approved the access item request.")
+    name: Optional[StrictStr] = Field(default=None, description="Name of the identity who approved the access item request.")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')
@@ -38,7 +39,7 @@ class AccessItemApproverDto(BaseModel):
             return value
 
         if value not in set(['IDENTITY']):
-            raise ValueError("must be one of enum values ('IDENTITY')")
+            warnings.warn(f"must be one of enum values ('IDENTITY') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

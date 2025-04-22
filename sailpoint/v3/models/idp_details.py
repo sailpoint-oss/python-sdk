@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
@@ -30,18 +31,18 @@ class IdpDetails(BaseModel):
     role: Optional[StrictStr] = Field(default=None, description="Federation protocol role")
     entity_id: Optional[StrictStr] = Field(default=None, description="An entity ID is a globally unique name for a SAML entity, either an Identity Provider (IDP) or a Service Provider (SP).", alias="entityId")
     binding: Optional[StrictStr] = Field(default=None, description="Defines the binding used for the SAML flow. Used with IDP configurations.")
-    auth_context: Optional[StrictStr] = Field(default=None, description="Specifies the SAML authentication method to use. Used with IDP configurations.", alias="authContext")
+    authn_context: Optional[StrictStr] = Field(default=None, description="Specifies the SAML authentication method to use. Used with IDP configurations.", alias="authnContext")
     logout_url: Optional[StrictStr] = Field(default=None, description="The IDP logout URL. Used with IDP configurations.", alias="logoutUrl")
-    include_auth_context: Optional[StrictBool] = Field(default=False, description="Determines if the configured AuthnContext should be used or the default. Used with IDP configurations.", alias="includeAuthContext")
+    include_authn_context: Optional[StrictBool] = Field(default=False, description="Determines if the configured AuthnContext should be used or the default. Used with IDP configurations.", alias="includeAuthnContext")
     name_id: Optional[StrictStr] = Field(default=None, description="The name id format to use. Used with IDP configurations.", alias="nameId")
     jit_configuration: Optional[JITConfiguration] = Field(default=None, alias="jitConfiguration")
     cert: Optional[StrictStr] = Field(default=None, description="The Base64-encoded certificate used by the IDP. Used with IDP configurations.")
     login_url_post: Optional[StrictStr] = Field(default=None, description="The IDP POST URL, used with IDP HTTP-POST bindings for IDP-initiated logins. Used with IDP configurations.", alias="loginUrlPost")
     login_url_redirect: Optional[StrictStr] = Field(default=None, description="The IDP Redirect URL. Used with IDP configurations.", alias="loginUrlRedirect")
-    mapping_attribute: Optional[StrictStr] = Field(default=None, description="Return the saml Id for the given user, based on the IDN as SP settings of the org. Used with IDP configurations.", alias="mappingAttribute")
+    mapping_attribute: StrictStr = Field(description="Return the saml Id for the given user, based on the IDN as SP settings of the org. Used with IDP configurations.", alias="mappingAttribute")
     certificate_expiration_date: Optional[StrictStr] = Field(default=None, description="The expiration date extracted from the certificate.", alias="certificateExpirationDate")
     certificate_name: Optional[StrictStr] = Field(default=None, description="The name extracted from the certificate.", alias="certificateName")
-    __properties: ClassVar[List[str]] = ["role", "entityId", "binding", "authContext", "logoutUrl", "includeAuthContext", "nameId", "jitConfiguration", "cert", "loginUrlPost", "loginUrlRedirect", "mappingAttribute", "certificateExpirationDate", "certificateName"]
+    __properties: ClassVar[List[str]] = ["role", "entityId", "binding", "authnContext", "logoutUrl", "includeAuthnContext", "nameId", "jitConfiguration", "cert", "loginUrlPost", "loginUrlRedirect", "mappingAttribute", "certificateExpirationDate", "certificateName"]
 
     @field_validator('role')
     def role_validate_enum(cls, value):
@@ -49,8 +50,8 @@ class IdpDetails(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['SAML_IDP']):
-            raise ValueError("must be one of enum values ('SAML_IDP')")
+        if value not in set(['SAML_IDP', 'SAML_SP']):
+            warnings.warn(f"must be one of enum values ('SAML_IDP', 'SAML_SP') unknown value: {value}")
         return value
 
     model_config = ConfigDict(
@@ -110,9 +111,9 @@ class IdpDetails(BaseModel):
             "role": obj.get("role"),
             "entityId": obj.get("entityId"),
             "binding": obj.get("binding"),
-            "authContext": obj.get("authContext"),
+            "authnContext": obj.get("authnContext"),
             "logoutUrl": obj.get("logoutUrl"),
-            "includeAuthContext": obj.get("includeAuthContext") if obj.get("includeAuthContext") is not None else False,
+            "includeAuthnContext": obj.get("includeAuthnContext") if obj.get("includeAuthnContext") is not None else False,
             "nameId": obj.get("nameId"),
             "jitConfiguration": JITConfiguration.from_dict(obj["jitConfiguration"]) if obj.get("jitConfiguration") is not None else None,
             "cert": obj.get("cert"),

@@ -35,11 +35,9 @@ class TestRoleMiningIdentity(unittest.TestCase):
         model = RoleMiningIdentity()
         if include_optional:
             return RoleMiningIdentity(
-                id = '',
-                name = '',
-                attributes = {
-                    'key' : ''
-                    }
+                id = '2c9180877212632a017228d5934525e6',
+                name = 'Allene Abernathy-Welch',
+                attributes = {jobTitle=SQL Developer, department=IT, location=NYC, firstName=Allene}
             )
         else:
             return RoleMiningIdentity(

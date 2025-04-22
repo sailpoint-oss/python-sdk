@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
@@ -24,11 +25,11 @@ from typing_extensions import Self
 
 class OwnerReference(BaseModel):
     """
-    The owner of this object.
+    Owner of the object.
     """ # noqa: E501
     type: Optional[StrictStr] = Field(default=None, description="Owner type. This field must be either left null or set to 'IDENTITY' on input, otherwise a 400 Bad Request error will result.")
-    id: Optional[StrictStr] = Field(default=None, description="Identity id")
-    name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of the owner. It may be left null or omitted in a POST or PATCH. If set, it must match the current value of the owner's display name, otherwise a 400 Bad Request error will result.")
+    id: Optional[StrictStr] = Field(default=None, description="Owner's identity ID.")
+    name: Optional[StrictStr] = Field(default=None, description="Owner's name. It may be left null or omitted in a POST or PATCH. If set, it must match the current value of the owner's display name, otherwise a 400 Bad Request error will result.")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')
@@ -38,7 +39,7 @@ class OwnerReference(BaseModel):
             return value
 
         if value not in set(['IDENTITY']):
-            raise ValueError("must be one of enum values ('IDENTITY')")
+            warnings.warn(f"must be one of enum values ('IDENTITY') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

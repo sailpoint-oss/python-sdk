@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
@@ -42,7 +43,7 @@ class AccessRequestPhases(BaseModel):
             return value
 
         if value not in set(['PENDING', 'EXECUTING', 'COMPLETED', 'CANCELLED', 'NOT_EXECUTED']):
-            raise ValueError("must be one of enum values ('PENDING', 'EXECUTING', 'COMPLETED', 'CANCELLED', 'NOT_EXECUTED')")
+            warnings.warn(f"must be one of enum values ('PENDING', 'EXECUTING', 'COMPLETED', 'CANCELLED', 'NOT_EXECUTED') unknown value: {value}")
         return value
 
     @field_validator('result')
@@ -52,7 +53,7 @@ class AccessRequestPhases(BaseModel):
             return value
 
         if value not in set(['SUCCESSFUL', 'FAILED']):
-            raise ValueError("must be one of enum values ('SUCCESSFUL', 'FAILED')")
+            warnings.warn(f"must be one of enum values ('SUCCESSFUL', 'FAILED') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

@@ -48,12 +48,7 @@ class TestSourceConnectionsDto(unittest.TestCase):
                     '[sAMAccountName, mail, sn, givenName, displayName, employeeNumber, manager, telephoneNumber]'
                     ],
                 mapping_profiles = [ODS-AD-Profile, ODS-Profile2],
-                dependent_custom_transforms = [
-                    sailpoint.v3.models.transform.Transform(
-                        name = 'Timestamp To Date', 
-                        type = 'dateFormat', 
-                        attributes = sailpoint.v3.models.attributes.attributes(), )
-                    ],
+                dependent_custom_transforms = [{id=61190eae-290b-4335-aeb8-7335f1fd99cb, name=Split Transform, type=split, attributes={delimiter=-, index=1, input={attributes={sourceName=Example CSV Source, attributeName=last_name}, type=accountAttribute}}, internal=false}],
                 dependent_apps = [
                     sailpoint.v3.models.dependant_app_connections.DependantAppConnections(
                         cloud_app_id = '9e3cdd80edf84f119327df8bbd5bb5ac', 

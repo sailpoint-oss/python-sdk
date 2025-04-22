@@ -131,6 +131,13 @@ class TestWorkflowsApi(unittest.TestCase):
         """
         pass
 
+    def test_put_workflow(self) -> None:
+        """Test case for put_workflow
+
+        Update Workflow
+        """
+        pass
+
     def test_test_external_execute_workflow(self) -> None:
         """Test case for test_external_execute_workflow
 
@@ -142,13 +149,6 @@ class TestWorkflowsApi(unittest.TestCase):
         """Test case for test_workflow
 
         Test Workflow By Id
-        """
-        pass
-
-    def test_update_workflow(self) -> None:
-        """Test case for update_workflow
-
-        Update Workflow
         """
         pass
 

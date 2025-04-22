@@ -16,14 +16,15 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v2024.models.campaign_reference import CampaignReference
 from sailpoint.v2024.models.certification_phase import CertificationPhase
-from sailpoint.v2024.models.reassignment1 import Reassignment1
-from sailpoint.v2024.models.reviewer1 import Reviewer1
+from sailpoint.v2024.models.reassignment import Reassignment
+from sailpoint.v2024.models.reviewer import Reviewer
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -35,8 +36,8 @@ class CertificationDto(BaseModel):
     phase: CertificationPhase
     due: datetime = Field(description="The due date of the certification.")
     signed: datetime = Field(description="The date the reviewer signed off on the certification.")
-    reviewer: Reviewer1
-    reassignment: Optional[Reassignment1] = None
+    reviewer: Reviewer
+    reassignment: Optional[Reassignment] = None
     has_errors: StrictBool = Field(description="Indicates it the certification has any errors.", alias="hasErrors")
     error_message: Optional[StrictStr] = Field(default=None, description="A message indicating what the error is.", alias="errorMessage")
     completed: StrictBool = Field(description="Indicates if all certification decisions have been made.")
@@ -94,6 +95,11 @@ class CertificationDto(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of reassignment
         if self.reassignment:
             _dict['reassignment'] = self.reassignment.to_dict()
+        # set to None if reassignment (nullable) is None
+        # and model_fields_set contains the field
+        if self.reassignment is None and "reassignment" in self.model_fields_set:
+            _dict['reassignment'] = None
+
         # set to None if error_message (nullable) is None
         # and model_fields_set contains the field
         if self.error_message is None and "error_message" in self.model_fields_set:
@@ -115,8 +121,8 @@ class CertificationDto(BaseModel):
             "phase": obj.get("phase"),
             "due": obj.get("due"),
             "signed": obj.get("signed"),
-            "reviewer": Reviewer1.from_dict(obj["reviewer"]) if obj.get("reviewer") is not None else None,
-            "reassignment": Reassignment1.from_dict(obj["reassignment"]) if obj.get("reassignment") is not None else None,
+            "reviewer": Reviewer.from_dict(obj["reviewer"]) if obj.get("reviewer") is not None else None,
+            "reassignment": Reassignment.from_dict(obj["reassignment"]) if obj.get("reassignment") is not None else None,
             "hasErrors": obj.get("hasErrors"),
             "errorMessage": obj.get("errorMessage"),
             "completed": obj.get("completed"),

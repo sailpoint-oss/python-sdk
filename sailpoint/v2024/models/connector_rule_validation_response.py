@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List
@@ -35,7 +36,7 @@ class ConnectorRuleValidationResponse(BaseModel):
     def state_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['OK', 'ERROR']):
-            raise ValueError("must be one of enum values ('OK', 'ERROR')")
+            warnings.warn(f"must be one of enum values ('OK', 'ERROR') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

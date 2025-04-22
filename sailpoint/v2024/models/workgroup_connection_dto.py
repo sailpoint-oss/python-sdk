@@ -16,10 +16,11 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2024.models.connected_object import ConnectedObject
+from sailpoint.v2024.models.workgroup_connection_dto_object import WorkgroupConnectionDtoObject
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,7 +28,7 @@ class WorkgroupConnectionDto(BaseModel):
     """
     WorkgroupConnectionDto
     """ # noqa: E501
-    object: Optional[ConnectedObject] = None
+    object: Optional[WorkgroupConnectionDtoObject] = None
     connection_type: Optional[StrictStr] = Field(default=None, description="Connection Type.", alias="connectionType")
     __properties: ClassVar[List[str]] = ["object", "connectionType"]
 
@@ -38,7 +39,7 @@ class WorkgroupConnectionDto(BaseModel):
             return value
 
         if value not in set(['AccessRequestReviewer', 'Owner', 'ManagementWorkgroup']):
-            raise ValueError("must be one of enum values ('AccessRequestReviewer', 'Owner', 'ManagementWorkgroup')")
+            warnings.warn(f"must be one of enum values ('AccessRequestReviewer', 'Owner', 'ManagementWorkgroup') unknown value: {value}")
         return value
 
     model_config = ConfigDict(
@@ -95,7 +96,7 @@ class WorkgroupConnectionDto(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "object": ConnectedObject.from_dict(obj["object"]) if obj.get("object") is not None else None,
+            "object": WorkgroupConnectionDtoObject.from_dict(obj["object"]) if obj.get("object") is not None else None,
             "connectionType": obj.get("connectionType")
         })
         return _obj

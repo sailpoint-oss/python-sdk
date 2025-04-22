@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
@@ -34,7 +35,7 @@ class CertificationTask(BaseModel):
     target_type: Optional[StrictStr] = Field(default=None, description="The type of item that is being operated on by this task whose ID is stored in the targetId field.", alias="targetType")
     target_id: Optional[StrictStr] = Field(default=None, description="The ID of the item being operated on by this task.", alias="targetId")
     status: Optional[StrictStr] = Field(default=None, description="The status of the task.")
-    errors: Optional[List[ErrorMessageDto]] = None
+    errors: Optional[List[ErrorMessageDto]] = Field(default=None, description="List of error messages")
     reassignment_trail_dtos: Optional[List[ReassignmentTrailDTO]] = Field(default=None, description="Reassignment trails that lead to self certification identity", alias="reassignmentTrailDTOs")
     created: Optional[datetime] = Field(default=None, description="The date and time on which this task was created.")
     __properties: ClassVar[List[str]] = ["id", "type", "targetType", "targetId", "status", "errors", "reassignmentTrailDTOs", "created"]
@@ -46,7 +47,7 @@ class CertificationTask(BaseModel):
             return value
 
         if value not in set(['REASSIGN', 'ADMIN_REASSIGN', 'COMPLETE_CERTIFICATION', 'FINISH_CERTIFICATION', 'COMPLETE_CAMPAIGN', 'ACTIVATE_CAMPAIGN', 'CAMPAIGN_CREATE', 'CAMPAIGN_DELETE']):
-            raise ValueError("must be one of enum values ('REASSIGN', 'ADMIN_REASSIGN', 'COMPLETE_CERTIFICATION', 'FINISH_CERTIFICATION', 'COMPLETE_CAMPAIGN', 'ACTIVATE_CAMPAIGN', 'CAMPAIGN_CREATE', 'CAMPAIGN_DELETE')")
+            warnings.warn(f"must be one of enum values ('REASSIGN', 'ADMIN_REASSIGN', 'COMPLETE_CERTIFICATION', 'FINISH_CERTIFICATION', 'COMPLETE_CAMPAIGN', 'ACTIVATE_CAMPAIGN', 'CAMPAIGN_CREATE', 'CAMPAIGN_DELETE') unknown value: {value}")
         return value
 
     @field_validator('target_type')
@@ -56,7 +57,7 @@ class CertificationTask(BaseModel):
             return value
 
         if value not in set(['CERTIFICATION', 'CAMPAIGN']):
-            raise ValueError("must be one of enum values ('CERTIFICATION', 'CAMPAIGN')")
+            warnings.warn(f"must be one of enum values ('CERTIFICATION', 'CAMPAIGN') unknown value: {value}")
         return value
 
     @field_validator('status')
@@ -66,7 +67,7 @@ class CertificationTask(BaseModel):
             return value
 
         if value not in set(['QUEUED', 'IN_PROGRESS', 'SUCCESS', 'ERROR']):
-            raise ValueError("must be one of enum values ('QUEUED', 'IN_PROGRESS', 'SUCCESS', 'ERROR')")
+            warnings.warn(f"must be one of enum values ('QUEUED', 'IN_PROGRESS', 'SUCCESS', 'ERROR') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

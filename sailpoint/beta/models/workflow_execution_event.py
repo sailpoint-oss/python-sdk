@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, field_validator
@@ -39,7 +40,7 @@ class WorkflowExecutionEvent(BaseModel):
             return value
 
         if value not in set(['WorkflowExecutionScheduled', 'WorkflowExecutionStarted', 'WorkflowExecutionCompleted', 'WorkflowExecutionFailed', 'WorkflowTaskScheduled', 'WorkflowTaskStarted', 'WorkflowTaskCompleted', 'WorkflowTaskFailed', 'ActivityTaskScheduled', 'ActivityTaskStarted', 'ActivityTaskCompleted', 'ActivityTaskFailed']):
-            raise ValueError("must be one of enum values ('WorkflowExecutionScheduled', 'WorkflowExecutionStarted', 'WorkflowExecutionCompleted', 'WorkflowExecutionFailed', 'WorkflowTaskScheduled', 'WorkflowTaskStarted', 'WorkflowTaskCompleted', 'WorkflowTaskFailed', 'ActivityTaskScheduled', 'ActivityTaskStarted', 'ActivityTaskCompleted', 'ActivityTaskFailed')")
+            warnings.warn(f"must be one of enum values ('WorkflowExecutionScheduled', 'WorkflowExecutionStarted', 'WorkflowExecutionCompleted', 'WorkflowExecutionFailed', 'WorkflowTaskScheduled', 'WorkflowTaskStarted', 'WorkflowTaskCompleted', 'WorkflowTaskFailed', 'ActivityTaskScheduled', 'ActivityTaskStarted', 'ActivityTaskCompleted', 'ActivityTaskFailed') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

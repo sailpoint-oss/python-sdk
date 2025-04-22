@@ -35,12 +35,12 @@ class TestServiceProviderConfigurationFederationProtocolDetailsInner(unittest.Te
         model = ServiceProviderConfigurationFederationProtocolDetailsInner()
         if include_optional:
             return ServiceProviderConfigurationFederationProtocolDetailsInner(
-                role = 'SAML_SP',
+                role = 'SAML_IDP',
                 entity_id = 'http://www.okta.com/exkdaruy8Ln5Ry7C54x6',
                 binding = 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
-                auth_context = 'urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport',
+                authn_context = 'urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport',
                 logout_url = 'https://dev-206445.oktapreview.com/login/signout',
-                include_auth_context = False,
+                include_authn_context = False,
                 name_id = 'urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress',
                 jit_configuration = sailpoint.v3.models.jit_configuration.JITConfiguration(
                     enabled = False, 
@@ -53,10 +53,13 @@ class TestServiceProviderConfigurationFederationProtocolDetailsInner(unittest.Te
                 certificate_expiration_date = 'Fri Mar 08 08:54:24 UTC 2013',
                 certificate_name = 'OU=Conext, O=Surfnet, L=Utrecht, ST=Utrecht, C=NL',
                 alias = 'acme-sp',
-                callback_url = 'https://stradbroke-sso.identitysoon.com/sso/Consumer/metaAlias/cdov-saml/sp'
+                callback_url = 'https://stradbroke-sso.identitysoon.com/sso/Consumer/metaAlias/cdov-saml/sp',
+                legacy_acs_url = 'https://megapod-useast1-sso.identitysoon.com/sso/Consumer/metaAlias/acme/sp'
             )
         else:
             return ServiceProviderConfigurationFederationProtocolDetailsInner(
+                mapping_attribute = 'email',
+                callback_url = 'https://stradbroke-sso.identitysoon.com/sso/Consumer/metaAlias/cdov-saml/sp',
         )
         """
 

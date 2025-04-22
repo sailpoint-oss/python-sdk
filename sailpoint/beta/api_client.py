@@ -102,7 +102,7 @@ class ApiClient:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'OpenAPI-Generator/1.2.5/python'
+        self.user_agent = 'OpenAPI-Generator/1.3.1/python'
         self.client_side_validation = configuration.client_side_validation
 
     def __enter__(self):
@@ -325,7 +325,7 @@ class ApiClient:
         return_data = None
         try:
             if response_type == "bytearray":
-                return_data = response_data.data
+                return_data = self.save_response_to_file(response_data.data, response_data.getheaders())
             elif response_type == "file":
                 return_data = self.__deserialize_file(response_data)
             elif response_type is not None:
@@ -350,6 +350,43 @@ class ApiClient:
             headers = response_data.getheaders(),
             raw_data = response_data.data
         )
+
+    def save_response_to_file(self, file_data: bytes, headers: Dict[str, str]) -> str:
+        """Saves binary response content as a file and returns the file path."""
+
+        content_disposition = headers.get('Content-Disposition', None)
+        filename = "downloaded_file"
+
+        if content_disposition:
+            filename_match = re.search(r'filename="(.+?)"', content_disposition)
+            filename = filename_match.group(1) if filename_match else "downloaded_file"
+
+        content_type = headers.get('Content-Type', '').lower()
+
+        # Extract file extension if it exists
+        existing_extension = os.path.splitext(filename)[1]  # Extracts ".zip", ".csv", etc.
+
+        # If there's no existing extension, determine it from Content-Type
+        if not existing_extension:
+            if "application/zip" in content_type:
+                filename += ".zip"
+            elif "application/pdf" in content_type:
+                filename += ".pdf"
+            elif "image/png" in content_type:
+                filename += ".png"
+            elif "image/jpeg" in content_type:
+                filename += ".jpg"
+            elif "text/csv" in content_type:
+                filename += ".csv"
+
+        file_path = os.path.join(os.getcwd(), filename)
+
+        with open(file_path, "wb") as file:
+            file.write(file_data)  # Write bytes directly
+
+        print(f"File has been saved to: {file_path}")
+        return file_path
+
 
     def sanitize_for_serialization(self, obj):
         """Builds a JSON POST object.
@@ -591,7 +628,7 @@ class ApiClient:
             )
         return params
 
-    def select_header_accept(self, accepts: List[str]) -> Optional[str]:
+    def select_header_accept(self, _query_params: List[Tuple[str, str]], accepts: List[str]) -> Optional[str]:
         """Returns `Accept` based on an array of accepts provided.
 
         :param accepts: List of headers.
@@ -600,9 +637,17 @@ class ApiClient:
         if not accepts:
             return None
 
-        for accept in accepts:
-            if re.search('json', accept, re.IGNORECASE):
-                return accept
+        file_format = next((value for key, value in _query_params if key.lower() == 'fileformat'), None)
+        
+        format_to_accept = {
+            "csv": "application/csv",
+            "json": "application/json",
+            "xml": "application/xml",
+            "pdf": "application/pdf",
+        }
+
+        if file_format and file_format.lower() in format_to_accept:
+            return format_to_accept[file_format.lower()]
 
         return accepts[0]
 

@@ -16,10 +16,11 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2024.models.base_reference_dto1 import BaseReferenceDto1
+from sailpoint.v2024.models.base_reference_dto import BaseReferenceDto
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,7 +29,7 @@ class RoleAssignmentRef(BaseModel):
     RoleAssignmentRef
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="Assignment Id")
-    role: Optional[BaseReferenceDto1] = None
+    role: Optional[BaseReferenceDto] = None
     __properties: ClassVar[List[str]] = ["id", "role"]
 
     model_config = ConfigDict(
@@ -86,7 +87,7 @@ class RoleAssignmentRef(BaseModel):
 
         _obj = cls.model_validate({
             "id": obj.get("id"),
-            "role": BaseReferenceDto1.from_dict(obj["role"]) if obj.get("role") is not None else None
+            "role": BaseReferenceDto.from_dict(obj["role"]) if obj.get("role") is not None else None
         })
         return _obj
 

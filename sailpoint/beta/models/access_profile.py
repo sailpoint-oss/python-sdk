@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
@@ -38,7 +39,7 @@ class AccessProfile(BaseModel):
     description: Optional[StrictStr] = Field(default=None, description="Information about the Access Profile")
     created: Optional[datetime] = Field(default=None, description="Date the Access Profile was created")
     modified: Optional[datetime] = Field(default=None, description="Date the Access Profile was last modified.")
-    enabled: Optional[StrictBool] = Field(default=True, description="Whether the Access Profile is enabled. If the Access Profile is enabled then you must include at least one Entitlement.")
+    enabled: Optional[StrictBool] = Field(default=False, description="Whether the Access Profile is enabled. If the Access Profile is enabled then you must include at least one Entitlement.")
     owner: OwnerReference
     source: AccessProfileSourceRef
     entitlements: Optional[List[EntitlementRef]] = Field(default=None, description="A list of entitlements associated with the Access Profile. If enabled is false this is allowed to be empty otherwise it needs to contain at least one Entitlement.")
@@ -163,7 +164,7 @@ class AccessProfile(BaseModel):
             "description": obj.get("description"),
             "created": obj.get("created"),
             "modified": obj.get("modified"),
-            "enabled": obj.get("enabled") if obj.get("enabled") is not None else True,
+            "enabled": obj.get("enabled") if obj.get("enabled") is not None else False,
             "owner": OwnerReference.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
             "source": AccessProfileSourceRef.from_dict(obj["source"]) if obj.get("source") is not None else None,
             "entitlements": [EntitlementRef.from_dict(_item) for _item in obj["entitlements"]] if obj.get("entitlements") is not None else None,

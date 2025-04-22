@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
@@ -34,7 +35,7 @@ class SendAccountVerificationRequest(BaseModel):
     def via_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['EMAIL_WORK', 'EMAIL_PERSONAL', 'LINK_WORK', 'LINK_PERSONAL']):
-            raise ValueError("must be one of enum values ('EMAIL_WORK', 'EMAIL_PERSONAL', 'LINK_WORK', 'LINK_PERSONAL')")
+            warnings.warn(f"must be one of enum values ('EMAIL_WORK', 'EMAIL_PERSONAL', 'LINK_WORK', 'LINK_PERSONAL') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

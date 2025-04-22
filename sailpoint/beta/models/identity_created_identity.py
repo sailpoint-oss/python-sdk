@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List
@@ -26,16 +27,16 @@ class IdentityCreatedIdentity(BaseModel):
     """
     Created identity.
     """ # noqa: E501
-    type: StrictStr = Field(description="Created identity's DTO type.")
-    id: StrictStr = Field(description="Created identity ID.")
-    name: StrictStr = Field(description="Created identity's display name.")
+    type: StrictStr = Field(description="Identity's DTO type.")
+    id: StrictStr = Field(description="Identity's unique ID.")
+    name: StrictStr = Field(description="Identity's name.")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['IDENTITY']):
-            raise ValueError("must be one of enum values ('IDENTITY')")
+            warnings.warn(f"must be one of enum values ('IDENTITY') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

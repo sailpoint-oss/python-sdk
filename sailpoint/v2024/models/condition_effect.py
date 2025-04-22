@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
@@ -38,7 +39,7 @@ class ConditionEffect(BaseModel):
             return value
 
         if value not in set(['HIDE', 'SHOW', 'DISABLE', 'ENABLE', 'REQUIRE', 'OPTIONAL', 'SUBMIT_MESSAGE', 'SUBMIT_NOTIFICATION', 'SET_DEFAULT_VALUE']):
-            raise ValueError("must be one of enum values ('HIDE', 'SHOW', 'DISABLE', 'ENABLE', 'REQUIRE', 'OPTIONAL', 'SUBMIT_MESSAGE', 'SUBMIT_NOTIFICATION', 'SET_DEFAULT_VALUE')")
+            warnings.warn(f"must be one of enum values ('HIDE', 'SHOW', 'DISABLE', 'ENABLE', 'REQUIRE', 'OPTIONAL', 'SUBMIT_MESSAGE', 'SUBMIT_NOTIFICATION', 'SET_DEFAULT_VALUE') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

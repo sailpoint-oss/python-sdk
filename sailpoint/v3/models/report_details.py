@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
@@ -38,7 +39,7 @@ class ReportDetails(BaseModel):
             return value
 
         if value not in set(['ACCOUNTS', 'IDENTITIES_DETAILS', 'IDENTITIES', 'IDENTITY_PROFILE_IDENTITY_ERROR', 'ORPHAN_IDENTITIES', 'SEARCH_EXPORT', 'UNCORRELATED_ACCOUNTS']):
-            raise ValueError("must be one of enum values ('ACCOUNTS', 'IDENTITIES_DETAILS', 'IDENTITIES', 'IDENTITY_PROFILE_IDENTITY_ERROR', 'ORPHAN_IDENTITIES', 'SEARCH_EXPORT', 'UNCORRELATED_ACCOUNTS')")
+            warnings.warn(f"must be one of enum values ('ACCOUNTS', 'IDENTITIES_DETAILS', 'IDENTITIES', 'IDENTITY_PROFILE_IDENTITY_ERROR', 'ORPHAN_IDENTITIES', 'SEARCH_EXPORT', 'UNCORRELATED_ACCOUNTS') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

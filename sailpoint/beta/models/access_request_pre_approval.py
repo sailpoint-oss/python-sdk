@@ -16,12 +16,13 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List
 from typing_extensions import Annotated
-from sailpoint.beta.models.access_item_requested_for_dto import AccessItemRequestedForDto
-from sailpoint.beta.models.access_item_requester_dto import AccessItemRequesterDto
+from sailpoint.beta.models.access_item_requested_for_dto1 import AccessItemRequestedForDto1
+from sailpoint.beta.models.access_item_requester_dto1 import AccessItemRequesterDto1
 from sailpoint.beta.models.access_request_pre_approval_requested_items_inner import AccessRequestPreApprovalRequestedItemsInner
 from typing import Optional, Set
 from typing_extensions import Self
@@ -30,10 +31,10 @@ class AccessRequestPreApproval(BaseModel):
     """
     AccessRequestPreApproval
     """ # noqa: E501
-    access_request_id: StrictStr = Field(description="The unique ID of the access request.", alias="accessRequestId")
-    requested_for: Annotated[List[AccessItemRequestedForDto], Field(min_length=1, max_length=10)] = Field(description="Identities access was requested for.", alias="requestedFor")
-    requested_items: Annotated[List[AccessRequestPreApprovalRequestedItemsInner], Field(min_length=1, max_length=25)] = Field(description="Details of the access items being requested.", alias="requestedItems")
-    requested_by: AccessItemRequesterDto = Field(alias="requestedBy")
+    access_request_id: StrictStr = Field(description="Access request's unique ID.", alias="accessRequestId")
+    requested_for: Annotated[List[AccessItemRequestedForDto1], Field(min_length=1, max_length=10)] = Field(description="Identities whom access was requested for.", alias="requestedFor")
+    requested_items: Annotated[List[AccessRequestPreApprovalRequestedItemsInner], Field(min_length=1, max_length=25)] = Field(description="Details about each requested access item.", alias="requestedItems")
+    requested_by: AccessItemRequesterDto1 = Field(alias="requestedBy")
     __properties: ClassVar[List[str]] = ["accessRequestId", "requestedFor", "requestedItems", "requestedBy"]
 
     model_config = ConfigDict(
@@ -105,9 +106,9 @@ class AccessRequestPreApproval(BaseModel):
 
         _obj = cls.model_validate({
             "accessRequestId": obj.get("accessRequestId"),
-            "requestedFor": [AccessItemRequestedForDto.from_dict(_item) for _item in obj["requestedFor"]] if obj.get("requestedFor") is not None else None,
+            "requestedFor": [AccessItemRequestedForDto1.from_dict(_item) for _item in obj["requestedFor"]] if obj.get("requestedFor") is not None else None,
             "requestedItems": [AccessRequestPreApprovalRequestedItemsInner.from_dict(_item) for _item in obj["requestedItems"]] if obj.get("requestedItems") is not None else None,
-            "requestedBy": AccessItemRequesterDto.from_dict(obj["requestedBy"]) if obj.get("requestedBy") is not None else None
+            "requestedBy": AccessItemRequesterDto1.from_dict(obj["requestedBy"]) if obj.get("requestedBy") is not None else None
         })
         return _obj
 

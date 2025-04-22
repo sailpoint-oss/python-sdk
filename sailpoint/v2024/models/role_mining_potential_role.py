@@ -16,12 +16,12 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v2024.models.role_mining_identity_distribution import RoleMiningIdentityDistribution
-from sailpoint.v2024.models.role_mining_potential_role_provision_state import RoleMiningPotentialRoleProvisionState
 from sailpoint.v2024.models.role_mining_role_type import RoleMiningRoleType
 from sailpoint.v2024.models.role_mining_session_parameters_dto import RoleMiningSessionParametersDto
 from sailpoint.v2024.models.role_mining_session_response_created_by import RoleMiningSessionResponseCreatedBy
@@ -42,7 +42,7 @@ class RoleMiningPotentialRole(BaseModel):
     identity_distribution: Optional[List[RoleMiningIdentityDistribution]] = Field(default=None, description="Identity attribute distribution.", alias="identityDistribution")
     identity_ids: Optional[List[StrictStr]] = Field(default=None, description="The list of ids in a potential role.", alias="identityIds")
     name: Optional[StrictStr] = Field(default=None, description="Name of the potential role.")
-    provision_state: Optional[RoleMiningPotentialRoleProvisionState] = Field(default=None, alias="provisionState")
+    provision_state: Optional[Any] = Field(default=None, alias="provisionState")
     quality: Optional[StrictInt] = Field(default=None, description="The quality of a potential role.")
     role_id: Optional[StrictStr] = Field(default=None, description="The roleId of a potential role.", alias="roleId")
     saved: Optional[StrictBool] = Field(default=None, description="The potential role's saved status.")
@@ -102,6 +102,9 @@ class RoleMiningPotentialRole(BaseModel):
                 if _item_identity_distribution:
                     _items.append(_item_identity_distribution.to_dict())
             _dict['identityDistribution'] = _items
+        # override the default output from pydantic by calling `to_dict()` of provision_state
+        if self.provision_state:
+            _dict['provisionState'] = self.provision_state.to_dict()
         # override the default output from pydantic by calling `to_dict()` of session
         if self.session:
             _dict['session'] = self.session.to_dict()
@@ -147,7 +150,7 @@ class RoleMiningPotentialRole(BaseModel):
             "identityDistribution": [RoleMiningIdentityDistribution.from_dict(_item) for _item in obj["identityDistribution"]] if obj.get("identityDistribution") is not None else None,
             "identityIds": obj.get("identityIds"),
             "name": obj.get("name"),
-            "provisionState": obj.get("provisionState"),
+            "provisionState": RoleMiningPotentialRoleProvisionState.from_dict(obj["provisionState"]) if obj.get("provisionState") is not None else None,
             "quality": obj.get("quality"),
             "roleId": obj.get("roleId"),
             "saved": obj.get("saved"),

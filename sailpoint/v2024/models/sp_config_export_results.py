@@ -16,12 +16,13 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v2024.models.config_object import ConfigObject
-from sailpoint.v2024.models.export_options import ExportOptions
+from sailpoint.v2024.models.export_options1 import ExportOptions1
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -33,7 +34,7 @@ class SpConfigExportResults(BaseModel):
     timestamp: Optional[datetime] = Field(default=None, description="Time the export was completed.")
     tenant: Optional[StrictStr] = Field(default=None, description="Name of the tenant where this export originated.")
     description: Optional[StrictStr] = Field(default=None, description="Optional user defined description/name for export job.")
-    options: Optional[ExportOptions] = None
+    options: Optional[ExportOptions1] = None
     objects: Optional[List[ConfigObject]] = None
     __properties: ClassVar[List[str]] = ["version", "timestamp", "tenant", "description", "options", "objects"]
 
@@ -102,7 +103,7 @@ class SpConfigExportResults(BaseModel):
             "timestamp": obj.get("timestamp"),
             "tenant": obj.get("tenant"),
             "description": obj.get("description"),
-            "options": ExportOptions.from_dict(obj["options"]) if obj.get("options") is not None else None,
+            "options": ExportOptions1.from_dict(obj["options"]) if obj.get("options") is not None else None,
             "objects": [ConfigObject.from_dict(_item) for _item in obj["objects"]] if obj.get("objects") is not None else None
         })
         return _obj

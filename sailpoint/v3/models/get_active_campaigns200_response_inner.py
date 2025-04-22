@@ -32,10 +32,10 @@ class GetActiveCampaigns200ResponseInner(BaseModel):
     GetActiveCampaigns200ResponseInner
     """
 
-    # data type: SlimCampaign
-    anyof_schema_1_validator: Optional[SlimCampaign] = None
     # data type: Campaign
-    anyof_schema_2_validator: Optional[Campaign] = None
+    anyof_schema_1_validator: Optional[Campaign] = None
+    # data type: SlimCampaign
+    anyof_schema_2_validator: Optional[SlimCampaign] = None
     if TYPE_CHECKING:
         actual_instance: Optional[Union[Campaign, SlimCampaign]] = None
     else:
@@ -61,15 +61,15 @@ class GetActiveCampaigns200ResponseInner(BaseModel):
     def actual_instance_must_validate_anyof(cls, v):
         instance = GetActiveCampaigns200ResponseInner.model_construct()
         error_messages = []
-        # validate data type: SlimCampaign
-        if not isinstance(v, SlimCampaign):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `SlimCampaign`")
-        else:
-            return v
-
         # validate data type: Campaign
         if not isinstance(v, Campaign):
             error_messages.append(f"Error! Input type `{type(v)}` is not `Campaign`")
+        else:
+            return v
+
+        # validate data type: SlimCampaign
+        if not isinstance(v, SlimCampaign):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `SlimCampaign`")
         else:
             return v
 
@@ -88,15 +88,15 @@ class GetActiveCampaigns200ResponseInner(BaseModel):
         """Returns the object represented by the json string"""
         instance = cls.model_construct()
         error_messages = []
-        # anyof_schema_1_validator: Optional[SlimCampaign] = None
+        # anyof_schema_1_validator: Optional[Campaign] = None
         try:
-            instance.actual_instance = SlimCampaign.from_json(json_str)
+            instance.actual_instance = Campaign.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
-        # anyof_schema_2_validator: Optional[Campaign] = None
+        # anyof_schema_2_validator: Optional[SlimCampaign] = None
         try:
-            instance.actual_instance = Campaign.from_json(json_str)
+            instance.actual_instance = SlimCampaign.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))

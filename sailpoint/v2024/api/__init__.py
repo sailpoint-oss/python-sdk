@@ -21,6 +21,7 @@ from sailpoint.v2024.api.certification_campaigns_api import CertificationCampaig
 from sailpoint.v2024.api.certification_summaries_api import CertificationSummariesApi
 from sailpoint.v2024.api.certifications_api import CertificationsApi
 from sailpoint.v2024.api.configuration_hub_api import ConfigurationHubApi
+from sailpoint.v2024.api.connector_customizers_api import ConnectorCustomizersApi
 from sailpoint.v2024.api.connector_rule_management_api import ConnectorRuleManagementApi
 from sailpoint.v2024.api.connectors_api import ConnectorsApi
 from sailpoint.v2024.api.custom_forms_api import CustomFormsApi
@@ -46,7 +47,9 @@ from sailpoint.v2024.api.mfa_configuration_api import MFAConfigurationApi
 from sailpoint.v2024.api.machine_accounts_api import MachineAccountsApi
 from sailpoint.v2024.api.machine_identities_api import MachineIdentitiesApi
 from sailpoint.v2024.api.managed_clients_api import ManagedClientsApi
+from sailpoint.v2024.api.managed_cluster_types_api import ManagedClusterTypesApi
 from sailpoint.v2024.api.managed_clusters_api import ManagedClustersApi
+from sailpoint.v2024.api.multi_host_integration_api import MultiHostIntegrationApi
 from sailpoint.v2024.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi
 from sailpoint.v2024.api.notifications_api import NotificationsApi
 from sailpoint.v2024.api.o_auth_clients_api import OAuthClientsApi
@@ -79,6 +82,7 @@ from sailpoint.v2024.api.suggested_entitlement_description_api import SuggestedE
 from sailpoint.v2024.api.tagged_objects_api import TaggedObjectsApi
 from sailpoint.v2024.api.task_management_api import TaskManagementApi
 from sailpoint.v2024.api.tenant_api import TenantApi
+from sailpoint.v2024.api.tenant_context_api import TenantContextApi
 from sailpoint.v2024.api.transforms_api import TransformsApi
 from sailpoint.v2024.api.triggers_api import TriggersApi
 from sailpoint.v2024.api.ui_metadata_api import UIMetadataApi

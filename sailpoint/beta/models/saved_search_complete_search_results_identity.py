@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List
@@ -24,11 +25,11 @@ from typing_extensions import Self
 
 class SavedSearchCompleteSearchResultsIdentity(BaseModel):
     """
-    A table of identities that match the search criteria.
+    Table of identities matching the search criteria.
     """ # noqa: E501
-    count: StrictStr = Field(description="The number of rows in the table.")
-    noun: StrictStr = Field(description="The type of object represented in the table.")
-    preview: List[List[StrictStr]] = Field(description="A sample of the data in the table.")
+    count: StrictStr = Field(description="Number of rows in the table.")
+    noun: StrictStr = Field(description="Type of object represented in the table.")
+    preview: List[List[StrictStr]] = Field(description="Sample of the table data.")
     __properties: ClassVar[List[str]] = ["count", "noun", "preview"]
 
     model_config = ConfigDict(

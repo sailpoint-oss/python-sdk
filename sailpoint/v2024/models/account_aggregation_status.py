@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
@@ -39,8 +40,8 @@ class AccountAggregationStatus(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['STARTED', 'ACCOUNTS_COLLECTED', 'COMPLETED', 'CANCELLED', 'RETRIED', 'TERMINATED']):
-            raise ValueError("must be one of enum values ('STARTED', 'ACCOUNTS_COLLECTED', 'COMPLETED', 'CANCELLED', 'RETRIED', 'TERMINATED')")
+        if value not in set(['STARTED', 'ACCOUNTS_COLLECTED', 'COMPLETED', 'CANCELLED', 'RETRIED', 'TERMINATED', 'NOT_FOUND']):
+            warnings.warn(f"must be one of enum values ('STARTED', 'ACCOUNTS_COLLECTED', 'COMPLETED', 'CANCELLED', 'RETRIED', 'TERMINATED', 'NOT_FOUND') unknown value: {value}")
         return value
 
     model_config = ConfigDict(
@@ -82,6 +83,11 @@ class AccountAggregationStatus(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if start (nullable) is None
+        # and model_fields_set contains the field
+        if self.start is None and "start" in self.model_fields_set:
+            _dict['start'] = None
+
         return _dict
 
     @classmethod

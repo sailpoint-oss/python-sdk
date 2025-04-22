@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
@@ -26,6 +27,7 @@ from sailpoint.beta.models.access_request_type import AccessRequestType
 from sailpoint.beta.models.approval_status_dto import ApprovalStatusDto
 from sailpoint.beta.models.error_message_dto import ErrorMessageDto
 from sailpoint.beta.models.manual_work_item_details import ManualWorkItemDetails
+from sailpoint.beta.models.requested_account_ref import RequestedAccountRef
 from sailpoint.beta.models.requested_item_status_cancelled_request_details import RequestedItemStatusCancelledRequestDetails
 from sailpoint.beta.models.requested_item_status_pre_approval_trigger_details import RequestedItemStatusPreApprovalTriggerDetails
 from sailpoint.beta.models.requested_item_status_provisioning_details import RequestedItemStatusProvisioningDetails
@@ -40,6 +42,7 @@ class RequestedItemStatus(BaseModel):
     """
     RequestedItemStatus
     """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="The ID of the access request.")
     name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of the item being requested.")
     type: Optional[StrictStr] = Field(default=None, description="Type of requested object.")
     cancelled_request_details: Optional[RequestedItemStatusCancelledRequestDetails] = Field(default=None, alias="cancelledRequestDetails")
@@ -64,7 +67,8 @@ class RequestedItemStatus(BaseModel):
     cancelable: Optional[StrictBool] = Field(default=False, description="True if the request can be canceled.")
     access_request_id: Optional[StrictStr] = Field(default=None, description="This is the account activity id.", alias="accessRequestId")
     client_metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Arbitrary key-value pairs, if any were included in the corresponding access request", alias="clientMetadata")
-    __properties: ClassVar[List[str]] = ["name", "type", "cancelledRequestDetails", "errorMessages", "state", "approvalDetails", "approvalIds", "manualWorkItemDetails", "accountActivityItemId", "requestType", "modified", "created", "requester", "requestedFor", "requesterComment", "sodViolationContext", "provisioningDetails", "preApprovalTriggerDetails", "accessRequestPhases", "description", "removeDate", "cancelable", "accessRequestId", "clientMetadata"]
+    requested_accounts: Optional[List[RequestedAccountRef]] = Field(default=None, description="The accounts selected by the user for the access to be provisioned on, in case they have multiple accounts on one or more sources.", alias="requestedAccounts")
+    __properties: ClassVar[List[str]] = ["id", "name", "type", "cancelledRequestDetails", "errorMessages", "state", "approvalDetails", "approvalIds", "manualWorkItemDetails", "accountActivityItemId", "requestType", "modified", "created", "requester", "requestedFor", "requesterComment", "sodViolationContext", "provisioningDetails", "preApprovalTriggerDetails", "accessRequestPhases", "description", "removeDate", "cancelable", "accessRequestId", "clientMetadata", "requestedAccounts"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -73,7 +77,7 @@ class RequestedItemStatus(BaseModel):
             return value
 
         if value not in set(['ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT']):
-            raise ValueError("must be one of enum values ('ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT')")
+            warnings.warn(f"must be one of enum values ('ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT') unknown value: {value}")
         return value
 
     model_config = ConfigDict(
@@ -166,6 +170,13 @@ class RequestedItemStatus(BaseModel):
                 if _item_access_request_phases:
                     _items.append(_item_access_request_phases.to_dict())
             _dict['accessRequestPhases'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in requested_accounts (list)
+        _items = []
+        if self.requested_accounts:
+            for _item_requested_accounts in self.requested_accounts:
+                if _item_requested_accounts:
+                    _items.append(_item_requested_accounts.to_dict())
+            _dict['requestedAccounts'] = _items
         # set to None if name (nullable) is None
         # and model_fields_set contains the field
         if self.name is None and "name" in self.model_fields_set:
@@ -221,6 +232,11 @@ class RequestedItemStatus(BaseModel):
         if self.client_metadata is None and "client_metadata" in self.model_fields_set:
             _dict['clientMetadata'] = None
 
+        # set to None if requested_accounts (nullable) is None
+        # and model_fields_set contains the field
+        if self.requested_accounts is None and "requested_accounts" in self.model_fields_set:
+            _dict['requestedAccounts'] = None
+
         return _dict
 
     @classmethod
@@ -233,6 +249,7 @@ class RequestedItemStatus(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "id": obj.get("id"),
             "name": obj.get("name"),
             "type": obj.get("type"),
             "cancelledRequestDetails": RequestedItemStatusCancelledRequestDetails.from_dict(obj["cancelledRequestDetails"]) if obj.get("cancelledRequestDetails") is not None else None,
@@ -259,7 +276,8 @@ class RequestedItemStatus(BaseModel):
             "removeDate": obj.get("removeDate"),
             "cancelable": obj.get("cancelable") if obj.get("cancelable") is not None else False,
             "accessRequestId": obj.get("accessRequestId"),
-            "clientMetadata": obj.get("clientMetadata")
+            "clientMetadata": obj.get("clientMetadata"),
+            "requestedAccounts": [RequestedAccountRef.from_dict(_item) for _item in obj["requestedAccounts"]] if obj.get("requestedAccounts") is not None else None
         })
         return _obj
 

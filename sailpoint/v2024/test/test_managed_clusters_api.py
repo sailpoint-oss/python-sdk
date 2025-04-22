@@ -68,6 +68,13 @@ class TestManagedClustersApi(unittest.TestCase):
         """
         pass
 
+    def test_update(self) -> None:
+        """Test case for update
+
+        Trigger Manual Upgrade for Managed Cluster
+        """
+        pass
+
     def test_update_managed_cluster(self) -> None:
         """Test case for update_managed_cluster
 

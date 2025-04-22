@@ -16,8 +16,8 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
-from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
@@ -30,8 +30,8 @@ class PasswordPolicyV3Dto(BaseModel):
     id: Optional[StrictStr] = Field(default=None, description="The password policy Id.")
     description: Optional[StrictStr] = Field(default=None, description="Description for current password policy.")
     name: Optional[StrictStr] = Field(default=None, description="The name of the password policy.")
-    date_created: Optional[datetime] = Field(default=None, description="Date the Password Policy was created.", alias="dateCreated")
-    last_updated: Optional[datetime] = Field(default=None, description="Date the Password Policy was updated.", alias="lastUpdated")
+    date_created: Optional[StrictInt] = Field(default=None, description="Date the Password Policy was created.", alias="dateCreated")
+    last_updated: Optional[StrictInt] = Field(default=None, description="Date the Password Policy was updated.", alias="lastUpdated")
     first_expiration_reminder: Optional[StrictInt] = Field(default=None, description="The number of days before expiration remaninder.", alias="firstExpirationReminder")
     account_id_min_word_length: Optional[StrictInt] = Field(default=None, description="The minimun length of account Id. By default is equals to -1.", alias="accountIdMinWordLength")
     account_name_min_word_length: Optional[StrictInt] = Field(default=None, description="The minimun length of account name. By default is equals to -1.", alias="accountNameMinWordLength")

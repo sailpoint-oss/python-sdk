@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
@@ -28,7 +29,7 @@ class MachineAccount(BaseModel):
     MachineAccount
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="System-generated unique ID of the Object")
-    name: StrictStr = Field(description="Name of the Object")
+    name: Optional[StrictStr] = Field(description="Name of the Object")
     created: Optional[datetime] = Field(default=None, description="Creation date of the Object")
     modified: Optional[datetime] = Field(default=None, description="Last modification date of the Object")
     description: Optional[StrictStr] = Field(default=None, description="A description of the machine account")
@@ -54,7 +55,7 @@ class MachineAccount(BaseModel):
     def classification_method_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['SOURCE', 'CRITERIA', 'DISCOVERY', 'MANUAL']):
-            raise ValueError("must be one of enum values ('SOURCE', 'CRITERIA', 'DISCOVERY', 'MANUAL')")
+            warnings.warn(f"must be one of enum values ('SOURCE', 'CRITERIA', 'DISCOVERY', 'MANUAL') unknown value: {value}")
         return value
 
     model_config = ConfigDict(
@@ -102,6 +103,11 @@ class MachineAccount(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if name (nullable) is None
+        # and model_fields_set contains the field
+        if self.name is None and "name" in self.model_fields_set:
+            _dict['name'] = None
+
         # set to None if description (nullable) is None
         # and model_fields_set contains the field
         if self.description is None and "description" in self.model_fields_set:

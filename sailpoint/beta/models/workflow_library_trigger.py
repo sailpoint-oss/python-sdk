@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
@@ -48,7 +49,7 @@ class WorkflowLibraryTrigger(BaseModel):
             return value
 
         if value not in set(['EVENT', 'SCHEDULED', 'EXTERNAL']):
-            raise ValueError("must be one of enum values ('EVENT', 'SCHEDULED', 'EXTERNAL')")
+            warnings.warn(f"must be one of enum values ('EVENT', 'SCHEDULED', 'EXTERNAL') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

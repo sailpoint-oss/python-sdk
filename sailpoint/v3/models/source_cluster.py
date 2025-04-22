@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List
@@ -35,7 +36,7 @@ class SourceCluster(BaseModel):
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['CLUSTER']):
-            raise ValueError("must be one of enum values ('CLUSTER')")
+            warnings.warn(f"must be one of enum values ('CLUSTER') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

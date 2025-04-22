@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
@@ -43,14 +44,14 @@ class CampaignActivatedCampaign(BaseModel):
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['MANAGER', 'SOURCE_OWNER', 'SEARCH', 'ROLE_COMPOSITION']):
-            raise ValueError("must be one of enum values ('MANAGER', 'SOURCE_OWNER', 'SEARCH', 'ROLE_COMPOSITION')")
+            warnings.warn(f"must be one of enum values ('MANAGER', 'SOURCE_OWNER', 'SEARCH', 'ROLE_COMPOSITION') unknown value: {value}")
         return value
 
     @field_validator('status')
     def status_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['ACTIVE']):
-            raise ValueError("must be one of enum values ('ACTIVE')")
+            warnings.warn(f"must be one of enum values ('ACTIVE') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

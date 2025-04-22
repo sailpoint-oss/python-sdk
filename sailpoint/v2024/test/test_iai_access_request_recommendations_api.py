@@ -29,28 +29,28 @@ class TestIAIAccessRequestRecommendationsApi(unittest.TestCase):
     def test_add_access_request_recommendations_ignored_item(self) -> None:
         """Test case for add_access_request_recommendations_ignored_item
 
-        Notification of Ignored Access Request Recommendations
+        Ignore Access Request Recommendation
         """
         pass
 
     def test_add_access_request_recommendations_requested_item(self) -> None:
         """Test case for add_access_request_recommendations_requested_item
 
-        Notification of Requested Access Request Recommendations
+        Accept Access Request Recommendation
         """
         pass
 
     def test_add_access_request_recommendations_viewed_item(self) -> None:
         """Test case for add_access_request_recommendations_viewed_item
 
-        Notification of Viewed Access Request Recommendations
+        Mark Viewed Access Request Recommendations
         """
         pass
 
     def test_add_access_request_recommendations_viewed_items(self) -> None:
         """Test case for add_access_request_recommendations_viewed_items
 
-        Notification of Viewed Access Request Recommendations in Bulk
+        Bulk Mark Viewed Access Request Recommendations
         """
         pass
 
@@ -71,21 +71,21 @@ class TestIAIAccessRequestRecommendationsApi(unittest.TestCase):
     def test_get_access_request_recommendations_ignored_items(self) -> None:
         """Test case for get_access_request_recommendations_ignored_items
 
-        List of Ignored Access Request Recommendations
+        List Ignored Access Request Recommendations
         """
         pass
 
     def test_get_access_request_recommendations_requested_items(self) -> None:
         """Test case for get_access_request_recommendations_requested_items
 
-        List of Requested Access Request Recommendations
+        List Accepted Access Request Recommendations
         """
         pass
 
     def test_get_access_request_recommendations_viewed_items(self) -> None:
         """Test case for get_access_request_recommendations_viewed_items
 
-        List of Viewed Access Request Recommendations
+        List Viewed Access Request Recommendations
         """
         pass
 

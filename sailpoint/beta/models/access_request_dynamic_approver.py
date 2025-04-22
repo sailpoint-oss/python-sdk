@@ -16,12 +16,13 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List
 from typing_extensions import Annotated
-from sailpoint.beta.models.access_item_requested_for_dto import AccessItemRequestedForDto
-from sailpoint.beta.models.access_item_requester_dto import AccessItemRequesterDto
+from sailpoint.beta.models.access_item_requested_for_dto1 import AccessItemRequestedForDto1
+from sailpoint.beta.models.access_item_requester_dto1 import AccessItemRequesterDto1
 from sailpoint.beta.models.access_request_dynamic_approver_requested_items_inner import AccessRequestDynamicApproverRequestedItemsInner
 from typing import Optional, Set
 from typing_extensions import Self
@@ -30,10 +31,10 @@ class AccessRequestDynamicApprover(BaseModel):
     """
     AccessRequestDynamicApprover
     """ # noqa: E501
-    access_request_id: StrictStr = Field(description="The unique ID of the access request object. Can be used with the [access request status endpoint](https://developer.sailpoint.com/idn/api/beta/list-access-request-status) to get the status of the request. ", alias="accessRequestId")
-    requested_for: Annotated[List[AccessItemRequestedForDto], Field(min_length=1, max_length=10)] = Field(description="Identities access was requested for.", alias="requestedFor")
-    requested_items: Annotated[List[AccessRequestDynamicApproverRequestedItemsInner], Field(min_length=1, max_length=25)] = Field(description="The access items that are being requested.", alias="requestedItems")
-    requested_by: AccessItemRequesterDto = Field(alias="requestedBy")
+    access_request_id: StrictStr = Field(description="Unique ID of the access request object. You can use this ID with the [Access Request Status endpoint](https://developer.sailpoint.com/idn/api/beta/list-access-request-status) to get the request's status.", alias="accessRequestId")
+    requested_for: Annotated[List[AccessItemRequestedForDto1], Field(min_length=1, max_length=10)] = Field(description="Identities access was requested for.", alias="requestedFor")
+    requested_items: Annotated[List[AccessRequestDynamicApproverRequestedItemsInner], Field(min_length=1, max_length=25)] = Field(description="Requested access items.", alias="requestedItems")
+    requested_by: AccessItemRequesterDto1 = Field(alias="requestedBy")
     __properties: ClassVar[List[str]] = ["accessRequestId", "requestedFor", "requestedItems", "requestedBy"]
 
     model_config = ConfigDict(
@@ -105,9 +106,9 @@ class AccessRequestDynamicApprover(BaseModel):
 
         _obj = cls.model_validate({
             "accessRequestId": obj.get("accessRequestId"),
-            "requestedFor": [AccessItemRequestedForDto.from_dict(_item) for _item in obj["requestedFor"]] if obj.get("requestedFor") is not None else None,
+            "requestedFor": [AccessItemRequestedForDto1.from_dict(_item) for _item in obj["requestedFor"]] if obj.get("requestedFor") is not None else None,
             "requestedItems": [AccessRequestDynamicApproverRequestedItemsInner.from_dict(_item) for _item in obj["requestedItems"]] if obj.get("requestedItems") is not None else None,
-            "requestedBy": AccessItemRequesterDto.from_dict(obj["requestedBy"]) if obj.get("requestedBy") is not None else None
+            "requestedBy": AccessItemRequesterDto1.from_dict(obj["requestedBy"]) if obj.get("requestedBy") is not None else None
         })
         return _obj
 

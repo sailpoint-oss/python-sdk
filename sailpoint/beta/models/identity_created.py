@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List
@@ -28,7 +29,7 @@ class IdentityCreated(BaseModel):
     IdentityCreated
     """ # noqa: E501
     identity: IdentityCreatedIdentity
-    attributes: Dict[str, Any] = Field(description="The attributes assigned to the identity. Attributes are determined by the identity profile.")
+    attributes: Dict[str, Any] = Field(description="Attributes assigned to the identity. These attributes are determined by the identity profile.")
     __properties: ClassVar[List[str]] = ["identity", "attributes"]
 
     model_config = ConfigDict(

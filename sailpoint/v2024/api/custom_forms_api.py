@@ -29,6 +29,7 @@ from sailpoint.v2024.models.form_definition_response import FormDefinitionRespon
 from sailpoint.v2024.models.form_element_preview_request import FormElementPreviewRequest
 from sailpoint.v2024.models.form_instance_response import FormInstanceResponse
 from sailpoint.v2024.models.import_form_definitions202_response import ImportFormDefinitions202Response
+from sailpoint.v2024.models.import_form_definitions_request_inner import ImportFormDefinitionsRequestInner
 from sailpoint.v2024.models.list_form_definitions_by_tenant_response import ListFormDefinitionsByTenantResponse
 from sailpoint.v2024.models.list_form_element_data_by_element_id_response import ListFormElementDataByElementIDResponse
 from sailpoint.v2024.models.list_form_instances_by_tenant_response import ListFormInstancesByTenantResponse
@@ -57,7 +58,6 @@ class CustomFormsApi:
     def create_form_definition(
         self,
         body: Annotated[Optional[CreateFormDefinitionRequest], Field(description="Body is the request payload to create form definition request")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -74,8 +74,6 @@ class CustomFormsApi:
         """Creates a form definition.
 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param body: Body is the request payload to create form definition request
         :type body: CreateFormDefinitionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -101,7 +99,6 @@ class CustomFormsApi:
         """ # noqa: E501
 
         _param = self._create_form_definition_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -132,7 +129,6 @@ class CustomFormsApi:
     def create_form_definition_with_http_info(
         self,
         body: Annotated[Optional[CreateFormDefinitionRequest], Field(description="Body is the request payload to create form definition request")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -149,8 +145,6 @@ class CustomFormsApi:
         """Creates a form definition.
 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param body: Body is the request payload to create form definition request
         :type body: CreateFormDefinitionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -176,7 +170,6 @@ class CustomFormsApi:
         """ # noqa: E501
 
         _param = self._create_form_definition_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -207,7 +200,6 @@ class CustomFormsApi:
     def create_form_definition_without_preload_content(
         self,
         body: Annotated[Optional[CreateFormDefinitionRequest], Field(description="Body is the request payload to create form definition request")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -224,8 +216,6 @@ class CustomFormsApi:
         """Creates a form definition.
 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param body: Body is the request payload to create form definition request
         :type body: CreateFormDefinitionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -251,7 +241,6 @@ class CustomFormsApi:
         """ # noqa: E501
 
         _param = self._create_form_definition_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -276,7 +265,6 @@ class CustomFormsApi:
 
     def _create_form_definition_serialize(
         self,
-        x_sail_point_experimental,
         body,
         _request_auth,
         _content_type,
@@ -301,8 +289,6 @@ class CustomFormsApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if body is not None:
@@ -311,7 +297,7 @@ class CustomFormsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -359,7 +345,6 @@ class CustomFormsApi:
     def create_form_definition_dynamic_schema(
         self,
         body: Annotated[Optional[FormDefinitionDynamicSchemaRequest], Field(description="Body is the request payload to create a form definition dynamic schema")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -376,8 +361,6 @@ class CustomFormsApi:
         """Generate JSON Schema dynamically.
 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param body: Body is the request payload to create a form definition dynamic schema
         :type body: FormDefinitionDynamicSchemaRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -403,7 +386,6 @@ class CustomFormsApi:
         """ # noqa: E501
 
         _param = self._create_form_definition_dynamic_schema_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -435,7 +417,6 @@ class CustomFormsApi:
     def create_form_definition_dynamic_schema_with_http_info(
         self,
         body: Annotated[Optional[FormDefinitionDynamicSchemaRequest], Field(description="Body is the request payload to create a form definition dynamic schema")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -452,8 +433,6 @@ class CustomFormsApi:
         """Generate JSON Schema dynamically.
 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param body: Body is the request payload to create a form definition dynamic schema
         :type body: FormDefinitionDynamicSchemaRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -479,7 +458,6 @@ class CustomFormsApi:
         """ # noqa: E501
 
         _param = self._create_form_definition_dynamic_schema_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -511,7 +489,6 @@ class CustomFormsApi:
     def create_form_definition_dynamic_schema_without_preload_content(
         self,
         body: Annotated[Optional[FormDefinitionDynamicSchemaRequest], Field(description="Body is the request payload to create a form definition dynamic schema")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -528,8 +505,6 @@ class CustomFormsApi:
         """Generate JSON Schema dynamically.
 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param body: Body is the request payload to create a form definition dynamic schema
         :type body: FormDefinitionDynamicSchemaRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -555,7 +530,6 @@ class CustomFormsApi:
         """ # noqa: E501
 
         _param = self._create_form_definition_dynamic_schema_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -581,7 +555,6 @@ class CustomFormsApi:
 
     def _create_form_definition_dynamic_schema_serialize(
         self,
-        x_sail_point_experimental,
         body,
         _request_auth,
         _content_type,
@@ -606,8 +579,6 @@ class CustomFormsApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if body is not None:
@@ -616,7 +587,7 @@ class CustomFormsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -665,7 +636,6 @@ class CustomFormsApi:
         self,
         form_definition_id: Annotated[StrictStr, Field(description="FormDefinitionID  String specifying FormDefinitionID")],
         file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="File specifying the multipart")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -685,8 +655,6 @@ class CustomFormsApi:
 
         :param form_definition_id: FormDefinitionID  String specifying FormDefinitionID (required)
         :type form_definition_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param file: File specifying the multipart (required)
         :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
@@ -713,7 +681,6 @@ class CustomFormsApi:
 
         _param = self._create_form_definition_file_request_serialize(
             form_definition_id=form_definition_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             file=file,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -749,7 +716,6 @@ class CustomFormsApi:
         self,
         form_definition_id: Annotated[StrictStr, Field(description="FormDefinitionID  String specifying FormDefinitionID")],
         file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="File specifying the multipart")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -769,8 +735,6 @@ class CustomFormsApi:
 
         :param form_definition_id: FormDefinitionID  String specifying FormDefinitionID (required)
         :type form_definition_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param file: File specifying the multipart (required)
         :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
@@ -797,7 +761,6 @@ class CustomFormsApi:
 
         _param = self._create_form_definition_file_request_serialize(
             form_definition_id=form_definition_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             file=file,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -833,7 +796,6 @@ class CustomFormsApi:
         self,
         form_definition_id: Annotated[StrictStr, Field(description="FormDefinitionID  String specifying FormDefinitionID")],
         file: Annotated[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]], Field(description="File specifying the multipart")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -853,8 +815,6 @@ class CustomFormsApi:
 
         :param form_definition_id: FormDefinitionID  String specifying FormDefinitionID (required)
         :type form_definition_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param file: File specifying the multipart (required)
         :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
@@ -881,7 +841,6 @@ class CustomFormsApi:
 
         _param = self._create_form_definition_file_request_serialize(
             form_definition_id=form_definition_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             file=file,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -911,7 +870,6 @@ class CustomFormsApi:
     def _create_form_definition_file_request_serialize(
         self,
         form_definition_id,
-        x_sail_point_experimental,
         file,
         _request_auth,
         _content_type,
@@ -938,8 +896,6 @@ class CustomFormsApi:
             _path_params['formDefinitionID'] = form_definition_id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         if file is not None:
             _files['file'] = file
@@ -948,7 +904,7 @@ class CustomFormsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -996,7 +952,6 @@ class CustomFormsApi:
     def create_form_instance(
         self,
         body: Annotated[Optional[CreateFormInstanceRequest], Field(description="Body is the request payload to create a form instance")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1013,8 +968,6 @@ class CustomFormsApi:
         """Creates a form instance.
 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param body: Body is the request payload to create a form instance
         :type body: CreateFormInstanceRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1040,7 +993,6 @@ class CustomFormsApi:
         """ # noqa: E501
 
         _param = self._create_form_instance_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1071,7 +1023,6 @@ class CustomFormsApi:
     def create_form_instance_with_http_info(
         self,
         body: Annotated[Optional[CreateFormInstanceRequest], Field(description="Body is the request payload to create a form instance")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1088,8 +1039,6 @@ class CustomFormsApi:
         """Creates a form instance.
 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param body: Body is the request payload to create a form instance
         :type body: CreateFormInstanceRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1115,7 +1064,6 @@ class CustomFormsApi:
         """ # noqa: E501
 
         _param = self._create_form_instance_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1146,7 +1094,6 @@ class CustomFormsApi:
     def create_form_instance_without_preload_content(
         self,
         body: Annotated[Optional[CreateFormInstanceRequest], Field(description="Body is the request payload to create a form instance")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1163,8 +1110,6 @@ class CustomFormsApi:
         """Creates a form instance.
 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param body: Body is the request payload to create a form instance
         :type body: CreateFormInstanceRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1190,7 +1135,6 @@ class CustomFormsApi:
         """ # noqa: E501
 
         _param = self._create_form_instance_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1215,7 +1159,6 @@ class CustomFormsApi:
 
     def _create_form_instance_serialize(
         self,
-        x_sail_point_experimental,
         body,
         _request_auth,
         _content_type,
@@ -1240,8 +1183,6 @@ class CustomFormsApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if body is not None:
@@ -1250,7 +1191,7 @@ class CustomFormsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -1298,7 +1239,6 @@ class CustomFormsApi:
     def delete_form_definition(
         self,
         form_definition_id: Annotated[StrictStr, Field(description="Form definition ID")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1318,8 +1258,6 @@ class CustomFormsApi:
 
         :param form_definition_id: Form definition ID (required)
         :type form_definition_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1344,7 +1282,6 @@ class CustomFormsApi:
 
         _param = self._delete_form_definition_serialize(
             form_definition_id=form_definition_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1375,7 +1312,6 @@ class CustomFormsApi:
     def delete_form_definition_with_http_info(
         self,
         form_definition_id: Annotated[StrictStr, Field(description="Form definition ID")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1395,8 +1331,6 @@ class CustomFormsApi:
 
         :param form_definition_id: Form definition ID (required)
         :type form_definition_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1421,7 +1355,6 @@ class CustomFormsApi:
 
         _param = self._delete_form_definition_serialize(
             form_definition_id=form_definition_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1452,7 +1385,6 @@ class CustomFormsApi:
     def delete_form_definition_without_preload_content(
         self,
         form_definition_id: Annotated[StrictStr, Field(description="Form definition ID")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1472,8 +1404,6 @@ class CustomFormsApi:
 
         :param form_definition_id: Form definition ID (required)
         :type form_definition_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1498,7 +1428,6 @@ class CustomFormsApi:
 
         _param = self._delete_form_definition_serialize(
             form_definition_id=form_definition_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1524,7 +1453,6 @@ class CustomFormsApi:
     def _delete_form_definition_serialize(
         self,
         form_definition_id,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -1550,15 +1478,13 @@ class CustomFormsApi:
             _path_params['formDefinitionID'] = form_definition_id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -1592,11 +1518,10 @@ class CustomFormsApi:
     @validate_call
     def export_form_definitions_by_tenant(
         self,
-        offset: Annotated[Optional[StrictInt], Field(description="Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.")] = None,
-        limit: Annotated[Optional[Annotated[int, Field(strict=True)]], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, gt, sw, in*  **description**: *eq, gt, sw, in*  **created**: *eq, gt, sw, in*  **modified**: *eq, gt, sw, in*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, created, modified**")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1614,8 +1539,6 @@ class CustomFormsApi:
 
         No parameters required.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param offset: Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.
         :type offset: int
         :param limit: Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
@@ -1647,7 +1570,6 @@ class CustomFormsApi:
         """ # noqa: E501
 
         _param = self._export_form_definitions_by_tenant_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             offset=offset,
             limit=limit,
             filters=filters,
@@ -1680,11 +1602,10 @@ class CustomFormsApi:
     @validate_call
     def export_form_definitions_by_tenant_with_http_info(
         self,
-        offset: Annotated[Optional[StrictInt], Field(description="Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.")] = None,
-        limit: Annotated[Optional[Annotated[int, Field(strict=True)]], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, gt, sw, in*  **description**: *eq, gt, sw, in*  **created**: *eq, gt, sw, in*  **modified**: *eq, gt, sw, in*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, created, modified**")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1702,8 +1623,6 @@ class CustomFormsApi:
 
         No parameters required.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param offset: Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.
         :type offset: int
         :param limit: Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
@@ -1735,7 +1654,6 @@ class CustomFormsApi:
         """ # noqa: E501
 
         _param = self._export_form_definitions_by_tenant_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             offset=offset,
             limit=limit,
             filters=filters,
@@ -1768,11 +1686,10 @@ class CustomFormsApi:
     @validate_call
     def export_form_definitions_by_tenant_without_preload_content(
         self,
-        offset: Annotated[Optional[StrictInt], Field(description="Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.")] = None,
-        limit: Annotated[Optional[Annotated[int, Field(strict=True)]], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, gt, sw, in*  **description**: *eq, gt, sw, in*  **created**: *eq, gt, sw, in*  **modified**: *eq, gt, sw, in*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, created, modified**")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1790,8 +1707,6 @@ class CustomFormsApi:
 
         No parameters required.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param offset: Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.
         :type offset: int
         :param limit: Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
@@ -1823,7 +1738,6 @@ class CustomFormsApi:
         """ # noqa: E501
 
         _param = self._export_form_definitions_by_tenant_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             offset=offset,
             limit=limit,
             filters=filters,
@@ -1851,7 +1765,6 @@ class CustomFormsApi:
 
     def _export_form_definitions_by_tenant_serialize(
         self,
-        x_sail_point_experimental,
         offset,
         limit,
         filters,
@@ -1895,15 +1808,13 @@ class CustomFormsApi:
             _query_params.append(('sorters', sorters))
             
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -1939,7 +1850,6 @@ class CustomFormsApi:
         self,
         form_definition_id: Annotated[StrictStr, Field(description="FormDefinitionID  Form definition ID")],
         file_id: Annotated[StrictStr, Field(description="FileID  String specifying the hashed name of the uploaded file we are retrieving.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1960,8 +1870,6 @@ class CustomFormsApi:
         :type form_definition_id: str
         :param file_id: FileID  String specifying the hashed name of the uploaded file we are retrieving. (required)
         :type file_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1987,7 +1895,6 @@ class CustomFormsApi:
         _param = self._get_file_from_s3_serialize(
             form_definition_id=form_definition_id,
             file_id=file_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2020,7 +1927,6 @@ class CustomFormsApi:
         self,
         form_definition_id: Annotated[StrictStr, Field(description="FormDefinitionID  Form definition ID")],
         file_id: Annotated[StrictStr, Field(description="FileID  String specifying the hashed name of the uploaded file we are retrieving.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2041,8 +1947,6 @@ class CustomFormsApi:
         :type form_definition_id: str
         :param file_id: FileID  String specifying the hashed name of the uploaded file we are retrieving. (required)
         :type file_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2068,7 +1972,6 @@ class CustomFormsApi:
         _param = self._get_file_from_s3_serialize(
             form_definition_id=form_definition_id,
             file_id=file_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2101,7 +2004,6 @@ class CustomFormsApi:
         self,
         form_definition_id: Annotated[StrictStr, Field(description="FormDefinitionID  Form definition ID")],
         file_id: Annotated[StrictStr, Field(description="FileID  String specifying the hashed name of the uploaded file we are retrieving.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2122,8 +2024,6 @@ class CustomFormsApi:
         :type form_definition_id: str
         :param file_id: FileID  String specifying the hashed name of the uploaded file we are retrieving. (required)
         :type file_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2149,7 +2049,6 @@ class CustomFormsApi:
         _param = self._get_file_from_s3_serialize(
             form_definition_id=form_definition_id,
             file_id=file_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2177,7 +2076,6 @@ class CustomFormsApi:
         self,
         form_definition_id,
         file_id,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -2205,15 +2103,13 @@ class CustomFormsApi:
             _path_params['fileID'] = file_id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json', 
                     'image/jpeg', 
@@ -2251,7 +2147,6 @@ class CustomFormsApi:
     def get_form_definition_by_key(
         self,
         form_definition_id: Annotated[StrictStr, Field(description="Form definition ID")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2271,8 +2166,6 @@ class CustomFormsApi:
 
         :param form_definition_id: Form definition ID (required)
         :type form_definition_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2297,7 +2190,6 @@ class CustomFormsApi:
 
         _param = self._get_form_definition_by_key_serialize(
             form_definition_id=form_definition_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2328,7 +2220,6 @@ class CustomFormsApi:
     def get_form_definition_by_key_with_http_info(
         self,
         form_definition_id: Annotated[StrictStr, Field(description="Form definition ID")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2348,8 +2239,6 @@ class CustomFormsApi:
 
         :param form_definition_id: Form definition ID (required)
         :type form_definition_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2374,7 +2263,6 @@ class CustomFormsApi:
 
         _param = self._get_form_definition_by_key_serialize(
             form_definition_id=form_definition_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2405,7 +2293,6 @@ class CustomFormsApi:
     def get_form_definition_by_key_without_preload_content(
         self,
         form_definition_id: Annotated[StrictStr, Field(description="Form definition ID")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2425,8 +2312,6 @@ class CustomFormsApi:
 
         :param form_definition_id: Form definition ID (required)
         :type form_definition_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2451,7 +2336,6 @@ class CustomFormsApi:
 
         _param = self._get_form_definition_by_key_serialize(
             form_definition_id=form_definition_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2477,7 +2361,6 @@ class CustomFormsApi:
     def _get_form_definition_by_key_serialize(
         self,
         form_definition_id,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -2503,15 +2386,13 @@ class CustomFormsApi:
             _path_params['formDefinitionID'] = form_definition_id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -2546,7 +2427,6 @@ class CustomFormsApi:
     def get_form_instance_by_key(
         self,
         form_instance_id: Annotated[StrictStr, Field(description="Form instance ID")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2566,8 +2446,6 @@ class CustomFormsApi:
 
         :param form_instance_id: Form instance ID (required)
         :type form_instance_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2592,7 +2470,6 @@ class CustomFormsApi:
 
         _param = self._get_form_instance_by_key_serialize(
             form_instance_id=form_instance_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2623,7 +2500,6 @@ class CustomFormsApi:
     def get_form_instance_by_key_with_http_info(
         self,
         form_instance_id: Annotated[StrictStr, Field(description="Form instance ID")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2643,8 +2519,6 @@ class CustomFormsApi:
 
         :param form_instance_id: Form instance ID (required)
         :type form_instance_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2669,7 +2543,6 @@ class CustomFormsApi:
 
         _param = self._get_form_instance_by_key_serialize(
             form_instance_id=form_instance_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2700,7 +2573,6 @@ class CustomFormsApi:
     def get_form_instance_by_key_without_preload_content(
         self,
         form_instance_id: Annotated[StrictStr, Field(description="Form instance ID")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2720,8 +2592,6 @@ class CustomFormsApi:
 
         :param form_instance_id: Form instance ID (required)
         :type form_instance_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2746,7 +2616,6 @@ class CustomFormsApi:
 
         _param = self._get_form_instance_by_key_serialize(
             form_instance_id=form_instance_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2772,7 +2641,6 @@ class CustomFormsApi:
     def _get_form_instance_by_key_serialize(
         self,
         form_instance_id,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -2798,15 +2666,13 @@ class CustomFormsApi:
             _path_params['formInstanceID'] = form_instance_id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -2842,7 +2708,6 @@ class CustomFormsApi:
         self,
         form_instance_id: Annotated[StrictStr, Field(description="FormInstanceID  Form instance ID")],
         file_id: Annotated[StrictStr, Field(description="FileID  String specifying the hashed name of the uploaded file we are retrieving.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2863,8 +2728,6 @@ class CustomFormsApi:
         :type form_instance_id: str
         :param file_id: FileID  String specifying the hashed name of the uploaded file we are retrieving. (required)
         :type file_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2890,7 +2753,6 @@ class CustomFormsApi:
         _param = self._get_form_instance_file_serialize(
             form_instance_id=form_instance_id,
             file_id=file_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2923,7 +2785,6 @@ class CustomFormsApi:
         self,
         form_instance_id: Annotated[StrictStr, Field(description="FormInstanceID  Form instance ID")],
         file_id: Annotated[StrictStr, Field(description="FileID  String specifying the hashed name of the uploaded file we are retrieving.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2944,8 +2805,6 @@ class CustomFormsApi:
         :type form_instance_id: str
         :param file_id: FileID  String specifying the hashed name of the uploaded file we are retrieving. (required)
         :type file_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2971,7 +2830,6 @@ class CustomFormsApi:
         _param = self._get_form_instance_file_serialize(
             form_instance_id=form_instance_id,
             file_id=file_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3004,7 +2862,6 @@ class CustomFormsApi:
         self,
         form_instance_id: Annotated[StrictStr, Field(description="FormInstanceID  Form instance ID")],
         file_id: Annotated[StrictStr, Field(description="FileID  String specifying the hashed name of the uploaded file we are retrieving.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3025,8 +2882,6 @@ class CustomFormsApi:
         :type form_instance_id: str
         :param file_id: FileID  String specifying the hashed name of the uploaded file we are retrieving. (required)
         :type file_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3052,7 +2907,6 @@ class CustomFormsApi:
         _param = self._get_form_instance_file_serialize(
             form_instance_id=form_instance_id,
             file_id=file_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3080,7 +2934,6 @@ class CustomFormsApi:
         self,
         form_instance_id,
         file_id,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -3108,15 +2961,13 @@ class CustomFormsApi:
             _path_params['fileID'] = file_id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json', 
                     'image/jpeg', 
@@ -3153,8 +3004,7 @@ class CustomFormsApi:
     @validate_call
     def import_form_definitions(
         self,
-        body: Annotated[Optional[List[ExportFormDefinitionsByTenant200ResponseInner]], Field(description="Body is the request payload to import form definitions")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
+        body: Annotated[Optional[List[ImportFormDefinitionsRequestInner]], Field(description="Body is the request payload to import form definitions")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3171,10 +3021,8 @@ class CustomFormsApi:
         """Import form definitions from export.
 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param body: Body is the request payload to import form definitions
-        :type body: List[ExportFormDefinitionsByTenant200ResponseInner]
+        :type body: List[ImportFormDefinitionsRequestInner]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3198,7 +3046,6 @@ class CustomFormsApi:
         """ # noqa: E501
 
         _param = self._import_form_definitions_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3228,8 +3075,7 @@ class CustomFormsApi:
     @validate_call
     def import_form_definitions_with_http_info(
         self,
-        body: Annotated[Optional[List[ExportFormDefinitionsByTenant200ResponseInner]], Field(description="Body is the request payload to import form definitions")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
+        body: Annotated[Optional[List[ImportFormDefinitionsRequestInner]], Field(description="Body is the request payload to import form definitions")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3246,10 +3092,8 @@ class CustomFormsApi:
         """Import form definitions from export.
 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param body: Body is the request payload to import form definitions
-        :type body: List[ExportFormDefinitionsByTenant200ResponseInner]
+        :type body: List[ImportFormDefinitionsRequestInner]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3273,7 +3117,6 @@ class CustomFormsApi:
         """ # noqa: E501
 
         _param = self._import_form_definitions_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3303,8 +3146,7 @@ class CustomFormsApi:
     @validate_call
     def import_form_definitions_without_preload_content(
         self,
-        body: Annotated[Optional[List[ExportFormDefinitionsByTenant200ResponseInner]], Field(description="Body is the request payload to import form definitions")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
+        body: Annotated[Optional[List[ImportFormDefinitionsRequestInner]], Field(description="Body is the request payload to import form definitions")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3321,10 +3163,8 @@ class CustomFormsApi:
         """Import form definitions from export.
 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param body: Body is the request payload to import form definitions
-        :type body: List[ExportFormDefinitionsByTenant200ResponseInner]
+        :type body: List[ImportFormDefinitionsRequestInner]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3348,7 +3188,6 @@ class CustomFormsApi:
         """ # noqa: E501
 
         _param = self._import_form_definitions_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3373,7 +3212,6 @@ class CustomFormsApi:
 
     def _import_form_definitions_serialize(
         self,
-        x_sail_point_experimental,
         body,
         _request_auth,
         _content_type,
@@ -3399,8 +3237,6 @@ class CustomFormsApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if body is not None:
@@ -3409,7 +3245,7 @@ class CustomFormsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -3458,7 +3294,6 @@ class CustomFormsApi:
         self,
         form_definition_id: Annotated[StrictStr, Field(description="Form definition ID")],
         body: Annotated[Optional[List[Dict[str, Dict[str, Any]]]], Field(description="Body is the request payload to patch a form definition, check: https://jsonpatch.com")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3478,8 +3313,6 @@ class CustomFormsApi:
 
         :param form_definition_id: Form definition ID (required)
         :type form_definition_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param body: Body is the request payload to patch a form definition, check: https://jsonpatch.com
         :type body: List[Dict[str, object]]
         :param _request_timeout: timeout setting for this request. If one
@@ -3506,7 +3339,6 @@ class CustomFormsApi:
 
         _param = self._patch_form_definition_serialize(
             form_definition_id=form_definition_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3539,7 +3371,6 @@ class CustomFormsApi:
         self,
         form_definition_id: Annotated[StrictStr, Field(description="Form definition ID")],
         body: Annotated[Optional[List[Dict[str, Dict[str, Any]]]], Field(description="Body is the request payload to patch a form definition, check: https://jsonpatch.com")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3559,8 +3390,6 @@ class CustomFormsApi:
 
         :param form_definition_id: Form definition ID (required)
         :type form_definition_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param body: Body is the request payload to patch a form definition, check: https://jsonpatch.com
         :type body: List[Dict[str, object]]
         :param _request_timeout: timeout setting for this request. If one
@@ -3587,7 +3416,6 @@ class CustomFormsApi:
 
         _param = self._patch_form_definition_serialize(
             form_definition_id=form_definition_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3620,7 +3448,6 @@ class CustomFormsApi:
         self,
         form_definition_id: Annotated[StrictStr, Field(description="Form definition ID")],
         body: Annotated[Optional[List[Dict[str, Dict[str, Any]]]], Field(description="Body is the request payload to patch a form definition, check: https://jsonpatch.com")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3640,8 +3467,6 @@ class CustomFormsApi:
 
         :param form_definition_id: Form definition ID (required)
         :type form_definition_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param body: Body is the request payload to patch a form definition, check: https://jsonpatch.com
         :type body: List[Dict[str, object]]
         :param _request_timeout: timeout setting for this request. If one
@@ -3668,7 +3493,6 @@ class CustomFormsApi:
 
         _param = self._patch_form_definition_serialize(
             form_definition_id=form_definition_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3695,7 +3519,6 @@ class CustomFormsApi:
     def _patch_form_definition_serialize(
         self,
         form_definition_id,
-        x_sail_point_experimental,
         body,
         _request_auth,
         _content_type,
@@ -3723,8 +3546,6 @@ class CustomFormsApi:
             _path_params['formDefinitionID'] = form_definition_id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if body is not None:
@@ -3733,7 +3554,7 @@ class CustomFormsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -3782,7 +3603,6 @@ class CustomFormsApi:
         self,
         form_instance_id: Annotated[StrictStr, Field(description="Form instance ID")],
         body: Annotated[Optional[List[Dict[str, Dict[str, Any]]]], Field(description="Body is the request payload to patch a form instance, check: https://jsonpatch.com")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3802,8 +3622,6 @@ class CustomFormsApi:
 
         :param form_instance_id: Form instance ID (required)
         :type form_instance_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param body: Body is the request payload to patch a form instance, check: https://jsonpatch.com
         :type body: List[Dict[str, object]]
         :param _request_timeout: timeout setting for this request. If one
@@ -3830,7 +3648,6 @@ class CustomFormsApi:
 
         _param = self._patch_form_instance_serialize(
             form_instance_id=form_instance_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3864,7 +3681,6 @@ class CustomFormsApi:
         self,
         form_instance_id: Annotated[StrictStr, Field(description="Form instance ID")],
         body: Annotated[Optional[List[Dict[str, Dict[str, Any]]]], Field(description="Body is the request payload to patch a form instance, check: https://jsonpatch.com")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3884,8 +3700,6 @@ class CustomFormsApi:
 
         :param form_instance_id: Form instance ID (required)
         :type form_instance_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param body: Body is the request payload to patch a form instance, check: https://jsonpatch.com
         :type body: List[Dict[str, object]]
         :param _request_timeout: timeout setting for this request. If one
@@ -3912,7 +3726,6 @@ class CustomFormsApi:
 
         _param = self._patch_form_instance_serialize(
             form_instance_id=form_instance_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3946,7 +3759,6 @@ class CustomFormsApi:
         self,
         form_instance_id: Annotated[StrictStr, Field(description="Form instance ID")],
         body: Annotated[Optional[List[Dict[str, Dict[str, Any]]]], Field(description="Body is the request payload to patch a form instance, check: https://jsonpatch.com")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3966,8 +3778,6 @@ class CustomFormsApi:
 
         :param form_instance_id: Form instance ID (required)
         :type form_instance_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param body: Body is the request payload to patch a form instance, check: https://jsonpatch.com
         :type body: List[Dict[str, object]]
         :param _request_timeout: timeout setting for this request. If one
@@ -3994,7 +3804,6 @@ class CustomFormsApi:
 
         _param = self._patch_form_instance_serialize(
             form_instance_id=form_instance_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4022,7 +3831,6 @@ class CustomFormsApi:
     def _patch_form_instance_serialize(
         self,
         form_instance_id,
-        x_sail_point_experimental,
         body,
         _request_auth,
         _content_type,
@@ -4050,8 +3858,6 @@ class CustomFormsApi:
             _path_params['formInstanceID'] = form_instance_id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if body is not None:
@@ -4060,7 +3866,7 @@ class CustomFormsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -4111,7 +3917,6 @@ class CustomFormsApi:
         limit: Annotated[Optional[Annotated[int, Field(strict=True)]], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, gt, sw, in*  **description**: *eq, gt, sw, in*  **created**: *eq, gt, sw, in*  **modified**: *eq, gt, sw, in*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, created, modified**")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4129,8 +3934,6 @@ class CustomFormsApi:
 
         No parameters required.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param offset: Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.
         :type offset: int
         :param limit: Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
@@ -4162,7 +3965,6 @@ class CustomFormsApi:
         """ # noqa: E501
 
         _param = self._search_form_definitions_by_tenant_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             offset=offset,
             limit=limit,
             filters=filters,
@@ -4199,7 +4001,6 @@ class CustomFormsApi:
         limit: Annotated[Optional[Annotated[int, Field(strict=True)]], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, gt, sw, in*  **description**: *eq, gt, sw, in*  **created**: *eq, gt, sw, in*  **modified**: *eq, gt, sw, in*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, created, modified**")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4217,8 +4018,6 @@ class CustomFormsApi:
 
         No parameters required.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param offset: Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.
         :type offset: int
         :param limit: Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
@@ -4250,7 +4049,6 @@ class CustomFormsApi:
         """ # noqa: E501
 
         _param = self._search_form_definitions_by_tenant_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             offset=offset,
             limit=limit,
             filters=filters,
@@ -4287,7 +4085,6 @@ class CustomFormsApi:
         limit: Annotated[Optional[Annotated[int, Field(strict=True)]], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, gt, sw, in*  **description**: *eq, gt, sw, in*  **created**: *eq, gt, sw, in*  **modified**: *eq, gt, sw, in*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, created, modified**")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4305,8 +4102,6 @@ class CustomFormsApi:
 
         No parameters required.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param offset: Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.
         :type offset: int
         :param limit: Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
@@ -4338,7 +4133,6 @@ class CustomFormsApi:
         """ # noqa: E501
 
         _param = self._search_form_definitions_by_tenant_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             offset=offset,
             limit=limit,
             filters=filters,
@@ -4366,7 +4160,6 @@ class CustomFormsApi:
 
     def _search_form_definitions_by_tenant_serialize(
         self,
-        x_sail_point_experimental,
         offset,
         limit,
         filters,
@@ -4410,15 +4203,13 @@ class CustomFormsApi:
             _query_params.append(('sorters', sorters))
             
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -4457,7 +4248,6 @@ class CustomFormsApi:
         limit: Annotated[Optional[Annotated[int, Field(strict=True)]], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators: *not*  Only a single *not* may be used, and it can only be used with the `in` operator. The `not` composite operator must be used in front of the field. For example, the following is valid: `not value in (\"ID01\")`")] = None,
         query: Annotated[Optional[StrictStr], Field(description="String that is passed to the underlying API to filter other (non-ID) fields.  For example, for access  profile data sources, this string will be passed to the access profile api and used with a \"starts with\" filter against  several fields.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4479,8 +4269,6 @@ class CustomFormsApi:
         :type form_instance_id: str
         :param form_element_id: Form element ID (required)
         :type form_element_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param limit: Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
         :type limit: int
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators: *not*  Only a single *not* may be used, and it can only be used with the `in` operator. The `not` composite operator must be used in front of the field. For example, the following is valid: `not value in (\"ID01\")`
@@ -4512,7 +4300,6 @@ class CustomFormsApi:
         _param = self._search_form_element_data_by_element_id_serialize(
             form_instance_id=form_instance_id,
             form_element_id=form_element_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             filters=filters,
             query=query,
@@ -4550,7 +4337,6 @@ class CustomFormsApi:
         limit: Annotated[Optional[Annotated[int, Field(strict=True)]], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators: *not*  Only a single *not* may be used, and it can only be used with the `in` operator. The `not` composite operator must be used in front of the field. For example, the following is valid: `not value in (\"ID01\")`")] = None,
         query: Annotated[Optional[StrictStr], Field(description="String that is passed to the underlying API to filter other (non-ID) fields.  For example, for access  profile data sources, this string will be passed to the access profile api and used with a \"starts with\" filter against  several fields.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4572,8 +4358,6 @@ class CustomFormsApi:
         :type form_instance_id: str
         :param form_element_id: Form element ID (required)
         :type form_element_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param limit: Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
         :type limit: int
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators: *not*  Only a single *not* may be used, and it can only be used with the `in` operator. The `not` composite operator must be used in front of the field. For example, the following is valid: `not value in (\"ID01\")`
@@ -4605,7 +4389,6 @@ class CustomFormsApi:
         _param = self._search_form_element_data_by_element_id_serialize(
             form_instance_id=form_instance_id,
             form_element_id=form_element_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             filters=filters,
             query=query,
@@ -4643,7 +4426,6 @@ class CustomFormsApi:
         limit: Annotated[Optional[Annotated[int, Field(strict=True)]], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators: *not*  Only a single *not* may be used, and it can only be used with the `in` operator. The `not` composite operator must be used in front of the field. For example, the following is valid: `not value in (\"ID01\")`")] = None,
         query: Annotated[Optional[StrictStr], Field(description="String that is passed to the underlying API to filter other (non-ID) fields.  For example, for access  profile data sources, this string will be passed to the access profile api and used with a \"starts with\" filter against  several fields.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4665,8 +4447,6 @@ class CustomFormsApi:
         :type form_instance_id: str
         :param form_element_id: Form element ID (required)
         :type form_element_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param limit: Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
         :type limit: int
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators: *not*  Only a single *not* may be used, and it can only be used with the `in` operator. The `not` composite operator must be used in front of the field. For example, the following is valid: `not value in (\"ID01\")`
@@ -4698,7 +4478,6 @@ class CustomFormsApi:
         _param = self._search_form_element_data_by_element_id_serialize(
             form_instance_id=form_instance_id,
             form_element_id=form_element_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             filters=filters,
             query=query,
@@ -4728,7 +4507,6 @@ class CustomFormsApi:
         self,
         form_instance_id,
         form_element_id,
-        x_sail_point_experimental,
         limit,
         filters,
         query,
@@ -4771,15 +4549,13 @@ class CustomFormsApi:
             _query_params.append(('query', query))
             
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -4813,7 +4589,6 @@ class CustomFormsApi:
     @validate_call
     def search_form_instances_by_tenant(
         self,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4826,13 +4601,11 @@ class CustomFormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ListFormInstancesByTenantResponse:
+    ) -> List[ListFormInstancesByTenantResponse]:
         """List form instances by tenant.
 
         No parameters required.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4856,7 +4629,6 @@ class CustomFormsApi:
         """ # noqa: E501
 
         _param = self._search_form_instances_by_tenant_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4864,7 +4636,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ListFormInstancesByTenantResponse",
+            '200': "List[ListFormInstancesByTenantResponse]",
             '400': "SearchFormDefinitionsByTenant400Response",
             '401': "SearchFormDefinitionsByTenant400Response",
             '403': "SearchFormDefinitionsByTenant400Response",
@@ -4885,7 +4657,6 @@ class CustomFormsApi:
     @validate_call
     def search_form_instances_by_tenant_with_http_info(
         self,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4898,13 +4669,11 @@ class CustomFormsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ListFormInstancesByTenantResponse]:
+    ) -> ApiResponse[List[ListFormInstancesByTenantResponse]]:
         """List form instances by tenant.
 
         No parameters required.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4928,7 +4697,6 @@ class CustomFormsApi:
         """ # noqa: E501
 
         _param = self._search_form_instances_by_tenant_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4936,7 +4704,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ListFormInstancesByTenantResponse",
+            '200': "List[ListFormInstancesByTenantResponse]",
             '400': "SearchFormDefinitionsByTenant400Response",
             '401': "SearchFormDefinitionsByTenant400Response",
             '403': "SearchFormDefinitionsByTenant400Response",
@@ -4957,7 +4725,6 @@ class CustomFormsApi:
     @validate_call
     def search_form_instances_by_tenant_without_preload_content(
         self,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4975,8 +4742,6 @@ class CustomFormsApi:
 
         No parameters required.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5000,7 +4765,6 @@ class CustomFormsApi:
         """ # noqa: E501
 
         _param = self._search_form_instances_by_tenant_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5008,7 +4772,7 @@ class CustomFormsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ListFormInstancesByTenantResponse",
+            '200': "List[ListFormInstancesByTenantResponse]",
             '400': "SearchFormDefinitionsByTenant400Response",
             '401': "SearchFormDefinitionsByTenant400Response",
             '403': "SearchFormDefinitionsByTenant400Response",
@@ -5024,7 +4788,6 @@ class CustomFormsApi:
 
     def _search_form_instances_by_tenant_serialize(
         self,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -5048,15 +4811,13 @@ class CustomFormsApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -5090,7 +4851,6 @@ class CustomFormsApi:
     @validate_call
     def search_pre_defined_select_options(
         self,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5108,8 +4868,6 @@ class CustomFormsApi:
 
         No parameters required.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5133,7 +4891,6 @@ class CustomFormsApi:
         """ # noqa: E501
 
         _param = self._search_pre_defined_select_options_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5162,7 +4919,6 @@ class CustomFormsApi:
     @validate_call
     def search_pre_defined_select_options_with_http_info(
         self,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5180,8 +4936,6 @@ class CustomFormsApi:
 
         No parameters required.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5205,7 +4959,6 @@ class CustomFormsApi:
         """ # noqa: E501
 
         _param = self._search_pre_defined_select_options_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5234,7 +4987,6 @@ class CustomFormsApi:
     @validate_call
     def search_pre_defined_select_options_without_preload_content(
         self,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5252,8 +5004,6 @@ class CustomFormsApi:
 
         No parameters required.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5277,7 +5027,6 @@ class CustomFormsApi:
         """ # noqa: E501
 
         _param = self._search_pre_defined_select_options_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5301,7 +5050,6 @@ class CustomFormsApi:
 
     def _search_pre_defined_select_options_serialize(
         self,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -5325,15 +5073,13 @@ class CustomFormsApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -5372,7 +5118,6 @@ class CustomFormsApi:
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators: *not*  Only a single *not* may be used, and it can only be used with the `in` operator. The `not` composite operator must be used in front of the field. For example, the following is valid: `not value in (\"ID01\")`")] = None,
         query: Annotated[Optional[StrictStr], Field(description="String that is passed to the underlying API to filter other (non-ID) fields.  For example, for access  profile data sources, this string will be passed to the access profile api and used with a \"starts with\" filter against  several fields.")] = None,
         form_element_preview_request: Annotated[Optional[FormElementPreviewRequest], Field(description="Body is the request payload to create a form definition dynamic schema")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5391,8 +5136,6 @@ class CustomFormsApi:
 
         :param form_definition_id: Form definition ID (required)
         :type form_definition_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param limit: Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
         :type limit: int
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators: *not*  Only a single *not* may be used, and it can only be used with the `in` operator. The `not` composite operator must be used in front of the field. For example, the following is valid: `not value in (\"ID01\")`
@@ -5425,7 +5168,6 @@ class CustomFormsApi:
 
         _param = self._show_preview_data_source_serialize(
             form_definition_id=form_definition_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             filters=filters,
             query=query,
@@ -5464,7 +5206,6 @@ class CustomFormsApi:
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators: *not*  Only a single *not* may be used, and it can only be used with the `in` operator. The `not` composite operator must be used in front of the field. For example, the following is valid: `not value in (\"ID01\")`")] = None,
         query: Annotated[Optional[StrictStr], Field(description="String that is passed to the underlying API to filter other (non-ID) fields.  For example, for access  profile data sources, this string will be passed to the access profile api and used with a \"starts with\" filter against  several fields.")] = None,
         form_element_preview_request: Annotated[Optional[FormElementPreviewRequest], Field(description="Body is the request payload to create a form definition dynamic schema")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5483,8 +5224,6 @@ class CustomFormsApi:
 
         :param form_definition_id: Form definition ID (required)
         :type form_definition_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param limit: Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
         :type limit: int
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators: *not*  Only a single *not* may be used, and it can only be used with the `in` operator. The `not` composite operator must be used in front of the field. For example, the following is valid: `not value in (\"ID01\")`
@@ -5517,7 +5256,6 @@ class CustomFormsApi:
 
         _param = self._show_preview_data_source_serialize(
             form_definition_id=form_definition_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             filters=filters,
             query=query,
@@ -5556,7 +5294,6 @@ class CustomFormsApi:
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators: *not*  Only a single *not* may be used, and it can only be used with the `in` operator. The `not` composite operator must be used in front of the field. For example, the following is valid: `not value in (\"ID01\")`")] = None,
         query: Annotated[Optional[StrictStr], Field(description="String that is passed to the underlying API to filter other (non-ID) fields.  For example, for access  profile data sources, this string will be passed to the access profile api and used with a \"starts with\" filter against  several fields.")] = None,
         form_element_preview_request: Annotated[Optional[FormElementPreviewRequest], Field(description="Body is the request payload to create a form definition dynamic schema")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5575,8 +5312,6 @@ class CustomFormsApi:
 
         :param form_definition_id: Form definition ID (required)
         :type form_definition_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param limit: Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
         :type limit: int
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  Supported composite operators: *not*  Only a single *not* may be used, and it can only be used with the `in` operator. The `not` composite operator must be used in front of the field. For example, the following is valid: `not value in (\"ID01\")`
@@ -5609,7 +5344,6 @@ class CustomFormsApi:
 
         _param = self._show_preview_data_source_serialize(
             form_definition_id=form_definition_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             filters=filters,
             query=query,
@@ -5639,7 +5373,6 @@ class CustomFormsApi:
     def _show_preview_data_source_serialize(
         self,
         form_definition_id,
-        x_sail_point_experimental,
         limit,
         filters,
         query,
@@ -5681,8 +5414,6 @@ class CustomFormsApi:
             _query_params.append(('query', query))
             
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if form_element_preview_request is not None:
@@ -5691,7 +5422,7 @@ class CustomFormsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]

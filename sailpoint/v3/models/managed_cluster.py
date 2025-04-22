@@ -16,9 +16,10 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v3.models.client_log_configuration import ClientLogConfiguration
 from sailpoint.v3.models.managed_client_type import ManagedClientType
@@ -59,6 +60,16 @@ class ManagedCluster(BaseModel):
     created_at: Optional[datetime] = Field(default=None, description="The date/time this cluster was created", alias="createdAt")
     updated_at: Optional[datetime] = Field(default=None, description="The date/time this cluster was last updated", alias="updatedAt")
     __properties: ClassVar[List[str]] = ["id", "name", "pod", "org", "type", "configuration", "keyPair", "attributes", "description", "redis", "clientType", "ccgVersion", "pinnedConfig", "logConfiguration", "operational", "status", "publicKeyCertificate", "publicKeyThumbprint", "publicKey", "alertKey", "clientIds", "serviceCount", "ccId", "createdAt", "updatedAt"]
+
+    @field_validator('status')
+    def status_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['CONFIGURING', 'FAILED', 'NO_CLIENTS', 'NORMAL', 'WARNING']):
+            warnings.warn(f"must be one of enum values ('CONFIGURING', 'FAILED', 'NO_CLIENTS', 'NORMAL', 'WARNING') unknown value: {value}")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,

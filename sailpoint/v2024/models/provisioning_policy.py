@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
@@ -28,7 +29,7 @@ class ProvisioningPolicy(BaseModel):
     """
     ProvisioningPolicy
     """ # noqa: E501
-    name: StrictStr = Field(description="the provisioning policy name")
+    name: Optional[StrictStr] = Field(description="the provisioning policy name")
     description: Optional[StrictStr] = Field(default=None, description="the description of the provisioning policy")
     usage_type: Optional[UsageType] = Field(default=None, alias="usageType")
     fields: Optional[List[FieldDetailsDto]] = None
@@ -80,6 +81,11 @@ class ProvisioningPolicy(BaseModel):
                 if _item_fields:
                     _items.append(_item_fields.to_dict())
             _dict['fields'] = _items
+        # set to None if name (nullable) is None
+        # and model_fields_set contains the field
+        if self.name is None and "name" in self.model_fields_set:
+            _dict['name'] = None
+
         return _dict
 
     @classmethod

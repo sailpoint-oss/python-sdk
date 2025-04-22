@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
@@ -56,7 +57,7 @@ class FormInstanceResponse(BaseModel):
             return value
 
         if value not in set(['ASSIGNED', 'IN_PROGRESS', 'SUBMITTED', 'COMPLETED', 'CANCELLED']):
-            raise ValueError("must be one of enum values ('ASSIGNED', 'IN_PROGRESS', 'SUBMITTED', 'COMPLETED', 'CANCELLED')")
+            warnings.warn(f"must be one of enum values ('ASSIGNED', 'IN_PROGRESS', 'SUBMITTED', 'COMPLETED', 'CANCELLED') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

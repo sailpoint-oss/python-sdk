@@ -16,10 +16,10 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2024.models.connected_object_type import ConnectedObjectType
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,7 +27,7 @@ class ConnectedObject(BaseModel):
     """
     ConnectedObject
     """ # noqa: E501
-    type: Optional[ConnectedObjectType] = None
+    type: Optional[Any] = None
     id: Optional[StrictStr] = Field(default=None, description="ID of the object to which this reference applies")
     name: Optional[StrictStr] = Field(default=None, description="Human-readable name of Connected object")
     description: Optional[StrictStr] = Field(default=None, description="Description of the Connected object.")
@@ -72,6 +72,14 @@ class ConnectedObject(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of type
+        if self.type:
+            _dict['type'] = self.type.to_dict()
+        # set to None if description (nullable) is None
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
+            _dict['description'] = None
+
         return _dict
 
     @classmethod
@@ -84,7 +92,7 @@ class ConnectedObject(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "type": obj.get("type"),
+            "type": ConnectedObjectType.from_dict(obj["type"]) if obj.get("type") is not None else None,
             "id": obj.get("id"),
             "name": obj.get("name"),
             "description": obj.get("description")

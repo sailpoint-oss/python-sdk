@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
@@ -44,7 +45,7 @@ class ReportResults(BaseModel):
             return value
 
         if value not in set(['ACCOUNTS', 'IDENTITIES_DETAILS', 'IDENTITIES', 'IDENTITY_PROFILE_IDENTITY_ERROR', 'ORPHAN_IDENTITIES', 'SEARCH_EXPORT', 'UNCORRELATED_ACCOUNTS']):
-            raise ValueError("must be one of enum values ('ACCOUNTS', 'IDENTITIES_DETAILS', 'IDENTITIES', 'IDENTITY_PROFILE_IDENTITY_ERROR', 'ORPHAN_IDENTITIES', 'SEARCH_EXPORT', 'UNCORRELATED_ACCOUNTS')")
+            warnings.warn(f"must be one of enum values ('ACCOUNTS', 'IDENTITIES_DETAILS', 'IDENTITIES', 'IDENTITY_PROFILE_IDENTITY_ERROR', 'ORPHAN_IDENTITIES', 'SEARCH_EXPORT', 'UNCORRELATED_ACCOUNTS') unknown value: {value}")
         return value
 
     @field_validator('status')
@@ -54,7 +55,7 @@ class ReportResults(BaseModel):
             return value
 
         if value not in set(['SUCCESS', 'FAILURE', 'WARNING', 'TERMINATED']):
-            raise ValueError("must be one of enum values ('SUCCESS', 'FAILURE', 'WARNING', 'TERMINATED')")
+            warnings.warn(f"must be one of enum values ('SUCCESS', 'FAILURE', 'WARNING', 'TERMINATED') unknown value: {value}")
         return value
 
     @field_validator('available_formats')
@@ -65,7 +66,7 @@ class ReportResults(BaseModel):
 
         for i in value:
             if i not in set(['CSV', 'PDF']):
-                raise ValueError("each list item must be one of ('CSV', 'PDF')")
+                warnings.warn(f"each list item must be one of ('CSV', 'PDF') unknown value: {i}")
         return value
 
     model_config = ConfigDict(

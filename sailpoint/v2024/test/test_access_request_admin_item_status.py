@@ -35,6 +35,7 @@ class TestAccessRequestAdminItemStatus(unittest.TestCase):
         model = AccessRequestAdminItemStatus()
         if include_optional:
             return AccessRequestAdminItemStatus(
+                id = '2c9180926cbfbddd016cbfc7c3b10010',
                 name = 'AccessProfile1',
                 type = 'ACCESS_PROFILE',
                 cancelled_request_details = None,
@@ -43,7 +44,7 @@ class TestAccessRequestAdminItemStatus(unittest.TestCase):
                     ],
                 state = 'EXECUTING',
                 approval_details = [
-                    sailpoint.v2024.models.approval_status_dto_1.ApprovalStatusDto_1(
+                    sailpoint.v2024.models.approval_status_dto.ApprovalStatusDto(
                         forwarded = False, 
                         original_owner = sailpoint.v2024.models.approval_status_dto_original_owner.ApprovalStatusDto_originalOwner(
                             type = 'IDENTITY', 
@@ -54,7 +55,7 @@ class TestAccessRequestAdminItemStatus(unittest.TestCase):
                         status = 'PENDING', 
                         scheme = 'MANAGER', 
                         error_messages = [
-                            sailpoint.v2024.models.error_message_dto_1.ErrorMessageDto_1(
+                            sailpoint.v2024.models.error_message_dto.ErrorMessageDto(
                                 locale = 'en-US', 
                                 locale_origin = 'DEFAULT', 
                                 text = 'The request was syntactically correct but its content is semantically invalid.', )
@@ -63,7 +64,7 @@ class TestAccessRequestAdminItemStatus(unittest.TestCase):
                         remove_date = '2020-07-11T00:00Z', )
                     ],
                 manual_work_item_details = [
-                    sailpoint.v2024.models.manual_work_item_details_1.ManualWorkItemDetails_1(
+                    sailpoint.v2024.models.manual_work_item_details.ManualWorkItemDetails(
                         forwarded = True, 
                         original_owner = sailpoint.v2024.models.manual_work_item_details_original_owner.ManualWorkItemDetails_originalOwner(
                             type = 'IDENTITY', 
@@ -76,7 +77,7 @@ class TestAccessRequestAdminItemStatus(unittest.TestCase):
                         modified = '2019-08-23T18:52:57.398Z', 
                         status = 'PENDING', 
                         forward_history = [
-                            sailpoint.v2024.models.approval_forward_history_1.ApprovalForwardHistory_1(
+                            sailpoint.v2024.models.approval_forward_history.ApprovalForwardHistory(
                                 old_approver_name = 'Frank Mir', 
                                 new_approver_name = 'Al Volta', 
                                 comment = 'Forwarding from Frank to Al', 

@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
@@ -48,7 +49,7 @@ class SlimCampaign(BaseModel):
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['MANAGER', 'SOURCE_OWNER', 'SEARCH', 'ROLE_COMPOSITION', 'MACHINE_ACCOUNT']):
-            raise ValueError("must be one of enum values ('MANAGER', 'SOURCE_OWNER', 'SEARCH', 'ROLE_COMPOSITION', 'MACHINE_ACCOUNT')")
+            warnings.warn(f"must be one of enum values ('MANAGER', 'SOURCE_OWNER', 'SEARCH', 'ROLE_COMPOSITION', 'MACHINE_ACCOUNT') unknown value: {value}")
         return value
 
     @field_validator('status')
@@ -58,7 +59,7 @@ class SlimCampaign(BaseModel):
             return value
 
         if value not in set(['PENDING', 'STAGED', 'CANCELING', 'ACTIVATING', 'ACTIVE', 'COMPLETING', 'COMPLETED', 'ERROR', 'ARCHIVED']):
-            raise ValueError("must be one of enum values ('PENDING', 'STAGED', 'CANCELING', 'ACTIVATING', 'ACTIVE', 'COMPLETING', 'COMPLETED', 'ERROR', 'ARCHIVED')")
+            warnings.warn(f"must be one of enum values ('PENDING', 'STAGED', 'CANCELING', 'ACTIVATING', 'ACTIVE', 'COMPLETING', 'COMPLETED', 'ERROR', 'ARCHIVED') unknown value: {value}")
         return value
 
     @field_validator('correlated_status')
@@ -68,7 +69,7 @@ class SlimCampaign(BaseModel):
             return value
 
         if value not in set(['CORRELATED', 'UNCORRELATED']):
-            raise ValueError("must be one of enum values ('CORRELATED', 'UNCORRELATED')")
+            warnings.warn(f"must be one of enum values ('CORRELATED', 'UNCORRELATED') unknown value: {value}")
         return value
 
     model_config = ConfigDict(
@@ -129,10 +130,45 @@ class SlimCampaign(BaseModel):
                 if _item_alerts:
                     _items.append(_item_alerts.to_dict())
             _dict['alerts'] = _items
+        # set to None if id (nullable) is None
+        # and model_fields_set contains the field
+        if self.id is None and "id" in self.model_fields_set:
+            _dict['id'] = None
+
         # set to None if description (nullable) is None
         # and model_fields_set contains the field
         if self.description is None and "description" in self.model_fields_set:
             _dict['description'] = None
+
+        # set to None if deadline (nullable) is None
+        # and model_fields_set contains the field
+        if self.deadline is None and "deadline" in self.model_fields_set:
+            _dict['deadline'] = None
+
+        # set to None if status (nullable) is None
+        # and model_fields_set contains the field
+        if self.status is None and "status" in self.model_fields_set:
+            _dict['status'] = None
+
+        # set to None if created (nullable) is None
+        # and model_fields_set contains the field
+        if self.created is None and "created" in self.model_fields_set:
+            _dict['created'] = None
+
+        # set to None if total_certifications (nullable) is None
+        # and model_fields_set contains the field
+        if self.total_certifications is None and "total_certifications" in self.model_fields_set:
+            _dict['totalCertifications'] = None
+
+        # set to None if completed_certifications (nullable) is None
+        # and model_fields_set contains the field
+        if self.completed_certifications is None and "completed_certifications" in self.model_fields_set:
+            _dict['completedCertifications'] = None
+
+        # set to None if alerts (nullable) is None
+        # and model_fields_set contains the field
+        if self.alerts is None and "alerts" in self.model_fields_set:
+            _dict['alerts'] = None
 
         return _dict
 

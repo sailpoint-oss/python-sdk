@@ -296,7 +296,7 @@ class SPConfigApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -589,7 +589,7 @@ class SPConfigApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -869,7 +869,7 @@ class SPConfigApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -1149,7 +1149,7 @@ class SPConfigApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -1429,7 +1429,7 @@ class SPConfigApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -1481,7 +1481,7 @@ class SPConfigApi:
     ) -> SpConfigJob:
         """Initiates configuration objects import job
 
-        \"This post will import objects from a JSON configuration file into\\  \\ a tenant. By default, every import will first export all existing objects supported\\  \\ by sp-config as a backup before the import is attempted. The backup is provided\\  \\ so that the state of the configuration prior to the import is available for\\  \\ inspection or restore if needed. The backup can be skipped by setting \\\"excludeBackup\\\"\\  \\ to true in the import options. If a backup is performed, the id of the backup\\  \\ will be provided in the ImportResult as the \\\"exportJobId\\\". This can be downloaded\\  \\  using the `/sp-config/export/{exportJobId}/download` endpoint.\\nYou cannot currently\\  \\ import from the Non-Employee Lifecycle Management (NELM) source. You cannot\\  \\ use this endpoint to back up or store NELM data. \\nFor more information about\\  \\ the object types that currently support import functionality, refer to [SaaS\\  \\ Configuration](https://developer.sailpoint.com/idn/docs/saas-configuration/#supported-objects).\" 
+        This post will import objects from a JSON configuration file into a tenant. By default, every import will first export all existing objects supported by sp-config as a backup before the import is attempted. The backup is provided so that the state of the configuration prior to the import is available for inspection or restore if needed. The backup can be skipped by setting \"excludeBackup\" to true in the import options. If a backup is performed, the id of the backup will be provided in the ImportResult as the \"exportJobId\". This can be downloaded  using the `/sp-config/export/{exportJobId}/download` endpoint.  You cannot currently import from the Non-Employee Lifecycle Management (NELM) source. You cannot use this endpoint to back up or store NELM data.   For more information about the object types that currently support import functionality, refer to [SaaS Configuration](https://developer.sailpoint.com/idn/docs/saas-configuration/#supported-objects). 
 
         :param data: JSON file containing the objects to be imported. (required)
         :type data: bytearray
@@ -1562,7 +1562,7 @@ class SPConfigApi:
     ) -> ApiResponse[SpConfigJob]:
         """Initiates configuration objects import job
 
-        \"This post will import objects from a JSON configuration file into\\  \\ a tenant. By default, every import will first export all existing objects supported\\  \\ by sp-config as a backup before the import is attempted. The backup is provided\\  \\ so that the state of the configuration prior to the import is available for\\  \\ inspection or restore if needed. The backup can be skipped by setting \\\"excludeBackup\\\"\\  \\ to true in the import options. If a backup is performed, the id of the backup\\  \\ will be provided in the ImportResult as the \\\"exportJobId\\\". This can be downloaded\\  \\  using the `/sp-config/export/{exportJobId}/download` endpoint.\\nYou cannot currently\\  \\ import from the Non-Employee Lifecycle Management (NELM) source. You cannot\\  \\ use this endpoint to back up or store NELM data. \\nFor more information about\\  \\ the object types that currently support import functionality, refer to [SaaS\\  \\ Configuration](https://developer.sailpoint.com/idn/docs/saas-configuration/#supported-objects).\" 
+        This post will import objects from a JSON configuration file into a tenant. By default, every import will first export all existing objects supported by sp-config as a backup before the import is attempted. The backup is provided so that the state of the configuration prior to the import is available for inspection or restore if needed. The backup can be skipped by setting \"excludeBackup\" to true in the import options. If a backup is performed, the id of the backup will be provided in the ImportResult as the \"exportJobId\". This can be downloaded  using the `/sp-config/export/{exportJobId}/download` endpoint.  You cannot currently import from the Non-Employee Lifecycle Management (NELM) source. You cannot use this endpoint to back up or store NELM data.   For more information about the object types that currently support import functionality, refer to [SaaS Configuration](https://developer.sailpoint.com/idn/docs/saas-configuration/#supported-objects). 
 
         :param data: JSON file containing the objects to be imported. (required)
         :type data: bytearray
@@ -1643,7 +1643,7 @@ class SPConfigApi:
     ) -> RESTResponseType:
         """Initiates configuration objects import job
 
-        \"This post will import objects from a JSON configuration file into\\  \\ a tenant. By default, every import will first export all existing objects supported\\  \\ by sp-config as a backup before the import is attempted. The backup is provided\\  \\ so that the state of the configuration prior to the import is available for\\  \\ inspection or restore if needed. The backup can be skipped by setting \\\"excludeBackup\\\"\\  \\ to true in the import options. If a backup is performed, the id of the backup\\  \\ will be provided in the ImportResult as the \\\"exportJobId\\\". This can be downloaded\\  \\  using the `/sp-config/export/{exportJobId}/download` endpoint.\\nYou cannot currently\\  \\ import from the Non-Employee Lifecycle Management (NELM) source. You cannot\\  \\ use this endpoint to back up or store NELM data. \\nFor more information about\\  \\ the object types that currently support import functionality, refer to [SaaS\\  \\ Configuration](https://developer.sailpoint.com/idn/docs/saas-configuration/#supported-objects).\" 
+        This post will import objects from a JSON configuration file into a tenant. By default, every import will first export all existing objects supported by sp-config as a backup before the import is attempted. The backup is provided so that the state of the configuration prior to the import is available for inspection or restore if needed. The backup can be skipped by setting \"excludeBackup\" to true in the import options. If a backup is performed, the id of the backup will be provided in the ImportResult as the \"exportJobId\". This can be downloaded  using the `/sp-config/export/{exportJobId}/download` endpoint.  You cannot currently import from the Non-Employee Lifecycle Management (NELM) source. You cannot use this endpoint to back up or store NELM data.   For more information about the object types that currently support import functionality, refer to [SaaS Configuration](https://developer.sailpoint.com/idn/docs/saas-configuration/#supported-objects). 
 
         :param data: JSON file containing the objects to be imported. (required)
         :type data: bytearray
@@ -1741,7 +1741,7 @@ class SPConfigApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -1801,9 +1801,9 @@ class SPConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[SpConfigObject]:
-        """Get config object details
+        """List Config Objects
 
-        This gets the list of object configurations which are known to the tenant export/import service. Object configurations that contain \"importUrl\" and \"exportUrl\" are available for export/import.
+        Get a list of object configurations that the tenant export/import service knows.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1870,9 +1870,9 @@ class SPConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[SpConfigObject]]:
-        """Get config object details
+        """List Config Objects
 
-        This gets the list of object configurations which are known to the tenant export/import service. Object configurations that contain \"importUrl\" and \"exportUrl\" are available for export/import.
+        Get a list of object configurations that the tenant export/import service knows.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1939,9 +1939,9 @@ class SPConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get config object details
+        """List Config Objects
 
-        This gets the list of object configurations which are known to the tenant export/import service. Object configurations that contain \"importUrl\" and \"exportUrl\" are available for export/import.
+        Get a list of object configurations that the tenant export/import service knows.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2019,7 +2019,7 @@ class SPConfigApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]

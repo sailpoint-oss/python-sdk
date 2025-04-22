@@ -16,23 +16,24 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v2024.models.access_item_requester import AccessItemRequester
-from sailpoint.v2024.models.access_request_admin_item_status_cancelled_request_details import AccessRequestAdminItemStatusCancelledRequestDetails
-from sailpoint.v2024.models.access_request_admin_item_status_sod_violation_context import AccessRequestAdminItemStatusSodViolationContext
 from sailpoint.v2024.models.access_request_phases import AccessRequestPhases
 from sailpoint.v2024.models.access_request_type import AccessRequestType
-from sailpoint.v2024.models.approval_status_dto1 import ApprovalStatusDto1
-from sailpoint.v2024.models.error_message_dto1 import ErrorMessageDto1
-from sailpoint.v2024.models.manual_work_item_details1 import ManualWorkItemDetails1
+from sailpoint.v2024.models.approval_status_dto import ApprovalStatusDto
+from sailpoint.v2024.models.error_message_dto import ErrorMessageDto
+from sailpoint.v2024.models.manual_work_item_details import ManualWorkItemDetails
+from sailpoint.v2024.models.requested_item_status_cancelled_request_details import RequestedItemStatusCancelledRequestDetails
 from sailpoint.v2024.models.requested_item_status_pre_approval_trigger_details import RequestedItemStatusPreApprovalTriggerDetails
 from sailpoint.v2024.models.requested_item_status_provisioning_details import RequestedItemStatusProvisioningDetails
 from sailpoint.v2024.models.requested_item_status_request_state import RequestedItemStatusRequestState
 from sailpoint.v2024.models.requested_item_status_requested_for import RequestedItemStatusRequestedFor
 from sailpoint.v2024.models.requested_item_status_requester_comment import RequestedItemStatusRequesterComment
+from sailpoint.v2024.models.requested_item_status_sod_violation_context import RequestedItemStatusSodViolationContext
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -40,13 +41,14 @@ class AccessRequestAdminItemStatus(BaseModel):
     """
     AccessRequestAdminItemStatus
     """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="ID of the access request. This is a new property as of 2025. Older access requests may not have an ID.")
     name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of the item being requested.")
     type: Optional[StrictStr] = Field(default=None, description="Type of requested object.")
-    cancelled_request_details: Optional[AccessRequestAdminItemStatusCancelledRequestDetails] = Field(default=None, alias="cancelledRequestDetails")
-    error_messages: Optional[List[List[ErrorMessageDto1]]] = Field(default=None, description="List of localized error messages, if any, encountered during the approval/provisioning process.", alias="errorMessages")
+    cancelled_request_details: Optional[RequestedItemStatusCancelledRequestDetails] = Field(default=None, alias="cancelledRequestDetails")
+    error_messages: Optional[List[List[ErrorMessageDto]]] = Field(default=None, description="List of localized error messages, if any, encountered during the approval/provisioning process.", alias="errorMessages")
     state: Optional[RequestedItemStatusRequestState] = None
-    approval_details: Optional[List[ApprovalStatusDto1]] = Field(default=None, description="Approval details for each item.", alias="approvalDetails")
-    manual_work_item_details: Optional[List[ManualWorkItemDetails1]] = Field(default=None, description="Manual work items created for provisioning the item.", alias="manualWorkItemDetails")
+    approval_details: Optional[List[ApprovalStatusDto]] = Field(default=None, description="Approval details for each item.", alias="approvalDetails")
+    manual_work_item_details: Optional[List[ManualWorkItemDetails]] = Field(default=None, description="Manual work items created for provisioning the item.", alias="manualWorkItemDetails")
     account_activity_item_id: Optional[StrictStr] = Field(default=None, description="Id of associated account activity item.", alias="accountActivityItemId")
     request_type: Optional[AccessRequestType] = Field(default=None, alias="requestType")
     modified: Optional[datetime] = Field(default=None, description="When the request was last modified.")
@@ -54,7 +56,7 @@ class AccessRequestAdminItemStatus(BaseModel):
     requester: Optional[AccessItemRequester] = None
     requested_for: Optional[RequestedItemStatusRequestedFor] = Field(default=None, alias="requestedFor")
     requester_comment: Optional[RequestedItemStatusRequesterComment] = Field(default=None, alias="requesterComment")
-    sod_violation_context: Optional[AccessRequestAdminItemStatusSodViolationContext] = Field(default=None, alias="sodViolationContext")
+    sod_violation_context: Optional[RequestedItemStatusSodViolationContext] = Field(default=None, alias="sodViolationContext")
     provisioning_details: Optional[RequestedItemStatusProvisioningDetails] = Field(default=None, alias="provisioningDetails")
     pre_approval_trigger_details: Optional[RequestedItemStatusPreApprovalTriggerDetails] = Field(default=None, alias="preApprovalTriggerDetails")
     access_request_phases: Optional[List[AccessRequestPhases]] = Field(default=None, description="A list of Phases that the Access Request has gone through in order, to help determine the status of the request.", alias="accessRequestPhases")
@@ -64,7 +66,7 @@ class AccessRequestAdminItemStatus(BaseModel):
     reauthorization_required: Optional[StrictBool] = Field(default=False, description="True if re-auth is required.", alias="reauthorizationRequired")
     access_request_id: Optional[StrictStr] = Field(default=None, description="This is the account activity id.", alias="accessRequestId")
     client_metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Arbitrary key-value pairs, if any were included in the corresponding access request", alias="clientMetadata")
-    __properties: ClassVar[List[str]] = ["name", "type", "cancelledRequestDetails", "errorMessages", "state", "approvalDetails", "manualWorkItemDetails", "accountActivityItemId", "requestType", "modified", "created", "requester", "requestedFor", "requesterComment", "sodViolationContext", "provisioningDetails", "preApprovalTriggerDetails", "accessRequestPhases", "description", "removeDate", "cancelable", "reauthorizationRequired", "accessRequestId", "clientMetadata"]
+    __properties: ClassVar[List[str]] = ["id", "name", "type", "cancelledRequestDetails", "errorMessages", "state", "approvalDetails", "manualWorkItemDetails", "accountActivityItemId", "requestType", "modified", "created", "requester", "requestedFor", "requesterComment", "sodViolationContext", "provisioningDetails", "preApprovalTriggerDetails", "accessRequestPhases", "description", "removeDate", "cancelable", "reauthorizationRequired", "accessRequestId", "clientMetadata"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -73,7 +75,7 @@ class AccessRequestAdminItemStatus(BaseModel):
             return value
 
         if value not in set(['ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT']):
-            raise ValueError("must be one of enum values ('ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT')")
+            warnings.warn(f"must be one of enum values ('ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT') unknown value: {value}")
         return value
 
     model_config = ConfigDict(
@@ -166,6 +168,11 @@ class AccessRequestAdminItemStatus(BaseModel):
                 if _item_access_request_phases:
                     _items.append(_item_access_request_phases.to_dict())
             _dict['accessRequestPhases'] = _items
+        # set to None if id (nullable) is None
+        # and model_fields_set contains the field
+        if self.id is None and "id" in self.model_fields_set:
+            _dict['id'] = None
+
         # set to None if name (nullable) is None
         # and model_fields_set contains the field
         if self.name is None and "name" in self.model_fields_set:
@@ -228,16 +235,17 @@ class AccessRequestAdminItemStatus(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "id": obj.get("id"),
             "name": obj.get("name"),
             "type": obj.get("type"),
-            "cancelledRequestDetails": AccessRequestAdminItemStatusCancelledRequestDetails.from_dict(obj["cancelledRequestDetails"]) if obj.get("cancelledRequestDetails") is not None else None,
+            "cancelledRequestDetails": RequestedItemStatusCancelledRequestDetails.from_dict(obj["cancelledRequestDetails"]) if obj.get("cancelledRequestDetails") is not None else None,
             "errorMessages": [
-                    [ErrorMessageDto1.from_dict(_inner_item) for _inner_item in _item]
+                    [ErrorMessageDto.from_dict(_inner_item) for _inner_item in _item]
                     for _item in obj["errorMessages"]
                 ] if obj.get("errorMessages") is not None else None,
             "state": obj.get("state"),
-            "approvalDetails": [ApprovalStatusDto1.from_dict(_item) for _item in obj["approvalDetails"]] if obj.get("approvalDetails") is not None else None,
-            "manualWorkItemDetails": [ManualWorkItemDetails1.from_dict(_item) for _item in obj["manualWorkItemDetails"]] if obj.get("manualWorkItemDetails") is not None else None,
+            "approvalDetails": [ApprovalStatusDto.from_dict(_item) for _item in obj["approvalDetails"]] if obj.get("approvalDetails") is not None else None,
+            "manualWorkItemDetails": [ManualWorkItemDetails.from_dict(_item) for _item in obj["manualWorkItemDetails"]] if obj.get("manualWorkItemDetails") is not None else None,
             "accountActivityItemId": obj.get("accountActivityItemId"),
             "requestType": obj.get("requestType"),
             "modified": obj.get("modified"),
@@ -245,7 +253,7 @@ class AccessRequestAdminItemStatus(BaseModel):
             "requester": AccessItemRequester.from_dict(obj["requester"]) if obj.get("requester") is not None else None,
             "requestedFor": RequestedItemStatusRequestedFor.from_dict(obj["requestedFor"]) if obj.get("requestedFor") is not None else None,
             "requesterComment": RequestedItemStatusRequesterComment.from_dict(obj["requesterComment"]) if obj.get("requesterComment") is not None else None,
-            "sodViolationContext": AccessRequestAdminItemStatusSodViolationContext.from_dict(obj["sodViolationContext"]) if obj.get("sodViolationContext") is not None else None,
+            "sodViolationContext": RequestedItemStatusSodViolationContext.from_dict(obj["sodViolationContext"]) if obj.get("sodViolationContext") is not None else None,
             "provisioningDetails": RequestedItemStatusProvisioningDetails.from_dict(obj["provisioningDetails"]) if obj.get("provisioningDetails") is not None else None,
             "preApprovalTriggerDetails": RequestedItemStatusPreApprovalTriggerDetails.from_dict(obj["preApprovalTriggerDetails"]) if obj.get("preApprovalTriggerDetails") is not None else None,
             "accessRequestPhases": [AccessRequestPhases.from_dict(_item) for _item in obj["accessRequestPhases"]] if obj.get("accessRequestPhases") is not None else None,

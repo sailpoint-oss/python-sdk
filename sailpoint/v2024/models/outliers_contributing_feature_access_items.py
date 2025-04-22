@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
@@ -41,7 +42,7 @@ class OutliersContributingFeatureAccessItems(BaseModel):
             return value
 
         if value not in set(['ENTITLEMENT', 'ACCESS_PROFILE', 'ROLE']):
-            raise ValueError("must be one of enum values ('ENTITLEMENT', 'ACCESS_PROFILE', 'ROLE')")
+            warnings.warn(f"must be one of enum values ('ENTITLEMENT', 'ACCESS_PROFILE', 'ROLE') unknown value: {value}")
         return value
 
     model_config = ConfigDict(
@@ -83,6 +84,11 @@ class OutliersContributingFeatureAccessItems(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if description (nullable) is None
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
+            _dict['description'] = None
+
         return _dict
 
     @classmethod

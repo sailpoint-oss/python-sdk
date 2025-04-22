@@ -1,0 +1,94 @@
+name: "Push python SDK Docs to Developer Portal"
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  push_spec_workflow:
+    name: Push API spec changes
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the master branch request to run rsync
+      - name: Checkout PR branch
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
+          path: python-sdk
+
+      # Checkout the main branch of the developer portal to push changes
+      - name: Checkout API Specs Repo
+        uses: actions/checkout@v2
+        with:
+          repository: sailpoint-oss/developer.sailpoint.com
+          path: developer-community
+          ref: main
+
+      - name: Install rsync
+        run: |
+          sudo apt install rsync grsync
+
+      - name: Sync files between folders
+        run: |
+          CURRENT_V3_CODE_EXAMPLES_PATH="python-sdk/sailpoint/v3/docs/Examples/python_code_examples_overlay.yaml"
+          NEW_V3_CODE_EXAMPLES_PATH="developer-community/static/code-examples/v3/"
+          CURRENT_V3_SPEC_PATH_METHODS="python-sdk/sailpoint/v3/docs/Methods"
+          NEW_V3_API_SPEC_PATH_METHODS="developer-community/docs/tools/sdk/python/Reference/V3"
+          CURRENT_V3_SPEC_PATH_MODELS="python-sdk/sailpoint/v3/docs/Models"
+          NEW_V3_API_SPEC_PATH_MODELS="developer-community/docs/tools/sdk/python/Reference/V3"
+
+          CURRENT_BETA_CODE_EXAMPLES_PATH="python-sdk/sailpoint/beta/docs/Examples/python_code_examples_overlay.yaml"
+          NEW_BETA_CODE_EXAMPLES_PATH="developer-community/static/code-examples/beta/"
+          CURRENT_BETA_SPEC_PATH_METHODS="python-sdk/sailpoint/beta/docs/Methods"
+          NEW_BETA_API_SPEC_PATH_METHODS="developer-community/docs/tools/sdk/python/Reference/Beta"
+          CURRENT_BETA_SPEC_PATH_MODELS="python-sdk/sailpoint/beta/docs/Models"
+          NEW_BETA_API_SPEC_PATH_MODELS="developer-community/docs/tools/sdk/python/Reference/Beta"
+
+          CURRENT_V2024_CODE_EXAMPLES_PATH="python-sdk/sailpoint/v2024/docs/Examples/python_code_examples_overlay.yaml"
+          NEW_V2024_CODE_EXAMPLES_PATH="developer-community/static/code-examples/v2024/"
+          CURRENT_V2024_SPEC_PATH_METHODS="python-sdk/sailpoint/v2024/docs/Methods"
+          NEW_V2024_API_SPEC_PATH_METHODS="developer-community/docs/tools/sdk/python/Reference/V2024"
+          CURRENT_V2024_SPEC_PATH_MODELS="python-sdk/sailpoint/v2024/docs/Models"
+          NEW_V2024_API_SPEC_PATH_MODELS="developer-community/docs/tools/sdk/python/Reference/V2024"
+
+          CURRENT_V2025_CODE_EXAMPLES_PATH="python-sdk/sailpoint/v2025/docs/Examples/python_code_examples_overlay.yaml"
+          NEW_V2025_CODE_EXAMPLES_PATH="developer-community/static/code-examples/v2025/"
+          CURRENT_V2025_SPEC_PATH_METHODS="python-sdk/sailpoint/v2025/docs/Methods"
+          NEW_V2025_API_SPEC_PATH_METHODS="developer-community/docs/tools/sdk/python/Reference/V2025"
+          CURRENT_V2025_SPEC_PATH_MODELS="python-sdk/sailpoint/v2025/docs/Models"
+          NEW_V2025_API_SPEC_PATH_MODELS="developer-community/docs/tools/sdk/python/Reference/V2025"
+
+          rsync -cav --delete $CURRENT_V3_SPEC_PATH_METHODS $NEW_V3_API_SPEC_PATH_METHODS 
+          rsync -cav --delete $CURRENT_BETA_SPEC_PATH_METHODS $NEW_BETA_API_SPEC_PATH_METHODS
+          rsync -cav --delete $CURRENT_V2024_SPEC_PATH_METHODS $NEW_V2024_API_SPEC_PATH_METHODS
+          rsync -cav --delete $CURRENT_V2025_SPEC_PATH_METHODS $NEW_V2025_API_SPEC_PATH_METHODS
+          rsync -cav --delete $CURRENT_V3_SPEC_PATH_MODELS $NEW_V3_API_SPEC_PATH_MODELS
+          rsync -cav --delete $CURRENT_BETA_SPEC_PATH_MODELS $NEW_BETA_API_SPEC_PATH_MODELS
+          rsync -cav --delete $CURRENT_V2024_SPEC_PATH_MODELS $NEW_V2024_API_SPEC_PATH_MODELS
+          rsync -cav --delete $CURRENT_V2025_SPEC_PATH_MODELS $NEW_V2025_API_SPEC_PATH_MODELS
+    
+          rsync -av $CURRENT_V3_CODE_EXAMPLES_PATH $NEW_V3_CODE_EXAMPLES_PATH
+          rsync -av $CURRENT_BETA_CODE_EXAMPLES_PATH $NEW_BETA_CODE_EXAMPLES_PATH
+          rsync -av $CURRENT_V2024_CODE_EXAMPLES_PATH $NEW_V2024_CODE_EXAMPLES_PATH
+          rsync -av $CURRENT_V2025_CODE_EXAMPLES_PATH $NEW_V2025_CODE_EXAMPLES_PATH
+
+      - name: Check for changes and commit if any
+        run: |
+          cd developer-community
+          git status
+          if git diff --exit-code; then
+            echo "No changes to commit."
+            exit 0
+          else
+            git config --unset-all http.https://github.com/.extraheader
+            git config --local user.email "devrel-service@sailpoint.com"
+            git config --local user.name "developer-relations-sp"
+            git add .
+            git commit -m "Update to python SDK docs: ${{ github.run_id }}"
+            git status
+            git remote set-url origin https://${{secrets.DEVREL_SERVICE_TOKEN}}@github.com/sailpoint-oss/developer.sailpoint.com.git
+            git remote -v
+            git push
+          fi

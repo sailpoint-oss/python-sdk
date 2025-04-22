@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List
@@ -28,14 +29,14 @@ class IdentityAttributesChangedIdentity(BaseModel):
     """ # noqa: E501
     type: StrictStr = Field(description="DTO type of identity whose attributes changed.")
     id: StrictStr = Field(description="ID of identity whose attributes changed.")
-    name: StrictStr = Field(description="Display name of identity whose attributes changed.")
+    name: StrictStr = Field(description="Name of identity whose attributes changed.")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['IDENTITY']):
-            raise ValueError("must be one of enum values ('IDENTITY')")
+            warnings.warn(f"must be one of enum values ('IDENTITY') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

@@ -36,7 +36,7 @@ class TestSourceUpdated(unittest.TestCase):
         if include_optional:
             return SourceUpdated(
                 id = '2c9180866166b5b0016167c32ef31a66',
-                name = 'Corporate Active Directory',
+                name = 'Test source',
                 type = 'DIRECT_CONNECT',
                 modified = '2021-03-29T22:01:50.474Z',
                 connector = 'active-directory',
@@ -48,7 +48,7 @@ class TestSourceUpdated(unittest.TestCase):
         else:
             return SourceUpdated(
                 id = '2c9180866166b5b0016167c32ef31a66',
-                name = 'Corporate Active Directory',
+                name = 'Test source',
                 type = 'DIRECT_CONNECT',
                 modified = '2021-03-29T22:01:50.474Z',
                 connector = 'active-directory',

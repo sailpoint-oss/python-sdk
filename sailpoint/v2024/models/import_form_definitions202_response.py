@@ -16,11 +16,12 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2024.models.export_form_definitions_by_tenant200_response_inner import ExportFormDefinitionsByTenant200ResponseInner
 from sailpoint.v2024.models.import_form_definitions202_response_errors_inner import ImportFormDefinitions202ResponseErrorsInner
+from sailpoint.v2024.models.import_form_definitions_request_inner import ImportFormDefinitionsRequestInner
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,7 +30,7 @@ class ImportFormDefinitions202Response(BaseModel):
     ImportFormDefinitions202Response
     """ # noqa: E501
     errors: Optional[List[ImportFormDefinitions202ResponseErrorsInner]] = None
-    imported_objects: Optional[List[ExportFormDefinitionsByTenant200ResponseInner]] = Field(default=None, alias="importedObjects")
+    imported_objects: Optional[List[ImportFormDefinitionsRequestInner]] = Field(default=None, alias="importedObjects")
     infos: Optional[List[ImportFormDefinitions202ResponseErrorsInner]] = None
     warnings: Optional[List[ImportFormDefinitions202ResponseErrorsInner]] = None
     __properties: ClassVar[List[str]] = ["errors", "importedObjects", "infos", "warnings"]
@@ -114,7 +115,7 @@ class ImportFormDefinitions202Response(BaseModel):
 
         _obj = cls.model_validate({
             "errors": [ImportFormDefinitions202ResponseErrorsInner.from_dict(_item) for _item in obj["errors"]] if obj.get("errors") is not None else None,
-            "importedObjects": [ExportFormDefinitionsByTenant200ResponseInner.from_dict(_item) for _item in obj["importedObjects"]] if obj.get("importedObjects") is not None else None,
+            "importedObjects": [ImportFormDefinitionsRequestInner.from_dict(_item) for _item in obj["importedObjects"]] if obj.get("importedObjects") is not None else None,
             "infos": [ImportFormDefinitions202ResponseErrorsInner.from_dict(_item) for _item in obj["infos"]] if obj.get("infos") is not None else None,
             "warnings": [ImportFormDefinitions202ResponseErrorsInner.from_dict(_item) for _item in obj["warnings"]] if obj.get("warnings") is not None else None
         })

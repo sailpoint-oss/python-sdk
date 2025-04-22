@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
@@ -51,7 +52,7 @@ class ConnectorDetail(BaseModel):
             return value
 
         if value not in set(['DEPRECATED', 'DEVELOPMENT', 'DEMO', 'RELEASED']):
-            raise ValueError("must be one of enum values ('DEPRECATED', 'DEVELOPMENT', 'DEMO', 'RELEASED')")
+            warnings.warn(f"must be one of enum values ('DEPRECATED', 'DEVELOPMENT', 'DEMO', 'RELEASED') unknown value: {value}")
         return value
 
     model_config = ConfigDict(
@@ -93,6 +94,16 @@ class ConnectorDetail(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if source_config (nullable) is None
+        # and model_fields_set contains the field
+        if self.source_config is None and "source_config" in self.model_fields_set:
+            _dict['sourceConfig'] = None
+
+        # set to None if source_config_from (nullable) is None
+        # and model_fields_set contains the field
+        if self.source_config_from is None and "source_config_from" in self.model_fields_set:
+            _dict['sourceConfigFrom'] = None
+
         # set to None if uploaded_files (nullable) is None
         # and model_fields_set contains the field
         if self.uploaded_files is None and "uploaded_files" in self.model_fields_set:

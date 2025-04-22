@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
@@ -41,7 +42,7 @@ class NonEmployeeBulkUploadJob(BaseModel):
             return value
 
         if value not in set(['PENDING', 'IN_PROGRESS', 'COMPLETED', 'ERROR']):
-            raise ValueError("must be one of enum values ('PENDING', 'IN_PROGRESS', 'COMPLETED', 'ERROR')")
+            warnings.warn(f"must be one of enum values ('PENDING', 'IN_PROGRESS', 'COMPLETED', 'ERROR') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

@@ -16,12 +16,13 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing_extensions import Annotated
-from sailpoint.v2024.models.outlier_contributing_feature_value import OutlierContributingFeatureValue
 from sailpoint.v2024.models.outlier_feature_translation import OutlierFeatureTranslation
+from sailpoint.v2024.models.outlier_value_type import OutlierValueType
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -31,23 +32,13 @@ class OutlierContributingFeature(BaseModel):
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="Contributing feature id")
     name: Optional[StrictStr] = Field(default=None, description="The name of the feature")
-    value_type: Optional[StrictStr] = Field(default=None, description="The data type of the value field", alias="valueType")
-    value: Optional[OutlierContributingFeatureValue] = None
-    importance: Optional[Union[Annotated[float, Field(le=1.0, strict=True, ge=-1.0)], Annotated[int, Field(le=1, strict=True, ge=-1)]]] = Field(default=None, description="The importance of the feature. This can also be a negative value")
+    value_type: Optional[OutlierValueType] = Field(default=None, alias="valueType")
+    value: Optional[Union[Annotated[float, Field(strict=True, ge=0.0)], Annotated[int, Field(strict=True, ge=0)]]] = Field(default=None, description="The feature value")
+    importance: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The importance of the feature. This can also be a negative value")
     display_name: Optional[StrictStr] = Field(default=None, description="The (translated if header is passed) displayName for the feature", alias="displayName")
     description: Optional[StrictStr] = Field(default=None, description="The (translated if header is passed) description for the feature")
     translation_messages: Optional[OutlierFeatureTranslation] = Field(default=None, alias="translationMessages")
     __properties: ClassVar[List[str]] = ["id", "name", "valueType", "value", "importance", "displayName", "description", "translationMessages"]
-
-    @field_validator('value_type')
-    def value_type_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['INTEGER', 'FLOAT']):
-            raise ValueError("must be one of enum values ('INTEGER', 'FLOAT')")
-        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -88,12 +79,17 @@ class OutlierContributingFeature(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of value
-        if self.value:
-            _dict['value'] = self.value.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of value_type
+        if self.value_type:
+            _dict['valueType'] = self.value_type.to_dict()
         # override the default output from pydantic by calling `to_dict()` of translation_messages
         if self.translation_messages:
             _dict['translationMessages'] = self.translation_messages.to_dict()
+        # set to None if translation_messages (nullable) is None
+        # and model_fields_set contains the field
+        if self.translation_messages is None and "translation_messages" in self.model_fields_set:
+            _dict['translationMessages'] = None
+
         return _dict
 
     @classmethod
@@ -108,8 +104,8 @@ class OutlierContributingFeature(BaseModel):
         _obj = cls.model_validate({
             "id": obj.get("id"),
             "name": obj.get("name"),
-            "valueType": obj.get("valueType"),
-            "value": OutlierContributingFeatureValue.from_dict(obj["value"]) if obj.get("value") is not None else None,
+            "valueType": OutlierValueType.from_dict(obj["valueType"]) if obj.get("valueType") is not None else None,
+            "value": obj.get("value"),
             "importance": obj.get("importance"),
             "displayName": obj.get("displayName"),
             "description": obj.get("description"),

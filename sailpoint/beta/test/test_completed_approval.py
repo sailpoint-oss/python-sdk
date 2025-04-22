@@ -135,7 +135,15 @@ class TestCompletedApproval(unittest.TestCase):
                     decision = 'APPROVED', 
                     reviewer = 'Automated AR Approval', 
                     date = '2022-06-07T19:18:40.748Z', ),
-                client_metadata = {requestedAppName=test-app, requestedAppId=2c91808f7892918f0178b78da4a305a1}
+                client_metadata = {requestedAppName=test-app, requestedAppId=2c91808f7892918f0178b78da4a305a1},
+                requested_accounts = [
+                    sailpoint.beta.models.requested_account_ref.RequestedAccountRef(
+                        name = 'Glen.067da3248e914', 
+                        type = 'IDENTITY', 
+                        account_uuid = '{fab7119e-004f-4822-9c33-b8d570d6c6a6}', 
+                        account_id = 'CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local', 
+                        source_name = 'Multi Account AD source name', )
+                    ]
             )
         else:
             return CompletedApproval(

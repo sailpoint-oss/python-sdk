@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
@@ -28,29 +29,29 @@ class CampaignActivatedCampaign(BaseModel):
     """
     Details about the certification campaign that was activated.
     """ # noqa: E501
-    id: StrictStr = Field(description="Unique ID for the campaign.")
-    name: StrictStr = Field(description="The human friendly name of the campaign.")
-    description: StrictStr = Field(description="Extended description of the campaign.")
-    created: datetime = Field(description="The date and time the campaign was created.")
-    modified: Optional[datetime] = Field(default=None, description="The date and time the campaign was last modified.")
-    deadline: datetime = Field(description="The date and time the campaign is due.")
-    type: Dict[str, Any] = Field(description="The type of campaign.")
+    id: StrictStr = Field(description="Campaign's unique ID.")
+    name: StrictStr = Field(description="Campaign's name.")
+    description: StrictStr = Field(description="Campaign's extended description.")
+    created: datetime = Field(description="Date and time when the campaign was created.")
+    modified: Optional[datetime] = Field(default=None, description="Date and time when the campaign was last modified.")
+    deadline: datetime = Field(description="Date and time when the campaign is due.")
+    type: Dict[str, Any] = Field(description="Campaign's type.")
     campaign_owner: CampaignActivatedCampaignCampaignOwner = Field(alias="campaignOwner")
-    status: Dict[str, Any] = Field(description="The current status of the campaign.")
+    status: Dict[str, Any] = Field(description="Campaign's current status.")
     __properties: ClassVar[List[str]] = ["id", "name", "description", "created", "modified", "deadline", "type", "campaignOwner", "status"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['MANAGER', 'SOURCE_OWNER', 'SEARCH', 'ROLE_COMPOSITION']):
-            raise ValueError("must be one of enum values ('MANAGER', 'SOURCE_OWNER', 'SEARCH', 'ROLE_COMPOSITION')")
+            warnings.warn(f"must be one of enum values ('MANAGER', 'SOURCE_OWNER', 'SEARCH', 'ROLE_COMPOSITION') unknown value: {value}")
         return value
 
     @field_validator('status')
     def status_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['ACTIVE']):
-            raise ValueError("must be one of enum values ('ACTIVE')")
+            warnings.warn(f"must be one of enum values ('ACTIVE') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

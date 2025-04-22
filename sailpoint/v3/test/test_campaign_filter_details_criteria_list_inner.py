@@ -36,14 +36,21 @@ class TestCampaignFilterDetailsCriteriaListInner(unittest.TestCase):
         if include_optional:
             return CampaignFilterDetailsCriteriaListInner(
                 type = 'IDENTITY_ATTRIBUTE',
-                operation = None,
+                operation = 'EQUALS',
                 var_property = 'displayName',
-                value = 'Allie'
+                value = 'Allie',
+                negate_result = False,
+                short_circuit = False,
+                record_child_matches = False,
+                id = '5ec18cef39020d6fd7a60ad3970aba61',
+                suppress_matched_items = False,
+                children = [
+                    None
+                    ]
             )
         else:
             return CampaignFilterDetailsCriteriaListInner(
                 type = 'IDENTITY_ATTRIBUTE',
-                operation = None,
                 var_property = 'displayName',
                 value = 'Allie',
         )

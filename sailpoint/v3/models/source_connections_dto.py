@@ -16,13 +16,14 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v3.models.dependant_app_connections import DependantAppConnections
 from sailpoint.v3.models.dependant_connections_missing_dto import DependantConnectionsMissingDto
 from sailpoint.v3.models.identity_profiles_connections import IdentityProfilesConnections
-from sailpoint.v3.models.transform import Transform
+from sailpoint.v3.models.transform_read import TransformRead
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -34,7 +35,7 @@ class SourceConnectionsDto(BaseModel):
     credential_profiles: Optional[List[StrictStr]] = Field(default=None, description="Name of the CredentialProfile attached to this source", alias="credentialProfiles")
     source_attributes: Optional[List[StrictStr]] = Field(default=None, description="The attributes attached to this source", alias="sourceAttributes")
     mapping_profiles: Optional[List[StrictStr]] = Field(default=None, description="The profiles attached to this source", alias="mappingProfiles")
-    dependent_custom_transforms: Optional[List[Transform]] = Field(default=None, alias="dependentCustomTransforms")
+    dependent_custom_transforms: Optional[List[TransformRead]] = Field(default=None, description="A list of custom transforms associated with this source. A transform will be considered associated with a source if any attributes of the transform specify the source as the sourceName.", alias="dependentCustomTransforms")
     dependent_apps: Optional[List[DependantAppConnections]] = Field(default=None, alias="dependentApps")
     missing_dependents: Optional[List[DependantConnectionsMissingDto]] = Field(default=None, alias="missingDependents")
     __properties: ClassVar[List[str]] = ["identityProfiles", "credentialProfiles", "sourceAttributes", "mappingProfiles", "dependentCustomTransforms", "dependentApps", "missingDependents"]
@@ -122,7 +123,7 @@ class SourceConnectionsDto(BaseModel):
             "credentialProfiles": obj.get("credentialProfiles"),
             "sourceAttributes": obj.get("sourceAttributes"),
             "mappingProfiles": obj.get("mappingProfiles"),
-            "dependentCustomTransforms": [Transform.from_dict(_item) for _item in obj["dependentCustomTransforms"]] if obj.get("dependentCustomTransforms") is not None else None,
+            "dependentCustomTransforms": [TransformRead.from_dict(_item) for _item in obj["dependentCustomTransforms"]] if obj.get("dependentCustomTransforms") is not None else None,
             "dependentApps": [DependantAppConnections.from_dict(_item) for _item in obj["dependentApps"]] if obj.get("dependentApps") is not None else None,
             "missingDependents": [DependantConnectionsMissingDto.from_dict(_item) for _item in obj["missingDependents"]] if obj.get("missingDependents") is not None else None
         })

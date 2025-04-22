@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
@@ -28,6 +29,7 @@ from sailpoint.beta.models.approval_forward_history import ApprovalForwardHistor
 from sailpoint.beta.models.comment_dto1 import CommentDto1
 from sailpoint.beta.models.pending_approval_action import PendingApprovalAction
 from sailpoint.beta.models.requestable_object_reference import RequestableObjectReference
+from sailpoint.beta.models.requested_account_ref import RequestedAccountRef
 from sailpoint.beta.models.sod_violation_context_check_completed1 import SodViolationContextCheckCompleted1
 from typing import Optional, Set
 from typing_extensions import Self
@@ -55,7 +57,9 @@ class PendingApproval(BaseModel):
     remove_date_update_requested: Optional[StrictBool] = Field(default=False, description="If true, then the request is to change the remove date or sunset date.", alias="removeDateUpdateRequested")
     current_remove_date: Optional[datetime] = Field(default=None, description="The remove date or sunset date that was assigned at the time of the request.", alias="currentRemoveDate")
     sod_violation_context: Optional[SodViolationContextCheckCompleted1] = Field(default=None, alias="sodViolationContext")
-    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "requestCreated", "requestType", "requester", "requestedFor", "owner", "requestedObject", "requesterComment", "previousReviewersComments", "forwardHistory", "commentRequiredWhenRejected", "actionInProcess", "removeDate", "removeDateUpdateRequested", "currentRemoveDate", "sodViolationContext"]
+    client_metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Arbitrary key-value pairs, if any were included in the corresponding access request item", alias="clientMetadata")
+    requested_accounts: Optional[List[RequestedAccountRef]] = Field(default=None, description="The accounts selected by the user for the access to be provisioned on, in case they have multiple accounts on one or more sources.", alias="requestedAccounts")
+    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "requestCreated", "requestType", "requester", "requestedFor", "owner", "requestedObject", "requesterComment", "previousReviewersComments", "forwardHistory", "commentRequiredWhenRejected", "actionInProcess", "removeDate", "removeDateUpdateRequested", "currentRemoveDate", "sodViolationContext", "clientMetadata", "requestedAccounts"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -128,6 +132,13 @@ class PendingApproval(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of sod_violation_context
         if self.sod_violation_context:
             _dict['sodViolationContext'] = self.sod_violation_context.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in requested_accounts (list)
+        _items = []
+        if self.requested_accounts:
+            for _item_requested_accounts in self.requested_accounts:
+                if _item_requested_accounts:
+                    _items.append(_item_requested_accounts.to_dict())
+            _dict['requestedAccounts'] = _items
         # set to None if request_type (nullable) is None
         # and model_fields_set contains the field
         if self.request_type is None and "request_type" in self.model_fields_set:
@@ -137,6 +148,16 @@ class PendingApproval(BaseModel):
         # and model_fields_set contains the field
         if self.sod_violation_context is None and "sod_violation_context" in self.model_fields_set:
             _dict['sodViolationContext'] = None
+
+        # set to None if client_metadata (nullable) is None
+        # and model_fields_set contains the field
+        if self.client_metadata is None and "client_metadata" in self.model_fields_set:
+            _dict['clientMetadata'] = None
+
+        # set to None if requested_accounts (nullable) is None
+        # and model_fields_set contains the field
+        if self.requested_accounts is None and "requested_accounts" in self.model_fields_set:
+            _dict['requestedAccounts'] = None
 
         return _dict
 
@@ -168,7 +189,9 @@ class PendingApproval(BaseModel):
             "removeDate": obj.get("removeDate"),
             "removeDateUpdateRequested": obj.get("removeDateUpdateRequested") if obj.get("removeDateUpdateRequested") is not None else False,
             "currentRemoveDate": obj.get("currentRemoveDate"),
-            "sodViolationContext": SodViolationContextCheckCompleted1.from_dict(obj["sodViolationContext"]) if obj.get("sodViolationContext") is not None else None
+            "sodViolationContext": SodViolationContextCheckCompleted1.from_dict(obj["sodViolationContext"]) if obj.get("sodViolationContext") is not None else None,
+            "clientMetadata": obj.get("clientMetadata"),
+            "requestedAccounts": [RequestedAccountRef.from_dict(_item) for _item in obj["requestedAccounts"]] if obj.get("requestedAccounts") is not None else None
         })
         return _obj
 

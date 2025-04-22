@@ -43,6 +43,31 @@ class TestEntitlement(unittest.TestCase):
                 description = 'CN=LauncherTest2,OU=LauncherTestOrg,OU=slpt-automation,DC=TestAutomationAD,DC=local',
                 privileged = True,
                 cloud_governed = True,
+                requestable = True,
+                owner = sailpoint.v3.models.entitlement_owner.Entitlement_owner(
+                    id = '2c9180827ca885d7017ca8ce28a000eb', 
+                    type = 'IDENTITY', 
+                    name = 'john.doe', ),
+                manually_updated_fields = {DISPLAY_NAME=true, DESCRIPTION=true},
+                access_model_metadata = sailpoint.v3.models.entitlement_access_model_metadata.Entitlement_accessModelMetadata(
+                    attributes = [
+                        sailpoint.v3.models.access_model_metadata.AccessModelMetadata(
+                            key = 'iscCsp', 
+                            name = 'CSP', 
+                            multiselect = True, 
+                            status = 'active', 
+                            type = 'governance', 
+                            object_types = [
+                                'general'
+                                ], 
+                            description = 'Indicates the type of deployment environment of an access item.', 
+                            values = [
+                                sailpoint.v3.models.access_model_metadata_values_inner.AccessModelMetadata_values_inner(
+                                    value = 'development', 
+                                    name = 'Development', 
+                                    status = 'active', )
+                                ], )
+                        ], ),
                 created = '2020-10-08T18:33:52.029Z',
                 modified = '2020-10-08T18:33:52.029Z',
                 source = sailpoint.v3.models.entitlement_source.Entitlement_source(

@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
@@ -40,7 +41,7 @@ class AccountAggregation(BaseModel):
             return value
 
         if value not in set(['STARTED', 'ACCOUNTS_COLLECTED', 'COMPLETED', 'CANCELLED', 'RETRIED', 'TERMINATED']):
-            raise ValueError("must be one of enum values ('STARTED', 'ACCOUNTS_COLLECTED', 'COMPLETED', 'CANCELLED', 'RETRIED', 'TERMINATED')")
+            warnings.warn(f"must be one of enum values ('STARTED', 'ACCOUNTS_COLLECTED', 'COMPLETED', 'CANCELLED', 'RETRIED', 'TERMINATED') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

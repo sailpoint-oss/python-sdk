@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
@@ -25,11 +26,11 @@ from typing_extensions import Self
 
 class SpConfigRule(BaseModel):
     """
-    Format of Config Hub Object Rules
+    Format of Config Hub object rules.
     """ # noqa: E501
-    path: Optional[StrictStr] = Field(default=None, description="JSONPath expression denoting the path within the object where a value substitution should be applied")
+    path: Optional[StrictStr] = Field(default=None, description="JSONPath expression denoting the path within the object where a value substitution should be applied.")
     value: Optional[SpConfigRuleValue] = None
-    modes: Optional[List[StrictStr]] = Field(default=None, description="Draft modes to which this rule will apply")
+    modes: Optional[List[StrictStr]] = Field(default=None, description="Draft modes the rule will apply to.")
     __properties: ClassVar[List[str]] = ["path", "value", "modes"]
 
     @field_validator('modes')
@@ -40,7 +41,7 @@ class SpConfigRule(BaseModel):
 
         for i in value:
             if i not in set(['RESTORE', 'PROMOTE', 'UPLOAD']):
-                raise ValueError("each list item must be one of ('RESTORE', 'PROMOTE', 'UPLOAD')")
+                warnings.warn(f"each list item must be one of ('RESTORE', 'PROMOTE', 'UPLOAD') unknown value: {i}")
         return value
 
     model_config = ConfigDict(

@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List
@@ -24,18 +25,18 @@ from typing_extensions import Self
 
 class ProvisioningCompletedAccountRequestsInnerSource(BaseModel):
     """
-    Reference to the source being provisioned against.
+    Source that ISC is provisioning access on.
     """ # noqa: E501
-    id: StrictStr = Field(description="ID of the object to which this reference applies")
-    type: StrictStr = Field(description="The type of object that is referenced")
-    name: StrictStr = Field(description="Human-readable display name of the object to which this reference applies")
+    id: StrictStr = Field(description="Source ID.")
+    type: StrictStr = Field(description="Source DTO type.")
+    name: StrictStr = Field(description="Source name.")
     __properties: ClassVar[List[str]] = ["id", "type", "name"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['SOURCE']):
-            raise ValueError("must be one of enum values ('SOURCE')")
+            warnings.warn(f"must be one of enum values ('SOURCE') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
@@ -26,18 +27,22 @@ class ScheduledAttributes(BaseModel):
     """
     Attributes related to a scheduled trigger
     """ # noqa: E501
-    cron_string: Optional[StrictStr] = Field(default=None, description="A valid CRON expression", alias="cronString")
-    frequency: StrictStr = Field(description="Frequency of execution")
+    frequency: Optional[StrictStr] = Field(description="Frequency of execution")
     time_zone: Optional[StrictStr] = Field(default=None, description="Time zone identifier", alias="timeZone")
+    cron_string: Optional[StrictStr] = Field(default=None, description="A valid CRON expression", alias="cronString")
     weekly_days: Optional[List[StrictStr]] = Field(default=None, description="Scheduled days of the week for execution", alias="weeklyDays")
     weekly_times: Optional[List[StrictStr]] = Field(default=None, description="Scheduled execution times", alias="weeklyTimes")
-    __properties: ClassVar[List[str]] = ["cronString", "frequency", "timeZone", "weeklyDays", "weeklyTimes"]
+    yearly_times: Optional[List[StrictStr]] = Field(default=None, description="Scheduled execution times", alias="yearlyTimes")
+    __properties: ClassVar[List[str]] = ["frequency", "timeZone", "cronString", "weeklyDays", "weeklyTimes", "yearlyTimes"]
 
     @field_validator('frequency')
     def frequency_validate_enum(cls, value):
         """Validates the enum"""
+        if value is None:
+            return value
+
         if value not in set(['daily', 'weekly', 'monthly', 'yearly', 'cronSchedule']):
-            raise ValueError("must be one of enum values ('daily', 'weekly', 'monthly', 'yearly', 'cronSchedule')")
+            warnings.warn(f"must be one of enum values ('daily', 'weekly', 'monthly', 'yearly', 'cronSchedule') unknown value: {value}")
         return value
 
     model_config = ConfigDict(
@@ -79,6 +84,36 @@ class ScheduledAttributes(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if frequency (nullable) is None
+        # and model_fields_set contains the field
+        if self.frequency is None and "frequency" in self.model_fields_set:
+            _dict['frequency'] = None
+
+        # set to None if time_zone (nullable) is None
+        # and model_fields_set contains the field
+        if self.time_zone is None and "time_zone" in self.model_fields_set:
+            _dict['timeZone'] = None
+
+        # set to None if cron_string (nullable) is None
+        # and model_fields_set contains the field
+        if self.cron_string is None and "cron_string" in self.model_fields_set:
+            _dict['cronString'] = None
+
+        # set to None if weekly_days (nullable) is None
+        # and model_fields_set contains the field
+        if self.weekly_days is None and "weekly_days" in self.model_fields_set:
+            _dict['weeklyDays'] = None
+
+        # set to None if weekly_times (nullable) is None
+        # and model_fields_set contains the field
+        if self.weekly_times is None and "weekly_times" in self.model_fields_set:
+            _dict['weeklyTimes'] = None
+
+        # set to None if yearly_times (nullable) is None
+        # and model_fields_set contains the field
+        if self.yearly_times is None and "yearly_times" in self.model_fields_set:
+            _dict['yearlyTimes'] = None
+
         return _dict
 
     @classmethod
@@ -91,11 +126,12 @@ class ScheduledAttributes(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "cronString": obj.get("cronString"),
             "frequency": obj.get("frequency"),
             "timeZone": obj.get("timeZone"),
+            "cronString": obj.get("cronString"),
             "weeklyDays": obj.get("weeklyDays"),
-            "weeklyTimes": obj.get("weeklyTimes")
+            "weeklyTimes": obj.get("weeklyTimes"),
+            "yearlyTimes": obj.get("yearlyTimes")
         })
         return _obj
 

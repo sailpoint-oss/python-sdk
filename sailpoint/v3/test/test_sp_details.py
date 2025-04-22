@@ -35,13 +35,15 @@ class TestSpDetails(unittest.TestCase):
         model = SpDetails()
         if include_optional:
             return SpDetails(
-                role = 'SAML_SP',
+                role = 'SAML_IDP',
                 entity_id = 'http://www.okta.com/exkdaruy8Ln5Ry7C54x6',
                 alias = 'acme-sp',
-                callback_url = 'https://stradbroke-sso.identitysoon.com/sso/Consumer/metaAlias/cdov-saml/sp'
+                callback_url = 'https://stradbroke-sso.identitysoon.com/sso/Consumer/metaAlias/cdov-saml/sp',
+                legacy_acs_url = 'https://megapod-useast1-sso.identitysoon.com/sso/Consumer/metaAlias/acme/sp'
             )
         else:
             return SpDetails(
+                callback_url = 'https://stradbroke-sso.identitysoon.com/sso/Consumer/metaAlias/cdov-saml/sp',
         )
         """
 

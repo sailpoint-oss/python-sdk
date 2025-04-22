@@ -16,10 +16,11 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2024.models.json_patch_operation_value import JsonPatchOperationValue
+from sailpoint.v2024.models.update_multi_host_sources_request_inner_value import UpdateMultiHostSourcesRequestInnerValue
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,14 +30,14 @@ class JsonPatchOperation(BaseModel):
     """ # noqa: E501
     op: StrictStr = Field(description="The operation to be performed")
     path: StrictStr = Field(description="A string JSON Pointer representing the target path to an element to be affected by the operation")
-    value: Optional[JsonPatchOperationValue] = None
+    value: Optional[UpdateMultiHostSourcesRequestInnerValue] = None
     __properties: ClassVar[List[str]] = ["op", "path", "value"]
 
     @field_validator('op')
     def op_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['add', 'remove', 'replace', 'move', 'copy', 'test']):
-            raise ValueError("must be one of enum values ('add', 'remove', 'replace', 'move', 'copy', 'test')")
+            warnings.warn(f"must be one of enum values ('add', 'remove', 'replace', 'move', 'copy', 'test') unknown value: {value}")
         return value
 
     model_config = ConfigDict(
@@ -95,7 +96,7 @@ class JsonPatchOperation(BaseModel):
         _obj = cls.model_validate({
             "op": obj.get("op"),
             "path": obj.get("path"),
-            "value": JsonPatchOperationValue.from_dict(obj["value"]) if obj.get("value") is not None else None
+            "value": UpdateMultiHostSourcesRequestInnerValue.from_dict(obj["value"]) if obj.get("value") is not None else None
         })
         return _obj
 

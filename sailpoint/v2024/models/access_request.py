@@ -16,12 +16,14 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from sailpoint.v2024.models.access_request_item import AccessRequestItem
 from sailpoint.v2024.models.access_request_type import AccessRequestType
+from sailpoint.v2024.models.requested_for_dto_ref import RequestedForDtoRef
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -33,7 +35,8 @@ class AccessRequest(BaseModel):
     request_type: Optional[AccessRequestType] = Field(default=None, alias="requestType")
     requested_items: Annotated[List[AccessRequestItem], Field(min_length=1, max_length=25)] = Field(alias="requestedItems")
     client_metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities.", alias="clientMetadata")
-    __properties: ClassVar[List[str]] = ["requestedFor", "requestType", "requestedItems", "clientMetadata"]
+    requested_for_with_requested_items: Optional[List[RequestedForDtoRef]] = Field(default=None, description="Additional submit data structure with requestedFor containing requestedItems allowing distinction for each request item and Identity. * Can only be used when 'requestedFor' and 'requestedItems' are not separately provided * Adds ability to specify which account the user wants the access on, in case they have multiple accounts on a source * Allows the ability to request items with different remove dates * Also allows different combinations of request items and identities in the same request ", alias="requestedForWithRequestedItems")
+    __properties: ClassVar[List[str]] = ["requestedFor", "requestType", "requestedItems", "clientMetadata", "requestedForWithRequestedItems"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,10 +84,22 @@ class AccessRequest(BaseModel):
                 if _item_requested_items:
                     _items.append(_item_requested_items.to_dict())
             _dict['requestedItems'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in requested_for_with_requested_items (list)
+        _items = []
+        if self.requested_for_with_requested_items:
+            for _item_requested_for_with_requested_items in self.requested_for_with_requested_items:
+                if _item_requested_for_with_requested_items:
+                    _items.append(_item_requested_for_with_requested_items.to_dict())
+            _dict['requestedForWithRequestedItems'] = _items
         # set to None if request_type (nullable) is None
         # and model_fields_set contains the field
         if self.request_type is None and "request_type" in self.model_fields_set:
             _dict['requestType'] = None
+
+        # set to None if requested_for_with_requested_items (nullable) is None
+        # and model_fields_set contains the field
+        if self.requested_for_with_requested_items is None and "requested_for_with_requested_items" in self.model_fields_set:
+            _dict['requestedForWithRequestedItems'] = None
 
         return _dict
 
@@ -101,7 +116,8 @@ class AccessRequest(BaseModel):
             "requestedFor": obj.get("requestedFor"),
             "requestType": obj.get("requestType"),
             "requestedItems": [AccessRequestItem.from_dict(_item) for _item in obj["requestedItems"]] if obj.get("requestedItems") is not None else None,
-            "clientMetadata": obj.get("clientMetadata")
+            "clientMetadata": obj.get("clientMetadata"),
+            "requestedForWithRequestedItems": [RequestedForDtoRef.from_dict(_item) for _item in obj["requestedForWithRequestedItems"]] if obj.get("requestedForWithRequestedItems") is not None else None
         })
         return _obj
 

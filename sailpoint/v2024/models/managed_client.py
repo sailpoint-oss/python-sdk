@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
@@ -29,8 +30,8 @@ class ManagedClient(BaseModel):
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="ManagedClient ID")
     alert_key: Optional[StrictStr] = Field(default=None, description="ManagedClient alert key", alias="alertKey")
-    api_gateway_base_url: Optional[StrictStr] = Field(default=None, alias="apiGatewayBaseUrl")
-    cookbook: Optional[StrictStr] = None
+    api_gateway_base_url: Optional[StrictStr] = Field(default=None, description="apiGatewayBaseUrl for the Managed client", alias="apiGatewayBaseUrl")
+    cookbook: Optional[StrictStr] = Field(default=None, description="cookbook id for the Managed client")
     cc_id: Optional[StrictInt] = Field(default=None, description="Previous CC ID to be used in data migration. (This field will be deleted after CC migration!)", alias="ccId")
     client_id: StrictStr = Field(description="The client ID used in API management", alias="clientId")
     cluster_id: StrictStr = Field(description="Cluster ID that the ManagedClient is linked to", alias="clusterId")
@@ -48,7 +49,8 @@ class ManagedClient(BaseModel):
     created_at: Optional[datetime] = Field(default=None, description="The date/time this ManagedClient was created", alias="createdAt")
     updated_at: Optional[datetime] = Field(default=None, description="The date/time this ManagedClient was last updated", alias="updatedAt")
     provision_status: Optional[StrictStr] = Field(default=None, description="The provisioning status of the ManagedClient", alias="provisionStatus")
-    __properties: ClassVar[List[str]] = ["id", "alertKey", "apiGatewayBaseUrl", "cookbook", "ccId", "clientId", "clusterId", "description", "ipAddress", "lastSeen", "name", "sinceLastSeen", "status", "type", "clusterType", "vaDownloadUrl", "vaVersion", "secret", "createdAt", "updatedAt", "provisionStatus"]
+    health_indicators: Optional[Dict[str, Any]] = Field(default=None, description="The health indicators of the ManagedClient", alias="healthIndicators")
+    __properties: ClassVar[List[str]] = ["id", "alertKey", "apiGatewayBaseUrl", "cookbook", "ccId", "clientId", "clusterId", "description", "ipAddress", "lastSeen", "name", "sinceLastSeen", "status", "type", "clusterType", "vaDownloadUrl", "vaVersion", "secret", "createdAt", "updatedAt", "provisionStatus", "healthIndicators"]
 
     @field_validator('status')
     def status_validate_enum(cls, value):
@@ -57,7 +59,7 @@ class ManagedClient(BaseModel):
             return value
 
         if value not in set(['NORMAL', 'UNDEFINED', 'NOT_CONFIGURED', 'CONFIGURING', 'WARNING', 'ERROR', 'FAILED']):
-            raise ValueError("must be one of enum values ('NORMAL', 'UNDEFINED', 'NOT_CONFIGURED', 'CONFIGURING', 'WARNING', 'ERROR', 'FAILED')")
+            warnings.warn(f"must be one of enum values ('NORMAL', 'UNDEFINED', 'NOT_CONFIGURED', 'CONFIGURING', 'WARNING', 'ERROR', 'FAILED') unknown value: {value}")
         return value
 
     @field_validator('cluster_type')
@@ -67,7 +69,7 @@ class ManagedClient(BaseModel):
             return value
 
         if value not in set(['idn', 'iai', 'spConnectCluster', 'sqsCluster', 'das-rc', 'das-pc', 'das-dc']):
-            raise ValueError("must be one of enum values ('idn', 'iai', 'spConnectCluster', 'sqsCluster', 'das-rc', 'das-pc', 'das-dc')")
+            warnings.warn(f"must be one of enum values ('idn', 'iai', 'spConnectCluster', 'sqsCluster', 'das-rc', 'das-pc', 'das-dc') unknown value: {value}")
         return value
 
     @field_validator('provision_status')
@@ -77,7 +79,7 @@ class ManagedClient(BaseModel):
             return value
 
         if value not in set(['PROVISIONED', 'DRAFT']):
-            raise ValueError("must be one of enum values ('PROVISIONED', 'DRAFT')")
+            warnings.warn(f"must be one of enum values ('PROVISIONED', 'DRAFT') unknown value: {value}")
         return value
 
     model_config = ConfigDict(
@@ -224,6 +226,11 @@ class ManagedClient(BaseModel):
         if self.provision_status is None and "provision_status" in self.model_fields_set:
             _dict['provisionStatus'] = None
 
+        # set to None if health_indicators (nullable) is None
+        # and model_fields_set contains the field
+        if self.health_indicators is None and "health_indicators" in self.model_fields_set:
+            _dict['healthIndicators'] = None
+
         return _dict
 
     @classmethod
@@ -256,7 +263,8 @@ class ManagedClient(BaseModel):
             "secret": obj.get("secret"),
             "createdAt": obj.get("createdAt"),
             "updatedAt": obj.get("updatedAt"),
-            "provisionStatus": obj.get("provisionStatus")
+            "provisionStatus": obj.get("provisionStatus"),
+            "healthIndicators": obj.get("healthIndicators")
         })
         return _obj
 

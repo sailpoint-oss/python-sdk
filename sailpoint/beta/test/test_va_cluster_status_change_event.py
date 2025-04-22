@@ -44,11 +44,11 @@ class TestVAClusterStatusChangeEvent(unittest.TestCase):
                 health_check_result = sailpoint.beta.models.va_cluster_status_change_event_health_check_result.VAClusterStatusChangeEvent_healthCheckResult(
                     message = 'Test Connection failed with exception. Error message - java.lang Exception', 
                     result_type = 'SOURCE_STATE_ERROR_CLUSTER', 
-                    status = Succeeded, ),
+                    status = 'Succeeded', ),
                 previous_health_check_result = sailpoint.beta.models.va_cluster_status_change_event_previous_health_check_result.VAClusterStatusChangeEvent_previousHealthCheckResult(
                     message = 'Test Connection failed with exception. Error message - java.lang Exception', 
                     result_type = 'SOURCE_STATE_ERROR_CLUSTER', 
-                    status = Failed, )
+                    status = 'Failed', )
             )
         else:
             return VAClusterStatusChangeEvent(
@@ -61,11 +61,11 @@ class TestVAClusterStatusChangeEvent(unittest.TestCase):
                 health_check_result = sailpoint.beta.models.va_cluster_status_change_event_health_check_result.VAClusterStatusChangeEvent_healthCheckResult(
                     message = 'Test Connection failed with exception. Error message - java.lang Exception', 
                     result_type = 'SOURCE_STATE_ERROR_CLUSTER', 
-                    status = Succeeded, ),
+                    status = 'Succeeded', ),
                 previous_health_check_result = sailpoint.beta.models.va_cluster_status_change_event_previous_health_check_result.VAClusterStatusChangeEvent_previousHealthCheckResult(
                     message = 'Test Connection failed with exception. Error message - java.lang Exception', 
                     result_type = 'SOURCE_STATE_ERROR_CLUSTER', 
-                    status = Failed, ),
+                    status = 'Failed', ),
         )
         """
 

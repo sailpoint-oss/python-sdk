@@ -64,7 +64,7 @@ class TestRolesApi(unittest.TestCase):
     def test_get_role_entitlements(self) -> None:
         """Test case for get_role_entitlements
 
-        List role's Entitlements
+        List Role's Entitlements
         """
         pass
 

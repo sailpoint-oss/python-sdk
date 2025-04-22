@@ -37,8 +37,10 @@ class TestOutlierContributingFeature(unittest.TestCase):
             return OutlierContributingFeature(
                 id = '66e38828-5017-47af-92ff-9844871352c5',
                 name = 'entitlement_count',
-                value_type = 'INTEGER',
-                value = 0.92,
+                value_type = sailpoint.v2024.models.outlier_value_type.OutlierValueType(
+                    name = 'INTEGER', 
+                    ordinal = 0, ),
+                value = 1.0,
                 importance = -0.15,
                 display_name = 'Number of entitlements',
                 description = 'The total number of entitlements belonging to an identity',

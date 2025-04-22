@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
@@ -40,14 +41,14 @@ class SpConfigExportJob(BaseModel):
     def status_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['NOT_STARTED', 'IN_PROGRESS', 'COMPLETE', 'CANCELLED', 'FAILED']):
-            raise ValueError("must be one of enum values ('NOT_STARTED', 'IN_PROGRESS', 'COMPLETE', 'CANCELLED', 'FAILED')")
+            warnings.warn(f"must be one of enum values ('NOT_STARTED', 'IN_PROGRESS', 'COMPLETE', 'CANCELLED', 'FAILED') unknown value: {value}")
         return value
 
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['EXPORT', 'IMPORT']):
-            raise ValueError("must be one of enum values ('EXPORT', 'IMPORT')")
+            warnings.warn(f"must be one of enum values ('EXPORT', 'IMPORT') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

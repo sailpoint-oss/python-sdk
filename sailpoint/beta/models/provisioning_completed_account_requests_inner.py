@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
@@ -29,19 +30,26 @@ class ProvisioningCompletedAccountRequestsInner(BaseModel):
     ProvisioningCompletedAccountRequestsInner
     """ # noqa: E501
     source: ProvisioningCompletedAccountRequestsInnerSource
-    account_id: Optional[StrictStr] = Field(default=None, description="The unique idenfier of the account being provisioned.", alias="accountId")
-    account_operation: StrictStr = Field(description="The provisioning operation; typically Create, Modify, Enable, Disable, Unlock, or Delete.", alias="accountOperation")
-    provisioning_result: Dict[str, Any] = Field(description="The overall result of the provisioning transaction; this could be success, pending, failed, etc.", alias="provisioningResult")
-    provisioning_target: StrictStr = Field(description="The name of the provisioning channel selected; this could be the same as the source, or could be a Service Desk Integration Module (SDIM).", alias="provisioningTarget")
-    ticket_id: Optional[StrictStr] = Field(default=None, description="A reference to a tracking number, if this is sent to a Service Desk Integration Module (SDIM).", alias="ticketId")
-    attribute_requests: Optional[List[ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner]] = Field(default=None, description="A list of attributes as part of the provisioning transaction.", alias="attributeRequests")
+    account_id: Optional[StrictStr] = Field(default=None, description="Unique idenfier of the account being provisioned.", alias="accountId")
+    account_operation: StrictStr = Field(description="Provisioning operation.", alias="accountOperation")
+    provisioning_result: Dict[str, Any] = Field(description="Overall result of the provisioning transaction.", alias="provisioningResult")
+    provisioning_target: StrictStr = Field(description="Nme of the selected provisioning channel selected. This could be the same as the source, or it could be a Service Desk Integration Module (SDIM).", alias="provisioningTarget")
+    ticket_id: Optional[StrictStr] = Field(default=None, description="Reference to a tracking number for if this is sent to a SDIM.", alias="ticketId")
+    attribute_requests: Optional[List[ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner]] = Field(default=None, description="List of attributes to include in the provisioning transaction.", alias="attributeRequests")
     __properties: ClassVar[List[str]] = ["source", "accountId", "accountOperation", "provisioningResult", "provisioningTarget", "ticketId", "attributeRequests"]
+
+    @field_validator('account_operation')
+    def account_operation_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['Create', 'Modify', 'Enable', 'Disable', 'Unlock', 'Delete']):
+            warnings.warn(f"must be one of enum values ('Create', 'Modify', 'Enable', 'Disable', 'Unlock', 'Delete') unknown value: {value}")
+        return value
 
     @field_validator('provisioning_result')
     def provisioning_result_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['SUCCESS', 'PENDING', 'FAILED']):
-            raise ValueError("must be one of enum values ('SUCCESS', 'PENDING', 'FAILED')")
+            warnings.warn(f"must be one of enum values ('SUCCESS', 'PENDING', 'FAILED') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

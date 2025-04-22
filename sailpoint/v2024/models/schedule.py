@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
@@ -42,7 +43,7 @@ class Schedule(BaseModel):
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['WEEKLY', 'MONTHLY', 'ANNUALLY', 'CALENDAR']):
-            raise ValueError("must be one of enum values ('WEEKLY', 'MONTHLY', 'ANNUALLY', 'CALENDAR')")
+            warnings.warn(f"must be one of enum values ('WEEKLY', 'MONTHLY', 'ANNUALLY', 'CALENDAR') unknown value: {value}")
         return value
 
     model_config = ConfigDict(
@@ -93,6 +94,16 @@ class Schedule(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of hours
         if self.hours:
             _dict['hours'] = self.hours.to_dict()
+        # set to None if months (nullable) is None
+        # and model_fields_set contains the field
+        if self.months is None and "months" in self.model_fields_set:
+            _dict['months'] = None
+
+        # set to None if expiration (nullable) is None
+        # and model_fields_set contains the field
+        if self.expiration is None and "expiration" in self.model_fields_set:
+            _dict['expiration'] = None
+
         return _dict
 
     @classmethod

@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List
@@ -34,7 +35,7 @@ class ReassignReference(BaseModel):
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['TARGET_SUMMARY', 'ITEM', 'IDENTITY_SUMMARY']):
-            raise ValueError("must be one of enum values ('TARGET_SUMMARY', 'ITEM', 'IDENTITY_SUMMARY')")
+            warnings.warn(f"must be one of enum values ('TARGET_SUMMARY', 'ITEM', 'IDENTITY_SUMMARY') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

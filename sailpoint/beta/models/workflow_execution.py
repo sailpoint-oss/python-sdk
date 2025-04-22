@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
@@ -41,8 +42,8 @@ class WorkflowExecution(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['Completed', 'Failed', 'Canceled', 'Running']):
-            raise ValueError("must be one of enum values ('Completed', 'Failed', 'Canceled', 'Running')")
+        if value not in set(['Completed', 'Failed', 'Canceled', 'Queued', 'Running']):
+            warnings.warn(f"must be one of enum values ('Completed', 'Failed', 'Canceled', 'Queued', 'Running') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

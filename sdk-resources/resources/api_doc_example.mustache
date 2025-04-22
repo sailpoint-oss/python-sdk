@@ -1,29 +1,55 @@
 
 ```python
-import {{{packageName}}}
+from {{{packageName}}}.api.{{#lambda.snakecase}}{{classname}}{{/lambda.snakecase}} import {{#lambda.titlecase}}{{classname}}{{/lambda.titlecase}}
+from {{{packageName}}}.api_client import ApiClient
 {{#vendorExtensions.x-py-example-import}}
 {{{.}}}
 {{/vendorExtensions.x-py-example-import}}
-from {{{packageName}}}.rest import ApiException
-from pprint import pprint
+from sailpoint.configuration import Configuration
+configuration = Configuration()
 
-{{> python_doc_auth_partial}}
-# Enter a context with an instance of the API client
-{{#asyncio}}async {{/asyncio}}with {{{packageName}}}.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = {{{packageName}}}.{{{classname}}}(api_client)
+{{#headerParams}}
+configuration.experimental = true
+{{/headerParams}}
+
+with ApiClient(configuration) as api_client:
     {{#allParams}}
-    {{paramName}} = {{{example}}} # {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
+    {{^isArray}}
+    {{#isModel}}
+    {{paramName}} = '''{{#lambda.indented_8}}{{#requestBodyExamples}}{{{example}}}{{/requestBodyExamples}}{{^requestBodyExamples}}{{#example}}{{{example}}}{{/example}}{{/requestBodyExamples}}''' # {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}{{/lambda.indented_8}}
+    {{/isModel}}
+    {{^isModel}}
+    {{paramName}} = {{{example}}} # {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}} # {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
+    {{/isModel}}
+    {{/isArray}}
+    {{#isArray}}
+    {{#items.isModel}}
+    {{paramName}} = '''{{{example}}}''' # {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
+    {{/items.isModel}}
+    {{^items.isModel}}
+    {{paramName}} = '''{{{example}}}''' # {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
+    {{/items.isModel}}
+    {{/isArray}}
     {{/allParams}}
 
     try:
         {{#summary}}
         # {{{.}}}
         {{/summary}}
-        {{#returnType}}api_response = {{/returnType}}{{#asyncio}}await {{/asyncio}}api_instance.{{{operationId}}}({{#allParams}}{{#required}}{{paramName}}{{/required}}{{^required}}{{paramName}}={{paramName}}{{/required}}{{^-last}}, {{/-last}}{{/allParams}})
+        {{#requiredAndNotNullableParams}}{{#isBodyParam}}new_{{paramName}} = {{#lambda.titlecase}}{{#lambda.camelcase}}{{paramName}}{{/lambda.camelcase}}{{/lambda.titlecase}}.from_json({{paramName}}){{/isBodyParam}}{{/requiredAndNotNullableParams}}
+        {{#returnType}}results = {{/returnType}}{{#lambda.titlecase}}{{classname}}{{/lambda.titlecase}}(api_client).{{{operationId}}}({{#requiredParams}}{{#isBodyParam}}{{paramName}}=new_{{paramName}}{{^-last}}, {{/-last}}{{/isBodyParam}}{{^isBodyParam}}{{paramName}}={{paramName}}{{^-last}}, {{/-last}}{{/isBodyParam}}{{/requiredParams}})
+        # Below is a request that includes all optional parameters
+        # {{#returnType}}results = {{/returnType}}{{#lambda.titlecase}}{{classname}}{{/lambda.titlecase}}(api_client).{{{operationId}}}({{#allParams}}{{^isBodyParam}}{{paramName}}{{/isBodyParam}}{{#isBodyParam}}new_{{paramName}}{{/isBodyParam}}{{^-last}}, {{/-last}}{{/allParams}})
         {{#returnType}}
+        {{#isArray}}
         print("The response of {{classname}}->{{operationId}}:\n")
-        pprint(api_response)
+        for item in results:
+            print(item.model_dump_json(by_alias=True, indent=4))
+        {{/isArray}}
+        {{^isArray}}
+        print("The response of {{classname}}->{{operationId}}:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+        {{/isArray}}
         {{/returnType}}
     except Exception as e:
         print("Exception when calling {{classname}}->{{operationId}}: %s\n" % e)

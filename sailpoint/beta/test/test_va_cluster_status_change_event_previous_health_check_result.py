@@ -37,13 +37,13 @@ class TestVAClusterStatusChangeEventPreviousHealthCheckResult(unittest.TestCase)
             return VAClusterStatusChangeEventPreviousHealthCheckResult(
                 message = 'Test Connection failed with exception. Error message - java.lang Exception',
                 result_type = 'SOURCE_STATE_ERROR_CLUSTER',
-                status = Failed
+                status = 'Failed'
             )
         else:
             return VAClusterStatusChangeEventPreviousHealthCheckResult(
                 message = 'Test Connection failed with exception. Error message - java.lang Exception',
                 result_type = 'SOURCE_STATE_ERROR_CLUSTER',
-                status = Failed,
+                status = 'Failed',
         )
         """
 

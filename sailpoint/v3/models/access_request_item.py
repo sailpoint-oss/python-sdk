@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
@@ -32,13 +33,15 @@ class AccessRequestItem(BaseModel):
     comment: Optional[StrictStr] = Field(default=None, description="Comment provided by requester. * Comment is required when the request is of type Revoke Access. ")
     client_metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities and /access-request-status.", alias="clientMetadata")
     remove_date: Optional[datetime] = Field(default=None, description="The date the role or access profile or entitlement is no longer assigned to the specified identity. Also known as the expiration date. * Specify a date in the future. * The current SLA for the deprovisioning is 24 hours. * This date can be modified to either extend or decrease the duration of access item assignments for the specified identity. You can change the expiration date for requests for yourself or direct reports, but you cannot remove an expiration date on an already approved item. If the access request has not been approved, you can cancel it and submit a new one without the expiration. If it has already been approved, then you have to revoke the access and then re-request without the expiration. ", alias="removeDate")
-    __properties: ClassVar[List[str]] = ["type", "id", "comment", "clientMetadata", "removeDate"]
+    assignment_id: Optional[StrictStr] = Field(default=None, description="The assignmentId for a specific role assignment on the identity. This id is used to revoke that specific roleAssignment on that identity. * For use with REVOKE_ACCESS requests for roles for identities with multiple accounts on a single source. ", alias="assignmentId")
+    native_identity: Optional[StrictStr] = Field(default=None, description="The 'distinguishedName' field for an account on the identity, also called nativeIdentity. This nativeIdentity is used to revoke a specific attributeAssignment on the identity. * For use with REVOKE_ACCESS requests for entitlements for identities with multiple accounts on a single source. ", alias="nativeIdentity")
+    __properties: ClassVar[List[str]] = ["type", "id", "comment", "clientMetadata", "removeDate", "assignmentId", "nativeIdentity"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT']):
-            raise ValueError("must be one of enum values ('ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT')")
+            warnings.warn(f"must be one of enum values ('ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT') unknown value: {value}")
         return value
 
     model_config = ConfigDict(
@@ -80,6 +83,16 @@ class AccessRequestItem(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if assignment_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.assignment_id is None and "assignment_id" in self.model_fields_set:
+            _dict['assignmentId'] = None
+
+        # set to None if native_identity (nullable) is None
+        # and model_fields_set contains the field
+        if self.native_identity is None and "native_identity" in self.model_fields_set:
+            _dict['nativeIdentity'] = None
+
         return _dict
 
     @classmethod
@@ -96,7 +109,9 @@ class AccessRequestItem(BaseModel):
             "id": obj.get("id"),
             "comment": obj.get("comment"),
             "clientMetadata": obj.get("clientMetadata"),
-            "removeDate": obj.get("removeDate")
+            "removeDate": obj.get("removeDate"),
+            "assignmentId": obj.get("assignmentId"),
+            "nativeIdentity": obj.get("nativeIdentity")
         })
         return _obj
 

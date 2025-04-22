@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List
@@ -24,18 +25,18 @@ from typing_extensions import Self
 
 class AccountAggregationCompletedSource(BaseModel):
     """
-    The source the accounts are being aggregated from.
+    Source ISC is aggregating accounts from.
     """ # noqa: E501
-    type: StrictStr = Field(description="The DTO type of the source the accounts are being aggregated from.")
-    id: StrictStr = Field(description="The ID of the source the accounts are being aggregated from.")
-    name: StrictStr = Field(description="Display name of the source the accounts are being aggregated from.")
+    type: StrictStr = Field(description="Source's DTO type.")
+    id: StrictStr = Field(description="Source's unique ID.")
+    name: StrictStr = Field(description="Source's name.")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['SOURCE']):
-            raise ValueError("must be one of enum values ('SOURCE')")
+            warnings.warn(f"must be one of enum values ('SOURCE') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

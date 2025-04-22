@@ -38,9 +38,9 @@ class TestIdpDetails(unittest.TestCase):
                 role = 'SAML_IDP',
                 entity_id = 'http://www.okta.com/exkdaruy8Ln5Ry7C54x6',
                 binding = 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
-                auth_context = 'urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport',
+                authn_context = 'urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport',
                 logout_url = 'https://dev-206445.oktapreview.com/login/signout',
-                include_auth_context = False,
+                include_authn_context = False,
                 name_id = 'urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress',
                 jit_configuration = sailpoint.v3.models.jit_configuration.JITConfiguration(
                     enabled = False, 
@@ -55,6 +55,7 @@ class TestIdpDetails(unittest.TestCase):
             )
         else:
             return IdpDetails(
+                mapping_attribute = 'email',
         )
         """
 

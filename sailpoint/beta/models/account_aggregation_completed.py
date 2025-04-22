@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
@@ -30,11 +31,11 @@ class AccountAggregationCompleted(BaseModel):
     AccountAggregationCompleted
     """ # noqa: E501
     source: AccountAggregationCompletedSource
-    status: Dict[str, Any] = Field(description="The overall status of the aggregation.")
-    started: datetime = Field(description="The date and time when the account aggregation started.")
-    completed: datetime = Field(description="The date and time when the account aggregation finished.")
-    errors: Optional[List[StrictStr]] = Field(description="A list of errors that occurred during the aggregation.")
-    warnings: Optional[List[StrictStr]] = Field(description="A list of warnings that occurred during the aggregation.")
+    status: Dict[str, Any] = Field(description="Aggregation's overall status.")
+    started: datetime = Field(description="Date and time when the account aggregation started.")
+    completed: datetime = Field(description="Date and time when the account aggregation finished.")
+    errors: Optional[List[StrictStr]] = Field(description="List of errors that occurred during the aggregation.")
+    warnings: Optional[List[StrictStr]] = Field(description="List of warnings that occurred during the aggregation.")
     stats: AccountAggregationCompletedStats
     __properties: ClassVar[List[str]] = ["source", "status", "started", "completed", "errors", "warnings", "stats"]
 
@@ -42,7 +43,7 @@ class AccountAggregationCompleted(BaseModel):
     def status_validate_enum(cls, value):
         """Validates the enum"""
         if value not in set(['Success', 'Failed', 'Terminated']):
-            raise ValueError("must be one of enum values ('Success', 'Failed', 'Terminated')")
+            warnings.warn(f"must be one of enum values ('Success', 'Failed', 'Terminated') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

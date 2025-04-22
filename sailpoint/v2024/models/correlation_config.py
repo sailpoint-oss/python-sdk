@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
@@ -78,6 +79,21 @@ class CorrelationConfig(BaseModel):
                 if _item_attribute_assignments:
                     _items.append(_item_attribute_assignments.to_dict())
             _dict['attributeAssignments'] = _items
+        # set to None if id (nullable) is None
+        # and model_fields_set contains the field
+        if self.id is None and "id" in self.model_fields_set:
+            _dict['id'] = None
+
+        # set to None if name (nullable) is None
+        # and model_fields_set contains the field
+        if self.name is None and "name" in self.model_fields_set:
+            _dict['name'] = None
+
+        # set to None if attribute_assignments (nullable) is None
+        # and model_fields_set contains the field
+        if self.attribute_assignments is None and "attribute_assignments" in self.model_fields_set:
+            _dict['attributeAssignments'] = None
+
         return _dict
 
     @classmethod

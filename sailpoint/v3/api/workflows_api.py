@@ -304,7 +304,7 @@ class WorkflowsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -596,7 +596,7 @@ class WorkflowsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -886,7 +886,7 @@ class WorkflowsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -1176,7 +1176,7 @@ class WorkflowsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -1453,7 +1453,7 @@ class WorkflowsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -1488,6 +1488,7 @@ class WorkflowsApi:
     def get_workflow(
         self,
         id: Annotated[StrictStr, Field(description="Id of the workflow")],
+        workflow_metrics: Annotated[Optional[StrictBool], Field(description="disable workflow metrics")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1507,6 +1508,8 @@ class WorkflowsApi:
 
         :param id: Id of the workflow (required)
         :type id: str
+        :param workflow_metrics: disable workflow metrics
+        :type workflow_metrics: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1531,6 +1534,7 @@ class WorkflowsApi:
 
         _param = self._get_workflow_serialize(
             id=id,
+            workflow_metrics=workflow_metrics,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1560,6 +1564,7 @@ class WorkflowsApi:
     def get_workflow_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Id of the workflow")],
+        workflow_metrics: Annotated[Optional[StrictBool], Field(description="disable workflow metrics")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1579,6 +1584,8 @@ class WorkflowsApi:
 
         :param id: Id of the workflow (required)
         :type id: str
+        :param workflow_metrics: disable workflow metrics
+        :type workflow_metrics: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1603,6 +1610,7 @@ class WorkflowsApi:
 
         _param = self._get_workflow_serialize(
             id=id,
+            workflow_metrics=workflow_metrics,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1632,6 +1640,7 @@ class WorkflowsApi:
     def get_workflow_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Id of the workflow")],
+        workflow_metrics: Annotated[Optional[StrictBool], Field(description="disable workflow metrics")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1651,6 +1660,8 @@ class WorkflowsApi:
 
         :param id: Id of the workflow (required)
         :type id: str
+        :param workflow_metrics: disable workflow metrics
+        :type workflow_metrics: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1675,6 +1686,7 @@ class WorkflowsApi:
 
         _param = self._get_workflow_serialize(
             id=id,
+            workflow_metrics=workflow_metrics,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1699,6 +1711,7 @@ class WorkflowsApi:
     def _get_workflow_serialize(
         self,
         id,
+        workflow_metrics,
         _request_auth,
         _content_type,
         _headers,
@@ -1723,6 +1736,10 @@ class WorkflowsApi:
         if id is not None:
             _path_params['id'] = id
         # process the query parameters
+        if workflow_metrics is not None:
+            
+            _query_params.append(('workflowMetrics', workflow_metrics))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -1730,7 +1747,7 @@ class WorkflowsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -2010,7 +2027,7 @@ class WorkflowsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -2290,7 +2307,7 @@ class WorkflowsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -2638,7 +2655,7 @@ class WorkflowsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -2934,7 +2951,7 @@ class WorkflowsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -3247,7 +3264,7 @@ class WorkflowsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -3509,7 +3526,7 @@ class WorkflowsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -3822,7 +3839,7 @@ class WorkflowsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -3856,6 +3873,10 @@ class WorkflowsApi:
     @validate_call
     def list_workflows(
         self,
+        trigger_id: Annotated[Optional[StrictStr], Field(description="Trigger ID")] = None,
+        connector_instance_id: Annotated[Optional[StrictStr], Field(description="Connector Instance ID")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3873,6 +3894,14 @@ class WorkflowsApi:
 
         List all workflows in the tenant.
 
+        :param trigger_id: Trigger ID
+        :type trigger_id: str
+        :param connector_instance_id: Connector Instance ID
+        :type connector_instance_id: str
+        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3896,6 +3925,10 @@ class WorkflowsApi:
         """ # noqa: E501
 
         _param = self._list_workflows_serialize(
+            trigger_id=trigger_id,
+            connector_instance_id=connector_instance_id,
+            limit=limit,
+            offset=offset,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3924,6 +3957,10 @@ class WorkflowsApi:
     @validate_call
     def list_workflows_with_http_info(
         self,
+        trigger_id: Annotated[Optional[StrictStr], Field(description="Trigger ID")] = None,
+        connector_instance_id: Annotated[Optional[StrictStr], Field(description="Connector Instance ID")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3941,6 +3978,14 @@ class WorkflowsApi:
 
         List all workflows in the tenant.
 
+        :param trigger_id: Trigger ID
+        :type trigger_id: str
+        :param connector_instance_id: Connector Instance ID
+        :type connector_instance_id: str
+        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3964,6 +4009,10 @@ class WorkflowsApi:
         """ # noqa: E501
 
         _param = self._list_workflows_serialize(
+            trigger_id=trigger_id,
+            connector_instance_id=connector_instance_id,
+            limit=limit,
+            offset=offset,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3992,6 +4041,10 @@ class WorkflowsApi:
     @validate_call
     def list_workflows_without_preload_content(
         self,
+        trigger_id: Annotated[Optional[StrictStr], Field(description="Trigger ID")] = None,
+        connector_instance_id: Annotated[Optional[StrictStr], Field(description="Connector Instance ID")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4009,6 +4062,14 @@ class WorkflowsApi:
 
         List all workflows in the tenant.
 
+        :param trigger_id: Trigger ID
+        :type trigger_id: str
+        :param connector_instance_id: Connector Instance ID
+        :type connector_instance_id: str
+        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4032,6 +4093,10 @@ class WorkflowsApi:
         """ # noqa: E501
 
         _param = self._list_workflows_serialize(
+            trigger_id=trigger_id,
+            connector_instance_id=connector_instance_id,
+            limit=limit,
+            offset=offset,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4055,6 +4120,10 @@ class WorkflowsApi:
 
     def _list_workflows_serialize(
         self,
+        trigger_id,
+        connector_instance_id,
+        limit,
+        offset,
         _request_auth,
         _content_type,
         _headers,
@@ -4077,6 +4146,22 @@ class WorkflowsApi:
 
         # process the path parameters
         # process the query parameters
+        if trigger_id is not None:
+            
+            _query_params.append(('triggerId', trigger_id))
+            
+        if connector_instance_id is not None:
+            
+            _query_params.append(('connectorInstanceId', connector_instance_id))
+            
+        if limit is not None:
+            
+            _query_params.append(('limit', limit))
+            
+        if offset is not None:
+            
+            _query_params.append(('offset', offset))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -4084,7 +4169,7 @@ class WorkflowsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -4377,7 +4462,7 @@ class WorkflowsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -4682,7 +4767,7 @@ class WorkflowsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -4987,7 +5072,7 @@ class WorkflowsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -5292,7 +5377,7 @@ class WorkflowsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]

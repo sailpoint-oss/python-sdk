@@ -44,7 +44,7 @@ class TestImportFormDefinitions202Response(unittest.TestCase):
                         text = '', )
                     ],
                 imported_objects = [
-                    sailpoint.v2024.models.export_form_definitions_by_tenant_200_response_inner.exportFormDefinitionsByTenant_200_response_inner(
+                    sailpoint.v2024.models.import_form_definitions_request_inner.importFormDefinitions_request_inner(
                         object = sailpoint.v2024.models.form_definition_response.FormDefinitionResponse(
                             id = '00000000-0000-0000-0000-000000000000', 
                             name = 'My form', 

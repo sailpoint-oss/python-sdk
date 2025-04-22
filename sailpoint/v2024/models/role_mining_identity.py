@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
@@ -28,7 +29,7 @@ class RoleMiningIdentity(BaseModel):
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="Id of the identity")
     name: Optional[StrictStr] = Field(default=None, description="Name of the identity")
-    attributes: Optional[Dict[str, StrictStr]] = None
+    attributes: Optional[Dict[str, Optional[StrictStr]]] = None
     __properties: ClassVar[List[str]] = ["id", "name", "attributes"]
 
     model_config = ConfigDict(

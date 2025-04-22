@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
@@ -38,7 +39,7 @@ class AttrSyncSource(BaseModel):
             return value
 
         if value not in set(['SOURCE']):
-            raise ValueError("must be one of enum values ('SOURCE')")
+            warnings.warn(f"must be one of enum values ('SOURCE') unknown value: {value}")
         return value
 
     model_config = ConfigDict(
@@ -80,6 +81,11 @@ class AttrSyncSource(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if name (nullable) is None
+        # and model_fields_set contains the field
+        if self.name is None and "name" in self.model_fields_set:
+            _dict['name'] = None
+
         return _dict
 
     @classmethod

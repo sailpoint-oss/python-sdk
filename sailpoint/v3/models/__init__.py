@@ -23,6 +23,8 @@ from sailpoint.v3.models.access_criteria_criteria_list_inner import AccessCriter
 from sailpoint.v3.models.access_item_requested_for import AccessItemRequestedFor
 from sailpoint.v3.models.access_item_requester import AccessItemRequester
 from sailpoint.v3.models.access_item_reviewed_by import AccessItemReviewedBy
+from sailpoint.v3.models.access_model_metadata import AccessModelMetadata
+from sailpoint.v3.models.access_model_metadata_values_inner import AccessModelMetadataValuesInner
 from sailpoint.v3.models.access_profile import AccessProfile
 from sailpoint.v3.models.access_profile_approval_scheme import AccessProfileApprovalScheme
 from sailpoint.v3.models.access_profile_bulk_delete_request import AccessProfileBulkDeleteRequest
@@ -56,9 +58,14 @@ from sailpoint.v3.models.account_activity_document import AccountActivityDocumen
 from sailpoint.v3.models.account_activity_item import AccountActivityItem
 from sailpoint.v3.models.account_activity_item_operation import AccountActivityItemOperation
 from sailpoint.v3.models.account_activity_searched_item import AccountActivitySearchedItem
+from sailpoint.v3.models.account_all_of_identity import AccountAllOfIdentity
+from sailpoint.v3.models.account_all_of_owner_identity import AccountAllOfOwnerIdentity
+from sailpoint.v3.models.account_all_of_recommendation import AccountAllOfRecommendation
+from sailpoint.v3.models.account_all_of_source_owner import AccountAllOfSourceOwner
 from sailpoint.v3.models.account_attributes import AccountAttributes
 from sailpoint.v3.models.account_attributes_create import AccountAttributesCreate
 from sailpoint.v3.models.account_attributes_create_attributes import AccountAttributesCreateAttributes
+from sailpoint.v3.models.account_item_ref import AccountItemRef
 from sailpoint.v3.models.account_request import AccountRequest
 from sailpoint.v3.models.account_request_info import AccountRequestInfo
 from sailpoint.v3.models.account_request_result import AccountRequestResult
@@ -192,11 +199,12 @@ from sailpoint.v3.models.dto_type import DtoType
 from sailpoint.v3.models.duo_verification_request import DuoVerificationRequest
 from sailpoint.v3.models.email_notification_option import EmailNotificationOption
 from sailpoint.v3.models.entitlement import Entitlement
+from sailpoint.v3.models.entitlement_access_model_metadata import EntitlementAccessModelMetadata
 from sailpoint.v3.models.entitlement_document import EntitlementDocument
 from sailpoint.v3.models.entitlement_document_all_of_manually_updated_fields import EntitlementDocumentAllOfManuallyUpdatedFields
 from sailpoint.v3.models.entitlement_document_all_of_permissions import EntitlementDocumentAllOfPermissions
 from sailpoint.v3.models.entitlement_document_all_of_source import EntitlementDocumentAllOfSource
-from sailpoint.v3.models.entitlement_dto import EntitlementDto
+from sailpoint.v3.models.entitlement_owner import EntitlementOwner
 from sailpoint.v3.models.entitlement_ref import EntitlementRef
 from sailpoint.v3.models.entitlement_ref1 import EntitlementRef1
 from sailpoint.v3.models.entitlement_request_config import EntitlementRequestConfig
@@ -228,6 +236,7 @@ from sailpoint.v3.models.form_item_details import FormItemDetails
 from sailpoint.v3.models.forward_approval_dto import ForwardApprovalDto
 from sailpoint.v3.models.full_discovered_applications import FullDiscoveredApplications
 from sailpoint.v3.models.get_active_campaigns200_response_inner import GetActiveCampaigns200ResponseInner
+from sailpoint.v3.models.get_campaign200_response import GetCampaign200Response
 from sailpoint.v3.models.get_discovered_applications200_response_inner import GetDiscoveredApplications200ResponseInner
 from sailpoint.v3.models.get_o_auth_client_response import GetOAuthClientResponse
 from sailpoint.v3.models.get_personal_access_token_response import GetPersonalAccessTokenResponse
@@ -414,7 +423,10 @@ from sailpoint.v3.models.requestable_object import RequestableObject
 from sailpoint.v3.models.requestable_object_reference import RequestableObjectReference
 from sailpoint.v3.models.requestable_object_request_status import RequestableObjectRequestStatus
 from sailpoint.v3.models.requestable_object_type import RequestableObjectType
+from sailpoint.v3.models.requested_account_ref import RequestedAccountRef
+from sailpoint.v3.models.requested_for_dto_ref import RequestedForDtoRef
 from sailpoint.v3.models.requested_item_details import RequestedItemDetails
+from sailpoint.v3.models.requested_item_dto_ref import RequestedItemDtoRef
 from sailpoint.v3.models.requested_item_status import RequestedItemStatus
 from sailpoint.v3.models.requested_item_status_cancelled_request_details import RequestedItemStatusCancelledRequestDetails
 from sailpoint.v3.models.requested_item_status_pre_approval_trigger_details import RequestedItemStatusPreApprovalTriggerDetails
@@ -519,6 +531,7 @@ from sailpoint.v3.models.source_cluster import SourceCluster
 from sailpoint.v3.models.source_cluster_dto import SourceClusterDto
 from sailpoint.v3.models.source_connections_dto import SourceConnectionsDto
 from sailpoint.v3.models.source_health_dto import SourceHealthDto
+from sailpoint.v3.models.source_item_ref import SourceItemRef
 from sailpoint.v3.models.source_management_workgroup import SourceManagementWorkgroup
 from sailpoint.v3.models.source_manager_correlation_mapping import SourceManagerCorrelationMapping
 from sailpoint.v3.models.source_manager_correlation_rule import SourceManagerCorrelationRule

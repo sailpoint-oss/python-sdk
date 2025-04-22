@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
@@ -36,7 +37,7 @@ class FormElementValidationsSet(BaseModel):
             return value
 
         if value not in set(['REQUIRED', 'MIN_LENGTH', 'MAX_LENGTH', 'REGEX', 'DATE', 'MAX_DATE', 'MIN_DATE', 'LESS_THAN_DATE', 'PHONE', 'EMAIL', 'DATA_SOURCE', 'TEXTAREA']):
-            raise ValueError("must be one of enum values ('REQUIRED', 'MIN_LENGTH', 'MAX_LENGTH', 'REGEX', 'DATE', 'MAX_DATE', 'MIN_DATE', 'LESS_THAN_DATE', 'PHONE', 'EMAIL', 'DATA_SOURCE', 'TEXTAREA')")
+            warnings.warn(f"must be one of enum values ('REQUIRED', 'MIN_LENGTH', 'MAX_LENGTH', 'REGEX', 'DATE', 'MAX_DATE', 'MIN_DATE', 'LESS_THAN_DATE', 'PHONE', 'EMAIL', 'DATA_SOURCE', 'TEXTAREA') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

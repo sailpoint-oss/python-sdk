@@ -82,6 +82,13 @@ class TestAccessRequestsApi(unittest.TestCase):
         """
         pass
 
+    def test_load_account_selections(self) -> None:
+        """Test case for load_account_selections
+
+        Get accounts selections for identity
+        """
+        pass
+
     def test_set_access_request_config(self) -> None:
         """Test case for set_access_request_config
 

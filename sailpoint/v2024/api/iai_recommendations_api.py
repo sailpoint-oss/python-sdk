@@ -58,7 +58,7 @@ class IAIRecommendationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RecommendationResponseDto:
-        """Returns a Recommendation Based on Object
+        """Returns Recommendation Based on Object
 
         The getRecommendations API returns recommendations based on the requested object. The recommendations are invoked by IdentityIQ and IdentityNow plug-ins that retrieve recommendations based on the performed calculations.
 
@@ -134,7 +134,7 @@ class IAIRecommendationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[RecommendationResponseDto]:
-        """Returns a Recommendation Based on Object
+        """Returns Recommendation Based on Object
 
         The getRecommendations API returns recommendations based on the requested object. The recommendations are invoked by IdentityIQ and IdentityNow plug-ins that retrieve recommendations based on the performed calculations.
 
@@ -210,7 +210,7 @@ class IAIRecommendationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Returns a Recommendation Based on Object
+        """Returns Recommendation Based on Object
 
         The getRecommendations API returns recommendations based on the requested object. The recommendations are invoked by IdentityIQ and IdentityNow plug-ins that retrieve recommendations based on the performed calculations.
 
@@ -301,7 +301,7 @@ class IAIRecommendationsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -403,6 +403,7 @@ class IAIRecommendationsApi:
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -474,6 +475,7 @@ class IAIRecommendationsApi:
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -545,6 +547,7 @@ class IAIRecommendationsApi:
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -588,7 +591,7 @@ class IAIRecommendationsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
@@ -681,6 +684,7 @@ class IAIRecommendationsApi:
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -756,6 +760,7 @@ class IAIRecommendationsApi:
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -831,6 +836,7 @@ class IAIRecommendationsApi:
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -877,7 +883,7 @@ class IAIRecommendationsApi:
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
                 [
                     'application/json'
                 ]
