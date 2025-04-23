@@ -43,14 +43,14 @@ class TestRolesApi(unittest.TestCase):
     def test_delete_role(self) -> None:
         """Test case for delete_role
 
-        Delete a Role
+        Delete Role
         """
         pass
 
     def test_get_role(self) -> None:
         """Test case for get_role
 
-        Get a Role
+        Get Role
         """
         pass
 
@@ -71,7 +71,7 @@ class TestRolesApi(unittest.TestCase):
     def test_patch_role(self) -> None:
         """Test case for patch_role
 
-        Patch a specified Role
+        Patch Role
         """
         pass
 

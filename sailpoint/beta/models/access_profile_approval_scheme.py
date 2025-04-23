@@ -27,8 +27,8 @@ class AccessProfileApprovalScheme(BaseModel):
     """
     AccessProfileApprovalScheme
     """ # noqa: E501
-    approver_type: Optional[StrictStr] = Field(default=None, description="Describes the individual or group that is responsible for an approval step. Values are as follows. **APP_OWNER**: The owner of the Application  **OWNER**: Owner of the associated Access Profile or Role  **SOURCE_OWNER**: Owner of the Source associated with an Access Profile  **MANAGER**: Manager of the Identity making the request  **GOVERNANCE_GROUP**: A Governance Group, the ID of which is specified by the **approverId** field", alias="approverType")
-    approver_id: Optional[StrictStr] = Field(default=None, description="Id of the specific approver, used only when approverType is GOVERNANCE_GROUP", alias="approverId")
+    approver_type: Optional[StrictStr] = Field(default=None, description="Describes the individual or group that is responsible for an approval step. These are the possible values: **APP_OWNER**: The owner of the Application  **OWNER**: Owner of the associated Access Profile or Role  **SOURCE_OWNER**: Owner of the Source associated with an Access Profile  **MANAGER**: Manager of the Identity making the request  **GOVERNANCE_GROUP**: A Governance Group, the ID of which is specified by the **approverId** field", alias="approverType")
+    approver_id: Optional[StrictStr] = Field(default=None, description="Specific approver ID. Only use this when the `approverType` is `GOVERNANCE_GROUP`.", alias="approverId")
     __properties: ClassVar[List[str]] = ["approverType", "approverId"]
 
     @field_validator('approver_type')

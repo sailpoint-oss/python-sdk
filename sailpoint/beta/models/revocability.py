@@ -28,7 +28,7 @@ class Revocability(BaseModel):
     """
     Revocability
     """ # noqa: E501
-    approval_schemes: Optional[List[AccessProfileApprovalScheme]] = Field(default=None, description="List describing the steps in approving the revocation request", alias="approvalSchemes")
+    approval_schemes: Optional[List[AccessProfileApprovalScheme]] = Field(default=None, description="List describing the steps involved in approving the revocation request.", alias="approvalSchemes")
     __properties: ClassVar[List[str]] = ["approvalSchemes"]
 
     model_config = ConfigDict(
