@@ -20,7 +20,7 @@ from typing_extensions import Self
 
 class ProvisioningCriteriaOperation(str, Enum):
     """
-    Supported operations on ProvisioningCriteria
+    Supported operations on `ProvisioningCriteria`.
     """
 
     """

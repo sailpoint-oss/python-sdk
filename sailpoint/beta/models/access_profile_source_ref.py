@@ -27,9 +27,9 @@ class AccessProfileSourceRef(BaseModel):
     """
     AccessProfileSourceRef
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(default=None, description="The ID of the Source with with which the Access Profile is associated")
-    type: Optional[StrictStr] = Field(default=None, description="The type of the Source, will always be SOURCE")
-    name: Optional[StrictStr] = Field(default=None, description="The display name of the associated Source")
+    id: Optional[StrictStr] = Field(default=None, description="ID of the source the access profile is associated with.")
+    type: Optional[StrictStr] = Field(default=None, description="Source's DTO type.")
+    name: Optional[StrictStr] = Field(default=None, description="Source name.")
     __properties: ClassVar[List[str]] = ["id", "type", "name"]
 
     @field_validator('type')

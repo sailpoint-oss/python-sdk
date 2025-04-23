@@ -301,11 +301,11 @@ Class | Method | HTTP request | Description
 *RequestableObjectsApi* | [**list_requestable_objects**](sailpoint\v3/docs/RequestableObjectsApi.md#list_requestable_objects) | **GET** /requestable-objects | Requestable Objects List
 *RolesApi* | [**create_role**](sailpoint\v3/docs/RolesApi.md#create_role) | **POST** /roles | Create a Role
 *RolesApi* | [**delete_bulk_roles**](sailpoint\v3/docs/RolesApi.md#delete_bulk_roles) | **POST** /roles/bulk-delete | Delete Role(s)
-*RolesApi* | [**delete_role**](sailpoint\v3/docs/RolesApi.md#delete_role) | **DELETE** /roles/{id} | Delete a Role
-*RolesApi* | [**get_role**](sailpoint\v3/docs/RolesApi.md#get_role) | **GET** /roles/{id} | Get a Role
+*RolesApi* | [**delete_role**](sailpoint\v3/docs/RolesApi.md#delete_role) | **DELETE** /roles/{id} | Delete Role
+*RolesApi* | [**get_role**](sailpoint\v3/docs/RolesApi.md#get_role) | **GET** /roles/{id} | Get Role
 *RolesApi* | [**get_role_assigned_identities**](sailpoint\v3/docs/RolesApi.md#get_role_assigned_identities) | **GET** /roles/{id}/assigned-identities | List Identities assigned a Role
 *RolesApi* | [**list_roles**](sailpoint\v3/docs/RolesApi.md#list_roles) | **GET** /roles | List Roles
-*RolesApi* | [**patch_role**](sailpoint\v3/docs/RolesApi.md#patch_role) | **PATCH** /roles/{id} | Patch a specified Role
+*RolesApi* | [**patch_role**](sailpoint\v3/docs/RolesApi.md#patch_role) | **PATCH** /roles/{id} | Patch Role
 *SODPoliciesApi* | [**create_sod_policy**](sailpoint\v3/docs/SODPoliciesApi.md#create_sod_policy) | **POST** /sod-policies | Create SOD policy
 *SODPoliciesApi* | [**delete_sod_policy**](sailpoint\v3/docs/SODPoliciesApi.md#delete_sod_policy) | **DELETE** /sod-policies/{id} | Delete SOD policy by ID
 *SODPoliciesApi* | [**delete_sod_policy_schedule**](sailpoint\v3/docs/SODPoliciesApi.md#delete_sod_policy_schedule) | **DELETE** /sod-policies/{id}/schedule | Delete SOD policy schedule
