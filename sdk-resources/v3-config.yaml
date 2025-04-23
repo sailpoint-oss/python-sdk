@@ -7,8 +7,8 @@ funtionPrefix:
 subModuleName: V3
 files:
   developerSite_code_examples.mustache:
-    templateType: APIDocs
-    destinationFilename: developerSite_code_examples.yaml
+    templateType: SupportingFiles
+    destinationFilename: sailpoint/v3/docs/Examples/python_code_examples_overlay.yaml
   docs_methods_index.mustache:
     templateType: SupportingFiles
     destinationFilename: sailpoint/v3/docs/Methods/Index.md
