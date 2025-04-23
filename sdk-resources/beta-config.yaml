@@ -7,8 +7,8 @@ funtionPrefix: Beta
 subModuleName: Beta
 files:
   developerSite_code_examples.mustache:
-    templateType: APIDocs
-    destinationFilename: developerSite_code_examples.yaml
+    templateType: SupportingFiles
+    destinationFilename: sailpoint/beta/docs/Examples/python_code_examples_overlay.yaml
   docs_methods_index.mustache:
     templateType: SupportingFiles
     destinationFilename: sailpoint/beta/docs/Methods/Index.md
