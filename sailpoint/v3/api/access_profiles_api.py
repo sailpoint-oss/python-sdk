@@ -62,7 +62,7 @@ class AccessProfilesApi:
     ) -> AccessProfile:
         """Create Access Profile
 
-        Create an access profile. A user with `ROLE_SUBADMIN` or `SOURCE_SUBADMIN` authority must be associated with the access profile's source. The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles.  However, any new access profiles as well as any updates to existing descriptions are limited to 2000 characters.
+        Create an access profile. A user with `ROLE_SUBADMIN` or `SOURCE_SUBADMIN` authority must be associated with the access profile's source. The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles.  However, any new access profiles as well as any updates to existing descriptions are limited to 2000 characters. >**Note:** To use this endpoint, you need all the listed scopes.
 
         :param access_profile: (required)
         :type access_profile: AccessProfile
@@ -134,7 +134,7 @@ class AccessProfilesApi:
     ) -> ApiResponse[AccessProfile]:
         """Create Access Profile
 
-        Create an access profile. A user with `ROLE_SUBADMIN` or `SOURCE_SUBADMIN` authority must be associated with the access profile's source. The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles.  However, any new access profiles as well as any updates to existing descriptions are limited to 2000 characters.
+        Create an access profile. A user with `ROLE_SUBADMIN` or `SOURCE_SUBADMIN` authority must be associated with the access profile's source. The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles.  However, any new access profiles as well as any updates to existing descriptions are limited to 2000 characters. >**Note:** To use this endpoint, you need all the listed scopes.
 
         :param access_profile: (required)
         :type access_profile: AccessProfile
@@ -206,7 +206,7 @@ class AccessProfilesApi:
     ) -> RESTResponseType:
         """Create Access Profile
 
-        Create an access profile. A user with `ROLE_SUBADMIN` or `SOURCE_SUBADMIN` authority must be associated with the access profile's source. The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles.  However, any new access profiles as well as any updates to existing descriptions are limited to 2000 characters.
+        Create an access profile. A user with `ROLE_SUBADMIN` or `SOURCE_SUBADMIN` authority must be associated with the access profile's source. The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles.  However, any new access profiles as well as any updates to existing descriptions are limited to 2000 characters. >**Note:** To use this endpoint, you need all the listed scopes.
 
         :param access_profile: (required)
         :type access_profile: AccessProfile
@@ -1573,7 +1573,7 @@ class AccessProfilesApi:
     ) -> List[AccessProfile]:
         """List Access Profiles
 
-        Get a list of access profiles. >**Note:** When you filter for access profiles that have the '+' symbol in their names, the response is blank. 
+        Get a list of access profiles.  >**Note:** When you filter for access profiles that have the '+' symbol in their names, the response is blank. 
 
         :param for_subadmin: Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity's ID.  If you specify an identity that isn't a subadmin, the API returns a 400 Bad Request error.
         :type for_subadmin: str
@@ -1673,7 +1673,7 @@ class AccessProfilesApi:
     ) -> ApiResponse[List[AccessProfile]]:
         """List Access Profiles
 
-        Get a list of access profiles. >**Note:** When you filter for access profiles that have the '+' symbol in their names, the response is blank. 
+        Get a list of access profiles.  >**Note:** When you filter for access profiles that have the '+' symbol in their names, the response is blank. 
 
         :param for_subadmin: Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity's ID.  If you specify an identity that isn't a subadmin, the API returns a 400 Bad Request error.
         :type for_subadmin: str
@@ -1773,7 +1773,7 @@ class AccessProfilesApi:
     ) -> RESTResponseType:
         """List Access Profiles
 
-        Get a list of access profiles. >**Note:** When you filter for access profiles that have the '+' symbol in their names, the response is blank. 
+        Get a list of access profiles.  >**Note:** When you filter for access profiles that have the '+' symbol in their names, the response is blank. 
 
         :param for_subadmin: Filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN identity. The value of the parameter is either an identity ID or the special value **me**, which is shorthand for the calling identity's ID.  If you specify an identity that isn't a subadmin, the API returns a 400 Bad Request error.
         :type for_subadmin: str
