@@ -42,8 +42,8 @@ class WorkflowExecution(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['Completed', 'Failed', 'Canceled', 'Running']):
-            warnings.warn(f"must be one of enum values ('Completed', 'Failed', 'Canceled', 'Running') unknown value: {value}")
+        if value not in set(['Completed', 'Failed', 'Canceled', 'Queued', 'Running']):
+            warnings.warn(f"must be one of enum values ('Completed', 'Failed', 'Canceled', 'Queued', 'Running') unknown value: {value}")
         return value
 
     model_config = ConfigDict(
