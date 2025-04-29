@@ -7382,7 +7382,6 @@ class SourcesApi:
         id: Annotated[StrictStr, Field(description="Source Id")],
         file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The CSV file containing the source accounts to aggregate.")] = None,
         disable_optimization: Annotated[Optional[StrictStr], Field(description="Use this flag to reprocess every account whether or not the data has changed.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7402,8 +7401,6 @@ class SourcesApi:
 
         :param id: Source Id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param file: The CSV file containing the source accounts to aggregate.
         :type file: bytearray
         :param disable_optimization: Use this flag to reprocess every account whether or not the data has changed.
@@ -7432,7 +7429,6 @@ class SourcesApi:
 
         _param = self._import_accounts_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             file=file,
             disable_optimization=disable_optimization,
             _request_auth=_request_auth,
@@ -7466,7 +7462,6 @@ class SourcesApi:
         id: Annotated[StrictStr, Field(description="Source Id")],
         file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The CSV file containing the source accounts to aggregate.")] = None,
         disable_optimization: Annotated[Optional[StrictStr], Field(description="Use this flag to reprocess every account whether or not the data has changed.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7486,8 +7481,6 @@ class SourcesApi:
 
         :param id: Source Id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param file: The CSV file containing the source accounts to aggregate.
         :type file: bytearray
         :param disable_optimization: Use this flag to reprocess every account whether or not the data has changed.
@@ -7516,7 +7509,6 @@ class SourcesApi:
 
         _param = self._import_accounts_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             file=file,
             disable_optimization=disable_optimization,
             _request_auth=_request_auth,
@@ -7550,7 +7542,6 @@ class SourcesApi:
         id: Annotated[StrictStr, Field(description="Source Id")],
         file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The CSV file containing the source accounts to aggregate.")] = None,
         disable_optimization: Annotated[Optional[StrictStr], Field(description="Use this flag to reprocess every account whether or not the data has changed.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7570,8 +7561,6 @@ class SourcesApi:
 
         :param id: Source Id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param file: The CSV file containing the source accounts to aggregate.
         :type file: bytearray
         :param disable_optimization: Use this flag to reprocess every account whether or not the data has changed.
@@ -7600,7 +7589,6 @@ class SourcesApi:
 
         _param = self._import_accounts_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             file=file,
             disable_optimization=disable_optimization,
             _request_auth=_request_auth,
@@ -7627,7 +7615,6 @@ class SourcesApi:
     def _import_accounts_serialize(
         self,
         id,
-        x_sail_point_experimental,
         file,
         disable_optimization,
         _request_auth,
@@ -7655,8 +7642,6 @@ class SourcesApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         if file is not None:
             _files['file'] = file
