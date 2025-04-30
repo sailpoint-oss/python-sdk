@@ -1459,7 +1459,6 @@ Class | Method | HTTP request | Description
  - [PasswordSyncGroup](sailpoint/v2025/docs/PasswordSyncGroup.md)
  - [PatOwner](sailpoint/v2025/docs/PatOwner.md)
  - [PatchPotentialRoleRequestInner](sailpoint/v2025/docs/PatchPotentialRoleRequestInner.md)
- - [PatchServiceDeskIntegrationRequest](sailpoint/v2025/docs/PatchServiceDeskIntegrationRequest.md)
  - [PeerGroupMember](sailpoint/v2025/docs/PeerGroupMember.md)
  - [PendingApproval](sailpoint/v2025/docs/PendingApproval.md)
  - [PendingApprovalAction](sailpoint/v2025/docs/PendingApprovalAction.md)

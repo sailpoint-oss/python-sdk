@@ -558,7 +558,6 @@ from sailpoint.beta.models.password_status import PasswordStatus
 from sailpoint.beta.models.password_sync_group import PasswordSyncGroup
 from sailpoint.beta.models.pat_owner import PatOwner
 from sailpoint.beta.models.patch_potential_role_request_inner import PatchPotentialRoleRequestInner
-from sailpoint.beta.models.patch_service_desk_integration_request import PatchServiceDeskIntegrationRequest
 from sailpoint.beta.models.peer_group_member import PeerGroupMember
 from sailpoint.beta.models.pending_approval import PendingApproval
 from sailpoint.beta.models.pending_approval_action import PendingApprovalAction

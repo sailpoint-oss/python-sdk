@@ -19,7 +19,7 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from sailpoint.v2025.models.patch_service_desk_integration_request import PatchServiceDeskIntegrationRequest
+from sailpoint.v2025.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v2025.models.queued_check_config_details import QueuedCheckConfigDetails
 from sailpoint.v2025.models.service_desk_integration_dto import ServiceDeskIntegrationDto
 from sailpoint.v2025.models.service_desk_integration_template_dto import ServiceDeskIntegrationTemplateDto
@@ -2060,7 +2060,7 @@ class ServiceDeskIntegrationApi:
     def patch_service_desk_integration(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Service Desk integration to update")],
-        patch_service_desk_integration_request: Annotated[PatchServiceDeskIntegrationRequest, Field(description="A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed. ")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed. ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2080,8 +2080,8 @@ class ServiceDeskIntegrationApi:
 
         :param id: ID of the Service Desk integration to update (required)
         :type id: str
-        :param patch_service_desk_integration_request: A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed.  (required)
-        :type patch_service_desk_integration_request: PatchServiceDeskIntegrationRequest
+        :param json_patch_operation: A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed.  (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2106,7 +2106,7 @@ class ServiceDeskIntegrationApi:
 
         _param = self._patch_service_desk_integration_serialize(
             id=id,
-            patch_service_desk_integration_request=patch_service_desk_integration_request,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2137,7 +2137,7 @@ class ServiceDeskIntegrationApi:
     def patch_service_desk_integration_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Service Desk integration to update")],
-        patch_service_desk_integration_request: Annotated[PatchServiceDeskIntegrationRequest, Field(description="A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed. ")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed. ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2157,8 +2157,8 @@ class ServiceDeskIntegrationApi:
 
         :param id: ID of the Service Desk integration to update (required)
         :type id: str
-        :param patch_service_desk_integration_request: A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed.  (required)
-        :type patch_service_desk_integration_request: PatchServiceDeskIntegrationRequest
+        :param json_patch_operation: A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed.  (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2183,7 +2183,7 @@ class ServiceDeskIntegrationApi:
 
         _param = self._patch_service_desk_integration_serialize(
             id=id,
-            patch_service_desk_integration_request=patch_service_desk_integration_request,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2214,7 +2214,7 @@ class ServiceDeskIntegrationApi:
     def patch_service_desk_integration_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Service Desk integration to update")],
-        patch_service_desk_integration_request: Annotated[PatchServiceDeskIntegrationRequest, Field(description="A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed. ")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed. ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2234,8 +2234,8 @@ class ServiceDeskIntegrationApi:
 
         :param id: ID of the Service Desk integration to update (required)
         :type id: str
-        :param patch_service_desk_integration_request: A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed.  (required)
-        :type patch_service_desk_integration_request: PatchServiceDeskIntegrationRequest
+        :param json_patch_operation: A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that a PATCH operation was attempted that is not allowed.  (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2260,7 +2260,7 @@ class ServiceDeskIntegrationApi:
 
         _param = self._patch_service_desk_integration_serialize(
             id=id,
-            patch_service_desk_integration_request=patch_service_desk_integration_request,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2286,7 +2286,7 @@ class ServiceDeskIntegrationApi:
     def _patch_service_desk_integration_serialize(
         self,
         id,
-        patch_service_desk_integration_request,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -2296,6 +2296,7 @@ class ServiceDeskIntegrationApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -2314,8 +2315,8 @@ class ServiceDeskIntegrationApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if patch_service_desk_integration_request is not None:
-            _body_params = patch_service_desk_integration_request
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`

@@ -798,7 +798,6 @@ Class | Method | HTTP request | Description
  - [PasswordStatus](sailpoint/v3/docs/PasswordStatus.md)
  - [PasswordSyncGroup](sailpoint/v3/docs/PasswordSyncGroup.md)
  - [PatOwner](sailpoint/v3/docs/PatOwner.md)
- - [PatchServiceDeskIntegrationRequest](sailpoint/v3/docs/PatchServiceDeskIntegrationRequest.md)
  - [PendingApproval](sailpoint/v3/docs/PendingApproval.md)
  - [PendingApprovalAction](sailpoint/v3/docs/PendingApprovalAction.md)
  - [PendingApprovalOwner](sailpoint/v3/docs/PendingApprovalOwner.md)

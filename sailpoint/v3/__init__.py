@@ -438,7 +438,6 @@ from sailpoint.v3.models.password_policy_v3_dto import PasswordPolicyV3Dto
 from sailpoint.v3.models.password_status import PasswordStatus
 from sailpoint.v3.models.password_sync_group import PasswordSyncGroup
 from sailpoint.v3.models.pat_owner import PatOwner
-from sailpoint.v3.models.patch_service_desk_integration_request import PatchServiceDeskIntegrationRequest
 from sailpoint.v3.models.pending_approval import PendingApproval
 from sailpoint.v3.models.pending_approval_action import PendingApprovalAction
 from sailpoint.v3.models.pending_approval_owner import PendingApprovalOwner

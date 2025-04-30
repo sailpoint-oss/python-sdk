@@ -840,7 +840,6 @@ sailpoint/v2025/docs/PasswordSyncGroup.md
 sailpoint/v2025/docs/PasswordSyncGroupsApi.md
 sailpoint/v2025/docs/PatOwner.md
 sailpoint/v2025/docs/PatchPotentialRoleRequestInner.md
-sailpoint/v2025/docs/PatchServiceDeskIntegrationRequest.md
 sailpoint/v2025/docs/PeerGroupMember.md
 sailpoint/v2025/docs/PendingApproval.md
 sailpoint/v2025/docs/PendingApprovalAction.md
@@ -1992,7 +1991,6 @@ sailpoint/v2025/models/password_status.py
 sailpoint/v2025/models/password_sync_group.py
 sailpoint/v2025/models/pat_owner.py
 sailpoint/v2025/models/patch_potential_role_request_inner.py
-sailpoint/v2025/models/patch_service_desk_integration_request.py
 sailpoint/v2025/models/peer_group_member.py
 sailpoint/v2025/models/pending_approval.py
 sailpoint/v2025/models/pending_approval_action.py
@@ -3171,7 +3169,6 @@ sailpoint/v2025/test/test_password_sync_group.py
 sailpoint/v2025/test/test_password_sync_groups_api.py
 sailpoint/v2025/test/test_pat_owner.py
 sailpoint/v2025/test/test_patch_potential_role_request_inner.py
-sailpoint/v2025/test/test_patch_service_desk_integration_request.py
 sailpoint/v2025/test/test_peer_group_member.py
 sailpoint/v2025/test/test_pending_approval.py
 sailpoint/v2025/test/test_pending_approval_action.py

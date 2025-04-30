@@ -693,7 +693,6 @@ from sailpoint.v2024.models.password_status import PasswordStatus
 from sailpoint.v2024.models.password_sync_group import PasswordSyncGroup
 from sailpoint.v2024.models.pat_owner import PatOwner
 from sailpoint.v2024.models.patch_potential_role_request_inner import PatchPotentialRoleRequestInner
-from sailpoint.v2024.models.patch_service_desk_integration_request import PatchServiceDeskIntegrationRequest
 from sailpoint.v2024.models.peer_group_member import PeerGroupMember
 from sailpoint.v2024.models.pending_approval import PendingApproval
 from sailpoint.v2024.models.pending_approval_action import PendingApprovalAction
