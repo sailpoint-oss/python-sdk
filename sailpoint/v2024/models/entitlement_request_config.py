@@ -18,8 +18,9 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.v2024.models.entitlement_access_request_config import EntitlementAccessRequestConfig
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,11 +28,8 @@ class EntitlementRequestConfig(BaseModel):
     """
     EntitlementRequestConfig
     """ # noqa: E501
-    allow_entitlement_request: Optional[StrictBool] = Field(default=False, description="If this is true, entitlement requests are allowed.", alias="allowEntitlementRequest")
-    request_comments_required: Optional[StrictBool] = Field(default=False, description="If this is true, comments are required to submit entitlement requests.", alias="requestCommentsRequired")
-    denied_comments_required: Optional[StrictBool] = Field(default=False, description="If this is true, comments are required to reject entitlement requests.", alias="deniedCommentsRequired")
-    grant_request_approval_schemes: Optional[StrictStr] = Field(default='sourceOwner', description="Approval schemes for granting entitlement request. This can be empty if no approval is needed. Multiple schemes must be comma-separated. The valid schemes are \"entitlementOwner\", \"sourceOwner\", \"manager\" and \"`workgroup:{id}`\". You can use multiple governance groups (workgroups). ", alias="grantRequestApprovalSchemes")
-    __properties: ClassVar[List[str]] = ["allowEntitlementRequest", "requestCommentsRequired", "deniedCommentsRequired", "grantRequestApprovalSchemes"]
+    access_request_config: Optional[EntitlementAccessRequestConfig] = Field(default=None, alias="accessRequestConfig")
+    __properties: ClassVar[List[str]] = ["accessRequestConfig"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -72,11 +70,9 @@ class EntitlementRequestConfig(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if grant_request_approval_schemes (nullable) is None
-        # and model_fields_set contains the field
-        if self.grant_request_approval_schemes is None and "grant_request_approval_schemes" in self.model_fields_set:
-            _dict['grantRequestApprovalSchemes'] = None
-
+        # override the default output from pydantic by calling `to_dict()` of access_request_config
+        if self.access_request_config:
+            _dict['accessRequestConfig'] = self.access_request_config.to_dict()
         return _dict
 
     @classmethod
@@ -89,10 +85,7 @@ class EntitlementRequestConfig(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "allowEntitlementRequest": obj.get("allowEntitlementRequest") if obj.get("allowEntitlementRequest") is not None else False,
-            "requestCommentsRequired": obj.get("requestCommentsRequired") if obj.get("requestCommentsRequired") is not None else False,
-            "deniedCommentsRequired": obj.get("deniedCommentsRequired") if obj.get("deniedCommentsRequired") is not None else False,
-            "grantRequestApprovalSchemes": obj.get("grantRequestApprovalSchemes") if obj.get("grantRequestApprovalSchemes") is not None else 'sourceOwner'
+            "accessRequestConfig": EntitlementAccessRequestConfig.from_dict(obj["accessRequestConfig"]) if obj.get("accessRequestConfig") is not None else None
         })
         return _obj
 

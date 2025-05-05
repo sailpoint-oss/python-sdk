@@ -35,10 +35,14 @@ class TestEntitlementRequestConfig(unittest.TestCase):
         model = EntitlementRequestConfig()
         if include_optional:
             return EntitlementRequestConfig(
-                allow_entitlement_request = True,
-                request_comments_required = False,
-                denied_comments_required = False,
-                grant_request_approval_schemes = 'sourceOwner'
+                access_request_config = sailpoint.v2024.models.entitlement_access_request_config.EntitlementAccessRequestConfig(
+                    approval_schemes = [
+                        sailpoint.v2024.models.entitlement_approval_scheme.EntitlementApprovalScheme(
+                            approver_type = 'GOVERNANCE_GROUP', 
+                            approver_id = 'e3eab852-8315-467f-9de7-70eda97f63c8', )
+                        ], 
+                    request_comment_required = True, 
+                    denial_comment_required = False, )
             )
         else:
             return EntitlementRequestConfig(
