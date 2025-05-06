@@ -413,9 +413,17 @@ Class | Method | HTTP request | Description
 *MFAConfigurationApi* | [**set_mfa_okta_config**](sailpoint/v2024/docs/MFAConfigurationApi.md#set_mfa_okta_config) | **PUT** /mfa/okta-verify/config | Set Okta MFA configuration
 *MFAConfigurationApi* | [**set_mfakba_config**](sailpoint/v2024/docs/MFAConfigurationApi.md#set_mfakba_config) | **POST** /mfa/kba/config/answers | Set MFA KBA configuration
 *MFAConfigurationApi* | [**test_mfa_config**](sailpoint/v2024/docs/MFAConfigurationApi.md#test_mfa_config) | **GET** /mfa/{method}/test | MFA method&#39;s test configuration
+*MachineAccountClassifyApi* | [**send_classify_machine_account**](sailpoint/v2024/docs/MachineAccountClassifyApi.md#send_classify_machine_account) | **POST** /accounts/{id}/classify | Classify a Single Machine Account
+*MachineAccountMappingsApi* | [**create_machine_account_mappings**](sailpoint/v2024/docs/MachineAccountMappingsApi.md#create_machine_account_mappings) | **POST** /sources/{sourceId}/machine-account-mappings | Create Machine Account Mappings
+*MachineAccountMappingsApi* | [**delete_machine_account_mappings**](sailpoint/v2024/docs/MachineAccountMappingsApi.md#delete_machine_account_mappings) | **DELETE** /sources/{sourceId}/machine-account-mappings | Delete Source&#39;s Machine Account Mappings
+*MachineAccountMappingsApi* | [**list_machine_account_mappings**](sailpoint/v2024/docs/MachineAccountMappingsApi.md#list_machine_account_mappings) | **GET** /sources/{sourceId}/machine-account-mappings | Machine Account Mapping for Source
+*MachineAccountMappingsApi* | [**set_machine_account_mappings**](sailpoint/v2024/docs/MachineAccountMappingsApi.md#set_machine_account_mappings) | **PUT** /sources/{sourceId}/machine-mappings | Update Source&#39;s Machine Account Mappings
 *MachineAccountsApi* | [**get_machine_account**](sailpoint/v2024/docs/MachineAccountsApi.md#get_machine_account) | **GET** /machine-accounts/{id} | Machine Account Details
 *MachineAccountsApi* | [**list_machine_accounts**](sailpoint/v2024/docs/MachineAccountsApi.md#list_machine_accounts) | **GET** /machine-accounts | Machine Accounts List
 *MachineAccountsApi* | [**update_machine_account**](sailpoint/v2024/docs/MachineAccountsApi.md#update_machine_account) | **PATCH** /machine-accounts/{id} | Update a Machine Account
+*MachineClassificationConfigApi* | [**delete_machine_classification_config**](sailpoint/v2024/docs/MachineClassificationConfigApi.md#delete_machine_classification_config) | **DELETE** /sources/{sourceId}/machine-classification-config | Delete Source&#39;s Classification Config
+*MachineClassificationConfigApi* | [**get_machine_classification_config**](sailpoint/v2024/docs/MachineClassificationConfigApi.md#get_machine_classification_config) | **GET** /sources/{sourceId}/machine-classification-config | Machine Classification Config for Source
+*MachineClassificationConfigApi* | [**set_machine_classification_config**](sailpoint/v2024/docs/MachineClassificationConfigApi.md#set_machine_classification_config) | **PUT** /sources/{sourceId}/machine-classification-config | Update Source&#39;s Classification Config
 *MachineIdentitiesApi* | [**create_machine_identity**](sailpoint/v2024/docs/MachineIdentitiesApi.md#create_machine_identity) | **POST** /machine-identities | Create Machine Identities
 *MachineIdentitiesApi* | [**delete_machine_identity**](sailpoint/v2024/docs/MachineIdentitiesApi.md#delete_machine_identity) | **DELETE** /machine-identities/{id} | Delete machine identity
 *MachineIdentitiesApi* | [**get_machine_identity**](sailpoint/v2024/docs/MachineIdentitiesApi.md#get_machine_identity) | **GET** /machine-identities/{id} | Machine Identity Details
@@ -949,6 +957,12 @@ Class | Method | HTTP request | Description
  - [AttributeDefinition](sailpoint/v2024/docs/AttributeDefinition.md)
  - [AttributeDefinitionSchema](sailpoint/v2024/docs/AttributeDefinitionSchema.md)
  - [AttributeDefinitionType](sailpoint/v2024/docs/AttributeDefinitionType.md)
+ - [AttributeMappings](sailpoint/v2024/docs/AttributeMappings.md)
+ - [AttributeMappingsAllOfTarget](sailpoint/v2024/docs/AttributeMappingsAllOfTarget.md)
+ - [AttributeMappingsAllOfTransformDefinition](sailpoint/v2024/docs/AttributeMappingsAllOfTransformDefinition.md)
+ - [AttributeMappingsAllOfTransformDefinitionAttributes](sailpoint/v2024/docs/AttributeMappingsAllOfTransformDefinitionAttributes.md)
+ - [AttributeMappingsAllOfTransformDefinitionAttributesInput](sailpoint/v2024/docs/AttributeMappingsAllOfTransformDefinitionAttributesInput.md)
+ - [AttributeMappingsAllOfTransformDefinitionAttributesInputAttributes](sailpoint/v2024/docs/AttributeMappingsAllOfTransformDefinitionAttributesInputAttributes.md)
  - [AttributeRequest](sailpoint/v2024/docs/AttributeRequest.md)
  - [AttributeRequestValue](sailpoint/v2024/docs/AttributeRequestValue.md)
  - [AttributeValueDTO](sailpoint/v2024/docs/AttributeValueDTO.md)
@@ -1333,6 +1347,7 @@ Class | Method | HTTP request | Description
  - [LockoutConfiguration](sailpoint/v2024/docs/LockoutConfiguration.md)
  - [LookupStep](sailpoint/v2024/docs/LookupStep.md)
  - [MachineAccount](sailpoint/v2024/docs/MachineAccount.md)
+ - [MachineClassificationConfig](sailpoint/v2024/docs/MachineClassificationConfig.md)
  - [MachineIdentity](sailpoint/v2024/docs/MachineIdentity.md)
  - [MailFromAttributes](sailpoint/v2024/docs/MailFromAttributes.md)
  - [MailFromAttributesDto](sailpoint/v2024/docs/MailFromAttributesDto.md)
@@ -1682,6 +1697,7 @@ Class | Method | HTTP request | Description
  - [SelectorAccountMatchConfigMatchExpression](sailpoint/v2024/docs/SelectorAccountMatchConfigMatchExpression.md)
  - [SelfImportExportDto](sailpoint/v2024/docs/SelfImportExportDto.md)
  - [SendAccountVerificationRequest](sailpoint/v2024/docs/SendAccountVerificationRequest.md)
+ - [SendClassifyMachineAccount200Response](sailpoint/v2024/docs/SendClassifyMachineAccount200Response.md)
  - [SendTestNotificationRequestDto](sailpoint/v2024/docs/SendTestNotificationRequestDto.md)
  - [ServiceDeskIntegrationDto](sailpoint/v2024/docs/ServiceDeskIntegrationDto.md)
  - [ServiceDeskIntegrationTemplateDto](sailpoint/v2024/docs/ServiceDeskIntegrationTemplateDto.md)
