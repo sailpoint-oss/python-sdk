@@ -52,7 +52,7 @@ class PublicIdentitiesConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> PublicIdentityConfig:
-        """Get Public Identity Config
+        """(Deprecated) Get Public Identity Config
 
         This gets details of public identity config.
 
@@ -77,6 +77,7 @@ class PublicIdentitiesConfigApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /public-identities-config is deprecated.", DeprecationWarning)
 
         _param = self._get_public_identity_config_serialize(
             _request_auth=_request_auth,
@@ -120,7 +121,7 @@ class PublicIdentitiesConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[PublicIdentityConfig]:
-        """Get Public Identity Config
+        """(Deprecated) Get Public Identity Config
 
         This gets details of public identity config.
 
@@ -145,6 +146,7 @@ class PublicIdentitiesConfigApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /public-identities-config is deprecated.", DeprecationWarning)
 
         _param = self._get_public_identity_config_serialize(
             _request_auth=_request_auth,
@@ -188,7 +190,7 @@ class PublicIdentitiesConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Public Identity Config
+        """(Deprecated) Get Public Identity Config
 
         This gets details of public identity config.
 
@@ -213,6 +215,7 @@ class PublicIdentitiesConfigApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /public-identities-config is deprecated.", DeprecationWarning)
 
         _param = self._get_public_identity_config_serialize(
             _request_auth=_request_auth,
@@ -315,7 +318,7 @@ class PublicIdentitiesConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> PublicIdentityConfig:
-        """Update Public Identity Config
+        """(Deprecated) Update Public Identity Config
 
         This updates the details of public identity config.
 
@@ -342,6 +345,7 @@ class PublicIdentitiesConfigApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PUT /public-identities-config is deprecated.", DeprecationWarning)
 
         _param = self._update_public_identity_config_serialize(
             public_identity_config=public_identity_config,
@@ -387,7 +391,7 @@ class PublicIdentitiesConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[PublicIdentityConfig]:
-        """Update Public Identity Config
+        """(Deprecated) Update Public Identity Config
 
         This updates the details of public identity config.
 
@@ -414,6 +418,7 @@ class PublicIdentitiesConfigApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PUT /public-identities-config is deprecated.", DeprecationWarning)
 
         _param = self._update_public_identity_config_serialize(
             public_identity_config=public_identity_config,
@@ -459,7 +464,7 @@ class PublicIdentitiesConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Public Identity Config
+        """(Deprecated) Update Public Identity Config
 
         This updates the details of public identity config.
 
@@ -486,6 +491,7 @@ class PublicIdentitiesConfigApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PUT /public-identities-config is deprecated.", DeprecationWarning)
 
         _param = self._update_public_identity_config_serialize(
             public_identity_config=public_identity_config,

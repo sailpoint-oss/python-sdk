@@ -60,7 +60,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> WorkItems:
-        """Approve an Approval Item
+        """(Deprecated) Approve an Approval Item
 
         This API approves an Approval Item. Either an admin, or the owning/current user must make this request.
 
@@ -89,6 +89,7 @@ class WorkItemsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /work-items/{id}/approve/{approvalItemId} is deprecated.", DeprecationWarning)
 
         _param = self._approve_approval_item_serialize(
             id=id,
@@ -101,9 +102,12 @@ class WorkItemsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WorkItems",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -134,7 +138,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[WorkItems]:
-        """Approve an Approval Item
+        """(Deprecated) Approve an Approval Item
 
         This API approves an Approval Item. Either an admin, or the owning/current user must make this request.
 
@@ -163,6 +167,7 @@ class WorkItemsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /work-items/{id}/approve/{approvalItemId} is deprecated.", DeprecationWarning)
 
         _param = self._approve_approval_item_serialize(
             id=id,
@@ -175,9 +180,12 @@ class WorkItemsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WorkItems",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -208,7 +216,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Approve an Approval Item
+        """(Deprecated) Approve an Approval Item
 
         This API approves an Approval Item. Either an admin, or the owning/current user must make this request.
 
@@ -237,6 +245,7 @@ class WorkItemsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /work-items/{id}/approve/{approvalItemId} is deprecated.", DeprecationWarning)
 
         _param = self._approve_approval_item_serialize(
             id=id,
@@ -249,9 +258,12 @@ class WorkItemsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WorkItems",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -345,7 +357,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> WorkItems:
-        """Bulk approve Approval Items
+        """(Deprecated) Bulk approve Approval Items
 
         This API bulk approves Approval Items. Either an admin, or the owning/current user must make this request.
 
@@ -372,6 +384,7 @@ class WorkItemsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /work-items/bulk-approve/{id} is deprecated.", DeprecationWarning)
 
         _param = self._approve_approval_items_in_bulk_serialize(
             id=id,
@@ -383,9 +396,12 @@ class WorkItemsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WorkItems",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -415,7 +431,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[WorkItems]:
-        """Bulk approve Approval Items
+        """(Deprecated) Bulk approve Approval Items
 
         This API bulk approves Approval Items. Either an admin, or the owning/current user must make this request.
 
@@ -442,6 +458,7 @@ class WorkItemsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /work-items/bulk-approve/{id} is deprecated.", DeprecationWarning)
 
         _param = self._approve_approval_items_in_bulk_serialize(
             id=id,
@@ -453,9 +470,12 @@ class WorkItemsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WorkItems",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -485,7 +505,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Bulk approve Approval Items
+        """(Deprecated) Bulk approve Approval Items
 
         This API bulk approves Approval Items. Either an admin, or the owning/current user must make this request.
 
@@ -512,6 +532,7 @@ class WorkItemsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /work-items/bulk-approve/{id} is deprecated.", DeprecationWarning)
 
         _param = self._approve_approval_items_in_bulk_serialize(
             id=id,
@@ -523,9 +544,12 @@ class WorkItemsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WorkItems",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -617,7 +641,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> WorkItems:
-        """Complete a Work Item
+        """(Deprecated) Complete a Work Item
 
         This API completes a work item. Either an admin, or the owning/current user must make this request.
 
@@ -646,6 +670,7 @@ class WorkItemsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /work-items/{id} is deprecated.", DeprecationWarning)
 
         _param = self._complete_work_item_serialize(
             id=id,
@@ -694,7 +719,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[WorkItems]:
-        """Complete a Work Item
+        """(Deprecated) Complete a Work Item
 
         This API completes a work item. Either an admin, or the owning/current user must make this request.
 
@@ -723,6 +748,7 @@ class WorkItemsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /work-items/{id} is deprecated.", DeprecationWarning)
 
         _param = self._complete_work_item_serialize(
             id=id,
@@ -771,7 +797,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Complete a Work Item
+        """(Deprecated) Complete a Work Item
 
         This API completes a work item. Either an admin, or the owning/current user must make this request.
 
@@ -800,6 +826,7 @@ class WorkItemsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /work-items/{id} is deprecated.", DeprecationWarning)
 
         _param = self._complete_work_item_serialize(
             id=id,
@@ -908,311 +935,6 @@ class WorkItemsApi:
 
 
     @validate_call
-    def forward_work_item(
-        self,
-        id: Annotated[StrictStr, Field(description="The ID of the work item")],
-        work_item_forward: WorkItemForward,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
-        """Forward a Work Item
-
-        This API forwards a work item to a new owner. Either an admin, or the owning/current user must make this request.
-
-        :param id: The ID of the work item (required)
-        :type id: str
-        :param work_item_forward: (required)
-        :type work_item_forward: WorkItemForward
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._forward_work_item_serialize(
-            id=id,
-            work_item_forward=work_item_forward,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '400': "ErrorResponseDto",
-            '401': "ListAccessModelMetadataAttribute401Response",
-            '403': "ErrorResponseDto",
-            '429': "ListAccessModelMetadataAttribute429Response",
-            '500': "ErrorResponseDto",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def forward_work_item_with_http_info(
-        self,
-        id: Annotated[StrictStr, Field(description="The ID of the work item")],
-        work_item_forward: WorkItemForward,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
-        """Forward a Work Item
-
-        This API forwards a work item to a new owner. Either an admin, or the owning/current user must make this request.
-
-        :param id: The ID of the work item (required)
-        :type id: str
-        :param work_item_forward: (required)
-        :type work_item_forward: WorkItemForward
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._forward_work_item_serialize(
-            id=id,
-            work_item_forward=work_item_forward,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '400': "ErrorResponseDto",
-            '401': "ListAccessModelMetadataAttribute401Response",
-            '403': "ErrorResponseDto",
-            '429': "ListAccessModelMetadataAttribute429Response",
-            '500': "ErrorResponseDto",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def forward_work_item_without_preload_content(
-        self,
-        id: Annotated[StrictStr, Field(description="The ID of the work item")],
-        work_item_forward: WorkItemForward,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Forward a Work Item
-
-        This API forwards a work item to a new owner. Either an admin, or the owning/current user must make this request.
-
-        :param id: The ID of the work item (required)
-        :type id: str
-        :param work_item_forward: (required)
-        :type work_item_forward: WorkItemForward
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._forward_work_item_serialize(
-            id=id,
-            work_item_forward=work_item_forward,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '400': "ErrorResponseDto",
-            '401': "ListAccessModelMetadataAttribute401Response",
-            '403': "ErrorResponseDto",
-            '429': "ListAccessModelMetadataAttribute429Response",
-            '500': "ErrorResponseDto",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _forward_work_item_serialize(
-        self,
-        id,
-        work_item_forward,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if id is not None:
-            _path_params['id'] = id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-        if work_item_forward is not None:
-            _body_params = work_item_forward
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
-                [
-                    'application/json'
-                ]
-            )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'userAuth', 
-            'userAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/work-items/{id}/forward',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
     def get_completed_work_items(
         self,
         owner_id: Annotated[Optional[StrictStr], Field(description="The id of the owner of the work item list being requested.  Either an admin, or the owning/current user must make this request.")] = None,
@@ -1232,7 +954,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[WorkItems]:
-        """Completed Work Items
+        """(Deprecated) Completed Work Items
 
         This gets a collection of completed work items belonging to either the specified user(admin required), or the current user.
 
@@ -1265,6 +987,7 @@ class WorkItemsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /work-items/completed is deprecated.", DeprecationWarning)
 
         _param = self._get_completed_work_items_serialize(
             owner_id=owner_id,
@@ -1279,9 +1002,12 @@ class WorkItemsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[WorkItems]",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1314,7 +1040,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[WorkItems]]:
-        """Completed Work Items
+        """(Deprecated) Completed Work Items
 
         This gets a collection of completed work items belonging to either the specified user(admin required), or the current user.
 
@@ -1347,6 +1073,7 @@ class WorkItemsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /work-items/completed is deprecated.", DeprecationWarning)
 
         _param = self._get_completed_work_items_serialize(
             owner_id=owner_id,
@@ -1361,9 +1088,12 @@ class WorkItemsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[WorkItems]",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1396,7 +1126,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Completed Work Items
+        """(Deprecated) Completed Work Items
 
         This gets a collection of completed work items belonging to either the specified user(admin required), or the current user.
 
@@ -1429,6 +1159,7 @@ class WorkItemsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /work-items/completed is deprecated.", DeprecationWarning)
 
         _param = self._get_completed_work_items_serialize(
             owner_id=owner_id,
@@ -1443,9 +1174,12 @@ class WorkItemsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[WorkItems]",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1540,6 +1274,8 @@ class WorkItemsApi:
     def get_count_completed_work_items(
         self,
         owner_id: Annotated[Optional[StrictStr], Field(description="ID of the work item owner.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1553,12 +1289,16 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[WorkItemsCount]:
-        """Count Completed Work Items
+        """(Deprecated) Count Completed Work Items
 
         This gets a count of completed work items belonging to either the specified user(admin required), or the current user.
 
         :param owner_id: ID of the work item owner.
         :type owner_id: str
+        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1580,9 +1320,12 @@ class WorkItemsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /work-items/completed/count is deprecated.", DeprecationWarning)
 
         _param = self._get_count_completed_work_items_serialize(
             owner_id=owner_id,
+            limit=limit,
+            offset=offset,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1591,9 +1334,12 @@ class WorkItemsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[WorkItemsCount]",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1610,6 +1356,8 @@ class WorkItemsApi:
     def get_count_completed_work_items_with_http_info(
         self,
         owner_id: Annotated[Optional[StrictStr], Field(description="ID of the work item owner.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1623,12 +1371,16 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[WorkItemsCount]]:
-        """Count Completed Work Items
+        """(Deprecated) Count Completed Work Items
 
         This gets a count of completed work items belonging to either the specified user(admin required), or the current user.
 
         :param owner_id: ID of the work item owner.
         :type owner_id: str
+        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1650,9 +1402,12 @@ class WorkItemsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /work-items/completed/count is deprecated.", DeprecationWarning)
 
         _param = self._get_count_completed_work_items_serialize(
             owner_id=owner_id,
+            limit=limit,
+            offset=offset,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1661,9 +1416,12 @@ class WorkItemsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[WorkItemsCount]",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1680,6 +1438,8 @@ class WorkItemsApi:
     def get_count_completed_work_items_without_preload_content(
         self,
         owner_id: Annotated[Optional[StrictStr], Field(description="ID of the work item owner.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1693,12 +1453,16 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Count Completed Work Items
+        """(Deprecated) Count Completed Work Items
 
         This gets a count of completed work items belonging to either the specified user(admin required), or the current user.
 
         :param owner_id: ID of the work item owner.
         :type owner_id: str
+        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1720,9 +1484,12 @@ class WorkItemsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /work-items/completed/count is deprecated.", DeprecationWarning)
 
         _param = self._get_count_completed_work_items_serialize(
             owner_id=owner_id,
+            limit=limit,
+            offset=offset,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1731,9 +1498,12 @@ class WorkItemsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[WorkItemsCount]",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1745,6 +1515,8 @@ class WorkItemsApi:
     def _get_count_completed_work_items_serialize(
         self,
         owner_id,
+        limit,
+        offset,
         _request_auth,
         _content_type,
         _headers,
@@ -1770,6 +1542,14 @@ class WorkItemsApi:
         if owner_id is not None:
             
             _query_params.append(('ownerId', owner_id))
+            
+        if limit is not None:
+            
+            _query_params.append(('limit', limit))
+            
+        if offset is not None:
+            
+            _query_params.append(('offset', offset))
             
         # process the header parameters
         # process the form parameters
@@ -1826,7 +1606,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> WorkItemsCount:
-        """Count Work Items
+        """(Deprecated) Count Work Items
 
         This gets a count of work items belonging to either the specified user(admin required), or the current user.
 
@@ -1853,6 +1633,7 @@ class WorkItemsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /work-items/count is deprecated.", DeprecationWarning)
 
         _param = self._get_count_work_items_serialize(
             owner_id=owner_id,
@@ -1864,9 +1645,12 @@ class WorkItemsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WorkItemsCount",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1896,7 +1680,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[WorkItemsCount]:
-        """Count Work Items
+        """(Deprecated) Count Work Items
 
         This gets a count of work items belonging to either the specified user(admin required), or the current user.
 
@@ -1923,6 +1707,7 @@ class WorkItemsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /work-items/count is deprecated.", DeprecationWarning)
 
         _param = self._get_count_work_items_serialize(
             owner_id=owner_id,
@@ -1934,9 +1719,12 @@ class WorkItemsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WorkItemsCount",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1966,7 +1754,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Count Work Items
+        """(Deprecated) Count Work Items
 
         This gets a count of work items belonging to either the specified user(admin required), or the current user.
 
@@ -1993,6 +1781,7 @@ class WorkItemsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /work-items/count is deprecated.", DeprecationWarning)
 
         _param = self._get_count_work_items_serialize(
             owner_id=owner_id,
@@ -2004,9 +1793,12 @@ class WorkItemsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WorkItemsCount",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2100,7 +1892,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> object:
-        """Get a Work Item
+        """(Deprecated) Get a Work Item
 
         This gets the details of a Work Item belonging to either the specified user(admin required), or the current user.
 
@@ -2129,6 +1921,7 @@ class WorkItemsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /work-items/{id} is deprecated.", DeprecationWarning)
 
         _param = self._get_work_item_serialize(
             id=id,
@@ -2177,7 +1970,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[object]:
-        """Get a Work Item
+        """(Deprecated) Get a Work Item
 
         This gets the details of a Work Item belonging to either the specified user(admin required), or the current user.
 
@@ -2206,6 +1999,7 @@ class WorkItemsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /work-items/{id} is deprecated.", DeprecationWarning)
 
         _param = self._get_work_item_serialize(
             id=id,
@@ -2254,7 +2048,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get a Work Item
+        """(Deprecated) Get a Work Item
 
         This gets the details of a Work Item belonging to either the specified user(admin required), or the current user.
 
@@ -2283,6 +2077,7 @@ class WorkItemsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /work-items/{id} is deprecated.", DeprecationWarning)
 
         _param = self._get_work_item_serialize(
             id=id,
@@ -2396,7 +2191,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> WorkItemsSummary:
-        """Work Items Summary
+        """(Deprecated) Work Items Summary
 
         This gets a summary of work items belonging to either the specified user(admin required), or the current user.
 
@@ -2423,6 +2218,7 @@ class WorkItemsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /work-items/summary is deprecated.", DeprecationWarning)
 
         _param = self._get_work_items_summary_serialize(
             owner_id=owner_id,
@@ -2434,9 +2230,12 @@ class WorkItemsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WorkItemsSummary",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2466,7 +2265,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[WorkItemsSummary]:
-        """Work Items Summary
+        """(Deprecated) Work Items Summary
 
         This gets a summary of work items belonging to either the specified user(admin required), or the current user.
 
@@ -2493,6 +2292,7 @@ class WorkItemsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /work-items/summary is deprecated.", DeprecationWarning)
 
         _param = self._get_work_items_summary_serialize(
             owner_id=owner_id,
@@ -2504,9 +2304,12 @@ class WorkItemsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WorkItemsSummary",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2536,7 +2339,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Work Items Summary
+        """(Deprecated) Work Items Summary
 
         This gets a summary of work items belonging to either the specified user(admin required), or the current user.
 
@@ -2563,6 +2366,7 @@ class WorkItemsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /work-items/summary is deprecated.", DeprecationWarning)
 
         _param = self._get_work_items_summary_serialize(
             owner_id=owner_id,
@@ -2574,9 +2378,12 @@ class WorkItemsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WorkItemsSummary",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2672,7 +2479,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[WorkItems]:
-        """List Work Items
+        """(Deprecated) List Work Items
 
         This gets a collection of work items belonging to either the specified user(admin required), or the current user.
 
@@ -2705,6 +2512,7 @@ class WorkItemsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /work-items is deprecated.", DeprecationWarning)
 
         _param = self._list_work_items_serialize(
             limit=limit,
@@ -2719,9 +2527,12 @@ class WorkItemsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[WorkItems]",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2754,7 +2565,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[WorkItems]]:
-        """List Work Items
+        """(Deprecated) List Work Items
 
         This gets a collection of work items belonging to either the specified user(admin required), or the current user.
 
@@ -2787,6 +2598,7 @@ class WorkItemsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /work-items is deprecated.", DeprecationWarning)
 
         _param = self._list_work_items_serialize(
             limit=limit,
@@ -2801,9 +2613,12 @@ class WorkItemsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[WorkItems]",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2836,7 +2651,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Work Items
+        """(Deprecated) List Work Items
 
         This gets a collection of work items belonging to either the specified user(admin required), or the current user.
 
@@ -2869,6 +2684,7 @@ class WorkItemsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /work-items is deprecated.", DeprecationWarning)
 
         _param = self._list_work_items_serialize(
             limit=limit,
@@ -2883,9 +2699,12 @@ class WorkItemsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[WorkItems]",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2994,7 +2813,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> WorkItems:
-        """Reject an Approval Item
+        """(Deprecated) Reject an Approval Item
 
         This API rejects an Approval Item. Either an admin, or the owning/current user must make this request.
 
@@ -3023,6 +2842,7 @@ class WorkItemsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /work-items/{id}/reject/{approvalItemId} is deprecated.", DeprecationWarning)
 
         _param = self._reject_approval_item_serialize(
             id=id,
@@ -3035,9 +2855,12 @@ class WorkItemsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WorkItems",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3068,7 +2891,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[WorkItems]:
-        """Reject an Approval Item
+        """(Deprecated) Reject an Approval Item
 
         This API rejects an Approval Item. Either an admin, or the owning/current user must make this request.
 
@@ -3097,6 +2920,7 @@ class WorkItemsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /work-items/{id}/reject/{approvalItemId} is deprecated.", DeprecationWarning)
 
         _param = self._reject_approval_item_serialize(
             id=id,
@@ -3109,9 +2933,12 @@ class WorkItemsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WorkItems",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3142,7 +2969,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Reject an Approval Item
+        """(Deprecated) Reject an Approval Item
 
         This API rejects an Approval Item. Either an admin, or the owning/current user must make this request.
 
@@ -3171,6 +2998,7 @@ class WorkItemsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /work-items/{id}/reject/{approvalItemId} is deprecated.", DeprecationWarning)
 
         _param = self._reject_approval_item_serialize(
             id=id,
@@ -3183,9 +3011,12 @@ class WorkItemsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WorkItems",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3279,7 +3110,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> WorkItems:
-        """Bulk reject Approval Items
+        """(Deprecated) Bulk reject Approval Items
 
         This API bulk rejects Approval Items. Either an admin, or the owning/current user must make this request.
 
@@ -3306,6 +3137,7 @@ class WorkItemsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /work-items/bulk-reject/{id} is deprecated.", DeprecationWarning)
 
         _param = self._reject_approval_items_in_bulk_serialize(
             id=id,
@@ -3317,9 +3149,12 @@ class WorkItemsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WorkItems",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3349,7 +3184,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[WorkItems]:
-        """Bulk reject Approval Items
+        """(Deprecated) Bulk reject Approval Items
 
         This API bulk rejects Approval Items. Either an admin, or the owning/current user must make this request.
 
@@ -3376,6 +3211,7 @@ class WorkItemsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /work-items/bulk-reject/{id} is deprecated.", DeprecationWarning)
 
         _param = self._reject_approval_items_in_bulk_serialize(
             id=id,
@@ -3387,9 +3223,12 @@ class WorkItemsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WorkItems",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3419,7 +3258,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Bulk reject Approval Items
+        """(Deprecated) Bulk reject Approval Items
 
         This API bulk rejects Approval Items. Either an admin, or the owning/current user must make this request.
 
@@ -3446,6 +3285,7 @@ class WorkItemsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /work-items/bulk-reject/{id} is deprecated.", DeprecationWarning)
 
         _param = self._reject_approval_items_in_bulk_serialize(
             id=id,
@@ -3457,9 +3297,12 @@ class WorkItemsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WorkItems",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3551,7 +3394,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> WorkItems:
-        """Submit Account Selections
+        """(Deprecated) Submit Account Selections
 
         This API submits account selections. Either an admin, or the owning/current user must make this request.
 
@@ -3580,6 +3423,7 @@ class WorkItemsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /work-items/{id}/submit-account-selection is deprecated.", DeprecationWarning)
 
         _param = self._submit_account_selection_serialize(
             id=id,
@@ -3592,9 +3436,12 @@ class WorkItemsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WorkItems",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3625,7 +3472,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[WorkItems]:
-        """Submit Account Selections
+        """(Deprecated) Submit Account Selections
 
         This API submits account selections. Either an admin, or the owning/current user must make this request.
 
@@ -3654,6 +3501,7 @@ class WorkItemsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /work-items/{id}/submit-account-selection is deprecated.", DeprecationWarning)
 
         _param = self._submit_account_selection_serialize(
             id=id,
@@ -3666,9 +3514,12 @@ class WorkItemsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WorkItems",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3699,7 +3550,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Submit Account Selections
+        """(Deprecated) Submit Account Selections
 
         This API submits account selections. Either an admin, or the owning/current user must make this request.
 
@@ -3728,6 +3579,7 @@ class WorkItemsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /work-items/{id}/submit-account-selection is deprecated.", DeprecationWarning)
 
         _param = self._submit_account_selection_serialize(
             id=id,
@@ -3740,9 +3592,12 @@ class WorkItemsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WorkItems",
+            '401': "ListAccessModelMetadataAttribute401Response",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3817,6 +3672,314 @@ class WorkItemsApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/work-items/{id}/submit-account-selection',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def submit_forward_work_item(
+        self,
+        id: Annotated[StrictStr, Field(description="The ID of the work item")],
+        work_item_forward: WorkItemForward,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """(Deprecated) Forward a Work Item
+
+        This API forwards a work item to a new owner. Either an admin, or the owning/current user must make this request.
+
+        :param id: The ID of the work item (required)
+        :type id: str
+        :param work_item_forward: (required)
+        :type work_item_forward: WorkItemForward
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+        warnings.warn("POST /work-items/{id}/forward is deprecated.", DeprecationWarning)
+
+        _param = self._submit_forward_work_item_serialize(
+            id=id,
+            work_item_forward=work_item_forward,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttribute401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def submit_forward_work_item_with_http_info(
+        self,
+        id: Annotated[StrictStr, Field(description="The ID of the work item")],
+        work_item_forward: WorkItemForward,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """(Deprecated) Forward a Work Item
+
+        This API forwards a work item to a new owner. Either an admin, or the owning/current user must make this request.
+
+        :param id: The ID of the work item (required)
+        :type id: str
+        :param work_item_forward: (required)
+        :type work_item_forward: WorkItemForward
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+        warnings.warn("POST /work-items/{id}/forward is deprecated.", DeprecationWarning)
+
+        _param = self._submit_forward_work_item_serialize(
+            id=id,
+            work_item_forward=work_item_forward,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttribute401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def submit_forward_work_item_without_preload_content(
+        self,
+        id: Annotated[StrictStr, Field(description="The ID of the work item")],
+        work_item_forward: WorkItemForward,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """(Deprecated) Forward a Work Item
+
+        This API forwards a work item to a new owner. Either an admin, or the owning/current user must make this request.
+
+        :param id: The ID of the work item (required)
+        :type id: str
+        :param work_item_forward: (required)
+        :type work_item_forward: WorkItemForward
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+        warnings.warn("POST /work-items/{id}/forward is deprecated.", DeprecationWarning)
+
+        _param = self._submit_forward_work_item_serialize(
+            id=id,
+            work_item_forward=work_item_forward,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttribute401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _submit_forward_work_item_serialize(
+        self,
+        id,
+        work_item_forward,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if work_item_forward is not None:
+            _body_params = work_item_forward
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'userAuth', 
+            'userAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/work-items/{id}/forward',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

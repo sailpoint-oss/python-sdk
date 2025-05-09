@@ -65,7 +65,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> AccountsAsyncResult:
-        """Create Account
+        """(Deprecated) Create Account
 
         Submits an account creation task - the API then returns the task ID.    The `sourceId` where this account will be created must be included in the `attributes` object.  This endpoint creates an account on the source record in your ISC tenant. This is useful for Flat File (`DelimitedFile`) type sources because it allows you to aggregate new accounts without needing to import a new CSV file every time.   However, if you use this endpoint to create an account for a Direct Connection type source, you must ensure that the account also exists on the target source.  The endpoint doesn't actually provision the account on the target source, which means that if the account doesn't also exist on the target source, an aggregation between the source and your tenant will remove it from your tenant.   By providing the account ID of an existing account in the request body, this API will function as a PATCH operation and update the account. 
 
@@ -92,6 +92,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /accounts is deprecated.", DeprecationWarning)
 
         _param = self._create_account_serialize(
             account_attributes_create=account_attributes_create,
@@ -137,7 +138,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[AccountsAsyncResult]:
-        """Create Account
+        """(Deprecated) Create Account
 
         Submits an account creation task - the API then returns the task ID.    The `sourceId` where this account will be created must be included in the `attributes` object.  This endpoint creates an account on the source record in your ISC tenant. This is useful for Flat File (`DelimitedFile`) type sources because it allows you to aggregate new accounts without needing to import a new CSV file every time.   However, if you use this endpoint to create an account for a Direct Connection type source, you must ensure that the account also exists on the target source.  The endpoint doesn't actually provision the account on the target source, which means that if the account doesn't also exist on the target source, an aggregation between the source and your tenant will remove it from your tenant.   By providing the account ID of an existing account in the request body, this API will function as a PATCH operation and update the account. 
 
@@ -164,6 +165,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /accounts is deprecated.", DeprecationWarning)
 
         _param = self._create_account_serialize(
             account_attributes_create=account_attributes_create,
@@ -209,7 +211,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create Account
+        """(Deprecated) Create Account
 
         Submits an account creation task - the API then returns the task ID.    The `sourceId` where this account will be created must be included in the `attributes` object.  This endpoint creates an account on the source record in your ISC tenant. This is useful for Flat File (`DelimitedFile`) type sources because it allows you to aggregate new accounts without needing to import a new CSV file every time.   However, if you use this endpoint to create an account for a Direct Connection type source, you must ensure that the account also exists on the target source.  The endpoint doesn't actually provision the account on the target source, which means that if the account doesn't also exist on the target source, an aggregation between the source and your tenant will remove it from your tenant.   By providing the account ID of an existing account in the request body, this API will function as a PATCH operation and update the account. 
 
@@ -236,6 +238,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /accounts is deprecated.", DeprecationWarning)
 
         _param = self._create_account_serialize(
             account_attributes_create=account_attributes_create,
@@ -355,7 +358,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> AccountsAsyncResult:
-        """Delete Account
+        """(Deprecated) Delete Account
 
         Use this API to delete an account.  This endpoint submits an account delete task and returns the task ID.  This endpoint only deletes the account from IdentityNow, not the source itself, which can result in the account's returning with the next aggregation between the source and IdentityNow.  To avoid this scenario, it is recommended that you [disable accounts](https://developer.sailpoint.com/idn/api/v3/disable-account) rather than delete them. This will also allow you to reenable the accounts in the future.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. >**NOTE:** You can only delete accounts from sources of the \"DelimitedFile\" type.**
 
@@ -382,6 +385,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /accounts/{id} is deprecated.", DeprecationWarning)
 
         _param = self._delete_account_serialize(
             id=id,
@@ -428,7 +432,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[AccountsAsyncResult]:
-        """Delete Account
+        """(Deprecated) Delete Account
 
         Use this API to delete an account.  This endpoint submits an account delete task and returns the task ID.  This endpoint only deletes the account from IdentityNow, not the source itself, which can result in the account's returning with the next aggregation between the source and IdentityNow.  To avoid this scenario, it is recommended that you [disable accounts](https://developer.sailpoint.com/idn/api/v3/disable-account) rather than delete them. This will also allow you to reenable the accounts in the future.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. >**NOTE:** You can only delete accounts from sources of the \"DelimitedFile\" type.**
 
@@ -455,6 +459,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /accounts/{id} is deprecated.", DeprecationWarning)
 
         _param = self._delete_account_serialize(
             id=id,
@@ -501,7 +506,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Account
+        """(Deprecated) Delete Account
 
         Use this API to delete an account.  This endpoint submits an account delete task and returns the task ID.  This endpoint only deletes the account from IdentityNow, not the source itself, which can result in the account's returning with the next aggregation between the source and IdentityNow.  To avoid this scenario, it is recommended that you [disable accounts](https://developer.sailpoint.com/idn/api/v3/disable-account) rather than delete them. This will also allow you to reenable the accounts in the future.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. >**NOTE:** You can only delete accounts from sources of the \"DelimitedFile\" type.**
 
@@ -528,6 +533,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /accounts/{id} is deprecated.", DeprecationWarning)
 
         _param = self._delete_account_serialize(
             id=id,
@@ -913,7 +919,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> AccountsAsyncResult:
-        """Disable Account
+        """(Deprecated) Disable Account
 
         This API submits a task to disable the account and returns the task ID.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
@@ -942,6 +948,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /accounts/{id}/disable is deprecated.", DeprecationWarning)
 
         _param = self._disable_account_serialize(
             id=id,
@@ -990,7 +997,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[AccountsAsyncResult]:
-        """Disable Account
+        """(Deprecated) Disable Account
 
         This API submits a task to disable the account and returns the task ID.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
@@ -1019,6 +1026,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /accounts/{id}/disable is deprecated.", DeprecationWarning)
 
         _param = self._disable_account_serialize(
             id=id,
@@ -1067,7 +1075,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Disable Account
+        """(Deprecated) Disable Account
 
         This API submits a task to disable the account and returns the task ID.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
@@ -1096,6 +1104,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /accounts/{id}/disable is deprecated.", DeprecationWarning)
 
         _param = self._disable_account_serialize(
             id=id,
@@ -1220,7 +1229,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> object:
-        """Disable IDN Account for Identity
+        """(Deprecated) Disable IDN Account for Identity
 
         This API submits a task to disable IDN account for a single identity.
 
@@ -1247,6 +1256,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /identities-accounts/{id}/disable is deprecated.", DeprecationWarning)
 
         _param = self._disable_account_for_identity_serialize(
             id=id,
@@ -1293,7 +1303,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[object]:
-        """Disable IDN Account for Identity
+        """(Deprecated) Disable IDN Account for Identity
 
         This API submits a task to disable IDN account for a single identity.
 
@@ -1320,6 +1330,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /identities-accounts/{id}/disable is deprecated.", DeprecationWarning)
 
         _param = self._disable_account_for_identity_serialize(
             id=id,
@@ -1366,7 +1377,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Disable IDN Account for Identity
+        """(Deprecated) Disable IDN Account for Identity
 
         This API submits a task to disable IDN account for a single identity.
 
@@ -1393,6 +1404,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /identities-accounts/{id}/disable is deprecated.", DeprecationWarning)
 
         _param = self._disable_account_for_identity_serialize(
             id=id,
@@ -1500,7 +1512,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[BulkIdentitiesAccountsResponse]:
-        """Disable IDN Accounts for Identities
+        """(Deprecated) Disable IDN Accounts for Identities
 
         This API submits tasks to disable IDN account for each identity provided in the request body.
 
@@ -1527,6 +1539,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /identities-accounts/disable is deprecated.", DeprecationWarning)
 
         _param = self._disable_accounts_for_identities_serialize(
             identities_accounts_bulk_request=identities_accounts_bulk_request,
@@ -1572,7 +1585,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[BulkIdentitiesAccountsResponse]]:
-        """Disable IDN Accounts for Identities
+        """(Deprecated) Disable IDN Accounts for Identities
 
         This API submits tasks to disable IDN account for each identity provided in the request body.
 
@@ -1599,6 +1612,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /identities-accounts/disable is deprecated.", DeprecationWarning)
 
         _param = self._disable_accounts_for_identities_serialize(
             identities_accounts_bulk_request=identities_accounts_bulk_request,
@@ -1644,7 +1658,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Disable IDN Accounts for Identities
+        """(Deprecated) Disable IDN Accounts for Identities
 
         This API submits tasks to disable IDN account for each identity provided in the request body.
 
@@ -1671,6 +1685,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /identities-accounts/disable is deprecated.", DeprecationWarning)
 
         _param = self._disable_accounts_for_identities_serialize(
             identities_accounts_bulk_request=identities_accounts_bulk_request,
@@ -1791,7 +1806,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> AccountsAsyncResult:
-        """Enable Account
+        """(Deprecated) Enable Account
 
         This API submits a task to enable account and returns the task ID.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
@@ -1820,6 +1835,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /accounts/{id}/enable is deprecated.", DeprecationWarning)
 
         _param = self._enable_account_serialize(
             id=id,
@@ -1868,7 +1884,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[AccountsAsyncResult]:
-        """Enable Account
+        """(Deprecated) Enable Account
 
         This API submits a task to enable account and returns the task ID.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
@@ -1897,6 +1913,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /accounts/{id}/enable is deprecated.", DeprecationWarning)
 
         _param = self._enable_account_serialize(
             id=id,
@@ -1945,7 +1962,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Enable Account
+        """(Deprecated) Enable Account
 
         This API submits a task to enable account and returns the task ID.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
@@ -1974,6 +1991,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /accounts/{id}/enable is deprecated.", DeprecationWarning)
 
         _param = self._enable_account_serialize(
             id=id,
@@ -2098,7 +2116,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> object:
-        """Enable IDN Account for Identity
+        """(Deprecated) Enable IDN Account for Identity
 
         This API submits a task to enable IDN account for a single identity.
 
@@ -2125,6 +2143,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /identities-accounts/{id}/enable is deprecated.", DeprecationWarning)
 
         _param = self._enable_account_for_identity_serialize(
             id=id,
@@ -2171,7 +2190,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[object]:
-        """Enable IDN Account for Identity
+        """(Deprecated) Enable IDN Account for Identity
 
         This API submits a task to enable IDN account for a single identity.
 
@@ -2198,6 +2217,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /identities-accounts/{id}/enable is deprecated.", DeprecationWarning)
 
         _param = self._enable_account_for_identity_serialize(
             id=id,
@@ -2244,7 +2264,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Enable IDN Account for Identity
+        """(Deprecated) Enable IDN Account for Identity
 
         This API submits a task to enable IDN account for a single identity.
 
@@ -2271,6 +2291,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /identities-accounts/{id}/enable is deprecated.", DeprecationWarning)
 
         _param = self._enable_account_for_identity_serialize(
             id=id,
@@ -2378,7 +2399,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[BulkIdentitiesAccountsResponse]:
-        """Enable IDN Accounts for Identities
+        """(Deprecated) Enable IDN Accounts for Identities
 
         This API submits tasks to enable IDN account for each identity provided in the request body.
 
@@ -2405,6 +2426,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /identities-accounts/enable is deprecated.", DeprecationWarning)
 
         _param = self._enable_accounts_for_identities_serialize(
             identities_accounts_bulk_request=identities_accounts_bulk_request,
@@ -2450,7 +2472,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[BulkIdentitiesAccountsResponse]]:
-        """Enable IDN Accounts for Identities
+        """(Deprecated) Enable IDN Accounts for Identities
 
         This API submits tasks to enable IDN account for each identity provided in the request body.
 
@@ -2477,6 +2499,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /identities-accounts/enable is deprecated.", DeprecationWarning)
 
         _param = self._enable_accounts_for_identities_serialize(
             identities_accounts_bulk_request=identities_accounts_bulk_request,
@@ -2522,7 +2545,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Enable IDN Accounts for Identities
+        """(Deprecated) Enable IDN Accounts for Identities
 
         This API submits tasks to enable IDN account for each identity provided in the request body.
 
@@ -2549,6 +2572,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /identities-accounts/enable is deprecated.", DeprecationWarning)
 
         _param = self._enable_accounts_for_identities_serialize(
             identities_accounts_bulk_request=identities_accounts_bulk_request,
@@ -2668,7 +2692,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Account:
-        """Account Details
+        """(Deprecated) Account Details
 
         Use this API to return the details for a single account by its ID.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
@@ -2695,6 +2719,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /accounts/{id} is deprecated.", DeprecationWarning)
 
         _param = self._get_account_serialize(
             id=id,
@@ -2741,7 +2766,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Account]:
-        """Account Details
+        """(Deprecated) Account Details
 
         Use this API to return the details for a single account by its ID.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
@@ -2768,6 +2793,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /accounts/{id} is deprecated.", DeprecationWarning)
 
         _param = self._get_account_serialize(
             id=id,
@@ -2814,7 +2840,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Account Details
+        """(Deprecated) Account Details
 
         Use this API to return the details for a single account by its ID.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
@@ -2841,6 +2867,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /accounts/{id} is deprecated.", DeprecationWarning)
 
         _param = self._get_account_serialize(
             id=id,
@@ -2951,7 +2978,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[Entitlement]:
-        """Account Entitlements
+        """(Deprecated) Account Entitlements
 
         This API returns entitlements of the account.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
@@ -2984,6 +3011,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /accounts/{id}/entitlements is deprecated.", DeprecationWarning)
 
         _param = self._get_account_entitlements_serialize(
             id=id,
@@ -3036,7 +3064,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[Entitlement]]:
-        """Account Entitlements
+        """(Deprecated) Account Entitlements
 
         This API returns entitlements of the account.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
@@ -3069,6 +3097,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /accounts/{id}/entitlements is deprecated.", DeprecationWarning)
 
         _param = self._get_account_entitlements_serialize(
             id=id,
@@ -3121,7 +3150,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Account Entitlements
+        """(Deprecated) Account Entitlements
 
         This API returns entitlements of the account.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
@@ -3154,6 +3183,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /accounts/{id}/entitlements is deprecated.", DeprecationWarning)
 
         _param = self._get_account_entitlements_serialize(
             id=id,
@@ -3284,9 +3314,9 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[Account]:
-        """Accounts List
+        """(Deprecated) Accounts List
 
-        List accounts.  
+        List accounts.
 
         :param detail_level: This value determines whether the API provides `SLIM` or increased level of detail (`FULL`) for each account in the returned list. `FULL` is the default behavior.
         :type detail_level: str
@@ -3321,6 +3351,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /accounts is deprecated.", DeprecationWarning)
 
         _param = self._list_accounts_serialize(
             detail_level=detail_level,
@@ -3376,9 +3407,9 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[Account]]:
-        """Accounts List
+        """(Deprecated) Accounts List
 
-        List accounts.  
+        List accounts.
 
         :param detail_level: This value determines whether the API provides `SLIM` or increased level of detail (`FULL`) for each account in the returned list. `FULL` is the default behavior.
         :type detail_level: str
@@ -3413,6 +3444,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /accounts is deprecated.", DeprecationWarning)
 
         _param = self._list_accounts_serialize(
             detail_level=detail_level,
@@ -3468,9 +3500,9 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Accounts List
+        """(Deprecated) Accounts List
 
-        List accounts.  
+        List accounts.
 
         :param detail_level: This value determines whether the API provides `SLIM` or increased level of detail (`FULL`) for each account in the returned list. `FULL` is the default behavior.
         :type detail_level: str
@@ -3505,6 +3537,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /accounts is deprecated.", DeprecationWarning)
 
         _param = self._list_accounts_serialize(
             detail_level=detail_level,
@@ -3644,7 +3677,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> AccountsAsyncResult:
-        """Update Account
+        """(Deprecated) Update Account
 
         Use this API to update an account with a PUT request.   This endpoint submits an account update task and returns the task ID.    A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  >**Note: You can only use this PUT endpoint to update accounts from flat file sources.** 
 
@@ -3673,6 +3706,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PUT /accounts/{id} is deprecated.", DeprecationWarning)
 
         _param = self._put_account_serialize(
             id=id,
@@ -3721,7 +3755,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[AccountsAsyncResult]:
-        """Update Account
+        """(Deprecated) Update Account
 
         Use this API to update an account with a PUT request.   This endpoint submits an account update task and returns the task ID.    A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  >**Note: You can only use this PUT endpoint to update accounts from flat file sources.** 
 
@@ -3750,6 +3784,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PUT /accounts/{id} is deprecated.", DeprecationWarning)
 
         _param = self._put_account_serialize(
             id=id,
@@ -3798,7 +3833,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Account
+        """(Deprecated) Update Account
 
         Use this API to update an account with a PUT request.   This endpoint submits an account update task and returns the task ID.    A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  >**Note: You can only use this PUT endpoint to update accounts from flat file sources.** 
 
@@ -3827,6 +3862,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PUT /accounts/{id} is deprecated.", DeprecationWarning)
 
         _param = self._put_account_serialize(
             id=id,
@@ -3951,7 +3987,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> AccountsAsyncResult:
-        """Reload Account
+        """(Deprecated) Reload Account
 
         This API asynchronously reloads the account directly from the connector and performs a one-time aggregation process.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
@@ -3978,6 +4014,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /accounts/{id}/reload is deprecated.", DeprecationWarning)
 
         _param = self._submit_reload_account_serialize(
             id=id,
@@ -4024,7 +4061,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[AccountsAsyncResult]:
-        """Reload Account
+        """(Deprecated) Reload Account
 
         This API asynchronously reloads the account directly from the connector and performs a one-time aggregation process.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
@@ -4051,6 +4088,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /accounts/{id}/reload is deprecated.", DeprecationWarning)
 
         _param = self._submit_reload_account_serialize(
             id=id,
@@ -4097,7 +4135,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Reload Account
+        """(Deprecated) Reload Account
 
         This API asynchronously reloads the account directly from the connector and performs a one-time aggregation process.   A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
@@ -4124,6 +4162,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /accounts/{id}/reload is deprecated.", DeprecationWarning)
 
         _param = self._submit_reload_account_serialize(
             id=id,
@@ -4232,7 +4271,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> AccountsAsyncResult:
-        """Unlock Account
+        """(Deprecated) Unlock Account
 
         This API submits a task to unlock an account and returns the task ID.   To use this endpoint to unlock an account that has the `forceProvisioning` option set to true, the `idn:accounts-provisioning:manage` scope is required.  A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
@@ -4261,6 +4300,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /accounts/{id}/unlock is deprecated.", DeprecationWarning)
 
         _param = self._unlock_account_serialize(
             id=id,
@@ -4309,7 +4349,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[AccountsAsyncResult]:
-        """Unlock Account
+        """(Deprecated) Unlock Account
 
         This API submits a task to unlock an account and returns the task ID.   To use this endpoint to unlock an account that has the `forceProvisioning` option set to true, the `idn:accounts-provisioning:manage` scope is required.  A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
@@ -4338,6 +4378,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /accounts/{id}/unlock is deprecated.", DeprecationWarning)
 
         _param = self._unlock_account_serialize(
             id=id,
@@ -4386,7 +4427,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Unlock Account
+        """(Deprecated) Unlock Account
 
         This API submits a task to unlock an account and returns the task ID.   To use this endpoint to unlock an account that has the `forceProvisioning` option set to true, the `idn:accounts-provisioning:manage` scope is required.  A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or HELPDESK authority is required to call this API.
 
@@ -4415,6 +4456,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /accounts/{id}/unlock is deprecated.", DeprecationWarning)
 
         _param = self._unlock_account_serialize(
             id=id,
@@ -4540,7 +4582,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> object:
-        """Update Account
+        """(Deprecated) Update Account
 
         Use this API to update account details.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  This API supports updating an account's correlation by modifying the `identityId` and `manuallyCorrelated` fields.  To reassign an account from one identity to another, replace the current `identityId` with a new value.  If the account you're assigning was provisioned by Identity Security Cloud (ISC), it's possible for ISC to create a new account  for the previous identity as soon as the account is moved. If the account you're assigning is authoritative,  this causes the previous identity to become uncorrelated and can even result in its deletion. All accounts that are reassigned will be set to `manuallyCorrelated: true` unless you specify otherwise.  >**Note:** The `attributes` field can only be modified for flat file accounts.  
 
@@ -4569,6 +4611,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /accounts/{id} is deprecated.", DeprecationWarning)
 
         _param = self._update_account_serialize(
             id=id,
@@ -4617,7 +4660,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[object]:
-        """Update Account
+        """(Deprecated) Update Account
 
         Use this API to update account details.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  This API supports updating an account's correlation by modifying the `identityId` and `manuallyCorrelated` fields.  To reassign an account from one identity to another, replace the current `identityId` with a new value.  If the account you're assigning was provisioned by Identity Security Cloud (ISC), it's possible for ISC to create a new account  for the previous identity as soon as the account is moved. If the account you're assigning is authoritative,  this causes the previous identity to become uncorrelated and can even result in its deletion. All accounts that are reassigned will be set to `manuallyCorrelated: true` unless you specify otherwise.  >**Note:** The `attributes` field can only be modified for flat file accounts.  
 
@@ -4646,6 +4689,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /accounts/{id} is deprecated.", DeprecationWarning)
 
         _param = self._update_account_serialize(
             id=id,
@@ -4694,7 +4738,7 @@ class AccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Account
+        """(Deprecated) Update Account
 
         Use this API to update account details.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  This API supports updating an account's correlation by modifying the `identityId` and `manuallyCorrelated` fields.  To reassign an account from one identity to another, replace the current `identityId` with a new value.  If the account you're assigning was provisioned by Identity Security Cloud (ISC), it's possible for ISC to create a new account  for the previous identity as soon as the account is moved. If the account you're assigning is authoritative,  this causes the previous identity to become uncorrelated and can even result in its deletion. All accounts that are reassigned will be set to `manuallyCorrelated: true` unless you specify otherwise.  >**Note:** The `attributes` field can only be modified for flat file accounts.  
 
@@ -4723,6 +4767,7 @@ class AccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /accounts/{id} is deprecated.", DeprecationWarning)
 
         _param = self._update_account_serialize(
             id=id,

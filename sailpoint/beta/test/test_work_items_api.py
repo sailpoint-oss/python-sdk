@@ -47,13 +47,6 @@ class TestWorkItemsApi(unittest.TestCase):
         """
         pass
 
-    def test_forward_work_item(self) -> None:
-        """Test case for forward_work_item
-
-        Forward a Work Item
-        """
-        pass
-
     def test_get_completed_work_items(self) -> None:
         """Test case for get_completed_work_items
 
@@ -114,6 +107,13 @@ class TestWorkItemsApi(unittest.TestCase):
         """Test case for submit_account_selection
 
         Submit Account Selections
+        """
+        pass
+
+    def test_submit_forward_work_item(self) -> None:
+        """Test case for submit_forward_work_item
+
+        Forward a Work Item
         """
         pass
 

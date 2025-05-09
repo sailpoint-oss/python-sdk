@@ -595,7 +595,6 @@ Class | Method | HTTP request | Description
 *WorkItemsApi* | [**approve_approval_item**](sailpoint/beta/docs/WorkItemsApi.md#approve_approval_item) | **POST** /work-items/{id}/approve/{approvalItemId} | Approve an Approval Item
 *WorkItemsApi* | [**approve_approval_items_in_bulk**](sailpoint/beta/docs/WorkItemsApi.md#approve_approval_items_in_bulk) | **POST** /work-items/bulk-approve/{id} | Bulk approve Approval Items
 *WorkItemsApi* | [**complete_work_item**](sailpoint/beta/docs/WorkItemsApi.md#complete_work_item) | **POST** /work-items/{id} | Complete a Work Item
-*WorkItemsApi* | [**forward_work_item**](sailpoint/beta/docs/WorkItemsApi.md#forward_work_item) | **POST** /work-items/{id}/forward | Forward a Work Item
 *WorkItemsApi* | [**get_completed_work_items**](sailpoint/beta/docs/WorkItemsApi.md#get_completed_work_items) | **GET** /work-items/completed | Completed Work Items
 *WorkItemsApi* | [**get_count_completed_work_items**](sailpoint/beta/docs/WorkItemsApi.md#get_count_completed_work_items) | **GET** /work-items/completed/count | Count Completed Work Items
 *WorkItemsApi* | [**get_count_work_items**](sailpoint/beta/docs/WorkItemsApi.md#get_count_work_items) | **GET** /work-items/count | Count Work Items
@@ -605,6 +604,7 @@ Class | Method | HTTP request | Description
 *WorkItemsApi* | [**reject_approval_item**](sailpoint/beta/docs/WorkItemsApi.md#reject_approval_item) | **POST** /work-items/{id}/reject/{approvalItemId} | Reject an Approval Item
 *WorkItemsApi* | [**reject_approval_items_in_bulk**](sailpoint/beta/docs/WorkItemsApi.md#reject_approval_items_in_bulk) | **POST** /work-items/bulk-reject/{id} | Bulk reject Approval Items
 *WorkItemsApi* | [**submit_account_selection**](sailpoint/beta/docs/WorkItemsApi.md#submit_account_selection) | **POST** /work-items/{id}/submit-account-selection | Submit Account Selections
+*WorkItemsApi* | [**submit_forward_work_item**](sailpoint/beta/docs/WorkItemsApi.md#submit_forward_work_item) | **POST** /work-items/{id}/forward | Forward a Work Item
 *WorkReassignmentApi* | [**create_reassignment_configuration**](sailpoint/beta/docs/WorkReassignmentApi.md#create_reassignment_configuration) | **POST** /reassignment-configurations | Create a Reassignment Configuration
 *WorkReassignmentApi* | [**delete_reassignment_configuration**](sailpoint/beta/docs/WorkReassignmentApi.md#delete_reassignment_configuration) | **DELETE** /reassignment-configurations/{identityId}/{configType} | Delete Reassignment Configuration
 *WorkReassignmentApi* | [**get_evaluate_reassignment_configuration**](sailpoint/beta/docs/WorkReassignmentApi.md#get_evaluate_reassignment_configuration) | **GET** /reassignment-configurations/{identityId}/evaluate/{configType} | Evaluate Reassignment Configuration
