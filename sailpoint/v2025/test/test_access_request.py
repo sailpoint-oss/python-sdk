@@ -43,7 +43,9 @@ class TestAccessRequest(unittest.TestCase):
                         id = '2c9180835d2e5168015d32f890ca1581', 
                         comment = 'Requesting access profile for John Doe', 
                         client_metadata = {requestedAppName=test-app, requestedAppId=2c91808f7892918f0178b78da4a305a1}, 
-                        remove_date = '2020-07-11T21:23:15Z', )
+                        remove_date = '2020-07-11T21:23:15Z', 
+                        assignment_id = 'ee48a191c00d49bf9264eb0a4fc3a9fc', 
+                        native_identity = 'CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN', )
                     ],
                 client_metadata = {requestedAppId=2c91808f7892918f0178b78da4a305a1, requestedAppName=test-app},
                 requested_for_with_requested_items = [
@@ -56,8 +58,6 @@ class TestAccessRequest(unittest.TestCase):
                                 comment = 'Requesting access profile for John Doe', 
                                 client_metadata = {requestedAppName=test-app, requestedAppId=2c91808f7892918f0178b78da4a305a1}, 
                                 remove_date = '2020-07-11T21:23:15Z', 
-                                assignment_id = 'ee48a191c00d49bf9264eb0a4fc3a9fc', 
-                                native_identity = 'CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN', 
                                 account_selection = [
                                     sailpoint.v2025.models.source_item_ref.SourceItemRef(
                                         source_id = 'cb89bc2f1ee6445fbea12224c526ba3a', 
@@ -79,7 +79,9 @@ class TestAccessRequest(unittest.TestCase):
                         id = '2c9180835d2e5168015d32f890ca1581', 
                         comment = 'Requesting access profile for John Doe', 
                         client_metadata = {requestedAppName=test-app, requestedAppId=2c91808f7892918f0178b78da4a305a1}, 
-                        remove_date = '2020-07-11T21:23:15Z', )
+                        remove_date = '2020-07-11T21:23:15Z', 
+                        assignment_id = 'ee48a191c00d49bf9264eb0a4fc3a9fc', 
+                        native_identity = 'CN=User db3377de14bf,OU=YOURCONTAINER, DC=YOURDOMAIN', )
                     ],
         )
         """

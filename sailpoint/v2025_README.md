@@ -824,7 +824,6 @@ Class | Method | HTTP request | Description
  - [AccessRequestDynamicApprover1](sailpoint/v2025/docs/AccessRequestDynamicApprover1.md)
  - [AccessRequestDynamicApproverRequestedItemsInner](sailpoint/v2025/docs/AccessRequestDynamicApproverRequestedItemsInner.md)
  - [AccessRequestItem](sailpoint/v2025/docs/AccessRequestItem.md)
- - [AccessRequestItem1](sailpoint/v2025/docs/AccessRequestItem1.md)
  - [AccessRequestItemResponse](sailpoint/v2025/docs/AccessRequestItemResponse.md)
  - [AccessRequestPhases](sailpoint/v2025/docs/AccessRequestPhases.md)
  - [AccessRequestPostApproval](sailpoint/v2025/docs/AccessRequestPostApproval.md)

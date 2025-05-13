@@ -21,7 +21,7 @@ import warnings
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
-from sailpoint.v2025.models.access_request_item1 import AccessRequestItem1
+from sailpoint.v2025.models.access_request_item import AccessRequestItem
 from sailpoint.v2025.models.access_request_type import AccessRequestType
 from typing import Optional, Set
 from typing_extensions import Self
@@ -32,7 +32,7 @@ class AccountsSelectionRequest(BaseModel):
     """ # noqa: E501
     requested_for: List[StrictStr] = Field(description="A list of Identity IDs for whom the Access is requested.", alias="requestedFor")
     request_type: Optional[AccessRequestType] = Field(default=None, alias="requestType")
-    requested_items: Annotated[List[AccessRequestItem1], Field(min_length=1, max_length=25)] = Field(alias="requestedItems")
+    requested_items: Annotated[List[AccessRequestItem], Field(min_length=1, max_length=25)] = Field(alias="requestedItems")
     client_metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities.  ", alias="clientMetadata")
     __properties: ClassVar[List[str]] = ["requestedFor", "requestType", "requestedItems", "clientMetadata"]
 
@@ -101,7 +101,7 @@ class AccountsSelectionRequest(BaseModel):
         _obj = cls.model_validate({
             "requestedFor": obj.get("requestedFor"),
             "requestType": obj.get("requestType"),
-            "requestedItems": [AccessRequestItem1.from_dict(_item) for _item in obj["requestedItems"]] if obj.get("requestedItems") is not None else None,
+            "requestedItems": [AccessRequestItem.from_dict(_item) for _item in obj["requestedItems"]] if obj.get("requestedItems") is not None else None,
             "clientMetadata": obj.get("clientMetadata")
         })
         return _obj

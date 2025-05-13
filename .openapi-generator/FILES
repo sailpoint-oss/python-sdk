@@ -149,7 +149,6 @@ sailpoint/v2025/docs/AccessRequestDynamicApprover1.md
 sailpoint/v2025/docs/AccessRequestDynamicApproverRequestedItemsInner.md
 sailpoint/v2025/docs/AccessRequestIdentityMetricsApi.md
 sailpoint/v2025/docs/AccessRequestItem.md
-sailpoint/v2025/docs/AccessRequestItem1.md
 sailpoint/v2025/docs/AccessRequestItemResponse.md
 sailpoint/v2025/docs/AccessRequestPhases.md
 sailpoint/v2025/docs/AccessRequestPostApproval.md
@@ -1356,7 +1355,6 @@ sailpoint/v2025/models/access_request_dynamic_approver.py
 sailpoint/v2025/models/access_request_dynamic_approver1.py
 sailpoint/v2025/models/access_request_dynamic_approver_requested_items_inner.py
 sailpoint/v2025/models/access_request_item.py
-sailpoint/v2025/models/access_request_item1.py
 sailpoint/v2025/models/access_request_item_response.py
 sailpoint/v2025/models/access_request_phases.py
 sailpoint/v2025/models/access_request_post_approval.py
@@ -2480,7 +2478,6 @@ sailpoint/v2025/test/test_access_request_dynamic_approver1.py
 sailpoint/v2025/test/test_access_request_dynamic_approver_requested_items_inner.py
 sailpoint/v2025/test/test_access_request_identity_metrics_api.py
 sailpoint/v2025/test/test_access_request_item.py
-sailpoint/v2025/test/test_access_request_item1.py
 sailpoint/v2025/test/test_access_request_item_response.py
 sailpoint/v2025/test/test_access_request_phases.py
 sailpoint/v2025/test/test_access_request_post_approval.py

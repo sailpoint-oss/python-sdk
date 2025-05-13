@@ -170,7 +170,6 @@ from sailpoint.v2025.models.access_request_dynamic_approver import AccessRequest
 from sailpoint.v2025.models.access_request_dynamic_approver1 import AccessRequestDynamicApprover1
 from sailpoint.v2025.models.access_request_dynamic_approver_requested_items_inner import AccessRequestDynamicApproverRequestedItemsInner
 from sailpoint.v2025.models.access_request_item import AccessRequestItem
-from sailpoint.v2025.models.access_request_item1 import AccessRequestItem1
 from sailpoint.v2025.models.access_request_item_response import AccessRequestItemResponse
 from sailpoint.v2025.models.access_request_phases import AccessRequestPhases
 from sailpoint.v2025.models.access_request_post_approval import AccessRequestPostApproval
