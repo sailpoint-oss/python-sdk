@@ -1231,7 +1231,17 @@
                 "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
                 "approverType" : "GOVERNANCE_GROUP"
               } ],
+              "reauthorizationRequired" : false,
               "requestCommentRequired" : true
+            },
+            "revocationRequestConfig" : {
+              "approvalSchemes" : [ {
+                "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+                "approverType" : "GOVERNANCE_GROUP"
+              }, {
+                "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+                "approverType" : "GOVERNANCE_GROUP"
+              } ]
             }
           },
           "reauthorizationEnabled" : true,
@@ -6897,7 +6907,17 @@
               "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
               "approverType" : "GOVERNANCE_GROUP"
             } ],
+            "reauthorizationRequired" : false,
             "requestCommentRequired" : true
+          },
+          "revocationRequestConfig" : {
+            "approvalSchemes" : [ {
+              "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+              "approverType" : "GOVERNANCE_GROUP"
+            }, {
+              "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+              "approverType" : "GOVERNANCE_GROUP"
+            } ]
           }
         }''' # EntitlementRequestConfig | 
           try:
@@ -19517,7 +19537,17 @@
               "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
               "approverType" : "GOVERNANCE_GROUP"
             } ],
+            "reauthorizationRequired" : false,
             "requestCommentRequired" : true
+          },
+          "revocationRequestConfig" : {
+            "approvalSchemes" : [ {
+              "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+              "approverType" : "GOVERNANCE_GROUP"
+            }, {
+              "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+              "approverType" : "GOVERNANCE_GROUP"
+            } ]
           }
         }''' # SourceEntitlementRequestConfig | 
           try:

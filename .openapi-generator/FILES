@@ -499,6 +499,7 @@ sailpoint/v2025/docs/EntitlementOwner.md
 sailpoint/v2025/docs/EntitlementRef.md
 sailpoint/v2025/docs/EntitlementRef1.md
 sailpoint/v2025/docs/EntitlementRequestConfig.md
+sailpoint/v2025/docs/EntitlementRevocationRequestConfig.md
 sailpoint/v2025/docs/EntitlementSource.md
 sailpoint/v2025/docs/EntitlementSourceResetBaseReferenceDto.md
 sailpoint/v2025/docs/EntitlementSummary.md
@@ -1682,6 +1683,7 @@ sailpoint/v2025/models/entitlement_owner.py
 sailpoint/v2025/models/entitlement_ref.py
 sailpoint/v2025/models/entitlement_ref1.py
 sailpoint/v2025/models/entitlement_request_config.py
+sailpoint/v2025/models/entitlement_revocation_request_config.py
 sailpoint/v2025/models/entitlement_source.py
 sailpoint/v2025/models/entitlement_source_reset_base_reference_dto.py
 sailpoint/v2025/models/entitlement_summary.py
@@ -2828,6 +2830,7 @@ sailpoint/v2025/test/test_entitlement_owner.py
 sailpoint/v2025/test/test_entitlement_ref.py
 sailpoint/v2025/test/test_entitlement_ref1.py
 sailpoint/v2025/test/test_entitlement_request_config.py
+sailpoint/v2025/test/test_entitlement_revocation_request_config.py
 sailpoint/v2025/test/test_entitlement_source.py
 sailpoint/v2025/test/test_entitlement_source_reset_base_reference_dto.py
 sailpoint/v2025/test/test_entitlement_summary.py

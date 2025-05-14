@@ -497,6 +497,7 @@ from sailpoint.v2025.models.entitlement_owner import EntitlementOwner
 from sailpoint.v2025.models.entitlement_ref import EntitlementRef
 from sailpoint.v2025.models.entitlement_ref1 import EntitlementRef1
 from sailpoint.v2025.models.entitlement_request_config import EntitlementRequestConfig
+from sailpoint.v2025.models.entitlement_revocation_request_config import EntitlementRevocationRequestConfig
 from sailpoint.v2025.models.entitlement_source import EntitlementSource
 from sailpoint.v2025.models.entitlement_source_reset_base_reference_dto import EntitlementSourceResetBaseReferenceDto
 from sailpoint.v2025.models.entitlement_summary import EntitlementSummary

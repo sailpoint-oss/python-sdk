@@ -42,7 +42,14 @@ class TestEntitlementRequestConfig(unittest.TestCase):
                             approver_id = 'e3eab852-8315-467f-9de7-70eda97f63c8', )
                         ], 
                     request_comment_required = True, 
-                    denial_comment_required = False, )
+                    denial_comment_required = False, 
+                    reauthorization_required = False, ),
+                revocation_request_config = sailpoint.v2025.models.entitlement_revocation_request_config.EntitlementRevocationRequestConfig(
+                    approval_schemes = [
+                        sailpoint.v2025.models.entitlement_approval_scheme.EntitlementApprovalScheme(
+                            approver_type = 'GOVERNANCE_GROUP', 
+                            approver_id = 'e3eab852-8315-467f-9de7-70eda97f63c8', )
+                        ], )
             )
         else:
             return EntitlementRequestConfig(

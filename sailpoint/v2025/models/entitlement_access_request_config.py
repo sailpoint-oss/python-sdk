@@ -31,7 +31,8 @@ class EntitlementAccessRequestConfig(BaseModel):
     approval_schemes: Optional[List[EntitlementApprovalScheme]] = Field(default=None, description="Ordered list of approval steps for the access request. Empty when no approval is required.", alias="approvalSchemes")
     request_comment_required: Optional[StrictBool] = Field(default=False, description="If the requester must provide a comment during access request.", alias="requestCommentRequired")
     denial_comment_required: Optional[StrictBool] = Field(default=False, description="If the reviewer must provide a comment when denying the access request.", alias="denialCommentRequired")
-    __properties: ClassVar[List[str]] = ["approvalSchemes", "requestCommentRequired", "denialCommentRequired"]
+    reauthorization_required: Optional[StrictBool] = Field(default=False, description="Is Reauthorization Required", alias="reauthorizationRequired")
+    __properties: ClassVar[List[str]] = ["approvalSchemes", "requestCommentRequired", "denialCommentRequired", "reauthorizationRequired"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -93,7 +94,8 @@ class EntitlementAccessRequestConfig(BaseModel):
         _obj = cls.model_validate({
             "approvalSchemes": [EntitlementApprovalScheme.from_dict(_item) for _item in obj["approvalSchemes"]] if obj.get("approvalSchemes") is not None else None,
             "requestCommentRequired": obj.get("requestCommentRequired") if obj.get("requestCommentRequired") is not None else False,
-            "denialCommentRequired": obj.get("denialCommentRequired") if obj.get("denialCommentRequired") is not None else False
+            "denialCommentRequired": obj.get("denialCommentRequired") if obj.get("denialCommentRequired") is not None else False,
+            "reauthorizationRequired": obj.get("reauthorizationRequired") if obj.get("reauthorizationRequired") is not None else False
         })
         return _obj
 

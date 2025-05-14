@@ -1151,6 +1151,7 @@ Class | Method | HTTP request | Description
  - [EntitlementRef](sailpoint/v2025/docs/EntitlementRef.md)
  - [EntitlementRef1](sailpoint/v2025/docs/EntitlementRef1.md)
  - [EntitlementRequestConfig](sailpoint/v2025/docs/EntitlementRequestConfig.md)
+ - [EntitlementRevocationRequestConfig](sailpoint/v2025/docs/EntitlementRevocationRequestConfig.md)
  - [EntitlementSource](sailpoint/v2025/docs/EntitlementSource.md)
  - [EntitlementSourceResetBaseReferenceDto](sailpoint/v2025/docs/EntitlementSourceResetBaseReferenceDto.md)
  - [EntitlementSummary](sailpoint/v2025/docs/EntitlementSummary.md)

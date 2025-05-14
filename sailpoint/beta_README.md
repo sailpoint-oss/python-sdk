@@ -898,6 +898,7 @@ Class | Method | HTTP request | Description
  - [EntitlementRef](sailpoint/beta/docs/EntitlementRef.md)
  - [EntitlementRequestConfig](sailpoint/beta/docs/EntitlementRequestConfig.md)
  - [EntitlementRequestConfig1](sailpoint/beta/docs/EntitlementRequestConfig1.md)
+ - [EntitlementRevocationRequestConfig](sailpoint/beta/docs/EntitlementRevocationRequestConfig.md)
  - [EntitlementSource](sailpoint/beta/docs/EntitlementSource.md)
  - [EntitlementSourceResetBaseReferenceDto](sailpoint/beta/docs/EntitlementSourceResetBaseReferenceDto.md)
  - [EntityCreatedByDTO](sailpoint/beta/docs/EntityCreatedByDTO.md)

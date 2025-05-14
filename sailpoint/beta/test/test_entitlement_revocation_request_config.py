@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.beta.models.entitlement_access_request_config import EntitlementAccessRequestConfig
+from sailpoint.beta.models.entitlement_revocation_request_config import EntitlementRevocationRequestConfig
 
-class TestEntitlementAccessRequestConfig(unittest.TestCase):
-    """EntitlementAccessRequestConfig unit test stubs"""
+class TestEntitlementRevocationRequestConfig(unittest.TestCase):
+    """EntitlementRevocationRequestConfig unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,32 +25,29 @@ class TestEntitlementAccessRequestConfig(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> EntitlementAccessRequestConfig:
-        """Test EntitlementAccessRequestConfig
+    def make_instance(self, include_optional) -> EntitlementRevocationRequestConfig:
+        """Test EntitlementRevocationRequestConfig
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `EntitlementAccessRequestConfig`
+        # uncomment below to create an instance of `EntitlementRevocationRequestConfig`
         """
-        model = EntitlementAccessRequestConfig()
+        model = EntitlementRevocationRequestConfig()
         if include_optional:
-            return EntitlementAccessRequestConfig(
+            return EntitlementRevocationRequestConfig(
                 approval_schemes = [
                     sailpoint.beta.models.entitlement_approval_scheme.EntitlementApprovalScheme(
                         approver_type = 'GOVERNANCE_GROUP', 
                         approver_id = 'e3eab852-8315-467f-9de7-70eda97f63c8', )
-                    ],
-                request_comment_required = True,
-                denial_comment_required = False,
-                reauthorization_required = False
+                    ]
             )
         else:
-            return EntitlementAccessRequestConfig(
+            return EntitlementRevocationRequestConfig(
         )
         """
 
-    def testEntitlementAccessRequestConfig(self):
-        """Test EntitlementAccessRequestConfig"""
+    def testEntitlementRevocationRequestConfig(self):
+        """Test EntitlementRevocationRequestConfig"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
