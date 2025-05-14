@@ -17,4 +17,4 @@ files:
     destinationFilename: sailpoint/v2025/Index.md
   validation_test.mustache:
     templateType: APITests
-    destinationFilename: validation_test.py
+    destinationFilename: _validation_test.py

@@ -1,25 +1,27 @@
 import unittest
-import sailpoint.v2024
-import sailpoint.v3
-import sailpoint.beta
-from sailpoint.v3.models.search import Search
+import sailpoint.{{apiVersion}}
 from sailpoint.configuration import Configuration, ConfigurationParams
 from sailpoint.paginator import Paginator
 
 class TestPythonSDK(unittest.TestCase):
 
     configuration = Configuration()
-    v3_api_client = sailpoint.v3.ApiClient(configuration)
-    beta_api_client = sailpoint.beta.ApiClient(configuration)
     configuration.experimental = True
-    v2024_api_client = sailpoint.v2024.ApiClient(configuration)
+    {{apiVersion}}_api_client = sailpoint.{{apiVersion}}.ApiClient(configuration)
 
 {{#operations}}
 {{#operation}}
+    {{#returnType}}
+    {{#isArray}}
+    {{^pathParams}}
     def test_{{operationId}}(self):
-        {{#returnType}}api_response = {{/returnType}}{{#asyncio}}await {{/asyncio}}sailpoint.{{apiVersion}}.{{classname}}(self.{{apiVersion}}_api_client).{{{operationId}}}_with_http_info()
+        {{#headerParams}}x_sail_point_experimental = "true"{{/headerParams}}
+        {{#returnType}}api_response = {{/returnType}}{{#asyncio}}await {{/asyncio}}sailpoint.{{apiVersion}}.{{classname}}(self.{{apiVersion}}_api_client).{{{operationId}}}_with_http_info({{#requiredParams}}{{#isBodyParam}}{{paramName}}=new_{{paramName}}{{^-last}}, {{/-last}}{{/isBodyParam}}{{^isBodyParam}}{{paramName}}={{paramName}}{{^-last}}, {{/-last}}{{/isBodyParam}}{{/requiredParams}})
         self.assertIsNotNone(api_response.data)
         self.assertEqual(200, api_response.status_code)
+    {{/pathParams}}
+    {{/isArray}}
+    {{/returnType}}
   {{/operation}}
 {{/operations}}
 

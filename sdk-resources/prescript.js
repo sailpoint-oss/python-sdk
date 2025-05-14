@@ -76,6 +76,24 @@ const fixFiles = function (myArray) {
       madeChange = true;
 }
 
+    // remove the complex transform schema
+    if (file.includes(path.join("schemas","Trigger.yaml"))) {
+      for (let line of rawDataArra) {
+        if (line.includes('oneOf')) {
+          line = line.replaceAll("oneOf:", "type: object")
+          madeChange = true;
+        }
+        if (line.includes('- $ref:')) {
+          
+        } else {
+          fileOut.push(line);
+        }
+        
+      }
+      rawDataArra = fileOut.slice();
+      fileOut = [];
+    }
+
   
   
   
