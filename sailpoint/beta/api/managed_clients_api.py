@@ -58,7 +58,7 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ManagedClientStatus:
-        """(Deprecated) Specified Managed Client Status.
+        """(Deprecated) Specified managed client status.
 
         Retrieve Managed Client Status by ID.
 
@@ -136,7 +136,7 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ManagedClientStatus]:
-        """(Deprecated) Specified Managed Client Status.
+        """(Deprecated) Specified managed client status.
 
         Retrieve Managed Client Status by ID.
 
@@ -214,7 +214,7 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Specified Managed Client Status.
+        """(Deprecated) Specified managed client status.
 
         Retrieve Managed Client Status by ID.
 

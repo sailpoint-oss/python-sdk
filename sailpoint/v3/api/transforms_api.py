@@ -630,7 +630,7 @@ class TransformsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> TransformRead:
-        """Transform by ID
+        """Transform by id
 
         This API returns the transform specified by the given ID.
 
@@ -703,7 +703,7 @@ class TransformsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[TransformRead]:
-        """Transform by ID
+        """Transform by id
 
         This API returns the transform specified by the given ID.
 
@@ -776,7 +776,7 @@ class TransformsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Transform by ID
+        """Transform by id
 
         This API returns the transform specified by the given ID.
 

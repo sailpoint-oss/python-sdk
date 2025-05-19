@@ -29,21 +29,21 @@ class TestMachineClassificationConfigApi(unittest.TestCase):
     def test_delete_machine_classification_config(self) -> None:
         """Test case for delete_machine_classification_config
 
-        Delete Source's Classification Config
+        Delete source's classification config
         """
         pass
 
     def test_get_machine_classification_config(self) -> None:
         """Test case for get_machine_classification_config
 
-        Machine Classification Config for Source
+        Machine classification config for source
         """
         pass
 
     def test_set_machine_classification_config(self) -> None:
         """Test case for set_machine_classification_config
 
-        Update Source's Classification Config
+        Update source's classification config
         """
         pass
 

@@ -63,7 +63,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> IdentityProfile:
-        """Create Identity Profile
+        """Create identity profile
 
         Creates an identity profile.    
 
@@ -135,7 +135,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[IdentityProfile]:
-        """Create Identity Profile
+        """Create identity profile
 
         Creates an identity profile.    
 
@@ -207,7 +207,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create Identity Profile
+        """Create identity profile
 
         Creates an identity profile.    
 
@@ -353,7 +353,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> TaskResultSimplified:
-        """Delete Identity Profile
+        """Delete identity profile
 
         Delete an identity profile by ID. On success, this endpoint will return a reference to the bulk delete task result.
 
@@ -426,7 +426,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[TaskResultSimplified]:
-        """Delete Identity Profile
+        """Delete identity profile
 
         Delete an identity profile by ID. On success, this endpoint will return a reference to the bulk delete task result.
 
@@ -499,7 +499,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Identity Profile
+        """Delete identity profile
 
         Delete an identity profile by ID. On success, this endpoint will return a reference to the bulk delete task result.
 
@@ -633,7 +633,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> TaskResultSimplified:
-        """Delete Identity Profiles
+        """Delete identity profiles
 
         This deletes multiple Identity Profiles via a list of supplied IDs.  On success, this endpoint will return a reference to the bulk delete task result.  The following rights are required to access this endpoint: idn:identity-profile:delete
 
@@ -705,7 +705,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[TaskResultSimplified]:
-        """Delete Identity Profiles
+        """Delete identity profiles
 
         This deletes multiple Identity Profiles via a list of supplied IDs.  On success, this endpoint will return a reference to the bulk delete task result.  The following rights are required to access this endpoint: idn:identity-profile:delete
 
@@ -777,7 +777,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Identity Profiles
+        """Delete identity profiles
 
         This deletes multiple Identity Profiles via a list of supplied IDs.  On success, this endpoint will return a reference to the bulk delete task result.  The following rights are required to access this endpoint: idn:identity-profile:delete
 
@@ -928,7 +928,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[IdentityProfileExportedObject]:
-        """Export Identity Profiles
+        """Export identity profiles
 
         This exports existing identity profiles in the format specified by the sp-config service.
 
@@ -1016,7 +1016,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[IdentityProfileExportedObject]]:
-        """Export Identity Profiles
+        """Export identity profiles
 
         This exports existing identity profiles in the format specified by the sp-config service.
 
@@ -1104,7 +1104,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Export Identity Profiles
+        """Export identity profiles
 
         This exports existing identity profiles in the format specified by the sp-config service.
 
@@ -1271,7 +1271,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> IdentityAttributeConfig:
-        """Get default Identity Attribute Config
+        """Get default identity attribute config
 
         This returns the default identity attribute config.
 
@@ -1344,7 +1344,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[IdentityAttributeConfig]:
-        """Get default Identity Attribute Config
+        """Get default identity attribute config
 
         This returns the default identity attribute config.
 
@@ -1417,7 +1417,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get default Identity Attribute Config
+        """Get default identity attribute config
 
         This returns the default identity attribute config.
 
@@ -1551,7 +1551,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> IdentityProfile:
-        """Get Identity Profile
+        """Get identity profile
 
         Get a single identity profile by ID.
 
@@ -1624,7 +1624,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[IdentityProfile]:
-        """Get Identity Profile
+        """Get identity profile
 
         Get a single identity profile by ID.
 
@@ -1697,7 +1697,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Identity Profile
+        """Get identity profile
 
         Get a single identity profile by ID.
 
@@ -1832,7 +1832,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ObjectImportResult:
-        """Import Identity Profiles
+        """Import identity profiles
 
         This imports previously exported identity profiles.
 
@@ -1904,7 +1904,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ObjectImportResult]:
-        """Import Identity Profiles
+        """Import identity profiles
 
         This imports previously exported identity profiles.
 
@@ -1976,7 +1976,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Import Identity Profiles
+        """Import identity profiles
 
         This imports previously exported identity profiles.
 
@@ -2127,7 +2127,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[IdentityProfile]:
-        """List Identity Profiles
+        """List identity profiles
 
         Get a list of identity profiles, based on the specified query parameters.
 
@@ -2215,7 +2215,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[IdentityProfile]]:
-        """List Identity Profiles
+        """List identity profiles
 
         Get a list of identity profiles, based on the specified query parameters.
 
@@ -2303,7 +2303,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Identity Profiles
+        """List identity profiles
 
         Get a list of identity profiles, based on the specified query parameters.
 
@@ -2471,7 +2471,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> IdentityPreviewResponse:
-        """Generate Identity Profile Preview
+        """Generate identity profile preview
 
         Use this API to generate a non-persisted preview of the identity object after applying `IdentityAttributeConfig` sent in request body. This API only allows `accountAttribute`, `reference` and `rule` transform types in the `IdentityAttributeConfig` sent in the request body.
 
@@ -2543,7 +2543,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[IdentityPreviewResponse]:
-        """Generate Identity Profile Preview
+        """Generate identity profile preview
 
         Use this API to generate a non-persisted preview of the identity object after applying `IdentityAttributeConfig` sent in request body. This API only allows `accountAttribute`, `reference` and `rule` transform types in the `IdentityAttributeConfig` sent in the request body.
 
@@ -2615,7 +2615,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Generate Identity Profile Preview
+        """Generate identity profile preview
 
         Use this API to generate a non-persisted preview of the identity object after applying `IdentityAttributeConfig` sent in request body. This API only allows `accountAttribute`, `reference` and `rule` transform types in the `IdentityAttributeConfig` sent in the request body.
 
@@ -3042,7 +3042,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> IdentityProfile:
-        """Update Identity Profile
+        """Update identity profile
 
         Update a specified identity profile with this PATCH request.    You cannot update these fields: * id * created * modified * identityCount * identityRefreshRequired * Authoritative Source and Identity Attribute Configuration cannot be modified at the same time.
 
@@ -3119,7 +3119,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[IdentityProfile]:
-        """Update Identity Profile
+        """Update identity profile
 
         Update a specified identity profile with this PATCH request.    You cannot update these fields: * id * created * modified * identityCount * identityRefreshRequired * Authoritative Source and Identity Attribute Configuration cannot be modified at the same time.
 
@@ -3196,7 +3196,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Identity Profile
+        """Update identity profile
 
         Update a specified identity profile with this PATCH request.    You cannot update these fields: * id * created * modified * identityCount * identityRefreshRequired * Authoritative Source and Identity Attribute Configuration cannot be modified at the same time.
 

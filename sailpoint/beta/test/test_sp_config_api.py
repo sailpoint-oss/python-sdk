@@ -71,7 +71,7 @@ class TestSPConfigApi(unittest.TestCase):
     def test_list_sp_config_objects(self) -> None:
         """Test case for list_sp_config_objects
 
-        List Config Objects
+        List config objects
         """
         pass
 

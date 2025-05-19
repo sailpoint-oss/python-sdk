@@ -29,112 +29,112 @@ class TestRolesApi(unittest.TestCase):
     def test_create_role(self) -> None:
         """Test case for create_role
 
-        Create a Role
+        Create a role
         """
         pass
 
     def test_delete_bulk_roles(self) -> None:
         """Test case for delete_bulk_roles
 
-        Delete Role(s)
+        Delete role(s)
         """
         pass
 
     def test_delete_metadata_from_role_by_key_and_value(self) -> None:
         """Test case for delete_metadata_from_role_by_key_and_value
 
-        Remove a Metadata From Role.
+        Remove a metadata from role.
         """
         pass
 
     def test_delete_role(self) -> None:
         """Test case for delete_role
 
-        Delete a Role
+        Delete a role
         """
         pass
 
     def test_get_bulk_update_status(self) -> None:
         """Test case for get_bulk_update_status
 
-        Get Bulk-Update Statuses
+        Get bulk-update statuses
         """
         pass
 
     def test_get_bulk_update_status_by_id(self) -> None:
         """Test case for get_bulk_update_status_by_id
 
-        Get Bulk-Update Status by ID
+        Get bulk-update status by id
         """
         pass
 
     def test_get_role(self) -> None:
         """Test case for get_role
 
-        Get a Role
+        Get a role
         """
         pass
 
     def test_get_role_assigned_identities(self) -> None:
         """Test case for get_role_assigned_identities
 
-        List Identities assigned a Role
+        List identities assigned a role
         """
         pass
 
     def test_get_role_entitlements(self) -> None:
         """Test case for get_role_entitlements
 
-        List Role's Entitlements
+        List role's entitlements
         """
         pass
 
     def test_list_roles(self) -> None:
         """Test case for list_roles
 
-        List Roles
+        List roles
         """
         pass
 
     def test_patch_role(self) -> None:
         """Test case for patch_role
 
-        Patch a specified Role
+        Patch a specified role
         """
         pass
 
     def test_search_roles_by_filter(self) -> None:
         """Test case for search_roles_by_filter
 
-        Filter Roles by Metadata
+        Filter roles by metadata
         """
         pass
 
     def test_update_attribute_key_and_value_to_role(self) -> None:
         """Test case for update_attribute_key_and_value_to_role
 
-        Add a Metadata to Role.
+        Add a metadata to role.
         """
         pass
 
     def test_update_roles_metadata_by_filter(self) -> None:
         """Test case for update_roles_metadata_by_filter
 
-        Bulk-Update Roles' Metadata by Filters
+        Bulk-update roles' metadata by filters
         """
         pass
 
     def test_update_roles_metadata_by_ids(self) -> None:
         """Test case for update_roles_metadata_by_ids
 
-        Bulk-Update Roles' Metadata by ID
+        Bulk-update roles' metadata by id
         """
         pass
 
     def test_update_roles_metadata_by_query(self) -> None:
         """Test case for update_roles_metadata_by_query
 
-        Bulk-Update Roles' Metadata by Query
+        Bulk-update roles' metadata by query
         """
         pass
 

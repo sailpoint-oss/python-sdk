@@ -29,35 +29,35 @@ class TestManagedClusterTypesApi(unittest.TestCase):
     def test_create_managed_cluster_type(self) -> None:
         """Test case for create_managed_cluster_type
 
-        Create new Managed Cluster Type
+        Create new managed cluster type
         """
         pass
 
     def test_delete_managed_cluster_type(self) -> None:
         """Test case for delete_managed_cluster_type
 
-        Delete a Managed Cluster Type
+        Delete a managed cluster type
         """
         pass
 
     def test_get_managed_cluster_type(self) -> None:
         """Test case for get_managed_cluster_type
 
-        Get a Managed Cluster Type
+        Get a managed cluster type
         """
         pass
 
     def test_get_managed_cluster_types(self) -> None:
         """Test case for get_managed_cluster_types
 
-        Get Managed Cluster Types
+        Get managed cluster types
         """
         pass
 
     def test_update_managed_cluster_type(self) -> None:
         """Test case for update_managed_cluster_type
 
-        Update a Managed Cluster Type
+        Update a managed cluster type
         """
         pass
 

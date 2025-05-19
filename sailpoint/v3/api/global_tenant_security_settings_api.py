@@ -352,7 +352,7 @@ class GlobalTenantSecuritySettingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> LockoutConfiguration:
-        """Get Auth Org Lockout Configuration.
+        """Get auth org lockout configuration.
 
         This API returns the details of an org's lockout auth configuration.
 
@@ -421,7 +421,7 @@ class GlobalTenantSecuritySettingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[LockoutConfiguration]:
-        """Get Auth Org Lockout Configuration.
+        """Get auth org lockout configuration.
 
         This API returns the details of an org's lockout auth configuration.
 
@@ -490,7 +490,7 @@ class GlobalTenantSecuritySettingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Auth Org Lockout Configuration.
+        """Get auth org lockout configuration.
 
         This API returns the details of an org's lockout auth configuration.
 
@@ -882,7 +882,7 @@ class GlobalTenantSecuritySettingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ServiceProviderConfiguration:
-        """Get Service Provider Configuration.
+        """Get service provider configuration.
 
         This API returns the details of an org's service provider auth configuration.
 
@@ -951,7 +951,7 @@ class GlobalTenantSecuritySettingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ServiceProviderConfiguration]:
-        """Get Service Provider Configuration.
+        """Get service provider configuration.
 
         This API returns the details of an org's service provider auth configuration.
 
@@ -1020,7 +1020,7 @@ class GlobalTenantSecuritySettingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Service Provider Configuration.
+        """Get service provider configuration.
 
         This API returns the details of an org's service provider auth configuration.
 
@@ -1147,7 +1147,7 @@ class GlobalTenantSecuritySettingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SessionConfiguration:
-        """Get Auth Org Session Configuration.
+        """Get auth org session configuration.
 
         This API returns the details of an org's session auth configuration.
 
@@ -1216,7 +1216,7 @@ class GlobalTenantSecuritySettingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SessionConfiguration]:
-        """Get Auth Org Session Configuration.
+        """Get auth org session configuration.
 
         This API returns the details of an org's session auth configuration.
 
@@ -1285,7 +1285,7 @@ class GlobalTenantSecuritySettingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Auth Org Session Configuration.
+        """Get auth org session configuration.
 
         This API returns the details of an org's session auth configuration.
 
@@ -1413,7 +1413,7 @@ class GlobalTenantSecuritySettingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> LockoutConfiguration:
-        """Update Auth Org Lockout Configuration
+        """Update auth org lockout configuration
 
         This API updates an existing lockout configuration for an org using PATCH 
 
@@ -1486,7 +1486,7 @@ class GlobalTenantSecuritySettingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[LockoutConfiguration]:
-        """Update Auth Org Lockout Configuration
+        """Update auth org lockout configuration
 
         This API updates an existing lockout configuration for an org using PATCH 
 
@@ -1559,7 +1559,7 @@ class GlobalTenantSecuritySettingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Auth Org Lockout Configuration
+        """Update auth org lockout configuration
 
         This API updates an existing lockout configuration for an org using PATCH 
 
@@ -2001,7 +2001,7 @@ class GlobalTenantSecuritySettingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ServiceProviderConfiguration:
-        """Update Service Provider Configuration
+        """Update service provider configuration
 
         This API updates an existing service provider configuration for an org using PATCH.
 
@@ -2074,7 +2074,7 @@ class GlobalTenantSecuritySettingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ServiceProviderConfiguration]:
-        """Update Service Provider Configuration
+        """Update service provider configuration
 
         This API updates an existing service provider configuration for an org using PATCH.
 
@@ -2147,7 +2147,7 @@ class GlobalTenantSecuritySettingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Service Provider Configuration
+        """Update service provider configuration
 
         This API updates an existing service provider configuration for an org using PATCH.
 
@@ -2295,7 +2295,7 @@ class GlobalTenantSecuritySettingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SessionConfiguration:
-        """Update Auth Org Session Configuration
+        """Update auth org session configuration
 
         This API updates an existing session configuration for an org using PATCH.
 
@@ -2368,7 +2368,7 @@ class GlobalTenantSecuritySettingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SessionConfiguration]:
-        """Update Auth Org Session Configuration
+        """Update auth org session configuration
 
         This API updates an existing session configuration for an org using PATCH.
 
@@ -2441,7 +2441,7 @@ class GlobalTenantSecuritySettingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Auth Org Session Configuration
+        """Update auth org session configuration
 
         This API updates an existing session configuration for an org using PATCH.
 

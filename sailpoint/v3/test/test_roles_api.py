@@ -29,49 +29,49 @@ class TestRolesApi(unittest.TestCase):
     def test_create_role(self) -> None:
         """Test case for create_role
 
-        Create a Role
+        Create a role
         """
         pass
 
     def test_delete_bulk_roles(self) -> None:
         """Test case for delete_bulk_roles
 
-        Delete Role(s)
+        Delete role(s)
         """
         pass
 
     def test_delete_role(self) -> None:
         """Test case for delete_role
 
-        Delete Role
+        Delete role
         """
         pass
 
     def test_get_role(self) -> None:
         """Test case for get_role
 
-        Get Role
+        Get role
         """
         pass
 
     def test_get_role_assigned_identities(self) -> None:
         """Test case for get_role_assigned_identities
 
-        List Identities assigned a Role
+        List identities assigned a role
         """
         pass
 
     def test_list_roles(self) -> None:
         """Test case for list_roles
 
-        List Roles
+        List roles
         """
         pass
 
     def test_patch_role(self) -> None:
         """Test case for patch_role
 
-        Patch Role
+        Patch role
         """
         pass
 

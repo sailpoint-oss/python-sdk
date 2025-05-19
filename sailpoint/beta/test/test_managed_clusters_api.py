@@ -36,14 +36,14 @@ class TestManagedClustersApi(unittest.TestCase):
     def test_get_managed_cluster(self) -> None:
         """Test case for get_managed_cluster
 
-        Get a specified ManagedCluster.
+        Get a specified managedcluster.
         """
         pass
 
     def test_get_managed_clusters(self) -> None:
         """Test case for get_managed_clusters
 
-        Retrieve all Managed Clusters.
+        Retrieve all managed clusters.
         """
         pass
 

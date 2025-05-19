@@ -55,7 +55,7 @@ class VendorConnectorMappingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> VendorConnectorMapping:
-        """Create Vendor Connector Mapping
+        """Create vendor connector mapping
 
         Create a new mapping between a SaaS vendor and an ISC connector to establish correlation paths. 
 
@@ -128,7 +128,7 @@ class VendorConnectorMappingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[VendorConnectorMapping]:
-        """Create Vendor Connector Mapping
+        """Create vendor connector mapping
 
         Create a new mapping between a SaaS vendor and an ISC connector to establish correlation paths. 
 
@@ -201,7 +201,7 @@ class VendorConnectorMappingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create Vendor Connector Mapping
+        """Create vendor connector mapping
 
         Create a new mapping between a SaaS vendor and an ISC connector to establish correlation paths. 
 
@@ -348,7 +348,7 @@ class VendorConnectorMappingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> DeleteVendorConnectorMapping200Response:
-        """Delete Vendor Connector Mapping
+        """Delete vendor connector mapping
 
         Soft delete a mapping between a SaaS vendor and an ISC connector, removing the established correlation. 
 
@@ -421,7 +421,7 @@ class VendorConnectorMappingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[DeleteVendorConnectorMapping200Response]:
-        """Delete Vendor Connector Mapping
+        """Delete vendor connector mapping
 
         Soft delete a mapping between a SaaS vendor and an ISC connector, removing the established correlation. 
 
@@ -494,7 +494,7 @@ class VendorConnectorMappingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Vendor Connector Mapping
+        """Delete vendor connector mapping
 
         Soft delete a mapping between a SaaS vendor and an ISC connector, removing the established correlation. 
 
@@ -640,7 +640,7 @@ class VendorConnectorMappingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[VendorConnectorMapping]:
-        """List Vendor Connector Mappings
+        """List vendor connector mappings
 
         Get a list of mappings between SaaS vendors and ISC connectors, detailing the connections established for correlation. 
 
@@ -709,7 +709,7 @@ class VendorConnectorMappingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[VendorConnectorMapping]]:
-        """List Vendor Connector Mappings
+        """List vendor connector mappings
 
         Get a list of mappings between SaaS vendors and ISC connectors, detailing the connections established for correlation. 
 
@@ -778,7 +778,7 @@ class VendorConnectorMappingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Vendor Connector Mappings
+        """List vendor connector mappings
 
         Get a list of mappings between SaaS vendors and ISC connectors, detailing the connections established for correlation. 
 

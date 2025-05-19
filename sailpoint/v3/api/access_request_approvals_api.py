@@ -61,7 +61,7 @@ class AccessRequestApprovalsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> object:
-        """Approve Access Request Approval
+        """Approve access request approval
 
         Use this endpoint to approve an access request approval. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action.
 
@@ -138,7 +138,7 @@ class AccessRequestApprovalsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[object]:
-        """Approve Access Request Approval
+        """Approve access request approval
 
         Use this endpoint to approve an access request approval. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action.
 
@@ -215,7 +215,7 @@ class AccessRequestApprovalsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Approve Access Request Approval
+        """Approve access request approval
 
         Use this endpoint to approve an access request approval. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action.
 
@@ -369,7 +369,7 @@ class AccessRequestApprovalsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> object:
-        """Forward Access Request Approval
+        """Forward access request approval
 
         Use this API to forward an access request approval to a new owner. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action.
 
@@ -446,7 +446,7 @@ class AccessRequestApprovalsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[object]:
-        """Forward Access Request Approval
+        """Forward access request approval
 
         Use this API to forward an access request approval to a new owner. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action.
 
@@ -523,7 +523,7 @@ class AccessRequestApprovalsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Forward Access Request Approval
+        """Forward access request approval
 
         Use this API to forward an access request approval to a new owner. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action.
 
@@ -677,7 +677,7 @@ class AccessRequestApprovalsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApprovalSummary:
-        """Get Access Requests Approvals Number
+        """Get access requests approvals number
 
         Use this API to return the number of pending, approved and rejected access requests approvals. See the \"owner-id\" query parameter for authorization information. info.
 
@@ -753,7 +753,7 @@ class AccessRequestApprovalsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ApprovalSummary]:
-        """Get Access Requests Approvals Number
+        """Get access requests approvals number
 
         Use this API to return the number of pending, approved and rejected access requests approvals. See the \"owner-id\" query parameter for authorization information. info.
 
@@ -829,7 +829,7 @@ class AccessRequestApprovalsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Access Requests Approvals Number
+        """Get access requests approvals number
 
         Use this API to return the number of pending, approved and rejected access requests approvals. See the \"owner-id\" query parameter for authorization information. info.
 
@@ -977,7 +977,7 @@ class AccessRequestApprovalsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[CompletedApproval]:
-        """Completed Access Request Approvals List
+        """Completed access request approvals list
 
         This endpoint returns list of completed approvals. See *owner-id* query parameter below for authorization info.
 
@@ -1069,7 +1069,7 @@ class AccessRequestApprovalsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[CompletedApproval]]:
-        """Completed Access Request Approvals List
+        """Completed access request approvals list
 
         This endpoint returns list of completed approvals. See *owner-id* query parameter below for authorization info.
 
@@ -1161,7 +1161,7 @@ class AccessRequestApprovalsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Completed Access Request Approvals List
+        """Completed access request approvals list
 
         This endpoint returns list of completed approvals. See *owner-id* query parameter below for authorization info.
 
@@ -1341,7 +1341,7 @@ class AccessRequestApprovalsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[PendingApproval]:
-        """Pending Access Request Approvals List
+        """Pending access request approvals list
 
         This endpoint returns a list of pending approvals. See \"owner-id\" query parameter below for authorization info.
 
@@ -1433,7 +1433,7 @@ class AccessRequestApprovalsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[PendingApproval]]:
-        """Pending Access Request Approvals List
+        """Pending access request approvals list
 
         This endpoint returns a list of pending approvals. See \"owner-id\" query parameter below for authorization info.
 
@@ -1525,7 +1525,7 @@ class AccessRequestApprovalsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Pending Access Request Approvals List
+        """Pending access request approvals list
 
         This endpoint returns a list of pending approvals. See \"owner-id\" query parameter below for authorization info.
 
@@ -1701,7 +1701,7 @@ class AccessRequestApprovalsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> object:
-        """Reject Access Request Approval
+        """Reject access request approval
 
         Use this API to reject an access request approval. Only the owner of the approval and admin users are allowed to perform this action.
 
@@ -1778,7 +1778,7 @@ class AccessRequestApprovalsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[object]:
-        """Reject Access Request Approval
+        """Reject access request approval
 
         Use this API to reject an access request approval. Only the owner of the approval and admin users are allowed to perform this action.
 
@@ -1855,7 +1855,7 @@ class AccessRequestApprovalsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Reject Access Request Approval
+        """Reject access request approval
 
         Use this API to reject an access request approval. Only the owner of the approval and admin users are allowed to perform this action.
 

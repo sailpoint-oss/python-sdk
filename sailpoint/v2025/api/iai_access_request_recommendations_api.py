@@ -60,7 +60,7 @@ class IAIAccessRequestRecommendationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> AccessRequestRecommendationActionItemResponseDto:
-        """Ignore Access Request Recommendation
+        """Ignore access request recommendation
 
         This API ignores a recommended access request item. Once an item is ignored, it will be marked as ignored=true if it is still a recommended item. The consumer can decide to hide ignored recommendations.
 
@@ -136,7 +136,7 @@ class IAIAccessRequestRecommendationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[AccessRequestRecommendationActionItemResponseDto]:
-        """Ignore Access Request Recommendation
+        """Ignore access request recommendation
 
         This API ignores a recommended access request item. Once an item is ignored, it will be marked as ignored=true if it is still a recommended item. The consumer can decide to hide ignored recommendations.
 
@@ -212,7 +212,7 @@ class IAIAccessRequestRecommendationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Ignore Access Request Recommendation
+        """Ignore access request recommendation
 
         This API ignores a recommended access request item. Once an item is ignored, it will be marked as ignored=true if it is still a recommended item. The consumer can decide to hide ignored recommendations.
 
@@ -365,7 +365,7 @@ class IAIAccessRequestRecommendationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> AccessRequestRecommendationActionItemResponseDto:
-        """Accept Access Request Recommendation
+        """Accept access request recommendation
 
         This API consumes a notification that a recommended access request item was requested. This API does not actually make the request, it is just a notification. This will help provide feedback in order to improve our recommendations.
 
@@ -441,7 +441,7 @@ class IAIAccessRequestRecommendationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[AccessRequestRecommendationActionItemResponseDto]:
-        """Accept Access Request Recommendation
+        """Accept access request recommendation
 
         This API consumes a notification that a recommended access request item was requested. This API does not actually make the request, it is just a notification. This will help provide feedback in order to improve our recommendations.
 
@@ -517,7 +517,7 @@ class IAIAccessRequestRecommendationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Accept Access Request Recommendation
+        """Accept access request recommendation
 
         This API consumes a notification that a recommended access request item was requested. This API does not actually make the request, it is just a notification. This will help provide feedback in order to improve our recommendations.
 
@@ -670,7 +670,7 @@ class IAIAccessRequestRecommendationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> AccessRequestRecommendationActionItemResponseDto:
-        """Mark Viewed Access Request Recommendations
+        """Mark viewed access request recommendations
 
         This API consumes a notification that a recommended access request item was viewed. Future recommendations with this item will be marked with viewed=true. This can be useful for the consumer to determine if there are any new/unviewed recommendations.
 
@@ -746,7 +746,7 @@ class IAIAccessRequestRecommendationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[AccessRequestRecommendationActionItemResponseDto]:
-        """Mark Viewed Access Request Recommendations
+        """Mark viewed access request recommendations
 
         This API consumes a notification that a recommended access request item was viewed. Future recommendations with this item will be marked with viewed=true. This can be useful for the consumer to determine if there are any new/unviewed recommendations.
 
@@ -822,7 +822,7 @@ class IAIAccessRequestRecommendationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Mark Viewed Access Request Recommendations
+        """Mark viewed access request recommendations
 
         This API consumes a notification that a recommended access request item was viewed. Future recommendations with this item will be marked with viewed=true. This can be useful for the consumer to determine if there are any new/unviewed recommendations.
 
@@ -975,7 +975,7 @@ class IAIAccessRequestRecommendationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[AccessRequestRecommendationActionItemResponseDto]:
-        """Bulk Mark Viewed Access Request Recommendations
+        """Bulk mark viewed access request recommendations
 
         This API consumes a notification that a set of recommended access request item were viewed. Future recommendations with these items will be marked with viewed=true. This can be useful for the consumer to determine if there are any new/unviewed recommendations.
 
@@ -1051,7 +1051,7 @@ class IAIAccessRequestRecommendationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[AccessRequestRecommendationActionItemResponseDto]]:
-        """Bulk Mark Viewed Access Request Recommendations
+        """Bulk mark viewed access request recommendations
 
         This API consumes a notification that a set of recommended access request item were viewed. Future recommendations with these items will be marked with viewed=true. This can be useful for the consumer to determine if there are any new/unviewed recommendations.
 
@@ -1127,7 +1127,7 @@ class IAIAccessRequestRecommendationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Bulk Mark Viewed Access Request Recommendations
+        """Bulk mark viewed access request recommendations
 
         This API consumes a notification that a set of recommended access request item were viewed. Future recommendations with these items will be marked with viewed=true. This can be useful for the consumer to determine if there are any new/unviewed recommendations.
 
@@ -1287,7 +1287,7 @@ class IAIAccessRequestRecommendationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[AccessRequestRecommendationItemDetail]:
-        """Identity Access Request Recommendations
+        """Identity access request recommendations
 
         This API returns the access request recommendations for the specified identity. The default identity is *me* which indicates the current user.
 
@@ -1387,7 +1387,7 @@ class IAIAccessRequestRecommendationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[AccessRequestRecommendationItemDetail]]:
-        """Identity Access Request Recommendations
+        """Identity access request recommendations
 
         This API returns the access request recommendations for the specified identity. The default identity is *me* which indicates the current user.
 
@@ -1487,7 +1487,7 @@ class IAIAccessRequestRecommendationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Identity Access Request Recommendations
+        """Identity access request recommendations
 
         This API returns the access request recommendations for the specified identity. The default identity is *me* which indicates the current user.
 
@@ -1676,7 +1676,7 @@ class IAIAccessRequestRecommendationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> AccessRequestRecommendationConfigDto:
-        """Get Access Request Recommendations config
+        """Get access request recommendations config
 
         This API returns the configurations for Access Request Recommender for the tenant.
 
@@ -1748,7 +1748,7 @@ class IAIAccessRequestRecommendationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[AccessRequestRecommendationConfigDto]:
-        """Get Access Request Recommendations config
+        """Get access request recommendations config
 
         This API returns the configurations for Access Request Recommender for the tenant.
 
@@ -1820,7 +1820,7 @@ class IAIAccessRequestRecommendationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Access Request Recommendations config
+        """Get access request recommendations config
 
         This API returns the configurations for Access Request Recommender for the tenant.
 
@@ -1958,7 +1958,7 @@ class IAIAccessRequestRecommendationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[AccessRequestRecommendationActionItemResponseDto]:
-        """List Ignored Access Request Recommendations
+        """List ignored access request recommendations
 
         This API returns the list of ignored access request recommendations.
 
@@ -2050,7 +2050,7 @@ class IAIAccessRequestRecommendationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[AccessRequestRecommendationActionItemResponseDto]]:
-        """List Ignored Access Request Recommendations
+        """List ignored access request recommendations
 
         This API returns the list of ignored access request recommendations.
 
@@ -2142,7 +2142,7 @@ class IAIAccessRequestRecommendationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Ignored Access Request Recommendations
+        """List ignored access request recommendations
 
         This API returns the list of ignored access request recommendations.
 
@@ -2320,7 +2320,7 @@ class IAIAccessRequestRecommendationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[AccessRequestRecommendationActionItemResponseDto]:
-        """List Accepted Access Request Recommendations
+        """List accepted access request recommendations
 
         This API returns a list of requested access request recommendations.
 
@@ -2412,7 +2412,7 @@ class IAIAccessRequestRecommendationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[AccessRequestRecommendationActionItemResponseDto]]:
-        """List Accepted Access Request Recommendations
+        """List accepted access request recommendations
 
         This API returns a list of requested access request recommendations.
 
@@ -2504,7 +2504,7 @@ class IAIAccessRequestRecommendationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Accepted Access Request Recommendations
+        """List accepted access request recommendations
 
         This API returns a list of requested access request recommendations.
 
@@ -2682,7 +2682,7 @@ class IAIAccessRequestRecommendationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[AccessRequestRecommendationActionItemResponseDto]:
-        """List Viewed Access Request Recommendations
+        """List viewed access request recommendations
 
         This API returns the list of viewed access request recommendations.
 
@@ -2774,7 +2774,7 @@ class IAIAccessRequestRecommendationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[AccessRequestRecommendationActionItemResponseDto]]:
-        """List Viewed Access Request Recommendations
+        """List viewed access request recommendations
 
         This API returns the list of viewed access request recommendations.
 
@@ -2866,7 +2866,7 @@ class IAIAccessRequestRecommendationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Viewed Access Request Recommendations
+        """List viewed access request recommendations
 
         This API returns the list of viewed access request recommendations.
 
@@ -3040,7 +3040,7 @@ class IAIAccessRequestRecommendationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> AccessRequestRecommendationConfigDto:
-        """Update Access Request Recommendations config
+        """Update access request recommendations config
 
         This API updates the configurations for Access Request Recommender for the tenant.
 
@@ -3116,7 +3116,7 @@ class IAIAccessRequestRecommendationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[AccessRequestRecommendationConfigDto]:
-        """Update Access Request Recommendations config
+        """Update access request recommendations config
 
         This API updates the configurations for Access Request Recommender for the tenant.
 
@@ -3192,7 +3192,7 @@ class IAIAccessRequestRecommendationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Access Request Recommendations config
+        """Update access request recommendations config
 
         This API updates the configurations for Access Request Recommender for the tenant.
 

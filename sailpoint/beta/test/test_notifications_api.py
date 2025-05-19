@@ -29,105 +29,105 @@ class TestNotificationsApi(unittest.TestCase):
     def test_create_domain_dkim(self) -> None:
         """Test case for create_domain_dkim
 
-        Verify domain address via DKIM
+        Verify domain address via dkim
         """
         pass
 
     def test_create_notification_template(self) -> None:
         """Test case for create_notification_template
 
-        Create Notification Template
+        Create notification template
         """
         pass
 
     def test_create_verified_from_address(self) -> None:
         """Test case for create_verified_from_address
 
-        Create Verified From Address
+        Create verified from address
         """
         pass
 
     def test_delete_notification_templates_in_bulk(self) -> None:
         """Test case for delete_notification_templates_in_bulk
 
-        Bulk Delete Notification Templates
+        Bulk delete notification templates
         """
         pass
 
     def test_delete_verified_from_address(self) -> None:
         """Test case for delete_verified_from_address
 
-        Delete Verified From Address
+        Delete verified from address
         """
         pass
 
     def test_get_dkim_attributes(self) -> None:
         """Test case for get_dkim_attributes
 
-        Get DKIM Attributes
+        Get dkim attributes
         """
         pass
 
     def test_get_mail_from_attributes(self) -> None:
         """Test case for get_mail_from_attributes
 
-        Get MAIL FROM Attributes
+        Get mail from attributes
         """
         pass
 
     def test_get_notification_template(self) -> None:
         """Test case for get_notification_template
 
-        Get Notification Template By Id
+        Get notification template by id
         """
         pass
 
     def test_get_notifications_template_context(self) -> None:
         """Test case for get_notifications_template_context
 
-        Get Notification Template Context
+        Get notification template context
         """
         pass
 
     def test_list_from_addresses(self) -> None:
         """Test case for list_from_addresses
 
-        List From Addresses
+        List from addresses
         """
         pass
 
     def test_list_notification_preferences(self) -> None:
         """Test case for list_notification_preferences
 
-        List Notification Preferences for tenant.
+        List notification preferences for tenant.
         """
         pass
 
     def test_list_notification_template_defaults(self) -> None:
         """Test case for list_notification_template_defaults
 
-        List Notification Template Defaults
+        List notification template defaults
         """
         pass
 
     def test_list_notification_templates(self) -> None:
         """Test case for list_notification_templates
 
-        List Notification Templates
+        List notification templates
         """
         pass
 
     def test_put_mail_from_attributes(self) -> None:
         """Test case for put_mail_from_attributes
 
-        Change MAIL FROM domain
+        Change mail from domain
         """
         pass
 
     def test_send_test_notification(self) -> None:
         """Test case for send_test_notification
 
-        Send Test Notification
+        Send test notification
         """
         pass
 

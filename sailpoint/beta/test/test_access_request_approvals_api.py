@@ -29,42 +29,42 @@ class TestAccessRequestApprovalsApi(unittest.TestCase):
     def test_approve_access_request(self) -> None:
         """Test case for approve_access_request
 
-        Approve Access Request Approval
+        Approve access request approval
         """
         pass
 
     def test_forward_access_request(self) -> None:
         """Test case for forward_access_request
 
-        Forward Access Request Approval
+        Forward access request approval
         """
         pass
 
     def test_get_access_request_approval_summary(self) -> None:
         """Test case for get_access_request_approval_summary
 
-        Get Access Requests Approvals Number
+        Get access requests approvals number
         """
         pass
 
     def test_list_completed_approvals(self) -> None:
         """Test case for list_completed_approvals
 
-        Completed Access Request Approvals List
+        Completed access request approvals list
         """
         pass
 
     def test_list_pending_approvals(self) -> None:
         """Test case for list_pending_approvals
 
-        Pending Access Request Approvals List
+        Pending access request approvals list
         """
         pass
 
     def test_reject_access_request(self) -> None:
         """Test case for reject_access_request
 
-        Reject Access Request Approval
+        Reject access request approval
         """
         pass
 

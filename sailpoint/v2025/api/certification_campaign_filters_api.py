@@ -57,7 +57,7 @@ class CertificationCampaignFiltersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> CampaignFilterDetails:
-        """Create Campaign Filter
+        """Create campaign filter
 
         Use this API to create a campaign filter based on filter details and criteria.
 
@@ -129,7 +129,7 @@ class CertificationCampaignFiltersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[CampaignFilterDetails]:
-        """Create Campaign Filter
+        """Create campaign filter
 
         Use this API to create a campaign filter based on filter details and criteria.
 
@@ -201,7 +201,7 @@ class CertificationCampaignFiltersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create Campaign Filter
+        """Create campaign filter
 
         Use this API to create a campaign filter based on filter details and criteria.
 
@@ -347,7 +347,7 @@ class CertificationCampaignFiltersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Deletes Campaign Filters
+        """Deletes campaign filters
 
         Deletes campaign filters whose Ids are specified in the provided list of campaign filter Ids. Authorized callers must be an ORG_ADMIN or a CERT_ADMIN.
 
@@ -420,7 +420,7 @@ class CertificationCampaignFiltersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Deletes Campaign Filters
+        """Deletes campaign filters
 
         Deletes campaign filters whose Ids are specified in the provided list of campaign filter Ids. Authorized callers must be an ORG_ADMIN or a CERT_ADMIN.
 
@@ -493,7 +493,7 @@ class CertificationCampaignFiltersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Deletes Campaign Filters
+        """Deletes campaign filters
 
         Deletes campaign filters whose Ids are specified in the provided list of campaign filter Ids. Authorized callers must be an ORG_ADMIN or a CERT_ADMIN.
 
@@ -641,7 +641,7 @@ class CertificationCampaignFiltersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> CampaignFilterDetails:
-        """Get Campaign Filter by ID
+        """Get campaign filter by id
 
         Retrieves information for an existing campaign filter using the filter's ID.
 
@@ -714,7 +714,7 @@ class CertificationCampaignFiltersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[CampaignFilterDetails]:
-        """Get Campaign Filter by ID
+        """Get campaign filter by id
 
         Retrieves information for an existing campaign filter using the filter's ID.
 
@@ -787,7 +787,7 @@ class CertificationCampaignFiltersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Campaign Filter by ID
+        """Get campaign filter by id
 
         Retrieves information for an existing campaign filter using the filter's ID.
 
@@ -923,7 +923,7 @@ class CertificationCampaignFiltersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListCampaignFilters200Response:
-        """List Campaign Filters
+        """List campaign filters
 
         Use this API to list all campaign filters. You can reduce scope with standard V3 query parameters.
 
@@ -1003,7 +1003,7 @@ class CertificationCampaignFiltersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListCampaignFilters200Response]:
-        """List Campaign Filters
+        """List campaign filters
 
         Use this API to list all campaign filters. You can reduce scope with standard V3 query parameters.
 
@@ -1083,7 +1083,7 @@ class CertificationCampaignFiltersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Campaign Filters
+        """List campaign filters
 
         Use this API to list all campaign filters. You can reduce scope with standard V3 query parameters.
 
@@ -1235,7 +1235,7 @@ class CertificationCampaignFiltersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> CampaignFilterDetails:
-        """Updates a Campaign Filter
+        """Updates a campaign filter
 
         Updates an existing campaign filter using the filter's ID.
 
@@ -1311,7 +1311,7 @@ class CertificationCampaignFiltersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[CampaignFilterDetails]:
-        """Updates a Campaign Filter
+        """Updates a campaign filter
 
         Updates an existing campaign filter using the filter's ID.
 
@@ -1387,7 +1387,7 @@ class CertificationCampaignFiltersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Updates a Campaign Filter
+        """Updates a campaign filter
 
         Updates an existing campaign filter using the filter's ID.
 

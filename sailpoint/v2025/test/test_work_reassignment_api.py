@@ -29,63 +29,63 @@ class TestWorkReassignmentApi(unittest.TestCase):
     def test_create_reassignment_configuration(self) -> None:
         """Test case for create_reassignment_configuration
 
-        Create a Reassignment Configuration
+        Create a reassignment configuration
         """
         pass
 
     def test_delete_reassignment_configuration(self) -> None:
         """Test case for delete_reassignment_configuration
 
-        Delete Reassignment Configuration
+        Delete reassignment configuration
         """
         pass
 
     def test_get_evaluate_reassignment_configuration(self) -> None:
         """Test case for get_evaluate_reassignment_configuration
 
-        Evaluate Reassignment Configuration
+        Evaluate reassignment configuration
         """
         pass
 
     def test_get_reassignment_config_types(self) -> None:
         """Test case for get_reassignment_config_types
 
-        List Reassignment Config Types
+        List reassignment config types
         """
         pass
 
     def test_get_reassignment_configuration(self) -> None:
         """Test case for get_reassignment_configuration
 
-        Get Reassignment Configuration
+        Get reassignment configuration
         """
         pass
 
     def test_get_tenant_config_configuration(self) -> None:
         """Test case for get_tenant_config_configuration
 
-        Get Tenant-wide Reassignment Configuration settings
+        Get tenant-wide reassignment configuration settings
         """
         pass
 
     def test_list_reassignment_configurations(self) -> None:
         """Test case for list_reassignment_configurations
 
-        List Reassignment Configurations
+        List reassignment configurations
         """
         pass
 
     def test_put_reassignment_config(self) -> None:
         """Test case for put_reassignment_config
 
-        Update Reassignment Configuration
+        Update reassignment configuration
         """
         pass
 
     def test_put_tenant_configuration(self) -> None:
         """Test case for put_tenant_configuration
 
-        Update Tenant-wide Reassignment Configuration settings
+        Update tenant-wide reassignment configuration settings
         """
         pass
 

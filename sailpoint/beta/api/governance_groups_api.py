@@ -64,7 +64,7 @@ class GovernanceGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> WorkgroupDto:
-        """Create a new Governance Group.
+        """Create a new governance group.
 
         This API creates a new Governance Group.
 
@@ -136,7 +136,7 @@ class GovernanceGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[WorkgroupDto]:
-        """Create a new Governance Group.
+        """Create a new governance group.
 
         This API creates a new Governance Group.
 
@@ -208,7 +208,7 @@ class GovernanceGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create a new Governance Group.
+        """Create a new governance group.
 
         This API creates a new Governance Group.
 
@@ -354,7 +354,7 @@ class GovernanceGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete a Governance Group
+        """Delete a governance group
 
         This API deletes a Governance Group by its ID.
 
@@ -426,7 +426,7 @@ class GovernanceGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete a Governance Group
+        """Delete a governance group
 
         This API deletes a Governance Group by its ID.
 
@@ -498,7 +498,7 @@ class GovernanceGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete a Governance Group
+        """Delete a governance group
 
         This API deletes a Governance Group by its ID.
 
@@ -632,7 +632,7 @@ class GovernanceGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[WorkgroupMemberDeleteItem]:
-        """Remove members from Governance Group
+        """Remove members from governance group
 
         This API removes one or more  members from a Governance Group.  A token with API, ORG_ADMIN authority is required to call this API.  >  **Following field of Identity is an optional field in the request.**  >  **name**
 
@@ -708,7 +708,7 @@ class GovernanceGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[WorkgroupMemberDeleteItem]]:
-        """Remove members from Governance Group
+        """Remove members from governance group
 
         This API removes one or more  members from a Governance Group.  A token with API, ORG_ADMIN authority is required to call this API.  >  **Following field of Identity is an optional field in the request.**  >  **name**
 
@@ -784,7 +784,7 @@ class GovernanceGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Remove members from Governance Group
+        """Remove members from governance group
 
         This API removes one or more  members from a Governance Group.  A token with API, ORG_ADMIN authority is required to call this API.  >  **Following field of Identity is an optional field in the request.**  >  **name**
 
@@ -937,7 +937,7 @@ class GovernanceGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[WorkgroupDeleteItem]:
-        """Delete Governance Group(s)
+        """Delete governance group(s)
 
          This API initiates a bulk deletion of one or more Governance Groups.  >  If any of the indicated Governance Groups have one or more connections associated with it,then those Governance Groups will be added in  **inUse** list of the response. Governance Group(s) marked as **inUse** can not be deleted.  >  If any of the indicated Governance Groups is not does not exists in Organization,then those Governance Groups will be added in **notFound** list of the response. Governance Groups marked as **notFound** will not be deleted.  >  If any of the indicated Governance Groups does not have any connections associated with it,then those Governance Groups will be added in **deleted** list of the response. A Governance Group marked as **deleted** will be deleted from current Organization.  >  If the request contains any **inUse** or **notFound** Governance Group IDs then it skips only these Governance Groups for deletion and deletes the rest of Governance Groups which have no connections associated with it.   >  **This API has limit number of Governance Groups can be deleted at one time. If the request contains more then 100 Governance Groups IDs to be deleted then the API will throw an exception.**
 
@@ -1009,7 +1009,7 @@ class GovernanceGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[WorkgroupDeleteItem]]:
-        """Delete Governance Group(s)
+        """Delete governance group(s)
 
          This API initiates a bulk deletion of one or more Governance Groups.  >  If any of the indicated Governance Groups have one or more connections associated with it,then those Governance Groups will be added in  **inUse** list of the response. Governance Group(s) marked as **inUse** can not be deleted.  >  If any of the indicated Governance Groups is not does not exists in Organization,then those Governance Groups will be added in **notFound** list of the response. Governance Groups marked as **notFound** will not be deleted.  >  If any of the indicated Governance Groups does not have any connections associated with it,then those Governance Groups will be added in **deleted** list of the response. A Governance Group marked as **deleted** will be deleted from current Organization.  >  If the request contains any **inUse** or **notFound** Governance Group IDs then it skips only these Governance Groups for deletion and deletes the rest of Governance Groups which have no connections associated with it.   >  **This API has limit number of Governance Groups can be deleted at one time. If the request contains more then 100 Governance Groups IDs to be deleted then the API will throw an exception.**
 
@@ -1081,7 +1081,7 @@ class GovernanceGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Governance Group(s)
+        """Delete governance group(s)
 
          This API initiates a bulk deletion of one or more Governance Groups.  >  If any of the indicated Governance Groups have one or more connections associated with it,then those Governance Groups will be added in  **inUse** list of the response. Governance Group(s) marked as **inUse** can not be deleted.  >  If any of the indicated Governance Groups is not does not exists in Organization,then those Governance Groups will be added in **notFound** list of the response. Governance Groups marked as **notFound** will not be deleted.  >  If any of the indicated Governance Groups does not have any connections associated with it,then those Governance Groups will be added in **deleted** list of the response. A Governance Group marked as **deleted** will be deleted from current Organization.  >  If the request contains any **inUse** or **notFound** Governance Group IDs then it skips only these Governance Groups for deletion and deletes the rest of Governance Groups which have no connections associated with it.   >  **This API has limit number of Governance Groups can be deleted at one time. If the request contains more then 100 Governance Groups IDs to be deleted then the API will throw an exception.**
 
@@ -1227,7 +1227,7 @@ class GovernanceGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> WorkgroupDto:
-        """Get Governance Group by Id
+        """Get governance group by id
 
         This API returns a Governance Groups by its ID.
 
@@ -1299,7 +1299,7 @@ class GovernanceGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[WorkgroupDto]:
-        """Get Governance Group by Id
+        """Get governance group by id
 
         This API returns a Governance Groups by its ID.
 
@@ -1371,7 +1371,7 @@ class GovernanceGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Governance Group by Id
+        """Get governance group by id
 
         This API returns a Governance Groups by its ID.
 
@@ -1508,7 +1508,7 @@ class GovernanceGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[WorkgroupConnectionDto]:
-        """List connections for Governance Group
+        """List connections for governance group
 
         This API returns list of connections associated with a Governance Group.
 
@@ -1596,7 +1596,7 @@ class GovernanceGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[WorkgroupConnectionDto]]:
-        """List connections for Governance Group
+        """List connections for governance group
 
         This API returns list of connections associated with a Governance Group.
 
@@ -1684,7 +1684,7 @@ class GovernanceGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List connections for Governance Group
+        """List connections for governance group
 
         This API returns list of connections associated with a Governance Group.
 
@@ -1853,7 +1853,7 @@ class GovernanceGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[ListWorkgroupMembers200ResponseInner]:
-        """List Governance Group Members
+        """List governance group members
 
         This API returns list of members associated with a Governance Group.
 
@@ -1941,7 +1941,7 @@ class GovernanceGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[ListWorkgroupMembers200ResponseInner]]:
-        """List Governance Group Members
+        """List governance group members
 
         This API returns list of members associated with a Governance Group.
 
@@ -2029,7 +2029,7 @@ class GovernanceGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Governance Group Members
+        """List governance group members
 
         This API returns list of members associated with a Governance Group.
 
@@ -2198,7 +2198,7 @@ class GovernanceGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[WorkgroupDto]:
-        """List Governance Groups
+        """List governance groups
 
         This API returns list of Governance Groups
 
@@ -2286,7 +2286,7 @@ class GovernanceGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[WorkgroupDto]]:
-        """List Governance Groups
+        """List governance groups
 
         This API returns list of Governance Groups
 
@@ -2374,7 +2374,7 @@ class GovernanceGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Governance Groups
+        """List governance groups
 
         This API returns list of Governance Groups
 
@@ -2542,7 +2542,7 @@ class GovernanceGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> WorkgroupDto:
-        """Patch a Governance Group
+        """Patch a governance group
 
         This API updates an existing governance group by ID.  The following fields and objects are patchable:   * name   * description   * owner  A token with API or ORG_ADMIN authority is required to call this API.
 
@@ -2618,7 +2618,7 @@ class GovernanceGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[WorkgroupDto]:
-        """Patch a Governance Group
+        """Patch a governance group
 
         This API updates an existing governance group by ID.  The following fields and objects are patchable:   * name   * description   * owner  A token with API or ORG_ADMIN authority is required to call this API.
 
@@ -2694,7 +2694,7 @@ class GovernanceGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Patch a Governance Group
+        """Patch a governance group
 
         This API updates an existing governance group by ID.  The following fields and objects are patchable:   * name   * description   * owner  A token with API or ORG_ADMIN authority is required to call this API.
 
@@ -2848,7 +2848,7 @@ class GovernanceGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[WorkgroupMemberAddItem]:
-        """Add members to Governance Group
+        """Add members to governance group
 
         This API adds one or more members to a Governance Group.  A token with API, ORG_ADMIN authority is required to call this API.  >  **Following field of Identity is an optional field in the request.**  >  **name**
 
@@ -2924,7 +2924,7 @@ class GovernanceGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[WorkgroupMemberAddItem]]:
-        """Add members to Governance Group
+        """Add members to governance group
 
         This API adds one or more members to a Governance Group.  A token with API, ORG_ADMIN authority is required to call this API.  >  **Following field of Identity is an optional field in the request.**  >  **name**
 
@@ -3000,7 +3000,7 @@ class GovernanceGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Add members to Governance Group
+        """Add members to governance group
 
         This API adds one or more members to a Governance Group.  A token with API, ORG_ADMIN authority is required to call this API.  >  **Following field of Identity is an optional field in the request.**  >  **name**
 

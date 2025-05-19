@@ -68,7 +68,7 @@ class TriggersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Complete Trigger Invocation
+        """Complete trigger invocation
 
         Completes an invocation to a REQUEST_RESPONSE type trigger.
 
@@ -148,7 +148,7 @@ class TriggersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Complete Trigger Invocation
+        """Complete trigger invocation
 
         Completes an invocation to a REQUEST_RESPONSE type trigger.
 
@@ -228,7 +228,7 @@ class TriggersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Complete Trigger Invocation
+        """Complete trigger invocation
 
         Completes an invocation to a REQUEST_RESPONSE type trigger.
 
@@ -387,7 +387,7 @@ class TriggersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Subscription:
-        """Create a Subscription
+        """Create a subscription
 
         This API creates a new subscription to a trigger and defines trigger invocation details. The type of subscription determines which config object is required: * HTTP subscriptions require httpConfig * EventBridge subscriptions require eventBridgeConfig
 
@@ -463,7 +463,7 @@ class TriggersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Subscription]:
-        """Create a Subscription
+        """Create a subscription
 
         This API creates a new subscription to a trigger and defines trigger invocation details. The type of subscription determines which config object is required: * HTTP subscriptions require httpConfig * EventBridge subscriptions require eventBridgeConfig
 
@@ -539,7 +539,7 @@ class TriggersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create a Subscription
+        """Create a subscription
 
         This API creates a new subscription to a trigger and defines trigger invocation details. The type of subscription determines which config object is required: * HTTP subscriptions require httpConfig * EventBridge subscriptions require eventBridgeConfig
 
@@ -692,7 +692,7 @@ class TriggersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete a Subscription
+        """Delete a subscription
 
         Deletes an existing subscription to a trigger.
 
@@ -769,7 +769,7 @@ class TriggersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete a Subscription
+        """Delete a subscription
 
         Deletes an existing subscription to a trigger.
 
@@ -846,7 +846,7 @@ class TriggersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete a Subscription
+        """Delete a subscription
 
         Deletes an existing subscription to a trigger.
 
@@ -991,7 +991,7 @@ class TriggersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[Subscription]:
-        """List Subscriptions
+        """List subscriptions
 
         Gets a list of all trigger subscriptions.
 
@@ -1083,7 +1083,7 @@ class TriggersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[Subscription]]:
-        """List Subscriptions
+        """List subscriptions
 
         Gets a list of all trigger subscriptions.
 
@@ -1175,7 +1175,7 @@ class TriggersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Subscriptions
+        """List subscriptions
 
         Gets a list of all trigger subscriptions.
 
@@ -1353,7 +1353,7 @@ class TriggersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[InvocationStatus]:
-        """List Latest Invocation Statuses
+        """List latest invocation statuses
 
         Gets a list of latest invocation statuses. Statuses of successful invocations are available for up to 24 hours. Statuses of failed invocations are available for up to 48 hours. This endpoint may only fetch up to 2000 invocations, and should not be treated as a representation of the full history of invocations.
 
@@ -1445,7 +1445,7 @@ class TriggersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[InvocationStatus]]:
-        """List Latest Invocation Statuses
+        """List latest invocation statuses
 
         Gets a list of latest invocation statuses. Statuses of successful invocations are available for up to 24 hours. Statuses of failed invocations are available for up to 48 hours. This endpoint may only fetch up to 2000 invocations, and should not be treated as a representation of the full history of invocations.
 
@@ -1537,7 +1537,7 @@ class TriggersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Latest Invocation Statuses
+        """List latest invocation statuses
 
         Gets a list of latest invocation statuses. Statuses of successful invocations are available for up to 24 hours. Statuses of failed invocations are available for up to 48 hours. This endpoint may only fetch up to 2000 invocations, and should not be treated as a representation of the full history of invocations.
 
@@ -1715,7 +1715,7 @@ class TriggersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[Trigger]:
-        """List Triggers
+        """List triggers
 
         Gets a list of triggers that are available in the tenant.
 
@@ -1807,7 +1807,7 @@ class TriggersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[Trigger]]:
-        """List Triggers
+        """List triggers
 
         Gets a list of triggers that are available in the tenant.
 
@@ -1899,7 +1899,7 @@ class TriggersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Triggers
+        """List triggers
 
         Gets a list of triggers that are available in the tenant.
 
@@ -2074,7 +2074,7 @@ class TriggersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Subscription:
-        """Patch a Subscription
+        """Patch a subscription
 
         This API updates a trigger subscription in IdentityNow, using a set of instructions to modify a subscription partially. The following fields are patchable:  **name**, **description**, **enabled**, **type**, **filter**, **responseDeadline**, **httpConfig**, **eventBridgeConfig**, **workflowConfig**
 
@@ -2155,7 +2155,7 @@ class TriggersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Subscription]:
-        """Patch a Subscription
+        """Patch a subscription
 
         This API updates a trigger subscription in IdentityNow, using a set of instructions to modify a subscription partially. The following fields are patchable:  **name**, **description**, **enabled**, **type**, **filter**, **responseDeadline**, **httpConfig**, **eventBridgeConfig**, **workflowConfig**
 
@@ -2236,7 +2236,7 @@ class TriggersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Patch a Subscription
+        """Patch a subscription
 
         This API updates a trigger subscription in IdentityNow, using a set of instructions to modify a subscription partially. The following fields are patchable:  **name**, **description**, **enabled**, **type**, **filter**, **responseDeadline**, **httpConfig**, **eventBridgeConfig**, **workflowConfig**
 
@@ -2397,7 +2397,7 @@ class TriggersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[Invocation]:
-        """Start a Test Invocation
+        """Start a test invocation
 
         Initiate a test event for all subscribers of the specified event trigger.  If there are no subscribers to the specified trigger in the tenant, then no test event will be sent.
 
@@ -2474,7 +2474,7 @@ class TriggersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[Invocation]]:
-        """Start a Test Invocation
+        """Start a test invocation
 
         Initiate a test event for all subscribers of the specified event trigger.  If there are no subscribers to the specified trigger in the tenant, then no test event will be sent.
 
@@ -2551,7 +2551,7 @@ class TriggersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Start a Test Invocation
+        """Start a test invocation
 
         Initiate a test event for all subscribers of the specified event trigger.  If there are no subscribers to the specified trigger in the tenant, then no test event will be sent.
 
@@ -2705,7 +2705,7 @@ class TriggersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ValidateFilterOutputDto:
-        """Validate a Subscription Filter
+        """Validate a subscription filter
 
         Validates a JSONPath filter expression against a provided mock input. Request requires a security scope of: 
 
@@ -2781,7 +2781,7 @@ class TriggersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ValidateFilterOutputDto]:
-        """Validate a Subscription Filter
+        """Validate a subscription filter
 
         Validates a JSONPath filter expression against a provided mock input. Request requires a security scope of: 
 
@@ -2857,7 +2857,7 @@ class TriggersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Validate a Subscription Filter
+        """Validate a subscription filter
 
         Validates a JSONPath filter expression against a provided mock input. Request requires a security scope of: 
 
@@ -3011,7 +3011,7 @@ class TriggersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Subscription:
-        """Update a Subscription
+        """Update a subscription
 
         This API updates a trigger subscription in IdentityNow, using a full object representation. In other words, the existing   Subscription is completely replaced. The following fields are immutable:     * id    * triggerId     Attempts to modify these fields result in 400.
 
@@ -3092,7 +3092,7 @@ class TriggersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Subscription]:
-        """Update a Subscription
+        """Update a subscription
 
         This API updates a trigger subscription in IdentityNow, using a full object representation. In other words, the existing   Subscription is completely replaced. The following fields are immutable:     * id    * triggerId     Attempts to modify these fields result in 400.
 
@@ -3173,7 +3173,7 @@ class TriggersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update a Subscription
+        """Update a subscription
 
         This API updates a trigger subscription in IdentityNow, using a full object representation. In other words, the existing   Subscription is completely replaced. The following fields are immutable:     * id    * triggerId     Attempts to modify these fields result in 400.
 

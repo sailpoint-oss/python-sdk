@@ -36,7 +36,7 @@ class TestIdentitiesApi(unittest.TestCase):
     def test_get_identity(self) -> None:
         """Test case for get_identity
 
-        Identity Details
+        Identity details
         """
         pass
 
@@ -64,7 +64,7 @@ class TestIdentitiesApi(unittest.TestCase):
     def test_list_identities(self) -> None:
         """Test case for list_identities
 
-        List Identities
+        List identities
         """
         pass
 
@@ -92,7 +92,7 @@ class TestIdentitiesApi(unittest.TestCase):
     def test_start_identity_processing(self) -> None:
         """Test case for start_identity_processing
 
-        Process a list of identityIds
+        Process a list of identityids
         """
         pass
 

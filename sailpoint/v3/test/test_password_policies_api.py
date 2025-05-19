@@ -29,35 +29,35 @@ class TestPasswordPoliciesApi(unittest.TestCase):
     def test_create_password_policy(self) -> None:
         """Test case for create_password_policy
 
-        Create Password Policy
+        Create password policy
         """
         pass
 
     def test_delete_password_policy(self) -> None:
         """Test case for delete_password_policy
 
-        Delete Password Policy by ID
+        Delete password policy by id
         """
         pass
 
     def test_get_password_policy_by_id(self) -> None:
         """Test case for get_password_policy_by_id
 
-        Get Password Policy by ID
+        Get password policy by id
         """
         pass
 
     def test_list_password_policies(self) -> None:
         """Test case for list_password_policies
 
-        List Password Policies
+        List password policies
         """
         pass
 
     def test_set_password_policy(self) -> None:
         """Test case for set_password_policy
 
-        Update Password Policy by ID
+        Update password policy by id
         """
         pass
 

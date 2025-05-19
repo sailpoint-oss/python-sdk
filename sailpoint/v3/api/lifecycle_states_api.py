@@ -61,7 +61,7 @@ class LifecycleStatesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> LifecycleState:
-        """Create Lifecycle State
+        """Create lifecycle state
 
         Use this endpoint to create a lifecycle state.
 
@@ -137,7 +137,7 @@ class LifecycleStatesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[LifecycleState]:
-        """Create Lifecycle State
+        """Create lifecycle state
 
         Use this endpoint to create a lifecycle state.
 
@@ -213,7 +213,7 @@ class LifecycleStatesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create Lifecycle State
+        """Create lifecycle state
 
         Use this endpoint to create a lifecycle state.
 
@@ -367,7 +367,7 @@ class LifecycleStatesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> LifecyclestateDeleted:
-        """Delete Lifecycle State
+        """Delete lifecycle state
 
         Use this endpoint to delete the lifecycle state by its ID. 
 
@@ -444,7 +444,7 @@ class LifecycleStatesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[LifecyclestateDeleted]:
-        """Delete Lifecycle State
+        """Delete lifecycle state
 
         Use this endpoint to delete the lifecycle state by its ID. 
 
@@ -521,7 +521,7 @@ class LifecycleStatesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Lifecycle State
+        """Delete lifecycle state
 
         Use this endpoint to delete the lifecycle state by its ID. 
 
@@ -663,7 +663,7 @@ class LifecycleStatesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> LifecycleState:
-        """Get Lifecycle State
+        """Get lifecycle state
 
         Use this endpoint to get a lifecycle state by its ID and its associated identity profile ID. 
 
@@ -740,7 +740,7 @@ class LifecycleStatesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[LifecycleState]:
-        """Get Lifecycle State
+        """Get lifecycle state
 
         Use this endpoint to get a lifecycle state by its ID and its associated identity profile ID. 
 
@@ -817,7 +817,7 @@ class LifecycleStatesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Lifecycle State
+        """Get lifecycle state
 
         Use this endpoint to get a lifecycle state by its ID and its associated identity profile ID. 
 
@@ -961,7 +961,7 @@ class LifecycleStatesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[LifecycleState]:
-        """Lists LifecycleStates
+        """Lists lifecyclestates
 
         Use this endpoint to list all lifecycle states by their associated identity profiles. 
 
@@ -1049,7 +1049,7 @@ class LifecycleStatesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[LifecycleState]]:
-        """Lists LifecycleStates
+        """Lists lifecyclestates
 
         Use this endpoint to list all lifecycle states by their associated identity profiles. 
 
@@ -1137,7 +1137,7 @@ class LifecycleStatesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Lists LifecycleStates
+        """Lists lifecyclestates
 
         Use this endpoint to list all lifecycle states by their associated identity profiles. 
 
@@ -1304,7 +1304,7 @@ class LifecycleStatesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SetLifecycleState200Response:
-        """Set Lifecycle State
+        """Set lifecycle state
 
         Use this API to set/update an identity's lifecycle state to the one provided and update the corresponding identity profile.
 
@@ -1381,7 +1381,7 @@ class LifecycleStatesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SetLifecycleState200Response]:
-        """Set Lifecycle State
+        """Set lifecycle state
 
         Use this API to set/update an identity's lifecycle state to the one provided and update the corresponding identity profile.
 
@@ -1458,7 +1458,7 @@ class LifecycleStatesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Set Lifecycle State
+        """Set lifecycle state
 
         Use this API to set/update an identity's lifecycle state to the one provided and update the corresponding identity profile.
 
@@ -1613,7 +1613,7 @@ class LifecycleStatesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> LifecycleState:
-        """Update Lifecycle State
+        """Update lifecycle state
 
         Use this endpoint to update individual lifecycle state fields, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
@@ -1694,7 +1694,7 @@ class LifecycleStatesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[LifecycleState]:
-        """Update Lifecycle State
+        """Update lifecycle state
 
         Use this endpoint to update individual lifecycle state fields, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
@@ -1775,7 +1775,7 @@ class LifecycleStatesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Lifecycle State
+        """Update lifecycle state
 
         Use this endpoint to update individual lifecycle state fields, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 

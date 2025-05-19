@@ -58,7 +58,7 @@ class IdentityAttributesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> IdentityAttribute:
-        """Create Identity Attribute
+        """Create identity attribute
 
         Use this API to create a new identity attribute.
 
@@ -135,7 +135,7 @@ class IdentityAttributesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[IdentityAttribute]:
-        """Create Identity Attribute
+        """Create identity attribute
 
         Use this API to create a new identity attribute.
 
@@ -212,7 +212,7 @@ class IdentityAttributesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create Identity Attribute
+        """Create identity attribute
 
         Use this API to create a new identity attribute.
 
@@ -366,7 +366,7 @@ class IdentityAttributesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete Identity Attribute
+        """Delete identity attribute
 
         This deletes an identity attribute with the given name.  The `system` and `standard` properties must be set to false before you can delete an identity attribute.
 
@@ -443,7 +443,7 @@ class IdentityAttributesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete Identity Attribute
+        """Delete identity attribute
 
         This deletes an identity attribute with the given name.  The `system` and `standard` properties must be set to false before you can delete an identity attribute.
 
@@ -520,7 +520,7 @@ class IdentityAttributesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Identity Attribute
+        """Delete identity attribute
 
         This deletes an identity attribute with the given name.  The `system` and `standard` properties must be set to false before you can delete an identity attribute.
 
@@ -661,7 +661,7 @@ class IdentityAttributesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Bulk delete Identity Attributes
+        """Bulk delete identity attributes
 
         Use this API to bulk delete identity attributes for a given set of names. Attributes that are currently mapped in an identity profile cannot be deleted.  The `system` and `standard` properties must be set to 'false' before you can delete an identity attribute.
 
@@ -738,7 +738,7 @@ class IdentityAttributesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Bulk delete Identity Attributes
+        """Bulk delete identity attributes
 
         Use this API to bulk delete identity attributes for a given set of names. Attributes that are currently mapped in an identity profile cannot be deleted.  The `system` and `standard` properties must be set to 'false' before you can delete an identity attribute.
 
@@ -815,7 +815,7 @@ class IdentityAttributesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Bulk delete Identity Attributes
+        """Bulk delete identity attributes
 
         Use this API to bulk delete identity attributes for a given set of names. Attributes that are currently mapped in an identity profile cannot be deleted.  The `system` and `standard` properties must be set to 'false' before you can delete an identity attribute.
 
@@ -969,7 +969,7 @@ class IdentityAttributesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> IdentityAttribute:
-        """Get Identity Attribute
+        """Get identity attribute
 
         This gets an identity attribute for a given technical name.
 
@@ -1046,7 +1046,7 @@ class IdentityAttributesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[IdentityAttribute]:
-        """Get Identity Attribute
+        """Get identity attribute
 
         This gets an identity attribute for a given technical name.
 
@@ -1123,7 +1123,7 @@ class IdentityAttributesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Identity Attribute
+        """Get identity attribute
 
         This gets an identity attribute for a given technical name.
 
@@ -1267,7 +1267,7 @@ class IdentityAttributesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[IdentityAttribute]:
-        """List Identity Attributes
+        """List identity attributes
 
         Use this API to get a collection of identity attributes.
 
@@ -1355,7 +1355,7 @@ class IdentityAttributesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[IdentityAttribute]]:
-        """List Identity Attributes
+        """List identity attributes
 
         Use this API to get a collection of identity attributes.
 
@@ -1443,7 +1443,7 @@ class IdentityAttributesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Identity Attributes
+        """List identity attributes
 
         Use this API to get a collection of identity attributes.
 
@@ -1610,7 +1610,7 @@ class IdentityAttributesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> IdentityAttribute:
-        """Update Identity Attribute
+        """Update identity attribute
 
         This updates an existing identity attribute.  Making an attribute searchable requires that the `system`, `standard`, and `multi` properties be set to false.
 
@@ -1691,7 +1691,7 @@ class IdentityAttributesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[IdentityAttribute]:
-        """Update Identity Attribute
+        """Update identity attribute
 
         This updates an existing identity attribute.  Making an attribute searchable requires that the `system`, `standard`, and `multi` properties be set to false.
 
@@ -1772,7 +1772,7 @@ class IdentityAttributesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Identity Attribute
+        """Update identity attribute
 
         This updates an existing identity attribute.  Making an attribute searchable requires that the `system`, `standard`, and `multi` properties be set to false.
 

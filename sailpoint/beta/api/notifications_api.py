@@ -67,7 +67,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> DomainStatusDto:
-        """Verify domain address via DKIM
+        """Verify domain address via dkim
 
         Create a domain to be verified via DKIM (DomainKeys Identified Mail)
 
@@ -140,7 +140,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[DomainStatusDto]:
-        """Verify domain address via DKIM
+        """Verify domain address via dkim
 
         Create a domain to be verified via DKIM (DomainKeys Identified Mail)
 
@@ -213,7 +213,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Verify domain address via DKIM
+        """Verify domain address via dkim
 
         Create a domain to be verified via DKIM (DomainKeys Identified Mail)
 
@@ -360,7 +360,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> TemplateDto:
-        """Create Notification Template
+        """Create notification template
 
         This creates a template for your site.   You can also use this endpoint to update a template.  First, copy the response body from the [get notification template endpoint](https://developer.sailpoint.com/idn/api/beta/get-notification-template) for a template you wish to update and paste it into the request body for this endpoint.   Modify the fields you want to change and submit the POST request when ready.
 
@@ -432,7 +432,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[TemplateDto]:
-        """Create Notification Template
+        """Create notification template
 
         This creates a template for your site.   You can also use this endpoint to update a template.  First, copy the response body from the [get notification template endpoint](https://developer.sailpoint.com/idn/api/beta/get-notification-template) for a template you wish to update and paste it into the request body for this endpoint.   Modify the fields you want to change and submit the POST request when ready.
 
@@ -504,7 +504,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create Notification Template
+        """Create notification template
 
         This creates a template for your site.   You can also use this endpoint to update a template.  First, copy the response body from the [get notification template endpoint](https://developer.sailpoint.com/idn/api/beta/get-notification-template) for a template you wish to update and paste it into the request body for this endpoint.   Modify the fields you want to change and submit the POST request when ready.
 
@@ -650,7 +650,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> EmailStatusDto:
-        """Create Verified From Address
+        """Create verified from address
 
         Create a new sender email address and initiate verification process.
 
@@ -722,7 +722,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[EmailStatusDto]:
-        """Create Verified From Address
+        """Create verified from address
 
         Create a new sender email address and initiate verification process.
 
@@ -794,7 +794,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create Verified From Address
+        """Create verified from address
 
         Create a new sender email address and initiate verification process.
 
@@ -940,7 +940,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Bulk Delete Notification Templates
+        """Bulk delete notification templates
 
         This lets you bulk delete templates that you previously created for your site. Since this is a beta feature, please contact support to enable usage.
 
@@ -1012,7 +1012,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Bulk Delete Notification Templates
+        """Bulk delete notification templates
 
         This lets you bulk delete templates that you previously created for your site. Since this is a beta feature, please contact support to enable usage.
 
@@ -1084,7 +1084,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Bulk Delete Notification Templates
+        """Bulk delete notification templates
 
         This lets you bulk delete templates that you previously created for your site. Since this is a beta feature, please contact support to enable usage.
 
@@ -1231,7 +1231,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete Verified From Address
+        """Delete verified from address
 
         Delete a verified sender email address
 
@@ -1304,7 +1304,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete Verified From Address
+        """Delete verified from address
 
         Delete a verified sender email address
 
@@ -1377,7 +1377,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Verified From Address
+        """Delete verified from address
 
         Delete a verified sender email address
 
@@ -1510,7 +1510,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[DkimAttributes]:
-        """Get DKIM Attributes
+        """Get dkim attributes
 
         Retrieve DKIM (DomainKeys Identified Mail) attributes for all your tenants' AWS SES identities. Limits retrieval to 100 identities per call.
 
@@ -1578,7 +1578,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[DkimAttributes]]:
-        """Get DKIM Attributes
+        """Get dkim attributes
 
         Retrieve DKIM (DomainKeys Identified Mail) attributes for all your tenants' AWS SES identities. Limits retrieval to 100 identities per call.
 
@@ -1646,7 +1646,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get DKIM Attributes
+        """Get dkim attributes
 
         Retrieve DKIM (DomainKeys Identified Mail) attributes for all your tenants' AWS SES identities. Limits retrieval to 100 identities per call.
 
@@ -1773,7 +1773,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> MailFromAttributes:
-        """Get MAIL FROM Attributes
+        """Get mail from attributes
 
         Retrieve MAIL FROM attributes for a given AWS SES identity.
 
@@ -1845,7 +1845,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[MailFromAttributes]:
-        """Get MAIL FROM Attributes
+        """Get mail from attributes
 
         Retrieve MAIL FROM attributes for a given AWS SES identity.
 
@@ -1917,7 +1917,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get MAIL FROM Attributes
+        """Get mail from attributes
 
         Retrieve MAIL FROM attributes for a given AWS SES identity.
 
@@ -2050,7 +2050,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[TemplateDto]:
-        """Get Notification Template By Id
+        """Get notification template by id
 
         This gets a template that you have modified for your site by Id.
 
@@ -2122,7 +2122,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[TemplateDto]]:
-        """Get Notification Template By Id
+        """Get notification template by id
 
         This gets a template that you have modified for your site by Id.
 
@@ -2194,7 +2194,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Notification Template By Id
+        """Get notification template by id
 
         This gets a template that you have modified for your site by Id.
 
@@ -2326,7 +2326,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NotificationTemplateContext:
-        """Get Notification Template Context
+        """Get notification template context
 
         The notification service maintains metadata to construct the notification templates or supply any information during the event propagation. The data-store where this information is retrieved is called \"Global Context\" (a.k.a. notification template context). It defines a set of attributes  that will be available per tenant (organization).
 
@@ -2394,7 +2394,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NotificationTemplateContext]:
-        """Get Notification Template Context
+        """Get notification template context
 
         The notification service maintains metadata to construct the notification templates or supply any information during the event propagation. The data-store where this information is retrieved is called \"Global Context\" (a.k.a. notification template context). It defines a set of attributes  that will be available per tenant (organization).
 
@@ -2462,7 +2462,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Notification Template Context
+        """Get notification template context
 
         The notification service maintains metadata to construct the notification templates or supply any information during the event propagation. The data-store where this information is retrieved is called \"Global Context\" (a.k.a. notification template context). It defines a set of attributes  that will be available per tenant (organization).
 
@@ -2593,7 +2593,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[EmailStatusDto]:
-        """List From Addresses
+        """List from addresses
 
         Retrieve a list of sender email addresses and their verification statuses
 
@@ -2680,7 +2680,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[EmailStatusDto]]:
-        """List From Addresses
+        """List from addresses
 
         Retrieve a list of sender email addresses and their verification statuses
 
@@ -2767,7 +2767,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List From Addresses
+        """List from addresses
 
         Retrieve a list of sender email addresses and their verification statuses
 
@@ -2933,7 +2933,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[PreferencesDto]:
-        """List Notification Preferences for tenant.
+        """List notification preferences for tenant.
 
         Returns a list of notification preferences for tenant.
 
@@ -3006,7 +3006,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[PreferencesDto]]:
-        """List Notification Preferences for tenant.
+        """List notification preferences for tenant.
 
         Returns a list of notification preferences for tenant.
 
@@ -3079,7 +3079,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Notification Preferences for tenant.
+        """List notification preferences for tenant.
 
         Returns a list of notification preferences for tenant.
 
@@ -3215,7 +3215,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[TemplateDtoDefault]:
-        """List Notification Template Defaults
+        """List notification template defaults
 
         This lists the default templates used for notifications, such as emails from IdentityNow.
 
@@ -3295,7 +3295,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[TemplateDtoDefault]]:
-        """List Notification Template Defaults
+        """List notification template defaults
 
         This lists the default templates used for notifications, such as emails from IdentityNow.
 
@@ -3375,7 +3375,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Notification Template Defaults
+        """List notification template defaults
 
         This lists the default templates used for notifications, such as emails from IdentityNow.
 
@@ -3528,7 +3528,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[TemplateDto]:
-        """List Notification Templates
+        """List notification templates
 
         This lists the templates that you have modified for your site.
 
@@ -3608,7 +3608,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[TemplateDto]]:
-        """List Notification Templates
+        """List notification templates
 
         This lists the templates that you have modified for your site.
 
@@ -3688,7 +3688,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Notification Templates
+        """List notification templates
 
         This lists the templates that you have modified for your site.
 
@@ -3839,7 +3839,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> MailFromAttributes:
-        """Change MAIL FROM domain
+        """Change mail from domain
 
         Change the MAIL FROM domain of an AWS SES email identity and provide the MX and TXT records to be placed in the caller's DNS
 
@@ -3911,7 +3911,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[MailFromAttributes]:
-        """Change MAIL FROM domain
+        """Change mail from domain
 
         Change the MAIL FROM domain of an AWS SES email identity and provide the MX and TXT records to be placed in the caller's DNS
 
@@ -3983,7 +3983,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Change MAIL FROM domain
+        """Change mail from domain
 
         Change the MAIL FROM domain of an AWS SES email identity and provide the MX and TXT records to be placed in the caller's DNS
 
@@ -4129,7 +4129,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Send Test Notification
+        """Send test notification
 
         Send a Test Notification
 
@@ -4202,7 +4202,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Send Test Notification
+        """Send test notification
 
         Send a Test Notification
 
@@ -4275,7 +4275,7 @@ class NotificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Send Test Notification
+        """Send test notification
 
         Send a Test Notification
 

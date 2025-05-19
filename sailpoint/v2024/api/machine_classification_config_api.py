@@ -55,7 +55,7 @@ class MachineClassificationConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete Source's Classification Config
+        """Delete source's classification config
 
         Use this API to remove Classification Config for a Source.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
@@ -128,7 +128,7 @@ class MachineClassificationConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete Source's Classification Config
+        """Delete source's classification config
 
         Use this API to remove Classification Config for a Source.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
@@ -201,7 +201,7 @@ class MachineClassificationConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Source's Classification Config
+        """Delete source's classification config
 
         Use this API to remove Classification Config for a Source.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
@@ -335,7 +335,7 @@ class MachineClassificationConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> MachineClassificationConfig:
-        """Machine Classification Config for Source
+        """Machine classification config for source
 
         This API returns a Machine Classification Config for a Source using Source ID.
 
@@ -408,7 +408,7 @@ class MachineClassificationConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[MachineClassificationConfig]:
-        """Machine Classification Config for Source
+        """Machine classification config for source
 
         This API returns a Machine Classification Config for a Source using Source ID.
 
@@ -481,7 +481,7 @@ class MachineClassificationConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Machine Classification Config for Source
+        """Machine classification config for source
 
         This API returns a Machine Classification Config for a Source using Source ID.
 
@@ -616,7 +616,7 @@ class MachineClassificationConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> MachineClassificationConfig:
-        """Update Source's Classification Config
+        """Update source's classification config
 
         Use this API to update Classification Config for a Source. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
@@ -693,7 +693,7 @@ class MachineClassificationConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[MachineClassificationConfig]:
-        """Update Source's Classification Config
+        """Update source's classification config
 
         Use this API to update Classification Config for a Source. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
@@ -770,7 +770,7 @@ class MachineClassificationConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Source's Classification Config
+        """Update source's classification config
 
         Use this API to update Classification Config for a Source. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 

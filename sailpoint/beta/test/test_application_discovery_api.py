@@ -29,7 +29,7 @@ class TestApplicationDiscoveryApi(unittest.TestCase):
     def test_get_discovered_application_by_id(self) -> None:
         """Test case for get_discovered_application_by_id
 
-        Get Discovered Application by ID
+        Get discovered application by id
         """
         pass
 
@@ -43,21 +43,21 @@ class TestApplicationDiscoveryApi(unittest.TestCase):
     def test_get_manual_discover_applications_csv_template(self) -> None:
         """Test case for get_manual_discover_applications_csv_template
 
-        Download CSV Template for Discovery
+        Download csv template for discovery
         """
         pass
 
     def test_patch_discovered_application_by_id(self) -> None:
         """Test case for patch_discovered_application_by_id
 
-        Patch Discovered Application by ID
+        Patch discovered application by id
         """
         pass
 
     def test_send_manual_discover_applications_csv_template(self) -> None:
         """Test case for send_manual_discover_applications_csv_template
 
-        Upload CSV to Discover Applications
+        Upload csv to discover applications
         """
         pass
 

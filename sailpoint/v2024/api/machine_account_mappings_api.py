@@ -57,7 +57,7 @@ class MachineAccountMappingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[AttributeMappings]:
-        """Create Machine Account Mappings
+        """Create machine account mappings
 
         Creates Machine Account Mappings for both identities and accounts for a source. A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
@@ -133,7 +133,7 @@ class MachineAccountMappingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[AttributeMappings]]:
-        """Create Machine Account Mappings
+        """Create machine account mappings
 
         Creates Machine Account Mappings for both identities and accounts for a source. A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
@@ -209,7 +209,7 @@ class MachineAccountMappingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create Machine Account Mappings
+        """Create machine account mappings
 
         Creates Machine Account Mappings for both identities and accounts for a source. A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
@@ -361,7 +361,7 @@ class MachineAccountMappingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete Source's Machine Account Mappings
+        """Delete source's machine account mappings
 
         Use this API to remove machine account attribute mappings for a Source.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
@@ -434,7 +434,7 @@ class MachineAccountMappingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete Source's Machine Account Mappings
+        """Delete source's machine account mappings
 
         Use this API to remove machine account attribute mappings for a Source.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
@@ -507,7 +507,7 @@ class MachineAccountMappingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Source's Machine Account Mappings
+        """Delete source's machine account mappings
 
         Use this API to remove machine account attribute mappings for a Source.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
@@ -643,7 +643,7 @@ class MachineAccountMappingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[AttributeMappings]:
-        """Machine Account Mapping for Source
+        """Machine account mapping for source
 
         Retrieves Machine account mappings for a specified source using Source ID.
 
@@ -724,7 +724,7 @@ class MachineAccountMappingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[AttributeMappings]]:
-        """Machine Account Mapping for Source
+        """Machine account mapping for source
 
         Retrieves Machine account mappings for a specified source using Source ID.
 
@@ -805,7 +805,7 @@ class MachineAccountMappingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Machine Account Mapping for Source
+        """Machine account mapping for source
 
         Retrieves Machine account mappings for a specified source using Source ID.
 
@@ -956,7 +956,7 @@ class MachineAccountMappingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[AttributeMappings]:
-        """Update Source's Machine Account Mappings
+        """Update source's machine account mappings
 
         Use this API to update Machine Account Attribute Mapping for a Source. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
@@ -1033,7 +1033,7 @@ class MachineAccountMappingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[AttributeMappings]]:
-        """Update Source's Machine Account Mappings
+        """Update source's machine account mappings
 
         Use this API to update Machine Account Attribute Mapping for a Source. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
@@ -1110,7 +1110,7 @@ class MachineAccountMappingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Source's Machine Account Mappings
+        """Update source's machine account mappings
 
         Use this API to update Machine Account Attribute Mapping for a Source. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 

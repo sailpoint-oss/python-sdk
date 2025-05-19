@@ -29,7 +29,7 @@ class TestConfigurationHubApi(unittest.TestCase):
     def test_create_deploy(self) -> None:
         """Test case for create_deploy
 
-        Create a Deploy
+        Create a deploy
         """
         pass
 
@@ -50,21 +50,21 @@ class TestConfigurationHubApi(unittest.TestCase):
     def test_create_scheduled_action(self) -> None:
         """Test case for create_scheduled_action
 
-        Create Scheduled Action
+        Create scheduled action
         """
         pass
 
     def test_create_uploaded_configuration(self) -> None:
         """Test case for create_uploaded_configuration
 
-        Upload a Configuration
+        Upload a configuration
         """
         pass
 
     def test_delete_backup(self) -> None:
         """Test case for delete_backup
 
-        Delete a Backup
+        Delete a backup
         """
         pass
 
@@ -85,21 +85,21 @@ class TestConfigurationHubApi(unittest.TestCase):
     def test_delete_scheduled_action(self) -> None:
         """Test case for delete_scheduled_action
 
-        Delete Scheduled Action
+        Delete scheduled action
         """
         pass
 
     def test_delete_uploaded_configuration(self) -> None:
         """Test case for delete_uploaded_configuration
 
-        Delete an Uploaded Configuration
+        Delete an uploaded configuration
         """
         pass
 
     def test_get_deploy(self) -> None:
         """Test case for get_deploy
 
-        Get a Deploy
+        Get a deploy
         """
         pass
 
@@ -113,42 +113,42 @@ class TestConfigurationHubApi(unittest.TestCase):
     def test_get_uploaded_configuration(self) -> None:
         """Test case for get_uploaded_configuration
 
-        Get an Uploaded Configuration
+        Get an uploaded configuration
         """
         pass
 
     def test_list_backups(self) -> None:
         """Test case for list_backups
 
-        List Backups
+        List backups
         """
         pass
 
     def test_list_deploys(self) -> None:
         """Test case for list_deploys
 
-        List Deploys
+        List deploys
         """
         pass
 
     def test_list_drafts(self) -> None:
         """Test case for list_drafts
 
-        List Drafts
+        List drafts
         """
         pass
 
     def test_list_scheduled_actions(self) -> None:
         """Test case for list_scheduled_actions
 
-        List Scheduled Actions
+        List scheduled actions
         """
         pass
 
     def test_list_uploaded_configurations(self) -> None:
         """Test case for list_uploaded_configurations
 
-        List Uploaded Configurations
+        List uploaded configurations
         """
         pass
 
@@ -162,7 +162,7 @@ class TestConfigurationHubApi(unittest.TestCase):
     def test_update_scheduled_action(self) -> None:
         """Test case for update_scheduled_action
 
-        Update Scheduled Action
+        Update scheduled action
         """
         pass
 

@@ -50,14 +50,14 @@ class TestEntitlementsApi(unittest.TestCase):
     def test_get_entitlement_request_config(self) -> None:
         """Test case for get_entitlement_request_config
 
-        Get Entitlement Request Config
+        Get entitlement request config
         """
         pass
 
     def test_import_entitlements_by_source(self) -> None:
         """Test case for import_entitlements_by_source
 
-        Aggregate Entitlements
+        Aggregate entitlements
         """
         pass
 
@@ -92,14 +92,14 @@ class TestEntitlementsApi(unittest.TestCase):
     def test_put_entitlement_request_config(self) -> None:
         """Test case for put_entitlement_request_config
 
-        Replace Entitlement Request Config
+        Replace entitlement request config
         """
         pass
 
     def test_reset_source_entitlements(self) -> None:
         """Test case for reset_source_entitlements
 
-        Reset Source Entitlements
+        Reset source entitlements
         """
         pass
 

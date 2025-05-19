@@ -29,21 +29,21 @@ class TestCustomPasswordInstructionsApi(unittest.TestCase):
     def test_create_custom_password_instructions(self) -> None:
         """Test case for create_custom_password_instructions
 
-        Create Custom Password Instructions
+        Create custom password instructions
         """
         pass
 
     def test_delete_custom_password_instructions(self) -> None:
         """Test case for delete_custom_password_instructions
 
-        Delete Custom Password Instructions by page ID
+        Delete custom password instructions by page id
         """
         pass
 
     def test_get_custom_password_instructions(self) -> None:
         """Test case for get_custom_password_instructions
 
-        Get Custom Password Instructions by Page ID
+        Get custom password instructions by page id
         """
         pass
 

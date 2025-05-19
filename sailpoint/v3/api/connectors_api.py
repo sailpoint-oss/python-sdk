@@ -60,7 +60,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> V3ConnectorDto:
-        """Create Custom Connector
+        """Create custom connector
 
         Create custom connector.    
 
@@ -133,7 +133,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[V3ConnectorDto]:
-        """Create Custom Connector
+        """Create custom connector
 
         Create custom connector.    
 
@@ -206,7 +206,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create Custom Connector
+        """Create custom connector
 
         Create custom connector.    
 
@@ -353,7 +353,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete Connector by Script Name
+        """Delete connector by script name
 
         Delete a custom connector that using its script name.
 
@@ -426,7 +426,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete Connector by Script Name
+        """Delete connector by script name
 
         Delete a custom connector that using its script name.
 
@@ -499,7 +499,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Connector by Script Name
+        """Delete connector by script name
 
         Delete a custom connector that using its script name.
 
@@ -634,7 +634,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ConnectorDetail:
-        """Get Connector by Script Name
+        """Get connector by script name
 
         Fetches a connector that using its script name.    
 
@@ -711,7 +711,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ConnectorDetail]:
-        """Get Connector by Script Name
+        """Get connector by script name
 
         Fetches a connector that using its script name.    
 
@@ -788,7 +788,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Connector by Script Name
+        """Get connector by script name
 
         Fetches a connector that using its script name.    
 
@@ -934,7 +934,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[V3ConnectorDto]:
-        """Get Connector List
+        """Get connector list
 
         Fetches list of connectors that have 'RELEASED' status using filtering and pagination.
 
@@ -1023,7 +1023,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[V3ConnectorDto]]:
-        """Get Connector List
+        """Get connector list
 
         Fetches list of connectors that have 'RELEASED' status using filtering and pagination.
 
@@ -1112,7 +1112,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Connector List
+        """Get connector list
 
         Fetches list of connectors that have 'RELEASED' status using filtering and pagination.
 
@@ -1280,7 +1280,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> str:
-        """Get Connector Source Configuration
+        """Get connector source configuration
 
         Fetches a connector's source config using its script name.    
 
@@ -1353,7 +1353,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[str]:
-        """Get Connector Source Configuration
+        """Get connector source configuration
 
         Fetches a connector's source config using its script name.    
 
@@ -1426,7 +1426,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Connector Source Configuration
+        """Get connector source configuration
 
         Fetches a connector's source config using its script name.    
 
@@ -1561,7 +1561,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> str:
-        """Get Connector Source Template
+        """Get connector source template
 
         Fetches a connector's source template using its script name.    
 
@@ -1634,7 +1634,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[str]:
-        """Get Connector Source Template
+        """Get connector source template
 
         Fetches a connector's source template using its script name.    
 
@@ -1707,7 +1707,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Connector Source Template
+        """Get connector source template
 
         Fetches a connector's source template using its script name.    
 
@@ -1843,7 +1843,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> str:
-        """Get Connector Translations
+        """Get connector translations
 
         Fetches a connector's translations using its script name.    
 
@@ -1920,7 +1920,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[str]:
-        """Get Connector Translations
+        """Get connector translations
 
         Fetches a connector's translations using its script name.    
 
@@ -1997,7 +1997,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Connector Translations
+        """Get connector translations
 
         Fetches a connector's translations using its script name.    
 
@@ -2139,7 +2139,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> UpdateDetail:
-        """Update Connector Source Configuration
+        """Update connector source configuration
 
         Update a connector's source config using its script name.    
 
@@ -2216,7 +2216,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[UpdateDetail]:
-        """Update Connector Source Configuration
+        """Update connector source configuration
 
         Update a connector's source config using its script name.    
 
@@ -2293,7 +2293,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Connector Source Configuration
+        """Update connector source configuration
 
         Update a connector's source config using its script name.    
 
@@ -2447,7 +2447,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> UpdateDetail:
-        """Update Connector Source Template
+        """Update connector source template
 
         Update a connector's source template using its script name.    
 
@@ -2524,7 +2524,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[UpdateDetail]:
-        """Update Connector Source Template
+        """Update connector source template
 
         Update a connector's source template using its script name.    
 
@@ -2601,7 +2601,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Connector Source Template
+        """Update connector source template
 
         Update a connector's source template using its script name.    
 
@@ -2755,7 +2755,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> UpdateDetail:
-        """Update Connector Translations
+        """Update connector translations
 
         Update a connector's translations using its script name.    
 
@@ -2832,7 +2832,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[UpdateDetail]:
-        """Update Connector Translations
+        """Update connector translations
 
         Update a connector's translations using its script name.    
 
@@ -2909,7 +2909,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Connector Translations
+        """Update connector translations
 
         Update a connector's translations using its script name.    
 
@@ -3063,7 +3063,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ConnectorDetail:
-        """Update Connector by Script Name
+        """Update connector by script name
 
         This API updates a custom connector by script name using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.  The following fields are patchable:   * connectorMetadata  * applicationXml  * correlationConfigXml  * sourceConfigXml 
 
@@ -3140,7 +3140,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ConnectorDetail]:
-        """Update Connector by Script Name
+        """Update connector by script name
 
         This API updates a custom connector by script name using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.  The following fields are patchable:   * connectorMetadata  * applicationXml  * correlationConfigXml  * sourceConfigXml 
 
@@ -3217,7 +3217,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Connector by Script Name
+        """Update connector by script name
 
         This API updates a custom connector by script name using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.  The following fields are patchable:   * connectorMetadata  * applicationXml  * correlationConfigXml  * sourceConfigXml 
 

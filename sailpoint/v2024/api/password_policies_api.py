@@ -56,7 +56,7 @@ class PasswordPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> PasswordPolicyV3Dto:
-        """Create Password Policy
+        """Create password policy
 
         This API creates the specified password policy.
 
@@ -129,7 +129,7 @@ class PasswordPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[PasswordPolicyV3Dto]:
-        """Create Password Policy
+        """Create password policy
 
         This API creates the specified password policy.
 
@@ -202,7 +202,7 @@ class PasswordPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create Password Policy
+        """Create password policy
 
         This API creates the specified password policy.
 
@@ -349,7 +349,7 @@ class PasswordPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete Password Policy by ID
+        """Delete password policy by id
 
         This API deletes the specified password policy.
 
@@ -422,7 +422,7 @@ class PasswordPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete Password Policy by ID
+        """Delete password policy by id
 
         This API deletes the specified password policy.
 
@@ -495,7 +495,7 @@ class PasswordPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Password Policy by ID
+        """Delete password policy by id
 
         This API deletes the specified password policy.
 
@@ -629,7 +629,7 @@ class PasswordPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> PasswordPolicyV3Dto:
-        """Get Password Policy by ID
+        """Get password policy by id
 
         This API returns the password policy for the specified ID.
 
@@ -702,7 +702,7 @@ class PasswordPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[PasswordPolicyV3Dto]:
-        """Get Password Policy by ID
+        """Get password policy by id
 
         This API returns the password policy for the specified ID.
 
@@ -775,7 +775,7 @@ class PasswordPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Password Policy by ID
+        """Get password policy by id
 
         This API returns the password policy for the specified ID.
 
@@ -911,7 +911,7 @@ class PasswordPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[PasswordPolicyV3Dto]:
-        """List Password Policies
+        """List password policies
 
         This gets list of all Password Policies. Requires role of ORG_ADMIN
 
@@ -991,7 +991,7 @@ class PasswordPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[PasswordPolicyV3Dto]]:
-        """List Password Policies
+        """List password policies
 
         This gets list of all Password Policies. Requires role of ORG_ADMIN
 
@@ -1071,7 +1071,7 @@ class PasswordPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Password Policies
+        """List password policies
 
         This gets list of all Password Policies. Requires role of ORG_ADMIN
 
@@ -1223,7 +1223,7 @@ class PasswordPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> PasswordPolicyV3Dto:
-        """Update Password Policy by ID
+        """Update password policy by id
 
         This API updates the specified password policy.
 
@@ -1300,7 +1300,7 @@ class PasswordPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[PasswordPolicyV3Dto]:
-        """Update Password Policy by ID
+        """Update password policy by id
 
         This API updates the specified password policy.
 
@@ -1377,7 +1377,7 @@ class PasswordPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Password Policy by ID
+        """Update password policy by id
 
         This API updates the specified password policy.
 

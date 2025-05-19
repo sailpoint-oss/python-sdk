@@ -348,7 +348,7 @@ class SavedSearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete document by ID
+        """Delete document by id
 
         Deletes the specified saved search. 
 
@@ -421,7 +421,7 @@ class SavedSearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete document by ID
+        """Delete document by id
 
         Deletes the specified saved search. 
 
@@ -494,7 +494,7 @@ class SavedSearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete document by ID
+        """Delete document by id
 
         Deletes the specified saved search. 
 
@@ -629,7 +629,7 @@ class SavedSearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Execute a saved search by ID
+        """Execute a saved search by id
 
         Executes the specified saved search. 
 
@@ -706,7 +706,7 @@ class SavedSearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Execute a saved search by ID
+        """Execute a saved search by id
 
         Executes the specified saved search. 
 
@@ -783,7 +783,7 @@ class SavedSearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Execute a saved search by ID
+        """Execute a saved search by id
 
         Executes the specified saved search. 
 
@@ -936,7 +936,7 @@ class SavedSearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SavedSearch:
-        """Return saved search by ID
+        """Return saved search by id
 
         Returns the specified saved search. 
 
@@ -1009,7 +1009,7 @@ class SavedSearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SavedSearch]:
-        """Return saved search by ID
+        """Return saved search by id
 
         Returns the specified saved search. 
 
@@ -1082,7 +1082,7 @@ class SavedSearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Return saved search by ID
+        """Return saved search by id
 
         Returns the specified saved search. 
 
@@ -1219,7 +1219,7 @@ class SavedSearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[SavedSearch]:
-        """A list of Saved Searches
+        """A list of saved searches
 
         Returns a list of saved searches. 
 
@@ -1303,7 +1303,7 @@ class SavedSearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[SavedSearch]]:
-        """A list of Saved Searches
+        """A list of saved searches
 
         Returns a list of saved searches. 
 
@@ -1387,7 +1387,7 @@ class SavedSearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """A list of Saved Searches
+        """A list of saved searches
 
         Returns a list of saved searches. 
 

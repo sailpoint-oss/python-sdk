@@ -29,7 +29,7 @@ class TestAccountAggregationsApi(unittest.TestCase):
     def test_get_account_aggregation_status(self) -> None:
         """Test case for get_account_aggregation_status
 
-        In-progress Account Aggregation status
+        In-progress account aggregation status
         """
         pass
 

@@ -59,7 +59,7 @@ class AuthProfileApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> AuthProfile:
-        """Get Auth Profile
+        """Get auth profile
 
         This API returns auth profile information.
 
@@ -136,7 +136,7 @@ class AuthProfileApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[AuthProfile]:
-        """Get Auth Profile
+        """Get auth profile
 
         This API returns auth profile information.
 
@@ -213,7 +213,7 @@ class AuthProfileApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Auth Profile
+        """Get auth profile
 
         This API returns auth profile information.
 
@@ -353,7 +353,7 @@ class AuthProfileApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[AuthProfileSummary]:
-        """Get list of Auth Profiles
+        """Get list of auth profiles
 
         This API returns a list of auth profiles.
 
@@ -425,7 +425,7 @@ class AuthProfileApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[AuthProfileSummary]]:
-        """Get list of Auth Profiles
+        """Get list of auth profiles
 
         This API returns a list of auth profiles.
 
@@ -497,7 +497,7 @@ class AuthProfileApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get list of Auth Profiles
+        """Get list of auth profiles
 
         This API returns a list of auth profiles.
 
@@ -632,7 +632,7 @@ class AuthProfileApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> AuthProfile:
-        """Patch a specified Auth Profile
+        """Patch a specified auth profile
 
         This API updates an existing Auth Profile. The following fields are patchable: **offNetwork**, **untrustedGeography**, **applicationId**, **applicationName**, **type**
 
@@ -712,7 +712,7 @@ class AuthProfileApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[AuthProfile]:
-        """Patch a specified Auth Profile
+        """Patch a specified auth profile
 
         This API updates an existing Auth Profile. The following fields are patchable: **offNetwork**, **untrustedGeography**, **applicationId**, **applicationName**, **type**
 
@@ -792,7 +792,7 @@ class AuthProfileApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Patch a specified Auth Profile
+        """Patch a specified auth profile
 
         This API updates an existing Auth Profile. The following fields are patchable: **offNetwork**, **untrustedGeography**, **applicationId**, **applicationName**, **type**
 

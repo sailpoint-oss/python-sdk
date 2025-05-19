@@ -29,49 +29,49 @@ class TestSuggestedEntitlementDescriptionApi(unittest.TestCase):
     def test_get_sed_batch_stats(self) -> None:
         """Test case for get_sed_batch_stats
 
-        Submit Sed Batch Stats Request
+        Submit sed batch stats request
         """
         pass
 
     def test_get_sed_batches(self) -> None:
         """Test case for get_sed_batches
 
-        List Sed Batch Request
+        List sed batch request
         """
         pass
 
     def test_list_seds(self) -> None:
         """Test case for list_seds
 
-        List Suggested Entitlement Descriptions
+        List suggested entitlement descriptions
         """
         pass
 
     def test_patch_sed(self) -> None:
         """Test case for patch_sed
 
-        Patch Suggested Entitlement Description
+        Patch suggested entitlement description
         """
         pass
 
     def test_submit_sed_approval(self) -> None:
         """Test case for submit_sed_approval
 
-        Submit Bulk Approval Request
+        Submit bulk approval request
         """
         pass
 
     def test_submit_sed_assignment(self) -> None:
         """Test case for submit_sed_assignment
 
-        Submit Sed Assignment Request
+        Submit sed assignment request
         """
         pass
 
     def test_submit_sed_batch_request(self) -> None:
         """Test case for submit_sed_batch_request
 
-        Submit Sed Batch Request
+        Submit sed batch request
         """
         pass
 

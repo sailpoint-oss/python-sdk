@@ -679,7 +679,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BackupResponse:
-        """Upload a Configuration
+        """Upload a configuration
 
         This API uploads a JSON configuration file into a tenant.  Configuration files can be managed and deployed via Configuration Hub by uploading a json file which contains configuration data. The JSON file should be the same as the one used by our import endpoints. The object types supported by upload configuration file functionality are the same as the ones supported by our regular backup functionality.  Refer to [SaaS Configuration](https://developer.sailpoint.com/idn/docs/saas-configuration/#supported-objects) for more information about supported objects.
 
@@ -755,7 +755,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BackupResponse]:
-        """Upload a Configuration
+        """Upload a configuration
 
         This API uploads a JSON configuration file into a tenant.  Configuration files can be managed and deployed via Configuration Hub by uploading a json file which contains configuration data. The JSON file should be the same as the one used by our import endpoints. The object types supported by upload configuration file functionality are the same as the ones supported by our regular backup functionality.  Refer to [SaaS Configuration](https://developer.sailpoint.com/idn/docs/saas-configuration/#supported-objects) for more information about supported objects.
 
@@ -831,7 +831,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Upload a Configuration
+        """Upload a configuration
 
         This API uploads a JSON configuration file into a tenant.  Configuration files can be managed and deployed via Configuration Hub by uploading a json file which contains configuration data. The JSON file should be the same as the one used by our import endpoints. The object types supported by upload configuration file functionality are the same as the ones supported by our regular backup functionality.  Refer to [SaaS Configuration](https://developer.sailpoint.com/idn/docs/saas-configuration/#supported-objects) for more information about supported objects.
 
@@ -1278,7 +1278,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete an Uploaded Configuration
+        """Delete an uploaded configuration
 
         This API deletes an uploaded configuration based on Id.  On success, this endpoint will return an empty response.  The uploaded configuration id can be obtained from the response after a successful upload, or the list uploaded configurations endpoint.
 
@@ -1351,7 +1351,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete an Uploaded Configuration
+        """Delete an uploaded configuration
 
         This API deletes an uploaded configuration based on Id.  On success, this endpoint will return an empty response.  The uploaded configuration id can be obtained from the response after a successful upload, or the list uploaded configurations endpoint.
 
@@ -1424,7 +1424,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete an Uploaded Configuration
+        """Delete an uploaded configuration
 
         This API deletes an uploaded configuration based on Id.  On success, this endpoint will return an empty response.  The uploaded configuration id can be obtained from the response after a successful upload, or the list uploaded configurations endpoint.
 
@@ -1838,7 +1838,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BackupResponse:
-        """Get an Uploaded Configuration
+        """Get an uploaded configuration
 
         This API gets an existing uploaded configuration for the current tenant.
 
@@ -1911,7 +1911,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BackupResponse]:
-        """Get an Uploaded Configuration
+        """Get an uploaded configuration
 
         This API gets an existing uploaded configuration for the current tenant.
 
@@ -1984,7 +1984,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get an Uploaded Configuration
+        """Get an uploaded configuration
 
         This API gets an existing uploaded configuration for the current tenant.
 
@@ -2118,7 +2118,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[BackupResponse]:
-        """List Uploaded Configurations
+        """List uploaded configurations
 
         This API gets a list of existing uploaded configurations for the current tenant.
 
@@ -2191,7 +2191,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[BackupResponse]]:
-        """List Uploaded Configurations
+        """List uploaded configurations
 
         This API gets a list of existing uploaded configurations for the current tenant.
 
@@ -2264,7 +2264,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Uploaded Configurations
+        """List uploaded configurations
 
         This API gets a list of existing uploaded configurations for the current tenant.
 

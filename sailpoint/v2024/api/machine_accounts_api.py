@@ -57,7 +57,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> MachineAccount:
-        """Machine Account Details
+        """Machine account details
 
         Use this API to return the details for a single machine account by its ID.  
 
@@ -134,7 +134,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[MachineAccount]:
-        """Machine Account Details
+        """Machine account details
 
         Use this API to return the details for a single machine account by its ID.  
 
@@ -211,7 +211,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Machine Account Details
+        """Machine account details
 
         Use this API to return the details for a single machine account by its ID.  
 
@@ -356,7 +356,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[MachineAccount]:
-        """Machine Accounts List
+        """Machine accounts list
 
         This returns a list of machine accounts.  
 
@@ -449,7 +449,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[MachineAccount]]:
-        """Machine Accounts List
+        """Machine accounts list
 
         This returns a list of machine accounts.  
 
@@ -542,7 +542,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Machine Accounts List
+        """Machine accounts list
 
         This returns a list of machine accounts.  
 
@@ -718,7 +718,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> MachineAccount:
-        """Update a Machine Account
+        """Update a machine account
 
         Use this API to update machine accounts details.  
 
@@ -799,7 +799,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[MachineAccount]:
-        """Update a Machine Account
+        """Update a machine account
 
         Use this API to update machine accounts details.  
 
@@ -880,7 +880,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update a Machine Account
+        """Update a machine account
 
         Use this API to update machine accounts details.  
 

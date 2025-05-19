@@ -61,7 +61,7 @@ class ConnectorCustomizersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ConnectorCustomizerCreateResponse:
-        """Create Connector Customizer
+        """Create connector customizer
 
         Create a connector customizer.
 
@@ -133,7 +133,7 @@ class ConnectorCustomizersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ConnectorCustomizerCreateResponse]:
-        """Create Connector Customizer
+        """Create connector customizer
 
         Create a connector customizer.
 
@@ -205,7 +205,7 @@ class ConnectorCustomizersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create Connector Customizer
+        """Create connector customizer
 
         Create a connector customizer.
 
@@ -631,7 +631,7 @@ class ConnectorCustomizersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete Connector Customizer
+        """Delete connector customizer
 
         Delete the connector customizer for the given ID.
 
@@ -704,7 +704,7 @@ class ConnectorCustomizersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete Connector Customizer
+        """Delete connector customizer
 
         Delete the connector customizer for the given ID.
 
@@ -777,7 +777,7 @@ class ConnectorCustomizersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Connector Customizer
+        """Delete connector customizer
 
         Delete the connector customizer for the given ID.
 
@@ -1192,7 +1192,7 @@ class ConnectorCustomizersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[ConnectorCustomizersResponse]:
-        """List All Connector Customizers
+        """List all connector customizers
 
         List all connector customizers.
 
@@ -1268,7 +1268,7 @@ class ConnectorCustomizersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[ConnectorCustomizersResponse]]:
-        """List All Connector Customizers
+        """List all connector customizers
 
         List all connector customizers.
 
@@ -1344,7 +1344,7 @@ class ConnectorCustomizersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List All Connector Customizers
+        """List all connector customizers
 
         List all connector customizers.
 
@@ -1488,7 +1488,7 @@ class ConnectorCustomizersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ConnectorCustomizerUpdateResponse:
-        """Update Connector Customizer
+        """Update connector customizer
 
         Update an existing connector customizer with the one provided in the request body. These fields are immutable: `id`, `name`, `type`.
 
@@ -1565,7 +1565,7 @@ class ConnectorCustomizersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ConnectorCustomizerUpdateResponse]:
-        """Update Connector Customizer
+        """Update connector customizer
 
         Update an existing connector customizer with the one provided in the request body. These fields are immutable: `id`, `name`, `type`.
 
@@ -1642,7 +1642,7 @@ class ConnectorCustomizersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Connector Customizer
+        """Update connector customizer
 
         Update an existing connector customizer with the one provided in the request body. These fields are immutable: `id`, `name`, `type`.
 

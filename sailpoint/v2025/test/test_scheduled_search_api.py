@@ -36,14 +36,14 @@ class TestScheduledSearchApi(unittest.TestCase):
     def test_delete_scheduled_search(self) -> None:
         """Test case for delete_scheduled_search
 
-        Delete a Scheduled Search
+        Delete a scheduled search
         """
         pass
 
     def test_get_scheduled_search(self) -> None:
         """Test case for get_scheduled_search
 
-        Get a Scheduled Search
+        Get a scheduled search
         """
         pass
 
@@ -57,14 +57,14 @@ class TestScheduledSearchApi(unittest.TestCase):
     def test_unsubscribe_scheduled_search(self) -> None:
         """Test case for unsubscribe_scheduled_search
 
-        Unsubscribe a recipient from Scheduled Search
+        Unsubscribe a recipient from scheduled search
         """
         pass
 
     def test_update_scheduled_search(self) -> None:
         """Test case for update_scheduled_search
 
-        Update an existing Scheduled Search
+        Update an existing scheduled search
         """
         pass
 

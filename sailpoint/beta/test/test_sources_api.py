@@ -29,84 +29,84 @@ class TestSourcesApi(unittest.TestCase):
     def test_create_provisioning_policy(self) -> None:
         """Test case for create_provisioning_policy
 
-        Create Provisioning Policy
+        Create provisioning policy
         """
         pass
 
     def test_create_source(self) -> None:
         """Test case for create_source
 
-        Creates a source in IdentityNow.
+        Creates a source in identitynow.
         """
         pass
 
     def test_create_source_schema(self) -> None:
         """Test case for create_source_schema
 
-        Create Schema on Source
+        Create schema on source
         """
         pass
 
     def test_delete(self) -> None:
         """Test case for delete
 
-        Delete Source by ID
+        Delete source by id
         """
         pass
 
     def test_delete_accounts_async(self) -> None:
         """Test case for delete_accounts_async
 
-        Remove All Accounts in a Source
+        Remove all accounts in a source
         """
         pass
 
     def test_delete_native_change_detection_config(self) -> None:
         """Test case for delete_native_change_detection_config
 
-        Delete Native Change Detection Configuration
+        Delete native change detection configuration
         """
         pass
 
     def test_delete_provisioning_policy(self) -> None:
         """Test case for delete_provisioning_policy
 
-        Delete Provisioning Policy by UsageType
+        Delete provisioning policy by usagetype
         """
         pass
 
     def test_delete_source_schema(self) -> None:
         """Test case for delete_source_schema
 
-        Delete Source Schema by ID
+        Delete source schema by id
         """
         pass
 
     def test_get_correlation_config(self) -> None:
         """Test case for get_correlation_config
 
-        Get Source Correlation Configuration
+        Get source correlation configuration
         """
         pass
 
     def test_get_native_change_detection_config(self) -> None:
         """Test case for get_native_change_detection_config
 
-        Native Change Detection Configuration
+        Native change detection configuration
         """
         pass
 
     def test_get_provisioning_policy(self) -> None:
         """Test case for get_provisioning_policy
 
-        Get Provisioning Policy by UsageType
+        Get provisioning policy by usagetype
         """
         pass
 
     def test_get_source(self) -> None:
         """Test case for get_source
 
-        Get Source by ID
+        Get source by id
         """
         pass
 
@@ -120,7 +120,7 @@ class TestSourcesApi(unittest.TestCase):
     def test_get_source_attr_sync_config(self) -> None:
         """Test case for get_source_attr_sync_config
 
-        Attribute Sync Config
+        Attribute sync config
         """
         pass
 
@@ -134,7 +134,7 @@ class TestSourcesApi(unittest.TestCase):
     def test_get_source_entitlement_request_config(self) -> None:
         """Test case for get_source_entitlement_request_config
 
-        Get Source Entitlement Request Configuration
+        Get source entitlement request configuration
         """
         pass
 
@@ -148,28 +148,28 @@ class TestSourcesApi(unittest.TestCase):
     def test_get_source_schema(self) -> None:
         """Test case for get_source_schema
 
-        Get Source Schema by ID
+        Get source schema by id
         """
         pass
 
     def test_get_source_schemas(self) -> None:
         """Test case for get_source_schemas
 
-        List Schemas on Source
+        List schemas on source
         """
         pass
 
     def test_import_accounts(self) -> None:
         """Test case for import_accounts
 
-        Account Aggregation
+        Account aggregation
         """
         pass
 
     def test_import_entitlements(self) -> None:
         """Test case for import_entitlements
 
-        Entitlement Aggregation
+        Entitlement aggregation
         """
         pass
 
@@ -197,21 +197,21 @@ class TestSourcesApi(unittest.TestCase):
     def test_import_uncorrelated_accounts(self) -> None:
         """Test case for import_uncorrelated_accounts
 
-        Process Uncorrelated Accounts
+        Process uncorrelated accounts
         """
         pass
 
     def test_list_provisioning_policies(self) -> None:
         """Test case for list_provisioning_policies
 
-        Lists ProvisioningPolicies
+        Lists provisioningpolicies
         """
         pass
 
     def test_list_sources(self) -> None:
         """Test case for list_sources
 
-        Lists all sources in IdentityNow.
+        Lists all sources in identitynow.
         """
         pass
 
@@ -232,42 +232,42 @@ class TestSourcesApi(unittest.TestCase):
     def test_put_correlation_config(self) -> None:
         """Test case for put_correlation_config
 
-        Update Source Correlation Configuration
+        Update source correlation configuration
         """
         pass
 
     def test_put_native_change_detection_config(self) -> None:
         """Test case for put_native_change_detection_config
 
-        Update Native Change Detection Configuration
+        Update native change detection configuration
         """
         pass
 
     def test_put_provisioning_policy(self) -> None:
         """Test case for put_provisioning_policy
 
-        Update Provisioning Policy by UsageType
+        Update provisioning policy by usagetype
         """
         pass
 
     def test_put_source(self) -> None:
         """Test case for put_source
 
-        Update Source (Full)
+        Update source (full)
         """
         pass
 
     def test_put_source_attr_sync_config(self) -> None:
         """Test case for put_source_attr_sync_config
 
-        Update Attribute Sync Config
+        Update attribute sync config
         """
         pass
 
     def test_put_source_schema(self) -> None:
         """Test case for put_source_schema
 
-        Update Source Schema (Full)
+        Update source schema (full)
         """
         pass
 
@@ -295,35 +295,35 @@ class TestSourcesApi(unittest.TestCase):
     def test_update_provisioning_policies_in_bulk(self) -> None:
         """Test case for update_provisioning_policies_in_bulk
 
-        Bulk Update Provisioning Policies
+        Bulk update provisioning policies
         """
         pass
 
     def test_update_provisioning_policy(self) -> None:
         """Test case for update_provisioning_policy
 
-        Partial update of Provisioning Policy
+        Partial update of provisioning policy
         """
         pass
 
     def test_update_source(self) -> None:
         """Test case for update_source
 
-        Update Source (Partial)
+        Update source (partial)
         """
         pass
 
     def test_update_source_entitlement_request_config(self) -> None:
         """Test case for update_source_entitlement_request_config
 
-        Update Source Entitlement Request Configuration
+        Update source entitlement request configuration
         """
         pass
 
     def test_update_source_schema(self) -> None:
         """Test case for update_source_schema
 
-        Update Source Schema (Partial)
+        Update source schema (partial)
         """
         pass
 

@@ -29,70 +29,70 @@ class TestTriggersApi(unittest.TestCase):
     def test_complete_trigger_invocation(self) -> None:
         """Test case for complete_trigger_invocation
 
-        Complete Trigger Invocation
+        Complete trigger invocation
         """
         pass
 
     def test_create_subscription(self) -> None:
         """Test case for create_subscription
 
-        Create a Subscription
+        Create a subscription
         """
         pass
 
     def test_delete_subscription(self) -> None:
         """Test case for delete_subscription
 
-        Delete a Subscription
+        Delete a subscription
         """
         pass
 
     def test_list_subscriptions(self) -> None:
         """Test case for list_subscriptions
 
-        List Subscriptions
+        List subscriptions
         """
         pass
 
     def test_list_trigger_invocation_status(self) -> None:
         """Test case for list_trigger_invocation_status
 
-        List Latest Invocation Statuses
+        List latest invocation statuses
         """
         pass
 
     def test_list_triggers(self) -> None:
         """Test case for list_triggers
 
-        List Triggers
+        List triggers
         """
         pass
 
     def test_patch_subscription(self) -> None:
         """Test case for patch_subscription
 
-        Patch a Subscription
+        Patch a subscription
         """
         pass
 
     def test_start_test_trigger_invocation(self) -> None:
         """Test case for start_test_trigger_invocation
 
-        Start a Test Invocation
+        Start a test invocation
         """
         pass
 
     def test_test_subscription_filter(self) -> None:
         """Test case for test_subscription_filter
 
-        Validate a Subscription Filter
+        Validate a subscription filter
         """
         pass
 
     def test_update_subscription(self) -> None:
         """Test case for update_subscription
 
-        Update a Subscription
+        Update a subscription
         """
         pass
 

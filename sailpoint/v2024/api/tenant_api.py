@@ -52,7 +52,7 @@ class TenantApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Tenant:
-        """Get Tenant Information.
+        """Get tenant information.
 
         This rest endpoint can be used to retrieve tenant details.
 
@@ -121,7 +121,7 @@ class TenantApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Tenant]:
-        """Get Tenant Information.
+        """Get tenant information.
 
         This rest endpoint can be used to retrieve tenant details.
 
@@ -190,7 +190,7 @@ class TenantApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Tenant Information.
+        """Get tenant information.
 
         This rest endpoint can be used to retrieve tenant details.
 

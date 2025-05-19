@@ -72,7 +72,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> object:
-        """Complete a Campaign
+        """Complete a campaign
 
         :::caution  This endpoint will run successfully for any campaigns that are **past due**.  This endpoint will return a content error if the campaign is **not past due**.  :::  Use this API to complete a certification campaign. This functionality is provided to admins so that they can complete a certification even if all items have not been completed. 
 
@@ -149,7 +149,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[object]:
-        """Complete a Campaign
+        """Complete a campaign
 
         :::caution  This endpoint will run successfully for any campaigns that are **past due**.  This endpoint will return a content error if the campaign is **not past due**.  :::  Use this API to complete a certification campaign. This functionality is provided to admins so that they can complete a certification even if all items have not been completed. 
 
@@ -226,7 +226,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Complete a Campaign
+        """Complete a campaign
 
         :::caution  This endpoint will run successfully for any campaigns that are **past due**.  This endpoint will return a content error if the campaign is **not past due**.  :::  Use this API to complete a certification campaign. This functionality is provided to admins so that they can complete a certification even if all items have not been completed. 
 
@@ -669,7 +669,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> CampaignTemplate:
-        """Create a Campaign Template
+        """Create a campaign template
 
         Use this API to create a certification campaign template based on campaign. 
 
@@ -741,7 +741,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[CampaignTemplate]:
-        """Create a Campaign Template
+        """Create a campaign template
 
         Use this API to create a certification campaign template based on campaign. 
 
@@ -813,7 +813,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create a Campaign Template
+        """Create a campaign template
 
         Use this API to create a certification campaign template based on campaign. 
 
@@ -959,7 +959,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete a Campaign Template
+        """Delete a campaign template
 
         Use this API to delete a certification campaign template by ID. 
 
@@ -1032,7 +1032,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete a Campaign Template
+        """Delete a campaign template
 
         Use this API to delete a certification campaign template by ID. 
 
@@ -1105,7 +1105,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete a Campaign Template
+        """Delete a campaign template
 
         Use this API to delete a certification campaign template by ID. 
 
@@ -1239,7 +1239,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete Campaign Template Schedule
+        """Delete campaign template schedule
 
         Use this API to delete the schedule for a certification campaign template. The API returns a 404 if there is no schedule set. 
 
@@ -1312,7 +1312,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete Campaign Template Schedule
+        """Delete campaign template schedule
 
         Use this API to delete the schedule for a certification campaign template. The API returns a 404 if there is no schedule set. 
 
@@ -1385,7 +1385,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Campaign Template Schedule
+        """Delete campaign template schedule
 
         Use this API to delete the schedule for a certification campaign template. The API returns a 404 if there is no schedule set. 
 
@@ -1519,7 +1519,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> object:
-        """Delete Campaigns
+        """Delete campaigns
 
         Use this API to delete certification campaigns whose IDs are specified in the provided list of campaign IDs. 
 
@@ -1592,7 +1592,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[object]:
-        """Delete Campaigns
+        """Delete campaigns
 
         Use this API to delete certification campaigns whose IDs are specified in the provided list of campaign IDs. 
 
@@ -1665,7 +1665,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Campaigns
+        """Delete campaigns
 
         Use this API to delete certification campaigns whose IDs are specified in the provided list of campaign IDs. 
 
@@ -1817,7 +1817,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[GetActiveCampaigns200ResponseInner]:
-        """List Campaigns
+        """List campaigns
 
         Use this API to get a list of campaigns. This API can provide increased level of detail for each campaign for the correct provided query. 
 
@@ -1909,7 +1909,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[GetActiveCampaigns200ResponseInner]]:
-        """List Campaigns
+        """List campaigns
 
         Use this API to get a list of campaigns. This API can provide increased level of detail for each campaign for the correct provided query. 
 
@@ -2001,7 +2001,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Campaigns
+        """List campaigns
 
         Use this API to get a list of campaigns. This API can provide increased level of detail for each campaign for the correct provided query. 
 
@@ -2177,7 +2177,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> GetCampaign200Response:
-        """Get Campaign
+        """Get campaign
 
         Use this API to get information for an existing certification campaign by the campaign's ID. 
 
@@ -2254,7 +2254,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[GetCampaign200Response]:
-        """Get Campaign
+        """Get campaign
 
         Use this API to get information for an existing certification campaign by the campaign's ID. 
 
@@ -2331,7 +2331,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Campaign
+        """Get campaign
 
         Use this API to get information for an existing certification campaign by the campaign's ID. 
 
@@ -2473,7 +2473,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[CampaignReport]:
-        """Get Campaign Reports
+        """Get campaign reports
 
         Use this API to fetch all reports for a certification campaign by campaign ID. 
 
@@ -2546,7 +2546,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[CampaignReport]]:
-        """Get Campaign Reports
+        """Get campaign reports
 
         Use this API to fetch all reports for a certification campaign by campaign ID. 
 
@@ -2619,7 +2619,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Campaign Reports
+        """Get campaign reports
 
         Use this API to fetch all reports for a certification campaign by campaign ID. 
 
@@ -2752,7 +2752,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> CampaignReportsConfig:
-        """Get Campaign Reports Configuration
+        """Get campaign reports configuration
 
         Use this API to fetch the configuration for certification campaign reports. The configuration includes only one element - identity attributes defined as custom report columns.  
 
@@ -2820,7 +2820,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[CampaignReportsConfig]:
-        """Get Campaign Reports Configuration
+        """Get campaign reports configuration
 
         Use this API to fetch the configuration for certification campaign reports. The configuration includes only one element - identity attributes defined as custom report columns.  
 
@@ -2888,7 +2888,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Campaign Reports Configuration
+        """Get campaign reports configuration
 
         Use this API to fetch the configuration for certification campaign reports. The configuration includes only one element - identity attributes defined as custom report columns.  
 
@@ -3015,7 +3015,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> CampaignTemplate:
-        """Get a Campaign Template
+        """Get a campaign template
 
         Use this API to fetch a certification campaign template by ID. 
 
@@ -3088,7 +3088,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[CampaignTemplate]:
-        """Get a Campaign Template
+        """Get a campaign template
 
         Use this API to fetch a certification campaign template by ID. 
 
@@ -3161,7 +3161,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get a Campaign Template
+        """Get a campaign template
 
         Use this API to fetch a certification campaign template by ID. 
 
@@ -3295,7 +3295,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Schedule:
-        """Get Campaign Template Schedule
+        """Get campaign template schedule
 
         Use this API to get the schedule for a certification campaign template. The API returns a 404 if there is no schedule set. 
 
@@ -3368,7 +3368,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Schedule]:
-        """Get Campaign Template Schedule
+        """Get campaign template schedule
 
         Use this API to get the schedule for a certification campaign template. The API returns a 404 if there is no schedule set. 
 
@@ -3441,7 +3441,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Campaign Template Schedule
+        """Get campaign template schedule
 
         Use this API to get the schedule for a certification campaign template. The API returns a 404 if there is no schedule set. 
 
@@ -3579,7 +3579,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[CampaignTemplate]:
-        """List Campaign Templates
+        """List campaign templates
 
         Use this API to get a list of all campaign templates. Scope can be reduced through standard V3 query params.  The API returns all campaign templates matching the query parameters.  
 
@@ -3667,7 +3667,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[CampaignTemplate]]:
-        """List Campaign Templates
+        """List campaign templates
 
         Use this API to get a list of all campaign templates. Scope can be reduced through standard V3 query params.  The API returns all campaign templates matching the query parameters.  
 
@@ -3755,7 +3755,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Campaign Templates
+        """List campaign templates
 
         Use this API to get a list of all campaign templates. Scope can be reduced through standard V3 query params.  The API returns all campaign templates matching the query parameters.  
 
@@ -3923,7 +3923,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> CertificationTask:
-        """Reassign Certifications
+        """Reassign certifications
 
         This API reassigns the specified certifications from one identity to another.     
 
@@ -4000,7 +4000,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[CertificationTask]:
-        """Reassign Certifications
+        """Reassign certifications
 
         This API reassigns the specified certifications from one identity to another.     
 
@@ -4077,7 +4077,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Reassign Certifications
+        """Reassign certifications
 
         This API reassigns the specified certifications from one identity to another.     
 
@@ -4231,7 +4231,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> CampaignTemplate:
-        """Update a Campaign Template
+        """Update a campaign template
 
         Use this API to update individual fields on a certification campaign template, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. 
 
@@ -4308,7 +4308,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[CampaignTemplate]:
-        """Update a Campaign Template
+        """Update a campaign template
 
         Use this API to update individual fields on a certification campaign template, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. 
 
@@ -4385,7 +4385,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update a Campaign Template
+        """Update a campaign template
 
         Use this API to update individual fields on a certification campaign template, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. 
 
@@ -4539,7 +4539,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> CampaignReportsConfig:
-        """Set Campaign Reports Configuration
+        """Set campaign reports configuration
 
         Use this API to overwrite the configuration for campaign reports.  
 
@@ -4611,7 +4611,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[CampaignReportsConfig]:
-        """Set Campaign Reports Configuration
+        """Set campaign reports configuration
 
         Use this API to overwrite the configuration for campaign reports.  
 
@@ -4683,7 +4683,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Set Campaign Reports Configuration
+        """Set campaign reports configuration
 
         Use this API to overwrite the configuration for campaign reports.  
 
@@ -4830,7 +4830,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Set Campaign Template Schedule
+        """Set campaign template schedule
 
         Use this API to set the schedule for a certification campaign template. If a schedule already exists, the API overwrites it with the new one. 
 
@@ -4907,7 +4907,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Set Campaign Template Schedule
+        """Set campaign template schedule
 
         Use this API to set the schedule for a certification campaign template. If a schedule already exists, the API overwrites it with the new one. 
 
@@ -4984,7 +4984,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Set Campaign Template Schedule
+        """Set campaign template schedule
 
         Use this API to set the schedule for a certification campaign template. If a schedule already exists, the API overwrites it with the new one. 
 
@@ -5138,7 +5138,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> object:
-        """Activate a Campaign
+        """Activate a campaign
 
         Use this API to submit a job to activate the certified campaign with the specified ID. The campaign must be staged. 
 
@@ -5215,7 +5215,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[object]:
-        """Activate a Campaign
+        """Activate a campaign
 
         Use this API to submit a job to activate the certified campaign with the specified ID. The campaign must be staged. 
 
@@ -5292,7 +5292,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Activate a Campaign
+        """Activate a campaign
 
         Use this API to submit a job to activate the certified campaign with the specified ID. The campaign must be staged. 
 
@@ -5445,7 +5445,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> object:
-        """Run Campaign Remediation Scan
+        """Run campaign remediation scan
 
         Use this API to run a remediation scan task for a certification campaign. 
 
@@ -5518,7 +5518,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[object]:
-        """Run Campaign Remediation Scan
+        """Run campaign remediation scan
 
         Use this API to run a remediation scan task for a certification campaign. 
 
@@ -5591,7 +5591,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Run Campaign Remediation Scan
+        """Run campaign remediation scan
 
         Use this API to run a remediation scan task for a certification campaign. 
 
@@ -5726,7 +5726,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> object:
-        """Run Campaign Report
+        """Run campaign report
 
         Use this API to run a report for a certification campaign. 
 
@@ -5803,7 +5803,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[object]:
-        """Run Campaign Report
+        """Run campaign report
 
         Use this API to run a report for a certification campaign. 
 
@@ -5880,7 +5880,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Run Campaign Report
+        """Run campaign report
 
         Use this API to run a report for a certification campaign. 
 
@@ -6020,7 +6020,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> CampaignReference:
-        """Generate a Campaign from Template
+        """Generate a campaign from template
 
         Use this API to generate a new certification campaign from a campaign template.  The campaign object contained in the template has special formatting applied to its name and description fields that determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation.  Placeholders consist of a percent sign followed by a letter indicating what should be inserted. For example, \"%Y\" inserts the current year, and a campaign template named \"Campaign for %y\" generates a campaign called \"Campaign for 2020\" (assuming the year at generation time is 2020).  Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html). 
 
@@ -6092,7 +6092,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[CampaignReference]:
-        """Generate a Campaign from Template
+        """Generate a campaign from template
 
         Use this API to generate a new certification campaign from a campaign template.  The campaign object contained in the template has special formatting applied to its name and description fields that determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation.  Placeholders consist of a percent sign followed by a letter indicating what should be inserted. For example, \"%Y\" inserts the current year, and a campaign template named \"Campaign for %y\" generates a campaign called \"Campaign for 2020\" (assuming the year at generation time is 2020).  Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html). 
 
@@ -6164,7 +6164,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Generate a Campaign from Template
+        """Generate a campaign from template
 
         Use this API to generate a new certification campaign from a campaign template.  The campaign object contained in the template has special formatting applied to its name and description fields that determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation.  Placeholders consist of a percent sign followed by a letter indicating what should be inserted. For example, \"%Y\" inserts the current year, and a campaign template named \"Campaign for %y\" generates a campaign called \"Campaign for 2020\" (assuming the year at generation time is 2020).  Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html). 
 
@@ -6298,7 +6298,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SlimCampaign:
-        """Update a Campaign
+        """Update a campaign
 
         Use this API to update individual fields on a certification campaign, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. 
 
@@ -6375,7 +6375,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SlimCampaign]:
-        """Update a Campaign
+        """Update a campaign
 
         Use this API to update individual fields on a certification campaign, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. 
 
@@ -6452,7 +6452,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update a Campaign
+        """Update a campaign
 
         Use this API to update individual fields on a certification campaign, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. 
 

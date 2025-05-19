@@ -65,7 +65,7 @@ class SuggestedEntitlementDescriptionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SedBatchStats:
-        """Submit Sed Batch Stats Request
+        """Submit sed batch stats request
 
         Submit Sed Batch Stats Request.  Submits batchId in the path param `(e.g. {batchId}/stats)`. API responses with stats of the batchId. 
 
@@ -138,7 +138,7 @@ class SuggestedEntitlementDescriptionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SedBatchStats]:
-        """Submit Sed Batch Stats Request
+        """Submit sed batch stats request
 
         Submit Sed Batch Stats Request.  Submits batchId in the path param `(e.g. {batchId}/stats)`. API responses with stats of the batchId. 
 
@@ -211,7 +211,7 @@ class SuggestedEntitlementDescriptionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Submit Sed Batch Stats Request
+        """Submit sed batch stats request
 
         Submit Sed Batch Stats Request.  Submits batchId in the path param `(e.g. {batchId}/stats)`. API responses with stats of the batchId. 
 
@@ -344,7 +344,7 @@ class SuggestedEntitlementDescriptionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SedBatchStatus:
-        """List Sed Batch Request
+        """List sed batch request
 
         List Sed Batches. API responses with Sed Batch Status
 
@@ -413,7 +413,7 @@ class SuggestedEntitlementDescriptionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SedBatchStatus]:
-        """List Sed Batch Request
+        """List sed batch request
 
         List Sed Batches. API responses with Sed Batch Status
 
@@ -482,7 +482,7 @@ class SuggestedEntitlementDescriptionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Sed Batch Request
+        """List sed batch request
 
         List Sed Batches. API responses with Sed Batch Status
 
@@ -616,7 +616,7 @@ class SuggestedEntitlementDescriptionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[Sed]:
-        """List Suggested Entitlement Descriptions
+        """List suggested entitlement descriptions
 
         List of Suggested Entitlement Descriptions (SED)  SED field descriptions:  **batchId**: the ID of the batch of entitlements that are submitted for description generation  **displayName**: the display name of the entitlement that we are generating a description for  **sourceName**: the name of the source associated with the entitlement that we are generating the description for  **sourceId**: the ID of the source associated with the entitlement that we are generating the description for  **status**: the status of the suggested entitlement description, valid status options: \"requested\", \"suggested\", \"not_suggested\", \"failed\", \"assigned\", \"approved\", \"denied\"  **fullText**: will filter suggested entitlement description records by text found in any of the following fields: entitlement name, entitlement display name, suggested description, source name
 
@@ -713,7 +713,7 @@ class SuggestedEntitlementDescriptionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[Sed]]:
-        """List Suggested Entitlement Descriptions
+        """List suggested entitlement descriptions
 
         List of Suggested Entitlement Descriptions (SED)  SED field descriptions:  **batchId**: the ID of the batch of entitlements that are submitted for description generation  **displayName**: the display name of the entitlement that we are generating a description for  **sourceName**: the name of the source associated with the entitlement that we are generating the description for  **sourceId**: the ID of the source associated with the entitlement that we are generating the description for  **status**: the status of the suggested entitlement description, valid status options: \"requested\", \"suggested\", \"not_suggested\", \"failed\", \"assigned\", \"approved\", \"denied\"  **fullText**: will filter suggested entitlement description records by text found in any of the following fields: entitlement name, entitlement display name, suggested description, source name
 
@@ -810,7 +810,7 @@ class SuggestedEntitlementDescriptionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Suggested Entitlement Descriptions
+        """List suggested entitlement descriptions
 
         List of Suggested Entitlement Descriptions (SED)  SED field descriptions:  **batchId**: the ID of the batch of entitlements that are submitted for description generation  **displayName**: the display name of the entitlement that we are generating a description for  **sourceName**: the name of the source associated with the entitlement that we are generating the description for  **sourceId**: the ID of the source associated with the entitlement that we are generating the description for  **status**: the status of the suggested entitlement description, valid status options: \"requested\", \"suggested\", \"not_suggested\", \"failed\", \"assigned\", \"approved\", \"denied\"  **fullText**: will filter suggested entitlement description records by text found in any of the following fields: entitlement name, entitlement display name, suggested description, source name
 
@@ -995,7 +995,7 @@ class SuggestedEntitlementDescriptionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Sed:
-        """Patch Suggested Entitlement Description
+        """Patch suggested entitlement description
 
         Patch Suggested Entitlement Description
 
@@ -1072,7 +1072,7 @@ class SuggestedEntitlementDescriptionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Sed]:
-        """Patch Suggested Entitlement Description
+        """Patch suggested entitlement description
 
         Patch Suggested Entitlement Description
 
@@ -1149,7 +1149,7 @@ class SuggestedEntitlementDescriptionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Patch Suggested Entitlement Description
+        """Patch suggested entitlement description
 
         Patch Suggested Entitlement Description
 
@@ -1303,7 +1303,7 @@ class SuggestedEntitlementDescriptionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[SedApprovalStatus]:
-        """Submit Bulk Approval Request
+        """Submit bulk approval request
 
         Submit Bulk Approval Request for SED. Request body takes list of SED Ids. API responses with list of SED Approval Status
 
@@ -1376,7 +1376,7 @@ class SuggestedEntitlementDescriptionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[SedApprovalStatus]]:
-        """Submit Bulk Approval Request
+        """Submit bulk approval request
 
         Submit Bulk Approval Request for SED. Request body takes list of SED Ids. API responses with list of SED Approval Status
 
@@ -1449,7 +1449,7 @@ class SuggestedEntitlementDescriptionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Submit Bulk Approval Request
+        """Submit bulk approval request
 
         Submit Bulk Approval Request for SED. Request body takes list of SED Ids. API responses with list of SED Approval Status
 
@@ -1597,7 +1597,7 @@ class SuggestedEntitlementDescriptionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SedAssignmentResponse:
-        """Submit Sed Assignment Request
+        """Submit sed assignment request
 
         Submit Assignment Request. Request body has an assignee, and list of SED Ids that are assigned to that assignee API responses with batchId that groups all approval requests together
 
@@ -1670,7 +1670,7 @@ class SuggestedEntitlementDescriptionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SedAssignmentResponse]:
-        """Submit Sed Assignment Request
+        """Submit sed assignment request
 
         Submit Assignment Request. Request body has an assignee, and list of SED Ids that are assigned to that assignee API responses with batchId that groups all approval requests together
 
@@ -1743,7 +1743,7 @@ class SuggestedEntitlementDescriptionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Submit Sed Assignment Request
+        """Submit sed assignment request
 
         Submit Assignment Request. Request body has an assignee, and list of SED Ids that are assigned to that assignee API responses with batchId that groups all approval requests together
 
@@ -1890,7 +1890,7 @@ class SuggestedEntitlementDescriptionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SedBatchResponse:
-        """Submit Sed Batch Request
+        """Submit sed batch request
 
         Submit Sed Batch Request. Request body has one of the following:   - a list of entitlement Ids   - a list of SED Ids that user wants to have description generated by LLM.  API responses with batchId that groups Ids together
 
@@ -1963,7 +1963,7 @@ class SuggestedEntitlementDescriptionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SedBatchResponse]:
-        """Submit Sed Batch Request
+        """Submit sed batch request
 
         Submit Sed Batch Request. Request body has one of the following:   - a list of entitlement Ids   - a list of SED Ids that user wants to have description generated by LLM.  API responses with batchId that groups Ids together
 
@@ -2036,7 +2036,7 @@ class SuggestedEntitlementDescriptionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Submit Sed Batch Request
+        """Submit sed batch request
 
         Submit Sed Batch Request. Request body has one of the following:   - a list of entitlement Ids   - a list of SED Ids that user wants to have description generated by LLM.  API responses with batchId that groups Ids together
 

@@ -60,7 +60,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> WorkItems:
-        """(Deprecated) Approve an Approval Item
+        """(Deprecated) Approve an approval item
 
         This API approves an Approval Item. Either an admin, or the owning/current user must make this request.
 
@@ -138,7 +138,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[WorkItems]:
-        """(Deprecated) Approve an Approval Item
+        """(Deprecated) Approve an approval item
 
         This API approves an Approval Item. Either an admin, or the owning/current user must make this request.
 
@@ -216,7 +216,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Approve an Approval Item
+        """(Deprecated) Approve an approval item
 
         This API approves an Approval Item. Either an admin, or the owning/current user must make this request.
 
@@ -357,7 +357,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> WorkItems:
-        """(Deprecated) Bulk approve Approval Items
+        """(Deprecated) Bulk approve approval items
 
         This API bulk approves Approval Items. Either an admin, or the owning/current user must make this request.
 
@@ -431,7 +431,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[WorkItems]:
-        """(Deprecated) Bulk approve Approval Items
+        """(Deprecated) Bulk approve approval items
 
         This API bulk approves Approval Items. Either an admin, or the owning/current user must make this request.
 
@@ -505,7 +505,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Bulk approve Approval Items
+        """(Deprecated) Bulk approve approval items
 
         This API bulk approves Approval Items. Either an admin, or the owning/current user must make this request.
 
@@ -641,7 +641,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> WorkItems:
-        """(Deprecated) Complete a Work Item
+        """(Deprecated) Complete a work item
 
         This API completes a work item. Either an admin, or the owning/current user must make this request.
 
@@ -719,7 +719,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[WorkItems]:
-        """(Deprecated) Complete a Work Item
+        """(Deprecated) Complete a work item
 
         This API completes a work item. Either an admin, or the owning/current user must make this request.
 
@@ -797,7 +797,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Complete a Work Item
+        """(Deprecated) Complete a work item
 
         This API completes a work item. Either an admin, or the owning/current user must make this request.
 
@@ -954,7 +954,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[WorkItems]:
-        """(Deprecated) Completed Work Items
+        """(Deprecated) Completed work items
 
         This gets a collection of completed work items belonging to either the specified user(admin required), or the current user.
 
@@ -1040,7 +1040,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[WorkItems]]:
-        """(Deprecated) Completed Work Items
+        """(Deprecated) Completed work items
 
         This gets a collection of completed work items belonging to either the specified user(admin required), or the current user.
 
@@ -1126,7 +1126,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Completed Work Items
+        """(Deprecated) Completed work items
 
         This gets a collection of completed work items belonging to either the specified user(admin required), or the current user.
 
@@ -1289,7 +1289,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[WorkItemsCount]:
-        """(Deprecated) Count Completed Work Items
+        """(Deprecated) Count completed work items
 
         This gets a count of completed work items belonging to either the specified user(admin required), or the current user.
 
@@ -1371,7 +1371,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[WorkItemsCount]]:
-        """(Deprecated) Count Completed Work Items
+        """(Deprecated) Count completed work items
 
         This gets a count of completed work items belonging to either the specified user(admin required), or the current user.
 
@@ -1453,7 +1453,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Count Completed Work Items
+        """(Deprecated) Count completed work items
 
         This gets a count of completed work items belonging to either the specified user(admin required), or the current user.
 
@@ -1606,7 +1606,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> WorkItemsCount:
-        """(Deprecated) Count Work Items
+        """(Deprecated) Count work items
 
         This gets a count of work items belonging to either the specified user(admin required), or the current user.
 
@@ -1680,7 +1680,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[WorkItemsCount]:
-        """(Deprecated) Count Work Items
+        """(Deprecated) Count work items
 
         This gets a count of work items belonging to either the specified user(admin required), or the current user.
 
@@ -1754,7 +1754,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Count Work Items
+        """(Deprecated) Count work items
 
         This gets a count of work items belonging to either the specified user(admin required), or the current user.
 
@@ -1892,7 +1892,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> object:
-        """(Deprecated) Get a Work Item
+        """(Deprecated) Get a work item
 
         This gets the details of a Work Item belonging to either the specified user(admin required), or the current user.
 
@@ -1970,7 +1970,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[object]:
-        """(Deprecated) Get a Work Item
+        """(Deprecated) Get a work item
 
         This gets the details of a Work Item belonging to either the specified user(admin required), or the current user.
 
@@ -2048,7 +2048,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Get a Work Item
+        """(Deprecated) Get a work item
 
         This gets the details of a Work Item belonging to either the specified user(admin required), or the current user.
 
@@ -2191,7 +2191,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> WorkItemsSummary:
-        """(Deprecated) Work Items Summary
+        """(Deprecated) Work items summary
 
         This gets a summary of work items belonging to either the specified user(admin required), or the current user.
 
@@ -2265,7 +2265,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[WorkItemsSummary]:
-        """(Deprecated) Work Items Summary
+        """(Deprecated) Work items summary
 
         This gets a summary of work items belonging to either the specified user(admin required), or the current user.
 
@@ -2339,7 +2339,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Work Items Summary
+        """(Deprecated) Work items summary
 
         This gets a summary of work items belonging to either the specified user(admin required), or the current user.
 
@@ -2479,7 +2479,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[WorkItems]:
-        """(Deprecated) List Work Items
+        """(Deprecated) List work items
 
         This gets a collection of work items belonging to either the specified user(admin required), or the current user.
 
@@ -2565,7 +2565,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[WorkItems]]:
-        """(Deprecated) List Work Items
+        """(Deprecated) List work items
 
         This gets a collection of work items belonging to either the specified user(admin required), or the current user.
 
@@ -2651,7 +2651,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) List Work Items
+        """(Deprecated) List work items
 
         This gets a collection of work items belonging to either the specified user(admin required), or the current user.
 
@@ -2813,7 +2813,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> WorkItems:
-        """(Deprecated) Reject an Approval Item
+        """(Deprecated) Reject an approval item
 
         This API rejects an Approval Item. Either an admin, or the owning/current user must make this request.
 
@@ -2891,7 +2891,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[WorkItems]:
-        """(Deprecated) Reject an Approval Item
+        """(Deprecated) Reject an approval item
 
         This API rejects an Approval Item. Either an admin, or the owning/current user must make this request.
 
@@ -2969,7 +2969,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Reject an Approval Item
+        """(Deprecated) Reject an approval item
 
         This API rejects an Approval Item. Either an admin, or the owning/current user must make this request.
 
@@ -3110,7 +3110,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> WorkItems:
-        """(Deprecated) Bulk reject Approval Items
+        """(Deprecated) Bulk reject approval items
 
         This API bulk rejects Approval Items. Either an admin, or the owning/current user must make this request.
 
@@ -3184,7 +3184,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[WorkItems]:
-        """(Deprecated) Bulk reject Approval Items
+        """(Deprecated) Bulk reject approval items
 
         This API bulk rejects Approval Items. Either an admin, or the owning/current user must make this request.
 
@@ -3258,7 +3258,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Bulk reject Approval Items
+        """(Deprecated) Bulk reject approval items
 
         This API bulk rejects Approval Items. Either an admin, or the owning/current user must make this request.
 
@@ -3394,7 +3394,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> WorkItems:
-        """(Deprecated) Submit Account Selections
+        """(Deprecated) Submit account selections
 
         This API submits account selections. Either an admin, or the owning/current user must make this request.
 
@@ -3472,7 +3472,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[WorkItems]:
-        """(Deprecated) Submit Account Selections
+        """(Deprecated) Submit account selections
 
         This API submits account selections. Either an admin, or the owning/current user must make this request.
 
@@ -3550,7 +3550,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Submit Account Selections
+        """(Deprecated) Submit account selections
 
         This API submits account selections. Either an admin, or the owning/current user must make this request.
 
@@ -3705,7 +3705,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """(Deprecated) Forward a Work Item
+        """(Deprecated) Forward a work item
 
         This API forwards a work item to a new owner. Either an admin, or the owning/current user must make this request.
 
@@ -3782,7 +3782,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """(Deprecated) Forward a Work Item
+        """(Deprecated) Forward a work item
 
         This API forwards a work item to a new owner. Either an admin, or the owning/current user must make this request.
 
@@ -3859,7 +3859,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Forward a Work Item
+        """(Deprecated) Forward a work item
 
         This API forwards a work item to a new owner. Either an admin, or the owning/current user must make this request.
 

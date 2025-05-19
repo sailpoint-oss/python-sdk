@@ -29,63 +29,63 @@ class TestAccessRequestsApi(unittest.TestCase):
     def test_approve_bulk_access_request(self) -> None:
         """Test case for approve_bulk_access_request
 
-        Bulk Approve Access Request
+        Bulk approve access request
         """
         pass
 
     def test_cancel_access_request(self) -> None:
         """Test case for cancel_access_request
 
-        Cancel Access Request
+        Cancel access request
         """
         pass
 
     def test_cancel_access_request_in_bulk(self) -> None:
         """Test case for cancel_access_request_in_bulk
 
-        Bulk Cancel Access Request
+        Bulk cancel access request
         """
         pass
 
     def test_close_access_request(self) -> None:
         """Test case for close_access_request
 
-        Close Access Request
+        Close access request
         """
         pass
 
     def test_create_access_request(self) -> None:
         """Test case for create_access_request
 
-        Submit Access Request
+        Submit access request
         """
         pass
 
     def test_get_access_request_config(self) -> None:
         """Test case for get_access_request_config
 
-        Get Access Request Configuration
+        Get access request configuration
         """
         pass
 
     def test_get_entitlement_details_for_identity(self) -> None:
         """Test case for get_entitlement_details_for_identity
 
-        Identity Entitlement Details
+        Identity entitlement details
         """
         pass
 
     def test_list_access_request_status(self) -> None:
         """Test case for list_access_request_status
 
-        Access Request Status
+        Access request status
         """
         pass
 
     def test_list_administrators_access_request_status(self) -> None:
         """Test case for list_administrators_access_request_status
 
-        Access Request Status for Administrators
+        Access request status for administrators
         """
         pass
 
@@ -99,7 +99,7 @@ class TestAccessRequestsApi(unittest.TestCase):
     def test_set_access_request_config(self) -> None:
         """Test case for set_access_request_config
 
-        Update Access Request Configuration
+        Update access request configuration
         """
         pass
 

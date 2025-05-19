@@ -29,126 +29,126 @@ class TestWorkflowsApi(unittest.TestCase):
     def test_cancel_workflow_execution(self) -> None:
         """Test case for cancel_workflow_execution
 
-        Cancel Workflow Execution by ID
+        Cancel workflow execution by id
         """
         pass
 
     def test_create_external_execute_workflow(self) -> None:
         """Test case for create_external_execute_workflow
 
-        Execute Workflow via External Trigger
+        Execute workflow via external trigger
         """
         pass
 
     def test_create_workflow(self) -> None:
         """Test case for create_workflow
 
-        Create Workflow
+        Create workflow
         """
         pass
 
     def test_create_workflow_external_trigger(self) -> None:
         """Test case for create_workflow_external_trigger
 
-        Generate External Trigger OAuth Client
+        Generate external trigger oauth client
         """
         pass
 
     def test_delete_workflow(self) -> None:
         """Test case for delete_workflow
 
-        Delete Workflow By Id
+        Delete workflow by id
         """
         pass
 
     def test_get_workflow(self) -> None:
         """Test case for get_workflow
 
-        Get Workflow By Id
+        Get workflow by id
         """
         pass
 
     def test_get_workflow_execution(self) -> None:
         """Test case for get_workflow_execution
 
-        Get Workflow Execution
+        Get workflow execution
         """
         pass
 
     def test_get_workflow_execution_history(self) -> None:
         """Test case for get_workflow_execution_history
 
-        Get Workflow Execution History
+        Get workflow execution history
         """
         pass
 
     def test_get_workflow_executions(self) -> None:
         """Test case for get_workflow_executions
 
-        List Workflow Executions
+        List workflow executions
         """
         pass
 
     def test_list_complete_workflow_library(self) -> None:
         """Test case for list_complete_workflow_library
 
-        List Complete Workflow Library
+        List complete workflow library
         """
         pass
 
     def test_list_workflow_library_actions(self) -> None:
         """Test case for list_workflow_library_actions
 
-        List Workflow Library Actions
+        List workflow library actions
         """
         pass
 
     def test_list_workflow_library_operators(self) -> None:
         """Test case for list_workflow_library_operators
 
-        List Workflow Library Operators
+        List workflow library operators
         """
         pass
 
     def test_list_workflow_library_triggers(self) -> None:
         """Test case for list_workflow_library_triggers
 
-        List Workflow Library Triggers
+        List workflow library triggers
         """
         pass
 
     def test_list_workflows(self) -> None:
         """Test case for list_workflows
 
-        List Workflows
+        List workflows
         """
         pass
 
     def test_patch_workflow(self) -> None:
         """Test case for patch_workflow
 
-        Patch Workflow
+        Patch workflow
         """
         pass
 
     def test_put_workflow(self) -> None:
         """Test case for put_workflow
 
-        Update Workflow
+        Update workflow
         """
         pass
 
     def test_test_external_execute_workflow(self) -> None:
         """Test case for test_external_execute_workflow
 
-        Test Workflow via External Trigger
+        Test workflow via external trigger
         """
         pass
 
     def test_test_workflow(self) -> None:
         """Test case for test_workflow
 
-        Test Workflow By Id
+        Test workflow by id
         """
         pass
 

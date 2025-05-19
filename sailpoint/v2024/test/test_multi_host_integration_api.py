@@ -29,91 +29,91 @@ class TestMultiHostIntegrationApi(unittest.TestCase):
     def test_create_multi_host_integration(self) -> None:
         """Test case for create_multi_host_integration
 
-        Create Multi-Host Integration
+        Create multi-host integration
         """
         pass
 
     def test_create_sources_within_multi_host(self) -> None:
         """Test case for create_sources_within_multi_host
 
-        Create Sources Within Multi-Host Integration
+        Create sources within multi-host integration
         """
         pass
 
     def test_delete_multi_host(self) -> None:
         """Test case for delete_multi_host
 
-        Delete Multi-Host Integration
+        Delete multi-host integration
         """
         pass
 
     def test_get_acct_aggregation_groups(self) -> None:
         """Test case for get_acct_aggregation_groups
 
-        List Account-Aggregation-Groups by Multi-Host ID
+        List account-aggregation-groups by multi-host id
         """
         pass
 
     def test_get_entitlement_aggregation_groups(self) -> None:
         """Test case for get_entitlement_aggregation_groups
 
-        List Entitlement-Aggregation-Groups by Integration ID
+        List entitlement-aggregation-groups by integration id
         """
         pass
 
     def test_get_multi_host_integrations(self) -> None:
         """Test case for get_multi_host_integrations
 
-        Get Multi-Host Integration By ID
+        Get multi-host integration by id
         """
         pass
 
     def test_get_multi_host_integrations_list(self) -> None:
         """Test case for get_multi_host_integrations_list
 
-        List All Existing Multi-Host Integrations
+        List all existing multi-host integrations
         """
         pass
 
     def test_get_multi_host_source_creation_errors(self) -> None:
         """Test case for get_multi_host_source_creation_errors
 
-        List Multi-Host Source Creation Errors
+        List multi-host source creation errors
         """
         pass
 
     def test_get_multihost_integration_types(self) -> None:
         """Test case for get_multihost_integration_types
 
-        List Multi-Host Integration Types
+        List multi-host integration types
         """
         pass
 
     def test_get_sources_within_multi_host(self) -> None:
         """Test case for get_sources_within_multi_host
 
-        List Sources Within Multi-Host Integration
+        List sources within multi-host integration
         """
         pass
 
     def test_test_connection_multi_host_sources(self) -> None:
         """Test case for test_connection_multi_host_sources
 
-        Test Configuration For Multi-Host Integration
+        Test configuration for multi-host integration
         """
         pass
 
     def test_test_source_connection_multihost(self) -> None:
         """Test case for test_source_connection_multihost
 
-        Test Configuration For Multi-Host Integration's Single Source
+        Test configuration for multi-host integration's single source
         """
         pass
 
     def test_update_multi_host_sources(self) -> None:
         """Test case for update_multi_host_sources
 
-        Update Multi-Host Integration
+        Update multi-host integration
         """
         pass
 

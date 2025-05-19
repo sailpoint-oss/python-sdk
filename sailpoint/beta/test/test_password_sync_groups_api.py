@@ -29,35 +29,35 @@ class TestPasswordSyncGroupsApi(unittest.TestCase):
     def test_create_password_sync_group(self) -> None:
         """Test case for create_password_sync_group
 
-        Create Password Sync Group
+        Create password sync group
         """
         pass
 
     def test_delete_password_sync_group(self) -> None:
         """Test case for delete_password_sync_group
 
-        Delete Password Sync Group by ID
+        Delete password sync group by id
         """
         pass
 
     def test_get_password_sync_group(self) -> None:
         """Test case for get_password_sync_group
 
-        Get Password Sync Group by ID
+        Get password sync group by id
         """
         pass
 
     def test_get_password_sync_groups(self) -> None:
         """Test case for get_password_sync_groups
 
-        Get Password Sync Group List
+        Get password sync group list
         """
         pass
 
     def test_update_password_sync_group(self) -> None:
         """Test case for update_password_sync_group
 
-        Update Password Sync Group by ID
+        Update password sync group by id
         """
         pass
 

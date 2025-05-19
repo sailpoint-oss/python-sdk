@@ -29,56 +29,56 @@ class TestMFAConfigurationApi(unittest.TestCase):
     def test_delete_mfa_config(self) -> None:
         """Test case for delete_mfa_config
 
-        Delete MFA method configuration
+        Delete mfa method configuration
         """
         pass
 
     def test_get_mfa_duo_config(self) -> None:
         """Test case for get_mfa_duo_config
 
-        Configuration of Duo MFA method
+        Configuration of duo mfa method
         """
         pass
 
     def test_get_mfa_kba_config(self) -> None:
         """Test case for get_mfa_kba_config
 
-        Configuration of KBA MFA method
+        Configuration of kba mfa method
         """
         pass
 
     def test_get_mfa_okta_config(self) -> None:
         """Test case for get_mfa_okta_config
 
-        Configuration of Okta MFA method
+        Configuration of okta mfa method
         """
         pass
 
     def test_set_mfa_duo_config(self) -> None:
         """Test case for set_mfa_duo_config
 
-        Set Duo MFA configuration
+        Set duo mfa configuration
         """
         pass
 
     def test_set_mfa_okta_config(self) -> None:
         """Test case for set_mfa_okta_config
 
-        Set Okta MFA configuration
+        Set okta mfa configuration
         """
         pass
 
     def test_set_mfakba_config(self) -> None:
         """Test case for set_mfakba_config
 
-        Set MFA KBA configuration
+        Set mfa kba configuration
         """
         pass
 
     def test_test_mfa_config(self) -> None:
         """Test case for test_mfa_config
 
-        MFA method's test configuration
+        Mfa method's test configuration
         """
         pass
 

@@ -29,7 +29,7 @@ class TestConnectorsApi(unittest.TestCase):
     def test_get_connector_list(self) -> None:
         """Test case for get_connector_list
 
-        Get Connector List
+        Get connector list
         """
         pass
 

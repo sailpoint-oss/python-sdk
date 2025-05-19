@@ -52,7 +52,7 @@ class PublicIdentitiesConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> PublicIdentityConfig:
-        """(Deprecated) Get Public Identity Config
+        """(Deprecated) Get public identity config
 
         This gets details of public identity config.
 
@@ -121,7 +121,7 @@ class PublicIdentitiesConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[PublicIdentityConfig]:
-        """(Deprecated) Get Public Identity Config
+        """(Deprecated) Get public identity config
 
         This gets details of public identity config.
 
@@ -190,7 +190,7 @@ class PublicIdentitiesConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Get Public Identity Config
+        """(Deprecated) Get public identity config
 
         This gets details of public identity config.
 
@@ -318,7 +318,7 @@ class PublicIdentitiesConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> PublicIdentityConfig:
-        """(Deprecated) Update Public Identity Config
+        """(Deprecated) Update public identity config
 
         This updates the details of public identity config.
 
@@ -391,7 +391,7 @@ class PublicIdentitiesConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[PublicIdentityConfig]:
-        """(Deprecated) Update Public Identity Config
+        """(Deprecated) Update public identity config
 
         This updates the details of public identity config.
 
@@ -464,7 +464,7 @@ class PublicIdentitiesConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Update Public Identity Config
+        """(Deprecated) Update public identity config
 
         This updates the details of public identity config.
 

@@ -29,14 +29,14 @@ class TestPasswordDictionaryApi(unittest.TestCase):
     def test_get_password_dictionary(self) -> None:
         """Test case for get_password_dictionary
 
-        Get Password Dictionary
+        Get password dictionary
         """
         pass
 
     def test_put_password_dictionary(self) -> None:
         """Test case for put_password_dictionary
 
-        Update Password Dictionary
+        Update password dictionary
         """
         pass
 

@@ -60,7 +60,7 @@ class TaggedObjectsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete Object Tags
+        """Delete object tags
 
         Delete all tags from a tagged object.
 
@@ -136,7 +136,7 @@ class TaggedObjectsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete Object Tags
+        """Delete object tags
 
         Delete all tags from a tagged object.
 
@@ -212,7 +212,7 @@ class TaggedObjectsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Object Tags
+        """Delete object tags
 
         Delete all tags from a tagged object.
 
@@ -351,7 +351,7 @@ class TaggedObjectsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Remove Tags from Multiple Objects
+        """Remove tags from multiple objects
 
         This API removes tags from multiple objects.
 
@@ -423,7 +423,7 @@ class TaggedObjectsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Remove Tags from Multiple Objects
+        """Remove tags from multiple objects
 
         This API removes tags from multiple objects.
 
@@ -495,7 +495,7 @@ class TaggedObjectsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Remove Tags from Multiple Objects
+        """Remove tags from multiple objects
 
         This API removes tags from multiple objects.
 
@@ -643,7 +643,7 @@ class TaggedObjectsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> TaggedObject:
-        """Get Tagged Object
+        """Get tagged object
 
         This gets a tagged object for the specified type.
 
@@ -719,7 +719,7 @@ class TaggedObjectsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[TaggedObject]:
-        """Get Tagged Object
+        """Get tagged object
 
         This gets a tagged object for the specified type.
 
@@ -795,7 +795,7 @@ class TaggedObjectsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Tagged Object
+        """Get tagged object
 
         This gets a tagged object for the specified type.
 
@@ -937,7 +937,7 @@ class TaggedObjectsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[TaggedObject]:
-        """List Tagged Objects
+        """List tagged objects
 
         This API returns a list of all tagged objects.  Any authenticated token may be used to call this API.
 
@@ -1021,7 +1021,7 @@ class TaggedObjectsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[TaggedObject]]:
-        """List Tagged Objects
+        """List tagged objects
 
         This API returns a list of all tagged objects.  Any authenticated token may be used to call this API.
 
@@ -1105,7 +1105,7 @@ class TaggedObjectsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Tagged Objects
+        """List tagged objects
 
         This API returns a list of all tagged objects.  Any authenticated token may be used to call this API.
 
@@ -1268,7 +1268,7 @@ class TaggedObjectsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[TaggedObject]:
-        """List Tagged Objects by Type
+        """List tagged objects by type
 
         This API returns a list of all tagged objects by type.  Any authenticated token may be used to call this API.
 
@@ -1356,7 +1356,7 @@ class TaggedObjectsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[TaggedObject]]:
-        """List Tagged Objects by Type
+        """List tagged objects by type
 
         This API returns a list of all tagged objects by type.  Any authenticated token may be used to call this API.
 
@@ -1444,7 +1444,7 @@ class TaggedObjectsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Tagged Objects by Type
+        """List tagged objects by type
 
         This API returns a list of all tagged objects by type.  Any authenticated token may be used to call this API.
 
@@ -1611,7 +1611,7 @@ class TaggedObjectsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> TaggedObject:
-        """Update Tagged Object
+        """Update tagged object
 
         This updates a tagged object for the specified type.
 
@@ -1691,7 +1691,7 @@ class TaggedObjectsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[TaggedObject]:
-        """Update Tagged Object
+        """Update tagged object
 
         This updates a tagged object for the specified type.
 
@@ -1771,7 +1771,7 @@ class TaggedObjectsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Tagged Object
+        """Update tagged object
 
         This updates a tagged object for the specified type.
 
@@ -1929,7 +1929,7 @@ class TaggedObjectsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Add Tag to Object
+        """Add tag to object
 
         This adds a tag to an object.  Any authenticated token may be used to call this API.
 
@@ -2001,7 +2001,7 @@ class TaggedObjectsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Add Tag to Object
+        """Add tag to object
 
         This adds a tag to an object.  Any authenticated token may be used to call this API.
 
@@ -2073,7 +2073,7 @@ class TaggedObjectsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Add Tag to Object
+        """Add tag to object
 
         This adds a tag to an object.  Any authenticated token may be used to call this API.
 
@@ -2219,7 +2219,7 @@ class TaggedObjectsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[BulkTaggedObjectResponse]:
-        """Tag Multiple Objects
+        """Tag multiple objects
 
         This API adds tags to multiple objects.
 
@@ -2291,7 +2291,7 @@ class TaggedObjectsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[BulkTaggedObjectResponse]]:
-        """Tag Multiple Objects
+        """Tag multiple objects
 
         This API adds tags to multiple objects.
 
@@ -2363,7 +2363,7 @@ class TaggedObjectsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Tag Multiple Objects
+        """Tag multiple objects
 
         This API adds tags to multiple objects.
 

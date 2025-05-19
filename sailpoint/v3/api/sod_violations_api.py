@@ -56,7 +56,7 @@ class SODViolationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ViolationPrediction:
-        """Predict SOD violations for identity.
+        """Predict sod violations for identity.
 
         This API is used to check if granting some additional accesses would cause the subject to be in violation of any SOD policies. Returns the violations that would be caused.
 
@@ -129,7 +129,7 @@ class SODViolationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ViolationPrediction]:
-        """Predict SOD violations for identity.
+        """Predict sod violations for identity.
 
         This API is used to check if granting some additional accesses would cause the subject to be in violation of any SOD policies. Returns the violations that would be caused.
 
@@ -202,7 +202,7 @@ class SODViolationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Predict SOD violations for identity.
+        """Predict sod violations for identity.
 
         This API is used to check if granting some additional accesses would cause the subject to be in violation of any SOD policies. Returns the violations that would be caused.
 
@@ -350,7 +350,7 @@ class SODViolationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SodViolationCheck:
-        """Check SOD violations
+        """Check sod violations
 
         This API initiates a SOD policy verification asynchronously.
 
@@ -423,7 +423,7 @@ class SODViolationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SodViolationCheck]:
-        """Check SOD violations
+        """Check sod violations
 
         This API initiates a SOD policy verification asynchronously.
 
@@ -496,7 +496,7 @@ class SODViolationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Check SOD violations
+        """Check sod violations
 
         This API initiates a SOD policy verification asynchronously.
 

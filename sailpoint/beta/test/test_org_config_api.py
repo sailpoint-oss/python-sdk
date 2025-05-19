@@ -29,7 +29,7 @@ class TestOrgConfigApi(unittest.TestCase):
     def test_get_org_config(self) -> None:
         """Test case for get_org_config
 
-        Get Org configuration settings
+        Get org configuration settings
         """
         pass
 
@@ -43,7 +43,7 @@ class TestOrgConfigApi(unittest.TestCase):
     def test_patch_org_config(self) -> None:
         """Test case for patch_org_config
 
-        Patch an Org configuration property
+        Patch an org configuration property
         """
         pass
 

@@ -29,56 +29,56 @@ class TestDataSegmentationApi(unittest.TestCase):
     def test_create_data_segment(self) -> None:
         """Test case for create_data_segment
 
-        Create Segment
+        Create segment
         """
         pass
 
     def test_delete_data_segment(self) -> None:
         """Test case for delete_data_segment
 
-        Delete Segment by ID
+        Delete segment by id
         """
         pass
 
     def test_get_data_segment(self) -> None:
         """Test case for get_data_segment
 
-        Get Segment by ID
+        Get segment by id
         """
         pass
 
     def test_get_data_segment_identity_membership(self) -> None:
         """Test case for get_data_segment_identity_membership
 
-        Get SegmentMembership by Identity ID
+        Get segmentmembership by identity id
         """
         pass
 
     def test_get_data_segmentation_enabled_for_user(self) -> None:
         """Test case for get_data_segmentation_enabled_for_user
 
-        Is Segmentation enabled by Identity
+        Is segmentation enabled by identity
         """
         pass
 
     def test_list_data_segments(self) -> None:
         """Test case for list_data_segments
 
-        Get Segments
+        Get segments
         """
         pass
 
     def test_patch_data_segment(self) -> None:
         """Test case for patch_data_segment
 
-        Update Segment
+        Update segment
         """
         pass
 
     def test_publish_data_segment(self) -> None:
         """Test case for publish_data_segment
 
-        Publish segment by ID
+        Publish segment by id
         """
         pass
 

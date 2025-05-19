@@ -29,42 +29,42 @@ class TestConnectorRuleManagementApi(unittest.TestCase):
     def test_create_connector_rule(self) -> None:
         """Test case for create_connector_rule
 
-        Create Connector Rule
+        Create connector rule
         """
         pass
 
     def test_delete_connector_rule(self) -> None:
         """Test case for delete_connector_rule
 
-        Delete a Connector-Rule
+        Delete a connector-rule
         """
         pass
 
     def test_get_connector_rule(self) -> None:
         """Test case for get_connector_rule
 
-        Connector-Rule by ID
+        Connector-rule by id
         """
         pass
 
     def test_get_connector_rule_list(self) -> None:
         """Test case for get_connector_rule_list
 
-        List Connector Rules
+        List connector rules
         """
         pass
 
     def test_update_connector_rule(self) -> None:
         """Test case for update_connector_rule
 
-        Update a Connector Rule
+        Update a connector rule
         """
         pass
 
     def test_validate_connector_rule(self) -> None:
         """Test case for validate_connector_rule
 
-        Validate Connector Rule
+        Validate connector rule
         """
         pass
 

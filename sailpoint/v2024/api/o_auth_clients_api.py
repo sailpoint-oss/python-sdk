@@ -59,7 +59,7 @@ class OAuthClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> CreateOAuthClientResponse:
-        """Create OAuth Client
+        """Create oauth client
 
         This creates an OAuth client.
 
@@ -131,7 +131,7 @@ class OAuthClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[CreateOAuthClientResponse]:
-        """Create OAuth Client
+        """Create oauth client
 
         This creates an OAuth client.
 
@@ -203,7 +203,7 @@ class OAuthClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create OAuth Client
+        """Create oauth client
 
         This creates an OAuth client.
 
@@ -349,7 +349,7 @@ class OAuthClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete OAuth Client
+        """Delete oauth client
 
         This deletes an OAuth client.
 
@@ -422,7 +422,7 @@ class OAuthClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete OAuth Client
+        """Delete oauth client
 
         This deletes an OAuth client.
 
@@ -495,7 +495,7 @@ class OAuthClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete OAuth Client
+        """Delete oauth client
 
         This deletes an OAuth client.
 
@@ -629,7 +629,7 @@ class OAuthClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> GetOAuthClientResponse:
-        """Get OAuth Client
+        """Get oauth client
 
         This gets details of an OAuth client.
 
@@ -702,7 +702,7 @@ class OAuthClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[GetOAuthClientResponse]:
-        """Get OAuth Client
+        """Get oauth client
 
         This gets details of an OAuth client.
 
@@ -775,7 +775,7 @@ class OAuthClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get OAuth Client
+        """Get oauth client
 
         This gets details of an OAuth client.
 
@@ -909,7 +909,7 @@ class OAuthClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[GetOAuthClientResponse]:
-        """List OAuth Clients
+        """List oauth clients
 
         This gets a list of OAuth clients.
 
@@ -981,7 +981,7 @@ class OAuthClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[GetOAuthClientResponse]]:
-        """List OAuth Clients
+        """List oauth clients
 
         This gets a list of OAuth clients.
 
@@ -1053,7 +1053,7 @@ class OAuthClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List OAuth Clients
+        """List oauth clients
 
         This gets a list of OAuth clients.
 
@@ -1189,7 +1189,7 @@ class OAuthClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> GetOAuthClientResponse:
-        """Patch OAuth Client
+        """Patch oauth client
 
         This performs a targeted update to the field(s) of an OAuth client.
 
@@ -1266,7 +1266,7 @@ class OAuthClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[GetOAuthClientResponse]:
-        """Patch OAuth Client
+        """Patch oauth client
 
         This performs a targeted update to the field(s) of an OAuth client.
 
@@ -1343,7 +1343,7 @@ class OAuthClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Patch OAuth Client
+        """Patch oauth client
 
         This performs a targeted update to the field(s) of an OAuth client.
 

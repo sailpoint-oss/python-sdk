@@ -59,7 +59,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SodPolicy:
-        """(Deprecated) Create SOD policy
+        """(Deprecated) Create sod policy
 
         This creates both General and Conflicting Access Based policy, with a limit of 50 entitlements for each (left & right) criteria for Conflicting Access Based SOD policy. Requires role of ORG_ADMIN.
 
@@ -132,7 +132,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SodPolicy]:
-        """(Deprecated) Create SOD policy
+        """(Deprecated) Create sod policy
 
         This creates both General and Conflicting Access Based policy, with a limit of 50 entitlements for each (left & right) criteria for Conflicting Access Based SOD policy. Requires role of ORG_ADMIN.
 
@@ -205,7 +205,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Create SOD policy
+        """(Deprecated) Create sod policy
 
         This creates both General and Conflicting Access Based policy, with a limit of 50 entitlements for each (left & right) criteria for Conflicting Access Based SOD policy. Requires role of ORG_ADMIN.
 
@@ -353,7 +353,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """(Deprecated) Delete SOD policy by ID
+        """(Deprecated) Delete sod policy by id
 
         This deletes a specified SOD policy. Requires role of ORG_ADMIN.
 
@@ -431,7 +431,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """(Deprecated) Delete SOD policy by ID
+        """(Deprecated) Delete sod policy by id
 
         This deletes a specified SOD policy. Requires role of ORG_ADMIN.
 
@@ -509,7 +509,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Delete SOD policy by ID
+        """(Deprecated) Delete sod policy by id
 
         This deletes a specified SOD policy. Requires role of ORG_ADMIN.
 
@@ -652,7 +652,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """(Deprecated) Delete SOD policy schedule
+        """(Deprecated) Delete sod policy schedule
 
         This deletes schedule for a specified SOD policy. Requires role of ORG_ADMIN.
 
@@ -726,7 +726,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """(Deprecated) Delete SOD policy schedule
+        """(Deprecated) Delete sod policy schedule
 
         This deletes schedule for a specified SOD policy. Requires role of ORG_ADMIN.
 
@@ -800,7 +800,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Delete SOD policy schedule
+        """(Deprecated) Delete sod policy schedule
 
         This deletes schedule for a specified SOD policy. Requires role of ORG_ADMIN.
 
@@ -1783,7 +1783,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SodPolicy:
-        """(Deprecated) Get SOD policy by ID
+        """(Deprecated) Get sod policy by id
 
         This gets specified SOD policy. Requires role of ORG_ADMIN.
 
@@ -1857,7 +1857,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SodPolicy]:
-        """(Deprecated) Get SOD policy by ID
+        """(Deprecated) Get sod policy by id
 
         This gets specified SOD policy. Requires role of ORG_ADMIN.
 
@@ -1931,7 +1931,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Get SOD policy by ID
+        """(Deprecated) Get sod policy by id
 
         This gets specified SOD policy. Requires role of ORG_ADMIN.
 
@@ -2066,7 +2066,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SodPolicySchedule:
-        """(Deprecated) Get SOD policy schedule
+        """(Deprecated) Get sod policy schedule
 
         This endpoint gets a specified SOD policy's schedule. Requires the role of ORG_ADMIN.
 
@@ -2139,7 +2139,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SodPolicySchedule]:
-        """(Deprecated) Get SOD policy schedule
+        """(Deprecated) Get sod policy schedule
 
         This endpoint gets a specified SOD policy's schedule. Requires the role of ORG_ADMIN.
 
@@ -2212,7 +2212,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Get SOD policy schedule
+        """(Deprecated) Get sod policy schedule
 
         This endpoint gets a specified SOD policy's schedule. Requires the role of ORG_ADMIN.
 
@@ -2629,7 +2629,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ReportResultReference:
-        """(Deprecated) Get SOD violation report status
+        """(Deprecated) Get sod violation report status
 
         This gets the status for a violation report run task that has already been invoked. Requires role of ORG_ADMIN.
 
@@ -2703,7 +2703,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ReportResultReference]:
-        """(Deprecated) Get SOD violation report status
+        """(Deprecated) Get sod violation report status
 
         This gets the status for a violation report run task that has already been invoked. Requires role of ORG_ADMIN.
 
@@ -2777,7 +2777,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Get SOD violation report status
+        """(Deprecated) Get sod violation report status
 
         This gets the status for a violation report run task that has already been invoked. Requires role of ORG_ADMIN.
 
@@ -2916,7 +2916,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[SodPolicy]:
-        """(Deprecated) List SOD policies
+        """(Deprecated) List sod policies
 
         This gets list of all SOD policies. Requires role of ORG_ADMIN
 
@@ -3005,7 +3005,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[SodPolicy]]:
-        """(Deprecated) List SOD policies
+        """(Deprecated) List sod policies
 
         This gets list of all SOD policies. Requires role of ORG_ADMIN
 
@@ -3094,7 +3094,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) List SOD policies
+        """(Deprecated) List sod policies
 
         This gets list of all SOD policies. Requires role of ORG_ADMIN
 
@@ -3263,7 +3263,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SodPolicy:
-        """(Deprecated) Patch a SOD policy
+        """(Deprecated) Patch a sod policy
 
         Allows updating SOD Policy fields other than [\"id\",\"created\",\"creatorId\",\"policyQuery\",\"type\"] using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Requires role of ORG_ADMIN. This endpoint can only patch CONFLICTING_ACCESS_BASED type policies. Do not use this endpoint to patch general policies - doing so will build an API exception.
 
@@ -3341,7 +3341,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SodPolicy]:
-        """(Deprecated) Patch a SOD policy
+        """(Deprecated) Patch a sod policy
 
         Allows updating SOD Policy fields other than [\"id\",\"created\",\"creatorId\",\"policyQuery\",\"type\"] using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Requires role of ORG_ADMIN. This endpoint can only patch CONFLICTING_ACCESS_BASED type policies. Do not use this endpoint to patch general policies - doing so will build an API exception.
 
@@ -3419,7 +3419,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Patch a SOD policy
+        """(Deprecated) Patch a sod policy
 
         Allows updating SOD Policy fields other than [\"id\",\"created\",\"creatorId\",\"policyQuery\",\"type\"] using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Requires role of ORG_ADMIN. This endpoint can only patch CONFLICTING_ACCESS_BASED type policies. Do not use this endpoint to patch general policies - doing so will build an API exception.
 
@@ -3575,7 +3575,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SodPolicySchedule:
-        """(Deprecated) Update SOD Policy schedule
+        """(Deprecated) Update sod policy schedule
 
         This updates schedule for a specified SOD policy. Requires role of ORG_ADMIN.
 
@@ -3652,7 +3652,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SodPolicySchedule]:
-        """(Deprecated) Update SOD Policy schedule
+        """(Deprecated) Update sod policy schedule
 
         This updates schedule for a specified SOD policy. Requires role of ORG_ADMIN.
 
@@ -3729,7 +3729,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Update SOD Policy schedule
+        """(Deprecated) Update sod policy schedule
 
         This updates schedule for a specified SOD policy. Requires role of ORG_ADMIN.
 
@@ -3883,7 +3883,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SodPolicy:
-        """(Deprecated) Update SOD policy by ID
+        """(Deprecated) Update sod policy by id
 
         This updates a specified SOD policy. Requires role of ORG_ADMIN.
 
@@ -3961,7 +3961,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SodPolicy]:
-        """(Deprecated) Update SOD policy by ID
+        """(Deprecated) Update sod policy by id
 
         This updates a specified SOD policy. Requires role of ORG_ADMIN.
 
@@ -4039,7 +4039,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Update SOD policy by ID
+        """(Deprecated) Update sod policy by id
 
         This updates a specified SOD policy. Requires role of ORG_ADMIN.
 
@@ -4486,7 +4486,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ReportResultReference:
-        """(Deprecated) Runs SOD policy violation report
+        """(Deprecated) Runs sod policy violation report
 
         This invokes processing of violation report for given SOD policy. If the policy reports more than 5000 violations, the report returns with violation limit exceeded message. Requires role of ORG_ADMIN.
 
@@ -4560,7 +4560,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ReportResultReference]:
-        """(Deprecated) Runs SOD policy violation report
+        """(Deprecated) Runs sod policy violation report
 
         This invokes processing of violation report for given SOD policy. If the policy reports more than 5000 violations, the report returns with violation limit exceeded message. Requires role of ORG_ADMIN.
 
@@ -4634,7 +4634,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Runs SOD policy violation report
+        """(Deprecated) Runs sod policy violation report
 
         This invokes processing of violation report for given SOD policy. If the policy reports more than 5000 violations, the report returns with violation limit exceeded message. Requires role of ORG_ADMIN.
 

@@ -56,7 +56,7 @@ class UIMetadataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> TenantUiMetadataItemResponse:
-        """Get a tenant UI metadata
+        """Get a tenant ui metadata
 
         This API endpoint retrieves UI metadata configured for your tenant.
 
@@ -129,7 +129,7 @@ class UIMetadataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[TenantUiMetadataItemResponse]:
-        """Get a tenant UI metadata
+        """Get a tenant ui metadata
 
         This API endpoint retrieves UI metadata configured for your tenant.
 
@@ -202,7 +202,7 @@ class UIMetadataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get a tenant UI metadata
+        """Get a tenant ui metadata
 
         This API endpoint retrieves UI metadata configured for your tenant.
 
@@ -337,7 +337,7 @@ class UIMetadataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> TenantUiMetadataItemResponse:
-        """Update tenant UI metadata
+        """Update tenant ui metadata
 
         This API endpoint updates UI metadata for your tenant. These changes may require up to 5 minutes to take effect on the UI.
 
@@ -414,7 +414,7 @@ class UIMetadataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[TenantUiMetadataItemResponse]:
-        """Update tenant UI metadata
+        """Update tenant ui metadata
 
         This API endpoint updates UI metadata for your tenant. These changes may require up to 5 minutes to take effect on the UI.
 
@@ -491,7 +491,7 @@ class UIMetadataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update tenant UI metadata
+        """Update tenant ui metadata
 
         This API endpoint updates UI metadata for your tenant. These changes may require up to 5 minutes to take effect on the UI.
 

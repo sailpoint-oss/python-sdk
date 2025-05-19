@@ -58,7 +58,7 @@ class AccessModelMetadataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> AttributeDTO:
-        """Get Access Model Metadata Attribute
+        """Get access model metadata attribute
 
         Get single Access Model Metadata Attribute
 
@@ -134,7 +134,7 @@ class AccessModelMetadataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[AttributeDTO]:
-        """Get Access Model Metadata Attribute
+        """Get access model metadata attribute
 
         Get single Access Model Metadata Attribute
 
@@ -210,7 +210,7 @@ class AccessModelMetadataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Access Model Metadata Attribute
+        """Get access model metadata attribute
 
         Get single Access Model Metadata Attribute
 
@@ -351,7 +351,7 @@ class AccessModelMetadataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> AttributeValueDTO:
-        """Get Access Model Metadata Value
+        """Get access model metadata value
 
         Get single Access Model Metadata Attribute Value
 
@@ -431,7 +431,7 @@ class AccessModelMetadataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[AttributeValueDTO]:
-        """Get Access Model Metadata Value
+        """Get access model metadata value
 
         Get single Access Model Metadata Attribute Value
 
@@ -511,7 +511,7 @@ class AccessModelMetadataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Access Model Metadata Value
+        """Get access model metadata value
 
         Get single Access Model Metadata Attribute Value
 
@@ -657,7 +657,7 @@ class AccessModelMetadataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[AttributeDTO]:
-        """List Access Model Metadata Attributes
+        """List access model metadata attributes
 
         Get a list of Access Model Metadata Attributes
 
@@ -733,7 +733,7 @@ class AccessModelMetadataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[AttributeDTO]]:
-        """List Access Model Metadata Attributes
+        """List access model metadata attributes
 
         Get a list of Access Model Metadata Attributes
 
@@ -809,7 +809,7 @@ class AccessModelMetadataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Access Model Metadata Attributes
+        """List access model metadata attributes
 
         Get a list of Access Model Metadata Attributes
 
@@ -951,7 +951,7 @@ class AccessModelMetadataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[AttributeValueDTO]:
-        """List Access Model Metadata Values
+        """List access model metadata values
 
         Get a list of Access Model Metadata Attribute Values
 
@@ -1027,7 +1027,7 @@ class AccessModelMetadataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[AttributeValueDTO]]:
-        """List Access Model Metadata Values
+        """List access model metadata values
 
         Get a list of Access Model Metadata Attribute Values
 
@@ -1103,7 +1103,7 @@ class AccessModelMetadataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Access Model Metadata Values
+        """List access model metadata values
 
         Get a list of Access Model Metadata Attribute Values
 

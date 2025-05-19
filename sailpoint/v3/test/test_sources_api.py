@@ -29,42 +29,42 @@ class TestSourcesApi(unittest.TestCase):
     def test_create_provisioning_policy(self) -> None:
         """Test case for create_provisioning_policy
 
-        Create Provisioning Policy
+        Create provisioning policy
         """
         pass
 
     def test_create_source(self) -> None:
         """Test case for create_source
 
-        Creates a source in IdentityNow.
+        Creates a source in identitynow.
         """
         pass
 
     def test_create_source_schema(self) -> None:
         """Test case for create_source_schema
 
-        Create Schema on Source
+        Create schema on source
         """
         pass
 
     def test_delete_provisioning_policy(self) -> None:
         """Test case for delete_provisioning_policy
 
-        Delete Provisioning Policy by UsageType
+        Delete provisioning policy by usagetype
         """
         pass
 
     def test_delete_source(self) -> None:
         """Test case for delete_source
 
-        Delete Source by ID
+        Delete source by id
         """
         pass
 
     def test_delete_source_schema(self) -> None:
         """Test case for delete_source_schema
 
-        Delete Source Schema by ID
+        Delete source schema by id
         """
         pass
 
@@ -85,21 +85,21 @@ class TestSourcesApi(unittest.TestCase):
     def test_get_provisioning_policy(self) -> None:
         """Test case for get_provisioning_policy
 
-        Get Provisioning Policy by UsageType
+        Get provisioning policy by usagetype
         """
         pass
 
     def test_get_source(self) -> None:
         """Test case for get_source
 
-        Get Source by ID
+        Get source by id
         """
         pass
 
     def test_get_source_connections(self) -> None:
         """Test case for get_source_connections
 
-        Get Source Connections by ID
+        Get source connections by id
         """
         pass
 
@@ -113,14 +113,14 @@ class TestSourcesApi(unittest.TestCase):
     def test_get_source_schema(self) -> None:
         """Test case for get_source_schema
 
-        Get Source Schema by ID
+        Get source schema by id
         """
         pass
 
     def test_get_source_schemas(self) -> None:
         """Test case for get_source_schemas
 
-        List Schemas on Source
+        List schemas on source
         """
         pass
 
@@ -148,63 +148,63 @@ class TestSourcesApi(unittest.TestCase):
     def test_list_provisioning_policies(self) -> None:
         """Test case for list_provisioning_policies
 
-        Lists ProvisioningPolicies
+        Lists provisioningpolicies
         """
         pass
 
     def test_list_sources(self) -> None:
         """Test case for list_sources
 
-        Lists all sources in IdentityNow.
+        Lists all sources in identitynow.
         """
         pass
 
     def test_put_provisioning_policy(self) -> None:
         """Test case for put_provisioning_policy
 
-        Update Provisioning Policy by UsageType
+        Update provisioning policy by usagetype
         """
         pass
 
     def test_put_source(self) -> None:
         """Test case for put_source
 
-        Update Source (Full)
+        Update source (full)
         """
         pass
 
     def test_put_source_schema(self) -> None:
         """Test case for put_source_schema
 
-        Update Source Schema (Full)
+        Update source schema (full)
         """
         pass
 
     def test_update_provisioning_policies_in_bulk(self) -> None:
         """Test case for update_provisioning_policies_in_bulk
 
-        Bulk Update Provisioning Policies
+        Bulk update provisioning policies
         """
         pass
 
     def test_update_provisioning_policy(self) -> None:
         """Test case for update_provisioning_policy
 
-        Partial update of Provisioning Policy
+        Partial update of provisioning policy
         """
         pass
 
     def test_update_source(self) -> None:
         """Test case for update_source
 
-        Update Source (Partial)
+        Update source (partial)
         """
         pass
 
     def test_update_source_schema(self) -> None:
         """Test case for update_source_schema
 
-        Update Source Schema (Partial)
+        Update source schema (partial)
         """
         pass
 

@@ -43,7 +43,7 @@ class TestTransformsApi(unittest.TestCase):
     def test_get_transform(self) -> None:
         """Test case for get_transform
 
-        Transform by ID
+        Transform by id
         """
         pass
 

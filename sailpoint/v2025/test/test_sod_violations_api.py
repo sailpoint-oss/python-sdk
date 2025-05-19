@@ -29,14 +29,14 @@ class TestSODViolationsApi(unittest.TestCase):
     def test_start_predict_sod_violations(self) -> None:
         """Test case for start_predict_sod_violations
 
-        Predict SOD violations for identity.
+        Predict sod violations for identity.
         """
         pass
 
     def test_start_violation_check(self) -> None:
         """Test case for start_violation_check
 
-        Check SOD violations
+        Check sod violations
         """
         pass
 

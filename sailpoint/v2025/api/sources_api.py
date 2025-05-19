@@ -78,7 +78,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ProvisioningPolicyDto:
-        """Create Provisioning Policy
+        """Create provisioning policy
 
         This API generates a create policy/template based on field value transforms. This API is intended for use when setting up JDBC Provisioning type sources, but it will also work on other source types. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
 
@@ -155,7 +155,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ProvisioningPolicyDto]:
-        """Create Provisioning Policy
+        """Create provisioning policy
 
         This API generates a create policy/template based on field value transforms. This API is intended for use when setting up JDBC Provisioning type sources, but it will also work on other source types. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
 
@@ -232,7 +232,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create Provisioning Policy
+        """Create provisioning policy
 
         This API generates a create policy/template based on field value transforms. This API is intended for use when setting up JDBC Provisioning type sources, but it will also work on other source types. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
 
@@ -386,7 +386,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Source:
-        """Creates a source in IdentityNow.
+        """Creates a source in identitynow.
 
         This creates a specific source with a full source JSON representation. Any passwords are submitted as plain-text and encrypted upon receipt in IdentityNow.
 
@@ -462,7 +462,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Source]:
-        """Creates a source in IdentityNow.
+        """Creates a source in identitynow.
 
         This creates a specific source with a full source JSON representation. Any passwords are submitted as plain-text and encrypted upon receipt in IdentityNow.
 
@@ -538,7 +538,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Creates a source in IdentityNow.
+        """Creates a source in identitynow.
 
         This creates a specific source with a full source JSON representation. Any passwords are submitted as plain-text and encrypted upon receipt in IdentityNow.
 
@@ -693,7 +693,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Schedule1:
-        """Create Schedule on Source
+        """Create schedule on source
 
         Use this API to create a new schedule for a type on the specified source in Identity Security Cloud (ISC). 
 
@@ -769,7 +769,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Schedule1]:
-        """Create Schedule on Source
+        """Create schedule on source
 
         Use this API to create a new schedule for a type on the specified source in Identity Security Cloud (ISC). 
 
@@ -845,7 +845,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create Schedule on Source
+        """Create schedule on source
 
         Use this API to create a new schedule for a type on the specified source in Identity Security Cloud (ISC). 
 
@@ -998,7 +998,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ModelSchema:
-        """Create Schema on Source
+        """Create schema on source
 
         Use this API to create a new schema on the specified source in Identity Security Cloud (ISC). 
 
@@ -1074,7 +1074,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ModelSchema]:
-        """Create Schema on Source
+        """Create schema on source
 
         Use this API to create a new schema on the specified source in Identity Security Cloud (ISC). 
 
@@ -1150,7 +1150,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create Schema on Source
+        """Create schema on source
 
         Use this API to create a new schema on the specified source in Identity Security Cloud (ISC). 
 
@@ -1303,7 +1303,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> TaskResultDto:
-        """Remove All Accounts in a Source
+        """Remove all accounts in a source
 
         Use this endpoint to remove all accounts from the system without provisioning changes to the source. Accounts that are removed could be re-created during the next aggregation.  This endpoint is good for: * Removing accounts that no longer exist on the source. * Removing accounts that won't be aggregated following updates to the source configuration. * Forcing accounts to be re-created following the next aggregation to re-run account processing, support testing, etc. 
 
@@ -1379,7 +1379,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[TaskResultDto]:
-        """Remove All Accounts in a Source
+        """Remove all accounts in a source
 
         Use this endpoint to remove all accounts from the system without provisioning changes to the source. Accounts that are removed could be re-created during the next aggregation.  This endpoint is good for: * Removing accounts that no longer exist on the source. * Removing accounts that won't be aggregated following updates to the source configuration. * Forcing accounts to be re-created following the next aggregation to re-run account processing, support testing, etc. 
 
@@ -1455,7 +1455,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Remove All Accounts in a Source
+        """Remove all accounts in a source
 
         Use this endpoint to remove all accounts from the system without provisioning changes to the source. Accounts that are removed could be re-created during the next aggregation.  This endpoint is good for: * Removing accounts that no longer exist on the source. * Removing accounts that won't be aggregated following updates to the source configuration. * Forcing accounts to be re-created following the next aggregation to re-run account processing, support testing, etc. 
 
@@ -1595,7 +1595,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete Native Change Detection Configuration
+        """Delete native change detection configuration
 
         Deletes the native change detection configuration for the source specified by the given ID.
 
@@ -1672,7 +1672,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete Native Change Detection Configuration
+        """Delete native change detection configuration
 
         Deletes the native change detection configuration for the source specified by the given ID.
 
@@ -1749,7 +1749,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Native Change Detection Configuration
+        """Delete native change detection configuration
 
         Deletes the native change detection configuration for the source specified by the given ID.
 
@@ -1891,7 +1891,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete Provisioning Policy by UsageType
+        """Delete provisioning policy by usagetype
 
         Deletes the provisioning policy with the specified usage on an application.
 
@@ -1968,7 +1968,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete Provisioning Policy by UsageType
+        """Delete provisioning policy by usagetype
 
         Deletes the provisioning policy with the specified usage on an application.
 
@@ -2045,7 +2045,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Provisioning Policy by UsageType
+        """Delete provisioning policy by usagetype
 
         Deletes the provisioning policy with the specified usage on an application.
 
@@ -2186,7 +2186,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> DeleteSource202Response:
-        """Delete Source by ID
+        """Delete source by id
 
         Use this API to delete a specific source in Identity Security Cloud (ISC). The API removes all the accounts on the source first, and then it deletes the source. You can retrieve the actual task execution status with this method: GET `/task-status/{id}`
 
@@ -2259,7 +2259,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[DeleteSource202Response]:
-        """Delete Source by ID
+        """Delete source by id
 
         Use this API to delete a specific source in Identity Security Cloud (ISC). The API removes all the accounts on the source first, and then it deletes the source. You can retrieve the actual task execution status with this method: GET `/task-status/{id}`
 
@@ -2332,7 +2332,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Source by ID
+        """Delete source by id
 
         Use this API to delete a specific source in Identity Security Cloud (ISC). The API removes all the accounts on the source first, and then it deletes the source. You can retrieve the actual task execution status with this method: GET `/task-status/{id}`
 
@@ -2467,7 +2467,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete Source Schedule by type.
+        """Delete source schedule by type.
 
 
         :param source_id: The Source id. (required)
@@ -2543,7 +2543,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete Source Schedule by type.
+        """Delete source schedule by type.
 
 
         :param source_id: The Source id. (required)
@@ -2619,7 +2619,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Source Schedule by type.
+        """Delete source schedule by type.
 
 
         :param source_id: The Source id. (required)
@@ -2759,7 +2759,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete Source Schema by ID
+        """Delete source schema by id
 
 
         :param source_id: The Source id. (required)
@@ -2835,7 +2835,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete Source Schema by ID
+        """Delete source schema by id
 
 
         :param source_id: The Source id. (required)
@@ -2911,7 +2911,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Source Schema by ID
+        """Delete source schema by id
 
 
         :param source_id: The Source id. (required)
@@ -3331,7 +3331,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> CorrelationConfig:
-        """Get Source Correlation Configuration
+        """Get source correlation configuration
 
         This API returns the existing correlation configuration for a source specified by the given ID.
 
@@ -3404,7 +3404,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[CorrelationConfig]:
-        """Get Source Correlation Configuration
+        """Get source correlation configuration
 
         This API returns the existing correlation configuration for a source specified by the given ID.
 
@@ -3477,7 +3477,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Source Correlation Configuration
+        """Get source correlation configuration
 
         This API returns the existing correlation configuration for a source specified by the given ID.
 
@@ -3910,7 +3910,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NativeChangeDetectionConfig:
-        """Native Change Detection Configuration
+        """Native change detection configuration
 
         This API returns the existing native change detection configuration for a source specified by the given ID.
 
@@ -3987,7 +3987,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NativeChangeDetectionConfig]:
-        """Native Change Detection Configuration
+        """Native change detection configuration
 
         This API returns the existing native change detection configuration for a source specified by the given ID.
 
@@ -4064,7 +4064,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Native Change Detection Configuration
+        """Native change detection configuration
 
         This API returns the existing native change detection configuration for a source specified by the given ID.
 
@@ -4205,7 +4205,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ProvisioningPolicyDto:
-        """Get Provisioning Policy by UsageType
+        """Get provisioning policy by usagetype
 
         This end-point retrieves the ProvisioningPolicy with the specified usage on the specified Source in IdentityNow.
 
@@ -4282,7 +4282,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ProvisioningPolicyDto]:
-        """Get Provisioning Policy by UsageType
+        """Get provisioning policy by usagetype
 
         This end-point retrieves the ProvisioningPolicy with the specified usage on the specified Source in IdentityNow.
 
@@ -4359,7 +4359,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Provisioning Policy by UsageType
+        """Get provisioning policy by usagetype
 
         This end-point retrieves the ProvisioningPolicy with the specified usage on the specified Source in IdentityNow.
 
@@ -4500,7 +4500,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Source:
-        """Get Source by ID
+        """Get source by id
 
         Use this API to get a source by a specified ID in Identity Security Cloud (ISC).
 
@@ -4573,7 +4573,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Source]:
-        """Get Source by ID
+        """Get source by id
 
         Use this API to get a source by a specified ID in Identity Security Cloud (ISC).
 
@@ -4646,7 +4646,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Source by ID
+        """Get source by id
 
         Use this API to get a source by a specified ID in Identity Security Cloud (ISC).
 
@@ -4781,7 +4781,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> AttrSyncSourceConfig:
-        """Attribute Sync Config
+        """Attribute sync config
 
         This API returns the existing attribute synchronization configuration for a source specified by the given ID. The response contains all attributes, regardless of whether they enabled or not.
 
@@ -4858,7 +4858,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[AttrSyncSourceConfig]:
-        """Attribute Sync Config
+        """Attribute sync config
 
         This API returns the existing attribute synchronization configuration for a source specified by the given ID. The response contains all attributes, regardless of whether they enabled or not.
 
@@ -4935,7 +4935,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Attribute Sync Config
+        """Attribute sync config
 
         This API returns the existing attribute synchronization configuration for a source specified by the given ID. The response contains all attributes, regardless of whether they enabled or not.
 
@@ -5372,7 +5372,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SourceConnectionsDto:
-        """Get Source Connections by ID
+        """Get source connections by id
 
         Use this API to get all dependent Profiles, Attributes, Applications and Custom Transforms for a source by a specified ID in Identity Security Cloud (ISC).
 
@@ -5445,7 +5445,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SourceConnectionsDto]:
-        """Get Source Connections by ID
+        """Get source connections by id
 
         Use this API to get all dependent Profiles, Attributes, Applications and Custom Transforms for a source by a specified ID in Identity Security Cloud (ISC).
 
@@ -5518,7 +5518,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Source Connections by ID
+        """Get source connections by id
 
         Use this API to get all dependent Profiles, Attributes, Applications and Custom Transforms for a source by a specified ID in Identity Security Cloud (ISC).
 
@@ -5652,7 +5652,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SourceEntitlementRequestConfig:
-        """Get Source Entitlement Request Configuration
+        """Get source entitlement request configuration
 
         This API gets the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.
 
@@ -5724,7 +5724,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SourceEntitlementRequestConfig]:
-        """Get Source Entitlement Request Configuration
+        """Get source entitlement request configuration
 
         This API gets the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.
 
@@ -5796,7 +5796,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Source Entitlement Request Configuration
+        """Get source entitlement request configuration
 
         This API gets the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.
 
@@ -6210,7 +6210,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Schedule1:
-        """Get Source Schedule by Type
+        """Get source schedule by type
 
         Get the source schedule by type in Identity Security Cloud (ISC). 
 
@@ -6287,7 +6287,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Schedule1]:
-        """Get Source Schedule by Type
+        """Get source schedule by type
 
         Get the source schedule by type in Identity Security Cloud (ISC). 
 
@@ -6364,7 +6364,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Source Schedule by Type
+        """Get source schedule by type
 
         Get the source schedule by type in Identity Security Cloud (ISC). 
 
@@ -6504,7 +6504,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[Schedule1]:
-        """List Schedules on Source
+        """List schedules on source
 
         Use this API to list the schedules that exist on the specified source in Identity Security Cloud (ISC). :::info This endpoint uses a **cron expression** to schedule a task, following standard **cron job syntax**.  For example, `0 0 12 1/1 * ? *` runs the task **daily at 12:00 PM**.  **Days of the week are represented as 1-7 (Sunday-Saturday).** ::: 
 
@@ -6577,7 +6577,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[Schedule1]]:
-        """List Schedules on Source
+        """List schedules on source
 
         Use this API to list the schedules that exist on the specified source in Identity Security Cloud (ISC). :::info This endpoint uses a **cron expression** to schedule a task, following standard **cron job syntax**.  For example, `0 0 12 1/1 * ? *` runs the task **daily at 12:00 PM**.  **Days of the week are represented as 1-7 (Sunday-Saturday).** ::: 
 
@@ -6650,7 +6650,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Schedules on Source
+        """List schedules on source
 
         Use this API to list the schedules that exist on the specified source in Identity Security Cloud (ISC). :::info This endpoint uses a **cron expression** to schedule a task, following standard **cron job syntax**.  For example, `0 0 12 1/1 * ? *` runs the task **daily at 12:00 PM**.  **Days of the week are represented as 1-7 (Sunday-Saturday).** ::: 
 
@@ -6785,7 +6785,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ModelSchema:
-        """Get Source Schema by ID
+        """Get source schema by id
 
         Get the Source Schema by ID in IdentityNow. 
 
@@ -6862,7 +6862,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ModelSchema]:
-        """Get Source Schema by ID
+        """Get source schema by id
 
         Get the Source Schema by ID in IdentityNow. 
 
@@ -6939,7 +6939,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Source Schema by ID
+        """Get source schema by id
 
         Get the Source Schema by ID in IdentityNow. 
 
@@ -7081,7 +7081,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[ModelSchema]:
-        """List Schemas on Source
+        """List schemas on source
 
         Use this API to list the schemas that exist on the specified source in Identity Security Cloud (ISC).
 
@@ -7162,7 +7162,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[ModelSchema]]:
-        """List Schemas on Source
+        """List schemas on source
 
         Use this API to list the schemas that exist on the specified source in Identity Security Cloud (ISC).
 
@@ -7243,7 +7243,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Schemas on Source
+        """List schemas on source
 
         Use this API to list the schemas that exist on the specified source in Identity Security Cloud (ISC).
 
@@ -7395,7 +7395,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> LoadAccountsTask:
-        """Account Aggregation
+        """Account aggregation
 
         Starts an account aggregation on the specified source.  If the target source is a delimited file source, then the CSV file needs to be included in the request body. You will also need to set the Content-Type header to `multipart/form-data`.
 
@@ -7475,7 +7475,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[LoadAccountsTask]:
-        """Account Aggregation
+        """Account aggregation
 
         Starts an account aggregation on the specified source.  If the target source is a delimited file source, then the CSV file needs to be included in the request body. You will also need to set the Content-Type header to `multipart/form-data`.
 
@@ -7555,7 +7555,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Account Aggregation
+        """Account aggregation
 
         Starts an account aggregation on the specified source.  If the target source is a delimited file source, then the CSV file needs to be included in the request body. You will also need to set the Content-Type header to `multipart/form-data`.
 
@@ -8647,7 +8647,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> LoadUncorrelatedAccountsTask:
-        """Process Uncorrelated Accounts
+        """Process uncorrelated accounts
 
         File is required for upload. You will also need to set the Content-Type header to `multipart/form-data`
 
@@ -8727,7 +8727,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[LoadUncorrelatedAccountsTask]:
-        """Process Uncorrelated Accounts
+        """Process uncorrelated accounts
 
         File is required for upload. You will also need to set the Content-Type header to `multipart/form-data`
 
@@ -8807,7 +8807,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Process Uncorrelated Accounts
+        """Process uncorrelated accounts
 
         File is required for upload. You will also need to set the Content-Type header to `multipart/form-data`
 
@@ -8965,7 +8965,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[ProvisioningPolicyDto]:
-        """Lists ProvisioningPolicies
+        """Lists provisioningpolicies
 
         This end-point lists all the ProvisioningPolicies in IdentityNow.
 
@@ -9038,7 +9038,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[ProvisioningPolicyDto]]:
-        """Lists ProvisioningPolicies
+        """Lists provisioningpolicies
 
         This end-point lists all the ProvisioningPolicies in IdentityNow.
 
@@ -9111,7 +9111,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Lists ProvisioningPolicies
+        """Lists provisioningpolicies
 
         This end-point lists all the ProvisioningPolicies in IdentityNow.
 
@@ -9252,7 +9252,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[Source]:
-        """Lists all sources in IdentityNow.
+        """Lists all sources in identitynow.
 
         This end-point lists all the sources in IdentityNow.
 
@@ -9349,7 +9349,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[Source]]:
-        """Lists all sources in IdentityNow.
+        """Lists all sources in identitynow.
 
         This end-point lists all the sources in IdentityNow.
 
@@ -9446,7 +9446,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Lists all sources in IdentityNow.
+        """Lists all sources in identitynow.
 
         This end-point lists all the sources in IdentityNow.
 
@@ -9912,7 +9912,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> CorrelationConfig:
-        """Update Source Correlation Configuration
+        """Update source correlation configuration
 
         Replaces the correlation configuration for the source specified by the given ID with the configuration provided in the request body.
 
@@ -9989,7 +9989,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[CorrelationConfig]:
-        """Update Source Correlation Configuration
+        """Update source correlation configuration
 
         Replaces the correlation configuration for the source specified by the given ID with the configuration provided in the request body.
 
@@ -10066,7 +10066,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Source Correlation Configuration
+        """Update source correlation configuration
 
         Replaces the correlation configuration for the source specified by the given ID with the configuration provided in the request body.
 
@@ -10221,7 +10221,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NativeChangeDetectionConfig:
-        """Update Native Change Detection Configuration
+        """Update native change detection configuration
 
         Replaces the native change detection configuration for the source specified by the given ID with the configuration provided in the request body.
 
@@ -10302,7 +10302,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NativeChangeDetectionConfig]:
-        """Update Native Change Detection Configuration
+        """Update native change detection configuration
 
         Replaces the native change detection configuration for the source specified by the given ID with the configuration provided in the request body.
 
@@ -10383,7 +10383,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Native Change Detection Configuration
+        """Update native change detection configuration
 
         Replaces the native change detection configuration for the source specified by the given ID with the configuration provided in the request body.
 
@@ -10544,7 +10544,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ProvisioningPolicyDto:
-        """Update Provisioning Policy by UsageType
+        """Update provisioning policy by usagetype
 
         This end-point updates the provisioning policy with the specified usage on the specified source in IdentityNow. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
 
@@ -10625,7 +10625,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ProvisioningPolicyDto]:
-        """Update Provisioning Policy by UsageType
+        """Update provisioning policy by usagetype
 
         This end-point updates the provisioning policy with the specified usage on the specified source in IdentityNow. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
 
@@ -10706,7 +10706,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Provisioning Policy by UsageType
+        """Update provisioning policy by usagetype
 
         This end-point updates the provisioning policy with the specified usage on the specified source in IdentityNow. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
 
@@ -10867,7 +10867,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Source:
-        """Update Source (Full)
+        """Update source (full)
 
         Use this API to update a source in Identity Security Cloud (ISC), using a full object representation. This means that when you use this API, it completely replaces the existing source configuration.  These fields are immutable, so they cannot be changed:  * id * type * authoritative * connector * connectorClass * passwordPolicies  Attempts to modify these fields will result in a 400 error. 
 
@@ -10944,7 +10944,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Source]:
-        """Update Source (Full)
+        """Update source (full)
 
         Use this API to update a source in Identity Security Cloud (ISC), using a full object representation. This means that when you use this API, it completely replaces the existing source configuration.  These fields are immutable, so they cannot be changed:  * id * type * authoritative * connector * connectorClass * passwordPolicies  Attempts to modify these fields will result in a 400 error. 
 
@@ -11021,7 +11021,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Source (Full)
+        """Update source (full)
 
         Use this API to update a source in Identity Security Cloud (ISC), using a full object representation. This means that when you use this API, it completely replaces the existing source configuration.  These fields are immutable, so they cannot be changed:  * id * type * authoritative * connector * connectorClass * passwordPolicies  Attempts to modify these fields will result in a 400 error. 
 
@@ -11176,7 +11176,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> AttrSyncSourceConfig:
-        """Update Attribute Sync Config
+        """Update attribute sync config
 
         Replaces the attribute synchronization configuration for the source specified by the given ID with the configuration provided in the request body. Only the \"enabled\" field of the values in the \"attributes\" array is mutable. Attempting to change other attributes or add new values to the \"attributes\" array will result in an error. 
 
@@ -11257,7 +11257,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[AttrSyncSourceConfig]:
-        """Update Attribute Sync Config
+        """Update attribute sync config
 
         Replaces the attribute synchronization configuration for the source specified by the given ID with the configuration provided in the request body. Only the \"enabled\" field of the values in the \"attributes\" array is mutable. Attempting to change other attributes or add new values to the \"attributes\" array will result in an error. 
 
@@ -11338,7 +11338,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Attribute Sync Config
+        """Update attribute sync config
 
         Replaces the attribute synchronization configuration for the source specified by the given ID with the configuration provided in the request body. Only the \"enabled\" field of the values in the \"attributes\" array is mutable. Attempting to change other attributes or add new values to the \"attributes\" array will result in an error. 
 
@@ -11499,7 +11499,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ModelSchema:
-        """Update Source Schema (Full)
+        """Update source schema (full)
 
         This API will completely replace an existing Schema with the submitted payload. Some fields of the Schema cannot be updated. These fields are listed below.  * id * name * created * modified  Any attempt to modify these fields will result in an error response with a status code of 400.  > `id` must remain in the request body, but it cannot be changed.  If `id` is omitted from the request body, the result will be a 400 error. 
 
@@ -11580,7 +11580,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ModelSchema]:
-        """Update Source Schema (Full)
+        """Update source schema (full)
 
         This API will completely replace an existing Schema with the submitted payload. Some fields of the Schema cannot be updated. These fields are listed below.  * id * name * created * modified  Any attempt to modify these fields will result in an error response with a status code of 400.  > `id` must remain in the request body, but it cannot be changed.  If `id` is omitted from the request body, the result will be a 400 error. 
 
@@ -11661,7 +11661,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Source Schema (Full)
+        """Update source schema (full)
 
         This API will completely replace an existing Schema with the submitted payload. Some fields of the Schema cannot be updated. These fields are listed below.  * id * name * created * modified  Any attempt to modify these fields will result in an error response with a status code of 400.  > `id` must remain in the request body, but it cannot be changed.  If `id` is omitted from the request body, the result will be a 400 error. 
 
@@ -12984,7 +12984,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[PasswordPolicyHoldersDtoInner]:
-        """Update Password Policy
+        """Update password policy
 
         This API can be used to set up or update Password Policy in IdentityNow for the specified Source. Source must support PASSWORD feature. 
 
@@ -13061,7 +13061,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[PasswordPolicyHoldersDtoInner]]:
-        """Update Password Policy
+        """Update password policy
 
         This API can be used to set up or update Password Policy in IdentityNow for the specified Source. Source must support PASSWORD feature. 
 
@@ -13138,7 +13138,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Password Policy
+        """Update password policy
 
         This API can be used to set up or update Password Policy in IdentityNow for the specified Source. Source must support PASSWORD feature. 
 
@@ -13293,7 +13293,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[ProvisioningPolicyDto]:
-        """Bulk Update Provisioning Policies
+        """Bulk update provisioning policies
 
         This end-point updates a list of provisioning policies on the specified source in IdentityNow.
 
@@ -13370,7 +13370,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[ProvisioningPolicyDto]]:
-        """Bulk Update Provisioning Policies
+        """Bulk update provisioning policies
 
         This end-point updates a list of provisioning policies on the specified source in IdentityNow.
 
@@ -13447,7 +13447,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Bulk Update Provisioning Policies
+        """Bulk update provisioning policies
 
         This end-point updates a list of provisioning policies on the specified source in IdentityNow.
 
@@ -13604,7 +13604,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ProvisioningPolicyDto:
-        """Partial update of Provisioning Policy
+        """Partial update of provisioning policy
 
         This API selectively updates an existing Provisioning Policy using a JSONPatch payload. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
 
@@ -13685,7 +13685,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ProvisioningPolicyDto]:
-        """Partial update of Provisioning Policy
+        """Partial update of provisioning policy
 
         This API selectively updates an existing Provisioning Policy using a JSONPatch payload. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
 
@@ -13766,7 +13766,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Partial update of Provisioning Policy
+        """Partial update of provisioning policy
 
         This API selectively updates an existing Provisioning Policy using a JSONPatch payload. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
 
@@ -13928,7 +13928,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Source:
-        """Update Source (Partial)
+        """Update source (partial)
 
         Use this API to partially update a source in Identity Security Cloud (ISC), using a list of patch operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  These fields are immutable, so they cannot be changed:  * id * type * authoritative * created * modified * connector * connectorClass * passwordPolicies  Attempts to modify these fields will result in a 400 error. 
 
@@ -14005,7 +14005,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Source]:
-        """Update Source (Partial)
+        """Update source (partial)
 
         Use this API to partially update a source in Identity Security Cloud (ISC), using a list of patch operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  These fields are immutable, so they cannot be changed:  * id * type * authoritative * created * modified * connector * connectorClass * passwordPolicies  Attempts to modify these fields will result in a 400 error. 
 
@@ -14082,7 +14082,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Source (Partial)
+        """Update source (partial)
 
         Use this API to partially update a source in Identity Security Cloud (ISC), using a list of patch operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  These fields are immutable, so they cannot be changed:  * id * type * authoritative * created * modified * connector * connectorClass * passwordPolicies  Attempts to modify these fields will result in a 400 error. 
 
@@ -14237,7 +14237,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SourceEntitlementRequestConfig:
-        """Update Source Entitlement Request Configuration
+        """Update source entitlement request configuration
 
         This API replaces the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.
 
@@ -14313,7 +14313,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SourceEntitlementRequestConfig]:
-        """Update Source Entitlement Request Configuration
+        """Update source entitlement request configuration
 
         This API replaces the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.
 
@@ -14389,7 +14389,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Source Entitlement Request Configuration
+        """Update source entitlement request configuration
 
         This API replaces the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.
 
@@ -14543,7 +14543,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Schedule1:
-        """Update Source Schedule (Partial)
+        """Update source schedule (partial)
 
         Use this API to selectively update an existing Schedule using a JSONPatch payload.   The following schedule fields are immutable and cannot be updated:  - type 
 
@@ -14624,7 +14624,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Schedule1]:
-        """Update Source Schedule (Partial)
+        """Update source schedule (partial)
 
         Use this API to selectively update an existing Schedule using a JSONPatch payload.   The following schedule fields are immutable and cannot be updated:  - type 
 
@@ -14705,7 +14705,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Source Schedule (Partial)
+        """Update source schedule (partial)
 
         Use this API to selectively update an existing Schedule using a JSONPatch payload.   The following schedule fields are immutable and cannot be updated:  - type 
 
@@ -14867,7 +14867,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ModelSchema:
-        """Update Source Schema (Partial)
+        """Update source schema (partial)
 
         Use this API to selectively update an existing Schema using a JSONPatch payload.   The following schema fields are immutable and cannot be updated:  - id - name - created - modified   To switch an account attribute to a group entitlement, you need to have the following in place:  - `isEntitlement: true` - Must define a schema for the group and [add it to the source](https://developer.sailpoint.com/idn/api/v3/create-source-schema) before updating the `isGroup` flag.  For example, here is the `group` account attribute referencing a schema that defines the group: ```json {     \"name\": \"groups\",     \"type\": \"STRING\",     \"schema\": {         \"type\": \"CONNECTOR_SCHEMA\",         \"id\": \"2c9180887671ff8c01767b4671fc7d60\",         \"name\": \"group\"     },     \"description\": \"The groups, roles etc. that reference account group objects\",     \"isMulti\": true,     \"isEntitlement\": true,     \"isGroup\": true } ``` 
 
@@ -14948,7 +14948,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ModelSchema]:
-        """Update Source Schema (Partial)
+        """Update source schema (partial)
 
         Use this API to selectively update an existing Schema using a JSONPatch payload.   The following schema fields are immutable and cannot be updated:  - id - name - created - modified   To switch an account attribute to a group entitlement, you need to have the following in place:  - `isEntitlement: true` - Must define a schema for the group and [add it to the source](https://developer.sailpoint.com/idn/api/v3/create-source-schema) before updating the `isGroup` flag.  For example, here is the `group` account attribute referencing a schema that defines the group: ```json {     \"name\": \"groups\",     \"type\": \"STRING\",     \"schema\": {         \"type\": \"CONNECTOR_SCHEMA\",         \"id\": \"2c9180887671ff8c01767b4671fc7d60\",         \"name\": \"group\"     },     \"description\": \"The groups, roles etc. that reference account group objects\",     \"isMulti\": true,     \"isEntitlement\": true,     \"isGroup\": true } ``` 
 
@@ -15029,7 +15029,7 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Source Schema (Partial)
+        """Update source schema (partial)
 
         Use this API to selectively update an existing Schema using a JSONPatch payload.   The following schema fields are immutable and cannot be updated:  - id - name - created - modified   To switch an account attribute to a group entitlement, you need to have the following in place:  - `isEntitlement: true` - Must define a schema for the group and [add it to the source](https://developer.sailpoint.com/idn/api/v3/create-source-schema) before updating the `isGroup` flag.  For example, here is the `group` account attribute referencing a schema that defines the group: ```json {     \"name\": \"groups\",     \"type\": \"STRING\",     \"schema\": {         \"type\": \"CONNECTOR_SCHEMA\",         \"id\": \"2c9180887671ff8c01767b4671fc7d60\",         \"name\": \"group\"     },     \"description\": \"The groups, roles etc. that reference account group objects\",     \"isMulti\": true,     \"isEntitlement\": true,     \"isGroup\": true } ``` 
 

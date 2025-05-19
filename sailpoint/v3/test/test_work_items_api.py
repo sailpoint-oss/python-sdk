@@ -29,91 +29,91 @@ class TestWorkItemsApi(unittest.TestCase):
     def test_approve_approval_item(self) -> None:
         """Test case for approve_approval_item
 
-        Approve an Approval Item
+        Approve an approval item
         """
         pass
 
     def test_approve_approval_items_in_bulk(self) -> None:
         """Test case for approve_approval_items_in_bulk
 
-        Bulk approve Approval Items
+        Bulk approve approval items
         """
         pass
 
     def test_complete_work_item(self) -> None:
         """Test case for complete_work_item
 
-        Complete a Work Item
+        Complete a work item
         """
         pass
 
     def test_get_completed_work_items(self) -> None:
         """Test case for get_completed_work_items
 
-        Completed Work Items
+        Completed work items
         """
         pass
 
     def test_get_count_completed_work_items(self) -> None:
         """Test case for get_count_completed_work_items
 
-        Count Completed Work Items
+        Count completed work items
         """
         pass
 
     def test_get_count_work_items(self) -> None:
         """Test case for get_count_work_items
 
-        Count Work Items
+        Count work items
         """
         pass
 
     def test_get_work_item(self) -> None:
         """Test case for get_work_item
 
-        Get a Work Item
+        Get a work item
         """
         pass
 
     def test_get_work_items_summary(self) -> None:
         """Test case for get_work_items_summary
 
-        Work Items Summary
+        Work items summary
         """
         pass
 
     def test_list_work_items(self) -> None:
         """Test case for list_work_items
 
-        List Work Items
+        List work items
         """
         pass
 
     def test_reject_approval_item(self) -> None:
         """Test case for reject_approval_item
 
-        Reject an Approval Item
+        Reject an approval item
         """
         pass
 
     def test_reject_approval_items_in_bulk(self) -> None:
         """Test case for reject_approval_items_in_bulk
 
-        Bulk reject Approval Items
+        Bulk reject approval items
         """
         pass
 
     def test_send_work_item_forward(self) -> None:
         """Test case for send_work_item_forward
 
-        Forward a Work Item
+        Forward a work item
         """
         pass
 
     def test_submit_account_selection(self) -> None:
         """Test case for submit_account_selection
 
-        Submit Account Selections
+        Submit account selections
         """
         pass
 

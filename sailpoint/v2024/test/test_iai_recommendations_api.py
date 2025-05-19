@@ -29,7 +29,7 @@ class TestIAIRecommendationsApi(unittest.TestCase):
     def test_get_recommendations(self) -> None:
         """Test case for get_recommendations
 
-        Returns Recommendation Based on Object
+        Returns recommendation based on object
         """
         pass
 

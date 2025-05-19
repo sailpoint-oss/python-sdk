@@ -29,49 +29,49 @@ class TestSIMIntegrationsApi(unittest.TestCase):
     def test_create_sim_integration(self) -> None:
         """Test case for create_sim_integration
 
-        Create new SIM integration
+        Create new sim integration
         """
         pass
 
     def test_delete_sim_integration(self) -> None:
         """Test case for delete_sim_integration
 
-        Delete a SIM integration
+        Delete a sim integration
         """
         pass
 
     def test_get_sim_integration(self) -> None:
         """Test case for get_sim_integration
 
-        Get a SIM integration details.
+        Get a sim integration details.
         """
         pass
 
     def test_get_sim_integrations(self) -> None:
         """Test case for get_sim_integrations
 
-        List the existing SIM integrations.
+        List the existing sim integrations.
         """
         pass
 
     def test_patch_before_provisioning_rule(self) -> None:
         """Test case for patch_before_provisioning_rule
 
-        Patch a SIM beforeProvisioningRule attribute.
+        Patch a sim beforeprovisioningrule attribute.
         """
         pass
 
     def test_patch_sim_attributes(self) -> None:
         """Test case for patch_sim_attributes
 
-        Patch a SIM attribute.
+        Patch a sim attribute.
         """
         pass
 
     def test_put_sim_integration(self) -> None:
         """Test case for put_sim_integration
 
-        Update an existing SIM integration
+        Update an existing sim integration
         """
         pass
 

@@ -58,7 +58,7 @@ class ApplicationDiscoveryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Get Discovered Application by ID
+        """Get discovered application by id
 
         Get the discovered application, along with with its associated sources, based on the provided ID. 
 
@@ -130,7 +130,7 @@ class ApplicationDiscoveryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Get Discovered Application by ID
+        """Get discovered application by id
 
         Get the discovered application, along with with its associated sources, based on the provided ID. 
 
@@ -202,7 +202,7 @@ class ApplicationDiscoveryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Discovered Application by ID
+        """Get discovered application by id
 
         Get the discovered application, along with with its associated sources, based on the provided ID. 
 
@@ -681,7 +681,7 @@ class ApplicationDiscoveryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ManualDiscoverApplicationsTemplate:
-        """Download CSV Template for Discovery
+        """Download csv template for discovery
 
         Download an example CSV file with two columns `application_name` and `description`.  The CSV file contains a single row with the values 'Example Application' and 'Example Description'.  The downloaded template is specifically designed for use with the `/manual-discover-applications` endpoint. 
 
@@ -749,7 +749,7 @@ class ApplicationDiscoveryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ManualDiscoverApplicationsTemplate]:
-        """Download CSV Template for Discovery
+        """Download csv template for discovery
 
         Download an example CSV file with two columns `application_name` and `description`.  The CSV file contains a single row with the values 'Example Application' and 'Example Description'.  The downloaded template is specifically designed for use with the `/manual-discover-applications` endpoint. 
 
@@ -817,7 +817,7 @@ class ApplicationDiscoveryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Download CSV Template for Discovery
+        """Download csv template for discovery
 
         Download an example CSV file with two columns `application_name` and `description`.  The CSV file contains a single row with the values 'Example Application' and 'Example Description'.  The downloaded template is specifically designed for use with the `/manual-discover-applications` endpoint. 
 
@@ -946,7 +946,7 @@ class ApplicationDiscoveryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Patch Discovered Application by ID
+        """Patch discovered application by id
 
         Update an existing discovered application by using a limited version of the [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax. You can patch these fields: - **associatedSources** - **dismissed**
 
@@ -1022,7 +1022,7 @@ class ApplicationDiscoveryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Patch Discovered Application by ID
+        """Patch discovered application by id
 
         Update an existing discovered application by using a limited version of the [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax. You can patch these fields: - **associatedSources** - **dismissed**
 
@@ -1098,7 +1098,7 @@ class ApplicationDiscoveryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Patch Discovered Application by ID
+        """Patch discovered application by id
 
         Update an existing discovered application by using a limited version of the [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax. You can patch these fields: - **associatedSources** - **dismissed**
 
@@ -1251,7 +1251,7 @@ class ApplicationDiscoveryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Upload CSV to Discover Applications
+        """Upload csv to discover applications
 
         Upload a CSV file with application data for manual correlation to specific ISC connectors.  If a suitable ISC connector is unavailable, the system will recommend generic connectors instead.
 
@@ -1323,7 +1323,7 @@ class ApplicationDiscoveryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Upload CSV to Discover Applications
+        """Upload csv to discover applications
 
         Upload a CSV file with application data for manual correlation to specific ISC connectors.  If a suitable ISC connector is unavailable, the system will recommend generic connectors instead.
 
@@ -1395,7 +1395,7 @@ class ApplicationDiscoveryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Upload CSV to Discover Applications
+        """Upload csv to discover applications
 
         Upload a CSV file with application data for manual correlation to specific ISC connectors.  If a suitable ISC connector is unavailable, the system will recommend generic connectors instead.
 

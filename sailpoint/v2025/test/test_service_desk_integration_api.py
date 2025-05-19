@@ -29,42 +29,42 @@ class TestServiceDeskIntegrationApi(unittest.TestCase):
     def test_create_service_desk_integration(self) -> None:
         """Test case for create_service_desk_integration
 
-        Create new Service Desk integration
+        Create new service desk integration
         """
         pass
 
     def test_delete_service_desk_integration(self) -> None:
         """Test case for delete_service_desk_integration
 
-        Delete a Service Desk integration
+        Delete a service desk integration
         """
         pass
 
     def test_get_service_desk_integration(self) -> None:
         """Test case for get_service_desk_integration
 
-        Get a Service Desk integration
+        Get a service desk integration
         """
         pass
 
     def test_get_service_desk_integration_template(self) -> None:
         """Test case for get_service_desk_integration_template
 
-        Service Desk integration template by scriptName
+        Service desk integration template by scriptname
         """
         pass
 
     def test_get_service_desk_integration_types(self) -> None:
         """Test case for get_service_desk_integration_types
 
-        List Service Desk integration types
+        List service desk integration types
         """
         pass
 
     def test_get_service_desk_integrations(self) -> None:
         """Test case for get_service_desk_integrations
 
-        List existing Service Desk integrations
+        List existing service desk integrations
         """
         pass
 
@@ -78,14 +78,14 @@ class TestServiceDeskIntegrationApi(unittest.TestCase):
     def test_patch_service_desk_integration(self) -> None:
         """Test case for patch_service_desk_integration
 
-        Patch a Service Desk Integration
+        Patch a service desk integration
         """
         pass
 
     def test_put_service_desk_integration(self) -> None:
         """Test case for put_service_desk_integration
 
-        Update a Service Desk integration
+        Update a service desk integration
         """
         pass
 

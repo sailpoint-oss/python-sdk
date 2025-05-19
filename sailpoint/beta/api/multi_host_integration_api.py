@@ -64,7 +64,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> MultiHostIntegrations:
-        """Create Multi-Host Integration
+        """Create multi-host integration
 
         This API is used to create Multi-Host Integration. Multi-host Integration holds similar types of sources.  A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
@@ -137,7 +137,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[MultiHostIntegrations]:
-        """Create Multi-Host Integration
+        """Create multi-host integration
 
         This API is used to create Multi-Host Integration. Multi-host Integration holds similar types of sources.  A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
@@ -210,7 +210,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create Multi-Host Integration
+        """Create multi-host integration
 
         This API is used to create Multi-Host Integration. Multi-host Integration holds similar types of sources.  A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
@@ -358,7 +358,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Create Sources Within Multi-Host Integration
+        """Create sources within multi-host integration
 
         This API is used to create sources within Multi-Host Integration. Multi-Host Integration holds similar types of sources.  A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
@@ -435,7 +435,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Create Sources Within Multi-Host Integration
+        """Create sources within multi-host integration
 
         This API is used to create sources within Multi-Host Integration. Multi-Host Integration holds similar types of sources.  A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
@@ -512,7 +512,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create Sources Within Multi-Host Integration
+        """Create sources within multi-host integration
 
         This API is used to create sources within Multi-Host Integration. Multi-Host Integration holds similar types of sources.  A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
@@ -666,7 +666,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete Multi-Host Integration
+        """Delete multi-host integration
 
         Delete an existing Multi-Host Integration by ID.    A token with Org Admin or Multi Host Admin authority is required to access this endpoint.
 
@@ -739,7 +739,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete Multi-Host Integration
+        """Delete multi-host integration
 
         Delete an existing Multi-Host Integration by ID.    A token with Org Admin or Multi Host Admin authority is required to access this endpoint.
 
@@ -812,7 +812,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Multi-Host Integration
+        """Delete multi-host integration
 
         Delete an existing Multi-Host Integration by ID.    A token with Org Admin or Multi Host Admin authority is required to access this endpoint.
 
@@ -946,7 +946,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> MultiHostIntegrationsAggScheduleUpdate:
-        """Get Account Aggregation Groups Within Multi-Host Integration ID
+        """Get account aggregation groups within multi-host integration id
 
         This API will return array of account aggregation groups within provided Multi-Host Integration ID.  A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
@@ -1019,7 +1019,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[MultiHostIntegrationsAggScheduleUpdate]:
-        """Get Account Aggregation Groups Within Multi-Host Integration ID
+        """Get account aggregation groups within multi-host integration id
 
         This API will return array of account aggregation groups within provided Multi-Host Integration ID.  A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
@@ -1092,7 +1092,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Account Aggregation Groups Within Multi-Host Integration ID
+        """Get account aggregation groups within multi-host integration id
 
         This API will return array of account aggregation groups within provided Multi-Host Integration ID.  A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
@@ -1226,7 +1226,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> MultiHostIntegrationsAggScheduleUpdate:
-        """Get Entitlement Aggregation Groups Within Multi-Host Integration ID
+        """Get entitlement aggregation groups within multi-host integration id
 
         This API will return array of aggregation groups within provided Multi-Host Integration ID.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
@@ -1299,7 +1299,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[MultiHostIntegrationsAggScheduleUpdate]:
-        """Get Entitlement Aggregation Groups Within Multi-Host Integration ID
+        """Get entitlement aggregation groups within multi-host integration id
 
         This API will return array of aggregation groups within provided Multi-Host Integration ID.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
@@ -1372,7 +1372,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Entitlement Aggregation Groups Within Multi-Host Integration ID
+        """Get entitlement aggregation groups within multi-host integration id
 
         This API will return array of aggregation groups within provided Multi-Host Integration ID.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
@@ -1506,7 +1506,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> MultiHostIntegrations:
-        """Get Multi-Host Integration By ID
+        """Get multi-host integration by id
 
         Get an existing Multi-Host Integration.   A token with Org Admin or Multi-Host Integration Admin authority is required to access this endpoint.
 
@@ -1579,7 +1579,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[MultiHostIntegrations]:
-        """Get Multi-Host Integration By ID
+        """Get multi-host integration by id
 
         Get an existing Multi-Host Integration.   A token with Org Admin or Multi-Host Integration Admin authority is required to access this endpoint.
 
@@ -1652,7 +1652,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Multi-Host Integration By ID
+        """Get multi-host integration by id
 
         Get an existing Multi-Host Integration.   A token with Org Admin or Multi-Host Integration Admin authority is required to access this endpoint.
 
@@ -1791,7 +1791,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[MultiHostIntegrations]:
-        """List All Existing Multi-Host Integrations
+        """List all existing multi-host integrations
 
         Get a list of Multi-Host Integrations.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
@@ -1884,7 +1884,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[MultiHostIntegrations]]:
-        """List All Existing Multi-Host Integrations
+        """List all existing multi-host integrations
 
         Get a list of Multi-Host Integrations.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
@@ -1977,7 +1977,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List All Existing Multi-Host Integrations
+        """List all existing multi-host integrations
 
         Get a list of Multi-Host Integrations.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
@@ -2153,7 +2153,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[SourceCreationErrors]:
-        """List Multi-Host Source Creation Errors
+        """List multi-host source creation errors
 
         Get a list of sources creation errors within Multi-Host Integration ID.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
@@ -2226,7 +2226,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[SourceCreationErrors]]:
-        """List Multi-Host Source Creation Errors
+        """List multi-host source creation errors
 
         Get a list of sources creation errors within Multi-Host Integration ID.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
@@ -2299,7 +2299,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Multi-Host Source Creation Errors
+        """List multi-host source creation errors
 
         Get a list of sources creation errors within Multi-Host Integration ID.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
@@ -2432,7 +2432,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[MultiHostIntegrationTemplateType]:
-        """List Multi-Host Integration Types
+        """List multi-host integration types
 
         This API endpoint returns the current list of supported Multi-Host Integration types.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
@@ -2501,7 +2501,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[MultiHostIntegrationTemplateType]]:
-        """List Multi-Host Integration Types
+        """List multi-host integration types
 
         This API endpoint returns the current list of supported Multi-Host Integration types.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
@@ -2570,7 +2570,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Multi-Host Integration Types
+        """List multi-host integration types
 
         This API endpoint returns the current list of supported Multi-Host Integration types.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
@@ -2703,7 +2703,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[MultiHostSources]:
-        """List Sources Within Multi-Host Integration
+        """List sources within multi-host integration
 
         Get a list of sources within Multi-Host Integration ID.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
@@ -2796,7 +2796,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[MultiHostSources]]:
-        """List Sources Within Multi-Host Integration
+        """List sources within multi-host integration
 
         Get a list of sources within Multi-Host Integration ID.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
@@ -2889,7 +2889,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Sources Within Multi-Host Integration
+        """List sources within multi-host integration
 
         Get a list of sources within Multi-Host Integration ID.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
@@ -3063,7 +3063,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Test Configuration For Multi-Host Integration
+        """Test configuration for multi-host integration
 
         This endpoint performs a more detailed validation of the Multi-Host Integration's configuration.  A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
@@ -3136,7 +3136,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Test Configuration For Multi-Host Integration
+        """Test configuration for multi-host integration
 
         This endpoint performs a more detailed validation of the Multi-Host Integration's configuration.  A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
@@ -3209,7 +3209,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Test Configuration For Multi-Host Integration
+        """Test configuration for multi-host integration
 
         This endpoint performs a more detailed validation of the Multi-Host Integration's configuration.  A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
@@ -3344,7 +3344,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> TestSourceConnectionMultihost200Response:
-        """Test Configuration For Multi-Host Integration's Single Source
+        """Test configuration for multi-host integration's single source
 
         This endpoint performs a more detailed validation of the source's configuration.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
@@ -3421,7 +3421,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[TestSourceConnectionMultihost200Response]:
-        """Test Configuration For Multi-Host Integration's Single Source
+        """Test configuration for multi-host integration's single source
 
         This endpoint performs a more detailed validation of the source's configuration.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
@@ -3498,7 +3498,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Test Configuration For Multi-Host Integration's Single Source
+        """Test configuration for multi-host integration's single source
 
         This endpoint performs a more detailed validation of the source's configuration.    A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
@@ -3639,7 +3639,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Update Multi-Host Integration
+        """Update multi-host integration
 
         Update existing sources within Multi-Host Integration.  A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
@@ -3716,7 +3716,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Update Multi-Host Integration
+        """Update multi-host integration
 
         Update existing sources within Multi-Host Integration.  A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 
@@ -3793,7 +3793,7 @@ class MultiHostIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Multi-Host Integration
+        """Update multi-host integration
 
         Update existing sources within Multi-Host Integration.  A token with Org Admin or Multi-Host Admin authority is required to access this endpoint.
 

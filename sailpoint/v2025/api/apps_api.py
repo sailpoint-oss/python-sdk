@@ -707,7 +707,7 @@ class AppsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SourceApp:
-        """Delete source app by ID
+        """Delete source app by id
 
         Use this API to delete a specific source app
 
@@ -783,7 +783,7 @@ class AppsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SourceApp]:
-        """Delete source app by ID
+        """Delete source app by id
 
         Use this API to delete a specific source app
 
@@ -859,7 +859,7 @@ class AppsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete source app by ID
+        """Delete source app by id
 
         Use this API to delete a specific source app
 
@@ -999,7 +999,7 @@ class AppsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SourceApp:
-        """Get source app by ID
+        """Get source app by id
 
         This API returns a source app by its ID.
 
@@ -1076,7 +1076,7 @@ class AppsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SourceApp]:
-        """Get source app by ID
+        """Get source app by id
 
         This API returns a source app by its ID.
 
@@ -1153,7 +1153,7 @@ class AppsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get source app by ID
+        """Get source app by id
 
         This API returns a source app by its ID.
 
@@ -3740,7 +3740,7 @@ class AppsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SourceAppPatchDto:
-        """Patch source app by ID
+        """Patch source app by id
 
         This API updates an existing source app using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax. The following fields are patchable: **name**, **description**, **enabled**, **owner**, **provisionRequestEnabled**, **appCenterEnabled**, **accountSource**,  **matchAllAccounts** and **accessProfiles**. Name, description and owner can't be empty or null.
 
@@ -3821,7 +3821,7 @@ class AppsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SourceAppPatchDto]:
-        """Patch source app by ID
+        """Patch source app by id
 
         This API updates an existing source app using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax. The following fields are patchable: **name**, **description**, **enabled**, **owner**, **provisionRequestEnabled**, **appCenterEnabled**, **accountSource**,  **matchAllAccounts** and **accessProfiles**. Name, description and owner can't be empty or null.
 
@@ -3902,7 +3902,7 @@ class AppsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Patch source app by ID
+        """Patch source app by id
 
         This API updates an existing source app using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax. The following fields are patchable: **name**, **description**, **enabled**, **owner**, **provisionRequestEnabled**, **appCenterEnabled**, **accountSource**,  **matchAllAccounts** and **accessProfiles**. Name, description and owner can't be empty or null.
 
@@ -4064,7 +4064,7 @@ class AppsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> UserApp:
-        """Patch user app by ID
+        """Patch user app by id
 
         This API updates an existing user app using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax. The following fields are patchable: **account**
 
@@ -4145,7 +4145,7 @@ class AppsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[UserApp]:
-        """Patch user app by ID
+        """Patch user app by id
 
         This API updates an existing user app using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax. The following fields are patchable: **account**
 
@@ -4226,7 +4226,7 @@ class AppsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Patch user app by ID
+        """Patch user app by id
 
         This API updates an existing user app using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax. The following fields are patchable: **account**
 

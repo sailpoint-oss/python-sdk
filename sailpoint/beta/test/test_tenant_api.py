@@ -29,7 +29,7 @@ class TestTenantApi(unittest.TestCase):
     def test_get_tenant(self) -> None:
         """Test case for get_tenant
 
-        Get Tenant Information.
+        Get tenant information.
         """
         pass
 

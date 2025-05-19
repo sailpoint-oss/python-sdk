@@ -29,35 +29,35 @@ class TestSearchAttributeConfigurationApi(unittest.TestCase):
     def test_create_search_attribute_config(self) -> None:
         """Test case for create_search_attribute_config
 
-        Create Extended Search Attributes
+        Create extended search attributes
         """
         pass
 
     def test_delete_search_attribute_config(self) -> None:
         """Test case for delete_search_attribute_config
 
-        Delete Extended Search Attribute
+        Delete extended search attribute
         """
         pass
 
     def test_get_search_attribute_config(self) -> None:
         """Test case for get_search_attribute_config
 
-        List Extended Search Attributes
+        List extended search attributes
         """
         pass
 
     def test_get_single_search_attribute_config(self) -> None:
         """Test case for get_single_search_attribute_config
 
-        Get Extended Search Attribute
+        Get extended search attribute
         """
         pass
 
     def test_patch_search_attribute_config(self) -> None:
         """Test case for patch_search_attribute_config
 
-        Update Extended Search Attribute
+        Update extended search attribute
         """
         pass
 

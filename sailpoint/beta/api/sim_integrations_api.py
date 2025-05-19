@@ -57,7 +57,7 @@ class SIMIntegrationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ServiceDeskIntegrationDto:
-        """Create new SIM integration
+        """Create new sim integration
 
         Create a new SIM Integrations.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
@@ -130,7 +130,7 @@ class SIMIntegrationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ServiceDeskIntegrationDto]:
-        """Create new SIM integration
+        """Create new sim integration
 
         Create a new SIM Integrations.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
@@ -203,7 +203,7 @@ class SIMIntegrationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create new SIM integration
+        """Create new sim integration
 
         Create a new SIM Integrations.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
@@ -350,7 +350,7 @@ class SIMIntegrationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete a SIM integration
+        """Delete a sim integration
 
         Get the details of a SIM integration. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
@@ -423,7 +423,7 @@ class SIMIntegrationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete a SIM integration
+        """Delete a sim integration
 
         Get the details of a SIM integration. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
@@ -496,7 +496,7 @@ class SIMIntegrationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete a SIM integration
+        """Delete a sim integration
 
         Get the details of a SIM integration. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
@@ -630,7 +630,7 @@ class SIMIntegrationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ServiceDeskIntegrationDto:
-        """Get a SIM integration details.
+        """Get a sim integration details.
 
         Get the details of a SIM integration. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
@@ -703,7 +703,7 @@ class SIMIntegrationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ServiceDeskIntegrationDto]:
-        """Get a SIM integration details.
+        """Get a sim integration details.
 
         Get the details of a SIM integration. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
@@ -776,7 +776,7 @@ class SIMIntegrationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get a SIM integration details.
+        """Get a sim integration details.
 
         Get the details of a SIM integration. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
@@ -909,7 +909,7 @@ class SIMIntegrationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ServiceDeskIntegrationDto:
-        """List the existing SIM integrations.
+        """List the existing sim integrations.
 
         List the existing SIM integrations. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
@@ -978,7 +978,7 @@ class SIMIntegrationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ServiceDeskIntegrationDto]:
-        """List the existing SIM integrations.
+        """List the existing sim integrations.
 
         List the existing SIM integrations. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
@@ -1047,7 +1047,7 @@ class SIMIntegrationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List the existing SIM integrations.
+        """List the existing sim integrations.
 
         List the existing SIM integrations. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
@@ -1176,7 +1176,7 @@ class SIMIntegrationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ServiceDeskIntegrationDto:
-        """Patch a SIM beforeProvisioningRule attribute.
+        """Patch a sim beforeprovisioningrule attribute.
 
         Patch a SIM beforeProvisioningRule attribute given a JsonPatch object. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
@@ -1253,7 +1253,7 @@ class SIMIntegrationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ServiceDeskIntegrationDto]:
-        """Patch a SIM beforeProvisioningRule attribute.
+        """Patch a sim beforeprovisioningrule attribute.
 
         Patch a SIM beforeProvisioningRule attribute given a JsonPatch object. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
@@ -1330,7 +1330,7 @@ class SIMIntegrationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Patch a SIM beforeProvisioningRule attribute.
+        """Patch a sim beforeprovisioningrule attribute.
 
         Patch a SIM beforeProvisioningRule attribute given a JsonPatch object. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
@@ -1484,7 +1484,7 @@ class SIMIntegrationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ServiceDeskIntegrationDto:
-        """Patch a SIM attribute.
+        """Patch a sim attribute.
 
         Patch a SIM attribute given a JsonPatch object. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
@@ -1561,7 +1561,7 @@ class SIMIntegrationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ServiceDeskIntegrationDto]:
-        """Patch a SIM attribute.
+        """Patch a sim attribute.
 
         Patch a SIM attribute given a JsonPatch object. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
@@ -1638,7 +1638,7 @@ class SIMIntegrationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Patch a SIM attribute.
+        """Patch a sim attribute.
 
         Patch a SIM attribute given a JsonPatch object. A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
@@ -1792,7 +1792,7 @@ class SIMIntegrationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ServiceDeskIntegrationDto:
-        """Update an existing SIM integration
+        """Update an existing sim integration
 
         Update an existing SIM integration.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
@@ -1869,7 +1869,7 @@ class SIMIntegrationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ServiceDeskIntegrationDto]:
-        """Update an existing SIM integration
+        """Update an existing sim integration
 
         Update an existing SIM integration.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
@@ -1946,7 +1946,7 @@ class SIMIntegrationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update an existing SIM integration
+        """Update an existing sim integration
 
         Update an existing SIM integration.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 

@@ -58,7 +58,7 @@ class SearchAttributeConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> object:
-        """Create Extended Search Attributes
+        """Create extended search attributes
 
         Create and configure extended search attributes.  This API accepts an attribute name, an attribute display name and a list of name/value pair associates of application IDs to attribute names.  It will then validate the inputs and configure/create the attribute promotion configuration in the Link ObjectConfig. >**Note: Give searchable attributes unique names.  Do not give them the same names used for account attributes or source attributes.  Also, do not give them the same names present in account schema for a current or future source, regardless of whether that source is included in the searchable attributes' `applicationAttributes`.**
 
@@ -135,7 +135,7 @@ class SearchAttributeConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[object]:
-        """Create Extended Search Attributes
+        """Create extended search attributes
 
         Create and configure extended search attributes.  This API accepts an attribute name, an attribute display name and a list of name/value pair associates of application IDs to attribute names.  It will then validate the inputs and configure/create the attribute promotion configuration in the Link ObjectConfig. >**Note: Give searchable attributes unique names.  Do not give them the same names used for account attributes or source attributes.  Also, do not give them the same names present in account schema for a current or future source, regardless of whether that source is included in the searchable attributes' `applicationAttributes`.**
 
@@ -212,7 +212,7 @@ class SearchAttributeConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create Extended Search Attributes
+        """Create extended search attributes
 
         Create and configure extended search attributes.  This API accepts an attribute name, an attribute display name and a list of name/value pair associates of application IDs to attribute names.  It will then validate the inputs and configure/create the attribute promotion configuration in the Link ObjectConfig. >**Note: Give searchable attributes unique names.  Do not give them the same names used for account attributes or source attributes.  Also, do not give them the same names present in account schema for a current or future source, regardless of whether that source is included in the searchable attributes' `applicationAttributes`.**
 
@@ -366,7 +366,7 @@ class SearchAttributeConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete Extended Search Attribute
+        """Delete extended search attribute
 
         Delete an extended attribute configuration by name.
 
@@ -442,7 +442,7 @@ class SearchAttributeConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete Extended Search Attribute
+        """Delete extended search attribute
 
         Delete an extended attribute configuration by name.
 
@@ -518,7 +518,7 @@ class SearchAttributeConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Extended Search Attribute
+        """Delete extended search attribute
 
         Delete an extended attribute configuration by name.
 
@@ -659,7 +659,7 @@ class SearchAttributeConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[SearchAttributeConfig]:
-        """List Extended Search Attributes
+        """List extended search attributes
 
         Get a list of attribute/application attributes currently configured in Identity Security Cloud (ISC).
 
@@ -739,7 +739,7 @@ class SearchAttributeConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[SearchAttributeConfig]]:
-        """List Extended Search Attributes
+        """List extended search attributes
 
         Get a list of attribute/application attributes currently configured in Identity Security Cloud (ISC).
 
@@ -819,7 +819,7 @@ class SearchAttributeConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Extended Search Attributes
+        """List extended search attributes
 
         Get a list of attribute/application attributes currently configured in Identity Security Cloud (ISC).
 
@@ -969,7 +969,7 @@ class SearchAttributeConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SearchAttributeConfig:
-        """Get Extended Search Attribute
+        """Get extended search attribute
 
         Get an extended attribute configuration by name.
 
@@ -1046,7 +1046,7 @@ class SearchAttributeConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SearchAttributeConfig]:
-        """Get Extended Search Attribute
+        """Get extended search attribute
 
         Get an extended attribute configuration by name.
 
@@ -1123,7 +1123,7 @@ class SearchAttributeConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Extended Search Attribute
+        """Get extended search attribute
 
         Get an extended attribute configuration by name.
 
@@ -1265,7 +1265,7 @@ class SearchAttributeConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SearchAttributeConfig:
-        """Update Extended Search Attribute
+        """Update extended search attribute
 
         Update an existing search attribute configuration.  You can patch these fields: * name  * displayName * applicationAttributes
 
@@ -1346,7 +1346,7 @@ class SearchAttributeConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SearchAttributeConfig]:
-        """Update Extended Search Attribute
+        """Update extended search attribute
 
         Update an existing search attribute configuration.  You can patch these fields: * name  * displayName * applicationAttributes
 
@@ -1427,7 +1427,7 @@ class SearchAttributeConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Extended Search Attribute
+        """Update extended search attribute
 
         Update an existing search attribute configuration.  You can patch these fields: * name  * displayName * applicationAttributes
 

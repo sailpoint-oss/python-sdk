@@ -56,7 +56,7 @@ class PasswordSyncGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> PasswordSyncGroup:
-        """Create Password Sync Group
+        """Create password sync group
 
         This API creates a password sync group based on the specifications provided.
 
@@ -128,7 +128,7 @@ class PasswordSyncGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[PasswordSyncGroup]:
-        """Create Password Sync Group
+        """Create password sync group
 
         This API creates a password sync group based on the specifications provided.
 
@@ -200,7 +200,7 @@ class PasswordSyncGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create Password Sync Group
+        """Create password sync group
 
         This API creates a password sync group based on the specifications provided.
 
@@ -346,7 +346,7 @@ class PasswordSyncGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete Password Sync Group by ID
+        """Delete password sync group by id
 
         This API deletes the specified password sync group.
 
@@ -418,7 +418,7 @@ class PasswordSyncGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete Password Sync Group by ID
+        """Delete password sync group by id
 
         This API deletes the specified password sync group.
 
@@ -490,7 +490,7 @@ class PasswordSyncGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Password Sync Group by ID
+        """Delete password sync group by id
 
         This API deletes the specified password sync group.
 
@@ -623,7 +623,7 @@ class PasswordSyncGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> PasswordSyncGroup:
-        """Get Password Sync Group by ID
+        """Get password sync group by id
 
         This API returns the sync group for the specified ID.
 
@@ -696,7 +696,7 @@ class PasswordSyncGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[PasswordSyncGroup]:
-        """Get Password Sync Group by ID
+        """Get password sync group by id
 
         This API returns the sync group for the specified ID.
 
@@ -769,7 +769,7 @@ class PasswordSyncGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Password Sync Group by ID
+        """Get password sync group by id
 
         This API returns the sync group for the specified ID.
 
@@ -905,7 +905,7 @@ class PasswordSyncGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[PasswordSyncGroup]:
-        """Get Password Sync Group List
+        """Get password sync group list
 
         This API returns a list of password sync groups.
 
@@ -985,7 +985,7 @@ class PasswordSyncGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[PasswordSyncGroup]]:
-        """Get Password Sync Group List
+        """Get password sync group list
 
         This API returns a list of password sync groups.
 
@@ -1065,7 +1065,7 @@ class PasswordSyncGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Password Sync Group List
+        """Get password sync group list
 
         This API returns a list of password sync groups.
 
@@ -1217,7 +1217,7 @@ class PasswordSyncGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> PasswordSyncGroup:
-        """Update Password Sync Group by ID
+        """Update password sync group by id
 
         This API updates the specified password sync group.
 
@@ -1294,7 +1294,7 @@ class PasswordSyncGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[PasswordSyncGroup]:
-        """Update Password Sync Group by ID
+        """Update password sync group by id
 
         This API updates the specified password sync group.
 
@@ -1371,7 +1371,7 @@ class PasswordSyncGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Password Sync Group by ID
+        """Update password sync group by id
 
         This API updates the specified password sync group.
 

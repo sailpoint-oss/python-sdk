@@ -58,7 +58,7 @@ class ReportsDataExtractionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Cancel Report
+        """Cancel report
 
         Cancels a running report.
 
@@ -130,7 +130,7 @@ class ReportsDataExtractionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Cancel Report
+        """Cancel report
 
         Cancels a running report.
 
@@ -202,7 +202,7 @@ class ReportsDataExtractionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Cancel Report
+        """Cancel report
 
         Cancels a running report.
 
@@ -338,7 +338,7 @@ class ReportsDataExtractionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> bytearray:
-        """Get Report File
+        """Get report file
 
         Gets a report in file format.
 
@@ -423,7 +423,7 @@ class ReportsDataExtractionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[bytearray]:
-        """Get Report File
+        """Get report file
 
         Gets a report in file format.
 
@@ -508,7 +508,7 @@ class ReportsDataExtractionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Report File
+        """Get report file
 
         Gets a report in file format.
 
@@ -669,7 +669,7 @@ class ReportsDataExtractionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ReportResults:
-        """Get Report Result
+        """Get report result
 
         Get the report results for a report that was run or is running. Returns empty report result in case there are no active task definitions with used in payload task definition name.
 
@@ -745,7 +745,7 @@ class ReportsDataExtractionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ReportResults]:
-        """Get Report Result
+        """Get report result
 
         Get the report results for a report that was run or is running. Returns empty report result in case there are no active task definitions with used in payload task definition name.
 
@@ -821,7 +821,7 @@ class ReportsDataExtractionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Report Result
+        """Get report result
 
         Get the report results for a report that was run or is running. Returns empty report result in case there are no active task definitions with used in payload task definition name.
 
@@ -962,7 +962,7 @@ class ReportsDataExtractionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> TaskResultDetails:
-        """Run Report
+        """Run report
 
         Use this API to run a report according to report input details. If non-concurrent task is already running then it returns, otherwise new task creates and returns.
 
@@ -1034,7 +1034,7 @@ class ReportsDataExtractionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[TaskResultDetails]:
-        """Run Report
+        """Run report
 
         Use this API to run a report according to report input details. If non-concurrent task is already running then it returns, otherwise new task creates and returns.
 
@@ -1106,7 +1106,7 @@ class ReportsDataExtractionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Run Report
+        """Run report
 
         Use this API to run a report according to report input details. If non-concurrent task is already running then it returns, otherwise new task creates and returns.
 

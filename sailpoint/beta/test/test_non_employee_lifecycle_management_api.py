@@ -29,70 +29,70 @@ class TestNonEmployeeLifecycleManagementApi(unittest.TestCase):
     def test_approve_non_employee_request(self) -> None:
         """Test case for approve_non_employee_request
 
-        Approve a Non-Employee Request
+        Approve a non-employee request
         """
         pass
 
     def test_create_non_employee_record(self) -> None:
         """Test case for create_non_employee_record
 
-        Create Non-Employee Record
+        Create non-employee record
         """
         pass
 
     def test_create_non_employee_request(self) -> None:
         """Test case for create_non_employee_request
 
-        Create Non-Employee Request
+        Create non-employee request
         """
         pass
 
     def test_create_non_employee_source(self) -> None:
         """Test case for create_non_employee_source
 
-        Create Non-Employee Source
+        Create non-employee source
         """
         pass
 
     def test_create_non_employee_source_schema_attributes(self) -> None:
         """Test case for create_non_employee_source_schema_attributes
 
-        Create Non-Employee Source Schema Attribute
+        Create non-employee source schema attribute
         """
         pass
 
     def test_delete_non_employee_record(self) -> None:
         """Test case for delete_non_employee_record
 
-        Delete Non-Employee Record
+        Delete non-employee record
         """
         pass
 
     def test_delete_non_employee_record_in_bulk(self) -> None:
         """Test case for delete_non_employee_record_in_bulk
 
-        Delete Multiple Non-Employee Records
+        Delete multiple non-employee records
         """
         pass
 
     def test_delete_non_employee_request(self) -> None:
         """Test case for delete_non_employee_request
 
-        Delete Non-Employee Request
+        Delete non-employee request
         """
         pass
 
     def test_delete_non_employee_schema_attribute(self) -> None:
         """Test case for delete_non_employee_schema_attribute
 
-        Delete Non-Employee Source's Schema Attribute
+        Delete non-employee source's schema attribute
         """
         pass
 
     def test_delete_non_employee_source(self) -> None:
         """Test case for delete_non_employee_source
 
-        Delete Non-Employee Source
+        Delete non-employee source
         """
         pass
 
@@ -106,14 +106,14 @@ class TestNonEmployeeLifecycleManagementApi(unittest.TestCase):
     def test_export_non_employee_records(self) -> None:
         """Test case for export_non_employee_records
 
-        Exports Non-Employee Records to CSV
+        Exports non-employee records to csv
         """
         pass
 
     def test_export_non_employee_source_schema_template(self) -> None:
         """Test case for export_non_employee_source_schema_template
 
-        Exports Source Schema Template
+        Exports source schema template
         """
         pass
 
@@ -127,7 +127,7 @@ class TestNonEmployeeLifecycleManagementApi(unittest.TestCase):
     def test_get_non_employee_approval_summary(self) -> None:
         """Test case for get_non_employee_approval_summary
 
-        Get Summary of Non-Employee Approval Requests
+        Get summary of non-employee approval requests
         """
         pass
 
@@ -141,112 +141,112 @@ class TestNonEmployeeLifecycleManagementApi(unittest.TestCase):
     def test_get_non_employee_record(self) -> None:
         """Test case for get_non_employee_record
 
-        Get a Non-Employee Record
+        Get a non-employee record
         """
         pass
 
     def test_get_non_employee_request(self) -> None:
         """Test case for get_non_employee_request
 
-        Get a Non-Employee Request
+        Get a non-employee request
         """
         pass
 
     def test_get_non_employee_request_summary(self) -> None:
         """Test case for get_non_employee_request_summary
 
-        Get Summary of Non-Employee Requests
+        Get summary of non-employee requests
         """
         pass
 
     def test_get_non_employee_schema_attribute(self) -> None:
         """Test case for get_non_employee_schema_attribute
 
-        Get Schema Attribute Non-Employee Source
+        Get schema attribute non-employee source
         """
         pass
 
     def test_get_non_employee_source(self) -> None:
         """Test case for get_non_employee_source
 
-        Get a Non-Employee Source
+        Get a non-employee source
         """
         pass
 
     def test_get_non_employee_source_schema_attributes(self) -> None:
         """Test case for get_non_employee_source_schema_attributes
 
-        List Schema Attributes Non-Employee Source
+        List schema attributes non-employee source
         """
         pass
 
     def test_import_non_employee_records_in_bulk(self) -> None:
         """Test case for import_non_employee_records_in_bulk
 
-        Imports, or Updates, Non-Employee Records
+        Imports, or updates, non-employee records
         """
         pass
 
     def test_list_non_employee_approval(self) -> None:
         """Test case for list_non_employee_approval
 
-        Get List of Non-Employee Approval Requests
+        Get list of non-employee approval requests
         """
         pass
 
     def test_list_non_employee_records(self) -> None:
         """Test case for list_non_employee_records
 
-        List Non-Employee Records
+        List non-employee records
         """
         pass
 
     def test_list_non_employee_requests(self) -> None:
         """Test case for list_non_employee_requests
 
-        List Non-Employee Requests
+        List non-employee requests
         """
         pass
 
     def test_list_non_employee_sources(self) -> None:
         """Test case for list_non_employee_sources
 
-        List Non-Employee Sources
+        List non-employee sources
         """
         pass
 
     def test_patch_non_employee_record(self) -> None:
         """Test case for patch_non_employee_record
 
-        Patch Non-Employee Record
+        Patch non-employee record
         """
         pass
 
     def test_patch_non_employee_schema_attribute(self) -> None:
         """Test case for patch_non_employee_schema_attribute
 
-        Patch Non-Employee Source's Schema Attribute
+        Patch non-employee source's schema attribute
         """
         pass
 
     def test_patch_non_employee_source(self) -> None:
         """Test case for patch_non_employee_source
 
-        Patch a Non-Employee Source
+        Patch a non-employee source
         """
         pass
 
     def test_reject_non_employee_request(self) -> None:
         """Test case for reject_non_employee_request
 
-        Reject a Non-Employee Request
+        Reject a non-employee request
         """
         pass
 
     def test_update_non_employee_record(self) -> None:
         """Test case for update_non_employee_record
 
-        Update Non-Employee Record
+        Update non-employee record
         """
         pass
 

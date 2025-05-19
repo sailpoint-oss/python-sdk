@@ -29,28 +29,28 @@ class TestMachineAccountMappingsApi(unittest.TestCase):
     def test_create_machine_account_mappings(self) -> None:
         """Test case for create_machine_account_mappings
 
-        Create Machine Account Mappings
+        Create machine account mappings
         """
         pass
 
     def test_delete_machine_account_mappings(self) -> None:
         """Test case for delete_machine_account_mappings
 
-        Delete Source's Machine Account Mappings
+        Delete source's machine account mappings
         """
         pass
 
     def test_list_machine_account_mappings(self) -> None:
         """Test case for list_machine_account_mappings
 
-        Machine Account Mapping for Source
+        Machine account mapping for source
         """
         pass
 
     def test_set_machine_account_mappings(self) -> None:
         """Test case for set_machine_account_mappings
 
-        Update Source's Machine Account Mappings
+        Update source's machine account mappings
         """
         pass
 

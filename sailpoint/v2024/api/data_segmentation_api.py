@@ -56,7 +56,7 @@ class DataSegmentationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> DataSegment:
-        """Create Segment
+        """Create segment
 
         This API creates a segment.  >**Note:** Segment definitions may take time to propagate to all identities.
 
@@ -128,7 +128,7 @@ class DataSegmentationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[DataSegment]:
-        """Create Segment
+        """Create segment
 
         This API creates a segment.  >**Note:** Segment definitions may take time to propagate to all identities.
 
@@ -200,7 +200,7 @@ class DataSegmentationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create Segment
+        """Create segment
 
         This API creates a segment.  >**Note:** Segment definitions may take time to propagate to all identities.
 
@@ -349,7 +349,7 @@ class DataSegmentationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete Segment by ID
+        """Delete segment by id
 
         This API deletes the segment specified by the given ID.
 
@@ -430,7 +430,7 @@ class DataSegmentationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete Segment by ID
+        """Delete segment by id
 
         This API deletes the segment specified by the given ID.
 
@@ -511,7 +511,7 @@ class DataSegmentationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Segment by ID
+        """Delete segment by id
 
         This API deletes the segment specified by the given ID.
 
@@ -661,7 +661,7 @@ class DataSegmentationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> DataSegment:
-        """Get Segment by ID
+        """Get segment by id
 
         This API returns the segment specified by the given ID.
 
@@ -738,7 +738,7 @@ class DataSegmentationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[DataSegment]:
-        """Get Segment by ID
+        """Get segment by id
 
         This API returns the segment specified by the given ID.
 
@@ -815,7 +815,7 @@ class DataSegmentationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Segment by ID
+        """Get segment by id
 
         This API returns the segment specified by the given ID.
 
@@ -957,7 +957,7 @@ class DataSegmentationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> object:
-        """Get SegmentMembership by Identity ID
+        """Get segmentmembership by identity id
 
         This API returns the segment membership specified by the given identity ID.
 
@@ -1034,7 +1034,7 @@ class DataSegmentationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[object]:
-        """Get SegmentMembership by Identity ID
+        """Get segmentmembership by identity id
 
         This API returns the segment membership specified by the given identity ID.
 
@@ -1111,7 +1111,7 @@ class DataSegmentationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get SegmentMembership by Identity ID
+        """Get segmentmembership by identity id
 
         This API returns the segment membership specified by the given identity ID.
 
@@ -1253,7 +1253,7 @@ class DataSegmentationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> bool:
-        """Is Segmentation enabled by Identity
+        """Is segmentation enabled by identity
 
         This API returns whether or not segmentation is enabled for the identity.
 
@@ -1330,7 +1330,7 @@ class DataSegmentationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[bool]:
-        """Is Segmentation enabled by Identity
+        """Is segmentation enabled by identity
 
         This API returns whether or not segmentation is enabled for the identity.
 
@@ -1407,7 +1407,7 @@ class DataSegmentationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Is Segmentation enabled by Identity
+        """Is segmentation enabled by identity
 
         This API returns whether or not segmentation is enabled for the identity.
 
@@ -1555,7 +1555,7 @@ class DataSegmentationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[DataSegment]:
-        """Get Segments
+        """Get segments
 
         This API returns the segment specified by the given ID.
 
@@ -1656,7 +1656,7 @@ class DataSegmentationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[DataSegment]]:
-        """Get Segments
+        """Get segments
 
         This API returns the segment specified by the given ID.
 
@@ -1757,7 +1757,7 @@ class DataSegmentationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Segments
+        """Get segments
 
         This API returns the segment specified by the given ID.
 
@@ -1950,7 +1950,7 @@ class DataSegmentationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> DataSegment:
-        """Update Segment
+        """Update segment
 
         Use this API to update segment fields by using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
@@ -2031,7 +2031,7 @@ class DataSegmentationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[DataSegment]:
-        """Update Segment
+        """Update segment
 
         Use this API to update segment fields by using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
@@ -2112,7 +2112,7 @@ class DataSegmentationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Segment
+        """Update segment
 
         Use this API to update segment fields by using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
@@ -2275,7 +2275,7 @@ class DataSegmentationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Publish segment by ID
+        """Publish segment by id
 
         This will publish the segment so that it starts applying the segmentation to the desired users if enabled
 
@@ -2356,7 +2356,7 @@ class DataSegmentationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Publish segment by ID
+        """Publish segment by id
 
         This will publish the segment so that it starts applying the segmentation to the desired users if enabled
 
@@ -2437,7 +2437,7 @@ class DataSegmentationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Publish segment by ID
+        """Publish segment by id
 
         This will publish the segment so that it starts applying the segmentation to the desired users if enabled
 

@@ -29,28 +29,28 @@ class TestIdentityProfilesApi(unittest.TestCase):
     def test_create_identity_profile(self) -> None:
         """Test case for create_identity_profile
 
-        Create Identity Profile
+        Create identity profile
         """
         pass
 
     def test_delete_identity_profile(self) -> None:
         """Test case for delete_identity_profile
 
-        Delete Identity Profile
+        Delete identity profile
         """
         pass
 
     def test_delete_identity_profiles(self) -> None:
         """Test case for delete_identity_profiles
 
-        Delete Identity Profiles
+        Delete identity profiles
         """
         pass
 
     def test_export_identity_profiles(self) -> None:
         """Test case for export_identity_profiles
 
-        Export Identity Profiles
+        Export identity profiles
         """
         pass
 
@@ -64,28 +64,28 @@ class TestIdentityProfilesApi(unittest.TestCase):
     def test_get_identity_profile(self) -> None:
         """Test case for get_identity_profile
 
-        Get Identity Profile
+        Get identity profile
         """
         pass
 
     def test_import_identity_profiles(self) -> None:
         """Test case for import_identity_profiles
 
-        Import Identity Profiles
+        Import identity profiles
         """
         pass
 
     def test_list_identity_profiles(self) -> None:
         """Test case for list_identity_profiles
 
-        List Identity Profiles
+        List identity profiles
         """
         pass
 
     def test_show_generate_identity_preview(self) -> None:
         """Test case for show_generate_identity_preview
 
-        Generate Identity Profile Preview
+        Generate identity profile preview
         """
         pass
 
@@ -99,7 +99,7 @@ class TestIdentityProfilesApi(unittest.TestCase):
     def test_update_identity_profile(self) -> None:
         """Test case for update_identity_profile
 
-        Update Identity Profile
+        Update identity profile
         """
         pass
 

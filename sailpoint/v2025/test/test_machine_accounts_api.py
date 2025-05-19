@@ -29,21 +29,21 @@ class TestMachineAccountsApi(unittest.TestCase):
     def test_get_machine_account(self) -> None:
         """Test case for get_machine_account
 
-        Machine Account Details
+        Machine account details
         """
         pass
 
     def test_list_machine_accounts(self) -> None:
         """Test case for list_machine_accounts
 
-        Machine Accounts List
+        Machine accounts list
         """
         pass
 
     def test_update_machine_account(self) -> None:
         """Test case for update_machine_account
 
-        Update a Machine Account
+        Update a machine account
         """
         pass
 

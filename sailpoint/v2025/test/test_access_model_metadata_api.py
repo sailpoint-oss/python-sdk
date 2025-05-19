@@ -29,28 +29,28 @@ class TestAccessModelMetadataApi(unittest.TestCase):
     def test_get_access_model_metadata_attribute(self) -> None:
         """Test case for get_access_model_metadata_attribute
 
-        Get Access Model Metadata Attribute
+        Get access model metadata attribute
         """
         pass
 
     def test_get_access_model_metadata_attribute_value(self) -> None:
         """Test case for get_access_model_metadata_attribute_value
 
-        Get Access Model Metadata Value
+        Get access model metadata value
         """
         pass
 
     def test_list_access_model_metadata_attribute(self) -> None:
         """Test case for list_access_model_metadata_attribute
 
-        List Access Model Metadata Attributes
+        List access model metadata attributes
         """
         pass
 
     def test_list_access_model_metadata_attribute_value(self) -> None:
         """Test case for list_access_model_metadata_attribute_value
 
-        List Access Model Metadata Values
+        List access model metadata values
         """
         pass
 

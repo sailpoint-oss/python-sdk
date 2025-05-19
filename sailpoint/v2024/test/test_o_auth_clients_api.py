@@ -29,35 +29,35 @@ class TestOAuthClientsApi(unittest.TestCase):
     def test_create_oauth_client(self) -> None:
         """Test case for create_oauth_client
 
-        Create OAuth Client
+        Create oauth client
         """
         pass
 
     def test_delete_oauth_client(self) -> None:
         """Test case for delete_oauth_client
 
-        Delete OAuth Client
+        Delete oauth client
         """
         pass
 
     def test_get_oauth_client(self) -> None:
         """Test case for get_oauth_client
 
-        Get OAuth Client
+        Get oauth client
         """
         pass
 
     def test_list_oauth_clients(self) -> None:
         """Test case for list_oauth_clients
 
-        List OAuth Clients
+        List oauth clients
         """
         pass
 
     def test_patch_oauth_client(self) -> None:
         """Test case for patch_oauth_client
 
-        Patch OAuth Client
+        Patch oauth client
         """
         pass
 

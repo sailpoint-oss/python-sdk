@@ -36,7 +36,7 @@ class TestApprovalsApi(unittest.TestCase):
     def test_get_approvals(self) -> None:
         """Test case for get_approvals
 
-        Get Approvals
+        Get approvals
         """
         pass
 

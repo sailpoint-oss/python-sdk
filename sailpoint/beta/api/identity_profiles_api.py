@@ -63,7 +63,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> IdentityProfile:
-        """Create Identity Profile
+        """Create identity profile
 
         Create an identity profile. A token with ORG_ADMIN authority is required to call this API to create an Identity Profile.
 
@@ -135,7 +135,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[IdentityProfile]:
-        """Create Identity Profile
+        """Create identity profile
 
         Create an identity profile. A token with ORG_ADMIN authority is required to call this API to create an Identity Profile.
 
@@ -207,7 +207,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create Identity Profile
+        """Create identity profile
 
         Create an identity profile. A token with ORG_ADMIN authority is required to call this API to create an Identity Profile.
 
@@ -353,7 +353,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> TaskResultSimplified:
-        """Delete Identity Profile
+        """Delete identity profile
 
         Delete an identity profile by ID. On success, this endpoint will return a reference to the bulk delete task result. A token with ORG_ADMIN authority is required to call this API.
 
@@ -426,7 +426,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[TaskResultSimplified]:
-        """Delete Identity Profile
+        """Delete identity profile
 
         Delete an identity profile by ID. On success, this endpoint will return a reference to the bulk delete task result. A token with ORG_ADMIN authority is required to call this API.
 
@@ -499,7 +499,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Identity Profile
+        """Delete identity profile
 
         Delete an identity profile by ID. On success, this endpoint will return a reference to the bulk delete task result. A token with ORG_ADMIN authority is required to call this API.
 
@@ -633,7 +633,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> TaskResultSimplified:
-        """Delete Identity Profiles
+        """Delete identity profiles
 
         This deletes multiple Identity Profiles via a list of supplied IDs.  On success, this endpoint will return a reference to the bulk delete task result.  A token with ORG_ADMIN authority is required to call this API.  The following rights are required to access this endpoint: idn:identity-profile:delete
 
@@ -705,7 +705,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[TaskResultSimplified]:
-        """Delete Identity Profiles
+        """Delete identity profiles
 
         This deletes multiple Identity Profiles via a list of supplied IDs.  On success, this endpoint will return a reference to the bulk delete task result.  A token with ORG_ADMIN authority is required to call this API.  The following rights are required to access this endpoint: idn:identity-profile:delete
 
@@ -777,7 +777,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Identity Profiles
+        """Delete identity profiles
 
         This deletes multiple Identity Profiles via a list of supplied IDs.  On success, this endpoint will return a reference to the bulk delete task result.  A token with ORG_ADMIN authority is required to call this API.  The following rights are required to access this endpoint: idn:identity-profile:delete
 
@@ -928,7 +928,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[IdentityProfileExportedObject]:
-        """Export Identity Profiles
+        """Export identity profiles
 
         This exports existing identity profiles in the format specified by the sp-config service.
 
@@ -1017,7 +1017,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[IdentityProfileExportedObject]]:
-        """Export Identity Profiles
+        """Export identity profiles
 
         This exports existing identity profiles in the format specified by the sp-config service.
 
@@ -1106,7 +1106,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Export Identity Profiles
+        """Export identity profiles
 
         This exports existing identity profiles in the format specified by the sp-config service.
 
@@ -1554,7 +1554,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> IdentityProfile:
-        """Get Identity Profile
+        """Get identity profile
 
         Get a single identity profile by ID. A token with ORG_ADMIN or API authority is required to call this API.
 
@@ -1627,7 +1627,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[IdentityProfile]:
-        """Get Identity Profile
+        """Get identity profile
 
         Get a single identity profile by ID. A token with ORG_ADMIN or API authority is required to call this API.
 
@@ -1700,7 +1700,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Identity Profile
+        """Get identity profile
 
         Get a single identity profile by ID. A token with ORG_ADMIN or API authority is required to call this API.
 
@@ -1834,7 +1834,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ObjectImportResult:
-        """Import Identity Profiles
+        """Import identity profiles
 
         This imports previously exported identity profiles.
 
@@ -1906,7 +1906,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ObjectImportResult]:
-        """Import Identity Profiles
+        """Import identity profiles
 
         This imports previously exported identity profiles.
 
@@ -1978,7 +1978,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Import Identity Profiles
+        """Import identity profiles
 
         This imports previously exported identity profiles.
 
@@ -2129,7 +2129,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[IdentityProfile]:
-        """List Identity Profiles
+        """List identity profiles
 
         Get a list of identity profiles, based on the specified query parameters. A token with ORG_ADMIN or API authority is required to call this API to get a list of Identity Profiles.
 
@@ -2217,7 +2217,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[IdentityProfile]]:
-        """List Identity Profiles
+        """List identity profiles
 
         Get a list of identity profiles, based on the specified query parameters. A token with ORG_ADMIN or API authority is required to call this API to get a list of Identity Profiles.
 
@@ -2305,7 +2305,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Identity Profiles
+        """List identity profiles
 
         Get a list of identity profiles, based on the specified query parameters. A token with ORG_ADMIN or API authority is required to call this API to get a list of Identity Profiles.
 
@@ -2472,7 +2472,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> IdentityPreviewResponse:
-        """Generate Identity Profile Preview
+        """Generate identity profile preview
 
         Use this API to generate a non-persisted preview of the identity object after applying `IdentityAttributeConfig` sent in request body. This API only allows `accountAttribute`, `reference` and `rule` transform types in the `IdentityAttributeConfig` sent in the request body. A token with ORG_ADMIN authority is required to call this API to generate an identity preview.
 
@@ -2544,7 +2544,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[IdentityPreviewResponse]:
-        """Generate Identity Profile Preview
+        """Generate identity profile preview
 
         Use this API to generate a non-persisted preview of the identity object after applying `IdentityAttributeConfig` sent in request body. This API only allows `accountAttribute`, `reference` and `rule` transform types in the `IdentityAttributeConfig` sent in the request body. A token with ORG_ADMIN authority is required to call this API to generate an identity preview.
 
@@ -2616,7 +2616,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Generate Identity Profile Preview
+        """Generate identity profile preview
 
         Use this API to generate a non-persisted preview of the identity object after applying `IdentityAttributeConfig` sent in request body. This API only allows `accountAttribute`, `reference` and `rule` transform types in the `IdentityAttributeConfig` sent in the request body. A token with ORG_ADMIN authority is required to call this API to generate an identity preview.
 
@@ -3043,7 +3043,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> IdentityProfile:
-        """Update Identity Profile
+        """Update identity profile
 
         Update the specified identity profile with this PATCH request.  A token with ORG_ADMIN authority is required to call this API to update the Identity Profile. These fields cannot be updated: * id * created * modified * identityCount * identityRefreshRequired * Authoritative Source and Identity Attribute Configuration cannot be modified at once.
 
@@ -3120,7 +3120,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[IdentityProfile]:
-        """Update Identity Profile
+        """Update identity profile
 
         Update the specified identity profile with this PATCH request.  A token with ORG_ADMIN authority is required to call this API to update the Identity Profile. These fields cannot be updated: * id * created * modified * identityCount * identityRefreshRequired * Authoritative Source and Identity Attribute Configuration cannot be modified at once.
 
@@ -3197,7 +3197,7 @@ class IdentityProfilesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Identity Profile
+        """Update identity profile
 
         Update the specified identity profile with this PATCH request.  A token with ORG_ADMIN authority is required to call this API to update the Identity Profile. These fields cannot be updated: * id * created * modified * identityCount * identityRefreshRequired * Authoritative Source and Identity Attribute Configuration cannot be modified at once.
 

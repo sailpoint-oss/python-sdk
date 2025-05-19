@@ -71,7 +71,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> object:
-        """(Deprecated) Complete a Campaign
+        """(Deprecated) Complete a campaign
 
         :::caution  This endpoint will run successfully for any campaigns that are **past due**.  This endpoint will return a content error if the campaign is **not past due**.  :::  Use this API to complete a certification campaign. This functionality is provided to admins so that they can complete a certification even if all items have not been completed. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/complete-campaign).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -149,7 +149,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[object]:
-        """(Deprecated) Complete a Campaign
+        """(Deprecated) Complete a campaign
 
         :::caution  This endpoint will run successfully for any campaigns that are **past due**.  This endpoint will return a content error if the campaign is **not past due**.  :::  Use this API to complete a certification campaign. This functionality is provided to admins so that they can complete a certification even if all items have not been completed. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/complete-campaign).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -227,7 +227,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Complete a Campaign
+        """(Deprecated) Complete a campaign
 
         :::caution  This endpoint will run successfully for any campaigns that are **past due**.  This endpoint will return a content error if the campaign is **not past due**.  :::  Use this API to complete a certification campaign. This functionality is provided to admins so that they can complete a certification even if all items have not been completed. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/complete-campaign).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -381,7 +381,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Campaign:
-        """(Deprecated) Create Campaign
+        """(Deprecated) Create campaign
 
         Use this API to create a certification campaign with the information provided in the request body. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/create-campaign).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -454,7 +454,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Campaign]:
-        """(Deprecated) Create Campaign
+        """(Deprecated) Create campaign
 
         Use this API to create a certification campaign with the information provided in the request body. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/create-campaign).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -527,7 +527,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Create Campaign
+        """(Deprecated) Create campaign
 
         Use this API to create a certification campaign with the information provided in the request body. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/create-campaign).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -674,7 +674,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> CampaignTemplate:
-        """(Deprecated) Create a Campaign Template
+        """(Deprecated) Create a campaign template
 
         Use this API to create a campaign template based on campaign. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/create-campaign-template).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -747,7 +747,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[CampaignTemplate]:
-        """(Deprecated) Create a Campaign Template
+        """(Deprecated) Create a campaign template
 
         Use this API to create a campaign template based on campaign. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/create-campaign-template).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -820,7 +820,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Create a Campaign Template
+        """(Deprecated) Create a campaign template
 
         Use this API to create a campaign template based on campaign. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/create-campaign-template).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -967,7 +967,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """(Deprecated) Delete a Campaign Template
+        """(Deprecated) Delete a campaign template
 
         Use this API to delete a certification campaign template by ID. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/delete-campaign-template).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -1041,7 +1041,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """(Deprecated) Delete a Campaign Template
+        """(Deprecated) Delete a campaign template
 
         Use this API to delete a certification campaign template by ID. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/delete-campaign-template).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -1115,7 +1115,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Delete a Campaign Template
+        """(Deprecated) Delete a campaign template
 
         Use this API to delete a certification campaign template by ID. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/delete-campaign-template).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -1250,7 +1250,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """(Deprecated) Delete Campaign Template Schedule
+        """(Deprecated) Delete campaign template schedule
 
         Use this API to delete the schedule for a certification campaign template. The API returns a 404 if there is no schedule set. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/delete-campaign-template-schedule).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -1324,7 +1324,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """(Deprecated) Delete Campaign Template Schedule
+        """(Deprecated) Delete campaign template schedule
 
         Use this API to delete the schedule for a certification campaign template. The API returns a 404 if there is no schedule set. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/delete-campaign-template-schedule).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -1398,7 +1398,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Delete Campaign Template Schedule
+        """(Deprecated) Delete campaign template schedule
 
         Use this API to delete the schedule for a certification campaign template. The API returns a 404 if there is no schedule set. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/delete-campaign-template-schedule).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -1533,7 +1533,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> object:
-        """(Deprecated) Delete Campaigns
+        """(Deprecated) Delete campaigns
 
         Use this API to delete certification campaigns whose IDs are specified in the provided list of campaign IDs. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/delete-campaigns).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -1607,7 +1607,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[object]:
-        """(Deprecated) Delete Campaigns
+        """(Deprecated) Delete campaigns
 
         Use this API to delete certification campaigns whose IDs are specified in the provided list of campaign IDs. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/delete-campaigns).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -1681,7 +1681,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Delete Campaigns
+        """(Deprecated) Delete campaigns
 
         Use this API to delete certification campaigns whose IDs are specified in the provided list of campaign IDs. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/delete-campaigns).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -1834,7 +1834,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[GetActiveCampaigns200ResponseInner]:
-        """(Deprecated) List Campaigns
+        """(Deprecated) List campaigns
 
         Use this API to get a list of campaigns. The API can provide increased level of detail for each campaign for the correct provided query. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-active-campaigns).  A token with ORG_ADMIN, CERT_ADMIN or REPORT_ADMIN authority is required to call this API. 
 
@@ -1927,7 +1927,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[GetActiveCampaigns200ResponseInner]]:
-        """(Deprecated) List Campaigns
+        """(Deprecated) List campaigns
 
         Use this API to get a list of campaigns. The API can provide increased level of detail for each campaign for the correct provided query. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-active-campaigns).  A token with ORG_ADMIN, CERT_ADMIN or REPORT_ADMIN authority is required to call this API. 
 
@@ -2020,7 +2020,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) List Campaigns
+        """(Deprecated) List campaigns
 
         Use this API to get a list of campaigns. The API can provide increased level of detail for each campaign for the correct provided query. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-active-campaigns).  A token with ORG_ADMIN, CERT_ADMIN or REPORT_ADMIN authority is required to call this API. 
 
@@ -2196,7 +2196,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Slimcampaign:
-        """(Deprecated) Get Campaign
+        """(Deprecated) Get campaign
 
         Use this API to get information for an existing certification campaign by the campaign's ID. Though this endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -2270,7 +2270,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Slimcampaign]:
-        """(Deprecated) Get Campaign
+        """(Deprecated) Get campaign
 
         Use this API to get information for an existing certification campaign by the campaign's ID. Though this endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -2344,7 +2344,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Get Campaign
+        """(Deprecated) Get campaign
 
         Use this API to get information for an existing certification campaign by the campaign's ID. Though this endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -2479,7 +2479,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[CampaignReport]:
-        """(Deprecated) Get Campaign Reports
+        """(Deprecated) Get campaign reports
 
         Use this API to fetch all reports for a certification campaign by campaign ID. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-reports).  A token with ORG_ADMIN, CERT_ADMIN or REPORT_ADMIN authority is required to call this API. 
 
@@ -2553,7 +2553,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[CampaignReport]]:
-        """(Deprecated) Get Campaign Reports
+        """(Deprecated) Get campaign reports
 
         Use this API to fetch all reports for a certification campaign by campaign ID. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-reports).  A token with ORG_ADMIN, CERT_ADMIN or REPORT_ADMIN authority is required to call this API. 
 
@@ -2627,7 +2627,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Get Campaign Reports
+        """(Deprecated) Get campaign reports
 
         Use this API to fetch all reports for a certification campaign by campaign ID. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-reports).  A token with ORG_ADMIN, CERT_ADMIN or REPORT_ADMIN authority is required to call this API. 
 
@@ -2761,7 +2761,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> CampaignReportsConfig:
-        """(Deprecated) Get Campaign Reports Configuration
+        """(Deprecated) Get campaign reports configuration
 
         Use this API to fetch the configuration for certification campaign reports. The configuration includes only one element - identity attributes defined as custom report columns. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-reports-config).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -2830,7 +2830,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[CampaignReportsConfig]:
-        """(Deprecated) Get Campaign Reports Configuration
+        """(Deprecated) Get campaign reports configuration
 
         Use this API to fetch the configuration for certification campaign reports. The configuration includes only one element - identity attributes defined as custom report columns. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-reports-config).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -2899,7 +2899,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Get Campaign Reports Configuration
+        """(Deprecated) Get campaign reports configuration
 
         Use this API to fetch the configuration for certification campaign reports. The configuration includes only one element - identity attributes defined as custom report columns. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-reports-config).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -3027,7 +3027,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> CampaignTemplate:
-        """(Deprecated) Get a Campaign Template
+        """(Deprecated) Get a campaign template
 
         Use this API to fetch a certification campaign template by ID. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-template).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -3101,7 +3101,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[CampaignTemplate]:
-        """(Deprecated) Get a Campaign Template
+        """(Deprecated) Get a campaign template
 
         Use this API to fetch a certification campaign template by ID. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-template).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -3175,7 +3175,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Get a Campaign Template
+        """(Deprecated) Get a campaign template
 
         Use this API to fetch a certification campaign template by ID. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-template).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -3310,7 +3310,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Schedule:
-        """(Deprecated) Get Campaign Template Schedule
+        """(Deprecated) Get campaign template schedule
 
         Use this API to get the schedule for a certification campaign template. The API returns a 404 if there is no schedule set. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-template-schedule).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -3384,7 +3384,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Schedule]:
-        """(Deprecated) Get Campaign Template Schedule
+        """(Deprecated) Get campaign template schedule
 
         Use this API to get the schedule for a certification campaign template. The API returns a 404 if there is no schedule set. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-template-schedule).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -3458,7 +3458,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Get Campaign Template Schedule
+        """(Deprecated) Get campaign template schedule
 
         Use this API to get the schedule for a certification campaign template. The API returns a 404 if there is no schedule set. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/get-campaign-template-schedule).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -3597,7 +3597,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[CampaignTemplate]:
-        """(Deprecated) List Campaign Templates
+        """(Deprecated) List campaign templates
 
         Use this API to get a list of all campaign templates. Scope can be reduced through standard V3 query params. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/list-campaign-templates).  The endpoint returns all campaign templates matching the query parameters.  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -3686,7 +3686,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[CampaignTemplate]]:
-        """(Deprecated) List Campaign Templates
+        """(Deprecated) List campaign templates
 
         Use this API to get a list of all campaign templates. Scope can be reduced through standard V3 query params. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/list-campaign-templates).  The endpoint returns all campaign templates matching the query parameters.  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -3775,7 +3775,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) List Campaign Templates
+        """(Deprecated) List campaign templates
 
         Use this API to get a list of all campaign templates. Scope can be reduced through standard V3 query params. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/list-campaign-templates).  The endpoint returns all campaign templates matching the query parameters.  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -3944,7 +3944,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> CertificationTask:
-        """(Deprecated) Reassign Certifications
+        """(Deprecated) Reassign certifications
 
         This API reassigns the specified certifications from one identity to another.  Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/move).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -4022,7 +4022,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[CertificationTask]:
-        """(Deprecated) Reassign Certifications
+        """(Deprecated) Reassign certifications
 
         This API reassigns the specified certifications from one identity to another.  Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/move).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -4100,7 +4100,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Reassign Certifications
+        """(Deprecated) Reassign certifications
 
         This API reassigns the specified certifications from one identity to another.  Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/move).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -4255,7 +4255,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> CampaignTemplate:
-        """(Deprecated) Update a Campaign Template
+        """(Deprecated) Update a campaign template
 
         Use this API to update individual fields on a certification campaign template, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/patch-campaign-template).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -4333,7 +4333,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[CampaignTemplate]:
-        """(Deprecated) Update a Campaign Template
+        """(Deprecated) Update a campaign template
 
         Use this API to update individual fields on a certification campaign template, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/patch-campaign-template).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -4411,7 +4411,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Update a Campaign Template
+        """(Deprecated) Update a campaign template
 
         Use this API to update individual fields on a certification campaign template, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/patch-campaign-template).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -4566,7 +4566,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> CampaignReportsConfig:
-        """(Deprecated) Set Campaign Reports Configuration
+        """(Deprecated) Set campaign reports configuration
 
         Use this API to overwrite the configuration for campaign reports. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/set-campaign-reports-config).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -4639,7 +4639,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[CampaignReportsConfig]:
-        """(Deprecated) Set Campaign Reports Configuration
+        """(Deprecated) Set campaign reports configuration
 
         Use this API to overwrite the configuration for campaign reports. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/set-campaign-reports-config).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -4712,7 +4712,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Set Campaign Reports Configuration
+        """(Deprecated) Set campaign reports configuration
 
         Use this API to overwrite the configuration for campaign reports. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/set-campaign-reports-config).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -4860,7 +4860,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """(Deprecated) Set Campaign Template Schedule
+        """(Deprecated) Set campaign template schedule
 
         Use this API to set the schedule for a certification campaign template. If a schedule already exists, the API overwrites it with the new one.  Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/set-campaign-template-schedule).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -4938,7 +4938,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """(Deprecated) Set Campaign Template Schedule
+        """(Deprecated) Set campaign template schedule
 
         Use this API to set the schedule for a certification campaign template. If a schedule already exists, the API overwrites it with the new one.  Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/set-campaign-template-schedule).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -5016,7 +5016,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Set Campaign Template Schedule
+        """(Deprecated) Set campaign template schedule
 
         Use this API to set the schedule for a certification campaign template. If a schedule already exists, the API overwrites it with the new one.  Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/set-campaign-template-schedule).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -5171,7 +5171,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> object:
-        """(Deprecated) Activate a Campaign
+        """(Deprecated) Activate a campaign
 
         Use this API to submit a job to activate the certified campaign with the specified ID. The campaign must be staged. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-campaign).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -5249,7 +5249,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[object]:
-        """(Deprecated) Activate a Campaign
+        """(Deprecated) Activate a campaign
 
         Use this API to submit a job to activate the certified campaign with the specified ID. The campaign must be staged. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-campaign).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -5327,7 +5327,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Activate a Campaign
+        """(Deprecated) Activate a campaign
 
         Use this API to submit a job to activate the certified campaign with the specified ID. The campaign must be staged. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-campaign).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -5481,7 +5481,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> object:
-        """(Deprecated) Run Campaign Remediation Scan
+        """(Deprecated) Run campaign remediation scan
 
         Use this API to run a remediation scan task for a certification campaign. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-campaign-remediation-scan).  A token with ORG_ADMIN, CERT_ADMIN or REPORT_ADMIN authority is required to call this API. 
 
@@ -5555,7 +5555,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[object]:
-        """(Deprecated) Run Campaign Remediation Scan
+        """(Deprecated) Run campaign remediation scan
 
         Use this API to run a remediation scan task for a certification campaign. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-campaign-remediation-scan).  A token with ORG_ADMIN, CERT_ADMIN or REPORT_ADMIN authority is required to call this API. 
 
@@ -5629,7 +5629,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Run Campaign Remediation Scan
+        """(Deprecated) Run campaign remediation scan
 
         Use this API to run a remediation scan task for a certification campaign. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-campaign-remediation-scan).  A token with ORG_ADMIN, CERT_ADMIN or REPORT_ADMIN authority is required to call this API. 
 
@@ -5765,7 +5765,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> object:
-        """(Deprecated) Run Campaign Report
+        """(Deprecated) Run campaign report
 
         Use this API to run a report for a certification campaign. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-campaign-report).  A token with ORG_ADMIN, CERT_ADMIN or REPORT_ADMIN authority is required to call this API. 
 
@@ -5843,7 +5843,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[object]:
-        """(Deprecated) Run Campaign Report
+        """(Deprecated) Run campaign report
 
         Use this API to run a report for a certification campaign. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-campaign-report).  A token with ORG_ADMIN, CERT_ADMIN or REPORT_ADMIN authority is required to call this API. 
 
@@ -5921,7 +5921,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Run Campaign Report
+        """(Deprecated) Run campaign report
 
         Use this API to run a report for a certification campaign. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-campaign-report).  A token with ORG_ADMIN, CERT_ADMIN or REPORT_ADMIN authority is required to call this API. 
 
@@ -6062,7 +6062,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> CampaignReference:
-        """(Deprecated) Generate a Campaign from Template
+        """(Deprecated) Generate a campaign from template
 
         Use this API to generate a new certification campaign from a campaign template.  The campaign object contained in the template has special formatting applied to its name and description fields that determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation.  Placeholders consist of a percent sign followed by a letter indicating what should be inserted. For example, \"%Y\" inserts the current year, and a campaign template named \"Campaign for %y\" generates a campaign called \"Campaign for 2020\" (assuming the year at generation time is 2020).  Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html).  Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-generate-campaign-template).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -6135,7 +6135,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[CampaignReference]:
-        """(Deprecated) Generate a Campaign from Template
+        """(Deprecated) Generate a campaign from template
 
         Use this API to generate a new certification campaign from a campaign template.  The campaign object contained in the template has special formatting applied to its name and description fields that determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation.  Placeholders consist of a percent sign followed by a letter indicating what should be inserted. For example, \"%Y\" inserts the current year, and a campaign template named \"Campaign for %y\" generates a campaign called \"Campaign for 2020\" (assuming the year at generation time is 2020).  Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html).  Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-generate-campaign-template).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -6208,7 +6208,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Generate a Campaign from Template
+        """(Deprecated) Generate a campaign from template
 
         Use this API to generate a new certification campaign from a campaign template.  The campaign object contained in the template has special formatting applied to its name and description fields that determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation.  Placeholders consist of a percent sign followed by a letter indicating what should be inserted. For example, \"%Y\" inserts the current year, and a campaign template named \"Campaign for %y\" generates a campaign called \"Campaign for 2020\" (assuming the year at generation time is 2020).  Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html).  Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/start-generate-campaign-template).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -6343,7 +6343,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Slimcampaign:
-        """(Deprecated) Update a Campaign
+        """(Deprecated) Update a campaign
 
         Use this API to update individual fields on a certification campaign, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Though this endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/update-campaign).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -6421,7 +6421,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Slimcampaign]:
-        """(Deprecated) Update a Campaign
+        """(Deprecated) Update a campaign
 
         Use this API to update individual fields on a certification campaign, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Though this endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/update-campaign).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
@@ -6499,7 +6499,7 @@ class CertificationCampaignsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Update a Campaign
+        """(Deprecated) Update a campaign
 
         Use this API to update individual fields on a certification campaign, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Though this endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/update-campaign).  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 

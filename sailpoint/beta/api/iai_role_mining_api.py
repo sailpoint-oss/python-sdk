@@ -1313,7 +1313,7 @@ class IAIRoleMiningApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RoleMiningPotentialRoleExportResponse:
-        """Asynchronously export details for a potential role in a role mining session and upload to S3
+        """Asynchronously export details for a potential role in a role mining session and upload to s3
 
         This endpoint uploads all the information for a potential role in a role mining session to S3 as a downloadable zip archive.  Includes identities and entitlements in the potential role.
 
@@ -1392,7 +1392,7 @@ class IAIRoleMiningApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[RoleMiningPotentialRoleExportResponse]:
-        """Asynchronously export details for a potential role in a role mining session and upload to S3
+        """Asynchronously export details for a potential role in a role mining session and upload to s3
 
         This endpoint uploads all the information for a potential role in a role mining session to S3 as a downloadable zip archive.  Includes identities and entitlements in the potential role.
 
@@ -1471,7 +1471,7 @@ class IAIRoleMiningApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Asynchronously export details for a potential role in a role mining session and upload to S3
+        """Asynchronously export details for a potential role in a role mining session and upload to s3
 
         This endpoint uploads all the information for a potential role in a role mining session to S3 as a downloadable zip archive.  Includes identities and entitlements in the potential role.
 

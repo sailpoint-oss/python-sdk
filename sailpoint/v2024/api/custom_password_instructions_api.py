@@ -57,7 +57,7 @@ class CustomPasswordInstructionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> CustomPasswordInstruction:
-        """Create Custom Password Instructions
+        """Create custom password instructions
 
         This API creates the custom password instructions for the specified page ID.
 
@@ -131,7 +131,7 @@ class CustomPasswordInstructionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[CustomPasswordInstruction]:
-        """Create Custom Password Instructions
+        """Create custom password instructions
 
         This API creates the custom password instructions for the specified page ID.
 
@@ -205,7 +205,7 @@ class CustomPasswordInstructionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create Custom Password Instructions
+        """Create custom password instructions
 
         This API creates the custom password instructions for the specified page ID.
 
@@ -357,7 +357,7 @@ class CustomPasswordInstructionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete Custom Password Instructions by page ID
+        """Delete custom password instructions by page id
 
         This API delete the custom password instructions for the specified page ID.
 
@@ -436,7 +436,7 @@ class CustomPasswordInstructionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete Custom Password Instructions by page ID
+        """Delete custom password instructions by page id
 
         This API delete the custom password instructions for the specified page ID.
 
@@ -515,7 +515,7 @@ class CustomPasswordInstructionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Custom Password Instructions by page ID
+        """Delete custom password instructions by page id
 
         This API delete the custom password instructions for the specified page ID.
 
@@ -663,7 +663,7 @@ class CustomPasswordInstructionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> CustomPasswordInstruction:
-        """Get Custom Password Instructions by Page ID
+        """Get custom password instructions by page id
 
         This API returns the custom password instructions for the specified page ID.
 
@@ -742,7 +742,7 @@ class CustomPasswordInstructionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[CustomPasswordInstruction]:
-        """Get Custom Password Instructions by Page ID
+        """Get custom password instructions by page id
 
         This API returns the custom password instructions for the specified page ID.
 
@@ -821,7 +821,7 @@ class CustomPasswordInstructionsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Custom Password Instructions by Page ID
+        """Get custom password instructions by page id
 
         This API returns the custom password instructions for the specified page ID.
 

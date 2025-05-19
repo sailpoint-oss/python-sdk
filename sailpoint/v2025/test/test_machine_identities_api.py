@@ -29,7 +29,7 @@ class TestMachineIdentitiesApi(unittest.TestCase):
     def test_create_machine_identity(self) -> None:
         """Test case for create_machine_identity
 
-        Create Machine Identities
+        Create machine identities
         """
         pass
 
@@ -43,21 +43,21 @@ class TestMachineIdentitiesApi(unittest.TestCase):
     def test_get_machine_identity(self) -> None:
         """Test case for get_machine_identity
 
-        Machine Identity Details
+        Machine identity details
         """
         pass
 
     def test_list_machine_identities(self) -> None:
         """Test case for list_machine_identities
 
-        List Machine Identities
+        List machine identities
         """
         pass
 
     def test_update_machine_identity(self) -> None:
         """Test case for update_machine_identity
 
-        Update a Machine Identity
+        Update a machine identity
         """
         pass
 

@@ -358,7 +358,7 @@ class CustomFormsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> FormDefinitionDynamicSchemaResponse:
-        """Generate JSON Schema dynamically.
+        """Generate json schema dynamically.
 
 
         :param body: Body is the request payload to create a form definition dynamic schema
@@ -430,7 +430,7 @@ class CustomFormsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[FormDefinitionDynamicSchemaResponse]:
-        """Generate JSON Schema dynamically.
+        """Generate json schema dynamically.
 
 
         :param body: Body is the request payload to create a form definition dynamic schema
@@ -502,7 +502,7 @@ class CustomFormsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Generate JSON Schema dynamically.
+        """Generate json schema dynamically.
 
 
         :param body: Body is the request payload to create a form definition dynamic schema
@@ -1863,7 +1863,7 @@ class CustomFormsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> bytearray:
-        """Download definition file by fileId.
+        """Download definition file by fileid.
 
 
         :param form_definition_id: FormDefinitionID  Form definition ID (required)
@@ -1940,7 +1940,7 @@ class CustomFormsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[bytearray]:
-        """Download definition file by fileId.
+        """Download definition file by fileid.
 
 
         :param form_definition_id: FormDefinitionID  Form definition ID (required)
@@ -2017,7 +2017,7 @@ class CustomFormsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Download definition file by fileId.
+        """Download definition file by fileid.
 
 
         :param form_definition_id: FormDefinitionID  Form definition ID (required)
@@ -2721,7 +2721,7 @@ class CustomFormsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> bytearray:
-        """Download instance file by fileId.
+        """Download instance file by fileid.
 
 
         :param form_instance_id: FormInstanceID  Form instance ID (required)
@@ -2798,7 +2798,7 @@ class CustomFormsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[bytearray]:
-        """Download instance file by fileId.
+        """Download instance file by fileid.
 
 
         :param form_instance_id: FormInstanceID  Form instance ID (required)
@@ -2875,7 +2875,7 @@ class CustomFormsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Download instance file by fileId.
+        """Download instance file by fileid.
 
 
         :param form_instance_id: FormInstanceID  Form instance ID (required)

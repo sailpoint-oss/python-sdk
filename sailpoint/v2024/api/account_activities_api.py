@@ -56,7 +56,7 @@ class AccountActivitiesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> AccountActivity:
-        """Get an Account Activity
+        """Get an account activity
 
         This gets a single account activity by its id.
 
@@ -129,7 +129,7 @@ class AccountActivitiesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[AccountActivity]:
-        """Get an Account Activity
+        """Get an account activity
 
         This gets a single account activity by its id.
 
@@ -202,7 +202,7 @@ class AccountActivitiesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get an Account Activity
+        """Get an account activity
 
         This gets a single account activity by its id.
 
@@ -343,7 +343,7 @@ class AccountActivitiesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[AccountActivity]:
-        """List Account Activities
+        """List account activities
 
         This gets a collection of account activities that satisfy the given query parameters.
 
@@ -443,7 +443,7 @@ class AccountActivitiesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[AccountActivity]]:
-        """List Account Activities
+        """List account activities
 
         This gets a collection of account activities that satisfy the given query parameters.
 
@@ -543,7 +543,7 @@ class AccountActivitiesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Account Activities
+        """List account activities
 
         This gets a collection of account activities that satisfy the given query parameters.
 

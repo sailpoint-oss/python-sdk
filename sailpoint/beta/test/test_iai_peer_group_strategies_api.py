@@ -29,7 +29,7 @@ class TestIAIPeerGroupStrategiesApi(unittest.TestCase):
     def test_get_peer_group_outliers(self) -> None:
         """Test case for get_peer_group_outliers
 
-        Identity Outliers List
+        Identity outliers list
         """
         pass
 

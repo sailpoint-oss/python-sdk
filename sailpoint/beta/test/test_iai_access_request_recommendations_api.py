@@ -29,56 +29,56 @@ class TestIAIAccessRequestRecommendationsApi(unittest.TestCase):
     def test_add_access_request_recommendations_ignored_item(self) -> None:
         """Test case for add_access_request_recommendations_ignored_item
 
-        Ignore Access Request Recommendation
+        Ignore access request recommendation
         """
         pass
 
     def test_add_access_request_recommendations_requested_item(self) -> None:
         """Test case for add_access_request_recommendations_requested_item
 
-        Accept Access Request Recommendation
+        Accept access request recommendation
         """
         pass
 
     def test_add_access_request_recommendations_viewed_item(self) -> None:
         """Test case for add_access_request_recommendations_viewed_item
 
-        Mark Viewed Access Request Recommendations
+        Mark viewed access request recommendations
         """
         pass
 
     def test_add_access_request_recommendations_viewed_items(self) -> None:
         """Test case for add_access_request_recommendations_viewed_items
 
-        Bulk Mark Viewed Access Request Recommendations
+        Bulk mark viewed access request recommendations
         """
         pass
 
     def test_get_access_request_recommendations(self) -> None:
         """Test case for get_access_request_recommendations
 
-        Identity Access Request Recommendations
+        Identity access request recommendations
         """
         pass
 
     def test_get_access_request_recommendations_ignored_items(self) -> None:
         """Test case for get_access_request_recommendations_ignored_items
 
-        List Ignored Access Request Recommendations
+        List ignored access request recommendations
         """
         pass
 
     def test_get_access_request_recommendations_requested_items(self) -> None:
         """Test case for get_access_request_recommendations_requested_items
 
-        List Accepted Access Request Recommendations
+        List accepted access request recommendations
         """
         pass
 
     def test_get_access_request_recommendations_viewed_items(self) -> None:
         """Test case for get_access_request_recommendations_viewed_items
 
-        List Viewed Access Request Recommendations
+        List viewed access request recommendations
         """
         pass
 

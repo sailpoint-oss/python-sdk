@@ -29,28 +29,28 @@ class TestCertificationSummariesApi(unittest.TestCase):
     def test_get_identity_access_summaries(self) -> None:
         """Test case for get_identity_access_summaries
 
-        Access Summaries
+        Access summaries
         """
         pass
 
     def test_get_identity_decision_summary(self) -> None:
         """Test case for get_identity_decision_summary
 
-        Summary of Certification Decisions
+        Summary of certification decisions
         """
         pass
 
     def test_get_identity_summaries(self) -> None:
         """Test case for get_identity_summaries
 
-        Identity Summaries for Campaign Certification
+        Identity summaries for campaign certification
         """
         pass
 
     def test_get_identity_summary(self) -> None:
         """Test case for get_identity_summary
 
-        Summary for Identity
+        Summary for identity
         """
         pass
 

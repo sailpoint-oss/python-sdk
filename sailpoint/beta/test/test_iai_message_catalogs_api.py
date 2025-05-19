@@ -29,7 +29,7 @@ class TestIAIMessageCatalogsApi(unittest.TestCase):
     def test_get_message_catalogs(self) -> None:
         """Test case for get_message_catalogs
 
-        Get Message catalogs
+        Get message catalogs
         """
         pass
 

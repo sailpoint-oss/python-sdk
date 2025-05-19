@@ -29,7 +29,7 @@ class TestManagedClientsApi(unittest.TestCase):
     def test_get_managed_client_status(self) -> None:
         """Test case for get_managed_client_status
 
-        Specified Managed Client Status.
+        Specified managed client status.
         """
         pass
 

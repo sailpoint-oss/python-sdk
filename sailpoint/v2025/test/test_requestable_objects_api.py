@@ -29,7 +29,7 @@ class TestRequestableObjectsApi(unittest.TestCase):
     def test_list_requestable_objects(self) -> None:
         """Test case for list_requestable_objects
 
-        Requestable Objects List
+        Requestable objects list
         """
         pass
 

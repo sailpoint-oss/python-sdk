@@ -29,42 +29,42 @@ class TestManagedClientsApi(unittest.TestCase):
     def test_create_managed_client(self) -> None:
         """Test case for create_managed_client
 
-        Create Managed Client
+        Create managed client
         """
         pass
 
     def test_delete_managed_client(self) -> None:
         """Test case for delete_managed_client
 
-        Delete Managed Client
+        Delete managed client
         """
         pass
 
     def test_get_managed_client(self) -> None:
         """Test case for get_managed_client
 
-        Get Managed Client
+        Get managed client
         """
         pass
 
     def test_get_managed_client_status(self) -> None:
         """Test case for get_managed_client_status
 
-        Get Managed Client Status
+        Get managed client status
         """
         pass
 
     def test_get_managed_clients(self) -> None:
         """Test case for get_managed_clients
 
-        Get Managed Clients
+        Get managed clients
         """
         pass
 
     def test_update_managed_client(self) -> None:
         """Test case for update_managed_client
 
-        Update Managed Client
+        Update managed client
         """
         pass
 

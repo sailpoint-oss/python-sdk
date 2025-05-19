@@ -29,21 +29,21 @@ class TestOrgConfigApi(unittest.TestCase):
     def test_get_org_config(self) -> None:
         """Test case for get_org_config
 
-        Get Org Config Settings
+        Get org config settings
         """
         pass
 
     def test_get_valid_time_zones(self) -> None:
         """Test case for get_valid_time_zones
 
-        Get Valid Time Zones
+        Get valid time zones
         """
         pass
 
     def test_patch_org_config(self) -> None:
         """Test case for patch_org_config
 
-        Patch Org Config
+        Patch org config
         """
         pass
 

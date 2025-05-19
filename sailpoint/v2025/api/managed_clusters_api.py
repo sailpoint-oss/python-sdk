@@ -61,7 +61,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ManagedCluster:
-        """Create Create Managed Cluster
+        """Create create managed cluster
 
         Create a new Managed Cluster. The API returns a result that includes the managed cluster ID.
 
@@ -133,7 +133,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ManagedCluster]:
-        """Create Create Managed Cluster
+        """Create create managed cluster
 
         Create a new Managed Cluster. The API returns a result that includes the managed cluster ID.
 
@@ -205,7 +205,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create Create Managed Cluster
+        """Create create managed cluster
 
         Create a new Managed Cluster. The API returns a result that includes the managed cluster ID.
 
@@ -352,7 +352,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete Managed Cluster
+        """Delete managed cluster
 
         Delete an existing managed cluster.
 
@@ -428,7 +428,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete Managed Cluster
+        """Delete managed cluster
 
         Delete an existing managed cluster.
 
@@ -504,7 +504,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Managed Cluster
+        """Delete managed cluster
 
         Delete an existing managed cluster.
 
@@ -645,7 +645,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ClientLogConfiguration:
-        """Get Managed Cluster Log Configuration
+        """Get managed cluster log configuration
 
         Get a managed cluster's log configuration.
 
@@ -719,7 +719,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ClientLogConfiguration]:
-        """Get Managed Cluster Log Configuration
+        """Get managed cluster log configuration
 
         Get a managed cluster's log configuration.
 
@@ -793,7 +793,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Managed Cluster Log Configuration
+        """Get managed cluster log configuration
 
         Get a managed cluster's log configuration.
 
@@ -928,7 +928,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ManagedCluster:
-        """Get Managed Cluster
+        """Get managed cluster
 
         Get a managed cluster by ID.
 
@@ -1001,7 +1001,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ManagedCluster]:
-        """Get Managed Cluster
+        """Get managed cluster
 
         Get a managed cluster by ID.
 
@@ -1074,7 +1074,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Managed Cluster
+        """Get managed cluster
 
         Get a managed cluster by ID.
 
@@ -1211,7 +1211,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[ManagedCluster]:
-        """Get Managed Clusters
+        """Get managed clusters
 
         List current organization's managed clusters, based on request context.
 
@@ -1295,7 +1295,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[ManagedCluster]]:
-        """Get Managed Clusters
+        """Get managed clusters
 
         List current organization's managed clusters, based on request context.
 
@@ -1379,7 +1379,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Managed Clusters
+        """Get managed clusters
 
         List current organization's managed clusters, based on request context.
 
@@ -1539,7 +1539,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ClientLogConfiguration:
-        """Update Managed Cluster Log Configuration
+        """Update managed cluster log configuration
 
         Update a managed cluster's log configuration. You may only specify one of `durationMinutes` or `expiration`, up to 1440 minutes (24 hours) in the future. If neither is specified, the default value for `durationMinutes` is 240.
 
@@ -1616,7 +1616,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ClientLogConfiguration]:
-        """Update Managed Cluster Log Configuration
+        """Update managed cluster log configuration
 
         Update a managed cluster's log configuration. You may only specify one of `durationMinutes` or `expiration`, up to 1440 minutes (24 hours) in the future. If neither is specified, the default value for `durationMinutes` is 240.
 
@@ -1693,7 +1693,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Managed Cluster Log Configuration
+        """Update managed cluster log configuration
 
         Update a managed cluster's log configuration. You may only specify one of `durationMinutes` or `expiration`, up to 1440 minutes (24 hours) in the future. If neither is specified, the default value for `durationMinutes` is 240.
 
@@ -1846,7 +1846,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ClusterManualUpgrade:
-        """Trigger Manual Upgrade for Managed Cluster
+        """Trigger manual upgrade for managed cluster
 
         Trigger Manual Upgrade for Managed Cluster. AMS Security: API, Internal A token with SYSTEM_ADMINISTRATOR authority is required to call this API.
 
@@ -1919,7 +1919,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ClusterManualUpgrade]:
-        """Trigger Manual Upgrade for Managed Cluster
+        """Trigger manual upgrade for managed cluster
 
         Trigger Manual Upgrade for Managed Cluster. AMS Security: API, Internal A token with SYSTEM_ADMINISTRATOR authority is required to call this API.
 
@@ -1992,7 +1992,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Trigger Manual Upgrade for Managed Cluster
+        """Trigger manual upgrade for managed cluster
 
         Trigger Manual Upgrade for Managed Cluster. AMS Security: API, Internal A token with SYSTEM_ADMINISTRATOR authority is required to call this API.
 
@@ -2127,7 +2127,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ManagedCluster:
-        """Update Managed Cluster
+        """Update managed cluster
 
         Update an existing managed cluster.
 
@@ -2204,7 +2204,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ManagedCluster]:
-        """Update Managed Cluster
+        """Update managed cluster
 
         Update an existing managed cluster.
 
@@ -2281,7 +2281,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Managed Cluster
+        """Update managed cluster
 
         Update an existing managed cluster.
 

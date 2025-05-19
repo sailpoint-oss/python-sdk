@@ -36,28 +36,28 @@ class TestSavedSearchApi(unittest.TestCase):
     def test_delete_saved_search(self) -> None:
         """Test case for delete_saved_search
 
-        Delete document by ID
+        Delete document by id
         """
         pass
 
     def test_execute_saved_search(self) -> None:
         """Test case for execute_saved_search
 
-        Execute a saved search by ID
+        Execute a saved search by id
         """
         pass
 
     def test_get_saved_search(self) -> None:
         """Test case for get_saved_search
 
-        Return saved search by ID
+        Return saved search by id
         """
         pass
 
     def test_list_saved_searches(self) -> None:
         """Test case for list_saved_searches
 
-        A list of Saved Searches
+        A list of saved searches
         """
         pass
 

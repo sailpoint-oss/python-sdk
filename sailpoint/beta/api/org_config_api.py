@@ -56,7 +56,7 @@ class OrgConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> OrgConfig:
-        """Get Org configuration settings
+        """Get org configuration settings
 
         Get org configuration with only external (org admin) accessible properties for the current org.
 
@@ -125,7 +125,7 @@ class OrgConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[OrgConfig]:
-        """Get Org configuration settings
+        """Get org configuration settings
 
         Get org configuration with only external (org admin) accessible properties for the current org.
 
@@ -194,7 +194,7 @@ class OrgConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Org configuration settings
+        """Get org configuration settings
 
         Get org configuration with only external (org admin) accessible properties for the current org.
 
@@ -584,7 +584,7 @@ class OrgConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> OrgConfig:
-        """Patch an Org configuration property
+        """Patch an org configuration property
 
         Patch configuration of the current org using http://jsonpatch.com/ syntax.  Commonly used for changing the time zone of an org.
 
@@ -657,7 +657,7 @@ class OrgConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[OrgConfig]:
-        """Patch an Org configuration property
+        """Patch an org configuration property
 
         Patch configuration of the current org using http://jsonpatch.com/ syntax.  Commonly used for changing the time zone of an org.
 
@@ -730,7 +730,7 @@ class OrgConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Patch an Org configuration property
+        """Patch an org configuration property
 
         Patch configuration of the current org using http://jsonpatch.com/ syntax.  Commonly used for changing the time zone of an org.
 

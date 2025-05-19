@@ -60,7 +60,7 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ManagedClient:
-        """Create Managed Client
+        """Create managed client
 
         Create a new managed client. The API returns a result that includes the managed client ID.
 
@@ -132,7 +132,7 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ManagedClient]:
-        """Create Managed Client
+        """Create managed client
 
         Create a new managed client. The API returns a result that includes the managed client ID.
 
@@ -204,7 +204,7 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create Managed Client
+        """Create managed client
 
         Create a new managed client. The API returns a result that includes the managed client ID.
 
@@ -350,7 +350,7 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete Managed Client
+        """Delete managed client
 
         Delete an existing managed client.
 
@@ -422,7 +422,7 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete Managed Client
+        """Delete managed client
 
         Delete an existing managed client.
 
@@ -494,7 +494,7 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Managed Client
+        """Delete managed client
 
         Delete an existing managed client.
 
@@ -627,7 +627,7 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ManagedClient:
-        """Get Managed Client
+        """Get managed client
 
         Get managed client by ID. 
 
@@ -700,7 +700,7 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ManagedClient]:
-        """Get Managed Client
+        """Get managed client
 
         Get managed client by ID. 
 
@@ -773,7 +773,7 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Managed Client
+        """Get managed client
 
         Get managed client by ID. 
 
@@ -908,7 +908,7 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ManagedClientStatus:
-        """Get Managed Client Status
+        """Get managed client status
 
         Get a managed client's status, using its ID.
 
@@ -985,7 +985,7 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ManagedClientStatus]:
-        """Get Managed Client Status
+        """Get managed client status
 
         Get a managed client's status, using its ID.
 
@@ -1062,7 +1062,7 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Managed Client Status
+        """Get managed client status
 
         Get a managed client's status, using its ID.
 
@@ -1207,7 +1207,7 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[ManagedClient]:
-        """Get Managed Clients
+        """Get managed clients
 
         List managed clients.
 
@@ -1291,7 +1291,7 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[ManagedClient]]:
-        """Get Managed Clients
+        """Get managed clients
 
         List managed clients.
 
@@ -1375,7 +1375,7 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Managed Clients
+        """Get managed clients
 
         List managed clients.
 
@@ -1535,7 +1535,7 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ManagedClient:
-        """Update Managed Client
+        """Update managed client
 
         Update an existing managed client.
 
@@ -1612,7 +1612,7 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ManagedClient]:
-        """Update Managed Client
+        """Update managed client
 
         Update an existing managed client.
 
@@ -1689,7 +1689,7 @@ class ManagedClientsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Managed Client
+        """Update managed client
 
         Update an existing managed client.
 

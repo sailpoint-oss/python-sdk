@@ -29,14 +29,14 @@ class TestAuthUsersApi(unittest.TestCase):
     def test_get_auth_user(self) -> None:
         """Test case for get_auth_user
 
-        Auth User Details
+        Auth user details
         """
         pass
 
     def test_patch_auth_user(self) -> None:
         """Test case for patch_auth_user
 
-        Auth User Update
+        Auth user update
         """
         pass
 

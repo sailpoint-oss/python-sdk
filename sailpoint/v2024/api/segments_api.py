@@ -56,7 +56,7 @@ class SegmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Segment:
-        """Create Segment
+        """Create segment
 
         This API creates a segment.  >**Note:** Segment definitions may take time to propagate to all identities.
 
@@ -128,7 +128,7 @@ class SegmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Segment]:
-        """Create Segment
+        """Create segment
 
         This API creates a segment.  >**Note:** Segment definitions may take time to propagate to all identities.
 
@@ -200,7 +200,7 @@ class SegmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create Segment
+        """Create segment
 
         This API creates a segment.  >**Note:** Segment definitions may take time to propagate to all identities.
 
@@ -347,7 +347,7 @@ class SegmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete Segment by ID
+        """Delete segment by id
 
         This API deletes the segment specified by the given ID. >**Note:** that segment deletion may take some time to become effective.    
 
@@ -420,7 +420,7 @@ class SegmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete Segment by ID
+        """Delete segment by id
 
         This API deletes the segment specified by the given ID. >**Note:** that segment deletion may take some time to become effective.    
 
@@ -493,7 +493,7 @@ class SegmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Segment by ID
+        """Delete segment by id
 
         This API deletes the segment specified by the given ID. >**Note:** that segment deletion may take some time to become effective.    
 
@@ -628,7 +628,7 @@ class SegmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Segment:
-        """Get Segment by ID
+        """Get segment by id
 
         This API returns the segment specified by the given ID.
 
@@ -701,7 +701,7 @@ class SegmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Segment]:
-        """Get Segment by ID
+        """Get segment by id
 
         This API returns the segment specified by the given ID.
 
@@ -774,7 +774,7 @@ class SegmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Segment by ID
+        """Get segment by id
 
         This API returns the segment specified by the given ID.
 
@@ -911,7 +911,7 @@ class SegmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[Segment]:
-        """List Segments
+        """List segments
 
         This API returns a list of all segments. 
 
@@ -991,7 +991,7 @@ class SegmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[Segment]]:
-        """List Segments
+        """List segments
 
         This API returns a list of all segments. 
 
@@ -1071,7 +1071,7 @@ class SegmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Segments
+        """List segments
 
         This API returns a list of all segments. 
 
@@ -1224,7 +1224,7 @@ class SegmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Segment:
-        """Update Segment
+        """Update segment
 
         Use this API to update segment fields by using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. >**Note:** Changes to a segment may take some time to propagate to all identities.
 
@@ -1301,7 +1301,7 @@ class SegmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Segment]:
-        """Update Segment
+        """Update segment
 
         Use this API to update segment fields by using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. >**Note:** Changes to a segment may take some time to propagate to all identities.
 
@@ -1378,7 +1378,7 @@ class SegmentsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Segment
+        """Update segment
 
         Use this API to update segment fields by using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. >**Note:** Changes to a segment may take some time to propagate to all identities.
 

@@ -29,21 +29,21 @@ class TestApplicationDiscoveryApi(unittest.TestCase):
     def test_get_discovered_applications(self) -> None:
         """Test case for get_discovered_applications
 
-        Get Discovered Applications for Tenant
+        Get discovered applications for tenant
         """
         pass
 
     def test_get_manual_discover_applications_csv_template(self) -> None:
         """Test case for get_manual_discover_applications_csv_template
 
-        Download CSV Template for Discovery
+        Download csv template for discovery
         """
         pass
 
     def test_send_manual_discover_applications_csv_template(self) -> None:
         """Test case for send_manual_discover_applications_csv_template
 
-        Upload CSV to Discover Applications
+        Upload csv to discover applications
         """
         pass
 

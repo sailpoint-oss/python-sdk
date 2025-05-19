@@ -29,70 +29,70 @@ class TestGovernanceGroupsApi(unittest.TestCase):
     def test_create_workgroup(self) -> None:
         """Test case for create_workgroup
 
-        Create a new Governance Group.
+        Create a new governance group.
         """
         pass
 
     def test_delete_workgroup(self) -> None:
         """Test case for delete_workgroup
 
-        Delete a Governance Group
+        Delete a governance group
         """
         pass
 
     def test_delete_workgroup_members(self) -> None:
         """Test case for delete_workgroup_members
 
-        Remove members from Governance Group
+        Remove members from governance group
         """
         pass
 
     def test_delete_workgroups_in_bulk(self) -> None:
         """Test case for delete_workgroups_in_bulk
 
-        Delete Governance Group(s)
+        Delete governance group(s)
         """
         pass
 
     def test_get_workgroup(self) -> None:
         """Test case for get_workgroup
 
-        Get Governance Group by Id
+        Get governance group by id
         """
         pass
 
     def test_list_connections(self) -> None:
         """Test case for list_connections
 
-        List connections for Governance Group
+        List connections for governance group
         """
         pass
 
     def test_list_workgroup_members(self) -> None:
         """Test case for list_workgroup_members
 
-        List Governance Group Members
+        List governance group members
         """
         pass
 
     def test_list_workgroups(self) -> None:
         """Test case for list_workgroups
 
-        List Governance Groups
+        List governance groups
         """
         pass
 
     def test_patch_workgroup(self) -> None:
         """Test case for patch_workgroup
 
-        Patch a Governance Group
+        Patch a governance group
         """
         pass
 
     def test_update_workgroup_members(self) -> None:
         """Test case for update_workgroup_members
 
-        Add members to Governance Group
+        Add members to governance group
         """
         pass
 

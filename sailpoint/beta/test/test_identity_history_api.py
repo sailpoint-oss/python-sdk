@@ -36,7 +36,7 @@ class TestIdentityHistoryApi(unittest.TestCase):
     def test_compare_identity_snapshots_access_type(self) -> None:
         """Test case for compare_identity_snapshots_access_type
 
-        Gets a list of differences of specific accessType for the given identity between 2 snapshots
+        Gets a list of differences of specific accesstype for the given identity between 2 snapshots
         """
         pass
 
@@ -85,14 +85,14 @@ class TestIdentityHistoryApi(unittest.TestCase):
     def test_list_identity_access_items(self) -> None:
         """Test case for list_identity_access_items
 
-        List Access Items by Identity
+        List access items by identity
         """
         pass
 
     def test_list_identity_snapshot_access_items(self) -> None:
         """Test case for list_identity_snapshot_access_items
 
-        Get Identity Access Items Snapshot
+        Get identity access items snapshot
         """
         pass
 

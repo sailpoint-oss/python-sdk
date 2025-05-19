@@ -43,14 +43,14 @@ class TestAppsApi(unittest.TestCase):
     def test_delete_source_app(self) -> None:
         """Test case for delete_source_app
 
-        Delete source app by ID
+        Delete source app by id
         """
         pass
 
     def test_get_source_app(self) -> None:
         """Test case for get_source_app
 
-        Get source app by ID
+        Get source app by id
         """
         pass
 
@@ -106,14 +106,14 @@ class TestAppsApi(unittest.TestCase):
     def test_patch_source_app(self) -> None:
         """Test case for patch_source_app
 
-        Patch source app by ID
+        Patch source app by id
         """
         pass
 
     def test_patch_user_app(self) -> None:
         """Test case for patch_user_app
 
-        Patch user app by ID
+        Patch user app by id
         """
         pass
 

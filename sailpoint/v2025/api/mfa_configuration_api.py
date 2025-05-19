@@ -60,7 +60,7 @@ class MFAConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> MfaDuoConfig:
-        """Configuration of Duo MFA method
+        """Configuration of duo mfa method
 
         This API returns the configuration of an Duo MFA method.
 
@@ -128,7 +128,7 @@ class MFAConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[MfaDuoConfig]:
-        """Configuration of Duo MFA method
+        """Configuration of duo mfa method
 
         This API returns the configuration of an Duo MFA method.
 
@@ -196,7 +196,7 @@ class MFAConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Configuration of Duo MFA method
+        """Configuration of duo mfa method
 
         This API returns the configuration of an Duo MFA method.
 
@@ -323,7 +323,7 @@ class MFAConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[KbaQuestion]:
-        """Configuration of KBA MFA method
+        """Configuration of kba mfa method
 
         This API returns the KBA configuration for MFA.
 
@@ -395,7 +395,7 @@ class MFAConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[KbaQuestion]]:
-        """Configuration of KBA MFA method
+        """Configuration of kba mfa method
 
         This API returns the KBA configuration for MFA.
 
@@ -467,7 +467,7 @@ class MFAConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Configuration of KBA MFA method
+        """Configuration of kba mfa method
 
         This API returns the KBA configuration for MFA.
 
@@ -601,7 +601,7 @@ class MFAConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> MfaOktaConfig:
-        """Configuration of Okta MFA method
+        """Configuration of okta mfa method
 
         This API returns the configuration of an Okta MFA method.
 
@@ -669,7 +669,7 @@ class MFAConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[MfaOktaConfig]:
-        """Configuration of Okta MFA method
+        """Configuration of okta mfa method
 
         This API returns the configuration of an Okta MFA method.
 
@@ -737,7 +737,7 @@ class MFAConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Configuration of Okta MFA method
+        """Configuration of okta mfa method
 
         This API returns the configuration of an Okta MFA method.
 
@@ -864,7 +864,7 @@ class MFAConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> MfaDuoConfig:
-        """Set Duo MFA configuration
+        """Set duo mfa configuration
 
         This API sets the configuration of an Duo MFA method.
 
@@ -936,7 +936,7 @@ class MFAConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[MfaDuoConfig]:
-        """Set Duo MFA configuration
+        """Set duo mfa configuration
 
         This API sets the configuration of an Duo MFA method.
 
@@ -1008,7 +1008,7 @@ class MFAConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Set Duo MFA configuration
+        """Set duo mfa configuration
 
         This API sets the configuration of an Duo MFA method.
 
@@ -1154,7 +1154,7 @@ class MFAConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> MfaOktaConfig:
-        """Set Okta MFA configuration
+        """Set okta mfa configuration
 
         This API sets the configuration of an Okta MFA method.
 
@@ -1226,7 +1226,7 @@ class MFAConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[MfaOktaConfig]:
-        """Set Okta MFA configuration
+        """Set okta mfa configuration
 
         This API sets the configuration of an Okta MFA method.
 
@@ -1298,7 +1298,7 @@ class MFAConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Set Okta MFA configuration
+        """Set okta mfa configuration
 
         This API sets the configuration of an Okta MFA method.
 
@@ -1444,7 +1444,7 @@ class MFAConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[KbaAnswerResponseItem]:
-        """Set MFA KBA configuration
+        """Set mfa kba configuration
 
         This API sets answers to challenge questions.  Any configured questions omitted from the request are removed from user KBA configuration.    
 
@@ -1516,7 +1516,7 @@ class MFAConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[KbaAnswerResponseItem]]:
-        """Set MFA KBA configuration
+        """Set mfa kba configuration
 
         This API sets answers to challenge questions.  Any configured questions omitted from the request are removed from user KBA configuration.    
 
@@ -1588,7 +1588,7 @@ class MFAConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Set MFA KBA configuration
+        """Set mfa kba configuration
 
         This API sets answers to challenge questions.  Any configured questions omitted from the request are removed from user KBA configuration.    
 
@@ -1735,7 +1735,7 @@ class MFAConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> MfaConfigTestResponse:
-        """MFA method's test configuration
+        """Mfa method's test configuration
 
         This API validates that the configuration is valid and will properly authenticate with the MFA provider identified by the method path parameter.
 
@@ -1807,7 +1807,7 @@ class MFAConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[MfaConfigTestResponse]:
-        """MFA method's test configuration
+        """Mfa method's test configuration
 
         This API validates that the configuration is valid and will properly authenticate with the MFA provider identified by the method path parameter.
 
@@ -1879,7 +1879,7 @@ class MFAConfigurationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """MFA method's test configuration
+        """Mfa method's test configuration
 
         This API validates that the configuration is valid and will properly authenticate with the MFA provider identified by the method path parameter.
 

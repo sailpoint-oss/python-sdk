@@ -1801,7 +1801,7 @@ class SPConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[SpConfigObject]:
-        """List Config Objects
+        """List config objects
 
         Get a list of object configurations that the tenant export/import service knows.
 
@@ -1870,7 +1870,7 @@ class SPConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[SpConfigObject]]:
-        """List Config Objects
+        """List config objects
 
         Get a list of object configurations that the tenant export/import service knows.
 
@@ -1939,7 +1939,7 @@ class SPConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Config Objects
+        """List config objects
 
         Get a list of object configurations that the tenant export/import service knows.
 

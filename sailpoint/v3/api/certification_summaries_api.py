@@ -64,7 +64,7 @@ class CertificationSummariesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[AccessSummary]:
-        """Access Summaries
+        """Access summaries
 
         This API returns a list of access summaries for the specified identity campaign certification and type. Reviewers for this certification can also call this API.
 
@@ -161,7 +161,7 @@ class CertificationSummariesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[AccessSummary]]:
-        """Access Summaries
+        """Access summaries
 
         This API returns a list of access summaries for the specified identity campaign certification and type. Reviewers for this certification can also call this API.
 
@@ -258,7 +258,7 @@ class CertificationSummariesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Access Summaries
+        """Access summaries
 
         This API returns a list of access summaries for the specified identity campaign certification and type. Reviewers for this certification can also call this API.
 
@@ -439,7 +439,7 @@ class CertificationSummariesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> IdentityCertDecisionSummary:
-        """Summary of Certification Decisions
+        """Summary of certification decisions
 
         This API returns a summary of the decisions made on an identity campaign certification. The decisions are summarized by type. Reviewers for this certification can also call this API.
 
@@ -516,7 +516,7 @@ class CertificationSummariesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[IdentityCertDecisionSummary]:
-        """Summary of Certification Decisions
+        """Summary of certification decisions
 
         This API returns a summary of the decisions made on an identity campaign certification. The decisions are summarized by type. Reviewers for this certification can also call this API.
 
@@ -593,7 +593,7 @@ class CertificationSummariesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Summary of Certification Decisions
+        """Summary of certification decisions
 
         This API returns a summary of the decisions made on an identity campaign certification. The decisions are summarized by type. Reviewers for this certification can also call this API.
 
@@ -740,7 +740,7 @@ class CertificationSummariesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[CertificationIdentitySummary]:
-        """Identity Summaries for Campaign Certification
+        """Identity summaries for campaign certification
 
         This API returns a list of the identity summaries for a specific identity campaign certification. Reviewers for this certification can also call this API.
 
@@ -833,7 +833,7 @@ class CertificationSummariesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[CertificationIdentitySummary]]:
-        """Identity Summaries for Campaign Certification
+        """Identity summaries for campaign certification
 
         This API returns a list of the identity summaries for a specific identity campaign certification. Reviewers for this certification can also call this API.
 
@@ -926,7 +926,7 @@ class CertificationSummariesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Identity Summaries for Campaign Certification
+        """Identity summaries for campaign certification
 
         This API returns a list of the identity summaries for a specific identity campaign certification. Reviewers for this certification can also call this API.
 
@@ -1101,7 +1101,7 @@ class CertificationSummariesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> CertificationIdentitySummary:
-        """Summary for Identity
+        """Summary for identity
 
         This API returns the summary for an identity on a specified identity campaign certification. Reviewers for this certification can also call this API.
 
@@ -1178,7 +1178,7 @@ class CertificationSummariesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[CertificationIdentitySummary]:
-        """Summary for Identity
+        """Summary for identity
 
         This API returns the summary for an identity on a specified identity campaign certification. Reviewers for this certification can also call this API.
 
@@ -1255,7 +1255,7 @@ class CertificationSummariesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Summary for Identity
+        """Summary for identity
 
         This API returns the summary for an identity on a specified identity campaign certification. Reviewers for this certification can also call this API.
 

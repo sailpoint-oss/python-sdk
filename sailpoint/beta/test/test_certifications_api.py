@@ -29,42 +29,42 @@ class TestCertificationsApi(unittest.TestCase):
     def test_get_identity_certification_item_permissions(self) -> None:
         """Test case for get_identity_certification_item_permissions
 
-        Permissions for Entitlement Certification Item
+        Permissions for entitlement certification item
         """
         pass
 
     def test_get_identity_certification_pending_tasks(self) -> None:
         """Test case for get_identity_certification_pending_tasks
 
-        Pending Certification Tasks
+        Pending certification tasks
         """
         pass
 
     def test_get_identity_certification_task_status(self) -> None:
         """Test case for get_identity_certification_task_status
 
-        Certification Task Status
+        Certification task status
         """
         pass
 
     def test_list_certification_reviewers(self) -> None:
         """Test case for list_certification_reviewers
 
-        List of Reviewers for certification
+        List of reviewers for certification
         """
         pass
 
     def test_list_certifications(self) -> None:
         """Test case for list_certifications
 
-        Certifications by IDs
+        Certifications by ids
         """
         pass
 
     def test_submit_reassign_certs_async(self) -> None:
         """Test case for submit_reassign_certs_async
 
-        Reassign Certifications Asynchronously
+        Reassign certifications asynchronously
         """
         pass
 

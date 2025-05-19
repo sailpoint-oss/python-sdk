@@ -29,77 +29,77 @@ class TestCertificationsApi(unittest.TestCase):
     def test_get_certification_task(self) -> None:
         """Test case for get_certification_task
 
-        Certification Task by ID
+        Certification task by id
         """
         pass
 
     def test_get_identity_certification(self) -> None:
         """Test case for get_identity_certification
 
-        Identity Certification by ID
+        Identity certification by id
         """
         pass
 
     def test_get_identity_certification_item_permissions(self) -> None:
         """Test case for get_identity_certification_item_permissions
 
-        Permissions for Entitlement Certification Item
+        Permissions for entitlement certification item
         """
         pass
 
     def test_get_pending_certification_tasks(self) -> None:
         """Test case for get_pending_certification_tasks
 
-        List of Pending Certification Tasks
+        List of pending certification tasks
         """
         pass
 
     def test_list_certification_reviewers(self) -> None:
         """Test case for list_certification_reviewers
 
-        List of Reviewers for certification
+        List of reviewers for certification
         """
         pass
 
     def test_list_identity_access_review_items(self) -> None:
         """Test case for list_identity_access_review_items
 
-        List of Access Review Items
+        List of access review items
         """
         pass
 
     def test_list_identity_certifications(self) -> None:
         """Test case for list_identity_certifications
 
-        List Identity Campaign Certifications
+        List identity campaign certifications
         """
         pass
 
     def test_make_identity_decision(self) -> None:
         """Test case for make_identity_decision
 
-        Decide on a Certification Item
+        Decide on a certification item
         """
         pass
 
     def test_reassign_identity_certifications(self) -> None:
         """Test case for reassign_identity_certifications
 
-        Reassign Identities or Items
+        Reassign identities or items
         """
         pass
 
     def test_sign_off_identity_certification(self) -> None:
         """Test case for sign_off_identity_certification
 
-        Finalize Identity Certification Decisions
+        Finalize identity certification decisions
         """
         pass
 
     def test_submit_reassign_certs_async(self) -> None:
         """Test case for submit_reassign_certs_async
 
-        Reassign Certifications Asynchronously
+        Reassign certifications asynchronously
         """
         pass
 

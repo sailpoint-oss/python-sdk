@@ -60,7 +60,7 @@ class ServiceDeskIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ServiceDeskIntegrationDto:
-        """Create new Service Desk integration
+        """Create new service desk integration
 
         Create a new Service Desk integration.
 
@@ -133,7 +133,7 @@ class ServiceDeskIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ServiceDeskIntegrationDto]:
-        """Create new Service Desk integration
+        """Create new service desk integration
 
         Create a new Service Desk integration.
 
@@ -206,7 +206,7 @@ class ServiceDeskIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create new Service Desk integration
+        """Create new service desk integration
 
         Create a new Service Desk integration.
 
@@ -353,7 +353,7 @@ class ServiceDeskIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete a Service Desk integration
+        """Delete a service desk integration
 
         Delete an existing Service Desk integration by ID.
 
@@ -426,7 +426,7 @@ class ServiceDeskIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete a Service Desk integration
+        """Delete a service desk integration
 
         Delete an existing Service Desk integration by ID.
 
@@ -499,7 +499,7 @@ class ServiceDeskIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete a Service Desk integration
+        """Delete a service desk integration
 
         Delete an existing Service Desk integration by ID.
 
@@ -633,7 +633,7 @@ class ServiceDeskIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ServiceDeskIntegrationDto:
-        """Get a Service Desk integration
+        """Get a service desk integration
 
         Get an existing Service Desk integration by ID.
 
@@ -706,7 +706,7 @@ class ServiceDeskIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ServiceDeskIntegrationDto]:
-        """Get a Service Desk integration
+        """Get a service desk integration
 
         Get an existing Service Desk integration by ID.
 
@@ -779,7 +779,7 @@ class ServiceDeskIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get a Service Desk integration
+        """Get a service desk integration
 
         Get an existing Service Desk integration by ID.
 
@@ -917,7 +917,7 @@ class ServiceDeskIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[ServiceDeskIntegrationDto]:
-        """List existing Service Desk integrations
+        """List existing service desk integrations
 
         Get a list of Service Desk integration objects.
 
@@ -1006,7 +1006,7 @@ class ServiceDeskIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[ServiceDeskIntegrationDto]]:
-        """List existing Service Desk integrations
+        """List existing service desk integrations
 
         Get a list of Service Desk integration objects.
 
@@ -1095,7 +1095,7 @@ class ServiceDeskIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List existing Service Desk integrations
+        """List existing service desk integrations
 
         Get a list of Service Desk integration objects.
 
@@ -1263,7 +1263,7 @@ class ServiceDeskIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ServiceDeskIntegrationTemplateDto:
-        """Service Desk integration template by scriptName
+        """Service desk integration template by scriptname
 
         This API endpoint returns an existing Service Desk integration template by scriptName.
 
@@ -1336,7 +1336,7 @@ class ServiceDeskIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ServiceDeskIntegrationTemplateDto]:
-        """Service Desk integration template by scriptName
+        """Service desk integration template by scriptname
 
         This API endpoint returns an existing Service Desk integration template by scriptName.
 
@@ -1409,7 +1409,7 @@ class ServiceDeskIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Service Desk integration template by scriptName
+        """Service desk integration template by scriptname
 
         This API endpoint returns an existing Service Desk integration template by scriptName.
 
@@ -1542,7 +1542,7 @@ class ServiceDeskIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[ServiceDeskIntegrationTemplateType]:
-        """List Service Desk integration types
+        """List service desk integration types
 
         This API endpoint returns the current list of supported Service Desk integration types.
 
@@ -1611,7 +1611,7 @@ class ServiceDeskIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[ServiceDeskIntegrationTemplateType]]:
-        """List Service Desk integration types
+        """List service desk integration types
 
         This API endpoint returns the current list of supported Service Desk integration types.
 
@@ -1680,7 +1680,7 @@ class ServiceDeskIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Service Desk integration types
+        """List service desk integration types
 
         This API endpoint returns the current list of supported Service Desk integration types.
 
@@ -2074,7 +2074,7 @@ class ServiceDeskIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ServiceDeskIntegrationDto:
-        """Patch a Service Desk Integration
+        """Patch a service desk integration
 
         Update an existing Service Desk integration by ID with a PATCH request.
 
@@ -2151,7 +2151,7 @@ class ServiceDeskIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ServiceDeskIntegrationDto]:
-        """Patch a Service Desk Integration
+        """Patch a service desk integration
 
         Update an existing Service Desk integration by ID with a PATCH request.
 
@@ -2228,7 +2228,7 @@ class ServiceDeskIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Patch a Service Desk Integration
+        """Patch a service desk integration
 
         Update an existing Service Desk integration by ID with a PATCH request.
 
@@ -2383,7 +2383,7 @@ class ServiceDeskIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ServiceDeskIntegrationDto:
-        """Update a Service Desk integration
+        """Update a service desk integration
 
         Update an existing Service Desk integration by ID.
 
@@ -2460,7 +2460,7 @@ class ServiceDeskIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ServiceDeskIntegrationDto]:
-        """Update a Service Desk integration
+        """Update a service desk integration
 
         Update an existing Service Desk integration by ID.
 
@@ -2537,7 +2537,7 @@ class ServiceDeskIntegrationApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update a Service Desk integration
+        """Update a service desk integration
 
         Update an existing Service Desk integration by ID.
 

@@ -29,56 +29,56 @@ class TestTaggedObjectsApi(unittest.TestCase):
     def test_delete_tagged_object(self) -> None:
         """Test case for delete_tagged_object
 
-        Delete Object Tags
+        Delete object tags
         """
         pass
 
     def test_delete_tags_to_many_object(self) -> None:
         """Test case for delete_tags_to_many_object
 
-        Remove Tags from Multiple Objects
+        Remove tags from multiple objects
         """
         pass
 
     def test_get_tagged_object(self) -> None:
         """Test case for get_tagged_object
 
-        Get Tagged Object
+        Get tagged object
         """
         pass
 
     def test_list_tagged_objects(self) -> None:
         """Test case for list_tagged_objects
 
-        List Tagged Objects
+        List tagged objects
         """
         pass
 
     def test_list_tagged_objects_by_type(self) -> None:
         """Test case for list_tagged_objects_by_type
 
-        List Tagged Objects by Type
+        List tagged objects by type
         """
         pass
 
     def test_put_tagged_object(self) -> None:
         """Test case for put_tagged_object
 
-        Update Tagged Object
+        Update tagged object
         """
         pass
 
     def test_set_tag_to_object(self) -> None:
         """Test case for set_tag_to_object
 
-        Add Tag to Object
+        Add tag to object
         """
         pass
 
     def test_set_tags_to_many_objects(self) -> None:
         """Test case for set_tags_to_many_objects
 
-        Tag Multiple Objects
+        Tag multiple objects
         """
         pass
 

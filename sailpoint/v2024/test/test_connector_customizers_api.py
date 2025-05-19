@@ -29,7 +29,7 @@ class TestConnectorCustomizersApi(unittest.TestCase):
     def test_create_connector_customizer(self) -> None:
         """Test case for create_connector_customizer
 
-        Create Connector Customizer
+        Create connector customizer
         """
         pass
 
@@ -43,7 +43,7 @@ class TestConnectorCustomizersApi(unittest.TestCase):
     def test_delete_connector_customizer(self) -> None:
         """Test case for delete_connector_customizer
 
-        Delete Connector Customizer
+        Delete connector customizer
         """
         pass
 
@@ -57,14 +57,14 @@ class TestConnectorCustomizersApi(unittest.TestCase):
     def test_list_connector_customizers(self) -> None:
         """Test case for list_connector_customizers
 
-        List All Connector Customizers
+        List all connector customizers
         """
         pass
 
     def test_put_connector_customizer(self) -> None:
         """Test case for put_connector_customizer
 
-        Update Connector Customizer
+        Update connector customizer
         """
         pass
 

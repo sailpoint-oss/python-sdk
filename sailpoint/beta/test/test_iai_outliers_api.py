@@ -29,28 +29,28 @@ class TestIAIOutliersApi(unittest.TestCase):
     def test_export_outliers_zip(self) -> None:
         """Test case for export_outliers_zip
 
-        IAI Identity Outliers Export
+        Iai identity outliers export
         """
         pass
 
     def test_get_identity_outlier_snapshots(self) -> None:
         """Test case for get_identity_outlier_snapshots
 
-        IAI Identity Outliers Summary
+        Iai identity outliers summary
         """
         pass
 
     def test_get_identity_outliers(self) -> None:
         """Test case for get_identity_outliers
 
-        IAI Get Identity Outliers
+        Iai get identity outliers
         """
         pass
 
     def test_get_latest_identity_outlier_snapshots(self) -> None:
         """Test case for get_latest_identity_outlier_snapshots
 
-        IAI Identity Outliers Latest Summary
+        Iai identity outliers latest summary
         """
         pass
 
@@ -71,7 +71,7 @@ class TestIAIOutliersApi(unittest.TestCase):
     def test_ignore_identity_outliers(self) -> None:
         """Test case for ignore_identity_outliers
 
-        IAI Identity Outliers Ignore
+        Iai identity outliers ignore
         """
         pass
 
@@ -85,7 +85,7 @@ class TestIAIOutliersApi(unittest.TestCase):
     def test_un_ignore_identity_outliers(self) -> None:
         """Test case for un_ignore_identity_outliers
 
-        IAI Identity Outliers Unignore
+        Iai identity outliers unignore
         """
         pass
 

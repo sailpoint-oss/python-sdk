@@ -52,7 +52,7 @@ class PublicIdentitiesConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> PublicIdentityConfig:
-        """Get the Public Identities Configuration
+        """Get the public identities configuration
 
         Returns the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns.
 
@@ -120,7 +120,7 @@ class PublicIdentitiesConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[PublicIdentityConfig]:
-        """Get the Public Identities Configuration
+        """Get the public identities configuration
 
         Returns the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns.
 
@@ -188,7 +188,7 @@ class PublicIdentitiesConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get the Public Identities Configuration
+        """Get the public identities configuration
 
         Returns the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns.
 
@@ -315,7 +315,7 @@ class PublicIdentitiesConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> PublicIdentityConfig:
-        """Update the Public Identities Configuration
+        """Update the public identities configuration
 
         Updates the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns.
 
@@ -387,7 +387,7 @@ class PublicIdentitiesConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[PublicIdentityConfig]:
-        """Update the Public Identities Configuration
+        """Update the public identities configuration
 
         Updates the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns.
 
@@ -459,7 +459,7 @@ class PublicIdentitiesConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update the Public Identities Configuration
+        """Update the public identities configuration
 
         Updates the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns.
 

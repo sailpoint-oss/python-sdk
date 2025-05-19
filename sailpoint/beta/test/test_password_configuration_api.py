@@ -29,21 +29,21 @@ class TestPasswordConfigurationApi(unittest.TestCase):
     def test_create_password_org_config(self) -> None:
         """Test case for create_password_org_config
 
-        Create Password Org Config
+        Create password org config
         """
         pass
 
     def test_get_password_org_config(self) -> None:
         """Test case for get_password_org_config
 
-        Get Password Org Config
+        Get password org config
         """
         pass
 
     def test_put_password_org_config(self) -> None:
         """Test case for put_password_org_config
 
-        Update Password Org Config
+        Update password org config
         """
         pass
 

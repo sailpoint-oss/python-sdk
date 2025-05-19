@@ -36,21 +36,21 @@ class TestPasswordManagementApi(unittest.TestCase):
     def test_get_password_change_status(self) -> None:
         """Test case for get_password_change_status
 
-        Get Password Change Request Status
+        Get password change request status
         """
         pass
 
     def test_query_password_info(self) -> None:
         """Test case for query_password_info
 
-        Query Password Info
+        Query password info
         """
         pass
 
     def test_set_password(self) -> None:
         """Test case for set_password
 
-        Set Identity's Password
+        Set identity's password
         """
         pass
 

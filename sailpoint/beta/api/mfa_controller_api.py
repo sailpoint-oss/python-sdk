@@ -356,7 +356,7 @@ class MFAControllerApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> VerificationResponse:
-        """Polling MFA method by VerificationPollRequest
+        """Polling mfa method by verificationpollrequest
 
         This API poll the VerificationPollRequest for the specified MFA method.
 
@@ -432,7 +432,7 @@ class MFAControllerApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[VerificationResponse]:
-        """Polling MFA method by VerificationPollRequest
+        """Polling mfa method by verificationpollrequest
 
         This API poll the VerificationPollRequest for the specified MFA method.
 
@@ -508,7 +508,7 @@ class MFAControllerApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Polling MFA method by VerificationPollRequest
+        """Polling mfa method by verificationpollrequest
 
         This API poll the VerificationPollRequest for the specified MFA method.
 
@@ -660,7 +660,7 @@ class MFAControllerApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> VerificationResponse:
-        """Verifying authentication via Duo method
+        """Verifying authentication via duo method
 
         This API Authenticates the user via Duo-Web MFA method.
 
@@ -732,7 +732,7 @@ class MFAControllerApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[VerificationResponse]:
-        """Verifying authentication via Duo method
+        """Verifying authentication via duo method
 
         This API Authenticates the user via Duo-Web MFA method.
 
@@ -804,7 +804,7 @@ class MFAControllerApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Verifying authentication via Duo method
+        """Verifying authentication via duo method
 
         This API Authenticates the user via Duo-Web MFA method.
 
@@ -950,7 +950,7 @@ class MFAControllerApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> KbaAuthResponse:
-        """Authenticate KBA provided MFA method
+        """Authenticate kba provided mfa method
 
         This API Authenticate user in KBA MFA method.
 
@@ -1022,7 +1022,7 @@ class MFAControllerApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[KbaAuthResponse]:
-        """Authenticate KBA provided MFA method
+        """Authenticate kba provided mfa method
 
         This API Authenticate user in KBA MFA method.
 
@@ -1094,7 +1094,7 @@ class MFAControllerApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Authenticate KBA provided MFA method
+        """Authenticate kba provided mfa method
 
         This API Authenticate user in KBA MFA method.
 
@@ -1241,7 +1241,7 @@ class MFAControllerApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> VerificationResponse:
-        """Verifying authentication via Okta method
+        """Verifying authentication via okta method
 
         This API Authenticates the user via Okta-Verify MFA method. Request requires a header called 'slpt-forwarding', and it must contain a remote IP Address of caller.
 
@@ -1313,7 +1313,7 @@ class MFAControllerApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[VerificationResponse]:
-        """Verifying authentication via Okta method
+        """Verifying authentication via okta method
 
         This API Authenticates the user via Okta-Verify MFA method. Request requires a header called 'slpt-forwarding', and it must contain a remote IP Address of caller.
 
@@ -1385,7 +1385,7 @@ class MFAControllerApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Verifying authentication via Okta method
+        """Verifying authentication via okta method
 
         This API Authenticates the user via Okta-Verify MFA method. Request requires a header called 'slpt-forwarding', and it must contain a remote IP Address of caller.
 
@@ -1531,7 +1531,7 @@ class MFAControllerApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> TokenAuthResponse:
-        """Authenticate Token provided MFA method
+        """Authenticate token provided mfa method
 
         This API Authenticate user in Token MFA method.
 
@@ -1603,7 +1603,7 @@ class MFAControllerApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[TokenAuthResponse]:
-        """Authenticate Token provided MFA method
+        """Authenticate token provided mfa method
 
         This API Authenticate user in Token MFA method.
 
@@ -1675,7 +1675,7 @@ class MFAControllerApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Authenticate Token provided MFA method
+        """Authenticate token provided mfa method
 
         This API Authenticate user in Token MFA method.
 

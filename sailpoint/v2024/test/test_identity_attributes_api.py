@@ -29,42 +29,42 @@ class TestIdentityAttributesApi(unittest.TestCase):
     def test_create_identity_attribute(self) -> None:
         """Test case for create_identity_attribute
 
-        Create Identity Attribute
+        Create identity attribute
         """
         pass
 
     def test_delete_identity_attribute(self) -> None:
         """Test case for delete_identity_attribute
 
-        Delete Identity Attribute
+        Delete identity attribute
         """
         pass
 
     def test_delete_identity_attributes_in_bulk(self) -> None:
         """Test case for delete_identity_attributes_in_bulk
 
-        Bulk delete Identity Attributes
+        Bulk delete identity attributes
         """
         pass
 
     def test_get_identity_attribute(self) -> None:
         """Test case for get_identity_attribute
 
-        Get Identity Attribute
+        Get identity attribute
         """
         pass
 
     def test_list_identity_attributes(self) -> None:
         """Test case for list_identity_attributes
 
-        List Identity Attributes
+        List identity attributes
         """
         pass
 
     def test_put_identity_attribute(self) -> None:
         """Test case for put_identity_attribute
 
-        Update Identity Attribute
+        Update identity attribute
         """
         pass
 

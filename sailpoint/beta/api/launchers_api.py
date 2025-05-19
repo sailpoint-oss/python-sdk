@@ -352,7 +352,7 @@ class LaunchersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete Launcher
+        """Delete launcher
 
         Delete the given Launcher ID
 
@@ -425,7 +425,7 @@ class LaunchersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete Launcher
+        """Delete launcher
 
         Delete the given Launcher ID
 
@@ -498,7 +498,7 @@ class LaunchersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Launcher
+        """Delete launcher
 
         Delete the given Launcher ID
 
@@ -632,7 +632,7 @@ class LaunchersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Launcher:
-        """Get Launcher by ID
+        """Get launcher by id
 
         Get details for the given Launcher ID
 
@@ -705,7 +705,7 @@ class LaunchersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Launcher]:
-        """Get Launcher by ID
+        """Get launcher by id
 
         Get details for the given Launcher ID
 
@@ -778,7 +778,7 @@ class LaunchersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Launcher by ID
+        """Get launcher by id
 
         Get details for the given Launcher ID
 
@@ -914,7 +914,7 @@ class LaunchersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> GetLaunchers200Response:
-        """List all Launchers for tenant
+        """List all launchers for tenant
 
         Return a list of Launchers for the authenticated tenant
 
@@ -995,7 +995,7 @@ class LaunchersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[GetLaunchers200Response]:
-        """List all Launchers for tenant
+        """List all launchers for tenant
 
         Return a list of Launchers for the authenticated tenant
 
@@ -1076,7 +1076,7 @@ class LaunchersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List all Launchers for tenant
+        """List all launchers for tenant
 
         Return a list of Launchers for the authenticated tenant
 
@@ -1229,7 +1229,7 @@ class LaunchersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Launcher:
-        """Replace Launcher
+        """Replace launcher
 
         Replace the given Launcher ID with given payload
 
@@ -1306,7 +1306,7 @@ class LaunchersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Launcher]:
-        """Replace Launcher
+        """Replace launcher
 
         Replace the given Launcher ID with given payload
 
@@ -1383,7 +1383,7 @@ class LaunchersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Replace Launcher
+        """Replace launcher
 
         Replace the given Launcher ID with given payload
 
@@ -1536,7 +1536,7 @@ class LaunchersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> StartLauncher200Response:
-        """Launch a Launcher
+        """Launch a launcher
 
         Launch the given Launcher ID
 
@@ -1609,7 +1609,7 @@ class LaunchersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[StartLauncher200Response]:
-        """Launch a Launcher
+        """Launch a launcher
 
         Launch the given Launcher ID
 
@@ -1682,7 +1682,7 @@ class LaunchersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Launch a Launcher
+        """Launch a launcher
 
         Launch the given Launcher ID
 

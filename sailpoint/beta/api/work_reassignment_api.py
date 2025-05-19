@@ -63,7 +63,7 @@ class WorkReassignmentApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ConfigurationItemResponse:
-        """Create a Reassignment Configuration
+        """Create a reassignment configuration
 
         Creates a new Reassignment Configuration for the specified identity.
 
@@ -135,7 +135,7 @@ class WorkReassignmentApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ConfigurationItemResponse]:
-        """Create a Reassignment Configuration
+        """Create a reassignment configuration
 
         Creates a new Reassignment Configuration for the specified identity.
 
@@ -207,7 +207,7 @@ class WorkReassignmentApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create a Reassignment Configuration
+        """Create a reassignment configuration
 
         Creates a new Reassignment Configuration for the specified identity.
 
@@ -354,7 +354,7 @@ class WorkReassignmentApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete Reassignment Configuration
+        """Delete reassignment configuration
 
         Deletes a single reassignment configuration for the specified identity
 
@@ -430,7 +430,7 @@ class WorkReassignmentApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete Reassignment Configuration
+        """Delete reassignment configuration
 
         Deletes a single reassignment configuration for the specified identity
 
@@ -506,7 +506,7 @@ class WorkReassignmentApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Reassignment Configuration
+        """Delete reassignment configuration
 
         Deletes a single reassignment configuration for the specified identity
 
@@ -647,7 +647,7 @@ class WorkReassignmentApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[EvaluateResponse]:
-        """Evaluate Reassignment Configuration
+        """Evaluate reassignment configuration
 
         Evaluates the Reassignment Configuration for an `Identity` to determine if work items for the specified type should be reassigned. If a valid Reassignment Configuration is found for the identity & work type, then a lookup is initiated which recursively fetches the Reassignment Configuration for the next `TargetIdentity` until no more results are found or a max depth of 5. That lookup trail is provided in the response and the final reassigned identity in the lookup list is returned as the `reassignToId` property. If no Reassignment Configuration is found for the specified identity & config type then the requested Identity ID will be used as the `reassignToId` value and the lookupTrail node will be empty.
 
@@ -727,7 +727,7 @@ class WorkReassignmentApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[EvaluateResponse]]:
-        """Evaluate Reassignment Configuration
+        """Evaluate reassignment configuration
 
         Evaluates the Reassignment Configuration for an `Identity` to determine if work items for the specified type should be reassigned. If a valid Reassignment Configuration is found for the identity & work type, then a lookup is initiated which recursively fetches the Reassignment Configuration for the next `TargetIdentity` until no more results are found or a max depth of 5. That lookup trail is provided in the response and the final reassigned identity in the lookup list is returned as the `reassignToId` property. If no Reassignment Configuration is found for the specified identity & config type then the requested Identity ID will be used as the `reassignToId` value and the lookupTrail node will be empty.
 
@@ -807,7 +807,7 @@ class WorkReassignmentApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Evaluate Reassignment Configuration
+        """Evaluate reassignment configuration
 
         Evaluates the Reassignment Configuration for an `Identity` to determine if work items for the specified type should be reassigned. If a valid Reassignment Configuration is found for the identity & work type, then a lookup is initiated which recursively fetches the Reassignment Configuration for the next `TargetIdentity` until no more results are found or a max depth of 5. That lookup trail is provided in the response and the final reassigned identity in the lookup list is returned as the `reassignToId` property. If no Reassignment Configuration is found for the specified identity & config type then the requested Identity ID will be used as the `reassignToId` value and the lookupTrail node will be empty.
 
@@ -954,7 +954,7 @@ class WorkReassignmentApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[ConfigType]:
-        """List Reassignment Config Types
+        """List reassignment config types
 
         Gets a collection of types which are available in the Reassignment Configuration UI.
 
@@ -1022,7 +1022,7 @@ class WorkReassignmentApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[ConfigType]]:
-        """List Reassignment Config Types
+        """List reassignment config types
 
         Gets a collection of types which are available in the Reassignment Configuration UI.
 
@@ -1090,7 +1090,7 @@ class WorkReassignmentApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Reassignment Config Types
+        """List reassignment config types
 
         Gets a collection of types which are available in the Reassignment Configuration UI.
 
@@ -1217,7 +1217,7 @@ class WorkReassignmentApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ConfigurationResponse:
-        """Get Reassignment Configuration
+        """Get reassignment configuration
 
         Gets the Reassignment Configuration for an identity.
 
@@ -1290,7 +1290,7 @@ class WorkReassignmentApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ConfigurationResponse]:
-        """Get Reassignment Configuration
+        """Get reassignment configuration
 
         Gets the Reassignment Configuration for an identity.
 
@@ -1363,7 +1363,7 @@ class WorkReassignmentApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Reassignment Configuration
+        """Get reassignment configuration
 
         Gets the Reassignment Configuration for an identity.
 
@@ -1496,7 +1496,7 @@ class WorkReassignmentApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> TenantConfigurationResponse:
-        """Get Tenant-wide Reassignment Configuration settings
+        """Get tenant-wide reassignment configuration settings
 
         Gets the global Reassignment Configuration settings for the requestor's tenant.
 
@@ -1565,7 +1565,7 @@ class WorkReassignmentApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[TenantConfigurationResponse]:
-        """Get Tenant-wide Reassignment Configuration settings
+        """Get tenant-wide reassignment configuration settings
 
         Gets the global Reassignment Configuration settings for the requestor's tenant.
 
@@ -1634,7 +1634,7 @@ class WorkReassignmentApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Tenant-wide Reassignment Configuration settings
+        """Get tenant-wide reassignment configuration settings
 
         Gets the global Reassignment Configuration settings for the requestor's tenant.
 
@@ -1763,7 +1763,7 @@ class WorkReassignmentApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[ConfigurationResponse]:
-        """List Reassignment Configurations
+        """List reassignment configurations
 
         Gets all Reassignment configuration for the current org.
 
@@ -1840,7 +1840,7 @@ class WorkReassignmentApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[ConfigurationResponse]]:
-        """List Reassignment Configurations
+        """List reassignment configurations
 
         Gets all Reassignment configuration for the current org.
 
@@ -1917,7 +1917,7 @@ class WorkReassignmentApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Reassignment Configurations
+        """List reassignment configurations
 
         Gets all Reassignment configuration for the current org.
 
@@ -2062,7 +2062,7 @@ class WorkReassignmentApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ConfigurationItemResponse:
-        """Update Reassignment Configuration
+        """Update reassignment configuration
 
         Replaces existing Reassignment configuration for an identity with the newly provided configuration.
 
@@ -2138,7 +2138,7 @@ class WorkReassignmentApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ConfigurationItemResponse]:
-        """Update Reassignment Configuration
+        """Update reassignment configuration
 
         Replaces existing Reassignment configuration for an identity with the newly provided configuration.
 
@@ -2214,7 +2214,7 @@ class WorkReassignmentApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Reassignment Configuration
+        """Update reassignment configuration
 
         Replaces existing Reassignment configuration for an identity with the newly provided configuration.
 
@@ -2366,7 +2366,7 @@ class WorkReassignmentApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> TenantConfigurationResponse:
-        """Update Tenant-wide Reassignment Configuration settings
+        """Update tenant-wide reassignment configuration settings
 
         Replaces existing Tenant-wide Reassignment Configuration settings with the newly provided settings.
 
@@ -2438,7 +2438,7 @@ class WorkReassignmentApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[TenantConfigurationResponse]:
-        """Update Tenant-wide Reassignment Configuration settings
+        """Update tenant-wide reassignment configuration settings
 
         Replaces existing Tenant-wide Reassignment Configuration settings with the newly provided settings.
 
@@ -2510,7 +2510,7 @@ class WorkReassignmentApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Tenant-wide Reassignment Configuration settings
+        """Update tenant-wide reassignment configuration settings
 
         Replaces existing Tenant-wide Reassignment Configuration settings with the newly provided settings.
 

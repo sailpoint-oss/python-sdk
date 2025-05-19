@@ -29,14 +29,14 @@ class TestUIMetadataApi(unittest.TestCase):
     def test_get_tenant_ui_metadata(self) -> None:
         """Test case for get_tenant_ui_metadata
 
-        Get a tenant UI metadata
+        Get a tenant ui metadata
         """
         pass
 
     def test_set_tenant_ui_metadata(self) -> None:
         """Test case for set_tenant_ui_metadata
 
-        Update tenant UI metadata
+        Update tenant ui metadata
         """
         pass
 

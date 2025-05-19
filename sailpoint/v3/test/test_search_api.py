@@ -29,28 +29,28 @@ class TestSearchApi(unittest.TestCase):
     def test_search_aggregate(self) -> None:
         """Test case for search_aggregate
 
-        Perform a Search Query Aggregation
+        Perform a search query aggregation
         """
         pass
 
     def test_search_count(self) -> None:
         """Test case for search_count
 
-        Count Documents Satisfying a Query
+        Count documents satisfying a query
         """
         pass
 
     def test_search_get(self) -> None:
         """Test case for search_get
 
-        Get a Document by ID
+        Get a document by id
         """
         pass
 
     def test_search_post(self) -> None:
         """Test case for search_post
 
-        Perform Search
+        Perform search
         """
         pass
 

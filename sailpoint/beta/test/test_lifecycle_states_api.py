@@ -29,14 +29,14 @@ class TestLifecycleStatesApi(unittest.TestCase):
     def test_get_lifecycle_states(self) -> None:
         """Test case for get_lifecycle_states
 
-        Get Lifecycle State
+        Get lifecycle state
         """
         pass
 
     def test_update_lifecycle_states(self) -> None:
         """Test case for update_lifecycle_states
 
-        Update Lifecycle State
+        Update lifecycle state
         """
         pass
 

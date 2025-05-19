@@ -340,7 +340,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ManagedCluster:
-        """(Deprecated) Get a specified ManagedCluster.
+        """(Deprecated) Get a specified managedcluster.
 
         Retrieve a ManagedCluster by ID.
 
@@ -414,7 +414,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ManagedCluster]:
-        """(Deprecated) Get a specified ManagedCluster.
+        """(Deprecated) Get a specified managedcluster.
 
         Retrieve a ManagedCluster by ID.
 
@@ -488,7 +488,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Get a specified ManagedCluster.
+        """(Deprecated) Get a specified managedcluster.
 
         Retrieve a ManagedCluster by ID.
 
@@ -626,7 +626,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[ManagedCluster]:
-        """(Deprecated) Retrieve all Managed Clusters.
+        """(Deprecated) Retrieve all managed clusters.
 
         Retrieve all Managed Clusters for the current Org, based on request context.
 
@@ -711,7 +711,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[ManagedCluster]]:
-        """(Deprecated) Retrieve all Managed Clusters.
+        """(Deprecated) Retrieve all managed clusters.
 
         Retrieve all Managed Clusters for the current Org, based on request context.
 
@@ -796,7 +796,7 @@ class ManagedClustersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Retrieve all Managed Clusters.
+        """(Deprecated) Retrieve all managed clusters.
 
         Retrieve all Managed Clusters for the current Org, based on request context.
 

@@ -43,7 +43,7 @@ class TestCustomFormsApi(unittest.TestCase):
     def test_create_form_definition_dynamic_schema(self) -> None:
         """Test case for create_form_definition_dynamic_schema
 
-        Generate JSON Schema dynamically.
+        Generate json schema dynamically.
         """
         pass
 
@@ -78,7 +78,7 @@ class TestCustomFormsApi(unittest.TestCase):
     def test_get_file_from_s3(self) -> None:
         """Test case for get_file_from_s3
 
-        Download definition file by fileId.
+        Download definition file by fileid.
         """
         pass
 
@@ -99,7 +99,7 @@ class TestCustomFormsApi(unittest.TestCase):
     def test_get_form_instance_file(self) -> None:
         """Test case for get_form_instance_file
 
-        Download instance file by fileId.
+        Download instance file by fileid.
         """
         pass
 

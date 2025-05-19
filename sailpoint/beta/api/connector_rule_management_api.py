@@ -60,7 +60,7 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ConnectorRuleResponse:
-        """Create Connector Rule
+        """Create connector rule
 
         Creates a new connector rule. A token with ORG_ADMIN authority is required to call this API.
 
@@ -132,7 +132,7 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ConnectorRuleResponse]:
-        """Create Connector Rule
+        """Create connector rule
 
         Creates a new connector rule. A token with ORG_ADMIN authority is required to call this API.
 
@@ -204,7 +204,7 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create Connector Rule
+        """Create connector rule
 
         Creates a new connector rule. A token with ORG_ADMIN authority is required to call this API.
 
@@ -350,7 +350,7 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete a Connector-Rule
+        """Delete a connector-rule
 
         Deletes the connector rule specified by the given ID. A token with ORG_ADMIN authority is required to call this API.
 
@@ -423,7 +423,7 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete a Connector-Rule
+        """Delete a connector-rule
 
         Deletes the connector rule specified by the given ID. A token with ORG_ADMIN authority is required to call this API.
 
@@ -496,7 +496,7 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete a Connector-Rule
+        """Delete a connector-rule
 
         Deletes the connector rule specified by the given ID. A token with ORG_ADMIN authority is required to call this API.
 
@@ -630,7 +630,7 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ConnectorRuleResponse:
-        """Connector-Rule by ID
+        """Connector-rule by id
 
         Returns the connector rule specified by ID. A token with ORG_ADMIN authority is required to call this API.
 
@@ -703,7 +703,7 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ConnectorRuleResponse]:
-        """Connector-Rule by ID
+        """Connector-rule by id
 
         Returns the connector rule specified by ID. A token with ORG_ADMIN authority is required to call this API.
 
@@ -776,7 +776,7 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Connector-Rule by ID
+        """Connector-rule by id
 
         Returns the connector rule specified by ID. A token with ORG_ADMIN authority is required to call this API.
 
@@ -909,7 +909,7 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[ConnectorRuleResponse]:
-        """List Connector Rules
+        """List connector rules
 
         Returns the list of connector rules. A token with ORG_ADMIN authority is required to call this API.
 
@@ -977,7 +977,7 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[ConnectorRuleResponse]]:
-        """List Connector Rules
+        """List connector rules
 
         Returns the list of connector rules. A token with ORG_ADMIN authority is required to call this API.
 
@@ -1045,7 +1045,7 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Connector Rules
+        """List connector rules
 
         Returns the list of connector rules. A token with ORG_ADMIN authority is required to call this API.
 
@@ -1173,7 +1173,7 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ConnectorRuleResponse:
-        """Update a Connector Rule
+        """Update a connector rule
 
         Updates an existing connector rule with the one provided in the request body. Note that the fields 'id', 'name', and 'type' are immutable. A token with ORG_ADMIN authority is required to call this API.
 
@@ -1250,7 +1250,7 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ConnectorRuleResponse]:
-        """Update a Connector Rule
+        """Update a connector rule
 
         Updates an existing connector rule with the one provided in the request body. Note that the fields 'id', 'name', and 'type' are immutable. A token with ORG_ADMIN authority is required to call this API.
 
@@ -1327,7 +1327,7 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update a Connector Rule
+        """Update a connector rule
 
         Updates an existing connector rule with the one provided in the request body. Note that the fields 'id', 'name', and 'type' are immutable. A token with ORG_ADMIN authority is required to call this API.
 
@@ -1480,7 +1480,7 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ConnectorRuleValidationResponse:
-        """Validate Connector Rule
+        """Validate connector rule
 
         Returns a list of issues within the code to fix, if any. A token with ORG_ADMIN authority is required to call this API.
 
@@ -1552,7 +1552,7 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ConnectorRuleValidationResponse]:
-        """Validate Connector Rule
+        """Validate connector rule
 
         Returns a list of issues within the code to fix, if any. A token with ORG_ADMIN authority is required to call this API.
 
@@ -1624,7 +1624,7 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Validate Connector Rule
+        """Validate connector rule
 
         Returns a list of issues within the code to fix, if any. A token with ORG_ADMIN authority is required to call this API.
 

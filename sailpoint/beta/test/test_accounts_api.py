@@ -29,112 +29,112 @@ class TestAccountsApi(unittest.TestCase):
     def test_create_account(self) -> None:
         """Test case for create_account
 
-        Create Account
+        Create account
         """
         pass
 
     def test_delete_account(self) -> None:
         """Test case for delete_account
 
-        Delete Account
+        Delete account
         """
         pass
 
     def test_delete_account_async(self) -> None:
         """Test case for delete_account_async
 
-        Remove Account
+        Remove account
         """
         pass
 
     def test_disable_account(self) -> None:
         """Test case for disable_account
 
-        Disable Account
+        Disable account
         """
         pass
 
     def test_disable_account_for_identity(self) -> None:
         """Test case for disable_account_for_identity
 
-        Disable IDN Account for Identity
+        Disable idn account for identity
         """
         pass
 
     def test_disable_accounts_for_identities(self) -> None:
         """Test case for disable_accounts_for_identities
 
-        Disable IDN Accounts for Identities
+        Disable idn accounts for identities
         """
         pass
 
     def test_enable_account(self) -> None:
         """Test case for enable_account
 
-        Enable Account
+        Enable account
         """
         pass
 
     def test_enable_account_for_identity(self) -> None:
         """Test case for enable_account_for_identity
 
-        Enable IDN Account for Identity
+        Enable idn account for identity
         """
         pass
 
     def test_enable_accounts_for_identities(self) -> None:
         """Test case for enable_accounts_for_identities
 
-        Enable IDN Accounts for Identities
+        Enable idn accounts for identities
         """
         pass
 
     def test_get_account(self) -> None:
         """Test case for get_account
 
-        Account Details
+        Account details
         """
         pass
 
     def test_get_account_entitlements(self) -> None:
         """Test case for get_account_entitlements
 
-        Account Entitlements
+        Account entitlements
         """
         pass
 
     def test_list_accounts(self) -> None:
         """Test case for list_accounts
 
-        Accounts List
+        Accounts list
         """
         pass
 
     def test_put_account(self) -> None:
         """Test case for put_account
 
-        Update Account
+        Update account
         """
         pass
 
     def test_submit_reload_account(self) -> None:
         """Test case for submit_reload_account
 
-        Reload Account
+        Reload account
         """
         pass
 
     def test_unlock_account(self) -> None:
         """Test case for unlock_account
 
-        Unlock Account
+        Unlock account
         """
         pass
 
     def test_update_account(self) -> None:
         """Test case for update_account
 
-        Update Account
+        Update account
         """
         pass
 

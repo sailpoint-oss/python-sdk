@@ -75,7 +75,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NonEmployeeApprovalItem:
-        """Approve a Non-Employee Request
+        """Approve a non-employee request
 
         Approves a non-employee approval request and notifies the next approver. The current user must be the requested approver.
 
@@ -151,7 +151,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NonEmployeeApprovalItem]:
-        """Approve a Non-Employee Request
+        """Approve a non-employee request
 
         Approves a non-employee approval request and notifies the next approver. The current user must be the requested approver.
 
@@ -227,7 +227,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Approve a Non-Employee Request
+        """Approve a non-employee request
 
         Approves a non-employee approval request and notifies the next approver. The current user must be the requested approver.
 
@@ -379,7 +379,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NonEmployeeRecord:
-        """Create Non-Employee Record
+        """Create non-employee record
 
         This request will create a non-employee record. Requires role context of `idn:nesr:create`
 
@@ -451,7 +451,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NonEmployeeRecord]:
-        """Create Non-Employee Record
+        """Create non-employee record
 
         This request will create a non-employee record. Requires role context of `idn:nesr:create`
 
@@ -523,7 +523,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create Non-Employee Record
+        """Create non-employee record
 
         This request will create a non-employee record. Requires role context of `idn:nesr:create`
 
@@ -669,7 +669,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NonEmployeeRequest:
-        """Create Non-Employee Request
+        """Create non-employee request
 
         This request will create a non-employee request and notify the approver. Requires role context of `idn:nesr:create` or the user must own the source.
 
@@ -741,7 +741,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NonEmployeeRequest]:
-        """Create Non-Employee Request
+        """Create non-employee request
 
         This request will create a non-employee request and notify the approver. Requires role context of `idn:nesr:create` or the user must own the source.
 
@@ -813,7 +813,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create Non-Employee Request
+        """Create non-employee request
 
         This request will create a non-employee request and notify the approver. Requires role context of `idn:nesr:create` or the user must own the source.
 
@@ -959,7 +959,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NonEmployeeSourceWithCloudExternalId:
-        """Create Non-Employee Source
+        """Create non-employee source
 
         Create a non-employee source. 
 
@@ -1031,7 +1031,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NonEmployeeSourceWithCloudExternalId]:
-        """Create Non-Employee Source
+        """Create non-employee source
 
         Create a non-employee source. 
 
@@ -1103,7 +1103,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create Non-Employee Source
+        """Create non-employee source
 
         Create a non-employee source. 
 
@@ -1250,7 +1250,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NonEmployeeSchemaAttribute:
-        """Create a new Schema Attribute for Non-Employee Source
+        """Create a new schema attribute for non-employee source
 
         This API creates a new schema attribute for Non-Employee Source. The schema technical name must be unique in the source. Attempts to create a schema attribute with an existing name will result in a \"400.1.409 Reference conflict\" response. At most, 10 custom attributes can be created per schema. Attempts to create more than 10 will result in a \"400.1.4 Limit violation\" response. Requires role context of `idn:nesr:create`
 
@@ -1326,7 +1326,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NonEmployeeSchemaAttribute]:
-        """Create a new Schema Attribute for Non-Employee Source
+        """Create a new schema attribute for non-employee source
 
         This API creates a new schema attribute for Non-Employee Source. The schema technical name must be unique in the source. Attempts to create a schema attribute with an existing name will result in a \"400.1.409 Reference conflict\" response. At most, 10 custom attributes can be created per schema. Attempts to create more than 10 will result in a \"400.1.4 Limit violation\" response. Requires role context of `idn:nesr:create`
 
@@ -1402,7 +1402,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create a new Schema Attribute for Non-Employee Source
+        """Create a new schema attribute for non-employee source
 
         This API creates a new schema attribute for Non-Employee Source. The schema technical name must be unique in the source. Attempts to create a schema attribute with an existing name will result in a \"400.1.409 Reference conflict\" response. At most, 10 custom attributes can be created per schema. Attempts to create more than 10 will result in a \"400.1.4 Limit violation\" response. Requires role context of `idn:nesr:create`
 
@@ -1554,7 +1554,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete Non-Employee Record
+        """Delete non-employee record
 
         This request will delete a non-employee record. Requires role context of `idn:nesr:delete`
 
@@ -1626,7 +1626,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete Non-Employee Record
+        """Delete non-employee record
 
         This request will delete a non-employee record. Requires role context of `idn:nesr:delete`
 
@@ -1698,7 +1698,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Non-Employee Record
+        """Delete non-employee record
 
         This request will delete a non-employee record. Requires role context of `idn:nesr:delete`
 
@@ -1831,7 +1831,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete Multiple Non-Employee Records
+        """Delete multiple non-employee records
 
         This request will delete multiple non-employee records based on the non-employee ids provided. Requires role context of `idn:nesr:delete`
 
@@ -1903,7 +1903,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete Multiple Non-Employee Records
+        """Delete multiple non-employee records
 
         This request will delete multiple non-employee records based on the non-employee ids provided. Requires role context of `idn:nesr:delete`
 
@@ -1975,7 +1975,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Multiple Non-Employee Records
+        """Delete multiple non-employee records
 
         This request will delete multiple non-employee records based on the non-employee ids provided. Requires role context of `idn:nesr:delete`
 
@@ -2121,7 +2121,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete Non-Employee Request
+        """Delete non-employee request
 
         This request will delete a non-employee request.  Requires role context of `idn:nesr:delete`
 
@@ -2194,7 +2194,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete Non-Employee Request
+        """Delete non-employee request
 
         This request will delete a non-employee request.  Requires role context of `idn:nesr:delete`
 
@@ -2267,7 +2267,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Non-Employee Request
+        """Delete non-employee request
 
         This request will delete a non-employee request.  Requires role context of `idn:nesr:delete`
 
@@ -2402,7 +2402,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete a Schema Attribute for Non-Employee Source
+        """Delete a schema attribute for non-employee source
 
         This end-point deletes a specific schema attribute for a non-employee source. Requires role context of `idn:nesr:delete` 
 
@@ -2478,7 +2478,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete a Schema Attribute for Non-Employee Source
+        """Delete a schema attribute for non-employee source
 
         This end-point deletes a specific schema attribute for a non-employee source. Requires role context of `idn:nesr:delete` 
 
@@ -2554,7 +2554,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete a Schema Attribute for Non-Employee Source
+        """Delete a schema attribute for non-employee source
 
         This end-point deletes a specific schema attribute for a non-employee source. Requires role context of `idn:nesr:delete` 
 
@@ -2693,7 +2693,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete Non-Employee Source
+        """Delete non-employee source
 
         This request will delete a non-employee source. Requires role context of `idn:nesr:delete`.
 
@@ -2765,7 +2765,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete Non-Employee Source
+        """Delete non-employee source
 
         This request will delete a non-employee source. Requires role context of `idn:nesr:delete`.
 
@@ -2837,7 +2837,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Non-Employee Source
+        """Delete non-employee source
 
         This request will delete a non-employee source. Requires role context of `idn:nesr:delete`.
 
@@ -2970,7 +2970,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete all custom schema attributes for Non-Employee Source
+        """Delete all custom schema attributes for non-employee source
 
         This end-point deletes all custom schema attributes for a non-employee source. Requires role context of `idn:nesr:delete`
 
@@ -3042,7 +3042,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete all custom schema attributes for Non-Employee Source
+        """Delete all custom schema attributes for non-employee source
 
         This end-point deletes all custom schema attributes for a non-employee source. Requires role context of `idn:nesr:delete`
 
@@ -3114,7 +3114,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete all custom schema attributes for Non-Employee Source
+        """Delete all custom schema attributes for non-employee source
 
         This end-point deletes all custom schema attributes for a non-employee source. Requires role context of `idn:nesr:delete`
 
@@ -3247,7 +3247,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Exports Non-Employee Records to CSV
+        """Exports non-employee records to csv
 
         This requests a CSV download for all non-employees from a provided source. Requires role context of `idn:nesr:read`
 
@@ -3320,7 +3320,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Exports Non-Employee Records to CSV
+        """Exports non-employee records to csv
 
         This requests a CSV download for all non-employees from a provided source. Requires role context of `idn:nesr:read`
 
@@ -3393,7 +3393,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Exports Non-Employee Records to CSV
+        """Exports non-employee records to csv
 
         This requests a CSV download for all non-employees from a provided source. Requires role context of `idn:nesr:read`
 
@@ -3528,7 +3528,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Exports Source Schema Template
+        """Exports source schema template
 
         This requests a download for the Source Schema Template for a provided source. Requires role context of `idn:nesr:read`
 
@@ -3601,7 +3601,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Exports Source Schema Template
+        """Exports source schema template
 
         This requests a download for the Source Schema Template for a provided source. Requires role context of `idn:nesr:read`
 
@@ -3674,7 +3674,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Exports Source Schema Template
+        """Exports source schema template
 
         This requests a download for the Source Schema Template for a provided source. Requires role context of `idn:nesr:read`
 
@@ -4103,7 +4103,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NonEmployeeApprovalSummary:
-        """Get Summary of Non-Employee Approval Requests
+        """Get summary of non-employee approval requests
 
         This request will retrieve a summary of non-employee approval requests. There are two contextual uses for the `requested-for` path parameter:   1. The user has the role context of `idn:nesr:read`, in which case he or she may request a summary of all non-employee approval requests assigned to a particular approver by passing in that approver's id.   2. The current user is an approver, in which case \"me\" should be provided as the `requested-for` value. This will provide the approver with a summary of the approval items assigned to him or her.
 
@@ -4175,7 +4175,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NonEmployeeApprovalSummary]:
-        """Get Summary of Non-Employee Approval Requests
+        """Get summary of non-employee approval requests
 
         This request will retrieve a summary of non-employee approval requests. There are two contextual uses for the `requested-for` path parameter:   1. The user has the role context of `idn:nesr:read`, in which case he or she may request a summary of all non-employee approval requests assigned to a particular approver by passing in that approver's id.   2. The current user is an approver, in which case \"me\" should be provided as the `requested-for` value. This will provide the approver with a summary of the approval items assigned to him or her.
 
@@ -4247,7 +4247,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Summary of Non-Employee Approval Requests
+        """Get summary of non-employee approval requests
 
         This request will retrieve a summary of non-employee approval requests. There are two contextual uses for the `requested-for` path parameter:   1. The user has the role context of `idn:nesr:read`, in which case he or she may request a summary of all non-employee approval requests assigned to a particular approver by passing in that approver's id.   2. The current user is an approver, in which case \"me\" should be provided as the `requested-for` value. This will provide the approver with a summary of the approval items assigned to him or her.
 
@@ -4657,7 +4657,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NonEmployeeRecord:
-        """Get a Non-Employee Record
+        """Get a non-employee record
 
         This gets a non-employee record. Requires role context of `idn:nesr:read`
 
@@ -4729,7 +4729,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NonEmployeeRecord]:
-        """Get a Non-Employee Record
+        """Get a non-employee record
 
         This gets a non-employee record. Requires role context of `idn:nesr:read`
 
@@ -4801,7 +4801,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get a Non-Employee Record
+        """Get a non-employee record
 
         This gets a non-employee record. Requires role context of `idn:nesr:read`
 
@@ -4934,7 +4934,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NonEmployeeRequest:
-        """Get a Non-Employee Request
+        """Get a non-employee request
 
         This gets a non-employee request. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:read`, in this case the user can get the non-employee request for any user.   2. The user must be the owner of the non-employee request.
 
@@ -5007,7 +5007,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NonEmployeeRequest]:
-        """Get a Non-Employee Request
+        """Get a non-employee request
 
         This gets a non-employee request. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:read`, in this case the user can get the non-employee request for any user.   2. The user must be the owner of the non-employee request.
 
@@ -5080,7 +5080,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get a Non-Employee Request
+        """Get a non-employee request
 
         This gets a non-employee request. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:read`, in this case the user can get the non-employee request for any user.   2. The user must be the owner of the non-employee request.
 
@@ -5214,7 +5214,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NonEmployeeRequestSummary:
-        """Get Summary of Non-Employee Requests
+        """Get summary of non-employee requests
 
         This request will retrieve a summary of non-employee requests. There are two contextual uses for the `requested-for` path parameter:   1. The user has the role context of `idn:nesr:read`, in which case he or she may request a summary of all non-employee approval requests assigned to a particular account manager by passing in that manager's id.   2. The current user is an account manager, in which case \"me\" should be provided as the `requested-for` value. This will provide the user with a summary of the non-employee requests in the source(s) he or she manages.
 
@@ -5286,7 +5286,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NonEmployeeRequestSummary]:
-        """Get Summary of Non-Employee Requests
+        """Get summary of non-employee requests
 
         This request will retrieve a summary of non-employee requests. There are two contextual uses for the `requested-for` path parameter:   1. The user has the role context of `idn:nesr:read`, in which case he or she may request a summary of all non-employee approval requests assigned to a particular account manager by passing in that manager's id.   2. The current user is an account manager, in which case \"me\" should be provided as the `requested-for` value. This will provide the user with a summary of the non-employee requests in the source(s) he or she manages.
 
@@ -5358,7 +5358,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Summary of Non-Employee Requests
+        """Get summary of non-employee requests
 
         This request will retrieve a summary of non-employee requests. There are two contextual uses for the `requested-for` path parameter:   1. The user has the role context of `idn:nesr:read`, in which case he or she may request a summary of all non-employee approval requests assigned to a particular account manager by passing in that manager's id.   2. The current user is an account manager, in which case \"me\" should be provided as the `requested-for` value. This will provide the user with a summary of the non-employee requests in the source(s) he or she manages.
 
@@ -5492,7 +5492,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NonEmployeeSchemaAttribute:
-        """Get Schema Attribute Non-Employee Source
+        """Get schema attribute non-employee source
 
         This API gets a schema attribute by Id for the specified Non-Employee SourceId. Requires role context of `idn:nesr:read` or the user must be an account manager of the source.
 
@@ -5568,7 +5568,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NonEmployeeSchemaAttribute]:
-        """Get Schema Attribute Non-Employee Source
+        """Get schema attribute non-employee source
 
         This API gets a schema attribute by Id for the specified Non-Employee SourceId. Requires role context of `idn:nesr:read` or the user must be an account manager of the source.
 
@@ -5644,7 +5644,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Schema Attribute Non-Employee Source
+        """Get schema attribute non-employee source
 
         This API gets a schema attribute by Id for the specified Non-Employee SourceId. Requires role context of `idn:nesr:read` or the user must be an account manager of the source.
 
@@ -5783,7 +5783,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NonEmployeeSource:
-        """Get a Non-Employee Source
+        """Get a non-employee source
 
         This gets a non-employee source. There are two contextual uses for the requested-for path parameter:    1. The user has the role context of `idn:nesr:read`, in which case he or she may request any source.   2. The current user is an account manager, in which case the user can only request sources that they own.
 
@@ -5855,7 +5855,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NonEmployeeSource]:
-        """Get a Non-Employee Source
+        """Get a non-employee source
 
         This gets a non-employee source. There are two contextual uses for the requested-for path parameter:    1. The user has the role context of `idn:nesr:read`, in which case he or she may request any source.   2. The current user is an account manager, in which case the user can only request sources that they own.
 
@@ -5927,7 +5927,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get a Non-Employee Source
+        """Get a non-employee source
 
         This gets a non-employee source. There are two contextual uses for the requested-for path parameter:    1. The user has the role context of `idn:nesr:read`, in which case he or she may request any source.   2. The current user is an account manager, in which case the user can only request sources that they own.
 
@@ -6060,7 +6060,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[NonEmployeeSchemaAttribute]:
-        """List Schema Attributes Non-Employee Source
+        """List schema attributes non-employee source
 
         This API gets the list of schema attributes for the specified Non-Employee SourceId. There are 8 mandatory attributes added to each new Non-Employee Source automatically. Additionaly, user can add up to 10 custom attributes. This interface returns all the mandatory attributes followed by any custom attributes. At most, a total of 18 attributes will be returned. Requires role context of `idn:nesr:read` or the user must be an account manager of the source.
 
@@ -6133,7 +6133,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[NonEmployeeSchemaAttribute]]:
-        """List Schema Attributes Non-Employee Source
+        """List schema attributes non-employee source
 
         This API gets the list of schema attributes for the specified Non-Employee SourceId. There are 8 mandatory attributes added to each new Non-Employee Source automatically. Additionaly, user can add up to 10 custom attributes. This interface returns all the mandatory attributes followed by any custom attributes. At most, a total of 18 attributes will be returned. Requires role context of `idn:nesr:read` or the user must be an account manager of the source.
 
@@ -6206,7 +6206,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Schema Attributes Non-Employee Source
+        """List schema attributes non-employee source
 
         This API gets the list of schema attributes for the specified Non-Employee SourceId. There are 8 mandatory attributes added to each new Non-Employee Source automatically. Additionaly, user can add up to 10 custom attributes. This interface returns all the mandatory attributes followed by any custom attributes. At most, a total of 18 attributes will be returned. Requires role context of `idn:nesr:read` or the user must be an account manager of the source.
 
@@ -6341,7 +6341,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NonEmployeeBulkUploadJob:
-        """Imports, or Updates, Non-Employee Records
+        """Imports, or updates, non-employee records
 
         This post will import, or update, Non-Employee records found in the CSV. Requires role context of `idn:nesr:create`
 
@@ -6418,7 +6418,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NonEmployeeBulkUploadJob]:
-        """Imports, or Updates, Non-Employee Records
+        """Imports, or updates, non-employee records
 
         This post will import, or update, Non-Employee records found in the CSV. Requires role context of `idn:nesr:create`
 
@@ -6495,7 +6495,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Imports, or Updates, Non-Employee Records
+        """Imports, or updates, non-employee records
 
         This post will import, or update, Non-Employee records found in the CSV. Requires role context of `idn:nesr:create`
 
@@ -6653,7 +6653,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[NonEmployeeApprovalItem]:
-        """Get List of Non-Employee Approval Requests
+        """Get list of non-employee approval requests
 
         This gets a list of non-employee approval requests. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:read`, in which case they can list the approvals for any approver.   2. The user owns the requested approval.
 
@@ -6745,7 +6745,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[NonEmployeeApprovalItem]]:
-        """Get List of Non-Employee Approval Requests
+        """Get list of non-employee approval requests
 
         This gets a list of non-employee approval requests. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:read`, in which case they can list the approvals for any approver.   2. The user owns the requested approval.
 
@@ -6837,7 +6837,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get List of Non-Employee Approval Requests
+        """Get list of non-employee approval requests
 
         This gets a list of non-employee approval requests. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:read`, in which case they can list the approvals for any approver.   2. The user owns the requested approval.
 
@@ -7016,7 +7016,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[NonEmployeeRecord]:
-        """List Non-Employee Records
+        """List non-employee records
 
         This gets a list of non-employee records. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:read`, in which case they can get a list of all of the non-employees.   2. The user is an account manager, in which case they can get a list of the non-employees that they manage.
 
@@ -7104,7 +7104,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[NonEmployeeRecord]]:
-        """List Non-Employee Records
+        """List non-employee records
 
         This gets a list of non-employee records. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:read`, in which case they can get a list of all of the non-employees.   2. The user is an account manager, in which case they can get a list of the non-employees that they manage.
 
@@ -7192,7 +7192,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Non-Employee Records
+        """List non-employee records
 
         This gets a list of non-employee records. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:read`, in which case they can get a list of all of the non-employees.   2. The user is an account manager, in which case they can get a list of the non-employees that they manage.
 
@@ -7364,7 +7364,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[NonEmployeeRequest]:
-        """List Non-Employee Requests
+        """List non-employee requests
 
         This gets a list of non-employee requests. There are two contextual uses for the `requested-for` path parameter:   1. The user has the role context of `idn:nesr:read`, in which case he or she may request a list non-employee requests assigned to a particular account manager by passing in that manager's id.   2. The current user is an account manager, in which case \"me\" should be provided as the `requested-for` value. This will provide the user with a list of the non-employee requests in the source(s) he or she manages.
 
@@ -7456,7 +7456,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[NonEmployeeRequest]]:
-        """List Non-Employee Requests
+        """List non-employee requests
 
         This gets a list of non-employee requests. There are two contextual uses for the `requested-for` path parameter:   1. The user has the role context of `idn:nesr:read`, in which case he or she may request a list non-employee requests assigned to a particular account manager by passing in that manager's id.   2. The current user is an account manager, in which case \"me\" should be provided as the `requested-for` value. This will provide the user with a list of the non-employee requests in the source(s) he or she manages.
 
@@ -7548,7 +7548,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Non-Employee Requests
+        """List non-employee requests
 
         This gets a list of non-employee requests. There are two contextual uses for the `requested-for` path parameter:   1. The user has the role context of `idn:nesr:read`, in which case he or she may request a list non-employee requests assigned to a particular account manager by passing in that manager's id.   2. The current user is an account manager, in which case \"me\" should be provided as the `requested-for` value. This will provide the user with a list of the non-employee requests in the source(s) he or she manages.
 
@@ -7728,7 +7728,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[NonEmployeeSourceWithNECount]:
-        """List Non-Employee Sources
+        """List non-employee sources
 
         Get a list of non-employee sources. There are two contextual uses for the `requested-for` path parameter:    1. If the user has the role context of `idn:nesr:read`, he or she may request a list sources assigned to a particular account manager by passing in that manager's `id`.   2. If the current user is an account manager, the user should provide 'me' as the `requested-for` value. Doing so provide the user with a list of the sources he or she owns.
 
@@ -7820,7 +7820,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[NonEmployeeSourceWithNECount]]:
-        """List Non-Employee Sources
+        """List non-employee sources
 
         Get a list of non-employee sources. There are two contextual uses for the `requested-for` path parameter:    1. If the user has the role context of `idn:nesr:read`, he or she may request a list sources assigned to a particular account manager by passing in that manager's `id`.   2. If the current user is an account manager, the user should provide 'me' as the `requested-for` value. Doing so provide the user with a list of the sources he or she owns.
 
@@ -7912,7 +7912,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Non-Employee Sources
+        """List non-employee sources
 
         Get a list of non-employee sources. There are two contextual uses for the `requested-for` path parameter:    1. If the user has the role context of `idn:nesr:read`, he or she may request a list sources assigned to a particular account manager by passing in that manager's `id`.   2. If the current user is an account manager, the user should provide 'me' as the `requested-for` value. Doing so provide the user with a list of the sources he or she owns.
 
@@ -8088,7 +8088,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NonEmployeeRecord:
-        """Patch Non-Employee Record
+        """Patch non-employee record
 
         This request will patch a non-employee record. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:update`, in which case they update all available fields.   2. The user is owner of the source, in this case they can only update the end date.
 
@@ -8165,7 +8165,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NonEmployeeRecord]:
-        """Patch Non-Employee Record
+        """Patch non-employee record
 
         This request will patch a non-employee record. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:update`, in which case they update all available fields.   2. The user is owner of the source, in this case they can only update the end date.
 
@@ -8242,7 +8242,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Patch Non-Employee Record
+        """Patch non-employee record
 
         This request will patch a non-employee record. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:update`, in which case they update all available fields.   2. The user is owner of the source, in this case they can only update the end date.
 
@@ -8398,7 +8398,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NonEmployeeSchemaAttribute:
-        """Patch a Schema Attribute for Non-Employee Source
+        """Patch a schema attribute for non-employee source
 
         This end-point patches a specific schema attribute for a non-employee SourceId. Requires role context of `idn:nesr:update` 
 
@@ -8479,7 +8479,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NonEmployeeSchemaAttribute]:
-        """Patch a Schema Attribute for Non-Employee Source
+        """Patch a schema attribute for non-employee source
 
         This end-point patches a specific schema attribute for a non-employee SourceId. Requires role context of `idn:nesr:update` 
 
@@ -8560,7 +8560,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Patch a Schema Attribute for Non-Employee Source
+        """Patch a schema attribute for non-employee source
 
         This end-point patches a specific schema attribute for a non-employee SourceId. Requires role context of `idn:nesr:update` 
 
@@ -8721,7 +8721,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NonEmployeeSource:
-        """Patch a Non-Employee Source
+        """Patch a non-employee source
 
         patch a non-employee source. (partial update) <br/> Patchable field: **name, description, approvers, accountManagers** Requires role context of `idn:nesr:update`.
 
@@ -8797,7 +8797,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NonEmployeeSource]:
-        """Patch a Non-Employee Source
+        """Patch a non-employee source
 
         patch a non-employee source. (partial update) <br/> Patchable field: **name, description, approvers, accountManagers** Requires role context of `idn:nesr:update`.
 
@@ -8873,7 +8873,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Patch a Non-Employee Source
+        """Patch a non-employee source
 
         patch a non-employee source. (partial update) <br/> Patchable field: **name, description, approvers, accountManagers** Requires role context of `idn:nesr:update`.
 
@@ -9027,7 +9027,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NonEmployeeApprovalItem:
-        """Reject a Non-Employee Request
+        """Reject a non-employee request
 
         This endpoint will reject an approval item request and notify user. The current user must be the requested approver.
 
@@ -9103,7 +9103,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NonEmployeeApprovalItem]:
-        """Reject a Non-Employee Request
+        """Reject a non-employee request
 
         This endpoint will reject an approval item request and notify user. The current user must be the requested approver.
 
@@ -9179,7 +9179,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Reject a Non-Employee Request
+        """Reject a non-employee request
 
         This endpoint will reject an approval item request and notify user. The current user must be the requested approver.
 
@@ -9332,7 +9332,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NonEmployeeRecord:
-        """Update Non-Employee Record
+        """Update non-employee record
 
         This request will update a non-employee record. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:update`, in which case they update all available fields.   2. The user is owner of the source, in this case they can only update the end date.
 
@@ -9409,7 +9409,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NonEmployeeRecord]:
-        """Update Non-Employee Record
+        """Update non-employee record
 
         This request will update a non-employee record. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:update`, in which case they update all available fields.   2. The user is owner of the source, in this case they can only update the end date.
 
@@ -9486,7 +9486,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Non-Employee Record
+        """Update non-employee record
 
         This request will update a non-employee record. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:update`, in which case they update all available fields.   2. The user is owner of the source, in this case they can only update the end date.
 

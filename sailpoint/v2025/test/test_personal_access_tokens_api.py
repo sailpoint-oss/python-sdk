@@ -29,28 +29,28 @@ class TestPersonalAccessTokensApi(unittest.TestCase):
     def test_create_personal_access_token(self) -> None:
         """Test case for create_personal_access_token
 
-        Create Personal Access Token
+        Create personal access token
         """
         pass
 
     def test_delete_personal_access_token(self) -> None:
         """Test case for delete_personal_access_token
 
-        Delete Personal Access Token
+        Delete personal access token
         """
         pass
 
     def test_list_personal_access_tokens(self) -> None:
         """Test case for list_personal_access_tokens
 
-        List Personal Access Tokens
+        List personal access tokens
         """
         pass
 
     def test_patch_personal_access_token(self) -> None:
         """Test case for patch_personal_access_token
 
-        Patch Personal Access Token
+        Patch personal access token
         """
         pass
 

@@ -29,14 +29,14 @@ class TestAccountActivitiesApi(unittest.TestCase):
     def test_get_account_activity(self) -> None:
         """Test case for get_account_activity
 
-        Get Account Activity
+        Get account activity
         """
         pass
 
     def test_list_account_activities(self) -> None:
         """Test case for list_account_activities
 
-        List Account Activities
+        List account activities
         """
         pass
 

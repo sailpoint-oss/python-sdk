@@ -60,7 +60,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SodPolicy:
-        """Create SOD policy
+        """Create sod policy
 
         This creates both General and Conflicting Access Based policy, with a limit of 50 entitlements for each (left & right) criteria for Conflicting Access Based SOD policy. Requires role of ORG_ADMIN.
 
@@ -132,7 +132,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SodPolicy]:
-        """Create SOD policy
+        """Create sod policy
 
         This creates both General and Conflicting Access Based policy, with a limit of 50 entitlements for each (left & right) criteria for Conflicting Access Based SOD policy. Requires role of ORG_ADMIN.
 
@@ -204,7 +204,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create SOD policy
+        """Create sod policy
 
         This creates both General and Conflicting Access Based policy, with a limit of 50 entitlements for each (left & right) criteria for Conflicting Access Based SOD policy. Requires role of ORG_ADMIN.
 
@@ -351,7 +351,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete SOD policy by ID
+        """Delete sod policy by id
 
         This deletes a specified SOD policy. Requires role of ORG_ADMIN.
 
@@ -428,7 +428,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete SOD policy by ID
+        """Delete sod policy by id
 
         This deletes a specified SOD policy. Requires role of ORG_ADMIN.
 
@@ -505,7 +505,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete SOD policy by ID
+        """Delete sod policy by id
 
         This deletes a specified SOD policy. Requires role of ORG_ADMIN.
 
@@ -647,7 +647,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete SOD policy schedule
+        """Delete sod policy schedule
 
         This deletes schedule for a specified SOD policy by ID.
 
@@ -720,7 +720,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete SOD policy schedule
+        """Delete sod policy schedule
 
         This deletes schedule for a specified SOD policy by ID.
 
@@ -793,7 +793,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete SOD policy schedule
+        """Delete sod policy schedule
 
         This deletes schedule for a specified SOD policy by ID.
 
@@ -1766,7 +1766,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SodPolicy:
-        """Get SOD policy by ID
+        """Get sod policy by id
 
         This gets specified SOD policy. Requires role of ORG_ADMIN.
 
@@ -1839,7 +1839,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SodPolicy]:
-        """Get SOD policy by ID
+        """Get sod policy by id
 
         This gets specified SOD policy. Requires role of ORG_ADMIN.
 
@@ -1912,7 +1912,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get SOD policy by ID
+        """Get sod policy by id
 
         This gets specified SOD policy. Requires role of ORG_ADMIN.
 
@@ -2046,7 +2046,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SodPolicySchedule:
-        """Get SOD policy schedule
+        """Get sod policy schedule
 
         This endpoint gets a specified SOD policy's schedule.
 
@@ -2118,7 +2118,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SodPolicySchedule]:
-        """Get SOD policy schedule
+        """Get sod policy schedule
 
         This endpoint gets a specified SOD policy's schedule.
 
@@ -2190,7 +2190,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get SOD policy schedule
+        """Get sod policy schedule
 
         This endpoint gets a specified SOD policy's schedule.
 
@@ -2603,7 +2603,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ReportResultReference:
-        """Get SOD violation report status
+        """Get sod violation report status
 
         This gets the status for a violation report run task that has already been invoked.
 
@@ -2676,7 +2676,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ReportResultReference]:
-        """Get SOD violation report status
+        """Get sod violation report status
 
         This gets the status for a violation report run task that has already been invoked.
 
@@ -2749,7 +2749,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get SOD violation report status
+        """Get sod violation report status
 
         This gets the status for a violation report run task that has already been invoked.
 
@@ -2887,7 +2887,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[SodPolicy]:
-        """List SOD policies
+        """List sod policies
 
         This gets list of all SOD policies. Requires role of ORG_ADMIN
 
@@ -2975,7 +2975,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[SodPolicy]]:
-        """List SOD policies
+        """List sod policies
 
         This gets list of all SOD policies. Requires role of ORG_ADMIN
 
@@ -3063,7 +3063,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List SOD policies
+        """List sod policies
 
         This gets list of all SOD policies. Requires role of ORG_ADMIN
 
@@ -3231,7 +3231,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SodPolicy:
-        """Patch SOD policy by ID
+        """Patch sod policy by id
 
         Allows updating SOD Policy fields other than [\"id\",\"created\",\"creatorId\",\"policyQuery\",\"type\"] using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Requires role of ORG_ADMIN. This endpoint can only patch CONFLICTING_ACCESS_BASED type policies. Do not use this endpoint to patch general policies - doing so will build an API exception. 
 
@@ -3308,7 +3308,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SodPolicy]:
-        """Patch SOD policy by ID
+        """Patch sod policy by id
 
         Allows updating SOD Policy fields other than [\"id\",\"created\",\"creatorId\",\"policyQuery\",\"type\"] using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Requires role of ORG_ADMIN. This endpoint can only patch CONFLICTING_ACCESS_BASED type policies. Do not use this endpoint to patch general policies - doing so will build an API exception. 
 
@@ -3385,7 +3385,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Patch SOD policy by ID
+        """Patch sod policy by id
 
         Allows updating SOD Policy fields other than [\"id\",\"created\",\"creatorId\",\"policyQuery\",\"type\"] using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Requires role of ORG_ADMIN. This endpoint can only patch CONFLICTING_ACCESS_BASED type policies. Do not use this endpoint to patch general policies - doing so will build an API exception. 
 
@@ -3540,7 +3540,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SodPolicySchedule:
-        """Update SOD Policy schedule
+        """Update sod policy schedule
 
         This updates schedule for a specified SOD policy.
 
@@ -3616,7 +3616,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SodPolicySchedule]:
-        """Update SOD Policy schedule
+        """Update sod policy schedule
 
         This updates schedule for a specified SOD policy.
 
@@ -3692,7 +3692,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update SOD Policy schedule
+        """Update sod policy schedule
 
         This updates schedule for a specified SOD policy.
 
@@ -3845,7 +3845,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SodPolicy:
-        """Update SOD policy by ID
+        """Update sod policy by id
 
         This updates a specified SOD policy. Requires role of ORG_ADMIN.
 
@@ -3922,7 +3922,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SodPolicy]:
-        """Update SOD policy by ID
+        """Update sod policy by id
 
         This updates a specified SOD policy. Requires role of ORG_ADMIN.
 
@@ -3999,7 +3999,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update SOD policy by ID
+        """Update sod policy by id
 
         This updates a specified SOD policy. Requires role of ORG_ADMIN.
 
@@ -4152,7 +4152,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ReportResultReference:
-        """Evaluate one policy by ID
+        """Evaluate one policy by id
 
         Runs the scheduled report for the policy retrieved by passed policy ID.  The report schedule is fetched from the policy retrieved by ID.
 
@@ -4224,7 +4224,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ReportResultReference]:
-        """Evaluate one policy by ID
+        """Evaluate one policy by id
 
         Runs the scheduled report for the policy retrieved by passed policy ID.  The report schedule is fetched from the policy retrieved by ID.
 
@@ -4296,7 +4296,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Evaluate one policy by ID
+        """Evaluate one policy by id
 
         Runs the scheduled report for the policy retrieved by passed policy ID.  The report schedule is fetched from the policy retrieved by ID.
 
@@ -4719,7 +4719,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ReportResultReference:
-        """Runs SOD policy violation report
+        """Runs sod policy violation report
 
         This invokes processing of violation report for given SOD policy. If the policy reports more than 5000 violations, the report returns with violation limit exceeded message.
 
@@ -4792,7 +4792,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ReportResultReference]:
-        """Runs SOD policy violation report
+        """Runs sod policy violation report
 
         This invokes processing of violation report for given SOD policy. If the policy reports more than 5000 violations, the report returns with violation limit exceeded message.
 
@@ -4865,7 +4865,7 @@ class SODPoliciesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Runs SOD policy violation report
+        """Runs sod policy violation report
 
         This invokes processing of violation report for given SOD policy. If the policy reports more than 5000 violations, the report returns with violation limit exceeded message.
 

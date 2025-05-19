@@ -60,7 +60,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> WorkItems:
-        """Approve an Approval Item
+        """Approve an approval item
 
         This API approves an Approval Item. Either an admin, or the owning/current user must make this request.
 
@@ -137,7 +137,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[WorkItems]:
-        """Approve an Approval Item
+        """Approve an approval item
 
         This API approves an Approval Item. Either an admin, or the owning/current user must make this request.
 
@@ -214,7 +214,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Approve an Approval Item
+        """Approve an approval item
 
         This API approves an Approval Item. Either an admin, or the owning/current user must make this request.
 
@@ -354,7 +354,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> WorkItems:
-        """Bulk approve Approval Items
+        """Bulk approve approval items
 
         This API bulk approves Approval Items. Either an admin, or the owning/current user must make this request.
 
@@ -427,7 +427,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[WorkItems]:
-        """Bulk approve Approval Items
+        """Bulk approve approval items
 
         This API bulk approves Approval Items. Either an admin, or the owning/current user must make this request.
 
@@ -500,7 +500,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Bulk approve Approval Items
+        """Bulk approve approval items
 
         This API bulk approves Approval Items. Either an admin, or the owning/current user must make this request.
 
@@ -635,7 +635,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> WorkItems:
-        """Complete a Work Item
+        """Complete a work item
 
         This API completes a work item. Either an admin, or the owning/current user must make this request.
 
@@ -712,7 +712,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[WorkItems]:
-        """Complete a Work Item
+        """Complete a work item
 
         This API completes a work item. Either an admin, or the owning/current user must make this request.
 
@@ -789,7 +789,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Complete a Work Item
+        """Complete a work item
 
         This API completes a work item. Either an admin, or the owning/current user must make this request.
 
@@ -944,7 +944,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Forward a Work Item
+        """Forward a work item
 
         This API forwards a work item to a new owner. Either an admin, or the owning/current user must make this request.
 
@@ -1024,7 +1024,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Forward a Work Item
+        """Forward a work item
 
         This API forwards a work item to a new owner. Either an admin, or the owning/current user must make this request.
 
@@ -1104,7 +1104,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Forward a Work Item
+        """Forward a work item
 
         This API forwards a work item to a new owner. Either an admin, or the owning/current user must make this request.
 
@@ -1265,7 +1265,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[WorkItems]:
-        """Completed Work Items
+        """Completed work items
 
         This gets a collection of completed work items belonging to either the specified user(admin required), or the current user.
 
@@ -1349,7 +1349,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[WorkItems]]:
-        """Completed Work Items
+        """Completed work items
 
         This gets a collection of completed work items belonging to either the specified user(admin required), or the current user.
 
@@ -1433,7 +1433,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Completed Work Items
+        """Completed work items
 
         This gets a collection of completed work items belonging to either the specified user(admin required), or the current user.
 
@@ -1593,7 +1593,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> WorkItemsCount:
-        """Count Completed Work Items
+        """Count completed work items
 
         This gets a count of completed work items belonging to either the specified user(admin required), or the current user.
 
@@ -1667,7 +1667,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[WorkItemsCount]:
-        """Count Completed Work Items
+        """Count completed work items
 
         This gets a count of completed work items belonging to either the specified user(admin required), or the current user.
 
@@ -1741,7 +1741,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Count Completed Work Items
+        """Count completed work items
 
         This gets a count of completed work items belonging to either the specified user(admin required), or the current user.
 
@@ -1880,7 +1880,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> WorkItemsCount:
-        """Count Work Items
+        """Count work items
 
         This gets a count of work items belonging to either the specified user(admin required), or the current user.
 
@@ -1952,7 +1952,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[WorkItemsCount]:
-        """Count Work Items
+        """Count work items
 
         This gets a count of work items belonging to either the specified user(admin required), or the current user.
 
@@ -2024,7 +2024,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Count Work Items
+        """Count work items
 
         This gets a count of work items belonging to either the specified user(admin required), or the current user.
 
@@ -2159,7 +2159,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> WorkItems:
-        """Get a Work Item
+        """Get a work item
 
         This gets the details of a Work Item belonging to either the specified user(admin required), or the current user.
 
@@ -2231,7 +2231,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[WorkItems]:
-        """Get a Work Item
+        """Get a work item
 
         This gets the details of a Work Item belonging to either the specified user(admin required), or the current user.
 
@@ -2303,7 +2303,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get a Work Item
+        """Get a work item
 
         This gets the details of a Work Item belonging to either the specified user(admin required), or the current user.
 
@@ -2436,7 +2436,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> WorkItemsSummary:
-        """Work Items Summary
+        """Work items summary
 
         This gets a summary of work items belonging to either the specified user(admin required), or the current user.
 
@@ -2508,7 +2508,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[WorkItemsSummary]:
-        """Work Items Summary
+        """Work items summary
 
         This gets a summary of work items belonging to either the specified user(admin required), or the current user.
 
@@ -2580,7 +2580,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Work Items Summary
+        """Work items summary
 
         This gets a summary of work items belonging to either the specified user(admin required), or the current user.
 
@@ -2718,7 +2718,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[WorkItems]:
-        """List Work Items
+        """List work items
 
         This gets a collection of work items belonging to either the specified user(admin required), or the current user.
 
@@ -2802,7 +2802,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[WorkItems]]:
-        """List Work Items
+        """List work items
 
         This gets a collection of work items belonging to either the specified user(admin required), or the current user.
 
@@ -2886,7 +2886,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Work Items
+        """List work items
 
         This gets a collection of work items belonging to either the specified user(admin required), or the current user.
 
@@ -3046,7 +3046,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> WorkItems:
-        """Reject an Approval Item
+        """Reject an approval item
 
         This API rejects an Approval Item. Either an admin, or the owning/current user must make this request.
 
@@ -3123,7 +3123,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[WorkItems]:
-        """Reject an Approval Item
+        """Reject an approval item
 
         This API rejects an Approval Item. Either an admin, or the owning/current user must make this request.
 
@@ -3200,7 +3200,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Reject an Approval Item
+        """Reject an approval item
 
         This API rejects an Approval Item. Either an admin, or the owning/current user must make this request.
 
@@ -3340,7 +3340,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> WorkItems:
-        """Bulk reject Approval Items
+        """Bulk reject approval items
 
         This API bulk rejects Approval Items. Either an admin, or the owning/current user must make this request.
 
@@ -3413,7 +3413,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[WorkItems]:
-        """Bulk reject Approval Items
+        """Bulk reject approval items
 
         This API bulk rejects Approval Items. Either an admin, or the owning/current user must make this request.
 
@@ -3486,7 +3486,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Bulk reject Approval Items
+        """Bulk reject approval items
 
         This API bulk rejects Approval Items. Either an admin, or the owning/current user must make this request.
 
@@ -3621,7 +3621,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> WorkItems:
-        """Submit Account Selections
+        """Submit account selections
 
         This API submits account selections. Either an admin, or the owning/current user must make this request.
 
@@ -3698,7 +3698,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[WorkItems]:
-        """Submit Account Selections
+        """Submit account selections
 
         This API submits account selections. Either an admin, or the owning/current user must make this request.
 
@@ -3775,7 +3775,7 @@ class WorkItemsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Submit Account Selections
+        """Submit account selections
 
         This API submits account selections. Either an admin, or the owning/current user must make this request.
 

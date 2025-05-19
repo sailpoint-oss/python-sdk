@@ -29,35 +29,35 @@ class TestSegmentsApi(unittest.TestCase):
     def test_create_segment(self) -> None:
         """Test case for create_segment
 
-        Create Segment
+        Create segment
         """
         pass
 
     def test_delete_segment(self) -> None:
         """Test case for delete_segment
 
-        Delete Segment by ID
+        Delete segment by id
         """
         pass
 
     def test_get_segment(self) -> None:
         """Test case for get_segment
 
-        Get Segment by ID
+        Get segment by id
         """
         pass
 
     def test_list_segments(self) -> None:
         """Test case for list_segments
 
-        List Segments
+        List segments
         """
         pass
 
     def test_patch_segment(self) -> None:
         """Test case for patch_segment
 
-        Update Segment
+        Update segment
         """
         pass
 

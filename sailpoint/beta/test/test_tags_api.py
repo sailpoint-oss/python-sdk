@@ -29,28 +29,28 @@ class TestTagsApi(unittest.TestCase):
     def test_create_tag(self) -> None:
         """Test case for create_tag
 
-        Create Tag
+        Create tag
         """
         pass
 
     def test_delete_tag_by_id(self) -> None:
         """Test case for delete_tag_by_id
 
-        Delete Tag
+        Delete tag
         """
         pass
 
     def test_get_tag_by_id(self) -> None:
         """Test case for get_tag_by_id
 
-        Get Tag By Id
+        Get tag by id
         """
         pass
 
     def test_list_tags(self) -> None:
         """Test case for list_tags
 
-        List Tags
+        List tags
         """
         pass
 

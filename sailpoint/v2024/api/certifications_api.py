@@ -62,7 +62,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> CertificationTask:
-        """Certification Task by ID
+        """Certification task by id
 
         This API returns the certification task for the specified ID. Reviewers for the specified certification can also call this API.
 
@@ -135,7 +135,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[CertificationTask]:
-        """Certification Task by ID
+        """Certification task by id
 
         This API returns the certification task for the specified ID. Reviewers for the specified certification can also call this API.
 
@@ -208,7 +208,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Certification Task by ID
+        """Certification task by id
 
         This API returns the certification task for the specified ID. Reviewers for the specified certification can also call this API.
 
@@ -342,7 +342,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> IdentityCertificationDto:
-        """Identity Certification by ID
+        """Identity certification by id
 
         This API returns a single identity campaign certification by its ID. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
 
@@ -415,7 +415,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[IdentityCertificationDto]:
-        """Identity Certification by ID
+        """Identity certification by id
 
         This API returns a single identity campaign certification by its ID. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
 
@@ -488,7 +488,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Identity Certification by ID
+        """Identity certification by id
 
         This API returns a single identity campaign certification by its ID. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
 
@@ -627,7 +627,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[PermissionDto]:
-        """Permissions for Entitlement Certification Item
+        """Permissions for entitlement certification item
 
         This API returns the permissions associated with an entitlement certification item based on the certification item's ID. Reviewers for this certification can also call this API.
 
@@ -720,7 +720,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[PermissionDto]]:
-        """Permissions for Entitlement Certification Item
+        """Permissions for entitlement certification item
 
         This API returns the permissions associated with an entitlement certification item based on the certification item's ID. Reviewers for this certification can also call this API.
 
@@ -813,7 +813,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Permissions for Entitlement Certification Item
+        """Permissions for entitlement certification item
 
         This API returns the permissions associated with an entitlement certification item based on the certification item's ID. Reviewers for this certification can also call this API.
 
@@ -989,7 +989,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[CertificationTask]:
-        """List of Pending Certification Tasks
+        """List of pending certification tasks
 
         This API returns a list of pending (`QUEUED` or `IN_PROGRESS`) certification tasks. Any authenticated token can call this API, but only certification tasks you are authorized to review will be returned.
 
@@ -1078,7 +1078,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[CertificationTask]]:
-        """List of Pending Certification Tasks
+        """List of pending certification tasks
 
         This API returns a list of pending (`QUEUED` or `IN_PROGRESS`) certification tasks. Any authenticated token can call this API, but only certification tasks you are authorized to review will be returned.
 
@@ -1167,7 +1167,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List of Pending Certification Tasks
+        """List of pending certification tasks
 
         This API returns a list of pending (`QUEUED` or `IN_PROGRESS`) certification tasks. Any authenticated token can call this API, but only certification tasks you are authorized to review will be returned.
 
@@ -1340,7 +1340,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[IdentityReferenceWithNameAndEmail]:
-        """List of Reviewers for certification
+        """List of reviewers for certification
 
         This API returns a list of reviewers for the certification. Reviewers for this certification can also call this API.
 
@@ -1433,7 +1433,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[IdentityReferenceWithNameAndEmail]]:
-        """List of Reviewers for certification
+        """List of reviewers for certification
 
         This API returns a list of reviewers for the certification. Reviewers for this certification can also call this API.
 
@@ -1526,7 +1526,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List of Reviewers for certification
+        """List of reviewers for certification
 
         This API returns a list of reviewers for the certification. Reviewers for this certification can also call this API.
 
@@ -1708,7 +1708,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[AccessReviewItem]:
-        """List of Access Review Items
+        """List of access review items
 
         This API returns a list of access review items for an identity campaign certification. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
 
@@ -1813,7 +1813,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[AccessReviewItem]]:
-        """List of Access Review Items
+        """List of access review items
 
         This API returns a list of access review items for an identity campaign certification. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
 
@@ -1918,7 +1918,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List of Access Review Items
+        """List of access review items
 
         This API returns a list of access review items for an identity campaign certification. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
 
@@ -2121,7 +2121,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[IdentityCertificationDto]:
-        """List Identity Campaign Certifications
+        """List identity campaign certifications
 
         Use this API to get a list of identity campaign certifications for the specified query parameters. Any authenticated token can call this API, but only certifications you are authorized to review will be returned. This API does not support requests for certifications assigned to governance groups.
 
@@ -2213,7 +2213,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[IdentityCertificationDto]]:
-        """List Identity Campaign Certifications
+        """List identity campaign certifications
 
         Use this API to get a list of identity campaign certifications for the specified query parameters. Any authenticated token can call this API, but only certifications you are authorized to review will be returned. This API does not support requests for certifications assigned to governance groups.
 
@@ -2305,7 +2305,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Identity Campaign Certifications
+        """List identity campaign certifications
 
         Use this API to get a list of identity campaign certifications for the specified query parameters. Any authenticated token can call this API, but only certifications you are authorized to review will be returned. This API does not support requests for certifications assigned to governance groups.
 
@@ -2481,7 +2481,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> IdentityCertificationDto:
-        """Decide on a Certification Item
+        """Decide on a certification item
 
         The API makes a decision to approve or revoke one or more identity campaign certification items. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
 
@@ -2558,7 +2558,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[IdentityCertificationDto]:
-        """Decide on a Certification Item
+        """Decide on a certification item
 
         The API makes a decision to approve or revoke one or more identity campaign certification items. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
 
@@ -2635,7 +2635,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Decide on a Certification Item
+        """Decide on a certification item
 
         The API makes a decision to approve or revoke one or more identity campaign certification items. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
 
@@ -2790,7 +2790,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> IdentityCertificationDto:
-        """Reassign Identities or Items
+        """Reassign identities or items
 
         This API reassigns up to 50 identities or items in an identity campaign certification to another reviewer. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
 
@@ -2867,7 +2867,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[IdentityCertificationDto]:
-        """Reassign Identities or Items
+        """Reassign identities or items
 
         This API reassigns up to 50 identities or items in an identity campaign certification to another reviewer. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
 
@@ -2944,7 +2944,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Reassign Identities or Items
+        """Reassign identities or items
 
         This API reassigns up to 50 identities or items in an identity campaign certification to another reviewer. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
 
@@ -3097,7 +3097,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> IdentityCertificationDto:
-        """Finalize Identity Certification Decisions
+        """Finalize identity certification decisions
 
         This API finalizes all decisions made on an identity campaign certification and initiates any remediations required. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
 
@@ -3170,7 +3170,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[IdentityCertificationDto]:
-        """Finalize Identity Certification Decisions
+        """Finalize identity certification decisions
 
         This API finalizes all decisions made on an identity campaign certification and initiates any remediations required. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
 
@@ -3243,7 +3243,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Finalize Identity Certification Decisions
+        """Finalize identity certification decisions
 
         This API finalizes all decisions made on an identity campaign certification and initiates any remediations required. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
 
@@ -3378,7 +3378,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> CertificationTask:
-        """Reassign Certifications Asynchronously
+        """Reassign certifications asynchronously
 
         This API initiates a task to reassign up to 500 identities or items in an identity campaign certification to another reviewer. The `certification-tasks` API can be used to get an updated status on the task and determine when the reassignment is complete.   Reviewers for this certification can also call this API. 
 
@@ -3455,7 +3455,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[CertificationTask]:
-        """Reassign Certifications Asynchronously
+        """Reassign certifications asynchronously
 
         This API initiates a task to reassign up to 500 identities or items in an identity campaign certification to another reviewer. The `certification-tasks` API can be used to get an updated status on the task and determine when the reassignment is complete.   Reviewers for this certification can also call this API. 
 
@@ -3532,7 +3532,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Reassign Certifications Asynchronously
+        """Reassign certifications asynchronously
 
         This API initiates a task to reassign up to 500 identities or items in an identity campaign certification to another reviewer. The `certification-tasks` API can be used to get an updated status on the task and determine when the reassignment is complete.   Reviewers for this certification can also call this API. 
 

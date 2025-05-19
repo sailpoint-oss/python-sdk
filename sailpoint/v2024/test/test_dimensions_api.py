@@ -29,56 +29,56 @@ class TestDimensionsApi(unittest.TestCase):
     def test_create_dimension(self) -> None:
         """Test case for create_dimension
 
-        Create a Dimension
+        Create a dimension
         """
         pass
 
     def test_delete_bulk_dimensions(self) -> None:
         """Test case for delete_bulk_dimensions
 
-        Delete Dimension(s)
+        Delete dimension(s)
         """
         pass
 
     def test_delete_dimension(self) -> None:
         """Test case for delete_dimension
 
-        Delete a Dimension
+        Delete a dimension
         """
         pass
 
     def test_get_dimension(self) -> None:
         """Test case for get_dimension
 
-        Get a Dimension under Role.
+        Get a dimension under role.
         """
         pass
 
     def test_get_dimension_entitlements(self) -> None:
         """Test case for get_dimension_entitlements
 
-        List Dimension's Entitlements
+        List dimension's entitlements
         """
         pass
 
     def test_list_dimension_access_profiles(self) -> None:
         """Test case for list_dimension_access_profiles
 
-        List Dimension's Access Profiles
+        List dimension's access profiles
         """
         pass
 
     def test_list_dimensions(self) -> None:
         """Test case for list_dimensions
 
-        List Dimensions
+        List dimensions
         """
         pass
 
     def test_patch_dimension(self) -> None:
         """Test case for patch_dimension
 
-        Patch a specified Dimension
+        Patch a specified dimension
         """
         pass
 

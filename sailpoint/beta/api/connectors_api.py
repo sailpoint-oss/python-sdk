@@ -60,7 +60,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[V3ConnectorDto]:
-        """Get Connector List
+        """Get connector list
 
         Fetches list of connectors that have 'RELEASED' status using filtering and pagination.
 
@@ -149,7 +149,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[V3ConnectorDto]]:
-        """Get Connector List
+        """Get connector list
 
         Fetches list of connectors that have 'RELEASED' status using filtering and pagination.
 
@@ -238,7 +238,7 @@ class ConnectorsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Connector List
+        """Get connector list
 
         Fetches list of connectors that have 'RELEASED' status using filtering and pagination.
 

@@ -57,7 +57,7 @@ class TestIAIRoleMiningApi(unittest.TestCase):
     def test_export_role_mining_potential_role_async(self) -> None:
         """Test case for export_role_mining_potential_role_async
 
-        Asynchronously export details for a potential role in a role mining session and upload to S3
+        Asynchronously export details for a potential role in a role mining session and upload to s3
         """
         pass
 

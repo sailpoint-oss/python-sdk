@@ -29,28 +29,28 @@ class TestReportsDataExtractionApi(unittest.TestCase):
     def test_cancel_report(self) -> None:
         """Test case for cancel_report
 
-        Cancel Report
+        Cancel report
         """
         pass
 
     def test_get_report(self) -> None:
         """Test case for get_report
 
-        Get Report File
+        Get report file
         """
         pass
 
     def test_get_report_result(self) -> None:
         """Test case for get_report_result
 
-        Get Report Result
+        Get report result
         """
         pass
 
     def test_start_report(self) -> None:
         """Test case for start_report
 
-        Run Report
+        Run report
         """
         pass
 

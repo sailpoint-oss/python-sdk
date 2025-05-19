@@ -56,7 +56,7 @@ class IAIMessageCatalogsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[MessageCatalogDto]:
-        """Get Message catalogs
+        """Get message catalogs
 
         The getMessageCatalogs API returns message catalog based on the language headers in the requested object.
 
@@ -128,7 +128,7 @@ class IAIMessageCatalogsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[MessageCatalogDto]]:
-        """Get Message catalogs
+        """Get message catalogs
 
         The getMessageCatalogs API returns message catalog based on the language headers in the requested object.
 
@@ -200,7 +200,7 @@ class IAIMessageCatalogsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Message catalogs
+        """Get message catalogs
 
         The getMessageCatalogs API returns message catalog based on the language headers in the requested object.
 

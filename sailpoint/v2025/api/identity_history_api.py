@@ -466,7 +466,7 @@ class IdentityHistoryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[AccessItemDiff]:
-        """Gets a list of differences of specific accessType for the given identity between 2 snapshots
+        """Gets a list of differences of specific accesstype for the given identity between 2 snapshots
 
         This method gets a list of differences of specific accessType for the given identity between 2 snapshots Requires authorization scope of 'idn:identity-history:read' 
 
@@ -570,7 +570,7 @@ class IdentityHistoryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[AccessItemDiff]]:
-        """Gets a list of differences of specific accessType for the given identity between 2 snapshots
+        """Gets a list of differences of specific accesstype for the given identity between 2 snapshots
 
         This method gets a list of differences of specific accessType for the given identity between 2 snapshots Requires authorization scope of 'idn:identity-history:read' 
 
@@ -674,7 +674,7 @@ class IdentityHistoryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Gets a list of differences of specific accessType for the given identity between 2 snapshots
+        """Gets a list of differences of specific accesstype for the given identity between 2 snapshots
 
         This method gets a list of differences of specific accessType for the given identity between 2 snapshots Requires authorization scope of 'idn:identity-history:read' 
 
@@ -2918,7 +2918,7 @@ class IdentityHistoryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[ListIdentityAccessItems200ResponseInner]:
-        """List Access Items by Identity
+        """List access items by identity
 
         This method retrieves a list of access item for the identity filtered by the access item type 
 
@@ -3011,7 +3011,7 @@ class IdentityHistoryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[ListIdentityAccessItems200ResponseInner]]:
-        """List Access Items by Identity
+        """List access items by identity
 
         This method retrieves a list of access item for the identity filtered by the access item type 
 
@@ -3104,7 +3104,7 @@ class IdentityHistoryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Access Items by Identity
+        """List access items by identity
 
         This method retrieves a list of access item for the identity filtered by the access item type 
 

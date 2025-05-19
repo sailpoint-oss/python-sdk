@@ -29,56 +29,56 @@ class TestAccessProfilesApi(unittest.TestCase):
     def test_create_access_profile(self) -> None:
         """Test case for create_access_profile
 
-        Create Access Profile
+        Create access profile
         """
         pass
 
     def test_delete_access_profile(self) -> None:
         """Test case for delete_access_profile
 
-        Delete the specified Access Profile
+        Delete the specified access profile
         """
         pass
 
     def test_delete_access_profiles_in_bulk(self) -> None:
         """Test case for delete_access_profiles_in_bulk
 
-        Delete Access Profile(s)
+        Delete access profile(s)
         """
         pass
 
     def test_get_access_profile(self) -> None:
         """Test case for get_access_profile
 
-        Get an Access Profile
+        Get an access profile
         """
         pass
 
     def test_get_access_profile_entitlements(self) -> None:
         """Test case for get_access_profile_entitlements
 
-        List Access Profile's Entitlements
+        List access profile's entitlements
         """
         pass
 
     def test_list_access_profiles(self) -> None:
         """Test case for list_access_profiles
 
-        List Access Profiles
+        List access profiles
         """
         pass
 
     def test_patch_access_profile(self) -> None:
         """Test case for patch_access_profile
 
-        Patch a specified Access Profile
+        Patch a specified access profile
         """
         pass
 
     def test_update_access_profiles_in_bulk(self) -> None:
         """Test case for update_access_profiles_in_bulk
 
-        Update Access Profile(s) requestable field.
+        Update access profile(s) requestable field.
         """
         pass
 

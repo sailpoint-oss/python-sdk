@@ -29,21 +29,21 @@ class TestAuthProfileApi(unittest.TestCase):
     def test_get_profile_config(self) -> None:
         """Test case for get_profile_config
 
-        Get Auth Profile
+        Get auth profile
         """
         pass
 
     def test_get_profile_config_list(self) -> None:
         """Test case for get_profile_config_list
 
-        Get list of Auth Profiles
+        Get list of auth profiles
         """
         pass
 
     def test_patch_profile_config(self) -> None:
         """Test case for patch_profile_config
 
-        Patch a specified Auth Profile
+        Patch a specified auth profile
         """
         pass
 

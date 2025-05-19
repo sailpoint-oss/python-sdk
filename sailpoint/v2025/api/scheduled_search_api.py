@@ -351,7 +351,7 @@ class ScheduledSearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete a Scheduled Search
+        """Delete a scheduled search
 
         Deletes the specified scheduled search. 
 
@@ -424,7 +424,7 @@ class ScheduledSearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete a Scheduled Search
+        """Delete a scheduled search
 
         Deletes the specified scheduled search. 
 
@@ -497,7 +497,7 @@ class ScheduledSearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete a Scheduled Search
+        """Delete a scheduled search
 
         Deletes the specified scheduled search. 
 
@@ -631,7 +631,7 @@ class ScheduledSearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ScheduledSearch:
-        """Get a Scheduled Search
+        """Get a scheduled search
 
         Returns the specified scheduled search.
 
@@ -704,7 +704,7 @@ class ScheduledSearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ScheduledSearch]:
-        """Get a Scheduled Search
+        """Get a scheduled search
 
         Returns the specified scheduled search.
 
@@ -777,7 +777,7 @@ class ScheduledSearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get a Scheduled Search
+        """Get a scheduled search
 
         Returns the specified scheduled search.
 
@@ -1245,7 +1245,7 @@ class ScheduledSearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Unsubscribe a recipient from Scheduled Search
+        """Unsubscribe a recipient from scheduled search
 
         Unsubscribes a recipient from the specified scheduled search. 
 
@@ -1319,7 +1319,7 @@ class ScheduledSearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Unsubscribe a recipient from Scheduled Search
+        """Unsubscribe a recipient from scheduled search
 
         Unsubscribes a recipient from the specified scheduled search. 
 
@@ -1393,7 +1393,7 @@ class ScheduledSearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Unsubscribe a recipient from Scheduled Search
+        """Unsubscribe a recipient from scheduled search
 
         Unsubscribes a recipient from the specified scheduled search. 
 
@@ -1544,7 +1544,7 @@ class ScheduledSearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ScheduledSearch:
-        """Update an existing Scheduled Search
+        """Update an existing scheduled search
 
         Updates an existing scheduled search. 
 
@@ -1621,7 +1621,7 @@ class ScheduledSearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ScheduledSearch]:
-        """Update an existing Scheduled Search
+        """Update an existing scheduled search
 
         Updates an existing scheduled search. 
 
@@ -1698,7 +1698,7 @@ class ScheduledSearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update an existing Scheduled Search
+        """Update an existing scheduled search
 
         Updates an existing scheduled search. 
 

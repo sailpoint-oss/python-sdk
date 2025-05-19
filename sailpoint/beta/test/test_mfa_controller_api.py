@@ -36,35 +36,35 @@ class TestMFAControllerApi(unittest.TestCase):
     def test_ping_verification_status(self) -> None:
         """Test case for ping_verification_status
 
-        Polling MFA method by VerificationPollRequest
+        Polling mfa method by verificationpollrequest
         """
         pass
 
     def test_send_duo_verify_request(self) -> None:
         """Test case for send_duo_verify_request
 
-        Verifying authentication via Duo method
+        Verifying authentication via duo method
         """
         pass
 
     def test_send_kba_answers(self) -> None:
         """Test case for send_kba_answers
 
-        Authenticate KBA provided MFA method
+        Authenticate kba provided mfa method
         """
         pass
 
     def test_send_okta_verify_request(self) -> None:
         """Test case for send_okta_verify_request
 
-        Verifying authentication via Okta method
+        Verifying authentication via okta method
         """
         pass
 
     def test_send_token_auth_request(self) -> None:
         """Test case for send_token_auth_request
 
-        Authenticate Token provided MFA method
+        Authenticate token provided mfa method
         """
         pass
 

@@ -1001,7 +1001,7 @@ class EntitlementsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> EntitlementRequestConfig:
-        """Get Entitlement Request Config
+        """Get entitlement request config
 
         This API returns the entitlement request config for a specified entitlement.
 
@@ -1078,7 +1078,7 @@ class EntitlementsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[EntitlementRequestConfig]:
-        """Get Entitlement Request Config
+        """Get entitlement request config
 
         This API returns the entitlement request config for a specified entitlement.
 
@@ -1155,7 +1155,7 @@ class EntitlementsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Entitlement Request Config
+        """Get entitlement request config
 
         This API returns the entitlement request config for a specified entitlement.
 
@@ -1297,7 +1297,7 @@ class EntitlementsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> LoadEntitlementTask:
-        """(Deprecated) Aggregate Entitlements
+        """(Deprecated) Aggregate entitlements
 
         Starts an entitlement aggregation on the specified source. Though this endpoint has been deprecated, you can find its Beta equivalent [here](https://developer.sailpoint.com/docs/api/beta/import-entitlements).  If the target source is a direct connection, then the request body must be empty. You will also need to make sure the Content-Type header is not set. If you set the Content-Type header without specifying a body, then you will receive a 500 error.  If the target source is a delimited file source, then the CSV file needs to be included in the request body. You will also need to set the Content-Type header to `multipart/form-data`.
 
@@ -1378,7 +1378,7 @@ class EntitlementsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[LoadEntitlementTask]:
-        """(Deprecated) Aggregate Entitlements
+        """(Deprecated) Aggregate entitlements
 
         Starts an entitlement aggregation on the specified source. Though this endpoint has been deprecated, you can find its Beta equivalent [here](https://developer.sailpoint.com/docs/api/beta/import-entitlements).  If the target source is a direct connection, then the request body must be empty. You will also need to make sure the Content-Type header is not set. If you set the Content-Type header without specifying a body, then you will receive a 500 error.  If the target source is a delimited file source, then the CSV file needs to be included in the request body. You will also need to set the Content-Type header to `multipart/form-data`.
 
@@ -1459,7 +1459,7 @@ class EntitlementsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Aggregate Entitlements
+        """(Deprecated) Aggregate entitlements
 
         Starts an entitlement aggregation on the specified source. Though this endpoint has been deprecated, you can find its Beta equivalent [here](https://developer.sailpoint.com/docs/api/beta/import-entitlements).  If the target source is a direct connection, then the request body must be empty. You will also need to make sure the Content-Type header is not set. If you set the Content-Type header without specifying a body, then you will receive a 500 error.  If the target source is a delimited file source, then the CSV file needs to be included in the request body. You will also need to set the Content-Type header to `multipart/form-data`.
 
@@ -3134,7 +3134,7 @@ class EntitlementsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> EntitlementRequestConfig:
-        """Replace Entitlement Request Config
+        """Replace entitlement request config
 
         This API replaces the entitlement request config for a specified entitlement.
 
@@ -3215,7 +3215,7 @@ class EntitlementsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[EntitlementRequestConfig]:
-        """Replace Entitlement Request Config
+        """Replace entitlement request config
 
         This API replaces the entitlement request config for a specified entitlement.
 
@@ -3296,7 +3296,7 @@ class EntitlementsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Replace Entitlement Request Config
+        """Replace entitlement request config
 
         This API replaces the entitlement request config for a specified entitlement.
 
@@ -3456,7 +3456,7 @@ class EntitlementsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> EntitlementSourceResetBaseReferenceDto:
-        """Reset Source Entitlements
+        """Reset source entitlements
 
         Remove all entitlements from a specific source. To reload the accounts along with the entitlements you removed, you must run an unoptimized aggregation.  To do so, use [Account Aggregation](https://developer.sailpoint.com/docs/api/v2024/import-accounts/) with `disableOptimization` = `true`. 
 
@@ -3532,7 +3532,7 @@ class EntitlementsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[EntitlementSourceResetBaseReferenceDto]:
-        """Reset Source Entitlements
+        """Reset source entitlements
 
         Remove all entitlements from a specific source. To reload the accounts along with the entitlements you removed, you must run an unoptimized aggregation.  To do so, use [Account Aggregation](https://developer.sailpoint.com/docs/api/v2024/import-accounts/) with `disableOptimization` = `true`. 
 
@@ -3608,7 +3608,7 @@ class EntitlementsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Reset Source Entitlements
+        """Reset source entitlements
 
         Remove all entitlements from a specific source. To reload the accounts along with the entitlements you removed, you must run an unoptimized aggregation.  To do so, use [Account Aggregation](https://developer.sailpoint.com/docs/api/v2024/import-accounts/) with `disableOptimization` = `true`. 
 

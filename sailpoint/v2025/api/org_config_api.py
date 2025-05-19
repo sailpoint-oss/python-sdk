@@ -57,7 +57,7 @@ class OrgConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> OrgConfig:
-        """Get Org Config Settings
+        """Get org config settings
 
         Get the current organization's configuration settings, only external accessible properties.
 
@@ -130,7 +130,7 @@ class OrgConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[OrgConfig]:
-        """Get Org Config Settings
+        """Get org config settings
 
         Get the current organization's configuration settings, only external accessible properties.
 
@@ -203,7 +203,7 @@ class OrgConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Org Config Settings
+        """Get org config settings
 
         Get the current organization's configuration settings, only external accessible properties.
 
@@ -340,7 +340,7 @@ class OrgConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[str]:
-        """Get Valid Time Zones
+        """Get valid time zones
 
         List the valid time zones that can be set in organization configurations.
 
@@ -424,7 +424,7 @@ class OrgConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[str]]:
-        """Get Valid Time Zones
+        """Get valid time zones
 
         List the valid time zones that can be set in organization configurations.
 
@@ -508,7 +508,7 @@ class OrgConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Valid Time Zones
+        """Get valid time zones
 
         List the valid time zones that can be set in organization configurations.
 
@@ -666,7 +666,7 @@ class OrgConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> OrgConfig:
-        """Patch Org Config
+        """Patch org config
 
         Patch the current organization's configuration, using http://jsonpatch.com/ syntax. This is commonly used to changing an organization's time zone.
 
@@ -743,7 +743,7 @@ class OrgConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[OrgConfig]:
-        """Patch Org Config
+        """Patch org config
 
         Patch the current organization's configuration, using http://jsonpatch.com/ syntax. This is commonly used to changing an organization's time zone.
 
@@ -820,7 +820,7 @@ class OrgConfigApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Patch Org Config
+        """Patch org config
 
         Patch the current organization's configuration, using http://jsonpatch.com/ syntax. This is commonly used to changing an organization's time zone.
 

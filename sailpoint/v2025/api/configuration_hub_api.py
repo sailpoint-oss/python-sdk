@@ -70,7 +70,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> DeployResponse:
-        """Create a Deploy
+        """Create a deploy
 
         This API performs a deploy based on an existing daft.
 
@@ -142,7 +142,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[DeployResponse]:
-        """Create a Deploy
+        """Create a deploy
 
         This API performs a deploy based on an existing daft.
 
@@ -214,7 +214,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create a Deploy
+        """Create a deploy
 
         This API performs a deploy based on an existing daft.
 
@@ -976,7 +976,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ScheduledActionResponse:
-        """Create Scheduled Action
+        """Create scheduled action
 
         This API creates a new scheduled action for the current tenant.
 
@@ -1048,7 +1048,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ScheduledActionResponse]:
-        """Create Scheduled Action
+        """Create scheduled action
 
         This API creates a new scheduled action for the current tenant.
 
@@ -1120,7 +1120,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create Scheduled Action
+        """Create scheduled action
 
         This API creates a new scheduled action for the current tenant.
 
@@ -1267,7 +1267,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BackupResponse:
-        """Upload a Configuration
+        """Upload a configuration
 
         This API uploads a JSON configuration file into a tenant.  Configuration files can be managed and deployed via Configuration Hub by uploading a json file which contains configuration data. The JSON file should be the same as the one used by our import endpoints. The object types supported by upload configuration file functionality are the same as the ones supported by our regular backup functionality.  Refer to [SaaS Configuration](https://developer.sailpoint.com/idn/docs/saas-configuration/#supported-objects) for more information about supported objects.
 
@@ -1343,7 +1343,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BackupResponse]:
-        """Upload a Configuration
+        """Upload a configuration
 
         This API uploads a JSON configuration file into a tenant.  Configuration files can be managed and deployed via Configuration Hub by uploading a json file which contains configuration data. The JSON file should be the same as the one used by our import endpoints. The object types supported by upload configuration file functionality are the same as the ones supported by our regular backup functionality.  Refer to [SaaS Configuration](https://developer.sailpoint.com/idn/docs/saas-configuration/#supported-objects) for more information about supported objects.
 
@@ -1419,7 +1419,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Upload a Configuration
+        """Upload a configuration
 
         This API uploads a JSON configuration file into a tenant.  Configuration files can be managed and deployed via Configuration Hub by uploading a json file which contains configuration data. The JSON file should be the same as the one used by our import endpoints. The object types supported by upload configuration file functionality are the same as the ones supported by our regular backup functionality.  Refer to [SaaS Configuration](https://developer.sailpoint.com/idn/docs/saas-configuration/#supported-objects) for more information about supported objects.
 
@@ -1571,7 +1571,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete a Backup
+        """Delete a backup
 
         This API deletes an existing backup for the current tenant.  On success, this endpoint will return an empty response.  The backup id can be obtained from the response after a backup was successfully created, or from the list backups endpoint.
 
@@ -1644,7 +1644,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete a Backup
+        """Delete a backup
 
         This API deletes an existing backup for the current tenant.  On success, this endpoint will return an empty response.  The backup id can be obtained from the response after a backup was successfully created, or from the list backups endpoint.
 
@@ -1717,7 +1717,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete a Backup
+        """Delete a backup
 
         This API deletes an existing backup for the current tenant.  On success, this endpoint will return an empty response.  The backup id can be obtained from the response after a backup was successfully created, or from the list backups endpoint.
 
@@ -2426,7 +2426,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete Scheduled Action
+        """Delete scheduled action
 
         This API deletes an existing scheduled action.
 
@@ -2499,7 +2499,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete Scheduled Action
+        """Delete scheduled action
 
         This API deletes an existing scheduled action.
 
@@ -2572,7 +2572,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Scheduled Action
+        """Delete scheduled action
 
         This API deletes an existing scheduled action.
 
@@ -2706,7 +2706,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete an Uploaded Configuration
+        """Delete an uploaded configuration
 
         This API deletes an uploaded configuration based on Id.  On success, this endpoint will return an empty response.  The uploaded configuration id can be obtained from the response after a successful upload, or the list uploaded configurations endpoint.
 
@@ -2779,7 +2779,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete an Uploaded Configuration
+        """Delete an uploaded configuration
 
         This API deletes an uploaded configuration based on Id.  On success, this endpoint will return an empty response.  The uploaded configuration id can be obtained from the response after a successful upload, or the list uploaded configurations endpoint.
 
@@ -2852,7 +2852,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete an Uploaded Configuration
+        """Delete an uploaded configuration
 
         This API deletes an uploaded configuration based on Id.  On success, this endpoint will return an empty response.  The uploaded configuration id can be obtained from the response after a successful upload, or the list uploaded configurations endpoint.
 
@@ -2986,7 +2986,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> DeployResponse:
-        """Get a Deploy
+        """Get a deploy
 
         This API gets an existing deploy for the current tenant.
 
@@ -3059,7 +3059,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[DeployResponse]:
-        """Get a Deploy
+        """Get a deploy
 
         This API gets an existing deploy for the current tenant.
 
@@ -3132,7 +3132,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get a Deploy
+        """Get a deploy
 
         This API gets an existing deploy for the current tenant.
 
@@ -3546,7 +3546,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> BackupResponse:
-        """Get an Uploaded Configuration
+        """Get an uploaded configuration
 
         This API gets an existing uploaded configuration for the current tenant.
 
@@ -3619,7 +3619,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[BackupResponse]:
-        """Get an Uploaded Configuration
+        """Get an uploaded configuration
 
         This API gets an existing uploaded configuration for the current tenant.
 
@@ -3692,7 +3692,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get an Uploaded Configuration
+        """Get an uploaded configuration
 
         This API gets an existing uploaded configuration for the current tenant.
 
@@ -3826,7 +3826,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[BackupResponse1]:
-        """List Backups
+        """List backups
 
         This API gets a list of existing backups for the current tenant.
 
@@ -3898,7 +3898,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[BackupResponse1]]:
-        """List Backups
+        """List backups
 
         This API gets a list of existing backups for the current tenant.
 
@@ -3970,7 +3970,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Backups
+        """List backups
 
         This API gets a list of existing backups for the current tenant.
 
@@ -4104,7 +4104,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListDeploys200Response:
-        """List Deploys
+        """List deploys
 
         This API gets a list of deploys for the current tenant.
 
@@ -4172,7 +4172,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListDeploys200Response]:
-        """List Deploys
+        """List deploys
 
         This API gets a list of deploys for the current tenant.
 
@@ -4240,7 +4240,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Deploys
+        """List deploys
 
         This API gets a list of deploys for the current tenant.
 
@@ -4367,7 +4367,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[DraftResponse]:
-        """List Drafts
+        """List drafts
 
         This API gets a list of existing drafts for the current tenant.
 
@@ -4439,7 +4439,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[DraftResponse]]:
-        """List Drafts
+        """List drafts
 
         This API gets a list of existing drafts for the current tenant.
 
@@ -4511,7 +4511,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Drafts
+        """List drafts
 
         This API gets a list of existing drafts for the current tenant.
 
@@ -4645,7 +4645,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[ScheduledActionResponse]:
-        """List Scheduled Actions
+        """List scheduled actions
 
         This API gets a list of existing scheduled actions for the current tenant.
 
@@ -4713,7 +4713,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[ScheduledActionResponse]]:
-        """List Scheduled Actions
+        """List scheduled actions
 
         This API gets a list of existing scheduled actions for the current tenant.
 
@@ -4781,7 +4781,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Scheduled Actions
+        """List scheduled actions
 
         This API gets a list of existing scheduled actions for the current tenant.
 
@@ -4908,7 +4908,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[BackupResponse]:
-        """List Uploaded Configurations
+        """List uploaded configurations
 
         This API gets a list of existing uploaded configurations for the current tenant.
 
@@ -4981,7 +4981,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[BackupResponse]]:
-        """List Uploaded Configurations
+        """List uploaded configurations
 
         This API gets a list of existing uploaded configurations for the current tenant.
 
@@ -5054,7 +5054,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Uploaded Configurations
+        """List uploaded configurations
 
         This API gets a list of existing uploaded configurations for the current tenant.
 
@@ -5499,7 +5499,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ScheduledActionResponse:
-        """Update Scheduled Action
+        """Update scheduled action
 
         This API updates an existing scheduled action using JSON Patch format.
 
@@ -5576,7 +5576,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ScheduledActionResponse]:
-        """Update Scheduled Action
+        """Update scheduled action
 
         This API updates an existing scheduled action using JSON Patch format.
 
@@ -5653,7 +5653,7 @@ class ConfigurationHubApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Scheduled Action
+        """Update scheduled action
 
         This API updates an existing scheduled action using JSON Patch format.
 

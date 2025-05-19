@@ -60,7 +60,7 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ConnectorRuleResponse:
-        """Create Connector Rule
+        """Create connector rule
 
         Create a connector rule from the available types.
 
@@ -132,7 +132,7 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ConnectorRuleResponse]:
-        """Create Connector Rule
+        """Create connector rule
 
         Create a connector rule from the available types.
 
@@ -204,7 +204,7 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create Connector Rule
+        """Create connector rule
 
         Create a connector rule from the available types.
 
@@ -350,7 +350,7 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete Connector Rule
+        """Delete connector rule
 
         Delete the connector rule for the given ID.
 
@@ -423,7 +423,7 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete Connector Rule
+        """Delete connector rule
 
         Delete the connector rule for the given ID.
 
@@ -496,7 +496,7 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete Connector Rule
+        """Delete connector rule
 
         Delete the connector rule for the given ID.
 
@@ -630,7 +630,7 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ConnectorRuleResponse:
-        """Get Connector Rule
+        """Get connector rule
 
         Get a connector rule by ID.
 
@@ -703,7 +703,7 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ConnectorRuleResponse]:
-        """Get Connector Rule
+        """Get connector rule
 
         Get a connector rule by ID.
 
@@ -776,7 +776,7 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Connector Rule
+        """Get connector rule
 
         Get a connector rule by ID.
 
@@ -912,7 +912,7 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[ConnectorRuleResponse]:
-        """List Connector Rules
+        """List connector rules
 
         List existing connector rules.
 
@@ -992,7 +992,7 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[ConnectorRuleResponse]]:
-        """List Connector Rules
+        """List connector rules
 
         List existing connector rules.
 
@@ -1072,7 +1072,7 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Connector Rules
+        """List connector rules
 
         List existing connector rules.
 
@@ -1224,7 +1224,7 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ConnectorRuleResponse:
-        """Update Connector Rule
+        """Update connector rule
 
         Update an existing connector rule with the one provided in the request body. These fields are immutable: `id`, `name`, `type`
 
@@ -1301,7 +1301,7 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ConnectorRuleResponse]:
-        """Update Connector Rule
+        """Update connector rule
 
         Update an existing connector rule with the one provided in the request body. These fields are immutable: `id`, `name`, `type`
 
@@ -1378,7 +1378,7 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update Connector Rule
+        """Update connector rule
 
         Update an existing connector rule with the one provided in the request body. These fields are immutable: `id`, `name`, `type`
 
@@ -1531,7 +1531,7 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ConnectorRuleValidationResponse:
-        """Validate Connector Rule
+        """Validate connector rule
 
         Detect issues within the connector rule's code to fix and list them.
 
@@ -1603,7 +1603,7 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ConnectorRuleValidationResponse]:
-        """Validate Connector Rule
+        """Validate connector rule
 
         Detect issues within the connector rule's code to fix and list them.
 
@@ -1675,7 +1675,7 @@ class ConnectorRuleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Validate Connector Rule
+        """Validate connector rule
 
         Detect issues within the connector rule's code to fix and list them.
 

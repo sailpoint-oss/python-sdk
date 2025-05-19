@@ -54,7 +54,7 @@ class SODViolationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ViolationPrediction:
-        """(Deprecated) Predict SOD violations for identity.
+        """(Deprecated) Predict sod violations for identity.
 
         This API is used to check if granting some additional accesses would cause the subject to be in violation of any SOD policies. Returns the violations that would be caused.  A token with ORG_ADMIN or API authority is required to call this API.
 
@@ -128,7 +128,7 @@ class SODViolationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ViolationPrediction]:
-        """(Deprecated) Predict SOD violations for identity.
+        """(Deprecated) Predict sod violations for identity.
 
         This API is used to check if granting some additional accesses would cause the subject to be in violation of any SOD policies. Returns the violations that would be caused.  A token with ORG_ADMIN or API authority is required to call this API.
 
@@ -202,7 +202,7 @@ class SODViolationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """(Deprecated) Predict SOD violations for identity.
+        """(Deprecated) Predict sod violations for identity.
 
         This API is used to check if granting some additional accesses would cause the subject to be in violation of any SOD policies. Returns the violations that would be caused.  A token with ORG_ADMIN or API authority is required to call this API.
 

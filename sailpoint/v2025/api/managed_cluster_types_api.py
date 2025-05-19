@@ -57,7 +57,7 @@ class ManagedClusterTypesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ManagedClusterType:
-        """Create new Managed Cluster Type
+        """Create new managed cluster type
 
         Create a new Managed Cluster Type.  The API returns a result that includes the Managed Cluster Type ID
 
@@ -130,7 +130,7 @@ class ManagedClusterTypesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ManagedClusterType]:
-        """Create new Managed Cluster Type
+        """Create new managed cluster type
 
         Create a new Managed Cluster Type.  The API returns a result that includes the Managed Cluster Type ID
 
@@ -203,7 +203,7 @@ class ManagedClusterTypesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create new Managed Cluster Type
+        """Create new managed cluster type
 
         Create a new Managed Cluster Type.  The API returns a result that includes the Managed Cluster Type ID
 
@@ -350,7 +350,7 @@ class ManagedClusterTypesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete a Managed Cluster Type
+        """Delete a managed cluster type
 
         Delete an existing Managed Cluster Type.
 
@@ -422,7 +422,7 @@ class ManagedClusterTypesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete a Managed Cluster Type
+        """Delete a managed cluster type
 
         Delete an existing Managed Cluster Type.
 
@@ -494,7 +494,7 @@ class ManagedClusterTypesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete a Managed Cluster Type
+        """Delete a managed cluster type
 
         Delete an existing Managed Cluster Type.
 
@@ -627,7 +627,7 @@ class ManagedClusterTypesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ManagedClusterType:
-        """Get a Managed Cluster Type
+        """Get a managed cluster type
 
         Get a Managed Cluster Type.
 
@@ -700,7 +700,7 @@ class ManagedClusterTypesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ManagedClusterType]:
-        """Get a Managed Cluster Type
+        """Get a managed cluster type
 
         Get a Managed Cluster Type.
 
@@ -773,7 +773,7 @@ class ManagedClusterTypesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get a Managed Cluster Type
+        """Get a managed cluster type
 
         Get a Managed Cluster Type.
 
@@ -911,7 +911,7 @@ class ManagedClusterTypesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[ManagedClusterType]:
-        """List Managed Cluster Types
+        """List managed cluster types
 
         Get a list of Managed Cluster Types.
 
@@ -1000,7 +1000,7 @@ class ManagedClusterTypesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[ManagedClusterType]]:
-        """List Managed Cluster Types
+        """List managed cluster types
 
         Get a list of Managed Cluster Types.
 
@@ -1089,7 +1089,7 @@ class ManagedClusterTypesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Managed Cluster Types
+        """List managed cluster types
 
         Get a list of Managed Cluster Types.
 
@@ -1258,7 +1258,7 @@ class ManagedClusterTypesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ManagedClusterType:
-        """Update a Managed Cluster Type
+        """Update a managed cluster type
 
         Update an existing Managed Cluster Type.
 
@@ -1335,7 +1335,7 @@ class ManagedClusterTypesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ManagedClusterType]:
-        """Update a Managed Cluster Type
+        """Update a managed cluster type
 
         Update an existing Managed Cluster Type.
 
@@ -1412,7 +1412,7 @@ class ManagedClusterTypesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update a Managed Cluster Type
+        """Update a managed cluster type
 
         Update an existing Managed Cluster Type.
 

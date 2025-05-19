@@ -61,7 +61,7 @@ class IAIOutliersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> bytearray:
-        """IAI Identity Outliers Export
+        """Iai identity outliers export
 
         This API exports a list of ignored outliers to a CSV as well as list of non-ignored outliers to a CSV. These two CSVs will be zipped and exported.  Columns will include: identityId, type, firstDetectionDate, latestDetectionDate, ignored, & attributes (defined set of identity attributes). 
 
@@ -133,7 +133,7 @@ class IAIOutliersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[bytearray]:
-        """IAI Identity Outliers Export
+        """Iai identity outliers export
 
         This API exports a list of ignored outliers to a CSV as well as list of non-ignored outliers to a CSV. These two CSVs will be zipped and exported.  Columns will include: identityId, type, firstDetectionDate, latestDetectionDate, ignored, & attributes (defined set of identity attributes). 
 
@@ -205,7 +205,7 @@ class IAIOutliersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """IAI Identity Outliers Export
+        """Iai identity outliers export
 
         This API exports a list of ignored outliers to a CSV as well as list of non-ignored outliers to a CSV. These two CSVs will be zipped and exported.  Columns will include: identityId, type, firstDetectionDate, latestDetectionDate, ignored, & attributes (defined set of identity attributes). 
 
@@ -346,7 +346,7 @@ class IAIOutliersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[OutlierSummary]:
-        """IAI Identity Outliers Summary
+        """Iai identity outliers summary
 
         This API returns a summary containing the number of identities that customer has, the number of outliers, and the type of outlier.
 
@@ -435,7 +435,7 @@ class IAIOutliersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[OutlierSummary]]:
-        """IAI Identity Outliers Summary
+        """Iai identity outliers summary
 
         This API returns a summary containing the number of identities that customer has, the number of outliers, and the type of outlier.
 
@@ -524,7 +524,7 @@ class IAIOutliersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """IAI Identity Outliers Summary
+        """Iai identity outliers summary
 
         This API returns a summary containing the number of identities that customer has, the number of outliers, and the type of outlier.
 
@@ -698,7 +698,7 @@ class IAIOutliersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[Outlier]:
-        """IAI Get Identity Outliers
+        """Iai get identity outliers
 
         This API returns a list of outliers, containing data such as identity ID, outlier type, detection dates, identity attributes, if identity is ignored, and certification information.
 
@@ -790,7 +790,7 @@ class IAIOutliersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[Outlier]]:
-        """IAI Get Identity Outliers
+        """Iai get identity outliers
 
         This API returns a list of outliers, containing data such as identity ID, outlier type, detection dates, identity attributes, if identity is ignored, and certification information.
 
@@ -882,7 +882,7 @@ class IAIOutliersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """IAI Get Identity Outliers
+        """Iai get identity outliers
 
         This API returns a list of outliers, containing data such as identity ID, outlier type, detection dates, identity attributes, if identity is ignored, and certification information.
 
@@ -1058,7 +1058,7 @@ class IAIOutliersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[LatestOutlierSummary]:
-        """IAI Identity Outliers Latest Summary
+        """Iai identity outliers latest summary
 
         This API returns a most recent snapshot of each outlier type, each containing the number of identities that customer has, the number of outliers, and the type of outlier.
 
@@ -1131,7 +1131,7 @@ class IAIOutliersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[LatestOutlierSummary]]:
-        """IAI Identity Outliers Latest Summary
+        """Iai identity outliers latest summary
 
         This API returns a most recent snapshot of each outlier type, each containing the number of identities that customer has, the number of outliers, and the type of outlier.
 
@@ -1204,7 +1204,7 @@ class IAIOutliersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """IAI Identity Outliers Latest Summary
+        """Iai identity outliers latest summary
 
         This API returns a most recent snapshot of each outlier type, each containing the number of identities that customer has, the number of outliers, and the type of outlier.
 
@@ -1988,7 +1988,7 @@ class IAIOutliersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """IAI Identity Outliers Ignore
+        """Iai identity outliers ignore
 
         This API receives a list of identity IDs in the request, changes the outliers to be ignored.
 
@@ -2060,7 +2060,7 @@ class IAIOutliersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """IAI Identity Outliers Ignore
+        """Iai identity outliers ignore
 
         This API receives a list of identity IDs in the request, changes the outliers to be ignored.
 
@@ -2132,7 +2132,7 @@ class IAIOutliersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """IAI Identity Outliers Ignore
+        """Iai identity outliers ignore
 
         This API receives a list of identity IDs in the request, changes the outliers to be ignored.
 
@@ -2661,7 +2661,7 @@ class IAIOutliersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """IAI Identity Outliers Unignore
+        """Iai identity outliers unignore
 
         This API receives a list of identity IDs in the request, changes the outliers to be un-ignored.
 
@@ -2733,7 +2733,7 @@ class IAIOutliersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """IAI Identity Outliers Unignore
+        """Iai identity outliers unignore
 
         This API receives a list of identity IDs in the request, changes the outliers to be un-ignored.
 
@@ -2805,7 +2805,7 @@ class IAIOutliersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """IAI Identity Outliers Unignore
+        """Iai identity outliers unignore
 
         This API receives a list of identity IDs in the request, changes the outliers to be un-ignored.
 

@@ -29,154 +29,154 @@ class TestCertificationCampaignsApi(unittest.TestCase):
     def test_complete_campaign(self) -> None:
         """Test case for complete_campaign
 
-        Complete a Campaign
+        Complete a campaign
         """
         pass
 
     def test_create_campaign(self) -> None:
         """Test case for create_campaign
 
-        Create Campaign
+        Create campaign
         """
         pass
 
     def test_create_campaign_template(self) -> None:
         """Test case for create_campaign_template
 
-        Create a Campaign Template
+        Create a campaign template
         """
         pass
 
     def test_delete_campaign_template(self) -> None:
         """Test case for delete_campaign_template
 
-        Delete a Campaign Template
+        Delete a campaign template
         """
         pass
 
     def test_delete_campaign_template_schedule(self) -> None:
         """Test case for delete_campaign_template_schedule
 
-        Delete Campaign Template Schedule
+        Delete campaign template schedule
         """
         pass
 
     def test_delete_campaigns(self) -> None:
         """Test case for delete_campaigns
 
-        Delete Campaigns
+        Delete campaigns
         """
         pass
 
     def test_get_active_campaigns(self) -> None:
         """Test case for get_active_campaigns
 
-        List Campaigns
+        List campaigns
         """
         pass
 
     def test_get_campaign(self) -> None:
         """Test case for get_campaign
 
-        Get Campaign
+        Get campaign
         """
         pass
 
     def test_get_campaign_reports(self) -> None:
         """Test case for get_campaign_reports
 
-        Get Campaign Reports
+        Get campaign reports
         """
         pass
 
     def test_get_campaign_reports_config(self) -> None:
         """Test case for get_campaign_reports_config
 
-        Get Campaign Reports Configuration
+        Get campaign reports configuration
         """
         pass
 
     def test_get_campaign_template(self) -> None:
         """Test case for get_campaign_template
 
-        Get a Campaign Template
+        Get a campaign template
         """
         pass
 
     def test_get_campaign_template_schedule(self) -> None:
         """Test case for get_campaign_template_schedule
 
-        Get Campaign Template Schedule
+        Get campaign template schedule
         """
         pass
 
     def test_get_campaign_templates(self) -> None:
         """Test case for get_campaign_templates
 
-        List Campaign Templates
+        List campaign templates
         """
         pass
 
     def test_move(self) -> None:
         """Test case for move
 
-        Reassign Certifications
+        Reassign certifications
         """
         pass
 
     def test_patch_campaign_template(self) -> None:
         """Test case for patch_campaign_template
 
-        Update a Campaign Template
+        Update a campaign template
         """
         pass
 
     def test_set_campaign_reports_config(self) -> None:
         """Test case for set_campaign_reports_config
 
-        Set Campaign Reports Configuration
+        Set campaign reports configuration
         """
         pass
 
     def test_set_campaign_template_schedule(self) -> None:
         """Test case for set_campaign_template_schedule
 
-        Set Campaign Template Schedule
+        Set campaign template schedule
         """
         pass
 
     def test_start_campaign(self) -> None:
         """Test case for start_campaign
 
-        Activate a Campaign
+        Activate a campaign
         """
         pass
 
     def test_start_campaign_remediation_scan(self) -> None:
         """Test case for start_campaign_remediation_scan
 
-        Run Campaign Remediation Scan
+        Run campaign remediation scan
         """
         pass
 
     def test_start_campaign_report(self) -> None:
         """Test case for start_campaign_report
 
-        Run Campaign Report
+        Run campaign report
         """
         pass
 
     def test_start_generate_campaign_template(self) -> None:
         """Test case for start_generate_campaign_template
 
-        Generate a Campaign from Template
+        Generate a campaign from template
         """
         pass
 
     def test_update_campaign(self) -> None:
         """Test case for update_campaign
 
-        Update a Campaign
+        Update a campaign
         """
         pass
 

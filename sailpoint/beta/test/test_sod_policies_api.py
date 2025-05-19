@@ -29,21 +29,21 @@ class TestSODPoliciesApi(unittest.TestCase):
     def test_create_sod_policy(self) -> None:
         """Test case for create_sod_policy
 
-        Create SOD policy
+        Create sod policy
         """
         pass
 
     def test_delete_sod_policy(self) -> None:
         """Test case for delete_sod_policy
 
-        Delete SOD policy by ID
+        Delete sod policy by id
         """
         pass
 
     def test_delete_sod_policy_schedule(self) -> None:
         """Test case for delete_sod_policy_schedule
 
-        Delete SOD policy schedule
+        Delete sod policy schedule
         """
         pass
 
@@ -71,14 +71,14 @@ class TestSODPoliciesApi(unittest.TestCase):
     def test_get_sod_policy(self) -> None:
         """Test case for get_sod_policy
 
-        Get SOD policy by ID
+        Get sod policy by id
         """
         pass
 
     def test_get_sod_policy_schedule(self) -> None:
         """Test case for get_sod_policy_schedule
 
-        Get SOD policy schedule
+        Get sod policy schedule
         """
         pass
 
@@ -92,35 +92,35 @@ class TestSODPoliciesApi(unittest.TestCase):
     def test_get_sod_violation_report_status(self) -> None:
         """Test case for get_sod_violation_report_status
 
-        Get SOD violation report status
+        Get sod violation report status
         """
         pass
 
     def test_list_sod_policies(self) -> None:
         """Test case for list_sod_policies
 
-        List SOD policies
+        List sod policies
         """
         pass
 
     def test_patch_sod_policy(self) -> None:
         """Test case for patch_sod_policy
 
-        Patch a SOD policy
+        Patch a sod policy
         """
         pass
 
     def test_put_policy_schedule(self) -> None:
         """Test case for put_policy_schedule
 
-        Update SOD Policy schedule
+        Update sod policy schedule
         """
         pass
 
     def test_put_sod_policy(self) -> None:
         """Test case for put_sod_policy
 
-        Update SOD policy by ID
+        Update sod policy by id
         """
         pass
 
@@ -134,7 +134,7 @@ class TestSODPoliciesApi(unittest.TestCase):
     def test_start_sod_policy(self) -> None:
         """Test case for start_sod_policy
 
-        Runs SOD policy violation report
+        Runs sod policy violation report
         """
         pass
 

@@ -36,35 +36,35 @@ class TestLaunchersApi(unittest.TestCase):
     def test_delete_launcher(self) -> None:
         """Test case for delete_launcher
 
-        Delete Launcher
+        Delete launcher
         """
         pass
 
     def test_get_launcher(self) -> None:
         """Test case for get_launcher
 
-        Get Launcher by ID
+        Get launcher by id
         """
         pass
 
     def test_get_launchers(self) -> None:
         """Test case for get_launchers
 
-        List all Launchers for tenant
+        List all launchers for tenant
         """
         pass
 
     def test_put_launcher(self) -> None:
         """Test case for put_launcher
 
-        Replace Launcher
+        Replace launcher
         """
         pass
 
     def test_start_launcher(self) -> None:
         """Test case for start_launcher
 
-        Launch a Launcher
+        Launch a launcher
         """
         pass
 

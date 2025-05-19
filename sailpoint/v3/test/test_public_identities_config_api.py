@@ -29,14 +29,14 @@ class TestPublicIdentitiesConfigApi(unittest.TestCase):
     def test_get_public_identity_config(self) -> None:
         """Test case for get_public_identity_config
 
-        Get the Public Identities Configuration
+        Get the public identities configuration
         """
         pass
 
     def test_update_public_identity_config(self) -> None:
         """Test case for update_public_identity_config
 
-        Update the Public Identities Configuration
+        Update the public identities configuration
         """
         pass
 
