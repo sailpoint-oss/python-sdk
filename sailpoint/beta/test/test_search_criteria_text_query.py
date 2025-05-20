@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.beta.models.sed_batch_status import SedBatchStatus
+from sailpoint.beta.models.search_criteria_text_query import SearchCriteriaTextQuery
 
-class TestSedBatchStatus(unittest.TestCase):
-    """SedBatchStatus unit test stubs"""
+class TestSearchCriteriaTextQuery(unittest.TestCase):
+    """SearchCriteriaTextQuery unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,25 +25,27 @@ class TestSedBatchStatus(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> SedBatchStatus:
-        """Test SedBatchStatus
+    def make_instance(self, include_optional) -> SearchCriteriaTextQuery:
+        """Test SearchCriteriaTextQuery
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `SedBatchStatus`
+        # uncomment below to create an instance of `SearchCriteriaTextQuery`
         """
-        model = SedBatchStatus()
+        model = SearchCriteriaTextQuery()
         if include_optional:
-            return SedBatchStatus(
-                status = 'OK'
+            return SearchCriteriaTextQuery(
+                terms = [admin, user],
+                fields = [role, name],
+                match_any = True
             )
         else:
-            return SedBatchStatus(
+            return SearchCriteriaTextQuery(
         )
         """
 
-    def testSedBatchStatus(self):
-        """Test SedBatchStatus"""
+    def testSearchCriteriaTextQuery(self):
+        """Test SearchCriteriaTextQuery"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

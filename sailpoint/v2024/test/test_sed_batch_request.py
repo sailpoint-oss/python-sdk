@@ -40,7 +40,21 @@ class TestSedBatchRequest(unittest.TestCase):
                     ],
                 seds = [
                     '016629d1-1d25-463f-97f3-c6686846650'
-                    ]
+                    ],
+                search_criteria = {
+                    'key' : sailpoint.v2024.models.search_criteria.SearchCriteria(
+                        indices = [entitlements], 
+                        filters = {status={type=TERMS, terms=[active, inactive]}}, 
+                        query = sailpoint.v2024.models.search_criteria_query.SearchCriteria_query(), 
+                        query_type = 'TEXT', 
+                        text_query = sailpoint.v2024.models.search_criteria_text_query.SearchCriteria_textQuery(
+                            terms = [admin, user], 
+                            fields = [role, name], 
+                            match_any = True, ), 
+                        include_nested = True, 
+                        sort = [name:asc, createdAt:desc], 
+                        search_after = [12345, 67890], )
+                    }
             )
         else:
             return SedBatchRequest(

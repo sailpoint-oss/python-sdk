@@ -27,7 +27,6 @@ from sailpoint.beta.models.sed_assignment_response import SedAssignmentResponse
 from sailpoint.beta.models.sed_batch_request import SedBatchRequest
 from sailpoint.beta.models.sed_batch_response import SedBatchResponse
 from sailpoint.beta.models.sed_batch_stats import SedBatchStats
-from sailpoint.beta.models.sed_batch_status import SedBatchStatus
 from sailpoint.beta.models.sed_patch import SedPatch
 
 from sailpoint.beta.api_client import ApiClient, RequestSerialized
@@ -331,6 +330,11 @@ class SuggestedEntitlementDescriptionApi:
     @validate_call
     def get_sed_batches(
         self,
+        offset: Annotated[Optional[StrictInt], Field(description="Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(strict=True)]], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored.  The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). Since requesting a total count can have a performance impact, it is recommended not to send `count=true` if that value will not be used.")] = None,
+        count_only: Annotated[Optional[StrictBool], Field(description="If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored. This parameter differs from the count parameter in that this one skips executing the actual query and always return an empty array.")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="Batch Status")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -343,11 +347,21 @@ class SuggestedEntitlementDescriptionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SedBatchStatus:
-        """List sed batch request
+    ) -> List[Sed]:
+        """List Sed Batch Record
 
-        List Sed Batches. API responses with Sed Batch Status
+        List Sed Batches. API responses with Sed Batch Records
 
+        :param offset: Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.
+        :type offset: int
+        :param limit: Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
+        :type limit: int
+        :param count: If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored.  The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). Since requesting a total count can have a performance impact, it is recommended not to send `count=true` if that value will not be used.
+        :type count: bool
+        :param count_only: If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored. This parameter differs from the count parameter in that this one skips executing the actual query and always return an empty array.
+        :type count_only: bool
+        :param status: Batch Status
+        :type status: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -371,6 +385,11 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._get_sed_batches_serialize(
+            offset=offset,
+            limit=limit,
+            count=count,
+            count_only=count_only,
+            status=status,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -378,7 +397,7 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SedBatchStatus",
+            '200': "List[Sed]",
             '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
@@ -400,6 +419,11 @@ class SuggestedEntitlementDescriptionApi:
     @validate_call
     def get_sed_batches_with_http_info(
         self,
+        offset: Annotated[Optional[StrictInt], Field(description="Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(strict=True)]], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored.  The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). Since requesting a total count can have a performance impact, it is recommended not to send `count=true` if that value will not be used.")] = None,
+        count_only: Annotated[Optional[StrictBool], Field(description="If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored. This parameter differs from the count parameter in that this one skips executing the actual query and always return an empty array.")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="Batch Status")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -412,11 +436,21 @@ class SuggestedEntitlementDescriptionApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SedBatchStatus]:
-        """List sed batch request
+    ) -> ApiResponse[List[Sed]]:
+        """List Sed Batch Record
 
-        List Sed Batches. API responses with Sed Batch Status
+        List Sed Batches. API responses with Sed Batch Records
 
+        :param offset: Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.
+        :type offset: int
+        :param limit: Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
+        :type limit: int
+        :param count: If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored.  The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). Since requesting a total count can have a performance impact, it is recommended not to send `count=true` if that value will not be used.
+        :type count: bool
+        :param count_only: If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored. This parameter differs from the count parameter in that this one skips executing the actual query and always return an empty array.
+        :type count_only: bool
+        :param status: Batch Status
+        :type status: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -440,6 +474,11 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._get_sed_batches_serialize(
+            offset=offset,
+            limit=limit,
+            count=count,
+            count_only=count_only,
+            status=status,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -447,7 +486,7 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SedBatchStatus",
+            '200': "List[Sed]",
             '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
@@ -469,6 +508,11 @@ class SuggestedEntitlementDescriptionApi:
     @validate_call
     def get_sed_batches_without_preload_content(
         self,
+        offset: Annotated[Optional[StrictInt], Field(description="Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(strict=True)]], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored.  The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). Since requesting a total count can have a performance impact, it is recommended not to send `count=true` if that value will not be used.")] = None,
+        count_only: Annotated[Optional[StrictBool], Field(description="If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored. This parameter differs from the count parameter in that this one skips executing the actual query and always return an empty array.")] = None,
+        status: Annotated[Optional[StrictStr], Field(description="Batch Status")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -482,10 +526,20 @@ class SuggestedEntitlementDescriptionApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List sed batch request
+        """List Sed Batch Record
 
-        List Sed Batches. API responses with Sed Batch Status
+        List Sed Batches. API responses with Sed Batch Records
 
+        :param offset: Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.
+        :type offset: int
+        :param limit: Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
+        :type limit: int
+        :param count: If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored.  The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). Since requesting a total count can have a performance impact, it is recommended not to send `count=true` if that value will not be used.
+        :type count: bool
+        :param count_only: If `true` it will populate the `X-Total-Count` response header with the number of results that would be returned if `limit` and `offset` were ignored. This parameter differs from the count parameter in that this one skips executing the actual query and always return an empty array.
+        :type count_only: bool
+        :param status: Batch Status
+        :type status: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -509,6 +563,11 @@ class SuggestedEntitlementDescriptionApi:
         """ # noqa: E501
 
         _param = self._get_sed_batches_serialize(
+            offset=offset,
+            limit=limit,
+            count=count,
+            count_only=count_only,
+            status=status,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -516,7 +575,7 @@ class SuggestedEntitlementDescriptionApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SedBatchStatus",
+            '200': "List[Sed]",
             '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
@@ -533,6 +592,11 @@ class SuggestedEntitlementDescriptionApi:
 
     def _get_sed_batches_serialize(
         self,
+        offset,
+        limit,
+        count,
+        count_only,
+        status,
         _request_auth,
         _content_type,
         _headers,
@@ -555,6 +619,26 @@ class SuggestedEntitlementDescriptionApi:
 
         # process the path parameters
         # process the query parameters
+        if offset is not None:
+            
+            _query_params.append(('offset', offset))
+            
+        if limit is not None:
+            
+            _query_params.append(('limit', limit))
+            
+        if count is not None:
+            
+            _query_params.append(('count', count))
+            
+        if count_only is not None:
+            
+            _query_params.append(('count-only', count_only))
+            
+        if status is not None:
+            
+            _query_params.append(('status', status))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter

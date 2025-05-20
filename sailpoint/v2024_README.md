@@ -694,7 +694,7 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**update_source_schedule**](sailpoint/v2024/docs/SourcesApi.md#update_source_schedule) | **PATCH** /sources/{sourceId}/schedules/{scheduleType} | Update source schedule (partial)
 *SourcesApi* | [**update_source_schema**](sailpoint/v2024/docs/SourcesApi.md#update_source_schema) | **PATCH** /sources/{sourceId}/schemas/{schemaId} | Update source schema (partial)
 *SuggestedEntitlementDescriptionApi* | [**get_sed_batch_stats**](sailpoint/v2024/docs/SuggestedEntitlementDescriptionApi.md#get_sed_batch_stats) | **GET** /suggested-entitlement-description-batches/{batchId}/stats | Submit sed batch stats request
-*SuggestedEntitlementDescriptionApi* | [**get_sed_batches**](sailpoint/v2024/docs/SuggestedEntitlementDescriptionApi.md#get_sed_batches) | **GET** /suggested-entitlement-description-batches | List sed batch request
+*SuggestedEntitlementDescriptionApi* | [**get_sed_batches**](sailpoint/v2024/docs/SuggestedEntitlementDescriptionApi.md#get_sed_batches) | **GET** /suggested-entitlement-description-batches | List Sed Batch Record
 *SuggestedEntitlementDescriptionApi* | [**list_seds**](sailpoint/v2024/docs/SuggestedEntitlementDescriptionApi.md#list_seds) | **GET** /suggested-entitlement-descriptions | List suggested entitlement descriptions
 *SuggestedEntitlementDescriptionApi* | [**patch_sed**](sailpoint/v2024/docs/SuggestedEntitlementDescriptionApi.md#patch_sed) | **PATCH** /suggested-entitlement-descriptions | Patch suggested entitlement description
 *SuggestedEntitlementDescriptionApi* | [**submit_sed_approval**](sailpoint/v2024/docs/SuggestedEntitlementDescriptionApi.md#submit_sed_approval) | **POST** /suggested-entitlement-description-approvals | Submit bulk approval request
@@ -1674,6 +1674,13 @@ Class | Method | HTTP request | Description
  - [SearchAggregationSpecification](sailpoint/v2024/docs/SearchAggregationSpecification.md)
  - [SearchArguments](sailpoint/v2024/docs/SearchArguments.md)
  - [SearchAttributeConfig](sailpoint/v2024/docs/SearchAttributeConfig.md)
+ - [SearchCriteria](sailpoint/v2024/docs/SearchCriteria.md)
+ - [SearchCriteriaFiltersValue](sailpoint/v2024/docs/SearchCriteriaFiltersValue.md)
+ - [SearchCriteriaFiltersValueRange](sailpoint/v2024/docs/SearchCriteriaFiltersValueRange.md)
+ - [SearchCriteriaFiltersValueRangeLower](sailpoint/v2024/docs/SearchCriteriaFiltersValueRangeLower.md)
+ - [SearchCriteriaFiltersValueRangeUpper](sailpoint/v2024/docs/SearchCriteriaFiltersValueRangeUpper.md)
+ - [SearchCriteriaQuery](sailpoint/v2024/docs/SearchCriteriaQuery.md)
+ - [SearchCriteriaTextQuery](sailpoint/v2024/docs/SearchCriteriaTextQuery.md)
  - [SearchExportReportArguments](sailpoint/v2024/docs/SearchExportReportArguments.md)
  - [SearchFilterType](sailpoint/v2024/docs/SearchFilterType.md)
  - [SearchFormDefinitionsByTenant400Response](sailpoint/v2024/docs/SearchFormDefinitionsByTenant400Response.md)
@@ -1686,10 +1693,10 @@ Class | Method | HTTP request | Description
  - [SedAssignee](sailpoint/v2024/docs/SedAssignee.md)
  - [SedAssignment](sailpoint/v2024/docs/SedAssignment.md)
  - [SedAssignmentResponse](sailpoint/v2024/docs/SedAssignmentResponse.md)
+ - [SedBatchRecord](sailpoint/v2024/docs/SedBatchRecord.md)
  - [SedBatchRequest](sailpoint/v2024/docs/SedBatchRequest.md)
  - [SedBatchResponse](sailpoint/v2024/docs/SedBatchResponse.md)
  - [SedBatchStats](sailpoint/v2024/docs/SedBatchStats.md)
- - [SedBatchStatus](sailpoint/v2024/docs/SedBatchStatus.md)
  - [SedPatch](sailpoint/v2024/docs/SedPatch.md)
  - [Segment](sailpoint/v2024/docs/Segment.md)
  - [SegmentVisibilityCriteria](sailpoint/v2024/docs/SegmentVisibilityCriteria.md)

@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2025.models.sed_batch_status import SedBatchStatus
+from sailpoint.v2025.models.sed_batch_record import SedBatchRecord
 
-class TestSedBatchStatus(unittest.TestCase):
-    """SedBatchStatus unit test stubs"""
+class TestSedBatchRecord(unittest.TestCase):
+    """SedBatchRecord unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,25 +25,33 @@ class TestSedBatchStatus(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> SedBatchStatus:
-        """Test SedBatchStatus
+    def make_instance(self, include_optional) -> SedBatchRecord:
+        """Test SedBatchRecord
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `SedBatchStatus`
+        # uncomment below to create an instance of `SedBatchRecord`
         """
-        model = SedBatchStatus()
+        model = SedBatchRecord()
         if include_optional:
-            return SedBatchStatus(
-                status = 'OK'
+            return SedBatchRecord(
+                tenant_id = '123e4567-e89b-12d3-a456-426614174000',
+                batch_id = '016629d1-1d25-463f-97f3-0c6686846650',
+                name = 'Example Batch Name',
+                processed_state = 'submitted | materialized | completed | failed',
+                requested_by = '987e6543-e21b-45d3-b123-123456789abc',
+                materialized_count = 50,
+                processed_count = 45,
+                created_at = '2023-10-01T12:00Z',
+                updated_at = '2023-10-02T15:30Z'
             )
         else:
-            return SedBatchStatus(
+            return SedBatchRecord(
         )
         """
 
-    def testSedBatchStatus(self):
-        """Test SedBatchStatus"""
+    def testSedBatchRecord(self):
+        """Test SedBatchRecord"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

@@ -793,6 +793,13 @@ from sailpoint.beta.models.schedule_months import ScheduleMonths
 from sailpoint.beta.models.schedule_type import ScheduleType
 from sailpoint.beta.models.scheduled_attributes import ScheduledAttributes
 from sailpoint.beta.models.search_attribute_config import SearchAttributeConfig
+from sailpoint.beta.models.search_criteria import SearchCriteria
+from sailpoint.beta.models.search_criteria_filters_value import SearchCriteriaFiltersValue
+from sailpoint.beta.models.search_criteria_filters_value_range import SearchCriteriaFiltersValueRange
+from sailpoint.beta.models.search_criteria_filters_value_range_lower import SearchCriteriaFiltersValueRangeLower
+from sailpoint.beta.models.search_criteria_filters_value_range_upper import SearchCriteriaFiltersValueRangeUpper
+from sailpoint.beta.models.search_criteria_query import SearchCriteriaQuery
+from sailpoint.beta.models.search_criteria_text_query import SearchCriteriaTextQuery
 from sailpoint.beta.models.search_form_definitions_by_tenant400_response import SearchFormDefinitionsByTenant400Response
 from sailpoint.beta.models.section import Section
 from sailpoint.beta.models.section_details import SectionDetails
@@ -805,7 +812,6 @@ from sailpoint.beta.models.sed_assignment_response import SedAssignmentResponse
 from sailpoint.beta.models.sed_batch_request import SedBatchRequest
 from sailpoint.beta.models.sed_batch_response import SedBatchResponse
 from sailpoint.beta.models.sed_batch_stats import SedBatchStats
-from sailpoint.beta.models.sed_batch_status import SedBatchStatus
 from sailpoint.beta.models.sed_patch import SedPatch
 from sailpoint.beta.models.segment import Segment
 from sailpoint.beta.models.selector import Selector

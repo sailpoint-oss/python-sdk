@@ -907,6 +907,13 @@ from sailpoint.v2025.models.search import Search
 from sailpoint.v2025.models.search_aggregation_specification import SearchAggregationSpecification
 from sailpoint.v2025.models.search_arguments import SearchArguments
 from sailpoint.v2025.models.search_attribute_config import SearchAttributeConfig
+from sailpoint.v2025.models.search_criteria import SearchCriteria
+from sailpoint.v2025.models.search_criteria_filters_value import SearchCriteriaFiltersValue
+from sailpoint.v2025.models.search_criteria_filters_value_range import SearchCriteriaFiltersValueRange
+from sailpoint.v2025.models.search_criteria_filters_value_range_lower import SearchCriteriaFiltersValueRangeLower
+from sailpoint.v2025.models.search_criteria_filters_value_range_upper import SearchCriteriaFiltersValueRangeUpper
+from sailpoint.v2025.models.search_criteria_query import SearchCriteriaQuery
+from sailpoint.v2025.models.search_criteria_text_query import SearchCriteriaTextQuery
 from sailpoint.v2025.models.search_export_report_arguments import SearchExportReportArguments
 from sailpoint.v2025.models.search_filter_type import SearchFilterType
 from sailpoint.v2025.models.search_form_definitions_by_tenant400_response import SearchFormDefinitionsByTenant400Response
@@ -919,10 +926,10 @@ from sailpoint.v2025.models.sed_approval_status import SedApprovalStatus
 from sailpoint.v2025.models.sed_assignee import SedAssignee
 from sailpoint.v2025.models.sed_assignment import SedAssignment
 from sailpoint.v2025.models.sed_assignment_response import SedAssignmentResponse
+from sailpoint.v2025.models.sed_batch_record import SedBatchRecord
 from sailpoint.v2025.models.sed_batch_request import SedBatchRequest
 from sailpoint.v2025.models.sed_batch_response import SedBatchResponse
 from sailpoint.v2025.models.sed_batch_stats import SedBatchStats
-from sailpoint.v2025.models.sed_batch_status import SedBatchStatus
 from sailpoint.v2025.models.sed_patch import SedPatch
 from sailpoint.v2025.models.segment import Segment
 from sailpoint.v2025.models.segment_visibility_criteria import SegmentVisibilityCriteria

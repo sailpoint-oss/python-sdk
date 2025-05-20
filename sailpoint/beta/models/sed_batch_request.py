@@ -21,6 +21,7 @@ import warnings
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
+from sailpoint.beta.models.search_criteria import SearchCriteria
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -30,7 +31,8 @@ class SedBatchRequest(BaseModel):
     """ # noqa: E501
     entitlements: Optional[Annotated[List[StrictStr], Field(min_length=1)]] = Field(default=None, description="list of entitlement ids")
     seds: Optional[Annotated[List[StrictStr], Field(min_length=1)]] = Field(default=None, description="list of sed ids")
-    __properties: ClassVar[List[str]] = ["entitlements", "seds"]
+    search_criteria: Optional[Dict[str, SearchCriteria]] = Field(default=None, description="Search criteria for the batch request.", alias="searchCriteria")
+    __properties: ClassVar[List[str]] = ["entitlements", "seds", "searchCriteria"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -71,6 +73,28 @@ class SedBatchRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each value in search_criteria (dict)
+        _field_dict = {}
+        if self.search_criteria:
+            for _key_search_criteria in self.search_criteria:
+                if self.search_criteria[_key_search_criteria]:
+                    _field_dict[_key_search_criteria] = self.search_criteria[_key_search_criteria].to_dict()
+            _dict['searchCriteria'] = _field_dict
+        # set to None if entitlements (nullable) is None
+        # and model_fields_set contains the field
+        if self.entitlements is None and "entitlements" in self.model_fields_set:
+            _dict['entitlements'] = None
+
+        # set to None if seds (nullable) is None
+        # and model_fields_set contains the field
+        if self.seds is None and "seds" in self.model_fields_set:
+            _dict['seds'] = None
+
+        # set to None if search_criteria (nullable) is None
+        # and model_fields_set contains the field
+        if self.search_criteria is None and "search_criteria" in self.model_fields_set:
+            _dict['searchCriteria'] = None
+
         return _dict
 
     @classmethod
@@ -84,7 +108,13 @@ class SedBatchRequest(BaseModel):
 
         _obj = cls.model_validate({
             "entitlements": obj.get("entitlements"),
-            "seds": obj.get("seds")
+            "seds": obj.get("seds"),
+            "searchCriteria": dict(
+                (_k, SearchCriteria.from_dict(_v))
+                for _k, _v in obj["searchCriteria"].items()
+            )
+            if obj.get("searchCriteria") is not None
+            else None
         })
         return _obj
 

@@ -36,7 +36,7 @@ class TestSuggestedEntitlementDescriptionApi(unittest.TestCase):
     def test_get_sed_batches(self) -> None:
         """Test case for get_sed_batches
 
-        List sed batch request
+        List Sed Batch Record
         """
         pass
 
